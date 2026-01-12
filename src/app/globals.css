@@ -6,8 +6,8 @@
   --line2: rgba(201,194,166,.16);
 }
 
-*{box-sizing:border-box}
-html,body{height:100%}
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
 
 body{
   margin:0;
@@ -16,31 +16,4 @@ body{
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
 
-a{color:inherit}
-
-.heroCtaStack{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap: 14px;
-  text-align:center;
-  max-width: 680px;
-  width: 100%;
-}
-
-.heroTagline{
-  margin: 0;
-  padding: 0 10px;
-
-  /* brand color, but secondary to the button */
-  color: rgba(201,194,166,.78);
-
-  font-size: clamp(13px, 2.2vw, 18px);
-  line-height: 1.35;
-  letter-spacing: .06em;
-  font-weight: 700;
-
-  /* cinematic + readable without being flashy */
-  text-shadow: 0 10px 30px rgba(0,0,0,.55);
-  filter: saturate(1.02);
-}
+a{ color:inherit; }

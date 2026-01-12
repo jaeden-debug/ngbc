@@ -39,7 +39,7 @@ export default function EnterButton() {
       <span className={`${styles.corner} ${styles.bl}`} />
       <span className={`${styles.corner} ${styles.br}`} />
 
-      {/* trace lines (one-pass on hover/focus) */}
+      {/* trace lines */}
       <span className={`${styles.trace} ${styles.traceTop}`} />
       <span className={`${styles.trace} ${styles.traceRight}`} />
       <span className={`${styles.trace} ${styles.traceBottom}`} />

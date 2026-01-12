@@ -1,27 +1,13 @@
 import styles from "./page.module.css";
-import EnterButton from "../components/EnterButton";
+import Hero from "../components/Hero";
 import NewsletterForm from "../components/NewsletterForm";
+import SectionButtons from "../components/SectionButtons";
 
 export default function Page() {
   return (
     <main className={styles.page}>
-      {/* HERO */}
-      <section className={styles.hero}>
-        <div className={styles.heroBg} />
-        <div className={styles.heroShade} />
-        <div className={styles.cursorFx} />
-
-        <div className={styles.heroInner}>
-          <div className={styles.heroCtaStack}>
-            <p className={styles.heroTagline}>Learning the land, one trip at a time.</p>
-            <EnterButton />
-          </div>
-        </div>
-
-        <div className={styles.scrollHint} aria-hidden="true">
-          <span className={styles.scrollLine} />
-        </div>
-      </section>
+      {/* HERO (VIDEO) */}
+      <Hero />
 
       {/* SECTION 2: MISSION / WHAT WE DO */}
       <section id="mission" className={styles.about}>
@@ -55,14 +41,7 @@ export default function Page() {
             </li>
           </ul>
 
-          <div className={styles.missionCtas}>
-            <a className={styles.ctaLink} href="#" aria-label="Watch our latest on YouTube">
-              Watch Latest
-            </a>
-            <a className={styles.ctaLink} href="#crew" aria-label="Meet the crew">
-              Learn More
-            </a>
-          </div>
+          <SectionButtons />
         </div>
       </section>
 

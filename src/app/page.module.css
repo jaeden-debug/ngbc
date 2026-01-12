@@ -5,9 +5,17 @@
 /* HERO */
 .hero{
   position:relative;
-  min-height:100vh;
   overflow:hidden;
+  isolation:isolate;
+
+  /* Mobile-safe viewport */
+  min-height: 100svh;
+  min-height: 100vh; /* fallback */
   animation: heroIn .9s ease-out both;
+
+  /* Default cursor hotspot for subtle lighting */
+  --cx: 50%;
+  --cy: 42%;
 }
 
 @keyframes heroIn{
@@ -15,17 +23,34 @@
   to{ opacity:1; filter: saturate(1) contrast(1); }
 }
 
-.heroBg{
+/* VIDEO LAYER */
+.heroVideo{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+
+  transform: scale(1.03);
+  filter: brightness(1.08) contrast(1.06) saturate(1.06);
+  opacity:0;
+  animation: bgIn 1.0s ease-out .08s both;
+  pointer-events:none;
+}
+
+/* FALLBACK IMAGE (only visible until video is ready OR if video fails) */
+.heroImgFallback{
   position:absolute;
   inset:0;
   background-image: url("/hero.png");
   background-size: cover;
   background-position: center;
-  filter: brightness(1.18) contrast(1.06) saturate(1.06);
   transform: scale(1.03);
-  opacity: 0;
-  animation: bgIn 1.0s ease-out .1s both;
-  will-change: filter;
+  filter: brightness(1.12) contrast(1.06) saturate(1.06);
+  opacity:0;
+  animation: bgIn 1.0s ease-out .08s both;
+  pointer-events:none;
 }
 
 @keyframes bgIn{
@@ -33,15 +58,35 @@
   to{ opacity:1; transform: scale(1.03); }
 }
 
+/* When video is ready, fade out PNG fallback cleanly */
+.hero[data-video-ready="1"] .heroImgFallback{
+  opacity:0 !important;
+  animation:none !important;
+  transition: opacity .35s ease;
+}
+
+/* If video fails, keep fallback fully visible */
+.hero[data-video-failed="1"] .heroImgFallback{
+  opacity:1 !important;
+}
+
+/* If video is ready, make sure video is visible */
+.hero[data-video-ready="1"] .heroVideo{
+  opacity:1;
+  transition: opacity .35s ease;
+}
+
+/* Shading + cinematic legibility */
 .heroShade{
   position:absolute;
   inset:0;
   opacity:0;
   background:
-    radial-gradient(900px 650px at 50% 42%, rgba(201,194,166,.10), transparent 62%),
-    radial-gradient(1200px 900px at 50% 45%, rgba(0,0,0,.22), rgba(0,0,0,.54)),
-    linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,.48));
+    radial-gradient(900px 650px at var(--cx) var(--cy), rgba(201,194,166,.10), transparent 62%),
+    radial-gradient(1200px 900px at 50% 45%, rgba(0,0,0,.22), rgba(0,0,0,.62)),
+    linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,.56));
   animation: shadeIn .95s ease-out .25s both;
+  pointer-events:none;
 }
 
 @keyframes shadeIn{
@@ -49,7 +94,7 @@
   to{ opacity:1 }
 }
 
-/* subtle texture layer (no background movement) */
+/* subtle texture layer */
 .cursorFx{
   position:absolute;
   inset:0;
@@ -82,39 +127,37 @@
   inset:0;
   display:grid;
   place-items:end center;
-  justify-items:center; /* ✅ hard-center child stack */
-  padding: 0 18px 56px;
+  justify-items:center;
+  padding: 0 18px calc(56px + env(safe-area-inset-bottom));
 }
 
-/* ✅ NEW: CTA stack wrapper (centers text + button perfectly) */
+/* CTA stack wrapper */
 .heroCtaStack{
   width: 100%;
+  max-width: 720px;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap: 10px;
+  gap: 12px;
   text-align:center;
 }
 
-/* Tagline matches the CTA typography vibe */
+/* Single, clean tagline definition (no duplicates) */
 .heroTagline{
   margin: 0;
+  padding: 0 10px;
 
-  /* match CTA typography */
   font-family: inherit;
   font-weight: 850;
   text-transform: uppercase;
-  letter-spacing: .18em;
+  letter-spacing: .14em;
 
-  /* secondary brand tone */
-  color: rgba(201,194,166,.72);
+  color: rgba(201,194,166,.78);
 
-  /* sizing */
   font-size: 11px;
   line-height: 1.2;
 
-  /* elegant appear */
   opacity: 0;
   transform: translateY(6px);
   filter: blur(2px);
@@ -134,18 +177,6 @@
     transform: translateY(0px);
     filter: blur(0px);
   }
-}
-
-/* ✅ NEW: tagline that matches your typography system + secondary color */
-.heroTagline{
-  margin: 0;
-  font-family: inherit;           /* matches Inter stack */
-  font-weight: 800;               /* matches the vibe of your UI */
-  letter-spacing: .06em;          /* “tactical” spacing, not flashy */
-  color: rgba(201,194,166,.72);   /* secondary brand tone */
-  font-size: 13px;
-  line-height: 1.2;
-  text-shadow: 0 6px 22px rgba(0,0,0,.55);
 }
 
 /* CTA */
@@ -336,6 +367,7 @@
   transform: translateX(-50%);
   opacity:0;
   animation: fadeIn 1.3s ease 1.7s forwards;
+  pointer-events:none;
 }
 
 @keyframes fadeIn{
@@ -357,36 +389,28 @@
 }
 
 /* Mobile hero tuning */
-.hero{
-  /* better than 100vh on mobile browsers */
-  min-height: 100svh;
-  min-height: 100vh; /* fallback */
-}
-
 @media (max-width: 520px){
   .hero{
-    /* give it a little extra breathing room */
-    min-height: 108svh;
+    min-height: 106svh;
   }
 
-  .heroBg{
-    /* show more of the logo area instead of cropping it */
-    background-position: center 28%;
-    transform: scale(1.08);
+  .heroVideo{
+    object-position: center 32%;
+    transform: scale(1.07);
+  }
+
+  .heroImgFallback{
+    background-position: center 32%;
+    transform: scale(1.07);
   }
 
   .heroInner{
-    /* more bottom space + safe area for gesture bar */
-    padding: 0 16px calc(72px + env(safe-area-inset-bottom));
-  }
-
-  .heroCtaStack{
-    gap: 12px;
+    padding: 0 16px calc(78px + env(safe-area-inset-bottom));
   }
 
   .heroTagline{
     font-size: 11px;
-    letter-spacing: .16em;
+    letter-spacing: .14em;
   }
 
   .cta{
@@ -398,7 +422,8 @@
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   .hero,
-  .heroBg,
+  .heroVideo,
+  .heroImgFallback,
   .heroShade,
   .cursorFx,
   .cta,
@@ -408,7 +433,8 @@
     transition: none !important;
   }
   .cta{ opacity:1; transform:none; }
-  .heroBg{ opacity:1; transform: scale(1.03); }
+  .heroVideo{ opacity:1; transform: scale(1.03); }
+  .heroImgFallback{ opacity:1; transform: scale(1.03); }
   .heroShade{ opacity:1; }
   html{ scroll-behavior: auto; }
 }

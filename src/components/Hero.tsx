@@ -38,7 +38,7 @@ export default function Hero() {
     const onLeave = () => {
       if (!ref.current) return;
       ref.current.style.setProperty("--cx", "50%");
-      ref.current.style.setProperty("--cy", "40%");
+      ref.current.style.setProperty("--cy", "42%");
     };
 
     el.addEventListener("pointermove", onMove);
@@ -59,7 +59,7 @@ export default function Hero() {
       data-video-ready={videoReady ? "1" : "0"}
       data-video-failed={videoFailed ? "1" : "0"}
     >
-      {/* VIDEO LAYER */}
+      {/* VIDEO LAYER (ngbc.mp4) */}
       {!videoFailed && (
         <video
           className={styles.heroVideo}
@@ -67,23 +67,28 @@ export default function Hero() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
+          poster="/hero.png"
           onCanPlay={() => setVideoReady(true)}
           onPlaying={() => setVideoReady(true)}
+          onLoadedData={() => setVideoReady(true)}
           onError={() => setVideoFailed(true)}
         >
           <source src="/ngbc.mp4" type="video/mp4" />
         </video>
       )}
 
-      {/* PNG FALLBACK (only when video fails OR until video is ready) */}
+      {/* PNG FALLBACK (hero.png) */}
       <div className={styles.heroImgFallback} aria-hidden="true" />
 
       <div className={styles.heroShade} />
       <div className={styles.cursorFx} />
 
       <div className={styles.heroInner}>
-        <EnterButton />
+        <div className={styles.heroCtaStack}>
+          <p className={styles.heroTagline}>Learning the land, one trip at a time.</p>
+          <EnterButton />
+        </div>
       </div>
 
       <div className={styles.scrollHint} aria-hidden="true">
