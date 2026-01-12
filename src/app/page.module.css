@@ -1,0 +1,375 @@
+.page{
+  min-height:100vh;
+}
+
+/* HERO */
+.hero{
+  position:relative;
+  min-height:100vh;
+  overflow:hidden;
+  animation: heroIn .9s ease-out both;
+}
+
+@keyframes heroIn{
+  from{ opacity:0; filter: saturate(.95) contrast(.98); }
+  to{ opacity:1; filter: saturate(1) contrast(1); }
+}
+
+.heroBg{
+  position:absolute;
+  inset:0;
+  background-image: url("/hero.png");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(1.18) contrast(1.06) saturate(1.06);
+  transform: scale(1.03);
+  opacity: 0;
+  animation: bgIn 1.0s ease-out .1s both;
+  will-change: filter;
+}
+
+@keyframes bgIn{
+  from{ opacity:0; transform: scale(1.06); }
+  to{ opacity:1; transform: scale(1.03); }
+}
+
+.heroShade{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  background:
+    radial-gradient(900px 650px at 50% 42%, rgba(201,194,166,.10), transparent 62%),
+    radial-gradient(1200px 900px at 50% 45%, rgba(0,0,0,.22), rgba(0,0,0,.54)),
+    linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,.48));
+  animation: shadeIn .95s ease-out .25s both;
+}
+
+@keyframes shadeIn{
+  from{ opacity:0 }
+  to{ opacity:1 }
+}
+
+/* subtle texture layer (no background movement) */
+.cursorFx{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:0;
+  animation: fxIn .8s ease-out 1.1s both;
+  mix-blend-mode: soft-light;
+}
+
+@keyframes fxIn{ to{opacity:1} }
+
+.cursorFx::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    repeating-linear-gradient(
+      115deg,
+      rgba(255,255,255,.018) 0px,
+      rgba(255,255,255,.018) 1px,
+      transparent 8px,
+      transparent 18px
+    );
+  opacity:.35;
+  filter: blur(.2px);
+}
+
+.heroInner{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:end center;
+  justify-items:center; /* ✅ hard-center child stack */
+  padding: 0 18px 56px;
+}
+
+/* ✅ NEW: CTA stack wrapper (centers text + button perfectly) */
+.heroCtaStack{
+  width: 100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap: 10px;
+  text-align:center;
+}
+
+/* Tagline matches the CTA typography vibe */
+.heroTagline{
+  margin: 0;
+
+  /* match CTA typography */
+  font-family: inherit;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+
+  /* secondary brand tone */
+  color: rgba(201,194,166,.72);
+
+  /* sizing */
+  font-size: 11px;
+  line-height: 1.2;
+
+  /* elegant appear */
+  opacity: 0;
+  transform: translateY(6px);
+  filter: blur(2px);
+  animation: taglineIn .55s ease-out .78s both;
+
+  text-shadow: 0 10px 30px rgba(0,0,0,.55);
+}
+
+@keyframes taglineIn{
+  0%{
+    opacity: 0;
+    transform: translateY(6px);
+    filter: blur(2px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0px);
+    filter: blur(0px);
+  }
+}
+
+/* ✅ NEW: tagline that matches your typography system + secondary color */
+.heroTagline{
+  margin: 0;
+  font-family: inherit;           /* matches Inter stack */
+  font-weight: 800;               /* matches the vibe of your UI */
+  letter-spacing: .06em;          /* “tactical” spacing, not flashy */
+  color: rgba(201,194,166,.72);   /* secondary brand tone */
+  font-size: 13px;
+  line-height: 1.2;
+  text-shadow: 0 6px 22px rgba(0,0,0,.55);
+}
+
+/* CTA */
+.cta{
+  position:relative;
+  border:none;
+  cursor:pointer;
+  overflow:hidden;
+
+  background: rgba(0,0,0,.18);
+  color: rgba(201,194,166,.95);
+  padding: 16px 22px;
+  border-radius: 16px;
+
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 850;
+
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+
+  opacity:0;
+  transform: translateY(10px) scale(.99);
+  animation: ctaIn .78s ease-out .92s both, ctaBounce .42s ease-out 1.72s both;
+  transition: transform .18s ease, color .2s ease, background .2s ease;
+}
+
+@keyframes ctaIn{
+  to{ opacity:1; transform: translateY(0) scale(1); }
+}
+
+@keyframes ctaBounce{
+  0%{ transform: translateY(0) scale(1); }
+  45%{ transform: translateY(-2px) scale(1.01); }
+  100%{ transform: translateY(0) scale(1); }
+}
+
+.cta:hover{
+  transform: translateY(-1px) scale(1.01);
+  color: rgba(255,255,255,.96);
+  background: rgba(0,0,0,.24);
+}
+
+.cta:focus-visible{
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 0 0 2px rgba(201,194,166,.45), 0 10px 35px rgba(0,0,0,.45);
+}
+
+.ctaText{position:relative; z-index:3}
+
+/* 4 corner marks */
+.corner{
+  position:absolute;
+  width:14px;
+  height:14px;
+  border-color: rgba(201,194,166,.78);
+  opacity:.92;
+  z-index:3;
+  transition: opacity .2s ease, border-color .2s ease;
+}
+
+.tl{top:10px;left:10px;border-top:2px solid;border-left:2px solid}
+.tr{top:10px;right:10px;border-top:2px solid;border-right:2px solid}
+.bl{bottom:10px;left:10px;border-bottom:2px solid;border-left:2px solid}
+.br{bottom:10px;right:10px;border-bottom:2px solid;border-right:2px solid}
+
+.cta:hover .corner,
+.cta:focus-visible .corner{
+  opacity: 1;
+  border-color: rgba(201,194,166,.92);
+}
+
+/* trace system */
+.trace{
+  position:absolute;
+  z-index:2;
+  opacity:0;
+  pointer-events:none;
+  background: linear-gradient(to right, rgba(201,194,166,.0), rgba(201,194,166,.92), rgba(201,194,166,.0));
+  filter: drop-shadow(0 0 10px rgba(201,194,166,.14));
+}
+
+.traceTop{
+  left:24px;
+  top:10px;
+  height:2px;
+  width:0;
+  background: linear-gradient(to right, rgba(201,194,166,.0), rgba(201,194,166,.92));
+}
+.traceRight{
+  right:10px;
+  top:24px;
+  width:2px;
+  height:0;
+  background: linear-gradient(to bottom, rgba(201,194,166,.0), rgba(201,194,166,.92));
+}
+.traceBottom{
+  right:24px;
+  bottom:10px;
+  height:2px;
+  width:0;
+  background: linear-gradient(to left, rgba(201,194,166,.0), rgba(201,194,166,.92));
+}
+.traceLeft{
+  left:10px;
+  bottom:24px;
+  width:2px;
+  height:0;
+  background: linear-gradient(to top, rgba(201,194,166,.0), rgba(201,194,166,.92));
+}
+
+@keyframes topTrace{
+  0%{opacity:0; width:0}
+  10%{opacity:1}
+  100%{opacity:1; width: calc(100% - 48px)}
+}
+@keyframes rightTrace{
+  0%{opacity:0; height:0}
+  10%{opacity:1}
+  100%{opacity:1; height: calc(100% - 48px)}
+}
+@keyframes bottomTrace{
+  0%{opacity:0; width:0}
+  10%{opacity:1}
+  100%{opacity:1; width: calc(100% - 48px)}
+}
+@keyframes leftTrace{
+  0%{opacity:0; height:0}
+  10%{opacity:1}
+  100%{opacity:1; height: calc(100% - 48px)}
+}
+
+.cta:hover .traceTop,
+.cta:focus-visible .traceTop{
+  animation: topTrace .26s ease-out 0s 1 both;
+}
+.cta:hover .traceRight,
+.cta:focus-visible .traceRight{
+  animation: rightTrace .26s ease-out .14s 1 both;
+}
+.cta:hover .traceBottom,
+.cta:focus-visible .traceBottom{
+  animation: bottomTrace .26s ease-out .28s 1 both;
+}
+.cta:hover .traceLeft,
+.cta:focus-visible .traceLeft{
+  animation: leftTrace .26s ease-out .42s 1 both;
+}
+
+.cta::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  opacity:0;
+  transform: translateX(-60%);
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(201,194,166,.00) 44%,
+      rgba(201,194,166,.22) 50%,
+      rgba(201,194,166,.00) 56%,
+      transparent 100%
+    );
+}
+
+@keyframes sweepOnce{
+  0%{ opacity:0; transform: translateX(-60%); }
+  15%{ opacity:.65; }
+  100%{ opacity:0; transform: translateX(60%); }
+}
+
+.cta:hover::after,
+.cta:focus-visible::after{
+  animation: sweepOnce .55s ease-out 0s 1 both;
+}
+
+/* scroll hint */
+.scrollHint{
+  position:absolute;
+  left:50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  opacity:0;
+  animation: fadeIn 1.3s ease 1.7s forwards;
+}
+
+@keyframes fadeIn{
+  to{opacity:.55}
+}
+
+.scrollLine{
+  display:block;
+  width:1px;
+  height:28px;
+  background: linear-gradient(to bottom, rgba(201,194,166,.65), transparent);
+  animation: drop 1.6s ease-in-out infinite;
+}
+
+@keyframes drop{
+  0%{transform: translateY(-6px); opacity:.35}
+  50%{transform: translateY(0px); opacity:1}
+  100%{transform: translateY(6px); opacity:.35}
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .hero,
+  .heroBg,
+  .heroShade,
+  .cursorFx,
+  .cta,
+  .scrollHint,
+  .scrollLine{
+    animation: none !important;
+    transition: none !important;
+  }
+  .cta{ opacity:1; transform:none; }
+  .heroBg{ opacity:1; transform: scale(1.03); }
+  .heroShade{ opacity:1; }
+  html{ scroll-behavior: auto; }
+}
