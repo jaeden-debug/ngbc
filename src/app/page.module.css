@@ -356,6 +356,45 @@
   100%{transform: translateY(6px); opacity:.35}
 }
 
+/* Mobile hero tuning */
+.hero{
+  /* better than 100vh on mobile browsers */
+  min-height: 100svh;
+  min-height: 100vh; /* fallback */
+}
+
+@media (max-width: 520px){
+  .hero{
+    /* give it a little extra breathing room */
+    min-height: 108svh;
+  }
+
+  .heroBg{
+    /* show more of the logo area instead of cropping it */
+    background-position: center 28%;
+    transform: scale(1.08);
+  }
+
+  .heroInner{
+    /* more bottom space + safe area for gesture bar */
+    padding: 0 16px calc(72px + env(safe-area-inset-bottom));
+  }
+
+  .heroCtaStack{
+    gap: 12px;
+  }
+
+  .heroTagline{
+    font-size: 11px;
+    letter-spacing: .16em;
+  }
+
+  .cta{
+    padding: 14px 18px;
+    border-radius: 14px;
+  }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   .hero,
