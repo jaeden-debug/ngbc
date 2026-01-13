@@ -24,7 +24,6 @@
   to{ opacity:1; filter: saturate(1) contrast(1); }
 }
 
-/* When deck is open, hero subtly fades back (no scrolling, just a cinematic state change) */
 :global(html[data-deck="1"]) .hero{
   opacity: .06;
   filter: blur(6px) saturate(.95) contrast(.95);
@@ -265,7 +264,7 @@
   animation: sweepOnce .55s ease-out 0s 1 both;
 }
 
-/* scroll hint (kept, but page is locked) */
+/* scroll hint */
 .scrollHint{
   position:absolute;
   left:50%;
@@ -292,7 +291,7 @@
   100%{transform: translateY(6px); opacity:.35}
 }
 
-/* === DECK OVERLAY (NO PAGE SCROLL) === */
+/* === DECK OVERLAY === */
 .deck{
   position: fixed;
   inset: 0;
@@ -309,6 +308,9 @@
 
   transition: opacity .45s ease, transform .45s ease;
   will-change: opacity, transform;
+
+  /* helps dragging feel consistent */
+  touch-action: none;
 }
 
 .deckActive{
@@ -340,10 +342,11 @@
   animation: shadeIn .65s ease-out .10s both;
 }
 
+/* IMPORTANT: allow gestures to start on the card area */
 .deckCards{
   position:absolute;
   inset:0;
-  pointer-events:none; /* only our handlers drive interaction */
+  pointer-events:auto;
 }
 
 .deckCard{
@@ -353,19 +356,36 @@
   width: min(720px, calc(100vw - 32px));
   border-radius: 22px;
   border: 1px solid rgba(201,194,166,.18);
-  background: rgba(0,0,0,.22);
-  -webkit-backdrop-filter: blur(calc(12px - (var(--reveal, 0) * 5px)));
-  backdrop-filter: blur(calc(12px - (var(--reveal, 0) * 5px)));
-  box-shadow: 0 24px 80px rgba(0,0,0,.55);
+  background: rgba(0,0,0,.16);
 
+  /* smoky glass without blurring text */
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+
+  box-shadow: 0 24px 80px rgba(0,0,0,.55);
   padding: 18px 18px 16px;
 
-  transition: transform .34s cubic-bezier(.2,.9,.2,1), opacity .34s ease, filter .34s ease;
-  will-change: transform, opacity, filter;
+  transition: transform .34s cubic-bezier(.2,.9,.2,1), opacity .34s ease;
+  will-change: transform, opacity;
 
   opacity: 0;
   transform: translate3d(-50%, calc(-50% + 12vh), 0);
   animation: cardIn .55s ease-out .14s both;
+
+  pointer-events: none; /* events bubble from container; avoids selecting text while dragging */
+}
+
+/* inner smoke layer that won't blur text */
+.deckCard::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: inherit;
+  pointer-events:none;
+  background:
+    radial-gradient(700px 420px at 50% 30%, rgba(255,255,255,.06), transparent 60%),
+    radial-gradient(900px 700px at 50% 55%, rgba(0,0,0,.35), rgba(0,0,0,.10));
+  opacity: .9;
 }
 
 @keyframes cardIn{
@@ -374,10 +394,12 @@
 
 .deckCardCurrent{
   border-color: rgba(201,194,166,.26);
-  background: rgba(0,0,0,.18);
+  background: rgba(0,0,0,.14);
 }
 
 .deckKickerRow{
+  position: relative;
+  z-index: 1;
   display:flex;
   align-items:center;
   gap: 10px;
@@ -399,6 +421,8 @@
 }
 
 .deckTitle{
+  position: relative;
+  z-index: 1;
   margin: 0 0 10px;
   font-size: clamp(22px, 4.3vw, 34px);
   line-height: 1.05;
@@ -407,6 +431,8 @@
 }
 
 .deckLines{
+  position: relative;
+  z-index: 1;
   display:flex;
   flex-direction:column;
   gap: 8px;
@@ -420,6 +446,8 @@
 }
 
 .deckHint{
+  position: relative;
+  z-index: 1;
   margin-top: 14px;
   font-size: 12px;
   letter-spacing: .16em;
@@ -444,7 +472,7 @@
   backdrop-filter: blur(10px);
 }
 
-/* FOOTER (kept as-is; page scroll is locked by design) */
+/* FOOTER (kept) */
 .footer{
   padding: 72px 18px;
   background: #060606;

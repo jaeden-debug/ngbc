@@ -37,10 +37,7 @@ export default function MissionDeck() {
       {
         kicker: "The vibe",
         title: "Cinematic footage. Honest results.",
-        lines: [
-          "No clumps of text. No fake survival.",
-          "Just cold air, hard work, clean visuals.",
-        ],
+        lines: ["No clumps of text. No fake survival.", "Just cold air, hard work, clean visuals."],
       },
     ],
     []
@@ -57,7 +54,16 @@ export default function MissionDeck() {
   const [offsetY, setOffsetY] = useState(0);
   const [animating, setAnimating] = useState(false);
 
+  const closingRef = useRef(false);
+
+  // Lock body scroll only while deck is active
   useLockBodyScroll(active);
+
+  // Own the overlay flag here (single source of truth)
+  useEffect(() => {
+    if (active) document.documentElement.dataset.deck = "1";
+    else delete document.documentElement.dataset.deck;
+  }, [active]);
 
   useEffect(() => {
     const apply = () => {
@@ -67,7 +73,6 @@ export default function MissionDeck() {
     };
 
     const id = requestAnimationFrame(apply);
-
     window.addEventListener("resize", apply);
     window.addEventListener("orientationchange", apply);
 
@@ -86,26 +91,26 @@ export default function MissionDeck() {
   const wheelAccRef = useRef(0);
 
   const closeDeck = useCallback(() => {
-    // Start a short close animation window to avoid accidental wheel/drag during teardown
-    setAnimating(true);
+    if (closingRef.current) return;
+    closingRef.current = true;
 
-    // Remove overlay state (Hero comes back via CSS transition)
-    delete document.documentElement.dataset.deck;
+    // End any gesture cleanly
+    draggingRef.current = false;
+    wheelAccRef.current = 0;
 
-    // Reset card state immediately (so next open always starts clean)
-    setIdx(0);
-    setOffsetY(0);
-
-    // Disable deck controls
+    // Start fade-out (CSS driven via `active`)
     setActive(false);
 
-    window.setTimeout(() => {
-      setAnimating(false);
-      wheelAccRef.current = 0;
+    // Reset card state right away so the next open is clean
+    setIdx(0);
+    setOffsetY(0);
+    setAnimating(false);
 
-      // Return focus to the CTA for keyboard users
+    // After the CSS transition finishes, release the lock + restore focus
+    window.setTimeout(() => {
+      closingRef.current = false;
       document.getElementById("enter-btn")?.focus();
-    }, 260);
+    }, 520);
   }, []);
 
   const goTo = useCallback(
@@ -243,21 +248,16 @@ export default function MissionDeck() {
 
   useEffect(() => {
     const onEnter = () => {
-      // Ensure overlay state is on (in case user triggers via keyboard or other path)
-      document.documentElement.dataset.deck = "1";
+      if (closingRef.current) return;
 
       setIdx(0);
       setOffsetY(0);
       wheelAccRef.current = 0;
+      velRef.current = 0;
 
-      // Bring deck fully online
       setActive(true);
-      setAnimating(true);
+      setAnimating(false);
 
-      // Let the CSS transition start, then unlock input
-      window.setTimeout(() => setAnimating(false), 420);
-
-      // Start video (best-effort)
       requestAnimationFrame(() => {
         const v = videoRef.current;
         if (!v) return;
@@ -288,12 +288,12 @@ export default function MissionDeck() {
       const isCurrent = i === idx;
       const reveal = isCurrent ? clamp(Math.abs(offsetY) / 240, 0, 1) : 0;
 
-      const opacity = rel === 0 ? 1 : rel === 1 || rel === -1 ? 0.55 : 0;
-      const blur = rel === 0 ? 0 : 1.2;
+      const opacity = rel === 0 ? 1 : rel === 1 || rel === -1 ? 0.6 : 0;
+      const scale = rel === 0 ? 1 : 0.985;
 
-      el.style.transform = `translate3d(-50%, calc(-50% + ${y}vh), 0)`;
+      el.style.transform = `translate3d(-50%, calc(-50% + ${y}vh), 0) scale(${scale})`;
       el.style.opacity = String(opacity);
-      el.style.filter = `blur(${blur}px)`;
+      el.style.removeProperty("filter"); // IMPORTANT: no blur on the whole card (keeps text sharp)
       el.style.setProperty("--reveal", String(reveal));
     }
   }, [cards, idx, offsetY, softenDiv]);
@@ -321,11 +321,7 @@ export default function MissionDeck() {
         poster="/hero.png"
         webkit-playsinline="true"
       >
-        <source
-          src={process.env.NEXT_PUBLIC_DECK_BG_MOBILE}
-          type="video/mp4"
-          media="(max-width: 520px)"
-        />
+        <source src={process.env.NEXT_PUBLIC_DECK_BG_MOBILE} type="video/mp4" media="(max-width: 520px)" />
         <source src={process.env.NEXT_PUBLIC_DECK_BG_DESKTOP} type="video/mp4" />
       </video>
 
@@ -358,9 +354,7 @@ export default function MissionDeck() {
               ))}
             </div>
 
-            <div className={styles.deckHint}>
-              {i < cards.length - 1 ? "Swipe / scroll ↓" : "One more ↓ to exit"}
-            </div>
+            <div className={styles.deckHint}>{i < cards.length - 1 ? "Swipe / scroll ↓" : "One more ↓ to exit"}</div>
           </article>
         ))}
       </div>
@@ -368,7 +362,11 @@ export default function MissionDeck() {
       <button
         type="button"
         className={styles.deckExit}
-        onClick={closeDeck}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          closeDeck();
+        }}
         aria-label="Exit deck"
       >
         Exit

@@ -4,20 +4,12 @@ import styles from "../app/page.module.css";
 
 export default function EnterButton() {
   const onClick = () => {
-    // Flip the UI state immediately (CSS transition for Hero + Deck overlay)
-    document.documentElement.dataset.deck = "1";
-
-    // Tell MissionDeck to activate (start video, enable card controls)
+    // MissionDeck owns opening/closing + html[data-deck] now.
     window.dispatchEvent(new Event("ngbc:enterDeck"));
   };
 
   return (
-    <button
-      id="enter-btn"
-      type="button"
-      className={styles.cta}
-      onClick={onClick}
-    >
+    <button id="enter-btn" type="button" className={styles.cta} onClick={onClick}>
       <span className={styles.ctaText}>Enter the North</span>
 
       <span className={`${styles.corner} ${styles.tl}`} />
