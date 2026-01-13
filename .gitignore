@@ -39,3 +39,10 @@ yarn-error.log*
 # large local media
 /public/*.mp4
 /public/*.mov
+
+# source videos (never commit)
+private_videos/
+public/*.mp4
+
+# keep optimized deploy videos
+!public/videos/*.mp4

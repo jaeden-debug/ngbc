@@ -1,0 +1,3 @@
+# ignore any source videos
+private_videos/
+public/*.mp4
