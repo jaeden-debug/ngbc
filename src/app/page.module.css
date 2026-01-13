@@ -14,11 +14,21 @@
   min-height: 100vh;
   overflow:hidden;
   animation: heroIn .9s ease-out both;
+
+  transition: opacity .45s ease, filter .45s ease, transform .45s ease;
+  will-change: opacity, filter, transform;
 }
 
 @keyframes heroIn{
   from{ opacity:0; filter: saturate(.95) contrast(.98); }
   to{ opacity:1; filter: saturate(1) contrast(1); }
+}
+
+/* When deck is open, hero subtly fades back (no scrolling, just a cinematic state change) */
+:global(html[data-deck="1"]) .hero{
+  opacity: .06;
+  filter: blur(6px) saturate(.95) contrast(.95);
+  transform: scale(1.01);
 }
 
 .heroVideo{
@@ -255,7 +265,7 @@
   animation: sweepOnce .55s ease-out 0s 1 both;
 }
 
-/* scroll hint */
+/* scroll hint (kept, but page is locked) */
 .scrollHint{
   position:absolute;
   left:50%;
@@ -263,6 +273,7 @@
   transform: translateX(-50%);
   opacity:0;
   animation: fadeIn 1.3s ease 1.7s forwards;
+  pointer-events:none;
 }
 
 @keyframes fadeIn{ to{opacity:.55} }
@@ -281,20 +292,29 @@
   100%{transform: translateY(6px); opacity:.35}
 }
 
-/* === PINNED MISSION DECK === */
+/* === DECK OVERLAY (NO PAGE SCROLL) === */
 .deck{
-  position: relative;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+
   height: 100vh;
   height: 100svh;
   overflow: hidden;
   background: #060606;
+
+  opacity: 0;
+  transform: translate3d(0, 10px, 0) scale(1.01);
+  pointer-events: none;
+
+  transition: opacity .45s ease, transform .45s ease;
+  will-change: opacity, transform;
 }
 
 .deckActive{
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  animation: heroIn .55s ease-out both;
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  pointer-events: auto;
 }
 
 .deckVideo{
@@ -323,7 +343,7 @@
 .deckCards{
   position:absolute;
   inset:0;
-  pointer-events:none;
+  pointer-events:none; /* only our handlers drive interaction */
 }
 
 .deckCard{
@@ -424,7 +444,7 @@
   backdrop-filter: blur(10px);
 }
 
-/* FOOTER */
+/* FOOTER (kept as-is; page scroll is locked by design) */
 .footer{
   padding: 72px 18px;
   background: #060606;
@@ -519,7 +539,7 @@
   .cta,
   .scrollHint,
   .scrollLine,
-  .deckActive,
+  .deck,
   .deckShade,
   .deckCard{
     animation: none !important;

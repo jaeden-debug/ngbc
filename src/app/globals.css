@@ -8,7 +8,11 @@
 
 *{ box-sizing: border-box; }
 
-html, body{ height: 100%; }
+html, body{
+  height: 100%;
+  overflow: hidden;              /* no page scroll */
+  overscroll-behavior: none;     /* no rubber-band */
+}
 
 body{
   margin:0;

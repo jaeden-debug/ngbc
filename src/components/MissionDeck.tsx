@@ -85,19 +85,32 @@ export default function MissionDeck() {
   const velRef = useRef(0);
   const wheelAccRef = useRef(0);
 
-  const exitDeck = useCallback(() => {
-    setActive(false);
-    setAnimating(false);
+  const closeDeck = useCallback(() => {
+    // Start a short close animation window to avoid accidental wheel/drag during teardown
+    setAnimating(true);
+
+    // Remove overlay state (Hero comes back via CSS transition)
+    delete document.documentElement.dataset.deck;
+
+    // Reset card state immediately (so next open always starts clean)
+    setIdx(0);
     setOffsetY(0);
 
-    requestAnimationFrame(() => {
-      document.getElementById("after-deck")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
+    // Disable deck controls
+    setActive(false);
+
+    window.setTimeout(() => {
+      setAnimating(false);
+      wheelAccRef.current = 0;
+
+      // Return focus to the CTA for keyboard users
+      document.getElementById("enter-btn")?.focus();
+    }, 260);
   }, []);
 
   const goTo = useCallback(
     (next: number) => {
-      if (animating) return;
+      if (!active || animating) return;
 
       const max = cards.length - 1;
       const clamped = clamp(next, 0, max);
@@ -109,7 +122,7 @@ export default function MissionDeck() {
 
       window.setTimeout(() => setAnimating(false), 360);
     },
-    [animating, cards.length, idx]
+    [active, animating, cards.length, idx]
   );
 
   const commitDrag = useCallback(() => {
@@ -123,7 +136,7 @@ export default function MissionDeck() {
     const v = velRef.current;
 
     if (dy < -threshold || v < -flick) {
-      if (idx === cards.length - 1) exitDeck();
+      if (idx === cards.length - 1) closeDeck();
       else goTo(idx + 1);
       return;
     }
@@ -136,7 +149,7 @@ export default function MissionDeck() {
     setAnimating(true);
     setOffsetY(0);
     window.setTimeout(() => setAnimating(false), 260);
-  }, [active, animating, cards.length, exitDeck, goTo, idx, offsetY]);
+  }, [active, animating, cards.length, closeDeck, goTo, idx, offsetY]);
 
   const onPointerDown = useCallback(
     (e: React.PointerEvent) => {
@@ -211,7 +224,7 @@ export default function MissionDeck() {
 
       if (e.key === "ArrowDown" || e.key === "PageDown" || e.key === " ") {
         e.preventDefault();
-        if (idx === cards.length - 1) exitDeck();
+        if (idx === cards.length - 1) closeDeck();
         else goTo(idx + 1);
       }
       if (e.key === "ArrowUp" || e.key === "PageUp") {
@@ -220,35 +233,39 @@ export default function MissionDeck() {
       }
       if (e.key === "Escape") {
         e.preventDefault();
-        exitDeck();
+        closeDeck();
       }
     };
 
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [active, animating, cards.length, exitDeck, goTo, idx]);
+  }, [active, animating, cards.length, closeDeck, goTo, idx]);
 
   useEffect(() => {
     const onEnter = () => {
+      // Ensure overlay state is on (in case user triggers via keyboard or other path)
+      document.documentElement.dataset.deck = "1";
+
       setIdx(0);
       setOffsetY(0);
+      wheelAccRef.current = 0;
 
+      // Bring deck fully online
+      setActive(true);
+      setAnimating(true);
+
+      // Let the CSS transition start, then unlock input
+      window.setTimeout(() => setAnimating(false), 420);
+
+      // Start video (best-effort)
       requestAnimationFrame(() => {
-        document.getElementById("deck")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        const v = videoRef.current;
+        if (!v) return;
+        const p = v.play();
+        if (p && typeof (p as Promise<void>).catch === "function") {
+          (p as Promise<void>).catch(() => {});
+        }
       });
-
-      window.setTimeout(() => {
-        setActive(true);
-
-        requestAnimationFrame(() => {
-          const v = videoRef.current;
-          if (!v) return;
-          const p = v.play();
-          if (p && typeof (p as Promise<void>).catch === "function") {
-            (p as Promise<void>).catch(() => {});
-          }
-        });
-      }, 420);
     };
 
     window.addEventListener("ngbc:enterDeck", onEnter as EventListener);
@@ -309,10 +326,7 @@ export default function MissionDeck() {
           type="video/mp4"
           media="(max-width: 520px)"
         />
-        <source
-          src={process.env.NEXT_PUBLIC_DECK_BG_DESKTOP}
-          type="video/mp4"
-        />
+        <source src={process.env.NEXT_PUBLIC_DECK_BG_DESKTOP} type="video/mp4" />
       </video>
 
       <div className={styles.deckShade} aria-hidden="true" />
@@ -351,7 +365,12 @@ export default function MissionDeck() {
         ))}
       </div>
 
-      <button type="button" className={styles.deckExit} onClick={exitDeck} aria-label="Exit deck">
+      <button
+        type="button"
+        className={styles.deckExit}
+        onClick={closeDeck}
+        aria-label="Exit deck"
+      >
         Exit
       </button>
     </section>

@@ -17,9 +17,7 @@ export default function Page() {
           </div>
 
           <h2 className={styles.h2}>Get updates when we drop new field work</h2>
-          <p className={styles.p}>
-            Occasional updates — new uploads, gear we trust, and what we’re testing next.
-          </p>
+          <p className={styles.p}>Occasional updates — new uploads, gear we trust, and what we’re testing next.</p>
 
           <NewsletterForm />
 
