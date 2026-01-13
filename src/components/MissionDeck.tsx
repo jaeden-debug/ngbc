@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import styles from "../app/page.module.css";
 import useLockBodyScroll from "./useLockBodyScroll";
 
@@ -52,39 +52,47 @@ export default function MissionDeck({
   );
 
   const active = open;
-
   useLockBodyScroll(active);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const cardElsRef = useRef<(HTMLElement | null)[]>([]);
-
   const vhRef = useRef(800);
-  const [viewportH, setViewportH] = useState(800);
 
   const [idx, setIdx] = useState(0);
   const [offsetY, setOffsetY] = useState(0);
   const [animating, setAnimating] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const closingRef = useRef(false);
 
+  // Decide “mobile” for swipe: coarse pointers (phones/tablets) OR narrow screens
   useEffect(() => {
     const apply = () => {
+      const coarse = window.matchMedia("(pointer: coarse)").matches;
+      const narrow = window.matchMedia("(max-width: 820px)").matches;
+      setIsMobile(coarse || narrow);
+
       const h = window.innerHeight || 800;
       vhRef.current = h;
-      setViewportH(h);
     };
 
-    const id = requestAnimationFrame(apply);
+    apply();
     window.addEventListener("resize", apply);
     window.addEventListener("orientationchange", apply);
-
     return () => {
-      cancelAnimationFrame(id);
       window.removeEventListener("resize", apply);
       window.removeEventListener("orientationchange", apply);
     };
   }, []);
 
+  // Reset when opened / remounted
+  useEffect(() => {
+    if (!active) return;
+    setIdx(0);
+    setOffsetY(0);
+    setAnimating(false);
+  }, [active, deckKey]);
+
+  // Ensure video starts when overlay opens
   useEffect(() => {
     if (!active) return;
     requestAnimationFrame(() => {
@@ -97,19 +105,9 @@ export default function MissionDeck({
     });
   }, [active]);
 
-  const draggingRef = useRef(false);
-  const startYRef = useRef(0);
-  const lastYRef = useRef(0);
-  const lastTRef = useRef(0);
-  const velRef = useRef(0);
-  const wheelAccRef = useRef(0);
-
   const closeDeck = useCallback(() => {
     if (closingRef.current) return;
     closingRef.current = true;
-
-    draggingRef.current = false;
-    wheelAccRef.current = 0;
 
     onClose();
 
@@ -123,6 +121,13 @@ export default function MissionDeck({
       if (!active || animating) return;
 
       const max = cards.length - 1;
+
+      // allow "next" on last card to close
+      if (next > max) {
+        closeDeck();
+        return;
+      }
+
       const clamped = clamp(next, 0, max);
       if (clamped === idx) return;
 
@@ -130,40 +135,57 @@ export default function MissionDeck({
       setIdx(clamped);
       setOffsetY(0);
 
-      window.setTimeout(() => setAnimating(false), 360);
+      window.setTimeout(() => setAnimating(false), 260);
     },
-    [active, animating, cards.length, idx]
+    [active, animating, cards.length, closeDeck, idx]
   );
+
+  const prev = useCallback(() => goTo(idx - 1), [goTo, idx]);
+  const next = useCallback(() => goTo(idx + 1), [goTo, idx]);
+
+  // --- Mobile swipe (only when isMobile) ---
+  const draggingRef = useRef(false);
+  const startYRef = useRef(0);
+  const lastYRef = useRef(0);
+  const lastTRef = useRef(0);
+  const velRef = useRef(0);
+
+  const isInteractiveTarget = (target: EventTarget | null) => {
+    const el = target as HTMLElement | null;
+    if (!el) return false;
+    return Boolean(el.closest("button, a, input, textarea, select, label"));
+  };
 
   const commitDrag = useCallback(() => {
     if (!active || animating) return;
 
     const h = Math.max(520, vhRef.current);
-    const threshold = h * 0.18;
+    const threshold = h * 0.16;
     const flick = 900;
 
     const dy = offsetY;
     const v = velRef.current;
 
     if (dy < -threshold || v < -flick) {
-      if (idx === cards.length - 1) closeDeck();
-      else goTo(idx + 1);
+      next();
       return;
     }
 
     if (dy > threshold || v > flick) {
-      goTo(idx - 1);
+      prev();
       return;
     }
 
     setAnimating(true);
     setOffsetY(0);
-    window.setTimeout(() => setAnimating(false), 260);
-  }, [active, animating, cards.length, closeDeck, goTo, idx, offsetY]);
+    window.setTimeout(() => setAnimating(false), 220);
+  }, [active, animating, next, prev, offsetY]);
 
   const onPointerDown = useCallback(
     (e: React.PointerEvent) => {
       if (!active || animating) return;
+      if (!isMobile) return; // swipe only on mobile
+      if (isInteractiveTarget(e.target)) return;
 
       draggingRef.current = true;
       startYRef.current = e.clientY;
@@ -173,12 +195,13 @@ export default function MissionDeck({
 
       (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
     },
-    [active, animating]
+    [active, animating, isMobile]
   );
 
   const onPointerMove = useCallback(
     (e: React.PointerEvent) => {
       if (!active) return;
+      if (!isMobile) return;
       if (!draggingRef.current) return;
 
       const now = performance.now();
@@ -192,54 +215,35 @@ export default function MissionDeck({
       lastTRef.current = now;
 
       const h = Math.max(520, vhRef.current);
-      const clamped = clamp(dy, -h * 0.42, h * 0.32);
+      const clamped = clamp(dy, -h * 0.36, h * 0.28);
       setOffsetY(clamped);
     },
-    [active]
+    [active, isMobile]
   );
 
   const onPointerUp = useCallback(() => {
     if (!active) return;
+    if (!isMobile) return;
     if (!draggingRef.current) return;
+
     draggingRef.current = false;
     commitDrag();
-  }, [active, commitDrag]);
+  }, [active, isMobile, commitDrag]);
 
-  const onWheel = useCallback(
-    (e: React.WheelEvent) => {
-      if (!active || animating) return;
-
-      e.preventDefault();
-
-      wheelAccRef.current += e.deltaY;
-      const h = Math.max(520, vhRef.current);
-      const wheelThreshold = h * 0.12;
-
-      if (wheelAccRef.current > wheelThreshold) {
-        wheelAccRef.current = 0;
-        goTo(idx + 1);
-      } else if (wheelAccRef.current < -wheelThreshold) {
-        wheelAccRef.current = 0;
-        goTo(idx - 1);
-      }
-    },
-    [active, animating, goTo, idx]
-  );
-
+  // Keyboard (optional but simple + reliable)
   useEffect(() => {
     if (!active) return;
 
     const onKey = (e: KeyboardEvent) => {
       if (animating) return;
 
-      if (e.key === "ArrowDown" || e.key === "PageDown" || e.key === " ") {
+      if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " ") {
         e.preventDefault();
-        if (idx === cards.length - 1) closeDeck();
-        else goTo(idx + 1);
+        next();
       }
-      if (e.key === "ArrowUp" || e.key === "PageUp") {
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
         e.preventDefault();
-        goTo(idx - 1);
+        prev();
       }
       if (e.key === "Escape") {
         e.preventDefault();
@@ -249,40 +253,21 @@ export default function MissionDeck({
 
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [active, animating, cards.length, closeDeck, goTo, idx]);
+  }, [active, animating, closeDeck, next, prev]);
 
-  const softenDiv = Math.max(6, viewportH / 100);
-
-  useLayoutEffect(() => {
-    const els = cardElsRef.current;
-
-    for (let i = 0; i < cards.length; i++) {
-      const el = els[i];
-      if (!el) continue;
-
-      const rel = i - idx;
-      const base = rel * 92;
-      const y = base + (i === idx ? offsetY / softenDiv : 0);
-
-      const opacity = rel === 0 ? 1 : rel === 1 || rel === -1 ? 0.6 : 0;
-      const scale = rel === 0 ? 1 : 0.985;
-
-      el.style.transform = `translate3d(-50%, calc(-50% + ${y}vh), 0) scale(${scale})`;
-      el.style.opacity = String(opacity);
-    }
-  }, [cards, idx, offsetY, softenDiv]);
+  // Layout math for card positions (kept simple)
+  const softenDiv = 10; // stable
 
   return (
     <section
       id="deck"
       className={`${styles.deck} ${active ? styles.deckActive : ""}`}
       aria-label="Mission Deck"
-      onWheel={onWheel}
+      data-active={active ? "1" : "0"}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerUp}
-      data-active={active ? "1" : "0"}
     >
       <div key={deckKey}>
         <video
@@ -302,35 +287,81 @@ export default function MissionDeck({
         <div className={styles.deckShade} aria-hidden="true" />
 
         <div className={styles.deckCards} aria-live="polite">
-          {cards.map((c, i) => (
-            <article
-              ref={(el) => {
-                cardElsRef.current[i] = el;
-              }}
-              key={c.title}
-              className={`${styles.deckCard} ${i === idx ? styles.deckCardCurrent : ""}`}
-            >
-              <div className={styles.deckKickerRow}>
-                <span className={styles.deckKicker}>{c.kicker}</span>
-                <span className={styles.deckRule} />
-              </div>
+          {cards.map((c, i) => {
+            const rel = i - idx;
+            const base = rel * 92;
+            const y = base + (i === idx ? offsetY / softenDiv : 0);
 
-              <h2 className={styles.deckTitle}>{c.title}</h2>
+            const opacity = rel === 0 ? 1 : rel === 1 || rel === -1 ? 0.6 : 0;
+            const scale = rel === 0 ? 1 : 0.985;
 
-              <div className={styles.deckLines}>
-                {c.lines.map((line) => (
-                  <p key={line} className={styles.deckLine}>
-                    {line}
-                  </p>
-                ))}
-              </div>
+            return (
+              <article
+                key={c.title}
+                className={`${styles.deckCard} ${i === idx ? styles.deckCardCurrent : ""}`}
+                style={{
+                  transform: `translate3d(-50%, calc(-50% + ${y}vh), 0) scale(${scale})`,
+                  opacity,
+                }}
+              >
+                <div className={styles.deckKickerRow}>
+                  <span className={styles.deckKicker}>{c.kicker}</span>
+                  <span className={styles.deckRule} />
+                </div>
 
-              <div className={styles.deckHint}>
-                {i < cards.length - 1 ? "Swipe / scroll ↓" : "One more ↓ to exit"}
-              </div>
-            </article>
-          ))}
+                <h2 className={styles.deckTitle}>{c.title}</h2>
+
+                <div className={styles.deckLines}>
+                  {c.lines.map((line) => (
+                    <p key={line} className={styles.deckLine}>
+                      {line}
+                    </p>
+                  ))}
+                </div>
+
+                <div className={styles.deckHint}>
+                  {!isMobile ? "Use arrows →" : i < cards.length - 1 ? "Swipe ↑ / ↓" : "Swipe up once more to exit"}
+                </div>
+              </article>
+            );
+          })}
         </div>
+
+        {/* Desktop arrows */}
+        {!isMobile && (
+          <>
+            <button
+              type="button"
+              className={`${styles.deckNavArrow} ${styles.deckNavLeft}`}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                prev();
+              }}
+              aria-label="Previous card"
+              disabled={idx === 0}
+            >
+              <span className={styles.deckNavIcon} aria-hidden="true">
+                ‹
+              </span>
+            </button>
+
+            <button
+              type="button"
+              className={`${styles.deckNavArrow} ${styles.deckNavRight}`}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                next();
+              }}
+              aria-label={idx === cards.length - 1 ? "Close deck" : "Next card"}
+            >
+              <span className={styles.deckNavIcon} aria-hidden="true">
+                ›
+              </span>
+            </button>
+          </>
+        )}
 
         <button
           type="button"

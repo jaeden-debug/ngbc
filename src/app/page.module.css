@@ -575,3 +575,58 @@
   }
   .cta{ opacity:1; transform:none; }
 }
+/* === Deck navigation arrows (desktop) === */
+.deckNavArrow{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 60;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+
+  border: 1px solid rgba(201,194,166,.22);
+  background: rgba(0,0,0,.22);
+  color: rgba(201,194,166,.88);
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+
+  transition: transform .15s ease, background .15s ease, color .15s ease, opacity .15s ease;
+  user-select: none;
+}
+
+.deckNavArrow:hover{
+  transform: translateY(-50%) scale(1.03);
+  background: rgba(0,0,0,.28);
+  color: rgba(255,255,255,.92);
+}
+
+.deckNavArrow:active{
+  transform: translateY(-50%) scale(.99);
+}
+
+.deckNavArrow:disabled{
+  opacity: .35;
+  cursor: default;
+  transform: translateY(-50%);
+}
+
+.deckNavLeft{ left: 14px; }
+.deckNavRight{ right: 14px; }
+
+.deckNavIcon{
+  font-size: 28px;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+/* Hide arrows on mobile-ish screens (swipe instead) */
+@media (max-width: 820px){
+  .deckNavArrow{ display:none; }
+}
