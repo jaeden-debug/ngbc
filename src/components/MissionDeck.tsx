@@ -304,9 +304,15 @@ export default function MissionDeck() {
         poster="/hero.png"
         webkit-playsinline="true"
       >
-        {/* Deck BG videos */}
-        <source src="/ngbcmobilebg.mp4" type="video/mp4" media="(max-width: 520px)" />
-        <source src="/ngbcbg.mp4" type="video/mp4" />
+        <source
+          src={process.env.NEXT_PUBLIC_DECK_BG_MOBILE}
+          type="video/mp4"
+          media="(max-width: 520px)"
+        />
+        <source
+          src={process.env.NEXT_PUBLIC_DECK_BG_DESKTOP}
+          type="video/mp4"
+        />
       </video>
 
       <div className={styles.deckShade} aria-hidden="true" />

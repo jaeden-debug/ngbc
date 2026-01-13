@@ -72,8 +72,15 @@ export default function Hero() {
         poster="/hero.png"
         webkit-playsinline="true"
       >
-        <source src="/NgbcmobileHero.mp4" type="video/mp4" media="(max-width: 520px)" />
-        <source src="/ngbcHero.mp4" type="video/mp4" />
+        <source
+          src={process.env.NEXT_PUBLIC_HERO_MOBILE}
+          type="video/mp4"
+          media="(max-width: 520px)"
+        />
+        <source
+          src={process.env.NEXT_PUBLIC_HERO_DESKTOP}
+          type="video/mp4"
+        />
       </video>
 
       <div className={styles.heroShade} />
@@ -81,7 +88,9 @@ export default function Hero() {
 
       <div className={styles.heroInner}>
         <div className={styles.heroCtaStack}>
-          <p className={styles.heroTagline}>Learning the land, one trip at a time.</p>
+          <p className={styles.heroTagline}>
+            Learning the land, one trip at a time.
+          </p>
           <EnterButton />
         </div>
       </div>
