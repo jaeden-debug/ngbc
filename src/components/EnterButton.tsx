@@ -4,8 +4,13 @@ import styles from "../app/page.module.css";
 
 export default function EnterButton() {
   const onClick = () => {
-    // MissionDeck owns opening/closing + html[data-deck] now.
-    window.dispatchEvent(new Event("ngbc:enterDeck"));
+    // Set the overlay state immediately (so you see an instant response)
+    document.documentElement.dataset.deck = "1";
+
+    // Dispatch on next frame so MissionDeck's listener is definitely attached
+    requestAnimationFrame(() => {
+      window.dispatchEvent(new Event("ngbc:enterDeck"));
+    });
   };
 
   return (
