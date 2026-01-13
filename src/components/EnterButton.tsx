@@ -2,19 +2,24 @@
 
 import styles from "../app/page.module.css";
 
-export default function EnterButton() {
-  const onClick = () => {
-    // Set the overlay state immediately (so you see an instant response)
-    document.documentElement.dataset.deck = "1";
-
-    // Dispatch on next frame so MissionDeck's listener is definitely attached
-    requestAnimationFrame(() => {
-      window.dispatchEvent(new Event("ngbc:enterDeck"));
-    });
-  };
-
+export default function EnterButton({ onEnter }: { onEnter: () => void }) {
   return (
-    <button id="enter-btn" type="button" className={styles.cta} onClick={onClick}>
+    <button
+      id="enter-btn"
+      type="button"
+      className={styles.cta}
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        onEnter();
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onEnter();
+        }
+      }}
+    >
       <span className={styles.ctaText}>Enter the North</span>
 
       <span className={`${styles.corner} ${styles.tl}`} />

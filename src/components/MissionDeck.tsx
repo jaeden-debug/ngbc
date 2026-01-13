@@ -15,7 +15,15 @@ function clamp(n: number, a: number, b: number) {
   return Math.max(a, Math.min(b, n));
 }
 
-export default function MissionDeck() {
+export default function MissionDeck({
+  open,
+  deckKey,
+  onClose,
+}: {
+  open: boolean;
+  deckKey: number;
+  onClose: () => void;
+}) {
   const cards: Card[] = useMemo(
     () => [
       {
@@ -43,27 +51,21 @@ export default function MissionDeck() {
     []
   );
 
+  const active = open;
+
+  useLockBodyScroll(active);
+
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const cardElsRef = useRef<(HTMLElement | null)[]>([]);
 
   const vhRef = useRef(800);
   const [viewportH, setViewportH] = useState(800);
 
-  const [active, setActive] = useState(false);
   const [idx, setIdx] = useState(0);
   const [offsetY, setOffsetY] = useState(0);
   const [animating, setAnimating] = useState(false);
 
   const closingRef = useRef(false);
-
-  // Lock body scroll only while deck is active
-  useLockBodyScroll(active);
-
-  // Own the overlay flag here (single source of truth)
-  useEffect(() => {
-    if (active) document.documentElement.dataset.deck = "1";
-    else delete document.documentElement.dataset.deck;
-  }, [active]);
 
   useEffect(() => {
     const apply = () => {
@@ -83,6 +85,18 @@ export default function MissionDeck() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!active) return;
+    requestAnimationFrame(() => {
+      const v = videoRef.current;
+      if (!v) return;
+      const p = v.play();
+      if (p && typeof (p as Promise<void>).catch === "function") {
+        (p as Promise<void>).catch(() => {});
+      }
+    });
+  }, [active]);
+
   const draggingRef = useRef(false);
   const startYRef = useRef(0);
   const lastYRef = useRef(0);
@@ -94,24 +108,15 @@ export default function MissionDeck() {
     if (closingRef.current) return;
     closingRef.current = true;
 
-    // End any gesture cleanly
     draggingRef.current = false;
     wheelAccRef.current = 0;
 
-    // Start fade-out (CSS driven via `active`)
-    setActive(false);
+    onClose();
 
-    // Reset card state right away so the next open is clean
-    setIdx(0);
-    setOffsetY(0);
-    setAnimating(false);
-
-    // After the CSS transition finishes, release the lock + restore focus
     window.setTimeout(() => {
       closingRef.current = false;
-      document.getElementById("enter-btn")?.focus();
     }, 520);
-  }, []);
+  }, [onClose]);
 
   const goTo = useCallback(
     (next: number) => {
@@ -246,32 +251,6 @@ export default function MissionDeck() {
     return () => window.removeEventListener("keydown", onKey);
   }, [active, animating, cards.length, closeDeck, goTo, idx]);
 
-  useEffect(() => {
-    const onEnter = () => {
-      if (closingRef.current) return;
-
-      setIdx(0);
-      setOffsetY(0);
-      wheelAccRef.current = 0;
-      velRef.current = 0;
-
-      setActive(true);
-      setAnimating(false);
-
-      requestAnimationFrame(() => {
-        const v = videoRef.current;
-        if (!v) return;
-        const p = v.play();
-        if (p && typeof (p as Promise<void>).catch === "function") {
-          (p as Promise<void>).catch(() => {});
-        }
-      });
-    };
-
-    window.addEventListener("ngbc:enterDeck", onEnter as EventListener);
-    return () => window.removeEventListener("ngbc:enterDeck", onEnter as EventListener);
-  }, []);
-
   const softenDiv = Math.max(6, viewportH / 100);
 
   useLayoutEffect(() => {
@@ -285,16 +264,11 @@ export default function MissionDeck() {
       const base = rel * 92;
       const y = base + (i === idx ? offsetY / softenDiv : 0);
 
-      const isCurrent = i === idx;
-      const reveal = isCurrent ? clamp(Math.abs(offsetY) / 240, 0, 1) : 0;
-
       const opacity = rel === 0 ? 1 : rel === 1 || rel === -1 ? 0.6 : 0;
       const scale = rel === 0 ? 1 : 0.985;
 
       el.style.transform = `translate3d(-50%, calc(-50% + ${y}vh), 0) scale(${scale})`;
       el.style.opacity = String(opacity);
-      el.style.removeProperty("filter"); // IMPORTANT: no blur on the whole card (keeps text sharp)
-      el.style.setProperty("--reveal", String(reveal));
     }
   }, [cards, idx, offsetY, softenDiv]);
 
@@ -310,67 +284,67 @@ export default function MissionDeck() {
       onPointerCancel={onPointerUp}
       data-active={active ? "1" : "0"}
     >
-      <video
-        ref={videoRef}
-        className={styles.deckVideo}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster="/hero.png"
-        webkit-playsinline="true"
-      >
-        <source src={process.env.NEXT_PUBLIC_DECK_BG_MOBILE} type="video/mp4" media="(max-width: 520px)" />
-        <source src={process.env.NEXT_PUBLIC_DECK_BG_DESKTOP} type="video/mp4" />
-      </video>
+      <div key={deckKey}>
+        <video
+          ref={videoRef}
+          className={styles.deckVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/hero.png"
+        >
+          <source src="/ngbcmobilebg.mp4" type="video/mp4" media="(max-width: 520px)" />
+          <source src="/ngbcbg.mp4" type="video/mp4" />
+        </video>
 
-      <div className={styles.deckShade} aria-hidden="true" />
+        <div className={styles.deckShade} aria-hidden="true" />
 
-      <div className={styles.deckCards} aria-live="polite">
-        {cards.map((c, i) => (
-          <article
-            ref={(el) => {
-              cardElsRef.current[i] = el;
-            }}
-            key={c.title}
-            className={`${styles.deckCard} ${i === idx ? styles.deckCardCurrent : ""}`}
-            data-rel={i - idx}
-            data-current={i === idx ? "1" : "0"}
-            data-anim={animating ? "1" : "0"}
-          >
-            <div className={styles.deckKickerRow}>
-              <span className={styles.deckKicker}>{c.kicker}</span>
-              <span className={styles.deckRule} />
-            </div>
+        <div className={styles.deckCards} aria-live="polite">
+          {cards.map((c, i) => (
+            <article
+              ref={(el) => {
+                cardElsRef.current[i] = el;
+              }}
+              key={c.title}
+              className={`${styles.deckCard} ${i === idx ? styles.deckCardCurrent : ""}`}
+            >
+              <div className={styles.deckKickerRow}>
+                <span className={styles.deckKicker}>{c.kicker}</span>
+                <span className={styles.deckRule} />
+              </div>
 
-            <h2 className={styles.deckTitle}>{c.title}</h2>
+              <h2 className={styles.deckTitle}>{c.title}</h2>
 
-            <div className={styles.deckLines}>
-              {c.lines.map((line) => (
-                <p key={line} className={styles.deckLine}>
-                  {line}
-                </p>
-              ))}
-            </div>
+              <div className={styles.deckLines}>
+                {c.lines.map((line) => (
+                  <p key={line} className={styles.deckLine}>
+                    {line}
+                  </p>
+                ))}
+              </div>
 
-            <div className={styles.deckHint}>{i < cards.length - 1 ? "Swipe / scroll ↓" : "One more ↓ to exit"}</div>
-          </article>
-        ))}
+              <div className={styles.deckHint}>
+                {i < cards.length - 1 ? "Swipe / scroll ↓" : "One more ↓ to exit"}
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          className={styles.deckExit}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            closeDeck();
+          }}
+          aria-label="Exit deck"
+        >
+          Exit
+        </button>
       </div>
-
-      <button
-        type="button"
-        className={styles.deckExit}
-        onClick={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          closeDeck();
-        }}
-        aria-label="Exit deck"
-      >
-        Exit
-      </button>
     </section>
   );
 }

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import styles from "../app/page.module.css";
 import EnterButton from "./EnterButton";
 
-export default function Hero() {
+export default function Hero({ onEnter }: { onEnter: () => void }) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const rafRef = useRef<number | null>(null);
 
@@ -70,17 +70,9 @@ export default function Hero() {
         playsInline
         preload="metadata"
         poster="/hero.png"
-        webkit-playsinline="true"
       >
-        <source
-          src={process.env.NEXT_PUBLIC_HERO_MOBILE}
-          type="video/mp4"
-          media="(max-width: 520px)"
-        />
-        <source
-          src={process.env.NEXT_PUBLIC_HERO_DESKTOP}
-          type="video/mp4"
-        />
+        <source src="/NgbcmobileHero.mp4" type="video/mp4" media="(max-width: 520px)" />
+        <source src="/ngbcHero.mp4" type="video/mp4" />
       </video>
 
       <div className={styles.heroShade} />
@@ -88,10 +80,8 @@ export default function Hero() {
 
       <div className={styles.heroInner}>
         <div className={styles.heroCtaStack}>
-          <p className={styles.heroTagline}>
-            Learning the land, one trip at a time.
-          </p>
-          <EnterButton />
+          <p className={styles.heroTagline}>Learning the land, one trip at a time.</p>
+          <EnterButton onEnter={onEnter} />
         </div>
       </div>
 
