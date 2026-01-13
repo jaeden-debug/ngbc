@@ -1,44 +1,53 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import styles from "../app/page.module.css";
 import EnterButton from "./EnterButton";
 
 export default function Hero() {
-  const ref = useRef<HTMLElement | null>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
   const rafRef = useRef<number | null>(null);
 
-  const [videoReady, setVideoReady] = useState(false);
-  const [videoFailed, setVideoFailed] = useState(false);
-
   useEffect(() => {
-    const el = ref.current;
+    const el = sectionRef.current;
     if (!el) return;
 
     const canHover = window.matchMedia("(hover: hover) and (pointer: fine)");
     if (!canHover.matches) return;
 
+    el.style.setProperty("--cx", "50%");
+    el.style.setProperty("--cy", "42%");
+    el.style.setProperty("--px", "0px");
+    el.style.setProperty("--py", "0px");
+
     const onMove = (e: PointerEvent) => {
-      if (!ref.current) return;
+      if (!sectionRef.current) return;
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
 
       rafRef.current = requestAnimationFrame(() => {
-        const r = ref.current!.getBoundingClientRect();
-        const x = ((e.clientX - r.left) / r.width) * 100;
-        const y = ((e.clientY - r.top) / r.height) * 100;
+        const r = sectionRef.current!.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width;
+        const y = (e.clientY - r.top) / r.height;
 
-        const cx = Math.max(10, Math.min(90, x));
-        const cy = Math.max(10, Math.min(90, y));
+        const cx = Math.max(0.08, Math.min(0.92, x)) * 100;
+        const cy = Math.max(0.08, Math.min(0.92, y)) * 100;
 
-        ref.current!.style.setProperty("--cx", `${cx}%`);
-        ref.current!.style.setProperty("--cy", `${cy}%`);
+        const dx = (x - 0.5) * -14;
+        const dy = (y - 0.5) * -10;
+
+        sectionRef.current!.style.setProperty("--cx", `${cx.toFixed(2)}%`);
+        sectionRef.current!.style.setProperty("--cy", `${cy.toFixed(2)}%`);
+        sectionRef.current!.style.setProperty("--px", `${dx.toFixed(2)}px`);
+        sectionRef.current!.style.setProperty("--py", `${dy.toFixed(2)}px`);
       });
     };
 
     const onLeave = () => {
-      if (!ref.current) return;
-      ref.current.style.setProperty("--cx", "50%");
-      ref.current.style.setProperty("--cy", "42%");
+      if (!sectionRef.current) return;
+      sectionRef.current.style.setProperty("--cx", "50%");
+      sectionRef.current.style.setProperty("--cy", "42%");
+      sectionRef.current.style.setProperty("--px", "0px");
+      sectionRef.current.style.setProperty("--py", "0px");
     };
 
     el.addEventListener("pointermove", onMove);
@@ -52,34 +61,20 @@ export default function Hero() {
   }, []);
 
   return (
-    <section
-      ref={ref}
-      className={styles.hero}
-      aria-label="Hero"
-      data-video-ready={videoReady ? "1" : "0"}
-      data-video-failed={videoFailed ? "1" : "0"}
-    >
-      {/* VIDEO LAYER (ngbc.mp4) */}
-      {!videoFailed && (
-        <video
-          className={styles.heroVideo}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="/hero.png"
-          onCanPlay={() => setVideoReady(true)}
-          onPlaying={() => setVideoReady(true)}
-          onLoadedData={() => setVideoReady(true)}
-          onError={() => setVideoFailed(true)}
-        >
-          <source src="/ngbc.mp4" type="video/mp4" />
-        </video>
-      )}
-
-      {/* PNG FALLBACK (hero.png) */}
-      <div className={styles.heroImgFallback} aria-hidden="true" />
+    <section ref={sectionRef} className={styles.hero} aria-label="Hero">
+      <video
+        className={styles.heroVideo}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster="/hero.png"
+        webkit-playsinline="true"
+      >
+        <source src="/NgbcmobileHero.mp4" type="video/mp4" media="(max-width: 520px)" />
+        <source src="/ngbcHero.mp4" type="video/mp4" />
+      </video>
 
       <div className={styles.heroShade} />
       <div className={styles.cursorFx} />

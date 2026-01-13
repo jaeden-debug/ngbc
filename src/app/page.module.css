@@ -4,18 +4,16 @@
 
 /* HERO */
 .hero{
-  position:relative;
-  overflow:hidden;
-  isolation:isolate;
-
-  /* Mobile-safe viewport */
-  min-height: 100svh;
-  min-height: 100vh; /* fallback */
-  animation: heroIn .9s ease-out both;
-
-  /* Default cursor hotspot for subtle lighting */
   --cx: 50%;
   --cy: 42%;
+  --px: 0px;
+  --py: 0px;
+
+  position:relative;
+  min-height: 100svh;
+  min-height: 100vh;
+  overflow:hidden;
+  animation: heroIn .9s ease-out both;
 }
 
 @keyframes heroIn{
@@ -23,68 +21,29 @@
   to{ opacity:1; filter: saturate(1) contrast(1); }
 }
 
-/* VIDEO LAYER */
 .heroVideo{
   position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
+  inset:-2%;
+  width:104%;
+  height:104%;
+  object-fit: cover;
+  object-position: center;
 
-  transform: scale(1.03);
-  filter: brightness(1.08) contrast(1.06) saturate(1.06);
-  opacity:0;
-  animation: bgIn 1.0s ease-out .08s both;
-  pointer-events:none;
+  transform: translate3d(var(--px), var(--py), 0) scale(1.07);
+  transition: transform .22s ease-out;
+
+  filter: brightness(1.06) contrast(1.06) saturate(1.05);
+  will-change: transform, filter;
 }
 
-/* FALLBACK IMAGE (only visible until video is ready OR if video fails) */
-.heroImgFallback{
-  position:absolute;
-  inset:0;
-  background-image: url("/hero.png");
-  background-size: cover;
-  background-position: center;
-  transform: scale(1.03);
-  filter: brightness(1.12) contrast(1.06) saturate(1.06);
-  opacity:0;
-  animation: bgIn 1.0s ease-out .08s both;
-  pointer-events:none;
-}
-
-@keyframes bgIn{
-  from{ opacity:0; transform: scale(1.06); }
-  to{ opacity:1; transform: scale(1.03); }
-}
-
-/* When video is ready, fade out PNG fallback cleanly */
-.hero[data-video-ready="1"] .heroImgFallback{
-  opacity:0 !important;
-  animation:none !important;
-  transition: opacity .35s ease;
-}
-
-/* If video fails, keep fallback fully visible */
-.hero[data-video-failed="1"] .heroImgFallback{
-  opacity:1 !important;
-}
-
-/* If video is ready, make sure video is visible */
-.hero[data-video-ready="1"] .heroVideo{
-  opacity:1;
-  transition: opacity .35s ease;
-}
-
-/* Shading + cinematic legibility */
 .heroShade{
   position:absolute;
   inset:0;
   opacity:0;
   background:
-    radial-gradient(900px 650px at var(--cx) var(--cy), rgba(201,194,166,.10), transparent 62%),
-    radial-gradient(1200px 900px at 50% 45%, rgba(0,0,0,.22), rgba(0,0,0,.62)),
-    linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,.56));
+    radial-gradient(820px 560px at var(--cx) var(--cy), rgba(201,194,166,.12), transparent 66%),
+    radial-gradient(1200px 900px at 50% 45%, rgba(0,0,0,.22), rgba(0,0,0,.56)),
+    linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,.50));
   animation: shadeIn .95s ease-out .25s both;
   pointer-events:none;
 }
@@ -94,13 +53,12 @@
   to{ opacity:1 }
 }
 
-/* subtle texture layer */
 .cursorFx{
   position:absolute;
   inset:0;
   pointer-events:none;
   opacity:0;
-  animation: fxIn .8s ease-out 1.1s both;
+  animation: fxIn .8s ease-out 1.05s both;
   mix-blend-mode: soft-light;
 }
 
@@ -128,54 +86,42 @@
   display:grid;
   place-items:end center;
   justify-items:center;
-  padding: 0 18px calc(56px + env(safe-area-inset-bottom));
+  padding: 0 18px 56px;
 }
 
-/* CTA stack wrapper */
 .heroCtaStack{
-  width: 100%;
-  max-width: 720px;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   gap: 12px;
   text-align:center;
+  max-width: 680px;
+  width: 100%;
 }
 
-/* Single, clean tagline definition (no duplicates) */
 .heroTagline{
   margin: 0;
   padding: 0 10px;
-
-  font-family: inherit;
+  color: rgba(201,194,166,.72);
+  font-size: clamp(12px, 2.0vw, 16px);
+  line-height: 1.25;
+  letter-spacing: .14em;
   font-weight: 850;
   text-transform: uppercase;
-  letter-spacing: .14em;
-
-  color: rgba(201,194,166,.78);
-
-  font-size: 11px;
-  line-height: 1.2;
 
   opacity: 0;
   transform: translateY(6px);
   filter: blur(2px);
   animation: taglineIn .55s ease-out .78s both;
-
   text-shadow: 0 10px 30px rgba(0,0,0,.55);
 }
 
 @keyframes taglineIn{
-  0%{
-    opacity: 0;
-    transform: translateY(6px);
-    filter: blur(2px);
-  }
-  100%{
+  to{
     opacity: 1;
-    transform: translateY(0px);
-    filter: blur(0px);
+    transform: translateY(0);
+    filter: blur(0);
   }
 }
 
@@ -230,7 +176,6 @@
 
 .ctaText{position:relative; z-index:3}
 
-/* 4 corner marks */
 .corner{
   position:absolute;
   width:14px;
@@ -252,7 +197,6 @@
   border-color: rgba(201,194,166,.92);
 }
 
-/* trace system */
 .trace{
   position:absolute;
   z-index:2;
@@ -262,72 +206,24 @@
   filter: drop-shadow(0 0 10px rgba(201,194,166,.14));
 }
 
-.traceTop{
-  left:24px;
-  top:10px;
-  height:2px;
-  width:0;
-  background: linear-gradient(to right, rgba(201,194,166,.0), rgba(201,194,166,.92));
-}
-.traceRight{
-  right:10px;
-  top:24px;
-  width:2px;
-  height:0;
-  background: linear-gradient(to bottom, rgba(201,194,166,.0), rgba(201,194,166,.92));
-}
-.traceBottom{
-  right:24px;
-  bottom:10px;
-  height:2px;
-  width:0;
-  background: linear-gradient(to left, rgba(201,194,166,.0), rgba(201,194,166,.92));
-}
-.traceLeft{
-  left:10px;
-  bottom:24px;
-  width:2px;
-  height:0;
-  background: linear-gradient(to top, rgba(201,194,166,.0), rgba(201,194,166,.92));
-}
+.traceTop{ left:24px; top:10px; height:2px; width:0; background: linear-gradient(to right, rgba(201,194,166,.0), rgba(201,194,166,.92)); }
+.traceRight{ right:10px; top:24px; width:2px; height:0; background: linear-gradient(to bottom, rgba(201,194,166,.0), rgba(201,194,166,.92)); }
+.traceBottom{ right:24px; bottom:10px; height:2px; width:0; background: linear-gradient(to left, rgba(201,194,166,.0), rgba(201,194,166,.92)); }
+.traceLeft{ left:10px; bottom:24px; width:2px; height:0; background: linear-gradient(to top, rgba(201,194,166,.0), rgba(201,194,166,.92)); }
 
-@keyframes topTrace{
-  0%{opacity:0; width:0}
-  10%{opacity:1}
-  100%{opacity:1; width: calc(100% - 48px)}
-}
-@keyframes rightTrace{
-  0%{opacity:0; height:0}
-  10%{opacity:1}
-  100%{opacity:1; height: calc(100% - 48px)}
-}
-@keyframes bottomTrace{
-  0%{opacity:0; width:0}
-  10%{opacity:1}
-  100%{opacity:1; width: calc(100% - 48px)}
-}
-@keyframes leftTrace{
-  0%{opacity:0; height:0}
-  10%{opacity:1}
-  100%{opacity:1; height: calc(100% - 48px)}
-}
+@keyframes topTrace{ 0%{opacity:0; width:0} 10%{opacity:1} 100%{opacity:1; width: calc(100% - 48px)} }
+@keyframes rightTrace{ 0%{opacity:0; height:0} 10%{opacity:1} 100%{opacity:1; height: calc(100% - 48px)} }
+@keyframes bottomTrace{ 0%{opacity:0; width:0} 10%{opacity:1} 100%{opacity:1; width: calc(100% - 48px)} }
+@keyframes leftTrace{ 0%{opacity:0; height:0} 10%{opacity:1} 100%{opacity:1; height: calc(100% - 48px)} }
 
 .cta:hover .traceTop,
-.cta:focus-visible .traceTop{
-  animation: topTrace .26s ease-out 0s 1 both;
-}
+.cta:focus-visible .traceTop{ animation: topTrace .26s ease-out 0s 1 both; }
 .cta:hover .traceRight,
-.cta:focus-visible .traceRight{
-  animation: rightTrace .26s ease-out .14s 1 both;
-}
+.cta:focus-visible .traceRight{ animation: rightTrace .26s ease-out .14s 1 both; }
 .cta:hover .traceBottom,
-.cta:focus-visible .traceBottom{
-  animation: bottomTrace .26s ease-out .28s 1 both;
-}
+.cta:focus-visible .traceBottom{ animation: bottomTrace .26s ease-out .28s 1 both; }
 .cta:hover .traceLeft,
-.cta:focus-visible .traceLeft{
-  animation: leftTrace .26s ease-out .42s 1 both;
-}
+.cta:focus-visible .traceLeft{ animation: leftTrace .26s ease-out .42s 1 both; }
 
 .cta::after{
   content:"";
@@ -367,12 +263,9 @@
   transform: translateX(-50%);
   opacity:0;
   animation: fadeIn 1.3s ease 1.7s forwards;
-  pointer-events:none;
 }
 
-@keyframes fadeIn{
-  to{opacity:.55}
-}
+@keyframes fadeIn{ to{opacity:.55} }
 
 .scrollLine{
   display:block;
@@ -388,29 +281,228 @@
   100%{transform: translateY(6px); opacity:.35}
 }
 
-/* Mobile hero tuning */
+/* === PINNED MISSION DECK === */
+.deck{
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: #060606;
+}
+
+.deckActive{
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  animation: heroIn .55s ease-out both;
+}
+
+.deckVideo{
+  position:absolute;
+  inset:-2%;
+  width:104%;
+  height:104%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.03);
+  filter: brightness(1.04) contrast(1.06) saturate(1.05);
+}
+
+.deckShade{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity: 0;
+  background:
+    radial-gradient(900px 650px at 50% 42%, rgba(201,194,166,.10), transparent 62%),
+    radial-gradient(1200px 900px at 50% 45%, rgba(0,0,0,.22), rgba(0,0,0,.62)),
+    linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,.54));
+  animation: shadeIn .65s ease-out .10s both;
+}
+
+.deckCards{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+
+.deckCard{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width: min(720px, calc(100vw - 32px));
+  border-radius: 22px;
+  border: 1px solid rgba(201,194,166,.18);
+  background: rgba(0,0,0,.22);
+  -webkit-backdrop-filter: blur(calc(12px - (var(--reveal, 0) * 5px)));
+  backdrop-filter: blur(calc(12px - (var(--reveal, 0) * 5px)));
+  box-shadow: 0 24px 80px rgba(0,0,0,.55);
+
+  padding: 18px 18px 16px;
+
+  transition: transform .34s cubic-bezier(.2,.9,.2,1), opacity .34s ease, filter .34s ease;
+  will-change: transform, opacity, filter;
+
+  opacity: 0;
+  transform: translate3d(-50%, calc(-50% + 12vh), 0);
+  animation: cardIn .55s ease-out .14s both;
+}
+
+@keyframes cardIn{
+  to{ opacity: 1; transform: translate3d(-50%, -50%, 0); }
+}
+
+.deckCardCurrent{
+  border-color: rgba(201,194,166,.26);
+  background: rgba(0,0,0,.18);
+}
+
+.deckKickerRow{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.deckKicker{
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(201,194,166,.72);
+  font-weight: 850;
+}
+
+.deckRule{
+  height:1px;
+  flex:1;
+  background: rgba(201,194,166,.14);
+}
+
+.deckTitle{
+  margin: 0 0 10px;
+  font-size: clamp(22px, 4.3vw, 34px);
+  line-height: 1.05;
+  color: rgba(255,255,255,.94);
+  letter-spacing: .02em;
+}
+
+.deckLines{
+  display:flex;
+  flex-direction:column;
+  gap: 8px;
+}
+
+.deckLine{
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(201,194,166,.88);
+}
+
+.deckHint{
+  margin-top: 14px;
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(201,194,166,.62);
+}
+
+.deckExit{
+  position:absolute;
+  right: 14px;
+  top: 14px;
+  z-index: 2;
+
+  border: 1px solid rgba(201,194,166,.22);
+  background: rgba(0,0,0,.22);
+  color: rgba(201,194,166,.85);
+  padding: 10px 12px;
+  border-radius: 14px;
+  cursor:pointer;
+
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* FOOTER */
+.footer{
+  padding: 72px 18px;
+  background: #060606;
+  border-top: 1px solid rgba(201,194,166,.10);
+}
+
+.wrap{ max-width: 980px; margin: 0 auto; }
+
+.topRow{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.label{
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(201,194,166,.68);
+  font-weight: 850;
+}
+
+.rule{
+  height:1px;
+  flex:1;
+  background: rgba(201,194,166,.16);
+}
+
+.h2{
+  margin: 0 0 12px;
+  font-size: clamp(22px, 4vw, 34px);
+  line-height: 1.1;
+  color: rgba(255,255,255,.94);
+}
+
+.p{
+  margin: 0 0 16px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(201,194,166,.86);
+}
+
+.footerMeta{
+  margin-top: 18px;
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items:center;
+  color: rgba(201,194,166,.70);
+  font-size: 13px;
+}
+
+.dot{ opacity:.5; }
+
+.footerLink{
+  text-decoration:none;
+  color: rgba(201,194,166,.86);
+}
+
+.footerLink:hover{
+  color: rgba(255,255,255,.92);
+}
+
+/* Mobile tuning */
 @media (max-width: 520px){
-  .hero{
-    min-height: 106svh;
+  .heroInner{
+    padding: 0 16px calc(72px + env(safe-area-inset-bottom));
   }
 
   .heroVideo{
-    object-position: center 32%;
-    transform: scale(1.07);
-  }
-
-  .heroImgFallback{
-    background-position: center 32%;
-    transform: scale(1.07);
-  }
-
-  .heroInner{
-    padding: 0 16px calc(78px + env(safe-area-inset-bottom));
+    transform: scale(1.02);
+    transition: none;
   }
 
   .heroTagline{
     font-size: 11px;
-    letter-spacing: .14em;
+    letter-spacing: .16em;
   }
 
   .cta{
@@ -422,19 +514,16 @@
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   .hero,
-  .heroVideo,
-  .heroImgFallback,
   .heroShade,
   .cursorFx,
   .cta,
   .scrollHint,
-  .scrollLine{
+  .scrollLine,
+  .deckActive,
+  .deckShade,
+  .deckCard{
     animation: none !important;
     transition: none !important;
   }
   .cta{ opacity:1; transform:none; }
-  .heroVideo{ opacity:1; transform: scale(1.03); }
-  .heroImgFallback{ opacity:1; transform: scale(1.03); }
-  .heroShade{ opacity:1; }
-  html{ scroll-behavior: auto; }
 }

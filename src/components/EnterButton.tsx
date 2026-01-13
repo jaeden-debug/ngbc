@@ -27,19 +27,24 @@ function scrollToId(id: string, duration = 520) {
 }
 
 export default function EnterButton() {
-  const onClick = () => scrollToId("mission", 520);
+  const onClick = () => {
+    scrollToId("deck", 520);
+
+    // Activate deck after scroll starts so it feels like a transition
+    window.setTimeout(() => {
+      window.dispatchEvent(new Event("ngbc:enterDeck"));
+    }, 200);
+  };
 
   return (
     <button type="button" className={styles.cta} onClick={onClick}>
       <span className={styles.ctaText}>Enter the North</span>
 
-      {/* 4 corner marks */}
       <span className={`${styles.corner} ${styles.tl}`} />
       <span className={`${styles.corner} ${styles.tr}`} />
       <span className={`${styles.corner} ${styles.bl}`} />
       <span className={`${styles.corner} ${styles.br}`} />
 
-      {/* trace lines */}
       <span className={`${styles.trace} ${styles.traceTop}`} />
       <span className={`${styles.trace} ${styles.traceRight}`} />
       <span className={`${styles.trace} ${styles.traceBottom}`} />
