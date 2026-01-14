@@ -71,8 +71,12 @@ export default function Hero({ onEnter }: { onEnter: () => void }) {
         preload="metadata"
         poster="/hero.png"
       >
-        <source src="/NgbcmobileHero.mp4" type="video/mp4" media="(max-width: 520px)" />
-        <source src="/ngbcHero.mp4" type="video/mp4" />
+        <source
+          src="/videos/hero-mobile.mp4"
+          type="video/mp4"
+          media="(max-width: 520px)"
+        />
+        <source src="/videos/hero-desktop.mp4" type="video/mp4" />
       </video>
 
       <div className={styles.heroShade} />

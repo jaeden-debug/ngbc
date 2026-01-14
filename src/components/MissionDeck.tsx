@@ -64,15 +64,13 @@ export default function MissionDeck({
 
   const closingRef = useRef(false);
 
-  // Decide “mobile” for swipe: coarse pointers (phones/tablets) OR narrow screens
   useEffect(() => {
     const apply = () => {
       const coarse = window.matchMedia("(pointer: coarse)").matches;
       const narrow = window.matchMedia("(max-width: 820px)").matches;
       setIsMobile(coarse || narrow);
 
-      const h = window.innerHeight || 800;
-      vhRef.current = h;
+      vhRef.current = window.innerHeight || 800;
     };
 
     apply();
@@ -84,15 +82,6 @@ export default function MissionDeck({
     };
   }, []);
 
-  // Reset when opened / remounted
-  useEffect(() => {
-    if (!active) return;
-    setIdx(0);
-    setOffsetY(0);
-    setAnimating(false);
-  }, [active, deckKey]);
-
-  // Ensure video starts when overlay opens
   useEffect(() => {
     if (!active) return;
     requestAnimationFrame(() => {
@@ -122,7 +111,6 @@ export default function MissionDeck({
 
       const max = cards.length - 1;
 
-      // allow "next" on last card to close
       if (next > max) {
         closeDeck();
         return;
@@ -143,7 +131,6 @@ export default function MissionDeck({
   const prev = useCallback(() => goTo(idx - 1), [goTo, idx]);
   const next = useCallback(() => goTo(idx + 1), [goTo, idx]);
 
-  // --- Mobile swipe (only when isMobile) ---
   const draggingRef = useRef(false);
   const startYRef = useRef(0);
   const lastYRef = useRef(0);
@@ -184,7 +171,7 @@ export default function MissionDeck({
   const onPointerDown = useCallback(
     (e: React.PointerEvent) => {
       if (!active || animating) return;
-      if (!isMobile) return; // swipe only on mobile
+      if (!isMobile) return;
       if (isInteractiveTarget(e.target)) return;
 
       draggingRef.current = true;
@@ -230,7 +217,6 @@ export default function MissionDeck({
     commitDrag();
   }, [active, isMobile, commitDrag]);
 
-  // Keyboard (optional but simple + reliable)
   useEffect(() => {
     if (!active) return;
 
@@ -255,8 +241,8 @@ export default function MissionDeck({
     return () => window.removeEventListener("keydown", onKey);
   }, [active, animating, closeDeck, next, prev]);
 
-  // Layout math for card positions (kept simple)
-  const softenDiv = 10; // stable
+  const softenDiv = 10;
+  if (!active) return null;
 
   return (
     <section
@@ -280,8 +266,12 @@ export default function MissionDeck({
           preload="metadata"
           poster="/hero.png"
         >
-          <source src="/ngbcmobilebg.mp4" type="video/mp4" media="(max-width: 520px)" />
-          <source src="/ngbcbg.mp4" type="video/mp4" />
+          <source
+            src="/videos/deck-mobile.mp4"
+            type="video/mp4"
+            media="(max-width: 520px)"
+          />
+          <source src="/videos/deck-desktop.mp4" type="video/mp4" />
         </video>
 
         <div className={styles.deckShade} aria-hidden="true" />
@@ -320,14 +310,17 @@ export default function MissionDeck({
                 </div>
 
                 <div className={styles.deckHint}>
-                  {!isMobile ? "Use arrows →" : i < cards.length - 1 ? "Swipe ↑ / ↓" : "Swipe up once more to exit"}
+                  {!isMobile
+                    ? "Use arrows →"
+                    : i < cards.length - 1
+                      ? "Swipe ↑ / ↓"
+                      : "Swipe up once more to exit"}
                 </div>
               </article>
             );
           })}
         </div>
 
-        {/* Desktop arrows */}
         {!isMobile && (
           <>
             <button
