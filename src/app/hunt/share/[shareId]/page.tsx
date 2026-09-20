@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import HuntBriefCard from "../../../../components/hunt-share/HuntBriefCard.tsx";
@@ -34,14 +35,17 @@ export default async function HuntBriefPage({ params }: Props) {
     return (
       <main className={styles.page}>
         <div className={`${styles.shell} ${styles.unavailable}`}>
-          <p className={styles.brand}>North Ground Hunt</p>
+          <p className={styles.brand}>
+            <Image src="/logo-mark.webp" alt="" width={820} height={862} sizes="26px" />
+            North Ground Hunt
+          </p>
           <h1>Hunt Brief unavailable</h1>
           <p>
             {result.status === "unsupported_version"
               ? "This link uses a Hunt Brief format that this version of North Ground cannot safely display."
               : "Hunt Brief storage is temporarily unavailable. Try this link again later."}
           </p>
-          <Link className={styles.action} href="/tools/season-finder">Check current Hunt</Link>
+          <Link className={styles.action} href="/hunt">Check current Hunt</Link>
         </div>
       </main>
     );
@@ -50,7 +54,10 @@ export default async function HuntBriefPage({ params }: Props) {
   return (
     <main className={styles.page}>
       <div className={styles.shell}>
-        <Link className={styles.brand} href="/">North Ground Hunt</Link>
+        <Link className={styles.brand} href="/">
+          <Image src="/logo-mark.webp" alt="" width={820} height={862} sizes="26px" />
+          North Ground Hunt
+        </Link>
         <HuntBriefCard brief={result.brief} />
       </div>
     </main>
