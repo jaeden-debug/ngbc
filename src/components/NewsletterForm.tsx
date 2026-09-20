@@ -3,9 +3,15 @@
 import { useState } from "react";
 import styles from "../app/page.module.css";
 
+type ApiResult = {
+  ok?: boolean;
+  code?: string;
+};
+
 export default function NewsletterForm() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -14,22 +20,39 @@ export default function NewsletterForm() {
     if (!value) return;
 
     setStatus("loading");
+    setMessage("");
 
     try {
       const res = await fetch("/api/subscribe", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: value }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: value, website: "" }),
       });
+      const result = (await res.json().catch(() => ({}))) as ApiResult;
 
-      if (!res.ok) throw new Error("Bad response");
+      if (!res.ok || !result.ok) {
+        if (result.code === "INVALID_EMAIL") {
+          setMessage("Enter a valid email address.");
+        } else if (result.code === "RATE_LIMITED") {
+          setMessage("Too many attempts. Please wait a few minutes and try again.");
+        } else if (result.code === "SERVICE_UNAVAILABLE") {
+          setMessage("Updates aren’t available right now. Please try again later.");
+        } else {
+          setMessage("We couldn’t save your subscription. Please try again.");
+        }
+        setStatus("error");
+        return;
+      }
 
       setStatus("success");
+      setMessage("You’re subscribed. Welcome to North Ground.");
       setEmail("");
-      setTimeout(() => setStatus("idle"), 2200);
     } catch {
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 2200);
+      setMessage("We couldn’t reach the subscription service. Please try again.");
     }
   }
 
@@ -42,7 +65,12 @@ export default function NewsletterForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="your@email.com"
+        aria-label="Email address"
+        aria-describedby="newsletter-status"
+        aria-invalid={status === "error"}
         autoComplete="email"
+        inputMode="email"
+        maxLength={254}
         required
       />
 
@@ -50,9 +78,9 @@ export default function NewsletterForm() {
         {status === "loading" ? "Sending..." : "Join"}
       </button>
 
-      <div className={styles.formMsg} aria-live="polite">
-        {status === "success" && <span className={styles.ok}>Locked in. Welcome.</span>}
-        {status === "error" && <span className={styles.err}>Try again in a sec.</span>}
+      <div id="newsletter-status" className={styles.formMsg} aria-live="polite" aria-atomic="true">
+        {status === "success" && <span className={styles.ok}>{message}</span>}
+        {status === "error" && <span className={styles.err}>{message}</span>}
       </div>
     </form>
   );

@@ -1,19 +1,11 @@
-import { NextResponse } from "next/server";
+import { createSubscribeHandler } from "@/src/lib/newsletter/handler";
+import { subscribeWithResend } from "@/src/lib/newsletter/resend";
+import { SITE_URL } from "@/src/lib/site";
 
-export async function POST(req: Request) {
-  try {
-    const { email } = (await req.json()) as { email?: string };
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
-    if (!email || typeof email !== "string") {
-      return NextResponse.json({ ok: false }, { status: 400 });
-    }
-
-    // TODO: connect to your email platform later (Postmark, Mailchimp, ConvertKit, etc.)
-    // For now we just accept it so your UI works and no errors happen.
-    console.log("[subscribe]", email);
-
-    return NextResponse.json({ ok: true });
-  } catch {
-    return NextResponse.json({ ok: false }, { status: 500 });
-  }
-}
+export const POST = createSubscribeHandler({
+  canonicalOrigin: SITE_URL.origin,
+  subscribe: subscribeWithResend,
+});
