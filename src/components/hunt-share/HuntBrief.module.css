@@ -1,0 +1,237 @@
+.page {
+  background:
+    radial-gradient(circle at 78% 8%, rgba(99, 119, 88, 0.2), transparent 32rem),
+    linear-gradient(145deg, #11130f, #060706 55%);
+  color: #d9d2ba;
+  min-height: 100svh;
+  overflow-x: hidden;
+  padding: clamp(20px, 5vw, 64px) 16px;
+}
+
+.shell {
+  margin: 0 auto;
+  max-width: 880px;
+}
+
+.brand {
+  align-items: center;
+  display: flex;
+  font-size: 0.72rem;
+  gap: 10px;
+  letter-spacing: 0.2em;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+
+.brand::before {
+  background: #d1813f;
+  border-radius: 50%;
+  content: "";
+  height: 8px;
+  width: 8px;
+}
+
+.card {
+  background: rgba(18, 20, 16, 0.94);
+  border: 1px solid rgba(217, 210, 186, 0.22);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.34);
+}
+
+.hero,
+.section,
+.footer {
+  padding: clamp(22px, 5vw, 48px);
+}
+
+.hero {
+  border-bottom: 1px solid rgba(217, 210, 186, 0.18);
+}
+
+.eyebrow,
+.label {
+  color: #a8ad96;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.title {
+  color: #f4f0e4;
+  font-size: clamp(2.4rem, 10vw, 5.4rem);
+  letter-spacing: -0.055em;
+  line-height: 0.92;
+  margin: 16px 0 24px;
+  overflow-wrap: anywhere;
+}
+
+.context {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: clamp(0.95rem, 3vw, 1.1rem);
+  gap: 8px 18px;
+  margin: 0;
+}
+
+.statusRow {
+  align-items: flex-start;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: 30px;
+}
+
+.status {
+  align-items: center;
+  border: 1px solid currentColor;
+  display: inline-flex;
+  font-size: 0.86rem;
+  font-weight: 800;
+  gap: 10px;
+  letter-spacing: 0.12em;
+  padding: 10px 12px;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.status::before {
+  background: currentColor;
+  border-radius: 50%;
+  content: "";
+  height: 7px;
+  width: 7px;
+}
+
+.statusOpen { color: #b8c9a8; }
+.statusClosed { color: #d5a193; }
+.statusConditional { color: #e0b777; }
+.statusUnknown,
+.statusConflict,
+.statusNeedsVerification { color: #c7bda6; }
+
+.summary {
+  color: #ede7d7;
+  font-size: clamp(1.05rem, 3.6vw, 1.3rem);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.section {
+  border-bottom: 1px solid rgba(217, 210, 186, 0.14);
+}
+
+.section h2 {
+  color: #f4f0e4;
+  font-size: 1.2rem;
+  margin: 0 0 18px;
+}
+
+.detailGrid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+}
+
+.detail {
+  border-left: 2px solid rgba(209, 129, 63, 0.62);
+  padding-left: 14px;
+}
+
+.detail p,
+.section p {
+  line-height: 1.65;
+  margin: 7px 0 0;
+}
+
+.warningList,
+.sourceList,
+.resourceList {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.warningList li {
+  background: rgba(209, 129, 63, 0.08);
+  border-left: 3px solid #d1813f;
+  line-height: 1.55;
+  padding: 13px 15px;
+}
+
+.sourceList li,
+.resourceList li {
+  border-top: 1px solid rgba(217, 210, 186, 0.12);
+  padding-top: 12px;
+}
+
+.sourceList a,
+.resourceList a {
+  overflow-wrap: anywhere;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.sourceMeta,
+.timestamp,
+.finePrint {
+  color: #a8ad96;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.footer {
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.action {
+  background: #d9d2ba;
+  border: 1px solid #d9d2ba;
+  color: #10120f;
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin-top: 18px;
+  min-height: 48px;
+  padding: 14px 18px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.action:hover,
+.action:focus-visible,
+.sourceList a:focus-visible,
+.resourceList a:focus-visible {
+  outline: 3px solid #d1813f;
+  outline-offset: 4px;
+}
+
+.unavailable {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 70svh;
+}
+
+.unavailable h1 {
+  color: #f4f0e4;
+  font-size: clamp(2rem, 8vw, 4rem);
+  margin-bottom: 8px;
+}
+
+@media (min-width: 680px) {
+  .statusRow {
+    align-items: center;
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+}
+
+@media print {
+  .page { background: white; color: #111; padding: 0; }
+  .card { border-color: #bbb; box-shadow: none; }
+  .title, .summary, .section h2 { color: #111; }
+  .action { display: none; }
+}

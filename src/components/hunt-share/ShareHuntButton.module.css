@@ -1,0 +1,133 @@
+.trigger,
+.button,
+.secondary {
+  align-items: center;
+  border: 1px solid rgba(217, 210, 186, 0.5);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-weight: 750;
+  justify-content: center;
+  min-height: 46px;
+  padding: 11px 16px;
+}
+
+.trigger,
+.button {
+  background: #d9d2ba;
+  color: #10120f;
+}
+
+.secondary {
+  background: transparent;
+  color: #d9d2ba;
+}
+
+.trigger:hover,
+.button:hover { background: #f1ecdd; }
+
+.trigger:focus-visible,
+.button:focus-visible,
+.secondary:focus-visible,
+.close:focus-visible,
+.manualLink:focus-visible {
+  outline: 3px solid #d1813f;
+  outline-offset: 3px;
+}
+
+.dialog {
+  background: #10120f;
+  border: 1px solid rgba(217, 210, 186, 0.35);
+  color: #d9d2ba;
+  margin: auto;
+  max-height: calc(100svh - 24px);
+  max-width: 560px;
+  padding: 0;
+  width: calc(100% - 24px);
+}
+
+.dialog::backdrop { background: rgba(0, 0, 0, 0.82); }
+
+.content { padding: clamp(20px, 5vw, 34px); }
+
+.top {
+  align-items: flex-start;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.eyebrow {
+  color: #a8ad96;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin: 0 0 9px;
+  text-transform: uppercase;
+}
+
+.title {
+  color: #f4f0e4;
+  font-size: clamp(1.6rem, 7vw, 2.4rem);
+  line-height: 1;
+  margin: 0;
+}
+
+.close {
+  background: transparent;
+  border: 0;
+  color: #d9d2ba;
+  cursor: pointer;
+  font-size: 1rem;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.preview {
+  background: rgba(217, 210, 186, 0.06);
+  border: 1px solid rgba(217, 210, 186, 0.16);
+  margin: 24px 0;
+  padding: 18px;
+}
+
+.preview strong,
+.preview span { display: block; }
+.preview strong { color: #f4f0e4; font-size: 1.2rem; }
+.preview span { line-height: 1.55; margin-top: 6px; }
+
+.privacy {
+  border-left: 3px solid #668064;
+  line-height: 1.55;
+  padding-left: 13px;
+}
+
+.actions {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr;
+  margin-top: 24px;
+}
+
+.button:disabled,
+.secondary:disabled { cursor: wait; opacity: 0.62; }
+
+.message {
+  min-height: 1.5em;
+  line-height: 1.5;
+  margin: 16px 0 0;
+}
+
+.manualLink {
+  background: #070807;
+  border: 1px solid rgba(217, 210, 186, 0.3);
+  color: #d9d2ba;
+  margin-top: 12px;
+  overflow: hidden;
+  padding: 10px;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .actions { grid-template-columns: 1fr 1fr; }
+}

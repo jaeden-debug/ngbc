@@ -17,9 +17,11 @@
     "test:newsletter": "node --test src/lib/newsletter/*.test.ts",
     "test:seo": "node --test src/lib/seo/*.test.ts",
     "validate:seo": "node scripts/validate-seo.mjs",
-    "test:content-urls": "node --test src/lib/content/*.test.ts"
+    "test:content-urls": "node --test src/lib/content/*.test.ts",
+    "test:hunt-share": "node --require ./scripts/css-module-test-register.cjs --import tsx --test src/lib/hunt-share/*.test.ts src/components/hunt-share/*.test.tsx"
   },
   "dependencies": {
+    "@upstash/redis": "^1.38.4",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3"
@@ -32,6 +34,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }

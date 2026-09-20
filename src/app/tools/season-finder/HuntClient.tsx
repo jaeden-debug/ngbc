@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import ShareHuntButton from "../../../components/hunt-share/ShareHuntButton";
+import { huntEvaluationToShareInput } from "../../../lib/hunt-share/from-hunt-evaluation";
 import type { HuntEvaluation } from "../../../lib/hunt/types";
 import styles from "./page.module.css";
 
@@ -102,6 +104,11 @@ export default function HuntClient({ defaultDate }: { defaultDate: string }) {
               {result.regulation.season && <p><strong>Certified season:</strong> {result.regulation.season.opens} through {result.regulation.season.closes}, inclusive.</p>}
               {result.regulation.limits && <p><strong>Limits:</strong> {result.regulation.limits.daily} daily and {result.regulation.limits.possession} in possession, combined with {result.regulation.limits.combinedWith}.</p>}
               <p><strong>Legal-time rule:</strong> {result.regulation.legalTime.text}</p>
+              <ShareHuntButton
+                huntResult={huntEvaluationToShareInput(result, {
+                  jurisdiction: { id: "jurisdiction:ca-on", displayName: "Ontario" },
+                })}
+              />
             </section>
 
             <div className={styles.grid}>
