@@ -209,17 +209,15 @@ The H1 and quick answer MUST render in visible server-renderable HTML on indexab
 
 ## URL principles
 
-Candidate route families, subject to search research and the site router, are:
+Route families are now decided and owned by [ROUTE-REGISTRY.md](./ROUTE-REGISTRY.md).
 
-- species: `/species/{slug}`
-- jurisdictions: `/jurisdictions/{slug}`
-- guides: `/guides/{slug}` or a researched topical hierarchy
-- field tests: `/field-tests/{slug}`
-- tools: `/tools/{slug}`
-- conditions: `/conditions/{slug}`
-- gear: `/gear/{slug}`
+Hunting content is namespaced under `/hunting/` (for example `/hunting/species/ruffed-grouse`,
+`/hunting/canada/quebec/ruffed-grouse`) so that camping, survival and bushcraft verticals can be
+added later without restructuring. `/tools/{slug}` stays at the root because a tool may serve
+several verticals. The earlier flat candidates (`/species/{slug}`, `/guides/{slug}`) are superseded.
 
-These are conventions, not identity. The final route registry owns canonical paths. Existing repository convention currently has only `/` and uses no trailing slash; new canonical URLs SHOULD therefore omit trailing slashes unless the deployment convention changes globally.
+These are paths, not identity. Canonical IDs remain the identity and applications MUST resolve
+links through them rather than constructing path strings. Existing repository convention currently has only `/` and uses no trailing slash; new canonical URLs SHOULD therefore omit trailing slashes unless the deployment convention changes globally.
 
 Rules:
 

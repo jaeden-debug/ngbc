@@ -16,6 +16,8 @@ This directory defines the presentation-independent contract joining North Groun
 | [CONTENT-QUALITY.md](./CONTENT-QUALITY.md) | Publication gate, claims, sources, and QA |
 | [MEDIA-STANDARD.md](./MEDIA-STANDARD.md) | Licensing, identity accuracy, accessibility, and media records |
 | [CONTENT-LIFECYCLE.md](./CONTENT-LIFECYCLE.md) | Draft, review, publication, expiry, correction, and migration |
+| [ROUTE-REGISTRY.md](./ROUTE-REGISTRY.md) | Decided canonical route families and path rules |
+| [CONTENT-ROADMAP.md](./CONTENT-ROADMAP.md) | What gets written, in what order, and the definition of done |
 | [INTEGRATION-HANDOFF.md](./INTEGRATION-HANDOFF.md) | Concrete implementation handoff and open compatibility work |
 
 Runtime-neutral TypeScript contracts live in `src/lib/content-contract/`. The validator at `scripts/validate-content-contract.mjs` checks a normalized JSON bundle without requiring the authoring system to store content as JSON.
