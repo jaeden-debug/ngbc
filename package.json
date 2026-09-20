@@ -13,6 +13,7 @@
     "validate:content:published": "node scripts/validate-content-contract.mjs --strict content/published/en-CA.json",
     "test:content-contract": "node --test scripts/validate-content-contract.test.mjs",
     "test:content-repository": "node --test src/lib/content/repository.test.ts",
+    "test:hunt": "node --test src/lib/hunt/*.test.ts",
     "test:newsletter": "node --test src/lib/newsletter/*.test.ts",
     "test:seo": "node --test src/lib/seo/*.test.ts",
     "validate:seo": "node scripts/validate-seo.mjs",
