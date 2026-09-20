@@ -56,6 +56,7 @@ Last updated: 2026-09-20
 
 ## In Progress
 
+- Ontario regulatory expansion (Wave 2). The official groupings for ruffed grouse have been extracted and verified from the current Ontario Hunting Regulations Summary and are ready to encode; see the handoff note below before starting.
 - Main site visual direction / hero.
 - Hunting Intelligence application.
 - Structured North Ground content/resource system.
@@ -121,6 +122,10 @@ Do not mark VERIFIED until actual data and representative queries have been cert
 - Research inventory: PARTIAL for federal plus all 13 provinces/territories. Principal authorities, official terminology and regulatory-source leads are recorded; no jurisdiction is certified `VERIFIED` for production.
 - Canadian species evidence: 102 source-linked rows across all 14 jurisdiction records, with deeper big-game, upland-bird, ptarmigan, hare, and small-game leads. These remain research inputs rather than certified rules.
 - GIS: every North American jurisdiction now has an explicit availability classification; 16 are official-interactive-map-only, one is official-PDF-map, 48 need research, and D.C. has no source found. No machine-readable layer has passed the full endpoint/schema/version/licence gate.
+- Ontario geographic coverage is COMPLETE as of 2026-09-21: all 151 official Wildlife Management Units are normalized in Supabase/PostGIS, ingested from the province's own feature layer. 1,298,941 vertices, every geometry valid, every one EPSG:4326 MultiPolygon, 1,078,174 km2 in total against Ontario's actual area of roughly 1,076,000 km2. Sub-unit designations are preserved exactly as the authority writes them (69A-1 stays 69A-1).
+- Spatial parity with the authority is CERTIFIED: 309 points — one inside every unit, one just inside every unit's boundary, five outside the province, two impossible coordinates — resolve identically in North Ground's PostGIS registry and in the Government of Ontario service, with zero disagreements. `scripts/certify-ontario-spatial-parity.mjs` performs the live comparison; `src/lib/hunt/spatial-parity.test.ts` replays the recorded result and never touches the network.
+- `SPATIAL_PROVIDER` is now `supabase` with `official-gis` as the fallback, in local and in Vercel Production and Preview. The condition recorded for this switch — demonstrated parity — is met, and PostGIS measured steadier than the live service (median 170 ms versus 207 ms, p90 215 ms versus 1,460 ms). Production resolves WMU 3, 15B, 36, 57, 61, 80 and 94A through PostGIS.
+- Regulatory coverage has NOT moved: WMU 57 ruffed grouse remains the only certified rule. A point in any other unit resolves to its real zone and reports `IN_DEVELOPMENT` — boundary known, rules not certified. That distinction is the point, not a shortfall.
 - Zone geometry drawn on the map: Ontario only, PARTIAL. All 151 Ontario WMU boundaries are rendered from the province's own feature layer, generalised by zoom. Of those, exactly one (WMU 57) has a certified regulatory record; the rest are labelled `IN_DEVELOPMENT` — boundary known, rules not certified. No other Canadian or United States jurisdiction has geometry drawn, and none will be until its official source passes the same review.
 - Production certification slice: PARTIAL. Ontario WMU 57 point resolution is implemented against the official Ontario Wildlife Management Unit Feature Layer. The layer endpoint/schema and representative WMU 57 query passed local certification; this does not certify every Ontario geometry or the whole jurisdiction.
 - Regulatory certification slice: PARTIAL. The 2026 ruffed/spruce grouse row for WMU 57 is encoded from the official Ontario Hunting Regulations Summary with inclusive dates (September 15–December 31) and combined limits (5 daily, 15 possession). Ontario as a whole is not marked VERIFIED.
@@ -269,6 +274,40 @@ Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport a
 - Research counts remain research-only. The only locally certified production-shaped exception is the explicit Ontario WMU 57 / ruffed grouse 2026 slice described above.
 
 ## Agent Handoff Notes
+
+### 2026-09-21 — Ontario ruffed grouse groupings, extracted and verified, NOT yet encoded
+The current Ontario Hunting Regulations Summary states ruffed grouse as four WMU
+groups. Recorded here verbatim so the next pass encodes the authority's wording
+rather than re-deriving it:
+
+| Official WMU spec | Season | Limits |
+| --- | --- | --- |
+| `1-4, 16-18, 24-27` | September 15 to March 31 | Combined daily 5 / possession 15 with spruce grouse |
+| `5-15, 19-23, 28-50, 53-67, 69B` | September 15 to December 31 | Combined daily 5 / possession 15 with spruce grouse |
+| `68, 73-76, 82-84` | September 25 to December 31 | Daily 5 / possession 15 (no spruce grouse season) |
+| `69A, 70-72, 77-81, 85-95` | September 25 to December 31 | Daily 2 / possession 6 (no spruce grouse season) |
+
+The summary writes bare numbers while the GIS layer carries lettered sub-units,
+so whether "68" means 68A and 68B is a legal interpretation, not a formatting
+detail. It was settled by evidence rather than assumption: expanding each bare
+number to all its sub-units makes the four groups partition 150 of the 151 units
+with zero overlaps and zero units named that do not exist. A wrong reading would
+leave dozens uncovered. The one unit the table never mentions is **WMU 51**,
+which is also absent from the summary's other small-game rows — it therefore gets
+no rule and must resolve to UNKNOWN. Absence from an open-seasons table is not
+evidence of a closed season.
+
+Two cross-year cases need care when encoding: "September 15 to March 31" runs
+into the following calendar year, and "the last day of February" moves in leap
+years. The same fetch also captured sharp-tailed grouse, ptarmigan, ring-necked
+pheasant, gray partridge, cottontail and European hare, snowshoe hare and
+squirrel groupings, which is Wave 3.
+
+The schema for this already exists: `regulatory_groups` carries the authority's
+`official_spec` verbatim alongside `regulatory_group_members`, and
+`regulatory_rules.regulatory_group_id` lets one stated rule address many units
+without duplicating it per unit.
+
 
 Keep temporary but important cross-agent coordination here.
 
