@@ -68,6 +68,40 @@ export async function getOpenMeteoWeather(
   }
 }
 
+/**
+ * Put a provider instant into the forecast location's own clock.
+ *
+ * Open-Meteo is asked for `timezone=auto` and answers with local wall-clock times
+ * (`2026-09-20T06:56`). Google answers with a UTC instant
+ * (`2026-09-20T10:56:00Z`). Rendering both by slicing the string showed Ontario
+ * hunters a 10:56 sunrise, so Google's instants are converted here and both
+ * providers hand back the same local wall-clock shape.
+ *
+ * Sunrise and sunset remain environmental context. They are never a certified
+ * legal hunting time, whichever provider supplied them.
+ */
+function toLocalWallClock(instant: string | undefined, timeZone: string | undefined): string | undefined {
+  if (!instant) return undefined;
+  if (!timeZone) return instant;
+  const stamp = new Date(instant);
+  if (Number.isNaN(stamp.valueOf())) return undefined;
+  try {
+    const parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone, hour12: false,
+      year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit",
+    }).formatToParts(stamp).reduce<Record<string, string>>((accumulated, part) => {
+      accumulated[part.type] = part.value;
+      return accumulated;
+    }, {});
+    if (!parts.year || !parts.month || !parts.day || !parts.hour || !parts.minute) return undefined;
+    const hour = parts.hour === "24" ? "00" : parts.hour;
+    return `${parts.year}-${parts.month}-${parts.day}T${hour}:${parts.minute}`;
+  } catch {
+    // An unrecognised time-zone id is not a reason to show the wrong time.
+    return undefined;
+  }
+}
+
 export async function getGoogleWeather(
   latitude: number,
   longitude: number,
@@ -108,7 +142,9 @@ export async function getGoogleWeather(
     return {
       status: "AVAILABLE", summary: `Google forecast: ${min ?? "unknown"} to ${max ?? "unknown"} °C with ${precipitation} mm precipitation. Recheck before departure.`,
       date, temperatureMaxC: max, temperatureMinC: min, precipitationMm: precipitation,
-      sunrise: forecast.sunEvents?.sunriseTime, sunset: forecast.sunEvents?.sunsetTime, timezone: payload.timeZone?.id, sourceId: "source:google-weather",
+      sunrise: toLocalWallClock(forecast.sunEvents?.sunriseTime, payload.timeZone?.id),
+      sunset: toLocalWallClock(forecast.sunEvents?.sunsetTime, payload.timeZone?.id),
+      timezone: payload.timeZone?.id, sourceId: "source:google-weather",
     };
   } catch {
     return { status: "PROVIDER_ERROR", summary: "The Google Weather provider is temporarily unavailable. North Ground will not fabricate weather data.", date, sourceId: "source:google-weather" };

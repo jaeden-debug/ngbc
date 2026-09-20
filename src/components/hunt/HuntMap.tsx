@@ -62,19 +62,44 @@ const ZONE_STROKE: Record<ZoneCoverageStatus, string> = {
 
 let googleMapsPromise: Promise<typeof google.maps> | null = null;
 
+/** Global the Maps bootstrap calls once the core library is ready. */
+const READY_CALLBACK = "__northGroundMapsReady";
+
+/**
+ * Load the Maps JavaScript API.
+ *
+ * `loading=async` is the recommended bootstrap, and with it the script's own
+ * `onload` fires BEFORE `google.maps` exists — so resolving on `onload` and
+ * checking for `google.maps` there reports a failure for a map that is loading
+ * perfectly well, and drops the product to its fallback view every time. The
+ * documented signal is the `callback` parameter, which fires when the library is
+ * actually usable.
+ */
 function loadGoogleMaps(apiKey: string): Promise<typeof google.maps> {
   if (googleMapsPromise) return googleMapsPromise;
   googleMapsPromise = new Promise((resolve, reject) => {
     if (typeof window === "undefined") return reject(new Error("Google Maps needs a browser"));
     if (window.google?.maps) return resolve(window.google.maps);
-    const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?${new URLSearchParams({ key: apiKey, v: "weekly", loading: "async" })}`;
-    script.async = true;
-    script.onerror = () => { googleMapsPromise = null; reject(new Error("Google Maps failed to load")); };
-    script.onload = () => {
-      if (window.google?.maps) resolve(window.google.maps);
-      else { googleMapsPromise = null; reject(new Error("Google Maps loaded without an API")); }
+
+    const globals = window as unknown as Record<string, unknown>;
+    const fail = (reason: string) => {
+      googleMapsPromise = null;
+      delete globals[READY_CALLBACK];
+      reject(new Error(reason));
     };
+
+    globals[READY_CALLBACK] = () => {
+      delete globals[READY_CALLBACK];
+      if (window.google?.maps) resolve(window.google.maps);
+      else fail("Google Maps signalled ready without an API");
+    };
+
+    const script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?${new URLSearchParams({
+      key: apiKey, v: "weekly", loading: "async", callback: READY_CALLBACK,
+    })}`;
+    script.async = true;
+    script.onerror = () => fail("Google Maps failed to load");
     document.head.appendChild(script);
   });
   return googleMapsPromise;
