@@ -22,6 +22,8 @@ Last updated: 2026-09-20
 - Structured content system being developed in parallel with Hunt.
 - Editorial standard: maximum useful information with minimum necessary words.
 - Species, conditions, clothing, packing, skills, regulations and related entities should be reusable by the application.
+- Shared content contract v1 is defined in `docs/content-system/` with canonical ID, species/resource, App Block, deterministic matching, relationship, source, media, URL, quality and lifecycle rules.
+- Storage-neutral TypeScript contracts live in `src/lib/content-contract/`. A normalized-bundle validator and tests live in `scripts/`; production registries, adapters, repository/API and migrated content remain unfinished.
 
 ### Field Testing
 - Methodology planned.
@@ -46,6 +48,9 @@ Last updated: 2026-09-20
 - Inspect current repository before trusting this list.
 - Record confirmed defects here as they are discovered.
 - Do not copy stale audit findings forward without verifying them.
+- Technical foundation audit: `docs/technical-foundation-audit.md`.
+- Confirmed P1 launch gaps: newsletter submissions are acknowledged but not persisted; robots, sitemap and canonical URLs are absent; the homepage has no H1 and has accessibility/indexability risks in active visual files.
+- No production content registry, authoring adapter, canonical URL resolver, content repository/API, or Hunt-to-content adapter exists yet.
 
 ## Next Priorities
 
@@ -59,6 +64,7 @@ Last updated: 2026-09-20
 8. Build early cold-weather authority resources/tools.
 9. Begin standardized field-data collection.
 10. Build Crown/public-land data foundation ahead of seasonal demand.
+11. Select the authoritative content store, export the shared normalized bundle, and certify page families before making content validation blocking.
 
 ## Blocked
 
@@ -130,13 +136,19 @@ LLMs are not regulatory authorities. Core regulatory results are deterministic a
 ### 2026-09-20 — Future Platform Potential
 Keep regulatory/geospatial infrastructure sufficiently separated from North Ground presentation that it could eventually support APIs, white-label products or government deployments.
 
+### 2026-09-20 — Shared Content Contract v1
+Canonical IDs are URL- and locale-independent. Editorial App Blocks use deterministic contextual matching. Editorial fallback is allowed only to deliberately broader editorial blocks; missing regulatory data never falls back to inferred legality. Authoring systems integrate through a normalized `ContentBundle` rather than being forced into a specific CMS/storage format.
+
 ## Validation
 
 ### Build
-- Update after latest verified build.
+- `npm run build` passed on 2026-09-20 (Next.js 16.1.1; `/` statically prerendered, `/api/subscribe` dynamic).
 
 ### Tests
-- Update after latest verified test run.
+- `npm run typecheck` passed on 2026-09-20.
+- `npm run test:content-contract` passed 4/4 on 2026-09-20.
+- `npm run validate:content:strict` passed the contract fixture with 0 errors and 0 warnings on 2026-09-20.
+- `npm run lint` remains blocked by one existing error (`react-hooks/set-state-in-effect`) and one warning (`no-img-element`) in the active `src/components/Hero.tsx`; shared contract files introduce no reported lint findings.
 
 ### Production
 - Update with actual deployment status.
@@ -149,3 +161,7 @@ Keep regulatory/geospatial infrastructure sufficiently separated from North Grou
 Keep temporary but important cross-agent coordination here.
 
 Remove obsolete handoff notes once they no longer help future work.
+
+- Shared foundation files created: `docs/content-system/*.md`, `src/lib/content-contract/{ids,types,index}.ts`, `scripts/validate-content-contract*.mjs`, `fixtures/content-contract/valid-bundle.json`, and `docs/technical-foundation-audit.md`.
+- The fixture demonstrates validation only; it is not published coverage or evidence.
+- Future stitching must compare Hunt/content implementations with `docs/content-system/INTEGRATION-HANDOFF.md` and adapt rather than create duplicate registries/APIs.
