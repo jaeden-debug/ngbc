@@ -1,0 +1,52 @@
+.page {
+  align-items: center;
+  background:
+    radial-gradient(circle at 50% 22%, rgba(201, 194, 166, 0.1), transparent 34%),
+    #060606;
+  color: #c9c2a6;
+  display: flex;
+  min-height: 100svh;
+  padding: 32px;
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 680px;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  margin: 0 0 20px;
+  text-transform: uppercase;
+}
+
+.heading {
+  color: #fff;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  margin: 0;
+}
+
+.copy {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 28px 0;
+  max-width: 48ch;
+}
+
+.link {
+  border: 1px solid rgba(201, 194, 166, 0.55);
+  display: inline-block;
+  padding: 12px 18px;
+  text-decoration: none;
+}
+
+.link:focus-visible,
+.link:hover {
+  background: #c9c2a6;
+  color: #060606;
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}

@@ -1,5 +1,12 @@
 const DEFAULT_SITE_URL = "https://northgroundbushcraft.com";
 
+export const SITE_NAME = "North Ground";
+export const SITE_ALTERNATE_NAME = "North Ground Bushcraft";
+export const SITE_DESCRIPTION =
+  "Outdoor fieldwork, practical skills, and honest lessons from northern Canadian conditions.";
+export const SITE_LANGUAGE = "en-CA";
+export const CONTACT_EMAIL = "contact@northgroundbushcraft.com";
+
 function parseSiteUrl(value: string | undefined): URL {
   const candidate = value?.trim() || DEFAULT_SITE_URL;
   const url = new URL(candidate);
