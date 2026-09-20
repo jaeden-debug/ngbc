@@ -1,0 +1,302 @@
+{
+  "generatedAt": "2026-09-20T15:30:08.887Z",
+  "note": "Recorded from scripts/certify-ontario-spatial-parity.mjs. Unit tests replay these; they never call the authority.",
+  "cases": [
+    {
+      "label": "inside 10",
+      "latitude": 48.774025890973,
+      "longitude": -94.1797341972866,
+      "official": [
+        "10"
+      ],
+      "northGround": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 16C",
+      "latitude": 50.9282055517914,
+      "longitude": -89.1638340344828,
+      "official": [
+        "16C"
+      ],
+      "northGround": [
+        "16C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 21B",
+      "latitude": 49.1581882762112,
+      "longitude": -85.4435588410493,
+      "official": [
+        "21B"
+      ],
+      "northGround": [
+        "21B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 32",
+      "latitude": 48.4027615617192,
+      "longitude": -84.043156061039,
+      "official": [
+        "32"
+      ],
+      "northGround": [
+        "32"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 43A",
+      "latitude": 45.72455182929,
+      "longitude": -83.063902833775,
+      "official": [
+        "43A"
+      ],
+      "northGround": [
+        "43A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 53B",
+      "latitude": 45.0565078675859,
+      "longitude": -79.5701173660332,
+      "official": [
+        "53B"
+      ],
+      "northGround": [
+        "53B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 63A",
+      "latitude": 45.1074549008703,
+      "longitude": -76.8653892690253,
+      "official": [
+        "63A"
+      ],
+      "northGround": [
+        "63A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 69A-3",
+      "latitude": 44.1845596639471,
+      "longitude": -76.4627122120737,
+      "official": [
+        "69A-3"
+      ],
+      "northGround": [
+        "69A-3"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 76C",
+      "latitude": 44.7093075043135,
+      "longitude": -79.9742286711847,
+      "official": [
+        "76C"
+      ],
+      "northGround": [
+        "76C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 79D",
+      "latitude": 43.4341603685625,
+      "longitude": -79.6125549347729,
+      "official": [
+        "79D"
+      ],
+      "northGround": [
+        "79D"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 83C",
+      "latitude": 44.8865826697794,
+      "longitude": -80.9713540544222,
+      "official": [
+        "83C"
+      ],
+      "northGround": [
+        "83C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 88",
+      "latitude": 43.2425388077647,
+      "longitude": -79.4843870474475,
+      "official": [
+        "88"
+      ],
+      "northGround": [
+        "88"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 10",
+      "latitude": 48.6969788959308,
+      "longitude": -94.2606851388491,
+      "official": [
+        "10"
+      ],
+      "northGround": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 1B",
+      "latitude": 55.1457825318125,
+      "longitude": -82.885456961311,
+      "official": [
+        "1B"
+      ],
+      "northGround": [
+        "1B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 32",
+      "latitude": 48.5707513401016,
+      "longitude": -84.2737025823199,
+      "official": [
+        "32"
+      ],
+      "northGround": [
+        "32"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 48",
+      "latitude": 46.0961794446873,
+      "longitude": -77.4456442843642,
+      "official": [
+        "48"
+      ],
+      "northGround": [
+        "48"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 63A",
+      "latitude": 45.193471221748,
+      "longitude": -76.892823552493,
+      "official": [
+        "63A"
+      ],
+      "northGround": [
+        "63A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 73",
+      "latitude": 44.2935812751022,
+      "longitude": -78.5946348316062,
+      "official": [
+        "73"
+      ],
+      "northGround": [
+        "73"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 79D",
+      "latitude": 43.4807366341474,
+      "longitude": -79.6118937555238,
+      "official": [
+        "79D"
+      ],
+      "northGround": [
+        "79D"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 86B",
+      "latitude": 43.3840079161412,
+      "longitude": -81.0104152414512,
+      "official": [
+        "86B"
+      ],
+      "northGround": [
+        "86B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "Manitoba, west of Ontario",
+      "latitude": 50,
+      "longitude": -99,
+      "official": [],
+      "northGround": [],
+      "agree": true
+    },
+    {
+      "label": "Quebec, east of Ontario",
+      "latitude": 46.8,
+      "longitude": -71.2,
+      "official": [],
+      "northGround": [],
+      "agree": true
+    },
+    {
+      "label": "Minnesota, south-west",
+      "latitude": 47.9,
+      "longitude": -92.1,
+      "official": [],
+      "northGround": [],
+      "agree": true
+    },
+    {
+      "label": "New York, south-east",
+      "latitude": 43.5,
+      "longitude": -75.5,
+      "official": [],
+      "northGround": [],
+      "agree": true
+    },
+    {
+      "label": "Hudson Bay, open water north",
+      "latitude": 58.5,
+      "longitude": -86,
+      "official": [],
+      "northGround": [],
+      "agree": true
+    },
+    {
+      "label": "latitude above the pole",
+      "latitude": 95,
+      "longitude": -80,
+      "official": [],
+      "northGround": [],
+      "agree": true
+    },
+    {
+      "label": "longitude beyond the meridian",
+      "latitude": 48,
+      "longitude": -200,
+      "official": [],
+      "northGround": [],
+      "agree": true
+    }
+  ]
+}
