@@ -105,6 +105,36 @@
         {
           "locale": "en-CA",
           "value": "Spruce grouse"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Tétras du Canada",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "spruce-grouse"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Canachites canadensis",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-spruce-grouse"
+          ]
+        },
+        {
+          "value": "fool hen",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-spruce-grouse"
+          ]
         }
       ],
       "createdAt": "2026-09-20T12:00:00Z",

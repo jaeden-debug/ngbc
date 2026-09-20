@@ -1,4 +1,5 @@
 import bundleJson from "../../../content/published/en-CA.json" with { type: "json" };
+import speciesWaveJson from "../../../content/published/species-wave-1.json" with { type: "json" };
 import {
   CONTENT_CONTRACT_VERSION,
   type Applicability,
@@ -8,6 +9,9 @@ import {
   type ContextRequest,
   type Entity,
   type Resource,
+  type EntityAlias,
+  type MediaRecord,
+  type SpeciesResource,
   type SourceRecord,
 } from "../content-contract/types.ts";
 import type { CanonicalId } from "../content-contract/ids.ts";
@@ -45,6 +49,15 @@ export interface ResourceSummary {
   canonicalUrl: string | null;
 }
 
+export interface SpeciesSearchResult {
+  id: CanonicalId<"species">;
+  commonName: string;
+  scientificName: string;
+  aliases: string[];
+  category: string;
+  canonicalUrl: string;
+}
+
 export interface ContentRepository {
   resolveEntity(input: EntityLookup): Promise<EntityResolution>;
   getEntity(id: CanonicalId, options?: LocaleOptions): Promise<Entity | null>;
@@ -56,9 +69,28 @@ export interface ContentRepository {
   getCanonicalUrl(id: CanonicalId, locale: string): Promise<CanonicalUrlResult | null>;
   getSources(ids: CanonicalId<"source">[]): Promise<SourceRecord[]>;
   getPublishedResources(options?: LocaleOptions): Promise<Resource[]>;
+  getSpecies(id: CanonicalId<"species">): Promise<SpeciesResource | null>;
+  searchSpecies(query: string, options?: LocaleOptions): Promise<SpeciesSearchResult[]>;
+  getSpeciesAliases(id: CanonicalId<"species">): Promise<EntityAlias[]>;
+  getSpeciesImage(id: CanonicalId<"species">): Promise<MediaRecord | null>;
+  getSpeciesBlocks(id: CanonicalId<"species">, request: Omit<ContextRequest, "speciesIds" | "ownerIds">): Promise<BlockResult>;
+  getRelatedSpecies(id: CanonicalId<"species">): Promise<SpeciesResource[]>;
+  getSpeciesSources(id: CanonicalId<"species">): Promise<SourceRecord[]>;
 }
 
-const bundle = bundleJson as ContentBundle;
+const primaryBundle = bundleJson as ContentBundle;
+const speciesWave = speciesWaveJson as ContentBundle;
+const bundle: ContentBundle = {
+  contractVersion: CONTENT_CONTRACT_VERSION,
+  generatedAt: speciesWave.generatedAt,
+  entities: [...primaryBundle.entities, ...speciesWave.entities],
+  resources: [...primaryBundle.resources, ...speciesWave.resources],
+  blocks: [...primaryBundle.blocks, ...speciesWave.blocks],
+  relationships: [...primaryBundle.relationships, ...speciesWave.relationships],
+  sources: [...primaryBundle.sources, ...speciesWave.sources],
+  claims: [...primaryBundle.claims, ...speciesWave.claims],
+  media: [...primaryBundle.media, ...speciesWave.media],
+};
 const entities = new Map(bundle.entities.map((entity) => [entity.id, entity]));
 const resources = new Map(bundle.resources.map((resource) => [resource.id, resource]));
 const sources = new Map(bundle.sources.map((source) => [source.id, source]));
@@ -254,6 +286,78 @@ export class InProcessContentRepository implements ContentRepository {
 
   async getPublishedResources(options?: LocaleOptions): Promise<Resource[]> {
     return bundle.resources.filter((resource) => resource.status === "published" && (!options?.locale || resource.locale === options.locale));
+  }
+
+  async getSpecies(id: CanonicalId<"species">): Promise<SpeciesResource | null> {
+    const resource = resources.get(id);
+    return resource?.type === "species" && resource.status === "published" ? resource : null;
+  }
+
+  async searchSpecies(query: string, options?: LocaleOptions): Promise<SpeciesSearchResult[]> {
+    const needle = normalized(query);
+    if (!needle) return [];
+    return bundle.resources
+      .filter((resource): resource is SpeciesResource => resource.type === "species" && resource.status === "published" && (!options?.locale || resource.locale === options.locale))
+      .map((resource) => {
+        const entity = entities.get(resource.speciesProfile.speciesId);
+        const aliases = [...(entity?.aliases ?? []), ...(resource.speciesProfile.aliases ?? [])].map(({ value }) => value);
+        const names = entity?.names.map(({ value }) => value) ?? [];
+        const terms = [resource.title, resource.speciesProfile.scientificName, ...names, ...aliases].map(normalized);
+        const exact = terms.some((term) => term === needle);
+        const prefix = terms.some((term) => term.startsWith(needle) || term.split(/\s+/).some((token) => token.startsWith(needle)));
+        const contains = needle.length >= 3 && terms.some((term) => term.includes(needle));
+        if (!exact && !prefix && !contains) return null;
+        const groupId = resource.speciesProfile.speciesGroupIds[0];
+        const group = groupId ? entities.get(groupId) : undefined;
+        return {
+          id: resource.speciesProfile.speciesId,
+          commonName: resource.title,
+          scientificName: resource.speciesProfile.scientificName,
+          aliases: [...new Set(aliases)],
+          category: group?.names.find(({ locale }) => locale === "en-CA")?.value ?? "Other",
+          canonicalUrl: canonicalPath(resource.id)?.path ?? resource.canonicalUrl ?? "",
+          rank: exact ? 0 : prefix ? 1 : 2,
+        };
+      })
+      .filter((result): result is SpeciesSearchResult & { rank: number } => result !== null)
+      .sort((left, right) => left.rank - right.rank || left.commonName.localeCompare(right.commonName))
+      .map((result) => ({
+        id: result.id,
+        commonName: result.commonName,
+        scientificName: result.scientificName,
+        aliases: result.aliases,
+        category: result.category,
+        canonicalUrl: result.canonicalUrl,
+      }));
+  }
+
+  async getSpeciesAliases(id: CanonicalId<"species">): Promise<EntityAlias[]> {
+    return entities.get(id)?.aliases ?? [];
+  }
+
+  async getSpeciesImage(id: CanonicalId<"species">): Promise<MediaRecord | null> {
+    return bundle.media.find((media) => media.kind === "image" && media.status === "active"
+      && media.identityVerification === "verified" && media.depictsSpeciesIds?.length === 1
+      && media.depictsSpeciesIds[0] === id) ?? null;
+  }
+
+  async getSpeciesBlocks(id: CanonicalId<"species">, request: Omit<ContextRequest, "speciesIds" | "ownerIds">): Promise<BlockResult> {
+    return this.getContextualBlocks({ ...request, speciesIds: [id], ownerIds: [id] });
+  }
+
+  async getRelatedSpecies(id: CanonicalId<"species">): Promise<SpeciesResource[]> {
+    const resource = await this.getSpecies(id);
+    if (!resource) return [];
+    return (resource.relatedSpeciesIds ?? []).flatMap((relatedId) => {
+      const related = resources.get(relatedId);
+      return related?.type === "species" && related.status === "published" ? [related] : [];
+    });
+  }
+
+  async getSpeciesSources(id: CanonicalId<"species">): Promise<SourceRecord[]> {
+    const resource = await this.getSpecies(id);
+    if (!resource) return [];
+    return this.getSources([...new Set([...(resource.sourceIds ?? []), ...resource.speciesProfile.sourceIds])]);
   }
 }
 

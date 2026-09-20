@@ -74,3 +74,49 @@ test("warning rollout reports errors without failing the process", () => {
     },
   );
 });
+
+test("species scientific names must match their taxonomy fields", () => {
+  withBundle(
+    (bundle) => {
+      const resource = bundle.resources[0];
+      resource.type = "species";
+      resource.quickAnswer = "A direct answer.";
+      resource.speciesProfile = {
+        speciesId: "species:ruffed-grouse",
+        commonNames: [{ locale: "en-CA", value: "Ruffed grouse" }],
+        scientificName: "Incorrect name",
+        taxonomy: { genus: "Bonasa", species: "umbellus", taxonomySourceId: "source:ontario-small-game" },
+        speciesGroupIds: [], identification: [], sourceIds: ["source:ontario-small-game"],
+        verificationStatus: "verified", lastReviewed: "2026-09-20"
+      };
+    },
+    (file) => {
+      const result = run(["--strict", file]);
+      assert.equal(result.status, 1);
+      assert.match(result.stdout, /INVALID_SCIENTIFIC_NAME/);
+    },
+  );
+});
+
+test("duplicate aliases and unverified species media fail publication validation", () => {
+  withBundle(
+    (bundle) => {
+      const species = bundle.entities.find((entity) => entity.type === "species");
+      species.aliases ??= [];
+      species.aliases.push({ value: "Duplicate", type: "common_name", verificationStatus: "verified" });
+      species.aliases.push({ value: "duplicate", type: "common_name", verificationStatus: "verified" });
+      bundle.media.push({
+        id: "media:test", kind: "image", sourceType: "unsplash", creator: "Photographer", licence: "Unsplash",
+        assetUrl: "https://images.unsplash.com/test", depictsSpeciesIds: [species.id], identityVerification: "unverified",
+        locationDisclosure: "none", status: "active"
+      });
+    },
+    (file) => {
+      const result = run(["--strict", file]);
+      assert.equal(result.status, 1);
+      assert.match(result.stdout, /DUPLICATE_ALIAS/);
+      assert.match(result.stdout, /UNVERIFIED_SPECIES_MEDIA/);
+      assert.match(result.stdout, /INCOMPLETE_UNSPLASH_ATTRIBUTION/);
+    },
+  );
+});

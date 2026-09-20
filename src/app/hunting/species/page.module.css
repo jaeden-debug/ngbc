@@ -1,0 +1,23 @@
+.page { min-height: 100vh; background: radial-gradient(circle at 80% 0, rgba(92,112,76,.18), transparent 34rem), #090c0a; color: #eee9d7; }
+.shell { width: min(76rem, calc(100% - 2rem)); margin: 0 auto; padding: 1rem 0 5rem; }
+.hero { max-width: 58rem; padding: clamp(3rem, 8vw, 6rem) 0 2.5rem; }
+.eyebrow { margin: 0 0 .6rem; color: #d99a55; letter-spacing: .14em; text-transform: uppercase; font-size: .76rem; font-weight: 700; }
+.hero h1 { margin: 0; color: #fffdf5; font: 700 clamp(2.7rem, 8vw, 5.7rem)/.96 Georgia, serif; letter-spacing: -.035em; }
+.lede { font-size: clamp(1.1rem, 2.3vw, 1.35rem); line-height: 1.55; color: #d5cfba; }
+.rule { padding: .8rem 1rem; border-left: 3px solid #d99a55; background: rgba(217,154,85,.08); line-height: 1.55; }
+.rule a, .card a { color: #f1c58f; text-underline-offset: .2em; }
+.searchLabel { display: block; margin-bottom: .45rem; color: #cbc5b0; font-weight: 700; }
+.search { width: min(42rem, 100%); min-height: 48px; padding: .75rem .85rem; border: 1px solid rgba(238,233,215,.28); background: #111612; color: #fffdf5; font: inherit; }
+.search:focus-visible { outline: 2px solid #d99a55; outline-offset: 3px; }
+.count { color: #aaa58f; }
+.group { padding-top: 2rem; }
+.group h2 { color: #fffdf5; font: 600 clamp(1.45rem, 4vw, 2rem) Georgia, serif; text-transform: capitalize; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .9rem; }
+.card { min-width: 0; padding: 1rem; border: 1px solid rgba(238,233,215,.16); background: rgba(255,255,255,.035); }
+.noPhoto { display: grid; place-items: center; aspect-ratio: 16/7; border: 1px dashed rgba(238,233,215,.22); background: linear-gradient(135deg, rgba(128,147,111,.13), rgba(217,154,85,.06)); color: #aaa58f; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+.card h3 { margin: 1rem 0 .3rem; font: 600 1.25rem Georgia, serif; }
+.scientific { margin: 0; color: #aaa58f; font: italic .95rem Georgia, serif; }
+.coverage { margin: .85rem 0 0; color: #c6c0ac; font-size: .82rem; line-height: 1.45; }
+.empty { padding: 2rem 0; color: #aaa58f; }
+@media (max-width: 820px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .grid { grid-template-columns: 1fr; } .shell { width: min(100% - 1.25rem, 76rem); } }

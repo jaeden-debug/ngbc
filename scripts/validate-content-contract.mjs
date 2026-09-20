@@ -193,6 +193,13 @@ bundle.entities.forEach((entity, index) => {
   if (entity.type !== entity.id.split(":", 1)[0]) error("TYPE_MISMATCH", `${path}.type`, "entity type must match ID prefix");
   if (!Array.isArray(entity.names) || entity.names.length === 0) error("MISSING_NAME", `${path}.names`, "entity requires at least one localized name");
   interval(entity, path);
+  const aliases = Array.isArray(entity.aliases) ? entity.aliases : [];
+  const aliasKeys = new Set();
+  aliases.forEach((alias, aliasIndex) => {
+    const key = `${alias?.locale ?? "*"}|${String(alias?.value ?? "").trim().toLocaleLowerCase("en-CA")}`;
+    if (aliasKeys.has(key)) error("DUPLICATE_ALIAS", `${path}.aliases[${aliasIndex}]`, `duplicate alias in locale scope: ${String(alias?.value)}`);
+    aliasKeys.add(key);
+  });
 });
 
 const slugKeys = new Map();
@@ -223,6 +230,15 @@ bundle.resources.forEach((resource, index) => {
 
   if (resource?.type === "species" && !resource?.speciesProfile) {
     error("MISSING_SPECIES_PROFILE", `${path}.speciesProfile`, "species resource requires a species profile");
+  }
+  if (resource?.type === "species" && resource?.speciesProfile) {
+    const profile = resource.speciesProfile;
+    if (!resource?.quickAnswer?.trim()) error("MISSING_QUICK_ANSWER", `${path}.quickAnswer`, "published species requires a direct answer");
+    if (!Array.isArray(profile.sourceIds) || profile.sourceIds.length === 0) error("UNSOURCED_SPECIES", `${path}.speciesProfile.sourceIds`, "species profile requires at least one authoritative source");
+    const expectedScientificName = `${profile?.taxonomy?.genus ?? ""} ${profile?.taxonomy?.species ?? ""}`.trim();
+    if (!/^[A-Z][a-z-]+ [a-z][a-z-]+$/.test(profile?.scientificName ?? "") || profile.scientificName !== expectedScientificName) {
+      error("INVALID_SCIENTIFIC_NAME", `${path}.speciesProfile.scientificName`, "must be a binomial matching taxonomy genus and species");
+    }
   }
   validateApplicability(resource?.applicability, `${path}.applicability`, ids);
 
@@ -316,6 +332,17 @@ bundle.media.forEach((media, index) => {
   if (!media?.creator || !media?.licence || !media?.assetUrl) error("INCOMPLETE_MEDIA_PROVENANCE", path, "creator, licence, and assetUrl are required");
   if (Array.isArray(media?.depictsSpeciesIds) && media.depictsSpeciesIds.length > 0 && media.identityVerification !== "verified") {
     error("UNVERIFIED_SPECIES_MEDIA", `${path}.identityVerification`, "species-targeted media identity must be verified");
+  }
+  if (Array.isArray(media?.depictsSpeciesIds) && media.depictsSpeciesIds.length > 1) {
+    error("AMBIGUOUS_PRIMARY_SPECIES_MEDIA", `${path}.depictsSpeciesIds`, "species media must identify exactly one canonical species record");
+  }
+  if (media?.sourceType === "unsplash" && media?.status === "active") {
+    if (!media?.sourceUrl || !media?.attribution || !media?.altText) {
+      error("INCOMPLETE_UNSPLASH_ATTRIBUTION", path, "active Unsplash media requires sourceUrl, attribution, and useful altText");
+    }
+    if (media?.identityVerification !== "verified" || !media?.identityVerifiedAt || !media?.identityVerifiedBy) {
+      error("UNVERIFIED_UNSPLASH_MEDIA", path, "active Unsplash species media requires recorded human verification");
+    }
   }
   const refs = [];
   collectIdRefs(media, ["depictsEntityIds", "depictsSpeciesIds", "sourceIds"], refs);

@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit",
     "validate:content": "node scripts/validate-content-contract.mjs --mode=warn fixtures/content-contract/valid-bundle.json",
     "validate:content:strict": "node scripts/validate-content-contract.mjs --strict",
-    "validate:content:published": "node scripts/validate-content-contract.mjs --strict content/published/en-CA.json",
+    "validate:content:published": "node scripts/validate-content-contract.mjs --strict content/published/en-CA.json content/published/species-wave-1.json",
     "test:content-contract": "node --test scripts/validate-content-contract.test.mjs",
     "test:content-repository": "node --test src/lib/content/repository.test.ts",
     "test:hunt": "node --test src/lib/hunt/*.test.ts",

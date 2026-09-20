@@ -62,19 +62,18 @@ export default async function SpeciesPage({ params }: Props) {
   const resource = await getSpeciesResource(species);
   if (!resource) notFound();
 
-  const blocksPromise = contentRepository.getContextualBlocks({
+  const blocksPromise = contentRepository.getSpeciesBlocks(resource.speciesProfile.speciesId, {
     locale: resource.locale,
     countryId: "country:ca",
-    jurisdictionIds: ["jurisdiction:ca-on"],
-    speciesIds: [resource.speciesProfile.speciesId],
+    jurisdictionIds: resource.speciesProfile.documentedHuntingJurisdictionIds,
     activityId: "activity:hunting",
-    huntTypeId: "hunt_type:upland",
-    ownerIds: [resource.id],
-    blockTypes: ["habitat_tip", "identification_warning", "legal_note"],
+    blockTypes: ["habitat_tip", "identification_warning", "seasonal_behavior", "legal_note"],
     date: resource.lastReviewed,
   });
-  const [related, blocks] = await Promise.all([
+  const [related, relatedSpecies, image, blocks] = await Promise.all([
     contentRepository.getRelatedResources(resource.id, { locale: resource.locale, limit: 5 }),
+    contentRepository.getRelatedSpecies(resource.speciesProfile.speciesId),
+    contentRepository.getSpeciesImage(resource.speciesProfile.speciesId),
     blocksPromise,
   ]);
   const sourceIds = new Set(resource.sourceIds ?? []);
@@ -86,13 +85,13 @@ export default async function SpeciesPage({ params }: Props) {
 
   const breadcrumbs = [
     { name: "Home", path: "/" },
-    { name: "Hunt checker", path: "/hunt" },
-    { name: "Ruffed grouse", path: resource.canonicalUrl ?? "/hunting/species/ruffed-grouse" },
+    { name: "Species library", path: "/hunting/species" },
+    { name: resource.title, path: resource.canonicalUrl ?? `/hunting/species/${resource.slug}` },
   ];
 
   return (
     <main className={styles.page}>
-      <StructuredData data={speciesArticleJsonLd(resource, absoluteUrl(resource.canonicalUrl ?? "/hunting/species/ruffed-grouse"))} />
+      <StructuredData data={speciesArticleJsonLd(resource, absoluteUrl(resource.canonicalUrl ?? `/hunting/species/${resource.slug}`))} />
       <div className={styles.shell}>
         <div className={styles.breadcrumb}><Breadcrumbs items={breadcrumbs} /></div>
         <header className={styles.hero}>
@@ -100,6 +99,18 @@ export default async function SpeciesPage({ params }: Props) {
           <h1>{resource.title}</h1>
           <p className={styles.scientific}>{resource.speciesProfile.scientificName}</p>
           <p className={styles.identity}>Canonical ID: <code>{resource.speciesProfile.speciesId}</code></p>
+          {image ? (
+            <figure className={styles.photo}>
+              {/* eslint-disable-next-line @next/next/no-img-element -- external licensed media is contract-gated and responsive. */}
+              <img src={image.assetUrl} alt={image.altText ?? ""} width={image.width} height={image.height} />
+              <figcaption>{image.caption} {image.attribution}</figcaption>
+            </figure>
+          ) : (
+            <div className={styles.noPhoto} role="note">
+              <strong>No species photograph published</strong>
+              <span>North Ground publishes a wildlife photo only after exact-species identity and attribution are verified.</span>
+            </div>
+          )}
           <div className={styles.directAnswer}><DirectAnswer>{resource.quickAnswer}</DirectAnswer></div>
           <div className={styles.ctaRow}>
             <Link className={styles.primaryCta} href="/hunt?species=ruffed-grouse">Check a location and date</Link>
@@ -116,8 +127,22 @@ export default async function SpeciesPage({ params }: Props) {
           <h2 id="habitat-context">Habitat and seasonal context</h2>
           <div className={styles.sectionText}>
             {resource.speciesProfile.habitat?.map((section) => <p key={section.text}>{section.text}</p>)}
+            {resource.speciesProfile.rangeSummary?.map((section) => <p key={section.value}>{section.value} Range describes possible occurrence, not huntability or exact local presence.</p>)}
             {resource.speciesProfile.seasonalBehavior?.map((section) => <p key={section.text}>{section.text}</p>)}
           </div>
+        </section>
+
+        <section className={styles.section} aria-labelledby="identification-context">
+          <h2 id="identification-context">Identification and confusion risks</h2>
+          <div className={styles.sectionText}>
+            {resource.speciesProfile.identification.map((section) => <p key={section.text}>{section.text}</p>)}
+            {resource.speciesProfile.signsAndTracks?.map((section) => <p key={section.text}>{section.text}</p>)}
+          </div>
+          {relatedSpecies.length ? (
+            <ul className={styles.relatedSpecies}>
+              {relatedSpecies.map((species) => <li key={species.id}><Link href={species.canonicalUrl ?? `/hunting/species/${species.slug}`}>Compare {species.title}</Link></li>)}
+            </ul>
+          ) : null}
         </section>
 
         <section className={styles.section} aria-labelledby="field-use">
@@ -133,6 +158,7 @@ export default async function SpeciesPage({ params }: Props) {
 
         <section className={styles.section} aria-labelledby="next-question">
           <h2 id="next-question">Next question</h2>
+          <p><Link className={styles.primaryCta} href={`/hunt?species=${resource.slug}`}>Check this species in North Ground Hunt</Link></p>
           <div className={styles.related}><RelatedResources resources={related} /></div>
         </section>
       </div>

@@ -10,6 +10,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 1,
     },
+    {
+      url: absoluteUrl("/hunting/species"),
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
     ...resources.flatMap((resource) => resource.canonicalUrl ? [{
       url: absoluteUrl(resource.canonicalUrl),
       lastModified: resource.updatedAt,

@@ -47,11 +47,36 @@ test("context matching requires constrained jurisdiction data and explains match
 
 test("related resources expose only real published destinations", async () => {
   const related = await contentRepository.getRelatedResources("species:ruffed-grouse", { locale: "en-CA" });
-  assert.deepEqual(related, [{
-    id: "tool:season-finder",
-    type: "tool",
-    title: "North Ground Hunt season finder",
-    description: "Resolve an Ontario wildlife management unit and evaluate the certified ruffed grouse rule for a selected date.",
-    canonicalUrl: "/hunt",
-  }]);
+  assert.deepEqual(related.map(({ id }) => id), ["tool:season-finder", "species:spruce-grouse"]);
+  assert.ok(related.every(({ canonicalUrl }) => canonicalUrl?.startsWith("/")));
+});
+
+test("production species lookup, aliases and search use canonical identity", async () => {
+  const deer = await contentRepository.getSpecies("species:white-tailed-deer");
+  assert.equal(deer?.speciesProfile.scientificName, "Odocoileus virginianus");
+  assert.equal(deer?.canonicalUrl, "/hunting/species/white-tailed-deer");
+
+  const whitetail = await contentRepository.searchSpecies("whitetail", { locale: "en-CA" });
+  assert.deepEqual(whitetail.map(({ id }) => id), ["species:white-tailed-deer"]);
+  const french = await contentRepository.searchSpecies("Orignal", { locale: "en-CA" });
+  assert.deepEqual(french.map(({ id }) => id), ["species:moose"]);
+  assert.ok((await contentRepository.getSpeciesAliases("species:white-tailed-deer")).some(({ value }) => value === "white-tail"));
+});
+
+test("species groups, related species and image publication gate remain explicit", async () => {
+  const spruce = await contentRepository.getSpecies("species:spruce-grouse");
+  assert.deepEqual(spruce?.speciesProfile.speciesGroupIds, ["species_group:grouse"]);
+  assert.deepEqual((await contentRepository.getRelatedSpecies("species:spruce-grouse")).map(({ id }) => id), ["species:ruffed-grouse"]);
+  assert.equal(await contentRepository.getSpeciesImage("species:spruce-grouse"), null);
+  assert.equal(await contentRepository.getSpecies("species:gray-partridge"), null);
+});
+
+test("species App Blocks and sources remain independently retrievable", async () => {
+  const blocks = await contentRepository.getSpeciesBlocks("species:mallard", {
+    locale: "en-CA",
+    activityId: "activity:hunting",
+    blockTypes: ["identification_warning"],
+  });
+  assert.equal(blocks.blocks[0]?.block.id, "content_block:mallard.identification.01");
+  assert.deepEqual((await contentRepository.getSpeciesSources("species:mallard")).map(({ id }) => id), ["source:cornell-mallard"]);
 });
