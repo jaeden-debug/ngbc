@@ -4,16 +4,36 @@
 
 /* HERO */
 .hero{
-  --cx: 50%;
-  --cy: 42%;
+  /* driven from Hero.tsx — light position, torch origin, beam geometry */
+  --lx: 50%;
+  --ly: 44%;
+  --ox: 50%;
+  --oy: 124%;
+  --beam-rot: -90deg;
+  --beam-scale: 0.6;
+  --pool-scale: 1;
+  --pool-fade: 1;
   --px: 0px;
   --py: 0px;
+
+  /* how big the lit pool is before the beam-length scaling kicks in */
+  --pool: 250px;
 
   position:relative;
   min-height: 100svh;
   min-height: 100vh;
   overflow:hidden;
-  animation: heroIn .9s ease-out both;
+  background: #04060a;
+
+  /* claim the gesture: without this the browser swallows touch-drags as
+     scroll attempts and pointermove never arrives */
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  animation: heroIn .9s ease-out both,
+             torchFlicker 6.5s ease-in-out 1.6s infinite;
 
   transition: opacity .45s ease, filter .45s ease, transform .45s ease;
   will-change: opacity, filter, transform;
@@ -38,21 +58,275 @@
   object-fit: cover;
   object-position: center;
 
+  background-image: url(/videos/poster-desktop.webp);
+  background-size: cover;
+  background-position: center;
+
   transform: translate3d(var(--px), var(--py), 0) scale(1.07);
   transition: transform .22s ease-out;
 
-  filter: brightness(1.06) contrast(1.06) saturate(1.05);
+  /* lit footage is graded warm; the veil does the darkening */
+  filter:
+    brightness(calc(var(--expose) + var(--storm) * .55))
+    contrast(1.16)
+    saturate(calc(1.08 - var(--storm) * .25));
+  animation: exposeIn 3.2s cubic-bezier(.45,0,.55,1) .2s both;
   will-change: transform, filter;
 }
 
+/*
+  Brand mark. It lives in the scene rather than on top of it: painted under
+  the veil, so the torch reveals it and lightning lights it, and carrying the
+  same parallax as the footage so it stays locked to the plate.
+*/
+.heroMark{
+  position:absolute;
+  left:50%;
+  top:43%;
+  width: clamp(250px, 26vw, 420px);
+  height:auto;
+  pointer-events:none;
+  user-select:none;
+  -webkit-user-drag:none;
+
+  transform: translate(-50%, -50%) translate3d(var(--px), var(--py), 0);
+  transition: transform .22s ease-out;
+  will-change: transform;
+
+  opacity: 0;
+  animation: markIn 1.4s cubic-bezier(.2,.7,.3,1) .35s both;
+}
+
+@keyframes markIn{
+  from{ opacity: 0; transform: translate(-50%, -50%) scale(1.035); filter: blur(6px); }
+  to{ opacity: .96; transform: translate(-50%, -50%) scale(1); filter: blur(0); }
+}
+
+/* ===== FLASHLIGHT ===== */
+
+/* registered so the flicker + intro can be multiplied together */
+@property --torch{
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 1;
+}
+@property --torch-in{
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+/* 0 = scene fully lit (page load), 1 = full darkness */
+@property --dark{
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 1;
+}
+/* 0 = no lightning, 1 = a close strike */
+@property --storm{
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+/* video exposure, ramped during the intro */
+@property --expose{
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 1.34;
+}
+
+/*
+  The veil is the darkness. A soft hole is burned through it at the point the
+  beam lands, so the footage only exists where the light falls.
+*/
+.veil{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+
+  background: #04060a;
+  /* --dark runs the intro; --storm punches holes in it when it flashes */
+  opacity: calc(var(--dark) * .955 - var(--storm) * .74);
+
+  -webkit-mask-image: radial-gradient(
+    circle calc(var(--pool) * var(--pool-scale)) at var(--lx) var(--ly),
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,.04) 20%,
+    rgba(0,0,0,.20) 40%,
+    rgba(0,0,0,.55) 60%,
+    rgba(0,0,0,.85) 79%,
+    rgba(0,0,0,.98) 92%,
+    rgba(0,0,0,1) 100%
+  );
+  mask-image: radial-gradient(
+    circle calc(var(--pool) * var(--pool-scale)) at var(--lx) var(--ly),
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,.04) 20%,
+    rgba(0,0,0,.20) 40%,
+    rgba(0,0,0,.55) 60%,
+    rgba(0,0,0,.85) 79%,
+    rgba(0,0,0,.98) 92%,
+    rgba(0,0,0,1) 100%
+  );
+
+  animation: veilIn 3.2s cubic-bezier(.45,0,.55,1) .2s both;
+}
+
+/* the lights go out: ~0.9s of open scene, then the dark closes in */
+@keyframes veilIn{
+  0%{ --dark: 0 }
+  28%{ --dark: 0 }
+  100%{ --dark: 1 }
+}
+
+@keyframes exposeIn{
+  0%{ --expose: .98 }
+  28%{ --expose: .98 }
+  100%{ --expose: 1.34 }
+}
+
+/*
+  The shaft of light. Anchored at the torch origin (below frame, centre),
+  rotated toward the cursor and scaled uniformly so the cone keeps a constant
+  ~28deg spread however far the beam is thrown. The wedge is cut with a
+  conic-gradient mask so its edges stay soft instead of clipping to a triangle.
+*/
+.beam{
+  position:absolute;
+  left:0;
+  top:0;
+  width: 1200px;           /* BEAM_BASE in Hero.tsx */
+  height: 780px;
+  margin-top: -390px;
+  pointer-events:none;
+
+  transform-origin: 0 50%;
+  transform:
+    translate(var(--ox), var(--oy))
+    rotate(var(--beam-rot))
+    scale(var(--beam-scale));
+  will-change: transform;
+
+  background: linear-gradient(
+    to right,
+    rgba(255,234,188,0) 0%,
+    rgba(255,234,188,.05) 9%,
+    rgba(255,238,198,.085) 38%,
+    rgba(255,242,210,.115) 74%,
+    rgba(255,242,210,.05) 93%,
+    rgba(255,242,210,0) 100%
+  );
+
+  -webkit-mask-image: conic-gradient(
+    from 76deg at 0% 50%,
+    rgba(0,0,0,0) 0deg,
+    rgba(0,0,0,.18) 4deg,
+    rgba(0,0,0,.62) 9deg,
+    rgba(0,0,0,1) 14deg,
+    rgba(0,0,0,.62) 19deg,
+    rgba(0,0,0,.18) 24deg,
+    rgba(0,0,0,0) 28deg,
+    rgba(0,0,0,0) 360deg
+  );
+  mask-image: conic-gradient(
+    from 76deg at 0% 50%,
+    rgba(0,0,0,0) 0deg,
+    rgba(0,0,0,.18) 4deg,
+    rgba(0,0,0,.62) 9deg,
+    rgba(0,0,0,1) 14deg,
+    rgba(0,0,0,.62) 19deg,
+    rgba(0,0,0,.18) 24deg,
+    rgba(0,0,0,0) 28deg,
+    rgba(0,0,0,0) 360deg
+  );
+
+  mix-blend-mode: screen;
+  filter: blur(24px);
+  opacity: calc(.88 * var(--torch-in) * var(--torch));
+  animation: torchIn 1.5s ease-out 1.6s both;
+}
+
+/* the hot pool where the beam lands */
+.pool{
+  position:absolute;
+  left:0;
+  top:0;
+  width: 700px;
+  height: 700px;
+  pointer-events:none;
+
+  transform:
+    translate3d(var(--lx), var(--ly), 0)
+    translate(-50%, -50%)
+    scale(var(--pool-scale));
+  will-change: transform;
+
+  background: radial-gradient(
+    closest-side,
+    rgba(255,243,214,.24),
+    rgba(255,229,182,.12) 30%,
+    rgba(222,196,140,.045) 55%,
+    rgba(170,152,112,.015) 72%,
+    transparent 80%
+  );
+
+  mix-blend-mode: screen;
+  filter: blur(6px);
+  opacity: calc(var(--pool-fade) * var(--torch-in) * var(--torch));
+  animation: torchIn 1.5s ease-out 1.6s both;
+}
+
+@keyframes torchIn{
+  from{ --torch-in: 0 }
+  to{ --torch-in: 1 }
+}
+
+/* no torch burns perfectly steady (driven on .hero, see its animation list) */
+@keyframes torchFlicker{
+  0%,100%{ --torch: 1 }
+  14%{ --torch: .93 }
+  21%{ --torch: 1.04 }
+  38%{ --torch: .97 }
+  56%{ --torch: 1.02 }
+  67%{ --torch: .94 }
+  83%{ --torch: 1.01 }
+}
+
+/*
+  Storm. --storm is driven from Hero.tsx on an irregular schedule; it lifts
+  the veil (see .veil) and fires this sky wash at the same instant, so a
+  strike genuinely lights the scene instead of pasting white over black.
+*/
+.lightning{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  mix-blend-mode: screen;
+
+  background:
+    /* the flash itself, strongest at the horizon line */
+    linear-gradient(
+      to bottom,
+      rgba(206,228,255,.46) 0%,
+      rgba(178,205,245,.30) 20%,
+      rgba(146,175,220,.15) 46%,
+      rgba(118,142,180,.05) 72%,
+      transparent 100%
+    ),
+    /* cold bounce off the ground */
+    radial-gradient(120% 60% at 50% 104%, rgba(150,178,220,.12), transparent 70%);
+
+  opacity: calc(var(--storm) * .85);
+  will-change: opacity;
+}
+
+/* static vignette + floor gradient so the copy always has something to sit on */
 .heroShade{
   position:absolute;
   inset:0;
   opacity:0;
   background:
-    radial-gradient(820px 560px at var(--cx) var(--cy), rgba(201,194,166,.12), transparent 66%),
-    radial-gradient(1200px 900px at 50% 45%, rgba(0,0,0,.22), rgba(0,0,0,.56)),
-    linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,.50));
+    radial-gradient(130% 90% at 50% 40%, transparent 42%, rgba(0,0,0,.42) 78%, rgba(0,0,0,.72) 100%),
+    linear-gradient(to bottom, rgba(0,0,0,.34) 0%, transparent 26%, transparent 62%, rgba(0,0,0,.62) 100%);
   animation: shadeIn .95s ease-out .25s both;
   pointer-events:none;
 }
@@ -62,6 +336,7 @@
   to{ opacity:1 }
 }
 
+/* airborne dust / film texture */
 .cursorFx{
   position:absolute;
   inset:0;
@@ -112,7 +387,7 @@
 .heroTagline{
   margin: 0;
   padding: 0 10px;
-  color: rgba(201,194,166,.72);
+  color: rgba(214,207,180,.86);
   font-size: clamp(12px, 2.0vw, 16px);
   line-height: 1.25;
   letter-spacing: .14em;
@@ -262,6 +537,63 @@
 .cta:hover::after,
 .cta:focus-visible::after{
   animation: sweepOnce .55s ease-out 0s 1 both;
+}
+
+/* tilt-to-aim toggle (touch devices with an orientation sensor only) */
+.tiltBtn{
+  position:absolute;
+  right: 14px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 6;
+
+  display:inline-flex;
+  align-items:center;
+  gap: 7px;
+
+  padding: 9px 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(201,194,166,.22);
+  background: rgba(4,6,10,.42);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+
+  color: rgba(201,194,166,.78);
+  font: inherit;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+
+  opacity: 0;
+  animation: fadeInBtn .7s ease-out 2.6s both;
+  transition: color .2s ease, border-color .2s ease, background .2s ease;
+}
+
+@keyframes fadeInBtn{ to{ opacity: 1 } }
+
+.tiltBtn:active{ transform: scale(.98); }
+
+.tiltOn{
+  color: rgba(255,244,214,.95);
+  border-color: rgba(255,238,198,.42);
+  background: rgba(24,20,12,.5);
+}
+
+.tiltDot{
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(201,194,166,.55);
+  transition: background .2s ease, box-shadow .2s ease;
+}
+
+.tiltOn .tiltDot{
+  background: rgba(255,238,198,.95);
+  box-shadow: 0 0 9px rgba(255,238,198,.85);
 }
 
 /* scroll hint */
@@ -537,8 +869,22 @@
   color: rgba(255,255,255,.92);
 }
 
+@media (max-width: 900px){
+  .hero{ --pool: 215px; }
+  .heroMark{ width: clamp(230px, 40vw, 330px); }
+}
+
 /* Mobile tuning */
 @media (max-width: 520px){
+  .hero{
+    --pool: 175px;
+  }
+
+  .heroMark{
+    width: min(66vw, 290px);
+    top: 41%;
+  }
+
   .heroInner{
     padding: 0 16px calc(72px + env(safe-area-inset-bottom));
   }
@@ -546,6 +892,18 @@
   .heroVideo{
     transform: scale(1.02);
     transition: none;
+    background-image: url(/videos/poster-mobile.webp);
+  }
+
+  .beam{
+    height: 620px;
+    margin-top: -310px;
+    filter: blur(18px);
+  }
+
+  .pool{
+    width: 560px;
+    height: 560px;
   }
 
   .heroTagline{
@@ -562,8 +920,14 @@
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   .hero,
+  .heroVideo,
+  .heroMark,
   .heroShade,
   .cursorFx,
+  .veil,
+  .beam,
+  .pool,
+  .lightning,
   .cta,
   .scrollHint,
   .scrollLine,
@@ -574,6 +938,14 @@
     transition: none !important;
   }
   .cta{ opacity:1; transform:none; }
+
+  /* steady lamp: no flicker, no chase, no storm */
+  .veil{ opacity:.95; }
+  .lightning{ opacity:0; }
+  .tiltBtn{ opacity:1; }
+  .heroMark{ opacity:.96; transform: translate(-50%,-50%); }
+  .beam{ opacity:.8; filter: blur(22px); }
+  .pool{ opacity:1; filter: blur(4px); }
 }
 /* === Deck navigation arrows (desktop) === */
 .deckNavArrow{

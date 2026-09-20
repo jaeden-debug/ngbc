@@ -46,3 +46,10 @@ public/*.mp4
 
 # keep optimized deploy videos
 !public/videos/*.mp4
+
+# stray source media at repo root (ngbcHero.mov alone is ~291MB)
+/*.mp4
+/*.mov
+
+# MCP browser-test artifacts
+.playwright-mcp/
