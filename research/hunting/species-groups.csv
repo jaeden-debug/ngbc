@@ -15,3 +15,14 @@ species_group:hares-rabbits,Hares and rabbits,Lièvres et lapins,species_group:s
 species_group:squirrels,Squirrels,Écureuils,species_group:small-game,TAXONOMIC_EDITORIAL,
 species_group:predators,Predators,Prédateurs,,EDITORIAL,May overlap big game small game or furbearer regulation
 species_group:wild-pig,Wild pig/boar,Sanglier,species_group:big-game,EDITORIAL,May be invasive and not legally classed as game
+species_group:exotic-big-game,Introduced/exotic big game,Gros gibier introduit,species_group:big-game,EDITORIAL,Regulatory classification and free-ranging status vary
+species_group:peccaries,Peccaries,Pécaris,species_group:big-game,TAXONOMIC_EDITORIAL,
+species_group:prairie-grouse,Prairie grouse,Tétras des prairies,species_group:grouse,TAXONOMIC_EDITORIAL,
+species_group:doves-pigeons,Doves and pigeons,Colombes et pigeons,species_group:migratory-game-birds,TAXONOMIC_EDITORIAL,Federal membership differs by species and country
+species_group:rails-coots,Rails gallinules and coots,Râles gallinules et foulques,species_group:migratory-game-birds,TAXONOMIC_EDITORIAL,Species-level limits and closures matter
+species_group:swans,Swans,Cygnes,species_group:waterfowl,TAXONOMIC_EDITORIAL,Permit-only or closed in many jurisdictions
+species_group:sea-ducks,Sea ducks,Canards de mer,species_group:ducks,TAXONOMIC_EDITORIAL,
+species_group:furbearers,Furbearers,Animaux à fourrure,,EDITORIAL,Hunting and trapping authority must be distinguished
+species_group:crows,Crows,Corneilles et corbeaux,species_group:migratory-game-birds,TAXONOMIC_EDITORIAL,Federal treaty status and state seasons require composition
+species_group:ungulates,Ungulates,Ongulés,species_group:big-game,TAXONOMIC_EDITORIAL,Biological umbrella used only for cross-jurisdiction normalization
+species_group:bears,Bears,Ours,species_group:big-game,TAXONOMIC_EDITORIAL,Biological umbrella; legal classifications and protected status vary

@@ -2,7 +2,7 @@
 
 Status: research foundation; not production regulatory data.
 
-This directory inventories hunting jurisdictions, authorities, official sources, GIS endpoints, species identities, aliases, and species–jurisdiction evidence. It is deliberately separate from the Hunt rules engine and the editorial content bundle.
+This directory inventories hunting jurisdictions, authorities, official sources, GIS discovery, species identities, aliases, jurisdiction-specific regulatory vocabulary, range-source leads, identification risks, and species–jurisdiction evidence. It is deliberately separate from the Hunt rules engine and the editorial content bundle.
 
 ## Safe-use boundary
 
@@ -24,6 +24,12 @@ This directory inventories hunting jurisdictions, authorities, official sources,
 | `species-master.csv` | Stable North American species identity registry |
 | `species-aliases.csv` | Locale- and region-aware names; ambiguity is explicit |
 | `species-jurisdiction-evidence.csv` | Source-backed hunting-context relationships |
+| `regulatory-group-mappings.csv` | Jurisdiction-specific official terms mapped cautiously to normalized groups |
+| `identification-risks.csv` | Source-linked high-consequence species-confusion pairs |
+| `species-range-sources.csv` | Authoritative range-source leads and explicit resolution limits |
+| `seasonal-behavior-queue.csv` | Prioritized, source-oriented seasonal behavior research modules |
+| `jurisdiction-source-coverage.csv` | Required source-category and GIS-availability status for every jurisdiction |
+| `content-opportunity-matrix.csv` | Species/jurisdiction editorial readiness and dependency decisions |
 | `research-queue.csv` | Prioritized verification and content-research work |
 | `source-gaps.csv` | Missing or weak official-source coverage |
 | `media-needs.csv` | Identification-media needs; no downloaded media |
@@ -53,4 +59,4 @@ Run:
 python3 research/hunting/validate.py
 ```
 
-The validator checks IDs, ISO country codes, enums, dates, duplicate URLs/scientific names, and orphan references. It does not certify legal interpretation or URL availability.
+The validator checks IDs, ISO country codes, enums, dates, duplicate URLs/scientific names, jurisdiction completeness, and cross-file references. It does not certify legal interpretation or URL availability.

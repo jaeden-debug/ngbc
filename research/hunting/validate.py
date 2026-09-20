@@ -7,7 +7,6 @@ import csv
 import re
 import sys
 from collections import Counter
-from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -23,6 +22,15 @@ RELATIONSHIPS = {
     "UNCLEAR", "PROTECTED_OR_CLOSED", "NOT_FOUND", "NEEDS_REVIEW",
 }
 COUNTRIES = {"CA", "US"}
+GIS_AVAILABILITY = {
+    "MACHINE_READABLE_OFFICIAL", "OFFICIAL_INTERACTIVE_MAP_ONLY",
+    "OFFICIAL_PDF_MAP", "THIRD_PARTY_ONLY_FOUND", "NO_SOURCE_FOUND",
+    "NEEDS_RESEARCH",
+}
+MEMBERSHIP = {"COMPLETE", "PARTIAL", "UNRESOLVED"}
+RISK_LEVELS = {"LOW", "MEDIUM", "HIGH", "CRITICAL"}
+RECOMMENDATIONS = {"WRITE_NOW", "RESEARCH_MORE", "WAIT_FOR_HUNT_COVERAGE", "LOW_PRIORITY"}
+COVERAGE_STATUSES = VERIFICATION | {"NOT_APPLICABLE"}
 
 errors: list[str] = []
 warnings: list[str] = []
@@ -67,6 +75,12 @@ species = load("species-master.csv")
 aliases = load("species-aliases.csv")
 evidence = load("species-jurisdiction-evidence.csv")
 gis = load("gis-sources.csv")
+group_mappings = load("regulatory-group-mappings.csv")
+identification_risks = load("identification-risks.csv")
+range_sources = load("species-range-sources.csv")
+seasonal_queue = load("seasonal-behavior-queue.csv")
+source_coverage = load("jurisdiction-source-coverage.csv")
+opportunities = load("content-opportunity-matrix.csv")
 
 jurisdiction_ids = unique(jurisdictions, "jurisdiction_id", "jurisdictions.csv")
 authority_ids = unique(authorities, "authority_id", "authorities.csv")
@@ -76,6 +90,13 @@ species_ids = unique(species, "species_id", "species-master.csv")
 unique(aliases, "alias_id", "species-aliases.csv")
 unique(evidence, "evidence_id", "species-jurisdiction-evidence.csv")
 unique(gis, "gis_source_id", "gis-sources.csv")
+unique(group_mappings, "mapping_id", "regulatory-group-mappings.csv")
+unique(identification_risks, "risk_id", "identification-risks.csv")
+unique(range_sources, "range_id", "species-range-sources.csv")
+unique(seasonal_queue, "module_id", "seasonal-behavior-queue.csv")
+coverage_jurisdictions = unique(source_coverage, "jurisdiction_id", "jurisdiction-source-coverage.csv")
+unique(source_coverage, "coverage_id", "jurisdiction-source-coverage.csv")
+unique(opportunities, "opportunity_id", "content-opportunity-matrix.csv")
 
 for values, name in [
     (jurisdiction_ids, "jurisdictions.csv"), (authority_ids, "authorities.csv"),
@@ -181,6 +202,90 @@ for row in gis:
     if not DATE_RE.fullmatch(row["retrieved_at"]):
         errors.append(f"gis-sources.csv: invalid retrieved date {row['retrieved_at']!r}")
 
+for row in group_mappings:
+    if row["jurisdiction_id"] not in jurisdiction_ids:
+        errors.append(f"regulatory-group-mappings.csv: unknown jurisdiction {row['jurisdiction_id']!r}")
+    if row["authority_id"] not in authority_ids:
+        errors.append(f"regulatory-group-mappings.csv: orphan authority {row['authority_id']!r}")
+    if row["source_id"] not in source_ids:
+        errors.append(f"regulatory-group-mappings.csv: orphan source {row['source_id']!r}")
+    for group_id in filter(None, row["normalized_group_id"].split("|")):
+        if group_id not in group_ids:
+            errors.append(f"regulatory-group-mappings.csv: unknown normalized group {group_id!r}")
+    for species_id in filter(None, row["included_species_ids"].split("|")):
+        if species_id not in species_ids:
+            errors.append(f"regulatory-group-mappings.csv: unknown included species {species_id!r}")
+    if row["membership_status"] not in MEMBERSHIP:
+        errors.append(f"regulatory-group-mappings.csv: invalid membership {row['membership_status']!r}")
+    if row["verification_status"] not in VERIFICATION:
+        errors.append(f"regulatory-group-mappings.csv: invalid verification status {row['verification_status']!r}")
+
+for row in identification_risks:
+    for field in ("species_id", "confused_species_id"):
+        if row[field] not in species_ids:
+            errors.append(f"identification-risks.csv: unknown {field} {row[field]!r}")
+    jurisdiction = row["jurisdiction_id"].strip()
+    if jurisdiction and jurisdiction not in jurisdiction_ids:
+        errors.append(f"identification-risks.csv: unknown jurisdiction {jurisdiction!r}")
+    if row["authoritative_source_id"] not in source_ids:
+        errors.append(f"identification-risks.csv: orphan source {row['authoritative_source_id']!r}")
+    if row["risk_level"] not in RISK_LEVELS:
+        errors.append(f"identification-risks.csv: invalid risk level {row['risk_level']!r}")
+    if row["verification_status"] not in VERIFICATION:
+        errors.append(f"identification-risks.csv: invalid verification status {row['verification_status']!r}")
+
+for row in range_sources:
+    if row["species_id"] not in species_ids:
+        errors.append(f"species-range-sources.csv: unknown species {row['species_id']!r}")
+    if row["source_id"] not in source_ids:
+        errors.append(f"species-range-sources.csv: orphan source {row['source_id']!r}")
+    if row["verification_status"] not in VERIFICATION:
+        errors.append(f"species-range-sources.csv: invalid verification status {row['verification_status']!r}")
+    if not DATE_RE.fullmatch(row["retrieved_at"]):
+        errors.append(f"species-range-sources.csv: invalid retrieved date {row['retrieved_at']!r}")
+
+for row in seasonal_queue:
+    if row["species_id"] not in species_ids:
+        errors.append(f"seasonal-behavior-queue.csv: unknown species {row['species_id']!r}")
+    if row["candidate_source_id"] not in source_ids:
+        errors.append(f"seasonal-behavior-queue.csv: orphan source {row['candidate_source_id']!r}")
+    if row["evidence_status"] not in VERIFICATION:
+        errors.append(f"seasonal-behavior-queue.csv: invalid evidence status {row['evidence_status']!r}")
+
+if coverage_jurisdictions != jurisdiction_ids:
+    missing = sorted(jurisdiction_ids - coverage_jurisdictions)
+    extra = sorted(coverage_jurisdictions - jurisdiction_ids)
+    errors.append(f"jurisdiction-source-coverage.csv: jurisdiction mismatch missing={missing} extra={extra}")
+for row in source_coverage:
+    if row["core_source_id"] not in source_ids:
+        errors.append(f"jurisdiction-source-coverage.csv: orphan core source {row['core_source_id']!r}")
+    for field in (
+        "regulations_status", "season_status", "species_classification_status",
+        "licensing_status", "management_unit_status", "emergency_updates_status",
+        "migratory_overlap_status",
+    ):
+        if row[field] not in COVERAGE_STATUSES:
+            errors.append(f"jurisdiction-source-coverage.csv: invalid {field} {row[field]!r}")
+    if row["gis_availability"] not in GIS_AVAILABILITY:
+        errors.append(f"jurisdiction-source-coverage.csv: invalid GIS availability {row['gis_availability']!r}")
+    if not DATE_RE.fullmatch(row["reviewed_at"]):
+        errors.append(f"jurisdiction-source-coverage.csv: invalid reviewed date {row['reviewed_at']!r}")
+
+for row in opportunities:
+    if row["species_id"] not in species_ids:
+        errors.append(f"content-opportunity-matrix.csv: unknown species {row['species_id']!r}")
+    if row["jurisdiction_id"] not in jurisdiction_ids:
+        errors.append(f"content-opportunity-matrix.csv: unknown jurisdiction {row['jurisdiction_id']!r}")
+    for source_id in filter(None, row["source_ids"].split("|")):
+        if source_id not in source_ids:
+            errors.append(f"content-opportunity-matrix.csv: orphan source {source_id!r}")
+    if row["identification_risk"] not in RISK_LEVELS:
+        errors.append(f"content-opportunity-matrix.csv: invalid identification risk {row['identification_risk']!r}")
+    if row["regulatory_dependency"] not in RISK_LEVELS:
+        errors.append(f"content-opportunity-matrix.csv: invalid regulatory dependency {row['regulatory_dependency']!r}")
+    if row["recommendation"] not in RECOMMENDATIONS:
+        errors.append(f"content-opportunity-matrix.csv: invalid recommendation {row['recommendation']!r}")
+
 for message in warnings:
     print(f"WARNING: {message}")
 for message in errors:
@@ -190,7 +295,10 @@ print(
     "Checked "
     f"{len(jurisdictions)} jurisdictions, {len(authorities)} authorities, "
     f"{len(sources)} regulatory/scientific sources, {len(gis)} GIS records, "
-    f"{len(species)} species, {len(aliases)} aliases, and {len(evidence)} evidence rows."
+    f"{len(species)} species, {len(aliases)} aliases, {len(evidence)} evidence rows, "
+    f"{len(group_mappings)} regulatory mappings, {len(identification_risks)} identification risks, "
+    f"{len(range_sources)} range records, {len(source_coverage)} coverage rows, and "
+    f"{len(opportunities)} content opportunities."
 )
 if errors:
     print(f"Validation failed with {len(errors)} error(s) and {len(warnings)} warning(s).")

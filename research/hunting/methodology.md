@@ -9,6 +9,8 @@
 5. Normalize high-priority North American species against a recognized taxonomic authority.
 6. Add a species–jurisdiction relationship only when an official source names the species or an unambiguously defined regulatory group.
 7. Record uncertainty and queue claim-level review.
+8. Map official regulatory groups per jurisdiction; never assume similarly named groups share membership.
+9. Separate species range, identification risk, seasonal behavior, and legal availability into distinct evidence lanes.
 
 ## Source hierarchy
 
@@ -37,6 +39,14 @@
 ## Species evidence rule
 
 Evidence rows describe a relationship, not a universal boolean. `DOCUMENTED_HUNTING` means the cited source explicitly includes a recreational hunting season or hunting rule for that taxon somewhere in the jurisdiction. `PERMIT_OR_QUOTA` and `PARTIAL_OR_SPECIAL` preserve constraints visible at inventory depth. A consumer still needs current rule text, date, hunter class, method, and all overlapping spatial layers.
+
+## Regulatory-group rule
+
+Official terms such as big game, small game, game bird, migratory game bird, and furbearer are jurisdiction-owned vocabulary. A normalized group supports discovery and comparison only. Membership is explicit where sourced, otherwise `UNRESOLVED`; consumers must not inherit members from another jurisdiction or from the group hierarchy.
+
+## Range and identification rule
+
+Range maps support broad biological context only. Predicted distribution, modeled habitat, occurrence, and administrative presence are not interchangeable and never establish an open season. Identification-risk rows are directional and jurisdiction-scoped when a rule or protected-species warning creates the consequence.
 
 ## Federal overlap
 

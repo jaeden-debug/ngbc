@@ -25,4 +25,25 @@ alias:snow-geese,snow geese,en,North America,species:snow-goose,common_name,EXAC
 alias:ross-geese,Ross's geese,en,North America,species:rosss-goose,common_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,Plural variant
 alias:wild-pig,wild pig,en,North America,species:wild-boar,common_name,CONTEXTUAL,,source:itis-taxonomy,NEEDS_REVIEW,Domestic-feral hybrids and agency definitions vary
 alias:feral-hog,feral hog,en,United States,species:wild-boar,common_name,CONTEXTUAL,,source:itis-taxonomy,NEEDS_REVIEW,Agency definitions vary
-alias:cougar,cougar,en,North America,species:mountain-lion,common_name,EXACT,,source:itis-taxonomy,NEEDS_REVIEW,Target species record not yet included; validator should flag orphan
+alias:cougar,cougar,en,North America,species:mountain-lion,common_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,
+alias:puma,puma,en,North America,species:mountain-lion,common_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,
+alias:catamount,catamount,en,eastern North America,species:mountain-lion,historical_name,CONTEXTUAL,,source:itis-taxonomy,NEEDS_REVIEW,
+alias:javelina,javelina,en,southwestern United States,species:collared-peccary,official_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,Common official regulatory term
+alias:aoudad,aoudad,en,southwestern United States,species:barbary-sheep,official_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,
+alias:axis,axis,en,Hawaii and Texas,species:axis-deer,common_name,CONTEXTUAL,,source:itis-taxonomy,NEEDS_REVIEW,Requires deer context
+alias:mearns-quail,Mearns's quail,en,southwestern United States,species:montezuma-quail,common_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,
+alias:prairie-chicken,prairie chicken,en,Great Plains,,common_name,AMBIGUOUS,species:greater-prairie-chicken|species:lesser-prairie-chicken,source:itis-taxonomy,SOURCE_FOUND,
+alias:sage-grouse,sage grouse,en,western United States,,common_name,AMBIGUOUS,species:greater-sage-grouse|species:gunnison-sage-grouse,source:itis-taxonomy,SOURCE_FOUND,
+alias:green-wing-teal,green-wing teal,en,North America,species:green-winged-teal,common_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,
+alias:blue-wing-teal,blue-wing teal,en,North America,species:blue-winged-teal,common_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,
+alias:scaup,scaup,en,North America,,common_name,AMBIGUOUS,species:greater-scaup|species:lesser-scaup,source:itis-taxonomy,SOURCE_FOUND,
+alias:bluebill,bluebill,en,North America,,common_name,AMBIGUOUS,species:greater-scaup|species:lesser-scaup,source:itis-taxonomy,NEEDS_REVIEW,Hunter vernacular
+alias:goldeneye,goldeneye,en,North America,,common_name,AMBIGUOUS,species:common-goldeneye|species:barrows-goldeneye,source:itis-taxonomy,SOURCE_FOUND,
+alias:merganser,merganser,en,North America,,common_name,AMBIGUOUS,species:hooded-merganser|species:common-merganser|species:red-breasted-merganser,source:itis-taxonomy,SOURCE_FOUND,
+alias:old-squaw,oldsquaw,en,North America,species:long-tailed-duck,historical_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,Historical common name retained only for search resolution
+alias:sea-duck,sea duck,en,North America,,common_name,AMBIGUOUS,species:common-eider|species:king-eider|species:surf-scoter|species:white-winged-scoter|species:black-scoter|species:long-tailed-duck|species:harlequin-duck,source:itis-taxonomy,SOURCE_FOUND,Group term must not resolve to a species
+alias:groundhog,groundhog,en,North America,species:woodchuck,common_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,
+alias:coondog-quarry,coon,en,United States,species:raccoon,common_name,CONTEXTUAL,,source:itis-taxonomy,NEEDS_REVIEW,Colloquial term
+alias:possum,possum,en,United States,species:virginia-opossum,common_name,CONTEXTUAL,,source:itis-taxonomy,NEEDS_REVIEW,Colloquial North American usage
+alias:river-otter,river otter,en,North America,species:north-american-river-otter,common_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,
+alias:mink,mink,en,North America,species:american-mink,common_name,CONTEXTUAL,,source:itis-taxonomy,NEEDS_REVIEW,Exact only within North American wild-species context

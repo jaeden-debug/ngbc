@@ -1,0 +1,25 @@
+module_id,priority,species_id,module_type,geographic_scope,candidate_source_id,evidence_status,content_dependency,notes
+module:white-tail-rut,1,species:white-tailed-deer,BREEDING_RUT,Canada_US,source:usfws-species,DISCOVERED,species_profile,Timing varies strongly by latitude and population
+module:white-tail-winter,1,species:white-tailed-deer,WINTER_BEHAVIOR,Canada_US,source:usfws-species,DISCOVERED,cold_weather_blocks,Separate northern yarding behavior from southern populations
+module:mule-deer-migration,1,species:mule-deer,MIGRATION,western_US_CA,source:usgs-gap-viewer,NEEDS_REVIEW,species_profile,Range model is not migration evidence; find state/federal telemetry sources
+module:moose-rut,1,species:moose,BREEDING_RUT,Canada_US,source:ca-eccc-biodiversity-sources,NEEDS_REVIEW,species_profile,Resolve provincial/state biology sources
+module:moose-winter,1,species:moose,WINTER_BEHAVIOR,Canada_US,source:ca-eccc-biodiversity-sources,NEEDS_REVIEW,cold_weather_blocks,Habitat and snow effects are region-specific
+module:elk-rut,1,species:elk,BREEDING_RUT,western_North_America,source:usfws-species,DISCOVERED,species_profile,
+module:caribou-migration,1,species:caribou,MIGRATION,Canada_Alaska,source:ca-wildlife-risk-2025,PARTIALLY_VERIFIED,species_profile,Must be herd/designatable-unit specific
+module:black-bear-denning,1,species:american-black-bear,WINTER_BEHAVIOR,Canada_US,source:usfws-species,DISCOVERED,cold_weather_blocks,Latitude sex and reproductive status matter
+module:turkey-breeding,1,species:wild-turkey,BREEDING,Canada_US,source:usfws-species,DISCOVERED,species_profile,Regional phenology required
+module:ruffed-grouse-winter,1,species:ruffed-grouse,WINTER_BEHAVIOR,Canada_northern_US,source:ca-eccc-biodiversity-sources,NEEDS_REVIEW,cold_weather_blocks,Snow roosting claims need primary/agency evidence
+module:spruce-grouse-winter,2,species:spruce-grouse,WINTER_BEHAVIOR,boreal_North_America,source:ca-eccc-biodiversity-sources,NEEDS_REVIEW,cold_weather_blocks,
+module:sharp-tail-lek,2,species:sharp-tailed-grouse,BREEDING_LEK,Great_Plains_prairies,source:usgs-gap-viewer,NEEDS_REVIEW,species_profile,Find agency biology source
+module:ptarmigan-plumage,1,species:willow-ptarmigan,SEASONAL_PLUMAGE,Arctic_subarctic,source:ca-eccc-biodiversity-sources,NEEDS_REVIEW,identification_warning,
+module:ptarmigan-habitat,1,species:rock-ptarmigan,SEASONAL_HABITAT,Arctic_alpine,source:ca-eccc-biodiversity-sources,NEEDS_REVIEW,identification_warning,
+module:snowshoe-cycle,1,species:snowshoe-hare,POPULATION_CYCLE,boreal_North_America,source:ca-eccc-biodiversity-sources,NEEDS_REVIEW,species_profile,Regional cycle timing and predator relationships need scientific sources
+module:mallard-migration,1,species:mallard,MIGRATION,North_America,source:ca-eccc-migratory-status,DISCOVERED,species_profile,Population/flyway specific
+module:black-duck-migration,1,species:american-black-duck,MIGRATION,eastern_North_America,source:ca-eccc-migratory-status,DISCOVERED,species_profile,
+module:canada-goose-populations,1,species:canada-goose,MIGRATION_POPULATIONS,North_America,source:ca-eccc-migratory-status,DISCOVERED,regulatory_context,Resident and migratory populations differ
+module:snow-goose-migration,1,species:snow-goose,MIGRATION,North_America,source:ca-eccc-migratory-status,DISCOVERED,species_profile,Separate populations and overabundant-species context
+module:woodcock-migration,2,species:american-woodcock,MIGRATION,eastern_North_America,source:usfws-species,DISCOVERED,species_profile,
+module:sandhill-populations,1,species:sandhill-crane,MIGRATION_POPULATIONS,North_America,source:usfws-species,DISCOVERED,identification_warning,Population-specific hunting frameworks
+module:pronghorn-winter,2,species:pronghorn,WINTER_BEHAVIOR,western_North_America,source:usfws-species,DISCOVERED,cold_weather_blocks,
+module:bighorn-rut,2,species:bighorn-sheep,BREEDING_RUT,western_North_America,source:usfws-species,DISCOVERED,species_profile,
+module:mountain-goat-winter,2,species:mountain-goat,WINTER_HABITAT,western_mountains,source:usfws-species,DISCOVERED,cold_weather_blocks,

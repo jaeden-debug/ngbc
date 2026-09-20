@@ -48,6 +48,42 @@ French names are included only where recognized official usage was found; blank 
 
 Relationship status: `DOCUMENTED_HUNTING`, `PARTIAL_OR_SPECIAL`, `PERMIT_OR_QUOTA`, `UNCLEAR`, `PROTECTED_OR_CLOSED`, `NOT_FOUND`, `NEEDS_REVIEW`.
 
+## `regulatory-group-mappings.csv`
+
+`mapping_id,jurisdiction_id,official_term,normalized_group_id,included_species_ids,membership_status,authority_id,source_id,effective_period,verification_status,notes`
+
+Normalized groups and included species are pipe-separated. `membership_status` is `COMPLETE`, `PARTIAL`, or `UNRESOLVED`; empty membership is never interpreted as an empty legal class.
+
+## `identification-risks.csv`
+
+`risk_id,species_id,confused_species_id,jurisdiction_id,risk_level,risk_context,authoritative_source_id,verification_status,notes`
+
+Risk levels are `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`. A jurisdiction-scoped warning must not be promoted into a continent-wide legal claim.
+
+## `species-range-sources.csv`
+
+`range_id,species_id,geographic_scope,source_id,range_type,resolution,source_url,retrieved_at,verification_status,limitations,notes`
+
+Range, habitat suitability, predicted distribution, and occurrence are distinct concepts. None establishes current local presence or huntability.
+
+## `seasonal-behavior-queue.csv`
+
+`module_id,priority,species_id,module_type,geographic_scope,candidate_source_id,evidence_status,content_dependency,notes`
+
+These are research modules, not publishable behavior claims.
+
+## `jurisdiction-source-coverage.csv`
+
+`coverage_id,jurisdiction_id,core_source_id,regulations_status,season_status,species_classification_status,licensing_status,management_unit_status,gis_availability,emergency_updates_status,migratory_overlap_status,reviewed_at,notes`
+
+There is exactly one row per jurisdiction. GIS availability is one of `MACHINE_READABLE_OFFICIAL`, `OFFICIAL_INTERACTIVE_MAP_ONLY`, `OFFICIAL_PDF_MAP`, `THIRD_PARTY_ONLY_FOUND`, `NO_SOURCE_FOUND`, or `NEEDS_RESEARCH`.
+
+## `content-opportunity-matrix.csv`
+
+`opportunity_id,species_id,jurisdiction_id,content_angle,reader_intent,source_readiness,range_readiness,identification_risk,regulatory_dependency,recommendation,priority,source_ids,notes`
+
+Recommendation is `WRITE_NOW`, `RESEARCH_MORE`, `WAIT_FOR_HUNT_COVERAGE`, or `LOW_PRIORITY`. `WRITE_NOW` applies only to the stated non-regulatory angle unless the production gate is independently met.
+
 ## `research-queue.csv`
 
 `queue_id,priority,entity_type,entity_id,jurisdiction_id,task,demand_basis,status,blocked_by,notes`
