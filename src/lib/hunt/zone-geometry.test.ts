@@ -78,22 +78,25 @@ test("the authority's own terminology is never rewritten", () => {
 
 test("drawing a boundary does not claim its rules are certified", () => {
   assert.equal(zoneCoverage(ONTARIO, "57"), "VERIFIED");
-  assert.equal(zoneCoverage(ONTARIO, "58"), "IN_DEVELOPMENT");
-  assert.equal(zoneCoverage(ONTARIO, "63A"), "IN_DEVELOPMENT");
-  // Layer-level coverage is weaker than any single certified zone.
+  assert.equal(zoneCoverage(ONTARIO, "63A"), "VERIFIED");
+  // WMU 51 is named by no small-game season row, so its boundary is known while
+  // its rules are not. That is the distinction this test exists to protect, and
+  // it is now the genuine case rather than an artefact of narrow coverage.
+  assert.equal(zoneCoverage(ONTARIO, "51"), "IN_DEVELOPMENT");
+  // Layer-level coverage stays weaker than any single certified zone.
   assert.equal(ONTARIO.coverage, "PARTIAL");
 });
 
 test("features carry per-zone coverage, not the layer's", async () => {
   const { fetcher } = stubFetch(collection([
     { name: "57", ring: square(-77.9, 45.2, 0.2) },
-    { name: "58", ring: square(-77.4, 45.6, 0.2) },
+    { name: "51", ring: square(-78.3, 45.8, 0.2) },
   ]));
   const result = await fetchLayerGeometry(ONTARIO, { west: -79, south: 44, east: -76, north: 46 }, 8, fetcher);
   assert.equal(result.status, "OK");
   assert.deepEqual(
     result.features.map((feature) => [feature.label, feature.coverage]),
-    [["WMU 57", "VERIFIED"], ["WMU 58", "IN_DEVELOPMENT"]],
+    [["WMU 57", "VERIFIED"], ["WMU 51", "IN_DEVELOPMENT"]],
   );
 });
 

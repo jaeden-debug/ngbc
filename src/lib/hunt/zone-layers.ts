@@ -1,4 +1,5 @@
 import type { CanonicalId } from "../content-contract/index.ts";
+import certifiedUnits from "../../../content/regulatory/ca-on-certified-units.json" with { type: "json" };
 
 /**
  * Which hunting-zone geography North Ground can actually draw, and how far the
@@ -61,7 +62,8 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     coverage: "PARTIAL",
     coverageNote:
       "Official Ontario WMU boundaries are drawn from the province's own feature layer. " +
-      "Certified season and limit records currently exist for WMU 57 only.",
+      `Certified small-game season and limit records exist for ${certifiedUnits.certifiedUnits.length} of ` +
+      `${certifiedUnits.officialUnitCount} units; the remainder are named by no season row North Ground has certified.`,
     authority: "Government of Ontario",
     sourceId: "source:ca-on-wmu-service",
     endpoint: ONTARIO_WMU_ENDPOINT,
@@ -70,8 +72,21 @@ export const ZONE_LAYERS: ZoneLayer[] = [
   },
 ];
 
-/** Zones whose regulatory record has been certified end to end. */
-export const CERTIFIED_ZONE_NAMES: ReadonlySet<string> = new Set(["57"]);
+/**
+ * Units that carry at least one certified regulatory rule.
+ *
+ * Generated alongside the regulatory bundle rather than maintained by hand, so
+ * expanding coverage cannot leave the map claiming "boundary only" for a unit
+ * whose rules have in fact been certified. It is a short list of identifiers
+ * because this module reaches the browser; the rules themselves stay server-side.
+ *
+ * "Certified" here means the unit has rules for SOME species. Whether the species
+ * a person actually picked is certified there is a separate question the engine
+ * answers per request.
+ */
+export const CERTIFIED_ZONE_NAMES: ReadonlySet<string> = new Set(
+  certifiedUnits.certifiedUnits.map((unit) => unit.toUpperCase()),
+);
 
 /**
  * What the rest of North America looks like today, stated as counts rather than a
@@ -81,6 +96,8 @@ export const CERTIFIED_ZONE_NAMES: ReadonlySet<string> = new Set(["57"]);
  */
 export const COVERAGE_ROADMAP = {
   drawnJurisdictions: 1,
+  certifiedUnits: certifiedUnits.certifiedUnits.length,
+  officialUnits: certifiedUnits.officialUnitCount,
   canadaInDevelopment: 13,
   unitedStatesInDevelopment: 50,
   summary:

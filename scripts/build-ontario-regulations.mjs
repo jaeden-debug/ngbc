@@ -23,6 +23,7 @@ const SOURCE_URL =
 const WMU_QUERY =
   "https://ws.lioservices.lrc.gov.on.ca/arcgis2/rest/services/LIO_OPEN_DATA/LIO_Open05/MapServer/5/query";
 const OUTPUT = "content/regulatory/ca-on-small-game-2026.json";
+const CERTIFIED_UNITS_OUTPUT = "content/regulatory/ca-on-certified-units.json";
 
 /** The licence year this summary is published for. */
 const SOURCE_YEAR = 2026;
@@ -382,6 +383,23 @@ async function main() {
 
   writeFileSync(OUTPUT, serialised);
 
+  // The map badge needs to know which units have ANY certified rule. It runs in
+  // the browser, so it gets a short list of identifiers rather than the bundle.
+  const certifiedUnits = [...new Set(
+    rules.flatMap((rule) => groups.find((group) => group.id === rule.regulatoryGroupId).officialIdentifiers),
+  )].sort();
+  writeFileSync(
+    CERTIFIED_UNITS_OUTPUT,
+    `${JSON.stringify({
+      generatedBy: "scripts/build-ontario-regulations.mjs",
+      jurisdictionId: "jurisdiction:ca-on",
+      sourceVersion: SOURCE_VERSION,
+      officialUnitCount: officialIdentifiers.length,
+      certifiedUnits,
+      uncertifiedUnits: officialIdentifiers.filter((unit) => !certifiedUnits.includes(unit)),
+    }, null, 2)}\n`,
+  );
+
   console.log("");
   console.log(`Wrote ${OUTPUT}`);
   console.log(`  source hash        ${sourceHash}`);
@@ -395,6 +413,7 @@ async function main() {
     );
     console.log(`    ${speciesId.padEnd(30)} ${forSpecies.length} rule(s) over ${units.size} units`);
   }
+  console.log(`  wrote ${CERTIFIED_UNITS_OUTPUT}`);
   console.log(`  units with no ruffed grouse row: ${uncovered.length ? uncovered.join(", ") : "none"}`);
   console.log(`  explicit no-season declarations : ${noSeason.length}`);
 }
