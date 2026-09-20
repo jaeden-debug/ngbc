@@ -4,7 +4,7 @@
 
 The v1 shared contract is defined in this directory. TypeScript representations live in `src/lib/content-contract/types.ts`, identity helpers in `src/lib/content-contract/ids.ts`, and a storage-neutral normalized-bundle validator in `scripts/validate-content-contract.mjs`.
 
-This work does not claim that a CMS, registry, content repository, Hunt adapter, public API, or migrated content exists.
+The first integrated slice now exists. `content/published/en-CA.json` is a strict-valid published bundle; `src/lib/content/repository.ts` is the storage-neutral in-process boundary; `src/lib/hunt/evaluate.ts` composes official zone resolution, deterministic regulation, bounded forecast context, and contextual App Blocks while keeping those layers separate. The representative public resources are `/tools/season-finder` and `/hunting/species/ruffed-grouse`.
 
 ## Authoritative locations
 
@@ -17,20 +17,23 @@ This work does not claim that a CMS, registry, content repository, Hunt adapter,
 | Blocks/matching | `APP-BLOCKS.md` and `types.ts` |
 | Relationship semantics | `RELATIONSHIPS.md` |
 | Normalized validation | `scripts/validate-content-contract.mjs` |
+| Published normalized bundle | `content/published/en-CA.json` |
+| Content repository boundary | `src/lib/content/repository.ts` |
+| Regulatory/zone/weather composition | `src/lib/hunt/` |
+| Public Hunt evaluation boundary | `src/app/api/hunt/evaluate/route.ts` |
+| Canonical species pattern | `src/app/hunting/species/[species]/` |
 
-Canonical IDs do not yet live in a production registry. The stitching agent must identify the content agent's emerging storage and implement one adapter/exporter that produces `ContentBundle`. Do not create a second registry if that agent already has one; map its stable IDs to this grammar or document/version an intentional incompatibility.
+Canonical IDs now live in the published bundle for the first slice. A durable authoring store has not been selected; any future CMS/file authoring adapter must export this normalized shape and preserve the existing IDs instead of creating a second runtime registry.
 
-## Required integration sequence
+## Required next integration sequence
 
-1. Inspect Hunt and content branches/current work before editing; their architecture may have advanced.
-2. Compare existing IDs, lifecycle values, source model, and applicability fields against contract v1.
-3. Decide the authoritative authoring store and create an adapter to the normalized bundle.
-4. Run `npm run validate:content` in warning mode and triage output by page family.
-5. Implement a `ContentRepository` behind the interface in `CONTENT-CONTRACT.md`; start in-process unless a separate runtime needs HTTP.
-6. Make public routes resolve IDs to current canonical URLs rather than embedding route logic in content records.
-7. Make Hunt send canonical context IDs/normalized units to `getContextualBlocks` and render `matchReasons`, locale/source/last-reviewed data where the UI requires trust context.
-8. Compose regulatory results and editorial blocks as separate labeled payloads. Never use block absence/presence as a legal signal.
-9. Certify migrated families, then promote their validation rules from warning to blocking.
+1. Keep `content/published/en-CA.json` strict-valid with `npm run validate:content:published`.
+2. Decide the authoritative authoring store and create one adapter/exporter to the normalized bundle; preserve all shipped canonical IDs.
+3. Expand regulatory records only after claim-level primary-source review and representative zone/date tests.
+4. Add new page families through the URL resolver and repository; never construct fallback paths in consumers.
+5. Keep Hunt's regulatory result, environmental context, and knowledge result independently typed and labeled.
+6. Replace process-local API rate limiting with a distributed implementation before high-volume production use.
+7. Add source-change monitoring, reviewer workflow, and production observability without retaining precise location inputs.
 
 ## Hunt block request
 
@@ -93,14 +96,14 @@ Record adapters and intentional deviations here and bump the contract when seman
 
 ## Unfinished work
 
-- production entity/source/resource registries;
-- CMS/file adapter and normalized export;
-- content repository implementation and persistence;
-- public content routes and canonical URL resolver;
-- Hunt adapter and end-to-end context tests;
+- durable CMS/file authoring adapter and normalized export workflow;
+- repository persistence/caching if the published bundle outgrows in-process reads;
+- broader certified jurisdiction/species coverage beyond Ontario WMU 57 / ruffed grouse / 2026;
+- exact certified legal-time computation and overlapping local-rule coverage;
+- distributed Hunt API rate limiting;
 - localization workflow;
 - source-change monitoring and reviewer administration;
-- migrated/certified content and blocking CI thresholds;
+- additional migrated/certified page families and blocking CI thresholds;
 - analytics/observability that avoids precise-location leakage.
 
-Integration is complete only after representative content and Hunt contexts pass deterministic tests, sources/unknown states render correctly, canonical redirects work, and the content/Hunt owners approve the boundary.
+The first representative integration passes deterministic repository/Hunt tests, strict bundle validation, production build/SEO validation, responsive browser checks, and local runtime source/unknown-state checks. It is not yet production-certified because the current public deployment predates these routes and returns 404 for both.
