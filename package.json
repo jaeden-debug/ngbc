@@ -13,7 +13,8 @@
     "test:content-contract": "node --test scripts/validate-content-contract.test.mjs",
     "test:newsletter": "node --test src/lib/newsletter/*.test.ts",
     "test:seo": "node --test src/lib/seo/*.test.ts",
-    "validate:seo": "node scripts/validate-seo.mjs"
+    "validate:seo": "node scripts/validate-seo.mjs",
+    "test:content-urls": "node --test src/lib/content/*.test.ts"
   },
   "dependencies": {
     "next": "16.1.1",

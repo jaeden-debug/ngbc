@@ -196,3 +196,9 @@ Hunting content is namespaced under `/hunting/` with no trailing slashes; `/tool
 
 ### 2026-09-20 — Content Roadmap
 `docs/content-system/CONTENT-ROADMAP.md` owns production order and the definition of done. Wave 0 is the render layer and blocks all content. Species x jurisdiction pages require material information beyond both parents before they may be created. Media must be accurate to the species or absent — a wrong species image is a factual error and, on identification pages, a safety failure.
+
+### 2026-09-20 — Canonical URL Resolution (Wave 0)
+`src/lib/content/urls.ts` is the single implementation of ROUTE-REGISTRY. Content records store canonical IDs and never store paths; pages, sitemaps, structured data and Hunt resolve paths through `canonicalPath()`. Entity types that intentionally have no page (`activity`, `source`, `content_block`, `equipment_item`, `product`, `management_zone`, `special_territory`) return null, and callers MUST treat null as "do not link" rather than constructing a fallback string. Jurisdiction IDs stay globally unique (`jurisdiction:ca-qc`) while routes nest (`/hunting/ca/qc`). Covered by `npm run test:content-urls` (9/9).
+
+### 2026-09-20 — Production
+Deployed to production 2026-09-20 from `main` (commit e6b3a5e). Hero, night-graded AV1/H.264 sources, brand mark and SEO foundation verified live: all hero assets 200, SSR markup contains all four video sources with correct codec strings. KNOWN ISSUE: canonical, og:url and sitemap emit the apex origin while the apex 307-redirects to `www`. Set `NEXT_PUBLIC_SITE_URL=https://www.northgroundbushcraft.com` (or make the apex primary) and make the redirect permanent before publishing content pages.
