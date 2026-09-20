@@ -15,6 +15,7 @@
  */
 
 import { readFileSync } from "node:fs";
+import { pathToFileURL } from "node:url";
 
 function loadEnv() {
   for (const file of [".env.local", ".env"]) {
@@ -54,6 +55,15 @@ async function rest(path, { method = "GET", body, prefer } = {}) {
   return text ? JSON.parse(text) : null;
 }
 
+/**
+ * Dimensions this publisher knows how to store faithfully.
+ *
+ * Deliberately an allow-list. A new dimension appearing in a bundle must fail
+ * the publish loudly rather than be silently dropped, because a dropped
+ * condition turns a narrow rule into a broad one.
+ */
+export const REPRESENTABLE_DIMENSIONS = new Set(["RESIDENCY", "HUNT_METHOD", "TAG_TYPE", "SEASON_TYPE", "permittedImplements"]);
+
 async function main() {
   const path = process.argv[2];
   if (!path) {
@@ -62,20 +72,38 @@ async function main() {
   }
   const bundle = JSON.parse(readFileSync(path, "utf8"));
   console.log(`Publishing ${path}`);
-  console.log(`  source ${bundle.source.id} (${bundle.source.sourceVersion}), hash ${bundle.source.contentHash.slice(0, 23)}...`);
+
+  /* Small game rests on one published page and carries `source`; major game
+     rests on four and carries `sources`. Both are normalised to a list here so
+     the rest of the publisher never has to know which kind it is reading. */
+  const bundleSources = bundle.sources ?? (bundle.source ? [bundle.source] : []);
+  if (!bundleSources.length) throw new Error("Bundle declares no source; refusing to publish");
+  for (const declared of bundleSources) {
+    console.log(`  source ${declared.id} (${declared.sourceVersion}), hash ${declared.contentHash.slice(0, 23)}...`);
+  }
 
   const [jurisdiction] = await rest(
     `regulatory_jurisdictions?canonical_id=eq.${encodeURIComponent(bundle.jurisdictionId)}&select=id`,
   );
   if (!jurisdiction) throw new Error(`Jurisdiction ${bundle.jurisdictionId} is not registered`);
 
-  const [source] = await rest(
-    `regulatory_sources?canonical_id=eq.${encodeURIComponent(bundle.source.id)}&select=id,review_status,verified_at`,
-  );
-  if (!source) throw new Error(`Source ${bundle.source.id} is not registered`);
-  if (!["VERIFIED", "PUBLISHED"].includes(source.review_status)) {
-    throw new Error(`Source ${bundle.source.id} is ${source.review_status}; refusing to publish rules against it`);
+  /* Every source the bundle rests on must already be registered and reviewed.
+     Publishing a rule against an unreviewed source would put law into the store
+     that nobody has checked. */
+  const sourceByCanonical = new Map();
+  for (const declared of bundleSources) {
+    const [row] = await rest(
+      `regulatory_sources?canonical_id=eq.${encodeURIComponent(declared.id)}&select=id,review_status,verified_at`,
+    );
+    if (!row) throw new Error(`Source ${declared.id} is not registered`);
+    if (!["VERIFIED", "PUBLISHED"].includes(row.review_status)) {
+      throw new Error(`Source ${declared.id} is ${row.review_status}; refusing to publish rules against it`);
+    }
+    sourceByCanonical.set(declared.id, row);
   }
+  /* Groups are written against the first declared source, which is the page the
+     zone groupings themselves come from. */
+  const source = sourceByCanonical.get(bundleSources[0].id);
 
   const zones = await rest(
     `management_zones?jurisdiction_id=eq.${jurisdiction.id}&select=id,canonical_id`,
@@ -139,37 +167,73 @@ async function main() {
     const existing = await rest(`regulatory_rules?canonical_id=eq.${encodeURIComponent(rule.id)}&select=id`);
     if (existing[0]) continue;
 
-    await rest("regulatory_rules", {
+    /* A rule is written with its conditions or it is not written at all.
+       `appliesWhen` is what makes a WMU 71 deer season shotgun-only; persisted
+       without it the row says the season is open to anyone holding any legal
+       implement, which is the one failure this publisher must never produce.
+       An unrecognised dimension is therefore fatal rather than dropped. */
+    const appliesWhen = rule.appliesWhen ?? {};
+    const unrepresentable = Object.keys(appliesWhen).filter((key) => !REPRESENTABLE_DIMENSIONS.has(key));
+    if (unrepresentable.length) {
+      throw new Error(
+        `Rule ${rule.id} is conditional on ${unrepresentable.join(", ")}, which this publisher cannot represent. ` +
+        "Extend the schema and this script together, or the rule would be stored as unconditional.",
+      );
+    }
+
+    const ruleSource = sourceByCanonical.get(rule.sourceId);
+    if (!ruleSource) throw new Error(`Rule ${rule.id} cites unregistered source ${rule.sourceId}`);
+
+    const [created] = await rest("regulatory_rules", {
       method: "POST",
-      prefer: "return=minimal",
+      prefer: "return=representation",
       body: [{
         canonical_id: rule.id,
         jurisdiction_id: jurisdiction.id,
         regulatory_group_id: groupIdByCanonical.get(rule.regulatoryGroupId),
         management_zone_id: null,
         species_canonical_id: rule.speciesId,
-        regulatory_status: "CONDITIONAL",
+        /* The authority saying "None" is a stated closure. A unit no row names
+           is UNKNOWN and is simply absent from this table. Never merged. */
+        regulatory_status: rule.declaredNoSeason ? "CLOSED" : "CONDITIONAL",
+        applies_when: appliesWhen,
+        declared_no_season: rule.declaredNoSeason === true,
+        season_label: rule.seasonLabel ?? null,
         // Season anchors live in the bundle, which understands cross-year and
         // last-day-of-month wording. The database keeps the authority's phrase.
         season_opens: null,
         season_closes: null,
         dates_inclusive: true,
-        limits: {
-          daily: rule.limits.daily,
-          possession: rule.limits.possession,
-          combined: rule.limits.combined,
-          combinedWith: rule.limits.combinedWith,
-          statedAs: rule.limits.statedAs,
-        },
-        requirements: [],
-        limitations: [],
+        limits: rule.limits
+          ? {
+              daily: rule.limits.daily,
+              possession: rule.limits.possession,
+              combined: rule.limits.combined,
+              combinedWith: rule.limits.combinedWith,
+              statedAs: rule.limits.statedAs,
+            }
+          : {},
+        requirements: rule.conditionIds ?? [],
         legal_time_rule: { statedAs: rule.seasonPhrase, section: rule.sourceSection },
-        source_id: source.id,
-        source_verified_at: source.verified_at,
+        limitations: rule.caveats ?? [],
+        source_id: ruleSource.id,
+        source_verified_at: ruleSource.verified_at,
         effective_from: `${rule.sourceYear}-01-01`,
         effective_to: null,
         source_version: rule.sourceVersion,
         review_status: rule.reviewStatus,
+      }],
+    });
+
+    /* Rule-level provenance: which published page, and which section of it. */
+    await rest("regulatory_rule_sources", {
+      method: "POST",
+      prefer: "return=minimal",
+      body: [{
+        rule_id: created.id,
+        source_id: ruleSource.id,
+        source_section: rule.sourceSection ?? null,
+        is_primary: true,
       }],
     });
     rulesWritten += 1;
@@ -200,7 +264,11 @@ async function main() {
   console.log(`Rules superseded ${superseded}`);
 }
 
-main().catch((error) => {
-  console.error(`Publish failed: ${error.message}`);
-  process.exit(1);
-});
+/* Only run as a command. The dimension allow-list above is imported by tests,
+   and importing this file must not start a publish. */
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((error) => {
+    console.error(`Publish failed: ${error.message}`);
+    process.exit(1);
+  });
+}
