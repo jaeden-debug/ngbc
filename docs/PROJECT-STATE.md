@@ -57,7 +57,8 @@ Last updated: 2026-09-20
 
 ## In Progress
 
-- Ontario regulatory expansion (Wave 2). The official groupings for ruffed grouse have been extracted and verified from the current Ontario Hunting Regulations Summary and are ready to encode; see the handoff note below before starting.
+- Ontario major game (turkey, deer, bear, moose). These carry dimensions the current small-game schema does not model — residency, tags, validation, sex and age, method, controlled hunts and draws — and must not be forced into the grouse shape. See the handoff note below.
+- Québec zone ingestion, once the Ontario pipeline has run through a source change at least once.
 - Main site visual direction / hero.
 - Hunting Intelligence application.
 - Structured North Ground content/resource system.
@@ -126,7 +127,18 @@ Do not mark VERIFIED until actual data and representative queries have been cert
 - Ontario geographic coverage is COMPLETE as of 2026-09-21: all 151 official Wildlife Management Units are normalized in Supabase/PostGIS, ingested from the province's own feature layer. 1,298,941 vertices, every geometry valid, every one EPSG:4326 MultiPolygon, 1,078,174 km2 in total against Ontario's actual area of roughly 1,076,000 km2. Sub-unit designations are preserved exactly as the authority writes them (69A-1 stays 69A-1).
 - Spatial parity with the authority is CERTIFIED: 309 points — one inside every unit, one just inside every unit's boundary, five outside the province, two impossible coordinates — resolve identically in North Ground's PostGIS registry and in the Government of Ontario service, with zero disagreements. `scripts/certify-ontario-spatial-parity.mjs` performs the live comparison; `src/lib/hunt/spatial-parity.test.ts` replays the recorded result and never touches the network.
 - `SPATIAL_PROVIDER` is now `supabase` with `official-gis` as the fallback, in local and in Vercel Production and Preview. The condition recorded for this switch — demonstrated parity — is met, and PostGIS measured steadier than the live service (median 170 ms versus 207 ms, p90 215 ms versus 1,460 ms). Production resolves WMU 3, 15B, 36, 57, 61, 80 and 94A through PostGIS.
-- Regulatory coverage has NOT moved: WMU 57 ruffed grouse remains the only certified rule. A point in any other unit resolves to its real zone and reports `IN_DEVELOPMENT` — boundary known, rules not certified. That distinction is the point, not a shortfall.
+- Ontario small-game regulatory coverage expanded on 2026-09-21 from one unit to the province. Against the 2026 Ontario Hunting Regulations Summary (`sha256:99fadfbb…`, retrieved 2026-09-20), 8 official season groupings and 11 rules now cover four species:
+
+| Species | Certified units | Declared no season | Unknown | Rules |
+| --- | --- | --- | --- | --- |
+| `species:ruffed-grouse` | 150 | 0 | 1 | 4 |
+| `species:snowshoe-hare` | 150 | 0 | 1 | 2 |
+| `species:sharp-tailed-grouse` | 85 | 0 | 66 | 3 |
+| `species:spruce-grouse` | 85 | 65 | 1 | 2 |
+
+- The rules are generated, never hand-written. `npm run build:regulations` rebuilds `content/regulatory/ca-on-small-game-2026.json` from the published summary and `npm run check:regulatory-sources` fails if that source has moved since the bundle was built. Parsing is strict: an unreadable season phrase, limit or WMU reference aborts the build rather than dropping a row. `scripts/publish-regulations.mjs` mirrors the bundle into Supabase for coverage reporting and the review lifecycle; Hunt itself evaluates from the committed bundle, which keeps evaluation deterministic and offline-testable.
+- Season semantics are modelled rather than approximated: windows that cross the calendar year stay open through 31 December, "the last day of February" follows the leap cycle, and the part of a source year that belongs to the PREVIOUS summary is reported as outside the certified period rather than closed.
+- Combined limits stay combined. Five birds shared between ruffed and spruce grouse is rendered as the authority states it, never as five of each.
 - Zone geometry drawn on the map: Ontario only, PARTIAL. All 151 Ontario WMU boundaries are rendered from the province's own feature layer, generalised by zoom. Of those, exactly one (WMU 57) has a certified regulatory record; the rest are labelled `IN_DEVELOPMENT` — boundary known, rules not certified. No other Canadian or United States jurisdiction has geometry drawn, and none will be until its official source passes the same review.
 - Production certification slice: PARTIAL. Ontario WMU 57 point resolution is implemented against the official Ontario Wildlife Management Unit Feature Layer. The layer endpoint/schema and representative WMU 57 query passed local certification; this does not certify every Ontario geometry or the whole jurisdiction.
 - Regulatory certification slice: PARTIAL. The 2026 ruffed/spruce grouse row for WMU 57 is encoded from the official Ontario Hunting Regulations Summary with inclusive dates (September 15–December 31) and combined limits (5 daily, 15 possession). Ontario as a whole is not marked VERIFIED.
@@ -278,7 +290,29 @@ Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport a
 
 ## Agent Handoff Notes
 
-### 2026-09-21 — Ontario ruffed grouse groupings, extracted and verified, NOT yet encoded
+### 2026-09-21 — Ontario major game is NOT a bigger grouse table
+Turkey, white-tailed deer, black bear and moose are the next species in the
+canonical library without rules, and the small-game model cannot carry them
+honestly. The published tables for these species turn on dimensions the current
+schema has no field for: resident versus non-resident, licence and tag class, tag
+validation, sex and age restrictions, firearm versus archery versus muzzle-loader
+seasons, controlled hunts and draw allocation, and per-WMU conditions attached to
+individual rows. A user who supplies only location, date and species has often not
+supplied enough information for an unconditional answer, and the correct result is
+CONDITIONAL with the missing dimensions named — not a season lookup that silently
+ignores them. Extend the schema deliberately before encoding any of it.
+
+### 2026-09-21 — WMU 51 is excluded from every small-game row, and that is a question not an answer
+WMU 51 is Algonquin Provincial Park. It is named by no small-game season row in
+the 2026 summary — not the grouse rows, not hare, not the cormorant row that
+otherwise spans "1-50, 53-95". Hunting there is governed by provincial park
+legislation rather than the general summary, which is the most likely reason.
+North Ground does not currently hold that source, so every small-game query in
+WMU 51 returns UNKNOWN with an explicit statement that an absent row is not
+evidence of a closed season. Resolving this properly means ingesting the
+Provincial Parks and Conservation Reserves framework, not inferring from silence.
+
+### 2026-09-21 — Ontario ruffed grouse groupings, extracted and verified, ENCODED
 The current Ontario Hunting Regulations Summary states ruffed grouse as four WMU
 groups. Recorded here verbatim so the next pass encodes the authority's wording
 rather than re-deriving it:
@@ -310,6 +344,16 @@ The schema for this already exists: `regulatory_groups` carries the authority's
 `official_spec` verbatim alongside `regulatory_group_members`, and
 `regulatory_rules.regulatory_group_id` lets one stated rule address many units
 without duplicating it per unit.
+
+**Encoded on 2026-09-21.** The bare-number reading was settled by evidence rather
+than assumption: expanding each bare number to all its sub-units makes the four
+ruffed grouse groups partition 150 of 151 units with zero overlaps and no unit
+named that does not exist, and `scripts/build-ontario-regulations.mjs` asserts
+that partition on every run. The sharp-tailed grouse and snowshoe hare tables
+from the same page are encoded too. Ring-necked pheasant, gray partridge,
+cottontail and European hare, squirrel, cormorant and the furbearer rows were
+extracted but NOT encoded, because the canonical species library has no entity
+for them; add the species first.
 
 
 Keep temporary but important cross-agent coordination here.
