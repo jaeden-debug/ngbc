@@ -17,11 +17,12 @@
 
 import { createHash } from "node:crypto";
 import { writeFileSync, readFileSync } from "node:fs";
+import {
+  expandWmuSpec, extractTables, fetchOfficialWmuIdentifiers, fetchText, slug, zoneCanonicalId,
+} from "./ontario-source.mjs";
 
 const SOURCE_URL =
   "https://www.ontario.ca/document/ontario-hunting-regulations-summary/small-game-and-furbearing-mammals";
-const WMU_QUERY =
-  "https://ws.lioservices.lrc.gov.on.ca/arcgis2/rest/services/LIO_OPEN_DATA/LIO_Open05/MapServer/5/query";
 const OUTPUT = "content/regulatory/ca-on-small-game-2026.json";
 const CERTIFIED_UNITS_OUTPUT = "content/regulatory/ca-on-certified-units.json";
 
@@ -77,70 +78,7 @@ const SPECIES_NAMES = {
   "species:snowshoe-hare": "snowshoe hare",
 };
 
-/* ── Fetching ────────────────────────────────────────────────────────────── */
-
-async function fetchText(url) {
-  const response = await fetch(url, {
-    headers: { "user-agent": "NorthGroundBushcraft/1.0 (+https://www.northgroundbushcraft.com)" },
-    signal: AbortSignal.timeout(90_000),
-  });
-  if (!response.ok) throw new Error(`${url} -> HTTP ${response.status}`);
-  return await response.text();
-}
-
-async function fetchOfficialWmuIdentifiers() {
-  const parameters = new URLSearchParams({
-    where: "1=1",
-    outFields: "OFFICIAL_NAME",
-    returnGeometry: "false",
-    resultRecordCount: "500",
-    f: "json",
-  });
-  const payload = JSON.parse(await fetchText(`${WMU_QUERY}?${parameters}`));
-  const names = (payload.features ?? [])
-    .map((feature) => String(feature.attributes?.OFFICIAL_NAME ?? "").trim())
-    .filter(Boolean);
-  if (names.length < 100) throw new Error(`Official WMU layer returned only ${names.length} units`);
-  return names.sort();
-}
-
-/* ── Parsing ─────────────────────────────────────────────────────────────── */
-
-function stripTags(html) {
-  return decodeEntities(html.replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ").trim();
-}
-
-function decodeEntities(text) {
-  return text
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#8211;/g, "–")
-    .replace(/&#8212;/g, "—")
-    .replace(/&#39;/g, "'");
-}
-
-/** Heading text paired with the rows of the table that follows it. */
-function extractTables(html) {
-  const chunks = html.split(/(<h[2-4][^>]*>[\s\S]*?<\/h[2-4]>|<table[\s\S]*?<\/table>)/i);
-  const out = [];
-  let heading = null;
-  for (const chunk of chunks) {
-    if (/^<h[2-4]/i.test(chunk)) {
-      heading = stripTags(chunk);
-    } else if (/^<table/i.test(chunk)) {
-      const rows = [];
-      for (const row of chunk.match(/<tr[\s\S]*?<\/tr>/gi) ?? []) {
-        const cells = (row.match(/<t[dh][\s\S]*?<\/t[dh]>/gi) ?? []).map(stripTags);
-        if (cells.length) rows.push(cells);
-      }
-      out.push({ heading, rows });
-    }
-  }
-  return out;
-}
+/* ── Limits, which are specific to the small-game tables ─────────────────── */
 
 const NUMBER_WORDS = {
   one: 1, two: 2, three: 3, four: 4, five: 5, six: 6,
@@ -164,7 +102,7 @@ function readCount(token) {
  */
 function parseLimits(phrase) {
   const text = phrase.trim().replace(/\s+/g, " ");
-  const combined = /^combined/i.test(text) || /\bcombined\b/i.test(text);
+  const combined = /\bcombined\b/i.test(text);
 
   const daily = /daily limits? of ([a-z0-9]+)/i.exec(text);
   const possession = /possession limits? of ([a-z0-9]+)/i.exec(text);
@@ -185,58 +123,7 @@ function parseLimits(phrase) {
   return { daily: dailyCount, possession: possessionCount, combined, statedAs: text };
 }
 
-/**
- * Expand an official WMU specification against the official layer.
- *
- * Ontario writes bare numbers in season tables while the layer carries lettered
- * sub-units, so "68" has to resolve to 68A and 68B. That is a reading of the
- * source, not a formatting convenience, and it is checked rather than assumed:
- * the caller verifies that the expanded groups partition the layer. Any token
- * that resolves to nothing aborts the build.
- */
-function expandWmuSpec(spec, officialIdentifiers) {
-  const byStem = new Map();
-  for (const name of officialIdentifiers) {
-    const stem = /^(\d+)/.exec(name);
-    if (!stem) continue;
-    const key = Number(stem[1]);
-    if (!byStem.has(key)) byStem.set(key, []);
-    byStem.get(key).push(name);
-  }
-
-  const out = [];
-  const parts = spec.split(",").map((part) => part.trim()).filter(Boolean);
-  for (const part of parts) {
-    const normalised = part.replace(/[–—]/g, "-").replace(/\s+/g, "");
-    let matched = [];
-
-    if (/^\d+$/.test(normalised)) {
-      matched = byStem.get(Number(normalised)) ?? [];
-    } else if (/^\d+[A-Za-z]$/.test(normalised)) {
-      const exact = normalised.toUpperCase();
-      matched = officialIdentifiers.filter((name) => name === exact || name.startsWith(`${exact}-`));
-    } else if (/^\d+-\d+$/.test(normalised)) {
-      const [from, to] = normalised.split("-").map(Number);
-      if (!(from < to)) throw new Error(`Malformed WMU range "${part}"`);
-      for (let stem = from; stem <= to; stem += 1) matched.push(...(byStem.get(stem) ?? []));
-    } else {
-      throw new Error(`Unrecognised WMU token "${part}" in "${spec}"`);
-    }
-
-    if (!matched.length) throw new Error(`WMU token "${part}" in "${spec}" matches no official unit`);
-    out.push(...matched);
-  }
-
-  const unique = [...new Set(out)];
-  if (unique.length !== out.length) throw new Error(`WMU spec "${spec}" names a unit more than once`);
-  return unique.sort();
-}
-
 /* ── Build ───────────────────────────────────────────────────────────────── */
-
-function slug(text) {
-  return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-}
 
 async function main() {
   const checkOnly = process.argv.includes("--check");
@@ -277,7 +164,7 @@ async function main() {
           jurisdictionId: "jurisdiction:ca-on",
           label: `Ontario WMU ${spec}`,
           officialSpec: spec,
-          zoneIds: units.map((unit) => `management_zone:ca-on-wmu-${unit.toLowerCase()}`),
+          zoneIds: units.map(zoneCanonicalId),
           officialIdentifiers: units,
           sourceId: SOURCE_CANONICAL_ID,
           sourceVersion: SOURCE_VERSION,
@@ -315,7 +202,7 @@ async function main() {
         noSeason.push({
           speciesId,
           officialSpec: spec,
-          zoneIds: expandWmuSpec(spec, officialIdentifiers).map((unit) => `management_zone:ca-on-wmu-${unit.toLowerCase()}`),
+          zoneIds: expandWmuSpec(spec, officialIdentifiers).map(zoneCanonicalId),
           statedAs: table.heading,
           sourceId: SOURCE_CANONICAL_ID,
           sourceSection: table.section,
@@ -340,7 +227,10 @@ async function main() {
 
   const bundle = {
     contractVersion: 1,
-    generatedAt: new Date().toISOString(),
+    // No wall-clock stamp: a rebuild that finds the law unchanged must produce
+    // an unchanged file. A diff on every rebuild teaches a reviewer to skip
+    // diffs, which is the opposite of what the review workflow needs.
+    // Provenance lives in `retrievedAt` (date) and `contentHash`.
     generatedBy: "scripts/build-ontario-regulations.mjs",
     jurisdictionId: "jurisdiction:ca-on",
     source: {

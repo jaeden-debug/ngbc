@@ -1,0 +1,5965 @@
+{
+  "contractVersion": 1,
+  "generatedBy": "scripts/build-ontario-major-game.mjs",
+  "jurisdictionId": "jurisdiction:ca-on",
+  "sourceVersion": "2026",
+  "sourceYear": 2026,
+  "retrievedAt": "2026-09-20",
+  "contentHash": "sha256:bd4c42a843c26b54013153e09f979da8ad9beafe79a222903aca91d9ef285692",
+  "officialUnitCount": 151,
+  "sources": [
+    {
+      "id": "source:ca-on-deer-2026",
+      "authority": "Ontario Ministry of Natural Resources",
+      "title": "White-tailed deer — Ontario Hunting Regulations Summary",
+      "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/white-tailed-deer",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "conditions": [
+        {
+          "id": "deer-licence",
+          "text": "A deer licence and the applicable seal or tag are required. North Ground cannot verify what you hold; confirm your own licensing before hunting.",
+          "sourceSection": "Hunting licence information",
+          "sourceId": "source:ca-on-deer-2026"
+        },
+        {
+          "id": "deer-antlerless",
+          "text": "Taking an antlerless deer generally requires an additional validated tag obtained through the antlerless deer draw. North Ground does not evaluate draw outcomes or tag validation.",
+          "sourceSection": "Last year's antlerless deer draw results",
+          "sourceId": "source:ca-on-deer-2026"
+        },
+        {
+          "id": "deer-controlled",
+          "text": "Some units also run controlled deer hunts with their own seasons and hunt codes. North Ground has not certified those and they are not reflected in this result.",
+          "sourceSection": "Controlled deer hunt seasons (with hunt codes)",
+          "sourceId": "source:ca-on-deer-2026"
+        }
+      ]
+    },
+    {
+      "id": "source:ca-on-wild-turkey-2026",
+      "authority": "Ontario Ministry of Natural Resources",
+      "title": "Wild turkey — Ontario Hunting Regulations Summary",
+      "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/wild-turkey",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "conditions": [
+        {
+          "id": "turkey-licence",
+          "text": "A wild turkey licence and a valid turkey tag are required, and the season is one bird per tag. North Ground cannot verify what you hold.",
+          "sourceSection": "Wild turkey licences and tags",
+          "sourceId": "source:ca-on-wild-turkey-2026"
+        },
+        {
+          "id": "turkey-bearded",
+          "text": "The spring season is restricted to bearded turkeys. Identifying the bird before shooting is the hunter's responsibility and North Ground cannot do it for you.",
+          "sourceSection": "Spring wild turkey season",
+          "sourceId": "source:ca-on-wild-turkey-2026"
+        },
+        {
+          "id": "turkey-mandatory-report",
+          "text": "Wild turkey harvests must be reported to the province. North Ground does not file reports.",
+          "sourceSection": "Reporting your wild turkey hunt",
+          "sourceId": "source:ca-on-wild-turkey-2026"
+        }
+      ]
+    },
+    {
+      "id": "source:ca-on-black-bear-2026",
+      "authority": "Ontario Ministry of Natural Resources",
+      "title": "Black bear — Ontario Hunting Regulations Summary",
+      "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/black-bear",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "conditions": [
+        {
+          "id": "bear-licence",
+          "text": "A black bear licence and a valid bear tag are required for the wildlife management unit you hunt in. North Ground cannot verify what you hold.",
+          "sourceSection": "Black bear licences and tags",
+          "sourceId": "source:ca-on-black-bear-2026"
+        },
+        {
+          "id": "bear-cubs",
+          "text": "It is illegal to hunt a bear cub, or a female bear with a cub. Identification is the hunter's responsibility and North Ground cannot make it for you.",
+          "sourceSection": "Black bear hunting rules",
+          "sourceId": "source:ca-on-black-bear-2026"
+        },
+        {
+          "id": "bear-non-resident-outfitter",
+          "text": "Non-residents generally must hunt black bear through a licensed outfitter or on land they own. North Ground has not certified which arrangement applies to you.",
+          "sourceSection": "Non-resident black bear hunting",
+          "sourceId": "source:ca-on-black-bear-2026"
+        }
+      ]
+    },
+    {
+      "id": "source:ca-on-moose-2026",
+      "authority": "Ontario Ministry of Natural Resources",
+      "title": "Moose — Ontario Hunting Regulations Summary",
+      "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/moose",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "conditions": [
+        {
+          "id": "moose-tag",
+          "text": "Every moose season requires a validated moose tag allocated through the province's tag draw, and the tag determines both the season and the animal you may take. North Ground does not evaluate draw applications, points or tag validation.",
+          "sourceSection": "Moose tag allocation process",
+          "sourceId": "source:ca-on-moose-2026"
+        },
+        {
+          "id": "moose-calf",
+          "text": "A calf tag, a bull tag and a cow/calf tag permit different animals. Which one you hold decides what is legal to take, and North Ground cannot verify it.",
+          "sourceSection": "Tag allocation process hunt codes",
+          "sourceId": "source:ca-on-moose-2026"
+        },
+        {
+          "id": "moose-controlled",
+          "text": "Some units also run resident seasons with controlled hunter numbers, including seasons for hunters with a lower limb disability and unit-specific rules. North Ground has not certified those and they are not reflected in this result.",
+          "sourceSection": "Resident seasons with controlled hunter numbers",
+          "sourceId": "source:ca-on-moose-2026"
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "regulatory_group:ca-on-1c-16a-16b-16c-17",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 1C, 16A, 16B, 16C, 17",
+      "officialSpec": "1C, 16A, 16B, 16C, 17",
+      "officialIdentifiers": [
+        "16A",
+        "16B",
+        "16C",
+        "17",
+        "1C"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-16a",
+        "management_zone:ca-on-wmu-16b",
+        "management_zone:ca-on-wmu-16c",
+        "management_zone:ca-on-wmu-17",
+        "management_zone:ca-on-wmu-1c"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-2-3-4-5-11b-13-14-15a-15b-18a-18b-19-21a",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 2, 3, 4, 5, 11B, 13, 14, 15A, 15B, 18A, 18B, 19, 21A",
+      "officialSpec": "2, 3, 4, 5, 11B, 13, 14, 15A, 15B, 18A, 18B, 19, 21A",
+      "officialIdentifiers": [
+        "11B",
+        "13",
+        "14",
+        "15A",
+        "15B",
+        "18A",
+        "18B",
+        "19",
+        "2",
+        "21A",
+        "3",
+        "4",
+        "5"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-11b",
+        "management_zone:ca-on-wmu-13",
+        "management_zone:ca-on-wmu-14",
+        "management_zone:ca-on-wmu-15a",
+        "management_zone:ca-on-wmu-15b",
+        "management_zone:ca-on-wmu-18a",
+        "management_zone:ca-on-wmu-18b",
+        "management_zone:ca-on-wmu-19",
+        "management_zone:ca-on-wmu-2",
+        "management_zone:ca-on-wmu-21a",
+        "management_zone:ca-on-wmu-3",
+        "management_zone:ca-on-wmu-4",
+        "management_zone:ca-on-wmu-5"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-6-7b-8-9a-9b-11a-12a-12b",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 6, 7B, 8, 9A, 9B, 11A, 12A, 12B",
+      "officialSpec": "6, 7B, 8, 9A, 9B, 11A, 12A, 12B",
+      "officialIdentifiers": [
+        "11A",
+        "12A",
+        "12B",
+        "6",
+        "7B",
+        "8",
+        "9A",
+        "9B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-11a",
+        "management_zone:ca-on-wmu-12a",
+        "management_zone:ca-on-wmu-12b",
+        "management_zone:ca-on-wmu-6",
+        "management_zone:ca-on-wmu-7b",
+        "management_zone:ca-on-wmu-8",
+        "management_zone:ca-on-wmu-9a",
+        "management_zone:ca-on-wmu-9b"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-10",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 10",
+      "officialSpec": "10",
+      "officialIdentifiers": [
+        "10"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-10"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-21b",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 21B",
+      "officialSpec": "21B",
+      "officialIdentifiers": [
+        "21B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-21b"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-22-23-24-27-30-33-34",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 22, 23, 24, 27, 30, 33, 34",
+      "officialSpec": "22, 23, 24, 27, 30, 33, 34",
+      "officialIdentifiers": [
+        "22",
+        "23",
+        "24",
+        "27",
+        "30",
+        "33",
+        "34"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-22",
+        "management_zone:ca-on-wmu-23",
+        "management_zone:ca-on-wmu-24",
+        "management_zone:ca-on-wmu-27",
+        "management_zone:ca-on-wmu-30",
+        "management_zone:ca-on-wmu-33",
+        "management_zone:ca-on-wmu-34"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-25",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 25",
+      "officialSpec": "25",
+      "officialIdentifiers": [
+        "25"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-25"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-26",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 26",
+      "officialSpec": "26",
+      "officialIdentifiers": [
+        "26"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-26"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-28-29-31-32-35-36-37-38-39-40-41-42-44-46-47-48-49-50-53a-54-55a-55b-56-57-58-59-60-61-62-63a-63b-64a-66a-67-68a-74b",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 28, 29, 31, 32, 35, 36, 37, 38, 39, 40, 41, 42, 44, 46, 47, 48, 49, 50, 53A, 54, 55A, 55B, 56, 57, 58, 59, 60, 61, 62, 63A, 63B, 64A, 66A, 67, 68A, 74B",
+      "officialSpec": "28, 29, 31, 32, 35, 36, 37, 38, 39, 40, 41, 42, 44, 46, 47, 48, 49, 50, 53A, 54, 55A, 55B, 56, 57, 58, 59, 60, 61, 62, 63A, 63B, 64A, 66A, 67, 68A, 74B",
+      "officialIdentifiers": [
+        "28",
+        "29",
+        "31",
+        "32",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "44",
+        "46",
+        "47",
+        "48",
+        "49",
+        "50",
+        "53A",
+        "54",
+        "55A",
+        "55B",
+        "56",
+        "57",
+        "58",
+        "59",
+        "60",
+        "61",
+        "62",
+        "63A",
+        "63B",
+        "64A",
+        "66A",
+        "67",
+        "68A",
+        "74B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-28",
+        "management_zone:ca-on-wmu-29",
+        "management_zone:ca-on-wmu-31",
+        "management_zone:ca-on-wmu-32",
+        "management_zone:ca-on-wmu-35",
+        "management_zone:ca-on-wmu-36",
+        "management_zone:ca-on-wmu-37",
+        "management_zone:ca-on-wmu-38",
+        "management_zone:ca-on-wmu-39",
+        "management_zone:ca-on-wmu-40",
+        "management_zone:ca-on-wmu-41",
+        "management_zone:ca-on-wmu-42",
+        "management_zone:ca-on-wmu-44",
+        "management_zone:ca-on-wmu-46",
+        "management_zone:ca-on-wmu-47",
+        "management_zone:ca-on-wmu-48",
+        "management_zone:ca-on-wmu-49",
+        "management_zone:ca-on-wmu-50",
+        "management_zone:ca-on-wmu-53a",
+        "management_zone:ca-on-wmu-54",
+        "management_zone:ca-on-wmu-55a",
+        "management_zone:ca-on-wmu-55b",
+        "management_zone:ca-on-wmu-56",
+        "management_zone:ca-on-wmu-57",
+        "management_zone:ca-on-wmu-58",
+        "management_zone:ca-on-wmu-59",
+        "management_zone:ca-on-wmu-60",
+        "management_zone:ca-on-wmu-61",
+        "management_zone:ca-on-wmu-62",
+        "management_zone:ca-on-wmu-63a",
+        "management_zone:ca-on-wmu-63b",
+        "management_zone:ca-on-wmu-64a",
+        "management_zone:ca-on-wmu-66a",
+        "management_zone:ca-on-wmu-67",
+        "management_zone:ca-on-wmu-68a",
+        "management_zone:ca-on-wmu-74b"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-64b-65-68b-69b-71-72a-73-74a-75",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 64B, 65, 68B, 69B, 71, 72A, 73, 74A, 75",
+      "officialSpec": "64B, 65, 68B, 69B, 71, 72A, 73, 74A, 75",
+      "officialIdentifiers": [
+        "64B",
+        "65",
+        "68B",
+        "69B",
+        "71",
+        "72A",
+        "73",
+        "74A",
+        "75"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-64b",
+        "management_zone:ca-on-wmu-65",
+        "management_zone:ca-on-wmu-68b",
+        "management_zone:ca-on-wmu-69b",
+        "management_zone:ca-on-wmu-71",
+        "management_zone:ca-on-wmu-72a",
+        "management_zone:ca-on-wmu-73",
+        "management_zone:ca-on-wmu-74a",
+        "management_zone:ca-on-wmu-75"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-43a-43b",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 43A, 43B",
+      "officialSpec": "43A, 43B",
+      "officialIdentifiers": [
+        "43A",
+        "43B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-43a",
+        "management_zone:ca-on-wmu-43b"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-45",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 45",
+      "officialSpec": "45",
+      "officialIdentifiers": [
+        "45"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-45"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-82a-82b-83a-84",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 82A, 82B, 83A, 84",
+      "officialSpec": "82A, 82B, 83A, 84",
+      "officialIdentifiers": [
+        "82A",
+        "82B",
+        "83A",
+        "84"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-82a",
+        "management_zone:ca-on-wmu-82b",
+        "management_zone:ca-on-wmu-83a",
+        "management_zone:ca-on-wmu-84"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-5",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 5",
+      "officialSpec": "5",
+      "officialIdentifiers": [
+        "5"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-5"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-6-7b-8-9a-9b-11a",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 6, 7B, 8, 9A, 9B, 11A",
+      "officialSpec": "6, 7B, 8, 9A, 9B, 11A",
+      "officialIdentifiers": [
+        "11A",
+        "6",
+        "7B",
+        "8",
+        "9A",
+        "9B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-11a",
+        "management_zone:ca-on-wmu-6",
+        "management_zone:ca-on-wmu-7b",
+        "management_zone:ca-on-wmu-8",
+        "management_zone:ca-on-wmu-9a",
+        "management_zone:ca-on-wmu-9b"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-7a",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 7A",
+      "officialSpec": "7A",
+      "officialIdentifiers": [
+        "7A"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-7a"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-18b",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 18B",
+      "officialSpec": "18B",
+      "officialIdentifiers": [
+        "18B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-18b"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-36-37-42-43a-43b-45-59-60-61-62-63a-63b-64a-64b-65-66a-67-68a-68b-69b-71-72a-73-74a-74b-75-82a-83a-84",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 36, 37, 42, 43A, 43B, 45, 59, 60, 61, 62, 63A, 63B, 64A, 64B, 65, 66A, 67, 68A, 68B, 69B, 71, 72A, 73, 74A, 74B, 75, 82A, 83A, 84",
+      "officialSpec": "36, 37, 42, 43A, 43B, 45, 59, 60, 61, 62, 63A, 63B, 64A, 64B, 65, 66A, 67, 68A, 68B, 69B, 71, 72A, 73, 74A, 74B, 75, 82A, 83A, 84",
+      "officialIdentifiers": [
+        "36",
+        "37",
+        "42",
+        "43A",
+        "43B",
+        "45",
+        "59",
+        "60",
+        "61",
+        "62",
+        "63A",
+        "63B",
+        "64A",
+        "64B",
+        "65",
+        "66A",
+        "67",
+        "68A",
+        "68B",
+        "69B",
+        "71",
+        "72A",
+        "73",
+        "74A",
+        "74B",
+        "75",
+        "82A",
+        "83A",
+        "84"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-36",
+        "management_zone:ca-on-wmu-37",
+        "management_zone:ca-on-wmu-42",
+        "management_zone:ca-on-wmu-43a",
+        "management_zone:ca-on-wmu-43b",
+        "management_zone:ca-on-wmu-45",
+        "management_zone:ca-on-wmu-59",
+        "management_zone:ca-on-wmu-60",
+        "management_zone:ca-on-wmu-61",
+        "management_zone:ca-on-wmu-62",
+        "management_zone:ca-on-wmu-63a",
+        "management_zone:ca-on-wmu-63b",
+        "management_zone:ca-on-wmu-64a",
+        "management_zone:ca-on-wmu-64b",
+        "management_zone:ca-on-wmu-65",
+        "management_zone:ca-on-wmu-66a",
+        "management_zone:ca-on-wmu-67",
+        "management_zone:ca-on-wmu-68a",
+        "management_zone:ca-on-wmu-68b",
+        "management_zone:ca-on-wmu-69b",
+        "management_zone:ca-on-wmu-71",
+        "management_zone:ca-on-wmu-72a",
+        "management_zone:ca-on-wmu-73",
+        "management_zone:ca-on-wmu-74a",
+        "management_zone:ca-on-wmu-74b",
+        "management_zone:ca-on-wmu-75",
+        "management_zone:ca-on-wmu-82a",
+        "management_zone:ca-on-wmu-83a",
+        "management_zone:ca-on-wmu-84"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-82b",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 82B",
+      "officialSpec": "82B",
+      "officialIdentifiers": [
+        "82B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-82b"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-2-3-4-11b-13-14-15a-15b-19-21a",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 2, 3, 4, 11B, 13, 14, 15A, 15B, 19, 21A",
+      "officialSpec": "2, 3, 4, 11B, 13, 14, 15A, 15B, 19, 21A",
+      "officialIdentifiers": [
+        "11B",
+        "13",
+        "14",
+        "15A",
+        "15B",
+        "19",
+        "2",
+        "21A",
+        "3",
+        "4"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-11b",
+        "management_zone:ca-on-wmu-13",
+        "management_zone:ca-on-wmu-14",
+        "management_zone:ca-on-wmu-15a",
+        "management_zone:ca-on-wmu-15b",
+        "management_zone:ca-on-wmu-19",
+        "management_zone:ca-on-wmu-2",
+        "management_zone:ca-on-wmu-21a",
+        "management_zone:ca-on-wmu-3",
+        "management_zone:ca-on-wmu-4"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-6-7a-7b-8-9a-9b-11a",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 6, 7A, 7B, 8, 9A, 9B, 11A",
+      "officialSpec": "6, 7A, 7B, 8, 9A, 9B, 11A",
+      "officialIdentifiers": [
+        "11A",
+        "6",
+        "7A",
+        "7B",
+        "8",
+        "9A",
+        "9B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-11a",
+        "management_zone:ca-on-wmu-6",
+        "management_zone:ca-on-wmu-7a",
+        "management_zone:ca-on-wmu-7b",
+        "management_zone:ca-on-wmu-8",
+        "management_zone:ca-on-wmu-9a",
+        "management_zone:ca-on-wmu-9b"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-12a-12b",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 12A, 12B",
+      "officialSpec": "12A, 12B",
+      "officialIdentifiers": [
+        "12A",
+        "12B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-12a",
+        "management_zone:ca-on-wmu-12b"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-18a",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 18A",
+      "officialSpec": "18A",
+      "officialIdentifiers": [
+        "18A"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-18a"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-22-23-24-27-30-33",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 22, 23, 24, 27, 30, 33",
+      "officialSpec": "22, 23, 24, 27, 30, 33",
+      "officialIdentifiers": [
+        "22",
+        "23",
+        "24",
+        "27",
+        "30",
+        "33"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-22",
+        "management_zone:ca-on-wmu-23",
+        "management_zone:ca-on-wmu-24",
+        "management_zone:ca-on-wmu-27",
+        "management_zone:ca-on-wmu-30",
+        "management_zone:ca-on-wmu-33"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-28-29-31-32-35-38-39-40-41",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 28, 29, 31, 32, 35, 38, 39, 40, 41",
+      "officialSpec": "28, 29, 31, 32, 35, 38, 39, 40, 41",
+      "officialIdentifiers": [
+        "28",
+        "29",
+        "31",
+        "32",
+        "35",
+        "38",
+        "39",
+        "40",
+        "41"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-28",
+        "management_zone:ca-on-wmu-29",
+        "management_zone:ca-on-wmu-31",
+        "management_zone:ca-on-wmu-32",
+        "management_zone:ca-on-wmu-35",
+        "management_zone:ca-on-wmu-38",
+        "management_zone:ca-on-wmu-39",
+        "management_zone:ca-on-wmu-40",
+        "management_zone:ca-on-wmu-41"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-34",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 34",
+      "officialSpec": "34",
+      "officialIdentifiers": [
+        "34"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-34"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-36-37-42-60-61-62-63a",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 36, 37, 42, 60, 61, 62, 63A",
+      "officialSpec": "36, 37, 42, 60, 61, 62, 63A",
+      "officialIdentifiers": [
+        "36",
+        "37",
+        "42",
+        "60",
+        "61",
+        "62",
+        "63A"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-36",
+        "management_zone:ca-on-wmu-37",
+        "management_zone:ca-on-wmu-42",
+        "management_zone:ca-on-wmu-60",
+        "management_zone:ca-on-wmu-61",
+        "management_zone:ca-on-wmu-62",
+        "management_zone:ca-on-wmu-63a"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-44",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 44",
+      "officialSpec": "44",
+      "officialIdentifiers": [
+        "44"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-44"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-46-47-48-49-50-53a-55a-55b-56-57-58",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 46, 47, 48, 49, 50, 53A, 55A, 55B, 56, 57, 58",
+      "officialSpec": "46, 47, 48, 49, 50, 53A, 55A, 55B, 56, 57, 58",
+      "officialIdentifiers": [
+        "46",
+        "47",
+        "48",
+        "49",
+        "50",
+        "53A",
+        "55A",
+        "55B",
+        "56",
+        "57",
+        "58"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-46",
+        "management_zone:ca-on-wmu-47",
+        "management_zone:ca-on-wmu-48",
+        "management_zone:ca-on-wmu-49",
+        "management_zone:ca-on-wmu-50",
+        "management_zone:ca-on-wmu-53a",
+        "management_zone:ca-on-wmu-55a",
+        "management_zone:ca-on-wmu-55b",
+        "management_zone:ca-on-wmu-56",
+        "management_zone:ca-on-wmu-57",
+        "management_zone:ca-on-wmu-58"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-54",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 54",
+      "officialSpec": "54",
+      "officialIdentifiers": [
+        "54"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-54"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-53b",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 53B",
+      "officialSpec": "53B",
+      "officialIdentifiers": [
+        "53B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-53b"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-59-63b-64a-64b-66a-67-68a-68b-69b-71-72a-73-74a-74b-75",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 59, 63B, 64A, 64B, 66A, 67, 68A, 68B, 69B, 71, 72A, 73, 74A, 74B, 75",
+      "officialSpec": "59, 63B, 64A, 64B, 66A, 67, 68A, 68B, 69B, 71, 72A, 73, 74A, 74B, 75",
+      "officialIdentifiers": [
+        "59",
+        "63B",
+        "64A",
+        "64B",
+        "66A",
+        "67",
+        "68A",
+        "68B",
+        "69B",
+        "71",
+        "72A",
+        "73",
+        "74A",
+        "74B",
+        "75"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-59",
+        "management_zone:ca-on-wmu-63b",
+        "management_zone:ca-on-wmu-64a",
+        "management_zone:ca-on-wmu-64b",
+        "management_zone:ca-on-wmu-66a",
+        "management_zone:ca-on-wmu-67",
+        "management_zone:ca-on-wmu-68a",
+        "management_zone:ca-on-wmu-68b",
+        "management_zone:ca-on-wmu-69b",
+        "management_zone:ca-on-wmu-71",
+        "management_zone:ca-on-wmu-72a",
+        "management_zone:ca-on-wmu-73",
+        "management_zone:ca-on-wmu-74a",
+        "management_zone:ca-on-wmu-74b",
+        "management_zone:ca-on-wmu-75"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-65",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 65",
+      "officialSpec": "65",
+      "officialIdentifiers": [
+        "65"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-65"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-66b",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 66B",
+      "officialSpec": "66B",
+      "officialIdentifiers": [
+        "66B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-66b"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-69a1-69a3-72b",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 69A1, 69A3, 72B",
+      "officialSpec": "69A1, 69A3, 72B",
+      "officialIdentifiers": [
+        "69A-1",
+        "69A-3",
+        "72B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-69a-1",
+        "management_zone:ca-on-wmu-69a-3",
+        "management_zone:ca-on-wmu-72b"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-69a2-70",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 69A2, 70",
+      "officialSpec": "69A2, 70",
+      "officialIdentifiers": [
+        "69A-2",
+        "70"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-69a-2",
+        "management_zone:ca-on-wmu-70"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-76a-76b-76c-76d-76e-77a-77b-77c-78a-78b-81a-81b",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 76A, 76B, 76C, 76D, 76E, 77A, 77B, 77C, 78A, 78B, 81A, 81B",
+      "officialSpec": "76A, 76B, 76C, 76D, 76E, 77A, 77B, 77C, 78A, 78B, 81A, 81B",
+      "officialIdentifiers": [
+        "76A",
+        "76B",
+        "76C",
+        "76D",
+        "76E",
+        "77A",
+        "77B",
+        "77C",
+        "78A",
+        "78B",
+        "81A",
+        "81B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-76a",
+        "management_zone:ca-on-wmu-76b",
+        "management_zone:ca-on-wmu-76c",
+        "management_zone:ca-on-wmu-76d",
+        "management_zone:ca-on-wmu-76e",
+        "management_zone:ca-on-wmu-77a",
+        "management_zone:ca-on-wmu-77b",
+        "management_zone:ca-on-wmu-77c",
+        "management_zone:ca-on-wmu-78a",
+        "management_zone:ca-on-wmu-78b",
+        "management_zone:ca-on-wmu-81a",
+        "management_zone:ca-on-wmu-81b"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-78c-78d-78e-87a-88-94a",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 78C, 78D, 78E, 87A, 88, 94A",
+      "officialSpec": "78C, 78D, 78E, 87A, 88, 94A",
+      "officialIdentifiers": [
+        "78C",
+        "78D",
+        "78E",
+        "87A",
+        "88",
+        "94A"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-78c",
+        "management_zone:ca-on-wmu-78d",
+        "management_zone:ca-on-wmu-78e",
+        "management_zone:ca-on-wmu-87a",
+        "management_zone:ca-on-wmu-88",
+        "management_zone:ca-on-wmu-94a"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-79c-79d",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 79C, 79D",
+      "officialSpec": "79C, 79D",
+      "officialIdentifiers": [
+        "79C",
+        "79D"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-79c",
+        "management_zone:ca-on-wmu-79d"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-80-85a-85b-85c-87b-87c-87d-87e-89a-89b-90a-90b-93a-93b",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 80, 85A, 85B, 85C, 87B, 87C, 87D, 87E, 89A, 89B, 90A, 90B, 93A, 93B",
+      "officialSpec": "80, 85A, 85B, 85C, 87B, 87C, 87D, 87E, 89A, 89B, 90A, 90B, 93A, 93B",
+      "officialIdentifiers": [
+        "80",
+        "85A",
+        "85B",
+        "85C",
+        "87B",
+        "87C",
+        "87D",
+        "87E",
+        "89A",
+        "89B",
+        "90A",
+        "90B",
+        "93A",
+        "93B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-80",
+        "management_zone:ca-on-wmu-85a",
+        "management_zone:ca-on-wmu-85b",
+        "management_zone:ca-on-wmu-85c",
+        "management_zone:ca-on-wmu-87b",
+        "management_zone:ca-on-wmu-87c",
+        "management_zone:ca-on-wmu-87d",
+        "management_zone:ca-on-wmu-87e",
+        "management_zone:ca-on-wmu-89a",
+        "management_zone:ca-on-wmu-89b",
+        "management_zone:ca-on-wmu-90a",
+        "management_zone:ca-on-wmu-90b",
+        "management_zone:ca-on-wmu-93a",
+        "management_zone:ca-on-wmu-93b"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-82a-83a-84",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 82A, 83A, 84",
+      "officialSpec": "82A, 83A, 84",
+      "officialIdentifiers": [
+        "82A",
+        "83A",
+        "84"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-82a",
+        "management_zone:ca-on-wmu-83a",
+        "management_zone:ca-on-wmu-84"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-86a-86b",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 86A, 86B",
+      "officialSpec": "86A, 86B",
+      "officialIdentifiers": [
+        "86A",
+        "86B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-86a",
+        "management_zone:ca-on-wmu-86b"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-91a-91b-92a-92b-92c-92d",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 91A, 91B, 92A, 92B, 92C, 92D",
+      "officialSpec": "91A, 91B, 92A, 92B, 92C, 92D",
+      "officialIdentifiers": [
+        "91A",
+        "91B",
+        "92A",
+        "92B",
+        "92C",
+        "92D"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-91a",
+        "management_zone:ca-on-wmu-91b",
+        "management_zone:ca-on-wmu-92a",
+        "management_zone:ca-on-wmu-92b",
+        "management_zone:ca-on-wmu-92c",
+        "management_zone:ca-on-wmu-92d"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-94b",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 94B",
+      "officialSpec": "94B",
+      "officialIdentifiers": [
+        "94B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-94b"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-36-42-45-46-50-53-65-66a-67-82-83a-84-95",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 36, 42, 45, 46–50, 53–65, 66A, 67–82, 83A, 84–95",
+      "officialSpec": "36, 42, 45, 46–50, 53–65, 66A, 67–82, 83A, 84–95",
+      "officialIdentifiers": [
+        "36",
+        "42",
+        "45",
+        "46",
+        "47",
+        "48",
+        "49",
+        "50",
+        "53A",
+        "53B",
+        "54",
+        "55A",
+        "55B",
+        "56",
+        "57",
+        "58",
+        "59",
+        "60",
+        "61",
+        "62",
+        "63A",
+        "63B",
+        "64A",
+        "64B",
+        "65",
+        "66A",
+        "67",
+        "68A",
+        "68B",
+        "69A-1",
+        "69A-2",
+        "69A-3",
+        "69B",
+        "70",
+        "71",
+        "72A",
+        "72B",
+        "73",
+        "74A",
+        "74B",
+        "75",
+        "76A",
+        "76B",
+        "76C",
+        "76D",
+        "76E",
+        "77A",
+        "77B",
+        "77C",
+        "78A",
+        "78B",
+        "78C",
+        "78D",
+        "78E",
+        "79C",
+        "79D",
+        "80",
+        "81A",
+        "81B",
+        "82A",
+        "82B",
+        "82C",
+        "83A",
+        "84",
+        "85A",
+        "85B",
+        "85C",
+        "86A",
+        "86B",
+        "87A",
+        "87B",
+        "87C",
+        "87D",
+        "87E",
+        "88",
+        "89A",
+        "89B",
+        "90A",
+        "90B",
+        "91A",
+        "91B",
+        "92A",
+        "92B",
+        "92C",
+        "92D",
+        "93A",
+        "93B",
+        "93C",
+        "94A",
+        "94B",
+        "95"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-36",
+        "management_zone:ca-on-wmu-42",
+        "management_zone:ca-on-wmu-45",
+        "management_zone:ca-on-wmu-46",
+        "management_zone:ca-on-wmu-47",
+        "management_zone:ca-on-wmu-48",
+        "management_zone:ca-on-wmu-49",
+        "management_zone:ca-on-wmu-50",
+        "management_zone:ca-on-wmu-53a",
+        "management_zone:ca-on-wmu-53b",
+        "management_zone:ca-on-wmu-54",
+        "management_zone:ca-on-wmu-55a",
+        "management_zone:ca-on-wmu-55b",
+        "management_zone:ca-on-wmu-56",
+        "management_zone:ca-on-wmu-57",
+        "management_zone:ca-on-wmu-58",
+        "management_zone:ca-on-wmu-59",
+        "management_zone:ca-on-wmu-60",
+        "management_zone:ca-on-wmu-61",
+        "management_zone:ca-on-wmu-62",
+        "management_zone:ca-on-wmu-63a",
+        "management_zone:ca-on-wmu-63b",
+        "management_zone:ca-on-wmu-64a",
+        "management_zone:ca-on-wmu-64b",
+        "management_zone:ca-on-wmu-65",
+        "management_zone:ca-on-wmu-66a",
+        "management_zone:ca-on-wmu-67",
+        "management_zone:ca-on-wmu-68a",
+        "management_zone:ca-on-wmu-68b",
+        "management_zone:ca-on-wmu-69a-1",
+        "management_zone:ca-on-wmu-69a-2",
+        "management_zone:ca-on-wmu-69a-3",
+        "management_zone:ca-on-wmu-69b",
+        "management_zone:ca-on-wmu-70",
+        "management_zone:ca-on-wmu-71",
+        "management_zone:ca-on-wmu-72a",
+        "management_zone:ca-on-wmu-72b",
+        "management_zone:ca-on-wmu-73",
+        "management_zone:ca-on-wmu-74a",
+        "management_zone:ca-on-wmu-74b",
+        "management_zone:ca-on-wmu-75",
+        "management_zone:ca-on-wmu-76a",
+        "management_zone:ca-on-wmu-76b",
+        "management_zone:ca-on-wmu-76c",
+        "management_zone:ca-on-wmu-76d",
+        "management_zone:ca-on-wmu-76e",
+        "management_zone:ca-on-wmu-77a",
+        "management_zone:ca-on-wmu-77b",
+        "management_zone:ca-on-wmu-77c",
+        "management_zone:ca-on-wmu-78a",
+        "management_zone:ca-on-wmu-78b",
+        "management_zone:ca-on-wmu-78c",
+        "management_zone:ca-on-wmu-78d",
+        "management_zone:ca-on-wmu-78e",
+        "management_zone:ca-on-wmu-79c",
+        "management_zone:ca-on-wmu-79d",
+        "management_zone:ca-on-wmu-80",
+        "management_zone:ca-on-wmu-81a",
+        "management_zone:ca-on-wmu-81b",
+        "management_zone:ca-on-wmu-82a",
+        "management_zone:ca-on-wmu-82b",
+        "management_zone:ca-on-wmu-82c",
+        "management_zone:ca-on-wmu-83a",
+        "management_zone:ca-on-wmu-84",
+        "management_zone:ca-on-wmu-85a",
+        "management_zone:ca-on-wmu-85b",
+        "management_zone:ca-on-wmu-85c",
+        "management_zone:ca-on-wmu-86a",
+        "management_zone:ca-on-wmu-86b",
+        "management_zone:ca-on-wmu-87a",
+        "management_zone:ca-on-wmu-87b",
+        "management_zone:ca-on-wmu-87c",
+        "management_zone:ca-on-wmu-87d",
+        "management_zone:ca-on-wmu-87e",
+        "management_zone:ca-on-wmu-88",
+        "management_zone:ca-on-wmu-89a",
+        "management_zone:ca-on-wmu-89b",
+        "management_zone:ca-on-wmu-90a",
+        "management_zone:ca-on-wmu-90b",
+        "management_zone:ca-on-wmu-91a",
+        "management_zone:ca-on-wmu-91b",
+        "management_zone:ca-on-wmu-92a",
+        "management_zone:ca-on-wmu-92b",
+        "management_zone:ca-on-wmu-92c",
+        "management_zone:ca-on-wmu-92d",
+        "management_zone:ca-on-wmu-93a",
+        "management_zone:ca-on-wmu-93b",
+        "management_zone:ca-on-wmu-93c",
+        "management_zone:ca-on-wmu-94a",
+        "management_zone:ca-on-wmu-94b",
+        "management_zone:ca-on-wmu-95"
+      ],
+      "sourceId": "source:ca-on-wild-turkey-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-59-60-63-64-65-66a-67-70-72-78-80-82-84-87-89-94",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 59, 60, 63, 64, 65, 66A, 67–70, 72–78, 80–82, 84-87, 89–94",
+      "officialSpec": "59, 60, 63, 64, 65, 66A, 67–70, 72–78, 80–82, 84-87, 89–94",
+      "officialIdentifiers": [
+        "59",
+        "60",
+        "63A",
+        "63B",
+        "64A",
+        "64B",
+        "65",
+        "66A",
+        "67",
+        "68A",
+        "68B",
+        "69A-1",
+        "69A-2",
+        "69A-3",
+        "69B",
+        "70",
+        "72A",
+        "72B",
+        "73",
+        "74A",
+        "74B",
+        "75",
+        "76A",
+        "76B",
+        "76C",
+        "76D",
+        "76E",
+        "77A",
+        "77B",
+        "77C",
+        "78A",
+        "78B",
+        "78C",
+        "78D",
+        "78E",
+        "80",
+        "81A",
+        "81B",
+        "82A",
+        "82B",
+        "82C",
+        "84",
+        "85A",
+        "85B",
+        "85C",
+        "86A",
+        "86B",
+        "87A",
+        "87B",
+        "87C",
+        "87D",
+        "87E",
+        "89A",
+        "89B",
+        "90A",
+        "90B",
+        "91A",
+        "91B",
+        "92A",
+        "92B",
+        "92C",
+        "92D",
+        "93A",
+        "93B",
+        "93C",
+        "94A",
+        "94B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-59",
+        "management_zone:ca-on-wmu-60",
+        "management_zone:ca-on-wmu-63a",
+        "management_zone:ca-on-wmu-63b",
+        "management_zone:ca-on-wmu-64a",
+        "management_zone:ca-on-wmu-64b",
+        "management_zone:ca-on-wmu-65",
+        "management_zone:ca-on-wmu-66a",
+        "management_zone:ca-on-wmu-67",
+        "management_zone:ca-on-wmu-68a",
+        "management_zone:ca-on-wmu-68b",
+        "management_zone:ca-on-wmu-69a-1",
+        "management_zone:ca-on-wmu-69a-2",
+        "management_zone:ca-on-wmu-69a-3",
+        "management_zone:ca-on-wmu-69b",
+        "management_zone:ca-on-wmu-70",
+        "management_zone:ca-on-wmu-72a",
+        "management_zone:ca-on-wmu-72b",
+        "management_zone:ca-on-wmu-73",
+        "management_zone:ca-on-wmu-74a",
+        "management_zone:ca-on-wmu-74b",
+        "management_zone:ca-on-wmu-75",
+        "management_zone:ca-on-wmu-76a",
+        "management_zone:ca-on-wmu-76b",
+        "management_zone:ca-on-wmu-76c",
+        "management_zone:ca-on-wmu-76d",
+        "management_zone:ca-on-wmu-76e",
+        "management_zone:ca-on-wmu-77a",
+        "management_zone:ca-on-wmu-77b",
+        "management_zone:ca-on-wmu-77c",
+        "management_zone:ca-on-wmu-78a",
+        "management_zone:ca-on-wmu-78b",
+        "management_zone:ca-on-wmu-78c",
+        "management_zone:ca-on-wmu-78d",
+        "management_zone:ca-on-wmu-78e",
+        "management_zone:ca-on-wmu-80",
+        "management_zone:ca-on-wmu-81a",
+        "management_zone:ca-on-wmu-81b",
+        "management_zone:ca-on-wmu-82a",
+        "management_zone:ca-on-wmu-82b",
+        "management_zone:ca-on-wmu-82c",
+        "management_zone:ca-on-wmu-84",
+        "management_zone:ca-on-wmu-85a",
+        "management_zone:ca-on-wmu-85b",
+        "management_zone:ca-on-wmu-85c",
+        "management_zone:ca-on-wmu-86a",
+        "management_zone:ca-on-wmu-86b",
+        "management_zone:ca-on-wmu-87a",
+        "management_zone:ca-on-wmu-87b",
+        "management_zone:ca-on-wmu-87c",
+        "management_zone:ca-on-wmu-87d",
+        "management_zone:ca-on-wmu-87e",
+        "management_zone:ca-on-wmu-89a",
+        "management_zone:ca-on-wmu-89b",
+        "management_zone:ca-on-wmu-90a",
+        "management_zone:ca-on-wmu-90b",
+        "management_zone:ca-on-wmu-91a",
+        "management_zone:ca-on-wmu-91b",
+        "management_zone:ca-on-wmu-92a",
+        "management_zone:ca-on-wmu-92b",
+        "management_zone:ca-on-wmu-92c",
+        "management_zone:ca-on-wmu-92d",
+        "management_zone:ca-on-wmu-93a",
+        "management_zone:ca-on-wmu-93b",
+        "management_zone:ca-on-wmu-93c",
+        "management_zone:ca-on-wmu-94a",
+        "management_zone:ca-on-wmu-94b"
+      ],
+      "sourceId": "source:ca-on-wild-turkey-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-1a-1c-1d-2-6-7b-8-10-11a-11b-12-19-21-50-53-64-66-69-71-76",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 1A, 1C, 1D, 2–6, 7B, 8–10, 11A, 11B, 12–19, 21–50, 53–64, 66–69, 71–76",
+      "officialSpec": "1A, 1C, 1D, 2–6, 7B, 8–10, 11A, 11B, 12–19, 21–50, 53–64, 66–69, 71–76",
+      "officialIdentifiers": [
+        "10",
+        "11A",
+        "11B",
+        "12A",
+        "12B",
+        "13",
+        "14",
+        "15A",
+        "15B",
+        "16A",
+        "16B",
+        "16C",
+        "17",
+        "18A",
+        "18B",
+        "19",
+        "1A",
+        "1C",
+        "1D",
+        "2",
+        "21A",
+        "21B",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "3",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "4",
+        "40",
+        "41",
+        "42",
+        "43A",
+        "43B",
+        "44",
+        "45",
+        "46",
+        "47",
+        "48",
+        "49",
+        "5",
+        "50",
+        "53A",
+        "53B",
+        "54",
+        "55A",
+        "55B",
+        "56",
+        "57",
+        "58",
+        "59",
+        "6",
+        "60",
+        "61",
+        "62",
+        "63A",
+        "63B",
+        "64A",
+        "64B",
+        "66A",
+        "66B",
+        "67",
+        "68A",
+        "68B",
+        "69A-1",
+        "69A-2",
+        "69A-3",
+        "69B",
+        "71",
+        "72A",
+        "72B",
+        "73",
+        "74A",
+        "74B",
+        "75",
+        "76A",
+        "76B",
+        "76C",
+        "76D",
+        "76E",
+        "7B",
+        "8",
+        "9A",
+        "9B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-10",
+        "management_zone:ca-on-wmu-11a",
+        "management_zone:ca-on-wmu-11b",
+        "management_zone:ca-on-wmu-12a",
+        "management_zone:ca-on-wmu-12b",
+        "management_zone:ca-on-wmu-13",
+        "management_zone:ca-on-wmu-14",
+        "management_zone:ca-on-wmu-15a",
+        "management_zone:ca-on-wmu-15b",
+        "management_zone:ca-on-wmu-16a",
+        "management_zone:ca-on-wmu-16b",
+        "management_zone:ca-on-wmu-16c",
+        "management_zone:ca-on-wmu-17",
+        "management_zone:ca-on-wmu-18a",
+        "management_zone:ca-on-wmu-18b",
+        "management_zone:ca-on-wmu-19",
+        "management_zone:ca-on-wmu-1a",
+        "management_zone:ca-on-wmu-1c",
+        "management_zone:ca-on-wmu-1d",
+        "management_zone:ca-on-wmu-2",
+        "management_zone:ca-on-wmu-21a",
+        "management_zone:ca-on-wmu-21b",
+        "management_zone:ca-on-wmu-22",
+        "management_zone:ca-on-wmu-23",
+        "management_zone:ca-on-wmu-24",
+        "management_zone:ca-on-wmu-25",
+        "management_zone:ca-on-wmu-26",
+        "management_zone:ca-on-wmu-27",
+        "management_zone:ca-on-wmu-28",
+        "management_zone:ca-on-wmu-29",
+        "management_zone:ca-on-wmu-3",
+        "management_zone:ca-on-wmu-30",
+        "management_zone:ca-on-wmu-31",
+        "management_zone:ca-on-wmu-32",
+        "management_zone:ca-on-wmu-33",
+        "management_zone:ca-on-wmu-34",
+        "management_zone:ca-on-wmu-35",
+        "management_zone:ca-on-wmu-36",
+        "management_zone:ca-on-wmu-37",
+        "management_zone:ca-on-wmu-38",
+        "management_zone:ca-on-wmu-39",
+        "management_zone:ca-on-wmu-4",
+        "management_zone:ca-on-wmu-40",
+        "management_zone:ca-on-wmu-41",
+        "management_zone:ca-on-wmu-42",
+        "management_zone:ca-on-wmu-43a",
+        "management_zone:ca-on-wmu-43b",
+        "management_zone:ca-on-wmu-44",
+        "management_zone:ca-on-wmu-45",
+        "management_zone:ca-on-wmu-46",
+        "management_zone:ca-on-wmu-47",
+        "management_zone:ca-on-wmu-48",
+        "management_zone:ca-on-wmu-49",
+        "management_zone:ca-on-wmu-5",
+        "management_zone:ca-on-wmu-50",
+        "management_zone:ca-on-wmu-53a",
+        "management_zone:ca-on-wmu-53b",
+        "management_zone:ca-on-wmu-54",
+        "management_zone:ca-on-wmu-55a",
+        "management_zone:ca-on-wmu-55b",
+        "management_zone:ca-on-wmu-56",
+        "management_zone:ca-on-wmu-57",
+        "management_zone:ca-on-wmu-58",
+        "management_zone:ca-on-wmu-59",
+        "management_zone:ca-on-wmu-6",
+        "management_zone:ca-on-wmu-60",
+        "management_zone:ca-on-wmu-61",
+        "management_zone:ca-on-wmu-62",
+        "management_zone:ca-on-wmu-63a",
+        "management_zone:ca-on-wmu-63b",
+        "management_zone:ca-on-wmu-64a",
+        "management_zone:ca-on-wmu-64b",
+        "management_zone:ca-on-wmu-66a",
+        "management_zone:ca-on-wmu-66b",
+        "management_zone:ca-on-wmu-67",
+        "management_zone:ca-on-wmu-68a",
+        "management_zone:ca-on-wmu-68b",
+        "management_zone:ca-on-wmu-69a-1",
+        "management_zone:ca-on-wmu-69a-2",
+        "management_zone:ca-on-wmu-69a-3",
+        "management_zone:ca-on-wmu-69b",
+        "management_zone:ca-on-wmu-71",
+        "management_zone:ca-on-wmu-72a",
+        "management_zone:ca-on-wmu-72b",
+        "management_zone:ca-on-wmu-73",
+        "management_zone:ca-on-wmu-74a",
+        "management_zone:ca-on-wmu-74b",
+        "management_zone:ca-on-wmu-75",
+        "management_zone:ca-on-wmu-76a",
+        "management_zone:ca-on-wmu-76b",
+        "management_zone:ca-on-wmu-76c",
+        "management_zone:ca-on-wmu-76d",
+        "management_zone:ca-on-wmu-76e",
+        "management_zone:ca-on-wmu-7b",
+        "management_zone:ca-on-wmu-8",
+        "management_zone:ca-on-wmu-9a",
+        "management_zone:ca-on-wmu-9b"
+      ],
+      "sourceId": "source:ca-on-black-bear-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-82a-84",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 82A, 84",
+      "officialSpec": "82A, 84",
+      "officialIdentifiers": [
+        "82A",
+        "84"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-82a",
+        "management_zone:ca-on-wmu-84"
+      ],
+      "sourceId": "source:ca-on-black-bear-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-83",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 83",
+      "officialSpec": "83",
+      "officialIdentifiers": [
+        "83A",
+        "83B",
+        "83C"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-83a",
+        "management_zone:ca-on-wmu-83b",
+        "management_zone:ca-on-wmu-83c"
+      ],
+      "sourceId": "source:ca-on-black-bear-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-1a-1c-1d-2-6-7b-8-10-11a-11b-12-19-21-45",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 1A, 1C, 1D, 2–6, 7B, 8–10, 11A, 11B, 12–19, 21–45",
+      "officialSpec": "1A, 1C, 1D, 2–6, 7B, 8–10, 11A, 11B, 12–19, 21–45",
+      "officialIdentifiers": [
+        "10",
+        "11A",
+        "11B",
+        "12A",
+        "12B",
+        "13",
+        "14",
+        "15A",
+        "15B",
+        "16A",
+        "16B",
+        "16C",
+        "17",
+        "18A",
+        "18B",
+        "19",
+        "1A",
+        "1C",
+        "1D",
+        "2",
+        "21A",
+        "21B",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "3",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "4",
+        "40",
+        "41",
+        "42",
+        "43A",
+        "43B",
+        "44",
+        "45",
+        "5",
+        "6",
+        "7B",
+        "8",
+        "9A",
+        "9B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-10",
+        "management_zone:ca-on-wmu-11a",
+        "management_zone:ca-on-wmu-11b",
+        "management_zone:ca-on-wmu-12a",
+        "management_zone:ca-on-wmu-12b",
+        "management_zone:ca-on-wmu-13",
+        "management_zone:ca-on-wmu-14",
+        "management_zone:ca-on-wmu-15a",
+        "management_zone:ca-on-wmu-15b",
+        "management_zone:ca-on-wmu-16a",
+        "management_zone:ca-on-wmu-16b",
+        "management_zone:ca-on-wmu-16c",
+        "management_zone:ca-on-wmu-17",
+        "management_zone:ca-on-wmu-18a",
+        "management_zone:ca-on-wmu-18b",
+        "management_zone:ca-on-wmu-19",
+        "management_zone:ca-on-wmu-1a",
+        "management_zone:ca-on-wmu-1c",
+        "management_zone:ca-on-wmu-1d",
+        "management_zone:ca-on-wmu-2",
+        "management_zone:ca-on-wmu-21a",
+        "management_zone:ca-on-wmu-21b",
+        "management_zone:ca-on-wmu-22",
+        "management_zone:ca-on-wmu-23",
+        "management_zone:ca-on-wmu-24",
+        "management_zone:ca-on-wmu-25",
+        "management_zone:ca-on-wmu-26",
+        "management_zone:ca-on-wmu-27",
+        "management_zone:ca-on-wmu-28",
+        "management_zone:ca-on-wmu-29",
+        "management_zone:ca-on-wmu-3",
+        "management_zone:ca-on-wmu-30",
+        "management_zone:ca-on-wmu-31",
+        "management_zone:ca-on-wmu-32",
+        "management_zone:ca-on-wmu-33",
+        "management_zone:ca-on-wmu-34",
+        "management_zone:ca-on-wmu-35",
+        "management_zone:ca-on-wmu-36",
+        "management_zone:ca-on-wmu-37",
+        "management_zone:ca-on-wmu-38",
+        "management_zone:ca-on-wmu-39",
+        "management_zone:ca-on-wmu-4",
+        "management_zone:ca-on-wmu-40",
+        "management_zone:ca-on-wmu-41",
+        "management_zone:ca-on-wmu-42",
+        "management_zone:ca-on-wmu-43a",
+        "management_zone:ca-on-wmu-43b",
+        "management_zone:ca-on-wmu-44",
+        "management_zone:ca-on-wmu-45",
+        "management_zone:ca-on-wmu-5",
+        "management_zone:ca-on-wmu-6",
+        "management_zone:ca-on-wmu-7b",
+        "management_zone:ca-on-wmu-8",
+        "management_zone:ca-on-wmu-9a",
+        "management_zone:ca-on-wmu-9b"
+      ],
+      "sourceId": "source:ca-on-black-bear-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-46-47-49-50-53-64-66-67-69-71-76",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 46, 47, 49, 50, 53, 64, 66, 67, 69, 71–76",
+      "officialSpec": "46, 47, 49, 50, 53, 64, 66, 67, 69, 71–76",
+      "officialIdentifiers": [
+        "46",
+        "47",
+        "49",
+        "50",
+        "53A",
+        "53B",
+        "64A",
+        "64B",
+        "66A",
+        "66B",
+        "67",
+        "69A-1",
+        "69A-2",
+        "69A-3",
+        "69B",
+        "71",
+        "72A",
+        "72B",
+        "73",
+        "74A",
+        "74B",
+        "75",
+        "76A",
+        "76B",
+        "76C",
+        "76D",
+        "76E"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-46",
+        "management_zone:ca-on-wmu-47",
+        "management_zone:ca-on-wmu-49",
+        "management_zone:ca-on-wmu-50",
+        "management_zone:ca-on-wmu-53a",
+        "management_zone:ca-on-wmu-53b",
+        "management_zone:ca-on-wmu-64a",
+        "management_zone:ca-on-wmu-64b",
+        "management_zone:ca-on-wmu-66a",
+        "management_zone:ca-on-wmu-66b",
+        "management_zone:ca-on-wmu-67",
+        "management_zone:ca-on-wmu-69a-1",
+        "management_zone:ca-on-wmu-69a-2",
+        "management_zone:ca-on-wmu-69a-3",
+        "management_zone:ca-on-wmu-69b",
+        "management_zone:ca-on-wmu-71",
+        "management_zone:ca-on-wmu-72a",
+        "management_zone:ca-on-wmu-72b",
+        "management_zone:ca-on-wmu-73",
+        "management_zone:ca-on-wmu-74a",
+        "management_zone:ca-on-wmu-74b",
+        "management_zone:ca-on-wmu-75",
+        "management_zone:ca-on-wmu-76a",
+        "management_zone:ca-on-wmu-76b",
+        "management_zone:ca-on-wmu-76c",
+        "management_zone:ca-on-wmu-76d",
+        "management_zone:ca-on-wmu-76e"
+      ],
+      "sourceId": "source:ca-on-black-bear-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-48-54-63-68",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 48, 54–63, 68",
+      "officialSpec": "48, 54–63, 68",
+      "officialIdentifiers": [
+        "48",
+        "54",
+        "55A",
+        "55B",
+        "56",
+        "57",
+        "58",
+        "59",
+        "60",
+        "61",
+        "62",
+        "63A",
+        "63B",
+        "68A",
+        "68B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-48",
+        "management_zone:ca-on-wmu-54",
+        "management_zone:ca-on-wmu-55a",
+        "management_zone:ca-on-wmu-55b",
+        "management_zone:ca-on-wmu-56",
+        "management_zone:ca-on-wmu-57",
+        "management_zone:ca-on-wmu-58",
+        "management_zone:ca-on-wmu-59",
+        "management_zone:ca-on-wmu-60",
+        "management_zone:ca-on-wmu-61",
+        "management_zone:ca-on-wmu-62",
+        "management_zone:ca-on-wmu-63a",
+        "management_zone:ca-on-wmu-63b",
+        "management_zone:ca-on-wmu-68a",
+        "management_zone:ca-on-wmu-68b"
+      ],
+      "sourceId": "source:ca-on-black-bear-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-1a-1c-1d-16-17-25",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 1A, 1C, 1D, 16–17, 25",
+      "officialSpec": "1A, 1C, 1D, 16–17, 25",
+      "officialIdentifiers": [
+        "16A",
+        "16B",
+        "16C",
+        "17",
+        "1A",
+        "1C",
+        "1D",
+        "25"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-16a",
+        "management_zone:ca-on-wmu-16b",
+        "management_zone:ca-on-wmu-16c",
+        "management_zone:ca-on-wmu-17",
+        "management_zone:ca-on-wmu-1a",
+        "management_zone:ca-on-wmu-1c",
+        "management_zone:ca-on-wmu-1d",
+        "management_zone:ca-on-wmu-25"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-2-4-18a-18b",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 2-4, 18A, 18B",
+      "officialSpec": "2-4, 18A, 18B",
+      "officialIdentifiers": [
+        "18A",
+        "18B",
+        "2",
+        "3",
+        "4"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-18a",
+        "management_zone:ca-on-wmu-18b",
+        "management_zone:ca-on-wmu-2",
+        "management_zone:ca-on-wmu-3",
+        "management_zone:ca-on-wmu-4"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-5-6-7b-8-9a-9b-11a-11b-12-15-19-21a-21b",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 5, 6, 7B, 8, 9A, 9B, 11A, 11B, 12–15, 19, 21A, 21B",
+      "officialSpec": "5, 6, 7B, 8, 9A, 9B, 11A, 11B, 12–15, 19, 21A, 21B",
+      "officialIdentifiers": [
+        "11A",
+        "11B",
+        "12A",
+        "12B",
+        "13",
+        "14",
+        "15A",
+        "15B",
+        "19",
+        "21A",
+        "21B",
+        "5",
+        "6",
+        "7B",
+        "8",
+        "9A",
+        "9B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-11a",
+        "management_zone:ca-on-wmu-11b",
+        "management_zone:ca-on-wmu-12a",
+        "management_zone:ca-on-wmu-12b",
+        "management_zone:ca-on-wmu-13",
+        "management_zone:ca-on-wmu-14",
+        "management_zone:ca-on-wmu-15a",
+        "management_zone:ca-on-wmu-15b",
+        "management_zone:ca-on-wmu-19",
+        "management_zone:ca-on-wmu-21a",
+        "management_zone:ca-on-wmu-21b",
+        "management_zone:ca-on-wmu-5",
+        "management_zone:ca-on-wmu-6",
+        "management_zone:ca-on-wmu-7b",
+        "management_zone:ca-on-wmu-8",
+        "management_zone:ca-on-wmu-9a",
+        "management_zone:ca-on-wmu-9b"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-22-23-28-42",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 22, 23, 28–42",
+      "officialSpec": "22, 23, 28–42",
+      "officialIdentifiers": [
+        "22",
+        "23",
+        "28",
+        "29",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40",
+        "41",
+        "42"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-22",
+        "management_zone:ca-on-wmu-23",
+        "management_zone:ca-on-wmu-28",
+        "management_zone:ca-on-wmu-29",
+        "management_zone:ca-on-wmu-30",
+        "management_zone:ca-on-wmu-31",
+        "management_zone:ca-on-wmu-32",
+        "management_zone:ca-on-wmu-33",
+        "management_zone:ca-on-wmu-34",
+        "management_zone:ca-on-wmu-35",
+        "management_zone:ca-on-wmu-36",
+        "management_zone:ca-on-wmu-37",
+        "management_zone:ca-on-wmu-38",
+        "management_zone:ca-on-wmu-39",
+        "management_zone:ca-on-wmu-40",
+        "management_zone:ca-on-wmu-41",
+        "management_zone:ca-on-wmu-42"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-24-27",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 24, 27",
+      "officialSpec": "24, 27",
+      "officialIdentifiers": [
+        "24",
+        "27"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-24",
+        "management_zone:ca-on-wmu-27"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-46-50-53-63",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 46–50, 53–63",
+      "officialSpec": "46–50, 53–63",
+      "officialIdentifiers": [
+        "46",
+        "47",
+        "48",
+        "49",
+        "50",
+        "53A",
+        "53B",
+        "54",
+        "55A",
+        "55B",
+        "56",
+        "57",
+        "58",
+        "59",
+        "60",
+        "61",
+        "62",
+        "63A",
+        "63B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-46",
+        "management_zone:ca-on-wmu-47",
+        "management_zone:ca-on-wmu-48",
+        "management_zone:ca-on-wmu-49",
+        "management_zone:ca-on-wmu-50",
+        "management_zone:ca-on-wmu-53a",
+        "management_zone:ca-on-wmu-53b",
+        "management_zone:ca-on-wmu-54",
+        "management_zone:ca-on-wmu-55a",
+        "management_zone:ca-on-wmu-55b",
+        "management_zone:ca-on-wmu-56",
+        "management_zone:ca-on-wmu-57",
+        "management_zone:ca-on-wmu-58",
+        "management_zone:ca-on-wmu-59",
+        "management_zone:ca-on-wmu-60",
+        "management_zone:ca-on-wmu-61",
+        "management_zone:ca-on-wmu-62",
+        "management_zone:ca-on-wmu-63a",
+        "management_zone:ca-on-wmu-63b"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-2-4-18a-24-27",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 2–4, 18A, 24, 27",
+      "officialSpec": "2–4, 18A, 24, 27",
+      "officialIdentifiers": [
+        "18A",
+        "2",
+        "24",
+        "27",
+        "3",
+        "4"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-18a",
+        "management_zone:ca-on-wmu-2",
+        "management_zone:ca-on-wmu-24",
+        "management_zone:ca-on-wmu-27",
+        "management_zone:ca-on-wmu-3",
+        "management_zone:ca-on-wmu-4"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceVersion": "2026"
+    },
+    {
+      "id": "regulatory_group:ca-on-5-6-7b-8-9a-9b-11a-11b-12-15-19-21-23-28-33-35-42",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "label": "Ontario WMU 5, 6, 7B, 8, 9A, 9B, 11A, 11B, 12–15, 19, 21–23, 28–33, 35–42",
+      "officialSpec": "5, 6, 7B, 8, 9A, 9B, 11A, 11B, 12–15, 19, 21–23, 28–33, 35–42",
+      "officialIdentifiers": [
+        "11A",
+        "11B",
+        "12A",
+        "12B",
+        "13",
+        "14",
+        "15A",
+        "15B",
+        "19",
+        "21A",
+        "21B",
+        "22",
+        "23",
+        "28",
+        "29",
+        "30",
+        "31",
+        "32",
+        "33",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "5",
+        "6",
+        "7B",
+        "8",
+        "9A",
+        "9B"
+      ],
+      "zoneIds": [
+        "management_zone:ca-on-wmu-11a",
+        "management_zone:ca-on-wmu-11b",
+        "management_zone:ca-on-wmu-12a",
+        "management_zone:ca-on-wmu-12b",
+        "management_zone:ca-on-wmu-13",
+        "management_zone:ca-on-wmu-14",
+        "management_zone:ca-on-wmu-15a",
+        "management_zone:ca-on-wmu-15b",
+        "management_zone:ca-on-wmu-19",
+        "management_zone:ca-on-wmu-21a",
+        "management_zone:ca-on-wmu-21b",
+        "management_zone:ca-on-wmu-22",
+        "management_zone:ca-on-wmu-23",
+        "management_zone:ca-on-wmu-28",
+        "management_zone:ca-on-wmu-29",
+        "management_zone:ca-on-wmu-30",
+        "management_zone:ca-on-wmu-31",
+        "management_zone:ca-on-wmu-32",
+        "management_zone:ca-on-wmu-33",
+        "management_zone:ca-on-wmu-35",
+        "management_zone:ca-on-wmu-36",
+        "management_zone:ca-on-wmu-37",
+        "management_zone:ca-on-wmu-38",
+        "management_zone:ca-on-wmu-39",
+        "management_zone:ca-on-wmu-40",
+        "management_zone:ca-on-wmu-41",
+        "management_zone:ca-on-wmu-42",
+        "management_zone:ca-on-wmu-5",
+        "management_zone:ca-on-wmu-6",
+        "management_zone:ca-on-wmu-7b",
+        "management_zone:ca-on-wmu-8",
+        "management_zone:ca-on-wmu-9a",
+        "management_zone:ca-on-wmu-9b"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceVersion": "2026"
+    }
+  ],
+  "rules": [
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-1c-16a-16b-16c-17-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-1c-16a-16b-16c-17",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "September 19 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-1c-16a-16b-16c-17-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-1c-16a-16b-16c-17",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": null,
+      "declaredNoSeason": true,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-2-3-4-5-11b-13-14-15a-15b-18a-18b-19-21a-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-2-3-4-5-11b-13-14-15a-15b-18a-18b-19-21a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "October 10 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-2-3-4-5-11b-13-14-15a-15b-18a-18b-19-21a-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-2-3-4-5-11b-13-14-15a-15b-18a-18b-19-21a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": null,
+      "declaredNoSeason": true,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-6-7b-8-9a-9b-11a-12a-12b-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-6-7b-8-9a-9b-11a-12a-12b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "October 10 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-6-7b-8-9a-9b-11a-12a-12b-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-6-7b-8-9a-9b-11a-12a-12b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "October 10 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-10-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-10",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "October 31 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-10-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-10",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "October 31 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-21b-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-21b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "October 10 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-21b-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-21b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "October 12 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-22-23-24-27-30-33-34-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-22-23-24-27-30-33-34",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "October 10 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-22-23-24-27-30-33-34-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-22-23-24-27-30-33-34",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "October 12 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-25-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-25",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "September 19 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-25-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-25",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "September 21 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-26-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-26",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "September 19 to October 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-26-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-26",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "September 21 to October 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-28-29-31-32-35-36-37-38-39-40-41-42-44-46-47-48-49-50-53a-54-55a-55b-56-57-58-59-60-61-62-63a-63b-64a-66a-67-68a-74b-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-28-29-31-32-35-36-37-38-39-40-41-42-44-46-47-48-49-50-53a-54-55a-55b-56-57-58-59-60-61-62-63a-63b-64a-66a-67-68a-74b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "November 2 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-28-29-31-32-35-36-37-38-39-40-41-42-44-46-47-48-49-50-53a-54-55a-55b-56-57-58-59-60-61-62-63a-63b-64a-66a-67-68a-74b-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-28-29-31-32-35-36-37-38-39-40-41-42-44-46-47-48-49-50-53a-54-55a-55b-56-57-58-59-60-61-62-63a-63b-64a-66a-67-68a-74b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "November 2 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-64b-65-68b-69b-71-72a-73-74a-75-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-64b-65-68b-69b-71-72a-73-74a-75",
+      "appliesWhen": {
+        "permittedImplements": [
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "November 2 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-64b-65-68b-69b-71-72a-73-74a-75-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-64b-65-68b-69b-71-72a-73-74a-75",
+      "appliesWhen": {
+        "permittedImplements": [
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "November 2 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-43a-43b-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-43a-43b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "November 16 to November 22",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-43a-43b-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-43a-43b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "November 16 to November 22",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-45-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-45",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "November 7 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-45-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-45",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "November 7 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-82a-82b-83a-84-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-82a-82b-83a-84",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "November 2 to November 8",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-82a-82b-83a-84-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-82a-82b-83a-84",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "gun season",
+      "seasonPhrase": "November 2 to November 8",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-5-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-5",
+      "appliesWhen": {
+        "permittedImplements": [
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "muzzle-loader season",
+      "seasonPhrase": "October 3 to October 9",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-5-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-5",
+      "appliesWhen": {
+        "permittedImplements": [
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "muzzle-loader season",
+      "seasonPhrase": null,
+      "declaredNoSeason": true,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-6-7b-8-9a-9b-11a-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-6-7b-8-9a-9b-11a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "muzzle-loader season",
+      "seasonPhrase": "October 3 to October 9",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-6-7b-8-9a-9b-11a-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-6-7b-8-9a-9b-11a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "muzzle-loader season",
+      "seasonPhrase": "October 3 to October 9",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-7a-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-7a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "muzzle-loader season",
+      "seasonPhrase": "October 3 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-7a-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-7a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "muzzle-loader season",
+      "seasonPhrase": "October 3 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-18b-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-18b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "muzzle-loader season",
+      "seasonPhrase": "September 19 to October 9",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-18b-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-18b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "muzzle-loader season",
+      "seasonPhrase": null,
+      "declaredNoSeason": true,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-36-37-42-43a-43b-45-59-60-61-62-63a-63b-64a-64b-65-66a-67-68a-68b-69b-71-72a-73-74a-74b-75-82a-83a-84-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-36-37-42-43a-43b-45-59-60-61-62-63a-63b-64a-64b-65-66a-67-68a-68b-69b-71-72a-73-74a-74b-75-82a-83a-84",
+      "appliesWhen": {
+        "permittedImplements": [
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "muzzle-loader season",
+      "seasonPhrase": "November 30 to December 6",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-36-37-42-43a-43b-45-59-60-61-62-63a-63b-64a-64b-65-66a-67-68a-68b-69b-71-72a-73-74a-74b-75-82a-83a-84-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-36-37-42-43a-43b-45-59-60-61-62-63a-63b-64a-64b-65-66a-67-68a-68b-69b-71-72a-73-74a-74b-75-82a-83a-84",
+      "appliesWhen": {
+        "permittedImplements": [
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "muzzle-loader season",
+      "seasonPhrase": "November 30 to December 6",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-82b-muzzleloader-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-82b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "muzzle-loader season",
+      "seasonPhrase": "November 16 to November 22 November 30 to December 6",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-82b-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-82b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "muzzle-loader season",
+      "seasonPhrase": "November 16 to November 22 November 30 to December 6",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Muzzle-loading guns and bows",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-2-3-4-11b-13-14-15a-15b-19-21a-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-2-3-4-11b-13-14-15a-15b-19-21a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "September 1 to October 9",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-2-3-4-11b-13-14-15a-15b-19-21a-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-2-3-4-11b-13-14-15a-15b-19-21a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": null,
+      "declaredNoSeason": true,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-5-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-5",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "September 1 to October 2",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-5-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-5",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": null,
+      "declaredNoSeason": true,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-6-7a-7b-8-9a-9b-11a-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-6-7a-7b-8-9a-9b-11a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "September 1 to October 2",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-6-7a-7b-8-9a-9b-11a-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-6-7a-7b-8-9a-9b-11a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "September 19 to October 2",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-10-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-10",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to October 30",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-10-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-10",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to October 30",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-12a-12b-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-12a-12b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "September 1 to October 9",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-12a-12b-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-12a-12b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "September 19 to October 9",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-18a-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-18a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "September 19 to October 9",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-18a-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-18a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": null,
+      "declaredNoSeason": true,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-21b-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-21b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "September 1 to October 9",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-21b-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-21b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "September 1 to October 9",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-22-23-24-27-30-33-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-22-23-24-27-30-33",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "September 1 to October 9 November 16 to November 30",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-22-23-24-27-30-33-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-22-23-24-27-30-33",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "September 1 to October 9 November 16 to November 30",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-28-29-31-32-35-38-39-40-41-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-28-29-31-32-35-38-39-40-41",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 16 to November 30",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-28-29-31-32-35-38-39-40-41-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-28-29-31-32-35-38-39-40-41",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 16 to November 30",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-34-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-34",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "November 16 to November 30",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-34-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-34",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "November 16 to November 30",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-36-37-42-60-61-62-63a-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-36-37-42-60-61-62-63a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 16 to November 29 December 7 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-36-37-42-60-61-62-63a-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-36-37-42-60-61-62-63a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 16 to November 29 December 7 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-43a-43b-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-43a-43b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-43a-43b-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-43a-43b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-44-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-44",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-44-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-44",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-45-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-45",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 6 November 16 to November 29 December 7 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-45-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-45",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 6 November 16 to November 29 December 7 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-46-47-48-49-50-53a-55a-55b-56-57-58-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-46-47-48-49-50-53a-55a-55b-56-57-58",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 16 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-46-47-48-49-50-53a-55a-55b-56-57-58-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-46-47-48-49-50-53a-55a-55b-56-57-58",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 16 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-54-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-54",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 16 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [
+        "Excluding parts of WMUs 54, which lie within the boundaries of Algonquin Provincial Park."
+      ],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-54-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-54",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 16 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [
+        "Excluding parts of WMUs 54, which lie within the boundaries of Algonquin Provincial Park."
+      ],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-53b-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-53b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 9 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-53b-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-53b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 9 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-59-63b-64a-64b-66a-67-68a-68b-69b-71-72a-73-74a-74b-75-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-59-63b-64a-64b-66a-67-68a-68b-69b-71-72a-73-74a-74b-75",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 16 to November 29 December 7 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-59-63b-64a-64b-66a-67-68a-68b-69b-71-72a-73-74a-74b-75-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-59-63b-64a-64b-66a-67-68a-68b-69b-71-72a-73-74a-74b-75",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 16 to November 29 December 7 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-65-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-65",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to October 4 October 15 to November 1 November 16 to November 29 December 7 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-65-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-65",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to October 4 October 15 to November 1 November 16 to November 29 December 7 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-66b-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-66b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "November 9 to November 14",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-66b-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-66b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "November 9 to November 14",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-69a1-69a3-72b-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-69a1-69a3-72b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-69a1-69a3-72b-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-69a1-69a3-72b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-69a2-70-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-69a2-70",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 29 December 7 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-69a2-70-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-69a2-70",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 29 December 7 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-76a-76b-76c-76d-76e-77a-77b-77c-78a-78b-81a-81b-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-76a-76b-76c-76d-76e-77a-77b-77c-78a-78b-81a-81b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 7 to November 29 December 5 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-76a-76b-76c-76d-76e-77a-77b-77c-78a-78b-81a-81b-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-76a-76b-76c-76d-76e-77a-77b-77c-78a-78b-81a-81b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": null,
+      "declaredNoSeason": true,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-78c-78d-78e-87a-88-94a-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-78c-78d-78e-87a-88-94a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-78c-78d-78e-87a-88-94a-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-78c-78d-78e-87a-88-94a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": null,
+      "declaredNoSeason": true,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-79c-79d-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-79c-79d",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 7 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-79c-79d-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-79c-79d",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": null,
+      "declaredNoSeason": true,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-80-85a-85b-85c-87b-87c-87d-87e-89a-89b-90a-90b-93a-93b-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-80-85a-85b-85c-87b-87c-87d-87e-89a-89b-90a-90b-93a-93b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 9 to November 29 December 7 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-80-85a-85b-85c-87b-87c-87d-87e-89a-89b-90a-90b-93a-93b-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-80-85a-85b-85c-87b-87c-87d-87e-89a-89b-90a-90b-93a-93b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": null,
+      "declaredNoSeason": true,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-82a-83a-84-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-82a-83a-84",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 9 to November 29 December 7 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-82a-83a-84-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-82a-83a-84",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 9 to November 29 December 7 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-82b-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-82b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 9 to November 15 November 23 to November 29 December 7 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-82b-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-82b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 9 to November 15 November 23 to November 29 December 7 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-86a-86b-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-86a-86b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 29 December 7 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-86a-86b-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-86a-86b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": null,
+      "declaredNoSeason": true,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-91a-91b-92a-92b-92c-92d-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-91a-91b-92a-92b-92c-92d",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 9 to November 15 November 23 to November 29 December 7 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-91a-91b-92a-92b-92c-92d-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-91a-91b-92a-92b-92c-92d",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": null,
+      "declaredNoSeason": true,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-94b-bow-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-94b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": "October 1 to November 1 November 9 to December 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-94b-bow-non-resident-2026",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-94b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT"
+      },
+      "seasonLabel": "archery season",
+      "seasonPhrase": null,
+      "declaredNoSeason": true,
+      "caveats": [],
+      "conditionIds": [
+        "deer-licence",
+        "deer-antlerless",
+        "deer-controlled"
+      ],
+      "sourceId": "source:ca-on-deer-2026",
+      "sourceSection": "Bows only",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-wild-turkey-spring-season-36-42-45-46-50-53-65-66a-67-82-83a-84-95-shotgun-bow-any-2026",
+      "speciesId": "species:wild-turkey",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-36-42-45-46-50-53-65-66a-67-82-83a-84-95",
+      "appliesWhen": {
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "spring season",
+      "seasonPhrase": "April 25 to May 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "turkey-licence",
+        "turkey-mandatory-report",
+        "turkey-bearded"
+      ],
+      "sourceId": "source:ca-on-wild-turkey-2026",
+      "sourceSection": "Spring wild turkey season — shotgun or bow",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-wild-turkey-fall-shotgun-season-59-60-63-64-65-66a-67-70-72-78-80-82-84-87-89-94-shotgun-bow-any-2026",
+      "speciesId": "species:wild-turkey",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-59-60-63-64-65-66a-67-70-72-78-80-82-84-87-89-94",
+      "appliesWhen": {
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "fall shotgun season",
+      "seasonPhrase": "October 13 to October 25",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "turkey-licence",
+        "turkey-mandatory-report"
+      ],
+      "sourceId": "source:ca-on-wild-turkey-2026",
+      "sourceSection": "Fall wild turkey season — shotgun or bow",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-wild-turkey-fall-archery-season-59-60-63-64-65-66a-67-70-72-78-80-82-84-87-89-94-bow-any-2026",
+      "speciesId": "species:wild-turkey",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-59-60-63-64-65-66a-67-70-72-78-80-82-84-87-89-94",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "fall archery season",
+      "seasonPhrase": "October 1 to October 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "turkey-licence",
+        "turkey-mandatory-report"
+      ],
+      "sourceId": "source:ca-on-wild-turkey-2026",
+      "sourceSection": "Fall wild turkey season — bow",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-american-black-bear-spring-season-1a-1c-1d-2-6-7b-8-10-11a-11b-12-19-21-50-53-64-66-69-71-76-rifle-shotgun-muzzleloader-bow-any-2026",
+      "speciesId": "species:american-black-bear",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-1a-1c-1d-2-6-7b-8-10-11a-11b-12-19-21-50-53-64-66-69-71-76",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "spring season",
+      "seasonPhrase": "May 1 to June 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "bear-licence",
+        "bear-cubs",
+        "bear-non-resident-outfitter"
+      ],
+      "sourceId": "source:ca-on-black-bear-2026",
+      "sourceSection": "Spring black bear seasons",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-american-black-bear-spring-season-7a-muzzleloader-bow-any-2026",
+      "speciesId": "species:american-black-bear",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-7a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "MUZZLELOADER",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "spring season",
+      "seasonPhrase": "May 1 to June 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "bear-licence",
+        "bear-cubs",
+        "bear-non-resident-outfitter"
+      ],
+      "sourceId": "source:ca-on-black-bear-2026",
+      "sourceSection": "Spring black bear seasons",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-american-black-bear-spring-season-82a-84-rifle-shotgun-muzzleloader-bow-any-2026",
+      "speciesId": "species:american-black-bear",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-82a-84",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "spring season",
+      "seasonPhrase": "May 1 to May 7",
+      "declaredNoSeason": false,
+      "caveats": [
+        "Indicates bear hunting is only permitted in the geographic townships of Keppel and Sarawak in WMU 82A, the geographic township of Amabel in WMU 84."
+      ],
+      "conditionIds": [
+        "bear-licence",
+        "bear-cubs",
+        "bear-non-resident-outfitter"
+      ],
+      "sourceId": "source:ca-on-black-bear-2026",
+      "sourceSection": "Spring black bear seasons",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-american-black-bear-spring-season-83-rifle-shotgun-muzzleloader-bow-any-2026",
+      "speciesId": "species:american-black-bear",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-83",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "spring season",
+      "seasonPhrase": "May 1 to May 7",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "bear-licence",
+        "bear-cubs",
+        "bear-non-resident-outfitter"
+      ],
+      "sourceId": "source:ca-on-black-bear-2026",
+      "sourceSection": "Spring black bear seasons",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-american-black-bear-fall-season-1a-1c-1d-2-6-7b-8-10-11a-11b-12-19-21-45-rifle-shotgun-muzzleloader-bow-any-2026",
+      "speciesId": "species:american-black-bear",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-1a-1c-1d-2-6-7b-8-10-11a-11b-12-19-21-45",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "fall season",
+      "seasonPhrase": "August 15 to October 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "bear-licence",
+        "bear-cubs",
+        "bear-non-resident-outfitter"
+      ],
+      "sourceId": "source:ca-on-black-bear-2026",
+      "sourceSection": "Fall black bear seasons",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-american-black-bear-fall-season-7a-muzzleloader-bow-any-2026",
+      "speciesId": "species:american-black-bear",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-7a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "MUZZLELOADER",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "fall season",
+      "seasonPhrase": "August 15 to October 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "bear-licence",
+        "bear-cubs",
+        "bear-non-resident-outfitter"
+      ],
+      "sourceId": "source:ca-on-black-bear-2026",
+      "sourceSection": "Fall black bear seasons",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-american-black-bear-fall-season-46-47-49-50-53-64-66-67-69-71-76-rifle-shotgun-muzzleloader-bow-any-2026",
+      "speciesId": "species:american-black-bear",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-46-47-49-50-53-64-66-67-69-71-76",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "fall season",
+      "seasonPhrase": "September 8 to November 30",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "bear-licence",
+        "bear-cubs",
+        "bear-non-resident-outfitter"
+      ],
+      "sourceId": "source:ca-on-black-bear-2026",
+      "sourceSection": "Fall black bear seasons",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-american-black-bear-fall-season-48-54-63-68-rifle-shotgun-muzzleloader-bow-any-2026",
+      "speciesId": "species:american-black-bear",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-48-54-63-68",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "fall season",
+      "seasonPhrase": "September 1 to November 30",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "bear-licence",
+        "bear-cubs",
+        "bear-non-resident-outfitter"
+      ],
+      "sourceId": "source:ca-on-black-bear-2026",
+      "sourceSection": "Fall black bear seasons",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-1a-1c-1d-16-17-25-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-1a-1c-1d-16-17-25",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT",
+        "TAG_TYPE": "GUN"
+      },
+      "seasonLabel": "gun-tag season",
+      "seasonPhrase": "September 19 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows (the \"gun\" seasons when \"gun tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-1a-1c-1d-16-17-25-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-1a-1c-1d-16-17-25",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT",
+        "TAG_TYPE": "GUN"
+      },
+      "seasonLabel": "gun-tag season",
+      "seasonPhrase": "September 21 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows (the \"gun\" seasons when \"gun tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-2-4-18a-18b-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-2-4-18a-18b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT",
+        "TAG_TYPE": "GUN"
+      },
+      "seasonLabel": "gun-tag season",
+      "seasonPhrase": "October 10 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows (the \"gun\" seasons when \"gun tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-2-4-18a-18b-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-2-4-18a-18b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT",
+        "TAG_TYPE": "GUN"
+      },
+      "seasonLabel": "gun-tag season",
+      "seasonPhrase": "October 12 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows (the \"gun\" seasons when \"gun tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-5-6-7b-8-9a-9b-11a-11b-12-15-19-21a-21b-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-5-6-7b-8-9a-9b-11a-11b-12-15-19-21a-21b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT",
+        "TAG_TYPE": "GUN"
+      },
+      "seasonLabel": "gun-tag season",
+      "seasonPhrase": "October 17 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows (the \"gun\" seasons when \"gun tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-5-6-7b-8-9a-9b-11a-11b-12-15-19-21a-21b-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-5-6-7b-8-9a-9b-11a-11b-12-15-19-21a-21b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT",
+        "TAG_TYPE": "GUN"
+      },
+      "seasonLabel": "gun-tag season",
+      "seasonPhrase": "October 19 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows (the \"gun\" seasons when \"gun tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-22-23-28-42-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-22-23-28-42",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT",
+        "TAG_TYPE": "GUN"
+      },
+      "seasonLabel": "gun-tag season",
+      "seasonPhrase": "October 17 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows (the \"gun\" seasons when \"gun tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-22-23-28-42-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-22-23-28-42",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT",
+        "TAG_TYPE": "GUN"
+      },
+      "seasonLabel": "gun-tag season",
+      "seasonPhrase": "October 19 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows (the \"gun\" seasons when \"gun tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-24-27-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-24-27",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT",
+        "TAG_TYPE": "GUN"
+      },
+      "seasonLabel": "gun-tag season",
+      "seasonPhrase": "October 10 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows (the \"gun\" seasons when \"gun tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-24-27-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-24-27",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT",
+        "TAG_TYPE": "GUN"
+      },
+      "seasonLabel": "gun-tag season",
+      "seasonPhrase": "October 12 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows (the \"gun\" seasons when \"gun tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-26-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-26",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT",
+        "TAG_TYPE": "GUN"
+      },
+      "seasonLabel": "gun-tag season",
+      "seasonPhrase": "September 19 to October 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows (the \"gun\" seasons when \"gun tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-26-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-26",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT",
+        "TAG_TYPE": "GUN"
+      },
+      "seasonLabel": "gun-tag season",
+      "seasonPhrase": "September 21 to October 31",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows (the \"gun\" seasons when \"gun tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-46-50-53-63-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-46-50-53-63",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT",
+        "TAG_TYPE": "GUN"
+      },
+      "seasonLabel": "gun-tag season",
+      "seasonPhrase": "October 19 to October 25",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows (the \"gun\" seasons when \"gun tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-46-50-53-63-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-46-50-53-63",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT",
+        "TAG_TYPE": "GUN"
+      },
+      "seasonLabel": "gun-tag season",
+      "seasonPhrase": null,
+      "declaredNoSeason": true,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Rifles, shotguns, muzzle-loading guns and bows (the \"gun\" seasons when \"gun tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-bow-and-muzzle-loader-tag-season-7a-muzzleloader-bow-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-7a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT",
+        "TAG_TYPE": "BOW_MUZZLELOADER"
+      },
+      "seasonLabel": "bow-and-muzzle-loader-tag season",
+      "seasonPhrase": "October 17 to December 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Bows and muzzle-loading guns only (seasons when bows and muzzle-loading guns only tags are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-bow-and-muzzle-loader-tag-season-7a-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-7a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT",
+        "TAG_TYPE": "BOW_MUZZLELOADER"
+      },
+      "seasonLabel": "bow-and-muzzle-loader-tag season",
+      "seasonPhrase": "October 19 to November 15",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Bows and muzzle-loading guns only (seasons when bows and muzzle-loading guns only tags are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-bow-and-muzzle-loader-tag-season-18b-muzzleloader-bow-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-18b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT",
+        "TAG_TYPE": "BOW_MUZZLELOADER"
+      },
+      "seasonLabel": "bow-and-muzzle-loader-tag season",
+      "seasonPhrase": "September 19 to October 9",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Bows and muzzle-loading guns only (seasons when bows and muzzle-loading guns only tags are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-bow-and-muzzle-loader-tag-season-18b-muzzleloader-bow-non-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-18b",
+      "appliesWhen": {
+        "permittedImplements": [
+          "MUZZLELOADER",
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT",
+        "TAG_TYPE": "BOW_MUZZLELOADER"
+      },
+      "seasonLabel": "bow-and-muzzle-loader-tag season",
+      "seasonPhrase": "September 19 to October 9",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Bows and muzzle-loading guns only (seasons when bows and muzzle-loading guns only tags are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-bow-tag-season-2-4-18a-24-27-bow-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-2-4-18a-24-27",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT",
+        "TAG_TYPE": "BOW"
+      },
+      "seasonLabel": "bow-tag season",
+      "seasonPhrase": "September 19 to October 9",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Bows only (season when \"bow tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-bow-tag-season-2-4-18a-24-27-bow-non-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-2-4-18a-24-27",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT",
+        "TAG_TYPE": "BOW"
+      },
+      "seasonLabel": "bow-tag season",
+      "seasonPhrase": "September 19 to October 9",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Bows only (season when \"bow tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-bow-tag-season-5-6-7b-8-9a-9b-11a-11b-12-15-19-21-23-28-33-35-42-bow-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-5-6-7b-8-9a-9b-11a-11b-12-15-19-21-23-28-33-35-42",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT",
+        "TAG_TYPE": "BOW"
+      },
+      "seasonLabel": "bow-tag season",
+      "seasonPhrase": "September 26 to October 16",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Bows only (season when \"bow tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-bow-tag-season-5-6-7b-8-9a-9b-11a-11b-12-15-19-21-23-28-33-35-42-bow-non-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-5-6-7b-8-9a-9b-11a-11b-12-15-19-21-23-28-33-35-42",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT",
+        "TAG_TYPE": "BOW"
+      },
+      "seasonLabel": "bow-tag season",
+      "seasonPhrase": "September 26 to October 16",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Bows only (season when \"bow tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-bow-tag-season-46-50-53-63-bow-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-46-50-53-63",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "RESIDENT",
+        "TAG_TYPE": "BOW"
+      },
+      "seasonLabel": "bow-tag season",
+      "seasonPhrase": "October 3 to October 9",
+      "declaredNoSeason": false,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Bows only (season when \"bow tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    },
+    {
+      "id": "regulatory_rule:ca-on-moose-bow-tag-season-46-50-53-63-bow-non-resident-2026",
+      "speciesId": "species:moose",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "regulatoryGroupId": "regulatory_group:ca-on-46-50-53-63",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ],
+        "RESIDENCY": "NON_RESIDENT",
+        "TAG_TYPE": "BOW"
+      },
+      "seasonLabel": "bow-tag season",
+      "seasonPhrase": null,
+      "declaredNoSeason": true,
+      "caveats": [],
+      "conditionIds": [
+        "moose-tag",
+        "moose-calf",
+        "moose-controlled"
+      ],
+      "sourceId": "source:ca-on-moose-2026",
+      "sourceSection": "Bows only (season when \"bow tags\" are valid)",
+      "sourceVersion": "2026",
+      "sourceYear": 2026,
+      "reviewStatus": "PUBLISHED"
+    }
+  ]
+}

@@ -146,3 +146,34 @@ test("an unrecognised phrase is refused rather than guessed at", () => {
   assert.equal(parseSeasonPhrase(""), null);
   assert.equal(parseSeasonPhrase("September 15"), null);
 });
+
+/* ── Split seasons as the page concatenates them ─────────────────────────── */
+
+test("two ranges run together in one cell parse as two windows", () => {
+  // Ontario's deer tables emit split seasons with no separator at all.
+  assert.deepEqual(parseSeasonPhrase("November 16 to November 22November 30 to December 6"), [
+    { opens: { month: 11, day: 16 }, closes: { month: 11, day: 22 } },
+    { opens: { month: 11, day: 30 }, closes: { month: 12, day: 6 } },
+  ]);
+  assert.deepEqual(parseSeasonPhrase("September 1 to October 9November 16 to November 30"), [
+    { opens: { month: 9, day: 1 }, closes: { month: 10, day: 9 } },
+    { opens: { month: 11, day: 16 }, closes: { month: 11, day: 30 } },
+  ]);
+});
+
+test("a split season is closed in the gap between its windows", () => {
+  const windows = parseSeasonPhrase("September 1 to October 9November 16 to November 30")!;
+  assert.equal(evaluateSeason(windows, 2026, "2026-09-15").verdict, "IN_SEASON");
+  assert.equal(evaluateSeason(windows, 2026, "2026-10-09").verdict, "IN_SEASON");
+  assert.equal(evaluateSeason(windows, 2026, "2026-10-10").verdict, "OUT_OF_SEASON");
+  assert.equal(evaluateSeason(windows, 2026, "2026-11-15").verdict, "OUT_OF_SEASON");
+  assert.equal(evaluateSeason(windows, 2026, "2026-11-16").verdict, "IN_SEASON");
+  assert.equal(evaluateSeason(windows, 2026, "2026-11-30").verdict, "IN_SEASON");
+  assert.equal(evaluateSeason(windows, 2026, "2026-12-01").verdict, "OUT_OF_SEASON");
+});
+
+test("a phrase carrying a qualification beyond its dates is refused", () => {
+  // Truncating this to its dates would drop the condition that changes its meaning.
+  assert.equal(parseSeasonPhrase("September 15 to December 31 except in controlled hunt areas"), null);
+  assert.equal(parseSeasonPhrase("None"), null);
+});

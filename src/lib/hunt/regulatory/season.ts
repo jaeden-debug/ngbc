@@ -134,35 +134,53 @@ const MONTHS: Record<string, number> = {
   july: 7, august: 8, september: 9, october: 10, november: 11, december: 12,
 };
 
+function parseAnchor(raw: string): SeasonAnchor | null {
+  const text = raw.trim().toLowerCase();
+  const last = /^the last day of ([a-z]+)$/.exec(text);
+  if (last) {
+    const month = MONTHS[last[1]];
+    return month ? { month, lastDay: true } : null;
+  }
+  const plain = /^([a-z]+) (\d{1,2})$/.exec(text);
+  if (plain) {
+    const month = MONTHS[plain[1]];
+    const day = Number(plain[2]);
+    return month && day >= 1 && day <= 31 ? { month, day } : null;
+  }
+  return null;
+}
+
+/** One published range: "September 15 to December 31", "… to the last day of February". */
+const WINDOW_PATTERN = /([a-z]+ \d{1,2}) to (the last day of [a-z]+|[a-z]+ \d{1,2})/g;
+
 /**
  * Turn a published season phrase into windows.
  *
- * Deliberately strict: anything it does not recognise returns null so the caller
- * refuses to certify it, rather than guessing at a legal date range.
+ * Ontario's split seasons arrive from the page with no separator between them —
+ * "November 16 to November 22November 30 to December 6" is two windows, not one
+ * malformed range — so every range in the phrase is read, not just the first.
+ *
+ * Deliberately strict in both directions: a phrase with no recognisable range
+ * returns null, and so does one where the ranges do not account for essentially
+ * all of the text. That second check is what stops "September 15 to December 31
+ * except in controlled hunt areas" from being silently truncated to its dates.
  */
 export function parseSeasonPhrase(phrase: string): SeasonWindow[] | null {
   const text = phrase.trim().toLowerCase().replace(/\s+/g, " ");
   if (!text) return null;
 
-  const anchor = (raw: string): SeasonAnchor | null => {
-    const last = /^the last day of ([a-z]+)$/.exec(raw.trim());
-    if (last) {
-      const month = MONTHS[last[1]];
-      return month ? { month, lastDay: true } : null;
-    }
-    const plain = /^([a-z]+) (\d{1,2})$/.exec(raw.trim());
-    if (plain) {
-      const month = MONTHS[plain[1]];
-      const day = Number(plain[2]);
-      return month && day >= 1 && day <= 31 ? { month, day } : null;
-    }
-    return null;
-  };
+  const windows: SeasonWindow[] = [];
+  for (const match of text.matchAll(WINDOW_PATTERN)) {
+    const opens = parseAnchor(match[1]);
+    const closes = parseAnchor(match[2]);
+    if (!opens || !closes) return null;
+    windows.push({ opens, closes });
+  }
 
-  const range = /^(.+?) to (.+)$/.exec(text);
-  if (!range) return null;
-  const opens = anchor(range[1]);
-  const closes = anchor(range[2]);
-  if (!opens || !closes) return null;
-  return [{ opens, closes }];
+  if (!windows.length) return null;
+  // Only trivial connective text may remain between ranges. Anything else means
+  // the phrase carries a qualification the dates alone do not express.
+  const residue = text.replace(WINDOW_PATTERN, "").replace(/[\s,;.]|and/g, "");
+  if (residue.length > 0) return null;
+  return windows;
 }

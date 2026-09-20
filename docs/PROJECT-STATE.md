@@ -4,7 +4,7 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-20
+Last updated: 2026-09-20 (Ontario conditional regulatory engine — turkey, deer, black bear, moose)
 
 ## Current Product State
 
@@ -43,6 +43,10 @@ Last updated: 2026-09-20
 - Storage-neutral TypeScript contracts live in `src/lib/content-contract/`. The strict validated production bundles are `content/published/en-CA.json` and `content/published/species-wave-1.json`; `src/lib/content/repository.ts` provides canonical entity/resource/source lookup, alias-aware species search, exact-species media gating, deterministic App Block matching, related-resource lookup, and URL resolution without binding the product to a CMS.
 - Wave 1 publishes ten source-backed species profiles, a searchable grouped library, identification/habitat App Blocks, breadcrumbs, Taxon structured data, internal relationships and Hunt links. A published biological profile is not evidence of a huntable season: the Hunt selector labels ruffed grouse `Rules available` and the other nine species `Rules in development`.
 - No Wave 1 species image is published because no candidate has completed exact-species and attribution verification. The per-species decision record is `docs/species-media-audit.md`; the UI renders a deliberate no-photo state instead of a potentially incorrect wildlife image.
+- The species library and every canonical species profile now render in the Hunt product visual language rather than the separate editorial identity they had developed. They carry Hunt's floating glass navigation, its atmospheric ground, its Inter type scale, its glass panel/card hierarchy and its primary/quiet action pair. Hunt was not changed to meet them: the only edit to Hunt was replacing its `.page` background literal with the shared `--ng-product-bg` token, which computes identically.
+- Shared product primitives were extracted into `globals.css`, which `CLAUDE.md` section 41A already names as the single home for Hunt's tokens and surfaces: `--ng-product-bg`, `.ng-product-page`, `.ng-shell`, `.ng-coverage`, `.ng-action`, `.ng-action-quiet`, `.ng-section-title` and `.ng-breadcrumb`. `HuntNav` gained an optional `current` prop so the same navigation serves `/hunt` and both species routes. The species route stylesheets now hold layout only and no longer define colour, blur, border or radius values of their own.
+- `.ng-coverage` is deliberately separate from the regulatory `.ng-status`. Coverage answers whether North Ground holds certified rules for a species at all (`Rules available` / `Rules in development`, sourced from `SUPPORTED_SPECIES_IDS`); regulatory status answers what those rules say for a location and date, which only Hunt can do. A library card can never imply a season.
+- The library is a filtered discovery surface rather than fourteen stacked category sections: one search field over server-assembled search terms, plus category filter pills whose counts follow the current query. It ships 60 species in 11.8 KB on the wire, the same order as Hunt itself, and carries no deep profile content in the list payload.
 
 ### Field Testing
 - Methodology planned.
@@ -57,7 +61,8 @@ Last updated: 2026-09-20
 
 ## In Progress
 
-- Ontario major game (turkey, deer, bear, moose). These carry dimensions the current small-game schema does not model — residency, tags, validation, sex and age, method, controlled hunts and draws — and must not be forced into the grouse shape. See the handoff note below.
+- Ontario major game (turkey, deer, black bear, moose): the regulatory ENGINE is complete and tested; the Hunt interface is not yet wired to it. `evaluateOntarioMajorGame` returns `completeness: "NEEDS_INPUT"` with one question at a time, and no UI renders that yet. The four species also remain absent from the Hunt species selector until that wiring lands.
+- Mirroring major-game rules into Supabase. Blocked on schema: `public.regulatory_rules` has no `applies_when` column, so a conditional rule would be stored as though it were unconditional — a WMU 71 deer rule would read as open to rifles. Needs an additive migration (`applies_when jsonb`, `declared_no_season boolean`, `season_label text`) and a publisher that reads `bundle.sources` (array) as well as `bundle.source`. Small game remains mirrored and unaffected.
 - Québec zone ingestion, once the Ontario pipeline has run through a source change at least once.
 - Main site visual direction / hero.
 - Hunting Intelligence application.
@@ -76,29 +81,41 @@ Last updated: 2026-09-20
 - Analytics remains intentionally unconfigured pending provider, consent, retention, location-privacy, and event-design decisions.
 - The in-process content repository reads a versioned bundle; a durable authoring store/export pipeline is not selected yet.
 - Hunt evaluation rate limiting is process-local and must become distributed before high-volume production use.
-- The current certified regulatory record is deliberately narrow: ruffed grouse, Ontario WMU 57, 2026. The rest of the hunting research inventory remains research-only.
+- Ontario's deer season tables contradict their own headings. Footnote 1 reads "Indicates that rifles are not permitted during the open resident and non-resident seasons" and is attached to individual WMU tokens inside a table headed "Rifles, shotguns, muzzle-loading guns and bows". In WMUs 64B, 65, 68B, 69B, 71, 72A, 73, 74A and 75 a shotgun hunter has a 2–15 November season and a rifle hunter has no gun season at all. Any model that treats a table heading as the method would tell a rifle hunter in WMU 71 the season is open. Rules therefore carry the implement SET that survives their footnotes, and "rifle" and "shotgun" are separate answers in the interface. A footnote whose wording is not recognised aborts the build.
+- Black bear works the opposite way: its tables name no implements at all, and a footnote SETS them (WMU 7A is bows and muzzle-loading guns only). Where every applicable rule agrees on a narrowed set the engine asks nothing but states the restriction, so a rifle hunter never reads an unqualified CONDITIONAL.
+- Moose is gated by the tag, not the weapon. The province heads its tables "seasons when gun tags are valid" and "season when bow tags are valid", so a person carrying a bow without a bow tag has no season. The engine asks which tag was drawn and every moose result stays conditional on a validated tag North Ground cannot see.
+- Two season tables are published but deliberately NOT certified: "Controlled deer hunt seasons (with hunt codes)" and moose "Resident seasons with controlled hunter numbers". Both are drawn per hunt code or restricted by eligibility and are not decidable from location and date. They are declared in the builder with a written reason, their content is hashed so a change still triggers review, and readers are told they exist via the `deer-controlled` and `moose-controlled` conditions.
+- The generated regulatory bundles no longer carry a wall-clock `generatedAt`. A rebuild that finds the law unchanged now produces a byte-identical file; the previous behaviour put a diff on every rebuild, which trains a reviewer to skip diffs. Provenance is `retrievedAt` (date) plus `contentHash`.
 - Exact legal sunrise/sunset computation is not certified. Open-Meteo sunrise/sunset is displayed only as environmental context and never establishes legal hunting time.
 - The canonical Hunt H1 remains “What applies here, on this date?” because the certified product currently evaluates one selected species rather than answering the broader species-discovery question implied by “What Can I Hunt Here?”. Revisit when coverage supports that promise.
 - The Maps JavaScript loader resolved on the bootstrap script's `onload` and checked for `google.maps` there. With `loading=async` that fires before the library exists, so every load was reported as a failure and the product silently dropped to its basemap-free view. It now waits for the documented ready callback. This was invisible until a real browser key existed.
 - Google Weather returns sun events as UTC instants while Open-Meteo returns local wall-clock times, and the interface rendered both by slicing the string, showing an Ontario hunter a 10:56 sunrise for an 06:55 morning. Google's instants are converted to the forecast location's own clock in the adapter, so both providers hand the interface one shape. Covered by `src/lib/hunt/weather.test.ts`.
 - The Google Cloud project has ~24 Maps Platform APIs enabled from its onboarding, of which North Ground uses four. The two North Ground keys are restricted to exactly what they need, so the surplus is a tidiness and cost-exposure matter rather than a key risk. The older broad `Maps Platform API Key` (35 APIs, no application restriction) still exists and should be deleted once nothing depends on it.
-- `SPATIAL_PROVIDER` is `official-gis`, not `supabase`. The PostGIS registry is live and certified but holds one zone, so using it as the primary resolver answers "no zone" for the other 150 Ontario WMUs. The official layer identifies any Ontario point's real zone, and per-zone coverage then states honestly whether its rules are certified. Switch the default to `supabase` when the registry's geometry coverage matches the official layer.
 - The Hunt H1 is now `Your zone. Your season. Your hunt.`, matching the approved product direction and the existing social title. The earlier query-shaped H1 was replaced deliberately; the search terms it carried remain in the page title and meta description. Revisit if position data shows a loss.
+- `src/components/hunt/Hunt.module.css` references four custom properties that are never defined anywhere: `--ng-line`, `--ng-fire`, `--ng-sand` and `--ng-moss-light`. They are used by the Hunt species-selector field and its group labels, so that control currently renders with no border and with inherited rather than intended label colour. This is a pre-existing Hunt defect. It was deliberately NOT fixed during the species visual integration, because defining them would change Hunt's rendered appearance and Hunt is the visual reference for that work, not its subject. Fix it as a Hunt change with its own visual check.
+- Hunt does not read a `species` query parameter. The species profile CTA previously linked to `/hunt?species=<slug>`, which Hunt silently ignored. The link now routes to `/hunt` plainly rather than carrying state that does nothing. If species preselection is wanted, implement it in the Hunt composer and update the link together.
+- The species library page title rendered as `Species Library | North Ground | North Ground` because the route set the brand in its own title while the root layout template also appends it. The route now sets `Species library` and the template supplies the brand once.
 - Secondary text tokens were failing WCAG AA on the dark glass: `--ng-bone-faint` measured 2.9:1 at 11–12px. Both secondary tiers were raised (0.80 and 0.62 alpha) and re-measured at 6.7:1 and 4.7:1. Any new token added to the palette must be measured against the glass it sits on, not against the page background.
 
 ## Next Priorities
 
-1. Complete current visual foundation without locking poor information architecture.
-2. Establish technical/semantic site architecture.
-3. Establish trust pages and North Ground Verified framework.
-4. Continue Hunting Intelligence core.
-5. Build structured knowledge/content graph alongside Hunt.
-6. Expand verified regulatory coverage one source-backed record at a time, beginning only after reviewing what this first slice failed to certify.
-7. Select a durable content authoring/store adapter that exports the existing normalized bundle without changing canonical IDs.
-8. Build early cold-weather authority resources/tools.
-9. Begin standardized field-data collection.
-10. Build Crown/public-land data foundation ahead of seasonal demand.
-11. Add distributed rate limiting, production observability, and an explicit regulatory/source review workflow before broad Hunt rollout.
+The first three are the open ends of the conditional-regulatory wave and should be taken in order.
+
+1. Wire Hunt's interface to `evaluateOntarioMajorGame`: render `NEEDS_INPUT` as one question at a time with its stated reason and source section, re-evaluate on each answer, and keep the small-game path unchanged (it asks nothing and must keep asking nothing). This touches `coverage.ts`, `SpeciesSelect.tsx` and `src/app/hunt/page.tsx`, which a concurrent species/content session was editing on 2026-09-20 — confirm ownership before starting.
+2. Add the four major-game species to the Hunt selector and the coverage matrix, with a state that distinguishes "rules available, some questions required" from small game's "rules available".
+3. Mirror major-game rules into Supabase, which needs the additive migration described under In Progress. Do not mirror them against the current schema: a conditional rule stored without its conditions reads as unconditional.
+4. Version the Hunt Brief schema before any brief can contain an answer that depended on user-supplied context, so an old brief is never re-rendered as though it applied to everyone.
+5. Complete current visual foundation without locking poor information architecture.
+6. Establish technical/semantic site architecture.
+7. Establish trust pages and North Ground Verified framework.
+8. Continue Hunting Intelligence core.
+9. Build structured knowledge/content graph alongside Hunt.
+10. Expand verified regulatory coverage one source-backed record at a time. Waterfowl is federal (migratory birds) rather than provincial and needs its own source review; Québec has not been started.
+11. Select a durable content authoring/store adapter that exports the existing normalized bundle without changing canonical IDs.
+12. Build early cold-weather authority resources/tools.
+13. Begin standardized field-data collection.
+14. Build Crown/public-land data foundation ahead of seasonal demand.
+15. Add distributed rate limiting, production observability, and an explicit regulatory/source review workflow before broad Hunt rollout.
 
 ## Blocked
 
@@ -136,12 +153,23 @@ Do not mark VERIFIED until actual data and representative queries have been cert
 | `species:sharp-tailed-grouse` | 85 | 0 | 66 | 3 |
 | `species:spruce-grouse` | 85 | 65 | 1 | 2 |
 
-- The rules are generated, never hand-written. `npm run build:regulations` rebuilds `content/regulatory/ca-on-small-game-2026.json` from the published summary and `npm run check:regulatory-sources` fails if that source has moved since the bundle was built. Parsing is strict: an unreadable season phrase, limit or WMU reference aborts the build rather than dropping a row. `scripts/publish-regulations.mjs` mirrors the bundle into Supabase for coverage reporting and the review lifecycle; Hunt itself evaluates from the committed bundle, which keeps evaluation deterministic and offline-testable.
+- The rules are generated, never hand-written. `npm run build:regulations` rebuilds both `content/regulatory/ca-on-small-game-2026.json` and `ca-on-major-game-2026.json` from the published summaries, and `npm run check:regulatory-sources` fails if either source has moved since its bundle was built. A moved hash now names the affected rules with field-level before/after and the number of units each change touches; `scripts/regulatory-change-report.mjs <old> <new>` produces the same report between any two bundles and exits 3 when review is required. Parsing is strict: an unreadable season phrase, limit or WMU reference aborts the build rather than dropping a row. `scripts/publish-regulations.mjs` mirrors the bundle into Supabase for coverage reporting and the review lifecycle; Hunt itself evaluates from the committed bundle, which keeps evaluation deterministic and offline-testable.
 - Season semantics are modelled rather than approximated: windows that cross the calendar year stay open through 31 December, "the last day of February" follows the leap cycle, and the part of a source year that belongs to the PREVIOUS summary is reported as outside the certified period rather than closed.
 - Combined limits stay combined. Five birds shared between ruffed and spruce grouse is rendered as the authority states it, never as five of each.
-- Zone geometry drawn on the map: Ontario only, PARTIAL. All 151 Ontario WMU boundaries are rendered from the province's own feature layer, generalised by zoom. Of those, exactly one (WMU 57) has a certified regulatory record; the rest are labelled `IN_DEVELOPMENT` — boundary known, rules not certified. No other Canadian or United States jurisdiction has geometry drawn, and none will be until its official source passes the same review.
-- Production certification slice: PARTIAL. Ontario WMU 57 point resolution is implemented against the official Ontario Wildlife Management Unit Feature Layer. The layer endpoint/schema and representative WMU 57 query passed local certification; this does not certify every Ontario geometry or the whole jurisdiction.
-- Regulatory certification slice: PARTIAL. The 2026 ruffed/spruce grouse row for WMU 57 is encoded from the official Ontario Hunting Regulations Summary with inclusive dates (September 15–December 31) and combined limits (5 daily, 15 possession). Ontario as a whole is not marked VERIFIED.
+- Ontario major game is certified for four species as of 2026-09-20, against four published pages of the 2026 summary (`sha256:bd4c42a8…`, retrieved 2026-09-20): 60 official season groupings and 135 rules.
+
+| Species | Units reached | Rules | Rules stating "None" | Rules with an uninterpretable caveat |
+| --- | --- | --- | --- | --- |
+| `species:white-tailed-deer` | 140 of 151 | 100 | 14 | 2 |
+| `species:american-black-bear` | 103 of 151 | 8 | 0 | 1 |
+| `species:wild-turkey` | 91 of 151 | 3 | 0 | 0 |
+| `species:moose` | 70 of 151 | 24 | 2 | 0 |
+
+- "Units reached" is not coverage of the province. A unit no season row names stays UNKNOWN; a unit whose cell reads "None" is CLOSED because the authority said so. The two are never merged.
+- Major game answers a question small game does not raise: WHO is hunting and WITH WHAT. `evaluateOntarioMajorGame` reports evaluation completeness separately from regulatory status, so `NEEDS_INPUT` ("North Ground knows the law and needs a fact from you") is never confused with `UNKNOWN` ("North Ground does not know the law here"). Questions are derived from the rules, not declared per species: the engine asks only where the applicable rules disagree, one fact at a time, naming the source section the distinction comes from. A deer hunter is asked residency then implement, a turkey hunter only implement, a moose hunter residency then tag, and a bear hunter in WMU 7A nothing at all.
+- Answers are untrusted input. Only a value the dimension itself offers is applied; an unrecognised one leaves the question outstanding rather than narrowing the rule set, because filtering on an arbitrary string empties the candidates and an empty candidate set would read as a confident CLOSED. Residency is never inferred from IP, browser location, account, postal code or a previous hunt — it is asked, and no result claims North Ground verified it.
+- One implement can qualify for several published seasons at once — a bow is legal in the deer gun, muzzle-loader and archery seasons — so open dates are the UNION of every applicable rule, not a conflict. A genuine CONFLICT is two rules in the same published table applying to the same hunter with different dates; the current bundle contains none.
+- Zone geometry drawn on the map: Ontario only, PARTIAL. All 151 Ontario WMU boundaries are rendered from the province's own feature layer, generalised by zoom. Per-unit coverage badges follow the certified rule set rather than a pinned unit. No other Canadian or United States jurisdiction has geometry drawn, and none will be until its official source passes the same review.
 
 ### United States
 Not assumed complete.
@@ -227,6 +255,15 @@ Hunt opens on official hunting-zone geometry rather than a form. Location is ent
 ### 2026-09-20 — Hunt Route Is Canonical at `/hunt`
 `tool:season-finder` resolves to `/hunt` through `canonicalPath()`, with `/tools/season-finder` recorded as a previous path and redirected 308 from `redirectPairs()`. Sitemap, canonical, Open Graph, internal links and the homepage `Enter the North` CTA all follow the registry rather than hard-coded strings.
 
+### 2026-09-21 — Species Surfaces Belong To The Hunt Product Family
+The species library and canonical species profiles adopt Hunt's product visual
+language. They are the same product as Hunt, not a North Ground blog, and a
+person moving Hunt → Species Library → a species profile → back should never
+feel they changed sites. Hunt remains the visual source of truth and is not
+adapted to meet them. Materials live once in `globals.css`; species route
+stylesheets carry layout only. Species pages stay information-focused — matching
+Hunt does not mean adding a decorative map.
+
 ### 2026-09-20 — Main Site and Hunt Are Visually Distinct
 The homepage stays dark, cinematic and immersive. Hunt is clean, glassy, precise and map-driven. They share the brand, mark, palette and typography and nothing else about their composition. Neither is to be redesigned into the other.
 
@@ -236,9 +273,22 @@ Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport a
 ## Validation
 
 ### Build
+- `npm run build` passed on 2026-09-21 after the species visual integration (Next.js 16.1.1). `/hunting/species` remains static and all 60 species routes remain statically generated; route inventory and rendering strategy are unchanged.
+
 - `npm run build` passed on 2026-09-20 (Next.js 16.1.1). The species library is static and all ten species pages are statically generated; Hunt, its evaluation/share APIs, shared Hunt Brief page and per-brief Open Graph image are dynamic; home, 404, site Open Graph image, robots, and sitemap are generated successfully.
 
 ### Tests
+- Ontario conditional regulatory engine, 2026-09-20. `npm run typecheck` clean, `npx eslint src scripts` clean (the previously noted unused-variable warning in `scripts/build-ontario-regulations.mjs` is resolved). `npm run test:hunt` 169/169 — the 117 pre-existing hunt tests plus 28 deer cases and 24 turkey/bear/moose/untrusted-input cases, with the small-game suite unchanged. `npm run test:regulatory-sources` 16/16 covering WMU specification expansion, footnote-to-token attachment, and the bundle change report. `npm run build` compiled successfully.
+- Both bundles rebuild byte-identically when the sources have not moved, which is what makes a diff meaningful.
+- Source-change drill performed 2026-09-20 against the four-species bundle. Three realistic changes were simulated — a turkey spring season shortened, WMU 7A's bear implements narrowed, and a moose "None" cell becoming dates. All three were detected, each was named with its field-level before/after and the number of units it touches (91, 1 and 19 respectively), the production bundle and file were untouched, the engine continued to return the pre-change answers, and the report exited 3 to require review. Nothing was promoted automatically.
+- The drill also demonstrated the blast-radius value of the report: two edits intended as separate landed on a single deer rule, because WMUs 48 and 60 share a season grouping that spans 36 units.
+
+- Species visual integration, 2026-09-21. `npm run typecheck` and `npm run lint` clean (one pre-existing unused-variable warning in `scripts/build-ontario-regulations.mjs`, owned by the regulatory work). `test:hunt` 145/145, `test:hunt-share` 23/23, `test:content-repository` 12/12, `test:content-urls` 21/21, `test:content-contract` 8/8, `test:seo` 3/3, `test:newsletter` 9/9. `validate:content:published` 0 errors / 0 warnings across 83 entities, 61 resources, 46 blocks. `validate:seo` passed against a production build.
+- Species browser certification 2026-09-21 at 320, 360, 375, 390, 430, 768, 1024 and 1440 CSS pixels on both the library and a profile: zero horizontal overflow at every width, zero console errors. Contrast measured against composited glass on the library (412 text nodes, zero failures); the two apparent primary-button failures were a probe artifact — the control paints a gradient via `background-image`, and the real worst-case ratio along it is 11.22:1 for `--ng-black` on `--ng-bone`.
+- Heading order verified: library H1 → H2 (Find a species) → H2 (Species); profile H1 → eight H2 sections → H3 App Blocks, no skips. Coverage state is carried by a ring glyph and a word as well as by colour. Breadcrumb links raised to a 28px target; the remaining sub-36px links are inline links inside sentences, which WCAG 2.5.8 excludes.
+- Library search certified against the real bundle: `wolf` → Eastern wolf + Gray wolf, `doe` → both deer, `orignal` → Moose, `Canard colvert` → Mallard, `rabbit` → the three hares and rabbits, `grouse` → three grouse plus two ptarmigan, and an unmatched query renders the empty state. Coverage labels matched `SUPPORTED_SPECIES_IDS` exactly — grouse and snowshoe hare `Rules available`, the rest `Rules in development`.
+- Structured data and SEO preserved on `/hunting/species/ruffed-grouse`: Article + Taxon + BreadcrumbList emitted, canonical unchanged, `<h1>Ruffed grouse</h1>` server-rendered, sitemap still 63 URLs. Page weight on the wire: Hunt 11.7 KB, the 60-species library 11.8 KB, a species profile 8.0 KB.
+
 - `npm run typecheck` passed on 2026-09-20.
 - `npm run test:content-contract` passed 6/6 on 2026-09-20, including scientific-name, duplicate-alias and species-media verification failures.
 - `npm run validate:content:strict` passed the contract fixture with 0 errors and 0 warnings on 2026-09-20.
