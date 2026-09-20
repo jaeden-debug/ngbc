@@ -32,6 +32,16 @@ export interface SupportedSpecies {
   resourcePath: string;
 }
 
+export interface SpeciesSelectorOption {
+  id: CanonicalId<"species">;
+  displayName: string;
+  scientificName: string;
+  category: string;
+  aliases: string[];
+  resourcePath: string;
+  regulatoryCoverage: "VERIFIED" | "IN_DEVELOPMENT";
+}
+
 /**
  * Only species with a certified regulatory record appear here. The research
  * inventory contains far more; none of it is huntable information until it has

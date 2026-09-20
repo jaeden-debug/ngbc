@@ -4,6 +4,8 @@ import HuntComposer from "../../components/hunt/HuntComposer";
 import HuntNav from "../../components/hunt/HuntNav";
 import styles from "../../components/hunt/Hunt.module.css";
 import { COVERAGE_SUMMARY } from "../../lib/hunt/coverage";
+import { SUPPORTED_SPECIES_IDS, type SpeciesSelectorOption } from "../../lib/hunt/coverage";
+import { contentRepository } from "../../lib/content/repository";
 import { COVERAGE_ROADMAP } from "../../lib/hunt/zone-layers";
 import { absoluteUrl, SITE_NAME } from "../../lib/site";
 
@@ -80,12 +82,26 @@ const TRUST_POINTS = [
   },
 ];
 
-export default function HuntPage() {
+export default async function HuntPage() {
+  const resources = await contentRepository.getPublishedResources({ locale: "en-CA" });
+  const speciesOptions: SpeciesSelectorOption[] = await Promise.all(resources
+    .filter((resource) => resource.type === "species")
+    .map(async (resource) => ({
+      id: resource.speciesProfile.speciesId,
+      displayName: resource.title,
+      scientificName: resource.speciesProfile.scientificName,
+      category: resource.speciesProfile.speciesGroupIds[0]?.split(":", 2)[1]?.replaceAll("-", " ") ?? "Other",
+      aliases: (await contentRepository.getSpeciesAliases(resource.speciesProfile.speciesId)).map(({ value }) => value),
+      resourcePath: resource.canonicalUrl ?? `/hunting/species/${resource.slug}`,
+      regulatoryCoverage: (SUPPORTED_SPECIES_IDS as readonly string[]).includes(resource.speciesProfile.speciesId)
+        ? "VERIFIED" as const
+        : "IN_DEVELOPMENT" as const,
+    })));
   return (
     <main className={styles.page}>
       <HuntNav />
 
-      <HuntComposer googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY} />
+      <HuntComposer googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY} speciesOptions={speciesOptions} />
 
       <section className={styles.trustStrip} aria-label="How North Ground answers">
         <ul className={styles.trustRow}>
@@ -109,7 +125,7 @@ export default function HuntPage() {
           authority. Regulations change — confirm current requirements before you hunt.
         </p>
         <p>
-          <Link href="/hunting/species/ruffed-grouse">Ruffed grouse reference</Link>
+          <Link href="/hunting/species">Species library</Link>
           {" · "}
           <Link href="/">North Ground</Link>
         </p>

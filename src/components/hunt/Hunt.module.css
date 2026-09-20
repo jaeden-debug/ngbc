@@ -758,6 +758,14 @@
   outline: none;
 }
 
+.speciesSearchRow { position: sticky; top: 0; z-index: 1; padding: .55rem; background: rgba(17, 22, 18, .96); }
+.speciesSearch { width: 100%; min-height: 42px; border: 1px solid var(--ng-line); border-radius: .45rem; padding: .6rem .7rem; background: rgba(0, 0, 0, .22); color: var(--ng-bone); font: inherit; }
+.speciesSearch:focus-visible { outline: 2px solid var(--ng-fire); outline-offset: 2px; }
+.speciesCoverage { margin-left: auto; color: var(--ng-bone-faint); font-size: .68rem; line-height: 1.2; text-align: right; }
+.speciesCoverage[data-verified] { color: var(--ng-moss-light); }
+.speciesOption[aria-disabled="true"] { opacity: .68; cursor: not-allowed; }
+.speciesEmpty { padding: 1rem; color: var(--ng-bone-faint); font-size: .82rem; }
+
 .speciesOption {
   display: flex;
   align-items: center;

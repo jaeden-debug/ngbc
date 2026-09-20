@@ -1,50 +1,58 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { SUPPORTED_SPECIES, type SupportedSpeciesId } from "../../lib/hunt/coverage";
+import type { SpeciesSelectorOption, SupportedSpeciesId } from "../../lib/hunt/coverage";
 import styles from "./Hunt.module.css";
 
 interface SpeciesSelectProps {
   value: SupportedSpeciesId | null;
   onChange: (id: SupportedSpeciesId) => void;
+  options: SpeciesSelectorOption[];
   disabled?: boolean;
 }
 
 /**
  * Species chooser.
  *
- * Only species with a certified regulatory record appear. The research registry
- * holds 127 North American species; listing them here — even greyed out — would
- * imply North Ground can answer a hunt for them, and it cannot yet. The count of
- * what is listed is stated plainly underneath instead.
+ * The production species library appears here, while regulatory coverage remains
+ * an explicit, separate state. Species without a certified rule are discoverable
+ * but disabled for evaluation.
  *
  * No thumbnail is shown, because no accurately identified licensed photograph has
  * been certified for this species. A wrong bird beside a legal answer is a
  * correctness failure, not a missing nicety, so the slot holds a neutral mark
  * until real imagery is approved.
  */
-export default function SpeciesSelect({ value, onChange, disabled }: SpeciesSelectProps) {
+export default function SpeciesSelect({ value, onChange, options, disabled }: SpeciesSelectProps) {
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [query, setQuery] = useState("");
 
   const listboxId = useId();
   const labelId = useId();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
 
-  const selected = SUPPORTED_SPECIES.find((species) => species.id === value) ?? null;
+  const selected = options.find((species) => species.id === value) ?? null;
+  const normalizedQuery = query.trim().toLocaleLowerCase("en-CA");
+  const visibleOptions = options.filter((species) => {
+    if (!normalizedQuery) return true;
+    return [species.displayName, species.scientificName, ...species.aliases]
+      .some((term) => term.toLocaleLowerCase("en-CA").includes(normalizedQuery));
+  });
 
   /* Opening is an interaction, so the highlighted option is chosen there rather
      than in an effect that would render the list twice. */
   function openList() {
-    const index = SUPPORTED_SPECIES.findIndex((species) => species.id === value);
+    const index = visibleOptions.findIndex((species) => species.id === value);
     setActiveIndex(index >= 0 ? index : 0);
     setOpen(true);
   }
 
   useEffect(() => {
     if (!open) return;
-    const frame = requestAnimationFrame(() => listRef.current?.focus());
+    const frame = requestAnimationFrame(() => searchRef.current?.focus());
 
     const onPointerDown = (event: PointerEvent) => {
       const target = event.target as Node;
@@ -59,9 +67,9 @@ export default function SpeciesSelect({ value, onChange, disabled }: SpeciesSele
   }, [open]);
 
   function choose(index: number) {
-    const species = SUPPORTED_SPECIES[index];
-    if (!species) return;
-    onChange(species.id);
+    const species = visibleOptions[index];
+    if (!species || species.regulatoryCoverage !== "VERIFIED") return;
+    onChange(species.id as SupportedSpeciesId);
     setOpen(false);
     buttonRef.current?.focus();
   }
@@ -70,14 +78,14 @@ export default function SpeciesSelect({ value, onChange, disabled }: SpeciesSele
     switch (event.key) {
       case "ArrowDown":
         event.preventDefault();
-        setActiveIndex((index) => (index + 1) % SUPPORTED_SPECIES.length);
+        setActiveIndex((index) => visibleOptions.length ? (index + 1) % visibleOptions.length : 0);
         return;
       case "ArrowUp":
         event.preventDefault();
-        setActiveIndex((index) => (index <= 0 ? SUPPORTED_SPECIES.length - 1 : index - 1));
+        setActiveIndex((index) => (index <= 0 ? Math.max(0, visibleOptions.length - 1) : index - 1));
         return;
       case "Home": event.preventDefault(); setActiveIndex(0); return;
-      case "End": event.preventDefault(); setActiveIndex(SUPPORTED_SPECIES.length - 1); return;
+      case "End": event.preventDefault(); setActiveIndex(Math.max(0, visibleOptions.length - 1)); return;
       case "Enter": case " ": event.preventDefault(); choose(activeIndex); return;
       case "Escape": case "Tab":
         setOpen(false);
@@ -139,16 +147,34 @@ export default function SpeciesSelect({ value, onChange, disabled }: SpeciesSele
           id={listboxId}
           role="listbox"
           aria-labelledby={labelId}
-          tabIndex={-1}
-          aria-activedescendant={`${listboxId}-option-${activeIndex}`}
-          onKeyDown={onListKeyDown}
         >
-          {SUPPORTED_SPECIES.map((species, index) => (
+          <li className={styles.speciesSearchRow} role="presentation">
+            <label className="ng-sr-only" htmlFor={`${listboxId}-search`}>Search species by common, scientific or alternate name</label>
+            <input
+              ref={searchRef}
+              id={`${listboxId}-search`}
+              className={styles.speciesSearch}
+              type="search"
+              role="combobox"
+              aria-expanded="true"
+              aria-controls={listboxId}
+              aria-autocomplete="list"
+              aria-activedescendant={visibleOptions.length ? `${listboxId}-option-${activeIndex}` : undefined}
+              placeholder="Search species"
+              value={query}
+              onChange={(event) => { setQuery(event.target.value); setActiveIndex(0); }}
+              onKeyDown={(event) => {
+                if (["ArrowDown", "ArrowUp", "Home", "End", "Enter", "Escape"].includes(event.key)) onListKeyDown(event as unknown as React.KeyboardEvent<HTMLUListElement>);
+              }}
+            />
+          </li>
+          {visibleOptions.map((species, index) => (
             <li
               key={species.id}
               id={`${listboxId}-option-${index}`}
               role="option"
               aria-selected={species.id === value}
+              aria-disabled={species.regulatoryCoverage !== "VERIFIED"}
               data-active={index === activeIndex || undefined}
               className={styles.speciesOption}
               onMouseEnter={() => setActiveIndex(index)}
@@ -161,7 +187,10 @@ export default function SpeciesSelect({ value, onChange, disabled }: SpeciesSele
               </span>
               <span className={styles.speciesText}>
                 <span className={styles.speciesName}>{species.displayName}</span>
-                <span className={styles.speciesLatin}>{species.scientificName}</span>
+                <span className={styles.speciesLatin}>{species.scientificName} · {species.category}</span>
+              </span>
+              <span className={styles.speciesCoverage} data-verified={species.regulatoryCoverage === "VERIFIED" || undefined}>
+                {species.regulatoryCoverage === "VERIFIED" ? "Rules available" : "Rules in development"}
               </span>
               {species.id === value ? (
                 <svg className={styles.speciesCheck} width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none">
@@ -170,13 +199,12 @@ export default function SpeciesSelect({ value, onChange, disabled }: SpeciesSele
               ) : null}
             </li>
           ))}
+          {!visibleOptions.length ? <li className={styles.speciesEmpty} role="presentation">No production species match that search.</li> : null}
         </ul>
       ) : null}
 
       <p className={styles.fieldNote}>
-        {SUPPORTED_SPECIES.length === 1
-          ? "One species currently has a certified regulatory record. More are added one verified source at a time."
-          : `${SUPPORTED_SPECIES.length} species currently have a certified regulatory record.`}
+        Ten species profiles are published. Only “Rules available” species can run a Hunt evaluation here.
       </p>
     </div>
   );

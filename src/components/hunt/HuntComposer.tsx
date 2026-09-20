@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { todayIso } from "../../lib/hunt/date";
-import { COVERAGE_SUMMARY, isWithinSupportedBounds, type SupportedSpeciesId } from "../../lib/hunt/coverage";
+import { COVERAGE_SUMMARY, isWithinSupportedBounds, type SpeciesSelectorOption, type SupportedSpeciesId } from "../../lib/hunt/coverage";
 import { COVERAGE_WORDING } from "../../lib/hunt/zone-layers";
 import type { HuntEvaluation } from "../../lib/hunt/types";
 import DateField from "./DateField";
@@ -41,7 +41,7 @@ const GEOLOCATION_MESSAGES: Record<number, string> = {
  * a real answer — and only the regulatory evaluation waits for a date and a species,
  * because only those three together can say what applies.
  */
-export default function HuntComposer({ googleMapsApiKey }: { googleMapsApiKey?: string }) {
+export default function HuntComposer({ googleMapsApiKey, speciesOptions }: { googleMapsApiKey?: string; speciesOptions: SpeciesSelectorOption[] }) {
   const [location, setLocation] = useState<SelectedLocation | null>(null);
   const [date, setDate] = useState<string>(() => todayIso());
   const [speciesId, setSpeciesId] = useState<SupportedSpeciesId | null>(null);
@@ -277,7 +277,7 @@ export default function HuntComposer({ googleMapsApiKey }: { googleMapsApiKey?: 
 
             <DateField value={date} onChange={setDate} disabled={busy} />
 
-            <SpeciesSelect value={speciesId} onChange={setSpeciesId} disabled={busy} />
+            <SpeciesSelect value={speciesId} onChange={setSpeciesId} options={speciesOptions} disabled={busy} />
 
             {outsideCoverage ? (
               <p className={styles.coverageWarning} role="status">

@@ -16,7 +16,7 @@ import styles from "./Hunt.module.css";
 const LINKS: Array<{ href: string; label: string; current?: boolean }> = [
   { href: "/", label: "Home" },
   { href: "/hunt", label: "Hunt", current: true },
-  { href: "/hunting/species/ruffed-grouse", label: "Species" },
+  { href: "/hunting/species", label: "Species" },
 ];
 
 export default function HuntNav() {
