@@ -2,6 +2,53 @@
   min-height:100vh;
 }
 
+.primaryNav{
+  position:absolute;
+  z-index:8;
+  top:0;
+  left:0;
+  right:0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  min-height:64px;
+  padding:calc(10px + env(safe-area-inset-top)) clamp(14px, 3vw, 34px) 10px;
+  color:rgba(245,241,224,.94);
+  background:linear-gradient(to bottom, rgba(4,6,10,.78), rgba(4,6,10,0));
+  text-shadow:0 2px 16px rgba(0,0,0,.9);
+  pointer-events:auto;
+}
+
+.primaryNav a{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  color:inherit;
+  text-decoration:none;
+}
+
+.primaryNav a:hover{
+  color:#fff;
+}
+
+.navBrand{
+  font-size:clamp(12px, 1.5vw, 15px);
+  font-weight:900;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.navLinks{
+  display:flex;
+  align-items:center;
+  gap:clamp(14px, 3vw, 28px);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
 /* HERO */
 .hero{
   /* driven from Hero.tsx — light position, torch origin, beam geometry */
@@ -876,6 +923,23 @@
 
 /* Mobile tuning */
 @media (max-width: 520px){
+  .primaryNav{
+    align-items:flex-start;
+    gap:8px;
+    padding-inline:12px;
+  }
+
+  .navBrand{
+    max-width:92px;
+    line-height:1.2;
+  }
+
+  .navLinks{
+    gap:12px;
+    font-size:10px;
+    letter-spacing:.07em;
+  }
+
   .hero{
     --pool: 175px;
   }

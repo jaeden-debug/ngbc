@@ -87,6 +87,10 @@ export default function MissionDeck({
     requestAnimationFrame(() => {
       const v = videoRef.current;
       if (!v) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        v.pause();
+        return;
+      }
       const p = v.play();
       if (p && typeof (p as Promise<void>).catch === "function") {
         (p as Promise<void>).catch(() => {});
@@ -259,6 +263,7 @@ export default function MissionDeck({
         <video
           ref={videoRef}
           className={styles.deckVideo}
+          aria-hidden="true"
           autoPlay
           muted
           loop

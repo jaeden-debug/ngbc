@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import styles from "../app/page.module.css";
 import EnterButton from "./EnterButton";
@@ -101,6 +102,7 @@ export default function Hero({ onEnter }: { onEnter: () => void }) {
     };
 
     if (reduce) {
+      el.querySelector("video")?.pause();
       paint();
       return;
     }
@@ -333,10 +335,21 @@ export default function Hero({ onEnter }: { onEnter: () => void }) {
 
   return (
     <section ref={sectionRef} className={styles.hero} aria-label="Hero">
+      <nav className={styles.primaryNav} aria-label="Primary navigation">
+        <Link className={styles.navBrand} href="/" aria-current="page">
+          North Ground
+        </Link>
+        <div className={styles.navLinks}>
+          <Link href="/tools/season-finder">Hunt</Link>
+          <Link href="/hunting/species/ruffed-grouse">Species guide</Link>
+        </div>
+      </nav>
+
       {/* AV1 first — roughly half the bytes of H.264 at the same quality.
           Anything that can't decode it falls through to the H.264 cut. */}
       <video
         className={styles.heroVideo}
+        aria-hidden="true"
         autoPlay
         muted
         loop
