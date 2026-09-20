@@ -26,7 +26,9 @@
     "check:regulatory-sources": "node scripts/build-ontario-regulations.mjs --check && node scripts/build-ontario-major-game.mjs --check",
     "certify:spatial": "node scripts/certify-ontario-spatial-parity.mjs",
     "test:regulatory-sources": "node --test scripts/ontario-source.test.mjs",
-    "test:regulatory-persistence": "node --test src/lib/hunt/regulatory/persistence.test.ts"
+    "test:regulatory-persistence": "node --test src/lib/hunt/regulatory/persistence.test.ts",
+    "report:canada": "node --experimental-strip-types scripts/canada-coverage-report.mjs",
+    "test:canada": "node --test src/lib/hunt/canada/*.test.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.116.0",

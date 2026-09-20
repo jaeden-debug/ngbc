@@ -434,6 +434,44 @@ The data architecture must support this complexity.
 
 # 9. INTERNATIONAL ARCHITECTURE
 
+## Canada is the first complete geographic target
+
+*Decided 2026-09-21.*
+
+North Ground Hunt's first mature version covers **all of Canada**: the ten
+provinces, the three territories, and the federal layers that compose with them.
+Canada is not the initial market to be moved past — it is the minimum complete
+footprint before broad United States regulatory expansion begins.
+
+Complete does not mean every location and species appears supported. It means
+North Ground can state exactly, per jurisdiction and per species, what it knows,
+what applies, what further input a rule requires, what is not yet verified, and
+which authority supports the answer. A correct UNKNOWN is a covered case; a
+plausible guess is not.
+
+That claim has to be measurable, so coverage is machine-readable rather than
+prose: `src/lib/hunt/canada/registry.ts` declares each jurisdiction's structure
+and known gaps, and `report.ts` computes every count from certified bundles at
+call time. No number in that report is typed by hand, so no jurisdiction can be
+made to look covered by editing a constant.
+
+The national milestones are:
+
+- **Canada spatial complete** — every jurisdiction that publishes management
+  geography has it ingested and parity-certified against its own authority.
+- **Canada core game complete** — the commonly hunted species in each
+  jurisdiction have deterministic rule coverage, or a documented legal reason why
+  another model applies.
+- **Canada migratory complete** — federal migratory-game-bird rules compose
+  correctly with provincial and territorial layers nationally.
+- **Canada coverage audited** — every remaining gap is machine-readable and
+  intentionally UNKNOWN or PARTIAL rather than accidentally absent.
+
+Do not claim Canada complete until those are satisfied on evidence. Until then,
+report the exact counts.
+
+## Underlying architecture
+
 North Ground starts with Canada but the underlying architecture should support:
 
 Country
