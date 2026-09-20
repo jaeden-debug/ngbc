@@ -210,7 +210,7 @@ test("API handler rejects invalid input, cross-origin requests, and excess attem
   assert.equal(calls, 0);
 });
 
-test("honeypot submissions never reach durable storage", async () => {
+test("honeypot submissions fail without claiming persistence", async () => {
   let calls = 0;
   const handler = createSubscribeHandler({
     canonicalOrigin: "https://northgroundbushcraft.com",
@@ -223,6 +223,7 @@ test("honeypot submissions never reach durable storage", async () => {
   });
 
   const response = await handler(request({ email: "bot@example.com", website: "spam" }));
-  assert.equal(response.status, 200);
+  assert.equal(response.status, 400);
+  assert.deepEqual(await response.json(), { ok: false, code: "INVALID_REQUEST" });
   assert.equal(calls, 0);
 });

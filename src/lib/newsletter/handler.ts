@@ -89,10 +89,9 @@ export function createSubscribeHandler({
       return json({ ok: false, code: "INVALID_REQUEST" }, 400);
     }
 
-    // A filled honeypot is treated as success without touching the provider so
-    // simple bots cannot use response differences to tune their submissions.
+    // No code path may report success without provider-confirmed persistence.
     if (typeof body.website === "string" && body.website.trim()) {
-      return json({ ok: true, status: "subscribed" }, 200);
+      return json({ ok: false, code: "INVALID_REQUEST" }, 400);
     }
 
     const email = normalizeEmail(body.email);
