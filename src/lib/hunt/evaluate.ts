@@ -1,5 +1,6 @@
 import { contentRepository, type ContentRepository } from "../content/repository.ts";
-import { evaluateOntarioRuffedGrouse } from "./regulations.ts";
+import { speciesById } from "./coverage.ts";
+import { evaluateOntarioSmallGame } from "./regulatory/ontario.ts";
 import type { HuntEvaluation, HuntInput } from "./types.ts";
 import { getWeatherContext } from "./weather.ts";
 import { resolveOntarioWmu } from "./zone.ts";
@@ -17,8 +18,9 @@ export async function evaluateHunt(input: HuntInput, dependencies: HuntDependenc
     (dependencies.resolveZone ?? resolveOntarioWmu)(input.latitude, input.longitude),
     (dependencies.weather ?? getWeatherContext)(input.latitude, input.longitude, input.date, { now: dependencies.now?.() }),
   ]);
-  const regulation = evaluateOntarioRuffedGrouse(input, zone);
+  const regulation = evaluateOntarioSmallGame(input, zone);
   const zoneIds = zone.zoneId ? [zone.zoneId] : undefined;
+  const speciesResource = await repository.getSpecies(input.speciesId);
   const knowledge = await repository.getContextualBlocks({
     locale: "en-CA",
     countryId: "country:ca",
@@ -36,7 +38,13 @@ export async function evaluateHunt(input: HuntInput, dependencies: HuntDependenc
   const sources = await repository.getSources(sourceIds);
   return {
     input,
-    species: { id: "species:ruffed-grouse", name: "Ruffed grouse", canonicalPath: "/hunting/species/ruffed-grouse" },
+    species: {
+      id: input.speciesId,
+      // Identity comes from the canonical species library; the regulatory engine
+      // supplies legality and never restates biology.
+      name: speciesResource?.title ?? speciesById(input.speciesId)?.displayName ?? input.speciesId,
+      canonicalPath: speciesResource?.canonicalUrl ?? speciesById(input.speciesId)?.resourcePath ?? "/hunt",
+    },
     zone,
     regulation,
     weather,

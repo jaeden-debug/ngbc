@@ -9,8 +9,8 @@ import type { CanonicalId } from "../content-contract/index.ts";
  * refused, and the endpoint uses it as the authority.
  *
  * These bounds describe where an evaluation may be ATTEMPTED. They are not a claim
- * that every point inside them is certified: the certified regulatory record is one
- * zone, and a point elsewhere in Ontario correctly resolves to UNKNOWN.
+ * that every point inside them is certified: a unit no season row names resolves to
+ * UNKNOWN, and that is the correct answer rather than a gap.
  */
 
 export const SUPPORTED_BOUNDS = {
@@ -20,7 +20,24 @@ export const SUPPORTED_BOUNDS = {
   maxLongitude: -74,
 } as const;
 
-export const SUPPORTED_SPECIES_IDS = ["species:ruffed-grouse"] as const;
+/**
+ * Species Hunt can evaluate somewhere in its covered geography.
+ *
+ * Listed literally rather than derived from the regulatory bundle, because this
+ * module reaches the browser and the bundle is 36 KB of rules the browser has no
+ * use for. `src/lib/hunt/regulatory/coverage.test.ts` asserts the two agree, so
+ * the duplication cannot drift.
+ *
+ * Appearing here means "North Ground can answer for this species somewhere", not
+ * "everywhere": a species may be certified in 85 units and unknown in the rest,
+ * and the per-location answer comes from the engine.
+ */
+export const SUPPORTED_SPECIES_IDS = [
+  "species:ruffed-grouse",
+  "species:spruce-grouse",
+  "species:sharp-tailed-grouse",
+  "species:snowshoe-hare",
+] as const;
 
 export type SupportedSpeciesId = (typeof SUPPORTED_SPECIES_IDS)[number];
 
@@ -54,9 +71,27 @@ export const SUPPORTED_SPECIES: SupportedSpecies[] = [
     scientificName: "Bonasa umbellus",
     resourcePath: "/hunting/species/ruffed-grouse",
   },
+  {
+    id: "species:spruce-grouse",
+    displayName: "Spruce grouse",
+    scientificName: "Canachites canadensis",
+    resourcePath: "/hunting/species/spruce-grouse",
+  },
+  {
+    id: "species:sharp-tailed-grouse",
+    displayName: "Sharp-tailed grouse",
+    scientificName: "Tympanuchus phasianellus",
+    resourcePath: "/hunting/species/sharp-tailed-grouse",
+  },
+  {
+    id: "species:snowshoe-hare",
+    displayName: "Snowshoe hare",
+    scientificName: "Lepus americanus",
+    resourcePath: "/hunting/species/snowshoe-hare",
+  },
 ];
 
-export const COVERAGE_SUMMARY = "Coverage currently available for select Ontario hunts.";
+export const COVERAGE_SUMMARY = "Small-game rules certified across Ontario's wildlife management units.";
 
 export function isSupportedSpecies(value: unknown): value is SupportedSpeciesId {
   return typeof value === "string" && (SUPPORTED_SPECIES_IDS as readonly string[]).includes(value);

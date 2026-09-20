@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { evaluateHunt } from "./evaluate.ts";
-import { evaluateOntarioRuffedGrouse } from "./regulations.ts";
+import { evaluateOntarioSmallGame } from "./regulatory/ontario.ts";
 import type { HuntInput, ZoneResolution } from "./types.ts";
 import { getWeatherContext } from "./weather.ts";
 import { resolveOntarioWmu } from "./zone.ts";
@@ -22,18 +22,21 @@ const zone: ZoneResolution = {
   message: "Resolved from official fixture.",
 };
 
+// The original certified slice, kept verbatim as a regression on the move from a
+// hard-coded rule to the generated bundle: the same unit, dates and limits must
+// still produce the same answers.
 test("certified WMU 57 rule returns conditional in season and closed outside it", () => {
-  const open = evaluateOntarioRuffedGrouse(input, zone);
+  const open = evaluateOntarioSmallGame(input, zone);
   assert.equal(open.status, "CONDITIONAL");
   assert.deepEqual(open.season, { opens: "2026-09-15", closes: "2026-12-31", datesInclusive: true });
   assert.deepEqual(open.limits, { daily: 5, possession: 15, combinedWith: "spruce grouse" });
-  assert.equal(evaluateOntarioRuffedGrouse({ ...input, date: "2026-09-14" }, zone).status, "CLOSED");
+  assert.equal(evaluateOntarioSmallGame({ ...input, date: "2026-09-14" }, zone).status, "CLOSED");
 });
 
 test("unknown zone and out-of-version dates fail closed", () => {
   const unresolved: ZoneResolution = { status: "UNKNOWN", sourceId: "source:ca-on-wmu-service", message: "No feature" };
-  assert.equal(evaluateOntarioRuffedGrouse(input, unresolved).status, "NEEDS_VERIFICATION");
-  assert.equal(evaluateOntarioRuffedGrouse({ ...input, date: "2027-10-15" }, zone).status, "NEEDS_VERIFICATION");
+  assert.equal(evaluateOntarioSmallGame(input, unresolved).status, "NEEDS_VERIFICATION");
+  assert.equal(evaluateOntarioSmallGame({ ...input, date: "2027-10-15" }, zone).status, "NEEDS_VERIFICATION");
 });
 
 test("forecast horizon refuses a date 46 days away without calling a provider", async () => {
