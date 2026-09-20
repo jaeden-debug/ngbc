@@ -4,7 +4,7 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-21 (species library and profiles brought into the Hunt product visual language; Ontario conditional regulatory engine — turkey, deer, black bear, moose)
+Last updated: 2026-09-21 (Ontario conditional Hunt wired end to end; Canada coverage architecture; Québec and federal source research)
 
 ## Current Product State
 
@@ -33,6 +33,11 @@ Last updated: 2026-09-21 (species library and profiles brought into the Hunt pro
 - The Hunt interface assembles progressively: location resolves the zone, date enables time-specific evaluation, species completes the regulatory overview. The overview separates regulatory, environmental and editorial layers into tabs that appear only when they have real content.
 - Location is entered through one place-search composer with Google Places where a key is configured and Nominatim otherwise; attribution follows whichever provider answered. `Use my location` is a separate explicit action. Coordinates remain available under a `Location details` disclosure and are never the primary input.
 - Date entry is `Today` plus `Choose date` only. The canonical display format is `YYYY/MM/DD` with progressive numeric entry (`20260808` becomes `2026/08/08`), pasted ISO and slash forms normalise, and impossible dates are refused with a plain-language reason. The text field and the accessible calendar share one ISO value and cannot disagree. Covered by 19 tests in `src/lib/hunt/date.test.ts`.
+- Ontario major game is wired end to end as of 2026-09-21. `evaluateHunt` routes by how the province publishes a species: small game answers from location, date and species and asks nothing; deer, turkey, black bear and moose go to `evaluateOntarioMajorGame`, which asks only what the applicable rules disagree on, one fact at a time, with its reason and source section. All eight certified species are now selectable, and the selector distinguishes "Rules available" from "Rules available · asks a question".
+- `HuntEvaluation` carries `completeness` separately from regulatory status, so NEEDS_INPUT (North Ground knows the law and needs a fact) can never be rendered as UNKNOWN (North Ground does not know the law) or as CLOSED. While a question is outstanding the regulatory placeholder is `NEEDS_VERIFICATION`.
+- Answers are untrusted at two layers. `/api/hunt/evaluate` refuses anything that is not a known dimension key with a bounded string value, and the engine then refuses any value its own dimension did not offer. Certified live: an invalid residency or implement leaves the question outstanding and never produces a status. Answers are cleared whenever species, place or date changes.
+- Hunt Brief is at schema version 2, which records the assumptions a result depended on in the words the question used. Version 1 briefs remain readable and are rebuilt as version 1 with no assumptions; a stored v1 record cannot acquire assumptions even if its payload claims them.
+- Canada coverage is machine-readable. `src/lib/hunt/canada/registry.ts` declares all thirteen provinces and territories plus the federal layer with each authority's own management term, official source and known gaps; `report.ts` computes every count from the certified bundles at call time. `npm run report:canada` renders it, `-- --json` emits it.
 - Where no Google Maps browser key is configured the map falls back to a basemap-free boundary view that draws the same official geometry, supports pan, zoom and zone inspection, and labels itself as having no basemap. It is not a substitute basemap and invents no geography.
 
 ### Content / Knowledge Graph
@@ -61,9 +66,9 @@ Last updated: 2026-09-21 (species library and profiles brought into the Hunt pro
 
 ## In Progress
 
-- Ontario major game (turkey, deer, black bear, moose): the regulatory ENGINE is complete and tested; the Hunt interface is not yet wired to it. `evaluateOntarioMajorGame` returns `completeness: "NEEDS_INPUT"` with one question at a time, and no UI renders that yet. The four species also remain absent from the Hunt species selector until that wiring lands.
-- Mirroring major-game rules into Supabase. Blocked on schema: `public.regulatory_rules` has no `applies_when` column, so a conditional rule would be stored as though it were unconditional — a WMU 71 deer rule would read as open to rifles. Needs an additive migration (`applies_when jsonb`, `declared_no_season boolean`, `season_label text`) and a publisher that reads `bundle.sources` (array) as well as `bundle.source`. Small game remains mirrored and unaffected.
-- Québec zone ingestion, once the Ontario pipeline has run through a source change at least once.
+- Québec spatial ingestion is BLOCKED ON SOURCE AVAILABILITY, not effort. The zone structure is verified (28 zones, 1-24 and 26-29; zone 25 is fishing only) but the boundaries are not published as open data. Next step is the service endpoint behind Forêt ouverte, or a direct request to MELCCFP. Do not ingest the CC-BY-NC-ND structured-wildlife-territory layer as a substitute: its licence permits neither commercial use nor derivatives, and zecs are not hunting zones.
+- Federal migratory birds. The only district layer located (ECCC, Québec) is marked Draft and states it has no legal value, so it fails the boundary standard. Certified geometry must come from the Migratory Birds Regulations text or a layer the authority stands behind. 25 waterfowl and migratory species have published biological profiles and no rules.
+- Prairie provinces, British Columbia, Atlantic Canada and the territories: official sources are named in the coverage registry; none is ingested.
 - Main site visual direction / hero.
 - Hunting Intelligence application.
 - Structured North Ground content/resource system.
@@ -99,12 +104,15 @@ Last updated: 2026-09-21 (species library and profiles brought into the Hunt pro
 
 ## Next Priorities
 
-The first three are the open ends of the conditional-regulatory wave and should be taken in order.
+Priorities 1 to 4 of the previous wave are complete: the conditional UI, the
+selector, conditional persistence and Hunt Brief v2 all landed on 2026-09-21.
+The national rollout order below replaces them.
 
-1. Wire Hunt's interface to `evaluateOntarioMajorGame`: render `NEEDS_INPUT` as one question at a time with its stated reason and source section, re-evaluate on each answer, and keep the small-game path unchanged (it asks nothing and must keep asking nothing). This touches `coverage.ts`, `SpeciesSelect.tsx` and `src/app/hunt/page.tsx`, which a concurrent species/content session was editing on 2026-09-20 — confirm ownership before starting.
-2. Add the four major-game species to the Hunt selector and the coverage matrix, with a state that distinguishes "rules available, some questions required" from small game's "rules available".
-3. Mirror major-game rules into Supabase, which needs the additive migration described under In Progress. Do not mirror them against the current schema: a conditional rule stored without its conditions reads as unconditional.
-4. Version the Hunt Brief schema before any brief can contain an answer that depended on user-supplied context, so an old brief is never re-rendered as though it applied to everyone.
+1. Québec geometry. Identify the service behind Forêt ouverte or request the zone boundaries from MELCCFP. This is the single blocker on Wave 1 and it is a source-availability problem, not an engineering one. Nothing else in Québec can proceed without it.
+2. Québec seasons, once geometry exists. Québec publishes in French with zone-and-species tables that do not share Ontario's shape, so the builder cannot be copied — read the structure first. Preserve official French terminology rather than translating legal terms.
+3. Apply the conditional migration to the live Supabase project and run the publisher against both Ontario bundles. The migration and publisher are written and tested; neither has been applied to production.
+4. Federal migratory birds. Establish certified district geometry from the Migratory Birds Regulations or an authority-backed layer — the ECCC draft layer disclaims legal value and cannot be used. This unblocks 25 published waterfowl species that currently have no rules at all.
+5. Prairie provinces (MB, SK, AB), then British Columbia, then Atlantic Canada, then the territories. Each wave: research, ingest, certify parity, encode rules, test, deploy, verify, record exact coverage in the registry.
 5. Complete current visual foundation without locking poor information architecture.
 6. Establish technical/semantic site architecture.
 7. Establish trust pages and North Ground Verified framework.
@@ -133,6 +141,33 @@ Both former blockers are resolved. Nothing external is currently blocking Hunt.
 ## Regulatory Coverage
 
 ### Canada
+
+**Direction (2026-09-21): all of Canada is Hunt's first complete geographic
+target.** Recorded in `CLAUDE.md` section 9. Canada is the minimum complete
+footprint before broad United States expansion — not the initial market to be
+moved past.
+
+Coverage is machine-readable rather than prose. `src/lib/hunt/canada/registry.ts`
+declares structure and known gaps; `src/lib/hunt/canada/report.ts` computes every
+count from the certified bundles. Run `npm run report:canada`. Do not restate
+those counts here — they would go stale the moment a bundle changes.
+
+National position as of 2026-09-21:
+
+| | |
+| --- | --- |
+| Jurisdictions tracked | 14 (13 provinces and territories + federal) |
+| Spatial VERIFIED | 1 (Ontario) |
+| Official units parity-certified | 151 |
+| Species with certified rules | 8 |
+| Certified rules | 146 |
+| Jurisdictions with any certified rule | 1 |
+
+Milestones: `spatialComplete` NOT met (1 of 13). `coreGameComplete` NOT met
+(1 of 13). `migratoryComplete` NOT met (no federal rules). `coverageAudited`
+MET — every jurisdiction declares its own gaps, so what is missing is
+intentionally UNKNOWN rather than accidentally absent.
+
 Record each jurisdiction as:
 VERIFIED / PARTIAL / IN DEVELOPMENT / UNAVAILABLE
 
@@ -278,6 +313,11 @@ Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport a
 - `npm run build` passed on 2026-09-20 (Next.js 16.1.1). The species library is static and all ten species pages are statically generated; Hunt, its evaluation/share APIs, shared Hunt Brief page and per-brief Open Graph image are dynamic; home, 404, site Open Graph image, robots, and sitemap are generated successfully.
 
 ### Tests
+- Canada wave, 2026-09-21. `npm run typecheck` and `npm run lint` clean. `test:hunt` 176/176 (up from 145: conditional dispatch, answer validation, engine routing and persistence guards). `test:hunt-share` 26/26 including Hunt Brief v1 preservation and v2 round-trip. `test:canada` 8/8. `test:content-repository` 12/12, `test:content-urls` 21/21, `test:content-contract` 8/8, `test:seo` 3/3, `test:newsletter` 9/9. `validate:content:published` 0 errors.
+- Live conditional flow certified against the running app on 2026-09-21. Deer at 45.23/-77.94 for 2026-11-10 asked RESIDENCY, then HUNT_METHOD, then resolved CONDITIONAL with the gun season 2-15 November. Turkey resolved without ever asking residency. Moose asked residency first. Small game resolved with no questions at all, unchanged.
+- Invalid-input safety certified live through the real endpoint: `RESIDENCY: "DEFINITELY_A_RESIDENT"`, `HUNT_METHOD: "BAZOOKA"` and an empty string each left the question outstanding at NEEDS_INPUT and produced no status. None became CLOSED.
+- Question UI certified at 320, 360, 375, 390, 430, 768, 1024 and 1440 CSS pixels with zero horizontal overflow at every width. Options are 48px tall and full width on phones, side by side from 640 up, in a `radiogroup` with the reason and source section always shown.
+
 - Ontario conditional regulatory engine, 2026-09-20. `npm run typecheck` clean, `npx eslint src scripts` clean (the previously noted unused-variable warning in `scripts/build-ontario-regulations.mjs` is resolved). `npm run test:hunt` 169/169 — the 117 pre-existing hunt tests plus 28 deer cases and 24 turkey/bear/moose/untrusted-input cases, with the small-game suite unchanged. `npm run test:regulatory-sources` 16/16 covering WMU specification expansion, footnote-to-token attachment, and the bundle change report. `npm run build` compiled successfully.
 - Both bundles rebuild byte-identically when the sources have not moved, which is what makes a diff meaningful.
 - Source-change drill performed 2026-09-20 against the four-species bundle. Three realistic changes were simulated — a turkey spring season shortened, WMU 7A's bear implements narrowed, and a moose "None" cell becoming dates. All three were detected, each was named with its field-level before/after and the number of units it touches (91, 1 and 19 respectively), the production bundle and file were untouched, the engine continued to return the pre-change answers, and the report exited 3 to require review. Nothing was promoted automatically.
@@ -339,6 +379,55 @@ Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport a
 - Research counts remain research-only. The only locally certified production-shaped exception is the explicit Ontario WMU 57 / ruffed grouse 2026 slice described above.
 
 ## Agent Handoff Notes
+
+### 2026-09-21 — Canada rollout: where this stops and what is next
+**Last completed jurisdiction:** Ontario, now complete end to end — 151 units
+parity-certified, 8 species, 146 rules, and the conditional question flow live
+in the interface.
+
+**Next jurisdiction:** Québec (Wave 1). It is blocked on one thing: the zone
+boundaries are not published as open data. Structure is verified (28 zones,
+1-24 and 26-29; zone 25 is fishing only, from quebec.ca). Searched Données
+Québec for `zones-de-chasse`, `"zones de chasse"`, `faune chasse` and
+`title:chasse` — no boundary dataset exists there. Try the service behind
+Forêt ouverte (foretouverte.gouv.qc.ca) or ask MELCCFP directly.
+
+**Sources discovered.** Québec: quebec.ca hunting-zone maps page (structure,
+per-zone PDFs); diffusion.mffp.gouv.qc.ca carries wildlife protection districts
+(CC-BY 4.0, usable) and structured wildlife territories (CC-BY-NC-ND 4.0, NOT
+usable — non-commercial, no derivatives). Federal: ECCC publishes Québec
+migratory-bird district boundaries under the Open Government Licence, updated
+2025-06-17, but marked Draft and expressly of no legal value — it fails the
+boundary standard and must not be ingested as certified geometry. Every other
+jurisdiction's official source is named in the coverage registry.
+
+**Sources still needed.** Québec zone geometry; Québec season tables; federal
+migratory-bird district geometry with legal standing; everything for MB, SK, AB,
+BC, NB, NS, PE, NL, YT, NT, NU.
+
+**Migrations pending.** `supabase/migrations/20260921000400_conditional_regulatory_rules.sql`
+is written and tested but NOT applied to the live project. Apply it, then run
+`node scripts/publish-regulations.mjs` against both Ontario bundles. The
+publisher now refuses to write a rule whose dimensions it cannot represent,
+which is deliberate — extend schema and publisher together or not at all.
+
+**Tests pending.** None failing. A Québec fixture set is needed before any
+Québec rule is certified, and per §67 one coordinate is not a jurisdiction:
+plan several interior, boundary and outside-province points.
+
+**Known legal uncertainties.** Ontario WMU 51 (Algonquin) is governed by
+provincial park legislation North Ground does not hold. Ontario controlled deer
+hunts and moose controlled-hunter seasons are published but deliberately not
+certified — both are allocated per hunt code or by draw and are not decidable
+from location and date. In Yukon, NT and Nunavut, harvesting under Final
+Agreements and land-claim agreements is a distinct legal context from licensed
+recreational hunting; North Ground must never present a recreational result as
+describing rights-based harvesting. Nova Scotia's management zones are
+species-specific, which breaks the one-zone-per-point assumption everywhere
+else. Newfoundland and British Columbia allocate big game substantially by
+draw and Limited Entry Hunting respectively.
+
+
 
 ### 2026-09-21 — Ontario major game is NOT a bigger grouse table
 Turkey, white-tailed deer, black bear and moose are the next species in the
