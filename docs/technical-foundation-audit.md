@@ -2,7 +2,7 @@
 
 Audit date: 2026-09-20
 
-Scope: current `main` worktree at `0118eab`, excluding uncommitted files owned by other agents.
+Scope: current `main` worktree through the technical-foundation remediation commits, excluding uncommitted files owned by other agents.
 
 Method: repository inspection, `next build`, and HTTP inspection of the production build on localhost. No production deployment, third-party analytics property, email provider, or external domain configuration was inspected.
 
@@ -13,18 +13,44 @@ Method: repository inspection, `next build`, and HTTP inspection of the producti
 - **P2:** material quality/scale issue that should be scheduled before expanding content.
 - **P3:** hardening or optimization with limited current impact.
 
-No P0 was confirmed from the repository alone. The newsletter issue becomes P0 if the current form is publicly promoted as collecting subscriptions because submissions are discarded.
+The newsletter false-success defect was treated as P0 and remediated. Production activation remains explicitly blocked until the Resend credentials documented in `.env.example` are configured; an unconfigured deployment now returns a truthful service-unavailable error instead of success.
+
+## Remediation status
+
+Status vocabulary: **FIXED** is complete in repository code and local production validation; **PARTIAL** has a safe foundation but remaining work; **BLOCKED** needs an external credential, policy, deployment, or owner decision; **REMAINS** is confirmed and intentionally untouched because it belongs to active visual/content work or is premature.
+
+| Finding | Status | Current evidence / next boundary |
+| --- | --- | --- |
+| Newsletter persistence and false success | **FIXED** / production activation **BLOCKED** | Server route now validates and normalizes email, persists idempotently to Resend Contacts plus a dedicated Segment, re-subscribes existing contacts, fails closed, avoids PII logging, and returns stable errors. Nine tests pass. `RESEND_API_KEY` and `RESEND_SEGMENT_ID` must be configured before deployment. |
+| Newsletter abuse/privacy controls | **PARTIAL** | Same-origin and JSON checks, a 1 KiB body limit, honeypot, per-IP/per-email in-process limits, privacy-conscious logging, and operational documentation are present. A distributed Vercel Firewall rate rule and published privacy/retention policy remain deployment/owner work. |
+| robots.txt | **FIXED** | `/robots.txt` permits public pages, blocks `/api/`, declares the canonical host and sitemap, and returns 200 in the production build. |
+| Sitemap | **FIXED** | `/sitemap.xml` contains only the current public homepage. Hunt/content routes are intentionally excluded until their owners publish them. |
+| Canonical URL behavior | **PARTIAL** | Homepage emits an absolute canonical that excludes query parameters; trailing slashes redirect permanently to the no-slash path. Canonical host/HTTPS redirects remain **BLOCKED** on confirmed deployment/DNS topology. |
+| Metadata and OG/Twitter previews | **FIXED** | Accurate site naming/description, title template, indexing policy, locale, theme, Open Graph, Twitter card, and generated 1200×630 image are present and production-HTML tested. |
+| Server-rendered H1 | **FIXED** | The only indexable page now has one meaningful H1 in prerendered HTML. It is visually hidden to avoid conflicting with active hero work; the visual owner should incorporate it visibly when safe. |
+| Server-rendered indexability | **PARTIAL** | Metadata, H1, organization/site identity, contact copy, and newsletter shell are prerendered. Mission Deck copy remains interaction-gated in active visual architecture. |
+| Breadcrumbs and structured data | **FIXED** baseline | Organization and WebSite JSON-LD use stable IDs. A reusable semantic breadcrumb plus matching `BreadcrumbList` primitive exists and rejects non-hierarchies; it is correctly unused on the one-level homepage. No speculative Article/Person schema was added. |
+| Homepage form label | **FIXED** | Newsletter input has an accessible name, described status, invalid state, and bounded input length. |
+| Placeholder internal link | **FIXED** | The `href="#"` YouTube control was removed; no destination was invented. Real primary navigation remains **REMAINS** until public routes exist. |
+| Custom 404 | **FIXED** | Unknown routes return status 404, a branded recovery page with H1/home link, and `noindex`; verified against the production server. |
+| Redirect behavior | **PARTIAL** | A no-trailing-slash policy and 308 normalization are tested. No historical redirects were invented; host/HTTPS rules remain deployment-owned. |
+| Framework signature | **FIXED** | `poweredByHeader` is disabled. |
+| Analytics | **BLOCKED** | No analytics is configured. Provider, consent, coarse-location policy, retention, and event design must be approved before instrumentation. |
+| Hero scroll/reflow, modal semantics, native image, lint, media performance | **REMAINS** | These findings are still valid in active visual files and were not modified. |
+| Route error/loading boundaries | **REMAINS** | Still premature until dynamic public route ownership settles. |
 
 ## Verified baseline
 
 - Framework: Next.js 16.1.1 App Router, React 19.2.3, TypeScript strict mode.
-- Routes: `/` (statically prerendered), `/_not-found` (framework default), `/api/subscribe` (dynamic).
+- Routes: `/`, branded `/_not-found`, `/opengraph-image`, `/robots.txt`, and `/sitemap.xml` are statically generated; `/api/subscribe` is dynamic.
 - `npm run build`: passed on 2026-09-20.
-- HTTP check: `/` returned 200 with prerender/cache headers; `/robots.txt`, `/sitemap.xml`, and an unknown path returned 404.
-- Home HTML contains a title and description but no H1, canonical link, Open Graph/Twitter tags, or JSON-LD.
+- Production HTTP validation: `/`, `/robots.txt`, `/sitemap.xml`, and `/opengraph-image` return 200; an unknown path returns a branded 404/noindex page; trailing-slash variants normalize with 308.
+- Home HTML contains one server-rendered H1, an absolute canonical URL, complete baseline metadata, Open Graph/Twitter tags, and Organization/WebSite JSON-LD.
 - Media payload on disk is approximately 7.1 MB across video variants; browser transfer depends on codec/media selection and was not measured with Lighthouse.
 
-## Findings
+## Original findings
+
+This table preserves the evidence captured at audit time. The remediation-status table above is authoritative for current disposition.
 
 | Priority | Problem | Evidence | Impact | Recommended fix | Likely ownership | Safe now? |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -54,45 +80,55 @@ No P0 was confirmed from the repository alone. The newsletter issue becomes P0 i
 
 | Requested category | Result |
 | --- | --- |
-| robots.txt | Missing; P1 |
-| sitemap | Missing; P1 |
-| canonical | Missing; P1 |
-| metadata | Basic title/description only; P2 refresh needed |
-| OG/Twitter | Missing; P2 |
-| H1 | Missing; P1 |
-| SSR/indexability | `/` is statically prerendered, but essential deck copy is interaction-gated; P1 |
-| structured data | Missing; P2 before resource launch |
-| breadcrumbs | Not needed for current one-page route, but no implementation exists; P2 before hierarchy launch |
-| internal linking | No real navigation; placeholder link; P2 |
-| 404 | Correct status, generic dead end; P2 |
-| redirects | No policy/implementation to audit; P3 foundation gap |
-| accessibility | Confirmed modal, label, H1, and scroll/reflow risks; P1 |
+| robots.txt | **FIXED** |
+| sitemap | **FIXED** for current published route set |
+| canonical | **PARTIAL**; page/trailing-slash policy fixed, edge host policy blocked |
+| metadata | **FIXED** baseline |
+| OG/Twitter | **FIXED** baseline |
+| H1 | **FIXED** in SSR HTML; visible integration remains with visual owner |
+| SSR/indexability | **PARTIAL**; semantic shell fixed, interaction-gated deck copy remains |
+| structured data | **FIXED** justified Organization/WebSite baseline |
+| breadcrumbs | **FIXED** implementation; correctly unused on one-level homepage |
+| internal linking | **PARTIAL**; fake link removed, real navigation waits for routes |
+| 404 | **FIXED** |
+| redirects | **PARTIAL**; path normalization tested, host/HTTPS edge policy blocked |
+| accessibility | **PARTIAL**; label/H1/404 fixed, active hero/modal/reflow findings remain |
 | performance | Build passes and media variants are compact, but no CWV certification; P2/P3 findings |
-| newsletter persistence | Not implemented and falsely reports success; P1, conditional P0 if publicly relied on |
-| analytics | Not implemented; P2 policy/instrumentation gap |
+| newsletter persistence | **FIXED** in code; production credentials **BLOCKED** |
+| analytics | **BLOCKED** on policy/provider decision; intentionally not added |
 
 ## Recommended order
 
-1. Before accepting traffic, disable or truly persist newsletter submissions and address privacy/abuse controls.
-2. Confirm canonical production host, public brand naming, and route ownership; then ship canonical metadata, robots, and sitemap.
-3. Repair the homepage semantic/accessibility foundation within the active visual work: H1, document flow, form label, and dialog focus behavior.
-4. Establish server-rendered public navigation/resource templates with bounded relationships, breadcrumbs, and accurate structured data.
-5. Add custom recovery/error states and redirect registry.
-6. Measure real mobile performance/accessibility and introduce privacy-first analytics only after policy approval.
+1. Configure and smoke-test the documented Resend credentials, then add a distributed edge rate rule before campaign traffic.
+2. Confirm production domain topology and enforce HTTPS/canonical-host redirects at the edge.
+3. Resolve the remaining active-visual accessibility findings: document flow/reflow, visible H1 integration, and modal focus/semantics.
+4. Apply the breadcrumb primitive and route-specific metadata only as real owned content routes ship.
+5. Define privacy/consent/retention policy before analytics instrumentation.
+6. Measure mobile performance/accessibility and add error boundaries alongside real dynamic routes.
 
 ## Validation evidence
 
 ```text
 npm run build
 ✓ Compiled successfully
-✓ Generating static pages (5/5)
+✓ Generating static pages (7/7)
 ○ / (static)
+○ /_not-found (static)
+○ /opengraph-image (static)
+○ /robots.txt (static)
+○ /sitemap.xml (static)
 ƒ /api/subscribe (dynamic)
 
 GET /              200
-GET /robots.txt    404
-GET /sitemap.xml   404
-GET /does-not-exist 404
+GET /robots.txt    200
+GET /sitemap.xml   200
+GET /opengraph-image 200 image/png
+GET /does-not-exist 404, branded recovery + noindex
+GET /does-not-exist/ 308 → /does-not-exist
+
+npm run test:newsletter  9/9 passed
+npm run test:seo         3/3 passed
+npm run validate:seo     passed against `next start`
 ```
 
-The audit intentionally makes no claim about production uptime, deployed cache/CDN behavior, search-console state, real Core Web Vitals, provider persistence, or analytics dashboards because those systems were not available in the repository evidence.
+The audit intentionally makes no claim about production uptime, deployed cache/CDN behavior, Search Console state, real Core Web Vitals, live Resend persistence, or analytics dashboards because credentials and those production systems were not available in the repository evidence.

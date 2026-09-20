@@ -12,6 +12,8 @@ Last updated: 2026-09-20
 - Visual/hero work is currently being developed.
 - Brand direction: dark boreal, warm, rustic, clean, outdoorsy; not tactical.
 - Broader North Ground architecture is being established.
+- Technical foundation remediation is implemented: truthful durable newsletter handling, production robots/sitemap, canonical and social metadata, justified Organization/WebSite structured data, a breadcrumb primitive, server-rendered homepage H1, and branded 404 behavior.
+- The only currently indexable route is `/`; Hunt and editorial routes are not included in the sitemap until their owners publish them.
 
 ### Hunting Intelligence
 - Flagship product under active development.
@@ -50,7 +52,10 @@ Last updated: 2026-09-20
 - Record confirmed defects here as they are discovered.
 - Do not copy stale audit findings forward without verifying them.
 - Technical foundation audit: `docs/technical-foundation-audit.md`.
-- Confirmed P1 launch gaps: newsletter submissions are acknowledged but not persisted; robots, sitemap and canonical URLs are absent; the homepage has no H1 and has accessibility/indexability risks in active visual files.
+- Newsletter production activation still requires `RESEND_API_KEY` and `RESEND_SEGMENT_ID`; the route fails closed and does not claim success while unconfigured.
+- Canonical host/HTTPS redirect enforcement still requires confirmed deployment/DNS topology. The repository enforces a no-trailing-slash path policy.
+- Active visual files still contain the audited scroll/reflow, modal focus/semantics, native-image, and Hero lint findings. The server-rendered H1 is visually hidden until it can be incorporated without conflicting with active hero work.
+- Analytics remains intentionally unconfigured pending provider, consent, retention, location-privacy, and event-design decisions.
 - No production content registry, authoring adapter, canonical URL resolver, content repository/API, or Hunt-to-content adapter exists yet.
 
 ## Next Priorities
@@ -76,6 +81,10 @@ Examples:
 - unavailable official GIS data
 - owner decision required
 - third-party service issue
+
+- Newsletter live persistence: provide a full-access Resend API key as `RESEND_API_KEY` and the dedicated Contacts Segment ID as `RESEND_SEGMENT_ID`; then perform a production smoke test and configure distributed edge rate limiting.
+- Canonical host redirects: confirm the production domain/alias and HTTPS termination topology before enforcing host redirects.
+- Analytics: approve provider, consent model, coarse-location constraints, retention, and event contract before adding instrumentation.
 
 ## Regulatory Coverage
 
@@ -117,7 +126,7 @@ Record actual production providers here once selected:
 - Geocoding:
 - Weather:
 - Analytics:
-- Email:
+- Email: Resend Contacts + dedicated Segment selected for newsletter persistence; credentials not configured in the inspected environment.
 - Error monitoring:
 
 Do not list aspirational providers as implemented.
@@ -148,15 +157,20 @@ Keep regulatory/geospatial infrastructure sufficiently separated from North Grou
 ### 2026-09-20 — Shared Content Contract v1
 Canonical IDs are URL- and locale-independent. Editorial App Blocks use deterministic contextual matching. Editorial fallback is allowed only to deliberately broader editorial blocks; missing regulatory data never falls back to inferred legality. Authoring systems integrate through a normalized `ContentBundle` rather than being forced into a specific CMS/storage format.
 
+### 2026-09-20 — Main-Site Technical Foundation
+The public site identity is North Ground, with North Ground Bushcraft retained as an alternate entity name. The canonical default origin is `https://northgroundbushcraft.com` and is environment-configurable. Newsletter subscriptions persist server-side to Resend Contacts plus a dedicated Segment and fail closed when credentials/provider confirmation are unavailable. Only actual published routes enter the sitemap or structured data.
+
 ## Validation
 
 ### Build
-- `npm run build` passed on 2026-09-20 (Next.js 16.1.1; `/` statically prerendered, `/api/subscribe` dynamic).
+- `npm run build` passed on 2026-09-20 (Next.js 16.1.1; `/`, custom 404, Open Graph image, robots and sitemap statically generated; `/api/subscribe` dynamic).
 
 ### Tests
 - `npm run typecheck` passed on 2026-09-20.
 - `npm run test:content-contract` passed 4/4 on 2026-09-20.
 - `npm run validate:content:strict` passed the contract fixture with 0 errors and 0 warnings on 2026-09-20.
+- `npm run test:newsletter` passed 9/9 on 2026-09-20.
+- `npm run test:seo` passed 3/3 and `npm run validate:seo` passed production-server checks for metadata, SSR H1/indexability, social image, robots, sitemap, 404 and trailing-slash redirects on 2026-09-20.
 - `npm run lint` remains blocked by one existing error (`react-hooks/set-state-in-effect`) and one warning (`no-img-element`) in the active `src/components/Hero.tsx`; shared contract files introduce no reported lint findings.
 
 ### Production
