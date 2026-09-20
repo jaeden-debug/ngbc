@@ -1,0 +1,28 @@
+alias_id,alias,language,region,species_id,alias_type,ambiguity,candidate_species_ids,source_id,verification_status,notes
+alias:whitetail,whitetail,en,North America,species:white-tailed-deer,common_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,
+alias:whitetail-deer,whitetail deer,en,North America,species:white-tailed-deer,common_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,
+alias:wapiti,wapiti,en,North America,species:elk,common_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,
+alias:grizzly-bear,grizzly bear,en,North America,species:brown-bear,common_name,CONTEXTUAL,,source:itis-taxonomy,NEEDS_REVIEW,Commonly refers to North American brown-bear populations; subspecies usage varies
+alias:blacktail,blacktail,en,western North America,species:mule-deer,common_name,CONTEXTUAL,,source:itis-taxonomy,NEEDS_REVIEW,May refer to black-tailed deer subspecies/forms
+alias:blue-grouse,blue grouse,en,western North America,,historical_name,AMBIGUOUS,species:dusky-grouse|species:sooty-grouse,source:itis-taxonomy,SOURCE_FOUND,Historic combined species name
+alias:partridge,partridge,en,North America,,common_name,AMBIGUOUS,species:ruffed-grouse|species:gray-partridge,source:itis-taxonomy,SOURCE_FOUND,Regional usage can mean ruffed grouse or true partridge
+alias:partridge-fr,perdrix,fr,Canada,,common_name,AMBIGUOUS,species:ruffed-grouse|species:gray-partridge,source:itis-taxonomy,SOURCE_FOUND,Regional vernacular is unsafe for exact resolution
+alias:spruce-hen,spruce hen,en,Canada,species:spruce-grouse,common_name,CONTEXTUAL,,source:itis-taxonomy,SOURCE_FOUND,
+alias:franklins-grouse,Franklin's grouse,en,western North America,species:spruce-grouse,historical_name,CONTEXTUAL,,source:itis-taxonomy,NEEDS_REVIEW,Subspecific/historic treatment
+alias:willow-grouse,willow grouse,en,northern North America,species:willow-ptarmigan,common_name,CONTEXTUAL,,source:itis-taxonomy,SOURCE_FOUND,
+alias:ringneck,ringneck,en,North America,,common_name,AMBIGUOUS,species:ring-necked-pheasant|species:ring-necked-duck,source:itis-taxonomy,NEEDS_REVIEW,Can describe pheasant or duck; resolve only with context
+alias:hungarian-partridge,Hungarian partridge,en,North America,species:gray-partridge,common_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,
+alias:hun,Hun,en,North America,species:gray-partridge,common_name,CONTEXTUAL,,source:itis-taxonomy,NEEDS_REVIEW,Hunter shorthand
+alias:cotton-tail,cottontail,en,North America,,common_name,AMBIGUOUS,species:eastern-cottontail|species:mountain-cottontail,source:itis-taxonomy,SOURCE_FOUND,Group/common-name ambiguity
+alias:snowshoe-rabbit,snowshoe rabbit,en,North America,species:snowshoe-hare,common_name,CONTEXTUAL,,source:itis-taxonomy,SOURCE_FOUND,
+alias:jackrabbit,jackrabbit,en,North America,,common_name,AMBIGUOUS,species:white-tailed-jackrabbit|species:black-tailed-jackrabbit,source:itis-taxonomy,NEEDS_REVIEW,Multiple jackrabbit species exist
+alias:greenhead,greenhead,en,North America,species:mallard,common_name,CONTEXTUAL,,source:itis-taxonomy,NEEDS_REVIEW,Usually adult male mallard in hunter usage
+alias:black-duck,black duck,en,eastern North America,species:american-black-duck,common_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,
+alias:woodie,woodie,en,North America,species:wood-duck,common_name,CONTEXTUAL,,source:itis-taxonomy,NEEDS_REVIEW,Hunter shorthand
+alias:specklebelly,specklebelly,en,North America,species:greater-white-fronted-goose,common_name,CONTEXTUAL,,source:itis-taxonomy,NEEDS_REVIEW,Hunter vernacular
+alias:canada-geese,Canada geese,en,North America,species:canada-goose,common_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,Plural variant
+alias:snow-geese,snow geese,en,North America,species:snow-goose,common_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,Plural variant
+alias:ross-geese,Ross's geese,en,North America,species:rosss-goose,common_name,EXACT,,source:itis-taxonomy,SOURCE_FOUND,Plural variant
+alias:wild-pig,wild pig,en,North America,species:wild-boar,common_name,CONTEXTUAL,,source:itis-taxonomy,NEEDS_REVIEW,Domestic-feral hybrids and agency definitions vary
+alias:feral-hog,feral hog,en,United States,species:wild-boar,common_name,CONTEXTUAL,,source:itis-taxonomy,NEEDS_REVIEW,Agency definitions vary
+alias:cougar,cougar,en,North America,species:mountain-lion,common_name,EXACT,,source:itis-taxonomy,NEEDS_REVIEW,Target species record not yet included; validator should flag orphan

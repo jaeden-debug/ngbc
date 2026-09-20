@@ -1,0 +1,14 @@
+species_id,media_needed,candidate_source,candidate_url,creator,licence,identity_confidence,notes
+species:white-tailed-deer,adult male female and juvenile identification plates,Government wildlife media,,,UNKNOWN,HIGH,Need comparison with mule deer
+species:mule-deer,adult and tail/ear identification plates,Government wildlife media,,,UNKNOWN,HIGH,Need comparison with white-tailed deer and black-tailed forms
+species:ruffed-grouse,sex and seasonal-plumage identification,Government wildlife media,,,UNKNOWN,HIGH,Do not use generic grouse
+species:spruce-grouse,sex and seasonal-plumage identification,Government wildlife media,,,UNKNOWN,HIGH,Need side-by-side with ruffed grouse
+species:dusky-grouse,range-appropriate identification image,Government wildlife media,,,UNKNOWN,HIGH,Do not use historic generic blue grouse
+species:sooty-grouse,range-appropriate identification image,Government wildlife media,,,UNKNOWN,HIGH,Do not use historic generic blue grouse
+species:willow-ptarmigan,summer and winter plumage,Government wildlife media,,,UNKNOWN,HIGH,Need comparison with rock ptarmigan
+species:rock-ptarmigan,summer and winter plumage,Government wildlife media,,,UNKNOWN,HIGH,Need comparison with willow ptarmigan
+species:canada-goose,profile and bill/head identification,Government migratory bird media,,,UNKNOWN,HIGH,Need comparison with cackling goose
+species:cackling-goose,profile and bill/head identification,Government migratory bird media,,,UNKNOWN,HIGH,Need comparison with Canada goose
+species:mallard,male female eclipse plumage,Government migratory bird media,,,UNKNOWN,HIGH,Exact species identity required
+species:american-black-duck,comparison plate with female mallard,Government migratory bird media,,,UNKNOWN,HIGH,Identification has regulatory importance
+species:sandhill-crane,adult and juvenile identification,Government migratory bird media,,,UNKNOWN,HIGH,Need whooping crane safety comparison from authoritative source

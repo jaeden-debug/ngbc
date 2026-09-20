@@ -1,0 +1,17 @@
+species_group_id,name_en,name_fr,parent_group_id,group_basis,notes
+species_group:big-game,Big game,Gros gibier,,EDITORIAL,Not a universal legal classification
+species_group:deer,Deer,Cerfs,species_group:big-game,TAXONOMIC_EDITORIAL,
+species_group:wild-sheep,Wild sheep,Moutons sauvages,species_group:big-game,TAXONOMIC_EDITORIAL,
+species_group:upland-game-birds,Upland game birds,Oiseaux gibier sédentaires,,EDITORIAL,Jurisdiction terminology varies
+species_group:grouse,Grouse,Tétras,species_group:upland-game-birds,TAXONOMIC_EDITORIAL,Do not map regional partridge alias without context
+species_group:ptarmigan,Ptarmigan,Lagopèdes,species_group:grouse,TAXONOMIC_EDITORIAL,
+species_group:quail,Quail,Colins,species_group:upland-game-birds,TAXONOMIC_EDITORIAL,
+species_group:migratory-game-birds,Migratory game birds,Oiseaux migrateurs considérés comme gibier,,REGULATORY_EDITORIAL,Federal membership differs by country and regulation
+species_group:waterfowl,Waterfowl,Sauvagine,species_group:migratory-game-birds,EDITORIAL,
+species_group:ducks,Ducks,Canards,species_group:waterfowl,TAXONOMIC_EDITORIAL,Species-level identity remains required
+species_group:geese,Geese,Oies et bernaches,species_group:waterfowl,TAXONOMIC_EDITORIAL,Species-level identity remains required
+species_group:small-game,Small game,Petit gibier,,EDITORIAL,Jurisdiction terminology varies
+species_group:hares-rabbits,Hares and rabbits,Lièvres et lapins,species_group:small-game,TAXONOMIC_EDITORIAL,
+species_group:squirrels,Squirrels,Écureuils,species_group:small-game,TAXONOMIC_EDITORIAL,
+species_group:predators,Predators,Prédateurs,,EDITORIAL,May overlap big game small game or furbearer regulation
+species_group:wild-pig,Wild pig/boar,Sanglier,species_group:big-game,EDITORIAL,May be invasive and not legally classed as game

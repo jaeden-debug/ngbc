@@ -1,0 +1,67 @@
+jurisdiction_id,country_code,subdivision_code,name_en,name_fr,jurisdiction_type,parent_jurisdiction_id,primary_authority_id,official_management_term,coverage_status,notes
+jurisdiction:ca-federal,CA,,Canada federal,Fédéral canadien,FEDERAL,,authority:ca-eccc,"Migratory Game Bird Hunting District/Zone",PARTIAL,Federal migratory birds and federal lands overlap provincial and territorial systems
+jurisdiction:ca-ab,CA,AB,Alberta,Alberta,PROVINCE,jurisdiction:ca-federal,authority:ca-ab-epa,Wildlife Management Unit (WMU),PARTIAL,
+jurisdiction:ca-bc,CA,BC,British Columbia,Colombie-Britannique,PROVINCE,jurisdiction:ca-federal,authority:ca-bc-wlrs,Management Unit (MU),PARTIAL,
+jurisdiction:ca-mb,CA,MB,Manitoba,Manitoba,PROVINCE,jurisdiction:ca-federal,authority:ca-mb-nrif,Hunting Area,PARTIAL,
+jurisdiction:ca-nb,CA,NB,New Brunswick,Nouveau-Brunswick,PROVINCE,jurisdiction:ca-federal,authority:ca-nb-nred,Wildlife Management Zone (WMZ),PARTIAL,
+jurisdiction:ca-nl,CA,NL,Newfoundland and Labrador,Terre-Neuve-et-Labrador,PROVINCE,jurisdiction:ca-federal,authority:ca-nl-fal,"Management Area/Zone (species-specific)",PARTIAL,Uses Moose Management Areas Caribou Management Areas and Black Bear Management Areas
+jurisdiction:ca-nt,CA,NT,Northwest Territories,Territoires du Nord-Ouest,TERRITORY,jurisdiction:ca-federal,authority:ca-nt-ecc,Wildlife Management Unit/Area,PARTIAL,Co-management and land-claim frameworks require separate treatment
+jurisdiction:ca-ns,CA,NS,Nova Scotia,Nouvelle-Écosse,PROVINCE,jurisdiction:ca-federal,authority:ca-ns-nr,Deer/Bear/Moose Management Zone,PARTIAL,Species-specific zone systems
+jurisdiction:ca-nu,CA,NU,Nunavut,Nunavut,TERRITORY,jurisdiction:ca-federal,authority:ca-nu-env,Hunting Area,PARTIAL,Nunavut Agreement and wildlife co-management are fundamental and not ordinary licence attributes
+jurisdiction:ca-on,CA,ON,Ontario,Ontario,PROVINCE,jurisdiction:ca-federal,authority:ca-on-mnr,Wildlife Management Unit (WMU),PARTIAL,
+jurisdiction:ca-pe,CA,PE,Prince Edward Island,Île-du-Prince-Édouard,PROVINCE,jurisdiction:ca-federal,authority:ca-pe-ffw,Wildlife Management Area,PARTIAL,No province-wide numeric hunting-unit system confirmed
+jurisdiction:ca-qc,CA,QC,Quebec,Québec,PROVINCE,jurisdiction:ca-federal,authority:ca-qc-mffp,Hunting Zone / zone de chasse,PARTIAL,Official French terminology must be preserved
+jurisdiction:ca-sk,CA,SK,Saskatchewan,Saskatchewan,PROVINCE,jurisdiction:ca-federal,authority:ca-sk-env,Wildlife Management Zone (WMZ),PARTIAL,
+jurisdiction:ca-yt,CA,YT,Yukon,Yukon,TERRITORY,jurisdiction:ca-federal,authority:ca-yt-env,Game Management Subzone (GMS),PARTIAL,443 subzones grouped into 11 zones per official page
+jurisdiction:us-federal,US,,United States federal,Fédéral des États-Unis,FEDERAL,,authority:us-fws,"Federal migratory-bird frameworks/refuge units",PARTIAL,Federal migratory birds and federal lands overlap state rules
+jurisdiction:us-al,US,AL,Alabama,,STATE,jurisdiction:us-federal,authority:us-al-dcnr,Game Management Area (GMA),IN_DEVELOPMENT,
+jurisdiction:us-ak,US,AK,Alaska,,STATE,jurisdiction:us-federal,authority:us-ak-adfg,Game Management Unit (GMU),IN_DEVELOPMENT,Federal subsistence rules may overlap state rules
+jurisdiction:us-az,US,AZ,Arizona,,STATE,jurisdiction:us-federal,authority:us-az-gfd,Game Management Unit (GMU),IN_DEVELOPMENT,
+jurisdiction:us-ar,US,AR,Arkansas,,STATE,jurisdiction:us-federal,authority:us-ar-agfc,Zone/Management Area,IN_DEVELOPMENT,
+jurisdiction:us-ca,US,CA,California,,STATE,jurisdiction:us-federal,authority:us-ca-cdfw,Zone/Hunt Area,IN_DEVELOPMENT,
+jurisdiction:us-co,US,CO,Colorado,,STATE,jurisdiction:us-federal,authority:us-co-cpw,Game Management Unit (GMU),IN_DEVELOPMENT,
+jurisdiction:us-ct,US,CT,Connecticut,,STATE,jurisdiction:us-federal,authority:us-ct-deep,Deer/Turkey Management Zone,IN_DEVELOPMENT,
+jurisdiction:us-de,US,DE,Delaware,,STATE,jurisdiction:us-federal,authority:us-de-dnrec,Wildlife Area/Zone,IN_DEVELOPMENT,
+jurisdiction:us-dc,US,DC,District of Columbia,,DISTRICT,jurisdiction:us-federal,authority:us-dc-doee,,UNAVAILABLE,No ordinary recreational hunting program identified; federal/local land restrictions require confirmation
+jurisdiction:us-fl,US,FL,Florida,,STATE,jurisdiction:us-federal,authority:us-fl-fwc,Zone/Wildlife Management Area,IN_DEVELOPMENT,
+jurisdiction:us-ga,US,GA,Georgia,,STATE,jurisdiction:us-federal,authority:us-ga-dnr,Zone/Wildlife Management Area,IN_DEVELOPMENT,
+jurisdiction:us-hi,US,HI,Hawaii,,STATE,jurisdiction:us-federal,authority:us-hi-dofaw,Public Hunting Area/Unit,IN_DEVELOPMENT,
+jurisdiction:us-id,US,ID,Idaho,,STATE,jurisdiction:us-federal,authority:us-id-fg,Game Management Unit,IN_DEVELOPMENT,
+jurisdiction:us-il,US,IL,Illinois,,STATE,jurisdiction:us-federal,authority:us-il-dnr,County/Site,IN_DEVELOPMENT,
+jurisdiction:us-in,US,IN,Indiana,,STATE,jurisdiction:us-federal,authority:us-in-dnr,County/Fish and Wildlife Area,IN_DEVELOPMENT,
+jurisdiction:us-ia,US,IA,Iowa,,STATE,jurisdiction:us-federal,authority:us-ia-dnr,Zone/County,IN_DEVELOPMENT,
+jurisdiction:us-ks,US,KS,Kansas,,STATE,jurisdiction:us-federal,authority:us-ks-kdwp,Deer Management Unit,IN_DEVELOPMENT,
+jurisdiction:us-ky,US,KY,Kentucky,,STATE,jurisdiction:us-federal,authority:us-ky-dfw,Zone/County,IN_DEVELOPMENT,
+jurisdiction:us-la,US,LA,Louisiana,,STATE,jurisdiction:us-federal,authority:us-la-wlf,Area/Wildlife Management Area,IN_DEVELOPMENT,
+jurisdiction:us-me,US,ME,Maine,,STATE,jurisdiction:us-federal,authority:us-me-ifw,Wildlife Management District (WMD),IN_DEVELOPMENT,
+jurisdiction:us-md,US,MD,Maryland,,STATE,jurisdiction:us-federal,authority:us-md-dnr,Region/County,IN_DEVELOPMENT,
+jurisdiction:us-ma,US,MA,Massachusetts,,STATE,jurisdiction:us-federal,authority:us-ma-masswildlife,Wildlife Management Zone,IN_DEVELOPMENT,
+jurisdiction:us-mi,US,MI,Michigan,,STATE,jurisdiction:us-federal,authority:us-mi-dnr,Deer Management Unit (DMU),IN_DEVELOPMENT,
+jurisdiction:us-mn,US,MN,Minnesota,,STATE,jurisdiction:us-federal,authority:us-mn-dnr,Permit Area,IN_DEVELOPMENT,
+jurisdiction:us-ms,US,MS,Mississippi,,STATE,jurisdiction:us-federal,authority:us-ms-mdwfp,Zone/Wildlife Management Area,IN_DEVELOPMENT,
+jurisdiction:us-mo,US,MO,Missouri,,STATE,jurisdiction:us-federal,authority:us-mo-mdc,County/Zone,IN_DEVELOPMENT,
+jurisdiction:us-mt,US,MT,Montana,,STATE,jurisdiction:us-federal,authority:us-mt-fwp,Hunting District,IN_DEVELOPMENT,
+jurisdiction:us-ne,US,NE,Nebraska,,STATE,jurisdiction:us-federal,authority:us-ne-ngpc,Unit,IN_DEVELOPMENT,
+jurisdiction:us-nv,US,NV,Nevada,,STATE,jurisdiction:us-federal,authority:us-nv-ndow,Unit,IN_DEVELOPMENT,
+jurisdiction:us-nh,US,NH,New Hampshire,,STATE,jurisdiction:us-federal,authority:us-nh-fg,Wildlife Management Unit (WMU),IN_DEVELOPMENT,
+jurisdiction:us-nj,US,NJ,New Jersey,,STATE,jurisdiction:us-federal,authority:us-nj-fws,Deer/Turkey Management Zone,IN_DEVELOPMENT,
+jurisdiction:us-nm,US,NM,New Mexico,,STATE,jurisdiction:us-federal,authority:us-nm-dgf,Game Management Unit (GMU),IN_DEVELOPMENT,
+jurisdiction:us-ny,US,NY,New York,,STATE,jurisdiction:us-federal,authority:us-ny-dec,Wildlife Management Unit (WMU),IN_DEVELOPMENT,
+jurisdiction:us-nc,US,NC,North Carolina,,STATE,jurisdiction:us-federal,authority:us-nc-wrc,Zone/Game Land,IN_DEVELOPMENT,
+jurisdiction:us-nd,US,ND,North Dakota,,STATE,jurisdiction:us-federal,authority:us-nd-gf,Unit,IN_DEVELOPMENT,
+jurisdiction:us-oh,US,OH,Ohio,,STATE,jurisdiction:us-federal,authority:us-oh-dow,County/Wildlife Area,IN_DEVELOPMENT,
+jurisdiction:us-ok,US,OK,Oklahoma,,STATE,jurisdiction:us-federal,authority:us-ok-wd,Zone/Wildlife Management Area,IN_DEVELOPMENT,
+jurisdiction:us-or,US,OR,Oregon,,STATE,jurisdiction:us-federal,authority:us-or-odfw,Wildlife Management Unit,IN_DEVELOPMENT,
+jurisdiction:us-pa,US,PA,Pennsylvania,,STATE,jurisdiction:us-federal,authority:us-pa-pgc,Wildlife Management Unit (WMU),IN_DEVELOPMENT,
+jurisdiction:us-ri,US,RI,Rhode Island,,STATE,jurisdiction:us-federal,authority:us-ri-dem,Zone/Management Area,IN_DEVELOPMENT,
+jurisdiction:us-sc,US,SC,South Carolina,,STATE,jurisdiction:us-federal,authority:us-sc-dnr,Game Zone/Wildlife Management Area,IN_DEVELOPMENT,
+jurisdiction:us-sd,US,SD,South Dakota,,STATE,jurisdiction:us-federal,authority:us-sd-gfp,Unit,IN_DEVELOPMENT,
+jurisdiction:us-tn,US,TN,Tennessee,,STATE,jurisdiction:us-federal,authority:us-tn-twra,Unit/Zone/Wildlife Management Area,IN_DEVELOPMENT,
+jurisdiction:us-tx,US,TX,Texas,,STATE,jurisdiction:us-federal,authority:us-tx-tpwd,County/Zone/Wildlife Management Area,IN_DEVELOPMENT,
+jurisdiction:us-ut,US,UT,Utah,,STATE,jurisdiction:us-federal,authority:us-ut-dwr,Unit,IN_DEVELOPMENT,
+jurisdiction:us-vt,US,VT,Vermont,,STATE,jurisdiction:us-federal,authority:us-vt-fw,Wildlife Management Unit (WMU),IN_DEVELOPMENT,
+jurisdiction:us-va,US,VA,Virginia,,STATE,jurisdiction:us-federal,authority:us-va-dwr,County/Management Area,IN_DEVELOPMENT,
+jurisdiction:us-wa,US,WA,Washington,,STATE,jurisdiction:us-federal,authority:us-wa-wdfw,Game Management Unit (GMU),IN_DEVELOPMENT,
+jurisdiction:us-wv,US,WV,West Virginia,,STATE,jurisdiction:us-federal,authority:us-wv-dnr,County/Wildlife Management Area,IN_DEVELOPMENT,
+jurisdiction:us-wi,US,WI,Wisconsin,,STATE,jurisdiction:us-federal,authority:us-wi-dnr,Deer Management Unit/Zone,IN_DEVELOPMENT,
+jurisdiction:us-wy,US,WY,Wyoming,,STATE,jurisdiction:us-federal,authority:us-wy-wgfd,Hunt Area,IN_DEVELOPMENT,

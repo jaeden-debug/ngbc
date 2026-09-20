@@ -17,6 +17,7 @@ Last updated: 2026-09-20
 - Flagship product under active development.
 - Intended capability: location/date/species → zone + season + applicable rules + authoritative sources + environmental context + North Ground knowledge.
 - Architecture should support international expansion while initial verified coverage is developed jurisdiction by jurisdiction.
+- An isolated research foundation now exists in `research/hunting/`; it is an inventory/review input, not production rule data.
 
 ### Content / Knowledge Graph
 - Structured content system being developed in parallel with Hunt.
@@ -84,9 +85,15 @@ VERIFIED / PARTIAL / IN DEVELOPMENT / UNAVAILABLE
 
 Do not mark VERIFIED until actual data and representative queries have been certified.
 
+- Research inventory: PARTIAL for federal plus all 13 provinces/territories. Principal authorities, official terminology and regulatory-source leads are recorded; no jurisdiction is certified `VERIFIED` for production.
+- Canadian species evidence: 68 source-linked rows across all 14 jurisdiction records; 41 are `SOURCE_FOUND`, 20 `NEEDS_REVIEW`, and 7 `STALE`.
+- GIS: official discovery records exist, but most machine-readable service URLs/schemas and effective-version checks remain incomplete.
+
 ### United States
 Not assumed complete.
 Add jurisdictions only when genuinely implemented.
+
+- Research inventory: IN DEVELOPMENT for federal plus all 50 states; D.C. relevance remains unresolved. Principal wildlife authorities and official hunting hubs are inventoried, but state species evidence/current-guide certification is not complete.
 
 ### Other Countries
 Future.
@@ -94,6 +101,8 @@ Future.
 ## Species Coverage
 
 Maintain a reference to the authoritative species registry rather than duplicating the entire registry here.
+
+Research registry: `research/hunting/species-master.csv` currently contains 57 high-priority North American species and 27 alias records. It is not production editorial coverage and does not encode universal huntability.
 
 Current editorial coverage:
 - Update as resources ship.
@@ -154,7 +163,8 @@ Canonical IDs are URL- and locale-independent. Editorial App Blocks use determin
 - Update with actual deployment status.
 
 ### Data
-- Update with latest ingestion/verification certification.
+- `python3 research/hunting/validate.py` passed on 2026-09-20 for 66 jurisdictions, 68 authorities, 76 regulatory/scientific sources, 27 GIS records, 57 species, 27 aliases and 68 evidence rows (0 warnings or structural errors).
+- No hunting jurisdiction/species relationship or GIS layer is certified for production ingestion yet.
 
 ## Agent Handoff Notes
 
@@ -165,3 +175,4 @@ Remove obsolete handoff notes once they no longer help future work.
 - Shared foundation files created: `docs/content-system/*.md`, `src/lib/content-contract/{ids,types,index}.ts`, `scripts/validate-content-contract*.mjs`, `fixtures/content-contract/valid-bundle.json`, and `docs/technical-foundation-audit.md`.
 - The fixture demonstrates validation only; it is not published coverage or evidence.
 - Future stitching must compare Hunt/content implementations with `docs/content-system/INTEGRATION-HANDOFF.md` and adapt rather than create duplicate registries/APIs.
+- Hunting research handoff: `research/hunting/HANDOFF.md`; counts/gaps: `research/hunting/COVERAGE-REPORT.md`. Research IDs follow the shared canonical convention, while legality remains in the regulatory domain.

@@ -1,0 +1,18 @@
+queue_id,priority,entity_type,entity_id,jurisdiction_id,task,demand_basis,status,blocked_by,notes
+queue:ca-bc-2026-28,1,source,source:ca-bc-synopsis-2024-26,jurisdiction:ca-bc,Capture and review the effective 2026-28 synopsis and supersede stale evidence,INFERRED,OPEN,,Required before any current season output
+queue:ca-nb-current-guide,1,source,source:ca-nb-hunt-trap,jurisdiction:ca-nb,Locate current bilingual regulation summary and extract species/zone tables,INFERRED,OPEN,,2024-25 source is stale
+queue:ca-gis-services,1,gis,,jurisdiction:ca-federal,Resolve exact official downloadable or REST endpoints for every Canadian management-unit system,INFERRED,OPEN,,Portal discovery is not ingestion readiness
+queue:ca-claims-review,1,evidence,,jurisdiction:ca-federal,Perform claim-level review of every Canadian evidence row including effective period and exceptions,INFERRED,OPEN,,Do not promote in bulk
+queue:us-current-guides,1,source,,jurisdiction:us-federal,Create versioned current regulation-guide sources for all 50 states from official hubs,INFERRED,OPEN,,Hub URLs are discovery rails only
+queue:us-gis,1,gis,,jurisdiction:us-federal,Find official management-unit dataset/service for every state that uses hunting units,INFERRED,OPEN,,Prioritize FeatureServer WFS Shapefile GeoJSON
+queue:us-whitetail-evidence,2,species,species:white-tailed-deer,jurisdiction:us-federal,Map current official state evidence and zone scope,INFERRED,OPEN,,High content-graph importance
+queue:us-mule-deer-evidence,2,species,species:mule-deer,jurisdiction:us-federal,Map current official western-state evidence and draw/permit scope,INFERRED,OPEN,,
+queue:us-elk-evidence,2,species,species:elk,jurisdiction:us-federal,Map current official state evidence and limited-entry scope,INFERRED,OPEN,,
+queue:us-turkey-evidence,2,species,species:wild-turkey,jurisdiction:us-federal,Map spring/fall official state evidence and subspecies terminology,INFERRED,OPEN,,
+queue:us-waterfowl-evidence,2,species_group,species_group:waterfowl,jurisdiction:us-federal,Compose federal framework with state season sources at species level,INFERRED,OPEN,,Never infer state season from federal framework alone
+queue:ca-waterfowl-species,2,species_group,species_group:waterfowl,jurisdiction:ca-federal,Expand actual duck/goose species entities named in every federal district table,INFERRED,OPEN,,Avoid generic duck entity
+queue:caribou-populations,2,species,species:caribou,jurisdiction:ca-federal,Model herd/population and jurisdiction relationships without splitting canonical species identity prematurely,INFERRED,OPEN,,Requires contract discussion for taxon/population entity
+queue:wild-sheep-taxonomy,3,species_group,species_group:wild-sheep,jurisdiction:ca-bc,Resolve Stone sheep and thinhorn/bighorn identity model against taxonomy and official regulatory terms,NEEDS_RESEARCH,OPEN,,Do not force legal labels into biological species IDs
+queue:indigenous-frameworks,1,legal_framework,,jurisdiction:ca-federal,Inventory authoritative co-management treaty and rights sources jurisdiction by jurisdiction,INFERRED,OPEN,specialist_review,Do not encode as resident/nonresident licence flags
+queue:us-tribal-frameworks,1,legal_framework,,jurisdiction:us-federal,Inventory tribal and federal subsistence authority boundaries separately from state recreational rules,INFERRED,OPEN,specialist_review,
+queue:demand-research,3,content_priority,,jurisdiction:ca-federal,Join legitimate keyword/analytics evidence when available; retain INFERRED labels until then,NEEDS_RESEARCH,OPEN,keyword_dataset,No search volumes were invented
