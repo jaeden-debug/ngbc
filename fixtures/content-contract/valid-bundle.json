@@ -1,0 +1,93 @@
+{
+  "contractVersion": "1.0",
+  "generatedAt": "2026-09-20T00:00:00Z",
+  "entities": [
+    {
+      "id": "country:ca",
+      "type": "country",
+      "status": "active",
+      "names": [{ "locale": "en-CA", "value": "Canada", "official": true }],
+      "createdAt": "2026-09-20T00:00:00Z",
+      "updatedAt": "2026-09-20T00:00:00Z"
+    },
+    {
+      "id": "jurisdiction:ca-qc",
+      "type": "jurisdiction",
+      "status": "active",
+      "names": [{ "locale": "en-CA", "value": "Quebec", "official": true }],
+      "createdAt": "2026-09-20T00:00:00Z",
+      "updatedAt": "2026-09-20T00:00:00Z"
+    },
+    {
+      "id": "activity:hunting",
+      "type": "activity",
+      "status": "active",
+      "names": [{ "locale": "en-CA", "value": "Hunting" }],
+      "createdAt": "2026-09-20T00:00:00Z",
+      "updatedAt": "2026-09-20T00:00:00Z"
+    },
+    {
+      "id": "species:ruffed-grouse",
+      "type": "species",
+      "status": "active",
+      "names": [{ "locale": "en-CA", "value": "Ruffed grouse" }],
+      "createdAt": "2026-09-20T00:00:00Z",
+      "updatedAt": "2026-09-20T00:00:00Z"
+    }
+  ],
+  "resources": [
+    {
+      "id": "guide:ruffed-grouse-cold-weather",
+      "type": "guide",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "ruffed-grouse-cold-weather",
+      "canonicalUrl": "/guides/ruffed-grouse-cold-weather",
+      "title": "Cold-weather ruffed grouse context",
+      "description": "Validator fixture only; not published editorial coverage.",
+      "entityIds": ["species:ruffed-grouse", "activity:hunting"],
+      "speciesIds": ["species:ruffed-grouse"],
+      "quickAnswer": "Fixture content proves the shared contract can be validated.",
+      "verificationStatus": "unverified",
+      "fieldTested": false,
+      "publishedAt": "2026-09-20T00:00:00Z",
+      "updatedAt": "2026-09-20T00:00:00Z"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "content_block:ruffed-grouse.cold.clothing.01",
+      "ownerId": "guide:ruffed-grouse-cold-weather",
+      "type": "clothing_tip",
+      "locale": "en-CA",
+      "status": "published",
+      "content": { "plainText": "Fixture content only." },
+      "applicability": {
+        "speciesIds": ["species:ruffed-grouse"],
+        "activityIds": ["activity:hunting"],
+        "temperatureC": { "max": -10, "maxInclusive": true }
+      },
+      "priority": 50,
+      "verificationStatus": "unverified",
+      "lastReviewed": "2026-09-20",
+      "updatedAt": "2026-09-20T00:00:00Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel:fixture-species-guide",
+      "fromId": "species:ruffed-grouse",
+      "toId": "guide:ruffed-grouse-cold-weather",
+      "type": "has_guide",
+      "direction": "directed",
+      "origin": "manual",
+      "weight": 50,
+      "status": "active",
+      "createdAt": "2026-09-20T00:00:00Z",
+      "updatedAt": "2026-09-20T00:00:00Z"
+    }
+  ],
+  "sources": [],
+  "claims": [],
+  "media": []
+}

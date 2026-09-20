@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "validate:content": "node scripts/validate-content-contract.mjs --mode=warn fixtures/content-contract/valid-bundle.json",
+    "validate:content:strict": "node scripts/validate-content-contract.mjs --strict",
+    "test:content-contract": "node --test scripts/validate-content-contract.test.mjs"
   },
   "dependencies": {
     "next": "16.1.1",
