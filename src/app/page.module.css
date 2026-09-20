@@ -459,6 +459,8 @@
 /* CTA */
 .cta{
   position:relative;
+  display:inline-block;
+  text-decoration:none;
   border:none;
   cursor:pointer;
   overflow:hidden;
@@ -506,6 +508,33 @@
 }
 
 .ctaText{position:relative; z-index:3}
+
+/* The quieter way into the mission deck, which the headline CTA used to open. */
+.heroSecondary{
+  position:relative;
+  z-index:3;
+  margin-top:2px;
+  padding:10px 16px;
+  border:none;
+  border-radius:12px;
+  background:none;
+  color:rgba(201,194,166,.64);
+  font-size:clamp(11px, 1.7vw, 13px);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:800;
+  cursor:pointer;
+  opacity:0;
+  animation: taglineIn .55s ease-out 1.15s both;
+  transition:color .2s ease;
+}
+
+.heroSecondary:hover{ color:rgba(240,234,216,.92); }
+
+.heroSecondary:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 2px rgba(201,194,166,.45);
+}
 
 .corner{
   position:absolute;

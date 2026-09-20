@@ -23,13 +23,15 @@ export default function HomePageClient() {
   const closeDeck = () => {
     setDeckOpen(false);
     requestAnimationFrame(() => {
-      document.getElementById("enter-btn")?.focus();
+      // Focus returns to the control that opened the deck, which is now the
+      // secondary story button rather than the Hunt link.
+      document.getElementById("story-btn")?.focus();
     });
   };
 
   return (
     <main className={styles.page}>
-      <Hero onEnter={openDeck} />
+      <Hero onStory={openDeck} />
 
       {deckOpen && <MissionDeck open deckKey={deckKey} onClose={closeDeck} />}
 

@@ -20,7 +20,7 @@ const readCanTilt = () =>
   "DeviceOrientationEvent" in window &&
   window.matchMedia("(pointer: coarse)").matches;
 
-export default function Hero({ onEnter }: { onEnter: () => void }) {
+export default function Hero({ onStory }: { onStory: () => void }) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const tiltRef = useRef<TiltApi | null>(null);
 
@@ -340,7 +340,7 @@ export default function Hero({ onEnter }: { onEnter: () => void }) {
           North Ground
         </Link>
         <div className={styles.navLinks}>
-          <Link href="/tools/season-finder">Hunt</Link>
+          <Link href="/hunt">Hunt</Link>
           <Link href="/hunting/species/ruffed-grouse">Species guide</Link>
         </div>
       </nav>
@@ -406,7 +406,7 @@ export default function Hero({ onEnter }: { onEnter: () => void }) {
       <div className={styles.heroInner}>
         <div className={styles.heroCtaStack}>
           <p className={styles.heroTagline}>Learning the land, one trip at a time.</p>
-          <EnterButton onEnter={onEnter} />
+          <EnterButton onStory={onStory} />
         </div>
       </div>
 
