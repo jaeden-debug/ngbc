@@ -33,10 +33,12 @@ function readableTimestamp(value?: string): string | null {
 }
 
 export default function HuntResult({
-  result, placeLabel,
+  result, placeLabel, assumptions = [],
 }: {
   result: HuntEvaluation;
   placeLabel: string | null;
+  /** Self-reported facts this result depended on, in the question's own words. */
+  assumptions?: Array<{ question: string; answer: string }>;
 }) {
   const species = speciesById(result.species.id);
   const status = result.regulation.status;
@@ -146,6 +148,26 @@ export default function HuntResult({
         </dl>
 
         <p className={styles.resultSummary}>{result.regulation.summary}</p>
+
+        {assumptions.length > 0 ? (
+          /* Directly beneath the status, because the status is only true for the
+             hunt described here. A different answer can produce a different
+             season, or none. */
+          <div className={styles.assumptions} role="note">
+            <p className={styles.assumptionsTitle}>This answer assumes</p>
+            <ul className={styles.assumptionsList}>
+              {assumptions.map((assumption) => (
+                <li key={assumption.question}>
+                  <span>{assumption.question}</span> <strong>{assumption.answer}</strong>
+                </li>
+              ))}
+            </ul>
+            <p className={styles.assumptionsNote}>
+              You told North Ground this. Nothing here confirms that a licence, tag or
+              residency is valid — only the issuing authority can.
+            </p>
+          </div>
+        ) : null}
 
         {result.zone.nearBoundary ? (
           <p className={styles.boundaryWarning} role="note">

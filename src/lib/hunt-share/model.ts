@@ -5,7 +5,22 @@ import {
   type EntityType,
 } from "../content-contract/index.ts";
 
-export const HUNT_BRIEF_SCHEMA_VERSION = 1 as const;
+/**
+ * Version 2 adds `assumptions`.
+ *
+ * A major-game result depends on facts the hunter supplied — residency, the
+ * implement carried, the tag drawn. A snapshot that recorded only the status
+ * would show "CONDITIONAL, season open 2-15 November" to a reader whose own
+ * answers would have produced a different rule, or no season at all. So the
+ * assumptions travel with the result, labelled as the hunter's own statements.
+ *
+ * Version 1 briefs are still read exactly as written. They were created when
+ * every certified species answered from location and date alone, so they carry
+ * no assumptions and none are invented for them.
+ */
+export const HUNT_BRIEF_SCHEMA_VERSION = 2 as const;
+export const READABLE_HUNT_BRIEF_VERSIONS = [1, 2] as const;
+export type HuntBriefSchemaVersion = (typeof READABLE_HUNT_BRIEF_VERSIONS)[number];
 export const HUNT_BRIEF_STATUSES = [
   "OPEN",
   "CLOSED",
@@ -64,6 +79,7 @@ export interface HuntShareProjectionInput {
         reason: string;
       };
   warnings?: string[];
+  assumptions?: Array<{ question: string; answer: string }>;
   officialSources?: Array<{
     id?: CanonicalId<"source">;
     authority: string;
@@ -89,8 +105,14 @@ export interface HuntShareProjectionInput {
   privateContext?: unknown;
 }
 
-export interface ShareHuntBriefV1 {
-  version: typeof HUNT_BRIEF_SCHEMA_VERSION;
+/** A fact the hunter supplied, recorded as theirs rather than as verified. */
+export interface HuntBriefAssumption {
+  question: string;
+  answer: string;
+}
+
+export interface ShareHuntBrief {
+  version: HuntBriefSchemaVersion;
   shareId: string;
   createdAt: string;
   species: {
@@ -152,9 +174,12 @@ export interface ShareHuntBriefV1 {
     title: string;
     href?: string;
   }>;
+  /**
+   * What the hunter told us, which selected the rule this result came from.
+   * Empty for a species that asks nothing, and for every version 1 brief.
+   */
+  assumptions: HuntBriefAssumption[];
 }
-
-export type ShareHuntBrief = ShareHuntBriefV1;
 
 export class HuntBriefValidationError extends Error {
   constructor(message: string) {
@@ -266,7 +291,21 @@ function status(value: unknown): HuntBriefStatus {
   return value as HuntBriefStatus;
 }
 
-function parseSources(value: unknown): ShareHuntBriefV1["officialSources"] {
+function parseAssumptions(value: unknown): HuntBriefAssumption[] {
+  if (value === undefined) return [];
+  if (!Array.isArray(value) || value.length > 6) {
+    throw new HuntBriefValidationError("assumptions has too many entries");
+  }
+  return value.map((item, index) => {
+    const assumption = record(item, `assumptions[${index}]`);
+    return {
+      question: text(assumption.question, `assumptions[${index}].question`, 200),
+      answer: text(assumption.answer, `assumptions[${index}].answer`, 120),
+    };
+  });
+}
+
+function parseSources(value: unknown): ShareHuntBrief["officialSources"] {
   if (value === undefined) return [];
   if (!Array.isArray(value) || value.length > 12) {
     throw new HuntBriefValidationError("officialSources has too many entries");
@@ -284,7 +323,7 @@ function parseSources(value: unknown): ShareHuntBriefV1["officialSources"] {
   });
 }
 
-function parseResources(value: unknown): ShareHuntBriefV1["resourceReferences"] {
+function parseResources(value: unknown): ShareHuntBrief["resourceReferences"] {
   if (value === undefined) return [];
   if (!Array.isArray(value) || value.length > 8) {
     throw new HuntBriefValidationError("resourceReferences has too many entries");
@@ -299,7 +338,7 @@ function parseResources(value: unknown): ShareHuntBriefV1["resourceReferences"] 
   });
 }
 
-function parseWeather(value: unknown): ShareHuntBriefV1["weatherSnapshot"] {
+function parseWeather(value: unknown): ShareHuntBrief["weatherSnapshot"] {
   if (value === undefined) return undefined;
   const weather = record(value, "weather");
   if (weather.status === "available") {
@@ -327,8 +366,8 @@ function parseWeather(value: unknown): ShareHuntBriefV1["weatherSnapshot"] {
 
 export function createShareableHuntBrief(
   inputValue: HuntShareProjectionInput | unknown,
-  context: { shareId: string; createdAt: string },
-): ShareHuntBriefV1 {
+  context: { shareId: string; createdAt: string; version?: HuntBriefSchemaVersion },
+): ShareHuntBrief {
   const input = record(inputValue, "huntResult");
   const species = record(input.species, "species");
   const jurisdiction = record(input.jurisdiction, "jurisdiction");
@@ -340,8 +379,14 @@ export function createShareableHuntBrief(
 
   if (!SHARE_ID.test(context.shareId)) throw new HuntBriefValidationError("shareId is invalid");
 
-  const brief: ShareHuntBriefV1 = {
-    version: HUNT_BRIEF_SCHEMA_VERSION,
+  const version = context.version ?? HUNT_BRIEF_SCHEMA_VERSION;
+  /* A version 1 brief predates conditional species and cannot carry assumptions.
+     Refusing them here stops a stored v1 record from acquiring context it never
+     had, which would be exactly the silent reinterpretation this guards against. */
+  const assumptions = version === 1 ? [] : parseAssumptions(input.assumptions);
+
+  const brief: ShareHuntBrief = {
+    version,
     shareId: context.shareId,
     createdAt: timestamp(context.createdAt, "createdAt"),
     species: {
@@ -388,23 +433,28 @@ export function createShareableHuntBrief(
     warnings: strings(input.warnings, "warnings", 8, 300),
     officialSources: parseSources(input.officialSources),
     resourceReferences: parseResources(input.resourceReferences),
+    assumptions,
   };
 
   return brief;
 }
 
 export type StoredHuntBriefResult =
-  | { status: "found"; brief: ShareHuntBriefV1 }
+  | { status: "found"; brief: ShareHuntBrief }
   | { status: "unsupported_version"; version: number | null }
   | { status: "invalid" };
 
 export function parseStoredHuntBrief(value: unknown): StoredHuntBriefResult {
   if (!value || typeof value !== "object" || Array.isArray(value)) return { status: "invalid" };
   const candidate = value as Record<string, unknown>;
-  if (candidate.version !== HUNT_BRIEF_SCHEMA_VERSION) {
+  const storedVersion = candidate.version;
+  if (
+    typeof storedVersion !== "number" ||
+    !(READABLE_HUNT_BRIEF_VERSIONS as readonly number[]).includes(storedVersion)
+  ) {
     return {
       status: "unsupported_version",
-      version: typeof candidate.version === "number" ? candidate.version : null,
+      version: typeof storedVersion === "number" ? storedVersion : null,
     };
   }
 
@@ -431,9 +481,11 @@ export function parseStoredHuntBrief(value: unknown): StoredHuntBriefResult {
       warnings: candidate.warnings,
       officialSources: candidate.officialSources,
       resourceReferences: candidate.resourceReferences,
+      assumptions: candidate.assumptions,
     }, {
       shareId: text(candidate.shareId, "shareId", 32),
       createdAt: timestamp(candidate.createdAt, "createdAt"),
+      version: storedVersion as HuntBriefSchemaVersion,
     });
     return { status: "found", brief };
   } catch {

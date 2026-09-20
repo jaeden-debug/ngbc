@@ -18,6 +18,30 @@ function verificationTimestamp(value: string): string {
 }
 
 /**
+ * The hunter's own answers, in the words the question used.
+ *
+ * Recorded so a shared result cannot be read as universal: a deer season that
+ * opens for a resident with a shotgun is not the same season for anyone else,
+ * and the snapshot has to say which hunt it described. Values are mapped back to
+ * the option labels the dimension offered, so the brief reads as the question
+ * and answer a person actually saw rather than as internal codes. Anything not
+ * offered by the dimension is dropped rather than shown.
+ */
+function shareableAssumptions(evaluation: HuntEvaluation): Array<{ question: string; answer: string }> {
+  const answers = evaluation.input.answers;
+  if (!answers) return [];
+  const assumptions: Array<{ question: string; answer: string }> = [];
+  for (const dimension of evaluation.dimensions) {
+    const value = (answers as Record<string, unknown>)[dimension.id];
+    if (typeof value !== "string") continue;
+    const option = dimension.options.find((candidate) => candidate.value === value);
+    if (!option) continue;
+    assumptions.push({ question: dimension.question, answer: option.label });
+  }
+  return assumptions;
+}
+
+/**
  * Projects the regulatory engine's result without re-evaluating or simplifying it.
  * Coordinates and map geometry are intentionally not copied.
  */
@@ -46,6 +70,7 @@ export function huntEvaluationToShareInput(
           }
         : undefined,
     selectedDate: evaluation.input.date,
+    assumptions: shareableAssumptions(evaluation),
     location: context.generalLocation
       ? {
           generalLabel: context.generalLocation.label,

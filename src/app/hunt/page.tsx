@@ -4,7 +4,7 @@ import HuntComposer from "../../components/hunt/HuntComposer";
 import HuntNav from "../../components/hunt/HuntNav";
 import styles from "../../components/hunt/Hunt.module.css";
 import { COVERAGE_SUMMARY } from "../../lib/hunt/coverage";
-import { SUPPORTED_SPECIES_IDS, type SpeciesSelectorOption } from "../../lib/hunt/coverage";
+import { evaluationShape, SUPPORTED_SPECIES_IDS, type SpeciesSelectorOption } from "../../lib/hunt/coverage";
 import { contentRepository } from "../../lib/content/repository";
 import { COVERAGE_ROADMAP } from "../../lib/hunt/zone-layers";
 import { absoluteUrl, SITE_NAME } from "../../lib/site";
@@ -108,6 +108,11 @@ export default async function HuntPage() {
         regulatoryCoverage: (SUPPORTED_SPECIES_IDS as readonly string[]).includes(resource.speciesProfile.speciesId)
           ? "VERIFIED" as const
           : "IN_DEVELOPMENT" as const,
+        /* Whether choosing this species leads straight to an answer or to a
+           question first. Both are fully certified; the difference is how the
+           province publishes the species, and saying so up front stops the
+           question arriving as a surprise. */
+        evaluationShape: evaluationShape(resource.speciesProfile.speciesId),
       };
     }));
   return (

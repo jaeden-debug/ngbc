@@ -117,6 +117,17 @@ button, input, select { font: inherit; }
 
   --ng-gutter: 20px;
   --ng-max: 1280px;
+
+  /* ── Aliases used by Hunt's species selector ──
+     These four names were referenced by `Hunt.module.css` before they were ever
+     defined, so the selector's field rendered with no border and its group
+     labels inherited their colour. Defined here as aliases rather than new
+     values, so the selector joins the existing system instead of starting a
+     second one. */
+  --ng-line: var(--ng-glass-border);
+  --ng-fire: var(--ng-amber);
+  --ng-sand: var(--ng-bone-faint);
+  --ng-moss-light: var(--ng-moss);
 }
 
 /* ── Glass surfaces ──────────────────────────────────────────────────────── */

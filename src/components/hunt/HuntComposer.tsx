@@ -8,6 +8,7 @@ import { COVERAGE_WORDING } from "../../lib/hunt/zone-layers";
 import type { HuntEvaluation } from "../../lib/hunt/types";
 import DateField from "./DateField";
 import HuntMap, { type ResolvedZone } from "./HuntMap";
+import HuntQuestion from "./HuntQuestion";
 import HuntResult from "./HuntResult";
 import LocationSearch, { type SelectedLocation } from "./LocationSearch";
 import SpeciesSelect from "./SpeciesSelect";
@@ -48,6 +49,14 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions }: { goo
   const [locateState, setLocateState] = useState<LocateState>({ kind: "idle" });
   const [zoneState, setZoneState] = useState<ZoneState>({ kind: "idle" });
   const [evaluation, setEvaluation] = useState<EvaluationState>({ kind: "idle" });
+  /**
+   * Self-reported facts for the current hunt only.
+   *
+   * Cleared whenever the species, place or date changes, because an answer is
+   * about one hunt: "resident, shotgun" for deer in WMU 71 must not silently
+   * carry into a moose hunt two units away, where the tag is what decides.
+   */
+  const [answers, setAnswers] = useState<Record<string, string>>({});
 
   const resultRef = useRef<HTMLDivElement>(null);
   const zoneRequestRef = useRef(0);
@@ -153,8 +162,9 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions }: { goo
     );
   }, [selectLocation]);
 
-  const checkHunt = useCallback(async () => {
+  const checkHunt = useCallback(async (withAnswers?: Record<string, string>) => {
     if (!location || !speciesId || outsideCoverage) return;
+    const sending = withAnswers ?? answers;
     setEvaluation({ kind: "loading" });
     try {
       const response = await fetch("/api/hunt/evaluate", {
@@ -162,6 +172,7 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions }: { goo
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           latitude: location.latitude, longitude: location.longitude, date, speciesId,
+          answers: Object.keys(sending).length ? sending : undefined,
         }),
       });
       const payload = await response.json() as HuntEvaluation | { error: string };
@@ -176,7 +187,35 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions }: { goo
         message: cause instanceof Error ? cause.message : "This hunt could not be checked.",
       });
     }
-  }, [location, speciesId, outsideCoverage, date]);
+  }, [location, speciesId, outsideCoverage, date, answers]);
+
+  /* Answering re-evaluates at once. The engine decides whether that produced a
+     result or simply the next question. */
+  const answerQuestion = useCallback((dimensionId: string, value: string) => {
+    const next = { ...answers, [dimensionId]: value };
+    setAnswers(next);
+    void checkHunt(next);
+  }, [answers, checkHunt]);
+
+  /* A new species, place or date is a different hunt. Dropping the answers here
+     is what stops a deer hunter's residency from quietly deciding a moose
+     result, and clearing the evaluation stops a stale answer being read as the
+     answer to the new question. */
+  const resetHunt = useCallback(() => {
+    setAnswers({});
+    setEvaluation({ kind: "idle" });
+  }, []);
+
+  /* The answers so far, rendered in the words the question used rather than as
+     internal codes, and only where the dimension still offers the value. */
+  const answeredSoFar = useMemo(() => {
+    const dimensions = evaluation.kind === "ready" ? evaluation.result.dimensions : [];
+    return dimensions.flatMap((dimension) => {
+      const value = answers[dimension.id];
+      const option = dimension.options.find((candidate) => candidate.value === value);
+      return option ? [{ question: dimension.question, answer: option.label }] : [];
+    });
+  }, [answers, evaluation]);
 
   const busy = evaluation.kind === "loading";
   const displayedResult = evaluation.kind === "ready" ? evaluation.result : null;
@@ -275,9 +314,9 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions }: { goo
               </div>
             ) : null}
 
-            <DateField value={date} onChange={setDate} disabled={busy} />
+            <DateField value={date} onChange={(next) => { setDate(next); resetHunt(); }} disabled={busy} />
 
-            <SpeciesSelect value={speciesId} onChange={setSpeciesId} options={speciesOptions} disabled={busy} />
+            <SpeciesSelect value={speciesId} onChange={(next) => { setSpeciesId(next); resetHunt(); }} options={speciesOptions} disabled={busy} />
 
             {outsideCoverage ? (
               <p className={styles.coverageWarning} role="status">
@@ -356,8 +395,23 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions }: { goo
           </div>
         ) : null}
 
-        {displayedResult ? (
-          <HuntResult result={displayedResult} placeLabel={location?.label ?? null} />
+        {displayedResult && displayedResult.completeness === "NEEDS_INPUT" && displayedResult.required ? (
+          <div className={styles.results}>
+            <HuntQuestion
+              dimension={displayedResult.required}
+              answered={answeredSoFar}
+              onAnswer={answerQuestion}
+              disabled={busy}
+            />
+          </div>
+        ) : null}
+
+        {displayedResult && displayedResult.completeness === "RESOLVED" ? (
+          <HuntResult
+            result={displayedResult}
+            placeLabel={location?.label ?? null}
+            assumptions={answeredSoFar}
+          />
         ) : null}
       </div>
     </>

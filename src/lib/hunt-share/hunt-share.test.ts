@@ -43,6 +43,8 @@ test("share projection strips coordinates and all private location inputs", () =
 
 test("HuntEvaluation adapter preserves the engine result and excludes coordinates", () => {
   const input = huntEvaluationToShareInput({
+    completeness: "RESOLVED",
+    dimensions: [],
     input: {
       latitude: 45.23,
       longitude: -77.94,
@@ -138,10 +140,57 @@ test("all regulatory statuses are preserved without simplification", () => {
 });
 
 test("unsupported snapshot versions fail gracefully", () => {
-  assert.deepEqual(parseStoredHuntBrief({ ...huntBriefFixture(), version: 2 }), {
+  for (const version of [0, 3, 99]) {
+    assert.deepEqual(parseStoredHuntBrief({ ...huntBriefFixture(), version }), {
+      status: "unsupported_version",
+      version,
+    });
+  }
+  assert.deepEqual(parseStoredHuntBrief({ ...huntBriefFixture(), version: "2" }), {
     status: "unsupported_version",
-    version: 2,
+    version: null,
   });
+});
+
+test("a version 1 brief is still readable and gains no assumptions it never had", () => {
+  // Version 1 predates conditional species. Reading one must reproduce exactly
+  // what was stored — not upgrade it, and not attribute assumptions to a hunter
+  // who was never asked anything.
+  const stored = { ...huntBriefFixture(), version: 1 };
+  delete (stored as { assumptions?: unknown }).assumptions;
+
+  const parsed = parseStoredHuntBrief(stored);
+  assert.equal(parsed.status, "found");
+  if (parsed.status !== "found") return;
+  assert.equal(parsed.brief.version, 1);
+  assert.deepEqual(parsed.brief.assumptions, []);
+  assert.equal(parsed.brief.regulatory.status, stored.regulatory.status);
+  assert.equal(parsed.brief.regulatory.summary, stored.regulatory.summary);
+});
+
+test("a version 1 brief cannot acquire assumptions from its stored payload", () => {
+  // Defence against a record that was tampered with or migrated badly: the
+  // version, not the payload, decides whether assumptions may exist.
+  const parsed = parseStoredHuntBrief({
+    ...huntBriefFixture(),
+    version: 1,
+    assumptions: [{ question: "Are you a resident of Ontario?", answer: "Resident" }],
+  });
+  assert.equal(parsed.status, "found");
+  if (parsed.status !== "found") return;
+  assert.deepEqual(parsed.brief.assumptions, []);
+});
+
+test("a version 2 brief round-trips the hunter's own answers", () => {
+  const assumptions = [
+    { question: "Are you a resident of Ontario?", answer: "Resident" },
+    { question: "What will you hunt with?", answer: "Shotgun" },
+  ];
+  const parsed = parseStoredHuntBrief({ ...huntBriefFixture(), assumptions });
+  assert.equal(parsed.status, "found");
+  if (parsed.status !== "found") return;
+  assert.equal(parsed.brief.version, 2);
+  assert.deepEqual(parsed.brief.assumptions, assumptions);
 });
 
 test("creation endpoint validates, rate limits and returns an opaque URL", async () => {

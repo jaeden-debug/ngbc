@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ShareHuntBriefV1 } from "../../lib/hunt-share/model.ts";
+import type { ShareHuntBrief } from "../../lib/hunt-share/model.ts";
 import { checkCurrentHuntPath } from "../../lib/hunt-share/urls.ts";
 import styles from "./HuntBrief.module.css";
 
@@ -9,7 +9,7 @@ function formatDate(value: string, options: Intl.DateTimeFormatOptions): string 
   );
 }
 
-function statusClass(status: ShareHuntBriefV1["regulatory"]["status"]): string {
+function statusClass(status: ShareHuntBrief["regulatory"]["status"]): string {
   return {
     OPEN: styles.statusOpen,
     CLOSED: styles.statusClosed,
@@ -20,11 +20,11 @@ function statusClass(status: ShareHuntBriefV1["regulatory"]["status"]): string {
   }[status];
 }
 
-function statusLabel(status: ShareHuntBriefV1["regulatory"]["status"]): string {
+function statusLabel(status: ShareHuntBrief["regulatory"]["status"]): string {
   return status === "NEEDS_VERIFICATION" ? "Needs verification" : status.toLowerCase().replace(/^./, (value) => value.toUpperCase());
 }
 
-export default function HuntBriefCard({ brief }: { brief: ShareHuntBriefV1 }) {
+export default function HuntBriefCard({ brief }: { brief: ShareHuntBrief }) {
   const date = formatDate(brief.selectedDate, {
     weekday: "long",
     year: "numeric",
@@ -92,6 +92,26 @@ export default function HuntBriefCard({ brief }: { brief: ShareHuntBriefV1 }) {
           )}
         </div>
       </section>
+
+      {brief.assumptions.length > 0 && (
+        <section className={styles.section} aria-labelledby="brief-assumptions">
+          {/* Stated before the conditions, because everything below is only the
+              answer to THIS hunt. A reader whose own answers differ is looking at
+              someone else's result. */}
+          <h2 id="brief-assumptions">This result assumed</h2>
+          <ul className={styles.warningList}>
+            {brief.assumptions.map((assumption) => (
+              <li key={assumption.question}>
+                {assumption.question} <strong>{assumption.answer}</strong>
+              </li>
+            ))}
+          </ul>
+          <p className={styles.sourceMeta}>
+            Supplied by the person who ran this Hunt. North Ground did not verify any
+            licence, tag or residency, and a different answer may produce a different season.
+          </p>
+        </section>
+      )}
 
       {brief.warnings.length > 0 && (
         <section className={styles.section} aria-labelledby="brief-warnings">

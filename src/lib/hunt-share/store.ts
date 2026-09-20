@@ -1,5 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { ShareHuntBriefV1 } from "./model.ts";
+import type { ShareHuntBrief } from "./model.ts";
 import { defaultSupabaseServerClient, SupabaseServerConfigurationError } from "../supabase/server.ts";
 
 export class HuntBriefStoreConfigurationError extends Error {
@@ -17,7 +17,7 @@ export class HuntBriefStoreUnavailableError extends Error {
 }
 
 export interface HuntBriefStore {
-  create(brief: ShareHuntBriefV1): Promise<"created" | "exists">;
+  create(brief: ShareHuntBrief): Promise<"created" | "exists">;
   get(shareId: string): Promise<unknown | null>;
 }
 
@@ -28,7 +28,7 @@ export interface ShareCreationLimiter {
 export class InMemoryHuntBriefStore implements HuntBriefStore {
   readonly values = new Map<string, unknown>();
 
-  async create(brief: ShareHuntBriefV1): Promise<"created" | "exists"> {
+  async create(brief: ShareHuntBrief): Promise<"created" | "exists"> {
     if (this.values.has(brief.shareId)) return "exists";
     this.values.set(brief.shareId, structuredClone(brief));
     return "created";
@@ -55,7 +55,7 @@ export class InMemoryShareCreationLimiter implements ShareCreationLimiter {
 export class SupabaseHuntBriefStore implements HuntBriefStore {
   constructor(private readonly client: SupabaseClient) {}
 
-  async create(brief: ShareHuntBriefV1): Promise<"created" | "exists"> {
+  async create(brief: ShareHuntBrief): Promise<"created" | "exists"> {
     const { error } = await this.client.from("hunt_brief_snapshots").insert({
       public_share_id: brief.shareId,
       schema_version: brief.version,

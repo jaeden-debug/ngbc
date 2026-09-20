@@ -1,4 +1,5 @@
-import type { HuntShareProjectionInput, ShareHuntBriefV1 } from "./model.ts";
+import { HUNT_BRIEF_SCHEMA_VERSION } from "./model.ts";
+import type { HuntShareProjectionInput, ShareHuntBrief } from "./model.ts";
 
 export const testShareId = "A234567890bcdefghijklmno";
 
@@ -65,10 +66,11 @@ export function huntShareInput(
 }
 
 export function huntBriefFixture(
-  overrides: Partial<ShareHuntBriefV1> = {},
-): ShareHuntBriefV1 {
+  overrides: Partial<ShareHuntBrief> = {},
+): ShareHuntBrief {
   return {
-    version: 1,
+    version: HUNT_BRIEF_SCHEMA_VERSION,
+    assumptions: [],
     shareId: testShareId,
     createdAt: "2026-09-20T12:00:00.000Z",
     species: { id: "species:ruffed-grouse", displayName: "Ruffed grouse" },

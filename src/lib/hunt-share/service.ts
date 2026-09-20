@@ -4,7 +4,7 @@ import {
   isValidHuntBriefShareId,
   parseStoredHuntBrief,
   type HuntShareProjectionInput,
-  type ShareHuntBriefV1,
+  type ShareHuntBrief,
   type StoredHuntBriefResult,
 } from "./model.ts";
 import { defaultHuntBriefStore, type HuntBriefStore } from "./store.ts";
@@ -20,7 +20,7 @@ export async function persistHuntBrief(
     now?: () => Date;
     generateId?: () => string;
   } = {},
-): Promise<ShareHuntBriefV1> {
+): Promise<ShareHuntBrief> {
   const store = options.store ?? defaultHuntBriefStore();
   const now = options.now ?? (() => new Date());
   const generateId = options.generateId ?? generateHuntBriefShareId;

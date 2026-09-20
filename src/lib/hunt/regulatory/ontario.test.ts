@@ -1,6 +1,12 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { SUPPORTED_SPECIES_IDS } from "../coverage.ts";
+import {
+  evaluationShape,
+  SUPPORTED_MAJOR_GAME_SPECIES_IDS,
+  SUPPORTED_SMALL_GAME_SPECIES_IDS,
+  SUPPORTED_SPECIES_IDS,
+} from "../coverage.ts";
+import { ONTARIO_MAJOR_GAME_SPECIES } from "./major-game.ts";
 import type { ZoneResolution } from "../types.ts";
 import {
   certifiedUnitsForSpecies, evaluateOntarioSmallGame, ontarioCoverageReport,
@@ -206,10 +212,41 @@ test("a result never claims a hunting zone is a place you may hunt", () => {
 
 /* ── Coverage bookkeeping ────────────────────────────────────────────────── */
 
-test("the browser-facing species list matches the regulatory bundle exactly", () => {
-  // coverage.ts lists these literally so the 36 KB bundle stays off the client.
+test("the browser-facing species lists match the regulatory bundles exactly", () => {
+  // coverage.ts lists these literally so ~225 KB of rules stays off the client.
   // This is what stops the two drifting apart.
-  assert.deepEqual([...SUPPORTED_SPECIES_IDS].sort(), [...ONTARIO_SMALL_GAME_SPECIES].sort());
+  assert.deepEqual(
+    [...SUPPORTED_SMALL_GAME_SPECIES_IDS].sort(),
+    [...ONTARIO_SMALL_GAME_SPECIES].sort(),
+  );
+  assert.deepEqual(
+    [...SUPPORTED_MAJOR_GAME_SPECIES_IDS].sort(),
+    [...ONTARIO_MAJOR_GAME_SPECIES].sort(),
+  );
+  // The union is what the selector and the endpoint accept.
+  assert.deepEqual(
+    [...SUPPORTED_SPECIES_IDS].sort(),
+    [...ONTARIO_SMALL_GAME_SPECIES, ...ONTARIO_MAJOR_GAME_SPECIES].sort(),
+  );
+});
+
+test("small game and major game never overlap", () => {
+  // A species answered by both engines would get two different statuses for the
+  // same hunt, and nothing decides which one a reader sees.
+  const overlap = SUPPORTED_SMALL_GAME_SPECIES_IDS.filter((id) =>
+    (SUPPORTED_MAJOR_GAME_SPECIES_IDS as readonly string[]).includes(id));
+  assert.deepEqual(overlap, []);
+});
+
+test("every selectable species is routed to an engine", () => {
+  // A species in the selector with no engine would reach evaluation and fall
+  // through to small game, which would answer from the wrong bundle.
+  for (const id of SUPPORTED_SPECIES_IDS) {
+    const smallGame = (ONTARIO_SMALL_GAME_SPECIES as readonly string[]).includes(id);
+    const majorGame = (ONTARIO_MAJOR_GAME_SPECIES as readonly string[]).includes(id);
+    assert.ok(smallGame !== majorGame, `${id} must be handled by exactly one engine`);
+    assert.equal(evaluationShape(id), majorGame ? "CONDITIONAL" : "DIRECT");
+  }
 });
 
 test("the coverage report counts units rather than claiming a province", () => {

@@ -199,7 +199,11 @@ export default function SpeciesSelect({ value, onChange, options, disabled }: Sp
                       <span className={styles.speciesLatin}>{species.scientificName}</span>
                     </span>
                     <span className={styles.speciesCoverage} data-verified={species.regulatoryCoverage === "VERIFIED" || undefined}>
-                      {species.regulatoryCoverage === "VERIFIED" ? "Rules available" : "Rules in development"}
+                      {species.regulatoryCoverage !== "VERIFIED"
+                        ? "Rules in development"
+                        : species.evaluationShape === "CONDITIONAL"
+                          ? "Rules available · asks a question"
+                          : "Rules available"}
                     </span>
                     {species.id === value ? <svg className={styles.speciesCheck} width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none"><path d="m2.5 7.3 3 3 6-6.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg> : null}
                   </li>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import type { ShareHuntBriefV1 } from "./model.ts";
+import type { ShareHuntBrief } from "./model.ts";
 import { huntBriefUrl } from "./urls.ts";
 
 const noIndexRobots = { index: false, follow: true, noarchive: true } as const;
@@ -12,7 +12,7 @@ export function unavailableHuntBriefMetadata(): Metadata {
   };
 }
 
-export function buildHuntBriefMetadata(brief: ShareHuntBriefV1): Metadata {
+export function buildHuntBriefMetadata(brief: ShareHuntBrief): Metadata {
   const zone = brief.managementZone?.displayName ?? brief.jurisdiction.displayName;
   const title = `${brief.species.displayName} Hunt — ${zone}`;
   const description = `${brief.selectedDate} · ${brief.regulatory.status.replaceAll("_", " ")} · Shared North Ground Hunt Brief. Check current rules before hunting.`;

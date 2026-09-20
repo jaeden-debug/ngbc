@@ -1,4 +1,5 @@
 import type { BlockResult, CanonicalId, IsoDate, SourceRecord } from "../content-contract/index.ts";
+import type { HuntDimensionAnswers, RequiredDimension } from "./regulatory/dimensions.ts";
 
 export type RegulatoryStatus = "OPEN" | "CLOSED" | "CONDITIONAL" | "UNKNOWN" | "CONFLICT" | "NEEDS_VERIFICATION";
 
@@ -7,6 +8,15 @@ export interface HuntInput {
   longitude: number;
   date: IsoDate;
   speciesId: CanonicalId<"species">;
+  /**
+   * What the hunter has told us about their own hunt.
+   *
+   * Self-reported context that selects which published rule applies. It is never
+   * proof: an answer of "resident" follows the resident rule and does not make
+   * anyone a resident, and no result derived from it may say North Ground
+   * verified a licence, tag or residency.
+   */
+  answers?: HuntDimensionAnswers;
 }
 
 export interface ZoneResolution {
@@ -47,10 +57,31 @@ export interface WeatherResult {
   sourceId: CanonicalId<"source">;
 }
 
+/**
+ * Whether the engine could finish, kept separate from what it concluded.
+ *
+ * `NEEDS_INPUT` means North Ground knows the applicable law and is missing a
+ * fact from the hunter. `UNKNOWN` — a RegulatoryStatus — means North Ground does
+ * not know the law here. Collapsing the two would turn "tell me your method"
+ * into "we have no rules for this place", which is a different and much worse
+ * statement.
+ */
+export type EvaluationCompleteness = "RESOLVED" | "NEEDS_INPUT";
+
 export interface HuntEvaluation {
   input: HuntInput;
   species: { id: CanonicalId<"species">; name: string; canonicalPath: string };
   zone: ZoneResolution;
+  completeness: EvaluationCompleteness;
+  /** The one outstanding question. Present only when NEEDS_INPUT. */
+  required?: RequiredDimension;
+  /** Every fact this species and unit turn on, so the interface can show progress. */
+  dimensions: RequiredDimension[];
+  /**
+   * The regulatory answer. While `completeness` is NEEDS_INPUT this carries a
+   * placeholder whose status is the engine's own `NEEDS_VERIFICATION`, never a
+   * status that reads as a decision.
+   */
   regulation: RegulatoryResult;
   weather: WeatherResult;
   knowledge: BlockResult;
