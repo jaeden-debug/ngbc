@@ -65,7 +65,12 @@ async function validate() {
   const sitemap = await sitemapResponse.text();
   assert.match(sitemap, /<loc>https:\/\/www\.northgroundbushcraft\.com\/<\/loc>/i);
   assert.match(sitemap, /<loc>https:\/\/www\.northgroundbushcraft\.com\/hunting\/species\/ruffed-grouse<\/loc>/i);
-  assert.match(sitemap, /<loc>https:\/\/www\.northgroundbushcraft\.com\/tools\/season-finder<\/loc>/i);
+  assert.match(sitemap, /<loc>https:\/\/www\.northgroundbushcraft\.com\/hunt<\/loc>/i);
+  assert.doesNotMatch(
+    sitemap,
+    /<loc>https:\/\/www\.northgroundbushcraft\.com\/tools\/season-finder<\/loc>/i,
+    "the superseded Hunt path must not remain in the sitemap",
+  );
   assert.equal(countMatches(sitemap, /<url>/gi), 3, "sitemap should contain only the homepage and two certified resources");
 
   const speciesResponse = await fetch(`${baseUrl}/hunting/species/ruffed-grouse`);
@@ -77,17 +82,22 @@ async function validate() {
   assert.match(species, /Bonasa umbellus/i);
   assert.match(species, /Check a location and date/i);
 
-  const toolResponse = await fetch(`${baseUrl}/tools/season-finder`);
+  const toolResponse = await fetch(`${baseUrl}/hunt`);
   assert.equal(toolResponse.status, 200, "Hunt tool should return 200");
   const tool = await toolResponse.text();
-  assert.match(tool, /<h1[^>]*>What applies here, on this date\?<\/h1>/i);
-  assert.match(tool, /<link rel="canonical" href="https:\/\/www\.northgroundbushcraft\.com\/tools\/season-finder"/i);
+  assert.match(tool, /<h1[^>]*>Your zone\. Your season\. Your hunt\.<\/h1>/i);
+  assert.match(tool, /<link rel="canonical" href="https:\/\/www\.northgroundbushcraft\.com\/hunt"/i);
   assert.equal(countMatches(tool, /<link rel="canonical"/gi), 1, "Hunt should emit one canonical tag");
   assert.match(tool, /<title>Hunting Zone (?:&|&amp;) Season Finder \| North Ground Hunt<\/title>/i);
-  assert.match(tool, /<meta name="description" content="Find your hunting zone, check current seasons and rules, view official sources, weather and local hunt information, and share your Hunt Brief\."/i);
+  assert.match(tool, /<meta name="description" content="Find your hunting area, check current seasons and rules, and read the official source behind every answer\. Free, no account\."/i);
   assert.match(tool, /<meta property="og:title" content="North Ground Hunt \| Your Zone\. Your Season\. Your Hunt\."/i);
   assert.match(tool, /<meta property="og:description" content="Find hunting zones, check current seasons and rules, verify official sources, and share your Hunt Brief with friends\."/i);
-  assert.match(tool, /<meta property="og:url" content="https:\/\/www\.northgroundbushcraft\.com\/tools\/season-finder"/i);
+  assert.match(tool, /<meta property="og:url" content="https:\/\/www\.northgroundbushcraft\.com\/hunt"/i);
+
+  // The superseded path must keep working for anything already linking to it.
+  const supersededResponse = await fetch(`${baseUrl}/tools/season-finder`, { redirect: "manual" });
+  assert.equal(supersededResponse.status, 308, "the superseded Hunt path should redirect permanently");
+  assert.equal(supersededResponse.headers.get("location"), "/hunt");
   assert.match(tool, /<meta property="og:site_name" content="North Ground"/i);
   assert.match(tool, /<meta property="og:image" content="https:\/\/www\.northgroundbushcraft\.com\/north-ground-hunt-zones-seasons-share-results\.jpg"/i);
   assert.match(tool, /<meta property="og:image:alt" content="North Ground Hunt social preview showing hunting zones, current seasons, official sources and Hunt Brief sharing\."/i);
