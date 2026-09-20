@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import styles from "../app/page.module.css";
 import EnterButton from "./EnterButton";
 
@@ -12,22 +13,23 @@ import EnterButton from "./EnterButton";
  */
 type TiltApi = { enable: () => Promise<boolean>; disable: () => void };
 
+/* device capability never changes for the life of the page */
+const subscribeNever = () => () => {};
+const readCanTilt = () =>
+  "DeviceOrientationEvent" in window &&
+  window.matchMedia("(pointer: coarse)").matches;
+
 export default function Hero({ onEnter }: { onEnter: () => void }) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const tiltRef = useRef<TiltApi | null>(null);
 
-  /* only offer tilt where there is a sensor to read: a coarse pointer plus
-     the orientation API. Desktop Chrome exposes the API with nothing behind it. */
-  const [canTilt, setCanTilt] = useState(false);
   const [tilting, setTilting] = useState(false);
 
-  useEffect(() => {
-    setCanTilt(
-      typeof window !== "undefined" &&
-        "DeviceOrientationEvent" in window &&
-        window.matchMedia("(pointer: coarse)").matches
-    );
-  }, []);
+  /* Only offer tilt where there is a sensor to read: a coarse pointer plus the
+     orientation API. Desktop Chrome exposes the API with nothing behind it.
+     Read through useSyncExternalStore so the server renders the button absent
+     and the client fills it in without a cascading effect render. */
+  const canTilt = useSyncExternalStore(subscribeNever, readCanTilt, () => false);
 
   const toggleTilt = useCallback(async () => {
     const api = tiltRef.current;
@@ -362,12 +364,14 @@ export default function Hero({ onEnter }: { onEnter: () => void }) {
       </video>
 
       {/* the mark sits in the scene, under the dark — the torch finds it */}
-      <img
+      <Image
         className={styles.heroMark}
         src="/logo-mark.webp"
         alt="North Ground Bushcraft"
-        width={1039}
-        height={1092}
+        width={820}
+        height={862}
+        sizes="(max-width: 520px) 66vw, (max-width: 900px) 40vw, 26vw"
+        priority
         draggable={false}
       />
 
