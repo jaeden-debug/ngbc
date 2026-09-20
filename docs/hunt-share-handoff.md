@@ -10,7 +10,7 @@ The flow is:
 2. `huntEvaluationToShareInput()` projects it with an explicitly supplied jurisdiction and optional approved coarse location label.
 3. `ShareHuntButton` previews the shared fields and explains the privacy boundary.
 4. `POST /api/hunt/share` validates and rate-limits the bounded payload.
-5. The server assigns a 144-bit opaque ID, creates a version-1 snapshot, and writes it once to private Upstash Redis storage.
+5. The server assigns a 144-bit opaque ID, creates a version-1 snapshot, and writes it once to the private `hunt_brief` table in Supabase.
 6. `/hunt/share/[shareId]` reads and validates the snapshot server-side, then renders a noindex read-only page and dynamic social image.
 
 The stored record is intentionally compact. It references canonical species, jurisdiction, management-zone, source and resource IDs while retaining enough rendered snapshot text to show exactly what North Ground reported at creation time.
@@ -30,7 +30,7 @@ A general location label is excluded unless the integration explicitly sets `sha
 
 The brief is what North Ground reported at `createdAt`; it is not automatically rewritten when regulations or forecasts change. The page displays the generation timestamp, regulatory verification timestamp when available, and a standing warning to check current rules and official sources.
 
-No current-status comparison is claimed. “Check current Hunt” links to `/tools/season-finder` with non-sensitive species, jurisdiction, zone and date query parameters. The existing Hunt page may consume those parameters when its owner adds preselection.
+No current-status comparison is claimed. “Check current Hunt” links to `/hunt` with non-sensitive species, jurisdiction, zone and date query parameters. The existing Hunt page may consume those parameters when its owner adds preselection.
 
 Weather is explicitly labeled as the forecast captured when the brief was created. An unavailable or failed provider state remains unavailable; sharing never invents weather.
 
@@ -40,17 +40,17 @@ Version-1 briefs do not expire automatically. Hunt plans can remain useful, and 
 
 ## Persistence and environment
 
-Small JSON snapshots use Upstash Redis, provisioned through the Vercel Marketplace. This is the only new application persistence dependency; it is isolated behind `HuntBriefStore` so a future project database can replace it without changing the projection or page.
+Snapshots are rows in the private `hunt_brief` table in Supabase, written with the service-role key from the server only. Upstash Redis was the earlier choice and has been removed: it is not a dependency, not configured, and not to be reintroduced. `HuntBriefStore` still isolates the storage boundary, so the projection and the page do not know which database is behind it.
 
 Required production variables:
 
 ```text
-UPSTASH_REDIS_REST_URL=...
-UPSTASH_REDIS_REST_TOKEN=...
+NEXT_PUBLIC_SUPABASE_URL=...
+SUPABASE_SERVICE_ROLE_KEY=...
 HUNT_SHARE_RATE_LIMIT_SECRET=...
 ```
 
-Missing configuration fails closed with `503`. Storage keys use the opaque share ID and are not exposed. Rate-limit identifiers are HMACed before they enter Redis; raw IP addresses are not logged or stored by application code.
+The service-role key is server-only and must never reach the browser. Missing configuration fails closed with `503`. Row keys are the opaque share ID. Rate limiting runs in the database through `consume_hunt_share_rate_limit`, which stores only an HMAC of the client network identifier; raw IP addresses are never written or logged by application code.
 
 ## Security boundaries
 

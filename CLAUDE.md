@@ -261,6 +261,8 @@ Other important intents include:
 
 > What should I wear/pack for this hunt?
 
+The interface through which this is asked and answered is specified in section 41A.
+
 ---
 
 # 6. HUNTING PLATFORM DATA PHILOSOPHY
@@ -1416,6 +1418,9 @@ The application itself must remain clean and highly usable.
 
 Rustic does not mean cluttered.
 
+The main site and the Hunt application express this direction differently and
+deliberately. See section 41A.
+
 ---
 
 # 39. LOGO / IDENTITY
@@ -1468,6 +1473,8 @@ Prioritize:
 
 Do not encode critical states only through color.
 
+Hunt's own interface decisions are recorded in section 41A.
+
 ---
 
 # 41. MAP PHILOSOPHY
@@ -1497,6 +1504,88 @@ Use appropriate:
 Boundary uncertainty must be communicated.
 
 Consumer GPS should never be represented as legally infallible.
+
+Hunt's map-first behaviour and zone-coverage honesty rules are in section 41A.
+
+---
+
+# 41A. NORTH GROUND HUNT — PRODUCT SURFACE
+
+*Decided 2026-09-20. This section governs the Hunt application's interface.*
+
+## Main site and Hunt are deliberately different
+
+The North Ground homepage stays dark, cinematic and immersive: a wilderness
+entrance. Hunt is clean, glassy, precise and map-driven: an instrument.
+
+They share the brand, the approved mark, the palette and the typography. They do
+not share their composition, and neither should be redesigned into the other. The
+homepage hero is not to be converted into the Hunt interface.
+
+`Enter the North` on the homepage goes to `/hunt`.
+
+## Hunt is map-first
+
+Hunt opens on a useful map, not on a form. Before a person types anything, the
+official hunting-zone boundaries for supported jurisdictions are already drawn, so
+the first thing they see is *these are hunting zones*.
+
+The map must never draw an approximate or decorative regulatory boundary. Every
+line traces to a named authority's own published GIS service, and a provider
+outage shows an empty map with an explanation rather than a guess.
+
+Drawing a boundary is not a claim that the rules inside it are certified. The map
+distinguishes zones with a certified regulatory record from zones where only the
+official boundary is known, and says which is which.
+
+## Location is entered as a place, never as coordinates
+
+The primary input is one search composer — place, town, address or postal/ZIP
+code — backed by Google Places where configured and a keyless provider otherwise.
+`Use my location` is a separate, explicit action, not a fake suggestion row.
+
+Coordinates remain the internal truth and stay available as secondary detail. A
+person is never asked to type latitude and longitude for normal use.
+
+## The answer assembles progressively
+
+- **Location** alone resolves the official management zone, its jurisdiction and
+  any boundary warning. That is a real question with a real answer.
+- **Date** makes time-specific regulatory evaluation possible.
+- **Species** completes it, producing the full Hunt overview.
+
+Nothing about legality is shown from a zone alone.
+
+## Date entry
+
+Two controls only: **Today** and **Choose date**. There are no other presets.
+
+The canonical visible format is `YYYY/MM/DD`; the stored and transmitted format is
+ISO `YYYY-MM-DD`. Typing `20260808` becomes `2026/08/08` without anyone reaching
+for the separator key, and pasted `2026-08-08` or `2026/08/08` normalise the same
+way. Impossible dates are refused with a plain-language reason rather than rolled
+forward. A hunt date is a calendar day and is never routed through a timestamp.
+
+The text field and the calendar are two controls over one selected day. They hold
+no separate state and cannot disagree.
+
+## Glass design system
+
+Hunt's surfaces come from one set of tokens and primitives — navigation, panels,
+cards, controls, popovers, overlays, calendar — defined once in `globals.css`.
+Individual components do not invent their own blur, border or shadow values.
+
+Translucency is honoured as a preference: reduced-transparency and missing
+backdrop-filter both fall back to opaque surfaces rather than unreadable ones.
+Secondary text tiers are contrast-checked against the glass they sit on, not
+against the page background.
+
+## Navigation
+
+Hunt carries its own floating glass navigation with the approved North Ground
+mark. It links only to destinations that exist; a premium interface that navigates
+to nothing is worse than a short one. Phones get a compact disclosure menu with
+the same destinations, Escape handling and focus return.
 
 ---
 
