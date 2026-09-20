@@ -14,6 +14,7 @@ Last updated: 2026-09-20
 - Broader North Ground architecture is being established.
 - Technical foundation remediation is implemented: truthful durable newsletter handling, production robots/sitemap, canonical and social metadata, justified Organization/WebSite structured data, a breadcrumb primitive, server-rendered homepage H1, and branded 404 behavior.
 - The published bundle now drives two indexable application routes: `/tools/season-finder` and `/hunting/species/ruffed-grouse`. Both are included in the generated sitemap alongside `/`.
+- Finalized homepage metadata remains broad across Canadian outdoor knowledge and tools. `/tools/season-finder` has dedicated North Ground Hunt metadata and a static 1536×803 JPEG social preview; dynamic `/hunt/share/[shareId]` metadata remains independently overridable and `noindex`.
 
 ### Hunting Intelligence
 - Flagship product under active development.
@@ -22,6 +23,7 @@ Last updated: 2026-09-20
 - An isolated research foundation now exists in `research/hunting/`; it is an inventory/review input, not production rule data.
 - The first certified vertical slice is implemented locally for ruffed grouse in Ontario WMU 57 using the 2026 Ontario small-game table. An official Ontario GIS feature service resolves the point to a WMU; the deterministic evaluator returns `CONDITIONAL`, `CLOSED`, or an explicit unknown/verification state and never infers legality from editorial content.
 - Hunt keeps regulatory evidence, environmental context, and North Ground knowledge as separate response layers. Exact legal astronomical times, municipal discharge rules, land access, Sunday gun-hunting rules, protected areas, and overlapping restrictions remain outside the certified result.
+- Evaluated Hunt results can now be projected into privacy-safe, versioned Hunt Brief snapshots and shared through opaque `/hunt/share/[shareId]` URLs. The projection preserves the engine's exact status, excludes coordinates and raw location inputs, and stores only an explicitly approved coarse location label.
 
 ### Content / Knowledge Graph
 - Structured content system being developed in parallel with Hunt.
@@ -63,6 +65,8 @@ Last updated: 2026-09-20
 - Hunt evaluation rate limiting is process-local and must become distributed before high-volume production use.
 - The current certified regulatory record is deliberately narrow: ruffed grouse, Ontario WMU 57, 2026. The rest of the hunting research inventory remains research-only.
 - Exact legal sunrise/sunset computation is not certified. Open-Meteo sunrise/sunset is displayed only as environmental context and never establishes legal hunting time.
+- The canonical Hunt H1 is currently “What applies here, on this date?”, not the intended product H1 “What Can I Hunt Here?”. It was deliberately left unchanged during the metadata-only pass and needs a separate content/UI decision.
+- Hunt Brief live persistence requires private Upstash Redis credentials and a rate-limit HMAC secret. Missing configuration fails closed; no share URL is claimed until the snapshot is durably stored.
 
 ## Next Priorities
 
@@ -91,6 +95,7 @@ Examples:
 - Newsletter live persistence: provide a full-access Resend API key as `RESEND_API_KEY` and the dedicated Contacts Segment ID as `RESEND_SEGMENT_ID`; then perform a production smoke test and configure distributed edge rate limiting.
 - Analytics: approve provider, consent model, coarse-location constraints, retention, and event contract before adding instrumentation.
 - Vertical-slice production certification: the new Hunt and species routes are locally certified but return 404 in the current production deployment. Commit, review, and deploy the integrated slice before production smoke testing.
+- Hunt Brief production activation: provide `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`, and `HUNT_SHARE_RATE_LIMIT_SECRET`, then create and retrieve a real recipient link in production.
 
 ## Regulatory Coverage
 
@@ -128,7 +133,7 @@ Current editorial coverage:
 
 Record actual production providers here once selected:
 
-- Database:
+- Database: Upstash Redis selected for private, immutable Hunt Brief JSON snapshots; production credentials are not configured in the inspected environment.
 - GIS: Government of Ontario LIO Wildlife Management Unit Feature Layer for the certified WMU 57 slice.
 - Map: North Ground-rendered SVG from the resolved official WMU polygon; no third-party basemap and not a legal survey.
 - Geocoding:
@@ -171,10 +176,13 @@ The public site identity is North Ground, with North Ground Bushcraft retained a
 ### 2026-09-20 — First Integrated Vertical Slice
 The first production-shaped loop is source → deterministic regulation → Hunt → canonical content/App Blocks → indexable species/tool routes. The certified scope is intentionally limited to ruffed grouse in Ontario WMU 57 for the 2026 source period. Regulatory, weather, and editorial layers remain structurally separate; an unavailable forecast or missing regulation cannot be filled by climatology, prose, AI, or a broader editorial fallback.
 
+### 2026-09-20 — Hunt Brief Sharing
+Hunt Briefs are immutable, versioned snapshots of an existing deterministic Hunt result, not a second evaluation path. Opaque 144-bit URLs expose no coordinates or raw location input. Snapshots are retained without automatic expiry, remain `noindex`, show source and verification timestamps with a standing staleness warning, and link back to Hunt for a current check.
+
 ## Validation
 
 ### Build
-- `npm run build` passed on 2026-09-20 (Next.js 16.1.1). The ruffed-grouse species page is statically generated; Hunt and its evaluation API are dynamic; home, 404, Open Graph image, robots, and sitemap are generated successfully.
+- `npm run build` passed on 2026-09-20 (Next.js 16.1.1). The ruffed-grouse species page is statically generated; Hunt, its evaluation/share APIs, shared Hunt Brief page and per-brief Open Graph image are dynamic; home, 404, site Open Graph image, robots, and sitemap are generated successfully.
 
 ### Tests
 - `npm run typecheck` passed on 2026-09-20.
@@ -183,16 +191,20 @@ The first production-shaped loop is source → deterministic regulation → Hunt
 - `npm run validate:content:published` passed the published bundle with 0 errors and 0 warnings (10 entities, 2 resources, 4 blocks) on 2026-09-20.
 - `npm run test:content-urls` passed 13/13, including repository coverage, on 2026-09-20; `npm run test:content-repository` passed 4/4.
 - `npm run test:hunt` passed 9/9 on 2026-09-20, covering request origin/media/body/rate controls, season boundaries, fail-closed unknowns, forecast horizon, official-zone response handling/boundary warning, and regulatory/editorial separation.
+- `npm run test:hunt-share` passed 13/13 on 2026-09-20, covering privacy stripping on both client and server, the real Hunt adapter, opaque IDs, immutable persistence, exact regulatory-status preservation, unsupported versions, API validation/rate limiting, native-share/copy fallbacks, server-rendered card content, staleness/source labels, and noindex/social metadata.
 - `npm run test:newsletter` passed 9/9 on 2026-09-20.
 - `npm run test:seo` passed 3/3 and `npm run validate:seo` passed production-server checks for metadata, SSR H1/indexability, social image, robots, sitemap, 404 and trailing-slash redirects on 2026-09-20.
 - `npm run lint` passed on 2026-09-20.
+- Finalized homepage/Hunt metadata validation passed on 2026-09-20: exact emitted title, description, canonical, Open Graph, Twitter fields, `www` URLs, image alt text, and the Hunt JPEG's 200 `image/jpeg` response were verified against a production build.
 - Local production runtime certification resolved 45.23, -77.94 to WMU 57, returned `CONDITIONAL` for 2026-09-20, returned live weather inside the forecast horizon, returned explicit `UNAVAILABLE` weather 46 days out without provider fallback, and retrieved legal, identification, and habitat App Blocks by canonical species context.
 - Browser checks passed at 375, 768, and 1440 CSS-pixel widths without horizontal overflow or console errors. Mobile Hunt and desktop species Lighthouse audits each scored 100 for accessibility, best practices, SEO, and agentic browsing.
+- Hunt Brief card checks passed at 320, 360, 375, 390, 430, 768, 1024, and 1440 CSS-pixel widths with no horizontal overflow; the 320-pixel share dialog opened with focus on its close control, visible privacy guidance, native-share/copy actions, and no runtime exception.
 
 ### Production
 - Existing production was checked on 2026-09-20: `https://www.northgroundbushcraft.com/`, robots, and sitemap return 200; the apex permanently redirects (308) to `www`; homepage canonical and `og:url` use `www`.
 - The current production deployment predates this slice: `/tools/season-finder` and `/hunting/species/ruffed-grouse` return 404 and the production sitemap contains only `/`. Do not call the slice production-certified until it is reviewed, deployed, and smoke-tested on the public host.
 - Newsletter credentials were not present locally, so no live Resend mutation was attempted. Production activation still requires `RESEND_API_KEY` and `RESEND_SEGMENT_ID`.
+- Upstash credentials and the Hunt share rate-limit secret were not present locally, so no live Hunt Brief mutation was attempted. Invalid share IDs return a real 404; a valid-format link fails closed to a noindex unavailable state while storage is unconfigured.
 
 ### Data
 - `python3 research/hunting/validate.py` passed on 2026-09-20 for 66 jurisdictions, 68 authorities, 88 regulatory/scientific sources, 27 GIS records, 127 species, 48 aliases, 156 evidence rows, 66 regulatory mappings, 15 identification risks, 25 range records, 66 source-coverage rows and 25 content opportunities (0 warnings or structural errors).
