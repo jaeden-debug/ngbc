@@ -135,11 +135,18 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       status: "IN_DEVELOPMENT",
       officialTerm: "Hunting Zone",
       officialTermFr: "zone de chasse",
-      officialSourceUrl: "https://www.donneesquebec.ca/recherche/dataset/zones-de-chasse",
+      officialSourceUrl:
+        "https://www.quebec.ca/en/tourism-recreation-sport/sporting-and-outdoor-activities/sport-hunting/hunting-zone-maps",
       parityCertified: false,
       notes:
-        "Québec publishes its hunting zones through Données Québec. The dataset is identified and is the next " +
-        "spatial ingestion target; no geometry is ingested, certified or drawn yet.",
+        "Structure verified against quebec.ca on 2026-09-21: 28 hunting zones, numbered 1 to 24 and 26 to 29. " +
+        "Zone 25 exists for fishing only and is not a hunting zone. " +
+        "Geometry is NOT available as open data — searched Données Québec for zones de chasse, \"zones de chasse\", " +
+        "faune chasse and title:chasse and found no hunting-zone boundary dataset. MELCCFP publishes other wildlife " +
+        "layers on diffusion.mffp.gouv.qc.ca (wildlife protection districts CC-BY 4.0; structured wildlife territories " +
+        "CC-BY-NC-ND 4.0, whose non-commercial and no-derivatives terms would not permit product use). The zones " +
+        "themselves are published as per-zone PDF maps and through the Forêt ouverte viewer. Ingestion therefore needs " +
+        "either a service endpoint behind Forêt ouverte or a direct request to the ministry — not a portal download.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
@@ -153,9 +160,9 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
         "Nothing is certified; the official French terminology is to be preserved rather than translated.",
     },
     knownGaps: [
-      "No hunting-zone geometry is ingested, so no Québec point resolves to a zone.",
+      "No hunting-zone geometry is ingested, so no Québec point resolves to a zone. The blocker is source availability, not effort: the boundaries are not in the open-data portal.",
       "No regulatory bundle exists, so every Québec species query is UNKNOWN.",
-      "Zones d'exploitation contrôlée (zecs), réserves fauniques and pourvoiries carry their own access rules that a zone-level season does not decide.",
+      "Zones d'exploitation contrôlée (zecs), réserves fauniques and pourvoiries carry their own access rules that a zone-level season does not decide. Their boundaries ARE published, but under CC-BY-NC-ND 4.0, which permits neither commercial use nor derivatives.",
     ],
   },
   {
@@ -421,7 +428,11 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       parityCertified: false,
       notes:
         "Migratory-bird districts are federal geography that does not follow provincial management units, so it " +
-        "composes with them rather than replacing them.",
+        "composes with them rather than replacing them. Environment and Climate Change Canada does publish district " +
+        "boundaries for Québec (open.canada.ca, Open Government Licence, updated 2025-06-17), but the dataset is " +
+        "labelled Draft and states the limits are indicative only and carry no legal value. North Ground does not " +
+        "draw a regulatory boundary the authority itself disclaims, so this cannot be ingested as certified geometry " +
+        "in its current form. The legal boundaries live in the Migratory Birds Regulations text.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
@@ -433,7 +444,8 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       sourceState: "NOT_INGESTED",
     },
     knownGaps: [
-      "No federal migratory-bird geography or rules are ingested. Every duck, goose and other migratory-bird query is UNKNOWN, including for species that already have published biological profiles.",
+      "No federal migratory-bird geography or rules are ingested. Every duck, goose and other migratory-bird query is UNKNOWN, including for the 25 waterfowl and migratory species that already have published biological profiles.",
+      "The one district dataset located so far (Québec, ECCC) is marked Draft and expressly has no legal value, so it fails the boundary standard. Certified district geometry has to come from the regulation's own descriptions or from a layer the authority stands behind.",
       "A provincial hunting summary is not the authority for migratory birds, so provincial coverage does not extend to them.",
     ],
   },
