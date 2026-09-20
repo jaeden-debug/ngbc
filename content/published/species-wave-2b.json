@@ -1,0 +1,1782 @@
+{
+  "contractVersion": "1.0",
+  "generatedAt": "2026-09-20T20:00:00Z",
+  "entities": [
+    {
+      "id": "species_group:ptarmigan",
+      "type": "species_group",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Ptarmigan"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Lagopèdes"
+        }
+      ],
+      "aliases": [],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species_group:upland-game-birds",
+      "type": "species_group",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Upland game birds"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Oiseaux gibier sédentaires"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "upland bird",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified"
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species_group:migratory-game-birds",
+      "type": "species_group",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Migratory game birds"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Oiseaux migrateurs considérés comme gibier"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "migratory bird",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified"
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species_group:doves-pigeons",
+      "type": "species_group",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Doves and pigeons"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Colombes et pigeons"
+        }
+      ],
+      "aliases": [],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:willow-ptarmigan",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Willow ptarmigan"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Lagopède des saules",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "willow-ptarmigan"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Lagopus lagopus",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-willow-ptarmigan"
+          ]
+        },
+        {
+          "value": "willow grouse",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-willow-ptarmigan"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:rock-ptarmigan",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Rock ptarmigan"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Lagopède alpin",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "rock-ptarmigan"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Lagopus muta",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-rock-ptarmigan"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:ring-necked-pheasant",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Ring-necked pheasant"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Faisan de Colchide",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "ring-necked-pheasant"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Phasianus colchicus",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-ring-necked-pheasant"
+          ]
+        },
+        {
+          "value": "ringneck",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "needs_review",
+          "sourceIds": [
+            "source:cornell-ring-necked-pheasant"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:american-woodcock",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "American woodcock"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Bécasse d'Amérique",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "american-woodcock"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Scolopax minor",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-american-woodcock"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:wilsons-snipe",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Wilson's snipe"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Bécassine de Wilson",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "wilsons-snipe"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Gallinago delicata",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-wilsons-snipe"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:sandhill-crane",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Sandhill crane"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Grue du Canada",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "sandhill-crane"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Antigone canadensis",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-sandhill-crane"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:mourning-dove",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Mourning dove"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Tourterelle triste",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "mourning-dove"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Zenaida macroura",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-mourning-dove"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    }
+  ],
+  "resources": [
+    {
+      "id": "species:willow-ptarmigan",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "willow-ptarmigan",
+      "canonicalUrl": "/hunting/species/willow-ptarmigan",
+      "title": "Willow ptarmigan",
+      "description": "Identify Willow ptarmigan, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "willow ptarmigan",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:willow-ptarmigan",
+        "species_group:ptarmigan",
+        "species_group:grouse",
+        "species_group:upland-game-birds"
+      ],
+      "speciesIds": [
+        "species:willow-ptarmigan"
+      ],
+      "quickAnswer": "Willow ptarmigan (Lagopus lagopus) can be identified as follows: Stocky ptarmigan with a relatively heavy bill; breeding males show rich chestnut head and neck, while winter birds are white with black tails. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Lagopus lagopus",
+          "sourceIds": [
+            "source:cornell-willow-ptarmigan"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Phasianidae",
+          "sourceIds": [
+            "source:cornell-willow-ptarmigan"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Northern and alpine North America",
+          "sourceIds": [
+            "source:cornell-willow-ptarmigan"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-willow-ptarmigan"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:rock-ptarmigan"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:willow-ptarmigan",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Willow ptarmigan"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Lagopède des saules",
+            "official": true
+          }
+        ],
+        "scientificName": "Lagopus lagopus",
+        "taxonomy": {
+          "order": "Galliformes",
+          "family": "Phasianidae",
+          "genus": "Lagopus",
+          "species": "lagopus",
+          "taxonomySourceId": "source:cornell-willow-ptarmigan"
+        },
+        "speciesGroupIds": [
+          "species_group:ptarmigan",
+          "species_group:grouse",
+          "species_group:upland-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Northern and alpine North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Stocky ptarmigan with a relatively heavy bill; breeding males show rich chestnut head and neck, while winter birds are white with black tails.",
+            "sourceIds": [
+              "source:cornell-willow-ptarmigan"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:rock-ptarmigan"
+        ],
+        "habitat": [
+          {
+            "text": "Willow thickets and low tundra across the North.",
+            "sourceIds": [
+              "source:cornell-willow-ptarmigan"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-willow-ptarmigan"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-willow-ptarmigan"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:rock-ptarmigan",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "rock-ptarmigan",
+      "canonicalUrl": "/hunting/species/rock-ptarmigan",
+      "title": "Rock ptarmigan",
+      "description": "Identify Rock ptarmigan, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "rock ptarmigan",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:rock-ptarmigan",
+        "species_group:ptarmigan",
+        "species_group:grouse",
+        "species_group:upland-game-birds"
+      ],
+      "speciesIds": [
+        "species:rock-ptarmigan"
+      ],
+      "quickAnswer": "Rock ptarmigan (Lagopus muta) can be identified as follows: Smaller, finer-billed ptarmigan; breeding males have gray upperparts and winter males retain a black eye stripe. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Lagopus muta",
+          "sourceIds": [
+            "source:cornell-rock-ptarmigan"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Phasianidae",
+          "sourceIds": [
+            "source:cornell-rock-ptarmigan"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Arctic and alpine North America",
+          "sourceIds": [
+            "source:cornell-rock-ptarmigan"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-rock-ptarmigan"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:willow-ptarmigan"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:rock-ptarmigan",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Rock ptarmigan"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Lagopède alpin",
+            "official": true
+          }
+        ],
+        "scientificName": "Lagopus muta",
+        "taxonomy": {
+          "order": "Galliformes",
+          "family": "Phasianidae",
+          "genus": "Lagopus",
+          "species": "muta",
+          "taxonomySourceId": "source:cornell-rock-ptarmigan"
+        },
+        "speciesGroupIds": [
+          "species_group:ptarmigan",
+          "species_group:grouse",
+          "species_group:upland-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Arctic and alpine North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Smaller, finer-billed ptarmigan; breeding males have gray upperparts and winter males retain a black eye stripe.",
+            "sourceIds": [
+              "source:cornell-rock-ptarmigan"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:willow-ptarmigan"
+        ],
+        "habitat": [
+          {
+            "text": "Rocky Arctic and alpine tundra, generally more exposed than willow ptarmigan habitat.",
+            "sourceIds": [
+              "source:cornell-rock-ptarmigan"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-rock-ptarmigan"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-rock-ptarmigan"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:ring-necked-pheasant",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "ring-necked-pheasant",
+      "canonicalUrl": "/hunting/species/ring-necked-pheasant",
+      "title": "Ring-necked pheasant",
+      "description": "Identify Ring-necked pheasant, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "ring-necked pheasant",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:ring-necked-pheasant",
+        "species_group:upland-game-birds"
+      ],
+      "speciesIds": [
+        "species:ring-necked-pheasant"
+      ],
+      "quickAnswer": "Ring-necked pheasant (Phasianus colchicus) can be identified as follows: Male has an iridescent green head, red face and very long barred tail; female is mottled buff-brown with a long pointed tail. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Phasianus colchicus",
+          "sourceIds": [
+            "source:cornell-ring-necked-pheasant"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Phasianidae",
+          "sourceIds": [
+            "source:cornell-ring-necked-pheasant"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Introduced broadly in agricultural North America",
+          "sourceIds": [
+            "source:cornell-ring-necked-pheasant"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-ring-necked-pheasant"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:gray-partridge"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:ring-necked-pheasant",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Ring-necked pheasant"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Faisan de Colchide",
+            "official": true
+          }
+        ],
+        "scientificName": "Phasianus colchicus",
+        "taxonomy": {
+          "order": "Galliformes",
+          "family": "Phasianidae",
+          "genus": "Phasianus",
+          "species": "colchicus",
+          "taxonomySourceId": "source:cornell-ring-necked-pheasant"
+        },
+        "speciesGroupIds": [
+          "species_group:upland-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Introduced broadly in agricultural North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Male has an iridescent green head, red face and very long barred tail; female is mottled buff-brown with a long pointed tail.",
+            "sourceIds": [
+              "source:cornell-ring-necked-pheasant"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:gray-partridge"
+        ],
+        "habitat": [
+          {
+            "text": "Introduced populations occupy agricultural fields, grasslands and dense edge cover.",
+            "sourceIds": [
+              "source:cornell-ring-necked-pheasant"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-ring-necked-pheasant"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-ring-necked-pheasant"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:gray-partridge",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "gray-partridge",
+      "canonicalUrl": "/hunting/species/gray-partridge",
+      "title": "Gray partridge",
+      "description": "Identify Gray partridge, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "gray partridge",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:gray-partridge",
+        "species_group:upland-game-birds"
+      ],
+      "speciesIds": [
+        "species:gray-partridge"
+      ],
+      "quickAnswer": "Gray partridge (Perdix perdix) can be identified as follows: Small round gamebird with orange face and throat, barred flanks and a chestnut belly patch that varies by sex and age. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Perdix perdix",
+          "sourceIds": [
+            "source:cornell-gray-partridge"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Phasianidae",
+          "sourceIds": [
+            "source:cornell-gray-partridge"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Introduced in parts of Canada and United States",
+          "sourceIds": [
+            "source:cornell-gray-partridge"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-gray-partridge"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:ruffed-grouse"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:gray-partridge",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Gray partridge"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Perdrix grise",
+            "official": true
+          }
+        ],
+        "scientificName": "Perdix perdix",
+        "taxonomy": {
+          "order": "Galliformes",
+          "family": "Phasianidae",
+          "genus": "Perdix",
+          "species": "perdix",
+          "taxonomySourceId": "source:cornell-gray-partridge"
+        },
+        "speciesGroupIds": [
+          "species_group:upland-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Introduced in parts of Canada and United States"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Small round gamebird with orange face and throat, barred flanks and a chestnut belly patch that varies by sex and age.",
+            "sourceIds": [
+              "source:cornell-gray-partridge"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:ruffed-grouse"
+        ],
+        "habitat": [
+          {
+            "text": "Open farmland and grassland with hedgerows in introduced North American populations.",
+            "sourceIds": [
+              "source:cornell-gray-partridge"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-gray-partridge"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-gray-partridge"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:american-woodcock",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "american-woodcock",
+      "canonicalUrl": "/hunting/species/american-woodcock",
+      "title": "American woodcock",
+      "description": "Identify American woodcock, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "american woodcock",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:american-woodcock",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:american-woodcock"
+      ],
+      "quickAnswer": "American woodcock (Scolopax minor) can be identified as follows: Plump, cryptically patterned shorebird with very short legs, large high-set eyes and a long straight bill. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Scolopax minor",
+          "sourceIds": [
+            "source:cornell-american-woodcock"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Scolopacidae",
+          "sourceIds": [
+            "source:cornell-american-woodcock"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Eastern North America",
+          "sourceIds": [
+            "source:cornell-american-woodcock"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-american-woodcock"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:wilsons-snipe"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:american-woodcock",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "American woodcock"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Bécasse d'Amérique",
+            "official": true
+          }
+        ],
+        "scientificName": "Scolopax minor",
+        "taxonomy": {
+          "order": "Charadriiformes",
+          "family": "Scolopacidae",
+          "genus": "Scolopax",
+          "species": "minor",
+          "taxonomySourceId": "source:cornell-american-woodcock"
+        },
+        "speciesGroupIds": [
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Eastern North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Plump, cryptically patterned shorebird with very short legs, large high-set eyes and a long straight bill.",
+            "sourceIds": [
+              "source:cornell-american-woodcock"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:wilsons-snipe"
+        ],
+        "habitat": [
+          {
+            "text": "Moist young forest and thickets near open singing grounds in eastern North America.",
+            "sourceIds": [
+              "source:cornell-american-woodcock"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-american-woodcock"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-american-woodcock"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:wilsons-snipe",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "wilsons-snipe",
+      "canonicalUrl": "/hunting/species/wilsons-snipe",
+      "title": "Wilson's snipe",
+      "description": "Identify Wilson's snipe, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "wilson's snipe",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:wilsons-snipe",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:wilsons-snipe"
+      ],
+      "quickAnswer": "Wilson's snipe (Gallinago delicata) can be identified as follows: Cryptic marsh bird with a very long straight bill, striped back and a fast zigzag flush. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Gallinago delicata",
+          "sourceIds": [
+            "source:cornell-wilsons-snipe"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Scolopacidae",
+          "sourceIds": [
+            "source:cornell-wilsons-snipe"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America",
+          "sourceIds": [
+            "source:cornell-wilsons-snipe"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-wilsons-snipe"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:american-woodcock"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:wilsons-snipe",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Wilson's snipe"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Bécassine de Wilson",
+            "official": true
+          }
+        ],
+        "scientificName": "Gallinago delicata",
+        "taxonomy": {
+          "order": "Charadriiformes",
+          "family": "Scolopacidae",
+          "genus": "Gallinago",
+          "species": "delicata",
+          "taxonomySourceId": "source:cornell-wilsons-snipe"
+        },
+        "speciesGroupIds": [
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Cryptic marsh bird with a very long straight bill, striped back and a fast zigzag flush.",
+            "sourceIds": [
+              "source:cornell-wilsons-snipe"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:american-woodcock"
+        ],
+        "habitat": [
+          {
+            "text": "Wet meadows, bogs and marsh edges across North America.",
+            "sourceIds": [
+              "source:cornell-wilsons-snipe"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-wilsons-snipe"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-wilsons-snipe"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:sandhill-crane",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "sandhill-crane",
+      "canonicalUrl": "/hunting/species/sandhill-crane",
+      "title": "Sandhill crane",
+      "description": "Identify Sandhill crane, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "sandhill crane",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:sandhill-crane",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:sandhill-crane"
+      ],
+      "quickAnswer": "Sandhill crane (Antigone canadensis) can be identified as follows: Very large gray bird with long legs, outstretched neck in flight and a red forehead; distinguish carefully from endangered whooping crane. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Antigone canadensis",
+          "sourceIds": [
+            "source:cornell-sandhill-crane"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Gruidae",
+          "sourceIds": [
+            "source:cornell-sandhill-crane"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America",
+          "sourceIds": [
+            "source:cornell-sandhill-crane"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-sandhill-crane"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:sandhill-crane",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Sandhill crane"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Grue du Canada",
+            "official": true
+          }
+        ],
+        "scientificName": "Antigone canadensis",
+        "taxonomy": {
+          "order": "Gruiformes",
+          "family": "Gruidae",
+          "genus": "Antigone",
+          "species": "canadensis",
+          "taxonomySourceId": "source:cornell-sandhill-crane"
+        },
+        "speciesGroupIds": [
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Very large gray bird with long legs, outstretched neck in flight and a red forehead; distinguish carefully from endangered whooping crane.",
+            "sourceIds": [
+              "source:cornell-sandhill-crane"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [],
+        "habitat": [
+          {
+            "text": "Open wetlands, grasslands and agricultural landscapes.",
+            "sourceIds": [
+              "source:cornell-sandhill-crane"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-sandhill-crane"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-sandhill-crane"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:mourning-dove",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "mourning-dove",
+      "canonicalUrl": "/hunting/species/mourning-dove",
+      "title": "Mourning dove",
+      "description": "Identify Mourning dove, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "mourning dove",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:mourning-dove",
+        "species_group:doves-pigeons",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:mourning-dove"
+      ],
+      "quickAnswer": "Mourning dove (Zenaida macroura) can be identified as follows: Slender tan-gray dove with black wing spots, a small head and a long pointed tail edged in white. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Zenaida macroura",
+          "sourceIds": [
+            "source:cornell-mourning-dove"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Columbidae",
+          "sourceIds": [
+            "source:cornell-mourning-dove"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Most of North America",
+          "sourceIds": [
+            "source:cornell-mourning-dove"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-mourning-dove"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:mourning-dove",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Mourning dove"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Tourterelle triste",
+            "official": true
+          }
+        ],
+        "scientificName": "Zenaida macroura",
+        "taxonomy": {
+          "order": "Columbiformes",
+          "family": "Columbidae",
+          "genus": "Zenaida",
+          "species": "macroura",
+          "taxonomySourceId": "source:cornell-mourning-dove"
+        },
+        "speciesGroupIds": [
+          "species_group:doves-pigeons",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Most of North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Slender tan-gray dove with black wing spots, a small head and a long pointed tail edged in white.",
+            "sourceIds": [
+              "source:cornell-mourning-dove"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [],
+        "habitat": [
+          {
+            "text": "Open woodland, farms, roadsides and urban areas across much of North America.",
+            "sourceIds": [
+              "source:cornell-mourning-dove"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-mourning-dove"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-mourning-dove"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "content_block:willow-ptarmigan.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:willow-ptarmigan",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Willow ptarmigan from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:willow-ptarmigan"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-willow-ptarmigan"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:rock-ptarmigan.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:rock-ptarmigan",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Rock ptarmigan from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:rock-ptarmigan"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-rock-ptarmigan"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:ring-necked-pheasant.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:ring-necked-pheasant",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Ring-necked pheasant from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:ring-necked-pheasant"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-ring-necked-pheasant"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:gray-partridge.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:gray-partridge",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Gray partridge from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:gray-partridge"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-gray-partridge"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:american-woodcock.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:american-woodcock",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify American woodcock from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:american-woodcock"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-american-woodcock"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:wilsons-snipe.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:wilsons-snipe",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Wilson's snipe from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:wilsons-snipe"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-wilsons-snipe"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel:willow-ptarmigan-member-ptarmigan",
+      "fromId": "species:willow-ptarmigan",
+      "toId": "species_group:ptarmigan",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-willow-ptarmigan"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:willow-ptarmigan-similar-rock-ptarmigan",
+      "fromId": "species:willow-ptarmigan",
+      "toId": "species:rock-ptarmigan",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-willow-ptarmigan"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:rock-ptarmigan-member-ptarmigan",
+      "fromId": "species:rock-ptarmigan",
+      "toId": "species_group:ptarmigan",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-rock-ptarmigan"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:rock-ptarmigan-similar-willow-ptarmigan",
+      "fromId": "species:rock-ptarmigan",
+      "toId": "species:willow-ptarmigan",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-rock-ptarmigan"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:ring-necked-pheasant-member-upland-game-birds",
+      "fromId": "species:ring-necked-pheasant",
+      "toId": "species_group:upland-game-birds",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-ring-necked-pheasant"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:ring-necked-pheasant-similar-gray-partridge",
+      "fromId": "species:ring-necked-pheasant",
+      "toId": "species:gray-partridge",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-ring-necked-pheasant"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:gray-partridge-member-upland-game-birds",
+      "fromId": "species:gray-partridge",
+      "toId": "species_group:upland-game-birds",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-gray-partridge"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:gray-partridge-similar-ruffed-grouse",
+      "fromId": "species:gray-partridge",
+      "toId": "species:ruffed-grouse",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-gray-partridge"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:american-woodcock-member-migratory-game-birds",
+      "fromId": "species:american-woodcock",
+      "toId": "species_group:migratory-game-birds",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-american-woodcock"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:american-woodcock-similar-wilsons-snipe",
+      "fromId": "species:american-woodcock",
+      "toId": "species:wilsons-snipe",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-american-woodcock"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:wilsons-snipe-member-migratory-game-birds",
+      "fromId": "species:wilsons-snipe",
+      "toId": "species_group:migratory-game-birds",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-wilsons-snipe"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:wilsons-snipe-similar-american-woodcock",
+      "fromId": "species:wilsons-snipe",
+      "toId": "species:american-woodcock",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-wilsons-snipe"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:sandhill-crane-member-migratory-game-birds",
+      "fromId": "species:sandhill-crane",
+      "toId": "species_group:migratory-game-birds",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-sandhill-crane"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:mourning-dove-member-doves-pigeons",
+      "fromId": "species:mourning-dove",
+      "toId": "species_group:doves-pigeons",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-mourning-dove"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    }
+  ],
+  "sources": [
+    {
+      "id": "source:cornell-willow-ptarmigan",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Willow ptarmigan identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Willow_ptarmigan/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-rock-ptarmigan",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Rock ptarmigan identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Rock_ptarmigan/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-ring-necked-pheasant",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Ring-necked pheasant identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Ring-necked_pheasant/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-gray-partridge",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Gray partridge identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Gray_partridge/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-american-woodcock",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "American woodcock identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/American_woodcock/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-wilsons-snipe",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Wilson's snipe identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Wilsons_snipe/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-sandhill-crane",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Sandhill crane identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Sandhill_crane/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-mourning-dove",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Mourning dove identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Mourning_dove/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    }
+  ],
+  "claims": [],
+  "media": []
+}

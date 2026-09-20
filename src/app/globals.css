@@ -24,12 +24,16 @@ a{ color: inherit; }
 button, input, select { font: inherit; }
 :focus-visible { outline: 3px solid #e7a75d; outline-offset: 3px; }
 
+/* Shared content primitives. `display: contents` lets the consuming surface own
+   the layout while these own the treatment, so a species profile lays its facts
+   out in the product's grid rather than in a stylesheet of its own. Colours come
+   from the product tokens below, not from literals, so the two cannot drift. */
 .content-direct-answer { margin: 0; }
 .content-key-facts { display: contents; }
 .content-block-list { display: contents; }
-.content-block { padding: 1rem 1.1rem; border-left: 3px solid #80936f; background: rgba(128,147,111,.08); }
-.content-block h3 { margin: 0 0 .45rem; font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; }
-.content-block p { margin: 0; }
+.content-block { padding: 0.9rem 1rem; border-left: 2px solid var(--ng-moss); border-radius: var(--ng-radius-sm); background: rgba(139, 168, 131, 0.07); }
+.content-block h3 { margin: 0 0 .4rem; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ng-bone-faint); }
+.content-block p { margin: 0; font-size: .92rem; line-height: 1.6; color: var(--ng-bone-dim); }
 .content-sources, .content-related { display: contents; }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -309,3 +313,190 @@ button, input, select { font: inherit; }
   white-space: nowrap;
   border: 0;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PRODUCT SHELL
+   Hunt established this shell; the species surfaces share it rather than
+   restating it. A person moving Hunt → Species Library → a species profile
+   should never feel they changed products, so the ground, the container and
+   the controls come from here for all of them.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* The atmospheric ground. Two low-saturation pools — forest at the top left,
+     bark at the top right — over near-black. Depth without a decorative image,
+     which keeps these routes cheap to render. */
+  --ng-product-bg:
+    radial-gradient(1200px 620px at 18% -8%, rgba(47, 65, 51, 0.30), transparent 62%),
+    radial-gradient(900px 520px at 92% 4%, rgba(74, 63, 47, 0.20), transparent 60%),
+    var(--ng-black);
+}
+
+.ng-product-page {
+  position: relative;
+  min-height: 100dvh;
+  padding-bottom: 56px;
+  background: var(--ng-product-bg);
+  color: var(--ng-cream);
+}
+
+/* One container rule, so every product surface lines up with Hunt's. */
+.ng-shell {
+  width: 100%;
+  max-width: var(--ng-max);
+  margin-inline: auto;
+  padding-inline: var(--ng-gutter);
+}
+
+/* ── Coverage ─────────────────────────────────────────────────────────────
+   Deliberately NOT `.ng-status`. Regulatory status answers "what do the rules
+   say"; coverage answers the prior question "does North Ground hold certified
+   rules for this at all". Conflating the two would let a library card imply a
+   season. The palette is quieter than the regulatory one for that reason. */
+
+.ng-coverage {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.26rem 0.7rem 0.26rem 0.58rem;
+  border: 1px solid var(--ng-glass-border-bright);
+  border-radius: var(--ng-radius-pill);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
+  color: var(--ng-bone-dim);
+  white-space: nowrap;
+}
+
+/* The marker carries the state alongside the word, so colour is never the only
+   signal — a filled ring for held rules, a hollow one for rules in progress. */
+.ng-coverage::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  flex: none;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+}
+
+.ng-coverage[data-coverage="VERIFIED"] {
+  color: var(--ng-moss);
+  border-color: rgba(139, 168, 131, 0.38);
+  background: rgba(139, 168, 131, 0.10);
+}
+.ng-coverage[data-coverage="VERIFIED"]::before { background: currentColor; }
+
+.ng-coverage[data-coverage="IN_DEVELOPMENT"] {
+  color: var(--ng-bone-faint);
+  background: rgba(201, 194, 166, 0.05);
+}
+
+/* ── Actions ──────────────────────────────────────────────────────────────
+   The same two controls Hunt uses, so the primary action reads identically
+   wherever it appears. */
+
+.ng-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 48px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: var(--ng-radius-sm);
+  background: linear-gradient(180deg, var(--ng-cream), var(--ng-bone));
+  box-shadow: var(--ng-shadow-2);
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: var(--ng-black);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 120ms ease, opacity 120ms ease;
+}
+.ng-action:hover { opacity: 0.92; }
+.ng-action:active { transform: translateY(1px); }
+
+.ng-action-quiet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid var(--ng-glass-border-bright);
+  border-radius: var(--ng-radius-sm);
+  background: rgba(201, 194, 166, 0.06);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ng-cream);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+.ng-action-quiet:hover { background: rgba(201, 194, 166, 0.11); }
+
+/* ── Section headings ─────────────────────────────────────────────────────
+   Hunt titles its panels quietly and lets the data carry the weight. Species
+   surfaces follow, which is most of what stops a profile reading as an
+   article. */
+
+.ng-section-title {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ng-bone-faint);
+}
+
+/* ── Breadcrumbs ──────────────────────────────────────────────────────────
+   A trail, not an ordered list of instructions: the list semantics stay for
+   assistive technology and the markers are replaced with separators. */
+
+.ng-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.76rem;
+  color: var(--ng-bone-faint);
+}
+
+.ng-breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ng-breadcrumb li:not(:last-child)::after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+/* Navigation rather than a sentence, so the links get a little vertical room to
+   be tappable without changing the trail's visual density. */
+.ng-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding-block: 3px;
+  color: var(--ng-bone-dim);
+  text-decoration: none;
+}
+
+.ng-breadcrumb a:hover {
+  color: var(--ng-cream);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* The current page is the one place the trail should not look clickable. */
+.ng-breadcrumb [aria-current="page"] { color: var(--ng-bone-faint); }

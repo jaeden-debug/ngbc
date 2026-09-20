@@ -65,10 +65,10 @@ test("production species lookup, aliases and search use canonical identity", asy
 
 test("species groups, related species and image publication gate remain explicit", async () => {
   const spruce = await contentRepository.getSpecies("species:spruce-grouse");
-  assert.deepEqual(spruce?.speciesProfile.speciesGroupIds, ["species_group:grouse"]);
+  assert.deepEqual(spruce?.speciesProfile.speciesGroupIds, ["species_group:grouse", "species_group:upland-game-birds"]);
   assert.deepEqual((await contentRepository.getRelatedSpecies("species:spruce-grouse")).map(({ id }) => id), ["species:ruffed-grouse"]);
   assert.equal(await contentRepository.getSpeciesImage("species:spruce-grouse"), null);
-  assert.equal(await contentRepository.getSpecies("species:gray-partridge"), null);
+  assert.equal((await contentRepository.getSpecies("species:gray-partridge"))?.status, "published");
 });
 
 test("species App Blocks and sources remain independently retrievable", async () => {
@@ -79,4 +79,82 @@ test("species App Blocks and sources remain independently retrievable", async ()
   });
   assert.equal(blocks.blocks[0]?.block.id, "content_block:mallard.identification.01");
   assert.deepEqual((await contentRepository.getSpeciesSources("species:mallard")).map(({ id }) => id), ["source:cornell-mallard"]);
+});
+
+test("hunter terms resolve to one canonical species plus a distinct characteristic intent", async () => {
+  const cases = [
+    ["doe", "species:white-tailed-deer", "BIOLOGICAL", "FEMALE"],
+    ["buck", "species:white-tailed-deer", "BIOLOGICAL", "MALE"],
+    ["female deer", "species:white-tailed-deer", "BIOLOGICAL", "FEMALE"],
+    ["antlerless deer", "species:white-tailed-deer", "REGULATORY_CLASS", "ANTLERLESS"],
+    ["bull moose", "species:moose", "BIOLOGICAL", "MALE"],
+    ["cow moose", "species:moose", "BIOLOGICAL", "FEMALE"],
+    ["hen turkey", "species:wild-turkey", "BIOLOGICAL", "FEMALE"],
+    ["bearded turkey", "species:wild-turkey", "REGULATORY_CLASS", "BEARDED"],
+  ] as const;
+  for (const [query, speciesId, kind, value] of cases) {
+    const result = await contentRepository.interpretSpeciesQuery(query, { locale: "en-CA" });
+    assert.equal(result.status, "resolved", query);
+    if (result.status === "resolved") {
+      assert.equal(result.species.id, speciesId, query);
+      assert.equal(result.intent?.kind, kind, query);
+      assert.equal(result.intent?.value, value, query);
+    }
+  }
+  assert.equal(await contentRepository.getSpecies("species:doe"), null);
+  assert.equal(await contentRepository.getSpecies("species:buck"), null);
+});
+
+test("biological sex and jurisdiction-defined regulatory classes remain separate", async () => {
+  const deer = await contentRepository.getSpeciesSexAgeInfo("species:white-tailed-deer");
+  const female = deer?.terminology.find(({ value }) => value === "female deer")?.intent;
+  const antlerless = deer?.terminology.find(({ value }) => value === "antlerless deer")?.intent;
+  assert.deepEqual(female, { kind: "BIOLOGICAL", dimension: "SEX", value: "FEMALE" });
+  assert.deepEqual(antlerless, { kind: "REGULATORY_CLASS", dimension: "ANTLER_CLASS", value: "ANTLERLESS" });
+  assert.notDeepEqual(female, antlerless);
+});
+
+test("broad animal words and bird categories return choices rather than fake species", async () => {
+  for (const [query, expected] of [
+    ["rabbit", ["species:arctic-hare", "species:eastern-cottontail", "species:snowshoe-hare"]],
+    ["wolf", ["species:eastern-wolf", "species:gray-wolf"]],
+    ["fox", ["species:arctic-fox", "species:gray-fox", "species:red-fox"]],
+  ] as const) {
+    const result = await contentRepository.interpretSpeciesQuery(query, { locale: "en-CA" });
+    assert.equal(result.status, "choices", query);
+    if (result.status === "choices") assert.deepEqual(result.species.map(({ id }) => id).sort(), [...expected].sort(), query);
+  }
+  const ducks = await contentRepository.interpretSpeciesQuery("duck", { locale: "en-CA" });
+  assert.equal(ducks.status, "choices");
+  if (ducks.status === "choices") {
+    assert.ok(ducks.species.some(({ id }) => id === "species:mallard"));
+    assert.ok(ducks.species.some(({ id }) => id === "species:canvasback"));
+    assert.ok(ducks.species.length >= 16);
+  }
+  const geese = await contentRepository.interpretSpeciesQuery("goose", { locale: "en-CA" });
+  assert.equal(geese.status, "choices");
+  if (geese.status === "choices") assert.ok(geese.species.some(({ id }) => id === "species:brant"));
+});
+
+test("French names, scientific names, groups, lookalikes and image gates survive Wave 2 promotion", async () => {
+  assert.deepEqual((await contentRepository.searchSpecies("Lynx du Canada")).map(({ id }) => id), ["species:canada-lynx"]);
+  assert.deepEqual((await contentRepository.searchSpecies("Antilocapra americana")).map(({ id }) => id), ["species:pronghorn"]);
+  assert.ok((await contentRepository.searchSpecies("waterfowl")).length >= 20);
+  assert.ok((await contentRepository.getSpeciesGroups("species:canvasback")).some(({ id }) => id === "species_group:waterfowl"));
+  assert.ok((await contentRepository.getRelatedSpecies("species:greater-scaup")).some(({ id }) => id === "species:lesser-scaup"));
+  assert.ok((await contentRepository.getSpeciesIdentificationWarnings("species:greater-scaup")).length > 0);
+  assert.deepEqual(await contentRepository.getSpeciesImages("species:greater-scaup"), []);
+});
+
+test("production library is substantial while the selector vocabulary remains compact", async () => {
+  const species = (await contentRepository.getPublishedResources({ locale: "en-CA" })).filter((resource) => resource.type === "species");
+  assert.equal(species.length, 60);
+  const compact = await Promise.all(species.map(async (resource) => ({
+    id: resource.id,
+    n: resource.title,
+    s: resource.speciesProfile.scientificName,
+    a: (await contentRepository.getSpeciesAliases(resource.speciesProfile.speciesId)).map(({ value }) => value),
+    t: resource.speciesProfile.sexAgeInfo?.terminology.map(({ value }) => value) ?? [],
+  })));
+  assert.ok(Buffer.byteLength(JSON.stringify(compact)) < 40_000);
 });

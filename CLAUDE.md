@@ -753,6 +753,24 @@ Species records may contain:
 - conservation/regulatory context
 - related North Ground resources
 
+Species identity is biological and canonical. Sex, age, hunter terminology and
+regulatory animal class are related attributes, not additional species. The
+domain must keep biological sex/age separate from source-defined classes such as
+antlered, antlerless or bearded. A search may resolve to a species plus an
+optional characteristic intent; only the applicable regulatory source can decide
+whether that characteristic satisfies a legal class.
+
+The library may include protected, trapping-focused or otherwise non-huntable
+species when identification or regulatory interpretation justifies them. Library
+presence never implies legal opportunity. Hunting and trapping are distinct
+activities, and regulatory coverage remains a separate capability from the
+species profile.
+
+Species media may include multiple verified roles (general, adult male, adult
+female, juvenile, seasonal form or lookalike comparison). Every label must match
+what was independently verified. If exact identity, licence and attribution are
+not verified, publish no photo.
+
 Hunting content may include:
 
 - hunting methods
@@ -1579,6 +1597,27 @@ Translucency is honoured as a preference: reduced-transparency and missing
 backdrop-filter both fall back to opaque surfaces rather than unreadable ones.
 Secondary text tiers are contrast-checked against the glass they sit on, not
 against the page background.
+
+## The species surfaces are part of this product surface
+
+*Added 2026-09-21.*
+
+`/hunting/species` and `/hunting/species/[species]` belong to Hunt's product
+family, not to the main site's cinematic world and not to a separate editorial
+identity. They share this shell: the same navigation, ground, type scale, glass
+hierarchy and actions, drawn from the same primitives in `globals.css`.
+
+They remain information surfaces rather than instruments. Sharing the shell does
+not mean acquiring a map; a species profile is a species intelligence record
+inside Hunt, and its job is identification, field context and provenance.
+
+Species knowledge and regulatory coverage stay separate in the interface as well
+as in the data. A species page states whether North Ground holds certified rules
+for that species at all; what those rules say for a location and date is Hunt's
+answer to give, and a profile never implies a season.
+
+Hunt is the visual source of truth for all of these. When they disagree, the
+species surfaces change.
 
 ## Navigation
 

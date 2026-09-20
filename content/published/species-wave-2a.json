@@ -1,0 +1,4059 @@
+{
+  "contractVersion": "1.0",
+  "generatedAt": "2026-09-20T20:00:00Z",
+  "entities": [
+    {
+      "id": "species_group:predators",
+      "type": "species_group",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Predators"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Prédateurs"
+        }
+      ],
+      "aliases": [],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species_group:furbearers",
+      "type": "species_group",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Furbearers"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Animaux à fourrure"
+        }
+      ],
+      "aliases": [],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species_group:small-game",
+      "type": "species_group",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Small game"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Petit gibier"
+        }
+      ],
+      "aliases": [],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species_group:squirrels",
+      "type": "species_group",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Squirrels"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Écureuils"
+        }
+      ],
+      "aliases": [],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "activity:trapping",
+      "type": "activity",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Trapping"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Piégeage"
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:gray-wolf",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Gray wolf"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Loup gris",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "gray-wolf"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Canis lupus",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-gray-wolf"
+          ]
+        },
+        {
+          "value": "wolf",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-gray-wolf"
+          ]
+        },
+        {
+          "value": "grey wolf",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-gray-wolf"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:eastern-wolf",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Eastern wolf"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Loup de l'Est",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "eastern-wolf"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Canis lycaon",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-eastern-wolf"
+          ]
+        },
+        {
+          "value": "wolf",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-eastern-wolf"
+          ]
+        },
+        {
+          "value": "eastern timber wolf",
+          "locale": "en-CA",
+          "type": "historical_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-eastern-wolf"
+          ]
+        },
+        {
+          "value": "Algonquin wolf",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-eastern-wolf"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:coyote",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Coyote"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Coyote",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "coyote"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Canis latrans",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-coyote"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:red-fox",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Red fox"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Renard roux",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "red-fox"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Vulpes vulpes",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-red-fox"
+          ]
+        },
+        {
+          "value": "fox",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-red-fox"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:gray-fox",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Gray fox"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Renard gris",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "gray-fox"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Urocyon cinereoargenteus",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-gray-fox"
+          ]
+        },
+        {
+          "value": "fox",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-gray-fox"
+          ]
+        },
+        {
+          "value": "grey fox",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-gray-fox"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:arctic-fox",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Arctic fox"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Renard arctique",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "arctic-fox"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Vulpes lagopus",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-arctic-fox"
+          ]
+        },
+        {
+          "value": "fox",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-arctic-fox"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:canada-lynx",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Canada lynx"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Lynx du Canada",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "canada-lynx"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Lynx canadensis",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-canada-lynx"
+          ]
+        },
+        {
+          "value": "Canadian lynx",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-canada-lynx"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:bobcat",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Bobcat"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Lynx roux",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "bobcat"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Lynx rufus",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-bobcat"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:eastern-cottontail",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Eastern cottontail"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Lapin à queue blanche",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "eastern-cottontail"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Sylvilagus floridanus",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-eastern-cottontail"
+          ]
+        },
+        {
+          "value": "cottontail",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-eastern-cottontail"
+          ]
+        },
+        {
+          "value": "rabbit",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-eastern-cottontail"
+          ]
+        },
+        {
+          "value": "hare",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-eastern-cottontail"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:arctic-hare",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Arctic hare"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Lièvre arctique",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "arctic-hare"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Lepus arcticus",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-arctic-hare"
+          ]
+        },
+        {
+          "value": "rabbit",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-arctic-hare"
+          ]
+        },
+        {
+          "value": "hare",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-arctic-hare"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:american-red-squirrel",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "American red squirrel"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Écureuil roux",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "american-red-squirrel"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Tamiasciurus hudsonicus",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-american-red-squirrel"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:eastern-gray-squirrel",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Eastern gray squirrel"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Écureuil gris",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "eastern-gray-squirrel"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Sciurus carolinensis",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-eastern-gray-squirrel"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:beaver",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "North American beaver"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Castor du Canada",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "beaver"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Castor canadensis",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-beaver"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:raccoon",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Raccoon"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Raton laveur",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "raccoon"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Procyon lotor",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-raccoon"
+          ]
+        },
+        {
+          "value": "coon",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "needs_review",
+          "sourceIds": [
+            "source:official-raccoon"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:american-mink",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "American mink"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Vison d'Amérique",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "american-mink"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Neogale vison",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-american-mink"
+          ]
+        },
+        {
+          "value": "mink",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "needs_review",
+          "sourceIds": [
+            "source:official-american-mink"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:fisher",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Fisher"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Pékan",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "fisher"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Pekania pennanti",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-fisher"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:american-marten",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "American marten"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Martre d'Amérique",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "american-marten"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Martes americana",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-american-marten"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    }
+  ],
+  "resources": [
+    {
+      "id": "species:gray-wolf",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "gray-wolf",
+      "canonicalUrl": "/hunting/species/gray-wolf",
+      "title": "Gray wolf",
+      "description": "Identify Gray wolf, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "gray wolf",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:gray-wolf",
+        "species_group:predators"
+      ],
+      "speciesIds": [
+        "species:gray-wolf"
+      ],
+      "quickAnswer": "Gray wolf (Canis lupus) can be identified as follows: Large canid with a broad muzzle, proportionally small rounded ears and a long, low-carried bushy tail; colour alone is unreliable. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Canis lupus",
+          "sourceIds": [
+            "source:official-gray-wolf"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Canidae",
+          "sourceIds": [
+            "source:official-gray-wolf"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Canada Alaska and parts of contiguous United States",
+          "sourceIds": [
+            "source:official-gray-wolf"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-gray-wolf"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:eastern-wolf",
+        "species:coyote"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:gray-wolf",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Gray wolf"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Loup gris",
+            "official": true
+          }
+        ],
+        "scientificName": "Canis lupus",
+        "taxonomy": {
+          "order": "Carnivora",
+          "family": "Canidae",
+          "genus": "Canis",
+          "species": "lupus",
+          "taxonomySourceId": "source:official-gray-wolf"
+        },
+        "speciesGroupIds": [
+          "species_group:predators"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Canada Alaska and parts of contiguous United States"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Large canid with a broad muzzle, proportionally small rounded ears and a long, low-carried bushy tail; colour alone is unreliable.",
+            "sourceIds": [
+              "source:official-gray-wolf"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:eastern-wolf",
+          "species:coyote"
+        ],
+        "habitat": [
+          {
+            "text": "Forests, tundra, mountains and open country across much of Canada and Alaska.",
+            "sourceIds": [
+              "source:official-gray-wolf"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-gray-wolf"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-gray-wolf"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:eastern-wolf",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "eastern-wolf",
+      "canonicalUrl": "/hunting/species/eastern-wolf",
+      "title": "Eastern wolf",
+      "description": "Identify Eastern wolf, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "eastern wolf",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:eastern-wolf",
+        "species_group:predators"
+      ],
+      "speciesIds": [
+        "species:eastern-wolf"
+      ],
+      "quickAnswer": "Eastern wolf (Canis lycaon) can be identified as follows: A medium-sized wolf of the Great Lakes–St. Lawrence region; appearance overlaps gray wolf and coyote, and visual identification may be inconclusive. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Canis lycaon",
+          "sourceIds": [
+            "source:official-eastern-wolf"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Canidae",
+          "sourceIds": [
+            "source:official-eastern-wolf"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Great Lakes and St. Lawrence forest region of Canada",
+          "sourceIds": [
+            "source:official-eastern-wolf"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-eastern-wolf"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:gray-wolf",
+        "species:coyote"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:eastern-wolf",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Eastern wolf"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Loup de l'Est",
+            "official": true
+          }
+        ],
+        "scientificName": "Canis lycaon",
+        "taxonomy": {
+          "order": "Carnivora",
+          "family": "Canidae",
+          "genus": "Canis",
+          "species": "lycaon",
+          "taxonomySourceId": "source:official-eastern-wolf"
+        },
+        "taxonomicStatus": "contested",
+        "taxonomicNotes": [
+          {
+            "text": "Authorities differ on eastern wolf taxonomy and ancestry; North Ground preserves the named entity and the uncertainty.",
+            "sourceIds": [
+              "source:official-eastern-wolf"
+            ]
+          }
+        ],
+        "speciesGroupIds": [
+          "species_group:predators"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Great Lakes and St. Lawrence forest region of Canada"
+          }
+        ],
+        "identification": [
+          {
+            "text": "A medium-sized wolf of the Great Lakes–St. Lawrence region; appearance overlaps gray wolf and coyote, and visual identification may be inconclusive.",
+            "sourceIds": [
+              "source:official-eastern-wolf"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:gray-wolf",
+          "species:coyote"
+        ],
+        "habitat": [
+          {
+            "text": "Forested landscapes of central Ontario and neighbouring Québec; taxonomy and hybrid ancestry are treated differently by authorities.",
+            "sourceIds": [
+              "source:official-eastern-wolf"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-eastern-wolf"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-eastern-wolf"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:coyote",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "coyote",
+      "canonicalUrl": "/hunting/species/coyote",
+      "title": "Coyote",
+      "description": "Identify Coyote, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "coyote",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:coyote",
+        "species_group:predators"
+      ],
+      "speciesIds": [
+        "species:coyote"
+      ],
+      "quickAnswer": "Coyote (Canis latrans) can be identified as follows: Slender canid with a narrow muzzle, relatively large pointed ears and a bushy tail usually carried below the back. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Canis latrans",
+          "sourceIds": [
+            "source:official-coyote"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Canidae",
+          "sourceIds": [
+            "source:official-coyote"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Most of North America",
+          "sourceIds": [
+            "source:official-coyote"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-coyote"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:gray-wolf",
+        "species:eastern-wolf"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:coyote",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Coyote"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Coyote",
+            "official": true
+          }
+        ],
+        "scientificName": "Canis latrans",
+        "taxonomy": {
+          "order": "Carnivora",
+          "family": "Canidae",
+          "genus": "Canis",
+          "species": "latrans",
+          "taxonomySourceId": "source:official-coyote"
+        },
+        "speciesGroupIds": [
+          "species_group:predators"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Most of North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Slender canid with a narrow muzzle, relatively large pointed ears and a bushy tail usually carried below the back.",
+            "sourceIds": [
+              "source:official-coyote"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:gray-wolf",
+          "species:eastern-wolf"
+        ],
+        "habitat": [
+          {
+            "text": "Highly adaptable across forest, farmland, prairie and urban-edge landscapes.",
+            "sourceIds": [
+              "source:official-coyote"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-coyote"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-coyote"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:red-fox",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "red-fox",
+      "canonicalUrl": "/hunting/species/red-fox",
+      "title": "Red fox",
+      "description": "Identify Red fox, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "red fox",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:red-fox",
+        "species_group:furbearers"
+      ],
+      "speciesIds": [
+        "species:red-fox"
+      ],
+      "quickAnswer": "Red fox (Vulpes vulpes) can be identified as follows: Usually red-orange with black legs, pointed ears and a white-tipped tail; silver and cross colour forms also occur. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Vulpes vulpes",
+          "sourceIds": [
+            "source:official-red-fox"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Canidae",
+          "sourceIds": [
+            "source:official-red-fox"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Native northern populations and introduced lineages in parts of North America",
+          "sourceIds": [
+            "source:official-red-fox"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-red-fox"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:gray-fox",
+        "species:arctic-fox"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:red-fox",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Red fox"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Renard roux",
+            "official": true
+          }
+        ],
+        "scientificName": "Vulpes vulpes",
+        "taxonomy": {
+          "order": "Carnivora",
+          "family": "Canidae",
+          "genus": "Vulpes",
+          "species": "vulpes",
+          "taxonomySourceId": "source:official-red-fox"
+        },
+        "speciesGroupIds": [
+          "species_group:furbearers"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Native northern populations and introduced lineages in parts of North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Usually red-orange with black legs, pointed ears and a white-tipped tail; silver and cross colour forms also occur.",
+            "sourceIds": [
+              "source:official-red-fox"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:gray-fox",
+          "species:arctic-fox"
+        ],
+        "habitat": [
+          {
+            "text": "Open woodland, farmland, tundra and urban-edge habitat across most of North America.",
+            "sourceIds": [
+              "source:official-red-fox"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-red-fox"
+            ]
+          }
+        ],
+        "activityContexts": [
+          {
+            "activityId": "activity:trapping",
+            "note": "This species may be managed under trapping or furbearer frameworks; identity does not establish an open season.",
+            "sourceIds": [
+              "source:official-red-fox"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-red-fox"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:gray-fox",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "gray-fox",
+      "canonicalUrl": "/hunting/species/gray-fox",
+      "title": "Gray fox",
+      "description": "Identify Gray fox, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "gray fox",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:gray-fox",
+        "species_group:furbearers"
+      ],
+      "speciesIds": [
+        "species:gray-fox"
+      ],
+      "quickAnswer": "Gray fox (Urocyon cinereoargenteus) can be identified as follows: Grizzled gray upperparts, rusty sides and a black stripe ending in a black tail tip distinguish it from red fox. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Urocyon cinereoargenteus",
+          "sourceIds": [
+            "source:official-gray-fox"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Canidae",
+          "sourceIds": [
+            "source:official-gray-fox"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "United States and southern Canada",
+          "sourceIds": [
+            "source:official-gray-fox"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-gray-fox"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:red-fox"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:gray-fox",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Gray fox"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Renard gris",
+            "official": true
+          }
+        ],
+        "scientificName": "Urocyon cinereoargenteus",
+        "taxonomy": {
+          "order": "Carnivora",
+          "family": "Canidae",
+          "genus": "Urocyon",
+          "species": "cinereoargenteus",
+          "taxonomySourceId": "source:official-gray-fox"
+        },
+        "speciesGroupIds": [
+          "species_group:furbearers"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "United States and southern Canada"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Grizzled gray upperparts, rusty sides and a black stripe ending in a black tail tip distinguish it from red fox.",
+            "sourceIds": [
+              "source:official-gray-fox"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:red-fox"
+        ],
+        "habitat": [
+          {
+            "text": "Woodland and brushy habitat in the southern part of Canada and much of the United States.",
+            "sourceIds": [
+              "source:official-gray-fox"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-gray-fox"
+            ]
+          }
+        ],
+        "activityContexts": [
+          {
+            "activityId": "activity:trapping",
+            "note": "This species may be managed under trapping or furbearer frameworks; identity does not establish an open season.",
+            "sourceIds": [
+              "source:official-gray-fox"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-gray-fox"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:arctic-fox",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "arctic-fox",
+      "canonicalUrl": "/hunting/species/arctic-fox",
+      "title": "Arctic fox",
+      "description": "Identify Arctic fox, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "arctic fox",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:arctic-fox",
+        "species_group:furbearers"
+      ],
+      "speciesIds": [
+        "species:arctic-fox"
+      ],
+      "quickAnswer": "Arctic fox (Vulpes lagopus) can be identified as follows: Compact fox with small rounded ears and a very full tail; winter coats may be white or blue-gray and summer coats are brown-gray. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Vulpes lagopus",
+          "sourceIds": [
+            "source:official-arctic-fox"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Canidae",
+          "sourceIds": [
+            "source:official-arctic-fox"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Arctic tundra and northern coastal regions of North America",
+          "sourceIds": [
+            "source:official-arctic-fox"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-arctic-fox"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:red-fox"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:arctic-fox",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Arctic fox"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Renard arctique",
+            "official": true
+          }
+        ],
+        "scientificName": "Vulpes lagopus",
+        "taxonomy": {
+          "order": "Carnivora",
+          "family": "Canidae",
+          "genus": "Vulpes",
+          "species": "lagopus",
+          "taxonomySourceId": "source:official-arctic-fox"
+        },
+        "speciesGroupIds": [
+          "species_group:furbearers"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Arctic tundra and northern coastal regions of North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Compact fox with small rounded ears and a very full tail; winter coats may be white or blue-gray and summer coats are brown-gray.",
+            "sourceIds": [
+              "source:official-arctic-fox"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:red-fox"
+        ],
+        "habitat": [
+          {
+            "text": "Arctic tundra and coastal environments north of the treeline.",
+            "sourceIds": [
+              "source:official-arctic-fox"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-arctic-fox"
+            ]
+          }
+        ],
+        "activityContexts": [
+          {
+            "activityId": "activity:trapping",
+            "note": "This species may be managed under trapping or furbearer frameworks; identity does not establish an open season.",
+            "sourceIds": [
+              "source:official-arctic-fox"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-arctic-fox"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:canada-lynx",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "canada-lynx",
+      "canonicalUrl": "/hunting/species/canada-lynx",
+      "title": "Canada lynx",
+      "description": "Identify Canada lynx, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "canada lynx",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:canada-lynx",
+        "species_group:furbearers"
+      ],
+      "speciesIds": [
+        "species:canada-lynx"
+      ],
+      "quickAnswer": "Canada lynx (Lynx canadensis) can be identified as follows: Long legs, very large furry feet, long black ear tufts and a short tail with a completely black tip. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Lynx canadensis",
+          "sourceIds": [
+            "source:official-canada-lynx"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Felidae",
+          "sourceIds": [
+            "source:official-canada-lynx"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Boreal forest across Canada and Alaska with range into the northern contiguous United States",
+          "sourceIds": [
+            "source:official-canada-lynx"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-canada-lynx"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:bobcat"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:canada-lynx",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Canada lynx"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Lynx du Canada",
+            "official": true
+          }
+        ],
+        "scientificName": "Lynx canadensis",
+        "taxonomy": {
+          "order": "Carnivora",
+          "family": "Felidae",
+          "genus": "Lynx",
+          "species": "canadensis",
+          "taxonomySourceId": "source:official-canada-lynx"
+        },
+        "speciesGroupIds": [
+          "species_group:furbearers"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Boreal forest across Canada and Alaska with range into the northern contiguous United States"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Long legs, very large furry feet, long black ear tufts and a short tail with a completely black tip.",
+            "sourceIds": [
+              "source:official-canada-lynx"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:bobcat"
+        ],
+        "habitat": [
+          {
+            "text": "Boreal forest strongly associated with snowshoe hare populations.",
+            "sourceIds": [
+              "source:official-canada-lynx"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-canada-lynx"
+            ]
+          }
+        ],
+        "activityContexts": [
+          {
+            "activityId": "activity:trapping",
+            "note": "This species may be managed under trapping or furbearer frameworks; identity does not establish an open season.",
+            "sourceIds": [
+              "source:official-canada-lynx"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-canada-lynx"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:bobcat",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "bobcat",
+      "canonicalUrl": "/hunting/species/bobcat",
+      "title": "Bobcat",
+      "description": "Identify Bobcat, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "bobcat",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:bobcat",
+        "species_group:predators"
+      ],
+      "speciesIds": [
+        "species:bobcat"
+      ],
+      "quickAnswer": "Bobcat (Lynx rufus) can be identified as follows: Short-tailed cat with barred forelegs and a tail tip that is black above and pale below; feet are smaller than a Canada lynx's. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Lynx rufus",
+          "sourceIds": [
+            "source:official-bobcat"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Felidae",
+          "sourceIds": [
+            "source:official-bobcat"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America",
+          "sourceIds": [
+            "source:official-bobcat"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-bobcat"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:canada-lynx"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:bobcat",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Bobcat"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Lynx roux",
+            "official": true
+          }
+        ],
+        "scientificName": "Lynx rufus",
+        "taxonomy": {
+          "order": "Carnivora",
+          "family": "Felidae",
+          "genus": "Lynx",
+          "species": "rufus",
+          "taxonomySourceId": "source:official-bobcat"
+        },
+        "speciesGroupIds": [
+          "species_group:predators"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Short-tailed cat with barred forelegs and a tail tip that is black above and pale below; feet are smaller than a Canada lynx's.",
+            "sourceIds": [
+              "source:official-bobcat"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:canada-lynx"
+        ],
+        "habitat": [
+          {
+            "text": "Forest, brush, rocky country and agricultural edges across southern Canada and the United States.",
+            "sourceIds": [
+              "source:official-bobcat"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-bobcat"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-bobcat"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:eastern-cottontail",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "eastern-cottontail",
+      "canonicalUrl": "/hunting/species/eastern-cottontail",
+      "title": "Eastern cottontail",
+      "description": "Identify Eastern cottontail, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "eastern cottontail",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:eastern-cottontail",
+        "species_group:hares-rabbits",
+        "species_group:small-game"
+      ],
+      "speciesIds": [
+        "species:eastern-cottontail"
+      ],
+      "quickAnswer": "Eastern cottontail (Sylvilagus floridanus) can be identified as follows: Compact brown-gray rabbit with a rusty nape and conspicuous white cotton-like tail; it does not turn white in winter. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Sylvilagus floridanus",
+          "sourceIds": [
+            "source:official-eastern-cottontail"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Leporidae",
+          "sourceIds": [
+            "source:official-eastern-cottontail"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Eastern and central North America",
+          "sourceIds": [
+            "source:official-eastern-cottontail"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-eastern-cottontail"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:snowshoe-hare"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:eastern-cottontail",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Eastern cottontail"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Lapin à queue blanche",
+            "official": true
+          }
+        ],
+        "scientificName": "Sylvilagus floridanus",
+        "taxonomy": {
+          "order": "Lagomorpha",
+          "family": "Leporidae",
+          "genus": "Sylvilagus",
+          "species": "floridanus",
+          "taxonomySourceId": "source:official-eastern-cottontail"
+        },
+        "speciesGroupIds": [
+          "species_group:hares-rabbits",
+          "species_group:small-game"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Eastern and central North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Compact brown-gray rabbit with a rusty nape and conspicuous white cotton-like tail; it does not turn white in winter.",
+            "sourceIds": [
+              "source:official-eastern-cottontail"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:snowshoe-hare"
+        ],
+        "habitat": [
+          {
+            "text": "Brushy fields, hedgerows and suburban edges in eastern and central North America.",
+            "sourceIds": [
+              "source:official-eastern-cottontail"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-eastern-cottontail"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-eastern-cottontail"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:arctic-hare",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "arctic-hare",
+      "canonicalUrl": "/hunting/species/arctic-hare",
+      "title": "Arctic hare",
+      "description": "Identify Arctic hare, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "arctic hare",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:arctic-hare",
+        "species_group:hares-rabbits",
+        "species_group:small-game"
+      ],
+      "speciesIds": [
+        "species:arctic-hare"
+      ],
+      "quickAnswer": "Arctic hare (Lepus arcticus) can be identified as follows: Large northern hare with short ears and a winter-white coat; summer animals retain white feet and tail. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Lepus arcticus",
+          "sourceIds": [
+            "source:official-arctic-hare"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Leporidae",
+          "sourceIds": [
+            "source:official-arctic-hare"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Arctic Canada and Greenland",
+          "sourceIds": [
+            "source:official-arctic-hare"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-arctic-hare"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:snowshoe-hare"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:arctic-hare",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Arctic hare"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Lièvre arctique",
+            "official": true
+          }
+        ],
+        "scientificName": "Lepus arcticus",
+        "taxonomy": {
+          "order": "Lagomorpha",
+          "family": "Leporidae",
+          "genus": "Lepus",
+          "species": "arcticus",
+          "taxonomySourceId": "source:official-arctic-hare"
+        },
+        "speciesGroupIds": [
+          "species_group:hares-rabbits",
+          "species_group:small-game"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Arctic Canada and Greenland"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Large northern hare with short ears and a winter-white coat; summer animals retain white feet and tail.",
+            "sourceIds": [
+              "source:official-arctic-hare"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:snowshoe-hare"
+        ],
+        "habitat": [
+          {
+            "text": "Treeless Arctic tundra and rocky polar landscapes.",
+            "sourceIds": [
+              "source:official-arctic-hare"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-arctic-hare"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-arctic-hare"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:american-red-squirrel",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "american-red-squirrel",
+      "canonicalUrl": "/hunting/species/american-red-squirrel",
+      "title": "American red squirrel",
+      "description": "Identify American red squirrel, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "american red squirrel",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:american-red-squirrel",
+        "species_group:squirrels",
+        "species_group:small-game"
+      ],
+      "speciesIds": [
+        "species:american-red-squirrel"
+      ],
+      "quickAnswer": "American red squirrel (Tamiasciurus hudsonicus) can be identified as follows: Small reddish squirrel with a pale eye ring and whitish belly; it is much smaller than an eastern gray squirrel. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Tamiasciurus hudsonicus",
+          "sourceIds": [
+            "source:official-american-red-squirrel"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Sciuridae",
+          "sourceIds": [
+            "source:official-american-red-squirrel"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Northern North America",
+          "sourceIds": [
+            "source:official-american-red-squirrel"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-american-red-squirrel"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:eastern-gray-squirrel"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:american-red-squirrel",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "American red squirrel"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Écureuil roux",
+            "official": true
+          }
+        ],
+        "scientificName": "Tamiasciurus hudsonicus",
+        "taxonomy": {
+          "order": "Rodentia",
+          "family": "Sciuridae",
+          "genus": "Tamiasciurus",
+          "species": "hudsonicus",
+          "taxonomySourceId": "source:official-american-red-squirrel"
+        },
+        "speciesGroupIds": [
+          "species_group:squirrels",
+          "species_group:small-game"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Northern North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Small reddish squirrel with a pale eye ring and whitish belly; it is much smaller than an eastern gray squirrel.",
+            "sourceIds": [
+              "source:official-american-red-squirrel"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:eastern-gray-squirrel"
+        ],
+        "habitat": [
+          {
+            "text": "Coniferous and mixed forests across northern North America.",
+            "sourceIds": [
+              "source:official-american-red-squirrel"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-american-red-squirrel"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-american-red-squirrel"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:eastern-gray-squirrel",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "eastern-gray-squirrel",
+      "canonicalUrl": "/hunting/species/eastern-gray-squirrel",
+      "title": "Eastern gray squirrel",
+      "description": "Identify Eastern gray squirrel, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "eastern gray squirrel",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:eastern-gray-squirrel",
+        "species_group:squirrels",
+        "species_group:small-game"
+      ],
+      "speciesIds": [
+        "species:eastern-gray-squirrel"
+      ],
+      "quickAnswer": "Eastern gray squirrel (Sciurus carolinensis) can be identified as follows: Medium tree squirrel, usually gray with a white belly and large bushy tail; black colour morphs are common in parts of Canada. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Sciurus carolinensis",
+          "sourceIds": [
+            "source:official-eastern-gray-squirrel"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Sciuridae",
+          "sourceIds": [
+            "source:official-eastern-gray-squirrel"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Eastern North America with introductions in west",
+          "sourceIds": [
+            "source:official-eastern-gray-squirrel"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-eastern-gray-squirrel"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:american-red-squirrel"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:eastern-gray-squirrel",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Eastern gray squirrel"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Écureuil gris",
+            "official": true
+          }
+        ],
+        "scientificName": "Sciurus carolinensis",
+        "taxonomy": {
+          "order": "Rodentia",
+          "family": "Sciuridae",
+          "genus": "Sciurus",
+          "species": "carolinensis",
+          "taxonomySourceId": "source:official-eastern-gray-squirrel"
+        },
+        "speciesGroupIds": [
+          "species_group:squirrels",
+          "species_group:small-game"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Eastern North America with introductions in west"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Medium tree squirrel, usually gray with a white belly and large bushy tail; black colour morphs are common in parts of Canada.",
+            "sourceIds": [
+              "source:official-eastern-gray-squirrel"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:american-red-squirrel"
+        ],
+        "habitat": [
+          {
+            "text": "Deciduous and mixed woodland, parks and urban areas in eastern North America.",
+            "sourceIds": [
+              "source:official-eastern-gray-squirrel"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-eastern-gray-squirrel"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-eastern-gray-squirrel"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:beaver",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "beaver",
+      "canonicalUrl": "/hunting/species/beaver",
+      "title": "North American beaver",
+      "description": "Identify North American beaver, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "north american beaver",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:beaver",
+        "species_group:furbearers"
+      ],
+      "speciesIds": [
+        "species:beaver"
+      ],
+      "quickAnswer": "North American beaver (Castor canadensis) can be identified as follows: Large aquatic rodent with a broad flat scaly tail, webbed hind feet and orange incisors. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Castor canadensis",
+          "sourceIds": [
+            "source:official-beaver"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Castoridae",
+          "sourceIds": [
+            "source:official-beaver"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America",
+          "sourceIds": [
+            "source:official-beaver"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-beaver"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:beaver",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "North American beaver"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Castor du Canada",
+            "official": true
+          }
+        ],
+        "scientificName": "Castor canadensis",
+        "taxonomy": {
+          "order": "Rodentia",
+          "family": "Castoridae",
+          "genus": "Castor",
+          "species": "canadensis",
+          "taxonomySourceId": "source:official-beaver"
+        },
+        "speciesGroupIds": [
+          "species_group:furbearers"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Large aquatic rodent with a broad flat scaly tail, webbed hind feet and orange incisors.",
+            "sourceIds": [
+              "source:official-beaver"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [],
+        "habitat": [
+          {
+            "text": "Ponds, lakes, rivers and wetlands where woody vegetation is available.",
+            "sourceIds": [
+              "source:official-beaver"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-beaver"
+            ]
+          }
+        ],
+        "activityContexts": [
+          {
+            "activityId": "activity:trapping",
+            "note": "This species may be managed under trapping or furbearer frameworks; identity does not establish an open season.",
+            "sourceIds": [
+              "source:official-beaver"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-beaver"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:raccoon",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "raccoon",
+      "canonicalUrl": "/hunting/species/raccoon",
+      "title": "Raccoon",
+      "description": "Identify Raccoon, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "raccoon",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:raccoon",
+        "species_group:furbearers"
+      ],
+      "speciesIds": [
+        "species:raccoon"
+      ],
+      "quickAnswer": "Raccoon (Procyon lotor) can be identified as follows: Stocky mammal with a black facial mask and a ringed tail. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Procyon lotor",
+          "sourceIds": [
+            "source:official-raccoon"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Procyonidae",
+          "sourceIds": [
+            "source:official-raccoon"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America",
+          "sourceIds": [
+            "source:official-raccoon"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-raccoon"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:raccoon",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Raccoon"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Raton laveur",
+            "official": true
+          }
+        ],
+        "scientificName": "Procyon lotor",
+        "taxonomy": {
+          "order": "Carnivora",
+          "family": "Procyonidae",
+          "genus": "Procyon",
+          "species": "lotor",
+          "taxonomySourceId": "source:official-raccoon"
+        },
+        "speciesGroupIds": [
+          "species_group:furbearers"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Stocky mammal with a black facial mask and a ringed tail.",
+            "sourceIds": [
+              "source:official-raccoon"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [],
+        "habitat": [
+          {
+            "text": "Woodland, wetlands, farmland and urban areas, usually near water or cover.",
+            "sourceIds": [
+              "source:official-raccoon"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-raccoon"
+            ]
+          }
+        ],
+        "activityContexts": [
+          {
+            "activityId": "activity:trapping",
+            "note": "This species may be managed under trapping or furbearer frameworks; identity does not establish an open season.",
+            "sourceIds": [
+              "source:official-raccoon"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-raccoon"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:american-mink",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "american-mink",
+      "canonicalUrl": "/hunting/species/american-mink",
+      "title": "American mink",
+      "description": "Identify American mink, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "american mink",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:american-mink",
+        "species_group:furbearers"
+      ],
+      "speciesIds": [
+        "species:american-mink"
+      ],
+      "quickAnswer": "American mink (Neogale vison) can be identified as follows: Long, low dark-brown mustelid with a narrow tail and a small white chin patch; substantially smaller than a river otter. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Neogale vison",
+          "sourceIds": [
+            "source:official-american-mink"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Mustelidae",
+          "sourceIds": [
+            "source:official-american-mink"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America",
+          "sourceIds": [
+            "source:official-american-mink"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-american-mink"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:american-mink",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "American mink"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Vison d'Amérique",
+            "official": true
+          }
+        ],
+        "scientificName": "Neogale vison",
+        "taxonomy": {
+          "order": "Carnivora",
+          "family": "Mustelidae",
+          "genus": "Neogale",
+          "species": "vison",
+          "taxonomySourceId": "source:official-american-mink"
+        },
+        "speciesGroupIds": [
+          "species_group:furbearers"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Long, low dark-brown mustelid with a narrow tail and a small white chin patch; substantially smaller than a river otter.",
+            "sourceIds": [
+              "source:official-american-mink"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [],
+        "habitat": [
+          {
+            "text": "Shorelines, marshes and wooded waterways across North America.",
+            "sourceIds": [
+              "source:official-american-mink"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-american-mink"
+            ]
+          }
+        ],
+        "activityContexts": [
+          {
+            "activityId": "activity:trapping",
+            "note": "This species may be managed under trapping or furbearer frameworks; identity does not establish an open season.",
+            "sourceIds": [
+              "source:official-american-mink"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-american-mink"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:fisher",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "fisher",
+      "canonicalUrl": "/hunting/species/fisher",
+      "title": "Fisher",
+      "description": "Identify Fisher, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "fisher",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:fisher",
+        "species_group:furbearers"
+      ],
+      "speciesIds": [
+        "species:fisher"
+      ],
+      "quickAnswer": "Fisher (Pekania pennanti) can be identified as follows: Large dark mustelid with a long body, pointed face and long bushy tapering tail. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Pekania pennanti",
+          "sourceIds": [
+            "source:official-fisher"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Mustelidae",
+          "sourceIds": [
+            "source:official-fisher"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Northern North America",
+          "sourceIds": [
+            "source:official-fisher"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-fisher"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:american-marten"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:fisher",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Fisher"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Pékan",
+            "official": true
+          }
+        ],
+        "scientificName": "Pekania pennanti",
+        "taxonomy": {
+          "order": "Carnivora",
+          "family": "Mustelidae",
+          "genus": "Pekania",
+          "species": "pennanti",
+          "taxonomySourceId": "source:official-fisher"
+        },
+        "speciesGroupIds": [
+          "species_group:furbearers"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Northern North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Large dark mustelid with a long body, pointed face and long bushy tapering tail.",
+            "sourceIds": [
+              "source:official-fisher"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:american-marten"
+        ],
+        "habitat": [
+          {
+            "text": "Mature and regenerating forest across northern North America.",
+            "sourceIds": [
+              "source:official-fisher"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-fisher"
+            ]
+          }
+        ],
+        "activityContexts": [
+          {
+            "activityId": "activity:trapping",
+            "note": "This species may be managed under trapping or furbearer frameworks; identity does not establish an open season.",
+            "sourceIds": [
+              "source:official-fisher"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-fisher"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:american-marten",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "american-marten",
+      "canonicalUrl": "/hunting/species/american-marten",
+      "title": "American marten",
+      "description": "Identify American marten, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "american marten",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:american-marten",
+        "species_group:furbearers"
+      ],
+      "speciesIds": [
+        "species:american-marten"
+      ],
+      "quickAnswer": "American marten (Martes americana) can be identified as follows: Slender mustelid with rounded ears, a bushy tail and a yellow-orange throat bib. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Martes americana",
+          "sourceIds": [
+            "source:official-american-marten"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Mustelidae",
+          "sourceIds": [
+            "source:official-american-marten"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Northern North America",
+          "sourceIds": [
+            "source:official-american-marten"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-american-marten"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:fisher"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:american-marten",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "American marten"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Martre d'Amérique",
+            "official": true
+          }
+        ],
+        "scientificName": "Martes americana",
+        "taxonomy": {
+          "order": "Carnivora",
+          "family": "Mustelidae",
+          "genus": "Martes",
+          "species": "americana",
+          "taxonomySourceId": "source:official-american-marten"
+        },
+        "speciesGroupIds": [
+          "species_group:furbearers"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Northern North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Slender mustelid with rounded ears, a bushy tail and a yellow-orange throat bib.",
+            "sourceIds": [
+              "source:official-american-marten"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:fisher"
+        ],
+        "habitat": [
+          {
+            "text": "Coniferous and mixed forests with structural cover across northern North America.",
+            "sourceIds": [
+              "source:official-american-marten"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-american-marten"
+            ]
+          }
+        ],
+        "activityContexts": [
+          {
+            "activityId": "activity:trapping",
+            "note": "This species may be managed under trapping or furbearer frameworks; identity does not establish an open season.",
+            "sourceIds": [
+              "source:official-american-marten"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-american-marten"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "content_block:gray-wolf.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:gray-wolf",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Gray wolf from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:gray-wolf"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:official-gray-wolf"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:eastern-wolf.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:eastern-wolf",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Eastern wolf from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:eastern-wolf"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:official-eastern-wolf"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:coyote.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:coyote",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Coyote from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:coyote"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:official-coyote"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:red-fox.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:red-fox",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Red fox from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:red-fox"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:official-red-fox"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:gray-fox.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:gray-fox",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Gray fox from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:gray-fox"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:official-gray-fox"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:arctic-fox.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:arctic-fox",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Arctic fox from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:arctic-fox"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:official-arctic-fox"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:canada-lynx.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:canada-lynx",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Canada lynx from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:canada-lynx"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:official-canada-lynx"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:bobcat.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:bobcat",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Bobcat from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:bobcat"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:official-bobcat"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:eastern-cottontail.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:eastern-cottontail",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Eastern cottontail from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:eastern-cottontail"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:official-eastern-cottontail"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:arctic-hare.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:arctic-hare",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Arctic hare from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:arctic-hare"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:official-arctic-hare"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:american-red-squirrel.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:american-red-squirrel",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify American red squirrel from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:american-red-squirrel"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:official-american-red-squirrel"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:eastern-gray-squirrel.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:eastern-gray-squirrel",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Eastern gray squirrel from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:eastern-gray-squirrel"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:official-eastern-gray-squirrel"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:fisher.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:fisher",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Fisher from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:fisher"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:official-fisher"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:american-marten.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:american-marten",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify American marten from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:american-marten"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:official-american-marten"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel:gray-wolf-member-predators",
+      "fromId": "species:gray-wolf",
+      "toId": "species_group:predators",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-gray-wolf"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:gray-wolf-similar-eastern-wolf",
+      "fromId": "species:gray-wolf",
+      "toId": "species:eastern-wolf",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-gray-wolf"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:gray-wolf-similar-coyote",
+      "fromId": "species:gray-wolf",
+      "toId": "species:coyote",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-gray-wolf"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:eastern-wolf-member-predators",
+      "fromId": "species:eastern-wolf",
+      "toId": "species_group:predators",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-eastern-wolf"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:eastern-wolf-similar-gray-wolf",
+      "fromId": "species:eastern-wolf",
+      "toId": "species:gray-wolf",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-eastern-wolf"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:eastern-wolf-similar-coyote",
+      "fromId": "species:eastern-wolf",
+      "toId": "species:coyote",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-eastern-wolf"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:coyote-member-predators",
+      "fromId": "species:coyote",
+      "toId": "species_group:predators",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-coyote"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:coyote-similar-gray-wolf",
+      "fromId": "species:coyote",
+      "toId": "species:gray-wolf",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-coyote"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:coyote-similar-eastern-wolf",
+      "fromId": "species:coyote",
+      "toId": "species:eastern-wolf",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-coyote"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:red-fox-member-furbearers",
+      "fromId": "species:red-fox",
+      "toId": "species_group:furbearers",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-red-fox"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:red-fox-similar-gray-fox",
+      "fromId": "species:red-fox",
+      "toId": "species:gray-fox",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-red-fox"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:red-fox-similar-arctic-fox",
+      "fromId": "species:red-fox",
+      "toId": "species:arctic-fox",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-red-fox"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:gray-fox-member-furbearers",
+      "fromId": "species:gray-fox",
+      "toId": "species_group:furbearers",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-gray-fox"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:gray-fox-similar-red-fox",
+      "fromId": "species:gray-fox",
+      "toId": "species:red-fox",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-gray-fox"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:arctic-fox-member-furbearers",
+      "fromId": "species:arctic-fox",
+      "toId": "species_group:furbearers",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-arctic-fox"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:arctic-fox-similar-red-fox",
+      "fromId": "species:arctic-fox",
+      "toId": "species:red-fox",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-arctic-fox"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:canada-lynx-member-furbearers",
+      "fromId": "species:canada-lynx",
+      "toId": "species_group:furbearers",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-canada-lynx"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:canada-lynx-similar-bobcat",
+      "fromId": "species:canada-lynx",
+      "toId": "species:bobcat",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-canada-lynx"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:bobcat-member-predators",
+      "fromId": "species:bobcat",
+      "toId": "species_group:predators",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-bobcat"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:bobcat-similar-canada-lynx",
+      "fromId": "species:bobcat",
+      "toId": "species:canada-lynx",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-bobcat"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:eastern-cottontail-member-hares-rabbits",
+      "fromId": "species:eastern-cottontail",
+      "toId": "species_group:hares-rabbits",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-eastern-cottontail"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:eastern-cottontail-similar-snowshoe-hare",
+      "fromId": "species:eastern-cottontail",
+      "toId": "species:snowshoe-hare",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-eastern-cottontail"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:arctic-hare-member-hares-rabbits",
+      "fromId": "species:arctic-hare",
+      "toId": "species_group:hares-rabbits",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-arctic-hare"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:arctic-hare-similar-snowshoe-hare",
+      "fromId": "species:arctic-hare",
+      "toId": "species:snowshoe-hare",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-arctic-hare"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:american-red-squirrel-member-squirrels",
+      "fromId": "species:american-red-squirrel",
+      "toId": "species_group:squirrels",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-american-red-squirrel"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:american-red-squirrel-similar-eastern-gray-squirrel",
+      "fromId": "species:american-red-squirrel",
+      "toId": "species:eastern-gray-squirrel",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-american-red-squirrel"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:eastern-gray-squirrel-member-squirrels",
+      "fromId": "species:eastern-gray-squirrel",
+      "toId": "species_group:squirrels",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-eastern-gray-squirrel"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:eastern-gray-squirrel-similar-american-red-squirrel",
+      "fromId": "species:eastern-gray-squirrel",
+      "toId": "species:american-red-squirrel",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-eastern-gray-squirrel"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:beaver-member-furbearers",
+      "fromId": "species:beaver",
+      "toId": "species_group:furbearers",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-beaver"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:raccoon-member-furbearers",
+      "fromId": "species:raccoon",
+      "toId": "species_group:furbearers",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-raccoon"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:american-mink-member-furbearers",
+      "fromId": "species:american-mink",
+      "toId": "species_group:furbearers",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-american-mink"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:fisher-member-furbearers",
+      "fromId": "species:fisher",
+      "toId": "species_group:furbearers",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-fisher"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:fisher-similar-american-marten",
+      "fromId": "species:fisher",
+      "toId": "species:american-marten",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-fisher"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:american-marten-member-furbearers",
+      "fromId": "species:american-marten",
+      "toId": "species_group:furbearers",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-american-marten"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:american-marten-similar-fisher",
+      "fromId": "species:american-marten",
+      "toId": "species:fisher",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-american-marten"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    }
+  ],
+  "sources": [
+    {
+      "id": "source:official-gray-wolf",
+      "authority": "Gouvernement du Québec",
+      "title": "Loup gris",
+      "url": "https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/faune/animaux-sauvages-quebec/fiches-especes-fauniques/loup",
+      "publisher": "Gouvernement du Québec",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-eastern-wolf",
+      "authority": "Environment and Climate Change Canada",
+      "title": "Eastern Wolf COSEWIC assessment and status report",
+      "url": "https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/cosewic-assessments-status-reports/eastern-wolf-canis-sp-cf-lycaon-2015.html",
+      "publisher": "Environment and Climate Change Canada",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-coyote",
+      "authority": "Gouvernement du Québec",
+      "title": "Coyote",
+      "url": "https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/faune/animaux-sauvages-quebec/fiches-especes-fauniques/coyote",
+      "publisher": "Gouvernement du Québec",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-red-fox",
+      "authority": "Gouvernement du Québec",
+      "title": "Renard roux",
+      "url": "https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/faune/animaux-sauvages-quebec/fiches-especes-fauniques/renard-roux",
+      "publisher": "Gouvernement du Québec",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-gray-fox",
+      "authority": "Government of Ontario",
+      "title": "Gray fox",
+      "url": "https://www.ontario.ca/page/grey-fox",
+      "publisher": "Government of Ontario",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-arctic-fox",
+      "authority": "Gouvernement du Québec",
+      "title": "Renard arctique",
+      "url": "https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/faune/animaux-sauvages-quebec/fiches-especes-fauniques/renard-arctique",
+      "publisher": "Gouvernement du Québec",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-canada-lynx",
+      "authority": "Gouvernement du Québec",
+      "title": "Lynx du Canada",
+      "url": "https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/faune/animaux-sauvages-quebec/fiches-especes-fauniques/lynx-canada",
+      "publisher": "Gouvernement du Québec",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-bobcat",
+      "authority": "Gouvernement du Québec",
+      "title": "Lynx roux",
+      "url": "https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/faune/animaux-sauvages-quebec/fiches-especes-fauniques/lynx-roux",
+      "publisher": "Gouvernement du Québec",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-eastern-cottontail",
+      "authority": "Gouvernement du Québec",
+      "title": "Lapin à queue blanche",
+      "url": "https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/faune/animaux-sauvages-quebec/fiches-especes-fauniques/lapin-queue-blanche",
+      "publisher": "Gouvernement du Québec",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-arctic-hare",
+      "authority": "Gouvernement du Québec",
+      "title": "Lièvre arctique",
+      "url": "https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/faune/animaux-sauvages-quebec/fiches-especes-fauniques/lievre-arctique",
+      "publisher": "Gouvernement du Québec",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-american-red-squirrel",
+      "authority": "Gouvernement du Québec",
+      "title": "Écureuil roux",
+      "url": "https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/faune/animaux-sauvages-quebec/fiches-especes-fauniques/ecureuil-roux",
+      "publisher": "Gouvernement du Québec",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-eastern-gray-squirrel",
+      "authority": "Gouvernement du Québec",
+      "title": "Écureuil gris",
+      "url": "https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/faune/animaux-sauvages-quebec/fiches-especes-fauniques/ecureuil-gris",
+      "publisher": "Gouvernement du Québec",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-beaver",
+      "authority": "Gouvernement du Québec",
+      "title": "Castor",
+      "url": "https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/faune/animaux-sauvages-quebec/fiches-especes-fauniques/castor",
+      "publisher": "Gouvernement du Québec",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-raccoon",
+      "authority": "Gouvernement du Québec",
+      "title": "Raton laveur",
+      "url": "https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/faune/animaux-sauvages-quebec/fiches-especes-fauniques/raton-laveur",
+      "publisher": "Gouvernement du Québec",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-american-mink",
+      "authority": "Gouvernement du Québec",
+      "title": "Vison d'Amérique",
+      "url": "https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/faune/animaux-sauvages-quebec/fiches-especes-fauniques/vison-amerique",
+      "publisher": "Gouvernement du Québec",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-fisher",
+      "authority": "Gouvernement du Québec",
+      "title": "Pékan",
+      "url": "https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/faune/animaux-sauvages-quebec/fiches-especes-fauniques/pekan",
+      "publisher": "Gouvernement du Québec",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-american-marten",
+      "authority": "Gouvernement du Québec",
+      "title": "Martre d'Amérique",
+      "url": "https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/faune/animaux-sauvages-quebec/fiches-especes-fauniques/martre-amerique",
+      "publisher": "Gouvernement du Québec",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    }
+  ],
+  "claims": [],
+  "media": []
+}

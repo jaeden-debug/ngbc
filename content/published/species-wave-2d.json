@@ -1,0 +1,1122 @@
+{
+  "contractVersion": "1.0",
+  "generatedAt": "2026-09-20T20:00:00Z",
+  "entities": [
+    {
+      "id": "species:elk",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Elk"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Wapiti",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "elk"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Cervus canadensis",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-elk"
+          ]
+        },
+        {
+          "value": "wapiti",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-elk"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:caribou",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Caribou"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Caribou",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "caribou"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Rangifer tarandus",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-caribou"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:mule-deer",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Mule deer"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Cerf mulet",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "mule-deer"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Odocoileus hemionus",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-mule-deer"
+          ]
+        },
+        {
+          "value": "blacktail",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "needs_review",
+          "sourceIds": [
+            "source:official-mule-deer"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:pronghorn",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Pronghorn"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Antilope d'Amérique",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "pronghorn"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Antilocapra americana",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-pronghorn"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:brown-bear",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Brown bear"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Ours brun",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "brown-bear"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Ursus arctos",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:official-brown-bear"
+          ]
+        },
+        {
+          "value": "grizzly bear",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "needs_review",
+          "sourceIds": [
+            "source:official-brown-bear"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    }
+  ],
+  "resources": [
+    {
+      "id": "species:elk",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "elk",
+      "canonicalUrl": "/hunting/species/elk",
+      "title": "Elk",
+      "description": "Identify Elk, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "elk",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:elk",
+        "species_group:big-game"
+      ],
+      "speciesIds": [
+        "species:elk"
+      ],
+      "quickAnswer": "Elk (Cervus canadensis) can be identified as follows: Large deer with a pale rump patch and dark neck; adult bulls carry long branching antlers, while cows do not. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Cervus canadensis",
+          "sourceIds": [
+            "source:official-elk"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Cervidae",
+          "sourceIds": [
+            "source:official-elk"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Western and locally restored North America",
+          "sourceIds": [
+            "source:official-elk"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-elk"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:elk",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Elk"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Wapiti",
+            "official": true
+          }
+        ],
+        "scientificName": "Cervus canadensis",
+        "taxonomy": {
+          "order": "Artiodactyla",
+          "family": "Cervidae",
+          "genus": "Cervus",
+          "species": "canadensis",
+          "taxonomySourceId": "source:official-elk"
+        },
+        "speciesGroupIds": [
+          "species_group:big-game"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Western and locally restored North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Large deer with a pale rump patch and dark neck; adult bulls carry long branching antlers, while cows do not.",
+            "sourceIds": [
+              "source:official-elk"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [],
+        "habitat": [
+          {
+            "text": "Western forests, foothills and grasslands, plus some restored eastern populations.",
+            "sourceIds": [
+              "source:official-elk"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-elk"
+            ]
+          }
+        ],
+        "sexAgeInfo": {
+          "terminology": [
+            {
+              "value": "bull elk",
+              "locale": "en-CA",
+              "kind": "sex_term",
+              "intent": {
+                "kind": "BIOLOGICAL",
+                "dimension": "SEX",
+                "value": "MALE"
+              }
+            },
+            {
+              "value": "cow elk",
+              "locale": "en-CA",
+              "kind": "sex_term",
+              "intent": {
+                "kind": "BIOLOGICAL",
+                "dimension": "SEX",
+                "value": "FEMALE"
+              }
+            },
+            {
+              "value": "elk calf",
+              "locale": "en-CA",
+              "kind": "age_term",
+              "intent": {
+                "kind": "BIOLOGICAL",
+                "dimension": "AGE_CLASS",
+                "value": "CALF"
+              }
+            }
+          ]
+        },
+        "sourceIds": [
+          "source:official-elk"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:caribou",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "caribou",
+      "canonicalUrl": "/hunting/species/caribou",
+      "title": "Caribou",
+      "description": "Identify Caribou, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "caribou",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:caribou",
+        "species_group:big-game"
+      ],
+      "speciesIds": [
+        "species:caribou"
+      ],
+      "quickAnswer": "Caribou (Rangifer tarandus) can be identified as follows: Medium-large deer with broad hooves and a pale neck and rump; both sexes can grow antlers, so antlers do not establish sex. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Rangifer tarandus",
+          "sourceIds": [
+            "source:official-caribou"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Cervidae",
+          "sourceIds": [
+            "source:official-caribou"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Northern and boreal North America",
+          "sourceIds": [
+            "source:official-caribou"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-caribou"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:caribou",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Caribou"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Caribou",
+            "official": true
+          }
+        ],
+        "scientificName": "Rangifer tarandus",
+        "taxonomy": {
+          "order": "Artiodactyla",
+          "family": "Cervidae",
+          "genus": "Rangifer",
+          "species": "tarandus",
+          "taxonomySourceId": "source:official-caribou"
+        },
+        "speciesGroupIds": [
+          "species_group:big-game"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Northern and boreal North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Medium-large deer with broad hooves and a pale neck and rump; both sexes can grow antlers, so antlers do not establish sex.",
+            "sourceIds": [
+              "source:official-caribou"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [],
+        "habitat": [
+          {
+            "text": "Tundra and boreal landscapes; population and ecotype distinctions are important.",
+            "sourceIds": [
+              "source:official-caribou"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-caribou"
+            ]
+          }
+        ],
+        "sexAgeInfo": {
+          "terminology": [
+            {
+              "value": "bull caribou",
+              "locale": "en-CA",
+              "kind": "sex_term",
+              "intent": {
+                "kind": "BIOLOGICAL",
+                "dimension": "SEX",
+                "value": "MALE"
+              }
+            },
+            {
+              "value": "cow caribou",
+              "locale": "en-CA",
+              "kind": "sex_term",
+              "intent": {
+                "kind": "BIOLOGICAL",
+                "dimension": "SEX",
+                "value": "FEMALE"
+              }
+            },
+            {
+              "value": "caribou calf",
+              "locale": "en-CA",
+              "kind": "age_term",
+              "intent": {
+                "kind": "BIOLOGICAL",
+                "dimension": "AGE_CLASS",
+                "value": "CALF"
+              }
+            }
+          ]
+        },
+        "sourceIds": [
+          "source:official-caribou"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:mule-deer",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "mule-deer",
+      "canonicalUrl": "/hunting/species/mule-deer",
+      "title": "Mule deer",
+      "description": "Identify Mule deer, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "mule deer",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:mule-deer",
+        "species_group:deer",
+        "species_group:big-game"
+      ],
+      "speciesIds": [
+        "species:mule-deer"
+      ],
+      "quickAnswer": "Mule deer (Odocoileus hemionus) can be identified as follows: Large-eared deer with a black-tipped tail and bounding gait; tail and antler form help distinguish it from white-tailed deer. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Odocoileus hemionus",
+          "sourceIds": [
+            "source:official-mule-deer"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Cervidae",
+          "sourceIds": [
+            "source:official-mule-deer"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Western North America",
+          "sourceIds": [
+            "source:official-mule-deer"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-mule-deer"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:white-tailed-deer"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:mule-deer",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Mule deer"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Cerf mulet",
+            "official": true
+          }
+        ],
+        "scientificName": "Odocoileus hemionus",
+        "taxonomy": {
+          "order": "Artiodactyla",
+          "family": "Cervidae",
+          "genus": "Odocoileus",
+          "species": "hemionus",
+          "taxonomySourceId": "source:official-mule-deer"
+        },
+        "speciesGroupIds": [
+          "species_group:deer",
+          "species_group:big-game"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Western North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Large-eared deer with a black-tipped tail and bounding gait; tail and antler form help distinguish it from white-tailed deer.",
+            "sourceIds": [
+              "source:official-mule-deer"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:white-tailed-deer"
+        ],
+        "habitat": [
+          {
+            "text": "Western shrublands, mountains, forests and open country.",
+            "sourceIds": [
+              "source:official-mule-deer"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-mule-deer"
+            ]
+          }
+        ],
+        "sexAgeInfo": {
+          "terminology": [
+            {
+              "value": "mule deer buck",
+              "locale": "en-CA",
+              "kind": "sex_term",
+              "intent": {
+                "kind": "BIOLOGICAL",
+                "dimension": "SEX",
+                "value": "MALE"
+              }
+            },
+            {
+              "value": "mule deer doe",
+              "locale": "en-CA",
+              "kind": "sex_term",
+              "intent": {
+                "kind": "BIOLOGICAL",
+                "dimension": "SEX",
+                "value": "FEMALE"
+              }
+            },
+            {
+              "value": "mule deer fawn",
+              "locale": "en-CA",
+              "kind": "age_term",
+              "intent": {
+                "kind": "BIOLOGICAL",
+                "dimension": "AGE_CLASS",
+                "value": "FAWN"
+              }
+            }
+          ]
+        },
+        "sourceIds": [
+          "source:official-mule-deer"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:pronghorn",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "pronghorn",
+      "canonicalUrl": "/hunting/species/pronghorn",
+      "title": "Pronghorn",
+      "description": "Identify Pronghorn, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "pronghorn",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:pronghorn",
+        "species_group:big-game"
+      ],
+      "speciesIds": [
+        "species:pronghorn"
+      ],
+      "quickAnswer": "Pronghorn (Antilocapra americana) can be identified as follows: Tan-and-white ungulate with bold white rump, dark facial markings and branched horn sheaths; it is not a true antelope. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Antilocapra americana",
+          "sourceIds": [
+            "source:official-pronghorn"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Antilocapridae",
+          "sourceIds": [
+            "source:official-pronghorn"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Western and central North America",
+          "sourceIds": [
+            "source:official-pronghorn"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-pronghorn"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:pronghorn",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Pronghorn"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Antilope d'Amérique",
+            "official": true
+          }
+        ],
+        "scientificName": "Antilocapra americana",
+        "taxonomy": {
+          "order": "Artiodactyla",
+          "family": "Antilocapridae",
+          "genus": "Antilocapra",
+          "species": "americana",
+          "taxonomySourceId": "source:official-pronghorn"
+        },
+        "speciesGroupIds": [
+          "species_group:big-game"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Western and central North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Tan-and-white ungulate with bold white rump, dark facial markings and branched horn sheaths; it is not a true antelope.",
+            "sourceIds": [
+              "source:official-pronghorn"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [],
+        "habitat": [
+          {
+            "text": "Open prairie, sagebrush and semi-arid grassland of western North America.",
+            "sourceIds": [
+              "source:official-pronghorn"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-pronghorn"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-pronghorn"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:brown-bear",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "brown-bear",
+      "canonicalUrl": "/hunting/species/brown-bear",
+      "title": "Brown bear",
+      "description": "Identify Brown bear, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "brown bear",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:brown-bear",
+        "species_group:big-game"
+      ],
+      "speciesIds": [
+        "species:brown-bear"
+      ],
+      "quickAnswer": "Brown bear (Ursus arctos) can be identified as follows: Large bear with a prominent shoulder hump, dish-shaped facial profile and long foreclaws; colour ranges from blond to nearly black. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Ursus arctos",
+          "sourceIds": [
+            "source:official-brown-bear"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Ursidae",
+          "sourceIds": [
+            "source:official-brown-bear"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Alaska western/northern Canada",
+          "sourceIds": [
+            "source:official-brown-bear"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:official-brown-bear"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:american-black-bear"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:brown-bear",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Brown bear"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Ours brun",
+            "official": true
+          }
+        ],
+        "scientificName": "Ursus arctos",
+        "taxonomy": {
+          "order": "Carnivora",
+          "family": "Ursidae",
+          "genus": "Ursus",
+          "species": "arctos",
+          "taxonomySourceId": "source:official-brown-bear"
+        },
+        "speciesGroupIds": [
+          "species_group:big-game"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Alaska western/northern Canada"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Large bear with a prominent shoulder hump, dish-shaped facial profile and long foreclaws; colour ranges from blond to nearly black.",
+            "sourceIds": [
+              "source:official-brown-bear"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:american-black-bear"
+        ],
+        "habitat": [
+          {
+            "text": "Alaska and western or northern Canada in habitats from coast to alpine and tundra.",
+            "sourceIds": [
+              "source:official-brown-bear"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:official-brown-bear"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:official-brown-bear"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "content_block:mule-deer.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:mule-deer",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Mule deer from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:mule-deer"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:official-mule-deer"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:brown-bear.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:brown-bear",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Brown bear from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:brown-bear"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:official-brown-bear"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel:elk-member-big-game",
+      "fromId": "species:elk",
+      "toId": "species_group:big-game",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-elk"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:caribou-member-big-game",
+      "fromId": "species:caribou",
+      "toId": "species_group:big-game",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-caribou"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:mule-deer-member-deer",
+      "fromId": "species:mule-deer",
+      "toId": "species_group:deer",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-mule-deer"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:mule-deer-similar-white-tailed-deer",
+      "fromId": "species:mule-deer",
+      "toId": "species:white-tailed-deer",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-mule-deer"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:pronghorn-member-big-game",
+      "fromId": "species:pronghorn",
+      "toId": "species_group:big-game",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-pronghorn"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:brown-bear-member-big-game",
+      "fromId": "species:brown-bear",
+      "toId": "species_group:big-game",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-brown-bear"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:brown-bear-similar-american-black-bear",
+      "fromId": "species:brown-bear",
+      "toId": "species:american-black-bear",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:official-brown-bear"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    }
+  ],
+  "sources": [
+    {
+      "id": "source:official-elk",
+      "authority": "Parks Canada",
+      "title": "Elk in Banff National Park",
+      "url": "https://parks.canada.ca/pn-np/ab/banff/nature/faune-wildlife/mammal/ongules/cervids/wapiti",
+      "publisher": "Parks Canada",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-caribou",
+      "authority": "Parks Canada",
+      "title": "Southern Mountain Caribou conservation",
+      "url": "https://parks.canada.ca/nature/science/especes-species/caribou",
+      "publisher": "Parks Canada",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-mule-deer",
+      "authority": "Parks Canada",
+      "title": "Deer family — Kootenay National Park",
+      "url": "https://parks.canada.ca/pn-np/bc/kootenay/nature/faune-fauna/cervids",
+      "publisher": "Parks Canada",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-pronghorn",
+      "authority": "Government of Alberta",
+      "title": "Watchable Wildlife — Pronghorn",
+      "url": "https://open.alberta.ca/dataset/adbc7152-9e43-48f3-8ad2-79167cac7a9c/resource/465fc01f-899e-4ce2-99c1-9fb38e58a0eb/download/2014-12-19-watchable-wildlife-calendar-2015.pdf",
+      "publisher": "Government of Alberta",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:official-brown-bear",
+      "authority": "Parks Canada",
+      "title": "Grizzly bear identification",
+      "url": "https://parks.canada.ca/pn-np/nt/thaidene-nene/security-safety/ours-bears/identification",
+      "publisher": "Parks Canada",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    }
+  ],
+  "claims": [],
+  "media": []
+}

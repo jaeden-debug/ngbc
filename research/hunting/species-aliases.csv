@@ -8,6 +8,14 @@ alias:blue-grouse,blue grouse,en,western North America,,historical_name,AMBIGUOU
 alias:partridge,partridge,en,North America,,common_name,AMBIGUOUS,species:ruffed-grouse|species:gray-partridge,source:itis-taxonomy,SOURCE_FOUND,Regional usage can mean ruffed grouse or true partridge
 alias:partridge-fr,perdrix,fr,Canada,,common_name,AMBIGUOUS,species:ruffed-grouse|species:gray-partridge,source:itis-taxonomy,SOURCE_FOUND,Regional vernacular is unsafe for exact resolution
 alias:spruce-hen,spruce hen,en,Canada,species:spruce-grouse,common_name,CONTEXTUAL,,source:itis-taxonomy,SOURCE_FOUND,
+alias:wolf,wolf,en,Canada,,common_name,AMBIGUOUS,species:gray-wolf|species:eastern-wolf,source:quebec-gray-wolf,SOURCE_FOUND,Large wild canids overlap and hybrid ancestry cannot be resolved safely from a generic query
+alias:grey-wolf,grey wolf,en,Canada,species:gray-wolf,common_name,EXACT,,source:quebec-gray-wolf,SOURCE_FOUND,
+alias:eastern-timber-wolf,eastern timber wolf,en,Canada,species:eastern-wolf,historical_name,CONTEXTUAL,,source:ca-eccc-eastern-wolf,SOURCE_FOUND,Taxonomic usage varies by authority
+alias:algonquin-wolf,Algonquin wolf,en,Ontario,species:eastern-wolf,common_name,CONTEXTUAL,,source:ca-eccc-eastern-wolf,SOURCE_FOUND,
+alias:fox,fox,en,Canada,,common_name,AMBIGUOUS,species:red-fox|species:gray-fox|species:arctic-fox,source:itis-taxonomy,SOURCE_FOUND,Generic query must return canonical fox choices
+alias:grey-fox,grey fox,en,Canada,species:gray-fox,common_name,EXACT,,source:ca-eccc-gray-fox,SOURCE_FOUND,
+alias:canadian-lynx,Canadian lynx,en,Canada,species:canada-lynx,common_name,EXACT,,source:quebec-canada-lynx,SOURCE_FOUND,
+alias:cottontail,cottontail,en,North America,,common_name,AMBIGUOUS,species:eastern-cottontail|species:mountain-cottontail,source:itis-taxonomy,SOURCE_FOUND,Generic cottontail is not one species
 alias:franklins-grouse,Franklin's grouse,en,western North America,species:spruce-grouse,historical_name,CONTEXTUAL,,source:itis-taxonomy,NEEDS_REVIEW,Subspecific/historic treatment
 alias:willow-grouse,willow grouse,en,northern North America,species:willow-ptarmigan,common_name,CONTEXTUAL,,source:itis-taxonomy,SOURCE_FOUND,
 alias:ringneck,ringneck,en,North America,,common_name,AMBIGUOUS,species:ring-necked-pheasant|species:ring-necked-duck,source:itis-taxonomy,NEEDS_REVIEW,Can describe pheasant or duck; resolve only with context

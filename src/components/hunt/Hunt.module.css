@@ -14,10 +14,9 @@
   position: relative;
   min-height: 100dvh;
   padding-bottom: 56px;
-  background:
-    radial-gradient(1200px 620px at 18% -8%, rgba(47, 65, 51, 0.30), transparent 62%),
-    radial-gradient(900px 520px at 92% 4%, rgba(74, 63, 47, 0.20), transparent 60%),
-    var(--ng-black);
+  /* The ground recipe moved to `--ng-product-bg` in globals.css when the species
+     surfaces adopted this shell. Same pixels, one definition. */
+  background: var(--ng-product-bg);
   color: var(--ng-cream);
 }
 
@@ -761,6 +760,9 @@
 .speciesSearchRow { position: sticky; top: 0; z-index: 1; padding: .55rem; background: rgba(17, 22, 18, .96); }
 .speciesSearch { width: 100%; min-height: 42px; border: 1px solid var(--ng-line); border-radius: .45rem; padding: .6rem .7rem; background: rgba(0, 0, 0, .22); color: var(--ng-bone); font: inherit; }
 .speciesSearch:focus-visible { outline: 2px solid var(--ng-fire); outline-offset: 2px; }
+.speciesGroup { list-style: none; }
+.speciesGroupLabel { display: block; padding: .7rem .75rem .35rem; color: var(--ng-sand); font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.speciesGroupList { margin: 0; padding: 0; list-style: none; }
 .speciesCoverage { margin-left: auto; color: var(--ng-bone-faint); font-size: .68rem; line-height: 1.2; text-align: right; }
 .speciesCoverage[data-verified] { color: var(--ng-moss-light); }
 .speciesOption[aria-disabled="true"] { opacity: .68; cursor: not-allowed; }

@@ -8,6 +8,10 @@ const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const VERIFICATION = new Set(["unverified", "needs_review", "verified", "conflict", "stale", "superseded"]);
 const RESOURCE_STATUS = new Set(["draft", "in_review", "published", "stale", "archived"]);
 const QUICK_ANSWER_TYPES = new Set(["guide", "condition", "reference"]);
+const BIOLOGICAL_SEX = new Set(["MALE", "FEMALE", "UNKNOWN"]);
+const BIOLOGICAL_AGE = new Set(["ADULT", "JUVENILE", "CALF", "FAWN", "OTHER", "UNKNOWN"]);
+const REGULATORY_DIMENSIONS = new Set(["ANTLER_CLASS", "BIRD_CHARACTERISTIC", "JURISDICTION_DEFINED"]);
+const SPECIES_MEDIA_ROLES = new Set(["general", "adult_male", "adult_female", "juvenile", "winter_form", "breeding_plumage", "nonbreeding_plumage", "lookalike_comparison"]);
 const APPLICABILITY_ID_KEYS = ["countryIds", "jurisdictionIds", "zoneIds", "speciesIds", "activityIds", "huntTypeIds", "methodIds", "conditionIds", "weatherConditionIds"];
 const RELATION_ENDPOINTS = {
   evaluates_product: [["field_test"], ["product"]],
@@ -239,6 +243,23 @@ bundle.resources.forEach((resource, index) => {
     if (!/^[A-Z][a-z-]+ [a-z][a-z-]+$/.test(profile?.scientificName ?? "") || profile.scientificName !== expectedScientificName) {
       error("INVALID_SCIENTIFIC_NAME", `${path}.speciesProfile.scientificName`, "must be a binomial matching taxonomy genus and species");
     }
+    const terminology = profile?.sexAgeInfo?.terminology;
+    if (terminology != null && !Array.isArray(terminology)) error("INVALID_SPECIES_TERMINOLOGY", `${path}.speciesProfile.sexAgeInfo.terminology`, "must be an array");
+    const termKeys = new Set();
+    for (const [termIndex, term] of (Array.isArray(terminology) ? terminology : []).entries()) {
+      const termPath = `${path}.speciesProfile.sexAgeInfo.terminology[${termIndex}]`;
+      const key = `${term?.locale ?? "*"}|${String(term?.value ?? "").trim().toLocaleLowerCase("en-CA")}`;
+      if (!term?.value?.trim()) error("EMPTY_SPECIES_TERM", `${termPath}.value`, "terminology requires a value");
+      if (termKeys.has(key)) error("DUPLICATE_SPECIES_TERM", `${termPath}.value`, `duplicate terminology in locale scope: ${String(term?.value)}`);
+      termKeys.add(key);
+      const intent = term?.intent;
+      if (intent?.kind === "BIOLOGICAL" && intent?.dimension === "SEX" && !BIOLOGICAL_SEX.has(intent?.value)) error("INVALID_BIOLOGICAL_SEX", `${termPath}.intent.value`, "unknown biological sex");
+      else if (intent?.kind === "BIOLOGICAL" && intent?.dimension === "AGE_CLASS" && !BIOLOGICAL_AGE.has(intent?.value)) error("INVALID_BIOLOGICAL_AGE", `${termPath}.intent.value`, "unknown biological age class");
+      else if (intent?.kind === "REGULATORY_CLASS") {
+        if (!REGULATORY_DIMENSIONS.has(intent?.dimension)) error("INVALID_REGULATORY_DIMENSION", `${termPath}.intent.dimension`, "unknown regulatory animal-class dimension");
+        if (!Array.isArray(term?.sourceIds) || term.sourceIds.length === 0) error("UNSOURCED_REGULATORY_TERM", `${termPath}.sourceIds`, "regulatory-class terminology requires a source; it is not a biological synonym");
+      } else if (intent?.kind !== "BIOLOGICAL") error("INVALID_CHARACTERISTIC_INTENT", `${termPath}.intent`, "terminology requires a biological or regulatory-class intent");
+    }
   }
   validateApplicability(resource?.applicability, `${path}.applicability`, ids);
 
@@ -336,6 +357,14 @@ bundle.media.forEach((media, index) => {
   if (Array.isArray(media?.depictsSpeciesIds) && media.depictsSpeciesIds.length > 1) {
     error("AMBIGUOUS_PRIMARY_SPECIES_MEDIA", `${path}.depictsSpeciesIds`, "species media must identify exactly one canonical species record");
   }
+  if (media?.speciesMediaRole && !SPECIES_MEDIA_ROLES.has(media.speciesMediaRole)) {
+    error("INVALID_SPECIES_MEDIA_ROLE", `${path}.speciesMediaRole`, "unknown species media role");
+  }
+  if ((media?.depictsSex || media?.depictsAgeClass || media?.speciesMediaRole) && (!Array.isArray(media?.depictsSpeciesIds) || media.depictsSpeciesIds.length !== 1)) {
+    error("UNSCOPED_SPECIES_MEDIA_ROLE", path, "sex, age and species-media roles require exactly one canonical species");
+  }
+  if (media?.depictsSex && !BIOLOGICAL_SEX.has(media.depictsSex)) error("INVALID_MEDIA_SEX", `${path}.depictsSex`, "unknown biological sex");
+  if (media?.depictsAgeClass && !BIOLOGICAL_AGE.has(media.depictsAgeClass)) error("INVALID_MEDIA_AGE", `${path}.depictsAgeClass`, "unknown biological age class");
   if (media?.sourceType === "unsplash" && media?.status === "active") {
     if (!media?.sourceUrl || !media?.attribution || !media?.altText) {
       error("INCOMPLETE_UNSPLASH_ATTRIBUTION", path, "active Unsplash media requires sourceUrl, attribution, and useful altText");

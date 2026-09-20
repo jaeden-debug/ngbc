@@ -10,7 +10,10 @@ export default function Breadcrumbs({ items }: { items: readonly BreadcrumbItem[
 
   return (
     <>
-      <nav aria-label="Breadcrumb">
+      {/* Styled by `.ng-breadcrumb` in globals.css rather than by each consuming
+          route, which is why the library previously rendered a raw numbered list
+          while the profile page restyled the same markup locally. */}
+      <nav aria-label="Breadcrumb" className="ng-breadcrumb">
         <ol>
           {items.map((item, index) => {
             const isCurrent = index === items.length - 1;

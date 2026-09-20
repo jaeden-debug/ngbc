@@ -1,4 +1,4 @@
-# Species media audit — Wave 1
+# Species media audit — Waves 1–2
 
 Reviewed: 2026-09-20
 
@@ -18,3 +18,11 @@ Public species imagery is governed by `MediaRecord.identityVerification`. An ima
 | Canada goose | No photo | — | No candidate passed exact-species review | Cackling goose; population size variation | Not applicable |
 
 This is a publication audit, not evidence that Unsplash lacks suitable photographs. Human visual verification remains mandatory; automated validation can verify provenance and workflow state, not biological identity.
+
+## Wave 2 publication decision
+
+All 50 Wave 2 profiles are intentionally published without a photograph. No Unsplash candidate was promoted because an API-backed attribution record and human exact-species review were not available. This is especially important for the new high-risk lookalikes: gray/eastern wolf/coyote, red/gray/arctic fox, Canada lynx/bobcat, willow/rock ptarmigan, female Mallard/American black duck, greater/lesser scaup, Canada/cackling goose, redhead/canvasback, and white-tailed/mule deer.
+
+The content contract now supports multiple verified images per species with explicit roles: general, adult male, adult female, juvenile, winter form, breeding plumage, nonbreeding plumage, and lookalike comparison. Sex, age, or seasonal labels are optional and must describe only what was independently verified; a general species image cannot inherit a sex label by assumption.
+
+Publication validation rejects species-targeted media unless it identifies exactly one canonical species and has verified identity. Active Unsplash records still require creator, licence, source URL, attribution, alt text, and recorded human verification. Until those conditions are met, the correct production state is “No species photograph published.”

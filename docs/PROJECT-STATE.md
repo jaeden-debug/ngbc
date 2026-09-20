@@ -4,7 +4,7 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-20 (Ontario conditional regulatory engine — turkey, deer, black bear, moose)
+Last updated: 2026-09-21 (species library and profiles brought into the Hunt product visual language; Ontario conditional regulatory engine — turkey, deer, black bear, moose)
 
 ## Current Product State
 

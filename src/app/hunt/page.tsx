@@ -86,17 +86,30 @@ export default async function HuntPage() {
   const resources = await contentRepository.getPublishedResources({ locale: "en-CA" });
   const speciesOptions: SpeciesSelectorOption[] = await Promise.all(resources
     .filter((resource) => resource.type === "species")
-    .map(async (resource) => ({
-      id: resource.speciesProfile.speciesId,
-      displayName: resource.title,
-      scientificName: resource.speciesProfile.scientificName,
-      category: resource.speciesProfile.speciesGroupIds[0]?.split(":", 2)[1]?.replaceAll("-", " ") ?? "Other",
-      aliases: (await contentRepository.getSpeciesAliases(resource.speciesProfile.speciesId)).map(({ value }) => value),
-      resourcePath: resource.canonicalUrl ?? `/hunting/species/${resource.slug}`,
-      regulatoryCoverage: (SUPPORTED_SPECIES_IDS as readonly string[]).includes(resource.speciesProfile.speciesId)
-        ? "VERIFIED" as const
-        : "IN_DEVELOPMENT" as const,
-    })));
+    .map(async (resource) => {
+      const [aliases, groups] = await Promise.all([
+        contentRepository.getSpeciesAliases(resource.speciesProfile.speciesId),
+        contentRepository.getSpeciesGroups(resource.speciesProfile.speciesId),
+      ]);
+      const searchTerms = [
+        ...resource.speciesProfile.commonNames.map(({ value }) => value),
+        ...aliases.map(({ value }) => value),
+        ...(resource.speciesProfile.sexAgeInfo?.terminology.map(({ value }) => value) ?? []),
+        ...groups.flatMap((group) => [...group.names, ...(group.aliases ?? [])].map(({ value }) => value)),
+      ];
+      return {
+        id: resource.speciesProfile.speciesId,
+        displayName: resource.title,
+        scientificName: resource.speciesProfile.scientificName,
+        category: groups[0]?.names.find(({ locale }) => locale === "en-CA")?.value ?? "Other",
+        aliases: aliases.map(({ value }) => value),
+        searchTerms: [...new Set(searchTerms)],
+        resourcePath: resource.canonicalUrl ?? `/hunting/species/${resource.slug}`,
+        regulatoryCoverage: (SUPPORTED_SPECIES_IDS as readonly string[]).includes(resource.speciesProfile.speciesId)
+          ? "VERIFIED" as const
+          : "IN_DEVELOPMENT" as const,
+      };
+    }));
   return (
     <main className={styles.page}>
       <HuntNav />

@@ -55,6 +55,8 @@ export interface SpeciesSelectorOption {
   scientificName: string;
   category: string;
   aliases: string[];
+  /** Compact server-built vocabulary: aliases, French names, groups and hunter terms. */
+  searchTerms: string[];
   resourcePath: string;
   regulatoryCoverage: "VERIFIED" | "IN_DEVELOPMENT";
 }

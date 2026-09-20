@@ -13,13 +13,21 @@ import styles from "./Hunt.module.css";
  * navigates to nothing is worse than a short one, so they are omitted until they
  * are real rather than shipped as dead links.
  */
-const LINKS: Array<{ href: string; label: string; current?: boolean }> = [
+const LINKS: Array<{ href: string; label: string }> = [
   { href: "/", label: "Home" },
-  { href: "/hunt", label: "Hunt", current: true },
+  { href: "/hunt", label: "Hunt" },
   { href: "/hunting/species", label: "Species" },
 ];
 
-export default function HuntNav() {
+/**
+ * Which destination this navigation is currently sitting on.
+ *
+ * The species library and species profiles carry the same navigation as Hunt —
+ * they are the same product, and a person moving between them has not changed
+ * sites. Callers pass the section they belong to rather than the exact URL, so a
+ * profile at `/hunting/species/moose` still marks `Species` as current.
+ */
+export default function HuntNav({ current = "/hunt" }: { current?: string } = {}) {
   const [open, setOpen] = useState(false);
   const menuId = useId();
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -78,8 +86,8 @@ export default function HuntNav() {
               key={link.href}
               className={styles.navLink}
               href={link.href}
-              aria-current={link.current ? "page" : undefined}
-              data-current={link.current ? "true" : undefined}
+              aria-current={link.href === current ? "page" : undefined}
+              data-current={link.href === current ? "true" : undefined}
             >
               {link.label}
             </Link>
@@ -112,8 +120,8 @@ export default function HuntNav() {
               key={link.href}
               className={styles.navMenuLink}
               href={link.href}
-              aria-current={link.current ? "page" : undefined}
-              data-current={link.current ? "true" : undefined}
+              aria-current={link.href === current ? "page" : undefined}
+              data-current={link.href === current ? "true" : undefined}
               onClick={() => setOpen(false)}
             >
               {link.label}

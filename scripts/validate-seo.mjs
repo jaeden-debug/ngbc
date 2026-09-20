@@ -65,13 +65,15 @@ async function validate() {
   const sitemap = await sitemapResponse.text();
   assert.match(sitemap, /<loc>https:\/\/www\.northgroundbushcraft\.com\/<\/loc>/i);
   assert.match(sitemap, /<loc>https:\/\/www\.northgroundbushcraft\.com\/hunting\/species\/ruffed-grouse<\/loc>/i);
+  assert.match(sitemap, /<loc>https:\/\/www\.northgroundbushcraft\.com\/hunting\/species\/eastern-wolf<\/loc>/i);
+  assert.match(sitemap, /<loc>https:\/\/www\.northgroundbushcraft\.com\/hunting\/species\/canvasback<\/loc>/i);
   assert.match(sitemap, /<loc>https:\/\/www\.northgroundbushcraft\.com\/hunt<\/loc>/i);
   assert.doesNotMatch(
     sitemap,
     /<loc>https:\/\/www\.northgroundbushcraft\.com\/tools\/season-finder<\/loc>/i,
     "the superseded Hunt path must not remain in the sitemap",
   );
-  assert.equal(countMatches(sitemap, /<url>/gi), 3, "sitemap should contain only the homepage and two certified resources");
+  assert.equal(countMatches(sitemap, /<url>/gi), 63, "sitemap should contain home, Hunt, the library and 60 production species pages");
 
   const speciesResponse = await fetch(`${baseUrl}/hunting/species/ruffed-grouse`);
   assert.equal(speciesResponse.status, 200, "published species should return 200");
@@ -80,7 +82,7 @@ async function validate() {
   assert.match(species, /<link rel="canonical" href="https:\/\/www\.northgroundbushcraft\.com\/hunting\/species\/ruffed-grouse"/i);
   assert.match(species, /"@type":"Taxon"/i);
   assert.match(species, /Bonasa umbellus/i);
-  assert.match(species, /Check a location and date/i);
+  assert.match(species, /Open this species in Hunt/i);
 
   const toolResponse = await fetch(`${baseUrl}/hunt`);
   assert.equal(toolResponse.status, 200, "Hunt tool should return 200");

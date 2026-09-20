@@ -120,3 +120,39 @@ test("duplicate aliases and unverified species media fail publication validation
     },
   );
 });
+
+test("regulatory animal-class terms require a source and cannot masquerade as biology", () => {
+  withBundle(
+    (bundle) => {
+      const resource = bundle.resources[0];
+      resource.type = "species";
+      resource.quickAnswer = "A direct answer.";
+      resource.speciesProfile = {
+        speciesId: "species:ruffed-grouse", commonNames: [{ locale: "en-CA", value: "Ruffed grouse" }],
+        scientificName: "Bonasa umbellus", taxonomy: { genus: "Bonasa", species: "umbellus", taxonomySourceId: "source:ontario-small-game" },
+        speciesGroupIds: [], identification: [], sourceIds: ["source:ontario-small-game"], verificationStatus: "verified", lastReviewed: "2026-09-20",
+        sexAgeInfo: { terminology: [{ value: "antlerless", kind: "regulatory_class_term", intent: { kind: "REGULATORY_CLASS", dimension: "ANTLER_CLASS", value: "ANTLERLESS" } }] },
+      };
+    },
+    (file) => {
+      const result = run(["--strict", file]);
+      assert.equal(result.status, 1);
+      assert.match(result.stdout, /UNSOURCED_REGULATORY_TERM/);
+    },
+  );
+});
+
+test("sex-specific media requires one verified canonical species", () => {
+  withBundle(
+    (bundle) => bundle.media.push({
+      id: "media:sex-test", kind: "image", sourceType: "official", creator: "Agency", licence: "Open",
+      assetUrl: "https://example.com/image.jpg", identityVerification: "verified", depictsSex: "FEMALE",
+      speciesMediaRole: "adult_female", locationDisclosure: "none", status: "active",
+    }),
+    (file) => {
+      const result = run(["--strict", file]);
+      assert.equal(result.status, 1);
+      assert.match(result.stdout, /UNSCOPED_SPECIES_MEDIA_ROLE/);
+    },
+  );
+});

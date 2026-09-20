@@ -163,6 +163,55 @@ export interface SourcedSection {
   sourceIds: CanonicalId<"source">[];
 }
 
+export type BiologicalSex = "MALE" | "FEMALE" | "UNKNOWN";
+export type BiologicalAgeClass = "ADULT" | "JUVENILE" | "CALF" | "FAWN" | "OTHER" | "UNKNOWN";
+export type RegulatoryAnimalClassDimension =
+  | "ANTLER_CLASS"
+  | "BIRD_CHARACTERISTIC"
+  | "JURISDICTION_DEFINED";
+
+export type AnimalCharacteristicIntent =
+  | {
+      kind: "BIOLOGICAL";
+      dimension: "SEX";
+      value: BiologicalSex;
+    }
+  | {
+      kind: "BIOLOGICAL";
+      dimension: "AGE_CLASS";
+      value: BiologicalAgeClass;
+    }
+  | {
+      kind: "REGULATORY_CLASS";
+      dimension: RegulatoryAnimalClassDimension;
+      value: string;
+    };
+
+/**
+ * Search/display vocabulary for one biological species. A term may express a
+ * biological characteristic or a regulatory-class intent, but never creates a
+ * second species identity and never decides whether the class legally applies.
+ */
+export interface SpeciesTerminology {
+  value: string;
+  locale?: Bcp47Locale;
+  kind: "hunter_term" | "sex_term" | "age_term" | "regulatory_class_term";
+  intent: AnimalCharacteristicIntent;
+  sourceIds?: CanonicalId<"source">[];
+}
+
+export interface SpeciesSexAgeInfo {
+  terminology: SpeciesTerminology[];
+  sexDifferences?: SourcedSection[];
+  ageDifferences?: SourcedSection[];
+}
+
+export interface SpeciesActivityContext {
+  activityId: CanonicalId<"activity">;
+  note: string;
+  sourceIds: CanonicalId<"source">[];
+}
+
 export interface SpeciesProfile {
   speciesId: CanonicalId<"species">;
   commonNames: LocalizedText[];
@@ -180,6 +229,8 @@ export interface SpeciesProfile {
     taxonRank?: string;
     taxonomySourceId: CanonicalId<"source">;
   };
+  taxonomicStatus?: "accepted" | "contested" | "authority_dependent";
+  taxonomicNotes?: SourcedSection[];
   speciesGroupIds: CanonicalId<"species_group">[];
   rangeSummary?: LocalizedText[];
   jurisdictionIds?: CanonicalId<"jurisdiction">[];
@@ -193,6 +244,8 @@ export interface SpeciesProfile {
   activityPatterns?: SourcedSection[];
   signsAndTracks?: SourcedSection[];
   huntingContext?: SourcedSection[];
+  activityContexts?: SpeciesActivityContext[];
+  sexAgeInfo?: SpeciesSexAgeInfo;
   documentedHuntingJurisdictionIds?: CanonicalId<"jurisdiction">[];
   relationshipIds?: string[];
   mediaIds?: string[];
@@ -383,6 +436,18 @@ export interface MediaRecord {
   locale?: Bcp47Locale;
   depictsEntityIds?: CanonicalId[];
   depictsSpeciesIds?: CanonicalId<"species">[];
+  speciesMediaRole?:
+    | "general"
+    | "adult_male"
+    | "adult_female"
+    | "juvenile"
+    | "winter_form"
+    | "breeding_plumage"
+    | "nonbreeding_plumage"
+    | "lookalike_comparison";
+  depictsSex?: BiologicalSex;
+  depictsAgeClass?: BiologicalAgeClass;
+  seasonalForm?: string;
   identityVerification: "verified" | "probable" | "unverified" | "rejected";
   identityVerifiedBy?: string;
   identityVerifiedAt?: IsoTimestamp;

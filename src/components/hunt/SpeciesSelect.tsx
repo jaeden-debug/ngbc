@@ -35,12 +35,19 @@ export default function SpeciesSelect({ value, onChange, options, disabled }: Sp
   const searchRef = useRef<HTMLInputElement>(null);
 
   const selected = options.find((species) => species.id === value) ?? null;
-  const normalizedQuery = query.trim().toLocaleLowerCase("en-CA");
+  const normalize = (term: string) => term.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("en-CA");
+  const normalizedQuery = normalize(query.trim());
   const visibleOptions = options.filter((species) => {
     if (!normalizedQuery) return true;
-    return [species.displayName, species.scientificName, ...species.aliases]
-      .some((term) => term.toLocaleLowerCase("en-CA").includes(normalizedQuery));
+    return [species.displayName, species.scientificName, ...species.searchTerms]
+      .some((term) => normalize(term).includes(normalizedQuery));
   });
+  const groupedOptions = visibleOptions.reduce<Map<string, Array<{ species: SpeciesSelectorOption; index: number }>>>((groups, species, index) => {
+    const entries = groups.get(species.category) ?? [];
+    entries.push({ species, index });
+    groups.set(species.category, entries);
+    return groups;
+  }, new Map());
 
   /* Opening is an interaction, so the highlighted option is chosen there rather
      than in an effect that would render the list twice. */
@@ -168,35 +175,36 @@ export default function SpeciesSelect({ value, onChange, options, disabled }: Sp
               }}
             />
           </li>
-          {visibleOptions.map((species, index) => (
-            <li
-              key={species.id}
-              id={`${listboxId}-option-${index}`}
-              role="option"
-              aria-selected={species.id === value}
-              aria-disabled={species.regulatoryCoverage !== "VERIFIED"}
-              data-active={index === activeIndex || undefined}
-              className={styles.speciesOption}
-              onMouseEnter={() => setActiveIndex(index)}
-              onClick={() => choose(index)}
-            >
-              <span className={styles.speciesThumb} aria-hidden="true">
-                <svg width="17" height="17" viewBox="0 0 20 20" fill="none">
-                  <path d="M14.6 4.2c1.6 1 2.3 3 1.8 4.9-.6 2.3-2.6 4-4.9 4.4l-2.2.4-2.5 2.6-1.2-1.2 2.6-2.6.4-2.2c.4-2.3 2-4.3 4.3-5l1.7-.5-.6 1.3 1.6-2.1Z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
-                </svg>
-              </span>
-              <span className={styles.speciesText}>
-                <span className={styles.speciesName}>{species.displayName}</span>
-                <span className={styles.speciesLatin}>{species.scientificName} · {species.category}</span>
-              </span>
-              <span className={styles.speciesCoverage} data-verified={species.regulatoryCoverage === "VERIFIED" || undefined}>
-                {species.regulatoryCoverage === "VERIFIED" ? "Rules available" : "Rules in development"}
-              </span>
-              {species.id === value ? (
-                <svg className={styles.speciesCheck} width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none">
-                  <path d="m2.5 7.3 3 3 6-6.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              ) : null}
+          {[...groupedOptions.entries()].map(([category, entries]) => (
+            <li key={category} role="presentation" className={styles.speciesGroup}>
+              <span className={styles.speciesGroupLabel}>{category}</span>
+              <ul role="group" aria-label={category} className={styles.speciesGroupList}>
+                {entries.map(({ species, index }) => (
+                  <li
+                    key={species.id}
+                    id={`${listboxId}-option-${index}`}
+                    role="option"
+                    aria-selected={species.id === value}
+                    aria-disabled={species.regulatoryCoverage !== "VERIFIED"}
+                    data-active={index === activeIndex || undefined}
+                    className={styles.speciesOption}
+                    onMouseEnter={() => setActiveIndex(index)}
+                    onClick={() => choose(index)}
+                  >
+                    <span className={styles.speciesThumb} aria-hidden="true">
+                      <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M14.6 4.2c1.6 1 2.3 3 1.8 4.9-.6 2.3-2.6 4-4.9 4.4l-2.2.4-2.5 2.6-1.2-1.2 2.6-2.6.4-2.2c.4-2.3 2-4.3 4.3-5l1.7-.5-.6 1.3 1.6-2.1Z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" /></svg>
+                    </span>
+                    <span className={styles.speciesText}>
+                      <span className={styles.speciesName}>{species.displayName}</span>
+                      <span className={styles.speciesLatin}>{species.scientificName}</span>
+                    </span>
+                    <span className={styles.speciesCoverage} data-verified={species.regulatoryCoverage === "VERIFIED" || undefined}>
+                      {species.regulatoryCoverage === "VERIFIED" ? "Rules available" : "Rules in development"}
+                    </span>
+                    {species.id === value ? <svg className={styles.speciesCheck} width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none"><path d="m2.5 7.3 3 3 6-6.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg> : null}
+                  </li>
+                ))}
+              </ul>
             </li>
           ))}
           {!visibleOptions.length ? <li className={styles.speciesEmpty} role="presentation">No production species match that search.</li> : null}
@@ -204,7 +212,7 @@ export default function SpeciesSelect({ value, onChange, options, disabled }: Sp
       ) : null}
 
       <p className={styles.fieldNote}>
-        Ten species profiles are published. Only “Rules available” species can run a Hunt evaluation here.
+        {options.length} species profiles are published. Only “Rules available” species can run a Hunt evaluation here.
       </p>
     </div>
   );

@@ -1,0 +1,4151 @@
+{
+  "contractVersion": "1.0",
+  "generatedAt": "2026-09-20T20:00:00Z",
+  "entities": [
+    {
+      "id": "species_group:waterfowl",
+      "type": "species_group",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Waterfowl"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Sauvagine"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "waterfowl",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified"
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:wood-duck",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Wood duck"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Canard branchu",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "wood-duck"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Aix sponsa",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-wood-duck"
+          ]
+        },
+        {
+          "value": "woodie",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "needs_review",
+          "sourceIds": [
+            "source:cornell-wood-duck"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:northern-pintail",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Northern pintail"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Canard pilet",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "northern-pintail"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Anas acuta",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-northern-pintail"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:gadwall",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Gadwall"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Canard chipeau",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "gadwall"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Mareca strepera",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-gadwall"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:american-wigeon",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "American wigeon"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Canard d'Amérique",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "american-wigeon"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Mareca americana",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-american-wigeon"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:green-winged-teal",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Green-winged teal"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Sarcelle d'hiver",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "green-winged-teal"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Anas crecca",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-green-winged-teal"
+          ]
+        },
+        {
+          "value": "green-wing teal",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-green-winged-teal"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:blue-winged-teal",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Blue-winged teal"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Sarcelle à ailes bleues",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "blue-winged-teal"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Spatula discors",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-blue-winged-teal"
+          ]
+        },
+        {
+          "value": "blue-wing teal",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-blue-winged-teal"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:northern-shoveler",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Northern shoveler"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Canard souchet",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "northern-shoveler"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Spatula clypeata",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-northern-shoveler"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:canvasback",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Canvasback"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Fuligule à dos blanc",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "canvasback"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Aythya valisineria",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-canvasback"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:redhead",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Redhead"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Fuligule à tête rouge",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "redhead"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Aythya americana",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-redhead"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:ring-necked-duck",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Ring-necked duck"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Fuligule à collier",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "ring-necked-duck"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Aythya collaris",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-ring-necked-duck"
+          ]
+        },
+        {
+          "value": "ringneck",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "needs_review",
+          "sourceIds": [
+            "source:cornell-ring-necked-duck"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:greater-scaup",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Greater scaup"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Fuligule milouinan",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "greater-scaup"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Aythya marila",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-greater-scaup"
+          ]
+        },
+        {
+          "value": "scaup",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-greater-scaup"
+          ]
+        },
+        {
+          "value": "bluebill",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "needs_review",
+          "sourceIds": [
+            "source:cornell-greater-scaup"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:lesser-scaup",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Lesser scaup"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Petit Fuligule",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "lesser-scaup"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Aythya affinis",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-lesser-scaup"
+          ]
+        },
+        {
+          "value": "scaup",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-lesser-scaup"
+          ]
+        },
+        {
+          "value": "bluebill",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "needs_review",
+          "sourceIds": [
+            "source:cornell-lesser-scaup"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:common-goldeneye",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Common goldeneye"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Garrot à œil d'or",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "common-goldeneye"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Bucephala clangula",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-common-goldeneye"
+          ]
+        },
+        {
+          "value": "goldeneye",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-common-goldeneye"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:barrows-goldeneye",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Barrow's goldeneye"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Garrot d'Islande",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "barrows-goldeneye"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Bucephala islandica",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-barrows-goldeneye"
+          ]
+        },
+        {
+          "value": "goldeneye",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-barrows-goldeneye"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:bufflehead",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Bufflehead"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Petit Garrot",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "bufflehead"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Bucephala albeola",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-bufflehead"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:snow-goose",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Snow goose"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Oie des neiges",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "snow-goose"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Anser caerulescens",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-snow-goose"
+          ]
+        },
+        {
+          "value": "snow geese",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-snow-goose"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:greater-white-fronted-goose",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Greater white-fronted goose"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Oie rieuse",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "greater-white-fronted-goose"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Anser albifrons",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-greater-white-fronted-goose"
+          ]
+        },
+        {
+          "value": "specklebelly",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "needs_review",
+          "sourceIds": [
+            "source:cornell-greater-white-fronted-goose"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "species:brant",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Brant"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Bernache cravant",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "brant"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Branta bernicla",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-brant"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    }
+  ],
+  "resources": [
+    {
+      "id": "species:american-black-duck",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "american-black-duck",
+      "canonicalUrl": "/hunting/species/american-black-duck",
+      "title": "American black duck",
+      "description": "Identify American black duck, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "american black duck",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:american-black-duck",
+        "species_group:ducks",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:american-black-duck"
+      ],
+      "quickAnswer": "American black duck (Anas rubripes) can be identified as follows: Large dark dabbling duck with a pale head, dark body and violet-blue speculum; females and hybrids can resemble female Mallards. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Anas rubripes",
+          "sourceIds": [
+            "source:cornell-american-black-duck"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-american-black-duck"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Eastern North America",
+          "sourceIds": [
+            "source:cornell-american-black-duck"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-american-black-duck"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:mallard"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:american-black-duck",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "American black duck"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Canard noir",
+            "official": true
+          }
+        ],
+        "scientificName": "Anas rubripes",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Anas",
+          "species": "rubripes",
+          "taxonomySourceId": "source:cornell-american-black-duck"
+        },
+        "speciesGroupIds": [
+          "species_group:ducks",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Eastern North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Large dark dabbling duck with a pale head, dark body and violet-blue speculum; females and hybrids can resemble female Mallards.",
+            "sourceIds": [
+              "source:cornell-american-black-duck"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:mallard"
+        ],
+        "habitat": [
+          {
+            "text": "Eastern wooded wetlands, salt marshes and coastal estuaries.",
+            "sourceIds": [
+              "source:cornell-american-black-duck"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-american-black-duck"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-american-black-duck"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:wood-duck",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "wood-duck",
+      "canonicalUrl": "/hunting/species/wood-duck",
+      "title": "Wood duck",
+      "description": "Identify Wood duck, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "wood duck",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:wood-duck",
+        "species_group:ducks",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:wood-duck"
+      ],
+      "quickAnswer": "Wood duck (Aix sponsa) can be identified as follows: Compact crested duck; males are multicoloured with bold white facial lines, females gray-brown with a distinct white eye patch. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Aix sponsa",
+          "sourceIds": [
+            "source:cornell-wood-duck"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-wood-duck"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America",
+          "sourceIds": [
+            "source:cornell-wood-duck"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-wood-duck"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:wood-duck",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Wood duck"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Canard branchu",
+            "official": true
+          }
+        ],
+        "scientificName": "Aix sponsa",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Aix",
+          "species": "sponsa",
+          "taxonomySourceId": "source:cornell-wood-duck"
+        },
+        "speciesGroupIds": [
+          "species_group:ducks",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Compact crested duck; males are multicoloured with bold white facial lines, females gray-brown with a distinct white eye patch.",
+            "sourceIds": [
+              "source:cornell-wood-duck"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [],
+        "habitat": [
+          {
+            "text": "Wooded swamps, beaver ponds and tree-lined wetlands.",
+            "sourceIds": [
+              "source:cornell-wood-duck"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-wood-duck"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-wood-duck"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:northern-pintail",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "northern-pintail",
+      "canonicalUrl": "/hunting/species/northern-pintail",
+      "title": "Northern pintail",
+      "description": "Identify Northern pintail, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "northern pintail",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:northern-pintail",
+        "species_group:ducks",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:northern-pintail"
+      ],
+      "quickAnswer": "Northern pintail (Anas acuta) can be identified as follows: Long-necked, slender duck with a pointed tail; males have a chocolate head and white neck stripe, females are finely patterned brown. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Anas acuta",
+          "sourceIds": [
+            "source:cornell-northern-pintail"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-northern-pintail"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America and circumpolar",
+          "sourceIds": [
+            "source:cornell-northern-pintail"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-northern-pintail"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:northern-pintail",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Northern pintail"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Canard pilet",
+            "official": true
+          }
+        ],
+        "scientificName": "Anas acuta",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Anas",
+          "species": "acuta",
+          "taxonomySourceId": "source:cornell-northern-pintail"
+        },
+        "speciesGroupIds": [
+          "species_group:ducks",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America and circumpolar"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Long-necked, slender duck with a pointed tail; males have a chocolate head and white neck stripe, females are finely patterned brown.",
+            "sourceIds": [
+              "source:cornell-northern-pintail"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [],
+        "habitat": [
+          {
+            "text": "Shallow open wetlands, prairie potholes, marshes and coastal flats.",
+            "sourceIds": [
+              "source:cornell-northern-pintail"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-northern-pintail"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-northern-pintail"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:gadwall",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "gadwall",
+      "canonicalUrl": "/hunting/species/gadwall",
+      "title": "Gadwall",
+      "description": "Identify Gadwall, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "gadwall",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:gadwall",
+        "species_group:ducks",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:gadwall"
+      ],
+      "quickAnswer": "Gadwall (Mareca strepera) can be identified as follows: Subtle gray-brown dabbling duck with a white wing patch; males have fine vermiculation and a black rear, females resemble female Mallards but show white in the wing. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Mareca strepera",
+          "sourceIds": [
+            "source:cornell-gadwall"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-gadwall"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America and Eurasia",
+          "sourceIds": [
+            "source:cornell-gadwall"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-gadwall"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:gadwall",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Gadwall"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Canard chipeau",
+            "official": true
+          }
+        ],
+        "scientificName": "Mareca strepera",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Mareca",
+          "species": "strepera",
+          "taxonomySourceId": "source:cornell-gadwall"
+        },
+        "speciesGroupIds": [
+          "species_group:ducks",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America and Eurasia"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Subtle gray-brown dabbling duck with a white wing patch; males have fine vermiculation and a black rear, females resemble female Mallards but show white in the wing.",
+            "sourceIds": [
+              "source:cornell-gadwall"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [],
+        "habitat": [
+          {
+            "text": "Shallow wetlands with abundant aquatic vegetation.",
+            "sourceIds": [
+              "source:cornell-gadwall"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-gadwall"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-gadwall"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:american-wigeon",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "american-wigeon",
+      "canonicalUrl": "/hunting/species/american-wigeon",
+      "title": "American wigeon",
+      "description": "Identify American wigeon, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "american wigeon",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:american-wigeon",
+        "species_group:ducks",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:american-wigeon"
+      ],
+      "quickAnswer": "American wigeon (Mareca americana) can be identified as follows: Compact dabbling duck with a short pale bill; males have a green eye patch and white crown, females have a warm gray-brown head. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Mareca americana",
+          "sourceIds": [
+            "source:cornell-american-wigeon"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-american-wigeon"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America",
+          "sourceIds": [
+            "source:cornell-american-wigeon"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-american-wigeon"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:american-wigeon",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "American wigeon"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Canard d'Amérique",
+            "official": true
+          }
+        ],
+        "scientificName": "Mareca americana",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Mareca",
+          "species": "americana",
+          "taxonomySourceId": "source:cornell-american-wigeon"
+        },
+        "speciesGroupIds": [
+          "species_group:ducks",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Compact dabbling duck with a short pale bill; males have a green eye patch and white crown, females have a warm gray-brown head.",
+            "sourceIds": [
+              "source:cornell-american-wigeon"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [],
+        "habitat": [
+          {
+            "text": "Marshes, ponds, lakes and grazed fields.",
+            "sourceIds": [
+              "source:cornell-american-wigeon"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-american-wigeon"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-american-wigeon"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:green-winged-teal",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "green-winged-teal",
+      "canonicalUrl": "/hunting/species/green-winged-teal",
+      "title": "Green-winged teal",
+      "description": "Identify Green-winged teal, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "green-winged teal",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:green-winged-teal",
+        "species_group:ducks",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:green-winged-teal"
+      ],
+      "quickAnswer": "Green-winged teal (Anas crecca) can be identified as follows: Very small dabbling duck; males have a chestnut head with green eye patch, and both sexes show a green speculum. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Anas crecca",
+          "sourceIds": [
+            "source:cornell-green-winged-teal"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-green-winged-teal"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America and Eurasia",
+          "sourceIds": [
+            "source:cornell-green-winged-teal"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-green-winged-teal"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:blue-winged-teal"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:green-winged-teal",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Green-winged teal"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Sarcelle d'hiver",
+            "official": true
+          }
+        ],
+        "scientificName": "Anas crecca",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Anas",
+          "species": "crecca",
+          "taxonomySourceId": "source:cornell-green-winged-teal"
+        },
+        "speciesGroupIds": [
+          "species_group:ducks",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America and Eurasia"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Very small dabbling duck; males have a chestnut head with green eye patch, and both sexes show a green speculum.",
+            "sourceIds": [
+              "source:cornell-green-winged-teal"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:blue-winged-teal"
+        ],
+        "habitat": [
+          {
+            "text": "Shallow marshes, ponds, mudflats and flooded fields.",
+            "sourceIds": [
+              "source:cornell-green-winged-teal"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-green-winged-teal"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-green-winged-teal"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:blue-winged-teal",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "blue-winged-teal",
+      "canonicalUrl": "/hunting/species/blue-winged-teal",
+      "title": "Blue-winged teal",
+      "description": "Identify Blue-winged teal, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "blue-winged teal",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:blue-winged-teal",
+        "species_group:ducks",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:blue-winged-teal"
+      ],
+      "quickAnswer": "Blue-winged teal (Spatula discors) can be identified as follows: Small dabbling duck with a powder-blue forewing patch; males show a white facial crescent and females are mottled brown. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Spatula discors",
+          "sourceIds": [
+            "source:cornell-blue-winged-teal"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-blue-winged-teal"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America",
+          "sourceIds": [
+            "source:cornell-blue-winged-teal"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-blue-winged-teal"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:green-winged-teal"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:blue-winged-teal",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Blue-winged teal"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Sarcelle à ailes bleues",
+            "official": true
+          }
+        ],
+        "scientificName": "Spatula discors",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Spatula",
+          "species": "discors",
+          "taxonomySourceId": "source:cornell-blue-winged-teal"
+        },
+        "speciesGroupIds": [
+          "species_group:ducks",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Small dabbling duck with a powder-blue forewing patch; males show a white facial crescent and females are mottled brown.",
+            "sourceIds": [
+              "source:cornell-blue-winged-teal"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:green-winged-teal"
+        ],
+        "habitat": [
+          {
+            "text": "Shallow vegetated wetlands and prairie potholes.",
+            "sourceIds": [
+              "source:cornell-blue-winged-teal"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-blue-winged-teal"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-blue-winged-teal"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:northern-shoveler",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "northern-shoveler",
+      "canonicalUrl": "/hunting/species/northern-shoveler",
+      "title": "Northern shoveler",
+      "description": "Identify Northern shoveler, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "northern shoveler",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:northern-shoveler",
+        "species_group:ducks",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:northern-shoveler"
+      ],
+      "quickAnswer": "Northern shoveler (Spatula clypeata) can be identified as follows: Dabbling duck with an unmistakably long, broad spoon-shaped bill; males have a green head, white chest and chestnut sides. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Spatula clypeata",
+          "sourceIds": [
+            "source:cornell-northern-shoveler"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-northern-shoveler"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America and Eurasia",
+          "sourceIds": [
+            "source:cornell-northern-shoveler"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-northern-shoveler"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:northern-shoveler",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Northern shoveler"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Canard souchet",
+            "official": true
+          }
+        ],
+        "scientificName": "Spatula clypeata",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Spatula",
+          "species": "clypeata",
+          "taxonomySourceId": "source:cornell-northern-shoveler"
+        },
+        "speciesGroupIds": [
+          "species_group:ducks",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America and Eurasia"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Dabbling duck with an unmistakably long, broad spoon-shaped bill; males have a green head, white chest and chestnut sides.",
+            "sourceIds": [
+              "source:cornell-northern-shoveler"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [],
+        "habitat": [
+          {
+            "text": "Shallow productive wetlands where the broad bill strains small food from water.",
+            "sourceIds": [
+              "source:cornell-northern-shoveler"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-northern-shoveler"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-northern-shoveler"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:canvasback",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "canvasback",
+      "canonicalUrl": "/hunting/species/canvasback",
+      "title": "Canvasback",
+      "description": "Identify Canvasback, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "canvasback",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:canvasback",
+        "species_group:ducks",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:canvasback"
+      ],
+      "quickAnswer": "Canvasback (Aythya valisineria) can be identified as follows: Large diving duck with a long sloping forehead and wedge-shaped bill; males have a chestnut head, black chest and pale back. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Aythya valisineria",
+          "sourceIds": [
+            "source:cornell-canvasback"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-canvasback"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America",
+          "sourceIds": [
+            "source:cornell-canvasback"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-canvasback"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:redhead"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:canvasback",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Canvasback"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Fuligule à dos blanc",
+            "official": true
+          }
+        ],
+        "scientificName": "Aythya valisineria",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Aythya",
+          "species": "valisineria",
+          "taxonomySourceId": "source:cornell-canvasback"
+        },
+        "speciesGroupIds": [
+          "species_group:ducks",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Large diving duck with a long sloping forehead and wedge-shaped bill; males have a chestnut head, black chest and pale back.",
+            "sourceIds": [
+              "source:cornell-canvasback"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:redhead"
+        ],
+        "habitat": [
+          {
+            "text": "Deep marshes, lakes and bays with submerged vegetation.",
+            "sourceIds": [
+              "source:cornell-canvasback"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-canvasback"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-canvasback"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:redhead",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "redhead",
+      "canonicalUrl": "/hunting/species/redhead",
+      "title": "Redhead",
+      "description": "Identify Redhead, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "redhead",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:redhead",
+        "species_group:ducks",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:redhead"
+      ],
+      "quickAnswer": "Redhead (Aythya americana) can be identified as follows: Medium diving duck with a rounded head and blue-gray bill; males have a red head, black chest and gray body. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Aythya americana",
+          "sourceIds": [
+            "source:cornell-redhead"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-redhead"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America",
+          "sourceIds": [
+            "source:cornell-redhead"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-redhead"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:canvasback"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:redhead",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Redhead"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Fuligule à tête rouge",
+            "official": true
+          }
+        ],
+        "scientificName": "Aythya americana",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Aythya",
+          "species": "americana",
+          "taxonomySourceId": "source:cornell-redhead"
+        },
+        "speciesGroupIds": [
+          "species_group:ducks",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Medium diving duck with a rounded head and blue-gray bill; males have a red head, black chest and gray body.",
+            "sourceIds": [
+              "source:cornell-redhead"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:canvasback"
+        ],
+        "habitat": [
+          {
+            "text": "Prairie marshes, lakes and coastal bays.",
+            "sourceIds": [
+              "source:cornell-redhead"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-redhead"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-redhead"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:ring-necked-duck",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "ring-necked-duck",
+      "canonicalUrl": "/hunting/species/ring-necked-duck",
+      "title": "Ring-necked duck",
+      "description": "Identify Ring-necked duck, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "ring-necked duck",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:ring-necked-duck",
+        "species_group:ducks",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:ring-necked-duck"
+      ],
+      "quickAnswer": "Ring-necked duck (Aythya collaris) can be identified as follows: Compact diving duck with a peaked head and bold bill rings; the chestnut neck ring is usually hard to see. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Aythya collaris",
+          "sourceIds": [
+            "source:cornell-ring-necked-duck"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-ring-necked-duck"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America",
+          "sourceIds": [
+            "source:cornell-ring-necked-duck"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-ring-necked-duck"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:ring-necked-duck",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Ring-necked duck"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Fuligule à collier",
+            "official": true
+          }
+        ],
+        "scientificName": "Aythya collaris",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Aythya",
+          "species": "collaris",
+          "taxonomySourceId": "source:cornell-ring-necked-duck"
+        },
+        "speciesGroupIds": [
+          "species_group:ducks",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Compact diving duck with a peaked head and bold bill rings; the chestnut neck ring is usually hard to see.",
+            "sourceIds": [
+              "source:cornell-ring-necked-duck"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [],
+        "habitat": [
+          {
+            "text": "Freshwater ponds and lakes, often with emergent vegetation.",
+            "sourceIds": [
+              "source:cornell-ring-necked-duck"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-ring-necked-duck"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-ring-necked-duck"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:greater-scaup",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "greater-scaup",
+      "canonicalUrl": "/hunting/species/greater-scaup",
+      "title": "Greater scaup",
+      "description": "Identify Greater scaup, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "greater scaup",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:greater-scaup",
+        "species_group:ducks",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:greater-scaup"
+      ],
+      "quickAnswer": "Greater scaup (Aythya marila) can be identified as follows: Broad-headed diving duck with a rounded crown; males have a greenish head sheen and pale finely barred back, but separation from lesser scaup can be difficult. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Aythya marila",
+          "sourceIds": [
+            "source:cornell-greater-scaup"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-greater-scaup"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America and circumpolar",
+          "sourceIds": [
+            "source:cornell-greater-scaup"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-greater-scaup"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:lesser-scaup"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:greater-scaup",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Greater scaup"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Fuligule milouinan",
+            "official": true
+          }
+        ],
+        "scientificName": "Aythya marila",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Aythya",
+          "species": "marila",
+          "taxonomySourceId": "source:cornell-greater-scaup"
+        },
+        "speciesGroupIds": [
+          "species_group:ducks",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America and circumpolar"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Broad-headed diving duck with a rounded crown; males have a greenish head sheen and pale finely barred back, but separation from lesser scaup can be difficult.",
+            "sourceIds": [
+              "source:cornell-greater-scaup"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:lesser-scaup"
+        ],
+        "habitat": [
+          {
+            "text": "Large lakes, coastal bays and estuaries.",
+            "sourceIds": [
+              "source:cornell-greater-scaup"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-greater-scaup"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-greater-scaup"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:lesser-scaup",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "lesser-scaup",
+      "canonicalUrl": "/hunting/species/lesser-scaup",
+      "title": "Lesser scaup",
+      "description": "Identify Lesser scaup, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "lesser scaup",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:lesser-scaup",
+        "species_group:ducks",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:lesser-scaup"
+      ],
+      "quickAnswer": "Lesser scaup (Aythya affinis) can be identified as follows: Medium diving duck with a peaked rear crown; males often show a purplish head sheen, but structure and habitat are more useful than sheen alone. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Aythya affinis",
+          "sourceIds": [
+            "source:cornell-lesser-scaup"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-lesser-scaup"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America",
+          "sourceIds": [
+            "source:cornell-lesser-scaup"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-lesser-scaup"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:greater-scaup"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:lesser-scaup",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Lesser scaup"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Petit Fuligule",
+            "official": true
+          }
+        ],
+        "scientificName": "Aythya affinis",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Aythya",
+          "species": "affinis",
+          "taxonomySourceId": "source:cornell-lesser-scaup"
+        },
+        "speciesGroupIds": [
+          "species_group:ducks",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Medium diving duck with a peaked rear crown; males often show a purplish head sheen, but structure and habitat are more useful than sheen alone.",
+            "sourceIds": [
+              "source:cornell-lesser-scaup"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:greater-scaup"
+        ],
+        "habitat": [
+          {
+            "text": "Inland lakes, ponds and sheltered coastal waters.",
+            "sourceIds": [
+              "source:cornell-lesser-scaup"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-lesser-scaup"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-lesser-scaup"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:common-goldeneye",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "common-goldeneye",
+      "canonicalUrl": "/hunting/species/common-goldeneye",
+      "title": "Common goldeneye",
+      "description": "Identify Common goldeneye, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "common goldeneye",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:common-goldeneye",
+        "species_group:ducks",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:common-goldeneye"
+      ],
+      "quickAnswer": "Common goldeneye (Bucephala clangula) can be identified as follows: Compact diving duck with a large angular head; males have a round white spot before the golden eye, females have a brown head. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Bucephala clangula",
+          "sourceIds": [
+            "source:cornell-common-goldeneye"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-common-goldeneye"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America and Eurasia",
+          "sourceIds": [
+            "source:cornell-common-goldeneye"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-common-goldeneye"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:barrows-goldeneye"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:common-goldeneye",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Common goldeneye"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Garrot à œil d'or",
+            "official": true
+          }
+        ],
+        "scientificName": "Bucephala clangula",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Bucephala",
+          "species": "clangula",
+          "taxonomySourceId": "source:cornell-common-goldeneye"
+        },
+        "speciesGroupIds": [
+          "species_group:ducks",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America and Eurasia"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Compact diving duck with a large angular head; males have a round white spot before the golden eye, females have a brown head.",
+            "sourceIds": [
+              "source:cornell-common-goldeneye"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:barrows-goldeneye"
+        ],
+        "habitat": [
+          {
+            "text": "Lakes and rivers near boreal forest, and coastal waters in winter.",
+            "sourceIds": [
+              "source:cornell-common-goldeneye"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-common-goldeneye"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-common-goldeneye"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:barrows-goldeneye",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "barrows-goldeneye",
+      "canonicalUrl": "/hunting/species/barrows-goldeneye",
+      "title": "Barrow's goldeneye",
+      "description": "Identify Barrow's goldeneye, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "barrow's goldeneye",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:barrows-goldeneye",
+        "species_group:ducks",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:barrows-goldeneye"
+      ],
+      "quickAnswer": "Barrow's goldeneye (Bucephala islandica) can be identified as follows: Males have a crescent-shaped white face patch and black shoulder marks; females are best separated from common goldeneye with multiple traits. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Bucephala islandica",
+          "sourceIds": [
+            "source:cornell-barrows-goldeneye"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-barrows-goldeneye"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Northwestern and northeastern North America",
+          "sourceIds": [
+            "source:cornell-barrows-goldeneye"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-barrows-goldeneye"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:common-goldeneye"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:barrows-goldeneye",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Barrow's goldeneye"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Garrot d'Islande",
+            "official": true
+          }
+        ],
+        "scientificName": "Bucephala islandica",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Bucephala",
+          "species": "islandica",
+          "taxonomySourceId": "source:cornell-barrows-goldeneye"
+        },
+        "speciesGroupIds": [
+          "species_group:ducks",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Northwestern and northeastern North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Males have a crescent-shaped white face patch and black shoulder marks; females are best separated from common goldeneye with multiple traits.",
+            "sourceIds": [
+              "source:cornell-barrows-goldeneye"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:common-goldeneye"
+        ],
+        "habitat": [
+          {
+            "text": "Rocky lakes and fast rivers in western mountains, with a smaller eastern population.",
+            "sourceIds": [
+              "source:cornell-barrows-goldeneye"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-barrows-goldeneye"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-barrows-goldeneye"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:bufflehead",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "bufflehead",
+      "canonicalUrl": "/hunting/species/bufflehead",
+      "title": "Bufflehead",
+      "description": "Identify Bufflehead, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "bufflehead",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:bufflehead",
+        "species_group:ducks",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:bufflehead"
+      ],
+      "quickAnswer": "Bufflehead (Bucephala albeola) can be identified as follows: Very small diving duck with a large rounded head; males show a broad white head patch and females a smaller white cheek patch. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Bucephala albeola",
+          "sourceIds": [
+            "source:cornell-bufflehead"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-bufflehead"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America",
+          "sourceIds": [
+            "source:cornell-bufflehead"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-bufflehead"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:bufflehead",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Bufflehead"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Petit Garrot",
+            "official": true
+          }
+        ],
+        "scientificName": "Bucephala albeola",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Bucephala",
+          "species": "albeola",
+          "taxonomySourceId": "source:cornell-bufflehead"
+        },
+        "speciesGroupIds": [
+          "species_group:ducks",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Very small diving duck with a large rounded head; males show a broad white head patch and females a smaller white cheek patch.",
+            "sourceIds": [
+              "source:cornell-bufflehead"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [],
+        "habitat": [
+          {
+            "text": "Small wooded lakes and ponds, moving to sheltered coastal water in winter.",
+            "sourceIds": [
+              "source:cornell-bufflehead"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-bufflehead"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-bufflehead"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:snow-goose",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "snow-goose",
+      "canonicalUrl": "/hunting/species/snow-goose",
+      "title": "Snow goose",
+      "description": "Identify Snow goose, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "snow goose",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:snow-goose",
+        "species_group:geese",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:snow-goose"
+      ],
+      "quickAnswer": "Snow goose (Anser caerulescens) can be identified as follows: White morph is mostly white with black wingtips; blue morph has a dark body and white head. Both have a pink bill with a dark grin patch. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Anser caerulescens",
+          "sourceIds": [
+            "source:cornell-snow-goose"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-snow-goose"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America",
+          "sourceIds": [
+            "source:cornell-snow-goose"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-snow-goose"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:snow-goose",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Snow goose"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Oie des neiges",
+            "official": true
+          }
+        ],
+        "scientificName": "Anser caerulescens",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Anser",
+          "species": "caerulescens",
+          "taxonomySourceId": "source:cornell-snow-goose"
+        },
+        "speciesGroupIds": [
+          "species_group:geese",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "White morph is mostly white with black wingtips; blue morph has a dark body and white head. Both have a pink bill with a dark grin patch.",
+            "sourceIds": [
+              "source:cornell-snow-goose"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [],
+        "habitat": [
+          {
+            "text": "Arctic breeding grounds, agricultural stopovers and coastal wintering areas.",
+            "sourceIds": [
+              "source:cornell-snow-goose"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-snow-goose"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-snow-goose"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:cackling-goose",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "cackling-goose",
+      "canonicalUrl": "/hunting/species/cackling-goose",
+      "title": "Cackling goose",
+      "description": "Identify Cackling goose, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "cackling goose",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:cackling-goose",
+        "species_group:geese",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:cackling-goose"
+      ],
+      "quickAnswer": "Cackling goose (Branta hutchinsii) can be identified as follows: Small, short-necked goose with a steep forehead and short bill; overlaps the smallest Canada geese and requires attention to structure and voice. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Branta hutchinsii",
+          "sourceIds": [
+            "source:cornell-cackling-goose"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-cackling-goose"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America",
+          "sourceIds": [
+            "source:cornell-cackling-goose"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-cackling-goose"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:canada-goose"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:cackling-goose",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Cackling goose"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Bernache de Hutchins",
+            "official": true
+          }
+        ],
+        "scientificName": "Branta hutchinsii",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Branta",
+          "species": "hutchinsii",
+          "taxonomySourceId": "source:cornell-cackling-goose"
+        },
+        "speciesGroupIds": [
+          "species_group:geese",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Small, short-necked goose with a steep forehead and short bill; overlaps the smallest Canada geese and requires attention to structure and voice.",
+            "sourceIds": [
+              "source:cornell-cackling-goose"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:canada-goose"
+        ],
+        "habitat": [
+          {
+            "text": "Tundra breeding grounds and open fields, wetlands and coasts during migration and winter.",
+            "sourceIds": [
+              "source:cornell-cackling-goose"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-cackling-goose"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-cackling-goose"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:greater-white-fronted-goose",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "greater-white-fronted-goose",
+      "canonicalUrl": "/hunting/species/greater-white-fronted-goose",
+      "title": "Greater white-fronted goose",
+      "description": "Identify Greater white-fronted goose, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "greater white-fronted goose",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:greater-white-fronted-goose",
+        "species_group:geese",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:greater-white-fronted-goose"
+      ],
+      "quickAnswer": "Greater white-fronted goose (Anser albifrons) can be identified as follows: Brown-gray goose with orange legs, a white patch around the bill and irregular black belly bars on adults. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Anser albifrons",
+          "sourceIds": [
+            "source:cornell-greater-white-fronted-goose"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-greater-white-fronted-goose"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "North America and Eurasia",
+          "sourceIds": [
+            "source:cornell-greater-white-fronted-goose"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-greater-white-fronted-goose"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:greater-white-fronted-goose",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Greater white-fronted goose"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Oie rieuse",
+            "official": true
+          }
+        ],
+        "scientificName": "Anser albifrons",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Anser",
+          "species": "albifrons",
+          "taxonomySourceId": "source:cornell-greater-white-fronted-goose"
+        },
+        "speciesGroupIds": [
+          "species_group:geese",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "North America and Eurasia"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Brown-gray goose with orange legs, a white patch around the bill and irregular black belly bars on adults.",
+            "sourceIds": [
+              "source:cornell-greater-white-fronted-goose"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [],
+        "habitat": [
+          {
+            "text": "Arctic tundra in summer and wetlands or agricultural fields during migration and winter.",
+            "sourceIds": [
+              "source:cornell-greater-white-fronted-goose"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-greater-white-fronted-goose"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-greater-white-fronted-goose"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    },
+    {
+      "id": "species:brant",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "brant",
+      "canonicalUrl": "/hunting/species/brant",
+      "title": "Brant",
+      "description": "Identify Brant, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "brant",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:brant",
+        "species_group:geese",
+        "species_group:waterfowl",
+        "species_group:migratory-game-birds"
+      ],
+      "speciesIds": [
+        "species:brant"
+      ],
+      "quickAnswer": "Brant (Branta bernicla) can be identified as follows: Small dark coastal goose with a black head and neck, small white neck patch and short bill. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Branta bernicla",
+          "sourceIds": [
+            "source:cornell-brant"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Anatidae",
+          "sourceIds": [
+            "source:cornell-brant"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Coastal North America and circumpolar",
+          "sourceIds": [
+            "source:cornell-brant"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-brant"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:brant",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Brant"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Bernache cravant",
+            "official": true
+          }
+        ],
+        "scientificName": "Branta bernicla",
+        "taxonomy": {
+          "order": "Anseriformes",
+          "family": "Anatidae",
+          "genus": "Branta",
+          "species": "bernicla",
+          "taxonomySourceId": "source:cornell-brant"
+        },
+        "speciesGroupIds": [
+          "species_group:geese",
+          "species_group:waterfowl",
+          "species_group:migratory-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Coastal North America and circumpolar"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Small dark coastal goose with a black head and neck, small white neck patch and short bill.",
+            "sourceIds": [
+              "source:cornell-brant"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [],
+        "habitat": [
+          {
+            "text": "Arctic tundra breeding areas and marine coasts rich in eelgrass or algae outside breeding season.",
+            "sourceIds": [
+              "source:cornell-brant"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-brant"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-brant"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-20"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "content_block:american-black-duck.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:american-black-duck",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify American black duck from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:american-black-duck"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-american-black-duck"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:green-winged-teal.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:green-winged-teal",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Green-winged teal from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:green-winged-teal"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-green-winged-teal"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:blue-winged-teal.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:blue-winged-teal",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Blue-winged teal from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:blue-winged-teal"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-blue-winged-teal"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:canvasback.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:canvasback",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Canvasback from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:canvasback"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-canvasback"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:redhead.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:redhead",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Redhead from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:redhead"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-redhead"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:greater-scaup.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:greater-scaup",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Greater scaup from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:greater-scaup"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-greater-scaup"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:lesser-scaup.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:lesser-scaup",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Lesser scaup from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:lesser-scaup"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-lesser-scaup"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:common-goldeneye.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:common-goldeneye",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Common goldeneye from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:common-goldeneye"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-common-goldeneye"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:barrows-goldeneye.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:barrows-goldeneye",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Barrow's goldeneye from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:barrows-goldeneye"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-barrows-goldeneye"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "content_block:cackling-goose.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:cackling-goose",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Cackling goose from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:cackling-goose"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-cackling-goose"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-20",
+      "publishedAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel:american-black-duck-member-ducks",
+      "fromId": "species:american-black-duck",
+      "toId": "species_group:ducks",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-american-black-duck"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:american-black-duck-similar-mallard",
+      "fromId": "species:american-black-duck",
+      "toId": "species:mallard",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-american-black-duck"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:wood-duck-member-ducks",
+      "fromId": "species:wood-duck",
+      "toId": "species_group:ducks",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-wood-duck"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:northern-pintail-member-ducks",
+      "fromId": "species:northern-pintail",
+      "toId": "species_group:ducks",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-northern-pintail"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:gadwall-member-ducks",
+      "fromId": "species:gadwall",
+      "toId": "species_group:ducks",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-gadwall"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:american-wigeon-member-ducks",
+      "fromId": "species:american-wigeon",
+      "toId": "species_group:ducks",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-american-wigeon"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:green-winged-teal-member-ducks",
+      "fromId": "species:green-winged-teal",
+      "toId": "species_group:ducks",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-green-winged-teal"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:green-winged-teal-similar-blue-winged-teal",
+      "fromId": "species:green-winged-teal",
+      "toId": "species:blue-winged-teal",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-green-winged-teal"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:blue-winged-teal-member-ducks",
+      "fromId": "species:blue-winged-teal",
+      "toId": "species_group:ducks",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-blue-winged-teal"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:blue-winged-teal-similar-green-winged-teal",
+      "fromId": "species:blue-winged-teal",
+      "toId": "species:green-winged-teal",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-blue-winged-teal"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:northern-shoveler-member-ducks",
+      "fromId": "species:northern-shoveler",
+      "toId": "species_group:ducks",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-northern-shoveler"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:canvasback-member-ducks",
+      "fromId": "species:canvasback",
+      "toId": "species_group:ducks",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-canvasback"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:canvasback-similar-redhead",
+      "fromId": "species:canvasback",
+      "toId": "species:redhead",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-canvasback"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:redhead-member-ducks",
+      "fromId": "species:redhead",
+      "toId": "species_group:ducks",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-redhead"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:redhead-similar-canvasback",
+      "fromId": "species:redhead",
+      "toId": "species:canvasback",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-redhead"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:ring-necked-duck-member-ducks",
+      "fromId": "species:ring-necked-duck",
+      "toId": "species_group:ducks",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-ring-necked-duck"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:greater-scaup-member-ducks",
+      "fromId": "species:greater-scaup",
+      "toId": "species_group:ducks",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-greater-scaup"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:greater-scaup-similar-lesser-scaup",
+      "fromId": "species:greater-scaup",
+      "toId": "species:lesser-scaup",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-greater-scaup"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:lesser-scaup-member-ducks",
+      "fromId": "species:lesser-scaup",
+      "toId": "species_group:ducks",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-lesser-scaup"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:lesser-scaup-similar-greater-scaup",
+      "fromId": "species:lesser-scaup",
+      "toId": "species:greater-scaup",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-lesser-scaup"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:common-goldeneye-member-ducks",
+      "fromId": "species:common-goldeneye",
+      "toId": "species_group:ducks",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-common-goldeneye"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:common-goldeneye-similar-barrows-goldeneye",
+      "fromId": "species:common-goldeneye",
+      "toId": "species:barrows-goldeneye",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-common-goldeneye"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:barrows-goldeneye-member-ducks",
+      "fromId": "species:barrows-goldeneye",
+      "toId": "species_group:ducks",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-barrows-goldeneye"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:barrows-goldeneye-similar-common-goldeneye",
+      "fromId": "species:barrows-goldeneye",
+      "toId": "species:common-goldeneye",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-barrows-goldeneye"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:bufflehead-member-ducks",
+      "fromId": "species:bufflehead",
+      "toId": "species_group:ducks",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-bufflehead"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:snow-goose-member-geese",
+      "fromId": "species:snow-goose",
+      "toId": "species_group:geese",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-snow-goose"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:cackling-goose-member-geese",
+      "fromId": "species:cackling-goose",
+      "toId": "species_group:geese",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-cackling-goose"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:cackling-goose-similar-canada-goose",
+      "fromId": "species:cackling-goose",
+      "toId": "species:canada-goose",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-cackling-goose"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:greater-white-fronted-goose-member-geese",
+      "fromId": "species:greater-white-fronted-goose",
+      "toId": "species_group:geese",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-greater-white-fronted-goose"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    },
+    {
+      "id": "rel:brant-member-geese",
+      "fromId": "species:brant",
+      "toId": "species_group:geese",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-brant"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-20T20:00:00Z",
+      "updatedAt": "2026-09-20T20:00:00Z"
+    }
+  ],
+  "sources": [
+    {
+      "id": "source:cornell-american-black-duck",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "American black duck identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/American_black_duck/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-wood-duck",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Wood duck identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Wood_duck/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-northern-pintail",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Northern pintail identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Northern_pintail/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-gadwall",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Gadwall identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Gadwall/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-american-wigeon",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "American wigeon identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/American_wigeon/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-green-winged-teal",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Green-winged teal identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Green-winged_teal/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-blue-winged-teal",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Blue-winged teal identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Blue-winged_teal/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-northern-shoveler",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Northern shoveler identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Northern_shoveler/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-canvasback",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Canvasback identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Canvasback/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-redhead",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Redhead identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Redhead/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-ring-necked-duck",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Ring-necked duck identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Ring-necked_duck/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-greater-scaup",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Greater scaup identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Greater_scaup/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-lesser-scaup",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Lesser scaup identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Lesser_scaup/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-common-goldeneye",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Common goldeneye identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Common_goldeneye/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-barrows-goldeneye",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Barrow's goldeneye identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Barrows_goldeneye/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-bufflehead",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Bufflehead identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Bufflehead/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-snow-goose",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Snow goose identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Snow_goose/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-cackling-goose",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Cackling goose identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Cackling_goose/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-greater-white-fronted-goose",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Greater white-fronted goose identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Greater_white-fronted_goose/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-brant",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Brant identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Brant/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    }
+  ],
+  "claims": [],
+  "media": []
+}
