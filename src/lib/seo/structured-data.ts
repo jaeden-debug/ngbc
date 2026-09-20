@@ -5,6 +5,7 @@ import {
   SITE_LANGUAGE,
   SITE_NAME,
 } from "../site.ts";
+import type { SpeciesResource } from "../content-contract/types.ts";
 
 export type JsonLd = Record<string, unknown>;
 
@@ -59,5 +60,25 @@ export function breadcrumbJsonLd(items: readonly BreadcrumbItem[]): JsonLd {
       name: item.name,
       item: absoluteUrl(item.path),
     })),
+  };
+}
+
+export function speciesArticleJsonLd(resource: SpeciesResource, url: string): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${url}#article`,
+    headline: resource.title,
+    description: resource.description,
+    url,
+    inLanguage: resource.locale,
+    datePublished: resource.publishedAt,
+    dateModified: resource.updatedAt,
+    mainEntity: {
+      "@type": "Taxon",
+      name: resource.title,
+      scientificName: resource.speciesProfile.scientificName,
+    },
+    publisher: { "@id": ORGANIZATION_ID },
   };
 }

@@ -1,4 +1,4 @@
-const DEFAULT_SITE_URL = "https://northgroundbushcraft.com";
+const DEFAULT_SITE_URL = "https://www.northgroundbushcraft.com";
 
 export const SITE_NAME = "North Ground";
 export const SITE_ALTERNATE_NAME = "North Ground Bushcraft";

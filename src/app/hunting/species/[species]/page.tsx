@@ -1,0 +1,129 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import Breadcrumbs from "../../../../components/Breadcrumbs";
+import {
+  AppBlockList,
+  DirectAnswer,
+  KeyFacts,
+  RelatedResources,
+  SourceList,
+} from "../../../../components/content/ContentPatterns";
+import StructuredData from "../../../../components/StructuredData";
+import type { SpeciesResource } from "../../../../lib/content-contract/types";
+import { contentRepository } from "../../../../lib/content/repository";
+import { speciesArticleJsonLd } from "../../../../lib/seo/structured-data";
+import { absoluteUrl } from "../../../../lib/site";
+import styles from "./page.module.css";
+
+type Props = { params: Promise<{ species: string }> };
+
+async function getSpeciesResource(slug: string): Promise<SpeciesResource | null> {
+  const resource = await contentRepository.getResourceBySlug(slug, { locale: "en-CA" });
+  return resource?.type === "species" && resource.status === "published" ? resource : null;
+}
+
+export async function generateStaticParams() {
+  const resources = await contentRepository.getPublishedResources({ locale: "en-CA" });
+  return resources.filter((resource) => resource.type === "species").map((resource) => ({ species: resource.slug }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { species } = await params;
+  const resource = await getSpeciesResource(species);
+  if (!resource) return {};
+  return {
+    title: resource.title,
+    description: resource.description,
+    alternates: { canonical: resource.canonicalUrl },
+    openGraph: {
+      type: "article",
+      url: resource.canonicalUrl,
+      title: resource.title,
+      description: resource.description,
+    },
+  };
+}
+
+export default async function SpeciesPage({ params }: Props) {
+  const { species } = await params;
+  const resource = await getSpeciesResource(species);
+  if (!resource) notFound();
+
+  const blocksPromise = contentRepository.getContextualBlocks({
+    locale: resource.locale,
+    countryId: "country:ca",
+    jurisdictionIds: ["jurisdiction:ca-on"],
+    speciesIds: [resource.speciesProfile.speciesId],
+    activityId: "activity:hunting",
+    huntTypeId: "hunt_type:upland",
+    ownerIds: [resource.id],
+    blockTypes: ["habitat_tip", "identification_warning", "legal_note"],
+    date: resource.lastReviewed,
+  });
+  const [related, blocks] = await Promise.all([
+    contentRepository.getRelatedResources(resource.id, { locale: resource.locale, limit: 5 }),
+    blocksPromise,
+  ]);
+  const sourceIds = new Set(resource.sourceIds ?? []);
+  for (const sourceId of resource.speciesProfile.sourceIds) sourceIds.add(sourceId);
+  for (const { block } of blocks.blocks) {
+    for (const sourceId of block.sourceIds ?? []) sourceIds.add(sourceId);
+  }
+  const sources = await contentRepository.getSources([...sourceIds]);
+
+  const breadcrumbs = [
+    { name: "Home", path: "/" },
+    { name: "Hunt checker", path: "/tools/season-finder" },
+    { name: "Ruffed grouse", path: resource.canonicalUrl ?? "/hunting/species/ruffed-grouse" },
+  ];
+
+  return (
+    <main className={styles.page}>
+      <StructuredData data={speciesArticleJsonLd(resource, absoluteUrl(resource.canonicalUrl ?? "/hunting/species/ruffed-grouse"))} />
+      <div className={styles.shell}>
+        <div className={styles.breadcrumb}><Breadcrumbs items={breadcrumbs} /></div>
+        <header className={styles.hero}>
+          <p className={styles.eyebrow}>Species reference</p>
+          <h1>{resource.title}</h1>
+          <p className={styles.scientific}>{resource.speciesProfile.scientificName}</p>
+          <p className={styles.identity}>Canonical ID: <code>{resource.speciesProfile.speciesId}</code></p>
+          <div className={styles.directAnswer}><DirectAnswer>{resource.quickAnswer}</DirectAnswer></div>
+          <div className={styles.ctaRow}>
+            <Link className={styles.primaryCta} href="/tools/season-finder?species=ruffed-grouse">Check a location and date</Link>
+            <a className={styles.secondaryCta} href="#sources">Inspect sources</a>
+          </div>
+        </header>
+
+        <section className={styles.section} aria-labelledby="key-facts">
+          <h2 id="key-facts">Key facts</h2>
+          <div className={styles.facts}><KeyFacts facts={resource.keyFacts ?? []} /></div>
+        </section>
+
+        <section className={styles.section} aria-labelledby="habitat-context">
+          <h2 id="habitat-context">Habitat and seasonal context</h2>
+          <div className={styles.sectionText}>
+            {resource.speciesProfile.habitat?.map((section) => <p key={section.text}>{section.text}</p>)}
+            {resource.speciesProfile.seasonalBehavior?.map((section) => <p key={section.text}>{section.text}</p>)}
+          </div>
+        </section>
+
+        <section className={styles.section} aria-labelledby="field-use">
+          <h2 id="field-use">What matters in the field</h2>
+          <div className={styles.blocks}><AppBlockList result={blocks} /></div>
+        </section>
+
+        <section className={styles.section} id="sources" aria-labelledby="source-heading">
+          <h2 id="source-heading">Sources</h2>
+          <p className={styles.review}>Scientific identity and habitat reviewed {resource.lastReviewed}. Regulatory status is intentionally handled by Hunt, not this page.</p>
+          <div className={styles.sources}><SourceList sources={sources} /></div>
+        </section>
+
+        <section className={styles.section} aria-labelledby="next-question">
+          <h2 id="next-question">Next question</h2>
+          <div className={styles.related}><RelatedResources resources={related} /></div>
+        </section>
+      </div>
+    </main>
+  );
+}

@@ -11,7 +11,7 @@ test("Organization and WebSite share stable entity identifiers", () => {
   const website = websiteJsonLd();
 
   assert.equal(organization["@type"], "Organization");
-  assert.equal(organization["@id"], "https://northgroundbushcraft.com/#organization");
+  assert.equal(organization["@id"], "https://www.northgroundbushcraft.com/#organization");
   assert.equal(website["@type"], "WebSite");
   assert.deepEqual(website.publisher, { "@id": organization["@id"] });
 });
@@ -27,13 +27,13 @@ test("breadcrumb schema uses absolute URLs and sequential positions", () => {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://northgroundbushcraft.com/",
+      item: "https://www.northgroundbushcraft.com/",
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Field notes",
-      item: "https://northgroundbushcraft.com/field-notes",
+      item: "https://www.northgroundbushcraft.com/field-notes",
     },
   ]);
 });

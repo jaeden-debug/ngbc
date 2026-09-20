@@ -40,12 +40,12 @@ async function validate() {
   assert.match(home, /<title>North Ground \| Northern fieldwork and practical skills<\/title>/i);
   assert.match(
     home,
-    /<link rel="canonical" href="https:\/\/northgroundbushcraft\.com\/?"/i,
+    /<link rel="canonical" href="https:\/\/www\.northgroundbushcraft\.com\/?"/i,
     "canonical should ignore query parameters",
   );
   assert.match(home, /<meta name="description" content="Outdoor fieldwork,/i);
   assert.match(home, /<meta property="og:title" content="North Ground/i);
-  assert.match(home, /<meta property="og:image" content="https:\/\/northgroundbushcraft\.com\/opengraph-image/i);
+  assert.match(home, /<meta property="og:image" content="https:\/\/www\.northgroundbushcraft\.com\/opengraph-image/i);
   assert.match(home, /<meta name="twitter:card" content="summary_large_image"/i);
   assert.equal(countMatches(home, /<h1\b/gi), 1, "home should have exactly one server-rendered H1");
   assert.match(home, /North Ground — northern fieldwork and practical skills/i);
@@ -58,13 +58,30 @@ async function validate() {
   assert.match(robots, /User-Agent: \*/i);
   assert.match(robots, /Allow: \//i);
   assert.match(robots, /Disallow: \/api\//i);
-  assert.match(robots, /Sitemap: https:\/\/northgroundbushcraft\.com\/sitemap\.xml/i);
+  assert.match(robots, /Sitemap: https:\/\/www\.northgroundbushcraft\.com\/sitemap\.xml/i);
 
   const sitemapResponse = await fetch(`${baseUrl}/sitemap.xml`);
   assert.equal(sitemapResponse.status, 200, "sitemap.xml should return 200");
   const sitemap = await sitemapResponse.text();
-  assert.match(sitemap, /<loc>https:\/\/northgroundbushcraft\.com\/<\/loc>/i);
-  assert.equal(countMatches(sitemap, /<url>/gi), 1, "sitemap should contain only the live homepage");
+  assert.match(sitemap, /<loc>https:\/\/www\.northgroundbushcraft\.com\/<\/loc>/i);
+  assert.match(sitemap, /<loc>https:\/\/www\.northgroundbushcraft\.com\/hunting\/species\/ruffed-grouse<\/loc>/i);
+  assert.match(sitemap, /<loc>https:\/\/www\.northgroundbushcraft\.com\/tools\/season-finder<\/loc>/i);
+  assert.equal(countMatches(sitemap, /<url>/gi), 3, "sitemap should contain only the homepage and two certified resources");
+
+  const speciesResponse = await fetch(`${baseUrl}/hunting/species/ruffed-grouse`);
+  assert.equal(speciesResponse.status, 200, "published species should return 200");
+  const species = await speciesResponse.text();
+  assert.match(species, /<h1[^>]*>Ruffed grouse<\/h1>/i);
+  assert.match(species, /<link rel="canonical" href="https:\/\/www\.northgroundbushcraft\.com\/hunting\/species\/ruffed-grouse"/i);
+  assert.match(species, /"@type":"Taxon"/i);
+  assert.match(species, /Bonasa umbellus/i);
+  assert.match(species, /Check a location and date/i);
+
+  const toolResponse = await fetch(`${baseUrl}/tools/season-finder`);
+  assert.equal(toolResponse.status, 200, "Hunt tool should return 200");
+  const tool = await toolResponse.text();
+  assert.match(tool, /<h1[^>]*>What applies here, on this date\?<\/h1>/i);
+  assert.match(tool, /<link rel="canonical" href="https:\/\/www\.northgroundbushcraft\.com\/tools\/season-finder"/i);
 
   const imageResponse = await fetch(`${baseUrl}/opengraph-image`);
   assert.equal(imageResponse.status, 200, "Open Graph image should return 200");

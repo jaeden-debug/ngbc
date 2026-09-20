@@ -9,9 +9,7 @@
 *{ box-sizing: border-box; }
 
 html, body{
-  height: 100%;
-  overflow: hidden;              /* no page scroll */
-  overscroll-behavior: none;     /* no rubber-band */
+  min-height: 100%;
 }
 
 body{
@@ -22,3 +20,14 @@ body{
 }
 
 a{ color: inherit; }
+
+button, input, select { font: inherit; }
+:focus-visible { outline: 3px solid #e7a75d; outline-offset: 3px; }
+
+.content-direct-answer { margin: 0; }
+.content-key-facts { display: contents; }
+.content-block-list { display: contents; }
+.content-block { padding: 1rem 1.1rem; border-left: 3px solid #80936f; background: rgba(128,147,111,.08); }
+.content-block h3 { margin: 0 0 .45rem; font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; }
+.content-block p { margin: 0; }
+.content-sources, .content-related { display: contents; }
