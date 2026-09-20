@@ -16,5 +16,5 @@ export function checkCurrentHuntPath(brief: ShareHuntBriefV1): string {
     date: brief.selectedDate,
   });
   if (brief.managementZone) params.set("zone", brief.managementZone.id);
-  return `/tools/season-finder?${params.toString()}`;
+  return `/hunt?${params.toString()}`;
 }

@@ -68,6 +68,25 @@ const FAMILY: Partial<Record<EntityType, (key: string) => string | null>> = {
 };
 
 /**
+ * Canonical overrides for tools that are products in their own right.
+ *
+ * `/tools/{slug}` remains the family route for utilities. North Ground Hunt is the
+ * flagship product rather than a utility, and the homepage sends people straight
+ * into it, so it earns a short product route. The former path is recorded here and
+ * permanently redirects — this is the only place the move is expressed.
+ */
+const CANONICAL_OVERRIDES: Record<string, CanonicalUrlResult> = {
+  "tool:season-finder": { path: "/hunt", previousPaths: ["/tools/season-finder"] },
+};
+
+/** Every historical path that must permanently redirect, with its destination. */
+export function redirectPairs(): Array<{ from: string; to: string }> {
+  return Object.values(CANONICAL_OVERRIDES).flatMap(({ path, previousPaths }) =>
+    (previousPaths ?? []).map((from) => ({ from, to: path })),
+  );
+}
+
+/**
  * Types that are real entities but deliberately have no public page of their
  * own. They surface inside a parent page, so linking to them is a bug rather
  * than a missing route.
@@ -99,6 +118,9 @@ export function canonicalPath(id: string): CanonicalUrlResult | null {
 
   const build = FAMILY[parsed.type];
   if (!build || NON_ROUTED.has(parsed.type)) return null;
+
+  const override = CANONICAL_OVERRIDES[id];
+  if (override) return override;
 
   const path = build(parsed.key);
   return path ? { path } : null;

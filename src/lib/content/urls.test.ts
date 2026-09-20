@@ -17,7 +17,8 @@ test("species and guides resolve into the /hunting namespace without trailing sl
 });
 
 test("tools stay at the root because a tool may serve several verticals", () => {
-  assert.equal(canonicalPath("tool:season-finder")?.path, "/tools/season-finder");
+  assert.equal(canonicalPath("tool:season-finder")?.path, "/hunt");
+  assert.deepEqual(canonicalPath("tool:season-finder")?.previousPaths, ["/tools/season-finder"]);
 });
 
 test("jurisdiction IDs are globally unique but nest under their country in routes", () => {

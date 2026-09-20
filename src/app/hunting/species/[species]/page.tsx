@@ -86,7 +86,7 @@ export default async function SpeciesPage({ params }: Props) {
 
   const breadcrumbs = [
     { name: "Home", path: "/" },
-    { name: "Hunt checker", path: "/tools/season-finder" },
+    { name: "Hunt checker", path: "/hunt" },
     { name: "Ruffed grouse", path: resource.canonicalUrl ?? "/hunting/species/ruffed-grouse" },
   ];
 
@@ -102,7 +102,7 @@ export default async function SpeciesPage({ params }: Props) {
           <p className={styles.identity}>Canonical ID: <code>{resource.speciesProfile.speciesId}</code></p>
           <div className={styles.directAnswer}><DirectAnswer>{resource.quickAnswer}</DirectAnswer></div>
           <div className={styles.ctaRow}>
-            <Link className={styles.primaryCta} href="/tools/season-finder?species=ruffed-grouse">Check a location and date</Link>
+            <Link className={styles.primaryCta} href="/hunt?species=ruffed-grouse">Check a location and date</Link>
             <a className={styles.secondaryCta} href="#sources">Inspect sources</a>
           </div>
         </header>

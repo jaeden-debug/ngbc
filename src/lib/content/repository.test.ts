@@ -52,6 +52,6 @@ test("related resources expose only real published destinations", async () => {
     type: "tool",
     title: "North Ground Hunt season finder",
     description: "Resolve an Ontario wildlife management unit and evaluate the certified ruffed grouse rule for a selected date.",
-    canonicalUrl: "/tools/season-finder",
+    canonicalUrl: "/hunt",
   }]);
 });

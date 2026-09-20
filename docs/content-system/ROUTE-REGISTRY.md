@@ -32,6 +32,24 @@ No trailing slashes, matching existing repository convention.
 
 `/tools/` stays outside `/hunting/` because a tool may serve several verticals. Hunt owns its own internal routes.
 
+### Product-route exception
+
+A tool that is a product in its own right may take a short root route instead of
+`/tools/{slug}`. The only one today:
+
+| Resource | Canonical | Redirects from |
+| --- | --- | --- |
+| `tool:season-finder` (North Ground Hunt) | `/hunt` | `/tools/season-finder` (301) |
+
+Hunt is the flagship product and the homepage's primary call to action sends people
+straight into it, so `/hunt` is the address people are given and should be the
+canonical one. Its share routes already lived under `/hunt/share/{opaqueId}`, so the
+product is now contiguous.
+
+Overrides live in `CANONICAL_OVERRIDES` in `src/lib/content/urls.ts` and carry their
+own `previousPaths`; `redirectPairs()` feeds those to `next.config.ts`. A route may
+not move without the registry recording where it moved from.
+
 ## Rules
 
 - One canonical URL per resource per locale. Aliases redirect (301); they are never duplicate pages.
