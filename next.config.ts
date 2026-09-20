@@ -12,6 +12,11 @@ import { redirectPairs } from "./src/lib/content/urls";
 const GOOGLE_MAPS_SCRIPT = "https://maps.googleapis.com";
 const GOOGLE_MAPS_CONNECT = "https://maps.googleapis.com https://maps.gstatic.com";
 const GOOGLE_MAPS_IMG = "https://maps.googleapis.com https://maps.gstatic.com https://khms0.googleapis.com https://khms1.googleapis.com https://streetviewpixels-pa.googleapis.com";
+/* Maps serves its own UI typography: the stylesheet from fonts.googleapis.com,
+   the font files from fonts.gstatic.com. Without the stylesheet origin the map
+   still works but logs a CSP violation on every load and loses its control
+   typography. */
+const GOOGLE_FONTS_STYLE = "https://fonts.googleapis.com";
 const GOOGLE_FONTS = "https://fonts.gstatic.com";
 
 const contentSecurityPolicy = [
@@ -27,7 +32,7 @@ const contentSecurityPolicy = [
   // Google Maps compiles helpers into blob workers.
   "worker-src 'self' blob:",
   `script-src 'self' 'unsafe-inline' ${GOOGLE_MAPS_SCRIPT}`,
-  "style-src 'self' 'unsafe-inline'",
+  `style-src 'self' 'unsafe-inline' ${GOOGLE_FONTS_STYLE}`,
   "upgrade-insecure-requests",
 ].join("; ");
 
