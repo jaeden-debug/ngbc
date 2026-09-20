@@ -13,7 +13,7 @@ Last updated: 2026-09-20
 - Brand direction: dark boreal, warm, rustic, clean, outdoorsy; not tactical.
 - Broader North Ground architecture is being established.
 - Technical foundation remediation is implemented: truthful durable newsletter handling, production robots/sitemap, canonical and social metadata, justified Organization/WebSite structured data, a breadcrumb primitive, server-rendered homepage H1, and branded 404 behavior.
-- The published bundle now drives two indexable application routes: `/hunt` and `/hunting/species/ruffed-grouse`. Both are included in the generated sitemap alongside `/`. `/tools/season-finder` is superseded and redirects permanently (308) to `/hunt`; the redirect is generated from `redirectPairs()` in `src/lib/content/urls.ts`, not hand-written in config.
+- The published bundles now drive `/hunt`, the searchable `/hunting/species` library, and ten indexable species routes. All are included in the generated sitemap alongside `/`. `/tools/season-finder` is superseded and redirects permanently (308) to `/hunt`; the redirect is generated from `redirectPairs()` in `src/lib/content/urls.ts`, not hand-written in config.
 - Finalized homepage metadata remains broad across Canadian outdoor knowledge and tools. `/hunt` has dedicated North Ground Hunt metadata and a static 1536×803 JPEG social preview; dynamic `/hunt/share/[shareId]` metadata remains independently overridable and `noindex`.
 - The homepage hero is unchanged and stays the dark, immersive entrance. Its `Enter the North` control is now a link to `/hunt`; the mission deck it previously opened moved to a quieter `Who we are` control directly beneath it, with focus return repointed accordingly.
 - The integrated release is deployed on the canonical public host. Homepage navigation now exposes Hunt and the ruffed-grouse species guide on desktop, mobile and keyboard paths; the approved brand mark also supplies a 180×180 Apple touch icon.
@@ -40,8 +40,9 @@ Last updated: 2026-09-20
 - Editorial standard: maximum useful information with minimum necessary words.
 - Species, conditions, clothing, packing, skills, regulations and related entities should be reusable by the application.
 - Shared content contract v1 is defined in `docs/content-system/` with canonical ID, species/resource, App Block, deterministic matching, relationship, source, media, URL, quality and lifecycle rules.
-- Storage-neutral TypeScript contracts live in `src/lib/content-contract/`. The strict validated production bundle is `content/published/en-CA.json`; `src/lib/content/repository.ts` provides canonical entity/resource/source lookup, deterministic App Block matching, related-resource lookup, and URL resolution without binding the product to a CMS.
-- The first canonical species resource is `species:ruffed-grouse` at `/hunting/species/ruffed-grouse`. It is server rendered, source-backed, structured-data enabled, and connected bidirectionally with Hunt. No species image is published because an accurately identified licensed asset has not been certified.
+- Storage-neutral TypeScript contracts live in `src/lib/content-contract/`. The strict validated production bundles are `content/published/en-CA.json` and `content/published/species-wave-1.json`; `src/lib/content/repository.ts` provides canonical entity/resource/source lookup, alias-aware species search, exact-species media gating, deterministic App Block matching, related-resource lookup, and URL resolution without binding the product to a CMS.
+- Wave 1 publishes ten source-backed species profiles, a searchable grouped library, identification/habitat App Blocks, breadcrumbs, Taxon structured data, internal relationships and Hunt links. A published biological profile is not evidence of a huntable season: the Hunt selector labels ruffed grouse `Rules available` and the other nine species `Rules in development`.
+- No Wave 1 species image is published because no candidate has completed exact-species and attribution verification. The per-species decision record is `docs/species-media-audit.md`; the UI renders a deliberate no-photo state instead of a potentially incorrect wildlife image.
 
 ### Field Testing
 - Methodology planned.
@@ -146,7 +147,8 @@ Maintain a reference to the authoritative species registry rather than duplicati
 Research registry: `research/hunting/species-master.csv` currently contains 127 North American species and protected identification-risk entities, with 48 alias records. Separate research tables cover 66 jurisdiction-specific regulatory-group mappings, 15 identification risks, 25 range-source leads, 24 seasonal modules, and 25 content opportunities. None encodes universal huntability or production editorial coverage.
 
 Current editorial coverage:
-- `species:ruffed-grouse` is published in `en-CA` with source-backed taxonomy, Canadian range, habitat, seasonal context, a direct answer, key facts, three contextual App Blocks, and a canonical Hunt relationship.
+- Wave 1 publishes ruffed grouse, spruce grouse, sharp-tailed grouse, wild turkey, white-tailed deer, moose, American black bear, snowshoe hare, mallard and Canada goose in `en-CA`.
+- The production selector searches common, scientific, French and alternate names while keeping the 127-record research registry out of runtime publication. Hunt-rule availability remains an independent regulatory capability.
 
 ## Data Providers
 
@@ -222,14 +224,14 @@ Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport a
 ## Validation
 
 ### Build
-- `npm run build` passed on 2026-09-20 (Next.js 16.1.1). The ruffed-grouse species page is statically generated; Hunt, its evaluation/share APIs, shared Hunt Brief page and per-brief Open Graph image are dynamic; home, 404, site Open Graph image, robots, and sitemap are generated successfully.
+- `npm run build` passed on 2026-09-20 (Next.js 16.1.1). The species library is static and all ten species pages are statically generated; Hunt, its evaluation/share APIs, shared Hunt Brief page and per-brief Open Graph image are dynamic; home, 404, site Open Graph image, robots, and sitemap are generated successfully.
 
 ### Tests
 - `npm run typecheck` passed on 2026-09-20.
-- `npm run test:content-contract` passed 4/4 on 2026-09-20.
+- `npm run test:content-contract` passed 6/6 on 2026-09-20, including scientific-name, duplicate-alias and species-media verification failures.
 - `npm run validate:content:strict` passed the contract fixture with 0 errors and 0 warnings on 2026-09-20.
-- `npm run validate:content:published` passed the published bundle with 0 errors and 0 warnings (10 entities, 2 resources, 4 blocks) on 2026-09-20.
-- `npm run test:content-urls` passed 13/13, including repository coverage, on 2026-09-20; `npm run test:content-repository` passed 4/4.
+- `npm run validate:content:published` passed both published bundles with 0 errors and 0 warnings (26 entities, 11 resources, 14 blocks) on 2026-09-20.
+- `npm run test:content-urls` passed 13/13 on 2026-09-20; `npm run test:content-repository` passed 7/7, including alias search, related species, sources, App Blocks and exact-species image gating.
 - `npm run test:hunt` passed 67/67 on 2026-09-20, covering request origin/media/body/rate controls, season boundaries, fail-closed unknowns, forecast horizon, official-zone response handling/boundary warning, regulatory/editorial separation, place search and geocoding providers, the date composer, and the spatial/zone-geometry engine.
 - The spatial engine has 18 deterministic tests in `src/lib/hunt/zone-geometry.test.ts`: point inside a zone, point outside supported geography (no authority is queried at all), point near a mapped boundary, overlapping zones requiring human verification, invalid coordinates, the Canada/United States jurisdiction distinction, per-zone versus per-layer coverage, zoom-dependent simplification monotonicity, the exact query sent to the authority, cache reuse, outage handling that is deliberately not cached, degenerate-feature rejection, and viewport validation.
 - The date composer has 19 tests in `src/lib/hunt/date.test.ts`, including `20260808` → `2026/08/08`, pasted `2026-08-08` and `2026/08/08`, progressive partial input distinguished from invalid input, `20260229` rejected and `20280229` accepted, `20261301` and `20261232` rejected, calendar/text round trips, and the time-zone cases that would otherwise shift a hunt by one day.
@@ -237,6 +239,7 @@ Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport a
 - `npm run test:newsletter` passed 9/9 on 2026-09-20.
 - `npm run test:seo` passed 3/3 and `npm run validate:seo` passed production-server checks for metadata, SSR H1/indexability, social image, robots, sitemap, 404 and trailing-slash redirects on 2026-09-20. The validator was moved to the canonical `/hunt` route and now additionally asserts that `/tools/season-finder` returns 308 to `/hunt` and that the superseded path is absent from the sitemap.
 - `npm run lint` passed on 2026-09-20.
+- Local browser certification passed for the species library and ruffed grouse, white-tailed deer, moose, American black bear, mallard and Canada goose at 1280 and 390 CSS pixels with no horizontal overflow or framework overlays. All six pages emitted Article + Taxon and breadcrumb structured data. `orignal` found Moose, and the Hunt selector found disabled White-tailed deer through `whitetail` while exposing only ruffed grouse as `Rules available`. The only local console error was the expected Google Maps referrer refusal for `127.0.0.1`, which does not occur on the authorized production origin.
 - Finalized homepage/Hunt metadata validation passed on 2026-09-20: exact emitted title, description, canonical, Open Graph, Twitter fields, `www` URLs, image alt text, and the Hunt JPEG's 200 `image/jpeg` response were verified against a production build.
 - Local production runtime certification resolved 45.23, -77.94 to WMU 57, returned `CONDITIONAL` for 2026-09-20, returned live weather inside the forecast horizon, returned explicit `UNAVAILABLE` weather 46 days out without provider fallback, and retrieved legal, identification, and habitat App Blocks by canonical species context.
 - Hunt browser certification passed on 2026-09-20 at 320, 360, 375, 390, 430, 768, 1024, 1280 and 1440 CSS pixels with zero horizontal overflow at every width. Mobile order is composer then map; desktop is a sticky composer beside a map that fills the viewport height. The full navigation appears from 768 up and collapses to a compact disclosure menu below it.
