@@ -37,13 +37,13 @@ async function validate() {
   const home = await homeResponse.text();
 
   assert.match(home, /<html lang="en-CA"/i, "document language should be en-CA");
-  assert.match(home, /<title>North Ground \| Northern fieldwork and practical skills<\/title>/i);
+  assert.match(home, /<title>North Ground Bushcraft \| Canadian Outdoor Knowledge (?:&|&amp;) Tools<\/title>/i);
   assert.match(
     home,
     /<link rel="canonical" href="https:\/\/www\.northgroundbushcraft\.com\/?"/i,
     "canonical should ignore query parameters",
   );
-  assert.match(home, /<meta name="description" content="Outdoor fieldwork,/i);
+  assert.match(home, /<meta name="description" content="Practical Canadian outdoor knowledge, field-tested guides and useful tools for hunting, bushcraft, camping, cold weather and exploring the outdoors\."/i);
   assert.match(home, /<meta property="og:title" content="North Ground/i);
   assert.match(home, /<meta property="og:image" content="https:\/\/www\.northgroundbushcraft\.com\/opengraph-image/i);
   assert.match(home, /<meta name="twitter:card" content="summary_large_image"/i);
@@ -82,6 +82,25 @@ async function validate() {
   const tool = await toolResponse.text();
   assert.match(tool, /<h1[^>]*>What applies here, on this date\?<\/h1>/i);
   assert.match(tool, /<link rel="canonical" href="https:\/\/www\.northgroundbushcraft\.com\/tools\/season-finder"/i);
+  assert.equal(countMatches(tool, /<link rel="canonical"/gi), 1, "Hunt should emit one canonical tag");
+  assert.match(tool, /<title>Hunting Zone (?:&|&amp;) Season Finder \| North Ground Hunt<\/title>/i);
+  assert.match(tool, /<meta name="description" content="Find your hunting zone, check current seasons and rules, view official sources, weather and local hunt information, and share your Hunt Brief\."/i);
+  assert.match(tool, /<meta property="og:title" content="North Ground Hunt \| Your Zone\. Your Season\. Your Hunt\."/i);
+  assert.match(tool, /<meta property="og:description" content="Find hunting zones, check current seasons and rules, verify official sources, and share your Hunt Brief with friends\."/i);
+  assert.match(tool, /<meta property="og:url" content="https:\/\/www\.northgroundbushcraft\.com\/tools\/season-finder"/i);
+  assert.match(tool, /<meta property="og:site_name" content="North Ground"/i);
+  assert.match(tool, /<meta property="og:image" content="https:\/\/www\.northgroundbushcraft\.com\/north-ground-hunt-zones-seasons-share-results\.jpg"/i);
+  assert.match(tool, /<meta property="og:image:alt" content="North Ground Hunt social preview showing hunting zones, current seasons, official sources and Hunt Brief sharing\."/i);
+  assert.match(tool, /<meta name="twitter:card" content="summary_large_image"/i);
+  assert.match(tool, /<meta name="twitter:title" content="North Ground Hunt \| Your Zone\. Your Season\. Your Hunt\."/i);
+  assert.match(tool, /<meta name="twitter:description" content="Find hunting zones, check current seasons and rules, verify official sources, and share your Hunt Brief with friends\."/i);
+  assert.match(tool, /<meta name="twitter:image" content="https:\/\/www\.northgroundbushcraft\.com\/north-ground-hunt-zones-seasons-share-results\.jpg"/i);
+  assert.match(tool, /<meta name="twitter:image:alt" content="North Ground Hunt social preview showing hunting zones, current seasons, official sources and Hunt Brief sharing\."/i);
+
+  const huntImageResponse = await fetch(`${baseUrl}/north-ground-hunt-zones-seasons-share-results.jpg`);
+  assert.equal(huntImageResponse.status, 200, "Hunt social image should return 200");
+  assert.match(huntImageResponse.headers.get("content-type") || "", /^image\/jpeg/i);
+  assert.ok((await huntImageResponse.arrayBuffer()).byteLength > 0, "Hunt social image should not be empty");
 
   const imageResponse = await fetch(`${baseUrl}/opengraph-image`);
   assert.equal(imageResponse.status, 200, "Open Graph image should return 200");

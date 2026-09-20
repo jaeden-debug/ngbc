@@ -1,18 +1,37 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { absoluteUrl, SITE_NAME } from "../../../lib/site";
 import HuntClient from "./HuntClient";
 import styles from "./page.module.css";
 
 export const dynamic = "force-dynamic";
 
+const canonicalPath = "/tools/season-finder";
+const metaTitle = "Hunting Zone & Season Finder | North Ground Hunt";
+const metaDescription = "Find your hunting zone, check current seasons and rules, view official sources, weather and local hunt information, and share your Hunt Brief.";
+const socialTitle = "North Ground Hunt | Your Zone. Your Season. Your Hunt.";
+const socialDescription = "Find hunting zones, check current seasons and rules, verify official sources, and share your Hunt Brief with friends.";
+const socialImage = absoluteUrl("/north-ground-hunt-zones-seasons-share-results.jpg");
+const socialImageAlt = "North Ground Hunt social preview showing hunting zones, current seasons, official sources and Hunt Brief sharing.";
+
 export const metadata: Metadata = {
-  title: "Ontario ruffed grouse Hunt checker",
-  description: "Resolve an official Ontario wildlife management unit and evaluate the certified 2026 ruffed grouse rule with source, boundary and forecast limitations.",
-  alternates: { canonical: "/tools/season-finder" },
+  title: { absolute: metaTitle },
+  description: metaDescription,
+  alternates: { canonical: canonicalPath },
   openGraph: {
-    url: "/tools/season-finder",
-    title: "Ontario ruffed grouse Hunt checker",
-    description: "Location, date, official WMU source, regulatory result, weather context and North Ground species knowledge in one flow.",
+    type: "website",
+    locale: "en_CA",
+    url: absoluteUrl(canonicalPath),
+    siteName: SITE_NAME,
+    title: socialTitle,
+    description: socialDescription,
+    images: [{ url: socialImage, width: 1536, height: 803, alt: socialImageAlt }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: socialTitle,
+    description: socialDescription,
+    images: [{ url: socialImage, alt: socialImageAlt }],
   },
 };
 
