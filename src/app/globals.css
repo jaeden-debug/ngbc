@@ -31,3 +31,281 @@ button, input, select { font: inherit; }
 .content-block h3 { margin: 0 0 .45rem; font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; }
 .content-block p { margin: 0; }
 .content-sources, .content-related { display: contents; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NORTH GROUND PRODUCT SYSTEM
+   Tokens and surfaces shared by North Ground's application interfaces.
+   The heritage mark carries the distressed, rustic character; the product
+   surfaces stay precise and clean. That contrast is intentional.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Ground ── */
+  --ng-black: #070808;
+  --ng-charcoal: #121413;
+  --ng-charcoal-raised: #181b19;
+
+  /* ── Warm bone / cream ── */
+  --ng-bone: #c9c2a6;
+  --ng-cream: #f0ead8;
+  /* Both secondary tiers are measured against the dark glass they sit on, not
+     against pure black: at 0.44 the faint tier came out at 2.9:1, which fails AA
+     for the 11–12px text it is used for. These values hold 6.7:1 and 4.7:1 while
+     staying visibly quieter than full cream. */
+  --ng-bone-dim: rgba(201, 194, 166, 0.80);
+  --ng-bone-faint: rgba(201, 194, 166, 0.62);
+
+  /* ── Forest / moss ── */
+  --ng-forest: #2f4133;
+  --ng-forest-light: #6f9178;
+  --ng-moss: #8ba883;
+
+  /* ── Earth / bark ── */
+  --ng-bark: #4a3f2f;
+  --ng-bark-light: #8a7657;
+
+  /* ── Campfire amber, used sparingly ── */
+  --ng-amber: #d98b3a;
+  --ng-amber-soft: rgba(217, 139, 58, 0.16);
+
+  /* ── Regulatory semantics. Never the only signal: every status also
+        carries a text label and a glyph. ── */
+  --ng-open: #7cc08a;
+  --ng-open-bg: rgba(124, 192, 138, 0.12);
+  --ng-closed: #9aa0a6;
+  --ng-closed-bg: rgba(154, 160, 166, 0.10);
+  --ng-conditional: #e0a04a;
+  --ng-conditional-bg: rgba(224, 160, 74, 0.12);
+  --ng-unknown: #8aa2bd;
+  --ng-unknown-bg: rgba(138, 162, 189, 0.12);
+  --ng-conflict: #d97a6c;
+  --ng-conflict-bg: rgba(217, 122, 108, 0.12);
+
+  /* ── Glass system ──
+     One set of values, applied through .ng-glass-* classes. Components must not
+     invent their own backdrop-filter values: inconsistent glass is what makes an
+     interface look cheap, and stacked filters are what make it slow. */
+  --ng-glass-bg: rgba(18, 20, 19, 0.62);
+  --ng-glass-bg-strong: rgba(14, 16, 15, 0.82);
+  /* For popovers that float over body text rather than over imagery: blur alone
+     leaves high-contrast type legible through the panel, which reads as a bug. */
+  --ng-glass-bg-dense: rgba(12, 14, 13, 0.95);
+  --ng-glass-bg-soft: rgba(24, 27, 25, 0.44);
+  --ng-glass-blur: 20px;
+  --ng-glass-blur-strong: 28px;
+  --ng-glass-border: rgba(201, 194, 166, 0.14);
+  --ng-glass-border-bright: rgba(201, 194, 166, 0.24);
+  --ng-glass-highlight: rgba(255, 255, 255, 0.06);
+
+  /* ── Depth. Restrained by design; shadow communicates layer, not drama. ── */
+  --ng-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --ng-shadow-2: 0 2px 8px rgba(0, 0, 0, 0.30), 0 8px 24px rgba(0, 0, 0, 0.22);
+  --ng-shadow-3: 0 4px 16px rgba(0, 0, 0, 0.36), 0 20px 48px rgba(0, 0, 0, 0.30);
+
+  /* ── Geometry ── */
+  --ng-radius-sm: 10px;
+  --ng-radius: 16px;
+  --ng-radius-lg: 22px;
+  --ng-radius-pill: 999px;
+
+  /* Touch targets sized for cold hands and gloves, not for a mouse. */
+  --ng-tap: 48px;
+
+  --ng-gutter: 20px;
+  --ng-max: 1280px;
+}
+
+/* ── Glass surfaces ──────────────────────────────────────────────────────── */
+
+.ng-glass,
+.ng-glass-panel,
+.ng-glass-card,
+.ng-glass-control,
+.ng-glass-popover,
+.ng-glass-overlay {
+  position: relative;
+  border: 1px solid var(--ng-glass-border);
+  background-color: var(--ng-glass-bg);
+  box-shadow: var(--ng-shadow-2);
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .ng-glass,
+  .ng-glass-panel,
+  .ng-glass-card,
+  .ng-glass-control,
+  .ng-glass-popover,
+  .ng-glass-overlay {
+    -webkit-backdrop-filter: blur(var(--ng-glass-blur)) saturate(140%);
+    backdrop-filter: blur(var(--ng-glass-blur)) saturate(140%);
+  }
+}
+
+/* Level 2 — the Hunt workspace. */
+.ng-glass-panel {
+  border-radius: var(--ng-radius-lg);
+  box-shadow: var(--ng-shadow-3);
+}
+
+/* Level 3 — composer and result cards inside the workspace. */
+.ng-glass-card {
+  border-radius: var(--ng-radius);
+  background-color: var(--ng-glass-bg-soft);
+}
+
+/* Level 4 — controls. */
+.ng-glass-control {
+  border-radius: var(--ng-radius-sm);
+  background-color: var(--ng-glass-bg-soft);
+  box-shadow: var(--ng-shadow-1);
+}
+
+/* Level 4 — popovers floating above controls; opaque enough to stay readable
+   over both photography and a satellite basemap. */
+.ng-glass-popover {
+  border-radius: var(--ng-radius);
+  border-color: var(--ng-glass-border-bright);
+  background-color: var(--ng-glass-bg-strong);
+  box-shadow: var(--ng-shadow-3);
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .ng-glass-popover {
+    -webkit-backdrop-filter: blur(var(--ng-glass-blur-strong)) saturate(150%);
+    backdrop-filter: blur(var(--ng-glass-blur-strong)) saturate(150%);
+  }
+}
+
+/* Map overlays sit on imagery, so they carry the strongest background. */
+.ng-glass-overlay {
+  border-radius: var(--ng-radius-pill);
+  background-color: var(--ng-glass-bg-strong);
+  box-shadow: var(--ng-shadow-2);
+}
+
+/* A single hairline of inner light along the top edge. This is what reads as
+   "glass" rather than "translucent box". */
+.ng-glass-panel::before,
+.ng-glass-card::before,
+.ng-glass-popover::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent, var(--ng-glass-highlight) 18%, var(--ng-glass-highlight) 82%, transparent);
+  pointer-events: none;
+}
+
+/* Some people find translucency uncomfortable or hard to read. Honour that. */
+@media (prefers-reduced-transparency: reduce) {
+  .ng-glass,
+  .ng-glass-panel,
+  .ng-glass-card,
+  .ng-glass-control,
+  .ng-glass-popover,
+  .ng-glass-overlay {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background-color: #141615;
+  }
+}
+
+/* Fallback where backdrop-filter is unavailable: contrast is preserved by
+   making the surface opaque rather than by leaving unreadable translucency. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .ng-glass,
+  .ng-glass-panel,
+  .ng-glass-card,
+  .ng-glass-control,
+  .ng-glass-popover,
+  .ng-glass-overlay {
+    background-color: #141615;
+  }
+}
+
+/* ── Typography scale ────────────────────────────────────────────────────── */
+
+.ng-eyebrow {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ng-bone-faint);
+}
+
+.ng-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ng-bone-faint);
+}
+
+.ng-meta {
+  font-size: 0.8rem;
+  color: var(--ng-bone-dim);
+}
+
+.ng-numeric {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Status ──────────────────────────────────────────────────────────────── */
+
+.ng-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.8rem 0.3rem 0.65rem;
+  border: 1px solid currentColor;
+  border-radius: var(--ng-radius-pill);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ng-status::before {
+  font-size: 0.85em;
+  line-height: 1;
+}
+
+.ng-status[data-status="OPEN"] { color: var(--ng-open); background: var(--ng-open-bg); }
+.ng-status[data-status="OPEN"]::before { content: "\25CF"; }
+.ng-status[data-status="CLOSED"] { color: var(--ng-closed); background: var(--ng-closed-bg); }
+.ng-status[data-status="CLOSED"]::before { content: "\25A0"; }
+.ng-status[data-status="CONDITIONAL"] { color: var(--ng-conditional); background: var(--ng-conditional-bg); }
+.ng-status[data-status="CONDITIONAL"]::before { content: "\25B2"; }
+.ng-status[data-status="UNKNOWN"] { color: var(--ng-unknown); background: var(--ng-unknown-bg); }
+.ng-status[data-status="UNKNOWN"]::before { content: "?"; }
+.ng-status[data-status="NEEDS_VERIFICATION"] { color: var(--ng-unknown); background: var(--ng-unknown-bg); }
+.ng-status[data-status="NEEDS_VERIFICATION"]::before { content: "?"; }
+.ng-status[data-status="CONFLICT"] { color: var(--ng-conflict); background: var(--ng-conflict-bg); }
+.ng-status[data-status="CONFLICT"]::before { content: "\2715"; }
+
+/* ── Motion ──────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.ng-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

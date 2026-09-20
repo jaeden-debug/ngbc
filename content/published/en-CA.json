@@ -68,7 +68,7 @@
         },
         {
           "locale": "fr-CA",
-          "value": "Gélinotte huppée",
+          "value": "G\u00e9linotte hupp\u00e9e",
           "official": true
         }
       ],
@@ -259,7 +259,7 @@
           },
           {
             "locale": "fr-CA",
-            "value": "Gélinotte huppée",
+            "value": "G\u00e9linotte hupp\u00e9e",
             "official": true
           }
         ],
@@ -293,7 +293,7 @@
         ],
         "identification": [
           {
-            "text": "Confirm the bird as ruffed grouse rather than relying on the regional name “partridge.” Ontario groups ruffed and spruce grouse in some WMU season tables, but species identity still matters wherever rules differ.",
+            "text": "Confirm the bird as ruffed grouse rather than relying on the regional name \u201cpartridge.\u201d Ontario groups ruffed and spruce grouse in some WMU season tables, but species identity still matters wherever rules differ.",
             "sourceIds": [
               "source:ca-on-small-game-2026"
             ]
@@ -345,7 +345,7 @@
       "status": "published",
       "locale": "en-CA",
       "slug": "season-finder",
-      "canonicalUrl": "/tools/season-finder",
+      "canonicalUrl": "/hunt",
       "title": "North Ground Hunt season finder",
       "description": "Resolve an Ontario wildlife management unit and evaluate the certified ruffed grouse rule for a selected date.",
       "searchIntent": "decision",
@@ -456,7 +456,7 @@
       "locale": "en-CA",
       "status": "published",
       "content": {
-        "plainText": "Do not resolve “partridge” directly to ruffed grouse. That regional name is ambiguous, and Ontario's grouse rules differ among WMU groups. Confirm the species and the applicable row in the current official table."
+        "plainText": "Do not resolve \u201cpartridge\u201d directly to ruffed grouse. That regional name is ambiguous, and Ontario's grouse rules differ among WMU groups. Confirm the species and the applicable row in the current official table."
       },
       "applicability": {
         "jurisdictionIds": [
@@ -579,7 +579,7 @@
     {
       "id": "source:ca-on-small-game-2026",
       "authority": "Ontario Ministry of Natural Resources",
-      "title": "Small game and furbearing mammals — 2026 Ontario Hunting Regulations Summary",
+      "title": "Small game and furbearing mammals \u2014 2026 Ontario Hunting Regulations Summary",
       "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/small-game-and-furbearing-mammals",
       "publisher": "Government of Ontario",
       "retrievedAt": "2026-09-20T12:00:00Z",

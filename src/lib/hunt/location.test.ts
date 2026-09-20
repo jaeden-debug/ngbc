@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import type { PlaceSuggestion } from "./location.ts";
 import {
   describeCoordinate,
   resolveGooglePlace,
@@ -58,12 +59,14 @@ test("Google suggestions map to primary and secondary place text", async () => {
   const result = await suggestGooglePlaces("pembro", { fetcher, googleApiKey: "test-key" });
 
   assert.equal(result.status, "OK");
-  assert.deepEqual(result.suggestions, [
+  const suggestions: PlaceSuggestion[] = result.suggestions;
+
+  // Google predictions carry no coordinate; resolving is a separate, billed step.
+  assert.ok(suggestions.every((suggestion) => suggestion.latitude === undefined));
+  assert.deepEqual(suggestions, [
     { id: "ChIJPembroke", primary: "Pembroke", secondary: "ON, Canada" },
     { id: "ChIJAlgonquin", primary: "Algonquin Provincial Park", secondary: "ON, Canada" },
   ]);
-  // Google predictions carry no coordinate; resolving is a separate step.
-  assert.ok(result.suggestions.every((suggestion) => suggestion.latitude === undefined));
 });
 
 test("Google autocomplete sends the session token and never puts the key in the URL", async () => {

@@ -1,5 +1,6 @@
 import type { RateLimiter } from "../newsletter/rate-limit.ts";
 import { getClientAddress } from "../newsletter/rate-limit.ts";
+import { isSupportedSpecies, isWithinSupportedBounds } from "./coverage.ts";
 import type { HuntEvaluation, HuntInput } from "./types.ts";
 
 const MAX_BODY_BYTES = 2_048;
@@ -27,9 +28,12 @@ function validInput(body: unknown): body is HuntInput {
   if (!body || typeof body !== "object" || Array.isArray(body)) return false;
   const input = body as Partial<HuntInput>;
   return (
-    typeof input.latitude === "number" && Number.isFinite(input.latitude) && input.latitude >= 41 && input.latitude <= 57 &&
-    typeof input.longitude === "number" && Number.isFinite(input.longitude) && input.longitude >= -96 && input.longitude <= -74 &&
-    validDate(input.date) && input.speciesId === "species:ruffed-grouse"
+    typeof input.latitude === "number" &&
+    typeof input.longitude === "number" &&
+    // Declared once in coverage.ts and shared with the browser composer, so the
+    // interface and this endpoint cannot disagree about what is in scope.
+    isWithinSupportedBounds(input.latitude, input.longitude) &&
+    validDate(input.date) && isSupportedSpecies(input.speciesId)
   );
 }
 

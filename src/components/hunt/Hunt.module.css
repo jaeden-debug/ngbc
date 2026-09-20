@@ -1,0 +1,1465 @@
+/*
+  North Ground Hunt — application surface.
+
+  Hunt is deliberately not the main site. The homepage is dark, cinematic and
+  mysterious; Hunt is clean, glassy and precise. They share the palette, the mark
+  and the typography, and part company on everything else, because one is an
+  entrance and the other is an instrument.
+
+  Every blur, border and shadow here comes from the `.ng-glass-*` primitives in
+  globals.css. Nothing in this file invents its own backdrop-filter.
+*/
+
+.page {
+  position: relative;
+  min-height: 100dvh;
+  padding-bottom: 56px;
+  background:
+    radial-gradient(1200px 620px at 18% -8%, rgba(47, 65, 51, 0.30), transparent 62%),
+    radial-gradient(900px 520px at 92% 4%, rgba(74, 63, 47, 0.20), transparent 60%),
+    var(--ng-black);
+  color: var(--ng-cream);
+}
+
+/* ── Navigation ───────────────────────────────────────────────────────────── */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  padding: 12px var(--ng-gutter) 0;
+}
+
+.navInner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: var(--ng-max);
+  margin: 0 auto;
+  padding: 8px 10px 8px 12px;
+  border-radius: var(--ng-radius-pill);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 2px 8px 2px 2px;
+  border-radius: var(--ng-radius-pill);
+  color: inherit;
+  text-decoration: none;
+}
+
+.brandMark {
+  width: 34px;
+  height: auto;
+  flex: none;
+  /* The crest is warm bone on transparent; a whisper of lift keeps it from
+     dissolving into the glass behind it. */
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.55));
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.04;
+}
+
+.brandName {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ng-cream);
+}
+
+.brandSub {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ng-bone-faint);
+}
+
+.navLinks {
+  display: none;
+  margin-left: auto;
+  gap: 2px;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: var(--ng-radius-pill);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ng-bone-dim);
+  text-decoration: none;
+  transition: color 140ms ease, background-color 140ms ease;
+}
+
+.navLink:hover {
+  color: var(--ng-cream);
+  background: rgba(201, 194, 166, 0.07);
+}
+
+.navLink[data-current="true"] {
+  color: var(--ng-cream);
+  background: rgba(201, 194, 166, 0.12);
+  box-shadow: inset 0 0 0 1px var(--ng-glass-border-bright);
+}
+
+.navToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  border: 1px solid var(--ng-glass-border);
+  border-radius: var(--ng-radius-pill);
+  background: rgba(201, 194, 166, 0.06);
+  color: var(--ng-cream);
+  cursor: pointer;
+}
+
+.navMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: var(--ng-max);
+  margin: 8px auto 0;
+  padding: 8px;
+  border-radius: var(--ng-radius);
+}
+
+.navMenuLink {
+  display: flex;
+  align-items: center;
+  min-height: var(--ng-tap);
+  padding: 0 14px;
+  border-radius: var(--ng-radius-sm);
+  font-size: 0.95rem;
+  color: var(--ng-bone-dim);
+  text-decoration: none;
+}
+
+.navMenuLink[data-current="true"] {
+  color: var(--ng-cream);
+  background: rgba(201, 194, 166, 0.10);
+}
+
+/* Tablets have room for the full navigation; only phones need the compact menu. */
+@media (min-width: 700px) {
+  .navLinks { display: flex; }
+  .navToggle { display: none; }
+  .navMenu { display: none; }
+}
+
+/* ── Stage: composer + map ────────────────────────────────────────────────── */
+
+.stage {
+  display: grid;
+  gap: 16px;
+  max-width: var(--ng-max);
+  margin: 18px auto 0;
+  padding: 0 var(--ng-gutter);
+}
+
+.composerLayer { min-width: 0; }
+.mapLayer { min-width: 0; }
+
+@media (min-width: 1024px) {
+  .stage {
+    grid-template-columns: minmax(360px, 420px) minmax(0, 1fr);
+    align-items: start;
+    gap: 18px;
+    margin-top: 22px;
+  }
+  .composerLayer { position: sticky; top: 76px; }
+}
+
+/* ── Composer ─────────────────────────────────────────────────────────────── */
+
+.composer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 18px;
+  border-radius: var(--ng-radius-lg);
+}
+
+.composerHead {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.composerTitle {
+  margin: 0;
+  font-size: clamp(1.45rem, 4.6vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--ng-cream);
+  text-wrap: balance;
+}
+
+.composerLede {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--ng-bone-dim);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.fieldNote {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--ng-bone-faint);
+}
+
+.fieldNote[data-tone="error"] { color: var(--ng-conflict); }
+
+/* ── Location search ──────────────────────────────────────────────────────── */
+
+.searchWrap { position: relative; }
+
+.searchInputRow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: var(--ng-tap);
+  padding: 0 12px;
+  border-radius: var(--ng-radius-sm);
+}
+
+.searchInputRow:focus-within {
+  border-color: var(--ng-glass-border-bright);
+  box-shadow: 0 0 0 3px rgba(139, 168, 131, 0.18);
+}
+
+.searchIcon { flex: none; color: var(--ng-bone-faint); }
+
+.searchInput {
+  flex: 1;
+  align-self: stretch;
+  min-width: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 0.92rem;
+  color: var(--ng-cream);
+  outline: none;
+}
+
+.searchInput::placeholder { color: var(--ng-bone-faint); }
+
+.searchClear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(201, 194, 166, 0.10);
+  color: var(--ng-bone-dim);
+  cursor: pointer;
+}
+
+.suggestions {
+  background-color: var(--ng-glass-bg-dense);
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  max-height: 320px;
+  margin: 0;
+  padding: 6px;
+  overflow-y: auto;
+  border-radius: var(--ng-radius);
+  list-style: none;
+}
+
+.suggestion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 46px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: var(--ng-radius-sm);
+  background: none;
+  font: inherit;
+  color: var(--ng-cream);
+  text-align: left;
+  cursor: pointer;
+}
+
+.suggestion[data-active="true"] { background: rgba(201, 194, 166, 0.11); }
+
+.suggestionIcon { flex: none; color: var(--ng-moss); }
+
+.suggestionText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 1px;
+}
+
+.suggestionPrimary {
+  font-size: 0.89rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.suggestionSecondary {
+  font-size: 0.74rem;
+  color: var(--ng-bone-faint);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.attribution {
+  margin: 4px 0 2px;
+  padding: 0 10px;
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  color: var(--ng-bone-faint);
+}
+
+.searchNote {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--ng-bone-faint);
+  min-height: 1.1em;
+}
+
+.searchNote[data-tone="error"] { color: var(--ng-conflict); }
+
+.spinner {
+  flex: none;
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(201, 194, 166, 0.25);
+  border-top-color: var(--ng-moss);
+  border-radius: 50%;
+  animation: huntSpin 700ms linear infinite;
+}
+
+@keyframes huntSpin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation-duration: 2.4s; }
+}
+
+/* ── Use my location ──────────────────────────────────────────────────────── */
+
+.locateButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: var(--ng-tap);
+  padding: 0 16px;
+  border-radius: var(--ng-radius-sm);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--ng-cream);
+  cursor: pointer;
+}
+
+.locateButton:hover:not(:disabled) { border-color: var(--ng-glass-border-bright); }
+.locateButton:disabled { opacity: 0.55; cursor: default; }
+
+/* ── Zone card (state B) ──────────────────────────────────────────────────── */
+
+.zoneCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 13px 14px;
+  border-radius: var(--ng-radius);
+}
+
+.zoneLoading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--ng-bone-dim);
+}
+
+.zoneLabel {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+}
+
+.zoneName {
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ng-cream);
+}
+
+.zoneMeta {
+  margin: 0;
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: var(--ng-bone-faint);
+}
+
+.zoneMeta[data-tone="warn"] { color: var(--ng-conditional); }
+
+.zoneWarning {
+  margin: 2px 0 0;
+  padding: 9px 11px;
+  border-left: 2px solid var(--ng-conditional);
+  border-radius: 0 var(--ng-radius-sm) var(--ng-radius-sm) 0;
+  background: var(--ng-conditional-bg);
+  font-size: 0.76rem;
+  line-height: 1.5;
+  color: var(--ng-cream);
+}
+
+.locationDetails { margin-top: 2px; }
+
+.locationDetails summary {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  font-size: 0.74rem;
+  color: var(--ng-bone-faint);
+  cursor: pointer;
+  list-style: none;
+}
+
+.locationDetails summary::-webkit-details-marker { display: none; }
+.locationDetails summary::before { content: "▸ "; }
+.locationDetails[open] summary::before { content: "▾ "; }
+
+/* ── Segmented date controls ──────────────────────────────────────────────── */
+
+.segmented {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.segment {
+  min-height: 42px;
+  padding: 0 10px;
+  border-radius: var(--ng-radius-sm);
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--ng-bone-dim);
+  cursor: pointer;
+  transition: color 140ms ease, background-color 140ms ease;
+}
+
+.segment[data-active] {
+  color: var(--ng-black);
+  background: linear-gradient(180deg, var(--ng-cream), var(--ng-bone));
+  border-color: transparent;
+  font-weight: 600;
+}
+
+.dateRow { position: relative; }
+
+.dateInputWrap {
+  display: flex;
+  align-items: center;
+  min-height: var(--ng-tap);
+  padding: 0 6px 0 12px;
+  border-radius: var(--ng-radius-sm);
+}
+
+.dateInputWrap:focus-within {
+  border-color: var(--ng-glass-border-bright);
+  box-shadow: 0 0 0 3px rgba(139, 168, 131, 0.18);
+}
+
+.dateInputWrap[data-invalid="true"] {
+  border-color: var(--ng-conflict);
+  box-shadow: 0 0 0 3px rgba(217, 122, 108, 0.16);
+}
+
+.dateInput {
+  flex: 1;
+  align-self: stretch;
+  min-width: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: var(--ng-cream);
+  outline: none;
+}
+
+.dateInput::placeholder {
+  color: var(--ng-bone-faint);
+  letter-spacing: 0.06em;
+}
+
+.dateCalendarButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex: none;
+  border: 0;
+  border-radius: var(--ng-radius-sm);
+  background: rgba(201, 194, 166, 0.08);
+  color: var(--ng-bone-dim);
+  cursor: pointer;
+}
+
+.dateCalendarButton:hover { color: var(--ng-cream); }
+
+.dateNote {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--ng-bone-faint);
+  min-height: 1.1em;
+}
+
+.dateNote[data-tone="error"] { color: var(--ng-conflict); }
+
+/* ── Calendar ─────────────────────────────────────────────────────────────── */
+
+.calendarAnchor {
+  position: absolute;
+  z-index: 32;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+}
+
+.calendar {
+  padding: 12px;
+  border-radius: var(--ng-radius);
+  background-color: var(--ng-glass-bg-dense);
+}
+
+.calendarHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.calendarStep {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--ng-glass-border);
+  border-radius: var(--ng-radius-sm);
+  background: rgba(201, 194, 166, 0.05);
+  color: var(--ng-bone-dim);
+  cursor: pointer;
+}
+
+.calendarStep:hover { color: var(--ng-cream); border-color: var(--ng-glass-border-bright); }
+
+.calendarMonth {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ng-cream);
+}
+
+.calendarWeekdays,
+.calendarRow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.calendarGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.calendarWeekdays {
+  margin-bottom: 4px;
+}
+
+.calendarWeekdays span {
+  padding: 4px 0;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: var(--ng-bone-faint);
+}
+
+.calendarDay {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  border: 1px solid transparent;
+  border-radius: var(--ng-radius-sm);
+  background: none;
+  font: inherit;
+  font-size: 0.84rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ng-cream);
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.calendarDay:hover { background: rgba(201, 194, 166, 0.10); }
+.calendarDay[data-outside] { color: var(--ng-bone-faint); }
+
+/* Today is marked with a ring, not only a colour. */
+.calendarDay[data-today] {
+  border-color: var(--ng-moss);
+  font-weight: 600;
+}
+
+.calendarDay[data-selected] {
+  background: linear-gradient(180deg, var(--ng-cream), var(--ng-bone));
+  border-color: transparent;
+  color: var(--ng-black);
+  font-weight: 700;
+}
+
+.calendarFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px solid var(--ng-glass-border);
+}
+
+.calendarToday {
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--ng-glass-border);
+  border-radius: var(--ng-radius-pill);
+  background: rgba(201, 194, 166, 0.06);
+  font: inherit;
+  font-size: 0.76rem;
+  color: var(--ng-cream);
+  cursor: pointer;
+}
+
+.calendarSelected {
+  margin: 0;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ng-bone-faint);
+}
+
+/* ── Species ──────────────────────────────────────────────────────────────── */
+
+.speciesTrigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: var(--ng-tap);
+  padding: 0 12px;
+  border-radius: var(--ng-radius-sm);
+  font: inherit;
+  color: var(--ng-cream);
+  text-align: left;
+  cursor: pointer;
+}
+
+.speciesTrigger:disabled { opacity: 0.55; cursor: default; }
+
+.speciesThumb {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border: 1px solid var(--ng-glass-border);
+  border-radius: var(--ng-radius-sm);
+  background: rgba(139, 168, 131, 0.10);
+  color: var(--ng-moss);
+}
+
+.speciesText {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  gap: 1px;
+}
+
+.speciesName {
+  font-size: 0.9rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.speciesLatin {
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--ng-bone-faint);
+}
+
+.speciesChevron { flex: none; color: var(--ng-bone-faint); }
+
+.speciesList {
+  background-color: var(--ng-glass-bg-dense);
+  position: absolute;
+  z-index: 30;
+  left: 0;
+  right: 0;
+  margin: 6px 0 0;
+  padding: 6px;
+  border-radius: var(--ng-radius);
+  list-style: none;
+  outline: none;
+}
+
+.speciesOption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 7px 10px;
+  border-radius: var(--ng-radius-sm);
+  cursor: pointer;
+}
+
+.speciesOption[data-active] { background: rgba(201, 194, 166, 0.11); }
+.speciesCheck { flex: none; color: var(--ng-moss); }
+
+/* The list is positioned against the field, which therefore establishes context. */
+.field { position: relative; }
+
+/* ── Primary action ───────────────────────────────────────────────────────── */
+
+.primaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 52px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: var(--ng-radius-sm);
+  background: linear-gradient(180deg, var(--ng-cream), var(--ng-bone));
+  box-shadow: var(--ng-shadow-2);
+  font: inherit;
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--ng-black);
+  cursor: pointer;
+  transition: transform 120ms ease, opacity 120ms ease;
+}
+
+.primaryButton:hover:not(:disabled) { transform: translateY(-1px); }
+.primaryButton:active:not(:disabled) { transform: translateY(0); }
+
+.primaryButton:disabled {
+  background: rgba(201, 194, 166, 0.16);
+  box-shadow: none;
+  color: var(--ng-bone-faint);
+  cursor: default;
+}
+
+.primaryButton .spinner {
+  border-color: rgba(7, 8, 8, 0.25);
+  border-top-color: var(--ng-black);
+}
+
+.nextStep {
+  margin: -6px 0 0;
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: var(--ng-bone-dim);
+}
+
+.coverage {
+  margin: 0;
+  padding-top: 11px;
+  border-top: 1px solid var(--ng-glass-border);
+  font-size: 0.74rem;
+  line-height: 1.5;
+  color: var(--ng-bone-faint);
+}
+
+.coverage a { color: var(--ng-moss); }
+
+.coverageWarning {
+  margin: 0;
+  padding: 11px 13px;
+  border-left: 2px solid var(--ng-conditional);
+  border-radius: 0 var(--ng-radius-sm) var(--ng-radius-sm) 0;
+  background: var(--ng-conditional-bg);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ng-cream);
+}
+
+.coverageWarning strong { display: block; margin-bottom: 2px; }
+
+/* ── Map ──────────────────────────────────────────────────────────────────── */
+
+.mapSurface {
+  position: relative;
+  height: 440px;
+  overflow: hidden;
+  border: 1px solid var(--ng-glass-border);
+  border-radius: var(--ng-radius-lg);
+  background:
+    radial-gradient(120% 90% at 50% 10%, rgba(47, 65, 51, 0.30), transparent 70%),
+    linear-gradient(170deg, #1d241e, #12160f);
+  box-shadow: var(--ng-shadow-3);
+  isolation: isolate;
+}
+
+@media (min-width: 640px) { .mapSurface { height: 520px; } }
+
+@media (min-width: 1024px) {
+  .mapSurface { height: clamp(560px, calc(100dvh - 150px), 820px); }
+}
+
+.mapCanvas { position: absolute; inset: 0; }
+
+.mapTopLeft {
+  position: absolute;
+  z-index: 6;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.mapTopRight {
+  position: absolute;
+  z-index: 6;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* The fullscreen control lives in the same corner; nudge the styles below it. */
+@media (min-width: 640px) { .mapTopRight { top: 58px; } }
+
+.mapBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  max-width: min(100%, 320px);
+  margin: 0;
+  padding: 8px 13px;
+  border-radius: var(--ng-radius-pill);
+  font-size: 0.8rem;
+  color: var(--ng-cream);
+  pointer-events: auto;
+}
+
+.mapBadge strong {
+  display: block;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.mapBadgeMeta {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--ng-bone-faint);
+}
+
+.mapBadgeDot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--ng-moss);
+  box-shadow: 0 0 0 3px rgba(139, 168, 131, 0.22);
+}
+
+.mapModes {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--ng-radius-pill);
+}
+
+.mapMode {
+  min-height: 30px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: var(--ng-radius-pill);
+  background: none;
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--ng-bone-dim);
+  cursor: pointer;
+}
+
+.mapMode[data-active] {
+  background: rgba(201, 194, 166, 0.16);
+  color: var(--ng-cream);
+}
+
+.mapInspector {
+  position: absolute;
+  z-index: 8;
+  left: 12px;
+  bottom: 12px;
+  width: min(280px, calc(100% - 24px));
+  padding: 13px 14px;
+  border-radius: var(--ng-radius);
+}
+
+.mapInspectorClose {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(201, 194, 166, 0.10);
+  color: var(--ng-bone-dim);
+  cursor: pointer;
+}
+
+.mapInspectorTitle {
+  margin: 0 28px 3px 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ng-cream);
+}
+
+.mapInspectorMeta {
+  margin: 0 0 7px;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  color: var(--ng-bone-faint);
+}
+
+.mapInspectorNote {
+  margin: 7px 0 0;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--ng-bone-dim);
+}
+
+.mapBottom {
+  position: absolute;
+  z-index: 6;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: min(360px, calc(100% - 24px));
+  /* Google's own attribution sits bottom-left and is never covered. */
+  pointer-events: none;
+}
+
+.mapLegend {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  padding: 7px 12px;
+  border-radius: var(--ng-radius-pill);
+  font-size: 0.7rem;
+  color: var(--ng-bone-dim);
+  pointer-events: auto;
+}
+
+.legendSwatch {
+  width: 12px;
+  height: 8px;
+  flex: none;
+  border-radius: 2px;
+  border: 1.5px solid var(--ng-moss);
+  background: rgba(139, 168, 131, 0.20);
+}
+
+.legendSwatch[data-coverage="IN_DEVELOPMENT"] {
+  border-style: dashed;
+  border-color: rgba(139, 168, 131, 0.55);
+  background: rgba(139, 168, 131, 0.07);
+}
+
+.mapNotice[data-compact="true"] {
+  padding: 7px 12px;
+  border-radius: var(--ng-radius-pill);
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+
+.mapNotice {
+  margin: 0;
+  padding: 9px 13px;
+  border-radius: var(--ng-radius);
+  font-size: 0.73rem;
+  line-height: 1.45;
+  color: var(--ng-cream);
+  pointer-events: auto;
+}
+
+.mapControl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--ng-radius-sm);
+  color: var(--ng-cream);
+  cursor: pointer;
+}
+
+/* ── Basemap-free zone canvas ─────────────────────────────────────────────── */
+
+.zoneCanvas {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.zoneCanvasSvg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+}
+
+.zoneCanvasSvg:active { cursor: grabbing; }
+
+.zoneCanvasShape {
+  fill: rgba(139, 168, 131, 0.09);
+  stroke: rgba(160, 190, 150, 0.62);
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+  cursor: pointer;
+}
+
+.zoneCanvasShape[data-coverage="VERIFIED"] {
+  fill: rgba(184, 211, 168, 0.22);
+  stroke: #cfe4bd;
+  stroke-width: 2.2;
+}
+
+.zoneCanvasShape[data-selected] {
+  fill: rgba(216, 230, 200, 0.22);
+  stroke: #d8e6c8;
+  stroke-width: 2.4;
+}
+
+.zoneCanvasPinHalo { fill: rgba(90, 160, 230, 0.28); }
+.zoneCanvasPinCore { fill: #5aa0e6; stroke: #0d1a26; stroke-width: 2.5; }
+
+.zoneCanvasControls {
+  position: absolute;
+  z-index: 6;
+  right: 12px;
+  /* Clears the legend and any notice stacked beneath it in the same corner. */
+  bottom: 118px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ── Trust strip ──────────────────────────────────────────────────────────── */
+
+.trustStrip {
+  max-width: var(--ng-max);
+  margin: 18px auto 0;
+  padding: 0 var(--ng-gutter);
+}
+
+.trustRow {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 640px) { .trustRow { grid-template-columns: repeat(3, 1fr); } }
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px 14px;
+  border-radius: var(--ng-radius);
+}
+
+.trustIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border-radius: var(--ng-radius-sm);
+  background: rgba(139, 168, 131, 0.12);
+  color: var(--ng-moss);
+}
+
+.trustText { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+
+.trustTitle {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--ng-cream);
+}
+
+.trustDetail {
+  font-size: 0.72rem;
+  color: var(--ng-bone-faint);
+}
+
+.trustNote {
+  margin: 11px 0 0;
+  font-size: 0.74rem;
+  line-height: 1.55;
+  color: var(--ng-bone-faint);
+}
+
+/* ── Results ──────────────────────────────────────────────────────────────── */
+
+.resultsRegion { scroll-margin-top: 84px; }
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: var(--ng-max);
+  margin: 20px auto 0;
+  padding: 0 var(--ng-gutter);
+}
+
+.resultHead {
+  padding: 18px;
+  border-radius: var(--ng-radius-lg);
+}
+
+.resultTopRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.resultSpecies {
+  margin: 8px 0 2px;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--ng-cream);
+}
+
+.resultZone {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--ng-bone-dim);
+}
+
+.resultActions { flex: none; }
+
+.resultFacts {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0 0;
+  padding: 15px 0 0;
+  border-top: 1px solid var(--ng-glass-border);
+}
+
+@media (min-width: 560px) {
+  .resultFacts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 900px) {
+  .resultFacts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+.resultFacts dd {
+  margin: 3px 0 0;
+  font-size: 0.92rem;
+  color: var(--ng-cream);
+}
+
+.resultSummary {
+  margin: 14px 0 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ng-bone-dim);
+}
+
+.boundaryWarning {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-left: 2px solid var(--ng-conditional);
+  border-radius: 0 var(--ng-radius-sm) var(--ng-radius-sm) 0;
+  background: var(--ng-conditional-bg);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--ng-cream);
+}
+
+/* ── Tabs ─────────────────────────────────────────────────────────────────── */
+
+.resultDetail {
+  padding: 8px 8px 4px;
+  border-radius: var(--ng-radius-lg);
+}
+
+.tabList {
+  display: flex;
+  gap: 3px;
+  padding: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--ng-glass-border);
+}
+
+.tabList::-webkit-scrollbar { display: none; }
+
+.tab {
+  flex: none;
+  min-height: 40px;
+  padding: 0 15px;
+  border: 0;
+  border-radius: var(--ng-radius-pill);
+  background: none;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--ng-bone-dim);
+  cursor: pointer;
+}
+
+.tab:hover { color: var(--ng-cream); }
+
+.tab[data-active] {
+  background: rgba(201, 194, 166, 0.13);
+  color: var(--ng-cream);
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px var(--ng-glass-border-bright);
+}
+
+.panel {
+  padding: 16px 12px 18px;
+  outline-offset: -3px;
+}
+
+.panel > :first-child { margin-top: 0; }
+
+.detailList { margin: 0; }
+
+.detailRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(201, 194, 166, 0.08);
+}
+
+.detailRow:last-child { border-bottom: 0; }
+
+.detailRow dt {
+  font-size: 0.78rem;
+  color: var(--ng-bone-faint);
+}
+
+.detailRow dd {
+  margin: 0;
+  font-size: 0.86rem;
+  text-align: right;
+  color: var(--ng-cream);
+}
+
+.bullets {
+  margin: 8px 0 14px;
+  padding-left: 18px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--ng-bone-dim);
+}
+
+.bullets li { margin-bottom: 5px; }
+
+.knowledgeItem {
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(201, 194, 166, 0.08);
+}
+
+.knowledgeItem:last-of-type { border-bottom: 0; }
+
+.knowledgeType {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ng-moss);
+}
+
+.knowledgeBody {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--ng-bone-dim);
+}
+
+.sourceList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sourceItem {
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(201, 194, 166, 0.08);
+}
+
+.sourceItem:last-child { border-bottom: 0; }
+
+.sourceLink {
+  display: block;
+  padding: 5px 0;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ng-cream);
+  text-decoration: none;
+}
+
+.sourceLink:hover { color: var(--ng-moss); text-decoration: underline; }
+
+.sourceMeta {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.72rem;
+  color: var(--ng-bone-faint);
+}
+
+.contextDisclaimer {
+  margin: 12px 0 0;
+  font-size: 0.74rem;
+  line-height: 1.55;
+  color: var(--ng-bone-faint);
+}
+
+.contextDisclaimer a { color: var(--ng-moss); }
+
+/* ── Loading and error ────────────────────────────────────────────────────── */
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  padding: 22px;
+  border-radius: var(--ng-radius-lg);
+}
+
+.skeletonBar {
+  height: 13px;
+  border-radius: var(--ng-radius-pill);
+  background: linear-gradient(
+    90deg,
+    rgba(201, 194, 166, 0.07) 0%,
+    rgba(201, 194, 166, 0.15) 50%,
+    rgba(201, 194, 166, 0.07) 100%
+  );
+  background-size: 200% 100%;
+  animation: huntShimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes huntShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeletonBar { animation: none; }
+}
+
+.errorNotice {
+  margin: 0;
+  padding: 15px 17px;
+  border-left: 2px solid var(--ng-conflict);
+  border-radius: 0 var(--ng-radius) var(--ng-radius) 0;
+  background: var(--ng-conflict-bg);
+  font-size: 0.87rem;
+  line-height: 1.55;
+  color: var(--ng-cream);
+}
+
+.errorNotice strong { display: block; margin-bottom: 3px; }
+
+/* ── Footer ───────────────────────────────────────────────────────────────── */
+
+.footer {
+  max-width: var(--ng-max);
+  margin: 34px auto 0;
+  padding: 20px var(--ng-gutter) 0;
+  border-top: 1px solid var(--ng-glass-border);
+  font-size: 0.74rem;
+  line-height: 1.6;
+  color: var(--ng-bone-faint);
+}
+
+.footer p { margin: 0 0 7px; }
+.footer a { color: var(--ng-bone-dim); }
