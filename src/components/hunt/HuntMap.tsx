@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ZoneFeature } from "../../lib/hunt/zone-geometry";
 import { COVERAGE_WORDING, type ZoneCoverageStatus } from "../../lib/hunt/zone-layers";
-import ZoneCanvas, { type Viewport } from "./ZoneCanvas";
+import ZoneCanvas, { zoomToFit, type Viewport } from "./ZoneCanvas";
 import styles from "./Hunt.module.css";
 
 export interface ResolvedZone {
@@ -120,6 +120,8 @@ export default function HuntMap({ point, placeLabel, zone, googleMapsApiKey }: H
   const [zonesMessage, setZonesMessage] = useState<string | null>(null);
   const [inspected, setInspected] = useState<ZoneFeature | null>(null);
   const [mapMode, setMapMode] = useState<"terrain" | "hybrid">("terrain");
+  const [canvasSize, setCanvasSize] = useState<{ width: number; height: number } | null>(null);
+  const [framed, setFramed] = useState(false);
 
   const useGoogle = Boolean(googleMapsApiKey) && !googleFailed;
 
@@ -300,6 +302,31 @@ export default function HuntMap({ point, placeLabel, zone, googleMapsApiKey }: H
     }
   }, [googleReady, point, placeLabel, zone]);
 
+  /* The boundary view frames itself to the geometry it received, once, so the
+     drawn coverage fills a phone and a wide desktop panel equally well instead of
+     sitting at one fixed zoom. A pan, a zoom or a selection ends the framing. */
+  if (!useGoogle && !framed && !point && canvasSize && features.length) {
+    setFramed(true);
+    let west = 180, east = -180, south = 90, north = -90;
+    for (const feature of features) {
+      for (const ring of feature.rings) {
+        for (const [longitude, latitude] of ring) {
+          if (longitude < west) west = longitude;
+          if (longitude > east) east = longitude;
+          if (latitude < south) south = latitude;
+          if (latitude > north) north = latitude;
+        }
+      }
+    }
+    if (west < east && south < north) {
+      setViewport({
+        latitude: (south + north) / 2,
+        longitude: (west + east) / 2,
+        zoom: zoomToFit({ west, south, east, north }, canvasSize),
+      });
+    }
+  }
+
   /* The canvas follows a new selection too. Compared by coordinate rather than by
      object identity, because the parent builds a fresh point object each render. */
   const pointKey = point ? `${point.latitude},${point.longitude}` : null;
@@ -324,7 +351,11 @@ export default function HuntMap({ point, placeLabel, zone, googleMapsApiKey }: H
         <ZoneCanvas
           features={features}
           viewport={viewport}
-          onViewportChange={setViewport}
+          onViewportChange={(next) => {
+            setFramed(true);
+            setViewport(next);
+          }}
+          onResize={setCanvasSize}
           point={point}
           selectedZoneName={zone?.shortLabel?.split(" ").pop() ?? null}
           onZoneClick={setInspected}

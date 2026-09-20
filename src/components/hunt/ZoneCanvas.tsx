@@ -17,6 +17,8 @@ interface ZoneCanvasProps {
   point: { latitude: number; longitude: number } | null;
   selectedZoneName: string | null;
   onZoneClick: (feature: ZoneFeature) => void;
+  /** Reports the drawing area so the caller can frame the geometry to it. */
+  onResize?: (size: { width: number; height: number }) => void;
 }
 
 /**
@@ -49,8 +51,25 @@ function unprojectLatitude(y: number, scale: number): number {
   return (180 / Math.PI) * Math.atan(Math.sinh(n));
 }
 
+/** Zoom at which `features` fit inside a drawing area of `size`, with padding. */
+export function zoomToFit(
+  bounds: { west: number; south: number; east: number; north: number },
+  size: { width: number; height: number },
+  padding = 44,
+): number {
+  const usableWidth = Math.max(80, size.width - padding * 2);
+  const usableHeight = Math.max(80, size.height - padding * 2);
+  for (let zoom = 12; zoom >= 3; zoom -= 0.25) {
+    const scale = TILE * Math.pow(2, zoom);
+    const width = projectX(bounds.east, scale) - projectX(bounds.west, scale);
+    const height = projectY(bounds.south, scale) - projectY(bounds.north, scale);
+    if (width <= usableWidth && height <= usableHeight) return zoom;
+  }
+  return 3;
+}
+
 export default function ZoneCanvas({
-  features, viewport, onViewportChange, point, selectedZoneName, onZoneClick,
+  features, viewport, onViewportChange, point, selectedZoneName, onZoneClick, onResize,
 }: ZoneCanvasProps) {
   const frameRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 720, height: 520 });
@@ -61,11 +80,13 @@ export default function ZoneCanvas({
     if (!element || typeof ResizeObserver === "undefined") return;
     const observer = new ResizeObserver(([entry]) => {
       const { width, height } = entry.contentRect;
-      if (width > 0 && height > 0) setSize({ width, height });
+      if (width <= 0 || height <= 0) return;
+      setSize({ width, height });
+      onResize?.({ width, height });
     });
     observer.observe(element);
     return () => observer.disconnect();
-  }, []);
+  }, [onResize]);
 
   const scale = TILE * Math.pow(2, viewport.zoom);
   const originX = projectX(viewport.longitude, scale) - size.width / 2;
