@@ -1,12 +1,18 @@
-import { Redis } from "@upstash/redis";
+import type { SupabaseClient } from "@supabase/supabase-js";
 import type { ShareHuntBriefV1 } from "./model.ts";
-
-const KEY_PREFIX = "north-ground:hunt-brief:v1:";
+import { defaultSupabaseServerClient, SupabaseServerConfigurationError } from "../supabase/server.ts";
 
 export class HuntBriefStoreConfigurationError extends Error {
   constructor() {
     super("Hunt Brief persistence is not configured");
     this.name = "HuntBriefStoreConfigurationError";
+  }
+}
+
+export class HuntBriefStoreUnavailableError extends Error {
+  constructor() {
+    super("Hunt Brief persistence is unavailable");
+    this.name = "HuntBriefStoreUnavailableError";
   }
 }
 
@@ -46,56 +52,67 @@ export class InMemoryShareCreationLimiter implements ShareCreationLimiter {
   }
 }
 
-function redisFromEnvironment(environment: NodeJS.ProcessEnv = process.env): Redis {
-  const url = environment.UPSTASH_REDIS_REST_URL?.trim();
-  const token = environment.UPSTASH_REDIS_REST_TOKEN?.trim();
-  if (!url || !token) throw new HuntBriefStoreConfigurationError();
-  return new Redis({ url, token });
-}
-
-export class UpstashHuntBriefStore implements HuntBriefStore {
-  constructor(private readonly redis: Redis) {}
+export class SupabaseHuntBriefStore implements HuntBriefStore {
+  constructor(private readonly client: SupabaseClient) {}
 
   async create(brief: ShareHuntBriefV1): Promise<"created" | "exists"> {
-    const result = await this.redis.set(`${KEY_PREFIX}${brief.shareId}`, brief, { nx: true });
-    return result === "OK" ? "created" : "exists";
+    const { error } = await this.client.from("hunt_brief_snapshots").insert({
+      public_share_id: brief.shareId,
+      schema_version: brief.version,
+      snapshot: brief,
+      created_at: brief.createdAt,
+      regulatory_verified_at: brief.regulatory.verifiedAt ?? null,
+    });
+    if (!error) return "created";
+    if (error.code === "23505") return "exists";
+    throw new HuntBriefStoreUnavailableError();
   }
 
   async get(shareId: string): Promise<unknown | null> {
-    return this.redis.get(`${KEY_PREFIX}${shareId}`);
+    const { data, error } = await this.client
+      .from("hunt_brief_snapshots")
+      .select("snapshot")
+      .eq("public_share_id", shareId)
+      .maybeSingle();
+    if (error) throw new HuntBriefStoreUnavailableError();
+    return data?.snapshot ?? null;
   }
 }
 
-export class UpstashShareCreationLimiter implements ShareCreationLimiter {
+export class SupabaseShareCreationLimiter implements ShareCreationLimiter {
   constructor(
-    private readonly redis: Redis,
+    private readonly client: SupabaseClient,
     private readonly limit = 8,
     private readonly windowSeconds = 600,
   ) {}
 
   async check(key: string): Promise<{ allowed: boolean; retryAfterSeconds: number }> {
-    const redisKey = `north-ground:hunt-share-rate:${key}`;
-    const count = await this.redis.incr(redisKey);
-    if (count === 1) await this.redis.expire(redisKey, this.windowSeconds);
-    const ttl = await this.redis.ttl(redisKey);
-    return {
-      allowed: count <= this.limit,
-      retryAfterSeconds: ttl > 0 ? ttl : this.windowSeconds,
-    };
+    const { data, error } = await this.client.rpc("consume_hunt_share_rate_limit", {
+      p_identity_hash: key,
+      p_limit: this.limit,
+      p_window_seconds: this.windowSeconds,
+    });
+    const result = Array.isArray(data) ? data[0] : data;
+    if (error || !result || typeof result.allowed !== "boolean" || typeof result.retry_after_seconds !== "number") {
+      throw new HuntBriefStoreUnavailableError();
+    }
+    return { allowed: result.allowed, retryAfterSeconds: result.retry_after_seconds };
   }
 }
 
-let redis: Redis | null = null;
-
-function defaultRedis(): Redis {
-  if (!redis) redis = redisFromEnvironment();
-  return redis;
+function configuredClient(): SupabaseClient {
+  try {
+    return defaultSupabaseServerClient();
+  } catch (error) {
+    if (error instanceof SupabaseServerConfigurationError) throw new HuntBriefStoreConfigurationError();
+    throw error;
+  }
 }
 
 export function defaultHuntBriefStore(): HuntBriefStore {
-  return new UpstashHuntBriefStore(defaultRedis());
+  return new SupabaseHuntBriefStore(configuredClient());
 }
 
 export function defaultShareCreationLimiter(): ShareCreationLimiter {
-  return new UpstashShareCreationLimiter(defaultRedis());
+  return new SupabaseShareCreationLimiter(configuredClient());
 }

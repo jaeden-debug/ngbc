@@ -1,9 +1,20 @@
 import type { ZoneResolution } from "./types.ts";
+import { defaultSupabaseServerClient, SupabaseServerConfigurationError } from "../supabase/server.ts";
 
 export const ONTARIO_WMU_ENDPOINT = "https://ws.lioservices.lrc.gov.on.ca/arcgis2/rest/services/LIO_OPEN_DATA/LIO_Open05/MapServer/5/query";
 
 type Position = [number, number];
 type PolygonGeometry = { type: "Polygon"; coordinates: Position[][] } | { type: "MultiPolygon"; coordinates: Position[][][] };
+
+interface SupabaseZoneRow {
+  canonical_id: string;
+  official_name: string;
+  location_accuracy: string | null;
+  source_canonical_id: string;
+  boundary_distance_meters: number;
+  near_boundary: boolean;
+  display_geometry: PolygonGeometry;
+}
 
 interface WmuFeatureCollection {
   type: "FeatureCollection";
@@ -53,7 +64,7 @@ function displayRings(rings: Position[][], maximumPoints = 320): number[][][] {
   });
 }
 
-export async function resolveOntarioWmu(
+export async function resolveOntarioWmuFromOfficialGis(
   latitude: number,
   longitude: number,
   fetcher: typeof fetch = fetch,
@@ -116,4 +127,71 @@ export async function resolveOntarioWmu(
       message: "The official Ontario WMU service is temporarily unavailable; North Ground will not infer a zone.",
     };
   }
+}
+
+export async function resolveOntarioWmuFromSupabase(
+  latitude: number,
+  longitude: number,
+): Promise<ZoneResolution> {
+  if (!Number.isFinite(latitude) || !Number.isFinite(longitude) || latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180) {
+    return {
+      status: "UNKNOWN",
+      sourceId: "source:ca-on-wmu-service",
+      message: "The coordinate is invalid; North Ground will not infer a zone.",
+    };
+  }
+
+  try {
+    const { data, error } = await defaultSupabaseServerClient().rpc("resolve_management_zone", {
+      p_latitude: latitude,
+      p_longitude: longitude,
+    });
+    if (error) throw error;
+    const rows = data as SupabaseZoneRow[] | null;
+    if (!rows || rows.length !== 1) {
+      return {
+        status: "UNKNOWN",
+        sourceId: "source:ca-on-wmu-service",
+        message: rows && rows.length > 1
+          ? "The verified database returned overlapping regulatory zones; human verification is required."
+          : "The verified database does not contain a management zone for this point.",
+      };
+    }
+    const row = rows[0];
+    const distance = Math.round(row.boundary_distance_meters);
+    return {
+      status: "RESOLVED",
+      zoneId: row.canonical_id as ZoneResolution["zoneId"],
+      officialName: row.official_name,
+      locationAccuracy: row.location_accuracy ?? undefined,
+      verificationFlag: "Verified",
+      boundaryDistanceMeters: distance,
+      nearBoundary: row.near_boundary,
+      displayRings: displayRings(ringsOf(row.display_geometry)),
+      sourceId: row.source_canonical_id as ZoneResolution["sourceId"],
+      message: row.near_boundary
+        ? "This point is within approximately 150 metres of the mapped management-zone boundary. Confirm the legal boundary with the responsible authority before relying on the result."
+        : "The point intersects one verified management-zone feature in North Ground's PostGIS registry. Map and consumer GPS accuracy still limit legal reliance.",
+    };
+  } catch (error) {
+    if (!(error instanceof SupabaseServerConfigurationError)) console.error("[hunt-zone] Supabase spatial lookup failed");
+    return {
+      status: "PROVIDER_ERROR",
+      sourceId: "source:ca-on-wmu-service",
+      message: "The verified spatial registry is temporarily unavailable; North Ground will not infer a zone.",
+    };
+  }
+}
+
+export async function resolveOntarioWmu(
+  latitude: number,
+  longitude: number,
+  fetcher: typeof fetch = fetch,
+): Promise<ZoneResolution> {
+  const provider = process.env.SPATIAL_PROVIDER?.trim() || "official-gis";
+  if (provider === "supabase") {
+    const result = await resolveOntarioWmuFromSupabase(latitude, longitude);
+    if (result.status !== "PROVIDER_ERROR" || process.env.SPATIAL_FALLBACK_PROVIDER !== "official-gis") return result;
+  }
+  return resolveOntarioWmuFromOfficialGis(latitude, longitude, fetcher);
 }

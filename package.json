@@ -18,10 +18,11 @@
     "test:seo": "node --test src/lib/seo/*.test.ts",
     "validate:seo": "node scripts/validate-seo.mjs",
     "test:content-urls": "node --test src/lib/content/*.test.ts",
-    "test:hunt-share": "node --require ./scripts/css-module-test-register.cjs --import tsx --test src/lib/hunt-share/*.test.ts src/components/hunt-share/*.test.tsx"
+    "test:hunt-share": "node --require ./scripts/css-module-test-register.cjs --import tsx --test src/lib/hunt-share/*.test.ts src/components/hunt-share/*.test.tsx",
+    "certify:supabase": "bash scripts/certify-supabase-local.sh"
   },
   "dependencies": {
-    "@upstash/redis": "^1.38.4",
+    "@supabase/supabase-js": "2.116.0",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3"
