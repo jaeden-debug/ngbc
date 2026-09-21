@@ -6,6 +6,10 @@
  * reverse. Adding a jurisdiction is one entry here plus its adapter.
  */
 export const ZONE_ADAPTERS = {
+  "ca-ab": {
+    module: "../src/lib/hunt/ingestion/alberta-wmu.ts",
+    factory: "createAlbertaWmuSource",
+  },
   "ca-on": {
     module: "../src/lib/hunt/ingestion/ontario-wmu.ts",
     factory: "createOntarioWmuSource",

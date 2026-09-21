@@ -17,8 +17,8 @@
  *   outside   points beyond the jurisdiction      → nothing
  *   invalid   impossible coordinates              → nothing, from North Ground
  *
- * plus any extra cases the jurisdiction declares below — typically a record the
- * adapter quarantines, which must resolve to no zone in both systems.
+ * plus any extra cases the jurisdiction declares below (for Alberta, the
+ * quarantined Elk Island record, which must resolve to no WMU in both).
  *
  * This is a certification, not a unit test: it deliberately calls the live
  * service. Disagreement is a finding, never something to resolve by preferring
@@ -28,8 +28,22 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { loadZoneSource } from "./zone-adapters.mjs";
 
-/** Points a jurisdiction adds beyond the generated samples: [label, lat, lon]. */
-const EXTRA_CASES = {};
+const EXTRA_CASES = {
+  "ca-ab": {
+    outside: [
+      ["British Columbia, west of the Rockies", 50.7, -119.3],
+      ["Saskatchewan, east", 52.1, -106.6],
+      ["Montana, south", 47.5, -111.3],
+      ["Northwest Territories, north", 61.5, -114.0],
+      ["Saskatchewan, across the 110th meridian", 53.0, -109.9],
+    ],
+    special: [
+      // Quarantined in the adapter: federal land, in no provincial WMU.
+      ["Elk Island National Park (quarantined blank record)", 53.6134, -112.8653],
+      ["Elk Island National Park, south block", 53.54, -112.86],
+    ],
+  },
+};
 
 const INVALID = [
   ["latitude above the pole", 95.0, -114.0],
