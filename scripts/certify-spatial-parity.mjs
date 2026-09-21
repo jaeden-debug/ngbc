@@ -45,6 +45,30 @@ const EXTRA_CASES = {
   },
 };
 
+EXTRA_CASES["ca-mb"] = {
+  outside: [
+    // Only places no registered jurisdiction covers. A point in Ontario rightly
+    // resolves to an Ontario WMU in the national registry, so it cannot stand
+    // for "nothing" here.
+    ["Saskatchewan, west of the boundary", 51.0, -102.6],
+    ["Saskatchewan, near the 60th parallel", 59.5, -102.3],
+    ["North Dakota, south of the 49th parallel", 48.7, -98.0],
+    ["Nunavut, north of the 60th parallel", 60.6, -97.0],
+    ["Hudson Bay, offshore", 58.5, -91.0],
+  ],
+  special: [
+    // Quarantined in the adapter: the layer's one undesignated polygon. M.R.
+    // 220/86 draws GHAs 23 and 23A around Riding Mountain National Park, so
+    // it is in no Game Hunting Area in either system.
+    ["Riding Mountain National Park, Wasagaming", 50.6597, -99.9728],
+    ["Riding Mountain National Park, interior", 50.85, -100.6],
+    // Churchill, on the Hudson Bay shore, and Winnipeg, where M.R. 220/86 makes
+    // the land inside the Perimeter Highway (PTH 100/101) GHA 38.
+    ["Churchill", 58.7684, -94.1650],
+    ["Winnipeg, inside the Perimeter (GHA 38)", 49.8951, -97.1384],
+  ],
+};
+
 const INVALID = [
   ["latitude above the pole", 95.0, -114.0],
   ["longitude beyond the meridian", 53.0, -200.0],

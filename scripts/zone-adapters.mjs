@@ -10,6 +10,10 @@ export const ZONE_ADAPTERS = {
     module: "../src/lib/hunt/ingestion/alberta-wmu.ts",
     factory: "createAlbertaWmuSource",
   },
+  "ca-mb": {
+    module: "../src/lib/hunt/ingestion/manitoba-gha.ts",
+    factory: "createManitobaGhaSource",
+  },
   "ca-on": {
     module: "../src/lib/hunt/ingestion/ontario-wmu.ts",
     factory: "createOntarioWmuSource",
