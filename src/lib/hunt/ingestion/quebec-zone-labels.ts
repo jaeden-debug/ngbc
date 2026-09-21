@@ -65,6 +65,13 @@ export interface ResolvedZoneLabel {
    * limit and reading a season that appears to cover ground it does not.
    */
   caveats: string[];
+  /**
+   * The same caveats, each with the designations of the fragment it was
+   * written against. "Partie ouest de 19 sud (sauf la partie nord-ouest), 29"
+   * excludes a part of zone 19, and saying so to a hunter in zone 29 would be a
+   * statement about somewhere else.
+   */
+  scopedCaveats: Array<{ text: string; designations: string[] }>;
 }
 
 export class UnreadableZoneLabel extends Error {
@@ -271,6 +278,46 @@ function resolveNumbered(
   return matched.map((entry) => entry.designation);
 }
 
+/** One comma-separated fragment, resolved completely or not at all. */
+function resolveFragment(
+  label: string,
+  commaFragment: string,
+  designations: readonly ZoneDesignation[],
+): { designations: string[]; caveats: Array<{ text: string; designations: string[] }> } {
+  const applyFragment = (rawFragment: string): { designations: string[]; caveat: string | null } => {
+    const { head, caveat } = takeExclusion(rawFragment);
+    const found =
+      resolveNamedTerritory(label, head, designations) ??
+      resolveSubPart(label, head, designations) ??
+      resolveNumbered(label, head, designations);
+    if (!found) throw new UnreadableZoneLabel(label, rawFragment, "does not name a zone");
+    return { designations: found, caveat };
+  };
+
+  /* "1 sud et 2 est" is two zones; "Partie est et partie ouest de 19 sud"
+     elides its tail and is not split apart, so the fragment is tried whole first
+     and only then as a coordination in which EVERY part must resolve. A
+     coordination that half-resolves is refused as a unit: resolving "partie
+     ouest de 19 sud" out of it would attach a season to a part the row may not
+     have meant on its own. */
+  try {
+    const whole = applyFragment(commaFragment);
+    return {
+      designations: whole.designations,
+      caveats: whole.caveat ? [{ text: whole.caveat, designations: whole.designations }] : [],
+    };
+  } catch (error) {
+    if (!(error instanceof UnreadableZoneLabel)) throw error;
+    const parts = splitOutsideBrackets(commaFragment, /^\s+et\s+/);
+    if (parts.length < 2) throw error;
+    const resolvedParts = parts.map(applyFragment);
+    return {
+      designations: resolvedParts.flatMap((part) => part.designations),
+      caveats: resolvedParts.flatMap((part) => (part.caveat ? [{ text: part.caveat, designations: part.designations }] : [])),
+    };
+  }
+}
+
 /**
  * Resolve one published zone label against the layer's designations.
  *
@@ -279,44 +326,56 @@ function resolveNumbered(
  * they have.
  */
 export function resolveZoneLabel(label: string, designations: readonly ZoneDesignation[]): ResolvedZoneLabel {
-  const reached = new Set<string>();
-  const caveats: string[] = [];
+  const result = resolveZoneLabelPartially(label, designations);
+  if (result.unresolved.length) {
+    // Re-run the first failure to raise its own, specific refusal.
+    resolveFragment(label, result.unresolved[0], designations);
+  }
+  return { designations: result.designations, caveats: result.caveats, scopedCaveats: result.scopedCaveats };
+}
 
+export interface PartiallyResolvedZoneLabel extends ResolvedZoneLabel {
+  /** Comma-separated fragments that could not be mapped, verbatim, in order. */
+  unresolved: string[];
+}
+
+/**
+ * Resolve what a label names unambiguously and return the rest verbatim.
+ *
+ * "Partie est et partie ouest de 19 sud (sauf la partie nord-ouest), 29" names
+ * zone 29 without any doubt; the first fragment is the one that cannot be
+ * mapped. A regulatory build uses this to certify zone 29 while recording the
+ * fragment — never to guess at it. Whether an unresolved fragment is acceptable
+ * at all is the caller's decision, made against a reviewed list.
+ */
+export function resolveZoneLabelPartially(
+  label: string,
+  designations: readonly ZoneDesignation[],
+): PartiallyResolvedZoneLabel {
   /* Tried whole, before any splitting: this form spells out its own list of
      zones, with commas and an "et" that a split would cut through. */
   const islands = resolveStLawrenceIslands(label, designations);
-  if (islands) return { designations: [...new Set(islands)].sort(), caveats };
+  if (islands) return { designations: [...new Set(islands)].sort(), caveats: [], scopedCaveats: [], unresolved: [] };
 
+  const reached = new Set<string>();
+  const scopedCaveats: Array<{ text: string; designations: string[] }> = [];
+  const unresolved: string[] = [];
   for (const commaFragment of splitOutsideBrackets(label, /^\s*,\s*/)) {
-    /* "1 sud et 2 est" is two zones; "Partie est et partie ouest de 19 sud"
-       elides its tail and is not split apart, so the fragment is tried whole
-       first and only then as a coordination. */
-    let fragments = [commaFragment];
-    let resolvedWhole = false;
     try {
-      applyFragment(commaFragment);
-      resolvedWhole = true;
+      const fragment = resolveFragment(label, commaFragment, designations);
+      for (const designation of fragment.designations) reached.add(designation);
+      scopedCaveats.push(...fragment.caveats.map((caveat) => ({ ...caveat, designations: [...caveat.designations].sort() })));
     } catch (error) {
       if (!(error instanceof UnreadableZoneLabel)) throw error;
-      fragments = splitOutsideBrackets(commaFragment, /^\s+et\s+/);
-      if (fragments.length < 2) throw error;
+      unresolved.push(commaFragment);
     }
-    if (resolvedWhole) continue;
-    for (const fragment of fragments) applyFragment(fragment);
   }
-
-  function applyFragment(rawFragment: string): void {
-    const { head, caveat } = takeExclusion(rawFragment);
-    const found =
-      resolveNamedTerritory(label, head, designations) ??
-      resolveSubPart(label, head, designations) ??
-      resolveNumbered(label, head, designations);
-    if (!found) throw new UnreadableZoneLabel(label, rawFragment, "does not name a zone");
-    for (const designation of found) reached.add(designation);
-    if (caveat) caveats.push(caveat);
-  }
-
-  return { designations: [...reached].sort(), caveats };
+  return {
+    designations: [...reached].sort(),
+    caveats: scopedCaveats.map((caveat) => caveat.text),
+    scopedCaveats,
+    unresolved,
+  };
 }
 
 /** Exposed so the bracket-aware splitting is asserted directly, not only through a label. */
