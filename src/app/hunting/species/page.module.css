@@ -171,7 +171,9 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr;
+  /* minmax(0, 1fr), as at every wider breakpoint: a bare 1fr is minmax(auto, 1fr),
+     which lets the longest unbreakable line in a card widen the whole column. */
+  grid-template-columns: minmax(0, 1fr);
   gap: 10px;
   margin: 12px 0 0;
   padding: 0;
@@ -244,6 +246,12 @@
   align-items: center;
   gap: 8px;
   margin-top: 10px;
+}
+
+/* A coverage label can name several jurisdictions, or say a profile has no
+   certified rules; on a narrow card it wraps instead of widening the card. */
+.cardFoot :global(.ng-coverage) {
+  white-space: normal;
 }
 
 .thumb {
