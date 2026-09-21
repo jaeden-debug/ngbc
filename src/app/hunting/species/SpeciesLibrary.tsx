@@ -12,7 +12,7 @@ export interface LibrarySpecies {
   category: string;
   canonicalUrl: string;
   searchTerms: string[];
-  coverage: "VERIFIED" | "IN_DEVELOPMENT";
+  regulatoryJurisdictions: string[];
   image: { url: string; alt: string } | null;
 }
 
@@ -128,8 +128,10 @@ export default function SpeciesLibrary({ species }: { species: LibrarySpecies[] 
                 <span className={styles.cardScientific}>{item.scientificName}</span>
                 {item.frenchName ? <span className={styles.cardFrench}>{item.frenchName}</span> : null}
                 <span className={styles.cardFoot}>
-                  <span className="ng-coverage" data-coverage={item.coverage}>
-                    {item.coverage === "VERIFIED" ? "Rules available" : "Rules in development"}
+                  <span className="ng-coverage" data-coverage={item.regulatoryJurisdictions.length ? "VERIFIED" : "IN_DEVELOPMENT"}>
+                    {item.regulatoryJurisdictions.length
+                      ? `Rules: ${item.regulatoryJurisdictions.join(", ")}`
+                      : "Knowledge profile · no certified rules"}
                   </span>
                 </span>
               </Link>

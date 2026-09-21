@@ -13,7 +13,7 @@ import HuntNav from "../../../../components/hunt/HuntNav";
 import StructuredData from "../../../../components/StructuredData";
 import type { SpeciesResource } from "../../../../lib/content-contract/types";
 import { contentRepository } from "../../../../lib/content/repository";
-import { SUPPORTED_SPECIES_IDS } from "../../../../lib/hunt/coverage";
+import { regulatoryJurisdictionsForSpecies } from "../../../../lib/hunt/canada/report";
 import { speciesArticleJsonLd } from "../../../../lib/seo/structured-data";
 import { absoluteUrl } from "../../../../lib/site";
 import styles from "./page.module.css";
@@ -91,9 +91,8 @@ export default async function SpeciesPage({ params }: Props) {
   const frenchName = resource.speciesProfile.commonNames.find(({ locale }) => locale.startsWith("fr"))?.value ?? null;
   /* Whether North Ground holds certified rules — deliberately separate from what
      those rules say, which only Hunt can answer for a location and date. */
-  const coverage = (SUPPORTED_SPECIES_IDS as readonly string[]).includes(speciesId)
-    ? "VERIFIED" as const
-    : "IN_DEVELOPMENT" as const;
+  const regulatoryJurisdictions = regulatoryJurisdictionsForSpecies(speciesId);
+  const hasRegulatoryCoverage = regulatoryJurisdictions.length > 0;
 
   const profile = resource.speciesProfile;
   const habitat = [
@@ -125,8 +124,10 @@ export default async function SpeciesPage({ params }: Props) {
         <header className={`${styles.hero} ng-glass-panel`}>
           <div className={styles.heroHead}>
             <p className="ng-eyebrow">{category ? `Species · ${category}` : "Species"}</p>
-            <span className="ng-coverage" data-coverage={coverage}>
-              {coverage === "VERIFIED" ? "Rules available" : "Rules in development"}
+            <span className="ng-coverage" data-coverage={hasRegulatoryCoverage ? "VERIFIED" : "IN_DEVELOPMENT"}>
+              {hasRegulatoryCoverage
+                ? `Rules: ${regulatoryJurisdictions.map(({ nameEn }) => nameEn).join(", ")}`
+                : "Knowledge profile · no certified rules"}
             </span>
           </div>
 
@@ -160,9 +161,12 @@ export default async function SpeciesPage({ params }: Props) {
           )}
 
           <div className={styles.actions}>
-            {/* Hunt does not currently read a species parameter, so this routes to
-                Hunt plainly rather than carrying state Hunt would ignore. */}
-            <Link className="ng-action" href="/hunt">Open this species in Hunt</Link>
+            <Link
+              className="ng-action"
+              href={hasRegulatoryCoverage ? `/hunt?species=${encodeURIComponent(speciesId)}` : "/hunt"}
+            >
+              {hasRegulatoryCoverage ? "Open this species in Hunt" : "Check current Hunt coverage"}
+            </Link>
             <a className="ng-action-quiet" href="#sources">Inspect sources</a>
           </div>
         </header>

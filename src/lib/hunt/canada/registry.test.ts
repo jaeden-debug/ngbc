@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { CANADA_JURISDICTIONS, jurisdictionByCode, jurisdictionById } from "./registry.ts";
-import { canadaCoverageReport } from "./report.ts";
+import { canadaCoverageReport, regulatoryJurisdictionsForSpecies } from "./report.ts";
+import { hasSpeciesCoverageIn, speciesAsksQuestionIn } from "../coverage.ts";
 
 /**
  * The registry's job is to make a false coverage claim hard to make.
@@ -99,6 +100,44 @@ test("every species row splits covered, declared-closed and unknown", () => {
       assert.ok(species.rules > 0, `${species.speciesId} is reported as certified with no rules`);
     }
   }
+});
+
+test("species coverage is jurisdiction-aware and derived from certified bundles", () => {
+  assert.deepEqual(
+    regulatoryJurisdictionsForSpecies("species:white-tailed-deer").map(({ id }) => id),
+    ["jurisdiction:ca-on"],
+  );
+  assert.deepEqual(regulatoryJurisdictionsForSpecies("species:gray-wolf"), []);
+});
+
+test("the selector gates a species by the resolved jurisdiction, not by a global flag", () => {
+  const option = (speciesId: string) => ({
+    regulatoryJurisdictions: regulatoryJurisdictionsForSpecies(speciesId).map(({ id, nameEn, requiresInput }) => ({
+      id, name: nameEn, asksQuestion: requiresInput,
+    })),
+  });
+  const deer = option("species:white-tailed-deer");
+  // Certified in Ontario says nothing about any other jurisdiction.
+  assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-on"), true);
+  assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-qc"), false);
+  assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-mb"), false);
+  // Before a place is chosen the species is discoverable because rules exist somewhere.
+  assert.equal(hasSpeciesCoverageIn(deer), true);
+  assert.equal(speciesAsksQuestionIn(deer, "jurisdiction:ca-on"), true);
+  assert.equal(speciesAsksQuestionIn(option("species:ruffed-grouse"), "jurisdiction:ca-on"), false);
+  // A knowledge-only profile is never evaluable and never promises a question.
+  const wolf = option("species:gray-wolf");
+  assert.equal(hasSpeciesCoverageIn(wolf), false);
+  assert.equal(speciesAsksQuestionIn(wolf), false);
+});
+
+test("species coverage is computed from bundles, so every covered species is in the report", () => {
+  const report = canadaCoverageReport();
+  const reported = new Set(report.jurisdictions.flatMap(({ species }) => species.map(({ speciesId }) => speciesId)));
+  for (const speciesId of reported) {
+    assert.ok(regulatoryJurisdictionsForSpecies(speciesId, report).length > 0, speciesId);
+  }
+  assert.equal(reported.size, report.totals.speciesCertified);
 });
 
 test("lookups resolve by code and by canonical id", () => {

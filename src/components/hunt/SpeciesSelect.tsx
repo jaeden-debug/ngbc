@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import type { SpeciesSelectorOption, SupportedSpeciesId } from "../../lib/hunt/coverage";
+import { hasSpeciesCoverageIn, speciesAsksQuestionIn, type SpeciesSelectorOption, type SupportedSpeciesId } from "../../lib/hunt/coverage";
+import type { CanonicalId } from "../../lib/content-contract";
 import styles from "./Hunt.module.css";
 
 interface SpeciesSelectProps {
   value: SupportedSpeciesId | null;
   onChange: (id: SupportedSpeciesId) => void;
   options: SpeciesSelectorOption[];
+  jurisdictionId?: CanonicalId<"jurisdiction">;
   disabled?: boolean;
 }
 
@@ -23,7 +25,7 @@ interface SpeciesSelectProps {
  * correctness failure, not a missing nicety, so the slot holds a neutral mark
  * until real imagery is approved.
  */
-export default function SpeciesSelect({ value, onChange, options, disabled }: SpeciesSelectProps) {
+export default function SpeciesSelect({ value, onChange, options, jurisdictionId, disabled }: SpeciesSelectProps) {
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [query, setQuery] = useState("");
@@ -75,7 +77,7 @@ export default function SpeciesSelect({ value, onChange, options, disabled }: Sp
 
   function choose(index: number) {
     const species = visibleOptions[index];
-    if (!species || species.regulatoryCoverage !== "VERIFIED") return;
+    if (!species || !hasSpeciesCoverageIn(species, jurisdictionId)) return;
     onChange(species.id as SupportedSpeciesId);
     setOpen(false);
     buttonRef.current?.focus();
@@ -179,13 +181,20 @@ export default function SpeciesSelect({ value, onChange, options, disabled }: Sp
             <li key={category} role="presentation" className={styles.speciesGroup}>
               <span className={styles.speciesGroupLabel}>{category}</span>
               <ul role="group" aria-label={category} className={styles.speciesGroupList}>
-                {entries.map(({ species, index }) => (
-                  <li
+                {entries.map(({ species, index }) => {
+                  const available = hasSpeciesCoverageIn(species, jurisdictionId);
+                  const where = jurisdictionId
+                    ? "Rules available here"
+                    : `Rules: ${species.regulatoryJurisdictions.map(({ name }) => name).join(", ")}`;
+                  const coverageLabel = !available
+                    ? jurisdictionId ? "No certified rules here" : "Knowledge profile · no certified rules"
+                    : speciesAsksQuestionIn(species, jurisdictionId) ? `${where} · asks a question` : where;
+                  return <li
                     key={species.id}
                     id={`${listboxId}-option-${index}`}
                     role="option"
                     aria-selected={species.id === value}
-                    aria-disabled={species.regulatoryCoverage !== "VERIFIED"}
+                    aria-disabled={!available}
                     data-active={index === activeIndex || undefined}
                     className={styles.speciesOption}
                     onMouseEnter={() => setActiveIndex(index)}
@@ -198,16 +207,12 @@ export default function SpeciesSelect({ value, onChange, options, disabled }: Sp
                       <span className={styles.speciesName}>{species.displayName}</span>
                       <span className={styles.speciesLatin}>{species.scientificName}</span>
                     </span>
-                    <span className={styles.speciesCoverage} data-verified={species.regulatoryCoverage === "VERIFIED" || undefined}>
-                      {species.regulatoryCoverage !== "VERIFIED"
-                        ? "Rules in development"
-                        : species.evaluationShape === "CONDITIONAL"
-                          ? "Rules available · asks a question"
-                          : "Rules available"}
+                    <span className={styles.speciesCoverage} data-verified={available || undefined}>
+                      {coverageLabel}
                     </span>
                     {species.id === value ? <svg className={styles.speciesCheck} width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none"><path d="m2.5 7.3 3 3 6-6.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg> : null}
-                  </li>
-                ))}
+                  </li>;
+                })}
               </ul>
             </li>
           ))}
@@ -216,7 +221,7 @@ export default function SpeciesSelect({ value, onChange, options, disabled }: Sp
       ) : null}
 
       <p className={styles.fieldNote}>
-        {options.length} species profiles are published. Only “Rules available” species can run a Hunt evaluation here.
+        {options.length} species profiles are published. A Hunt evaluation runs only for a species with certified rules in the jurisdiction you choose.
       </p>
     </div>
   );

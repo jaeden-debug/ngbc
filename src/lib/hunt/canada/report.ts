@@ -13,6 +13,7 @@
 import { majorGameCoverageReport } from "../regulatory/major-game.ts";
 import { ontarioCoverageReport } from "../regulatory/ontario.ts";
 import { CANADA_JURISDICTIONS, type CanadaJurisdiction, type CoverageState } from "./registry.ts";
+import type { CanonicalId } from "../../content-contract/index.ts";
 
 export interface SpeciesCoverageRow {
   speciesId: string;
@@ -28,7 +29,7 @@ export interface SpeciesCoverageRow {
 }
 
 export interface JurisdictionCoverage {
-  id: string;
+  id: CanadaJurisdiction["id"];
   code: string;
   nameEn: string;
   nameFr: string;
@@ -72,6 +73,13 @@ export interface CanadaCoverageReport {
     migratoryComplete: { met: boolean; detail: string };
     coverageAudited: { met: boolean; detail: string };
   };
+}
+
+export interface SpeciesJurisdictionCoverage {
+  id: CanonicalId<"jurisdiction">;
+  code: string;
+  nameEn: string;
+  requiresInput: boolean;
 }
 
 /**
@@ -204,4 +212,27 @@ export function canadaCoverageReport(): CanadaCoverageReport {
       },
     },
   };
+}
+
+/**
+ * Jurisdiction-aware rule coverage for one canonical species.
+ *
+ * This reads the same computed report used by the national coverage surface, so
+ * publishing a profile never turns into a global claim that rules exist. When a
+ * new jurisdiction is wired into the report, the library, profiles and Hunt
+ * selector gain its coverage without editing any species profile.
+ */
+export function regulatoryJurisdictionsForSpecies(
+  speciesId: string,
+  report: CanadaCoverageReport = canadaCoverageReport(),
+): SpeciesJurisdictionCoverage[] {
+  return report.jurisdictions.flatMap((jurisdiction) => {
+    const species = jurisdiction.species.find((entry) => entry.speciesId === speciesId);
+    return species ? [{
+      id: jurisdiction.id,
+      code: jurisdiction.code,
+      nameEn: jurisdiction.nameEn,
+      requiresInput: species.requiresInput,
+    }] : [];
+  });
 }

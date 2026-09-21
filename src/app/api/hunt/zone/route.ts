@@ -92,6 +92,7 @@ export async function POST(request: Request): Promise<Response> {
       message: resolution.message,
     },
     layer: {
+      jurisdictionId: layer.jurisdictionId,
       jurisdictionName: layer.jurisdictionName,
       officialTerm: layer.officialTerm,
       officialTermShort: layer.officialTermShort,

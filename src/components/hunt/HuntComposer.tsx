@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { todayIso } from "../../lib/hunt/date";
-import { COVERAGE_SUMMARY, isWithinSupportedBounds, type SpeciesSelectorOption, type SupportedSpeciesId } from "../../lib/hunt/coverage";
+import { COVERAGE_SUMMARY, hasSpeciesCoverageIn, isWithinSupportedBounds, type SpeciesSelectorOption, type SupportedSpeciesId } from "../../lib/hunt/coverage";
+import type { CanonicalId } from "../../lib/content-contract";
 import { COVERAGE_WORDING } from "../../lib/hunt/zone-layers";
 import type { HuntEvaluation } from "../../lib/hunt/types";
 import DateField from "./DateField";
@@ -19,7 +20,7 @@ type LocateState = { kind: "idle" } | { kind: "locating" } | { kind: "error"; me
 type ZoneState =
   | { kind: "idle" }
   | { kind: "loading" }
-  | { kind: "resolved"; zone: ResolvedZone; jurisdiction: string }
+  | { kind: "resolved"; zone: ResolvedZone; jurisdiction: string; jurisdictionId: CanonicalId<"jurisdiction"> }
   | { kind: "unresolved"; message: string };
 
 type EvaluationState =
@@ -42,7 +43,7 @@ const GEOLOCATION_MESSAGES: Record<number, string> = {
  * a real answer — and only the regulatory evaluation waits for a date and a species,
  * because only those three together can say what applies.
  */
-export default function HuntComposer({ googleMapsApiKey, speciesOptions, initialDate }: { googleMapsApiKey?: string; speciesOptions: SpeciesSelectorOption[]; initialDate: string }) {
+export default function HuntComposer({ googleMapsApiKey, speciesOptions, initialDate, initialSpeciesId = null }: { googleMapsApiKey?: string; speciesOptions: SpeciesSelectorOption[]; initialDate: string; initialSpeciesId?: SupportedSpeciesId | null }) {
   const [location, setLocation] = useState<SelectedLocation | null>(null);
   /**
    * Starts on the jurisdiction's day, which the server computed, so the first
@@ -50,7 +51,7 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
    * applied immediately after mount, below.
    */
   const [date, setDate] = useState<string>(initialDate);
-  const [speciesId, setSpeciesId] = useState<SupportedSpeciesId | null>(null);
+  const [speciesId, setSpeciesId] = useState<SupportedSpeciesId | null>(initialSpeciesId);
   const [locateState, setLocateState] = useState<LocateState>({ kind: "idle" });
   const [zoneState, setZoneState] = useState<ZoneState>({ kind: "idle" });
   const [evaluation, setEvaluation] = useState<EvaluationState>({ kind: "idle" });
@@ -68,6 +69,11 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
 
   const outsideCoverage = Boolean(location) && !isWithinSupportedBounds(location!.latitude, location!.longitude);
   const resolvedZone = zoneState.kind === "resolved" ? zoneState.zone : null;
+  const selectedSpecies = speciesOptions.find(({ id }) => id === speciesId) ?? null;
+  const activeJurisdictionId = zoneState.kind === "resolved" ? zoneState.jurisdictionId : undefined;
+  const selectedSpeciesAvailable = selectedSpecies
+    ? hasSpeciesCoverageIn(selectedSpecies, activeJurisdictionId)
+    : false;
 
   /* A stable object, so the map's marker and centring effects run when the place
      changes rather than on every keystroke elsewhere in the composer. */
@@ -113,15 +119,16 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
         });
         const payload = await response.json() as {
           status: string; message?: string;
-          zone?: ResolvedZone; layer?: { jurisdictionName: string };
+          zone?: ResolvedZone; layer?: { jurisdictionName: string; jurisdictionId: CanonicalId<"jurisdiction"> };
         };
         if (id !== zoneRequestRef.current) return;
 
-        if (payload.status === "RESOLVED" && payload.zone) {
+        if (payload.status === "RESOLVED" && payload.zone && payload.layer?.jurisdictionId) {
           setZoneState({
             kind: "resolved",
             zone: payload.zone,
             jurisdiction: payload.layer?.jurisdictionName ?? "",
+            jurisdictionId: payload.layer.jurisdictionId,
           });
           return;
         }
@@ -339,7 +346,13 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
 
             <DateField value={date} onChange={(next) => { setDate(next); resetHunt(); }} disabled={busy} />
 
-            <SpeciesSelect value={speciesId} onChange={(next) => { setSpeciesId(next); resetHunt(); }} options={speciesOptions} disabled={busy} />
+            <SpeciesSelect
+              value={speciesId}
+              onChange={(next) => { setSpeciesId(next); resetHunt(); }}
+              options={speciesOptions}
+              jurisdictionId={activeJurisdictionId}
+              disabled={busy}
+            />
 
             {outsideCoverage ? (
               <p className={styles.coverageWarning} role="status">
@@ -353,7 +366,7 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
               type="button"
               className={styles.primaryButton}
               onClick={() => void checkHunt()}
-              disabled={!location || !speciesId || outsideCoverage || busy}
+              disabled={!location || !speciesId || !selectedSpeciesAvailable || outsideCoverage || busy}
             >
               {busy ? (
                 <>
@@ -376,6 +389,8 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
                 ? "Start with a place — the map already shows the zones we can answer for."
                 : !speciesId
                 ? "Choose a species to check seasons, limits and conditions for this zone."
+                : !selectedSpeciesAvailable
+                ? "North Ground has no certified rules for this species in the selected jurisdiction."
                 : "Ready. Check this hunt for the rules that apply on your date."}
             </p>
 

@@ -78,9 +78,42 @@ export interface SpeciesSelectorOption {
   /** Compact server-built vocabulary: aliases, French names, groups and hunter terms. */
   searchTerms: string[];
   resourcePath: string;
-  regulatoryCoverage: "VERIFIED" | "IN_DEVELOPMENT";
-  /** VERIFIED species only: whether evaluating asks the hunter anything. */
-  evaluationShape?: "DIRECT" | "CONDITIONAL";
+  /**
+   * Jurisdictions whose certified rule bundles currently contain this species,
+   * derived from the national coverage report rather than declared per species.
+   * `asksQuestion` is per jurisdiction because the same species can be published
+   * as a plain season in one province and as a licence- or residency-dependent
+   * table in another.
+   */
+  regulatoryJurisdictions: Array<{
+    id: CanonicalId<"jurisdiction">;
+    name: string;
+    asksQuestion: boolean;
+  }>;
+}
+
+export function hasSpeciesCoverageIn(
+  species: Pick<SpeciesSelectorOption, "regulatoryJurisdictions">,
+  jurisdictionId?: CanonicalId<"jurisdiction">,
+): boolean {
+  if (!jurisdictionId) return species.regulatoryJurisdictions.length > 0;
+  return species.regulatoryJurisdictions.some(({ id }) => id === jurisdictionId);
+}
+
+/**
+ * Whether evaluating this species will put a question to the hunter.
+ *
+ * Before a place is chosen the answer is only "yes" when every jurisdiction with
+ * rules would ask, so the selector never promises a direct answer it may not give.
+ */
+export function speciesAsksQuestionIn(
+  species: Pick<SpeciesSelectorOption, "regulatoryJurisdictions">,
+  jurisdictionId?: CanonicalId<"jurisdiction">,
+): boolean {
+  const applicable = jurisdictionId
+    ? species.regulatoryJurisdictions.filter(({ id }) => id === jurisdictionId)
+    : species.regulatoryJurisdictions;
+  return applicable.length > 0 && applicable.every(({ asksQuestion }) => asksQuestion);
 }
 
 /**

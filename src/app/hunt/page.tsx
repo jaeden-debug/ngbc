@@ -4,10 +4,11 @@ import HuntComposer from "../../components/hunt/HuntComposer";
 import HuntNav from "../../components/hunt/HuntNav";
 import styles from "../../components/hunt/Hunt.module.css";
 import { COVERAGE_SUMMARY } from "../../lib/hunt/coverage";
-import { evaluationShape, SUPPORTED_SPECIES_IDS, type SpeciesSelectorOption } from "../../lib/hunt/coverage";
+import { isSupportedSpecies, type SpeciesSelectorOption, type SupportedSpeciesId } from "../../lib/hunt/coverage";
 import { contentRepository } from "../../lib/content/repository";
 import { COVERAGE_ROADMAP } from "../../lib/hunt/zone-layers";
 import { HUNT_DEFAULT_TIME_ZONE, jurisdictionTodayIso } from "../../lib/hunt/date";
+import { canadaCoverageReport, regulatoryJurisdictionsForSpecies } from "../../lib/hunt/canada/report";
 import { absoluteUrl, SITE_NAME } from "../../lib/site";
 
 export const dynamic = "force-dynamic";
@@ -83,8 +84,15 @@ const TRUST_POINTS = [
   },
 ];
 
-export default async function HuntPage() {
+type Props = { searchParams: Promise<{ species?: string | string[] }> };
+
+export default async function HuntPage({ searchParams }: Props) {
+  const requestedSpecies = (await searchParams).species;
+  const initialSpeciesId: SupportedSpeciesId | null = typeof requestedSpecies === "string" && isSupportedSpecies(requestedSpecies)
+    ? requestedSpecies
+    : null;
   const resources = await contentRepository.getPublishedResources({ locale: "en-CA" });
+  const coverageReport = canadaCoverageReport();
   const speciesOptions: SpeciesSelectorOption[] = await Promise.all(resources
     .filter((resource) => resource.type === "species")
     .map(async (resource) => {
@@ -106,14 +114,14 @@ export default async function HuntPage() {
         aliases: aliases.map(({ value }) => value),
         searchTerms: [...new Set(searchTerms)],
         resourcePath: resource.canonicalUrl ?? `/hunting/species/${resource.slug}`,
-        regulatoryCoverage: (SUPPORTED_SPECIES_IDS as readonly string[]).includes(resource.speciesProfile.speciesId)
-          ? "VERIFIED" as const
-          : "IN_DEVELOPMENT" as const,
-        /* Whether choosing this species leads straight to an answer or to a
-           question first. Both are fully certified; the difference is how the
-           province publishes the species, and saying so up front stops the
+        /* Where rules exist, and whether each jurisdiction answers straight away or
+           asks a question first. Both are fully certified; the difference is how
+           that authority publishes the species, and saying so up front stops the
            question arriving as a surprise. */
-        evaluationShape: evaluationShape(resource.speciesProfile.speciesId),
+        regulatoryJurisdictions: regulatoryJurisdictionsForSpecies(
+          resource.speciesProfile.speciesId,
+          coverageReport,
+        ).map(({ id, nameEn, requiresInput }) => ({ id, name: nameEn, asksQuestion: requiresInput })),
       };
     }));
   return (
@@ -123,6 +131,7 @@ export default async function HuntPage() {
       <HuntComposer
         googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
         speciesOptions={speciesOptions}
+        initialSpeciesId={initialSpeciesId}
         /* The server cannot know the viewer's time zone, so it renders the
            jurisdiction's day. The composer corrects it on mount. */
         initialDate={jurisdictionTodayIso(HUNT_DEFAULT_TIME_ZONE)}

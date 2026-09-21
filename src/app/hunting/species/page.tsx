@@ -3,7 +3,7 @@ import Link from "next/link";
 import Breadcrumbs from "../../../components/Breadcrumbs";
 import HuntNav from "../../../components/hunt/HuntNav";
 import { contentRepository } from "../../../lib/content/repository";
-import { SUPPORTED_SPECIES_IDS } from "../../../lib/hunt/coverage";
+import { canadaCoverageReport, regulatoryJurisdictionsForSpecies } from "../../../lib/hunt/canada/report";
 import SpeciesLibrary, { type LibrarySpecies } from "./SpeciesLibrary";
 import styles from "./page.module.css";
 
@@ -27,6 +27,7 @@ export const metadata: Metadata = {
  * `/hunt` already uses to build its selector.
  */
 export default async function SpeciesLibraryPage() {
+  const coverageReport = canadaCoverageReport();
   const resources = (await contentRepository.getPublishedResources({ locale: "en-CA" }))
     .filter((resource) => resource.type === "species");
 
@@ -55,9 +56,8 @@ export default async function SpeciesLibraryPage() {
         ...(resource.speciesProfile.sexAgeInfo?.terminology.map(({ value }) => value) ?? []),
         ...groups.flatMap((group) => group.names.map(({ value }) => value)),
       ])],
-      coverage: (SUPPORTED_SPECIES_IDS as readonly string[]).includes(speciesId)
-        ? "VERIFIED" as const
-        : "IN_DEVELOPMENT" as const,
+      regulatoryJurisdictions: regulatoryJurisdictionsForSpecies(speciesId, coverageReport)
+        .map(({ nameEn }) => nameEn),
       /* No species has completed exact-identity and attribution verification yet,
          so this is null for all sixty. The card handles both states rather than
          needing a change when the first verified photograph lands. */
