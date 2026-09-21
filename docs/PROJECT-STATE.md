@@ -217,6 +217,9 @@ Not assumed complete.
 Add jurisdictions only when genuinely implemented.
 
 - Research inventory: IN DEVELOPMENT for federal plus all 50 states; D.C. relevance remains unresolved. Principal wildlife authorities and official hunting hubs are inventoried. Every state now has at least one species/source evidence lead, but current-guide and claim-level certification is not complete.
+- Regulatory/GIS reconnaissance is now explicit and machine-readable in `research/hunting/us/`: 51 state/district readiness rows and 65 official-source rows, including a deeper first pass for Alaska, Arizona, Colorado, Idaho, Montana, New Mexico, Utah and Wyoming. This is research only. It adds no runtime rules, geometry, UI support, database migrations or public U.S. coverage claim.
+- The Wave 1 pass confirms the existing engine is only partially compatible. U.S. implementation needs first-class hunt numbers/codes, draw and quota lifecycles, typed species-specific geography, land/authority overlays, amendment precedence, jurisdiction-defined method classes and multi-source citations. Migratory birds require federal plus state/tribal composition; federal and tribal subsistence or treaty regimes must remain separate authorities rather than state-rule flags.
+- No Wave 1 GIS source is production-certified. Current blockers include unresolved reuse terms or stable service contracts, map disclaimers that defer to written legal descriptions, species-dependent boundaries, mutable corrections/emergency orders, and New Mexico's official downloadable GMU data being dated October 2017. Canada remains the first complete geographic target before broad U.S. implementation.
 
 ### Other Countries
 Future.
