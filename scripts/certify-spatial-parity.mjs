@@ -2,7 +2,7 @@
 /**
  * Certify North Ground's PostGIS zone registry against an authority's own service.
  *
- *   node scripts/certify-spatial-parity.mjs --jurisdiction ca-ab
+ *   node scripts/certify-spatial-parity.mjs --jurisdiction ca-ab [--concurrency 3]
  *
  * The jurisdiction-neutral form of `certify-ontario-spatial-parity.mjs`, which
  * stays as Ontario's recorded regression. Any adapter that implements
@@ -205,7 +205,10 @@ async function main() {
   const recorded = new Array(planned.length);
   let next = 0;
   let done = 0;
-  await Promise.all(Array.from({ length: 6 }, async () => {
+  // --concurrency N: how many points are in flight. Keep it low on a small
+  // database, or right after an outage.
+  const concurrency = Math.max(1, Number(args[args.indexOf("--concurrency") + 1]) || 4);
+  await Promise.all(Array.from({ length: concurrency }, async () => {
     while (next < planned.length) {
       const index = next++;
       recorded[index] = await run(planned[index]);
