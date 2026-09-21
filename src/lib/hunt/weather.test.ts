@@ -77,3 +77,17 @@ test("a provider outage never becomes fabricated weather", async () => {
   assert.equal(result.temperatureMaxC, undefined);
   assert.match(result.summary, /will not fabricate/);
 });
+
+test("a refused Google request is logged with Google's reason and nothing that locates the hunt", async (t) => {
+  const warnings: string[] = [];
+  t.mock.method(console, "warn", (message: string) => { warnings.push(message); });
+  const refused = (async () => ({
+    ok: false, status: 400,
+    json: async () => ({ error: { status: "INVALID_ARGUMENT", message: "API key expired. Please renew the API key." } }),
+  })) as unknown as typeof fetch;
+  const result = await getGoogleWeather(45.2345, -77.9456, "2026-09-20", { googleApiKey: "secret-key-value", now: NOW, fetcher: refused });
+  assert.equal(result.status, "PROVIDER_ERROR");
+  assert.equal(warnings.length, 1);
+  assert.match(warnings[0], /Google Weather returned 400 \(INVALID_ARGUMENT: API key expired/);
+  assert.doesNotMatch(warnings[0], /45\.23|77\.94|2026-09-20|secret-key-value/);
+});
