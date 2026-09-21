@@ -18,9 +18,26 @@ import type { HuntBriefStore } from "./store.ts";
  */
 export type ShareRouteDecision = "render" | "not_found";
 
+/**
+ * How long the proxy may spend asking whether a brief exists.
+ *
+ * The question is asked before any response starts, so while it is being
+ * answered the reader is looking at nothing. A healthy lookup is one indexed
+ * read of an ID column and returns in well under this. An unhealthy one was
+ * measured on 2026-09-21 failing with Cloudflare 522 after 19 to 25 seconds —
+ * and without this bound the proxy waited that long and then the page waited
+ * it again, doubling what a reader sat through during the outage.
+ *
+ * Exceeding it is safe by construction: the answer falls back to "render", and
+ * the page makes its own lookup, which is always correct. The only thing a
+ * timeout can cost is the server-rendered 404 body for one missing brief.
+ */
+export const EXISTENCE_CHECK_TIMEOUT_MS = 1500;
+
 export async function decideShareRoute(
   shareId: string,
   getStore: () => HuntBriefStore,
+  { timeoutMs = EXISTENCE_CHECK_TIMEOUT_MS }: { timeoutMs?: number } = {},
 ): Promise<ShareRouteDecision> {
   // A malformed ID cannot name a brief, so storage is never asked.
   if (!isValidHuntBriefShareId(shareId)) return "not_found";
@@ -34,13 +51,33 @@ export async function decideShareRoute(
     return "render";
   }
 
+  // A plain timer rather than `AbortSignal.timeout`, whose timer is unref'd:
+  // it does not keep the process alive, so the deadline only held while some
+  // other I/O happened to. A store that hangs without doing I/O would never
+  // have been abandoned. The timer is cleared as soon as the answer arrives,
+  // so a fast lookup does not keep an invocation alive for the full bound.
+  const controller = new AbortController();
+  const timer = setTimeout(
+    () => controller.abort(new Error("Hunt Brief existence check timed out")),
+    timeoutMs,
+  );
   try {
-    return (await store.exists(shareId)) ? "render" : "not_found";
+    // Raced as well as signalled: the signal cancels a store that honours it,
+    // and the race returns on time from one that does not.
+    const exists = await Promise.race([
+      store.exists(shareId, { signal: controller.signal }),
+      new Promise<never>((_, reject) => {
+        controller.signal.addEventListener("abort", () => reject(controller.signal.reason), { once: true });
+      }),
+    ]);
+    return exists ? "render" : "not_found";
   } catch {
-    // An outage must never become a 404. "This brief does not exist" and "we
-    // cannot read briefs right now" are different statements, and only the
-    // second is true while storage is down. The page renders its unavailable
-    // state, which invites the reader to try again.
+    // An outage must never become a 404, and neither may a slow answer.
+    // "This brief does not exist" and "we cannot tell right now" are different
+    // statements, and only the second is true while storage is down or slow.
+    // The page renders and makes its own lookup.
     return "render";
+  } finally {
+    clearTimeout(timer);
   }
 }

@@ -25,8 +25,12 @@ export interface HuntBriefStore {
    * Asked before a page renders, so a missing brief can be answered as a real
    * 404 page instead of reaching `notFound()`. Throws when storage cannot be
    * read — a caller must be able to tell "no such brief" from "cannot tell".
+   *
+   * Accepts a signal so the caller can bound it. The proxy asks this before any
+   * response starts, and an unbounded wait there holds the reader at a blank
+   * screen for as long as storage takes to fail.
    */
-  exists(shareId: string): Promise<boolean>;
+  exists(shareId: string, options?: { signal?: AbortSignal }): Promise<boolean>;
 }
 
 export interface ShareCreationLimiter {
@@ -90,14 +94,16 @@ export class SupabaseHuntBriefStore implements HuntBriefStore {
     return data?.snapshot ?? null;
   }
 
-  async exists(shareId: string): Promise<boolean> {
+  async exists(shareId: string, options?: { signal?: AbortSignal }): Promise<boolean> {
     // The ID column only. The snapshot is fetched by the page, for the briefs
     // that exist; a missing brief now costs one indexed lookup and no render.
-    const { data, error } = await this.client
+    let query = this.client
       .from("hunt_brief_snapshots")
       .select("public_share_id")
-      .eq("public_share_id", shareId)
-      .maybeSingle();
+      .eq("public_share_id", shareId);
+    // Cancels the request itself, not only the wait for it.
+    if (options?.signal) query = query.abortSignal(options.signal);
+    const { data, error } = await query.maybeSingle();
     if (error) throw new HuntBriefStoreUnavailableError();
     return data !== null;
   }
