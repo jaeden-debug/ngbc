@@ -1,5 +1,6 @@
 import { contentRepository, type ContentRepository } from "../content/repository.ts";
 import { isMajorGameSpecies, speciesById } from "./coverage.ts";
+import { resolveReadiness } from "./readiness/index.ts";
 import { regulatoryEntryFor, type RegulatoryOutcome } from "./regulatory/registry.ts";
 import type { HuntEvaluation, HuntInput, RegulatoryResult } from "./types.ts";
 import type { ZoneResolution } from "./types.ts";
@@ -109,6 +110,15 @@ export async function evaluateHunt(input: HuntInput, dependencies: HuntDependenc
   const missing = sourceIds.filter((id) => !known.some((source) => source.id === id));
   const fromBundle = missing.length ? regulatoryEntryFor(zone.jurisdictionId)?.sourceRecords?.(missing) ?? [] : [];
   const sources = [...known, ...fromBundle];
+  /* Ready to Hunt reads the same answers as the regulation, so it can never
+     disagree with it. Where North Ground has no checklist for the jurisdiction,
+     it points at the source this answer already cites rather than a guess. */
+  const readiness = completeness === "RESOLVED"
+    ? resolveReadiness(input, zone, regulation, {
+        now: dependencies.now?.(),
+        fallbackInfoUrl: sources.find((source) => regulation.sourceIds.includes(source.id) && source.url)?.url,
+      })
+    : undefined;
   return {
     input,
     species: {
@@ -126,6 +136,7 @@ export async function evaluateHunt(input: HuntInput, dependencies: HuntDependenc
     weather,
     knowledge,
     sources,
+    ...(readiness ? { readiness } : {}),
     evaluatedAt,
   };
 }

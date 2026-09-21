@@ -1,5 +1,6 @@
 import type { BlockResult, CanonicalId, IsoDate, SourceRecord } from "../content-contract/index.ts";
 import type { HuntDimensionAnswers, RequiredDimension } from "./regulatory/dimensions.ts";
+import type { ReadinessResult } from "./readiness/types.ts";
 
 export type RegulatoryStatus = "OPEN" | "CLOSED" | "CONDITIONAL" | "UNKNOWN" | "CONFLICT" | "NEEDS_VERIFICATION";
 
@@ -92,5 +93,12 @@ export interface HuntEvaluation {
   weather: WeatherResult;
   knowledge: BlockResult;
   sources: SourceRecord[];
+  /**
+   * Ready to Hunt: the licences, hunter orange and legal methods this hunt
+   * needs. Present only when the regulatory answer is CONDITIONAL. It is built
+   * from this evaluation's own inputs and nothing else; a licence-vendor search
+   * never feeds it.
+   */
+  readiness?: ReadinessResult;
   evaluatedAt: string;
 }

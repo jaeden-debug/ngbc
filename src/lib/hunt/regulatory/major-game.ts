@@ -447,3 +447,91 @@ export function majorGameCoverageReport() {
     }),
   };
 }
+
+/* ── Read-only facts for other layers ────────────────────────────────────── */
+
+/**
+ * One of Ontario's general deer, moose or bear seasons as it stands on a date.
+ *
+ * Exposed for Ready to Hunt, which needs two facts only this bundle holds: which
+ * implements the law allows on the hunt being planned, and which OTHER big-game
+ * seasons are open in the unit — because those decide whether a grouse hunter
+ * must wear hunter orange (O. Reg. 665/98 s. 26) and what shot they may carry.
+ */
+export interface MajorGameSeasonOnDate {
+  speciesId: string;
+  seasonLabel: string;
+  permittedImplements: string[];
+  residency?: string;
+  tagType?: string;
+  /** Restricted to bows only — the one kind s. 26(1)(a) exempts from orange. */
+  bowsOnly: boolean;
+}
+
+export interface MajorGameSeasonsInUnit {
+  open: MajorGameSeasonOnDate[];
+  /**
+   * True when a season in this unit cannot be placed on this date because the
+   * date is outside the period the summary certifies. Nothing about orange may
+   * be said as settled while it is.
+   */
+  uncertain: boolean;
+}
+
+function seasonOnDate(rule: BundleRule, date: string): "OPEN" | "CLOSED" | "UNCERTAIN" {
+  if (rule.declaredNoSeason || !rule.seasonPhrase) return "CLOSED";
+  const windows = parseSeasonPhrase(rule.seasonPhrase);
+  if (!windows) return "UNCERTAIN";
+  const { verdict } = evaluateSeason(windows, rule.sourceYear, date);
+  return verdict === "IN_SEASON" ? "OPEN" : verdict === "OUT_OF_SEASON" ? "CLOSED" : "UNCERTAIN";
+}
+
+function asSeason(rule: BundleRule): MajorGameSeasonOnDate {
+  const implementsList = rule.appliesWhen.permittedImplements;
+  return {
+    speciesId: rule.speciesId,
+    seasonLabel: rule.seasonLabel,
+    permittedImplements: implementsList,
+    ...(typeof rule.appliesWhen.RESIDENCY === "string" ? { residency: rule.appliesWhen.RESIDENCY } : {}),
+    ...(typeof rule.appliesWhen.TAG_TYPE === "string" ? { tagType: rule.appliesWhen.TAG_TYPE } : {}),
+    bowsOnly: implementsList.length === 1 && implementsList[0] === "BOW",
+  };
+}
+
+/** Every general deer, moose and bear season open in a unit on a date, for anyone. */
+export function majorGameSeasonsInUnit(zoneId: string, date: string): MajorGameSeasonsInUnit {
+  const open: MajorGameSeasonOnDate[] = [];
+  let uncertain = false;
+  for (const rule of RULES) {
+    if (!PUBLISHABLE.has(rule.reviewStatus)) continue;
+    if (!(GROUPS.get(rule.regulatoryGroupId)?.zoneIds.includes(zoneId) ?? false)) continue;
+    const state = seasonOnDate(rule, date);
+    if (state === "OPEN") open.push(asSeason(rule));
+    else if (state === "UNCERTAIN") uncertain = true;
+  }
+  return { open, uncertain };
+}
+
+/**
+ * The implements the law allows for THIS hunt: the species' seasons open in the
+ * unit on the date, narrowed by residency and tag where the hunter has said.
+ * The chosen implement is deliberately NOT applied, so a hunter sees everything
+ * they could legally use, not only what they happened to pick.
+ */
+export function majorGameImplementsOnDate(
+  speciesId: string,
+  zoneId: string,
+  date: string,
+  answers: HuntDimensionAnswers = {},
+): string[] {
+  const residency = answerFor(answers, "RESIDENCY");
+  const tag = answerFor(answers, "TAG_TYPE");
+  const allowed = new Set<string>();
+  for (const rule of rulesFor(speciesId, zoneId)) {
+    if (residency && typeof rule.appliesWhen.RESIDENCY === "string" && rule.appliesWhen.RESIDENCY !== residency) continue;
+    if (tag && typeof rule.appliesWhen.TAG_TYPE === "string" && rule.appliesWhen.TAG_TYPE !== tag) continue;
+    if (seasonOnDate(rule, date) !== "OPEN") continue;
+    for (const implement of rule.appliesWhen.permittedImplements) allowed.add(implement);
+  }
+  return [...allowed];
+}

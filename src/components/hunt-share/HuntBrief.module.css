@@ -279,3 +279,41 @@
   .detail p, .section p, .context { color: #333; }
   .action { display: none; }
 }
+
+.readinessList {
+  display: grid;
+  gap: 9px;
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.readinessList li {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 12px;
+  align-items: baseline;
+  line-height: 1.5;
+  color: var(--ng-cream);
+}
+
+.readinessStatus {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ng-bone-faint);
+}
+
+.readinessNote {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--ng-bone-faint);
+}
+
+@media (max-width: 480px) {
+  .readinessList li {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}

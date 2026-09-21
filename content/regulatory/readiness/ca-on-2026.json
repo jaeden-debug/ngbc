@@ -1,0 +1,2617 @@
+{
+  "contractVersion": 1,
+  "generatedBy": "scripts/build-ontario-readiness.mjs",
+  "jurisdictionId": "jurisdiction:ca-on",
+  "jurisdictionName": "Ontario",
+  "officialInfoUrl": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information",
+  "licenceYear": 2026,
+  "law": {
+    "citation": "O. Reg. 665/98",
+    "period": "July 1, 2026",
+    "from": "2026-07-01T04:00:00.000Z",
+    "lastAmendment": "121/26"
+  },
+  "retrievedAt": "2026-09-21",
+  "contentHash": "sha256:d063b0f03e8757768f25bfe5d30a1468cd46ffcf7490d1e0457e8468b6d908d6",
+  "sourceHashes": {
+    "source:ca-on-oreg-665-98": "sha256:cbf94fb5fc6d24c87d8a33625ad03bbf02ae4f52a747b820ce103288402ada41",
+    "source:ca-on-hunting-licence-information-2026": "sha256:29ee48c3d5765d1404afdc4354a2190cc896a078354069d44455b381d366903c",
+    "source:ca-on-general-regulations-2026": "sha256:756ad65559523d96fd6ca7e40229978f07d9abbc23008ad17aaa54e796083e86",
+    "source:ca-on-small-game-2026": "sha256:41b0929e3c0076e32b9c087f804874d483a6679568d084fde640309acf63ceaa",
+    "source:ca-on-elk-2026": "sha256:e2b4d496c30f60943a8bbf00aa4592df81dfbca1ab1c79d546abb3bf1cc1e6b2",
+    "source:ca-on-deer-2026": "sha256:d3b44171ada61dde88045b1f644ce48c7d94cc62509646f3b83c77b99611bc7b",
+    "source:ca-on-moose-2026": "sha256:9e274d5d32342d47771d93a65cda9591f54a28410b605cb5f703d414ac6f2193"
+  },
+  "sources": [
+    {
+      "id": "source:ca-on-oreg-665-98",
+      "title": "O. Reg. 665/98 (Hunting) under the Fish and Wildlife Conservation Act, 1997",
+      "url": "https://www.ontario.ca/laws/regulation/980665",
+      "tier": "LAW"
+    },
+    {
+      "id": "source:ca-on-hunting-licence-information-2026",
+      "title": "Hunting licence information — Ontario Hunting Regulations Summary",
+      "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information",
+      "tier": "OFFICIAL_FEE_SCHEDULE"
+    },
+    {
+      "id": "source:ca-on-general-regulations-2026",
+      "title": "General regulations — Ontario Hunting Regulations Summary",
+      "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/general-regulations",
+      "tier": "OFFICIAL_SUMMARY"
+    },
+    {
+      "id": "source:ca-on-small-game-2026",
+      "title": "Small game and furbearing mammals — Ontario Hunting Regulations Summary",
+      "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/small-game-and-furbearing-mammals",
+      "tier": "OFFICIAL_SUMMARY"
+    },
+    {
+      "id": "source:ca-on-deer-2026",
+      "title": "White-tailed deer — Ontario Hunting Regulations Summary",
+      "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/white-tailed-deer",
+      "tier": "OFFICIAL_SUMMARY"
+    },
+    {
+      "id": "source:ca-on-moose-2026",
+      "title": "Moose — Ontario Hunting Regulations Summary",
+      "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/moose",
+      "tier": "OFFICIAL_SUMMARY"
+    },
+    {
+      "id": "source:ca-on-elk-2026",
+      "title": "Elk — Ontario Hunting Regulations Summary",
+      "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/elk",
+      "tier": "OFFICIAL_SUMMARY"
+    },
+    {
+      "id": "source:ca-on-licence-issuers",
+      "title": "Hunting and fishing licence issuers — Land Information Ontario",
+      "url": "https://geohub.lio.gov.on.ca/datasets/hunting-and-fishing-licence-issuers",
+      "tier": "OFFICIAL_DATASET"
+    }
+  ],
+  "authorizations": [
+    {
+      "id": "authorization:ca-on-hunter-education",
+      "kind": "HUNTER_EDUCATION",
+      "officialName": "Ontario Hunter Education Course",
+      "authority": "Ontario Ministry of Natural Resources",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "appliesTo": {},
+      "prerequisites": [],
+      "possessionVerifiable": false,
+      "purchase": {
+        "channels": [],
+        "infoUrl": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/ontario-hunter-education-course"
+      },
+      "prices": [],
+      "provenance": [
+        {
+          "sourceId": "source:ca-on-hunting-licence-information-2026",
+          "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information",
+          "citation": "Hunter accreditation requirements",
+          "tier": "OFFICIAL_FEE_SCHEDULE",
+          "quote": "You must have successfully completed Ontario's Hunter Education Course or an Ontario-recognized equivalent requirement",
+          "retrievedAt": "2026-09-21"
+        }
+      ],
+      "note": "An Ontario-recognized equivalent, such as accreditation from a recognized jurisdiction, also qualifies."
+    },
+    {
+      "id": "authorization:ca-on-outdoors-card",
+      "kind": "IDENTIFICATION_CARD",
+      "officialName": "Outdoors Card",
+      "authority": "Ontario Ministry of Natural Resources",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "appliesTo": {},
+      "prerequisites": [
+        "authorization:ca-on-hunter-education"
+      ],
+      "possessionVerifiable": false,
+      "purchase": {
+        "channels": [
+          "ONLINE",
+          "PHONE",
+          "PHYSICAL_VENDOR"
+        ],
+        "onlineUrl": "https://www.huntandfishontario.com/",
+        "phone": "1-800-288-1155",
+        "infoUrl": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information",
+        "vendorDirectoryId": "ca-on-licence-issuers"
+      },
+      "prices": [
+        {
+          "amount": 8.57,
+          "currency": "CAD",
+          "label": "Ontario Outdoors Card",
+          "appliesTo": {},
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — Outdoors Card",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Ontario Outdoors Card (a valid Outdoors Card is required for all resident and non-resident hunters who wish to purchase hunting licences): $8.57",
+            "retrievedAt": "2026-09-21"
+          }
+        }
+      ],
+      "provenance": [
+        {
+          "sourceId": "source:ca-on-oreg-665-98",
+          "url": "https://www.ontario.ca/laws/regulation/980665",
+          "citation": "O. Reg. 665/98 s. 2",
+          "tier": "LAW",
+          "quote": "A person shall not be issued a licence to hunt unless the person holds an outdoors card issued under section 4.",
+          "retrievedAt": "2026-09-21"
+        },
+        {
+          "sourceId": "source:ca-on-oreg-665-98",
+          "url": "https://www.ontario.ca/laws/regulation/980665",
+          "citation": "O. Reg. 665/98 s. 3(1)",
+          "tier": "LAW",
+          "quote": "Any person who hunts wildlife shall carry their outdoors card on their person while hunting",
+          "retrievedAt": "2026-09-21"
+        },
+        {
+          "sourceId": "source:ca-on-hunting-licence-information-2026",
+          "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information",
+          "citation": "How to buy licences or buy or renew Outdoors Card",
+          "tier": "OFFICIAL_FEE_SCHEDULE",
+          "quote": "You will be able to hunt while you wait for your Outdoors Card to arrive in the mail by carrying your licence summary",
+          "retrievedAt": "2026-09-21"
+        }
+      ],
+      "note": "It is mailed in about 20 days; until it arrives you can hunt by carrying your licence summary."
+    },
+    {
+      "id": "authorization:ca-on-small-game-licence",
+      "kind": "HUNTING_LICENCE",
+      "officialName": "Small game licence",
+      "authority": "Ontario Ministry of Natural Resources",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "appliesTo": {},
+      "prerequisites": [
+        "authorization:ca-on-outdoors-card"
+      ],
+      "possessionVerifiable": false,
+      "purchase": {
+        "channels": [
+          "ONLINE",
+          "PHONE",
+          "PHYSICAL_VENDOR"
+        ],
+        "onlineUrl": "https://www.huntandfishontario.com/",
+        "phone": "1-800-288-1155",
+        "infoUrl": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information",
+        "vendorDirectoryId": "ca-on-licence-issuers"
+      },
+      "prices": [
+        {
+          "amount": 22.76,
+          "currency": "CAD",
+          "label": "Resident small game licence",
+          "appliesTo": {
+            "residency": [
+              "RESIDENT"
+            ]
+          },
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — Small game",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Resident small game licence: $22.76",
+            "retrievedAt": "2026-09-21"
+          }
+        },
+        {
+          "amount": 68.28,
+          "currency": "CAD",
+          "label": "Resident small game licence (3-year)",
+          "appliesTo": {
+            "residency": [
+              "RESIDENT"
+            ]
+          },
+          "variant": "3-year",
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — Small game",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Resident small game licence (3-year): $68.28",
+            "retrievedAt": "2026-09-21"
+          }
+        },
+        {
+          "amount": 121.52,
+          "currency": "CAD",
+          "label": "Non-resident small game licence",
+          "appliesTo": {
+            "residency": [
+              "NON_RESIDENT"
+            ]
+          },
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — Small game",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Non-resident small game licence: $121.52",
+            "retrievedAt": "2026-09-21"
+          }
+        },
+        {
+          "amount": 364.56,
+          "currency": "CAD",
+          "label": "Non-resident small game licence (3-year)",
+          "appliesTo": {
+            "residency": [
+              "NON_RESIDENT"
+            ]
+          },
+          "variant": "3-year",
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — Small game",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Non-resident small game licence (3-year): $364.56",
+            "retrievedAt": "2026-09-21"
+          }
+        }
+      ],
+      "provenance": [
+        {
+          "sourceId": "source:ca-on-oreg-665-98",
+          "url": "https://www.ontario.ca/laws/regulation/980665",
+          "citation": "O. Reg. 665/98 s. 28(1)",
+          "tier": "LAW",
+          "quote": "A licence to hunt small game shall consist of a licence summary that identifies the small game licence",
+          "retrievedAt": "2026-09-21"
+        },
+        {
+          "sourceId": "source:ca-on-oreg-665-98",
+          "url": "https://www.ontario.ca/laws/regulation/980665",
+          "citation": "O. Reg. 665/98 s. 27",
+          "tier": "LAW",
+          "quote": "Game birds, including wild turkeys.",
+          "retrievedAt": "2026-09-21"
+        }
+      ]
+    },
+    {
+      "id": "authorization:ca-on-wild-turkey-tag",
+      "kind": "TAG",
+      "officialName": "Wild turkey tag",
+      "authority": "Ontario Ministry of Natural Resources",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "appliesTo": {},
+      "prerequisites": [
+        "authorization:ca-on-small-game-licence"
+      ],
+      "possessionVerifiable": false,
+      "purchase": {
+        "channels": [
+          "ONLINE",
+          "PHONE",
+          "PHYSICAL_VENDOR"
+        ],
+        "onlineUrl": "https://www.huntandfishontario.com/",
+        "phone": "1-800-288-1155",
+        "infoUrl": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information",
+        "vendorDirectoryId": "ca-on-licence-issuers"
+      },
+      "prices": [
+        {
+          "amount": 26.33,
+          "currency": "CAD",
+          "label": "Resident turkey tag (spring)",
+          "appliesTo": {
+            "residency": [
+              "RESIDENT"
+            ]
+          },
+          "variant": "spring",
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — Wild turkey",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Resident turkey tag (spring): $26.33",
+            "retrievedAt": "2026-09-21"
+          }
+        },
+        {
+          "amount": 26.33,
+          "currency": "CAD",
+          "label": "Resident turkey tag (fall)",
+          "appliesTo": {
+            "residency": [
+              "RESIDENT"
+            ]
+          },
+          "variant": "fall",
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — Wild turkey",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Resident turkey tag (fall): $26.33",
+            "retrievedAt": "2026-09-21"
+          }
+        },
+        {
+          "amount": 30.33,
+          "currency": "CAD",
+          "label": "Non-resident turkey tag (spring)",
+          "appliesTo": {
+            "residency": [
+              "NON_RESIDENT"
+            ]
+          },
+          "variant": "spring",
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — Wild turkey",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Non-resident turkey tag (spring): $30.33",
+            "retrievedAt": "2026-09-21"
+          }
+        },
+        {
+          "amount": 30.33,
+          "currency": "CAD",
+          "label": "Non-resident turkey tag (fall)",
+          "appliesTo": {
+            "residency": [
+              "NON_RESIDENT"
+            ]
+          },
+          "variant": "fall",
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — Wild turkey",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Non-resident turkey tag (fall): $30.33",
+            "retrievedAt": "2026-09-21"
+          }
+        }
+      ],
+      "provenance": [
+        {
+          "sourceId": "source:ca-on-oreg-665-98",
+          "url": "https://www.ontario.ca/laws/regulation/980665",
+          "citation": "O. Reg. 665/98 s. 28(4)",
+          "tier": "LAW",
+          "quote": "A licence to hunt wild turkey shall consist of a licence summary or outdoors card that identifies a small game licence together with a wild turkey tag.",
+          "retrievedAt": "2026-09-21"
+        }
+      ],
+      "note": "A turkey tag is used with a small game licence, not instead of one."
+    },
+    {
+      "id": "authorization:ca-on-deer-licence",
+      "kind": "SPECIES_LICENCE",
+      "officialName": "Deer licence",
+      "authority": "Ontario Ministry of Natural Resources",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "appliesTo": {},
+      "prerequisites": [
+        "authorization:ca-on-outdoors-card"
+      ],
+      "possessionVerifiable": false,
+      "purchase": {
+        "channels": [
+          "ONLINE",
+          "PHONE",
+          "PHYSICAL_VENDOR"
+        ],
+        "onlineUrl": "https://www.huntandfishontario.com/",
+        "phone": "1-800-288-1155",
+        "infoUrl": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information",
+        "vendorDirectoryId": "ca-on-licence-issuers"
+      },
+      "prices": [
+        {
+          "amount": 43.86,
+          "currency": "CAD",
+          "label": "Resident deer licence",
+          "appliesTo": {
+            "residency": [
+              "RESIDENT"
+            ]
+          },
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — White-tailed deer",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Resident deer licence: $43.86",
+            "retrievedAt": "2026-09-21"
+          }
+        },
+        {
+          "amount": 240.81,
+          "currency": "CAD",
+          "label": "Non-resident deer licence",
+          "appliesTo": {
+            "residency": [
+              "NON_RESIDENT"
+            ]
+          },
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — White-tailed deer",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Non-resident deer licence: $240.81",
+            "retrievedAt": "2026-09-21"
+          }
+        }
+      ],
+      "provenance": [
+        {
+          "sourceId": "source:ca-on-oreg-665-98",
+          "url": "https://www.ontario.ca/laws/regulation/980665",
+          "citation": "O. Reg. 665/98 s. 37(1)",
+          "tier": "LAW",
+          "quote": "A licence to hunt deer shall consist of a licence summary that lists the deer licence together with a deer tag",
+          "retrievedAt": "2026-09-21"
+        }
+      ],
+      "residencyNotes": {
+        "NON_RESIDENT": {
+          "text": "As a non-resident you may hunt only antlered deer, unless you are issued an additional deer tag.",
+          "provenance": {
+            "sourceId": "source:ca-on-oreg-665-98",
+            "url": "https://www.ontario.ca/laws/regulation/980665",
+            "citation": "O. Reg. 665/98 s. 37(3)",
+            "tier": "LAW",
+            "quote": "hunt only antlered deer in the area and under the conditions specified on the tag",
+            "retrievedAt": "2026-09-21"
+          }
+        }
+      }
+    },
+    {
+      "id": "authorization:ca-on-bear-licence",
+      "kind": "SPECIES_LICENCE",
+      "officialName": "Bear licence",
+      "authority": "Ontario Ministry of Natural Resources",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "appliesTo": {},
+      "prerequisites": [
+        "authorization:ca-on-outdoors-card"
+      ],
+      "possessionVerifiable": false,
+      "purchase": {
+        "channels": [
+          "ONLINE",
+          "PHONE",
+          "PHYSICAL_VENDOR"
+        ],
+        "onlineUrl": "https://www.huntandfishontario.com/",
+        "phone": "1-800-288-1155",
+        "infoUrl": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information",
+        "vendorDirectoryId": "ca-on-licence-issuers"
+      },
+      "prices": [
+        {
+          "amount": 43.86,
+          "currency": "CAD",
+          "label": "Resident bear licence",
+          "appliesTo": {
+            "residency": [
+              "RESIDENT"
+            ]
+          },
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — Black bear",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Resident bear licence: $43.86",
+            "retrievedAt": "2026-09-21"
+          }
+        },
+        {
+          "amount": 240.81,
+          "currency": "CAD",
+          "label": "Non-resident bear licence",
+          "appliesTo": {
+            "residency": [
+              "NON_RESIDENT"
+            ]
+          },
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — Black bear",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Non-resident bear licence: $240.81",
+            "retrievedAt": "2026-09-21"
+          }
+        }
+      ],
+      "provenance": [
+        {
+          "sourceId": "source:ca-on-oreg-665-98",
+          "url": "https://www.ontario.ca/laws/regulation/980665",
+          "citation": "O. Reg. 665/98 s. 51(1)",
+          "tier": "LAW",
+          "quote": "A licence to hunt bear that is issued to a resident shall consist of a licence summary that identifies the bear hunting licence together with a bear tag.",
+          "retrievedAt": "2026-09-21"
+        },
+        {
+          "sourceId": "source:ca-on-oreg-665-98",
+          "url": "https://www.ontario.ca/laws/regulation/980665",
+          "citation": "O. Reg. 665/98 s. 53(1)",
+          "tier": "LAW",
+          "quote": "A licence to hunt bear that is issued to a non-resident shall consist of a licence summary that lists the bear hunting licence together with a bear tag and a bear hunting validation certificate obtained from a licensed bear operator.",
+          "retrievedAt": "2026-09-21"
+        }
+      ]
+    },
+    {
+      "id": "authorization:ca-on-bear-hunting-validation-certificate",
+      "kind": "VALIDATION",
+      "officialName": "Bear hunting validation certificate",
+      "authority": "Ontario Ministry of Natural Resources",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "appliesTo": {
+        "residency": [
+          "NON_RESIDENT"
+        ]
+      },
+      "prerequisites": [],
+      "possessionVerifiable": false,
+      "purchase": {
+        "channels": [
+          "LICENSED_OPERATOR"
+        ],
+        "infoUrl": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/black-bear",
+        "note": "Obtained from the licensed bear operator you have a bear-hunting contract with — not from a licence issuer."
+      },
+      "prices": [],
+      "provenance": [
+        {
+          "sourceId": "source:ca-on-oreg-665-98",
+          "url": "https://www.ontario.ca/laws/regulation/980665",
+          "citation": "O. Reg. 665/98 s. 53(1)",
+          "tier": "LAW",
+          "quote": "a bear hunting validation certificate obtained from a licensed bear operator",
+          "retrievedAt": "2026-09-21"
+        },
+        {
+          "sourceId": "source:ca-on-oreg-665-98",
+          "url": "https://www.ontario.ca/laws/regulation/980665",
+          "citation": "O. Reg. 665/98 s. 53(6)",
+          "tier": "LAW",
+          "quote": "A bear hunting validation certificate is valid only for the area and for the period specified on it.",
+          "retrievedAt": "2026-09-21"
+        }
+      ],
+      "note": "Valid only for the area and period written on it, and only while your contract with that operator is in force."
+    },
+    {
+      "id": "authorization:ca-on-moose-licence",
+      "kind": "SPECIES_LICENCE",
+      "officialName": "Moose licence",
+      "authority": "Ontario Ministry of Natural Resources",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "appliesTo": {},
+      "prerequisites": [
+        "authorization:ca-on-outdoors-card"
+      ],
+      "possessionVerifiable": false,
+      "purchase": {
+        "channels": [
+          "ONLINE",
+          "PHONE",
+          "PHYSICAL_VENDOR"
+        ],
+        "onlineUrl": "https://www.huntandfishontario.com/",
+        "phone": "1-800-288-1155",
+        "infoUrl": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information",
+        "vendorDirectoryId": "ca-on-licence-issuers"
+      },
+      "prices": [
+        {
+          "amount": 35.29,
+          "currency": "CAD",
+          "label": "Resident moose licence",
+          "appliesTo": {
+            "residency": [
+              "RESIDENT"
+            ]
+          },
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — Moose",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Resident moose licence: $35.29",
+            "retrievedAt": "2026-09-21"
+          }
+        },
+        {
+          "amount": 479.86,
+          "currency": "CAD",
+          "label": "Non-resident moose licence",
+          "appliesTo": {
+            "residency": [
+              "NON_RESIDENT"
+            ]
+          },
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — Moose",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Non-resident moose licence: $479.86",
+            "retrievedAt": "2026-09-21"
+          }
+        }
+      ],
+      "provenance": [
+        {
+          "sourceId": "source:ca-on-oreg-665-98",
+          "url": "https://www.ontario.ca/laws/regulation/980665",
+          "citation": "O. Reg. 665/98 s. 43(1)",
+          "tier": "LAW",
+          "quote": "a moose tag together with a licence summary that identifies the moose licence",
+          "retrievedAt": "2026-09-21"
+        }
+      ]
+    },
+    {
+      "id": "authorization:ca-on-moose-tag",
+      "kind": "TAG",
+      "officialName": "Moose tag",
+      "authority": "Ontario Ministry of Natural Resources",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "appliesTo": {},
+      "prerequisites": [
+        "authorization:ca-on-moose-licence"
+      ],
+      "draw": {
+        "required": true,
+        "infoUrl": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/how-apply-hunt-big-game"
+      },
+      "possessionVerifiable": false,
+      "purchase": {
+        "channels": [
+          "DRAW"
+        ],
+        "infoUrl": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/how-apply-hunt-big-game",
+        "note": "Allocated through the annual big game draw — it cannot simply be bought."
+      },
+      "prices": [
+        {
+          "amount": 15,
+          "currency": "CAD",
+          "label": "Application fee",
+          "appliesTo": {},
+          "variant": "draw application",
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — Moose",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Application fee: $15.00",
+            "retrievedAt": "2026-09-21"
+          }
+        },
+        {
+          "amount": 30,
+          "currency": "CAD",
+          "label": "Calf tag",
+          "appliesTo": {},
+          "variant": "calf",
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — Moose",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Calf tag: $30.00",
+            "retrievedAt": "2026-09-21"
+          }
+        },
+        {
+          "amount": 150,
+          "currency": "CAD",
+          "label": "Cow/calf tag",
+          "appliesTo": {},
+          "variant": "cow/calf",
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — Moose",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Cow/calf tag: $150.00",
+            "retrievedAt": "2026-09-21"
+          }
+        },
+        {
+          "amount": 200,
+          "currency": "CAD",
+          "label": "Bull tag",
+          "appliesTo": {},
+          "variant": "bull",
+          "taxNote": "+ 13% HST",
+          "licenceYear": 2026,
+          "provenance": {
+            "sourceId": "source:ca-on-hunting-licence-information-2026",
+            "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information#section-0",
+            "citation": "Hunting fees — Moose",
+            "tier": "OFFICIAL_FEE_SCHEDULE",
+            "quote": "Bull tag: $200.00",
+            "retrievedAt": "2026-09-21"
+          }
+        }
+      ],
+      "provenance": [
+        {
+          "sourceId": "source:ca-on-oreg-665-98",
+          "url": "https://www.ontario.ca/laws/regulation/980665",
+          "citation": "O. Reg. 665/98 s. 43(1)",
+          "tier": "LAW",
+          "quote": "if the person is hunting in a party in accordance with Part III with at least one other person who holds a valid moose tag",
+          "retrievedAt": "2026-09-21"
+        }
+      ],
+      "note": "The tag fee depends on the tag you are allocated."
+    },
+    {
+      "id": "authorization:ca-federal-firearms-licence",
+      "kind": "FIREARMS_LICENCE",
+      "officialName": "Firearms licence (PAL) or other accepted proof",
+      "authority": "Canadian Firearms Program (RCMP)",
+      "jurisdictionId": "jurisdiction:ca-federal",
+      "appliesTo": {
+        "methods": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "AIR_GUN"
+        ]
+      },
+      "prerequisites": [],
+      "possessionVerifiable": false,
+      "purchase": {
+        "channels": [
+          "FEDERAL_APPLICATION"
+        ],
+        "infoUrl": "https://rcmp.ca/en/firearms",
+        "phone": "1-800-731-4000"
+      },
+      "prices": [],
+      "provenance": [
+        {
+          "sourceId": "source:ca-on-oreg-665-98",
+          "url": "https://www.ontario.ca/laws/regulation/980665",
+          "citation": "O. Reg. 665/98 s. 25.2(1)",
+          "tier": "LAW",
+          "quote": "No person shall hunt with a gun unless the person meets at least one of the following requirements",
+          "retrievedAt": "2026-09-21"
+        },
+        {
+          "sourceId": "source:ca-on-oreg-665-98",
+          "url": "https://www.ontario.ca/laws/regulation/980665",
+          "citation": "O. Reg. 665/98 s. 25.2(2)",
+          "tier": "LAW",
+          "quote": "A person shall carry on their person the documentation required under subsection (1) while hunting with a gun",
+          "retrievedAt": "2026-09-21"
+        },
+        {
+          "sourceId": "source:ca-on-hunting-licence-information-2026",
+          "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information",
+          "citation": "Firearms licence requirement",
+          "tier": "OFFICIAL_FEE_SCHEDULE",
+          "quote": "You are not required to carry proof of firearms accreditation if you are hunting with a bow or crossbow in Ontario.",
+          "retrievedAt": "2026-09-21"
+        }
+      ],
+      "note": "Accepted: a possession and acquisition licence, a minor's licence, or proof of passing the Canadian Firearms Safety Course. Carry it while hunting."
+    }
+  ],
+  "requirements": {
+    "species:ruffed-grouse": [
+      {
+        "authorizationId": "authorization:ca-on-outdoors-card"
+      },
+      {
+        "authorizationId": "authorization:ca-on-small-game-licence"
+      },
+      {
+        "authorizationId": "authorization:ca-federal-firearms-licence",
+        "when": {
+          "methods": [
+            "RIFLE",
+            "SHOTGUN",
+            "MUZZLELOADER",
+            "AIR_GUN"
+          ]
+        },
+        "conditionText": "Required if you hunt with a gun, including an air or pellet gun. Not needed for a bow or crossbow."
+      }
+    ],
+    "species:spruce-grouse": [
+      {
+        "authorizationId": "authorization:ca-on-outdoors-card"
+      },
+      {
+        "authorizationId": "authorization:ca-on-small-game-licence"
+      },
+      {
+        "authorizationId": "authorization:ca-federal-firearms-licence",
+        "when": {
+          "methods": [
+            "RIFLE",
+            "SHOTGUN",
+            "MUZZLELOADER",
+            "AIR_GUN"
+          ]
+        },
+        "conditionText": "Required if you hunt with a gun, including an air or pellet gun. Not needed for a bow or crossbow."
+      }
+    ],
+    "species:sharp-tailed-grouse": [
+      {
+        "authorizationId": "authorization:ca-on-outdoors-card"
+      },
+      {
+        "authorizationId": "authorization:ca-on-small-game-licence"
+      },
+      {
+        "authorizationId": "authorization:ca-federal-firearms-licence",
+        "when": {
+          "methods": [
+            "RIFLE",
+            "SHOTGUN",
+            "MUZZLELOADER",
+            "AIR_GUN"
+          ]
+        },
+        "conditionText": "Required if you hunt with a gun, including an air or pellet gun. Not needed for a bow or crossbow."
+      }
+    ],
+    "species:snowshoe-hare": [
+      {
+        "authorizationId": "authorization:ca-on-outdoors-card"
+      },
+      {
+        "authorizationId": "authorization:ca-on-small-game-licence"
+      },
+      {
+        "authorizationId": "authorization:ca-federal-firearms-licence",
+        "when": {
+          "methods": [
+            "RIFLE",
+            "SHOTGUN",
+            "MUZZLELOADER",
+            "AIR_GUN"
+          ]
+        },
+        "conditionText": "Required if you hunt with a gun, including an air or pellet gun. Not needed for a bow or crossbow."
+      }
+    ],
+    "species:wild-turkey": [
+      {
+        "authorizationId": "authorization:ca-on-outdoors-card"
+      },
+      {
+        "authorizationId": "authorization:ca-on-small-game-licence"
+      },
+      {
+        "authorizationId": "authorization:ca-on-wild-turkey-tag"
+      },
+      {
+        "authorizationId": "authorization:ca-federal-firearms-licence",
+        "when": {
+          "methods": [
+            "RIFLE",
+            "SHOTGUN",
+            "MUZZLELOADER",
+            "AIR_GUN"
+          ]
+        },
+        "conditionText": "Required if you hunt with a gun, including an air or pellet gun. Not needed for a bow or crossbow."
+      }
+    ],
+    "species:white-tailed-deer": [
+      {
+        "authorizationId": "authorization:ca-on-outdoors-card"
+      },
+      {
+        "authorizationId": "authorization:ca-on-deer-licence"
+      },
+      {
+        "authorizationId": "authorization:ca-federal-firearms-licence",
+        "when": {
+          "methods": [
+            "RIFLE",
+            "SHOTGUN",
+            "MUZZLELOADER",
+            "AIR_GUN"
+          ]
+        },
+        "conditionText": "Required if you hunt with a gun, including an air or pellet gun. Not needed for a bow or crossbow."
+      }
+    ],
+    "species:american-black-bear": [
+      {
+        "authorizationId": "authorization:ca-on-outdoors-card"
+      },
+      {
+        "authorizationId": "authorization:ca-on-bear-licence"
+      },
+      {
+        "authorizationId": "authorization:ca-on-bear-hunting-validation-certificate",
+        "when": {
+          "residency": [
+            "NON_RESIDENT"
+          ]
+        },
+        "conditionText": "Required for non-residents."
+      },
+      {
+        "authorizationId": "authorization:ca-federal-firearms-licence",
+        "when": {
+          "methods": [
+            "RIFLE",
+            "SHOTGUN",
+            "MUZZLELOADER",
+            "AIR_GUN"
+          ]
+        },
+        "conditionText": "Required if you hunt with a gun, including an air or pellet gun. Not needed for a bow or crossbow."
+      }
+    ],
+    "species:moose": [
+      {
+        "authorizationId": "authorization:ca-on-outdoors-card"
+      },
+      {
+        "authorizationId": "authorization:ca-on-moose-licence"
+      },
+      {
+        "authorizationId": "authorization:ca-on-moose-tag",
+        "conditionText": "Required unless you hunt in a party with someone who holds a valid moose tag.",
+        "alwaysConditional": true
+      },
+      {
+        "authorizationId": "authorization:ca-federal-firearms-licence",
+        "when": {
+          "methods": [
+            "RIFLE",
+            "SHOTGUN",
+            "MUZZLELOADER",
+            "AIR_GUN"
+          ]
+        },
+        "conditionText": "Required if you hunt with a gun, including an air or pellet gun. Not needed for a bow or crossbow."
+      }
+    ]
+  },
+  "orange": {
+    "specification": "A hunter orange garment and a hunter orange head cover. The garment must be solid, not open mesh, cover at least 400 square inches above the waist and be visible from all sides. Camouflage orange does not count.",
+    "provenance": {
+      "wear": {
+        "sourceId": "source:ca-on-oreg-665-98",
+        "url": "https://www.ontario.ca/laws/regulation/980665",
+        "citation": "O. Reg. 665/98 s. 26(1)",
+        "tier": "LAW",
+        "quote": "shall wear a garment in hunter orange and a head cover in hunter orange while hunting wildlife",
+        "retrievedAt": "2026-09-21"
+      },
+      "bigGame": {
+        "sourceId": "source:ca-on-oreg-665-98",
+        "url": "https://www.ontario.ca/laws/regulation/980665",
+        "citation": "O. Reg. 665/98 s. 26(1)(a)",
+        "tier": "LAW",
+        "quote": "during the open seasons for deer, elk or moose, other than the seasons restricted to the use of bows only",
+        "retrievedAt": "2026-09-21"
+      },
+      "bear": {
+        "sourceId": "source:ca-on-oreg-665-98",
+        "url": "https://www.ontario.ca/laws/regulation/980665",
+        "citation": "O. Reg. 665/98 s. 26(1)(b)",
+        "tier": "LAW",
+        "quote": "during the open season for bear",
+        "retrievedAt": "2026-09-21"
+      },
+      "garment": {
+        "sourceId": "source:ca-on-oreg-665-98",
+        "url": "https://www.ontario.ca/laws/regulation/980665",
+        "citation": "O. Reg. 665/98 s. 26(2)",
+        "tier": "LAW",
+        "quote": "must be solid and not open mesh clothing with a minimum total area of not less than 400 square inches above the waist and visible from all sides",
+        "retrievedAt": "2026-09-21"
+      },
+      "smallGameExempt": {
+        "sourceId": "source:ca-on-oreg-665-98",
+        "url": "https://www.ontario.ca/laws/regulation/980665",
+        "citation": "O. Reg. 665/98 s. 26(4)(a)",
+        "tier": "LAW",
+        "quote": "hunts small game",
+        "retrievedAt": "2026-09-21"
+      },
+      "treeStand": {
+        "sourceId": "source:ca-on-oreg-665-98",
+        "url": "https://www.ontario.ca/laws/regulation/980665",
+        "citation": "O. Reg. 665/98 s. 26(4)(d)",
+        "tier": "LAW",
+        "quote": "is in a tree stand while hunting bear",
+        "retrievedAt": "2026-09-21"
+      },
+      "bowsConcurrent": {
+        "sourceId": "source:ca-on-oreg-665-98",
+        "url": "https://www.ontario.ca/laws/regulation/980665",
+        "citation": "O. Reg. 665/98 s. 26(4)(c)",
+        "tier": "LAW",
+        "quote": "hunts moose, deer or elk during an open season for moose, deer or elk that is restricted to the use of bows only and that runs concurrently with the open season for bear",
+        "retrievedAt": "2026-09-21"
+      },
+      "camouflage": {
+        "sourceId": "source:ca-on-oreg-665-98",
+        "url": "https://www.ontario.ca/laws/regulation/980665",
+        "citation": "O. Reg. 665/98 s. 26(5)",
+        "tier": "LAW",
+        "quote": "but does not include camouflage hunter orange colouring",
+        "retrievedAt": "2026-09-21"
+      }
+    }
+  },
+  "methods": {
+    "deer": {
+      "allowed": {
+        "RIFLE": {
+          "restriction": "Centre-fire rifle only.",
+          "provenance": [
+            {
+              "sourceId": "source:ca-on-general-regulations-2026",
+              "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/general-regulations",
+              "citation": "Summary of firearms restrictions for hunting in Ontario",
+              "tier": "OFFICIAL_SUMMARY",
+              "quote": "Yes – Centre-fire rifle only",
+              "retrievedAt": "2026-09-21"
+            }
+          ]
+        },
+        "SHOTGUN": {
+          "restriction": "Not smaller than 20 gauge.",
+          "provenance": [
+            {
+              "sourceId": "source:ca-on-general-regulations-2026",
+              "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/general-regulations",
+              "citation": "Summary of firearms restrictions for hunting in Ontario",
+              "tier": "OFFICIAL_SUMMARY",
+              "quote": "Shotgun not smaller than 20 gauge when using shot; shot size must be SG or number 1 buck or larger.",
+              "retrievedAt": "2026-09-21"
+            }
+          ]
+        },
+        "MUZZLELOADER": {
+          "provenance": []
+        },
+        "BOW": {
+          "restriction": "Draw weight at least 18 kg (39.7 lb) at a draw length of 700 mm (27.6 in) or less. Arrows at least 600 mm (23.6 in) with a broadhead at least 22 mm (0.87 in) wide and at least 2 sharp cutting edges.",
+          "provenance": [
+            {
+              "sourceId": "source:ca-on-general-regulations-2026",
+              "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/general-regulations",
+              "citation": "Summary of firearms restrictions for hunting in Ontario",
+              "tier": "OFFICIAL_SUMMARY",
+              "quote": "Bow must have a draw weight of at least 18 kilograms (39.7 pounds)",
+              "retrievedAt": "2026-09-21"
+            }
+          ]
+        },
+        "CROSSBOW": {
+          "restriction": "Draw length at least 300 mm (11.8 in) and draw weight at least 45 kg (99.2 lb). Bolts with a broadhead at least 22 mm (0.87 in) wide and at least 2 sharp cutting edges.",
+          "provenance": [
+            {
+              "sourceId": "source:ca-on-general-regulations-2026",
+              "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/general-regulations",
+              "citation": "Summary of firearms restrictions for hunting in Ontario",
+              "tier": "OFFICIAL_SUMMARY",
+              "quote": "draw weight of at least 45 kilograms (99.2 pounds)",
+              "retrievedAt": "2026-09-21"
+            }
+          ]
+        }
+      },
+      "notAllowed": {}
+    },
+    "largeGame": {
+      "allowed": {
+        "RIFLE": {
+          "restriction": "Centre-fire rifle only.",
+          "provenance": [
+            {
+              "sourceId": "source:ca-on-general-regulations-2026",
+              "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/general-regulations",
+              "citation": "Summary of firearms restrictions for hunting in Ontario",
+              "tier": "OFFICIAL_SUMMARY",
+              "quote": "Yes – Centre-fire rifle only",
+              "retrievedAt": "2026-09-21"
+            }
+          ]
+        },
+        "SHOTGUN": {
+          "restriction": "Not smaller than 20 gauge.",
+          "provenance": [
+            {
+              "sourceId": "source:ca-on-general-regulations-2026",
+              "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/general-regulations",
+              "citation": "Summary of firearms restrictions for hunting in Ontario",
+              "tier": "OFFICIAL_SUMMARY",
+              "quote": "Shotgun not smaller than 20 gauge when using shot; shot size must be SG or number 1 buck or larger.",
+              "retrievedAt": "2026-09-21"
+            }
+          ]
+        },
+        "MUZZLELOADER": {
+          "provenance": []
+        },
+        "BOW": {
+          "restriction": "Draw weight at least 22 kg (48.5 lb) at a draw length of 700 mm (27.6 in) or less. Arrows at least 600 mm (23.6 in) with a broadhead at least 22 mm (0.87 in) wide and at least 2 sharp cutting edges.",
+          "provenance": [
+            {
+              "sourceId": "source:ca-on-general-regulations-2026",
+              "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/general-regulations",
+              "citation": "Summary of firearms restrictions for hunting in Ontario",
+              "tier": "OFFICIAL_SUMMARY",
+              "quote": "Bow must have a draw weight of at least 22 kilograms (48.5 pounds)",
+              "retrievedAt": "2026-09-21"
+            }
+          ]
+        },
+        "CROSSBOW": {
+          "restriction": "Draw length at least 300 mm (11.8 in) and draw weight at least 54 kg (119 lb). Bolts with a broadhead at least 22 mm (0.87 in) wide and at least 2 sharp cutting edges.",
+          "provenance": [
+            {
+              "sourceId": "source:ca-on-general-regulations-2026",
+              "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/general-regulations",
+              "citation": "Summary of firearms restrictions for hunting in Ontario",
+              "tier": "OFFICIAL_SUMMARY",
+              "quote": "draw weight of at least 54 kilograms (119 pounds)",
+              "retrievedAt": "2026-09-21"
+            }
+          ]
+        }
+      },
+      "notAllowed": {}
+    },
+    "turkey": {
+      "allowed": {
+        "SHOTGUN": {
+          "restriction": "10 to 20 gauge.",
+          "provenance": [
+            {
+              "sourceId": "source:ca-on-oreg-665-98",
+              "url": "https://www.ontario.ca/laws/regulation/980665",
+              "citation": "O. Reg. 665/98 s. 79(1)(a)",
+              "tier": "LAW",
+              "quote": "a shotgun, including a muzzle-loading shotgun of at least 20 gauge but not larger than 10 gauge",
+              "retrievedAt": "2026-09-21"
+            }
+          ]
+        },
+        "MUZZLELOADER": {
+          "restriction": "A muzzle-loading shotgun of 10 to 20 gauge only. A muzzle-loading rifle is not permitted.",
+          "provenance": [
+            {
+              "sourceId": "source:ca-on-oreg-665-98",
+              "url": "https://www.ontario.ca/laws/regulation/980665",
+              "citation": "O. Reg. 665/98 s. 79(1)(a)",
+              "tier": "LAW",
+              "quote": "a shotgun, including a muzzle-loading shotgun of at least 20 gauge but not larger than 10 gauge",
+              "retrievedAt": "2026-09-21"
+            }
+          ]
+        },
+        "BOW": {
+          "restriction": "Draw weight at least 18 kg. Arrows at least 600 mm with a head at least 22 mm wide and at least two sharp cutting edges.",
+          "provenance": [
+            {
+              "sourceId": "source:ca-on-oreg-665-98",
+              "url": "https://www.ontario.ca/laws/regulation/980665",
+              "citation": "O. Reg. 665/98 s. 79(3)",
+              "tier": "LAW",
+              "quote": "The long-bow must have a draw weight of at least 18 kilograms",
+              "retrievedAt": "2026-09-21"
+            }
+          ]
+        },
+        "CROSSBOW": {
+          "restriction": "Draw length at least 300 mm and draw weight at least 45 kg.",
+          "provenance": [
+            {
+              "sourceId": "source:ca-on-oreg-665-98",
+              "url": "https://www.ontario.ca/laws/regulation/980665",
+              "citation": "O. Reg. 665/98 s. 79(3)",
+              "tier": "LAW",
+              "quote": "a draw weight of at least 45 kilograms at the release latch mechanism",
+              "retrievedAt": "2026-09-21"
+            }
+          ]
+        }
+      },
+      "notAllowed": {
+        "RIFLE": [
+          {
+            "sourceId": "source:ca-on-oreg-665-98",
+            "url": "https://www.ontario.ca/laws/regulation/980665",
+            "citation": "O. Reg. 665/98 s. 79(1)",
+            "tier": "LAW",
+            "quote": "A person who hunts wild turkey shall not use a type of firearm other than",
+            "retrievedAt": "2026-09-21"
+          }
+        ]
+      }
+    },
+    "smallGame": {
+      "allowed": {
+        "SHOTGUN": {
+          "provenance": []
+        },
+        "RIFLE": {
+          "provenance": []
+        },
+        "MUZZLELOADER": {
+          "provenance": []
+        },
+        "BOW": {
+          "provenance": []
+        },
+        "CROSSBOW": {
+          "provenance": []
+        },
+        "AIR_GUN": {
+          "provenance": [
+            {
+              "sourceId": "source:ca-on-general-regulations-2026",
+              "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/general-regulations",
+              "citation": "Firearms",
+              "tier": "OFFICIAL_SUMMARY",
+              "quote": "Air and pellet guns are not permitted for hunting big game but may be used for hunting small game.",
+              "retrievedAt": "2026-09-21"
+            }
+          ]
+        }
+      },
+      "notAllowed": {}
+    }
+  },
+  "ammunition": {
+    "largeGameShot": {
+      "status": "REQUIRED",
+      "appliesToMethods": [
+        "SHOTGUN"
+      ],
+      "summary": "With a shotgun, shot must be SG or No. 1 buck or larger.",
+      "provenance": [
+        {
+          "sourceId": "source:ca-on-general-regulations-2026",
+          "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/general-regulations",
+          "citation": "Summary of firearms restrictions for hunting in Ontario",
+          "tier": "OFFICIAL_SUMMARY",
+          "quote": "Shotgun not smaller than 20 gauge when using shot; shot size must be SG or number 1 buck or larger.",
+          "retrievedAt": "2026-09-21"
+        }
+      ]
+    },
+    "turkeyShot": {
+      "status": "REQUIRED",
+      "appliesToMethods": [
+        "SHOTGUN",
+        "MUZZLELOADER"
+      ],
+      "summary": "Shot size 4, 5, 6 or 7 only.",
+      "provenance": [
+        {
+          "sourceId": "source:ca-on-oreg-665-98",
+          "url": "https://www.ontario.ca/laws/regulation/980665",
+          "citation": "O. Reg. 665/98 s. 79(1)(a)",
+          "tier": "LAW",
+          "quote": "loaded with shot sizes number 4, 5, 6 or 7",
+          "retrievedAt": "2026-09-21"
+        }
+      ]
+    },
+    "smallGameDuringBigGame": {
+      "appliesToMethods": [
+        "SHOTGUN"
+      ],
+      "summary": "While a deer, moose, elk or bear season is open here: no ball, and no shot larger than No. 2 (steel up to BBB and bismuth up to BB are allowed) — unless you hold a licence to hunt that big game in that season.",
+      "provenance": [
+        {
+          "sourceId": "source:ca-on-small-game-2026",
+          "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/small-game-and-furbearing-mammals",
+          "citation": "Firearms",
+          "tier": "OFFICIAL_SUMMARY",
+          "quote": "you may not possess or use a centre-fire rifle or shells loaded with ball or with shot larger than No. 2 shot",
+          "retrievedAt": "2026-09-21"
+        },
+        {
+          "sourceId": "source:ca-on-small-game-2026",
+          "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/small-game-and-furbearing-mammals",
+          "citation": "Firearms",
+          "tier": "OFFICIAL_SUMMARY",
+          "quote": "unless you have a valid licence to hunt big game (deer, moose, elk or black bear) during the relevant open season",
+          "retrievedAt": "2026-09-21"
+        }
+      ]
+    },
+    "smallGameRifleDuringBigGame": {
+      "appliesToMethods": [
+        "RIFLE"
+      ],
+      "summary": "No centre-fire rifle while a deer, moose, elk or bear season is open here, unless you hold a licence for that big game.",
+      "provenance": [
+        {
+          "sourceId": "source:ca-on-small-game-2026",
+          "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/small-game-and-furbearing-mammals",
+          "citation": "Firearms",
+          "tier": "OFFICIAL_SUMMARY",
+          "quote": "you may not possess or use a centre-fire rifle or shells loaded with ball or with shot larger than No. 2 shot",
+          "retrievedAt": "2026-09-21"
+        }
+      ]
+    },
+    "southernRifleCalibre": {
+      "appliesToMethods": [
+        "RIFLE"
+      ],
+      "summary": "In 21 southern areas — including Toronto, Hamilton, Niagara, Essex and York — a rifle over .275 calibre may not be used for small game, except a muzzle-loader.",
+      "provenance": [
+        {
+          "sourceId": "source:ca-on-small-game-2026",
+          "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/small-game-and-furbearing-mammals",
+          "citation": "Firearms",
+          "tier": "OFFICIAL_SUMMARY",
+          "quote": "may not carry or use a rifle of greater calibre than a .275-calibre rifle, except a muzzle-loading gun",
+          "retrievedAt": "2026-09-21"
+        }
+      ]
+    }
+  },
+  "recommendations": {
+    "upland": [
+      {
+        "topic": "WEAPON",
+        "appliesToMethods": [
+          "SHOTGUN"
+        ],
+        "text": "A 20 or 12 gauge shotgun is a practical choice for grouse."
+      },
+      {
+        "topic": "AMMUNITION",
+        "appliesToMethods": [
+          "SHOTGUN"
+        ],
+        "text": "No. 6 to 7½ shot is a common choice at typical grouse ranges.",
+        "withinLegal": "Smaller than No. 2, so it stays legal even while a big-game season is open.",
+        "shotSizes": [
+          6,
+          7,
+          7.5
+        ]
+      }
+    ],
+    "hare": [
+      {
+        "topic": "WEAPON",
+        "appliesToMethods": [
+          "SHOTGUN",
+          "RIFLE"
+        ],
+        "text": "A 20 or 12 gauge shotgun, or a .22 rimfire rifle, is a practical choice for hare."
+      },
+      {
+        "topic": "AMMUNITION",
+        "appliesToMethods": [
+          "SHOTGUN"
+        ],
+        "text": "No. 4 to 6 shot is a common choice for hare.",
+        "withinLegal": "Smaller than No. 2, so it stays legal even while a big-game season is open.",
+        "shotSizes": [
+          4,
+          5,
+          6
+        ]
+      }
+    ],
+    "turkey": [
+      {
+        "topic": "WEAPON",
+        "appliesToMethods": [
+          "SHOTGUN"
+        ],
+        "text": "A 12 or 20 gauge shotgun is the usual choice for turkey.",
+        "gauges": [
+          12,
+          20
+        ]
+      },
+      {
+        "topic": "AMMUNITION",
+        "appliesToMethods": [
+          "SHOTGUN",
+          "MUZZLELOADER"
+        ],
+        "text": "No. 4, 5 or 6 shot is a common turkey load.",
+        "withinLegal": "Inside the legal range of shot sizes 4 to 7.",
+        "shotSizes": [
+          4,
+          5,
+          6
+        ]
+      }
+    ]
+  },
+  "speciesMethods": {
+    "species:ruffed-grouse": {
+      "methods": "smallGame",
+      "ammunition": [],
+      "recommendations": "upland",
+      "smallGame": true
+    },
+    "species:spruce-grouse": {
+      "methods": "smallGame",
+      "ammunition": [],
+      "recommendations": "upland",
+      "smallGame": true
+    },
+    "species:sharp-tailed-grouse": {
+      "methods": "smallGame",
+      "ammunition": [],
+      "recommendations": "upland",
+      "smallGame": true
+    },
+    "species:snowshoe-hare": {
+      "methods": "smallGame",
+      "ammunition": [],
+      "recommendations": "hare",
+      "smallGame": true
+    },
+    "species:wild-turkey": {
+      "methods": "turkey",
+      "ammunition": [
+        "turkeyShot"
+      ],
+      "recommendations": "turkey",
+      "smallGame": true
+    },
+    "species:white-tailed-deer": {
+      "methods": "deer",
+      "ammunition": [
+        "largeGameShot"
+      ]
+    },
+    "species:american-black-bear": {
+      "methods": "largeGame",
+      "ammunition": [
+        "largeGameShot"
+      ]
+    },
+    "species:moose": {
+      "methods": "largeGame",
+      "ammunition": [
+        "largeGameShot"
+      ]
+    }
+  },
+  "overlappingSeasons": [
+    {
+      "speciesId": "species:elk",
+      "kind": "GENERAL",
+      "officialSpec": "57, 58, 60–62, 63A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-57",
+        "management_zone:ca-on-wmu-58",
+        "management_zone:ca-on-wmu-60",
+        "management_zone:ca-on-wmu-61",
+        "management_zone:ca-on-wmu-62",
+        "management_zone:ca-on-wmu-63a"
+      ],
+      "seasonPhrase": "September 21 to October 4",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-elk-2026",
+      "section": "Elk season"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "300",
+      "officialSpec": "53B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-53b"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "301",
+      "officialSpec": "69A2",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-69a-2"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "302",
+      "officialSpec": "70",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-70"
+      ],
+      "seasonPhrase": "November 1 to December 7",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "303",
+      "officialSpec": "76A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-76a"
+      ],
+      "seasonPhrase": "November 2 to November 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "304",
+      "officialSpec": "76A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-76a"
+      ],
+      "seasonPhrase": "November 30 to December 4",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "305",
+      "officialSpec": "76B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-76b"
+      ],
+      "seasonPhrase": "November 2 to November 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "306",
+      "officialSpec": "76B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-76b"
+      ],
+      "seasonPhrase": "November 30 to December 4",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "307",
+      "officialSpec": "76C",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-76c"
+      ],
+      "seasonPhrase": "November 2 to November 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "308",
+      "officialSpec": "76C",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-76c"
+      ],
+      "seasonPhrase": "November 30 to December 4",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "309",
+      "officialSpec": "76D",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-76d"
+      ],
+      "seasonPhrase": "November 2 to November 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "310",
+      "officialSpec": "76D",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-76d"
+      ],
+      "seasonPhrase": "November 30 to December 4",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "311",
+      "officialSpec": "76E",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-76e"
+      ],
+      "seasonPhrase": "November 2 to November 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "312",
+      "officialSpec": "76E",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-76e"
+      ],
+      "seasonPhrase": "November 30 to December 4",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "376",
+      "officialSpec": "77A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-77a"
+      ],
+      "seasonPhrase": "November 2 to November 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "377",
+      "officialSpec": "77A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-77a"
+      ],
+      "seasonPhrase": "November 30 to December 4",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "313",
+      "officialSpec": "77B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-77b"
+      ],
+      "seasonPhrase": "November 2 to November 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "314",
+      "officialSpec": "77B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-77b"
+      ],
+      "seasonPhrase": "November 30 to December 4",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "315",
+      "officialSpec": "77C",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-77c"
+      ],
+      "seasonPhrase": "November 2 to November 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "316",
+      "officialSpec": "77C",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-77c"
+      ],
+      "seasonPhrase": "November 30 to December 4",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "317",
+      "officialSpec": "78A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-78a"
+      ],
+      "seasonPhrase": "November 2 to November 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "318",
+      "officialSpec": "78A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-78a"
+      ],
+      "seasonPhrase": "November 30 to December 4",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "319",
+      "officialSpec": "78B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-78b"
+      ],
+      "seasonPhrase": "November 2 to November 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "320",
+      "officialSpec": "78B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-78b"
+      ],
+      "seasonPhrase": "November 30 to December 4",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "321",
+      "officialSpec": "79C",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-79c"
+      ],
+      "seasonPhrase": "November 2 to November 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "322",
+      "officialSpec": "79D",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-79d"
+      ],
+      "seasonPhrase": "November 2 to November 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "323",
+      "officialSpec": "80",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-80"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "324",
+      "officialSpec": "80",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-80"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "325",
+      "officialSpec": "81A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-81a"
+      ],
+      "seasonPhrase": "November 2 to November 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "326",
+      "officialSpec": "81A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-81a"
+      ],
+      "seasonPhrase": "November 30 to December 4",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "327",
+      "officialSpec": "81B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-81b"
+      ],
+      "seasonPhrase": "November 2 to November 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "328",
+      "officialSpec": "81B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-81b"
+      ],
+      "seasonPhrase": "November 30 to December 4",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "329",
+      "officialSpec": "85A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-85a"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "330",
+      "officialSpec": "85A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-85a"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "331",
+      "officialSpec": "85B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-85b"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "332",
+      "officialSpec": "85B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-85b"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "333",
+      "officialSpec": "85C",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-85c"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "334",
+      "officialSpec": "85C",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-85c"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "335",
+      "officialSpec": "86A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-86a"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "336",
+      "officialSpec": "86B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-86b"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "337",
+      "officialSpec": "87B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-87b"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "338",
+      "officialSpec": "87B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-87b"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "339",
+      "officialSpec": "87C",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-87c"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "340",
+      "officialSpec": "87C",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-87c"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "341",
+      "officialSpec": "87D",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-87d"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "342",
+      "officialSpec": "87D",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-87d"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "343",
+      "officialSpec": "87E",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-87e"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "344",
+      "officialSpec": "87E",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-87e"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "345",
+      "officialSpec": "89A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-89a"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "346",
+      "officialSpec": "89A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-89a"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "347",
+      "officialSpec": "89B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-89b"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "348",
+      "officialSpec": "89B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-89b"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "349",
+      "officialSpec": "90A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-90a"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "350",
+      "officialSpec": "90A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-90a"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "351",
+      "officialSpec": "90B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-90b"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "352",
+      "officialSpec": "90B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-90b"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "353",
+      "officialSpec": "91A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-91a"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "354",
+      "officialSpec": "91A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-91a"
+      ],
+      "seasonPhrase": "November 16 to November 22",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "355",
+      "officialSpec": "91A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-91a"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "356",
+      "officialSpec": "91B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-91b"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "357",
+      "officialSpec": "91B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-91b"
+      ],
+      "seasonPhrase": "November 16 to November 22",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "358",
+      "officialSpec": "91B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-91b"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "359",
+      "officialSpec": "92A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-92a"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "360",
+      "officialSpec": "92A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-92a"
+      ],
+      "seasonPhrase": "November 16 to November 22",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "361",
+      "officialSpec": "92A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-92a"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "362",
+      "officialSpec": "92B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-92b"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "363",
+      "officialSpec": "92B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-92b"
+      ],
+      "seasonPhrase": "November 16 to November 22",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "364",
+      "officialSpec": "92B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-92b"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "365",
+      "officialSpec": "92C",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-92c"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "366",
+      "officialSpec": "92C",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-92c"
+      ],
+      "seasonPhrase": "November 16 to November 22",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "367",
+      "officialSpec": "92C",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-92c"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "368",
+      "officialSpec": "92D",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-92d"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "369",
+      "officialSpec": "92D",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-92d"
+      ],
+      "seasonPhrase": "November 16 to November 22",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "370",
+      "officialSpec": "92D",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-92d"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "371",
+      "officialSpec": "93A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-93a"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "372",
+      "officialSpec": "93A",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-93a"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "373",
+      "officialSpec": "93B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-93b"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "374",
+      "officialSpec": "93B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-93b"
+      ],
+      "seasonPhrase": "November 30 to December 6",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "kind": "CONTROLLED",
+      "huntCode": "375",
+      "officialSpec": "94B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-94b"
+      ],
+      "seasonPhrase": "November 2 to November 8",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-deer-2026",
+      "section": "Controlled deer hunt seasons (with hunt codes)"
+    },
+    {
+      "speciesId": "species:moose",
+      "kind": "CONTROLLED",
+      "officialSpec": "11B",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-11b"
+      ],
+      "seasonPhrase": "September 26 to October 16",
+      "bowsOnly": false,
+      "sourceId": "source:ca-on-moose-2026",
+      "section": "Resident seasons with controlled hunter numbers"
+    },
+    {
+      "speciesId": "species:moose",
+      "kind": "CONTROLLED",
+      "officialSpec": "65",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-65"
+      ],
+      "seasonPhrase": "October 5 to October 7",
+      "bowsOnly": true,
+      "sourceId": "source:ca-on-moose-2026",
+      "section": "Resident seasons with controlled hunter numbers"
+    },
+    {
+      "speciesId": "species:moose",
+      "kind": "CONTROLLED",
+      "officialSpec": "65",
+      "zoneIds": [
+        "management_zone:ca-on-wmu-65"
+      ],
+      "seasonPhrase": "October 8 to October 14",
+      "bowsOnly": true,
+      "sourceId": "source:ca-on-moose-2026",
+      "section": "Resident seasons with controlled hunter numbers"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { HuntEvaluation } from "../hunt/types.ts";
-import type { HuntShareProjectionInput } from "./model.ts";
+import { METHOD_LABELS, priceLine } from "../hunt/readiness/format.ts";
+import type { HuntBriefReadiness, HuntShareProjectionInput } from "./model.ts";
 
 export interface HuntShareContext {
   jurisdiction: {
@@ -39,6 +40,32 @@ function shareableAssumptions(evaluation: HuntEvaluation): Array<{ question: str
     assumptions.push({ question: dimension.question, answer: option.label });
   }
   return assumptions;
+}
+
+/**
+ * Ready to Hunt, compacted for a brief: what to hold, whether orange applies,
+ * and which methods are legal. No purchase links, vendors or recommendations —
+ * those are for the person planning, not for whoever the brief is sent to, and a
+ * vendor search's location must never leave the device that made it.
+ */
+function shareableReadiness(evaluation: HuntEvaluation): HuntBriefReadiness | undefined {
+  const readiness = evaluation.readiness;
+  if (!readiness) return undefined;
+  return {
+    coverage: readiness.coverage,
+    jurisdictionName: readiness.jurisdictionName,
+    officialInfoUrl: readiness.officialInfoUrl.startsWith("https://") ? readiness.officialInfoUrl : undefined,
+    authorizations: readiness.authorizations.slice(0, 12).map((item) => ({
+      status: item.status,
+      name: item.officialName,
+      authority: item.authority,
+      condition: item.conditionText,
+      fee: priceLine(item.price),
+    })),
+    orange: readiness.orange ? { status: readiness.orange.status, summary: readiness.orange.summary } : undefined,
+    legalMethods: (readiness.methods?.allowed ?? []).slice(0, 8).map((method) =>
+      method.restriction ? `${METHOD_LABELS[method.method]}: ${method.restriction}` : METHOD_LABELS[method.method]),
+  };
 }
 
 /**
@@ -123,6 +150,7 @@ export function huntEvaluationToShareInput(
             ? `${source.effectiveFrom}–${source.effectiveThrough}`
             : source.effectiveFrom ?? source.effectiveThrough,
       })),
+    readiness: shareableReadiness(evaluation),
     resourceReferences: [
       {
         id: evaluation.species.id,

@@ -16,6 +16,8 @@ interface LocationSearchProps {
   onSelect: (location: SelectedLocation) => void;
   selectedLabel: string | null;
   disabled?: boolean;
+  /** The question this search answers. Hunt's own search asks where the hunt is. */
+  label?: string;
 }
 
 type ProviderState =
@@ -34,7 +36,7 @@ function newSessionToken(): string {
   return `s-${Math.random().toString(36).slice(2)}${Date.now().toString(36)}`;
 }
 
-export default function LocationSearch({ onSelect, selectedLabel, disabled }: LocationSearchProps) {
+export default function LocationSearch({ onSelect, selectedLabel, disabled, label = "Where are you hunting?" }: LocationSearchProps) {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState<PlaceSuggestion[]>([]);
   const [state, setState] = useState<ProviderState>({ kind: "idle" });
@@ -226,7 +228,7 @@ export default function LocationSearch({ onSelect, selectedLabel, disabled }: Lo
   return (
     <div className={styles.field}>
       <label className="ng-label" htmlFor={`${listboxId}-input`}>
-        Where are you hunting?
+        {label}
       </label>
 
       <div className={styles.searchWrap}>

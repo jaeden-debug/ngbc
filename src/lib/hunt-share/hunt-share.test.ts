@@ -140,7 +140,7 @@ test("all regulatory statuses are preserved without simplification", () => {
 });
 
 test("unsupported snapshot versions fail gracefully", () => {
-  for (const version of [0, 3, 99]) {
+  for (const version of [0, 4, 99]) {
     assert.deepEqual(parseStoredHuntBrief({ ...huntBriefFixture(), version }), {
       status: "unsupported_version",
       version,
@@ -186,7 +186,7 @@ test("a version 2 brief round-trips the hunter's own answers", () => {
     { question: "Are you a resident of Ontario?", answer: "Resident" },
     { question: "What will you hunt with?", answer: "Shotgun" },
   ];
-  const parsed = parseStoredHuntBrief({ ...huntBriefFixture(), assumptions });
+  const parsed = parseStoredHuntBrief({ ...huntBriefFixture(), version: 2, assumptions });
   assert.equal(parsed.status, "found");
   if (parsed.status !== "found") return;
   assert.equal(parsed.brief.version, 2);

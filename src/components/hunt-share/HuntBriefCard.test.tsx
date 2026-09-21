@@ -43,3 +43,25 @@ test("share metadata is noindex with canonical and dynamic OG URLs", () => {
   assert.ok(Array.isArray(images));
   assert.equal((images[0] as { url: string }).url, `${huntBriefUrl(brief.shareId)}/opengraph-image`);
 });
+
+test("a version 3 brief shows its Ready to Hunt checklist in words, not colour", () => {
+  const html = renderToStaticMarkup(<HuntBriefCard brief={huntBriefFixture({
+    readiness: {
+      coverage: "VERIFIED",
+      jurisdictionName: "Ontario",
+      officialInfoUrl: "https://www.ontario.ca/document/ontario-hunting-regulations-summary/hunting-licence-information",
+      authorizations: [
+        { status: "REQUIRED", name: "Outdoors Card", authority: "Ontario Ministry of Natural Resources", fee: "2026 fee: $8.57 + 13% HST" },
+        { status: "CONDITIONAL", name: "Firearms licence", authority: "Canadian Firearms Program (RCMP)", condition: "Required if you hunt with a gun." },
+      ],
+      orange: { status: "REQUIRED", summary: "An elk season is open in this unit." },
+      legalMethods: ["Shotgun", "Bow"],
+    },
+  })} />);
+  assert.match(html, /Ready to hunt/);
+  assert.match(html, /Required[\s\S]*Outdoors Card/);
+  assert.match(html, /Depends[\s\S]*Firearms licence/);
+  assert.match(html, /Hunter orange/);
+  assert.match(html, /2026 fee: \$8\.57/);
+  assert.doesNotMatch(html, /vendor|issuer near/i);
+});

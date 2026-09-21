@@ -499,6 +499,7 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
             result={displayedResult}
             placeLabel={location?.label ?? null}
             assumptions={answeredSoFar}
+            onAnswer={answerQuestion}
           />
         ) : null}
       </div>

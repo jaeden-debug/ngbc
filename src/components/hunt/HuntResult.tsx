@@ -8,6 +8,7 @@ import { speciesById } from "../../lib/hunt/coverage";
 import { readableCalendarDay, readableIso } from "../../lib/hunt/date";
 import { layerForJurisdiction } from "../../lib/hunt/zone-layers";
 import type { HuntEvaluation } from "../../lib/hunt/types";
+import ReadyToHunt from "./ReadyToHunt";
 import styles from "./Hunt.module.css";
 
 /**
@@ -27,12 +28,14 @@ const STATUS_WORDING: Record<string, string> = {
 };
 
 export default function HuntResult({
-  result, placeLabel, assumptions = [],
+  result, placeLabel, assumptions = [], onAnswer,
 }: {
   result: HuntEvaluation;
   placeLabel: string | null;
   /** Self-reported facts this result depended on, in the question's own words. */
   assumptions?: Array<{ question: string; answer: string }>;
+  /** Records an answer and re-checks the hunt — the same path the engine's own questions use. */
+  onAnswer?: (dimensionId: string, value: string) => void;
 }) {
   const species = speciesById(result.species.id);
   const status = result.regulation.status;
@@ -180,6 +183,14 @@ export default function HuntResult({
           </p>
         ) : null}
       </div>
+
+      {result.readiness ? (
+        <ReadyToHunt
+          readiness={result.readiness}
+          residency={result.input.answers?.RESIDENCY}
+          onChooseResidency={onAnswer ? (value) => onAnswer("RESIDENCY", value) : undefined}
+        />
+      ) : null}
 
       {/* ── Detail ─────────────────────────────────────────────────────── */}
       <div className={`${styles.resultDetail} ng-glass-panel`}>

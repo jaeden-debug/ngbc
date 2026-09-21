@@ -24,6 +24,10 @@ function statusLabel(status: ShareHuntBrief["regulatory"]["status"]): string {
   return status === "NEEDS_VERIFICATION" ? "Needs verification" : status.toLowerCase().replace(/^./, (value) => value.toUpperCase());
 }
 
+/* Status is always a word, never only a colour. */
+const AUTHORIZATION_STATUS_LABEL = { REQUIRED: "Required", CONDITIONAL: "Depends", UNKNOWN: "Unknown" } as const;
+const ORANGE_STATUS_LABEL = { REQUIRED: "Required", NOT_REQUIRED: "Not required", CONDITIONAL: "Depends", UNKNOWN: "Unknown" } as const;
+
 export default function HuntBriefCard({ brief }: { brief: ShareHuntBrief }) {
   const date = formatDate(brief.selectedDate, {
     weekday: "long",
@@ -109,6 +113,52 @@ export default function HuntBriefCard({ brief }: { brief: ShareHuntBrief }) {
           <p className={styles.sourceMeta}>
             Supplied by the person who ran this Hunt. North Ground did not verify any
             licence, tag or residency, and a different answer may produce a different season.
+          </p>
+        </section>
+      )}
+
+      {brief.readiness && (
+        <section className={styles.section} aria-labelledby="brief-readiness">
+          <h2 id="brief-readiness">Ready to hunt</h2>
+          {brief.readiness.coverage === "UNAVAILABLE" ? (
+            <p className={styles.sourceMeta}>
+              North Ground had no Ready to Hunt checklist for {brief.readiness.jurisdictionName} when this
+              brief was created. Check the authority&apos;s own licence, hunter-orange and method rules.
+            </p>
+          ) : (
+            <>
+              <ul className={styles.readinessList}>
+                {brief.readiness.authorizations.map((item) => (
+                  <li key={item.name}>
+                    <span className={styles.readinessStatus}>{AUTHORIZATION_STATUS_LABEL[item.status]}</span>
+                    <span>
+                      <strong>{item.name}</strong> · {item.authority}
+                      {item.condition && <span className={styles.readinessNote}>{item.condition}</span>}
+                      {item.fee && <span className={styles.readinessNote}>{item.fee}</span>}
+                    </span>
+                  </li>
+                ))}
+                {brief.readiness.orange && (
+                  <li>
+                    <span className={styles.readinessStatus}>{ORANGE_STATUS_LABEL[brief.readiness.orange.status]}</span>
+                    <span>
+                      <strong>Hunter orange</strong>
+                      <span className={styles.readinessNote}>{brief.readiness.orange.summary}</span>
+                    </span>
+                  </li>
+                )}
+              </ul>
+              {brief.readiness.legalMethods.length > 0 && (
+                <p className={styles.sourceMeta}>Legal methods: {brief.readiness.legalMethods.join(" · ")}</p>
+              )}
+            </>
+          )}
+          <p className={styles.sourceMeta}>
+            A snapshot of what this hunt needed when the brief was created, for the answers above. North Ground
+            cannot check what anyone holds.
+            {brief.readiness.officialInfoUrl && (
+              <> <a href={brief.readiness.officialInfoUrl} rel="noopener noreferrer" target="_blank">Official licence information</a></>
+            )}
           </p>
         </section>
       )}

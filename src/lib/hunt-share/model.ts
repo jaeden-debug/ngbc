@@ -6,6 +6,11 @@ import {
 } from "../content-contract/index.ts";
 
 /**
+ * Version 3 adds `readiness`: a compact Ready to Hunt checklist — the licences,
+ * hunter orange and legal methods the hunt needs, as the result showed them.
+ * It deliberately has no field for a licence vendor or any location: vendor
+ * search is a private, on-device aid and never part of a shared brief.
+ *
  * Version 2 adds `assumptions`.
  *
  * A major-game result depends on facts the hunter supplied — residency, the
@@ -18,8 +23,8 @@ import {
  * every certified species answered from location and date alone, so they carry
  * no assumptions and none are invented for them.
  */
-export const HUNT_BRIEF_SCHEMA_VERSION = 2 as const;
-export const READABLE_HUNT_BRIEF_VERSIONS = [1, 2] as const;
+export const HUNT_BRIEF_SCHEMA_VERSION = 3 as const;
+export const READABLE_HUNT_BRIEF_VERSIONS = [1, 2, 3] as const;
 export type HuntBriefSchemaVersion = (typeof READABLE_HUNT_BRIEF_VERSIONS)[number];
 export const HUNT_BRIEF_STATUSES = [
   "OPEN",
@@ -103,6 +108,30 @@ export interface HuntShareProjectionInput {
     address?: string;
   };
   privateContext?: unknown;
+  readiness?: HuntBriefReadiness;
+}
+
+export const HUNT_BRIEF_READINESS_STATUSES = ["REQUIRED", "NOT_REQUIRED", "CONDITIONAL", "UNKNOWN"] as const;
+export type HuntBriefReadinessStatus = (typeof HUNT_BRIEF_READINESS_STATUSES)[number];
+
+/**
+ * Ready to Hunt as a brief carries it. Every field is display text already
+ * decided by the engine; the brief restates it and never re-derives it.
+ */
+export interface HuntBriefReadiness {
+  coverage: "VERIFIED" | "PARTIAL" | "UNAVAILABLE";
+  jurisdictionName: string;
+  officialInfoUrl?: string;
+  authorizations: Array<{
+    status: "REQUIRED" | "CONDITIONAL" | "UNKNOWN";
+    name: string;
+    authority: string;
+    condition?: string;
+    fee?: string;
+  }>;
+  orange?: { status: HuntBriefReadinessStatus; summary: string };
+  /** Legal methods for this hunt, as labels. North Ground's recommendations are not carried. */
+  legalMethods: string[];
 }
 
 /** A fact the hunter supplied, recorded as theirs rather than as verified. */
@@ -179,6 +208,8 @@ export interface ShareHuntBrief {
    * Empty for a species that asks nothing, and for every version 1 brief.
    */
   assumptions: HuntBriefAssumption[];
+  /** Present on version 3 briefs whose result had a Ready to Hunt checklist. */
+  readiness?: HuntBriefReadiness;
 }
 
 export class HuntBriefValidationError extends Error {
@@ -305,6 +336,49 @@ function parseAssumptions(value: unknown): HuntBriefAssumption[] {
   });
 }
 
+const READINESS_STATUS_SET = new Set<string>(HUNT_BRIEF_READINESS_STATUSES);
+const AUTHORIZATION_STATUS_SET = new Set(["REQUIRED", "CONDITIONAL", "UNKNOWN"]);
+const COVERAGE_SET = new Set(["VERIFIED", "PARTIAL", "UNAVAILABLE"]);
+
+function oneOf<T extends string>(value: unknown, allowed: Set<string>, field: string): T {
+  if (typeof value !== "string" || !allowed.has(value)) throw new HuntBriefValidationError(`${field} is unsupported`);
+  return value as T;
+}
+
+/**
+ * Only the named fields are copied. Anything else a client sends — a vendor, a
+ * device position, a coordinate — is dropped, so the brief cannot carry it.
+ */
+function parseReadiness(value: unknown): HuntBriefReadiness | undefined {
+  if (value === undefined) return undefined;
+  const readiness = record(value, "readiness");
+  const items = readiness.authorizations;
+  if (!Array.isArray(items) || items.length > 12) throw new HuntBriefValidationError("readiness.authorizations has too many entries");
+  const orange = readiness.orange === undefined ? undefined : record(readiness.orange, "readiness.orange");
+  return {
+    coverage: oneOf(readiness.coverage, COVERAGE_SET, "readiness.coverage"),
+    jurisdictionName: text(readiness.jurisdictionName, "readiness.jurisdictionName", 120),
+    officialInfoUrl: readiness.officialInfoUrl === undefined ? undefined : httpsUrl(readiness.officialInfoUrl, "readiness.officialInfoUrl"),
+    authorizations: items.map((item, index) => {
+      const entry = record(item, `readiness.authorizations[${index}]`);
+      return {
+        status: oneOf(entry.status, AUTHORIZATION_STATUS_SET, `readiness.authorizations[${index}].status`),
+        name: text(entry.name, `readiness.authorizations[${index}].name`, 160),
+        authority: text(entry.authority, `readiness.authorizations[${index}].authority`, 120),
+        condition: optionalText(entry.condition, `readiness.authorizations[${index}].condition`, 300),
+        fee: optionalText(entry.fee, `readiness.authorizations[${index}].fee`, 80),
+      };
+    }),
+    orange: orange
+      ? {
+          status: oneOf(orange.status, READINESS_STATUS_SET, "readiness.orange.status"),
+          summary: text(orange.summary, "readiness.orange.summary", 400),
+        }
+      : undefined,
+    legalMethods: strings(readiness.legalMethods, "readiness.legalMethods", 8, 320),
+  };
+}
+
 function parseSources(value: unknown): ShareHuntBrief["officialSources"] {
   if (value === undefined) return [];
   if (!Array.isArray(value) || value.length > 12) {
@@ -384,6 +458,8 @@ export function createShareableHuntBrief(
      Refusing them here stops a stored v1 record from acquiring context it never
      had, which would be exactly the silent reinterpretation this guards against. */
   const assumptions = version === 1 ? [] : parseAssumptions(input.assumptions);
+  // Likewise, a brief from before Ready to Hunt never acquires a checklist.
+  const readiness = version < 3 ? undefined : parseReadiness(input.readiness);
 
   const brief: ShareHuntBrief = {
     version,
@@ -438,6 +514,7 @@ export function createShareableHuntBrief(
     officialSources: parseSources(input.officialSources),
     resourceReferences: parseResources(input.resourceReferences),
     assumptions,
+    ...(readiness ? { readiness } : {}),
   };
 
   return brief;
@@ -486,6 +563,7 @@ export function parseStoredHuntBrief(value: unknown): StoredHuntBriefResult {
       officialSources: candidate.officialSources,
       resourceReferences: candidate.resourceReferences,
       assumptions: candidate.assumptions,
+      readiness: candidate.readiness,
     }, {
       shareId: text(candidate.shareId, "shareId", 32),
       createdAt: timestamp(candidate.createdAt, "createdAt"),
