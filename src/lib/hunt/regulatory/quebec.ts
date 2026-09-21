@@ -53,6 +53,9 @@ interface QuebecRule {
   animalClasses: string[] | null;
   seasonType: "REGULAR" | "RELEVE";
   seasonLabel: string;
+  /** The year (or licence year) this rule is in force, as the builder read it from the column. */
+  effectiveFrom: string;
+  effectiveTo: string;
   seasonPhrase: string | null;
   windows: QuebecWindow[];
   declaredNoSeason: boolean;
@@ -258,7 +261,8 @@ function bindPeriod(kind: "bigGame" | "smallGame"): ConditionalBundle {
     });
     for (const speciesId of unresolved.speciesIds) {
       engineRules.push({
-        id: `${specialId}-${speciesId}-${unresolved.seasonLabel}`,
+        // The same form as every stored rule id, so the rule can be published as it is evaluated.
+        id: `regulatory_rule:ca-${`${specialId}-${speciesId.slice("species:".length)}-${unresolved.seasonLabel}`.toLowerCase().replace(/[^a-z0-9-]+/g, "-")}`,
         speciesId,
         regulatoryGroupId: groupFor(unresolved.zoneLabel, []),
         geography: {
@@ -480,6 +484,51 @@ export function quebecCoverageReport() {
       ...conditionalCoverage({ ...QUEBEC_SMALL_GAME, officialUnitCount }),
     ],
   };
+}
+
+/* ── Persistence ──────────────────────────────────────────────────────── */
+
+/**
+ * The two bound bundles in the shape `scripts/publish-regulations.mjs` stores.
+ *
+ * Every rule is the rule the engine evaluates, with the period it is in force:
+ * its own year (2026, 2027) or licence year (1 April to 31 March) as the
+ * ministry prints it, never the two-year span of the page, so "2026 Orignal avec
+ * bois / 2027 Orignal" stays two rules in the store as in the bundle. A row the
+ * builder could not map takes the period of the published rules beside it —
+ * same page, same season — and is stored with the geography that keeps it
+ * unresolved. Sources carry what the builder hashed.
+ */
+export function quebecPublishableBundles() {
+  const ownPeriod = new Map(QUEBEC_BUNDLE.rules.map((rule) => [rule.id, { from: rule.effectiveFrom, to: rule.effectiveTo }]));
+  const seasonPeriod = new Map(QUEBEC_BUNDLE.rules.map((rule) => [`${rule.sourceId}|${rule.seasonLabel}`, { from: rule.effectiveFrom, to: rule.effectiveTo }]));
+  const unresolvedSeason = new Map<string, string>();
+  for (const bound of [QUEBEC_BIG_GAME, QUEBEC_SMALL_GAME]) {
+    for (const rule of bound.rules) if (rule.geography?.include.special.length) unresolvedSeason.set(rule.id, rule.sourceVersion);
+  }
+  return [QUEBEC_BIG_GAME, QUEBEC_SMALL_GAME].map((bound) => ({
+    ...bound,
+    sources: bound.sources.map((declared) => {
+      const source = QUEBEC_BUNDLE.sources.find((candidate) => candidate.id === declared.id);
+      if (!source) throw new Error(`Bound source ${declared.id} is not in the bundle`);
+      return {
+        ...declared,
+        authority: source.authority,
+        title: source.title,
+        url: source.url,
+        version: `page updated ${source.lastUpdated}`,
+        contentHash: source.contentHash,
+        retrievedAt: QUEBEC_BUNDLE.retrievedAt,
+      };
+    }),
+    // The pages the groupings are printed on, identified by the hash of all of them.
+    groups: bound.groups.map((group) => ({ ...group, label: group.officialSpec, sourceVersion: QUEBEC_BUNDLE.contentHash })),
+    rules: bound.rules.map((rule) => {
+      const period = ownPeriod.get(rule.id) ?? seasonPeriod.get(`${rule.sourceId}|${unresolvedSeason.get(rule.id)}`);
+      if (!period) throw new Error(`No period in force for ${rule.id}`);
+      return { ...rule, effectiveFrom: period.from, effectiveTo: period.to };
+    }),
+  }));
 }
 
 /* ── Territories closed to all hunting ─────────────────────────────────── */

@@ -944,7 +944,7 @@
   ],
   "rules": [
     {
-      "id": "rule:ca-qc-american-black-bear-2026-0e88597eb6",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2026-0e88597eb6",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse au fusil, à l’arme à chargement par la bouche, à l’arbalète et à l’arc",
@@ -985,7 +985,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2026-108c5393b1",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2026-108c5393b1",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -1037,7 +1037,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2026-19ff0c3715",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2026-19ff0c3715",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -1083,7 +1083,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2026-28e461b6c1",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2026-28e461b6c1",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -1139,7 +1139,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2026-35f1c605a9",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2026-35f1c605a9",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -1178,7 +1178,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2026-4de4075eaa",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2026-4de4075eaa",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -1215,7 +1215,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2026-617452db79",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2026-617452db79",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -1259,7 +1259,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2026-6984be47b7",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2026-6984be47b7",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -1303,7 +1303,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2026-c0e5aa51ba",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2026-c0e5aa51ba",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -1345,7 +1345,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2026-c9f255b2ef",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2026-c9f255b2ef",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -1382,7 +1382,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2026-e76487235f",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2026-e76487235f",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -1419,7 +1419,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2026-e9406efb96",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2026-e9406efb96",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -1471,7 +1471,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2026-ec678043b6",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2026-ec678043b6",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -1511,7 +1511,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2026-f9205b2abb",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2026-f9205b2abb",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -1581,7 +1581,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2026-fe93bf4dbd",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2026-fe93bf4dbd",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -1625,7 +1625,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2027-0e88597eb6",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2027-0e88597eb6",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse au fusil, à l’arme à chargement par la bouche, à l’arbalète et à l’arc",
@@ -1666,7 +1666,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2027-108c5393b1",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2027-108c5393b1",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -1718,7 +1718,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2027-19ff0c3715",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2027-19ff0c3715",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -1764,7 +1764,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2027-28e461b6c1",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2027-28e461b6c1",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -1820,7 +1820,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2027-35f1c605a9",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2027-35f1c605a9",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -1859,7 +1859,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2027-4de4075eaa",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2027-4de4075eaa",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -1896,7 +1896,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2027-617452db79",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2027-617452db79",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -1940,7 +1940,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2027-6984be47b7",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2027-6984be47b7",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -1984,7 +1984,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2027-c0e5aa51ba",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2027-c0e5aa51ba",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -2026,7 +2026,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2027-c9f255b2ef",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2027-c9f255b2ef",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -2063,7 +2063,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2027-e76487235f",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2027-e76487235f",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -2100,7 +2100,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2027-e9406efb96",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2027-e9406efb96",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -2152,7 +2152,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2027-ec678043b6",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2027-ec678043b6",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -2192,7 +2192,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2027-f9205b2abb",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2027-f9205b2abb",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -2262,7 +2262,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-american-black-bear-2027-fe93bf4dbd",
+      "id": "regulatory_rule:ca-qc-american-black-bear-2027-fe93bf4dbd",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -2306,7 +2306,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-arctic-hare-2026-2027-1185f8dd27",
+      "id": "regulatory_rule:ca-qc-arctic-hare-2026-2027-1185f8dd27",
       "speciesId": "species:arctic-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -2404,7 +2404,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-arctic-hare-2026-2027-1dc6ec1101",
+      "id": "regulatory_rule:ca-qc-arctic-hare-2026-2027-1dc6ec1101",
       "speciesId": "species:arctic-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -2506,7 +2506,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-arctic-hare-2026-2027-69977fcaf5",
+      "id": "regulatory_rule:ca-qc-arctic-hare-2026-2027-69977fcaf5",
       "speciesId": "species:arctic-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -2549,7 +2549,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-arctic-hare-2026-2027-9652809c79",
+      "id": "regulatory_rule:ca-qc-arctic-hare-2026-2027-9652809c79",
       "speciesId": "species:arctic-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -2587,7 +2587,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-arctic-hare-2026-2027-cc29c54c13",
+      "id": "regulatory_rule:ca-qc-arctic-hare-2026-2027-cc29c54c13",
       "speciesId": "species:arctic-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -2627,7 +2627,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-arctic-hare-2026-2027-e5915ea09c",
+      "id": "regulatory_rule:ca-qc-arctic-hare-2026-2027-e5915ea09c",
       "speciesId": "species:arctic-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -2668,7 +2668,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-arctic-hare-2027-2028-1185f8dd27",
+      "id": "regulatory_rule:ca-qc-arctic-hare-2027-2028-1185f8dd27",
       "speciesId": "species:arctic-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -2766,7 +2766,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-arctic-hare-2027-2028-1dc6ec1101",
+      "id": "regulatory_rule:ca-qc-arctic-hare-2027-2028-1dc6ec1101",
       "speciesId": "species:arctic-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -2868,7 +2868,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-arctic-hare-2027-2028-69977fcaf5",
+      "id": "regulatory_rule:ca-qc-arctic-hare-2027-2028-69977fcaf5",
       "speciesId": "species:arctic-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -2911,7 +2911,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-arctic-hare-2027-2028-9652809c79",
+      "id": "regulatory_rule:ca-qc-arctic-hare-2027-2028-9652809c79",
       "speciesId": "species:arctic-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -2949,7 +2949,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-arctic-hare-2027-2028-cc29c54c13",
+      "id": "regulatory_rule:ca-qc-arctic-hare-2027-2028-cc29c54c13",
       "speciesId": "species:arctic-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -2989,7 +2989,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-arctic-hare-2027-2028-e5915ea09c",
+      "id": "regulatory_rule:ca-qc-arctic-hare-2027-2028-e5915ea09c",
       "speciesId": "species:arctic-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -3030,7 +3030,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-eastern-cottontail-2026-2027-4ef1da1b6c",
+      "id": "regulatory_rule:ca-qc-eastern-cottontail-2026-2027-4ef1da1b6c",
       "speciesId": "species:eastern-cottontail",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -3073,7 +3073,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-eastern-cottontail-2026-2027-7e23f0284c",
+      "id": "regulatory_rule:ca-qc-eastern-cottontail-2026-2027-7e23f0284c",
       "speciesId": "species:eastern-cottontail",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -3175,7 +3175,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-eastern-cottontail-2026-2027-8c6c5b49aa",
+      "id": "regulatory_rule:ca-qc-eastern-cottontail-2026-2027-8c6c5b49aa",
       "speciesId": "species:eastern-cottontail",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -3213,7 +3213,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-eastern-cottontail-2026-2027-8d686a4393",
+      "id": "regulatory_rule:ca-qc-eastern-cottontail-2026-2027-8d686a4393",
       "speciesId": "species:eastern-cottontail",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -3253,7 +3253,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-eastern-cottontail-2026-2027-a0aa9b5d81",
+      "id": "regulatory_rule:ca-qc-eastern-cottontail-2026-2027-a0aa9b5d81",
       "speciesId": "species:eastern-cottontail",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -3294,7 +3294,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-eastern-cottontail-2026-2027-cbaa56e415",
+      "id": "regulatory_rule:ca-qc-eastern-cottontail-2026-2027-cbaa56e415",
       "speciesId": "species:eastern-cottontail",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -3392,7 +3392,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-eastern-cottontail-2027-2028-4ef1da1b6c",
+      "id": "regulatory_rule:ca-qc-eastern-cottontail-2027-2028-4ef1da1b6c",
       "speciesId": "species:eastern-cottontail",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -3435,7 +3435,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-eastern-cottontail-2027-2028-7e23f0284c",
+      "id": "regulatory_rule:ca-qc-eastern-cottontail-2027-2028-7e23f0284c",
       "speciesId": "species:eastern-cottontail",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -3537,7 +3537,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-eastern-cottontail-2027-2028-8c6c5b49aa",
+      "id": "regulatory_rule:ca-qc-eastern-cottontail-2027-2028-8c6c5b49aa",
       "speciesId": "species:eastern-cottontail",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -3575,7 +3575,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-eastern-cottontail-2027-2028-8d686a4393",
+      "id": "regulatory_rule:ca-qc-eastern-cottontail-2027-2028-8d686a4393",
       "speciesId": "species:eastern-cottontail",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -3615,7 +3615,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-eastern-cottontail-2027-2028-a0aa9b5d81",
+      "id": "regulatory_rule:ca-qc-eastern-cottontail-2027-2028-a0aa9b5d81",
       "speciesId": "species:eastern-cottontail",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -3656,7 +3656,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-eastern-cottontail-2027-2028-cbaa56e415",
+      "id": "regulatory_rule:ca-qc-eastern-cottontail-2027-2028-cbaa56e415",
       "speciesId": "species:eastern-cottontail",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -3754,7 +3754,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2026-0721ee8861",
+      "id": "regulatory_rule:ca-qc-moose-2026-0721ee8861",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -3793,7 +3793,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2026-14bd8289fe",
+      "id": "regulatory_rule:ca-qc-moose-2026-14bd8289fe",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -3836,7 +3836,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2026-3100ead9eb",
+      "id": "regulatory_rule:ca-qc-moose-2026-3100ead9eb",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -3876,7 +3876,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2026-3943372311",
+      "id": "regulatory_rule:ca-qc-moose-2026-3943372311",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -3926,7 +3926,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2026-405317b7cc",
+      "id": "regulatory_rule:ca-qc-moose-2026-405317b7cc",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -3968,7 +3968,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2026-5133cb8231",
+      "id": "regulatory_rule:ca-qc-moose-2026-5133cb8231",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -4012,7 +4012,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2026-5258d823f5",
+      "id": "regulatory_rule:ca-qc-moose-2026-5258d823f5",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -4063,7 +4063,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2026-68d144ab68",
+      "id": "regulatory_rule:ca-qc-moose-2026-68d144ab68",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -4116,7 +4116,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2026-6ad302dfb4",
+      "id": "regulatory_rule:ca-qc-moose-2026-6ad302dfb4",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arc",
@@ -4156,7 +4156,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2026-6b8d89e35a",
+      "id": "regulatory_rule:ca-qc-moose-2026-6b8d89e35a",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -4197,7 +4197,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2026-a55831848d",
+      "id": "regulatory_rule:ca-qc-moose-2026-a55831848d",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -4254,7 +4254,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2026-b53b334a94",
+      "id": "regulatory_rule:ca-qc-moose-2026-b53b334a94",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -4304,7 +4304,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2026-bc41e9cf84",
+      "id": "regulatory_rule:ca-qc-moose-2026-bc41e9cf84",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -4345,7 +4345,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2026-c0ed914cac",
+      "id": "regulatory_rule:ca-qc-moose-2026-c0ed914cac",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -4409,7 +4409,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2026-c2c6d55281",
+      "id": "regulatory_rule:ca-qc-moose-2026-c2c6d55281",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -4451,7 +4451,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2026-c438bf3b11",
+      "id": "regulatory_rule:ca-qc-moose-2026-c438bf3b11",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -4493,7 +4493,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2026-cc242f1593",
+      "id": "regulatory_rule:ca-qc-moose-2026-cc242f1593",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -4541,7 +4541,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2026-d20f5fefbb",
+      "id": "regulatory_rule:ca-qc-moose-2026-d20f5fefbb",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -4583,7 +4583,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2026-d5765d94a4",
+      "id": "regulatory_rule:ca-qc-moose-2026-d5765d94a4",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -4625,7 +4625,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2026-e02ed1f11e",
+      "id": "regulatory_rule:ca-qc-moose-2026-e02ed1f11e",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -4664,7 +4664,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2026-e2ce9f9336",
+      "id": "regulatory_rule:ca-qc-moose-2026-e2ce9f9336",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -4705,7 +4705,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2026-e6816b4f82",
+      "id": "regulatory_rule:ca-qc-moose-2026-e6816b4f82",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -4744,7 +4744,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2026-zone-17-chasse-sportive-interdite",
+      "id": "regulatory_rule:ca-qc-moose-2026-zone-17-chasse-sportive-interdite",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Maintien des restrictions dans la zone 17",
@@ -4772,7 +4772,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2027-14bd8289fe",
+      "id": "regulatory_rule:ca-qc-moose-2027-14bd8289fe",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -4815,7 +4815,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2027-3100ead9eb",
+      "id": "regulatory_rule:ca-qc-moose-2027-3100ead9eb",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -4855,7 +4855,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2027-3943372311",
+      "id": "regulatory_rule:ca-qc-moose-2027-3943372311",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -4905,7 +4905,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2027-405317b7cc",
+      "id": "regulatory_rule:ca-qc-moose-2027-405317b7cc",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -4947,7 +4947,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2027-5133cb8231",
+      "id": "regulatory_rule:ca-qc-moose-2027-5133cb8231",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -4991,7 +4991,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2027-5258d823f5",
+      "id": "regulatory_rule:ca-qc-moose-2027-5258d823f5",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -5042,7 +5042,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2027-552838e885",
+      "id": "regulatory_rule:ca-qc-moose-2027-552838e885",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -5082,7 +5082,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2027-68d144ab68",
+      "id": "regulatory_rule:ca-qc-moose-2027-68d144ab68",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -5135,7 +5135,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2027-6ad302dfb4",
+      "id": "regulatory_rule:ca-qc-moose-2027-6ad302dfb4",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arc",
@@ -5175,7 +5175,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2027-6b8d89e35a",
+      "id": "regulatory_rule:ca-qc-moose-2027-6b8d89e35a",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -5216,7 +5216,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2027-9588fcef42",
+      "id": "regulatory_rule:ca-qc-moose-2027-9588fcef42",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -5258,7 +5258,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2027-a55831848d",
+      "id": "regulatory_rule:ca-qc-moose-2027-a55831848d",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -5315,7 +5315,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2027-aef0a4448f",
+      "id": "regulatory_rule:ca-qc-moose-2027-aef0a4448f",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -5357,7 +5357,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2027-b53b334a94",
+      "id": "regulatory_rule:ca-qc-moose-2027-b53b334a94",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -5407,7 +5407,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2027-c0ed914cac",
+      "id": "regulatory_rule:ca-qc-moose-2027-c0ed914cac",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -5471,7 +5471,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2027-c2c6d55281",
+      "id": "regulatory_rule:ca-qc-moose-2027-c2c6d55281",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -5513,7 +5513,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2027-c438bf3b11",
+      "id": "regulatory_rule:ca-qc-moose-2027-c438bf3b11",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -5555,7 +5555,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2027-cc242f1593",
+      "id": "regulatory_rule:ca-qc-moose-2027-cc242f1593",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -5603,7 +5603,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2027-d1962f2096",
+      "id": "regulatory_rule:ca-qc-moose-2027-d1962f2096",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
@@ -5646,7 +5646,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2027-d5765d94a4",
+      "id": "regulatory_rule:ca-qc-moose-2027-d5765d94a4",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -5688,7 +5688,7 @@
       "antlerlessByPermit": true
     },
     {
-      "id": "rule:ca-qc-moose-2027-e02ed1f11e",
+      "id": "regulatory_rule:ca-qc-moose-2027-e02ed1f11e",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -5727,7 +5727,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2027-e6816b4f82",
+      "id": "regulatory_rule:ca-qc-moose-2027-e6816b4f82",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -5766,7 +5766,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-moose-2027-zone-17-chasse-sportive-interdite",
+      "id": "regulatory_rule:ca-qc-moose-2027-zone-17-chasse-sportive-interdite",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
       "sourceSection": "Maintien des restrictions dans la zone 17",
@@ -5794,7 +5794,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-ruffed-grouse-2026-2027-497b19f8ed",
+      "id": "regulatory_rule:ca-qc-ruffed-grouse-2026-2027-497b19f8ed",
       "speciesId": "species:ruffed-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -5835,7 +5835,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-ruffed-grouse-2026-2027-4f4d841849",
+      "id": "regulatory_rule:ca-qc-ruffed-grouse-2026-2027-4f4d841849",
       "speciesId": "species:ruffed-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -5935,7 +5935,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-ruffed-grouse-2026-2027-6f17c2a5de",
+      "id": "regulatory_rule:ca-qc-ruffed-grouse-2026-2027-6f17c2a5de",
       "speciesId": "species:ruffed-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -5974,7 +5974,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-ruffed-grouse-2026-2027-acd8125104",
+      "id": "regulatory_rule:ca-qc-ruffed-grouse-2026-2027-acd8125104",
       "speciesId": "species:ruffed-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -6017,7 +6017,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-ruffed-grouse-2027-2028-497b19f8ed",
+      "id": "regulatory_rule:ca-qc-ruffed-grouse-2027-2028-497b19f8ed",
       "speciesId": "species:ruffed-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -6058,7 +6058,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-ruffed-grouse-2027-2028-4f4d841849",
+      "id": "regulatory_rule:ca-qc-ruffed-grouse-2027-2028-4f4d841849",
       "speciesId": "species:ruffed-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -6158,7 +6158,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-ruffed-grouse-2027-2028-6f17c2a5de",
+      "id": "regulatory_rule:ca-qc-ruffed-grouse-2027-2028-6f17c2a5de",
       "speciesId": "species:ruffed-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -6197,7 +6197,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-ruffed-grouse-2027-2028-acd8125104",
+      "id": "regulatory_rule:ca-qc-ruffed-grouse-2027-2028-acd8125104",
       "speciesId": "species:ruffed-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -6240,7 +6240,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-sharp-tailed-grouse-2026-2027-1b843d3eb1",
+      "id": "regulatory_rule:ca-qc-sharp-tailed-grouse-2026-2027-1b843d3eb1",
       "speciesId": "species:sharp-tailed-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -6279,7 +6279,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-sharp-tailed-grouse-2026-2027-7fa1cf693d",
+      "id": "regulatory_rule:ca-qc-sharp-tailed-grouse-2026-2027-7fa1cf693d",
       "speciesId": "species:sharp-tailed-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -6320,7 +6320,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-sharp-tailed-grouse-2026-2027-d07a3d566b",
+      "id": "regulatory_rule:ca-qc-sharp-tailed-grouse-2026-2027-d07a3d566b",
       "speciesId": "species:sharp-tailed-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -6420,7 +6420,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-sharp-tailed-grouse-2026-2027-ff81bcb1c1",
+      "id": "regulatory_rule:ca-qc-sharp-tailed-grouse-2026-2027-ff81bcb1c1",
       "speciesId": "species:sharp-tailed-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -6463,7 +6463,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-sharp-tailed-grouse-2027-2028-1b843d3eb1",
+      "id": "regulatory_rule:ca-qc-sharp-tailed-grouse-2027-2028-1b843d3eb1",
       "speciesId": "species:sharp-tailed-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -6502,7 +6502,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-sharp-tailed-grouse-2027-2028-7fa1cf693d",
+      "id": "regulatory_rule:ca-qc-sharp-tailed-grouse-2027-2028-7fa1cf693d",
       "speciesId": "species:sharp-tailed-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -6543,7 +6543,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-sharp-tailed-grouse-2027-2028-d07a3d566b",
+      "id": "regulatory_rule:ca-qc-sharp-tailed-grouse-2027-2028-d07a3d566b",
       "speciesId": "species:sharp-tailed-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -6643,7 +6643,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-sharp-tailed-grouse-2027-2028-ff81bcb1c1",
+      "id": "regulatory_rule:ca-qc-sharp-tailed-grouse-2027-2028-ff81bcb1c1",
       "speciesId": "species:sharp-tailed-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -6686,7 +6686,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-snowshoe-hare-2026-2027-1baf2eff92",
+      "id": "regulatory_rule:ca-qc-snowshoe-hare-2026-2027-1baf2eff92",
       "speciesId": "species:snowshoe-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -6788,7 +6788,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-snowshoe-hare-2026-2027-27796a7153",
+      "id": "regulatory_rule:ca-qc-snowshoe-hare-2026-2027-27796a7153",
       "speciesId": "species:snowshoe-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -6886,7 +6886,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-snowshoe-hare-2026-2027-3158f166d0",
+      "id": "regulatory_rule:ca-qc-snowshoe-hare-2026-2027-3158f166d0",
       "speciesId": "species:snowshoe-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -6924,7 +6924,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-snowshoe-hare-2026-2027-80bf66dd7f",
+      "id": "regulatory_rule:ca-qc-snowshoe-hare-2026-2027-80bf66dd7f",
       "speciesId": "species:snowshoe-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -6964,7 +6964,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-snowshoe-hare-2026-2027-d37a95789c",
+      "id": "regulatory_rule:ca-qc-snowshoe-hare-2026-2027-d37a95789c",
       "speciesId": "species:snowshoe-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -7005,7 +7005,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-snowshoe-hare-2026-2027-f50a657412",
+      "id": "regulatory_rule:ca-qc-snowshoe-hare-2026-2027-f50a657412",
       "speciesId": "species:snowshoe-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -7048,7 +7048,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-snowshoe-hare-2027-2028-1baf2eff92",
+      "id": "regulatory_rule:ca-qc-snowshoe-hare-2027-2028-1baf2eff92",
       "speciesId": "species:snowshoe-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -7150,7 +7150,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-snowshoe-hare-2027-2028-27796a7153",
+      "id": "regulatory_rule:ca-qc-snowshoe-hare-2027-2028-27796a7153",
       "speciesId": "species:snowshoe-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -7248,7 +7248,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-snowshoe-hare-2027-2028-3158f166d0",
+      "id": "regulatory_rule:ca-qc-snowshoe-hare-2027-2028-3158f166d0",
       "speciesId": "species:snowshoe-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -7286,7 +7286,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-snowshoe-hare-2027-2028-80bf66dd7f",
+      "id": "regulatory_rule:ca-qc-snowshoe-hare-2027-2028-80bf66dd7f",
       "speciesId": "species:snowshoe-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -7326,7 +7326,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-snowshoe-hare-2027-2028-d37a95789c",
+      "id": "regulatory_rule:ca-qc-snowshoe-hare-2027-2028-d37a95789c",
       "speciesId": "species:snowshoe-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -7367,7 +7367,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-snowshoe-hare-2027-2028-f50a657412",
+      "id": "regulatory_rule:ca-qc-snowshoe-hare-2027-2028-f50a657412",
       "speciesId": "species:snowshoe-hare",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Lapin à queue blanche, lièvre arctique et lièvre d’Amérique",
@@ -7410,7 +7410,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-spruce-grouse-2026-2027-5fc26ac98c",
+      "id": "regulatory_rule:ca-qc-spruce-grouse-2026-2027-5fc26ac98c",
       "speciesId": "species:spruce-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -7449,7 +7449,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-spruce-grouse-2026-2027-9a36471b66",
+      "id": "regulatory_rule:ca-qc-spruce-grouse-2026-2027-9a36471b66",
       "speciesId": "species:spruce-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -7549,7 +7549,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-spruce-grouse-2026-2027-c312e92520",
+      "id": "regulatory_rule:ca-qc-spruce-grouse-2026-2027-c312e92520",
       "speciesId": "species:spruce-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -7592,7 +7592,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-spruce-grouse-2026-2027-f86b9a4111",
+      "id": "regulatory_rule:ca-qc-spruce-grouse-2026-2027-f86b9a4111",
       "speciesId": "species:spruce-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -7633,7 +7633,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-spruce-grouse-2027-2028-5fc26ac98c",
+      "id": "regulatory_rule:ca-qc-spruce-grouse-2027-2028-5fc26ac98c",
       "speciesId": "species:spruce-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -7672,7 +7672,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-spruce-grouse-2027-2028-9a36471b66",
+      "id": "regulatory_rule:ca-qc-spruce-grouse-2027-2028-9a36471b66",
       "speciesId": "species:spruce-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -7772,7 +7772,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-spruce-grouse-2027-2028-c312e92520",
+      "id": "regulatory_rule:ca-qc-spruce-grouse-2027-2028-c312e92520",
       "speciesId": "species:spruce-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -7815,7 +7815,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-spruce-grouse-2027-2028-f86b9a4111",
+      "id": "regulatory_rule:ca-qc-spruce-grouse-2027-2028-f86b9a4111",
       "speciesId": "species:spruce-grouse",
       "sourceId": "source:ca-qc-petit-gibier-2026-2028",
       "sourceSection": "Gélinotte huppée, tétras du Canada et tétras à queue fine",
@@ -7856,7 +7856,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-0379a89f52",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-0379a89f52",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse réservée à la relève",
@@ -7940,7 +7940,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-061c6895df",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-061c6895df",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu (carabine, fusil, arme à chargement par la bouche), à l’arbalète et à l’arc",
@@ -7988,7 +7988,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-112a8e889a",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-112a8e889a",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -8027,7 +8027,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-1d2da19e6c",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-1d2da19e6c",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse réservée à la relève",
@@ -8071,7 +8071,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-235951b7c1",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-235951b7c1",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse réservée à la relève",
@@ -8124,7 +8124,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-236a9eb753",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-236a9eb753",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -8175,7 +8175,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-29d794c238",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-29d794c238",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse au fusil, à l’arme à chargement par la bouche, à l’arbalète et à l’arc",
@@ -8228,7 +8228,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-3f378a5421",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-3f378a5421",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -8277,7 +8277,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-4195478a0c",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-4195478a0c",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse au fusil, à l’arme à chargement par la bouche, à l’arbalète et à l’arc",
@@ -8320,7 +8320,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-42aaea7276",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-42aaea7276",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu (carabine, fusil, arme à chargement par la bouche), à l’arbalète et à l’arc",
@@ -8371,7 +8371,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-5807d2d629",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-5807d2d629",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse au fusil, à l’arme à chargement par la bouche, à l’arbalète et à l’arc",
@@ -8418,7 +8418,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-5a172ea5d7",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-5a172ea5d7",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu (carabine, fusil, arme à chargement par la bouche), à l’arbalète et à l’arc",
@@ -8467,7 +8467,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-6445c3441d",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-6445c3441d",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse au fusil, à l’arme à chargement par la bouche, à l’arbalète et à l’arc",
@@ -8516,7 +8516,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-709f270c90",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-709f270c90",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -8561,7 +8561,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-73cd9090e8",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-73cd9090e8",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu (carabine, fusil, arme à chargement par la bouche), à l’arbalète et à l’arc",
@@ -8604,7 +8604,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-752fef6795",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-752fef6795",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse au fusil, à l’arme à chargement par la bouche, à l’arbalète et à l’arc",
@@ -8657,7 +8657,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-82a73912f5",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-82a73912f5",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu (carabine, fusil, arme à chargement par la bouche), à l’arbalète et à l’arc",
@@ -8730,7 +8730,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-841c856b4a",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-841c856b4a",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse au fusil, à l’arme à chargement par la bouche, à l’arbalète et à l’arc",
@@ -8771,7 +8771,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-85611a3789",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-85611a3789",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -8812,7 +8812,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-944efb694b",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-944efb694b",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -8869,7 +8869,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-947edee45a",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-947edee45a",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -8907,7 +8907,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2026-ef485fc019",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2026-ef485fc019",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse réservée à la relève",
@@ -8953,7 +8953,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-0379a89f52",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-0379a89f52",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse réservée à la relève",
@@ -9037,7 +9037,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-061c6895df",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-061c6895df",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu (carabine, fusil, arme à chargement par la bouche), à l’arbalète et à l’arc",
@@ -9085,7 +9085,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-112a8e889a",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-112a8e889a",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -9124,7 +9124,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-1d2da19e6c",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-1d2da19e6c",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse réservée à la relève",
@@ -9168,7 +9168,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-235951b7c1",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-235951b7c1",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse réservée à la relève",
@@ -9221,7 +9221,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-236a9eb753",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-236a9eb753",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -9272,7 +9272,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-29d794c238",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-29d794c238",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse au fusil, à l’arme à chargement par la bouche, à l’arbalète et à l’arc",
@@ -9325,7 +9325,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-3f378a5421",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-3f378a5421",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -9374,7 +9374,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-4195478a0c",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-4195478a0c",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse au fusil, à l’arme à chargement par la bouche, à l’arbalète et à l’arc",
@@ -9417,7 +9417,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-42aaea7276",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-42aaea7276",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu (carabine, fusil, arme à chargement par la bouche), à l’arbalète et à l’arc",
@@ -9468,7 +9468,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-5807d2d629",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-5807d2d629",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse au fusil, à l’arme à chargement par la bouche, à l’arbalète et à l’arc",
@@ -9515,7 +9515,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-5a172ea5d7",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-5a172ea5d7",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu (carabine, fusil, arme à chargement par la bouche), à l’arbalète et à l’arc",
@@ -9564,7 +9564,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-6445c3441d",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-6445c3441d",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse au fusil, à l’arme à chargement par la bouche, à l’arbalète et à l’arc",
@@ -9613,7 +9613,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-709f270c90",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-709f270c90",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -9658,7 +9658,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-73cd9090e8",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-73cd9090e8",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu (carabine, fusil, arme à chargement par la bouche), à l’arbalète et à l’arc",
@@ -9701,7 +9701,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-752fef6795",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-752fef6795",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse au fusil, à l’arme à chargement par la bouche, à l’arbalète et à l’arc",
@@ -9754,7 +9754,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-82a73912f5",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-82a73912f5",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse aux armes à feu (carabine, fusil, arme à chargement par la bouche), à l’arbalète et à l’arc",
@@ -9827,7 +9827,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-841c856b4a",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-841c856b4a",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse au fusil, à l’arme à chargement par la bouche, à l’arbalète et à l’arc",
@@ -9868,7 +9868,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-85611a3789",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-85611a3789",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -9909,7 +9909,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-944efb694b",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-944efb694b",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -9966,7 +9966,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-947edee45a",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-947edee45a",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse à l’arbalète et à l’arc",
@@ -10004,7 +10004,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-white-tailed-deer-2027-ef485fc019",
+      "id": "regulatory_rule:ca-qc-white-tailed-deer-2027-ef485fc019",
       "speciesId": "species:white-tailed-deer",
       "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
       "sourceSection": "Périodes de chasse réservée à la relève",
@@ -10050,7 +10050,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-wild-turkey-2026-30a1c19a3d",
+      "id": "regulatory_rule:ca-qc-wild-turkey-2026-30a1c19a3d",
       "speciesId": "species:wild-turkey",
       "sourceId": "source:ca-qc-dindon-sauvage-2026-2027",
       "sourceSection": "Fusil, arme à chargement par la bouche ou la culasse, arbalète et arc",
@@ -10116,7 +10116,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-wild-turkey-2026-abea1352f8",
+      "id": "regulatory_rule:ca-qc-wild-turkey-2026-abea1352f8",
       "speciesId": "species:wild-turkey",
       "sourceId": "source:ca-qc-dindon-sauvage-2026-2027",
       "sourceSection": "Fusil, arme à chargement par la bouche ou la culasse, arbalète et arc",
@@ -10175,7 +10175,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-wild-turkey-2026-da81a41c7c",
+      "id": "regulatory_rule:ca-qc-wild-turkey-2026-da81a41c7c",
       "speciesId": "species:wild-turkey",
       "sourceId": "source:ca-qc-dindon-sauvage-2026-2027",
       "sourceSection": "Fusil, arme à chargement par la bouche ou la culasse, arbalète et arc",
@@ -10219,7 +10219,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-wild-turkey-2027-30a1c19a3d",
+      "id": "regulatory_rule:ca-qc-wild-turkey-2027-30a1c19a3d",
       "speciesId": "species:wild-turkey",
       "sourceId": "source:ca-qc-dindon-sauvage-2026-2027",
       "sourceSection": "Fusil, arme à chargement par la bouche ou la culasse, arbalète et arc",
@@ -10285,7 +10285,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-wild-turkey-2027-abea1352f8",
+      "id": "regulatory_rule:ca-qc-wild-turkey-2027-abea1352f8",
       "speciesId": "species:wild-turkey",
       "sourceId": "source:ca-qc-dindon-sauvage-2026-2027",
       "sourceSection": "Fusil, arme à chargement par la bouche ou la culasse, arbalète et arc",
@@ -10344,7 +10344,7 @@
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "rule:ca-qc-wild-turkey-2027-da81a41c7c",
+      "id": "regulatory_rule:ca-qc-wild-turkey-2027-da81a41c7c",
       "speciesId": "species:wild-turkey",
       "sourceId": "source:ca-qc-dindon-sauvage-2026-2027",
       "sourceSection": "Fusil, arme à chargement par la bouche ou la culasse, arbalète et arc",

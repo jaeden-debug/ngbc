@@ -499,7 +499,7 @@ function buildPage(entry, designations, context) {
             /* Identity is what the row IS — its page, section, zones, implement
                and class — never its dates, so a moved date reads as a changed
                rule rather than one removed and another added. */
-            const id = `rule:ca-qc-${slug(speciesId.slice("species:".length))}-${column.label}-${shortHash(page, heading, label, implementLabel ?? "", classLabel ?? "", partition, speciesId)}`;
+            const id = `regulatory_rule:ca-qc-${slug(speciesId.slice("species:".length))}-${column.label}-${shortHash(page, heading, label, implementLabel ?? "", classLabel ?? "", partition, speciesId)}`;
             rules.push({
               id,
               speciesId,
@@ -698,7 +698,7 @@ function attachStatements(built, designations, publishedNumbers) {
     }
     for (const year of ["2026", "2027"]) {
       built.rules.push({
-        id: `rule:ca-qc-moose-${year}-zone-17-chasse-sportive-interdite`,
+        id: `regulatory_rule:ca-qc-moose-${year}-zone-17-chasse-sportive-interdite`,
         speciesId: "species:moose",
         sourceId: zone17.sourceId,
         sourceSection: zone17.sourceSection,

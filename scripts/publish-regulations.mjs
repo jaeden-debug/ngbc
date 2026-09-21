@@ -92,12 +92,22 @@ export const REPRESENTABLE_DIMENSIONS = new Set([
 /**
  * The period a rule is in force.
  *
- * A bundle that states its certified period (Manitoba: from the consolidation's
- * in-force date to the end of the licence year) is the authority on it. Older
- * bundles carry a calendar source year instead. A rule with neither is refused:
- * writing "undefined-01-01" is not a date.
+ * A rule that states its own period is the authority on it: Québec publishes one
+ * page for two seasons and a row can differ between them ("2026 Orignal avec
+ * bois / 2027 Orignal"), so each year is its own rule, in force for its own
+ * year, and must not be stored as in force for both. Otherwise a bundle that
+ * states its certified period (Manitoba: from the consolidation's in-force date
+ * to the end of the licence year) is the authority. Older bundles carry a
+ * calendar source year instead. A rule with none of these is refused: writing
+ * "undefined-01-01" is not a date.
  */
 export function effectivePeriod(bundle, rule) {
+  if (rule.effectiveFrom) {
+    if (rule.effectiveTo && rule.effectiveTo < rule.effectiveFrom) {
+      throw new Error(`Rule ${rule.id} ends (${rule.effectiveTo}) before it begins (${rule.effectiveFrom})`);
+    }
+    return { from: rule.effectiveFrom, to: rule.effectiveTo ?? null };
+  }
   if (bundle.certifiedPeriod?.from) return { from: bundle.certifiedPeriod.from, to: bundle.certifiedPeriod.to ?? null };
   if (!rule.sourceYear) throw new Error(`Rule ${rule.id} states no source year and its bundle no certified period`);
   return { from: `${rule.sourceYear}-01-01`, to: null };
