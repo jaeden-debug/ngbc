@@ -261,7 +261,10 @@ Other important intents include:
 
 > What should I wear/pack for this hunt?
 
-The interface through which this is asked and answered is specified in section 41A.
+> What do I need before I can go?
+
+The interface through which this is asked and answered, including the Ready to
+Hunt checklist, is specified in section 41A.
 
 ---
 
@@ -1652,9 +1655,11 @@ Two locations exist on the map and must never be confused:
 
 A map point becomes the hunt location only through preview and confirmation: a long
 press, a right-click or the "choose a spot" control previews it, and "Check this
-location" confirms it. A plain tap on the map never selects a hunting location. A
-future "vendor near me" search reads the device location as its own input and
-cannot overwrite either of these. The interaction state is one explicit machine
+location" confirms it. A plain tap on the map never selects a hunting location.
+
+A third location, the **vendor-search location**, exists only inside Ready to Hunt
+(below). It is its own type, is never converted into a hunt location, and can
+never change the zone, the regulatory answer, the weather or the Hunt Brief. The interaction state is one explicit machine
 (`src/lib/hunt/exploration/map-state.ts`), not accumulated booleans.
 
 ## Location is entered as a place, never as coordinates
@@ -1688,6 +1693,50 @@ forward. A hunt date is a calendar day and is never routed through a timestamp.
 
 The text field and the calendar are two controls over one selected day. They hold
 no separate state and cannot disagree.
+
+## Ready to Hunt
+
+*Decided 2026-09-21.*
+
+A permitted hunt (status CONDITIONAL) also answers **"What are the bare essentials
+I need before I can go?"** It is a checklist, not a gear list:
+
+- the licences, tags, permits, validations and cards required, with prerequisites;
+- whether hunter orange is required here today, with the law's actual minimum;
+- the legal methods, and legal ammunition restrictions;
+- current official fees, where verified;
+- where to obtain each item: online, by phone, in person, by draw, through a
+  licensed operator or a federal program.
+
+**Law and advice never blend.** REQUIRED and ALLOWED lines are the law, decided by
+the regulatory engine and each carrying its source. RECOMMENDED lines are North
+Ground's practical advice, labelled as such, offered only where defensible, checked
+against the legal restriction, and never able to change a legal status. Status is
+always a word, never only a colour.
+
+**Authorizations are modelled generally** — hunting licence, species licence, tag,
+permit, validation, stamp, draw authorization, hunt code, limited entry, federal
+permit or stamp, conservation requirement — keeping the authority's own name for
+each. Federal and state/provincial requirements compose in one list. North Ground
+never infers that a hunter holds anything.
+
+**Fees are never guessed.** A fee appears only when it is from the licence year in
+force and the hunter's category is known; resident and non-resident figures are
+never mixed. Where the category matters and is unknown, the hunter is asked once,
+through the same answer the regulation reads — never a second questionnaire.
+Otherwise the line says "Check current official fee" and links the authority.
+
+**Vendors come only from an authority's own dataset.** A business on a map has not
+thereby been shown to issue a licence. "Find a licence vendor near me" asks for the
+device position only when pressed, says that it is used only to find vendors and
+won't change the hunting location, computes distances on the device, and never
+persists, transmits, logs or shares that position. A refused permission offers
+"Search another location" (town, address or postal code), which is also always
+available.
+
+A jurisdiction without a checklist says so and links the authority rather than
+showing an empty list. The Hunt Brief carries a compact checklist (licences,
+orange, legal methods) and never a vendor, purchase link or any location.
 
 ## Glass design system
 
