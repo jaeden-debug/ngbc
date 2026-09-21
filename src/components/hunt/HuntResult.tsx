@@ -5,7 +5,7 @@ import { useId, useMemo, useRef, useState } from "react";
 import ShareHuntButton from "../hunt-share/ShareHuntButton";
 import { huntEvaluationToShareInput } from "../../lib/hunt-share/from-hunt-evaluation";
 import { speciesById } from "../../lib/hunt/coverage";
-import { readableIso } from "../../lib/hunt/date";
+import { readableCalendarDay, readableIso } from "../../lib/hunt/date";
 import type { HuntEvaluation } from "../../lib/hunt/types";
 import styles from "./Hunt.module.css";
 
@@ -24,13 +24,6 @@ const STATUS_WORDING: Record<string, string> = {
   CONFLICT: "Sources conflict",
   NEEDS_VERIFICATION: "Needs verification",
 };
-
-function readableTimestamp(value?: string): string | null {
-  if (!value) return null;
-  const date = new Date(value);
-  if (Number.isNaN(date.valueOf())) return null;
-  return new Intl.DateTimeFormat("en-CA", { month: "short", day: "numeric", year: "numeric" }).format(date);
-}
 
 export default function HuntResult({
   result, placeLabel, assumptions = [],
@@ -225,7 +218,7 @@ export default function HuntResult({
             </div>
             <div className={styles.detailRow}>
               <dt>Record verified</dt>
-              <dd>{readableTimestamp(result.regulation.verifiedAt) ?? "Not stated"}</dd>
+              <dd>{readableCalendarDay(result.regulation.verifiedAt) ?? "Not stated"}</dd>
             </div>
           </dl>
           <p className={styles.contextDisclaimer}>{result.zone.message}</p>
@@ -326,7 +319,7 @@ export default function HuntResult({
               {result.sources.map((source) => {
                 // `retrievedAt` is when North Ground last read the source. It is a
                 // retrieval date, not a claim the rule was re-verified that day.
-                const retrieved = readableTimestamp(source.retrievedAt);
+                const retrieved = readableCalendarDay(source.retrievedAt);
                 return (
                   <li className={styles.sourceItem} key={source.id}>
                     <a className={styles.sourceLink} href={source.url} target="_blank" rel="noreferrer">

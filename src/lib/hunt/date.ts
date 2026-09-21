@@ -192,6 +192,30 @@ export function readableIso(iso: string): string {
   }).format(new Date(Date.UTC(parts.year, parts.month - 1, parts.day)));
 }
 
+/**
+ * A provenance date, rendered identically wherever it is rendered.
+ *
+ * `new Date("2026-09-20")` is midnight UTC, so formatting it without a time zone
+ * shows 19 September to everyone west of Greenwich. That is the defect this
+ * module's header warns about, and it was live on the Hunt result: "Record
+ * verified" and each source's retrieved date read a day early for every North
+ * American user, and disagreed between the server and the browser.
+ *
+ * Accepts a calendar day or a full instant. Both are read in UTC, because both
+ * are statements about when North Ground read a source, not about the viewer.
+ */
+export function readableCalendarDay(value?: string): string | null {
+  if (!value) return null;
+  const parts = isoParts(value.slice(0, 10));
+  const date = parts
+    ? new Date(Date.UTC(parts.year, parts.month - 1, parts.day))
+    : new Date(value);
+  if (Number.isNaN(date.valueOf())) return null;
+  return new Intl.DateTimeFormat("en-CA", {
+    month: "short", day: "numeric", year: "numeric", timeZone: "UTC",
+  }).format(date);
+}
+
 export function compareIso(a: string, b: string): number {
   return a < b ? -1 : a > b ? 1 : 0;
 }

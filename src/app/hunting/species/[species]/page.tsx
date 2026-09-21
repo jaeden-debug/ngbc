@@ -25,6 +25,18 @@ async function getSpeciesResource(slug: string): Promise<SpeciesResource | null>
   return resource?.type === "species" && resource.status === "published" ? resource : null;
 }
 
+/**
+ * Only the species that were published at build time exist.
+ *
+ * Without this an unknown slug fell through to on-demand rendering, reached
+ * `notFound()` after the response had begun streaming, and served a 404 whose
+ * body existed only inside the RSC payload: an empty page to anyone without
+ * JavaScript and to anyone on a slow connection until it arrived. Declaring the
+ * set closed makes an unknown slug a route miss, which Next renders in full on
+ * the server. It is also simply true — `generateStaticParams` is the list.
+ */
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const resources = await contentRepository.getPublishedResources({ locale: "en-CA" });
   return resources.filter((resource) => resource.type === "species").map((resource) => ({ species: resource.slug }));

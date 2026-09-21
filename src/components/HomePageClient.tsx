@@ -5,6 +5,7 @@ import styles from "../app/page.module.css";
 import Hero from "./Hero";
 import MissionDeck from "./MissionDeck";
 import NewsletterForm from "./NewsletterForm";
+import { siteYear } from "../lib/site";
 
 export default function HomePageClient() {
   const [deckOpen, setDeckOpen] = useState(false);
@@ -50,7 +51,7 @@ export default function HomePageClient() {
           <NewsletterForm />
 
           <div className={styles.footerMeta}>
-            <span>© {new Date().getFullYear()} North Ground Bushcraft</span>
+            <span>© {siteYear()} North Ground Bushcraft</span>
             <span className={styles.dot}>•</span>
             <a href="mailto:contact@northgroundbushcraft.com" className={styles.footerLink}>
               Email

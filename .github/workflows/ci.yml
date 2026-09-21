@@ -70,6 +70,47 @@ jobs:
       - name: Date, season and weather behaviour under five time zones
         run: npm run test:timezones
 
+  hydration:
+    name: Server and browser agree on every page
+    runs-on: ubuntu-latest
+    # The server runs in UTC, as it does on Vercel. The browsers do not.
+    env:
+      TZ: UTC
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Build
+        run: npm run build
+      # A mismatch between what the server sends and what the browser builds is
+      # invisible on screen and only ever reported to a console nobody watches.
+      # When /hunt mismatched, crawlers were served tomorrow's hunt date for four
+      # hours every evening. The check runs browsers in Toronto, Kiritimati and
+      # Pago Pago: between them some browser disagrees with the UTC server about
+      # the date at every hour, so it catches that class whenever CI happens to
+      # run. It also asserts that 404 pages have their body in the server HTML,
+      # which an unknown species page did not.
+      - name: Start the production server
+        run: |
+          npx next start -p 3210 > server.log 2>&1 &
+          for i in $(seq 1 60); do
+            curl -sf http://127.0.0.1:3210/ > /dev/null && exit 0
+            sleep 1
+          done
+          echo "::error::The production server did not start."
+          cat server.log
+          exit 1
+      - name: Check hydration and server-rendered content
+        run: node scripts/check-hydration.mjs http://127.0.0.1:3210
+      - name: Server log on failure
+        if: failure()
+        run: cat server.log
+
   regulatory-bundles-are-generated:
     name: Regulatory bundles match their builders
     runs-on: ubuntu-latest

@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { HUNT_DEFAULT_TIME_ZONE, jurisdictionTodayIso, todayIso } from "./date.ts";
+import { HUNT_DEFAULT_TIME_ZONE, jurisdictionTodayIso, readableCalendarDay, todayIso } from "./date.ts";
+import { siteYear } from "../site.ts";
 
 /**
  * The date the server renders and the date the browser renders must be the same.
@@ -68,4 +69,36 @@ test("every hour of the evening gap resolves to Ontario's day, not UTC's", () =>
   }
   // And the hour the window closes.
   assert.equal(jurisdictionTodayIso(HUNT_DEFAULT_TIME_ZONE, new Date(Date.UTC(2026, 8, 21, 4, 30))), "2026-09-21");
+});
+
+/* ── Anything rendered on both sides must render the same on both sides ───── */
+
+test("a provenance date reads the same in every time zone", () => {
+  // `new Date("2026-09-20")` is midnight UTC, so an unpinned formatter shows the
+  // 19th to everyone west of Greenwich. This was live on the Hunt result: the
+  // "Record verified" line and every source's retrieved date read a day early
+  // for every North American user, and disagreed with the server's HTML.
+  assert.equal(readableCalendarDay("2026-09-20"), "Sep 20, 2026");
+});
+
+test("it reads a full instant in UTC too, rather than the viewer's clock", () => {
+  // These values say when North Ground read a source. They are not statements
+  // about where the reader is standing.
+  assert.equal(readableCalendarDay("2026-09-20T23:30:00Z"), "Sep 20, 2026");
+  assert.equal(readableCalendarDay("2026-09-20T00:30:00Z"), "Sep 20, 2026");
+});
+
+test("it refuses a value it cannot read instead of inventing one", () => {
+  assert.equal(readableCalendarDay(undefined), null);
+  assert.equal(readableCalendarDay(""), null);
+  assert.equal(readableCalendarDay("not a date"), null);
+});
+
+test("the published year is the jurisdiction's, not the server's", () => {
+  // 03:30 UTC on 1 January is still 31 December in Ontario, and the footer had
+  // the server and the browser disagreeing about the copyright year for those
+  // hours every year.
+  const newYearEve = new Date("2027-01-01T03:30:00Z");
+  assert.equal(siteYear(newYearEve), "2026");
+  assert.equal(siteYear(new Date("2027-01-01T05:30:00Z")), "2027");
 });
