@@ -31,15 +31,29 @@ function loadEnv() {
   const url = process.env.SUPABASE_URL?.trim();
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
   if (!url || !key) {
-    console.error("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required (server-only).");
-    process.exit(1);
+    throw new Error("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required (server-only).");
   }
   return { url: url.replace(/\/$/, ""), key };
 }
 
-const { url: SUPABASE_URL, key: SERVICE_KEY } = loadEnv();
+/**
+ * Credentials are resolved on first use, not on import.
+ *
+ * `REPRESENTABLE_DIMENSIONS` and `supersedeQuery` are imported by tests that
+ * touch no network and need no secret. Reading the environment at module scope
+ * made those tests demand a production service-role key, which meant they could
+ * only ever run on a machine that already had one — so they did not run in CI at
+ * all, which is where they are worth the most. Publishing still fails loudly
+ * without credentials; it just fails when it tries to publish.
+ */
+let credentials;
+function supabase() {
+  credentials ??= loadEnv();
+  return credentials;
+}
 
 async function rest(path, { method = "GET", body, prefer } = {}) {
+  const { url: SUPABASE_URL, key: SERVICE_KEY } = supabase();
   const response = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
     method,
     headers: {

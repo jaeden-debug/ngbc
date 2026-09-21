@@ -181,9 +181,9 @@ VERIFIED / PARTIAL / IN DEVELOPMENT / UNAVAILABLE
 
 Do not mark VERIFIED until actual data and representative queries have been certified.
 
-- Research inventory: PARTIAL for federal plus all 13 provinces/territories. Principal authorities, official terminology and regulatory-source leads are recorded; no jurisdiction is certified `VERIFIED` for production.
+- Research inventory: PARTIAL for federal plus all 13 provinces/territories. Principal authorities, official terminology and regulatory-source leads are recorded; no jurisdiction is certified `VERIFIED` for production. Deep source reconnaissance is complete for the 11 jurisdictions outside the Ontario and Québec workstreams in `research/hunting/canada-source-reconnaissance.json`; this remains research-only and does not change coverage.
 - Canadian species evidence: 102 source-linked rows across all 14 jurisdiction records, with deeper big-game, upland-bird, ptarmigan, hare, and small-game leads. These remain research inputs rather than certified rules.
-- GIS: every North American jurisdiction now has an explicit availability classification; 16 are official-interactive-map-only, one is official-PDF-map, 48 need research, and D.C. has no source found. No machine-readable layer has passed the full endpoint/schema/version/licence gate.
+- GIS: every North American jurisdiction has an explicit availability classification. The Canada deep pass verified machine-readable official management geometry for BC (225 MUs), Alberta (199 WMUs), Saskatchewan (83 WMZs), Manitoba (63 service features/62 named GHAs), New Brunswick (27 WMZs), Nova Scotia (separate deer and moose layers) and Yukon (445 service features versus 443 stated GMS). These are source candidates, not production-certified geometry: Saskatchewan and Nova Scotia have unresolved reuse terms, Yukon has a count discrepancy, and most authorities describe the geometry as indicative or generalized. PEI has no comprehensive hunt-zone system identified; NL, NWT and Nunavut remain map/geometry blocked.
 - Ontario geographic coverage is COMPLETE as of 2026-09-20: all 151 official Wildlife Management Units are normalized in Supabase/PostGIS, ingested from the province's own feature layer. 1,298,941 vertices, every geometry valid, every one EPSG:4326 MultiPolygon, 1,078,174 km2 in total against Ontario's actual area of roughly 1,076,000 km2. Sub-unit designations are preserved exactly as the authority writes them (69A-1 stays 69A-1).
 - Spatial parity with the authority is CERTIFIED: 309 points — one inside every unit, one just inside every unit's boundary, five outside the province, two impossible coordinates — resolve identically in North Ground's PostGIS registry and in the Government of Ontario service, with zero disagreements. `scripts/certify-ontario-spatial-parity.mjs` performs the live comparison; `src/lib/hunt/spatial-parity.test.ts` replays the recorded result and never touches the network.
 - `SPATIAL_PROVIDER` is now `supabase` with `official-gis` as the fallback, in local and in Vercel Production and Preview. The condition recorded for this switch — demonstrated parity — is met, and PostGIS measured steadier than the live service (median 170 ms versus 207 ms, p90 215 ms versus 1,460 ms). Production resolves WMU 3, 15B, 36, 57, 61, 80 and 94A through PostGIS.
@@ -375,6 +375,7 @@ Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport a
 - `npm run build` passed on 2026-09-20 (Next.js 16.1.1). The species library is static and all 60 species pages are statically generated; Hunt, its evaluation/share APIs, shared Hunt Brief page and per-brief Open Graph image are dynamic; home, 404, site Open Graph image, robots, and sitemap are generated successfully.
 
 ### Tests
+- CI's first run failed, which is the point of having it: `persistence.test.ts` needed Supabase credentials. It touches no network — importing `publish-regulations.mjs` read the environment at module scope and exited, so a pure test of which rule dimensions the schema can represent could only run on a machine that already had a production service-role key, and therefore never ran in CI. Credentials resolve on first use now; publishing still refuses loudly without them (exit 1). The full suite is verified to pass with no environment file present, so no gate depends on a secret and every gate runs on a fork's pull request.
 - CI exists as of 2026-09-21 (`.github/workflows/ci.yml`). It had not before, which is how a defect that only appears under a UTC server reached production. Three jobs on every push and pull request to main, all under `TZ=UTC` and needing no secrets: **gates** (typecheck, lint, all 320 tests, build, content-contract validation); **timezones**, which runs the clock-reading suites under UTC, Toronto, Vancouver, Sydney and Kiritimati, because a developer's machine shares its zone with its browser and hides the whole class; and **regulatory-bundles-are-generated**, which rebuilds from the official pages and fails if a committed bundle is not exactly what its builder produces — a bundle edited by hand would pass every test and still be wrong against its own source. That job warns rather than fails when the province is unreachable, since an outage there is not a defect here.
 - The timezone guard was verified by reintroducing the defect: it fails 4 of 5 assertions under UTC and only 1 under Toronto, which is the point — the bug is invisible in the developer's own zone.
 - `.github/workflows/regulatory-sources.yml` runs the source check daily at 11:00 UTC and opens (or comments on) a single `regulatory-source` issue when a page moves or cannot be read. It never publishes; promoting a change stays a human decision made against the rule-level diff. This is the answer to "a source silently failing for six months is unacceptable".
@@ -449,9 +450,39 @@ Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport a
 
 ### Data
 - `python3 research/hunting/validate.py` passed on 2026-09-20 for 66 jurisdictions, 68 authorities, 96 regulatory/scientific sources, 27 GIS records, 133 species, 56 aliases, 156 evidence rows, 66 regulatory mappings, 15 identification risks, 25 range records, 66 source-coverage rows and 25 content opportunities (0 warnings or structural errors).
+- The research-scoped Canada candidate manifest now covers all 11 jurisdictions outside active Ontario/Québec ownership with 13 GIS candidates and 45 official regulation sources. `node scripts/validate-canada-source-reconnaissance.mjs` and its 4-test Node suite pass, enforcing exact jurisdiction coverage, unique jurisdiction/source/GIS IDs, authority, GIS/legal-standing/licence state, regulation state, readiness, blockers and future fixtures. Full findings and implementation order are in `docs/canada-source-reconnaissance.md`.
 - Research counts remain research-only. The only locally certified production-shaped exception is the explicit Ontario WMU 57 / ruffed grouse 2026 slice described above.
 
 ## Agent Handoff Notes
+
+### 2026-09-20 — Remaining Canada source runway
+
+Deep regulatory and GIS source reconnaissance is complete for BC, AB, SK, MB,
+NB, NS, PE, NL, YT, NT and NU. This is research-only: no production GIS,
+rules, migrations, UI or coverage state changed.
+
+- Ready to begin a reviewed ingestion implementation: Manitoba, Alberta,
+  British Columbia and Yukon. Yukon first needs the 445 service-feature versus
+  443 stated-GMS discrepancy reconciled.
+- Source review needed: New Brunswick's stable summary PDF is stale (2024–25),
+  and Prince Edward Island's apparent no-comprehensive-zone model needs legal
+  confirmation.
+- Licence blocked: Saskatchewan's ArcGIS item says “Not for resale” despite a
+  permissive government licence; Nova Scotia's useful deer/moose service has no
+  item-specific licence.
+- GIS blocked: Newfoundland and Labrador and the Northwest Territories expose
+  official reference artifacts but no complete reusable vector system was
+  found. Nunavut has geometry, commercial-reuse and authority-model blockers.
+- Architecture finding: Nova Scotia, Newfoundland and Labrador, the Northwest
+  Territories and Nunavut cannot be represented as one universal zone layer.
+  Nunavut additionally needs TAH, allocation, assignment and authority-chain
+  semantics; NWT's mobile Bathurst zone needs effective-dated geometry history.
+
+Use `docs/canada-source-reconnaissance.md` for the implementation handoff and
+`research/hunting/canada-source-reconnaissance.json` for exact endpoints,
+fields, licence classifications, source hierarchy, change detection and future
+fixtures. Do not promote a candidate to the production registry without the
+normal endpoint/schema/version/licence and representative-query certification.
 
 ### 2026-09-20 — Canada rollout: where this stops and what is next
 **Last completed jurisdiction:** Ontario, now complete end to end — 151 units

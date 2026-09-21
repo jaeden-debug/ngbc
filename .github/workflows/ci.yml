@@ -9,10 +9,18 @@ on:
   pull_request:
     branches: [main]
 
-# No secrets are needed and none are granted. The build renders from committed
-# content and the tests use deterministic fixtures; nothing here reaches
-# Supabase, Google or a government source. The one job that does talk to
-# government sources is scheduled separately.
+# No secrets are needed and none are granted, which is verified rather than
+# assumed: the full suite runs with no environment file present. The build
+# renders from committed content and every test uses deterministic fixtures.
+#
+# That was not true when this file was first written — importing the publisher
+# read Supabase credentials at module scope, so a pure test of which rule
+# dimensions the schema can represent demanded a production service-role key and
+# therefore could not run here at all. Credentials are resolved on first use
+# now. A gate that needs a production secret is a gate that does not run on a
+# fork's pull request, which is where it is worth the most.
+#
+# The one job that talks to government sources is scheduled separately.
 permissions:
   contents: read
 
