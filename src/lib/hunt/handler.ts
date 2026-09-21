@@ -1,6 +1,7 @@
 import type { RateLimiter } from "../newsletter/rate-limit.ts";
 import { getClientAddress } from "../newsletter/rate-limit.ts";
-import { isSupportedSpecies, isWithinSupportedBounds } from "./coverage.ts";
+import { isWithinSupportedBounds } from "./coverage.ts";
+import { isCertifiedSpecies } from "./regulatory/registry.ts";
 import type { HuntEvaluation, HuntInput } from "./types.ts";
 
 const MAX_BODY_BYTES = 2_048;
@@ -73,7 +74,8 @@ function validInput(body: unknown): body is HuntInput {
     // Declared once in coverage.ts and shared with the browser composer, so the
     // interface and this endpoint cannot disagree about what is in scope.
     isWithinSupportedBounds(input.latitude, input.longitude) &&
-    validDate(input.date) && isSupportedSpecies(input.speciesId) &&
+    // Any species a served jurisdiction certifies, derived from the registry.
+    validDate(input.date) && isCertifiedSpecies(input.speciesId) &&
     validAnswers((body as { answers?: unknown }).answers)
   );
 }

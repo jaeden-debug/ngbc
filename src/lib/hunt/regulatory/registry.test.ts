@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { ZONE_LAYERS } from "../zone-layers.ts";
-import { REGULATORY_REGISTRY, regulatoryEntryFor } from "./registry.ts";
+import { isCertifiedSpecies, REGULATORY_REGISTRY, regulatoryEntryFor } from "./registry.ts";
 
 /**
  * The registry's two invariants, held here so neither can drift.
@@ -33,4 +33,22 @@ test("an entry answers only where its layer is served", () => {
 test("each jurisdiction appears once", () => {
   const ids = REGULATORY_REGISTRY.map((entry) => entry.jurisdictionId);
   assert.equal(new Set(ids).size, ids.length);
+});
+
+test("an evaluation accepts exactly the species some served jurisdiction certifies", () => {
+  const served = REGULATORY_REGISTRY.filter((entry) => regulatoryEntryFor(entry.jurisdictionId));
+  const certified = new Set(served.flatMap((entry) => entry.coverage().species.map((row) => row.speciesId)));
+  assert.ok(certified.size > 0);
+  for (const speciesId of certified) assert.equal(isCertifiedSpecies(speciesId), true, speciesId);
+
+  // Certified only by a jurisdiction that is not served: refused until it is.
+  const unserved = REGULATORY_REGISTRY.filter((entry) => !regulatoryEntryFor(entry.jurisdictionId));
+  for (const entry of unserved) {
+    for (const row of entry.coverage().species) {
+      if (!certified.has(row.speciesId)) assert.equal(isCertifiedSpecies(row.speciesId), false, row.speciesId);
+    }
+  }
+  // Published in the species library with no certified rules anywhere, and not a species at all.
+  assert.equal(isCertifiedSpecies("species:gray-wolf"), false);
+  assert.equal(isCertifiedSpecies(42), false);
 });

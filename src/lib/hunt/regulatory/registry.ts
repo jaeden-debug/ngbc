@@ -320,3 +320,22 @@ export function regulatoryEntryFor(jurisdictionId: string | undefined): Regulato
   if (!jurisdictionId || layerForJurisdiction(jurisdictionId)?.serving !== true) return undefined;
   return REGULATORY_REGISTRY.find((entry) => entry.jurisdictionId === jurisdictionId);
 }
+
+let certifiedSpecies: ReadonlySet<string> | undefined;
+
+/**
+ * Whether some served jurisdiction holds certified rules for this species.
+ *
+ * Derived from the registry, never listed. The browser's selector already reads
+ * coverage per jurisdiction from the same entries; an evaluation request is
+ * validated against the same thing, so a species Québec certifies is accepted
+ * the moment Québec is served, and a species no served jurisdiction certifies is
+ * refused. The set is fixed for the life of the process (bundles and serving
+ * flags are build-time facts), so it is computed once.
+ */
+export function isCertifiedSpecies(value: unknown): value is CanonicalId<"species"> {
+  certifiedSpecies ??= new Set(REGULATORY_REGISTRY
+    .filter((entry) => regulatoryEntryFor(entry.jurisdictionId))
+    .flatMap((entry) => entry.coverage().species.map((row) => row.speciesId)));
+  return typeof value === "string" && certifiedSpecies.has(value);
+}
