@@ -234,3 +234,36 @@ test("native share and copy-link fallbacks report outcomes", async () => {
   assert.equal(copied, "https://example.com/brief");
   assert.equal(await copyHuntBriefLink({}, "https://example.com/brief"), "failed");
 });
+
+test("a brief's warnings are bounded, and anything beyond the bound is said, not dropped", async () => {
+  const { HUNT_BRIEF_MAX_WARNINGS, createShareableHuntBrief: create } = await import("./model.ts");
+  const make = (count: number) => huntEvaluationToShareInput({
+    completeness: "RESOLVED",
+    dimensions: [],
+    input: { latitude: 45.23, longitude: -77.94, date: "2026-10-24", speciesId: "species:ruffed-grouse" },
+    species: { id: "species:ruffed-grouse", name: "Ruffed grouse", canonicalPath: "/hunting/species/ruffed-grouse" },
+    zone: { status: "RESOLVED", zoneId: "management_zone:ca-on-wmu-57", officialName: "Wildlife Management Unit 57", sourceId: "source:ca-on-wmu-service", message: "Resolved." },
+    regulation: {
+      status: "CONDITIONAL",
+      summary: "Conditions apply.",
+      legalTime: { status: "RULE_ONLY", text: "Verified rule summary." },
+      requirements: Array.from({ length: count }, (_, index) => `Requirement ${index + 1}.`),
+      limitations: [],
+      sourceIds: ["source:ca-on-small-game-2026"],
+      verifiedAt: "2026-09-20",
+    },
+    weather: { status: "UNAVAILABLE", summary: "Forecast unavailable.", date: "2026-10-24", sourceId: "source:open-meteo" },
+    knowledge: { contractVersion: "1.0", resolvedLocale: "en-CA", fallbackUsed: false, context: { locale: "en-CA", activityId: "activity:hunting" }, blocks: [], warnings: [], revision: "2026-09-20T12:00:00Z" },
+    sources: [],
+    evaluatedAt: "2026-09-20T12:00:00Z",
+  }, { jurisdiction: { id: "jurisdiction:ca-on", displayName: "Ontario" } });
+  const exact = make(HUNT_BRIEF_MAX_WARNINGS).warnings!;
+  assert.equal(exact.length, HUNT_BRIEF_MAX_WARNINGS);
+  assert.ok(!exact.some((line) => /not shown in this brief/.test(line)));
+  const over = make(HUNT_BRIEF_MAX_WARNINGS + 5).warnings!;
+  assert.equal(over.length, HUNT_BRIEF_MAX_WARNINGS);
+  assert.equal(over.at(-1), "6 further conditions and limitations are not shown in this brief. Check the current Hunt result for all of them.");
+  // The schema still refuses more than the bound; the projection never sends it.
+  const input = make(HUNT_BRIEF_MAX_WARNINGS);
+  assert.throws(() => create({ ...input, warnings: [...input.warnings!, "one too many"] }, { shareId: "hb_boundedWarnings000001", createdAt: "2026-09-21T12:00:00Z" }), /too many/);
+});

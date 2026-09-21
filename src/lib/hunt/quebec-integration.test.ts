@@ -72,9 +72,22 @@ test("inside Parc national de Plaisance the zone's season is never stated as the
   assert.ok(outcome.regulation.limitations.includes(
     "Parc national de Plaisance: “« Territoires où toute activité de chasse est interdite. » (Parc national).”"));
   assert.ok(outcome.regulation.sourceIds.includes("source:ca-qc-chasse-interdite-service" as never));
-  // The zone's dates are what applies outside the park, never a "Season dates" answer inside it.
+  // The ministry closes the park to all hunting: no season, date, listing, bag
+  // limit or legal hours is stated for a point inside it, in any field.
   assert.equal(outcome.regulation.season, undefined);
-  assert.match(outcome.regulation.summary, /Outside it: .*Du 26 septembre/);
+  assert.equal(outcome.regulation.limits, undefined);
+  assert.deepEqual(outcome.regulation.requirements, []);
+  assert.equal(outcome.regulation.legalTime.status, "NOT_AVAILABLE");
+  assert.doesNotMatch(outcome.regulation.summary, /\d{4}|septembre|octobre|Seasons open/);
+  assert.match(outcome.regulation.summary, /all hunting is prohibited/);
+});
+
+test("inside the park on a date the zone is closed, CLOSED stays CLOSED and lists no season", async () => {
+  const outcome = await evaluate({ ...MOOSE_BOW, date: "2026-09-01" as HuntInput["date"] }, ministry([80]));
+  assert.equal(outcome.regulation.status, "CLOSED");
+  assert.match(outcome.regulation.summary, /inside Parc national de Plaisance/);
+  assert.doesNotMatch(outcome.regulation.summary, /\d{4}|septembre|octobre|Seasons open/);
+  assert.ok(outcome.regulation.limitations.some((line) => /toute activité de chasse est interdite/.test(line)));
 });
 
 test("a territory the catalogue does not hold still stops the season being stated", async () => {

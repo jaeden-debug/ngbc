@@ -438,6 +438,13 @@ function parseWeather(value: unknown): ShareHuntBrief["weatherSnapshot"] {
   throw new HuntBriefValidationError("weather.status is unsupported");
 }
 
+/**
+ * The most warnings a brief holds. A Québec answer inside several overlapping
+ * statements carries up to 14. A result with more never loses the rest
+ * silently: the projection keeps one line saying how many were left out.
+ */
+export const HUNT_BRIEF_MAX_WARNINGS = 16;
+
 export function createShareableHuntBrief(
   inputValue: HuntShareProjectionInput | unknown,
   context: { shareId: string; createdAt: string; version?: HuntBriefSchemaVersion },
@@ -486,7 +493,10 @@ export function createShareableHuntBrief(
         : undefined,
     regulatory: {
       status: status(regulatory.status),
-      summary: text(regulatory.summary, "regulatory.summary", 700),
+      /* Québec prints each licence year's seasons in the answer; the longest
+         real summary (both years listed) is 988 characters. Bounded, not cut:
+         a shortened summary would drop a season the law states. */
+      summary: text(regulatory.summary, "regulatory.summary", 1_200),
       verifiedAt: optionalTimestamp(regulatory.verifiedAt, "regulatory.verifiedAt"),
       sourceDataVersion: optionalText(regulatory.sourceDataVersion, "regulatory.sourceDataVersion", 120),
       season: season
@@ -510,7 +520,7 @@ export function createShareableHuntBrief(
        Manitoba's CWD sampling requirement alone is 320 characters; a cap below
        real legal text refuses the whole brief, and truncating it would change
        what it says. */
-    warnings: strings(input.warnings, "warnings", 8, 600),
+    warnings: strings(input.warnings, "warnings", HUNT_BRIEF_MAX_WARNINGS, 600),
     officialSources: parseSources(input.officialSources),
     resourceReferences: parseResources(input.resourceReferences),
     assumptions,

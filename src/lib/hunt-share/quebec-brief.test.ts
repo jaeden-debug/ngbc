@@ -99,3 +99,28 @@ test("the implement a hunter named is carried as their assumption, in the questi
   const { brief } = await share("10E", "species:moose", "2026-09-27", { HUNT_METHOD: "BOW" });
   assert.ok(brief.assumptions.some(({ answer }) => /bow/i.test(answer)));
 });
+
+test("a Québec moose brief names only Québec's authority, never the Ontario page behind a field note", async () => {
+  const { evaluation, brief } = await share("10E", "species:moose", "2026-09-27", { HUNT_METHOD: "BOW" });
+  // The field note may still cite it; the brief's authority list may not.
+  assert.ok(evaluation.sources.some(({ id }) => id === "source:ontario-moose-habitat"), "the premise holds");
+  assert.ok(brief.officialSources.length > 0);
+  for (const source of brief.officialSources) {
+    assert.doesNotMatch(source.id ?? "", /ontario/);
+    assert.doesNotMatch(source.authority, /Ontario/);
+  }
+});
+
+test("both licence years' seasons survive into the brief uncut", async () => {
+  const { evaluation, brief } = await share("01N", "species:white-tailed-deer", "2026-10-15", { HUNT_METHOD: "CROSSBOW" });
+  assert.ok(evaluation.regulation.summary.length > 700, "the premise: longer than the old limit");
+  assert.equal(brief.regulatory.summary, evaluation.regulation.summary);
+  assert.match(brief.regulatory.summary, /2027/);
+});
+
+test("a brief inside a territory closed to all hunting shares, and states no season", async () => {
+  const { brief } = await share("10E", "species:moose", "2026-09-27", { HUNT_METHOD: "BOW" }, [80]);
+  assert.equal(brief.regulatory.status, "NEEDS_VERIFICATION");
+  assert.equal(brief.regulatory.season, undefined);
+  assert.doesNotMatch(brief.regulatory.summary, /\d{4}|septembre|octobre/);
+});

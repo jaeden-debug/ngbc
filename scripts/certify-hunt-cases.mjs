@@ -75,6 +75,20 @@ for (const item of cases) {
   for (const phrase of expect.mentions ?? []) {
     if (!text.includes(phrase)) failures.push(`does not mention "${phrase}"`);
   }
+  for (const phrase of expect.absent ?? []) {
+    if (text.includes(phrase)) failures.push(`mentions "${phrase}", which must be absent`);
+  }
+  /* Inside a territory closed to all hunting nothing may read as a season. */
+  if (expect.noSeason && (regulation.season || regulation.limits || regulation.legalTime?.status === "RULE_ONLY")) {
+    failures.push("states a season, bag limit or legal hours");
+  }
+  /* The sources that decided the answer (the rules' and the boundary's) must
+     all be the jurisdiction's own; a field note's supporting page is not. */
+  if (expect.authorityPrefix) {
+    const decisive = new Set([...(regulation.sourceIds ?? []), result.zone?.sourceId].filter(Boolean));
+    const foreign = [...decisive].filter((id) => !id.startsWith(expect.authorityPrefix));
+    if (foreign.length) failures.push(`authority includes ${foreign.join(", ")}`);
+  }
   results.push({
     id: item.id, place: item.place, date: item.date, speciesId: item.speciesId,
     expected: expect, actual, summary: regulation.summary,

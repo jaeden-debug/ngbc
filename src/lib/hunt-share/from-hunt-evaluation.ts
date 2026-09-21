@@ -1,7 +1,8 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { HuntEvaluation } from "../hunt/types.ts";
 import { METHOD_LABELS, priceLine } from "../hunt/readiness/format.ts";
-import type { HuntBriefReadiness, HuntShareProjectionInput } from "./model.ts";
+import { partitionEvaluationSources } from "../hunt/source-roles.ts";
+import { HUNT_BRIEF_MAX_WARNINGS, type HuntBriefReadiness, type HuntShareProjectionInput } from "./model.ts";
 
 export interface HuntShareContext {
   jurisdiction: {
@@ -69,6 +70,19 @@ function shareableReadiness(evaluation: HuntEvaluation): HuntBriefReadiness | un
 }
 
 /**
+ * Every warning, in the engine's order (regulatory requirements and
+ * limitations before field notes). If there are more than a brief holds, the
+ * last kept line says how many were left out, so a reader is never told less
+ * than the answer said without knowing it.
+ */
+function boundedWarnings(warnings: string[]): string[] {
+  if (warnings.length <= HUNT_BRIEF_MAX_WARNINGS) return warnings;
+  const kept = warnings.slice(0, HUNT_BRIEF_MAX_WARNINGS - 1);
+  const omitted = warnings.length - kept.length;
+  return [...kept, `${omitted} further conditions and limitations are not shown in this brief. Check the current Hunt result for all of them.`];
+}
+
+/**
  * Projects the regulatory engine's result without re-evaluating or simplifying it.
  * Coordinates and map geometry are intentionally not copied.
  */
@@ -131,13 +145,16 @@ export function huntEvaluationToShareInput(
             status: evaluation.weather.status === "PROVIDER_ERROR" ? "provider_error" : "unavailable",
             reason: evaluation.weather.summary,
           },
-    warnings: [
+    warnings: boundedWarnings([
       ...zoneWarning,
       ...evaluation.regulation.requirements,
       ...evaluation.regulation.limitations,
       ...identificationWarnings,
-    ].slice(0, 8),
-    officialSources: evaluation.sources
+    ]),
+    /* Only the sources that decided the answer. A field note's supporting page
+       (an Ontario biology page behind a moose identification note) is not the
+       authority for a Québec answer and never appears as one. */
+    officialSources: partitionEvaluationSources(evaluation).authority
       .filter((source) => source.type === "official")
       .map((source) => ({
         id: source.id,

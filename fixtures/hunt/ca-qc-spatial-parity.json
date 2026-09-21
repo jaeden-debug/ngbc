@@ -4,7 +4,7 @@
   "authority": "Ministère des Forêts, de la Faune et des Parcs",
   "sourceUrl": "https://servicesvecto3.mern.gouv.qc.ca/geoserver/SmartFaunePub/ows",
   "certifiedOn": "2026-09-21",
-  "resolver": "resolve_zone_for_certification (before serving)",
+  "resolver": "resolve_management_zone",
   "samplesFrom": "ca-qc-parity-samples.json",
   "zones": 59,
   "counts": {
@@ -3722,6 +3722,9 @@
       "longitude": -75.6972,
       "official": [],
       "northGround": [],
+      "neighbours": [
+        "management_zone:ca-on-wmu-64b"
+      ],
       "agree": true
     },
     {
@@ -3731,6 +3734,9 @@
       "longitude": -79.7,
       "official": [],
       "northGround": [],
+      "neighbours": [
+        "management_zone:ca-on-wmu-28"
+      ],
       "agree": true
     },
     {

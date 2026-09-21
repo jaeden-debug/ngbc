@@ -207,6 +207,8 @@ interface ConditionalJurisdiction {
     layersDescribedAs: string;
     /** Which catalogued areas lie inside each zone, so a whole-zone answer can account for them. */
     zoneIndex?: OverlayZoneIndex;
+    /** Every catalogued layer is published as closed to all hunting, so no zone season is stated inside one. */
+    prohibitsAllHunting?: boolean;
   };
 }
 
@@ -277,6 +279,7 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
           overlays: overlays ? overlays.specialIds : scope === "ZONE" ? null : new Set<string>(),
         },
         restrictions,
+        restrictionsProhibitAllHunting: config.overlays?.prohibitsAllHunting === true,
       });
 
       if (evaluation.completeness === "NEEDS_INPUT" && evaluation.required) {
@@ -398,6 +401,7 @@ const QUEBEC = conditionalEntry({
     tokensFor: () => ["all"],
     describedAs: QUEBEC_OVERLAY_DESCRIPTION,
     layersDescribedAs: "layer of territories closed to all hunting",
+    prohibitsAllHunting: true,
   },
 });
 

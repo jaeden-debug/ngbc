@@ -170,6 +170,13 @@ export interface ConditionalInput {
    * North Ground has not certified means the season status cannot be stated.
    */
   restrictions?: Array<{ name: string; statedAs: string; sourceId: string }>;
+  /**
+   * True when every restriction supplied comes from a layer the authority
+   * publishes as closed to ALL hunting (Québec's « Territoires où toute
+   * activité de chasse est interdite »). The zone's seasons then say nothing
+   * about this point, so none of them — dates, listings, bag limits — is shown.
+   */
+  restrictionsProhibitAllHunting?: boolean;
 }
 
 export interface ConditionalEvaluation {
@@ -678,6 +685,40 @@ export function evaluateConditional(
       limitations: [...outcome.reasons, ...limitations],
       sourceIds,
     });
+  }
+
+  /* Inside a territory the authority closes to all hunting, the zone's seasons
+     are not what applies at the point, whatever their status. No dates, season
+     listing, bag limit or legal hours are stated there — any of them would read
+     as a season inside a park. A season the zone would have open becomes
+     NEEDS_VERIFICATION (the prohibition is quoted, not certified as CLOSED); a
+     zone answer that was already CLOSED or UNKNOWN keeps that status. */
+  if (input.restrictions?.length && input.restrictionsProhibitAllHunting) {
+    const names = input.restrictions.map((restriction) => restriction.name).join(" and ");
+    const where = `This point is inside ${names}, in ${vocabulary.jurisdictionName}'s published layer of territories where all hunting is prohibited (quoted below).`;
+    const status = result.status === "CLOSED" || result.status === "UNKNOWN" ? result.status : "NEEDS_VERIFICATION";
+    result = {
+      ...result,
+      status,
+      season: undefined,
+      limits: undefined,
+      legalTime: { status: "NOT_AVAILABLE", text: "Legal hunting hours are not stated for a point inside a territory closed to all hunting." },
+      summary: status === "UNKNOWN"
+        ? `${where} ${result.summary}`
+        : status === "CLOSED"
+          ? `${where} Separately, no ${species} season in ${unit} is open on this date for ${scope === "any licence" ? "any licence or equipment" : scope}.`
+          : `${where} North Ground has not certified how that prohibition applies to this hunt, so it states no season status, season dates or bag limit for this point. ${unit}'s seasons apply only outside it.`,
+      requirements: [],
+      /* The prohibition, then only what holds anywhere in the jurisdiction. A
+         rule's own notes ("this season allows …") describe a season and are
+         not carried inside a territory where none applies. */
+      limitations: [
+        ...input.restrictions.map((restriction) => `${restriction.name}: “${restriction.statedAs}”`),
+        ...vocabulary.standingLimitations,
+      ],
+      sourceIds: [...new Set([...result.sourceIds, ...input.restrictions.map((restriction) => restriction.sourceId as CanonicalId<"source">)])],
+    };
+    return { completeness: "RESOLVED", dimensions, result };
   }
 
   /* Overlapping published restrictions North Ground has not certified. The

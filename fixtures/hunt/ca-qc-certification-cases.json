@@ -30,7 +30,8 @@
       "expect": {
         "gha": "10O",
         "completeness": "NEEDS_INPUT",
-        "required": "HUNT_METHOD"
+        "required": "HUNT_METHOD",
+        "authorityPrefix": "source:ca-qc"
       },
       "law": "Moose page, « Périodes de chasse à l’arbalète et à l’arc »: « 1, 2, 10 ouest, 11 ouest, 15 » Du 26 septembre au 4 octobre 2026; firearms table: « 10 ouest, 11 ouest, 15 » Du 10 octobre au 18 octobre 2026. On 27 September a bow is in season and a rifle is not, so the answer depends on the implement."
     },
@@ -49,7 +50,8 @@
         "status": "CONDITIONAL",
         "mentions": [
           "Orignal avec bois"
-        ]
+        ],
+        "authorityPrefix": "source:ca-qc"
       },
       "law": "The bow and crossbow row for 10 ouest: « Orignal avec bois », Du 26 septembre au 4 octobre 2026."
     },
@@ -65,7 +67,8 @@
       },
       "expect": {
         "gha": "10O",
-        "status": "CLOSED"
+        "status": "CLOSED",
+        "authorityPrefix": "source:ca-qc"
       },
       "law": "The only rows naming 10 ouest are the bow/crossbow season (26 Sep–4 Oct) and the firearms season (10–18 Oct). The page states « Les dates de chasse sont établies en fonction de la zone où la chasse est permise et du type d'arme utilisé »: no row permits a rifle on 27 September."
     },
@@ -81,7 +84,8 @@
       },
       "expect": {
         "gha": "10O",
-        "status": "CONDITIONAL"
+        "status": "CONDITIONAL",
+        "authorityPrefix": "source:ca-qc"
       },
       "law": "Firearms table, « 10 ouest, 11 ouest, 15 »: Du 10 octobre au 18 octobre 2026."
     },
@@ -95,7 +99,8 @@
       "expect": {
         "gha": "10O",
         "status": "CLOSED",
-        "completeness": "RESOLVED"
+        "completeness": "RESOLVED",
+        "authorityPrefix": "source:ca-qc"
       },
       "law": "No 10 ouest row covers 15 December for any implement, so no question can change the answer."
     },
@@ -111,7 +116,8 @@
         "status": "CLOSED",
         "mentions": [
           "La chasse sportive est interdite"
-        ]
+        ],
+        "authorityPrefix": "source:ca-qc"
       },
       "law": "« Maintien des restrictions dans la zone 17 »: « les activités de chasse à l'orignal dans la zone 17 seront limitées aux prélèvements des Autochtones pour la chasse de subsistance. La chasse sportive est interdite, et ce, jusqu’à nouvel ordre. »"
     },
@@ -124,7 +130,8 @@
       "date": "2026-10-01",
       "expect": {
         "gha": "20",
-        "status": "UNKNOWN"
+        "status": "UNKNOWN",
+        "authorityPrefix": "source:ca-qc"
       },
       "law": "No moose table names zone 20. The pages do not speak to it, so North Ground does not either."
     },
@@ -138,7 +145,8 @@
       "expect": {
         "gha": "27O",
         "status": "CONDITIONAL",
-        "completeness": "RESOLVED"
+        "completeness": "RESOLVED",
+        "authorityPrefix": "source:ca-qc"
       },
       "law": "Small-game page, grouse: « 1, 2 (sauf l'Île Verte), … 26, 27, 28 » Armes à feu et à air comprimé, arbalète et arc, Du 19 septembre 2026 au 15 janvier 2027; the crossbow is prohibited only in zone 17, so every implement agrees and nothing is asked."
     },
@@ -152,7 +160,8 @@
       "expect": {
         "gha": "23",
         "completeness": "NEEDS_INPUT",
-        "required": "HUNT_METHOD"
+        "required": "HUNT_METHOD",
+        "authorityPrefix": "source:ca-qc"
       },
       "law": "Grouse: « 19 sud, 22, 23, 24, 29 » Du 12 septembre 2026 au 15 janvier 2027, « L’utilisation de l’arbalète est interdite dans les zones 22, 23 et 24 », so the implement decides."
     },
@@ -168,7 +177,8 @@
       },
       "expect": {
         "gha": "23",
-        "status": "CLOSED"
+        "status": "CLOSED",
+        "authorityPrefix": "source:ca-qc"
       },
       "law": "The crossbow is prohibited in zone 23 (same row)."
     },
@@ -187,9 +197,45 @@
         "status": "NEEDS_VERIFICATION",
         "mentions": [
           "Sanctuaire de chasse du parc de la Gatineau"
+        ],
+        "authorityPrefix": "source:ca-qc",
+        "noSeason": true,
+        "absent": [
+          "Seasons open",
+          " 2026 Du ",
+          " 2027 Du ",
+          "Bag limit"
         ]
       },
       "law": "The ministry's layer SmartFaunePub:Chasse_Interdite (« Territoires où toute activité de chasse est interdite ») contains this point: Sanctuaire de chasse du parc de la Gatineau. A zone season is never stated as the answer inside it."
+    },
+    {
+      "id": "lac-philippe-moose-december",
+      "place": "Lac Philippe, Gatineau Park (10O)",
+      "latitude": 45.6099,
+      "longitude": -76.0185,
+      "speciesId": "species:moose",
+      "date": "2026-12-15",
+      "answers": {
+        "HUNT_METHOD": "BOW"
+      },
+      "expect": {
+        "gha": "10O",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "noSeason": true,
+        "absent": [
+          "Seasons open",
+          " 2026 Du ",
+          " 2027 Du ",
+          "Bag limit"
+        ],
+        "mentions": [
+          "Sanctuaire de chasse du parc de la Gatineau"
+        ],
+        "authorityPrefix": "source:ca-qc"
+      },
+      "law": "No 10 ouest row covers 15 December for any implement (maniwaki-moose-december), and the point is inside the Sanctuaire de chasse du parc de la Gatineau in Chasse_Interdite. The zone is closed on this date and no season of the zone may be listed inside the sanctuary."
     },
     {
       "id": "jacques-cartier-grouse",
@@ -203,6 +249,14 @@
         "status": "NEEDS_VERIFICATION",
         "mentions": [
           "Parc national de la Jacques-Cartier"
+        ],
+        "authorityPrefix": "source:ca-qc",
+        "noSeason": true,
+        "absent": [
+          "Seasons open",
+          " 2026 Du ",
+          " 2027 Du ",
+          "Bag limit"
         ]
       },
       "law": "Chasse_Interdite contains this point: Parc national de la Jacques-Cartier."
@@ -216,7 +270,8 @@
       "date": "2026-11-10",
       "expect": {
         "gha": "09OZ",
-        "status": "UNKNOWN"
+        "status": "UNKNOWN",
+        "authorityPrefix": "source:ca-qc"
       },
       "law": "The CWD enhanced surveillance zone is published as its own designation (09OZ), and no deer table names it; it never inherits zone 9's season."
     },
@@ -232,7 +287,8 @@
       },
       "expect": {
         "gha": "19SE",
-        "status": "NEEDS_VERIFICATION"
+        "status": "NEEDS_VERIFICATION",
+        "authorityPrefix": "source:ca-qc"
       },
       "law": "Bow/crossbow row « Partie est et partie ouest de 19 sud (sauf la partie nord-ouest), 29 », Du 5 septembre au 13 septembre 2026. Its first label elides a tail; its natural reading reaches 19SE, but the ministry has not confirmed it, so the date is unverifiable here rather than open or closed."
     },
@@ -248,7 +304,8 @@
       },
       "expect": {
         "gha": "19SE",
-        "status": "CONDITIONAL"
+        "status": "CONDITIONAL",
+        "authorityPrefix": "source:ca-qc"
       },
       "law": "Firearms table, « Partie est de 19 sud », « Orignal », Du 19 septembre au 1er novembre 2026."
     },
@@ -264,7 +321,8 @@
         "status": "CONDITIONAL",
         "mentions": [
           "Dindon sauvage porteur"
-        ]
+        ],
+        "authorityPrefix": "source:ca-qc"
       },
       "law": "Turkey page: « 3, 4, 5, 6, 7, 8, 9, 10, 11, 26 et 27 », « Dindon sauvage porteur d’une barbe », Du 24 avril au 18 mai 2026. (Matched on « Dindon sauvage porteur »: the builder stores the class label with a straight apostrophe where the page prints ’, so the phrase avoids the apostrophe.)"
     },
@@ -277,7 +335,8 @@
       "date": "2026-07-01",
       "expect": {
         "gha": "06S",
-        "status": "CLOSED"
+        "status": "CLOSED",
+        "authorityPrefix": "source:ca-qc"
       },
       "law": "Zone 6's turkey seasons are 24 April–18 May and 24–30 October 2026; 1 July is in neither."
     },
@@ -290,7 +349,8 @@
       "date": "2026-10-01",
       "expect": {
         "gha": "19N",
-        "status": "UNKNOWN"
+        "status": "UNKNOWN",
+        "authorityPrefix": "source:ca-qc"
       },
       "law": "Grouse rows name « 19 sud », never 19 nord, and the ministry's closed-territories layer covers all of zone 19 Nord."
     },
@@ -307,7 +367,8 @@
       },
       "expect": {
         "gha": "10E",
-        "status": "CONDITIONAL"
+        "status": "CONDITIONAL",
+        "authorityPrefix": "source:ca-qc"
       },
       "law": "« Périodes de chasse réservée à la relève »: the row includes 10 est, Du 31 octobre au 1er novembre 2026."
     },
@@ -323,9 +384,16 @@
       },
       "expect": {
         "gha": "10E",
-        "status": "CONDITIONAL"
+        "status": "CONDITIONAL",
+        "authorityPrefix": "source:ca-qc"
       },
       "law": "Firearms table « … 10 est, 10 ouest … », « Cerf de Virginie avec bois », Du 7 novembre au 22 novembre 2026."
+    }
+  ],
+  "revisions": [
+    {
+      "on": "2026-09-21",
+      "change": "Added, never relaxed: every case asserts that the sources deciding the answer are Québec's own (authorityPrefix); the two closed-territory cases assert no season, dates, season listing, bag limit or legal hours inside the territory; one case added, lac-philippe-moose-december (CLOSED inside the Gatineau sanctuary, nothing listed). No existing expectation was changed."
     }
   ]
 }

@@ -6,6 +6,7 @@ import ShareHuntButton from "../hunt-share/ShareHuntButton";
 import { huntEvaluationToShareInput } from "../../lib/hunt-share/from-hunt-evaluation";
 import { speciesById } from "../../lib/hunt/coverage";
 import { readableCalendarDay, readableIso } from "../../lib/hunt/date";
+import { partitionEvaluationSources } from "../../lib/hunt/source-roles";
 import { layerForJurisdiction } from "../../lib/hunt/zone-layers";
 import type { HuntEvaluation } from "../../lib/hunt/types";
 import ReadyToHunt from "./ReadyToHunt";
@@ -54,6 +55,7 @@ export default function HuntResult({
   const hasWeather = result.weather.status === "AVAILABLE" || Boolean(result.weather.summary);
   const hasNotes = result.knowledge.blocks.length > 0;
   const hasSources = result.sources.length > 0;
+  const sourceGroups = partitionEvaluationSources(result);
 
   /* A tab exists only when it has something to say. An empty "Field Notes" tab is
      decoration pretending to be coverage. */
@@ -333,25 +335,25 @@ export default function HuntResult({
 
         {hasSources ? (
           <div {...panelProps("sources")} className={styles.panel}>
-            <ul className={styles.sourceList}>
-              {result.sources.map((source) => {
-                // `retrievedAt` is when North Ground last read the source. It is a
-                // retrieval date, not a claim the rule was re-verified that day.
-                const retrieved = readableCalendarDay(source.retrievedAt);
-                return (
-                  <li className={styles.sourceItem} key={source.id}>
-                    <a className={styles.sourceLink} href={source.url} target="_blank" rel="noreferrer">
-                      {source.title} →
-                    </a>
-                    <span className={styles.sourceMeta}>
-                      {source.publisher}
-                      {source.verificationStatus ? ` · ${source.verificationStatus}` : ""}
-                      {retrieved ? ` · retrieved ${retrieved}` : ""}
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
+            {/* The answer's authority is only what decided it: the rules and the
+                zone boundary. Pages behind field notes and weather are listed
+                apart, so a neighbouring province's biology page is never read as
+                this jurisdiction's law. */}
+            {sourceGroups.authority.length ? (
+              <>
+                <h3 className="ng-label">Rules and boundary</h3>
+                <SourceList sources={sourceGroups.authority} />
+              </>
+            ) : null}
+            {sourceGroups.context.length ? (
+              <>
+                <h3 className="ng-label">Behind the field notes and weather</h3>
+                <p className={styles.contextDisclaimer}>
+                  These support North Ground&rsquo;s notes and conditions. They are not the regulatory authority for this answer.
+                </p>
+                <SourceList sources={sourceGroups.context} />
+              </>
+            ) : null}
             <p className={styles.contextDisclaimer}>
               North Ground organises official information. It does not replace the
               legislation, regulations or instructions of the responsible authority.
@@ -361,5 +363,29 @@ export default function HuntResult({
         ) : null}
       </div>
     </section>
+  );
+}
+
+function SourceList({ sources }: { sources: HuntEvaluation["sources"] }) {
+  return (
+    <ul className={styles.sourceList}>
+      {sources.map((source) => {
+        // `retrievedAt` is when North Ground last read the source. It is a
+        // retrieval date, not a claim the rule was re-verified that day.
+        const retrieved = readableCalendarDay(source.retrievedAt);
+        return (
+          <li className={styles.sourceItem} key={source.id}>
+            <a className={styles.sourceLink} href={source.url} target="_blank" rel="noreferrer">
+              {source.title} →
+            </a>
+            <span className={styles.sourceMeta}>
+              {source.publisher}
+              {source.verificationStatus ? ` · ${source.verificationStatus}` : ""}
+              {retrieved ? ` · retrieved ${retrieved}` : ""}
+            </span>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
