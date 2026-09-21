@@ -1779,6 +1779,174 @@ the same destinations, Escape handling and focus return.
 
 ---
 
+# 41B. HUNT MAP INTELLIGENCE PLATFORM
+
+*Decided 2026-09-21. This section expands, and does not replace, section 41A or
+the regulatory principles elsewhere in this blueprint.*
+
+The Hunt map is a first-class outdoor intelligence and hunt-planning platform,
+not merely a visualization of management zones. It helps a hunter move through
+one coherent experience:
+
+**explore an area → investigate species opportunity → check the Hunt → prepare
+what is required → preserve a Hunt Brief.**
+
+The product is organized around three modes over one canonical map state:
+
+- **EXPLORE** — management geography, Crown/public land, ownership, access,
+  protected/restricted areas, roads and trails, access points, satellite,
+  terrain and current conditions.
+- **FIND GAME** — the explicitly named **SPECIE HEAT MAP**, species range,
+  habitat, harvest, population/survey evidence and intersections with public
+  land and access.
+- **CHECK HUNT** — explicit Hunt location, date and species; deterministic
+  legality; conditions; sources; Ready to Hunt; and Hunt Brief.
+
+These are product concepts, not three disconnected applications. They share the
+same species, date, hunt location, selected zone, camera and layer state. Device
+location and vendor-search location remain separate exactly as section 41A
+requires.
+
+## Four separate questions
+
+The architecture and interface always keep these facts separate:
+
+1. **Species opportunity** — where evidence suggests the hunter investigate.
+2. **Legal Hunt status** — what the canonical regulatory engine can determine.
+3. **Ownership** — who holds or administers the land.
+4. **Access** — whether and how the hunter may reach or use it.
+
+Environmental conditions are a fifth independent lane. Public ownership is not
+permission to enter or hunt. High opportunity is not an open season. A mapped
+road is not proof of public vehicle access. Weather or fire conditions are not a
+legal closure unless an authoritative rule or order says so.
+
+## SPECIE HEAT MAP
+
+The user-facing name is **SPECIE HEAT MAP**. It answers:
+
+> Where does the available evidence suggest I should investigate for this
+> species?
+
+It never guarantees that animals are present and never decides whether hunting
+is legal. Evidence may include official harvest, hunter effort/success,
+population or survey observations, authoritative range, seasonal range, habitat,
+land cover, elevation, water, public-land availability and source-backed access.
+The product uses only the dimensions a jurisdiction/species actually supports.
+
+Every evidence record preserves species, jurisdiction, geography and geography
+type, source, metric, original value and unit, normalized value when justified,
+sample size and methodology when published, effective and observation periods,
+retrieval and verification dates, confidence, reuse status, spatial precision,
+version and superseded state. Zone evidence and continuous/grid/polygon evidence
+are both first-class; better spatial data is not flattened into a zone merely to
+simplify rendering.
+
+The map never shows an unexplained magic score. If a composite is useful, its
+methodology and thresholds are immutable versions and its component evidence is
+inspectable. User-facing classes are **VERY HIGH, HIGH, MODERATE, LOW** and
+**LIMITED DATA**, with coverage separately labelled **ROBUST DATA, PARTIAL DATA,
+LIMITED DATA, RANGE ONLY** or **NO HEAT-MAP DATA**. Broad range geometry stays a
+range and is never fabricated into local opportunity.
+
+## Crown/Public Land and the land model
+
+Canada uses the layer name **CROWN LAND** where the authority does. United
+States surfaces use **PUBLIC LAND** and each authority's real category (for
+example BLM, National Forest or state land); they are never relabelled Crown
+land.
+
+The canonical model can represent provincial/federal/territorial public land,
+U.S. federal/state land, private and municipal land, parks, reserves, wildlife
+areas, refuges, Indigenous lands/territories where appropriate, special
+management areas, hunting prohibitions, access restrictions and unknown
+ownership. Ownership, access and hunting restriction are distinct fields.
+
+Geometry is stored or redistributed only after its licence and terms have been
+reviewed for commercial use, redistribution and attribution. When redistribution
+is unclear, Hunt may use an allowed official live service or show
+LICENCE_PENDING/LICENCE_BLOCKED; it does not silently copy the data.
+
+## Potential Hunting Areas
+
+The system may derive **POTENTIAL HUNTING AREA** or **CHECK THIS AREA** planning
+candidates by intersecting available species evidence, public land, access,
+selected date, management geography, canonical regulatory status and known
+prohibitions. Every candidate explains its inputs and still points to the full
+Hunt evaluation. It never claims every point is legally huntable.
+
+## Map intelligence layers
+
+Layer controls are organized around hunter questions rather than a flat list:
+
+- **HUNTING** — Specie Heat Map, Open Seasons, Management Zones
+- **LAND** — Crown/Public Land, Private Land, Potential Hunting Areas,
+  Protected/Restricted Areas
+- **ACCESS** — Roads & Trails, Parking / Access Points, Boat Launches
+- **WILDLIFE** — Species Range, Harvest Data, CWD / Disease, Habitat
+- **CONDITIONS** — Weather, Wind, Snow, Wildfire / Fire Restrictions
+- **MAP** — Standard, Satellite, Terrain/Topo
+
+Layer availability is contextual and comes from a machine-readable coverage
+registry. An unavailable layer explains whether it is unverified, stale,
+licence-blocked or absent; an empty result never means the underlying feature
+does not exist. Active layers share a dynamic, textual, colour-accessible legend
+and sensible automatic visual priority.
+
+Management zones remain official interactive areas with the authority's own
+terminology. Zone cards, What Can I Hunt Here, Potential Hunting Areas, Ready to
+Hunt and Hunt Brief consume the one canonical regulatory engine. There is no
+separate map-legality implementation.
+
+## Planning capabilities
+
+Hunt progressively supports deliberate point selection, address/place search,
+satellite and licensed terrain/topographic views, habitat and range, harvest
+history, access features, distance and approximate-area measurement,
+location/date-specific sunrise and sunset, legal hunting windows only where the
+rule supports the calculation, weather, wind, observed/forecast snow, wildfire
+conditions and closure orders, CWD/disease consequences, and protected or
+restricted subareas.
+
+Every map-critical conclusion also has a textual equivalent. Heat and legal
+states use words/glyphs or patterns as well as colour. Mobile uses compact
+controls and bottom sheets; desktop uses the map without permanently surrendering
+half its viewport.
+
+## Offline planning and privacy
+
+A deliberate offline Hunt package may contain the selected Hunt point, zone,
+date, species, applicable regulations and sources, Ready to Hunt, legal-time
+context, time-stamped condition snapshots, land/access context, restrictions and
+Hunt Brief. Provider tiles are never cached without a licence that permits it.
+When offline basemaps are unavailable, the regulatory and planning package still
+works and says when dynamic information was downloaded.
+
+Self/device location is never included. Sensitive wildlife observations support
+precision classes, redaction and publication restrictions before any future
+field-observation feature is exposed.
+
+## Spatial delivery and operations
+
+PostGIS is the canonical stored spatial platform where licensing permits, with
+source, analysis, simplified and render geometry kept distinct. Feature delivery
+uses viewport bounds, spatial indexes, zoom-aware simplification, bounded result
+sizes, caching, cancellation and lazy loading; vector tiles are adopted when
+measurements show GeoJSON no longer meets the budget. Official live services and
+stored certified data sit behind one provider abstraction.
+
+Every dataset follows fetch → validate → stage → normalize → compare → licence
+check → human review where required → publish → rollback/versioning. Meaningful
+source changes stop promotion and report their blast radius. Coverage states are
+**VERIFIED, PARTIAL, LIMITED, IN DEVELOPMENT, UNAVAILABLE, LICENCE_PENDING,
+LICENCE_BLOCKED, STALE** and **NEEDS_VERIFICATION**.
+
+This platform remains deterministic at its trust boundaries. AI may explain
+already-derived evidence; it never determines legal status, zone membership,
+ownership, access legality, licence requirements or the existence of an animal.
+
+---
+
 # 42. WEATHER PHILOSOPHY
 
 Weather should help make decisions.
