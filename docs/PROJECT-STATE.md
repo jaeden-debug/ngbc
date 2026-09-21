@@ -4,7 +4,7 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-20 (deployed and verified in production; SSR date defect found and fixed)
+Last updated: 2026-09-20 (Québec geometry source found, read and verified; label resolver landed)
 
 ## Current Product State
 
@@ -66,7 +66,7 @@ Last updated: 2026-09-20 (deployed and verified in production; SSR date defect f
 
 ## In Progress
 
-- Québec spatial ingestion is BLOCKED ON SOURCE AVAILABILITY, not effort. The zone structure is verified (28 zones, 1-24 and 26-29; zone 25 is fishing only) but the boundaries are not published as open data. Next step is the service endpoint behind Forêt ouverte, or a direct request to MELCCFP. Do not ingest the CC-BY-NC-ND structured-wildlife-territory layer as a substitute: its licence permits neither commercial use nor derivatives, and zecs are not hunting zones.
+- Québec spatial ingestion is NO LONGER BLOCKED. The source was found on 2026-09-20 — the ministry's own GeoServer behind Forêt ouverte, not the open-data portal — and all 59 designations read cleanly through `createQuebecZoneSource`. What remains is engineering: stage into PostGIS, certify parity against the service the way Ontario's 309 points were certified, then switch the resolver on. `docs/quebec-regulatory-sources.md` has the measured detail. Still do not ingest the structured-territory layer as a substitute: zecs are not hunting zones, and which licence governs — the portal's CC-BY-NC-ND or the GeoServer's `AccessConstraints: NONE` — is unsettled.
 - Federal migratory birds. The only district layer located (ECCC, Québec) is marked Draft and states it has no legal value, so it fails the boundary standard. Certified geometry must come from the Migratory Birds Regulations text or a layer the authority stands behind. 25 waterfowl and migratory species have published biological profiles and no rules.
 - Prairie provinces, British Columbia, Atlantic Canada and the territories: official sources are named in the coverage registry; none is ingested.
 - Main site visual direction / hero.
@@ -114,8 +114,8 @@ Priorities 1 to 4 of the previous wave are complete: the conditional UI, the
 selector, conditional persistence and Hunt Brief v2 all landed on 2026-09-20.
 The national rollout order below replaces them.
 
-1. Québec geometry. Identify the service behind Forêt ouverte or request the zone boundaries from MELCCFP. This is the single blocker on Wave 1 and it is a source-availability problem, not an engineering one. Nothing else in Québec can proceed without it.
-2. Québec seasons, once geometry exists. Québec publishes in French with zone-and-species tables that do not share Ontario's shape, so the builder cannot be copied — read the structure first. Preserve official French terminology rather than translating legal terms.
+1. Québec geometry into PostGIS. The source is found and proven readable; this is now ingestion and parity certification, not discovery. Stage the 59 designations, certify against the ministry's service the way Ontario's 309 points were, then switch the resolver on and upgrade the registry to VERIFIED.
+2. Québec seasons. The structure has been read and written down in `docs/quebec-regulatory-sources.md` — do not re-derive it. Two things must be settled before encoding: the rule schema cannot yet represent a segment that differs between the two published years ("2026 Orignal avec bois / 2027 Orignal"), and the two coordinated-ellipsis zone labels need an explicit, evidence-carrying mapping rather than a regex. Preserve official French terminology rather than translating legal terms. Zone 17 moose is closed to sport hunting and the ZSR designations must never inherit their parent zone's season.
 3. Distributed rate limiting and production observability before broad Hunt rollout. Hunt's limiter is still process-local.
 4. Federal migratory birds. Establish certified district geometry from the Migratory Birds Regulations or an authority-backed layer — the ECCC draft layer disclaims legal value and cannot be used. This unblocks 25 published waterfowl species that currently have no rules at all.
 5. Prairie provinces (MB, SK, AB), then British Columbia, then Atlantic Canada, then the territories. Each wave: research, ingest, certify parity, encode rules, test, deploy, verify, record exact coverage in the registry.
@@ -213,6 +213,54 @@ Do not mark VERIFIED until actual data and representative queries have been cert
 - Answers are untrusted input. Only a value the dimension itself offers is applied; an unrecognised one leaves the question outstanding rather than narrowing the rule set, because filtering on an arbitrary string empties the candidates and an empty candidate set would read as a confident CLOSED. Residency is never inferred from IP, browser location, account, postal code or a previous hunt — it is asked, and no result claims North Ground verified it.
 - One implement can qualify for several published seasons at once — a bow is legal in the deer gun, muzzle-loader and archery seasons — so open dates are the UNION of every applicable rule, not a conflict. A genuine CONFLICT is two rules in the same published table applying to the same hunter with different dates; the current bundle contains none.
 - Zone geometry drawn on the map: Ontario only, PARTIAL. All 151 Ontario WMU boundaries are rendered from the province's own feature layer, generalised by zoom. Per-unit coverage badges follow the certified rule set rather than a pinned unit. No other Canadian or United States jurisdiction has geometry drawn, and none will be until its official source passes the same review.
+
+**Québec — source found and read, nothing certified (2026-09-20).**
+Full findings in `docs/quebec-regulatory-sources.md`. Read that before encoding a
+bundle; it is the difference between a day of work and a week of rediscovery.
+
+- Geometry is VERIFIED as readable and remains IN DEVELOPMENT as coverage. The
+  boundaries are not in the open-data portal — they are served by the ministry's
+  own GeoServer behind the *Forêt ouverte* map
+  (`SmartFaunePub:Zone_chasse_da3_sefaq`, WFS 2.0, GeoJSON, EPSG:4326 on request,
+  `AccessConstraints: NONE`). The registry's previous note that Québec geometry
+  "is NOT available as open data" was true of the portal and false of the
+  province; it has been corrected.
+- Measured by a full live read: **59 designations, 28 numeric zones (1–24, 26–29,
+  no zone 25), 9,509 polygons, 2,424,980 vertices, zero geometry problems**, in
+  about 65 s. The zone count matches quebec.ca exactly. `19SE` alone is 8,091
+  island polygons and is one regulatory area, not 8,091.
+- **The part is the regulatory unit, not the number.** Québec writes its season
+  tables per part — 19N, 19SE, 19SO and 19SNO are four different seasons — so
+  keying on `No_zone` would merge them.
+- `createQuebecZoneSource` is the second implementation of `ZoneLayerSource` and
+  the first that is not ArcGIS. The contract absorbed the difference: the fetch
+  is WFS, everything downstream is unchanged. That is the evidence the ingestion
+  layer generalises.
+- `resolveZoneLabel` maps the published labels onto those designations and was
+  run over **all 66 labels the five species pages publish: 62 resolve, 4 refuse**.
+  The refusals are the feature — Île-du-Havre-Aubert has no designation, one row
+  is a table header, and two use coordinated ellipsis. Each stops a build and
+  names what the layer does publish.
+- The rule that prevents a false answer: a part naming a *territory* is never
+  swept into its parent. So "8 nord" is `08N` alone, never `08NMR` (Montagne de
+  Rigaud) or `08NZ`.
+- **ZSR — `08NZ`, `09OZ`, `10EZ` — is the enhanced surveillance zone for chronic
+  wasting disease**, 17 named municipalities around the 2018 infected farm. No
+  season table names it; its antlerless-permit and registration obligations live
+  on the CWD pages. It was found in the GIS layer, not in any hunting page.
+  Answering it with its parent zone's season would be a false answer.
+- **Zone 17 moose is closed to sport hunting.** The harvest that continues is
+  Indigenous subsistence under the James Bay and Northern Québec Agreement — a
+  treaty context North Ground does not evaluate and must never render as a
+  season.
+- Québec is more conditional than Ontario. Implement is a section heading that a
+  footnote can narrow (crossbows are banned in zones 22, 23 and 24 under a
+  heading that names crossbows); antlerless moose runs three different regimes at
+  once; and **one cell can carry a different animal class per year** ("2026
+  Orignal avec bois / 2027 Orignal"), which the current rule schema cannot
+  represent.
+- Still zero certified Québec rules. Every Québec query answers UNKNOWN, and the
+  registry says so rather than implying coverage.
 
 ### United States
 Not assumed complete.
