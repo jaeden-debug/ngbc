@@ -497,6 +497,7 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
         {displayedResult && displayedResult.completeness === "RESOLVED" ? (
           <HuntResult
             result={displayedResult}
+            speciesMedia={selectedSpecies?.image ?? null}
             placeLabel={location?.label ?? null}
             assumptions={answeredSoFar}
             onAnswer={answerQuestion}

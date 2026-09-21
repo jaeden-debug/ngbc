@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { hasSpeciesCoverageIn, speciesAsksQuestionIn, type SpeciesSelectorOption } from "../../lib/hunt/coverage";
 import type { CanonicalId } from "../../lib/content-contract";
+import SpeciesPrimaryImage from "../species/SpeciesPrimaryImage";
 import styles from "./Hunt.module.css";
 
 interface SpeciesSelectProps {
@@ -20,10 +21,8 @@ interface SpeciesSelectProps {
  * an explicit, separate state. Species without a certified rule are discoverable
  * but disabled for evaluation.
  *
- * No thumbnail is shown, because no accurately identified licensed photograph has
- * been certified for this species. A wrong bird beside a legal answer is a
- * correctness failure, not a missing nicety, so the slot holds a neutral mark
- * until real imagery is approved.
+ * The thumbnail comes only from the canonical PRIMARY relationship. A species
+ * without one keeps the neutral mark; Hunt never guesses from names or files.
  */
 export default function SpeciesSelect({ value, onChange, options, jurisdictionId, disabled }: SpeciesSelectProps) {
   const [open, setOpen] = useState(false);
@@ -128,9 +127,9 @@ export default function SpeciesSelect({ value, onChange, options, jurisdictionId
         }}
       >
         <span className={styles.speciesThumb} aria-hidden="true">
-          <svg width="17" height="17" viewBox="0 0 20 20" fill="none">
+          {selected?.image ? <SpeciesPrimaryImage media={selected.image} variant="avatar" className={styles.speciesThumbImage} /> : <svg width="17" height="17" viewBox="0 0 20 20" fill="none">
             <path d="M14.6 4.2c1.6 1 2.3 3 1.8 4.9-.6 2.3-2.6 4-4.9 4.4l-2.2.4-2.5 2.6-1.2-1.2 2.6-2.6.4-2.2c.4-2.3 2-4.3 4.3-5l1.7-.5-.6 1.3 1.6-2.1Z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
-          </svg>
+          </svg>}
         </span>
 
         <span className={styles.speciesText} id={`${listboxId}-value`}>
@@ -201,7 +200,7 @@ export default function SpeciesSelect({ value, onChange, options, jurisdictionId
                     onClick={() => choose(index)}
                   >
                     <span className={styles.speciesThumb} aria-hidden="true">
-                      <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M14.6 4.2c1.6 1 2.3 3 1.8 4.9-.6 2.3-2.6 4-4.9 4.4l-2.2.4-2.5 2.6-1.2-1.2 2.6-2.6.4-2.2c.4-2.3 2-4.3 4.3-5l1.7-.5-.6 1.3 1.6-2.1Z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" /></svg>
+                      {species.image ? <SpeciesPrimaryImage media={species.image} variant="avatar" className={styles.speciesThumbImage} /> : <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M14.6 4.2c1.6 1 2.3 3 1.8 4.9-.6 2.3-2.6 4-4.9 4.4l-2.2.4-2.5 2.6-1.2-1.2 2.6-2.6.4-2.2c.4-2.3 2-4.3 4.3-5l1.7-.5-.6 1.3 1.6-2.1Z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" /></svg>}
                     </span>
                     <span className={styles.speciesText}>
                       <span className={styles.speciesName}>{species.displayName}</span>

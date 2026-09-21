@@ -8,6 +8,7 @@ import { EXPLORATION_WORDING, type ExplorationState as ZoneState, type ZoneRef, 
 import type { SpeciesSelectorOption } from "../../lib/hunt/coverage";
 import type { ZoneFeature } from "../../lib/hunt/zone-geometry";
 import { officialTermPlural, type ZoneCoverageStatus } from "../../lib/hunt/zone-layers";
+import SpeciesPrimaryImage from "../species/SpeciesPrimaryImage";
 import { createLabelLayer, createSelfMarker, huntPinIcon, type LabelLayerHandle, type LabelSource, type SelfMarkerHandle } from "./map/google-overlays";
 import ZoneCanvas, { fitViewport, zoomToFit, type Viewport } from "./ZoneCanvas";
 import { OverlayCard, PinPreviewCard, ZoneCard, type PinZone, type SummaryLoad } from "./ZoneCard";
@@ -257,6 +258,7 @@ export default function HuntMap({
     () => speciesOptions.filter((option) => option.regulatoryJurisdictions.length > 0),
     [speciesOptions],
   );
+  const filterSpecies = explorableSpecies.find((option) => option.id === filterSpeciesId) ?? null;
 
   /* ── Zone geometry for the current viewport ───────────────────────────── */
 
@@ -1032,6 +1034,13 @@ export default function HuntMap({
         {explorableSpecies.length ? (
           <label className={`${styles.mapFilter} ng-glass-overlay`}>
             <span className={styles.mapFilterLabel}>Explore</span>
+            {filterSpecies?.image ? (
+              <SpeciesPrimaryImage
+                media={filterSpecies.image}
+                variant="avatar"
+                className={styles.mapFilterImage}
+              />
+            ) : null}
             <select
               value={filterSpeciesId}
               onChange={(event) => setFilterSpeciesId(event.target.value)}

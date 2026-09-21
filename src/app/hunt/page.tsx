@@ -12,6 +12,7 @@ import { COVERAGE_ROADMAP } from "../../lib/hunt/zone-layers";
 import { HUNT_DEFAULT_TIME_ZONE, jurisdictionTodayIso } from "../../lib/hunt/date";
 import { canadaCoverageReport, regulatoryJurisdictionsForSpecies } from "../../lib/hunt/canada/report";
 import { absoluteUrl, SITE_NAME } from "../../lib/site";
+import { getSpeciesPrimaryMediaMap } from "../../lib/species-media/repository";
 
 export const dynamic = "force-dynamic";
 
@@ -94,6 +95,9 @@ export default async function HuntPage({ searchParams }: Props) {
     ? requestedSpecies
     : null;
   const resources = await contentRepository.getPublishedResources({ locale: "en-CA" });
+  const primaryMedia = await getSpeciesPrimaryMediaMap(resources
+    .filter((resource) => resource.type === "species")
+    .map((resource) => resource.speciesProfile.speciesId));
   const coverageReport = canadaCoverageReport();
   const speciesOptions: SpeciesSelectorOption[] = await Promise.all(resources
     .filter((resource) => resource.type === "species")
@@ -116,6 +120,7 @@ export default async function HuntPage({ searchParams }: Props) {
         aliases: aliases.map(({ value }) => value),
         searchTerms: [...new Set(searchTerms)],
         resourcePath: resource.canonicalUrl ?? `/hunting/species/${resource.slug}`,
+        image: primaryMedia.get(resource.speciesProfile.speciesId) ?? null,
         /* Where rules exist, and whether each jurisdiction answers straight away or
            asks a question first. Both are fully certified; the difference is how
            that authority publishes the species, and saying so up front stops the

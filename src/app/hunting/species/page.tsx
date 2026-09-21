@@ -4,6 +4,8 @@ import Breadcrumbs from "../../../components/Breadcrumbs";
 import HuntNav from "../../../components/hunt/HuntNav";
 import { contentRepository } from "../../../lib/content/repository";
 import { canadaCoverageReport, regulatoryJurisdictionsForSpecies } from "../../../lib/hunt/canada/report";
+import { currentSpeciesMediaAdmin } from "../../../lib/species-media/admin-auth";
+import { getSpeciesPrimaryMediaMap } from "../../../lib/species-media/repository";
 import SpeciesLibrary, { type LibrarySpecies } from "./SpeciesLibrary";
 import styles from "./page.module.css";
 
@@ -14,6 +16,7 @@ export const metadata: Metadata = {
   description: "Field-useful species profiles with verified taxonomy, identification cautions, habitat context and clear separation from hunting regulations.",
   alternates: { canonical: "/hunting/species" },
 };
+export const dynamic = "force-dynamic";
 
 /**
  * The library reads the published resources directly rather than searching for
@@ -30,13 +33,16 @@ export default async function SpeciesLibraryPage() {
   const coverageReport = canadaCoverageReport();
   const resources = (await contentRepository.getPublishedResources({ locale: "en-CA" }))
     .filter((resource) => resource.type === "species");
+  const [mediaBySpecies, admin] = await Promise.all([
+    getSpeciesPrimaryMediaMap(resources.map((resource) => resource.speciesProfile.speciesId)),
+    currentSpeciesMediaAdmin(),
+  ]);
 
   const species: LibrarySpecies[] = await Promise.all(resources.map(async (resource) => {
     const speciesId = resource.speciesProfile.speciesId;
-    const [aliases, groups, image] = await Promise.all([
+    const [aliases, groups] = await Promise.all([
       contentRepository.getSpeciesAliases(speciesId),
       contentRepository.getSpeciesGroups(speciesId),
-      contentRepository.getSpeciesImage(speciesId),
     ]);
     const commonNames = resource.speciesProfile.commonNames;
     return {
@@ -58,10 +64,7 @@ export default async function SpeciesLibraryPage() {
       ])],
       regulatoryJurisdictions: regulatoryJurisdictionsForSpecies(speciesId, coverageReport)
         .map(({ nameEn }) => nameEn),
-      /* No species has completed exact-identity and attribution verification yet,
-         so this is null for all sixty. The card handles both states rather than
-         needing a change when the first verified photograph lands. */
-      image: image ? { url: image.assetUrl, alt: image.altText ?? "" } : null,
+      image: mediaBySpecies.get(speciesId) ?? null,
     };
   }));
 
@@ -94,7 +97,7 @@ export default async function SpeciesLibraryPage() {
           </div>
         </header>
 
-        <SpeciesLibrary species={species} />
+        <SpeciesLibrary species={species} adminMode={Boolean(admin)} />
 
         <footer className={styles.footer}>
           <p>

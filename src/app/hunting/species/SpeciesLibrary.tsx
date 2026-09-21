@@ -1,7 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import Image from "next/image";
+import { useEffect, useMemo, useRef, useState } from "react";
+import SpeciesPrimaryImage, { SpeciesImagePlaceholder } from "../../../components/species/SpeciesPrimaryImage";
+import type { SpeciesPrimaryMedia } from "../../../lib/species-media/types";
 import styles from "./page.module.css";
 
 export interface LibrarySpecies {
@@ -13,140 +16,161 @@ export interface LibrarySpecies {
   canonicalUrl: string;
   searchTerms: string[];
   regulatoryJurisdictions: string[];
-  image: { url: string; alt: string } | null;
+  image: SpeciesPrimaryMedia | null;
 }
 
-/* Diacritic-insensitive so `orignal` finds Moose and `Canard colvert` finds
-   Mallard without the reader switching keyboard layouts. */
-const normalize = (value: string) =>
-  value.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLocaleLowerCase("en-CA");
-
+type UploadState = "IMAGE_SET" | "MISSING_IMAGE" | "UPLOADING" | "ERROR";
+const normalize = (value: string) => value.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLocaleLowerCase("en-CA");
 const ALL = "All";
 
-export default function SpeciesLibrary({ species }: { species: LibrarySpecies[] }) {
+export default function SpeciesLibrary({ species, adminMode = false }: { species: LibrarySpecies[]; adminMode?: boolean }) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState(ALL);
+  const [items, setItems] = useState(species);
+  const [missingOnly, setMissingOnly] = useState(false);
+  const [draggingOver, setDraggingOver] = useState<string | null>(null);
+  const [states, setStates] = useState<Record<string, UploadState>>({});
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [replacement, setReplacement] = useState<{ item: LibrarySpecies; file: File; preview: string } | null>(null);
+  const replacementDialogRef = useRef<HTMLElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
 
-  /* Category counts follow the search, so a filter never advertises results the
-     current query cannot produce. */
+  useEffect(() => {
+    if (!replacement) return;
+    previousFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const dialog = replacementDialogRef.current;
+    requestAnimationFrame(() => dialog?.querySelector<HTMLButtonElement>("button")?.focus());
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        cancelReplacement();
+        return;
+      }
+      if (event.key !== "Tab" || !dialog) return;
+      const controls = [...dialog.querySelectorAll<HTMLElement>('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')];
+      if (!controls.length) return;
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      previousFocusRef.current?.focus();
+    };
+  // `cancelReplacement` only clears this modal and is intentionally read at event time.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [replacement]);
+
   const searched = useMemo(() => {
     const needle = normalize(query.trim());
-    if (!needle) return species;
-    return species.filter((item) => item.searchTerms.some((term) => normalize(term).includes(needle)));
-  }, [query, species]);
-
+    const pool = missingOnly ? items.filter((item) => !item.image) : items;
+    return needle ? pool.filter((item) => item.searchTerms.some((term) => normalize(term).includes(needle))) : pool;
+  }, [query, items, missingOnly]);
   const categories = useMemo(() => {
     const counts = new Map<string, number>();
     for (const item of searched) counts.set(item.category, (counts.get(item.category) ?? 0) + 1);
-    return [
-      { name: ALL, count: searched.length },
-      ...[...counts.entries()]
-        .sort((left, right) => right[1] - left[1] || left[0].localeCompare(right[0], "en-CA"))
-        .map(([name, count]) => ({ name, count })),
-    ];
+    return [{ name: ALL, count: searched.length }, ...[...counts.entries()]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "en-CA"))
+      .map(([name, count]) => ({ name, count }))];
   }, [searched]);
+  const visible = useMemo(() => category === ALL ? searched : searched.filter((item) => item.category === category), [category, searched]);
+  const filtering = Boolean(query.trim()) || category !== ALL || missingOnly;
 
-  const visible = useMemo(
-    () => (category === ALL ? searched : searched.filter((item) => item.category === category)),
-    [category, searched],
-  );
+  async function upload(item: LibrarySpecies, file: File, expectedCurrentAssetId: string | null) {
+    setStates((current) => ({ ...current, [item.id]: "UPLOADING" }));
+    setErrors((current) => ({ ...current, [item.id]: "" }));
+    const form = new FormData();
+    form.set("speciesId", item.id);
+    form.set("image", file);
+    form.set("sourceType", "north_ground");
+    if (expectedCurrentAssetId) form.set("expectedCurrentAssetId", expectedCurrentAssetId);
+    const response = await fetch("/api/admin/species-media", { method: "POST", body: form }).catch(() => null);
+    const payload = await response?.json().catch(() => null) as { media?: SpeciesPrimaryMedia; code?: string } | null;
+    if (!response?.ok || !payload?.media) {
+      setStates((current) => ({ ...current, [item.id]: "ERROR" }));
+      setErrors((current) => ({ ...current, [item.id]: payload?.code === "PRIMARY_MEDIA_CHANGED"
+        ? "The primary image changed. Refresh before replacing it."
+        : ["TOO_LARGE", "PAYLOAD_TOO_LARGE"].includes(payload?.code ?? "")
+          ? "Use an image smaller than 12 MB."
+          : "Upload failed. The existing primary image was not changed." }));
+      return;
+    }
+    setItems((current) => current.map((entry) => entry.id === item.id ? { ...entry, image: payload.media! } : entry));
+    setStates((current) => ({ ...current, [item.id]: "IMAGE_SET" }));
+  }
 
-  const filtering = Boolean(query.trim()) || category !== ALL;
+  function acceptDrop(item: LibrarySpecies, file: File | undefined) {
+    setDraggingOver(null);
+    if (!file) return;
+    if (!/^image\/(jpeg|png|webp|avif)$/.test(file.type)) {
+      setStates((current) => ({ ...current, [item.id]: "ERROR" }));
+      setErrors((current) => ({ ...current, [item.id]: "Use JPEG, PNG, WebP or AVIF." }));
+    } else if (item.image) {
+      setReplacement({ item, file, preview: URL.createObjectURL(file) });
+    } else void upload(item, file, null);
+  }
 
-  return (
-    <>
-      {/* Category sections used to supply the page's H2s. Filtering replaced them,
-          so the two regions carry the structure instead — hidden visually, because
-          a search field and a result list do not need to be captioned on screen,
-          but present for anyone navigating by heading. */}
-      <section className={`${styles.controls} ng-glass-panel`} aria-labelledby="find-heading">
-        <h2 className="ng-visually-hidden" id="find-heading">Find a species</h2>
-        <label className="ng-visually-hidden" htmlFor="species-search">
-          Search species by common, scientific, French or hunter name
-        </label>
-        <div className={styles.searchField}>
-          <svg className={styles.searchIcon} width="16" height="16" viewBox="0 0 18 18" aria-hidden="true" fill="none">
-            <circle cx="8" cy="8" r="5.3" stroke="currentColor" strokeWidth="1.5" />
-            <path d="m12.2 12.2 3.3 3.3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
-          <input
-            className={styles.search}
-            id="species-search"
-            type="search"
-            value={query}
-            autoComplete="off"
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="wolf, doe, orignal, Canard colvert…"
-          />
+  function cancelReplacement() {
+    if (replacement) URL.revokeObjectURL(replacement.preview);
+    setReplacement(null);
+  }
+
+  return <>
+    <section className={`${styles.controls} ng-glass-panel`} aria-labelledby="find-heading">
+      <h2 className="ng-visually-hidden" id="find-heading">Find a species</h2>
+      <label className="ng-visually-hidden" htmlFor="species-search">Search species by common, scientific, French or hunter name</label>
+      <div className={styles.searchField}>
+        <svg className={styles.searchIcon} width="16" height="16" viewBox="0 0 18 18" aria-hidden="true" fill="none"><circle cx="8" cy="8" r="5.3" stroke="currentColor" strokeWidth="1.5" /><path d="m12.2 12.2 3.3 3.3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+        <input className={styles.search} id="species-search" type="search" value={query} autoComplete="off" onChange={(event) => setQuery(event.target.value)} placeholder="wolf, doe, orignal, Canard colvert…" />
+      </div>
+      <div className={styles.filters} role="group" aria-label="Filter species">
+        {categories.map((item) => <button key={item.name} type="button" className={styles.filter} aria-pressed={category === item.name} onClick={() => setCategory(item.name)}>
+          {item.name}<span className={styles.filterCount}>{item.count}</span>
+        </button>)}
+        {adminMode ? <button type="button" className={styles.filter} aria-pressed={missingOnly} onClick={() => { setMissingOnly((value) => !value); setCategory(ALL); }}>
+          Missing images <span className={styles.filterCount}>{items.filter((item) => !item.image).length}</span>
+        </button> : null}
+      </div>
+    </section>
+
+    <p className={styles.resultLine} aria-live="polite"><span>{visible.length} species{category === ALL ? "" : ` in ${category}`}</span>
+      {filtering ? <button type="button" className={styles.reset} onClick={() => { setQuery(""); setCategory(ALL); setMissingOnly(false); }}>Clear</button> : null}
+    </p>
+    <h2 className="ng-visually-hidden" id="results-heading">Species</h2>
+    {visible.length ? <ul className={styles.grid} aria-labelledby="results-heading">
+      {visible.map((item) => {
+        const state = states[item.id] ?? (item.image ? "IMAGE_SET" : "MISSING_IMAGE");
+        return <li key={item.id} className={`${styles.card} ng-glass-card`} data-admin={adminMode || undefined} data-drag-over={draggingOver === item.id || undefined}
+          onDragEnter={adminMode ? (event) => { event.preventDefault(); setDraggingOver(item.id); } : undefined}
+          onDragOver={adminMode ? (event) => { event.preventDefault(); event.dataTransfer.dropEffect = "copy"; } : undefined}
+          onDragLeave={adminMode ? (event) => { if (!event.currentTarget.contains(event.relatedTarget as Node)) setDraggingOver(null); } : undefined}
+          onDrop={adminMode ? (event) => { event.preventDefault(); acceptDrop(item, event.dataTransfer.files[0]); } : undefined}>
+          <Link className={styles.cardLink} href={item.canonicalUrl} onClick={state === "UPLOADING" ? (event) => event.preventDefault() : undefined}>
+            <span className={styles.cardTop}><span className={styles.cardCategory}>{item.category}</span>
+              {item.image ? <SpeciesPrimaryImage className={styles.thumb} media={item.image} variant="card" /> : <SpeciesImagePlaceholder className={styles.thumbPlaceholder} label={item.commonName} />}
+            </span>
+            <span className={styles.cardName}>{item.commonName}</span><span className={styles.cardScientific}>{item.scientificName}</span>
+            {item.frenchName ? <span className={styles.cardFrench}>{item.frenchName}</span> : null}
+            <span className={styles.cardFoot}><span className="ng-coverage" data-coverage={item.regulatoryJurisdictions.length ? "VERIFIED" : "IN_DEVELOPMENT"}>
+              {item.regulatoryJurisdictions.length ? `Rules: ${item.regulatoryJurisdictions.join(", ")}` : "Knowledge profile · no certified rules"}
+            </span></span>
+          </Link>
+          {adminMode ? <div className={styles.adminState} data-state={state} role="status">{state.replaceAll("_", " ")}{errors[item.id] ? <span>{errors[item.id]}</span> : null}</div> : null}
+        </li>;
+      })}
+    </ul> : <div className={`${styles.empty} ng-glass-card`}><p className={styles.emptyTitle}>No published species matches that search</p><p className={styles.emptyNote}>Try a common, scientific, French or hunter name. Research-only records are not published here.</p></div>}
+
+    {replacement ? <div className={styles.replaceBackdrop} role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) cancelReplacement(); }}>
+      <section ref={replacementDialogRef} className={`${styles.replaceDialog} ng-glass-panel`} role="dialog" aria-modal="true" aria-labelledby="replace-title">
+        <h2 id="replace-title">Replace primary image for {replacement.item.commonName}?</h2>
+        <div className={styles.replaceCompare}>
+          <div><span className="ng-label">Current image</span>{replacement.item.image ? <SpeciesPrimaryImage media={replacement.item.image} variant="card" className={styles.replaceImage} /> : null}</div>
+          <div><span className="ng-label">New image</span><Image src={replacement.preview} alt="New upload preview" width={480} height={320} unoptimized className={styles.replaceImage} /></div>
         </div>
-
-        <div className={styles.filters} role="group" aria-label="Filter by category">
-          {categories.map((item) => (
-            <button
-              key={item.name}
-              type="button"
-              className={styles.filter}
-              aria-pressed={category === item.name}
-              onClick={() => setCategory(item.name)}
-            >
-              {item.name}
-              <span className={styles.filterCount}>{item.count}</span>
-            </button>
-          ))}
-        </div>
+        <div className={styles.replaceActions}><button type="button" className="ng-action" onClick={() => { const pending = replacement; cancelReplacement(); void upload(pending.item, pending.file, pending.item.image?.assetId ?? null); }}>Replace</button><button type="button" className="ng-action-quiet" onClick={cancelReplacement}>Cancel</button></div>
       </section>
-
-      <p className={styles.resultLine} aria-live="polite">
-        <span>
-          {visible.length} {visible.length === 1 ? "species" : "species"}
-          {category === ALL ? "" : ` in ${category}`}
-        </span>
-        {filtering ? (
-          <button type="button" className={styles.reset} onClick={() => { setQuery(""); setCategory(ALL); }}>
-            Clear
-          </button>
-        ) : null}
-      </p>
-
-      <h2 className="ng-visually-hidden" id="results-heading">Species</h2>
-      {visible.length ? (
-        <ul className={styles.grid} aria-labelledby="results-heading">
-          {visible.map((item) => (
-            <li key={item.id} className={`${styles.card} ng-glass-card`}>
-              <Link className={styles.cardLink} href={item.canonicalUrl}>
-                <span className={styles.cardTop}>
-                  <span className={styles.cardCategory}>{item.category}</span>
-                  {item.image ? (
-                    /* eslint-disable-next-line @next/next/no-img-element -- contract-gated external media. */
-                    <img className={styles.thumb} src={item.image.url} alt={item.image.alt} loading="lazy" />
-                  ) : null}
-                </span>
-                {/* With no verified photograph the name carries the card. A
-                    placeholder box here would read as missing content rather
-                    than as the deliberate standard it is. */}
-                <span className={styles.cardName}>{item.commonName}</span>
-                <span className={styles.cardScientific}>{item.scientificName}</span>
-                {item.frenchName ? <span className={styles.cardFrench}>{item.frenchName}</span> : null}
-                <span className={styles.cardFoot}>
-                  <span className="ng-coverage" data-coverage={item.regulatoryJurisdictions.length ? "VERIFIED" : "IN_DEVELOPMENT"}>
-                    {item.regulatoryJurisdictions.length
-                      ? `Rules: ${item.regulatoryJurisdictions.join(", ")}`
-                      : "Knowledge profile · no certified rules"}
-                  </span>
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <div className={`${styles.empty} ng-glass-card`}>
-          <p className={styles.emptyTitle}>No published species matches that search</p>
-          <p className={styles.emptyNote}>
-            Try a common, scientific, French or hunter name. Research-only records are not
-            published here, so a species North Ground has not yet written up will not appear.
-          </p>
-        </div>
-      )}
-    </>
-  );
+    </div> : null}
+  </>;
 }

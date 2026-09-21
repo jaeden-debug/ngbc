@@ -1,4 +1,5 @@
 import type { CanonicalId } from "../content-contract/index.ts";
+import type { SpeciesPrimaryMedia } from "../species-media/types.ts";
 import { officialTermPlural, ZONE_LAYERS } from "./zone-layers.ts";
 
 /**
@@ -91,6 +92,8 @@ export interface SpeciesSelectorOption {
   /** Compact server-built vocabulary: aliases, French names, groups and hunter terms. */
   searchTerms: string[];
   resourcePath: string;
+  /** Canonical PRIMARY image, resolved server-side from the media relationship. */
+  image: SpeciesPrimaryMedia | null;
   /**
    * Jurisdictions whose certified rule bundles currently contain this species,
    * derived from the national coverage report rather than declared per species.

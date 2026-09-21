@@ -187,6 +187,12 @@
 
 .card:hover { border-color: var(--ng-glass-border-bright); }
 
+.card[data-drag-over="true"] {
+  border-color: var(--ng-moss);
+  box-shadow: inset 0 0 0 2px var(--ng-moss), var(--ng-shadow-2);
+  transform: translateY(-2px);
+}
+
 /* The whole card is the target — a 48px name link inside a card people will try
    to tap anywhere is a mobile annoyance, not a feature. */
 .cardLink {
@@ -261,6 +267,52 @@
   border-radius: var(--ng-radius-sm);
   object-fit: cover;
 }
+
+.thumbPlaceholder {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--ng-glass-border);
+  border-radius: var(--ng-radius-sm);
+  color: var(--ng-bone-faint);
+  background: rgba(201, 194, 166, 0.035);
+}
+
+.thumbPlaceholder svg { width: 31px; height: 31px; }
+
+.adminState {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 0 15px 12px;
+  color: var(--ng-bone-dim);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.adminState[data-state="UPLOADING"] { color: var(--ng-fire); }
+.adminState[data-state="ERROR"] { color: #f5a08f; }
+.adminState span { font-weight: 500; letter-spacing: 0; line-height: 1.4; }
+
+.replaceBackdrop {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(0, 0, 0, 0.72);
+}
+
+.replaceDialog { width: min(620px, 100%); padding: 22px; }
+.replaceDialog h2 { margin: 0; color: var(--ng-cream); font-size: 1.15rem; }
+.replaceCompare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+.replaceCompare > div { display: grid; gap: 7px; }
+.replaceImage { width: 100%; aspect-ratio: 3 / 2; border-radius: var(--ng-radius-sm); object-fit: cover; }
+.replaceActions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
 
 /* ── Empty state ──────────────────────────────────────────────────────────── */
 

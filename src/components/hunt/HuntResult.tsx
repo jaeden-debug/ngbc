@@ -9,6 +9,8 @@ import { readableCalendarDay, readableIso } from "../../lib/hunt/date";
 import { partitionEvaluationSources } from "../../lib/hunt/source-roles";
 import { layerForJurisdiction } from "../../lib/hunt/zone-layers";
 import type { HuntEvaluation } from "../../lib/hunt/types";
+import type { SpeciesPrimaryMedia } from "../../lib/species-media/types";
+import SpeciesPrimaryImage from "../species/SpeciesPrimaryImage";
 import ReadyToHunt from "./ReadyToHunt";
 import styles from "./Hunt.module.css";
 
@@ -29,9 +31,10 @@ const STATUS_WORDING: Record<string, string> = {
 };
 
 export default function HuntResult({
-  result, placeLabel, assumptions = [], onAnswer,
+  result, speciesMedia, placeLabel, assumptions = [], onAnswer,
 }: {
   result: HuntEvaluation;
+  speciesMedia: SpeciesPrimaryMedia | null;
   placeLabel: string | null;
   /** Self-reported facts this result depended on, in the question's own words. */
   assumptions?: Array<{ question: string; answer: string }>;
@@ -104,10 +107,13 @@ export default function HuntResult({
       {/* ── Primary answer ─────────────────────────────────────────────── */}
       <div className={`${styles.resultHead} ng-glass-panel`}>
         <div className={styles.resultTopRow}>
-          <div>
+          <div className={styles.resultIdentity}>
+            {speciesMedia ? <SpeciesPrimaryImage media={speciesMedia} variant="avatar" className={styles.resultSpeciesImage} /> : null}
+            <div>
             <span className="ng-status" data-status={status}>{STATUS_WORDING[status] ?? status}</span>
             <h2 className={styles.resultSpecies} id="hunt-result-heading">{result.species.name}</h2>
             {zoneName ? <p className={styles.resultZone}>{zoneName}</p> : null}
+            </div>
           </div>
           <div className={styles.resultActions}>
             {/* A brief names the jurisdiction the zone belongs to. A point no
@@ -189,6 +195,8 @@ export default function HuntResult({
       {result.readiness ? (
         <ReadyToHunt
           readiness={result.readiness}
+          speciesMedia={speciesMedia}
+          speciesName={result.species.name}
           residency={result.input.answers?.RESIDENCY}
           onChooseResidency={onAnswer ? (value) => onAnswer("RESIDENCY", value) : undefined}
         />

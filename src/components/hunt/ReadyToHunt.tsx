@@ -4,6 +4,8 @@ import { CHANNEL_LABELS, METHOD_LABELS, formatPrice } from "../../lib/hunt/readi
 import type {
   AuthorizationChecklistItem, Provenance, ReadinessResult, Recommendation,
 } from "../../lib/hunt/readiness/types";
+import type { SpeciesPrimaryMedia } from "../../lib/species-media/types";
+import SpeciesPrimaryImage from "../species/SpeciesPrimaryImage";
 import VendorSearch from "./VendorSearch";
 import styles from "./ReadyToHunt.module.css";
 
@@ -104,9 +106,11 @@ function Advice({ items }: { items: Recommendation[] }) {
 const RESIDENCY_WORD = { RESIDENT: "Resident", NON_RESIDENT: "Non-resident" } as const;
 
 export default function ReadyToHunt({
-  readiness, residency, onChooseResidency,
+  readiness, speciesMedia, speciesName, residency, onChooseResidency,
 }: {
   readiness: ReadinessResult;
+  speciesMedia: SpeciesPrimaryMedia | null;
+  speciesName: string;
   /** The residency this result was checked for, if the hunter gave one. */
   residency?: string;
   /** Records residency through the same answer the regulation reads, then re-checks the hunt. */
@@ -115,7 +119,7 @@ export default function ReadyToHunt({
   if (readiness.coverage === "UNAVAILABLE") {
     return (
       <section className={`${styles.ready} ng-glass-panel`} aria-labelledby="ready-heading">
-        <h3 id="ready-heading" className={styles.heading}>Ready to hunt</h3>
+        <div className={styles.readyIdentity}>{speciesMedia ? <SpeciesPrimaryImage media={speciesMedia} variant="avatar" className={styles.readySpeciesImage} /> : null}<h3 id="ready-heading" className={styles.heading}>Ready to hunt <span className="ng-visually-hidden">{speciesName}</span></h3></div>
         {readiness.limitations.map((line) => <p key={line} className={styles.note}>{line}</p>)}
         {readiness.officialInfoUrl ? (
           <p className={styles.note}><a href={readiness.officialInfoUrl} target="_blank" rel="noopener noreferrer">Official source for {readiness.jurisdictionName}</a></p>
@@ -132,7 +136,7 @@ export default function ReadyToHunt({
 
   return (
     <section className={`${styles.ready} ng-glass-panel`} aria-labelledby="ready-heading">
-      <h3 id="ready-heading" className={styles.heading}>Ready to hunt</h3>
+      <div className={styles.readyIdentity}>{speciesMedia ? <SpeciesPrimaryImage media={speciesMedia} variant="avatar" className={styles.readySpeciesImage} /> : null}<h3 id="ready-heading" className={styles.heading}>Ready to hunt <span className="ng-visually-hidden">{speciesName}</span></h3></div>
       <p className={styles.note}>What you need before you go, from {readiness.jurisdictionName}&apos;s rules for this hunt.</p>
 
       <h4 className={styles.subhead}>Licences and permits</h4>

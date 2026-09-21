@@ -6,8 +6,24 @@
   border-radius: var(--ng-radius-lg);
 }
 
+.readyIdentity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.readySpeciesImage {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid var(--ng-glass-border);
+}
+
 .heading {
-  margin: 0 0 4px;
+  margin: 0;
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--ng-cream);

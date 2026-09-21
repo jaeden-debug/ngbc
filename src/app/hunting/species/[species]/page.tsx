@@ -10,10 +10,12 @@ import {
   SourceList,
 } from "../../../../components/content/ContentPatterns";
 import HuntNav from "../../../../components/hunt/HuntNav";
+import SpeciesPrimaryImage, { SpeciesImagePlaceholder } from "../../../../components/species/SpeciesPrimaryImage";
 import StructuredData from "../../../../components/StructuredData";
 import type { SpeciesResource } from "../../../../lib/content-contract/types";
 import { contentRepository } from "../../../../lib/content/repository";
 import { regulatoryJurisdictionsForSpecies } from "../../../../lib/hunt/canada/report";
+import { getSpeciesPrimaryMedia } from "../../../../lib/species-media/repository";
 import { speciesArticleJsonLd } from "../../../../lib/seo/structured-data";
 import { absoluteUrl } from "../../../../lib/site";
 import styles from "./page.module.css";
@@ -36,6 +38,7 @@ async function getSpeciesResource(slug: string): Promise<SpeciesResource | null>
  * the server. It is also simply true — `generateStaticParams` is the list.
  */
 export const dynamicParams = false;
+export const dynamic = "force-dynamic";
 
 export async function generateStaticParams() {
   const resources = await contentRepository.getPublishedResources({ locale: "en-CA" });
@@ -88,7 +91,7 @@ export default async function SpeciesPage({ params }: Props) {
   const [related, relatedSpecies, image, blocks, groups] = await Promise.all([
     contentRepository.getRelatedResources(resource.id, { locale: resource.locale, limit: 5 }),
     contentRepository.getRelatedSpecies(speciesId),
-    contentRepository.getSpeciesImage(speciesId),
+    getSpeciesPrimaryMedia(speciesId),
     blocksPromise,
     contentRepository.getSpeciesGroups(speciesId),
   ]);
@@ -154,22 +157,14 @@ export default async function SpeciesPage({ params }: Props) {
 
           {image ? (
             <figure className={styles.photo}>
-              {/* eslint-disable-next-line @next/next/no-img-element -- external licensed media is contract-gated and responsive. */}
-              <img src={image.assetUrl} alt={image.altText ?? ""} width={image.width} height={image.height} />
-              <figcaption>{image.caption} {image.attribution}</figcaption>
+              <SpeciesPrimaryImage media={image} variant="profile" loading="eager" />
+              <figcaption>{image.caption} {image.creator} · {image.licence}</figcaption>
             </figure>
           ) : (
-            /* The standard stated plainly. A wrong wildlife photograph on an
-               identification page is a safety failure, so no photograph is the
-               correct state — not a gap to be dressed with a placeholder. */
-            <p className={styles.mediaNote}>
-              <svg className={styles.mediaNoteIcon} width="14" height="14" viewBox="0 0 18 18" aria-hidden="true" fill="none">
-                <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="1.3" />
-                <path d="M9 5.4v4.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                <circle cx="9" cy="12.4" r="0.85" fill="currentColor" />
-              </svg>
-              <span>No photograph is published. North Ground publishes wildlife imagery only after exact-species identity, licence and attribution are verified.</span>
-            </p>
+            <div className={styles.mediaFallback}>
+              <SpeciesImagePlaceholder className={styles.profilePlaceholder} label={resource.title} />
+              <p className={styles.mediaNote}>No primary photograph is set. North Ground publishes wildlife imagery only after an administrator assigns it to this exact canonical species.</p>
+            </div>
           )}
 
           <div className={styles.actions}>
