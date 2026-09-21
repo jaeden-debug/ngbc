@@ -1,8 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import {
-  diffQuebecBundles, expandZoneNumberList, implementsForEnginParagraph, implementsForHeading, pageBlocks,
-  pageLastUpdated, parseClassCell, parseCrossbowBan, parseEnginCell, parseSeasonCell, seasonColumn,
+  diffQuebecBundles, expandZoneNumberList, implementsForEnginParagraph, implementsForHeading, pageBlocks, pageLastUpdated, parseClassCell, parseCrossbowBan, parseEnginCell, parseSeasonCell, seasonColumn, diffZoneLayer, formatZoneLayerDiff, zoneLayerFingerprint,
 } from "./quebec-source.mjs";
 
 /*
@@ -169,4 +168,77 @@ test("a bundle diff names each changed rule and the designations it touches", ()
   assert.equal(diff.changed.length, 1);
   assert.deepEqual(diff.changed[0].fields.map((field) => field.field), ["seasonPhrase", "windows"]);
   assert.deepEqual(diff.designationsTouched, ["12", "14", "26E"]);
+});
+
+/* ── The zone layer's fingerprint ─────────────────────────────────────────── */
+
+const LAYER = {
+  metadata: { title: "Zones et parties de zones de chasse", abstract: "…", keywords: ["features", "zones_de_chasse_2022_03_23_Qlite"], defaultCrs: "urn:ogc:def:crs:EPSG::32198", wgs84Box: "-84.4 44.5 -53.4 62.8" },
+  schema: ["the_geom:gml:MultiSurfacePropertyType", "Zone:xsd:string", "Shape_Area:xsd:double"],
+  rows: [
+    { id: "Zone_chasse_da3_sefaq.1", zone: "10O", area: 16_640_540_954.2, latitude: 46.1, longitude: -76.5 },
+    { id: "Zone_chasse_da3_sefaq.2", zone: "19SE", area: 1_000_000, latitude: 50.4, longitude: -59.8 },
+    { id: "Zone_chasse_da3_sefaq.3", zone: "19SE", area: 2_000_000, latitude: 50.5, longitude: -59.7 },
+  ],
+};
+
+test("the fingerprint groups the ministry's records by zone, without geometry, in a stable order", () => {
+  const fingerprint = zoneLayerFingerprint(LAYER);
+  assert.equal(fingerprint.records, 3);
+  assert.deepEqual(fingerprint.designations.map((entry) => [entry.designation, entry.records, entry.areaM2]), [
+    ["10O", 1, 16_640_540_954],
+    ["19SE", 2, 3_000_000],
+  ]);
+  // Record order in the response is not a change.
+  assert.equal(zoneLayerFingerprint({ ...LAYER, rows: [...LAYER.rows].reverse() }).contentHash, fingerprint.contentHash);
+});
+
+test("a changed area, a lost record, a new zone and a new vintage are each named", () => {
+  const before = zoneLayerFingerprint(LAYER);
+  const after = zoneLayerFingerprint({
+    metadata: { ...LAYER.metadata, keywords: ["features", "zones_de_chasse_2026_09_01_Qlite"] },
+    schema: LAYER.schema,
+    rows: [
+      { ...LAYER.rows[0], area: LAYER.rows[0].area * 1.01 },
+      LAYER.rows[1],
+      { id: "Zone_chasse_da3_sefaq.9", zone: "30", area: 5, latitude: 50, longitude: -70 },
+    ],
+  });
+  const diff = diffZoneLayer(before, after);
+  assert.equal(diff.moved, true);
+  assert.deepEqual(diff.metadata.map((entry) => entry.key), ["keywords"]);
+  assert.deepEqual(diff.added, ["30"]);
+  assert.deepEqual(diff.changed.map((entry) => [entry.designation, entry.records, entry.areaPercent]), [
+    ["10O", [1, 1], 1],
+    ["19SE", [2, 1], -66.7],
+  ]);
+  const text = formatZoneLayerDiff(diff);
+  assert.match(text, /CHANGED {2}zone 19SE: 2 -> 1 records; area 3000000 -> 1000000 m² \(-66\.7%\)/);
+  assert.match(text, /ADDED {4}zone 30/);
+});
+
+test("a record that moves without changing count or area is still a change", () => {
+  const before = zoneLayerFingerprint(LAYER);
+  const after = zoneLayerFingerprint({ ...LAYER, rows: [{ ...LAYER.rows[0], latitude: 46.2 }, ...LAYER.rows.slice(1)] });
+  const diff = diffZoneLayer(before, after);
+  assert.equal(diff.moved, true);
+  assert.match(formatZoneLayerDiff(diff), /zone 10O: same records and area, but/);
+});
+
+test("a withdrawn area attribute is a schema change, and areas become incomparable rather than zero", () => {
+  const before = zoneLayerFingerprint(LAYER);
+  const after = zoneLayerFingerprint({
+    ...LAYER,
+    schema: LAYER.schema.filter((entry) => !entry.startsWith("Shape_Area")),
+    rows: LAYER.rows.map((row) => ({ ...row, area: null })),
+  });
+  const diff = diffZoneLayer(before, after);
+  assert.deepEqual(diff.schema.removed, ["Shape_Area:xsd:double"]);
+  assert.ok(diff.changed.every((entry) => entry.areaM2[1] === null && entry.areaPercent === null));
+});
+
+test("an unchanged layer is unchanged", () => {
+  const diff = diffZoneLayer(zoneLayerFingerprint(LAYER), zoneLayerFingerprint(LAYER));
+  assert.equal(diff.moved, false);
+  assert.equal(formatZoneLayerDiff(diff), "");
 });

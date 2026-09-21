@@ -468,6 +468,157 @@ export async function fetchDesignations(repairPartName) {
   return [...byDesignation.values()].sort((a, b) => a.designation.localeCompare(b.designation));
 }
 
+/* ── The zone layer's own fingerprint ────────────────────────────────────── */
+
+export const ZONE_TYPE_NAME = "SmartFaunePub:Zone_chasse_da3_sefaq";
+
+/**
+ * Everything the ministry's zone layer says about itself that can move without
+ * a designation moving: its description and dated version keyword, its native
+ * CRS and extent, its attribute schema, and each of its 9,503 polygon records'
+ * id, area (Shape_Area, in the layer's own Lambert metres) and label point.
+ *
+ * Read without geometry, in about ten pages of attributes: a daily check cannot
+ * download 2.4 million vertices, but an edited boundary changes the area of the
+ * record it belongs to. A full geometry re-read and parity certification follow
+ * any change this reports.
+ */
+export async function readZoneLayer(read = fetchText) {
+  const capabilities = await read(`${ZONE_WFS}?service=WFS&version=2.0.0&request=GetCapabilities`);
+  const block = new RegExp(`<Name>${ZONE_TYPE_NAME}</Name>([\\s\\S]*?)</FeatureType>`).exec(capabilities)?.[1];
+  if (!block) throw new Error(`The service no longer lists ${ZONE_TYPE_NAME}.`);
+  const tag = (name) => decodeEntities(new RegExp(`<${name}>([\\s\\S]*?)</${name}>`).exec(block)?.[1]?.trim() ?? "");
+  const metadata = {
+    title: tag("Title"),
+    abstract: tag("Abstract"),
+    keywords: [...block.matchAll(/<ows:Keyword>([\s\S]*?)<\/ows:Keyword>/g)].map((match) => decodeEntities(match[1].trim())),
+    defaultCrs: tag("DefaultCRS"),
+    wgs84Box: [tag("ows:LowerCorner"), tag("ows:UpperCorner")].join(" "),
+  };
+
+  const description = await read(`${ZONE_WFS}?service=WFS&version=2.0.0&request=DescribeFeatureType&typeNames=${ZONE_TYPE_NAME}`);
+  const schema = [...description.matchAll(/<xsd:element [^>]*name="([^"]+)"[^>]*type="([^"]+)"/g)]
+    .map((match) => `${match[1]}:${match[2]}`)
+    .filter((entry) => !entry.startsWith(`${ZONE_TYPE_NAME.split(":")[1]}:`));
+
+  const rows = [];
+  const seen = new Set();
+  let expected = null;
+  for (let startIndex = 0; ;) {
+    const parameters = new URLSearchParams({
+      service: "WFS", version: "2.0.0", request: "GetFeature", typeNames: ZONE_TYPE_NAME,
+      outputFormat: "application/json", propertyName: "Zone,Shape_Area,Latitude,Longitude",
+      count: "1000", startIndex: String(startIndex), sortBy: "Zone ASC,Latitude ASC,Longitude ASC",
+    });
+    const page = JSON.parse(await read(`${ZONE_WFS}?${parameters}`));
+    expected ??= page.numberMatched ?? page.totalFeatures ?? null;
+    const features = page.features ?? [];
+    if (!features.length) break;
+    for (const feature of features) {
+      if (!feature.id || seen.has(feature.id)) continue;
+      seen.add(feature.id);
+      rows.push({
+        id: String(feature.id),
+        zone: String(feature.properties?.Zone ?? "").trim(),
+        area: feature.properties?.Shape_Area ?? null,
+        latitude: feature.properties?.Latitude ?? null,
+        longitude: feature.properties?.Longitude ?? null,
+      });
+    }
+    startIndex += features.length;
+    if (expected !== null && startIndex >= expected) break;
+  }
+  /* A partial read is never "unchanged": it is a read that failed. */
+  if (expected === null || seen.size !== expected) {
+    throw new Error(`Incomplete read of the zone layer: ${seen.size} of ${expected ?? "?"} records.`);
+  }
+  return { metadata, schema, rows };
+}
+
+/** The committed form: small, stable, and precise enough to name what moved. */
+export function zoneLayerFingerprint({ metadata, schema, rows }) {
+  const byZone = new Map();
+  for (const row of rows) {
+    if (!row.zone) throw new Error(`Record ${row.id} has no Zone.`);
+    if (!byZone.has(row.zone)) byZone.set(row.zone, []);
+    byZone.get(row.zone).push(row);
+  }
+  const designations = [...byZone.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([designation, records]) => {
+      const lines = records
+        .map((record) => `${record.id}|${record.area}|${record.latitude}|${record.longitude}`)
+        .sort();
+      const areas = records.map((record) => record.area);
+      return {
+        designation,
+        records: records.length,
+        // Null when the layer stops publishing an area: then no area can be compared.
+        areaM2: areas.every((area) => typeof area === "number") ? Math.round(areas.reduce((sum, area) => sum + area, 0)) : null,
+        hash: sha256(lines.join("\n")),
+      };
+    });
+  const body = { metadata, schema, records: rows.length, designations };
+  return { ...body, contentHash: sha256(JSON.stringify(body)) };
+}
+
+/** What moved between two fingerprints, in the ministry's own terms. */
+export function diffZoneLayer(previous, next) {
+  const metadata = Object.keys({ ...previous.metadata, ...next.metadata })
+    .filter((key) => JSON.stringify(previous.metadata?.[key]) !== JSON.stringify(next.metadata?.[key]))
+    .map((key) => ({ key, before: previous.metadata?.[key], after: next.metadata?.[key] }));
+  const schemaBefore = new Set(previous.schema ?? []);
+  const schemaAfter = new Set(next.schema ?? []);
+  const schema = {
+    added: [...schemaAfter].filter((entry) => !schemaBefore.has(entry)),
+    removed: [...schemaBefore].filter((entry) => !schemaAfter.has(entry)),
+  };
+  const before = new Map((previous.designations ?? []).map((entry) => [entry.designation, entry]));
+  const after = new Map((next.designations ?? []).map((entry) => [entry.designation, entry]));
+  const added = [...after.keys()].filter((designation) => !before.has(designation)).sort();
+  const removed = [...before.keys()].filter((designation) => !after.has(designation)).sort();
+  const changed = [];
+  for (const [designation, entry] of after) {
+    const prior = before.get(designation);
+    if (!prior || prior.hash === entry.hash) continue;
+    changed.push({
+      designation,
+      records: [prior.records, entry.records],
+      areaM2: [prior.areaM2, entry.areaM2],
+      // Three significant figures: a dropped island in 19SE is a real change of 0.0000047%, not 0%.
+      areaPercent: prior.areaM2 && entry.areaM2 !== null
+        ? Number((((entry.areaM2 - prior.areaM2) / prior.areaM2) * 100).toPrecision(3))
+        : null,
+    });
+  }
+  return {
+    metadata, schema, added, removed, changed,
+    moved: metadata.length > 0 || schema.added.length > 0 || schema.removed.length > 0
+      || added.length > 0 || removed.length > 0 || changed.length > 0,
+  };
+}
+
+export function formatZoneLayerDiff(diff) {
+  const lines = [];
+  for (const { key, before, after } of diff.metadata) lines.push(`  METADATA ${key}: ${JSON.stringify(before)} -> ${JSON.stringify(after)}`);
+  for (const entry of diff.schema.added) lines.push(`  SCHEMA   added ${entry}`);
+  for (const entry of diff.schema.removed) lines.push(`  SCHEMA   removed ${entry}`);
+  for (const designation of diff.added) lines.push(`  ADDED    zone ${designation}`);
+  for (const designation of diff.removed) lines.push(`  REMOVED  zone ${designation}`);
+  for (const change of diff.changed) {
+    const [recordsBefore, recordsAfter] = change.records;
+    const [areaBefore, areaAfter] = change.areaM2;
+    const parts = [];
+    if (recordsBefore !== recordsAfter) parts.push(`${recordsBefore} -> ${recordsAfter} records`);
+    if (areaBefore !== areaAfter) {
+      parts.push(`area ${areaBefore ?? "?"} -> ${areaAfter ?? "?"} m²${change.areaPercent === null ? "" : ` (${change.areaPercent > 0 ? "+" : ""}${change.areaPercent}%)`}`);
+    }
+    if (!parts.length) parts.push("same records and area, but a record's id, area or label point moved");
+    lines.push(`  CHANGED  zone ${change.designation}: ${parts.join("; ")}`);
+  }
+  return lines.join("\n");
+}
+
 /* ── Bundle comparison ────────────────────────────────────────────────────── */
 
 /**

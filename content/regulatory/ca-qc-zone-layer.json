@@ -1,0 +1,382 @@
+{
+  "layer": "SmartFaunePub:Zone_chasse_da3_sefaq",
+  "purpose": "The ministry's hunting-zone layer as North Ground last certified it, without geometry. A change here means the parity certification no longer describes the live layer.",
+  "retrievedAt": "2026-09-21",
+  "metadata": {
+    "title": "Zones et parties de zones de chasse",
+    "abstract": "Délimitation du territoire Québécois en 29 zones, et leurs parties de zones, en vertu de la Loi sur la conservation et la mise en valeur de la faune, L.R.Q., ch. C-61.1. Toutefois, la zone 25 constitue uniquement une zone de pêche.",
+    "keywords": [
+      "features",
+      "zones_de_chasse_2022_03_23_Qlite"
+    ],
+    "defaultCrs": "urn:ogc:def:crs:EPSG::32198",
+    "wgs84Box": "-84.40158802863279 44.513231971596866 -53.40925534306087 62.84305092210318"
+  },
+  "schema": [
+    "the_geom:gml:MultiSurfacePropertyType",
+    "Latitude:xsd:double",
+    "Longitude:xsd:double",
+    "Zone:xsd:string",
+    "No_zone:xsd:string",
+    "Partie_zon:xsd:string",
+    "Shape_Area:xsd:double"
+  ],
+  "records": 9503,
+  "designations": [
+    {
+      "designation": "01N",
+      "records": 45,
+      "areaM2": 18910097781,
+      "hash": "sha256:df687d54304709d77ba470131ceaf246f4839dc0ea8a6e07f58e506c6159e746"
+    },
+    {
+      "designation": "01S",
+      "records": 31,
+      "areaM2": 7461477189,
+      "hash": "sha256:14f699d021fe18a854770fb8ff01e73b68129f74852b5c675fae4396f203fae1"
+    },
+    {
+      "designation": "02E",
+      "records": 40,
+      "areaM2": 8417289420,
+      "hash": "sha256:f409fcb059a021cc3b42ae29df7272c369b19c03b6777440769c7fe4fb089d70"
+    },
+    {
+      "designation": "02EI",
+      "records": 4,
+      "areaM2": 7599541,
+      "hash": "sha256:646860a4fe651b048eb3927070ba90a879e68df1ecb21b2b6eb176a2f40103ff"
+    },
+    {
+      "designation": "02O",
+      "records": 1,
+      "areaM2": 7748365016,
+      "hash": "sha256:b5c505f96cd342086884dec13e846c86c7d81471a7ab73b7f3c7666aed80b295"
+    },
+    {
+      "designation": "02OI",
+      "records": 75,
+      "areaM2": 23723802,
+      "hash": "sha256:af34354ba7114abecdf01719abf3fcfa2c1f46a52de87211982b9d1e7f23b813"
+    },
+    {
+      "designation": "03E",
+      "records": 1,
+      "areaM2": 4348197346,
+      "hash": "sha256:6a4773c4a86db6658b392e7c725d685c20caac30c26658fb62111ca950206175"
+    },
+    {
+      "designation": "03EI",
+      "records": 77,
+      "areaM2": 24351114,
+      "hash": "sha256:4afdc14ed310bbff33d151ecb15e3762f5242591ceca906a1e6f7c58aee6d35a"
+    },
+    {
+      "designation": "03O",
+      "records": 1,
+      "areaM2": 4441284235,
+      "hash": "sha256:ddc958d8c3c191d3f6f227cf031d1b47f201cd2c8390218495cc56c2a86c9fda"
+    },
+    {
+      "designation": "03OI",
+      "records": 3,
+      "areaM2": 18525,
+      "hash": "sha256:cba50968a271700a54b36e67c85724841568cc00c3b66bbf32ef33dbb8b1cd57"
+    },
+    {
+      "designation": "04",
+      "records": 1,
+      "areaM2": 8069146875,
+      "hash": "sha256:e53ce606b195468ba37740166b74d6ff98a2d1ec8ad67b796df7c2a75516e9f4"
+    },
+    {
+      "designation": "05E",
+      "records": 1,
+      "areaM2": 905859162,
+      "hash": "sha256:ffb5136df8e5633e569b4e60c715bf9ac51e445f4ba695a4bf4170aa96ecfbd3"
+    },
+    {
+      "designation": "05O",
+      "records": 1,
+      "areaM2": 1269082614,
+      "hash": "sha256:c678b221c954b5c247548c5d44197aa6822ce9528bbe7faa83585ddfcdee3c44"
+    },
+    {
+      "designation": "06N",
+      "records": 1,
+      "areaM2": 2173677181,
+      "hash": "sha256:0545c1de8b22175f1023bee99cd507f7289f69ff348781f3f7ca272f8bf5c639"
+    },
+    {
+      "designation": "06S",
+      "records": 1,
+      "areaM2": 4340154357,
+      "hash": "sha256:d5ffebf20febc145eb9fe3285a751634294e1b9173d969e6cbdecbcf7fb27fb0"
+    },
+    {
+      "designation": "07N",
+      "records": 3,
+      "areaM2": 8788986648,
+      "hash": "sha256:45e15985c810326653acfef5277b74f80c023a0eabb1e7acc70e39d5d7b9be4f"
+    },
+    {
+      "designation": "07S",
+      "records": 1,
+      "areaM2": 3318531406,
+      "hash": "sha256:5679fdd2e0a8c8ca2b71f2ddcf0f4dd60a76ec401a039f161abf953070448fe8"
+    },
+    {
+      "designation": "08E",
+      "records": 1,
+      "areaM2": 2333506979,
+      "hash": "sha256:f5bae75f0de02b77a75d212b41ae3f3c65f329735d46bee6892bbc7172e09950"
+    },
+    {
+      "designation": "08N",
+      "records": 1,
+      "areaM2": 8783940943,
+      "hash": "sha256:896520d5f2f2117e0ba647955d62249e319c64ff9bb0afa3bb9563822af862f7"
+    },
+    {
+      "designation": "08NMR",
+      "records": 1,
+      "areaM2": 195,
+      "hash": "sha256:d88dd61c868064d9b447de63ac8e05faceca5314d9233852217d064b75ea2c97"
+    },
+    {
+      "designation": "08NZ",
+      "records": 1,
+      "areaM2": 70527372,
+      "hash": "sha256:d480373242c773b1080fbb6eca1baa1a933f2008fa65de61db67eb06c26f66b3"
+    },
+    {
+      "designation": "08S",
+      "records": 1,
+      "areaM2": 1751329117,
+      "hash": "sha256:30076c68eebcadf06f983f49756de87229307b7cfc648f19ac38e8fd1a48b813"
+    },
+    {
+      "designation": "09E",
+      "records": 1,
+      "areaM2": 2859707016,
+      "hash": "sha256:809c3a38064af36c2f72b8d839804ca02c9a286c0ae489cdba7dcf35aead9065"
+    },
+    {
+      "designation": "09O",
+      "records": 1,
+      "areaM2": 2233774301,
+      "hash": "sha256:92b60137c594aa013bb2f63f90a638912e63cd9c67daa2aaf763bfc01de5ea5b"
+    },
+    {
+      "designation": "09OZ",
+      "records": 1,
+      "areaM2": 945995312,
+      "hash": "sha256:671e7ab3f4a2a0ce224c19eddffdfc06bbae1e939f321848f8e64cf5905401de"
+    },
+    {
+      "designation": "10E",
+      "records": 2,
+      "areaM2": 5560424685,
+      "hash": "sha256:deff250c12862ced3a45b7902c0608976e308b66456ab918f8545191b9046e6b"
+    },
+    {
+      "designation": "10EZ",
+      "records": 2,
+      "areaM2": 1200346526,
+      "hash": "sha256:f451de0daed5d1ba687f7fec0895a1e5f50cb17ac500744fd30c0e8f4baf66ad"
+    },
+    {
+      "designation": "10O",
+      "records": 1,
+      "areaM2": 16640540954,
+      "hash": "sha256:68e332dbfe68d85e1ee2a7be4cf01aef290490cb73a4dc0cad5501d55d4a7295"
+    },
+    {
+      "designation": "11E",
+      "records": 1,
+      "areaM2": 4004119365,
+      "hash": "sha256:f44216e74e2401a333fb55e39361e02ee9673d5d1f3607a565036dc7697b6421"
+    },
+    {
+      "designation": "11O",
+      "records": 1,
+      "areaM2": 1251349656,
+      "hash": "sha256:ba9f9dfe543822eaf46764e51590835907ddb5fb6a32128215fb41410ca29db8"
+    },
+    {
+      "designation": "12",
+      "records": 2,
+      "areaM2": 10695135059,
+      "hash": "sha256:f2125b8693d99d71eccc8fa4e8f7dfa77be1c7c49995add41114dfd8fbc40c29"
+    },
+    {
+      "designation": "13",
+      "records": 1,
+      "areaM2": 63318133362,
+      "hash": "sha256:e2d14db8e589c9cc6e8309282bb63d3a7ea5cc4185cffc9c9a1e0592423dd164"
+    },
+    {
+      "designation": "13SO",
+      "records": 1,
+      "areaM2": 986423021,
+      "hash": "sha256:515e955369102af5a62c0c4303e7e2fed9cad9436531adec4f4025932ee7f62c"
+    },
+    {
+      "designation": "14",
+      "records": 1,
+      "areaM2": 21868529808,
+      "hash": "sha256:9454ac850895dab4e1b3ca6dca3aeb24d40a821535db627bde94caeb6f2c9822"
+    },
+    {
+      "designation": "15E",
+      "records": 1,
+      "areaM2": 8118136591,
+      "hash": "sha256:0ecb7da26f94cf5f5c5c332ae6da615ad7b8b88793e52b5c1778cfc146c47b90"
+    },
+    {
+      "designation": "15N",
+      "records": 1,
+      "areaM2": 4190640833,
+      "hash": "sha256:2c2b2cd2dca97498ec98408accb52af4b26e5a07e433bc568f221cc31b16c536"
+    },
+    {
+      "designation": "15O",
+      "records": 1,
+      "areaM2": 2995096585,
+      "hash": "sha256:510aab10b80f52548739e50cbd4872888c8e918e736153614d4f068db46ef510"
+    },
+    {
+      "designation": "16",
+      "records": 1,
+      "areaM2": 19008632551,
+      "hash": "sha256:a6131982c119f0c0223fc0d704f96d59a753646187eacfbf8701c4a8d4f0fc47"
+    },
+    {
+      "designation": "17",
+      "records": 1,
+      "areaM2": 23372496877,
+      "hash": "sha256:2485a1e281fc554689cb2713b8fb3b85efeb5d26b252b33f04061fdfa25b12bb"
+    },
+    {
+      "designation": "18",
+      "records": 310,
+      "areaM2": 25406261269,
+      "hash": "sha256:4590e698c52001c107db9a26ff803a18c514ace783c039cd54f0dd709eb724af"
+    },
+    {
+      "designation": "19N",
+      "records": 1,
+      "areaM2": 28503567420,
+      "hash": "sha256:460e7083a4d7affda2077b455be7a9044b7744e2416b18910e3a22ff18fba057"
+    },
+    {
+      "designation": "19SE",
+      "records": 8091,
+      "areaM2": 42144989237,
+      "hash": "sha256:caa72921adfb6a5428b11c1eaa8d1b448d28e9ff39fdc3f0def68f4973c5b5d3"
+    },
+    {
+      "designation": "19SNO",
+      "records": 1,
+      "areaM2": 31900983377,
+      "hash": "sha256:7f85c2c5f709baecfd7c24401c56657eb915dd1c9bb484bf1f8a9f564b355345"
+    },
+    {
+      "designation": "19SO",
+      "records": 740,
+      "areaM2": 112995717980,
+      "hash": "sha256:823fc511f53e3d343429c3f94300db5f6056856ab7270d444b396c80f191203b"
+    },
+    {
+      "designation": "20",
+      "records": 1,
+      "areaM2": 7846897197,
+      "hash": "sha256:cae30bce4b86d688819cb85a080d3e9f52a4579a0b6937000e0526a8dd5cb330"
+    },
+    {
+      "designation": "21",
+      "records": 1,
+      "areaM2": 144449530470,
+      "hash": "sha256:0d3f125b68714199aed8d42fe1eb6abab989956462c62243a41d68327f5a2035"
+    },
+    {
+      "designation": "22",
+      "records": 1,
+      "areaM2": 338477096279,
+      "hash": "sha256:0667b5eaa1053415c7c9783919b512bcaafdb8ea34dc9f898ab2fbee75a1eaf5"
+    },
+    {
+      "designation": "23",
+      "records": 1,
+      "areaM2": 510312356667,
+      "hash": "sha256:765882860789ff1c4d2a00b68c05f8f4e4d531087a66bb44db88194c6c3a9165"
+    },
+    {
+      "designation": "24",
+      "records": 1,
+      "areaM2": 8400938356,
+      "hash": "sha256:7ece87045a7ec7a461ae0eb939ac3606b4fdf8337ff6d2ce3c7c336383449e02"
+    },
+    {
+      "designation": "26E",
+      "records": 1,
+      "areaM2": 991010334,
+      "hash": "sha256:823b28242bc4a57e05463473813a95736c3f30767f6953a1f98b76c26829f0f2"
+    },
+    {
+      "designation": "26O",
+      "records": 1,
+      "areaM2": 17854307056,
+      "hash": "sha256:954f2d7828e66d11621a53af83aca9ad6ca8e81def373b376bf755e56bf93d78"
+    },
+    {
+      "designation": "27E",
+      "records": 1,
+      "areaM2": 3599214702,
+      "hash": "sha256:dc2ec580dbfa701e70b5176ee16e47a4f0a574a26363cdd6e51581a015bdf12d"
+    },
+    {
+      "designation": "27EI",
+      "records": 10,
+      "areaM2": 29753899,
+      "hash": "sha256:899433c03eb33650c2a7bada87b2848a546028a81b4202c6875fd38767350fc0"
+    },
+    {
+      "designation": "27ESB",
+      "records": 1,
+      "areaM2": 116106143,
+      "hash": "sha256:40c8ae55b5c80ce06005b12a224ce44190893dce935d00f0a584d8ddefd9fb1c"
+    },
+    {
+      "designation": "27O",
+      "records": 1,
+      "areaM2": 15739624634,
+      "hash": "sha256:25e725c1715b64c1df96eade82e2268806e6f8ff210039a479ad39a2d27a2a2e"
+    },
+    {
+      "designation": "27OI",
+      "records": 5,
+      "areaM2": 194659609,
+      "hash": "sha256:8fc7350faa3bfb7825a02e96568d604c700a96f7747c27cecfa8cec550e9a784"
+    },
+    {
+      "designation": "27OSB",
+      "records": 1,
+      "areaM2": 1469167883,
+      "hash": "sha256:f930ec5d4cbbccf3627b7ce1c93b74182d8c4d3cb1e7aa879e62d613d3ff2818"
+    },
+    {
+      "designation": "28",
+      "records": 21,
+      "areaM2": 65636383987,
+      "hash": "sha256:e6ebee13a7ee6a445fc8fc11013d5df9ead7f85f082d2190d971471bb4b90ef4"
+    },
+    {
+      "designation": "29",
+      "records": 1,
+      "areaM2": 42042693312,
+      "hash": "sha256:b4921166124971e86a006e3a893cf6a810e2ab7b96a27b6d66fcfeb8df8c8df1"
+    }
+  ],
+  "contentHash": "sha256:2a630ec10d2f01095dda50986912c5e0106fca75f0a16f0d7176f2806a28a335"
+}
