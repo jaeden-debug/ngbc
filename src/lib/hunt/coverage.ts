@@ -1,5 +1,5 @@
 import type { CanonicalId } from "../content-contract/index.ts";
-import { ZONE_LAYERS } from "./zone-layers.ts";
+import { officialTermPlural, ZONE_LAYERS } from "./zone-layers.ts";
 
 /**
  * What North Ground Hunt can currently answer.
@@ -196,7 +196,7 @@ function spokenList(items: readonly string[]): string {
 export const COVERED_JURISDICTIONS = spokenList(SERVED_LAYERS.map((layer) => layer.jurisdictionName));
 
 export const COVERAGE_SUMMARY =
-  `Certified rules for selected species in ${spokenList(SERVED_LAYERS.map((layer) => `${layer.jurisdictionName}'s ${layer.officialTerm}s`))}.`;
+  `Certified rules for selected species in ${spokenList(SERVED_LAYERS.map((layer) => `${layer.jurisdictionName}'s ${officialTermPlural(layer)}`))}.`;
 
 
 export type MajorGameSpeciesId = (typeof SUPPORTED_MAJOR_GAME_SPECIES_IDS)[number];

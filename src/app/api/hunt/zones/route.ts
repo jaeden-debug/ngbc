@@ -1,6 +1,6 @@
 import { overlayLayersFor } from "../../../../lib/hunt/exploration/overlay-layers";
 import { fetchZoneGeometry, parseBounds } from "../../../../lib/hunt/zone-geometry";
-import { COVERAGE_ROADMAP, layerById } from "../../../../lib/hunt/zone-layers";
+import { COVERAGE_ROADMAP, layerById, officialTermPlural } from "../../../../lib/hunt/zone-layers";
 import { createRateLimiter, getClientAddress } from "../../../../lib/newsletter/rate-limit";
 
 export const runtime = "nodejs";
@@ -48,6 +48,7 @@ export async function GET(request: Request): Promise<Response> {
           jurisdictionName: layer.jurisdictionName,
           officialTerm: layer.officialTerm,
           officialTermShort: layer.officialTermShort,
+          officialTermPlural: officialTermPlural(layer),
           authority: layer.authority,
           coverage: layer.coverage,
           coverageNote: layer.coverageNote,

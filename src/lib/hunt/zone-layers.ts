@@ -2,6 +2,7 @@ import type { CanonicalId } from "../content-contract/index.ts";
 import certifiedUnits from "../../../content/regulatory/ca-on-certified-units.json" with { type: "json" };
 import manitobaCertifiedUnits from "../../../content/regulatory/ca-mb-certified-units.json" with { type: "json" };
 import albertaCertifiedUnits from "../../../content/regulatory/ca-ab-certified-units.json" with { type: "json" };
+import quebecCertifiedUnits from "../../../content/regulatory/ca-qc-certified-units.json" with { type: "json" };
 
 /**
  * Which hunting-zone geography North Ground can actually draw, and how far the
@@ -33,6 +34,11 @@ export interface ZoneLayer {
    */
   officialTerm: string;
   officialTermShort: string;
+  /**
+   * The term's plural where adding "s" would be wrong. Québec's areas are
+   * « zones de chasse », never "Zone de chasses". Absent, the term plus "s".
+   */
+  officialTermPlural?: string;
   /** Status of the REGULATORY record, not of the geometry. */
   coverage: ZoneCoverageStatus;
   coverageNote: string;
@@ -87,6 +93,11 @@ export interface ZoneLayer {
    * envelope query. Wider views are asked in tiles (see `queryTiles`).
    */
   maxQueryLongitudeSpan?: number;
+}
+
+/** The authority's term for several of its areas ("Wildlife Management Units", "zones de chasse"). */
+export function officialTermPlural(layer: Pick<ZoneLayer, "officialTerm" | "officialTermPlural">): string {
+  return layer.officialTermPlural ?? `${layer.officialTerm}s`;
 }
 
 /** A layer's designation for a raw service value, or null when the feature is not a zone. */
@@ -188,15 +199,19 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     // The ministry's own term, in French. It is not translated into "unit".
     officialTerm: "Zone de chasse",
     officialTermShort: "Zone",
-    coverage: "IN_DEVELOPMENT",
+    officialTermPlural: "zones de chasse",
+    coverage: "PARTIAL",
     coverageNote:
-      "Official Québec hunting-zone boundaries come from the ministry's own GeoServer, the service behind Forêt ouverte. " +
-      "They are not presented until North Ground's copy is parity-certified against that service.",
+      "Official Québec hunting-zone boundaries are drawn from North Ground's copy of the ministry's own GeoServer layer, " +
+      "the service behind Forêt ouverte, parity-certified against it. The ministry states its map « n'a aucune portée " +
+      "légale, seuls les documents déposés ont force de loi ». " +
+      `Certified rules reach ${quebecCertifiedUnits.certifiedUnits.length} of ${quebecCertifiedUnits.officialUnitCount} zones for at least one species.`,
     authority: "Gouvernement du Québec",
     sourceId: "source:ca-qc-zone-chasse-service",
     bounds: { minLatitude: 44.9, maxLatitude: 62.7, minLongitude: -79.9, maxLongitude: -57 },
     serving: false,
     officialNamePrefix: "Zone de chasse ",
+    certifiedDesignations: new Set(quebecCertifiedUnits.certifiedUnits.map((unit) => unit.toUpperCase())),
     zoneIdPrefix: "management_zone:ca-qc-zone-",
     wfs: {
       url: "https://servicesvecto3.mern.gouv.qc.ca/geoserver/SmartFaunePub/ows",

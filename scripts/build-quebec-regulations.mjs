@@ -47,6 +47,7 @@ import { jurisdictionToday, readPreviousBundle, retrievedAtFor } from "./ontario
      --out <file>           write here instead of the committed bundle
      --save-pages <dir>     after a live read, keep the exact HTML that was parsed */
 const COMMITTED = "content/regulatory/ca-qc-2026.json";
+const CERTIFIED_UNITS_OUTPUT = "content/regulatory/ca-qc-certified-units.json";
 function argument(name) {
   const index = process.argv.indexOf(name);
   return index >= 0 ? process.argv[index + 1] : undefined;
@@ -830,6 +831,16 @@ async function main() {
 
   const serialized = `${JSON.stringify(bundle, null, 2)}\n`;
 
+  /* Designations with at least one certified rule, for the map's per-zone
+     coverage badge. Generated with the bundle so a zone can never be badged
+     "boundary only" when its rules are certified, or the reverse. */
+  const certifiedUnits = `${JSON.stringify({
+    jurisdictionId: "jurisdiction:ca-qc",
+    layerId: "layer:ca-qc-zone-chasse",
+    officialUnitCount: designations.length,
+    certifiedUnits: [...new Set(bundle.rules.flatMap((rule) => rule.designations))].sort(),
+  }, null, 2)}\n`;
+
   if (checkOnly) {
     if (!previous) {
       console.error(`No committed bundle at ${OUTPUT}; run without --check first.`);
@@ -840,6 +851,13 @@ async function main() {
          reading of the same pages has moved, the committed file is no longer
          what this code produces, and that is its own finding. */
       const committed = readFileSync(COMMITTED, "utf8");
+      let committedUnits = "";
+      try { committedUnits = readFileSync(CERTIFIED_UNITS_OUTPUT, "utf8"); } catch { /* none yet */ }
+      if (committedUnits !== certifiedUnits) {
+        console.error(`Québec sources are unchanged, but ${CERTIFIED_UNITS_OUTPUT} is not what this bundle yields.`);
+        console.error("Rebuild without --check and review the diff before committing it.");
+        process.exit(3);
+      }
       if (committed !== serialized) {
         console.error("Québec sources are unchanged, but the builder no longer produces the committed bundle.");
         console.error(formatQuebecDiff(diffQuebecBundles(previous, bundle)));
@@ -868,6 +886,7 @@ async function main() {
   }
 
   writeFileSync(OUTPUT, serialized);
+  if (OUTPUT === COMMITTED) writeFileSync(CERTIFIED_UNITS_OUTPUT, certifiedUnits);
   const bySpecies = new Map();
   for (const rule of bundle.rules) bySpecies.set(rule.speciesId, (bySpecies.get(rule.speciesId) ?? 0) + 1);
   console.log(`Wrote ${OUTPUT}`);

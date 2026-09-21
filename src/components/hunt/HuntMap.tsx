@@ -7,7 +7,7 @@ import type { OverlayFeature, OverlayLayerDescriptor } from "../../lib/hunt/expl
 import { EXPLORATION_WORDING, type ExplorationState as ZoneState, type ZoneRef, type ZoneSummary } from "../../lib/hunt/exploration/states";
 import type { SpeciesSelectorOption } from "../../lib/hunt/coverage";
 import type { ZoneFeature } from "../../lib/hunt/zone-geometry";
-import { type ZoneCoverageStatus } from "../../lib/hunt/zone-layers";
+import { officialTermPlural, type ZoneCoverageStatus } from "../../lib/hunt/zone-layers";
 import { createLabelLayer, createSelfMarker, huntPinIcon, type LabelLayerHandle, type LabelSource, type SelfMarkerHandle } from "./map/google-overlays";
 import ZoneCanvas, { fitViewport, zoomToFit, type Viewport } from "./ZoneCanvas";
 import { OverlayCard, PinPreviewCard, ZoneCard, type PinZone, type SummaryLoad } from "./ZoneCard";
@@ -31,6 +31,8 @@ interface LayerMeta {
   jurisdictionName: string;
   officialTerm: string;
   officialTermShort: string;
+  /** "zones de chasse", where the term plus "s" would be wrong. */
+  officialTermPlural?: string;
   authority: string;
   coverage: ZoneCoverageStatus;
   coverageNote: string;
@@ -1017,7 +1019,7 @@ export default function HuntMap({
           <span className={styles.mapBadgeDot} aria-hidden="true" />
           <span>
             <strong>
-              {zone && hunt ? zone.shortLabel : soleLayer ? `${soleLayer.jurisdictionName} ${soleLayer.officialTerm}s` : "Official hunting zones"}
+              {zone && hunt ? zone.shortLabel : soleLayer ? `${soleLayer.jurisdictionName} ${officialTermPlural(soleLayer)}` : "Official hunting zones"}
             </strong>
             <span className={styles.mapBadgeMeta}>
               {zonesState === "loading" ? "Loading official boundaries…"
@@ -1123,7 +1125,7 @@ export default function HuntMap({
               <p className={styles.layerName}>Management areas <span className={styles.layerTag}>always shown</span></p>
               {(drawnLayerIds.length ? drawnLayerIds.map((id) => layerOf(id)).filter((meta): meta is LayerMeta => Boolean(meta)) : layers).map((meta) => (
                 <p key={meta.id} className={styles.layerNote}>
-                  {meta.jurisdictionName} {meta.officialTerm}s — {meta.authority}. {meta.coverageNote}
+                  {meta.jurisdictionName} {officialTermPlural(meta)} — {meta.authority}. {meta.coverageNote}
                 </p>
               ))}
             </div>
