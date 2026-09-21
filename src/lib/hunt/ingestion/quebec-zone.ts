@@ -53,20 +53,61 @@ function pageUrl(startIndex: number): string {
     srsName: "EPSG:4326",
     count: String(PAGE_SIZE),
     startIndex: String(startIndex),
+    /* WFS paging without an order is not guaranteed stable: a page boundary can
+       repeat one feature and skip another. Ordering on the designation and the
+       feature's own published centroid makes consecutive pages agree, and the
+       completeness check in `fetchFeatures` proves they did. */
+    sortBy: "Zone ASC,Latitude ASC,Longitude ASC",
   });
   return `${QUEBEC_ZONE_WFS}?${parameters}`;
 }
 
+const ATTEMPTS = 3;
+
+/**
+ * One page, retried on a dropped connection or a server error.
+ *
+ * The service resets long transfers under load. A retry of the same ordered page
+ * is safe; a 4xx is not a transient condition and is raised at once.
+ */
 async function fetchPage(startIndex: number, fetcher: typeof fetch): Promise<WfsGeoJson> {
-  const response = await fetcher(pageUrl(startIndex), {
-    headers: { accept: "application/json" },
-    signal: AbortSignal.timeout(180_000),
-    cache: "no-store",
-  });
-  if (!response.ok) {
-    throw new Error(`Québec zone service returned ${response.status} at startIndex ${startIndex}`);
+  let lastError: unknown;
+  for (let attempt = 1; attempt <= ATTEMPTS; attempt += 1) {
+    try {
+      const response = await fetcher(pageUrl(startIndex), {
+        headers: { accept: "application/json" },
+        signal: AbortSignal.timeout(180_000),
+        cache: "no-store",
+      });
+      if (response.status >= 400 && response.status < 500) {
+        throw Object.assign(new Error(`Québec zone service returned ${response.status} at startIndex ${startIndex}`), {
+          permanent: true,
+        });
+      }
+      if (!response.ok) throw new Error(`Québec zone service returned ${response.status} at startIndex ${startIndex}`);
+      return await response.json() as WfsGeoJson;
+    } catch (error) {
+      if ((error as { permanent?: boolean }).permanent) throw error;
+      lastError = error;
+      if (attempt < ATTEMPTS) await new Promise((resolve) => setTimeout(resolve, 2_000 * attempt));
+    }
   }
-  return await response.json() as WfsGeoJson;
+  throw lastError instanceof Error ? lastError : new Error(`Québec zone service failed at startIndex ${startIndex}`);
+}
+
+/**
+ * A stable order for one designation's polygons.
+ *
+ * The service's paging order says nothing about the boundary, so the merged
+ * MultiPolygon is put in an order derived from the geometry itself. Two reads of
+ * an unchanged layer then hash identically, and a changed hash means the
+ * boundary moved rather than that the server returned rows differently.
+ */
+function canonicalPolygonOrder(polygons: unknown[]): unknown[] {
+  return polygons
+    .map((polygon) => ({ polygon, key: JSON.stringify(polygon) }))
+    .sort((left, right) => (left.key < right.key ? -1 : left.key > right.key ? 1 : 0))
+    .map(({ polygon }) => polygon);
 }
 
 /**
@@ -144,7 +185,13 @@ export function createQuebecZoneSource(fetcher: typeof fetch = fetch): ZoneLayer
       const byDesignation = new Map<string, {
         record: Omit<ZoneFeatureRecord, "geometry">;
         polygons: unknown[];
+        features: number;
       }>();
+      const seenFeatureIds = new Set<string>();
+      /* A row with no designation or no polygon is a hole in a legal layer. It is
+         reported and the read refused — never skipped, which would stage a
+         province with a piece silently missing. */
+      const unreadable: string[] = [];
 
       let startIndex = 0;
       let expected: number | null = null;
@@ -158,15 +205,24 @@ export function createQuebecZoneSource(fetcher: typeof fetch = fetch): ZoneLayer
         if (!rows.length) break;
 
         for (const row of rows) {
+          const featureId = typeof row.id === "string" ? row.id : "";
+          if (featureId) {
+            if (seenFeatureIds.has(featureId)) continue;
+            seenFeatureIds.add(featureId);
+          }
+
           const properties = row.properties ?? {};
           const designation = typeof properties.Zone === "string" ? properties.Zone.trim() : "";
           const geometry = row.geometry;
-          if (!designation || !geometry) continue;
-          if (geometry.type !== "Polygon" && geometry.type !== "MultiPolygon") continue;
+          if (!featureId || !designation || !geometry || (geometry.type !== "Polygon" && geometry.type !== "MultiPolygon")) {
+            unreadable.push(`${featureId || "(no id)"}: ${!designation ? "no Zone" : `geometry ${geometry?.type ?? "missing"}`}`);
+            continue;
+          }
 
           const existing = byDesignation.get(designation);
           if (existing) {
             existing.polygons.push(...asMultiPolygonCoordinates(geometry));
+            existing.features += 1;
             continue;
           }
 
@@ -178,12 +234,13 @@ export function createQuebecZoneSource(fetcher: typeof fetch = fetch): ZoneLayer
               sourceFeatureId: designation,
               officialIdentifier: designation,
               attributes: {
-                zoneNumber: properties.No_zone ?? null,
+                zoneNumber: typeof properties.No_zone === "string" ? properties.No_zone.trim() : null,
                 partName: part || null,
                 sourceCrs: "EPSG:32198",
               },
             },
             polygons: asMultiPolygonCoordinates(geometry),
+            features: 1,
           });
         }
 
@@ -192,10 +249,23 @@ export function createQuebecZoneSource(fetcher: typeof fetch = fetch): ZoneLayer
         if (rows.length < PAGE_SIZE) break;
       }
 
-      const features: ZoneFeatureRecord[] = [...byDesignation.values()].map(({ record, polygons }) => ({
+      if (unreadable.length) {
+        throw new Error(`The Québec zone service returned ${unreadable.length} unreadable feature(s): ${unreadable.slice(0, 5).join("; ")}`);
+      }
+      /* Every feature the service says exists must have arrived exactly once. A
+         shortfall means a page boundary skipped rows, and staging it would
+         publish a boundary with part of a zone missing. */
+      if (expected === null || seenFeatureIds.size !== expected) {
+        throw new Error(
+          `Incomplete read of the Québec zone service: ${seenFeatureIds.size} distinct features received, ` +
+            `${expected ?? "an unstated number"} published.`,
+        );
+      }
+
+      const features: ZoneFeatureRecord[] = [...byDesignation.values()].map(({ record, polygons, features: count }) => ({
         ...record,
-        attributes: { ...record.attributes, sourcePolygonCount: polygons.length },
-        geometry: { type: "MultiPolygon", coordinates: polygons },
+        attributes: { ...record.attributes, sourcePolygonCount: polygons.length, sourceFeatureCount: count },
+        geometry: { type: "MultiPolygon", coordinates: canonicalPolygonOrder(polygons) },
       }));
 
       features.sort((left, right) => left.officialIdentifier.localeCompare(right.officialIdentifier, "fr-CA"));

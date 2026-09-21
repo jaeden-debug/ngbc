@@ -15,9 +15,14 @@ function page(features: unknown[], numberMatched: number) {
   });
 }
 
-function feature(zone: string, partie: string, noZone: string, ring: number[][]) {
+let nextFeatureId = 1;
+
+/* Every published feature carries the service's own id, which the adapter uses to
+   prove each one arrived exactly once. */
+function feature(zone: string, partie: string, noZone: string, ring: number[][], id = `Zone_chasse_da3_sefaq.${nextFeatureId++}`) {
   return {
     type: "Feature",
+    id,
     properties: { Zone: zone, Partie_zon: partie, No_zone: noZone },
     geometry: { type: "Polygon", coordinates: [ring] },
   };
@@ -105,14 +110,55 @@ test("a part name that arrived correctly is returned untouched", () => {
   }
 });
 
-test("features without a designation or geometry are dropped rather than guessed at", () => {
-  const rows = [
-    { type: "Feature", properties: { Zone: "", Partie_zon: "", No_zone: "1" }, geometry: { type: "Polygon", coordinates: [SQUARE] } },
-    { type: "Feature", properties: { Zone: "12", Partie_zon: "", No_zone: "12" }, geometry: null },
-    feature("12", "", "12", SQUARE),
-  ];
-  const source = createQuebecZoneSource(async () => page(rows, rows.length));
-  return source.fetchFeatures().then(({ features }) => {
-    assert.deepEqual(features.map((f) => f.officialIdentifier), ["12"]);
+test("a feature with no designation or no geometry refuses the read instead of leaving a hole", async () => {
+  /* Skipping the row would stage Québec with part of a zone silently missing.
+     The row is a defect in the source a person has to see. */
+  for (const bad of [
+    { type: "Feature", id: "Zone_chasse_da3_sefaq.900", properties: { Zone: "", Partie_zon: "", No_zone: "1" }, geometry: { type: "Polygon", coordinates: [SQUARE] } },
+    { type: "Feature", id: "Zone_chasse_da3_sefaq.901", properties: { Zone: "12", Partie_zon: "", No_zone: "12" }, geometry: null },
+    { type: "Feature", properties: { Zone: "12", Partie_zon: "", No_zone: "12" }, geometry: { type: "Polygon", coordinates: [SQUARE] } },
+  ]) {
+    const rows = [bad, feature("12", "", "12", SQUARE)];
+    const source = createQuebecZoneSource(async () => page(rows, rows.length));
+    await assert.rejects(source.fetchFeatures(), /unreadable feature/);
+  }
+});
+
+test("a read that receives fewer distinct features than the service publishes is refused", async () => {
+  /* The shape a skipped page boundary produces: the same feature twice and one
+     never seen. Deduplicating alone would look complete and be missing a piece. */
+  const repeated = feature("12", "", "12", SQUARE, "Zone_chasse_da3_sefaq.1000");
+  const rows = [repeated, repeated];
+  const source = createQuebecZoneSource(async () => page(rows, 2));
+  await assert.rejects(source.fetchFeatures(), /Incomplete read.*1 distinct features received, 2 published/);
+});
+
+test("the merged geometry does not depend on the order the service returned rows in", async () => {
+  // Two reads of an unchanged boundary must hash identically.
+  const a = feature("19SE", "Sud-Est", "19", SQUARE, "Zone_chasse_da3_sefaq.1");
+  const b = feature("19SE", "Sud-Est", "19", OTHER, "Zone_chasse_da3_sefaq.2");
+  const forward = await createQuebecZoneSource(async () => page([a, b], 2)).fetchFeatures();
+  const backward = await createQuebecZoneSource(async () => page([b, a], 2)).fetchFeatures();
+  assert.deepEqual(forward.features[0].geometry, backward.features[0].geometry);
+});
+
+test("a dropped connection is retried, a refused request is not", async () => {
+  const rows = [feature("12", "", "12", SQUARE)];
+  let calls = 0;
+  const flaky = createQuebecZoneSource(async () => {
+    calls += 1;
+    if (calls === 1) throw new TypeError("fetch failed: socket hang up");
+    return page(rows, 1);
   });
+  const { features } = await flaky.fetchFeatures();
+  assert.equal(features.length, 1);
+  assert.equal(calls, 2);
+
+  let refusedCalls = 0;
+  const refused = createQuebecZoneSource(async () => {
+    refusedCalls += 1;
+    return new Response("bad request", { status: 400 });
+  });
+  await assert.rejects(refused.fetchFeatures(), /returned 400/);
+  assert.equal(refusedCalls, 1);
 });
