@@ -13,6 +13,7 @@
 
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
+import { base64Chunks, geometryCounts, multiPolygonToEwkb } from "./ewkb.mjs";
 import { ZONE_ADAPTERS, loadZoneSource } from "./zone-adapters.mjs";
 
 /* ── Environment ─────────────────────────────────────────────────────────── */
@@ -134,23 +135,120 @@ async function main() {
   console.log(`  staged as run ${run.id}`);
   console.log(`  content hash ${hash}`);
 
-  // Rows carry multi-megabyte geometry, so they go up in small batches.
-  const BATCH = 4;
-  for (let index = 0; index < features.length; index += BATCH) {
-    const rows = features.slice(index, index + BATCH).map((feature) => ({
-      run_id: run.id,
-      source_feature_id: feature.sourceFeatureId,
-      official_identifier: feature.officialIdentifier,
-      canonical_id: source.canonicalZoneId(feature.officialIdentifier),
-      official_name: source.officialName(feature.officialIdentifier),
-      attributes: feature.attributes,
-      geometry: feature.geometry,
-    }));
-    await rest("zone_ingest_features", { method: "POST", prefer: "return=minimal", body: rows });
-    console.log(`  uploaded ${Math.min(index + BATCH, features.length)}/${features.length}`);
+  /* ── Upload, sized to what the database can take ─────────────────────── *
+   *
+   * Every REST statement runs under an 8-second timeout on a small instance,
+   * and a large JSON body is parsed in the database's memory. On 2026-09-20 two
+   * Québec designations sent as 18 and 22 MB of GeoJSON, on top of concurrent
+   * parity runs, left the production database unresponsive for half an hour.
+   * So a feature above LARGE_FEATURE_BYTES travels as base64 EWKB chunks that
+   * the database decodes in one fast statement (see assemble_zone_ingest_
+   * feature), smaller ones go in batches capped by bytes, and the database's
+   * responsiveness is checked between steps: the upload waits while it is slow
+   * and stops rather than push into it. */
+  const LARGE_FEATURE_BYTES = 1_500_000;
+  const BATCH_BYTES = 2_000_000;
+  const SLOW_MS = 2_500;
+
+  async function healthy() {
+    for (let attempt = 1; attempt <= 6; attempt += 1) {
+      const probeStarted = Date.now();
+      try {
+        await rest("regulatory_jurisdictions?select=id&limit=1");
+        const took = Date.now() - probeStarted;
+        if (took < SLOW_MS) return;
+        console.log(`  database answered in ${took} ms; waiting before the next upload (${attempt}/6)`);
+      } catch (error) {
+        console.log(`  database probe failed (${error.message.slice(0, 80)}); waiting (${attempt}/6)`);
+      }
+      await new Promise((resolve) => setTimeout(resolve, 20_000 * attempt));
+    }
+    throw new Error("The database stayed slow; stopping the upload rather than adding load. Re-run to resume from a new run.");
   }
 
-  const comparison = await rest("rpc/compare_zone_run", { method: "POST", body: { p_run_id: run.id } });
+  const rowFor = (feature) => ({
+    run_id: run.id,
+    source_feature_id: feature.sourceFeatureId,
+    official_identifier: feature.officialIdentifier,
+    canonical_id: source.canonicalZoneId(feature.officialIdentifier),
+    official_name: source.officialName(feature.officialIdentifier),
+    attributes: feature.attributes,
+    geometry: feature.geometry,
+  });
+
+  const sized = features.map((feature) => ({ feature, bytes: Buffer.byteLength(JSON.stringify(feature.geometry)) }));
+  const small = sized.filter((entry) => entry.bytes <= LARGE_FEATURE_BYTES);
+  const large = sized.filter((entry) => entry.bytes > LARGE_FEATURE_BYTES).sort((a, b) => a.bytes - b.bytes);
+  let uploaded = 0;
+
+  let batch = [];
+  let batchBytes = 0;
+  const flush = async () => {
+    if (!batch.length) return;
+    await healthy();
+    await rest("zone_ingest_features", { method: "POST", prefer: "return=minimal", body: batch.map(rowFor) });
+    uploaded += batch.length;
+    console.log(`  uploaded ${uploaded}/${features.length}`);
+    batch = [];
+    batchBytes = 0;
+  };
+  for (const { feature, bytes } of small) {
+    if (batch.length && batchBytes + bytes > BATCH_BYTES) await flush();
+    batch.push(feature);
+    batchBytes += bytes;
+  }
+  await flush();
+
+  for (const { feature, bytes } of large) {
+    const ewkb = multiPolygonToEwkb(feature.geometry);
+    const chunks = base64Chunks(ewkb, 600_000);
+    const counts = geometryCounts(feature.geometry);
+    await healthy();
+    for (let index = 0; index < chunks.length; index += 1) {
+      await rest("zone_ingest_feature_chunks", {
+        method: "POST",
+        prefer: "return=minimal",
+        body: [{ run_id: run.id, source_feature_id: feature.sourceFeatureId, chunk_index: index, payload: chunks[index] }],
+      });
+    }
+    const row = rowFor(feature);
+    const assembled = await rest("rpc/assemble_zone_ingest_feature", {
+      method: "POST",
+      body: {
+        p_run_id: run.id,
+        p_source_feature_id: row.source_feature_id,
+        p_official_identifier: row.official_identifier,
+        p_canonical_id: row.canonical_id,
+        p_official_name: row.official_name,
+        p_attributes: row.attributes,
+        p_chunk_count: chunks.length,
+        p_expected_points: counts.points,
+        p_expected_polygons: counts.polygons,
+      },
+    });
+    uploaded += 1;
+    console.log(
+      `  uploaded ${uploaded}/${features.length}  ${feature.officialIdentifier}: ${(bytes / 1e6).toFixed(1)} MB as ` +
+        `${chunks.length} EWKB chunk(s), ${assembled.points} vertices in ${assembled.polygons} polygon(s) confirmed`,
+    );
+    // Let the database settle after a large write before the next one.
+    await new Promise((resolve) => setTimeout(resolve, Math.min(30_000, 2_000 * Math.ceil(bytes / 1e6))));
+  }
+
+  /* The comparison validates and measures every staged feature in one
+     statement. For a layer with a very large feature that can exceed the REST
+     timeout; the run is staged either way, and the comparison is then run
+     server-side, feature by feature. */
+  let comparison;
+  try {
+    await healthy();
+    comparison = await rest("rpc/compare_zone_run", { method: "POST", body: { p_run_id: run.id } });
+  } catch (error) {
+    console.log("");
+    console.log(`Staged run ${run.id}, but the comparison did not complete over REST: ${error.message.slice(0, 160)}`);
+    console.log("Run compare_zone_run for this run server-side before publishing.");
+    return;
+  }
   console.log("");
   console.log("Comparison against published geometry:");
   console.log(`  incoming ${comparison.incoming}  published ${comparison.published}  unchanged ${comparison.unchanged}`);

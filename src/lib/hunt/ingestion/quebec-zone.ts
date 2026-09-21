@@ -53,11 +53,13 @@ function pageUrl(startIndex: number): string {
     srsName: "EPSG:4326",
     count: String(PAGE_SIZE),
     startIndex: String(startIndex),
-    /* WFS paging without an order is not guaranteed stable: a page boundary can
-       repeat one feature and skip another. Ordering on the designation and the
-       feature's own published centroid makes consecutive pages agree, and the
-       completeness check in `fetchFeatures` proves they did. */
-    sortBy: "Zone ASC,Latitude ASC,Longitude ASC",
+    /* No sortBy. This GeoServer sorts every geometry in the layer to answer a
+       sorted page: a 500-feature page that returns in seconds unsorted gave no
+       response within 120 s sorted (2026-09-20). Paging therefore follows the
+       store's natural order, and correctness does not rest on it — the
+       completeness check in `fetchFeatures` refuses any read in which a page
+       boundary repeated or skipped a feature, and the polygon order is made
+       canonical afterwards so the hash does not depend on it either. */
   });
   return `${QUEBEC_ZONE_WFS}?${parameters}`;
 }
@@ -160,6 +162,15 @@ function asMultiPolygonCoordinates(geometry: { type: string; coordinates: unknow
     : [geometry.coordinates];
 }
 
+/**
+ * The canonical id of a Québec designation. One definition, used by the adapter
+ * that stages the zone and by the engine that answers for it, so the two can
+ * never name the same zone differently.
+ */
+export function quebecZoneCanonicalId(identifier: string): string {
+  return `management_zone:ca-qc-zone-${identifier.trim().toLowerCase().replace(/[^a-z0-9-]+/g, "-")}`;
+}
+
 export function createQuebecZoneSource(fetcher: typeof fetch = fetch): ZoneLayerSource {
   return {
     layerId: "layer:ca-qc-zone-chasse",
@@ -173,8 +184,7 @@ export function createQuebecZoneSource(fetcher: typeof fetch = fetch): ZoneLayer
 
     /* Designations are alphanumeric parts ("05E", "19SNO", "08NMR"), kept as the
        authority writes them and only lower-cased for the id. */
-    canonicalZoneId: (identifier) =>
-      `management_zone:ca-qc-zone-${identifier.trim().toLowerCase().replace(/[^a-z0-9-]+/g, "-")}`,
+    canonicalZoneId: quebecZoneCanonicalId,
     /* French is the official language of this authority's terminology, so the
        name is built in French rather than translated. */
     officialName: (identifier) => `Zone de chasse ${identifier.trim()}`,
