@@ -869,7 +869,7 @@
 
 .mapSurface {
   position: relative;
-  height: 440px;
+  height: 470px;
   overflow: hidden;
   border: 1px solid var(--ng-glass-border);
   border-radius: var(--ng-radius-lg);
@@ -893,8 +893,11 @@
   z-index: 6;
   top: 12px;
   left: 12px;
-  right: 12px;
+  /* Clears the control column on the right. */
+  right: 68px;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 8px;
   pointer-events: none;
 }
@@ -916,13 +919,19 @@
   align-items: center;
   gap: 9px;
   max-width: min(100%, 320px);
+  min-height: 44px;
   margin: 0;
-  padding: 8px 13px;
+  padding: 6px 14px;
   border-radius: var(--ng-radius-pill);
+  font: inherit;
   font-size: 0.8rem;
+  text-align: left;
   color: var(--ng-cream);
   pointer-events: auto;
+  cursor: pointer;
 }
+
+.mapBadge:hover { border-color: var(--ng-glass-border-bright); }
 
 .mapBadge strong {
   display: block;
@@ -1020,15 +1029,524 @@
 .mapBottom {
   position: absolute;
   z-index: 6;
-  right: 12px;
+  /* Clears Google's zoom control on the right; its attribution sits bottom-left and is never covered. */
+  right: 62px;
   bottom: 12px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 8px;
-  max-width: min(360px, calc(100% - 24px));
-  /* Google's own attribution sits bottom-left and is never covered. */
+  max-width: min(380px, calc(100% - 84px));
   pointer-events: none;
+}
+
+.legendItem { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+
+.mapLegend { flex-wrap: wrap; row-gap: 4px; }
+
+.legendGlyph { font-size: 0.8rem; line-height: 1; }
+.legendGlyph[data-state="SEASON_AVAILABLE"] { color: var(--ng-open); }
+.legendGlyph[data-state="CHECK_REQUIREMENTS"] { color: var(--ng-conditional); }
+.legendGlyph[data-state="NEEDS_VERIFICATION"],
+.legendGlyph[data-state="UNKNOWN"],
+.legendGlyph[data-state="NOT_CERTIFIED"] { color: var(--ng-unknown); }
+.legendGlyph[data-state="CONFLICT"] { color: var(--ng-conflict); }
+.legendGlyph[data-state="CLOSED"] { color: var(--ng-closed); }
+
+.legendPin {
+  width: 10px;
+  height: 10px;
+  flex: none;
+  border: 1.5px solid #11140f;
+  border-radius: 50% 50% 50% 0;
+  background: var(--ng-cream);
+  transform: rotate(-45deg);
+}
+
+.legendSelf {
+  width: 10px;
+  height: 10px;
+  flex: none;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #4c8ee8;
+}
+
+.noticeDismiss {
+  display: block;
+  min-height: 36px;
+  margin-top: 6px;
+  padding: 0 12px;
+  border: 1px solid var(--ng-glass-border-bright);
+  border-radius: var(--ng-radius-pill);
+  background: none;
+  font: inherit;
+  font-size: 0.72rem;
+  color: var(--ng-cream);
+  cursor: pointer;
+}
+
+/* ── Map controls, panels and the zone sheet ─────────────────────────────── */
+
+.mapControls {
+  position: absolute;
+  z-index: 7;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mapControl[data-active] { color: #8fbaf0; }
+.mapControl[aria-pressed="true"] { border-color: var(--ng-amber); color: var(--ng-amber); }
+
+.mapFilter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0 6px 0 14px;
+  border-radius: var(--ng-radius-pill);
+  font-size: 0.78rem;
+  color: var(--ng-cream);
+  pointer-events: auto;
+}
+
+.mapFilterLabel {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ng-bone-faint);
+}
+
+.mapFilter select {
+  min-width: 0;
+  max-width: 190px;
+  min-height: 36px;
+  padding: 0 8px;
+  border: 1px solid var(--ng-glass-border);
+  border-radius: var(--ng-radius-pill);
+  background: rgba(12, 14, 13, 0.6);
+  font: inherit;
+  font-size: 0.8rem;
+  color: var(--ng-cream);
+}
+
+.mapPanel {
+  position: absolute;
+  z-index: 9;
+  top: 12px;
+  right: 64px;
+  width: min(330px, calc(100% - 84px));
+  max-height: calc(100% - 24px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 14px;
+  border-radius: var(--ng-radius);
+}
+
+.mapPanelLeft {
+  top: 64px;
+  right: auto;
+  left: 12px;
+  max-height: calc(100% - 76px);
+}
+
+.mapPanelTitle {
+  display: block;
+  margin: 0 0 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ng-bone-faint);
+}
+
+.layerRow {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-top: 1px solid var(--ng-glass-border);
+  cursor: pointer;
+}
+
+.layerRow input {
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  flex: none;
+  accent-color: var(--ng-amber);
+}
+
+.layerCheck { width: 20px; flex: none; text-align: center; color: var(--ng-moss); }
+
+.layerName {
+  margin: 0 0 3px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--ng-cream);
+}
+
+.layerTag {
+  margin-left: 4px;
+  font-size: 0.66rem;
+  font-weight: 500;
+  color: var(--ng-bone-faint);
+}
+
+.layerNote {
+  margin: 0 0 4px;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--ng-bone-dim);
+}
+
+.zoneFilterInput {
+  width: 100%;
+  min-height: 44px;
+  margin-bottom: 8px;
+  padding: 0 12px;
+  border: 1px solid var(--ng-glass-border);
+  border-radius: var(--ng-radius-sm);
+  background: rgba(12, 14, 13, 0.6);
+  font: inherit;
+  font-size: 0.86rem;
+  color: var(--ng-cream);
+}
+
+.zoneList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.zoneListItem {
+  display: flex;
+  width: 100%;
+  min-height: 44px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1px;
+  padding: 4px 10px;
+  border: 0;
+  border-radius: var(--ng-radius-sm);
+  background: none;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--ng-cream);
+  cursor: pointer;
+}
+
+.zoneListItem:hover,
+.zoneListItem[aria-current] { background: rgba(201, 194, 166, 0.10); }
+
+.zoneListMeta {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--ng-bone-faint);
+}
+
+.mapSheet {
+  position: absolute;
+  z-index: 8;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  max-height: 58%;
+  flex-direction: column;
+  border-radius: var(--ng-radius) var(--ng-radius) 0 0;
+}
+
+.mapSurface[data-pin="centre"] .mapSheet { max-height: 40%; }
+
+.mapSheet:focus-visible { outline: 2px solid var(--ng-amber); outline-offset: -2px; }
+
+.mapSheetBar { position: relative; flex: none; }
+
+.mapSheetHandle {
+  display: flex;
+  width: 100%;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.mapSheetHandle > span[aria-hidden] {
+  width: 40px;
+  height: 4px;
+  border-radius: var(--ng-radius-pill);
+  background: rgba(201, 194, 166, 0.35);
+}
+
+.mapSheetBar .mapInspectorClose { top: 2px; right: 8px; }
+
+/* The handle row is tall enough to hit; the eyebrow below it starts close under it. */
+.mapSheetBody > :first-child { margin-top: -4px; }
+
+.mapSheetBody {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 0 16px 12px;
+}
+
+.mapSheet[data-lowered] .mapSheetBody { flex: none; max-height: 60px; overflow: hidden; }
+.mapSheet[data-lowered] .mapSheetFooter { display: none; }
+
+.mapSheetFooter {
+  flex: none;
+  padding: 10px 16px 14px;
+  border-top: 1px solid var(--ng-glass-border);
+}
+
+.mapSheetFooter .primaryButton { width: 100%; min-height: 48px; }
+
+.mapSheetActions { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+
+.mapSheetEyebrow {
+  margin: 0 44px 2px 0;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ng-bone-faint);
+}
+
+.mapSheetTitle {
+  margin: 0 0 6px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ng-cream);
+}
+
+.mapSheetMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin: 0 0 10px;
+  font-size: 0.76rem;
+  color: var(--ng-bone-dim);
+}
+
+.exploreGroups { display: flex; flex-direction: column; gap: 2px; }
+
+.exploreGroup { padding: 9px 0; border-top: 1px solid var(--ng-glass-border); }
+
+.exploreGroupTitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ng-bone-faint);
+}
+
+.exploreChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 9px;
+  border-radius: var(--ng-radius-pill);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--ng-unknown);
+  background: var(--ng-unknown-bg);
+}
+
+.exploreChip[data-state="SEASON_AVAILABLE"] { color: var(--ng-open); background: var(--ng-open-bg); }
+.exploreChip[data-state="CHECK_REQUIREMENTS"] { color: var(--ng-conditional); background: var(--ng-conditional-bg); }
+.exploreChip[data-state="CONFLICT"] { color: var(--ng-conflict); background: var(--ng-conflict-bg); }
+.exploreChip[data-state="CLOSED"] { color: var(--ng-closed); background: var(--ng-closed-bg); }
+
+.exploreCount { font-weight: 600; color: var(--ng-bone-dim); }
+
+.exploreList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.exploreList li { display: flex; flex-direction: column; gap: 1px; }
+
+.exploreName { font-size: 0.88rem; font-weight: 600; color: var(--ng-cream); }
+
+.exploreMeta,
+.exploreInline {
+  margin: 0;
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: var(--ng-bone-dim);
+}
+
+.exploreInline { font-size: 0.82rem; color: var(--ng-cream); }
+
+.exploreNotes {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 0.74rem;
+  line-height: 1.5;
+  color: var(--ng-bone-dim);
+}
+
+.exploreNotes li + li { margin-top: 5px; }
+
+.exploreFacts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 12px;
+  margin: 8px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--ng-glass-border);
+}
+
+.exploreFacts dt {
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ng-bone-faint);
+}
+
+.exploreFacts dd { margin: 1px 0 0; font-size: 0.78rem; color: var(--ng-cream); }
+
+.exploreQuote {
+  margin: 0 0 10px;
+  padding: 8px 12px;
+  border-left: 2px solid var(--ng-amber);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ng-cream);
+}
+
+.exploreQuote cite {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.7rem;
+  font-style: normal;
+  color: var(--ng-bone-faint);
+}
+
+/* Zone names drawn on the map. Built outside React, so they are plain elements. */
+.mapZoneLabel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 20px;
+  padding: 0 7px;
+  border: 1px solid rgba(201, 194, 166, 0.2);
+  border-radius: var(--ng-radius-pill);
+  background: rgba(12, 14, 13, 0.66);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: var(--ng-cream);
+  will-change: transform;
+}
+
+.mapZoneLabel[data-selected="true"] {
+  border-color: var(--ng-cream);
+  background: var(--ng-cream);
+  color: var(--ng-black);
+}
+
+.mapZoneLabel[data-state="SEASON_AVAILABLE"] { border-color: rgba(124, 192, 138, 0.7); }
+.mapZoneLabel[data-state="CHECK_REQUIREMENTS"] { border-color: rgba(224, 160, 74, 0.7); }
+.mapZoneLabel[data-state="CLOSED"] { color: var(--ng-bone-dim); }
+
+/* The device's location: the conventional blue dot, never the hunt pin. */
+.selfDot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #4c8ee8;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25), 0 1px 4px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+
+.selfDot > span {
+  position: absolute;
+  inset: -10px;
+  z-index: -1;
+  border-radius: 50%;
+  background: rgba(76, 142, 232, 0.35);
+  animation: selfPulse 2.2s ease-out infinite;
+}
+
+@keyframes selfPulse {
+  from { transform: scale(0.4); opacity: 0.9; }
+  to { transform: scale(1.5); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .selfDot > span { animation: none; opacity: 0.35; }
+}
+
+.pinCrosshair {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  color: var(--ng-amber);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Phones: the sheet rises from the bottom, so notices move above it and the legend steps aside. */
+@media (max-width: 699px) {
+  .mapSurface[data-sheet] .mapBottom {
+    top: 110px;
+    bottom: auto;
+    left: 12px;
+    right: 68px;
+    align-items: flex-start;
+    max-width: none;
+  }
+  .mapSurface[data-sheet] .mapLegend { display: none; }
+}
+
+/* Wider: the sheet floats on the left, under the badge and filter, beside the zone. */
+@media (min-width: 700px) {
+  .mapSheet {
+    top: 112px;
+    left: 12px;
+    right: auto;
+    bottom: auto;
+    width: 350px;
+    max-height: calc(100% - 124px);
+    border-radius: var(--ng-radius);
+  }
+  .mapSurface[data-pin="centre"] .mapSheet { max-height: calc(100% - 124px); }
+  .mapSurface[data-sheet] .mapPanelLeft { display: none; }
 }
 
 .mapLegend {
@@ -1094,6 +1612,8 @@
   overflow: hidden;
 }
 
+.zoneCanvas:focus-visible { outline: 2px solid var(--ng-amber); outline-offset: -3px; }
+
 .zoneCanvasSvg {
   display: block;
   width: 100%;
@@ -1105,27 +1625,62 @@
 .zoneCanvasSvg:active { cursor: grabbing; }
 
 .zoneCanvasShape {
-  fill: rgba(139, 168, 131, 0.09);
-  stroke: rgba(160, 190, 150, 0.62);
-  stroke-width: 1.1;
+  fill: rgba(139, 168, 131, 0.03);
+  stroke: rgba(160, 190, 150, 0.5);
+  stroke-width: 1;
   stroke-linejoin: round;
   cursor: pointer;
 }
 
+.zoneCanvasShape:hover { fill: rgba(184, 211, 168, 0.1); stroke-width: 1.8; }
+
 .zoneCanvasShape[data-coverage="VERIFIED"] {
-  fill: rgba(184, 211, 168, 0.22);
-  stroke: #cfe4bd;
-  stroke-width: 2.2;
+  fill: rgba(184, 211, 168, 0.07);
+  stroke: rgba(207, 228, 189, 0.8);
+  stroke-width: 1.3;
 }
+
+.zoneCanvasShape[data-state="SEASON_AVAILABLE"] { fill: rgba(124, 192, 138, 0.3); }
+.zoneCanvasShape[data-state="CHECK_REQUIREMENTS"] { fill: rgba(224, 160, 74, 0.24); }
+.zoneCanvasShape[data-state="NEEDS_VERIFICATION"] { fill: rgba(201, 162, 106, 0.16); }
+.zoneCanvasShape[data-state="CONFLICT"] { fill: rgba(217, 122, 108, 0.2); }
+.zoneCanvasShape[data-state="CLOSED"] { fill: rgba(154, 160, 166, 0.12); }
 
 .zoneCanvasShape[data-selected] {
-  fill: rgba(216, 230, 200, 0.22);
-  stroke: #d8e6c8;
-  stroke-width: 2.4;
+  fill: rgba(216, 230, 200, 0.14);
+  stroke: #f0ead8;
+  stroke-width: 2.6;
 }
 
-.zoneCanvasPinHalo { fill: rgba(90, 160, 230, 0.28); }
-.zoneCanvasPinCore { fill: #5aa0e6; stroke: #0d1a26; stroke-width: 2.5; }
+.zoneCanvasOverlay {
+  fill: rgba(224, 160, 74, 0.16);
+  stroke: rgba(224, 160, 74, 0.95);
+  stroke-width: 1.4;
+  stroke-dasharray: 4 3;
+  cursor: pointer;
+}
+
+.zoneCanvasLabel {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  fill: var(--ng-cream);
+  paint-order: stroke;
+  stroke: rgba(12, 14, 13, 0.9);
+  stroke-width: 3.5px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.zoneCanvasLabel[data-selected] { fill: #fff; }
+
+.zoneCanvasSelf { fill: #4c8ee8; stroke: #fff; stroke-width: 3; }
+.zoneCanvasSelfAccuracy { fill: rgba(76, 142, 232, 0.12); stroke: rgba(76, 142, 232, 0.45); stroke-width: 1; }
+
+.zoneCanvasPin path { fill: var(--ng-cream); stroke: #11140f; stroke-width: 2; }
+.zoneCanvasPin circle { fill: none; stroke: #11140f; stroke-width: 2; }
+.zoneCanvasPin[data-preview] path { fill: rgba(224, 160, 74, 0.92); stroke-dasharray: 3 2.2; }
 
 .zoneCanvasControls {
   position: absolute;

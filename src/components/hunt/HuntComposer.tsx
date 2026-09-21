@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { todayIso } from "../../lib/hunt/date";
 import { COVERAGE_SUMMARY, COVERED_JURISDICTIONS, hasSpeciesCoverageIn, isWithinSupportedBounds, type SpeciesSelectorOption, type SupportedSpeciesId } from "../../lib/hunt/coverage";
 import type { CanonicalId } from "../../lib/content-contract";
+import { explorationReducer, INITIAL_EXPLORATION, roundedPoint, type HuntLocation } from "../../lib/hunt/exploration/map-state";
 import { COVERAGE_WORDING } from "../../lib/hunt/zone-layers";
 import type { HuntEvaluation } from "../../lib/hunt/types";
 import DateField from "./DateField";
@@ -44,7 +45,14 @@ const GEOLOCATION_MESSAGES: Record<number, string> = {
  * because only those three together can say what applies.
  */
 export default function HuntComposer({ googleMapsApiKey, speciesOptions, initialDate, initialSpeciesId = null }: { googleMapsApiKey?: string; speciesOptions: SpeciesSelectorOption[]; initialDate: string; initialSpeciesId?: SupportedSpeciesId | null }) {
-  const [location, setLocation] = useState<SelectedLocation | null>(null);
+  /**
+   * The map's interaction state, including the one hunt location. The device's
+   * own position lives in `exploration.self` and is never read below: only
+   * `exploration.hunt` resolves a zone, is evaluated, or reaches a Hunt Brief.
+   */
+  const [exploration, dispatch] = useReducer(explorationReducer, INITIAL_EXPLORATION);
+  const location: HuntLocation | null = exploration.hunt;
+  const [neighbourLabel, setNeighbourLabel] = useState<string | null>(null);
   /**
    * Starts on the jurisdiction's day, which the server computed, so the first
    * client render matches the HTML it is hydrating. The viewer's own day is
@@ -65,6 +73,7 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
   const [answers, setAnswers] = useState<Record<string, string>>({});
 
   const resultRef = useRef<HTMLDivElement>(null);
+  const speciesRef = useRef<HTMLDivElement>(null);
   const zoneRequestRef = useRef(0);
 
   const outsideCoverage = Boolean(location) && !isWithinSupportedBounds(location!.latitude, location!.longitude);
@@ -75,12 +84,9 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
     ? hasSpeciesCoverageIn(selectedSpecies, activeJurisdictionId)
     : false;
 
-  /* A stable object, so the map's marker and centring effects run when the place
-     changes rather than on every keystroke elsewhere in the composer. */
-  const point = useMemo(
-    () => (location ? { latitude: location.latitude, longitude: location.longitude } : null),
-    [location],
-  );
+  /* "Today" on the zone card is the viewer's own day, like the date field. */
+  const [isToday, setIsToday] = useState(false);
+  useEffect(() => { setIsToday(date === todayIso()); }, [date]);
 
   /* ── The viewer's own calendar day ─────────────────────────────────────── */
 
@@ -103,6 +109,10 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
   /* ── Location → zone, before any species or date ───────────────────────── */
 
   useEffect(() => {
+    /* A different hunt point is a different hunt: the previous answer and the
+       facts given for it no longer apply. */
+    setEvaluation({ kind: "idle" });
+    setAnswers({});
     if (!location) {
       setZoneState({ kind: "idle" });
       return;
@@ -130,6 +140,11 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
             jurisdiction: payload.layer?.jurisdictionName ?? "",
             jurisdictionId: payload.layer.jurisdictionId,
           });
+          /* The resolved zone is highlighted and its card opened, so the person
+             sees where the point is, which zone applies and what it means. */
+          if (payload.zone.layerId && payload.zone.designation) {
+            dispatch({ type: "HUNT_ZONE_RESOLVED", zone: { layerId: payload.zone.layerId, designation: payload.zone.designation } });
+          }
           return;
         }
         setZoneState({
@@ -144,13 +159,47 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
         });
       }
     })();
-  }, [location]);
+    // Keyed on the point, so a better label for the same point does not re-resolve it.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location?.latitude, location?.longitude]);
 
+  /** A deliberate choice of hunt location: a search result or the explicit device action. */
   const selectLocation = useCallback((next: SelectedLocation) => {
-    setLocation(next);
+    dispatch({ type: "HUNT_SET", location: { label: next.label, latitude: next.latitude, longitude: next.longitude, origin: next.origin } });
     setLocateState({ kind: "idle" });
-    // A new place invalidates the previous regulatory answer, never the map.
-    setEvaluation({ kind: "idle" });
+  }, []);
+
+  /** A place name for a point, where the geocoder has one. Never blocks the point itself. */
+  const describePoint = useCallback(async (latitude: number, longitude: number): Promise<string | null> => {
+    try {
+      const response = await fetch("/api/hunt/location", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ action: "describe", latitude, longitude }),
+      });
+      const payload = await response.json() as { status?: string; place?: { label: string } };
+      return payload.status === "OK" && payload.place?.label ? payload.place.label : null;
+    } catch {
+      return null;
+    }
+  }, []);
+
+  /* A previewed map point becomes the hunt location only here, on confirmation. */
+  const confirmPin = useCallback(() => {
+    const pin = exploration.pin;
+    if (!pin) return;
+    const point = roundedPoint(pin.point);
+    dispatch({ type: "PIN_CONFIRMED", label: "Point chosen on the map" });
+    void describePoint(point.latitude, point.longitude).then((label) => {
+      if (label) dispatch({ type: "HUNT_LABELLED", point, label: `Near ${label}` });
+    });
+  }, [exploration.pin, describePoint]);
+
+  /* The zone card's "Check a hunt" for the hunt zone: continue with a species. */
+  const continueHunt = useCallback(() => {
+    const container = speciesRef.current;
+    container?.scrollIntoView({ behavior: "smooth", block: "center" });
+    container?.querySelector<HTMLElement>("input, button")?.focus({ preventScroll: true });
   }, []);
 
   const useMyLocation = useCallback(() => {
@@ -168,18 +217,7 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
       async ({ coords }) => {
         const latitude = Number(coords.latitude.toFixed(6));
         const longitude = Number(coords.longitude.toFixed(6));
-        let label = "Your current location";
-        try {
-          const response = await fetch("/api/hunt/location", {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify({ action: "describe", latitude, longitude }),
-          });
-          const payload = await response.json() as { status?: string; place?: { label: string } };
-          if (payload.status === "OK" && payload.place?.label) label = payload.place.label;
-        } catch {
-          /* A missing label never blocks a resolved coordinate. */
-        }
+        const label = await describePoint(latitude, longitude) ?? "Your current location";
         selectLocation({ label, latitude, longitude, origin: "device" });
       },
       (error) => {
@@ -190,7 +228,7 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
       },
       { enableHighAccuracy: true, timeout: 10_000, maximumAge: 60_000 },
     );
-  }, [selectLocation]);
+  }, [selectLocation, describePoint]);
 
   const checkHunt = useCallback(async (withAnswers?: Record<string, string>) => {
     if (!location || !speciesId || outsideCoverage) return;
@@ -283,7 +321,7 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
                   <path d="M14.5 1.5 9 14.5l-1.7-5.8L1.5 7 14.5 1.5Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
                 </svg>
               )}
-              {locateState.kind === "locating" ? "Finding you…" : "Use my location"}
+              {locateState.kind === "locating" ? "Finding you…" : "Hunt at my location"}
             </button>
 
             {locateState.kind === "error" ? (
@@ -312,11 +350,15 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
                     </p>
                     {zoneState.zone.nearBoundary ? (
                       <p className={styles.zoneWarning} role="note">
-                        <strong>Close to a zone boundary.</strong>{" "}
+                        <strong>
+                          {neighbourLabel
+                            ? `Near the boundary of ${zoneState.zone.shortLabel} and ${neighbourLabel}.`
+                            : "Close to a zone boundary."}
+                        </strong>{" "}
                         {zoneState.zone.boundaryDistanceMeters !== undefined
                           ? `About ${zoneState.zone.boundaryDistanceMeters.toLocaleString("en-CA")} m from the mapped line. `
                           : ""}
-                        Rules can differ on the other side, and consumer GPS is not a legal position fix.
+                        Rules can differ on the other side. Verify your exact hunting position — consumer GPS is not a legal position fix.
                       </p>
                     ) : null}
                   </>
@@ -337,7 +379,7 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
                     </div>
                     <div className={styles.detailRow}>
                       <dt>Source</dt>
-                      <dd>{location.origin === "device" ? "Device location" : "Place search"}</dd>
+                      <dd>{location.origin === "device" ? "Device location, chosen by you" : location.origin === "map" ? "Point chosen on the map" : "Place search"}</dd>
                     </div>
                   </dl>
                 </details>
@@ -346,13 +388,15 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
 
             <DateField value={date} onChange={(next) => { setDate(next); resetHunt(); }} disabled={busy} />
 
-            <SpeciesSelect
-              value={speciesId}
-              onChange={(next) => { setSpeciesId(next); resetHunt(); }}
-              options={speciesOptions}
-              jurisdictionId={activeJurisdictionId}
-              disabled={busy}
-            />
+            <div ref={speciesRef}>
+              <SpeciesSelect
+                value={speciesId}
+                onChange={(next) => { setSpeciesId(next); resetHunt(); }}
+                options={speciesOptions}
+                jurisdictionId={activeJurisdictionId}
+                disabled={busy}
+              />
+            </div>
 
             {outsideCoverage ? (
               <p className={styles.coverageWarning} role="status">
@@ -403,10 +447,16 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
 
         <div className={styles.mapLayer}>
           <HuntMap
-            point={point}
-            placeLabel={location?.label ?? null}
-            zone={resolvedZone}
+            exploration={exploration}
+            dispatch={dispatch}
+            zone={location ? resolvedZone : null}
+            date={date}
+            isToday={isToday}
+            speciesOptions={speciesOptions}
             googleMapsApiKey={googleMapsApiKey}
+            onContinueHunt={continueHunt}
+            onConfirmPin={confirmPin}
+            onNeighbour={setNeighbourLabel}
           />
         </div>
       </section>
