@@ -1,0 +1,162 @@
+{
+  "purpose": "An independent oracle for the Alberta builder. Rules are generated from the online edition of the 2026 Alberta Guide to Hunting Regulations; this compares every generated row against the government-hosted PDF of the same guide, so a parsing error or a divergence between the two channels shows up as a disagreement instead of as a confident answer. It is never used to produce a rule.",
+  "pdf": {
+    "url": "https://open.alberta.ca/dataset/995b1ca1-0e65-4204-b432-98e4d6ccbf46/resource/106a1a7d-ee3a-40db-96c8-e4f67003db29/download/fp-alberta-guide-to-hunting-regulations-2026.pdf",
+    "sha256": "sha256:7d09962ce183e4ff56b4b67a04f5fa7454cc49d1e6f4966f53335460cfd86d9b",
+    "pages": 96
+  },
+  "rowsChecked": 30,
+  "disagreements": 0,
+  "rows": [
+    {
+      "key": "wmu100#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu100#2",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu100#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu100#4",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu200#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu200#2",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu200#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu200#4",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu200#5",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu300#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu300#2",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu300#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu400#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu400#2",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu400#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu400#4",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu400#5",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu400#6",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu400#7",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu500#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu500#2",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu500#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "wmu500#4",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree"
+    },
+    {
+      "key": "bird-seasons#1",
+      "agree": true,
+      "detail": "species, limits, units and season agree"
+    },
+    {
+      "key": "bird-seasons#2",
+      "agree": true,
+      "detail": "species, limits, units and season agree"
+    },
+    {
+      "key": "bird-seasons#3",
+      "agree": true,
+      "detail": "species, limits, units and season agree"
+    },
+    {
+      "key": "bird-seasons#4",
+      "agree": true,
+      "detail": "species, limits, units and season agree"
+    },
+    {
+      "key": "bird-seasons#5",
+      "agree": true,
+      "detail": "species, limits, units and season agree"
+    },
+    {
+      "key": "bird-seasons#6",
+      "agree": true,
+      "detail": "species, limits, units and season agree"
+    },
+    {
+      "key": "bird-seasons#7",
+      "agree": true,
+      "detail": "species, limits, units and season agree; the PDF labels these units \"CFB Wainwright\" where the online edition says \"Camp Wainwright\""
+    }
+  ]
+}

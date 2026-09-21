@@ -1,0 +1,3282 @@
+{
+  "schemaVersion": 1,
+  "bundleId": "regulatory_bundle:ca-ab-2026",
+  "jurisdictionId": "jurisdiction:ca-ab",
+  "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+  "retrievedAt": "2026-09-20",
+  "contentHash": "sha256:bce1b273756adb75050cbb180b4cdd8962eca77e47091aee488abe3498d06e53",
+  "certifiedPeriod": {
+    "from": "2026-04-01",
+    "to": "2027-03-31"
+  },
+  "absence": {
+    "meaning": "UNKNOWN",
+    "statedAs": "No row of the 2026 guide names this unit for this species. The guide is a summary and does not say an unnamed unit is closed for big game, so North Ground reports UNKNOWN rather than CLOSED.",
+    "section": "Big Game Seasons; Game Bird Seasons and Bag Limits",
+    "sourceId": "source:ca-ab-hunting-guide-2026",
+    "excludedCombination": "CLOSED"
+  },
+  "officialUnitCount": 189,
+  "officialIdentifiers": [
+    "102",
+    "104",
+    "106",
+    "108",
+    "110",
+    "112",
+    "116",
+    "118",
+    "119",
+    "124",
+    "128",
+    "130",
+    "132",
+    "134",
+    "136",
+    "138",
+    "140",
+    "142",
+    "144",
+    "148",
+    "150",
+    "151",
+    "152",
+    "156",
+    "158",
+    "160",
+    "162",
+    "163",
+    "164",
+    "166",
+    "200",
+    "202",
+    "203",
+    "204",
+    "206",
+    "208",
+    "210",
+    "212",
+    "214",
+    "216",
+    "220",
+    "221",
+    "222",
+    "224",
+    "226",
+    "228",
+    "230",
+    "232",
+    "234",
+    "236",
+    "238",
+    "240",
+    "242",
+    "244",
+    "246",
+    "247",
+    "248",
+    "250",
+    "252",
+    "254",
+    "256",
+    "258",
+    "260",
+    "300",
+    "302",
+    "303",
+    "304",
+    "305",
+    "306",
+    "308",
+    "310",
+    "312",
+    "314",
+    "316",
+    "318",
+    "320",
+    "322",
+    "324",
+    "326",
+    "328",
+    "330",
+    "332",
+    "334",
+    "336",
+    "337",
+    "338",
+    "339",
+    "340",
+    "342",
+    "344",
+    "346",
+    "347",
+    "348",
+    "349",
+    "350",
+    "351",
+    "352",
+    "353",
+    "354",
+    "355",
+    "356",
+    "357",
+    "358",
+    "359",
+    "360",
+    "400",
+    "402",
+    "404",
+    "406",
+    "408",
+    "410",
+    "412",
+    "414",
+    "416",
+    "417",
+    "418",
+    "420",
+    "422",
+    "426",
+    "428",
+    "429",
+    "430",
+    "432",
+    "434",
+    "436",
+    "437",
+    "438",
+    "439",
+    "440",
+    "441",
+    "442",
+    "444",
+    "445",
+    "446",
+    "500",
+    "501",
+    "502",
+    "503",
+    "504",
+    "505",
+    "506",
+    "507",
+    "508",
+    "509",
+    "510",
+    "511",
+    "512",
+    "514",
+    "515",
+    "516",
+    "517",
+    "518",
+    "519",
+    "520",
+    "521",
+    "522",
+    "523",
+    "524",
+    "525",
+    "526",
+    "527",
+    "528",
+    "529",
+    "530",
+    "531",
+    "532",
+    "534",
+    "535",
+    "536",
+    "537",
+    "539",
+    "540",
+    "541",
+    "542",
+    "544",
+    "624",
+    "648",
+    "651",
+    "718",
+    "726",
+    "728",
+    "730",
+    "732",
+    "734",
+    "736",
+    "738",
+    "794",
+    "841",
+    "936"
+  ],
+  "sources": [
+    {
+      "id": "source:ca-ab-hunting-guide-2026",
+      "authority": "Government of Alberta (Alberta Forestry and Parks)",
+      "title": "2026 Alberta Guide to Hunting Regulations",
+      "url": "https://open.alberta.ca/dataset/995b1ca1-0e65-4204-b432-98e4d6ccbf46/resource/106a1a7d-ee3a-40db-96c8-e4f67003db29/download/fp-alberta-guide-to-hunting-regulations-2026.pdf",
+      "catalogueUrl": "https://open.alberta.ca/publications/1485-4287",
+      "parsedFrom": "https://www.albertaregulations.ca/huntingregs/",
+      "licence": "No open licence. North Ground records facts — dates, units, classes and limits — with the printed cell as provenance.",
+      "sourceHashes": {
+        "pdf": "sha256:7d09962ce183e4ff56b4b67a04f5fa7454cc49d1e6f4966f53335460cfd86d9b",
+        "wmu100": "sha256:9f54a7a2dab546c3a8e41e46ca6ea363fe86c5408728d3e3cb6b4c30f084d7ca",
+        "wmu200": "sha256:8a4c3a7f760af4d930bd5db215eb8b42260c26459da666dd873e5c7297eb19a0",
+        "wmu300": "sha256:94c9ef4051243eea629e082506183d0c23f8b15a801de0edec64e4941101b939",
+        "wmu400": "sha256:d72b11f90211efbb514b4183533d5a3648942a58dd54b027eb50de6ad15c4021",
+        "wmu500": "sha256:39b34243fc808ce71ef3b79d55334bbbf859bb5a4a0db3b486028a848ceca180",
+        "bird-seasons": "sha256:b3dc3277f031af177756645455285abeb4d024cb6576fb02b4a37b1153e86229"
+      },
+      "crosscheck": {
+        "file": "content/regulatory/sources/ca-ab-hunting-guide-2026-crosscheck.json",
+        "rowsChecked": 30,
+        "disagreements": 0
+      },
+      "conditions": [
+        {
+          "id": "ab-licence-required",
+          "text": "A Wildlife Identification Number, a wildlife certificate and a licence for this species are required. North Ground has not verified what you hold.",
+          "sourceSection": "p. 21, Licences",
+          "sourceId": "source:ca-ab-hunting-guide-2026"
+        },
+        {
+          "id": "ab-special-licence",
+          "text": "This season applies only to hunters with an applicable special licence from the Alberta Hunting Draws. The answer assumes you hold one valid for this species, class and unit; North Ground has not verified it.",
+          "sourceSection": "p. 47, Big Game Seasons (■)",
+          "sourceId": "source:ca-ab-hunting-guide-2026"
+        },
+        {
+          "id": "ab-bowhunting-permit",
+          "text": "Hunting with a bow and arrow also requires a bowhunting permit (not required for a crossbow).",
+          "sourceSection": "p. 21, Licences",
+          "sourceId": "source:ca-ab-hunting-guide-2026"
+        },
+        {
+          "id": "ab-non-resident-big-game",
+          "text": "Licences open to non-residents differ from residents', and non-residents hunt big game with a resident hunter host or a designated guide.",
+          "sourceSection": "p. 17, Definitions; pp. 24–26, Licences",
+          "sourceId": "source:ca-ab-hunting-guide-2026"
+        },
+        {
+          "id": "ab-sunday-big-game",
+          "text": "Hunting big game on Sundays is unlawful in WMUs 102–160, 624, 728, 730 and 936; Sundays are excluded from the dates given here.",
+          "sourceSection": "p. 31, Unlawful activities, item 15",
+          "sourceId": "source:ca-ab-hunting-guide-2026"
+        },
+        {
+          "id": "ab-cwd-head-submission",
+          "text": "Heads of deer harvested in specific WMUs must be submitted for chronic wasting disease testing.",
+          "sourceSection": "pp. 3, 33 and 66",
+          "sourceId": "source:ca-ab-hunting-guide-2026"
+        },
+        {
+          "id": "ab-wmu-936-discharge-permit",
+          "text": "Hunters, including bowhunters, require a firearms discharge permit to hunt in WMU 936 (Cooking Lake–Blackfoot Provincial Recreation Area).",
+          "sourceSection": "p. 50, Parkland footnote 1; p. 63",
+          "sourceId": "source:ca-ab-hunting-guide-2026"
+        },
+        {
+          "id": "ab-game-bird-licence",
+          "text": "A wildlife certificate and an Alberta game bird licence are required. North Ground has not verified what you hold.",
+          "sourceSection": "p. 21, Licences",
+          "sourceId": "source:ca-ab-hunting-guide-2026"
+        },
+        {
+          "id": "ab-cfb-wainwright",
+          "text": "WMUs 728 and 730 (CFB Wainwright): every hunter attends a mandatory 7:00 am safety briefing on their first day, and game-bird hunters using shotguns must use non-toxic shot.",
+          "sourceSection": "p. 63",
+          "sourceId": "source:ca-ab-hunting-guide-2026"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Alberta's own catalogue record says the guide \"is neither a legal document nor a complete listing of current Alberta hunting regulations\"; the Wildlife Act and the Wildlife Regulation (Alta. Reg. 143/97) are the law.",
+    "Alberta describes its WMU maps as small-scale approximations of units legally described in the Wildlife Regulation, which prevails near a boundary.",
+    "Being inside a WMU is not permission to hunt there: land access, provincial parks, restricted areas and local bylaws are separate questions North Ground has not resolved.",
+    "This is a recreational licence result. It is not a determination of treaty, Aboriginal or Métis harvesting rights."
+  ],
+  "notEncoded": {
+    "bigGame": [
+      "Mule deer",
+      "Moose",
+      "Elk",
+      "Class 1 sheep"
+    ],
+    "gameBirds": [
+      "Snow or Ross’s geese",
+      "Canada or white-fronted geese",
+      "Ducks, coots, snipe, cormorants",
+      "Sandhill crane",
+      "Male pheasant",
+      "Ptarmigan",
+      "Blue grouse",
+      "Gray partridge",
+      "Wild turkey"
+    ],
+    "reason": "Not in the first Alberta wave. Their rows are read and recognised, so a renamed or new row still stops the build."
+  },
+  "groups": [
+    {
+      "id": "regulatory_group:ca-ab-2026-102-104-106-108-110-112-116-118-119-124-128-130-132-134-136-138-140-142-144-148--6a0f356c",
+      "officialSpec": "102-246, 252-256, 300-314, 334, 400-402, 518-520, 524, 525, 528-542, 936",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-102",
+        "management_zone:ca-ab-wmu-104",
+        "management_zone:ca-ab-wmu-106",
+        "management_zone:ca-ab-wmu-108",
+        "management_zone:ca-ab-wmu-110",
+        "management_zone:ca-ab-wmu-112",
+        "management_zone:ca-ab-wmu-116",
+        "management_zone:ca-ab-wmu-118",
+        "management_zone:ca-ab-wmu-119",
+        "management_zone:ca-ab-wmu-124",
+        "management_zone:ca-ab-wmu-128",
+        "management_zone:ca-ab-wmu-130",
+        "management_zone:ca-ab-wmu-132",
+        "management_zone:ca-ab-wmu-134",
+        "management_zone:ca-ab-wmu-136",
+        "management_zone:ca-ab-wmu-138",
+        "management_zone:ca-ab-wmu-140",
+        "management_zone:ca-ab-wmu-142",
+        "management_zone:ca-ab-wmu-144",
+        "management_zone:ca-ab-wmu-148",
+        "management_zone:ca-ab-wmu-150",
+        "management_zone:ca-ab-wmu-151",
+        "management_zone:ca-ab-wmu-152",
+        "management_zone:ca-ab-wmu-156",
+        "management_zone:ca-ab-wmu-158",
+        "management_zone:ca-ab-wmu-160",
+        "management_zone:ca-ab-wmu-162",
+        "management_zone:ca-ab-wmu-163",
+        "management_zone:ca-ab-wmu-164",
+        "management_zone:ca-ab-wmu-166",
+        "management_zone:ca-ab-wmu-200",
+        "management_zone:ca-ab-wmu-202",
+        "management_zone:ca-ab-wmu-203",
+        "management_zone:ca-ab-wmu-204",
+        "management_zone:ca-ab-wmu-206",
+        "management_zone:ca-ab-wmu-208",
+        "management_zone:ca-ab-wmu-210",
+        "management_zone:ca-ab-wmu-212",
+        "management_zone:ca-ab-wmu-214",
+        "management_zone:ca-ab-wmu-216",
+        "management_zone:ca-ab-wmu-220",
+        "management_zone:ca-ab-wmu-221",
+        "management_zone:ca-ab-wmu-222",
+        "management_zone:ca-ab-wmu-224",
+        "management_zone:ca-ab-wmu-226",
+        "management_zone:ca-ab-wmu-228",
+        "management_zone:ca-ab-wmu-230",
+        "management_zone:ca-ab-wmu-232",
+        "management_zone:ca-ab-wmu-234",
+        "management_zone:ca-ab-wmu-236",
+        "management_zone:ca-ab-wmu-238",
+        "management_zone:ca-ab-wmu-240",
+        "management_zone:ca-ab-wmu-242",
+        "management_zone:ca-ab-wmu-244",
+        "management_zone:ca-ab-wmu-246",
+        "management_zone:ca-ab-wmu-252",
+        "management_zone:ca-ab-wmu-254",
+        "management_zone:ca-ab-wmu-256",
+        "management_zone:ca-ab-wmu-300",
+        "management_zone:ca-ab-wmu-302",
+        "management_zone:ca-ab-wmu-303",
+        "management_zone:ca-ab-wmu-304",
+        "management_zone:ca-ab-wmu-305",
+        "management_zone:ca-ab-wmu-306",
+        "management_zone:ca-ab-wmu-308",
+        "management_zone:ca-ab-wmu-310",
+        "management_zone:ca-ab-wmu-312",
+        "management_zone:ca-ab-wmu-314",
+        "management_zone:ca-ab-wmu-334",
+        "management_zone:ca-ab-wmu-400",
+        "management_zone:ca-ab-wmu-402",
+        "management_zone:ca-ab-wmu-518",
+        "management_zone:ca-ab-wmu-519",
+        "management_zone:ca-ab-wmu-520",
+        "management_zone:ca-ab-wmu-524",
+        "management_zone:ca-ab-wmu-525",
+        "management_zone:ca-ab-wmu-528",
+        "management_zone:ca-ab-wmu-529",
+        "management_zone:ca-ab-wmu-530",
+        "management_zone:ca-ab-wmu-531",
+        "management_zone:ca-ab-wmu-532",
+        "management_zone:ca-ab-wmu-534",
+        "management_zone:ca-ab-wmu-535",
+        "management_zone:ca-ab-wmu-536",
+        "management_zone:ca-ab-wmu-537",
+        "management_zone:ca-ab-wmu-539",
+        "management_zone:ca-ab-wmu-540",
+        "management_zone:ca-ab-wmu-541",
+        "management_zone:ca-ab-wmu-542",
+        "management_zone:ca-ab-wmu-936"
+      ],
+      "officialIdentifiers": [
+        "102",
+        "104",
+        "106",
+        "108",
+        "110",
+        "112",
+        "116",
+        "118",
+        "119",
+        "124",
+        "128",
+        "130",
+        "132",
+        "134",
+        "136",
+        "138",
+        "140",
+        "142",
+        "144",
+        "148",
+        "150",
+        "151",
+        "152",
+        "156",
+        "158",
+        "160",
+        "162",
+        "163",
+        "164",
+        "166",
+        "200",
+        "202",
+        "203",
+        "204",
+        "206",
+        "208",
+        "210",
+        "212",
+        "214",
+        "216",
+        "220",
+        "221",
+        "222",
+        "224",
+        "226",
+        "228",
+        "230",
+        "232",
+        "234",
+        "236",
+        "238",
+        "240",
+        "242",
+        "244",
+        "246",
+        "252",
+        "254",
+        "256",
+        "300",
+        "302",
+        "303",
+        "304",
+        "305",
+        "306",
+        "308",
+        "310",
+        "312",
+        "314",
+        "334",
+        "400",
+        "402",
+        "518",
+        "519",
+        "520",
+        "524",
+        "525",
+        "528",
+        "529",
+        "530",
+        "531",
+        "532",
+        "534",
+        "535",
+        "536",
+        "537",
+        "539",
+        "540",
+        "541",
+        "542",
+        "936"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-102-104-106-108-110-112-116-118-119-124-128-130-132-134-136-138-140-142-144-148--ac25be95",
+      "officialSpec": "102-402, 412-544",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-102",
+        "management_zone:ca-ab-wmu-104",
+        "management_zone:ca-ab-wmu-106",
+        "management_zone:ca-ab-wmu-108",
+        "management_zone:ca-ab-wmu-110",
+        "management_zone:ca-ab-wmu-112",
+        "management_zone:ca-ab-wmu-116",
+        "management_zone:ca-ab-wmu-118",
+        "management_zone:ca-ab-wmu-119",
+        "management_zone:ca-ab-wmu-124",
+        "management_zone:ca-ab-wmu-128",
+        "management_zone:ca-ab-wmu-130",
+        "management_zone:ca-ab-wmu-132",
+        "management_zone:ca-ab-wmu-134",
+        "management_zone:ca-ab-wmu-136",
+        "management_zone:ca-ab-wmu-138",
+        "management_zone:ca-ab-wmu-140",
+        "management_zone:ca-ab-wmu-142",
+        "management_zone:ca-ab-wmu-144",
+        "management_zone:ca-ab-wmu-148",
+        "management_zone:ca-ab-wmu-150",
+        "management_zone:ca-ab-wmu-151",
+        "management_zone:ca-ab-wmu-152",
+        "management_zone:ca-ab-wmu-156",
+        "management_zone:ca-ab-wmu-158",
+        "management_zone:ca-ab-wmu-160",
+        "management_zone:ca-ab-wmu-162",
+        "management_zone:ca-ab-wmu-163",
+        "management_zone:ca-ab-wmu-164",
+        "management_zone:ca-ab-wmu-166",
+        "management_zone:ca-ab-wmu-200",
+        "management_zone:ca-ab-wmu-202",
+        "management_zone:ca-ab-wmu-203",
+        "management_zone:ca-ab-wmu-204",
+        "management_zone:ca-ab-wmu-206",
+        "management_zone:ca-ab-wmu-208",
+        "management_zone:ca-ab-wmu-210",
+        "management_zone:ca-ab-wmu-212",
+        "management_zone:ca-ab-wmu-214",
+        "management_zone:ca-ab-wmu-216",
+        "management_zone:ca-ab-wmu-220",
+        "management_zone:ca-ab-wmu-221",
+        "management_zone:ca-ab-wmu-222",
+        "management_zone:ca-ab-wmu-224",
+        "management_zone:ca-ab-wmu-226",
+        "management_zone:ca-ab-wmu-228",
+        "management_zone:ca-ab-wmu-230",
+        "management_zone:ca-ab-wmu-232",
+        "management_zone:ca-ab-wmu-234",
+        "management_zone:ca-ab-wmu-236",
+        "management_zone:ca-ab-wmu-238",
+        "management_zone:ca-ab-wmu-240",
+        "management_zone:ca-ab-wmu-242",
+        "management_zone:ca-ab-wmu-244",
+        "management_zone:ca-ab-wmu-246",
+        "management_zone:ca-ab-wmu-247",
+        "management_zone:ca-ab-wmu-248",
+        "management_zone:ca-ab-wmu-250",
+        "management_zone:ca-ab-wmu-252",
+        "management_zone:ca-ab-wmu-254",
+        "management_zone:ca-ab-wmu-256",
+        "management_zone:ca-ab-wmu-258",
+        "management_zone:ca-ab-wmu-260",
+        "management_zone:ca-ab-wmu-300",
+        "management_zone:ca-ab-wmu-302",
+        "management_zone:ca-ab-wmu-303",
+        "management_zone:ca-ab-wmu-304",
+        "management_zone:ca-ab-wmu-305",
+        "management_zone:ca-ab-wmu-306",
+        "management_zone:ca-ab-wmu-308",
+        "management_zone:ca-ab-wmu-310",
+        "management_zone:ca-ab-wmu-312",
+        "management_zone:ca-ab-wmu-314",
+        "management_zone:ca-ab-wmu-316",
+        "management_zone:ca-ab-wmu-318",
+        "management_zone:ca-ab-wmu-320",
+        "management_zone:ca-ab-wmu-322",
+        "management_zone:ca-ab-wmu-324",
+        "management_zone:ca-ab-wmu-326",
+        "management_zone:ca-ab-wmu-328",
+        "management_zone:ca-ab-wmu-330",
+        "management_zone:ca-ab-wmu-332",
+        "management_zone:ca-ab-wmu-334",
+        "management_zone:ca-ab-wmu-336",
+        "management_zone:ca-ab-wmu-337",
+        "management_zone:ca-ab-wmu-338",
+        "management_zone:ca-ab-wmu-339",
+        "management_zone:ca-ab-wmu-340",
+        "management_zone:ca-ab-wmu-342",
+        "management_zone:ca-ab-wmu-344",
+        "management_zone:ca-ab-wmu-346",
+        "management_zone:ca-ab-wmu-347",
+        "management_zone:ca-ab-wmu-348",
+        "management_zone:ca-ab-wmu-349",
+        "management_zone:ca-ab-wmu-350",
+        "management_zone:ca-ab-wmu-351",
+        "management_zone:ca-ab-wmu-352",
+        "management_zone:ca-ab-wmu-353",
+        "management_zone:ca-ab-wmu-354",
+        "management_zone:ca-ab-wmu-355",
+        "management_zone:ca-ab-wmu-356",
+        "management_zone:ca-ab-wmu-357",
+        "management_zone:ca-ab-wmu-358",
+        "management_zone:ca-ab-wmu-359",
+        "management_zone:ca-ab-wmu-360",
+        "management_zone:ca-ab-wmu-400",
+        "management_zone:ca-ab-wmu-402",
+        "management_zone:ca-ab-wmu-412",
+        "management_zone:ca-ab-wmu-414",
+        "management_zone:ca-ab-wmu-416",
+        "management_zone:ca-ab-wmu-417",
+        "management_zone:ca-ab-wmu-418",
+        "management_zone:ca-ab-wmu-420",
+        "management_zone:ca-ab-wmu-422",
+        "management_zone:ca-ab-wmu-426",
+        "management_zone:ca-ab-wmu-428",
+        "management_zone:ca-ab-wmu-429",
+        "management_zone:ca-ab-wmu-430",
+        "management_zone:ca-ab-wmu-432",
+        "management_zone:ca-ab-wmu-434",
+        "management_zone:ca-ab-wmu-436",
+        "management_zone:ca-ab-wmu-437",
+        "management_zone:ca-ab-wmu-438",
+        "management_zone:ca-ab-wmu-439",
+        "management_zone:ca-ab-wmu-440",
+        "management_zone:ca-ab-wmu-441",
+        "management_zone:ca-ab-wmu-442",
+        "management_zone:ca-ab-wmu-444",
+        "management_zone:ca-ab-wmu-445",
+        "management_zone:ca-ab-wmu-446",
+        "management_zone:ca-ab-wmu-500",
+        "management_zone:ca-ab-wmu-501",
+        "management_zone:ca-ab-wmu-502",
+        "management_zone:ca-ab-wmu-503",
+        "management_zone:ca-ab-wmu-504",
+        "management_zone:ca-ab-wmu-505",
+        "management_zone:ca-ab-wmu-506",
+        "management_zone:ca-ab-wmu-507",
+        "management_zone:ca-ab-wmu-508",
+        "management_zone:ca-ab-wmu-509",
+        "management_zone:ca-ab-wmu-510",
+        "management_zone:ca-ab-wmu-511",
+        "management_zone:ca-ab-wmu-512",
+        "management_zone:ca-ab-wmu-514",
+        "management_zone:ca-ab-wmu-515",
+        "management_zone:ca-ab-wmu-516",
+        "management_zone:ca-ab-wmu-517",
+        "management_zone:ca-ab-wmu-518",
+        "management_zone:ca-ab-wmu-519",
+        "management_zone:ca-ab-wmu-520",
+        "management_zone:ca-ab-wmu-521",
+        "management_zone:ca-ab-wmu-522",
+        "management_zone:ca-ab-wmu-523",
+        "management_zone:ca-ab-wmu-524",
+        "management_zone:ca-ab-wmu-525",
+        "management_zone:ca-ab-wmu-526",
+        "management_zone:ca-ab-wmu-527",
+        "management_zone:ca-ab-wmu-528",
+        "management_zone:ca-ab-wmu-529",
+        "management_zone:ca-ab-wmu-530",
+        "management_zone:ca-ab-wmu-531",
+        "management_zone:ca-ab-wmu-532",
+        "management_zone:ca-ab-wmu-534",
+        "management_zone:ca-ab-wmu-535",
+        "management_zone:ca-ab-wmu-536",
+        "management_zone:ca-ab-wmu-537",
+        "management_zone:ca-ab-wmu-539",
+        "management_zone:ca-ab-wmu-540",
+        "management_zone:ca-ab-wmu-541",
+        "management_zone:ca-ab-wmu-542",
+        "management_zone:ca-ab-wmu-544"
+      ],
+      "officialIdentifiers": [
+        "102",
+        "104",
+        "106",
+        "108",
+        "110",
+        "112",
+        "116",
+        "118",
+        "119",
+        "124",
+        "128",
+        "130",
+        "132",
+        "134",
+        "136",
+        "138",
+        "140",
+        "142",
+        "144",
+        "148",
+        "150",
+        "151",
+        "152",
+        "156",
+        "158",
+        "160",
+        "162",
+        "163",
+        "164",
+        "166",
+        "200",
+        "202",
+        "203",
+        "204",
+        "206",
+        "208",
+        "210",
+        "212",
+        "214",
+        "216",
+        "220",
+        "221",
+        "222",
+        "224",
+        "226",
+        "228",
+        "230",
+        "232",
+        "234",
+        "236",
+        "238",
+        "240",
+        "242",
+        "244",
+        "246",
+        "247",
+        "248",
+        "250",
+        "252",
+        "254",
+        "256",
+        "258",
+        "260",
+        "300",
+        "302",
+        "303",
+        "304",
+        "305",
+        "306",
+        "308",
+        "310",
+        "312",
+        "314",
+        "316",
+        "318",
+        "320",
+        "322",
+        "324",
+        "326",
+        "328",
+        "330",
+        "332",
+        "334",
+        "336",
+        "337",
+        "338",
+        "339",
+        "340",
+        "342",
+        "344",
+        "346",
+        "347",
+        "348",
+        "349",
+        "350",
+        "351",
+        "352",
+        "353",
+        "354",
+        "355",
+        "356",
+        "357",
+        "358",
+        "359",
+        "360",
+        "400",
+        "402",
+        "412",
+        "414",
+        "416",
+        "417",
+        "418",
+        "420",
+        "422",
+        "426",
+        "428",
+        "429",
+        "430",
+        "432",
+        "434",
+        "436",
+        "437",
+        "438",
+        "439",
+        "440",
+        "441",
+        "442",
+        "444",
+        "445",
+        "446",
+        "500",
+        "501",
+        "502",
+        "503",
+        "504",
+        "505",
+        "506",
+        "507",
+        "508",
+        "509",
+        "510",
+        "511",
+        "512",
+        "514",
+        "515",
+        "516",
+        "517",
+        "518",
+        "519",
+        "520",
+        "521",
+        "522",
+        "523",
+        "524",
+        "525",
+        "526",
+        "527",
+        "528",
+        "529",
+        "530",
+        "531",
+        "532",
+        "534",
+        "535",
+        "536",
+        "537",
+        "539",
+        "540",
+        "541",
+        "542",
+        "544"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-102-104-106-108-110-112-116-118-119-124-128-130-132-134-136-138-140-142-144-148--e2ef5180",
+      "officialSpec": "102, 104, 106, 108, 110, 112, 116, 118, 119, 124, 128, 130, 132, 134, 136, 138, 140, 142, 144, 148, 150, 151, 152, 156, 158, 160",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-102",
+        "management_zone:ca-ab-wmu-104",
+        "management_zone:ca-ab-wmu-106",
+        "management_zone:ca-ab-wmu-108",
+        "management_zone:ca-ab-wmu-110",
+        "management_zone:ca-ab-wmu-112",
+        "management_zone:ca-ab-wmu-116",
+        "management_zone:ca-ab-wmu-118",
+        "management_zone:ca-ab-wmu-119",
+        "management_zone:ca-ab-wmu-124",
+        "management_zone:ca-ab-wmu-128",
+        "management_zone:ca-ab-wmu-130",
+        "management_zone:ca-ab-wmu-132",
+        "management_zone:ca-ab-wmu-134",
+        "management_zone:ca-ab-wmu-136",
+        "management_zone:ca-ab-wmu-138",
+        "management_zone:ca-ab-wmu-140",
+        "management_zone:ca-ab-wmu-142",
+        "management_zone:ca-ab-wmu-144",
+        "management_zone:ca-ab-wmu-148",
+        "management_zone:ca-ab-wmu-150",
+        "management_zone:ca-ab-wmu-151",
+        "management_zone:ca-ab-wmu-152",
+        "management_zone:ca-ab-wmu-156",
+        "management_zone:ca-ab-wmu-158",
+        "management_zone:ca-ab-wmu-160"
+      ],
+      "officialIdentifiers": [
+        "102",
+        "104",
+        "106",
+        "108",
+        "110",
+        "112",
+        "116",
+        "118",
+        "119",
+        "124",
+        "128",
+        "130",
+        "132",
+        "134",
+        "136",
+        "138",
+        "140",
+        "142",
+        "144",
+        "148",
+        "150",
+        "151",
+        "152",
+        "156",
+        "158",
+        "160"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-162-163-164-166-e1006a6e",
+      "officialSpec": "162, 163, 164, 166",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-162",
+        "management_zone:ca-ab-wmu-163",
+        "management_zone:ca-ab-wmu-164",
+        "management_zone:ca-ab-wmu-166"
+      ],
+      "officialIdentifiers": [
+        "162",
+        "163",
+        "164",
+        "166"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-200-202-203-204-206-208-214-216-220-221-222-224-226-228-230-232-234-236-238-240--93e65281",
+      "officialSpec": "200, 202, 203, 204, 206, 208, 214, 216, 220, 221, 222, 224, 226, 228, 230, 232, 234, 236, 238, 240, 242, 244, 246, 250, 252, 254, 256, 258, 260",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-200",
+        "management_zone:ca-ab-wmu-202",
+        "management_zone:ca-ab-wmu-203",
+        "management_zone:ca-ab-wmu-204",
+        "management_zone:ca-ab-wmu-206",
+        "management_zone:ca-ab-wmu-208",
+        "management_zone:ca-ab-wmu-214",
+        "management_zone:ca-ab-wmu-216",
+        "management_zone:ca-ab-wmu-220",
+        "management_zone:ca-ab-wmu-221",
+        "management_zone:ca-ab-wmu-222",
+        "management_zone:ca-ab-wmu-224",
+        "management_zone:ca-ab-wmu-226",
+        "management_zone:ca-ab-wmu-228",
+        "management_zone:ca-ab-wmu-230",
+        "management_zone:ca-ab-wmu-232",
+        "management_zone:ca-ab-wmu-234",
+        "management_zone:ca-ab-wmu-236",
+        "management_zone:ca-ab-wmu-238",
+        "management_zone:ca-ab-wmu-240",
+        "management_zone:ca-ab-wmu-242",
+        "management_zone:ca-ab-wmu-244",
+        "management_zone:ca-ab-wmu-246",
+        "management_zone:ca-ab-wmu-250",
+        "management_zone:ca-ab-wmu-252",
+        "management_zone:ca-ab-wmu-254",
+        "management_zone:ca-ab-wmu-256",
+        "management_zone:ca-ab-wmu-258",
+        "management_zone:ca-ab-wmu-260"
+      ],
+      "officialIdentifiers": [
+        "200",
+        "202",
+        "203",
+        "204",
+        "206",
+        "208",
+        "214",
+        "216",
+        "220",
+        "221",
+        "222",
+        "224",
+        "226",
+        "228",
+        "230",
+        "232",
+        "234",
+        "236",
+        "238",
+        "240",
+        "242",
+        "244",
+        "246",
+        "250",
+        "252",
+        "254",
+        "256",
+        "258",
+        "260"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-210-d29d5370",
+      "officialSpec": "210",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-210"
+      ],
+      "officialIdentifiers": [
+        "210"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-212-247-248-7b99787a",
+      "officialSpec": "212, 247, 248",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-212",
+        "management_zone:ca-ab-wmu-247",
+        "management_zone:ca-ab-wmu-248"
+      ],
+      "officialIdentifiers": [
+        "212",
+        "247",
+        "248"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-300-302-303-304-305-306-308-b5664f42",
+      "officialSpec": "300, 302, 303, 304, 305, 306, 308",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-300",
+        "management_zone:ca-ab-wmu-302",
+        "management_zone:ca-ab-wmu-303",
+        "management_zone:ca-ab-wmu-304",
+        "management_zone:ca-ab-wmu-305",
+        "management_zone:ca-ab-wmu-306",
+        "management_zone:ca-ab-wmu-308"
+      ],
+      "officialIdentifiers": [
+        "300",
+        "302",
+        "303",
+        "304",
+        "305",
+        "306",
+        "308"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-310-312-314-316-318-320-322-324-332-334-336-337-338-348-1522ae6f",
+      "officialSpec": "310, 312, 314, 316, 318, 320, 322, 324, 332, 334, 336, 337, 338, 348",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-310",
+        "management_zone:ca-ab-wmu-312",
+        "management_zone:ca-ab-wmu-314",
+        "management_zone:ca-ab-wmu-316",
+        "management_zone:ca-ab-wmu-318",
+        "management_zone:ca-ab-wmu-320",
+        "management_zone:ca-ab-wmu-322",
+        "management_zone:ca-ab-wmu-324",
+        "management_zone:ca-ab-wmu-332",
+        "management_zone:ca-ab-wmu-334",
+        "management_zone:ca-ab-wmu-336",
+        "management_zone:ca-ab-wmu-337",
+        "management_zone:ca-ab-wmu-338",
+        "management_zone:ca-ab-wmu-348"
+      ],
+      "officialIdentifiers": [
+        "310",
+        "312",
+        "314",
+        "316",
+        "318",
+        "320",
+        "322",
+        "324",
+        "332",
+        "334",
+        "336",
+        "337",
+        "338",
+        "348"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-326-328-330-339-340-342-344-346-347-349-350-351-352-353-354-355-356-357-358-359--f4251b91",
+      "officialSpec": "326, 328, 330, 339, 340, 342, 344, 346, 347, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-326",
+        "management_zone:ca-ab-wmu-328",
+        "management_zone:ca-ab-wmu-330",
+        "management_zone:ca-ab-wmu-339",
+        "management_zone:ca-ab-wmu-340",
+        "management_zone:ca-ab-wmu-342",
+        "management_zone:ca-ab-wmu-344",
+        "management_zone:ca-ab-wmu-346",
+        "management_zone:ca-ab-wmu-347",
+        "management_zone:ca-ab-wmu-349",
+        "management_zone:ca-ab-wmu-350",
+        "management_zone:ca-ab-wmu-351",
+        "management_zone:ca-ab-wmu-352",
+        "management_zone:ca-ab-wmu-353",
+        "management_zone:ca-ab-wmu-354",
+        "management_zone:ca-ab-wmu-355",
+        "management_zone:ca-ab-wmu-356",
+        "management_zone:ca-ab-wmu-357",
+        "management_zone:ca-ab-wmu-358",
+        "management_zone:ca-ab-wmu-359",
+        "management_zone:ca-ab-wmu-360"
+      ],
+      "officialIdentifiers": [
+        "326",
+        "328",
+        "330",
+        "339",
+        "340",
+        "342",
+        "344",
+        "346",
+        "347",
+        "349",
+        "350",
+        "351",
+        "352",
+        "353",
+        "354",
+        "355",
+        "356",
+        "357",
+        "358",
+        "359",
+        "360"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-400-402-47d8c302",
+      "officialSpec": "400, 402",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-400",
+        "management_zone:ca-ab-wmu-402"
+      ],
+      "officialIdentifiers": [
+        "400",
+        "402"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-404-406-408-410-841-936-a0511c64",
+      "officialSpec": "404-410, 841, 936",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-404",
+        "management_zone:ca-ab-wmu-406",
+        "management_zone:ca-ab-wmu-408",
+        "management_zone:ca-ab-wmu-410",
+        "management_zone:ca-ab-wmu-841",
+        "management_zone:ca-ab-wmu-936"
+      ],
+      "officialIdentifiers": [
+        "404",
+        "406",
+        "408",
+        "410",
+        "841",
+        "936"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-404-406-408-aaee5171",
+      "officialSpec": "404, 406, 408",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-404",
+        "management_zone:ca-ab-wmu-406",
+        "management_zone:ca-ab-wmu-408"
+      ],
+      "officialIdentifiers": [
+        "404",
+        "406",
+        "408"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-410-612111a3",
+      "officialSpec": "410",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-410"
+      ],
+      "officialIdentifiers": [
+        "410"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-412-414-416-417-418-420-422-426-428-430-432-434-d2ace3c0",
+      "officialSpec": "412, 414, 416, 417, 418, 420, 422, 426, 428, 430, 432, 434",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-412",
+        "management_zone:ca-ab-wmu-414",
+        "management_zone:ca-ab-wmu-416",
+        "management_zone:ca-ab-wmu-417",
+        "management_zone:ca-ab-wmu-418",
+        "management_zone:ca-ab-wmu-420",
+        "management_zone:ca-ab-wmu-422",
+        "management_zone:ca-ab-wmu-426",
+        "management_zone:ca-ab-wmu-428",
+        "management_zone:ca-ab-wmu-430",
+        "management_zone:ca-ab-wmu-432",
+        "management_zone:ca-ab-wmu-434"
+      ],
+      "officialIdentifiers": [
+        "412",
+        "414",
+        "416",
+        "417",
+        "418",
+        "420",
+        "422",
+        "426",
+        "428",
+        "430",
+        "432",
+        "434"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-429-436-437-438-439-440-441-442-444-445-446-fd9bd247",
+      "officialSpec": "429, 436, 437, 438, 439, 440, 441, 442, 444, 445, 446",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-429",
+        "management_zone:ca-ab-wmu-436",
+        "management_zone:ca-ab-wmu-437",
+        "management_zone:ca-ab-wmu-438",
+        "management_zone:ca-ab-wmu-439",
+        "management_zone:ca-ab-wmu-440",
+        "management_zone:ca-ab-wmu-441",
+        "management_zone:ca-ab-wmu-442",
+        "management_zone:ca-ab-wmu-444",
+        "management_zone:ca-ab-wmu-445",
+        "management_zone:ca-ab-wmu-446"
+      ],
+      "officialIdentifiers": [
+        "429",
+        "436",
+        "437",
+        "438",
+        "439",
+        "440",
+        "441",
+        "442",
+        "444",
+        "445",
+        "446"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-500-501-502-503-504-505-506-507-508-509-510-67812f78",
+      "officialSpec": "500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-500",
+        "management_zone:ca-ab-wmu-501",
+        "management_zone:ca-ab-wmu-502",
+        "management_zone:ca-ab-wmu-503",
+        "management_zone:ca-ab-wmu-504",
+        "management_zone:ca-ab-wmu-505",
+        "management_zone:ca-ab-wmu-506",
+        "management_zone:ca-ab-wmu-507",
+        "management_zone:ca-ab-wmu-508",
+        "management_zone:ca-ab-wmu-509",
+        "management_zone:ca-ab-wmu-510"
+      ],
+      "officialIdentifiers": [
+        "500",
+        "501",
+        "502",
+        "503",
+        "504",
+        "505",
+        "506",
+        "507",
+        "508",
+        "509",
+        "510"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-511-512-514-515-516-517-518-519-520-524-525-528-529-530-531-532-534-536-539-540--aa8167c4",
+      "officialSpec": "511, 512, 514, 515, 516, 517, 518, 519, 520, 524, 525, 528, 529, 530, 531, 532, 534, 536, 539, 540, 541, 542, 544",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-511",
+        "management_zone:ca-ab-wmu-512",
+        "management_zone:ca-ab-wmu-514",
+        "management_zone:ca-ab-wmu-515",
+        "management_zone:ca-ab-wmu-516",
+        "management_zone:ca-ab-wmu-517",
+        "management_zone:ca-ab-wmu-518",
+        "management_zone:ca-ab-wmu-519",
+        "management_zone:ca-ab-wmu-520",
+        "management_zone:ca-ab-wmu-524",
+        "management_zone:ca-ab-wmu-525",
+        "management_zone:ca-ab-wmu-528",
+        "management_zone:ca-ab-wmu-529",
+        "management_zone:ca-ab-wmu-530",
+        "management_zone:ca-ab-wmu-531",
+        "management_zone:ca-ab-wmu-532",
+        "management_zone:ca-ab-wmu-534",
+        "management_zone:ca-ab-wmu-536",
+        "management_zone:ca-ab-wmu-539",
+        "management_zone:ca-ab-wmu-540",
+        "management_zone:ca-ab-wmu-541",
+        "management_zone:ca-ab-wmu-542",
+        "management_zone:ca-ab-wmu-544"
+      ],
+      "officialIdentifiers": [
+        "511",
+        "512",
+        "514",
+        "515",
+        "516",
+        "517",
+        "518",
+        "519",
+        "520",
+        "524",
+        "525",
+        "528",
+        "529",
+        "530",
+        "531",
+        "532",
+        "534",
+        "536",
+        "539",
+        "540",
+        "541",
+        "542",
+        "544"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-521-522-523-526-527-535-537-bff78046",
+      "officialSpec": "521, 522, 523, 526, 527, 535, 537",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-521",
+        "management_zone:ca-ab-wmu-522",
+        "management_zone:ca-ab-wmu-523",
+        "management_zone:ca-ab-wmu-526",
+        "management_zone:ca-ab-wmu-527",
+        "management_zone:ca-ab-wmu-535",
+        "management_zone:ca-ab-wmu-537"
+      ],
+      "officialIdentifiers": [
+        "521",
+        "522",
+        "523",
+        "526",
+        "527",
+        "535",
+        "537"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-728-730-5486826e",
+      "officialSpec": "728, 730 (CFB Wainwright)",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-728",
+        "management_zone:ca-ab-wmu-730"
+      ],
+      "officialIdentifiers": [
+        "728",
+        "730"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-841-7125e777",
+      "officialSpec": "841",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-841"
+      ],
+      "officialIdentifiers": [
+        "841"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-ab-2026-936-f53f2fb9",
+      "officialSpec": "936",
+      "zoneIds": [
+        "management_zone:ca-ab-wmu-936"
+      ],
+      "officialIdentifiers": [
+        "936"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "regulatory_rule:ca-ab-2026-ruffed-grouse-1",
+      "speciesId": "species:ruffed-grouse",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-102-104-106-108-110-112-116-118-119-124-128-130-132-134-136-138-140-142-144-148--ac25be95",
+      "appliesWhen": {},
+      "seasonLabel": "Open season",
+      "seasonPhrase": "S1 - J15",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-01-15",
+          "statedAs": "S1 - J15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 5,
+        "possession": 15,
+        "combined": false,
+        "statedAs": "5 daily, 15 in possession"
+      },
+      "conditionIds": [
+        "ab-game-bird-licence"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 63, Game Bird Seasons and Bag Limits",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-ruffed-grouse-2",
+      "speciesId": "species:ruffed-grouse",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-404-406-408-410-841-936-a0511c64",
+      "appliesWhen": {},
+      "seasonLabel": "Open season",
+      "seasonPhrase": "S8 - J15",
+      "windows": [
+        {
+          "opensIso": "2026-09-08",
+          "closesIso": "2027-01-15",
+          "statedAs": "S8 - J15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 5,
+        "possession": 15,
+        "combined": false,
+        "statedAs": "5 daily, 15 in possession"
+      },
+      "conditionIds": [
+        "ab-game-bird-licence",
+        "ab-wmu-936-discharge-permit"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 63, Game Bird Seasons and Bag Limits",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-ruffed-grouse-3",
+      "speciesId": "species:ruffed-grouse",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-728-730-5486826e",
+      "appliesWhen": {},
+      "seasonLabel": "Open season",
+      "seasonPhrase": "S5 - S7",
+      "windows": [
+        {
+          "opensIso": "2026-09-05",
+          "closesIso": "2026-09-07",
+          "statedAs": "S5 - S7"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 5,
+        "possession": 15,
+        "combined": false,
+        "statedAs": "5 daily, 15 in possession"
+      },
+      "conditionIds": [
+        "ab-game-bird-licence",
+        "ab-cfb-wainwright"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 63, Game Bird Seasons and Bag Limits",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-spruce-grouse-4",
+      "speciesId": "species:spruce-grouse",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-102-104-106-108-110-112-116-118-119-124-128-130-132-134-136-138-140-142-144-148--ac25be95",
+      "appliesWhen": {},
+      "seasonLabel": "Open season",
+      "seasonPhrase": "S1 - J15",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-01-15",
+          "statedAs": "S1 - J15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 5,
+        "possession": 15,
+        "combined": false,
+        "statedAs": "5 daily, 15 in possession"
+      },
+      "conditionIds": [
+        "ab-game-bird-licence"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 63, Game Bird Seasons and Bag Limits",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-spruce-grouse-5",
+      "speciesId": "species:spruce-grouse",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-404-406-408-410-841-936-a0511c64",
+      "appliesWhen": {},
+      "seasonLabel": "Open season",
+      "seasonPhrase": "S8 - J15",
+      "windows": [
+        {
+          "opensIso": "2026-09-08",
+          "closesIso": "2027-01-15",
+          "statedAs": "S8 - J15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 5,
+        "possession": 15,
+        "combined": false,
+        "statedAs": "5 daily, 15 in possession"
+      },
+      "conditionIds": [
+        "ab-game-bird-licence",
+        "ab-wmu-936-discharge-permit"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 63, Game Bird Seasons and Bag Limits",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-sharp-tailed-grouse-6",
+      "speciesId": "species:sharp-tailed-grouse",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-102-104-106-108-110-112-116-118-119-124-128-130-132-134-136-138-140-142-144-148--6a0f356c",
+      "appliesWhen": {},
+      "seasonLabel": "Open season",
+      "seasonPhrase": "O1 - O31",
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-10-31",
+          "statedAs": "O1 - O31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 5,
+        "possession": 15,
+        "combined": false,
+        "statedAs": "5 daily, 15 in possession"
+      },
+      "conditionIds": [
+        "ab-game-bird-licence",
+        "ab-wmu-936-discharge-permit"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 63, Game Bird Seasons and Bag Limits",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-sharp-tailed-grouse-7",
+      "speciesId": "species:sharp-tailed-grouse",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-728-730-5486826e",
+      "appliesWhen": {},
+      "seasonLabel": "Open season",
+      "seasonPhrase": "S5 - S7",
+      "windows": [
+        {
+          "opensIso": "2026-09-05",
+          "closesIso": "2026-09-07",
+          "statedAs": "S5 - S7"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 5,
+        "possession": 15,
+        "combined": false,
+        "statedAs": "5 daily, 15 in possession"
+      },
+      "conditionIds": [
+        "ab-game-bird-licence",
+        "ab-cfb-wainwright"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 63, Game Bird Seasons and Bag Limits",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu100-1-archery-antlered-no-sunday",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-102-104-106-108-110-112-116-118-119-124-128-130-132-134-136-138-140-142-144-148--e2ef5180",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "S1 - N3",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-09-05",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-09-07",
+          "closesIso": "2026-09-12",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-09-14",
+          "closesIso": "2026-09-19",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-09-21",
+          "closesIso": "2026-09-26",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-09-28",
+          "closesIso": "2026-10-03",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-10-05",
+          "closesIso": "2026-10-10",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-10-12",
+          "closesIso": "2026-10-17",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-10-19",
+          "closesIso": "2026-10-24",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-10-26",
+          "closesIso": "2026-10-31",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-11-02",
+          "closesIso": "2026-11-03",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-sunday-big-game",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 47, Big Game Seasons — Prairie WMUs (100 series & 732)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu100-1-general-antlered-no-sunday",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-102-104-106-108-110-112-116-118-119-124-128-130-132-134-136-138-140-142-144-148--e2ef5180",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season",
+      "seasonPhrase": "(Wed - Sat only) N4 - N7 N11 - N14 N18 - N21 N25 - N28",
+      "windows": [
+        {
+          "opensIso": "2026-11-04",
+          "closesIso": "2026-11-07",
+          "statedAs": "N4 - N7 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-11-11",
+          "closesIso": "2026-11-14",
+          "statedAs": "N11 - N14 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-11-18",
+          "closesIso": "2026-11-21",
+          "statedAs": "N18 - N21 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-11-25",
+          "closesIso": "2026-11-28",
+          "statedAs": "N25 - N28 (Sundays excluded)"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-sunday-big-game",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [
+        "Printed \"(Wed - Sat only)\"; every window listed falls on Wednesday to Saturday."
+      ],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 47, Big Game Seasons — Prairie WMUs (100 series & 732)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu100-2-archery-antlered",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-162-163-164-166-e1006a6e",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "S1 - O31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-31",
+          "statedAs": "S1 - O31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 47, Big Game Seasons — Prairie WMUs (100 series & 732)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu100-2-general-antlered",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-162-163-164-166-e1006a6e",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season",
+      "seasonPhrase": "N1 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-11-01",
+          "closesIso": "2026-11-30",
+          "statedAs": "N1 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 47, Big Game Seasons — Prairie WMUs (100 series & 732)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu100-3-archery-antlerless-no-sunday",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-102-104-106-108-110-112-116-118-119-124-128-130-132-134-136-138-140-142-144-148--e2ef5180",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERLESS",
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "S1 - N3",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-09-05",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-09-07",
+          "closesIso": "2026-09-12",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-09-14",
+          "closesIso": "2026-09-19",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-09-21",
+          "closesIso": "2026-09-26",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-09-28",
+          "closesIso": "2026-10-03",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-10-05",
+          "closesIso": "2026-10-10",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-10-12",
+          "closesIso": "2026-10-17",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-10-19",
+          "closesIso": "2026-10-24",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-10-26",
+          "closesIso": "2026-10-31",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-11-02",
+          "closesIso": "2026-11-03",
+          "statedAs": "S1 - N3 (Sundays excluded)"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-sunday-big-game",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 47, Big Game Seasons — Prairie WMUs (100 series & 732)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu100-3-general-antlerless-no-sunday",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-102-104-106-108-110-112-116-118-119-124-128-130-132-134-136-138-140-142-144-148--e2ef5180",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERLESS",
+        "LICENCE_TYPE": "SPECIAL",
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season (special licence)",
+      "seasonPhrase": "■(Wed - Sat only) N4 - N7 N11 - N14 N18 - N21 N25 - N28",
+      "windows": [
+        {
+          "opensIso": "2026-11-04",
+          "closesIso": "2026-11-07",
+          "statedAs": "N4 - N7 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-11-11",
+          "closesIso": "2026-11-14",
+          "statedAs": "N11 - N14 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-11-18",
+          "closesIso": "2026-11-21",
+          "statedAs": "N18 - N21 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-11-25",
+          "closesIso": "2026-11-28",
+          "statedAs": "N25 - N28 (Sundays excluded)"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-special-licence",
+        "ab-sunday-big-game",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [
+        "Printed \"(Wed - Sat only)\"; every window listed falls on Wednesday to Saturday."
+      ],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 47, Big Game Seasons — Prairie WMUs (100 series & 732)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu100-4-archery-antlerless",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-162-163-164-166-e1006a6e",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERLESS",
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "S1 - O31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-31",
+          "statedAs": "S1 - O31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 47, Big Game Seasons — Prairie WMUs (100 series & 732)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu100-4-general-antlerless",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-162-163-164-166-e1006a6e",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERLESS",
+        "LICENCE_TYPE": "SPECIAL",
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season (special licence)",
+      "seasonPhrase": "■ N1 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-11-01",
+          "closesIso": "2026-11-30",
+          "statedAs": "N1 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-special-licence",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 47, Big Game Seasons — Prairie WMUs (100 series & 732)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu200-1-archery-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-200-202-203-204-206-208-214-216-220-221-222-224-226-228-230-232-234-236-238-240--93e65281",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "S1 - O31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-31",
+          "statedAs": "S1 - O31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 50, Big Game Seasons — Parkland WMUs (200 series & 728, 730, 936)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu200-1-general-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-200-202-203-204-206-208-214-216-220-221-222-224-226-228-230-232-234-236-238-240--93e65281",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season",
+      "seasonPhrase": "N1 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-11-01",
+          "closesIso": "2026-11-30",
+          "statedAs": "N1 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 50, Big Game Seasons — Parkland WMUs (200 series & 728, 730, 936)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu200-2-archery-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-212-247-248-7b99787a",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "S1 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-11-30",
+          "statedAs": "S1 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 50, Big Game Seasons — Parkland WMUs (200 series & 728, 730, 936)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu200-3-archery-either-class-no-sunday",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-936-f53f2fb9",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "O17 - O31",
+      "windows": [
+        {
+          "opensIso": "2026-10-17",
+          "closesIso": "2026-10-17",
+          "statedAs": "O17 - O31 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-10-19",
+          "closesIso": "2026-10-24",
+          "statedAs": "O17 - O31 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-10-26",
+          "closesIso": "2026-10-31",
+          "statedAs": "O17 - O31 (Sundays excluded)"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-sunday-big-game",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission",
+        "ab-wmu-936-discharge-permit"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 50, Big Game Seasons — Parkland WMUs (200 series & 728, 730, 936)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu200-3-general-either-class-no-sunday",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-936-f53f2fb9",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season",
+      "seasonPhrase": "N9 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-11-09",
+          "closesIso": "2026-11-14",
+          "statedAs": "N9 - N30 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-11-21",
+          "statedAs": "N9 - N30 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-11-23",
+          "closesIso": "2026-11-28",
+          "statedAs": "N9 - N30 (Sundays excluded)"
+        },
+        {
+          "opensIso": "2026-11-30",
+          "closesIso": "2026-11-30",
+          "statedAs": "N9 - N30 (Sundays excluded)"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-sunday-big-game",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission",
+        "ab-wmu-936-discharge-permit"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 50, Big Game Seasons — Parkland WMUs (200 series & 728, 730, 936)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu200-4-archery-antlered",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-210-d29d5370",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "S1 - O31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-31",
+          "statedAs": "S1 - O31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 50, Big Game Seasons — Parkland WMUs (200 series & 728, 730, 936)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu200-4-general-antlered",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-210-d29d5370",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season",
+      "seasonPhrase": "N1 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-11-01",
+          "closesIso": "2026-11-30",
+          "statedAs": "N1 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 50, Big Game Seasons — Parkland WMUs (200 series & 728, 730, 936)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu200-5-archery-antlerless",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-210-d29d5370",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERLESS",
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "S1 - O31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-31",
+          "statedAs": "S1 - O31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 50, Big Game Seasons — Parkland WMUs (200 series & 728, 730, 936)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu200-5-general-antlerless",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-210-d29d5370",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERLESS",
+        "LICENCE_TYPE": "SPECIAL",
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season (special licence)",
+      "seasonPhrase": "■ N1 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-11-01",
+          "closesIso": "2026-11-30",
+          "statedAs": "N1 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-special-licence",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 50, Big Game Seasons — Parkland WMUs (200 series & 728, 730, 936)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu300-1-archery-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-310-312-314-316-318-320-322-324-332-334-336-337-338-348-1522ae6f",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "S1 - O31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-31",
+          "statedAs": "S1 - O31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 52, Big Game Seasons — Foothills WMUs (300 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu300-1-general-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-310-312-314-316-318-320-322-324-332-334-336-337-338-348-1522ae6f",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season",
+      "seasonPhrase": "N1 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-11-01",
+          "closesIso": "2026-11-30",
+          "statedAs": "N1 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 52, Big Game Seasons — Foothills WMUs (300 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu300-2-archery-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-300-302-303-304-305-306-308-b5664f42",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "S1 - O24",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-24",
+          "statedAs": "S1 - O24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 52, Big Game Seasons — Foothills WMUs (300 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu300-2-general-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-300-302-303-304-305-306-308-b5664f42",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season",
+      "seasonPhrase": "O25 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-10-25",
+          "closesIso": "2026-11-30",
+          "statedAs": "O25 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 52, Big Game Seasons — Foothills WMUs (300 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu300-3-archery-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-326-328-330-339-340-342-344-346-347-349-350-351-352-353-354-355-356-357-358-359--f4251b91",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "A25 - S16",
+      "windows": [
+        {
+          "opensIso": "2026-08-25",
+          "closesIso": "2026-09-16",
+          "statedAs": "A25 - S16"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 52, Big Game Seasons — Foothills WMUs (300 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu300-3-general-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-326-328-330-339-340-342-344-346-347-349-350-351-352-353-354-355-356-357-358-359--f4251b91",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season",
+      "seasonPhrase": "S17 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-09-17",
+          "closesIso": "2026-11-30",
+          "statedAs": "S17 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 52, Big Game Seasons — Foothills WMUs (300 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu400-1-archery-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-404-406-408-aaee5171",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "S9 - S23",
+      "windows": [
+        {
+          "opensIso": "2026-09-09",
+          "closesIso": "2026-09-23",
+          "statedAs": "S9 - S23"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 54, Big Game Seasons — Mountain WMUs (400 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu400-1-general-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-404-406-408-aaee5171",
+      "appliesWhen": {
+        "LICENCE_TYPE": "SPECIAL",
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season (special licence)",
+      "seasonPhrase": "■ S24 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-09-24",
+          "closesIso": "2026-11-30",
+          "statedAs": "S24 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-special-licence",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 54, Big Game Seasons — Mountain WMUs (400 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu400-2-archery-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-410-612111a3",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "S9 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-09-09",
+          "closesIso": "2026-11-30",
+          "statedAs": "S9 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 54, Big Game Seasons — Mountain WMUs (400 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu400-3-archery-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-429-436-437-438-439-440-441-442-444-445-446-fd9bd247",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "A25 - S16",
+      "windows": [
+        {
+          "opensIso": "2026-08-25",
+          "closesIso": "2026-09-16",
+          "statedAs": "A25 - S16"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 54, Big Game Seasons — Mountain WMUs (400 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu400-3-general-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-429-436-437-438-439-440-441-442-444-445-446-fd9bd247",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season",
+      "seasonPhrase": "S17 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-09-17",
+          "closesIso": "2026-11-30",
+          "statedAs": "S17 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 54, Big Game Seasons — Mountain WMUs (400 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu400-4-archery-antlered",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-412-414-416-417-418-420-422-426-428-430-432-434-d2ace3c0",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "A25 - S16",
+      "windows": [
+        {
+          "opensIso": "2026-08-25",
+          "closesIso": "2026-09-16",
+          "statedAs": "A25 - S16"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 54, Big Game Seasons — Mountain WMUs (400 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu400-4-general-antlered",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-412-414-416-417-418-420-422-426-428-430-432-434-d2ace3c0",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season",
+      "seasonPhrase": "S17 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-09-17",
+          "closesIso": "2026-11-30",
+          "statedAs": "S17 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 54, Big Game Seasons — Mountain WMUs (400 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu400-5-archery-antlered",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-400-402-47d8c302",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "S1 - S23",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-09-23",
+          "statedAs": "S1 - S23"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 54, Big Game Seasons — Mountain WMUs (400 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu400-5-general-antlered",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-400-402-47d8c302",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season",
+      "seasonPhrase": "S24 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-09-24",
+          "closesIso": "2026-11-30",
+          "statedAs": "S24 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 54, Big Game Seasons — Mountain WMUs (400 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu400-6-archery-antlerless",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-412-414-416-417-418-420-422-426-428-430-432-434-d2ace3c0",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERLESS",
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "A25 - S16",
+      "windows": [
+        {
+          "opensIso": "2026-08-25",
+          "closesIso": "2026-09-16",
+          "statedAs": "A25 - S16"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 54, Big Game Seasons — Mountain WMUs (400 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu400-6-general-antlerless",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-412-414-416-417-418-420-422-426-428-430-432-434-d2ace3c0",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERLESS",
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season",
+      "seasonPhrase": "N1 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-11-01",
+          "closesIso": "2026-11-30",
+          "statedAs": "N1 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 54, Big Game Seasons — Mountain WMUs (400 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu400-7-archery-antlerless",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-400-402-47d8c302",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERLESS",
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "S1 - S23",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-09-23",
+          "statedAs": "S1 - S23"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 54, Big Game Seasons — Mountain WMUs (400 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu400-7-general-antlerless",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-400-402-47d8c302",
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERLESS",
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season",
+      "seasonPhrase": "N1 - N15",
+      "windows": [
+        {
+          "opensIso": "2026-11-01",
+          "closesIso": "2026-11-15",
+          "statedAs": "N1 - N15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 54, Big Game Seasons — Mountain WMUs (400 series)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu500-1-archery-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-500-501-502-503-504-505-506-507-508-509-510-67812f78",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "S1 - O31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-31",
+          "statedAs": "S1 - O31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 56, Big Game Seasons — Boreal WMUs (500 series & 841)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu500-1-general-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-500-501-502-503-504-505-506-507-508-509-510-67812f78",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season",
+      "seasonPhrase": "N1 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-11-01",
+          "closesIso": "2026-11-30",
+          "statedAs": "N1 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 56, Big Game Seasons — Boreal WMUs (500 series & 841)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu500-2-archery-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-511-512-514-515-516-517-518-519-520-524-525-528-529-530-531-532-534-536-539-540--aa8167c4",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "A25 - A31",
+      "windows": [
+        {
+          "opensIso": "2026-08-25",
+          "closesIso": "2026-08-31",
+          "statedAs": "A25 - A31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 56, Big Game Seasons — Boreal WMUs (500 series & 841)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu500-2-general-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-511-512-514-515-516-517-518-519-520-524-525-528-529-530-531-532-534-536-539-540--aa8167c4",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season",
+      "seasonPhrase": "S1 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-11-30",
+          "statedAs": "S1 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 56, Big Game Seasons — Boreal WMUs (500 series & 841)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu500-3-archery-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-521-522-523-526-527-535-537-bff78046",
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Archery-only season",
+      "seasonPhrase": "A25 - S16",
+      "windows": [
+        {
+          "opensIso": "2026-08-25",
+          "closesIso": "2026-09-16",
+          "statedAs": "A25 - S16"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-bowhunting-permit",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 56, Big Game Seasons — Boreal WMUs (500 series & 841)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu500-3-general-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-521-522-523-526-527-535-537-bff78046",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season",
+      "seasonPhrase": "S17 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-09-17",
+          "closesIso": "2026-11-30",
+          "statedAs": "S17 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 56, Big Game Seasons — Boreal WMUs (500 series & 841)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    },
+    {
+      "id": "regulatory_rule:ca-ab-2026-white-tailed-deer-wmu500-4-general-either-class",
+      "speciesId": "species:white-tailed-deer",
+      "regulatoryGroupId": "regulatory_group:ca-ab-2026-841-7125e777",
+      "appliesWhen": {
+        "permittedImplements": [
+          "RIFLE",
+          "SHOTGUN",
+          "MUZZLELOADER",
+          "CROSSBOW",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "General season",
+      "seasonPhrase": "S17 - N30",
+      "windows": [
+        {
+          "opensIso": "2026-09-17",
+          "closesIso": "2026-11-30",
+          "statedAs": "S17 - N30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ab-licence-required",
+        "ab-non-resident-big-game",
+        "ab-cwd-head-submission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "sourceId": "source:ca-ab-hunting-guide-2026",
+      "sourceSection": "p. 56, Big Game Seasons — Boreal WMUs (500 series & 841)",
+      "sourceVersion": "2026 Alberta Guide to Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "disputes": []
+    }
+  ]
+}
