@@ -69,6 +69,18 @@ export interface ZoneLayer {
    * a number is the designation, which is what every other layer publishes.
    */
   designationOf?(raw: unknown): string | null;
+  /**
+   * Where the map's drawings come from. "authority" (the default) asks the
+   * authority's own service per view; "stored" reads North Ground's stored
+   * drawings of the parity-certified geometry (`zone_display_in_view`), falling
+   * back to the authority's service where there is one.
+   */
+  mapGeometry?: "authority" | "stored";
+  /**
+   * The widest longitude span the authority's service answers completely in one
+   * envelope query. Wider views are asked in tiles (see `queryTiles`).
+   */
+  maxQueryLongitudeSpan?: number;
 }
 
 /** A layer's designation for a raw service value, or null when the feature is not a zone. */
@@ -107,6 +119,8 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     officialNamePrefix: "Wildlife Management Unit ",
     certifiedDesignations: new Set(certifiedUnits.certifiedUnits.map((unit) => unit.toUpperCase())),
     zoneIdPrefix: "management_zone:ca-on-wmu-",
+    // LIO drops units from wide envelope queries; 5° wide returns every unit.
+    maxQueryLongitudeSpan: 5,
   },
   {
     id: "layer:ca-mb-gha",
@@ -178,6 +192,9 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     serving: false,
     officialNamePrefix: "Zone de chasse ",
     zoneIdPrefix: "management_zone:ca-qc-zone-",
+    /* The ministry serves WFS, not ArcGIS, and zone 21 alone is 838,537 vertices:
+       the map draws North Ground's stored drawings of the certified copy. */
+    mapGeometry: "stored",
   },
 ];
 
