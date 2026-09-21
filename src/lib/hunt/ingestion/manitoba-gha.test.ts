@@ -46,6 +46,7 @@ test("stages named Game Hunting Areas in the authority's own order, with Manitob
   ]);
   const source = createManitobaGhaSource(fetcher);
   const { features, quarantined, sourceVersion } = await source.fetchFeatures();
+  assert.ok(quarantined);
 
   assert.deepEqual(features.map((feature) => feature.officialIdentifier), ["2A", "7", "13", "13A"]);
   assert.deepEqual(quarantined, []);
@@ -67,6 +68,7 @@ test("an undesignated polygon is quarantined with its location, never staged or 
     { OBJECTID: 22, GHA: null, ring: PARK },
   ]);
   const { features, quarantined } = await createManitobaGhaSource(fetcher).fetchFeatures();
+  assert.ok(quarantined, "the adapter always reports what it quarantined, even when nothing was");
 
   assert.deepEqual(features.map((feature) => feature.officialIdentifier), ["23"]);
   assert.deepEqual(quarantined.map((entry) => entry.sourceFeatureId), ["21", "22"]);
