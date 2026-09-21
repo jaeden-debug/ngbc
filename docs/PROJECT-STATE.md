@@ -4,7 +4,7 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-21 (Ontario conditional Hunt wired end to end; Canada coverage architecture; Québec and federal source research)
+Last updated: 2026-09-21 (conditional rules live in Supabase; Hunt verified end to end in a browser)
 
 ## Current Product State
 
@@ -76,6 +76,10 @@ Last updated: 2026-09-21 (Ontario conditional Hunt wired end to end; Canada cove
 
 ## Known Problems / Technical Debt
 
+- Two defects were found and fixed on 2026-09-21 while taking the conditional work to production. Both had passed review and tests.
+  - **The publisher retired other bundles' rules.** Its supersede sweep selected every published rule in the jurisdiction and retired anything absent from the bundle being published. That is indistinguishable from correct while one bundle exists; publishing major game retired all 11 small-game rules, and publishing small game would then have retired all 135 major-game rules, each run silently undoing the last. Superseding is now scoped to the sources a bundle is built from, which is the boundary of what it can speak for. The 12 affected rows were restored, both bundles were republished in sequence to prove they coexist, and `scripts/publish-regulations.test.mjs` asserts the scope so a jurisdiction-wide sweep cannot return. Note the fix still correctly retires the one legacy hand-written WMU 57 rule, which the generated small-game bundle genuinely replaces.
+  - **A test depended on the wall clock.** `weather.test.ts` pinned `now` in every Open-Meteo/Google case but one, so that case passed during the day and failed once UTC rolled past the evaluated date. A suite that fails by time of day trains people to rerun rather than read it.
+
 - Inspect current repository before trusting this list.
 - Record confirmed defects here as they are discovered.
 - Do not copy stale audit findings forward without verifying them.
@@ -110,14 +114,14 @@ The national rollout order below replaces them.
 
 1. Québec geometry. Identify the service behind Forêt ouverte or request the zone boundaries from MELCCFP. This is the single blocker on Wave 1 and it is a source-availability problem, not an engineering one. Nothing else in Québec can proceed without it.
 2. Québec seasons, once geometry exists. Québec publishes in French with zone-and-species tables that do not share Ontario's shape, so the builder cannot be copied — read the structure first. Preserve official French terminology rather than translating legal terms.
-3. Apply the conditional migration to the live Supabase project and run the publisher against both Ontario bundles. The migration and publisher are written and tested; neither has been applied to production.
+3. Distributed rate limiting and production observability before broad Hunt rollout. Hunt's limiter is still process-local.
 4. Federal migratory birds. Establish certified district geometry from the Migratory Birds Regulations or an authority-backed layer — the ECCC draft layer disclaims legal value and cannot be used. This unblocks 25 published waterfowl species that currently have no rules at all.
 5. Prairie provinces (MB, SK, AB), then British Columbia, then Atlantic Canada, then the territories. Each wave: research, ingest, certify parity, encode rules, test, deploy, verify, record exact coverage in the registry.
-5. Complete current visual foundation without locking poor information architecture.
-6. Establish technical/semantic site architecture.
-7. Establish trust pages and North Ground Verified framework.
-8. Continue Hunting Intelligence core.
-9. Build structured knowledge/content graph alongside Hunt.
+6. Complete current visual foundation without locking poor information architecture.
+7. Establish technical/semantic site architecture.
+8. Establish trust pages and North Ground Verified framework.
+9. Continue Hunting Intelligence core.
+10. Build structured knowledge/content graph alongside Hunt.
 10. Expand verified regulatory coverage one source-backed record at a time. Waterfowl is federal (migratory birds) rather than provincial and needs its own source review; Québec has not been started.
 11. Select a durable content authoring/store adapter that exports the existing normalized bundle without changing canonical IDs.
 12. Build early cold-weather authority resources/tools.
@@ -189,6 +193,8 @@ Do not mark VERIFIED until actual data and representative queries have been cert
 | `species:spruce-grouse` | 85 | 65 | 1 | 2 |
 
 - The rules are generated, never hand-written. `npm run build:regulations` rebuilds both `content/regulatory/ca-on-small-game-2026.json` and `ca-on-major-game-2026.json` from the published summaries, and `npm run check:regulatory-sources` fails if either source has moved since its bundle was built. A moved hash now names the affected rules with field-level before/after and the number of units each change touches; `scripts/regulatory-change-report.mjs <old> <new>` produces the same report between any two bundles and exits 3 when review is required. Parsing is strict: an unreadable season phrase, limit or WMU reference aborts the build rather than dropping a row. `scripts/publish-regulations.mjs` mirrors the bundle into Supabase for coverage reporting and the review lifecycle; Hunt itself evaluates from the committed bundle, which keeps evaluation deterministic and offline-testable.
+- Both bundles are LIVE in Supabase as of 2026-09-21. The conditional migration is applied to project `nxzaatqovhbvziecogan` and both bundles are published: 146 rules PUBLISHED (135 major game across four sources, 11 small game), 60 groups, 1,085 zone memberships with no duplication, 135 rules carrying a non-empty `applies_when`, 16 stated closures. The WMU 71 deer gun-season row stores `["SHOTGUN","MUZZLELOADER","BOW"]` — rifles excluded — which is the row the migration exists to make representable. Season dates stay null by design: a split season ("October 1 to November 1, November 16 to November 29, December 7 to December 31") cannot be one opens/closes pair, so the authority's verbatim phrase is kept instead.
+- Each published page now carries its own content hash, so a change is attributable to the page that moved rather than to the bundle as a whole, and `--check` names which source moved.
 - Season semantics are modelled rather than approximated: windows that cross the calendar year stay open through 31 December, "the last day of February" follows the leap cycle, and the part of a source year that belongs to the PREVIOUS summary is reported as outside the certified period rather than closed.
 - Combined limits stay combined. Five birds shared between ruffed and spruce grouse is rendered as the authority states it, never as five of each.
 - Ontario major game is certified for four species as of 2026-09-20, against four published pages of the 2026 summary (`sha256:bd4c42a8…`, retrieved 2026-09-20): 60 official season groupings and 135 rules.
@@ -314,6 +320,10 @@ Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport a
 - `npm run build` passed on 2026-09-20 (Next.js 16.1.1). The species library is static and all 60 species pages are statically generated; Hunt, its evaluation/share APIs, shared Hunt Brief page and per-brief Open Graph image are dynamic; home, 404, site Open Graph image, robots, and sitemap are generated successfully.
 
 ### Tests
+- Production wiring certified 2026-09-21. `npm run typecheck` and `npx eslint src scripts` clean. `test:hunt` 176/176, `test:regulatory-sources` 20/20, `test:hunt-share` 26/26, `test:content-repository` 12/12, `test:content-contract` 8/8, `test:content-urls` 21/21, `test:seo` 3/3, `test:newsletter` 9/9. `npm run build` compiled. `npm run check:regulatory-sources` reports both sources unchanged.
+- Hunt was driven in a real browser rather than assumed. Bancroft resolved to WMU 61 with a 4 m near-boundary warning; white-tailed deer produced the residency question with its reason and source section, then the implement question, then a CLOSED result for 20 September with "Seasons open to this combination here: gun season November 2 to November 15" and a "THIS ANSWER ASSUMES" block listing both answers over the line that nothing here confirms a licence, tag or residency is valid. Zero console errors.
+- The footnote case was proved through the live API, not only in unit tests. Identical request to `/api/hunt/evaluate` at WMU 71's interior point on 10 November, resident: `HUNT_METHOD: "RIFLE"` returns CLOSED, `HUNT_METHOD: "SHOTGUN"` returns CONDITIONAL on the 2–15 November gun season. That is the whole wave, end to end.
+- Mobile at 375 x 812: no horizontal overflow, question options single-column at the 48 px `--ng-tap` target.
 - Canada wave, 2026-09-21. `npm run typecheck` and `npm run lint` clean. `test:hunt` 176/176 (up from 145: conditional dispatch, answer validation, engine routing and persistence guards). `test:hunt-share` 26/26 including Hunt Brief v1 preservation and v2 round-trip. `test:canada` 8/8. `test:content-repository` 12/12, `test:content-urls` 21/21, `test:content-contract` 8/8, `test:seo` 3/3, `test:newsletter` 9/9. `validate:content:published` 0 errors.
 - Live conditional flow certified against the running app on 2026-09-21. Deer at 45.23/-77.94 for 2026-11-10 asked RESIDENCY, then HUNT_METHOD, then resolved CONDITIONAL with the gun season 2-15 November. Turkey resolved without ever asking residency. Moose asked residency first. Small game resolved with no questions at all, unchanged.
 - Invalid-input safety certified live through the real endpoint: `RESIDENCY: "DEFINITELY_A_RESIDENT"`, `HUNT_METHOD: "BAZOOKA"` and an empty string each left the question outstanding at NEEDS_INPUT and produced no status. None became CLOSED.

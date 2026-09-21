@@ -28,7 +28,8 @@
     "test:regulatory-sources": "node --test scripts/ontario-source.test.mjs scripts/publish-regulations.test.mjs",
     "test:regulatory-persistence": "node --test src/lib/hunt/regulatory/persistence.test.ts",
     "report:canada": "node --experimental-strip-types scripts/canada-coverage-report.mjs",
-    "test:canada": "node --test src/lib/hunt/canada/*.test.ts"
+    "test:canada": "node --test src/lib/hunt/canada/*.test.ts",
+    "test:ingestion": "node --test src/lib/hunt/ingestion/*.test.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.116.0",

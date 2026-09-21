@@ -137,16 +137,25 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       officialTermFr: "zone de chasse",
       officialSourceUrl:
         "https://www.quebec.ca/en/tourism-recreation-sport/sporting-and-outdoor-activities/sport-hunting/hunting-zone-maps",
+      /* The ministry's own GeoServer, which is the service behind the government's
+         Forêt ouverte map. Found by reading that map's published layer context
+         rather than in the open-data portal, where the zones are not listed. */
+      serviceUrl:
+        "https://servicesvecto3.mern.gouv.qc.ca/geoserver/SmartFaunePub/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=SmartFaunePub:Zone_chasse_da3_sefaq",
       parityCertified: false,
       notes:
-        "Structure verified against quebec.ca on 2026-09-21: 28 hunting zones, numbered 1 to 24 and 26 to 29. " +
-        "Zone 25 exists for fishing only and is not a hunting zone. " +
-        "Geometry is NOT available as open data — searched Données Québec for zones de chasse, \"zones de chasse\", " +
-        "faune chasse and title:chasse and found no hunting-zone boundary dataset. MELCCFP publishes other wildlife " +
-        "layers on diffusion.mffp.gouv.qc.ca (wildlife protection districts CC-BY 4.0; structured wildlife territories " +
-        "CC-BY-NC-ND 4.0, whose non-commercial and no-derivatives terms would not permit product use). The zones " +
-        "themselves are published as per-zone PDF maps and through the Forêt ouverte viewer. Ingestion therefore needs " +
-        "either a service endpoint behind Forêt ouverte or a direct request to the ministry — not a portal download.",
+        "Source FOUND and reviewed 2026-09-21. WFS 2.0.0 with application/json output and native EPSG:4326 " +
+        "reprojection from the layer's EPSG:32198; AccessConstraints NONE, Fees NONE, provider MFFP. " +
+        "Structure independently verified: the layer carries exactly the 28 numeric zones quebec.ca publishes " +
+        "(1 to 24 and 26 to 29, no zone 25), divided into 59 named designations across 9,509 polygons and " +
+        "2,424,980 vertices. A full live fetch through the adapter completed in 68 s with zero unclosed rings and " +
+        "every coordinate inside Québec. " +
+        "Still IN_DEVELOPMENT because nothing is ingested into PostGIS, parity-certified or served — the adapter " +
+        "exists, the registry does not. " +
+        "Two cautions for whoever ingests it: the season tables are written per PART (19N, 19SE, 19SO, 19SNO are " +
+        "four different seasons), so the part and not the number is the regulatory unit; and this layer mis-encodes " +
+        "accents in Partie_zon — \"Île\" arrives as \"×le\" — which the adapter repairs only for the two known cases " +
+        "and otherwise passes through untouched.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
@@ -160,9 +169,11 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
         "Nothing is certified; the official French terminology is to be preserved rather than translated.",
     },
     knownGaps: [
-      "No hunting-zone geometry is ingested, so no Québec point resolves to a zone. The blocker is source availability, not effort: the boundaries are not in the open-data portal.",
+      "No hunting-zone geometry is ingested into PostGIS, so no Québec point resolves to a zone yet. The source is no longer the blocker: the ministry's WFS is identified, reviewed and proven to fetch cleanly through `createQuebecZoneSource`. What remains is ingestion, parity certification against the service, and switching the resolver on.",
+      "The published season tables name zones in words (\"10 West\", \"19 South\") while the GIS layer uses codes (10O, 19SE). That mapping is a legal interpretation, not a formatting detail, and must be settled by evidence the way Ontario's bare-number WMU groupings were.",
       "No regulatory bundle exists, so every Québec species query is UNKNOWN.",
-      "Zones d'exploitation contrôlée (zecs), réserves fauniques and pourvoiries carry their own access rules that a zone-level season does not decide. Their boundaries ARE published, but under CC-BY-NC-ND 4.0, which permits neither commercial use nor derivatives.",
+      "Zones d'exploitation contrôlée (zecs), réserves fauniques and pourvoiries carry their own access rules that a zone-level season does not decide. Their boundaries are on the same GeoServer as SmartFaunePub:TFS; the Données Québec copy is CC-BY-NC-ND 4.0, so the licence under which they may be used needs settling before they are ingested.",
+      "Zone 17 moose hunting is reserved for Indigenous subsistence hunting. That is a distinct legal context, not a recreational season, and must never be presented as one.",
     ],
   },
   {
