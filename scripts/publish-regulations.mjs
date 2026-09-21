@@ -3,6 +3,12 @@
  * Mirror a generated regulatory bundle into Supabase.
  *
  *   node scripts/publish-regulations.mjs content/regulatory/ca-on-small-game-2026.json
+ *   node scripts/publish-regulations.mjs content/regulatory/ca-mb-2026.json --verify
+ *
+ * A publish ends by reading every rule and membership it owns back from the
+ * store and comparing each with the bundle; `--verify` does only that. Any
+ * difference exits non-zero, because a mirror that silently differs from the
+ * bundle is worse than no mirror.
  *
  * Hunt evaluates from the committed bundle, not from the database — that keeps
  * evaluation deterministic, offline-testable and reviewable as a diff. This
@@ -76,7 +82,94 @@ async function rest(path, { method = "GET", body, prefer } = {}) {
  * the publish loudly rather than be silently dropped, because a dropped
  * condition turns a narrow rule into a broad one.
  */
-export const REPRESENTABLE_DIMENSIONS = new Set(["RESIDENCY", "HUNT_METHOD", "TAG_TYPE", "SEASON_TYPE", "permittedImplements"]);
+export const REPRESENTABLE_DIMENSIONS = new Set([
+  "RESIDENCY", "HUNT_METHOD", "TAG_TYPE", "SEASON_TYPE", "permittedImplements",
+  // Manitoba: the licence a hunter holds and whether they are under 18
+  // (Schedule B's youth seasons) both decide which row applies.
+  "LICENCE_TYPE", "HUNTER_AGE",
+]);
+
+/**
+ * The period a rule is in force.
+ *
+ * A bundle that states its certified period (Manitoba: from the consolidation's
+ * in-force date to the end of the licence year) is the authority on it. Older
+ * bundles carry a calendar source year instead. A rule with neither is refused:
+ * writing "undefined-01-01" is not a date.
+ */
+export function effectivePeriod(bundle, rule) {
+  if (bundle.certifiedPeriod?.from) return { from: bundle.certifiedPeriod.from, to: bundle.certifiedPeriod.to ?? null };
+  if (!rule.sourceYear) throw new Error(`Rule ${rule.id} states no source year and its bundle no certified period`);
+  return { from: `${rule.sourceYear}-01-01`, to: null };
+}
+
+/**
+ * Every column of a rule row that comes from the bundle, and nothing else.
+ *
+ * Exported so the mapping is tested without a database, and so the read-back
+ * verification compares against exactly what was written.
+ */
+export function ruleColumns(bundle, rule) {
+  const { from, to } = effectivePeriod(bundle, rule);
+  return {
+    canonical_id: rule.id,
+    species_canonical_id: rule.speciesId,
+    /* The authority saying "None" is a stated closure. A unit no row names
+       is UNKNOWN and is simply absent from this table. Never merged. */
+    regulatory_status: rule.declaredNoSeason ? "CLOSED" : "CONDITIONAL",
+    applies_when: rule.appliesWhen ?? {},
+    declared_no_season: rule.declaredNoSeason === true,
+    season_label: rule.seasonLabel ?? null,
+    // The engine's windows are stored as it evaluates them; the single-range
+    // columns stay empty rather than holding the first of several ranges.
+    season_opens: null,
+    season_closes: null,
+    dates_inclusive: true,
+    season_windows: rule.windows ?? [],
+    geography: rule.geography ?? null,
+    disputes: rule.disputes ?? [],
+    notes: rule.notes ?? [],
+    // Whole, not a chosen subset: a bag limit, an animal class or the section
+    // a limit is stated in is part of the rule.
+    limits: rule.limits ?? {},
+    requirements: rule.conditionIds ?? [],
+    legal_time_rule: { statedAs: rule.seasonPhrase, section: rule.sourceSection },
+    limitations: rule.caveats ?? [],
+    effective_from: from,
+    effective_to: to,
+    source_version: rule.sourceVersion,
+    review_status: rule.reviewStatus,
+  };
+}
+
+/** A group's members, each marked by whether the group reaches all of it. */
+export function groupMemberships(group) {
+  return [
+    ...(group.zoneIds ?? []).map((zoneId) => ({ zoneId, membership: "FULL" })),
+    ...(group.partialZoneIds ?? []).map((zoneId) => ({ zoneId, membership: "PARTIAL" })),
+  ];
+}
+
+/* Values as JSON would carry them, with object keys in a fixed order, so a
+   jsonb round trip that reorders keys is not reported as a difference. */
+function canonical(value) {
+  if (Array.isArray(value)) return value.map(canonical);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.keys(value).sort().filter((key) => value[key] !== undefined).map((key) => [key, canonical(value[key])]));
+  }
+  return value;
+}
+
+/** Column-by-column differences between what the bundle says and what the store holds. */
+export function ruleDifferences(expected, stored) {
+  const differences = [];
+  for (const [column, value] of Object.entries(expected)) {
+    const want = JSON.stringify(canonical(value ?? null));
+    const have = JSON.stringify(canonical(stored?.[column] ?? null));
+    if (want !== have) differences.push({ column, expected: want.slice(0, 160), stored: have.slice(0, 160) });
+  }
+  return differences;
+}
 
 /**
  * Which published rules this bundle is entitled to retire.
@@ -103,8 +196,9 @@ export function supersedeQuery(jurisdictionId, ownedSourceIds) {
 
 async function main() {
   const path = process.argv[2];
+  const verifyOnly = process.argv.includes("--verify");
   if (!path) {
-    console.error("Usage: node scripts/publish-regulations.mjs <bundle.json>");
+    console.error("Usage: node scripts/publish-regulations.mjs <bundle.json> [--verify]");
     process.exit(1);
   }
   const bundle = JSON.parse(readFileSync(path, "utf8"));
@@ -116,7 +210,7 @@ async function main() {
   const bundleSources = bundle.sources ?? (bundle.source ? [bundle.source] : []);
   if (!bundleSources.length) throw new Error("Bundle declares no source; refusing to publish");
   for (const declared of bundleSources) {
-    console.log(`  source ${declared.id} (${declared.sourceVersion}), hash ${declared.contentHash.slice(0, 23)}...`);
+    console.log(`  source ${declared.id} (${declared.sourceVersion ?? declared.version}), hash ${declared.contentHash.slice(0, 23)}...`);
   }
 
   const [jurisdiction] = await rest(
@@ -148,6 +242,26 @@ async function main() {
   const zoneByCanonical = new Map(zones.map((zone) => [zone.canonical_id, zone.id]));
   console.log(`  ${zoneByCanonical.size} zones available for membership`);
 
+  /* ── Refuse before writing anything ────────────────────────────────────── */
+  /* A rule the store cannot represent, or that cites a source the bundle does
+     not declare, stops the publish here rather than halfway through the rules. */
+  for (const rule of bundle.rules) {
+    effectivePeriod(bundle, rule);
+    const unrepresentable = Object.keys(rule.appliesWhen ?? {}).filter((key) => !REPRESENTABLE_DIMENSIONS.has(key));
+    if (unrepresentable.length) {
+      throw new Error(
+        `Rule ${rule.id} is conditional on ${unrepresentable.join(", ")}, which this publisher cannot represent. ` +
+        "Extend the schema and this script together, or the rule would be stored as unconditional.",
+      );
+    }
+    if (!sourceByCanonical.has(rule.sourceId)) throw new Error(`Rule ${rule.id} cites unregistered source ${rule.sourceId}`);
+  }
+
+  if (verifyOnly) {
+    const ok = await verifyPublished(bundle, jurisdiction, sourceByCanonical, zoneByCanonical);
+    process.exit(ok ? 0 : 1);
+  }
+
   /* ── Groups ───────────────────────────────────────────────────────────── */
 
   let groupsWritten = 0;
@@ -164,7 +278,7 @@ async function main() {
         body: [{
           canonical_id: group.id,
           jurisdiction_id: jurisdiction.id,
-          label: group.label,
+          label: group.label ?? group.officialSpec,
           official_spec: group.officialSpec,
           source_id: source.id,
           source_version: group.sourceVersion,
@@ -175,12 +289,12 @@ async function main() {
     }
     groupIdByCanonical.set(group.id, id);
 
-    const missing = group.zoneIds
-      .map((canonical) => zoneByCanonical.get(canonical))
-      .filter(Boolean)
-      .map((zoneId) => ({ group_id: id, management_zone_id: zoneId }));
+    const memberships = groupMemberships(group);
+    const missing = memberships
+      .filter(({ zoneId }) => zoneByCanonical.has(zoneId))
+      .map(({ zoneId, membership }) => ({ group_id: id, management_zone_id: zoneByCanonical.get(zoneId), membership }));
 
-    const unresolved = group.zoneIds.filter((canonical) => !zoneByCanonical.has(canonical));
+    const unresolved = memberships.map(({ zoneId }) => zoneId).filter((canonical) => !zoneByCanonical.has(canonical));
     if (unresolved.length) {
       throw new Error(`Group ${group.id} references zones that are not in the registry: ${unresolved.slice(0, 5).join(", ")}`);
     }
@@ -208,57 +322,19 @@ async function main() {
        `appliesWhen` is what makes a WMU 71 deer season shotgun-only; persisted
        without it the row says the season is open to anyone holding any legal
        implement, which is the one failure this publisher must never produce.
-       An unrecognised dimension is therefore fatal rather than dropped. */
-    const appliesWhen = rule.appliesWhen ?? {};
-    const unrepresentable = Object.keys(appliesWhen).filter((key) => !REPRESENTABLE_DIMENSIONS.has(key));
-    if (unrepresentable.length) {
-      throw new Error(
-        `Rule ${rule.id} is conditional on ${unrepresentable.join(", ")}, which this publisher cannot represent. ` +
-        "Extend the schema and this script together, or the rule would be stored as unconditional.",
-      );
-    }
-
+       Every rule was checked for that above, before anything was written. */
     const ruleSource = sourceByCanonical.get(rule.sourceId);
-    if (!ruleSource) throw new Error(`Rule ${rule.id} cites unregistered source ${rule.sourceId}`);
 
     const [created] = await rest("regulatory_rules", {
       method: "POST",
       prefer: "return=representation",
       body: [{
-        canonical_id: rule.id,
+        ...ruleColumns(bundle, rule),
         jurisdiction_id: jurisdiction.id,
         regulatory_group_id: groupIdByCanonical.get(rule.regulatoryGroupId),
         management_zone_id: null,
-        species_canonical_id: rule.speciesId,
-        /* The authority saying "None" is a stated closure. A unit no row names
-           is UNKNOWN and is simply absent from this table. Never merged. */
-        regulatory_status: rule.declaredNoSeason ? "CLOSED" : "CONDITIONAL",
-        applies_when: appliesWhen,
-        declared_no_season: rule.declaredNoSeason === true,
-        season_label: rule.seasonLabel ?? null,
-        // Season anchors live in the bundle, which understands cross-year and
-        // last-day-of-month wording. The database keeps the authority's phrase.
-        season_opens: null,
-        season_closes: null,
-        dates_inclusive: true,
-        limits: rule.limits
-          ? {
-              daily: rule.limits.daily,
-              possession: rule.limits.possession,
-              combined: rule.limits.combined,
-              combinedWith: rule.limits.combinedWith,
-              statedAs: rule.limits.statedAs,
-            }
-          : {},
-        requirements: rule.conditionIds ?? [],
-        legal_time_rule: { statedAs: rule.seasonPhrase, section: rule.sourceSection },
-        limitations: rule.caveats ?? [],
         source_id: ruleSource.id,
         source_verified_at: ruleSource.verified_at,
-        effective_from: `${rule.sourceYear}-01-01`,
-        effective_to: null,
-        source_version: rule.sourceVersion,
-        review_status: rule.reviewStatus,
       }],
     });
 
@@ -298,6 +374,96 @@ async function main() {
   console.log(`Memberships      ${membersWritten}`);
   console.log(`Rules created    ${rulesWritten} (${bundle.rules.length} in bundle)`);
   console.log(`Rules superseded ${superseded}`);
+
+  if (!(await verifyPublished(bundle, jurisdiction, sourceByCanonical, zoneByCanonical))) process.exit(1);
+}
+
+/**
+ * Read back everything this bundle owns and compare it with the bundle.
+ *
+ * Rules are compared column by column through the same mapping that wrote
+ * them; groups by their official wording and each member's FULL or PARTIAL
+ * standing; provenance by each rule's primary source and section. A live rule
+ * the bundle no longer contains is reported too, because it should have been
+ * superseded. Returns false on any difference.
+ */
+async function verifyPublished(bundle, jurisdiction, sourceByCanonical, zoneByCanonical) {
+  const problems = [];
+  const zoneCanonicalById = new Map([...zoneByCanonical].map(([canonicalId, id]) => [id, canonicalId]));
+  const ownedSourceIds = [...sourceByCanonical.values()].map((row) => row.id);
+  const sourceCanonicalById = new Map([...sourceByCanonical].map(([canonicalId, row]) => [row.id, canonicalId]));
+
+  /* Groups and their members. */
+  const groups = [];
+  for (let index = 0; index < bundle.groups.length; index += 40) {
+    const chunk = bundle.groups.slice(index, index + 40).map((group) => `"${group.id}"`).join(",");
+    groups.push(...await rest(`regulatory_groups?canonical_id=in.(${encodeURIComponent(chunk)})&select=id,canonical_id,label,official_spec`));
+  }
+  const groupByCanonical = new Map(groups.map((group) => [group.canonical_id, group]));
+  const groupCanonicalById = new Map(groups.map((group) => [group.id, group.canonical_id]));
+  let membershipsChecked = 0;
+  for (const group of bundle.groups) {
+    const stored = groupByCanonical.get(group.id);
+    if (!stored) { problems.push(`group ${group.id} is missing`); continue; }
+    if (stored.official_spec !== group.officialSpec) problems.push(`group ${group.id} official wording differs`);
+    const members = await rest(`regulatory_group_members?group_id=eq.${stored.id}&select=management_zone_id,membership`);
+    const have = members.map((member) => `${zoneCanonicalById.get(member.management_zone_id)}|${member.membership}`).sort();
+    const want = groupMemberships(group).map(({ zoneId, membership }) => `${zoneId}|${membership}`).sort();
+    if (JSON.stringify(have) !== JSON.stringify(want)) {
+      problems.push(`group ${group.id} members differ: stored ${have.join(" ")} / bundle ${want.join(" ")}`);
+    }
+    membershipsChecked += want.length;
+  }
+
+  /* Rules this bundle's sources own, live or not. */
+  const stored = await rest(
+    `regulatory_rules?jurisdiction_id=eq.${jurisdiction.id}&source_id=in.(${ownedSourceIds.join(",")})&select=*`,
+  );
+  const storedByCanonical = new Map(stored.map((row) => [row.canonical_id, row]));
+  for (const rule of bundle.rules) {
+    const row = storedByCanonical.get(rule.id);
+    if (!row) { problems.push(`rule ${rule.id} is missing`); continue; }
+    for (const difference of ruleDifferences(ruleColumns(bundle, rule), row)) {
+      problems.push(`rule ${rule.id} ${difference.column}: stored ${difference.stored} / bundle ${difference.expected}`);
+    }
+    if (groupCanonicalById.get(row.regulatory_group_id) !== rule.regulatoryGroupId) problems.push(`rule ${rule.id} is in the wrong group`);
+    if (sourceCanonicalById.get(row.source_id) !== rule.sourceId) problems.push(`rule ${rule.id} cites the wrong source`);
+  }
+  const current = new Set(bundle.rules.map((rule) => rule.id));
+  for (const row of stored) {
+    if (!current.has(row.canonical_id) && ["VERIFIED", "PUBLISHED"].includes(row.review_status)) {
+      problems.push(`rule ${row.canonical_id} is live but no longer in the bundle`);
+    }
+  }
+
+  /* Rule-level provenance. */
+  const liveIds = bundle.rules.map((rule) => storedByCanonical.get(rule.id)?.id).filter(Boolean);
+  const provenance = [];
+  for (let index = 0; index < liveIds.length; index += 60) {
+    provenance.push(...await rest(
+      `regulatory_rule_sources?rule_id=in.(${liveIds.slice(index, index + 60).join(",")})&is_primary=is.true&select=rule_id,source_id,source_section`,
+    ));
+  }
+  const primaryByRule = new Map(provenance.map((row) => [row.rule_id, row]));
+  for (const rule of bundle.rules) {
+    const row = storedByCanonical.get(rule.id);
+    const primary = row ? primaryByRule.get(row.id) : undefined;
+    if (row && (!primary || sourceCanonicalById.get(primary.source_id) !== rule.sourceId || (primary.source_section ?? null) !== (rule.sourceSection ?? null))) {
+      problems.push(`rule ${rule.id} provenance differs`);
+    }
+  }
+
+  console.log("");
+  console.log(`Verified groups  ${groups.length} of ${bundle.groups.length}, memberships ${membershipsChecked}`);
+  const differingRules = new Set(problems.filter((line) => line.startsWith("rule ")).map((line) => line.split(" ")[1]));
+  console.log(`Verified rules   ${bundle.rules.length - differingRules.size} of ${bundle.rules.length} identical`);
+  if (problems.length) {
+    console.log(`Round trip FAILED: ${problems.length} difference(s)`);
+    for (const line of problems.slice(0, 40)) console.log(`  ${line}`);
+    return false;
+  }
+  console.log("Round trip identical: every rule, group, membership and citation matches the bundle.");
+  return true;
 }
 
 /* Only run as a command. The dimension allow-list above is imported by tests,
