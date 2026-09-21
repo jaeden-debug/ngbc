@@ -3,6 +3,11 @@
  * Certify North Ground's PostGIS zone registry against an authority's own service.
  *
  *   node scripts/certify-spatial-parity.mjs --jurisdiction ca-ab [--concurrency 3]
+ *   node scripts/certify-spatial-parity.mjs --jurisdiction ca-qc --unverified \
+ *     --samples fixtures/hunt/ca-qc-parity-samples.json --concurrency 2
+ *
+ * --unverified certifies a layer before it is served; --samples reads the
+ * sample points from a file when sampling exceeds the REST statement timeout.
  *
  * The jurisdiction-neutral form of `certify-ontario-spatial-parity.mjs`, which
  * stays as Ontario's recorded regression. Any adapter that implements
@@ -26,6 +31,7 @@
  */
 
 import { readFileSync, writeFileSync } from "node:fs";
+import { jurisdictionToday } from "./ontario-source.mjs";
 import { loadZoneSource } from "./zone-adapters.mjs";
 
 const EXTRA_CASES = {
@@ -74,6 +80,33 @@ EXTRA_CASES["ca-mb"] = {
     // the land inside the Perimeter Highway (PTH 100/101) GHA 38.
     ["Churchill", 58.7684, -94.1650],
     ["Winnipeg, inside the Perimeter (GHA 38)", 49.8951, -97.1384],
+  ],
+};
+
+EXTRA_CASES["ca-qc"] = {
+  outside: [
+    ["Ontario, Ottawa", 45.4215, -75.6972],
+    ["Ontario, just west of the Témiscamingue border", 47.5, -79.7],
+    ["New Brunswick, Edmundston", 47.373, -68.3251],
+    ["Maine, south of the border", 45.5, -70.0],
+    ["New York, south of the 45th parallel", 44.8, -73.5],
+    ["Labrador, Labrador City", 52.944, -66.911],
+  ],
+  special: [
+    // The strategic fixture: the ministry's own service answers 10O here.
+    ["Maniwaki (zone 10 partie ouest)", 46.3769, -75.9722],
+    ["Gatineau", 45.4765, -75.7013],
+    ["Québec City", 46.8139, -71.208],
+    ["Île d'Orléans (a St Lawrence island designation)", 46.9167, -70.9667],
+    ["Montagne de Rigaud (named territory)", 45.4667, -74.3],
+    ["Grenville-sur-la-Rouge (CWD enhanced surveillance zone)", 45.65, -74.6],
+    ["Seigneurie de Beaupré (named territory)", 47.3, -70.9],
+    ["Harrington Harbour, Lower North Shore islands (19SE)", 50.5, -59.48],
+    ["Gulf of St Lawrence (zone 21 waters)", 48.5, -63.0],
+    ["Île du Havre Aubert, Îles-de-la-Madeleine", 47.23, -61.83],
+    ["Anticosti (zone 20)", 49.5, -63.0],
+    ["Zone 17", 49.6, -77.0],
+    ["Kuujjuaq, Nunavik", 58.1, -68.4],
   ],
 };
 
@@ -145,8 +178,19 @@ async function main() {
      there while this authority reports nothing — that is agreement, not a
      finding. Neighbouring zones are recorded beside each point but not compared. */
   const prefix = `${source.canonicalZoneId("X").replace(/x$/i, "")}`;
+  /* --unverified certifies a layer BEFORE it is served. The production resolver
+     answers only for VERIFIED zones, which is what keeps an uncertified layer
+     away from Hunt; this asks the certification resolver instead, which answers
+     for this jurisdiction whatever its zones' status, through the same parts the
+     production resolver will use once the layer is promoted. */
+  const unverified = args.includes("--unverified");
+  const resolve = (latitude, longitude) => unverified
+    ? rpc("resolve_zone_for_certification", {
+        p_latitude: latitude, p_longitude: longitude, p_jurisdiction_canonical_id: source.jurisdictionCanonicalId,
+      })
+    : rpc("resolve_management_zone", { p_latitude: latitude, p_longitude: longitude });
   async function northGround(latitude, longitude) {
-    const rows = await rpc("resolve_management_zone", { p_latitude: latitude, p_longitude: longitude });
+    const rows = await resolve(latitude, longitude);
     const ids = rows.map((row) => String(row.canonical_id));
     return {
       own: ids.filter((id) => id.startsWith(prefix)).map((id) => id.slice(prefix.length)).sort(),
@@ -174,12 +218,37 @@ async function main() {
     };
   }
 
-  console.log(`Sampling ${source.jurisdictionCanonicalId} from the North Ground registry...`);
-  const samples = await rpc("zone_sample_points", { p_jurisdiction_canonical_id: source.jurisdictionCanonicalId });
-  const components = await rpc("zone_component_sample_points", {
-    p_jurisdiction_canonical_id: source.jurisdictionCanonicalId,
-    p_max_components: 8,
-  });
+  /* --samples FILE reads the same two sample sets from a file instead. Sampling
+     measures every zone's full geometry in one statement, and a layer with a
+     zone the size of Québec's 21 (838,537 vertices) exceeds the REST statement
+     timeout; the file is those functions' own output, computed through SQL, and
+     is named in the record so the run can be repeated. */
+  const samplesFile = args.includes("--samples") ? args[args.indexOf("--samples") + 1] : null;
+  let samples;
+  let components;
+  if (samplesFile) {
+    const recorded = JSON.parse(readFileSync(samplesFile, "utf8"));
+    if (recorded.jurisdiction !== source.jurisdictionCanonicalId) {
+      throw new Error(`${samplesFile} samples ${recorded.jurisdiction}, not ${source.jurisdictionCanonicalId}.`);
+    }
+    ({ samples, components } = recorded);
+    console.log(`Sampling ${source.jurisdictionCanonicalId} from ${samplesFile}...`);
+  } else {
+    console.log(`Sampling ${source.jurisdictionCanonicalId} from the North Ground registry...`);
+    samples = await rpc("zone_sample_points", { p_jurisdiction_canonical_id: source.jurisdictionCanonicalId });
+    components = await rpc("zone_component_sample_points", {
+      p_jurisdiction_canonical_id: source.jurisdictionCanonicalId,
+      p_max_components: 8,
+    });
+  }
+  /* A jurisdiction can publish more than one geography (a U.S. state's elk and
+     deer hunt areas), and the sampling functions return them all. Only this
+     layer's zones are certified here; for a jurisdiction with one layer this
+     keeps everything. Components carry no canonical id, so they follow the
+     identifiers kept. */
+  samples = samples.filter((sample) => String(sample.canonical_id).startsWith(prefix));
+  const kept = new Set(samples.map((sample) => sample.official_identifier));
+  components = components.filter((component) => kept.has(component.official_identifier));
   console.log(`  ${samples.length} zones, ${components.length} multipart components`);
   if (!samples.length) throw new Error("The registry holds no zones for this jurisdiction; nothing to certify.");
 
@@ -219,7 +288,7 @@ async function main() {
   const disagreements = recorded.filter((item) => !item.agree);
 
   for (const [label, latitude, longitude] of INVALID) {
-    const ours = await rpc("resolve_management_zone", { p_latitude: latitude, p_longitude: longitude });
+    const ours = await resolve(latitude, longitude);
     const agree = Array.isArray(ours) && ours.length === 0;
     recorded.push({ kind: "invalid", label, latitude, longitude, official: [], northGround: ours.map((row) => row.canonical_id), agree });
     if (!agree) disagreements.push({ kind: "invalid", label, latitude, longitude, official: [], northGround: ours });
@@ -236,7 +305,11 @@ async function main() {
     layer: source.layerId,
     authority: source.authority,
     sourceUrl: source.sourceUrl,
-    certifiedOn: new Date().toISOString().slice(0, 10),
+    // A provenance date is a calendar day in the jurisdiction, never a UTC slice:
+    // a run on a Québec evening would otherwise be dated tomorrow.
+    certifiedOn: jurisdictionToday(source.timeZone ?? "America/Toronto"),
+    resolver: unverified ? "resolve_zone_for_certification (before serving)" : "resolve_management_zone",
+    ...(samplesFile ? { samplesFrom: samplesFile.split("/").at(-1) } : {}),
     zones: samples.length,
     counts,
     disagreements: disagreements.length,

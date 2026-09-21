@@ -1,0 +1,1472 @@
+{
+ "jurisdiction": "jurisdiction:ca-qc",
+ "note": "zone_sample_points and zone_component_sample_points (8) for jurisdiction:ca-qc, computed through SQL because both exceed the REST statement timeout for zones 21 and 19SE; coordinates rounded to 8 decimals (about 1 mm).",
+ "samples": [
+  {
+   "official_identifier": "01N",
+   "canonical_id": "management_zone:ca-qc-zone-01n",
+   "inside_latitude": 48.6680624,
+   "inside_longitude": -65.16338484,
+   "edge_latitude": 48.40305498,
+   "edge_longitude": -65.14731047,
+   "across_latitude": 48.40039158,
+   "across_longitude": -65.14714891,
+   "area_km2": 19084.8,
+   "vertices": 65544
+  },
+  {
+   "official_identifier": "01S",
+   "canonical_id": "management_zone:ca-qc-zone-01s",
+   "inside_latitude": 48.32580603,
+   "inside_longitude": -65.88415327,
+   "edge_latitude": 48.21367814,
+   "edge_longitude": -65.90283833,
+   "across_latitude": 48.21255122,
+   "across_longitude": -65.90302611,
+   "area_km2": 7520.9,
+   "vertices": 43851
+  },
+  {
+   "official_identifier": "02E",
+   "canonical_id": "management_zone:ca-qc-zone-02e",
+   "inside_latitude": 48.22799755,
+   "inside_longitude": -68.12597173,
+   "edge_latitude": 48.00110176,
+   "edge_longitude": -68.1228937,
+   "across_latitude": 47.9988214,
+   "across_longitude": -68.12286276,
+   "area_km2": 8482.1,
+   "vertices": 27717
+  },
+  {
+   "official_identifier": "02EI",
+   "canonical_id": "management_zone:ca-qc-zone-02ei",
+   "inside_latitude": 48.40131545,
+   "inside_longitude": -68.85962251,
+   "edge_latitude": 48.40486472,
+   "edge_longitude": -68.86560778,
+   "across_latitude": 48.4049004,
+   "across_longitude": -68.86566794,
+   "area_km2": 7.7,
+   "vertices": 3482
+  },
+  {
+   "official_identifier": "02O",
+   "canonical_id": "management_zone:ca-qc-zone-02o",
+   "inside_latitude": 47.58159979,
+   "inside_longitude": -69.11872324,
+   "edge_latitude": 47.4522887,
+   "edge_longitude": -69.15631109,
+   "across_latitude": 47.4509891,
+   "across_longitude": -69.15668885,
+   "area_km2": 7793.8,
+   "vertices": 14371
+  },
+  {
+   "official_identifier": "02OI",
+   "canonical_id": "management_zone:ca-qc-zone-02oi",
+   "inside_latitude": 48.02522829,
+   "inside_longitude": -69.43744876,
+   "edge_latitude": 48.0193703,
+   "edge_longitude": -69.43395671,
+   "across_latitude": 48.01931142,
+   "across_longitude": -69.43392161,
+   "area_km2": 23.9,
+   "vertices": 10824
+  },
+  {
+   "official_identifier": "03E",
+   "canonical_id": "management_zone:ca-qc-zone-03e",
+   "inside_latitude": 46.77456438,
+   "inside_longitude": -70.1162783,
+   "edge_latitude": 46.69592294,
+   "edge_longitude": -69.99770695,
+   "across_latitude": 46.69513258,
+   "across_longitude": -69.99651527,
+   "area_km2": 4362.3,
+   "vertices": 3128
+  },
+  {
+   "official_identifier": "03EI",
+   "canonical_id": "management_zone:ca-qc-zone-03ei",
+   "inside_latitude": 47.02813843,
+   "inside_longitude": -70.67174673,
+   "edge_latitude": 47.02511313,
+   "edge_longitude": -70.66882843,
+   "across_latitude": 47.02508273,
+   "across_longitude": -70.66879911,
+   "area_km2": 24.5,
+   "vertices": 13135
+  },
+  {
+   "official_identifier": "03O",
+   "canonical_id": "management_zone:ca-qc-zone-03o",
+   "inside_latitude": 46.3985972,
+   "inside_longitude": -70.66063193,
+   "edge_latitude": 46.55236443,
+   "edge_longitude": -70.55944735,
+   "across_latitude": 46.55390983,
+   "across_longitude": -70.55843041,
+   "area_km2": 4449.7,
+   "vertices": 5042
+  },
+  {
+   "official_identifier": "03OI",
+   "canonical_id": "management_zone:ca-qc-zone-03oi",
+   "inside_latitude": 46.9385623,
+   "inside_longitude": -70.7200189,
+   "edge_latitude": 46.93838854,
+   "edge_longitude": -70.71996263,
+   "across_latitude": 46.9383868,
+   "across_longitude": -70.71996207,
+   "area_km2": 0.0,
+   "vertices": 145
+  },
+  {
+   "official_identifier": "04",
+   "canonical_id": "management_zone:ca-qc-zone-04",
+   "inside_latitude": 45.69508195,
+   "inside_longitude": -71.10270621,
+   "edge_latitude": 45.89913935,
+   "edge_longitude": -71.35622244,
+   "across_latitude": 45.90119017,
+   "across_longitude": -71.35877034,
+   "area_km2": 8060.0,
+   "vertices": 6029
+  },
+  {
+   "official_identifier": "05E",
+   "canonical_id": "management_zone:ca-qc-zone-05e",
+   "inside_latitude": 45.16979315,
+   "inside_longitude": -72.43924732,
+   "edge_latitude": 45.27878686,
+   "edge_longitude": -72.50688866,
+   "across_latitude": 45.27988228,
+   "across_longitude": -72.50756848,
+   "area_km2": 902.6,
+   "vertices": 1122
+  },
+  {
+   "official_identifier": "05O",
+   "canonical_id": "management_zone:ca-qc-zone-05o",
+   "inside_latitude": 45.21598363,
+   "inside_longitude": -72.78885152,
+   "edge_latitude": 45.34460199,
+   "edge_longitude": -72.78220979,
+   "across_latitude": 45.34589463,
+   "across_longitude": -72.78214303,
+   "area_km2": 1264.8,
+   "vertices": 996
+  },
+  {
+   "official_identifier": "06N",
+   "canonical_id": "management_zone:ca-qc-zone-06n",
+   "inside_latitude": 45.68552628,
+   "inside_longitude": -72.33139679,
+   "edge_latitude": 45.81402513,
+   "edge_longitude": -72.4361718,
+   "across_latitude": 45.81531658,
+   "across_longitude": -72.43722481,
+   "area_km2": 2171.0,
+   "vertices": 1771
+  },
+  {
+   "official_identifier": "06S",
+   "canonical_id": "management_zone:ca-qc-zone-06s",
+   "inside_latitude": 45.39437783,
+   "inside_longitude": -72.05071819,
+   "edge_latitude": 45.27489091,
+   "edge_longitude": -72.1680775,
+   "across_latitude": 45.27369003,
+   "across_longitude": -72.169257,
+   "area_km2": 4328.0,
+   "vertices": 2483
+  },
+  {
+   "official_identifier": "07N",
+   "canonical_id": "management_zone:ca-qc-zone-07n",
+   "inside_latitude": 46.33228106,
+   "inside_longitude": -72.49533434,
+   "edge_latitude": 46.58412424,
+   "edge_longitude": -72.33725105,
+   "across_latitude": 46.58665532,
+   "across_longitude": -72.33566227,
+   "area_km2": 8801.7,
+   "vertices": 4729
+  },
+  {
+   "official_identifier": "07S",
+   "canonical_id": "management_zone:ca-qc-zone-07s",
+   "inside_latitude": 46.06108623,
+   "inside_longitude": -71.83027977,
+   "edge_latitude": 45.95012094,
+   "edge_longitude": -71.99645666,
+   "across_latitude": 45.94900572,
+   "across_longitude": -71.99812678,
+   "area_km2": 3319.7,
+   "vertices": 2197
+  },
+  {
+   "official_identifier": "08E",
+   "canonical_id": "management_zone:ca-qc-zone-08e",
+   "inside_latitude": 45.46501153,
+   "inside_longitude": -72.82855752,
+   "edge_latitude": 45.4202829,
+   "edge_longitude": -72.76334257,
+   "across_latitude": 45.41983336,
+   "across_longitude": -72.76268715,
+   "area_km2": 2328.6,
+   "vertices": 2329
+  },
+  {
+   "official_identifier": "08N",
+   "canonical_id": "management_zone:ca-qc-zone-08n",
+   "inside_latitude": 45.55261268,
+   "inside_longitude": -73.66790632,
+   "edge_latitude": 45.85100299,
+   "edge_longitude": -73.75679913,
+   "across_latitude": 45.85400189,
+   "across_longitude": -73.75769253,
+   "area_km2": 8767.5,
+   "vertices": 8229
+  },
+  {
+   "official_identifier": "08NMR",
+   "canonical_id": "management_zone:ca-qc-zone-08nmr",
+   "inside_latitude": 45.46869195,
+   "inside_longitude": -74.31697205,
+   "edge_latitude": 45.49211569,
+   "edge_longitude": -74.31291989,
+   "across_latitude": 45.49235111,
+   "across_longitude": -74.31287917,
+   "area_km2": 194.5,
+   "vertices": 3770
+  },
+  {
+   "official_identifier": "08NZ",
+   "canonical_id": "management_zone:ca-qc-zone-08nz",
+   "inside_latitude": 45.61090253,
+   "inside_longitude": -74.47445728,
+   "edge_latitude": 45.59794806,
+   "edge_longitude": -74.47851608,
+   "across_latitude": 45.59781786,
+   "across_longitude": -74.47855688,
+   "area_km2": 70.4,
+   "vertices": 1107
+  },
+  {
+   "official_identifier": "08S",
+   "canonical_id": "management_zone:ca-qc-zone-08s",
+   "inside_latitude": 45.12898474,
+   "inside_longitude": -74.03593657,
+   "edge_latitude": 45.22099579,
+   "edge_longitude": -73.99317863,
+   "across_latitude": 45.22192052,
+   "across_longitude": -73.9927489,
+   "area_km2": 1744.5,
+   "vertices": 1250
+  },
+  {
+   "official_identifier": "09E",
+   "canonical_id": "management_zone:ca-qc-zone-09e",
+   "inside_latitude": 46.09383239,
+   "inside_longitude": -73.58474306,
+   "edge_latitude": 45.97352186,
+   "edge_longitude": -73.54779711,
+   "across_latitude": 45.9723127,
+   "across_longitude": -73.54742579,
+   "area_km2": 2861.0,
+   "vertices": 5793
+  },
+  {
+   "official_identifier": "09O",
+   "canonical_id": "management_zone:ca-qc-zone-09o",
+   "inside_latitude": 46.02318089,
+   "inside_longitude": -74.24570362,
+   "edge_latitude": 45.98344704,
+   "edge_longitude": -74.12145734,
+   "across_latitude": 45.9830477,
+   "across_longitude": -74.12020864,
+   "area_km2": 2234.0,
+   "vertices": 5410
+  },
+  {
+   "official_identifier": "09OZ",
+   "canonical_id": "management_zone:ca-qc-zone-09oz",
+   "inside_latitude": 45.83623229,
+   "inside_longitude": -74.54305724,
+   "edge_latitude": 45.85066114,
+   "edge_longitude": -74.63495046,
+   "across_latitude": 45.85080616,
+   "across_longitude": -74.635874,
+   "area_km2": 945.3,
+   "vertices": 8447
+  },
+  {
+   "official_identifier": "10E",
+   "canonical_id": "management_zone:ca-qc-zone-10e",
+   "inside_latitude": 46.0408506,
+   "inside_longitude": -75.22216761,
+   "edge_latitude": 45.97417277,
+   "edge_longitude": -74.9793341,
+   "across_latitude": 45.97350265,
+   "across_longitude": -74.97689356,
+   "area_km2": 5561.9,
+   "vertices": 44519
+  },
+  {
+   "official_identifier": "10EZ",
+   "canonical_id": "management_zone:ca-qc-zone-10ez",
+   "inside_latitude": 45.88595762,
+   "inside_longitude": -74.81813175,
+   "edge_latitude": 45.97268529,
+   "edge_longitude": -74.83166382,
+   "across_latitude": 45.97355693,
+   "across_longitude": -74.83179982,
+   "area_km2": 1199.7,
+   "vertices": 15176
+  },
+  {
+   "official_identifier": "10O",
+   "canonical_id": "management_zone:ca-qc-zone-10o",
+   "inside_latitude": 46.09036534,
+   "inside_longitude": -76.52864113,
+   "edge_latitude": 46.24394587,
+   "edge_longitude": -76.77141758,
+   "across_latitude": 46.24548939,
+   "across_longitude": -76.77385754,
+   "area_km2": 16648.1,
+   "vertices": 65122
+  },
+  {
+   "official_identifier": "11E",
+   "canonical_id": "management_zone:ca-qc-zone-11e",
+   "inside_latitude": 46.60045362,
+   "inside_longitude": -75.40071105,
+   "edge_latitude": 46.56118374,
+   "edge_longitude": -75.40309626,
+   "across_latitude": 46.56078907,
+   "across_longitude": -75.40312023,
+   "area_km2": 4014.8,
+   "vertices": 32076
+  },
+  {
+   "official_identifier": "11O",
+   "canonical_id": "management_zone:ca-qc-zone-11o",
+   "inside_latitude": 47.06816823,
+   "inside_longitude": -75.92047818,
+   "edge_latitude": 47.202485,
+   "edge_longitude": -75.97590644,
+   "across_latitude": 47.20383492,
+   "across_longitude": -75.9764635,
+   "area_km2": 1256.5,
+   "vertices": 16558
+  },
+  {
+   "official_identifier": "12",
+   "canonical_id": "management_zone:ca-qc-zone-12",
+   "inside_latitude": 46.9170185,
+   "inside_longitude": -76.98731317,
+   "edge_latitude": 47.14420306,
+   "edge_longitude": -77.00219609,
+   "across_latitude": 47.14648632,
+   "across_longitude": -77.00234567,
+   "area_km2": 10732.7,
+   "vertices": 30508
+  },
+  {
+   "official_identifier": "13",
+   "canonical_id": "management_zone:ca-qc-zone-13",
+   "inside_latitude": 47.6092292,
+   "inside_longitude": -77.91229296,
+   "edge_latitude": 47.27105169,
+   "edge_longitude": -77.91260678,
+   "across_latitude": 47.26765292,
+   "across_longitude": -77.91260993,
+   "area_km2": 63751.8,
+   "vertices": 31902
+  },
+  {
+   "official_identifier": "13SO",
+   "canonical_id": "management_zone:ca-qc-zone-13so",
+   "inside_latitude": 46.61417919,
+   "inside_longitude": -78.83412127,
+   "edge_latitude": 46.66691574,
+   "edge_longitude": -78.75657648,
+   "across_latitude": 46.66744576,
+   "across_longitude": -78.75579714,
+   "area_km2": 988.8,
+   "vertices": 11426
+  },
+  {
+   "official_identifier": "14",
+   "canonical_id": "management_zone:ca-qc-zone-14",
+   "inside_latitude": 48.08970022,
+   "inside_longitude": -74.64060225,
+   "edge_latitude": 47.63866472,
+   "edge_longitude": -74.68966269,
+   "across_latitude": 47.6341317,
+   "across_longitude": -74.69015575,
+   "area_km2": 22030.5,
+   "vertices": 31060
+  },
+  {
+   "official_identifier": "15E",
+   "canonical_id": "management_zone:ca-qc-zone-15e",
+   "inside_latitude": 46.89756876,
+   "inside_longitude": -73.98697855,
+   "edge_latitude": 47.09896286,
+   "edge_longitude": -73.91484342,
+   "across_latitude": 47.10098692,
+   "across_longitude": -73.91411844,
+   "area_km2": 8143.2,
+   "vertices": 37292
+  },
+  {
+   "official_identifier": "15N",
+   "canonical_id": "management_zone:ca-qc-zone-15n",
+   "inside_latitude": 47.29249516,
+   "inside_longitude": -75.02844131,
+   "edge_latitude": 47.40573248,
+   "edge_longitude": -75.1316402,
+   "across_latitude": 47.40687054,
+   "across_longitude": -75.13267738,
+   "area_km2": 4210.2,
+   "vertices": 37423
+  },
+  {
+   "official_identifier": "15O",
+   "canonical_id": "management_zone:ca-qc-zone-15o",
+   "inside_latitude": 46.78786869,
+   "inside_longitude": -74.71049927,
+   "edge_latitude": 46.63385191,
+   "edge_longitude": -74.75234317,
+   "across_latitude": 46.63230401,
+   "across_longitude": -74.75276371,
+   "area_km2": 3004.4,
+   "vertices": 24044
+  },
+  {
+   "official_identifier": "16",
+   "canonical_id": "management_zone:ca-qc-zone-16",
+   "inside_latitude": 49.42813525,
+   "inside_longitude": -78.54963275,
+   "edge_latitude": 49.00214069,
+   "edge_longitude": -78.5496336,
+   "across_latitude": 48.99785933,
+   "across_longitude": -78.54963361,
+   "area_km2": 19210.7,
+   "vertices": 4511
+  },
+  {
+   "official_identifier": "17",
+   "canonical_id": "management_zone:ca-qc-zone-17",
+   "inside_latitude": 49.57680847,
+   "inside_longitude": -75.84897373,
+   "edge_latitude": 49.99788403,
+   "edge_longitude": -75.84897457,
+   "across_latitude": 50.00211595,
+   "across_longitude": -75.84897458,
+   "area_km2": 23635.9,
+   "vertices": 4414
+  },
+  {
+   "official_identifier": "18",
+   "canonical_id": "management_zone:ca-qc-zone-18",
+   "inside_latitude": 49.06741972,
+   "inside_longitude": -69.26913541,
+   "edge_latitude": 48.76805379,
+   "edge_longitude": -69.0669166,
+   "across_latitude": 48.76504509,
+   "across_longitude": -69.06488426,
+   "area_km2": 25676.4,
+   "vertices": 18800
+  },
+  {
+   "official_identifier": "19N",
+   "canonical_id": "management_zone:ca-qc-zone-19n",
+   "inside_latitude": 52.38076152,
+   "inside_longitude": -62.50878603,
+   "edge_latitude": 52.00194202,
+   "edge_longitude": -62.50878842,
+   "across_latitude": 51.99813479,
+   "across_longitude": -62.50878845,
+   "area_km2": 28926.4,
+   "vertices": 11377
+  },
+  {
+   "official_identifier": "19SE",
+   "canonical_id": "management_zone:ca-qc-zone-19se",
+   "inside_latitude": 51.07564084,
+   "inside_longitude": -60.1679461,
+   "edge_latitude": 50.43567064,
+   "edge_longitude": -59.81921677,
+   "across_latitude": 50.42923878,
+   "across_longitude": -59.81571195,
+   "area_km2": 42730.3,
+   "vertices": 666147
+  },
+  {
+   "official_identifier": "19SNO",
+   "canonical_id": "management_zone:ca-qc-zone-19sno",
+   "inside_latitude": 52.35576489,
+   "inside_longitude": -68.24518533,
+   "edge_latitude": 52.54726269,
+   "edge_longitude": -68.23761347,
+   "across_latitude": 52.54918729,
+   "across_longitude": -68.23753737,
+   "area_km2": 32371.5,
+   "vertices": 9946
+  },
+  {
+   "official_identifier": "19SO",
+   "canonical_id": "management_zone:ca-qc-zone-19so",
+   "inside_latitude": 51.4404107,
+   "inside_longitude": -65.75000043,
+   "edge_latitude": 51.98819909,
+   "edge_longitude": -65.64810165,
+   "across_latitude": 51.99370451,
+   "across_longitude": -65.64707755,
+   "area_km2": 114529.6,
+   "vertices": 66545
+  },
+  {
+   "official_identifier": "20",
+   "canonical_id": "management_zone:ca-qc-zone-20",
+   "inside_latitude": 49.50702983,
+   "inside_longitude": -63.02405592,
+   "edge_latitude": 49.70555989,
+   "edge_longitude": -62.92357923,
+   "across_latitude": 49.70755517,
+   "across_longitude": -62.92256941,
+   "area_km2": 7932.8,
+   "vertices": 3259
+  },
+  {
+   "official_identifier": "21",
+   "canonical_id": "management_zone:ca-qc-zone-21",
+   "inside_latitude": 49.12366599,
+   "inside_longitude": -63.58518028,
+   "edge_latitude": 49.37145917,
+   "edge_longitude": -63.50477629,
+   "across_latitude": 49.37394955,
+   "across_longitude": -63.50396821,
+   "area_km2": 145850.8,
+   "vertices": 838537
+  },
+  {
+   "official_identifier": "22",
+   "canonical_id": "management_zone:ca-qc-zone-22",
+   "inside_latitude": 52.91398694,
+   "inside_longitude": -74.44895532,
+   "edge_latitude": 50.72146905,
+   "edge_longitude": -73.22468257,
+   "across_latitude": 50.69943369,
+   "across_longitude": -73.21237833,
+   "area_km2": 343329.1,
+   "vertices": 7763
+  },
+  {
+   "official_identifier": "23",
+   "canonical_id": "management_zone:ca-qc-zone-23",
+   "inside_latitude": 57.53868147,
+   "inside_longitude": -70.28739597,
+   "edge_latitude": 58.96879517,
+   "edge_longitude": -68.95460342,
+   "across_latitude": 58.98316818,
+   "across_longitude": -68.94120852,
+   "area_km2": 513502.6,
+   "vertices": 32096
+  },
+  {
+   "official_identifier": "24",
+   "canonical_id": "management_zone:ca-qc-zone-24",
+   "inside_latitude": 56.04675411,
+   "inside_longitude": -65.50341773,
+   "edge_latitude": 56.3084417,
+   "edge_longitude": -65.44603604,
+   "across_latitude": 56.31107172,
+   "across_longitude": -65.44545934,
+   "area_km2": 8505.8,
+   "vertices": 5691
+  },
+  {
+   "official_identifier": "26E",
+   "canonical_id": "management_zone:ca-qc-zone-26e",
+   "inside_latitude": 46.88992998,
+   "inside_longitude": -72.38827267,
+   "edge_latitude": 46.86409831,
+   "edge_longitude": -72.32497137,
+   "across_latitude": 46.86383869,
+   "across_longitude": -72.32433517,
+   "area_km2": 994.3,
+   "vertices": 3991
+  },
+  {
+   "official_identifier": "26O",
+   "canonical_id": "management_zone:ca-qc-zone-26o",
+   "inside_latitude": 47.15432955,
+   "inside_longitude": -73.28790836,
+   "edge_latitude": 46.93981698,
+   "edge_longitude": -73.64481398,
+   "across_latitude": 46.93766108,
+   "across_longitude": -73.64840098,
+   "area_km2": 17939.4,
+   "vertices": 35969
+  },
+  {
+   "official_identifier": "27E",
+   "canonical_id": "management_zone:ca-qc-zone-27e",
+   "inside_latitude": 47.83308874,
+   "inside_longitude": -70.32561685,
+   "edge_latitude": 47.68649377,
+   "edge_longitude": -70.42678604,
+   "across_latitude": 47.68502045,
+   "across_longitude": -70.42780282,
+   "area_km2": 3623.1,
+   "vertices": 13601
+  },
+  {
+   "official_identifier": "27EI",
+   "canonical_id": "management_zone:ca-qc-zone-27ei",
+   "inside_latitude": 47.39700293,
+   "inside_longitude": -70.39135555,
+   "edge_latitude": 47.41412118,
+   "edge_longitude": -70.3991305,
+   "across_latitude": 47.41429322,
+   "across_longitude": -70.39920864,
+   "area_km2": 29.9,
+   "vertices": 625
+  },
+  {
+   "official_identifier": "27ESB",
+   "canonical_id": "management_zone:ca-qc-zone-27esb",
+   "inside_latitude": 47.67245611,
+   "inside_longitude": -70.50469567,
+   "edge_latitude": 47.64368166,
+   "edge_longitude": -70.47623792,
+   "across_latitude": 47.64339246,
+   "across_longitude": -70.47595192,
+   "area_km2": 116.8,
+   "vertices": 2013
+  },
+  {
+   "official_identifier": "27O",
+   "canonical_id": "management_zone:ca-qc-zone-27o",
+   "inside_latitude": 47.41725744,
+   "inside_longitude": -71.52147315,
+   "edge_latitude": 47.11430123,
+   "edge_longitude": -71.34034669,
+   "across_latitude": 47.11125645,
+   "across_longitude": -71.33852633,
+   "area_km2": 15820.9,
+   "vertices": 32426
+  },
+  {
+   "official_identifier": "27OI",
+   "canonical_id": "management_zone:ca-qc-zone-27oi",
+   "inside_latitude": 46.93517232,
+   "inside_longitude": -70.94744789,
+   "edge_latitude": 46.90458784,
+   "edge_longitude": -70.93126096,
+   "across_latitude": 46.90428046,
+   "across_longitude": -70.93109828,
+   "area_km2": 195.4,
+   "vertices": 1030
+  },
+  {
+   "official_identifier": "27OSB",
+   "canonical_id": "management_zone:ca-qc-zone-27osb",
+   "inside_latitude": 47.31639339,
+   "inside_longitude": -70.83767621,
+   "edge_latitude": 47.21162926,
+   "edge_longitude": -70.81452531,
+   "across_latitude": 47.21057636,
+   "across_longitude": -70.81429263,
+   "area_km2": 1476.2,
+   "vertices": 8501
+  },
+  {
+   "official_identifier": "28",
+   "canonical_id": "management_zone:ca-qc-zone-28",
+   "inside_latitude": 48.88892063,
+   "inside_longitude": -72.20379594,
+   "edge_latitude": 48.28507676,
+   "edge_longitude": -71.785723,
+   "across_latitude": 48.27900798,
+   "across_longitude": -71.78152126,
+   "area_km2": 66275.4,
+   "vertices": 25654
+  },
+  {
+   "official_identifier": "29",
+   "canonical_id": "management_zone:ca-qc-zone-29",
+   "inside_latitude": 51.35539106,
+   "inside_longitude": -70.8699432,
+   "edge_latitude": 51.84351136,
+   "edge_longitude": -71.37381627,
+   "across_latitude": 51.8484171,
+   "across_longitude": -71.37888033,
+   "area_km2": 42604.7,
+   "vertices": 12078
+  }
+ ],
+ "components": [
+  {
+   "official_identifier": "01N",
+   "component_rank": 1,
+   "component_count": 45,
+   "latitude": 48.6680624,
+   "longitude": -65.16338484
+  },
+  {
+   "official_identifier": "01N",
+   "component_rank": 2,
+   "component_count": 45,
+   "latitude": 48.49539271,
+   "longitude": -64.16034458
+  },
+  {
+   "official_identifier": "01N",
+   "component_rank": 3,
+   "component_count": 45,
+   "latitude": 48.84058213,
+   "longitude": -64.41326396
+  },
+  {
+   "official_identifier": "01N",
+   "component_rank": 4,
+   "component_count": 45,
+   "latitude": 48.52396877,
+   "longitude": -64.19932175
+  },
+  {
+   "official_identifier": "01N",
+   "component_rank": 5,
+   "component_count": 45,
+   "latitude": 48.82632944,
+   "longitude": -64.40360071
+  },
+  {
+   "official_identifier": "01N",
+   "component_rank": 6,
+   "component_count": 45,
+   "latitude": 48.62683391,
+   "longitude": -64.15624658
+  },
+  {
+   "official_identifier": "01N",
+   "component_rank": 7,
+   "component_count": 45,
+   "latitude": 48.68344401,
+   "longitude": -68.02785634
+  },
+  {
+   "official_identifier": "01N",
+   "component_rank": 8,
+   "component_count": 45,
+   "latitude": 48.68478482,
+   "longitude": -67.98202657
+  },
+  {
+   "official_identifier": "01S",
+   "component_rank": 1,
+   "component_count": 31,
+   "latitude": 48.32580603,
+   "longitude": -65.88415327
+  },
+  {
+   "official_identifier": "01S",
+   "component_rank": 2,
+   "component_count": 31,
+   "latitude": 48.10593761,
+   "longitude": -66.23919523
+  },
+  {
+   "official_identifier": "01S",
+   "component_rank": 3,
+   "component_count": 31,
+   "latitude": 48.14950711,
+   "longitude": -65.85690095
+  },
+  {
+   "official_identifier": "01S",
+   "component_rank": 4,
+   "component_count": 31,
+   "latitude": 48.10189371,
+   "longitude": -66.26701798
+  },
+  {
+   "official_identifier": "01S",
+   "component_rank": 5,
+   "component_count": 31,
+   "latitude": 48.24600242,
+   "longitude": -64.74829068
+  },
+  {
+   "official_identifier": "01S",
+   "component_rank": 6,
+   "component_count": 31,
+   "latitude": 48.20685806,
+   "longitude": -65.90384285
+  },
+  {
+   "official_identifier": "01S",
+   "component_rank": 7,
+   "component_count": 31,
+   "latitude": 48.11124902,
+   "longitude": -66.2924229
+  },
+  {
+   "official_identifier": "01S",
+   "component_rank": 8,
+   "component_count": 31,
+   "latitude": 48.24774716,
+   "longitude": -64.75100193
+  },
+  {
+   "official_identifier": "02E",
+   "component_rank": 1,
+   "component_count": 40,
+   "latitude": 48.22799755,
+   "longitude": -68.12597173
+  },
+  {
+   "official_identifier": "02E",
+   "component_rank": 2,
+   "component_count": 40,
+   "latitude": 48.14274623,
+   "longitude": -69.24816031
+  },
+  {
+   "official_identifier": "02E",
+   "component_rank": 3,
+   "component_count": 40,
+   "latitude": 48.36561949,
+   "longitude": -68.75328358
+  },
+  {
+   "official_identifier": "02E",
+   "component_rank": 4,
+   "component_count": 40,
+   "latitude": 48.14188693,
+   "longitude": -69.1761285
+  },
+  {
+   "official_identifier": "02E",
+   "component_rank": 5,
+   "component_count": 40,
+   "latitude": 48.14343674,
+   "longitude": -69.17119135
+  },
+  {
+   "official_identifier": "02E",
+   "component_rank": 6,
+   "component_count": 40,
+   "latitude": 48.37730583,
+   "longitude": -68.72974645
+  },
+  {
+   "official_identifier": "02E",
+   "component_rank": 7,
+   "component_count": 40,
+   "latitude": 48.35944043,
+   "longitude": -68.7873669
+  },
+  {
+   "official_identifier": "02E",
+   "component_rank": 8,
+   "component_count": 40,
+   "latitude": 48.37654149,
+   "longitude": -68.73614686
+  },
+  {
+   "official_identifier": "02EI",
+   "component_rank": 1,
+   "component_count": 4,
+   "latitude": 48.40131545,
+   "longitude": -68.85962251
+  },
+  {
+   "official_identifier": "02EI",
+   "component_rank": 2,
+   "component_count": 4,
+   "latitude": 48.47026518,
+   "longitude": -68.57080755
+  },
+  {
+   "official_identifier": "02EI",
+   "component_rank": 3,
+   "component_count": 4,
+   "latitude": 48.44596021,
+   "longitude": -68.58320123
+  },
+  {
+   "official_identifier": "02EI",
+   "component_rank": 4,
+   "component_count": 4,
+   "latitude": 48.41509003,
+   "longitude": -68.89085895
+  },
+  {
+   "official_identifier": "02OI",
+   "component_rank": 1,
+   "component_count": 76,
+   "latitude": 48.02522829,
+   "longitude": -69.43744876
+  },
+  {
+   "official_identifier": "02OI",
+   "component_rank": 2,
+   "component_count": 76,
+   "latitude": 47.8513236,
+   "longitude": -69.73244468
+  },
+  {
+   "official_identifier": "02OI",
+   "component_rank": 3,
+   "component_count": 76,
+   "latitude": 47.72520841,
+   "longitude": -69.73828048
+  },
+  {
+   "official_identifier": "02OI",
+   "component_rank": 4,
+   "component_count": 76,
+   "latitude": 47.73701757,
+   "longitude": -69.7124437
+  },
+  {
+   "official_identifier": "02OI",
+   "component_rank": 5,
+   "component_count": 76,
+   "latitude": 47.74874465,
+   "longitude": -69.69354926
+  },
+  {
+   "official_identifier": "02OI",
+   "component_rank": 6,
+   "component_count": 76,
+   "latitude": 47.7321048,
+   "longitude": -69.72438575
+  },
+  {
+   "official_identifier": "02OI",
+   "component_rank": 7,
+   "component_count": 76,
+   "latitude": 47.62038825,
+   "longitude": -69.86376645
+  },
+  {
+   "official_identifier": "02OI",
+   "component_rank": 8,
+   "component_count": 76,
+   "latitude": 47.70322932,
+   "longitude": -69.75742235
+  },
+  {
+   "official_identifier": "03EI",
+   "component_rank": 1,
+   "component_count": 77,
+   "latitude": 47.10563668,
+   "longitude": -70.51506617
+  },
+  {
+   "official_identifier": "03EI",
+   "component_rank": 2,
+   "component_count": 77,
+   "latitude": 47.02813843,
+   "longitude": -70.67174673
+  },
+  {
+   "official_identifier": "03EI",
+   "component_rank": 3,
+   "component_count": 77,
+   "latitude": 47.03839529,
+   "longitude": -70.62172582
+  },
+  {
+   "official_identifier": "03EI",
+   "component_rank": 4,
+   "component_count": 77,
+   "latitude": 47.08557859,
+   "longitude": -70.56009969
+  },
+  {
+   "official_identifier": "03EI",
+   "component_rank": 5,
+   "component_count": 77,
+   "latitude": 47.05596293,
+   "longitude": -70.62718043
+  },
+  {
+   "official_identifier": "03EI",
+   "component_rank": 6,
+   "component_count": 77,
+   "latitude": 47.23486107,
+   "longitude": -70.4270422
+  },
+  {
+   "official_identifier": "03EI",
+   "component_rank": 7,
+   "component_count": 77,
+   "latitude": 47.04773364,
+   "longitude": -70.58653305
+  },
+  {
+   "official_identifier": "03EI",
+   "component_rank": 8,
+   "component_count": 77,
+   "latitude": 47.05124494,
+   "longitude": -70.57719327
+  },
+  {
+   "official_identifier": "03OI",
+   "component_rank": 1,
+   "component_count": 3,
+   "latitude": 46.9385623,
+   "longitude": -70.7200189
+  },
+  {
+   "official_identifier": "03OI",
+   "component_rank": 2,
+   "component_count": 3,
+   "latitude": 46.93211275,
+   "longitude": -70.76658979
+  },
+  {
+   "official_identifier": "03OI",
+   "component_rank": 3,
+   "component_count": 3,
+   "latitude": 46.93051028,
+   "longitude": -70.76901676
+  },
+  {
+   "official_identifier": "07N",
+   "component_rank": 1,
+   "component_count": 3,
+   "latitude": 46.33228106,
+   "longitude": -72.49533434
+  },
+  {
+   "official_identifier": "07N",
+   "component_rank": 2,
+   "component_count": 3,
+   "latitude": 46.76127464,
+   "longitude": -71.24051861
+  },
+  {
+   "official_identifier": "07N",
+   "component_rank": 3,
+   "component_count": 3,
+   "latitude": 46.79353113,
+   "longitude": -71.19539154
+  },
+  {
+   "official_identifier": "10E",
+   "component_rank": 1,
+   "component_count": 2,
+   "latitude": 46.0408506,
+   "longitude": -75.22216761
+  },
+  {
+   "official_identifier": "10E",
+   "component_rank": 2,
+   "component_count": 2,
+   "latitude": 45.63906708,
+   "longitude": -74.74732562
+  },
+  {
+   "official_identifier": "10EZ",
+   "component_rank": 1,
+   "component_count": 2,
+   "latitude": 45.88595762,
+   "longitude": -74.81813175
+  },
+  {
+   "official_identifier": "10EZ",
+   "component_rank": 2,
+   "component_count": 2,
+   "latitude": 45.63513257,
+   "longitude": -74.59679384
+  },
+  {
+   "official_identifier": "12",
+   "component_rank": 1,
+   "component_count": 2,
+   "latitude": 46.9170185,
+   "longitude": -76.98731317
+  },
+  {
+   "official_identifier": "12",
+   "component_rank": 2,
+   "component_count": 2,
+   "latitude": 46.37646014,
+   "longitude": -77.67969907
+  },
+  {
+   "official_identifier": "18",
+   "component_rank": 1,
+   "component_count": 310,
+   "latitude": 49.06741972,
+   "longitude": -69.26913541
+  },
+  {
+   "official_identifier": "18",
+   "component_rank": 2,
+   "component_count": 310,
+   "latitude": 49.83088886,
+   "longitude": -67.01154971
+  },
+  {
+   "official_identifier": "18",
+   "component_rank": 3,
+   "component_count": 310,
+   "latitude": 49.09013556,
+   "longitude": -68.39940756
+  },
+  {
+   "official_identifier": "18",
+   "component_rank": 4,
+   "component_count": 310,
+   "latitude": 48.75210071,
+   "longitude": -69.0330164
+  },
+  {
+   "official_identifier": "18",
+   "component_rank": 5,
+   "component_count": 310,
+   "latitude": 49.08011242,
+   "longitude": -68.41002076
+  },
+  {
+   "official_identifier": "18",
+   "component_rank": 6,
+   "component_count": 310,
+   "latitude": 49.62486352,
+   "longitude": -67.17559338
+  },
+  {
+   "official_identifier": "18",
+   "component_rank": 7,
+   "component_count": 310,
+   "latitude": 49.7995316,
+   "longitude": -67.14066256
+  },
+  {
+   "official_identifier": "18",
+   "component_rank": 8,
+   "component_count": 310,
+   "latitude": 48.77111339,
+   "longitude": -68.98533267
+  },
+  {
+   "official_identifier": "19SE",
+   "component_rank": 1,
+   "component_count": 8091,
+   "latitude": 51.07564084,
+   "longitude": -60.1679461
+  },
+  {
+   "official_identifier": "19SE",
+   "component_rank": 2,
+   "component_count": 8091,
+   "latitude": 51.2460646,
+   "longitude": -58.47270054
+  },
+  {
+   "official_identifier": "19SE",
+   "component_rank": 3,
+   "component_count": 8091,
+   "latitude": 50.58386766,
+   "longitude": -59.31930304
+  },
+  {
+   "official_identifier": "19SE",
+   "component_rank": 4,
+   "component_count": 8091,
+   "latitude": 51.06363062,
+   "longitude": -58.78155963
+  },
+  {
+   "official_identifier": "19SE",
+   "component_rank": 5,
+   "component_count": 8091,
+   "latitude": 51.22592984,
+   "longitude": -58.38177241
+  },
+  {
+   "official_identifier": "19SE",
+   "component_rank": 6,
+   "component_count": 8091,
+   "latitude": 51.14333885,
+   "longitude": -58.51661713
+  },
+  {
+   "official_identifier": "19SE",
+   "component_rank": 7,
+   "component_count": 8091,
+   "latitude": 51.14048359,
+   "longitude": -58.58899982
+  },
+  {
+   "official_identifier": "19SE",
+   "component_rank": 8,
+   "component_count": 8091,
+   "latitude": 51.28966224,
+   "longitude": -58.45406749
+  },
+  {
+   "official_identifier": "19SO",
+   "component_rank": 1,
+   "component_count": 740,
+   "latitude": 51.4404107,
+   "longitude": -65.75000043
+  },
+  {
+   "official_identifier": "19SO",
+   "component_rank": 2,
+   "component_count": 740,
+   "latitude": 50.21562783,
+   "longitude": -63.89056729
+  },
+  {
+   "official_identifier": "19SO",
+   "component_rank": 3,
+   "component_count": 740,
+   "latitude": 50.22319179,
+   "longitude": -63.14960488
+  },
+  {
+   "official_identifier": "19SO",
+   "component_rank": 4,
+   "component_count": 740,
+   "latitude": 50.2212883,
+   "longitude": -63.62333039
+  },
+  {
+   "official_identifier": "19SO",
+   "component_rank": 5,
+   "component_count": 740,
+   "latitude": 50.21201961,
+   "longitude": -63.81987669
+  },
+  {
+   "official_identifier": "19SO",
+   "component_rank": 6,
+   "component_count": 740,
+   "latitude": 50.20463701,
+   "longitude": -63.32759579
+  },
+  {
+   "official_identifier": "19SO",
+   "component_rank": 7,
+   "component_count": 740,
+   "latitude": 50.21225028,
+   "longitude": -63.7499204
+  },
+  {
+   "official_identifier": "19SO",
+   "component_rank": 8,
+   "component_count": 740,
+   "latitude": 50.24522596,
+   "longitude": -63.06833335
+  },
+  {
+   "official_identifier": "27E",
+   "component_rank": 1,
+   "component_count": 2,
+   "latitude": 47.83308874,
+   "longitude": -70.32561685
+  },
+  {
+   "official_identifier": "27E",
+   "component_rank": 2,
+   "component_count": 2,
+   "latitude": 47.65177098,
+   "longitude": -70.61530268
+  },
+  {
+   "official_identifier": "27EI",
+   "component_rank": 1,
+   "component_count": 10,
+   "latitude": 47.39700293,
+   "longitude": -70.39135555
+  },
+  {
+   "official_identifier": "27EI",
+   "component_rank": 2,
+   "component_count": 10,
+   "latitude": 47.9550052,
+   "longitude": -69.80437007
+  },
+  {
+   "official_identifier": "27EI",
+   "component_rank": 3,
+   "component_count": 10,
+   "latitude": 48.10718589,
+   "longitude": -69.68374326
+  },
+  {
+   "official_identifier": "27EI",
+   "component_rank": 4,
+   "component_count": 10,
+   "latitude": 48.02449416,
+   "longitude": -69.76349028
+  },
+  {
+   "official_identifier": "27EI",
+   "component_rank": 5,
+   "component_count": 10,
+   "latitude": 47.75196933,
+   "longitude": -69.95314029
+  },
+  {
+   "official_identifier": "27EI",
+   "component_rank": 6,
+   "component_count": 10,
+   "latitude": 47.753435,
+   "longitude": -69.95180355
+  },
+  {
+   "official_identifier": "27EI",
+   "component_rank": 7,
+   "component_count": 10,
+   "latitude": 48.11400736,
+   "longitude": -69.72387554
+  },
+  {
+   "official_identifier": "27EI",
+   "component_rank": 8,
+   "component_count": 10,
+   "latitude": 47.40927806,
+   "longitude": -70.43072716
+  },
+  {
+   "official_identifier": "27OI",
+   "component_rank": 1,
+   "component_count": 5,
+   "latitude": 46.93517232,
+   "longitude": -70.94744789
+  },
+  {
+   "official_identifier": "27OI",
+   "component_rank": 2,
+   "component_count": 5,
+   "latitude": 47.01286725,
+   "longitude": -70.73752409
+  },
+  {
+   "official_identifier": "27OI",
+   "component_rank": 3,
+   "component_count": 5,
+   "latitude": 46.97026801,
+   "longitude": -70.78960489
+  },
+  {
+   "official_identifier": "27OI",
+   "component_rank": 4,
+   "component_count": 5,
+   "latitude": 46.88157123,
+   "longitude": -71.11831132
+  },
+  {
+   "official_identifier": "27OI",
+   "component_rank": 5,
+   "component_count": 5,
+   "latitude": 46.94305,
+   "longitude": -71.04316847
+  },
+  {
+   "official_identifier": "27OSB",
+   "component_rank": 1,
+   "component_count": 5,
+   "latitude": 47.31639339,
+   "longitude": -70.83767621
+  },
+  {
+   "official_identifier": "27OSB",
+   "component_rank": 2,
+   "component_count": 5,
+   "latitude": 47.38612393,
+   "longitude": -70.6097262
+  },
+  {
+   "official_identifier": "27OSB",
+   "component_rank": 3,
+   "component_count": 5,
+   "latitude": 47.19683937,
+   "longitude": -70.82840857
+  },
+  {
+   "official_identifier": "27OSB",
+   "component_rank": 4,
+   "component_count": 5,
+   "latitude": 47.19895407,
+   "longitude": -70.82189989
+  },
+  {
+   "official_identifier": "27OSB",
+   "component_rank": 5,
+   "component_count": 5,
+   "latitude": 47.20298657,
+   "longitude": -70.82349995
+  },
+  {
+   "official_identifier": "28",
+   "component_rank": 1,
+   "component_count": 21,
+   "latitude": 48.88892063,
+   "longitude": -72.20379594
+  },
+  {
+   "official_identifier": "28",
+   "component_rank": 2,
+   "component_count": 21,
+   "latitude": 48.15722885,
+   "longitude": -69.87561797
+  },
+  {
+   "official_identifier": "28",
+   "component_rank": 3,
+   "component_count": 21,
+   "latitude": 48.23009328,
+   "longitude": -70.07525908
+  },
+  {
+   "official_identifier": "28",
+   "component_rank": 4,
+   "component_count": 21,
+   "latitude": 48.15046818,
+   "longitude": -69.74969916
+  },
+  {
+   "official_identifier": "28",
+   "component_rank": 5,
+   "component_count": 21,
+   "latitude": 48.2410217,
+   "longitude": -69.9222509
+  },
+  {
+   "official_identifier": "28",
+   "component_rank": 6,
+   "component_count": 21,
+   "latitude": 48.25698597,
+   "longitude": -69.9340089
+  },
+  {
+   "official_identifier": "28",
+   "component_rank": 7,
+   "component_count": 21,
+   "latitude": 48.24786476,
+   "longitude": -70.01930936
+  },
+  {
+   "official_identifier": "28",
+   "component_rank": 8,
+   "component_count": 21,
+   "latitude": 48.26373343,
+   "longitude": -70.04366872
+  }
+ ]
+}

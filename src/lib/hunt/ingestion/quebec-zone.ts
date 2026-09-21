@@ -175,6 +175,8 @@ export function createQuebecZoneSource(fetcher: typeof fetch = fetch): ZoneLayer
   return {
     layerId: "layer:ca-qc-zone-chasse",
     jurisdictionCanonicalId: "jurisdiction:ca-qc",
+    // The ministry's seat keeps Eastern time (America/Montreal is a link to it).
+    timeZone: "America/Toronto",
     officialTerm: "zone de chasse",
     officialTermShort: "Zone",
     zoneType: "ZONE",

@@ -48,6 +48,12 @@ export interface ZoneLayerSource {
   authority: string;
   sourceCanonicalId: string;
   sourceUrl: string;
+  /**
+   * The IANA time zone whose calendar day dates this authority's records
+   * ("America/Edmonton"). Provenance is a day in the jurisdiction, never a UTC
+   * slice; absent, America/Toronto.
+   */
+  timeZone?: string;
   /** Canonical id for a zone, from its official identifier. */
   canonicalZoneId(officialIdentifier: string): string;
   /** Human name for a zone, from its official identifier. */
