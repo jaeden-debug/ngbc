@@ -307,6 +307,96 @@ export async function resolveLayerFromOfficialGis(
   }
 }
 
+/* A disk of the near-boundary radius around a point, as a polygon that covers
+   the whole circle: 24 vertices on a circle 1/cos(π/24) larger, so its edges
+   never pass inside 150 m. Metres per degree are taken at the point. */
+function nearBoundaryDisk(latitude: number, longitude: number, metres = 150): string {
+  const radius = metres / Math.cos(Math.PI / 24);
+  const perLatitude = 111_132;
+  const perLongitude = 111_320 * Math.cos((latitude * Math.PI) / 180);
+  const ring = Array.from({ length: 24 }, (_, index) => {
+    const angle = (2 * Math.PI * index) / 24;
+    return `${(longitude + (radius * Math.cos(angle)) / perLongitude).toFixed(7)} ${(latitude + (radius * Math.sin(angle)) / perLatitude).toFixed(7)}`;
+  });
+  return `POLYGON((${[...ring, ring[0]].join(", ")}))`;
+}
+
+/**
+ * A layer whose authority serves WFS, asked about a point.
+ *
+ * The same answer as an ArcGIS layer's, from two questions that return no
+ * geometry (Québec's zone 21 alone is 838,537 vertices): which zone contains
+ * the point, and whether one of that zone's records contains the whole 150 m
+ * disk around it. If none does, the point is treated as near the boundary: it
+ * may be near an edge between two records of the same zone, which only
+ * over-warns. The distance itself is not measured here, and is not reported.
+ */
+export async function resolveLayerFromWfs(
+  layer: ZoneLayer,
+  latitude: number,
+  longitude: number,
+  fetcher: typeof fetch = fetch,
+): Promise<ZoneResolution> {
+  const sourceId = layer.sourceId;
+  const wfs = layer.wfs;
+  if (!wfs) return { status: "UNKNOWN", sourceId, message: `North Ground has no reviewed point service for ${layer.jurisdictionName}.` };
+  const ask = async (filter: string) => {
+    const parameters = new URLSearchParams({
+      service: "WFS", version: "2.0.0", request: "GetFeature", typeNames: wfs.typeName,
+      outputFormat: "application/json", propertyName: wfs.nameField, CQL_FILTER: filter,
+    });
+    const response = await fetcher(`${wfs.url}?${parameters}`, {
+      headers: { accept: "application/json" },
+      signal: AbortSignal.timeout(8_000),
+      cache: "no-store",
+    });
+    if (!response.ok) throw new Error(`${layer.jurisdictionName} zone service returned ${response.status}`);
+    const payload = await response.json() as { features?: Array<{ properties?: Record<string, unknown> }> };
+    if (!Array.isArray(payload.features)) throw new Error("Unexpected response");
+    return [...new Set(payload.features
+      .map((feature) => designationOfRaw(layer, feature.properties?.[wfs.nameField]))
+      .filter((designation): designation is string => designation !== null))];
+  };
+  try {
+    // SRID=4326 is required: without it GeoServer reads the numbers in its native projection.
+    const point = `SRID=4326;POINT(${longitude} ${latitude})`;
+    const designations = await ask(`INTERSECTS(the_geom,${point})`);
+    if (designations.length !== 1) {
+      return {
+        status: "UNKNOWN",
+        sourceId,
+        jurisdictionId: layer.jurisdictionId,
+        message: designations.length > 1
+          ? `The official ${layer.jurisdictionName} service returned overlapping ${layer.officialTerm} features; human verification is required.`
+          : `The official ${layer.jurisdictionName} service places this point in no ${layer.officialTerm}.`,
+      };
+    }
+    const designation = designations[0].toUpperCase();
+    // Only a designation the service itself published is put back into a filter, and only in its own alphabet.
+    if (!/^[A-Z0-9]+$/.test(designation)) throw new Error("Unexpected designation");
+    const inside = await ask(`CONTAINS(the_geom,SRID=4326;${nearBoundaryDisk(latitude, longitude)}) AND ${wfs.nameField}='${designation}'`);
+    const nearBoundary = inside.length === 0;
+    return {
+      status: "RESOLVED",
+      zoneId: zoneIdFor(layer, designation),
+      jurisdictionId: layer.jurisdictionId,
+      officialName: `${layer.officialNamePrefix}${designation}`,
+      nearBoundary,
+      sourceId,
+      message: nearBoundary
+        ? `This point is within about 150 metres of the mapped ${layer.officialTerm} boundary. Confirm the legal boundary with ${layer.authority} before relying on the result.`
+        : `The point intersects one official ${layer.jurisdictionName} ${layer.officialTerm} feature, more than 150 metres inside it. Map and consumer GPS accuracy still limit legal reliance.`,
+    };
+  } catch {
+    return {
+      status: "PROVIDER_ERROR",
+      sourceId,
+      jurisdictionId: layer.jurisdictionId,
+      message: `The official ${layer.jurisdictionName} ${layer.officialTerm} service is temporarily unavailable; North Ground will not infer a zone.`,
+    };
+  }
+}
+
 /**
  * Every served layer whose extent contains the point, each asked through its
  * own authority. Extents overlap, so more than one may be asked; exactly one
@@ -317,14 +407,16 @@ export async function resolveZoneFromOfficialGis(
   longitude: number,
   fetcher: typeof fetch = fetch,
 ): Promise<ZoneResolution> {
-  const layers = servingLayersAt(latitude, longitude).filter((layer) => layer.endpoint);
+  const layers = servingLayersAt(latitude, longitude).filter((layer) => layer.endpoint || layer.wfs);
   if (!layers.length) {
     return { status: "UNKNOWN", sourceId: "source:ca-on-wmu-service", message: "North Ground does not hold official hunting-zone boundaries for this point." };
   }
   const results = await Promise.all(layers.map((layer) =>
     layer.id === "layer:ca-on-wmu"
       ? resolveOntarioWmuFromOfficialGis(latitude, longitude, fetcher)
-      : resolveLayerFromOfficialGis(layer, latitude, longitude, fetcher)));
+      : layer.endpoint
+        ? resolveLayerFromOfficialGis(layer, latitude, longitude, fetcher)
+        : resolveLayerFromWfs(layer, latitude, longitude, fetcher)));
   const resolved = results.filter((result) => result.status === "RESOLVED");
   if (resolved.length === 1) return resolved[0];
   if (resolved.length > 1) {

@@ -40,6 +40,12 @@ export interface ZoneLayer {
   sourceId: CanonicalId<"source">;
   /** ArcGIS FeatureServer/MapServer query endpoint, when one has passed review. */
   endpoint?: string;
+  /**
+   * An OGC WFS the authority serves instead, when one has passed review
+   * (Québec's GeoServer). Asked only by the official-GIS fallback, for which
+   * zone contains a point; never for drawings.
+   */
+  wfs?: { url: string; typeName: string; nameField: string };
   /** Field on that service carrying the zone's official designation. */
   nameField?: string;
   /** Approximate extent, used to skip requests the layer cannot answer. */
@@ -192,6 +198,11 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     serving: false,
     officialNamePrefix: "Zone de chasse ",
     zoneIdPrefix: "management_zone:ca-qc-zone-",
+    wfs: {
+      url: "https://servicesvecto3.mern.gouv.qc.ca/geoserver/SmartFaunePub/ows",
+      typeName: "SmartFaunePub:Zone_chasse_da3_sefaq",
+      nameField: "Zone",
+    },
     /* The ministry serves WFS, not ArcGIS, and zone 21 alone is 838,537 vertices:
        the map draws North Ground's stored drawings of the certified copy. */
     mapGeometry: "stored",
