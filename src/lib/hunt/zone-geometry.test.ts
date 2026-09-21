@@ -49,8 +49,10 @@ test("a viewport over supported geography selects the layer that covers it", () 
 
 test("a viewport outside supported geography requests nothing", async () => {
   // Montana. Real hunting geography, no reviewed North Ground layer — so the map
-  // must say so rather than drawing something.
-  const overMontana: BoundingBox = { west: -114, south: 45, east: -108, north: 49 };
+  // must say so rather than drawing something. The box stops short of the 49th
+  // parallel: Alberta's served WMUs reach 48.997°N along the surveyed border, so
+  // a view touching the border rightly asks Alberta.
+  const overMontana: BoundingBox = { west: -114, south: 45, east: -108, north: 48.5 };
   assert.deepEqual(layersForBounds(overMontana), []);
 
   const { fetcher, calls } = stubFetch(collection([]));

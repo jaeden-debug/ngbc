@@ -33,6 +33,7 @@ import {
 import { jurisdictionToday, readPreviousBundle, retrievedAtFor } from "./ontario-source.mjs";
 
 const OUTPUT = "content/regulatory/ca-ab-2026.json";
+const CERTIFIED_UNITS_OUTPUT = "content/regulatory/ca-ab-certified-units.json";
 const CROSSCHECK = "content/regulatory/sources/ca-ab-hunting-guide-2026-crosscheck.json";
 const LICENCE_YEAR = 2026;
 const SOURCE_ID = "source:ca-ab-hunting-guide-2026";
@@ -417,8 +418,20 @@ function build({ pages, pdf, officialIdentifiers }, crosscheck, previous) {
   const contentHash = sha256(JSON.stringify(sourceHashes));
   const today = jurisdictionToday(TIME_ZONE);
 
+  /* Units with at least one certified rule, for the map's per-unit badge. A unit
+     outside this list is boundary-only: its official geometry is drawn, and no
+     rule is claimed inside it. */
+  const reached = new Set(rules.flatMap((rule) => groups.get(rule.regulatoryGroupId).officialIdentifiers));
+  const certifiedUnits = {
+    jurisdictionId: "jurisdiction:ca-ab",
+    layerId: "layer:ca-ab-wmu",
+    officialUnitCount: officialIdentifiers.length,
+    certifiedUnits: officialIdentifiers.filter((unit) => reached.has(unit)),
+  };
+
   return {
     manifest: crosscheckManifest(bigGame, birds),
+    certifiedUnits,
     bundle: {
       schemaVersion: 1,
       bundleId: "regulatory_bundle:ca-ab-2026",
@@ -493,7 +506,7 @@ async function main() {
     }
     throw error;
   }
-  const { bundle } = built;
+  const { bundle, certifiedUnits } = built;
 
   if (check) {
     if (!previous) {
@@ -510,11 +523,22 @@ async function main() {
       console.error(`${OUTPUT} is not what this builder produces from unchanged sources. Was it edited by hand?`);
       process.exit(3);
     }
+    let previousUnits = null;
+    try {
+      previousUnits = readFileSync(CERTIFIED_UNITS_OUTPUT, "utf8");
+    } catch {
+      /* absent is reported below */
+    }
+    if (previousUnits !== `${JSON.stringify(certifiedUnits, null, 2)}\n`) {
+      console.error(`${CERTIFIED_UNITS_OUTPUT} is missing or is not what this builder produces.`);
+      process.exit(3);
+    }
     console.log(`Alberta sources unchanged; ${OUTPUT} reproduces exactly.`);
     return;
   }
 
   writeFileSync(OUTPUT, `${JSON.stringify(bundle, null, 2)}\n`);
+  writeFileSync(CERTIFIED_UNITS_OUTPUT, `${JSON.stringify(certifiedUnits, null, 2)}\n`);
   const bySpecies = {};
   for (const rule of bundle.rules) bySpecies[rule.speciesId] = (bySpecies[rule.speciesId] ?? 0) + 1;
   console.log(`Wrote ${OUTPUT}: ${bundle.rules.length} rules in ${bundle.groups.length} groups.`);

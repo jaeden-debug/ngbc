@@ -1,6 +1,6 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { ZoneResolution } from "./types.ts";
-import { servingLayersAt, type ZoneLayer } from "./zone-layers.ts";
+import { designationOfRaw, servingLayersAt, type ZoneLayer } from "./zone-layers.ts";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { defaultSupabaseServerClient, SupabaseServerConfigurationError } from "../supabase/server.ts";
 
@@ -266,10 +266,7 @@ export async function resolveLayerFromOfficialGis(
     if (!response.ok) throw new Error(`${layer.jurisdictionName} zone service returned ${response.status}`);
     const payload = await response.json() as ArcgisPointCollection;
     if (payload.type !== "FeatureCollection" || !Array.isArray(payload.features)) throw new Error("Unexpected response");
-    const named = payload.features.filter((feature) => {
-      const raw = feature.properties?.[layer.nameField!];
-      return typeof raw === "string" ? raw.trim() !== "" : typeof raw === "number";
-    });
+    const named = payload.features.filter((feature) => designationOfRaw(layer, feature.properties?.[layer.nameField!]) !== null);
     if (named.length !== 1) {
       return {
         status: "UNKNOWN",
@@ -281,7 +278,7 @@ export async function resolveLayerFromOfficialGis(
       };
     }
     const feature = named[0];
-    const designation = String(feature.properties![layer.nameField]).trim().toUpperCase();
+    const designation = designationOfRaw(layer, feature.properties![layer.nameField])!.toUpperCase();
     if (!feature.geometry || !["Polygon", "MultiPolygon"].includes(feature.geometry.type)) {
       return { status: "UNKNOWN", sourceId, jurisdictionId: layer.jurisdictionId, message: `The official ${layer.officialTerm} response was incomplete.` };
     }

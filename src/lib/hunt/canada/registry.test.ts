@@ -64,7 +64,7 @@ test("the report counts only what the certified bundles actually contain", () =>
   // because another jurisdiction gained rules, update it deliberately — the
   // test exists so coverage cannot grow without someone noticing.
   const withRules = report.jurisdictions.filter((entry) => entry.regulatory.rules > 0);
-  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-MB"]);
+  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-MB", "CA-AB"]);
 
   const ontario = withRules[0];
   assert.equal(ontario.species.length, 8, "four small-game plus four major-game species");
@@ -112,7 +112,7 @@ test("every species row splits covered, declared-closed and unknown", () => {
 test("species coverage is jurisdiction-aware and derived from certified bundles", () => {
   assert.deepEqual(
     regulatoryJurisdictionsForSpecies("species:white-tailed-deer").map(({ id }) => id),
-    ["jurisdiction:ca-on", "jurisdiction:ca-mb"],
+    ["jurisdiction:ca-on", "jurisdiction:ca-mb", "jurisdiction:ca-ab"],
   );
   assert.deepEqual(regulatoryJurisdictionsForSpecies("species:gray-wolf"), []);
 });

@@ -12,6 +12,7 @@ import {
 } from "./manitoba.ts";
 import { evaluateOntarioSmallGame, ontarioCoverageReport } from "./ontario.ts";
 import { evaluateQuebec, quebecCoverageReport, quebecSourceRecords } from "./quebec.ts";
+import { albertaCoverageReport, albertaSourceRecords, evaluateAlberta } from "./alberta.ts";
 
 /**
  * Which jurisdictions North Ground holds certified rules for, and how each is
@@ -274,7 +275,16 @@ const QUEBEC = conditionalEntry({
   sourceRecords: quebecSourceRecords,
 });
 
-export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC];
+const ALBERTA = conditionalEntry({
+  jurisdictionId: "jurisdiction:ca-ab",
+  jurisdictionName: "Alberta",
+  unitTerm: "Wildlife Management Unit",
+  evaluate: evaluateAlberta,
+  coverageReport: albertaCoverageReport,
+  sourceRecords: albertaSourceRecords,
+});
+
+export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA];
 
 /**
  * The entry for a jurisdiction — only while its zone layer is served.

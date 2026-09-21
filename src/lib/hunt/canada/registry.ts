@@ -248,28 +248,37 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     nameFr: "Alberta",
     kind: "province",
     spatial: {
-      status: "IN_DEVELOPMENT",
+      status: "VERIFIED",
       officialTerm: "Wildlife Management Unit (WMU)",
-      officialSourceUrl: "https://www.alberta.ca/wildlife-management-units.aspx",
-      parityCertified: false,
+      officialSourceUrl: "https://www.alberta.ca/wildlife-management-units",
+      serviceUrl: "https://geospatial.alberta.ca/mimas/rest/services/boundaries/fishwild_wildlife_mgmt_unit_public/FeatureServer/0",
+      parityCertified: true,
+      notes:
+        "Alberta's layer publishes 199 records, which are 189 WMUs: 718, 728 and 794 come in parts and are grouped, and the " +
+        "one blank record is Elk Island National Park, quarantined. All 189 are certified against the province's service at " +
+        "592 points with zero disagreements, including every part of each multipart unit and a point in each of the five " +
+        "national parks, which are in no WMU. Alberta calls its boundaries small-scale approximations of the units legally " +
+        "described in the Wildlife Regulation (AR 143/97), which controls.",
     },
     regulatory: {
-      status: "IN_DEVELOPMENT",
-      // Built and cross-checked, not served: listed here once Hunt can answer with it.
-      bundleIds: [],
-      sourceLeads: ["2026 Alberta Guide to Hunting Regulations (open.alberta.ca PDF; albertaregulations.ca online edition)"],
+      status: "PARTIAL",
+      bundleIds: ["ca-ab-2026"],
+      sourceLeads: [
+        "2026 Alberta Guide to Hunting Regulations (government PDF on open.alberta.ca, cross-checked)",
+        "Alberta Guide to Hunting Regulations online edition (parsed)",
+        "Wildlife Regulation, Alta. Reg. 143/97 (controlling; not yet ingested)",
+      ],
       sourceState: "CURRENT",
+      notes:
+        "2026-27 licence year. Ruffed, spruce and sharp-tailed grouse, and white-tailed deer by implement, antler class and " +
+        "special licence. Every source row is cross-checked against the government PDF.",
     },
     knownGaps: [
-      "Alberta's layer publishes 199 records, which are 189 WMUs: 718, 728 and 794 come in parts, and the one blank " +
-        "record is Elk Island National Park, quarantined. All 189 are in PostGIS; parity with Alberta's service is not " +
-        "yet certified, so the layer is not served and Hunt answers every Alberta point as not yet covered.",
-      "Rules are built for ruffed, spruce and sharp-tailed grouse and white-tailed deer (content/regulatory/ca-ab-2026.json, " +
-        "50 rules, every source row cross-checked against the government PDF) but are not answered until the layer serves.",
       "Mule deer, moose, elk, sheep, goat, pronghorn, black bear, cougar, the other game birds and all migratory birds are not encoded.",
       "Special-licence seasons are drawn; North Ground answers them only under the licence the hunter says they hold.",
       "Late elk seasons in WMUs 102-150 differ between the online guide (N17 - D20) and the PDF (N17 - D31); unresolved.",
-      "Banff, Jasper, Waterton Lakes, Wood Buffalo and Elk Island national parks are in no WMU and are federal jurisdiction.",
+      "Rules come from the guide, a summary; the Wildlife Regulation itself is not yet ingested as the controlling text.",
+      "WMUs 624, 648, 651, 718, 726, 732-738 and 794 are named by no encoded row and answer UNKNOWN.",
     ],
   },
   {

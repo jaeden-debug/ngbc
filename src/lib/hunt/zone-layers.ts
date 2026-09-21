@@ -1,6 +1,7 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import certifiedUnits from "../../../content/regulatory/ca-on-certified-units.json" with { type: "json" };
 import manitobaCertifiedUnits from "../../../content/regulatory/ca-mb-certified-units.json" with { type: "json" };
+import albertaCertifiedUnits from "../../../content/regulatory/ca-ab-certified-units.json" with { type: "json" };
 
 /**
  * Which hunting-zone geography North Ground can actually draw, and how far the
@@ -60,6 +61,21 @@ export interface ZoneLayer {
   certifiedDesignations?: ReadonlySet<string>;
   /** How this layer's adapter mints canonical ids ("management_zone:ca-mb-gha-"), for the official-GIS fallback. */
   zoneIdPrefix: string;
+  /**
+   * The official designation for a raw `nameField` value, or null when the
+   * feature is not a zone. Needed where the service stores something other
+   * than the designation — Alberta keeps WMU 102 as "00102" and Elk Island
+   * National Park as a blank record. Without it, a trimmed non-empty string or
+   * a number is the designation, which is what every other layer publishes.
+   */
+  designationOf?(raw: unknown): string | null;
+}
+
+/** A layer's designation for a raw service value, or null when the feature is not a zone. */
+export function designationOfRaw(layer: Pick<ZoneLayer, "designationOf">, raw: unknown): string | null {
+  if (layer.designationOf) return layer.designationOf(raw);
+  if (typeof raw === "number") return String(raw);
+  return typeof raw === "string" && raw.trim() !== "" ? raw.trim() : null;
 }
 
 export const ONTARIO_WMU_ENDPOINT =
@@ -114,6 +130,35 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     officialNamePrefix: "Game Hunting Area ",
     certifiedDesignations: new Set(manitobaCertifiedUnits.certifiedUnits.map((unit) => unit.toUpperCase())),
     zoneIdPrefix: "management_zone:ca-mb-gha-",
+  },
+  {
+    id: "layer:ca-ab-wmu",
+    jurisdictionId: "jurisdiction:ca-ab",
+    jurisdictionName: "Alberta",
+    country: "CA",
+    officialTerm: "Wildlife Management Unit",
+    officialTermShort: "WMU",
+    coverage: "PARTIAL",
+    coverageNote:
+      "Official Alberta WMU boundaries are drawn from the province's own feature layer, parity-certified against it. " +
+      "Alberta describes them as small-scale approximations of the units legally described in the Wildlife Regulation " +
+      `(AR 143/97), which controls. Certified rules reach ${albertaCertifiedUnits.certifiedUnits.length} of ` +
+      `${albertaCertifiedUnits.officialUnitCount} units for at least one species. National parks are in no WMU.`,
+    authority: "Government of Alberta",
+    sourceId: "source:ca-ab-wmu-service",
+    endpoint: "https://geospatial.alberta.ca/mimas/rest/services/boundaries/fishwild_wildlife_mgmt_unit_public/FeatureServer/0/query",
+    nameField: "WMUNIT_CODE",
+    bounds: { minLatitude: 48.99, maxLatitude: 60.01, minLongitude: -120.01, maxLongitude: -109.99 },
+    serving: true,
+    officialNamePrefix: "Wildlife Management Unit ",
+    certifiedDesignations: new Set(albertaCertifiedUnits.certifiedUnits),
+    zoneIdPrefix: "management_zone:ca-ab-wmu-",
+    // "00102" is WMU 102. The blank record is Elk Island National Park: no zone.
+    designationOf: (raw) => {
+      if (typeof raw !== "string" || !/^\d{5}$/.test(raw.trim())) return null;
+      const designation = String(Number(raw.trim()));
+      return /^\d{3}$/.test(designation) ? designation : null;
+    },
   },
   {
     id: "layer:ca-qc-zone-chasse",
