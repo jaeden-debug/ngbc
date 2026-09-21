@@ -612,6 +612,19 @@ Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport a
 
 ## Agent Handoff Notes
 
+### 2026-09-21 — Québec: shared changes other sessions should know
+Cross-session messages from the Québec session expired unread, so these are recorded here.
+- **Resolver.** The served resolver is unchanged. `resolve_management_zone_v2` is live beside it and answers identically to it for Ontario, Manitoba and Alberta; swapping it in waits on the owner. It does not fix their boundary distance (Known Problems).
+- **Map (Hunt map session).** `zone_display_in_view` returns Québec only once its zones are promoted to VERIFIED. Québec's closed-territories catalogue is WFS, which `overlay-layers.ts` rightly skips. Its registry entry has no `zoneIndex`, so its cards carry `pointOnlyChecks`. The zones API now sends `officialTermPlural`.
+- **Registry and engine.** The conditional overlays config requires `layersDescribedAs`; Manitoba's sentence is unchanged. A restriction that downgrades CONDITIONAL now drops `season` (`6571e5a`).
+- **Official-GIS fallback.** A layer may declare `wfs`; the fallback asks it which zone contains the point and whether a zone record contains the 150 m disk. It reports near/not-near without a distance.
+- **Parity script (American agent).** `certify-spatial-parity.mjs` has `--unverified`, `--samples FILE`, samples scoped to the adapter's own zone ids, and `certifiedOn` in `ZoneLayerSource.timeZone`. Add U.S. `EXTRA_CASES` on top.
+- **Publisher.** A rule's own `effectiveFrom`/`effectiveTo` wins over the bundle's period; nothing else changed.
+- **Hunt Brief (Canada clean-up).**
+  - Creating a brief throws when a field exceeds its limit (authority > 120, summary > 700), so the whole share fails. Québec answers now fit, but any long listing can still hit this.
+  - The 8-warning cap drops the rest silently.
+  - A Québec moose brief lists `source:ontario-moose-habitat` as an official source, via a knowledge block.
+
 ### 2026-09-21 — Hunt map: remaining opportunities, in order
 1. Build stored drawings for Ontario, Manitoba and Alberta (`build_zone_derivatives`, one jurisdiction at a time, not during another ingest), then set `mapGeometry: "stored"` on each; this removes per-view authority queries and Ontario's tiling.
 2. When Québec is served, add its special-area catalogue (the Québec session's WFS overlays) to the zone index; the builder currently reads ArcGIS layers only.
