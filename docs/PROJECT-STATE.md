@@ -4,7 +4,7 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-21 (Alberta served in Hunt: 189 WMUs parity-certified 592/0, first rule wave; species coverage per jurisdiction; Supabase outage 02:50–03:24 UTC resolved)
+Last updated: 2026-09-21 (Manitoba served and production-certified: 62 GHAs parity 201/0, grouse and white-tailed deer from M.R. 165/91, 24/24 live cases agree with the law, rules persisted and read back identical, change drill 8/8; the map draws every served jurisdiction. Earlier the same day: Alberta served; species coverage per jurisdiction; Supabase outage 02:50–03:24 UTC resolved)
 
 ## Current Product State
 
@@ -38,6 +38,8 @@ Last updated: 2026-09-21 (Alberta served in Hunt: 189 WMUs parity-certified 592/
 - Answers are untrusted at two layers. `/api/hunt/evaluate` refuses anything that is not a known dimension key with a bounded string value, and the engine then refuses any value its own dimension did not offer. Certified live: an invalid residency or implement leaves the question outstanding and never produces a status. Answers are cleared whenever species, place or date changes.
 - Hunt Brief is at schema version 2, which records the assumptions a result depended on in the words the question used. Version 1 briefs remain readable and are rebuilt as version 1 with no assumptions; a stored v1 record cannot acquire assumptions even if its payload claims them.
 - Canada coverage is machine-readable. `src/lib/hunt/canada/registry.ts` declares all thirteen provinces and territories plus the federal layer with each authority's own management term, official source and known gaps; `report.ts` computes every count from the certified bundles at call time. `npm run report:canada` renders it, `-- --json` emits it.
+- Hunt answers by the jurisdiction of the RESOLVED ZONE, never by the box a point falls in (`77e259b`). `src/lib/hunt/regulatory/registry.ts` is the one list of jurisdictions with certified rules and how each is evaluated: Ontario on its own engines; Manitoba, Alberta and (when served) Québec on the shared conditional engine. Hunt's evaluation, the national coverage report and the species surfaces all read it. An entry counts only while its zone layer is served, and `regulatory/registry.test.ts` holds that every served layer has an entry, so coverage can never claim a place Hunt cannot answer. A point no authority places is attributed to a jurisdiction only when exactly one registered extent contains it; otherwise it gets a neutral NEEDS_VERIFICATION, never Ontario's wording (`c077595`).
+- The map draws every served jurisdiction in view, each asked of its own authority in parallel and labelled in its own terms (`beb8f7f`): WMUs and GHAs appear together from Kenora to Winnipeg. Features and the selected zone are keyed by layer, because designations repeat across jurisdictions. One authority failing returns `PARTIAL` with the others drawn and the failed service named. The share brief, the question source line and the coverage copy take the zone's own jurisdiction instead of hard-coded Ontario.
 - Where no Google Maps browser key is configured the map falls back to a basemap-free boundary view that draws the same official geometry, supports pan, zoom and zone inspection, and labels itself as having no basemap. It is not a substitute basemap and invents no geography.
 
 ### Content / Knowledge Graph
@@ -99,6 +101,9 @@ Last updated: 2026-09-21 (Alberta served in Hunt: 189 WMUs parity-certified 592/
   - **A test depended on the wall clock.** `weather.test.ts` pinned `now` in every Open-Meteo/Google case but one, so that case passed during the day and failed once UTC rolled past the evaluated date. A suite that fails by time of day trains people to rerun rather than read it.
 
 - **Supabase outage, 2026-09-21, 02:50–03:24 UTC (34 minutes; recovered without intervention, data intact).** REST answered 522 after ~20 s and the management API could not connect while the project still reported `ACTIVE_HEALTHY`. The logs show a 271-second checkpoint, then at 02:49:09 a `POST /zone_ingest_features` failing on statement timeout, then no logging at all after 02:50:46. The preceding half hour carried three large geometry ingests into a small instance — Manitoba (~624k vertices), Alberta (two staging runs of ~692k vertices and a publish) and, by the timing, a further upload — which is consistent with exhausting the instance's disk-I/O budget. It recovered by itself at 03:24 UTC; whether the instance needs more compute for future ingests is an owner decision. Production kept answering correctly through the official-GIS fallback, but each evaluation waited ~20 s for the Supabase call to fail; the spatial lookup now aborts after 2.5 s (`77e259b`), and the Hunt Brief existence check after 1.5 s (`7b21529`). Oversized zones now stage in chunks (`afdecb9`). Lesson for every ingest: stage one jurisdiction at a time, and batch very large MultiPolygons (Québec's 19SE is 8,091 polygons) small enough to stay inside the statement timeout.
+- **Ontario's small-game mirror in Supabase is not identical to its bundle** (found 2026-09-21 by the new `publish-regulations.mjs --verify`). Its 11 rows predate rule-level provenance, so they have no `regulatory_rule_sources` row, and they were stored without the `combinedWithNames` display field. Hunt evaluates from the bundle, so no answer is affected; Ontario major game verifies identical (135/135). Fixing it means republishing those rows (they are skipped as already present) and is Ontario's decision.
+- **A Hunt Brief keeps at most 8 warnings** (`from-hunt-evaluation.ts` slices, and the schema validates the count). A Manitoba deer answer carries up to 7 today. Beyond 8, requirements and limitations would be dropped from the shared brief without saying so. The per-warning cap was too low for real legal text (300 characters against the 320-character CWD requirement) and is now 600 (`1f39121`).
+- **Evaluation p90 is about 3 s where Manitoba's overlay layers are read cold** (four ArcGIS point queries, cached per point). The median is 237 ms. A server-side cache of the overlay geometry, or a PostGIS copy of the four layers, would remove the external round trip.
 - Search for `doe` or `buck` returns both deer, but only white-tailed deer carries the biological-sex intent: Wave 2 gave mule deer compound terms (`mule deer doe`), so bare `doe` matches it by substring. No pseudo-species is created and nothing collapses to one species; fixing it means changing the Wave 2 generator's terminology, not the published file.
 - Inspect current repository before trusting this list.
 - Record confirmed defects here as they are discovered.
@@ -136,7 +141,7 @@ The national rollout order below replaces them.
 2. Québec seasons. The structure has been read and written down in `docs/quebec-regulatory-sources.md` — do not re-derive it. Two things must be settled before encoding: the rule schema cannot yet represent a segment that differs between the two published years ("2026 Orignal avec bois / 2027 Orignal"), and the two coordinated-ellipsis zone labels need an explicit, evidence-carrying mapping rather than a regex. Preserve official French terminology rather than translating legal terms. Zone 17 moose is closed to sport hunting and the ZSR designations must never inherit their parent zone's season.
 3. Distributed rate limiting and production observability before broad Hunt rollout. Hunt's limiter is still process-local.
 4. Federal migratory birds. Establish certified district geometry from the Migratory Birds Regulations or an authority-backed layer — the ECCC draft layer disclaims legal value and cannot be used. This unblocks 25 published waterfowl species that currently have no rules at all.
-5. Prairie provinces (MB, SK, AB), then British Columbia, then Atlantic Canada, then the territories. Each wave: research, ingest, certify parity, encode rules, test, deploy, verify, record exact coverage in the registry.
+5. Prairie provinces: Manitoba and Alberta are served with a first wave; Saskatchewan is next. Manitoba's second wave is moose (s. 10.3 already needs its seasons), then elk, black bear and mule deer, then the Oak Hammock polygon. Then British Columbia, Atlantic Canada, and the territories. Each wave: research, ingest, certify parity, encode rules, test, deploy, verify, record exact coverage in the registry.
 6. Complete current visual foundation without locking poor information architecture.
 7. Establish technical/semantic site architecture.
 8. Establish trust pages and North Ground Verified framework.
@@ -176,19 +181,19 @@ declares structure and known gaps; `src/lib/hunt/canada/report.ts` computes ever
 count from the certified bundles. Run `npm run report:canada`. Do not restate
 those counts here — they would go stale the moment a bundle changes.
 
-National position as of 2026-09-20:
+National position as of 2026-09-21, from `npm run report:canada`:
 
 | | |
 | --- | --- |
 | Jurisdictions tracked | 14 (13 provinces and territories + federal) |
-| Spatial VERIFIED | 1 (Ontario) |
-| Official units parity-certified | 151 |
+| Spatial VERIFIED | 3 (Ontario, Manitoba, Alberta) |
+| Official units parity-certified | 402 (151 + 62 + 189) |
 | Species with certified rules | 8 |
-| Certified rules | 146 |
-| Jurisdictions with any certified rule | 1 |
+| Certified rules | 281 (146 + 85 + 50) |
+| Jurisdictions with any certified rule | 3 |
 
-Milestones: `spatialComplete` NOT met (1 of 13). `coreGameComplete` NOT met
-(1 of 13). `migratoryComplete` NOT met (no federal rules). `coverageAudited`
+Milestones: `spatialComplete` NOT met (3 of 13). `coreGameComplete` NOT met
+(3 of 13). `migratoryComplete` NOT met (no federal rules). `coverageAudited`
 MET — every jurisdiction declares its own gaps, so what is missing is
 intentionally UNKNOWN rather than accidentally absent.
 
@@ -291,6 +296,15 @@ bundle; it is the difference between a day of work and a week of rediscovery.
 - Coverage: ruffed grouse 179 of 189 WMUs, spruce grouse 177, sharp-tailed grouse 92, white-tailed deer 177; the rest answer UNKNOWN. 179 WMUs carry at least one certified rule and draw as certified; 624, 648, 651, 718, 726, 732–738 and 794 draw as boundary-only. Not encoded: mule deer, moose, elk, sheep, goat, pronghorn, black bear, cougar, other game birds, migratory birds.
 - Two channels, one checked against the other: the online edition's HTML tables are parsed, and `scripts/crosscheck-alberta-guide.py` confirms all 30 source rows against the government PDF by coordinates (dates in order, ■ column). A tampering drill proved it catches a moved date and a moved mark. The channels genuinely disagree on late elk in WMUs 102–150 (PDF N17–D31, online N17–D20), which would be a CONFLICT if elk is encoded. The guide's catalogue record carries no open licence, so North Ground records facts with the printed cell as provenance.
 
+**Manitoba — served in Hunt and certified on production (2026-09-21).** The full record is `docs/manitoba-regulatory-sources.md`; do not re-derive it.
+
+- Geometry: the province's dedicated `Manitoba_Game_Hunting_Areas` layer. 63 records are the 62 GHAs M.R. 220/86 defines, plus one blank record, which is Riding Mountain National Park; it is quarantined and never ingested. Parity is certified at 201 points with 0 disagreements. The official term is "Game Hunting Area (GHA)", never relabelled as a WMU.
+- Rules are built from the regulation itself: M.R. 165/91, consolidation in force since 2026-06-16 (M.R. 46/2026). The 2026 guide is only a cross-check, with 2 disputes (GHA 7A) and 3 notes where the regulation controls. Certified period: 2026-06-16 to 2027-03-31. Section 3 makes a place no row designates CLOSED for an encoded species; an unencoded species stays UNKNOWN.
+- Coverage: ruffed, spruce and sharp-tailed grouse in all 62 GHAs, asking nothing, by game bird hunting zone. White-tailed deer is covered in 54 GHAs and closed by s. 3 in 8, asking residency, licence, equipment and (where the youth rows decide) age. 85 rules in 24 groups. Everything else answers UNKNOWN.
+- Special geographies: CFB Shilo, the Whiteshell Game Bird Refuge and the R.M. of Macdonald part of GHA 38 are read from the province's layers. The Oak Hammock Waterfowl Control Area has no polygon and answers NEEDS_VERIFICATION inside a proven envelope. The CWD zone is 25 GHAs, on which three sources agree. The GBHZ 2/3 band is answered only where both zones agree.
+- Refuges, special conservation areas, WMAs and closed lands (231 features) are read live at the point and never certified as closures. A restriction that reaches the species turns CONDITIONAL into NEEDS_VERIFICATION and quotes the authority.
+- Persisted to Supabase through the conditional-rule publisher (`fa1973c`): 85 rules, 24 groups and 329 memberships, read back identical. Sources are registered by migration. Change detection is in the daily watch, and the drill passed 8 of 8 with exact blast radii (`d10d9e5`). Production certification: 24 of 24 real places agree with the law (`c077595`).
+
 ### United States
 Not assumed complete.
 Add jurisdictions only when genuinely implemented.
@@ -334,6 +348,9 @@ Record actual production providers here once selected:
 Do not list aspirational providers as implemented.
 
 ## Recent Product Decisions
+
+### 2026-09-21 — A jurisdiction's silence means what its law says it means
+Each conditional bundle declares what an undesignated place means. In Manitoba, s. 3 makes it CLOSED, because a licence authorises only what the regulation designates. In Alberta and Ontario, a unit no row names stays UNKNOWN. That meaning applies only to species a bundle encodes; a species North Ground has not encoded is UNKNOWN everywhere. Routing is by the resolved zone's jurisdiction, through one registry (`src/lib/hunt/regulatory/registry.ts`), never by a bounding box.
 
 ### 2026-09-20 — North Ground Master Direction
 North Ground is an outdoor knowledge/data/tools/field-testing platform rather than simply a bushcraft blog.
@@ -405,6 +422,7 @@ Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport a
 - `npm run build` passed on 2026-09-20 (Next.js 16.1.1). The species library is static and all 60 species pages are statically generated; Hunt, its evaluation/share APIs, shared Hunt Brief page and per-brief Open Graph image are dynamic; home, 404, site Open Graph image, robots, and sitemap are generated successfully.
 
 ### Tests
+- Manitoba, 2026-09-21, on `c077595`: typecheck and lint clean, and every suite passes (11 suites, 0 failures), including 29 Manitoba engine tests, 12 integration tests through Hunt's real path (overlays, outages, the 2.5 s hanging-registry fallback, jurisdiction attribution), 24 geometry tests (two jurisdictions in one view, a PARTIAL outage), the Manitoba Hunt Brief round trip, and 21 source tests. `publish-regulations.mjs --verify` reads back 85 of 85 identical. The change drill passes 8 of 8 and leaves the committed files untouched. Hunt at 320, 360, 375, 390, 430, 768, 1024 and 1440 px has no horizontal overflow, with 213 zones drawn across Ontario and Manitoba.
 - Alberta served, 2026-09-21, on the landed tree `f07a886` (isolated worktree): typecheck and lint clean, 540 tests across every suite, 5/5 time zones, content contract 0 errors, production build compiles, the Alberta bundle reproduces byte for byte. Responsive sweep of the species library, two profiles and Hunt at 320, 360, 375, 390, 430, 768, 1024 and 1440px: no horizontal overflow, no clipped coverage label, no console errors (a 1.4px library overflow at 320px was found and fixed in `bc25153`). The Hunt selector was driven in real Chromium with an emulated Alberta and Ontario location: options are 48px targets and disabled state is carried by `aria-disabled`, not colour alone.
 - Alberta and species recovery, 2026-09-21, verified in an isolated worktree on `083963f` so concurrent sessions' in-progress edits could not affect the result: typecheck and lint clean, 481 tests across every suite (including `test:regulatory-sources` with 19 Alberta reading and certified-fact tests, and 14 Alberta engine tests whose expectations were read from the guide, not from the engine), 5/5 time zones, content contract 0 errors, production build compiles. `node scripts/build-alberta-regulations.mjs --check` reproduces the bundle byte for byte.
 - Ontario was re-certified after the promotion change: 309 of 309 points agree with the Government of Ontario service (live, 2026-09-21 ~02:42 UTC), and the Ontario adapter reproduces all 151 published canonical ids and names (`fixtures/hunt/ontario-registry-identity.json`).
@@ -468,6 +486,7 @@ Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport a
 - Real browser scenarios passed locally for in-season (`CONDITIONAL`), out-of-season (`CLOSED`), unsupported WMU (`UNKNOWN`), exact mapped-boundary warning (0 m), and an aborted API request with a visible recoverable error.
 
 ### Production
+- **Manitoba certified on production, 2026-09-21** (`cb7240e`, which carries all Manitoba work through `d10d9e5`): 24 real places through `/api/hunt/zone` and `/api/hunt/evaluate`, every expectation written from the law first, 24 agree. The record is `fixtures/hunt/ca-mb-production-certification.json`. Zone lookup median 369 ms; evaluation median 237 ms, p90 about 3 s (cold overlays); payload median 12 KB. All of Manitoba's map at zoom 5 is 22 KB.
 - **Deployed 2026-09-21 03:43 UTC: `fa1973c`, Vercel production `dpl_AgZ8aWXzBMrQm2UPTY6vVYBdFgvx`,** pushed on the owner's explicit decision after every gate passed on that exact commit (548 tests, typecheck, lint, 5/5 time zones, content contract, build). It carries the Alberta, Manitoba, Québec, species-coverage and hydration work.
 - Alberta certified live on `www`: WMUs 102 (south), 322 (central), 531 (north), 357 (Peace Country), both sides of the 247/248 boundary and a part of multipart 718 resolve correctly; Elk Island and Banff resolve to no WMU. Evaluations: grouse in season CONDITIONAL and before 1 September CLOSED; deer on 4 November asks the antler class; antlered rifle CONDITIONAL; antlerless rifle CLOSED on a general licence and CONDITIONAL on a special one; a bow on Sunday in WMU 102 CLOSED; WMU 718 UNKNOWN; Alberta moose UNKNOWN as a coverage gap; a tampered answer leaves the question open. In the browser, Pincher Creek resolves through Google Places to WMU 302 · Alberta, badged Certified, over Alberta's own boundaries.
 - Regressions held: Ontario WMU 71 resident deer on 10 November is CLOSED to a rifle and CONDITIONAL 2–15 November to a shotgun, exactly as first certified; Manitoba GHA 23A resolves.
@@ -499,6 +518,13 @@ Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport a
 - Research counts remain research-only. The only locally certified production-shaped exception is the explicit Ontario WMU 57 / ruffed grouse 2026 slice described above.
 
 ## Agent Handoff Notes
+
+### 2026-09-21 — Manitoba: what is left, in order
+Geometry, parity, the first rule wave, persistence, change detection and production certification are done. Remaining:
+1. After any deploy, rerun `node scripts/certify-hunt-cases.mjs --base https://www.northgroundbushcraft.com --cases fixtures/hunt/ca-mb-certification-cases.json`. It must stay at 24 of 24, and an expectation is corrected only with a recorded revision.
+2. Moose from Schedule C, in the same builder. Section 10.3's moose-season conditions already read those seasons for deer, so the parser work is half done. Then elk, black bear and mule deer.
+3. The Oak Hammock Waterfowl Control Area needs a polygon built from M.R. 171/2001 s. 9(2)'s legal description, or an official one.
+4. When a source moves: rebuild, read `diffConditionalBundles`' blast radius, re-certify, republish with `publish-regulations.mjs` (which verifies itself), and rerun `scripts/certify-hunt-cases.mjs` against production. The drill (`scripts/drill-manitoba-regulatory-change.mjs`) is the rehearsal.
 
 ### 2026-09-21 — Alberta: what is left, in order
 Geometry, parity, serving and the first rule wave are done. Remaining:
