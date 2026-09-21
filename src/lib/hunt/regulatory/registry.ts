@@ -38,6 +38,12 @@ export interface RegulatoryOutcome {
 export interface EvaluationContext {
   verifiedAt: string;
   fetcher?: typeof fetch;
+  /**
+   * ZONE asks about the whole zone rather than a point in it: nothing
+   * point-specific is looked up, and anything that varies inside the zone is
+   * left undecided rather than answered for one spot (see `PlaceContext.scope`).
+   */
+  scope?: "POINT" | "ZONE";
 }
 
 export interface RegulatoryEntry {
@@ -48,6 +54,12 @@ export interface RegulatoryEntry {
   coverage(): { officialUnits: number | null; species: SpeciesCoverageRow[] };
   /** Records for sources the entry's bundles cite, where the content registry does not hold them. */
   sourceRecords?(ids: readonly string[]): SourceRecord[];
+  /**
+   * Published restrictions this jurisdiction checks only at an exact point
+   * ("refuges, wildlife management areas and lands closed to hunting"). A
+   * whole-zone summary cannot see them, and says so in these words.
+   */
+  pointOnlyChecks?: string;
 }
 
 /**
@@ -163,7 +175,7 @@ interface ConditionalJurisdiction {
   coverageReport(): { officialUnits: number; species: ReturnType<typeof conditionalCoverage> };
   sourceRecords?(ids: readonly string[]): SourceRecord[];
   /** Published land restrictions the authority serves, where it does. */
-  overlays?: { catalogue: OverlayCatalogue; tokensFor(speciesId: string): readonly string[] };
+  overlays?: { catalogue: OverlayCatalogue; tokensFor(speciesId: string): readonly string[]; describedAs: string };
 }
 
 /**
@@ -175,10 +187,12 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
   return {
     jurisdictionId: config.jurisdictionId,
     jurisdictionName: config.jurisdictionName,
-    async evaluate(input, zone, { verifiedAt, fetcher }) {
+    async evaluate(input, zone, { verifiedAt, fetcher, scope = "POINT" }) {
       /* Land restrictions come from the authority's own layers. When they cannot
-         be read, the answer says so rather than assuming there is nothing there. */
-      const overlays = config.overlays
+         be read, the answer says so rather than assuming there is nothing there.
+         A whole-zone question has no point to ask about; the special areas a
+         zone contains are then undecided worlds in the engine, not a lookup. */
+      const overlays = config.overlays && scope === "POINT"
         ? await lookupOverlays(config.overlays.catalogue, input.latitude, input.longitude, fetcher)
         : null;
       const restrictions = overlays?.available ? restrictionsFor(overlays, config.overlays!.tokensFor(input.speciesId)) : [];
@@ -214,7 +228,9 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
           zoneName: zone.officialName ?? zone.zoneId,
           latitude: input.latitude,
           longitude: input.longitude,
-          overlays: overlays ? overlays.specialIds : new Set<string>(),
+          scope,
+          /* No lookup is "not available" (null), never "none here". */
+          overlays: overlays ? overlays.specialIds : scope === "ZONE" ? null : new Set<string>(),
         },
         restrictions,
       });
@@ -251,6 +267,7 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
       };
     },
     ...(config.sourceRecords ? { sourceRecords: config.sourceRecords } : {}),
+    ...(config.overlays ? { pointOnlyChecks: config.overlays.describedAs } : {}),
   };
 }
 
@@ -261,7 +278,11 @@ const MANITOBA = conditionalEntry({
   evaluate: evaluateManitoba,
   coverageReport: manitobaCoverageReport,
   sourceRecords: manitobaSourceRecords,
-  overlays: { catalogue: MANITOBA_OVERLAYS, tokensFor: restrictionTokensFor },
+  overlays: {
+    catalogue: MANITOBA_OVERLAYS,
+    tokensFor: restrictionTokensFor,
+    describedAs: "wildlife refuges, special conservation areas, wildlife management areas and lands closed to hunting",
+  },
 });
 
 /* Québec's rules are certified; the entry is only reached once its zone layer

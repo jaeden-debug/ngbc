@@ -1,6 +1,6 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { ZoneResolution } from "./types.ts";
-import { designationOfRaw, servingLayersAt, ZONE_LAYERS, type ZoneLayer } from "./zone-layers.ts";
+import { designationOfRaw, servingLayersAt, ZONE_LAYERS, zoneIdFor, type ZoneLayer } from "./zone-layers.ts";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { defaultSupabaseServerClient, SupabaseServerConfigurationError } from "../supabase/server.ts";
 
@@ -286,7 +286,7 @@ export async function resolveLayerFromOfficialGis(
     const distance = Math.round(boundaryDistance([longitude, latitude], rings));
     return {
       status: "RESOLVED",
-      zoneId: `${layer.zoneIdPrefix}${designation.toLowerCase().replace(/[^a-z0-9-]+/g, "-")}` as CanonicalId<"management_zone">,
+      zoneId: zoneIdFor(layer, designation),
       jurisdictionId: layer.jurisdictionId,
       officialName: `${layer.officialNamePrefix}${designation}`,
       boundaryDistanceMeters: distance,

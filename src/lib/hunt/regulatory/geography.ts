@@ -58,6 +58,16 @@ export interface PlaceContext {
   latitude: number;
   longitude: number;
   /**
+   * POINT (the default): the coordinate is where the hunter will be.
+   * ZONE: the question is about the whole zone, so where inside it is unknown.
+   * Everything that depends on the exact point — which side of a zone line,
+   * whether a refuge or a base contains it — becomes an open world, and the
+   * engine answers only where every part of the zone agrees. The coordinate is
+   * then not read at all. This is how the map's zone summaries use the same
+   * engine as a full Hunt without claiming a point-level answer for a zone.
+   */
+  scope?: "POINT" | "ZONE";
+  /**
    * Overlay geographies known to contain the point, by id. `null` means the
    * overlay lookup was not available — which is different from "none".
    */
@@ -78,6 +88,16 @@ export interface WorldSet {
   worlds: PlaceWorld[];
   /** Plain statements of what is unknown, for the answer to name. */
   unknowns: Array<{ kind: "GAME_BIRD_ZONE" | "SPECIAL" | "DISPUTE"; statedAs: string }>;
+}
+
+const ZONE_LINE_UNKNOWN_IN_ZONE =
+  "Game bird hunting zones divide this Game Hunting Area (M.R. 220/86 s. 1.1), so which one applies depends on where in it you hunt.";
+
+/** Game bird hunting zones some part of this area can be in, when the point is not known. */
+function gameBirdZonesInArea(zones: GameBirdZones, area: string): number[] {
+  if (zones.zone4Areas.includes(area)) return [4];
+  const byArea = zones.possibleZonesByArea[area];
+  return byArea?.length ? [...byArea] : [1, 2, 3];
 }
 
 const ZONE_LINE_UNKNOWN =
@@ -139,8 +159,11 @@ export function placeWorlds(
   let zones: Array<number | null> = [null];
   if (area && rules.some((rule) => rule.geography?.include.gbhz.length)) {
     if (!data.gameBirdZones) throw new Error("A rule is set by game bird hunting zone, but the bundle defines none");
-    zones = gameBirdZonesAt(data.gameBirdZones, area, place.latitude, place.longitude);
-    if (zones.length > 1) unknowns.push({ kind: "GAME_BIRD_ZONE", statedAs: ZONE_LINE_UNKNOWN });
+    const wholeZone = place.scope === "ZONE";
+    zones = wholeZone
+      ? gameBirdZonesInArea(data.gameBirdZones, area)
+      : gameBirdZonesAt(data.gameBirdZones, area, place.latitude, place.longitude);
+    if (zones.length > 1) unknowns.push({ kind: "GAME_BIRD_ZONE", statedAs: wholeZone ? ZONE_LINE_UNKNOWN_IN_ZONE : ZONE_LINE_UNKNOWN });
   }
 
   const referenced = new Set(rules.flatMap((rule) => [...(rule.geography?.include.special ?? []), ...(rule.geography?.exclude.special ?? [])]));
@@ -154,6 +177,12 @@ export function placeWorlds(
       continue;
     }
     if (!entry.candidateAreas?.includes(area)) continue;
+    if (place.scope === "ZONE") {
+      // Part of the zone may be inside it; which part is the whole question.
+      open.push(id);
+      unknowns.push({ kind: "SPECIAL", statedAs: `${entry.name} covers part of this area, so the answer depends on where in it you hunt.` });
+      continue;
+    }
     if (entry.envelope) {
       const [west, south, east, north] = entry.envelope;
       if (place.longitude < west || place.longitude > east || place.latitude < south || place.latitude > north) continue;

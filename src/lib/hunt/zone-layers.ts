@@ -270,6 +270,15 @@ export function designationFromOfficialName(layer: ZoneLayer, officialName: stri
   return name.startsWith(layer.officialNamePrefix) ? name.slice(layer.officialNamePrefix.length) : name;
 }
 
+/**
+ * The canonical id of a zone in this layer, minted the same way by the
+ * official-GIS resolver, the ingestion adapters and the regulatory bundles
+ * ("management_zone:ca-on-wmu-69a-1").
+ */
+export function zoneIdFor(layer: Pick<ZoneLayer, "zoneIdPrefix">, designation: string): CanonicalId<"management_zone"> {
+  return `${layer.zoneIdPrefix}${designation.trim().toLowerCase().replace(/[^a-z0-9-]+/g, "-")}` as CanonicalId<"management_zone">;
+}
+
 /** Coverage of a single named zone, which is stricter than its layer's coverage. */
 export function zoneCoverage(layer: ZoneLayer, zoneName: string): ZoneCoverageStatus {
   if (!layer.certifiedDesignations) return layer.coverage;
