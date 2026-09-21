@@ -1561,7 +1561,8 @@ Boundary uncertainty must be communicated.
 
 Consumer GPS should never be represented as legally infallible.
 
-Hunt's map-first behaviour and zone-coverage honesty rules are in section 41A.
+Hunt's map-first behaviour, zone-coverage honesty rules, map exploration and the
+distinction between device and hunt location are in section 41A.
 
 ---
 
@@ -1594,11 +1595,72 @@ Drawing a boundary is not a claim that the rules inside it are certified. The ma
 distinguishes zones with a certified regulatory record from zones where only the
 official boundary is known, and says which is which.
 
+## The map is an exploration surface
+
+*Decided 2026-09-21.*
+
+The map is useful on its own, not only as a picture behind the composer. A hunter
+can pan, read zone names, tap a zone and learn what applies there without running a
+full Hunt each time.
+
+- **Official names on the map.** Every drawn zone is labelled with the authority's
+  own designation in the authority's own terms — WMU 57, GHA 26, Zone 10W — derived
+  from the canonical spatial layer, never from a separate label list. One label per
+  zone, inside its largest part; labels that do not fit or would collide are left
+  out rather than stacked.
+- **Quiet polygons.** Normal fills stay faint so the basemap reads; hover or focus
+  strengthens a zone, the selected zone gets a clear bone outline, and special
+  regulatory areas use a distinct dashed style rather than another solid colour.
+- **Zone cards.** Tapping a zone (or choosing it from the keyboard-accessible zone
+  list) opens a card — a bottom sheet on phones, a floating panel beside the zone on
+  wider screens — that says what the certified rules say about the WHOLE zone on the
+  Hunt date. It is produced by the same regulatory engine as a full Hunt, asked
+  about the zone rather than a point. It is never a second regulatory truth.
+- **"In season" is not "open to you".** A zone card never says OPEN. A season running
+  for every licence the rules recognise is "In season"; anything that turns on the
+  hunter (residency, licence, tag, draw, method, animal class, age) is "Depends on
+  your hunt"; anything that differs inside the zone (a zone line, a base, a
+  refuge) is "Needs a closer look"; UNKNOWN stays UNKNOWN and is never drawn as
+  CLOSED. The optional species filter uses the same states, with a word and a glyph
+  as well as a colour — never a green/red legality heatmap.
+- **Address → zone card.** Choosing a searched place sets the hunt location, drops
+  the hunt pin, resolves and highlights the official zone, frames it beside the card
+  and opens that zone's card.
+- **Boundaries are visible.** A hunt point near a mapped boundary is flagged, and
+  names the neighbouring zone where the drawn geometry can; map geometry and
+  consumer GPS are never presented as a legal survey.
+- **Special layers only when certified to be read.** A Layers control offers
+  special regulatory geography only where North Ground already reads the
+  authority's own service (today: Manitoba's refuges, conservation areas, wildlife
+  management areas and closed lands), each with its authority and legal standing.
+  No decorative or unsourced layer is ever added to fill the control.
+
+## Device location is not the hunt location
+
+Two locations exist on the map and must never be confused:
+
+- **Self (device) location** — the conventional blue dot with an accuracy ring. It
+  is optional, requested only after an explicit action, never persisted, never sent
+  to North Ground, and never placed in a URL, analytics, a Hunt Brief or a share
+  snapshot. The recentre control moves the camera to it and does nothing else.
+- **Hunt location** — the distinct bone pin. It is set only by a deliberate act:
+  choosing a search result, confirming a previewed map point, or the explicit
+  "Hunt at my location" action. Zone resolution, evaluation, weather, the Hunt
+  Brief and sharing read this and nothing else.
+
+A map point becomes the hunt location only through preview and confirmation: a long
+press, a right-click or the "choose a spot" control previews it, and "Check this
+location" confirms it. A plain tap on the map never selects a hunting location. A
+future "vendor near me" search reads the device location as its own input and
+cannot overwrite either of these. The interaction state is one explicit machine
+(`src/lib/hunt/exploration/map-state.ts`), not accumulated booleans.
+
 ## Location is entered as a place, never as coordinates
 
 The primary input is one search composer — place, town, address or postal/ZIP
 code — backed by Google Places where configured and a keyless provider otherwise.
-`Use my location` is a separate, explicit action, not a fake suggestion row.
+`Use my location` is a separate, explicit action, not a fake suggestion row. It is
+labelled "Hunt at my location", because it sets the hunt location.
 
 Coordinates remain the internal truth and stay available as secondary detail. A
 person is never asked to type latitude and longitude for normal use.
