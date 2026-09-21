@@ -89,7 +89,7 @@ Last updated: 2026-09-21 (Hunt map became an exploration surface: official zone 
 
 ## Known Problems / Technical Debt
 
-- **The Google Maps rendering of the exploration map is not yet browser-certified.** Every flow was certified in a real browser on the boundary view and through the APIs, but the browser key is restricted to production, `*.vercel.app` and `localhost:3100`, and `localhost:3100` was occupied by another session's server. The Google path (polygon styling, label overlay, blue dot, pins, dashed overlays, long press) needs a pass on a preview or production URL.
+- Local testing trap: the Maps browser key allows only production, `*.vercel.app` and `localhost:3100`. A second worktree on another port now falls back to the boundary view (via `gm_authFailure`) instead of a grey map, so Google-specific rendering can only be certified on 3100 or a deployed URL.
 - **Zone cards cannot see point-only restrictions.** Manitoba's refuges and closed lands are read at a point, so a zone card for GHA 38 says grouse are in season while part of GHA 38 (the Winnipeg portion) is closed land. The card states this limitation, and the Layers control can draw those areas, but the card itself does not subtract them.
 - **The neighbouring-zone name comes from drawn (generalised) geometry** within 2.5 km. It is an identification aid; which side of the line a point is on is still decided only by the resolver against full geometry.
 - The keyless place-search fallback (Nominatim) rate-limits quickly; repeated local searches returned "Place search is temporarily unavailable". Production uses Google Places.
@@ -505,6 +505,7 @@ Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport a
 - Real browser scenarios passed locally for in-season (`CONDITIONAL`), out-of-season (`CLOSED`), unsupported WMU (`UNKNOWN`), exact mapped-boundary warning (0 m), and an aborted API request with a visible recoverable error.
 
 ### Production
+- **Map exploration deployed and certified on production, 2026-09-21** (`f5a96b4`, CI green). Real browser on `www`, Google basemap: zone labels drawn in each authority's terms over quiet fills with Google attribution uncovered; tapping GHA 35A selects it (bone outline, highlighted label), frames it beside its card, and shows three grouse "In season" and white-tailed deer "Depends on your hunt"; "Choose a spot" → preview → "Check this location" sets the hunt pin, resolved to GHA 35A and labelled "Near Mitchell, MB"; a device fix draws the blue dot in Winnipeg and recentres the camera while the hunt location stays GHA 35A; zero console errors, no overflow. APIs: zone summary for WMU 71 on 10 November matches local (deer "Depends on your hunt", moose "Not covered here"); Alberta's view returns 189 unique WMUs; the zone lookup returns the designation. Regression: `certify-hunt-cases.mjs` Manitoba 24 of 24 agree with the law (zone lookup median 165 ms, evaluation 235 ms).
 - **Manitoba certified on production, 2026-09-21** (`cb7240e`, which carries all Manitoba work through `d10d9e5`): 24 real places through `/api/hunt/zone` and `/api/hunt/evaluate`, every expectation written from the law first, 24 agree. The record is `fixtures/hunt/ca-mb-production-certification.json`. Zone lookup median 369 ms; evaluation median 237 ms, p90 about 3 s (cold overlays); payload median 12 KB. All of Manitoba's map at zoom 5 is 22 KB.
 - **Deployed 2026-09-21 03:43 UTC: `fa1973c`, Vercel production `dpl_AgZ8aWXzBMrQm2UPTY6vVYBdFgvx`,** pushed on the owner's explicit decision after every gate passed on that exact commit (548 tests, typecheck, lint, 5/5 time zones, content contract, build). It carries the Alberta, Manitoba, Québec, species-coverage and hydration work.
 - Alberta certified live on `www`: WMUs 102 (south), 322 (central), 531 (north), 357 (Peace Country), both sides of the 247/248 boundary and a part of multipart 718 resolve correctly; Elk Island and Banff resolve to no WMU. Evaluations: grouse in season CONDITIONAL and before 1 September CLOSED; deer on 4 November asks the antler class; antlered rifle CONDITIONAL; antlerless rifle CLOSED on a general licence and CONDITIONAL on a special one; a bow on Sunday in WMU 102 CLOSED; WMU 718 UNKNOWN; Alberta moose UNKNOWN as a coverage gap; a tampered answer leaves the question open. In the browser, Pincher Creek resolves through Google Places to WMU 302 · Alberta, badged Certified, over Alberta's own boundaries.
@@ -539,11 +540,10 @@ Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport a
 ## Agent Handoff Notes
 
 ### 2026-09-21 — Hunt map: remaining opportunities, in order
-1. Certify the Google Maps path in a real browser on a preview or production URL (see Known Problems).
-2. Let a zone card subtract point-only restrictions it can map (draw-and-intersect Manitoba's special areas per zone) instead of only stating them.
-3. Serve map geometry from PostGIS display derivatives (the Québec session's `management_zone_display`) once they land, instead of per-view authority queries; `labelPlacement` already works on any source.
-4. Québec labels and cards appear automatically when its layer is served; nothing map-side is Québec-specific.
-5. Persisted map state (last view, chosen layers) is deliberately not built; add only with a product reason.
+1. Let a zone card subtract point-only restrictions it can map (draw-and-intersect Manitoba's special areas per zone) instead of only stating them.
+2. Serve map geometry from PostGIS display derivatives (the Québec session's `management_zone_display`) once they land, instead of per-view authority queries; `labelPlacement` already works on any source.
+3. Québec labels and cards appear automatically when its layer is served; nothing map-side is Québec-specific.
+4. Persisted map state (last view, chosen layers) is deliberately not built; add only with a product reason.
 
 ### 2026-09-21 — Manitoba: what is left, in order
 Geometry, parity, the first rule wave, persistence, change detection and production certification are done. Remaining:
