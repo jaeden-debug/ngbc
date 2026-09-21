@@ -38,7 +38,23 @@ import {
 } from "./quebec-source.mjs";
 import { jurisdictionToday, readPreviousBundle, retrievedAtFor } from "./ontario-source.mjs";
 
-const OUTPUT = "content/regulatory/ca-qc-2026.json";
+/* Offline options exist for change drills: read saved pages and designations,
+   write somewhere other than the committed bundle, and compare against it. A
+   drill can therefore never touch production.
+
+     --pages <dir>          read <dir>/<page>.html instead of quebec.ca
+     --designations <file>  read designations from a bundle file instead of the WFS
+     --out <file>           write here instead of the committed bundle
+     --save-pages <dir>     after a live read, keep the exact HTML that was parsed */
+const COMMITTED = "content/regulatory/ca-qc-2026.json";
+function argument(name) {
+  const index = process.argv.indexOf(name);
+  return index >= 0 ? process.argv[index + 1] : undefined;
+}
+const OUTPUT = argument("--out") ?? COMMITTED;
+const PAGES_DIR = argument("--pages");
+const DESIGNATIONS_FILE = argument("--designations");
+const SAVE_PAGES_DIR = argument("--save-pages");
 const AUTHORITY =
   "Gouvernement du Québec — ministère de l'Environnement, de la Lutte contre les changements climatiques, de la Faune et des Parcs";
 
@@ -330,7 +346,8 @@ function columnSpan(column, page) {
 
 async function readPage(entry) {
   const url = `${SEASON_PAGE_BASE}/${entry.page}`;
-  const html = await fetchText(url);
+  const html = PAGES_DIR ? readFileSync(`${PAGES_DIR}/${entry.page}.html`, "utf8") : await fetchText(url);
+  if (SAVE_PAGES_DIR && !PAGES_DIR) writeFileSync(`${SAVE_PAGES_DIR}/${entry.page}.html`, html);
   return { ...entry, url, html };
 }
 
@@ -347,6 +364,20 @@ function buildPage(entry, designations, context) {
   let legalTime = null;
   let pendingEngin = null;
   let h2 = "";
+
+  /* A crossbow note is a statement about zones, not about the table it happens
+     to sit above: "L'utilisation de l'arbalète est interdite dans les zones 22,
+     23 et 24" holds for every season in those zones. So every note on the page
+     is read before any table, and applies to all of them. Applying it only to
+     tables printed after it would leave the crossbow permitted in an earlier
+     bow-and-crossbow table for the same zone. */
+  const pageCrossbowBans = blocks
+    .filter((block) => block.kind === "paragraph" && classifyParagraph(page, block.text).kind === "CROSSBOW")
+    .map((block) => {
+      const zones = parseCrossbowBan(block.text);
+      if (!zones) throw new Error(`Unreadable crossbow note on ${page}: "${block.text}"`);
+      return zones;
+    });
 
   const sectionHash = (heading, text) => {
     const key = heading || "(top)";
@@ -449,7 +480,7 @@ function buildPage(entry, designations, context) {
       const engin = enginIndex >= 0 ? parseEnginCell(row[enginIndex].html) : null;
       const implementSet = engin ? engin.implements : tableImplements.implements;
       const implementLabel = engin ? engin.label : tableImplements.label;
-      const rowBans = [...crossbowBans.map((ban) => ban.zones), ...(engin?.note ? [parseCrossbowBan(engin.note)].filter(Boolean) : [])];
+      const rowBans = [...pageCrossbowBans, ...(engin?.note ? [parseCrossbowBan(engin.note)].filter(Boolean) : [])];
       const rowNotes = engin?.note && !parseCrossbowBan(engin.note) ? [engin.note] : [];
 
       const classByYear = classIndex >= 0 ? parseClassCell(row[classIndex].html, columns.map((column) => column.label)) : null;
@@ -511,8 +542,18 @@ function buildPage(entry, designations, context) {
           const banned = new Set(rowBans.flat());
           const inBan = resolved.designations.filter((designation) => banned.has(designationNumber(designation, designations)));
           const outside = resolved.designations.filter((designation) => !inBan.includes(designation));
-          emit(outside, implementSet, "all");
-          emit(inBan, implementSet.filter((implement) => implement !== "CROSSBOW"), "no-crossbow");
+          const withoutCrossbow = implementSet.filter((implement) => implement !== "CROSSBOW");
+          /* Only a row that genuinely splits gets a second identity. A row whose
+             zones are all under the note keeps its own id with the crossbow
+             removed, so a note gaining or losing a zone reads as a changed rule —
+             "permittedImplements: CROSSBOW+BOW -> BOW" — not as one rule removed
+             and another added. */
+          if (!inBan.length) emit(outside, implementSet, "all");
+          else if (!outside.length) emit(inBan, withoutCrossbow, "all");
+          else {
+            emit(outside, implementSet, "all");
+            emit(inBan, withoutCrossbow, "no-crossbow");
+          }
         }
 
         for (const fragment of resolved.unresolved) {
@@ -698,7 +739,9 @@ function attachStatements(built, designations, publishedNumbers) {
 async function main() {
   const checkOnly = process.argv.includes("--check");
 
-  const designations = await fetchDesignations(repairPartName);
+  const designations = DESIGNATIONS_FILE
+    ? JSON.parse(readFileSync(DESIGNATIONS_FILE, "utf8")).designations.entries
+    : await fetchDesignations(repairPartName);
   if (designations.length !== 59) {
     throw new Error(`The zone layer publishes ${designations.length} designations; this bundle was reviewed against 59.`);
   }
@@ -749,7 +792,8 @@ async function main() {
       sources: merged.sources.map((source) => [source.id, source.contentHash]),
     }),
   );
-  const previous = readPreviousBundle(OUTPUT);
+  // Always compared with the committed bundle, even when writing elsewhere.
+  const previous = readPreviousBundle(COMMITTED);
   const today = jurisdictionToday("America/Toronto");
 
   const bundle = {
@@ -795,7 +839,7 @@ async function main() {
       /* Unchanged sources must also mean an unchanged bundle. If the builder's
          reading of the same pages has moved, the committed file is no longer
          what this code produces, and that is its own finding. */
-      const committed = readFileSync(OUTPUT, "utf8");
+      const committed = readFileSync(COMMITTED, "utf8");
       if (committed !== serialized) {
         console.error("Québec sources are unchanged, but the builder no longer produces the committed bundle.");
         console.error(formatQuebecDiff(diffQuebecBundles(previous, bundle)));

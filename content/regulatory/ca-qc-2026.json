@@ -1215,6 +1215,50 @@
       "reviewStatus": "VERIFIED"
     },
     {
+      "id": "rule:ca-qc-american-black-bear-2026-617452db79",
+      "speciesId": "species:american-black-bear",
+      "sourceId": "source:ca-qc-ours-noir-2026-2027",
+      "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
+      "zoneLabel": "23, 24",
+      "designations": [
+        "23",
+        "24"
+      ],
+      "caveats": [],
+      "implementLabel": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
+      "permittedImplements": [
+        "RIFLE",
+        "SHOTGUN",
+        "MUZZLELOADER",
+        "BOW"
+      ],
+      "classLabel": null,
+      "animalClasses": null,
+      "seasonType": "REGULAR",
+      "seasonLabel": "2026",
+      "effectiveFrom": "2026-01-01",
+      "effectiveTo": "2026-12-31",
+      "seasonPhrase": "Du 15 mai au 30 juin 2026 / Du 1er août au 15 octobre 2026",
+      "windows": [
+        {
+          "opens": "2026-05-15",
+          "closes": "2026-06-30"
+        },
+        {
+          "opens": "2026-08-01",
+          "closes": "2026-10-15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "notes": [],
+      "conditionIds": [
+        "statement:ca-qc-ours-noir-modifications",
+        "statement:ca-qc-ours-noir-territoires-particuliers",
+        "statement:ca-qc-ours-noir-ours-zecs"
+      ],
+      "reviewStatus": "VERIFIED"
+    },
+    {
       "id": "rule:ca-qc-american-black-bear-2026-6984be47b7",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
@@ -1247,50 +1291,6 @@
         {
           "opens": "2026-09-12",
           "closes": "2026-10-12"
-        }
-      ],
-      "declaredNoSeason": false,
-      "notes": [],
-      "conditionIds": [
-        "statement:ca-qc-ours-noir-modifications",
-        "statement:ca-qc-ours-noir-territoires-particuliers",
-        "statement:ca-qc-ours-noir-ours-zecs"
-      ],
-      "reviewStatus": "VERIFIED"
-    },
-    {
-      "id": "rule:ca-qc-american-black-bear-2026-789ccd79e2",
-      "speciesId": "species:american-black-bear",
-      "sourceId": "source:ca-qc-ours-noir-2026-2027",
-      "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
-      "zoneLabel": "23, 24",
-      "designations": [
-        "23",
-        "24"
-      ],
-      "caveats": [],
-      "implementLabel": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
-      "permittedImplements": [
-        "RIFLE",
-        "SHOTGUN",
-        "MUZZLELOADER",
-        "BOW"
-      ],
-      "classLabel": null,
-      "animalClasses": null,
-      "seasonType": "REGULAR",
-      "seasonLabel": "2026",
-      "effectiveFrom": "2026-01-01",
-      "effectiveTo": "2026-12-31",
-      "seasonPhrase": "Du 15 mai au 30 juin 2026 / Du 1er août au 15 octobre 2026",
-      "windows": [
-        {
-          "opens": "2026-05-15",
-          "closes": "2026-06-30"
-        },
-        {
-          "opens": "2026-08-01",
-          "closes": "2026-10-15"
         }
       ],
       "declaredNoSeason": false,
@@ -1896,6 +1896,50 @@
       "reviewStatus": "VERIFIED"
     },
     {
+      "id": "rule:ca-qc-american-black-bear-2027-617452db79",
+      "speciesId": "species:american-black-bear",
+      "sourceId": "source:ca-qc-ours-noir-2026-2027",
+      "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
+      "zoneLabel": "23, 24",
+      "designations": [
+        "23",
+        "24"
+      ],
+      "caveats": [],
+      "implementLabel": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
+      "permittedImplements": [
+        "RIFLE",
+        "SHOTGUN",
+        "MUZZLELOADER",
+        "BOW"
+      ],
+      "classLabel": null,
+      "animalClasses": null,
+      "seasonType": "REGULAR",
+      "seasonLabel": "2027",
+      "effectiveFrom": "2027-01-01",
+      "effectiveTo": "2027-12-31",
+      "seasonPhrase": "Du 15 mai au 30 juin 2027 / Du 1er août au 15 octobre 2027",
+      "windows": [
+        {
+          "opens": "2027-05-15",
+          "closes": "2027-06-30"
+        },
+        {
+          "opens": "2027-08-01",
+          "closes": "2027-10-15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "notes": [],
+      "conditionIds": [
+        "statement:ca-qc-ours-noir-modifications",
+        "statement:ca-qc-ours-noir-territoires-particuliers",
+        "statement:ca-qc-ours-noir-ours-zecs"
+      ],
+      "reviewStatus": "VERIFIED"
+    },
+    {
       "id": "rule:ca-qc-american-black-bear-2027-6984be47b7",
       "speciesId": "species:american-black-bear",
       "sourceId": "source:ca-qc-ours-noir-2026-2027",
@@ -1928,50 +1972,6 @@
         {
           "opens": "2027-09-11",
           "closes": "2027-10-11"
-        }
-      ],
-      "declaredNoSeason": false,
-      "notes": [],
-      "conditionIds": [
-        "statement:ca-qc-ours-noir-modifications",
-        "statement:ca-qc-ours-noir-territoires-particuliers",
-        "statement:ca-qc-ours-noir-ours-zecs"
-      ],
-      "reviewStatus": "VERIFIED"
-    },
-    {
-      "id": "rule:ca-qc-american-black-bear-2027-789ccd79e2",
-      "speciesId": "species:american-black-bear",
-      "sourceId": "source:ca-qc-ours-noir-2026-2027",
-      "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
-      "zoneLabel": "23, 24",
-      "designations": [
-        "23",
-        "24"
-      ],
-      "caveats": [],
-      "implementLabel": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
-      "permittedImplements": [
-        "RIFLE",
-        "SHOTGUN",
-        "MUZZLELOADER",
-        "BOW"
-      ],
-      "classLabel": null,
-      "animalClasses": null,
-      "seasonType": "REGULAR",
-      "seasonLabel": "2027",
-      "effectiveFrom": "2027-01-01",
-      "effectiveTo": "2027-12-31",
-      "seasonPhrase": "Du 15 mai au 30 juin 2027 / Du 1er août au 15 octobre 2027",
-      "windows": [
-        {
-          "opens": "2027-05-15",
-          "closes": "2027-06-30"
-        },
-        {
-          "opens": "2027-08-01",
-          "closes": "2027-10-15"
         }
       ],
       "declaredNoSeason": false,
@@ -3793,6 +3793,49 @@
       "reviewStatus": "VERIFIED"
     },
     {
+      "id": "rule:ca-qc-moose-2026-14bd8289fe",
+      "speciesId": "species:moose",
+      "sourceId": "source:ca-qc-orignal-2026-2027",
+      "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
+      "zoneLabel": "22",
+      "designations": [
+        "22"
+      ],
+      "caveats": [],
+      "implementLabel": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
+      "permittedImplements": [
+        "RIFLE",
+        "SHOTGUN",
+        "MUZZLELOADER",
+        "BOW"
+      ],
+      "classLabel": "Orignal avec bois",
+      "animalClasses": [
+        "ANTLERED"
+      ],
+      "seasonType": "REGULAR",
+      "seasonLabel": "2026",
+      "effectiveFrom": "2026-01-01",
+      "effectiveTo": "2026-12-31",
+      "seasonPhrase": "Du 19 septembre au 12 octobre 2026",
+      "windows": [
+        {
+          "opens": "2026-09-19",
+          "closes": "2026-10-12"
+        }
+      ],
+      "declaredNoSeason": false,
+      "notes": [],
+      "conditionIds": [
+        "statement:ca-qc-orignal-modifications",
+        "statement:ca-qc-orignal-territoires-particuliers",
+        "statement:ca-qc-orignal-orignal-sans-bois-tirage",
+        "statement:ca-qc-orignal-orignal-titulaire-permis"
+      ],
+      "reviewStatus": "VERIFIED",
+      "antlerlessByPermit": true
+    },
+    {
       "id": "rule:ca-qc-moose-2026-3100ead9eb",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
@@ -3869,49 +3912,6 @@
         {
           "opens": "2026-09-19",
           "closes": "2026-10-04"
-        }
-      ],
-      "declaredNoSeason": false,
-      "notes": [],
-      "conditionIds": [
-        "statement:ca-qc-orignal-modifications",
-        "statement:ca-qc-orignal-territoires-particuliers",
-        "statement:ca-qc-orignal-orignal-sans-bois-tirage",
-        "statement:ca-qc-orignal-orignal-titulaire-permis"
-      ],
-      "reviewStatus": "VERIFIED",
-      "antlerlessByPermit": true
-    },
-    {
-      "id": "rule:ca-qc-moose-2026-3a2e1192f1",
-      "speciesId": "species:moose",
-      "sourceId": "source:ca-qc-orignal-2026-2027",
-      "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
-      "zoneLabel": "22",
-      "designations": [
-        "22"
-      ],
-      "caveats": [],
-      "implementLabel": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
-      "permittedImplements": [
-        "RIFLE",
-        "SHOTGUN",
-        "MUZZLELOADER",
-        "BOW"
-      ],
-      "classLabel": "Orignal avec bois",
-      "animalClasses": [
-        "ANTLERED"
-      ],
-      "seasonType": "REGULAR",
-      "seasonLabel": "2026",
-      "effectiveFrom": "2026-01-01",
-      "effectiveTo": "2026-12-31",
-      "seasonPhrase": "Du 19 septembre au 12 octobre 2026",
-      "windows": [
-        {
-          "opens": "2026-09-19",
-          "closes": "2026-10-12"
         }
       ],
       "declaredNoSeason": false,
@@ -4772,6 +4772,49 @@
       "reviewStatus": "VERIFIED"
     },
     {
+      "id": "rule:ca-qc-moose-2027-14bd8289fe",
+      "speciesId": "species:moose",
+      "sourceId": "source:ca-qc-orignal-2026-2027",
+      "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
+      "zoneLabel": "22",
+      "designations": [
+        "22"
+      ],
+      "caveats": [],
+      "implementLabel": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
+      "permittedImplements": [
+        "RIFLE",
+        "SHOTGUN",
+        "MUZZLELOADER",
+        "BOW"
+      ],
+      "classLabel": "Orignal avec bois",
+      "animalClasses": [
+        "ANTLERED"
+      ],
+      "seasonType": "REGULAR",
+      "seasonLabel": "2027",
+      "effectiveFrom": "2027-01-01",
+      "effectiveTo": "2027-12-31",
+      "seasonPhrase": "Du 18 septembre au 11 octobre 2027",
+      "windows": [
+        {
+          "opens": "2027-09-18",
+          "closes": "2027-10-11"
+        }
+      ],
+      "declaredNoSeason": false,
+      "notes": [],
+      "conditionIds": [
+        "statement:ca-qc-orignal-modifications",
+        "statement:ca-qc-orignal-territoires-particuliers",
+        "statement:ca-qc-orignal-orignal-sans-bois-tirage",
+        "statement:ca-qc-orignal-orignal-titulaire-permis"
+      ],
+      "reviewStatus": "VERIFIED",
+      "antlerlessByPermit": true
+    },
+    {
       "id": "rule:ca-qc-moose-2027-3100ead9eb",
       "speciesId": "species:moose",
       "sourceId": "source:ca-qc-orignal-2026-2027",
@@ -4848,49 +4891,6 @@
         {
           "opens": "2027-09-18",
           "closes": "2027-10-03"
-        }
-      ],
-      "declaredNoSeason": false,
-      "notes": [],
-      "conditionIds": [
-        "statement:ca-qc-orignal-modifications",
-        "statement:ca-qc-orignal-territoires-particuliers",
-        "statement:ca-qc-orignal-orignal-sans-bois-tirage",
-        "statement:ca-qc-orignal-orignal-titulaire-permis"
-      ],
-      "reviewStatus": "VERIFIED",
-      "antlerlessByPermit": true
-    },
-    {
-      "id": "rule:ca-qc-moose-2027-3a2e1192f1",
-      "speciesId": "species:moose",
-      "sourceId": "source:ca-qc-orignal-2026-2027",
-      "sourceSection": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
-      "zoneLabel": "22",
-      "designations": [
-        "22"
-      ],
-      "caveats": [],
-      "implementLabel": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
-      "permittedImplements": [
-        "RIFLE",
-        "SHOTGUN",
-        "MUZZLELOADER",
-        "BOW"
-      ],
-      "classLabel": "Orignal avec bois",
-      "animalClasses": [
-        "ANTLERED"
-      ],
-      "seasonType": "REGULAR",
-      "seasonLabel": "2027",
-      "effectiveFrom": "2027-01-01",
-      "effectiveTo": "2027-12-31",
-      "seasonPhrase": "Du 18 septembre au 11 octobre 2027",
-      "windows": [
-        {
-          "opens": "2027-09-18",
-          "closes": "2027-10-11"
         }
       ],
       "declaredNoSeason": false,
