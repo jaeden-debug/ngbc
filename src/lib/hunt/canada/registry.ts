@@ -132,6 +132,9 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     nameFr: "Québec",
     kind: "province",
     spatial: {
+      /* Ingested and parity-certified, but not yet serving production, which
+         is what VERIFIED means here. Serving waits on the owner's approval of
+         the resolver swap, the zones' promotion and the deploy. */
       status: "IN_DEVELOPMENT",
       officialTerm: "Hunting Zone",
       officialTermFr: "zone de chasse",
@@ -142,40 +145,42 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
          rather than in the open-data portal, where the zones are not listed. */
       serviceUrl:
         "https://servicesvecto3.mern.gouv.qc.ca/geoserver/SmartFaunePub/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=SmartFaunePub:Zone_chasse_da3_sefaq",
-      parityCertified: false,
+      parityCertified: true,
       notes:
-        "Source FOUND and reviewed 2026-09-21. WFS 2.0.0 with application/json output and native EPSG:4326 " +
-        "reprojection from the layer's EPSG:32198; AccessConstraints NONE, Fees NONE, provider MFFP. " +
-        "Structure independently verified: the layer carries exactly the 28 numeric zones quebec.ca publishes " +
-        "(1 to 24 and 26 to 29, no zone 25), divided into 59 named designations across 9,509 polygons and " +
-        "2,424,980 vertices. A full live fetch through the adapter completed in 68 s with zero unclosed rings and " +
-        "every coordinate inside Québec. " +
-        "Still IN_DEVELOPMENT because nothing is ingested into PostGIS, parity-certified or served — the adapter " +
-        "exists, the registry does not. " +
-        "Two cautions for whoever ingests it: the season tables are written per PART (19N, 19SE, 19SO, 19SNO are " +
-        "four different seasons), so the part and not the number is the regulatory unit; and this layer returns Partie_zon " +
-        "as CP850 bytes read as Latin-1 (\"Île\" arrives as \"×le\"), which the adapter reverses through the code " +
-        "page itself rather than by rewriting the phrases that happen to exist today.",
+        "All 59 designations are in PostGIS exactly as the ministry publishes them — 28 numbered zones (1 to 24 " +
+        "and 26 to 29; zone 25 is fishing only) divided into 59 parts, 9,509 polygons, 2,424,981 vertices — held " +
+        "NEEDS_VERIFICATION so the served resolver does not return them. The part, not the number, is the regulatory " +
+        "unit: 19N, 19SE, 19SO and 19SNO are four different seasons. " +
+        "Parity is certified against the ministry's own service: 306 points, 0 disagreements " +
+        "(fixtures/hunt/ca-qc-spatial-parity.json), including Maniwaki (10O), the named territories 08NMR, 27OSB and " +
+        "27ESB, the CWD zones and zone 21's waters. Large zones are resolved through ST_Subdivide parts and measured " +
+        "exactly to straight boundary edges; the map draws stored generalisations, never the full geometry. " +
+        "check-quebec-zone-layer.mjs watches the layer's fingerprint daily; the layer returns Partie_zon as CP850 " +
+        "bytes read as Latin-1, which the adapter reverses through the code page itself.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
-      bundleIds: [],
+      bundleIds: ["bundle:ca-qc-2026"],
       sourceLeads: [
         "Ministère de l'Environnement, de la Lutte contre les changements climatiques, de la Faune et des Parcs — official hunting periods",
       ],
-      sourceState: "NOT_INGESTED",
+      sourceState: "CURRENT",
       notes:
-        "Québec publishes its seasons in French with zone-and-species tables that do not share Ontario's shape. " +
-        "Nothing is certified; the official French terminology is to be preserved rather than translated.",
+        "Certified from the ministry's five French season pages (moose, white-tailed deer, black bear and wild turkey " +
+        "for 2026 and 2027; small game from 1 April 2026), read in French and quoted rather than translated. Ten " +
+        "species, 186 rules, each in force for its own year or licence year, persisted and read back identical. " +
+        "Not presented until the zone layer is served.",
     },
     knownGaps: [
-      "No hunting-zone geometry is ingested into PostGIS, so no Québec point resolves to a zone yet. The source is no longer the blocker: the ministry's WFS is identified, reviewed and proven to fetch cleanly through `createQuebecZoneSource`. What remains is ingestion, parity certification against the service, and switching the resolver on.",
-      "The published season tables name zones in words (\"10 West\", \"19 South\") while the GIS layer uses codes (10O, 19SE). That mapping is a legal interpretation, not a formatting detail, and must be settled by evidence the way Ontario's bare-number WMU groupings were.",
-      "No regulatory bundle exists, so every Québec species query is UNKNOWN.",
-      "Zones d'exploitation contrôlée (zecs), réserves fauniques and pourvoiries carry their own access rules that a zone-level season does not decide. Their boundaries are on the same GeoServer as SmartFaunePub:TFS; the Données Québec copy is CC-BY-NC-ND 4.0, so the licence under which they may be used needs settling before they are ingested.",
-      "Zone 17 moose hunting is reserved for Indigenous subsistence hunting under the James Bay and Northern Québec Agreement. Sport hunting there is closed. That is a treaty context, not a recreational season, and must never be presented as one.",
-      "The designations 08NZ, 09OZ and 10EZ are the enhanced surveillance zone (zone de surveillance rehaussée) for chronic wasting disease, covering 17 municipalities around the 2018 infected farm. No season table names them, and their antlerless-permit and registration obligations are published on the disease pages rather than the hunting pages. Those pages have not been read as a regulatory source, so a hunter inside a ZSR cannot yet be told they are in one.",
-      "Québec publishes one animal class per year inside a single cell — moose zone 13 firearms reads \"2026 Orignal avec bois / 2027 Orignal\". No field in the current rule schema carries a segment that changes between the two published years, so these rows cannot be encoded without flattening them.",
+      "Not served yet. Geometry, parity and rules are certified, but Hunt answers nothing in Québec until the owner approves swapping the served resolver to the derivative-aware body (proven identical at 1,206 points elsewhere), promoting the 59 zones to VERIFIED and deploying the serving switch.",
+      "Six row fragments stay unresolved on purpose: moose and black bear « Partie est et partie ouest de 19 sud (sauf la partie nord-ouest) » (2026 and 2027), which may reach 19SE and 19SO, and the hares' « Île-du-Havre-Aubert » (both licence years), in zone 21. Where they may apply, their dates answer NEEDS_VERIFICATION, never CLOSED.",
+      "Species the pages publish but North Ground has not encoded: coyote and wolf, woodchuck, raccoon, fox, grey partridge, ptarmigan, the nuisance birds, released game birds, rock pigeon, and the moose seasons stated per zec. Each section is hashed, so a change is still detected. Migratory birds are federal.",
+      "Zones d'exploitation contrôlée (zecs), réserves fauniques and pourvoiries carry their own access rules and, in some zecs, their own seasons (named in the answer). North Ground does not hold their boundaries; the TFS layer's licence (CC-BY-NC-ND 4.0 on Données Québec) must be settled first.",
+      "Territories closed to all hunting (72 ecological reserves, 27 Québec and 4 federal national parks, 24 closed territories, all of zone 19 Nord) are read from the ministry's Chasse_Interdite layer at the exact point, and an answer inside one is NEEDS_VERIFICATION, quoting the ministry. They are not indexed per zone, so a whole-zone card says they are checked only at a point.",
+      "Zone 17 moose is closed to sport hunting, as the ministry states. Harvesting there under the James Bay and Northern Québec Agreement is a separate legal context North Ground does not evaluate, and every Québec answer says so.",
+      "The CWD enhanced surveillance zone (08NZ, 09OZ, 10EZ) is named by no season table, so deer there is UNKNOWN with a note saying where the point is. The disease pages that state its obligations have not been read as a regulatory source.",
+      "Legal hunting hours are not certified; turkey's are carried verbatim as the ministry states them.",
+      "The licence under which the ministry's GIS layers may be reused is not named by the service (AccessConstraints NONE); the ministry's map states it has no legal value, which every Québec answer repeats.",
     ],
   },
   {

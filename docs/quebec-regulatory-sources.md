@@ -4,6 +4,12 @@ Read before encoding a Québec regulatory bundle. Everything here was read from
 the ministry's own services and pages on **2026-09-20** (America/Toronto). Every
 claim says how it is known. Nothing here is inferred from Ontario.
 
+**State on 2026-09-21:** geometry ingested and parity-certified, ten species'
+rules certified, persisted and read back, closed territories checked at the
+point, and both sources watched daily. **Not served**: Hunt answers nothing in
+Québec until the owner approves the resolver swap, the zones' promotion and the
+deploy. Sections 7 and 8 have the detail.
+
 The short version: Québec's geometry is **found, verified and readable**, and its
 regulatory text is **significantly more conditional than Ontario's**. The season
 tables turn on the implement, the animal class, the calendar year and, for
@@ -192,10 +198,13 @@ the reason `Chasse_Interdite` matters, and it belongs in any Québec answer.
 | `Dans les zones, les zecs et les réserves fauniques` | A table header, not a zone label |
 | `Partie est et partie ouest de 19 sud (sauf la partie nord-ouest), 29` ×2 | Coordinated ellipsis — distributing the elided tail is where a parser starts inventing |
 
-Each refusal stops a build and names what the layer does publish. The two
-ellipsis rows need an explicit, evidence-carrying mapping in the bundle; they
-mean 19SE + 19SO + 29, but that should be written down by a person, not guessed
-by a regex.
+Each refusal stops a build and names what the layer does publish. The builder
+now carries each refused fragment explicitly (`KNOWN_UNRESOLVED`) rather than
+resolving it: the ellipsis rows record that they may reach 19SE and 19SO — the
+natural reading, not a mapping the ministry has confirmed — and the
+Havre-Aubert rows that they may reach 21. Where they may apply, their dates
+answer NEEDS_VERIFICATION, never CLOSED; zone 29 in the same label resolves
+normally.
 
 **Exclusions the geometry cannot express** are carried verbatim in French rather
 than dropped or silently applied: `sauf les cantons de Macpès et Duquesne`,
@@ -205,16 +214,50 @@ Rigaud`.
 
 ---
 
-## 7. What is still open
+## 7. What is certified, and how
 
-- **Nothing is ingested into PostGIS**, parity-certified, or served. Every Québec
-  query still answers UNKNOWN. The adapter exists; the coverage does not.
-- **No regulatory bundle exists.** No Québec season is certified.
+| Capability | State | Evidence |
+|---|---|---|
+| Geometry | 59 designations, 9,509 polygons, 2,424,981 vertices in PostGIS, held NEEDS_VERIFICATION | staged through the chunked EWKB path; zone 18's one ring self-intersection repaired in staging with provenance |
+| Parity | 306 points, 0 disagreements against the ministry's WFS | `fixtures/hunt/ca-qc-spatial-parity.json`, samples in `ca-qc-parity-samples.json` |
+| Lookup | ST_Subdivide parts (≤256 vertices); boundary distance exact to straight edges | `zone_boundary_distance_meters`: identical to brute force at 199 points; 175–235 ms server-side |
+| Map | stored drawings at four tolerances, clipped to the view | whole province at zoom 5 is 56.5 KB; no view tried exceeds 70 KB |
+| Rules | 186 rules, 10 species, per year or licence year; 6 fragments deliberately unresolved | `content/regulatory/ca-qc-2026.json`; builder `--check` reproduces it byte for byte |
+| Persistence | 196 rows (186 rules plus the 10 carrying unresolved rows), 51 groups, 424 memberships, read back identical | `publish-quebec-regulations.mjs --verify` |
+| Closed territories | 130 features of `Chasse_Interdite`, checked at the point | `content/regulatory/ca-qc-overlays.json`; an answer inside one is NEEDS_VERIFICATION |
+| Change detection | pages, designations, closed territories and the zone layer's own fingerprint | `check:regulatory-sources`; two drills pass (5 regulatory, 9 GIS) |
+| Outage path | the ministry's WFS answers when PostGIS cannot, without downloading geometry | near/not-near checked against PostGIS distances |
+| Hunt Brief | seven representative answers share, store and read back unchanged | `src/lib/hunt-share/quebec-brief.test.ts` |
+
+The year segments (§4) are no longer a schema problem. The store already had
+per-rule `effective_from`/`effective_to`; each published year is its own rule,
+in force for its own year, and the publisher now takes a rule's own period
+where it states one.
+
+---
+
+## 8. What is still open
+
+- **Serving.** Three steps, each the owner's decision, in this order:
+  1. swap `resolve_management_zone` to the derivative-aware body, proven
+     identical at 1,206 points of the served jurisdictions. It must come first:
+     the current body would simplify and measure zone 21's 838,537 vertices on
+     every request;
+  2. promote the 59 zones to VERIFIED. The deployed app still answers a Québec
+     zone as "not yet covered" while its layer is not served, so this is safe,
+     and it lets the served resolver be checked on production data first;
+  3. deploy with the layer's `serving: true`.
+  Then certify production place by place, as Manitoba was.
 - The **zec and réserve faunique tables** on the moose and deer pages have no
   spatial home until `TFS` is ingested and its licence settled.
 - The **ZSR obligations** are on the CWD pages, which have not been read as a
   regulatory source.
-- `Chasse_Interdite` (130 areas) has not been reviewed.
-- The **two-segments-in-one-cell** shape has no representation in the current
-  rule schema. `applies_when` handles implement and residency; a segment that
-  changes between the two published years does not fit it yet.
+- **Closed territories** are not indexed per zone, so a whole-zone card says
+  they are checked only at an exact point.
+- **Species not encoded** (coyote and wolf, woodchuck, raccoon, fox, grey
+  partridge, ptarmigan, the nuisance and released birds, rock pigeon) and the
+  per-zec moose seasons; migratory birds are federal.
+- **Legal hunting hours** are not certified (turkey's statement is carried
+  verbatim).
+- The **reuse licence** of the ministry's GIS layers is not named by the
+  service.
