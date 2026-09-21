@@ -1,0 +1,1316 @@
+{
+  "jurisdictionId": "jurisdiction:ca-qc",
+  "layers": [
+    {
+      "key": "chasse-interdite",
+      "url": "https://servicesvecto3.mern.gouv.qc.ca/geoserver/SmartFaunePub/ows",
+      "protocol": "WFS",
+      "typeName": "SmartFaunePub:Chasse_Interdite",
+      "sourceId": "source:ca-qc-chasse-interdite-service",
+      "features": [
+        {
+          "objectId": 1,
+          "name": "Réserve écologique du Grand-Lac-Salé",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 2,
+          "name": "Réserve écologique Ernest-Lepage",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 3,
+          "name": "Réserve écologique James-Little",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 4,
+          "name": "Réserve écologique Samuel-Brisson",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 5,
+          "name": "Réserve écologique de la Forêt-la-Blanche",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 6,
+          "name": "Réserve écologique des Grands-Ormes",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 7,
+          "name": "Réserve écologique de la Chênaie-des-Îles-Finlay",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 8,
+          "name": "Réserve écologique Jules-Carpentier",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 9,
+          "name": "Réserve écologique de Pointe-Platon",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 10,
+          "name": "Réserve écologique des Caribous-de-Jourdan",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 11,
+          "name": "Réserve écologique des Vieux-Arbres",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 12,
+          "name": "Réserve écologique Tantaré",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 13,
+          "name": "Réserve écologique du Père-Louis-Marie",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 14,
+          "name": "Réserve écologique du Pin-Rigide",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 15,
+          "name": "Réserve écologique Irène-Fournier",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 16,
+          "name": "Réserve écologique du Mont-Gosford",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 17,
+          "name": "Réserve écologique André-Linteau",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 18,
+          "name": "Réserve écologique de l'Aigle-à-Tête-Blanche",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 19,
+          "name": "Réserve écologique André-Michaux",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 20,
+          "name": "Réserve écologique Marcel-Raymond",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 21,
+          "name": "Réserve écologique de l'Île-Garth",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 22,
+          "name": "Réserve écologique des Îles-Avelle-Wight-et-Hiam",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 23,
+          "name": "Réserve écologique des Kettles-de-Berry",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 24,
+          "name": "Réserve écologique des Tourbières-de-Lanoraie",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 25,
+          "name": "Réserve écologique Tapani",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 26,
+          "name": "Réserve écologique du Boisé-des-Muir",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 27,
+          "name": "Réserve écologique Marcelle-Gauvreau",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 28,
+          "name": "Réserve écologique Chicobi",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 29,
+          "name": "Réserve écologique de Mont-Saint-Pierre",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 30,
+          "name": "Réserve écologique de la Mine-aux-Pipistrelles",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 31,
+          "name": "Réserve écologique Irénée-Marie",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 32,
+          "name": "Réserve écologique des Dunes-de-Berry",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 33,
+          "name": "Réserve écologique de l'Érablière-du-Trente-et-Un-Milles",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 34,
+          "name": "Réserve écologique de l'Île-Brion",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 35,
+          "name": "Réserve écologique de la Serpentine-de-Coleraine",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 36,
+          "name": "Réserve écologique Lionel-Cinq-Mars",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 37,
+          "name": "Réserve écologique Thomas-Fortin",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 38,
+          "name": "Réserve écologique Claude-Mélançon",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 39,
+          "name": "Réserve écologique du Lac-Malakisis",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 40,
+          "name": "Réserve écologique Louis-Zéphirin-Rousseau",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 41,
+          "name": "Réserve écologique Rolland-Germain",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 42,
+          "name": "Réserve écologique de Couchepaganiche",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 43,
+          "name": "Réserve écologique de Manche-d'Épée",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 44,
+          "name": "Réserve écologique Louis-Ovide-Brunet",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 45,
+          "name": "Réserve écologique du Micocoulier",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 46,
+          "name": "Réserve écologique des Dunes-de-la-Moraine-d'Harricana",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 47,
+          "name": "Réserve écologique du Ruisseau-de-l'Indien",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 48,
+          "name": "Réserve écologique Judith-De Brésoles",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 49,
+          "name": "Réserve écologique Louis-Babel",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 50,
+          "name": "Réserve écologique internationale Thomas-Sterry-Hunt",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 51,
+          "name": "Réserve écologique Marcel-Léger",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 52,
+          "name": "Réserve écologique J.-Clovis-Laflamme",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 53,
+          "name": "Réserve écologique de la Presqu'île-Robillard",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 54,
+          "name": "Réserve écologique Victor-A.-Huard",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 55,
+          "name": "Réserve écologique de la Rivière-aux-Brochets",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 56,
+          "name": "Réserve écologique de la Vallée-du-Ruiter",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 57,
+          "name": "Réserve écologique Jackrabbit",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 58,
+          "name": "Réserve écologique de Lac-à-la-Tortue",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 59,
+          "name": "Réserve écologique de la Matamec",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 60,
+          "name": "Réserve écologique de la Rivière-du-Moulin",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 61,
+          "name": "Réserve écologique William-Baldwin",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 62,
+          "name": "Réserve écologique G.-Oscar-Villeneuve",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 63,
+          "name": "Réserve écologique Marie-Jean-Eudes",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 64,
+          "name": "Réserve écologique de la Tourbière-de-Shannon",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 65,
+          "name": "Réserve écologique de Ristigouche",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 66,
+          "name": "Réserve écologique de la Grande-Rivière",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 67,
+          "name": "Réserve écologique de la Rivière-Rouge",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 68,
+          "name": "Réserve écologique du Bog-à-Lanières",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 69,
+          "name": "Réserve écologique Léon-Provancher",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 70,
+          "name": "Réserve écologique Fernald",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 71,
+          "name": "Réserve écologique Charles-B.-Banville",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 72,
+          "name": "Réserve écologique de la Pointe-Heath",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 73,
+          "name": "Parc national d'Oka",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 74,
+          "name": "Parc national du Lac-Témiscouata",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 75,
+          "name": "Parc national du Mont-Saint-Bruno",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 76,
+          "name": "Parc national du Mont-Orford",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 77,
+          "name": "Parc national des Pingualuit",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 78,
+          "name": "Parc national des Monts-Valin",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 79,
+          "name": "Parc national de la Gaspésie",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 80,
+          "name": "Parc national de Plaisance",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 81,
+          "name": "Parc national de la Jacques-Cartier",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 82,
+          "name": "Parc national Aiguebelle",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 83,
+          "name": "Parc national d'Opémican",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 84,
+          "name": "Parc national du Fjord-du-Saguenay",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 85,
+          "name": "parc national Ulittaniujalik",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 86,
+          "name": "Parc national du Mont-Tremblant",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 87,
+          "name": "Parc national de la Pointe-Taillon",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 88,
+          "name": "Parc national des Îles-de-Boucherville",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 89,
+          "name": "Parc national Tursujuq",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 90,
+          "name": "Parc national de Miguasha",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 91,
+          "name": "Parc national Anticosti",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 92,
+          "name": "Parc national Kuururjuaq",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 93,
+          "name": "Parc national de l'Île-Bonaventure-et-du-Rocher-Percé",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 94,
+          "name": "Parc national du Bic",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 95,
+          "name": "Parc national de la Yamaska",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 96,
+          "name": "Parc national du Mont-Mégantic",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 97,
+          "name": "Parc national des Hautes-Gorges-de-la-Rivière-Malbaie",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 98,
+          "name": "Parc national des Grands-Jardins",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 99,
+          "name": "Parc national de Frontenac",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 100,
+          "name": "Centre d'études et de recherche Manicouagan (zone 18)",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 101,
+          "name": "Massif de la Petite-Rivière-Saint-François",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 102,
+          "name": "Massif de la Petite-Rivière-Saint-François",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 103,
+          "name": "Partie des cantons d'Aiguebelle et de Destor (Zone 13)",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 104,
+          "name": "Territoire de Bois-de-Belle-Rivière (Zone 8)",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 105,
+          "name": "Territoire de Drummondville (Zone 7)",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 106,
+          "name": "Territoire de Drummondville (Zone 7)",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 107,
+          "name": "Territoire de Drummondville (Zone 7)",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 108,
+          "name": "Territoire d'Estcourt (Zone 2)",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 109,
+          "name": "Territoire d'Ixworth (Zone 2)",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 110,
+          "name": "Territoire des Laurentides (Centre éducatif, St-Faustin, Zone9)",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 111,
+          "name": "Territoire du Mont-Saint-Anne (Zone 27)",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 112,
+          "name": "Territoire du Mont-Saint-Anne (Zone 27)",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 113,
+          "name": "Territoire Les Palissades (Zone 27)",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 114,
+          "name": "Territoire Les Palissades (Zone 27)",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 115,
+          "name": "Territoire de Parke (Zone 2)",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 116,
+          "name": "Partie de la Réserve de biodiversité des Lacs-Vaudrey-et-Joannès (Zone 13)",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 117,
+          "name": "Territoire de la Chute-à-Michel (CEGEP Saint-Félicien, Zone 28)",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 118,
+          "name": "Sanctuaire de chasse du parc de la Gatineau",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national du Canada).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 119,
+          "name": "Sanctuaire de chasse du parc de la Gatineau",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national du Canada).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 120,
+          "name": "Réserve faunique des Lacs-Albanel-Mistassini-et-Waconichi",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 121,
+          "name": "Réserve faunique des Lacs-Albanel-Mistassini-et-Waconichi",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 122,
+          "name": "Réserve faunique des Lacs-Albanel-Mistassini-et-Waconichi",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 123,
+          "name": "Réserve faunique des Lacs-Albanel-Mistassini-et-Waconichi",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 124,
+          "name": "Réserve faunique des Lacs-Albanel-Mistassini-et-Waconichi",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 125,
+          "name": "Réserve faunique Assinica",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 126,
+          "name": "Parc national du Canada de la Mauricie",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national du Canada).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 127,
+          "name": "Parc national du Canada de Forillon",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Parc national du Canada).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 128,
+          "name": "Zone de chasse 19 Nord",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Zone de chasse).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 129,
+          "name": "Le sanctuaire de la Grosse-Île (zone 3)",
+          "statedAs": "« Territoire de chasse non permise ou restreinte » (the ministry's layer of hunting-prohibited territories).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 130,
+          "name": "Station Forestière de Duchesnay",
+          "statedAs": "« Territoires où toute activité de chasse est interdite. » (Station récréotouristique).",
+          "tokens": [
+            "all"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        }
+      ]
+    }
+  ],
+  "retrievedAt": "2026-09-21",
+  "contentHash": "sha256:fbec4a5872db935915ceb4f896eb4badacb650b12be26e228f9e0cdeddf30dcc"
+}

@@ -12,7 +12,9 @@ import {
   evaluateManitoba, manitobaCoverageReport, manitobaSourceRecords, MANITOBA_OVERLAYS, MANITOBA_OVERLAY_ZONES, restrictionTokensFor,
 } from "./manitoba.ts";
 import { evaluateOntarioSmallGame, ontarioCoverageReport } from "./ontario.ts";
-import { evaluateQuebec, quebecCoverageReport, quebecSourceRecords } from "./quebec.ts";
+import {
+  evaluateQuebec, QUEBEC_OVERLAY_DESCRIPTION, QUEBEC_OVERLAYS, quebecCoverageReport, quebecSourceRecords,
+} from "./quebec.ts";
 import { albertaCoverageReport, albertaSourceRecords, evaluateAlberta } from "./alberta.ts";
 
 /**
@@ -201,6 +203,8 @@ interface ConditionalJurisdiction {
     catalogue: OverlayCatalogue;
     tokensFor(speciesId: string): readonly string[];
     describedAs: string;
+    /** The layers as the authority serves them, for when they cannot be reached ("refuge, wildlife-management-area and closed-lands layers"). */
+    layersDescribedAs: string;
     /** Which catalogued areas lie inside each zone, so a whole-zone answer can account for them. */
     zoneIndex?: OverlayZoneIndex;
   };
@@ -237,7 +241,7 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
         : null;
       const zoneRestrictions = zoneAreas ? restrictionsFor(zoneAreas, config.overlays!.tokensFor(input.speciesId)) : [];
       const unreadOverlays = overlays && !overlays.available
-        ? [`North Ground could not reach ${config.jurisdictionName}'s refuge, wildlife-management-area and closed-lands layers for this point, so it has not checked whether one of them restricts this hunt here.`]
+        ? [`North Ground could not reach ${config.jurisdictionName}'s ${config.overlays!.layersDescribedAs} for this point, so it has not checked whether one of them restricts this hunt here.`]
         : [];
 
       if (zone.status !== "RESOLVED" || !zone.zoneId) {
@@ -369,12 +373,18 @@ const MANITOBA = conditionalEntry({
     catalogue: MANITOBA_OVERLAYS,
     tokensFor: restrictionTokensFor,
     describedAs: "wildlife refuges, special conservation areas, wildlife management areas and lands closed to hunting",
+    layersDescribedAs: "refuge, wildlife-management-area and closed-lands layers",
     zoneIndex: MANITOBA_OVERLAY_ZONES,
   },
 });
 
 /* Québec's rules are certified; the entry is only reached once its zone layer
-   is served, which waits on parity with the ministry's own service. */
+   is served, which waits on parity with the ministry's own service.
+
+   Its closed territories lie inside hunting zones, so a zone's season says
+   nothing about them: every species is checked against all of them at the
+   point. No zone index is built yet, so a whole-zone card says these are
+   checked only at an exact point rather than implying there are none. */
 const QUEBEC = conditionalEntry({
   jurisdictionId: "jurisdiction:ca-qc",
   jurisdictionName: "Québec",
@@ -382,6 +392,13 @@ const QUEBEC = conditionalEntry({
   evaluate: evaluateQuebec,
   coverageReport: quebecCoverageReport,
   sourceRecords: quebecSourceRecords,
+  overlays: {
+    catalogue: QUEBEC_OVERLAYS,
+    // « toute activité de chasse est interdite »: every feature reaches every species.
+    tokensFor: () => ["all"],
+    describedAs: QUEBEC_OVERLAY_DESCRIPTION,
+    layersDescribedAs: "layer of territories closed to all hunting",
+  },
 });
 
 const ALBERTA = conditionalEntry({

@@ -1,6 +1,8 @@
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/ca-qc-2026.json" with { type: "json" };
-import { quebecZoneCanonicalId } from "../ingestion/quebec-zone.ts";
+import overlaysJson from "../../../../content/regulatory/ca-qc-overlays.json" with { type: "json" };
+import { QUEBEC_ZONE_TYPE_NAME, QUEBEC_ZONE_WFS, quebecZoneCanonicalId } from "../ingestion/quebec-zone.ts";
+import type { OverlayCatalogue } from "../overlays.ts";
 import {
   conditionalCoverage, evaluateConditional,
   type ConditionalBundle, type ConditionalCondition, type ConditionalEvaluation, type ConditionalInput,
@@ -98,7 +100,12 @@ interface QuebecBundle {
   retrievedAt: string;
   contentHash: string;
   certifiedPeriods: { bigGame: { from: string; to: string }; smallGame: { from: string; to: string } };
-  designations: { count: number; entries: Array<{ designation: string; zoneNumber: string; partName: string }> };
+  designations: {
+    source: string;
+    count: number;
+    contentHash: string;
+    entries: Array<{ designation: string; zoneNumber: string; partName: string }>;
+  };
   classDefinitions: Record<string, { dimension: string } & Record<string, ClassDefinition | string>>;
   legalTime: Record<string, string>;
   zecs: Array<{ page: string; sourceId: string; section: string; zec: string }>;
@@ -475,27 +482,72 @@ export function quebecCoverageReport() {
   };
 }
 
+/* ── Territories closed to all hunting ─────────────────────────────────── */
+
 /**
- * Source records for display, from the bundle that cites them.
+ * The ministry's layer of territories where it states all hunting is prohibited
+ * (SmartFaunePub:Chasse_Interdite): ecological reserves, Québec and federal
+ * national parks, and territories it closes to hunting — 130 features, built by
+ * `scripts/build-quebec-overlays.mjs`. Hunt asks the ministry's own service which
+ * of them contain a point and reads the answer against this catalogue.
  *
- * The bundle knows the calendar DAY each page was read, not the hour. It is
- * anchored at 12:00 UTC, which is the same calendar day in every Canadian time
- * zone; midnight UTC would display as the previous evening across the country.
+ * These lie INSIDE hunting zones (Parc national de la Jacques-Cartier is in zone
+ * 27), so a zone's season says nothing about them. One feature is the whole of
+ * zone 19 Nord, which no season page names.
+ */
+export const QUEBEC_OVERLAYS = overlaysJson as unknown as OverlayCatalogue & { retrievedAt: string; contentHash: string };
+
+/** The catalogue as a plural noun phrase: "… inside this zone are checked only for an exact point." */
+export const QUEBEC_OVERLAY_DESCRIPTION = "ecological reserves, national parks and other territories closed to all hunting";
+
+/* The ministry's two GIS layers Hunt reads, described from what North Ground
+   committed when it read them: the zone designations with the bundle, the
+   closed territories with their catalogue. */
+const GIS_SOURCES = [
+  {
+    id: "source:ca-qc-zone-chasse-service",
+    title: `Zones de chasse (${QUEBEC_ZONE_TYPE_NAME})`,
+    url: `${QUEBEC_ZONE_WFS}?service=WFS&version=2.0.0&request=GetCapabilities`,
+    retrievedAt: QUEBEC_BUNDLE.retrievedAt,
+    contentHash: QUEBEC_BUNDLE.designations.contentHash,
+  },
+  {
+    id: QUEBEC_OVERLAYS.layers[0].sourceId,
+    title: `Territoires où toute activité de chasse est interdite (${QUEBEC_OVERLAYS.layers[0].typeName})`,
+    url: `${QUEBEC_OVERLAYS.layers[0].url}?service=WFS&version=2.0.0&request=GetCapabilities`,
+    retrievedAt: QUEBEC_OVERLAYS.retrievedAt,
+    contentHash: QUEBEC_OVERLAYS.contentHash,
+  },
+];
+
+/**
+ * Source records for display, from the bundle and catalogue that cite them.
+ *
+ * Each knows the calendar DAY it was read, not the hour. The day is anchored at
+ * 12:00 UTC, which is the same calendar day in every Canadian time zone;
+ * midnight UTC would display as the previous evening across the country.
  */
 export function quebecSourceRecords(ids: readonly string[]): SourceRecord[] {
   const wanted = new Set(ids);
-  return QUEBEC_BUNDLE.sources
-    .filter((source) => wanted.has(source.id))
-    .map((source) => ({
-      id: source.id as CanonicalId<"source">,
-      authority: source.authority,
-      title: source.title,
-      url: source.url,
-      publisher: "Gouvernement du Québec",
-      retrievedAt: `${QUEBEC_BUNDLE.retrievedAt}T12:00:00Z` as SourceRecord["retrievedAt"],
-      type: "official" as const,
-      jurisdictionIds: ["jurisdiction:ca-qc" as CanonicalId<"jurisdiction">],
-      verificationStatus: "verified" as const,
-      contentHash: source.contentHash,
-    }));
+  const record = (source: { id: string; authority: string; title: string; url: string; retrievedAt: string; contentHash: string }) => ({
+    id: source.id as CanonicalId<"source">,
+    authority: source.authority,
+    title: source.title,
+    url: source.url,
+    publisher: "Gouvernement du Québec",
+    retrievedAt: `${source.retrievedAt}T12:00:00Z` as SourceRecord["retrievedAt"],
+    type: "official" as const,
+    jurisdictionIds: ["jurisdiction:ca-qc" as CanonicalId<"jurisdiction">],
+    verificationStatus: "verified" as const,
+    contentHash: source.contentHash,
+  });
+  return [
+    ...QUEBEC_BUNDLE.sources
+      .filter((source) => wanted.has(source.id))
+      .map((source) => record({ ...source, retrievedAt: QUEBEC_BUNDLE.retrievedAt })),
+    ...GIS_SOURCES
+      .filter((source) => wanted.has(source.id))
+      // As the ministry's GeoServer names itself.
+      .map((source) => record({ ...source, authority: "Ministère des Forêts, de la Faune et des Parcs" })),
+  ];
 }

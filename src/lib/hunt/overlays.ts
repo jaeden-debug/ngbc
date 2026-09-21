@@ -26,7 +26,20 @@ export interface CatalogueFeature {
 
 export interface OverlayCatalogue {
   jurisdictionId: string;
-  layers: Array<{ key: string; url: string; sourceId: string; features: CatalogueFeature[] }>;
+  layers: Array<{
+    key: string;
+    url: string;
+    sourceId: string;
+    /**
+     * How the authority serves the layer. ArcGIS (the default) is asked for
+     * OBJECTIDs; a WFS layer is asked for its features' own ids, whose numeric
+     * suffix is the catalogue's `objectId` (Québec's Chasse_Interdite.81 → 81).
+     */
+    protocol?: "ARCGIS" | "WFS";
+    /** The WFS type name, when `protocol` is WFS. */
+    typeName?: string;
+    features: CatalogueFeature[];
+  }>;
 }
 
 export interface OverlayHit {
@@ -51,6 +64,45 @@ const cache = new Map<string, { expiresAt: number; value: OverlayLookup }>();
 
 export function clearOverlayCache(): void {
   cache.clear();
+}
+
+/**
+ * Feature ids at a point from an OGC WFS layer.
+ *
+ * The point goes as EWKT with SRID=4326: without it GeoServer reads the numbers
+ * in the layer's native projection and matches nothing, which would read as
+ * "no restriction here" everywhere. Only a short name is asked for: the id comes
+ * back with every feature, and a park's full outline would not fit the budget.
+ */
+async function wfsObjectIdsAt(
+  url: string,
+  typeName: string,
+  latitude: number,
+  longitude: number,
+  fetcher: typeof fetch,
+): Promise<number[]> {
+  const parameters = new URLSearchParams({
+    service: "WFS",
+    version: "2.0.0",
+    request: "GetFeature",
+    typeNames: typeName,
+    outputFormat: "application/json",
+    propertyName: "NOM",
+    CQL_FILTER: `INTERSECTS(the_geom,SRID=4326;POINT(${longitude} ${latitude}))`,
+  });
+  const response = await fetcher(`${url}?${parameters}`, {
+    headers: { accept: "application/json" },
+    signal: AbortSignal.timeout(5_000),
+    cache: "no-store",
+  });
+  if (!response.ok) throw new Error(`overlay service returned ${response.status}`);
+  const payload = await response.json() as { features?: Array<{ id?: string }> };
+  if (!Array.isArray(payload.features)) throw new Error("overlay service error");
+  return payload.features.map((feature) => {
+    const match = /\.(\d+)$/.exec(String(feature.id ?? ""));
+    // An id this cannot read is still a restriction: kept as -1, never dropped.
+    return match ? Number(match[1]) : -1;
+  });
 }
 
 async function objectIdsAt(url: string, latitude: number, longitude: number, fetcher: typeof fetch): Promise<number[]> {
@@ -94,7 +146,9 @@ export async function lookupOverlays(
   try {
     const answers = await Promise.all(catalogue.layers.map(async (layer) => ({
       layer,
-      ids: await objectIdsAt(layer.url, latitude, longitude, fetcher),
+      ids: layer.protocol === "WFS"
+        ? await wfsObjectIdsAt(layer.url, layer.typeName ?? "", latitude, longitude, fetcher)
+        : await objectIdsAt(layer.url, latitude, longitude, fetcher),
     })));
     const hits: OverlayHit[] = answers.flatMap(({ layer, ids }) => ids.map((objectId) => ({
       layer: layer.key,
