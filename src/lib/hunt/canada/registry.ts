@@ -233,13 +233,21 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
+      // Built and cross-checked, not served: listed here once Hunt can answer with it.
       bundleIds: [],
-      sourceLeads: ["Alberta Guide to Hunting Regulations"],
-      sourceState: "NOT_INGESTED",
+      sourceLeads: ["2026 Alberta Guide to Hunting Regulations (open.alberta.ca PDF; albertaregulations.ca online edition)"],
+      sourceState: "CURRENT",
     },
     knownGaps: [
-      "No geometry ingested and no rules certified; every Alberta query is UNKNOWN.",
-      "Alberta allocates much big game by draw, which is not decidable from location and date alone.",
+      "Alberta's layer publishes 199 records, which are 189 WMUs: 718, 728 and 794 come in parts, and the one blank " +
+        "record is Elk Island National Park, quarantined. All 189 are in PostGIS; parity with Alberta's service is not " +
+        "yet certified, so the layer is not served and Hunt answers every Alberta point as not yet covered.",
+      "Rules are built for ruffed, spruce and sharp-tailed grouse and white-tailed deer (content/regulatory/ca-ab-2026.json, " +
+        "50 rules, every source row cross-checked against the government PDF) but are not answered until the layer serves.",
+      "Mule deer, moose, elk, sheep, goat, pronghorn, black bear, cougar, the other game birds and all migratory birds are not encoded.",
+      "Special-licence seasons are drawn; North Ground answers them only under the licence the hunter says they hold.",
+      "Late elk seasons in WMUs 102-150 differ between the online guide (N17 - D20) and the PDF (N17 - D31); unresolved.",
+      "Banff, Jasper, Waterton Lakes, Wood Buffalo and Elk Island national parks are in no WMU and are federal jurisdiction.",
     ],
   },
   {
