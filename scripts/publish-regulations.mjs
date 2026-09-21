@@ -64,6 +64,29 @@ async function rest(path, { method = "GET", body, prefer } = {}) {
  */
 export const REPRESENTABLE_DIMENSIONS = new Set(["RESIDENCY", "HUNT_METHOD", "TAG_TYPE", "SEASON_TYPE", "permittedImplements"]);
 
+/**
+ * Which published rules this bundle is entitled to retire.
+ *
+ * Scoped to the sources the bundle is built from, which is the boundary of what
+ * it can speak for. A jurisdiction-wide sweep looks equivalent while only one
+ * bundle exists and turns destructive the moment a second one does: publishing
+ * major game would retire every small-game rule, and publishing small game
+ * would then retire every major-game rule, each run quietly undoing the last.
+ * A bundle owns the rules derived from its own published pages and nothing else.
+ *
+ * Exported so that boundary is asserted by a test rather than by a comment.
+ */
+export function supersedeQuery(jurisdictionId, ownedSourceIds) {
+  if (!ownedSourceIds.length) {
+    throw new Error("Refusing to supersede: the bundle declares no source to scope by");
+  }
+  return (
+    `regulatory_rules?jurisdiction_id=eq.${jurisdictionId}` +
+    `&source_id=in.(${ownedSourceIds.join(",")})` +
+    "&review_status=in.(VERIFIED,PUBLISHED)&select=id,canonical_id"
+  );
+}
+
 async function main() {
   const path = process.argv[2];
   if (!path) {
@@ -239,12 +262,11 @@ async function main() {
     rulesWritten += 1;
   }
 
-  /* ── Supersede anything the bundle replaced ───────────────────────────── */
+  /* ── Supersede anything THIS bundle replaced ──────────────────────────── */
 
+  const ownedSourceIds = [...sourceByCanonical.values()].map((row) => row.id);
   const current = new Set(bundle.rules.map((rule) => rule.id));
-  const published = await rest(
-    `regulatory_rules?jurisdiction_id=eq.${jurisdiction.id}&review_status=in.(VERIFIED,PUBLISHED)&select=id,canonical_id`,
-  );
+  const published = await rest(supersedeQuery(jurisdiction.id, ownedSourceIds));
   let superseded = 0;
   for (const row of published) {
     if (current.has(row.canonical_id)) continue;

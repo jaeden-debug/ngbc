@@ -346,6 +346,11 @@ function isNoSeason(phrase) {
   return /^none$/i.test(phrase.trim());
 }
 
+/** One hash function for the bundle and for each of its sources. */
+function sha256(text) {
+  return `sha256:${createHash("sha256").update(text).digest("hex")}`;
+}
+
 async function main() {
   const checkOnly = process.argv.includes("--check");
 
@@ -356,6 +361,13 @@ async function main() {
   const rules = [];
   const sources = [];
   const hashParts = [];
+  /** Hash inputs per published page, so a change is attributable to one source. */
+  const hashPartsBySource = new Map();
+  const recordHashPart = (sourceId, part) => {
+    hashParts.push(part);
+    if (!hashPartsBySource.has(sourceId)) hashPartsBySource.set(sourceId, []);
+    hashPartsBySource.get(sourceId).push(part);
+  };
 
   for (const species of SPECIES) {
     const url = `${DOCUMENT}/${species.page}`;
@@ -382,7 +394,7 @@ async function main() {
       }
       // Hashed even though no rule comes from it, so a change to an excluded
       // season still triggers review rather than passing unnoticed.
-      hashParts.push(`${species.page}|EXCLUDED|${candidate.heading}|${candidate.rows.map((r) => r.join("~")).join("\n")}`);
+      recordHashPart(species.sourceId, `${species.page}|EXCLUDED|${candidate.heading}|${candidate.rows.map((r) => r.join("~")).join("\n")}`);
     }
 
     for (const table of species.tables) {
@@ -392,7 +404,7 @@ async function main() {
       const header = found.rows[0] ?? [];
       const dataRows = found.rows.filter((row) => row.length >= 2 && !/wildlife management unit/i.test(row[0]));
       if (!dataRows.length) throw new Error(`Table "${table.heading}" has no rows`);
-      hashParts.push(`${species.page}|${table.heading}|${found.rows.map((r) => r.join("~")).join("\n")}`);
+      recordHashPart(species.sourceId, `${species.page}|${table.heading}|${found.rows.map((r) => r.join("~")).join("\n")}`);
 
       // Column order is read from the header rather than assumed.
       const residentColumn = header.findIndex((cell) => /^resident/i.test(cell));
@@ -516,7 +528,13 @@ async function main() {
     });
   }
 
-  const contentHash = `sha256:${createHash("sha256").update(hashParts.join("\n\n")).digest("hex")}`;
+  // The bundle hash still answers "did anything move?"; the per-source hashes
+  // answer "which page moved?", which is what a reviewer actually needs when
+  // four published pages feed one bundle.
+  const contentHash = sha256(hashParts.join("\n\n"));
+  for (const entry of sources) {
+    entry.contentHash = sha256((hashPartsBySource.get(entry.id) ?? []).join("\n\n"));
+  }
 
   const bundle = {
     contractVersion: 1,
@@ -544,6 +562,14 @@ async function main() {
       console.error("An official major-game source has CHANGED since the bundle was built.");
       console.error(`  bundle : ${previous.contentHash}`);
       console.error(`  live   : ${contentHash}`);
+      // Four published pages feed this bundle. Name the ones that actually moved.
+      const previousBySource = new Map((previous.sources ?? []).map((entry) => [entry.id, entry.contentHash]));
+      for (const entry of sources) {
+        const before = previousBySource.get(entry.id);
+        if (before !== entry.contentHash) {
+          console.error(`  MOVED  ${entry.id}: ${before ?? "(not in bundle)"} -> ${entry.contentHash}`);
+        }
+      }
       // A moved hash alone does not tell a reviewer whether a season shifted or
       // a footnote appeared that removes an implement, so name the rules.
       const diff = diffBundles(previous, bundle);

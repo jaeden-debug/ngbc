@@ -4,7 +4,7 @@
   "jurisdictionId": "jurisdiction:ca-on",
   "sourceVersion": "2026",
   "sourceYear": 2026,
-  "retrievedAt": "2026-09-20",
+  "retrievedAt": "2026-09-21",
   "contentHash": "sha256:bd4c42a843c26b54013153e09f979da8ad9beafe79a222903aca91d9ef285692",
   "officialUnitCount": 151,
   "sources": [
@@ -34,7 +34,8 @@
           "sourceSection": "Controlled deer hunt seasons (with hunt codes)",
           "sourceId": "source:ca-on-deer-2026"
         }
-      ]
+      ],
+      "contentHash": "sha256:1658e2b38bcdb0bdfb914d8057ab7e23d1ddb7becf02336e9e31ddeaa86e7b08"
     },
     {
       "id": "source:ca-on-wild-turkey-2026",
@@ -62,7 +63,8 @@
           "sourceSection": "Reporting your wild turkey hunt",
           "sourceId": "source:ca-on-wild-turkey-2026"
         }
-      ]
+      ],
+      "contentHash": "sha256:05eabf8ffb45acb630a7bfe26f3c1509f546fb480dafec9521603430efc1e5a4"
     },
     {
       "id": "source:ca-on-black-bear-2026",
@@ -90,7 +92,8 @@
           "sourceSection": "Non-resident black bear hunting",
           "sourceId": "source:ca-on-black-bear-2026"
         }
-      ]
+      ],
+      "contentHash": "sha256:df35bdad0a523930fe4f9f0415fe0f11fdef3e219731fb0a60d73768c2862994"
     },
     {
       "id": "source:ca-on-moose-2026",
@@ -118,7 +121,8 @@
           "sourceSection": "Resident seasons with controlled hunter numbers",
           "sourceId": "source:ca-on-moose-2026"
         }
-      ]
+      ],
+      "contentHash": "sha256:89b8b1bf83c11660630c94156442cc5a713320f35b7bdb86cee5ddc195ba7513"
     }
   ],
   "groups": [

@@ -36,6 +36,9 @@ test("Google sun times are reported on the hunt location's clock, not in UTC", a
 
 test("Open-Meteo already reports local wall-clock times and is left alone", async () => {
   const result = await getOpenMeteoWeather(45.23, -77.94, "2026-09-20", {
+    // Pinned like every other case here: without it this asserts against the
+    // real clock and starts failing once UTC rolls past the evaluated day.
+    now: NOW,
     fetcher: stub({
       timezone: "America/Toronto",
       daily: {
