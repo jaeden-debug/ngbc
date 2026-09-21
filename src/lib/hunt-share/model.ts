@@ -430,7 +430,11 @@ export function createShareableHuntBrief(
           }
         : undefined,
     weatherSnapshot: parseWeather(input.weather),
-    warnings: strings(input.warnings, "warnings", 8, 300),
+    /* A warning is a regulatory requirement or limitation with its citation.
+       Manitoba's CWD sampling requirement alone is 320 characters; a cap below
+       real legal text refuses the whole brief, and truncating it would change
+       what it says. */
+    warnings: strings(input.warnings, "warnings", 8, 600),
     officialSources: parseSources(input.officialSources),
     resourceReferences: parseResources(input.resourceReferences),
     assumptions,
