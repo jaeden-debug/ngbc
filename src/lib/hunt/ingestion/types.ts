@@ -20,6 +20,23 @@ export interface ZoneFeatureRecord {
   geometry: { type: "Polygon" | "MultiPolygon"; coordinates: unknown };
 }
 
+/**
+ * A published feature the adapter refused to stage, kept so the refusal is
+ * reviewable rather than silent.
+ *
+ * Manitoba's layer carries one polygon with no Game Hunting Area designation.
+ * Dropping it without a record would make "62 staged" look like the whole
+ * layer; staging it would invent a hunting area the regulation does not define.
+ */
+export interface QuarantinedFeature {
+  sourceFeatureId: string;
+  reason: string;
+  attributes: Record<string, unknown>;
+  /** [west, south, east, north] in EPSG:4326, so a reviewer can find it. */
+  bbox: [number, number, number, number];
+  vertices: number;
+}
+
 export interface ZoneLayerSource {
   /** North Ground layer id, e.g. "layer:ca-on-wmu". */
   layerId: string;
@@ -35,7 +52,14 @@ export interface ZoneLayerSource {
   canonicalZoneId(officialIdentifier: string): string;
   /** Human name for a zone, from its official identifier. */
   officialName(officialIdentifier: string): string;
-  fetchFeatures(): Promise<{ features: ZoneFeatureRecord[]; sourceVersion?: string }>;
+  /**
+   * The official identifiers the authority's OWN service reports at a point, in
+   * the same form as `officialIdentifier`. Used only by spatial-parity
+   * certification, which asks the authority and North Ground the same question.
+   * Records the adapter quarantines must not appear here either.
+   */
+  officialIdentifiersAt?(latitude: number, longitude: number): Promise<string[]>;
+  fetchFeatures(): Promise<{ features: ZoneFeatureRecord[]; sourceVersion?: string; quarantined?: QuarantinedFeature[] }>;
 }
 
 export interface StagedComparison {

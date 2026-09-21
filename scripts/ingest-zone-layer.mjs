@@ -13,13 +13,7 @@
 
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
-
-const ADAPTERS = {
-  "ca-on": {
-    module: "../src/lib/hunt/ingestion/ontario-wmu.ts",
-    factory: "createOntarioWmuSource",
-  },
-};
+import { ZONE_ADAPTERS, loadZoneSource } from "./zone-adapters.mjs";
 
 /* ── Environment ─────────────────────────────────────────────────────────── */
 
@@ -85,19 +79,19 @@ async function main() {
   const args = process.argv.slice(2);
   const jurisdiction = args[args.indexOf("--jurisdiction") + 1];
   const publish = args.includes("--publish");
-  const adapter = ADAPTERS[jurisdiction];
-  if (!adapter) {
-    console.error(`Unknown jurisdiction. Known: ${Object.keys(ADAPTERS).join(", ")}`);
+  if (!ZONE_ADAPTERS[jurisdiction]) {
+    console.error(`Unknown jurisdiction. Known: ${Object.keys(ZONE_ADAPTERS).join(", ")}`);
     process.exit(1);
   }
-
-  const loaded = await import(adapter.module);
-  const source = loaded[adapter.factory]();
+  const source = await loadZoneSource(jurisdiction);
 
   console.log(`Fetching ${source.officialTerm} features from ${source.authority}...`);
   const started = Date.now();
-  const { features, sourceVersion } = await source.fetchFeatures();
+  const { features, sourceVersion, quarantined = [] } = await source.fetchFeatures();
   console.log(`  ${features.length} features in ${((Date.now() - started) / 1000).toFixed(1)}s`);
+  // A record the authority publishes and North Ground does not stage is shown to
+  // the reviewer and written onto the run, never dropped silently.
+  for (const record of quarantined) console.log(`  quarantined ${record.sourceFeatureId}: ${record.reason}`);
   if (!features.length) {
     console.error("The authority returned no features. Refusing to stage an empty layer.");
     process.exit(1);
@@ -130,7 +124,10 @@ async function main() {
         retrieved_at: retrievedAt,
         feature_count: features.length,
         status: "STAGED",
-        notes: `Ingested by scripts/ingest-zone-layer.mjs for ${jurisdiction}`,
+        notes: [
+          `Ingested by scripts/ingest-zone-layer.mjs for ${jurisdiction}`,
+          ...quarantined.map((record) => `Quarantined ${record.sourceFeatureId}: ${record.reason}`),
+        ].join("\n"),
       },
     ],
   });
@@ -144,6 +141,8 @@ async function main() {
       run_id: run.id,
       source_feature_id: feature.sourceFeatureId,
       official_identifier: feature.officialIdentifier,
+      canonical_id: source.canonicalZoneId(feature.officialIdentifier),
+      official_name: source.officialName(feature.officialIdentifier),
       attributes: feature.attributes,
       geometry: feature.geometry,
     }));

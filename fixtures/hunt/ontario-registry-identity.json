@@ -1,0 +1,761 @@
+{
+  "recordedFrom": "Supabase management_zones, jurisdiction:ca-on",
+  "recordedOn": "2026-09-20",
+  "zones": [
+    {
+      "officialIdentifier": "10",
+      "canonicalId": "management_zone:ca-on-wmu-10",
+      "officialName": "Wildlife Management Unit 10"
+    },
+    {
+      "officialIdentifier": "11A",
+      "canonicalId": "management_zone:ca-on-wmu-11a",
+      "officialName": "Wildlife Management Unit 11A"
+    },
+    {
+      "officialIdentifier": "11B",
+      "canonicalId": "management_zone:ca-on-wmu-11b",
+      "officialName": "Wildlife Management Unit 11B"
+    },
+    {
+      "officialIdentifier": "11C",
+      "canonicalId": "management_zone:ca-on-wmu-11c",
+      "officialName": "Wildlife Management Unit 11C"
+    },
+    {
+      "officialIdentifier": "12A",
+      "canonicalId": "management_zone:ca-on-wmu-12a",
+      "officialName": "Wildlife Management Unit 12A"
+    },
+    {
+      "officialIdentifier": "12B",
+      "canonicalId": "management_zone:ca-on-wmu-12b",
+      "officialName": "Wildlife Management Unit 12B"
+    },
+    {
+      "officialIdentifier": "13",
+      "canonicalId": "management_zone:ca-on-wmu-13",
+      "officialName": "Wildlife Management Unit 13"
+    },
+    {
+      "officialIdentifier": "14",
+      "canonicalId": "management_zone:ca-on-wmu-14",
+      "officialName": "Wildlife Management Unit 14"
+    },
+    {
+      "officialIdentifier": "15A",
+      "canonicalId": "management_zone:ca-on-wmu-15a",
+      "officialName": "Wildlife Management Unit 15A"
+    },
+    {
+      "officialIdentifier": "15B",
+      "canonicalId": "management_zone:ca-on-wmu-15b",
+      "officialName": "Wildlife Management Unit 15B"
+    },
+    {
+      "officialIdentifier": "16A",
+      "canonicalId": "management_zone:ca-on-wmu-16a",
+      "officialName": "Wildlife Management Unit 16A"
+    },
+    {
+      "officialIdentifier": "16B",
+      "canonicalId": "management_zone:ca-on-wmu-16b",
+      "officialName": "Wildlife Management Unit 16B"
+    },
+    {
+      "officialIdentifier": "16C",
+      "canonicalId": "management_zone:ca-on-wmu-16c",
+      "officialName": "Wildlife Management Unit 16C"
+    },
+    {
+      "officialIdentifier": "17",
+      "canonicalId": "management_zone:ca-on-wmu-17",
+      "officialName": "Wildlife Management Unit 17"
+    },
+    {
+      "officialIdentifier": "18A",
+      "canonicalId": "management_zone:ca-on-wmu-18a",
+      "officialName": "Wildlife Management Unit 18A"
+    },
+    {
+      "officialIdentifier": "18B",
+      "canonicalId": "management_zone:ca-on-wmu-18b",
+      "officialName": "Wildlife Management Unit 18B"
+    },
+    {
+      "officialIdentifier": "19",
+      "canonicalId": "management_zone:ca-on-wmu-19",
+      "officialName": "Wildlife Management Unit 19"
+    },
+    {
+      "officialIdentifier": "1A",
+      "canonicalId": "management_zone:ca-on-wmu-1a",
+      "officialName": "Wildlife Management Unit 1A"
+    },
+    {
+      "officialIdentifier": "1B",
+      "canonicalId": "management_zone:ca-on-wmu-1b",
+      "officialName": "Wildlife Management Unit 1B"
+    },
+    {
+      "officialIdentifier": "1C",
+      "canonicalId": "management_zone:ca-on-wmu-1c",
+      "officialName": "Wildlife Management Unit 1C"
+    },
+    {
+      "officialIdentifier": "1D",
+      "canonicalId": "management_zone:ca-on-wmu-1d",
+      "officialName": "Wildlife Management Unit 1D"
+    },
+    {
+      "officialIdentifier": "2",
+      "canonicalId": "management_zone:ca-on-wmu-2",
+      "officialName": "Wildlife Management Unit 2"
+    },
+    {
+      "officialIdentifier": "20",
+      "canonicalId": "management_zone:ca-on-wmu-20",
+      "officialName": "Wildlife Management Unit 20"
+    },
+    {
+      "officialIdentifier": "21A",
+      "canonicalId": "management_zone:ca-on-wmu-21a",
+      "officialName": "Wildlife Management Unit 21A"
+    },
+    {
+      "officialIdentifier": "21B",
+      "canonicalId": "management_zone:ca-on-wmu-21b",
+      "officialName": "Wildlife Management Unit 21B"
+    },
+    {
+      "officialIdentifier": "22",
+      "canonicalId": "management_zone:ca-on-wmu-22",
+      "officialName": "Wildlife Management Unit 22"
+    },
+    {
+      "officialIdentifier": "23",
+      "canonicalId": "management_zone:ca-on-wmu-23",
+      "officialName": "Wildlife Management Unit 23"
+    },
+    {
+      "officialIdentifier": "24",
+      "canonicalId": "management_zone:ca-on-wmu-24",
+      "officialName": "Wildlife Management Unit 24"
+    },
+    {
+      "officialIdentifier": "25",
+      "canonicalId": "management_zone:ca-on-wmu-25",
+      "officialName": "Wildlife Management Unit 25"
+    },
+    {
+      "officialIdentifier": "26",
+      "canonicalId": "management_zone:ca-on-wmu-26",
+      "officialName": "Wildlife Management Unit 26"
+    },
+    {
+      "officialIdentifier": "27",
+      "canonicalId": "management_zone:ca-on-wmu-27",
+      "officialName": "Wildlife Management Unit 27"
+    },
+    {
+      "officialIdentifier": "28",
+      "canonicalId": "management_zone:ca-on-wmu-28",
+      "officialName": "Wildlife Management Unit 28"
+    },
+    {
+      "officialIdentifier": "29",
+      "canonicalId": "management_zone:ca-on-wmu-29",
+      "officialName": "Wildlife Management Unit 29"
+    },
+    {
+      "officialIdentifier": "3",
+      "canonicalId": "management_zone:ca-on-wmu-3",
+      "officialName": "Wildlife Management Unit 3"
+    },
+    {
+      "officialIdentifier": "30",
+      "canonicalId": "management_zone:ca-on-wmu-30",
+      "officialName": "Wildlife Management Unit 30"
+    },
+    {
+      "officialIdentifier": "31",
+      "canonicalId": "management_zone:ca-on-wmu-31",
+      "officialName": "Wildlife Management Unit 31"
+    },
+    {
+      "officialIdentifier": "32",
+      "canonicalId": "management_zone:ca-on-wmu-32",
+      "officialName": "Wildlife Management Unit 32"
+    },
+    {
+      "officialIdentifier": "33",
+      "canonicalId": "management_zone:ca-on-wmu-33",
+      "officialName": "Wildlife Management Unit 33"
+    },
+    {
+      "officialIdentifier": "34",
+      "canonicalId": "management_zone:ca-on-wmu-34",
+      "officialName": "Wildlife Management Unit 34"
+    },
+    {
+      "officialIdentifier": "35",
+      "canonicalId": "management_zone:ca-on-wmu-35",
+      "officialName": "Wildlife Management Unit 35"
+    },
+    {
+      "officialIdentifier": "36",
+      "canonicalId": "management_zone:ca-on-wmu-36",
+      "officialName": "Wildlife Management Unit 36"
+    },
+    {
+      "officialIdentifier": "37",
+      "canonicalId": "management_zone:ca-on-wmu-37",
+      "officialName": "Wildlife Management Unit 37"
+    },
+    {
+      "officialIdentifier": "38",
+      "canonicalId": "management_zone:ca-on-wmu-38",
+      "officialName": "Wildlife Management Unit 38"
+    },
+    {
+      "officialIdentifier": "39",
+      "canonicalId": "management_zone:ca-on-wmu-39",
+      "officialName": "Wildlife Management Unit 39"
+    },
+    {
+      "officialIdentifier": "4",
+      "canonicalId": "management_zone:ca-on-wmu-4",
+      "officialName": "Wildlife Management Unit 4"
+    },
+    {
+      "officialIdentifier": "40",
+      "canonicalId": "management_zone:ca-on-wmu-40",
+      "officialName": "Wildlife Management Unit 40"
+    },
+    {
+      "officialIdentifier": "41",
+      "canonicalId": "management_zone:ca-on-wmu-41",
+      "officialName": "Wildlife Management Unit 41"
+    },
+    {
+      "officialIdentifier": "42",
+      "canonicalId": "management_zone:ca-on-wmu-42",
+      "officialName": "Wildlife Management Unit 42"
+    },
+    {
+      "officialIdentifier": "43A",
+      "canonicalId": "management_zone:ca-on-wmu-43a",
+      "officialName": "Wildlife Management Unit 43A"
+    },
+    {
+      "officialIdentifier": "43B",
+      "canonicalId": "management_zone:ca-on-wmu-43b",
+      "officialName": "Wildlife Management Unit 43B"
+    },
+    {
+      "officialIdentifier": "44",
+      "canonicalId": "management_zone:ca-on-wmu-44",
+      "officialName": "Wildlife Management Unit 44"
+    },
+    {
+      "officialIdentifier": "45",
+      "canonicalId": "management_zone:ca-on-wmu-45",
+      "officialName": "Wildlife Management Unit 45"
+    },
+    {
+      "officialIdentifier": "46",
+      "canonicalId": "management_zone:ca-on-wmu-46",
+      "officialName": "Wildlife Management Unit 46"
+    },
+    {
+      "officialIdentifier": "47",
+      "canonicalId": "management_zone:ca-on-wmu-47",
+      "officialName": "Wildlife Management Unit 47"
+    },
+    {
+      "officialIdentifier": "48",
+      "canonicalId": "management_zone:ca-on-wmu-48",
+      "officialName": "Wildlife Management Unit 48"
+    },
+    {
+      "officialIdentifier": "49",
+      "canonicalId": "management_zone:ca-on-wmu-49",
+      "officialName": "Wildlife Management Unit 49"
+    },
+    {
+      "officialIdentifier": "5",
+      "canonicalId": "management_zone:ca-on-wmu-5",
+      "officialName": "Wildlife Management Unit 5"
+    },
+    {
+      "officialIdentifier": "50",
+      "canonicalId": "management_zone:ca-on-wmu-50",
+      "officialName": "Wildlife Management Unit 50"
+    },
+    {
+      "officialIdentifier": "51",
+      "canonicalId": "management_zone:ca-on-wmu-51",
+      "officialName": "Wildlife Management Unit 51"
+    },
+    {
+      "officialIdentifier": "53A",
+      "canonicalId": "management_zone:ca-on-wmu-53a",
+      "officialName": "Wildlife Management Unit 53A"
+    },
+    {
+      "officialIdentifier": "53B",
+      "canonicalId": "management_zone:ca-on-wmu-53b",
+      "officialName": "Wildlife Management Unit 53B"
+    },
+    {
+      "officialIdentifier": "54",
+      "canonicalId": "management_zone:ca-on-wmu-54",
+      "officialName": "Wildlife Management Unit 54"
+    },
+    {
+      "officialIdentifier": "55A",
+      "canonicalId": "management_zone:ca-on-wmu-55a",
+      "officialName": "Wildlife Management Unit 55A"
+    },
+    {
+      "officialIdentifier": "55B",
+      "canonicalId": "management_zone:ca-on-wmu-55b",
+      "officialName": "Wildlife Management Unit 55B"
+    },
+    {
+      "officialIdentifier": "56",
+      "canonicalId": "management_zone:ca-on-wmu-56",
+      "officialName": "Wildlife Management Unit 56"
+    },
+    {
+      "officialIdentifier": "57",
+      "canonicalId": "management_zone:ca-on-wmu-57",
+      "officialName": "Wildlife Management Unit 57"
+    },
+    {
+      "officialIdentifier": "58",
+      "canonicalId": "management_zone:ca-on-wmu-58",
+      "officialName": "Wildlife Management Unit 58"
+    },
+    {
+      "officialIdentifier": "59",
+      "canonicalId": "management_zone:ca-on-wmu-59",
+      "officialName": "Wildlife Management Unit 59"
+    },
+    {
+      "officialIdentifier": "6",
+      "canonicalId": "management_zone:ca-on-wmu-6",
+      "officialName": "Wildlife Management Unit 6"
+    },
+    {
+      "officialIdentifier": "60",
+      "canonicalId": "management_zone:ca-on-wmu-60",
+      "officialName": "Wildlife Management Unit 60"
+    },
+    {
+      "officialIdentifier": "61",
+      "canonicalId": "management_zone:ca-on-wmu-61",
+      "officialName": "Wildlife Management Unit 61"
+    },
+    {
+      "officialIdentifier": "62",
+      "canonicalId": "management_zone:ca-on-wmu-62",
+      "officialName": "Wildlife Management Unit 62"
+    },
+    {
+      "officialIdentifier": "63A",
+      "canonicalId": "management_zone:ca-on-wmu-63a",
+      "officialName": "Wildlife Management Unit 63A"
+    },
+    {
+      "officialIdentifier": "63B",
+      "canonicalId": "management_zone:ca-on-wmu-63b",
+      "officialName": "Wildlife Management Unit 63B"
+    },
+    {
+      "officialIdentifier": "64A",
+      "canonicalId": "management_zone:ca-on-wmu-64a",
+      "officialName": "Wildlife Management Unit 64A"
+    },
+    {
+      "officialIdentifier": "64B",
+      "canonicalId": "management_zone:ca-on-wmu-64b",
+      "officialName": "Wildlife Management Unit 64B"
+    },
+    {
+      "officialIdentifier": "65",
+      "canonicalId": "management_zone:ca-on-wmu-65",
+      "officialName": "Wildlife Management Unit 65"
+    },
+    {
+      "officialIdentifier": "66A",
+      "canonicalId": "management_zone:ca-on-wmu-66a",
+      "officialName": "Wildlife Management Unit 66A"
+    },
+    {
+      "officialIdentifier": "66B",
+      "canonicalId": "management_zone:ca-on-wmu-66b",
+      "officialName": "Wildlife Management Unit 66B"
+    },
+    {
+      "officialIdentifier": "67",
+      "canonicalId": "management_zone:ca-on-wmu-67",
+      "officialName": "Wildlife Management Unit 67"
+    },
+    {
+      "officialIdentifier": "68A",
+      "canonicalId": "management_zone:ca-on-wmu-68a",
+      "officialName": "Wildlife Management Unit 68A"
+    },
+    {
+      "officialIdentifier": "68B",
+      "canonicalId": "management_zone:ca-on-wmu-68b",
+      "officialName": "Wildlife Management Unit 68B"
+    },
+    {
+      "officialIdentifier": "69A-1",
+      "canonicalId": "management_zone:ca-on-wmu-69a-1",
+      "officialName": "Wildlife Management Unit 69A-1"
+    },
+    {
+      "officialIdentifier": "69A-2",
+      "canonicalId": "management_zone:ca-on-wmu-69a-2",
+      "officialName": "Wildlife Management Unit 69A-2"
+    },
+    {
+      "officialIdentifier": "69A-3",
+      "canonicalId": "management_zone:ca-on-wmu-69a-3",
+      "officialName": "Wildlife Management Unit 69A-3"
+    },
+    {
+      "officialIdentifier": "69B",
+      "canonicalId": "management_zone:ca-on-wmu-69b",
+      "officialName": "Wildlife Management Unit 69B"
+    },
+    {
+      "officialIdentifier": "70",
+      "canonicalId": "management_zone:ca-on-wmu-70",
+      "officialName": "Wildlife Management Unit 70"
+    },
+    {
+      "officialIdentifier": "71",
+      "canonicalId": "management_zone:ca-on-wmu-71",
+      "officialName": "Wildlife Management Unit 71"
+    },
+    {
+      "officialIdentifier": "72A",
+      "canonicalId": "management_zone:ca-on-wmu-72a",
+      "officialName": "Wildlife Management Unit 72A"
+    },
+    {
+      "officialIdentifier": "72B",
+      "canonicalId": "management_zone:ca-on-wmu-72b",
+      "officialName": "Wildlife Management Unit 72B"
+    },
+    {
+      "officialIdentifier": "73",
+      "canonicalId": "management_zone:ca-on-wmu-73",
+      "officialName": "Wildlife Management Unit 73"
+    },
+    {
+      "officialIdentifier": "74A",
+      "canonicalId": "management_zone:ca-on-wmu-74a",
+      "officialName": "Wildlife Management Unit 74A"
+    },
+    {
+      "officialIdentifier": "74B",
+      "canonicalId": "management_zone:ca-on-wmu-74b",
+      "officialName": "Wildlife Management Unit 74B"
+    },
+    {
+      "officialIdentifier": "75",
+      "canonicalId": "management_zone:ca-on-wmu-75",
+      "officialName": "Wildlife Management Unit 75"
+    },
+    {
+      "officialIdentifier": "76A",
+      "canonicalId": "management_zone:ca-on-wmu-76a",
+      "officialName": "Wildlife Management Unit 76A"
+    },
+    {
+      "officialIdentifier": "76B",
+      "canonicalId": "management_zone:ca-on-wmu-76b",
+      "officialName": "Wildlife Management Unit 76B"
+    },
+    {
+      "officialIdentifier": "76C",
+      "canonicalId": "management_zone:ca-on-wmu-76c",
+      "officialName": "Wildlife Management Unit 76C"
+    },
+    {
+      "officialIdentifier": "76D",
+      "canonicalId": "management_zone:ca-on-wmu-76d",
+      "officialName": "Wildlife Management Unit 76D"
+    },
+    {
+      "officialIdentifier": "76E",
+      "canonicalId": "management_zone:ca-on-wmu-76e",
+      "officialName": "Wildlife Management Unit 76E"
+    },
+    {
+      "officialIdentifier": "77A",
+      "canonicalId": "management_zone:ca-on-wmu-77a",
+      "officialName": "Wildlife Management Unit 77A"
+    },
+    {
+      "officialIdentifier": "77B",
+      "canonicalId": "management_zone:ca-on-wmu-77b",
+      "officialName": "Wildlife Management Unit 77B"
+    },
+    {
+      "officialIdentifier": "77C",
+      "canonicalId": "management_zone:ca-on-wmu-77c",
+      "officialName": "Wildlife Management Unit 77C"
+    },
+    {
+      "officialIdentifier": "78A",
+      "canonicalId": "management_zone:ca-on-wmu-78a",
+      "officialName": "Wildlife Management Unit 78A"
+    },
+    {
+      "officialIdentifier": "78B",
+      "canonicalId": "management_zone:ca-on-wmu-78b",
+      "officialName": "Wildlife Management Unit 78B"
+    },
+    {
+      "officialIdentifier": "78C",
+      "canonicalId": "management_zone:ca-on-wmu-78c",
+      "officialName": "Wildlife Management Unit 78C"
+    },
+    {
+      "officialIdentifier": "78D",
+      "canonicalId": "management_zone:ca-on-wmu-78d",
+      "officialName": "Wildlife Management Unit 78D"
+    },
+    {
+      "officialIdentifier": "78E",
+      "canonicalId": "management_zone:ca-on-wmu-78e",
+      "officialName": "Wildlife Management Unit 78E"
+    },
+    {
+      "officialIdentifier": "79C",
+      "canonicalId": "management_zone:ca-on-wmu-79c",
+      "officialName": "Wildlife Management Unit 79C"
+    },
+    {
+      "officialIdentifier": "79D",
+      "canonicalId": "management_zone:ca-on-wmu-79d",
+      "officialName": "Wildlife Management Unit 79D"
+    },
+    {
+      "officialIdentifier": "7A",
+      "canonicalId": "management_zone:ca-on-wmu-7a",
+      "officialName": "Wildlife Management Unit 7A"
+    },
+    {
+      "officialIdentifier": "7B",
+      "canonicalId": "management_zone:ca-on-wmu-7b",
+      "officialName": "Wildlife Management Unit 7B"
+    },
+    {
+      "officialIdentifier": "8",
+      "canonicalId": "management_zone:ca-on-wmu-8",
+      "officialName": "Wildlife Management Unit 8"
+    },
+    {
+      "officialIdentifier": "80",
+      "canonicalId": "management_zone:ca-on-wmu-80",
+      "officialName": "Wildlife Management Unit 80"
+    },
+    {
+      "officialIdentifier": "81A",
+      "canonicalId": "management_zone:ca-on-wmu-81a",
+      "officialName": "Wildlife Management Unit 81A"
+    },
+    {
+      "officialIdentifier": "81B",
+      "canonicalId": "management_zone:ca-on-wmu-81b",
+      "officialName": "Wildlife Management Unit 81B"
+    },
+    {
+      "officialIdentifier": "82A",
+      "canonicalId": "management_zone:ca-on-wmu-82a",
+      "officialName": "Wildlife Management Unit 82A"
+    },
+    {
+      "officialIdentifier": "82B",
+      "canonicalId": "management_zone:ca-on-wmu-82b",
+      "officialName": "Wildlife Management Unit 82B"
+    },
+    {
+      "officialIdentifier": "82C",
+      "canonicalId": "management_zone:ca-on-wmu-82c",
+      "officialName": "Wildlife Management Unit 82C"
+    },
+    {
+      "officialIdentifier": "83A",
+      "canonicalId": "management_zone:ca-on-wmu-83a",
+      "officialName": "Wildlife Management Unit 83A"
+    },
+    {
+      "officialIdentifier": "83B",
+      "canonicalId": "management_zone:ca-on-wmu-83b",
+      "officialName": "Wildlife Management Unit 83B"
+    },
+    {
+      "officialIdentifier": "83C",
+      "canonicalId": "management_zone:ca-on-wmu-83c",
+      "officialName": "Wildlife Management Unit 83C"
+    },
+    {
+      "officialIdentifier": "84",
+      "canonicalId": "management_zone:ca-on-wmu-84",
+      "officialName": "Wildlife Management Unit 84"
+    },
+    {
+      "officialIdentifier": "85A",
+      "canonicalId": "management_zone:ca-on-wmu-85a",
+      "officialName": "Wildlife Management Unit 85A"
+    },
+    {
+      "officialIdentifier": "85B",
+      "canonicalId": "management_zone:ca-on-wmu-85b",
+      "officialName": "Wildlife Management Unit 85B"
+    },
+    {
+      "officialIdentifier": "85C",
+      "canonicalId": "management_zone:ca-on-wmu-85c",
+      "officialName": "Wildlife Management Unit 85C"
+    },
+    {
+      "officialIdentifier": "86A",
+      "canonicalId": "management_zone:ca-on-wmu-86a",
+      "officialName": "Wildlife Management Unit 86A"
+    },
+    {
+      "officialIdentifier": "86B",
+      "canonicalId": "management_zone:ca-on-wmu-86b",
+      "officialName": "Wildlife Management Unit 86B"
+    },
+    {
+      "officialIdentifier": "87A",
+      "canonicalId": "management_zone:ca-on-wmu-87a",
+      "officialName": "Wildlife Management Unit 87A"
+    },
+    {
+      "officialIdentifier": "87B",
+      "canonicalId": "management_zone:ca-on-wmu-87b",
+      "officialName": "Wildlife Management Unit 87B"
+    },
+    {
+      "officialIdentifier": "87C",
+      "canonicalId": "management_zone:ca-on-wmu-87c",
+      "officialName": "Wildlife Management Unit 87C"
+    },
+    {
+      "officialIdentifier": "87D",
+      "canonicalId": "management_zone:ca-on-wmu-87d",
+      "officialName": "Wildlife Management Unit 87D"
+    },
+    {
+      "officialIdentifier": "87E",
+      "canonicalId": "management_zone:ca-on-wmu-87e",
+      "officialName": "Wildlife Management Unit 87E"
+    },
+    {
+      "officialIdentifier": "88",
+      "canonicalId": "management_zone:ca-on-wmu-88",
+      "officialName": "Wildlife Management Unit 88"
+    },
+    {
+      "officialIdentifier": "89A",
+      "canonicalId": "management_zone:ca-on-wmu-89a",
+      "officialName": "Wildlife Management Unit 89A"
+    },
+    {
+      "officialIdentifier": "89B",
+      "canonicalId": "management_zone:ca-on-wmu-89b",
+      "officialName": "Wildlife Management Unit 89B"
+    },
+    {
+      "officialIdentifier": "90A",
+      "canonicalId": "management_zone:ca-on-wmu-90a",
+      "officialName": "Wildlife Management Unit 90A"
+    },
+    {
+      "officialIdentifier": "90B",
+      "canonicalId": "management_zone:ca-on-wmu-90b",
+      "officialName": "Wildlife Management Unit 90B"
+    },
+    {
+      "officialIdentifier": "91A",
+      "canonicalId": "management_zone:ca-on-wmu-91a",
+      "officialName": "Wildlife Management Unit 91A"
+    },
+    {
+      "officialIdentifier": "91B",
+      "canonicalId": "management_zone:ca-on-wmu-91b",
+      "officialName": "Wildlife Management Unit 91B"
+    },
+    {
+      "officialIdentifier": "92A",
+      "canonicalId": "management_zone:ca-on-wmu-92a",
+      "officialName": "Wildlife Management Unit 92A"
+    },
+    {
+      "officialIdentifier": "92B",
+      "canonicalId": "management_zone:ca-on-wmu-92b",
+      "officialName": "Wildlife Management Unit 92B"
+    },
+    {
+      "officialIdentifier": "92C",
+      "canonicalId": "management_zone:ca-on-wmu-92c",
+      "officialName": "Wildlife Management Unit 92C"
+    },
+    {
+      "officialIdentifier": "92D",
+      "canonicalId": "management_zone:ca-on-wmu-92d",
+      "officialName": "Wildlife Management Unit 92D"
+    },
+    {
+      "officialIdentifier": "93A",
+      "canonicalId": "management_zone:ca-on-wmu-93a",
+      "officialName": "Wildlife Management Unit 93A"
+    },
+    {
+      "officialIdentifier": "93B",
+      "canonicalId": "management_zone:ca-on-wmu-93b",
+      "officialName": "Wildlife Management Unit 93B"
+    },
+    {
+      "officialIdentifier": "93C",
+      "canonicalId": "management_zone:ca-on-wmu-93c",
+      "officialName": "Wildlife Management Unit 93C"
+    },
+    {
+      "officialIdentifier": "94A",
+      "canonicalId": "management_zone:ca-on-wmu-94a",
+      "officialName": "Wildlife Management Unit 94A"
+    },
+    {
+      "officialIdentifier": "94B",
+      "canonicalId": "management_zone:ca-on-wmu-94b",
+      "officialName": "Wildlife Management Unit 94B"
+    },
+    {
+      "officialIdentifier": "95",
+      "canonicalId": "management_zone:ca-on-wmu-95",
+      "officialName": "Wildlife Management Unit 95"
+    },
+    {
+      "officialIdentifier": "9A",
+      "canonicalId": "management_zone:ca-on-wmu-9a",
+      "officialName": "Wildlife Management Unit 9A"
+    },
+    {
+      "officialIdentifier": "9B",
+      "canonicalId": "management_zone:ca-on-wmu-9b",
+      "officialName": "Wildlife Management Unit 9B"
+    }
+  ]
+}

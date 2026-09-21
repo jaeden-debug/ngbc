@@ -89,7 +89,9 @@ async function officialWmuAt(latitude, longitude) {
 
 async function main() {
   console.log("Fetching representative points from the North Ground registry...");
-  const samples = await rpc("zone_sample_points");
+  const samples = await rpc("zone_sample_points", {
+    p_jurisdiction_canonical_id: "jurisdiction:ca-on",
+  });
   console.log(`  ${samples.length} zones sampled`);
 
   const disagreements = [];
