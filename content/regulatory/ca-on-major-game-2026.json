@@ -58,6 +58,12 @@
           "sourceId": "source:ca-on-wild-turkey-2026"
         },
         {
+          "id": "turkey-muzzleloader-shotgun-only",
+          "text": "A muzzle-loading gun is permitted only if it is a muzzle-loading shotgun of 10 to 20 gauge loaded with shot size 4, 5, 6 or 7 (O. Reg. 665/98 s. 79(1)(a)). A muzzle-loading rifle is not permitted.",
+          "sourceSection": "Summary of firearms restrictions for hunting in Ontario",
+          "sourceId": "source:ca-on-wild-turkey-2026"
+        },
+        {
           "id": "turkey-mandatory-report",
           "text": "Wild turkey harvests must be reported to the province. North Ground does not file reports.",
           "sourceSection": "Reporting your wild turkey hunt",
@@ -4975,13 +4981,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-wild-turkey-spring-season-36-42-45-46-50-53-65-66a-67-82-83a-84-95-shotgun-bow-any-2026",
+      "id": "regulatory_rule:ca-on-wild-turkey-spring-season-36-42-45-46-50-53-65-66a-67-82-83a-84-95-shotgun-muzzleloader-bow-any-2026",
       "speciesId": "species:wild-turkey",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-36-42-45-46-50-53-65-66a-67-82-83a-84-95",
       "appliesWhen": {
         "permittedImplements": [
           "SHOTGUN",
+          "MUZZLELOADER",
           "BOW"
         ]
       },
@@ -4992,7 +4999,8 @@
       "conditionIds": [
         "turkey-licence",
         "turkey-mandatory-report",
-        "turkey-bearded"
+        "turkey-bearded",
+        "turkey-muzzleloader-shotgun-only"
       ],
       "sourceId": "source:ca-on-wild-turkey-2026",
       "sourceSection": "Spring wild turkey season — shotgun or bow",
@@ -5001,13 +5009,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-wild-turkey-fall-shotgun-season-59-60-63-64-65-66a-67-70-72-78-80-82-84-87-89-94-shotgun-bow-any-2026",
+      "id": "regulatory_rule:ca-on-wild-turkey-fall-shotgun-season-59-60-63-64-65-66a-67-70-72-78-80-82-84-87-89-94-shotgun-muzzleloader-bow-any-2026",
       "speciesId": "species:wild-turkey",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-59-60-63-64-65-66a-67-70-72-78-80-82-84-87-89-94",
       "appliesWhen": {
         "permittedImplements": [
           "SHOTGUN",
+          "MUZZLELOADER",
           "BOW"
         ]
       },
@@ -5017,7 +5026,8 @@
       "caveats": [],
       "conditionIds": [
         "turkey-licence",
-        "turkey-mandatory-report"
+        "turkey-mandatory-report",
+        "turkey-muzzleloader-shotgun-only"
       ],
       "sourceId": "source:ca-on-wild-turkey-2026",
       "sourceSection": "Fall wild turkey season — shotgun or bow",

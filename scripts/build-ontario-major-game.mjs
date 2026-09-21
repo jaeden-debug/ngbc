@@ -168,23 +168,32 @@ const SPECIES = [
     sourceTitle: "Wild turkey — Ontario Hunting Regulations Summary",
     /**
      * Turkey publishes one season column for residents and non-residents alike,
-     * and no rifle or muzzle-loader season at all. The spring season is limited
-     * to bearded birds, which is a fact about the animal in front of you rather
-     * than about the date, so it travels as a condition on the spring rules only.
+     * and no rifle season at all. The spring season is limited to bearded
+     * birds, which is a fact about the animal in front of you rather than about
+     * the date, so it travels as a condition on the spring rules only.
+     *
+     * The "shotgun or bow" tables also admit a muzzle-loading gun, because the
+     * law's "shotgun" does: O. Reg. 665/98 s. 79(1)(a) permits "a shotgun,
+     * including a muzzle-loading shotgun of at least 20 gauge but not larger
+     * than 10 gauge". A muzzle-loading RIFLE is not permitted. So the answer
+     * "muzzle-loading gun" is conditional on the bore, not closed — it was
+     * encoded as closed until 2026-09-21, which told a hunter with a legal
+     * muzzle-loading shotgun that turkey was shut.
      */
     tables: [
       {
         heading: "Spring wild turkey season \u2014 shotgun or bow",
         label: "spring season",
-        implements: [IMPLEMENTS.SHOTGUN, IMPLEMENTS.BOW],
+        implements: [IMPLEMENTS.SHOTGUN, IMPLEMENTS.MUZZLELOADER, IMPLEMENTS.BOW],
         residencyColumns: false,
-        conditionIds: ["turkey-bearded"],
+        conditionIds: ["turkey-bearded", "turkey-muzzleloader-shotgun-only"],
       },
       {
         heading: "Fall wild turkey season \u2014 shotgun or bow",
         label: "fall shotgun season",
-        implements: [IMPLEMENTS.SHOTGUN, IMPLEMENTS.BOW],
+        implements: [IMPLEMENTS.SHOTGUN, IMPLEMENTS.MUZZLELOADER, IMPLEMENTS.BOW],
         residencyColumns: false,
+        conditionIds: ["turkey-muzzleloader-shotgun-only"],
       },
       {
         heading: "Fall wild turkey season \u2014 bow",
@@ -208,6 +217,14 @@ const SPECIES = [
           "The spring season is restricted to bearded turkeys. Identifying the bird before shooting " +
           "is the hunter's responsibility and North Ground cannot do it for you.",
         sourceSection: "Spring wild turkey season",
+      },
+      {
+        id: "turkey-muzzleloader-shotgun-only",
+        tableScoped: true,
+        text:
+          "A muzzle-loading gun is permitted only if it is a muzzle-loading shotgun of 10 to 20 gauge " +
+          "loaded with shot size 4, 5, 6 or 7 (O. Reg. 665/98 s. 79(1)(a)). A muzzle-loading rifle is not permitted.",
+        sourceSection: "Summary of firearms restrictions for hunting in Ontario",
       },
       {
         id: "turkey-mandatory-report",

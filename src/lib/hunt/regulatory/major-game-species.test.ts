@@ -52,6 +52,30 @@ describe("Wild turkey", () => {
     assert.equal(result!.status, "CLOSED");
   });
 
+  it("admits a muzzle-loading shotgun, which the law counts as a shotgun", () => {
+    // O. Reg. 665/98 s. 79(1)(a): "a shotgun, including a muzzle-loading
+    // shotgun". Encoded as CLOSED until 2026-09-21, which told a hunter with a
+    // legal muzzle-loading shotgun that turkey was shut.
+    const { result } = evaluateOntarioMajorGame(
+      { speciesId: TURKEY, date: "2026-04-30" }, zone("60"),
+      { HUNT_METHOD: ONTARIO_METHODS.MUZZLELOADER },
+    );
+    assert.equal(result!.status, "CONDITIONAL");
+    assert.ok(
+      result!.requirements.some((line) => /muzzle-loading shotgun/i.test(line) && /rifle is not permitted/i.test(line)),
+      "the answer is conditional on the bore, and must say so",
+    );
+  });
+
+  it("keeps a muzzle-loader out of the fall archery season", () => {
+    // 30 October is after the fall shotgun season and inside the bows-only one.
+    const { result } = evaluateOntarioMajorGame(
+      { speciesId: TURKEY, date: "2026-10-30" }, zone("60"),
+      { HUNT_METHOD: ONTARIO_METHODS.MUZZLELOADER },
+    );
+    assert.equal(result!.status, "CLOSED");
+  });
+
   it("separates the two fall seasons, which end on different dates", () => {
     const late = { speciesId: TURKEY, date: "2026-10-30" };
     const bow = evaluateOntarioMajorGame(late, zone("60"), { HUNT_METHOD: ONTARIO_METHODS.BOW });
