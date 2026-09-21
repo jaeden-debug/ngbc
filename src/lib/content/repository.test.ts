@@ -142,6 +142,11 @@ test("French names, scientific names, groups, lookalikes and image gates survive
   assert.ok((await contentRepository.searchSpecies("waterfowl")).length >= 20);
   assert.ok((await contentRepository.getSpeciesGroups("species:canvasback")).some(({ id }) => id === "species_group:waterfowl"));
   assert.ok((await contentRepository.getRelatedSpecies("species:greater-scaup")).some(({ id }) => id === "species:lesser-scaup"));
+  assert.deepEqual(
+    (await contentRepository.getRelatedSpecies("species:snowshoe-hare")).map(({ id }) => id),
+    ["species:eastern-cottontail", "species:arctic-hare"],
+  );
+  assert.ok((await contentRepository.getRelatedSpecies("species:mallard")).some(({ id }) => id === "species:american-black-duck"));
   assert.ok((await contentRepository.getSpeciesIdentificationWarnings("species:greater-scaup")).length > 0);
   assert.deepEqual(await contentRepository.getSpeciesImages("species:greater-scaup"), []);
 });

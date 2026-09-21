@@ -64,5 +64,20 @@ for (const id of ["species:mallard", "species:canada-goose"]) {
   if (profile) profile.speciesGroupIds = [...new Set([...profile.speciesGroupIds, "species_group:waterfowl", "species_group:migratory-game-birds"])];
 }
 
+function addLookalikes(speciesId, relatedIds) {
+  const resource = bundle.resources.find((candidate) => candidate.id === speciesId);
+  if (!resource || resource.type !== "species") return;
+  resource.relatedSpeciesIds = [...new Set([...(resource.relatedSpeciesIds ?? []), ...relatedIds])];
+  resource.speciesProfile.similarSpeciesIds = [
+    ...new Set([...(resource.speciesProfile.similarSpeciesIds ?? []), ...relatedIds]),
+  ];
+}
+
+/* Reciprocal discovery for comparisons already sourced in Wave 2. The Wave 2
+   side names these Wave 1 species; this closes the return path without creating
+   a second identity or a thin comparison page. */
+addLookalikes("species:snowshoe-hare", ["species:eastern-cottontail", "species:arctic-hare"]);
+addLookalikes("species:mallard", ["species:american-black-duck"]);
+
 await writeFile(path, `${JSON.stringify(bundle, null, 2)}\n`);
 console.log("Enriched Wave 1 hunter terminology and group lineage.");

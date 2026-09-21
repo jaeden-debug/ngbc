@@ -1660,8 +1660,16 @@
           "source:canada-snowshoe-hare-monograph"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
-      }
+        "lastReviewed": "2026-09-20",
+        "similarSpeciesIds": [
+          "species:eastern-cottontail",
+          "species:arctic-hare"
+        ]
+      },
+      "relatedSpeciesIds": [
+        "species:eastern-cottontail",
+        "species:arctic-hare"
+      ]
     },
     {
       "id": "species:mallard",
@@ -1791,7 +1799,10 @@
         ],
         "verificationStatus": "verified",
         "lastReviewed": "2026-09-20"
-      }
+      },
+      "relatedSpeciesIds": [
+        "species:american-black-duck"
+      ]
     },
     {
       "id": "species:canada-goose",
