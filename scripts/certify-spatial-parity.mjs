@@ -41,6 +41,14 @@ const EXTRA_CASES = {
       // Quarantined in the adapter: federal land, in no provincial WMU.
       ["Elk Island National Park (quarantined blank record)", 53.6134, -112.8653],
       ["Elk Island National Park, south block", 53.54, -112.86],
+      // The other four national parks are simply absent from Alberta's layer:
+      // 661,848 km² less 54,797 km² of parks leaves 607,051 km², and the 189
+      // WMUs cover 608,042 km². Each point below was confirmed inside the park by
+      // NRCan's legal boundary and in no WMU by Alberta's own service.
+      ["Banff National Park, townsite", 51.1784, -115.5708],
+      ["Jasper National Park, townsite", 52.8737, -118.0814],
+      ["Waterton Lakes National Park, townsite", 49.052, -113.915],
+      ["Wood Buffalo National Park, Alberta portion", 59.3, -112.8],
     ],
   },
 };
@@ -103,55 +111,67 @@ async function main() {
   }
   const { url, key } = loadEnv();
 
-  async function rpc(name, body = {}) {
-    const response = await fetch(`${url}/rest/v1/rpc/${name}`, {
-      method: "POST",
-      headers: { apikey: key, authorization: `Bearer ${key}`, "content-type": "application/json" },
-      body: JSON.stringify(body),
-    });
-    const text = await response.text();
-    if (!response.ok) throw new Error(`${name} -> ${response.status} ${text.slice(0, 300)}`);
-    return JSON.parse(text);
-  }
-
-  async function official(latitude, longitude) {
+  /* Both sides are asked over the network hundreds of times. A transient failure
+     on either is retried; a persistent one aborts the run, because a point that
+     could not be asked is not a point that agreed. */
+  async function retried(operation) {
     for (let attempt = 0; ; attempt += 1) {
       try {
-        return await source.officialIdentifiersAt(latitude, longitude);
+        return await operation();
       } catch (error) {
-        if (attempt === 2) throw error;
-        await new Promise((resolve) => setTimeout(resolve, 1500 * (attempt + 1)));
+        if (attempt === 3) throw error;
+        await new Promise((resolve) => setTimeout(resolve, 2000 * (attempt + 1)));
       }
     }
   }
 
+  const rpc = (name, body = {}) => retried(async () => {
+    const response = await fetch(`${url}/rest/v1/rpc/${name}`, {
+      method: "POST",
+      headers: { apikey: key, authorization: `Bearer ${key}`, "content-type": "application/json" },
+      body: JSON.stringify(body),
+      signal: AbortSignal.timeout(60_000),
+    });
+    const text = await response.text();
+    if (!response.ok) throw new Error(`${name} -> ${response.status} ${text.slice(0, 300)}`);
+    return JSON.parse(text);
+  });
+
+  const official = (latitude, longitude) => retried(() => source.officialIdentifiersAt(latitude, longitude));
+
+  /* Parity certifies this authority's layer against North Ground's copy of THAT
+     layer. The national registry also holds neighbouring jurisdictions, and a
+     point just across a shared border rightly resolves to the neighbour's zone
+     there while this authority reports nothing — that is agreement, not a
+     finding. Neighbouring zones are recorded beside each point but not compared. */
   const prefix = `${source.canonicalZoneId("X").replace(/x$/i, "")}`;
   async function northGround(latitude, longitude) {
     const rows = await rpc("resolve_management_zone", { p_latitude: latitude, p_longitude: longitude });
-    return rows
-      .map((row) => String(row.canonical_id))
-      // A point in another jurisdiction's zone is a finding too: keep it visible.
-      .map((canonical) => (canonical.startsWith(prefix) ? canonical.slice(prefix.length) : canonical))
-      .sort();
+    const ids = rows.map((row) => String(row.canonical_id));
+    return {
+      own: ids.filter((id) => id.startsWith(prefix)).map((id) => id.slice(prefix.length)).sort(),
+      neighbours: ids.filter((id) => !id.startsWith(prefix)).sort(),
+    };
   }
 
   // Compare by canonical id: the adapter's identifiers mapped through its own
   // canonicalZoneId, so both sides use one vocabulary.
   const canonicalTail = (identifier) => source.canonicalZoneId(identifier).slice(prefix.length);
 
-  const recorded = [];
-  const disagreements = [];
+  const planned = [];
   const latencies = [];
+  const check = (kind, label, latitude, longitude) => planned.push({ kind, label, latitude, longitude });
 
-  async function check(kind, label, latitude, longitude) {
+  async function run({ kind, label, latitude, longitude }) {
     const started = performance.now();
-    const ours = await northGround(latitude, longitude);
+    const { own, neighbours } = await northGround(latitude, longitude);
     latencies.push(performance.now() - started);
     const theirs = (await official(latitude, longitude)).map(canonicalTail).sort();
-    const agree = JSON.stringify(theirs) === JSON.stringify(ours);
-    recorded.push({ kind, label, latitude, longitude, official: theirs, northGround: ours, agree });
-    if (!agree) disagreements.push({ kind, label, latitude, longitude, official: theirs, northGround: ours });
-    if (recorded.length % 50 === 0) console.log(`  ...${recorded.length} points checked`);
+    return {
+      kind, label, latitude, longitude, official: theirs, northGround: own,
+      ...(neighbours.length ? { neighbours } : {}),
+      agree: JSON.stringify(theirs) === JSON.stringify(own),
+    };
   }
 
   console.log(`Sampling ${source.jurisdictionCanonicalId} from the North Ground registry...`);
@@ -164,12 +184,12 @@ async function main() {
   if (!samples.length) throw new Error("The registry holds no zones for this jurisdiction; nothing to certify.");
 
   for (const sample of samples) {
-    await check("inside", `inside ${sample.official_identifier}`, sample.inside_latitude, sample.inside_longitude);
-    await check("edge", `edge ${sample.official_identifier}`, sample.edge_latitude, sample.edge_longitude);
-    await check("across", `across ${sample.official_identifier}`, sample.across_latitude, sample.across_longitude);
+    check("inside", `inside ${sample.official_identifier}`, sample.inside_latitude, sample.inside_longitude);
+    check("edge", `edge ${sample.official_identifier}`, sample.edge_latitude, sample.edge_longitude);
+    check("across", `across ${sample.official_identifier}`, sample.across_latitude, sample.across_longitude);
   }
   for (const component of components) {
-    await check(
+    check(
       "component",
       `component ${component.component_rank}/${component.component_count} of ${component.official_identifier}`,
       component.latitude,
@@ -177,8 +197,23 @@ async function main() {
     );
   }
   const extra = EXTRA_CASES[jurisdiction] ?? { outside: [], special: [] };
-  for (const [label, latitude, longitude] of extra.outside) await check("outside", label, latitude, longitude);
-  for (const [label, latitude, longitude] of extra.special) await check("special", label, latitude, longitude);
+  for (const [label, latitude, longitude] of extra.outside) check("outside", label, latitude, longitude);
+  for (const [label, latitude, longitude] of extra.special) check("special", label, latitude, longitude);
+
+  // A few points at a time: polite to both services, and a run in minutes
+  // rather than half an hour. The record keeps the planned order either way.
+  const recorded = new Array(planned.length);
+  let next = 0;
+  let done = 0;
+  await Promise.all(Array.from({ length: 6 }, async () => {
+    while (next < planned.length) {
+      const index = next++;
+      recorded[index] = await run(planned[index]);
+      done += 1;
+      if (done % 50 === 0) console.log(`  ...${done} of ${planned.length} points checked`);
+    }
+  }));
+  const disagreements = recorded.filter((item) => !item.agree);
 
   for (const [label, latitude, longitude] of INVALID) {
     const ours = await rpc("resolve_management_zone", { p_latitude: latitude, p_longitude: longitude });
