@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  cellText, classifyRestriction, compareAreas, consolidationVersion, cwdAreasFromPage, expandAreaList, mentionedAreas, parseBirdLimit,
+  cellText, classifyRestriction, compareAreas, consolidationVersion, cwdAreasFromPage, diffConditionalBundles, expandAreaList,
+  formatConditionalDiff, mentionedAreas, parseBirdLimit,
   parseEquipment, parseGeography, parseSeasonCell, requireProvision, scheduleParts, scheduleTable, section10_3,
 } from "./manitoba-source.mjs";
 
@@ -172,4 +173,61 @@ test("published land restrictions become explicit tokens, and anything unread is
   const unknown = classifyRestriction("Hunters must register at the gate before entering.");
   assert.deepEqual(unknown.tokens, []);
   assert.deepEqual(unknown.unclassified, ["Hunters must register at the gate before entering."]);
+});
+
+/* ── What changed, and how far it reaches ─────────────────────────────────── */
+
+function miniBundle({ rules, groups, conditions = [] }) {
+  return { rules, groups, sources: [{ id: "source:x", conditions }] };
+}
+const deer = (id, group, extra = {}) => ({
+  id, speciesId: "species:white-tailed-deer", regulatoryGroupId: group, sourceSection: "Schedule B, Part A",
+  seasonLabel: "Archery", appliesWhen: { RESIDENCY: "MANITOBA_RESIDENT" }, equipmentStatedAs: "Archery",
+  seasonPhrase: "Aug. 31 – Nov. 8", windows: [{ opensIso: "2026-08-31", closesIso: "2026-11-08" }],
+  conditionIds: ["moose-8"], ...extra,
+});
+const group = (id, full, partial = []) => ({ id, officialIdentifiers: full, partialIdentifiers: partial });
+
+test("a row that loses an area is one change, reaching only that area", () => {
+  const previous = miniBundle({ rules: [deer("r:26-36", "g:26-36")], groups: [group("g:26-36", ["26"], ["36"])] });
+  const next = miniBundle({ rules: [deer("r:26", "g:26")], groups: [group("g:26", ["26"])] });
+  const diff = diffConditionalBundles(previous, next);
+  assert.deepEqual(diff.added, []);
+  assert.deepEqual(diff.removed, []);
+  assert.equal(diff.changed[0].previousId, "r:26-36");
+  assert.deepEqual(diff.blastRadius.areas, ["36"]);
+});
+
+test("a date change reaches every area the rule does", () => {
+  const groups = [group("g", ["26"], ["36"])];
+  const previous = miniBundle({ rules: [deer("r", "g")], groups });
+  const next = miniBundle({ rules: [deer("r", "g", { windows: [{ opensIso: "2026-08-30", closesIso: "2026-11-08" }] })], groups });
+  assert.deepEqual(diffConditionalBundles(previous, next).blastRadius.areas, ["26", "36"]);
+});
+
+test("a zone-scoped condition change reaches only its own areas, and re-links the rest", () => {
+  const groups = [group("g:8", ["8"]), group("g:26", ["26"])];
+  const moose8 = { id: "moose-8", text: "Moose licence needed in GHA 8.", zoneIds: ["management_zone:ca-mb-gha-8"] };
+  const previous = miniBundle({ rules: [deer("r:8", "g:8"), deer("r:26", "g:26")], groups, conditions: [moose8] });
+  const next = miniBundle({
+    rules: [deer("r:8", "g:8", { conditionIds: [] }), deer("r:26", "g:26", { conditionIds: [] })],
+    groups,
+  });
+  const diff = diffConditionalBundles(previous, next);
+  assert.equal(diff.conditions[0].change, "REMOVED");
+  assert.deepEqual(diff.blastRadius.areas, ["8"]);
+  assert.equal(diff.blastRadius.rules, 1);
+  assert.equal(diff.blastRadius.relinkedOnly, 1);
+  assert.match(formatConditionalDiff(diff), /RE-LINKED 1 rule/);
+});
+
+test("two rows that could each be the other are not guessed at", () => {
+  // Two removed and two added rules from the same row shape: pairing them would
+  // be a guess, so they stay a removal and an addition each.
+  const previous = miniBundle({ rules: [deer("r:a", "g:a"), deer("r:b", "g:b")], groups: [group("g:a", ["1"]), group("g:b", ["2"])] });
+  const next = miniBundle({ rules: [deer("r:c", "g:c"), deer("r:d", "g:d")], groups: [group("g:c", ["3"]), group("g:d", ["4"])] });
+  const diff = diffConditionalBundles(previous, next);
+  assert.equal(diff.changed.length, 0);
+  assert.deepEqual(diff.removed.sort(), ["r:a", "r:b"]);
+  assert.deepEqual(diff.blastRadius.areas, ["1", "2", "3", "4"]);
 });

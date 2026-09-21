@@ -15,6 +15,8 @@
  */
 
 import { createHash } from "node:crypto";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 
 export const MANITOBA_TIME_ZONE = "America/Winnipeg";
 
@@ -22,7 +24,55 @@ export function sha256(value) {
   return `sha256:${createHash("sha256").update(value).digest("hex")}`;
 }
 
+/* ── Recorded sources ───────────────────────────────────────────────────── */
+
+/**
+ * Every read, recorded or replayed.
+ *
+ * `save` keeps each response the build reads, keyed by URL, so the exact
+ * sources a bundle was built from can be kept and edited. `replay` serves only
+ * those recordings: a URL that was not recorded fails, and the network is never
+ * consulted, so a drill runs against precisely the copy it edited.
+ */
+let recording = null;
+
+export function setRecordedSources(mode, directory) {
+  if (!["save", "replay"].includes(mode)) throw new Error(`Unknown recording mode ${mode}`);
+  if (mode === "save") mkdirSync(directory, { recursive: true });
+  if (mode === "replay" && !existsSync(join(directory, "index.json"))) {
+    throw new Error(`${directory} holds no recorded sources (no index.json)`);
+  }
+  recording = { mode, directory };
+}
+
+function recordingIndex() {
+  const path = join(recording.directory, "index.json");
+  return existsSync(path) ? JSON.parse(readFileSync(path, "utf8")) : {};
+}
+
+/** The recorded file for a URL, as `save` named it. */
+export function recordedFileFor(directory, url) {
+  const index = JSON.parse(readFileSync(join(directory, "index.json"), "utf8"));
+  if (!index[url]) throw new Error(`${url} was not recorded`);
+  return join(directory, index[url]);
+}
+
 export async function fetchBytes(url, { attempts = 3 } = {}) {
+  if (recording?.mode === "replay") {
+    const file = recordingIndex()[url];
+    if (!file) throw new Error(`${url} was not recorded; a replayed build never reads the network`);
+    return readFileSync(join(recording.directory, file));
+  }
+  const bytes = await fetchLive(url, attempts);
+  if (recording?.mode === "save") {
+    const file = `${createHash("sha256").update(url).digest("hex").slice(0, 24)}.bin`;
+    writeFileSync(join(recording.directory, file), bytes);
+    writeFileSync(join(recording.directory, "index.json"), `${JSON.stringify({ ...recordingIndex(), [url]: file }, null, 2)}\n`);
+  }
+  return bytes;
+}
+
+async function fetchLive(url, attempts) {
   let lastError;
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
     try {
@@ -685,4 +735,194 @@ export function gameBirdZones(body) {
     zone3: { statedAs: zone3 },
     zone4Areas: [...zone4[1].split(",").map((item) => item.trim()), zone4[2]],
   };
+}
+
+/* ── What changed, and how far it reaches ─────────────────────────────────── */
+
+/** Everything the conditional engine evaluates on a rule. A change to any of them changes an answer. */
+const RULE_FIELDS = [
+  "seasonPhrase", "windows", "declaredNoSeason", "appliesWhen", "limits",
+  "conditionIds", "caveats", "notes", "disputes", "geography",
+];
+
+const areaOf = (zoneId) => String(zoneId).replace(/^management_zone:[a-z]{2}-[a-z]{2}-[a-z]+-/, "").toUpperCase();
+
+/**
+ * Rule and condition changes between two conditional-engine bundles, with
+ * the areas each one reaches.
+ *
+ * Jurisdiction-neutral: it reads only the bundle shape the engine evaluates.
+ * Beyond what the small-game diff compares it sees windows, geography,
+ * disputes, notes, condition ids, partial areas, and the conditions
+ * themselves — a condition whose areas change alters answers without any rule
+ * changing.
+ *
+ * A rule id carries its row's area wording, so moving a GHA in or out of a
+ * row re-identifies the rule. When exactly one removed and one added rule are
+ * the same published row (species, section, season label, conditions and
+ * equipment wording), they are reported as one change with the areas it
+ * gained and lost, not as an unrelated removal and addition.
+ */
+export function diffConditionalBundles(previous, next) {
+  const groupsOf = (bundle) => new Map((bundle.groups ?? []).map((group) => [group.id, group]));
+  const previousGroups = groupsOf(previous);
+  const nextGroups = groupsOf(next);
+  const areasOf = (groups, rule) => {
+    const group = groups.get(rule.regulatoryGroupId);
+    return [...(group?.officialIdentifiers ?? []), ...(group?.partialIdentifiers ?? []).map((area) => `${area} (part)`)];
+  };
+  const before = new Map((previous.rules ?? []).map((rule) => [rule.id, rule]));
+  const after = new Map((next.rules ?? []).map((rule) => [rule.id, rule]));
+
+  const compare = (prior, current, priorAreas, currentAreas) => {
+    const fields = [];
+    for (const field of RULE_FIELDS) {
+      if (JSON.stringify(prior[field] ?? null) !== JSON.stringify(current[field] ?? null)) {
+        fields.push({ field, from: prior[field] ?? null, to: current[field] ?? null });
+      }
+    }
+    if (JSON.stringify(priorAreas) !== JSON.stringify(currentAreas)) fields.push({ field: "areas", from: priorAreas, to: currentAreas });
+    return fields;
+  };
+
+  let added = [...after.keys()].filter((id) => !before.has(id));
+  let removed = [...before.keys()].filter((id) => !after.has(id));
+  const changed = [];
+
+  const rowKey = (rule) => JSON.stringify([rule.speciesId, rule.sourceSection, rule.seasonLabel, rule.appliesWhen, rule.equipmentStatedAs ?? null]);
+  for (const removedId of [...removed]) {
+    const key = rowKey(before.get(removedId));
+    const sameRowRemoved = removed.filter((id) => rowKey(before.get(id)) === key);
+    const sameRowAdded = added.filter((id) => rowKey(after.get(id)) === key);
+    if (sameRowRemoved.length !== 1 || sameRowAdded.length !== 1) continue;
+    const [addedId] = sameRowAdded;
+    const priorAreas = areasOf(previousGroups, before.get(removedId));
+    const currentAreas = areasOf(nextGroups, after.get(addedId));
+    changed.push({
+      id: addedId, previousId: removedId, speciesId: after.get(addedId).speciesId,
+      areas: [...new Set([...priorAreas, ...currentAreas])],
+      fields: compare(before.get(removedId), after.get(addedId), priorAreas, currentAreas),
+    });
+    removed = removed.filter((id) => id !== removedId);
+    added = added.filter((id) => id !== addedId);
+  }
+
+  for (const [id, current] of after) {
+    const prior = before.get(id);
+    if (!prior) continue;
+    const priorAreas = areasOf(previousGroups, prior);
+    const currentAreas = areasOf(nextGroups, current);
+    const fields = compare(prior, current, priorAreas, currentAreas);
+    if (fields.length) changed.push({ id, speciesId: current.speciesId, areas: [...new Set([...priorAreas, ...currentAreas])], fields });
+  }
+
+  /* Conditions, which live on the sources rather than the rules. */
+  const conditionsOf = (bundle) => new Map((bundle.sources ?? []).flatMap((source) => source.conditions ?? []).map((condition) => [condition.id, condition]));
+  const previousConditions = conditionsOf(previous);
+  const nextConditions = conditionsOf(next);
+  const citing = (bundle, conditionId) => (bundle.rules ?? []).filter((rule) => (rule.conditionIds ?? []).includes(conditionId)).map((rule) => rule.id);
+  const conditionAreas = (condition) => (condition?.zoneIds ?? []).map(areaOf);
+  const conditions = [];
+  for (const id of new Set([...previousConditions.keys(), ...nextConditions.keys()])) {
+    const prior = previousConditions.get(id);
+    const current = nextConditions.get(id);
+    if (JSON.stringify(prior ?? null) === JSON.stringify(current ?? null)) continue;
+    const fields = prior && current
+      ? [...new Set([...Object.keys(prior), ...Object.keys(current)])]
+        .filter((field) => JSON.stringify(prior[field] ?? null) !== JSON.stringify(current[field] ?? null))
+        .map((field) => ({ field, from: prior[field] ?? null, to: current[field] ?? null }))
+      : [];
+    conditions.push({
+      id,
+      change: !prior ? "ADDED" : !current ? "REMOVED" : "CHANGED",
+      areas: [...new Set([...conditionAreas(prior), ...conditionAreas(current)])],
+      rules: [...new Set([...citing(previous, id), ...citing(next, id)])],
+      fields,
+    });
+  }
+
+  /* Where each change can alter an answer. A date, limit or condition change
+     reaches everywhere the rule does. A change only to which areas the rule
+     reaches affects just the areas that moved (in, out, or between whole and
+     part). A change only to which zone-scoped conditions a rule cites reaches
+     only those conditions' areas; a rule none of them reaches is re-linked,
+     and no answer of its changes. */
+  const scopedConditionAreas = new Map(conditions.filter((entry) => entry.areas.length).map((entry) => [entry.id, entry.areas]));
+  for (const entry of changed) {
+    const kinds = new Set(entry.fields.map(({ field }) => field));
+    const areaField = entry.fields.find(({ field }) => field === "areas");
+    if (areaField && [...kinds].every((kind) => kind === "areas" || kind === "geography")) {
+      /* The areas that moved, and every area the rule reaches only in part,
+         because inside those the rule's own geography decides — and it may be
+         the very thing that changed. */
+      const from = new Set(areaField.from);
+      const to = new Set(areaField.to);
+      const moved = [...areaField.from.filter((area) => !to.has(area)), ...areaField.to.filter((area) => !from.has(area))];
+      const partial = kinds.has("geography") ? [...from, ...to].filter((area) => area.endsWith(" (part)")) : [];
+      entry.reach = [...new Set([...moved, ...partial].map((area) => area.replace(" (part)", "")))];
+    } else if (kinds.size === 1 && kinds.has("conditionIds")) {
+      const { from, to } = entry.fields[0];
+      const moved = [...from.filter((id) => !to.includes(id)), ...to.filter((id) => !from.includes(id))];
+      if (moved.length && moved.every((id) => scopedConditionAreas.has(id))) {
+        const scoped = new Set(moved.flatMap((id) => scopedConditionAreas.get(id)));
+        entry.reach = entry.areas.map((area) => area.replace(" (part)", "")).filter((area) => scoped.has(area));
+      }
+    }
+    entry.reach ??= entry.areas.map((area) => area.replace(" (part)", ""));
+    entry.relinkedOnly = entry.reach.length === 0;
+  }
+
+  const areas = new Set();
+  const species = new Set();
+  for (const entry of changed) {
+    if (entry.relinkedOnly) continue;
+    species.add(entry.speciesId);
+    for (const area of entry.reach) areas.add(area);
+  }
+  for (const id of [...added.map((ruleId) => after.get(ruleId)), ...removed.map((ruleId) => before.get(ruleId))]) {
+    species.add(id.speciesId);
+    const groups = after.has(id.id) ? nextGroups : previousGroups;
+    for (const area of areasOf(groups, id)) areas.add(area.replace(" (part)", ""));
+  }
+  for (const entry of conditions) for (const area of entry.areas) areas.add(area);
+
+  return {
+    added, removed, changed, conditions,
+    blastRadius: {
+      rules: added.length + removed.length + changed.filter((entry) => !entry.relinkedOnly).length,
+      relinkedOnly: changed.filter((entry) => entry.relinkedOnly).length,
+      conditions: conditions.length,
+      species: [...species].sort(),
+      areas: [...areas].sort(compareAreas),
+    },
+  };
+}
+
+/** A reviewer's reading of that diff. */
+export function formatConditionalDiff(diff) {
+  const show = (value) => (typeof value === "string" ? value : JSON.stringify(value));
+  const clip = (value) => (value.length > 220 ? `${value.slice(0, 217)}...` : value);
+  const lines = [];
+  for (const id of diff.removed) lines.push(`  REMOVED  ${id}`);
+  for (const id of diff.added) lines.push(`  ADDED    ${id}`);
+  for (const entry of diff.changed.filter((candidate) => !candidate.relinkedOnly)) {
+    lines.push(`  CHANGED  ${entry.id}${entry.previousId ? `\n           (was ${entry.previousId})` : ""}`);
+    lines.push(`           answers change in ${entry.reach.length} area(s): ${entry.reach.slice(0, 12).join(", ")}${entry.reach.length > 12 ? " ..." : ""}`);
+    for (const field of entry.fields) lines.push(`           ${field.field}: ${clip(show(field.from))}  ->  ${clip(show(field.to))}`);
+  }
+  for (const entry of diff.conditions) {
+    lines.push(`  CONDITION ${entry.change} ${entry.id}`);
+    lines.push(`           cited by ${entry.rules.length} rule(s); reaches ${entry.areas.length ? `${entry.areas.length} area(s): ${entry.areas.slice(0, 10).join(", ")}` : "every area its rules reach"}`);
+    for (const field of entry.fields) lines.push(`           ${field.field}: ${clip(show(field.from))}  ->  ${clip(show(field.to))}`);
+  }
+  const radius = diff.blastRadius;
+  if (radius.relinkedOnly) {
+    lines.push(`  RE-LINKED ${radius.relinkedOnly} rule(s) now cite a different condition set that does not reach any of their areas; none of their answers change.`);
+  }
+  lines.push(
+    `  BLAST RADIUS ${radius.rules} rule(s), ${radius.conditions} condition(s); ` +
+    `species ${radius.species.map((id) => id.replace("species:", "")).join(", ") || "none"}; ` +
+    `${radius.areas.length} area(s)${radius.areas.length ? `: ${radius.areas.join(", ")}` : ""}`,
+  );
+  return lines.join("\n");
 }

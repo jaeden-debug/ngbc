@@ -4,6 +4,13 @@
  *
  *   node scripts/build-manitoba-regulations.mjs           # rebuild and report
  *   node scripts/build-manitoba-regulations.mjs --check   # exit 2 if a source moved
+ *   node scripts/build-manitoba-regulations.mjs --check --save-sources <dir>
+ *                                     # also keep every source read, for drills
+ *   node scripts/build-manitoba-regulations.mjs --check --sources <dir>
+ *                                     # read only those recordings, never the network
+ *
+ * A replayed build only ever checks. Sources edited for a drill must never be
+ * able to become the committed bundle.
  *
  * Source hierarchy, highest first, and what each is used for:
  *
@@ -30,13 +37,13 @@
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { anchorToLicenceYear } from "../src/lib/hunt/regulatory/season.ts";
-import { diffBundles, formatBundleDiff, readPreviousBundle, retrievedAtFor, jurisdictionToday } from "./ontario-source.mjs";
+import { readPreviousBundle, retrievedAtFor, jurisdictionToday } from "./ontario-source.mjs";
 import {
   GHA38_MACDONALD, MANITOBA_TIME_ZONE, NAMED_GEOGRAPHIES,
   classifyRestriction, compareAreas, consolidationVersion, cwdAreasFromPage, decodeEntities, definedGameHuntingAreas,
   fetchBytes, fetchJson, fetchText, gameBirdZones, lawBody, mentionedAreas, parseBirdLimit,
   parseEquipment, parseGeography, parseSeasonCell, requireProvision, scheduleParts, scheduleTable,
-  section10_3, sha256,
+  section10_3, sha256, setRecordedSources, diffConditionalBundles, formatConditionalDiff,
 } from "./manitoba-source.mjs";
 
 const OUTPUT = "content/regulatory/ca-mb-2026.json";
@@ -179,6 +186,13 @@ async function featureExtent(layer, where) {
 
 async function main() {
   const checkOnly = process.argv.includes("--check");
+  const flag = (name) => (process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : undefined);
+  if (flag("--sources")) {
+    if (!checkOnly) throw new Error("--sources replays recorded copies and may only be used with --check");
+    setRecordedSources("replay", flag("--sources"));
+  } else if (flag("--save-sources")) {
+    setRecordedSources("save", flag("--save-sources"));
+  }
   const today = jurisdictionToday(MANITOBA_TIME_ZONE);
   const previous = readPreviousBundle(OUTPUT);
   const crossCheck = JSON.parse(readFileSync(CROSSCHECK, "utf8"));
@@ -936,8 +950,10 @@ async function main() {
       return;
     }
     console.error(`Manitoba source(s) moved: ${moved.map((source) => source.id).join(", ") || "bundle hash"}`);
-    const diff = diffBundles(previous, bundle);
-    console.error(formatBundleDiff(diff) || "  No rule changed; review the source diff.");
+    const diff = diffConditionalBundles(previous, bundle);
+    console.error(diff.blastRadius.rules || diff.blastRadius.conditions
+      ? formatConditionalDiff(diff)
+      : "  No rule or condition changed; review the source diff.");
     process.exit(2);
   }
 
