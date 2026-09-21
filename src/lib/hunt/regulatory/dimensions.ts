@@ -31,6 +31,10 @@ export type HuntDimensionId =
   | "HUNT_METHOD"
   | "SEASON_TYPE"
   | "TAG_TYPE"
+  /** Which licence the hunt is under, where the law is written per licence (Manitoba). */
+  | "LICENCE_TYPE"
+  /** Whether the hunter is under 18, where a season is limited to youth. */
+  | "HUNTER_AGE"
   | `ANIMAL_CLASS:${RegulatoryAnimalClassDimension}`;
 
 export interface DimensionOption {
@@ -67,6 +71,8 @@ export interface HuntDimensionAnswers {
   HUNT_METHOD?: string;
   SEASON_TYPE?: string;
   TAG_TYPE?: string;
+  LICENCE_TYPE?: string;
+  HUNTER_AGE?: string;
   animalClasses?: Array<{ dimension: RegulatoryAnimalClassDimension; value: string }>;
 }
 
@@ -94,6 +100,8 @@ export function answerFor(
   if (id === "HUNT_METHOD") return answers.HUNT_METHOD;
   if (id === "SEASON_TYPE") return answers.SEASON_TYPE;
   if (id === "TAG_TYPE") return answers.TAG_TYPE;
+  if (id === "LICENCE_TYPE") return answers.LICENCE_TYPE;
+  if (id === "HUNTER_AGE") return answers.HUNTER_AGE;
   const animalDimension = id.slice("ANIMAL_CLASS:".length) as RegulatoryAnimalClassDimension;
   return answers.animalClasses?.find((entry) => entry.dimension === animalDimension)?.value;
 }

@@ -1,0 +1,714 @@
+import type { CanonicalId } from "../../content-contract/index.ts";
+import type { RegulatoryResult, RegulatoryStatus } from "../types.ts";
+import {
+  answerFor, isAnswerValid,
+  type DimensionOption, type HuntDimensionAnswers, type HuntDimensionId, type RequiredDimension,
+} from "./dimensions.ts";
+import { appliesInWorld, placeWorlds, type GeographyData, type GeographyExpression, type PlaceContext, type PlaceWorld } from "./geography.ts";
+
+/**
+ * The jurisdiction-neutral conditional evaluator.
+ *
+ * It knows nothing about any province. Everything that differs between
+ * jurisdictions arrives as data: the BUNDLE (rules generated from the
+ * authority's own publication, with their geography, windows and conditions)
+ * and the VOCABULARY (the questions, in the authority's terms, and the
+ * standing text every answer carries). Adding a jurisdiction is a builder and a
+ * vocabulary, never a branch here.
+ *
+ * Three distinctions are held everywhere:
+ *
+ *  - NEEDS_INPUT is not UNKNOWN. North Ground knowing the law and needing a
+ *    fact from the hunter is reported as completeness, separately from status.
+ *
+ *  - Absence has the meaning the law gives it, stated in the bundle with its
+ *    section. Manitoba's regulation says a licence authorises hunting only
+ *    where it designates (s. 3), so an undesignated place is CLOSED to that
+ *    licence. Where no such provision exists, absence is UNKNOWN.
+ *
+ *  - Undetermined geography and disputed readings are never resolved by
+ *    picking a side. The engine evaluates with and without them and answers
+ *    only where both agree.
+ *
+ * Questions are outcome-sensitive: a fact is asked for only if some value of it
+ * changes the answer for this place on this date. A grouse hunter is asked
+ * nothing even though grouse rules are written per licence, because every
+ * licence gives the same season. A deer hunter on a date no deer season is open
+ * is told so without being asked which licence they hold.
+ */
+
+/* ── Bundle ─────────────────────────────────────────────────────────────── */
+
+export interface ConditionalWindow {
+  opensIso: string;
+  closesIso: string;
+  statedAs?: string;
+}
+
+export interface ConditionalRule {
+  id: string;
+  speciesId: string;
+  regulatoryGroupId: string;
+  geography?: GeographyExpression;
+  /**
+   * What the rule is conditional on. A string value is a single-valued fact
+   * (the rule applies only when the answer equals it); `permittedImplements`
+   * is the set of methods it allows. A key the rule does not carry does not
+   * constrain it.
+   */
+  appliesWhen: Record<string, string | string[]>;
+  seasonLabel: string;
+  seasonPhrase: string;
+  windows: ConditionalWindow[];
+  declaredNoSeason: boolean;
+  limits?: {
+    daily?: number;
+    possession?: number | null;
+    combined?: boolean;
+    combinedWithNames?: string[];
+    statedAs?: string;
+    bag?: number;
+    animalClass?: string;
+    section?: string;
+  };
+  conditionIds: string[];
+  caveats: string[];
+  /** Plain notes; a note naming a zone is shown only for that zone. */
+  notes: Array<string | { zoneId?: string; text: string }>;
+  disputes: Array<{ zoneId?: string; statedAs: string }>;
+  sourceId: string;
+  sourceSection: string;
+  sourceVersion: string;
+  reviewStatus: string;
+}
+
+export interface ConditionalCondition {
+  id: string;
+  text: string;
+  sourceId: string;
+  sourceSection: string;
+  zoneIds?: string[];
+  speciesIds?: string[];
+  activeWindows?: Array<{ opensIso: string; closesIso: string }>;
+  activeWindowsByZone?: Record<string, Array<{ opensIso: string; closesIso: string }>>;
+  caveats?: string[];
+}
+
+export interface ConditionalBundle extends GeographyData {
+  bundleId: string;
+  jurisdictionId: string;
+  sourceVersion: string;
+  retrievedAt: string;
+  certifiedPeriod: { from: string; to: string; reason?: string };
+  absence: { meaning: "CLOSED" | "UNKNOWN"; statedAs?: string; section?: string; sourceId?: string; explanation?: string };
+  sources: Array<{ id: string; conditions?: ConditionalCondition[] }>;
+  groups: Array<{ id: string; officialSpec: string; zoneIds: string[]; partialZoneIds?: string[] }>;
+  rules: ConditionalRule[];
+}
+
+/* ── Vocabulary ─────────────────────────────────────────────────────────── */
+
+export interface VocabularyDimension extends Omit<RequiredDimension, "options"> {
+  /** Every value the jurisdiction recognises, in the order to offer them. */
+  options: DimensionOption[];
+  /**
+   * Which rule key this dimension answers. Defaults to the dimension id;
+   * HUNT_METHOD answers `permittedImplements`, which is a set.
+   */
+  ruleKey?: string;
+  /**
+   * Facts an answer fixes, declared rather than inferred: a Manitoba resident
+   * licence implies Manitoba residency. Inferring this from which keys rules
+   * happen to share would couple unrelated facts (every rule names a licence,
+   * which would wrongly make age depend on it).
+   */
+  implies?: Record<string, Record<string, string>>;
+}
+
+export interface ConditionalVocabulary {
+  jurisdictionName: string;
+  /** The authority's term for its units, for sentences ("Game Hunting Area"). */
+  unitTerm: string;
+  /** Asked in this order when more than one fact is outstanding. */
+  dimensions: VocabularyDimension[];
+  legalTime: RegulatoryResult["legalTime"];
+  /** Carried by every answer, because every answer is subject to them. */
+  standingLimitations: string[];
+  /** Source cited alongside every answer (for example the boundary layer). */
+  standingSourceIds: string[];
+  /** Readable name for a single-valued answer, for "open to this combination". */
+  describe?: (dimension: string, value: string) => string;
+}
+
+/* ── Input ──────────────────────────────────────────────────────────────── */
+
+export interface ConditionalInput {
+  speciesId: string;
+  speciesName: string;
+  date: string;
+  place: PlaceContext & { zoneName: string };
+  answers: HuntDimensionAnswers;
+  /**
+   * Published restrictions on overlapping land (refuges, closed lands) that
+   * affect this species at this point. Supplied by the caller; a restriction
+   * North Ground has not certified means the season status cannot be stated.
+   */
+  restrictions?: Array<{ name: string; statedAs: string; sourceId: string }>;
+}
+
+export interface ConditionalEvaluation {
+  completeness: "RESOLVED" | "NEEDS_INPUT";
+  required?: RequiredDimension;
+  dimensions: RequiredDimension[];
+  result?: RegulatoryResult;
+}
+
+const PUBLISHABLE = new Set(["VERIFIED", "PUBLISHED"]);
+const METHOD = "HUNT_METHOD";
+const IMPLEMENTS = "permittedImplements";
+
+/* ── Helpers ────────────────────────────────────────────────────────────── */
+
+function ruleKeyOf(dimension: VocabularyDimension): string {
+  return dimension.ruleKey ?? (dimension.id === METHOD ? IMPLEMENTS : dimension.id);
+}
+
+/** The question as the interface receives it: engine-only fields left behind. */
+function toRequired(dimension: VocabularyDimension, options: DimensionOption[]): RequiredDimension {
+  return {
+    id: dimension.id,
+    question: dimension.question,
+    reason: dimension.reason,
+    options,
+    multiple: dimension.multiple,
+    allowsUnsure: dimension.allowsUnsure,
+    sourceId: dimension.sourceId,
+    ...(dimension.sourceSection ? { sourceSection: dimension.sourceSection } : {}),
+  };
+}
+
+function matches(rule: ConditionalRule, key: string, value: string): boolean {
+  const stated = rule.appliesWhen[key];
+  if (stated === undefined) return true;
+  return Array.isArray(stated) ? stated.includes(value) : stated === value;
+}
+
+type Assignment = Record<string, string>;
+
+function applicable(rules: ConditionalRule[], assignment: Assignment, vocabulary: ConditionalVocabulary): ConditionalRule[] {
+  return rules.filter((rule) =>
+    vocabulary.dimensions.every((dimension) => {
+      const value = assignment[dimension.id];
+      return value === undefined || matches(rule, ruleKeyOf(dimension), value);
+    }));
+}
+
+function containing(rule: ConditionalRule, date: string): ConditionalWindow | undefined {
+  return rule.windows.find((window) => date >= window.opensIso && date <= window.closesIso);
+}
+
+function limitsKey(rule: ConditionalRule): string {
+  return JSON.stringify(rule.limits ?? null);
+}
+
+/** The answer in one world, from the rules that certainly apply there. */
+interface WorldOutcome {
+  status: RegulatoryStatus;
+  /** Status and limits: what must agree across worlds for an answer to stand. */
+  coarse: string;
+  /** Plus the window containing the date: what a question has to be able to change. */
+  fine: string;
+  inSeason: ConditionalRule[];
+  applicable: ConditionalRule[];
+  /** True when no rule designates this place for this combination at all. */
+  absent: boolean;
+}
+
+function settle(rules: ConditionalRule[], date: string, absence: ConditionalBundle["absence"]): WorldOutcome {
+  const open = rules.filter((rule) => !rule.declaredNoSeason);
+  const inSeason = open.filter((rule) => containing(rule, date));
+  if (inSeason.length) {
+    const windows = [...new Set(inSeason.map((rule) => {
+      const window = containing(rule, date)!;
+      return `${window.opensIso}/${window.closesIso}`;
+    }))].sort();
+    const limits = [...new Set(inSeason.map(limitsKey))].sort();
+    /* What a question must be able to change is when the season ends for this
+       hunter, not when it began: two windows that are both open today and close
+       on the same day are the same answer. */
+    const closes = windows.map((window) => window.split("/")[1]).sort().at(-1);
+    return {
+      status: "CONDITIONAL",
+      coarse: `CONDITIONAL|${limits.join(",")}`,
+      fine: `CONDITIONAL|closes ${closes}|${limits.join(",")}`,
+      inSeason,
+      applicable: rules,
+      absent: false,
+    };
+  }
+  if (!rules.length) {
+    // What "no rule here" means is the law's call, recorded in the bundle.
+    const status: RegulatoryStatus = absence.meaning === "CLOSED" ? "CLOSED" : "UNKNOWN";
+    return { status, coarse: status, fine: status, inSeason: [], applicable: [], absent: true };
+  }
+  return { status: "CLOSED", coarse: "CLOSED", fine: "CLOSED", inSeason: [], applicable: rules, absent: false };
+}
+
+/** The answer for one complete set of facts, across every world. */
+interface Outcome {
+  status: RegulatoryStatus;
+  key: string;
+  worlds: WorldOutcome[];
+  /** Unknowns whose value changes the answer, when the worlds disagree. */
+  reasons: string[];
+}
+
+interface OutcomeContext {
+  date: string;
+  place: PlaceContext;
+  groups: ReadonlyMap<string, { zoneIds: string[] }>;
+  absence: ConditionalBundle["absence"];
+  vocabulary: ConditionalVocabulary;
+}
+
+function sameWorldApartFromReading(a: PlaceWorld, b: PlaceWorld): boolean {
+  return a.disputedReadingsHold !== b.disputedReadingsHold &&
+    a.gameBirdZone === b.gameBirdZone &&
+    [...a.inside].sort().join(",") === [...b.inside].sort().join(",");
+}
+
+function outcomeFor(
+  rules: ConditionalRule[],
+  assignment: Assignment,
+  worlds: PlaceWorld[],
+  unknowns: Array<{ kind: string; statedAs: string }>,
+  context: OutcomeContext,
+): Outcome {
+  const chosen = applicable(rules, assignment, context.vocabulary);
+  const perWorld = worlds.map((world) =>
+    settle(chosen.filter((rule) => appliesInWorld(rule, context.groups, context.place, world)), context.date, context.absence));
+
+  if (new Set(perWorld.map((outcome) => outcome.coarse)).size === 1) {
+    const fine = [...new Set(perWorld.map((outcome) => outcome.fine))].sort().join(" or ");
+    return { status: perWorld[0].status, key: fine, worlds: perWorld, reasons: [] };
+  }
+
+  /* The worlds disagree. If two worlds that differ ONLY in whether a disputed
+     reading holds disagree, the sources themselves conflict; otherwise it is
+     geography North Ground could not establish. */
+  const disputeMatters = worlds.some((world, index) => worlds.some((other, otherIndex) =>
+    sameWorldApartFromReading(world, other) && perWorld[otherIndex].coarse !== perWorld[index].coarse));
+  const status: RegulatoryStatus = disputeMatters ? "CONFLICT" : "NEEDS_VERIFICATION";
+  const reasons = unknowns
+    .filter((unknown) => disputeMatters || unknown.kind !== "DISPUTE")
+    .map((unknown) => unknown.statedAs);
+  return { status, key: `${status}|${reasons.join("|")}`, worlds: perWorld, reasons };
+}
+
+/**
+ * Every combination of the facts still unknown, restricted to combinations the
+ * vocabulary says can occur: a Manitoba resident licence is never combined
+ * with non-Canadian residency.
+ */
+function assignments(
+  dimensions: VocabularyDimension[],
+  known: Assignment,
+  valuesFor: (dimension: VocabularyDimension) => string[],
+  coherent: (assignment: Assignment) => boolean,
+): Assignment[] {
+  let out: Assignment[] = [{ ...known }];
+  for (const dimension of dimensions) {
+    if (known[dimension.id] !== undefined) continue;
+    const next: Assignment[] = [];
+    for (const partial of out) {
+      for (const value of valuesFor(dimension)) {
+        const candidate = { ...partial, [dimension.id]: value };
+        if (coherent(candidate)) next.push(candidate);
+      }
+    }
+    out = next;
+  }
+  return out;
+}
+
+/**
+ * The seasons that could apply, each named once, with the conditions the
+ * hunter has not already stated — so an unasked fact (under 18, a particular
+ * licence) is never silently assumed, and a season every licence shares is not
+ * listed three times.
+ */
+function describeSeasons(
+  rules: ConditionalRule[],
+  vocabulary: ConditionalVocabulary,
+  answered: Assignment,
+  offered: (dimension: VocabularyDimension) => string[],
+): string[] {
+  const bySeason = new Map<string, ConditionalRule[]>();
+  for (const rule of rules) {
+    if (rule.declaredNoSeason) continue;
+    const key = `${rule.seasonLabel} ${rule.seasonPhrase}`;
+    bySeason.set(key, [...(bySeason.get(key) ?? []), rule]);
+  }
+  const out: string[] = [];
+  for (const [season, group] of bySeason) {
+    const qualifiers: string[] = [];
+    const namedByLicence = new Set<string>();
+    for (const dimension of vocabulary.dimensions) {
+      const key = ruleKeyOf(dimension);
+      if (key === IMPLEMENTS || answered[dimension.id] !== undefined) continue;
+      if (group.some((rule) => rule.appliesWhen[key] === undefined)) continue;
+      const values = [...new Set(group.map((rule) => rule.appliesWhen[key] as string))];
+      if (offered(dimension).every((value) => values.includes(value))) continue;
+      const labels = values.map((value) =>
+        vocabulary.describe?.(dimension.id, value) ?? dimension.options.find((option) => option.value === value)?.label ?? value);
+      // Already said by the season's own label ("(under age 18 only)").
+      qualifiers.push(labels.every((label) => season.toLowerCase().includes(label.toLowerCase())) ? "" : labels.join(" or "));
+      if (dimension.implies) for (const implied of Object.values(dimension.implies)) for (const other of Object.keys(implied)) namedByLicence.add(other);
+    }
+    // A named licence already says who may hold it; drop the facts it implies.
+    const kept = qualifiers.filter((_label, index) => {
+      const dimension = vocabulary.dimensions.filter((entry) => {
+        const key = ruleKeyOf(entry);
+        return key !== IMPLEMENTS && answered[entry.id] === undefined && !group.some((rule) => rule.appliesWhen[key] === undefined) &&
+          !offered(entry).every((value) => group.some((rule) => rule.appliesWhen[key] === value));
+      })[index];
+      return !(dimension && namedByLicence.has(dimension.id));
+    });
+    const shown = kept.filter(Boolean);
+    out.push(shown.length ? `${season} (${shown.join("; ")})` : season);
+  }
+  return out;
+}
+
+function conditionsFor(
+  bundle: ConditionalBundle,
+  rules: ConditionalRule[],
+  speciesId: string,
+  zoneId: string,
+  date: string,
+): ConditionalCondition[] {
+  const all = new Map(bundle.sources.flatMap((source) => source.conditions ?? []).map((condition) => [condition.id, condition]));
+  const ids = [...new Set(rules.flatMap((rule) => rule.conditionIds))];
+  const out: ConditionalCondition[] = [];
+  for (const id of ids) {
+    const condition = all.get(id);
+    if (!condition) throw new Error(`Rule refers to unknown condition ${id}`);
+    if (condition.speciesIds && !condition.speciesIds.includes(speciesId)) continue;
+    if (condition.zoneIds && !condition.zoneIds.includes(zoneId)) continue;
+    const windows = condition.activeWindowsByZone ? condition.activeWindowsByZone[zoneId] : condition.activeWindows;
+    if ((condition.activeWindowsByZone || condition.activeWindows) && !windows?.some((window) => date >= window.opensIso && date <= window.closesIso)) continue;
+    out.push(condition);
+  }
+  return out;
+}
+
+/* ── Evaluation ─────────────────────────────────────────────────────────── */
+
+export function evaluateConditional(
+  bundle: ConditionalBundle,
+  vocabulary: ConditionalVocabulary,
+  input: ConditionalInput,
+): ConditionalEvaluation {
+  const { place, date } = input;
+  const unit = place.zoneName;
+  const species = input.speciesName;
+  const groups = new Map(bundle.groups.map((group) => [group.id, group]));
+
+  const base = (overrides: Partial<RegulatoryResult>, rules: ConditionalRule[] = []): RegulatoryResult => ({
+    status: "UNKNOWN",
+    summary: "",
+    legalTime: vocabulary.legalTime,
+    requirements: [],
+    limitations: [...vocabulary.standingLimitations],
+    sourceIds: [...new Set([...rules.map((rule) => rule.sourceId), ...vocabulary.standingSourceIds])] as CanonicalId<"source">[],
+    verifiedAt: bundle.retrievedAt,
+    ...overrides,
+  });
+
+  const speciesRules = bundle.rules.filter((rule) => rule.speciesId === input.speciesId && PUBLISHABLE.has(rule.reviewStatus));
+  if (!speciesRules.length) {
+    return {
+      completeness: "RESOLVED",
+      dimensions: [],
+      result: base({
+        status: "UNKNOWN",
+        summary: `North Ground has not certified ${vocabulary.jurisdictionName} rules for ${species}. That is a gap in North Ground's coverage, not a statement that there is no season.`,
+      }),
+    };
+  }
+
+  if (date < bundle.certifiedPeriod.from || date > bundle.certifiedPeriod.to) {
+    return {
+      completeness: "RESOLVED",
+      dimensions: [],
+      result: base({
+        status: "NEEDS_VERIFICATION",
+        summary:
+          `North Ground has certified ${vocabulary.jurisdictionName}'s rules for ${bundle.certifiedPeriod.from} to ${bundle.certifiedPeriod.to}. ` +
+          "The selected date falls outside that period, so a version of the law North Ground has not read governs it.",
+        limitations: [...vocabulary.standingLimitations, ...(bundle.certifiedPeriod.reason ? [bundle.certifiedPeriod.reason] : [])],
+      }, speciesRules.slice(0, 1)),
+    };
+  }
+
+  /* ── The worlds this point could be in, and the rules that can reach it ── */
+
+  const { worlds, unknowns } = placeWorlds(bundle, place, speciesRules);
+  const rules = speciesRules.filter((rule) => worlds.some((world) => appliesInWorld(rule, groups, place, world)));
+  const context: OutcomeContext = { date, place, groups, absence: bundle.absence, vocabulary };
+
+  if (!rules.length) {
+    if (bundle.absence.meaning === "CLOSED") {
+      return {
+        completeness: "RESOLVED",
+        dimensions: [],
+        result: base({
+          status: "CLOSED",
+          summary:
+            `No ${vocabulary.jurisdictionName} licence authorises hunting ${species} in ${unit}. ` +
+            `${bundle.absence.explanation ?? ""} (${bundle.absence.section ?? "source"})`.trim(),
+        }, speciesRules.slice(0, 1)),
+      };
+    }
+    return {
+      completeness: "RESOLVED",
+      dimensions: [],
+      result: base({
+        status: "UNKNOWN",
+        summary:
+          `No certified rule covers ${species} in ${unit}. The unit is not named by any season row North Ground has certified, ` +
+          "and an absent row is not evidence that the season is closed.",
+      }),
+    };
+  }
+
+  /* ── Which facts matter, and which are already known ─────────────── */
+
+  const relevant = vocabulary.dimensions.filter((dimension) =>
+    rules.some((rule) => rule.appliesWhen[ruleKeyOf(dimension)] !== undefined));
+
+  /* The values a fact can take are what this species' law recognises, not what
+     the rules here happen to name. A Manitoba resident at a place only
+     non-residents' licences reach is still a Manitoba resident, and the answer
+     for them (closed, by s. 3) is a real answer. */
+  const valuesFor = (dimension: VocabularyDimension): string[] => {
+    const key = ruleKeyOf(dimension);
+    // A method is a fact about the hunter: someone may carry what no season permits.
+    if (key === IMPLEMENTS) return dimension.options.map((option) => option.value);
+    const stated = new Set(speciesRules.map((rule) => rule.appliesWhen[key]).filter((value): value is string => typeof value === "string"));
+    // A rule without the key applies to every value, including values no rule
+    // names, such as an adult where only a youth season names age.
+    const unconstrained = speciesRules.some((rule) => rule.appliesWhen[key] === undefined);
+    return dimension.options.map((option) => option.value).filter((value) => stated.has(value) || unconstrained);
+  };
+
+  /* A combination the vocabulary says cannot occur is not a real one. */
+  const coherent = (assignment: Assignment): boolean => {
+    for (const dimension of vocabulary.dimensions) {
+      const value = assignment[dimension.id];
+      const implied = value === undefined ? undefined : dimension.implies?.[value];
+      if (!implied) continue;
+      for (const [other, required] of Object.entries(implied)) {
+        if (assignment[other] !== undefined && assignment[other] !== required) return false;
+      }
+    }
+    return true;
+  };
+
+  const known: Assignment = {};
+  for (const dimension of relevant) {
+    const value = answerFor(input.answers, dimension.id as HuntDimensionId);
+    const offeredHere = toRequired(dimension, dimension.options.filter((option) => valuesFor(dimension).includes(option.value)));
+    // Answers arrive from a browser. Only a value this dimension offers here,
+    // consistent with the other answers, is applied; anything else leaves the
+    // question open rather than narrowing the rules into a false closure.
+    if (value !== undefined && isAnswerValid(offeredHere, value) && coherent({ ...known, [dimension.id]: value })) {
+      known[dimension.id] = value;
+    }
+  }
+
+  const space = assignments(relevant, known, valuesFor, coherent);
+  const outcomes = space.map((assignment) => ({ assignment, outcome: outcomeFor(rules, assignment, worlds, unknowns, context) }));
+  const answeredDimensions = relevant.filter((dimension) => known[dimension.id] !== undefined);
+  const asRequired = (dimension: VocabularyDimension) => {
+    const values = new Set(space.map((assignment) => assignment[dimension.id]));
+    return toRequired(dimension, dimension.options.filter((option) => values.has(option.value)));
+  };
+
+  if (new Set(outcomes.map((entry) => entry.outcome.key)).size > 1) {
+    /* Ask the first fact, in the vocabulary's order, whose answer changes
+       which outcomes remain possible. Residency is asked before licence
+       because knowing it narrows the answer even though a licence implies it. */
+    const unanswered = relevant.filter((dimension) => known[dimension.id] === undefined);
+    const informative = unanswered.find((dimension) => {
+      const reachable = new Map<string, Set<string>>();
+      for (const { assignment, outcome } of outcomes) {
+        const value = assignment[dimension.id];
+        const set = reachable.get(value) ?? new Set<string>();
+        set.add(outcome.key);
+        reachable.set(value, set);
+      }
+      return new Set([...reachable.values()].map((set) => [...set].sort().join(" | "))).size > 1;
+    }) ?? unanswered[0];
+    const required = asRequired(informative);
+    return {
+      completeness: "NEEDS_INPUT",
+      required,
+      dimensions: [...answeredDimensions.map(asRequired), required],
+    };
+  }
+
+  /* ── One answer, whatever the facts still unknown are ────────────── */
+
+  const outcome = outcomes[0].outcome;
+  const dimensions = answeredDimensions.map(asRequired);
+  const allWorldOutcomes = outcomes.flatMap((entry) => entry.outcome.worlds);
+  const everyApplicable = [...new Set(allWorldOutcomes.flatMap((entry) => entry.applicable))];
+  const everyInSeason = [...new Set(allWorldOutcomes.flatMap((entry) => entry.inSeason))];
+  const offered = (dimension: VocabularyDimension) => valuesFor(dimension).filter((value) => coherent({ ...known, [dimension.id]: value }));
+  const seasons = describeSeasons(everyApplicable.length ? everyApplicable : rules, vocabulary, known, offered);
+  const scope = answeredDimensions.length ? "this combination" : "any licence";
+  const listing = seasons.length ? ` Seasons open to ${scope} here: ${seasons.join("; ")}.` : "";
+  const cited = everyInSeason.length ? everyInSeason : everyApplicable.length ? everyApplicable : rules;
+
+  const conditions = conditionsFor(bundle, everyInSeason, input.speciesId, place.zoneId, date);
+  const requirements = [
+    ...conditions.map((condition) => `${condition.text} (${condition.sourceSection})`),
+    ...[...new Set(everyInSeason.map((rule) =>
+      rule.limits?.statedAs && rule.limits.section ? `Bag limit: ${rule.limits.statedAs} (${rule.limits.section}).` : ""))].filter(Boolean),
+  ];
+  /* When the point's worlds agreed, say what could not be established and that
+     it does not change the answer, so the reader need not take on trust that it
+     was considered. */
+  const agreedDespite = worlds.length > 1 && outcome.status !== "NEEDS_VERIFICATION" && outcome.status !== "CONFLICT"
+    ? unknowns.map((unknown) => `${unknown.statedAs} The answer is the same either way.`)
+    : [];
+  const limitations = [
+    ...agreedDespite,
+    ...new Set(cited.flatMap((rule) => [
+      ...rule.notes.flatMap((note) => typeof note === "string" ? [note] : !note.zoneId || note.zoneId === place.zoneId ? [note.text] : []),
+      ...rule.caveats,
+    ])),
+    ...new Set(conditions.flatMap((condition) => condition.caveats ?? [])),
+    ...vocabulary.standingLimitations,
+  ];
+  const sourceIds = [...new Set([
+    ...cited.map((rule) => rule.sourceId),
+    ...conditions.map((condition) => condition.sourceId),
+    ...vocabulary.standingSourceIds,
+  ])] as CanonicalId<"source">[];
+  const version = cited[0]?.sourceVersion ?? bundle.sourceVersion;
+
+  let result: RegulatoryResult;
+  if (outcome.status === "CONDITIONAL") {
+    const windows = [...new Map(everyInSeason.map((rule) => {
+      const window = containing(rule, date)!;
+      return [`${window.opensIso}/${window.closesIso}`, window] as const;
+    })).values()];
+    const seasonsToday = [...new Set(everyInSeason.map((rule) => `${rule.seasonLabel}, ${rule.seasonPhrase}`))];
+    const limitsRule = everyInSeason[0];
+    const limits = limitsRule.limits && typeof limitsRule.limits.daily === "number" && typeof limitsRule.limits.possession === "number"
+      ? { daily: limitsRule.limits.daily, possession: limitsRule.limits.possession }
+      : undefined;
+    /* The season shown is the one that is open whatever the unknown facts
+       are: when every possible window closes on the same day, it runs from the
+       latest of their openings. Otherwise none is promoted, and the summary
+       names each. */
+    const commonClose = new Set(windows.map((window) => window.closesIso)).size === 1;
+    const season = commonClose
+      ? { opens: windows.map((window) => window.opensIso).sort().at(-1)!, closes: windows[0].closesIso, datesInclusive: true }
+      : undefined;
+    result = base({
+      status: "CONDITIONAL",
+      ...(season ? { season } : {}),
+      ...(limits ? { limits } : {}),
+      summary:
+        `The certified ${version} season for ${species} in ${unit} includes this date (${seasonsToday.join("; or ")}). ` +
+        "Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold." +
+        listing,
+      requirements,
+      limitations,
+      sourceIds,
+    });
+  } else if (outcome.status === "CLOSED") {
+    const nothing = allWorldOutcomes.every((entry) => entry.absent);
+    result = base({
+      status: "CLOSED",
+      summary: nothing
+        ? `No ${vocabulary.jurisdictionName} licence ${answeredDimensions.length ? "matching what you described " : ""}authorises hunting ${species} in ${unit}. ${bundle.absence.explanation ?? ""} (${bundle.absence.section ?? "source"})`
+        : `No ${species} season in ${unit} is open on this date for ${answeredDimensions.length ? "this combination" : "any licence or equipment"}.${listing}`,
+      requirements,
+      limitations,
+      sourceIds,
+    });
+  } else if (outcome.status === "UNKNOWN") {
+    result = base({
+      status: "UNKNOWN",
+      summary: `No certified rule covers ${species} in ${unit} for this combination, and an absent row is not evidence that the season is closed.`,
+      limitations,
+      sourceIds,
+    });
+  } else {
+    result = base({
+      status: outcome.status,
+      summary: outcome.status === "CONFLICT"
+        ? `The official sources disagree about ${species} in ${unit} for this combination, and North Ground will not choose between them.${listing}`
+        : `North Ground cannot state a ${species} season for this exact point, because the answer depends on something it could not establish.${listing}`,
+      requirements,
+      limitations: [...outcome.reasons, ...limitations],
+      sourceIds,
+    });
+  }
+
+  /* Overlapping published restrictions North Ground has not certified. */
+  if (input.restrictions?.length && result.status === "CONDITIONAL") {
+    result = {
+      ...result,
+      status: "NEEDS_VERIFICATION",
+      summary:
+        `This point is inside ${input.restrictions.map((restriction) => restriction.name).join(" and ")}, where ${vocabulary.jurisdictionName} publishes a hunting restriction. ` +
+        `North Ground has not certified how it applies to this hunt, so it will not state a season status here. Outside it: ${result.summary}`,
+      limitations: [
+        ...input.restrictions.map((restriction) => `${restriction.name}: “${restriction.statedAs}”`),
+        ...result.limitations,
+      ],
+      sourceIds: [...new Set([...result.sourceIds, ...input.restrictions.map((restriction) => restriction.sourceId as CanonicalId<"source">)])],
+    };
+  }
+
+  return { completeness: "RESOLVED", dimensions, result };
+}
+
+/* ── Coverage ───────────────────────────────────────────────────────────── */
+
+/** Units a species' certified rules reach, fully or in part, for the coverage report. */
+export function conditionalCoverage(bundle: ConditionalBundle & { officialUnitCount?: number }) {
+  const groups = new Map(bundle.groups.map((group) => [group.id, group]));
+  const species = [...new Set(bundle.rules.filter((rule) => PUBLISHABLE.has(rule.reviewStatus)).map((rule) => rule.speciesId))].sort();
+  return species.map((speciesId) => {
+    const rules = bundle.rules.filter((rule) => rule.speciesId === speciesId && PUBLISHABLE.has(rule.reviewStatus));
+    const reached = new Set<string>();
+    for (const rule of rules) {
+      const group = groups.get(rule.regulatoryGroupId);
+      for (const zone of [...(group?.zoneIds ?? []), ...(group?.partialZoneIds ?? [])]) reached.add(zone);
+    }
+    const officialUnits = bundle.officialUnitCount ?? reached.size;
+    return {
+      speciesId,
+      rules: rules.length,
+      unitsReached: reached.size,
+      /* Where the law makes an unlisted unit closed, the rest are closed by
+         that provision rather than unknown. */
+      unitsClosedByAbsence: bundle.absence.meaning === "CLOSED" ? officialUnits - reached.size : 0,
+      unitsUnknown: bundle.absence.meaning === "CLOSED" ? 0 : officialUnits - reached.size,
+      /* Whether evaluating can ever ask anything: true only if two rules for
+         the same place disagree about dates or limits. Grouse rules are keyed
+         by licence but every licence gives the same season, so grouse asks
+         nothing. */
+      requiresInput: [...groups.keys()].some((groupId) => {
+        const inGroup = rules.filter((rule) => rule.regulatoryGroupId === groupId);
+        return new Set(inGroup.map((rule) => JSON.stringify([rule.windows.map((w) => [w.opensIso, w.closesIso]), rule.limits ?? null, rule.appliesWhen.permittedImplements ?? null]))).size > 1;
+      }),
+    };
+  });
+}

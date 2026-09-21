@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  certifiedSpan, crossesYear, evaluateSeason, parseSeasonPhrase, resolveWindow,
+  anchorToLicenceYear, certifiedSpan, crossesYear, evaluateResolvedWindows, evaluateSeason,
+  parseSeasonPhrase, resolveWindow,
   type SeasonWindow,
 } from "./season.ts";
 
@@ -176,4 +177,75 @@ test("a phrase carrying a qualification beyond its dates is refused", () => {
   // Truncating this to its dates would drop the condition that changes its meaning.
   assert.equal(parseSeasonPhrase("September 15 to December 31 except in controlled hunt areas"), null);
   assert.equal(parseSeasonPhrase("None"), null);
+});
+
+/* ── Licence years that start in April (Manitoba) ────────────────────────── */
+
+const APRIL_1 = { month: 4, day: 1 };
+
+test("a window opening after the licence year starts stays in the start year", () => {
+  // M.R. 165/91: white-tailed deer archery "Aug. 31 – Sept. 20".
+  const window = anchorToLicenceYear({ opens: { month: 8, day: 31 }, closes: { month: 9, day: 20 } }, 2026, APRIL_1);
+  assert.deepEqual(window, { opensIso: "2026-08-31", closesIso: "2026-09-20", crossesYear: false });
+});
+
+test("a January window in an April licence year is the following January", () => {
+  // Elk in GHA 23: "Jan. 11 – Jan. 24". Calendar-year anchoring would put it in
+  // January 2026, ten months before the season it describes.
+  const window = anchorToLicenceYear({ opens: { month: 1, day: 11 }, closes: { month: 1, day: 24 } }, 2026, APRIL_1);
+  assert.deepEqual(window, { opensIso: "2027-01-11", closesIso: "2027-01-24", crossesYear: false });
+});
+
+test("a window crossing the calendar year closes in the year after it opens", () => {
+  // Grouse: "Sept. 1 – Jan. 1".
+  const window = anchorToLicenceYear({ opens: { month: 9, day: 1 }, closes: { month: 1, day: 1 } }, 2026, APRIL_1);
+  assert.deepEqual(window, { opensIso: "2026-09-01", closesIso: "2027-01-01", crossesYear: true });
+});
+
+test("'the last day of February of the following year' follows the leap cycle", () => {
+  const ptarmigan: SeasonWindow = { opens: { month: 9, day: 1 }, closes: { month: 2, lastDay: true } };
+  assert.equal(anchorToLicenceYear(ptarmigan, 2026, APRIL_1).closesIso, "2027-02-28");
+  assert.equal(anchorToLicenceYear(ptarmigan, 2027, APRIL_1).closesIso, "2028-02-29");
+});
+
+test("a window that would run past the licence year is refused rather than stretched", () => {
+  // "Mar. 1 – Apr. 10" straddles two hunting years; it cannot be one year's rule.
+  assert.throws(
+    () => anchorToLicenceYear({ opens: { month: 3, day: 1 }, closes: { month: 4, day: 10 } }, 2026, APRIL_1),
+    /runs past its licence year/,
+  );
+});
+
+test("a strict licence year agrees with the calendar resolver wherever both apply", () => {
+  // Not a second, disagreeing implementation of the same idea. For a window that
+  // stays inside one calendar year the two give identical days.
+  for (const year of [2026, 2027, 2028]) {
+    assert.deepEqual(anchorToLicenceYear(SEP15_DEC31[0], year, { month: 1, day: 1 }), resolveWindow(SEP15_DEC31[0], year));
+  }
+  // They differ, deliberately, on a window that crosses the year. Ontario's
+  // summary assigns a season to the year it OPENS, so "September 15 to March 31"
+  // legitimately ends in the next calendar year. Manitoba's regulation defines a
+  // twelve-month hunting year, and a window that leaves it describes another
+  // year. The strict anchor refuses rather than silently adopting Ontario's
+  // reading, which is why Ontario keeps its own resolver.
+  for (const window of [SEP15_MAR31[0], SEP25_LASTFEB[0]]) {
+    assert.throws(() => anchorToLicenceYear(window, 2026, { month: 1, day: 1 }), /runs past its licence year/);
+  }
+});
+
+test("resolved windows answer only inside the span the source speaks to", () => {
+  const windows = [
+    anchorToLicenceYear({ opens: { month: 8, day: 31 }, closes: { month: 9, day: 20 } }, 2026, APRIL_1),
+    anchorToLicenceYear({ opens: { month: 10, day: 12 }, closes: { month: 11, day: 8 } }, 2026, APRIL_1),
+  ];
+  // The consolidation read was in force from 16 June 2026 to the licence year's end.
+  const certified = { from: "2026-06-16", to: "2027-03-31" };
+  assert.equal(evaluateResolvedWindows(windows, certified, "2026-08-31").verdict, "IN_SEASON");
+  assert.equal(evaluateResolvedWindows(windows, certified, "2026-09-20").verdict, "IN_SEASON");
+  assert.equal(evaluateResolvedWindows(windows, certified, "2026-09-21").verdict, "OUT_OF_SEASON");
+  assert.equal(evaluateResolvedWindows(windows, certified, "2026-11-08").verdict, "IN_SEASON");
+  assert.equal(evaluateResolvedWindows(windows, certified, "2026-11-09").verdict, "OUT_OF_SEASON");
+  // Before the version in force, and after the licence year: not closed — uncertified.
+  assert.equal(evaluateResolvedWindows(windows, certified, "2026-06-15").verdict, "OUTSIDE_CERTIFIED_PERIOD");
+  assert.equal(evaluateResolvedWindows(windows, certified, "2027-04-01").verdict, "OUTSIDE_CERTIFIED_PERIOD");
 });

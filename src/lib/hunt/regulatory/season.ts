@@ -127,6 +127,87 @@ export function evaluateSeason(
   return { verdict: "OUTSIDE_CERTIFIED_PERIOD", windows: resolved, span };
 }
 
+/* ── Licence years that do not start on 1 January ────────────────────────── */
+
+/**
+ * The first day of a jurisdiction's licence year, as a month and day.
+ *
+ * Ontario's summary is read as a calendar year, which is what everything above
+ * assumes. Manitoba's is not: its regulation defines the "hunting year" as
+ * 1 April to 31 March, so an elk season written "Jan. 11 – Jan. 24" in the
+ * 2026 regulation means January 2027, and anchoring it to the year the summary
+ * was published would put it ten months in the past.
+ */
+export interface LicenceYearStart {
+  month: number;
+  day: number;
+}
+
+function monthDayOrder(month: number, day: number): number {
+  return month * 100 + day;
+}
+
+/**
+ * Anchor a window to the licence year beginning on `startYear`-`start`.
+ *
+ * A window whose opening falls before the licence year's first day belongs to
+ * the next calendar year; a window that closes before it opens crosses into the
+ * year after its opening. Everything is computed on (year, month, day) triples
+ * and never through a timestamp, so no time zone can move a season by a day.
+ */
+export function anchorToLicenceYear(
+  window: SeasonWindow,
+  startYear: number,
+  start: LicenceYearStart,
+): ResolvedWindow {
+  const opensInFollowingYear = anchorOrder(window.opens) < monthDayOrder(start.month, start.day);
+  const openYear = opensInFollowingYear ? startYear + 1 : startYear;
+  const crossing = crossesYear(window);
+  const closeYear = crossing ? openYear + 1 : openYear;
+
+  const opensDay = anchorDay(window.opens, openYear);
+  const closesDay = anchorDay(window.closes, closeYear);
+  if (!isValidYmd(openYear, window.opens.month, opensDay) || !isValidYmd(closeYear, window.closes.month, closesDay)) {
+    throw new Error("Season window does not describe real calendar days");
+  }
+
+  const resolved = {
+    opensIso: toIso(openYear, window.opens.month, opensDay),
+    closesIso: toIso(closeYear, window.closes.month, closesDay),
+    crossesYear: crossing,
+  };
+  /* A licence year is twelve months. A window that closes after the year ends
+     describes a different year and cannot be certified against this one. */
+  const lastDay = toIso(startYear + 1, start.month, start.day);
+  if (resolved.closesIso >= lastDay) {
+    throw new Error(`Season window ${resolved.opensIso} to ${resolved.closesIso} runs past its licence year`);
+  }
+  return resolved;
+}
+
+/**
+ * Where a date falls against windows already anchored to real days.
+ *
+ * `certified` is the span the source actually speaks to: the part of the
+ * licence year for which the version North Ground read was in force. Outside it
+ * the answer is not "closed" — it is that a different version of the law
+ * governs, which North Ground has not certified.
+ */
+export function evaluateResolvedWindows(
+  windows: ResolvedWindow[],
+  certified: { from: string; to: string },
+  date: string,
+): SeasonEvaluation {
+  if (!windows.length) throw new Error("A rule must declare at least one season window");
+  if (date < certified.from || date > certified.to) {
+    return { verdict: "OUTSIDE_CERTIFIED_PERIOD", windows, span: certified };
+  }
+  const containing = windows.find((window) => date >= window.opensIso && date <= window.closesIso);
+  return containing
+    ? { verdict: "IN_SEASON", window: containing, windows, span: certified }
+    : { verdict: "OUT_OF_SEASON", windows, span: certified };
+}
+
 /* ── Parsing the authority's own wording ─────────────────────────────────── */
 
 const MONTHS: Record<string, number> = {

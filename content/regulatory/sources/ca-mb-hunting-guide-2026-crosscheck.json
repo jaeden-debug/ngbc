@@ -1,0 +1,189 @@
+{
+  "purpose": "An independent oracle for the Manitoba builder. Rules are generated from M.R. 165/91, which controls; this transcription of the 2026 guide is compared against every generated rule so that a parsing or interpretation error shows up as a disagreement instead of as a confident answer. It is never used to produce a rule.",
+  "source": {
+    "id": "source:ca-mb-hunting-guide-2026",
+    "title": "Manitoba Hunting Guide 2026",
+    "url": "https://www.gov.mb.ca/nrnd/fish-wildlife/pubs/fish_wildlife/huntingguide.pdf",
+    "sha256": "sha256:74a15553c9a4f4be0a79b17f7e7a451ca8330c9041c26711b7fc3df824a1f36e",
+    "licenceYear": "2026-04-01 to 2027-03-31",
+    "statesOfItself": "This guide is a summary of wildlife regulations. It is neither a legal document nor a complete collection of wildlife regulations.",
+    "transcribedOn": "2026-09-20",
+    "method": "Text extracted from the PDF above and transcribed table by table; each block names the page it comes from. If the PDF's hash changes, the builder refuses to use this transcription until it is redone."
+  },
+  "residencyClasses": {
+    "page": 7,
+    "MANITOBA_RESIDENT": "A person whose primary residence is in Manitoba and who has lived in Manitoba for at least six consecutive months during the 12-month period immediately before the person applies for a licence of permit under this act.",
+    "CANADIAN_RESIDENT": "A person other than a Manitoba resident, who is a Canadian citizen, a permanent resident within the meaning of the Immigration and Refugee Protection Act (Canada), or a person whose primary residence is in Canada and who has lived in Canada for at least six consecutive months during the 12-month period immediately before the person applies for a licence or permit under this Act.",
+    "NON_CANADIAN_RESIDENT": "A person who is not a Manitoba resident or a Canadian resident."
+  },
+  "cwdMandatorySampling": {
+    "page": 5,
+    "statedAs": "It is mandatory for all hunters to submit biological samples from elk, mule deer and white-tailed deer harvested in the following GHAs",
+    "areas": ["5", "6", "6A", "11", "12", "13", "13A", "18", "18A", "18B", "18C", "22", "23", "23A", "27", "28", "29", "29A", "30", "31", "31A", "32", "33", "35", "35A"],
+    "submitWithin": "Please submit samples within seven days of harvesting to any of the province's drop-off locations that can be found at manitoba.ca/cwd."
+  },
+  "uplandGameBirds": {
+    "page": 56,
+    "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"],
+    "grouse": [
+      { "gbhz": [1, 2], "window": "Sept. 1 – Jan. 1" },
+      { "gbhz": [3, 4], "window": "Sept. 8 – Jan. 1" }
+    ],
+    "limits": {
+      "ruffed": { "daily": 6, "possession": 12 },
+      "spruce": { "daily": 6, "possession": 12 },
+      "sharpTailed": { "daily": 6, "possession": 12 }
+    },
+    "sharpTailedNote": { "areas": ["19", "19B", "22", "23", "23A", "24", "27", "28", "29", "29A", "30", "31", "31A", "32", "33"], "statedAs": "In GHAs 19, 19B, 22 - 24, 27 - 33 the sharp-tailed grouse bag limit is 4 daily or 8 in possession.", "daily": 4, "possession": 8 }
+  },
+  "whiteTailedDeer": {
+    "general": {
+      "pages": [29, 30],
+      "zones": [
+        {
+          "zone": "A",
+          "areas": ["5", "6", "6A", "7", "8", "10", "11", "15", "15A", "17", "17B"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Sept. 20", "Oct. 12 – Nov. 8"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"] },
+            { "type": "Youth Muzzleloader", "windows": ["Oct. 12 – Nov. 8"], "residency": ["MANITOBA_RESIDENT"] },
+            { "type": "Muzzleloader", "windows": ["Oct. 19 – Nov. 8"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"] },
+            { "type": "General (rifle)", "windows": ["Sept. 21 – Oct. 18", "Nov. 9 – Nov. 29"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"] }
+          ]
+        },
+        {
+          "zone": "B",
+          "areas": ["12", "13", "14", "14A", "17A", "18", "19A", "20", "21", "21A", "25"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Sept. 20", "Oct. 12 – Nov. 8"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"] },
+            { "type": "Youth Muzzleloader", "windows": ["Oct. 12 – Nov. 8"], "residency": ["MANITOBA_RESIDENT"] },
+            { "type": "Muzzleloader", "windows": ["Oct. 19 – Nov. 8"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"] },
+            { "type": "General (rifle)", "windows": ["Nov. 9 – Nov. 29"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"] }
+          ]
+        },
+        {
+          "zone": "C",
+          "areas": ["16", "23", "34", "35"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Nov. 8"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"] },
+            { "type": "Youth Muzzleloader", "windows": ["Oct. 12 – Nov. 8"], "residency": ["MANITOBA_RESIDENT"] },
+            { "type": "Muzzleloader", "windows": ["Oct. 19 – Nov. 8"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"] },
+            { "type": "General (rifle)", "windows": ["Nov. 9 – Nov. 29"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"] }
+          ]
+        },
+        {
+          "zone": "C exception (26, 36, excluding Whiteshell Game Bird Refuge)",
+          "areas": ["26", "36"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Nov. 8"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"] },
+            { "type": "Youth Muzzleloader", "windows": ["Sept. 24 – Nov. 8"], "residency": ["MANITOBA_RESIDENT"] },
+            { "type": "Muzzleloader", "windows": ["Oct. 1 – Nov. 8"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"] },
+            { "type": "General (rifle)", "windows": ["Nov. 9 – Dec. 13"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"] }
+          ]
+        },
+        {
+          "zone": "D",
+          "areas": ["13A", "18A", "18B", "18C", "19", "19B", "23A"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Nov. 8"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"] },
+            { "type": "Youth Muzzleloader", "windows": ["Oct. 12 – Nov. 8"], "residency": ["MANITOBA_RESIDENT"] },
+            { "type": "Muzzleloader", "windows": ["Oct. 19 – Nov. 8"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"] },
+            { "type": "General (rifle)", "windows": ["Nov. 9 – Nov. 29"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"] }
+          ]
+        },
+        {
+          "zone": "E",
+          "areas": ["22", "24", "25A", "25B", "27", "28", "29", "29A", "30", "31", "31A", "32", "34C", "35A"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Nov. 8"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"] },
+            { "type": "Youth Muzzleloader", "windows": ["Oct. 12 – Nov. 8"], "residency": ["MANITOBA_RESIDENT"] },
+            { "type": "Muzzleloader", "windows": ["Oct. 19 – Nov. 8"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT"] },
+            { "type": "General (rifle)", "windows": ["Nov. 9 – Nov. 29"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT"] }
+          ]
+        },
+        {
+          "zone": "F",
+          "areas": ["33"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Dec. 20"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"] },
+            { "type": "Shotgun and Muzzleloader", "windows": ["Sept. 21 – Oct. 4", "Nov. 30 – Dec. 20"], "residency": ["MANITOBA_RESIDENT"] }
+          ]
+        },
+        {
+          "zone": "F exception (those parts of area 38 found within the R.M. of Macdonald)",
+          "areas": [],
+          "specialGeography": "special_geography:ca-mb-gha-38-rm-of-macdonald",
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Dec. 20"], "residency": ["MANITOBA_RESIDENT"] },
+            { "type": "Shotgun and Muzzleloader", "windows": ["Sept. 21 – Oct. 4", "Nov. 30 – Dec. 20"], "residency": ["MANITOBA_RESIDENT"] }
+          ]
+        },
+        {
+          "zone": "Areas 34A, 34B",
+          "areas": ["34A", "34B"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Nov. 29"], "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"] }
+          ]
+        }
+      ],
+      "notes": [
+        { "statedAs": "General deer hunters who hunt white-tailed deer in GHA 5, 6, 6A, 7, 8, 10, 11, 15 and 15A between September 21 and October 18 must also possess a valid draw moose licence for the area they are hunting.", "page": 29 },
+        { "statedAs": "Bowhunters who hunt white-tailed deer in GHA 13 or 18 between August 31 and September 20 must also possess a valid elk archery tag for the area in which they are hunting. Hecla Island is closed to white-tailed deer hunting.", "page": 29 },
+        { "statedAs": "The Whiteshell Game Bird Refuge is closed to white-tailed deer hunting.", "page": 29 },
+        { "statedAs": "The Delta Game Bird Refuge is closed to white-tailed deer hunting.", "page": 30 },
+        { "statedAs": "A hunter must have written landowner permission during the Shotgun/Muzzleloader Season in GHA 33 and portion of 38.", "page": 30 },
+        { "statedAs": "Centrefire rifles cannot be used in the Near-Urban Centrefire Prohibition Area.", "page": 30 }
+      ]
+    },
+    "second": {
+      "page": 31,
+      "residency": ["MANITOBA_RESIDENT"],
+      "rows": [
+        { "areas": ["5", "6", "6A", "7", "8", "10", "11", "13", "15", "15A", "17", "17A", "17B", "18"], "seasons": [
+          { "type": "Archery", "windows": ["Aug. 31 – Sept. 20", "Oct. 12 – Nov. 8"] },
+          { "type": "Muzzleloader", "windows": ["Oct. 19 – Nov. 8"] },
+          { "type": "General (rifle)", "windows": ["Nov. 9 – Nov. 29"] }
+        ] },
+        { "areas": ["13A", "18A", "18B", "18C", "23", "23A", "24", "22", "25B", "27", "28", "29", "29A", "30", "31", "31A", "32", "35A"], "seasons": [
+          { "type": "Archery", "windows": ["Aug. 31 – Nov. 8"] },
+          { "type": "Muzzleloader", "windows": ["Oct. 19 – Nov. 8"] },
+          { "type": "General (rifle)", "windows": ["Nov. 9 – Nov. 29"] }
+        ] },
+        { "areas": ["26", "36"], "seasons": [
+          { "type": "Archery", "windows": ["Aug. 31 – Nov. 8"] },
+          { "type": "Muzzleloader", "windows": ["Oct. 1 – Nov. 8"] },
+          { "type": "General (rifle)", "windows": ["Nov. 9 – Dec. 13"] }
+        ] },
+        { "areas": ["34A"], "seasons": [
+          { "type": "Archery", "windows": ["Aug. 31 – Nov. 29"] }
+        ] },
+        { "areas": ["33"], "specialGeography": "special_geography:ca-mb-gha-38-rm-of-macdonald", "seasons": [
+          { "type": "Archery", "windows": ["Aug. 31 – Dec. 20"] },
+          { "type": "Shotgun and Muzzleloader", "windows": ["Sept. 21 – Oct. 4", "Nov. 30 – Dec. 20"] }
+        ] }
+      ]
+    },
+    "third": {
+      "page": 31,
+      "residency": ["MANITOBA_RESIDENT"],
+      "rows": [
+        { "areas": ["22", "27", "28", "29", "29A"], "seasons": [
+          { "type": "Archery", "windows": ["Aug. 31 – Nov. 8"] },
+          { "type": "Muzzleloader", "windows": ["Oct. 19 – Nov. 8"] },
+          { "type": "General (rifle)", "windows": ["Nov. 9 – Nov. 29"] }
+        ] },
+        { "areas": ["26"], "seasons": [
+          { "type": "Archery", "windows": ["Aug. 31 – Nov. 8"] },
+          { "type": "Muzzleloader", "windows": ["Oct. 1 – Nov. 8"] },
+          { "type": "General (rifle)", "windows": ["Nov. 9 – Dec. 13"] }
+        ] },
+        { "areas": ["34A"], "seasons": [
+          { "type": "Archery", "windows": ["Aug. 31 – Nov. 29"] }
+        ] },
+        { "areas": [], "specialGeography": "special_geography:ca-mb-gha-38-rm-of-macdonald", "seasons": [
+          { "type": "Archery", "windows": ["Aug. 31 – Dec. 20"] },
+          { "type": "Shotgun and Muzzleloader", "windows": ["Sept. 21 – Oct. 4", "Nov. 30 – Dec. 20"] }
+        ] }
+      ]
+    }
+  }
+}

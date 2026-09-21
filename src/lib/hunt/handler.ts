@@ -6,7 +6,7 @@ import type { HuntEvaluation, HuntInput } from "./types.ts";
 const MAX_BODY_BYTES = 2_048;
 
 /** Dimension keys the engine understands. Anything else is refused outright. */
-const ANSWER_KEYS = new Set(["RESIDENCY", "HUNT_METHOD", "SEASON_TYPE", "TAG_TYPE", "animalClasses"]);
+const ANSWER_KEYS = new Set(["RESIDENCY", "HUNT_METHOD", "SEASON_TYPE", "TAG_TYPE", "LICENCE_TYPE", "HUNTER_AGE", "animalClasses"]);
 const MAX_ANSWER_LENGTH = 64;
 const MAX_ANIMAL_CLASSES = 8;
 
