@@ -126,10 +126,38 @@ export const MONTH_NAMES = [
 export const WEEKDAY_INITIALS = ["S", "M", "T", "W", "T", "F", "S"];
 export const WEEKDAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-/** The viewer's own local calendar day. */
+/** The viewer's own local calendar day. Client-side only — see below. */
 export function todayIso(now: Date = new Date()): string {
   return toIso(now.getFullYear(), now.getMonth() + 1, now.getDate());
 }
+
+/**
+ * The calendar day in a named jurisdiction, computed identically anywhere.
+ *
+ * `todayIso()` is right for the browser and wrong on the server, where the
+ * "viewer" is a Vercel function in UTC — and a React state initializer runs in
+ * BOTH places. Server and client then disagree, which breaks hydration and, far
+ * worse, ships server HTML dated tomorrow to every crawler for the four hours
+ * each evening that Ontario is a day behind UTC.
+ *
+ * So the server renders the jurisdiction's day, which is deterministic and is
+ * the correct default for a Canada-first product, and the browser corrects it to
+ * the viewer's own day once it has mounted. Both agree during hydration because
+ * both start from this value.
+ */
+export function jurisdictionTodayIso(timeZone: string, now: Date = new Date()): string {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone, year: "numeric", month: "2-digit", day: "2-digit",
+  }).formatToParts(now);
+  const read = (type: string) => Number(parts.find((part) => part.type === type)?.value);
+  return toIso(read("year"), read("month"), read("day"));
+}
+
+/**
+ * Where Hunt's certified coverage is, and therefore whose calendar day the
+ * server should assume before it knows the viewer's.
+ */
+export const HUNT_DEFAULT_TIME_ZONE = "America/Toronto";
 
 /**
  * Calendar arithmetic that stays on the calendar.

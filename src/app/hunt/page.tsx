@@ -7,6 +7,7 @@ import { COVERAGE_SUMMARY } from "../../lib/hunt/coverage";
 import { evaluationShape, SUPPORTED_SPECIES_IDS, type SpeciesSelectorOption } from "../../lib/hunt/coverage";
 import { contentRepository } from "../../lib/content/repository";
 import { COVERAGE_ROADMAP } from "../../lib/hunt/zone-layers";
+import { HUNT_DEFAULT_TIME_ZONE, jurisdictionTodayIso } from "../../lib/hunt/date";
 import { absoluteUrl, SITE_NAME } from "../../lib/site";
 
 export const dynamic = "force-dynamic";
@@ -119,7 +120,13 @@ export default async function HuntPage() {
     <main className={styles.page}>
       <HuntNav />
 
-      <HuntComposer googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY} speciesOptions={speciesOptions} />
+      <HuntComposer
+        googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+        speciesOptions={speciesOptions}
+        /* The server cannot know the viewer's time zone, so it renders the
+           jurisdiction's day. The composer corrects it on mount. */
+        initialDate={jurisdictionTodayIso(HUNT_DEFAULT_TIME_ZONE)}
+      />
 
       <section className={styles.trustStrip} aria-label="How North Ground answers">
         <ul className={styles.trustRow}>

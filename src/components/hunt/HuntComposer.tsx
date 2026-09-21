@@ -42,9 +42,14 @@ const GEOLOCATION_MESSAGES: Record<number, string> = {
  * a real answer — and only the regulatory evaluation waits for a date and a species,
  * because only those three together can say what applies.
  */
-export default function HuntComposer({ googleMapsApiKey, speciesOptions }: { googleMapsApiKey?: string; speciesOptions: SpeciesSelectorOption[] }) {
+export default function HuntComposer({ googleMapsApiKey, speciesOptions, initialDate }: { googleMapsApiKey?: string; speciesOptions: SpeciesSelectorOption[]; initialDate: string }) {
   const [location, setLocation] = useState<SelectedLocation | null>(null);
-  const [date, setDate] = useState<string>(() => todayIso());
+  /**
+   * Starts on the jurisdiction's day, which the server computed, so the first
+   * client render matches the HTML it is hydrating. The viewer's own day is
+   * applied immediately after mount, below.
+   */
+  const [date, setDate] = useState<string>(initialDate);
   const [speciesId, setSpeciesId] = useState<SupportedSpeciesId | null>(null);
   const [locateState, setLocateState] = useState<LocateState>({ kind: "idle" });
   const [zoneState, setZoneState] = useState<ZoneState>({ kind: "idle" });
@@ -70,6 +75,24 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions }: { goo
     () => (location ? { latitude: location.latitude, longitude: location.longitude } : null),
     [location],
   );
+
+  /* ── The viewer's own calendar day ─────────────────────────────────────── */
+
+  /**
+   * Correct the date to the viewer's clock once, after mount.
+   *
+   * The server rendered the jurisdiction's day because it cannot know the
+   * viewer's time zone, and for four hours each evening Ontario is a day behind
+   * UTC. Reading the real clock here is the one moment the browser knows
+   * something the server could not. It runs only on mount, so it can never
+   * overwrite a date the person has since chosen.
+   */
+  useEffect(() => {
+    const viewerToday = todayIso();
+    if (viewerToday !== initialDate) setDate(viewerToday);
+    // Mount only: `initialDate` is fixed for the life of the page.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /* ── Location → zone, before any species or date ───────────────────────── */
 

@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   addDaysIso, addMonths, compareIso, daysInMonth, formatDateInput, isLeapYear, isoParts,
-  isoToDisplay, isValidIso, isValidYmd, parseDateInput, readableIso, todayIso, weekdayOf,
+  isoToDisplay, isValidIso, isValidYmd, jurisdictionTodayIso, parseDateInput, readableIso,
+  todayIso, weekdayOf,
 } from "./date.ts";
 
 /* ── Fast numeric entry ──────────────────────────────────────────────────── */
@@ -145,4 +146,40 @@ test("dates order lexically, which is why they are stored as ISO", () => {
   assert.equal(compareIso("2026-08-08", "2026-09-01"), -1);
   assert.equal(compareIso("2026-09-01", "2026-08-08"), 1);
   assert.equal(compareIso("2026-08-08", "2026-08-08"), 0);
+});
+
+
+/**
+ * The evening a server and a browser disagree about what day it is.
+ *
+ * This was live: at 21:53 in Ontario the server rendered 2026/09/21 and the
+ * browser rendered 2026/09/20, which broke hydration and — the part that
+ * actually matters — served every crawler a Hunt page dated tomorrow for four
+ * hours a night. It is invisible for the other twenty.
+ */
+test("the jurisdiction's day is the jurisdiction's, not the server's", () => {
+  // 01:53 UTC on the 21st is 21:53 on the 20th in Ontario.
+  const evening = new Date("2026-09-21T01:53:00Z");
+  assert.equal(jurisdictionTodayIso("America/Toronto", evening), "2026-09-20");
+  assert.equal(jurisdictionTodayIso("UTC", evening), "2026-09-21");
+});
+
+test("it is computed identically whatever the process time zone", () => {
+  // The server runs in UTC and a developer's machine does not. Both must agree,
+  // because this value is what hydration compares.
+  const instant = new Date("2026-09-21T01:53:00Z");
+  assert.equal(jurisdictionTodayIso("America/Toronto", instant), "2026-09-20");
+  assert.equal(jurisdictionTodayIso("America/Vancouver", instant), "2026-09-20");
+  assert.equal(jurisdictionTodayIso("Australia/Sydney", instant), "2026-09-21");
+});
+
+test("it stays on the calendar across a month and year boundary", () => {
+  assert.equal(jurisdictionTodayIso("America/Toronto", new Date("2027-01-01T04:30:00Z")), "2026-12-31");
+  assert.equal(jurisdictionTodayIso("America/Toronto", new Date("2026-10-01T03:00:00Z")), "2026-09-30");
+});
+
+test("it survives the daylight-saving change that makes Ontario UTC-5", () => {
+  // After the November change Ontario is UTC-5, so the boundary moves an hour.
+  assert.equal(jurisdictionTodayIso("America/Toronto", new Date("2026-11-10T04:30:00Z")), "2026-11-09");
+  assert.equal(jurisdictionTodayIso("America/Toronto", new Date("2026-11-10T05:30:00Z")), "2026-11-10");
 });
