@@ -812,6 +812,31 @@ female, juvenile, seasonal form or lookalike comparison). Every label must match
 what was independently verified. If exact identity, licence and attribution are
 not verified, publish no photo.
 
+### Canonical species PRIMARY media
+
+Each canonical biological species may have exactly one current `PRIMARY` image.
+That relationship is runtime data keyed by the canonical `species:*` ID; it does
+not live in a route, filename, content bundle, jurisdiction, or individual UI
+component. Every surface that needs the general species image resolves the same
+relationship. Current consumers are the species library, species profile, Hunt
+selector, Hunt result, Hunt map species filter and Ready to Hunt. A future
+consumer must use this relationship rather than create another image mapping.
+
+The administrator assigns identity by dropping an image onto the species card in
+the canonical library. The card supplies the species ID. Filenames, OCR, AI
+classification and slug matching must never decide identity. Replacing an image
+must show the current and proposed images and use optimistic concurrency so an
+older browser cannot silently replace a newer assignment.
+
+Uploads are server-handled and administrator-only. The raw upload is decoded and
+re-encoded without EXIF, GPS, XMP or IPTC; it is never retained. Store one
+sanitized master plus immutable, versioned WebP derivatives for avatar, card and
+profile use in private storage. The database keeps creator, licence, accessible
+alt text, source hash, verifying administrator and retirement history. Public
+pages receive only same-origin rendition URLs with fixed dimensions and a
+neutral placeholder when no verified PRIMARY exists. Removing a temporary admin
+uploader must never remove the schema, storage, read model or consumer contract.
+
 Hunting content may include:
 
 - hunting methods

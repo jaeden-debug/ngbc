@@ -1,6 +1,6 @@
 # North Ground Technical Foundation Audit
 
-Audit date: 2026-09-20
+Audit date: 2026-09-20; extended 2026-09-21 for canonical species-media foundations
 
 Scope: current `main` worktree through the technical-foundation remediation commits, excluding uncommitted files owned by other agents.
 
@@ -36,6 +36,7 @@ Status vocabulary: **FIXED** is complete in repository code and local production
 | Redirect behavior | **PARTIAL** | A no-trailing-slash policy and 308 normalization are tested. No historical redirects were invented; host/HTTPS rules remain deployment-owned. |
 | Framework signature | **FIXED** | `poweredByHeader` is disabled. |
 | Analytics | **BLOCKED** | No analytics is configured. Provider, consent, coarse-location policy, retention, and event design must be approved before instrumentation. |
+| Canonical species PRIMARY media | **PARTIAL** / production activation **BLOCKED** | Server-authenticated card drop, canonical-ID binding, private storage, metadata-stripping WebP pipeline, service-role-only schema, atomic replacement/history, placeholders and shared library/profile/Hunt consumers are implemented. Schema replay and seven focused tests pass; a real local browser proved sign-in plus first durable upload and immediate library refresh. Production migration/bucket/admin variables and the interrupted replacement/all-consumer browser certification remain. |
 | Hero scroll/reflow, modal semantics, native image, lint, media performance | **REMAINS** | These findings are still valid in active visual files and were not modified. |
 | Route error/loading boundaries | **REMAINS** | Still premature until dynamic public route ownership settles. |
 
@@ -47,6 +48,7 @@ Status vocabulary: **FIXED** is complete in repository code and local production
 - Production HTTP validation: `/`, `/robots.txt`, `/sitemap.xml`, and `/opengraph-image` return 200; an unknown path returns a branded 404/noindex page; trailing-slash variants normalize with 308.
 - Home HTML contains one server-rendered H1, an absolute canonical URL, complete baseline metadata, Open Graph/Twitter tags, and Organization/WebSite JSON-LD.
 - Media payload on disk is approximately 7.1 MB across video variants; browser transfer depends on codec/media selection and was not measured with Lighthouse.
+- Species media uses fixed-dimension avatar/card/profile WebP derivatives, lazy loading by default and immutable asset URLs. Raw uploads and embedded location metadata are not retained.
 
 ## Original findings
 
@@ -96,6 +98,7 @@ This table preserves the evidence captured at audit time. The remediation-status
 | performance | Build passes and media variants are compact, but no CWV certification; P2/P3 findings |
 | newsletter persistence | **FIXED** in code; production credentials **BLOCKED** |
 | analytics | **BLOCKED** on policy/provider decision; intentionally not added |
+| canonical species media | **PARTIAL** in repository; production activation and final replacement/browser sweep **BLOCKED** |
 
 ## Recommended order
 
