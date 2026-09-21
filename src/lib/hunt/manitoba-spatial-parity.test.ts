@@ -50,7 +50,10 @@ test("every area the regulation defines was sampled inside and at its edge, and 
   for (const kind of ["inside", "edge"]) {
     const sampled = ofKind(kind).map((item) => item.label.replace(`${kind} `, "")).sort(compareGhaDesignations);
     assert.deepEqual(sampled, DEFINED_AREAS, `${kind} points must cover every defined area`);
-    for (const item of ofKind(kind)) assert.deepEqual(item.northGround, [item.label.replace(`${kind} `, "")], item.label);
+    // Both sides are recorded as canonical-id tails, which are lower case ("13a").
+    for (const item of ofKind(kind)) {
+      assert.deepEqual(item.northGround, [item.label.replace(`${kind} `, "").toLowerCase()], item.label);
+    }
   }
 });
 
