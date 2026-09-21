@@ -154,7 +154,14 @@ test("Ontario, Manitoba and Alberta answer side by side for one species, each as
 });
 
 test("only served layers and real designations are summarised", async () => {
-  await assert.rejects(summarizeZone({ layerId: "layer:ca-qc-zone-chasse", designation: "10" }, "2026-09-21"), ZoneSummaryError);
+  const quebec = layerById("layer:ca-qc-zone-chasse")!;
+  const was = quebec.serving;
+  quebec.serving = false;
+  try {
+    await assert.rejects(summarizeZone({ layerId: quebec.id, designation: "10E" }, "2026-09-21"), ZoneSummaryError);
+  } finally {
+    quebec.serving = was;
+  }
   await assert.rejects(summarizeZone({ layerId: "layer:ca-on-wmu", designation: "57; drop" }, "2026-09-21"), ZoneSummaryError);
 });
 

@@ -209,7 +209,7 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     authority: "Gouvernement du Québec",
     sourceId: "source:ca-qc-zone-chasse-service",
     bounds: { minLatitude: 44.9, maxLatitude: 62.7, minLongitude: -79.9, maxLongitude: -57 },
-    serving: false,
+    serving: true,
     officialNamePrefix: "Zone de chasse ",
     certifiedDesignations: new Set(quebecCertifiedUnits.certifiedUnits.map((unit) => unit.toUpperCase())),
     zoneIdPrefix: "management_zone:ca-qc-zone-",

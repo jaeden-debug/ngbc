@@ -132,10 +132,8 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     nameFr: "Québec",
     kind: "province",
     spatial: {
-      /* Ingested and parity-certified, but not yet serving production, which
-         is what VERIFIED means here. Serving waits on the owner's approval of
-         the resolver swap, the zones' promotion and the deploy. */
-      status: "IN_DEVELOPMENT",
+      // Ingested, parity-certified and served (owner-approved 2026-09-21).
+      status: "VERIFIED",
       officialTerm: "Hunting Zone",
       officialTermFr: "zone de chasse",
       officialSourceUrl:
@@ -149,7 +147,7 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       notes:
         "All 59 designations are in PostGIS exactly as the ministry publishes them — 28 numbered zones (1 to 24 " +
         "and 26 to 29; zone 25 is fishing only) divided into 59 parts, 9,509 polygons, 2,424,981 vertices — held " +
-        "NEEDS_VERIFICATION so the served resolver does not return them. The part, not the number, is the regulatory " +
+        "VERIFIED and served through the derivative-aware resolver (20260921114908). The part, not the number, is the regulatory " +
         "unit: 19N, 19SE, 19SO and 19SNO are four different seasons. " +
         "Parity is certified against the ministry's own service: 306 points, 0 disagreements " +
         "(fixtures/hunt/ca-qc-spatial-parity.json), including Maniwaki (10O), the named territories 08NMR, 27OSB and " +
@@ -159,7 +157,7 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
         "bytes read as Latin-1, which the adapter reverses through the code page itself.",
     },
     regulatory: {
-      status: "IN_DEVELOPMENT",
+      status: "PARTIAL",
       bundleIds: ["bundle:ca-qc-2026"],
       sourceLeads: [
         "Ministère de l'Environnement, de la Lutte contre les changements climatiques, de la Faune et des Parcs — official hunting periods",
@@ -169,10 +167,9 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
         "Certified from the ministry's five French season pages (moose, white-tailed deer, black bear and wild turkey " +
         "for 2026 and 2027; small game from 1 April 2026), read in French and quoted rather than translated. Ten " +
         "species, 186 rules, each in force for its own year or licence year, persisted and read back identical. " +
-        "Not presented until the zone layer is served.",
+        "Every other species answers UNKNOWN.",
     },
     knownGaps: [
-      "Not served yet. Geometry, parity and rules are certified, but Hunt answers nothing in Québec until the owner approves swapping the served resolver to the derivative-aware body (proven identical at 1,206 points elsewhere), promoting the 59 zones to VERIFIED and deploying the serving switch.",
       "Six row fragments stay unresolved on purpose: moose and black bear « Partie est et partie ouest de 19 sud (sauf la partie nord-ouest) » (2026 and 2027), which may reach 19SE and 19SO, and the hares' « Île-du-Havre-Aubert » (both licence years), in zone 21. Where they may apply, their dates answer NEEDS_VERIFICATION, never CLOSED.",
       "Species the pages publish but North Ground has not encoded: coyote and wolf, woodchuck, raccoon, fox, grey partridge, ptarmigan, the nuisance birds, released game birds, rock pigeon, and the moose seasons stated per zec. Each section is hashed, so a change is still detected. Migratory birds are federal.",
       "Zones d'exploitation contrôlée (zecs), réserves fauniques and pourvoiries carry their own access rules and, in some zecs, their own seasons (named in the answer). North Ground does not hold their boundaries; the TFS layer's licence (CC-BY-NC-ND 4.0 on Données Québec) must be settled first.",

@@ -5,6 +5,7 @@ import { evaluateHunt } from "./evaluate.ts";
 import { clearOverlayCache } from "./overlays.ts";
 import type { HuntInput, ZoneResolution } from "./types.ts";
 import { resolveZone, resolveZoneFromOfficialGis, SUPABASE_ZONE_TIMEOUT_MS } from "./zone.ts";
+import { layerById } from "./zone-layers.ts";
 
 /**
  * Manitoba through Hunt's real evaluation path, with every authority faked.
@@ -211,9 +212,17 @@ test("an unplaced point is attributed to a jurisdiction only where one registere
     assert.equal(park.jurisdictionId, "jurisdiction:ca-mb");
     // Maniwaki, Québec: Ontario's extent reaches it, but so does Québec's registered
     // layer, and Ontario's service places it in no WMU. It is not Ontario's to answer.
-    const maniwaki = await resolveZone(46.3806, -75.9722, gisFetch([], []));
-    assert.equal(maniwaki.status, "UNKNOWN");
-    assert.equal(maniwaki.jurisdictionId, undefined);
+    // (Held with Québec's layer unserved; served, Québec's own service places it.)
+    const quebec = layerById("layer:ca-qc-zone-chasse")!;
+    const was = quebec.serving;
+    quebec.serving = false;
+    try {
+      const maniwaki = await resolveZone(46.3806, -75.9722, gisFetch([], []));
+      assert.equal(maniwaki.status, "UNKNOWN");
+      assert.equal(maniwaki.jurisdictionId, undefined);
+    } finally {
+      quebec.serving = was;
+    }
   } finally {
     if (saved === undefined) delete process.env.SPATIAL_PROVIDER;
     else process.env.SPATIAL_PROVIDER = saved;

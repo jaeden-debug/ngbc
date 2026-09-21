@@ -3,6 +3,16 @@ import test from "node:test";
 import { createRateLimiter } from "../../newsletter/rate-limit.ts";
 import { createOverlayHandler, createZoneStatusHandler, createZoneSummaryHandler } from "./handlers.ts";
 import { clearOverlayGeometryCache, overlayLayersFor } from "./overlay-layers.ts";
+import { layerById } from "../zone-layers.ts";
+
+/* A layer that is registered but not served must be refused. Québec is served
+   now, so that guarantee is exercised by switching it off for the check. */
+async function whileQuebecUnserved<T>(check: () => Promise<T>): Promise<T> {
+  const quebec = layerById("layer:ca-qc-zone-chasse")!;
+  const was = quebec.serving;
+  quebec.serving = false;
+  try { return await check(); } finally { quebec.serving = was; }
+}
 
 const open = () => createRateLimiter({ limit: 1_000, windowMs: 60_000 });
 const ORIGIN = "https://www.northgroundbushcraft.com";
@@ -22,8 +32,11 @@ test("zone summary: a served layer, a designation and a calendar day, nothing el
   const payload = await ok.json() as { status: string; summary: { zone: { label: string } } };
   assert.equal(payload.summary.zone.label, "GHA 26");
 
+  await whileQuebecUnserved(async () => {
+    const response = await GET(new Request(`${ORIGIN}/api/hunt/zone-summary?layer=layer:ca-qc-zone-chasse&zone=10E&date=2026-09-21`));
+    assert.equal(response.status, 400, "an unserved layer");
+  });
   for (const query of [
-    "layer=layer:ca-qc-zone-chasse&zone=10&date=2026-09-21",
     "layer=layer:ca-on-wmu&zone=57&date=2026-02-30",
     "layer=layer:ca-on-wmu&zone=<script>&date=2026-09-21",
     "layer=layer:ca-on-wmu&date=2026-09-21",
@@ -41,7 +54,9 @@ test("zone status: rejects what it cannot answer rather than guessing", async ()
   assert.equal(payload.states[0].state, "SEASON_AVAILABLE");
 
   assert.equal((await POST(post({ speciesId: "species:mallard", date: "2026-09-21", zones: [] }))).status, 400);
-  assert.equal((await POST(post({ speciesId: "species:ruffed-grouse", date: "2026-09-21", zones: [{ layerId: "layer:ca-qc-zone-chasse", designation: "10" }] }))).status, 400);
+  await whileQuebecUnserved(async () => {
+    assert.equal((await POST(post({ speciesId: "species:ruffed-grouse", date: "2026-09-21", zones: [{ layerId: "layer:ca-qc-zone-chasse", designation: "10E" }] }))).status, 400);
+  });
   const tooMany = Array.from({ length: 451 }, (_, index) => ({ layerId: "layer:ca-on-wmu", designation: String(index) }));
   assert.equal((await POST(post({ speciesId: "species:ruffed-grouse", date: "2026-09-21", zones: tooMany }))).status, 400);
   assert.equal((await POST(post({ speciesId: "species:ruffed-grouse", date: "2026-09-21", zones: [] }, { origin: "https://evil.example" }))).status, 403);

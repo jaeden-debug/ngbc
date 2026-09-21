@@ -72,11 +72,19 @@ function storedClient(rows: unknown[] | Error, calls: unknown[] = []) {
 }
 
 test("Québec is never drawn while its layer is not served", () => {
-  assert.equal(layersForBounds({ west: -75, south: 45, east: -70, north: 48 }).some((layer) => layer.id === "layer:ca-qc-zone-chasse"), false);
+  const quebec = layerById("layer:ca-qc-zone-chasse")!;
+  const was = quebec.serving;
+  quebec.serving = false;
+  try {
+    assert.equal(layersForBounds({ west: -75, south: 45, east: -70, north: 48 }).some((layer) => layer.id === quebec.id), false);
+  } finally {
+    quebec.serving = was;
+  }
 });
 
 test("switched on, Québec draws from North Ground's stored drawings, named in the ministry's terms", async () => {
   const quebec = layerById("layer:ca-qc-zone-chasse")!;
+  const was = quebec.serving;
   quebec.serving = true;
   try {
     clearZoneGeometryCache();
@@ -111,7 +119,7 @@ test("switched on, Québec draws from North Ground's stored drawings, named in t
     assert.ok(card.counts.certifiedHere > 0);
     assert.ok(card.species.some((entry) => entry.name === "Arctic hare"), "names come from the species library");
   } finally {
-    quebec.serving = false;
+    quebec.serving = was;
     clearZoneGeometryCache();
   }
 });

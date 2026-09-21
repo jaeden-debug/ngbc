@@ -60,18 +60,28 @@ test("a jurisdiction with no certified bundle declares what is missing", () => {
 test("the report counts only what the certified bundles actually contain", () => {
   const report = canadaCoverageReport();
 
-  // Ontario and Manitoba hold rules Hunt can answer today. If this ever fails
+  // Ontario, Québec, Manitoba and Alberta hold rules Hunt can answer today. If this ever fails
   // because another jurisdiction gained rules, update it deliberately — the
   // test exists so coverage cannot grow without someone noticing.
   const withRules = report.jurisdictions.filter((entry) => entry.regulatory.rules > 0);
-  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-MB", "CA-AB"]);
+  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-QC", "CA-MB", "CA-AB"]);
 
   const ontario = withRules[0];
   assert.equal(ontario.species.length, 8, "four small-game plus four major-game species");
   assert.equal(ontario.spatial.officialUnits, 151);
   assert.ok(ontario.regulatory.rules > 100, "Ontario holds the certified rule set");
 
-  const manitoba = withRules[1];
+  const quebec = withRules[1];
+  assert.deepEqual(quebec.species.map((row) => row.speciesId), [
+    "species:american-black-bear", "species:moose", "species:white-tailed-deer", "species:wild-turkey",
+    "species:arctic-hare", "species:eastern-cottontail", "species:ruffed-grouse", "species:sharp-tailed-grouse",
+    "species:snowshoe-hare", "species:spruce-grouse",
+  ]);
+  assert.equal(quebec.spatial.officialUnits, 59);
+  assert.equal(quebec.spatial.parityCertified, true);
+  assert.equal(quebec.regulatory.status, "PARTIAL", "every other Québec species answers UNKNOWN");
+
+  const manitoba = withRules[2];
   assert.deepEqual(manitoba.species.map((row) => row.speciesId), [
     "species:ruffed-grouse", "species:sharp-tailed-grouse", "species:spruce-grouse", "species:white-tailed-deer",
   ]);
@@ -112,7 +122,7 @@ test("every species row splits covered, declared-closed and unknown", () => {
 test("species coverage is jurisdiction-aware and derived from certified bundles", () => {
   assert.deepEqual(
     regulatoryJurisdictionsForSpecies("species:white-tailed-deer").map(({ id }) => id),
-    ["jurisdiction:ca-on", "jurisdiction:ca-mb", "jurisdiction:ca-ab"],
+    ["jurisdiction:ca-on", "jurisdiction:ca-qc", "jurisdiction:ca-mb", "jurisdiction:ca-ab"],
   );
   assert.deepEqual(regulatoryJurisdictionsForSpecies("species:gray-wolf"), []);
 });
@@ -127,7 +137,8 @@ test("the selector gates a species by the resolved jurisdiction, not by a global
   // Certified in one jurisdiction says nothing about another.
   assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-on"), true);
   assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-mb"), true);
-  assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-qc"), false);
+  assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-qc"), true);
+  assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-nb"), false);
   assert.equal(hasSpeciesCoverageIn(option("species:moose"), "jurisdiction:ca-mb"), false);
   assert.equal(speciesAsksQuestionIn(option("species:ruffed-grouse"), "jurisdiction:ca-mb"), false);
   // Before a place is chosen the species is discoverable because rules exist somewhere.

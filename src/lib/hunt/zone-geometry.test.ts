@@ -42,9 +42,13 @@ test.beforeEach(() => clearZoneGeometryCache());
 /* ── Viewport and jurisdiction selection ─────────────────────────────────── */
 
 test("a viewport over supported geography selects the layer that covers it", () => {
-  const overOntario: BoundingBox = { west: -80, south: 44, east: -76, north: 47 };
+  // West of Québec's extent (-79.9°), so Ontario alone.
+  const overOntario: BoundingBox = { west: -84, south: 44, east: -80.5, north: 47 };
   assert.equal(boundsIntersect(overOntario, ONTARIO), true);
   assert.deepEqual(layersForBounds(overOntario).map((layer) => layer.id), ["layer:ca-on-wmu"]);
+  // Across the Ottawa River the view takes in western Québec too, and both are drawn.
+  const acrossTheOttawa: BoundingBox = { west: -80, south: 44, east: -76, north: 47 };
+  assert.deepEqual(layersForBounds(acrossTheOttawa).map((layer) => layer.id).sort(), ["layer:ca-on-wmu", "layer:ca-qc-zone-chasse"]);
 });
 
 test("a viewport outside supported geography requests nothing", async () => {

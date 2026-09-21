@@ -30,9 +30,21 @@ test("Maniwaki falls inside Ontario's extent, which is exactly why the extent ca
 
 test("a Québec zone is never presented as an Ontario WMU", () => {
   const presented = layerForResolution({ status: "RESOLVED", jurisdictionId: "jurisdiction:ca-qc" });
-  // Québec's layer exists but is not served until parity is certified.
-  assert.equal(presented.kind, "NOT_SERVING");
-  assert.equal(presented.kind === "NOT_SERVING" && presented.layer.officialTerm, "Zone de chasse");
+  // Served since parity was certified, in the ministry's own term.
+  assert.equal(presented.kind, "SERVING");
+  assert.equal(presented.kind === "SERVING" && presented.layer.jurisdictionId, "jurisdiction:ca-qc");
+  assert.equal(presented.kind === "SERVING" && presented.layer.officialTerm, "Zone de chasse");
+});
+
+test("a registered layer that is not served is never presented", () => {
+  const quebec = layerForJurisdiction("jurisdiction:ca-qc")!;
+  const was = quebec.serving;
+  quebec.serving = false;
+  try {
+    assert.equal(layerForResolution({ status: "RESOLVED", jurisdictionId: "jurisdiction:ca-qc" }).kind, "NOT_SERVING");
+  } finally {
+    quebec.serving = was;
+  }
 });
 
 test("a zone from a jurisdiction with no registered layer is not presented at all", () => {
@@ -68,15 +80,34 @@ test("a Québec zone is never evaluated against Ontario's rules", async () => {
     sourceId: "source:ca-qc-zone-chasse-service",
     message: "Resolved from fixture.",
   };
-  const result = await evaluateHunt(input, {
+  // The ministry's closed-territories layer is asked at the point; here it holds none.
+  const noClosedTerritory = (async () => new Response(JSON.stringify({ type: "FeatureCollection", features: [] }), { status: 200 })) as unknown as typeof fetch;
+  const evaluate = () => evaluateHunt(input, {
     resolveZone: async () => quebecZone,
     weather: async (_lat, _lon, date) => ({ status: "UNAVAILABLE", summary: "No forecast", date, sourceId: "source:open-meteo" }),
+    fetch: noClosedTerritory,
     now: () => new Date("2026-09-20T12:00:00Z"),
   });
-  /* Ontario's engine would say "no season row names this unit". That is an
-     Ontario statement, and it must not be made about Québec. */
-  assert.equal(result.regulation.status, "UNKNOWN");
-  assert.equal(result.completeness, "RESOLVED");
-  assert.match(result.regulation.summary, /Zone de chasse 10O is outside the jurisdictions whose hunting rules North Ground has certified/);
-  assert.ok(!result.regulation.summary.includes("Wildlife Management Unit"));
+
+  // Served: Québec's own small-game page answers — « 10 » grouse, 19 Sep 2026 to 15 Jan 2027.
+  const served = await evaluate();
+  assert.equal(served.regulation.status, "CONDITIONAL");
+  assert.ok(served.regulation.sourceIds.includes("source:ca-qc-petit-gibier-2026-2028" as never));
+  assert.ok(!served.regulation.sourceIds.some((id) => id.startsWith("source:ca-on")));
+  assert.ok(!served.regulation.summary.includes("Wildlife Management Unit"));
+
+  /* Unserved, Ontario's engine would say "no season row names this unit". That
+     is an Ontario statement, and it must not be made about Québec. */
+  const quebec = layerForJurisdiction("jurisdiction:ca-qc")!;
+  const was = quebec.serving;
+  quebec.serving = false;
+  try {
+    const unserved = await evaluate();
+    assert.equal(unserved.regulation.status, "UNKNOWN");
+    assert.equal(unserved.completeness, "RESOLVED");
+    assert.match(unserved.regulation.summary, /Zone de chasse 10O is outside the jurisdictions whose hunting rules North Ground has certified/);
+    assert.ok(!unserved.regulation.summary.includes("Wildlife Management Unit"));
+  } finally {
+    quebec.serving = was;
+  }
 });
