@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { resolveOntarioReadiness } from "../hunt/readiness/ontario.ts";
 import type { HuntEvaluation } from "../hunt/types.ts";
+import { createHuntBriefRequestPayload } from "./client.ts";
 import { huntEvaluationToShareInput } from "./from-hunt-evaluation.ts";
 import { createShareableHuntBrief, parseStoredHuntBrief, type HuntBriefReadiness } from "./model.ts";
 import { huntBriefFixture, testShareId } from "./test-fixture.ts";
@@ -90,4 +91,19 @@ test("a version 3 brief round-trips its checklist", () => {
 test("an unsupported checklist status refuses the brief rather than softening it", () => {
   const bad = { ...brief().readiness!, authorizations: [{ status: "OPTIONAL", name: "x", authority: "y" }] } as unknown as HuntBriefReadiness;
   assert.throws(() => createShareableHuntBrief({ ...huntEvaluationToShareInput(evaluation(), { jurisdiction: { id: "jurisdiction:ca-on", displayName: "Ontario" } }), readiness: bad }, { shareId: testShareId, createdAt: "2026-09-21T15:00:00Z" }));
+});
+
+test("the browser's request carries the checklist and the hunter's answers to the stored brief", () => {
+  // Found in production certification: the request builder is an allowlist, and it
+  // dropped both. Tested here along the whole path the Share button takes.
+  const withAnswer = {
+    ...evaluation(),
+    dimensions: [{ id: "RESIDENCY", question: "Are you a resident of Ontario?", options: [{ value: "RESIDENT", label: "Resident" }] }],
+  } as unknown as HuntEvaluation;
+  const input = huntEvaluationToShareInput(withAnswer, { jurisdiction: { id: "jurisdiction:ca-on", displayName: "Ontario" } });
+  const sent = JSON.stringify(createHuntBriefRequestPayload(input));
+  assert.ok(!/latitude|longitude|45\.23|77\.94|vendor|issuer/i.test(sent), sent);
+  const stored = createShareableHuntBrief(JSON.parse(sent), { shareId: testShareId, createdAt: "2026-09-21T15:00:00Z" });
+  assert.deepEqual(stored.readiness, brief().readiness);
+  assert.deepEqual(stored.assumptions, [{ question: "Are you a resident of Ontario?", answer: "Resident" }]);
 });
