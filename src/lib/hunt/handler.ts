@@ -109,7 +109,7 @@ export function createHuntHandler({ evaluate, limiter, canonicalOrigin }: HuntHa
       return json({ error: "Request body must be valid JSON." }, 400);
     }
     if (!validInput(body)) {
-      return json({ error: "Provide an Ontario latitude/longitude, an ISO date, a supported species ID, and — where the species requires them — well-formed answers." }, 400);
+      return json({ error: "Provide a latitude/longitude inside North Ground's covered geography, an ISO date, a supported species ID, and — where the species requires them — well-formed answers." }, 400);
     }
 
     const rate = limiter.check(getClientAddress(request));

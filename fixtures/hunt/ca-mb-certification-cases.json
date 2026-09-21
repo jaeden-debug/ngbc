@@ -1,0 +1,430 @@
+{
+  "jurisdiction": "jurisdiction:ca-mb",
+  "writtenOn": "2026-09-21",
+  "method": "Every expectation below was written from the text of M.R. 165/91 Schedules A and B, M.R. 220/86 s. 1.1, and the Government of Manitoba's own GHA, CWD, closed-lands and wildlife-lands layers queried at the point, before any case was run against North Ground. A case that disagrees is a finding, never an expectation to edit. Where a run showed an expectation to be incomplete, the case records a revision with the original expectation and the evidence, rather than being silently edited.",
+  "cases": [
+    {
+      "id": "winnipeg-deer",
+      "place": "Winnipeg, downtown",
+      "latitude": 49.8951,
+      "longitude": -97.1384,
+      "speciesId": "species:white-tailed-deer",
+      "date": "2026-11-20",
+      "expect": {
+        "gha": "38",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "Schedule B names GHA 38 only as 'those parts of area 38 found within the R.M. of Macdonald'. Downtown Winnipeg is not in Macdonald, so no row designates it for any white-tailed deer licence, and s. 3 closes it. No question can change that."
+    },
+    {
+      "id": "winnipeg-grouse",
+      "place": "Winnipeg, downtown",
+      "latitude": 49.8951,
+      "longitude": -97.1384,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-10-05",
+      "expect": {
+        "gha": "38",
+        "status": "NEEDS_VERIFICATION",
+        "completeness": "RESOLVED",
+        "mentions": [
+          "City of Winnipeg"
+        ]
+      },
+      "law": "GHA 38 is in game bird hunting zone 4 (M.R. 220/86 s. 1.1), and Schedule A opens ruffed grouse in GBHZ 3 & 4 from Sept. 8 to Jan. 1. But the province's closed-lands layer places this point in 'Portion of GHA 38 and City of Winnipeg': 'No person shall hunt or kill wildlife'. North Ground does not certify a closure from a map layer, so the season must not be presented as available: NEEDS_VERIFICATION with the authority's text."
+    },
+    {
+      "id": "morden-deer-rifle-open",
+      "place": "Morden",
+      "latitude": 49.1917,
+      "longitude": -98.1011,
+      "speciesId": "species:white-tailed-deer",
+      "date": "2026-11-20",
+      "answers": {
+        "RESIDENCY": "MANITOBA_RESIDENT",
+        "LICENCE_TYPE": "MB_RESIDENT_GENERAL_WTD",
+        "HUNT_METHOD": "RIFLE"
+      },
+      "expect": {
+        "gha": "31",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "mentions": [
+          "CWD"
+        ]
+      },
+      "law": "Schedule B Part A row 'Areas 13A, 16, ..., 27-32, ...' includes 31: 'All equipment' Nov. 9 – Nov. 29, and s. 3.4 makes all equipment include a rifle. GHA 31 is in the CWD mandatory surveillance zone, so sampling is required."
+    },
+    {
+      "id": "morden-deer-rifle-after-close",
+      "place": "Morden",
+      "latitude": 49.1917,
+      "longitude": -98.1011,
+      "speciesId": "species:white-tailed-deer",
+      "date": "2026-12-05",
+      "answers": {
+        "RESIDENCY": "MANITOBA_RESIDENT",
+        "LICENCE_TYPE": "MB_RESIDENT_GENERAL_WTD",
+        "HUNT_METHOD": "RIFLE"
+      },
+      "expect": {
+        "gha": "31",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "The same row's all-equipment season ends Nov. 29; no Part A row designates GHA 31 on Dec. 5 for any equipment."
+    },
+    {
+      "id": "boissevain-non-canadian-rifle",
+      "place": "Boissevain",
+      "latitude": 49.2306,
+      "longitude": -100.0556,
+      "speciesId": "species:white-tailed-deer",
+      "date": "2026-11-20",
+      "answers": {
+        "RESIDENCY": "NON_CANADIAN_RESIDENT",
+        "LICENCE_TYPE": "NON_CANADIAN_GENERAL_WTD",
+        "HUNT_METHOD": "RIFLE"
+      },
+      "expect": {
+        "gha": "28",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "Schedule B Part E (non-Canadian resident general) designates 5-7, 8, 10, 11, 15, 15A, 17, 17B; 12-14, 14A, 16, 17A, 18-21, 21A, 23, 23A, 25, 34, 35; and 26, 36. GHA 28 is in none, so s. 3 closes it to that licence."
+    },
+    {
+      "id": "dauphin-grouse-before-open",
+      "place": "Dauphin",
+      "latitude": 51.1494,
+      "longitude": -100.05,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-09-05",
+      "expect": {
+        "gha": "19",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "GHA 19 is not in game bird hunting zone 4's list and lies south of the zone 2/3 line, so it is GBHZ 3. Schedule A opens ruffed grouse in GBHZ 3 & 4 on Sept. 8."
+    },
+    {
+      "id": "dauphin-sharptail-open-reduced-limit",
+      "place": "Dauphin",
+      "latitude": 51.1494,
+      "longitude": -100.05,
+      "speciesId": "species:sharp-tailed-grouse",
+      "date": "2026-09-10",
+      "expect": {
+        "gha": "19",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "daily": 4,
+        "possession": 8
+      },
+      "law": "Schedule A sharp-tailed grouse: 'GHA 19, 19B, 22-24, 27-33 ... Sept. 8 – Jan. 1, 4 (Possession 8)', a lower limit than the 6 (12) elsewhere in GBHZ 3 & 4."
+    },
+    {
+      "id": "thompson-grouse-open",
+      "place": "Thompson",
+      "latitude": 55.7435,
+      "longitude": -97.8558,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-09-05",
+      "expect": {
+        "gha": "9A",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "Thompson is north of the 53rd-parallel line and south of 57°N, west of 94°W: GBHZ 2. Schedule A opens ruffed grouse in GBHZ 1 & 2 on Sept. 1, a week before Dauphin on the same date."
+    },
+    {
+      "id": "thompson-deer-no-designation",
+      "place": "Thompson",
+      "latitude": 55.7435,
+      "longitude": -97.8558,
+      "speciesId": "species:white-tailed-deer",
+      "date": "2026-11-20",
+      "expect": {
+        "gha": "9A",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "No part of Schedule B names GHA 9A (the ranges run 5-8, then 10), so s. 3 closes it to every white-tailed deer licence."
+    },
+    {
+      "id": "churchill-grouse",
+      "place": "Churchill",
+      "latitude": 58.7684,
+      "longitude": -94.165,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-09-05",
+      "expect": {
+        "gha": "2",
+        "status": "NEEDS_VERIFICATION",
+        "completeness": "RESOLVED",
+        "mentions": [
+          "Churchill Special Conservation Area"
+        ]
+      },
+      "law": "North of 57°N is GBHZ 1 (M.R. 220/86 s. 1.1), and Schedule A opens ruffed grouse in GBHZ 1 & 2 on Sept. 1. The province's special-conservation-areas layer places the town inside the Churchill Special Conservation Area (Ross' gull), whose restriction reads 'No person shall enter or be in a special conservation area during the period when an order or notice of closure is in effect.' Whether an order is in effect is not published in any source North Ground reads, so the season is not presented as available.",
+      "revision": {
+        "on": "2026-09-21",
+        "originalExpectation": {
+          "status": "CONDITIONAL"
+        },
+        "finding": "The first production run returned NEEDS_VERIFICATION. The pre-run layer check had queried the GHA, CWD and closed-lands layers but not the special-conservation-areas layer (Manitoba_Wildlife_Lands/FeatureServer/1), which places this point in the Churchill Special Conservation Area. Confirmed against that layer directly; North Ground's answer was correct and the expectation was incomplete. The GBHZ 1 season itself is certified by gbhz1-grouse-open, at a point no overlay touches."
+      }
+    },
+    {
+      "id": "gbhz1-grouse-open",
+      "place": "GHA 1, west of Churchill (no refuge, SCA, WMA or closed land at the point)",
+      "latitude": 58.2,
+      "longitude": -95.5,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-09-05",
+      "expect": {
+        "gha": "1",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "North of 57°N is GBHZ 1; Schedule A opens ruffed grouse in GBHZ 1 & 2 on Sept. 1. All four of the province's overlay layers were queried at this point (all fields) and return nothing."
+    },
+    {
+      "id": "steinbach-deer-asks",
+      "place": "Steinbach area",
+      "latitude": 49.5258,
+      "longitude": -96.6839,
+      "speciesId": "species:white-tailed-deer",
+      "date": "2026-11-05",
+      "expect": {
+        "gha": "35A",
+        "completeness": "NEEDS_INPUT",
+        "required": "RESIDENCY"
+      },
+      "law": "On Nov. 5 whether deer hunting is open in GHA 35A depends on the licence and equipment: Part A's muzzleloader and crossbow season (Oct. 19 – Nov. 8) is open, a rifle is not (all equipment opens Nov. 9), and Part E's non-Canadian general licence does not name 35A at all. North Ground must ask before answering; residency comes first because it decides which licences exist."
+    },
+    {
+      "id": "steinbach-deer-crossbow-open",
+      "place": "Steinbach area",
+      "latitude": 49.5258,
+      "longitude": -96.6839,
+      "speciesId": "species:white-tailed-deer",
+      "date": "2026-11-05",
+      "answers": {
+        "RESIDENCY": "MANITOBA_RESIDENT",
+        "LICENCE_TYPE": "MB_RESIDENT_GENERAL_WTD",
+        "HUNT_METHOD": "CROSSBOW"
+      },
+      "expect": {
+        "gha": "35A",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "mentions": [
+          "CWD"
+        ]
+      },
+      "law": "Part A, Areas 13A ... 35A: 'Muzzleloader and Crossbow' Oct. 19 – Nov. 8 (adults and youth alike), so age does not decide it on Nov. 5. GHA 35A is in the CWD zone."
+    },
+    {
+      "id": "steinbach-deer-rifle-closed",
+      "place": "Steinbach area",
+      "latitude": 49.5258,
+      "longitude": -96.6839,
+      "speciesId": "species:white-tailed-deer",
+      "date": "2026-11-05",
+      "answers": {
+        "RESIDENCY": "MANITOBA_RESIDENT",
+        "LICENCE_TYPE": "MB_RESIDENT_GENERAL_WTD",
+        "HUNT_METHOD": "RIFLE"
+      },
+      "expect": {
+        "gha": "35A",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "A rifle is permitted only in the 'All equipment' season, which opens Nov. 9 in this row."
+    },
+    {
+      "id": "steinbach-deer-crossbow-youth-window",
+      "place": "Steinbach area",
+      "latitude": 49.5258,
+      "longitude": -96.6839,
+      "speciesId": "species:white-tailed-deer",
+      "date": "2026-10-15",
+      "answers": {
+        "RESIDENCY": "MANITOBA_RESIDENT",
+        "LICENCE_TYPE": "MB_RESIDENT_GENERAL_WTD",
+        "HUNT_METHOD": "CROSSBOW"
+      },
+      "expect": {
+        "gha": "35A",
+        "completeness": "NEEDS_INPUT",
+        "required": "HUNTER_AGE"
+      },
+      "law": "Oct. 15 is inside the under-18 muzzleloader and crossbow season (Oct. 12 – Nov. 8, footnote 1 'Under age 18 only') and before the general one (Oct. 19), so age decides it."
+    },
+    {
+      "id": "falcon-lake-deer-open",
+      "place": "Falcon Lake (GHA 36, outside the Whiteshell Game Bird Refuge)",
+      "latitude": 49.686,
+      "longitude": -95.31,
+      "speciesId": "species:white-tailed-deer",
+      "date": "2026-11-20",
+      "answers": {
+        "RESIDENCY": "MANITOBA_RESIDENT",
+        "LICENCE_TYPE": "MB_RESIDENT_GENERAL_WTD",
+        "HUNT_METHOD": "RIFLE"
+      },
+      "expect": {
+        "gha": "36",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "Part A 'Areas 26, 36 (excluding Whiteshell Game Bird Refuge)': all equipment Nov. 9 – Dec. 13. The province's refuges layer places this point outside the refuge."
+    },
+    {
+      "id": "whiteshell-refuge-deer-closed",
+      "place": "Whiteshell Game Bird Refuge (GHA 36)",
+      "latitude": 49.84,
+      "longitude": -95.53,
+      "speciesId": "species:white-tailed-deer",
+      "date": "2026-11-20",
+      "answers": {
+        "RESIDENCY": "MANITOBA_RESIDENT",
+        "LICENCE_TYPE": "MB_RESIDENT_GENERAL_WTD",
+        "HUNT_METHOD": "RIFLE"
+      },
+      "expect": {
+        "gha": "36",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "The same row excludes the Whiteshell Game Bird Refuge, which the province's refuges layer places this point inside (OBJECTID 61), and no other Part A row designates it."
+    },
+    {
+      "id": "shilo-grouse-closed",
+      "place": "CFB Shilo (GHA 30)",
+      "latitude": 49.805,
+      "longitude": -99.64,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-10-05",
+      "expect": {
+        "gha": "30",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "Schedule A excludes CFB Shilo from the GBHZ 3 & 4 ruffed grouse season, and the closed-lands layer places this point inside the base (OBJECTID 27)."
+    },
+    {
+      "id": "oak-hammock-grouse-unresolved",
+      "place": "Oak Hammock Marsh (GHA 25B)",
+      "latitude": 50.185,
+      "longitude": -97.13,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-10-05",
+      "expect": {
+        "gha": "25B",
+        "status": "NEEDS_VERIFICATION",
+        "completeness": "RESOLVED"
+      },
+      "law": "Schedule A excludes the Oak Hammock Waterfowl Control Area, defined in words by M.R. 171/2001 with no published polygon. Whether this point is inside cannot be established, so the season is not presented as available."
+    },
+    {
+      "id": "brandon-moose-uncertified",
+      "place": "Brandon",
+      "latitude": 49.8485,
+      "longitude": -99.9501,
+      "speciesId": "species:moose",
+      "date": "2026-10-05",
+      "expect": {
+        "gha": "30",
+        "status": "UNKNOWN",
+        "completeness": "RESOLVED"
+      },
+      "law": "Moose seasons exist in M.R. 165/91 but North Ground has not encoded them. That is a coverage gap, so the answer is UNKNOWN, never s. 3's CLOSED."
+    },
+    {
+      "id": "riding-mountain-no-gha",
+      "place": "Riding Mountain National Park, Wasagaming",
+      "latitude": 50.6597,
+      "longitude": -99.9728,
+      "speciesId": "species:white-tailed-deer",
+      "date": "2026-11-20",
+      "expect": {
+        "status": "NEEDS_VERIFICATION",
+        "completeness": "RESOLVED",
+        "mentions": [
+          "Riding Mountain National Park"
+        ]
+      },
+      "law": "M.R. 220/86 draws GHAs 23 and 23A around the park, so the point is in no Game Hunting Area and no provincial season describes it; the closed-lands layer carries the park's own restriction."
+    },
+    {
+      "id": "gha-7a-non-canadian-archery-conflict",
+      "place": "GHA 7A interior",
+      "latitude": 54.7397512444342,
+      "longitude": -99.7178964341622,
+      "speciesId": "species:white-tailed-deer",
+      "date": "2026-09-10",
+      "answers": {
+        "RESIDENCY": "NON_CANADIAN_RESIDENT",
+        "LICENCE_TYPE": "NON_CANADIAN_ARCHERY_WTD",
+        "HUNT_METHOD": "BOW"
+      },
+      "expect": {
+        "gha": "7A",
+        "status": "CONFLICT",
+        "completeness": "RESOLVED"
+      },
+      "law": "Part F reaches 7A only through the range '5-8', which in the regulation's own ordering of areas includes 7A; the 2026 guide's table for this licence does not show 7A. The two official sources disagree on a point that decides the answer."
+    },
+    {
+      "id": "gha-26-boundary",
+      "place": "GHA 26, just inside its boundary",
+      "latitude": 50.4368445055655,
+      "longitude": -95.9835855105594,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-10-05",
+      "expect": {
+        "gha": "26",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": true
+      },
+      "law": "A parity edge sample, just inside GHA 26. GHA 26 is in neither zone 4's list nor north of the zone 2/3 line, so GBHZ 3: ruffed grouse Sept. 8 – Jan. 1. The answer must warn that the point is near a mapped boundary."
+    },
+    {
+      "id": "ontario-wmu-57-grouse-unchanged",
+      "place": "Ontario WMU 57 (regression)",
+      "latitude": 45.23,
+      "longitude": -77.94,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-10-24",
+      "expect": {
+        "gha": null,
+        "zoneName": "Wildlife Management Unit 57",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "Ontario's certified answer for WMU 57, unchanged by any Manitoba work."
+    }
+  ],
+  "viewports": [
+    {
+      "label": "All of Manitoba (zoom 5)",
+      "bounds": "-102.1,48.9,-88.9,60.1",
+      "zoom": 5
+    },
+    {
+      "label": "Southern Manitoba (zoom 7)",
+      "bounds": "-101.5,48.95,-95.0,51.5",
+      "zoom": 7
+    },
+    {
+      "label": "Winnipeg and GHA 38 (zoom 10)",
+      "bounds": "-97.45,49.72,-96.85,50.05",
+      "zoom": 10
+    }
+  ]
+}

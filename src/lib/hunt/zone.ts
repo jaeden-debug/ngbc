@@ -1,6 +1,6 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { ZoneResolution } from "./types.ts";
-import { designationOfRaw, servingLayersAt, type ZoneLayer } from "./zone-layers.ts";
+import { designationOfRaw, servingLayersAt, ZONE_LAYERS, type ZoneLayer } from "./zone-layers.ts";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { defaultSupabaseServerClient, SupabaseServerConfigurationError } from "../supabase/server.ts";
 
@@ -346,9 +346,10 @@ export async function resolveZoneFromOfficialGis(
  * PostGIS holds every served jurisdiction, so it answers wherever it can. Its
  * fallback asks each served layer's own authority. A zone's jurisdiction comes
  * from the zone itself; an unresolved point is given a jurisdiction only as a
- * hint, and only when exactly one served layer's extent contains it — so a point
- * in Riding Mountain National Park, which no Game Hunting Area covers, is
- * answered in Manitoba's terms rather than Ontario's.
+ * hint, and only when exactly one registered layer's extent contains it and that
+ * layer is served — so a point in Riding Mountain National Park, which no Game
+ * Hunting Area covers, is answered in Manitoba's terms, while a point in western
+ * Québec, which Ontario's extent also reaches, is attributed to neither.
  */
 export async function resolveZone(
   latitude: number,
@@ -364,8 +365,13 @@ export async function resolveZone(
   }
   result ??= await resolveZoneFromOfficialGis(latitude, longitude, fetcher);
   if (result.status !== "RESOLVED" && !result.jurisdictionId) {
-    const layers = servingLayersAt(latitude, longitude);
-    if (layers.length === 1) return { ...result, jurisdictionId: layers[0].jurisdictionId };
+    /* Registered layers count whether or not they are served: Québec's layer is
+       not yet served, but its extent is still evidence the point may be in
+       Québec, and Ontario's box alone must not claim it. */
+    const containing = ZONE_LAYERS.filter((layer) =>
+      latitude >= layer.bounds.minLatitude && latitude <= layer.bounds.maxLatitude &&
+      longitude >= layer.bounds.minLongitude && longitude <= layer.bounds.maxLongitude);
+    if (containing.length === 1 && containing[0].serving) return { ...result, jurisdictionId: containing[0].jurisdictionId };
   }
   return result;
 }

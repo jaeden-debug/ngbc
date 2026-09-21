@@ -202,6 +202,24 @@ test("the undesignated park polygon is not a zone", async () => {
   assert.equal(result.jurisdictionId, "jurisdiction:ca-mb");
 });
 
+test("an unplaced point is attributed to a jurisdiction only where one registered extent contains it", async () => {
+  const saved = process.env.SPATIAL_PROVIDER;
+  process.env.SPATIAL_PROVIDER = "official-gis";
+  try {
+    // Riding Mountain: only Manitoba's extent, and no GHA — answered in Manitoba's terms.
+    const park = await resolveZone(50.66, -99.97, gisFetch([null]));
+    assert.equal(park.jurisdictionId, "jurisdiction:ca-mb");
+    // Maniwaki, Québec: Ontario's extent reaches it, but so does Québec's registered
+    // layer, and Ontario's service places it in no WMU. It is not Ontario's to answer.
+    const maniwaki = await resolveZone(46.3806, -75.9722, gisFetch([], []));
+    assert.equal(maniwaki.status, "UNKNOWN");
+    assert.equal(maniwaki.jurisdictionId, undefined);
+  } finally {
+    if (saved === undefined) delete process.env.SPATIAL_PROVIDER;
+    else process.env.SPATIAL_PROVIDER = saved;
+  }
+});
+
 test("an unreachable registry cannot hold an evaluation hostage: the fallback runs within the budget", async () => {
   const hanging = (() => ({
     rpc: () => ({

@@ -1,0 +1,766 @@
+{
+  "jurisdiction": "jurisdiction:ca-mb",
+  "base": "https://www.northgroundbushcraft.com",
+  "certifiedAt": "2026-09-21T03:55:10.879Z",
+  "summary": {
+    "passed": 24,
+    "failed": 0,
+    "zoneLookupMs": {
+      "median": 369,
+      "p90": 2796,
+      "max": 3021
+    },
+    "evaluationMs": {
+      "median": 237,
+      "p90": 2970,
+      "max": 3070
+    },
+    "evaluationBytes": {
+      "median": 12561,
+      "max": 19677
+    }
+  },
+  "geometry": [
+    {
+      "label": "All of Manitoba (zoom 5)",
+      "zoom": 5,
+      "status": "OK",
+      "ms": 27,
+      "bytes": 22974,
+      "features": 86,
+      "byLayer": {
+        "layer:ca-on-wmu": 24,
+        "layer:ca-mb-gha": 62
+      }
+    },
+    {
+      "label": "Southern Manitoba (zoom 7)",
+      "zoom": 7,
+      "status": "OK",
+      "ms": 32,
+      "bytes": 17359,
+      "features": 38,
+      "byLayer": {
+        "layer:ca-on-wmu": 3,
+        "layer:ca-mb-gha": 35
+      }
+    },
+    {
+      "label": "Winnipeg and GHA 38 (zoom 10)",
+      "zoom": 10,
+      "status": "OK",
+      "ms": 29,
+      "bytes": 5254,
+      "features": 5,
+      "byLayer": {
+        "layer:ca-mb-gha": 5
+      }
+    }
+  ],
+  "results": [
+    {
+      "id": "winnipeg-deer",
+      "place": "Winnipeg, downtown",
+      "date": "2026-11-20",
+      "speciesId": "species:white-tailed-deer",
+      "expected": {
+        "gha": "38",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "38",
+        "zoneName": "Game Hunting Area 38",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "No Manitoba licence authorises hunting white-tailed deer in Game Hunting Area 38. A licence authorises hunting only in the areas, with the equipment and in the seasons the regulation designates for it. Where no row designates this place for this licence, the regulation closes it. (M.R. 165/91 s. 3)",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 1914,
+        "zoneBytes": 2460,
+        "evaluateMs": 376,
+        "evaluateBytes": 7132
+      }
+    },
+    {
+      "id": "winnipeg-grouse",
+      "place": "Winnipeg, downtown",
+      "date": "2026-10-05",
+      "speciesId": "species:ruffed-grouse",
+      "expected": {
+        "gha": "38",
+        "status": "NEEDS_VERIFICATION",
+        "completeness": "RESOLVED",
+        "mentions": [
+          "City of Winnipeg"
+        ]
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "38",
+        "zoneName": "Game Hunting Area 38",
+        "status": "NEEDS_VERIFICATION",
+        "completeness": "RESOLVED",
+        "nearBoundary": false,
+        "daily": 6,
+        "possession": 12
+      },
+      "summary": "This point is inside Portion of GHA 38 and City of Winnipeg, where Manitoba publishes a hunting restriction. North Ground has not certified how it applies to this hunt, so it will not state a season status here. Outside it: The certified M.R. 46/2026 season for ruffed grouse in Game Hunting Area 38 includes this date (Open season, Sept. 8 – Jan. 1). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to any licence here: Open season Sept. 8 – Jan. 1.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 506,
+        "zoneBytes": 2460,
+        "evaluateMs": 366,
+        "evaluateBytes": 8901
+      }
+    },
+    {
+      "id": "morden-deer-rifle-open",
+      "place": "Morden",
+      "date": "2026-11-20",
+      "speciesId": "species:white-tailed-deer",
+      "expected": {
+        "gha": "31",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "mentions": [
+          "CWD"
+        ]
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "31",
+        "zoneName": "Game Hunting Area 31",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "The certified M.R. 46/2026 season for white-tailed deer in Game Hunting Area 31 includes this date (All equipment, Nov. 9 – Nov. 29). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to this combination here: All equipment Nov. 9 – Nov. 29.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 369,
+        "zoneBytes": 3620,
+        "evaluateMs": 237,
+        "evaluateBytes": 11846
+      }
+    },
+    {
+      "id": "morden-deer-rifle-after-close",
+      "place": "Morden",
+      "date": "2026-12-05",
+      "speciesId": "species:white-tailed-deer",
+      "expected": {
+        "gha": "31",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "31",
+        "zoneName": "Game Hunting Area 31",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "No white-tailed deer season in Game Hunting Area 31 is open on this date for this combination. Seasons open to this combination here: All equipment Nov. 9 – Nov. 29.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 123,
+        "zoneBytes": 3620,
+        "evaluateMs": 155,
+        "evaluateBytes": 10050
+      }
+    },
+    {
+      "id": "boissevain-non-canadian-rifle",
+      "place": "Boissevain",
+      "date": "2026-11-20",
+      "speciesId": "species:white-tailed-deer",
+      "expected": {
+        "gha": "28",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "28",
+        "zoneName": "Game Hunting Area 28",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "No Manitoba licence matching what you described authorises hunting white-tailed deer in Game Hunting Area 28. A licence authorises hunting only in the areas, with the equipment and in the seasons the regulation designates for it. Where no row designates this place for this licence, the regulation closes it. (M.R. 165/91 s. 3)",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 159,
+        "zoneBytes": 7438,
+        "evaluateMs": 179,
+        "evaluateBytes": 13936
+      }
+    },
+    {
+      "id": "dauphin-grouse-before-open",
+      "place": "Dauphin",
+      "date": "2026-09-05",
+      "speciesId": "species:ruffed-grouse",
+      "expected": {
+        "gha": "19",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "19",
+        "zoneName": "Game Hunting Area 19",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "No ruffed grouse season in Game Hunting Area 19 is open on this date for any licence or equipment. Seasons open to any licence here: Open season Sept. 8 – Jan. 1.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 426,
+        "zoneBytes": 6026,
+        "evaluateMs": 111,
+        "evaluateBytes": 10623
+      }
+    },
+    {
+      "id": "dauphin-sharptail-open-reduced-limit",
+      "place": "Dauphin",
+      "date": "2026-09-10",
+      "speciesId": "species:sharp-tailed-grouse",
+      "expected": {
+        "gha": "19",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "daily": 4,
+        "possession": 8
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "19",
+        "zoneName": "Game Hunting Area 19",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false,
+        "daily": 4,
+        "possession": 8
+      },
+      "summary": "The certified M.R. 46/2026 season for sharp-tailed grouse in Game Hunting Area 19 includes this date (Open season, Sept. 8 – Jan. 1). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to any licence here: Open season Sept. 8 – Jan. 1.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 116,
+        "zoneBytes": 6026,
+        "evaluateMs": 108,
+        "evaluateBytes": 11503
+      }
+    },
+    {
+      "id": "thompson-grouse-open",
+      "place": "Thompson",
+      "date": "2026-09-05",
+      "speciesId": "species:ruffed-grouse",
+      "expected": {
+        "gha": "9A",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "9A",
+        "zoneName": "Game Hunting Area 9A",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false,
+        "daily": 6,
+        "possession": 12
+      },
+      "summary": "The certified M.R. 46/2026 season for ruffed grouse in Game Hunting Area 9A includes this date (Open season, Sept. 1 – Jan. 1). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to any licence here: Open season Sept. 1 – Jan. 1.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 576,
+        "zoneBytes": 9777,
+        "evaluateMs": 419,
+        "evaluateBytes": 15336
+      }
+    },
+    {
+      "id": "thompson-deer-no-designation",
+      "place": "Thompson",
+      "date": "2026-11-20",
+      "speciesId": "species:white-tailed-deer",
+      "expected": {
+        "gha": "9A",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "9A",
+        "zoneName": "Game Hunting Area 9A",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "No Manitoba licence authorises hunting white-tailed deer in Game Hunting Area 9A. A licence authorises hunting only in the areas, with the equipment and in the seasons the regulation designates for it. Where no row designates this place for this licence, the regulation closes it. (M.R. 165/91 s. 3)",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 345,
+        "zoneBytes": 9777,
+        "evaluateMs": 335,
+        "evaluateBytes": 14449
+      }
+    },
+    {
+      "id": "churchill-grouse",
+      "place": "Churchill",
+      "date": "2026-09-05",
+      "speciesId": "species:ruffed-grouse",
+      "expected": {
+        "gha": "2",
+        "status": "NEEDS_VERIFICATION",
+        "completeness": "RESOLVED",
+        "mentions": [
+          "Churchill Special Conservation Area"
+        ]
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "2",
+        "zoneName": "Game Hunting Area 2",
+        "status": "NEEDS_VERIFICATION",
+        "completeness": "RESOLVED",
+        "nearBoundary": false,
+        "daily": 6,
+        "possession": 12
+      },
+      "summary": "This point is inside Churchill Special Conservation Area, where Manitoba publishes a hunting restriction. North Ground has not certified how it applies to this hunt, so it will not state a season status here. Outside it: The certified M.R. 46/2026 season for ruffed grouse in Game Hunting Area 2 includes this date (Open season, Sept. 1 – Jan. 1). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to any licence here: Open season Sept. 1 – Jan. 1.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 146,
+        "zoneBytes": 8609,
+        "evaluateMs": 148,
+        "evaluateBytes": 15111
+      }
+    },
+    {
+      "id": "gbhz1-grouse-open",
+      "place": "GHA 1, west of Churchill (no refuge, SCA, WMA or closed land at the point)",
+      "date": "2026-09-05",
+      "speciesId": "species:ruffed-grouse",
+      "expected": {
+        "gha": "1",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "1",
+        "zoneName": "Game Hunting Area 1",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false,
+        "daily": 6,
+        "possession": 12
+      },
+      "summary": "The certified M.R. 46/2026 season for ruffed grouse in Game Hunting Area 1 includes this date (Open season, Sept. 1 – Jan. 1). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to any licence here: Open season Sept. 1 – Jan. 1.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 141,
+        "zoneBytes": 9157,
+        "evaluateMs": 235,
+        "evaluateBytes": 14709
+      }
+    },
+    {
+      "id": "steinbach-deer-asks",
+      "place": "Steinbach area",
+      "date": "2026-11-05",
+      "speciesId": "species:white-tailed-deer",
+      "expected": {
+        "gha": "35A",
+        "completeness": "NEEDS_INPUT",
+        "required": "RESIDENCY"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "35A",
+        "zoneName": "Game Hunting Area 35A",
+        "completeness": "NEEDS_INPUT",
+        "required": "RESIDENCY",
+        "nearBoundary": false
+      },
+      "summary": "North Ground holds the applicable Manitoba rules and needs one more fact before it can answer: Which Manitoba residency class applies to you?",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 109,
+        "zoneBytes": 4305,
+        "evaluateMs": 90,
+        "evaluateBytes": 9488
+      }
+    },
+    {
+      "id": "steinbach-deer-crossbow-open",
+      "place": "Steinbach area",
+      "date": "2026-11-05",
+      "speciesId": "species:white-tailed-deer",
+      "expected": {
+        "gha": "35A",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "mentions": [
+          "CWD"
+        ]
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "35A",
+        "zoneName": "Game Hunting Area 35A",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "The certified M.R. 46/2026 season for white-tailed deer in Game Hunting Area 35A includes this date (Muzzleloader and crossbow, Oct. 19 – Nov. 8; or Muzzleloader and crossbow (under age 18 only), Oct. 12 – Nov. 8). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to this combination here: All equipment Nov. 9 – Nov. 29; Muzzleloader and crossbow Oct. 19 – Nov. 8; Muzzleloader and crossbow (under age 18 only) Oct. 12 – Nov. 8.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 362,
+        "zoneBytes": 4305,
+        "evaluateMs": 134,
+        "evaluateBytes": 12669
+      }
+    },
+    {
+      "id": "steinbach-deer-rifle-closed",
+      "place": "Steinbach area",
+      "date": "2026-11-05",
+      "speciesId": "species:white-tailed-deer",
+      "expected": {
+        "gha": "35A",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "35A",
+        "zoneName": "Game Hunting Area 35A",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "No white-tailed deer season in Game Hunting Area 35A is open on this date for this combination. Seasons open to this combination here: All equipment Nov. 9 – Nov. 29.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 97,
+        "zoneBytes": 4305,
+        "evaluateMs": 107,
+        "evaluateBytes": 10736
+      }
+    },
+    {
+      "id": "steinbach-deer-crossbow-youth-window",
+      "place": "Steinbach area",
+      "date": "2026-10-15",
+      "speciesId": "species:white-tailed-deer",
+      "expected": {
+        "gha": "35A",
+        "completeness": "NEEDS_INPUT",
+        "required": "HUNTER_AGE"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "35A",
+        "zoneName": "Game Hunting Area 35A",
+        "completeness": "NEEDS_INPUT",
+        "required": "HUNTER_AGE",
+        "nearBoundary": false
+      },
+      "summary": "North Ground holds the applicable Manitoba rules and needs one more fact before it can answer: Are you under 18?",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 2303,
+        "zoneBytes": 4305,
+        "evaluateMs": 920,
+        "evaluateBytes": 10251
+      }
+    },
+    {
+      "id": "falcon-lake-deer-open",
+      "place": "Falcon Lake (GHA 36, outside the Whiteshell Game Bird Refuge)",
+      "date": "2026-11-20",
+      "speciesId": "species:white-tailed-deer",
+      "expected": {
+        "gha": "36",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "36",
+        "zoneName": "Game Hunting Area 36",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "The certified M.R. 46/2026 season for white-tailed deer in Game Hunting Area 36 includes this date (All equipment, Nov. 9 – Dec. 13). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to this combination here: All equipment Nov. 9 – Dec. 13.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 2202,
+        "zoneBytes": 9186,
+        "evaluateMs": 2970,
+        "evaluateBytes": 19677
+      }
+    },
+    {
+      "id": "whiteshell-refuge-deer-closed",
+      "place": "Whiteshell Game Bird Refuge (GHA 36)",
+      "date": "2026-11-20",
+      "speciesId": "species:white-tailed-deer",
+      "expected": {
+        "gha": "36",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "36",
+        "zoneName": "Game Hunting Area 36",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "No Manitoba licence authorises hunting white-tailed deer in Game Hunting Area 36. A licence authorises hunting only in the areas, with the equipment and in the seasons the regulation designates for it. Where no row designates this place for this licence, the regulation closes it. (M.R. 165/91 s. 3)",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 2901,
+        "zoneBytes": 12299,
+        "evaluateMs": 2979,
+        "evaluateBytes": 17044
+      }
+    },
+    {
+      "id": "shilo-grouse-closed",
+      "place": "CFB Shilo (GHA 30)",
+      "date": "2026-10-05",
+      "speciesId": "species:ruffed-grouse",
+      "expected": {
+        "gha": "30",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "30",
+        "zoneName": "Game Hunting Area 30",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "No Manitoba licence authorises hunting ruffed grouse in Game Hunting Area 30. A licence authorises hunting only in the areas, with the equipment and in the seasons the regulation designates for it. Where no row designates this place for this licence, the regulation closes it. (M.R. 165/91 s. 3)",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 2716,
+        "zoneBytes": 11042,
+        "evaluateMs": 654,
+        "evaluateBytes": 10478
+      }
+    },
+    {
+      "id": "oak-hammock-grouse-unresolved",
+      "place": "Oak Hammock Marsh (GHA 25B)",
+      "date": "2026-10-05",
+      "speciesId": "species:ruffed-grouse",
+      "expected": {
+        "gha": "25B",
+        "status": "NEEDS_VERIFICATION",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "25B",
+        "zoneName": "Game Hunting Area 25B",
+        "status": "NEEDS_VERIFICATION",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "North Ground cannot state a ruffed grouse season for this exact point, because the answer depends on something it could not establish. Seasons open to any licence here: Open season Sept. 8 – Jan. 1.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 169,
+        "zoneBytes": 7002,
+        "evaluateMs": 210,
+        "evaluateBytes": 12561
+      }
+    },
+    {
+      "id": "brandon-moose-uncertified",
+      "place": "Brandon",
+      "date": "2026-10-05",
+      "speciesId": "species:moose",
+      "expected": {
+        "gha": "30",
+        "status": "UNKNOWN",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "30",
+        "zoneName": "Game Hunting Area 30",
+        "status": "UNKNOWN",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "North Ground has not certified Manitoba rules for moose. That is a gap in North Ground's coverage, not a statement that there is no season.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 125,
+        "zoneBytes": 5750,
+        "evaluateMs": 111,
+        "evaluateBytes": 9581
+      }
+    },
+    {
+      "id": "riding-mountain-no-gha",
+      "place": "Riding Mountain National Park, Wasagaming",
+      "date": "2026-11-20",
+      "speciesId": "species:white-tailed-deer",
+      "expected": {
+        "status": "NEEDS_VERIFICATION",
+        "completeness": "RESOLVED",
+        "mentions": [
+          "Riding Mountain National Park"
+        ]
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": null,
+        "zoneName": null,
+        "status": "NEEDS_VERIFICATION",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "North Ground could not place this point in a certified Game Hunting Area, so it will not infer a hunting status.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 156,
+        "zoneBytes": 217,
+        "evaluateMs": 109,
+        "evaluateBytes": 4402
+      }
+    },
+    {
+      "id": "gha-7a-non-canadian-archery-conflict",
+      "place": "GHA 7A interior",
+      "date": "2026-09-10",
+      "speciesId": "species:white-tailed-deer",
+      "expected": {
+        "gha": "7A",
+        "status": "CONFLICT",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "7A",
+        "zoneName": "Game Hunting Area 7A",
+        "status": "CONFLICT",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "The official sources disagree about white-tailed deer in Game Hunting Area 7A for this combination, and North Ground will not choose between them. Seasons open to this combination here: Archery Aug. 31 – Sept. 20; Oct. 12 – Nov. 8.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 418,
+        "zoneBytes": 7952,
+        "evaluateMs": 513,
+        "evaluateBytes": 16453
+      }
+    },
+    {
+      "id": "gha-26-boundary",
+      "place": "GHA 26, just inside its boundary",
+      "date": "2026-10-05",
+      "speciesId": "species:ruffed-grouse",
+      "expected": {
+        "gha": "26",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": true
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "26",
+        "zoneName": "Game Hunting Area 26",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": true,
+        "daily": 6,
+        "possession": 12
+      },
+      "summary": "The certified M.R. 46/2026 season for ruffed grouse in Game Hunting Area 26 includes this date (Open season, Sept. 8 – Jan. 1). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to any licence here: Open season Sept. 8 – Jan. 1.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 3021,
+        "zoneBytes": 12383,
+        "evaluateMs": 3070,
+        "evaluateBytes": 17930
+      }
+    },
+    {
+      "id": "ontario-wmu-57-grouse-unchanged",
+      "place": "Ontario WMU 57 (regression)",
+      "date": "2026-10-24",
+      "speciesId": "species:ruffed-grouse",
+      "expected": {
+        "gha": null,
+        "zoneName": "Wildlife Management Unit 57",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "57",
+        "zoneName": "Wildlife Management Unit 57",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false,
+        "daily": 5,
+        "possession": 15
+      },
+      "summary": "The certified 2026 season for Wildlife Management Unit 57 includes this date (September 15 to December 31), subject to licensing, legal hunting time, species identification and all overlapping restrictions.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 2796,
+        "zoneBytes": 12763,
+        "evaluateMs": 2787,
+        "evaluateBytes": 19521
+      }
+    }
+  ]
+}
