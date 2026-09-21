@@ -72,6 +72,9 @@ test("inside Parc national de Plaisance the zone's season is never stated as the
   assert.ok(outcome.regulation.limitations.includes(
     "Parc national de Plaisance: “« Territoires où toute activité de chasse est interdite. » (Parc national).”"));
   assert.ok(outcome.regulation.sourceIds.includes("source:ca-qc-chasse-interdite-service" as never));
+  // The zone's dates are what applies outside the park, never a "Season dates" answer inside it.
+  assert.equal(outcome.regulation.season, undefined);
+  assert.match(outcome.regulation.summary, /Outside it: .*Du 26 septembre/);
 });
 
 test("a territory the catalogue does not hold still stops the season being stated", async () => {

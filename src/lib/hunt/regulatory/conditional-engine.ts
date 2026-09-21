@@ -680,10 +680,14 @@ export function evaluateConditional(
     });
   }
 
-  /* Overlapping published restrictions North Ground has not certified. */
+  /* Overlapping published restrictions North Ground has not certified. The
+     zone's season is not the answer at this point, so it is not carried as
+     one: a result that still held `season` would print "Season dates" inside
+     a national park. The dates remain in the summary, as what applies outside. */
   if (input.restrictions?.length && result.status === "CONDITIONAL") {
     result = {
       ...result,
+      season: undefined,
       status: "NEEDS_VERIFICATION",
       summary:
         `This point is inside ${input.restrictions.map((restriction) => restriction.name).join(" and ")}, where ${vocabulary.jurisdictionName} publishes a hunting restriction. ` +
