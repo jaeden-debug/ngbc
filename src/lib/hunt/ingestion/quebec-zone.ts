@@ -1,3 +1,4 @@
+import { HUNT_DEFAULT_TIME_ZONE, jurisdictionTodayIso } from "../date.ts";
 import type { ZoneFeatureRecord, ZoneLayerSource } from "./types.ts";
 
 /**
@@ -112,18 +113,6 @@ export function repairPartName(value: string): string {
     .join("");
 }
 
-/**
- * Today's date in the authority's own calendar.
- *
- * A UTC stamp reads a day ahead for anything retrieved after 20:00 in Quebec,
- * which would put the provenance record a day off the day the source was
- * actually read. The ministry publishes on Eastern time, so that is the clock
- * this is dated against.
- */
-function retrievalDate(): string {
-  return new Intl.DateTimeFormat("en-CA", { timeZone: "America/Toronto", dateStyle: "short" }).format(new Date());
-}
-
 function asMultiPolygonCoordinates(geometry: { type: string; coordinates: unknown }): unknown[] {
   return geometry.type === "MultiPolygon"
     ? geometry.coordinates as unknown[]
@@ -211,7 +200,12 @@ export function createQuebecZoneSource(fetcher: typeof fetch = fetch): ZoneLayer
 
       features.sort((left, right) => left.officialIdentifier.localeCompare(right.officialIdentifier, "fr-CA"));
 
-      return { features, sourceVersion: `retrieved-${retrievalDate()}` };
+      /* Dated on the ministry's clock, not the runtime's. Quebec is on Eastern
+         time, so a UTC stamp would date an evening retrieval to the following
+         day and leave the provenance record disagreeing with the day the source
+         was actually read. */
+      const retrievedOn = jurisdictionTodayIso(HUNT_DEFAULT_TIME_ZONE);
+      return { features, sourceVersion: `retrieved-${retrievedOn}` };
     },
   };
 }
