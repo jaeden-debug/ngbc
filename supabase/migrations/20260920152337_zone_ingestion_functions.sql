@@ -36,8 +36,7 @@ begin
     select z.official_identifier as identifier,
            extensions.ST_Area(z.geometry::extensions.geography) / 1000000.0 as km2
     from public.management_zones z
-    join public.regulatory_jurisdictions j on j.id = z.jurisdiction_id
-    where j.id = run.jurisdiction_id
+    where z.jurisdiction_id = run.jurisdiction_id
   ),
   moved as (
     select i.identifier, p.km2 as published_km2, i.km2 as incoming_km2,

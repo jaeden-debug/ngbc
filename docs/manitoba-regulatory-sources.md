@@ -21,7 +21,7 @@ and the most machine-readable one, so rules are built from it. Highest first:
 | GIS | GHA, CWD-zone, closed-lands and wildlife-lands layers | locating a point; indicative, the written law controls | see below |
 
 Every source is hashed in `content/regulatory/ca-mb-2026.json`, registered by
-migration (`20260921050100_register_manitoba_regulatory_sources.sql`), and
+migration (`20260921033819_register_manitoba_regulatory_sources.sql`), and
 checked daily by `npm run check:regulatory-sources`. Its notes column records
 which tier each is in.
 
