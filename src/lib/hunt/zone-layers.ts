@@ -1,5 +1,6 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import certifiedUnits from "../../../content/regulatory/ca-on-certified-units.json" with { type: "json" };
+import manitobaCertifiedUnits from "../../../content/regulatory/ca-mb-certified-units.json" with { type: "json" };
 
 /**
  * Which hunting-zone geography North Ground can actually draw, and how far the
@@ -51,6 +52,14 @@ export interface ZoneLayer {
   serving: boolean;
   /** How the registry prefixes this layer's official names, so the bare designation can be shown. */
   officialNamePrefix: string;
+  /**
+   * Designations with at least one certified rule, generated with the layer's
+   * bundle. Present only where rules are certified; a layer without it is
+   * boundary-only everywhere.
+   */
+  certifiedDesignations?: ReadonlySet<string>;
+  /** How this layer's adapter mints canonical ids ("management_zone:ca-mb-gha-"), for the official-GIS fallback. */
+  zoneIdPrefix: string;
 }
 
 export const ONTARIO_WMU_ENDPOINT =
@@ -80,6 +89,31 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     bounds: { minLatitude: 41.5, maxLatitude: 57, minLongitude: -95.5, maxLongitude: -74 },
     serving: true,
     officialNamePrefix: "Wildlife Management Unit ",
+    certifiedDesignations: new Set(certifiedUnits.certifiedUnits.map((unit) => unit.toUpperCase())),
+    zoneIdPrefix: "management_zone:ca-on-wmu-",
+  },
+  {
+    id: "layer:ca-mb-gha",
+    jurisdictionId: "jurisdiction:ca-mb",
+    jurisdictionName: "Manitoba",
+    country: "CA",
+    // Manitoba's own term. A GHA is not relabelled a WMU.
+    officialTerm: "Game Hunting Area",
+    officialTermShort: "GHA",
+    coverage: "PARTIAL",
+    coverageNote:
+      "Official Manitoba Game Hunting Area boundaries are drawn from the province's own feature layer, parity-certified " +
+      "against it. The boundaries are the province's map of the written descriptions in M.R. 220/86, which control. " +
+      `Certified rules reach ${manitobaCertifiedUnits.certifiedUnits.length} of ${manitobaCertifiedUnits.officialUnitCount} areas for at least one species.`,
+    authority: "Government of Manitoba",
+    sourceId: "source:ca-mb-gha-service",
+    endpoint: "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/Manitoba_Game_Hunting_Areas/FeatureServer/0/query",
+    nameField: "GHA",
+    bounds: { minLatitude: 48.99, maxLatitude: 60.01, minLongitude: -102.05, maxLongitude: -88.9 },
+    serving: true,
+    officialNamePrefix: "Game Hunting Area ",
+    certifiedDesignations: new Set(manitobaCertifiedUnits.certifiedUnits.map((unit) => unit.toUpperCase())),
+    zoneIdPrefix: "management_zone:ca-mb-gha-",
   },
   {
     id: "layer:ca-qc-zone-chasse",
@@ -98,6 +132,7 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     bounds: { minLatitude: 44.9, maxLatitude: 62.7, minLongitude: -79.9, maxLongitude: -57 },
     serving: false,
     officialNamePrefix: "Zone de chasse ",
+    zoneIdPrefix: "management_zone:ca-qc-zone-",
   },
 ];
 
@@ -123,15 +158,22 @@ export const CERTIFIED_ZONE_NAMES: ReadonlySet<string> = new Set(
  * inventory: a jurisdiction being counted here is a record that a source exists,
  * never a claim that its rules or boundaries are usable.
  */
+const SERVED = ZONE_LAYERS.filter((layer) => layer.serving);
+const servedNames = SERVED.map((layer) => layer.jurisdictionName);
+const servedList = servedNames.length > 1
+  ? `${servedNames.slice(0, -1).join(", ")} and ${servedNames.at(-1)}`
+  : servedNames[0] ?? "No jurisdiction";
+
 export const COVERAGE_ROADMAP = {
   // Counted, not typed: a registered layer that is not served yet is not drawn.
-  drawnJurisdictions: ZONE_LAYERS.filter((layer) => layer.serving).length,
-  certifiedUnits: certifiedUnits.certifiedUnits.length,
-  officialUnits: certifiedUnits.officialUnitCount,
-  canadaInDevelopment: 13,
+  drawnJurisdictions: SERVED.length,
+  certifiedUnits: SERVED.reduce((total, layer) => total + (layer.certifiedDesignations?.size ?? 0), 0),
+  officialUnits: certifiedUnits.officialUnitCount + manitobaCertifiedUnits.officialUnitCount,
+  // Thirteen provinces and territories, less those whose geometry is drawn.
+  canadaInDevelopment: 13 - SERVED.filter((layer) => layer.country === "CA").length,
   unitedStatesInDevelopment: 50,
   summary:
-    "One jurisdiction's official zone geometry is published here. Boundary layers for " +
+    `Official hunting-zone geometry for ${servedList} is published here. Boundary layers for ` +
     "the remaining Canadian and United States jurisdictions are in development and are " +
     "not drawn until their official source has been verified.",
 } as const;
@@ -185,8 +227,16 @@ export function designationFromOfficialName(layer: ZoneLayer, officialName: stri
 
 /** Coverage of a single named zone, which is stricter than its layer's coverage. */
 export function zoneCoverage(layer: ZoneLayer, zoneName: string): ZoneCoverageStatus {
-  if (layer.id !== "layer:ca-on-wmu") return layer.coverage;
-  return CERTIFIED_ZONE_NAMES.has(zoneName.trim().toUpperCase()) ? "VERIFIED" : "IN_DEVELOPMENT";
+  if (!layer.certifiedDesignations) return layer.coverage;
+  return layer.certifiedDesignations.has(zoneName.trim().toUpperCase()) ? "VERIFIED" : "IN_DEVELOPMENT";
+}
+
+/** Serving layers whose extent contains the point. Extents overlap; this is a hint, never an answer. */
+export function servingLayersAt(latitude: number, longitude: number): ZoneLayer[] {
+  return ZONE_LAYERS.filter((layer) =>
+    layer.serving &&
+    latitude >= layer.bounds.minLatitude && latitude <= layer.bounds.maxLatitude &&
+    longitude >= layer.bounds.minLongitude && longitude <= layer.bounds.maxLongitude);
 }
 
 export const COVERAGE_WORDING: Record<ZoneCoverageStatus, { label: string; detail: string }> = {

@@ -1,92 +1,46 @@
 import { contentRepository, type ContentRepository } from "../content/repository.ts";
 import { isMajorGameSpecies, speciesById } from "./coverage.ts";
-import { evaluateOntarioMajorGame } from "./regulatory/major-game.ts";
-import { evaluateOntarioSmallGame } from "./regulatory/ontario.ts";
-import type { EvaluationCompleteness, HuntEvaluation, HuntInput, RegulatoryResult } from "./types.ts";
-import type { RequiredDimension } from "./regulatory/dimensions.ts";
+import { regulatoryEntryFor, type RegulatoryOutcome } from "./regulatory/registry.ts";
+import type { HuntEvaluation, HuntInput, RegulatoryResult } from "./types.ts";
 import type { ZoneResolution } from "./types.ts";
 import { getWeatherContext } from "./weather.ts";
-import { resolveOntarioWmu } from "./zone.ts";
+import { jurisdictionOfZoneId, resolveZone as resolveZoneDefault } from "./zone.ts";
 
 export interface HuntDependencies {
   repository?: ContentRepository;
-  resolveZone?: typeof resolveOntarioWmu;
+  resolveZone?: typeof resolveZoneDefault;
   weather?: typeof getWeatherContext;
+  /** Used for the authority's own overlay layers, where a jurisdiction has them. */
+  fetch?: typeof fetch;
   now?: () => Date;
 }
 
-interface RegulatoryOutcome {
-  completeness: EvaluationCompleteness;
-  required?: RequiredDimension;
-  dimensions: RequiredDimension[];
-  regulation: RegulatoryResult;
-}
-
 /**
- * While a question is outstanding there is no regulatory answer yet.
+ * Route to the rules of the jurisdiction the ZONE belongs to.
  *
- * The placeholder deliberately carries `NEEDS_VERIFICATION` rather than any
- * status a reader could act on. An outstanding question must never render as
- * CLOSED (the hunt is off) or as UNKNOWN (North Ground has no rules here) — both
- * are false, and one of them is dangerous.
+ * The registry holds one entry per jurisdiction with certified rules. A zone
+ * the registry places in a jurisdiction North Ground has no rules for is never
+ * evaluated against another's: an Ontario "no row names this unit" would read
+ * as a statement about Québec or Manitoba law.
  */
-function pendingRegulation(required: RequiredDimension, verifiedAt: string): RegulatoryResult {
-  return {
-    status: "NEEDS_VERIFICATION",
-    summary: `North Ground holds the applicable Ontario rules and needs one more fact before it can answer: ${required.question}`,
-    legalTime: {
-      status: "NOT_AVAILABLE",
-      text: "Legal hunting hours are reported once the applicable rule is resolved.",
-    },
-    requirements: [],
-    limitations: [required.reason],
-    sourceIds: [],
-    verifiedAt,
-  };
+async function evaluateRegulation(
+  input: HuntInput,
+  zone: ZoneResolution,
+  verifiedAt: string,
+  fetcher?: typeof fetch,
+): Promise<RegulatoryOutcome> {
+  /* An unresolved zone carries no jurisdiction of its own. It is handed to the
+     entry whose service was asked, which says it could not certify the zone —
+     exactly as before the registry existed. */
+  /* A zone's own id decides its jurisdiction. A zone carrying neither (callers
+     that predate the field) keeps the behaviour it always had: Ontario. */
+  const jurisdictionId = zone.jurisdictionId ?? jurisdictionOfZoneId(zone.zoneId) ?? "jurisdiction:ca-on";
+  const entry = regulatoryEntryFor(jurisdictionId);
+  if (!entry) return { completeness: "RESOLVED", dimensions: [], regulation: uncertifiedJurisdiction(zone, verifiedAt) };
+  return await entry.evaluate(input, zone, { verifiedAt, fetcher });
 }
 
-/**
- * Route to the engine that matches how the province publishes this species.
- *
- * Small game is answerable from where, when and which species, so it asks
- * nothing and must keep asking nothing. Major game is published as separate
- * tables per residency, implement or tag, so a single answer would have to be
- * wrong for someone — it asks, one fact at a time.
- */
-function evaluateRegulation(input: HuntInput, zone: ZoneResolution, verifiedAt: string): RegulatoryOutcome {
-  /* Ontario's rules answer only for Ontario zones. A zone the registry places in
-     another jurisdiction is never evaluated against them — an Ontario "no row
-     names this unit" would read as a statement about Québec or Manitoba law. */
-  if (zone.status === "RESOLVED" && zone.jurisdictionId && zone.jurisdictionId !== "jurisdiction:ca-on") {
-    return { completeness: "RESOLVED", dimensions: [], regulation: uncertifiedJurisdiction(zone, verifiedAt) };
-  }
-  if (!isMajorGameSpecies(input.speciesId)) {
-    return { completeness: "RESOLVED", dimensions: [], regulation: evaluateOntarioSmallGame(input, zone) };
-  }
-
-  const evaluation = evaluateOntarioMajorGame(
-    { speciesId: input.speciesId, date: input.date },
-    zone,
-    input.answers ?? {},
-  );
-
-  if (evaluation.completeness === "NEEDS_INPUT" && evaluation.required) {
-    return {
-      completeness: "NEEDS_INPUT",
-      required: evaluation.required,
-      dimensions: evaluation.dimensions,
-      regulation: pendingRegulation(evaluation.required, verifiedAt),
-    };
-  }
-
-  return {
-    completeness: "RESOLVED",
-    dimensions: evaluation.dimensions,
-    regulation: evaluation.result ?? pendingRegulationFallback(verifiedAt),
-  };
-}
-
-/** A zone in a jurisdiction whose rules this path has not certified. */
+/** A zone in a jurisdiction whose hunting rules North Ground has not certified. */
 function uncertifiedJurisdiction(zone: ZoneResolution, verifiedAt: string): RegulatoryResult {
   return {
     status: "UNKNOWN",
@@ -101,29 +55,15 @@ function uncertifiedJurisdiction(zone: ZoneResolution, verifiedAt: string): Regu
   };
 }
 
-/* The engine always supplies a result when it resolves; this exists so a future
-   engine change cannot silently produce an evaluation with no regulatory field. */
-function pendingRegulationFallback(verifiedAt: string): RegulatoryResult {
-  return {
-    status: "NEEDS_VERIFICATION",
-    summary: "North Ground could not complete this regulatory evaluation and will not infer a status.",
-    legalTime: { status: "NOT_AVAILABLE", text: "Legal hunting hours are not available." },
-    requirements: [],
-    limitations: [],
-    sourceIds: [],
-    verifiedAt,
-  };
-}
-
 export async function evaluateHunt(input: HuntInput, dependencies: HuntDependencies = {}): Promise<HuntEvaluation> {
   const repository = dependencies.repository ?? contentRepository;
   const evaluatedAt = (dependencies.now?.() ?? new Date()).toISOString();
   const [zone, weather] = await Promise.all([
-    (dependencies.resolveZone ?? resolveOntarioWmu)(input.latitude, input.longitude),
+    (dependencies.resolveZone ?? resolveZoneDefault)(input.latitude, input.longitude),
     (dependencies.weather ?? getWeatherContext)(input.latitude, input.longitude, input.date, { now: dependencies.now?.() }),
   ]);
 
-  const { completeness, required, dimensions, regulation } = evaluateRegulation(input, zone, evaluatedAt);
+  const { completeness, required, dimensions, regulation } = await evaluateRegulation(input, zone, evaluatedAt, dependencies.fetch);
 
   const zoneIds = zone.zoneId ? [zone.zoneId] : undefined;
   const speciesResource = await repository.getSpecies(input.speciesId);
@@ -143,7 +83,13 @@ export async function evaluateHunt(input: HuntInput, dependencies: HuntDependenc
     limit: 6,
   });
   const sourceIds = [...new Set([...regulation.sourceIds, zone.sourceId, weather.sourceId, ...knowledge.blocks.flatMap(({ block }) => block.sourceIds ?? [])])];
-  const sources = await repository.getSources(sourceIds);
+  const known = await repository.getSources(sourceIds);
+  /* Sources a jurisdiction's bundle cites and the content registry does not
+     hold are described from the bundle itself, which carries their version and
+     hash. Ontario's entry supplies none, so its sources are exactly as before. */
+  const missing = sourceIds.filter((id) => !known.some((source) => source.id === id));
+  const fromBundle = missing.length ? regulatoryEntryFor(zone.jurisdictionId)?.sourceRecords?.(missing) ?? [] : [];
+  const sources = [...known, ...fromBundle];
   return {
     input,
     species: {

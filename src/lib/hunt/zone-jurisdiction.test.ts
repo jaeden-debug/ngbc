@@ -36,8 +36,16 @@ test("a Québec zone is never presented as an Ontario WMU", () => {
 });
 
 test("a zone from a jurisdiction with no registered layer is not presented at all", () => {
-  assert.deepEqual(layerForResolution({ status: "RESOLVED", jurisdictionId: "jurisdiction:ca-mb" }), { kind: "UNREGISTERED" });
+  assert.deepEqual(layerForResolution({ status: "RESOLVED", jurisdictionId: "jurisdiction:ca-sk" }), { kind: "UNREGISTERED" });
   assert.deepEqual(layerForResolution({ status: "RESOLVED" }), { kind: "UNREGISTERED" });
+});
+
+test("a Manitoba zone is presented in Manitoba's terms once its layer is served", () => {
+  const presented = layerForResolution({ status: "RESOLVED", jurisdictionId: "jurisdiction:ca-mb" });
+  assert.equal(presented.kind, "SERVING");
+  const layer = layerForJurisdiction("jurisdiction:ca-mb")!;
+  assert.equal(layer.officialTerm, "Game Hunting Area");
+  assert.equal(designationFromOfficialName(layer, "Game Hunting Area 23A"), "23A");
 });
 
 test("an Ontario zone is still presented in Ontario's terms", () => {

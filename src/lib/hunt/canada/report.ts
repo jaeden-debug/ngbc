@@ -10,8 +10,7 @@
  * says so with counts rather than adjectives.
  */
 
-import { majorGameCoverageReport } from "../regulatory/major-game.ts";
-import { ontarioCoverageReport } from "../regulatory/ontario.ts";
+import { regulatoryEntryFor } from "../regulatory/registry.ts";
 import { CANADA_JURISDICTIONS, type CanadaJurisdiction, type CoverageState } from "./registry.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 
@@ -83,48 +82,15 @@ export interface SpeciesJurisdictionCoverage {
 }
 
 /**
- * Ontario's certified numbers, read from the two bundles rather than restated.
- *
- * Small game and major game report differently because the province publishes
- * them differently: small game names the units a season covers, major game
- * names the units its season groupings reach. Both are normalised here to the
- * same three-way split — covered, declared closed, unknown — because that is
- * the distinction a reader needs and the one it is dangerous to blur.
+ * A jurisdiction's certified numbers, read from the regulatory registry — the
+ * same list Hunt evaluates from — so the report, the species surfaces and what
+ * Hunt can actually answer cannot disagree. A jurisdiction with no entry has no
+ * certified rules, and says so with empty rows rather than a typed zero.
  */
-function ontarioSpecies(): SpeciesCoverageRow[] {
-  const small = ontarioCoverageReport();
-  const major = majorGameCoverageReport();
-
-  const rows: SpeciesCoverageRow[] = small.species.map((entry) => ({
-    speciesId: entry.speciesId,
-    unitsCovered: entry.certifiedUnits,
-    unitsDeclaredClosed: entry.declaredNoSeasonUnits,
-    unitsUnknown: entry.unknownUnits,
-    rules: entry.rules,
-    requiresInput: false,
-  }));
-
-  for (const entry of major.species) {
-    rows.push({
-      speciesId: entry.speciesId,
-      unitsCovered: entry.unitsReached,
-      /* Major game counts rules that state "None" rather than units, because one
-         such rule can close a whole grouping. Reported as its own figure rather
-         than folded into the unit counts, which would overstate precision. */
-      unitsDeclaredClosed: entry.rulesStatingNone,
-      unitsUnknown: entry.unitsNotReached,
-      rules: entry.rules,
-      requiresInput: true,
-    });
-  }
-
-  return rows.sort((left, right) => left.speciesId.localeCompare(right.speciesId));
-}
-
 function coverageFor(jurisdiction: CanadaJurisdiction): JurisdictionCoverage {
-  const isOntario = jurisdiction.id === "jurisdiction:ca-on";
-  const species = isOntario ? ontarioSpecies() : [];
-  const officialUnits = isOntario ? ontarioCoverageReport().officialUnits : null;
+  const coverage = regulatoryEntryFor(jurisdiction.id)?.coverage();
+  const species = coverage?.species ?? [];
+  const officialUnits = coverage?.officialUnits ?? null;
 
   return {
     id: jurisdiction.id,

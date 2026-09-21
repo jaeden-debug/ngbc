@@ -1,8 +1,13 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { ZoneResolution } from "./types.ts";
+import { servingLayersAt, type ZoneLayer } from "./zone-layers.ts";
+import type { SupabaseClient } from "@supabase/supabase-js";
 import { defaultSupabaseServerClient, SupabaseServerConfigurationError } from "../supabase/server.ts";
 
 export const ONTARIO_WMU_ENDPOINT = "https://ws.lioservices.lrc.gov.on.ca/arcgis2/rest/services/LIO_OPEN_DATA/LIO_Open05/MapServer/5/query";
+
+/** How long the PostGIS registry gets before the official-GIS fallback runs. */
+export const SUPABASE_ZONE_TIMEOUT_MS = 2_500;
 
 type Position = [number, number];
 type PolygonGeometry = { type: "Polygon"; coordinates: Position[][] } | { type: "MultiPolygon"; coordinates: Position[][][] };
@@ -147,6 +152,7 @@ export async function resolveOntarioWmuFromOfficialGis(
 export async function resolveOntarioWmuFromSupabase(
   latitude: number,
   longitude: number,
+  supabaseClient: () => SupabaseClient = defaultSupabaseServerClient,
 ): Promise<ZoneResolution> {
   if (!Number.isFinite(latitude) || !Number.isFinite(longitude) || latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180) {
     return {
@@ -157,10 +163,13 @@ export async function resolveOntarioWmuFromSupabase(
   }
 
   try {
-    const { data, error } = await defaultSupabaseServerClient().rpc("resolve_management_zone", {
-      p_latitude: latitude,
-      p_longitude: longitude,
-    });
+    /* Bounded. PostGIS answers in ~170 ms (p90 ~215 ms); an unreachable project
+       answered only after Cloudflare's ~20 s 522, and every evaluation waited
+       for it before the official-GIS fallback could run. An abort is a provider
+       error, so the fallback runs within the budget. */
+    const { data, error } = await supabaseClient()
+      .rpc("resolve_management_zone", { p_latitude: latitude, p_longitude: longitude })
+      .abortSignal(AbortSignal.timeout(SUPABASE_ZONE_TIMEOUT_MS));
     if (error) throw error;
     const rows = data as SupabaseZoneRow[] | null;
     if (!rows || rows.length !== 1) {
@@ -212,9 +221,154 @@ export async function resolveOntarioWmu(
   return resolveOntarioWmuFromOfficialGis(latitude, longitude, fetcher);
 }
 
+/* ── Every served jurisdiction ─────────────────────────────────────────── */
+
+interface ArcgisPointCollection {
+  type?: string;
+  features?: Array<{ properties?: Record<string, unknown>; geometry?: PolygonGeometry | null }>;
+}
+
+/**
+ * One layer's own service, asked about a point.
+ *
+ * The same care as Ontario's: exactly one named feature or no answer, the
+ * boundary distance measured from the authority's geometry, and a provider
+ * failure reported as such rather than as "no zone". A feature with no
+ * designation — Manitoba's Riding Mountain National Park polygon — is not a
+ * zone, and a point in it resolves to none.
+ */
+export async function resolveLayerFromOfficialGis(
+  layer: ZoneLayer,
+  latitude: number,
+  longitude: number,
+  fetcher: typeof fetch = fetch,
+): Promise<ZoneResolution> {
+  const sourceId = layer.sourceId;
+  if (!layer.endpoint || !layer.nameField) {
+    return { status: "UNKNOWN", sourceId, message: `North Ground has no reviewed point service for ${layer.jurisdictionName}.` };
+  }
+  const parameters = new URLSearchParams({
+    geometry: `${longitude},${latitude}`,
+    geometryType: "esriGeometryPoint",
+    inSR: "4326",
+    spatialRel: "esriSpatialRelIntersects",
+    outFields: layer.nameField,
+    returnGeometry: "true",
+    outSR: "4326",
+    f: "geojson",
+  });
+  try {
+    const response = await fetcher(`${layer.endpoint}?${parameters}`, {
+      headers: { accept: "application/geo+json, application/json" },
+      signal: AbortSignal.timeout(8_000),
+      cache: "no-store",
+    });
+    if (!response.ok) throw new Error(`${layer.jurisdictionName} zone service returned ${response.status}`);
+    const payload = await response.json() as ArcgisPointCollection;
+    if (payload.type !== "FeatureCollection" || !Array.isArray(payload.features)) throw new Error("Unexpected response");
+    const named = payload.features.filter((feature) => {
+      const raw = feature.properties?.[layer.nameField!];
+      return typeof raw === "string" ? raw.trim() !== "" : typeof raw === "number";
+    });
+    if (named.length !== 1) {
+      return {
+        status: "UNKNOWN",
+        sourceId,
+        jurisdictionId: layer.jurisdictionId,
+        message: named.length > 1
+          ? `The official ${layer.jurisdictionName} service returned overlapping ${layer.officialTerm} features; human verification is required.`
+          : `The official ${layer.jurisdictionName} service places this point in no ${layer.officialTerm}.`,
+      };
+    }
+    const feature = named[0];
+    const designation = String(feature.properties![layer.nameField]).trim().toUpperCase();
+    if (!feature.geometry || !["Polygon", "MultiPolygon"].includes(feature.geometry.type)) {
+      return { status: "UNKNOWN", sourceId, jurisdictionId: layer.jurisdictionId, message: `The official ${layer.officialTerm} response was incomplete.` };
+    }
+    const rings = ringsOf(feature.geometry);
+    const distance = Math.round(boundaryDistance([longitude, latitude], rings));
+    return {
+      status: "RESOLVED",
+      zoneId: `${layer.zoneIdPrefix}${designation.toLowerCase().replace(/[^a-z0-9-]+/g, "-")}` as CanonicalId<"management_zone">,
+      jurisdictionId: layer.jurisdictionId,
+      officialName: `${layer.officialNamePrefix}${designation}`,
+      boundaryDistanceMeters: distance,
+      nearBoundary: distance <= 150,
+      displayRings: displayRings(rings),
+      sourceId,
+      message: distance <= 150
+        ? `This point is within approximately 150 metres of the mapped ${layer.officialTerm} boundary. Confirm the legal boundary with ${layer.authority} before relying on the result.`
+        : `The point intersects one official ${layer.jurisdictionName} ${layer.officialTerm} feature. Map and consumer GPS accuracy still limit legal reliance.`,
+    };
+  } catch {
+    return {
+      status: "PROVIDER_ERROR",
+      sourceId,
+      jurisdictionId: layer.jurisdictionId,
+      message: `The official ${layer.jurisdictionName} ${layer.officialTerm} service is temporarily unavailable; North Ground will not infer a zone.`,
+    };
+  }
+}
+
+/**
+ * Every served layer whose extent contains the point, each asked through its
+ * own authority. Extents overlap, so more than one may be asked; exactly one
+ * resolved zone is an answer, two are a conflict for a person to resolve.
+ */
+export async function resolveZoneFromOfficialGis(
+  latitude: number,
+  longitude: number,
+  fetcher: typeof fetch = fetch,
+): Promise<ZoneResolution> {
+  const layers = servingLayersAt(latitude, longitude).filter((layer) => layer.endpoint);
+  if (!layers.length) {
+    return { status: "UNKNOWN", sourceId: "source:ca-on-wmu-service", message: "North Ground does not hold official hunting-zone boundaries for this point." };
+  }
+  const results = await Promise.all(layers.map((layer) =>
+    layer.id === "layer:ca-on-wmu"
+      ? resolveOntarioWmuFromOfficialGis(latitude, longitude, fetcher)
+      : resolveLayerFromOfficialGis(layer, latitude, longitude, fetcher)));
+  const resolved = results.filter((result) => result.status === "RESOLVED");
+  if (resolved.length === 1) return resolved[0];
+  if (resolved.length > 1) {
+    return {
+      status: "UNKNOWN",
+      sourceId: resolved[0].sourceId,
+      message: "Two jurisdictions' official services both claim this point; human verification is required.",
+    };
+  }
+  const failed = results.find((result) => result.status === "PROVIDER_ERROR");
+  if (failed) return failed;
+  return results.length === 1 ? results[0] : { ...results[0], jurisdictionId: undefined };
+}
+
 /**
  * Resolve a point to its official management zone, in whichever jurisdiction's
- * registry contains it. The historical name above is kept for its callers; the
- * behaviour was never Ontario-only once PostGIS became the provider.
+ * registry contains it.
+ *
+ * PostGIS holds every served jurisdiction, so it answers wherever it can. Its
+ * fallback asks each served layer's own authority. A zone's jurisdiction comes
+ * from the zone itself; an unresolved point is given a jurisdiction only as a
+ * hint, and only when exactly one served layer's extent contains it — so a point
+ * in Riding Mountain National Park, which no Game Hunting Area covers, is
+ * answered in Manitoba's terms rather than Ontario's.
  */
-export const resolveZone = resolveOntarioWmu;
+export async function resolveZone(
+  latitude: number,
+  longitude: number,
+  fetcher: typeof fetch = fetch,
+  supabaseClient: () => SupabaseClient = defaultSupabaseServerClient,
+): Promise<ZoneResolution> {
+  const provider = process.env.SPATIAL_PROVIDER?.trim() || "official-gis";
+  let result: ZoneResolution | null = null;
+  if (provider === "supabase") {
+    result = await resolveOntarioWmuFromSupabase(latitude, longitude, supabaseClient);
+    if (result.status === "PROVIDER_ERROR" && process.env.SPATIAL_FALLBACK_PROVIDER === "official-gis") result = null;
+  }
+  result ??= await resolveZoneFromOfficialGis(latitude, longitude, fetcher);
+  if (result.status !== "RESOLVED" && !result.jurisdictionId) {
+    const layers = servingLayersAt(latitude, longitude);
+    if (layers.length === 1) return { ...result, jurisdictionId: layers[0].jurisdictionId };
+  }
+  return result;
+}

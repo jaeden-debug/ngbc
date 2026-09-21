@@ -1,4 +1,5 @@
 import type { CanonicalId } from "../content-contract/index.ts";
+import { ZONE_LAYERS } from "./zone-layers.ts";
 
 /**
  * What North Ground Hunt can currently answer.
@@ -13,12 +14,24 @@ import type { CanonicalId } from "../content-contract/index.ts";
  * UNKNOWN, and that is the correct answer rather than a gap.
  */
 
+/**
+ * The union of every served layer's extent, kept for callers that need one box
+ * (the map's opening view). Whether a point is in scope is answered per layer by
+ * `isWithinSupportedBounds`, because a union box also covers the gaps between
+ * jurisdictions.
+ */
+const SERVED_LAYERS = ZONE_LAYERS.filter((layer) => layer.serving);
+
 export const SUPPORTED_BOUNDS = {
-  minLatitude: 41,
-  maxLatitude: 57,
-  minLongitude: -96,
-  maxLongitude: -74,
+  minLatitude: Math.min(41, ...SERVED_LAYERS.map((layer) => layer.bounds.minLatitude)),
+  maxLatitude: Math.max(57, ...SERVED_LAYERS.map((layer) => layer.bounds.maxLatitude)),
+  minLongitude: Math.min(-96, ...SERVED_LAYERS.map((layer) => layer.bounds.minLongitude)),
+  maxLongitude: Math.max(-74, ...SERVED_LAYERS.map((layer) => layer.bounds.maxLongitude)),
 } as const;
+
+/* Ontario's original evaluation box. Kept so Ontario's scope is exactly what it
+   was before other jurisdictions were served, whatever their layers' extents. */
+const ONTARIO_EVALUATION_BOX = { minLatitude: 41, maxLatitude: 57, minLongitude: -96, maxLongitude: -74 } as const;
 
 /**
  * Species Hunt can evaluate somewhere in its covered geography.
@@ -196,12 +209,16 @@ export function isSupportedSpecies(value: unknown): value is SupportedSpeciesId 
   return typeof value === "string" && (SUPPORTED_SPECIES_IDS as readonly string[]).includes(value);
 }
 
+/**
+ * Whether an evaluation may be attempted here: inside Ontario's original box, or
+ * inside a served layer's extent. Registry-driven, so serving a jurisdiction's
+ * layer is what brings it into scope — no code change per province.
+ */
 export function isWithinSupportedBounds(latitude: number, longitude: number): boolean {
-  return (
-    Number.isFinite(latitude) && Number.isFinite(longitude) &&
-    latitude >= SUPPORTED_BOUNDS.minLatitude && latitude <= SUPPORTED_BOUNDS.maxLatitude &&
-    longitude >= SUPPORTED_BOUNDS.minLongitude && longitude <= SUPPORTED_BOUNDS.maxLongitude
-  );
+  if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return false;
+  const inside = (box: { minLatitude: number; maxLatitude: number; minLongitude: number; maxLongitude: number }) =>
+    latitude >= box.minLatitude && latitude <= box.maxLatitude && longitude >= box.minLongitude && longitude <= box.maxLongitude;
+  return inside(ONTARIO_EVALUATION_BOX) || SERVED_LAYERS.some((layer) => inside(layer.bounds));
 }
 
 export function speciesById(id: CanonicalId<"species"> | string): SupportedSpecies | undefined {

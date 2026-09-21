@@ -185,18 +185,40 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     nameFr: "Manitoba",
     kind: "province",
     spatial: {
-      status: "IN_DEVELOPMENT",
-      officialTerm: "Hunting Area",
-      officialSourceUrl: "https://geoportal.gov.mb.ca/",
-      parityCertified: false,
+      status: "VERIFIED",
+      officialTerm: "Game Hunting Area (GHA)",
+      officialSourceUrl: "https://web2.gov.mb.ca/laws/regs/current/220-86.php",
+      serviceUrl: "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/Manitoba_Game_Hunting_Areas/FeatureServer/0",
+      parityCertified: true,
+      notes:
+        "All 62 Game Hunting Areas defined in M.R. 220/86 ingested from the province's dedicated GHA layer and certified " +
+        "against it at 201 points with zero disagreements. The layer's 63rd polygon has no designation and is Riding " +
+        "Mountain National Park, which the regulation draws GHAs 23 and 23A around; it is quarantined, not ingested. " +
+        "The geometry is the province's map of the written descriptions, which control.",
     },
     regulatory: {
-      status: "IN_DEVELOPMENT",
-      bundleIds: [],
-      sourceLeads: ["Manitoba Hunting Guide"],
-      sourceState: "NOT_INGESTED",
+      status: "PARTIAL",
+      bundleIds: ["ca-mb-2026"],
+      sourceLeads: [
+        "Hunting Seasons and Bag Limits Regulation, M.R. 165/91 (controlling)",
+        "Hunting Areas and Zones Regulation, M.R. 220/86",
+        "General Hunting Regulation, M.R. 351/87",
+        "2026 Manitoba Hunting Guide (cross-check only)",
+      ],
+      sourceState: "CURRENT",
+      notes:
+        "Built from the regulation itself for the 2026-27 hunting year, certified from 16 June 2026 (M.R. 46/2026). " +
+        "Ruffed, spruce and sharp-tailed grouse by game bird hunting zone; white-tailed deer by licence, equipment and age. " +
+        "Section 3 makes an undesignated area closed to a licence, so absence here is CLOSED, not UNKNOWN.",
     },
-    knownGaps: ["No geometry ingested and no rules certified; every Manitoba query is UNKNOWN."],
+    knownGaps: [
+      "Moose, elk, mule deer, black bear, caribou, wild turkey, gray wolf, coyote, ptarmigan, gray partridge and every migratory game bird are not certified; each answers UNKNOWN.",
+      "GHA 7A under the non-Canadian archery and muzzleloader deer licences is a CONFLICT: the regulation reaches it only through a range the 2026 guide does not show.",
+      "The line between game bird hunting zones 2 and 3 follows a lake shore and a township line with no survey available; in the band between 52.70°N and 53.05°N grouse is answered only where both zones agree.",
+      "The Oak Hammock Waterfowl Control Area has no published polygon; near it, grouse answers NEEDS_VERIFICATION.",
+      "Refuge, WMA, park and closed-land restrictions are read live from the province's own layers and are never certified as closures: a point inside one answers NEEDS_VERIFICATION with the authority's text. Only places the season regulation itself names are applied as rules: CFB Shilo out of the grouse season, the Whiteshell Game Bird Refuge out of the GHA 36 deer seasons, and the R.M. of Macdonald part of GHA 38 as its own deer area.",
+      "Riding Mountain National Park and First Nation reserve land are not Game Hunting Areas; licensed provincial seasons do not describe them, and harvesting under Treaty or Aboriginal rights is a separate legal context.",
+    ],
   },
   {
     id: "jurisdiction:ca-sk",
