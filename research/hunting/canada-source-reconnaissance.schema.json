@@ -1,0 +1,171 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://northground.ca/schemas/canada-source-reconnaissance.schema.json",
+  "title": "North Ground Canada hunting source reconnaissance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "generatedAt", "scope", "jurisdictions"],
+  "properties": {
+    "version": { "type": "integer", "const": 1 },
+    "generatedAt": { "type": "string", "format": "date" },
+    "scope": { "type": "string", "minLength": 1 },
+    "jurisdictions": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": { "$ref": "#/definitions/jurisdiction" }
+    }
+  },
+  "definitions": {
+    "licence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "url", "commercialUse", "derivatives", "attribution", "shareAlike", "nonCommercial", "noDerivatives", "classification", "notes"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "url": { "type": ["string", "null"] },
+        "commercialUse": { "enum": ["ALLOWED", "PROHIBITED", "UNCLEAR"] },
+        "derivatives": { "enum": ["ALLOWED", "PROHIBITED", "UNCLEAR"] },
+        "attribution": { "enum": ["REQUIRED", "NOT_REQUIRED", "UNCLEAR"] },
+        "shareAlike": { "type": "boolean" },
+        "nonCommercial": { "type": "boolean" },
+        "noDerivatives": { "type": "boolean" },
+        "classification": { "enum": ["OPEN", "RESTRICTED", "CONFLICTING", "UNRESOLVED", "NOT_APPLICABLE"] },
+        "notes": { "type": "string", "minLength": 1 }
+      }
+    },
+    "gisCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "authority", "serviceUrl", "serviceType", "layerId", "typeName", "crs", "featureCount", "idField", "nameField", "subzoneFields", "geometryType", "updated", "legalStanding", "legalStandingEvidence", "licence", "limitations"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^gis:ca-" },
+        "title": { "type": "string", "minLength": 1 },
+        "authority": { "type": "string", "minLength": 1 },
+        "serviceUrl": { "type": ["string", "null"] },
+        "serviceType": { "enum": ["ARCGIS_FEATURESERVER", "ARCGIS_MAPSERVER", "WFS", "WMS", "DOWNLOAD", "PDF_MAP", "NONE_FOUND"] },
+        "layerId": { "type": ["integer", "string", "null"] },
+        "typeName": { "type": ["string", "null"] },
+        "crs": { "type": ["string", "null"] },
+        "featureCount": { "type": ["integer", "null"], "minimum": 0 },
+        "idField": { "type": ["string", "null"] },
+        "nameField": { "type": ["string", "null"] },
+        "subzoneFields": { "type": "array", "items": { "type": "string" } },
+        "geometryType": { "type": ["string", "null"] },
+        "updated": { "type": ["string", "null"] },
+        "legalStanding": { "enum": ["AUTHORITATIVE", "OFFICIAL_BUT_INDICATIVE", "REFERENCE_ONLY", "UNRESOLVED"] },
+        "legalStandingEvidence": { "type": "string", "minLength": 1 },
+        "licence": { "$ref": "#/definitions/licence" },
+        "limitations": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "authority", "hierarchy", "url", "format", "effectivePeriod", "stableUrl", "hashable", "ingestionDifficulty", "changeDetection"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^source:ca-" },
+        "title": { "type": "string", "minLength": 1 },
+        "authority": { "type": "string", "minLength": 1 },
+        "hierarchy": { "enum": ["LAW", "REGULATION", "OFFICIAL_SUMMARY", "EXPLANATORY", "MAP", "LICENSING"] },
+        "url": { "type": "string", "pattern": "^https://" },
+        "format": { "enum": ["STRUCTURED_API", "HTML_TABLE", "ACCESSIBLE_PDF_TABLE", "PDF_TEXT", "PDF_COMPLEX", "MAP_ONLY", "OTHER"] },
+        "effectivePeriod": { "type": "string", "minLength": 1 },
+        "stableUrl": { "type": "boolean" },
+        "hashable": { "type": "boolean" },
+        "ingestionDifficulty": { "enum": ["LOW", "MEDIUM", "HIGH", "VERY_HIGH"] },
+        "changeDetection": { "type": "string", "minLength": 1 }
+      }
+    },
+    "fixture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["location", "unit", "species", "condition"],
+      "properties": {
+        "location": { "type": "string", "minLength": 1 },
+        "unit": { "type": "string", "minLength": 1 },
+        "species": { "type": "string", "minLength": 1 },
+        "condition": { "type": "string", "minLength": 1 }
+      }
+    },
+    "jurisdiction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "code", "name", "authority", "managementSystems", "gis", "regulations", "regulatoryDimensions", "prioritySpecies", "furbearers", "rightsContext", "federalDependencies", "blockers", "readiness", "fixtures", "nextAction"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^jurisdiction:ca-(bc|ab|sk|mb|nb|ns|pe|nl|yt|nt|nu)$" },
+        "code": { "enum": ["CA-BC", "CA-AB", "CA-SK", "CA-MB", "CA-NB", "CA-NS", "CA-PE", "CA-NL", "CA-YT", "CA-NT", "CA-NU"] },
+        "name": { "type": "string", "minLength": 1 },
+        "authority": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "url"],
+          "properties": { "name": { "type": "string", "minLength": 1 }, "url": { "type": "string", "pattern": "^https://" } }
+        },
+        "managementSystems": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "scope", "topLevelCount", "subzoneCount", "notes"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1 },
+              "scope": { "type": "string", "minLength": 1 },
+              "topLevelCount": { "type": ["integer", "null"], "minimum": 0 },
+              "subzoneCount": { "type": ["integer", "null"], "minimum": 0 },
+              "notes": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "gis": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "candidates"],
+          "properties": {
+            "state": { "enum": ["VERIFIED_MACHINE_READABLE", "PARTIAL_SPECIES_GEOGRAPHY", "MAP_ONLY", "NO_COMPREHENSIVE_SYSTEM", "UNRESOLVED"] },
+            "candidates": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/gisCandidate" } }
+          }
+        },
+        "regulations": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "sources"],
+          "properties": {
+            "state": { "enum": ["CURRENT_PRIMARY_AND_SUMMARY_FOUND", "PRIMARY_FOUND_SUMMARY_NEEDS_REVIEW", "CURRENT_SUMMARY_FOUND_PRIMARY_COMPLEX", "PARTIAL"] },
+            "sources": { "type": "array", "minItems": 2, "items": { "$ref": "#/definitions/source" } }
+          }
+        },
+        "regulatoryDimensions": { "type": "array", "minItems": 3, "items": { "type": "string" } },
+        "prioritySpecies": { "type": "array", "minItems": 2, "items": { "type": "string" } },
+        "furbearers": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["HUNTING", "TRAPPING", "BOTH", "OTHER", "UNCLEAR"],
+          "properties": {
+            "HUNTING": { "type": "array", "items": { "type": "string" } },
+            "TRAPPING": { "type": "array", "items": { "type": "string" } },
+            "BOTH": { "type": "array", "items": { "type": "string" } },
+            "OTHER": { "type": "array", "items": { "type": "string" } },
+            "UNCLEAR": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "rightsContext": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["material", "authorities", "disclosure"],
+          "properties": {
+            "material": { "type": "boolean" },
+            "authorities": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+            "disclosure": { "type": "string", "minLength": 1 }
+          }
+        },
+        "federalDependencies": { "type": "array", "items": { "type": "string" } },
+        "blockers": { "type": "array", "items": { "type": "string" } },
+        "readiness": { "enum": ["READY_FOR_INGESTION", "SOURCE_FOUND_NEEDS_REVIEW", "GIS_BLOCKED", "REGULATION_SOURCE_BLOCKED", "LICENCE_BLOCKED", "MULTIPLE_BLOCKERS"] },
+        "fixtures": { "type": "array", "minItems": 2, "maxItems": 5, "items": { "$ref": "#/definitions/fixture" } },
+        "nextAction": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

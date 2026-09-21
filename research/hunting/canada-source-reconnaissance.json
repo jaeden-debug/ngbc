@@ -1,0 +1,382 @@
+{
+  "version": 1,
+  "generatedAt": "2026-09-20",
+  "scope": "Research candidates for the eleven Canadian jurisdictions not owned by the active Ontario and Quebec implementation workstreams. This manifest does not confer Hunt coverage.",
+  "jurisdictions": [
+    {
+      "id": "jurisdiction:ca-bc",
+      "code": "CA-BC",
+      "name": "British Columbia",
+      "authority": { "name": "Ministry of Water, Land and Resource Stewardship", "url": "https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/hunting" },
+      "managementSystems": [
+        { "name": "Management Unit", "scope": "General game management within nine administrative regions", "topLevelCount": 225, "subzoneCount": null, "notes": "Limited-entry hunts and special maps can subdivide MUs independently of the province-wide layer." }
+      ],
+      "gis": {
+        "state": "VERIFIED_MACHINE_READABLE",
+        "candidates": [{
+          "id": "gis:ca-bc-wmu",
+          "title": "Wildlife Management Units - WAA_WILDLIFE_MGMT_UNITS_SVW",
+          "authority": "Government of British Columbia",
+          "serviceUrl": "https://openmaps.gov.bc.ca/geo/pub/WHSE_WILDLIFE_MANAGEMENT.WAA_WILDLIFE_MGMT_UNITS_SVW/ows",
+          "serviceType": "WFS",
+          "layerId": null,
+          "typeName": "pub:WHSE_WILDLIFE_MANAGEMENT.WAA_WILDLIFE_MGMT_UNITS_SVW",
+          "crs": "EPSG:3005 native; EPSG:4326 available",
+          "featureCount": 225,
+          "idField": "WILDLIFE_MGMT_UNIT_ID",
+          "nameField": "WILDLIFE_MGMT_UNIT_NAME",
+          "subzoneFields": ["GAME_MANAGEMENT_ZONE_ID", "GAME_MANAGEMENT_ZONE_NAME"],
+          "geometryType": "Polygon/MultiPolygon",
+          "updated": "2026-01-28 data; 2026-03-10 catalogue metadata",
+          "legalStanding": "OFFICIAL_BUT_INDICATIVE",
+          "legalStandingEvidence": "The open layer is the official provincial polygon product, but the Wildlife Act regulations and enacted maps control legal interpretation.",
+          "licence": { "name": "Open Government Licence - British Columbia", "url": "https://www2.gov.bc.ca/gov/content/data/open-data/open-government-licence-bc", "commercialUse": "ALLOWED", "derivatives": "ALLOWED", "attribution": "REQUIRED", "shareAlike": false, "nonCommercial": false, "noDerivatives": false, "classification": "OPEN", "notes": "Commercial reuse and adaptation are allowed with attribution and non-endorsement." },
+          "limitations": ["LEH zones, motor-vehicle restrictions, closures and species-specific mapped areas require separate overlays.", "Legal descriptions and regulation maps prevail over the convenience geometry."]
+        }]
+      },
+      "regulations": {
+        "state": "CURRENT_PRIMARY_AND_SUMMARY_FOUND",
+        "sources": [
+          { "id": "source:ca-bc-wildlife-act", "title": "Wildlife Act", "authority": "BC Laws", "hierarchy": "LAW", "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/00_96488_01", "format": "HTML_TABLE", "effectivePeriod": "current consolidation", "stableUrl": true, "hashable": true, "ingestionDifficulty": "MEDIUM", "changeDetection": "Monitor consolidation date and Gazette amendments." },
+          { "id": "source:ca-bc-hunting-reg", "title": "Hunting Regulation, B.C. Reg. 190/84", "authority": "BC Laws", "hierarchy": "REGULATION", "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/190_84_00", "format": "HTML_TABLE", "effectivePeriod": "current consolidation", "stableUrl": true, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Hash consolidated HTML and monitor Gazette changes; mapped schedules change independently." },
+          { "id": "source:ca-bc-synopsis-2026-28", "title": "Hunting and Trapping Regulations Synopsis 2026-2028", "authority": "Government of British Columbia", "hierarchy": "OFFICIAL_SUMMARY", "url": "https://www2.gov.bc.ca/assets/gov/sports-recreation-arts-and-culture/outdoor-recreation/fishing-and-hunting/hunting/regulations/hunting-trapping-synopsis.pdf", "format": "PDF_COMPLEX", "effectivePeriod": "2026-07-01/2028-06-30", "stableUrl": true, "hashable": true, "ingestionDifficulty": "VERY_HIGH", "changeDetection": "Hash PDF and corrections page; the stable URL is overwritten in place." },
+          { "id": "source:ca-bc-leh-2026-27", "title": "Limited Entry Hunting Synopsis 2026-2027", "authority": "Government of British Columbia", "hierarchy": "OFFICIAL_SUMMARY", "url": "https://www2.gov.bc.ca/assets/gov/sports-recreation-arts-and-culture/outdoor-recreation/fishing-and-hunting/hunting/limited-entry-hunting/leh-regulations-synopsis.pdf", "format": "PDF_COMPLEX", "effectivePeriod": "2026-2027", "stableUrl": true, "hashable": true, "ingestionDifficulty": "VERY_HIGH", "changeDetection": "Hash annual PDF and compare hunt-code tables and embedded maps." }
+        ]
+      },
+      "regulatoryDimensions": ["residency", "licence", "species licence", "limited-entry authorization", "MU and LEH subzone", "season type", "weapon", "sex", "age/antler class", "bag limit", "compulsory inspection/reporting", "motor-vehicle restriction", "special area"],
+      "prioritySpecies": ["White-tailed Deer", "Mule Deer", "Moose", "Elk", "Caribou", "Black Bear", "Grizzly Bear", "Mountain Goat", "Bighorn Sheep", "Wild Turkey", "grouse", "ptarmigan", "wolf", "coyote"],
+      "furbearers": { "HUNTING": [], "TRAPPING": ["beaver", "marten", "fisher", "mink", "otter"], "BOTH": ["wolf", "coyote", "fox", "raccoon"], "OTHER": [], "UNCLEAR": [] },
+      "rightsContext": { "material": true, "authorities": ["Government of British Columbia", "applicable First Nation governments and agreements"], "disclosure": "Licensed recreational rules do not determine Aboriginal or treaty harvesting rights, title, access, or First Nation law." },
+      "federalDependencies": ["Migratory Birds Regulations, 2022", "Parks Canada rules in national parks and reserves", "Species at Risk Act", "federal firearms law"],
+      "blockers": ["LEH and other regulation maps introduce sub-MU geometry not present in the base layer.", "The biennial synopsis is a complex PDF and can be corrected in place."],
+      "readiness": "READY_FOR_INGESTION",
+      "fixtures": [
+        { "location": "Vancouver Island", "unit": "MU 1-05", "species": "Black-tailed Deer", "condition": "Region-specific season, sex/class and weapon condition." },
+        { "location": "Peace Region", "unit": "MU 7-20", "species": "Moose", "condition": "Compare general open season with LEH authorization." },
+        { "location": "Kootenay", "unit": "MU 4-20", "species": "Elk", "condition": "Antler-class and compulsory-reporting dimensions." }
+      ],
+      "nextAction": "Ingest the 225-unit WFS snapshot with OGL attribution, then model LEH/special maps as versioned overlays before parsing rules."
+    },
+    {
+      "id": "jurisdiction:ca-ab",
+      "code": "CA-AB",
+      "name": "Alberta",
+      "authority": { "name": "Alberta Forestry and Parks", "url": "https://www.alberta.ca/hunting-in-alberta" },
+      "managementSystems": [{ "name": "Wildlife Management Unit", "scope": "Province-wide game management", "topLevelCount": 199, "subzoneCount": null, "notes": "General and special licences, draws and weapon seasons are keyed to WMUs or WMU groups." }],
+      "gis": { "state": "VERIFIED_MACHINE_READABLE", "candidates": [{
+        "id": "gis:ca-ab-wmu", "title": "Wildlife Management Unit", "authority": "Government of Alberta", "serviceUrl": "https://geospatial.alberta.ca/mimas/rest/services/boundaries/fishwild_wildlife_mgmt_unit_public/FeatureServer/0", "serviceType": "ARCGIS_FEATURESERVER", "layerId": 0, "typeName": null, "crs": "EPSG:3400", "featureCount": 199, "idField": "WMUNIT_CODE", "nameField": "WMUNIT_NAME", "subzoneFields": [], "geometryType": "esriGeometryPolygon", "updated": "2026-03-04 metadata", "legalStanding": "OFFICIAL_BUT_INDICATIVE", "legalStandingEvidence": "The official WMU page states its maps are small-scale approximations and the legal descriptions in the Wildlife Regulation prevail.",
+        "licence": { "name": "Open Government Licence - Alberta", "url": "https://open.alberta.ca/licence", "commercialUse": "ALLOWED", "derivatives": "ALLOWED", "attribution": "REQUIRED", "shareAlike": false, "nonCommercial": false, "noDerivatives": false, "classification": "OPEN", "notes": "The open-data record explicitly assigns the Alberta open licence." },
+        "limitations": ["Legal descriptions in Alberta Regulation 143/97 control.", "Draw and special-licence eligibility are independent of geometry freshness."]
+      }] },
+      "regulations": { "state": "CURRENT_PRIMARY_AND_SUMMARY_FOUND", "sources": [
+        { "id": "source:ca-ab-wildlife-act", "title": "Wildlife Act", "authority": "Alberta King's Printer", "hierarchy": "LAW", "url": "https://kings-printer.alberta.ca/1266.cfm?page=W10.cfm&leg_type=Acts", "format": "PDF_TEXT", "effectivePeriod": "current consolidation", "stableUrl": true, "hashable": true, "ingestionDifficulty": "MEDIUM", "changeDetection": "Monitor consolidation currency and Alberta Gazette amendments." },
+        { "id": "source:ca-ab-wildlife-reg", "title": "Wildlife Regulation, Alta. Reg. 143/97", "authority": "Alberta King's Printer", "hierarchy": "REGULATION", "url": "https://kings-printer.alberta.ca/1266.cfm?page=1997_143.cfm&leg_type=Regs", "format": "PDF_COMPLEX", "effectivePeriod": "current consolidation", "stableUrl": true, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Hash consolidation; track schedules and amending regulations." },
+        { "id": "source:ca-ab-guide-2026", "title": "Alberta Guide to Hunting Regulations", "authority": "Government of Alberta", "hierarchy": "OFFICIAL_SUMMARY", "url": "https://www.alberta.ca/fishing-hunting-and-trapping-regulations", "format": "PDF_COMPLEX", "effectivePeriod": "2026-2027", "stableUrl": true, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Resolve and hash the annual July PDF plus online corrections." },
+        { "id": "source:ca-ab-draws-2026", "title": "Alberta Hunting Draws", "authority": "Government of Alberta", "hierarchy": "LICENSING", "url": "https://www.alberta.ca/fishing-hunting-and-trapping-regulations", "format": "PDF_COMPLEX", "effectivePeriod": "2026", "stableUrl": true, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Resolve and hash the annual May draw guide separately from the season guide." }
+      ] },
+      "regulatoryDimensions": ["residency", "licence", "general/special licence", "draw priority", "WMU", "weapon season", "sex", "age/antler class", "bag limit", "hunter host/designated guide", "land/access restriction"],
+      "prioritySpecies": ["White-tailed Deer", "Mule Deer", "Moose", "Elk", "Caribou", "Black Bear", "Bighorn Sheep", "Mountain Goat", "Pronghorn", "Wild Turkey", "grouse", "ptarmigan", "wolf", "coyote"],
+      "furbearers": { "HUNTING": [], "TRAPPING": ["beaver", "marten", "fisher", "mink", "otter"], "BOTH": ["wolf", "coyote", "fox"], "OTHER": [], "UNCLEAR": ["raccoon"] },
+      "rightsContext": { "material": true, "authorities": ["Government of Alberta", "applicable Indigenous governments and treaty authorities"], "disclosure": "The recreational licence result is not a determination of treaty, Aboriginal or Métis harvesting rights." },
+      "federalDependencies": ["Migratory Birds Regulations, 2022", "Parks Canada rules", "Species at Risk Act", "federal firearms law"],
+      "blockers": ["Annual draw and general/special licence products must be composed; the WMU alone is insufficient."],
+      "readiness": "READY_FOR_INGESTION",
+      "fixtures": [
+        { "location": "Foothills west of Calgary", "unit": "WMU 406", "species": "Bighorn Sheep", "condition": "General versus special licence and sex/age restrictions." },
+        { "location": "Peace Country", "unit": "WMU 357", "species": "Moose", "condition": "Draw authorization and weapon-season condition." },
+        { "location": "Prairie southeast", "unit": "WMU 102", "species": "Pronghorn", "condition": "Special licence, draw and sex class." }
+      ],
+      "nextAction": "Snapshot FeatureServer layer 0, preserve WMUNIT_CODE, and build separate versioned parsers for the annual guide and draw guide."
+    },
+    {
+      "id": "jurisdiction:ca-sk",
+      "code": "CA-SK",
+      "name": "Saskatchewan",
+      "authority": { "name": "Saskatchewan Ministry of Environment", "url": "https://www.saskatchewan.ca/hunting" },
+      "managementSystems": [{ "name": "Wildlife Management Zone", "scope": "Province-wide game management", "topLevelCount": 83, "subzoneCount": null, "notes": "Some seasons distinguish farmland/forest portions, provincial forests, special areas and draw eligibility." }],
+      "gis": { "state": "VERIFIED_MACHINE_READABLE", "candidates": [{
+        "id": "gis:ca-sk-wmz", "title": "Wildlife Management Zones", "authority": "Saskatchewan Ministry of Environment", "serviceUrl": "https://gis.saskatchewan.ca/arcgis/rest/services/WildlifeManagement/MapServer/0", "serviceType": "ARCGIS_MAPSERVER", "layerId": 0, "typeName": null, "crs": "EPSG:2957 (service also reports legacy WKID 2151)", "featureCount": 83, "idField": "ZONE_NUM", "nameField": "DA_NAME", "subzoneFields": ["LEGISL_E"], "geometryType": "esriGeometryPolygon", "updated": "boundary revision 2014-03-27; service verified 2026-09-20", "legalStanding": "OFFICIAL_BUT_INDICATIVE", "legalStandingEvidence": "The layer describes itself as a polygon representation of the 1990 boundary regulation and expressly says the regulation supersedes the data.",
+        "licence": { "name": "Government of Saskatchewan Standard Unrestricted Use Data Licence v2.0 plus item-specific note", "url": "https://gisappl.saskatchewan.ca/Html5Ext/Resources/GOS_Standard_Unrestricted_Use_Data_Licence_v2.0.pdf", "commercialUse": "UNCLEAR", "derivatives": "ALLOWED", "attribution": "REQUIRED", "shareAlike": false, "nonCommercial": false, "noDerivatives": false, "classification": "CONFLICTING", "notes": "The standard licence permits commercial use and distribution, but the official ArcGIS item adds 'Not for resale'. Product counsel or the data custodian must confirm that North Ground's transformed use is permitted." },
+        "limitations": ["The regulation controls in a discrepancy.", "The ArcGIS item-specific resale restriction conflicts with the general open licence.", "Farmland/forest and special-area rule scopes may need overlays beyond WMZ polygons."]
+      }] },
+      "regulations": { "state": "CURRENT_PRIMARY_AND_SUMMARY_FOUND", "sources": [
+        { "id": "source:ca-sk-wildlife-act", "title": "The Wildlife Act, 1998", "authority": "Saskatchewan Publications Centre", "hierarchy": "LAW", "url": "https://publications.saskatchewan.ca/#/products/487", "format": "PDF_TEXT", "effectivePeriod": "current consolidation", "stableUrl": true, "hashable": true, "ingestionDifficulty": "MEDIUM", "changeDetection": "Resolve and hash the current consolidation and monitor Gazette amendments." },
+        { "id": "source:ca-sk-boundaries-reg", "title": "The Wildlife Management Zones and Special Areas Boundaries Regulations, 1990", "authority": "Saskatchewan Publications Centre", "hierarchy": "REGULATION", "url": "https://publications.saskatchewan.ca/", "format": "PDF_COMPLEX", "effectivePeriod": "current consolidation", "stableUrl": true, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Monitor regulation title in Publications Centre and hash each consolidation." },
+        { "id": "source:ca-sk-guide-2026-27", "title": "2026-27 Hunters Guide", "authority": "Government of Saskatchewan", "hierarchy": "OFFICIAL_SUMMARY", "url": "https://www.saskatchewan.ca/residents/parks-culture-heritage-and-sport/hunting-trapping-and-angling/hunting/hunting-in-saskatchewan", "format": "PDF_COMPLEX", "effectivePeriod": "2026-2027", "stableUrl": true, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Resolve and hash the online guide; the official page warns online updates may follow printing." },
+        { "id": "source:ca-sk-draw-2026", "title": "2026 Big Game Draw Supplement", "authority": "Government of Saskatchewan", "hierarchy": "LICENSING", "url": "https://publications.saskatchewan.ca/api/v1/products/68828/formats/76502/download", "format": "PDF_COMPLEX", "effectivePeriod": "2026", "stableUrl": false, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Hash the annual download and compare hunt codes, WMZ quotas and priority rules." }
+      ] },
+      "regulatoryDimensions": ["residency", "licence", "regular/draw season", "WMZ", "farmland/forest scope", "weapon", "sex", "age/antler class", "quota", "outfitter", "CWD testing", "landowner consent", "special area"],
+      "prioritySpecies": ["White-tailed Deer", "Mule Deer", "Moose", "Elk", "Caribou", "Black Bear", "Pronghorn", "Wild Turkey", "Ruffed Grouse", "Spruce Grouse", "Sharp-tailed Grouse", "ptarmigan", "wolf", "coyote"],
+      "furbearers": { "HUNTING": [], "TRAPPING": ["beaver", "marten", "fisher", "mink", "otter"], "BOTH": ["wolf", "coyote", "fox", "raccoon"], "OTHER": [], "UNCLEAR": [] },
+      "rightsContext": { "material": true, "authorities": ["Government of Saskatchewan", "applicable First Nations and Métis rights authorities"], "disclosure": "Treaty and Aboriginal harvesting rules are distinct from licensed recreational hunting and cannot be inferred from user location or identity." },
+      "federalDependencies": ["Migratory Birds Regulations, 2022", "Parks Canada rules", "Species at Risk Act", "federal firearms law"],
+      "blockers": ["Resolve the official item-specific 'Not for resale' restriction against the otherwise commercial-use open licence before production use."],
+      "readiness": "LICENCE_BLOCKED",
+      "fixtures": [
+        { "location": "Southwest grasslands", "unit": "WMZ 3", "species": "Pronghorn", "condition": "Draw quota and sex class." },
+        { "location": "Boreal forest", "unit": "WMZ 67", "species": "Moose", "condition": "Regular versus draw and forest-zone season." },
+        { "location": "East-central farmland", "unit": "WMZ 43", "species": "White-tailed Deer", "condition": "CWD testing condition plus landowner consent." }
+      ],
+      "nextAction": "Obtain written licence clarification from the Saskatchewan data custodian, then snapshot and hash the official service and annual guides independently."
+    },
+    {
+      "id": "jurisdiction:ca-mb",
+      "code": "CA-MB",
+      "name": "Manitoba",
+      "authority": { "name": "Manitoba Natural Resources and Indigenous Futures", "url": "https://www.gov.mb.ca/nrnd/fish-wildlife/wildlife/" },
+      "managementSystems": [{ "name": "Game Hunting Area", "scope": "Province-wide game management", "topLevelCount": 62, "subzoneCount": null, "notes": "The official hosted layer contains 63 polygon records including one blank GHA value; 62 named GHA codes were observed." }],
+      "gis": { "state": "VERIFIED_MACHINE_READABLE", "candidates": [{
+        "id": "gis:ca-mb-gha", "title": "Manitoba Game Hunting Areas", "authority": "Government of Manitoba", "serviceUrl": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/CWD_GHA/FeatureServer/1", "serviceType": "ARCGIS_FEATURESERVER", "layerId": 1, "typeName": null, "crs": "EPSG:3857", "featureCount": 63, "idField": "GHA", "nameField": null, "subzoneFields": [], "geometryType": "esriGeometryPolygon", "updated": "service verified 2026-09-20", "legalStanding": "OFFICIAL_BUT_INDICATIVE", "legalStandingEvidence": "The government layer ties GHAs to M.R. 220/86 and directs users to the regulation for boundary descriptions.",
+        "licence": { "name": "OpenMB Information and Data Use Licence", "url": "https://www.gov.mb.ca/asset_library/en/legal/OpenMB-Information-Data-Use-Licence.pdf", "commercialUse": "ALLOWED", "derivatives": "ALLOWED", "attribution": "REQUIRED", "shareAlike": false, "nonCommercial": false, "noDerivatives": false, "classification": "OPEN", "notes": "Manitoba expressly permits commercial applications and modified/value-added products with attribution." },
+        "limitations": ["One polygon has a blank GHA value and must be excluded or explained during ingestion.", "Legal descriptions in M.R. 220/86 control.", "Special conservation, vehicle and disease-control rules require separate layers or predicates."]
+      }] },
+      "regulations": { "state": "CURRENT_PRIMARY_AND_SUMMARY_FOUND", "sources": [
+        { "id": "source:ca-mb-wildlife-act", "title": "The Wildlife Act", "authority": "Manitoba Laws", "hierarchy": "LAW", "url": "https://web2.gov.mb.ca/laws/statutes/ccsm/w130.php", "format": "HTML_TABLE", "effectivePeriod": "current consolidation", "stableUrl": true, "hashable": true, "ingestionDifficulty": "MEDIUM", "changeDetection": "Monitor current-version date and legislative amendments." },
+        { "id": "source:ca-mb-seasons-reg", "title": "Hunting Seasons and Bag Limits Regulation, M.R. 165/91", "authority": "Manitoba Laws", "hierarchy": "REGULATION", "url": "https://web2.gov.mb.ca/laws/regs/current/165-91.php", "format": "HTML_TABLE", "effectivePeriod": "current; amended 2026-06-16", "stableUrl": true, "hashable": true, "ingestionDifficulty": "MEDIUM", "changeDetection": "Hash HTML and record current-version/amendment metadata." },
+        { "id": "source:ca-mb-boundaries-reg", "title": "Hunting Areas and Zones Regulation, M.R. 220/86", "authority": "Manitoba Laws", "hierarchy": "REGULATION", "url": "https://web2.gov.mb.ca/laws/regs/current/220-86.php", "format": "HTML_TABLE", "effectivePeriod": "current consolidation", "stableUrl": true, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Hash legal descriptions and compare amendment list." },
+        { "id": "source:ca-mb-guide-2026", "title": "2026 Manitoba Hunting Guide", "authority": "Government of Manitoba", "hierarchy": "OFFICIAL_SUMMARY", "url": "https://www.gov.mb.ca/nrnd/fish-wildlife/wildlife/", "format": "PDF_COMPLEX", "effectivePeriod": "2026", "stableUrl": true, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Resolve and hash current PDF; compare supplements and web notices." }
+      ] },
+      "regulatoryDimensions": ["residency", "licence", "draw/landowner draw", "GHA", "weapon", "season type", "sex", "age/antler class", "bag limit", "guide/outfitter", "vehicle-use restriction", "conservation area", "disease-control condition"],
+      "prioritySpecies": ["White-tailed Deer", "Mule Deer", "Moose", "Elk", "Caribou", "Black Bear", "Wild Turkey", "Ruffed Grouse", "Spruce Grouse", "Sharp-tailed Grouse", "ptarmigan", "wolf", "coyote"],
+      "furbearers": { "HUNTING": [], "TRAPPING": ["beaver", "marten", "fisher", "mink", "otter"], "BOTH": ["wolf", "coyote", "fox", "raccoon"], "OTHER": [], "UNCLEAR": [] },
+      "rightsContext": { "material": true, "authorities": ["Government of Manitoba", "applicable First Nations and Métis rights authorities"], "disclosure": "Recreational licence rules do not determine Indigenous harvesting rights or access to reserve, settlement or private lands." },
+      "federalDependencies": ["Migratory Birds Regulations, 2022", "Parks Canada rules", "Species at Risk Act", "federal firearms law"],
+      "blockers": ["The hosted layer is embedded in a CWD web map rather than a dedicated versioned GHA product; preserve metadata and hash snapshots."],
+      "readiness": "READY_FOR_INGESTION",
+      "fixtures": [
+        { "location": "Duck Mountain", "unit": "GHA 18", "species": "Elk", "condition": "Resident draw, equipment and season." },
+        { "location": "Interlake", "unit": "GHA 21A", "species": "White-tailed Deer", "condition": "Licence type, weapon and CWD-related condition." },
+        { "location": "Northern Manitoba", "unit": "GHA 1", "species": "Caribou", "condition": "Residency class and seasonal period." }
+      ],
+      "nextAction": "Snapshot the 62 named GHA geometries, quarantine the blank record, and use the HTML regulation tables as the primary rule source."
+    },
+    {
+      "id": "jurisdiction:ca-nb",
+      "code": "CA-NB",
+      "name": "New Brunswick",
+      "authority": { "name": "New Brunswick Natural Resources and Energy Development", "url": "https://www2.gnb.ca/content/gnb/en/departments/erd/fish-and-wildlife/content/go-hunting.html" },
+      "managementSystems": [{ "name": "Wildlife Management Zone", "scope": "Province-wide deer, moose, bear, turkey and furbearer management", "topLevelCount": 27, "subzoneCount": null, "notes": "Wildlife Management Areas and refuges are separate restriction geography, not WMZs." }],
+      "gis": { "state": "VERIFIED_MACHINE_READABLE", "candidates": [{
+        "id": "gis:ca-nb-wmz", "title": "Wildlife Management Zones", "authority": "Government of New Brunswick", "serviceUrl": "https://gis-erd-der.gnb.ca/server/rest/services/OpenData/WMZ/FeatureServer/0", "serviceType": "ARCGIS_FEATURESERVER", "layerId": 0, "typeName": null, "crs": "EPSG:2953 (service also reports legacy WKID 2036)", "featureCount": 27, "idField": "WMZ", "nameField": null, "subzoneFields": [], "geometryType": "esriGeometryPolygon", "updated": "service verified 2026-09-20", "legalStanding": "OFFICIAL_BUT_INDICATIVE", "legalStandingEvidence": "The official open layer delineates the 27 administrative units, while N.B. Reg. 84-133 and other regulations define legal application.",
+        "licence": { "name": "GeoNB Open Data Licence", "url": "https://geonb.snb.ca/documents/license/geonb-odl_en.pdf", "commercialUse": "ALLOWED", "derivatives": "ALLOWED", "attribution": "REQUIRED", "shareAlike": false, "nonCommercial": false, "noDerivatives": false, "classification": "OPEN", "notes": "The licence expressly permits commercial use, copying, modification and distribution." },
+        "limitations": ["Wildlife refuges, Wildlife Management Areas, parks and other closures require separate official layers.", "The WMZ layer has no zone-name field, only numeric WMZ."]
+      }] },
+      "regulations": { "state": "PRIMARY_FOUND_SUMMARY_NEEDS_REVIEW", "sources": [
+        { "id": "source:ca-nb-fish-wildlife-act", "title": "Fish and Wildlife Act", "authority": "New Brunswick Acts and Regulations", "hierarchy": "LAW", "url": "https://laws.gnb.ca/en/showfulldoc/cs/F-14.1", "format": "HTML_TABLE", "effectivePeriod": "current consolidation", "stableUrl": true, "hashable": true, "ingestionDifficulty": "MEDIUM", "changeDetection": "Monitor official consolidation date and annual regulations." },
+        { "id": "source:ca-nb-hunting-reg", "title": "Hunting Regulation, N.B. Reg. 84-133", "authority": "New Brunswick Acts and Regulations", "hierarchy": "REGULATION", "url": "https://laws.gnb.ca/en/document/cr/84-133", "format": "HTML_TABLE", "effectivePeriod": "current consolidation", "stableUrl": true, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Hash consolidated HTML and WMZ schedules; monitor amendment feed." },
+        { "id": "source:ca-nb-moose-reg", "title": "Moose Hunting Regulation, N.B. Reg. 94-47", "authority": "New Brunswick Acts and Regulations", "hierarchy": "REGULATION", "url": "https://laws.gnb.ca/en/document/cr/94-47", "format": "HTML_TABLE", "effectivePeriod": "consolidated to 2026-04-21", "stableUrl": true, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Hash current consolidation and monitor annual quota/draw amendments." },
+        { "id": "source:ca-nb-summary", "title": "Hunt & Trap Summary of Regulations", "authority": "Government of New Brunswick", "hierarchy": "OFFICIAL_SUMMARY", "url": "https://www2.gnb.ca/content/dam/gnb/Departments/nr-rn/pdf/en/Wildlife/HuntTrap.pdf", "format": "PDF_COMPLEX", "effectivePeriod": "published file currently identifies 2024-2025; current replacement not confirmed", "stableUrl": true, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Hash the stable PDF and reject ingestion unless its internal season label matches the target year." },
+        { "id": "source:ca-nb-draws-2026", "title": "Available Licences and Draws", "authority": "Government of New Brunswick", "hierarchy": "LICENSING", "url": "https://www2.gnb.ca/content/gnb/en/departments/erd/fish-and-wildlife/content/draw-info.html", "format": "HTML_TABLE", "effectivePeriod": "2026", "stableUrl": true, "hashable": true, "ingestionDifficulty": "MEDIUM", "changeDetection": "Monitor draw result dates, fact-sheet links and licence categories." }
+      ] },
+      "regulatoryDimensions": ["residency", "licence", "draw", "WMZ", "species quota", "guide requirement", "weapon", "sex/antlerless authorization", "bag limit", "registration", "closed/restricted area"],
+      "prioritySpecies": ["White-tailed Deer", "Moose", "Black Bear", "Wild Turkey", "Ruffed Grouse", "Spruce Grouse", "Snowshoe Hare", "coyote", "fox", "raccoon"],
+      "furbearers": { "HUNTING": [], "TRAPPING": ["beaver", "marten", "fisher", "mink", "otter"], "BOTH": ["coyote", "fox", "raccoon"], "OTHER": [], "UNCLEAR": ["wolf"] },
+      "rightsContext": { "material": true, "authorities": ["Government of New Brunswick", "applicable Indigenous governments and rights authorities"], "disclosure": "Licensed recreational results do not determine Aboriginal or treaty harvesting rights or land access." },
+      "federalDependencies": ["Migratory Birds Regulations, 2022", "national parks and National Wildlife Areas", "Species at Risk Act", "federal firearms law"],
+      "blockers": ["The stable Hunt & Trap PDF still identifies 2024-2025; do not ingest it as a current 2026 summary.", "Refuges, parks and Wildlife Management Areas must be modeled separately from WMZs."],
+      "readiness": "SOURCE_FOUND_NEEDS_REVIEW",
+      "fixtures": [
+        { "location": "Northwestern New Brunswick", "unit": "WMZ 3", "species": "Moose", "condition": "Resident draw and zone quota." },
+        { "location": "Fredericton area", "unit": "WMZ 21", "species": "White-tailed Deer", "condition": "Antlerless draw plus refuge/urban restriction overlay." },
+        { "location": "Southern New Brunswick", "unit": "WMZ 23", "species": "Black Bear", "condition": "Non-resident licence/guide and Fundy National Park exclusion." }
+      ],
+      "nextAction": "Ask the authority for the current Hunt & Trap summary or use the current consolidated regulations, then ingest WMZ and refuge/WMA layers as distinct datasets."
+    },
+    {
+      "id": "jurisdiction:ca-ns",
+      "code": "CA-NS",
+      "name": "Nova Scotia",
+      "authority": { "name": "Nova Scotia Department of Natural Resources", "url": "https://novascotia.ca/natr/hunt/regulations/" },
+      "managementSystems": [
+        { "name": "Deer Management Zone", "scope": "White-tailed deer", "topLevelCount": 12, "subzoneCount": null, "notes": "DMZ 101-112 cover the province and drive annual antlerless determinations." },
+        { "name": "Moose Management Zone", "scope": "Cape Breton moose", "topLevelCount": 5, "subzoneCount": 1, "notes": "Official GIS exposes values 1, 2a, 2b, 3, 4 and 5; the regulations and public summary may present Zone 2 subdivisions contextually." },
+        { "name": "Bear management geography", "scope": "Black bear", "topLevelCount": null, "subzoneCount": null, "notes": "Bear rules reference provincial areas and can also depend on moose-zone firearm restrictions; no separate verified province-wide bear polygon source was found." }
+      ],
+      "gis": { "state": "PARTIAL_SPECIES_GEOGRAPHY", "candidates": [
+        { "id": "gis:ca-ns-moose-zones", "title": "Moose Zones", "authority": "Nova Scotia Department of Natural Resources", "serviceUrl": "https://nsgiwa.novascotia.ca/arcgis/rest/services/BIO/WLD_ProvLandScapeViewer_WM84/MapServer/1", "serviceType": "ARCGIS_MAPSERVER", "layerId": 1, "typeName": null, "crs": "EPSG:3857", "featureCount": 273, "idField": "Moose_Zone", "nameField": null, "subzoneFields": [], "geometryType": "esriGeometryPolygon", "updated": "ArcGIS item modified 2020-02-14; service verified 2026-09-20", "legalStanding": "OFFICIAL_BUT_INDICATIVE", "legalStandingEvidence": "The provincial viewer supplies official polygons, while legal descriptions and regulations govern and the high feature count reflects polygon parts rather than zones.", "licence": { "name": "No licence attached to the ArcGIS item", "url": null, "commercialUse": "UNCLEAR", "derivatives": "UNCLEAR", "attribution": "UNCLEAR", "shareAlike": false, "nonCommercial": false, "noDerivatives": false, "classification": "UNRESOLVED", "notes": "Nova Scotia has open and legacy digital-data licences, but this specific map item exposes no licenceInfo. Written confirmation is required before commercial ingestion." }, "limitations": ["273 polygon parts represent six distinct Moose_Zone values.", "Only Cape Breton moose geography is represented.", "No item-specific licence is published."] },
+        { "id": "gis:ca-ns-deer-zones", "title": "Deer Zones", "authority": "Nova Scotia Department of Natural Resources", "serviceUrl": "https://nsgiwa.novascotia.ca/arcgis/rest/services/BIO/WLD_ProvLandScapeViewer_WM84/MapServer/2", "serviceType": "ARCGIS_MAPSERVER", "layerId": 2, "typeName": null, "crs": "EPSG:3857", "featureCount": 234, "idField": "Deer_Zone", "nameField": null, "subzoneFields": [], "geometryType": "esriGeometryPolygon", "updated": "ArcGIS item modified 2020-02-14; service verified 2026-09-20", "legalStanding": "OFFICIAL_BUT_INDICATIVE", "legalStandingEvidence": "The official viewer polygons correspond to the 12 regulated DMZs, but the regulation publishes legal descriptions and labels its map approximate.", "licence": { "name": "No licence attached to the ArcGIS item", "url": null, "commercialUse": "UNCLEAR", "derivatives": "UNCLEAR", "attribution": "UNCLEAR", "shareAlike": false, "nonCommercial": false, "noDerivatives": false, "classification": "UNRESOLVED", "notes": "The service does not state whether the Nova Scotia OGL or the legacy DNR digital-data licence applies." }, "limitations": ["234 polygon parts represent 12 distinct deer zones.", "No item-specific licence is published.", "Annual antlerless determinations are separate from the geometry."] }
+      ] },
+      "regulations": { "state": "CURRENT_PRIMARY_AND_SUMMARY_FOUND", "sources": [
+        { "id": "source:ca-ns-wildlife-act", "title": "Wildlife Act", "authority": "Nova Scotia Legislature", "hierarchy": "LAW", "url": "https://nslegislature.ca/sites/default/files/legc/statutes/wildlife.pdf", "format": "PDF_TEXT", "effectivePeriod": "current consolidation", "stableUrl": true, "hashable": true, "ingestionDifficulty": "MEDIUM", "changeDetection": "Hash consolidation and monitor amendment statutes." },
+        { "id": "source:ca-ns-wildlife-reg-index", "title": "Regulations under the Wildlife Act", "authority": "Nova Scotia Registrar of Regulations", "hierarchy": "REGULATION", "url": "https://novascotia.ca/just/regulations/regsbyact.htm#wildlife", "format": "HTML_TABLE", "effectivePeriod": "current; multiple regulations", "stableUrl": true, "hashable": true, "ingestionDifficulty": "VERY_HIGH", "changeDetection": "Monitor the index and hash deer, moose, bear, fur-harvesting, firearm/bow and general regulations separately." },
+        { "id": "source:ca-ns-deer-reg", "title": "Deer Hunting Regulations", "authority": "Nova Scotia Registrar of Regulations", "hierarchy": "REGULATION", "url": "https://www.novascotia.ca/just/regulations/regs/wideer.htm", "format": "HTML_TABLE", "effectivePeriod": "current; amended through 2026", "stableUrl": true, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Hash Schedule A legal descriptions and monitor annual determinations." },
+        { "id": "source:ca-ns-summary", "title": "Hunting and Furharvesting Summary of Regulations", "authority": "Government of Nova Scotia", "hierarchy": "OFFICIAL_SUMMARY", "url": "https://novascotia.ca/natr/hunt/regulations/", "format": "PDF_COMPLEX", "effectivePeriod": "current hub; annual publication and notices", "stableUrl": true, "hashable": true, "ingestionDifficulty": "VERY_HIGH", "changeDetection": "Hash linked PDF plus ministerial orders and harvest notices; original law controls." }
+      ] },
+      "regulatoryDimensions": ["species-specific zone system", "licence/stamp", "lottery/draw", "residency", "weapon", "sex", "antlerless determination", "bag limit", "ministerial order", "county/park/sanctuary", "furharvester licence"],
+      "prioritySpecies": ["White-tailed Deer", "Moose", "Black Bear", "Wild Turkey", "Ruffed Grouse", "Spruce Grouse", "Snowshoe Hare", "coyote", "fox", "raccoon"],
+      "furbearers": { "HUNTING": [], "TRAPPING": ["beaver", "marten", "fisher", "mink", "otter"], "BOTH": ["coyote", "fox", "raccoon"], "OTHER": [], "UNCLEAR": ["wolf"] },
+      "rightsContext": { "material": true, "authorities": ["Government of Nova Scotia", "Mi'kmaq rights and treaty authorities"], "disclosure": "A recreational result cannot determine Mi'kmaq treaty or Aboriginal harvesting rights, identity, access or consultation outcomes." },
+      "federalDependencies": ["Migratory Birds Regulations, 2022", "Parks Canada rules", "National Wildlife Areas", "Species at Risk Act", "federal firearms law"],
+      "blockers": ["There is no single universal hunt-zone layer.", "The deer/moose ArcGIS item has no attached licence and commercial reuse is unresolved.", "Bear geography and time-limited ministerial orders require separate modeling."],
+      "readiness": "LICENCE_BLOCKED",
+      "fixtures": [
+        { "location": "Southwest mainland", "unit": "DMZ 101", "species": "White-tailed Deer", "condition": "Annual antlerless determination and stamp." },
+        { "location": "Cape Breton Highlands", "unit": "Moose Zone 2a", "species": "Moose", "condition": "Lottery licence and species-specific zone." },
+        { "location": "Cape Breton", "unit": "Moose Zones 2-4 overlay", "species": "Black Bear", "condition": "Time-limited firearm prohibition tied to moose geography." }
+      ],
+      "nextAction": "Obtain written reuse terms for the provincial viewer layers, then ingest deer and moose as separate geometry systems and research bear/order overlays independently."
+    },
+    {
+      "id": "jurisdiction:ca-pe",
+      "code": "CA-PE",
+      "name": "Prince Edward Island",
+      "authority": { "name": "Forests, Fish and Wildlife Division", "url": "https://www.princeedwardisland.ca/en/topic/wildlife" },
+      "managementSystems": [{ "name": "Province-wide and named-place rules", "scope": "General hunting", "topLevelCount": 1, "subzoneCount": null, "notes": "No comprehensive numeric hunting-zone system was found. Wildlife Management Areas are managed lands and must not be treated as province-wide season units." }],
+      "gis": { "state": "NO_COMPREHENSIVE_SYSTEM", "candidates": [{
+        "id": "gis:ca-pe-no-hunt-zone", "title": "No comprehensive hunting management zone layer identified", "authority": "Government of Prince Edward Island", "serviceUrl": null, "serviceType": "NONE_FOUND", "layerId": null, "typeName": null, "crs": null, "featureCount": null, "idField": null, "nameField": null, "subzoneFields": [], "geometryType": null, "updated": "research verified 2026-09-20", "legalStanding": "UNRESOLVED", "legalStandingEvidence": "The 2026 Hunting Summary and Wildlife Conservation Act framework use province-wide dates and named restrictions; designated Wildlife Management Areas serve a different land-management purpose.", "licence": { "name": "Not applicable until an actual hunting-boundary dataset is identified", "url": null, "commercialUse": "UNCLEAR", "derivatives": "UNCLEAR", "attribution": "UNCLEAR", "shareAlike": false, "nonCommercial": false, "noDerivatives": false, "classification": "NOT_APPLICABLE", "notes": "Do not ingest WMA polygons as hunting zones." }, "limitations": ["Absence of a zone system must be confirmed against current regulations before modeling a province-wide unit.", "Named closed areas and private-land access still require location predicates."]
+      }] },
+      "regulations": { "state": "CURRENT_PRIMARY_AND_SUMMARY_FOUND", "sources": [
+        { "id": "source:ca-pe-wildlife-act", "title": "Wildlife Conservation Act", "authority": "Government of Prince Edward Island", "hierarchy": "LAW", "url": "https://www.princeedwardisland.ca/sites/default/files/legislation/w-04-1-wildlife_conservation_act.pdf", "format": "PDF_TEXT", "effectivePeriod": "current consolidation", "stableUrl": true, "hashable": true, "ingestionDifficulty": "MEDIUM", "changeDetection": "Hash official consolidation and monitor effective-date metadata." },
+        { "id": "source:ca-pe-regulations", "title": "Wildlife Conservation Act regulations", "authority": "Government of Prince Edward Island", "hierarchy": "REGULATION", "url": "https://www.princeedwardisland.ca/en/legislation/wildlife-conservation-act", "format": "PDF_TEXT", "effectivePeriod": "current collection", "stableUrl": true, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Monitor and hash hunting, open-season, trapping and WMA regulations separately." },
+        { "id": "source:ca-pe-summary-2026", "title": "Hunting Summary 2026", "authority": "Government of Prince Edward Island", "hierarchy": "OFFICIAL_SUMMARY", "url": "https://www.princeedwardisland.ca/en/publication/hunting-summary", "format": "PDF_COMPLEX", "effectivePeriod": "2026-2027", "stableUrl": true, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Hash resolved PDF and publication date; monitor replacement on the stable landing page." }
+      ] },
+      "regulatoryDimensions": ["province-wide season", "licence", "residency", "weapon", "bag/possession limit", "named closed area", "private-land permission", "migratory/non-migratory species"],
+      "prioritySpecies": ["Ruffed Grouse", "Snowshoe Hare", "cottontail", "fox", "coyote", "raccoon", "waterfowl", "migratory game birds"],
+      "furbearers": { "HUNTING": [], "TRAPPING": ["beaver", "mink", "otter"], "BOTH": ["coyote", "fox", "raccoon"], "OTHER": [], "UNCLEAR": ["marten", "fisher", "wolf"] },
+      "rightsContext": { "material": true, "authorities": ["Government of Prince Edward Island", "Mi'kmaq rights and treaty authorities"], "disclosure": "Licensed recreational rules do not determine Mi'kmaq treaty or Aboriginal harvesting rights or access." },
+      "federalDependencies": ["Migratory Birds Regulations, 2022", "Prince Edward Island National Park rules", "Species at Risk Act", "federal firearms law"],
+      "blockers": ["Legal review must confirm that no current species uses an unmodeled management-zone geography.", "Most land is private, so permission is a material non-season condition."],
+      "readiness": "SOURCE_FOUND_NEEDS_REVIEW",
+      "fixtures": [
+        { "location": "Central Queens County", "unit": "Province-wide rule", "species": "Ruffed Grouse", "condition": "Season, bag limit and private-land permission." },
+        { "location": "Eastern PEI", "unit": "Province-wide rule plus named restriction", "species": "Snowshoe Hare", "condition": "Season and closed-area overlay." },
+        { "location": "Coastal PEI", "unit": "Federal hunting district", "species": "waterfowl", "condition": "Federal season and provincial licensing composition." }
+      ],
+      "nextAction": "Have a legal researcher confirm the no-zone conclusion, then implement a province-wide jurisdiction unit with explicit named-area overlays rather than fake WMUs."
+    },
+    {
+      "id": "jurisdiction:ca-nl",
+      "code": "CA-NL",
+      "name": "Newfoundland and Labrador",
+      "authority": { "name": "Newfoundland and Labrador Forestry, Agriculture and Lands", "url": "https://www.gov.nl.ca/hunting-trapping-guide/2026-27/" },
+      "managementSystems": [
+        { "name": "Moose Management Area", "scope": "Moose; separate Island and Labrador tables", "topLevelCount": null, "subzoneCount": null, "notes": "Island table includes numbered/lettered MMAs and special Moose Reduction Zones; Labrador is separate." },
+        { "name": "Caribou Management Area", "scope": "Island caribou", "topLevelCount": null, "subzoneCount": null, "notes": "2026 changes include CMA 71A and 71B naming/boundary changes." },
+        { "name": "Black Bear Management Area", "scope": "Black bear; separate Island regional BBMAs and Labrador zones", "topLevelCount": null, "subzoneCount": null, "notes": "Island black-bear geography was consolidated into regional areas beginning in 2025/2026." },
+        { "name": "Small Game Zone", "scope": "Small game; separate Newfoundland and Labrador systems", "topLevelCount": null, "subzoneCount": null, "notes": "Published as reference maps on the boundary page." }
+      ],
+      "gis": { "state": "MAP_ONLY", "candidates": [{
+        "id": "gis:ca-nl-species-management-areas", "title": "Hunting Management Areas and Zones reference maps", "authority": "Government of Newfoundland and Labrador", "serviceUrl": "https://www.gov.nl.ca/fal/public-education/wildlife/hunting/boundry/", "serviceType": "PDF_MAP", "layerId": null, "typeName": null, "crs": null, "featureCount": null, "idField": null, "nameField": null, "subzoneFields": [], "geometryType": null, "updated": "2026-2027 guide cycle", "legalStanding": "REFERENCE_ONLY", "legalStandingEvidence": "The official boundary page expressly states the maps are for reference only; the guide points users to legal descriptions and the Wild Life Act and regulations.", "licence": { "name": "No open-data designation attached to the hunting maps", "url": null, "commercialUse": "UNCLEAR", "derivatives": "UNCLEAR", "attribution": "UNCLEAR", "shareAlike": false, "nonCommercial": false, "noDerivatives": false, "classification": "UNRESOLVED", "notes": "The provincial open-data licence is commercial-friendly, but these hunting maps are not published as open-data catalogue products." }, "limitations": ["No official vector endpoint or download was found after checking the open-data catalogue and boundary application links.", "Multiple incompatible species systems exist.", "2026 area changes make older map extraction unsafe."]
+      }] },
+      "regulations": { "state": "CURRENT_SUMMARY_FOUND_PRIMARY_COMPLEX", "sources": [
+        { "id": "source:ca-nl-wild-life-act", "title": "Wild Life Act", "authority": "Newfoundland and Labrador House of Assembly", "hierarchy": "LAW", "url": "https://www.assembly.nl.ca/legislation/sr/statutes/w08.htm", "format": "HTML_TABLE", "effectivePeriod": "current consolidation", "stableUrl": true, "hashable": true, "ingestionDifficulty": "MEDIUM", "changeDetection": "Hash current HTML and monitor annual statutes." },
+        { "id": "source:ca-nl-regulations", "title": "Regulations under the Wild Life Act", "authority": "Newfoundland and Labrador House of Assembly", "hierarchy": "REGULATION", "url": "https://www.assembly.nl.ca/legislation/sr/regulations/rc960115.htm", "format": "HTML_TABLE", "effectivePeriod": "current consolidation and annual hunting orders", "stableUrl": true, "hashable": true, "ingestionDifficulty": "VERY_HIGH", "changeDetection": "Track the base regulations and species-specific annual orders independently." },
+        { "id": "source:ca-nl-guide-2026-27", "title": "2026-27 Hunting and Trapping Guide", "authority": "Government of Newfoundland and Labrador", "hierarchy": "OFFICIAL_SUMMARY", "url": "https://www.gov.nl.ca/hunting-trapping-guide/2026-27/print/", "format": "HTML_TABLE", "effectivePeriod": "2026-2027", "stableUrl": false, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Hash print HTML and linked PDF; monitor 'New for 2026-27' and table edits." },
+        { "id": "source:ca-nl-boundary-maps", "title": "Boundary Areas and Online Mapping", "authority": "Government of Newfoundland and Labrador", "hierarchy": "MAP", "url": "https://www.gov.nl.ca/fal/public-education/wildlife/hunting/boundry/", "format": "MAP_ONLY", "effectivePeriod": "current with annual-guide linkage", "stableUrl": true, "hashable": false, "ingestionDifficulty": "VERY_HIGH", "changeDetection": "Inventory and hash each resolved species-map artifact; landing-page hash alone is insufficient." }
+      ] },
+      "regulatoryDimensions": ["Island versus Labrador", "species-specific management area", "resident draw", "non-resident quota/outfitter", "licence/tag", "sex", "season", "quota", "Moose Reduction Zone", "national park permit", "reporting/jaw submission", "land-claim access", "closed area"],
+      "prioritySpecies": ["Moose", "Caribou", "Black Bear", "Ruffed Grouse", "Spruce Grouse", "ptarmigan", "Snowshoe Hare", "wolf", "coyote", "fox"],
+      "furbearers": { "HUNTING": [], "TRAPPING": ["beaver", "marten", "mink", "otter"], "BOTH": ["wolf", "coyote", "fox"], "OTHER": [], "UNCLEAR": ["fisher", "raccoon"] },
+      "rightsContext": { "material": true, "authorities": ["Government of Newfoundland and Labrador", "Nunatsiavut Government", "Innu Nation and other applicable Indigenous rights authorities"], "disclosure": "Recreational rules are not exhaustive of rights-based harvesting. Non-beneficiaries need Nunatsiavut permission to access Labrador Inuit Lands." },
+      "federalDependencies": ["Migratory Birds Regulations, 2022", "Parks Canada superintendent permits and park rules", "Species at Risk Act", "federal firearms law"],
+      "blockers": ["No official machine-readable hunting-boundary product was found.", "Species use separate and changing geographies across Newfoundland and Labrador.", "Hunting-map commercial reuse terms are not attached to the artifacts."],
+      "readiness": "GIS_BLOCKED",
+      "fixtures": [
+        { "location": "Northern Peninsula, Newfoundland", "unit": "MMA 1 St. Anthony", "species": "Moose", "condition": "Resident/non-resident quota and licence class." },
+        { "location": "Avalon Peninsula", "unit": "MMA 100 Avalon MRZ", "species": "Moose", "condition": "Reduction-zone overlap and pre-season bow condition." },
+        { "location": "Grey Islands", "unit": "CMA 71A/71B", "species": "Caribou", "condition": "2026 boundary/name split and sex-specific quota." },
+        { "location": "Labrador Inuit Lands", "unit": "Applicable Labrador MMA", "species": "Black Bear", "condition": "Non-beneficiary access permission plus outfitter/licence." }
+      ],
+      "nextAction": "Request current vector boundaries and licence terms from the Wildlife Division; do not digitize reference PDFs until official vectors are ruled out in writing."
+    },
+    {
+      "id": "jurisdiction:ca-yt",
+      "code": "CA-YT",
+      "name": "Yukon",
+      "authority": { "name": "Government of Yukon Department of Environment", "url": "https://yukon.ca/en/hunting-regulations" },
+      "managementSystems": [{ "name": "Game Management Area / Game Management Subzone", "scope": "All game species outside national parks", "topLevelCount": 11, "subzoneCount": 443, "notes": "The catalogue describes 443 legal GMAs grouped into 11 zones; the service currently returns 445 polygon features, so duplicates/parts must be reconciled." }],
+      "gis": { "state": "VERIFIED_MACHINE_READABLE", "candidates": [{
+        "id": "gis:ca-yt-gma", "title": "Game Management Areas - 250k", "authority": "Government of Yukon Department of Environment", "serviceUrl": "https://mapservices.gov.yk.ca/arcgis/rest/services/GeoYukon/GY_AdministrativeBoundaries/MapServer/7", "serviceType": "ARCGIS_MAPSERVER", "layerId": 7, "typeName": null, "crs": "EPSG:3578", "featureCount": 445, "idField": "GAME_MGMT_AREA_ID", "nameField": null, "subzoneFields": [], "geometryType": "esriGeometryPolygon", "updated": "2021-04-09 catalogue; service verified 2026-09-20", "legalStanding": "OFFICIAL_BUT_INDICATIVE", "legalStandingEvidence": "The catalogue calls GMAs legal boundaries, but the ArcGIS item says the 1:250,000 data is generalized for cartographic purposes and must not be used for legal purposes.", "licence": { "name": "Open Government Licence - Yukon", "url": "https://open.yukon.ca/open-government-licence-yukon", "commercialUse": "ALLOWED", "derivatives": "ALLOWED", "attribution": "REQUIRED", "shareAlike": false, "nonCommercial": false, "noDerivatives": false, "classification": "OPEN", "notes": "Commercial reuse and adaptation are expressly permitted with attribution." }, "limitations": ["Generalized from legal boundaries and unsuitable for legal boundary determination.", "445 service features must be reconciled with the stated 443 GMAs.", "Settlement Lands and special restrictions require separate, more detailed layers."]
+      }] },
+      "regulations": { "state": "CURRENT_PRIMARY_AND_SUMMARY_FOUND", "sources": [
+        { "id": "source:ca-yt-wildlife-act", "title": "Wildlife Act", "authority": "Yukon Laws", "hierarchy": "LAW", "url": "https://laws.yukon.ca/cms/images/LEGISLATION/acts/wildlife.pdf", "format": "PDF_TEXT", "effectivePeriod": "current consolidation", "stableUrl": true, "hashable": true, "ingestionDifficulty": "MEDIUM", "changeDetection": "Hash consolidation and monitor Gazette changes." },
+        { "id": "source:ca-yt-wildlife-reg", "title": "Wildlife Regulation, O.I.C. 1982/089", "authority": "Yukon Laws", "hierarchy": "REGULATION", "url": "https://laws.yukon.ca/cms/images/LEGISLATION/regs/oic1982_089.pdf", "format": "PDF_COMPLEX", "effectivePeriod": "current consolidation", "stableUrl": true, "hashable": true, "ingestionDifficulty": "VERY_HIGH", "changeDetection": "Hash schedules and monitor Orders in Council." },
+        { "id": "source:ca-yt-summary-2026-27", "title": "Yukon Hunting Regulations Summary", "authority": "Government of Yukon", "hierarchy": "OFFICIAL_SUMMARY", "url": "https://yukon.ca/en/hunting-regulations", "format": "PDF_COMPLEX", "effectivePeriod": "2026-04-01/2027-03-31", "stableUrl": true, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Hash resolved annual PDF, insert map and current-change notices separately." },
+        { "id": "source:ca-yt-pha-2026", "title": "Permit Hunt Authorization", "authority": "Government of Yukon", "hierarchy": "LICENSING", "url": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/apply-permit-hunt-authorization", "format": "HTML_TABLE", "effectivePeriod": "2026-2027", "stableUrl": true, "hashable": true, "ingestionDifficulty": "MEDIUM", "changeDetection": "Monitor annual hunt-code statistics, eligibility and reporting changes." }
+      ] },
+      "regulatoryDimensions": ["GMS", "residency", "licence/seal", "Permit Hunt Authorization", "outfitter/special guide", "species", "sex/age", "bag limit", "special area", "Settlement Land permission", "compulsory submission/reporting", "temporary closure"],
+      "prioritySpecies": ["Moose", "Caribou", "Elk", "Bison", "Black Bear", "Grizzly Bear", "Dall's Sheep", "Mountain Goat", "Mule Deer", "wolf", "coyote", "grouse", "ptarmigan", "Snowshoe Hare"],
+      "furbearers": { "HUNTING": [], "TRAPPING": ["beaver", "marten", "fisher", "mink", "otter"], "BOTH": ["wolf", "coyote", "fox"], "OTHER": [], "UNCLEAR": ["raccoon"] },
+      "rightsContext": { "material": true, "authorities": ["Government of Yukon", "Yukon First Nation governments", "Yukon Fish and Wildlife Management Board and Renewable Resources Councils"], "disclosure": "Licensed-hunter results do not determine Final Agreement rights. Access and hunting on Settlement Land may require First Nation permission or compliance with First Nation law." },
+      "federalDependencies": ["Migratory Birds Regulations, 2022", "Parks Canada rules", "Species at Risk Act", "federal firearms law"],
+      "blockers": ["The generalized GIS service returns 445 features while official text states 443 GMAs; reconcile multipart/duplicate identifiers before ingestion.", "Current changes and Settlement Land permissions are independent overlays."],
+      "readiness": "READY_FOR_INGESTION",
+      "fixtures": [
+        { "location": "Kluane region", "unit": "GMS 5-17", "species": "Dall's Sheep", "condition": "Time-limited closure and First Nation co-management." },
+        { "location": "Whitehorse area", "unit": "GMS 8-04", "species": "Elk", "condition": "Permit Hunt Authorization and reporting." },
+        { "location": "Central Yukon", "unit": "GMS 4-03", "species": "Moose", "condition": "Resident/non-resident guide and subzone-specific season." }
+      ],
+      "nextAction": "Reconcile the 445 service records to 443 legal GMAs, then snapshot geometry and annual summary/map/current-change artifacts separately."
+    },
+    {
+      "id": "jurisdiction:ca-nt",
+      "code": "CA-NT",
+      "name": "Northwest Territories",
+      "authority": { "name": "Environment and Climate Change, Government of the Northwest Territories", "url": "https://www.gov.nt.ca/ecc/en/services/hunting-trapping-and-harvesting" },
+      "managementSystems": [
+        { "name": "Wildlife Management Zone", "scope": "Territory-wide top-level framework", "topLevelCount": 6, "subzoneCount": null, "notes": "Zones D, G, I, R, S and U contain species-specific management areas." },
+        { "name": "Species Wildlife Management Area", "scope": "Species-specific nested areas", "topLevelCount": null, "subzoneCount": null, "notes": "Codes combine zone, species code and area number, for example I/MX/01 and D/WB/05." },
+        { "name": "Outfitter Management Area", "scope": "Mackenzie Mountains non-resident outfitting", "topLevelCount": 8, "subzoneCount": null, "notes": "Eight OT areas occur within zones D, G and S." },
+        { "name": "Mobile Core Bathurst Caribou Management Zone", "scope": "Dynamic barren-ground caribou restriction", "topLevelCount": 1, "subzoneCount": null, "notes": "Coordinates and maps are republished as the mobile zone moves, independently of the annual guide." }
+      ],
+      "gis": { "state": "PARTIAL_SPECIES_GEOGRAPHY", "candidates": [
+        { "id": "gis:ca-nt-wildlife-zones", "title": "Wildlife Management Zones and species areas", "authority": "Government of the Northwest Territories", "serviceUrl": "https://www.gov.nt.ca/ecc/en/resources", "serviceType": "PDF_MAP", "layerId": null, "typeName": null, "crs": null, "featureCount": null, "idField": null, "nameField": null, "subzoneFields": [], "geometryType": null, "updated": "2026-2027 annual summary", "legalStanding": "REFERENCE_ONLY", "legalStandingEvidence": "The annual summary publishes interpretive maps; the Wildlife Management Zones and Areas Regulations and species regulations control.", "licence": { "name": "No open-data designation attached to annual summary maps", "url": null, "commercialUse": "UNCLEAR", "derivatives": "UNCLEAR", "attribution": "UNCLEAR", "shareAlike": false, "nonCommercial": false, "noDerivatives": false, "classification": "UNRESOLVED", "notes": "The NWT OGL covers spatial data offered as open downloads/REST, but no general hunting-zone dataset was found there." }, "limitations": ["No official vector source for the complete zone/species-area system was found.", "Species-specific and outfitter areas cannot be represented by one layer."] },
+        { "id": "gis:ca-nt-mobile-bathurst", "title": "Mobile Core Bathurst Caribou Management Zone GPS coordinates", "authority": "Government of the Northwest Territories", "serviceUrl": "https://www.gov.nt.ca/ecc/en/services/view-current-mobile-core-bathurst-caribou-management-zone", "serviceType": "DOWNLOAD", "layerId": null, "typeName": null, "crs": "GPS coordinate/KML artifact; inspect each ZIP", "featureCount": 1, "idField": null, "nameField": null, "subzoneFields": [], "geometryType": "Polygon", "updated": "frequent in-season updates; latest observed 2026-08-25", "legalStanding": "AUTHORITATIVE", "legalStandingEvidence": "ECC identifies the current mobile zone as a Wildlife Act management zone and publishes dated regulatory coordinates with the current map.", "licence": { "name": "Open Government Licence - Northwest Territories if distributed through GNWT spatial-data/open-data service", "url": "https://www.gov.nt.ca/en/open-government-licence-northwest-territories", "commercialUse": "UNCLEAR", "derivatives": "UNCLEAR", "attribution": "REQUIRED", "shareAlike": false, "nonCommercial": false, "noDerivatives": false, "classification": "UNRESOLVED", "notes": "The generic ECC resource download is not explicitly labelled as an open-data record; confirm licence applicability before commercial use." }, "limitations": ["This is a moving, date-effective boundary and cannot be cached as an annual static layer.", "Every update must preserve its effective instant and supersession relationship."] }
+      ] },
+      "regulations": { "state": "CURRENT_PRIMARY_AND_SUMMARY_FOUND", "sources": [
+        { "id": "source:ca-nt-wildlife-act", "title": "Wildlife Act", "authority": "Northwest Territories Justice", "hierarchy": "LAW", "url": "https://www.justice.gov.nt.ca/en/files/legislation/wildlife/wildlife.a.pdf", "format": "PDF_TEXT", "effectivePeriod": "current consolidation", "stableUrl": true, "hashable": true, "ingestionDifficulty": "MEDIUM", "changeDetection": "Hash consolidation and Gazette updates." },
+        { "id": "source:ca-nt-regulations", "title": "Wildlife legislation and regulations", "authority": "Government of the Northwest Territories", "hierarchy": "REGULATION", "url": "https://www.gov.nt.ca/ecc/en/services/legislation-and-regulations", "format": "PDF_COMPLEX", "effectivePeriod": "current collection", "stableUrl": true, "hashable": true, "ingestionDifficulty": "VERY_HIGH", "changeDetection": "Inventory and hash management-zone, big-game, small-game, trapping, licence and land-claim-area regulations separately." },
+        { "id": "source:ca-nt-summary-2026-27", "title": "NWT Summary of Hunting and Trapping Regulations", "authority": "Government of the Northwest Territories", "hierarchy": "OFFICIAL_SUMMARY", "url": "https://www.gov.nt.ca/ecc/en/resources", "format": "PDF_COMPLEX", "effectivePeriod": "2026-07-01/2027-06-30", "stableUrl": true, "hashable": true, "ingestionDifficulty": "VERY_HIGH", "changeDetection": "Resolve and hash the 43.99 MB annual PDF and monitor ECC resource additions." },
+        { "id": "source:ca-nt-mobile-zone", "title": "Current Mobile Core Bathurst Caribou Management Zone", "authority": "Government of the Northwest Territories", "hierarchy": "REGULATION", "url": "https://www.gov.nt.ca/ecc/en/services/view-current-mobile-core-bathurst-caribou-management-zone", "format": "OTHER", "effectivePeriod": "date-effective and replaced in season", "stableUrl": true, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Poll frequently; hash dated coordinate ZIP and PDF, capture effective timestamp, never overwrite history." }
+      ] },
+      "regulatoryDimensions": ["licence class", "residency", "rights-based/GHL status", "zone", "species-specific area", "tag/authorization", "draw/allocation", "outfitter/guide", "sex", "season", "mobile closure", "settlement/private land permission", "protected area", "reporting"],
+      "prioritySpecies": ["Barren-ground Caribou", "Boreal Caribou", "Northern Mountain Caribou", "Peary Caribou", "Moose", "Wood Bison", "Muskox", "Dall's Sheep", "Mountain Goat", "Black Bear", "Grizzly Bear", "Polar Bear", "wolf", "wolverine", "ptarmigan", "grouse"],
+      "furbearers": { "HUNTING": [], "TRAPPING": ["beaver", "marten", "fisher", "mink", "otter"], "BOTH": ["wolf", "coyote", "fox"], "OTHER": ["wolverine requires species-specific big-game/licence treatment"], "UNCLEAR": ["raccoon"] },
+      "rightsContext": { "material": true, "authorities": ["Government of the Northwest Territories", "Inuvialuit Game Council and Hunters and Trappers Committees", "Gwich'in Renewable Resources Board", "Sahtú Renewable Resources Board", "Wek'èezhìı Renewable Resources Board", "applicable Indigenous governments"], "disclosure": "North Ground may answer only for the selected recreational licence class. It must not infer Aboriginal harvester or General Hunting Licence eligibility, treaty rights, allocation or private-land access." },
+      "federalDependencies": ["Migratory Birds Regulations, 2022", "Parks Canada rules", "Species at Risk Act", "federal firearms law", "land-claim agreements"],
+      "blockers": ["No complete official vector source for top-level and species-specific areas was found.", "The mobile Bathurst zone requires near-real-time effective-dated ingestion.", "Map/resource and legislation copyright/licence treatment differs and needs source-specific review."],
+      "readiness": "GIS_BLOCKED",
+      "fixtures": [
+        { "location": "Mackenzie Mountains", "unit": "S/OT/03", "species": "Dall's Sheep", "condition": "Non-resident outfitter area and aircraft timing restriction." },
+        { "location": "Inuvialuit Settlement Region", "unit": "I/MX/01", "species": "Muskox", "condition": "Licence class, tag allocation and co-management." },
+        { "location": "North Slave Region", "unit": "current Mobile Core Bathurst zone", "species": "Barren-ground Caribou", "condition": "Date-effective mobile closure." },
+        { "location": "Slave River Lowlands", "unit": "Unit U", "species": "Wood Bison", "condition": "Resident tag and mandatory harvest report." }
+      ],
+      "nextAction": "Request the canonical zone/species-area vectors from ECC/Geomatics and clarify reuse, while designing a separately polled effective-dated feed for the mobile Bathurst zone."
+    },
+    {
+      "id": "jurisdiction:ca-nu",
+      "code": "CA-NU",
+      "name": "Nunavut",
+      "authority": { "name": "Government of Nunavut Department of Environment", "url": "https://www.gov.nu.ca/en/environment-and-wildlife/hunting-regulations-guide" },
+      "managementSystems": [
+        { "name": "Species hunting area", "scope": "Big-game species tables and maps", "topLevelCount": null, "subzoneCount": null, "notes": "There is no evidence of one universal Ontario-style unit system; caribou, muskox, bear and other species use separate areas and population/region decisions." },
+        { "name": "Co-management allocation geography", "scope": "TAH, regional and community allocation", "topLevelCount": 3, "subzoneCount": null, "notes": "Regional Wildlife Organizations and community HTOs allocate and regulate certain Inuit harvests under the Nunavut Agreement; this is not reducible to recreational map polygons." }
+      ],
+      "gis": { "state": "MAP_ONLY", "candidates": [{
+        "id": "gis:ca-nu-hunting-areas", "title": "Nunavut Hunting Regulations Guide species maps", "authority": "Government of Nunavut", "serviceUrl": "https://www.gov.nu.ca/en/environment-and-wildlife/hunting-regulations-guide", "serviceType": "PDF_MAP", "layerId": null, "typeName": null, "crs": null, "featureCount": null, "idField": null, "nameField": null, "subzoneFields": [], "geometryType": null, "updated": "2026-04-02", "legalStanding": "REFERENCE_ONLY", "legalStandingEvidence": "The annual guide is a summary; statutory regulations, orders and NWMB/Government decisions establish limitations and allocations.", "licence": { "name": "Government of Nunavut website copyright", "url": "https://www.gov.nu.ca/en/copyright", "commercialUse": "PROHIBITED", "derivatives": "UNCLEAR", "attribution": "REQUIRED", "shareAlike": false, "nonCommercial": true, "noDerivatives": false, "classification": "RESTRICTED", "notes": "Commercial redistribution of website material is prohibited without written permission. No separate open licence or machine-readable hunting-area product was found." }, "limitations": ["Map-only, species-specific geography.", "Commercial reuse requires written permission unless a separately licensed dataset is supplied.", "Guide maps cannot represent changing NWMB/Minister/HTO allocations by themselves."]
+      }] },
+      "regulations": { "state": "CURRENT_SUMMARY_FOUND_PRIMARY_COMPLEX", "sources": [
+        { "id": "source:ca-nu-wildlife-act", "title": "Wildlife Act, S.Nu. 2003, c.26", "authority": "Nunavut Legislation", "hierarchy": "LAW", "url": "https://www.nunavutlegislation.ca/en/file-download/download/public/2369", "format": "PDF_TEXT", "effectivePeriod": "current consolidation", "stableUrl": true, "hashable": true, "ingestionDifficulty": "HIGH", "changeDetection": "Hash consolidation and Nunavut Gazette amendments." },
+        { "id": "source:ca-nu-regulations", "title": "Wildlife regulations and orders", "authority": "Government of Nunavut and Nunavut Legislation", "hierarchy": "REGULATION", "url": "https://www.gov.nu.ca/en/environment-and-wildlife/wildlife-regulations", "format": "PDF_COMPLEX", "effectivePeriod": "current collection plus decision-specific orders", "stableUrl": true, "hashable": true, "ingestionDifficulty": "VERY_HIGH", "changeDetection": "Inventory and hash harvesting, licensing/tags, reporting, open-season, possession-limit and species/area orders separately." },
+        { "id": "source:ca-nu-guide-2026-27", "title": "Nunavut Hunting Regulations Guide 2026-27", "authority": "Government of Nunavut", "hierarchy": "OFFICIAL_SUMMARY", "url": "https://www.gov.nu.ca/en/environment-and-wildlife/hunting-regulations-guide", "format": "PDF_COMPLEX", "effectivePeriod": "2026-2027", "stableUrl": true, "hashable": true, "ingestionDifficulty": "VERY_HIGH", "changeDetection": "Resolve and hash language-specific guide PDFs; monitor replacement and emergency notices." },
+        { "id": "source:ca-nu-nunavut-agreement", "title": "Nunavut Agreement, Article 5", "authority": "Government of Canada, Nunavut Tunngavik Incorporated and Inuit of Nunavut", "hierarchy": "LAW", "url": "https://www.gov.nu.ca/sites/default/files/policies-legislations/2022-01/Nunavut_Land_Claims_Agreement.pdf", "format": "PDF_TEXT", "effectivePeriod": "current", "stableUrl": true, "hashable": true, "ingestionDifficulty": "VERY_HIGH", "changeDetection": "Hash official agreement copy; monitor implementation legislation and amendments." },
+        { "id": "source:ca-nu-nwmb-decisions", "title": "NWMB decision documents", "authority": "Nunavut Wildlife Management Board", "hierarchy": "REGULATION", "url": "https://www.nwmb.com/en/public-hearings-meetings/decision-documents", "format": "OTHER", "effectivePeriod": "decision-specific", "stableUrl": true, "hashable": false, "ingestionDifficulty": "VERY_HIGH", "changeDetection": "Crawl decision indexes by species, hash each decision and record Minister acceptance/effective date." }
+      ] },
+      "regulatoryDimensions": ["Inuit/non-Inuit status without identity inference", "resident/non-resident/non-resident foreign", "licence/tag", "guide/outfitter", "species hunting area", "population/herd", "TAH and non-quota limitation", "RWO/HTO allocation", "assignment", "sex/age", "season", "export", "community rule", "park/land access"],
+      "prioritySpecies": ["Barren-ground Caribou", "Peary Caribou", "Muskox", "Polar Bear", "Grizzly Bear", "Black Bear", "Moose", "wolf", "wolverine", "ptarmigan", "Arctic Hare", "walrus"],
+      "furbearers": { "HUNTING": [], "TRAPPING": ["marten", "mink", "otter"], "BOTH": ["wolf", "fox"], "OTHER": ["polar bear and grizzly bear require species-specific big-game/co-management treatment", "walrus is federally and co-management dependent"], "UNCLEAR": ["beaver", "fisher", "raccoon"] },
+      "rightsContext": { "material": true, "authorities": ["Nunavut Wildlife Management Board", "Regional Wildlife Organizations", "Hunters and Trappers Organizations", "Government of Nunavut", "Nunavut Tunngavik Incorporated"], "disclosure": "The recreational Hunt model must not determine Inuit enrolment, harvesting rights, basic-needs allocation, assignment or HTO eligibility. Users must consult their HTO/RWO or wildlife office for rights-based and allocation questions." },
+      "federalDependencies": ["Nunavut Agreement", "Migratory Birds Regulations, 2022", "Marine Mammal Regulations", "Parks Canada rules", "Species at Risk Act", "CITES/export requirements", "federal firearms law"],
+      "blockers": ["No official machine-readable comprehensive hunting-area geometry was found.", "Government website copyright prohibits commercial redistribution without permission.", "Rules are species/population/region/community and co-management decision dependent.", "The current Hunt model lacks TAH/allocation/assignment and authority-chain semantics."],
+      "readiness": "MULTIPLE_BLOCKERS",
+      "fixtures": [
+        { "location": "Baffin Island", "unit": "Baffin Island caribou population/area", "species": "Barren-ground Caribou", "condition": "TAH, RWO allocation, HTO allocation and reporting." },
+        { "location": "Kivalliq Region", "unit": "applicable grizzly bear area", "species": "Grizzly Bear", "condition": "Sport-hunt limit, assignment, guide/outfitter and NWMB decision." },
+        { "location": "Kitikmeot Region", "unit": "applicable muskox hunting area", "species": "Muskox", "condition": "Species-area tag and resident class." },
+        { "location": "Qikiqtaaluk community", "unit": "community polar bear allocation", "species": "Polar Bear", "condition": "Community quota/assignment, guide and export constraints." }
+      ],
+      "nextAction": "Seek written commercial reuse permission and authoritative vectors from the Department/NWMB, then extend the domain for co-management decisions, TAH, allocation and assignment before any rule ingestion."
+    }
+  ]
+}
