@@ -87,6 +87,8 @@ async function officialWmuAt(latitude, longitude) {
   return [];
 }
 
+const ONTARIO_ZONE = "management_zone:ca-on-";
+
 async function main() {
   console.log("Fetching representative points from the North Ground registry...");
   const samples = await rpc("zone_sample_points", {
@@ -101,7 +103,14 @@ async function main() {
   const runCase = async (label, latitude, longitude, expected) => {
     const official = await officialWmuAt(latitude, longitude);
     const ours = await rpc("resolve_management_zone", { p_latitude: latitude, p_longitude: longitude });
-    const oursNames = ours
+    /* Ontario's layer is compared with North Ground's Ontario units only. The
+       registry also holds neighbouring jurisdictions, so a point in Manitoba
+       rightly resolves to a GHA there while Ontario reports nothing: agreement,
+       not a finding. The neighbour is recorded beside the point, as in
+       certify-spatial-parity.mjs. */
+    const own = ours.filter((row) => String(row.canonical_id).startsWith(ONTARIO_ZONE));
+    const neighbours = ours.filter((row) => !own.includes(row)).map((row) => String(row.canonical_id)).sort();
+    const oursNames = own
       .map((row) => String(row.official_name ?? "").replace(/^Wildlife Management Unit\s+/i, "").trim())
       .filter(Boolean)
       .sort();
@@ -111,7 +120,7 @@ async function main() {
     if (!agree) {
       disagreements.push({ label, latitude, longitude, expected, official, ours: oursNames });
     }
-    recorded.push({ label, latitude, longitude, official, northGround: oursNames, agree });
+    recorded.push({ label, latitude, longitude, official, northGround: oursNames, ...(neighbours.length ? { neighbours } : {}), agree });
     if (checked % 25 === 0) console.log(`  ...${checked} points checked`);
   };
 
@@ -145,8 +154,11 @@ async function main() {
     if (!ok) disagreements.push({ label, latitude, longitude, expected: "no zone", official: [], ours });
   }
 
+  // The full record, named like every other jurisdiction's. The unit tests
+  // replay a curated subset in ontario-spatial-parity.json, which a run used to
+  // overwrite.
   writeFileSync(
-    "fixtures/hunt/ontario-spatial-parity.json",
+    "fixtures/hunt/ca-on-spatial-parity.json",
     `${JSON.stringify({ generatedAt: new Date().toISOString(), checked, cases: recorded }, null, 2)}\n`,
   );
 

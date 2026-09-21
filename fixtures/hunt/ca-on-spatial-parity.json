@@ -1,0 +1,3689 @@
+{
+  "generatedAt": "2026-09-21T09:50:10.499Z",
+  "checked": 309,
+  "cases": [
+    {
+      "label": "inside 10",
+      "latitude": 48.774025890973,
+      "longitude": -94.1797341972866,
+      "official": [
+        "10"
+      ],
+      "northGround": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 10",
+      "latitude": 48.6969788959308,
+      "longitude": -94.2606851388491,
+      "official": [
+        "10"
+      ],
+      "northGround": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 11A",
+      "latitude": 48.4897586193624,
+      "longitude": -92.4647015613587,
+      "official": [
+        "11A"
+      ],
+      "northGround": [
+        "11A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 11A",
+      "latitude": 48.4459504932499,
+      "longitude": -92.5048212753835,
+      "official": [
+        "11A"
+      ],
+      "northGround": [
+        "11A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 11B",
+      "latitude": 48.4511708761148,
+      "longitude": -90.7391881441375,
+      "official": [
+        "11B"
+      ],
+      "northGround": [
+        "11B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 11B",
+      "latitude": 48.354432275049,
+      "longitude": -90.674358072617,
+      "official": [
+        "11B"
+      ],
+      "northGround": [
+        "11B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 11C",
+      "latitude": 48.3677181077881,
+      "longitude": -91.4657950172964,
+      "official": [
+        "11C"
+      ],
+      "northGround": [
+        "11C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 11C",
+      "latitude": 48.638660415382,
+      "longitude": -91.4271806122781,
+      "official": [
+        "11C"
+      ],
+      "northGround": [
+        "11C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 12A",
+      "latitude": 49.2415578389249,
+      "longitude": -91.5964771185657,
+      "official": [
+        "12A"
+      ],
+      "northGround": [
+        "12A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 12A",
+      "latitude": 49.3597988438341,
+      "longitude": -91.5415692483796,
+      "official": [
+        "12A"
+      ],
+      "northGround": [
+        "12A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 12B",
+      "latitude": 48.8248391697741,
+      "longitude": -91.2598710149759,
+      "official": [
+        "12B"
+      ],
+      "northGround": [
+        "12B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 12B",
+      "latitude": 48.7240065002782,
+      "longitude": -91.2602188421062,
+      "official": [
+        "12B"
+      ],
+      "northGround": [
+        "12B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 13",
+      "latitude": 48.5510263723866,
+      "longitude": -89.2625578170702,
+      "official": [
+        "13"
+      ],
+      "northGround": [
+        "13"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 13",
+      "latitude": 49.0090697322214,
+      "longitude": -89.3858408402108,
+      "official": [
+        "13"
+      ],
+      "northGround": [
+        "13"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 14",
+      "latitude": 48.4540430550999,
+      "longitude": -87.9962278901048,
+      "official": [
+        "14"
+      ],
+      "northGround": [
+        "14"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 14",
+      "latitude": 48.2021133772278,
+      "longitude": -88.0923633978204,
+      "official": [
+        "14"
+      ],
+      "northGround": [
+        "14"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 15A",
+      "latitude": 49.6533109476329,
+      "longitude": -91.1666120229161,
+      "official": [
+        "15A"
+      ],
+      "northGround": [
+        "15A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 15A",
+      "latitude": 49.9437788699481,
+      "longitude": -91.3600229650777,
+      "official": [
+        "15A"
+      ],
+      "northGround": [
+        "15A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 15B",
+      "latitude": 49.6332246090093,
+      "longitude": -89.6444553723407,
+      "official": [
+        "15B"
+      ],
+      "northGround": [
+        "15B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 15B",
+      "latitude": 49.7579898890638,
+      "longitude": -89.1200910413903,
+      "official": [
+        "15B"
+      ],
+      "northGround": [
+        "15B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 16A",
+      "latitude": 51.388349636292,
+      "longitude": -91.0849476748808,
+      "official": [
+        "16A"
+      ],
+      "northGround": [
+        "16A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 16A",
+      "latitude": 51.0630624671443,
+      "longitude": -91.1924206735454,
+      "official": [
+        "16A"
+      ],
+      "northGround": [
+        "16A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 16B",
+      "latitude": 50.7202153371225,
+      "longitude": -90.5469850362769,
+      "official": [
+        "16B"
+      ],
+      "northGround": [
+        "16B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 16B",
+      "latitude": 51.085152553058,
+      "longitude": -90.5856495579668,
+      "official": [
+        "16B"
+      ],
+      "northGround": [
+        "16B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 16C",
+      "latitude": 50.9282055517914,
+      "longitude": -89.1638340344828,
+      "official": [
+        "16C"
+      ],
+      "northGround": [
+        "16C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 16C",
+      "latitude": 51.1191984724302,
+      "longitude": -88.952864583704,
+      "official": [
+        "16C"
+      ],
+      "northGround": [
+        "16C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 17",
+      "latitude": 51.2277767896883,
+      "longitude": -86.6260998393402,
+      "official": [
+        "17"
+      ],
+      "northGround": [
+        "17"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 17",
+      "latitude": 51.740510341013,
+      "longitude": -86.4830020249933,
+      "official": [
+        "17"
+      ],
+      "northGround": [
+        "17"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 18A",
+      "latitude": 50.4619997536481,
+      "longitude": -87.2001972843408,
+      "official": [
+        "18A"
+      ],
+      "northGround": [
+        "18A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 18A",
+      "latitude": 50.2475996376293,
+      "longitude": -87.1943963626905,
+      "official": [
+        "18A"
+      ],
+      "northGround": [
+        "18A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 18B",
+      "latitude": 50.4302301539733,
+      "longitude": -85.2671889084164,
+      "official": [
+        "18B"
+      ],
+      "northGround": [
+        "18B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 18B",
+      "latitude": 50.0220536347406,
+      "longitude": -85.3025185392897,
+      "official": [
+        "18B"
+      ],
+      "northGround": [
+        "18B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 19",
+      "latitude": 49.9161346449591,
+      "longitude": -86.4887082069193,
+      "official": [
+        "19"
+      ],
+      "northGround": [
+        "19"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 19",
+      "latitude": 49.779022083301,
+      "longitude": -86.4958760198763,
+      "official": [
+        "19"
+      ],
+      "northGround": [
+        "19"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 1A",
+      "latitude": 55.437937985306,
+      "longitude": -89.1149267690642,
+      "official": [
+        "1A"
+      ],
+      "northGround": [
+        "1A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 1A",
+      "latitude": 56.4026513540734,
+      "longitude": -89.7107838451618,
+      "official": [
+        "1A"
+      ],
+      "northGround": [
+        "1A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 1B",
+      "latitude": 54.9610686628456,
+      "longitude": -83.0027309319241,
+      "official": [
+        "1B"
+      ],
+      "northGround": [
+        "1B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 1B",
+      "latitude": 55.1457825318125,
+      "longitude": -82.885456961311,
+      "official": [
+        "1B"
+      ],
+      "northGround": [
+        "1B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 1C",
+      "latitude": 53.4331173267038,
+      "longitude": -91.5880839605145,
+      "official": [
+        "1C"
+      ],
+      "northGround": [
+        "1C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 1C",
+      "latitude": 54.6202033894134,
+      "longitude": -92.4184122212682,
+      "official": [
+        "1C"
+      ],
+      "northGround": [
+        "1C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 1D",
+      "latitude": 52.5487759079103,
+      "longitude": -85.352589238027,
+      "official": [
+        "1D"
+      ],
+      "northGround": [
+        "1D"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 1D",
+      "latitude": 51.6591227684929,
+      "longitude": -85.479154582334,
+      "official": [
+        "1D"
+      ],
+      "northGround": [
+        "1D"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 2",
+      "latitude": 51.2737003087916,
+      "longitude": -94.5625650791784,
+      "official": [
+        "2"
+      ],
+      "northGround": [
+        "2"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 2",
+      "latitude": 51.0784746506891,
+      "longitude": -94.2015174823299,
+      "official": [
+        "2"
+      ],
+      "northGround": [
+        "2"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 20",
+      "latitude": 49.8015162182215,
+      "longitude": -88.5194259053313,
+      "official": [
+        "20"
+      ],
+      "northGround": [
+        "20"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 20",
+      "latitude": 49.6500100108565,
+      "longitude": -88.5960725024852,
+      "official": [
+        "20"
+      ],
+      "northGround": [
+        "20"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 21A",
+      "latitude": 48.8434578368022,
+      "longitude": -86.9293434639207,
+      "official": [
+        "21A"
+      ],
+      "northGround": [
+        "21A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 21A",
+      "latitude": 48.792326389321,
+      "longitude": -87.2871276977475,
+      "official": [
+        "21A"
+      ],
+      "northGround": [
+        "21A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 21B",
+      "latitude": 49.1581882762112,
+      "longitude": -85.4435588410493,
+      "official": [
+        "21B"
+      ],
+      "northGround": [
+        "21B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 21B",
+      "latitude": 48.7138098067463,
+      "longitude": -85.5635274872245,
+      "official": [
+        "21B"
+      ],
+      "northGround": [
+        "21B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 22",
+      "latitude": 49.1097692469764,
+      "longitude": -84.4377792828739,
+      "official": [
+        "22"
+      ],
+      "northGround": [
+        "22"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 22",
+      "latitude": 49.07646351791,
+      "longitude": -84.7528741962203,
+      "official": [
+        "22"
+      ],
+      "northGround": [
+        "22"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 23",
+      "latitude": 49.1041668372147,
+      "longitude": -83.4319913025002,
+      "official": [
+        "23"
+      ],
+      "northGround": [
+        "23"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 23",
+      "latitude": 48.838851926219,
+      "longitude": -83.6616495830564,
+      "official": [
+        "23"
+      ],
+      "northGround": [
+        "23"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 24",
+      "latitude": 50.0470896462132,
+      "longitude": -82.5827034967929,
+      "official": [
+        "24"
+      ],
+      "northGround": [
+        "24"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 24",
+      "latitude": 50.2834158772857,
+      "longitude": -82.7193010194434,
+      "official": [
+        "24"
+      ],
+      "northGround": [
+        "24"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 25",
+      "latitude": 51.100351217929,
+      "longitude": -82.6772779590612,
+      "official": [
+        "25"
+      ],
+      "northGround": [
+        "25"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 25",
+      "latitude": 50.4142921070882,
+      "longitude": -82.5518110877085,
+      "official": [
+        "25"
+      ],
+      "northGround": [
+        "25"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 26",
+      "latitude": 50.3462716223069,
+      "longitude": -80.5527373654415,
+      "official": [
+        "26"
+      ],
+      "northGround": [
+        "26"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 26",
+      "latitude": 50.9194792950251,
+      "longitude": -81.002892363405,
+      "official": [
+        "26"
+      ],
+      "northGround": [
+        "26"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 27",
+      "latitude": 49.0820495574771,
+      "longitude": -80.4182630775551,
+      "official": [
+        "27"
+      ],
+      "northGround": [
+        "27"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 27",
+      "latitude": 49.3180062892267,
+      "longitude": -80.4181864402917,
+      "official": [
+        "27"
+      ],
+      "northGround": [
+        "27"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 28",
+      "latitude": 47.9931051902956,
+      "longitude": -80.0154964274339,
+      "official": [
+        "28"
+      ],
+      "northGround": [
+        "28"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 28",
+      "latitude": 47.9959359244661,
+      "longitude": -80.3521583755464,
+      "official": [
+        "28"
+      ],
+      "northGround": [
+        "28"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 29",
+      "latitude": 48.1126549307489,
+      "longitude": -81.0185011746126,
+      "official": [
+        "29"
+      ],
+      "northGround": [
+        "29"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 29",
+      "latitude": 48.0173423887961,
+      "longitude": -80.7487747862354,
+      "official": [
+        "29"
+      ],
+      "northGround": [
+        "29"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 3",
+      "latitude": 51.1118278374161,
+      "longitude": -93.3956056207524,
+      "official": [
+        "3"
+      ],
+      "northGround": [
+        "3"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 3",
+      "latitude": 50.8821624802242,
+      "longitude": -93.1250800284287,
+      "official": [
+        "3"
+      ],
+      "northGround": [
+        "3"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 30",
+      "latitude": 48.7970800290198,
+      "longitude": -81.8242073105203,
+      "official": [
+        "30"
+      ],
+      "northGround": [
+        "30"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 30",
+      "latitude": 48.3563212001387,
+      "longitude": -81.6612608476274,
+      "official": [
+        "30"
+      ],
+      "northGround": [
+        "30"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 31",
+      "latitude": 47.983337731533,
+      "longitude": -82.4378845262928,
+      "official": [
+        "31"
+      ],
+      "northGround": [
+        "31"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 31",
+      "latitude": 48.2150871046128,
+      "longitude": -82.30976314353,
+      "official": [
+        "31"
+      ],
+      "northGround": [
+        "31"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 32",
+      "latitude": 48.4027615617192,
+      "longitude": -84.043156061039,
+      "official": [
+        "32"
+      ],
+      "northGround": [
+        "32"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 32",
+      "latitude": 48.5707513401016,
+      "longitude": -84.2737025823199,
+      "official": [
+        "32"
+      ],
+      "northGround": [
+        "32"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 33",
+      "latitude": 48.0121242447541,
+      "longitude": -85.9668970888559,
+      "official": [
+        "33"
+      ],
+      "northGround": [
+        "33"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 33",
+      "latitude": 48.5131679873932,
+      "longitude": -85.9724388990228,
+      "official": [
+        "33"
+      ],
+      "northGround": [
+        "33"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 34",
+      "latitude": 47.5731141995083,
+      "longitude": -84.9576528495414,
+      "official": [
+        "34"
+      ],
+      "northGround": [
+        "34"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 34",
+      "latitude": 47.7783939845187,
+      "longitude": -85.0895326486108,
+      "official": [
+        "34"
+      ],
+      "northGround": [
+        "34"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 35",
+      "latitude": 47.3578874201551,
+      "longitude": -83.8331680540629,
+      "official": [
+        "35"
+      ],
+      "northGround": [
+        "35"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 35",
+      "latitude": 47.1086307499687,
+      "longitude": -84.0924151058527,
+      "official": [
+        "35"
+      ],
+      "northGround": [
+        "35"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 36",
+      "latitude": 46.6996117817966,
+      "longitude": -84.0916275825667,
+      "official": [
+        "36"
+      ],
+      "northGround": [
+        "36"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 36",
+      "latitude": 46.7708709685734,
+      "longitude": -84.0527264826286,
+      "official": [
+        "36"
+      ],
+      "northGround": [
+        "36"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 37",
+      "latitude": 46.4550435466207,
+      "longitude": -82.8472268846985,
+      "official": [
+        "37"
+      ],
+      "northGround": [
+        "37"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 37",
+      "latitude": 46.6078182896027,
+      "longitude": -82.7895955804866,
+      "official": [
+        "37"
+      ],
+      "northGround": [
+        "37"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 38",
+      "latitude": 47.1057251455763,
+      "longitude": -82.4876967640509,
+      "official": [
+        "38"
+      ],
+      "northGround": [
+        "38"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 38",
+      "latitude": 47.4414990502552,
+      "longitude": -82.3358859973955,
+      "official": [
+        "38"
+      ],
+      "northGround": [
+        "38"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 39",
+      "latitude": 46.8784638714163,
+      "longitude": -81.378328073919,
+      "official": [
+        "39"
+      ],
+      "northGround": [
+        "39"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 39",
+      "latitude": 47.0409583005993,
+      "longitude": -81.2227506150025,
+      "official": [
+        "39"
+      ],
+      "northGround": [
+        "39"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 4",
+      "latitude": 50.6730901677927,
+      "longitude": -92.3739901768462,
+      "official": [
+        "4"
+      ],
+      "northGround": [
+        "4"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 4",
+      "latitude": 50.3640816023616,
+      "longitude": -92.1881255061132,
+      "official": [
+        "4"
+      ],
+      "northGround": [
+        "4"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 40",
+      "latitude": 47.3679614384471,
+      "longitude": -80.7023383387216,
+      "official": [
+        "40"
+      ],
+      "northGround": [
+        "40"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 40",
+      "latitude": 47.2391584579941,
+      "longitude": -80.8357586612515,
+      "official": [
+        "40"
+      ],
+      "northGround": [
+        "40"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 41",
+      "latitude": 46.7852667666946,
+      "longitude": -80.4644702483006,
+      "official": [
+        "41"
+      ],
+      "northGround": [
+        "41"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 41",
+      "latitude": 46.9572686521436,
+      "longitude": -80.4515403315694,
+      "official": [
+        "41"
+      ],
+      "northGround": [
+        "41"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 42",
+      "latitude": 46.2213646331921,
+      "longitude": -80.7707962369176,
+      "official": [
+        "42"
+      ],
+      "northGround": [
+        "42"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 42",
+      "latitude": 46.0179469166156,
+      "longitude": -80.7550438114601,
+      "official": [
+        "42"
+      ],
+      "northGround": [
+        "42"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 43A",
+      "latitude": 45.72455182929,
+      "longitude": -83.063902833775,
+      "official": [
+        "43A"
+      ],
+      "northGround": [
+        "43A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 43A",
+      "latitude": 45.6087959445618,
+      "longitude": -83.1155889572693,
+      "official": [
+        "43A"
+      ],
+      "northGround": [
+        "43A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 43B",
+      "latitude": 45.6105372956223,
+      "longitude": -81.9115769072059,
+      "official": [
+        "43B"
+      ],
+      "northGround": [
+        "43B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 43B",
+      "latitude": 45.3561699464572,
+      "longitude": -81.9097715978009,
+      "official": [
+        "43B"
+      ],
+      "northGround": [
+        "43B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 44",
+      "latitude": 45.8752695938218,
+      "longitude": -83.4176601488795,
+      "official": [
+        "44"
+      ],
+      "northGround": [
+        "44"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 44",
+      "latitude": 45.8107217795324,
+      "longitude": -83.3545686231288,
+      "official": [
+        "44"
+      ],
+      "northGround": [
+        "44"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 45",
+      "latitude": 46.1987448644817,
+      "longitude": -83.9129397911236,
+      "official": [
+        "45"
+      ],
+      "northGround": [
+        "45"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 45",
+      "latitude": 46.2829282165674,
+      "longitude": -83.8833434003294,
+      "official": [
+        "45"
+      ],
+      "northGround": [
+        "45"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 46",
+      "latitude": 45.393316750083,
+      "longitude": -80.5663077389067,
+      "official": [
+        "46"
+      ],
+      "northGround": [
+        "46"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 46",
+      "latitude": 45.584143040386,
+      "longitude": -80.3641393035659,
+      "official": [
+        "46"
+      ],
+      "northGround": [
+        "46"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 47",
+      "latitude": 45.9551065770181,
+      "longitude": -79.9721282823167,
+      "official": [
+        "47"
+      ],
+      "northGround": [
+        "47"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 47",
+      "latitude": 46.1138756353725,
+      "longitude": -80.0307929315066,
+      "official": [
+        "47"
+      ],
+      "northGround": [
+        "47"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 48",
+      "latitude": 46.0273116380378,
+      "longitude": -77.4786500379772,
+      "official": [
+        "48"
+      ],
+      "northGround": [
+        "48"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 48",
+      "latitude": 46.0961794446873,
+      "longitude": -77.4456442843642,
+      "official": [
+        "48"
+      ],
+      "northGround": [
+        "48"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 49",
+      "latitude": 45.4790573803435,
+      "longitude": -79.7282867073239,
+      "official": [
+        "49"
+      ],
+      "northGround": [
+        "49"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 49",
+      "latitude": 45.6661831812144,
+      "longitude": -79.7241058921742,
+      "official": [
+        "49"
+      ],
+      "northGround": [
+        "49"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 5",
+      "latitude": 50.0748661896603,
+      "longitude": -92.4326792001856,
+      "official": [
+        "5"
+      ],
+      "northGround": [
+        "5"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 5",
+      "latitude": 49.9744561924045,
+      "longitude": -92.5457991072675,
+      "official": [
+        "5"
+      ],
+      "northGround": [
+        "5"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 50",
+      "latitude": 45.630325271027,
+      "longitude": -79.1982936631469,
+      "official": [
+        "50"
+      ],
+      "northGround": [
+        "50"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 50",
+      "latitude": 45.5286478504052,
+      "longitude": -79.3200996477794,
+      "official": [
+        "50"
+      ],
+      "northGround": [
+        "50"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 51",
+      "latitude": 45.7541155592783,
+      "longitude": -78.2924261665295,
+      "official": [
+        "51"
+      ],
+      "northGround": [
+        "51"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 51",
+      "latitude": 45.5832690943616,
+      "longitude": -78.2340741150545,
+      "official": [
+        "51"
+      ],
+      "northGround": [
+        "51"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 53A",
+      "latitude": 45.0710266981847,
+      "longitude": -79.2487791921496,
+      "official": [
+        "53A"
+      ],
+      "northGround": [
+        "53A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 53A",
+      "latitude": 45.2144110323229,
+      "longitude": -79.3138090224979,
+      "official": [
+        "53A"
+      ],
+      "northGround": [
+        "53A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 53B",
+      "latitude": 45.0565078675859,
+      "longitude": -79.5701173660332,
+      "official": [
+        "53B"
+      ],
+      "northGround": [
+        "53B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 53B",
+      "latitude": 45.0758743800261,
+      "longitude": -79.532748228498,
+      "official": [
+        "53B"
+      ],
+      "northGround": [
+        "53B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 54",
+      "latitude": 45.2668290849208,
+      "longitude": -78.5289659309401,
+      "official": [
+        "54"
+      ],
+      "northGround": [
+        "54"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 54",
+      "latitude": 45.3587520577063,
+      "longitude": -78.5537511469075,
+      "official": [
+        "54"
+      ],
+      "northGround": [
+        "54"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 55A",
+      "latitude": 45.491518429675,
+      "longitude": -77.9768780243283,
+      "official": [
+        "55A"
+      ],
+      "northGround": [
+        "55A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 55A",
+      "latitude": 45.3703703302812,
+      "longitude": -77.9441290124914,
+      "official": [
+        "55A"
+      ],
+      "northGround": [
+        "55A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 55B",
+      "latitude": 45.6535238340144,
+      "longitude": -77.4566767747396,
+      "official": [
+        "55B"
+      ],
+      "northGround": [
+        "55B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 55B",
+      "latitude": 45.5955393888617,
+      "longitude": -77.4042748436926,
+      "official": [
+        "55B"
+      ],
+      "northGround": [
+        "55B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 56",
+      "latitude": 44.9566171612233,
+      "longitude": -78.6673124990342,
+      "official": [
+        "56"
+      ],
+      "northGround": [
+        "56"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 56",
+      "latitude": 45.0751321098147,
+      "longitude": -78.6996200435096,
+      "official": [
+        "56"
+      ],
+      "northGround": [
+        "56"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 57",
+      "latitude": 45.2135507435802,
+      "longitude": -77.7827532674488,
+      "official": [
+        "57"
+      ],
+      "northGround": [
+        "57"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 57",
+      "latitude": 45.075699025899,
+      "longitude": -77.8009614019894,
+      "official": [
+        "57"
+      ],
+      "northGround": [
+        "57"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 58",
+      "latitude": 45.3687330396896,
+      "longitude": -77.3061220711152,
+      "official": [
+        "58"
+      ],
+      "northGround": [
+        "58"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 58",
+      "latitude": 45.2327114820314,
+      "longitude": -77.2196288629878,
+      "official": [
+        "58"
+      ],
+      "northGround": [
+        "58"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 59",
+      "latitude": 45.5842083404569,
+      "longitude": -76.8876731403376,
+      "official": [
+        "59"
+      ],
+      "northGround": [
+        "59"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 59",
+      "latitude": 45.7327098228602,
+      "longitude": -76.7686665432439,
+      "official": [
+        "59"
+      ],
+      "northGround": [
+        "59"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 6",
+      "latitude": 50.1488232897884,
+      "longitude": -94.4214051674191,
+      "official": [
+        "6"
+      ],
+      "northGround": [
+        "6"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 6",
+      "latitude": 49.9894277582511,
+      "longitude": -94.3658975342712,
+      "official": [
+        "6"
+      ],
+      "northGround": [
+        "6"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 60",
+      "latitude": 44.7447371293024,
+      "longitude": -78.1831922055856,
+      "official": [
+        "60"
+      ],
+      "northGround": [
+        "60"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 60",
+      "latitude": 44.5624257348914,
+      "longitude": -78.2067862232085,
+      "official": [
+        "60"
+      ],
+      "northGround": [
+        "60"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 61",
+      "latitude": 44.8621163226593,
+      "longitude": -77.4343219046331,
+      "official": [
+        "61"
+      ],
+      "northGround": [
+        "61"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 61",
+      "latitude": 44.7928390902199,
+      "longitude": -77.6211271964312,
+      "official": [
+        "61"
+      ],
+      "northGround": [
+        "61"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 62",
+      "latitude": 44.6800807652109,
+      "longitude": -76.9082377149649,
+      "official": [
+        "62"
+      ],
+      "northGround": [
+        "62"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 62",
+      "latitude": 44.6563251546065,
+      "longitude": -76.7176892390427,
+      "official": [
+        "62"
+      ],
+      "northGround": [
+        "62"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 63A",
+      "latitude": 45.1074549008703,
+      "longitude": -76.8653892690253,
+      "official": [
+        "63A"
+      ],
+      "northGround": [
+        "63A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 63A",
+      "latitude": 45.193471221748,
+      "longitude": -76.892823552493,
+      "official": [
+        "63A"
+      ],
+      "northGround": [
+        "63A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 63B",
+      "latitude": 45.0623624075082,
+      "longitude": -76.4660809105501,
+      "official": [
+        "63B"
+      ],
+      "northGround": [
+        "63B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 63B",
+      "latitude": 45.0818022126112,
+      "longitude": -76.4795976181417,
+      "official": [
+        "63B"
+      ],
+      "northGround": [
+        "63B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 64A",
+      "latitude": 45.1215715759969,
+      "longitude": -75.986693472082,
+      "official": [
+        "64A"
+      ],
+      "northGround": [
+        "64A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 64A",
+      "latitude": 45.1449799610524,
+      "longitude": -75.9675529194804,
+      "official": [
+        "64A"
+      ],
+      "northGround": [
+        "64A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 64B",
+      "latitude": 45.3228051880102,
+      "longitude": -75.9701735276314,
+      "official": [
+        "64B"
+      ],
+      "northGround": [
+        "64B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 64B",
+      "latitude": 45.4089373300225,
+      "longitude": -75.9063516177272,
+      "official": [
+        "64B"
+      ],
+      "northGround": [
+        "64B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 65",
+      "latitude": 45.2219473484639,
+      "longitude": -75.0173575705979,
+      "official": [
+        "65"
+      ],
+      "northGround": [
+        "65"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 65",
+      "latitude": 44.9846735401173,
+      "longitude": -74.9727816612981,
+      "official": [
+        "65"
+      ],
+      "northGround": [
+        "65"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 66A",
+      "latitude": 44.8575539946115,
+      "longitude": -75.7107433777989,
+      "official": [
+        "66A"
+      ],
+      "northGround": [
+        "66A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 66A",
+      "latitude": 44.9184673655062,
+      "longitude": -75.8306246218996,
+      "official": [
+        "66A"
+      ],
+      "northGround": [
+        "66A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 66B",
+      "latitude": 45.0391825912659,
+      "longitude": -75.6598781759817,
+      "official": [
+        "66B"
+      ],
+      "northGround": [
+        "66B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 66B",
+      "latitude": 45.0340453714431,
+      "longitude": -75.6646691341313,
+      "official": [
+        "66B"
+      ],
+      "northGround": [
+        "66B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 67",
+      "latitude": 44.5904269195163,
+      "longitude": -76.2015025580768,
+      "official": [
+        "67"
+      ],
+      "northGround": [
+        "67"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 67",
+      "latitude": 44.3460192280059,
+      "longitude": -76.1671180895688,
+      "official": [
+        "67"
+      ],
+      "northGround": [
+        "67"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 68A",
+      "latitude": 44.4237661726627,
+      "longitude": -77.410063558444,
+      "official": [
+        "68A"
+      ],
+      "northGround": [
+        "68A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 68A",
+      "latitude": 44.3610049815251,
+      "longitude": -77.3966343888439,
+      "official": [
+        "68A"
+      ],
+      "northGround": [
+        "68A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 68B",
+      "latitude": 44.3090054330337,
+      "longitude": -77.0719090228244,
+      "official": [
+        "68B"
+      ],
+      "northGround": [
+        "68B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 68B",
+      "latitude": 44.2449018683452,
+      "longitude": -77.0619751590744,
+      "official": [
+        "68B"
+      ],
+      "northGround": [
+        "68B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 69A-1",
+      "latitude": 44.1727963207336,
+      "longitude": -77.2826793765817,
+      "official": [
+        "69A-1"
+      ],
+      "northGround": [
+        "69A-1"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 69A-1",
+      "latitude": 44.1520118601432,
+      "longitude": -77.2825456222794,
+      "official": [
+        "69A-1"
+      ],
+      "northGround": [
+        "69A-1"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 69A-2",
+      "latitude": 44.1134385781558,
+      "longitude": -76.6835701316661,
+      "official": [
+        "69A-2"
+      ],
+      "northGround": [
+        "69A-2"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 69A-2",
+      "latitude": 44.0526035981994,
+      "longitude": -76.7238177154697,
+      "official": [
+        "69A-2"
+      ],
+      "northGround": [
+        "69A-2"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 69A-3",
+      "latitude": 44.1845596639471,
+      "longitude": -76.4627122120737,
+      "official": [
+        "69A-3"
+      ],
+      "northGround": [
+        "69A-3"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 69A-3",
+      "latitude": 44.24084060206,
+      "longitude": -76.3950445079888,
+      "official": [
+        "69A-3"
+      ],
+      "northGround": [
+        "69A-3"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 69B",
+      "latitude": 44.5531121020769,
+      "longitude": -75.7379311942401,
+      "official": [
+        "69B"
+      ],
+      "northGround": [
+        "69B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 69B",
+      "latitude": 44.5637873601336,
+      "longitude": -75.7449055357774,
+      "official": [
+        "69B"
+      ],
+      "northGround": [
+        "69B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 70",
+      "latitude": 43.909473754303,
+      "longitude": -77.1163566960097,
+      "official": [
+        "70"
+      ],
+      "northGround": [
+        "70"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 70",
+      "latitude": 44.0490061894988,
+      "longitude": -77.08918701062,
+      "official": [
+        "70"
+      ],
+      "northGround": [
+        "70"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 71",
+      "latitude": 44.0140351161016,
+      "longitude": -77.7504378552866,
+      "official": [
+        "71"
+      ],
+      "northGround": [
+        "71"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 71",
+      "latitude": 43.9672529763826,
+      "longitude": -77.6288304586907,
+      "official": [
+        "71"
+      ],
+      "northGround": [
+        "71"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 72A",
+      "latitude": 43.9702638761655,
+      "longitude": -78.252172338939,
+      "official": [
+        "72A"
+      ],
+      "northGround": [
+        "72A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 72A",
+      "latitude": 44.075655899427,
+      "longitude": -78.3252174210621,
+      "official": [
+        "72A"
+      ],
+      "northGround": [
+        "72A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 72B",
+      "latitude": 43.7491304861263,
+      "longitude": -78.6364474951446,
+      "official": [
+        "72B"
+      ],
+      "northGround": [
+        "72B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 72B",
+      "latitude": 43.7885973512764,
+      "longitude": -78.5375971002532,
+      "official": [
+        "72B"
+      ],
+      "northGround": [
+        "72B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 73",
+      "latitude": 44.1864426626539,
+      "longitude": -78.6327626775312,
+      "official": [
+        "73"
+      ],
+      "northGround": [
+        "73"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 73",
+      "latitude": 44.2935812751022,
+      "longitude": -78.5946348316062,
+      "official": [
+        "73"
+      ],
+      "northGround": [
+        "73"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 74A",
+      "latitude": 44.407749666447,
+      "longitude": -78.2988855752063,
+      "official": [
+        "74A"
+      ],
+      "northGround": [
+        "74A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 74A",
+      "latitude": 44.459518825023,
+      "longitude": -78.3845198119017,
+      "official": [
+        "74A"
+      ],
+      "northGround": [
+        "74A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 74B",
+      "latitude": 44.4634845331043,
+      "longitude": -78.0260041001317,
+      "official": [
+        "74B"
+      ],
+      "northGround": [
+        "74B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 74B",
+      "latitude": 44.3827104762704,
+      "longitude": -77.9801281292541,
+      "official": [
+        "74B"
+      ],
+      "northGround": [
+        "74B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 75",
+      "latitude": 44.5236396501007,
+      "longitude": -78.7997564952844,
+      "official": [
+        "75"
+      ],
+      "northGround": [
+        "75"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 75",
+      "latitude": 44.5763169626719,
+      "longitude": -78.7945020816871,
+      "official": [
+        "75"
+      ],
+      "northGround": [
+        "75"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 76A",
+      "latitude": 44.6327051560391,
+      "longitude": -79.2445344237067,
+      "official": [
+        "76A"
+      ],
+      "northGround": [
+        "76A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 76A",
+      "latitude": 44.5647838620622,
+      "longitude": -79.2567096435908,
+      "official": [
+        "76A"
+      ],
+      "northGround": [
+        "76A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 76B",
+      "latitude": 44.5795823984536,
+      "longitude": -79.5096617872701,
+      "official": [
+        "76B"
+      ],
+      "northGround": [
+        "76B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 76B",
+      "latitude": 44.5867320196454,
+      "longitude": -79.372652851874,
+      "official": [
+        "76B"
+      ],
+      "northGround": [
+        "76B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 76C",
+      "latitude": 44.7093075043135,
+      "longitude": -79.9742286711847,
+      "official": [
+        "76C"
+      ],
+      "northGround": [
+        "76C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 76C",
+      "latitude": 44.8257364934287,
+      "longitude": -79.8803272174217,
+      "official": [
+        "76C"
+      ],
+      "northGround": [
+        "76C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 76D",
+      "latitude": 44.408730193061,
+      "longitude": -79.8705824252307,
+      "official": [
+        "76D"
+      ],
+      "northGround": [
+        "76D"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 76D",
+      "latitude": 44.4550296657469,
+      "longitude": -79.890810077413,
+      "official": [
+        "76D"
+      ],
+      "northGround": [
+        "76D"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 76E",
+      "latitude": 44.5691738292648,
+      "longitude": -79.6893697683232,
+      "official": [
+        "76E"
+      ],
+      "northGround": [
+        "76E"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 76E",
+      "latitude": 44.5578148918625,
+      "longitude": -79.6843642450144,
+      "official": [
+        "76E"
+      ],
+      "northGround": [
+        "76E"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 77A",
+      "latitude": 44.2736877647846,
+      "longitude": -79.9180457688993,
+      "official": [
+        "77A"
+      ],
+      "northGround": [
+        "77A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 77A",
+      "latitude": 44.2438189577618,
+      "longitude": -79.9022587348341,
+      "official": [
+        "77A"
+      ],
+      "northGround": [
+        "77A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 77B",
+      "latitude": 44.159755006613,
+      "longitude": -79.8870922040974,
+      "official": [
+        "77B"
+      ],
+      "northGround": [
+        "77B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 77B",
+      "latitude": 44.2272125077251,
+      "longitude": -79.90266201553,
+      "official": [
+        "77B"
+      ],
+      "northGround": [
+        "77B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 77C",
+      "latitude": 44.2008073741259,
+      "longitude": -79.6142866565467,
+      "official": [
+        "77C"
+      ],
+      "northGround": [
+        "77C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 77C",
+      "latitude": 44.1471302977995,
+      "longitude": -79.5410903988505,
+      "official": [
+        "77C"
+      ],
+      "northGround": [
+        "77C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 78A",
+      "latitude": 44.2435760511368,
+      "longitude": -79.1011576265688,
+      "official": [
+        "78A"
+      ],
+      "northGround": [
+        "78A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 78A",
+      "latitude": 44.1910403359317,
+      "longitude": -79.0893266696453,
+      "official": [
+        "78A"
+      ],
+      "northGround": [
+        "78A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 78B",
+      "latitude": 44.2627875517813,
+      "longitude": -79.3344633223143,
+      "official": [
+        "78B"
+      ],
+      "northGround": [
+        "78B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 78B",
+      "latitude": 44.2241042260708,
+      "longitude": -79.3254031097863,
+      "official": [
+        "78B"
+      ],
+      "northGround": [
+        "78B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 78C",
+      "latitude": 44.0108429836306,
+      "longitude": -79.4581227108229,
+      "official": [
+        "78C"
+      ],
+      "northGround": [
+        "78C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 78C",
+      "latitude": 44.07541351751,
+      "longitude": -79.4724272446747,
+      "official": [
+        "78C"
+      ],
+      "northGround": [
+        "78C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 78D",
+      "latitude": 43.8320047509259,
+      "longitude": -79.9067257519483,
+      "official": [
+        "78D"
+      ],
+      "northGround": [
+        "78D"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 78D",
+      "latitude": 43.7398490010211,
+      "longitude": -79.9752049024468,
+      "official": [
+        "78D"
+      ],
+      "northGround": [
+        "78D"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 78E",
+      "latitude": 43.7606450346617,
+      "longitude": -79.2752385624369,
+      "official": [
+        "78E"
+      ],
+      "northGround": [
+        "78E"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 78E",
+      "latitude": 43.9545411884141,
+      "longitude": -79.31856695952,
+      "official": [
+        "78E"
+      ],
+      "northGround": [
+        "78E"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 79C",
+      "latitude": 43.6049524424153,
+      "longitude": -79.9533074406929,
+      "official": [
+        "79C"
+      ],
+      "northGround": [
+        "79C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 79C",
+      "latitude": 43.5245094729021,
+      "longitude": -79.9299215634549,
+      "official": [
+        "79C"
+      ],
+      "northGround": [
+        "79C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 79D",
+      "latitude": 43.4341603685625,
+      "longitude": -79.6125549347729,
+      "official": [
+        "79D"
+      ],
+      "northGround": [
+        "79D"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 79D",
+      "latitude": 43.4807366341474,
+      "longitude": -79.6118937555238,
+      "official": [
+        "79D"
+      ],
+      "northGround": [
+        "79D"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 7A",
+      "latitude": 49.333499191136,
+      "longitude": -94.4274440635824,
+      "official": [
+        "7A"
+      ],
+      "northGround": [
+        "7A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 7A",
+      "latitude": 49.2680712682974,
+      "longitude": -94.4065325582064,
+      "official": [
+        "7A"
+      ],
+      "northGround": [
+        "7A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 7B",
+      "latitude": 49.4783374085479,
+      "longitude": -93.9309787248457,
+      "official": [
+        "7B"
+      ],
+      "northGround": [
+        "7B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 7B",
+      "latitude": 49.401592291502,
+      "longitude": -93.9511494049238,
+      "official": [
+        "7B"
+      ],
+      "northGround": [
+        "7B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 8",
+      "latitude": 49.6274332860358,
+      "longitude": -93.1206667373393,
+      "official": [
+        "8"
+      ],
+      "northGround": [
+        "8"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 8",
+      "latitude": 49.8006378586638,
+      "longitude": -93.3666890725796,
+      "official": [
+        "8"
+      ],
+      "northGround": [
+        "8"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 80",
+      "latitude": 43.6780352709404,
+      "longitude": -80.42819527185,
+      "official": [
+        "80"
+      ],
+      "northGround": [
+        "80"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 80",
+      "latitude": 43.5319520982595,
+      "longitude": -80.4804001854516,
+      "official": [
+        "80"
+      ],
+      "northGround": [
+        "80"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 81A",
+      "latitude": 44.0068202119966,
+      "longitude": -80.2227777317425,
+      "official": [
+        "81A"
+      ],
+      "northGround": [
+        "81A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 81A",
+      "latitude": 44.0812125905493,
+      "longitude": -80.1882647114957,
+      "official": [
+        "81A"
+      ],
+      "northGround": [
+        "81A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 81B",
+      "latitude": 44.4613493907627,
+      "longitude": -80.1910905874342,
+      "official": [
+        "81B"
+      ],
+      "northGround": [
+        "81B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 81B",
+      "latitude": 44.5045039128104,
+      "longitude": -80.132879376741,
+      "official": [
+        "81B"
+      ],
+      "northGround": [
+        "81B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 82A",
+      "latitude": 44.5139163848233,
+      "longitude": -80.4094861932872,
+      "official": [
+        "82A"
+      ],
+      "northGround": [
+        "82A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 82A",
+      "latitude": 44.5207770061904,
+      "longitude": -80.4978904770446,
+      "official": [
+        "82A"
+      ],
+      "northGround": [
+        "82A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 82B",
+      "latitude": 44.8626763832288,
+      "longitude": -80.6213995487447,
+      "official": [
+        "82B"
+      ],
+      "northGround": [
+        "82B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 82B",
+      "latitude": 44.9177926259823,
+      "longitude": -80.6972803802445,
+      "official": [
+        "82B"
+      ],
+      "northGround": [
+        "82B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 82C",
+      "latitude": 44.6798380022745,
+      "longitude": -80.6843988531585,
+      "official": [
+        "82C"
+      ],
+      "northGround": [
+        "82C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 82C",
+      "latitude": 44.6550389145937,
+      "longitude": -80.6669136518113,
+      "official": [
+        "82C"
+      ],
+      "northGround": [
+        "82C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 83A",
+      "latitude": 45.0620462700454,
+      "longitude": -81.5261313658214,
+      "official": [
+        "83A"
+      ],
+      "northGround": [
+        "83A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 83A",
+      "latitude": 45.3561217921759,
+      "longitude": -81.528218494172,
+      "official": [
+        "83A"
+      ],
+      "northGround": [
+        "83A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 83B",
+      "latitude": 44.8439263650856,
+      "longitude": -80.9069230342938,
+      "official": [
+        "83B"
+      ],
+      "northGround": [
+        "83B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 83B",
+      "latitude": 44.848979423917,
+      "longitude": -80.9179481830787,
+      "official": [
+        "83B"
+      ],
+      "northGround": [
+        "83B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 83C",
+      "latitude": 44.8865826697794,
+      "longitude": -80.9713540544222,
+      "official": [
+        "83C"
+      ],
+      "northGround": [
+        "83C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 83C",
+      "latitude": 44.8816633387212,
+      "longitude": -80.9809403369381,
+      "official": [
+        "83C"
+      ],
+      "northGround": [
+        "83C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 84",
+      "latitude": 44.3411860414856,
+      "longitude": -81.6853284179261,
+      "official": [
+        "84"
+      ],
+      "northGround": [
+        "84"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 84",
+      "latitude": 44.0556020354645,
+      "longitude": -81.7454481610031,
+      "official": [
+        "84"
+      ],
+      "northGround": [
+        "84"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 85A",
+      "latitude": 43.8367322224509,
+      "longitude": -81.7644280281079,
+      "official": [
+        "85A"
+      ],
+      "northGround": [
+        "85A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 85A",
+      "latitude": 43.7406231169637,
+      "longitude": -81.7636354681125,
+      "official": [
+        "85A"
+      ],
+      "northGround": [
+        "85A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 85B",
+      "latitude": 43.7553523553096,
+      "longitude": -81.2261234219613,
+      "official": [
+        "85B"
+      ],
+      "northGround": [
+        "85B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 85B",
+      "latitude": 43.7903416017116,
+      "longitude": -81.0980434584411,
+      "official": [
+        "85B"
+      ],
+      "northGround": [
+        "85B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 85C",
+      "latitude": 43.4881963603401,
+      "longitude": -81.7818244259221,
+      "official": [
+        "85C"
+      ],
+      "northGround": [
+        "85C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 85C",
+      "latitude": 43.3125060379315,
+      "longitude": -81.7802697639214,
+      "official": [
+        "85C"
+      ],
+      "northGround": [
+        "85C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 86A",
+      "latitude": 43.6068900103701,
+      "longitude": -80.9943539715723,
+      "official": [
+        "86A"
+      ],
+      "northGround": [
+        "86A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 86A",
+      "latitude": 43.6837764915182,
+      "longitude": -81.092686269068,
+      "official": [
+        "86A"
+      ],
+      "northGround": [
+        "86A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 86B",
+      "latitude": 43.3684942075649,
+      "longitude": -81.0174261402408,
+      "official": [
+        "86B"
+      ],
+      "northGround": [
+        "86B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 86B",
+      "latitude": 43.3840079161412,
+      "longitude": -81.0104152414512,
+      "official": [
+        "86B"
+      ],
+      "northGround": [
+        "86B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 87A",
+      "latitude": 43.4422831484203,
+      "longitude": -80.4381079341748,
+      "official": [
+        "87A"
+      ],
+      "northGround": [
+        "87A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 87A",
+      "latitude": 43.4611063138304,
+      "longitude": -80.420260979438,
+      "official": [
+        "87A"
+      ],
+      "northGround": [
+        "87A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 87B",
+      "latitude": 43.2911246198194,
+      "longitude": -80.3567330971105,
+      "official": [
+        "87B"
+      ],
+      "northGround": [
+        "87B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 87B",
+      "latitude": 43.376746158328,
+      "longitude": -80.3716397534618,
+      "official": [
+        "87B"
+      ],
+      "northGround": [
+        "87B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 87C",
+      "latitude": 43.4776211616418,
+      "longitude": -80.1671779380996,
+      "official": [
+        "87C"
+      ],
+      "northGround": [
+        "87C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 87C",
+      "latitude": 43.5025852519354,
+      "longitude": -80.1857322583411,
+      "official": [
+        "87C"
+      ],
+      "northGround": [
+        "87C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 87D",
+      "latitude": 43.3441635007331,
+      "longitude": -80.0250671150135,
+      "official": [
+        "87D"
+      ],
+      "northGround": [
+        "87D"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 87D",
+      "latitude": 43.4178171921952,
+      "longitude": -80.0784140094533,
+      "official": [
+        "87D"
+      ],
+      "northGround": [
+        "87D"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 87E",
+      "latitude": 43.1615397530436,
+      "longitude": -80.0390006520786,
+      "official": [
+        "87E"
+      ],
+      "northGround": [
+        "87E"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 87E",
+      "latitude": 43.1321335350442,
+      "longitude": -79.9845822884056,
+      "official": [
+        "87E"
+      ],
+      "northGround": [
+        "87E"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 88",
+      "latitude": 43.2425388077647,
+      "longitude": -79.4843870474475,
+      "official": [
+        "88"
+      ],
+      "northGround": [
+        "88"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 88",
+      "latitude": 43.3254015761451,
+      "longitude": -79.5170232004537,
+      "official": [
+        "88"
+      ],
+      "northGround": [
+        "88"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 89A",
+      "latitude": 42.8880052495367,
+      "longitude": -79.1442322162799,
+      "official": [
+        "89A"
+      ],
+      "northGround": [
+        "89A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 89A",
+      "latitude": 42.7678437466473,
+      "longitude": -79.0992438982917,
+      "official": [
+        "89A"
+      ],
+      "northGround": [
+        "89A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 89B",
+      "latitude": 42.8734606382875,
+      "longitude": -79.4711533032167,
+      "official": [
+        "89B"
+      ],
+      "northGround": [
+        "89B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 89B",
+      "latitude": 42.8764328034197,
+      "longitude": -79.5635016125928,
+      "official": [
+        "89B"
+      ],
+      "northGround": [
+        "89B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 90A",
+      "latitude": 42.8181406946412,
+      "longitude": -79.9370109675557,
+      "official": [
+        "90A"
+      ],
+      "northGround": [
+        "90A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 90A",
+      "latitude": 42.915208953551,
+      "longitude": -79.8304187013782,
+      "official": [
+        "90A"
+      ],
+      "northGround": [
+        "90A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 90B",
+      "latitude": 42.7360288071307,
+      "longitude": -80.5107454189645,
+      "official": [
+        "90B"
+      ],
+      "northGround": [
+        "90B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 90B",
+      "latitude": 42.8139359010905,
+      "longitude": -80.2966921446046,
+      "official": [
+        "90B"
+      ],
+      "northGround": [
+        "90B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 91A",
+      "latitude": 43.0746036565487,
+      "longitude": -81.1567193318959,
+      "official": [
+        "91A"
+      ],
+      "northGround": [
+        "91A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 91A",
+      "latitude": 43.0071924322664,
+      "longitude": -81.2585055309658,
+      "official": [
+        "91A"
+      ],
+      "northGround": [
+        "91A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 91B",
+      "latitude": 43.2066928269867,
+      "longitude": -80.7559680320296,
+      "official": [
+        "91B"
+      ],
+      "northGround": [
+        "91B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 91B",
+      "latitude": 43.1321569185038,
+      "longitude": -80.7452772894226,
+      "official": [
+        "91B"
+      ],
+      "northGround": [
+        "91B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 92A",
+      "latitude": 43.0946267707015,
+      "longitude": -81.5657734930308,
+      "official": [
+        "92A"
+      ],
+      "northGround": [
+        "92A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 92A",
+      "latitude": 43.0053494971786,
+      "longitude": -81.5549970647147,
+      "official": [
+        "92A"
+      ],
+      "northGround": [
+        "92A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 92B",
+      "latitude": 42.5545997275698,
+      "longitude": -81.5480974355683,
+      "official": [
+        "92B"
+      ],
+      "northGround": [
+        "92B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 92B",
+      "latitude": 42.4475102682897,
+      "longitude": -81.6368688429155,
+      "official": [
+        "92B"
+      ],
+      "northGround": [
+        "92B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 92C",
+      "latitude": 42.4305035791658,
+      "longitude": -81.2678648684057,
+      "official": [
+        "92C"
+      ],
+      "northGround": [
+        "92C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 92C",
+      "latitude": 42.428391047299,
+      "longitude": -81.3217623270152,
+      "official": [
+        "92C"
+      ],
+      "northGround": [
+        "92C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 92D",
+      "latitude": 42.4628991570295,
+      "longitude": -81.0103832747137,
+      "official": [
+        "92D"
+      ],
+      "northGround": [
+        "92D"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 92D",
+      "latitude": 42.4622849820042,
+      "longitude": -80.8082295038114,
+      "official": [
+        "92D"
+      ],
+      "northGround": [
+        "92D"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 93A",
+      "latitude": 42.8762885335398,
+      "longitude": -82.1295298418329,
+      "official": [
+        "93A"
+      ],
+      "northGround": [
+        "93A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 93A",
+      "latitude": 42.6280062169066,
+      "longitude": -82.2447343751779,
+      "official": [
+        "93A"
+      ],
+      "northGround": [
+        "93A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 93B",
+      "latitude": 42.2760392154427,
+      "longitude": -81.7284577565113,
+      "official": [
+        "93B"
+      ],
+      "northGround": [
+        "93B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 93B",
+      "latitude": 42.4214043076345,
+      "longitude": -81.6079579062012,
+      "official": [
+        "93B"
+      ],
+      "northGround": [
+        "93B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 93C",
+      "latitude": 43.2444718935169,
+      "longitude": -81.8290753994423,
+      "official": [
+        "93C"
+      ],
+      "northGround": [
+        "93C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 93C",
+      "latitude": 43.2649236266574,
+      "longitude": -81.8398339616306,
+      "official": [
+        "93C"
+      ],
+      "northGround": [
+        "93C"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 94A",
+      "latitude": 42.1575349056687,
+      "longitude": -82.3503867298428,
+      "official": [
+        "94A"
+      ],
+      "northGround": [
+        "94A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 94A",
+      "latitude": 42.366890587629,
+      "longitude": -82.1423556194963,
+      "official": [
+        "94A"
+      ],
+      "northGround": [
+        "94A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 94B",
+      "latitude": 41.9729804576603,
+      "longitude": -82.9733827724106,
+      "official": [
+        "94B"
+      ],
+      "northGround": [
+        "94B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 94B",
+      "latitude": 41.9185592726737,
+      "longitude": -83.0933025385057,
+      "official": [
+        "94B"
+      ],
+      "northGround": [
+        "94B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 95",
+      "latitude": 41.778253446678,
+      "longitude": -82.6593262134123,
+      "official": [
+        "95"
+      ],
+      "northGround": [
+        "95"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 95",
+      "latitude": 41.7836705731715,
+      "longitude": -82.6868673561545,
+      "official": [
+        "95"
+      ],
+      "northGround": [
+        "95"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 9A",
+      "latitude": 49.3514708792755,
+      "longitude": -92.4708938869693,
+      "official": [
+        "9A"
+      ],
+      "northGround": [
+        "9A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 9A",
+      "latitude": 49.1765336125796,
+      "longitude": -92.398598749625,
+      "official": [
+        "9A"
+      ],
+      "northGround": [
+        "9A"
+      ],
+      "agree": true
+    },
+    {
+      "label": "inside 9B",
+      "latitude": 48.8694360829646,
+      "longitude": -93.1578843945213,
+      "official": [
+        "9B"
+      ],
+      "northGround": [
+        "9B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "near-edge 9B",
+      "latitude": 48.7136123508666,
+      "longitude": -93.1081644377587,
+      "official": [
+        "9B"
+      ],
+      "northGround": [
+        "9B"
+      ],
+      "agree": true
+    },
+    {
+      "label": "Manitoba, west of Ontario",
+      "latitude": 50,
+      "longitude": -99,
+      "official": [],
+      "northGround": [],
+      "neighbours": [
+        "management_zone:ca-mb-gha-30"
+      ],
+      "agree": true
+    },
+    {
+      "label": "Quebec, east of Ontario",
+      "latitude": 46.8,
+      "longitude": -71.2,
+      "official": [],
+      "northGround": [],
+      "agree": true
+    },
+    {
+      "label": "Minnesota, south-west",
+      "latitude": 47.9,
+      "longitude": -92.1,
+      "official": [],
+      "northGround": [],
+      "agree": true
+    },
+    {
+      "label": "New York, south-east",
+      "latitude": 43.5,
+      "longitude": -75.5,
+      "official": [],
+      "northGround": [],
+      "agree": true
+    },
+    {
+      "label": "Hudson Bay, open water north",
+      "latitude": 58.5,
+      "longitude": -86,
+      "official": [],
+      "northGround": [],
+      "agree": true
+    },
+    {
+      "label": "latitude above the pole",
+      "latitude": 95,
+      "longitude": -80,
+      "official": [],
+      "northGround": [],
+      "agree": true
+    },
+    {
+      "label": "longitude beyond the meridian",
+      "latitude": 48,
+      "longitude": -200,
+      "official": [],
+      "northGround": [],
+      "agree": true
+    }
+  ]
+}
