@@ -1621,7 +1621,9 @@ full Hunt each time.
   hunter (residency, licence, tag, draw, method, animal class, age) is "Depends on
   your hunt"; anything that differs inside the zone (a zone line, a base, a
   refuge) is "Needs a closer look"; UNKNOWN stays UNKNOWN and is never drawn as
-  CLOSED. The optional species filter uses the same states, with a word and a glyph
+  CLOSED. A season is never claimed inside a published restricted area that lies
+  within the zone: the card says "In season outside restricted areas" and names
+  each area with the authority's own restriction text. The optional species filter uses the same states, with a word and a glyph
   as well as a colour — never a green/red legality heatmap.
 - **Address → zone card.** Choosing a searched place sets the hunt location, drops
   the hunt pin, resolves and highlights the official zone, frames it beside the card
