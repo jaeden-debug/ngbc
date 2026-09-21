@@ -740,6 +740,11 @@
   font-size: 0.72rem;
   font-style: italic;
   color: var(--ng-bone-faint);
+  /* Truncated like the name: untruncated, a long binomial ran out of its
+     column and under the coverage label. */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .speciesChevron { flex: none; color: var(--ng-bone-faint); }
@@ -779,6 +784,14 @@
 }
 
 .speciesOption[data-active] { background: rgba(201, 194, 166, 0.11); }
+
+/* On a phone the coverage label ("Rules available here · asks a question")
+   is wider than the name beside it, and left the name as "W…". It takes its
+   own line under the name instead, aligned with the text. */
+@media (max-width: 480px) {
+  .speciesOption { flex-wrap: wrap; row-gap: 2px; }
+  .speciesCoverage { order: 2; flex-basis: 100%; margin-left: 42px; text-align: left; }
+}
 .speciesCheck { flex: none; color: var(--ng-moss); }
 
 /* The list is positioned against the field, which therefore establishes context. */
