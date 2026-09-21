@@ -19,6 +19,7 @@
 import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync } from "node:fs";
 import {
+  jurisdictionToday, readPreviousBundle, retrievedAtFor,
   diffBundles, expandWmuSpec, extractFootnotes, extractTables, fetchOfficialWmuIdentifiers,
   fetchText, formatBundleDiff, parseWmuCell, slug, zoneCanonicalId,
 } from "./ontario-source.mjs";
@@ -353,6 +354,8 @@ function sha256(text) {
 
 async function main() {
   const checkOnly = process.argv.includes("--check");
+  const previousBundle = readPreviousBundle(OUTPUT);
+  const TODAY = jurisdictionToday();
 
   const officialIdentifiers = await fetchOfficialWmuIdentifiers();
   console.log(`Official Ontario units: ${officialIdentifiers.length}`);
@@ -542,7 +545,7 @@ async function main() {
     jurisdictionId: "jurisdiction:ca-on",
     sourceVersion: SOURCE_VERSION,
     sourceYear: SOURCE_YEAR,
-    retrievedAt: new Date().toISOString().slice(0, 10),
+    retrievedAt: retrievedAtFor(previousBundle, previousBundle?.contentHash, contentHash, TODAY),
     contentHash,
     officialUnitCount: officialIdentifiers.length,
     sources,

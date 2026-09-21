@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { diffBundles, expandWmuSpec, parseWmuCell, formatBundleDiff } from "./ontario-source.mjs";
+import {
+  diffBundles, expandWmuSpec, formatBundleDiff, jurisdictionToday, parseWmuCell, retrievedAtFor,
+} from "./ontario-source.mjs";
 
 /**
  * The shared reading of Ontario's sources.
@@ -130,5 +132,40 @@ describe("reporting what a source change did", () => {
     assert.match(text, /CHANGED\s+r1/);
     assert.match(text, /affects 1 unit\(s\): 60/);
     assert.match(text, /November 2 to November 15\s+->\s+November 9 to November 15/);
+  });
+});
+
+describe("provenance dates", () => {
+  const EVENING = new Date("2026-09-21T01:53:00Z"); // 21:53 on the 20th in Ontario
+
+  it("stamps the jurisdiction's day, not the build machine's UTC day", () => {
+    // The same off-by-one that shipped a Hunt page dated tomorrow. A bundle
+    // built on a September evening in Ontario was retrieved on the 20th.
+    assert.equal(jurisdictionToday("America/Toronto", EVENING), "2026-09-20");
+    assert.equal(jurisdictionToday("UTC", EVENING), "2026-09-21");
+  });
+
+  it("keeps retrievedAt still while the content is still", () => {
+    // Re-reading an unchanged page does not change when its text was retrieved.
+    // Advancing it daily would make every rebuild differ from the committed
+    // file, and a check that is always red is a check nobody reads.
+    const previous = { source: { retrievedAt: "2026-09-20", contentHash: "sha256:aaa" } };
+    assert.equal(retrievedAtFor(previous, "sha256:aaa", "sha256:aaa", "2026-09-30"), "2026-09-20");
+  });
+
+  it("advances it the moment the content moves", () => {
+    const previous = { source: { retrievedAt: "2026-09-20", contentHash: "sha256:aaa" } };
+    assert.equal(retrievedAtFor(previous, "sha256:aaa", "sha256:bbb", "2026-09-30"), "2026-09-30");
+  });
+
+  it("reads either bundle shape, since the two differ", () => {
+    // Small game nests provenance under `source`; major game carries it at the
+    // top because it rests on four pages.
+    const topLevel = { retrievedAt: "2026-09-18", contentHash: "sha256:ccc" };
+    assert.equal(retrievedAtFor(topLevel, "sha256:ccc", "sha256:ccc", "2026-09-30"), "2026-09-18");
+  });
+
+  it("stamps today when there is no previous bundle at all", () => {
+    assert.equal(retrievedAtFor(null, undefined, "sha256:aaa", "2026-09-30"), "2026-09-30");
   });
 });

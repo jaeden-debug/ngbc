@@ -1,0 +1,114 @@
+name: Official source watch
+
+# Regulations change and the authority does not tell us. This reads the pages
+# North Ground certifies against and reports when one moves, so a changed rule
+# reaches a reviewer instead of sitting undetected until someone notices a wrong
+# answer in the field.
+#
+# It never publishes anything. A changed source opens an issue; promoting the
+# change is a human decision made against the diff.
+on:
+  schedule:
+    # 11:00 UTC daily — morning in Ontario, so a change is on the desk before
+    # the day's work rather than overnight.
+    - cron: "0 11 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: source-watch
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: Have the official sources moved?
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Compare live sources against the committed bundles
+        id: check
+        run: |
+          set +e
+          OUTPUT=$(npm run --silent check:regulatory-sources 2>&1)
+          STATUS=$?
+          echo "$OUTPUT"
+          {
+            echo "report<<SOURCE_REPORT_EOF"
+            echo "$OUTPUT"
+            echo "SOURCE_REPORT_EOF"
+          } >> "$GITHUB_OUTPUT"
+          # 0 unchanged, 2 a source moved, anything else is a failed read.
+          if [ $STATUS -eq 0 ]; then echo "state=unchanged" >> "$GITHUB_OUTPUT"
+          elif [ $STATUS -eq 2 ]; then echo "state=moved" >> "$GITHUB_OUTPUT"
+          else echo "state=unreadable" >> "$GITHUB_OUTPUT"
+          fi
+          exit 0
+
+      - name: Open an issue when a source moves or cannot be read
+        if: steps.check.outputs.state != 'unchanged'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const state = '${{ steps.check.outputs.state }}';
+            const report = process.env.REPORT || '';
+            const label = 'regulatory-source';
+            const title = state === 'moved'
+              ? 'An official hunting source has changed — review before publishing'
+              : 'An official hunting source could not be read';
+
+            // One open issue at a time. A daily duplicate is how a real change
+            // gets lost in a list of identical ones.
+            const open = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: label,
+            });
+            const body = [
+              state === 'moved'
+                ? 'A page North Ground certifies against has changed since its bundle was built.'
+                : 'The source check could not read an official page. This may be an outage rather than a change, but a source that stays unreadable is a source that has silently stopped being verified.',
+              '',
+              '**Nothing has been published.** Rebuild with `npm run build:regulations`, read the rule-level',
+              'diff, and re-certify before promoting. `scripts/regulatory-change-report.mjs <old> <new>` names',
+              'the affected rules with their before/after values and how many wildlife management units each',
+              'change touches.',
+              '',
+              '<details><summary>Check output</summary>',
+              '',
+              '```',
+              report.slice(0, 55000),
+              '```',
+              '',
+              '</details>',
+              '',
+              `Run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+            ].join('\n');
+
+            if (open.data.length) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: open.data[0].number,
+                body: `Still ${state} as of this run.\n\n${body}`,
+              });
+              core.notice(`Commented on existing issue #${open.data[0].number}.`);
+              return;
+            }
+            const created = await github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo,
+              title, body, labels: [label],
+            });
+            core.notice(`Opened issue #${created.data.number}.`);
+        env:
+          REPORT: ${{ steps.check.outputs.report }}
+
+      - name: Fail the run so the change is visible in the Actions tab too
+        if: steps.check.outputs.state == 'moved'
+        run: exit 1

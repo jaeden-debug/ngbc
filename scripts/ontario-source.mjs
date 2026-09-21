@@ -7,6 +7,8 @@
  * expanded must change both bundles or neither.
  */
 
+import { readFileSync } from "node:fs";
+
 export const WMU_QUERY =
   "https://ws.lioservices.lrc.gov.on.ca/arcgis2/rest/services/LIO_OPEN_DATA/LIO_Open05/MapServer/5/query";
 
@@ -260,4 +262,47 @@ export function formatBundleDiff({ added, removed, changed }) {
     }
   }
   return lines.join("\n");
+}
+
+
+/**
+ * When this content was retrieved — which only moves when the content does.
+ *
+ * Stamping every build with today's date makes a rebuild differ from the
+ * committed file every day, which breaks the one check that proves a bundle is
+ * still what its builder produces, and a permanently red check is a check
+ * nobody reads.
+ *
+ * It is also the more honest reading. `retrievedAt` answers "when did we fetch
+ * the text these rules were built from", and re-reading an unchanged page does
+ * not change that answer. "When did we last confirm it is still current" is a
+ * different fact, and it lives on the source row in the database, where the
+ * daily watch updates it without touching a committed file.
+ */
+export function retrievedAtFor(previousBundle, previousHash, currentHash, today) {
+  const unchanged = previousBundle && previousHash === currentHash;
+  const previousDate = previousBundle?.retrievedAt ?? previousBundle?.source?.retrievedAt;
+  return unchanged && previousDate ? previousDate : today;
+}
+
+/** Read a previously generated bundle, or null when there is not one yet. */
+export function readPreviousBundle(path) {
+  try {
+    return JSON.parse(readFileSync(path, "utf8"));
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Today in the jurisdiction these sources belong to.
+ *
+ * UTC would stamp a bundle built on a September evening in Ontario as the 21st,
+ * which is the same off-by-one-day that reached production in the Hunt page.
+ * Provenance dates are calendar days like every other date in this product.
+ */
+export function jurisdictionToday(timeZone = "America/Toronto", now = new Date()) {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone, year: "numeric", month: "2-digit", day: "2-digit",
+  }).format(now);
 }

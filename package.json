@@ -29,7 +29,9 @@
     "test:regulatory-persistence": "node --test src/lib/hunt/regulatory/persistence.test.ts",
     "report:canada": "node --experimental-strip-types scripts/canada-coverage-report.mjs",
     "test:canada": "node --test src/lib/hunt/canada/*.test.ts",
-    "test:ingestion": "node --test src/lib/hunt/ingestion/*.test.ts"
+    "test:ingestion": "node --test src/lib/hunt/ingestion/*.test.ts",
+    "test": "npm run test:hunt && npm run test:regulatory-sources && npm run test:regulatory-persistence && npm run test:canada && npm run test:ingestion && npm run test:hunt-share && npm run test:content-repository && npm run test:content-contract && npm run test:content-urls && npm run test:seo && npm run test:newsletter",
+    "test:timezones": "for tz in UTC America/Toronto America/Vancouver Australia/Sydney Pacific/Kiritimati; do echo \"\u2014 TZ=$tz\"; TZ=$tz node --test src/lib/hunt/date.test.ts src/lib/hunt/server-client-date.test.ts src/lib/hunt/weather.test.ts src/lib/hunt/regulatory/season.test.ts || exit 1; done"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.116.0",
@@ -48,5 +50,8 @@
     "tailwindcss": "^4",
     "tsx": "^4.23.15",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=22.0.0"
   }
 }

@@ -18,6 +18,7 @@
 import { createHash } from "node:crypto";
 import { writeFileSync, readFileSync } from "node:fs";
 import {
+  jurisdictionToday, readPreviousBundle, retrievedAtFor,
   expandWmuSpec, extractTables, fetchOfficialWmuIdentifiers, fetchText, slug, zoneCanonicalId,
 } from "./ontario-source.mjs";
 
@@ -127,6 +128,8 @@ function parseLimits(phrase) {
 
 async function main() {
   const checkOnly = process.argv.includes("--check");
+  const previousBundle = readPreviousBundle(OUTPUT);
+  const TODAY = jurisdictionToday();
 
   console.log("Fetching the official Ontario small game summary...");
   const html = await fetchText(SOURCE_URL);
@@ -240,7 +243,7 @@ async function main() {
       url: SOURCE_URL,
       sourceVersion: SOURCE_VERSION,
       sourceYear: SOURCE_YEAR,
-      retrievedAt: new Date().toISOString().slice(0, 10),
+      retrievedAt: retrievedAtFor(previousBundle, previousBundle?.source?.contentHash, sourceHash, TODAY),
       contentHash: sourceHash,
     },
     officialUnitCount: officialIdentifiers.length,
