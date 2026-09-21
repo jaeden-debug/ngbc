@@ -143,6 +143,26 @@ function classNote(rule: QuebecRule): string | null {
   return `This season allows « ${rule.classLabel} » (${glossed}), as the ministry states it for ${rule.seasonLabel}.`;
 }
 
+/**
+ * The ministry's implement heading, as a label.
+ *
+ * Headings open with the page's own preamble ("Périodes de chasse aux armes à
+ * feu (carabine, fusil, arme à chargement par la bouche), à l'arbalète et à
+ * l'arc"), and an answer lists every season open to a hunter, so the preamble
+ * and the articles are left out of the label: "armes à feu, arbalète et arc".
+ * The words are the ministry's; the heading itself is kept verbatim as the
+ * rule's source section, and the implements the rule permits are its
+ * `permittedImplements`.
+ */
+export function implementLabelShort(heading: string): string {
+  return heading
+    .replace(/^Périodes de chasse\s+/i, "")
+    .replace(/\s*\([^)]*\)/g, "")
+    .replace(/^(?:à l['’]|à la |au |aux )/i, "")
+    .replace(/(,| et) (?:à l['’]|à la |au |aux )/g, "$1 ")
+    .trim();
+}
+
 function engineRule(rule: QuebecRule, groupId: string): ConditionalRule {
   const notes: ConditionalRule["notes"] = [];
   const stated = classNote(rule);
@@ -196,7 +216,14 @@ function engineRule(rule: QuebecRule, groupId: string): ConditionalRule {
       // Regular seasons carry no key, so a relève participant keeps them too.
       ...(rule.seasonType === "RELEVE" ? { SEASON_TYPE: "RELEVE" } : {}),
     },
-    seasonLabel: rule.implementLabel ? `${rule.implementLabel}, ${rule.seasonLabel}` : rule.seasonLabel,
+    seasonLabel: [
+      /* A heading the builder could not map to implements (turkey's) is carried
+         verbatim in a note instead, so the label is its year alone. */
+      rule.implementLabel && rule.permittedImplements ? implementLabelShort(rule.implementLabel) : null,
+      // The ministry's own word for the youth weekend, so it is never mistaken for the regular season beside it.
+      rule.seasonType === "RELEVE" ? "relève" : null,
+      rule.seasonLabel,
+    ].filter(Boolean).join(", "),
     seasonPhrase: rule.seasonPhrase ?? "",
     windows: rule.windows.map((window) => ({ opensIso: window.opens, closesIso: window.closes })),
     declaredNoSeason: rule.declaredNoSeason,
@@ -420,17 +447,20 @@ function standingFor(speciesId: string): string[] {
     .filter((statement) => !statement.speciesIds || statement.speciesIds.includes(speciesId))
     .map((statement) => `« ${statement.text} »`);
   const zecs = [...new Set(QUEBEC_BUNDLE.zecs.filter((entry) => entry.sourceId === source).map((entry) => entry.zec))];
+  /* Most decisive first. A shared Hunt Brief keeps a fixed number of these, so
+     what the answer covers and where hunting is permitted at all come before
+     the ministry's general reservations and the map's standing. */
   return [
-    ...pageStatements,
+    "This describes sport hunting under Québec's Loi sur la conservation et la mise en valeur de la faune. It does not " +
+      "describe harvesting under treaty or Aboriginal rights, which is a separate legal context North Ground does not evaluate.",
+    "Being inside a hunting zone is not permission to hunt there. Private land, parks, ecological reserves, wildlife " +
+      "reserves, zecs and outfitters' territories are separate questions North Ground has not resolved here.",
     ...(zecs.length
       ? [`Different seasons apply in these zecs: ${zecs.join(", ")}. North Ground does not hold zec boundaries.`]
       : []),
+    ...pageStatements,
     "Québec's hunting-zone boundaries are the ministry's map, which states « cette compilation cartographique n'a aucune " +
       "portée légale, seuls les documents déposés ont force de loi ». Near a boundary, confirm which zone you are in.",
-    "Being inside a hunting zone is not permission to hunt there. Private land, parks, ecological reserves, wildlife " +
-      "reserves, zecs and outfitters' territories are separate questions North Ground has not resolved here.",
-    "This describes sport hunting under Québec's Loi sur la conservation et la mise en valeur de la faune. It does not " +
-      "describe harvesting under treaty or Aboriginal rights, which is a separate legal context North Ground does not evaluate.",
   ];
 }
 
@@ -498,9 +528,17 @@ export function quebecCoverageReport() {
  * builder could not map takes the period of the published rules beside it —
  * same page, same season — and is stored with the geography that keeps it
  * unresolved. Sources carry what the builder hashed.
+ *
+ * The store keeps each season's label as the ministry prints it, heading and
+ * all; an answer uses the short form (`implementLabelShort`), which is a
+ * presentation of the same words.
  */
 export function quebecPublishableBundles() {
   const ownPeriod = new Map(QUEBEC_BUNDLE.rules.map((rule) => [rule.id, { from: rule.effectiveFrom, to: rule.effectiveTo }]));
+  const printedLabel = new Map(QUEBEC_BUNDLE.rules.map((rule) => [
+    rule.id,
+    rule.implementLabel ? `${rule.implementLabel}, ${rule.seasonLabel}` : rule.seasonLabel,
+  ]));
   const seasonPeriod = new Map(QUEBEC_BUNDLE.rules.map((rule) => [`${rule.sourceId}|${rule.seasonLabel}`, { from: rule.effectiveFrom, to: rule.effectiveTo }]));
   const unresolvedSeason = new Map<string, string>();
   for (const bound of [QUEBEC_BIG_GAME, QUEBEC_SMALL_GAME]) {
@@ -526,7 +564,7 @@ export function quebecPublishableBundles() {
     rules: bound.rules.map((rule) => {
       const period = ownPeriod.get(rule.id) ?? seasonPeriod.get(`${rule.sourceId}|${unresolvedSeason.get(rule.id)}`);
       if (!period) throw new Error(`No period in force for ${rule.id}`);
-      return { ...rule, effectiveFrom: period.from, effectiveTo: period.to };
+      return { ...rule, seasonLabel: printedLabel.get(rule.id) ?? rule.seasonLabel, effectiveFrom: period.from, effectiveTo: period.to };
     }),
   }));
 }
@@ -576,6 +614,8 @@ const GIS_SOURCES = [
  * 12:00 UTC, which is the same calendar day in every Canadian time zone;
  * midnight UTC would display as the previous evening across the country.
  */
+const capitalise = (value: string) => value.charAt(0).toUpperCase() + value.slice(1);
+
 export function quebecSourceRecords(ids: readonly string[]): SourceRecord[] {
   const wanted = new Set(ids);
   const record = (source: { id: string; authority: string; title: string; url: string; retrievedAt: string; contentHash: string }) => ({
@@ -593,7 +633,14 @@ export function quebecSourceRecords(ids: readonly string[]): SourceRecord[] {
   return [
     ...QUEBEC_BUNDLE.sources
       .filter((source) => wanted.has(source.id))
-      .map((source) => record({ ...source, retrievedAt: QUEBEC_BUNDLE.retrievedAt })),
+      /* The page names its publisher and ministry together ("Gouvernement du
+         Québec — ministère de …"); the ministry is the authority, the
+         government the publisher, and both fit where a source is cited. */
+      .map((source) => record({
+        ...source,
+        authority: capitalise(source.authority.split(" — ").at(-1)!.trim()),
+        retrievedAt: QUEBEC_BUNDLE.retrievedAt,
+      })),
     ...GIS_SOURCES
       .filter((source) => wanted.has(source.id))
       // As the ministry's GeoServer names itself.
