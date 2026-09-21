@@ -41,6 +41,18 @@ const nextConfig: NextConfig = {
   trailingSlash: false,
 
   /**
+   * Sharp loads its platform-specific libvips package dynamically. Explicitly
+   * trace both Linux packages into the species-media function so Vercel does
+   * not ship the native binding without the matching shared library.
+   */
+  outputFileTracingIncludes: {
+    "/api/admin/species-media": [
+      "./node_modules/@img/sharp-linux-x64/**/*",
+      "./node_modules/@img/sharp-libvips-linux-x64/**/*",
+    ],
+  },
+
+  /**
    * Canonical route moves come from the route registry, so a path can never be
    * redirected here without the registry agreeing that it moved.
    */
