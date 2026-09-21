@@ -1,6 +1,6 @@
 "use client";
 
-import { useId } from "react";
+import { useId, type KeyboardEvent } from "react";
 import type { RequiredDimension } from "../../lib/hunt/regulatory/dimensions";
 import styles from "./Hunt.module.css";
 
@@ -31,6 +31,25 @@ export default function HuntQuestion({
 }) {
   const headingId = useId();
 
+  // A radiogroup is expected to answer the arrow keys. Here they only move
+  // between options: choosing one answers the question at once, so a stray
+  // arrow press must never be what submits a fact about the hunt.
+  const moveBetweenOptions = (event: KeyboardEvent<HTMLDivElement>) => {
+    const options = Array.from(event.currentTarget.querySelectorAll<HTMLButtonElement>('[role="radio"]:not(:disabled)'));
+    const current = options.indexOf(document.activeElement as HTMLButtonElement);
+    const target = {
+      ArrowDown: current + 1,
+      ArrowRight: current + 1,
+      ArrowUp: current - 1,
+      ArrowLeft: current - 1,
+      Home: 0,
+      End: options.length - 1,
+    }[event.key];
+    if (current < 0 || target === undefined) return;
+    event.preventDefault();
+    options[(target + options.length) % options.length].focus();
+  };
+
   return (
     <section className={`${styles.question} ng-glass-panel`} aria-labelledby={headingId}>
       <p className="ng-eyebrow">One more fact</p>
@@ -50,7 +69,7 @@ export default function HuntQuestion({
 
       {/* A radiogroup rather than a listbox: these are mutually exclusive facts
           about one hunt, and only a value the dimension offered is ever sent. */}
-      <div className={styles.questionOptions} role="radiogroup" aria-labelledby={headingId}>
+      <div className={styles.questionOptions} role="radiogroup" aria-labelledby={headingId} onKeyDown={moveBetweenOptions}>
         {dimension.options.map((option) => (
           <button
             key={option.value}
