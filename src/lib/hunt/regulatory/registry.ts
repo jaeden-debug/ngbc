@@ -11,6 +11,7 @@ import {
   evaluateManitoba, manitobaCoverageReport, manitobaSourceRecords, MANITOBA_OVERLAYS, restrictionTokensFor,
 } from "./manitoba.ts";
 import { evaluateOntarioSmallGame, ontarioCoverageReport } from "./ontario.ts";
+import { evaluateQuebec, quebecCoverageReport, quebecSourceRecords } from "./quebec.ts";
 
 /**
  * Which jurisdictions North Ground holds certified rules for, and how each is
@@ -262,7 +263,18 @@ const MANITOBA = conditionalEntry({
   overlays: { catalogue: MANITOBA_OVERLAYS, tokensFor: restrictionTokensFor },
 });
 
-export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA];
+/* Québec's rules are certified; the entry is only reached once its zone layer
+   is served, which waits on parity with the ministry's own service. */
+const QUEBEC = conditionalEntry({
+  jurisdictionId: "jurisdiction:ca-qc",
+  jurisdictionName: "Québec",
+  unitTerm: "zone de chasse",
+  evaluate: evaluateQuebec,
+  coverageReport: quebecCoverageReport,
+  sourceRecords: quebecSourceRecords,
+});
+
+export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC];
 
 /**
  * The entry for a jurisdiction — only while its zone layer is served.
