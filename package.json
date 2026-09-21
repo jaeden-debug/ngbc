@@ -12,6 +12,8 @@
     "validate:content:strict": "node scripts/validate-content-contract.mjs --strict",
     "validate:content:published": "node scripts/validate-content-contract.mjs --strict content/published/en-CA.json content/published/species-wave-1.json content/published/species-wave-2a.json content/published/species-wave-2b.json content/published/species-wave-2c.json content/published/species-wave-2d.json",
     "build:species": "node scripts/enrich-species-wave-1.mjs && node scripts/build-species-wave-2.mjs",
+    "build:intelligence": "node scripts/build-ontario-harvest-evidence.mjs",
+    "check:intelligence-sources": "node scripts/build-ontario-harvest-evidence.mjs --check",
     "test:content-contract": "node --test scripts/validate-content-contract.test.mjs",
     "test:content-repository": "node --test src/lib/content/repository.test.ts",
     "test:hunt": "node --test src/lib/hunt/*.test.ts src/lib/hunt/regulatory/*.test.ts src/lib/hunt/exploration/*.test.ts src/lib/hunt/readiness/*.test.ts",
@@ -30,7 +32,8 @@
     "report:canada": "node --experimental-strip-types scripts/canada-coverage-report.mjs",
     "test:canada": "node --test src/lib/hunt/canada/*.test.ts",
     "test:ingestion": "node --test src/lib/hunt/ingestion/*.test.ts scripts/ewkb.test.mjs",
-    "test": "npm run test:hunt && npm run test:regulatory-sources && npm run test:regulatory-persistence && npm run test:canada && npm run test:ingestion && npm run test:hunt-share && npm run test:content-repository && npm run test:content-contract && npm run test:content-urls && npm run test:seo && npm run test:newsletter",
+    "test:intelligence": "node --test src/lib/hunt/intelligence/*.test.ts scripts/build-ontario-harvest-evidence.test.mjs",
+    "test": "npm run test:hunt && npm run test:regulatory-sources && npm run test:regulatory-persistence && npm run test:canada && npm run test:ingestion && npm run test:intelligence && npm run test:hunt-share && npm run test:content-repository && npm run test:content-contract && npm run test:content-urls && npm run test:seo && npm run test:newsletter",
     "test:timezones": "for tz in UTC America/Toronto America/Vancouver Australia/Sydney Pacific/Kiritimati; do echo \"— TZ=$tz\"; TZ=$tz node --test src/lib/hunt/date.test.ts src/lib/hunt/server-client-date.test.ts src/lib/hunt/weather.test.ts src/lib/hunt/regulatory/season.test.ts || exit 1; done"
   },
   "dependencies": {

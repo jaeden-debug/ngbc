@@ -1,9 +1,8 @@
 name: Official source watch
 
-# Regulations change and the authority does not tell us. This reads the pages
-# North Ground certifies against and reports when one moves, so a changed rule
-# reaches a reviewer instead of sitting undetected until someone notices a wrong
-# answer in the field.
+# Regulations and intelligence datasets change without notifying consumers.
+# This reads every source North Ground publishes from and reports when one moves,
+# so a change reaches a reviewer instead of silently altering production.
 #
 # It never publishes anything. A changed source opens an issue; promoting the
 # change is a human decision made against the diff.
@@ -38,8 +37,11 @@ jobs:
         id: check
         run: |
           set +e
-          OUTPUT=$(npm run --silent check:regulatory-sources 2>&1)
-          STATUS=$?
+          REGULATORY=$(npm run --silent check:regulatory-sources 2>&1)
+          REGULATORY_STATUS=$?
+          INTELLIGENCE=$(npm run --silent check:intelligence-sources 2>&1)
+          INTELLIGENCE_STATUS=$?
+          OUTPUT=$(printf 'REGULATORY\n%s\n\nMAP INTELLIGENCE\n%s\n' "$REGULATORY" "$INTELLIGENCE")
           echo "$OUTPUT"
           {
             echo "report<<SOURCE_REPORT_EOF"
@@ -47,8 +49,8 @@ jobs:
             echo "SOURCE_REPORT_EOF"
           } >> "$GITHUB_OUTPUT"
           # 0 unchanged, 2 a source moved, anything else is a failed read.
-          if [ $STATUS -eq 0 ]; then echo "state=unchanged" >> "$GITHUB_OUTPUT"
-          elif [ $STATUS -eq 2 ]; then echo "state=moved" >> "$GITHUB_OUTPUT"
+          if [ $REGULATORY_STATUS -eq 2 ] || [ $INTELLIGENCE_STATUS -eq 2 ]; then echo "state=moved" >> "$GITHUB_OUTPUT"
+          elif [ $REGULATORY_STATUS -eq 0 ] && [ $INTELLIGENCE_STATUS -eq 0 ]; then echo "state=unchanged" >> "$GITHUB_OUTPUT"
           else echo "state=unreadable" >> "$GITHUB_OUTPUT"
           fi
           exit 0
@@ -62,8 +64,8 @@ jobs:
             const report = process.env.REPORT || '';
             const label = 'regulatory-source';
             const title = state === 'moved'
-              ? 'An official hunting source has changed — review before publishing'
-              : 'An official hunting source could not be read';
+              ? 'An official Hunt source has changed — review before publishing'
+              : 'An official Hunt source could not be read';
 
             // One open issue at a time. A daily duplicate is how a real change
             // gets lost in a list of identical ones.
@@ -73,13 +75,12 @@ jobs:
             });
             const body = [
               state === 'moved'
-                ? 'A page North Ground certifies against has changed since its bundle was built.'
+                ? 'A source North Ground publishes from has changed since its bundle was built.'
                 : 'The source check could not read an official page. This may be an outage rather than a change, but a source that stays unreadable is a source that has silently stopped being verified.',
               '',
-              '**Nothing has been published.** Rebuild with `npm run build:regulations`, read the rule-level',
-              'diff, and re-certify before promoting. `scripts/regulatory-change-report.mjs <old> <new>` names',
-              'the affected rules with their before/after values and how many wildlife management units each',
-              'change touches.',
+              '**Nothing has been published.** For regulation sources, rebuild with `npm run build:regulations`,',
+              'read the rule-level diff, and re-certify. For intelligence evidence, rebuild with',
+              '`npm run build:intelligence`, inspect changed metrics/coverage/methodology, and review before promotion.',
               '',
               '<details><summary>Check output</summary>',
               '',
