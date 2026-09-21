@@ -1,0 +1,2324 @@
+{
+  "jurisdictionId": "jurisdiction:ca-mb",
+  "purpose": "Published restrictions on land that can close or limit a hunt at a point. Classified at build time; a feature that is not in this catalogue, or has changed, is treated as a restriction North Ground has not certified.",
+  "layers": [
+    {
+      "key": "closed",
+      "url": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/Lands_Closed_to_Hunting/FeatureServer/0",
+      "sourceId": "source:ca-mb-lands-closed-to-hunting-service",
+      "featureCount": 24,
+      "contentHash": "sha256:71189f36749552ea76f0bfea875c2c24f57c36451330869a593ed531df1e1e54",
+      "features": [
+        {
+          "objectId": 1,
+          "name": "Ralls Island",
+          "statedAs": "No person shall hunt with a rifle requiring a centrefire cartridge",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87)",
+          "tokens": [
+            "centrefire_rifle"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 2,
+          "name": "Parks Creek Drain",
+          "statedAs": "No person shall hunt or kill an upland game bird, a wild turkey, a migratory game bird, or a big game animal",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87)",
+          "tokens": [
+            "big_game",
+            "migratory_game_bird",
+            "upland_game_bird",
+            "wild_turkey"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 3,
+          "name": "Deer Island",
+          "statedAs": "No person shall hunt or kill a moose",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87)",
+          "tokens": [
+            "moose"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 4,
+          "name": "Hecla Island",
+          "statedAs": "No person shall hunt or kill a moose, a black bear, or a deer",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87)",
+          "tokens": [
+            "black_bear",
+            "deer",
+            "moose"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 5,
+          "name": "Portion of GHA 38 and City of Winnipeg",
+          "statedAs": "No person shall hunt or kill wildlife",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87)",
+          "tokens": [
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 6,
+          "name": "Portion of Pembina Valley Provincial Park",
+          "statedAs": "No person shall hunt, trap, shoot or kill an upland game bird, a wild turkey, a migratory game bird, a big game animal, or a fur bearing animal",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87) and Trapping of Wild Animals Regulation (245/90)",
+          "tokens": [
+            "big_game",
+            "furbearer",
+            "migratory_game_bird",
+            "upland_game_bird",
+            "wild_turkey"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 7,
+          "name": "GHA 4 Moose Conservation Area",
+          "statedAs": "No person shall hunt or kill a moose",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87)",
+          "tokens": [
+            "moose"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 8,
+          "name": "Rocky Lake Restricted Hunting Area",
+          "statedAs": "No person shall hunt or kill wildlife, except a furbearing animal or gray (timber) wolf by trapping",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87)",
+          "tokens": [
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 9,
+          "name": "RM of MacDonald Firearms Discharge Restricted Area",
+          "statedAs": "No person shall discharge a firearm or bow while hunting migratory game birds or deer",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87)",
+          "tokens": [
+            "deer",
+            "migratory_game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 10,
+          "name": "RM of Rosser Firearms Discharge Restricted Area",
+          "statedAs": "No person shall discharge a firearm or bow while hunting migratory game birds",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87)",
+          "tokens": [
+            "migratory_game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 11,
+          "name": "GHA 2A and 7 Moose Conservation Area",
+          "statedAs": "No person shall hunt or kill a moose",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87)",
+          "tokens": [
+            "moose"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 12,
+          "name": "Turtle Mountain Community Pasture",
+          "statedAs": "Area is excluded from the GHA 29 and 29A fall draw general (rifle) elk season",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), Hunting Seasons and Bag Limits Regulation (165/91)",
+          "tokens": [
+            "elk"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 13,
+          "name": "GHA 14 Swan-Pelican Provincial Forest Area",
+          "statedAs": "No licenced elk hunting. Resident Draw Elk licences may only be used in the portions of GHA 14 west of Swan-Pelican Provincial Forest and south of Dawson Bay on Lake Winnipegosis",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), Hunting Seasons and Bag Limits Regulation (165/91)",
+          "tokens": [
+            "elk"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 14,
+          "name": "RM of MacDonald Firearms Discharge Restricted Area",
+          "statedAs": "No person shall discharge a firearm or bow while hunting migratory game birds or deer",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87)",
+          "tokens": [
+            "deer",
+            "migratory_game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 15,
+          "name": "Portion of GHA 38 in RM of Rosser",
+          "statedAs": "No person shall hunt, trap, shoot, or kill an upland game bird, a wild turkey, a fur bearing animal, or a big game animal",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87) and Trapping of Wild Animals Regulation (245/90)",
+          "tokens": [
+            "big_game",
+            "furbearer",
+            "upland_game_bird",
+            "wild_turkey"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 17,
+          "name": "Portion of GHA 38 in RM of MacDonald",
+          "statedAs": "No person shall hunt, trap, shoot, or kill an upland game bird, a wild turkey, a fur bearing animal, or a big game animal other than white-tailed deer",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87) and Trapping of Wild Animals Regulation (245/90)",
+          "tokens": [
+            "big_game_except_white_tailed_deer",
+            "furbearer",
+            "upland_game_bird",
+            "wild_turkey"
+          ],
+          "unclassified": [],
+          "specialIds": [
+            "special_geography:ca-mb-gha-38-rm-of-macdonald"
+          ]
+        },
+        {
+          "objectId": 19,
+          "name": "Portion of GHA 38 in RM of MacDonald",
+          "statedAs": "No person shall hunt, trap, shoot, or kill an upland game bird, a wild turkey, a fur bearing animal, or a big game animal other than white-tailed deer",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87) and Trapping of Wild Animals Regulation (245/90)",
+          "tokens": [
+            "big_game_except_white_tailed_deer",
+            "furbearer",
+            "upland_game_bird",
+            "wild_turkey"
+          ],
+          "unclassified": [],
+          "specialIds": [
+            "special_geography:ca-mb-gha-38-rm-of-macdonald"
+          ]
+        },
+        {
+          "objectId": 22,
+          "name": "Riding Mountain National Park",
+          "statedAs": "National Parks have special regulations and guidelines for transporting firearms, using off-road vehicles (ORVs), hunting, and retrieving wounded animals. For more information, contact the local federal Park Canada Agency office. No person shall hunt or kill an upland game bird, a wild turkey, a migratory bird, or a big game animal in Riding Mountain National Park, as per the Manitoba Wildlife Act.",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87)",
+          "tokens": [
+            "big_game",
+            "migratory_game_bird",
+            "upland_game_bird",
+            "wild_turkey"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 24,
+          "name": "Wapusk National Park",
+          "statedAs": "National Parks have special regulations and guidelines for transporting firearms, using off-road vehicles (ORVs), hunting, and retrieving wounded animals. For more information, contact the local federal Park Canada Agency office. No person shall hunt or kill wildlife in Wapusk National Park without first obtaining written authority from the Park Superintendent, as per the Manitoba Wildlife Act.",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87)",
+          "tokens": [
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 25,
+          "name": "Birds Hill Provincial Park",
+          "statedAs": "No person shall hunt, trap, shoot, or kill an upland game bird, a wild turkey, a migratory bird, a furbearing animal, or a big game animal within Birds Hill Provincial Park, as per the Manitoba Wildlife Act.",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87), Trapping of Wild Animals Regulation (245/90)",
+          "tokens": [
+            "big_game",
+            "furbearer",
+            "migratory_game_bird",
+            "upland_game_bird",
+            "wild_turkey"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 26,
+          "name": "Beaudry Provincial Park",
+          "statedAs": "No person shall hunt, trap, shoot, or kill an upland game bird, a wild turkey, a migratory bird, a furbearing animal, or a big game animal within Beaudry Provincial Park, as per the Manitoba Wildlife Act.",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), General Hunting Regulation (351/87), Trapping of Wild Animals Regulation (245/90)",
+          "tokens": [
+            "big_game",
+            "furbearer",
+            "migratory_game_bird",
+            "upland_game_bird",
+            "wild_turkey"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 27,
+          "name": "Canadian Forces Base Shilo",
+          "statedAs": "Canadian Forces Base Shilo is closed to all hunting. CFB Shilo is excluded from waterfowl, upland game bird, wild turkey, elk, and black bear hunting seasons in GHA 30, as per the Manitoba Wildlife Act.",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), Hunting Seasons and Bag Limits Regulation (165/91)",
+          "tokens": [
+            "all",
+            "black_bear",
+            "elk",
+            "migratory_game_bird",
+            "upland_game_bird",
+            "wild_turkey"
+          ],
+          "unclassified": [],
+          "specialIds": [
+            "special_geography:ca-mb-cfb-shilo"
+          ]
+        },
+        {
+          "objectId": 33,
+          "name": "GHA 9A Prohibited Moose Hunting Zone",
+          "statedAs": "Area is excluded from the GHA 9A fall archery and draw general (rifle) moose season",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), Hunting Seasons and Bag Limits Regulation (165/91)",
+          "tokens": [
+            "moose"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 34,
+          "name": "GHA 10 Prohibited Moose Hunting Zone",
+          "statedAs": "Area is excluded from the GHA 10 fall archery and draw general (rifle) moose season",
+          "regulation": "The Wildlife Act (C.C.S.M. c. W130), Hunting Seasons and Bag Limits Regulation (165/91)",
+          "tokens": [
+            "moose"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        }
+      ]
+    },
+    {
+      "key": "refuges",
+      "url": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/Manitoba_Wildlife_Lands/FeatureServer/0",
+      "sourceId": "source:ca-mb-wildlife-lands-service",
+      "featureCount": 71,
+      "contentHash": "sha256:f685566c81597cac69190d380eba7efdd0f42ecc078bb4f325e96da0dd1b2315",
+      "features": [
+        {
+          "objectId": 1,
+          "name": "Harry Cox",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm No person, except the lawful occupant of the land which constitutes the refuge, shall use a vehicle except to assist in a farming operation located within the refuge",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 2,
+          "name": "Red Deer Point",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 3,
+          "name": "Duck Mountain",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 4,
+          "name": "Red Deer Point",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 5,
+          "name": "Duck Mountain",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 6,
+          "name": "Red Deer Point",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 7,
+          "name": "Duck Mountain",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 8,
+          "name": "Duck Mountain",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 9,
+          "name": "Reykjavik",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 10,
+          "name": "Grindstone Point",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 11,
+          "name": "Lee Lake",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 12,
+          "name": "Chief George Barker",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 13,
+          "name": "Roy Lake",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 14,
+          "name": "Sleeve Lake",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 15,
+          "name": "Dog Lake Islands",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 16,
+          "name": "Dog Lake Islands",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 17,
+          "name": "Dog Lake Islands",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 18,
+          "name": "Dog Lake Islands",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 19,
+          "name": "Dog Lake Islands",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 20,
+          "name": "Dog Lake Islands",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 21,
+          "name": "Dog Lake Islands",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 22,
+          "name": "Dog Lake Islands",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 23,
+          "name": "Dog Lake Islands",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 24,
+          "name": "John MacPhail",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 26,
+          "name": "Jackfish Lake",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 27,
+          "name": "Big Grass Marsh",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 28,
+          "name": "Netley Marsh",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 29,
+          "name": "West Shoal Lake",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 30,
+          "name": "Minnedosa Lake",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm A person may only possess a loaded firearm if they are trapping fur bearing animals or hunting big game under the authority of a licence issued under The Wildlife Act",
+          "tokens": [
+            "firearm",
+            "firearm_unless_big_game_or_trapping",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 31,
+          "name": "Lynchs Point",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 32,
+          "name": "Delta",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm No person shall hunt or kill a deer",
+          "tokens": [
+            "deer",
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 33,
+          "name": "Grant's Lake",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 34,
+          "name": "Birds Hill",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 35,
+          "name": "Spruce Woods",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 36,
+          "name": "Oak Lake",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 37,
+          "name": "Stephenfield",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 38,
+          "name": "M. Penner",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 39,
+          "name": "W. Sessions",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 40,
+          "name": "N. Eidse",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 41,
+          "name": "J. Unrau",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 42,
+          "name": "E. Bergman",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 43,
+          "name": "Rock Lake",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 44,
+          "name": "G.C. Froese",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 45,
+          "name": "A. Enns",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 47,
+          "name": "J. Hooge",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 48,
+          "name": "J. Hooge",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 58,
+          "name": "Hecla Island",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 59,
+          "name": "Petes Point",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 60,
+          "name": "Waterhen",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 61,
+          "name": "Whiteshell",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm No person shall hunt or kill a deer",
+          "tokens": [
+            "deer",
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": [
+            "special_geography:ca-mb-whiteshell-game-bird-refuge"
+          ]
+        },
+        {
+          "objectId": 62,
+          "name": "St. Ambroise",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 63,
+          "name": "Noel Ham",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 64,
+          "name": "Hespeler Floodway",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 65,
+          "name": "Hespeler Floodway",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 66,
+          "name": "Hespeler Floodway",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 67,
+          "name": "J.D. Penner",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 68,
+          "name": "E.M Halstead",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 69,
+          "name": "Tobacco Creek",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 70,
+          "name": "Rosenheim Coulee",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 71,
+          "name": "Rosenheim Coulee",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 72,
+          "name": "Rosenheim Coulee",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 73,
+          "name": "Rosenheim Coulee",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 74,
+          "name": "Duck Mountain",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 75,
+          "name": "Chief George Barker",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 76,
+          "name": "Chief George Barker",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 77,
+          "name": "C.D. Falk",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 78,
+          "name": "G.J. Froese",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 79,
+          "name": "H. Klassen",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 80,
+          "name": "Buffalo Point",
+          "type": "Wildlife Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess wildlife, or possess or discharge a loaded firearm",
+          "tokens": [
+            "firearm",
+            "wildlife"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 81,
+          "name": "Marshy Point",
+          "type": "Goose Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess any species of goose",
+          "tokens": [
+            "migratory_game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 83,
+          "name": "Marshy Point",
+          "type": "Game Bird Refuge",
+          "statedAs": "No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm",
+          "tokens": [
+            "firearm",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        }
+      ]
+    },
+    {
+      "key": "scas",
+      "url": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/Manitoba_Wildlife_Lands/FeatureServer/1",
+      "sourceId": "source:ca-mb-wildlife-lands-service",
+      "featureCount": 7,
+      "contentHash": "sha256:60995e28594279b08e08a3347841d6fe7dcd28173bb7e12e56dd52efd6594c8c",
+      "features": [
+        {
+          "objectId": 1,
+          "name": "Churchill Special Conservation Area",
+          "statedAs": "No person shall enter or be in a special conservation area during the period when an order or notice of closure is in effect.",
+          "tokens": [
+            "entry_closure_order"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 2,
+          "name": "Clandeboye Bay Special Conservation Area",
+          "statedAs": "No person shall enter or be in a special conservation area during the period when an order or notice of closure is in effect.",
+          "tokens": [
+            "entry_closure_order"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 3,
+          "name": "Walter Cook Special Conservation Area",
+          "statedAs": "No person shall enter or be in a special conservation area during the period when an order or notice of closure is in effect. No person shall operate an off-road vehicle during the period beginning on April 24 and ending on August 5",
+          "tokens": [
+            "entry_closure_order"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 4,
+          "name": "Grand Marais Special Conservation Area",
+          "statedAs": "No person shall enter or be in a special conservation area during the period when an order or notice of closure is in effect. No person shall operate an off-road vehicle during the period beginning on April 1 and ending on September 15",
+          "tokens": [
+            "entry_closure_order"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 5,
+          "name": "Sandy Bar Special Conservation Area",
+          "statedAs": "No person shall enter or be in a special conservation area during the period when an order or notice of closure is in effect. No person shall operate an off-road vehicle during the period beginning on April 1 and ending on September 15",
+          "tokens": [
+            "entry_closure_order"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 6,
+          "name": "Grand Marais Special Conservation Area",
+          "statedAs": "No person shall enter or be in a special conservation area during the period when an order or notice of closure is in effect.",
+          "tokens": [
+            "entry_closure_order"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 7,
+          "name": "St. Andrews Lock and Dam Special Conservation Area",
+          "statedAs": "No person shall enter or be in a special conservation area during the period when an order or notice of closure is in effect. No person shall engage in angling or possess any fishing equipment during the period beginning on April 1 and ending on November 15",
+          "tokens": [
+            "entry_closure_order"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        }
+      ]
+    },
+    {
+      "key": "wmas",
+      "url": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/Manitoba_Wildlife_Lands/FeatureServer/2",
+      "sourceId": "source:ca-mb-wildlife-lands-service",
+      "featureCount": 129,
+      "contentHash": "sha256:a83d378f5d046916de1601a6460a49dbed1d007a457bc3cfc0c03a3da33ee848",
+      "features": [
+        {
+          "objectId": 2,
+          "name": "Hilbre Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 4,
+          "name": "Holmfield Wildlife Management Area",
+          "statedAs": "Hunting is prohibited No person shall hunt or kill a game bird or a big game animal",
+          "tokens": [
+            "all",
+            "big_game",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 5,
+          "name": "Langruth Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 6,
+          "name": "Grant's Lake Wildlife Management Area",
+          "statedAs": "Hunting is prohibited No person shall: -possess a firearm, unless the person is in a vehicle on a developed road, or -camp during the period between sunset of one day and sunrise of the following day Trapping: No person shall trap or shoot a muskrat",
+          "tokens": [
+            "all",
+            "firearm",
+            "muskrat"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 7,
+          "name": "Whitemud Watershed Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 8,
+          "name": "C. Stuart Stevenson Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 9,
+          "name": "Dog Lake Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 10,
+          "name": "Hilltop Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 11,
+          "name": "Inwood Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 12,
+          "name": "Lauder Sandhills Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 13,
+          "name": "Frank W. Boyd Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 14,
+          "name": "Pierson Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 15,
+          "name": "Pembina Valley Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 16,
+          "name": "Watson P. Davidson Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 17,
+          "name": "Pembina Valley Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 18,
+          "name": "Clematis Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 19,
+          "name": "Sandridge Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 20,
+          "name": "Tom Lamb Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 21,
+          "name": "Catfish Creek Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 22,
+          "name": "Upper Assiniboine Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 23,
+          "name": "Maple Lake Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 24,
+          "name": "Otter Lake Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 25,
+          "name": "Kenneth H. Wark Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 26,
+          "name": "Upper Assiniboine Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 27,
+          "name": "Upper Assiniboine Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 28,
+          "name": "St. Malo Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 29,
+          "name": "Stuartburn Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 30,
+          "name": "Rat River Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 31,
+          "name": "Upper Assiniboine Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 32,
+          "name": "Pembina Valley Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 33,
+          "name": "Lundar Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 34,
+          "name": "Turtle Mountain Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 35,
+          "name": "Pembina Valley Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 36,
+          "name": "Pembina Valley Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 37,
+          "name": "Pembina Valley Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 38,
+          "name": "Pembina Valley Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 39,
+          "name": "Peonan Point Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 40,
+          "name": "Portage Sandhills Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 41,
+          "name": "Weiden Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 42,
+          "name": "Wellington Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 43,
+          "name": "Westlake Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 44,
+          "name": "Upper Assiniboine Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 45,
+          "name": "Pembina Valley Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 46,
+          "name": "Kaskatamagan Sipi Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 47,
+          "name": "Broomhill Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 48,
+          "name": "Parkland Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 49,
+          "name": "Point River Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 50,
+          "name": "Rembrandt Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 51,
+          "name": "Proulx Lake Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 52,
+          "name": "Oak Hammock Marsh Wildlife Management Area",
+          "statedAs": "Hunting is prohibited No person shall: -possess a firearm, unless the person is in a vehicle on a developed road other than a dike, -hunt or kill a game bird or big game animal, -trap a fur bearing animal, -camp during the period between sunset of one day and sunrise of the following day, or -bring or allow an animal into the area or allow it to remain in the area, unless the person keeps it on a leash or harness or in a vehicle",
+          "tokens": [
+            "all",
+            "big_game",
+            "firearm",
+            "furbearer",
+            "game_bird"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 53,
+          "name": "Pembina Valley Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 54,
+          "name": "Whitemud Watershed Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 55,
+          "name": "Upper Assiniboine Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 56,
+          "name": "Assiniboine Corridor Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 57,
+          "name": "Proven Lake Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 58,
+          "name": "Harperville Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 59,
+          "name": "Harrison Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 60,
+          "name": "Souris River Bend Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 61,
+          "name": "Moose Creek Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 62,
+          "name": "Upper Assiniboine Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 63,
+          "name": "Sleeve Lake Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 64,
+          "name": "Whitemud Watershed Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 65,
+          "name": "Tiger Hills Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 66,
+          "name": "Moosehorn Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 67,
+          "name": "Upper Assiniboine Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 68,
+          "name": "Upper Assiniboine Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 69,
+          "name": "Spur Woods Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 70,
+          "name": "Riverside Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 71,
+          "name": "Spruce Woods Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 72,
+          "name": "Upper Assiniboine Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 73,
+          "name": "Sharpewood Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 74,
+          "name": "John T. Williams Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 75,
+          "name": "Tiger Hills Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 76,
+          "name": "Whitemud Watershed Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 77,
+          "name": "Edward A.Poyser Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 78,
+          "name": "Pembina Valley Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 79,
+          "name": "Steeprock Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 80,
+          "name": "Basket Lake Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 81,
+          "name": "Bernice Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 82,
+          "name": "Pembina Valley Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 83,
+          "name": "Pembina Valley Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 84,
+          "name": "Ebor Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 85,
+          "name": "Lee Lake Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 86,
+          "name": "Gerald W. Malaher Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 87,
+          "name": "Grahamdale Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 88,
+          "name": "Gypsumville Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 89,
+          "name": "Whitemud Watershed Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 90,
+          "name": "Whitemud Watershed Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 91,
+          "name": "Whitemud Watershed Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 92,
+          "name": "Whitemud Watershed Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 93,
+          "name": "Whitemud Watershed Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 94,
+          "name": "Parkland Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 95,
+          "name": "Parkland Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 96,
+          "name": "Whitemud Watershed Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 97,
+          "name": "Whitemud Watershed Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 98,
+          "name": "Whitemud Watershed Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 99,
+          "name": "Upper Assiniboine Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 100,
+          "name": "Wakopa Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 101,
+          "name": "Pembina Valley Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 102,
+          "name": "Pembina Valley Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 103,
+          "name": "Saskeram Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 104,
+          "name": "Whitemouth Bog Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 105,
+          "name": "Tiger Hills Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 106,
+          "name": "Ewonchuk Wildlife Managment Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 108,
+          "name": "Dr. Frank Baldwin Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 109,
+          "name": "Upper Assiniboine Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 110,
+          "name": "Brandon Hills Wildlife Management Area",
+          "statedAs": "No person shall possess a firearm, unless the person is hunting big game or game birds under the authority of a licence issued under The Wildlife Act",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 111,
+          "name": "Skylake Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 112,
+          "name": "Alonsa Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 113,
+          "name": "Broad Valley Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 114,
+          "name": "Cayer Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 115,
+          "name": "Churchill Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 116,
+          "name": "Kaskatamagan Wildlife Management Area",
+          "statedAs": "No licenced caribou hunting between August 25 - September 30",
+          "tokens": [
+            "caribou"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 117,
+          "name": "Lee River Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 118,
+          "name": "Little Birch Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 119,
+          "name": "Mantagao Lake Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 120,
+          "name": "Mars Hill Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 121,
+          "name": "Marshy Point Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 122,
+          "name": "Narcisse Wildlife Management Area",
+          "statedAs": "In Township 20, Range 1 West and being the west half of Section 22, no person shall hunt, take, kill, capture or possess a garter snake",
+          "tokens": [
+            "garter_snake"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 123,
+          "name": "Observation Point Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 124,
+          "name": "Onanole Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 125,
+          "name": "Red Deer Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 126,
+          "name": "David G. Tomasson Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 127,
+          "name": "Whitewater Lake Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 128,
+          "name": "Roy Greer Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 129,
+          "name": "Little Saskatchewan River Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 130,
+          "name": "Deerwood Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 131,
+          "name": "Donald W. Orchard Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 134,
+          "name": "Delta Marsh Wildlife Management Area",
+          "statedAs": "",
+          "tokens": [],
+          "unclassified": [],
+          "specialIds": []
+        }
+      ]
+    }
+  ]
+}

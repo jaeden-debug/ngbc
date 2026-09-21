@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  cellText, compareAreas, consolidationVersion, cwdAreasFromPage, expandAreaList, mentionedAreas, parseBirdLimit,
+  cellText, classifyRestriction, compareAreas, consolidationVersion, cwdAreasFromPage, expandAreaList, mentionedAreas, parseBirdLimit,
   parseEquipment, parseGeography, parseSeasonCell, requireProvision, scheduleParts, scheduleTable, section10_3,
 } from "./manitoba-source.mjs";
 
@@ -154,4 +154,22 @@ test("the CWD page's list of mandatory areas is read exactly or not at all", () 
 
 test("cell text keeps line breaks and drops markup", () => {
   assert.deepEqual(cellText("GBHZ&nbsp;3 &amp;&nbsp;4<br>(excluding CFB Shilo)"), { text: "GBHZ 3 & 4\n(excluding CFB Shilo)", footnotes: [] });
+});
+
+test("published land restrictions become explicit tokens, and anything unread is kept as unread", () => {
+  assert.deepEqual(classifyRestriction("No person shall hunt or kill a moose, a black bear, or a deer"), { tokens: ["black_bear", "deer", "moose"], unclassified: [] });
+  assert.deepEqual(
+    classifyRestriction("No person shall hunt, take, kill, capture, retrieve or possess a game bird, or possess a loaded firearm<br>No person shall hunt or kill a deer"),
+    { tokens: ["deer", "firearm", "game_bird"], unclassified: [] },
+  );
+  // The Macdonald part of GHA 38 allows white-tailed deer: the token must say so.
+  assert.deepEqual(
+    classifyRestriction("No person shall hunt, trap, shoot, or kill an upland game bird, a wild turkey, a fur bearing animal, or a big game animal other than white-tailed deer").tokens,
+    ["big_game_except_white_tailed_deer", "furbearer", "upland_game_bird", "wild_turkey"],
+  );
+  assert.deepEqual(classifyRestriction("Hunting is prohibited <br> No person shall: <br> -hunt or kill a game bird or big game animal,").tokens, ["all", "big_game", "game_bird"]);
+  assert.deepEqual(classifyRestriction("").tokens, []);
+  const unknown = classifyRestriction("Hunters must register at the gate before entering.");
+  assert.deepEqual(unknown.tokens, []);
+  assert.deepEqual(unknown.unclassified, ["Hunters must register at the gate before entering."]);
 });

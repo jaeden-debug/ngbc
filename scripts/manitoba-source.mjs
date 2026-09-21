@@ -534,6 +534,138 @@ export function cwdAreasFromPage(html) {
   return { areas, statement: `By law, licenced hunters are required to submit biological samples ${statement[1]}.` };
 }
 
+/* ── Restrictions on overlapping land ───────────────────────────────────── */
+
+/**
+ * What a published land restriction affects, as explicit tokens.
+ *
+ * Manitoba's wildlife-lands and lands-closed layers carry the authority's own
+ * restriction text for each refuge, WMA, park and closed area. Each sentence is
+ * matched against a closed list of the forms it is written in. A sentence that
+ * matches none is returned as UNCLASSIFIED, and a restriction with anything
+ * unclassified affects every species — the conservative reading, because an
+ * unread restriction may be the one that closes the hunt.
+ *
+ * Tokens name what is prohibited ("upland_game_bird", "deer", "all") or how
+ * ("firearm", "centrefire_rifle"). Which tokens reach a species is the
+ * vocabulary's decision, not this parser's.
+ */
+const CLASS_WORDS = [
+  [/^(?:any )?wildlife$/, "wildlife"],
+  [/^an? upland game bird$/, "upland_game_bird"],
+  [/^an? game bird$/, "game_bird"],
+  [/^an? wild turkey$/, "wild_turkey"],
+  [/^an? migratory (?:game )?bird$|^migratory game birds$|^any species of goose$|^waterfowl$/, "migratory_game_bird"],
+  [/^(?:an? )?big game animal other than white-tailed deer$/, "big_game_except_white_tailed_deer"],
+  [/^(?:an? )?big game animal$/, "big_game"],
+  [/^an? fur ?bearing animal$/, "furbearer"],
+  [/^an? moose$/, "moose"],
+  [/^an? black bear$/, "black_bear"],
+  [/^an? deer$|^deer$/, "deer"],
+  [/^elk$/, "elk"],
+  [/^upland game bird$/, "upland_game_bird"],
+  [/^wild turkey$/, "wild_turkey"],
+  [/^black bear$/, "black_bear"],
+  [/^an? muskrat$/, "muskrat"],
+  [/^an? garter snake$/, "garter_snake"],
+];
+
+function classesIn(list) {
+  const items = list
+    .replace(/,? as per the Manitoba Wildlife Act\.?$/i, "")
+    .replace(/ (?:in|within) (?:Riding Mountain National Park|Wapusk National Park|Birds Hill Provincial Park|Beaudry Provincial Park)\b.*$/i, "")
+    .replace(/, except a furbearing animal or gray \(timber\) wolf by trapping$/i, "")
+    .split(/,\s*(?:or |and )?|\s+or\s+|\s+and\s+/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+  const tokens = [];
+  for (const item of items) {
+    const match = CLASS_WORDS.find(([pattern]) => pattern.test(item));
+    if (!match) return null;
+    tokens.push(match[1]);
+  }
+  return tokens.length ? tokens : null;
+}
+
+/** Sentences that restrict something other than hunting: recorded, never a hunting effect. */
+const NOT_ABOUT_HUNTING = [
+  /^national parks have special regulations/i,
+  /^for more information, contact/i,
+  /^camp during/i,
+  /^bring or allow an animal/i,
+  /^no person shall engage in angling/i,
+  /^no person shall operate an off-road vehicle/i,
+  /^no person, except the lawful occupant of the land which constitutes the refuge, shall use a vehicle/i,
+  /^trapping:$/i,
+  /^no person shall:$/i,
+];
+
+function classifySentence(raw) {
+  const sentence = raw.replace(/^-/, "").replace(/[,;]?\s*(?:or)?$/i, "").trim();
+  if (NOT_ABOUT_HUNTING.some((pattern) => pattern.test(sentence))) return { tokens: [] };
+  let match;
+  if (/^hunting is prohibited$/i.test(sentence)) return { tokens: ["all"] };
+  /* Whether an order is in effect is not published with the layer, so being in
+     the area may itself be prohibited: every hunt there is affected. */
+  if (/^no person shall enter or be in a special conservation area during the period when an order or notice of closure is in effect$/i.test(sentence)) {
+    return { tokens: ["entry_closure_order"] };
+  }
+  if (/ is closed to all hunting$/i.test(sentence)) return { tokens: ["all"] };
+  if ((match = /^CFB Shilo is excluded from (.+?) hunting seasons in GHA \d+[A-Z]?/i.exec(sentence))) {
+    const tokens = classesIn(match[1]);
+    return tokens ? { tokens } : { unclassified: raw };
+  }
+  if ((match = /^area is excluded from the GHA [\dA-Z ,and]+ (?:fall )?(?:archery and )?(?:draw general \(rifle\) )?(moose|elk) season$/i.exec(sentence))) {
+    return { tokens: [match[1].toLowerCase()] };
+  }
+  if ((match = /^no licenced (elk|caribou) hunting\b/i.exec(sentence))) return { tokens: [match[1].toLowerCase()] };
+  if (/^resident draw elk licences may only be used/i.test(sentence)) return { tokens: ["elk"] };
+  if (/^no person shall hunt with a rifle requiring a centrefire cartridge$/i.test(sentence)) return { tokens: ["centrefire_rifle"] };
+  if ((match = /^no person shall discharge a firearm or bow while hunting (.+)$/i.exec(sentence))) {
+    const tokens = classesIn(match[1]);
+    return tokens ? { tokens } : { unclassified: raw };
+  }
+  if (/^(?:no person shall )?possess a firearm, unless the person is in a\s+vehicle on a developed road/i.test(sentence)) return { tokens: ["firearm"] };
+  if (/^no person shall possess a firearm, unless the person is hunting big game or game birds under the authority of a licence/i.test(sentence)) {
+    return { tokens: [] };
+  }
+  if (/^a person may only possess a loaded firearm if they are trapping fur bearing animals or hunting big game under the authority of a licence/i.test(sentence)) {
+    return { tokens: ["firearm_unless_big_game_or_trapping"] };
+  }
+  if ((match = /^no person shall hunt, take, kill, capture, retrieve or possess (.+?), or possess(?: or discharge)? a loaded firearm$/i.exec(sentence))) {
+    const tokens = classesIn(match[1]);
+    return tokens ? { tokens: [...tokens, "firearm"] } : { unclassified: raw };
+  }
+  if ((match = /^(?:no person shall )?(?:hunt|trap)(?:(?:,| or)\s*(?:take|kill|capture|retrieve|possess|trap|shoot|or))*(?:,? or)? (?:kill|shoot|possess|capture) (.+)$/i.exec(sentence)) ||
+      (match = /^(?:no person shall )?hunt or kill (.+)$/i.exec(sentence)) ||
+      (match = /^(?:no person shall )?trap (.+)$/i.exec(sentence)) ||
+      (match = /^in township \d+, range \d+ (?:east|west) and being [^,]+, no person shall hunt, take, kill, capture or possess (.+)$/i.exec(sentence))) {
+    const tokens = classesIn(match[1]);
+    return tokens ? { tokens } : { unclassified: raw };
+  }
+  if ((match = /^no person shall trap or shoot (.+)$/i.exec(sentence))) {
+    const tokens = classesIn(match[1]);
+    return tokens ? { tokens } : { unclassified: raw };
+  }
+  return { unclassified: raw };
+}
+
+export function classifyRestriction(text) {
+  const sentences = decodeEntities(String(text ?? ""))
+    .split(/<br\s*\/?>|\n/i)
+    .flatMap((line) => line.replace(/<[^>]+>/g, "").split(/(?<=\.)\s+(?=[A-Z])/))
+    .map((line) => line.replace(/\s+/g, " ").trim())
+    .filter(Boolean);
+  const tokens = new Set();
+  const unclassified = [];
+  for (const sentence of sentences) {
+    const result = classifySentence(sentence.replace(/\.$/, ""));
+    if (result.unclassified) unclassified.push(sentence);
+    for (const token of result.tokens ?? []) tokens.add(token);
+  }
+  return { tokens: [...tokens].sort(), unclassified };
+}
+
 /** Game bird hunting zones, M.R. 220/86 s. 1.1, checked sentence by sentence. */
 export function gameBirdZones(body) {
   const text = body.replace(/\s+/g, " ");

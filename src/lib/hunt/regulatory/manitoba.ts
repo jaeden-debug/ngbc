@@ -1,5 +1,7 @@
 import type { CanonicalId, IsoDate, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/ca-mb-2026.json" with { type: "json" };
+import overlaysJson from "../../../../content/regulatory/ca-mb-overlays.json" with { type: "json" };
+import type { OverlayCatalogue } from "../overlays.ts";
 import {
   conditionalCoverage, evaluateConditional,
   type ConditionalBundle, type ConditionalEvaluation, type ConditionalInput, type ConditionalVocabulary,
@@ -142,6 +144,30 @@ export const MANITOBA_VOCABULARY: ConditionalVocabulary = {
     return value;
   },
 };
+
+/* ── Overlapping land ───────────────────────────────────────────────────── */
+
+/** Refuges, special conservation areas, WMAs and lands closed to hunting. */
+export const MANITOBA_OVERLAYS = overlaysJson as unknown as OverlayCatalogue;
+
+/**
+ * Which restriction tokens reach a species. "firearm" reaches both species:
+ * a grouse hunter and most deer hunters carry one, and the conservative reading
+ * of a firearm ban is that it affects the hunt. Mule deer, moose or elk tokens
+ * never reach white-tailed deer, and "big game other than white-tailed deer"
+ * — the Macdonald part of GHA 38 — deliberately does not either.
+ */
+const RESTRICTION_TOKENS: Record<string, readonly string[]> = {
+  "species:ruffed-grouse": ["all", "entry_closure_order", "wildlife", "game_bird", "upland_game_bird", "firearm", "firearm_unless_big_game_or_trapping"],
+  "species:spruce-grouse": ["all", "entry_closure_order", "wildlife", "game_bird", "upland_game_bird", "firearm", "firearm_unless_big_game_or_trapping"],
+  "species:sharp-tailed-grouse": ["all", "entry_closure_order", "wildlife", "game_bird", "upland_game_bird", "firearm", "firearm_unless_big_game_or_trapping"],
+  "species:white-tailed-deer": ["all", "entry_closure_order", "wildlife", "big_game", "deer", "firearm", "centrefire_rifle"],
+};
+
+export function restrictionTokensFor(speciesId: string): readonly string[] {
+  // A species with no declared tokens is reached by everything: never silently by nothing.
+  return RESTRICTION_TOKENS[speciesId] ?? ["*"];
+}
 
 /* ── Evaluation ─────────────────────────────────────────────────────────── */
 

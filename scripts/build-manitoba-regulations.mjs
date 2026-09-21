@@ -33,7 +33,7 @@ import { anchorToLicenceYear } from "../src/lib/hunt/regulatory/season.ts";
 import { diffBundles, formatBundleDiff, readPreviousBundle, retrievedAtFor, jurisdictionToday } from "./ontario-source.mjs";
 import {
   GHA38_MACDONALD, MANITOBA_TIME_ZONE, NAMED_GEOGRAPHIES,
-  compareAreas, consolidationVersion, cwdAreasFromPage, decodeEntities, definedGameHuntingAreas,
+  classifyRestriction, compareAreas, consolidationVersion, cwdAreasFromPage, decodeEntities, definedGameHuntingAreas,
   fetchBytes, fetchJson, fetchText, gameBirdZones, lawBody, mentionedAreas, parseBirdLimit,
   parseEquipment, parseGeography, parseSeasonCell, requireProvision, scheduleParts, scheduleTable,
   section10_3, sha256,
@@ -42,6 +42,7 @@ import {
 const OUTPUT = "content/regulatory/ca-mb-2026.json";
 const CERTIFIED_UNITS_OUTPUT = "content/regulatory/ca-mb-certified-units.json";
 const CROSSCHECK = "content/regulatory/sources/ca-mb-hunting-guide-2026-crosscheck.json";
+const OVERLAYS_OUTPUT = "content/regulatory/ca-mb-overlays.json";
 
 const ARCGIS = "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services";
 const URLS = {
@@ -55,8 +56,22 @@ const URLS = {
   cwdLayer: `${ARCGIS}/mandatory_(2)/FeatureServer/0`,
   closedLands: `${ARCGIS}/Lands_Closed_to_Hunting/FeatureServer/0`,
   refuges: `${ARCGIS}/Manitoba_Wildlife_Lands/FeatureServer/0`,
+  scas: `${ARCGIS}/Manitoba_Wildlife_Lands/FeatureServer/1`,
   wmas: `${ARCGIS}/Manitoba_Wildlife_Lands/FeatureServer/2`,
 };
+
+/**
+ * Land whose own published restrictions can close or limit a hunt at a point,
+ * whatever the season table says: refuges, special conservation areas, WMAs and
+ * lands closed to hunting. Each layer's restriction text is classified here, at
+ * build time, into a reviewed catalogue; at run time a feature is only looked up.
+ */
+const OVERLAY_LAYERS = [
+  { key: "closed", url: URLS.closedLands, nameField: "Name", textField: "Restric", regulationField: "Reg", sourceId: "source:ca-mb-lands-closed-to-hunting-service" },
+  { key: "refuges", url: URLS.refuges, nameField: "NAME", textField: "HUNTING_RESTRICTIONS", typeField: "TYPE", sourceId: "source:ca-mb-wildlife-lands-service" },
+  { key: "scas", url: URLS.scas, nameField: "NAME", textField: "RESTRICTIONS", sourceId: "source:ca-mb-wildlife-lands-service" },
+  { key: "wmas", url: URLS.wmas, nameField: "NAME_E", textField: "HUNTING_RESTRICTIONS", sourceId: "source:ca-mb-wildlife-lands-service" },
+];
 
 const SPECIES = {
   "ruffed grouse": "species:ruffed-grouse",
@@ -747,6 +762,46 @@ async function main() {
     }
   }
 
+  /* ── Overlapping land and its published restrictions ────────────────── */
+
+  const specialMatches = [
+    { id: NAMED_GEOGRAPHIES["CFB Shilo"], layer: "closed", name: "Canadian Forces Base Shilo" },
+    { id: GHA38_MACDONALD, layer: "closed", name: "Portion of GHA 38 in RM of MacDonald" },
+    { id: NAMED_GEOGRAPHIES["Whiteshell Game Bird Refuge"], layer: "refuges", name: "Whiteshell", type: "Game Bird Refuge" },
+  ];
+  const overlayLayers = [];
+  for (const layer of OVERLAY_LAYERS) {
+    const fields = ["OBJECTID", layer.nameField, layer.textField, layer.regulationField, layer.typeField].filter(Boolean);
+    const payload = await arcgisQuery(layer.url, { where: "1=1", outFields: fields.join(","), returnGeometry: "false", orderByFields: "OBJECTID" });
+    const features = (payload.features ?? []).map(({ attributes }) => {
+      const statedAs = decodeEntities(String(attributes[layer.textField] ?? "")).replace(/<br\s*\/?>/gi, " ").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+      const classified = classifyRestriction(attributes[layer.textField] ?? "");
+      const name = String(attributes[layer.nameField] ?? "").trim();
+      const type = layer.typeField ? String(attributes[layer.typeField] ?? "").trim() : undefined;
+      return {
+        objectId: attributes.OBJECTID,
+        name,
+        ...(type ? { type } : {}),
+        statedAs,
+        ...(layer.regulationField && attributes[layer.regulationField] ? { regulation: String(attributes[layer.regulationField]).trim() } : {}),
+        tokens: classified.tokens,
+        unclassified: classified.unclassified,
+        specialIds: specialMatches.filter((match) => match.layer === layer.key && match.name === name && (!match.type || match.type === type)).map((match) => match.id),
+      };
+    });
+    if (!features.length) throw new Error(`Overlay layer ${layer.key} returned no features`);
+    overlayLayers.push({ key: layer.key, url: layer.url, sourceId: layer.sourceId, featureCount: features.length, contentHash: sha256(JSON.stringify(features)), features });
+  }
+  for (const match of specialMatches) {
+    const found = overlayLayers.find((layer) => layer.key === match.layer).features.filter((feature) => feature.specialIds.includes(match.id));
+    if (!found.length) throw new Error(`No overlay feature found for ${match.id} ("${match.name}")`);
+  }
+  const overlayCatalogue = {
+    jurisdictionId: "jurisdiction:ca-mb",
+    purpose: "Published restrictions on land that can close or limit a hunt at a point. Classified at build time; a feature that is not in this catalogue, or has changed, is treated as a restriction North Ground has not certified.",
+    layers: overlayLayers,
+  };
+
   /* ── Sources ────────────────────────────────────────────────────────── */
 
   const statusHash = (...parts) => sha256(parts.join("\n\n"));
@@ -806,12 +861,12 @@ async function main() {
     {
       id: "source:ca-mb-lands-closed-to-hunting-service", hierarchy: "OFFICIAL_GIS", controlling: false,
       authority: "Government of Manitoba", title: "Lands Closed to Hunting in Manitoba feature layer", url: URLS.closedLands,
-      version: "feature layer", contentHash: statusHash(JSON.stringify([cfbShilo, macdonald])), conditions: [],
+      version: "feature layer", contentHash: statusHash(JSON.stringify([cfbShilo, macdonald]), ...overlayLayers.filter((layer) => layer.sourceId === "source:ca-mb-lands-closed-to-hunting-service").map((layer) => layer.contentHash)), conditions: [],
     },
     {
       id: "source:ca-mb-wildlife-lands-service", hierarchy: "OFFICIAL_GIS", controlling: false,
       authority: "Government of Manitoba", title: "Manitoba Wildlife Lands Boundaries feature layer", url: URLS.refuges,
-      version: "feature layer", contentHash: statusHash(JSON.stringify([whiteshell, oakHammockMarsh])), conditions: [],
+      version: "feature layer", contentHash: statusHash(JSON.stringify([whiteshell, oakHammockMarsh]), ...overlayLayers.filter((layer) => layer.sourceId === "source:ca-mb-wildlife-lands-service").map((layer) => layer.contentHash)), conditions: [],
     },
   ];
 
@@ -887,6 +942,7 @@ async function main() {
   }
 
   writeFileSync(OUTPUT, `${JSON.stringify(bundle, null, 2)}\n`);
+  writeFileSync(OVERLAYS_OUTPUT, `${JSON.stringify(overlayCatalogue, null, 2)}\n`);
   writeFileSync(CERTIFIED_UNITS_OUTPUT, `${JSON.stringify(certifiedUnits, null, 2)}\n`);
 
   console.log(`Wrote ${OUTPUT}`);

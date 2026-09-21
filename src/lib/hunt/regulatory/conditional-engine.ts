@@ -100,7 +100,23 @@ export interface ConditionalBundle extends GeographyData {
   sourceVersion: string;
   retrievedAt: string;
   certifiedPeriod: { from: string; to: string; reason?: string };
-  absence: { meaning: "CLOSED" | "UNKNOWN"; statedAs?: string; section?: string; sourceId?: string; explanation?: string };
+  /**
+   * What silence means, as the law says it. `meaning` covers a place no rule
+   * names for the species at all. `excludedCombination` covers a place the
+   * rules DO name for the species, where no rule fits the hunter's combination
+   * (a rifle where only archery is published). They can differ: Alberta's
+   * tables are complete for every unit they name, so an excluded combination is
+   * closed there, while an unnamed unit is not something its guide speaks to.
+   * Defaults to `meaning`.
+   */
+  absence: {
+    meaning: "CLOSED" | "UNKNOWN";
+    excludedCombination?: "CLOSED" | "UNKNOWN";
+    statedAs?: string;
+    section?: string;
+    sourceId?: string;
+    explanation?: string;
+  };
   sources: Array<{ id: string; conditions?: ConditionalCondition[] }>;
   groups: Array<{ id: string; officialSpec: string; zoneIds: string[]; partialZoneIds?: string[] }>;
   rules: ConditionalRule[];
@@ -224,7 +240,7 @@ interface WorldOutcome {
   absent: boolean;
 }
 
-function settle(rules: ConditionalRule[], date: string, absence: ConditionalBundle["absence"]): WorldOutcome {
+function settle(rules: ConditionalRule[], date: string, emptyMeaning: "CLOSED" | "UNKNOWN"): WorldOutcome {
   const open = rules.filter((rule) => !rule.declaredNoSeason);
   const inSeason = open.filter((rule) => containing(rule, date));
   if (inSeason.length) {
@@ -248,8 +264,7 @@ function settle(rules: ConditionalRule[], date: string, absence: ConditionalBund
   }
   if (!rules.length) {
     // What "no rule here" means is the law's call, recorded in the bundle.
-    const status: RegulatoryStatus = absence.meaning === "CLOSED" ? "CLOSED" : "UNKNOWN";
-    return { status, coarse: status, fine: status, inSeason: [], applicable: [], absent: true };
+    return { status: emptyMeaning, coarse: emptyMeaning, fine: emptyMeaning, inSeason: [], applicable: [], absent: true };
   }
   return { status: "CLOSED", coarse: "CLOSED", fine: "CLOSED", inSeason: [], applicable: rules, absent: false };
 }
@@ -284,9 +299,14 @@ function outcomeFor(
   unknowns: Array<{ kind: string; statedAs: string }>,
   context: OutcomeContext,
 ): Outcome {
-  const chosen = applicable(rules, assignment, context.vocabulary);
-  const perWorld = worlds.map((world) =>
-    settle(chosen.filter((rule) => appliesInWorld(rule, context.groups, context.place, world)), context.date, context.absence));
+  const perWorld = worlds.map((world) => {
+    const here = rules.filter((rule) => appliesInWorld(rule, context.groups, context.place, world));
+    /* No rule for the species here at all is the law's silence about the place;
+       rules here that do not fit this combination are its silence about the
+       combination. The bundle says what each means. */
+    const emptyMeaning = here.length ? context.absence.excludedCombination ?? context.absence.meaning : context.absence.meaning;
+    return settle(applicable(here, assignment, context.vocabulary), context.date, emptyMeaning);
+  });
 
   if (new Set(perWorld.map((outcome) => outcome.coarse)).size === 1) {
     const fine = [...new Set(perWorld.map((outcome) => outcome.fine))].sort().join(" or ");

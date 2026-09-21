@@ -3,7 +3,7 @@
   "jurisdictionId": "jurisdiction:ca-mb",
   "sourceVersion": "M.R. 46/2026",
   "retrievedAt": "2026-09-20",
-  "contentHash": "sha256:432720c85b81a668168b552aeadf139f23195bb091ef5e95b8346d59167cd362",
+  "contentHash": "sha256:786f9d1b4206fe97c6f248239cbbc64f23384be1759911a0944ec0e6bad5c3f4",
   "licenceYear": {
     "from": "2026-04-01",
     "to": "2027-03-31",
@@ -1575,7 +1575,7 @@
       "title": "Lands Closed to Hunting in Manitoba feature layer",
       "url": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/Lands_Closed_to_Hunting/FeatureServer/0",
       "version": "feature layer",
-      "contentHash": "sha256:1e27af4a376b3a8a82862c5774eb8af8bebf1be94a039ab69d615feb537bb954",
+      "contentHash": "sha256:44ee5982aec1055e6241565cb4cb5a38e79a6380d3160fb3302d2aa6dcc272b2",
       "conditions": [],
       "retrievedAt": "2026-09-20"
     },
@@ -1587,7 +1587,7 @@
       "title": "Manitoba Wildlife Lands Boundaries feature layer",
       "url": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/Manitoba_Wildlife_Lands/FeatureServer/0",
       "version": "feature layer",
-      "contentHash": "sha256:a9fdb894e81b1b5366d6730139fdc077697ecbb0644127e215e03d506b917c7e",
+      "contentHash": "sha256:0617039f6a9c999cb7a7799918a49c3d54898732b624c1f92916891ef406c470",
       "conditions": [],
       "retrievedAt": "2026-09-20"
     }
