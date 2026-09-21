@@ -1,4 +1,4 @@
-import { layerById, ZONE_LAYERS, zoneCoverage, type ZoneCoverageStatus, type ZoneLayer } from "./zone-layers.ts";
+import { designationOfRaw, layerById, ZONE_LAYERS, zoneCoverage, type ZoneCoverageStatus, type ZoneLayer } from "./zone-layers.ts";
 
 /**
  * Server-side delivery of official hunting-zone geometry for the map.
@@ -98,19 +98,6 @@ interface FeatureCollection {
   features: Array<{ properties: Record<string, unknown>; geometry: PolygonGeometry | null }>;
 }
 
-/**
- * The authority's designation for a feature, or null when the feature is not a
- * zone (Riding Mountain's undesignated polygon, Elk Island's blank record).
- * A layer whose service stores designations in its own encoding declares how to
- * read them; otherwise a trimmed string or a number is the designation.
- */
-function designationFor(layer: ZoneLayer, raw: unknown): string | null {
-  const read = (layer as ZoneLayer & { designationOf?: (value: unknown) => string | null }).designationOf;
-  if (read) return read(raw);
-  const name = typeof raw === "string" ? raw.trim() : typeof raw === "number" ? String(raw) : "";
-  return name || null;
-}
-
 function ringsOf(geometry: PolygonGeometry): Position[][] {
   return geometry.type === "Polygon" ? geometry.coordinates : geometry.coordinates.flat();
 }
@@ -183,7 +170,10 @@ export async function fetchLayerGeometry(
 
     const features: ZoneFeature[] = [];
     for (const feature of payload.features) {
-      const name = designationFor(layer, feature.properties?.[layer.nameField]);
+      /* The authority's designation, read in the layer's own encoding (Alberta
+         stores WMU 102 as "00102"); null is a feature that is not a zone, such
+         as Riding Mountain's undesignated polygon or Elk Island's blank record. */
+      const name = designationOfRaw(layer, feature.properties?.[layer.nameField]);
       const geometry = feature.geometry;
       if (!name || !geometry || (geometry.type !== "Polygon" && geometry.type !== "MultiPolygon")) continue;
       const rings = ringsOf(geometry).filter((ring) => ring.length >= 4);
