@@ -1,0 +1,331 @@
+{
+  "jurisdiction": "jurisdiction:ca-qc",
+  "writtenOn": "2026-09-21",
+  "method": "Every expectation was written from the ministry's own French season pages (the rows are quoted in each case's `law`) and its SmartFaunePub layers, read before any case was run against North Ground. A case that disagrees is a finding, never an expectation to edit; a revision records the original expectation and the evidence.",
+  "viewports": [
+    {
+      "label": "All of Québec (zoom 5)",
+      "bounds": "-80,44.9,-57,62.7",
+      "zoom": 5
+    },
+    {
+      "label": "Southern Québec (zoom 7)",
+      "bounds": "-80,45,-66,50",
+      "zoom": 7
+    },
+    {
+      "label": "Outaouais (zoom 9)",
+      "bounds": "-77.5,45.5,-74.5,47",
+      "zoom": 9
+    }
+  ],
+  "cases": [
+    {
+      "id": "maniwaki-moose-asks",
+      "place": "Maniwaki (the strategic fixture)",
+      "latitude": 46.3769,
+      "longitude": -75.9722,
+      "speciesId": "species:moose",
+      "date": "2026-09-27",
+      "expect": {
+        "gha": "10O",
+        "completeness": "NEEDS_INPUT",
+        "required": "HUNT_METHOD"
+      },
+      "law": "Moose page, « Périodes de chasse à l’arbalète et à l’arc »: « 1, 2, 10 ouest, 11 ouest, 15 » Du 26 septembre au 4 octobre 2026; firearms table: « 10 ouest, 11 ouest, 15 » Du 10 octobre au 18 octobre 2026. On 27 September a bow is in season and a rifle is not, so the answer depends on the implement."
+    },
+    {
+      "id": "maniwaki-moose-bow",
+      "place": "Maniwaki",
+      "latitude": 46.3769,
+      "longitude": -75.9722,
+      "speciesId": "species:moose",
+      "date": "2026-09-27",
+      "answers": {
+        "HUNT_METHOD": "BOW"
+      },
+      "expect": {
+        "gha": "10O",
+        "status": "CONDITIONAL",
+        "mentions": [
+          "Orignal avec bois"
+        ]
+      },
+      "law": "The bow and crossbow row for 10 ouest: « Orignal avec bois », Du 26 septembre au 4 octobre 2026."
+    },
+    {
+      "id": "maniwaki-moose-rifle-early",
+      "place": "Maniwaki",
+      "latitude": 46.3769,
+      "longitude": -75.9722,
+      "speciesId": "species:moose",
+      "date": "2026-09-27",
+      "answers": {
+        "HUNT_METHOD": "RIFLE"
+      },
+      "expect": {
+        "gha": "10O",
+        "status": "CLOSED"
+      },
+      "law": "The only rows naming 10 ouest are the bow/crossbow season (26 Sep–4 Oct) and the firearms season (10–18 Oct). The page states « Les dates de chasse sont établies en fonction de la zone où la chasse est permise et du type d'arme utilisé »: no row permits a rifle on 27 September."
+    },
+    {
+      "id": "maniwaki-moose-rifle-in-season",
+      "place": "Maniwaki",
+      "latitude": 46.3769,
+      "longitude": -75.9722,
+      "speciesId": "species:moose",
+      "date": "2026-10-12",
+      "answers": {
+        "HUNT_METHOD": "RIFLE"
+      },
+      "expect": {
+        "gha": "10O",
+        "status": "CONDITIONAL"
+      },
+      "law": "Firearms table, « 10 ouest, 11 ouest, 15 »: Du 10 octobre au 18 octobre 2026."
+    },
+    {
+      "id": "maniwaki-moose-december",
+      "place": "Maniwaki",
+      "latitude": 46.3769,
+      "longitude": -75.9722,
+      "speciesId": "species:moose",
+      "date": "2026-12-15",
+      "expect": {
+        "gha": "10O",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "No 10 ouest row covers 15 December for any implement, so no question can change the answer."
+    },
+    {
+      "id": "zone17-moose",
+      "place": "Zone 17",
+      "latitude": 49.6,
+      "longitude": -77.0,
+      "speciesId": "species:moose",
+      "date": "2026-10-01",
+      "expect": {
+        "gha": "17",
+        "status": "CLOSED",
+        "mentions": [
+          "La chasse sportive est interdite"
+        ]
+      },
+      "law": "« Maintien des restrictions dans la zone 17 »: « les activités de chasse à l'orignal dans la zone 17 seront limitées aux prélèvements des Autochtones pour la chasse de subsistance. La chasse sportive est interdite, et ce, jusqu’à nouvel ordre. »"
+    },
+    {
+      "id": "anticosti-moose",
+      "place": "Anticosti (zone 20)",
+      "latitude": 49.5,
+      "longitude": -63.0,
+      "speciesId": "species:moose",
+      "date": "2026-10-01",
+      "expect": {
+        "gha": "20",
+        "status": "UNKNOWN"
+      },
+      "law": "No moose table names zone 20. The pages do not speak to it, so North Ground does not either."
+    },
+    {
+      "id": "quebec-city-grouse",
+      "place": "Québec City (27O)",
+      "latitude": 46.8139,
+      "longitude": -71.208,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-10-01",
+      "expect": {
+        "gha": "27O",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "Small-game page, grouse: « 1, 2 (sauf l'Île Verte), … 26, 27, 28 » Armes à feu et à air comprimé, arbalète et arc, Du 19 septembre 2026 au 15 janvier 2027; the crossbow is prohibited only in zone 17, so every implement agrees and nothing is asked."
+    },
+    {
+      "id": "kuujjuaq-grouse-asks",
+      "place": "Kuujjuaq, Nunavik (23)",
+      "latitude": 58.1,
+      "longitude": -68.4,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-10-01",
+      "expect": {
+        "gha": "23",
+        "completeness": "NEEDS_INPUT",
+        "required": "HUNT_METHOD"
+      },
+      "law": "Grouse: « 19 sud, 22, 23, 24, 29 » Du 12 septembre 2026 au 15 janvier 2027, « L’utilisation de l’arbalète est interdite dans les zones 22, 23 et 24 », so the implement decides."
+    },
+    {
+      "id": "kuujjuaq-grouse-crossbow",
+      "place": "Kuujjuaq",
+      "latitude": 58.1,
+      "longitude": -68.4,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-10-01",
+      "answers": {
+        "HUNT_METHOD": "CROSSBOW"
+      },
+      "expect": {
+        "gha": "23",
+        "status": "CLOSED"
+      },
+      "law": "The crossbow is prohibited in zone 23 (same row)."
+    },
+    {
+      "id": "lac-philippe-moose-bow",
+      "place": "Lac Philippe, Gatineau Park (10O)",
+      "latitude": 45.6099,
+      "longitude": -76.0185,
+      "speciesId": "species:moose",
+      "date": "2026-09-27",
+      "answers": {
+        "HUNT_METHOD": "BOW"
+      },
+      "expect": {
+        "gha": "10O",
+        "status": "NEEDS_VERIFICATION",
+        "mentions": [
+          "Sanctuaire de chasse du parc de la Gatineau"
+        ]
+      },
+      "law": "The ministry's layer SmartFaunePub:Chasse_Interdite (« Territoires où toute activité de chasse est interdite ») contains this point: Sanctuaire de chasse du parc de la Gatineau. A zone season is never stated as the answer inside it."
+    },
+    {
+      "id": "jacques-cartier-grouse",
+      "place": "Parc national de la Jacques-Cartier (27O)",
+      "latitude": 47.3217,
+      "longitude": -71.3943,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-10-01",
+      "expect": {
+        "gha": "27O",
+        "status": "NEEDS_VERIFICATION",
+        "mentions": [
+          "Parc national de la Jacques-Cartier"
+        ]
+      },
+      "law": "Chasse_Interdite contains this point: Parc national de la Jacques-Cartier."
+    },
+    {
+      "id": "grenville-deer",
+      "place": "Grenville-sur-la-Rouge (09OZ, CWD zone)",
+      "latitude": 45.65,
+      "longitude": -74.6,
+      "speciesId": "species:white-tailed-deer",
+      "date": "2026-11-10",
+      "expect": {
+        "gha": "09OZ",
+        "status": "UNKNOWN"
+      },
+      "law": "The CWD enhanced surveillance zone is published as its own designation (09OZ), and no deer table names it; it never inherits zone 9's season."
+    },
+    {
+      "id": "harrington-moose-bow",
+      "place": "Harrington Harbour (19SE)",
+      "latitude": 50.5,
+      "longitude": -59.48,
+      "speciesId": "species:moose",
+      "date": "2026-09-08",
+      "answers": {
+        "HUNT_METHOD": "BOW"
+      },
+      "expect": {
+        "gha": "19SE",
+        "status": "NEEDS_VERIFICATION"
+      },
+      "law": "Bow/crossbow row « Partie est et partie ouest de 19 sud (sauf la partie nord-ouest), 29 », Du 5 septembre au 13 septembre 2026. Its first label elides a tail; its natural reading reaches 19SE, but the ministry has not confirmed it, so the date is unverifiable here rather than open or closed."
+    },
+    {
+      "id": "harrington-moose-rifle",
+      "place": "Harrington Harbour (19SE)",
+      "latitude": 50.5,
+      "longitude": -59.48,
+      "speciesId": "species:moose",
+      "date": "2026-09-25",
+      "answers": {
+        "HUNT_METHOD": "RIFLE"
+      },
+      "expect": {
+        "gha": "19SE",
+        "status": "CONDITIONAL"
+      },
+      "law": "Firearms table, « Partie est de 19 sud », « Orignal », Du 19 septembre au 1er novembre 2026."
+    },
+    {
+      "id": "sherbrooke-turkey-spring",
+      "place": "Zone 06S",
+      "latitude": 45.39437783,
+      "longitude": -72.05071819,
+      "speciesId": "species:wild-turkey",
+      "date": "2026-05-01",
+      "expect": {
+        "gha": "06S",
+        "status": "CONDITIONAL",
+        "mentions": [
+          "Dindon sauvage porteur"
+        ]
+      },
+      "law": "Turkey page: « 3, 4, 5, 6, 7, 8, 9, 10, 11, 26 et 27 », « Dindon sauvage porteur d’une barbe », Du 24 avril au 18 mai 2026. (Matched on « Dindon sauvage porteur »: the builder stores the class label with a straight apostrophe where the page prints ’, so the phrase avoids the apostrophe.)"
+    },
+    {
+      "id": "sherbrooke-turkey-july",
+      "place": "Zone 06S",
+      "latitude": 45.39437783,
+      "longitude": -72.05071819,
+      "speciesId": "species:wild-turkey",
+      "date": "2026-07-01",
+      "expect": {
+        "gha": "06S",
+        "status": "CLOSED"
+      },
+      "law": "Zone 6's turkey seasons are 24 April–18 May and 24–30 October 2026; 1 July is in neither."
+    },
+    {
+      "id": "zone19n-grouse",
+      "place": "Zone 19 Nord",
+      "latitude": 52.38076152,
+      "longitude": -62.50878603,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-10-01",
+      "expect": {
+        "gha": "19N",
+        "status": "UNKNOWN"
+      },
+      "law": "Grouse rows name « 19 sud », never 19 nord, and the ministry's closed-territories layer covers all of zone 19 Nord."
+    },
+    {
+      "id": "zone10e-deer-releve",
+      "place": "Zone 10E",
+      "latitude": 46.0408506,
+      "longitude": -75.22216761,
+      "speciesId": "species:white-tailed-deer",
+      "date": "2026-10-31",
+      "answers": {
+        "SEASON_TYPE": "RELEVE",
+        "HUNT_METHOD": "RIFLE"
+      },
+      "expect": {
+        "gha": "10E",
+        "status": "CONDITIONAL"
+      },
+      "law": "« Périodes de chasse réservée à la relève »: the row includes 10 est, Du 31 octobre au 1er novembre 2026."
+    },
+    {
+      "id": "zone10e-deer-rifle",
+      "place": "Zone 10E",
+      "latitude": 46.0408506,
+      "longitude": -75.22216761,
+      "speciesId": "species:white-tailed-deer",
+      "date": "2026-11-10",
+      "answers": {
+        "HUNT_METHOD": "RIFLE"
+      },
+      "expect": {
+        "gha": "10E",
+        "status": "CONDITIONAL"
+      },
+      "law": "Firearms table « … 10 est, 10 ouest … », « Cerf de Virginie avec bois », Du 7 novembre au 22 novembre 2026."
+    }
+  ]
+}
