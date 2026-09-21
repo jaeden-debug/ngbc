@@ -173,7 +173,9 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       "The published season tables name zones in words (\"10 West\", \"19 South\") while the GIS layer uses codes (10O, 19SE). That mapping is a legal interpretation, not a formatting detail, and must be settled by evidence the way Ontario's bare-number WMU groupings were.",
       "No regulatory bundle exists, so every Québec species query is UNKNOWN.",
       "Zones d'exploitation contrôlée (zecs), réserves fauniques and pourvoiries carry their own access rules that a zone-level season does not decide. Their boundaries are on the same GeoServer as SmartFaunePub:TFS; the Données Québec copy is CC-BY-NC-ND 4.0, so the licence under which they may be used needs settling before they are ingested.",
-      "Zone 17 moose hunting is reserved for Indigenous subsistence hunting. That is a distinct legal context, not a recreational season, and must never be presented as one.",
+      "Zone 17 moose hunting is reserved for Indigenous subsistence hunting under the James Bay and Northern Québec Agreement. Sport hunting there is closed. That is a treaty context, not a recreational season, and must never be presented as one.",
+      "The designations 08NZ, 09OZ and 10EZ are the enhanced surveillance zone (zone de surveillance rehaussée) for chronic wasting disease, covering 17 municipalities around the 2018 infected farm. No season table names them, and their antlerless-permit and registration obligations are published on the disease pages rather than the hunting pages. Those pages have not been read as a regulatory source, so a hunter inside a ZSR cannot yet be told they are in one.",
+      "Québec publishes one animal class per year inside a single cell — moose zone 13 firearms reads \"2026 Orignal avec bois / 2027 Orignal\". No field in the current rule schema carries a segment that changes between the two published years, so these rows cannot be encoded without flattening them.",
     ],
   },
   {
