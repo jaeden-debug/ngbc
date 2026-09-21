@@ -69,24 +69,59 @@ async function fetchPage(startIndex: number, fetcher: typeof fetch): Promise<Wfs
 }
 
 /**
- * The published part name, repaired only where the source mis-encoded it.
+ * The upper half of code page 850, as that code page itself defines it.
  *
- * `Partie_zon` arrives with broken accents in this layer — "Île" is delivered as
- * "×le" and "Beaupré" as "Beaupr". The neighbouring `Chasse_Interdite` layer on
- * the same server returns accents correctly, so this is a defect in this one
- * layer's attribute encoding rather than a service-wide problem.
- *
- * Only these exact known corruptions are repaired, and only to the ministry's own
- * published spelling. Anything else is passed through untouched: guessing at an
- * official French name would be worse than showing the authority's own bytes.
+ * Generated from the platform's own CP850 codec rather than transcribed, because
+ * a single wrong character here would silently rename a hunting zone.
  */
-const PART_NAME_REPAIRS: Array<[RegExp, string]> = [
-  [/×le/g, "Île"],
-  [/Seigneurie de Beaupr\b/g, "Seigneurie de Beaupré"],
-];
+const CP850_HIGH =
+  "ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜø£Ø×ƒáíóúñÑªº¿®¬½¼¡«»░▒▓│┤ÁÂÀ©╣║╗╝¢¥┐└┴┬├─┼ãÃ╚╔╩╦╠═╬¤ðÐÊËÈıÍÎ" +
+  "Ï┘┌█▄¦Ì▀ÓßÔÒõÕµþÞÚÛÙýÝ¯´\u00ad±‗¾¶§÷¸°¨·¹³²■\u00a0";
 
+/**
+ * A byte this layer could only have produced by mis-encoding, never by meaning it.
+ *
+ * C1 controls are not text, and a multiplication sign is not part of a French
+ * place name. Either one in a part name is the defect below; neither can appear
+ * in a name that arrived correctly.
+ */
+const MISENCODED = /[\u0080-\u009f\u00d7]/;
+
+/**
+ * The published part name, with this layer's encoding defect reversed.
+ *
+ * `Partie_zon` arrives as CP850 bytes decoded as Latin-1: the authority's "Île"
+ * reaches us as "×le" (CP850 0xD7) and "Beaupré" as "Beaupr\u0082" (CP850 0x82).
+ * The neighbouring `Chasse_Interdite` layer on the same server returns its
+ * accents correctly, so this is a defect in this one layer's attributes rather
+ * than a service-wide problem.
+ *
+ * The repair reads every byte back through CP850, which is what the ministry
+ * meant by it — not a list of phrase substitutions, which would fix the names
+ * that happen to exist today and quietly mangle the next one. A name is only put
+ * through it when it carries a byte the defect produces, so a correct name is
+ * returned untouched, including after the ministry fixes the layer.
+ */
 export function repairPartName(value: string): string {
-  return PART_NAME_REPAIRS.reduce((text, [pattern, replacement]) => text.replace(pattern, replacement), value);
+  if (!MISENCODED.test(value)) return value;
+  return [...value]
+    .map((character) => {
+      const code = character.codePointAt(0) ?? 0;
+      return code >= 0x80 && code <= 0xff ? CP850_HIGH[code - 0x80] : character;
+    })
+    .join("");
+}
+
+/**
+ * Today's date in the authority's own calendar.
+ *
+ * A UTC stamp reads a day ahead for anything retrieved after 20:00 in Quebec,
+ * which would put the provenance record a day off the day the source was
+ * actually read. The ministry publishes on Eastern time, so that is the clock
+ * this is dated against.
+ */
+function retrievalDate(): string {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "America/Toronto", dateStyle: "short" }).format(new Date());
 }
 
 function asMultiPolygonCoordinates(geometry: { type: string; coordinates: unknown }): unknown[] {
@@ -176,7 +211,7 @@ export function createQuebecZoneSource(fetcher: typeof fetch = fetch): ZoneLayer
 
       features.sort((left, right) => left.officialIdentifier.localeCompare(right.officialIdentifier, "fr-CA"));
 
-      return { features, sourceVersion: `retrieved-${new Date().toISOString().slice(0, 10)}` };
+      return { features, sourceVersion: `retrieved-${retrievalDate()}` };
     },
   };
 }

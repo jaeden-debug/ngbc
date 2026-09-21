@@ -153,9 +153,9 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
         "Still IN_DEVELOPMENT because nothing is ingested into PostGIS, parity-certified or served — the adapter " +
         "exists, the registry does not. " +
         "Two cautions for whoever ingests it: the season tables are written per PART (19N, 19SE, 19SO, 19SNO are " +
-        "four different seasons), so the part and not the number is the regulatory unit; and this layer mis-encodes " +
-        "accents in Partie_zon — \"Île\" arrives as \"×le\" — which the adapter repairs only for the two known cases " +
-        "and otherwise passes through untouched.",
+        "four different seasons), so the part and not the number is the regulatory unit; and this layer returns Partie_zon " +
+        "as CP850 bytes read as Latin-1 (\"Île\" arrives as \"×le\"), which the adapter reverses through the code " +
+        "page itself rather than by rewriting the phrases that happen to exist today.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",

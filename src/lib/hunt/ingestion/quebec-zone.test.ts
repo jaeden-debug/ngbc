@@ -85,16 +85,24 @@ test("canonical ids and names keep the authority's own designation and language"
   assert.equal(source.jurisdictionCanonicalId, "jurisdiction:ca-qc");
 });
 
-test("only the known source mis-encodings are repaired", () => {
-  // This layer delivers "Île" as "×le" and drops the accent from "Beaupré".
-  assert.equal(repairPartName("Ouest (×le)"), "Ouest (Île)");
-  assert.equal(repairPartName("Est (×le)"), "Est (Île)");
-  assert.equal(repairPartName("Est (Seigneurie de Beaupr)"), "Est (Seigneurie de Beaupré)");
-  // Anything else passes through untouched. Guessing at an official French name
-  // would be worse than showing exactly what the ministry published.
-  assert.equal(repairPartName("Nord ZSR"), "Nord ZSR");
-  assert.equal(repairPartName("Sud-Nord-Ouest"), "Sud-Nord-Ouest");
-  assert.equal(repairPartName("Nord (Montagne de Rigaud)"), "Nord (Montagne de Rigaud)");
+test("the layer's CP850 mis-encoding is reversed, not guessed at", () => {
+  /* Both of these are exactly what the service returns today, byte for byte:
+     "Île" as CP850 0xD7 read as Latin-1, "Beaupré" as CP850 0x82 read the same
+     way. A phrase-substitution repair got the second one wrong, leaving the
+     stray byte behind the accent it added. */
+  assert.equal(repairPartName("Ouest (\u00d7le)"), "Ouest (Île)");
+  assert.equal(repairPartName("Est (\u00d7le)"), "Est (Île)");
+  assert.equal(repairPartName("Est (Seigneurie de Beaupr\u0082)"), "Est (Seigneurie de Beaupré)");
+  assert.equal(repairPartName("Ouest (Seigneurie de Beaupr\u0082)"), "Ouest (Seigneurie de Beaupré)");
+});
+
+test("a part name that arrived correctly is returned untouched", () => {
+  /* The repair must not become a second defect once the ministry fixes the
+     layer, so a name carrying none of the mis-encoding's bytes is left alone —
+     accented or not. */
+  for (const name of ["Nord ZSR", "Sud-Nord-Ouest", "Nord (Montagne de Rigaud)", "", "Est (Île)", "Forêt-Noire"]) {
+    assert.equal(repairPartName(name), name);
+  }
 });
 
 test("features without a designation or geometry are dropped rather than guessed at", () => {
