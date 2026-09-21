@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import HuntBriefCard from "../../../../components/hunt-share/HuntBriefCard.tsx";
+import HuntBriefUnavailable from "../../../../components/hunt-share/HuntBriefUnavailable.tsx";
 import {
   buildHuntBriefMetadata,
   unavailableHuntBriefMetadata,
@@ -27,27 +28,20 @@ export default async function HuntBriefPage({ params }: Props) {
   const { shareId } = await params;
   const result = await loadHuntBrief(shareId);
 
+  // Normally unreachable for "missing" and "invalid_id": the proxy answers those
+  // with a fully server-rendered 404 before this page runs (see
+  // lib/hunt-share/route.ts). Kept for requests that bypass it, and for
+  // "invalid" — a stored brief that fails validation — which the proxy cannot
+  // see without fetching the whole snapshot.
   if (result.status === "missing" || result.status === "invalid_id" || result.status === "invalid") {
     notFound();
   }
 
   if (result.status === "unavailable" || result.status === "unsupported_version") {
     return (
-      <main className={styles.page}>
-        <div className={`${styles.shell} ${styles.unavailable}`}>
-          <p className={styles.brand}>
-            <Image src="/logo-mark.webp" alt="" width={820} height={862} sizes="26px" />
-            North Ground Hunt
-          </p>
-          <h1>Hunt Brief unavailable</h1>
-          <p>
-            {result.status === "unsupported_version"
-              ? "This link uses a Hunt Brief format that this version of North Ground cannot safely display."
-              : "Hunt Brief storage is temporarily unavailable. Try this link again later."}
-          </p>
-          <Link className={styles.action} href="/hunt">Check current Hunt</Link>
-        </div>
-      </main>
+      <HuntBriefUnavailable
+        reason={result.status === "unsupported_version" ? "unsupported_version" : "storage_unavailable"}
+      />
     );
   }
 

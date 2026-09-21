@@ -50,9 +50,21 @@ const PAGES = [
   // JavaScript. `dynamicParams = false` fixed it; this keeps it fixed.
   { path: "/hunting/species/not-a-real-species", name: "unknown species", status: 404, ssr: "Off the marked trail" },
   { path: "/this-route-does-not-exist", name: "unknown route", status: 404, ssr: "Off the marked trail" },
-  // Answers 200 "unavailable" without storage and 404 with it, so the status is
-  // not pinned. Its server-rendered body is a known gap when it 404s: see
-  // PROJECT-STATE. It is still checked for hydration either way.
+  // A missing Hunt Brief used to be the same empty 404: its IDs are dynamic, so
+  // `dynamicParams` was not available. The proxy now decides "missing" before
+  // the page renders and rewrites to a real 404 page. A malformed ID is decided
+  // without touching storage, so this exercises proxy, rewrite and page the
+  // same way in CI as in production.
+  {
+    path: "/hunt/share/bad",
+    name: "hunt brief (malformed id)",
+    status: 404,
+    ssr: "This Hunt Brief isn\u2019t available",
+  },
+  // A well-formed ID that names no brief answers 404 with storage and 200
+  // "temporarily unavailable" without it — correctly, since without storage
+  // nobody can tell whether it exists. So its status is not pinned; it is
+  // still checked for hydration either way.
   { path: "/hunt/share/definitely-not-a-real-brief", name: "hunt brief (missing)" },
 ];
 

@@ -19,6 +19,14 @@ export class HuntBriefStoreUnavailableError extends Error {
 export interface HuntBriefStore {
   create(brief: ShareHuntBrief): Promise<"created" | "exists">;
   get(shareId: string): Promise<unknown | null>;
+  /**
+   * Whether a brief is stored under this ID, without fetching the snapshot.
+   *
+   * Asked before a page renders, so a missing brief can be answered as a real
+   * 404 page instead of reaching `notFound()`. Throws when storage cannot be
+   * read — a caller must be able to tell "no such brief" from "cannot tell".
+   */
+  exists(shareId: string): Promise<boolean>;
 }
 
 export interface ShareCreationLimiter {
@@ -37,6 +45,10 @@ export class InMemoryHuntBriefStore implements HuntBriefStore {
   async get(shareId: string): Promise<unknown | null> {
     const value = this.values.get(shareId);
     return value === undefined ? null : structuredClone(value);
+  }
+
+  async exists(shareId: string): Promise<boolean> {
+    return this.values.has(shareId);
   }
 }
 
@@ -76,6 +88,18 @@ export class SupabaseHuntBriefStore implements HuntBriefStore {
       .maybeSingle();
     if (error) throw new HuntBriefStoreUnavailableError();
     return data?.snapshot ?? null;
+  }
+
+  async exists(shareId: string): Promise<boolean> {
+    // The ID column only. The snapshot is fetched by the page, for the briefs
+    // that exist; a missing brief now costs one indexed lookup and no render.
+    const { data, error } = await this.client
+      .from("hunt_brief_snapshots")
+      .select("public_share_id")
+      .eq("public_share_id", shareId)
+      .maybeSingle();
+    if (error) throw new HuntBriefStoreUnavailableError();
+    return data !== null;
   }
 }
 
