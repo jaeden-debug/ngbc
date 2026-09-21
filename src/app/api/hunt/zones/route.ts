@@ -39,7 +39,21 @@ export async function GET(request: Request): Promise<Response> {
 
   const zoom = Number(url.searchParams.get("zoom") ?? 5);
   const result = await fetchZoneGeometry(bounds, zoom);
-  const layer = result.layerId ? layerById(result.layerId) : undefined;
+  const describe = (id: string) => {
+    const layer = layerById(id);
+    return layer
+      ? {
+          id: layer.id,
+          jurisdictionName: layer.jurisdictionName,
+          officialTerm: layer.officialTerm,
+          officialTermShort: layer.officialTermShort,
+          authority: layer.authority,
+          coverage: layer.coverage,
+          coverageNote: layer.coverageNote,
+          sourceId: layer.sourceId,
+        }
+      : null;
+  };
 
   return json(
     {
@@ -47,19 +61,11 @@ export async function GET(request: Request): Promise<Response> {
       message: result.message,
       tolerance: result.tolerance,
       // Terminology travels with the geometry so the interface never has to guess
-      // whether these areas are called units, zones or WMUs.
-      layer: layer
-        ? {
-            id: layer.id,
-            jurisdictionName: layer.jurisdictionName,
-            officialTerm: layer.officialTerm,
-            officialTermShort: layer.officialTermShort,
-            authority: layer.authority,
-            coverage: layer.coverage,
-            coverageNote: layer.coverageNote,
-            sourceId: layer.sourceId,
-          }
-        : null,
+      // whether these areas are called units, zones or WMUs. A view can span
+      // jurisdictions, so every layer asked is described, each with its outcome;
+      // `layer` is set only when one jurisdiction is in view.
+      layer: result.layerId ? describe(result.layerId) : null,
+      layers: (result.layers ?? []).map((outcome) => ({ ...describe(outcome.layerId), status: outcome.status })),
       roadmap: COVERAGE_ROADMAP,
       features: result.features,
     },
@@ -68,7 +74,7 @@ export async function GET(request: Request): Promise<Response> {
       // Generalised public boundary data: safe to cache at the edge, and the
       // authority is not queried again for every viewer of the same view.
       "cache-control":
-        result.status === "PROVIDER_ERROR"
+        result.status === "PROVIDER_ERROR" || result.status === "PARTIAL"
           ? "no-store"
           : "public, max-age=900, s-maxage=21600, stale-while-revalidate=86400",
     },

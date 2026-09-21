@@ -71,7 +71,7 @@ export default function HuntQuestion({
         {/* Traceable, like every other regulatory statement in Hunt. */}
         This distinction comes from {dimension.sourceSection
           ? `${dimension.sourceSection}, `
-          : ""}the official Ontario source behind this result. Your answer selects which
+          : ""}the official source behind this result. Your answer selects which
         published rule applies — North Ground does not verify it.
       </p>
     </section>

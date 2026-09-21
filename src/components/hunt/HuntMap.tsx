@@ -7,6 +7,8 @@ import ZoneCanvas, { zoomToFit, type Viewport } from "./ZoneCanvas";
 import styles from "./Hunt.module.css";
 
 export interface ResolvedZone {
+  /** The layer the zone was resolved in; designations repeat across jurisdictions. */
+  layerId?: string;
   officialName: string;
   shortLabel: string;
   coverage: ZoneCoverageStatus;
@@ -16,6 +18,7 @@ export interface ResolvedZone {
 }
 
 interface LayerMeta {
+  id: string;
   jurisdictionName: string;
   officialTerm: string;
   officialTermShort: string;
@@ -140,8 +143,8 @@ export default function HuntMap({ point, placeLabel, zone, googleMapsApiKey }: H
   const [googleReady, setGoogleReady] = useState(false);
   const [viewport, setViewport] = useState<Viewport>(CANVAS_VIEWPORT);
   const [features, setFeatures] = useState<ZoneFeature[]>([]);
-  const [layer, setLayer] = useState<LayerMeta | null>(null);
-  const [zonesState, setZonesState] = useState<"idle" | "loading" | "empty" | "error">("idle");
+  const [layers, setLayers] = useState<LayerMeta[]>([]);
+  const [zonesState, setZonesState] = useState<"idle" | "loading" | "empty" | "error" | "partial">("idle");
   const [zonesMessage, setZonesMessage] = useState<string | null>(null);
   const [inspected, setInspected] = useState<ZoneFeature | null>(null);
   const [mapMode, setMapMode] = useState<"terrain" | "hybrid">("terrain");
@@ -155,6 +158,9 @@ export default function HuntMap({ point, placeLabel, zone, googleMapsApiKey }: H
   const requestIdRef = useRef(0);
 
   const loadZones = useCallback(async (box: { west: number; south: number; east: number; north: number }, zoom: number) => {
+    /* A map measured before it has laid out reports a zero-width view; there is
+       nothing to draw for it, and the server would rightly refuse it. */
+    if (!(box.west < box.east && box.south < box.north)) return;
     const id = ++requestIdRef.current;
     setZonesState("loading");
     try {
@@ -162,16 +168,17 @@ export default function HuntMap({ point, placeLabel, zone, googleMapsApiKey }: H
       const response = await fetch(`/api/hunt/zones?bounds=${bounds}&zoom=${Math.round(zoom)}`);
       const payload = await response.json() as {
         status: string; message?: string; features?: ZoneFeature[];
-        layer?: LayerMeta | null;
+        layers?: LayerMeta[];
       };
       if (id !== requestIdRef.current) return;
 
-      setLayer(payload.layer ?? null);
+      setLayers(payload.layers ?? []);
       setFeatures(payload.features ?? []);
       setZonesMessage(payload.message ?? null);
       setZonesState(
         payload.status === "OK" ? "idle"
           : payload.status === "PROVIDER_ERROR" ? "error"
+          : payload.status === "PARTIAL" ? "partial"
           : "empty",
       );
     } catch {
@@ -365,8 +372,25 @@ export default function HuntMap({ point, placeLabel, zone, googleMapsApiKey }: H
     }));
   }
 
+  /* A zone opened by tapping the map describes that zone, not the place chosen
+     afterwards; a new place closes it rather than leaving two zones on screen. */
+  const [inspectedAt, setInspectedAt] = useState<string | null>(null);
+  if (pointKey !== inspectedAt) {
+    setInspectedAt(pointKey);
+    if (inspected) setInspected(null);
+  }
+
   const zoneName = zone?.shortLabel ?? null;
   const inspectedCoverage = inspected ? COVERAGE_WORDING[inspected.coverage] : null;
+  const layerOf = (layerId: string | undefined) => layers.find((candidate) => candidate.id === layerId) ?? null;
+  const zoneLayer = layerOf(zone?.layerId);
+  const inspectedLayer = layerOf(inspected?.layerId);
+  /* Named by one authority's terms only when one authority's zones are in view. */
+  const drawnLayerIds = [...new Set(features.map((feature) => feature.layerId))];
+  const soleLayer = drawnLayerIds.length === 1 ? layerOf(drawnLayerIds[0]) : null;
+  const selectedZoneKey = zone?.layerId && zone.shortLabel
+    ? `${zone.layerId}|${zone.shortLabel.split(" ").pop()}`
+    : null;
 
   return (
     <div className={styles.mapSurface}>
@@ -382,7 +406,8 @@ export default function HuntMap({ point, placeLabel, zone, googleMapsApiKey }: H
           }}
           onResize={setCanvasSize}
           point={point}
-          selectedZoneName={zone?.shortLabel?.split(" ").pop() ?? null}
+          selectedZoneKey={selectedZoneKey}
+          selectedZoneLabel={zone?.shortLabel ?? null}
           onZoneClick={setInspected}
         />
       )}
@@ -395,14 +420,14 @@ export default function HuntMap({ point, placeLabel, zone, googleMapsApiKey }: H
             <span className={styles.mapBadgeDot} aria-hidden="true" />
             <span>
               <strong>{zoneName}</strong>
-              {layer ? <span className={styles.mapBadgeMeta}>{layer.jurisdictionName}</span> : null}
+              {zoneLayer ? <span className={styles.mapBadgeMeta}>{zoneLayer.jurisdictionName}</span> : null}
             </span>
           </p>
         ) : (
           <p className={`${styles.mapBadge} ng-glass-overlay`}>
             <span className={styles.mapBadgeDot} aria-hidden="true" />
             <span>
-              <strong>{layer ? `${layer.jurisdictionName} ${layer.officialTerm}s` : "Official hunting zones"}</strong>
+              <strong>{soleLayer ? `${soleLayer.jurisdictionName} ${soleLayer.officialTerm}s` : "Official hunting zones"}</strong>
               <span className={styles.mapBadgeMeta}>
                 {zonesState === "loading" ? "Loading official boundaries…"
                   : features.length ? `${features.length} drawn in view`
@@ -445,9 +470,9 @@ export default function HuntMap({ point, placeLabel, zone, googleMapsApiKey }: H
             </svg>
           </button>
           <p className={styles.mapInspectorTitle}>{inspected.label}</p>
-          {layer ? (
+          {inspectedLayer ? (
             <p className={styles.mapInspectorMeta}>
-              {layer.officialTerm} · {layer.jurisdictionName} · {layer.authority}
+              {inspectedLayer.officialTerm} · {inspectedLayer.jurisdictionName} · {inspectedLayer.authority}
             </p>
           ) : null}
           <p className="ng-status" data-status={inspected.coverage === "VERIFIED" ? "OPEN" : "UNKNOWN"}>
@@ -469,7 +494,7 @@ export default function HuntMap({ point, placeLabel, zone, googleMapsApiKey }: H
           <span>Boundary only</span>
         </p>
 
-        {zonesState === "error" ? (
+        {zonesState === "error" || zonesState === "partial" ? (
           <p className={`${styles.mapNotice} ng-glass-popover`} role="status">{zonesMessage}</p>
         ) : null}
 
@@ -495,7 +520,10 @@ export default function HuntMap({ point, placeLabel, zone, googleMapsApiKey }: H
             (zone?.nearBoundary ? " This point is close to the mapped zone boundary." : "") +
             " Every fact shown on the map is also listed as text on this page."
           : `Map showing ${features.length} official hunting-zone boundaries` +
-            (layer ? ` published by ${layer.authority} for ${layer.jurisdictionName}.` : ".") +
+            (drawnLayerIds.length
+              ? ` published by ${drawnLayerIds.map((id) => layerOf(id)).filter((meta): meta is LayerMeta => Boolean(meta))
+                  .map((meta) => `${meta.authority} for ${meta.jurisdictionName}`).join(" and by ")}.`
+              : ".") +
             " Search a place to resolve the zone that applies there."}
       </p>
     </div>

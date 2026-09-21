@@ -231,3 +231,94 @@ test("a point outside every official zone is unknown, not the nearest zone", asy
   assert.equal(resolution.status, "UNKNOWN");
   assert.equal(resolution.zoneId, undefined);
 });
+
+/* ── A view that spans jurisdictions ─────────────────────────────────────── */
+
+const MANITOBA = ZONE_LAYERS.find((layer) => layer.id === "layer:ca-mb-gha")!;
+/* Kenora to Winnipeg: both provinces' extents, and both authorities, in one view. */
+const ACROSS_THE_BORDER: BoundingBox = { west: -97.5, south: 49.2, east: -93.5, north: 50.8 };
+
+/** Answers each authority from its own table, as the two real services would. */
+function byAuthority(answers: { ontario?: unknown; manitoba?: unknown }, failing: Array<"ontario" | "manitoba"> = []) {
+  const calls: string[] = [];
+  const fetcher = (async (url: string) => {
+    calls.push(String(url));
+    const who = String(url).includes("Manitoba_Game_Hunting_Areas") ? "manitoba" : "ontario";
+    const ok = !failing.includes(who);
+    return { ok, status: ok ? 200 : 503, json: async () => answers[who] ?? { type: "FeatureCollection", features: [] } } as unknown as Response;
+  }) as unknown as typeof fetch;
+  return { fetcher, calls };
+}
+
+function ghaCollection(features: Array<{ gha: string | null; ring: number[][] }>) {
+  return {
+    type: "FeatureCollection",
+    features: features.map(({ gha, ring }) => ({ properties: { GHA: gha }, geometry: { type: "Polygon", coordinates: [ring] } })),
+  };
+}
+
+test("a view across a provincial border draws both authorities' zones, each in its own terms", async () => {
+  assert.deepEqual(layersForBounds(ACROSS_THE_BORDER).map((layer) => layer.id).sort(), ["layer:ca-mb-gha", "layer:ca-on-wmu"]);
+  const { fetcher, calls } = byAuthority({
+    ontario: collection([{ name: "5", ring: square(-94.5, 49.8, 0.3) }]),
+    manitoba: ghaCollection([{ gha: "26", ring: square(-95.8, 50.0, 0.3) }, { gha: "35A", ring: square(-96.6, 49.5, 0.3) }]),
+  });
+  const result = await fetchZoneGeometry(ACROSS_THE_BORDER, 7, fetcher);
+  assert.equal(calls.length, 2, "each authority is asked once");
+  assert.equal(result.status, "OK");
+  assert.equal(result.layerId, undefined, "no single authority's terms name a two-jurisdiction view");
+  assert.deepEqual(
+    result.features.map((feature) => [feature.layerId, feature.label]).sort(),
+    [["layer:ca-mb-gha", "GHA 26"], ["layer:ca-mb-gha", "GHA 35A"], ["layer:ca-on-wmu", "WMU 5"]],
+  );
+});
+
+test("the same designation in two jurisdictions stays two zones", async () => {
+  // Ontario WMU 26 and Manitoba GHA 26 are unrelated places.
+  const { fetcher } = byAuthority({
+    ontario: collection([{ name: "26", ring: square(-94.5, 49.8, 0.3) }]),
+    manitoba: ghaCollection([{ gha: "26", ring: square(-95.8, 50.0, 0.3) }]),
+  });
+  const result = await fetchZoneGeometry(ACROSS_THE_BORDER, 7, fetcher);
+  const keys = result.features.map((feature) => `${feature.layerId}|${feature.name}`);
+  assert.equal(new Set(keys).size, 2);
+});
+
+test("Manitoba's undesignated park polygon is never drawn as a zone", async () => {
+  const { fetcher } = byAuthority({
+    manitoba: ghaCollection([{ gha: null, ring: square(-100.2, 50.8, 0.3) }, { gha: "23", ring: square(-100.9, 50.6, 0.2) }]),
+  });
+  const result = await fetchLayerGeometry(MANITOBA, { west: -101.5, south: 50.2, east: -99.5, north: 51.2 }, 8, fetcher);
+  assert.deepEqual(result.features.map((feature) => feature.label), ["GHA 23"]);
+});
+
+test("one authority failing is reported and never hides the other's boundaries", async () => {
+  const { fetcher } = byAuthority(
+    { ontario: collection([{ name: "5", ring: square(-94.5, 49.8, 0.3) }]) },
+    ["manitoba"],
+  );
+  const result = await fetchZoneGeometry(ACROSS_THE_BORDER, 7, fetcher);
+  assert.equal(result.status, "PARTIAL");
+  assert.deepEqual(result.features.map((feature) => feature.label), ["WMU 5"]);
+  assert.match(result.message!, /Government of Manitoba zone service is temporarily unavailable/);
+  assert.deepEqual(
+    result.layers?.map(({ layerId, status }) => [layerId, status]).sort(),
+    [["layer:ca-mb-gha", "PROVIDER_ERROR"], ["layer:ca-on-wmu", "OK"]],
+  );
+});
+
+test("every authority failing is an outage, not an empty map", async () => {
+  const { fetcher } = byAuthority({}, ["ontario", "manitoba"]);
+  const result = await fetchZoneGeometry(ACROSS_THE_BORDER, 7, fetcher);
+  assert.equal(result.status, "PROVIDER_ERROR");
+  assert.deepEqual(result.features, []);
+});
+
+test("a view over one province keeps that province's identity", async () => {
+  const overWinnipeg: BoundingBox = { west: -98.5, south: 49.4, east: -96.5, north: 50.4 };
+  assert.deepEqual(layersForBounds(overWinnipeg).map((layer) => layer.id), ["layer:ca-mb-gha"]);
+  const { fetcher } = byAuthority({ manitoba: ghaCollection([{ gha: "38", ring: square(-97.1, 49.9, 0.2) }]) });
+  const result = await fetchZoneGeometry(overWinnipeg, 9, fetcher);
+  assert.equal(result.layerId, "layer:ca-mb-gha");
+  assert.equal(result.features[0].coverage, zoneCoverage(MANITOBA, "38"));
+});

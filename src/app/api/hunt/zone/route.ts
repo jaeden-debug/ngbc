@@ -1,6 +1,6 @@
 import { isWithinSupportedBounds } from "../../../../lib/hunt/coverage";
 import { resolveZone } from "../../../../lib/hunt/zone";
-import { designationFromOfficialName, layerForPoint, layerForResolution, zoneCoverage } from "../../../../lib/hunt/zone-layers";
+import { designationFromOfficialName, layerForJurisdiction, layerForPoint, layerForResolution, zoneCoverage } from "../../../../lib/hunt/zone-layers";
 import { createRateLimiter, getClientAddress } from "../../../../lib/newsletter/rate-limit";
 import { SITE_URL } from "../../../../lib/site";
 
@@ -73,10 +73,13 @@ export async function POST(request: Request): Promise<Response> {
 
   const resolution = await resolveZone(latitude, longitude);
   if (resolution.status !== "RESOLVED") {
+    /* Named only when the resolver could attribute the point to one
+       jurisdiction; where extents overlap, the first box is not an answer. */
+    const context = layerForJurisdiction(resolution.jurisdictionId);
     return json({
       status: resolution.status,
       message: resolution.message,
-      layer: { jurisdictionName: hint.jurisdictionName, officialTerm: hint.officialTerm, authority: hint.authority },
+      layer: context ? { jurisdictionName: context.jurisdictionName, officialTerm: context.officialTerm, authority: context.authority } : null,
     });
   }
 
@@ -102,6 +105,7 @@ export async function POST(request: Request): Promise<Response> {
     status: "RESOLVED",
     zone: {
       id: resolution.zoneId,
+      layerId: layer.id,
       officialName: resolution.officialName,
       shortLabel: zoneName ? `${layer.officialTermShort} ${zoneName}` : resolution.officialName,
       coverage: zoneCoverage(layer, zoneName),

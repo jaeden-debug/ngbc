@@ -29,15 +29,28 @@ async function evaluateRegulation(
   verifiedAt: string,
   fetcher?: typeof fetch,
 ): Promise<RegulatoryOutcome> {
-  /* An unresolved zone carries no jurisdiction of its own. It is handed to the
-     entry whose service was asked, which says it could not certify the zone —
-     exactly as before the registry existed. */
-  /* A zone's own id decides its jurisdiction. A zone carrying neither (callers
-     that predate the field) keeps the behaviour it always had: Ontario. */
-  const jurisdictionId = zone.jurisdictionId ?? jurisdictionOfZoneId(zone.zoneId) ?? "jurisdiction:ca-on";
+  /* A zone's own id decides its jurisdiction. An unresolved point carries one
+     only where the resolver could attribute it to a single served layer; where
+     extents overlap and no authority placed it, no jurisdiction's rules or
+     wording apply, and none is borrowed. */
+  const jurisdictionId = zone.jurisdictionId ?? jurisdictionOfZoneId(zone.zoneId);
+  if (!jurisdictionId) return { completeness: "RESOLVED", dimensions: [], regulation: unplacedPoint(zone, verifiedAt) };
   const entry = regulatoryEntryFor(jurisdictionId);
   if (!entry) return { completeness: "RESOLVED", dimensions: [], regulation: uncertifiedJurisdiction(zone, verifiedAt) };
   return await entry.evaluate(input, zone, { verifiedAt, fetcher });
+}
+
+/** A point no authority placed in a hunting zone, attributable to no one jurisdiction. */
+function unplacedPoint(zone: ZoneResolution, verifiedAt: string): RegulatoryResult {
+  return {
+    status: "NEEDS_VERIFICATION",
+    summary: "North Ground could not place this point in an official hunting zone, so it will not infer a hunting status.",
+    legalTime: { status: "NOT_AVAILABLE", text: "Legal hunting hours are not available without a resolved zone." },
+    requirements: [],
+    limitations: [zone.message],
+    sourceIds: [zone.sourceId],
+    verifiedAt,
+  };
 }
 
 /** A zone in a jurisdiction whose hunting rules North Ground has not certified. */
@@ -58,10 +71,15 @@ function uncertifiedJurisdiction(zone: ZoneResolution, verifiedAt: string): Regu
 export async function evaluateHunt(input: HuntInput, dependencies: HuntDependencies = {}): Promise<HuntEvaluation> {
   const repository = dependencies.repository ?? contentRepository;
   const evaluatedAt = (dependencies.now?.() ?? new Date()).toISOString();
-  const [zone, weather] = await Promise.all([
+  const [resolved, weather] = await Promise.all([
     (dependencies.resolveZone ?? resolveZoneDefault)(input.latitude, input.longitude),
     (dependencies.weather ?? getWeatherContext)(input.latitude, input.longitude, input.date, { now: dependencies.now?.() }),
   ]);
+
+  /* The zone states its jurisdiction explicitly, so everything downstream (the
+     rules, the knowledge blocks, the shared brief) reads one field, not a guess. */
+  const jurisdictionOfZone = resolved.jurisdictionId ?? jurisdictionOfZoneId(resolved.zoneId);
+  const zone: ZoneResolution = jurisdictionOfZone ? { ...resolved, jurisdictionId: jurisdictionOfZone } : resolved;
 
   const { completeness, required, dimensions, regulation } = await evaluateRegulation(input, zone, evaluatedAt, dependencies.fetch);
 
@@ -70,7 +88,8 @@ export async function evaluateHunt(input: HuntInput, dependencies: HuntDependenc
   const knowledge = await repository.getContextualBlocks({
     locale: "en-CA",
     countryId: "country:ca",
-    jurisdictionIds: [zone.jurisdictionId ?? "jurisdiction:ca-on"],
+    // Unplaced, only guidance that names no jurisdiction can apply.
+    jurisdictionIds: zone.jurisdictionId ? [zone.jurisdictionId] : [],
     zoneIds,
     speciesIds: [input.speciesId],
     date: input.date,

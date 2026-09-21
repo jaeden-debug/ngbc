@@ -6,6 +6,7 @@ import ShareHuntButton from "../hunt-share/ShareHuntButton";
 import { huntEvaluationToShareInput } from "../../lib/hunt-share/from-hunt-evaluation";
 import { speciesById } from "../../lib/hunt/coverage";
 import { readableCalendarDay, readableIso } from "../../lib/hunt/date";
+import { layerForJurisdiction } from "../../lib/hunt/zone-layers";
 import type { HuntEvaluation } from "../../lib/hunt/types";
 import styles from "./Hunt.module.css";
 
@@ -36,6 +37,10 @@ export default function HuntResult({
   const species = speciesById(result.species.id);
   const status = result.regulation.status;
   const zoneName = result.zone.officialName ?? null;
+  const zoneLayer = layerForJurisdiction(result.zone.jurisdictionId);
+  const shareJurisdiction = result.zone.jurisdictionId && zoneLayer
+    ? { id: result.zone.jurisdictionId, displayName: zoneLayer.jurisdictionName }
+    : null;
   const tabsId = useId();
   const panelRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
@@ -100,11 +105,13 @@ export default function HuntResult({
             {zoneName ? <p className={styles.resultZone}>{zoneName}</p> : null}
           </div>
           <div className={styles.resultActions}>
-            <ShareHuntButton
-              huntResult={huntEvaluationToShareInput(result, {
-                jurisdiction: { id: "jurisdiction:ca-on", displayName: "Ontario" },
-              })}
-            />
+            {/* A brief names the jurisdiction the zone belongs to. A point no
+                authority placed has none, and is not shared under a borrowed one. */}
+            {shareJurisdiction ? (
+              <ShareHuntButton
+                huntResult={huntEvaluationToShareInput(result, { jurisdiction: shareJurisdiction })}
+              />
+            ) : null}
           </div>
         </div>
 

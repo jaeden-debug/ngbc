@@ -15,7 +15,10 @@ interface ZoneCanvasProps {
   viewport: Viewport;
   onViewportChange: (viewport: Viewport) => void;
   point: { latitude: number; longitude: number } | null;
-  selectedZoneName: string | null;
+  /** `${layerId}|${designation}`: designations repeat across jurisdictions. */
+  selectedZoneKey: string | null;
+  /** How the selected zone is named to assistive technology ("GHA 23A"). */
+  selectedZoneLabel: string | null;
   onZoneClick: (feature: ZoneFeature) => void;
   /** Reports the drawing area so the caller can frame the geometry to it. */
   onResize?: (size: { width: number; height: number }) => void;
@@ -69,7 +72,7 @@ export function zoomToFit(
 }
 
 export default function ZoneCanvas({
-  features, viewport, onViewportChange, point, selectedZoneName, onZoneClick, onResize,
+  features, viewport, onViewportChange, point, selectedZoneKey, selectedZoneLabel, onZoneClick, onResize,
 }: ZoneCanvasProps) {
   const frameRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 720, height: 520 });
@@ -135,7 +138,7 @@ export default function ZoneCanvas({
         role="img"
         aria-label={
           features.length
-            ? `Official hunting-zone boundaries${selectedZoneName ? `, with ${selectedZoneName} highlighted` : ""}. ` +
+            ? `Official hunting-zone boundaries${selectedZoneLabel ? `, with ${selectedZoneLabel} highlighted` : ""}. ` +
               "Boundaries only — this view has no basemap and is not a legal survey."
             : "No official hunting-zone boundaries are available for this view."
         }
@@ -162,11 +165,11 @@ export default function ZoneCanvas({
         {shapes.map(({ feature, paths }) =>
           paths.map((points, index) => (
             <polygon
-              key={`${feature.name}-${index}`}
+              key={`${feature.layerId}|${feature.name}-${index}`}
               points={points}
               className={styles.zoneCanvasShape}
               data-coverage={feature.coverage}
-              data-selected={feature.name === selectedZoneName || undefined}
+              data-selected={`${feature.layerId}|${feature.name}` === selectedZoneKey || undefined}
               onClick={() => {
                 if (dragRef.current?.moved) return;
                 onZoneClick(feature);

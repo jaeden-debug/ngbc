@@ -17,6 +17,8 @@ import { layerById, ZONE_LAYERS, zoneCoverage, type ZoneCoverageStatus, type Zon
  */
 
 export interface ZoneFeature {
+  /** The layer the feature came from. Designations repeat across jurisdictions. */
+  layerId: string;
   /** Stable within a layer: the authority's own designation. */
   name: string;
   /** Display label using the authority's own terminology. */
@@ -27,8 +29,11 @@ export interface ZoneFeature {
 }
 
 export interface ZoneGeometryResult {
-  status: "OK" | "EMPTY" | "PROVIDER_ERROR";
+  /** PARTIAL: at least one authority answered and at least one did not. */
+  status: "OK" | "EMPTY" | "PROVIDER_ERROR" | "PARTIAL";
   layerId?: string;
+  /** Every layer asked for this view, with its own outcome. */
+  layers?: Array<{ layerId: string; status: "OK" | "EMPTY" | "PROVIDER_ERROR"; message?: string }>;
   features: ZoneFeature[];
   /** Simplification tolerance actually requested, in degrees. */
   tolerance?: number;
@@ -91,6 +96,19 @@ type PolygonGeometry =
 interface FeatureCollection {
   type: string;
   features: Array<{ properties: Record<string, unknown>; geometry: PolygonGeometry | null }>;
+}
+
+/**
+ * The authority's designation for a feature, or null when the feature is not a
+ * zone (Riding Mountain's undesignated polygon, Elk Island's blank record).
+ * A layer whose service stores designations in its own encoding declares how to
+ * read them; otherwise a trimmed string or a number is the designation.
+ */
+function designationFor(layer: ZoneLayer, raw: unknown): string | null {
+  const read = (layer as ZoneLayer & { designationOf?: (value: unknown) => string | null }).designationOf;
+  if (read) return read(raw);
+  const name = typeof raw === "string" ? raw.trim() : typeof raw === "number" ? String(raw) : "";
+  return name || null;
 }
 
 function ringsOf(geometry: PolygonGeometry): Position[][] {
@@ -165,13 +183,13 @@ export async function fetchLayerGeometry(
 
     const features: ZoneFeature[] = [];
     for (const feature of payload.features) {
-      const raw = feature.properties?.[layer.nameField];
-      const name = typeof raw === "string" ? raw.trim() : typeof raw === "number" ? String(raw) : "";
+      const name = designationFor(layer, feature.properties?.[layer.nameField]);
       const geometry = feature.geometry;
       if (!name || !geometry || (geometry.type !== "Polygon" && geometry.type !== "MultiPolygon")) continue;
       const rings = ringsOf(geometry).filter((ring) => ring.length >= 4);
       if (!rings.length) continue;
       features.push({
+        layerId: layer.id,
         name,
         label: `${layer.officialTermShort} ${name}`,
         coverage: zoneCoverage(layer, name),
@@ -201,6 +219,14 @@ export async function fetchLayerGeometry(
   return result;
 }
 
+/**
+ * Every served layer in view, each asked of its own authority, in parallel.
+ *
+ * Extents overlap and a view can span a provincial border, so each layer is
+ * requested and drawn on its own terms. One authority failing never hides
+ * another's boundaries, and never goes unreported: the result is PARTIAL and
+ * names the service that did not answer.
+ */
 export async function fetchZoneGeometry(
   box: BoundingBox,
   zoom: number,
@@ -214,13 +240,34 @@ export async function fetchZoneGeometry(
       message: "North Ground does not yet publish official hunting-zone boundaries for this area.",
     };
   }
-  // One reviewed layer exists today; the shape returns the first that answers so
-  // adding a second jurisdiction does not require changing callers.
-  for (const layer of layers) {
-    const result = await fetchLayerGeometry(layer, box, zoom, fetcher);
-    if (result.status !== "EMPTY") return result;
+  const results = await Promise.all(layers.map((layer) => fetchLayerGeometry(layer, box, zoom, fetcher)));
+  const outcomes = results.map((result, index) => ({
+    layerId: layers[index].id,
+    status: result.status as "OK" | "EMPTY" | "PROVIDER_ERROR",
+    ...(result.message ? { message: result.message } : {}),
+  }));
+  const features = results.flatMap((result) => result.features);
+  const failed = results.filter((result) => result.status === "PROVIDER_ERROR");
+  const answered = results.filter((result) => result.status === "OK");
+  const tolerance = toleranceForZoom(zoom);
+  /* A single layer keeps its own identity, so the interface can name its terms. */
+  const layerId = answered.length === 1 ? answered[0].layerId : layers.length === 1 ? layers[0].id : undefined;
+
+  if (failed.length && answered.length) {
+    return {
+      status: "PARTIAL", layerId, layers: outcomes, features, tolerance,
+      message: failed.map((result) => result.message).join(" "),
+    };
   }
-  return { status: "EMPTY", features: [], layerId: layers[0].id, message: "No official zones intersect this view." };
+  if (failed.length) {
+    return {
+      status: "PROVIDER_ERROR", layerId, layers: outcomes, features: [], tolerance,
+      message: failed.map((result) => result.message).join(" "),
+    };
+  }
+  return answered.length
+    ? { status: "OK", layerId, layers: outcomes, features, tolerance }
+    : { status: "EMPTY", layerId, layers: outcomes, features: [], tolerance, message: "No official zones intersect this view." };
 }
 
 export function parseBounds(value: unknown): BoundingBox | null {

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { todayIso } from "../../lib/hunt/date";
-import { COVERAGE_SUMMARY, hasSpeciesCoverageIn, isWithinSupportedBounds, type SpeciesSelectorOption, type SupportedSpeciesId } from "../../lib/hunt/coverage";
+import { COVERAGE_SUMMARY, COVERED_JURISDICTIONS, hasSpeciesCoverageIn, isWithinSupportedBounds, type SpeciesSelectorOption, type SupportedSpeciesId } from "../../lib/hunt/coverage";
 import type { CanonicalId } from "../../lib/content-contract";
 import { COVERAGE_WORDING } from "../../lib/hunt/zone-layers";
 import type { HuntEvaluation } from "../../lib/hunt/types";
@@ -357,7 +357,7 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
             {outsideCoverage ? (
               <p className={styles.coverageWarning} role="status">
                 <strong>That location is outside current coverage.</strong>
-                North Ground can check hunts in Ontario today. This is a gap in our
+                North Ground can check hunts in {COVERED_JURISDICTIONS} today. This is a gap in our
                 coverage, not a statement about hunting there.
               </p>
             ) : null}

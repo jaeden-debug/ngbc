@@ -185,7 +185,18 @@ export const SUPPORTED_SPECIES: SupportedSpecies[] = [
   },
 ];
 
-export const COVERAGE_SUMMARY = "Small-game and major-game rules certified across Ontario's wildlife management units.";
+function spokenList(items: readonly string[]): string {
+  return items.length <= 1 ? items.join("") : `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
+}
+
+/* Named from the served layers, so the copy grows with coverage instead of
+   going stale. Every served layer has a regulatory entry (regulatory/
+   registry.test.ts holds that), so each named here has certified rules. */
+/** Where Hunt can answer today: "Ontario and Manitoba". */
+export const COVERED_JURISDICTIONS = spokenList(SERVED_LAYERS.map((layer) => layer.jurisdictionName));
+
+export const COVERAGE_SUMMARY =
+  `Certified rules for selected species in ${spokenList(SERVED_LAYERS.map((layer) => `${layer.jurisdictionName}'s ${layer.officialTerm}s`))}.`;
 
 
 export type MajorGameSpeciesId = (typeof SUPPORTED_MAJOR_GAME_SPECIES_IDS)[number];
