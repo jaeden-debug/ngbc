@@ -1,0 +1,116 @@
+{
+  "jurisdiction": "jurisdiction:ca-ab",
+  "writtenOn": "2026-09-21",
+  "method": "A production regression, not a new certification. Each expectation restates an answer already certified against the 2026 Alberta Guide to Hunting Regulations: the engine tests in src/lib/hunt/regulatory/alberta.test.ts (written from the guide) and the production certification recorded in docs/PROJECT-STATE.md. Points are the service-verified interior points of fixtures/hunt/ca-ab-spatial-parity.json and its national-park special cases. A disagreement means Alberta regressed.",
+  "cases": [
+    {
+      "id": "wmu102-grouse-open",
+      "place": "WMU 102 (Pakowi, south-east Alberta)",
+      "latitude": 49.2391962170392, "longitude": -110.694590675416,
+      "speciesId": "species:ruffed-grouse", "date": "2026-10-10",
+      "expect": { "zoneName": "Wildlife Management Unit 102", "status": "CONDITIONAL", "completeness": "RESOLVED" },
+      "law": "Ruffed grouse in WMU 102: 1 September to 15 January."
+    },
+    {
+      "id": "wmu102-grouse-before-open",
+      "place": "WMU 102",
+      "latitude": 49.2391962170392, "longitude": -110.694590675416,
+      "speciesId": "species:ruffed-grouse", "date": "2026-08-31",
+      "expect": { "zoneName": "Wildlife Management Unit 102", "status": "CLOSED", "completeness": "RESOLVED" },
+      "law": "The season opens 1 September."
+    },
+    {
+      "id": "wmu718-grouse-unknown",
+      "place": "WMU 718 (Writing-On-Stone Provincial Park)",
+      "latitude": 49.1058102053057, "longitude": -111.872413724069,
+      "speciesId": "species:ruffed-grouse", "date": "2026-10-10",
+      "expect": { "zoneName": "Wildlife Management Unit 718", "status": "UNKNOWN", "completeness": "RESOLVED" },
+      "law": "No row names WMU 718; in Alberta a unit no row names is UNKNOWN."
+    },
+    {
+      "id": "wmu102-deer-september-asks-method",
+      "place": "WMU 102",
+      "latitude": 49.2391962170392, "longitude": -110.694590675416,
+      "speciesId": "species:white-tailed-deer", "date": "2026-09-16",
+      "expect": { "zoneName": "Wildlife Management Unit 102", "completeness": "NEEDS_INPUT", "required": "HUNT_METHOD" },
+      "law": "In September only the archery season is open, so only the implement changes the answer."
+    },
+    {
+      "id": "wmu102-deer-sunday-bow-closed",
+      "place": "WMU 102",
+      "latitude": 49.2391962170392, "longitude": -110.694590675416,
+      "speciesId": "species:white-tailed-deer", "date": "2026-09-20",
+      "answers": { "HUNT_METHOD": "BOW" },
+      "expect": { "zoneName": "Wildlife Management Unit 102", "status": "CLOSED", "completeness": "RESOLVED" },
+      "law": "Sunday big-game hunting is unlawful in WMUs 102-160; 20 September 2026 is a Sunday."
+    },
+    {
+      "id": "wmu102-deer-saturday-bow-open",
+      "place": "WMU 102",
+      "latitude": 49.2391962170392, "longitude": -110.694590675416,
+      "speciesId": "species:white-tailed-deer", "date": "2026-09-19",
+      "answers": { "HUNT_METHOD": "BOW" },
+      "expect": { "zoneName": "Wildlife Management Unit 102", "status": "CONDITIONAL", "completeness": "RESOLVED" },
+      "law": "The archery season on the Saturday before."
+    },
+    {
+      "id": "wmu102-deer-november-asks-class",
+      "place": "WMU 102",
+      "latitude": 49.2391962170392, "longitude": -110.694590675416,
+      "speciesId": "species:white-tailed-deer", "date": "2026-11-04",
+      "answers": { "HUNT_METHOD": "RIFLE" },
+      "expect": { "zoneName": "Wildlife Management Unit 102", "completeness": "NEEDS_INPUT", "required": "ANIMAL_CLASS:ANTLER_CLASS" },
+      "law": "Antlered deer is open on a general licence, antlerless only on a special licence, so the class is asked."
+    },
+    {
+      "id": "wmu102-deer-antlered-rifle-open",
+      "place": "WMU 102",
+      "latitude": 49.2391962170392, "longitude": -110.694590675416,
+      "speciesId": "species:white-tailed-deer", "date": "2026-11-04",
+      "answers": { "HUNT_METHOD": "RIFLE", "animalClasses": [{ "dimension": "ANTLER_CLASS", "value": "ANTLERED" }] },
+      "expect": { "zoneName": "Wildlife Management Unit 102", "status": "CONDITIONAL", "completeness": "RESOLVED" },
+      "law": "Prairie general season, Wednesday 4 November."
+    },
+    {
+      "id": "wmu102-deer-antlerless-general-closed",
+      "place": "WMU 102",
+      "latitude": 49.2391962170392, "longitude": -110.694590675416,
+      "speciesId": "species:white-tailed-deer", "date": "2026-11-04",
+      "answers": { "HUNT_METHOD": "RIFLE", "LICENCE_TYPE": "GENERAL", "animalClasses": [{ "dimension": "ANTLER_CLASS", "value": "ANTLERLESS" }] },
+      "expect": { "zoneName": "Wildlife Management Unit 102", "status": "CLOSED", "completeness": "RESOLVED" },
+      "law": "Antlerless seasons here are marked ■: special-licence holders only."
+    },
+    {
+      "id": "wmu212-calgary-resolves",
+      "place": "WMU 212 (Calgary)",
+      "latitude": 50.9905421424182, "longitude": -114.050010858851,
+      "speciesId": "species:moose", "date": "2026-10-10",
+      "expect": { "zoneName": "Wildlife Management Unit 212", "status": "UNKNOWN", "completeness": "RESOLVED" },
+      "law": "Moose is not encoded for Alberta: a coverage gap, answered UNKNOWN."
+    },
+    {
+      "id": "wmu357-peace-country-grouse",
+      "place": "WMU 357 (Peace Country)",
+      "latitude": 55.1489197259841, "longitude": -119.173323878241,
+      "speciesId": "species:ruffed-grouse", "date": "2026-10-10",
+      "expect": { "zoneName": "Wildlife Management Unit 357", "completeness": "RESOLVED" },
+      "law": "Resolution in the far north-west; the status is whatever the certified grouse rows say and is recorded, not asserted."
+    },
+    {
+      "id": "banff-no-wmu",
+      "place": "Banff National Park townsite",
+      "latitude": 51.1784, "longitude": -115.5708,
+      "speciesId": "species:ruffed-grouse", "date": "2026-10-10",
+      "expect": { "status": "NEEDS_VERIFICATION", "completeness": "RESOLVED" },
+      "law": "National parks are in no WMU; no provincial season describes them."
+    },
+    {
+      "id": "elk-island-no-wmu",
+      "place": "Elk Island National Park (quarantined blank record)",
+      "latitude": 53.6134, "longitude": -112.8653,
+      "speciesId": "species:ruffed-grouse", "date": "2026-10-10",
+      "expect": { "status": "NEEDS_VERIFICATION", "completeness": "RESOLVED" },
+      "law": "The layer's blank record is Elk Island National Park, quarantined and never a zone."
+    }
+  ]
+}

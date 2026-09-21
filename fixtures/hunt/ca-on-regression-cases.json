@@ -1,0 +1,66 @@
+{
+  "jurisdiction": "jurisdiction:ca-on",
+  "writtenOn": "2026-09-21",
+  "method": "A production regression, not a new certification. Each expectation restates an answer already certified against the 2026 Ontario Hunting Regulations Summary: the engine tests in src/lib/hunt/regulatory/ontario.test.ts and major-game.test.ts (written from the summary's tables and footnotes) and the production certification recorded in docs/PROJECT-STATE.md. Points are interior points of the official WMU geometry (ST_PointOnSurface), not test stubs. A disagreement means Ontario regressed.",
+  "cases": [
+    {
+      "id": "wmu57-grouse-open",
+      "place": "WMU 57 (Bancroft area)",
+      "latitude": 45.23, "longitude": -77.94,
+      "speciesId": "species:ruffed-grouse", "date": "2026-10-24",
+      "expect": { "zoneName": "Wildlife Management Unit 57", "status": "CONDITIONAL", "completeness": "RESOLVED", "daily": 5, "possession": 15 },
+      "law": "Ruffed grouse, WMUs 5-15, 19-23, 28-50, 53-67, 69B: September 15 to December 31, combined daily 5 / possession 15 with spruce grouse."
+    },
+    {
+      "id": "wmu57-grouse-before-open",
+      "place": "WMU 57 (Bancroft area)",
+      "latitude": 45.23, "longitude": -77.94,
+      "speciesId": "species:ruffed-grouse", "date": "2026-09-14",
+      "expect": { "zoneName": "Wildlife Management Unit 57", "status": "CLOSED", "completeness": "RESOLVED" },
+      "law": "The same season opens September 15."
+    },
+    {
+      "id": "wmu51-grouse-unknown",
+      "place": "WMU 51 (Algonquin Provincial Park)",
+      "latitude": 45.75412, "longitude": -78.29243,
+      "speciesId": "species:ruffed-grouse", "date": "2026-10-15",
+      "expect": { "zoneName": "Wildlife Management Unit 51", "status": "UNKNOWN", "completeness": "RESOLVED" },
+      "law": "No small-game row names WMU 51; park legislation governs it and North Ground does not hold it. Absence is not a closure."
+    },
+    {
+      "id": "wmu71-deer-asks-residency",
+      "place": "WMU 71",
+      "latitude": 44.01404, "longitude": -77.75044,
+      "speciesId": "species:white-tailed-deer", "date": "2026-11-10",
+      "expect": { "zoneName": "Wildlife Management Unit 71", "completeness": "NEEDS_INPUT", "required": "RESIDENCY" },
+      "law": "Deer seasons are published per residency, so residency is asked first."
+    },
+    {
+      "id": "wmu71-deer-shotgun-open",
+      "place": "WMU 71",
+      "latitude": 44.01404, "longitude": -77.75044,
+      "speciesId": "species:white-tailed-deer", "date": "2026-11-10",
+      "answers": { "RESIDENCY": "RESIDENT", "HUNT_METHOD": "SHOTGUN" },
+      "expect": { "zoneName": "Wildlife Management Unit 71", "status": "CONDITIONAL", "completeness": "RESOLVED" },
+      "law": "Gun season November 2 to November 15 for shotgun, muzzle-loading gun and bow."
+    },
+    {
+      "id": "wmu71-deer-rifle-closed",
+      "place": "WMU 71",
+      "latitude": 44.01404, "longitude": -77.75044,
+      "speciesId": "species:white-tailed-deer", "date": "2026-11-10",
+      "answers": { "RESIDENCY": "RESIDENT", "HUNT_METHOD": "RIFLE" },
+      "expect": { "zoneName": "Wildlife Management Unit 71", "status": "CLOSED", "completeness": "RESOLVED" },
+      "law": "Footnote 1 removes rifles from the table headed 'Rifles, shotguns, muzzle-loading guns and bows' in WMU 71."
+    },
+    {
+      "id": "wmu60-deer-rifle-open",
+      "place": "WMU 60",
+      "latitude": 44.74474, "longitude": -78.18319,
+      "speciesId": "species:white-tailed-deer", "date": "2026-11-10",
+      "answers": { "RESIDENCY": "RESIDENT", "HUNT_METHOD": "RIFLE" },
+      "expect": { "zoneName": "Wildlife Management Unit 60", "status": "CONDITIONAL", "completeness": "RESOLVED" },
+      "law": "WMU 60's gun season carries no rifle footnote."
+    }
+  ]
+}
