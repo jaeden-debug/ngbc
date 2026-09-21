@@ -74,6 +74,22 @@ Result, verified on 2026-09-21:
   grants, 15 functions (bodies and attributes) and 45 function execute grants.
 - Nothing already applied will run again: every file's version is in the ledger.
 
+Re-verified the same day after the first migration applied under the new rule,
+`20260921093010_register_quebec_regulatory_sources` (a data migration: six Québec
+sources). Its ledger row carries the file's version, and its recorded SQL
+matches the file after normalisation. 18 files and 18 ledger rows. The 18 files
+replayed into a fresh `postgres` database of the same image give a schema
+fingerprint identical to production's (`90209eb7…` over 356 objects), and the
+seven Québec source rows are identical too (`23d58b5f…`).
+
+Two cautions for anyone repeating this:
+- Replay into the image's own `postgres` database. A database created with
+  `create database` lacks the Supabase default privileges, so its table grants
+  differ from production's for reasons unrelated to the migrations.
+- Cast the fingerprint's key column to `text`. When its first branch yields
+  `name`, every key is truncated to 63 bytes, so long function signatures
+  collide and sort unstably.
+
 Schema is reproducible from the repository. **Data is not, by design:** zone
 geometry comes from each authority through `scripts/ingest-zone-layer.mjs` and
 the `publish_zone_run` promotion, and rules through
