@@ -18,6 +18,10 @@ export const ZONE_ADAPTERS = {
     module: "../src/lib/hunt/ingestion/ontario-wmu.ts",
     factory: "createOntarioWmuSource",
   },
+  "ca-qc": {
+    module: "../src/lib/hunt/ingestion/quebec-zone.ts",
+    factory: "createQuebecZoneSource",
+  },
 };
 
 export async function loadZoneSource(jurisdiction) {

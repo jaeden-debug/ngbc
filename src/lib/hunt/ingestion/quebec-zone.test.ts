@@ -162,3 +162,26 @@ test("a dropped connection is retried, a refused request is not", async () => {
   await assert.rejects(refused.fetchFeatures(), /returned 400/);
   assert.equal(refusedCalls, 1);
 });
+
+test("a point question is asked in EPSG:4326 with longitude first", async () => {
+  let asked = "";
+  const source = createQuebecZoneSource(async (url) => {
+    asked = String(url);
+    return new Response(JSON.stringify({ type: "FeatureCollection", features: [{ id: "x.1", properties: { Zone: "10O" } }] }), {
+      status: 200, headers: { "content-type": "application/json" },
+    });
+  });
+  // Maniwaki: the ministry's own service answers 10O (zone 10, partie Ouest).
+  assert.deepEqual(await source.officialIdentifiersAt?.(46.3769, -75.9722), ["10O"]);
+  const filter = new URL(asked).searchParams.get("CQL_FILTER");
+  // Without the SRID the service reads Québec Lambert metres and matches nothing.
+  assert.equal(filter, "INTERSECTS(the_geom,SRID=4326;POINT(-75.9722 46.3769))");
+});
+
+test("an impossible coordinate is never sent to the ministry", async () => {
+  let calls = 0;
+  const source = createQuebecZoneSource(async () => { calls += 1; return new Response("{}"); });
+  assert.deepEqual(await source.officialIdentifiersAt?.(95, -75), []);
+  assert.deepEqual(await source.officialIdentifiersAt?.(46, -200), []);
+  assert.equal(calls, 0);
+});

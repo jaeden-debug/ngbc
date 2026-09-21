@@ -179,6 +179,40 @@ export function createQuebecZoneSource(fetcher: typeof fetch = fetch): ZoneLayer
        name is built in French rather than translated. */
     officialName: (identifier) => `Zone de chasse ${identifier.trim()}`,
 
+    /**
+     * What the ministry's own service says is at this point.
+     *
+     * The point is sent as EWKT with SRID=4326. Without the SRID, GeoServer
+     * reads the coordinates in the layer's native Québec Lambert metres and
+     * matches nothing — a query that looks like "no zone here" and is really
+     * "the question was asked in the wrong units". Longitude comes first, as
+     * EWKT requires.
+     */
+    async officialIdentifiersAt(latitude, longitude) {
+      if (!Number.isFinite(latitude) || !Number.isFinite(longitude) || Math.abs(latitude) > 90 || Math.abs(longitude) > 180) {
+        return [];
+      }
+      const parameters = new URLSearchParams({
+        service: "WFS",
+        version: "2.0.0",
+        request: "GetFeature",
+        typeNames: QUEBEC_ZONE_TYPE_NAME,
+        outputFormat: "application/json",
+        propertyName: "Zone",
+        CQL_FILTER: `INTERSECTS(the_geom,SRID=4326;POINT(${longitude} ${latitude}))`,
+      });
+      const response = await fetcher(`${QUEBEC_ZONE_WFS}?${parameters}`, {
+        headers: { accept: "application/json" },
+        signal: AbortSignal.timeout(30_000),
+        cache: "no-store",
+      });
+      if (!response.ok) throw new Error(`Québec zone service returned ${response.status}`);
+      const payload = await response.json() as WfsGeoJson;
+      return [...new Set((payload.features ?? [])
+        .map((row) => (typeof row.properties?.Zone === "string" ? row.properties.Zone.trim() : ""))
+        .filter(Boolean))].sort();
+    },
+
     async fetchFeatures() {
       /* One entry per designation, accumulating every polygon that belongs to it.
          Zone 19SE is 8,091 islands and is one regulatory area, not 8,091. */
