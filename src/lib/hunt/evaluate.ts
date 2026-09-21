@@ -54,6 +54,12 @@ function pendingRegulation(required: RequiredDimension, verifiedAt: string): Reg
  * wrong for someone — it asks, one fact at a time.
  */
 function evaluateRegulation(input: HuntInput, zone: ZoneResolution, verifiedAt: string): RegulatoryOutcome {
+  /* Ontario's rules answer only for Ontario zones. A zone the registry places in
+     another jurisdiction is never evaluated against them — an Ontario "no row
+     names this unit" would read as a statement about Québec or Manitoba law. */
+  if (zone.status === "RESOLVED" && zone.jurisdictionId && zone.jurisdictionId !== "jurisdiction:ca-on") {
+    return { completeness: "RESOLVED", dimensions: [], regulation: uncertifiedJurisdiction(zone, verifiedAt) };
+  }
   if (!isMajorGameSpecies(input.speciesId)) {
     return { completeness: "RESOLVED", dimensions: [], regulation: evaluateOntarioSmallGame(input, zone) };
   }
@@ -77,6 +83,21 @@ function evaluateRegulation(input: HuntInput, zone: ZoneResolution, verifiedAt: 
     completeness: "RESOLVED",
     dimensions: evaluation.dimensions,
     regulation: evaluation.result ?? pendingRegulationFallback(verifiedAt),
+  };
+}
+
+/** A zone in a jurisdiction whose rules this path has not certified. */
+function uncertifiedJurisdiction(zone: ZoneResolution, verifiedAt: string): RegulatoryResult {
+  return {
+    status: "UNKNOWN",
+    summary:
+      `${zone.officialName ?? "This zone"} is outside the jurisdictions whose hunting rules North Ground has certified. ` +
+      "That is a gap in North Ground's coverage, not a statement that there is no season.",
+    legalTime: { status: "NOT_AVAILABLE", text: "Legal hunting hours are not available for this jurisdiction." },
+    requirements: [],
+    limitations: [],
+    sourceIds: [zone.sourceId],
+    verifiedAt,
   };
 }
 
@@ -109,7 +130,7 @@ export async function evaluateHunt(input: HuntInput, dependencies: HuntDependenc
   const knowledge = await repository.getContextualBlocks({
     locale: "en-CA",
     countryId: "country:ca",
-    jurisdictionIds: ["jurisdiction:ca-on"],
+    jurisdictionIds: [zone.jurisdictionId ?? "jurisdiction:ca-on"],
     zoneIds,
     speciesIds: [input.speciesId],
     date: input.date,

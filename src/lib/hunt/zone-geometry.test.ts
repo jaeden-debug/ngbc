@@ -61,11 +61,11 @@ test("a viewport outside supported geography requests nothing", async () => {
 });
 
 test("Canadian and United States jurisdictions stay distinguishable", () => {
-  assert.deepEqual(ZONE_LAYERS.map((layer) => layer.country), ["CA"]);
+  assert.ok(ZONE_LAYERS.every((layer) => layer.country === "CA"));
   assert.equal(layerForPoint(45.23, -77.94)?.jurisdictionName, "Ontario");
   assert.equal(layerForPoint(46.87, -110.36), undefined, "Montana resolves to no drawn layer");
-  // The roadmap counts research inventory, which is not the same claim as coverage.
-  assert.equal(COVERAGE_ROADMAP.drawnJurisdictions, ZONE_LAYERS.length);
+  // A registered layer is not a drawn one: only layers Hunt serves are counted.
+  assert.equal(COVERAGE_ROADMAP.drawnJurisdictions, ZONE_LAYERS.filter((layer) => layer.serving).length);
   assert.ok(COVERAGE_ROADMAP.unitedStatesInDevelopment > 0);
 });
 

@@ -22,6 +22,12 @@ export interface HuntInput {
 export interface ZoneResolution {
   status: "RESOLVED" | "UNKNOWN" | "PROVIDER_ERROR";
   zoneId?: CanonicalId<"management_zone">;
+  /**
+   * The jurisdiction whose official layer this zone belongs to, read from the
+   * zone itself — never from which bounding box the point happened to fall in.
+   * Ontario's box reaches into Québec and Manitoba, so the box is not an answer.
+   */
+  jurisdictionId?: CanonicalId<"jurisdiction">;
   officialName?: string;
   locationAccuracy?: string;
   verificationFlag?: string;

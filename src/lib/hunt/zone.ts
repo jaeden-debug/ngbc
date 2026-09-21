@@ -1,3 +1,4 @@
+import type { CanonicalId } from "../content-contract/index.ts";
 import type { ZoneResolution } from "./types.ts";
 import { defaultSupabaseServerClient, SupabaseServerConfigurationError } from "../supabase/server.ts";
 
@@ -64,6 +65,19 @@ function displayRings(rings: Position[][], maximumPoints = 320): number[][][] {
   });
 }
 
+/**
+ * The jurisdiction a canonical zone id belongs to.
+ *
+ * Every adapter mints ids as `management_zone:<country>-<subdivision>-…`
+ * (ca-on-wmu-57, ca-qc-zone-10o, ca-mb-gha-38), and the ingestion tests hold
+ * each adapter to it. Reading the jurisdiction from the zone is what keeps a
+ * Québec zone found inside Ontario's bounding box from being called a WMU.
+ */
+export function jurisdictionOfZoneId(zoneId: string | undefined): CanonicalId<"jurisdiction"> | undefined {
+  const match = /^management_zone:([a-z]{2}-[a-z]{2})-/.exec(zoneId ?? "");
+  return match ? (`jurisdiction:${match[1]}` as CanonicalId<"jurisdiction">) : undefined;
+}
+
 export async function resolveOntarioWmuFromOfficialGis(
   latitude: number,
   longitude: number,
@@ -109,6 +123,7 @@ export async function resolveOntarioWmuFromOfficialGis(
     return {
       status: "RESOLVED",
       zoneId: `management_zone:ca-on-wmu-${officialName.toLowerCase()}`,
+      jurisdictionId: "jurisdiction:ca-on",
       officialName: `Wildlife Management Unit ${officialName}`,
       locationAccuracy: feature.properties.LOCATION_ACCURACY,
       verificationFlag: feature.properties.VERIFICATION_STATUS_FLG,
@@ -162,6 +177,7 @@ export async function resolveOntarioWmuFromSupabase(
     return {
       status: "RESOLVED",
       zoneId: row.canonical_id as ZoneResolution["zoneId"],
+      jurisdictionId: jurisdictionOfZoneId(row.canonical_id),
       officialName: row.official_name,
       locationAccuracy: row.location_accuracy ?? undefined,
       verificationFlag: "Verified",
@@ -195,3 +211,10 @@ export async function resolveOntarioWmu(
   }
   return resolveOntarioWmuFromOfficialGis(latitude, longitude, fetcher);
 }
+
+/**
+ * Resolve a point to its official management zone, in whichever jurisdiction's
+ * registry contains it. The historical name above is kept for its callers; the
+ * behaviour was never Ontario-only once PostGIS became the provider.
+ */
+export const resolveZone = resolveOntarioWmu;

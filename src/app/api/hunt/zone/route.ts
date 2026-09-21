@@ -1,6 +1,6 @@
 import { isWithinSupportedBounds } from "../../../../lib/hunt/coverage";
-import { resolveOntarioWmu } from "../../../../lib/hunt/zone";
-import { layerForPoint, zoneCoverage } from "../../../../lib/hunt/zone-layers";
+import { resolveZone } from "../../../../lib/hunt/zone";
+import { designationFromOfficialName, layerForPoint, layerForResolution, zoneCoverage } from "../../../../lib/hunt/zone-layers";
 import { createRateLimiter, getClientAddress } from "../../../../lib/newsletter/rate-limit";
 import { SITE_URL } from "../../../../lib/site";
 
@@ -59,8 +59,10 @@ export async function POST(request: Request): Promise<Response> {
     });
   }
 
-  const layer = layerForPoint(latitude, longitude);
-  if (!layer || !isWithinSupportedBounds(latitude, longitude)) {
+  // The extent check only decides whether to ask the registry at all. Which
+  // jurisdiction a zone belongs to comes from the zone, below.
+  const hint = layerForPoint(latitude, longitude);
+  if (!hint || !isWithinSupportedBounds(latitude, longitude)) {
     return json({
       status: "UNSUPPORTED",
       message:
@@ -69,16 +71,33 @@ export async function POST(request: Request): Promise<Response> {
     });
   }
 
-  const resolution = await resolveOntarioWmu(latitude, longitude);
+  const resolution = await resolveZone(latitude, longitude);
   if (resolution.status !== "RESOLVED") {
     return json({
       status: resolution.status,
       message: resolution.message,
-      layer: { jurisdictionName: layer.jurisdictionName, officialTerm: layer.officialTerm, authority: layer.authority },
+      layer: { jurisdictionName: hint.jurisdictionName, officialTerm: hint.officialTerm, authority: hint.authority },
     });
   }
 
-  const zoneName = resolution.officialName?.replace(/^Wildlife Management Unit\s+/i, "") ?? "";
+  const presented = layerForResolution(resolution);
+  if (presented.kind !== "SERVING") {
+    /* A zone from another jurisdiction's registry: never answered in the
+       terms of the layer whose box the point happened to fall in. */
+    return json({
+      status: "UNSUPPORTED",
+      message:
+        presented.kind === "NOT_SERVING"
+          ? `This point is in ${presented.layer.jurisdictionName}. North Ground holds its official ` +
+            `${presented.layer.officialTerm.toLowerCase()} boundaries but has not finished certifying them against ` +
+            `${presented.layer.authority}, so it will not name a zone here yet.`
+          : "North Ground does not yet publish official hunting-zone boundaries for this area. " +
+            "That is a gap in our coverage, not a statement about hunting there.",
+    });
+  }
+
+  const { layer } = presented;
+  const zoneName = designationFromOfficialName(layer, resolution.officialName);
   return json({
     status: "RESOLVED",
     zone: {

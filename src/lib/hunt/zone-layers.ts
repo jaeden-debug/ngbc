@@ -42,6 +42,15 @@ export interface ZoneLayer {
   nameField?: string;
   /** Approximate extent, used to skip requests the layer cannot answer. */
   bounds: { minLatitude: number; maxLatitude: number; minLongitude: number; maxLongitude: number };
+  /**
+   * Whether Hunt presents zones from this layer. A layer can be published in the
+   * registry before its parity with the authority is certified; until then a
+   * point inside it is answered as "not yet covered", never in another
+   * jurisdiction's terms.
+   */
+  serving: boolean;
+  /** How the registry prefixes this layer's official names, so the bare designation can be shown. */
+  officialNamePrefix: string;
 }
 
 export const ONTARIO_WMU_ENDPOINT =
@@ -69,6 +78,26 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     endpoint: ONTARIO_WMU_ENDPOINT,
     nameField: "OFFICIAL_NAME",
     bounds: { minLatitude: 41.5, maxLatitude: 57, minLongitude: -95.5, maxLongitude: -74 },
+    serving: true,
+    officialNamePrefix: "Wildlife Management Unit ",
+  },
+  {
+    id: "layer:ca-qc-zone-chasse",
+    jurisdictionId: "jurisdiction:ca-qc",
+    jurisdictionName: "Québec",
+    country: "CA",
+    // The ministry's own term, in French. It is not translated into "unit".
+    officialTerm: "Zone de chasse",
+    officialTermShort: "Zone",
+    coverage: "IN_DEVELOPMENT",
+    coverageNote:
+      "Official Québec hunting-zone boundaries come from the ministry's own GeoServer, the service behind Forêt ouverte. " +
+      "They are not presented until North Ground's copy is parity-certified against that service.",
+    authority: "Gouvernement du Québec",
+    sourceId: "source:ca-qc-zone-chasse-service",
+    bounds: { minLatitude: 44.9, maxLatitude: 62.7, minLongitude: -79.9, maxLongitude: -57 },
+    serving: false,
+    officialNamePrefix: "Zone de chasse ",
   },
 ];
 
@@ -95,7 +124,8 @@ export const CERTIFIED_ZONE_NAMES: ReadonlySet<string> = new Set(
  * never a claim that its rules or boundaries are usable.
  */
 export const COVERAGE_ROADMAP = {
-  drawnJurisdictions: 1,
+  // Counted, not typed: a registered layer that is not served yet is not drawn.
+  drawnJurisdictions: ZONE_LAYERS.filter((layer) => layer.serving).length,
   certifiedUnits: certifiedUnits.certifiedUnits.length,
   officialUnits: certifiedUnits.officialUnitCount,
   canadaInDevelopment: 13,
@@ -106,8 +136,15 @@ export const COVERAGE_ROADMAP = {
     "not drawn until their official source has been verified.",
 } as const;
 
+/**
+ * A layer whose extent contains the point — a hint for which registry to ask.
+ *
+ * Only serving layers are offered, so a certified layer is never shadowed by one
+ * that is not presented yet. Presentation must still come from the resolved
+ * zone (`layerForResolution`), because extents overlap.
+ */
 export function layerForPoint(latitude: number, longitude: number): ZoneLayer | undefined {
-  return ZONE_LAYERS.find(
+  return ZONE_LAYERS.filter((layer) => layer.serving).find(
     (layer) =>
       latitude >= layer.bounds.minLatitude && latitude <= layer.bounds.maxLatitude &&
       longitude >= layer.bounds.minLongitude && longitude <= layer.bounds.maxLongitude,
@@ -116,6 +153,34 @@ export function layerForPoint(latitude: number, longitude: number): ZoneLayer | 
 
 export function layerById(id: string): ZoneLayer | undefined {
   return ZONE_LAYERS.find((layer) => layer.id === id);
+}
+
+export function layerForJurisdiction(jurisdictionId: string | undefined): ZoneLayer | undefined {
+  return jurisdictionId ? ZONE_LAYERS.find((layer) => layer.jurisdictionId === jurisdictionId) : undefined;
+}
+
+/**
+ * The layer a resolved zone is presented in: the one its own jurisdiction owns.
+ *
+ * Bounding boxes overlap — Ontario's reaches into Québec and Manitoba — so the
+ * box a point falls in is only a hint about which registry to ask, never the
+ * answer. A zone from a jurisdiction Hunt does not serve yet, or has not
+ * registered at all, is not presented, and must not be dressed in another
+ * jurisdiction's terms.
+ */
+export function layerForResolution(resolution: { status: string; jurisdictionId?: string }):
+  | { kind: "SERVING"; layer: ZoneLayer }
+  | { kind: "NOT_SERVING"; layer: ZoneLayer }
+  | { kind: "UNREGISTERED" } {
+  const layer = layerForJurisdiction(resolution.jurisdictionId);
+  if (!layer) return { kind: "UNREGISTERED" };
+  return layer.serving ? { kind: "SERVING", layer } : { kind: "NOT_SERVING", layer };
+}
+
+/** The bare designation, from the registry's official name ("Wildlife Management Unit 57" → "57"). */
+export function designationFromOfficialName(layer: ZoneLayer, officialName: string | undefined): string {
+  const name = officialName?.trim() ?? "";
+  return name.startsWith(layer.officialNamePrefix) ? name.slice(layer.officialNamePrefix.length) : name;
 }
 
 /** Coverage of a single named zone, which is stricter than its layer's coverage. */
