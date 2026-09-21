@@ -4,7 +4,9 @@ import HuntComposer from "../../components/hunt/HuntComposer";
 import HuntNav from "../../components/hunt/HuntNav";
 import styles from "../../components/hunt/Hunt.module.css";
 import { COVERAGE_SUMMARY } from "../../lib/hunt/coverage";
-import { isSupportedSpecies, type SpeciesSelectorOption, type SupportedSpeciesId } from "../../lib/hunt/coverage";
+import type { SpeciesSelectorOption } from "../../lib/hunt/coverage";
+import type { CanonicalId } from "../../lib/content-contract";
+import { isCertifiedSpecies } from "../../lib/hunt/regulatory/registry";
 import { contentRepository } from "../../lib/content/repository";
 import { COVERAGE_ROADMAP } from "../../lib/hunt/zone-layers";
 import { HUNT_DEFAULT_TIME_ZONE, jurisdictionTodayIso } from "../../lib/hunt/date";
@@ -88,7 +90,7 @@ type Props = { searchParams: Promise<{ species?: string | string[] }> };
 
 export default async function HuntPage({ searchParams }: Props) {
   const requestedSpecies = (await searchParams).species;
-  const initialSpeciesId: SupportedSpeciesId | null = typeof requestedSpecies === "string" && isSupportedSpecies(requestedSpecies)
+  const initialSpeciesId: CanonicalId<"species"> | null = typeof requestedSpecies === "string" && isCertifiedSpecies(requestedSpecies)
     ? requestedSpecies
     : null;
   const resources = await contentRepository.getPublishedResources({ locale: "en-CA" });

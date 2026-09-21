@@ -1,6 +1,6 @@
 import type { CanonicalId } from "../../content-contract/index.ts";
-import { isSupportedSpecies } from "../coverage.ts";
 import { isValidIso } from "../date.ts";
+import { isCertifiedSpecies } from "../regulatory/registry.ts";
 import { getClientAddress, type RateLimiter } from "../../newsletter/rate-limit.ts";
 import { parseBounds } from "../zone-geometry.ts";
 import { fetchOverlayGeometry, overlayLayerById } from "./overlay-layers.ts";
@@ -74,7 +74,7 @@ export function createZoneStatusHandler({ limiter, canonicalOrigin }: { limiter:
       return json({ status: "ERROR", message: "Request body must be valid JSON." }, 400);
     }
     const { speciesId, date, zones } = body;
-    if (!isSupportedSpecies(speciesId) || !isValidIso(date) || !Array.isArray(zones) || zones.length > MAX_ZONES) {
+    if (!isCertifiedSpecies(speciesId) || !isValidIso(date) || !Array.isArray(zones) || zones.length > MAX_ZONES) {
       return json({ status: "ERROR", message: "Provide a supported species, an ISO date and at most 450 zones." }, 400);
     }
     const refs: ZoneRef[] = [];

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { todayIso } from "../../lib/hunt/date";
-import { COVERAGE_SUMMARY, COVERED_JURISDICTIONS, hasSpeciesCoverageIn, isWithinSupportedBounds, type SpeciesSelectorOption, type SupportedSpeciesId } from "../../lib/hunt/coverage";
+import { COVERAGE_SUMMARY, COVERED_JURISDICTIONS, hasSpeciesCoverageIn, isWithinSupportedBounds, type SpeciesSelectorOption } from "../../lib/hunt/coverage";
 import type { CanonicalId } from "../../lib/content-contract";
 import { explorationReducer, INITIAL_EXPLORATION, roundedPoint, type HuntLocation } from "../../lib/hunt/exploration/map-state";
 import { COVERAGE_WORDING } from "../../lib/hunt/zone-layers";
@@ -44,7 +44,7 @@ const GEOLOCATION_MESSAGES: Record<number, string> = {
  * a real answer — and only the regulatory evaluation waits for a date and a species,
  * because only those three together can say what applies.
  */
-export default function HuntComposer({ googleMapsApiKey, speciesOptions, initialDate, initialSpeciesId = null }: { googleMapsApiKey?: string; speciesOptions: SpeciesSelectorOption[]; initialDate: string; initialSpeciesId?: SupportedSpeciesId | null }) {
+export default function HuntComposer({ googleMapsApiKey, speciesOptions, initialDate, initialSpeciesId = null }: { googleMapsApiKey?: string; speciesOptions: SpeciesSelectorOption[]; initialDate: string; initialSpeciesId?: CanonicalId<"species"> | null }) {
   /**
    * The map's interaction state, including the one hunt location. The device's
    * own position lives in `exploration.self` and is never read below: only
@@ -59,7 +59,7 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
    * applied immediately after mount, below.
    */
   const [date, setDate] = useState<string>(initialDate);
-  const [speciesId, setSpeciesId] = useState<SupportedSpeciesId | null>(initialSpeciesId);
+  const [speciesId, setSpeciesId] = useState<CanonicalId<"species"> | null>(initialSpeciesId);
   const [locateState, setLocateState] = useState<LocateState>({ kind: "idle" });
   const [zoneState, setZoneState] = useState<ZoneState>({ kind: "idle" });
   const [evaluation, setEvaluation] = useState<EvaluationState>({ kind: "idle" });

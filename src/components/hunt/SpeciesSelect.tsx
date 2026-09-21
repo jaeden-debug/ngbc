@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { hasSpeciesCoverageIn, speciesAsksQuestionIn, type SpeciesSelectorOption, type SupportedSpeciesId } from "../../lib/hunt/coverage";
+import { hasSpeciesCoverageIn, speciesAsksQuestionIn, type SpeciesSelectorOption } from "../../lib/hunt/coverage";
 import type { CanonicalId } from "../../lib/content-contract";
 import styles from "./Hunt.module.css";
 
 interface SpeciesSelectProps {
-  value: SupportedSpeciesId | null;
-  onChange: (id: SupportedSpeciesId) => void;
+  value: CanonicalId<"species"> | null;
+  onChange: (id: CanonicalId<"species">) => void;
   options: SpeciesSelectorOption[];
   jurisdictionId?: CanonicalId<"jurisdiction">;
   disabled?: boolean;
@@ -78,7 +78,7 @@ export default function SpeciesSelect({ value, onChange, options, jurisdictionId
   function choose(index: number) {
     const species = visibleOptions[index];
     if (!species || !hasSpeciesCoverageIn(species, jurisdictionId)) return;
-    onChange(species.id as SupportedSpeciesId);
+    onChange(species.id);
     setOpen(false);
     buttonRef.current?.focus();
   }
