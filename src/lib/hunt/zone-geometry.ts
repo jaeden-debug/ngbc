@@ -1,3 +1,4 @@
+import { labelPlacement } from "./exploration/label-point.ts";
 import { designationOfRaw, layerById, ZONE_LAYERS, zoneCoverage, type ZoneCoverageStatus, type ZoneLayer } from "./zone-layers.ts";
 
 /**
@@ -26,6 +27,15 @@ export interface ZoneFeature {
   coverage: ZoneCoverageStatus;
   /** Rings as [[[lng, lat], …], …], already generalised for the requested zoom. */
   rings: number[][][];
+  /**
+   * Where the designation is written: inside the zone's largest part, so a
+   * multipart zone is labelled once. A drawing aid, never a membership test.
+   */
+  labelPoint?: [number, number];
+  /** Degrees spanned by the largest part, so a label is shown only where it fits. */
+  labelSpan?: [number, number];
+  /** How many polygon parts the authority publishes this zone as. */
+  parts?: number;
 }
 
 export interface ZoneGeometryResult {
@@ -98,10 +108,6 @@ interface FeatureCollection {
   features: Array<{ properties: Record<string, unknown>; geometry: PolygonGeometry | null }>;
 }
 
-function ringsOf(geometry: PolygonGeometry): Position[][] {
-  return geometry.type === "Polygon" ? geometry.coordinates : geometry.coordinates.flat();
-}
-
 /* ── Cache ───────────────────────────────────────────────────────────────── */
 
 interface CacheEntry { expiresAt: number; value: ZoneGeometryResult }
@@ -168,7 +174,11 @@ export async function fetchLayerGeometry(
       throw new Error("Unexpected zone service response");
     }
 
-    const features: ZoneFeature[] = [];
+    /* One zone, one feature. An authority may publish a unit as several
+       records — Alberta serves WMU 718 as six — and each would otherwise be
+       drawn, keyed and labelled as if it were a zone of its own. Records are
+       grouped by designation, in the order the authority returned them. */
+    const polygonsByName = new Map<string, Position[][][]>();
     for (const feature of payload.features) {
       /* The authority's designation, read in the layer's own encoding (Alberta
          stores WMU 102 as "00102"); null is a feature that is not a zone, such
@@ -176,14 +186,23 @@ export async function fetchLayerGeometry(
       const name = designationOfRaw(layer, feature.properties?.[layer.nameField]);
       const geometry = feature.geometry;
       if (!name || !geometry || (geometry.type !== "Polygon" && geometry.type !== "MultiPolygon")) continue;
-      const rings = ringsOf(geometry).filter((ring) => ring.length >= 4);
-      if (!rings.length) continue;
+      const polygons = (geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates)
+        .map((polygon) => polygon.filter((ring) => ring.length >= 4))
+        .filter((polygon) => polygon.length > 0);
+      if (!polygons.length) continue;
+      polygonsByName.set(name, [...(polygonsByName.get(name) ?? []), ...polygons]);
+    }
+
+    const features: ZoneFeature[] = [];
+    for (const [name, polygons] of polygonsByName) {
+      const placement = labelPlacement({ type: "MultiPolygon", coordinates: polygons });
       features.push({
         layerId: layer.id,
         name,
         label: `${layer.officialTermShort} ${name}`,
         coverage: zoneCoverage(layer, name),
-        rings,
+        rings: polygons.flat(),
+        ...(placement ? { labelPoint: placement.point, labelSpan: placement.span, parts: placement.parts } : {}),
       });
     }
 

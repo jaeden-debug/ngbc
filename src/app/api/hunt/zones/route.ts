@@ -1,3 +1,4 @@
+import { overlayLayersFor } from "../../../../lib/hunt/exploration/overlay-layers";
 import { fetchZoneGeometry, parseBounds } from "../../../../lib/hunt/zone-geometry";
 import { COVERAGE_ROADMAP, layerById } from "../../../../lib/hunt/zone-layers";
 import { createRateLimiter, getClientAddress } from "../../../../lib/newsletter/rate-limit";
@@ -67,6 +68,8 @@ export async function GET(request: Request): Promise<Response> {
       layer: result.layerId ? describe(result.layerId) : null,
       layers: (result.layers ?? []).map((outcome) => ({ ...describe(outcome.layerId), status: outcome.status })),
       roadmap: COVERAGE_ROADMAP,
+      // Special regulatory layers the authority serves for this view, drawn only on request.
+      overlays: overlayLayersFor(bounds),
       features: result.features,
     },
     200,

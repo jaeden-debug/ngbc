@@ -106,6 +106,7 @@ export async function POST(request: Request): Promise<Response> {
     zone: {
       id: resolution.zoneId,
       layerId: layer.id,
+      designation: zoneName,
       officialName: resolution.officialName,
       shortLabel: zoneName ? `${layer.officialTermShort} ${zoneName}` : resolution.officialName,
       coverage: zoneCoverage(layer, zoneName),
