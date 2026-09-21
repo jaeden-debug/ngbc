@@ -22,6 +22,18 @@ export function createHuntBriefRequestPayload(
     warnings: input.warnings ? [...input.warnings] : undefined,
     officialSources: input.officialSources?.map((source) => ({ ...source })),
     resourceReferences: input.resourceReferences?.map((resource) => ({ ...resource })),
+    /* The hunter's own answers and the Ready to Hunt checklist are part of what the
+       result said, so they travel with it. Both are already display text with no
+       location in them; the server validates them field by field again. */
+    assumptions: input.assumptions?.map((assumption) => ({ ...assumption })),
+    readiness: input.readiness
+      ? {
+          ...input.readiness,
+          authorizations: input.readiness.authorizations.map((item) => ({ ...item })),
+          orange: input.readiness.orange ? { ...input.readiness.orange } : undefined,
+          legalMethods: [...input.readiness.legalMethods],
+        }
+      : undefined,
     location:
       input.location?.shareApproved === true && input.location.generalLabel
         ? {
