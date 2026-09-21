@@ -1,4 +1,5 @@
 import type { CanonicalId, IsoDate } from "../../content-contract/index.ts";
+import { contentRepository } from "../../content/repository.ts";
 import { speciesById } from "../coverage.ts";
 import { regulatoryEntryFor, type RegulatoryEntry, type RegulatoryOutcome } from "../regulatory/registry.ts";
 import type { ZoneResolution } from "../types.ts";
@@ -59,6 +60,7 @@ const ZONE_SCOPE_PHRASE = "where in it you hunt.";
 
 function stateOf(outcome: RegulatoryOutcome): ExplorationState {
   if (outcome.completeness === "NEEDS_INPUT") return "CHECK_REQUIREMENTS";
+  if (outcome.exceptInside?.length && outcome.regulation.status === "NEEDS_VERIFICATION") return "SEASON_EXCEPT_AREAS";
   switch (outcome.regulation.status) {
     // OPEN is never produced by the engine today; if it ever is, the map still
     // describes a season, not the hunter's right to use it.
@@ -134,7 +136,7 @@ async function summarizeSpecies(
     { verifiedAt: new Date(0).toISOString(), scope: "ZONE" },
   );
   const state = stateOf(outcome);
-  const season = state === "SEASON_AVAILABLE" && outcome.regulation.season
+  const season = (state === "SEASON_AVAILABLE" || state === "SEASON_EXCEPT_AREAS") && outcome.regulation.season
     ? { opens: outcome.regulation.season.opens, closes: outcome.regulation.season.closes }
     : undefined;
   const detail = detailOf(outcome, state);
@@ -143,14 +145,15 @@ async function summarizeSpecies(
     : undefined;
   return remember(key, {
     speciesId,
-    name: speciesById(speciesId)?.displayName ?? speciesId.replace("species:", "").replace(/-/g, " "),
+    name: await speciesName(speciesId),
     state,
     ...(season ? { season } : {}),
     ...(state === "CHECK_REQUIREMENTS" && outcome.required ? { question: outcome.required.question } : {}),
     ...(detail ? { detail } : {}),
+    ...(state === "SEASON_EXCEPT_AREAS" ? { exceptInside: outcome.exceptInside } : {}),
     ...(verifiedAt ? { verifiedAt } : {}),
     // Only an in-season species' conditions are in force on this date.
-    requirements: state === "SEASON_AVAILABLE" ? outcome.regulation.requirements : [],
+    requirements: state === "SEASON_AVAILABLE" || state === "SEASON_EXCEPT_AREAS" ? outcome.regulation.requirements : [],
   });
 }
 
@@ -159,6 +162,14 @@ function publicSummary(cached: CachedSummary): SpeciesZoneSummary {
   const summary: SpeciesZoneSummary & { requirements?: string[] } = { ...cached };
   delete summary.requirements;
   return summary;
+}
+
+/** The canonical library's name for a species; the id, readably, only if the library has none. */
+async function speciesName(speciesId: CanonicalId<"species">): Promise<string> {
+  const known = speciesById(speciesId)?.displayName ?? (await contentRepository.getSpecies(speciesId))?.title;
+  if (known) return known;
+  const words = speciesId.replace("species:", "").replace(/-/g, " ");
+  return words.charAt(0).toUpperCase() + words.slice(1);
 }
 
 function speciesIn(entry: RegulatoryEntry): CanonicalId<"species">[] {
@@ -178,9 +189,18 @@ export async function summarizeZone(ref: ZoneRef, date: string): Promise<ZoneSum
     ? await Promise.all(speciesIds.map((speciesId) => summarizeSpecies(entry, layer, designation, speciesId, date)))
     : [];
 
-  const order: ExplorationState[] = ["SEASON_AVAILABLE", "CHECK_REQUIREMENTS", "NEEDS_VERIFICATION", "CONFLICT", "CLOSED", "UNKNOWN", "NOT_CERTIFIED"];
+  const order: ExplorationState[] = ["SEASON_AVAILABLE", "SEASON_EXCEPT_AREAS", "CHECK_REQUIREMENTS", "NEEDS_VERIFICATION", "CONFLICT", "CLOSED", "UNKNOWN", "NOT_CERTIFIED"];
   species.sort((a, b) => order.indexOf(a.state) - order.indexOf(b.state) || a.name.localeCompare(b.name));
 
+  const areas = entry?.specialAreasInZone ? entry.specialAreasInZone(designation) : undefined;
+  const specialAreas = areas
+    ? await Promise.all(areas.map(async (area) => ({
+        name: area.name,
+        layer: area.layer,
+        statedAs: area.statedAs,
+        species: await Promise.all(area.speciesIds.map((id) => speciesName(id as CanonicalId<"species">))),
+      })))
+    : null;
   const requirements = [...new Set(species.flatMap((summary) =>
     // Bag limits belong to a species' full answer, not to the zone.
     summary.requirements.filter((line) => !line.startsWith("Bag limit"))))];
@@ -202,10 +222,12 @@ export async function summarizeZone(ref: ZoneRef, date: string): Promise<ZoneSum
     date,
     species: species.map(publicSummary),
     requirements,
-    pointOnlyChecks: entry?.pointOnlyChecks ?? null,
+    // An indexed jurisdiction whose index lacks this zone has not been checked here — never "nothing there".
+    pointOnlyChecks: entry?.pointOnlyChecks ?? (areas === null ? "published special areas" : null),
+    specialAreas,
     counts: {
       certifiedHere: species.filter((summary) => summary.state !== "UNKNOWN" && summary.state !== "NOT_CERTIFIED").length,
-      inSeason: species.filter((summary) => summary.state === "SEASON_AVAILABLE").length,
+      inSeason: species.filter((summary) => summary.state === "SEASON_AVAILABLE" || summary.state === "SEASON_EXCEPT_AREAS").length,
       dependsOnHunter: species.filter((summary) => summary.state === "CHECK_REQUIREMENTS").length,
       jurisdictionSpecies: speciesIds.length,
     },

@@ -1,6 +1,8 @@
 import type { CanonicalId, IsoDate, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/ca-mb-2026.json" with { type: "json" };
 import overlaysJson from "../../../../content/regulatory/ca-mb-overlays.json" with { type: "json" };
+import overlayZonesJson from "../../../../content/regulatory/ca-mb-overlay-zones.json" with { type: "json" };
+import type { OverlayZoneIndex } from "../overlay-zones.ts";
 import type { OverlayCatalogue } from "../overlays.ts";
 import {
   conditionalCoverage, evaluateConditional,
@@ -149,6 +151,9 @@ export const MANITOBA_VOCABULARY: ConditionalVocabulary = {
 
 /** Refuges, special conservation areas, WMAs and lands closed to hunting. */
 export const MANITOBA_OVERLAYS = overlaysJson as unknown as OverlayCatalogue;
+
+/** Which of those areas lie inside each GHA, from `scripts/build-overlay-zone-index.mjs`. */
+export const MANITOBA_OVERLAY_ZONES = overlayZonesJson as unknown as OverlayZoneIndex;
 
 /**
  * Which restriction tokens reach a species. "firearm" reaches both species:

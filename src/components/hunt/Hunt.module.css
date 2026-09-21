@@ -1045,7 +1045,8 @@
 .mapLegend { flex-wrap: wrap; row-gap: 4px; }
 
 .legendGlyph { font-size: 0.8rem; line-height: 1; }
-.legendGlyph[data-state="SEASON_AVAILABLE"] { color: var(--ng-open); }
+.legendGlyph[data-state="SEASON_AVAILABLE"],
+.legendGlyph[data-state="SEASON_EXCEPT_AREAS"] { color: var(--ng-open); }
 .legendGlyph[data-state="CHECK_REQUIREMENTS"] { color: var(--ng-conditional); }
 .legendGlyph[data-state="NEEDS_VERIFICATION"],
 .legendGlyph[data-state="UNKNOWN"],
@@ -1372,7 +1373,8 @@
   background: var(--ng-unknown-bg);
 }
 
-.exploreChip[data-state="SEASON_AVAILABLE"] { color: var(--ng-open); background: var(--ng-open-bg); }
+.exploreChip[data-state="SEASON_AVAILABLE"],
+.exploreChip[data-state="SEASON_EXCEPT_AREAS"] { color: var(--ng-open); background: var(--ng-open-bg); }
 .exploreChip[data-state="CHECK_REQUIREMENTS"] { color: var(--ng-conditional); background: var(--ng-conditional-bg); }
 .exploreChip[data-state="CONFLICT"] { color: var(--ng-conflict); background: var(--ng-conflict-bg); }
 .exploreChip[data-state="CLOSED"] { color: var(--ng-closed); background: var(--ng-closed-bg); }
@@ -1474,7 +1476,8 @@
   color: var(--ng-black);
 }
 
-.mapZoneLabel[data-state="SEASON_AVAILABLE"] { border-color: rgba(124, 192, 138, 0.7); }
+.mapZoneLabel[data-state="SEASON_AVAILABLE"],
+.mapZoneLabel[data-state="SEASON_EXCEPT_AREAS"] { border-color: rgba(124, 192, 138, 0.7); }
 .mapZoneLabel[data-state="CHECK_REQUIREMENTS"] { border-color: rgba(224, 160, 74, 0.7); }
 .mapZoneLabel[data-state="CLOSED"] { color: var(--ng-bone-dim); }
 
@@ -1641,6 +1644,7 @@
 }
 
 .zoneCanvasShape[data-state="SEASON_AVAILABLE"] { fill: rgba(124, 192, 138, 0.3); }
+.zoneCanvasShape[data-state="SEASON_EXCEPT_AREAS"] { fill: rgba(124, 192, 138, 0.16); }
 .zoneCanvasShape[data-state="CHECK_REQUIREMENTS"] { fill: rgba(224, 160, 74, 0.24); }
 .zoneCanvasShape[data-state="NEEDS_VERIFICATION"] { fill: rgba(201, 162, 106, 0.16); }
 .zoneCanvasShape[data-state="CONFLICT"] { fill: rgba(217, 122, 108, 0.2); }

@@ -215,6 +215,21 @@ export function ZoneCard({
             )}
           />
           <SpeciesGroup
+            state="SEASON_EXCEPT_AREAS"
+            species={by("SEASON_EXCEPT_AREAS")}
+            render={(entry) => (
+              <>
+                <span className={styles.exploreName}>{entry.name}</span>
+                <span className={styles.exploreMeta}>
+                  {entry.season ? `Until ${readableDay(entry.season.closes)}, e` : "E"}xcept
+                  {entry.exceptInside?.length === 1
+                    ? ` inside ${entry.exceptInside[0]}`
+                    : ` in the ${entry.exceptInside?.length ?? 0} restricted areas listed below`}
+                </span>
+              </>
+            )}
+          />
+          <SpeciesGroup
             state="CHECK_REQUIREMENTS"
             species={by("CHECK_REQUIREMENTS")}
             render={(entry) => (
@@ -237,12 +252,28 @@ export function ZoneCard({
           <SpeciesGroup state="CONFLICT" species={by("CONFLICT")} />
           <SpeciesGroup state="CLOSED" species={by("CLOSED")} />
           <SpeciesGroup state="UNKNOWN" species={by("UNKNOWN")} />
-          {by("SEASON_AVAILABLE").length ? (
+          {by("SEASON_AVAILABLE").length || by("SEASON_EXCEPT_AREAS").length ? (
             <p className={styles.mapInspectorNote}>
               “In season” means a season is open for every licence the rules recognise. It is not a licence check,
               and legal hours and local restrictions still apply.
             </p>
           ) : null}
+        </div>
+      ) : null}
+
+      {summary?.specialAreas?.length ? (
+        <div className={styles.exploreGroup}>
+          <h3 className={styles.exploreGroupTitle}>Restricted areas inside {zoneLabel}</h3>
+          <ul className={styles.exploreNotes}>
+            {summary.specialAreas.slice(0, 4).map((area) => (
+              <li key={`${area.name}|${area.statedAs}`}>
+                <strong>{area.name}</strong> — “{area.statedAs}” <span className={styles.exploreMeta}>Affects {area.species.join(", ").toLowerCase()}.</span>
+              </li>
+            ))}
+            {summary.specialAreas.length > 4 ? (
+              <li>{summary.specialAreas.length - 4} more; switch them on under Layers to see where they are.</li>
+            ) : null}
+          </ul>
         </div>
       ) : null}
 

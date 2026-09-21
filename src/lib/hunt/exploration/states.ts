@@ -9,6 +9,7 @@ import type { ZoneCoverageStatus } from "../zone-layers.ts";
 
 export type ExplorationState =
   | "SEASON_AVAILABLE"
+  | "SEASON_EXCEPT_AREAS"
   | "CHECK_REQUIREMENTS"
   | "CLOSED"
   | "NEEDS_VERIFICATION"
@@ -22,6 +23,11 @@ export const EXPLORATION_WORDING: Record<ExplorationState, { label: string; glyp
     label: "In season",
     glyph: "●",
     detail: "A season is open on this date for every licence the rules recognise. Licensing, legal hours and restrictions still apply.",
+  },
+  SEASON_EXCEPT_AREAS: {
+    label: "In season outside restricted areas",
+    glyph: "◒",
+    detail: "A season is open across the zone for every licence the rules recognise, except inside the published areas named here, where the authority restricts it.",
   },
   CHECK_REQUIREMENTS: {
     label: "Depends on your hunt",
@@ -70,6 +76,8 @@ export interface SpeciesZoneSummary {
   question?: string;
   /** One sentence the engine produced about this zone, when it adds something. */
   detail?: string;
+  /** For SEASON_EXCEPT_AREAS: the published areas inside the zone the season does not reach. */
+  exceptInside?: string[];
   verifiedAt?: string;
 }
 
@@ -92,6 +100,11 @@ export interface ZoneSummary {
   requirements: string[];
   /** What a zone-wide answer cannot see, in the authority's own categories. */
   pointOnlyChecks: string | null;
+  /**
+   * Published special areas inside the zone that restrict a certified species,
+   * read from the authority's layers. Null where the jurisdiction has none indexed.
+   */
+  specialAreas: Array<{ name: string; layer: string; statedAs: string; species: string[] }> | null;
   counts: { certifiedHere: number; inSeason: number; dependsOnHunter: number; jurisdictionSpecies: number };
   /** The most recent date the underlying rules were read from their source. */
   verifiedAt: string | null;

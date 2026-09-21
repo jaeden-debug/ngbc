@@ -78,8 +78,48 @@ test("an answer that varies inside the zone is not given for the whole zone", as
   const grouse = gha30.species.find((entry) => entry.speciesId === "species:ruffed-grouse")!;
   assert.equal(grouse.state, "NEEDS_VERIFICATION");
   assert.match(grouse.detail ?? "", /Shilo/);
-  // Manitoba's refuges and closed lands are point checks, and the card says so.
-  assert.match(gha30.pointOnlyChecks ?? "", /refuges/);
+  // Manitoba's special areas are indexed per zone, so none is left as a point-only caveat.
+  assert.equal(gha30.pointOnlyChecks, null);
+  assert.ok(gha30.specialAreas?.some((area) => area.name.startsWith("Spruce Woods")));
+});
+
+test("a season that runs across a zone is not claimed inside the restricted areas within it", async () => {
+  // GHA 38 contains closed land, including the portion in the City of Winnipeg.
+  const gha38 = await summarizeZone({ layerId: "layer:ca-mb-gha", designation: "38" }, "2026-10-01");
+  const grouse = gha38.species.find((entry) => entry.speciesId === "species:ruffed-grouse")!;
+  assert.equal(grouse.state, "SEASON_EXCEPT_AREAS");
+  assert.ok(grouse.exceptInside?.includes("Portion of GHA 38 and City of Winnipeg"));
+  assert.ok(grouse.season, "the season window is still stated for the rest of the zone");
+
+  const winnipeg = gha38.specialAreas?.find((area) => area.name === "Portion of GHA 38 and City of Winnipeg");
+  assert.equal(winnipeg?.statedAs, "No person shall hunt or kill wildlife");
+  assert.ok(winnipeg?.species.includes("White-tailed deer"));
+  // "big game other than white-tailed deer": the R.M. of Macdonald portion does not reach deer.
+  const macdonald = gha38.specialAreas?.find((area) => area.name === "Portion of GHA 38 in RM of MacDonald");
+  assert.ok(macdonald && !macdonald.species.includes("White-tailed deer") && macdonald.species.includes("Ruffed grouse"));
+
+  // A zone whose areas restrict nothing it hunts keeps its plain answer.
+  const gha7a = await summarizeZone({ layerId: "layer:ca-mb-gha", designation: "7A" }, "2026-10-01");
+  assert.equal(stateOf(gha7a, "species:ruffed-grouse"), "SEASON_AVAILABLE");
+});
+
+test("the special-area index covers every Game Hunting Area and names only catalogued features", async () => {
+  const index = (await import("../../../../content/regulatory/ca-mb-overlay-zones.json", { with: { type: "json" } })).default as {
+    zones: Record<string, Array<{ layer: string; objectId: number }>>;
+  };
+  const bundle = (await import("../../../../content/regulatory/ca-mb-2026.json", { with: { type: "json" } })).default as {
+    units: Array<{ identifier: string }>;
+  };
+  const catalogue = (await import("../../../../content/regulatory/ca-mb-overlays.json", { with: { type: "json" } })).default as {
+    layers: Array<{ key: string; features: Array<{ objectId: number }> }>;
+  };
+  assert.deepEqual(Object.keys(index.zones).sort(), bundle.units.map((unit) => unit.identifier).sort());
+  for (const entries of Object.values(index.zones)) {
+    for (const { layer, objectId } of entries) {
+      assert.ok(catalogue.layers.find((candidate) => candidate.key === layer)?.features.some((feature) => feature.objectId === objectId),
+        `${layer} ${objectId} is not in the catalogue`);
+    }
+  }
 });
 
 test("zone cards use each jurisdiction's own terms", async () => {

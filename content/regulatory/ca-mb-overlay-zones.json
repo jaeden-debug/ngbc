@@ -1,0 +1,1337 @@
+{
+  "generatedBy": "scripts/build-overlay-zone-index.mjs",
+  "purpose": "Which of the authority's published special areas overlap each zone (intersecting, not merely touching its edge), so a whole-zone answer can say which areas inside it restrict a hunt. Read from the authority's own layers.",
+  "retrievedAt": "2026-09-21",
+  "contentHash": "sha256:9232bd57fb23a24a0fbcc5f61e8b59bf3cf0fb4c0e8059d3e7b0f083976faa09",
+  "jurisdictionId": "jurisdiction:ca-mb",
+  "zoneService": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/Manitoba_Game_Hunting_Areas/FeatureServer/0",
+  "layers": [
+    {
+      "key": "closed",
+      "url": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/Lands_Closed_to_Hunting/FeatureServer/0",
+      "sourceId": "source:ca-mb-lands-closed-to-hunting-service"
+    },
+    {
+      "key": "refuges",
+      "url": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/Manitoba_Wildlife_Lands/FeatureServer/0",
+      "sourceId": "source:ca-mb-wildlife-lands-service"
+    },
+    {
+      "key": "scas",
+      "url": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/Manitoba_Wildlife_Lands/FeatureServer/1",
+      "sourceId": "source:ca-mb-wildlife-lands-service"
+    },
+    {
+      "key": "wmas",
+      "url": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/Manitoba_Wildlife_Lands/FeatureServer/2",
+      "sourceId": "source:ca-mb-wildlife-lands-service"
+    }
+  ],
+  "zones": {
+    "1": [
+      {
+        "layer": "scas",
+        "objectId": 1
+      }
+    ],
+    "2": [
+      {
+        "layer": "closed",
+        "objectId": 24
+      },
+      {
+        "layer": "scas",
+        "objectId": 1
+      },
+      {
+        "layer": "wmas",
+        "objectId": 115
+      }
+    ],
+    "3": [
+      {
+        "layer": "wmas",
+        "objectId": 46
+      },
+      {
+        "layer": "wmas",
+        "objectId": 115
+      },
+      {
+        "layer": "wmas",
+        "objectId": 116
+      }
+    ],
+    "4": [
+      {
+        "layer": "closed",
+        "objectId": 7
+      }
+    ],
+    "5": [
+      {
+        "layer": "closed",
+        "objectId": 8
+      },
+      {
+        "layer": "wmas",
+        "objectId": 103
+      }
+    ],
+    "6": [
+      {
+        "layer": "closed",
+        "objectId": 8
+      },
+      {
+        "layer": "wmas",
+        "objectId": 103
+      }
+    ],
+    "7": [
+      {
+        "layer": "wmas",
+        "objectId": 20
+      }
+    ],
+    "8": [
+      {
+        "layer": "closed",
+        "objectId": 1
+      },
+      {
+        "layer": "wmas",
+        "objectId": 20
+      }
+    ],
+    "9": [
+      {
+        "layer": "wmas",
+        "objectId": 115
+      }
+    ],
+    "10": [
+      {
+        "layer": "closed",
+        "objectId": 33
+      },
+      {
+        "layer": "closed",
+        "objectId": 34
+      },
+      {
+        "layer": "wmas",
+        "objectId": 20
+      }
+    ],
+    "11": [
+      {
+        "layer": "closed",
+        "objectId": 13
+      },
+      {
+        "layer": "wmas",
+        "objectId": 125
+      }
+    ],
+    "12": [
+      {
+        "layer": "closed",
+        "objectId": 13
+      },
+      {
+        "layer": "wmas",
+        "objectId": 79
+      },
+      {
+        "layer": "wmas",
+        "objectId": 125
+      }
+    ],
+    "13": [],
+    "14": [
+      {
+        "layer": "closed",
+        "objectId": 13
+      },
+      {
+        "layer": "refuges",
+        "objectId": 2
+      },
+      {
+        "layer": "wmas",
+        "objectId": 79
+      }
+    ],
+    "15": [
+      {
+        "layer": "closed",
+        "objectId": 13
+      }
+    ],
+    "16": [
+      {
+        "layer": "scas",
+        "objectId": 3
+      },
+      {
+        "layer": "wmas",
+        "objectId": 88
+      }
+    ],
+    "17": [],
+    "18": [
+      {
+        "layer": "refuges",
+        "objectId": 3
+      },
+      {
+        "layer": "refuges",
+        "objectId": 5
+      },
+      {
+        "layer": "refuges",
+        "objectId": 7
+      },
+      {
+        "layer": "refuges",
+        "objectId": 8
+      },
+      {
+        "layer": "refuges",
+        "objectId": 74
+      }
+    ],
+    "19": [],
+    "20": [
+      {
+        "layer": "refuges",
+        "objectId": 60
+      },
+      {
+        "layer": "wmas",
+        "objectId": 2
+      },
+      {
+        "layer": "wmas",
+        "objectId": 39
+      },
+      {
+        "layer": "wmas",
+        "objectId": 51
+      },
+      {
+        "layer": "wmas",
+        "objectId": 80
+      }
+    ],
+    "21": [
+      {
+        "layer": "scas",
+        "objectId": 3
+      },
+      {
+        "layer": "wmas",
+        "objectId": 87
+      },
+      {
+        "layer": "wmas",
+        "objectId": 118
+      },
+      {
+        "layer": "wmas",
+        "objectId": 119
+      }
+    ],
+    "22": [
+      {
+        "layer": "refuges",
+        "objectId": 24
+      },
+      {
+        "layer": "refuges",
+        "objectId": 30
+      },
+      {
+        "layer": "wmas",
+        "objectId": 8
+      },
+      {
+        "layer": "wmas",
+        "objectId": 27
+      },
+      {
+        "layer": "wmas",
+        "objectId": 31
+      },
+      {
+        "layer": "wmas",
+        "objectId": 44
+      },
+      {
+        "layer": "wmas",
+        "objectId": 48
+      },
+      {
+        "layer": "wmas",
+        "objectId": 55
+      },
+      {
+        "layer": "wmas",
+        "objectId": 59
+      },
+      {
+        "layer": "wmas",
+        "objectId": 62
+      },
+      {
+        "layer": "wmas",
+        "objectId": 68
+      },
+      {
+        "layer": "wmas",
+        "objectId": 72
+      },
+      {
+        "layer": "wmas",
+        "objectId": 94
+      },
+      {
+        "layer": "wmas",
+        "objectId": 99
+      },
+      {
+        "layer": "wmas",
+        "objectId": 109
+      },
+      {
+        "layer": "wmas",
+        "objectId": 128
+      },
+      {
+        "layer": "wmas",
+        "objectId": 129
+      }
+    ],
+    "23": [
+      {
+        "layer": "closed",
+        "objectId": 22
+      },
+      {
+        "layer": "wmas",
+        "objectId": 10
+      },
+      {
+        "layer": "wmas",
+        "objectId": 24
+      },
+      {
+        "layer": "wmas",
+        "objectId": 25
+      },
+      {
+        "layer": "wmas",
+        "objectId": 57
+      },
+      {
+        "layer": "wmas",
+        "objectId": 95
+      },
+      {
+        "layer": "wmas",
+        "objectId": 124
+      }
+    ],
+    "24": [
+      {
+        "layer": "refuges",
+        "objectId": 27
+      },
+      {
+        "layer": "refuges",
+        "objectId": 31
+      },
+      {
+        "layer": "wmas",
+        "objectId": 5
+      },
+      {
+        "layer": "wmas",
+        "objectId": 89
+      },
+      {
+        "layer": "wmas",
+        "objectId": 91
+      },
+      {
+        "layer": "wmas",
+        "objectId": 92
+      },
+      {
+        "layer": "wmas",
+        "objectId": 93
+      },
+      {
+        "layer": "wmas",
+        "objectId": 97
+      },
+      {
+        "layer": "wmas",
+        "objectId": 98
+      }
+    ],
+    "25": [
+      {
+        "layer": "refuges",
+        "objectId": 9
+      },
+      {
+        "layer": "refuges",
+        "objectId": 11
+      },
+      {
+        "layer": "refuges",
+        "objectId": 13
+      },
+      {
+        "layer": "refuges",
+        "objectId": 14
+      },
+      {
+        "layer": "refuges",
+        "objectId": 15
+      },
+      {
+        "layer": "refuges",
+        "objectId": 16
+      },
+      {
+        "layer": "refuges",
+        "objectId": 17
+      },
+      {
+        "layer": "refuges",
+        "objectId": 18
+      },
+      {
+        "layer": "refuges",
+        "objectId": 19
+      },
+      {
+        "layer": "refuges",
+        "objectId": 20
+      },
+      {
+        "layer": "refuges",
+        "objectId": 21
+      },
+      {
+        "layer": "refuges",
+        "objectId": 22
+      },
+      {
+        "layer": "refuges",
+        "objectId": 23
+      },
+      {
+        "layer": "scas",
+        "objectId": 5
+      },
+      {
+        "layer": "wmas",
+        "objectId": 2
+      },
+      {
+        "layer": "wmas",
+        "objectId": 9
+      },
+      {
+        "layer": "wmas",
+        "objectId": 63
+      },
+      {
+        "layer": "wmas",
+        "objectId": 66
+      },
+      {
+        "layer": "wmas",
+        "objectId": 85
+      },
+      {
+        "layer": "wmas",
+        "objectId": 106
+      },
+      {
+        "layer": "wmas",
+        "objectId": 113
+      },
+      {
+        "layer": "wmas",
+        "objectId": 118
+      },
+      {
+        "layer": "wmas",
+        "objectId": 119
+      },
+      {
+        "layer": "wmas",
+        "objectId": 126
+      }
+    ],
+    "26": [
+      {
+        "layer": "refuges",
+        "objectId": 76
+      },
+      {
+        "layer": "wmas",
+        "objectId": 117
+      },
+      {
+        "layer": "wmas",
+        "objectId": 123
+      }
+    ],
+    "27": [
+      {
+        "layer": "wmas",
+        "objectId": 13
+      },
+      {
+        "layer": "wmas",
+        "objectId": 14
+      },
+      {
+        "layer": "wmas",
+        "objectId": 26
+      },
+      {
+        "layer": "wmas",
+        "objectId": 47
+      },
+      {
+        "layer": "wmas",
+        "objectId": 55
+      },
+      {
+        "layer": "wmas",
+        "objectId": 84
+      },
+      {
+        "layer": "wmas",
+        "objectId": 86
+      },
+      {
+        "layer": "wmas",
+        "objectId": 109
+      }
+    ],
+    "28": [
+      {
+        "layer": "refuges",
+        "objectId": 36
+      },
+      {
+        "layer": "wmas",
+        "objectId": 12
+      },
+      {
+        "layer": "wmas",
+        "objectId": 22
+      },
+      {
+        "layer": "wmas",
+        "objectId": 23
+      },
+      {
+        "layer": "wmas",
+        "objectId": 60
+      },
+      {
+        "layer": "wmas",
+        "objectId": 67
+      },
+      {
+        "layer": "wmas",
+        "objectId": 70
+      },
+      {
+        "layer": "wmas",
+        "objectId": 75
+      },
+      {
+        "layer": "wmas",
+        "objectId": 81
+      },
+      {
+        "layer": "wmas",
+        "objectId": 102
+      },
+      {
+        "layer": "wmas",
+        "objectId": 127
+      }
+    ],
+    "29": [
+      {
+        "layer": "closed",
+        "objectId": 12
+      },
+      {
+        "layer": "wmas",
+        "objectId": 34
+      },
+      {
+        "layer": "wmas",
+        "objectId": 100
+      }
+    ],
+    "30": [
+      {
+        "layer": "closed",
+        "objectId": 27
+      },
+      {
+        "layer": "refuges",
+        "objectId": 35
+      },
+      {
+        "layer": "wmas",
+        "objectId": 7
+      },
+      {
+        "layer": "wmas",
+        "objectId": 54
+      },
+      {
+        "layer": "wmas",
+        "objectId": 56
+      },
+      {
+        "layer": "wmas",
+        "objectId": 64
+      },
+      {
+        "layer": "wmas",
+        "objectId": 71
+      },
+      {
+        "layer": "wmas",
+        "objectId": 76
+      },
+      {
+        "layer": "wmas",
+        "objectId": 77
+      },
+      {
+        "layer": "wmas",
+        "objectId": 90
+      },
+      {
+        "layer": "wmas",
+        "objectId": 96
+      },
+      {
+        "layer": "wmas",
+        "objectId": 110
+      }
+    ],
+    "31": [
+      {
+        "layer": "closed",
+        "objectId": 6
+      },
+      {
+        "layer": "refuges",
+        "objectId": 37
+      },
+      {
+        "layer": "wmas",
+        "objectId": 15
+      },
+      {
+        "layer": "wmas",
+        "objectId": 17
+      },
+      {
+        "layer": "wmas",
+        "objectId": 32
+      },
+      {
+        "layer": "wmas",
+        "objectId": 37
+      },
+      {
+        "layer": "wmas",
+        "objectId": 38
+      },
+      {
+        "layer": "wmas",
+        "objectId": 42
+      },
+      {
+        "layer": "wmas",
+        "objectId": 45
+      },
+      {
+        "layer": "wmas",
+        "objectId": 53
+      },
+      {
+        "layer": "wmas",
+        "objectId": 78
+      },
+      {
+        "layer": "wmas",
+        "objectId": 130
+      },
+      {
+        "layer": "wmas",
+        "objectId": 131
+      }
+    ],
+    "32": [
+      {
+        "layer": "wmas",
+        "objectId": 7
+      },
+      {
+        "layer": "wmas",
+        "objectId": 40
+      }
+    ],
+    "33": [
+      {
+        "layer": "closed",
+        "objectId": 5
+      },
+      {
+        "layer": "closed",
+        "objectId": 9
+      },
+      {
+        "layer": "closed",
+        "objectId": 14
+      },
+      {
+        "layer": "closed",
+        "objectId": 17
+      },
+      {
+        "layer": "closed",
+        "objectId": 19
+      },
+      {
+        "layer": "closed",
+        "objectId": 26
+      },
+      {
+        "layer": "refuges",
+        "objectId": 38
+      },
+      {
+        "layer": "refuges",
+        "objectId": 39
+      },
+      {
+        "layer": "refuges",
+        "objectId": 40
+      },
+      {
+        "layer": "refuges",
+        "objectId": 41
+      },
+      {
+        "layer": "refuges",
+        "objectId": 42
+      },
+      {
+        "layer": "refuges",
+        "objectId": 44
+      },
+      {
+        "layer": "refuges",
+        "objectId": 45
+      },
+      {
+        "layer": "refuges",
+        "objectId": 47
+      },
+      {
+        "layer": "refuges",
+        "objectId": 48
+      },
+      {
+        "layer": "refuges",
+        "objectId": 64
+      },
+      {
+        "layer": "refuges",
+        "objectId": 65
+      },
+      {
+        "layer": "refuges",
+        "objectId": 66
+      },
+      {
+        "layer": "refuges",
+        "objectId": 67
+      },
+      {
+        "layer": "refuges",
+        "objectId": 68
+      },
+      {
+        "layer": "refuges",
+        "objectId": 69
+      },
+      {
+        "layer": "refuges",
+        "objectId": 70
+      },
+      {
+        "layer": "refuges",
+        "objectId": 71
+      },
+      {
+        "layer": "refuges",
+        "objectId": 72
+      },
+      {
+        "layer": "refuges",
+        "objectId": 73
+      },
+      {
+        "layer": "refuges",
+        "objectId": 77
+      },
+      {
+        "layer": "refuges",
+        "objectId": 78
+      },
+      {
+        "layer": "refuges",
+        "objectId": 79
+      }
+    ],
+    "34": [
+      {
+        "layer": "refuges",
+        "objectId": 26
+      },
+      {
+        "layer": "wmas",
+        "objectId": 21
+      },
+      {
+        "layer": "wmas",
+        "objectId": 74
+      }
+    ],
+    "35": [
+      {
+        "layer": "refuges",
+        "objectId": 80
+      },
+      {
+        "layer": "wmas",
+        "objectId": 16
+      }
+    ],
+    "36": [
+      {
+        "layer": "refuges",
+        "objectId": 61
+      },
+      {
+        "layer": "wmas",
+        "objectId": 104
+      }
+    ],
+    "38": [
+      {
+        "layer": "closed",
+        "objectId": 5
+      },
+      {
+        "layer": "closed",
+        "objectId": 9
+      },
+      {
+        "layer": "closed",
+        "objectId": 10
+      },
+      {
+        "layer": "closed",
+        "objectId": 14
+      },
+      {
+        "layer": "closed",
+        "objectId": 15
+      },
+      {
+        "layer": "closed",
+        "objectId": 17
+      },
+      {
+        "layer": "closed",
+        "objectId": 19
+      }
+    ],
+    "2A": [
+      {
+        "layer": "closed",
+        "objectId": 11
+      }
+    ],
+    "3A": [
+      {
+        "layer": "closed",
+        "objectId": 33
+      }
+    ],
+    "6A": [
+      {
+        "layer": "closed",
+        "objectId": 1
+      },
+      {
+        "layer": "wmas",
+        "objectId": 20
+      },
+      {
+        "layer": "wmas",
+        "objectId": 103
+      }
+    ],
+    "7A": [
+      {
+        "layer": "closed",
+        "objectId": 11
+      }
+    ],
+    "9A": [
+      {
+        "layer": "closed",
+        "objectId": 33
+      }
+    ],
+    "13A": [
+      {
+        "layer": "refuges",
+        "objectId": 1
+      }
+    ],
+    "14A": [
+      {
+        "layer": "closed",
+        "objectId": 13
+      }
+    ],
+    "15A": [
+      {
+        "layer": "closed",
+        "objectId": 13
+      }
+    ],
+    "17A": [
+      {
+        "layer": "refuges",
+        "objectId": 12
+      },
+      {
+        "layer": "refuges",
+        "objectId": 75
+      },
+      {
+        "layer": "refuges",
+        "objectId": 76
+      }
+    ],
+    "17B": [
+      {
+        "layer": "refuges",
+        "objectId": 75
+      }
+    ],
+    "18A": [
+      {
+        "layer": "refuges",
+        "objectId": 5
+      },
+      {
+        "layer": "refuges",
+        "objectId": 63
+      },
+      {
+        "layer": "refuges",
+        "objectId": 74
+      }
+    ],
+    "18B": [
+      {
+        "layer": "refuges",
+        "objectId": 3
+      },
+      {
+        "layer": "refuges",
+        "objectId": 5
+      },
+      {
+        "layer": "refuges",
+        "objectId": 7
+      },
+      {
+        "layer": "refuges",
+        "objectId": 8
+      }
+    ],
+    "18C": [
+      {
+        "layer": "refuges",
+        "objectId": 5
+      },
+      {
+        "layer": "refuges",
+        "objectId": 8
+      },
+      {
+        "layer": "refuges",
+        "objectId": 74
+      }
+    ],
+    "19A": [
+      {
+        "layer": "closed",
+        "objectId": 13
+      },
+      {
+        "layer": "refuges",
+        "objectId": 2
+      },
+      {
+        "layer": "refuges",
+        "objectId": 4
+      },
+      {
+        "layer": "refuges",
+        "objectId": 6
+      },
+      {
+        "layer": "refuges",
+        "objectId": 59
+      },
+      {
+        "layer": "wmas",
+        "objectId": 49
+      }
+    ],
+    "19B": [
+      {
+        "layer": "refuges",
+        "objectId": 9
+      },
+      {
+        "layer": "wmas",
+        "objectId": 41
+      },
+      {
+        "layer": "wmas",
+        "objectId": 43
+      },
+      {
+        "layer": "wmas",
+        "objectId": 112
+      },
+      {
+        "layer": "wmas",
+        "objectId": 114
+      }
+    ],
+    "21A": [
+      {
+        "layer": "closed",
+        "objectId": 3
+      },
+      {
+        "layer": "closed",
+        "objectId": 4
+      },
+      {
+        "layer": "refuges",
+        "objectId": 10
+      },
+      {
+        "layer": "refuges",
+        "objectId": 58
+      },
+      {
+        "layer": "refuges",
+        "objectId": 75
+      },
+      {
+        "layer": "scas",
+        "objectId": 5
+      },
+      {
+        "layer": "wmas",
+        "objectId": 61
+      },
+      {
+        "layer": "wmas",
+        "objectId": 85
+      },
+      {
+        "layer": "wmas",
+        "objectId": 123
+      }
+    ],
+    "23A": [
+      {
+        "layer": "closed",
+        "objectId": 22
+      }
+    ],
+    "25A": [
+      {
+        "layer": "refuges",
+        "objectId": 81
+      },
+      {
+        "layer": "refuges",
+        "objectId": 83
+      },
+      {
+        "layer": "scas",
+        "objectId": 4
+      },
+      {
+        "layer": "scas",
+        "objectId": 6
+      },
+      {
+        "layer": "wmas",
+        "objectId": 18
+      },
+      {
+        "layer": "wmas",
+        "objectId": 19
+      },
+      {
+        "layer": "wmas",
+        "objectId": 21
+      },
+      {
+        "layer": "wmas",
+        "objectId": 33
+      },
+      {
+        "layer": "wmas",
+        "objectId": 50
+      },
+      {
+        "layer": "wmas",
+        "objectId": 58
+      },
+      {
+        "layer": "wmas",
+        "objectId": 73
+      },
+      {
+        "layer": "wmas",
+        "objectId": 111
+      },
+      {
+        "layer": "wmas",
+        "objectId": 121
+      },
+      {
+        "layer": "wmas",
+        "objectId": 122
+      }
+    ],
+    "25B": [
+      {
+        "layer": "closed",
+        "objectId": 2
+      },
+      {
+        "layer": "closed",
+        "objectId": 5
+      },
+      {
+        "layer": "closed",
+        "objectId": 10
+      },
+      {
+        "layer": "closed",
+        "objectId": 15
+      },
+      {
+        "layer": "closed",
+        "objectId": 25
+      },
+      {
+        "layer": "refuges",
+        "objectId": 28
+      },
+      {
+        "layer": "refuges",
+        "objectId": 29
+      },
+      {
+        "layer": "refuges",
+        "objectId": 31
+      },
+      {
+        "layer": "refuges",
+        "objectId": 32
+      },
+      {
+        "layer": "refuges",
+        "objectId": 33
+      },
+      {
+        "layer": "refuges",
+        "objectId": 62
+      },
+      {
+        "layer": "scas",
+        "objectId": 2
+      },
+      {
+        "layer": "scas",
+        "objectId": 7
+      },
+      {
+        "layer": "wmas",
+        "objectId": 6
+      },
+      {
+        "layer": "wmas",
+        "objectId": 11
+      },
+      {
+        "layer": "wmas",
+        "objectId": 52
+      },
+      {
+        "layer": "wmas",
+        "objectId": 108
+      },
+      {
+        "layer": "wmas",
+        "objectId": 134
+      }
+    ],
+    "29A": [
+      {
+        "layer": "closed",
+        "objectId": 12
+      }
+    ],
+    "31A": [
+      {
+        "layer": "refuges",
+        "objectId": 43
+      },
+      {
+        "layer": "wmas",
+        "objectId": 4
+      },
+      {
+        "layer": "wmas",
+        "objectId": 35
+      },
+      {
+        "layer": "wmas",
+        "objectId": 36
+      },
+      {
+        "layer": "wmas",
+        "objectId": 45
+      },
+      {
+        "layer": "wmas",
+        "objectId": 65
+      },
+      {
+        "layer": "wmas",
+        "objectId": 75
+      },
+      {
+        "layer": "wmas",
+        "objectId": 82
+      },
+      {
+        "layer": "wmas",
+        "objectId": 83
+      },
+      {
+        "layer": "wmas",
+        "objectId": 101
+      },
+      {
+        "layer": "wmas",
+        "objectId": 102
+      },
+      {
+        "layer": "wmas",
+        "objectId": 105
+      }
+    ],
+    "34A": [
+      {
+        "layer": "closed",
+        "objectId": 5
+      },
+      {
+        "layer": "closed",
+        "objectId": 25
+      },
+      {
+        "layer": "refuges",
+        "objectId": 34
+      }
+    ],
+    "34B": [
+      {
+        "layer": "scas",
+        "objectId": 6
+      },
+      {
+        "layer": "wmas",
+        "objectId": 21
+      }
+    ],
+    "34C": [
+      {
+        "layer": "wmas",
+        "objectId": 120
+      }
+    ],
+    "35A": [
+      {
+        "layer": "closed",
+        "objectId": 5
+      },
+      {
+        "layer": "wmas",
+        "objectId": 28
+      },
+      {
+        "layer": "wmas",
+        "objectId": 29
+      },
+      {
+        "layer": "wmas",
+        "objectId": 30
+      },
+      {
+        "layer": "wmas",
+        "objectId": 69
+      }
+    ]
+  }
+}

@@ -1,14 +1,15 @@
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import type { SpeciesCoverageRow } from "../canada/report.ts";
 import { isMajorGameSpecies, speciesById } from "../coverage.ts";
+import { overlaysInZone, type OverlayZoneIndex } from "../overlay-zones.ts";
 import { lookupOverlays, restrictionsFor, type OverlayCatalogue } from "../overlays.ts";
-import { layerForJurisdiction } from "../zone-layers.ts";
+import { designationFromOfficialName, layerForJurisdiction } from "../zone-layers.ts";
 import type { EvaluationCompleteness, HuntInput, RegulatoryResult, ZoneResolution } from "../types.ts";
 import type { ConditionalEvaluation, ConditionalInput, conditionalCoverage } from "./conditional-engine.ts";
 import type { RequiredDimension } from "./dimensions.ts";
 import { evaluateOntarioMajorGame, majorGameCoverageReport } from "./major-game.ts";
 import {
-  evaluateManitoba, manitobaCoverageReport, manitobaSourceRecords, MANITOBA_OVERLAYS, restrictionTokensFor,
+  evaluateManitoba, manitobaCoverageReport, manitobaSourceRecords, MANITOBA_OVERLAYS, MANITOBA_OVERLAY_ZONES, restrictionTokensFor,
 } from "./manitoba.ts";
 import { evaluateOntarioSmallGame, ontarioCoverageReport } from "./ontario.ts";
 import { evaluateQuebec, quebecCoverageReport, quebecSourceRecords } from "./quebec.ts";
@@ -33,6 +34,12 @@ export interface RegulatoryOutcome {
   required?: RequiredDimension;
   dimensions: RequiredDimension[];
   regulation: RegulatoryResult;
+  /**
+   * Whole-zone answers only: the season runs across the zone EXCEPT inside
+   * these published areas, which restrict this species. Present only when that
+   * is the one reason the zone has no single answer.
+   */
+  exceptInside?: string[];
 }
 
 export interface EvaluationContext {
@@ -60,6 +67,21 @@ export interface RegulatoryEntry {
    * whole-zone summary cannot see them, and says so in these words.
    */
   pointOnlyChecks?: string;
+  /**
+   * The published special areas inside a zone that restrict at least one
+   * certified species, with the species they reach. Null when the zone has not
+   * been indexed ("not checked"); an empty list means none reaches a species.
+   */
+  specialAreasInZone?(designation: string): SpecialAreaInZone[] | null;
+}
+
+export interface SpecialAreaInZone {
+  name: string;
+  /** The authority's layer the area comes from ("closed", "refuges"). */
+  layer: string;
+  statedAs: string;
+  sourceId: string;
+  speciesIds: string[];
 }
 
 /**
@@ -175,7 +197,19 @@ interface ConditionalJurisdiction {
   coverageReport(): { officialUnits: number; species: ReturnType<typeof conditionalCoverage> };
   sourceRecords?(ids: readonly string[]): SourceRecord[];
   /** Published land restrictions the authority serves, where it does. */
-  overlays?: { catalogue: OverlayCatalogue; tokensFor(speciesId: string): readonly string[]; describedAs: string };
+  overlays?: {
+    catalogue: OverlayCatalogue;
+    tokensFor(speciesId: string): readonly string[];
+    describedAs: string;
+    /** Which catalogued areas lie inside each zone, so a whole-zone answer can account for them. */
+    zoneIndex?: OverlayZoneIndex;
+  };
+}
+
+/** The zone's bare designation, from the name the resolver gave it. */
+function designationOf(jurisdictionId: string, zone: ZoneResolution): string | null {
+  const layer = layerForJurisdiction(jurisdictionId);
+  return layer && zone.officialName ? designationFromOfficialName(layer, zone.officialName) : null;
 }
 
 /**
@@ -196,6 +230,12 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
         ? await lookupOverlays(config.overlays.catalogue, input.latitude, input.longitude, fetcher)
         : null;
       const restrictions = overlays?.available ? restrictionsFor(overlays, config.overlays!.tokensFor(input.speciesId)) : [];
+      /* The whole-zone counterpart: the indexed areas inside the zone that reach this species. */
+      const designation = scope === "ZONE" ? designationOf(config.jurisdictionId, zone) : null;
+      const zoneAreas = designation && config.overlays?.zoneIndex
+        ? overlaysInZone(config.overlays.catalogue, config.overlays.zoneIndex, designation)
+        : null;
+      const zoneRestrictions = zoneAreas ? restrictionsFor(zoneAreas, config.overlays!.tokensFor(input.speciesId)) : [];
       const unreadOverlays = overlays && !overlays.available
         ? [`North Ground could not reach ${config.jurisdictionName}'s refuge, wildlife-management-area and closed-lands layers for this point, so it has not checked whether one of them restricts this hunt here.`]
         : [];
@@ -243,11 +283,31 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
           regulation: pendingRegulation(config.jurisdictionName, evaluation.required, verifiedAt),
         };
       }
-      const regulation = evaluation.result ?? pendingRegulationFallback(verifiedAt);
+      let regulation = evaluation.result ?? pendingRegulationFallback(verifiedAt);
+      let exceptInside: string[] | undefined;
+      /* A season that runs across the zone does not run inside a refuge or on
+         closed land within it. Where such an area reaches this species, the
+         zone as a whole has no single answer. */
+      if (zoneRestrictions.length && regulation.status === "CONDITIONAL") {
+        const names = [...new Set(zoneRestrictions.map((restriction) => restriction.name))];
+        exceptInside = names;
+        regulation = {
+          ...regulation,
+          status: "NEEDS_VERIFICATION",
+          limitations: [
+            `${names.length === 1 ? names[0] : `${names.length} published areas`} inside this ${config.unitTerm} ` +
+              `restrict${names.length === 1 ? "s" : ""} this hunt, so the answer depends on where in it you hunt.`,
+            ...zoneRestrictions.map((restriction) => `${restriction.name}: \u201c${restriction.statedAs}\u201d`),
+            ...regulation.limitations,
+          ],
+          sourceIds: [...new Set([...regulation.sourceIds, ...zoneRestrictions.map((restriction) => restriction.sourceId as CanonicalId<"source">)])],
+        };
+      }
       return {
         completeness: "RESOLVED",
         dimensions: evaluation.dimensions,
         regulation: unreadOverlays.length ? { ...regulation, limitations: [...unreadOverlays, ...regulation.limitations] } : regulation,
+        ...(exceptInside ? { exceptInside } : {}),
       };
     },
     coverage() {
@@ -267,7 +327,34 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
       };
     },
     ...(config.sourceRecords ? { sourceRecords: config.sourceRecords } : {}),
-    ...(config.overlays ? { pointOnlyChecks: config.overlays.describedAs } : {}),
+    /* Only an unindexed layer is left to the reader as a point-only check. */
+    ...(config.overlays && !config.overlays.zoneIndex ? { pointOnlyChecks: config.overlays.describedAs } : {}),
+    ...(config.overlays?.zoneIndex ? {
+      specialAreasInZone(designation: string) {
+        const overlays = config.overlays!;
+        const lookup = overlaysInZone(overlays.catalogue, overlays.zoneIndex!, designation);
+        if (!lookup) return null;
+        const speciesIds = config.coverageReport().species.map((entry) => entry.speciesId);
+        const areas = new Map<string, SpecialAreaInZone>();
+        for (const hit of lookup.hits) {
+          const single = { ...lookup, hits: [hit] };
+          const reached = speciesIds.filter((speciesId) => restrictionsFor(single, overlays.tokensFor(speciesId)).length > 0);
+          if (!reached.length) continue;
+          const [restriction] = restrictionsFor(single, overlays.tokensFor(reached[0]));
+          if (!restriction) continue;
+          // One area published as several pieces is listed once.
+          const key = `${restriction.name}|${restriction.statedAs}`;
+          areas.set(key, {
+            name: restriction.name,
+            layer: hit.layer,
+            statedAs: restriction.statedAs,
+            sourceId: restriction.sourceId,
+            speciesIds: [...new Set([...(areas.get(key)?.speciesIds ?? []), ...reached])].sort(),
+          });
+        }
+        return [...areas.values()].sort((a, b) => a.name.localeCompare(b.name));
+      },
+    } : {}),
   };
 }
 
@@ -282,6 +369,7 @@ const MANITOBA = conditionalEntry({
     catalogue: MANITOBA_OVERLAYS,
     tokensFor: restrictionTokensFor,
     describedAs: "wildlife refuges, special conservation areas, wildlife management areas and lands closed to hunting",
+    zoneIndex: MANITOBA_OVERLAY_ZONES,
   },
 });
 

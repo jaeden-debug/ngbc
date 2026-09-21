@@ -83,6 +83,7 @@ const ZONE_STROKE: Record<ZoneCoverageStatus, string> = {
 /* Filter fills: one restrained hue per state, always paired with a glyph and a word on the label and legend. */
 const STATE_FILL: Partial<Record<ZoneState, { color: string; opacity: number }>> = {
   SEASON_AVAILABLE: { color: "#7cc08a", opacity: 0.3 },
+  SEASON_EXCEPT_AREAS: { color: "#7cc08a", opacity: 0.16 },
   CHECK_REQUIREMENTS: { color: "#e0a04a", opacity: 0.24 },
   NEEDS_VERIFICATION: { color: "#c9a26a", opacity: 0.16 },
   CONFLICT: { color: "#d97a6c", opacity: 0.2 },
