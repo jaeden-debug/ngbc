@@ -1,3 +1,4 @@
+import { googleRefusal, logGoogleFailure } from "./google-refusal.ts";
 import type { IsoDate } from "../content-contract/types.ts";
 import type { WeatherResult } from "./types.ts";
 
@@ -122,15 +123,7 @@ export async function getGoogleWeather(
     const response = await (options.fetcher ?? fetch)(`https://weather.googleapis.com/v1/forecast/days:lookup?${parameters}`, {
       headers: { accept: "application/json" }, signal: AbortSignal.timeout(6_000), cache: "no-store",
     });
-    if (!response.ok) {
-      /* Google explains a refusal in its own words ("API key expired"), which
-         never echo the key or the location, so the reason is kept for the log. */
-      const reason = await response.json().then(
-        (body: { error?: { status?: string; message?: string } }) => [body.error?.status, body.error?.message].filter(Boolean).join(": "),
-        () => "",
-      );
-      throw new Error(`Google Weather returned ${response.status}${reason ? ` (${reason.slice(0, 160)})` : ""}`);
-    }
+    if (!response.ok) throw await googleRefusal("Google Weather", response);
     const payload = await response.json() as {
       forecastDays?: Array<{
         displayDate?: { year?: number; month?: number; day?: number };
@@ -156,13 +149,9 @@ export async function getGoogleWeather(
     };
   } catch (error) {
     /* A provider failing silently for months is the failure §58 forbids: the
-       Open-Meteo fallback answered correctly, so nothing looked wrong while every
-       Google request was being refused. Logged with the reason only — never the
-       coordinates, the date or the key. */
-    const reason = error instanceof Error && error.message.startsWith("Google Weather")
-      ? error.message
-      : error instanceof Error ? error.name : "unknown error";
-    console.warn(`[hunt-weather] Google Weather failed: ${reason}`);
+       Open-Meteo fallback answers correctly, so nothing looks wrong while every
+       Google request is being refused. */
+    logGoogleFailure("hunt-weather", "Google Weather", error);
     return { status: "PROVIDER_ERROR", summary: "The Google Weather provider is temporarily unavailable. North Ground will not fabricate weather data.", date, sourceId: "source:google-weather" };
   }
 }

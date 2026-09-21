@@ -11,6 +11,8 @@
  * restricted, and used only to render the basemap.
  */
 
+import { googleRefusal, googleStatusRefusal, logGoogleFailure } from "./google-refusal.ts";
+
 export type LocationProviderName = "google" | "nominatim";
 
 export interface PlaceSuggestion {
@@ -126,7 +128,7 @@ export async function suggestGooglePlaces(
       signal: timeout(options.signal),
       cache: "no-store",
     });
-    if (!response.ok) throw new Error(`Google Places returned ${response.status}`);
+    if (!response.ok) throw await googleRefusal("Google Places", response);
 
     const payload = await response.json() as GoogleAutocompleteResponse;
     const suggestions = (payload.suggestions ?? [])
@@ -144,8 +146,9 @@ export async function suggestGooglePlaces(
 
     if (!suggestions.length) return { status: "EMPTY", suggestions: [], provider: "google" };
     return { status: "OK", suggestions, provider: "google" };
-  } catch {
-    // The query is deliberately not logged: it is user location intent.
+  } catch (error) {
+    // Logged by reason only; the query is user location intent.
+    logGoogleFailure("hunt-location", "Google Places", error);
     return {
       status: "PROVIDER_ERROR",
       suggestions: [],
@@ -184,7 +187,7 @@ export async function resolveGooglePlace(
       signal: timeout(options.signal),
       cache: "no-store",
     });
-    if (!response.ok) throw new Error(`Google Place Details returned ${response.status}`);
+    if (!response.ok) throw await googleRefusal("Google Place Details", response);
 
     const payload = await response.json() as GooglePlaceDetailsResponse;
     const latitude = payload.location?.latitude;
@@ -196,7 +199,8 @@ export async function resolveGooglePlace(
       ?? payload.displayName?.text
       ?? "Selected location";
     return { status: "OK", place: { label, latitude: latitude as number, longitude: longitude as number, provider: "google" } };
-  } catch {
+  } catch (error) {
+    logGoogleFailure("hunt-location", "Google Place Details", error);
     return { status: "PROVIDER_ERROR", message: "Google place resolution is temporarily unavailable." };
   }
 }
@@ -223,9 +227,12 @@ export async function reverseGoogleGeocode(
     url.searchParams.set("key", key);
 
     const response = await (options.fetcher ?? fetch)(url, { signal: timeout(options.signal), cache: "no-store" });
-    if (!response.ok) throw new Error(`Google Geocoding returned ${response.status}`);
+    if (!response.ok) throw await googleRefusal("Google Geocoding", response);
 
     const payload = await response.json() as GoogleGeocodeResponse;
+    // This API refuses a key with HTTP 200 and `REQUEST_DENIED`. That is an outage
+    // to fall back from, not a coordinate with no named place near it.
+    if (payload.status !== "OK" && payload.status !== "ZERO_RESULTS") throw googleStatusRefusal("Google Geocoding", payload.status);
     const label = payload.results?.[0]?.formatted_address;
     if (payload.status !== "OK" || !label) {
       // A coordinate with no nearby named place is normal in the backcountry and is
@@ -233,7 +240,8 @@ export async function reverseGoogleGeocode(
       return { status: "NOT_FOUND", message: "No named place was found near that coordinate." };
     }
     return { status: "OK", place: { label, latitude, longitude, provider: "google" } };
-  } catch {
+  } catch (error) {
+    logGoogleFailure("hunt-location", "Google Geocoding", error);
     return { status: "PROVIDER_ERROR", message: "Google geocoding is temporarily unavailable." };
   }
 }

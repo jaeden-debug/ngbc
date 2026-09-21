@@ -120,6 +120,49 @@ test("a Google HTTP failure is reported as a provider error, not as no results",
   assert.equal(result.status, "PROVIDER_ERROR");
 });
 
+test("a refused Google request is logged by Google's enumerated reason, never the query or the key", async (t) => {
+  const warnings: string[] = [];
+  t.mock.method(console, "warn", (message: string) => { warnings.push(message); });
+  const { fetcher } = recordingFetcher({ error: {
+    code: 403,
+    status: "PERMISSION_DENIED",
+    message: "Requests from referer <empty> are blocked.",
+    details: [{ "@type": "type.googleapis.com/google.rpc.ErrorInfo", reason: "API_KEY_HTTP_REFERRER_BLOCKED" }],
+  } }, 403);
+  const result = await suggestGooglePlaces("pembroke", { fetcher, googleApiKey: "secret-key-value" });
+  assert.equal(result.status, "PROVIDER_ERROR");
+  assert.deepEqual(warnings, ["[hunt-location] Google Places returned 403 (PERMISSION_DENIED, API_KEY_HTTP_REFERRER_BLOCKED)"]);
+  assert.doesNotMatch(warnings[0], /pembroke|secret-key-value|referer/i);
+});
+
+test("a Geocoding key refusal falls back to Nominatim instead of claiming no named place", async (t) => {
+  const warnings: string[] = [];
+  t.mock.method(console, "warn", (message: string) => { warnings.push(message); });
+  const fetcher = ((input: RequestInfo | URL) => String(input).includes("googleapis")
+    // The legacy Geocoding API refuses a key with HTTP 200 and a status field.
+    ? Promise.resolve(jsonResponse({ status: "REQUEST_DENIED", error_message: "The provided API key is invalid.", results: [] }))
+    : Promise.resolve(jsonResponse({ display_name: "Bancroft, Hastings County, Ontario, Canada" }))) as unknown as typeof fetch;
+
+  const result = await describeCoordinate(45.23, -77.94, { fetcher, provider: "google", googleApiKey: "secret-key-value" });
+  assert.equal(result.status, "OK");
+  assert.equal(result.status === "OK" ? result.place.provider : "", "nominatim");
+  assert.deepEqual(warnings, ["[hunt-location] Google Geocoding answered REQUEST_DENIED"]);
+  assert.doesNotMatch(warnings[0], /45\.23|77\.94|secret-key-value/);
+});
+
+test("a Geocoding coordinate with no named place is still NOT_FOUND, with no fallback", async () => {
+  let nominatimCalled = false;
+  const fetcher = ((input: RequestInfo | URL) => {
+    if (String(input).includes("googleapis")) return Promise.resolve(jsonResponse({ status: "ZERO_RESULTS", results: [] }));
+    nominatimCalled = true;
+    return Promise.resolve(jsonResponse({ display_name: "Somewhere" }));
+  }) as unknown as typeof fetch;
+
+  const result = await describeCoordinate(52.5, -88.1, { fetcher, provider: "google", googleApiKey: "test-key" });
+  assert.equal(result.status, "NOT_FOUND");
+  assert.equal(nominatimCalled, false);
+});
+
 /* ── Nominatim ───────────────────────────────────────────────────────────── */
 
 test("Nominatim suggestions carry their coordinate inline", async () => {

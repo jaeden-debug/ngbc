@@ -83,11 +83,14 @@ test("a refused Google request is logged with Google's reason and nothing that l
   t.mock.method(console, "warn", (message: string) => { warnings.push(message); });
   const refused = (async () => ({
     ok: false, status: 400,
-    json: async () => ({ error: { status: "INVALID_ARGUMENT", message: "API key expired. Please renew the API key." } }),
+    json: async () => ({ error: {
+      status: "INVALID_ARGUMENT",
+      message: "API key expired. Please renew the API key.",
+      details: [{ "@type": "type.googleapis.com/google.rpc.ErrorInfo", reason: "API_KEY_INVALID" }],
+    } }),
   })) as unknown as typeof fetch;
   const result = await getGoogleWeather(45.2345, -77.9456, "2026-09-20", { googleApiKey: "secret-key-value", now: NOW, fetcher: refused });
   assert.equal(result.status, "PROVIDER_ERROR");
-  assert.equal(warnings.length, 1);
-  assert.match(warnings[0], /Google Weather returned 400 \(INVALID_ARGUMENT: API key expired/);
-  assert.doesNotMatch(warnings[0], /45\.23|77\.94|2026-09-20|secret-key-value/);
+  assert.deepEqual(warnings, ["[hunt-weather] Google Weather returned 400 (INVALID_ARGUMENT, API_KEY_INVALID)"]);
+  assert.doesNotMatch(warnings[0], /45\.23|77\.94|2026-09-20|secret-key-value|renew/);
 });
