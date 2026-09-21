@@ -547,6 +547,14 @@ Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport a
 
 ### Production
 - **Map intelligence is not deployed as of 2026-09-21.** The blueprint, contracts, official Ontario evidence bundle, server route, source monitoring and migration exist locally. The PostGIS migration is unapplied, the map does not consume the opportunity API, and no Crown/public-land geometry or UI claim is live. Production certification for this slice is therefore NOT STARTED, not PARTIAL or VERIFIED.
+- **Re-certified on `a00f3d0`, `dpl_3irCeCPfwxbUNMTpZrgHD2zbd1yj`, 2026-09-21.** This deployment carries the Google-refusal logging, the Geocoding fallback and the question's arrow keys.
+  - Regressions, all agreeing: Ontario 7/7 (zone median 124 ms / evaluation median 106 ms), Alberta 13/13 (122 / 96 ms), Manitoba 24/24 (202 / 235 ms).
+  - The runtime log now names the Google failure exactly, with no query or coordinate: `[hunt-location] Google Places returned 403 (PERMISSION_DENIED, API_KEY_HTTP_REFERRER_BLOCKED)`, and the same for Weather.
+  - A dropped pin at the WMU 57 regression point now gets a place name from Nominatim instead of "no named place".
+  - The residency question moves with the arrow keys, Home and End, wraps at the ends, answers only on Enter, and then asks the next question.
+  - No horizontal overflow at 320 or 390 px.
+  - Ontario spatial parity was re-run live: 309 points, 0 disagreements. The Manitoba control point now records GHA 30 as a neighbour instead of failing (`08f3fba`).
+  - The 18 applied migration files replay to production's exact schema (`158bce6`, `docs/supabase-migration-history.md`).
 - **National regression on production, 2026-09-21** (`39dc7c1`, `dpl_99MphvNNqTHBUNDAsqPRseZF61zs`). Each case restates an answer already certified from the law, through `/api/hunt/zone` and `/api/hunt/evaluate` on `www` via `scripts/certify-hunt-cases.mjs`:
   - Ontario: 7/7 (`fixtures/hunt/ca-on-regression-cases.json`).
   - Alberta: 13/13 (`ca-ab-regression-cases.json`), including the Sunday bow closure, antler class asked, antlerless general CLOSED, and Banff/Elk Island NEEDS_VERIFICATION.
