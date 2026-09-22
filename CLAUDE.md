@@ -1589,8 +1589,9 @@ Boundary uncertainty must be communicated.
 
 Consumer GPS should never be represented as legally infallible.
 
-Hunt's map-first behaviour, zone-coverage honesty rules, map exploration and the
-distinction between device and hunt location are in section 41A.
+Hunt's map-first behaviour, its sheet and panel, zone-coverage honesty rules, map
+exploration, shareable state and the distinction between device and hunt location
+are in section 41A.
 
 ---
 
@@ -1611,9 +1612,51 @@ homepage hero is not to be converted into the Hunt interface.
 
 ## Hunt is map-first
 
+*Rebuilt as a map-first application 2026-09-22.*
+
+North Ground Hunt is a map-first, mobile-first spatial hunting-intelligence
+product. Its governing interface principles:
+
+- **The map is the primary canvas.** On a phone it fills the screen under a
+  compact header. No form, trust card or explanatory copy stands between a
+  visitor and the map.
+- **One contextual sheet; progressive disclosure.** Phones get one draggable
+  bottom sheet with three resting heights (peek, half, full); wide screens get
+  one floating panel over a full-bleed map, never a split screen. The sheet
+  shows what the current state needs — getting started, a zone, an answer, a
+  question — and the long form (conditions, Ready to Hunt, sources, Hunt Brief)
+  opens on request. The map is sized to what the sheet leaves, so the sheet
+  never hides the map provider's attribution.
+- **Automatic evaluation.** There is no submit button. Once a place or zone, a
+  date and a species are known, the answer is requested. Every answer is keyed
+  by its exact inputs, and a response for inputs no longer on screen is
+  discarded, never shown.
+- **Direct zone interaction.** Zones are tapped on the map or chosen from the
+  keyboard zone list; the selected zone stays highlighted through pan, zoom and
+  any reload of its geometry.
+- **Location-aware, location-optional.** Location helps and is never required;
+  search is always a first-class alternative.
+- **Official-source truth.** Every answer keeps its status word, its authority
+  and a one-tap path to the official source. Presentation is simplified;
+  provenance is never removed.
+- **Shareable Hunt state.** A Hunt is a link (below).
+- **Familiar, not imitative.** Gestures and controls behave as people expect
+  from Google or Apple Maps; the look remains North Ground's.
+- **Minimal permanent chrome.** Only the header, the sheet and the map's own
+  controls are always present.
+- **Desktop keeps the model.** A wide screen is the same map-first product, not
+  a responsive form.
+
 Hunt opens on a useful map, not on a form. Before a person types anything, the
 official hunting-zone boundaries for supported jurisdictions are already drawn, so
-the first thing they see is *these are hunting zones*.
+the first thing they see is *these are hunting zones*. Until the live map is
+ready, the page may show a server-drawn picture of the same official overview
+answer in the live map's exact projection and opening camera. It is drawn only
+from a complete overview answer, is never interactive, and is replaced in place.
+
+The explanation of how Hunt works, what it covers and what its states mean is
+server-rendered inside the sheet, below the actions, so crawlers and readers
+without JavaScript receive it without it standing in front of the map.
 
 The map must never draw an approximate or decorative regulatory boundary. Every
 line traces to a named authority's own published GIS service, and a provider
@@ -1631,18 +1674,20 @@ The map is useful on its own, not only as a picture behind the composer. A hunte
 can pan, read zone names, tap a zone and learn what applies there without running a
 full Hunt each time.
 
-- **Official names on the map.** Every drawn zone is labelled with the authority's
-  own designation in the authority's own terms (WMU 57, GHA 26, Zone 10 West), with
-  the compact form (57, 10W) where space is tight — derived from the canonical
-  spatial layer, never from a separate label list. One label per
-  zone, inside its largest part; labels that do not fit or would collide are left
-  out rather than stacked.
+- **Official names on the map.** Polygons carry the zone's compact label (57,
+  25A, 10W); cards, results and briefs carry the full label (WMU 57, GHA 25A,
+  Zone 10 West). Both come from the presentation contract below, derived from
+  the canonical spatial layer, never from a separate label list. A zone the
+  contract cannot present gets no polygon label rather than a raw code; the zone
+  list still names it. One label per zone, inside its largest part; labels that
+  do not fit or would collide are left out rather than stacked.
 - **Quiet polygons.** Normal fills stay faint so the basemap reads; hover or focus
   strengthens a zone, the selected zone gets a clear bone outline, and special
   regulatory areas use a distinct dashed style rather than another solid colour.
 - **Zone cards.** Tapping a zone (or choosing it from the keyboard-accessible zone
-  list) opens a card — a bottom sheet on phones, a floating panel beside the zone on
-  wider screens — that says what the certified rules say about the WHOLE zone on the
+  list) opens a card — in the bottom sheet on phones, in the floating panel on
+  wider screens with the zone framed beside it — that says what the certified
+  rules say about the WHOLE zone on the
   Hunt date. It is produced by the same regulatory engine as a full Hunt, asked
   about the zone rather than a point. It is never a second regulatory truth.
 - **"In season" is not "open to you".** A zone card never says OPEN. A season running
@@ -1700,7 +1745,7 @@ Two locations exist on the map and must never be confused:
   snapshot. The recentre control moves the camera to it and does nothing else.
 - **Hunt location** — the distinct bone pin. It is set only by a deliberate act:
   choosing a search result, confirming a previewed map point, or the explicit
-  "Hunt at my location" action. Zone resolution, evaluation, weather, the Hunt
+  "Use my location" action. Zone resolution, evaluation, weather, the Hunt
   Brief and sharing read this and nothing else.
 
 A map point becomes the hunt location only through preview and confirmation: a long
@@ -1716,8 +1761,13 @@ never change the zone, the regulatory answer, the weather or the Hunt Brief. The
 
 The primary input is one search composer — place, town, address or postal/ZIP
 code — backed by Google Places where configured and a keyless provider otherwise.
-`Use my location` is a separate, explicit action, not a fake suggestion row. It is
-labelled "Hunt at my location", because it sets the hunt location.
+`Use my location` is a separate, explicit action, not a fake suggestion row, and
+the only one that asks the browser for the device position. Its answer sets the
+hunt location and says "You are in [zone]". Hunt never prompts on arrival. Where
+permission was already granted, the map may show the self dot without asking,
+but the hunt location still waits for the press. Refusal, timeout, low accuracy
+and unsupported browsers each get a plain sentence, and search stays one tap
+away: declining location never traps anyone.
 
 Coordinates remain the internal truth and stay available as secondary detail. A
 person is never asked to type latitude and longitude for normal use.
@@ -1729,11 +1779,17 @@ person is never asked to type latitude and longitude for normal use.
 - **Date** makes time-specific regulatory evaluation possible.
 - **Species** completes it, producing the full Hunt overview.
 
-Nothing about legality is shown from a zone alone.
+A zone chosen without a point gets the whole-zone answer (zone cards, above); an
+exact point — a place, the device's position or a confirmed pin — gets the point
+answer. Nothing about legality is shown from a zone alone.
 
 ## Date entry
 
-Two controls only: **Today** and **Choose date**. There are no other presets.
+Three controls: **Today**, **Tomorrow** and **Choose date**; the calendar and
+typed field appear only when asked for. "This weekend" is deliberately not
+offered: it is two days whose rules can differ (Sunday hunting), so it has no
+single answer. The page renders with the default jurisdiction's day, and an
+untouched default then becomes the device's own calendar day.
 
 The canonical visible format is `YYYY/MM/DD`; the stored and transmitted format is
 ISO `YYYY-MM-DD`. Typing `20260808` becomes `2026/08/08` without anyone reaching
@@ -1743,6 +1799,31 @@ forward. A hunt date is a calendar day and is never routed through a timestamp.
 
 The text field and the calendar are two controls over one selected day. They hold
 no separate state and cannot disagree.
+
+## Shareable Hunt state
+
+*Decided 2026-09-22.*
+
+A Hunt is a link:
+`/hunt?zone=ca-on-wmu-57&species=white-tailed-deer&date=2026-09-22&explore=1`.
+
+- The URL holds only durable intent: the zone's canonical id without its
+  `management_zone:` prefix, the species id without `species:`, the ISO date,
+  and explore mode (written only with a species). It never holds a coordinate,
+  the device location, search text, the sheet's position, a permission or a
+  loading state.
+- Each parameter is validated on its own. A malformed one is dropped with a
+  notice and the rest restore. A zone number or label is never accepted as a
+  zone. Older links (`?species=species:ruffed-grouse`) keep working.
+- A link restores its zone only once the drawn official geometry confirms it,
+  then highlights and frames it, restores species and date, evaluates and opens
+  the sheet.
+- `/hunt` stays the one canonical URL. A link's title and description may name
+  its view; query states are never separate indexable pages.
+- Share uses the device's share sheet where one exists and copies the link
+  otherwise. The shared text names species, zone, jurisdiction and date, never
+  a status, because the link re-evaluates when opened. The Hunt Brief remains
+  the way to share an answer as it stood.
 
 ## Ready to Hunt
 

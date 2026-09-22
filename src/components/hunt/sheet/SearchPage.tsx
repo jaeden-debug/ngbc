@@ -238,7 +238,13 @@ export default function SearchPage({
                 </span>
                 <span className={styles.optionText}>
                   <span className={styles.optionPrimary}>{suggestion.primary}</span>
-                  {suggestion.secondary ? <span className={styles.optionSecondary}>{suggestion.secondary}</span> : null}
+                  {suggestion.secondary ? (
+                    <>
+                      {/* Read as "Bancroft, ON, Canada", not run together. */}
+                      <span className="ng-visually-hidden">, </span>
+                      <span className={styles.optionSecondary}>{suggestion.secondary}</span>
+                    </>
+                  ) : null}
                 </span>
               </button>
             </li>
