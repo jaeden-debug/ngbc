@@ -1,13 +1,13 @@
 "use client";
 
 import { useId, useState } from "react";
-import { addDaysIso, DISPLAY_PATTERN, formatDateInput, isoToDisplay, parseDateInput, readableIso } from "../../../lib/hunt/date";
+import { DISPLAY_PATTERN, formatDateInput, isoToDisplay, parseDateInput, readableIso } from "../../../lib/hunt/date";
 import type { DatePreset } from "../../../lib/hunt/exploration/date-presets";
 import Calendar from "../Calendar";
 import styles from "../HuntApp.module.css";
 
 /**
- * "When are you hunting?" — Today, Tomorrow, or a day chosen on the calendar
+ * "When are you hunting?" — Today, or a day chosen on the calendar
  * or typed. One selected day: the buttons, the typed field and the calendar
  * all read and write the same ISO value and cannot disagree.
  *
@@ -23,8 +23,7 @@ export default function DatePage({ value, today, onChoose }: {
   const id = useId();
   const [text, setText] = useState(() => isoToDisplay(value));
   const [error, setError] = useState<string | null>(null);
-  const tomorrow = today ? addDaysIso(today, 1) : null;
-  const preset: DatePreset | null = value === today ? "today" : value === tomorrow ? "tomorrow" : null;
+  const preset: DatePreset | null = value === today ? "today" : null;
 
   function onInput(raw: string) {
     const formatted = formatDateInput(raw);
@@ -45,11 +44,6 @@ export default function DatePage({ value, today, onChoose }: {
         {today ? (
           <button type="button" className={styles.presetButton} aria-pressed={preset === "today"} onClick={() => onChoose(today, "today")}>
             Today
-          </button>
-        ) : null}
-        {tomorrow ? (
-          <button type="button" className={styles.presetButton} aria-pressed={preset === "tomorrow"} onClick={() => onChoose(tomorrow, "tomorrow")}>
-            Tomorrow
           </button>
         ) : null}
       </div>

@@ -1785,10 +1785,11 @@ answer. Nothing about legality is shown from a zone alone.
 
 ## Date entry
 
-Three controls: **Today**, **Tomorrow** and **Choose date**; the calendar and
-typed field appear only when asked for. "This weekend" is deliberately not
-offered: it is two days whose rules can differ (Sunday hunting), so it has no
-single answer. The page renders with the default jurisdiction's day, and an
+Two controls: **Today** and **Choose date**; the calendar and typed field
+appear only when asked for. There are no other presets (owner decision,
+2026-09-22): "This weekend" is two days whose rules can differ (Sunday
+hunting), so it has no single answer, and every other day is one tap on the
+calendar. The page renders with the default jurisdiction's day, and an
 untouched default then becomes the device's own calendar day.
 
 The canonical visible format is `YYYY/MM/DD`; the stored and transmitted format is
