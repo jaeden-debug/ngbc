@@ -126,7 +126,8 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
         const response = await fetch("/api/hunt/zone", {
           method: "POST",
           headers: { "content-type": "application/json" },
-          body: JSON.stringify({ latitude: location.latitude, longitude: location.longitude }),
+          // The map highlights the hunt zone from these rings.
+          body: JSON.stringify({ latitude: location.latitude, longitude: location.longitude, includeGeometry: true }),
         });
         const payload = await response.json() as {
           status: string; message?: string;

@@ -1,7 +1,7 @@
 import { isWithinSupportedBounds } from "../../../../lib/hunt/coverage";
 import { resolveZone } from "../../../../lib/hunt/zone";
-import { presentZone } from "../../../../lib/hunt/zone-presentation";
-import { designationFromOfficialName, layerForJurisdiction, layerForPoint, layerForResolution, zoneCoverage, zoneDisplayLabel } from "../../../../lib/hunt/zone-layers";
+import { resolvedZoneBody } from "../../../../lib/hunt/zone-response";
+import { layerForJurisdiction, layerForPoint, layerForResolution } from "../../../../lib/hunt/zone-layers";
 import { createRateLimiter, getClientAddress } from "../../../../lib/newsletter/rate-limit";
 import { SITE_URL } from "../../../../lib/site";
 
@@ -49,7 +49,7 @@ export async function POST(request: Request): Promise<Response> {
     return json({ status: "ERROR", message: "Request body could not be read." }, 400);
   }
 
-  let body: { latitude?: unknown; longitude?: unknown };
+  let body: { latitude?: unknown; longitude?: unknown; includeGeometry?: unknown };
   try {
     body = JSON.parse(raw) as typeof body;
   } catch {
@@ -58,6 +58,13 @@ export async function POST(request: Request): Promise<Response> {
 
   const latitude = body.latitude;
   const longitude = body.longitude;
+  /* The zone's display geometry (up to ~78 KB for WMU 26) is sent only when
+     asked for. Only the current map's highlight uses it; the rebuilt Hunt
+     highlights from its own geometry store and must not ask. */
+  if (body.includeGeometry !== undefined && typeof body.includeGeometry !== "boolean") {
+    return json({ status: "ERROR", message: "includeGeometry must be true or false." }, 400);
+  }
+  const includeGeometry = body.includeGeometry === true;
   if (typeof latitude !== "number" || typeof longitude !== "number" || !Number.isFinite(latitude) || !Number.isFinite(longitude)) {
     return json({ status: "ERROR", message: "Provide a numeric latitude and longitude." }, 400);
   }
@@ -115,34 +122,5 @@ export async function POST(request: Request): Promise<Response> {
     });
   }
 
-  const { layer } = presented;
-  const zoneName = designationFromOfficialName(layer, resolution.officialName);
-  return timed({
-    status: "RESOLVED",
-    zone: {
-      id: resolution.zoneId,
-      layerId: layer.id,
-      designation: zoneName,
-      officialName: resolution.officialName,
-      shortLabel: zoneName ? zoneDisplayLabel(layer, zoneName) : resolution.officialName,
-      // Presentation for the primary locale, beside — never instead of — the identity above.
-      presentation: zoneName
-        ? presentZone({ designation: zoneName, layerId: layer.id, jurisdictionId: layer.jurisdictionId,
-            zoneId: resolution.zoneId, officialName: resolution.officialName })
-        : null,
-      coverage: zoneCoverage(layer, zoneName),
-      boundaryDistanceMeters: resolution.boundaryDistanceMeters,
-      nearBoundary: resolution.nearBoundary,
-      displayRings: resolution.displayRings,
-      message: resolution.message,
-    },
-    layer: {
-      jurisdictionId: layer.jurisdictionId,
-      jurisdictionName: layer.jurisdictionName,
-      officialTerm: layer.officialTerm,
-      officialTermShort: layer.officialTermShort,
-      authority: layer.authority,
-      sourceId: layer.sourceId,
-    },
-  });
+  return timed(resolvedZoneBody(resolution, presented.layer, { includeGeometry }));
 }
