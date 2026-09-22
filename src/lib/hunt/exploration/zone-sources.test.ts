@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { clearZoneGeometryCache, clampToLayer, fetchLayerGeometry, layersForBounds, queryTiles, storedLevelForTolerance } from "../zone-geometry.ts";
+import { clampToLayer, clearZoneGeometryCache, drawingPrecision, fetchLayerGeometry, fetchZoneGeometry, layersForBounds, queryTiles, storedLevelForTolerance } from "../zone-geometry.ts";
 import { layerById } from "../zone-layers.ts";
 import { summarizeZone } from "./zone-summary.ts";
 
@@ -168,6 +168,93 @@ test("a saturated stored result refuses the layer rather than drawing part of it
       quebec, { west: -80, south: 44, east: -60, north: 52 }, 6, fetcher, storedClient(rowsAt(400)),
     );
     assert.equal(fourHundred.status, "OK", "Yukon's 443 must fit at the overview level");
+  } finally {
+    quebec.serving = was;
+    clearZoneGeometryCache();
+  }
+});
+
+test("a drawn zone carries only the precision its zoom can show", async () => {
+  /*
+   * Sub-pixel at every zoom the overview is drawn at: 0.001° is 56-79 m
+   * against 611-1730 m per pixel. It is a rendering precision on a drawing —
+   * zone resolution and boundary distance come from the resolver at full
+   * precision and are not touched here.
+   */
+  assert.equal(drawingPrecision(6), 3, "the overview's own request zoom");
+  assert.equal(drawingPrecision(7), 3);
+  assert.equal(drawingPrecision(9), 4, "level 1");
+  assert.equal(drawingPrecision(11), 6, "detailed levels keep full precision");
+  assert.equal(drawingPrecision(12), 6);
+
+  const quebec = layerById("layer:ca-qc-zone-chasse")!;
+  const was = quebec.serving;
+  quebec.serving = true;
+  try {
+    const fetcher = (async () => { throw new Error("the ministry's WFS is not a map source"); }) as typeof fetch;
+    const precise = { type: "Polygon", coordinates: [[[-75.123456789, 45.987654321], [-75.1, 45.9], [-75.2, 46.0], [-75.123456789, 45.987654321]]] };
+
+    clearZoneGeometryCache();
+    const overview = await fetchLayerGeometry(quebec, { west: -80, south: 44, east: -60, north: 52 }, 6, fetcher,
+      storedClient([{ official_identifier: "10E", canonical_id: "management_zone:ca-qc-zone-10e", geometry: precise }]));
+    assert.equal(overview.status, "OK");
+    const overviewResult = await fetchZoneGeometry({ west: -80, south: 44, east: -60, north: 52 }, 6, fetcher);
+    for (const feature of overviewResult.features) {
+      for (const ring of feature.rings) {
+        for (const [longitude, latitude] of ring) {
+          assert.equal(longitude, Math.round(longitude * 1_000) / 1_000, "longitude is rounded to three decimals");
+          assert.equal(latitude, Math.round(latitude * 1_000) / 1_000, "latitude is rounded to three decimals");
+        }
+      }
+    }
+    assert.ok(overviewResult.features.length > 0, "the overview drew something to check");
+  } finally {
+    quebec.serving = was;
+    clearZoneGeometryCache();
+  }
+});
+
+test("a ring too small to survive rounding keeps its own precision, and still draws", async () => {
+  /*
+   * Rounding snaps to a 56-79 m grid. A zone part smaller than that would
+   * collapse to a single point and draw as nothing while still being counted
+   * among the features — the same class of lie as drawing 400 of 443 zones.
+   * Small island parts on the Québec and British Columbian coasts are the real
+   * case. Measured: a 120 m square keeps four distinct points; a 40 m square
+   * collapses to one.
+   */
+  const quebec = layerById("layer:ca-qc-zone-chasse")!;
+  const was = quebec.serving;
+  quebec.serving = true;
+  const squareOf = (metres: number, west = -79.5, south = 45): number[][] => {
+    const side = metres / 111_320;
+    return [[west, south], [west + side, south], [west + side, south + side], [west, south + side], [west, south]];
+  };
+  try {
+    const fetcher = (async () => { throw new Error("the ministry's WFS is not a map source"); }) as typeof fetch;
+    clearZoneGeometryCache();
+    const island = await fetchLayerGeometry(quebec, { west: -80, south: 44, east: -60, north: 52 }, 6, fetcher,
+      storedClient([
+        { official_identifier: "10E", canonical_id: "management_zone:ca-qc-zone-10e",
+          geometry: { type: "MultiPolygon", coordinates: [[squareOf(120_000)], [squareOf(120, -79.9, 45.9)], [squareOf(40, -79.8, 45.8)]] } },
+      ]));
+    assert.equal(island.status, "OK");
+    const result = await fetchZoneGeometry({ west: -80, south: 44, east: -60, north: 52 }, 6, fetcher);
+    const rings = result.features.flatMap((feature) => feature.rings);
+
+    // Every ring still draws: none collapsed to fewer than three distinct points.
+    for (const ring of rings) {
+      const distinct = new Set(ring.map((point) => point.join(","))).size;
+      assert.ok(distinct >= 3, `a ring collapsed to ${distinct} distinct points and would draw as nothing`);
+    }
+
+    // The large and 120 m rings took the rounding; the 40 m one kept its own precision.
+    const decimalsOf = (ring: number[][]) => Math.max(...ring.flat().map((value) => {
+      const text = String(value); const dot = text.indexOf(".");
+      return dot < 0 ? 0 : text.length - dot - 1;
+    }));
+    assert.ok(rings.some((ring) => decimalsOf(ring) <= 3), "most rings are rounded");
+    assert.ok(rings.some((ring) => decimalsOf(ring) > 3), "the ring that would have collapsed kept its precision");
   } finally {
     quebec.serving = was;
     clearZoneGeometryCache();

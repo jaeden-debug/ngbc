@@ -479,6 +479,61 @@ async function authorityTiles(layer: ZoneLayer, view: BoundingBox, tolerance: nu
   return (await Promise.all(tiles.map((tile) => authorityRecords(layer, tile, tolerance, fetcher)))).flat();
 }
 
+/* ── Drawing precision ───────────────────────────────────────────────────
+   A drawn zone carries only the precision its display zoom can show. The
+   overview serialised at six decimal places — about 0.1 m — for a view where
+   one pixel spans more than a kilometre, which spent 30% of the payload on
+   digits nobody can see.
+
+   Measured, Web Mercator: 0.001° is 56-79 m depending on latitude, against
+   611-1730 m per pixel. That is 0.023 of a pixel at zoom 5, 0.046 at zoom 6
+   (the overview's own request zoom) and 0.091 at zoom 7; by zoom 8 finer
+   geometry has taken over. Three decimals are sub-pixel everywhere the
+   overview is drawn.
+
+   This is a RENDERING precision on a drawing, and section 41A is explicit that
+   the drawing is never a boundary determination. Zone resolution, boundary
+   distance and `nearBoundary` are answered by the PostGIS resolver at full
+   precision and are untouched, and no stored geometry changes. It is applied
+   once, here, so a stored layer and a live-service layer behave identically
+   and the map and its poster cannot be drawn from different geometry.
+
+   `labelPoint` and `labelSpan` deliberately keep full precision: they are two
+   numbers per feature, about 1% of the payload, and a label anchor is not
+   worth quantising. */
+
+export function drawingPrecision(zoom: number): number {
+  // The level-of-detail request zooms are 6, 9, 11 and 12.
+  if (zoom <= 7) return 3;
+  if (zoom <= 10) return 4;
+  return 6;
+}
+
+function distinctPoints(ring: number[][]): number {
+  const seen = new Set<string>();
+  for (const [longitude, latitude] of ring) seen.add(`${longitude},${latitude}`);
+  return seen.size;
+}
+
+function atPrecision(features: ZoneFeature[], decimals: number): ZoneFeature[] {
+  if (decimals >= 6) return features;
+  const factor = 10 ** decimals;
+  const round = (value: number) => Math.round(value * factor) / factor;
+  return features.map((feature) => ({
+    ...feature,
+    rings: feature.rings.map((ring) => {
+      const rounded = ring.map(([longitude, latitude]) => [round(longitude), round(latitude)]);
+      /* Rounding snaps to a 56-79 m grid, so a ring smaller than that collapses
+         to a point and draws as nothing while still being counted among the
+         features — the same lie as drawing 400 of 443 zones. A ring that loses
+         its shape keeps its own full precision. Measured across the national
+         overview: 84 of 1,389 rings would have vanished this way, and keeping
+         them costs 1.5 KB brotli. */
+      return distinctPoints(rounded) >= 3 ? rounded : ring;
+    }),
+  }));
+}
+
 /**
  * Every served layer in view, each asked of its own authority, in parallel.
  *
@@ -506,7 +561,7 @@ export async function fetchZoneGeometry(
     status: result.status as "OK" | "EMPTY" | "PROVIDER_ERROR",
     ...(result.message ? { message: result.message } : {}),
   }));
-  const features = results.flatMap((result) => result.features);
+  const features = atPrecision(results.flatMap((result) => result.features), drawingPrecision(zoom));
   const failed = results.filter((result) => result.status === "PROVIDER_ERROR");
   const answered = results.filter((result) => result.status === "OK");
   const tolerance = toleranceForZoom(zoom);
