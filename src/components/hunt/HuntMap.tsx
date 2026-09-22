@@ -554,7 +554,9 @@ export default function HuntMap({
     return [{
       key,
       text: feature.label,
-      short: feature.name,
+      // Never the raw designation: Québec's "11O" reads as "110".
+      // A response cached before compactLabel existed falls back to the full label, never the code.
+      short: feature.compactLabel ?? feature.label,
       labelPoint: feature.labelPoint,
       labelSpan: feature.labelSpan,
       priority: selected ? 100 : feature.coverage === "VERIFIED" ? 2 : 1,
