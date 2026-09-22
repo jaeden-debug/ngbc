@@ -1,4 +1,5 @@
 import { isValidHuntBriefShareId } from "./model.ts";
+import { withDeadline } from "./deadline.ts";
 import type { HuntBriefStore } from "./store.ts";
 
 /**
@@ -51,25 +52,12 @@ export async function decideShareRoute(
     return "render";
   }
 
-  // A plain timer rather than `AbortSignal.timeout`, whose timer is unref'd:
-  // it does not keep the process alive, so the deadline only held while some
-  // other I/O happened to. A store that hangs without doing I/O would never
-  // have been abandoned. The timer is cleared as soon as the answer arrives,
-  // so a fast lookup does not keep an invocation alive for the full bound.
-  const controller = new AbortController();
-  const timer = setTimeout(
-    () => controller.abort(new Error("Hunt Brief existence check timed out")),
-    timeoutMs,
-  );
   try {
-    // Raced as well as signalled: the signal cancels a store that honours it,
-    // and the race returns on time from one that does not.
-    const exists = await Promise.race([
-      store.exists(shareId, { signal: controller.signal }),
-      new Promise<never>((_, reject) => {
-        controller.signal.addEventListener("abort", () => reject(controller.signal.reason), { once: true });
-      }),
-    ]);
+    const exists = await withDeadline(
+      (signal) => store.exists(shareId, { signal }),
+      timeoutMs,
+      "Hunt Brief existence check timed out",
+    );
     return exists ? "render" : "not_found";
   } catch {
     // An outage must never become a 404, and neither may a slow answer.
@@ -77,7 +65,5 @@ export async function decideShareRoute(
     // statements, and only the second is true while storage is down or slow.
     // The page renders and makes its own lookup.
     return "render";
-  } finally {
-    clearTimeout(timer);
   }
 }

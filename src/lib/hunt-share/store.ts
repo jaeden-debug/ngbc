@@ -18,7 +18,8 @@ export class HuntBriefStoreUnavailableError extends Error {
 
 export interface HuntBriefStore {
   create(brief: ShareHuntBrief): Promise<"created" | "exists">;
-  get(shareId: string): Promise<unknown | null>;
+  /** Accepts a signal so the page's lookup can be bounded (`getHuntBrief`). */
+  get(shareId: string, options?: { signal?: AbortSignal }): Promise<unknown | null>;
   /**
    * Whether a brief is stored under this ID, without fetching the snapshot.
    *
@@ -84,12 +85,13 @@ export class SupabaseHuntBriefStore implements HuntBriefStore {
     throw new HuntBriefStoreUnavailableError();
   }
 
-  async get(shareId: string): Promise<unknown | null> {
-    const { data, error } = await this.client
+  async get(shareId: string, options?: { signal?: AbortSignal }): Promise<unknown | null> {
+    let query = this.client
       .from("hunt_brief_snapshots")
       .select("snapshot")
-      .eq("public_share_id", shareId)
-      .maybeSingle();
+      .eq("public_share_id", shareId);
+    if (options?.signal) query = query.abortSignal(options.signal);
+    const { data, error } = await query.maybeSingle();
     if (error) throw new HuntBriefStoreUnavailableError();
     return data?.snapshot ?? null;
   }
