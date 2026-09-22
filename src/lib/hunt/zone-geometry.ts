@@ -241,12 +241,20 @@ async function authorityRecords(layer: ZoneLayer, box: BoundingBox, tolerance: n
   if (!response.ok) throw new Error(`${layer.jurisdictionName} zone service returned ${response.status}`);
   const payload = await response.json() as FeatureCollection;
   if (payload.type !== "FeatureCollection" || !Array.isArray(payload.features)) throw new Error("Unexpected zone service response");
-  if (payload.features.length !== countPayload.count) {
-    throw new Error(`${layer.jurisdictionName} zone service returned ${payload.features.length} of ${countPayload.count} viewport records`);
+  let features = payload.features;
+  if (features.length > countPayload.count!) {
+    throw new Error(`${layer.jurisdictionName} zone service returned ${features.length} of ${countPayload.count} viewport records`);
+  }
+  if (features.length < countPayload.count!) {
+    /* Alberta's service drops WMU 214 from the envelope -114,51,-113,52 at
+       every tolerance while counting it, and returns it when asked by id. A
+       short envelope answer is therefore re-asked record by record — and still
+       refused unless every counted record arrives exactly once. */
+    features = await featuresByObjectId(layer, countParameters, parameters, countPayload.count!, fetcher);
   }
 
   const records: SourceRecord[] = [];
-  for (const feature of payload.features) {
+  for (const feature of features) {
     /* The authority's designation, read in the layer's own encoding (Alberta
        stores WMU 102 as "00102"); null is a feature that is not a zone, such
        as Riding Mountain's undesignated polygon or Elk Island's blank record. */
@@ -261,6 +269,61 @@ async function authorityRecords(layer: ZoneLayer, box: BoundingBox, tolerance: n
     records.push({ id, name, polygons });
   }
   return remember(key, records);
+}
+
+const OBJECT_ID_BATCH = 20;
+
+/**
+ * Every record an envelope counts, asked for by object id. Fails closed: the id
+ * list must match the count, and every id must come back exactly once.
+ */
+async function featuresByObjectId(
+  layer: ZoneLayer,
+  countParameters: URLSearchParams,
+  featureParameters: URLSearchParams,
+  count: number,
+  fetcher: typeof fetch,
+): Promise<FeatureCollection["features"]> {
+  const idParameters = new URLSearchParams(countParameters);
+  idParameters.delete("returnCountOnly");
+  idParameters.set("returnIdsOnly", "true");
+  const idResponse = await fetcher(`${layer.endpoint}?${idParameters}`, {
+    headers: { accept: "application/json" }, signal: AbortSignal.timeout(10_000), cache: "no-store",
+  });
+  if (!idResponse.ok) throw new Error(`${layer.jurisdictionName} zone id service returned ${idResponse.status}`);
+  const idPayload = await idResponse.json() as { objectIdFieldName?: string; objectIds?: unknown };
+  const idField = idPayload.objectIdFieldName;
+  const ids = Array.isArray(idPayload.objectIds) ? idPayload.objectIds : [];
+  if (!idField || !/^[A-Za-z_][A-Za-z0-9_]*$/.test(idField) || ids.length !== count ||
+      !ids.every((id) => Number.isInteger(id)) || new Set(ids).size !== ids.length) {
+    throw new Error(`${layer.jurisdictionName} zone service returned ${ids.length} ids for ${count} viewport records`);
+  }
+
+  const received = new Map<number, FeatureCollection["features"][number]>();
+  for (let start = 0; start < ids.length; start += OBJECT_ID_BATCH) {
+    const batch = ids.slice(start, start + OBJECT_ID_BATCH) as number[];
+    const parameters = new URLSearchParams(featureParameters);
+    for (const key of ["geometry", "geometryType", "inSR", "spatialRel", "resultRecordCount"]) parameters.delete(key);
+    parameters.set("objectIds", batch.join(","));
+    parameters.set("outFields", `${layer.nameField!},${idField}`);
+    const response = await fetcher(`${layer.endpoint}?${parameters}`, {
+      headers: { accept: "application/geo+json, application/json" }, signal: AbortSignal.timeout(10_000), cache: "no-store",
+    });
+    if (!response.ok) throw new Error(`${layer.jurisdictionName} zone service returned ${response.status}`);
+    const payload = await response.json() as FeatureCollection;
+    if (payload.type !== "FeatureCollection" || !Array.isArray(payload.features)) throw new Error("Unexpected zone service response");
+    for (const feature of payload.features) {
+      const id = feature.properties?.[idField];
+      if (typeof id !== "number" || !batch.includes(id) || received.has(id)) {
+        throw new Error(`${layer.jurisdictionName} zone service returned an unrequested or repeated record`);
+      }
+      received.set(id, feature);
+    }
+  }
+  if (received.size !== count) {
+    throw new Error(`${layer.jurisdictionName} zone service returned ${received.size} of ${count} viewport records by id`);
+  }
+  return ids.map((id) => received.get(id as number)!);
 }
 
 /**
