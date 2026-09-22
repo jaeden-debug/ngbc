@@ -161,14 +161,31 @@ test("only HUNT_SET, PIN_CONFIRMED, HUNT_LABELLED and HUNT_CLEARED ever change t
 });
 
 test("the device location never reaches the evaluation, the result or a Hunt Brief", () => {
-  /* The composer is the only place that builds evaluation and share payloads.
-     It reads the hunt location and nothing else; the device fix lives in the
-     map's state and has no path into either. */
-  const composer = readFileSync(new URL("../../../components/hunt/HuntComposer.tsx", import.meta.url), "utf8");
-  const result = readFileSync(new URL("../../../components/hunt/HuntResult.tsx", import.meta.url), "utf8");
+  /* The app builds the evaluation request and the share link; the answer
+     builds the Hunt Brief. They read the hunt location and nothing else. The
+     device fix is watched inside the map view and has no path into either. */
+  const read = (path: string) => readFileSync(new URL(path, import.meta.url), "utf8");
+  const app = read("../../../components/hunt/HuntApp.tsx");
+  const answer = read("../../../components/hunt/sheet/HuntAnswer.tsx");
+  const share = read("./share.ts");
   const code = (source: string) => source.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, "");
-  for (const [name, source] of [["HuntComposer", composer], ["HuntResult", result]] as const) {
+  for (const [name, source] of [["HuntApp", app], ["HuntAnswer", answer], ["share", share]] as const) {
     assert.doesNotMatch(code(source), /exploration\.self|\.fix\b|SelfFix|selfFix/, `${name} must not read the device location`);
   }
-  assert.match(composer, /const location: HuntLocation \| null = exploration\.hunt;/);
+  assert.match(app, /const hunt = exploration\.hunt;/);
+  // The evaluation is sent the hunt point that resolved the zone, never another.
+  assert.match(app, /const pointForEvaluation = isHuntZone && hunt && huntZone\.kind === "resolved" \? hunt : null;/);
+});
+
+test("only the map view watches the device", () => {
+  const read = (path: string) => readFileSync(new URL(path, import.meta.url), "utf8");
+  const app = read("../../../components/hunt/HuntApp.tsx");
+  const view = read("../../../components/hunt/HuntMapView.tsx");
+  assert.doesNotMatch(app, /watchPosition/);
+  assert.match(view, /navigator\.geolocation\.watchPosition/);
+  // The app asks the device once, from the explicit "Use my location" action, and makes it the hunt location.
+  const calls = app.match(/navigator\.geolocation\.\w+/g) ?? [];
+  assert.deepEqual(calls, ["navigator.geolocation.getCurrentPosition"]);
+  const handler = app.slice(app.indexOf("const useMyLocation = useCallback"), app.indexOf("const chooseOnMap"));
+  assert.match(handler, /HUNT_SET[\s\S]*origin: "device"/);
 });

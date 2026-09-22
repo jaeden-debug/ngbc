@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
-import styles from "./Hunt.module.css";
+import styles from "./HuntNav.module.css";
 
 /**
  * Hunt's floating navigation.

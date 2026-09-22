@@ -6,7 +6,7 @@ import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
 import type { ExplorationState } from "../../lib/hunt/exploration/states";
 import type { ZoneFeature } from "../../lib/hunt/zone-geometry";
 import type { LabelSource } from "./map/google-overlays";
-import styles from "./Hunt.module.css";
+import styles from "./ZoneCanvas.module.css";
 
 export interface Viewport {
   latitude: number;
@@ -111,6 +111,19 @@ export function fitViewport(
   const x = centreX - (padding.left - padding.right) / 2;
   const y = centreY - (padding.top - padding.bottom) / 2;
   return { longitude: unprojectLongitude(x, scale), latitude: unprojectLatitude(y, scale), zoom };
+}
+
+/** The geographic box a viewport shows in a drawing area of `size`. */
+export function viewportBounds(viewport: Viewport, size: { width: number; height: number }) {
+  const scale = TILE * Math.pow(2, viewport.zoom);
+  const x = projectX(viewport.longitude, scale);
+  const y = projectY(viewport.latitude, scale);
+  return {
+    west: Math.max(-180, unprojectLongitude(x - size.width / 2, scale)),
+    east: Math.min(180, unprojectLongitude(x + size.width / 2, scale)),
+    north: Math.min(85, unprojectLatitude(y - size.height / 2, scale)),
+    south: Math.max(-85, unprojectLatitude(y + size.height / 2, scale)),
+  };
 }
 
 export default function ZoneCanvas({

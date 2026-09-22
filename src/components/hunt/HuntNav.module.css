@@ -1,0 +1,136 @@
+/* Hunt's floating navigation, shared by the species library and profiles. */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  padding: 12px var(--ng-gutter) 0;
+}
+
+.navInner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: var(--ng-max);
+  margin: 0 auto;
+  padding: 8px 10px 8px 12px;
+  border-radius: var(--ng-radius-pill);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 2px 8px 2px 2px;
+  border-radius: var(--ng-radius-pill);
+  color: inherit;
+  text-decoration: none;
+}
+
+.brandMark {
+  width: 34px;
+  height: auto;
+  flex: none;
+  /* The crest is warm bone on transparent; a whisper of lift keeps it from
+     dissolving into the glass behind it. */
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.55));
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.04;
+}
+
+.brandName {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ng-cream);
+}
+
+.brandSub {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ng-bone-faint);
+}
+
+.navLinks {
+  display: none;
+  margin-left: auto;
+  gap: 2px;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: var(--ng-radius-pill);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ng-bone-dim);
+  text-decoration: none;
+  transition: color 140ms ease, background-color 140ms ease;
+}
+
+.navLink:hover {
+  color: var(--ng-cream);
+  background: rgba(201, 194, 166, 0.07);
+}
+
+.navLink[data-current="true"] {
+  color: var(--ng-cream);
+  background: rgba(201, 194, 166, 0.12);
+  box-shadow: inset 0 0 0 1px var(--ng-glass-border-bright);
+}
+
+.navToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  border: 1px solid var(--ng-glass-border);
+  border-radius: var(--ng-radius-pill);
+  background: rgba(201, 194, 166, 0.06);
+  color: var(--ng-cream);
+  cursor: pointer;
+}
+
+.navMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: var(--ng-max);
+  margin: 8px auto 0;
+  padding: 8px;
+  border-radius: var(--ng-radius);
+}
+
+.navMenuLink {
+  display: flex;
+  align-items: center;
+  min-height: var(--ng-tap);
+  padding: 0 14px;
+  border-radius: var(--ng-radius-sm);
+  font-size: 0.95rem;
+  color: var(--ng-bone-dim);
+  text-decoration: none;
+}
+
+.navMenuLink[data-current="true"] {
+  color: var(--ng-cream);
+  background: rgba(201, 194, 166, 0.10);
+}
+
+@media (min-width: 700px) {
+  .navLinks { display: flex; }
+  .navToggle { display: none; }
+  .navMenu { display: none; }
+}

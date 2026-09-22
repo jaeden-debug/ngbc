@@ -54,8 +54,8 @@ export interface HuntLocation extends GeoPoint {
 
 export type Selection =
   | { kind: "none" }
-  /** `hunt`: the zone the hunt location resolved to. `map`/`list`: explored. */
-  | { kind: "zone"; zone: ZoneRef; origin: "hunt" | "map" | "list" }
+  /** `hunt`: the zone the hunt location resolved to. `map`/`list`: explored. `link`: named by a shared link. */
+  | { kind: "zone"; zone: ZoneRef; origin: "hunt" | "map" | "list" | "link" }
   /** A special regulatory area (a refuge, closed lands) tapped on an overlay layer. */
   | { kind: "overlay"; layerId: string; objectId: number };
 
@@ -93,7 +93,7 @@ export type ExplorationEvent =
   | { type: "SELF_FAILED"; reason: SelfFailure }
   | { type: "RECENTER" }
   | { type: "NOTICE_DISMISSED" }
-  | { type: "ZONE_SELECTED"; zone: ZoneRef; origin: "map" | "list" }
+  | { type: "ZONE_SELECTED"; zone: ZoneRef; origin: "map" | "list" | "link" }
   | { type: "OVERLAY_SELECTED"; layerId: string; objectId: number }
   | { type: "CARD_CLOSED" }
   | { type: "MAP_TAPPED_EMPTY" }
