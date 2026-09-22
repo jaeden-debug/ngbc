@@ -1,0 +1,13 @@
+-- enforce_verified_regulatory_rule_source() is the trigger function behind
+-- regulatory_rules_require_verified_source. It is SECURITY DEFINER and, from
+-- the default function ACL, executable by PUBLIC, anon and authenticated —
+-- Supabase's security advisor flags it (lints 0028/0029) as callable through
+-- /rest/v1/rpc.
+--
+-- No role needs EXECUTE on it: PostgreSQL checks EXECUTE on a trigger function
+-- only when the trigger is created, never when it fires, and a trigger function
+-- cannot be called directly. anon and authenticated also hold no write grant on
+-- regulatory_rules. Revoking changes no behaviour; the trigger keeps firing for
+-- the service-role publisher. Grant-only: no function body, trigger or data is
+-- touched.
+revoke execute on function public.enforce_verified_regulatory_rule_source() from public, anon, authenticated;

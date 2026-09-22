@@ -1632,8 +1632,9 @@ can pan, read zone names, tap a zone and learn what applies there without runnin
 full Hunt each time.
 
 - **Official names on the map.** Every drawn zone is labelled with the authority's
-  own designation in the authority's own terms — WMU 57, GHA 26, Zone 10W — derived
-  from the canonical spatial layer, never from a separate label list. One label per
+  own designation in the authority's own terms (WMU 57, GHA 26, Zone 10 West), with
+  the compact form (57, 10W) where space is tight — derived from the canonical
+  spatial layer, never from a separate label list. One label per
   zone, inside its largest part; labels that do not fit or would collide are left
   out rather than stacked.
 - **Quiet polygons.** Normal fills stay faint so the basemap reads; hover or focus
@@ -1664,6 +1665,30 @@ full Hunt each time.
   authority's own service (today: Manitoba's refuges, conservation areas, wildlife
   management areas and closed lands), each with its authority and legal standing.
   No decorative or unsourced layer is ever added to fill the control.
+
+## Zone identity and presentation
+
+*Decided 2026-09-22.*
+
+A zone has one identity and several presentations, and they never mix.
+
+- **Identity** is the canonical id (`management_zone:ca-qc-zone-10o`), the
+  authority's source designation (`10O`) and its official name (« Zone de
+  chasse 10O »). Only identity joins data, selects rules, keys geometry, records
+  provenance or is stored in a Hunt Brief.
+- **Presentation** is derived per locale: a full label for cards, results and
+  briefs (en-CA "Zone 10 West", fr-CA "Zone 10 Ouest", "WMU 57"); a compact
+  label for polygons and tight UI ("10W" / "10O", "57"); an accessible label
+  that spells out abbreviations ("Wildlife Management Unit 57, Ontario").
+  Changing locale changes words only, never a polygon, zone, rule, season,
+  status or source.
+- There is one presentation path, `src/lib/hunt/zone-presentation.ts`: a
+  per-layer data table. A new jurisdiction adds a row. No component formats a
+  designation itself or falls back to the raw code.
+- A term or direction is localized only where the authority publishes that
+  language. Proper names are never translated. An ambiguous suffix (Québec
+  19SNO) keeps its code. A jurisdiction without a profile shows its raw
+  designation and is never given an invented name.
 
 ## Device location is not the hunt location
 
