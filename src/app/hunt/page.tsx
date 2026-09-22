@@ -1,12 +1,16 @@
 import type { Metadata, Viewport } from "next";
+import { preconnect, preload } from "react-dom";
 import HuntAbout from "../../components/hunt/HuntAbout";
 import HuntApp from "../../components/hunt/HuntApp";
+import { mapsScriptUrl } from "../../components/hunt/map/maps-script";
+import { zonesPoster } from "./zones-poster";
 import type { CanonicalId } from "../../lib/content-contract";
 import { contentRepository } from "../../lib/content/repository";
 import type { SpeciesSelectorOption } from "../../lib/hunt/coverage";
 import { canadaCoverageReport, regulatoryJurisdictionsForSpecies } from "../../lib/hunt/canada/report";
 import { HUNT_DEFAULT_TIME_ZONE, jurisdictionTodayIso } from "../../lib/hunt/date";
 import { longDayLabel } from "../../lib/hunt/exploration/date-presets";
+import { OVERVIEW_URL } from "../../lib/hunt/exploration/overview";
 import { huntDeepLink, parseHuntUrlState, type HuntUrlValidators } from "../../lib/hunt/exploration/url-state";
 import { ZONE_LAYERS } from "../../lib/hunt/zone-layers";
 import { presentZoneById } from "../../lib/hunt/zone-presentation";
@@ -100,11 +104,22 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 }
 
 export default async function HuntPage({ searchParams }: Props) {
+  /* The map is the page: start on Google's script and tile hosts while the HTML is still arriving. */
+  // The overview of every zone is the map's first need; start it with the HTML, not after hydration.
+  preload(OVERVIEW_URL, { as: "fetch", crossOrigin: "anonymous" });
+  const mapsKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+  if (mapsKey) {
+    preconnect("https://maps.googleapis.com");
+    preconnect("https://maps.gstatic.com", { crossOrigin: "anonymous" });
+    preload(mapsScriptUrl(mapsKey), { as: "script" });
+  }
+
   const resources = await contentRepository.getPublishedResources({ locale: "en-CA" });
   const speciesResources = resources.filter((resource) => resource.type === "species");
   const published = new Set<string>(speciesResources.map((resource) => resource.speciesProfile.speciesId));
   const { state, rejected } = parseHuntUrlState(await searchParams, validators(published));
 
+  const posterPromise = zonesPoster();
   const primaryMedia = await getSpeciesPrimaryMediaMap(speciesResources.map((resource) => resource.speciesProfile.speciesId));
   const coverageReport = canadaCoverageReport();
   const speciesOptions: SpeciesSelectorOption[] = await Promise.all(speciesResources.map(async (resource) => {
@@ -135,6 +150,7 @@ export default async function HuntPage({ searchParams }: Props) {
     };
   }));
 
+  const poster = await posterPromise;
   return (
     <main className="hunt-page">
       {/* The page's name for every reader; the map and sheet are its interface. */}
@@ -149,6 +165,7 @@ export default async function HuntPage({ searchParams }: Props) {
         initialUrl={{ ...state, speciesId: state.speciesId as CanonicalId<"species"> | null }}
         linkIssues={rejected.length}
         about={<HuntAbout />}
+        poster={poster}
       />
     </main>
   );

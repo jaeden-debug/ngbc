@@ -129,22 +129,3 @@ export function currentResult(state: HuntSession, key: string | null): HuntEvalu
   return key && state.evaluation.kind === "ready" && state.evaluation.key === key ? state.evaluation.result : null;
 }
 
-/**
- * The answers as the evaluation API reads them.
- *
- * Questions are keyed by dimension id, and an animal-class dimension's id is
- * `ANIMAL_CLASS:<class>`. The API does not accept that as a key: it takes
- * animal classes as a list of `{ dimension, value }`. Sending the raw key made
- * the request malformed, so answering "antlered or antlerless?" returned an
- * error instead of a season.
- */
-export function toAnswerPayload(answers: Record<string, string>): Record<string, unknown> | undefined {
-  const payload: Record<string, unknown> = {};
-  const animalClasses: Array<{ dimension: string; value: string }> = [];
-  for (const [key, value] of Object.entries(answers)) {
-    if (key.startsWith("ANIMAL_CLASS:")) animalClasses.push({ dimension: key.slice("ANIMAL_CLASS:".length), value });
-    else payload[key] = value;
-  }
-  if (animalClasses.length) payload.animalClasses = animalClasses;
-  return Object.keys(payload).length ? payload : undefined;
-}
