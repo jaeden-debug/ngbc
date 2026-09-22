@@ -8,6 +8,7 @@ import britishColumbiaCertifiedUnits from "../../../content/regulatory/ca-bc-cer
 import { US_ZONE_LAYERS } from "./united-states/layers.ts";
 import { CANADA_LIVE_ZONE_LAYERS } from "./canada/live-layers.ts";
 import { NEWFOUNDLAND_BIG_GAME_SERVICE, NEWFOUNDLAND_LEGAL_STANDING, normaliseNewfoundlandArea } from "./ingestion/newfoundland-areas.ts";
+import { YUKON_GMS_LAYER, YUKON_LEGAL_STANDING, normaliseYukonSubzone } from "./ingestion/yukon-subzones.ts";
 import { BRITISH_COLUMBIA_MU_CONFIG, normaliseBritishColumbiaMu } from "./ingestion/british-columbia-mu.ts";
 
 /**
@@ -426,6 +427,32 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     speciesScope: ["species:american-black-bear"],
     drawnByDefault: false,
     timeZone: "America/St_Johns",
+  },
+  {
+    id: "layer:ca-yt-gms",
+    jurisdictionId: "jurisdiction:ca-yt",
+    jurisdictionName: "Yukon",
+    country: "CA",
+    officialTerm: "Game Management Subzone",
+    officialTermShort: "GMS",
+    coverage: "IN_DEVELOPMENT",
+    coverageNote:
+      "Yukon's 443 Game Management Subzones from GeoYukon's own service, under the Open Government Licence - Yukon. " +
+      "Two further features, 102 and 103, cover Ivvavik and Vuntut National Parks, where the dataset says subzones do " +
+      "not apply; they are quarantined pending Environment Yukon. The subzone maps established under the Wildlife Act " +
+      "control. No Yukon rule is certified, and First Nations harvesting under Final Agreements is a separate legal " +
+      "context that North Ground does not model.",
+    authority: "Government of Yukon, Department of Environment",
+    sourceId: "source:ca-yt-gms-service",
+    endpoint: `${YUKON_GMS_LAYER}/query`,
+    nameField: "GAME_MGMT_AREA_ID",
+    bounds: { minLatitude: 59.9, maxLatitude: 69.8, minLongitude: -141.1, maxLongitude: -123.7 },
+    serving: false,
+    officialNamePrefix: "Game Management Subzone ",
+    zoneIdPrefix: "management_zone:ca-yt-gms-",
+    designationOf: normaliseYukonSubzone,
+    legalStanding: YUKON_LEGAL_STANDING,
+    timeZone: "America/Whitehorse",
   },
   /* Newfoundland and Labrador: one geography per big-game species. */
   /* Canadian layers read live from their authority, where reuse terms rule out a copy. */

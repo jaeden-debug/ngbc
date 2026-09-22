@@ -442,6 +442,7 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       serviceUrl: "https://mapservices.gov.yk.ca/arcgis/rest/services/GeoYukon/GY_AdministrativeBoundaries/MapServer/7",
       parityCertified: false,
       notes:
+        "Adapter reviewed 2026-09-22: 443 subzones read cleanly, the two park features quarantined. Nothing ingested yet. " +
         "GeoYukon's Game Management Areas - 250k layer (Open Government Licence - Yukon). Reconciled 2026-09-22: the " +
         "service holds 445 distinct GAME_MGMT_AREA_ID values, one feature each, against the 443 the dataset states. " +
         "Its 2015 download holds exactly 443; the service adds 102 and 103, whose areas (9,735 and 4,351 km²) and " +

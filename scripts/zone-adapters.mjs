@@ -14,6 +14,10 @@ export const ZONE_ADAPTERS = {
     module: "../src/lib/hunt/ingestion/alberta-wmu.ts",
     factory: "createAlbertaWmuSource",
   },
+  "ca-yt": {
+    module: "../src/lib/hunt/ingestion/yukon-subzones.ts",
+    factory: "createYukonSubzoneSource",
+  },
   "ca-nl-moose": {
     module: "../src/lib/hunt/ingestion/newfoundland-areas.ts",
     factory: "createNewfoundlandMooseSource",

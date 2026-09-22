@@ -194,6 +194,20 @@ export const ZONE_PRESENTATION_PROFILES: readonly ZonePresentationProfile[] = [
     stripLeadingZeros: false,
   },
   {
+    layerId: "layer:ca-yt-gms",
+    jurisdictionId: "jurisdiction:ca-yt",
+    zoneIdPrefix: "management_zone:ca-yt-gms-",
+    officialNamePrefix: "Game Management Subzone ",
+    sourceLocale: "en-CA",
+    jurisdictionName: { "en-CA": "Yukon", "fr-CA": "Yukon" },
+    // The Wildlife Act publishes the term in English only; it is kept, not translated.
+    term: { "en-CA": { long: "Game Management Subzone", short: "GMS" }, "fr-CA": undefined },
+    termIsAbbreviation: true,
+    // "<zone>-<subzone>", the subzone padded to two digits as Yukon writes it (4-17).
+    designationPattern: /^(?:[1-9]|1[01])-\d{2}$/,
+    stripLeadingZeros: false,
+  },
+  {
     layerId: "layer:ca-nl-moose-area",
     jurisdictionId: "jurisdiction:ca-nl",
     zoneIdPrefix: "management_zone:ca-nl-mma-",
