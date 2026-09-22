@@ -1,0 +1,125 @@
+/* The Hunt calendar: one selected day, shared with the typed field. */
+
+.calendar {
+  padding: 12px;
+  border-radius: var(--ng-radius);
+  background-color: var(--ng-glass-bg-dense);
+}
+
+.calendarHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.calendarStep {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--ng-glass-border);
+  border-radius: var(--ng-radius-sm);
+  background: rgba(201, 194, 166, 0.05);
+  color: var(--ng-bone-dim);
+  cursor: pointer;
+}
+
+.calendarStep:hover { color: var(--ng-cream); border-color: var(--ng-glass-border-bright); }
+
+.calendarMonth {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ng-cream);
+}
+
+.calendarWeekdays,
+.calendarRow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.calendarGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.calendarWeekdays {
+  margin-bottom: 4px;
+}
+
+.calendarWeekdays span {
+  padding: 4px 0;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: var(--ng-bone-faint);
+}
+
+.calendarDay {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  border: 1px solid transparent;
+  border-radius: var(--ng-radius-sm);
+  background: none;
+  font: inherit;
+  font-size: 0.84rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ng-cream);
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.calendarDay:hover { background: rgba(201, 194, 166, 0.10); }
+
+.calendarDay[data-outside] { color: var(--ng-bone-faint); }
+
+.calendarDay[data-today] {
+  border-color: var(--ng-moss);
+  font-weight: 600;
+}
+
+.calendarDay[data-selected] {
+  background: linear-gradient(180deg, var(--ng-cream), var(--ng-bone));
+  border-color: transparent;
+  color: var(--ng-black);
+  font-weight: 700;
+}
+
+.calendarFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px solid var(--ng-glass-border);
+}
+
+.calendarToday {
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--ng-glass-border);
+  border-radius: var(--ng-radius-pill);
+  background: rgba(201, 194, 166, 0.06);
+  font: inherit;
+  font-size: 0.76rem;
+  color: var(--ng-cream);
+  cursor: pointer;
+}
+
+.calendarSelected {
+  margin: 0;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ng-bone-faint);
+}

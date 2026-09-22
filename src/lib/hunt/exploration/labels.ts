@@ -69,10 +69,18 @@ export function placeLabels(
   candidates: readonly LabelCandidate[],
   view: { width: number; height: number },
   metrics: LabelMetrics = DEFAULT_LABEL_METRICS,
+  /**
+   * Labels drawn in the previous frame. Between otherwise equal candidates they
+   * win, so a pan does not make two neighbours trade places frame after frame.
+   * Hysteresis only: it never lets a label that no longer fits stay.
+   */
+  sticky?: ReadonlySet<string>,
 ): PlacedLabel[] {
+  const held = (candidate: LabelCandidate) => (sticky?.has(candidate.key) ? 1 : 0);
   const ordered = [...candidates].sort((a, b) =>
     Number(Boolean(b.force)) - Number(Boolean(a.force)) ||
     b.priority - a.priority ||
+    held(b) - held(a) ||
     b.spanWidth * b.spanHeight - a.spanWidth * a.spanHeight ||
     a.key.localeCompare(b.key));
 
