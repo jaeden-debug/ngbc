@@ -23,6 +23,8 @@ const args = process.argv.slice(2);
 const BASE = args.find((arg, index) => !arg.startsWith("--") && !["--only", "--auth"].includes(args[index - 1])) ?? "http://localhost:3104";
 const ONLY = args.includes("--only") ? new Set(args[args.indexOf("--only") + 1].split(",")) : null;
 const BRIEF = args.includes("--brief");
+// The notice-recovery scenario waits out a real 60 s retry, so it is asked for.
+const SLOW = args.includes("--slow");
 const AUTH = args.includes("--auth") ? args[args.indexOf("--auth") + 1] : null;
 
 const BANCROFT = { latitude: 45.0573, longitude: -77.8546 };
@@ -142,7 +144,7 @@ const scenarios = {
     await page.goto(`${BASE}/hunt`);
     await mapReady(page);
     await page.getByRole("button", { name: "Use my location" }).first().click();
-    const explained = await waitFor(page, () => /Location is off|could not find|took too long|does not share/.test(document.body.innerText), 15_000);
+    const explained = await waitFor(page, () => /not sharing your location|could not find|took too long|does not share/.test(document.body.innerText), 15_000);
     check(s, "a refusal is explained, not a dead end", explained);
     await page.getByRole("button", { name: /^Search a place$/ }).first().click();
     await page.getByRole("combobox", { name: "Where are you hunting?" }).fill("Winnipeg");
@@ -334,6 +336,65 @@ const scenarios = {
     await page.keyboard.press("Escape");
     await page.waitForTimeout(300);
     check(s, "Escape closes the zone", (await zoneTitle(page)) === null);
+    await context.close();
+  },
+
+  async locationReachable(browser) {
+    // The owner could not use their location on www: with a zone open and no
+    // species chosen, the control was not on screen at all.
+    const s = "B2 your location is offered in every state";
+    for (const [label, width, height] of [["phone", 390, 844], ["desktop", 1280, 800]]) {
+      for (const [state, url] of [["opening screen", "/hunt"], ["a zone card", "/hunt?zone=ca-on-wmu-57"], ["a zone and species", "/hunt?zone=ca-on-wmu-57&species=ruffed-grouse"]]) {
+        const { context, page } = await newPage(browser, { width, height });
+        await page.goto(`${BASE}${url}`);
+        await mapReady(page);
+        if (url !== "/hunt") await waitFor(page, () => Boolean(document.getElementById("hunt-zone-title")), 30_000);
+        await page.waitForTimeout(600);
+        const offered = await page.getByRole("button", { name: /Use my location/ }).count();
+        check(s, `${label}, ${state}`, offered > 0, `${offered} controls`);
+        // A refusal is always answered in words, wherever it was pressed.
+        if (offered) {
+          await page.evaluate(() => { navigator.geolocation.getCurrentPosition = (_ok, fail) => fail({ code: 1, message: "denied" }); });
+          await page.getByRole("button", { name: /Use my location/ }).first().click();
+          const said = await waitFor(page, () => /not sharing your location|Search for a place/i.test(document.body.innerText), 8_000);
+          check(s, `${label}, ${state}: a refusal is explained`, said);
+        }
+        await context.close();
+      }
+    }
+  },
+
+  async noticeRecovery(browser) {
+    if (!SLOW) return;
+    /* One transient outage used to be permanent: the notice was set from the
+       last completed answer, and a map nobody moves never asks again. */
+    const s = "E2 a settled map heals itself";
+    const { context, page, requests } = await newPage(browser, { width: 1280, height: 800 });
+    let failNext = true;
+    await page.route("**/api/hunt/zones*", async (route) => {
+      const response = await route.fetch();
+      const text = await response.text();
+      const zoom = Number(new URL(route.request().url()).searchParams.get("zoom") ?? 0);
+      const headers = { ...response.headers(), "content-type": "application/json" };
+      let payload = null;
+      try { payload = JSON.parse(text); } catch { /* not JSON: pass it through */ }
+      if (!payload || zoom < 9 || !failNext || !(payload.layers ?? []).length) {
+        return route.fulfill({ status: response.status(), headers, body: text });
+      }
+      failNext = false;
+      // The authority answered; this one layer did not.
+      const layers = payload.layers.map((layer, index) => (index === 0 ? { ...layer, status: "PROVIDER_ERROR" } : layer));
+      requests.push({ mocked: layers[0]?.id });
+      return route.fulfill({ status: 200, headers, body: JSON.stringify({ ...payload, status: "PARTIAL", layers }) });
+    });
+    await page.goto(`${BASE}/hunt?zone=ca-on-wmu-57`);
+    await mapReady(page);
+    await waitFor(page, () => Boolean(document.getElementById("hunt-zone-title")), 30_000);
+    const raised = await waitFor(page, () => /detailed boundaries did not load/.test(document.body.innerText), 30_000);
+    check(s, "an outage raises the notice", raised, `${requests.filter((request) => request.mocked).length} detail answers failed on purpose`);
+    // Nothing is touched from here: no pan, no zoom, no click.
+    const cleared = await waitFor(page, () => !/detailed boundaries did not load/.test(document.body.innerText), 90_000);
+    check(s, "the notice clears itself without the map being touched", cleared);
     await context.close();
   },
 

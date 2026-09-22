@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import type { CanonicalId } from "../../lib/content-contract";
 import { hasSpeciesCoverageIn, type SpeciesSelectorOption } from "../../lib/hunt/coverage";
+import type { SpeciesPrimaryMedia } from "../../lib/species-media/types";
 import { todayIso } from "../../lib/hunt/date";
 import { dateChipLabel, longDayLabel } from "../../lib/hunt/exploration/date-presets";
 import { zoneKeyOf, type BBox } from "../../lib/hunt/exploration/geometry-store";
@@ -73,7 +74,7 @@ type PinZone = { kind: "loading" } | { kind: "resolved"; label: string; jurisdic
 
 const SERVED = ZONE_LAYERS.filter((layer) => layer.serving);
 const LOCATE_MESSAGES: Record<number, string> = {
-  1: "Location is off for this site. Search for a place instead — the answer is the same.",
+  1: "Your browser is not sharing your location with this site. Allow it in the address bar (or in your browser's site settings), or search for a place instead — the answer is the same.",
   2: "Your device could not find its location. Search for a place instead.",
   3: "Finding your location took too long. Try again, or search for a place.",
 };
@@ -96,6 +97,8 @@ const PANEL_QUERY = "(min-width: 700px), (min-width: 560px) and (orientation: la
 export interface HuntAppProps {
   googleMapsApiKey?: string;
   speciesOptions: SpeciesSelectorOption[];
+  /** The species photographs, still arriving: the first screen does not show them. */
+  speciesMedia: Promise<Record<string, SpeciesPrimaryMedia>>;
   /** The day to start from: the link's day if it named one, else the jurisdiction's today. */
   initialDate: string;
   initialUrl: HuntUrlState;
@@ -107,7 +110,20 @@ export interface HuntAppProps {
   poster: string | null;
 }
 
-export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate, initialUrl, linkIssues, about, poster }: HuntAppProps) {
+export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWithoutMedia, speciesMedia, initialDate, initialUrl, linkIssues, about, poster }: HuntAppProps) {
+  /* The pictures join their species when the server's promise resolves; until
+     then the picker shows its placeholder, which is what it shows for a species
+     with no verified photograph anyway. */
+  const [media, setMedia] = useState<Record<string, SpeciesPrimaryMedia> | null>(null);
+  useEffect(() => {
+    let live = true;
+    void speciesMedia.then((resolved) => { if (live) setMedia(resolved); });
+    return () => { live = false; };
+  }, [speciesMedia]);
+  const speciesOptions = useMemo(
+    () => (media ? speciesWithoutMedia.map((option) => ({ ...option, image: media[option.id] ?? null })) : speciesWithoutMedia),
+    [speciesWithoutMedia, media],
+  );
   const [exploration, dispatchMap] = useReducer(explorationReducer, INITIAL_EXPLORATION);
   const [session, dispatchSession] = useReducer(huntSessionReducer, undefined, () => initialSession({
     speciesId: initialUrl.speciesId, date: initialDate, dateExplicit: Boolean(initialUrl.date), explore: initialUrl.explore,
@@ -323,6 +339,14 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
       return;
     }
     setLocate({ kind: "locating" });
+    /* A browser that has already refused this site never prompts again, so the
+       press would look like nothing happening. Say what it is instead. */
+    void navigator.permissions?.query({ name: "geolocation" as PermissionName })
+      .then((status) => { if (status.state === "denied") setLocate({ kind: "error", message: LOCATE_MESSAGES[1] }); })
+      .catch(() => { /* No Permissions API: the attempt below answers instead. */ });
+    /* High accuracy is GPS. A desktop has none, and asking for it there only
+       spends the timeout, so it is asked for where a device can answer it. */
+    const touchDevice = typeof window.matchMedia === "function" && window.matchMedia("(pointer: coarse)").matches;
     navigator.geolocation.getCurrentPosition(
       ({ coords }) => {
         const point = roundedPoint({ latitude: coords.latitude, longitude: coords.longitude });
@@ -340,7 +364,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
         });
       },
       (error) => setLocate({ kind: "error", message: LOCATE_MESSAGES[error.code] ?? "Your location was unavailable. Search for a place instead." }),
-      { enableHighAccuracy: true, timeout: 12_000, maximumAge: 60_000 },
+      { enableHighAccuracy: touchDevice, timeout: 10_000, maximumAge: 60_000 },
     );
   }, [describePoint]);
 
@@ -950,21 +974,22 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
             summary={summaryReady}
             zoneLabel={presented.fullLabel}
             onShowDetails={detailed ? undefined : () => setSnap("full")}
-            action={
-              <div className={styles.actionsRow}>
-                <button type="button" className="ng-action" onClick={chooseOnMap}>Check an exact spot</button>
-                <button type="button" className="ng-action-quiet" onClick={useMyLocation} disabled={locate.kind === "locating"}>
-                  {locate.kind === "locating" ? "Finding you…" : "Use my location"}
-                </button>
-              </div>
-            }
+            action={null}
           />
         ) : summary?.kind === "error" ? (
           <p className={styles.problem} role="status">{summary.message}</p>
         ) : (
           <p className={styles.answerLoading} role="status"><span className={styles.spinner} aria-hidden="true" /> Reading the certified rules for this zone…</p>
         )}
-        {locate.kind === "error" && isHuntZone ? <p className={styles.quiet} role="status">{locate.message}</p> : null}
+        {/* Reachable from every zone state: without this row, a zone card with no
+            species chosen offered no way to use your own location at all. */}
+        <div className={styles.actionsRow}>
+          <button type="button" className="ng-action" onClick={chooseOnMap}>Check an exact spot</button>
+          <button type="button" className="ng-action-quiet" onClick={useMyLocation} disabled={locate.kind === "locating"}>
+            {locate.kind === "locating" ? "Finding you…" : "Use my location"}
+          </button>
+        </div>
+        {locate.kind === "error" ? <p className={styles.quiet} role="status">{locate.message}</p> : null}
         {detailed && summaryReady && !pointForEvaluation ? <ZoneSummaryDetail summary={summaryReady} parts={storedSelected?.parts} /> : null}
         {!detailed && summaryReady && !pointForEvaluation ? (
           <button type="button" className={styles.moreButton} onClick={() => setSnap("full")}>

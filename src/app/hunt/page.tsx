@@ -16,6 +16,7 @@ import { layerOfZoneId } from "../../lib/hunt/zone-layers";
 import { presentZoneById } from "../../lib/hunt/zone-presentation";
 import { absoluteUrl, SITE_NAME } from "../../lib/site";
 import { getSpeciesPrimaryMediaMap } from "../../lib/species-media/repository";
+import type { SpeciesPrimaryMedia } from "../../lib/species-media/types";
 
 export const dynamic = "force-dynamic";
 
@@ -119,7 +120,14 @@ export default async function HuntPage({ searchParams }: Props) {
   const { state, rejected } = parseHuntUrlState(await searchParams, validators(published));
 
   const posterPromise = zonesPoster();
-  const primaryMedia = await getSpeciesPrimaryMediaMap(speciesResources.map((resource) => resource.speciesProfile.speciesId));
+  /* The species photographs are the one thing here that needs the database, and
+     nothing on the first screen shows them: they belong to the species picker,
+     which is a tap away and its own chunk. So the HTML does not wait for them —
+     the promise travels to the browser and the pictures arrive when they do. A
+     failure resolves to none rather than rejecting: the picker still works. */
+  const speciesMedia = getSpeciesPrimaryMediaMap(speciesResources.map((resource) => resource.speciesProfile.speciesId))
+    .then((media) => Object.fromEntries(media) as Record<string, SpeciesPrimaryMedia>)
+    .catch(() => ({}) as Record<string, SpeciesPrimaryMedia>);
   const coverageReport = northAmericaCoverageReport();
   const speciesOptions: SpeciesSelectorOption[] = await Promise.all(speciesResources.map(async (resource) => {
     const [aliases, groups] = await Promise.all([
@@ -140,7 +148,7 @@ export default async function HuntPage({ searchParams }: Props) {
       aliases: aliases.map(({ value }) => value),
       searchTerms: [...new Set(searchTerms)],
       resourcePath: resource.canonicalUrl ?? `/hunting/species/${resource.slug}`,
-      image: primaryMedia.get(resource.speciesProfile.speciesId) ?? null,
+      image: null,
       /* Where rules exist, and whether each jurisdiction answers straight away or
          asks a question first. Both are fully certified; saying so up front stops
          the question arriving as a surprise. */
@@ -157,6 +165,7 @@ export default async function HuntPage({ searchParams }: Props) {
       <HuntApp
         googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
         speciesOptions={speciesOptions}
+        speciesMedia={speciesMedia}
         /* A link's day is kept. Otherwise the server cannot know the viewer's
            time zone, so it renders the jurisdiction's day and the browser
            corrects it to the viewer's own on mount. */

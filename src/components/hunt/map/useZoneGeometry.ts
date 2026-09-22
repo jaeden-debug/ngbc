@@ -5,6 +5,7 @@ import {
   boxesIntersect, boxKey, levelForZoom, lodSpec, requestBoxFor, ZoneGeometryStore,
   type BBox, type DrawnZone, type LodLevel, type SourceZoneFeature, type StoredZone,
 } from "../../../lib/hunt/exploration/geometry-store";
+import { mergeSimplified } from "../../../lib/hunt/exploration/geometry-notices";
 import type { OverlayLayerDescriptor } from "../../../lib/hunt/exploration/overlay-layers";
 import { OVERVIEW_URL, SERVED_EXTENT } from "../../../lib/hunt/exploration/overview";
 import { ZONE_LAYERS } from "../../../lib/hunt/zone-layers";
@@ -136,6 +137,16 @@ export function useZoneGeometry(view: MapView | null) {
   const answeredRef = useRef(new Map<string, number>());
   const failedRef = useRef(new Map<string, number>());
   const inFlightRef = useRef(new Map<string, { controller: AbortController; box: BBox }>());
+  /* A map nobody moves asks for nothing, so a failed request has to come back
+     on its own; otherwise one transient outage is permanent on screen. */
+  const detailRetryRef = useRef(0);
+  const requestDetailRef = useRef<(level: LodLevel, box: BBox) => void>(() => {});
+  const scheduleDetailRetry = useCallback((level: LodLevel, box: BBox) => {
+    window.clearTimeout(detailRetryRef.current);
+    detailRetryRef.current = window.setTimeout(() => {
+      if (aliveRef.current) requestDetailRef.current(level, box);
+    }, DETAIL_RETRY_MS + 250);
+  }, []);
 
   const requestDetail = useCallback(async (level: LodLevel, box: BBox) => {
     const key = `${level}|${boxKey(box)}`;
@@ -168,15 +179,19 @@ export function useZoneGeometry(view: MapView | null) {
       const failed = (payload.layers ?? []).filter((layer) => layer.status === "PROVIDER_ERROR").map((layer) => layer.id ?? "").filter(Boolean);
       if (payload.status === "OK" || payload.status === "EMPTY") answeredRef.current.set(key, Date.now());
       else failedRef.current.set(key, Date.now());
-      setSimplifiedLayers(failed);
+      // Per layer, from what this answer actually says about each one.
+      setSimplifiedLayers((current) => mergeSimplified(current, payload.layers));
       setVersion(store.version);
+      if (failed.length || !(payload.status === "OK" || payload.status === "EMPTY")) scheduleDetailRetry(level, box);
     } catch (error) {
       if ((error as Error).name === "AbortError" || !aliveRef.current) return;
       failedRef.current.set(key, Date.now());
+      scheduleDetailRetry(level, box);
     } finally {
       inFlightRef.current.delete(key);
     }
-  }, [store]);
+  }, [store, scheduleDetailRetry]);
+  useEffect(() => { requestDetailRef.current = (level, box) => { void requestDetail(level, box); }; }, [requestDetail]);
 
   useEffect(() => {
     if (!view) return;
@@ -195,6 +210,7 @@ export function useZoneGeometry(view: MapView | null) {
   }, [view, requestDetail, store, missingLayers, overview]);
 
   useEffect(() => () => {
+    window.clearTimeout(detailRetryRef.current);
     for (const entry of inFlightRef.current.values()) entry.controller.abort();
   }, []);
 

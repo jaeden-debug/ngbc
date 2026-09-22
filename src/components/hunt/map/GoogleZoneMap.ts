@@ -40,7 +40,6 @@ export interface ZoneStyleState {
   filterStates: ReadonlyMap<string, ZoneState> | null;
 }
 
-const NORTH_AMERICA = { north: 84, south: 14, west: -170, east: -48 };
 const LONG_PRESS_MS = 550;
 const LONG_PRESS_SLOP_PX = 10;
 const MAX_FRAMING_ZOOM = 13;
@@ -140,7 +139,17 @@ export class GoogleZoneMap {
       keyboardShortcuts: true,
       minZoom: 3,
       maxZoom: 18,
-      restriction: { latLngBounds: NORTH_AMERICA, strictBounds: false },
+      /*
+       * No `restriction`. Google keeps a restricted map's CENTRE inside the box
+       * and applies that clamp at whatever zoom the map is at when a centre is
+       * set — and `fitBounds` sets the centre before the zoom. Framing a zone
+       * from the national view was therefore clamped to the edge of the box:
+       * the map went to the zone's latitude at a longitude 26° away, drawing no
+       * zones, no labels and asking for no detail. A box wide enough never to
+       * clamp at the widest allowed zoom is the whole world, so the honest
+       * choice is none: `minZoom` keeps the view sane, and panning away simply
+       * shows no zones, which the zone list says in words.
+       */
       backgroundColor: "#151a15",
     });
     this.labels = createLabelLayer(maps, this.map, options.labelClass);
@@ -381,15 +390,34 @@ export class GoogleZoneMap {
       this.map.panToBounds(bounds, padding);
       return;
     }
+    this.fitAndConfirm(bounds, box, padding, true);
+  }
+
+  /** Bring a point into the free part of the view, at no less than `minZoom`. */
+  /**
+   * Frame the box, then check that it really is framed.
+   *
+   * `fitBounds` sets the centre before the zoom, and a centre set while the map
+   * is still zoomed out can be clamped by the restriction; the zoom then
+   * arrives and the map sits somewhere else entirely. Once the zoom has
+   * settled the view is narrow, so asking again lands it — once.
+   */
+  private fitAndConfirm(bounds: google.maps.LatLngBounds, box: BBox, padding: Padding, mayRetry: boolean): void {
     this.map.fitBounds(bounds, padding);
     this.framingListener?.remove();
     this.framingListener = this.maps.event.addListenerOnce(this.map, "idle", () => {
       this.framingListener = null;
       if ((this.map.getZoom() ?? 0) > MAX_FRAMING_ZOOM) this.map.setZoom(MAX_FRAMING_ZOOM);
+      if (!mayRetry) return;
+      const centre = this.map.getCenter();
+      if (!centre) return;
+      const wanted = { lat: (box.north + box.south) / 2, lng: (box.east + box.west) / 2 };
+      const span = Math.max(box.east - box.west, 0.05);
+      // Off by more than the box is wide: the framing did not take.
+      if (Math.abs(centre.lng() - wanted.lng) > span) this.fitAndConfirm(bounds, box, padding, false);
     });
   }
 
-  /** Bring a point into the free part of the view, at no less than `minZoom`. */
   showPoint(point: GeoPoint, minZoom: number, padding: Padding): void {
     const usable = this.usableBox(padding);
     const zoom = this.map.getZoom() ?? 0;
