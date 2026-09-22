@@ -101,9 +101,18 @@ test("the report counts only what the certified bundles actually contain", () =>
     if (withRules.includes(jurisdiction)) continue;
     assert.equal(jurisdiction.regulatory.rules, 0, `${jurisdiction.code} should report zero rules`);
     assert.equal(jurisdiction.regulatory.speciesCertified, 0, `${jurisdiction.code} should report zero species`);
-    // A unit count is a fact about geography, so it exists exactly where geometry is certified.
-    if (!jurisdiction.spatial.parityCertified) {
-      assert.equal(jurisdiction.spatial.officialUnits, null, `${jurisdiction.code} has no certified geometry to count`);
+    /*
+     * A unit count says how many units the AUTHORITY publishes, which is known
+     * as soon as an adapter reads the service — before North Ground certifies
+     * its own copy. What certification gates is whether those units count
+     * toward the national headline, asserted by the total below, not whether
+     * the number is known at all.
+     */
+    if (!jurisdiction.spatial.parityCertified && jurisdiction.spatial.officialUnits !== null) {
+      assert.ok(
+        jurisdiction.spatial.officialUnits > 0,
+        `${jurisdiction.code} reports a unit count from its adapter, so it must be a real count`,
+      );
     }
   }
 
@@ -114,11 +123,26 @@ test("the report counts only what the certified bundles actually contain", () =>
   assert.equal(saskatchewan.spatial.officialUnits, 83);
   assert.equal(saskatchewan.regulatory.rules, 0);
 
+  // Yukon is the stored-geometry case: certified and served with no bundle at all.
+  const yukon = report.jurisdictions.find((entry) => entry.code === "CA-YT")!;
+  assert.equal(yukon.spatial.parityCertified, true);
+  assert.equal(yukon.spatial.officialUnits, 443);
+  assert.equal(yukon.regulatory.rules, 0);
+
+  /*
+   * Newfoundland is the case that separates the two ideas: its adapters know the
+   * authority publishes 74 moose, 19 caribou and 7 bear areas, and North Ground
+   * has certified none of them, so the number is known and excluded.
+   */
+  const newfoundland = report.jurisdictions.find((entry) => entry.code === "CA-NL")!;
+  assert.equal(newfoundland.spatial.parityCertified, false);
+  assert.equal(newfoundland.spatial.officialUnits, 100, "the authority's own count, not a claim about our copy");
+
   // The headline counts certified geography, not the subset whose rules answer.
   assert.equal(
     report.totals.officialUnitsIngested,
-    769,
-    "151 + 59 + 62 + 189 Ontario/Québec/Manitoba/Alberta, plus 225 British Columbian and 83 Saskatchewan",
+    1_212,
+    "151 + 59 + 62 + 189 Ontario/Québec/Manitoba/Alberta, plus 225 British Columbian, 83 Saskatchewan and 443 Yukon",
   );
 });
 

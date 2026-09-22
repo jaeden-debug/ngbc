@@ -478,13 +478,16 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     nameFr: "Yukon",
     kind: "territory",
     spatial: {
-      status: "IN_DEVELOPMENT",
+      // Parity-certified against GeoYukon and served for drawing and resolution.
+      status: "VERIFIED",
       officialTerm: "Game Management Subzone (GMS)",
       officialSourceUrl: "https://open.yukon.ca/data/datasets/game-management-areas-250k",
       serviceUrl: "https://mapservices.gov.yk.ca/arcgis/rest/services/GeoYukon/GY_AdministrativeBoundaries/MapServer/7",
-      parityCertified: false,
+      parityCertified: true,
       notes:
-        "Adapter reviewed 2026-09-22: 443 subzones read cleanly, the two park features quarantined. Nothing ingested yet. " +
+        "All 443 subzones are in PostGIS as VERIFIED with their derivatives built, parity-certified 2026-09-22: " +
+        "443/443 inventory, 0 missing, 0 invented, 0 geometry disagreements and 1770/1770 authority-derived points " +
+        "agreeing. Served for drawing and zone resolution only; no Yukon rule is certified. " +
         "GeoYukon's Game Management Areas - 250k layer (Open Government Licence - Yukon). Reconciled 2026-09-22: the " +
         "service holds 445 distinct GAME_MGMT_AREA_ID values, one feature each, against the 443 the dataset states. " +
         "Its 2015 download holds exactly 443; the service adds 102 and 103, whose areas (9,735 and 4,351 km²) and " +
@@ -501,7 +504,8 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       huntingAuthorityUrl: "https://yukon.ca/en/hunting-regulations",
     },
     knownGaps: [
-      "No geometry ingested and no rules certified; every Yukon query is UNKNOWN.",
+      "Boundaries only: the 443 Game Management Subzones are drawn, named and resolved, and every Yukon species query is " +
+        "UNKNOWN until rules are certified. A drawn boundary is not a certified rule.",
       "Service features 102 and 103 lie over Ivvavik and Vuntut National Parks and are not in the stated 443; they stay quarantined, and a point there is UNKNOWN, until Environment Yukon confirms whether they are Game Management Subzones.",
       "First Nations harvesting rights operate under Final Agreements and are a separate legal context from licensed recreational hunting. North Ground must not present one as describing the other.",
     ],

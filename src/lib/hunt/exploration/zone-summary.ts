@@ -5,7 +5,7 @@ import { regulatoryEntryFor, type RegulatoryEntry, type RegulatoryOutcome } from
 import { CANADA_JURISDICTIONS } from "../canada/registry.ts";
 import type { ZoneResolution } from "../types.ts";
 import { presentZone } from "../zone-presentation.ts";
-import { layerById, zoneCoverage, zoneDisplayLabel, zoneIdFor, type ZoneLayer } from "../zone-layers.ts";
+import { layerById, officialNameOf, type ZoneLayer, zoneCoverage, zoneDisplayLabel, zoneIdFor } from "../zone-layers.ts";
 import type { ExplorationState, SpeciesZoneSummary, ZoneRef, ZoneSummary } from "./states.ts";
 
 export { EXPLORATION_WORDING } from "./states.ts";
@@ -52,7 +52,7 @@ function zoneResolutionFor(layer: ZoneLayer, designation: string): ZoneResolutio
     status: "RESOLVED",
     zoneId: zoneIdFor(layer, designation),
     jurisdictionId: layer.jurisdictionId,
-    officialName: `${layer.officialNamePrefix}${designation}`,
+    officialName: officialNameOf(layer, designation),
     sourceId: layer.sourceId,
     message: "Whole-zone summary; no point inside the zone was evaluated.",
   };
@@ -219,10 +219,10 @@ export async function summarizeZone(ref: ZoneRef, date: string): Promise<ZoneSum
       layerId: layer.id,
       designation,
       label: zoneDisplayLabel(layer, designation),
-      officialName: `${layer.officialNamePrefix}${designation}`,
+      officialName: officialNameOf(layer, designation),
       presentation: presentZone({
         designation, layerId: layer.id, jurisdictionId: layer.jurisdictionId, zoneId: zoneIdFor(layer, designation),
-        officialName: `${layer.officialNamePrefix}${designation}`,
+        officialName: officialNameOf(layer, designation),
       }),
       officialTerm: layer.officialTerm,
       jurisdictionId: layer.jurisdictionId,

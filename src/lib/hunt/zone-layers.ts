@@ -124,6 +124,14 @@ export interface ZoneLayer {
   /** How the registry prefixes this layer's official names, so the bare designation can be shown. */
   officialNamePrefix: string;
   /**
+   * Designations the authority names itself rather than by prefix and number,
+   * verbatim in the authority's own words (Saskatchewan's DA_NAME calls SWMZ
+   * "Saskatoon WMZ", not "Wildlife Management Zone SWMZ"). Read through
+   * `officialNameOf`, and inverted by `designationFromOfficialName`, so one
+   * zone never carries two official names.
+   */
+  officialNames?: Readonly<Record<string, string>>;
+  /**
    * Designations with at least one certified rule, generated with the layer's
    * bundle. Present only where rules are certified; a layer without it is
    * boundary-only everywhere.
@@ -476,7 +484,11 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     endpoint: `${YUKON_GMS_LAYER}/query`,
     nameField: "GAME_MGMT_AREA_ID",
     bounds: { minLatitude: 59.9, maxLatitude: 69.8, minLongitude: -141.1, maxLongitude: -123.7 },
-    serving: false,
+    /* Boundaries only: 443 subzones parity-certified against GeoYukon (1770/1770
+       points, 0 disagreements) and drawn from North Ground's stored drawings.
+       No Yukon rule is certified, so every species here answers UNKNOWN. */
+    serving: true,
+    mapGeometry: "stored",
     officialNamePrefix: "Game Management Subzone ",
     zoneIdPrefix: "management_zone:ca-yt-gms-",
     designationOf: normaliseYukonSubzone,
@@ -644,9 +656,23 @@ export function layerForResolution(resolution: { status: string; jurisdictionId?
   return layer.serving ? { kind: "SERVING", layer } : { kind: "NOT_SERVING", layer };
 }
 
+/**
+ * The authority's own name for a zone. Almost everywhere that is the layer's
+ * prefix and the designation; where the authority publishes a proper name, it
+ * is used verbatim and nothing is composed on top of it.
+ */
+export function officialNameOf(layer: Pick<ZoneLayer, "officialNamePrefix" | "officialNames">, designation: string): string {
+  return layer.officialNames?.[designation] ?? `${layer.officialNamePrefix}${designation}`;
+}
+
 /** The bare designation, from the registry's official name ("Wildlife Management Unit 57" → "57"). */
 export function designationFromOfficialName(layer: ZoneLayer, officialName: string | undefined): string {
   const name = officialName?.trim() ?? "";
+  if (!name) return name;
+  // A proper name inverts through the table, never by stripping a prefix it does not carry.
+  for (const [designation, official] of Object.entries(layer.officialNames ?? {})) {
+    if (official === name) return designation;
+  }
   return name.startsWith(layer.officialNamePrefix) ? name.slice(layer.officialNamePrefix.length) : name;
 }
 
