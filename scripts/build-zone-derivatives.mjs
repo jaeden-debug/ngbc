@@ -70,13 +70,17 @@ async function main() {
     // A zone is complete only with all three derivatives: a drawing without
     // point-lookup parts still sends resolution to the slow full-geometry path.
     const ids = zones.map(({ id }) => id).join(",");
-    const has = async (table, filter = "") => new Set((await rest(`${table}?select=management_zone_id${filter}&management_zone_id=in.(${ids})`))
-      .map(({ management_zone_id: id }) => id));
-    const [display, parts, boundary] = await Promise.all([
-      has("management_zone_display", "&level=eq.0"),
+    const rows = async (table, select, filter = "") => await rest(`${table}?select=${select}${filter}&management_zone_id=in.(${ids})`);
+    const has = async (table, filter) => new Set((await rows(table, "management_zone_id", filter)).map(({ management_zone_id: id }) => id));
+    const [displayRows, parts, boundary] = await Promise.all([
+      rows("management_zone_display", "management_zone_id,level"),
       has("management_zone_parts", "&part_index=eq.1"),
       has("management_zone_boundary_parts", "&part_index=eq.1"),
     ]);
+    // Every drawing level, 0 to 4.
+    const levels = new Map();
+    for (const { management_zone_id: id, level } of displayRows) levels.set(id, (levels.get(id) ?? new Set()).add(level));
+    const display = new Set([...levels].filter(([, set]) => set.size === 5).map(([id]) => id));
     todo = zones.filter(({ id }) => !(display.has(id) && parts.has(id) && boundary.has(id)));
   }
   console.log(`${jurisdiction}: ${todo.length} of ${zones.length} zones to build`);
