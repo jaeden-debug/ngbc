@@ -1,4 +1,5 @@
 import type { CanonicalId } from "../content-contract/index.ts";
+import type { SourceLicence } from "./source-licence.ts";
 import { presentZone } from "./zone-presentation.ts";
 import certifiedUnits from "../../../content/regulatory/ca-on-certified-units.json" with { type: "json" };
 import manitobaCertifiedUnits from "../../../content/regulatory/ca-mb-certified-units.json" with { type: "json" };
@@ -121,6 +122,13 @@ export interface ZoneLayer {
    * the authority's own link, until its rules are certified in production.
    */
   rulesServing?: boolean;
+  /**
+   * What the dataset's own publisher says may be done with it, recorded
+   * verbatim with its source, date and hash (`source-licence.ts`). A layer
+   * whose licence does not permit reuse is not served, whatever `serving`
+   * intends.
+   */
+  licence?: SourceLicence;
   /** How the registry prefixes this layer's official names, so the bare designation can be shown. */
   officialNamePrefix: string;
   /**

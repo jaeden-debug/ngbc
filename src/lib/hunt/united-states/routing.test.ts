@@ -72,9 +72,9 @@ test("two features at one point are a question for a person, never a choice", as
 });
 
 test("a Montana grouse question placed in a deer and elk district is asked again in the upland districts", async () => {
-  const served = [HD, UPLAND].map((layer) => layer.serving);
-  HD.serving = true;
-  UPLAND.serving = true;
+  const served = [HD, UPLAND].map((layer) => ({ serving: layer.serving, rules: layer.rulesServing }));
+  // Montana is licence-blocked in the configuration; this suite exercises the served state.
+  for (const layer of [HD, UPLAND]) { layer.serving = true; layer.rulesServing = true; }
   try {
     assert.equal(speciesLayerFor("jurisdiction:us-mt", "species:ruffed-grouse")?.id, UPLAND.id);
     assert.equal(speciesLayerFor("jurisdiction:us-mt", "species:elk")?.id, HD.id);
@@ -101,7 +101,7 @@ test("a Montana grouse question placed in a deer and elk district is asked again
     // Montana's rules are not certified, so the answer is the coverage gap — not a borrowed Canadian rule.
     assert.equal(evaluation.regulation.status, "UNKNOWN");
   } finally {
-    [HD.serving, UPLAND.serving] = served;
+    [HD, UPLAND].forEach((layer, index) => { layer.serving = served[index].serving; layer.rulesServing = served[index].rules; });
   }
 });
 

@@ -1,4 +1,5 @@
 import type { ArcgisZoneSourceConfig } from "../ingestion/arcgis-zone-source.ts";
+import { licencePermitsServing, type SourceLicence } from "../source-licence.ts";
 import type { ZoneLayer } from "../zone-layers.ts";
 
 /**
@@ -278,6 +279,70 @@ const US_LAYERS: UsLayer[] = [
     },
   },
 ];
+
+const LICENCES: Readonly<Record<string, SourceLicence>> = {
+  "layer:us-id-gmu": {
+    statedAs: "CC-BY Idaho Fish and Game",
+    url: "https://gisportal-idfg.idaho.gov/hosting/rest/services/Hunting/MapServer?f=json",
+    retrievedAt: "2026-09-22",
+    sha256: "sha256:dba42260efa36b846633480ebb4976c09cfafc63d6f4209da0619a37aa0ae8b0",
+    redistribution: "UNRESOLVED",
+    permittedUse: "COMMERCIAL_PERMITTED",
+    attribution: "Idaho Fish and Game",
+    note: "The service's own copyrightText names CC-BY, which permits commercial use with attribution. The Game Units layer's copyrightText is “Idaho Fish and Game”.",
+  },
+  "layer:us-mt-deer-elk-hd": {
+    statedAs: "INFORMATION ON MONTANA FISH, WILDIFE & PARK'S COMPUTER SYSTEMS IS MADE AVAILABLE AS A PUBLIC SERVICE, WITHOUT EXPRESS OR IMPLIED WARRANTIES OF ANY KIND … The public is granted access to information on FWP's computer system on a strictly “as is” basis.",
+    url: "https://fwp.mt.gov/terms-of-use",
+    retrievedAt: "2026-09-22",
+    sha256: "sha256:2f1c7eca6d3beab9dc5b1451368e518bb05082e1f1b5281724f58af95bc61ecf",
+    redistribution: "UNRESOLVED",
+    permittedUse: "UNRESOLVED",
+    attribution: "Montana Fish, Wildlife & Parks",
+    note: "FWP's terms disclaim warranties and grant ACCESS; they state no reuse or redistribution grant, and the service's copyrightText is a claim of authorship, not a licence. Escalated: a person must obtain FWP's position on commercial reuse of the hunting district service before Montana serves.",
+  },
+  "layer:us-mt-upland": {
+    statedAs: "INFORMATION ON MONTANA FISH, WILDIFE & PARK'S COMPUTER SYSTEMS IS MADE AVAILABLE AS A PUBLIC SERVICE, WITHOUT EXPRESS OR IMPLIED WARRANTIES OF ANY KIND … The public is granted access to information on FWP's computer system on a strictly “as is” basis.",
+    url: "https://fwp.mt.gov/terms-of-use",
+    retrievedAt: "2026-09-22",
+    sha256: "sha256:2f1c7eca6d3beab9dc5b1451368e518bb05082e1f1b5281724f58af95bc61ecf",
+    redistribution: "UNRESOLVED",
+    permittedUse: "UNRESOLVED",
+    attribution: "Montana Fish, Wildlife & Parks",
+    note: "FWP's terms disclaim warranties and grant ACCESS; they state no reuse or redistribution grant, and the service's copyrightText is a claim of authorship, not a licence. Escalated: a person must obtain FWP's position on commercial reuse of the hunting district service before Montana serves.",
+  },
+  "layer:us-co-gmu": {
+    statedAs: "Colorado Parks and Wildlife GIS Group",
+    url: "https://services5.arcgis.com/ttNGmDvKQA7oeDQ3/arcgis/rest/services/CPWAdminData/FeatureServer/6?f=json",
+    retrievedAt: "2026-09-22",
+    sha256: "sha256:d53311ec96ec769884a6a99f2a38c46326683ebf0ef65b1fb843e332b3883ffc",
+    redistribution: "UNRESOLVED",
+    permittedUse: "UNRESOLVED",
+    attribution: "Colorado Parks and Wildlife",
+    note: "A copyright line only; no terms found on the service. Silence is not permission.",
+  },
+  "layer:us-wy-elk-area": {
+    statedAs: "Wyoming Game and Fish Department, State of Wyoming",
+    url: "https://services6.arcgis.com/cWzdqIyxbijuhPLw/arcgis/rest/services/ElkHuntAreas/FeatureServer/0?f=json",
+    retrievedAt: "2026-09-22",
+    sha256: "sha256:939f0c09fd7a5a587824769b08d3ebac1cd3ac397b266c9befd838969c83bd12",
+    redistribution: "UNRESOLVED",
+    permittedUse: "UNRESOLVED",
+    attribution: "Wyoming Game and Fish Department",
+    note: "A copyright line only; no terms found on the service. Silence is not permission.",
+  },
+};
+
+for (const { layer } of US_LAYERS) {
+  layer.licence = LICENCES[layer.id];
+  /* The licence decides, not the intent above: a dataset whose publisher grants
+     no reuse is not drawn, resolved or answered from, however certified its
+     geometry and rules are. Resolving one is a person's job, not an agent's. */
+  if (!licencePermitsServing(layer.licence)) {
+    layer.serving = false;
+    layer.rulesServing = false;
+  }
+}
 
 export const US_ZONE_LAYERS: ZoneLayer[] = US_LAYERS.map((entry) => entry.layer);
 
