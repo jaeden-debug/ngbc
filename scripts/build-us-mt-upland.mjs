@@ -36,8 +36,8 @@
  */
 
 import {
-  expectOne, fetchBytes, fetchJson, flatten, jurisdictionToday, parseRange, pdfPages, readPreviousBundle,
-  retrievedAtFor, sha256, writeOrCheck,
+  expectOne, fetchJson, fetchPdf, flatten, jurisdictionToday, parseRange, readPreviousBundle,
+  retrievedAtFor, sha256, useRecording, writeOrCheck,
 } from "./us-source.mjs";
 
 const BUNDLE = "content/regulatory/us-mt-upland-2026.json";
@@ -274,7 +274,7 @@ function buildRules(booklet) {
   const groups = new Map();
   const group = (designations) => {
     const id = `regulatory_group:us-mt-upland-2026-${designations.length === 2 ? "statewide" : designations[0] === EAST ? "east" : "west"}`;
-    groups.set(id, { id, officialSpec: designations.length === 2 ? "Statewide" : designations[0], zoneIds: designations.map(zoneId) });
+    groups.set(id, { id, officialSpec: designations.length === 2 ? "Statewide" : designations[0], zoneIds: designations.map(zoneId), officialIdentifiers: designations });
     return id;
   };
   const statewide = group(DISTRICTS);
@@ -421,8 +421,8 @@ function buildRules(booklet) {
 
 async function main() {
   const check = process.argv.includes("--check");
-  const pdf = await fetchBytes(PDF_URL);
-  const { pypdf, pages } = pdfPages(pdf);
+  useRecording();
+  const { sha256: pdfHash, pypdf, pages } = await fetchPdf(PDF_URL);
   const booklet = readBooklet(pages);
   const [restricted, uplandRestricted, portions, reservations] = await Promise.all([
     readLayer(`${FWP_BASE}/2`, "OBJECTID,PORTIONNAME"),
@@ -433,7 +433,7 @@ async function main() {
   const overlays = buildOverlays(booklet, restricted, uplandRestricted, portions, reservations);
   const { rules, groups } = buildRules(booklet);
 
-  const sourceHashes = { pdf: sha256(pdf), overlays: sha256(JSON.stringify(overlays.layers.map((layer) => layer.contentHash))) };
+  const sourceHashes = { pdf: pdfHash, text: sha256(JSON.stringify(pages)), overlays: sha256(JSON.stringify(overlays.layers.map((layer) => layer.contentHash))) };
   const contentHash = sha256(JSON.stringify(sourceHashes));
   const previous = readPreviousBundle(BUNDLE);
   const retrievedAt = retrievedAtFor(previous, previous?.contentHash, contentHash, jurisdictionToday(TIME_ZONE));

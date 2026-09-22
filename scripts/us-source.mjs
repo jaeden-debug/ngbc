@@ -15,8 +15,37 @@
 
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
+import { diffConditionalBundles, formatConditionalDiff } from "./manitoba-source.mjs";
 import { jurisdictionToday, readPreviousBundle, retrievedAtFor } from "./ontario-source.mjs";
+
+/* ── Recording, for change drills ───────────────────────────────────────
+   `--save-sources <dir>` records every source a build reads; `--sources <dir>`
+   builds from a recording, offline. A drill copies a recording, edits one
+   thing the authority might change, and checks what the builder reports. A
+   PDF is recorded as its extracted text, which is what the builder reads and
+   what a drill edits. */
+
+let recording = null;
+
+export function useRecording(argv = process.argv) {
+  const at = (flag) => (argv.includes(flag) ? argv[argv.indexOf(flag) + 1] : undefined);
+  const save = at("--save-sources");
+  const replay = at("--sources");
+  if (save) { mkdirSync(save, { recursive: true }); recording = { mode: "save", dir: save }; }
+  else if (replay) recording = { mode: "replay", dir: replay };
+}
+
+const recordedFile = (kind, url) => join(recording.dir, `${kind}-${createHash("sha256").update(url).digest("hex").slice(0, 16)}.json`);
+
+function recorded(kind, url, produce) {
+  if (recording?.mode === "replay") return JSON.parse(readFileSync(recordedFile(kind, url), "utf8")).value;
+  return Promise.resolve(produce()).then((value) => {
+    if (recording?.mode === "save") writeFileSync(recordedFile(kind, url), JSON.stringify({ url, value }));
+    return value;
+  });
+}
 
 export { jurisdictionToday, readPreviousBundle, retrievedAtFor };
 
@@ -39,7 +68,19 @@ export async function fetchBytes(url, { timeoutMs = 120_000 } = {}) {
 }
 
 export async function fetchJson(url, options) {
-  return JSON.parse((await fetchBytes(url, options)).toString("utf8"));
+  return recorded("json", url, async () => JSON.parse((await fetchBytes(url, options)).toString("utf8")));
+}
+
+/**
+ * A PDF's page texts and the hash of its bytes, read once. From a recording,
+ * the texts are the recorded (possibly drill-edited) ones.
+ */
+export async function fetchPdf(url) {
+  return recorded("pdf", url, async () => {
+    const bytes = await fetchBytes(url);
+    const { pypdf, pages } = pdfPages(bytes);
+    return { sha256: sha256(bytes), pypdf, pages };
+  });
 }
 
 /** Text of each page, through the pinned pypdf (see scripts/pdf-text.py). */
@@ -107,6 +148,8 @@ export function writeOrCheck({ check, outputs, bundlePath, contentHash, previous
     }
     if (previous.contentHash !== contentHash) {
       console.error(`SOURCE MOVED: ${label} changed since ${bundlePath} was built. Review the rule-level diff before rebuilding.`);
+      const diff = diffConditionalBundles(previous, outputs[bundlePath]);
+      console.error(formatConditionalDiff(diff));
       process.exit(2);
     }
     for (const [path, value] of Object.entries(outputs)) {

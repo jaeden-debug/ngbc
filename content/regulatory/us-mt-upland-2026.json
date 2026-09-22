@@ -4,7 +4,7 @@
   "jurisdictionId": "jurisdiction:us-mt",
   "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
   "retrievedAt": "2026-09-22",
-  "contentHash": "sha256:d6fed4736332f3568a88ab29fd3c93552d3379e51c24b9147801d91e00255d62",
+  "contentHash": "sha256:9722c122905044af1af13f204dc038c3044d5b659f7f9b6fe5870f8da90d6ac5",
   "certifiedPeriod": {
     "from": "2026-03-01",
     "to": "2027-02-28",
@@ -68,6 +68,7 @@
       "extractedWith": "pypdf 6.19.0",
       "sourceHashes": {
         "pdf": "sha256:8786f83ecbe6de5f55176cc40b213a68fc08bd6e70a64a29911210bbbc82be0e",
+        "text": "sha256:83d465fb8964099ccc9c999f60c068173514f207b5988ff27ad647c940b81e8b",
         "overlays": "sha256:29bb48639e96f849f5dcb4cc39ea8e581faac9e19a758be2117e7329ea04a883"
       },
       "conditions": [
@@ -133,6 +134,9 @@
       "officialSpec": "East of the Continental Divide",
       "zoneIds": [
         "management_zone:us-mt-upland-east-of-the-continental-divide"
+      ],
+      "officialIdentifiers": [
+        "East of the Continental Divide"
       ]
     },
     {
@@ -141,6 +145,10 @@
       "zoneIds": [
         "management_zone:us-mt-upland-east-of-the-continental-divide",
         "management_zone:us-mt-upland-west-of-the-continental-divide"
+      ],
+      "officialIdentifiers": [
+        "East of the Continental Divide",
+        "West of the Continental Divide"
       ]
     },
     {
@@ -148,6 +156,9 @@
       "officialSpec": "West of the Continental Divide",
       "zoneIds": [
         "management_zone:us-mt-upland-west-of-the-continental-divide"
+      ],
+      "officialIdentifiers": [
+        "West of the Continental Divide"
       ]
     }
   ],

@@ -33,6 +33,11 @@ jobs:
           cache: npm
       - run: npm ci
 
+      # U.S. regulations are published as PDF booklets; the builders read them
+      # through this exact pypdf, so a rebuild from an unchanged source is
+      # byte-identical (scripts/pdf-text.py refuses any other version).
+      - name: Install the pinned PDF text extractor
+        run: python3 -m pip install --user pypdf==6.19.0
       - name: Compare live sources against the committed bundles
         id: check
         run: |
