@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": [
+    "fixtures/hunt/us-*-live-parity.json",
+    "fixtures/hunt/us-*-certification-cases.json",
+    "content/regulatory/us-*.json"
+  ],
+  "parity": {
+    "CO": [
+      {
+        "layerId": "layer:us-co-gmu",
+        "authority": "Colorado Parks and Wildlife",
+        "service": "https://services5.arcgis.com/ttNGmDvKQA7oeDQ3/arcgis/rest/services/CPWAdminData/FeatureServer/6",
+        "sourceVersion": "CPWAdminData/FeatureServer/6, layer last edited 2026-08-27",
+        "resolution": "LIVE_SERVICE (no copy stored)",
+        "legalStanding": "DERIVED_FROM_LEGAL_DESCRIPTION",
+        "certifiedOn": "2026-09-21",
+        "units": 186,
+        "points": 1317,
+        "disagreements": 0
+      }
+    ],
+    "ID": [
+      {
+        "layerId": "layer:us-id-gmu",
+        "authority": "Idaho Department of Fish and Game",
+        "service": "https://gisportal-idfg.idaho.gov/hosting/rest/services/Hunting/MapServer/3",
+        "sourceVersion": "Hunting/MapServer/3, units last edited 2026-08-21",
+        "resolution": "LIVE_SERVICE (no copy stored)",
+        "legalStanding": "DERIVED_FROM_LEGAL_DESCRIPTION",
+        "certifiedOn": "2026-09-21",
+        "units": 99,
+        "points": 708,
+        "disagreements": 0
+      }
+    ],
+    "MT": [
+      {
+        "layerId": "layer:us-mt-deer-elk-hd",
+        "authority": "Montana Fish, Wildlife & Parks",
+        "service": "https://fwp-gis.mt.gov/arcgis/rest/services/admbnd/huntingDistricts/MapServer/11",
+        "sourceVersion": "huntingDistricts/MapServer/11, REGYEAR 2026",
+        "resolution": "LIVE_SERVICE (no copy stored)",
+        "legalStanding": "DERIVED_FROM_LEGAL_DESCRIPTION",
+        "certifiedOn": "2026-09-21",
+        "units": 139,
+        "points": 998,
+        "disagreements": 0
+      },
+      {
+        "layerId": "layer:us-mt-upland",
+        "authority": "Montana Fish, Wildlife & Parks",
+        "service": "https://fwp-gis.mt.gov/arcgis/rest/services/admbnd/huntingDistricts/MapServer/31",
+        "sourceVersion": "huntingDistricts/MapServer/31 (no year field; checked 2026-09-21)",
+        "resolution": "LIVE_SERVICE (no copy stored)",
+        "legalStanding": "DERIVED_FROM_LEGAL_DESCRIPTION",
+        "certifiedOn": "2026-09-21",
+        "units": 2,
+        "points": 263,
+        "disagreements": 0
+      }
+    ],
+    "WY": [
+      {
+        "layerId": "layer:us-wy-elk-area",
+        "authority": "Wyoming Game and Fish Department",
+        "service": "https://services6.arcgis.com/cWzdqIyxbijuhPLw/arcgis/rest/services/ElkHuntAreas/FeatureServer/0",
+        "sourceVersion": "ElkHuntAreas/FeatureServer/0, data last edited 2026-03-19",
+        "resolution": "LIVE_SERVICE (no copy stored)",
+        "legalStanding": "PLANNING_GUIDANCE",
+        "certifiedOn": "2026-09-21",
+        "units": 105,
+        "points": 751,
+        "disagreements": 0
+      }
+    ]
+  },
+  "cases": {
+    "MT": {
+      "file": "fixtures/hunt/us-mt-certification-cases.json",
+      "cases": 18,
+      "writtenOn": "2026-09-22"
+    }
+  },
+  "bundles": {
+    "ID": [
+      {
+        "bundleId": "regulatory_bundle:us-id-pronghorn-2026",
+        "file": "content/regulatory/us-id-pronghorn-2026.json",
+        "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+        "retrievedAt": "2026-09-22",
+        "certifiedPeriod": {
+          "from": "2026-07-01",
+          "to": "2027-06-30",
+          "reason": "The 2026 Big Game Seasons and Rules cover July 2026 – June 2027; pronghorn seasons run August 2026 – February 2027 (cover, p. 7)."
+        },
+        "rules": 54,
+        "species": [
+          "species:pronghorn"
+        ],
+        "huntCodes": 54
+      }
+    ],
+    "MT": [
+      {
+        "bundleId": "regulatory_bundle:us-mt-upland-2026",
+        "file": "content/regulatory/us-mt-upland-2026.json",
+        "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+        "retrievedAt": "2026-09-22",
+        "certifiedPeriod": {
+          "from": "2026-03-01",
+          "to": "2027-02-28",
+          "reason": "Regulations for season dates, structures, and restrictions were adopted by the Fish and Wildlife Commission on Dec. 4, 2025, under the authority granted in MCA 87-1-301 and are valid March 1, 2026, through Feb. 28, 2027."
+        },
+        "rules": 28,
+        "species": [
+          "species:gray-partridge",
+          "species:ring-necked-pheasant",
+          "species:ruffed-grouse",
+          "species:sharp-tailed-grouse",
+          "species:spruce-grouse"
+        ],
+        "huntCodes": 0
+      }
+    ]
+  },
+  "intelligence": {}
+}
