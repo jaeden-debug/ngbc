@@ -158,6 +158,27 @@ export function finestPermittedResolution(evidence: readonly SpatialResolution[]
   }, null);
 }
 
+/**
+ * Canada's geography LEVEL, adopted rather than paralleled.
+ *
+ * The spatial registry classifies a jurisdiction's own geography as ZONE (the
+ * ordinary hunting unit), SPECIES_ZONE (a unit drawn for one species) or
+ * JURISDICTION (Prince Edward Island, which manages as one piece), with COUNTY
+ * first-class for the United States datasets that report by it. Evidence
+ * attached to any of those geographies takes its precision from here, so one
+ * vocabulary describes a boundary and the evidence measured inside it.
+ *
+ * Keyed by the level's string so this compiles ahead of the registry's own type
+ * and binds to it when it lands; a level absent here is a compile error there,
+ * which is the intended way to notice a new one.
+ */
+export const PRECISION_FOR_GEOGRAPHY_LEVEL: Record<"ZONE" | "SPECIES_ZONE" | "JURISDICTION" | "COUNTY", SpatialPrecision> = {
+  ZONE: "MANAGEMENT_UNIT",
+  SPECIES_ZONE: "SPECIES_MANAGEMENT_AREA",
+  JURISDICTION: "JURISDICTION",
+  COUNTY: "COUNTY",
+};
+
 /** Plain words for a person, so the resolution is legible outside the code. */
 export function describeResolution({ precision, approximateMetres }: SpatialResolution): string {
   const base: Record<SpatialPrecision, string> = {
