@@ -380,3 +380,11 @@
 @media (min-width: 1200px) {
   .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
+
+/* Administrator: the photo is dragged to place its subject. */
+.cardLink[data-focusable="true"] {
+  cursor: grab;
+  touch-action: none;
+}
+
+.cardLink[data-focusable="true"]:active { cursor: grabbing; }

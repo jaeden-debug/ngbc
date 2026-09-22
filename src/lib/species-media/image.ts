@@ -4,6 +4,8 @@ import { SPECIES_MEDIA_VARIANTS, type SpeciesMediaVariant } from "./types";
 
 export const MAX_SPECIES_IMAGE_BYTES = 12 * 1024 * 1024;
 export const MAX_SPECIES_IMAGE_PIXELS = 50_000_000;
+export const COVER_RESIZE = { width: 960, height: 960, fit: "inside", withoutEnlargement: true } as const;
+export const COVER_QUALITY = 80;
 const ALLOWED_FORMATS = new Set(["jpeg", "png", "webp", "avif"]);
 
 export class SpeciesImageValidationError extends Error {
@@ -19,7 +21,7 @@ export interface ProcessedSpeciesImage {
   renditions: Record<SpeciesMediaVariant, { buffer: Buffer; width: number; height: number; bytes: number }>;
 }
 
-async function encoded(
+export async function encodeRendition(
   input: Buffer,
   resize: ResizeOptions,
   quality: number,
@@ -47,17 +49,19 @@ export async function processSpeciesImage(input: Buffer): Promise<ProcessedSpeci
   if ((metadata.pages ?? 1) > 1) throw new SpeciesImageValidationError("ANIMATED");
   if (!metadata.width || !metadata.height) throw new SpeciesImageValidationError("INVALID");
 
-  const [master, avatar, card, profile] = await Promise.all([
-    encoded(input, { width: 6000, height: 6000, fit: "inside", withoutEnlargement: true }, 90),
-    encoded(input, { width: 96, height: 96, fit: "cover", position: "attention" }, 78),
-    encoded(input, { width: 480, height: 320, fit: "cover", position: "attention", withoutEnlargement: true }, 80),
-    encoded(input, { width: 1600, height: 1200, fit: "inside", withoutEnlargement: true }, 84),
+  const [master, avatar, card, profile, cover] = await Promise.all([
+    encodeRendition(input, { width: 6000, height: 6000, fit: "inside", withoutEnlargement: true }, 90),
+    encodeRendition(input, { width: 96, height: 96, fit: "cover", position: "attention" }, 78),
+    encodeRendition(input, { width: 480, height: 320, fit: "cover", position: "attention", withoutEnlargement: true }, 80),
+    encodeRendition(input, { width: 1600, height: 1200, fit: "inside", withoutEnlargement: true }, 84),
+    // Uncropped and card-sized, so a full-bleed card can be positioned in both axes.
+    encodeRendition(input, COVER_RESIZE, COVER_QUALITY),
   ]);
 
   return {
     sourceSha256: createHash("sha256").update(input).digest("hex"),
     master,
-    renditions: { avatar, card, profile },
+    renditions: { avatar, card, profile, cover },
   };
 }
 

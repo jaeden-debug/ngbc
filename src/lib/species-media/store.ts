@@ -1,7 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { CanonicalId } from "../content-contract";
 import { defaultSupabaseServerClient } from "../supabase/server";
-import { mediaUrl, SPECIES_MEDIA_VARIANTS, type SpeciesMediaVariant, type SpeciesPrimaryMedia } from "./types";
+import { mediaUrl, REQUIRED_SPECIES_MEDIA_VARIANTS, type SpeciesMediaVariant, type SpeciesPrimaryMedia } from "./types";
 
 interface PrimaryRow { species_id: string; asset_id: string }
 interface AssetRow {
@@ -12,6 +12,8 @@ interface AssetRow {
   creator: string;
   licence: string;
   status: string;
+  focal_x: number | null;
+  focal_y: number | null;
 }
 interface RenditionRow {
   asset_id: string;
@@ -58,6 +60,7 @@ export interface SpeciesMediaStore {
   getPrimary(speciesId: CanonicalId<"species">): Promise<SpeciesPrimaryMedia | null>;
   getPrimaryMap(speciesIds?: CanonicalId<"species">[]): Promise<Map<CanonicalId<"species">, SpeciesPrimaryMedia>>;
   publishPrimary(input: PublishSpeciesMediaInput): Promise<void>;
+  setFocalPoint?(assetId: string, focal: { x: number; y: number }): Promise<boolean>;
 }
 
 function assemble(
@@ -77,7 +80,10 @@ function assemble(
   for (const primary of primaries) {
     const asset = assetsById.get(primary.asset_id);
     const variants = byAsset.get(primary.asset_id);
-    if (!asset || !variants || !SPECIES_MEDIA_VARIANTS.every((variant) => variants.has(variant))) continue;
+    if (!asset || !variants || !REQUIRED_SPECIES_MEDIA_VARIANTS.every((variant) => variants.has(variant))) continue;
+    // An asset published before the cover rendition existed uses its uncropped profile rendition.
+    const coverRow = variants.get("cover") ?? variants.get("profile")!;
+    const coverVariant: SpeciesMediaVariant = variants.has("cover") ? "cover" : "profile";
     const speciesId = primary.species_id as CanonicalId<"species">;
     result.set(speciesId, {
       assetId: asset.id,
@@ -86,10 +92,14 @@ function assemble(
       caption: asset.caption,
       creator: asset.creator,
       licence: asset.licence,
-      renditions: Object.fromEntries(SPECIES_MEDIA_VARIANTS.map((variant) => {
-        const row = variants.get(variant)!;
-        return [variant, { variant, url: mediaUrl(asset.id, variant), width: row.width, height: row.height }];
-      })) as SpeciesPrimaryMedia["renditions"],
+      renditions: {
+        ...Object.fromEntries(REQUIRED_SPECIES_MEDIA_VARIANTS.map((variant) => {
+          const row = variants.get(variant)!;
+          return [variant, { variant, url: mediaUrl(asset.id, variant), width: row.width, height: row.height }];
+        })),
+        cover: { variant: coverVariant, url: mediaUrl(asset.id, coverVariant), width: coverRow.width, height: coverRow.height },
+      } as SpeciesPrimaryMedia["renditions"],
+      focal: { x: asset.focal_x ?? 50, y: asset.focal_y ?? 50 },
     });
   }
   return result;
@@ -113,7 +123,7 @@ export class SupabaseSpeciesMediaStore implements SpeciesMediaStore {
     const assetIds = primaries.map(({ asset_id }) => asset_id);
     const [{ data: assetData, error: assetError }, { data: renditionData, error: renditionError }] = await Promise.all([
       this.client.from("species_media_assets")
-        .select("id,species_id,alt_text,caption,creator,licence,status")
+        .select("id,species_id,alt_text,caption,creator,licence,status,focal_x,focal_y")
         .in("id", assetIds),
       this.client.from("species_media_renditions")
         .select("asset_id,variant,width,height")
@@ -173,6 +183,15 @@ export class SupabaseSpeciesMediaStore implements SpeciesMediaStore {
       })),
       p_expected_current_asset_id: input.expectedCurrentAssetId,
     });
+  }
+
+  /** Only the active asset moves; returns false when the asset is not current. */
+  async setFocalPoint(assetId: string, focal: { x: number; y: number }): Promise<boolean> {
+    const { data, error } = await this.client.from("species_media_assets")
+      .update({ focal_x: focal.x, focal_y: focal.y })
+      .eq("id", assetId).eq("status", "active").select("id");
+    if (error) throw new SpeciesMediaPersistenceError("WRITE_FAILED", error.message);
+    return (data ?? []).length === 1;
   }
 
   private async currentAssetId(speciesId: CanonicalId<"species">): Promise<string | null> {

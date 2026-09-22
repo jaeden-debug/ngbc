@@ -1,6 +1,8 @@
 import type { CanonicalId } from "../content-contract";
 
-export const SPECIES_MEDIA_VARIANTS = ["avatar", "card", "profile"] as const;
+export const SPECIES_MEDIA_VARIANTS = ["avatar", "card", "profile", "cover"] as const;
+/** Every published asset has these; "cover" (uncropped, card-sized) is newer and optional. */
+export const REQUIRED_SPECIES_MEDIA_VARIANTS = ["avatar", "card", "profile"] as const;
 export type SpeciesMediaVariant = (typeof SPECIES_MEDIA_VARIANTS)[number];
 
 export interface SpeciesMediaRendition {
@@ -17,6 +19,8 @@ export interface SpeciesPrimaryMedia {
   creator: string;
   licence: string;
   renditions: Record<SpeciesMediaVariant, SpeciesMediaRendition>;
+  /** Where the subject sits, as percentages of the frame; drives object-position. */
+  focal: { x: number; y: number };
 }
 
 export function mediaUrl(assetId: string, variant: SpeciesMediaVariant): string {

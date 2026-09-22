@@ -23,9 +23,6 @@ type UploadState = "IMAGE_SET" | "MISSING_IMAGE" | "UPLOADING" | "ERROR";
 const normalize = (value: string) => value.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLocaleLowerCase("en-CA");
 const ALL = "All";
 
-/** The card's drawn width at each grid breakpoint (page.module.css), for the photo's srcset. */
-const CARD_IMAGE_SIZES = "(min-width: 1200px) 25vw, (min-width: 900px) 33vw, (min-width: 560px) 50vw, 100vw";
-
 /**
  * What the administrator is told when an upload is refused. A validation
  * failure names what to change; a transient failure says to try again, because
@@ -69,6 +66,11 @@ export default function SpeciesLibrary({ species, adminMode = false }: { species
   const [states, setStates] = useState<Record<string, UploadState>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [replacement, setReplacement] = useState<{ item: LibrarySpecies; file: File; preview: string } | null>(null);
+  /* Administrator only: press, hold and drag a card's photo to place its subject. */
+  const [focusing, setFocusing] = useState<{ id: string; focal: { x: number; y: number } } | null>(null);
+  const focusDrag = useRef<{ id: string; pointerId: number; x0: number; y0: number; fx: number; fy: number;
+    spanX: number; spanY: number; moved: boolean } | null>(null);
+  const suppressClick = useRef(false);
   const replacementDialogRef = useRef<HTMLElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
 
@@ -134,6 +136,56 @@ export default function SpeciesLibrary({ species, adminMode = false }: { species
     setStates((current) => ({ ...current, [item.id]: "IMAGE_SET" }));
   }
 
+  function startFocus(event: React.PointerEvent<HTMLAnchorElement>, item: LibrarySpecies) {
+    if (!adminMode || !item.image || event.button !== 0) return;
+    const img = event.currentTarget.querySelector("img");
+    if (!img?.naturalWidth) return;
+    const box = event.currentTarget.parentElement!.getBoundingClientRect();
+    const scale = Math.max(box.width / img.naturalWidth, box.height / img.naturalHeight);
+    focusDrag.current = {
+      id: item.id, pointerId: event.pointerId, x0: event.clientX, y0: event.clientY,
+      fx: item.image.focal.x, fy: item.image.focal.y,
+      // How far the photo overhangs the card in each axis; zero means that axis cannot move.
+      spanX: img.naturalWidth * scale - box.width, spanY: img.naturalHeight * scale - box.height, moved: false,
+    };
+    event.currentTarget.setPointerCapture(event.pointerId);
+  }
+
+  function moveFocus(event: React.PointerEvent<HTMLAnchorElement>) {
+    const drag = focusDrag.current;
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    const dx = event.clientX - drag.x0, dy = event.clientY - drag.y0;
+    if (!drag.moved && Math.hypot(dx, dy) < 4) return;
+    drag.moved = true;
+    const clamp = (value: number) => Math.round(Math.min(100, Math.max(0, value)) * 10) / 10;
+    // Dragging the photo right reveals more of its left side, so the focal point moves left.
+    setFocusing({ id: drag.id, focal: {
+      x: drag.spanX > 0 ? clamp(drag.fx - (dx / drag.spanX) * 100) : drag.fx,
+      y: drag.spanY > 0 ? clamp(drag.fy - (dy / drag.spanY) * 100) : drag.fy,
+    } });
+  }
+
+  async function endFocus(event: React.PointerEvent<HTMLAnchorElement>, item: LibrarySpecies) {
+    const drag = focusDrag.current;
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    focusDrag.current = null;
+    if (!drag.moved || !focusing || focusing.id !== item.id || !item.image) { setFocusing(null); return; }
+    suppressClick.current = true;
+    const focal = focusing.focal;
+    const assetId = item.image.assetId;
+    const response = await fetch("/api/admin/species-media/focal", {
+      method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ assetId, ...focal }),
+    }).catch(() => null);
+    if (response?.ok) {
+      setItems((current) => current.map((entry) => entry.id === item.id && entry.image
+        ? { ...entry, image: { ...entry.image, focal } } : entry));
+      setErrors((current) => ({ ...current, [item.id]: "" }));
+    } else {
+      setErrors((current) => ({ ...current, [item.id]: "The photo position was not saved. Try again." }));
+    }
+    setFocusing(null);
+  }
+
   function acceptDrop(item: LibrarySpecies, file: File | undefined) {
     setDraggingOver(null);
     if (!file) return;
@@ -180,10 +232,21 @@ export default function SpeciesLibrary({ species, adminMode = false }: { species
           onDragOver={adminMode ? (event) => { event.preventDefault(); event.dataTransfer.dropEffect = "copy"; } : undefined}
           onDragLeave={adminMode ? (event) => { if (!event.currentTarget.contains(event.relatedTarget as Node)) setDraggingOver(null); } : undefined}
           onDrop={adminMode ? (event) => { event.preventDefault(); acceptDrop(item, event.dataTransfer.files[0]); } : undefined}>
-          <Link className={styles.cardLink} href={item.canonicalUrl} onClick={state === "UPLOADING" ? (event) => event.preventDefault() : undefined}>
+          <Link className={styles.cardLink} href={item.canonicalUrl} draggable={false}
+            data-focusable={adminMode && item.image ? true : undefined}
+            onPointerDown={adminMode ? (event) => startFocus(event, item) : undefined}
+            onPointerMove={adminMode ? moveFocus : undefined}
+            onPointerUp={adminMode ? (event) => { void endFocus(event, item); } : undefined}
+            onPointerCancel={adminMode ? () => { focusDrag.current = null; setFocusing(null); } : undefined}
+            onClick={(event) => {
+              // A drag to place the photo is not a click on the card.
+              if (state === "UPLOADING" || suppressClick.current) event.preventDefault();
+              suppressClick.current = false;
+            }}>
             {/* The photograph fills the card; the first row is above the fold on every width. */}
             {item.image
-              ? <SpeciesPrimaryImage className={styles.cardMedia} media={item.image} variant="card" sizes={CARD_IMAGE_SIZES} loading={index < 4 ? "eager" : "lazy"} />
+              ? <SpeciesPrimaryImage className={styles.cardMedia} media={item.image} variant="cover" loading={index < 4 ? "eager" : "lazy"}
+                  focal={focusing?.id === item.id ? focusing.focal : undefined} />
               : <SpeciesImagePlaceholder className={`${styles.cardMedia} ${styles.cardPlaceholder}`} label={item.commonName} />}
             {/* Densest glass: measured AA for every line over the brightest part of all 57 photos. */}
             <span className={`${styles.cardPanel} ng-glass-popover ng-glass-dense`}>

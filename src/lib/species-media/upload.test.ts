@@ -25,7 +25,9 @@ function media(): SpeciesPrimaryMedia {
       avatar: { variant: "avatar", url: `/api/species-media/${assetId}/avatar`, width: 96, height: 96 },
       card: { variant: "card", url: `/api/species-media/${assetId}/card`, width: 480, height: 320 },
       profile: { variant: "profile", url: `/api/species-media/${assetId}/profile`, width: 900, height: 600 },
+      cover: { variant: "cover", url: `/api/species-media/${assetId}/cover`, width: 900, height: 600 },
     },
+    focal: { x: 50, y: 50 },
   };
 }
 
@@ -42,7 +44,7 @@ function input() {
   };
 }
 
-test("stores one sanitized master plus three immutable renditions before publishing", async () => {
+test("stores one sanitized master plus four immutable renditions before publishing", async () => {
   const uploaded: string[] = [];
   const published: PublishSpeciesMediaInput[] = [];
   const client = { storage: { from: () => ({
@@ -62,8 +64,10 @@ test("stores one sanitized master plus three immutable renditions before publish
     `species/ruffed-grouse/${assetId}/avatar.webp`,
     `species/ruffed-grouse/${assetId}/card.webp`,
     `species/ruffed-grouse/${assetId}/profile.webp`,
+    `species/ruffed-grouse/${assetId}/cover.webp`,
   ]);
-  assert.equal(published[0]?.renditions.length, 3);
+  // avatar, card and profile, plus the uncropped cover the full-bleed card is positioned in.
+  assert.equal(published[0]?.renditions.length, 4);
   assert.match(published[0]?.sourceSha256 ?? "", /^[0-9a-f]{64}$/);
 });
 
