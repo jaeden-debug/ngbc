@@ -6,6 +6,13 @@ import { defaultSupabaseServerClient, SupabaseServerConfigurationError } from ".
 
 export const ONTARIO_WMU_ENDPOINT = "https://ws.lioservices.lrc.gov.on.ca/arcgis2/rest/services/LIO_OPEN_DATA/LIO_Open05/MapServer/5/query";
 
+/**
+ * How far inside a registry zone a point must lie before a live service in
+ * another country is not waited for. Measured cross-authority overlaps on the
+ * Ontario–Québec line are tens of metres; 1 km leaves a wide margin.
+ */
+export const CROSS_AUTHORITY_TOLERANCE_METRES = 1_000;
+
 /** How long the PostGIS registry gets before the official-GIS fallback runs. */
 export const SUPABASE_ZONE_TIMEOUT_MS = 2_500;
 
@@ -256,6 +263,66 @@ export async function resolveLayerFromOfficialGis(
   longitude: number,
   fetcher: typeof fetch = fetch,
 ): Promise<ZoneResolution> {
+  if (layer.resolution !== "LIVE_SERVICE") return askLayerService(layer, latitude, longitude, fetcher, 8_000);
+  return liveLookup(layer, latitude, longitude, fetcher);
+}
+
+/* ── Live services: bounded, cached, de-duplicated ───────────────────────
+   A layer North Ground holds no copy of is asked of its authority on every
+   lookup, so the lookup is kept cheap: an abort at the same budget PostGIS
+   gets, one request in flight per layer and point however many callers ask
+   (a Hunt, its species re-placement and a zone card ask the same question),
+   and a short-lived answer cache. Only a determinate answer is cached; a
+   provider failure is asked again next time, never remembered as "no zone".
+   The cache is keyed by fetcher so injected test services never share one.
+   Its keys are exact hunt coordinates: it lives in this process's memory only
+   and is never logged, persisted or sent to analytics (CLAUDE.md §49). */
+
+export const LIVE_ZONE_TIMEOUT_MS = 2_500;
+const LIVE_CACHE_TTL_MS = 60 * 60 * 1000;
+const LIVE_CACHE_MAX = 5_000;
+
+interface LiveCache {
+  answers: Map<string, { at: number; result: ZoneResolution }>;
+  inFlight: Map<string, Promise<ZoneResolution>>;
+}
+const liveCaches = new WeakMap<typeof fetch, LiveCache>();
+
+function liveCacheFor(fetcher: typeof fetch): LiveCache {
+  let cache = liveCaches.get(fetcher);
+  if (!cache) {
+    cache = { answers: new Map(), inFlight: new Map() };
+    liveCaches.set(fetcher, cache);
+  }
+  return cache;
+}
+
+async function liveLookup(layer: ZoneLayer, latitude: number, longitude: number, fetcher: typeof fetch): Promise<ZoneResolution> {
+  // Exact coordinates (to ~0.1 m): a cache must never move a point across a boundary.
+  const key = `${layer.id}|${latitude.toFixed(6)}|${longitude.toFixed(6)}`;
+  const cache = liveCacheFor(fetcher);
+  const cached = cache.answers.get(key);
+  if (cached && Date.now() - cached.at < LIVE_CACHE_TTL_MS) return cached.result;
+  const pending = cache.inFlight.get(key);
+  if (pending) return pending;
+  const request = askLayerService(layer, latitude, longitude, fetcher, LIVE_ZONE_TIMEOUT_MS).then((result) => {
+    if (result.status !== "PROVIDER_ERROR") {
+      if (cache.answers.size >= LIVE_CACHE_MAX) cache.answers.delete(cache.answers.keys().next().value!);
+      cache.answers.set(key, { at: Date.now(), result });
+    }
+    return result;
+  }).finally(() => cache.inFlight.delete(key));
+  cache.inFlight.set(key, request);
+  return request;
+}
+
+async function askLayerService(
+  layer: ZoneLayer,
+  latitude: number,
+  longitude: number,
+  fetcher: typeof fetch,
+  timeoutMs: number,
+): Promise<ZoneResolution> {
   const sourceId = layer.sourceId;
   // An impossible coordinate is answered here, never sent to an authority.
   if (!Number.isFinite(latitude) || !Number.isFinite(longitude) || Math.abs(latitude) > 90 || Math.abs(longitude) > 180) {
@@ -277,7 +344,7 @@ export async function resolveLayerFromOfficialGis(
   try {
     const response = await fetcher(`${layer.endpoint}?${parameters}`, {
       headers: { accept: "application/geo+json, application/json" },
-      signal: AbortSignal.timeout(8_000),
+      signal: AbortSignal.timeout(timeoutMs),
       cache: "no-store",
     });
     if (!response.ok) throw new Error(`${layer.jurisdictionName} zone service returned ${response.status}`);
@@ -488,12 +555,19 @@ export async function resolveZone(
     : null;
   let result: ZoneResolution | null = null;
   if (live.length && !registryHere) return await liveResult!;
+  // Asked in parallel with the registry; never left unobserved if not awaited.
+  liveResult?.catch(() => undefined);
   if (provider === "supabase") {
     result = await resolveOntarioWmuFromSupabase(latitude, longitude, supabaseClient);
     if (result.status === "PROVIDER_ERROR" && process.env.SPATIAL_FALLBACK_PROVIDER === "official-gis") result = null;
   }
   result ??= await resolveZoneFromOfficialGis(latitude, longitude, fetcher, (layer) => layer.resolution !== "LIVE_SERVICE");
-  if (liveResult) {
+  /* A registry zone well inside its own boundary cannot be in another
+     country's unit: both authorities' polygons end at the border, so an
+     overlap can only lie within their digitising tolerance of it. Such a
+     point never waits on a live service. */
+  const clearOfBorder = result.status === "RESOLVED" && (result.boundaryDistanceMeters ?? 0) > CROSS_AUTHORITY_TOLERANCE_METRES;
+  if (liveResult && !clearOfBorder) {
     const fromLive = await liveResult;
     if (fromLive.status === "RESOLVED" && result.status === "RESOLVED") {
       return {
