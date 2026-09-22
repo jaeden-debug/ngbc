@@ -41,8 +41,10 @@ export function createZoneSummaryHandler({ limiter }: { limiter: RateLimiter }) 
     if (blocked) return blocked;
     try {
       const summary = await summarizeZone({ layerId, designation }, date);
-      // Deterministic for a deployment: the bundles are committed files.
-      return json({ status: "OK", summary }, 200, { "cache-control": "public, max-age=600, s-maxage=3600" });
+      // Deterministic for a deployment: the bundles are committed files, and a deploy purges the edge.
+      return json({ status: "OK", summary }, 200, {
+        "cache-control": "public, max-age=600, s-maxage=21600, stale-while-revalidate=86400",
+      });
     } catch (error) {
       if (error instanceof ZoneSummaryError) return json({ status: "INVALID", message: error.message }, 400);
       return json({ status: "ERROR", message: "This zone could not be summarised. Nothing is inferred in its place." }, 500);
