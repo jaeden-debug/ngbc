@@ -683,6 +683,14 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
     }
   }, []);
 
+  /* A zone chosen from the keyboard list takes focus with it, so the reader lands on what they chose. */
+  const listSelection = selection.kind === "zone" && selection.origin === "list" ? zoneKeyOf(selection.zone) : null;
+  useEffect(() => {
+    if (!listSelection) return;
+    const frame = window.requestAnimationFrame(() => document.getElementById("hunt-zone-title")?.focus());
+    return () => window.cancelAnimationFrame(frame);
+  }, [listSelection]);
+
   /* ── Announcements for assistive technology ──────────────────────────── */
 
   const zoneLabel = presented?.fullLabel ?? null;
@@ -911,6 +919,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
             species={species}
             summary={summaryReady}
             zoneLabel={presented.fullLabel}
+            onShowDetails={detailed ? undefined : () => setSnap("full")}
             action={
               <div className={styles.actionsRow}>
                 <button type="button" className="ng-action" onClick={chooseOnMap}>Check an exact spot</button>
@@ -1006,10 +1015,13 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
             )}
             {locate.kind === "locating" ? "Finding you…" : "Use my location"}
           </button>
-          <button type="button" className={styles.startButton} onClick={() => openPage("search")}>
-            <svg width="17" height="17" viewBox="0 0 20 20" aria-hidden="true" fill="none"><circle cx="8.5" cy="8.5" r="5.75" stroke="currentColor" strokeWidth="1.8" /><path d="m13 13 4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
-            Search a place
-          </button>
+          {/* The panel keeps a search field of its own; a phone's sheet needs this way in. */}
+          {layout === "sheet" ? (
+            <button type="button" className={styles.startButton} onClick={() => openPage("search")}>
+              <svg width="17" height="17" viewBox="0 0 20 20" aria-hidden="true" fill="none"><circle cx="8.5" cy="8.5" r="5.75" stroke="currentColor" strokeWidth="1.8" /><path d="m13 13 4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
+              Search a place
+            </button>
+          ) : null}
         </div>
         {locate.kind === "error" ? <p className={styles.problem} role="status">{locate.message}</p> : null}
         <p className={styles.quiet}>Or tap any zone on the map to see what&apos;s in season there. Your location is used only to find your zone; it is never stored or shared.</p>
@@ -1036,6 +1048,28 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
   return (
     <div className={styles.app} ref={rootRef} style={rootStyle} data-layout={layout} data-snap={layout === "sheet" ? snap : undefined}>
       <div className={styles.safeProbe} ref={safeProbeRef} aria-hidden="true" />
+
+      {/* Reading order: the header, then the answer, then the map and its controls. Stacking is by z-index. */}
+      <header className={styles.topBar} ref={headerRef}>
+        <Link className={`${styles.brand} ng-glass-overlay`} href="/" aria-label="North Ground — home">
+          <Image className={styles.brandMark} src="/logo-mark.webp" alt="" width={820} height={862} sizes="30px" priority draggable={false} />
+          <span className={styles.brandText}>North Ground <span>Hunt</span></span>
+        </Link>
+        <button type="button" className={`${styles.topBarButton} ng-glass-control`} data-role="search" onClick={() => openPage("search")} aria-label="Search a place">
+          <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" fill="none"><circle cx="8.5" cy="8.5" r="5.75" stroke="currentColor" strokeWidth="1.8" /><path d="m13 13 4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
+        </button>
+        <SiteMenu />
+      </header>
+
+      <HuntSheet layout={layout} snap={snap} heights={heights} onSnap={setSnap} label="Hunt details" header={header}>
+        {layout === "panel" && page === "main" && !pin ? (
+          <button type="button" className={styles.panelSearch} onClick={() => openPage("search")}>
+            <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true" fill="none"><circle cx="8.5" cy="8.5" r="5.75" stroke="currentColor" strokeWidth="1.8" /><path d="m13 13 4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
+            {hunt ? hunt.label : "Search a place, town or postal code"}
+          </button>
+        ) : null}
+        {body}
+      </HuntSheet>
 
       <div className={styles.mapRegion}>
         <HuntMapView
@@ -1105,27 +1139,6 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
           </div>
         ) : null}
       </div>
-
-      <header className={styles.topBar} ref={headerRef}>
-        <Link className={`${styles.brand} ng-glass-overlay`} href="/" aria-label="North Ground — home">
-          <Image className={styles.brandMark} src="/logo-mark.webp" alt="" width={820} height={862} sizes="30px" priority draggable={false} />
-          <span className={styles.brandText}>North Ground <span>Hunt</span></span>
-        </Link>
-        <button type="button" className={`${styles.topBarButton} ng-glass-control`} data-role="search" onClick={() => openPage("search")} aria-label="Search a place">
-          <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" fill="none"><circle cx="8.5" cy="8.5" r="5.75" stroke="currentColor" strokeWidth="1.8" /><path d="m13 13 4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
-        </button>
-        <SiteMenu />
-      </header>
-
-      <HuntSheet layout={layout} snap={snap} heights={heights} onSnap={setSnap} label="Hunt details" header={header}>
-        {layout === "panel" && page === "main" && !pin ? (
-          <button type="button" className={styles.panelSearch} onClick={() => openPage("search")}>
-            <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true" fill="none"><circle cx="8.5" cy="8.5" r="5.75" stroke="currentColor" strokeWidth="1.8" /><path d="m13 13 4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
-            {hunt ? hunt.label : "Search a place, town or postal code"}
-          </button>
-        ) : null}
-        {body}
-      </HuntSheet>
 
       {toast ? <p className={`${styles.toast} ng-glass-overlay`} role="status">{toast}</p> : null}
       <p className="ng-visually-hidden" aria-live="polite">{announcement}</p>

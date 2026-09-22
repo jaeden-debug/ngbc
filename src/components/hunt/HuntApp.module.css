@@ -559,7 +559,8 @@
 
 .startActions {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
   gap: 8px;
 }
 .startButton {
@@ -619,7 +620,28 @@
   border-radius: var(--ng-radius);
   background: rgba(24, 27, 25, 0.6);
 }
+.answerTop { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .answerStatus { display: flex; align-items: center; gap: 10px; margin: 0; }
+.detailsLink {
+  flex: none;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--ng-glass-border-bright);
+  border-radius: var(--ng-radius-pill);
+  background: rgba(201, 194, 166, 0.06);
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 650;
+  color: var(--ng-cream);
+  cursor: pointer;
+}
+.answerSummary[data-clamp] {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
 .answerStatus :global(.ng-status) { font-size: 0.82rem; padding: 0.34rem 0.8rem 0.34rem 0.66rem; }
 .answerSummary { margin: 0; font-size: 0.92rem; line-height: 1.55; color: var(--ng-bone); }
 .answerLoading { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 0.88rem; color: var(--ng-bone-dim); }

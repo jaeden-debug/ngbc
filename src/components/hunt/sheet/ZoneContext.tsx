@@ -82,12 +82,14 @@ export function InSeasonHere({ summary, onChoose }: { summary: ZoneSummary; onCh
 }
 
 /** The whole-zone answer for one species, with the way to a point-level answer. */
-export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action }: {
+export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, onShowDetails }: {
   entry: SpeciesZoneSummary | null;
   species: SpeciesSelectorOption;
   summary: ZoneSummary;
   zoneLabel: string;
   action: ReactNode;
+  /** Present while the long form is not on screen. */
+  onShowDetails?: () => void;
 }) {
   if (!entry) {
     return (
@@ -114,7 +116,14 @@ export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action }
           : entry.detail ?? wording.detail;
   return (
     <div className={styles.answer} data-state={entry.state}>
-      <p className={styles.answerStatus}><StateChip state={entry.state} /></p>
+      <div className={styles.answerTop}>
+        <p className={styles.answerStatus}><StateChip state={entry.state} /></p>
+        {onShowDetails ? (
+          <button type="button" className={styles.detailsLink} onClick={onShowDetails}>
+            Details<span className="ng-visually-hidden">: everything the rules say about {zoneLabel}</span>
+          </button>
+        ) : null}
+      </div>
       <p className={styles.answerSummary}>{sentence}</p>
       {entry.state === "UNKNOWN" && entry.detail ? <p className={styles.detailNote}>{wording.detail}</p> : null}
       {action}

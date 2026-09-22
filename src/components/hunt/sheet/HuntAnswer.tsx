@@ -137,11 +137,18 @@ export default function HuntAnswer({
 
   return (
     <div className={styles.answer} data-status={status}>
-      <p className={styles.answerStatus}>
-        <span className="ng-status" data-status={status}>{statusWord(status)}</span>
-        {evaluation.kind === "loading" ? <span className={styles.spinner} aria-label="Updating" /> : null}
-      </p>
-      <p className={styles.answerSummary}>{result.regulation.summary}</p>
+      <div className={styles.answerTop}>
+        <p className={styles.answerStatus}>
+          <span className="ng-status" data-status={status}>{statusWord(status)}</span>
+          {evaluation.kind === "loading" ? <span className={styles.spinner} aria-label="Updating" /> : null}
+        </p>
+        {!detailed ? (
+          <button type="button" className={styles.detailsLink} onClick={onShowDetails}>
+            Details<span className="ng-visually-hidden">: rules, sources and what you need</span>
+          </button>
+        ) : null}
+      </div>
+      <p className={styles.answerSummary} data-clamp={!detailed || undefined}>{result.regulation.summary}</p>
 
       {result.regulation.season || result.regulation.limits ? (
         <dl className={styles.facts}>
