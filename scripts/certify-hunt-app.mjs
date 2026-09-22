@@ -1,14 +1,15 @@
 /**
  * Certify the Hunt application end to end, in a real browser.
  *
- *   node scripts/certify-hunt-app.mjs [baseUrl] [--only name,name] [--brief]
+ *   node scripts/certify-hunt-app.mjs [baseUrl] [--only name,name] [--brief] [--auth url]
  *
  * Each scenario drives Chromium the way a hunter would and checks what they
  * would see — and what must never happen: a result shown for other inputs, a
  * coordinate in a URL, the device's position reaching the evaluation, a map
  * that goes blank while it moves, a page wider than the phone. `--brief` also
  * creates one Hunt Brief through the Share dialog, which writes to storage, so
- * it is off by default.
+ * it is off by default. `--auth` names a URL each fresh browser opens first —
+ * a protected preview's share link — so its access cookie is set.
  *
  * The regulatory answers themselves are certified elsewhere (the jurisdiction
  * suites and scripts/certify-hunt-cases.mjs); this proves the interface asks
@@ -19,9 +20,10 @@
 import { chromium } from "playwright";
 
 const args = process.argv.slice(2);
-const BASE = args.find((arg) => !arg.startsWith("--")) ?? "http://localhost:3104";
+const BASE = args.find((arg, index) => !arg.startsWith("--") && !["--only", "--auth"].includes(args[index - 1])) ?? "http://localhost:3104";
 const ONLY = args.includes("--only") ? new Set(args[args.indexOf("--only") + 1].split(",")) : null;
 const BRIEF = args.includes("--brief");
+const AUTH = args.includes("--auth") ? args[args.indexOf("--auth") + 1] : null;
 
 const BANCROFT = { latitude: 45.0573, longitude: -77.8546 };
 const OTTAWA = { latitude: 45.4215, longitude: -75.6972 };
@@ -43,12 +45,15 @@ async function newPage(browser, options = {}) {
     permissions,
   });
   const page = await context.newPage();
+  if (AUTH) await page.goto(AUTH);
   const consoleErrors = [];
   page.on("console", (message) => {
     if (message.type() !== "error") return;
     const text = message.text();
     // Refused map keys on unlisted local ports are reported by Google itself; not the application's.
     if (/RefererNotAllowedMapError|Failed to load resource.*(404|401)/.test(text)) return;
+    // Vercel injects its toolbar into preview deployments only; the site's CSP refuses it there.
+    if (/vercel\.live\//.test(text)) return;
     consoleErrors.push(text.slice(0, 200));
   });
   page.on("pageerror", (error) => consoleErrors.push(`pageerror: ${error.message.slice(0, 200)}`));
@@ -139,6 +144,13 @@ const scenarios = {
     await page.getByRole("button", { name: /^Search a place$/ }).first().click();
     await page.getByRole("combobox", { name: "Where are you hunting?" }).fill("Winnipeg");
     const suggested = await waitFor(page, () => document.querySelectorAll("[role=option]").length > 0, 20_000);
+    // A screen reader hears "Bancroft, ON, Canada", not the two lines run together.
+    const option = await page.locator("[role=option]").first().evaluate((element) => ({
+      text: (element.textContent ?? "").trim(),
+      primary: (element.querySelector("[class*=optionPrimary]")?.textContent ?? "").trim(),
+      secondary: Boolean(element.querySelector("[class*=optionSecondary]")),
+    })).catch(() => ({ text: "", primary: "", secondary: false }));
+    check(s, "a place suggestion reads as one phrase", !option.secondary || option.text.startsWith(`${option.primary}, `), option.text);
     check(s, "place search suggests", suggested);
     if (suggested) {
       await page.locator("[role=option]").first().click();
@@ -254,6 +266,10 @@ const scenarios = {
       await page.goto(`${BASE}/hunt?zone=ca-mb-gha-38&species=ruffed-grouse`);
       await mapReady(page);
       await waitFor(page, () => Boolean(document.getElementById("hunt-zone-title")), 20_000);
+      // The basemap settles one way or the other; with Google, its attribution has drawn.
+      await waitFor(page, () => document.querySelector("[data-basemap]")?.getAttribute("data-basemap") !== "loading", 20_000);
+      const basemap = await page.getAttribute("[data-basemap]", "data-basemap");
+      if (basemap === "google") await waitFor(page, () => [...document.querySelectorAll(".gm-style a, .gm-style button, .gm-style span")].some((element) => /Terms/.test(element.textContent ?? "")), 10_000);
       await page.waitForTimeout(700);
       const layout = await page.evaluate(() => {
         const sheet = document.querySelector("section[data-layout]")?.getBoundingClientRect();
@@ -277,7 +293,8 @@ const scenarios = {
       check(s, `${label} no horizontal overflow`, !layout.overflow);
       check(s, `${label} sheet or panel on screen with the zone`, layout.sheetVisible && layout.title === "GHA 38", layout.title);
       check(s, `${label} the map keeps most of the screen`, layout.mapShare > 0.35, layout.mapShare.toFixed(2));
-      if (layout.termsVisible !== null) check(s, `${label} Google's terms are not covered`, layout.termsVisible);
+      check(s, `${label} the basemap settled`, basemap === "google" || basemap === "boundary", String(basemap));
+      if (basemap === "google") check(s, `${label} Google's terms are drawn and not covered`, layout.termsVisible === true, String(layout.termsVisible));
       check(s, `${label} no console errors`, consoleErrors.length === 0, consoleErrors.join(" | "));
       await context.close();
     }

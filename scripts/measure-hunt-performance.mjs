@@ -1,7 +1,7 @@
 /**
  * How fast Hunt is for someone on a phone: the numbers a release is judged by.
  *
- *   node scripts/measure-hunt-performance.mjs <baseUrl> [--runs 3] [--label name]
+ *   node scripts/measure-hunt-performance.mjs <baseUrl> [--runs 3] [--label name] [--auth url]
  *
  * Runs Chromium with Lighthouse's mobile profile applied through the DevTools
  * protocol — 4x CPU slowdown and a slow-4G link (150 ms RTT, 1.6 Mbps down,
@@ -22,7 +22,9 @@ import { chromium } from "playwright";
 import { brotliCompressSync, gzipSync, constants } from "node:zlib";
 
 const args = process.argv.slice(2);
-const base = args.find((arg) => !arg.startsWith("--")) ?? "http://localhost:3104";
+const base = args.find((arg, index) => !arg.startsWith("--") && !["--runs", "--label", "--auth"].includes(args[index - 1])) ?? "http://localhost:3104";
+// A protected preview's share link, opened once per run before measuring so its access cookie is set.
+const auth = args.includes("--auth") ? args[args.indexOf("--auth") + 1] : null;
 const runs = Number(args[args.indexOf("--runs") + 1] || 3) || 3;
 const label = args.includes("--label") ? args[args.indexOf("--label") + 1] : base;
 
@@ -36,11 +38,12 @@ function median(values) {
   return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
 }
 
-async function firstLoadJs(scripts) {
+/* Sized from the bytes the page itself received, so a protected preview's
+   login page can never be counted as JavaScript. */
+function firstLoadJs(scripts, bodies) {
   let raw = 0, gzip = 0, brotli = 0;
   for (const url of scripts) {
-    const response = await fetch(url);
-    const body = Buffer.from(await response.arrayBuffer());
+    const body = bodies.get(url) ?? Buffer.alloc(0);
     raw += body.length;
     gzip += gzipSync(body, { level: 9 }).length;
     brotli += brotliCompressSync(body, { params: { [constants.BROTLI_PARAM_QUALITY]: 11 } }).length;
@@ -54,6 +57,7 @@ async function run(browser) {
     userAgent: "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
   });
   const page = await context.newPage();
+  if (auth) await page.goto(auth, { timeout: 120_000 });
   const cdp = await context.newCDPSession(page);
   await cdp.send("Network.enable");
   await cdp.send("Network.setCacheDisabled", { cacheDisabled: true });
@@ -62,6 +66,13 @@ async function run(browser) {
 
   const apiRequests = [];
   const scripts = new Set();
+  const bodies = new Map();
+  page.on("response", async (response) => {
+    const request = response.request();
+    if (request.resourceType() !== "script" || new URL(request.url()).origin !== new URL(base).origin) return;
+    const body = await response.body().catch(() => null);
+    if (body) bodies.set(request.url(), body);
+  });
   page.on("request", (request) => {
     const url = new URL(request.url());
     if (url.pathname.startsWith("/api/")) apiRequests.push(`${request.method()} ${url.pathname}${url.search}`);
@@ -69,9 +80,16 @@ async function run(browser) {
   });
 
   await page.addInitScript(() => {
-    const vitals = { lcp: 0, cls: 0, longTasks: [], firstZone: null, firstLabel: null };
+    const vitals = { lcp: 0, lcpElement: null, cls: 0, longTasks: [], firstZone: null, firstLabel: null };
     window.__vitals = vitals;
-    new PerformanceObserver((list) => { for (const entry of list.getEntries()) vitals.lcp = entry.startTime; })
+    new PerformanceObserver((list) => {
+      for (const entry of list.getEntries()) {
+        vitals.lcp = entry.startTime;
+        // What the largest paint was: the poster, a map tile, text — the cause of a slow run.
+        const element = entry.element;
+        vitals.lcpElement = element ? `${element.tagName.toLowerCase()}${element.className ? `.${String(element.className).split(" ")[0].replace(/^.*__/, "")}` : ""}` : entry.url.slice(0, 40);
+      }
+    })
       .observe({ type: "largest-contentful-paint", buffered: true });
     new PerformanceObserver((list) => { for (const entry of list.getEntries()) if (!entry.hadRecentInput) vitals.cls += entry.value; })
       .observe({ type: "layout-shift", buffered: true });
@@ -89,7 +107,8 @@ async function run(browser) {
     requestAnimationFrame(poll);
   });
 
-  await page.goto(`${base}/hunt`, { waitUntil: "load", timeout: 120_000 });
+  const response = await page.goto(`${base}/hunt`, { waitUntil: "load", timeout: 120_000 });
+  const posterInHtml = (await response.text()).includes("data:image/svg+xml");
   // First-load JavaScript is what the page asked for up to its load event; chunks warmed later on idle are not counted.
   const firstLoadScripts = [...scripts];
   // The page's CSP forbids eval, so waitForFunction's polling cannot run here; poll with evaluate instead.
@@ -103,7 +122,7 @@ async function run(browser) {
     const tbt = v.longTasks.reduce((total, task) => total + Math.max(0, task.duration - 50), 0);
     const surface = document.querySelector("[data-zones]");
     return {
-      lcp: v.lcp, cls: v.cls, tbt, longestTask: Math.max(0, ...v.longTasks.map((task) => task.duration)), firstZone: v.firstZone, firstLabel: v.firstLabel,
+      lcp: v.lcp, lcpElement: v.lcpElement, cls: v.cls, tbt, longestTask: Math.max(0, ...v.longTasks.map((task) => task.duration)), firstZone: v.firstZone, firstLabel: v.firstLabel,
       tasksBefore: v.longTasks.length, zonesNow: surface?.getAttribute("data-zones") ?? null, labelsNow: document.querySelectorAll("[class*=mapZoneLabel]").length,
     };
   });
@@ -125,7 +144,7 @@ async function run(browser) {
   }, before);
 
   await context.close();
-  return { ...load, ...pan, openRequests, scripts: firstLoadScripts, laterScripts: [...scripts].filter((url) => !firstLoadScripts.includes(url)) };
+  return { ...load, ...pan, posterInHtml, openRequests, bodies, scripts: firstLoadScripts, laterScripts: [...scripts].filter((url) => !firstLoadScripts.includes(url)) };
 }
 
 const browser = await chromium.launch();
@@ -133,8 +152,8 @@ const results = [];
 for (let index = 0; index < runs; index += 1) results.push(await run(browser));
 await browser.close();
 
-const js = await firstLoadJs(results[0].scripts);
-const later = await firstLoadJs(results[0].laterScripts);
+const js = firstLoadJs(results[0].scripts, results[0].bodies);
+const later = firstLoadJs(results[0].laterScripts, results[0].bodies);
 const summary = {
   label,
   conditions: `Chromium, 390x844 touch, ${CPU_SLOWDOWN}x CPU, 150 ms RTT, 1.6 Mbps down, cache disabled, ${runs} runs (medians)`,
@@ -148,6 +167,7 @@ const summary = {
   apiRequestsOnOpen: results[0].openRequests,
   firstLoadJs: js,
   laterOnDemandJs: later,
-  perRun: results.map(({ lcp, cls, tbt, firstZone, firstLabel, longestPanTask, zonesNow, labelsNow }) => ({ lcp, cls, tbt, firstZone, firstLabel, longestPanTask, zonesNow, labelsNow })),
+  maxLcpMs: Math.max(...results.map((result) => result.lcp)),
+  perRun: results.map(({ lcp, lcpElement, posterInHtml, cls, tbt, firstZone, firstLabel, longestPanTask, zonesNow, labelsNow }) => ({ lcp, lcpElement, posterInHtml, cls, tbt, firstZone, firstLabel, longestPanTask, zonesNow, labelsNow })),
 };
 console.log(JSON.stringify(summary, null, 2));
