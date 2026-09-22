@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
@@ -8,7 +9,8 @@ import { hasSpeciesCoverageIn, type SpeciesSelectorOption } from "../../lib/hunt
 import { todayIso } from "../../lib/hunt/date";
 import { dateChipLabel, longDayLabel } from "../../lib/hunt/exploration/date-presets";
 import { zoneKeyOf, type BBox } from "../../lib/hunt/exploration/geometry-store";
-import { currentResult, evaluationKey, huntSessionReducer, initialSession, toAnswerPayload } from "../../lib/hunt/exploration/hunt-session";
+import { evaluateRequestBody } from "../../lib/hunt/answer-payload";
+import { currentResult, evaluationKey, huntSessionReducer, initialSession } from "../../lib/hunt/exploration/hunt-session";
 import { explorationReducer, INITIAL_EXPLORATION, roundedPoint, type ExplorationEvent } from "../../lib/hunt/exploration/map-state";
 import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
 import { huntSharePayload, shareHunt } from "../../lib/hunt/exploration/share";
@@ -22,14 +24,24 @@ import HuntMapView, { type CameraRequest } from "./HuntMapView";
 import HuntSheet from "./HuntSheet";
 import type { Padding } from "./map/GoogleZoneMap";
 import { useZoneGeometry, type MapView } from "./map/useZoneGeometry";
-import DatePage from "./sheet/DatePage";
 import HuntAnswer, { statusWord } from "./sheet/HuntAnswer";
-import LayersPage from "./sheet/LayersPage";
-import SearchPage, { type ChosenPlace } from "./sheet/SearchPage";
-import SpeciesPage from "./sheet/SpeciesPage";
+import type { ChosenPlace } from "./sheet/SearchPage";
 import { InSeasonHere, StateChip, ZoneSpeciesAnswer, ZoneSummaryDetail, type SummaryLoad } from "./sheet/ZoneContext";
-import ZonesPage from "./sheet/ZonesPage";
 import styles from "./HuntApp.module.css";
+
+/* Pages open on demand, so each is its own chunk; they are fetched once the
+   map is up (see below) so a tap never waits on the network. */
+const pageLoading = () => <p className={styles.answerLoading} role="status"><span className={styles.spinner} aria-hidden="true" /> Loading…</p>;
+const loadSearch = () => import("./sheet/SearchPage");
+const loadSpecies = () => import("./sheet/SpeciesPage");
+const loadDate = () => import("./sheet/DatePage");
+const loadLayers = () => import("./sheet/LayersPage");
+const loadZones = () => import("./sheet/ZonesPage");
+const SearchPage = dynamic(loadSearch, { ssr: false, loading: pageLoading });
+const SpeciesPage = dynamic(loadSpecies, { ssr: false, loading: pageLoading });
+const DatePage = dynamic(loadDate, { ssr: false, loading: pageLoading });
+const LayersPage = dynamic(loadLayers, { ssr: false, loading: pageLoading });
+const ZonesPage = dynamic(loadZones, { ssr: false, loading: pageLoading });
 
 /**
  * North Ground Hunt: the map is the application.
@@ -91,9 +103,11 @@ export interface HuntAppProps {
   linkIssues: number;
   /** Server-rendered explanation of what Hunt is and covers. */
   about: ReactNode;
+  /** The official zones drawn for the opening camera, as a data URI, when the server has it ready. */
+  poster: string | null;
 }
 
-export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate, initialUrl, linkIssues, about }: HuntAppProps) {
+export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate, initialUrl, linkIssues, about, poster }: HuntAppProps) {
   const [exploration, dispatchMap] = useReducer(explorationReducer, INITIAL_EXPLORATION);
   const [session, dispatchSession] = useReducer(huntSessionReducer, undefined, () => initialSession({
     speciesId: initialUrl.speciesId, date: initialDate, dateExplicit: Boolean(initialUrl.date), explore: initialUrl.explore,
@@ -121,6 +135,14 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
   const previousSnapRef = useRef<SheetSnap>("peek");
 
   const geometry = useZoneGeometry(view);
+
+  /* Warm the on-demand pages once the browser is idle after the first paint. */
+  useEffect(() => {
+    const warm = () => { void loadSearch(); void loadSpecies(); void loadDate(); void import("./sheet/AnswerDetail"); };
+    const idle = (window as Window & { requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number }).requestIdleCallback;
+    if (idle) idle(warm, { timeout: 4_000 });
+    else window.setTimeout(warm, 2_500);
+  }, []);
 
   /* ── The device's own calendar day, once mounted ──────────────────────── */
 
@@ -461,19 +483,19 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
     const controller = new AbortController();
     dispatchSession({ type: "EVALUATION_STARTED", key: evalKey });
     const key = evalKey;
-    const body = {
+    // Answers travel in the shape the endpoint accepts (animal classes as a list), from the one shared converter.
+    const body = JSON.stringify(evaluateRequestBody({
       latitude: pointForEvaluation.latitude,
       longitude: pointForEvaluation.longitude,
       date: session.date.iso,
       speciesId: species.id,
-      answers: toAnswerPayload(session.answers),
-    };
+    }, session.answers));
     // Coalesces a burst of changes (species, then date) into one request.
     const timer = window.setTimeout(() => {
       fetch("/api/hunt/evaluate", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(body),
+        body,
         signal: controller.signal,
       })
         .then(async (response) => {
@@ -1029,6 +1051,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
           camera={cameraRequest}
           locateOnStart={!initialUrl.zoneId}
           startBox={geometry.extent}
+          poster={poster}
           padding={padding}
           onView={setView}
           onZoneClick={selectZone}

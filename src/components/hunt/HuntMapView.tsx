@@ -4,14 +4,26 @@ import { memo, useCallback, useEffect, useMemo, useRef, useState, type Dispatch 
 import type { BBox, DrawnZone } from "../../lib/hunt/exploration/geometry-store";
 import type { ExplorationEvent, ExplorationState, GeoPoint, SelfFailure } from "../../lib/hunt/exploration/map-state";
 import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
+import { servedJurisdictionList } from "../../lib/hunt/exploration/overview";
+import { OPENING_CAMERA, posterFrame } from "../../lib/hunt/exploration/overview-poster";
 import { mapLabelFor } from "../../lib/hunt/exploration/map-labels";
 import { EXPLORATION_WORDING, type ExplorationState as ZoneState } from "../../lib/hunt/exploration/states";
 import type { ZoneFeature } from "../../lib/hunt/zone-geometry";
+import dynamic from "next/dynamic";
 import type { LabelSource } from "./map/google-overlays";
-import { GoogleZoneMap, type Padding } from "./map/GoogleZoneMap";
+import type { GoogleZoneMap, Padding } from "./map/GoogleZoneMap";
 import { loadGoogleMaps, onGoogleAuthFailure } from "./map/google-loader";
-import ZoneCanvas, { fitViewport, viewportBounds, type Viewport } from "./ZoneCanvas";
+import { fitViewport, viewportBounds, type Viewport } from "./map/viewport";
 import styles from "./HuntApp.module.css";
+
+/* The boundary view is the fallback when Google is unavailable: its own chunk. */
+const ZoneCanvas = dynamic(() => import("./ZoneCanvas"), { ssr: false });
+
+/* The Maps script starts downloading the moment this module is evaluated —
+   before hydration — rather than after the first render. */
+const MAPS_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+if (typeof window !== "undefined" && MAPS_KEY) void loadGoogleMaps(MAPS_KEY).catch(() => { /* the component reports it */ });
+const loadController = () => import("./map/GoogleZoneMap");
 
 /**
  * The map surface: Google where a browser key is configured and accepted, the
@@ -48,6 +60,8 @@ interface HuntMapViewProps {
   locateOnStart: boolean;
   /** Everything Hunt draws. A wide screen opens framed on it; a phone opens on the middle of it. */
   startBox: BBox;
+  /** The server-drawn official zones for the opening camera (a data URI), shown until the live map draws. */
+  poster: string | null;
   padding: () => Padding;
   onView: (view: { box: BBox; zoom: number }) => void;
   onZoneClick: (key: string, origin: "map") => void;
@@ -55,12 +69,14 @@ interface HuntMapViewProps {
   onBasemap: (state: "loading" | "ready" | "fallback") => void;
 }
 
-const START: Viewport = { latitude: 52.5, longitude: -90, zoom: 4 };
+const START: Viewport = { ...OPENING_CAMERA };
+const POSTER = posterFrame();
+const POSTER_ALT = `Official hunting-zone boundaries for ${servedJurisdictionList()}, shown while the interactive map loads.`;
 const SELF_FAILURES: Record<number, SelfFailure> = { 1: "denied", 2: "position", 3: "timeout" };
 
 function HuntMapView({
   googleMapsApiKey, exploration, dispatch, drawn, selectedKey, huntKey, filterStates, overlays, mapMode, camera,
-  locateOnStart, startBox, padding, onView, onZoneClick, onOverlayClick, onBasemap,
+  locateOnStart, startBox, poster, padding, onView, onZoneClick, onOverlayClick, onBasemap,
 }: HuntMapViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const controllerRef = useRef<GoogleZoneMap | null>(null);
@@ -93,8 +109,8 @@ function HuntMapView({
   useEffect(() => {
     if (!useGoogle || !containerRef.current || controllerRef.current) return;
     let cancelled = false;
-    loadGoogleMaps(googleMapsApiKey!)
-      .then((maps) => {
+    Promise.all([loadGoogleMaps(googleMapsApiKey!), loadController()])
+      .then(([maps, { GoogleZoneMap }]) => {
         if (cancelled || !containerRef.current) return;
         const fine = window.matchMedia?.("(pointer: fine)").matches ?? false;
         controllerRef.current = new GoogleZoneMap(containerRef.current, maps, {
@@ -332,6 +348,24 @@ function HuntMapView({
           onOverlayClick={(feature) => onOverlayClick(feature.layerId, feature.objectId)}
         />
       )}
+
+      {/* The official zones as a picture until the live map has drawn them, lying exactly under where it will.
+          A plain <img>: an SVG gains nothing from the image optimiser, and its fixed frame must not be resized. */}
+      {poster ? (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        className={styles.poster}
+        src={poster}
+        alt={POSTER_ALT}
+        width={POSTER.width}
+        height={POSTER.height}
+        decoding="sync"
+        draggable={false}
+        data-hidden={(useGoogle ? googleReady && drawn.length > 0 : true) || undefined}
+        style={{ transform: `translate(${-POSTER.centreX}px, ${-POSTER.centreY}px)` }}
+        onError={(event) => { event.currentTarget.hidden = true; }}
+      />
+      ) : null}
 
       {pin?.mode === "centre" ? (
         <div className={styles.pinCrosshair} aria-hidden="true">
