@@ -1,6 +1,7 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { ZoneResolution } from "./types.ts";
-import { designationOfRaw, isLocationLayer, officialNameOf, servingLayersAt, ZONE_LAYERS, zoneIdFor, type ZoneLayer } from "./zone-layers.ts";
+import { unitedStatesStateAt } from "./united-states/state-boundary.ts";
+import { countryOfJurisdiction, designationOfRaw, isLocationLayer, officialNameOf, servingLayersAt, ZONE_LAYERS, zoneIdFor, type ZoneLayer } from "./zone-layers.ts";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { defaultSupabaseServerClient, SupabaseServerConfigurationError } from "../supabase/server.ts";
 
@@ -546,9 +547,43 @@ export async function resolveZoneFromOfficialGis(
      when no other registered layer's extent reaches the point. Alberta's box
      runs west to 120° W, so Cranbrook, B.C. is in it; Alberta's service finding
      nothing there does not make Cranbrook Albertan. */
-  return results.length === 1 && registeredLayersAt(latitude, longitude).length === 1
+  return results.length === 1 && soleJurisdictionAt(latitude, longitude) === results[0].jurisdictionId
     ? results[0]
     : { ...results[0], jurisdictionId: undefined };
+}
+
+/**
+ * Which jurisdiction an unplaced point belongs to, when the answer itself did
+ * not say. One jurisdiction's extents alone are evidence; several are not, and
+ * a U.S. point is then asked of the Census Bureau, because a state is a fact
+ * about the ground rather than about a hunting layer's rectangle.
+ */
+async function attributeJurisdiction(
+  result: ZoneResolution,
+  latitude: number,
+  longitude: number,
+  fetcher: typeof fetch,
+): Promise<ZoneResolution> {
+  const here = registeredLayersAt(latitude, longitude);
+  const sole = soleJurisdictionAt(latitude, longitude);
+  if (sole && here.some((layer) => layer.serving)) return { ...result, jurisdictionId: sole };
+  if (here.some((layer) => countryOfJurisdiction(layer.jurisdictionId) === "US")) {
+    const place = await unitedStatesStateAt(latitude, longitude, fetcher);
+    if (place) return { ...result, jurisdictionId: place.jurisdictionId as ZoneResolution["jurisdictionId"] };
+  }
+  return result;
+}
+
+/**
+ * The one jurisdiction every extent here belongs to, or undefined where two
+ * jurisdictions' extents reach the point. A jurisdiction may register several
+ * layers over the same ground — Montana's deer-and-elk districts and its
+ * upland districts — and a point inside both is still unambiguously in it,
+ * so the count that matters is of jurisdictions, not layers.
+ */
+export function soleJurisdictionAt(latitude: number, longitude: number): ZoneResolution["jurisdictionId"] {
+  const jurisdictions = new Set(registeredLayersAt(latitude, longitude).map((layer) => layer.jurisdictionId));
+  return jurisdictions.size === 1 ? ([...jurisdictions][0] as ZoneResolution["jurisdictionId"]) : undefined;
 }
 
 /** Every registered layer whose extent contains the point, served or not. */
@@ -593,7 +628,9 @@ export async function resolveZone(
   if (live.length && !registryHere) {
     const fromLive = await liveResult!;
     if (timings) timings.live = performance.now() - started;
-    return fromLive;
+    return fromLive.status === "RESOLVED" || fromLive.jurisdictionId
+      ? fromLive
+      : attributeJurisdiction(fromLive, latitude, longitude, fetcher);
   }
   // Asked in parallel with the registry; never left unobserved if not awaited.
   liveResult?.catch(() => undefined);
@@ -630,8 +667,7 @@ export async function resolveZone(
     /* Registered layers count whether or not they are served: Québec's layer is
        not yet served, but its extent is still evidence the point may be in
        Québec, and Ontario's box alone must not claim it. */
-    const containing = registeredLayersAt(latitude, longitude);
-    if (containing.length === 1 && containing[0].serving) return { ...result, jurisdictionId: containing[0].jurisdictionId };
+    return attributeJurisdiction(result, latitude, longitude, fetcher);
   }
   return result;
 }

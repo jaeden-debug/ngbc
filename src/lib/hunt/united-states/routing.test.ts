@@ -104,3 +104,11 @@ test("a Montana grouse question placed in a deer and elk district is asked again
     [HD.serving, UPLAND.serving] = served;
   }
 });
+
+test("a point inside two of one state's own layers keeps that state, so a reservation is not jurisdictionless", async () => {
+  const { soleJurisdictionAt } = await import("../zone.ts");
+  // Lame Deer sits in Montana's deer-and-elk extent and its upland extent, and in no other state's.
+  assert.equal(soleJurisdictionAt(45.623, -106.667), "jurisdiction:us-mt");
+  // Cranbrook, B.C. is inside Alberta's box as well as B.C.'s: evidence for neither.
+  assert.equal(soleJurisdictionAt(49.5097, -115.7688), undefined);
+});
