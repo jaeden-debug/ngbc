@@ -280,7 +280,8 @@ async function main() {
       specials.set(id, {
         id, name: `Pronghorn Hunt Area ${code} (part of Unit ${unit})`, resolution: "UNRESOLVED", candidateAreas: [unit],
         statedAs: `Hunt Area ${code} — ${description}`,
-        reason: `Idaho describes this hunt area in words (p. 67) and North Ground holds no boundary for the part of Unit ${unit} it includes, so it cannot say whether this point is in it.`,
+        // The authority's own words travel with the answer: they are what a hunter checks.
+        reason: `Idaho describes it as “${description}” (p. 67). North Ground holds no boundary for the part of Unit ${unit} it includes, so it cannot say whether this point is in it.`,
       });
       return id;
     });

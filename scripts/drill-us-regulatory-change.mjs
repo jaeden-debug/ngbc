@@ -83,6 +83,52 @@ const STATES = {
   },
 };
 
+STATES.id = {
+  builder: "scripts/build-us-id-pronghorn.mjs",
+  committed: ["content/regulatory/us-id-pronghorn-2026.json", "content/regulatory/us-id-certified-units.json"],
+  drills: [
+    {
+      name: "season date change (hunt 4007 closes Oct 31 instead of Oct 24)",
+      kind: "pdf", page: 64, from: "4007 39 40 Sep 25 - Oct 24", to: "4007 39 40 Sep 25 - Oct 31", expectExit: 2,
+    },
+    {
+      name: "quota change (hunt 4007: 40 → 35 tags)",
+      kind: "pdf", page: 64, from: "4007 39 40 Sep 25", to: "4007 39 35 Sep 25", expectExit: 2,
+    },
+    {
+      name: "hunt area widened (Hunt Area 30A-1 gains Unit 31)",
+      kind: "pdf", page: 68, from: "All of Units 21A, 29, 30, and 30A.", to: "All of Units 21A, 29, 30, 30A, and 31.", expectExit: 2,
+    },
+    {
+      // A clause the reader does not understand must stop the build rather
+      // than be read as whole units.
+      name: "hunt area reworded into a clause the reader does not know",
+      kind: "pdf", page: 68, from: "All of Units 21A, 29, 30, and 30A.", to: "Units 21A, 29, 30, and 30A north of Interstate 84.", expectExit: 1,
+    },
+    {
+      name: "a new correction is published",
+      kind: "pdf", page: 2, raw: true,
+      from: "72-HOUR TRAP CHECK REQUIREMENT\n96", to: "72-HOUR TRAP CHECK REQUIREMENT\n96\nPRONGHORN HUNT 4007 DATES\n64", expectExit: 1,
+    },
+    {
+      name: "hunting hours reworded",
+      kind: "pdf", page: 96, from: "one-half hour after sunset", to: "sunset", expectExit: 1,
+    },
+    {
+      name: "the Hunt Planner disagrees on hunt 4007's quota",
+      kind: "json", match: "huntplanner",
+      edit: (value) => ({ ...value, rows: value.rows.map((row) => (row.number === "4007" ? { ...row, permits: 45 } : row)) }),
+      expectExit: 2,
+    },
+    {
+      name: "a unit disappears from Idaho's unit layer",
+      kind: "json", match: "Hunting/MapServer/3",
+      edit: (value) => ({ ...value, features: value.features.filter((feature) => String(feature.attributes.NAME).trim() !== "39") }),
+      expectExit: 1,
+    },
+  ],
+};
+
 const args = process.argv.slice(2);
 const state = STATES[args[args.indexOf("--state") + 1]];
 const base = args.includes("--base") ? args[args.indexOf("--base") + 1] : undefined;
@@ -111,10 +157,11 @@ for (const drill of state.drills) {
     if (drill.kind === "pdf") {
       const pages = record.value.pages;
       const index = drill.page - 1;
-      // Drill edits act on the flattened text the builder reads, so collapse the page first.
-      const flat = pages[index].replace(/ /g, " ").replace(/\s+/g, " ").trim();
-      if (!flat.includes(drill.from)) throw new Error(`Drill "${drill.name}": the recorded text no longer contains "${drill.from}"`);
-      pages[index] = flat.replace(drill.from, drill.to);
+      // Drill edits act on the flattened text the builder reads, so collapse the
+      // page first — unless the builder reads the page's lines (`raw`).
+      const text = drill.raw ? pages[index] : pages[index].replace(/ /g, " ").replace(/\s+/g, " ").trim();
+      if (!text.includes(drill.from)) throw new Error(`Drill "${drill.name}": the recorded text no longer contains "${drill.from}"`);
+      pages[index] = text.replace(drill.from, drill.to);
     } else {
       record.value = drill.edit(record.value);
     }
