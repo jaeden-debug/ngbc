@@ -4,6 +4,7 @@
  *
  *   node scripts/ingest-special-areas.mjs --jurisdiction ca-mb            load
  *   node scripts/ingest-special-areas.mjs --jurisdiction ca-mb --check    change watch
+ *   ... --layer wmas                                                     one layer only
  *
  * Only layers whose licence permits redistribution are listed here. Each layer
  * is read in full from the authority's own service and checked against the
@@ -98,8 +99,10 @@ async function main() {
   const headers = { apikey: key, authorization: `Bearer ${key}`, "content-type": "application/json" };
   const rpc = (name, body) => json(`${url}/rest/v1/rpc/${name}`, { method: "POST", headers, body: JSON.stringify(body) });
 
+  const only = args.includes("--layer") ? args[args.indexOf("--layer") + 1] : null;
+  if (only && !catalogue.layers.some((layer) => layer.key === only)) throw new Error(`No layer "${only}" in ${config.catalogue}`);
   let moved = 0;
-  for (const layer of catalogue.layers) {
+  for (const layer of catalogue.layers.filter((entry) => !only || entry.key === only)) {
     const layerId = `special_layer:${jurisdiction}-${layer.key}`;
     const { features, dataLastEditDate } = await authorityLayer(layer.url);
     const ids = features.map((feature) => Number(feature.properties?.OBJECTID ?? feature.id));
