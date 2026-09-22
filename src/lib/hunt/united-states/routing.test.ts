@@ -150,3 +150,28 @@ test("a U.S. map says 'Certified rules' only for units the state's rules builder
   // A state with no rules builder yet certifies nothing it draws.
   assert.equal(zoneCoverage(WY_ELK, "7"), "IN_DEVELOPMENT");
 });
+
+test("drawing a state's boundaries never turns its rules on: rules answer only with rulesServing", async () => {
+  const { regulatoryEntryFor } = await import("../regulatory/registry.ts");
+  const saved = { serving: HD.serving, rules: HD.rulesServing };
+  try {
+    HD.serving = true;
+    HD.rulesServing = false;
+    assert.equal(regulatoryEntryFor("jurisdiction:us-mt"), undefined, "boundary-only: certified rules must not answer");
+    HD.rulesServing = true;
+    assert.ok(regulatoryEntryFor("jurisdiction:us-mt"), "with both flags, Montana's rules answer");
+    HD.serving = false;
+    assert.equal(regulatoryEntryFor("jurisdiction:us-mt"), undefined, "rules never answer for a layer that is not served");
+  } finally {
+    HD.serving = saved.serving;
+    HD.rulesServing = saved.rules;
+  }
+});
+
+test("a point inside two of one state's own layers keeps that state, so a reservation is not jurisdictionless", async () => {
+  const { soleJurisdictionAt } = await import("../zone.ts");
+  // Lame Deer sits in Montana's deer-and-elk extent and its upland extent, and in no other state's.
+  assert.equal(soleJurisdictionAt(45.623, -106.667), "jurisdiction:us-mt");
+  // Cranbrook, B.C. is inside Alberta's box as well as B.C.'s: evidence for neither.
+  assert.equal(soleJurisdictionAt(49.5097, -115.7688), undefined);
+});
