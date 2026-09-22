@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ShareHuntBrief } from "../../lib/hunt-share/model.ts";
 import { checkCurrentHuntPath } from "../../lib/hunt-share/urls.ts";
+import { briefZoneLabels } from "../../lib/hunt-share/zone-label.ts";
 import styles from "./HuntBrief.module.css";
 
 function formatDate(value: string, options: Intl.DateTimeFormatOptions): string {
@@ -36,13 +37,19 @@ export default function HuntBriefCard({ brief }: { brief: ShareHuntBrief }) {
     day: "numeric",
   });
 
+  const zone = briefZoneLabels(brief.managementZone);
+
   return (
     <article className={styles.card}>
       <header className={styles.hero}>
         <p className={styles.eyebrow}>North Ground Hunt · Shared brief</p>
         <h1 className={styles.title}>{brief.species.displayName}</h1>
         <p className={styles.context}>
-          <span>{brief.managementZone?.displayName ?? "Management zone unresolved"}</span>
+          <span>
+            {zone ? zone.label : "Management zone unresolved"}
+            {/* The authority's own name stays visible beside the readable one. */}
+            {zone && zone.officialName !== zone.label && <> ({zone.officialName})</>}
+          </span>
           <span>{brief.jurisdiction.displayName}</span>
           <span>{date}</span>
           {brief.generalLocationLabel && <span>{brief.generalLocationLabel}</span>}

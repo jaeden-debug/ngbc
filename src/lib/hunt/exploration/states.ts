@@ -1,3 +1,4 @@
+import type { ZonePresentation } from "../zone-presentation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { ZoneCoverageStatus } from "../zone-layers.ts";
 
@@ -87,6 +88,8 @@ export interface ZoneSummary {
     designation: string;
     label: string;
     officialName: string;
+    /** Localised labels (primary locale), derived from the designation; never an identifier. */
+    presentation: ZonePresentation;
     officialTerm: string;
     jurisdictionId: CanonicalId<"jurisdiction">;
     jurisdictionName: string;

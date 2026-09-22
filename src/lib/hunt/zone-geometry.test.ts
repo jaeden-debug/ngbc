@@ -90,7 +90,8 @@ test("Québec cardinal designations are readable without changing their official
   const quebec = ZONE_LAYERS.find((layer) => layer.jurisdictionId === "jurisdiction:ca-qc")!;
   assert.equal(zoneDisplayLabel(quebec, "10O"), "Zone 10 West");
   assert.equal(zoneDisplayLabel(quebec, "19SE"), "Zone 19 Southeast");
-  assert.equal(zoneDisplayLabel(quebec, "08NZ"), "Zone 08NZ");
+  // The ministry names the part « Nord ZSR »: the direction reads, the acronym stays.
+  assert.equal(zoneDisplayLabel(quebec, "08NZ"), "Zone 8 North ZSR");
 });
 
 /* ── Coverage honesty ────────────────────────────────────────────────────── */

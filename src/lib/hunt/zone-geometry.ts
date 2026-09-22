@@ -1,6 +1,7 @@
 import { labelPlacement } from "./exploration/label-point.ts";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { defaultSupabaseServerClient } from "../supabase/server.ts";
+import { presentZone } from "./zone-presentation.ts";
 import { designationOfRaw, layerById, ZONE_LAYERS, zoneCoverage, zoneDisplayLabel, zoneIdFor, type ZoneCoverageStatus, type ZoneLayer } from "./zone-layers.ts";
 
 /**
@@ -24,8 +25,12 @@ export interface ZoneFeature {
   layerId: string;
   /** Stable within a layer: the authority's own designation. */
   name: string;
-  /** Display label using the authority's own terminology. */
+  /** Full display label using the authority's own terminology ("WMU 57", "Zone 10 West"). */
   label: string;
+  /** Shortest map label ("57", "10W"); presentation only, never a key. */
+  compactLabel: string;
+  /** Spelled-out label for assistive technology ("Wildlife Management Unit 57, Ontario"). */
+  accessibleLabel: string;
   coverage: ZoneCoverageStatus;
   /** Rings as [[[lng, lat], …], …], already generalised for the requested zoom. */
   rings: number[][][];
@@ -361,10 +366,13 @@ export async function fetchLayerGeometry(
   const features: ZoneFeature[] = [];
   for (const [name, polygons] of polygonsByName) {
     const placement = labelPlacement({ type: "MultiPolygon", coordinates: polygons });
+    const presented = presentZone({ designation: name, layerId: layer.id, jurisdictionId: layer.jurisdictionId });
     features.push({
       layerId: layer.id,
       name,
       label: zoneDisplayLabel(layer, name),
+      compactLabel: presented.compactLabel,
+      accessibleLabel: presented.accessibleLabel,
       coverage: zoneCoverage(layer, name),
       rings: polygons.flat(),
       ...(placement ? { labelPoint: placement.point, labelSpan: placement.span, parts: placement.parts } : {}),

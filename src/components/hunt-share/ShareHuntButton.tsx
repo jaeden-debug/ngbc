@@ -7,6 +7,7 @@ import {
   invokeNativeShare,
 } from "../../lib/hunt-share/client.ts";
 import type { HuntShareProjectionInput } from "../../lib/hunt-share/model.ts";
+import { briefZoneLabels } from "../../lib/hunt-share/zone-label.ts";
 import styles from "./ShareHuntButton.module.css";
 
 interface CreateResponse {
@@ -65,7 +66,7 @@ export default function ShareHuntButton({ huntResult }: { huntResult: HuntShareP
     setMessage("");
     try {
       const result = await invokeNativeShare(window.navigator, {
-        title: `${huntResult.species.displayName} Hunt — ${huntResult.managementZone?.displayName ?? huntResult.jurisdiction.displayName}`,
+        title: `${huntResult.species.displayName} Hunt — ${briefZoneLabels(huntResult.managementZone)?.label ?? huntResult.jurisdiction.displayName}`,
         text: `${huntResult.selectedDate} · North Ground Hunt`,
         url: shareUrl,
       });
@@ -116,7 +117,7 @@ export default function ShareHuntButton({ huntResult }: { huntResult: HuntShareP
 
           <div className={styles.preview}>
             <strong>{huntResult.species.displayName}</strong>
-            <span>{huntResult.managementZone?.displayName ?? "Management zone unresolved"} · {huntResult.jurisdiction.displayName}</span>
+            <span>{briefZoneLabels(huntResult.managementZone)?.label ?? "Management zone unresolved"} · {huntResult.jurisdiction.displayName}</span>
             <span>{huntResult.selectedDate} · {huntResult.regulatory.status.replaceAll("_", " ")}</span>
             {huntResult.location?.shareApproved && huntResult.location.generalLabel && <span>{huntResult.location.generalLabel}</span>}
           </div>

@@ -4,6 +4,7 @@ import { isMajorGameSpecies, speciesById } from "../coverage.ts";
 import { overlaysInZone, type OverlayZoneIndex } from "../overlay-zones.ts";
 import { lookupOverlays, restrictionsFor, type OverlayCatalogue } from "../overlays.ts";
 import { designationFromOfficialName, layerForJurisdiction } from "../zone-layers.ts";
+import { presentZoneById } from "../zone-presentation.ts";
 import type { EvaluationCompleteness, HuntInput, RegulatoryResult, ZoneResolution } from "../types.ts";
 import type { ConditionalEvaluation, ConditionalInput, conditionalCoverage } from "./conditional-engine.ts";
 import type { RequiredDimension } from "./dimensions.ts";
@@ -212,6 +213,16 @@ interface ConditionalJurisdiction {
   };
 }
 
+/**
+ * How the engine's English prose names a zone: "Zone 10 West" rather than
+ * "Zone de chasse 10O". Only words change; the zone id carries identity.
+ */
+function zoneProseName(zone: ZoneResolution): string {
+  if (!zone.zoneId) return zone.officialName ?? "this zone";
+  const presented = presentZoneById(zone.zoneId, "en-CA", zone.officialName);
+  return presented.status === "PRESENTED" ? presented.fullLabel : zone.officialName ?? zone.zoneId;
+}
+
 /** The zone's bare designation, from the name the resolver gave it. */
 function designationOf(jurisdictionId: string, zone: ZoneResolution): string | null {
   const layer = layerForJurisdiction(jurisdictionId);
@@ -271,7 +282,8 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
         answers: input.answers ?? {},
         place: {
           zoneId: zone.zoneId,
-          zoneName: zone.officialName ?? zone.zoneId,
+          // Prose names the zone as a reader would; identity stays in zoneId.
+          zoneName: zoneProseName(zone),
           latitude: input.latitude,
           longitude: input.longitude,
           scope,

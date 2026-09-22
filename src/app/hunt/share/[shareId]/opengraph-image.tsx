@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { loadHuntBrief } from "./data.ts";
+import { briefZoneLabels } from "../../../../lib/hunt-share/zone-label.ts";
 
 export const alt = "North Ground Hunt Brief";
 export const size = { width: 1200, height: 630 };
@@ -36,7 +37,7 @@ export default async function HuntBriefOpenGraphImage({ params }: Props) {
         </div>
         {brief && (
           <div style={{ display: "flex", fontSize: 31, marginTop: 24 }}>
-            {brief.managementZone?.displayName ?? brief.jurisdiction.displayName} · {brief.selectedDate}
+            {briefZoneLabels(brief.managementZone)?.label ?? brief.jurisdiction.displayName} · {brief.selectedDate}
           </div>
         )}
       </div>

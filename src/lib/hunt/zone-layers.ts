@@ -1,4 +1,5 @@
 import type { CanonicalId } from "../content-contract/index.ts";
+import { presentZone } from "./zone-presentation.ts";
 import certifiedUnits from "../../../content/regulatory/ca-on-certified-units.json" with { type: "json" };
 import manitobaCertifiedUnits from "../../../content/regulatory/ca-mb-certified-units.json" with { type: "json" };
 import albertaCertifiedUnits from "../../../content/regulatory/ca-ab-certified-units.json" with { type: "json" };
@@ -107,21 +108,17 @@ export function designationOfRaw(layer: Pick<ZoneLayer, "designationOf">, raw: u
   return typeof raw === "string" && raw.trim() !== "" ? raw.trim() : null;
 }
 
-/** A readable label without changing the authority's stored designation. */
+/**
+ * A zone's full English label ("WMU 57", "Zone 10 West"). Presentation lives in
+ * `zone-presentation.ts`; this delegates so no second formatter exists. A layer
+ * without a presentation profile keeps its term and raw designation.
+ */
 export function zoneDisplayLabel(
-  layer: Pick<ZoneLayer, "jurisdictionId" | "officialTermShort">,
+  layer: Pick<ZoneLayer, "jurisdictionId" | "officialTermShort"> & { id?: string },
   designation: string,
 ): string {
-  if (layer.jurisdictionId === "jurisdiction:ca-qc") {
-    const match = /^(\d+)(SE|SO|E|O|N|S)$/i.exec(designation.trim());
-    if (match) {
-      const direction: Record<string, string> = {
-        E: "East", O: "West", N: "North", S: "South", SE: "Southeast", SO: "Southwest",
-      };
-      return `Zone ${Number(match[1])} ${direction[match[2].toUpperCase()]}`;
-    }
-  }
-  return `${layer.officialTermShort} ${designation}`;
+  const presented = presentZone({ designation, layerId: layer.id, jurisdictionId: layer.jurisdictionId });
+  return presented.status === "UNSUPPORTED_JURISDICTION" ? `${layer.officialTermShort} ${designation}` : presented.fullLabel;
 }
 
 export const ONTARIO_WMU_ENDPOINT =

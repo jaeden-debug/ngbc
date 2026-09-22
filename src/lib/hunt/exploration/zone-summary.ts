@@ -3,6 +3,7 @@ import { contentRepository } from "../../content/repository.ts";
 import { speciesById } from "../coverage.ts";
 import { regulatoryEntryFor, type RegulatoryEntry, type RegulatoryOutcome } from "../regulatory/registry.ts";
 import type { ZoneResolution } from "../types.ts";
+import { presentZone } from "../zone-presentation.ts";
 import { layerById, zoneCoverage, zoneDisplayLabel, zoneIdFor, type ZoneLayer } from "../zone-layers.ts";
 import type { ExplorationState, SpeciesZoneSummary, ZoneRef, ZoneSummary } from "./states.ts";
 
@@ -212,6 +213,10 @@ export async function summarizeZone(ref: ZoneRef, date: string): Promise<ZoneSum
       designation,
       label: zoneDisplayLabel(layer, designation),
       officialName: `${layer.officialNamePrefix}${designation}`,
+      presentation: presentZone({
+        designation, layerId: layer.id, jurisdictionId: layer.jurisdictionId, zoneId: zoneIdFor(layer, designation),
+        officialName: `${layer.officialNamePrefix}${designation}`,
+      }),
       officialTerm: layer.officialTerm,
       jurisdictionId: layer.jurisdictionId,
       jurisdictionName: layer.jurisdictionName,

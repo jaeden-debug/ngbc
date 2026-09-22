@@ -1,5 +1,6 @@
 import { isWithinSupportedBounds } from "../../../../lib/hunt/coverage";
 import { resolveZone } from "../../../../lib/hunt/zone";
+import { presentZone } from "../../../../lib/hunt/zone-presentation";
 import { designationFromOfficialName, layerForJurisdiction, layerForPoint, layerForResolution, zoneCoverage, zoneDisplayLabel } from "../../../../lib/hunt/zone-layers";
 import { createRateLimiter, getClientAddress } from "../../../../lib/newsletter/rate-limit";
 import { SITE_URL } from "../../../../lib/site";
@@ -109,6 +110,11 @@ export async function POST(request: Request): Promise<Response> {
       designation: zoneName,
       officialName: resolution.officialName,
       shortLabel: zoneName ? zoneDisplayLabel(layer, zoneName) : resolution.officialName,
+      // Presentation for the primary locale, beside — never instead of — the identity above.
+      presentation: zoneName
+        ? presentZone({ designation: zoneName, layerId: layer.id, jurisdictionId: layer.jurisdictionId,
+            zoneId: resolution.zoneId, officialName: resolution.officialName })
+        : null,
       coverage: zoneCoverage(layer, zoneName),
       boundaryDistanceMeters: resolution.boundaryDistanceMeters,
       nearBoundary: resolution.nearBoundary,
