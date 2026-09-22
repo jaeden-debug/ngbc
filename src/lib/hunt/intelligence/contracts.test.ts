@@ -204,14 +204,14 @@ test("habitat is never presented as density, presence or abundance", () => {
   assert.deepEqual(availableMetrics([{ metric: "HARVEST_TOTAL" }, { metric: "HUNTER_DAYS" }]), ["HARVEST_PER_EFFORT", "HARVEST_TOTAL", "HUNTER_DAYS"]);
 });
 
-test("a habitat model must be re-runnable, and is no finer than its coarsest input", () => {
+test("a weighted habitat model must be re-runnable, and is no finer than its coarsest input", () => {
   const input = (datasetId: string, weight: number, approximateMetres: number) => ({
     datasetId, weight, sourceHash: `sha256:${"b".repeat(64)}` as const,
     resolution: { precision: "RASTER" as const, approximateMetres }, statedAs: "Land cover class",
   });
   const model = {
     id: "model:on-deer-habitat", version: "habitat-v1", speciesId: "species:white-tailed-deer",
-    jurisdictionId: "jurisdiction:ca-on", rule: "Weighted mean of the reclassified inputs.",
+    jurisdictionId: "jurisdiction:ca-on", kind: "WEIGHTED" as const, rule: "Weighted mean of the reclassified inputs.",
     publishedAt: "2026-09-22", statedAs: "Where the land resembles what deer use.",
     inputs: [input("dataset:landcover", 0.6, 30), input("dataset:elevation", 0.4, 250)],
   };
@@ -229,6 +229,42 @@ test("a habitat model must be re-runnable, and is no finer than its coarsest inp
   assert.match(unhashed.problems.join(" "), /no usable source hash/);
 
   assert.equal(habitatModelIsReproducible({ ...model, inputs: [] }).reproducible, false);
+});
+
+test("a species whose research supports only associations stays classified, and needs no weights", () => {
+  // Ruffed grouse research supports habitat ASSOCIATIONS, not a defensible
+  // weighting. Requiring numbers here would force a prettier map built on
+  // invented figures, which is exactly what section 61 forbids. A classified
+  // model is fully publishable.
+  const classified = {
+    id: "model:qc-ruffed-grouse-habitat", version: "habitat-classified-v1", speciesId: "species:ruffed-grouse",
+    jurisdictionId: "jurisdiction:ca-qc", kind: "CLASSIFIED" as const,
+    classes: ["Regenerating cutblock", "Mixedwood with aspen", "Wetland edge", "Not associated"],
+    rule: "Each land-cover class is assigned to one association class; nothing is combined numerically.",
+    publishedAt: "2026-09-22", statedAs: "Where the land matches published ruffed grouse associations.",
+    inputs: [{
+      datasetId: "dataset:qc-landcover", sourceHash: `sha256:${"c".repeat(64)}` as const,
+      resolution: { precision: "RASTER" as const, approximateMetres: 30 }, statedAs: "Land cover class",
+    }],
+  };
+  const verdict = habitatModelIsReproducible(classified);
+  assert.equal(verdict.reproducible, true, verdict.problems.join(" "));
+  assert.deepEqual(verdict.outputResolution, { precision: "RASTER", approximateMetres: 30 });
+
+  // It must still name its classes: "classified" is not an excuse to say nothing.
+  const unnamed = habitatModelIsReproducible({ ...classified, classes: [] });
+  assert.equal(unnamed.reproducible, false);
+  assert.match(unnamed.problems.join(" "), /must name the classes it assigns/);
+
+  // And it may not smuggle weights in unchecked — that is a weighted model.
+  const smuggled = habitatModelIsReproducible({ ...classified, inputs: [{ ...classified.inputs[0], weight: 0.7 }] });
+  assert.equal(smuggled.reproducible, false);
+  assert.match(smuggled.problems.join(" "), /declare the model WEIGHTED so they are checked/);
+
+  // A weighted model declaring classes instead of weights is refused the same way.
+  const neither = habitatModelIsReproducible({ ...classified, kind: "WEIGHTED" });
+  assert.equal(neither.reproducible, false);
+  assert.match(neither.problems.join(" "), /states weights, not classes|carries no positive weight/);
 });
 
 /* ── A restricted dataset is refused, visibly ────────────────────────────── */

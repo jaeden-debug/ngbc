@@ -115,29 +115,49 @@ export function mayPublish(
  * A habitat model is the only T4 evidence North Ground produces itself, so it
  * is the one place the platform could fabricate at scale without noticing. The
  * defence is reproducibility: every input named with the exact version that was
- * used, every weight written down, the rule stated, and the output resolution
- * fixed at the coarsest input. Anyone — including a reviewer two years from now
- * — must be able to re-run it and get the same surface.
+ * used, the combining rule stated, and the output resolution fixed at the
+ * coarsest input. Anyone — including a reviewer two years from now — must be
+ * able to re-run it and get the same surface.
  *
  * A model that cannot be re-run is an opinion with a colour ramp.
+ *
+ * Reproducible does not mean numeric. Where the published research supports
+ * only qualitative associations — regenerating cutblocks and wetland edge, say
+ * — the model stays CLASSIFIED and says so. Inventing weights to make that
+ * model continuous would produce a smoother map and a less true one, which is
+ * the fabrication in section 61 wearing a plausible face. Weights appear only
+ * where research supports them, and then they are all written down and sum
+ * to one.
  */
+export type HabitatModelKind =
+  /** Named classes from stated associations. Carries no weights, by construction. */
+  | "CLASSIFIED"
+  /** A weighted combination, which the research must actually support. */
+  | "WEIGHTED";
+
 export interface HabitatModelInput {
   datasetId: string;
   /** The exact bytes used, so a silently updated source is a different model. */
   sourceHash: `sha256:${string}`;
   resolution: SpatialResolution;
-  /** Its share of the result. The weights must sum to 1. */
-  weight: number;
+  /** Its share of the result. Required for WEIGHTED, forbidden for CLASSIFIED. */
+  weight?: number;
   statedAs: string;
 }
 
 export interface HabitatModel {
   id: string;
-  /** Immutable. Changing any input, weight or rule makes a new version. */
+  /** Immutable. Changing any input, weight, class or rule makes a new version. */
   version: string;
   speciesId: string;
   jurisdictionId: string;
+  kind: HabitatModelKind;
   inputs: readonly HabitatModelInput[];
+  /**
+   * The classes a CLASSIFIED model assigns, in the words the research uses.
+   * Absent for WEIGHTED.
+   */
+  classes?: readonly string[];
   /** How the inputs combine, in words a reviewer can check the code against. */
   rule: string;
   publishedAt: string;
@@ -157,10 +177,22 @@ export function habitatModelIsReproducible(model: HabitatModel): ModelVerdict {
   if (!model.inputs.length) problems.push("A model with no declared inputs cannot be re-run.");
   for (const input of model.inputs) {
     if (!/^sha256:[0-9a-f]{64}$/.test(input.sourceHash)) problems.push(`${input.datasetId} has no usable source hash, so the exact data used cannot be identified.`);
-    if (!(input.weight > 0)) problems.push(`${input.datasetId} carries no positive weight.`);
   }
-  const total = model.inputs.reduce((sum, input) => sum + input.weight, 0);
-  if (model.inputs.length && Math.abs(total - 1) > 1e-9) problems.push(`Weights sum to ${total}, not 1, so the result is not the combination it claims.`);
+  if (model.kind === "WEIGHTED") {
+    for (const input of model.inputs) {
+      if (!(typeof input.weight === "number" && input.weight > 0)) problems.push(`${input.datasetId} carries no positive weight, which a weighted model requires.`);
+    }
+    const total = model.inputs.reduce((sum, input) => sum + (input.weight ?? 0), 0);
+    if (model.inputs.length && Math.abs(total - 1) > 1e-9) problems.push(`Weights sum to ${total}, not 1, so the result is not the combination it claims.`);
+    if (model.classes?.length) problems.push("A weighted model states weights, not classes.");
+  } else {
+    // A classified model carrying weights is a weighted model that did not want
+    // to be checked as one.
+    if (model.inputs.some((input) => input.weight !== undefined)) {
+      problems.push("A classified model carries no weights. If the research supports weights, declare the model WEIGHTED so they are checked.");
+    }
+    if (!model.classes?.length) problems.push("A classified model must name the classes it assigns, in the words the research uses.");
+  }
   if (!model.rule.trim()) problems.push("The combining rule is not stated.");
 
   // The governing rule again, inside the model: the output cannot be finer than
