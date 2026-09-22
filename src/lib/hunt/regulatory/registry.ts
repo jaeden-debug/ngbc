@@ -18,6 +18,7 @@ import {
   evaluateQuebec, QUEBEC_OVERLAY_DESCRIPTION, QUEBEC_OVERLAYS, quebecCoverageReport, quebecSourceRecords,
 } from "./quebec.ts";
 import { albertaCoverageReport, albertaSourceRecords, evaluateAlberta } from "./alberta.ts";
+import { evaluateIdaho, idahoCoverageReport, idahoSourceRecords } from "./us-idaho.ts";
 import { evaluateMontana, montanaCoverageReport, montanaRestrictionTokensFor, montanaSourceRecords, MONTANA_OVERLAYS } from "./us-montana.ts";
 
 /**
@@ -481,7 +482,18 @@ const MONTANA = conditionalEntry({
   },
 });
 
-export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, MONTANA];
+/* Idaho's pronghorn controlled hunts. Reached only once Idaho's unit layer is
+   served, which waits on these rules' certification. */
+const IDAHO = conditionalEntry({
+  jurisdictionId: "jurisdiction:us-id",
+  jurisdictionName: "Idaho",
+  unitTerm: "Game Management Unit",
+  evaluate: evaluateIdaho,
+  coverageReport: idahoCoverageReport,
+  sourceRecords: idahoSourceRecords,
+});
+
+export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, MONTANA, IDAHO];
 
 /**
  * The entry for a jurisdiction — only while its zone layer is served.

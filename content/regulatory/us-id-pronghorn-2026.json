@@ -1,0 +1,5781 @@
+{
+  "schemaVersion": 1,
+  "bundleId": "regulatory_bundle:us-id-pronghorn-2026",
+  "jurisdictionId": "jurisdiction:us-id",
+  "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+  "retrievedAt": "2026-09-22",
+  "contentHash": "sha256:a11977c944a1e0f1963dd9daaca0b72dbec2f670de5be76c124afcae87142982",
+  "certifiedPeriod": {
+    "from": "2026-07-01",
+    "to": "2027-06-30",
+    "reason": "The 2026 Big Game Seasons and Rules cover July 2026 – June 2027; pronghorn seasons run August 2026 – February 2027 (cover, p. 7)."
+  },
+  "absence": {
+    "meaning": "UNKNOWN",
+    "excludedCombination": "CLOSED",
+    "statedAs": "All pronghorn hunting, including archery seasons, is by controlled hunt (p. 63). A hunt that does not match what you hold, or is not running on this date, is closed to you.",
+    "section": "p. 63",
+    "sourceId": "source:us-id-big-game-seasons-2026"
+  },
+  "officialUnitCount": 99,
+  "units": [
+    {
+      "identifier": "1",
+      "zoneId": "management_zone:us-id-gmu-1"
+    },
+    {
+      "identifier": "2",
+      "zoneId": "management_zone:us-id-gmu-2"
+    },
+    {
+      "identifier": "3",
+      "zoneId": "management_zone:us-id-gmu-3"
+    },
+    {
+      "identifier": "4",
+      "zoneId": "management_zone:us-id-gmu-4"
+    },
+    {
+      "identifier": "4A",
+      "zoneId": "management_zone:us-id-gmu-4a"
+    },
+    {
+      "identifier": "5",
+      "zoneId": "management_zone:us-id-gmu-5"
+    },
+    {
+      "identifier": "6",
+      "zoneId": "management_zone:us-id-gmu-6"
+    },
+    {
+      "identifier": "7",
+      "zoneId": "management_zone:us-id-gmu-7"
+    },
+    {
+      "identifier": "8",
+      "zoneId": "management_zone:us-id-gmu-8"
+    },
+    {
+      "identifier": "8A",
+      "zoneId": "management_zone:us-id-gmu-8a"
+    },
+    {
+      "identifier": "9",
+      "zoneId": "management_zone:us-id-gmu-9"
+    },
+    {
+      "identifier": "10",
+      "zoneId": "management_zone:us-id-gmu-10"
+    },
+    {
+      "identifier": "10A",
+      "zoneId": "management_zone:us-id-gmu-10a"
+    },
+    {
+      "identifier": "11",
+      "zoneId": "management_zone:us-id-gmu-11"
+    },
+    {
+      "identifier": "11A",
+      "zoneId": "management_zone:us-id-gmu-11a"
+    },
+    {
+      "identifier": "12",
+      "zoneId": "management_zone:us-id-gmu-12"
+    },
+    {
+      "identifier": "13",
+      "zoneId": "management_zone:us-id-gmu-13"
+    },
+    {
+      "identifier": "14",
+      "zoneId": "management_zone:us-id-gmu-14"
+    },
+    {
+      "identifier": "15",
+      "zoneId": "management_zone:us-id-gmu-15"
+    },
+    {
+      "identifier": "16",
+      "zoneId": "management_zone:us-id-gmu-16"
+    },
+    {
+      "identifier": "16A",
+      "zoneId": "management_zone:us-id-gmu-16a"
+    },
+    {
+      "identifier": "17",
+      "zoneId": "management_zone:us-id-gmu-17"
+    },
+    {
+      "identifier": "18",
+      "zoneId": "management_zone:us-id-gmu-18"
+    },
+    {
+      "identifier": "19",
+      "zoneId": "management_zone:us-id-gmu-19"
+    },
+    {
+      "identifier": "19A",
+      "zoneId": "management_zone:us-id-gmu-19a"
+    },
+    {
+      "identifier": "20",
+      "zoneId": "management_zone:us-id-gmu-20"
+    },
+    {
+      "identifier": "20A",
+      "zoneId": "management_zone:us-id-gmu-20a"
+    },
+    {
+      "identifier": "21",
+      "zoneId": "management_zone:us-id-gmu-21"
+    },
+    {
+      "identifier": "21A",
+      "zoneId": "management_zone:us-id-gmu-21a"
+    },
+    {
+      "identifier": "22",
+      "zoneId": "management_zone:us-id-gmu-22"
+    },
+    {
+      "identifier": "23",
+      "zoneId": "management_zone:us-id-gmu-23"
+    },
+    {
+      "identifier": "24",
+      "zoneId": "management_zone:us-id-gmu-24"
+    },
+    {
+      "identifier": "25",
+      "zoneId": "management_zone:us-id-gmu-25"
+    },
+    {
+      "identifier": "26",
+      "zoneId": "management_zone:us-id-gmu-26"
+    },
+    {
+      "identifier": "27",
+      "zoneId": "management_zone:us-id-gmu-27"
+    },
+    {
+      "identifier": "28",
+      "zoneId": "management_zone:us-id-gmu-28"
+    },
+    {
+      "identifier": "29",
+      "zoneId": "management_zone:us-id-gmu-29"
+    },
+    {
+      "identifier": "30",
+      "zoneId": "management_zone:us-id-gmu-30"
+    },
+    {
+      "identifier": "30A",
+      "zoneId": "management_zone:us-id-gmu-30a"
+    },
+    {
+      "identifier": "31",
+      "zoneId": "management_zone:us-id-gmu-31"
+    },
+    {
+      "identifier": "32",
+      "zoneId": "management_zone:us-id-gmu-32"
+    },
+    {
+      "identifier": "32A",
+      "zoneId": "management_zone:us-id-gmu-32a"
+    },
+    {
+      "identifier": "33",
+      "zoneId": "management_zone:us-id-gmu-33"
+    },
+    {
+      "identifier": "34",
+      "zoneId": "management_zone:us-id-gmu-34"
+    },
+    {
+      "identifier": "35",
+      "zoneId": "management_zone:us-id-gmu-35"
+    },
+    {
+      "identifier": "36",
+      "zoneId": "management_zone:us-id-gmu-36"
+    },
+    {
+      "identifier": "36A",
+      "zoneId": "management_zone:us-id-gmu-36a"
+    },
+    {
+      "identifier": "36B",
+      "zoneId": "management_zone:us-id-gmu-36b"
+    },
+    {
+      "identifier": "37",
+      "zoneId": "management_zone:us-id-gmu-37"
+    },
+    {
+      "identifier": "37A",
+      "zoneId": "management_zone:us-id-gmu-37a"
+    },
+    {
+      "identifier": "38",
+      "zoneId": "management_zone:us-id-gmu-38"
+    },
+    {
+      "identifier": "39",
+      "zoneId": "management_zone:us-id-gmu-39"
+    },
+    {
+      "identifier": "40",
+      "zoneId": "management_zone:us-id-gmu-40"
+    },
+    {
+      "identifier": "41",
+      "zoneId": "management_zone:us-id-gmu-41"
+    },
+    {
+      "identifier": "42",
+      "zoneId": "management_zone:us-id-gmu-42"
+    },
+    {
+      "identifier": "43",
+      "zoneId": "management_zone:us-id-gmu-43"
+    },
+    {
+      "identifier": "44",
+      "zoneId": "management_zone:us-id-gmu-44"
+    },
+    {
+      "identifier": "45",
+      "zoneId": "management_zone:us-id-gmu-45"
+    },
+    {
+      "identifier": "46",
+      "zoneId": "management_zone:us-id-gmu-46"
+    },
+    {
+      "identifier": "47",
+      "zoneId": "management_zone:us-id-gmu-47"
+    },
+    {
+      "identifier": "48",
+      "zoneId": "management_zone:us-id-gmu-48"
+    },
+    {
+      "identifier": "49",
+      "zoneId": "management_zone:us-id-gmu-49"
+    },
+    {
+      "identifier": "50",
+      "zoneId": "management_zone:us-id-gmu-50"
+    },
+    {
+      "identifier": "51",
+      "zoneId": "management_zone:us-id-gmu-51"
+    },
+    {
+      "identifier": "52",
+      "zoneId": "management_zone:us-id-gmu-52"
+    },
+    {
+      "identifier": "52A",
+      "zoneId": "management_zone:us-id-gmu-52a"
+    },
+    {
+      "identifier": "53",
+      "zoneId": "management_zone:us-id-gmu-53"
+    },
+    {
+      "identifier": "54",
+      "zoneId": "management_zone:us-id-gmu-54"
+    },
+    {
+      "identifier": "55",
+      "zoneId": "management_zone:us-id-gmu-55"
+    },
+    {
+      "identifier": "56",
+      "zoneId": "management_zone:us-id-gmu-56"
+    },
+    {
+      "identifier": "57",
+      "zoneId": "management_zone:us-id-gmu-57"
+    },
+    {
+      "identifier": "58",
+      "zoneId": "management_zone:us-id-gmu-58"
+    },
+    {
+      "identifier": "59",
+      "zoneId": "management_zone:us-id-gmu-59"
+    },
+    {
+      "identifier": "59A",
+      "zoneId": "management_zone:us-id-gmu-59a"
+    },
+    {
+      "identifier": "60",
+      "zoneId": "management_zone:us-id-gmu-60"
+    },
+    {
+      "identifier": "60A",
+      "zoneId": "management_zone:us-id-gmu-60a"
+    },
+    {
+      "identifier": "61",
+      "zoneId": "management_zone:us-id-gmu-61"
+    },
+    {
+      "identifier": "62",
+      "zoneId": "management_zone:us-id-gmu-62"
+    },
+    {
+      "identifier": "62A",
+      "zoneId": "management_zone:us-id-gmu-62a"
+    },
+    {
+      "identifier": "63",
+      "zoneId": "management_zone:us-id-gmu-63"
+    },
+    {
+      "identifier": "63A",
+      "zoneId": "management_zone:us-id-gmu-63a"
+    },
+    {
+      "identifier": "64",
+      "zoneId": "management_zone:us-id-gmu-64"
+    },
+    {
+      "identifier": "65",
+      "zoneId": "management_zone:us-id-gmu-65"
+    },
+    {
+      "identifier": "66",
+      "zoneId": "management_zone:us-id-gmu-66"
+    },
+    {
+      "identifier": "66A",
+      "zoneId": "management_zone:us-id-gmu-66a"
+    },
+    {
+      "identifier": "67",
+      "zoneId": "management_zone:us-id-gmu-67"
+    },
+    {
+      "identifier": "68",
+      "zoneId": "management_zone:us-id-gmu-68"
+    },
+    {
+      "identifier": "68A",
+      "zoneId": "management_zone:us-id-gmu-68a"
+    },
+    {
+      "identifier": "69",
+      "zoneId": "management_zone:us-id-gmu-69"
+    },
+    {
+      "identifier": "70",
+      "zoneId": "management_zone:us-id-gmu-70"
+    },
+    {
+      "identifier": "71",
+      "zoneId": "management_zone:us-id-gmu-71"
+    },
+    {
+      "identifier": "72",
+      "zoneId": "management_zone:us-id-gmu-72"
+    },
+    {
+      "identifier": "73",
+      "zoneId": "management_zone:us-id-gmu-73"
+    },
+    {
+      "identifier": "73A",
+      "zoneId": "management_zone:us-id-gmu-73a"
+    },
+    {
+      "identifier": "74",
+      "zoneId": "management_zone:us-id-gmu-74"
+    },
+    {
+      "identifier": "75",
+      "zoneId": "management_zone:us-id-gmu-75"
+    },
+    {
+      "identifier": "76",
+      "zoneId": "management_zone:us-id-gmu-76"
+    },
+    {
+      "identifier": "77",
+      "zoneId": "management_zone:us-id-gmu-77"
+    },
+    {
+      "identifier": "78",
+      "zoneId": "management_zone:us-id-gmu-78"
+    }
+  ],
+  "specialGeographies": [
+    {
+      "id": "us-id-pronghorn-area-29-1-in-unit-29",
+      "name": "Pronghorn Hunt Area 29-1 (part of Unit 29)",
+      "resolution": "UNRESOLVED",
+      "candidateAreas": [
+        "29"
+      ],
+      "statedAs": "Hunt Area 29-1 — All of Unit 29 except the Poison Creek drainage.",
+      "reason": "Idaho describes this hunt area in words (p. 67) and North Ground holds no boundary for the part of Unit 29 it includes, so it cannot say whether this point is in it."
+    },
+    {
+      "id": "us-id-pronghorn-area-37-1-in-unit-29",
+      "name": "Pronghorn Hunt Area 37-1 (part of Unit 29)",
+      "resolution": "UNRESOLVED",
+      "candidateAreas": [
+        "29"
+      ],
+      "statedAs": "Hunt Area 37-1 — All of Units 37 and 37A, and that part of Unit 29 in the Poison Creek drainage.",
+      "reason": "Idaho describes this hunt area in words (p. 67) and North Ground holds no boundary for the part of Unit 29 it includes, so it cannot say whether this point is in it."
+    },
+    {
+      "id": "us-id-pronghorn-area-38-1-in-unit-38",
+      "name": "Pronghorn Hunt Area 38-1 (part of Unit 38)",
+      "resolution": "UNRESOLVED",
+      "candidateAreas": [
+        "38"
+      ],
+      "statedAs": "Hunt Area 38-1 — That portion of Unit 38 within the following boundary: starting at the junction of Interstate I-84 and State Highway 69, south on State Highway 69 to E. Avalon St., then West on E. Avalon St to Swan Falls Road, then south on Swan Falls Road to the Snake River, then east on the Snake River to State Highway 51, then north on State Highway 51 to Interstate I-84, then west on Interstate I-84 to point of beginning.",
+      "reason": "Idaho describes this hunt area in words (p. 67) and North Ground holds no boundary for the part of Unit 38 it includes, so it cannot say whether this point is in it."
+    },
+    {
+      "id": "us-id-pronghorn-area-41-1-in-unit-41",
+      "name": "Pronghorn Hunt Area 41-1 (part of Unit 41)",
+      "resolution": "UNRESOLVED",
+      "candidateAreas": [
+        "41"
+      ],
+      "statedAs": "Hunt Area 41-1 — That portion of Unit 41 west of State Highway 51 and all of Unit 42.",
+      "reason": "Idaho describes this hunt area in words (p. 67) and North Ground holds no boundary for the part of Unit 41 it includes, so it cannot say whether this point is in it."
+    },
+    {
+      "id": "us-id-pronghorn-area-41-2-in-unit-41",
+      "name": "Pronghorn Hunt Area 41-2 (part of Unit 41)",
+      "resolution": "UNRESOLVED",
+      "candidateAreas": [
+        "41"
+      ],
+      "statedAs": "Hunt Area 41-2 — That portion of Unit 41 east of State Highway 51.",
+      "reason": "Idaho describes this hunt area in words (p. 67) and North Ground holds no boundary for the part of Unit 41 it includes, so it cannot say whether this point is in it."
+    },
+    {
+      "id": "us-id-pronghorn-area-44-1-in-unit-45",
+      "name": "Pronghorn Hunt Area 44-1 (part of Unit 45)",
+      "resolution": "UNRESOLVED",
+      "candidateAreas": [
+        "45"
+      ],
+      "statedAs": "Hunt Area 44-1 — All of Unit 44 and that portion of Unit 45 within Camas Creek drainage.",
+      "reason": "Idaho describes this hunt area in words (p. 67) and North Ground holds no boundary for the part of Unit 45 it includes, so it cannot say whether this point is in it."
+    },
+    {
+      "id": "us-id-pronghorn-area-45-1-in-unit-45",
+      "name": "Pronghorn Hunt Area 45-1 (part of Unit 45)",
+      "resolution": "UNRESOLVED",
+      "candidateAreas": [
+        "45"
+      ],
+      "statedAs": "Hunt Area 45-1 — All of Unit 45 excluding that portion within Camas Creek drainage is closed.",
+      "reason": "Idaho describes this hunt area in words (p. 67) and North Ground holds no boundary for the part of Unit 45 it includes, so it cannot say whether this point is in it."
+    },
+    {
+      "id": "us-id-pronghorn-area-51-2-in-unit-63",
+      "name": "Pronghorn Hunt Area 51-2 (part of Unit 63)",
+      "resolution": "UNRESOLVED",
+      "candidateAreas": [
+        "63"
+      ],
+      "statedAs": "Hunt Area 51-2 — All of Unit 51 and that portion of Unit 63 south of State Highway 33.",
+      "reason": "Idaho describes this hunt area in words (p. 67) and North Ground holds no boundary for the part of Unit 63 it includes, so it cannot say whether this point is in it."
+    },
+    {
+      "id": "us-id-pronghorn-area-60a-1-in-unit-61",
+      "name": "Pronghorn Hunt Area 60A-1 (part of Unit 61)",
+      "resolution": "UNRESOLVED",
+      "candidateAreas": [
+        "61"
+      ],
+      "statedAs": "Hunt Area 60A-1 — All of Units 60 and 60A and that portion of Unit 61 west of Hotel Creek.",
+      "reason": "Idaho describes this hunt area in words (p. 67) and North Ground holds no boundary for the part of Unit 61 it includes, so it cannot say whether this point is in it."
+    },
+    {
+      "id": "us-id-pronghorn-area-63-1-in-unit-63",
+      "name": "Pronghorn Hunt Area 63-1 (part of Unit 63)",
+      "resolution": "UNRESOLVED",
+      "candidateAreas": [
+        "63"
+      ],
+      "statedAs": "Hunt Area 63-1 — That portion of Unit 63 south of State Highway 33.",
+      "reason": "Idaho describes this hunt area in words (p. 67) and North Ground holds no boundary for the part of Unit 63 it includes, so it cannot say whether this point is in it."
+    },
+    {
+      "id": "us-id-pronghorn-area-63-2-in-unit-63",
+      "name": "Pronghorn Hunt Area 63-2 (part of Unit 63)",
+      "resolution": "UNRESOLVED",
+      "candidateAreas": [
+        "63"
+      ],
+      "statedAs": "Hunt Area 63-2 — That portion of Unit 63 north of State Highway 33, excluding the Camas National Wildlife Refuge which is closed.",
+      "reason": "Idaho describes this hunt area in words (p. 67) and North Ground holds no boundary for the part of Unit 63 it includes, so it cannot say whether this point is in it."
+    },
+    {
+      "id": "us-id-pronghorn-area-76-1-in-unit-76",
+      "name": "Pronghorn Hunt Area 76-1 (part of Unit 76)",
+      "resolution": "UNRESOLVED",
+      "candidateAreas": [
+        "76"
+      ],
+      "statedAs": "Hunt Area 76-1 — That portion of Unit 76 south of Highway 89.",
+      "reason": "Idaho describes this hunt area in words (p. 67) and North Ground holds no boundary for the part of Unit 76 it includes, so it cannot say whether this point is in it."
+    }
+  ],
+  "sources": [
+    {
+      "id": "source:us-id-big-game-seasons-2026",
+      "authority": "Idaho Department of Fish and Game",
+      "title": "Idaho Big Game 2026 Seasons and Rules",
+      "url": "https://idfg.idaho.gov/sites/default/files/seasons-rules-big-game-2026.pdf",
+      "licence": "Published regulations; North Ground records facts — hunts, areas, dates and quotas — with the page as provenance.",
+      "extractedWith": "pypdf 6.19.0",
+      "sourceHashes": {
+        "pdf": "sha256:feb85a9c8741a72a1aeb40462cceaa391e8d1849df3604fdaa156a07d5494520",
+        "text": "sha256:14ce6484f11e4ab2db660bc3d81160f2f7b8e1497991c490708601b4847a28b2",
+        "planner": "sha256:5e3ad0bbd237a4f910d3a8226473bd590b92b128043e3e588ae03486536e19d1",
+        "units": "sha256:6cee48ccea0482af30b547652c0d45e6de8ca48b815271286f74d3f1f3accd32"
+      },
+      "correctionsReviewed": [
+        "72-HOUR TRAP CHECK REQUIREMENT"
+      ],
+      "crossCheck": {
+        "url": "https://idfg.idaho.gov/ifwis/huntplanner/api/1.1/list/?game=3&start=2026-1-1&end=2027-12-31&limit=2000&offset=0",
+        "hunts": 59,
+        "disputes": 0
+      },
+      "conditions": [
+        {
+          "id": "id-controlled-hunt-tag",
+          "sourceId": "source:us-id-big-game-seasons-2026",
+          "sourceSection": "p. 63",
+          "text": "All pronghorn hunting in Idaho is by controlled hunt: a controlled hunt tag for this hunt number, with a hunting license, is required. North Ground cannot see whether you were drawn or hold one."
+        },
+        {
+          "id": "id-archery-permit",
+          "sourceId": "source:us-id-big-game-seasons-2026",
+          "sourceSection": "p. 63, Archery and Muzzleloader Permits",
+          "text": "Any person hunting in an archery only season, including controlled hunts, must have their license with archery permit validation."
+        },
+        {
+          "id": "id-muzzleloader-permit",
+          "sourceId": "source:us-id-big-game-seasons-2026",
+          "sourceSection": "p. 63, Archery and Muzzleloader Permits",
+          "text": "Any person hunting in a muzzleloader only season, including controlled hunts, must have their license with muzzleloader permit validation."
+        },
+        {
+          "id": "id-youth-only",
+          "sourceId": "source:us-id-big-game-seasons-2026",
+          "sourceSection": "p. 66, Youth Only",
+          "text": "Youth only hunt; see pages 110 and 114 of the booklet for who qualifies."
+        },
+        {
+          "id": "id-short-range",
+          "sourceId": "source:us-id-big-game-seasons-2026",
+          "sourceSection": "p. 66, Short Range Weapon",
+          "text": "Short range weapons only."
+        },
+        {
+          "id": "id-mandatory-report",
+          "sourceId": "source:us-id-big-game-seasons-2026",
+          "sourceSection": "p. 63, Mandatory Hunter Report",
+          "text": "A hunter report is due within 10 days after harvest, or within 10 days after the season closes if you do not harvest."
+        }
+      ]
+    }
+  ],
+  "sourceRecords": [
+    {
+      "id": "source:us-id-big-game-seasons-2026",
+      "authority": "Idaho Department of Fish and Game",
+      "title": "Idaho Big Game 2026 Seasons and Rules",
+      "url": "https://idfg.idaho.gov/sites/default/files/seasons-rules-big-game-2026.pdf"
+    },
+    {
+      "id": "source:us-id-hunt-planner",
+      "authority": "Idaho Department of Fish and Game",
+      "title": "Idaho Hunt Planner (cross-check)",
+      "url": "https://idfg.idaho.gov/ifwis/huntplanner/"
+    },
+    {
+      "id": "source:us-id-gmu-service",
+      "authority": "Idaho Department of Fish and Game",
+      "title": "Game Management Units (map service)",
+      "url": "https://gisportal-idfg.idaho.gov/hosting/rest/services/Hunting/MapServer/3"
+    }
+  ],
+  "limitations": [
+    "Idaho also issues 5 Landowner Permission Hunts for doe or fawn pronghorn (Unit 63; Portion of Units 54, 55 and 57; Portion of units 43, 44 and 45; Private land in Units 46, 47, 54, 55, 56 and 57; Units 52 and 45), published in a separate brochure. North Ground has not certified them; if your tag is for one, this answer does not describe it.",
+    "Idaho's unit map is a best representation; the written unit and hunt area descriptions in the booklet control. Near a boundary, confirm which unit you are in.",
+    "Motorized-vehicle rules, federal land rules (including Idaho National Laboratory and Craters of the Moon), wildlife management area restrictions and landowner permission are not evaluated.",
+    "This is a state-licensed recreational result. It does not describe hunting under tribal authority or treaty rights, which North Ground does not evaluate."
+  ],
+  "huntCodes": [
+    {
+      "id": "hunt_code:us-id-4001",
+      "code": "4001",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-29-1",
+        "statedAs": "Hunt Area 29-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 40,
+          "statedAs": "40 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4002",
+      "code": "4002",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-30-1",
+        "statedAs": "Hunt Area 30-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 30,
+          "statedAs": "30 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4003",
+      "code": "4003",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-31-1",
+        "statedAs": "Hunt Area 31-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 5,
+          "statedAs": "5 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4004",
+      "code": "4004",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-36b-1",
+        "statedAs": "Hunt Area 36B-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 10,
+          "statedAs": "10 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4005",
+      "code": "4005",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-37-1",
+        "statedAs": "Hunt Area 37-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 60,
+          "statedAs": "60 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4006",
+      "code": "4006",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-38-1",
+        "statedAs": "Hunt Area 38-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 10,
+          "statedAs": "10 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4007",
+      "code": "4007",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-39",
+        "statedAs": "Hunt Area 39"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 40,
+          "statedAs": "40 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4008",
+      "code": "4008",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-40",
+        "statedAs": "Hunt Area 40"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 75,
+          "statedAs": "75 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4009",
+      "code": "4009",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-41-1",
+        "statedAs": "Hunt Area 41-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 200,
+          "statedAs": "200 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4010",
+      "code": "4010",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-44-1",
+        "statedAs": "Hunt Area 44-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 100,
+          "statedAs": "100 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4011",
+      "code": "4011",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-45-1",
+        "statedAs": "Hunt Area 45-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 15,
+          "statedAs": "15 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4012",
+      "code": "4012",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-46",
+        "statedAs": "Hunt Area 46"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 60,
+          "statedAs": "60 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4013",
+      "code": "4013",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-49",
+        "statedAs": "Hunt Area 49"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 25,
+          "statedAs": "25 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4014",
+      "code": "4014",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-50",
+        "statedAs": "Hunt Area 50"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 50,
+          "statedAs": "50 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4015",
+      "code": "4015",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-51",
+        "statedAs": "Hunt Area 51"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 75,
+          "statedAs": "75 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4016",
+      "code": "4016",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-52-1",
+        "statedAs": "Hunt Area 52-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 25,
+          "statedAs": "25 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4017",
+      "code": "4017",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-52a-1",
+        "statedAs": "Hunt Area 52A-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 50,
+          "statedAs": "50 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4018",
+      "code": "4018",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-54",
+        "statedAs": "Hunt Area 54"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 25,
+          "statedAs": "25 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4019",
+      "code": "4019",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-55-1",
+        "statedAs": "Hunt Area 55-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 10,
+          "statedAs": "10 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4020",
+      "code": "4020",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-58",
+        "statedAs": "Hunt Area 58"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 50,
+          "statedAs": "50 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4021",
+      "code": "4021",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-59-1",
+        "statedAs": "Hunt Area 59-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 50,
+          "statedAs": "50 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4022",
+      "code": "4022",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-63-1",
+        "statedAs": "Hunt Area 63-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 50,
+          "statedAs": "50 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4023",
+      "code": "4023",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-68",
+        "statedAs": "Hunt Area 68"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 25,
+          "statedAs": "25 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4024",
+      "code": "4024",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-76-1",
+        "statedAs": "Hunt Area 76-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 5,
+          "statedAs": "5 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4025",
+      "code": "4025",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-44-1",
+        "statedAs": "Hunt Area 44-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 100,
+          "statedAs": "100 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4026",
+      "code": "4026",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-44-2",
+        "statedAs": "Hunt Area 44-2"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 100,
+          "statedAs": "100 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4027",
+      "code": "4027",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-28-1",
+        "statedAs": "Hunt Area 28-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": null,
+          "statedAs": "Unlimited tags, 1st choice only",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-archery-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4028",
+      "code": "4028",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-30a-1",
+        "statedAs": "Hunt Area 30A-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": null,
+          "statedAs": "Unlimited tags, 1st choice only",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-archery-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4029",
+      "code": "4029",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-36-1",
+        "statedAs": "Hunt Area 36-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": null,
+          "statedAs": "Unlimited tags, 1st choice only",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-archery-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4030",
+      "code": "4030",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-40-1",
+        "statedAs": "Hunt Area 40-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 200,
+          "statedAs": "200 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-archery-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4031",
+      "code": "4031",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-40-1",
+        "statedAs": "Hunt Area 40-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": null,
+          "statedAs": "Unlimited tags, 1st choice only",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-archery-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4032",
+      "code": "4032",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-44-3",
+        "statedAs": "Hunt Area 44-3"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": null,
+          "statedAs": "Unlimited tags, 1st choice only",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-archery-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4033",
+      "code": "4033",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-46-1",
+        "statedAs": "Hunt Area 46-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 40,
+          "statedAs": "40 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-archery-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4034",
+      "code": "4034",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-46-1",
+        "statedAs": "Hunt Area 46-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": null,
+          "statedAs": "Unlimited tags, 1st choice only",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-archery-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4035",
+      "code": "4035",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-49-1",
+        "statedAs": "Hunt Area 49-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": null,
+          "statedAs": "Unlimited tags, 1st choice only",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-archery-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4036",
+      "code": "4036",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-51-2",
+        "statedAs": "Hunt Area 51-2"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": null,
+          "statedAs": "Unlimited tags, 1st choice only",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-archery-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4037",
+      "code": "4037",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-52a-1",
+        "statedAs": "Hunt Area 52A-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": null,
+          "statedAs": "Unlimited tags, 1st choice only",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-archery-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4038",
+      "code": "4038",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-54",
+        "statedAs": "Hunt Area 54"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 25,
+          "statedAs": "25 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-archery-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4039",
+      "code": "4039",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-55-1",
+        "statedAs": "Hunt Area 55-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 10,
+          "statedAs": "10 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-archery-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4040",
+      "code": "4040",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-59a-1",
+        "statedAs": "Hunt Area 59A-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": null,
+          "statedAs": "Unlimited tags, 1st choice only",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-archery-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4041",
+      "code": "4041",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-68",
+        "statedAs": "Hunt Area 68"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 20,
+          "statedAs": "20 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-archery-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4042",
+      "code": "4042",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-68",
+        "statedAs": "Hunt Area 68"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 75,
+          "statedAs": "75 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-archery-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4043",
+      "code": "4043",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-30a",
+        "statedAs": "Hunt Area 30A"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 40,
+          "statedAs": "40 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-muzzleloader-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4044",
+      "code": "4044",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-41-2",
+        "statedAs": "Hunt Area 41-2"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 40,
+          "statedAs": "40 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-muzzleloader-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4045",
+      "code": "4045",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-47",
+        "statedAs": "Hunt Area 47"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 50,
+          "statedAs": "50 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-muzzleloader-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4046",
+      "code": "4046",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-60a-1",
+        "statedAs": "Hunt Area 60A-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 30,
+          "statedAs": "30 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-muzzleloader-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4047",
+      "code": "4047",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-63-2",
+        "statedAs": "Hunt Area 63-2"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 50,
+          "statedAs": "50 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-muzzleloader-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4048",
+      "code": "4048",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-63-2",
+        "statedAs": "Hunt Area 63-2"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 50,
+          "statedAs": "50 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-muzzleloader-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4049",
+      "code": "4049",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-36a-1",
+        "statedAs": "Hunt Area 36A-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 30,
+          "statedAs": "30 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4050",
+      "code": "4050",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-31-1",
+        "statedAs": "Hunt Area 31-1"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 15,
+          "statedAs": "15 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4051",
+      "code": "4051",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-39",
+        "statedAs": "Hunt Area 39"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 5,
+          "statedAs": "5 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-archery-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4052",
+      "code": "4052",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-39",
+        "statedAs": "Hunt Area 39"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 25,
+          "statedAs": "25 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4053",
+      "code": "4053",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-54",
+        "statedAs": "Hunt Area 54"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 25,
+          "statedAs": "25 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    },
+    {
+      "id": "hunt_code:us-id-4054",
+      "code": "4054",
+      "jurisdictionId": "jurisdiction:us-id",
+      "authorityTerm": "controlled hunt",
+      "speciesId": "species:pronghorn",
+      "geography": {
+        "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-63-2",
+        "statedAs": "Hunt Area 63-2"
+      },
+      "allocation": {
+        "method": "DRAW",
+        "authorityTerm": "controlled hunt tag",
+        "quota": {
+          "count": 25,
+          "statedAs": "25 tags",
+          "sourceSection": "pp. 63–66"
+        },
+        "drawCycleId": "draw:us-id-controlled-hunts-2026"
+      },
+      "requiresAuthorizations": [
+        "authorization:us-id-hunting-license",
+        "authorization:us-id-pronghorn-controlled-hunt-tag",
+        "authorization:us-id-muzzleloader-permit-validation"
+      ],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, Pronghorn Controlled Hunts"
+    }
+  ],
+  "drawCycles": [
+    {
+      "id": "draw:us-id-controlled-hunts-2026",
+      "name": "2026 controlled hunt drawing (deer, elk, pronghorn)",
+      "applicationOpens": "2026-05-01",
+      "applicationCloses": "2026-06-05",
+      "secondRound": {
+        "name": "2026 second controlled hunt drawing",
+        "applicationOpens": "2026-08-05",
+        "applicationCloses": "2026-08-15",
+        "resultsBy": "2026-08-25"
+      },
+      "leftoverSaleOpens": "2026-08-25",
+      "statedAs": "Dates to Remember (p. 7): first application period May 1 – June 5, results posted by early July; second application period August 5 – 15, notified by August 25; leftover tags on sale August 25 at 10 a.m. Mountain Time.",
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "p. 7, Dates to Remember"
+    }
+  ],
+  "groups": [
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-28-1",
+      "officialSpec": "Hunt Area 28-1 — All of Units 28, 36B, 37, and 37A.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-28",
+        "management_zone:us-id-gmu-36b",
+        "management_zone:us-id-gmu-37",
+        "management_zone:us-id-gmu-37a"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "28",
+        "36B",
+        "37",
+        "37A"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-29-1",
+      "officialSpec": "Hunt Area 29-1 — All of Unit 29 except the Poison Creek drainage.",
+      "zoneIds": [],
+      "partialZoneIds": [
+        "management_zone:us-id-gmu-29"
+      ],
+      "officialIdentifiers": [],
+      "partialIdentifiers": [
+        "29"
+      ]
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-30-1",
+      "officialSpec": "Hunt Area 30-1 — All of Unit 30 and Unit 21A.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-30",
+        "management_zone:us-id-gmu-21a"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "30",
+        "21A"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-30a",
+      "officialSpec": "Hunt Area 30A — All of Unit 30A.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-30a"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "30A"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-30a-1",
+      "officialSpec": "Hunt Area 30A-1 — All of Units 21A, 29, 30, and 30A.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-21a",
+        "management_zone:us-id-gmu-29",
+        "management_zone:us-id-gmu-30",
+        "management_zone:us-id-gmu-30a"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "21A",
+        "29",
+        "30",
+        "30A"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-31-1",
+      "officialSpec": "Hunt Area 31-1 — All of Units 31, 32 and 32A.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-31",
+        "management_zone:us-id-gmu-32",
+        "management_zone:us-id-gmu-32a"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "31",
+        "32",
+        "32A"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-36-1",
+      "officialSpec": "Hunt Area 36-1 — All of Units 36 and 36A.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-36",
+        "management_zone:us-id-gmu-36a"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "36",
+        "36A"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-36a-1",
+      "officialSpec": "Hunt Area 36A-1 — All of Units 36 and 36A.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-36",
+        "management_zone:us-id-gmu-36a"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "36",
+        "36A"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-36b-1",
+      "officialSpec": "Hunt Area 36B-1 — All of Unit 36B and Unit 28.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-36b",
+        "management_zone:us-id-gmu-28"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "36B",
+        "28"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-37-1",
+      "officialSpec": "Hunt Area 37-1 — All of Units 37 and 37A, and that part of Unit 29 in the Poison Creek drainage.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-37",
+        "management_zone:us-id-gmu-37a"
+      ],
+      "partialZoneIds": [
+        "management_zone:us-id-gmu-29"
+      ],
+      "officialIdentifiers": [
+        "37",
+        "37A"
+      ],
+      "partialIdentifiers": [
+        "29"
+      ]
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-38-1",
+      "officialSpec": "Hunt Area 38-1 — That portion of Unit 38 within the following boundary: starting at the junction of Interstate I-84 and State Highway 69, south on State Highway 69 to E. Avalon St., then West on E. Avalon St to Swan Falls Road, then south on Swan Falls Road to the Snake River, then east on the Snake River to State Highway 51, then north on State Highway 51 to Interstate I-84, then west on Interstate I-84 to point of beginning.",
+      "zoneIds": [],
+      "partialZoneIds": [
+        "management_zone:us-id-gmu-38"
+      ],
+      "officialIdentifiers": [],
+      "partialIdentifiers": [
+        "38"
+      ]
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-39",
+      "officialSpec": "Hunt Area 39 — All of Unit 39.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-39"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "39"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-40",
+      "officialSpec": "Hunt Area 40 — All of Unit 40.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-40"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "40"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-40-1",
+      "officialSpec": "Hunt Area 40-1 — All of Units 40, 41, and 42.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-40",
+        "management_zone:us-id-gmu-41",
+        "management_zone:us-id-gmu-42"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "40",
+        "41",
+        "42"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-41-1",
+      "officialSpec": "Hunt Area 41-1 — That portion of Unit 41 west of State Highway 51 and all of Unit 42.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-42"
+      ],
+      "partialZoneIds": [
+        "management_zone:us-id-gmu-41"
+      ],
+      "officialIdentifiers": [
+        "42"
+      ],
+      "partialIdentifiers": [
+        "41"
+      ]
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-41-2",
+      "officialSpec": "Hunt Area 41-2 — That portion of Unit 41 east of State Highway 51.",
+      "zoneIds": [],
+      "partialZoneIds": [
+        "management_zone:us-id-gmu-41"
+      ],
+      "officialIdentifiers": [],
+      "partialIdentifiers": [
+        "41"
+      ]
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-44-1",
+      "officialSpec": "Hunt Area 44-1 — All of Unit 44 and that portion of Unit 45 within Camas Creek drainage.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-44"
+      ],
+      "partialZoneIds": [
+        "management_zone:us-id-gmu-45"
+      ],
+      "officialIdentifiers": [
+        "44"
+      ],
+      "partialIdentifiers": [
+        "45"
+      ]
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-44-2",
+      "officialSpec": "Hunt Area 44-2 — All of Units 44, 45, and 52.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-44",
+        "management_zone:us-id-gmu-45",
+        "management_zone:us-id-gmu-52"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "44",
+        "45",
+        "52"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-44-3",
+      "officialSpec": "Hunt Area 44-3 — All of Units 44, 45, 48, and 52.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-44",
+        "management_zone:us-id-gmu-45",
+        "management_zone:us-id-gmu-48",
+        "management_zone:us-id-gmu-52"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "44",
+        "45",
+        "48",
+        "52"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-45-1",
+      "officialSpec": "Hunt Area 45-1 — All of Unit 45 excluding that portion within Camas Creek drainage is closed.",
+      "zoneIds": [],
+      "partialZoneIds": [
+        "management_zone:us-id-gmu-45"
+      ],
+      "officialIdentifiers": [],
+      "partialIdentifiers": [
+        "45"
+      ]
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-46",
+      "officialSpec": "Hunt Area 46 — All of Unit 46.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-46"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "46"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-46-1",
+      "officialSpec": "Hunt Area 46-1 — All of Units 46 and 47.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-46",
+        "management_zone:us-id-gmu-47"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "46",
+        "47"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-47",
+      "officialSpec": "Hunt Area 47 — All of Unit 47.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-47"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "47"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-49",
+      "officialSpec": "Hunt Area 49 — All of Unit 49.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-49"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "49"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-49-1",
+      "officialSpec": "Hunt Area 49-1 — All of Units 49 and 50.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-49",
+        "management_zone:us-id-gmu-50"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "49",
+        "50"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-50",
+      "officialSpec": "Hunt Area 50 — All of Unit 50. (See Craters of the Moon closure, page 97.)",
+      "zoneIds": [
+        "management_zone:us-id-gmu-50"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "50"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-51",
+      "officialSpec": "Hunt Area 51 — All of Unit 51.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-51"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "51"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-51-2",
+      "officialSpec": "Hunt Area 51-2 — All of Unit 51 and that portion of Unit 63 south of State Highway 33.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-51"
+      ],
+      "partialZoneIds": [
+        "management_zone:us-id-gmu-63"
+      ],
+      "officialIdentifiers": [
+        "51"
+      ],
+      "partialIdentifiers": [
+        "63"
+      ]
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-52-1",
+      "officialSpec": "Hunt Area 52-1 — All of Units 48 and 52.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-48",
+        "management_zone:us-id-gmu-52"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "48",
+        "52"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-52a-1",
+      "officialSpec": "Hunt Area 52A-1 — All of Units 52A and 53. (See Craters of the Moon closure, page 97.)",
+      "zoneIds": [
+        "management_zone:us-id-gmu-52a",
+        "management_zone:us-id-gmu-53"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "52A",
+        "53"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-54",
+      "officialSpec": "Hunt Area 54 — All of Unit 54.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-54"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "54"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-55-1",
+      "officialSpec": "Hunt Area 55-1 — All of Units 55, 56, and 57.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-55",
+        "management_zone:us-id-gmu-56",
+        "management_zone:us-id-gmu-57"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "55",
+        "56",
+        "57"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-58",
+      "officialSpec": "Hunt Area 58 — All of Unit 58.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-58"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "58"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-59-1",
+      "officialSpec": "Hunt Area 59-1 — All of Units 59 and 59A.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-59",
+        "management_zone:us-id-gmu-59a"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "59",
+        "59A"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-59a-1",
+      "officialSpec": "Hunt Area 59A-1 — All of Units 58, 59, and 59A",
+      "zoneIds": [
+        "management_zone:us-id-gmu-58",
+        "management_zone:us-id-gmu-59",
+        "management_zone:us-id-gmu-59a"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "58",
+        "59",
+        "59A"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-60a-1",
+      "officialSpec": "Hunt Area 60A-1 — All of Units 60 and 60A and that portion of Unit 61 west of Hotel Creek.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-60",
+        "management_zone:us-id-gmu-60a"
+      ],
+      "partialZoneIds": [
+        "management_zone:us-id-gmu-61"
+      ],
+      "officialIdentifiers": [
+        "60",
+        "60A"
+      ],
+      "partialIdentifiers": [
+        "61"
+      ]
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-63-1",
+      "officialSpec": "Hunt Area 63-1 — That portion of Unit 63 south of State Highway 33.",
+      "zoneIds": [],
+      "partialZoneIds": [
+        "management_zone:us-id-gmu-63"
+      ],
+      "officialIdentifiers": [],
+      "partialIdentifiers": [
+        "63"
+      ]
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-63-2",
+      "officialSpec": "Hunt Area 63-2 — That portion of Unit 63 north of State Highway 33, excluding the Camas National Wildlife Refuge which is closed.",
+      "zoneIds": [],
+      "partialZoneIds": [
+        "management_zone:us-id-gmu-63"
+      ],
+      "officialIdentifiers": [],
+      "partialIdentifiers": [
+        "63"
+      ]
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-68",
+      "officialSpec": "Hunt Area 68 — All of Unit 68.",
+      "zoneIds": [
+        "management_zone:us-id-gmu-68"
+      ],
+      "partialZoneIds": [],
+      "officialIdentifiers": [
+        "68"
+      ],
+      "partialIdentifiers": []
+    },
+    {
+      "id": "regulatory_group:us-id-pronghorn-2026-area-76-1",
+      "officialSpec": "Hunt Area 76-1 — That portion of Unit 76 south of Highway 89.",
+      "zoneIds": [],
+      "partialZoneIds": [
+        "management_zone:us-id-gmu-76"
+      ],
+      "officialIdentifiers": [],
+      "partialIdentifiers": [
+        "76"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4001",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-29-1",
+      "geography": {
+        "statedAs": "Hunt Area 29-1 — All of Unit 29 except the Poison Creek drainage.",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-id-pronghorn-area-29-1-in-unit-29"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4001"
+      },
+      "seasonLabel": "Controlled hunt 4001 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Motorized Hunting Rule Applies, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4001",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4001",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4002",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-30-1",
+      "geography": {
+        "statedAs": "Hunt Area 30-1 — All of Unit 30 and Unit 21A.",
+        "include": {
+          "ghas": [
+            "30",
+            "21A"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4002"
+      },
+      "seasonLabel": "Controlled hunt 4002 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4002",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4002",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4003",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-31-1",
+      "geography": {
+        "statedAs": "Hunt Area 31-1 — All of Units 31, 32 and 32A.",
+        "include": {
+          "ghas": [
+            "31",
+            "32",
+            "32A"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4003"
+      },
+      "seasonLabel": "Controlled hunt 4003 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Limited access, Short range weapons only on Payette River and Montour Wildlife Management Areas, Motorized Hunting Rule Applies in Units 32 and 32A, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4003",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4003",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4004",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-36b-1",
+      "geography": {
+        "statedAs": "Hunt Area 36B-1 — All of Unit 36B and Unit 28.",
+        "include": {
+          "ghas": [
+            "36B",
+            "28"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4004"
+      },
+      "seasonLabel": "Controlled hunt 4004 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4004",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4004",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4005",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-37-1",
+      "geography": {
+        "statedAs": "Hunt Area 37-1 — All of Units 37 and 37A, and that part of Unit 29 in the Poison Creek drainage.",
+        "include": {
+          "ghas": [
+            "37",
+            "37A"
+          ],
+          "gbhz": [],
+          "special": [
+            "us-id-pronghorn-area-37-1-in-unit-29"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4005"
+      },
+      "seasonLabel": "Controlled hunt 4005 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Motorized Hunting Rule Applies in Unit 37A, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4005",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4005",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4006",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-38-1",
+      "geography": {
+        "statedAs": "Hunt Area 38-1 — That portion of Unit 38 within the following boundary: starting at the junction of Interstate I-84 and State Highway 69, south on State Highway 69 to E. Avalon St., then West on E. Avalon St to Swan Falls Road, then south on Swan Falls Road to the Snake River, then east on the Snake River to State Highway 51, then north on State Highway 51 to Interstate I-84, then west on Interstate I-84 to point of beginning.",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-id-pronghorn-area-38-1-in-unit-38"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4006"
+      },
+      "seasonLabel": "Controlled hunt 4006 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Very limited access, most pronghorn are on private land"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4006",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4006",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4007",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-39",
+      "geography": {
+        "statedAs": "Hunt Area 39 — All of Unit 39.",
+        "include": {
+          "ghas": [
+            "39"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4007"
+      },
+      "seasonLabel": "Controlled hunt 4007 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4007",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4007",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4008",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-40",
+      "geography": {
+        "statedAs": "Hunt Area 40 — All of Unit 40.",
+        "include": {
+          "ghas": [
+            "40"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4008"
+      },
+      "seasonLabel": "Controlled hunt 4008 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4008",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4008",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4009",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-41-1",
+      "geography": {
+        "statedAs": "Hunt Area 41-1 — That portion of Unit 41 west of State Highway 51 and all of Unit 42.",
+        "include": {
+          "ghas": [
+            "42"
+          ],
+          "gbhz": [],
+          "special": [
+            "us-id-pronghorn-area-41-1-in-unit-41"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4009"
+      },
+      "seasonLabel": "Controlled hunt 4009 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4009",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4009",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4010",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-44-1",
+      "geography": {
+        "statedAs": "Hunt Area 44-1 — All of Unit 44 and that portion of Unit 45 within Camas Creek drainage.",
+        "include": {
+          "ghas": [
+            "44"
+          ],
+          "gbhz": [],
+          "special": [
+            "us-id-pronghorn-area-44-1-in-unit-45"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4010"
+      },
+      "seasonLabel": "Controlled hunt 4010 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Motorized Hunting Rule Applies in Unit 45, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4010",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4010",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4011",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-45-1",
+      "geography": {
+        "statedAs": "Hunt Area 45-1 — All of Unit 45 excluding that portion within Camas Creek drainage is closed.",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-id-pronghorn-area-45-1-in-unit-45"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4011"
+      },
+      "seasonLabel": "Controlled hunt 4011 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Motorized Hunting Rule Applies, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4011",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4011",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4012",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-46",
+      "geography": {
+        "statedAs": "Hunt Area 46 — All of Unit 46.",
+        "include": {
+          "ghas": [
+            "46"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4012"
+      },
+      "seasonLabel": "Controlled hunt 4012 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4012",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4012",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4013",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-49",
+      "geography": {
+        "statedAs": "Hunt Area 49 — All of Unit 49.",
+        "include": {
+          "ghas": [
+            "49"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4013"
+      },
+      "seasonLabel": "Controlled hunt 4013 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4013",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4013",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4014",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-50",
+      "geography": {
+        "statedAs": "Hunt Area 50 — All of Unit 50. (See Craters of the Moon closure, page 97.)",
+        "include": {
+          "ghas": [
+            "50"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4014"
+      },
+      "seasonLabel": "Controlled hunt 4014 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Motorized Hunting Rule Applies, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4014",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4014",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4015",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-51",
+      "geography": {
+        "statedAs": "Hunt Area 51 — All of Unit 51.",
+        "include": {
+          "ghas": [
+            "51"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4015"
+      },
+      "seasonLabel": "Controlled hunt 4015 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Motorized Hunting Rule Applies, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4015",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4015",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4016",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-52-1",
+      "geography": {
+        "statedAs": "Hunt Area 52-1 — All of Units 48 and 52.",
+        "include": {
+          "ghas": [
+            "48",
+            "52"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4016"
+      },
+      "seasonLabel": "Controlled hunt 4016 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Motorized Hunting Rule Applies in Unit 52, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4016",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4016",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4017",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-52a-1",
+      "geography": {
+        "statedAs": "Hunt Area 52A-1 — All of Units 52A and 53. (See Craters of the Moon closure, page 97.)",
+        "include": {
+          "ghas": [
+            "52A",
+            "53"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4017"
+      },
+      "seasonLabel": "Controlled hunt 4017 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Motorized Hunting Rule Applies, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4017",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4017",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4018",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-54",
+      "geography": {
+        "statedAs": "Hunt Area 54 — All of Unit 54.",
+        "include": {
+          "ghas": [
+            "54"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4018"
+      },
+      "seasonLabel": "Controlled hunt 4018 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4018",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4018",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4019",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-55-1",
+      "geography": {
+        "statedAs": "Hunt Area 55-1 — All of Units 55, 56, and 57.",
+        "include": {
+          "ghas": [
+            "55",
+            "56",
+            "57"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4019"
+      },
+      "seasonLabel": "Controlled hunt 4019 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Motorized Hunting Rule Applies in Unit 56, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4019",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4019",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4020",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-58",
+      "geography": {
+        "statedAs": "Hunt Area 58 — All of Unit 58.",
+        "include": {
+          "ghas": [
+            "58"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4020"
+      },
+      "seasonLabel": "Controlled hunt 4020 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Motorized Hunting Rule Applies, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4020",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4020",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4021",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-59-1",
+      "geography": {
+        "statedAs": "Hunt Area 59-1 — All of Units 59 and 59A.",
+        "include": {
+          "ghas": [
+            "59",
+            "59A"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4021"
+      },
+      "seasonLabel": "Controlled hunt 4021 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Motorized Hunting Rule Applies, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4021",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4021",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4022",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-63-1",
+      "geography": {
+        "statedAs": "Hunt Area 63-1 — That portion of Unit 63 south of State Highway 33.",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-id-pronghorn-area-63-1-in-unit-63"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4022"
+      },
+      "seasonLabel": "Controlled hunt 4022 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Portions of this hunt are located within Idaho National Laboratory lands, See Note 1, Page 66"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4022",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4022",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4023",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-68",
+      "geography": {
+        "statedAs": "Hunt Area 68 — All of Unit 68.",
+        "include": {
+          "ghas": [
+            "68"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4023"
+      },
+      "seasonLabel": "Controlled hunt 4023 (either sex, any weapon)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4023",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4023",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4024",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-76-1",
+      "geography": {
+        "statedAs": "Hunt Area 76-1 — That portion of Unit 76 south of Highway 89.",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-id-pronghorn-area-76-1-in-unit-76"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4024"
+      },
+      "seasonLabel": "Controlled hunt 4024 (either sex, any weapon)",
+      "seasonPhrase": "Aug 15 - Sep 15",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-09-15",
+          "statedAs": "Aug 15 - Sep 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Motorized Hunting Rule Applies, See Pages 104 - 106 PRONGHORN 65Idaho Big Game 2026 Seasons & Rules idfg.idaho.gov"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4024",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4024",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4025",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-44-1",
+      "geography": {
+        "statedAs": "Hunt Area 44-1 — All of Unit 44 and that portion of Unit 45 within Camas Creek drainage.",
+        "include": {
+          "ghas": [
+            "44"
+          ],
+          "gbhz": [],
+          "special": [
+            "us-id-pronghorn-area-44-1-in-unit-45"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4025"
+      },
+      "seasonLabel": "Controlled hunt 4025 (doe or fawn only, any weapon)",
+      "seasonPhrase": "Oct 5 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-10-05",
+          "closesIso": "2026-10-24",
+          "statedAs": "Oct 5 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Doe or fawn only",
+        "statedAs": "One pronghorn per tag: doe or fawn only",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Motorized Hunting Rule Applies in Unit 45, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4025",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4025",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4026",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-44-2",
+      "geography": {
+        "statedAs": "Hunt Area 44-2 — All of Units 44, 45, and 52.",
+        "include": {
+          "ghas": [
+            "44",
+            "45",
+            "52"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4026"
+      },
+      "seasonLabel": "Controlled hunt 4026 (doe or fawn only, any weapon)",
+      "seasonPhrase": "Oct 25 - Nov 30",
+      "windows": [
+        {
+          "opensIso": "2026-10-25",
+          "closesIso": "2026-11-30",
+          "statedAs": "Oct 25 - Nov 30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Doe or fawn only",
+        "statedAs": "One pronghorn per tag: doe or fawn only",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Motorized Hunting Rule Applies in Units 45 and 52, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4026",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4026",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4027",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-28-1",
+      "geography": {
+        "statedAs": "Hunt Area 28-1 — All of Units 28, 36B, 37, and 37A.",
+        "include": {
+          "ghas": [
+            "28",
+            "36B",
+            "37",
+            "37A"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4027"
+      },
+      "seasonLabel": "Controlled hunt 4027 (buck only, archery only)",
+      "seasonPhrase": "Aug 15 - Sep 15",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-09-15",
+          "statedAs": "Aug 15 - Sep 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Buck only",
+        "statedAs": "One pronghorn per tag: buck only",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-archery-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Buck only, Motorized Hunting Rule Applies in Unit 37A, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4027",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4027",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4028",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-30a-1",
+      "geography": {
+        "statedAs": "Hunt Area 30A-1 — All of Units 21A, 29, 30, and 30A.",
+        "include": {
+          "ghas": [
+            "21A",
+            "29",
+            "30",
+            "30A"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4028"
+      },
+      "seasonLabel": "Controlled hunt 4028 (buck only, archery only)",
+      "seasonPhrase": "Aug 15 - Sep 15",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-09-15",
+          "statedAs": "Aug 15 - Sep 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Buck only",
+        "statedAs": "One pronghorn per tag: buck only",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-archery-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Buck only, Motorized Hunting Rule Applies in Unit 29, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4028",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4028",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4029",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-36-1",
+      "geography": {
+        "statedAs": "Hunt Area 36-1 — All of Units 36 and 36A.",
+        "include": {
+          "ghas": [
+            "36",
+            "36A"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4029"
+      },
+      "seasonLabel": "Controlled hunt 4029 (buck only, archery only)",
+      "seasonPhrase": "Aug 15 - Sep 15",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-09-15",
+          "statedAs": "Aug 15 - Sep 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Buck only",
+        "statedAs": "One pronghorn per tag: buck only",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-archery-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Buck only"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4029",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4029",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4030",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-40-1",
+      "geography": {
+        "statedAs": "Hunt Area 40-1 — All of Units 40, 41, and 42.",
+        "include": {
+          "ghas": [
+            "40",
+            "41",
+            "42"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4030"
+      },
+      "seasonLabel": "Controlled hunt 4030 (either sex, archery only)",
+      "seasonPhrase": "Aug 15 - Aug 30",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-08-30",
+          "statedAs": "Aug 15 - Aug 30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-archery-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Either sex"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4030",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4030",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4031",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-40-1",
+      "geography": {
+        "statedAs": "Hunt Area 40-1 — All of Units 40, 41, and 42.",
+        "include": {
+          "ghas": [
+            "40",
+            "41",
+            "42"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4031"
+      },
+      "seasonLabel": "Controlled hunt 4031 (either sex, archery only)",
+      "seasonPhrase": "Sep 1 - Sep 15",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-09-15",
+          "statedAs": "Sep 1 - Sep 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-archery-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Either sex"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4031",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4031",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4032",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-44-3",
+      "geography": {
+        "statedAs": "Hunt Area 44-3 — All of Units 44, 45, 48, and 52.",
+        "include": {
+          "ghas": [
+            "44",
+            "45",
+            "48",
+            "52"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4032"
+      },
+      "seasonLabel": "Controlled hunt 4032 (either sex, archery only)",
+      "seasonPhrase": "Aug 15 - Sep 15",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-09-15",
+          "statedAs": "Aug 15 - Sep 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-archery-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Either sex, Motorized Hunting Rule Applies in Units 45 and 52, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4032",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4032",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4033",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-46-1",
+      "geography": {
+        "statedAs": "Hunt Area 46-1 — All of Units 46 and 47.",
+        "include": {
+          "ghas": [
+            "46",
+            "47"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4033"
+      },
+      "seasonLabel": "Controlled hunt 4033 (either sex, archery only)",
+      "seasonPhrase": "Aug 15 - Aug 30",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-08-30",
+          "statedAs": "Aug 15 - Aug 30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-archery-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Either sex"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4033",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4033",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4034",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-46-1",
+      "geography": {
+        "statedAs": "Hunt Area 46-1 — All of Units 46 and 47.",
+        "include": {
+          "ghas": [
+            "46",
+            "47"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4034"
+      },
+      "seasonLabel": "Controlled hunt 4034 (either sex, archery only)",
+      "seasonPhrase": "Sep 10 - Sep 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-10",
+          "closesIso": "2026-09-24",
+          "statedAs": "Sep 10 - Sep 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-archery-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Either sex"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4034",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4034",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4035",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-49-1",
+      "geography": {
+        "statedAs": "Hunt Area 49-1 — All of Units 49 and 50.",
+        "include": {
+          "ghas": [
+            "49",
+            "50"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4035"
+      },
+      "seasonLabel": "Controlled hunt 4035 (buck only, archery only)",
+      "seasonPhrase": "Aug 15 - Sep 15",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-09-15",
+          "statedAs": "Aug 15 - Sep 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Buck only",
+        "statedAs": "One pronghorn per tag: buck only",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-archery-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Buck only, Motorized Hunting Rule Applies in Unit 50, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4035",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4035",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4036",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-51-2",
+      "geography": {
+        "statedAs": "Hunt Area 51-2 — All of Unit 51 and that portion of Unit 63 south of State Highway 33.",
+        "include": {
+          "ghas": [
+            "51"
+          ],
+          "gbhz": [],
+          "special": [
+            "us-id-pronghorn-area-51-2-in-unit-63"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4036"
+      },
+      "seasonLabel": "Controlled hunt 4036 (buck only, archery only)",
+      "seasonPhrase": "Aug 15 - Sep 15",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-09-15",
+          "statedAs": "Aug 15 - Sep 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Buck only",
+        "statedAs": "One pronghorn per tag: buck only",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-archery-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Buck only, Motorized Hunting Rule Applies in Unit 51, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4036",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4036",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4037",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-52a-1",
+      "geography": {
+        "statedAs": "Hunt Area 52A-1 — All of Units 52A and 53. (See Craters of the Moon closure, page 97.)",
+        "include": {
+          "ghas": [
+            "52A",
+            "53"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4037"
+      },
+      "seasonLabel": "Controlled hunt 4037 (either sex, archery only)",
+      "seasonPhrase": "Aug 15 - Sep 15",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-09-15",
+          "statedAs": "Aug 15 - Sep 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-archery-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Either sex, Motorized Hunting Rule Applies, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4037",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4037",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4038",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-54",
+      "geography": {
+        "statedAs": "Hunt Area 54 — All of Unit 54.",
+        "include": {
+          "ghas": [
+            "54"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4038"
+      },
+      "seasonLabel": "Controlled hunt 4038 (either sex, archery only)",
+      "seasonPhrase": "Aug 15 - Sep 15",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-09-15",
+          "statedAs": "Aug 15 - Sep 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-archery-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Either sex"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4038",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4038",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4039",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-55-1",
+      "geography": {
+        "statedAs": "Hunt Area 55-1 — All of Units 55, 56, and 57.",
+        "include": {
+          "ghas": [
+            "55",
+            "56",
+            "57"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4039"
+      },
+      "seasonLabel": "Controlled hunt 4039 (either sex, archery only)",
+      "seasonPhrase": "Aug 15 - Sep 15",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-09-15",
+          "statedAs": "Aug 15 - Sep 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-archery-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Either sex, Motorized Hunting Rule Applies in Unit 56, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4039",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4039",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4040",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-59a-1",
+      "geography": {
+        "statedAs": "Hunt Area 59A-1 — All of Units 58, 59, and 59A",
+        "include": {
+          "ghas": [
+            "58",
+            "59",
+            "59A"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4040"
+      },
+      "seasonLabel": "Controlled hunt 4040 (buck only, archery only)",
+      "seasonPhrase": "Aug 15 - Sep 15",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-09-15",
+          "statedAs": "Aug 15 - Sep 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Buck only",
+        "statedAs": "One pronghorn per tag: buck only",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-archery-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Buck only, Motorized Hunting Rule Applies, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4040",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4040",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4041",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-68",
+      "geography": {
+        "statedAs": "Hunt Area 68 — All of Unit 68.",
+        "include": {
+          "ghas": [
+            "68"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4041"
+      },
+      "seasonLabel": "Controlled hunt 4041 (buck only, archery only)",
+      "seasonPhrase": "Aug 15 - Aug 30",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-08-30",
+          "statedAs": "Aug 15 - Aug 30"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Buck only",
+        "statedAs": "One pronghorn per tag: buck only",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-archery-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Buck only"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4041",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4041",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4042",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-68",
+      "geography": {
+        "statedAs": "Hunt Area 68 — All of Unit 68.",
+        "include": {
+          "ghas": [
+            "68"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4042"
+      },
+      "seasonLabel": "Controlled hunt 4042 (buck only, archery only)",
+      "seasonPhrase": "Sep 10 - Sep 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-10",
+          "closesIso": "2026-09-24",
+          "statedAs": "Sep 10 - Sep 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Buck only",
+        "statedAs": "One pronghorn per tag: buck only",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-archery-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Buck only"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4042",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4042",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4043",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-30a",
+      "geography": {
+        "statedAs": "Hunt Area 30A — All of Unit 30A.",
+        "include": {
+          "ghas": [
+            "30A"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4043"
+      },
+      "seasonLabel": "Controlled hunt 4043 (either sex, muzzleloader only)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-muzzleloader-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Either sex"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4043",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4043",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4044",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-41-2",
+      "geography": {
+        "statedAs": "Hunt Area 41-2 — That portion of Unit 41 east of State Highway 51.",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-id-pronghorn-area-41-2-in-unit-41"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4044"
+      },
+      "seasonLabel": "Controlled hunt 4044 (either sex, muzzleloader only)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-muzzleloader-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Either sex, Portion of Unit only"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4044",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4044",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4045",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-47",
+      "geography": {
+        "statedAs": "Hunt Area 47 — All of Unit 47.",
+        "include": {
+          "ghas": [
+            "47"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4045"
+      },
+      "seasonLabel": "Controlled hunt 4045 (either sex, muzzleloader only)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-muzzleloader-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Either sex"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4045",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4045",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4046",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-60a-1",
+      "geography": {
+        "statedAs": "Hunt Area 60A-1 — All of Units 60 and 60A and that portion of Unit 61 west of Hotel Creek.",
+        "include": {
+          "ghas": [
+            "60",
+            "60A"
+          ],
+          "gbhz": [],
+          "special": [
+            "us-id-pronghorn-area-60a-1-in-unit-61"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4046"
+      },
+      "seasonLabel": "Controlled hunt 4046 (either sex, muzzleloader only)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-muzzleloader-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Either sex"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4046",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4046",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4047",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-63-2",
+      "geography": {
+        "statedAs": "Hunt Area 63-2 — That portion of Unit 63 north of State Highway 33, excluding the Camas National Wildlife Refuge which is closed.",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-id-pronghorn-area-63-2-in-unit-63"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4047"
+      },
+      "seasonLabel": "Controlled hunt 4047 (either sex, muzzleloader only)",
+      "seasonPhrase": "Aug 15 - Sep 18",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-09-18",
+          "statedAs": "Aug 15 - Sep 18"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-muzzleloader-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Either sex, Portions of this hunt are located within Idaho National Laboratory lands, See Note 1, Page 66"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4047",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4047",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4048",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-63-2",
+      "geography": {
+        "statedAs": "Hunt Area 63-2 — That portion of Unit 63 north of State Highway 33, excluding the Camas National Wildlife Refuge which is closed.",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-id-pronghorn-area-63-2-in-unit-63"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4048"
+      },
+      "seasonLabel": "Controlled hunt 4048 (either sex, muzzleloader only)",
+      "seasonPhrase": "Sep 19 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-19",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 19 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-muzzleloader-permit",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Either sex, Portions of this hunt are located within Idaho National Laboratory lands, See Note 1, Page 66"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4048",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4048",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4049",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-36a-1",
+      "geography": {
+        "statedAs": "Hunt Area 36A-1 — All of Units 36 and 36A.",
+        "include": {
+          "ghas": [
+            "36",
+            "36A"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4049"
+      },
+      "seasonLabel": "Controlled hunt 4049 (either sex, short range weapons only)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-short-range",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Either sex"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4049",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4049",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4050",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-31-1",
+      "geography": {
+        "statedAs": "Hunt Area 31-1 — All of Units 31, 32 and 32A.",
+        "include": {
+          "ghas": [
+            "31",
+            "32",
+            "32A"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4050"
+      },
+      "seasonLabel": "Controlled hunt 4050 (either sex, any weapon, youth only)",
+      "seasonPhrase": "Sep 25 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-09-25",
+          "closesIso": "2026-10-24",
+          "statedAs": "Sep 25 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-youth-only",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Either sex, Limited access, Short range weapons only on Payette River and Montour WMAs Motorized Hunting Rule Applies in Units 32 and 32A, See Pages 104 - 106"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4050",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4050",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4051",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-39",
+      "geography": {
+        "statedAs": "Hunt Area 39 — All of Unit 39.",
+        "include": {
+          "ghas": [
+            "39"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4051"
+      },
+      "seasonLabel": "Controlled hunt 4051 (either sex, archery only, youth only)",
+      "seasonPhrase": "Aug 15 - Sep 15",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-09-15",
+          "statedAs": "Aug 15 - Sep 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-archery-permit",
+        "id-youth-only",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Either sex, Archery only"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4051",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4051",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4052",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-39",
+      "geography": {
+        "statedAs": "Hunt Area 39 — All of Unit 39.",
+        "include": {
+          "ghas": [
+            "39"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4052"
+      },
+      "seasonLabel": "Controlled hunt 4052 (doe or fawn only, any weapon, youth only)",
+      "seasonPhrase": "Oct 25 - Dec 31",
+      "windows": [
+        {
+          "opensIso": "2026-10-25",
+          "closesIso": "2026-12-31",
+          "statedAs": "Oct 25 - Dec 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Doe or fawn only",
+        "statedAs": "One pronghorn per tag: doe or fawn only",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-youth-only",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Doe or Fawn only"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4052",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4052",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4053",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-54",
+      "geography": {
+        "statedAs": "Hunt Area 54 — All of Unit 54.",
+        "include": {
+          "ghas": [
+            "54"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4053"
+      },
+      "seasonLabel": "Controlled hunt 4053 (doe or fawn only, any weapon, youth only)",
+      "seasonPhrase": "Aug 15 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-10-24",
+          "statedAs": "Aug 15 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Doe or fawn only",
+        "statedAs": "One pronghorn per tag: doe or fawn only",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-youth-only",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Doe or Fawn only"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4053",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4053",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    },
+    {
+      "id": "regulatory_rule:us-id-pronghorn-2026-4054",
+      "speciesId": "species:pronghorn",
+      "regulatoryGroupId": "regulatory_group:us-id-pronghorn-2026-area-63-2",
+      "geography": {
+        "statedAs": "Hunt Area 63-2 — That portion of Unit 63 north of State Highway 33, excluding the Camas National Wildlife Refuge which is closed.",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-id-pronghorn-area-63-2-in-unit-63"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNT_CODE": "4054"
+      },
+      "seasonLabel": "Controlled hunt 4054 (either sex, muzzleloader only, youth only)",
+      "seasonPhrase": "Aug 8 - Oct 24",
+      "windows": [
+        {
+          "opensIso": "2026-08-08",
+          "closesIso": "2026-10-24",
+          "statedAs": "Aug 8 - Oct 24"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "animalClass": "Either sex",
+        "statedAs": "One pronghorn per tag: either sex",
+        "section": "p. 63, Pronghorn Definitions"
+      },
+      "conditionIds": [
+        "id-controlled-hunt-tag",
+        "id-muzzleloader-permit",
+        "id-youth-only",
+        "id-mandatory-report"
+      ],
+      "caveats": [],
+      "notes": [
+        "Either sex, Muzzleloader only, Portions of this hunt are located within Idaho National Laboratory lands, See Note 1, Page 66"
+      ],
+      "disputes": [],
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "sourceSection": "pp. 63–66, hunt 4054",
+      "sourceVersion": "Idaho Big Game 2026 Seasons and Rules",
+      "reviewStatus": "VERIFIED",
+      "huntCodeId": "hunt_code:us-id-4054",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Idaho Fish and Game Commission 2026 big game seasons (Big Game 2026 Seasons and Rules)"
+      }
+    }
+  ]
+}
