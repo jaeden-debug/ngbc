@@ -158,6 +158,49 @@ function remember(key: string, value: SourceRecord[]): SourceRecord[] {
 
 export function clearZoneGeometryCache(): void {
   cache.clear();
+  liveTileCache.clear();
+  liveTilesInFlight.clear();
+}
+
+/* ── Live layers: fixed tiles ────────────────────────────────────────────
+   A layer North Ground holds no copy of is drawn from its authority on
+   demand. Its view is cut into fixed tiles aligned to a grid chosen from the
+   zoom, so two viewers panning over the same country ask for the same tiles
+   and the second is answered from memory; a tile being fetched is shared by
+   every request that needs it. Features arrive whole from each tile they
+   touch and are joined by record id, so a tile edge never cuts a zone. */
+
+/** How long a live drawing request may take before the layer reports an outage. */
+export const LIVE_DRAWING_TIMEOUT_MS = 6_000;
+const LIVE_TILE_CACHE_MAX = 600;
+const liveTileCache = new Map<string, CacheEntry>();
+const liveTilesInFlight = new Map<string, Promise<SourceRecord[]>>();
+
+function rememberLive(key: string, value: SourceRecord[]): SourceRecord[] {
+  if (liveTileCache.size >= LIVE_TILE_CACHE_MAX) {
+    const oldest = liveTileCache.keys().next();
+    if (!oldest.done) liveTileCache.delete(oldest.value);
+  }
+  liveTileCache.set(key, { expiresAt: Date.now() + CACHE_TTL_MS, value });
+  return value;
+}
+
+/** Tile edge in degrees: about 128 simplification steps, between ¼° and 8°. */
+export function liveTileSize(tolerance: number): number {
+  return Math.min(8, Math.max(0.25, tolerance * 128));
+}
+
+/** The fixed grid tiles covering a view, each clamped to the layer's extent. */
+export function liveTiles(view: BoundingBox, layer: Pick<ZoneLayer, "bounds">, tolerance: number): BoundingBox[] {
+  const size = liveTileSize(tolerance);
+  const tiles: BoundingBox[] = [];
+  for (let west = Math.floor(view.west / size) * size; west < view.east; west += size) {
+    for (let south = Math.floor(view.south / size) * size; south < view.north; south += size) {
+      const tile = clampToLayer({ west, south, east: west + size, north: south + size }, layer);
+      if (tile) tiles.push(tile);
+    }
+  }
+  return tiles;
 }
 
 function polygonsOf(geometry: PolygonGeometry): Position[][][] {
@@ -202,8 +245,21 @@ export function queryTiles(box: BoundingBox, maxSpan: number | undefined): Bound
 /** One envelope query against the authority's own ArcGIS service. */
 async function authorityRecords(layer: ZoneLayer, box: BoundingBox, tolerance: number, fetcher: typeof fetch): Promise<SourceRecord[]> {
   const key = cacheKey("authority", layer.id, box, tolerance);
-  const cached = cache.get(key);
+  const live = layer.resolution === "LIVE_SERVICE";
+  const store = live ? liveTileCache : cache;
+  const cached = store.get(key);
   if (cached && cached.expiresAt > Date.now()) return cached.value;
+  if (!live) return askAuthority(layer, box, tolerance, fetcher, key, false);
+  const pending = liveTilesInFlight.get(key);
+  if (pending) return pending;
+  const request = askAuthority(layer, box, tolerance, fetcher, key, true).finally(() => liveTilesInFlight.delete(key));
+  liveTilesInFlight.set(key, request);
+  return request;
+}
+
+async function askAuthority(
+  layer: ZoneLayer, box: BoundingBox, tolerance: number, fetcher: typeof fetch, key: string, live: boolean,
+): Promise<SourceRecord[]> {
 
   const parameters = new URLSearchParams({
     where: "1=1",
@@ -226,21 +282,29 @@ async function authorityRecords(layer: ZoneLayer, box: BoundingBox, tolerance: n
   countParameters.set("returnGeometry", "false");
   countParameters.set("returnCountOnly", "true");
   countParameters.set("f", "json");
-  const countResponse = await fetcher(`${layer.endpoint}?${countParameters}`, {
+  const timeoutMs = live ? LIVE_DRAWING_TIMEOUT_MS : 10_000;
+  const countRequest = () => fetcher(`${layer.endpoint}?${countParameters}`, {
     headers: { accept: "application/json" },
-    signal: AbortSignal.timeout(10_000),
+    signal: AbortSignal.timeout(timeoutMs),
     cache: "no-store",
   });
+  const featureRequest = () => fetcher(`${layer.endpoint}?${parameters}`, {
+    headers: { accept: "application/geo+json, application/json" },
+    signal: AbortSignal.timeout(timeoutMs),
+    cache: "no-store",
+  });
+  /* A live layer asks for the count and the features at once; the count is
+     still checked before a single feature is used. Stored-copy layers keep
+     their established order. */
+  const [countResponse, earlyResponse] = live
+    ? await Promise.all([countRequest(), featureRequest()])
+    : [await countRequest(), undefined];
   if (!countResponse.ok) throw new Error(`${layer.jurisdictionName} zone count service returned ${countResponse.status}`);
   const countPayload = await countResponse.json() as { count?: number };
   if (!Number.isInteger(countPayload.count) || countPayload.count! < 0 || countPayload.count! > 400) {
     throw new Error(`${layer.jurisdictionName} zone service returned an unsafe viewport count`);
   }
-  const response = await fetcher(`${layer.endpoint}?${parameters}`, {
-    headers: { accept: "application/geo+json, application/json" },
-    signal: AbortSignal.timeout(10_000),
-    cache: "no-store",
-  });
+  const response = earlyResponse ?? await featureRequest();
   if (!response.ok) throw new Error(`${layer.jurisdictionName} zone service returned ${response.status}`);
   const payload = await response.json() as FeatureCollection;
   if (payload.type !== "FeatureCollection" || !Array.isArray(payload.features)) throw new Error("Unexpected zone service response");
@@ -271,7 +335,7 @@ async function authorityRecords(layer: ZoneLayer, box: BoundingBox, tolerance: n
     const id = feature.id !== undefined ? String(feature.id) : `${name}|${JSON.stringify(polygons[0][0].slice(0, 3))}`;
     records.push({ id, name, polygons });
   }
-  return remember(key, records);
+  return live ? rememberLive(key, records) : remember(key, records);
 }
 
 const OBJECT_ID_BATCH = 20;
@@ -447,8 +511,13 @@ export async function fetchLayerGeometry(
      two tiles. Records are de-duplicated by id, then grouped by designation. */
   const seen = new Set<string>();
   const polygonsByName = new Map<string, Position[][][]>();
+  /* A live layer's tiles reach past the view; only records that touch the
+     view are sent, so sharing tiles never enlarges what the browser receives. */
+  const touchesView = (record: SourceRecord) => layer.resolution !== "LIVE_SERVICE" || record.polygons.some((polygon) =>
+    polygon[0].some(([x, y]) => x >= view.west && x <= view.east && y >= view.south && y <= view.north) ||
+    ringBoxOverlaps(polygon[0], view));
   for (const record of records) {
-    if (seen.has(record.id)) continue;
+    if (seen.has(record.id) || !touchesView(record)) continue;
     seen.add(record.id);
     polygonsByName.set(record.name, [...(polygonsByName.get(record.name) ?? []), ...record.polygons]);
   }
@@ -473,8 +542,22 @@ export async function fetchLayerGeometry(
     : { status: "EMPTY", layerId: layer.id, features: [], tolerance, message: "No official zones intersect this view." };
 }
 
+/** Whether a ring's bounding box overlaps a view (a zone can cover a view with no vertex inside it). */
+function ringBoxOverlaps(ring: Position[], view: BoundingBox): boolean {
+  let west = Infinity, east = -Infinity, south = Infinity, north = -Infinity;
+  for (const [x, y] of ring) {
+    if (x < west) west = x;
+    if (x > east) east = x;
+    if (y < south) south = y;
+    if (y > north) north = y;
+  }
+  return west <= view.east && east >= view.west && south <= view.north && north >= view.south;
+}
+
 async function authorityTiles(layer: ZoneLayer, view: BoundingBox, tolerance: number, fetcher: typeof fetch): Promise<SourceRecord[]> {
-  const tiles = queryTiles(view, layer.maxQueryLongitudeSpan);
+  const tiles = layer.resolution === "LIVE_SERVICE"
+    ? liveTiles(view, layer, tolerance)
+    : queryTiles(view, layer.maxQueryLongitudeSpan);
   // One failed tile fails the layer: half a province drawn as if it were all of it is not honest.
   return (await Promise.all(tiles.map((tile) => authorityRecords(layer, tile, tolerance, fetcher)))).flat();
 }
