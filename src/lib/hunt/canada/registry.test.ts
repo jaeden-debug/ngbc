@@ -3,6 +3,9 @@ import { test } from "node:test";
 import { CANADA_JURISDICTIONS, jurisdictionByCode, jurisdictionById } from "./registry.ts";
 import { canadaCoverageReport, regulatoryJurisdictionsForSpecies } from "./report.ts";
 import { hasSpeciesCoverageIn, speciesAsksQuestionIn } from "../coverage.ts";
+import { certifiedUnitsForLayer } from "./certified-units.ts";
+import { speciesById } from "../coverage.ts";
+import { ZONE_LAYERS } from "../zone-layers.ts";
 
 /**
  * The registry's job is to make a false coverage claim hard to make.
@@ -130,19 +133,24 @@ test("the report counts only what the certified bundles actually contain", () =>
   assert.equal(yukon.regulatory.rules, 0);
 
   /*
-   * Newfoundland is the case that separates the two ideas: its adapters know the
-   * authority publishes 74 moose, 19 caribou and 7 bear areas, and North Ground
-   * has certified none of them, so the number is known and excluded.
+   * The two ideas stay separate: how many units an authority publishes is known
+   * as soon as an adapter reads its service, while counting them toward the
+   * national total requires North Ground to have certified its own copy.
+   * Newfoundland now satisfies both — 100 areas across three geographies, all
+   * parity-certified — so the assertion is that the count is the authority's
+   * and the certification is ours, not that the two arrive together.
    */
   const newfoundland = report.jurisdictions.find((entry) => entry.code === "CA-NL")!;
-  assert.equal(newfoundland.spatial.parityCertified, false);
-  assert.equal(newfoundland.spatial.officialUnits, 100, "the authority's own count, not a claim about our copy");
+  assert.equal(newfoundland.spatial.officialUnits, 100, "the authority's own count across its three geographies");
+  assert.equal(newfoundland.spatial.parityCertified, true);
+  assert.equal(newfoundland.regulatory.rules, 0, "certified geography, no certified rule");
 
   // The headline counts certified geography, not the subset whose rules answer.
   assert.equal(
     report.totals.officialUnitsIngested,
-    1_212,
-    "151 + 59 + 62 + 189 Ontario/Québec/Manitoba/Alberta, plus 225 British Columbian, 83 Saskatchewan and 443 Yukon",
+    1_312,
+    "151 + 59 + 62 + 189 Ontario/Québec/Manitoba/Alberta, plus 225 British Columbian, 83 Saskatchewan, " +
+      "443 Yukon and 100 Newfoundland",
   );
 });
 
@@ -236,4 +244,57 @@ test("a jurisdiction the owner sets out of scope is reported, never hidden and n
     assert.match(milestone.detail, /out of scope by owner decision/);
     assert.doesNotMatch(milestone.detail, /complete/i);
   }
+});
+
+test("what the map can draw across every species equals what the report counts, or says why not", () => {
+  /*
+   * Until Newfoundland, every served jurisdiction had one geography, so "the
+   * features in one overview response" equalled "the units the report counts".
+   * That identity is gone: Newfoundland's authority writes moose, caribou and
+   * black bear seasons in three different sets of areas, so one response draws
+   * the geography of the species in hand, never all three.
+   *
+   * The headline stays species-independent — it counts what the AUTHORITY
+   * publishes, which does not change with the question asked. The cross-check
+   * becomes the union over species: every unit the report counts is drawable
+   * for some species, unless the registry says in words why it is not.
+   */
+  const report = canadaCoverageReport();
+
+  for (const jurisdiction of report.jurisdictions) {
+    if (!jurisdiction.spatial.parityCertified) continue;
+    const layers = ZONE_LAYERS.filter((layer) => layer.jurisdictionId === jurisdiction.id);
+    const unserved = layers.filter((layer) => layer.serving !== true);
+    // Every geography served: the old single-response identity still holds here.
+    if (!layers.length || !unserved.length) continue;
+
+    /*
+     * A geography the report counts but the map cannot draw is allowed only
+     * when the registry states it. Newfoundland's 19 caribou areas are
+     * certified and promoted, and no species selection can reach them because
+     * `species:caribou` has no canonical record — so the difference is
+     * declared rather than discovered by a reader comparing two numbers.
+     */
+    const declared = jurisdiction.knownGaps.some((gap) => gap.includes("Certified geometry, unreachable"));
+    const missing = unserved.reduce((total, layer) => total + (certifiedUnitsForLayer(layer.id) ?? 0), 0);
+    assert.ok(
+      declared,
+      `${jurisdiction.code} counts ${jurisdiction.spatial.officialUnits} units and cannot draw ${missing} of them; ` +
+        "a difference must be declared in knownGaps, not discovered by a reader",
+    );
+  }
+
+  // Newfoundland, explicitly, because it is the case the rule exists for.
+  const newfoundland = report.jurisdictions.find((entry) => entry.code === "CA-NL")!;
+  assert.equal(newfoundland.spatial.officialUnits, 100, "the province publishes 100 areas across three geographies");
+  const drawable = ZONE_LAYERS
+    .filter((layer) => layer.jurisdictionId === "jurisdiction:ca-nl" && layer.serving === true)
+    .reduce((total, layer) => total + (certifiedUnitsForLayer(layer.id) ?? 0), 0);
+  assert.equal(drawable, 81, "74 moose and 7 black bear; caribou is certified but unreachable");
+
+  // And the reason is a species the library does not hold, not a certification gap.
+  const caribou = ZONE_LAYERS.find((layer) => layer.id === "layer:ca-nl-caribou-area")!;
+  assert.notEqual(caribou.serving, true);
+  assert.deepEqual(caribou.speciesScope, ["species:caribou"]);
+  assert.equal(speciesById("species:caribou"), undefined, "the layer waits on the species record, nothing else");
 });

@@ -58,12 +58,24 @@ test("a registered but unserved layer is named, never presented as a served zone
    * to served as each is certified, and the invariant is about the state, not
    * about whoever happens to be waiting today.
    */
-  const unserved = ZONE_LAYERS.filter((layer) => layer.serving !== true);
-  assert.ok(unserved.length > 0, "the queue still holds registered, uncertified layers");
+  /*
+   * A jurisdiction is presented once any of its geographies is served, so this
+   * is about jurisdictions with nothing served at all. Newfoundland is why the
+   * distinction matters: its moose and black bear areas are served while its
+   * caribou areas are not, and the province is rightly presented.
+   */
+  const servedJurisdictions = new Set(ZONE_LAYERS.filter((layer) => layer.serving === true).map((layer) => layer.jurisdictionId));
+  const unserved = ZONE_LAYERS.filter((layer) => layer.serving !== true && !servedJurisdictions.has(layer.jurisdictionId));
+  assert.ok(unserved.length > 0, "the queue still holds registered, uncertified jurisdictions");
   for (const layer of unserved) {
     const presented = layerForResolution({ status: "RESOLVED", jurisdictionId: layer.jurisdictionId });
     assert.equal(presented.kind, "NOT_SERVING", `${layer.jurisdictionName} is not served and must not be presented`);
   }
+
+  // A served jurisdiction with an unserved geography is still presented.
+  const caribou = ZONE_LAYERS.find((layer) => layer.id === "layer:ca-nl-caribou-area")!;
+  assert.notEqual(caribou.serving, true);
+  assert.equal(layerForResolution({ status: "RESOLVED", jurisdictionId: "jurisdiction:ca-nl" }).kind, "SERVING");
 });
 
 test("Saskatchewan is presented from its live service, with no rule of its own", () => {

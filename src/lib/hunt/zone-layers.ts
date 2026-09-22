@@ -416,7 +416,11 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     endpoint: `${NEWFOUNDLAND_BIG_GAME_SERVICE}/0/query`,
     nameField: "mma",
     bounds: { minLatitude: 46.5, maxLatitude: 60.5, minLongitude: -67.9, maxLongitude: -52.5 },
-    serving: false,
+    /* Boundaries only: 74 Moose Management Areas parity-certified against the
+       province (303/303 points) and drawn from North Ground's stored drawings.
+       No Newfoundland rule is certified, so every species here answers UNKNOWN. */
+    serving: true,
+    mapGeometry: "stored",
     officialNamePrefix: "Moose Management Area ",
     zoneIdPrefix: "management_zone:ca-nl-mma-",
     designationOf: normaliseNewfoundlandArea,
@@ -440,6 +444,10 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     endpoint: `${NEWFOUNDLAND_BIG_GAME_SERVICE}/1/query`,
     nameField: "cma",
     bounds: { minLatitude: 46.5, maxLatitude: 60.5, minLongitude: -67.9, maxLongitude: -52.5 },
+    /* Certified geometry, unreachable: the 19 Caribou Management Areas are
+       parity-certified (76/76 points) and promoted, but `species:caribou` has no
+       canonical record, so no species selection can reach this layer. It serves
+       the moment that record exists, with no re-certification. */
     serving: false,
     officialNamePrefix: "Caribou Management Area ",
     zoneIdPrefix: "management_zone:ca-nl-cma-",
@@ -464,7 +472,12 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     endpoint: `${NEWFOUNDLAND_BIG_GAME_SERVICE}/2/query`,
     nameField: "bma",
     bounds: { minLatitude: 46.5, maxLatitude: 60.5, minLongitude: -67.9, maxLongitude: -52.5 },
-    serving: false,
+    /* Boundaries only: 7 Black Bear Management Areas, parity-certified
+       (27/27 testable points; 3 parts are slivers below the sampling tolerance
+       and recorded as untestable, not as agreement). Drawn when black bear is
+       the species in hand. */
+    serving: true,
+    mapGeometry: "stored",
     officialNamePrefix: "Black Bear Management Area ",
     zoneIdPrefix: "management_zone:ca-nl-bma-",
     designationOf: normaliseNewfoundlandArea,

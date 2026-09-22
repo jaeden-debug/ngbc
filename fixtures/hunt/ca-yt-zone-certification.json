@@ -494,8 +494,22 @@
   },
   "parity": {
     "total": 1770,
-    "agreements": 1770,
+    "agreements": 1769,
     "disagreements": 0,
+    "testable": 1769,
+    "untestable": [
+      {
+        "zone": "1-71",
+        "kind": "MULTIPART",
+        "reason": "SLIVER_BELOW_SAMPLING_TOLERANCE",
+        "poleToEdgeMetres": 0.3567,
+        "toleranceMetres": 1.2,
+        "partAreaKm2": 0.000012,
+        "northGroundRepaired": false
+      }
+    ],
+    "untestableShare": 0.0006,
+    "untestableCeiling": 0.15,
     "unresolved": 0,
     "counts": {
       "INTERIOR": 443,

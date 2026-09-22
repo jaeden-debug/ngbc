@@ -190,6 +190,30 @@ function expectedAt(point, officialIndex) {
     .sort();
 }
 
+/*
+ * The precision the interior point is searched to, and that precision expressed
+ * as a distance. A part smaller than this cannot be point-tested: see
+ * `sampleOfficialFeatures`.
+ */
+const SAMPLE_TOLERANCE_DEGREES = 0.000_01;
+const SAMPLE_TOLERANCE_METRES = 1.2;
+
+/*
+ * A layer certifies on its full component inventory; point sampling
+ * corroborates it. If sampling loses its power over more than this share of a
+ * layer's samples, the corroboration is gone and the layer does not certify on
+ * the inventory alone — so this can never become the route by which a badly
+ * degenerate layer passes.
+ */
+const MAX_UNTESTABLE_SHARE = 0.15;
+
+function metresBetween(from, to) {
+  const latitude = radians((from[1] + to[1]) / 2);
+  const dx = (from[0] - to[0]) * 111_320 * Math.cos(latitude);
+  const dy = (from[1] - to[1]) * 110_574;
+  return Math.hypot(dx, dy);
+}
+
 function sampleOfficialFeatures(features) {
   const index = features.map((feature) => ({ feature, bbox: metrics(feature.geometry).bbox }));
   const samples = [];
@@ -206,8 +230,32 @@ function sampleOfficialFeatures(features) {
     const selected = [polygons[0], ...(polygons.length > 1 ? [polygons.at(-1)] : [])];
     for (let component = 0; component < selected.length; component += 1) {
       const polygon = selected[component].polygon;
-      const inside = poleOfInaccessibility(polygon, 0.000_01);
-      samples.push({ kind: component === 0 ? "INTERIOR" : "MULTIPART", zone: feature.officialIdentifier, point: inside });
+      const inside = poleOfInaccessibility(polygon, SAMPLE_TOLERANCE_DEGREES);
+      /*
+       * A point sample cannot test a part whose furthest-from-any-edge point is
+       * itself closer to that edge than the tolerance the point was found to.
+       * That is a limit of the METHOD, not a judgement that the geometry is
+       * close enough: containment at such a point turns on differences far
+       * below any boundary North Ground would report. Recorded as its own
+       * outcome, never as agreement.
+       */
+      const edge = closestBoundary(inside, polygon);
+      const poleToEdgeMetres = edge ? metresBetween(inside, edge) : null;
+      const untestable = poleToEdgeMetres !== null && poleToEdgeMetres < SAMPLE_TOLERANCE_METRES;
+      samples.push({
+        kind: component === 0 ? "INTERIOR" : "MULTIPART",
+        zone: feature.officialIdentifier,
+        point: inside,
+        ...(untestable
+          ? {
+              untestable: true,
+              reason: "SLIVER_BELOW_SAMPLING_TOLERANCE",
+              poleToEdgeMetres: Number(poleToEdgeMetres.toFixed(4)),
+              toleranceMetres: SAMPLE_TOLERANCE_METRES,
+              partAreaKm2: Number((selected[component].area * 111.32 * 111.32).toFixed(6)),
+            }
+          : {}),
+      });
       if (component > 0) continue;
 
       const boundary = closestBoundary(inside, polygon);
@@ -405,8 +453,20 @@ async function certify(jurisdiction, env) {
   console.log("  deriving parity points from government polygons...");
   const samples = sampleOfficialFeatures(officialFeatures);
   const parity = await resolveSamples(samples, source, env);
-  const disagreements = parity.filter(({ agree }) => !agree);
-  console.log(`  parity ${parity.length - disagreements.length}/${parity.length}; disagreements=${disagreements.length}`);
+  /* An untestable part is its own outcome and never counts as agreement. */
+  const untestable = parity.filter(({ untestable: skip }) => skip);
+  const testable = parity.filter(({ untestable: skip }) => !skip);
+  const disagreements = testable.filter(({ agree }) => !agree);
+  const untestableShare = parity.length ? untestable.length / parity.length : 0;
+  const tooManyUntestable = untestableShare > MAX_UNTESTABLE_SHARE;
+  console.log(`  parity ${testable.length - disagreements.length}/${testable.length} testable; disagreements=${disagreements.length}`);
+  if (untestable.length) {
+    const detail = untestable.map((row) => `${row.zone} ${row.poleToEdgeMetres} m`).join(", ");
+    console.log(`  ${untestable.length} part(s) untestable (below the ${SAMPLE_TOLERANCE_METRES} m sampling tolerance): ${detail}`);
+    if (tooManyUntestable) {
+      console.log(`  untestable share ${(untestableShare * 100).toFixed(1)}% exceeds the ${(MAX_UNTESTABLE_SHARE * 100).toFixed(0)}% ceiling; sampling no longer corroborates the inventory`);
+    }
+  }
 
   const result = {
     schemaVersion: 1,
@@ -439,14 +499,33 @@ async function certify(jurisdiction, env) {
     },
     parity: {
       total: parity.length,
-      agreements: parity.length - disagreements.length,
+      agreements: testable.length - disagreements.length,
       disagreements: disagreements.length,
+      testable: testable.length,
+      /*
+       * Certification rests on the independent full-component inventory
+       * comparison above; point sampling corroborates it. As `sampleOfficialFeatures`
+       * puts it: "The full component inventory is independently compared below,
+       * so an island cannot disappear merely because it was not chosen as a
+       * point sample."
+       */
+      untestable: untestable.map((row) => ({
+        zone: row.zone, kind: row.kind, reason: row.reason,
+        poleToEdgeMetres: row.poleToEdgeMetres, toleranceMetres: row.toleranceMetres,
+        partAreaKm2: row.partAreaKm2,
+        /* The authority published invalid geometry here and North Ground repaired it. */
+        northGroundRepaired: Boolean(normalizations.get(row.zone)),
+      })),
+      untestableShare: Number(untestableShare.toFixed(4)),
+      untestableCeiling: MAX_UNTESTABLE_SHARE,
       unresolved: 0,
       counts: Object.fromEntries([...new Set(parity.map(({ kind }) => kind))].map((kind) => [kind, parity.filter((item) => item.kind === kind).length])),
       failures: disagreements.slice(0, 100),
       sampleHash: `sha256:${createHash("sha256").update(JSON.stringify(parity.map(({ kind, latitude, longitude, expected }) => ({ kind, latitude, longitude, expected })))).digest("hex")}`,
     },
-    status: missing.length || invented.length || geometryDisagreements.length || disagreements.length ? "NEEDS_VERIFICATION" : "VERIFIED",
+    status: missing.length || invented.length || geometryDisagreements.length || disagreements.length || tooManyUntestable
+      ? "NEEDS_VERIFICATION"
+      : "VERIFIED",
   };
   const file = `fixtures/hunt/${jurisdiction}-zone-certification.json`;
   writeFileSync(file, `${JSON.stringify(result, null, 2)}\n`);

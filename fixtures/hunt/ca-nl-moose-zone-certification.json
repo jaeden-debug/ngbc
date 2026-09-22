@@ -1,0 +1,349 @@
+{
+  "schemaVersion": 1,
+  "certifiedOn": "2026-09-22",
+  "jurisdiction": "jurisdiction:ca-nl",
+  "layer": "layer:ca-nl-moose-area",
+  "authority": "Newfoundland and Labrador Department of Fisheries, Forestry and Agriculture",
+  "sourceUrl": "https://services8.arcgis.com/aCyQID5qQcyrJMm2/arcgis/rest/services/WLD_BigGameManagementArea/FeatureServer/0",
+  "sourceVersion": "WLD_BigGameManagementArea FeatureServer, read 2026-09-22",
+  "officialZones": 74,
+  "officialIdentifiers": [
+    "001",
+    "002",
+    "002A",
+    "002B",
+    "003",
+    "004",
+    "005",
+    "005A",
+    "006",
+    "007",
+    "008",
+    "009",
+    "010",
+    "011",
+    "012",
+    "013",
+    "014",
+    "015",
+    "016",
+    "017",
+    "018",
+    "019",
+    "020",
+    "021",
+    "022",
+    "023",
+    "024",
+    "025",
+    "026",
+    "027",
+    "028",
+    "029",
+    "030",
+    "031",
+    "032",
+    "033",
+    "034",
+    "035",
+    "036",
+    "037",
+    "038",
+    "039",
+    "039A",
+    "040",
+    "041",
+    "042",
+    "043",
+    "044",
+    "045",
+    "047",
+    "048",
+    "049",
+    "050",
+    "051",
+    "052",
+    "053",
+    "054",
+    "057",
+    "058",
+    "059",
+    "060",
+    "084",
+    "085",
+    "086",
+    "087",
+    "088",
+    "089",
+    "090",
+    "091",
+    "092",
+    "093",
+    "094",
+    "095",
+    "096"
+  ],
+  "northGroundZones": 74,
+  "quarantined": [
+    {
+      "sourceFeatureId": "objectid:42",
+      "reason": "Terra Nova National Park: federal land drawn in the layer, with no moose management area number.",
+      "bbox": [
+        -54.2133687127491,
+        48.3868477558133,
+        -53.6884152774059,
+        48.6582722434352
+      ],
+      "vertices": 5436
+    },
+    {
+      "sourceFeatureId": "objectid:46",
+      "reason": "Gros Morne National Park: federal land drawn in the layer, with no moose management area number.",
+      "bbox": [
+        -58.1474065165944,
+        49.2968336894497,
+        -57.4085278659967,
+        49.9749501028207
+      ],
+      "vertices": 10356
+    },
+    {
+      "sourceFeatureId": "objectid:69",
+      "reason": "Area 000, which the province names \"Not Applicable\": geography, not a moose management area.",
+      "bbox": [
+        -58.3505908232649,
+        49.0650734286254,
+        -58.314555825526,
+        49.0799969578861
+      ],
+      "vertices": 144
+    },
+    {
+      "sourceFeatureId": "objectid:81",
+      "reason": "Nunavut Territory: outside Newfoundland and Labrador's jurisdiction.",
+      "bbox": [
+        -64.9339087011724,
+        60.2866809971468,
+        -64.4155294025268,
+        60.6972209040469
+      ],
+      "vertices": 6683
+    },
+    {
+      "sourceFeatureId": "objectid:83",
+      "reason": "The province names this record \"Not a Labrador Moose Hunting Zone\".",
+      "bbox": [
+        -67.8177058114131,
+        53.2583976022823,
+        -57.7438214695096,
+        56.2262919384656
+      ],
+      "vertices": 26341
+    },
+    {
+      "sourceFeatureId": "objectid:85",
+      "reason": "Mealy Mountains National Park: federal land drawn in the layer, with no moose management area number.",
+      "bbox": [
+        -57.5331799008817,
+        53.5795992002372,
+        -57.005721999337,
+        54.2913657000777
+      ],
+      "vertices": 3569
+    },
+    {
+      "sourceFeatureId": "objectid:87",
+      "reason": "Torngat Mountains National Park: federal land drawn in the layer, with no moose management area number.",
+      "bbox": [
+        -64.6628904940896,
+        58.4845608055367,
+        -62.6312398050976,
+        60.3768173628045
+      ],
+      "vertices": 4804
+    },
+    {
+      "sourceFeatureId": "objectid:94",
+      "reason": "The province names this record \"Not a Labrador Moose Hunting Zone\", second polygon.",
+      "bbox": [
+        -63.1479361983894,
+        51.5891472059502,
+        -55.8370490995107,
+        58.5082351059811
+      ],
+      "vertices": 76673
+    },
+    {
+      "sourceFeatureId": "objectid:97",
+      "reason": "Mealy Mountains National Park, second polygon.",
+      "bbox": [
+        -59.5687589765465,
+        52.8977804161858,
+        -57.0718488970851,
+        54.1994460020801
+      ],
+      "vertices": 11961
+    },
+    {
+      "sourceFeatureId": "objectid:99",
+      "reason": "Torngat Mountains National Park, second polygon.",
+      "bbox": [
+        -64.9201018854707,
+        58.3838640398517,
+        -62.8426963946947,
+        60.3110730716223
+      ],
+      "vertices": 15565
+    }
+  ],
+  "inventory": {
+    "missing": [],
+    "invented": []
+  },
+  "geometry": {
+    "checked": 74,
+    "normalizations": [
+      {
+        "identifier": "029",
+        "normalization": {
+          "method": "ST_MakeValid",
+          "authorityValidityError": "Ring Self-intersection[-53.5153423886579 48.2433597557791]",
+          "symmetricDifferenceSquareMetres": 0
+        },
+        "rawAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 1,
+          "rings": 1,
+          "holes": 0,
+          "vertices": 25663,
+          "bbox": [
+            -54.17831407,
+            47.77114321,
+            -52.99596439,
+            48.70323357
+          ],
+          "areaSquareMetres": 2723416966.3905077,
+          "fingerprint": "sha256:3b5e391f1ccfcc5a19619b0f4b948aa2535e2f0d4433269f6ad80120352c2d14"
+        },
+        "normalizedAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 1,
+          "rings": 2,
+          "holes": 1,
+          "vertices": 25664,
+          "bbox": [
+            -54.17831407,
+            47.77114321,
+            -52.99596439,
+            48.70323357
+          ],
+          "areaSquareMetres": 2723416966.3910356,
+          "fingerprint": "sha256:1f5f93bf0b834e855d5b8e300b07aac317342a3551724388c41bc478762f7816"
+        }
+      },
+      {
+        "identifier": "057",
+        "normalization": {
+          "method": "ST_MakeValid",
+          "authorityValidityError": "Nested shells[-56.5511173968914 53.6588604986533]",
+          "symmetricDifferenceSquareMetres": 0
+        },
+        "rawAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 591,
+          "rings": 591,
+          "holes": 0,
+          "vertices": 13534,
+          "bbox": [
+            -58.0002026,
+            52.74999823,
+            -55.60879171,
+            53.8309435
+          ],
+          "areaSquareMetres": 8814963926.460121,
+          "fingerprint": "sha256:e299c25a46664d8bc09d04d7c8289d33b4fdcf95b4097f10ecf650a3c2759195"
+        },
+        "normalizedAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 587,
+          "rings": 591,
+          "holes": 4,
+          "vertices": 13534,
+          "bbox": [
+            -58.0002026,
+            52.74999823,
+            -55.60879171,
+            53.8309435
+          ],
+          "areaSquareMetres": 8814470762.220451,
+          "fingerprint": "sha256:056d52ffa327df636fe4062e21a571b6f16d318580e7d469d6d6932d9ce47aff"
+        }
+      },
+      {
+        "identifier": "087",
+        "normalization": {
+          "method": "ST_MakeValid",
+          "authorityValidityError": "Ring Self-intersection[-59.5199701292321 53.2118927344128]",
+          "symmetricDifferenceSquareMetres": 0
+        },
+        "rawAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 1,
+          "rings": 1,
+          "holes": 0,
+          "vertices": 12088,
+          "bbox": [
+            -59.9232943,
+            52.55123234,
+            -58.00012748,
+            53.54798715
+          ],
+          "areaSquareMetres": 7244912752.022518,
+          "fingerprint": "sha256:91e69e5664b0bc79543aa7039aa92c25f98f27c189e6eaa596fb549c439f0524"
+        },
+        "normalizedAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 1,
+          "rings": 2,
+          "holes": 1,
+          "vertices": 12089,
+          "bbox": [
+            -59.9232943,
+            52.55123234,
+            -58.00012748,
+            53.54798715
+          ],
+          "areaSquareMetres": 7244912752.0221815,
+          "fingerprint": "sha256:b3a4eadf1602a828bcf77ca8989fcd7f6c164b50de90a24d1ef75f7dfffc3a75"
+        }
+      }
+    ],
+    "disagreements": [],
+    "totals": {
+      "authorityFeatures": 102,
+      "polygons": 1092,
+      "holes": 6,
+      "vertices": 657883
+    }
+  },
+  "parity": {
+    "total": 303,
+    "agreements": 303,
+    "disagreements": 0,
+    "testable": 303,
+    "untestable": [],
+    "untestableShare": 0,
+    "untestableCeiling": 0.15,
+    "unresolved": 0,
+    "counts": {
+      "INTERIOR": 74,
+      "BOUNDARY_INSIDE": 71,
+      "BOUNDARY_OUTSIDE": 71,
+      "INTERIOR_SECOND": 74,
+      "MULTIPART": 13
+    },
+    "failures": [],
+    "sampleHash": "sha256:2dfb6796734156fa2ebcbecb78be9e390a3ac2090dd923f29c96de866d947865"
+  },
+  "status": "VERIFIED"
+}

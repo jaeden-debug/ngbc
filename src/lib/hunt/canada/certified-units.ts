@@ -25,6 +25,13 @@ const STORED_CONFIGS = [
   NEWFOUNDLAND_BEAR_CONFIG,
 ];
 
+/** The authority's own unit count for one layer, from its certified adapter. */
+export function certifiedUnitsForLayer(layerId: string): number | null {
+  const stored = STORED_CONFIGS.find((config) => config.layerId === layerId);
+  if (stored) return stored.expectedUnits;
+  return canadaLiveAdapterConfig(layerId)?.expectedUnits ?? null;
+}
+
 export function certifiedUnitCount(jurisdictionId: string): number | null {
   const stored = STORED_CONFIGS.filter((config) => config.jurisdictionCanonicalId === jurisdictionId);
   // A species-scoped jurisdiction has one geography per species; each is official.

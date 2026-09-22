@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "certifiedOn": "2026-09-22",
+  "jurisdiction": "jurisdiction:ca-nl",
+  "layer": "layer:ca-nl-caribou-area",
+  "authority": "Newfoundland and Labrador Department of Fisheries, Forestry and Agriculture",
+  "sourceUrl": "https://services8.arcgis.com/aCyQID5qQcyrJMm2/arcgis/rest/services/WLD_BigGameManagementArea/FeatureServer/1",
+  "sourceVersion": "WLD_BigGameManagementArea FeatureServer, read 2026-09-22",
+  "officialZones": 19,
+  "officialIdentifiers": [
+    "061",
+    "062",
+    "063",
+    "064",
+    "065",
+    "066",
+    "067",
+    "068",
+    "069",
+    "070",
+    "071",
+    "072",
+    "073",
+    "074",
+    "075",
+    "076",
+    "077",
+    "078",
+    "079"
+  ],
+  "northGroundZones": 19,
+  "quarantined": [
+    {
+      "sourceFeatureId": "objectid:23",
+      "reason": "Area 099, which the province names \"Not a Newfoundland Caribou Hunting Zone\".",
+      "bbox": [
+        -53.6524362511221,
+        46.611014613365,
+        -53.3790961558087,
+        46.7661739440206
+      ],
+      "vertices": 2886
+    },
+    {
+      "sourceFeatureId": "objectid:24",
+      "reason": "Area 099, which the province names \"Not a Newfoundland Caribou Hunting Zone\".",
+      "bbox": [
+        -53.3876782313086,
+        46.7468333128421,
+        -53.3523496197984,
+        46.7661326119249
+      ],
+      "vertices": 225
+    },
+    {
+      "sourceFeatureId": "objectid:25",
+      "reason": "Area 099, which the province names \"Not a Newfoundland Caribou Hunting Zone\".",
+      "bbox": [
+        -54.2019803298853,
+        46.7891753855684,
+        -53.9472113466421,
+        47.2498725799759
+      ],
+      "vertices": 4147
+    },
+    {
+      "sourceFeatureId": "objectid:26",
+      "reason": "Area 099, which the province names \"Not a Newfoundland Caribou Hunting Zone\".",
+      "bbox": [
+        -59.4127112367733,
+        47.5766359180205,
+        -58.2700404434677,
+        48.5129286212546
+      ],
+      "vertices": 7075
+    },
+    {
+      "sourceFeatureId": "objectid:27",
+      "reason": "Area 099, which the province names \"Not a Newfoundland Caribou Hunting Zone\".",
+      "bbox": [
+        -54.1777615172049,
+        46.879740416294,
+        -52.6193992717572,
+        48.7032434038958
+      ],
+      "vertices": 69857
+    },
+    {
+      "sourceFeatureId": "objectid:28",
+      "reason": "Area 099, which the province names \"Not a Newfoundland Caribou Hunting Zone\".",
+      "bbox": [
+        -59.2701549808592,
+        48.4636023777454,
+        -56.613059626251,
+        49.9749643031336
+      ],
+      "vertices": 40676
+    },
+    {
+      "sourceFeatureId": "objectid:29",
+      "reason": "Area 099, which the province names \"Not a Newfoundland Caribou Hunting Zone\".",
+      "bbox": [
+        -56.6557090256876,
+        48.3357949966403,
+        -53.4637534141203,
+        50.1580740932503
+      ],
+      "vertices": 97087
+    },
+    {
+      "sourceFeatureId": "objectid:30",
+      "reason": "Area 099, which the province names \"Not a Newfoundland Caribou Hunting Zone\".",
+      "bbox": [
+        -57.4129527783924,
+        50.6073543389099,
+        -55.8541036709264,
+        51.0868350062331
+      ],
+      "vertices": 19243
+    },
+    {
+      "sourceFeatureId": "objectid:31",
+      "reason": "Area 099, which the province names \"Not a Newfoundland Caribou Hunting Zone\".",
+      "bbox": [
+        -55.7625812482444,
+        51.298948898855,
+        -55.4211871893598,
+        51.6148873162316
+      ],
+      "vertices": 11275
+    },
+    {
+      "sourceFeatureId": "objectid:33",
+      "reason": "Area 099, which the province names \"Not a Newfoundland Caribou Hunting Zone\".",
+      "bbox": [
+        -57.7669884566005,
+        49.9720573378546,
+        -57.1526705880875,
+        50.6366560236809
+      ],
+      "vertices": 4970
+    },
+    {
+      "sourceFeatureId": "objectid:34",
+      "reason": "Area 099, which the province names \"Not a Newfoundland Caribou Hunting Zone\".",
+      "bbox": [
+        -59.1778943781156,
+        47.5646717967245,
+        -59.1242337978704,
+        47.5910515228392
+      ],
+      "vertices": 788
+    }
+  ],
+  "inventory": {
+    "missing": [],
+    "invented": []
+  },
+  "geometry": {
+    "checked": 19,
+    "normalizations": [],
+    "disagreements": [],
+    "totals": {
+      "authorityFeatures": 23,
+      "polygons": 23,
+      "holes": 0,
+      "vertices": 242903
+    }
+  },
+  "parity": {
+    "total": 76,
+    "agreements": 76,
+    "disagreements": 0,
+    "testable": 76,
+    "untestable": [],
+    "untestableShare": 0,
+    "untestableCeiling": 0.15,
+    "unresolved": 0,
+    "counts": {
+      "INTERIOR": 19,
+      "INTERIOR_SECOND": 19,
+      "BOUNDARY_INSIDE": 18,
+      "BOUNDARY_OUTSIDE": 18,
+      "MULTIPART": 2
+    },
+    "failures": [],
+    "sampleHash": "sha256:ec50e6b2722fd8b9bf04bea34f5a32e4106dc9977703cc19e45388b08231fef1"
+  },
+  "status": "VERIFIED"
+}

@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 1,
+  "certifiedOn": "2026-09-22",
+  "jurisdiction": "jurisdiction:ca-nl",
+  "layer": "layer:ca-nl-bear-area",
+  "authority": "Newfoundland and Labrador Department of Fisheries, Forestry and Agriculture",
+  "sourceUrl": "https://services8.arcgis.com/aCyQID5qQcyrJMm2/arcgis/rest/services/WLD_BigGameManagementArea/FeatureServer/2",
+  "sourceVersion": "WLD_BigGameManagementArea FeatureServer, read 2026-09-22",
+  "officialZones": 7,
+  "officialIdentifiers": [
+    "200",
+    "201",
+    "202",
+    "203",
+    "204",
+    "205",
+    "206"
+  ],
+  "northGroundZones": 7,
+  "quarantined": [],
+  "inventory": {
+    "missing": [],
+    "invented": []
+  },
+  "geometry": {
+    "checked": 7,
+    "normalizations": [
+      {
+        "identifier": "200",
+        "normalization": {
+          "method": "ST_MakeValid (whole feature, single guarded transaction)",
+          "authority": "Newfoundland and Labrador Department of Fisheries, Forestry and Agriculture",
+          "repairedOn": "2026-09-22",
+          "polygonsAfter": 4210,
+          "verticesAfter": 197117,
+          "polygonsBefore": 4221,
+          "verticesBefore": 197116,
+          "authorityValidityError": "Ring Self-intersection[-59.5199701292321 53.2118927344128]",
+          "symmetricDifferenceSquareMetres": 0
+        },
+        "rawAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 4221,
+          "rings": 4221,
+          "holes": 0,
+          "vertices": 197116,
+          "bbox": [
+            -67.81770581,
+            51.4128,
+            -55.5494228,
+            58.50823511
+          ],
+          "areaSquareMetres": 274216662994.23026,
+          "fingerprint": "sha256:3beae750186020d5e65c9d27e12fd709612d5e163457ca5ab7e83e39e7636f6a"
+        },
+        "normalizedAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 4210,
+          "rings": 4222,
+          "holes": 12,
+          "vertices": 197117,
+          "bbox": [
+            -67.81770581,
+            51.4128,
+            -55.5494228,
+            58.50823511
+          ],
+          "areaSquareMetres": 274215914136.6417,
+          "fingerprint": "sha256:f0a0482156d81c2cf05e7c1c62f4e3168403990ae06efc39b29ada87ea600293"
+        }
+      },
+      {
+        "identifier": "201",
+        "normalization": {
+          "method": "ST_MakeValid",
+          "authorityValidityError": "Ring Self-intersection[-56.0151929944897 51.3709470152343]",
+          "symmetricDifferenceSquareMetres": 0
+        },
+        "rawAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 7,
+          "rings": 7,
+          "holes": 0,
+          "vertices": 66813,
+          "bbox": [
+            -57.94855794,
+            49.70118955,
+            -55.4108751,
+            51.64200604
+          ],
+          "areaSquareMetres": 13689030126.554655,
+          "fingerprint": "sha256:1cec57cf877107cf05bd94a98807ab327097ca733ffb15c205c8a64a6f6dea02"
+        },
+        "normalizedAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 5,
+          "rings": 8,
+          "holes": 3,
+          "vertices": 66814,
+          "bbox": [
+            -57.94855794,
+            49.70118955,
+            -55.4108751,
+            51.64200604
+          ],
+          "areaSquareMetres": 13689030117.606754,
+          "fingerprint": "sha256:8b636d4dcdcc7e6d0a76fdf846fc5a4f185d025ce7b8e2ca56891f47ec4d469a"
+        }
+      },
+      {
+        "identifier": "205",
+        "normalization": {
+          "method": "ST_MakeValid",
+          "authorityValidityError": "Nested shells[-56.0012571696714 47.8233676382188]",
+          "symmetricDifferenceSquareMetres": 0
+        },
+        "rawAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 5,
+          "rings": 5,
+          "holes": 0,
+          "vertices": 59311,
+          "bbox": [
+            -58.52467184,
+            47.39924046,
+            -55.28649579,
+            48.62364405
+          ],
+          "areaSquareMetres": 20648628224.844727,
+          "fingerprint": "sha256:5d7de7c1a2d86b14f3ad93c750f21871199959c2e4cbd672f59aa0188d532a5b"
+        },
+        "normalizedAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 4,
+          "rings": 5,
+          "holes": 1,
+          "vertices": 59311,
+          "bbox": [
+            -58.52467184,
+            47.39924046,
+            -55.28649579,
+            48.62364405
+          ],
+          "areaSquareMetres": 20648628224.180473,
+          "fingerprint": "sha256:635d41f07968eb047c7e4b0d01912432bfc873d8fe43ac48e4f13a3b3ec07455"
+        }
+      },
+      {
+        "identifier": "206",
+        "normalization": {
+          "method": "ST_MakeValid (whole feature, single guarded transaction)",
+          "authority": "Newfoundland and Labrador Department of Fisheries, Forestry and Agriculture",
+          "repairedOn": "2026-09-22",
+          "polygonsAfter": 8,
+          "verticesAfter": 87636,
+          "polygonsBefore": 8,
+          "verticesBefore": 87635,
+          "authorityValidityError": "Ring Self-intersection[-53.5153371442944 48.2433697667046]",
+          "symmetricDifferenceSquareMetres": 0
+        },
+        "rawAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 8,
+          "rings": 8,
+          "holes": 0,
+          "vertices": 87635,
+          "bbox": [
+            -55.98921879,
+            46.84695693,
+            -52.99595896,
+            48.84521805
+          ],
+          "areaSquareMetres": 17602767926.84521,
+          "fingerprint": "sha256:3d4e91f62f3c5935eebc7a4b145f74e188a8ca35b49e585dc5e98634e2adaf30"
+        },
+        "normalizedAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 8,
+          "rings": 9,
+          "holes": 1,
+          "vertices": 87636,
+          "bbox": [
+            -55.98921879,
+            46.84695693,
+            -52.99595896,
+            48.84521805
+          ],
+          "areaSquareMetres": 17602767926.84381,
+          "fingerprint": "sha256:85914f9de1e027ea74d73f058058536e9c1100f19431b308cf45ea354205d4d6"
+        }
+      }
+    ],
+    "disagreements": [],
+    "totals": {
+      "authorityFeatures": 7,
+      "polygons": 4248,
+      "holes": 17,
+      "vertices": 594238
+    }
+  },
+  "parity": {
+    "total": 30,
+    "agreements": 27,
+    "disagreements": 0,
+    "testable": 27,
+    "untestable": [
+      {
+        "zone": "200",
+        "kind": "MULTIPART",
+        "reason": "SLIVER_BELOW_SAMPLING_TOLERANCE",
+        "poleToEdgeMetres": 0,
+        "toleranceMetres": 1.2,
+        "partAreaKm2": 0.000003,
+        "northGroundRepaired": true
+      },
+      {
+        "zone": "201",
+        "kind": "MULTIPART",
+        "reason": "SLIVER_BELOW_SAMPLING_TOLERANCE",
+        "poleToEdgeMetres": 0.0605,
+        "toleranceMetres": 1.2,
+        "partAreaKm2": 0.000002,
+        "northGroundRepaired": true
+      },
+      {
+        "zone": "205",
+        "kind": "MULTIPART",
+        "reason": "SLIVER_BELOW_SAMPLING_TOLERANCE",
+        "poleToEdgeMetres": 0.0109,
+        "toleranceMetres": 1.2,
+        "partAreaKm2": 0,
+        "northGroundRepaired": true
+      }
+    ],
+    "untestableShare": 0.1,
+    "untestableCeiling": 0.15,
+    "unresolved": 0,
+    "counts": {
+      "INTERIOR": 7,
+      "BOUNDARY_INSIDE": 5,
+      "BOUNDARY_OUTSIDE": 5,
+      "INTERIOR_SECOND": 7,
+      "MULTIPART": 6
+    },
+    "failures": [],
+    "sampleHash": "sha256:3d69db7312f81c892fd38fce08d2e9ab2325657599c3f5c053f8778ede5db349"
+  },
+  "status": "VERIFIED"
+}

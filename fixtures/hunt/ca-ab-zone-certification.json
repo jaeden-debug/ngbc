@@ -231,6 +231,10 @@
     "total": 763,
     "agreements": 763,
     "disagreements": 0,
+    "testable": 763,
+    "untestable": [],
+    "untestableShare": 0,
+    "untestableCeiling": 0.15,
     "unresolved": 0,
     "counts": {
       "INTERIOR": 189,

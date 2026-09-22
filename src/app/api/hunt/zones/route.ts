@@ -1,4 +1,3 @@
-import { speciesById } from "../../../../lib/hunt/coverage";
 import { overlayLayersFor } from "../../../../lib/hunt/exploration/overlay-layers";
 import { fetchZoneGeometry, parseBounds } from "../../../../lib/hunt/zone-geometry";
 import { COVERAGE_ROADMAP, layerById, officialTermPlural } from "../../../../lib/hunt/zone-layers";
@@ -40,12 +39,17 @@ export async function GET(request: Request): Promise<Response> {
   }
 
   const zoom = Number(url.searchParams.get("zoom") ?? 5);
-  /* A species-scoped jurisdiction is drawn in the geography of the species in
-     hand. An unknown species is ignored rather than refused: the map still
-     draws, in the default geography, exactly as it did before the parameter
-     existed. */
-  const asked = url.searchParams.get("species") ?? undefined;
-  const speciesId = asked && speciesById(asked) ? asked : undefined;
+  /*
+   * A species-scoped jurisdiction is drawn in the geography of the species in
+   * hand. The species is passed through whether or not the library holds it:
+   * treating an unrecognised one as "no species" would fall back to the default
+   * geography, which is how caribou came to draw Newfoundland's MOOSE areas —
+   * the wrong official boundary under a species we cannot answer for. Only the
+   * id's shape is checked, so junk cannot reach the layer filter. A
+   * jurisdiction with one geography for everything is unaffected either way.
+   */
+  const asked = url.searchParams.get("species") ?? "";
+  const speciesId = /^species:[a-z0-9][a-z0-9-]{0,80}$/.test(asked) ? asked : undefined;
   const result = await fetchZoneGeometry(bounds, zoom, fetch, { speciesId });
   const describe = (id: string) => {
     const layer = layerById(id);

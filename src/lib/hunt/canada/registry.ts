@@ -446,17 +446,23 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     nameFr: "Terre-Neuve-et-Labrador",
     kind: "province",
     spatial: {
-      status: "IN_DEVELOPMENT",
+      // Parity-certified; moose and black bear are served, caribou certified but unreachable.
+      status: "VERIFIED",
       officialTerm: "Management Area/Zone (species-specific)",
       officialSourceUrl: "https://www.gov.nl.ca/fal/public-education/wildlife/hunting/boundry/",
       serviceUrl: "https://services8.arcgis.com/aCyQID5qQcyrJMm2/arcgis/rest/services/WLD_BigGameManagementArea/FeatureServer",
-      parityCertified: false,
+      parityCertified: true,
       notes:
         "Moose, caribou and black bear use different area systems, and the island and Labrador differ again, so this is " +
         "three species-scoped layers rather than one: 74 moose areas, 19 caribou areas and 7 black bear areas, from the " +
         "Wildlife Division's own FeatureServer under the Newfoundland and Labrador Open Government Licence. The records " +
         "the province itself excludes (national parks, the Nunavut sliver, \"Not Applicable\" and \"Not a ... Hunting " +
-        "Zone\") are quarantined, not renumbered. Adapters are reviewed; nothing is ingested yet.",
+        "Zone\") are quarantined, not renumbered. All 100 areas are in PostGIS with their derivatives built and " +
+        "parity-certified 2026-09-22: moose 74/74 with 303/303 points, caribou 19/19 with 76/76, black bear 7/7 with " +
+        "27/27 testable points. Three black bear parts are slivers below the 1.2 m sampling tolerance (pole-to-edge " +
+        "0 m, 0.061 m and 0.011 m, in areas 200, 201 and 205, all three repaired by North Ground) and are recorded as " +
+        "untestable rather than as agreement; certification there rests on the full component inventory, which is " +
+        "clean. Moose and black bear are served for drawing and zone resolution; caribou is not.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
@@ -466,7 +472,12 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       huntingAuthorityUrl: "https://www.gov.nl.ca/hunting-trapping-guide/",
     },
     knownGaps: [
-      "No geometry ingested and no rules certified; every Newfoundland and Labrador query is UNKNOWN. The three big-game layers are registered and unserved.",
+      "Boundaries only: the 74 moose and 7 black bear areas are drawn, named and resolved, and every Newfoundland and " +
+        "Labrador species query is UNKNOWN until rules are certified. A drawn boundary is not a certified rule.",
+      "Certified geometry, unreachable: the 19 Caribou Management Areas are parity-certified and promoted, but " +
+        "`species:caribou` has no canonical species record, so no species selection can reach that layer. It counts " +
+        "toward the 100 official areas the province publishes and is not among the 81 the map can draw. The layer " +
+        "serves the moment the species record exists, with no re-certification.",
       "Caribou has no canonical species record yet, so its layer's scope names a species the library does not hold.",
       "Big game is almost entirely licence-by-draw, so a season lookup is not the product question here.",
     ],
