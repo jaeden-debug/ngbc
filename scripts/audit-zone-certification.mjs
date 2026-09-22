@@ -29,6 +29,7 @@ const PREFIXES = {
   "ca-mb": "management_zone:ca-mb-gha-",
   "ca-ab": "management_zone:ca-ab-wmu-",
   "ca-qc": "management_zone:ca-qc-zone-",
+  "ca-bc": "management_zone:ca-bc-mu-",
 };
 
 function loadEnv() {

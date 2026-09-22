@@ -110,6 +110,37 @@ EXTRA_CASES["ca-qc"] = {
   ],
 };
 
+EXTRA_CASES["ca-bc"] = {
+  outside: [
+    // Only places no registered jurisdiction's PostGIS copy covers. Alberta is
+    // registered, so no Alberta point can stand for "nothing" here; U.S. layers
+    // are live-service only and hold no copy.
+    ["Washington, Bellingham", 48.7519, -122.4787],
+    ["Idaho, Bonners Ferry", 48.6913, -116.3163],
+    ["Montana, Eureka", 48.8797, -115.0537],
+    ["Yukon, Watson Lake", 60.0628, -128.7089],
+    ["Alaska, Hyder", 55.9164, -130.0247],
+    ["Pacific Ocean, west of Haida Gwaii", 53.0, -134.5],
+  ],
+  special: [
+    // Real places across all nine regions. The expected unit is whatever the
+    // province's own service answers there, never a value written here.
+    ["Victoria (Region 1)", 48.4284, -123.3656],
+    ["Tofino (Region 1)", 49.1530, -125.9066],
+    ["Squamish (Region 2)", 49.7016, -123.1558],
+    ["Kamloops (Region 3)", 50.6745, -120.3273],
+    ["Cranbrook (Region 4)", 49.5097, -115.7688],
+    ["Williams Lake (Region 5)", 52.1418, -122.1417],
+    ["Smithers (Region 6)", 54.7804, -127.1743],
+    ["Masset, Haida Gwaii (Region 6)", 54.0115, -132.1479],
+    ["Atlin (Region 6, far north)", 59.5781, -133.6895],
+    ["Prince George (Region 7a Omineca)", 53.9171, -122.7497],
+    ["Fort St. John (Region 7b Peace)", 56.2524, -120.8466],
+    ["Fort Nelson (Region 7b Peace)", 58.8050, -122.6972],
+    ["Penticton (Region 8)", 49.4991, -119.5937],
+  ],
+};
+
 const INVALID = [
   ["latitude above the pole", 95.0, -114.0],
   ["longitude beyond the meridian", 53.0, -200.0],
