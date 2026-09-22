@@ -465,7 +465,9 @@ export async function resolveLayerFromWfs(
   try {
     // SRID=4326 is required: without it GeoServer reads the numbers in its native projection.
     const point = `SRID=4326;POINT(${longitude} ${latitude})`;
-    const designations = await ask(`INTERSECTS(the_geom,${point})`);
+    // Québec's GeoServer calls its geometry `the_geom`; others name theirs (British Columbia: `GEOMETRY`).
+    const geometry = wfs.geometryField ?? "the_geom";
+    const designations = await ask(`INTERSECTS(${geometry},${point})`);
     if (designations.length !== 1) {
       return {
         status: "UNKNOWN",
@@ -477,9 +479,11 @@ export async function resolveLayerFromWfs(
       };
     }
     const designation = designations[0].toUpperCase();
-    // Only a designation the service itself published is put back into a filter, and only in its own alphabet.
-    if (!/^[A-Z0-9]+$/.test(designation)) throw new Error("Unexpected designation");
-    const inside = await ask(`CONTAINS(the_geom,SRID=4326;${nearBoundaryDisk(latitude, longitude)}) AND ${wfs.nameField}='${designation}'`);
+    // Only a designation the service itself published is put back into a filter, and only in its own
+    // alphabet: letters and digits, with a hyphen only between them as British Columbia writes
+    // ("7-15"). No quote, parenthesis, semicolon or leading/trailing/doubled hyphen can pass.
+    if (!/^[A-Z0-9]+(?:-[A-Z0-9]+)*$/.test(designation)) throw new Error("Unexpected designation");
+    const inside = await ask(`CONTAINS(${geometry},SRID=4326;${nearBoundaryDisk(latitude, longitude)}) AND ${wfs.nameField}='${designation}'`);
     const nearBoundary = inside.length === 0;
     return {
       status: "RESOLVED",

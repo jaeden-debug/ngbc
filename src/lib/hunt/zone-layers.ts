@@ -5,6 +5,7 @@ import manitobaCertifiedUnits from "../../../content/regulatory/ca-mb-certified-
 import albertaCertifiedUnits from "../../../content/regulatory/ca-ab-certified-units.json" with { type: "json" };
 import quebecCertifiedUnits from "../../../content/regulatory/ca-qc-certified-units.json" with { type: "json" };
 import { US_ZONE_LAYERS } from "./united-states/layers.ts";
+import { normaliseBritishColumbiaMu } from "./ingestion/british-columbia-mu.ts";
 
 /**
  * Which hunting-zone geography North Ground can actually draw, and how far the
@@ -94,7 +95,7 @@ export interface ZoneLayer {
    * (Québec's GeoServer). Asked only by the official-GIS fallback, for which
    * zone contains a point; never for drawings.
    */
-  wfs?: { url: string; typeName: string; nameField: string };
+  wfs?: { url: string; typeName: string; nameField: string; /** Geometry property for spatial filters; Québec's `the_geom` when absent. */ geometryField?: string };
   /** Field on that service carrying the zone's official designation. */
   nameField?: string;
   /** Approximate extent, used to skip requests the layer cannot answer. */
@@ -313,6 +314,36 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     },
     /* The ministry serves WFS, not ArcGIS, and zone 21 alone is 838,537 vertices:
        the map draws North Ground's stored drawings of the certified copy. */
+    mapGeometry: "stored",
+  },
+  {
+    id: "layer:ca-bc-mu",
+    jurisdictionId: "jurisdiction:ca-bc",
+    jurisdictionName: "British Columbia",
+    country: "CA",
+    officialTerm: "Management Unit",
+    officialTermShort: "MU",
+    coverage: "IN_DEVELOPMENT",
+    coverageNote:
+      "British Columbia's 225 Management Units from the province's own WFS (Open Government Licence – British Columbia). " +
+      "Under B.C. Reg. 64/96 the enacted regional maps control, and a river boundary follows the right-hand bank (the " +
+      "left-hand bank for the West Road, Liard and Peace rivers). No British Columbia rule is certified.",
+    authority: "Government of British Columbia",
+    sourceId: "source:ca-bc-mu-service",
+    bounds: { minLatitude: 48.2, maxLatitude: 60.01, minLongitude: -139.07, maxLongitude: -114.05 },
+    // Not served until its parity is certified and its first rules are.
+    serving: false,
+    officialNamePrefix: "Management Unit ",
+    zoneIdPrefix: "management_zone:ca-bc-mu-",
+    designationOf: normaliseBritishColumbiaMu,
+    wfs: {
+      url: "https://openmaps.gov.bc.ca/geo/pub/WHSE_WILDLIFE_MANAGEMENT.WAA_WILDLIFE_MGMT_UNITS_SVW/ows",
+      typeName: "pub:WHSE_WILDLIFE_MANAGEMENT.WAA_WILDLIFE_MGMT_UNITS_SVW",
+      nameField: "WILDLIFE_MGMT_UNIT_ID",
+      geometryField: "GEOMETRY",
+    },
+    /* The province serves WFS, not ArcGIS, and its 225 units carry 2.08 million
+       vertices: the map draws North Ground's stored drawings of the certified copy. */
     mapGeometry: "stored",
   },
   /* United States, first wave. Described in `united-states/layers.ts`; each is
