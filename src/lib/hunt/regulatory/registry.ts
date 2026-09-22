@@ -18,6 +18,7 @@ import {
   evaluateQuebec, QUEBEC_OVERLAY_DESCRIPTION, QUEBEC_OVERLAYS, quebecCoverageReport, quebecSourceRecords,
 } from "./quebec.ts";
 import { albertaCoverageReport, albertaSourceRecords, evaluateAlberta } from "./alberta.ts";
+import { evaluateMontana, montanaCoverageReport, montanaRestrictionTokensFor, montanaSourceRecords, MONTANA_OVERLAYS } from "./us-montana.ts";
 
 /**
  * Which jurisdictions North Ground holds certified rules for, and how each is
@@ -463,7 +464,24 @@ const BRITISH_COLUMBIA = conditionalEntry({
   sourceRecords: britishColumbiaSourceRecords,
 });
 
-export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA];
+/* Montana's upland game bird rules. Reached only once Montana's layers are
+   served, which waits on these rules' certification. */
+const MONTANA = conditionalEntry({
+  jurisdictionId: "jurisdiction:us-mt",
+  jurisdictionName: "Montana",
+  unitTerm: "Upland Game Bird District",
+  evaluate: evaluateMontana,
+  coverageReport: montanaCoverageReport,
+  sourceRecords: montanaSourceRecords,
+  overlays: {
+    catalogue: MONTANA_OVERLAYS,
+    tokensFor: montanaRestrictionTokensFor,
+    describedAs: "Indian reservations, national parks, refuges and other restricted areas, and the Carbon County partridge portion",
+    layersDescribedAs: "reservation, restricted-area and partridge-portion layers",
+  },
+});
+
+export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, MONTANA];
 
 /**
  * The entry for a jurisdiction — only while its zone layer is served.

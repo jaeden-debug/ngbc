@@ -93,13 +93,17 @@ test("a Montana grouse question placed in a deer and elk district is asked again
           return { ...located, zoneId: "management_zone:us-mt-upland-east-of-the-continental-divide" as ZoneResolution["zoneId"], officialName: "East of the Continental Divide", sourceId: UPLAND.sourceId };
         },
         weather: async () => ({ status: "UNAVAILABLE", summary: "Not asked in this test.", date: "2026-10-10" as never, sourceId: "source:test-weather" as never }),
+        // Montana's reservation and restricted-area layers, answered as "nothing here".
+        fetch: (async () => Response.json({ features: [] })) as unknown as typeof fetch,
       },
     );
     assert.deepEqual(placedIn, [UPLAND.id]);
     assert.equal(evaluation.zone.officialName, "East of the Continental Divide");
     assert.equal(evaluation.zone.jurisdictionId, "jurisdiction:us-mt");
-    // Montana's rules are not certified, so the answer is the coverage gap — not a borrowed Canadian rule.
-    assert.equal(evaluation.regulation.status, "UNKNOWN");
+    // Montana's own upland rules answer it — mountain grouse, the same for everyone, no question asked.
+    assert.equal(evaluation.completeness, "RESOLVED");
+    assert.equal(evaluation.regulation.status, "CONDITIONAL");
+    assert.match(evaluation.regulation.summary, /East of the Continental Divide/);
   } finally {
     [HD, UPLAND].forEach((layer, index) => { layer.serving = served[index].serving; layer.rulesServing = served[index].rules; });
   }

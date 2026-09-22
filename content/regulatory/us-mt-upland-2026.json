@@ -1,0 +1,1664 @@
+{
+  "schemaVersion": 1,
+  "bundleId": "regulatory_bundle:us-mt-upland-2026",
+  "jurisdictionId": "jurisdiction:us-mt",
+  "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+  "retrievedAt": "2026-09-22",
+  "contentHash": "sha256:d6fed4736332f3568a88ab29fd3c93552d3379e51c24b9147801d91e00255d62",
+  "certifiedPeriod": {
+    "from": "2026-03-01",
+    "to": "2027-02-28",
+    "reason": "Regulations for season dates, structures, and restrictions were adopted by the Fish and Wildlife Commission on Dec. 4, 2025, under the authority granted in MCA 87-1-301 and are valid March 1, 2026, through Feb. 28, 2027."
+  },
+  "absence": {
+    "meaning": "UNKNOWN",
+    "excludedCombination": "CLOSED",
+    "statedAs": "Montana's upland seasons are statewide. A combination the booklet gives no season to on a date — a nonresident on public land before the tenth day, a sharp-tailed grouse west of the Divide — is closed by the booklet's own table.",
+    "section": "pp. 9–10",
+    "sourceId": "source:us-mt-upland-regulations-2026"
+  },
+  "officialUnitCount": 2,
+  "units": [
+    {
+      "identifier": "East of the Continental Divide",
+      "zoneId": "management_zone:us-mt-upland-east-of-the-continental-divide"
+    },
+    {
+      "identifier": "West of the Continental Divide",
+      "zoneId": "management_zone:us-mt-upland-west-of-the-continental-divide"
+    }
+  ],
+  "specialGeographies": [
+    {
+      "id": "us-mt-reservation-state-licence-closed",
+      "name": "Indian reservation closed to state-licensed upland game bird hunting",
+      "resolution": "OVERLAY",
+      "statedAs": "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana’s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana.",
+      "candidateAreas": [
+        "East of the Continental Divide",
+        "West of the Continental Divide"
+      ]
+    },
+    {
+      "id": "us-mt-closed-to-all-hunting",
+      "name": "Gates of the Mountains Game Preserve",
+      "resolution": "OVERLAY",
+      "statedAs": "Closed to all hunting",
+      "candidateAreas": [
+        "East of the Continental Divide"
+      ]
+    },
+    {
+      "id": "us-mt-carbon-county-partridge-portion",
+      "name": "Portion of Carbon County (partridge)",
+      "resolution": "OVERLAY",
+      "statedAs": "Portion of Carbon County within the following boundary: Beginning at the junction of Route 72 and the Wyoming-Montana state line, then northerly along said route to Bridger, then northerly along Hwy. 310 to Edgar, then east on the Edgar-Pryor Road to the Crow Indian Reservation boundary, then southerly and easterly along said boundary to the west shore of Big Horn Lake, then southerly along said shore to the Wyoming-Montana state line, then west along said state line to its junction with Route 72, the point of beginning.",
+      "candidateAreas": [
+        "East of the Continental Divide"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "source:us-mt-upland-regulations-2026",
+      "authority": "Montana Fish, Wildlife & Parks",
+      "title": "2026 Montana Upland Game Bird Hunting Regulations",
+      "url": "https://fwp.mt.gov/binaries/content/assets/fwp/hunt/regulations/2026/2026-upgbrd-final-for-web.pdf",
+      "licence": "Published regulations; North Ground records facts — dates, areas, limits — with the page as provenance.",
+      "extractedWith": "pypdf 6.19.0",
+      "sourceHashes": {
+        "pdf": "sha256:8786f83ecbe6de5f55176cc40b213a68fc08bd6e70a64a29911210bbbc82be0e",
+        "overlays": "sha256:29bb48639e96f849f5dcb4cc39ea8e581faac9e19a758be2117e7329ea04a883"
+      },
+      "conditions": [
+        {
+          "id": "mt-upland-licence",
+          "sourceId": "source:us-mt-upland-regulations-2026",
+          "sourceSection": "p. 2, License Chart",
+          "text": "An Upland Game Bird License, with the Base Hunting and Conservation licenses it requires, is needed. North Ground has not verified what you hold."
+        },
+        {
+          "id": "mt-landowner-permission",
+          "sourceId": "source:us-mt-upland-regulations-2026",
+          "sourceSection": "p. 4, Landowner Permission (MCA 87-6-415)",
+          "text": "Hunting on private property requires the permission of the landowner, the lessee, or their agents, whether or not the land is posted."
+        },
+        {
+          "id": "mt-youth-pheasant",
+          "sourceId": "source:us-mt-upland-regulations-2026",
+          "sourceSection": "p. 10, Ring-necked Pheasant",
+          "text": "Legally licensed youth ages 15 and under when accompanied by a nonhunting adult at least 18 years of age. Mentors for Apprentice Hunters must be at least 21 years of age."
+        }
+      ]
+    }
+  ],
+  "sourceRecords": [
+    {
+      "id": "source:us-mt-upland-regulations-2026",
+      "authority": "Montana Fish, Wildlife & Parks",
+      "title": "2026 Montana Upland Game Bird Hunting Regulations",
+      "url": "https://fwp.mt.gov/binaries/content/assets/fwp/hunt/regulations/2026/2026-upgbrd-final-for-web.pdf"
+    },
+    {
+      "id": "source:us-mt-fwp-restricted-areas-service",
+      "authority": "Montana Fish, Wildlife & Parks",
+      "title": "Hunting district restricted areas and portions (map service)",
+      "url": "https://fwp-gis.mt.gov/arcgis/rest/services/admbnd/huntingDistricts/MapServer"
+    },
+    {
+      "id": "source:us-census-tigerweb-federal-reservations-2026",
+      "authority": "U.S. Census Bureau",
+      "title": "TIGERweb Federal American Indian Reservations (January 1, 2026 vintage)",
+      "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/AIANNHA/MapServer/2",
+      "licence": "A work of the United States Government, not subject to copyright in the United States (17 U.S.C. § 105)."
+    },
+    {
+      "id": "source:us-mt-upland-district-service",
+      "authority": "Montana Fish, Wildlife & Parks",
+      "title": "Upland Game Bird Districts (map service)",
+      "url": "https://fwp-gis.mt.gov/arcgis/rest/services/admbnd/huntingDistricts/MapServer/31"
+    }
+  ],
+  "limitations": [
+    "This is a state-licensed recreational result. It does not describe hunting under tribal authority or under treaty or other rights, which North Ground does not evaluate.",
+    "Reservation boundaries are the U.S. Census Bureau's; near a boundary, or on the Flathead and Crow reservations, the tribal government and Montana Fish, Wildlife & Parks decide what applies.",
+    "Montana's district map is a guide to the Continental Divide line in its regulations. Near the Divide, confirm which side you are on.",
+    "National parks, wildlife refuges, military land and other areas Montana lists as restricted have their own rules; North Ground does not state a season inside them.",
+    "The Fish and Wildlife Commission reserves the authority to amend the seasons, limits and regulations during the year.",
+    "Sage grouse, ptarmigan, turkey and falconry seasons are not encoded here."
+  ],
+  "groups": [
+    {
+      "id": "regulatory_group:us-mt-upland-2026-east",
+      "officialSpec": "East of the Continental Divide",
+      "zoneIds": [
+        "management_zone:us-mt-upland-east-of-the-continental-divide"
+      ]
+    },
+    {
+      "id": "regulatory_group:us-mt-upland-2026-statewide",
+      "officialSpec": "Statewide",
+      "zoneIds": [
+        "management_zone:us-mt-upland-east-of-the-continental-divide",
+        "management_zone:us-mt-upland-west-of-the-continental-divide"
+      ]
+    },
+    {
+      "id": "regulatory_group:us-mt-upland-2026-west",
+      "officialSpec": "West of the Continental Divide",
+      "zoneIds": [
+        "management_zone:us-mt-upland-west-of-the-continental-divide"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ruffed-grouse-statewide",
+      "speciesId": "species:ruffed-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Mountain grouse season",
+      "seasonPhrase": "Sep. 01 - Jan. 01",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-01-01",
+          "statedAs": "Sep. 01 - Jan. 01"
+        }
+      ],
+      "limits": {
+        "daily": 3,
+        "possession": 12,
+        "combined": true,
+        "combinedWithNames": [
+          "blue grouse",
+          "ruffed grouse",
+          "Franklin’s grouse"
+        ],
+        "statedAs": "3 in aggregate daily (blue, ruffed and Franklin’s grouse); possession limit four times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Mountain Grouse"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ruffed-grouse-reservation-closed",
+      "speciesId": "species:ruffed-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana’s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana. This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": true,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Indian reservations closed to state-licensed upland game bird hunting",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Indian reservation",
+      "seasonPhrase": "Closed to state-licensed upland game bird hunting",
+      "windows": [],
+      "sourceSection": "p. 4, Indian Reservations (CR)",
+      "closureStatedAs": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ruffed-grouse-closed-to-all-hunting",
+      "speciesId": "species:ruffed-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "Gates of the Mountains Game Preserve: closed to all hunting."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": true,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Gates of the Mountains Game Preserve",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-closed-to-all-hunting"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Gates of the Mountains Game Preserve",
+      "seasonPhrase": "Closed to all hunting",
+      "windows": [],
+      "sourceSection": "p. 10, Closed or Restricted Areas",
+      "closureStatedAs": "Closed to all hunting (p. 10)."
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-spruce-grouse-statewide",
+      "speciesId": "species:spruce-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "Montana calls the spruce grouse “Franklin’s grouse” (“spruce (Franklin) grouse”, p. 2)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Mountain grouse season",
+      "seasonPhrase": "Sep. 01 - Jan. 01",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-01-01",
+          "statedAs": "Sep. 01 - Jan. 01"
+        }
+      ],
+      "limits": {
+        "daily": 3,
+        "possession": 12,
+        "combined": true,
+        "combinedWithNames": [
+          "blue grouse",
+          "ruffed grouse",
+          "Franklin’s grouse"
+        ],
+        "statedAs": "3 in aggregate daily (blue, ruffed and Franklin’s grouse); possession limit four times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Mountain Grouse"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-spruce-grouse-reservation-closed",
+      "speciesId": "species:spruce-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana’s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana. This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": true,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Indian reservations closed to state-licensed upland game bird hunting",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Indian reservation",
+      "seasonPhrase": "Closed to state-licensed upland game bird hunting",
+      "windows": [],
+      "sourceSection": "p. 4, Indian Reservations (CR)",
+      "closureStatedAs": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-spruce-grouse-closed-to-all-hunting",
+      "speciesId": "species:spruce-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "Gates of the Mountains Game Preserve: closed to all hunting."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": true,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Gates of the Mountains Game Preserve",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-closed-to-all-hunting"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Gates of the Mountains Game Preserve",
+      "seasonPhrase": "Closed to all hunting",
+      "windows": [],
+      "sourceSection": "p. 10, Closed or Restricted Areas",
+      "closureStatedAs": "Closed to all hunting (p. 10)."
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-gray-partridge-statewide-resident",
+      "speciesId": "species:gray-partridge",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "Montana’s “Hungarian partridge” is the gray partridge."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide, except the described portion of Carbon County",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting",
+            "us-mt-carbon-county-partridge-portion"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "Partridge season",
+      "seasonPhrase": "Sep. 01 - Jan. 01",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-01-01",
+          "statedAs": "Sep. 01 - Jan. 01"
+        }
+      ],
+      "limits": {
+        "daily": 8,
+        "possession": 32,
+        "combined": true,
+        "combinedWithNames": [
+          "Hungarian partridge",
+          "chukar partridge"
+        ],
+        "statedAs": "8 in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Partridge"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-gray-partridge-statewide-nonresident-private",
+      "speciesId": "species:gray-partridge",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "Montana’s “Hungarian partridge” is the gray partridge."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide, except the described portion of Carbon County",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting",
+            "us-mt-carbon-county-partridge-portion"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS"
+      },
+      "seasonLabel": "Partridge season",
+      "seasonPhrase": "Sep. 01 - Jan. 01",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-01-01",
+          "statedAs": "Sep. 01 - Jan. 01"
+        }
+      ],
+      "limits": {
+        "daily": 8,
+        "possession": 32,
+        "combined": true,
+        "combinedWithNames": [
+          "Hungarian partridge",
+          "chukar partridge"
+        ],
+        "statedAs": "8 in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Partridge"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-gray-partridge-statewide-nonresident-public",
+      "speciesId": "species:gray-partridge",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "Montana’s “Hungarian partridge” is the gray partridge."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide, except the described portion of Carbon County",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting",
+            "us-mt-carbon-county-partridge-portion"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS"
+      },
+      "seasonLabel": "Partridge season",
+      "seasonPhrase": "Sep. 11 - Jan. 01",
+      "windows": [
+        {
+          "opensIso": "2026-09-11",
+          "closesIso": "2027-01-01",
+          "statedAs": "Sep. 11 - Jan. 01"
+        }
+      ],
+      "limits": {
+        "daily": 8,
+        "possession": 32,
+        "combined": true,
+        "combinedWithNames": [
+          "Hungarian partridge",
+          "chukar partridge"
+        ],
+        "statedAs": "8 in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Partridge"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-gray-partridge-carbon-county-resident",
+      "speciesId": "species:gray-partridge",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "Montana’s “Hungarian partridge” is the gray partridge.",
+        "Portion of Carbon County within the following boundary: Beginning at the junction of Route 72 and the Wyoming-Montana state line, then northerly along said route to Bridger, then northerly along Hwy. 310 to Edgar, then east on the Edgar-Pryor Road to the Crow Indian Reservation boundary, then southerly and easterly along said boundary to the west shore of Big Horn Lake, then southerly along said shore to the Wyoming-Montana state line, then west along said state line to its junction with Route 72, the point of beginning."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-east",
+      "geography": {
+        "statedAs": "Portion of Carbon County (p. 9)",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-carbon-county-partridge-portion"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "Partridge season (portion of Carbon County)",
+      "seasonPhrase": "Sep. 01 - Jan. 10",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-01-10",
+          "statedAs": "Sep. 01 - Jan. 10"
+        }
+      ],
+      "limits": {
+        "daily": 8,
+        "possession": 32,
+        "combined": true,
+        "combinedWithNames": [
+          "Hungarian partridge",
+          "chukar partridge"
+        ],
+        "statedAs": "8 in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Partridge"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-gray-partridge-carbon-county-nonresident-private",
+      "speciesId": "species:gray-partridge",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "Montana’s “Hungarian partridge” is the gray partridge.",
+        "Portion of Carbon County within the following boundary: Beginning at the junction of Route 72 and the Wyoming-Montana state line, then northerly along said route to Bridger, then northerly along Hwy. 310 to Edgar, then east on the Edgar-Pryor Road to the Crow Indian Reservation boundary, then southerly and easterly along said boundary to the west shore of Big Horn Lake, then southerly along said shore to the Wyoming-Montana state line, then west along said state line to its junction with Route 72, the point of beginning."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-east",
+      "geography": {
+        "statedAs": "Portion of Carbon County (p. 9)",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-carbon-county-partridge-portion"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS"
+      },
+      "seasonLabel": "Partridge season (portion of Carbon County)",
+      "seasonPhrase": "Sep. 01 - Jan. 10",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-01-10",
+          "statedAs": "Sep. 01 - Jan. 10"
+        }
+      ],
+      "limits": {
+        "daily": 8,
+        "possession": 32,
+        "combined": true,
+        "combinedWithNames": [
+          "Hungarian partridge",
+          "chukar partridge"
+        ],
+        "statedAs": "8 in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Partridge"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-gray-partridge-carbon-county-nonresident-public",
+      "speciesId": "species:gray-partridge",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "Montana’s “Hungarian partridge” is the gray partridge.",
+        "Portion of Carbon County within the following boundary: Beginning at the junction of Route 72 and the Wyoming-Montana state line, then northerly along said route to Bridger, then northerly along Hwy. 310 to Edgar, then east on the Edgar-Pryor Road to the Crow Indian Reservation boundary, then southerly and easterly along said boundary to the west shore of Big Horn Lake, then southerly along said shore to the Wyoming-Montana state line, then west along said state line to its junction with Route 72, the point of beginning."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-east",
+      "geography": {
+        "statedAs": "Portion of Carbon County (p. 9)",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-carbon-county-partridge-portion"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS"
+      },
+      "seasonLabel": "Partridge season (portion of Carbon County)",
+      "seasonPhrase": "Sep. 11 - Jan. 10",
+      "windows": [
+        {
+          "opensIso": "2026-09-11",
+          "closesIso": "2027-01-10",
+          "statedAs": "Sep. 11 - Jan. 10"
+        }
+      ],
+      "limits": {
+        "daily": 8,
+        "possession": 32,
+        "combined": true,
+        "combinedWithNames": [
+          "Hungarian partridge",
+          "chukar partridge"
+        ],
+        "statedAs": "8 in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Partridge"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-gray-partridge-reservation-closed",
+      "speciesId": "species:gray-partridge",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana’s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana. This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": true,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Indian reservations closed to state-licensed upland game bird hunting",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Indian reservation",
+      "seasonPhrase": "Closed to state-licensed upland game bird hunting",
+      "windows": [],
+      "sourceSection": "p. 4, Indian Reservations (CR)",
+      "closureStatedAs": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-gray-partridge-closed-to-all-hunting",
+      "speciesId": "species:gray-partridge",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "Gates of the Mountains Game Preserve: closed to all hunting."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": true,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Gates of the Mountains Game Preserve",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-closed-to-all-hunting"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Gates of the Mountains Game Preserve",
+      "seasonPhrase": "Closed to all hunting",
+      "windows": [],
+      "sourceSection": "p. 10, Closed or Restricted Areas",
+      "closureStatedAs": "Closed to all hunting (p. 10)."
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-sharp-tailed-grouse-east-resident",
+      "speciesId": "species:sharp-tailed-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-east",
+      "geography": {
+        "statedAs": "East of the Continental Divide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "Sharp-tailed grouse season",
+      "seasonPhrase": "Sep. 01 - Jan. 01",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-01-01",
+          "statedAs": "Sep. 01 - Jan. 01"
+        }
+      ],
+      "limits": {
+        "daily": 4,
+        "possession": 16,
+        "combined": false,
+        "statedAs": "4 daily; possession limit four times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Sharp-tailed Grouse"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-sharp-tailed-grouse-east-nonresident-private",
+      "speciesId": "species:sharp-tailed-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-east",
+      "geography": {
+        "statedAs": "East of the Continental Divide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS"
+      },
+      "seasonLabel": "Sharp-tailed grouse season",
+      "seasonPhrase": "Sep. 01 - Jan. 01",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-01-01",
+          "statedAs": "Sep. 01 - Jan. 01"
+        }
+      ],
+      "limits": {
+        "daily": 4,
+        "possession": 16,
+        "combined": false,
+        "statedAs": "4 daily; possession limit four times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Sharp-tailed Grouse"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-sharp-tailed-grouse-east-nonresident-public",
+      "speciesId": "species:sharp-tailed-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-east",
+      "geography": {
+        "statedAs": "East of the Continental Divide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS"
+      },
+      "seasonLabel": "Sharp-tailed grouse season",
+      "seasonPhrase": "Sep. 11 - Jan. 01",
+      "windows": [
+        {
+          "opensIso": "2026-09-11",
+          "closesIso": "2027-01-01",
+          "statedAs": "Sep. 11 - Jan. 01"
+        }
+      ],
+      "limits": {
+        "daily": 4,
+        "possession": 16,
+        "combined": false,
+        "statedAs": "4 daily; possession limit four times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Sharp-tailed Grouse"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-sharp-tailed-grouse-west-closed",
+      "speciesId": "species:sharp-tailed-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": true,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-west",
+      "geography": {
+        "statedAs": "West of the Continental Divide",
+        "include": {
+          "ghas": [
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "West of the Continental Divide",
+      "seasonPhrase": "Closed West of the Continental Divide.",
+      "windows": [],
+      "closureStatedAs": "Closed West of the Continental Divide (p. 9).",
+      "sourceSection": "p. 9, Sharp-tailed Grouse; p. 2, Highlights"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-sharp-tailed-grouse-reservation-closed",
+      "speciesId": "species:sharp-tailed-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana’s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana. This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": true,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Indian reservations closed to state-licensed upland game bird hunting",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Indian reservation",
+      "seasonPhrase": "Closed to state-licensed upland game bird hunting",
+      "windows": [],
+      "sourceSection": "p. 4, Indian Reservations (CR)",
+      "closureStatedAs": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-sharp-tailed-grouse-closed-to-all-hunting",
+      "speciesId": "species:sharp-tailed-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "Gates of the Mountains Game Preserve: closed to all hunting."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": true,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Gates of the Mountains Game Preserve",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-closed-to-all-hunting"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Gates of the Mountains Game Preserve",
+      "seasonPhrase": "Closed to all hunting",
+      "windows": [],
+      "sourceSection": "p. 10, Closed or Restricted Areas",
+      "closureStatedAs": "Closed to all hunting (p. 10)."
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-youth",
+      "speciesId": "species:ring-necked-pheasant",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-youth-pheasant"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "HUNTER_AGE": "YOUTH_15_AND_UNDER"
+      },
+      "seasonLabel": "Youth-only pheasant weekend",
+      "seasonPhrase": "Sep. 19 - Sep. 20",
+      "windows": [
+        {
+          "opensIso": "2026-09-19",
+          "closesIso": "2026-09-20",
+          "statedAs": "Sep. 19 - Sep. 20"
+        }
+      ],
+      "limits": {
+        "daily": 3,
+        "possession": 9,
+        "combined": false,
+        "statedAs": "3 cock pheasants daily; possession limit three times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 10, Ring-necked Pheasant"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-resident",
+      "speciesId": "species:ring-necked-pheasant",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "RESIDENT"
+      },
+      "seasonLabel": "Pheasant season",
+      "seasonPhrase": "Oct. 10 - Jan. 1",
+      "windows": [
+        {
+          "opensIso": "2026-10-10",
+          "closesIso": "2027-01-01",
+          "statedAs": "Oct. 10 - Jan. 1"
+        }
+      ],
+      "limits": {
+        "daily": 3,
+        "possession": 9,
+        "combined": false,
+        "statedAs": "3 cock pheasants daily; possession limit three times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 10, Ring-necked Pheasant"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-nonresident-season-private",
+      "speciesId": "species:ring-necked-pheasant",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "LICENCE_TYPE": "SEASON"
+      },
+      "seasonLabel": "Pheasant season (season license)",
+      "seasonPhrase": "Oct. 10 - Jan. 1",
+      "windows": [
+        {
+          "opensIso": "2026-10-10",
+          "closesIso": "2027-01-01",
+          "statedAs": "Oct. 10 - Jan. 1"
+        }
+      ],
+      "limits": {
+        "daily": 3,
+        "possession": 9,
+        "combined": false,
+        "statedAs": "3 cock pheasants daily; possession limit three times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 10, Ring-necked Pheasant"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-nonresident-season-public",
+      "speciesId": "species:ring-necked-pheasant",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS",
+        "LICENCE_TYPE": "SEASON"
+      },
+      "seasonLabel": "Pheasant season (season license)",
+      "seasonPhrase": "Oct. 20 - Jan. 1",
+      "windows": [
+        {
+          "opensIso": "2026-10-20",
+          "closesIso": "2027-01-01",
+          "statedAs": "Oct. 20 - Jan. 1"
+        }
+      ],
+      "limits": {
+        "daily": 3,
+        "possession": 9,
+        "combined": false,
+        "statedAs": "3 cock pheasants daily; possession limit three times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 10, Ring-necked Pheasant"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-nonresident-3-day-private",
+      "speciesId": "species:ring-necked-pheasant",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "LICENCE_TYPE": "THREE_DAY"
+      },
+      "seasonLabel": "Pheasant season (3-day license)",
+      "seasonPhrase": "Oct 17 - Jan 1",
+      "windows": [
+        {
+          "opensIso": "2026-10-17",
+          "closesIso": "2027-01-01",
+          "statedAs": "Oct 17 - Jan 1"
+        }
+      ],
+      "limits": {
+        "daily": 3,
+        "possession": 9,
+        "combined": false,
+        "statedAs": "3 cock pheasants daily; possession limit three times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 10, Ring-necked Pheasant"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-nonresident-3-day-public",
+      "speciesId": "species:ring-necked-pheasant",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS",
+        "LICENCE_TYPE": "THREE_DAY"
+      },
+      "seasonLabel": "Pheasant season (3-day license)",
+      "seasonPhrase": "Oct. 20 - Jan. 1",
+      "windows": [
+        {
+          "opensIso": "2026-10-20",
+          "closesIso": "2027-01-01",
+          "statedAs": "Oct. 20 - Jan. 1"
+        }
+      ],
+      "limits": {
+        "daily": 3,
+        "possession": 9,
+        "combined": false,
+        "statedAs": "3 cock pheasants daily; possession limit three times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 10, Ring-necked Pheasant"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-reservation-closed",
+      "speciesId": "species:ring-necked-pheasant",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana’s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana. This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": true,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Indian reservations closed to state-licensed upland game bird hunting",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Indian reservation",
+      "seasonPhrase": "Closed to state-licensed upland game bird hunting",
+      "windows": [],
+      "sourceSection": "p. 4, Indian Reservations (CR)",
+      "closureStatedAs": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-closed-to-all-hunting",
+      "speciesId": "species:ring-necked-pheasant",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "Gates of the Mountains Game Preserve: closed to all hunting."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": true,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Gates of the Mountains Game Preserve",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-closed-to-all-hunting"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Gates of the Mountains Game Preserve",
+      "seasonPhrase": "Closed to all hunting",
+      "windows": [],
+      "sourceSection": "p. 10, Closed or Restricted Areas",
+      "closureStatedAs": "Closed to all hunting (p. 10)."
+    }
+  ]
+}
