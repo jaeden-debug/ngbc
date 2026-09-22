@@ -48,8 +48,14 @@ test("a registered layer that is not served is never presented", () => {
 });
 
 test("a zone from a jurisdiction with no registered layer is not presented at all", () => {
-  assert.deepEqual(layerForResolution({ status: "RESOLVED", jurisdictionId: "jurisdiction:ca-sk" }), { kind: "UNREGISTERED" });
+  assert.deepEqual(layerForResolution({ status: "RESOLVED", jurisdictionId: "jurisdiction:ca-nb" }), { kind: "UNREGISTERED" });
   assert.deepEqual(layerForResolution({ status: "RESOLVED" }), { kind: "UNREGISTERED" });
+});
+
+test("a registered but unserved layer is named, never presented as a served zone", () => {
+  // Saskatchewan is registered (live service, unserved until certified).
+  const presented = layerForResolution({ status: "RESOLVED", jurisdictionId: "jurisdiction:ca-sk" });
+  assert.equal(presented.kind, "NOT_SERVING");
 });
 
 test("a Manitoba zone is presented in Manitoba's terms once its layer is served", () => {

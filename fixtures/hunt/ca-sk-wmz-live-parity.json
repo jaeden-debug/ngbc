@@ -1,0 +1,4187 @@
+{
+  "layer": "layer:ca-sk-wmz",
+  "jurisdiction": "jurisdiction:ca-sk",
+  "authority": "Saskatchewan Ministry of Environment",
+  "service": "https://gis.saskatchewan.ca/arcgis/rest/services/WildlifeManagement/MapServer/0",
+  "sourceVersion": "WildlifeManagement/MapServer/0, boundaries last revised 2014-03-27",
+  "resolution": "LIVE_SERVICE (no copy stored)",
+  "legalStanding": "DERIVED_FROM_LEGAL_DESCRIPTION",
+  "certifiedOn": "2026-09-22",
+  "units": 83,
+  "quarantined": [],
+  "points": 265,
+  "counts": {
+    "across": 83,
+    "edge": 83,
+    "inside": 83,
+    "invalid": 3,
+    "outside": 5,
+    "special": 8
+  },
+  "overlapsInAuthorityGeometry": 0,
+  "disagreements": 0,
+  "latencyMs": {
+    "authorityMedian": 98,
+    "authorityP90": 114,
+    "productionMedian": 106,
+    "productionP90": 141
+  },
+  "results": [
+    {
+      "kind": "across",
+      "label": "across 1",
+      "latitude": 49.6124879,
+      "longitude": -105.9214724,
+      "geometry": [
+        "4"
+      ],
+      "official": [
+        "4"
+      ],
+      "production": [
+        "4"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 2E",
+      "latitude": 48.9983822,
+      "longitude": -107.5107982,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 2W",
+      "latitude": 49.384284,
+      "longitude": -107.7534388,
+      "geometry": [
+        "2E"
+      ],
+      "official": [
+        "2E"
+      ],
+      "production": [
+        "2E"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 3",
+      "latitude": 49.3806254,
+      "longitude": -109.0586491,
+      "geometry": [
+        "6"
+      ],
+      "official": [
+        "6"
+      ],
+      "production": [
+        "6"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 4",
+      "latitude": 49.4349604,
+      "longitude": -106.729611,
+      "geometry": [
+        "2E"
+      ],
+      "official": [
+        "2E"
+      ],
+      "production": [
+        "2E"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 5",
+      "latitude": 49.7261094,
+      "longitude": -107.7451285,
+      "geometry": [
+        "2W"
+      ],
+      "official": [
+        "2W"
+      ],
+      "production": [
+        "2W"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 6",
+      "latitude": 49.435766,
+      "longitude": -109.0347877,
+      "geometry": [
+        "3"
+      ],
+      "official": [
+        "3"
+      ],
+      "production": [
+        "3"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 7E",
+      "latitude": 49.5851807,
+      "longitude": -109.7652584,
+      "geometry": [
+        "7W"
+      ],
+      "official": [
+        "7W"
+      ],
+      "production": [
+        "7W"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 7W",
+      "latitude": 49.6832883,
+      "longitude": -109.7387626,
+      "geometry": [
+        "7E"
+      ],
+      "official": [
+        "7E"
+      ],
+      "production": [
+        "7E"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 8",
+      "latitude": 50.3447108,
+      "longitude": -110.0064702,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 9",
+      "latitude": 50.3984831,
+      "longitude": -109.2583747,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 10",
+      "latitude": 50.8139444,
+      "longitude": -108.9301812,
+      "geometry": [
+        "12"
+      ],
+      "official": [
+        "12"
+      ],
+      "production": [
+        "12"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 11",
+      "latitude": 50.658914,
+      "longitude": -109.6779181,
+      "geometry": [
+        "8"
+      ],
+      "official": [
+        "8"
+      ],
+      "production": [
+        "8"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 12",
+      "latitude": 50.6964823,
+      "longitude": -108.6316825,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 13",
+      "latitude": 50.6434551,
+      "longitude": -107.7371474,
+      "geometry": [
+        "13"
+      ],
+      "official": [
+        "13"
+      ],
+      "production": [
+        "13"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 14E",
+      "latitude": 50.8669226,
+      "longitude": -107.3904707,
+      "geometry": [
+        "24"
+      ],
+      "official": [
+        "24"
+      ],
+      "production": [
+        "24"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 14W",
+      "latitude": 51.269224,
+      "longitude": -109.7802372,
+      "geometry": [
+        "26"
+      ],
+      "official": [
+        "26"
+      ],
+      "production": [
+        "26"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 15",
+      "latitude": 49.6699927,
+      "longitude": -103.9654001,
+      "geometry": [
+        "18"
+      ],
+      "official": [
+        "18"
+      ],
+      "production": [
+        "18"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 16",
+      "latitude": 49.1309702,
+      "longitude": -102.8918982,
+      "geometry": [
+        "31"
+      ],
+      "official": [
+        "31"
+      ],
+      "production": [
+        "31"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 17",
+      "latitude": 49.8832624,
+      "longitude": -103.4365577,
+      "geometry": [
+        "16"
+      ],
+      "official": [
+        "16"
+      ],
+      "production": [
+        "16"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 18",
+      "latitude": 50.3988773,
+      "longitude": -104.8941229,
+      "geometry": [
+        "RWMZ"
+      ],
+      "official": [
+        "RWMZ"
+      ],
+      "production": [
+        "RWMZ"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 19",
+      "latitude": 49.9284467,
+      "longitude": -105.9441517,
+      "geometry": [
+        "4"
+      ],
+      "official": [
+        "4"
+      ],
+      "production": [
+        "4"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 21",
+      "latitude": 51.3505794,
+      "longitude": -104.5357244,
+      "geometry": [
+        "38"
+      ],
+      "official": [
+        "38"
+      ],
+      "production": [
+        "38"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 22",
+      "latitude": 51.2643336,
+      "longitude": -105.981058,
+      "geometry": [
+        "23"
+      ],
+      "official": [
+        "23"
+      ],
+      "production": [
+        "23"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 23",
+      "latitude": 51.3809184,
+      "longitude": -106.156726,
+      "geometry": [
+        "22"
+      ],
+      "official": [
+        "22"
+      ],
+      "production": [
+        "22"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 24",
+      "latitude": 51.4924868,
+      "longitude": -107.5975182,
+      "geometry": [
+        "29"
+      ],
+      "official": [
+        "29"
+      ],
+      "production": [
+        "29"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 25",
+      "latitude": 51.2396467,
+      "longitude": -109.0297314,
+      "geometry": [
+        "14W"
+      ],
+      "official": [
+        "14W"
+      ],
+      "production": [
+        "14W"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 26",
+      "latitude": 51.6710719,
+      "longitude": -110.0071583,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 27",
+      "latitude": 51.9213993,
+      "longitude": -109.1422638,
+      "geometry": [
+        "26"
+      ],
+      "official": [
+        "26"
+      ],
+      "production": [
+        "26"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 28",
+      "latitude": 51.7056548,
+      "longitude": -108.4080106,
+      "geometry": [
+        "25"
+      ],
+      "official": [
+        "25"
+      ],
+      "production": [
+        "25"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 29",
+      "latitude": 51.5025169,
+      "longitude": -107.7411002,
+      "geometry": [
+        "24"
+      ],
+      "official": [
+        "24"
+      ],
+      "production": [
+        "24"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 30",
+      "latitude": 51.9012026,
+      "longitude": -106.0738242,
+      "geometry": [
+        "22"
+      ],
+      "official": [
+        "22"
+      ],
+      "production": [
+        "22"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 31",
+      "latitude": 49.2324,
+      "longitude": -102.3337463,
+      "geometry": [
+        "16"
+      ],
+      "official": [
+        "16"
+      ],
+      "production": [
+        "16"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 32",
+      "latitude": 49.173422,
+      "longitude": -101.7484461,
+      "geometry": [
+        "31"
+      ],
+      "official": [
+        "31"
+      ],
+      "production": [
+        "31"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 33",
+      "latitude": 50.0785859,
+      "longitude": -102.5839538,
+      "geometry": [
+        "34"
+      ],
+      "official": [
+        "34"
+      ],
+      "production": [
+        "34"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 34",
+      "latitude": 49.575801,
+      "longitude": -101.7407207,
+      "geometry": [
+        "32"
+      ],
+      "official": [
+        "32"
+      ],
+      "production": [
+        "32"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 35",
+      "latitude": 50.2052899,
+      "longitude": -101.7748797,
+      "geometry": [
+        "34"
+      ],
+      "official": [
+        "34"
+      ],
+      "production": [
+        "34"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 36",
+      "latitude": 50.7253431,
+      "longitude": -102.630952,
+      "geometry": [
+        "37"
+      ],
+      "official": [
+        "37"
+      ],
+      "production": [
+        "37"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 37",
+      "latitude": 51.1136139,
+      "longitude": -101.5367527,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 38",
+      "latitude": 51.3865589,
+      "longitude": -104.5397793,
+      "geometry": [
+        "21"
+      ],
+      "official": [
+        "21"
+      ],
+      "production": [
+        "21"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 39",
+      "latitude": 52.0006892,
+      "longitude": -103.0550378,
+      "geometry": [
+        "48"
+      ],
+      "official": [
+        "48"
+      ],
+      "production": [
+        "48"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 40",
+      "latitude": 51.7635381,
+      "longitude": -104.1137561,
+      "geometry": [
+        "38"
+      ],
+      "official": [
+        "38"
+      ],
+      "production": [
+        "38"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 41",
+      "latitude": 52.640242,
+      "longitude": -105.5828368,
+      "geometry": [
+        "42W"
+      ],
+      "official": [
+        "42W"
+      ],
+      "production": [
+        "42W"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 42E",
+      "latitude": 52.4191877,
+      "longitude": -104.668864,
+      "geometry": [
+        "41"
+      ],
+      "official": [
+        "41"
+      ],
+      "production": [
+        "41"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 42W",
+      "latitude": 52.948668,
+      "longitude": -105.028424,
+      "geometry": [
+        "43"
+      ],
+      "official": [
+        "43"
+      ],
+      "production": [
+        "43"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 43",
+      "latitude": 52.6947851,
+      "longitude": -104.036392,
+      "geometry": [
+        "42E"
+      ],
+      "official": [
+        "42E"
+      ],
+      "production": [
+        "42E"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 44",
+      "latitude": 52.345865,
+      "longitude": -107.2553951,
+      "geometry": [
+        "30"
+      ],
+      "official": [
+        "30"
+      ],
+      "production": [
+        "30"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 45E",
+      "latitude": 52.6849722,
+      "longitude": -108.214726,
+      "geometry": [
+        "44"
+      ],
+      "official": [
+        "44"
+      ],
+      "production": [
+        "44"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 45W",
+      "latitude": 52.8405364,
+      "longitude": -109.6994871,
+      "geometry": [
+        "46"
+      ],
+      "official": [
+        "46"
+      ],
+      "production": [
+        "46"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 46",
+      "latitude": 52.3901642,
+      "longitude": -109.7676981,
+      "geometry": [
+        "27"
+      ],
+      "official": [
+        "27"
+      ],
+      "production": [
+        "27"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 47",
+      "latitude": 53.0045125,
+      "longitude": -108.7803542,
+      "geometry": [
+        "45W"
+      ],
+      "official": [
+        "45W"
+      ],
+      "production": [
+        "45W"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 48",
+      "latitude": 52.1880913,
+      "longitude": -102.1496302,
+      "geometry": [
+        "56"
+      ],
+      "official": [
+        "56"
+      ],
+      "production": [
+        "56"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 49",
+      "latitude": 52.9297006,
+      "longitude": -103.2951835,
+      "geometry": [
+        "59"
+      ],
+      "official": [
+        "59"
+      ],
+      "production": [
+        "59"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 50",
+      "latitude": 53.591665,
+      "longitude": -104.7663047,
+      "geometry": [
+        "63"
+      ],
+      "official": [
+        "63"
+      ],
+      "production": [
+        "63"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 52",
+      "latitude": 52.7823613,
+      "longitude": -106.1290791,
+      "geometry": [
+        "42W"
+      ],
+      "official": [
+        "42W"
+      ],
+      "production": [
+        "42W"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 53",
+      "latitude": 53.2819285,
+      "longitude": -106.848144,
+      "geometry": [
+        "54"
+      ],
+      "official": [
+        "54"
+      ],
+      "production": [
+        "54"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 54",
+      "latitude": 52.735722,
+      "longitude": -107.3117052,
+      "geometry": [
+        "44"
+      ],
+      "official": [
+        "44"
+      ],
+      "production": [
+        "44"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 55",
+      "latitude": 53.961915,
+      "longitude": -108.7814605,
+      "geometry": [
+        "67"
+      ],
+      "official": [
+        "67"
+      ],
+      "production": [
+        "67"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 56",
+      "latitude": 52.2592631,
+      "longitude": -102.5303476,
+      "geometry": [
+        "48"
+      ],
+      "official": [
+        "48"
+      ],
+      "production": [
+        "48"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 57",
+      "latitude": 52.3518929,
+      "longitude": -102.128214,
+      "geometry": [
+        "56"
+      ],
+      "official": [
+        "56"
+      ],
+      "production": [
+        "56"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 58",
+      "latitude": 53.217353,
+      "longitude": -101.6996959,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 59",
+      "latitude": 53.4968302,
+      "longitude": -102.6593869,
+      "geometry": [
+        "60"
+      ],
+      "official": [
+        "60"
+      ],
+      "production": [
+        "60"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 60",
+      "latitude": 53.5194743,
+      "longitude": -102.6355275,
+      "geometry": [
+        "59"
+      ],
+      "official": [
+        "59"
+      ],
+      "production": [
+        "59"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 61",
+      "latitude": 53.8718785,
+      "longitude": -102.9421803,
+      "geometry": [
+        "60"
+      ],
+      "official": [
+        "60"
+      ],
+      "production": [
+        "60"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 62",
+      "latitude": 54.1837039,
+      "longitude": -103.8031634,
+      "geometry": [
+        "70"
+      ],
+      "official": [
+        "70"
+      ],
+      "production": [
+        "70"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 63",
+      "latitude": 53.625821,
+      "longitude": -104.5588009,
+      "geometry": [
+        "50"
+      ],
+      "official": [
+        "50"
+      ],
+      "production": [
+        "50"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 64",
+      "latitude": 53.7060166,
+      "longitude": -105.5563471,
+      "geometry": [
+        "50"
+      ],
+      "official": [
+        "50"
+      ],
+      "production": [
+        "50"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 65",
+      "latitude": 54.7822651,
+      "longitude": -105.2208895,
+      "geometry": [
+        "72"
+      ],
+      "official": [
+        "72"
+      ],
+      "production": [
+        "72"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 66",
+      "latitude": 54.9382826,
+      "longitude": -107.2526031,
+      "geometry": [
+        "73"
+      ],
+      "official": [
+        "73"
+      ],
+      "production": [
+        "73"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 67",
+      "latitude": 53.7429333,
+      "longitude": -107.717283,
+      "geometry": [
+        "53"
+      ],
+      "official": [
+        "53"
+      ],
+      "production": [
+        "53"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 68N",
+      "latitude": 54.0343703,
+      "longitude": -109.5750495,
+      "geometry": [
+        "68S"
+      ],
+      "official": [
+        "68S"
+      ],
+      "production": [
+        "68S"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 68S",
+      "latitude": 53.7723988,
+      "longitude": -109.8224298,
+      "geometry": [
+        "47"
+      ],
+      "official": [
+        "47"
+      ],
+      "production": [
+        "47"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 69",
+      "latitude": 54.336737,
+      "longitude": -108.0703615,
+      "geometry": [
+        "55"
+      ],
+      "official": [
+        "55"
+      ],
+      "production": [
+        "55"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 70",
+      "latitude": 54.1491533,
+      "longitude": -102.3140141,
+      "geometry": [
+        "61"
+      ],
+      "official": [
+        "61"
+      ],
+      "production": [
+        "61"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 71",
+      "latitude": 56.0032757,
+      "longitude": -103.3230012,
+      "geometry": [
+        "74"
+      ],
+      "official": [
+        "74"
+      ],
+      "production": [
+        "74"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 72",
+      "latitude": 56.0032848,
+      "longitude": -104.6567555,
+      "geometry": [
+        "74"
+      ],
+      "official": [
+        "74"
+      ],
+      "production": [
+        "74"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 73",
+      "latitude": 57.0047076,
+      "longitude": -107.5970199,
+      "geometry": [
+        "75"
+      ],
+      "official": [
+        "75"
+      ],
+      "production": [
+        "75"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 74",
+      "latitude": 58.004989,
+      "longitude": -103.0051132,
+      "geometry": [
+        "76"
+      ],
+      "official": [
+        "76"
+      ],
+      "production": [
+        "76"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 75",
+      "latitude": 56.9947404,
+      "longitude": -108.6763533,
+      "geometry": [
+        "73"
+      ],
+      "official": [
+        "73"
+      ],
+      "production": [
+        "73"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 76",
+      "latitude": 60.0045806,
+      "longitude": -105.0079935,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across PWMZ",
+      "latitude": 53.2074469,
+      "longitude": -105.6880478,
+      "geometry": [
+        "52"
+      ],
+      "official": [
+        "52"
+      ],
+      "production": [
+        "52"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across RWMZ",
+      "latitude": 50.8056262,
+      "longitude": -104.6353212,
+      "geometry": [
+        "21"
+      ],
+      "official": [
+        "21"
+      ],
+      "production": [
+        "21"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across SWMZ",
+      "latitude": 52.3194148,
+      "longitude": -106.5987526,
+      "geometry": [
+        "30"
+      ],
+      "official": [
+        "30"
+      ],
+      "production": [
+        "30"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 1",
+      "latitude": 49.6095003,
+      "longitude": -105.9223791,
+      "geometry": [
+        "1"
+      ],
+      "official": [
+        "1"
+      ],
+      "production": [
+        "1"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 2E",
+      "latitude": 49.0005728,
+      "longitude": -107.510796,
+      "geometry": [
+        "2E"
+      ],
+      "official": [
+        "2E"
+      ],
+      "production": [
+        "2E"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 2W",
+      "latitude": 49.3843023,
+      "longitude": -107.7568294,
+      "geometry": [
+        "2W"
+      ],
+      "official": [
+        "2W"
+      ],
+      "production": [
+        "2W"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 3",
+      "latitude": 49.378863,
+      "longitude": -109.0576441,
+      "geometry": [
+        "3"
+      ],
+      "official": [
+        "3"
+      ],
+      "production": [
+        "3"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 4",
+      "latitude": 49.4381478,
+      "longitude": -106.7290313,
+      "geometry": [
+        "4"
+      ],
+      "official": [
+        "4"
+      ],
+      "production": [
+        "4"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 5",
+      "latitude": 49.7289549,
+      "longitude": -107.7451316,
+      "geometry": [
+        "5"
+      ],
+      "official": [
+        "5"
+      ],
+      "production": [
+        "5"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 6",
+      "latitude": 49.4386688,
+      "longitude": -109.0347524,
+      "geometry": [
+        "6"
+      ],
+      "official": [
+        "6"
+      ],
+      "production": [
+        "6"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 7E",
+      "latitude": 49.5847244,
+      "longitude": -109.7634772,
+      "geometry": [
+        "7E"
+      ],
+      "official": [
+        "7E"
+      ],
+      "production": [
+        "7E"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 7W",
+      "latitude": 49.6844692,
+      "longitude": -109.739823,
+      "geometry": [
+        "7W"
+      ],
+      "official": [
+        "7W"
+      ],
+      "production": [
+        "7W"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 8",
+      "latitude": 50.3447094,
+      "longitude": -110.0037759,
+      "geometry": [
+        "8"
+      ],
+      "official": [
+        "8"
+      ],
+      "production": [
+        "8"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 9",
+      "latitude": 50.3964917,
+      "longitude": -109.258375,
+      "geometry": [
+        "9"
+      ],
+      "official": [
+        "9"
+      ],
+      "production": [
+        "9"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 10",
+      "latitude": 50.8117704,
+      "longitude": -108.9307378,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 11",
+      "latitude": 50.6603157,
+      "longitude": -109.6779192,
+      "geometry": [
+        "11"
+      ],
+      "official": [
+        "11"
+      ],
+      "production": [
+        "11"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 12",
+      "latitude": 50.6976058,
+      "longitude": -108.6313802,
+      "geometry": [
+        "12"
+      ],
+      "official": [
+        "12"
+      ],
+      "production": [
+        "12"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 13",
+      "latitude": 50.6418746,
+      "longitude": -107.7381467,
+      "geometry": [
+        "13"
+      ],
+      "official": [
+        "13"
+      ],
+      "production": [
+        "13"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 14E",
+      "latitude": 50.8668033,
+      "longitude": -107.3892424,
+      "geometry": [
+        "14E"
+      ],
+      "official": [
+        "14E"
+      ],
+      "production": [
+        "14E"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 14W",
+      "latitude": 51.2676305,
+      "longitude": -109.7805192,
+      "geometry": [
+        "14W"
+      ],
+      "official": [
+        "14W"
+      ],
+      "production": [
+        "14W"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 15",
+      "latitude": 49.6666603,
+      "longitude": -103.9653995,
+      "geometry": [
+        "15"
+      ],
+      "official": [
+        "15"
+      ],
+      "production": [
+        "15"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 16",
+      "latitude": 49.1336486,
+      "longitude": -102.8918972,
+      "geometry": [
+        "16"
+      ],
+      "official": [
+        "16"
+      ],
+      "production": [
+        "16"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 17",
+      "latitude": 49.8857607,
+      "longitude": -103.4353051,
+      "geometry": [
+        "17"
+      ],
+      "official": [
+        "17"
+      ],
+      "production": [
+        "17"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 18",
+      "latitude": 50.3948697,
+      "longitude": -104.8941246,
+      "geometry": [
+        "18"
+      ],
+      "official": [
+        "18"
+      ],
+      "production": [
+        "18"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 19",
+      "latitude": 49.9322633,
+      "longitude": -105.9447948,
+      "geometry": [
+        "19"
+      ],
+      "official": [
+        "19"
+      ],
+      "production": [
+        "19"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 21",
+      "latitude": 51.3505825,
+      "longitude": -104.5402872,
+      "geometry": [
+        "21"
+      ],
+      "official": [
+        "21"
+      ],
+      "production": [
+        "21"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 22",
+      "latitude": 51.2661386,
+      "longitude": -105.9787464,
+      "geometry": [
+        "22"
+      ],
+      "official": [
+        "22"
+      ],
+      "production": [
+        "22"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 23",
+      "latitude": 51.3782956,
+      "longitude": -106.158426,
+      "geometry": [
+        "23"
+      ],
+      "official": [
+        "23"
+      ],
+      "production": [
+        "23"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 24",
+      "latitude": 51.4893911,
+      "longitude": -107.5979479,
+      "geometry": [
+        "24"
+      ],
+      "official": [
+        "24"
+      ],
+      "production": [
+        "24"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 25",
+      "latitude": 51.2421263,
+      "longitude": -109.0280107,
+      "geometry": [
+        "25"
+      ],
+      "official": [
+        "25"
+      ],
+      "production": [
+        "25"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 26",
+      "latitude": 51.6710691,
+      "longitude": -110.0029887,
+      "geometry": [
+        "26"
+      ],
+      "official": [
+        "26"
+      ],
+      "production": [
+        "26"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 27",
+      "latitude": 51.9236611,
+      "longitude": -109.1406056,
+      "geometry": [
+        "27"
+      ],
+      "official": [
+        "27"
+      ],
+      "production": [
+        "27"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 28",
+      "latitude": 51.7080265,
+      "longitude": -108.4080115,
+      "geometry": [
+        "28"
+      ],
+      "official": [
+        "28"
+      ],
+      "production": [
+        "28"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 29",
+      "latitude": 51.5052291,
+      "longitude": -107.7410983,
+      "geometry": [
+        "29"
+      ],
+      "official": [
+        "29"
+      ],
+      "production": [
+        "29"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 30",
+      "latitude": 51.9003815,
+      "longitude": -106.075609,
+      "geometry": [
+        "30"
+      ],
+      "official": [
+        "30"
+      ],
+      "production": [
+        "30"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 31",
+      "latitude": 49.2312396,
+      "longitude": -102.3337465,
+      "geometry": [
+        "31"
+      ],
+      "official": [
+        "31"
+      ],
+      "production": [
+        "31"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 32",
+      "latitude": 49.1754326,
+      "longitude": -101.7485836,
+      "geometry": [
+        "32"
+      ],
+      "official": [
+        "32"
+      ],
+      "production": [
+        "32"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 33",
+      "latitude": 50.0766593,
+      "longitude": -102.585012,
+      "geometry": [
+        "33"
+      ],
+      "official": [
+        "33"
+      ],
+      "production": [
+        "33"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 34",
+      "latitude": 49.5786527,
+      "longitude": -101.7407209,
+      "geometry": [
+        "34"
+      ],
+      "official": [
+        "34"
+      ],
+      "production": [
+        "34"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 35",
+      "latitude": 50.2073834,
+      "longitude": -101.7741396,
+      "geometry": [
+        "35"
+      ],
+      "official": [
+        "35"
+      ],
+      "production": [
+        "35"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 36",
+      "latitude": 50.7236261,
+      "longitude": -102.630951,
+      "geometry": [
+        "36"
+      ],
+      "official": [
+        "36"
+      ],
+      "production": [
+        "36"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 37",
+      "latitude": 51.1136209,
+      "longitude": -101.5413398,
+      "geometry": [
+        "37"
+      ],
+      "official": [
+        "37"
+      ],
+      "production": [
+        "37"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 38",
+      "latitude": 51.386565,
+      "longitude": -104.5363236,
+      "geometry": [
+        "38"
+      ],
+      "official": [
+        "38"
+      ],
+      "production": [
+        "38"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 39",
+      "latitude": 51.9967791,
+      "longitude": -103.0557116,
+      "geometry": [
+        "39"
+      ],
+      "official": [
+        "39"
+      ],
+      "production": [
+        "39"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 40",
+      "latitude": 51.7669538,
+      "longitude": -104.1137566,
+      "geometry": [
+        "40"
+      ],
+      "official": [
+        "40"
+      ],
+      "production": [
+        "40"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 41",
+      "latitude": 52.6368146,
+      "longitude": -105.5828538,
+      "geometry": [
+        "41"
+      ],
+      "official": [
+        "41"
+      ],
+      "production": [
+        "41"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 42E",
+      "latitude": 52.4208817,
+      "longitude": -104.6691021,
+      "geometry": [
+        "42E"
+      ],
+      "official": [
+        "42E"
+      ],
+      "production": [
+        "42E"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 42W",
+      "latitude": 52.9464783,
+      "longitude": -105.0293462,
+      "geometry": [
+        "42W"
+      ],
+      "official": [
+        "42W"
+      ],
+      "production": [
+        "42W"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 43",
+      "latitude": 52.6977852,
+      "longitude": -104.0363868,
+      "geometry": [
+        "43"
+      ],
+      "official": [
+        "43"
+      ],
+      "production": [
+        "43"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 44",
+      "latitude": 52.3478567,
+      "longitude": -107.2553899,
+      "geometry": [
+        "44"
+      ],
+      "official": [
+        "44"
+      ],
+      "production": [
+        "44"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 45E",
+      "latitude": 52.6825647,
+      "longitude": -108.2158525,
+      "geometry": [
+        "45E"
+      ],
+      "official": [
+        "45E"
+      ],
+      "production": [
+        "45E"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 45W",
+      "latitude": 52.8435794,
+      "longitude": -109.699488,
+      "geometry": [
+        "45W"
+      ],
+      "official": [
+        "45W"
+      ],
+      "production": [
+        "45W"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 46",
+      "latitude": 52.3924124,
+      "longitude": -109.7676997,
+      "geometry": [
+        "46"
+      ],
+      "official": [
+        "46"
+      ],
+      "production": [
+        "46"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 47",
+      "latitude": 53.007494,
+      "longitude": -108.7793472,
+      "geometry": [
+        "47"
+      ],
+      "official": [
+        "47"
+      ],
+      "production": [
+        "47"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 48",
+      "latitude": 52.1865828,
+      "longitude": -102.1493359,
+      "geometry": [
+        "48"
+      ],
+      "official": [
+        "48"
+      ],
+      "production": [
+        "48"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 49",
+      "latitude": 52.9280853,
+      "longitude": -103.2951767,
+      "geometry": [
+        "49"
+      ],
+      "official": [
+        "49"
+      ],
+      "production": [
+        "49"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 50",
+      "latitude": 53.5900532,
+      "longitude": -104.7651631,
+      "geometry": [
+        "50"
+      ],
+      "official": [
+        "50"
+      ],
+      "production": [
+        "50"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 52",
+      "latitude": 52.7835377,
+      "longitude": -106.1303602,
+      "geometry": [
+        "52"
+      ],
+      "official": [
+        "52"
+      ],
+      "production": [
+        "52"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 53",
+      "latitude": 53.2839191,
+      "longitude": -106.8475918,
+      "geometry": [
+        "53"
+      ],
+      "official": [
+        "53"
+      ],
+      "production": [
+        "53"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 54",
+      "latitude": 52.7387183,
+      "longitude": -107.3124214,
+      "geometry": [
+        "54"
+      ],
+      "official": [
+        "54"
+      ],
+      "production": [
+        "54"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 55",
+      "latitude": 53.9630531,
+      "longitude": -108.783135,
+      "geometry": [
+        "55"
+      ],
+      "official": [
+        "55"
+      ],
+      "production": [
+        "55"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 56",
+      "latitude": 52.2607575,
+      "longitude": -102.5292273,
+      "geometry": [
+        "56"
+      ],
+      "official": [
+        "56"
+      ],
+      "production": [
+        "56"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 57",
+      "latitude": 52.3537069,
+      "longitude": -102.1261037,
+      "geometry": [
+        "57"
+      ],
+      "official": [
+        "57"
+      ],
+      "production": [
+        "57"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 58",
+      "latitude": 53.2173553,
+      "longitude": -101.7017598,
+      "geometry": [
+        "58"
+      ],
+      "official": [
+        "58"
+      ],
+      "production": [
+        "58"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 59",
+      "latitude": 53.4941123,
+      "longitude": -102.6582627,
+      "geometry": [
+        "59"
+      ],
+      "official": [
+        "59"
+      ],
+      "production": [
+        "59"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 60",
+      "latitude": 53.5214984,
+      "longitude": -102.6355699,
+      "geometry": [
+        "60"
+      ],
+      "official": [
+        "60"
+      ],
+      "production": [
+        "60"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 61",
+      "latitude": 53.8731028,
+      "longitude": -102.9431395,
+      "geometry": [
+        "61"
+      ],
+      "official": [
+        "61"
+      ],
+      "production": [
+        "61"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 62",
+      "latitude": 54.181259,
+      "longitude": -103.8045802,
+      "geometry": [
+        "62"
+      ],
+      "official": [
+        "62"
+      ],
+      "production": [
+        "62"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 63",
+      "latitude": 53.628635,
+      "longitude": -104.5588041,
+      "geometry": [
+        "63"
+      ],
+      "official": [
+        "63"
+      ],
+      "production": [
+        "63"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 64",
+      "latitude": 53.7085056,
+      "longitude": -105.5550688,
+      "geometry": [
+        "64"
+      ],
+      "official": [
+        "64"
+      ],
+      "production": [
+        "64"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 65",
+      "latitude": 54.7795613,
+      "longitude": -105.2211438,
+      "geometry": [
+        "65"
+      ],
+      "official": [
+        "65"
+      ],
+      "production": [
+        "65"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 66",
+      "latitude": 54.9343292,
+      "longitude": -107.2526045,
+      "geometry": [
+        "66"
+      ],
+      "official": [
+        "66"
+      ],
+      "production": [
+        "66"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 67",
+      "latitude": 53.7453343,
+      "longitude": -107.7165196,
+      "geometry": [
+        "67"
+      ],
+      "official": [
+        "67"
+      ],
+      "production": [
+        "67"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 68N",
+      "latitude": 54.0357413,
+      "longitude": -109.5748425,
+      "geometry": [
+        "68N"
+      ],
+      "official": [
+        "68N"
+      ],
+      "production": [
+        "68N"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 68S",
+      "latitude": 53.7736726,
+      "longitude": -109.8228426,
+      "geometry": [
+        "68S"
+      ],
+      "official": [
+        "68S"
+      ],
+      "production": [
+        "68S"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 69",
+      "latitude": 54.339806,
+      "longitude": -108.0712861,
+      "geometry": [
+        "69"
+      ],
+      "official": [
+        "69"
+      ],
+      "production": [
+        "69"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 70",
+      "latitude": 54.1527177,
+      "longitude": -102.3140128,
+      "geometry": [
+        "70"
+      ],
+      "official": [
+        "70"
+      ],
+      "production": [
+        "70"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 71",
+      "latitude": 55.996741,
+      "longitude": -103.3230012,
+      "geometry": [
+        "71"
+      ],
+      "official": [
+        "71"
+      ],
+      "production": [
+        "71"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 72",
+      "latitude": 55.9967316,
+      "longitude": -104.6567555,
+      "geometry": [
+        "72"
+      ],
+      "official": [
+        "72"
+      ],
+      "production": [
+        "72"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 73",
+      "latitude": 56.9953083,
+      "longitude": -107.5970199,
+      "geometry": [
+        "73"
+      ],
+      "official": [
+        "73"
+      ],
+      "production": [
+        "73"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 74",
+      "latitude": 57.9950281,
+      "longitude": -103.0051132,
+      "geometry": [
+        "74"
+      ],
+      "official": [
+        "74"
+      ],
+      "production": [
+        "74"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 75",
+      "latitude": 57.0052753,
+      "longitude": -108.6763533,
+      "geometry": [
+        "75"
+      ],
+      "official": [
+        "75"
+      ],
+      "production": [
+        "75"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 76",
+      "latitude": 59.994585,
+      "longitude": -105.0079769,
+      "geometry": [
+        "76"
+      ],
+      "official": [
+        "76"
+      ],
+      "production": [
+        "76"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge PWMZ",
+      "latitude": 53.2079349,
+      "longitude": -105.6879212,
+      "geometry": [
+        "PWMZ"
+      ],
+      "official": [
+        "PWMZ"
+      ],
+      "production": [
+        "PWMZ"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge RWMZ",
+      "latitude": 50.8037255,
+      "longitude": -104.6353272,
+      "geometry": [
+        "RWMZ"
+      ],
+      "official": [
+        "RWMZ"
+      ],
+      "production": [
+        "RWMZ"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge SWMZ",
+      "latitude": 52.3176706,
+      "longitude": -106.5988967,
+      "geometry": [
+        "SWMZ"
+      ],
+      "official": [
+        "SWMZ"
+      ],
+      "production": [
+        "SWMZ"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 1",
+      "latitude": 49.3122355,
+      "longitude": -106.012597,
+      "geometry": [
+        "1"
+      ],
+      "official": [
+        "1"
+      ],
+      "production": [
+        "1"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 2E",
+      "latitude": 49.2185407,
+      "longitude": -107.5105754,
+      "geometry": [
+        "2E"
+      ],
+      "official": [
+        "2E"
+      ],
+      "production": [
+        "2E"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 2W",
+      "latitude": 49.3861252,
+      "longitude": -108.094191,
+      "geometry": [
+        "2W"
+      ],
+      "official": [
+        "2W"
+      ],
+      "production": [
+        "2W"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 3",
+      "latitude": 49.2035127,
+      "longitude": -108.9576442,
+      "geometry": [
+        "3"
+      ],
+      "official": [
+        "3"
+      ],
+      "production": [
+        "3"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 4",
+      "latitude": 49.7552942,
+      "longitude": -106.6713426,
+      "geometry": [
+        "4"
+      ],
+      "official": [
+        "4"
+      ],
+      "production": [
+        "4"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 5",
+      "latitude": 50.0120791,
+      "longitude": -107.7454317,
+      "geometry": [
+        "5"
+      ],
+      "official": [
+        "5"
+      ],
+      "production": [
+        "5"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 6",
+      "latitude": 49.7274923,
+      "longitude": -109.0312428,
+      "geometry": [
+        "6"
+      ],
+      "official": [
+        "6"
+      ],
+      "production": [
+        "6"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 7E",
+      "latitude": 49.5393311,
+      "longitude": -109.5862412,
+      "geometry": [
+        "7E"
+      ],
+      "official": [
+        "7E"
+      ],
+      "production": [
+        "7E"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 7W",
+      "latitude": 49.8019716,
+      "longitude": -109.8453345,
+      "geometry": [
+        "7W"
+      ],
+      "official": [
+        "7W"
+      ],
+      "production": [
+        "7W"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 8",
+      "latitude": 50.3445747,
+      "longitude": -109.7356967,
+      "geometry": [
+        "8"
+      ],
+      "official": [
+        "8"
+      ],
+      "production": [
+        "8"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 9",
+      "latitude": 50.1983519,
+      "longitude": -109.2584009,
+      "geometry": [
+        "9"
+      ],
+      "official": [
+        "9"
+      ],
+      "production": [
+        "9"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 10",
+      "latitude": 50.595455,
+      "longitude": -108.9861222,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 11",
+      "latitude": 50.7997917,
+      "longitude": -109.6780271,
+      "geometry": [
+        "11"
+      ],
+      "official": [
+        "11"
+      ],
+      "production": [
+        "11"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 12",
+      "latitude": 50.8093932,
+      "longitude": -108.6012984,
+      "geometry": [
+        "12"
+      ],
+      "official": [
+        "12"
+      ],
+      "production": [
+        "12"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 13",
+      "latitude": 50.4846105,
+      "longitude": -107.8375784,
+      "geometry": [
+        "13"
+      ],
+      "official": [
+        "13"
+      ],
+      "production": [
+        "13"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 14E",
+      "latitude": 50.8549328,
+      "longitude": -107.2670328,
+      "geometry": [
+        "14E"
+      ],
+      "official": [
+        "14E"
+      ],
+      "production": [
+        "14E"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 14W",
+      "latitude": 51.1090701,
+      "longitude": -109.8085814,
+      "geometry": [
+        "14W"
+      ],
+      "official": [
+        "14W"
+      ],
+      "production": [
+        "14W"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 15",
+      "latitude": 49.3350796,
+      "longitude": -103.9653378,
+      "geometry": [
+        "15"
+      ],
+      "official": [
+        "15"
+      ],
+      "production": [
+        "15"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 16",
+      "latitude": 49.4001484,
+      "longitude": -102.8917994,
+      "geometry": [
+        "16"
+      ],
+      "official": [
+        "16"
+      ],
+      "production": [
+        "16"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 17",
+      "latitude": 50.1343443,
+      "longitude": -103.3106763,
+      "geometry": [
+        "17"
+      ],
+      "official": [
+        "17"
+      ],
+      "production": [
+        "17"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 18",
+      "latitude": 49.9961211,
+      "longitude": -104.8942952,
+      "geometry": [
+        "18"
+      ],
+      "official": [
+        "18"
+      ],
+      "production": [
+        "18"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 19",
+      "latitude": 50.312015,
+      "longitude": -106.0087811,
+      "geometry": [
+        "19"
+      ],
+      "official": [
+        "19"
+      ],
+      "production": [
+        "19"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 21",
+      "latitude": 51.3508899,
+      "longitude": -104.994281,
+      "geometry": [
+        "21"
+      ],
+      "official": [
+        "21"
+      ],
+      "production": [
+        "21"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 22",
+      "latitude": 51.4457305,
+      "longitude": -105.7487347,
+      "geometry": [
+        "22"
+      ],
+      "official": [
+        "22"
+      ],
+      "production": [
+        "22"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 23",
+      "latitude": 51.1173267,
+      "longitude": -106.3275801,
+      "geometry": [
+        "23"
+      ],
+      "official": [
+        "23"
+      ],
+      "production": [
+        "23"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 24",
+      "latitude": 51.1813689,
+      "longitude": -107.640702,
+      "geometry": [
+        "24"
+      ],
+      "official": [
+        "24"
+      ],
+      "production": [
+        "24"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 25",
+      "latitude": 51.488849,
+      "longitude": -108.8568061,
+      "geometry": [
+        "25"
+      ],
+      "official": [
+        "25"
+      ],
+      "production": [
+        "25"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 26",
+      "latitude": 51.6707845,
+      "longitude": -109.5881129,
+      "geometry": [
+        "26"
+      ],
+      "official": [
+        "26"
+      ],
+      "production": [
+        "26"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 27",
+      "latitude": 52.148717,
+      "longitude": -108.9756168,
+      "geometry": [
+        "27"
+      ],
+      "official": [
+        "27"
+      ],
+      "production": [
+        "27"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 28",
+      "latitude": 51.9440159,
+      "longitude": -108.4080965,
+      "geometry": [
+        "28"
+      ],
+      "official": [
+        "28"
+      ],
+      "production": [
+        "28"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 29",
+      "latitude": 51.7750922,
+      "longitude": -107.7409131,
+      "geometry": [
+        "29"
+      ],
+      "official": [
+        "29"
+      ],
+      "production": [
+        "29"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 30",
+      "latitude": 51.8186801,
+      "longitude": -106.2531981,
+      "geometry": [
+        "30"
+      ],
+      "official": [
+        "30"
+      ],
+      "production": [
+        "30"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 31",
+      "latitude": 49.1157786,
+      "longitude": -102.3337661,
+      "geometry": [
+        "31"
+      ],
+      "official": [
+        "31"
+      ],
+      "production": [
+        "31"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 32",
+      "latitude": 49.3754854,
+      "longitude": -101.7622631,
+      "geometry": [
+        "32"
+      ],
+      "official": [
+        "32"
+      ],
+      "production": [
+        "32"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 33",
+      "latitude": 49.8849583,
+      "longitude": -102.6903027,
+      "geometry": [
+        "33"
+      ],
+      "official": [
+        "33"
+      ],
+      "production": [
+        "33"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 34",
+      "latitude": 49.8623943,
+      "longitude": -101.7407396,
+      "geometry": [
+        "34"
+      ],
+      "official": [
+        "34"
+      ],
+      "production": [
+        "34"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 35",
+      "latitude": 50.4156864,
+      "longitude": -101.7004958,
+      "geometry": [
+        "35"
+      ],
+      "official": [
+        "35"
+      ],
+      "production": [
+        "35"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 36",
+      "latitude": 50.5527802,
+      "longitude": -102.6308517,
+      "geometry": [
+        "36"
+      ],
+      "official": [
+        "36"
+      ],
+      "production": [
+        "36"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 37",
+      "latitude": 51.1143205,
+      "longitude": -101.9977508,
+      "geometry": [
+        "37"
+      ],
+      "official": [
+        "37"
+      ],
+      "production": [
+        "37"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 38",
+      "latitude": 51.3871727,
+      "longitude": -104.1924822,
+      "geometry": [
+        "38"
+      ],
+      "official": [
+        "38"
+      ],
+      "production": [
+        "38"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 39",
+      "latitude": 51.6077301,
+      "longitude": -103.1227542,
+      "geometry": [
+        "39"
+      ],
+      "official": [
+        "39"
+      ],
+      "production": [
+        "39"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 40",
+      "latitude": 52.1068148,
+      "longitude": -104.1138042,
+      "geometry": [
+        "40"
+      ],
+      "official": [
+        "40"
+      ],
+      "production": [
+        "40"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 41",
+      "latitude": 52.2957913,
+      "longitude": -105.5845369,
+      "geometry": [
+        "41"
+      ],
+      "official": [
+        "41"
+      ],
+      "production": [
+        "41"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 42E",
+      "latitude": 52.5894396,
+      "longitude": -104.6928003,
+      "geometry": [
+        "42E"
+      ],
+      "official": [
+        "42E"
+      ],
+      "production": [
+        "42E"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 42W",
+      "latitude": 52.728608,
+      "longitude": -105.1211066,
+      "geometry": [
+        "42W"
+      ],
+      "official": [
+        "42W"
+      ],
+      "production": [
+        "42W"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 43",
+      "latitude": 52.9962957,
+      "longitude": -104.035868,
+      "geometry": [
+        "43"
+      ],
+      "official": [
+        "43"
+      ],
+      "production": [
+        "43"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 44",
+      "latitude": 52.5460309,
+      "longitude": -107.2548773,
+      "geometry": [
+        "44"
+      ],
+      "official": [
+        "44"
+      ],
+      "production": [
+        "44"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 45E",
+      "latitude": 52.4430154,
+      "longitude": -108.3279327,
+      "geometry": [
+        "45E"
+      ],
+      "official": [
+        "45E"
+      ],
+      "production": [
+        "45E"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 45W",
+      "latitude": 53.1463553,
+      "longitude": -109.699574,
+      "geometry": [
+        "45W"
+      ],
+      "official": [
+        "45W"
+      ],
+      "production": [
+        "45W"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 46",
+      "latitude": 52.6161083,
+      "longitude": -109.7678591,
+      "geometry": [
+        "46"
+      ],
+      "official": [
+        "46"
+      ],
+      "production": [
+        "46"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 47",
+      "latitude": 53.3041471,
+      "longitude": -108.6791537,
+      "geometry": [
+        "47"
+      ],
+      "official": [
+        "47"
+      ],
+      "production": [
+        "47"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 48",
+      "latitude": 52.0364911,
+      "longitude": -102.1200563,
+      "geometry": [
+        "48"
+      ],
+      "official": [
+        "48"
+      ],
+      "production": [
+        "48"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 49",
+      "latitude": 52.767365,
+      "longitude": -103.2945069,
+      "geometry": [
+        "49"
+      ],
+      "official": [
+        "49"
+      ],
+      "production": [
+        "49"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 50",
+      "latitude": 53.4296816,
+      "longitude": -104.6515767,
+      "geometry": [
+        "50"
+      ],
+      "official": [
+        "50"
+      ],
+      "production": [
+        "50"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 52",
+      "latitude": 52.9005833,
+      "longitude": -106.2578326,
+      "geometry": [
+        "52"
+      ],
+      "official": [
+        "52"
+      ],
+      "production": [
+        "52"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 53",
+      "latitude": 53.4819854,
+      "longitude": -106.7926513,
+      "geometry": [
+        "53"
+      ],
+      "official": [
+        "53"
+      ],
+      "production": [
+        "53"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 54",
+      "latitude": 53.036858,
+      "longitude": -107.3836878,
+      "geometry": [
+        "54"
+      ],
+      "official": [
+        "54"
+      ],
+      "production": [
+        "54"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 55",
+      "latitude": 54.0763023,
+      "longitude": -108.949744,
+      "geometry": [
+        "55"
+      ],
+      "official": [
+        "55"
+      ],
+      "production": [
+        "55"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 56",
+      "latitude": 52.4094536,
+      "longitude": -102.4177491,
+      "geometry": [
+        "56"
+      ],
+      "official": [
+        "56"
+      ],
+      "production": [
+        "56"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 57",
+      "latitude": 52.5341981,
+      "longitude": -101.9161279,
+      "geometry": [
+        "57"
+      ],
+      "official": [
+        "57"
+      ],
+      "production": [
+        "57"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 58",
+      "latitude": 53.2175854,
+      "longitude": -101.9071142,
+      "geometry": [
+        "58"
+      ],
+      "official": [
+        "58"
+      ],
+      "production": [
+        "58"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 59",
+      "latitude": 53.2236821,
+      "longitude": -102.546403,
+      "geometry": [
+        "59"
+      ],
+      "official": [
+        "59"
+      ],
+      "production": [
+        "59"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 60",
+      "latitude": 53.722899,
+      "longitude": -102.6397937,
+      "geometry": [
+        "60"
+      ],
+      "official": [
+        "60"
+      ],
+      "production": [
+        "60"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 61",
+      "latitude": 53.9949184,
+      "longitude": -103.0385797,
+      "geometry": [
+        "61"
+      ],
+      "official": [
+        "61"
+      ],
+      "production": [
+        "61"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 62",
+      "latitude": 53.93799,
+      "longitude": -103.9455544,
+      "geometry": [
+        "62"
+      ],
+      "official": [
+        "62"
+      ],
+      "production": [
+        "62"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 63",
+      "latitude": 53.9086317,
+      "longitude": -104.5591243,
+      "geometry": [
+        "63"
+      ],
+      "official": [
+        "63"
+      ],
+      "production": [
+        "63"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 64",
+      "latitude": 53.9561583,
+      "longitude": -105.4278764,
+      "geometry": [
+        "64"
+      ],
+      "official": [
+        "64"
+      ],
+      "production": [
+        "64"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 65",
+      "latitude": 54.5105365,
+      "longitude": -105.2464423,
+      "geometry": [
+        "65"
+      ],
+      "official": [
+        "65"
+      ],
+      "production": [
+        "65"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 66",
+      "latitude": 54.5409694,
+      "longitude": -107.252743,
+      "geometry": [
+        "66"
+      ],
+      "official": [
+        "66"
+      ],
+      "production": [
+        "66"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 67",
+      "latitude": 53.984234,
+      "longitude": -107.6405675,
+      "geometry": [
+        "67"
+      ],
+      "official": [
+        "67"
+      ],
+      "production": [
+        "67"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 68N",
+      "latitude": 54.1721566,
+      "longitude": -109.5542467,
+      "geometry": [
+        "68N"
+      ],
+      "official": [
+        "68N"
+      ],
+      "production": [
+        "68N"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 68S",
+      "latitude": 53.900414,
+      "longitude": -109.8639143,
+      "geometry": [
+        "68S"
+      ],
+      "official": [
+        "68S"
+      ],
+      "production": [
+        "68S"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 69",
+      "latitude": 54.6451674,
+      "longitude": -108.1632863,
+      "geometry": [
+        "69"
+      ],
+      "official": [
+        "69"
+      ],
+      "production": [
+        "69"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 70",
+      "latitude": 54.5073821,
+      "longitude": -102.3138816,
+      "geometry": [
+        "70"
+      ],
+      "official": [
+        "70"
+      ],
+      "production": [
+        "70"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 71",
+      "latitude": 55.3465449,
+      "longitude": -103.3230011,
+      "geometry": [
+        "71"
+      ],
+      "official": [
+        "71"
+      ],
+      "production": [
+        "71"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 72",
+      "latitude": 55.3446891,
+      "longitude": -104.6567555,
+      "geometry": [
+        "72"
+      ],
+      "official": [
+        "72"
+      ],
+      "production": [
+        "72"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 73",
+      "latitude": 56.0600741,
+      "longitude": -107.5970198,
+      "geometry": [
+        "73"
+      ],
+      "official": [
+        "73"
+      ],
+      "production": [
+        "73"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 74",
+      "latitude": 57.0039147,
+      "longitude": -103.005113,
+      "geometry": [
+        "74"
+      ],
+      "official": [
+        "74"
+      ],
+      "production": [
+        "74"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 75",
+      "latitude": 58.0534999,
+      "longitude": -108.6763534,
+      "geometry": [
+        "75"
+      ],
+      "official": [
+        "75"
+      ],
+      "production": [
+        "75"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 76",
+      "latitude": 59.0000209,
+      "longitude": -105.0063205,
+      "geometry": [
+        "76"
+      ],
+      "official": [
+        "76"
+      ],
+      "production": [
+        "76"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside PWMZ",
+      "latitude": 53.2564913,
+      "longitude": -105.6753261,
+      "geometry": [
+        "PWMZ"
+      ],
+      "official": [
+        "PWMZ"
+      ],
+      "production": [
+        "PWMZ"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside RWMZ",
+      "latitude": 50.6146102,
+      "longitude": -104.6359222,
+      "geometry": [
+        "RWMZ"
+      ],
+      "official": [
+        "RWMZ"
+      ],
+      "production": [
+        "RWMZ"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside SWMZ",
+      "latitude": 52.1441165,
+      "longitude": -106.6132293,
+      "geometry": [
+        "SWMZ"
+      ],
+      "official": [
+        "SWMZ"
+      ],
+      "production": [
+        "SWMZ"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "invalid",
+      "label": "latitude above the pole",
+      "latitude": "95",
+      "longitude": "-107",
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "invalid",
+      "label": "longitude beyond the meridian",
+      "latitude": "40",
+      "longitude": "-200",
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "invalid",
+      "label": "not a number",
+      "latitude": "NaN",
+      "longitude": "-107",
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Alberta, Lloydminster side",
+      "latitude": 53.28,
+      "longitude": -110.1,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Manitoba, west of Winnipeg",
+      "latitude": 49.9,
+      "longitude": -100.5,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Montana, north-central",
+      "latitude": 48.6,
+      "longitude": -107,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "North Dakota, Minot",
+      "latitude": 48.23,
+      "longitude": -101.3,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Northwest Territories, north of 60",
+      "latitude": 60.3,
+      "longitude": -105,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Cypress Hills",
+      "latitude": 49.65,
+      "longitude": -109.5,
+      "geometry": [
+        "7E"
+      ],
+      "official": [
+        "7E"
+      ],
+      "production": [
+        "7E"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "La Ronge",
+      "latitude": 55.1017,
+      "longitude": -105.284,
+      "geometry": [
+        "72"
+      ],
+      "official": [
+        "72"
+      ],
+      "production": [
+        "72"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Meadow Lake",
+      "latitude": 54.1301,
+      "longitude": -108.4342,
+      "geometry": [
+        "55"
+      ],
+      "official": [
+        "55"
+      ],
+      "production": [
+        "55"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Moose Jaw",
+      "latitude": 50.393,
+      "longitude": -105.5348,
+      "geometry": [
+        "19"
+      ],
+      "official": [
+        "19"
+      ],
+      "production": [
+        "19"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Nipawin",
+      "latitude": 53.3667,
+      "longitude": -104,
+      "geometry": [
+        "43"
+      ],
+      "official": [
+        "43"
+      ],
+      "production": [
+        "43"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Prince Albert (PWMZ)",
+      "latitude": 53.2033,
+      "longitude": -105.7531,
+      "geometry": [
+        "52"
+      ],
+      "official": [
+        "52"
+      ],
+      "production": [
+        "52"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Regina (RWMZ)",
+      "latitude": 50.4452,
+      "longitude": -104.6189,
+      "geometry": [
+        "RWMZ"
+      ],
+      "official": [
+        "RWMZ"
+      ],
+      "production": [
+        "RWMZ"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Saskatoon (SWMZ)",
+      "latitude": 52.1332,
+      "longitude": -106.67,
+      "geometry": [
+        "SWMZ"
+      ],
+      "official": [
+        "SWMZ"
+      ],
+      "production": [
+        "SWMZ"
+      ],
+      "agree": true
+    }
+  ]
+}

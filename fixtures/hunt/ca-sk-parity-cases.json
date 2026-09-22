@@ -1,0 +1,19 @@
+{
+  "outside": [
+    ["Alberta, Lloydminster side", 53.28, -110.1],
+    ["Manitoba, west of Winnipeg", 49.9, -100.5],
+    ["Northwest Territories, north of 60", 60.3, -105.0],
+    ["Montana, north-central", 48.6, -107.0],
+    ["North Dakota, Minot", 48.23, -101.3]
+  ],
+  "special": [
+    ["Saskatoon (SWMZ)", 52.1332, -106.67],
+    ["Regina (RWMZ)", 50.4452, -104.6189],
+    ["Prince Albert (PWMZ)", 53.2033, -105.7531],
+    ["Moose Jaw", 50.393, -105.5348],
+    ["La Ronge", 55.1017, -105.284],
+    ["Cypress Hills", 49.65, -109.5],
+    ["Nipawin", 53.3667, -104.0],
+    ["Meadow Lake", 54.1301, -108.4342]
+  ]
+}

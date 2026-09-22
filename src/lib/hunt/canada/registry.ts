@@ -232,8 +232,14 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       status: "IN_DEVELOPMENT",
       officialTerm: "Wildlife Management Zone (WMZ)",
       officialSourceUrl: "https://gisappl.saskatchewan.ca/Html5Ext/index.html?viewer=habis",
+      serviceUrl: "https://gis.saskatchewan.ca/arcgis/rest/services/WildlifeManagement/MapServer/0",
       parityCertified: false,
-      notes: "The provincial viewer is identified; whether it exposes a machine-readable layer is not yet reviewed.",
+      notes:
+        "The ministry's own Wildlife Management Zones layer serves 83 features (80 numbered zones with their E/W and N/S " +
+        "halves, plus the Saskatoon, Regina-Moose Jaw and Prince Albert zones). Registered as a live-service layer: the " +
+        "ArcGIS item says \"Not for resale\" despite the province's Standard Unrestricted Use Data Licence, so North Ground " +
+        "stores no copy until the Fish and Wildlife Branch clarifies reuse (owner decision, 2026-09-22). The layer defers " +
+        "to the Wildlife Management Zones and Special Areas Boundaries Regulations.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
@@ -241,7 +247,10 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       sourceLeads: ["Saskatchewan Hunting and Trapping Guide"],
       sourceState: "NOT_INGESTED",
     },
-    knownGaps: ["No geometry ingested and no rules certified; every Saskatchewan query is UNKNOWN."],
+    knownGaps: [
+      "No rules certified; every Saskatchewan query is UNKNOWN. The zone layer is registered but unserved until it is live-certified.",
+      "Reuse terms are contradictory (unrestricted licence versus \"Not for resale\"); the owner sends the clarification request. A refusal returns Saskatchewan to UNAVAILABLE.",
+    ],
   },
   {
     id: "jurisdiction:ca-ab",
