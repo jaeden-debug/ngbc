@@ -31,6 +31,9 @@ const LAYERS = {
   },
 };
 
+const BATCH_RECORDS = 15;
+const BATCH_BYTES = 400 * 1024;
+
 const sha256 = (value) => `sha256:${createHash("sha256").update(value).digest("hex")}`;
 
 function loadEnv() {
@@ -101,6 +104,10 @@ async function main() {
 
   const only = args.includes("--layer") ? args[args.indexOf("--layer") + 1] : null;
   if (only && !catalogue.layers.some((layer) => layer.key === only)) throw new Error(`No layer "${only}" in ${config.catalogue}`);
+  if (!check) {
+    const removed = await rpc("discard_abandoned_special_area_runs", {});
+    if (removed) console.log(`discarded ${removed} abandoned run(s)`);
+  }
   let moved = 0;
   for (const layer of catalogue.layers.filter((entry) => !only || entry.key === only)) {
     const layerId = `special_layer:${jurisdiction}-${layer.key}`;
@@ -148,13 +155,32 @@ async function main() {
         geometry: JSON.stringify(feature.geometry),
       };
     });
-    const loaded = await rpc("publish_special_area_layer", {
+    // Staged in small batches: one request per layer would exceed the 8-second
+    // statement timeout on large layers, and the polygons are never simplified.
+    const runId = await rpc("begin_special_area_run", {
       p_layer: {
         layerId, jurisdictionId: config.jurisdictionId, sourceId: layer.sourceId, serviceUrl: layer.url, licence: config.licence,
         catalogueHash: layer.contentHash, sourceHash, featureCount: records.length, dataLastEditDate, retrievedAt: new Date().toISOString(),
       },
-      p_features: records,
+      p_reviewed_ids: reviewed.map(String),
     });
+    let batch = [];
+    let bytes = 0;
+    const flush = async () => {
+      if (!batch.length) return;
+      const started = Date.now();
+      await rpc("stage_special_area_records", { p_run_id: runId, p_features: batch });
+      console.log(`  staged ${batch.length} (${(bytes / 1024).toFixed(0)} KB) in ${Date.now() - started} ms`);
+      batch = [];
+      bytes = 0;
+    };
+    for (const record of records) {
+      if (batch.length && (batch.length >= BATCH_RECORDS || bytes + record.geometry.length > BATCH_BYTES)) await flush();
+      batch.push(record);
+      bytes += record.geometry.length;
+    }
+    await flush();
+    const loaded = await rpc("publish_special_area_run", { p_run_id: runId });
     console.log(`${layerId}: stored ${loaded} records (${sourceHash.slice(0, 19)}…)`);
   }
   if (check && moved) process.exit(1);
