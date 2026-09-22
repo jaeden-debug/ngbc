@@ -589,19 +589,22 @@ export const CERTIFIED_ZONE_NAMES: ReadonlySet<string> = new Set(
  * never a claim that its rules or boundaries are usable.
  */
 const SERVED = ZONE_LAYERS.filter((layer) => layer.serving);
-const servedNames = SERVED.map((layer) => layer.jurisdictionName);
+// One name per jurisdiction: Montana serves two layers and is one state.
+const servedNames = [...new Set(SERVED.map((layer) => layer.jurisdictionName))];
+const servedJurisdictions = (country: "CA" | "US") =>
+  new Set(SERVED.filter((layer) => countryOfJurisdiction(layer.jurisdictionId) === country).map((layer) => layer.jurisdictionId)).size;
 const servedList = servedNames.length > 1
   ? `${servedNames.slice(0, -1).join(", ")} and ${servedNames.at(-1)}`
   : servedNames[0] ?? "No jurisdiction";
 
 export const COVERAGE_ROADMAP = {
   // Counted, not typed: a registered layer that is not served yet is not drawn.
-  drawnJurisdictions: SERVED.length,
+  drawnJurisdictions: servedNames.length,
   certifiedUnits: SERVED.reduce((total, layer) => total + (layer.certifiedDesignations?.size ?? 0), 0),
   officialUnits: certifiedUnits.officialUnitCount + manitobaCertifiedUnits.officialUnitCount,
   // Thirteen provinces and territories, less those whose geometry is drawn.
-  canadaInDevelopment: 13 - SERVED.filter((layer) => layer.country === "CA").length,
-  unitedStatesInDevelopment: 50,
+  canadaInDevelopment: 13 - servedJurisdictions("CA"),
+  unitedStatesInDevelopment: 50 - servedJurisdictions("US"),
   summary:
     `Official hunting-zone geometry for ${servedList} is published here. Boundary layers for ` +
     "the remaining Canadian and United States jurisdictions are in development and are " +

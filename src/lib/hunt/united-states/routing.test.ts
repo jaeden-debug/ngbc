@@ -137,3 +137,16 @@ test("a zone card accepts a worded designation as the state writes it, and still
   assert.equal(isDesignation("<script>"), false);
   assert.equal(isDesignation(" leading space"), false);
 });
+
+test("a U.S. map says 'Certified rules' only for units the state's rules builder certified", async () => {
+  const { zoneCoverage } = await import("../zone-layers.ts");
+  // Montana's certified rules are written in its upland districts, not its deer and elk districts.
+  assert.equal(zoneCoverage(UPLAND, "East of the Continental Divide"), "VERIFIED");
+  assert.equal(zoneCoverage(HD, "411"), "IN_DEVELOPMENT");
+  // Idaho: only units a pronghorn controlled hunt reaches.
+  const idaho = layerById("layer:us-id-gmu")!;
+  assert.equal(zoneCoverage(idaho, "39"), "VERIFIED");
+  assert.equal(zoneCoverage(idaho, "1"), "IN_DEVELOPMENT");
+  // A state with no rules builder yet certifies nothing it draws.
+  assert.equal(zoneCoverage(WY_ELK, "7"), "IN_DEVELOPMENT");
+});

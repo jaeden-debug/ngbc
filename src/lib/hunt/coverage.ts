@@ -219,13 +219,22 @@ function spokenList(items: readonly string[]): string {
 }
 
 /* Named from the served layers, so the copy grows with coverage instead of
-   going stale. Every served layer has a regulatory entry (regulatory/
-   registry.test.ts holds that), so each named here has certified rules. */
+   going stale. A jurisdiction is named once however many layers it serves,
+   and a layer is named for rules only where some of its units carry
+   certified rules: Montana's deer and elk districts are drawn, but its
+   certified rules are written in its upland districts. */
 /** Where Hunt can answer today: "Ontario and Manitoba". */
-export const COVERED_JURISDICTIONS = spokenList(RULES_LAYERS.map((layer) => layer.jurisdictionName));
+/* One name per jurisdiction: Montana's rules serve through two of its layers
+   and it is one state. */
+export const COVERED_JURISDICTIONS = spokenList([...new Set(RULES_LAYERS.map((layer) => layer.jurisdictionName))]);
 
+/* A layer is named for rules only where its own units carry certified rules:
+   Montana's certified rules are written in its upland districts, while its
+   deer and elk districts are drawn without a certified rule of their own. */
 export const COVERAGE_SUMMARY =
-  `Certified rules for selected species in ${spokenList(RULES_LAYERS.map((layer) => `${layer.jurisdictionName}'s ${officialTermPlural(layer)}`))}.`;
+  `Certified rules for selected species in ${spokenList(RULES_LAYERS
+    .filter((layer) => (layer.certifiedDesignations?.size ?? 0) > 0)
+    .map((layer) => `${layer.jurisdictionName}'s ${officialTermPlural(layer)}`))}.`;
 
 
 export type MajorGameSpeciesId = (typeof SUPPORTED_MAJOR_GAME_SPECIES_IDS)[number];

@@ -1,3 +1,5 @@
+import idahoCertifiedUnits from "../../../../content/regulatory/us-id-certified-units.json" with { type: "json" };
+import montanaCertifiedUnits from "../../../../content/regulatory/us-mt-certified-units.json" with { type: "json" };
 import type { ArcgisZoneSourceConfig } from "../ingestion/arcgis-zone-source.ts";
 import { licencePermitsServing, type SourceLicence } from "../source-licence.ts";
 import type { ZoneLayer } from "../zone-layers.ts";
@@ -333,7 +335,12 @@ const LICENCES: Readonly<Record<string, SourceLicence>> = {
   },
 };
 
+const CERTIFIED_UNITS = new Map<string, readonly string[]>([
+  [montanaCertifiedUnits.layerId, montanaCertifiedUnits.certifiedUnits],
+  [idahoCertifiedUnits.layerId, idahoCertifiedUnits.certifiedUnits],
+]);
 for (const { layer } of US_LAYERS) {
+  layer.certifiedDesignations = new Set((CERTIFIED_UNITS.get(layer.id) ?? []).map((unit) => unit.toUpperCase()));
   layer.licence = LICENCES[layer.id];
   /* The licence decides, not the intent above: a dataset whose publisher grants
      no reuse is not drawn, resolved or answered from, however certified its

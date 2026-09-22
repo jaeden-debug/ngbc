@@ -61,11 +61,18 @@ test("where the authority's geometry holds a point in one unit, production named
   }
 });
 
-test("no U.S. layer is served until its jurisdiction's rules are certified", () => {
+test("a U.S. layer is served only with certified rules, a clean live parity record and certification cases", async () => {
+  const { regulatoryEntryFor } = await import("../regulatory/registry.ts");
+  const { existsSync } = await import("node:fs");
   for (const layerId of US_LAYER_IDS) {
     const layer = layerById(layerId)!;
     assert.equal(layer.resolution, "LIVE_SERVICE");
     assert.ok(layer.legalStanding, `${layerId} records no legal standing`);
-    assert.equal(layer.serving, false, `${layerId} is served before its rules are certified`);
+    if (!layer.serving) continue;
+    assert.ok(regulatoryEntryFor(layer.jurisdictionId), `${layerId} is served without certified rules for ${layer.jurisdictionName}`);
+    const parity = JSON.parse(readFileSync(new URL(`../../../../fixtures/hunt/${layerId.slice(6)}-live-parity.json`, import.meta.url), "utf8")) as { disagreements: number; points: number };
+    assert.ok(parity.points > 0 && parity.disagreements === 0, `${layerId} is served without a clean live parity record`);
+    const state = layer.jurisdictionId.slice("jurisdiction:".length);
+    assert.ok(existsSync(new URL(`../../../../fixtures/hunt/${state}-certification-cases.json`, import.meta.url)), `${layerId} is served without certification cases`);
   }
 });
