@@ -387,8 +387,12 @@ const scenarios = {
     await page.getByRole("button", { name: "Check an exact spot" }).click();
     await page.getByRole("button", { name: "Check this spot" }).click();
     await waitFor(page, () => /In season/.test(document.querySelector("[class*=answerStatus]")?.textContent ?? ""), 30_000);
+    // The long form carries the brief, as it carries the sources; a wide panel already shows it.
+    const details = page.getByRole("button", { name: /^Details/ }).first();
+    if (await details.count()) await details.click();
     await page.getByRole("button", { name: "Share Hunt Brief" }).click();
-    const created = await waitFor(page, () => /Private Hunt Brief link ready|temporarily unavailable/.test(document.body.innerText), 20_000);
+    await page.getByRole("button", { name: "Copy link" }).click();
+    const created = await waitFor(page, () => /Hunt Brief link|link ready|temporarily unavailable/i.test(document.body.innerText), 20_000);
     const share = requests.find((request) => request.path === "/api/hunt/share");
     check(s, "the brief request is made", created && Boolean(share));
     check(s, "the brief request carries the checklist and no coordinate", share && /"readiness"/.test(share.body) && !/latitude|longitude/.test(share.body));

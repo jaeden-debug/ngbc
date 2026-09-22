@@ -68,7 +68,8 @@ export interface PinPreview {
 export interface CameraRequest {
   /** Increments on every request, so the same target twice still moves the camera. */
   seq: number;
-  target: "self" | "hunt" | "zone";
+  /** `pin`: the spot being previewed, which the map then centres the crosshair on. */
+  target: "self" | "hunt" | "zone" | "pin";
 }
 
 export type MapNotice = null | "self-denied" | "self-unavailable";
@@ -197,7 +198,15 @@ export function explorationReducer(state: ExplorationState, event: ExplorationEv
     case "PIN_PRESSED":
       return { ...state, pin: { point: event.point, mode: "pressed" }, cardOpen: false, selection: huntSelection(state) };
     case "PIN_CENTRE_STARTED":
-      return { ...state, pin: { point: event.point, mode: "centre" }, cardOpen: false, selection: huntSelection(state) };
+      /* The crosshair IS the map centre, so the camera goes to the offered
+         point; otherwise the spot would be wherever the map already sat. */
+      return {
+        ...state,
+        pin: { point: event.point, mode: "centre" },
+        cardOpen: false,
+        selection: huntSelection(state),
+        camera: camera(state, "pin"),
+      };
     case "PIN_CENTRE_MOVED":
       return state.pin?.mode === "centre" ? { ...state, pin: { point: event.point, mode: "centre" } } : state;
     case "PIN_CANCELLED":
