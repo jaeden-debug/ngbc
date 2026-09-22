@@ -725,13 +725,28 @@ async function resolveHedged(
 
   const pending: Promise<Settled>[] = [startGis()];
   if (early === "hedge") pending.push(db);
+  /* A zone is decisive at once. "No zone" is decisive only once the other leg
+     has finished or spent its own budget: near an edge one source can miss a
+     point the other places (2026-09-22 review: Alberta's service said "no
+     zone" at ~600 ms, the registry placed WMU 102 at ~700 ms). */
   let winner: Settled | null = null;
+  let noZone: Settled | null = null;
   while (pending.length) {
     const next = await Promise.race(pending);
     pending.splice(pending.indexOf(next.source === "db" ? db : gis!), 1);
-    if (next.result.status !== "PROVIDER_ERROR") { winner = next; break; }
+    if (next.result.status === "PROVIDER_ERROR") continue;
+    if (next.result.status !== "RESOLVED") {
+      if (noZone) return zoneConflict(noZone.result, next.result, "SAME_GEOGRAPHY") ?? noZone.result;
+      noZone = next;
+      continue;
+    }
+    // A zone after a "no zone" is two answers that disagree: surfaced, never picked.
+    if (noZone) return zoneConflict(next.result, noZone.result, "SAME_GEOGRAPHY") ?? next.result;
+    winner = next;
+    break;
   }
   if (!winner) {
+    if (noZone) return noZone.result;
     // Both failed: the fallback's own answer, as before.
     return settled.find((entry) => entry.source === "gis")?.result ?? settled[0].result;
   }

@@ -49,7 +49,7 @@ function registry(answer: string | "fail", delayMs: number, seen: { aborted?: bo
 }
 
 /** Manitoba's own service, answering after `delayMs`, or failing; counts calls and aborts. */
-function authority(answer: string | "fail", delayMs: number, seen: { calls: number; aborted?: boolean } = { calls: 0 }): typeof fetch {
+function authority(answer: string | "fail" | "none", delayMs: number, seen: { calls: number; aborted?: boolean } = { calls: 0 }): typeof fetch {
   return (async (input: string | URL, init?: RequestInit) => {
     const url = new URL(String(input));
     if (!url.href.includes(MB_SERVICE)) throw new Error(`unexpected ${url.href}`);
@@ -61,7 +61,7 @@ function authority(answer: string | "fail", delayMs: number, seen: { calls: numb
     if (answer === "fail") return new Response("down", { status: 503 });
     return new Response(JSON.stringify({
       type: "FeatureCollection",
-      features: [{ properties: { GHA: answer }, geometry: row(answer).display_geometry }],
+      features: answer === "none" ? [] : [{ properties: { GHA: answer }, geometry: row(answer).display_geometry }],
     }), { status: 200, headers: { "content-type": "application/json" } });
   }) as typeof fetch;
 }
@@ -151,4 +151,27 @@ test("across a border, one placing the point and the other not is agreement; two
   const both = zoneConflict(canada, montana, "ACROSS_JURISDICTIONS")!;
   assert.equal(both.status, "UNKNOWN");
   assert.match(both.message, /Two jurisdictions' official services both claim this point/);
+});
+
+test("a 'no zone' answer waits for the other leg: a zone that follows is surfaced as a disagreement", async () => {
+  // The review's probe: the authority says "no zone" just after the hedge, the registry places the point later.
+  const result = await resolveZone(POINT.latitude, POINT.longitude, authority("none", 0), registry("23A", ZONE_HEDGE_DELAY_MS + 100));
+  assert.equal(result.status, "UNKNOWN");
+  assert.equal(result.zoneId, undefined);
+  assert.match(result.message, /Game Hunting Area 23A/);
+  assert.match(result.message, /human verification is required/);
+});
+
+test("a 'no zone' answer stands when the other leg fails", async () => {
+  const result = await resolveZone(POINT.latitude, POINT.longitude, authority("none", 0), registry("fail", ZONE_HEDGE_DELAY_MS + 100));
+  assert.equal(result.status, "UNKNOWN");
+  assert.doesNotMatch(result.message, /human verification is required/);
+});
+
+test("a zone answer after the hedge is decisive at once", async () => {
+  const gis = { calls: 0, aborted: false as boolean | undefined };
+  const started = Date.now();
+  const result = await resolveZone(POINT.latitude, POINT.longitude, authority("23A", 50, gis), registry("23A", 2_000));
+  assert.equal(result.zoneId, "management_zone:ca-mb-gha-23a");
+  assert.ok(Date.now() - started < ZONE_HEDGE_DELAY_MS + 500);
 });
