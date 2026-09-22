@@ -4,7 +4,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { evaluateHunt } from "./evaluate.ts";
 import { clearOverlayCache } from "./overlays.ts";
 import type { HuntInput, ZoneResolution } from "./types.ts";
-import { resolveZone, resolveZoneFromOfficialGis, SUPABASE_ZONE_TIMEOUT_MS } from "./zone.ts";
+import { resolveZone, resolveZoneFromOfficialGis, SUPABASE_ZONE_TIMEOUT_MS, ZONE_HEDGE_DELAY_MS } from "./zone.ts";
 import { layerById } from "./zone-layers.ts";
 
 /**
@@ -251,7 +251,8 @@ test("an unreachable registry cannot hold an evaluation hostage: the fallback ru
     const elapsed = Date.now() - started;
     assert.equal(result.status, "RESOLVED");
     assert.equal(result.zoneId, "management_zone:ca-mb-gha-23a");
-    assert.ok(elapsed >= SUPABASE_ZONE_TIMEOUT_MS - 50 && elapsed < SUPABASE_ZONE_TIMEOUT_MS + 2_000, `took ${elapsed} ms`);
+    // The authority is asked once PostGIS has taken the hedge delay, not after its full timeout.
+    assert.ok(elapsed >= ZONE_HEDGE_DELAY_MS - 50 && elapsed < SUPABASE_ZONE_TIMEOUT_MS, `took ${elapsed} ms`);
   } finally {
     clearTimeout(keepAlive);
     process.env.SPATIAL_PROVIDER = saved.provider;

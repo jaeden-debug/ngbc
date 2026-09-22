@@ -9,6 +9,19 @@ export const ONTARIO_WMU_ENDPOINT = "https://ws.lioservices.lrc.gov.on.ca/arcgis
 /** How long the PostGIS registry gets before the official-GIS fallback runs. */
 export const SUPABASE_ZONE_TIMEOUT_MS = 2_500;
 
+/**
+ * How long a PostGIS lookup may run before the authority's service is ALSO
+ * asked. PostGIS answered in 170 ms median / 215 ms p90 when the switch was
+ * certified (2026-09-20) and 91 / 160 ms resolver-direct (2026-09-22); a
+ * Server-Timing sample on 2026-09-22 showed warm lookups of 125–400 ms and a
+ * loaded database running to the 2.5 s bound, after which the fallback was
+ * paid on top. 600 ms is roughly three times the certified p90: a healthy
+ * lookup almost never starts a second request, and a slow one overlaps the
+ * fallback instead of stacking it. Both sources are parity-certified, so the
+ * answer does not change — only when it arrives.
+ */
+export const ZONE_HEDGE_DELAY_MS = 600;
+
 type Position = [number, number];
 type PolygonGeometry = { type: "Polygon"; coordinates: Position[][] } | { type: "MultiPolygon"; coordinates: Position[][][] };
 
@@ -153,6 +166,8 @@ export async function resolveOntarioWmuFromSupabase(
   latitude: number,
   longitude: number,
   supabaseClient: () => SupabaseClient = defaultSupabaseServerClient,
+  /** Cancels the lookup when another source's answer has already been used. */
+  signal?: AbortSignal,
 ): Promise<ZoneResolution> {
   if (!Number.isFinite(latitude) || !Number.isFinite(longitude) || latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180) {
     return {
@@ -169,7 +184,9 @@ export async function resolveOntarioWmuFromSupabase(
        error, so the fallback runs within the budget. */
     const { data, error } = await supabaseClient()
       .rpc("resolve_management_zone", { p_latitude: latitude, p_longitude: longitude })
-      .abortSignal(AbortSignal.timeout(SUPABASE_ZONE_TIMEOUT_MS));
+      .abortSignal(signal
+        ? AbortSignal.any([AbortSignal.timeout(SUPABASE_ZONE_TIMEOUT_MS), signal])
+        : AbortSignal.timeout(SUPABASE_ZONE_TIMEOUT_MS));
     if (error) throw error;
     const rows = data as SupabaseZoneRow[] | null;
     if (!rows || rows.length !== 1) {
@@ -199,7 +216,7 @@ export async function resolveOntarioWmuFromSupabase(
         : "The point intersects one verified management-zone feature in North Ground's PostGIS registry. Map and consumer GPS accuracy still limit legal reliance.",
     };
   } catch (error) {
-    if (!(error instanceof SupabaseServerConfigurationError)) console.error("[hunt-zone] Supabase spatial lookup failed");
+    if (!(error instanceof SupabaseServerConfigurationError) && !signal?.aborted) console.error("[hunt-zone] Supabase spatial lookup failed");
     return {
       status: "PROVIDER_ERROR",
       sourceId: "source:ca-on-wmu-service",
@@ -452,14 +469,14 @@ export async function resolveZone(
   timings?: Record<string, number>,
 ): Promise<ZoneResolution> {
   const provider = process.env.SPATIAL_PROVIDER?.trim() || "official-gis";
-  let result: ZoneResolution | null = null;
-  if (provider === "supabase") {
+  let result: ZoneResolution;
+  if (provider === "supabase" && process.env.SPATIAL_FALLBACK_PROVIDER === "official-gis") {
+    result = await resolveHedged(latitude, longitude, fetcher, supabaseClient, timings);
+  } else if (provider === "supabase") {
     const started = performance.now();
     result = await resolveOntarioWmuFromSupabase(latitude, longitude, supabaseClient);
     if (timings) timings.db = performance.now() - started;
-    if (result.status === "PROVIDER_ERROR" && process.env.SPATIAL_FALLBACK_PROVIDER === "official-gis") result = null;
-  }
-  if (!result) {
+  } else {
     const started = performance.now();
     result = await resolveZoneFromOfficialGis(latitude, longitude, fetcher);
     if (timings) timings.gis = performance.now() - started;
@@ -474,4 +491,117 @@ export async function resolveZone(
     if (containing.length === 1 && containing[0].serving) return { ...result, jurisdictionId: containing[0].jurisdictionId };
   }
   return result;
+}
+
+/* ── Hedged resolution ─────────────────────────────────────────────────── */
+
+type Settled = { source: "db" | "gis"; result: ZoneResolution };
+
+/** The same fetch path as the fallback, cancellable once another answer is used. */
+function cancellable(fetcher: typeof fetch, signal: AbortSignal): typeof fetch {
+  return ((input: Parameters<typeof fetch>[0], init?: RequestInit) =>
+    fetcher(input, { ...init, signal: init?.signal ? AbortSignal.any([init.signal, signal]) : signal })) as typeof fetch;
+}
+
+function sameAnswer(left: ZoneResolution, right: ZoneResolution): boolean {
+  return left.status === right.status && left.zoneId === right.zoneId;
+}
+
+/**
+ * Two usable answers in hand: the first when they agree, otherwise a question
+ * for a person, naming both — exactly as when two zones claim one point.
+ */
+export function reconcileZoneAnswers(first: ZoneResolution, second: ZoneResolution): ZoneResolution {
+  if (sameAnswer(first, second)) return first;
+  console.warn("[hunt-zone] registry and authority disagree", { jurisdictions: [first.jurisdictionId, second.jurisdictionId] });
+  return {
+    status: "UNKNOWN",
+    sourceId: first.sourceId,
+    message:
+      "North Ground's registry and the authority's own service place this point differently " +
+      `(${[first, second].map((result) => result.officialName ?? "no zone").join(" and ")}); ` +
+      "human verification is required.",
+  };
+}
+
+/**
+ * PostGIS first; the authority's service as well once PostGIS has taken
+ * `ZONE_HEDGE_DELAY_MS`, or at once if PostGIS fails. The first usable answer
+ * is used and the other request is aborted. Two answers that are both in hand
+ * and disagree are never picked between: the point needs a person, exactly as
+ * when two zones claim it. A loser that still arrives with a different answer
+ * is counted in the log by layer, never by coordinate or zone.
+ */
+async function resolveHedged(
+  latitude: number,
+  longitude: number,
+  fetcher: typeof fetch,
+  supabaseClient: () => SupabaseClient,
+  timings?: Record<string, number>,
+): Promise<ZoneResolution> {
+  const started = performance.now();
+  const dbAbort = new AbortController();
+  const gisAbort = new AbortController();
+  const settled: Settled[] = [];
+
+  const db: Promise<Settled> = resolveOntarioWmuFromSupabase(latitude, longitude, supabaseClient, dbAbort.signal)
+    .then((result) => {
+      if (timings) timings.db = performance.now() - started;
+      const entry = { source: "db" as const, result };
+      settled.push(entry);
+      return entry;
+    });
+  let gis: Promise<Settled> | null = null;
+  let gisStarted = 0;
+  const startGis = () => {
+    if (gis) return gis;
+    gisStarted = performance.now();
+    gis = resolveZoneFromOfficialGis(latitude, longitude, cancellable(fetcher, gisAbort.signal)).then((result) => {
+      if (timings) timings.gis = performance.now() - gisStarted;
+      const entry = { source: "gis" as const, result };
+      settled.push(entry);
+      return entry;
+    });
+    return gis;
+  };
+
+  let hedgeTimer: ReturnType<typeof setTimeout> | undefined;
+  const hedge = new Promise<"hedge">((resolve) => { hedgeTimer = setTimeout(() => resolve("hedge"), ZONE_HEDGE_DELAY_MS); });
+  const early = await Promise.race([db, hedge]);
+  clearTimeout(hedgeTimer);
+
+  // PostGIS answered within the delay: the common case, one request.
+  if (early !== "hedge" && early.result.status !== "PROVIDER_ERROR") return early.result;
+  if (timings && early === "hedge") timings.hedge = ZONE_HEDGE_DELAY_MS;
+
+  const pending: Promise<Settled>[] = [startGis()];
+  if (early === "hedge") pending.push(db);
+  let winner: Settled | null = null;
+  while (pending.length) {
+    const next = await Promise.race(pending);
+    pending.splice(pending.indexOf(next.source === "db" ? db : gis!), 1);
+    if (next.result.status !== "PROVIDER_ERROR") { winner = next; break; }
+  }
+  if (!winner) {
+    // Both failed: the fallback's own answer, as before.
+    return settled.find((entry) => entry.source === "gis")?.result ?? settled[0].result;
+  }
+
+  const other = settled.find((entry) => entry !== winner && entry.result.status !== "PROVIDER_ERROR");
+  if (other) {
+    const reconciled = reconcileZoneAnswers(winner.result, other.result);
+    if (reconciled !== winner.result) return reconciled;
+  }
+
+  // Use the winner and cancel the other request, so it never keeps a backend busy.
+  (winner.source === "db" ? gisAbort : dbAbort).abort();
+  const loser = winner.source === "db" ? gis : db;
+  void loser?.then((late) => {
+    if (late.result.status !== "PROVIDER_ERROR" && !sameAnswer(late.result, winner.result)) {
+      console.warn("[hunt-zone] registry and authority disagree after response", {
+        jurisdictions: [winner.result.jurisdictionId, late.result.jurisdictionId],
+      });
+    }
+  });
+  return winner.result;
 }
