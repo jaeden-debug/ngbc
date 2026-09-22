@@ -67,6 +67,11 @@ export interface JurisdictionRegulatory {
   /** Named official publications, for review rather than for evaluation. */
   sourceLeads: string[];
   sourceState: SourceState;
+  /**
+   * Where the authority publishes its own hunting rules, for a person to check
+   * when North Ground has not certified them. Verified reachable when recorded.
+   */
+  huntingAuthorityUrl?: string;
   notes?: string;
 }
 
@@ -262,6 +267,7 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       bundleIds: [],
       sourceLeads: ["Saskatchewan Hunting and Trapping Guide"],
       sourceState: "NOT_INGESTED",
+      huntingAuthorityUrl: "https://www.saskatchewan.ca/residents/parks-culture-heritage-and-sport/hunting-trapping-and-angling/hunting",
     },
     knownGaps: [
       "No rules certified; every Saskatchewan query is UNKNOWN. The zone layer is registered but unserved until it is live-certified.",
@@ -335,6 +341,7 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
         "2026-2028 Hunting and Trapping Regulations Synopsis (cross-check only)",
       ],
       sourceState: "CURRENT",
+      huntingAuthorityUrl: "https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/hunting",
       notes:
         "A first wave is built from the regulation itself (content/regulatory/ca-bc-2026.json): ruffed, spruce and " +
         "sharp-tailed grouse, rock and willow ptarmigan, snowshoe hare and black bear, 79 rules. It becomes coverage only " +
@@ -438,6 +445,7 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       bundleIds: [],
       sourceLeads: ["Newfoundland and Labrador Hunting and Trapping Guide"],
       sourceState: "NOT_INGESTED",
+      huntingAuthorityUrl: "https://www.gov.nl.ca/hunting-trapping-guide/",
     },
     knownGaps: [
       "No geometry ingested and no rules certified; every Newfoundland and Labrador query is UNKNOWN. The three big-game layers are registered and unserved.",
@@ -472,6 +480,7 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       bundleIds: [],
       sourceLeads: ["Yukon Hunting Regulations Summary"],
       sourceState: "NOT_INGESTED",
+      huntingAuthorityUrl: "https://yukon.ca/en/hunting-regulations",
     },
     knownGaps: [
       "No geometry ingested and no rules certified; every Yukon query is UNKNOWN.",

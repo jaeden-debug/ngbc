@@ -446,6 +446,15 @@ provinces, the three territories, and the federal layers that compose with them.
 Canada is not the initial market to be moved past — it is the minimum complete
 footprint before broad United States regulatory expansion begins.
 
+*Scope, 2026-09-22.* The current national target is the ten provinces, Yukon and
+the federal layer. The Northwest Territories and Nunavut are out of scope for
+now: neither publishes reusable vector hunting geography, and both prohibit
+commercial reuse without written permission. They remain in the coverage
+registry with their findings and their gaps, are never counted toward a national
+milestone in either direction, and are never reported as complete. Canada
+complete means the in-scope jurisdictions; the two territories are named as out
+of scope wherever coverage is stated.
+
 Complete does not mean every location and species appears supported. It means
 North Ground can state exactly, per jurisdiction and per species, what it knows,
 what applies, what further input a rule requires, what is not yet verified, and
@@ -460,8 +469,9 @@ made to look covered by editing a constant.
 
 The national milestones are:
 
-- **Canada spatial complete** — every jurisdiction that publishes management
-  geography has it ingested and parity-certified against its own authority.
+- **Canada spatial complete** — every in-scope jurisdiction that publishes
+  management geography has it ingested and parity-certified against its own
+  authority.
 - **Canada core game complete** — the commonly hunted species in each
   jurisdiction have deterministic rule coverage, or a documented legal reason why
   another model applies.

@@ -96,6 +96,15 @@ export interface ZoneSummary {
     authority: string;
     coverage: ZoneCoverageStatus;
     sourceId: CanonicalId<"source">;
+    /**
+     * Whether North Ground holds certified rules for this jurisdiction at all.
+     * A boundary can be drawn and named while this is false: drawing a boundary
+     * is not a claim that the rules inside it are certified (CLAUDE.md §41A).
+     * False means the card says so and sends the person to the authority.
+     */
+    rulesCertified: boolean;
+    /** The authority's own hunting rules, present only when rulesCertified is false. */
+    authorityRulesUrl?: string | null;
   };
   date: string;
   species: SpeciesZoneSummary[];

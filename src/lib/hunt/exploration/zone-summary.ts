@@ -2,6 +2,7 @@ import type { CanonicalId, IsoDate } from "../../content-contract/index.ts";
 import { contentRepository } from "../../content/repository.ts";
 import { speciesById } from "../coverage.ts";
 import { regulatoryEntryFor, type RegulatoryEntry, type RegulatoryOutcome } from "../regulatory/registry.ts";
+import { CANADA_JURISDICTIONS } from "../canada/registry.ts";
 import type { ZoneResolution } from "../types.ts";
 import { presentZone } from "../zone-presentation.ts";
 import { layerById, zoneCoverage, zoneDisplayLabel, zoneIdFor, type ZoneLayer } from "../zone-layers.ts";
@@ -178,6 +179,11 @@ function speciesIn(entry: RegulatoryEntry): CanonicalId<"species">[] {
 }
 
 /** Every certified species in the zone's jurisdiction, as the engine answers for the whole zone on `date`. */
+/** The authority's own hunting rules page, where North Ground has none certified. */
+function authorityRulesUrl(jurisdictionId: string): string | undefined {
+  return CANADA_JURISDICTIONS.find((entry) => entry.id === jurisdictionId)?.regulatory.huntingAuthorityUrl;
+}
+
 export async function summarizeZone(ref: ZoneRef, date: string): Promise<ZoneSummary> {
   const layer = servedLayer(ref.layerId);
   if (!layer) throw new ZoneSummaryError("That map layer is not served.");
@@ -185,6 +191,7 @@ export async function summarizeZone(ref: ZoneRef, date: string): Promise<ZoneSum
   const designation = ref.designation.trim();
 
   const entry = regulatoryEntryFor(layer.jurisdictionId);
+
   const speciesIds = entry ? speciesIn(entry) : [];
   const species = entry
     ? await Promise.all(speciesIds.map((speciesId) => summarizeSpecies(entry, layer, designation, speciesId, date)))
@@ -223,6 +230,12 @@ export async function summarizeZone(ref: ZoneRef, date: string): Promise<ZoneSum
       authority: layer.authority,
       coverage: zoneCoverage(layer, designation),
       sourceId: layer.sourceId,
+      /* Whether North Ground holds certified rules for this jurisdiction at all.
+         A drawn boundary is not a claim about rules (CLAUDE.md section 41A), so
+         a zone can be named and outlined while this is false. When it is false
+         the card says so and sends the person to the authority's own rules. */
+      rulesCertified: entry !== undefined,
+      ...(entry ? {} : { authorityRulesUrl: authorityRulesUrl(layer.jurisdictionId) ?? null }),
     },
     date,
     species: species.map(publicSummary),
