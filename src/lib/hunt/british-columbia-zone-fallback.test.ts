@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { resolveLayerFromWfs } from "./zone.ts";
+import { resolveLayerFromWfs, resolveZone } from "./zone.ts";
 import { ZONE_LAYERS, layerForResolution } from "./zone-layers.ts";
 
 /**
@@ -74,5 +74,21 @@ test("a CQL-injection-shaped designation is never put back into a filter", async
     const zone = await resolveLayerFromWfs(raw, 53.917, -122.749, fetcher);
     assert.equal(zone.status, "PROVIDER_ERROR", hostile);
     assert.equal(asked.length, 1, `${hostile} reached a second filter`);
+  }
+});
+
+test("Cranbrook is not attributed to Alberta because Alberta's box reaches it", async () => {
+  // Alberta's extent runs west to 120° W; British Columbia's registered layer covers Cranbrook too.
+  const saved = process.env.SPATIAL_PROVIDER;
+  process.env.SPATIAL_PROVIDER = "official-gis";
+  try {
+    const empty = (async () => new Response(JSON.stringify({ type: "FeatureCollection", features: [] }), {
+      headers: { "content-type": "application/json" },
+    })) as typeof fetch;
+    const result = await resolveZone(49.5097, -115.7688, empty);
+    assert.equal(result.status, "UNKNOWN");
+    assert.equal(result.jurisdictionId, undefined);
+  } finally {
+    if (saved === undefined) delete process.env.SPATIAL_PROVIDER; else process.env.SPATIAL_PROVIDER = saved;
   }
 });

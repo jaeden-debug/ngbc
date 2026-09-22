@@ -542,7 +542,20 @@ export async function resolveZoneFromOfficialGis(
   }
   const failed = results.find((result) => result.status === "PROVIDER_ERROR");
   if (failed) return failed;
-  return results.length === 1 ? results[0] : { ...results[0], jurisdictionId: undefined };
+  /* One authority saying "no zone of mine here" names its jurisdiction only
+     when no other registered layer's extent reaches the point. Alberta's box
+     runs west to 120° W, so Cranbrook, B.C. is in it; Alberta's service finding
+     nothing there does not make Cranbrook Albertan. */
+  return results.length === 1 && registeredLayersAt(latitude, longitude).length === 1
+    ? results[0]
+    : { ...results[0], jurisdictionId: undefined };
+}
+
+/** Every registered layer whose extent contains the point, served or not. */
+function registeredLayersAt(latitude: number, longitude: number) {
+  return ZONE_LAYERS.filter((layer) =>
+    latitude >= layer.bounds.minLatitude && latitude <= layer.bounds.maxLatitude &&
+    longitude >= layer.bounds.minLongitude && longitude <= layer.bounds.maxLongitude);
 }
 
 /**
@@ -617,9 +630,7 @@ export async function resolveZone(
     /* Registered layers count whether or not they are served: Québec's layer is
        not yet served, but its extent is still evidence the point may be in
        Québec, and Ontario's box alone must not claim it. */
-    const containing = ZONE_LAYERS.filter((layer) =>
-      latitude >= layer.bounds.minLatitude && latitude <= layer.bounds.maxLatitude &&
-      longitude >= layer.bounds.minLongitude && longitude <= layer.bounds.maxLongitude);
+    const containing = registeredLayersAt(latitude, longitude);
     if (containing.length === 1 && containing[0].serving) return { ...result, jurisdictionId: containing[0].jurisdictionId };
   }
   return result;
