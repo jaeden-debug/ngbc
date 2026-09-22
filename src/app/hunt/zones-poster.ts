@@ -28,17 +28,39 @@ const cachedPoster = unstable_cache(async (): Promise<string> => {
   return posterDataUri(posterSvg(result.features));
 }, ["hunt-zones-poster", servedGeometryVersion(), DEPLOYMENT], { revalidate: 21_600 });
 
+/**
+ * This instance's own copy of the answer it already drew, so a warm server
+ * hands the poster to the page without waiting on the shared cache at all.
+ * It carries the same key and the same lifetime as the shared entry, so it can
+ * never be the staler of the two.
+ */
+const MEMORY_KEY = `${servedGeometryVersion()}:${DEPLOYMENT}`;
+const MEMORY_MS = 21_600_000;
+let memory: { key: string; value: string; expiresAt: number } | null = null;
+
 export async function zonesPoster(waitMs = 350): Promise<string | null> {
-  const pending = cachedPoster();
+  if (memory && memory.key === MEMORY_KEY && memory.expiresAt > Date.now()) return memory.value;
+  const started = Date.now();
+  const pending = cachedPoster().then((value) => {
+    memory = { key: MEMORY_KEY, value, expiresAt: Date.now() + MEMORY_MS };
+    return value;
+  });
+  let missedTheWait = false;
   // Whatever happens to this request, finish filling the cache for the next.
-  after(() => pending.catch((error: unknown) => {
-    // Observable, never fatal: the page simply opens without the poster.
-    console.warn(`[hunt-poster] not drawn: ${error instanceof Error ? error.message : String(error)}`);
-  }));
+  after(() => pending.then(
+    () => {
+      // A page that shipped without a poster it could have had: the cause is the wait, not the geometry.
+      if (missedTheWait) console.warn(`[hunt-poster] past the ${waitMs} ms wait: ready after ${Date.now() - started} ms`);
+    },
+    (error: unknown) => {
+      // Observable, never fatal: the page simply opens without the poster.
+      console.warn(`[hunt-poster] not drawn: ${error instanceof Error ? error.message : String(error)}`);
+    },
+  ));
   try {
     return await Promise.race([
       pending,
-      new Promise<null>((resolve) => { setTimeout(() => resolve(null), waitMs); }),
+      new Promise<null>((resolve) => { setTimeout(() => { missedTheWait = true; resolve(null); }, waitMs); }),
     ]);
   } catch {
     return null;
