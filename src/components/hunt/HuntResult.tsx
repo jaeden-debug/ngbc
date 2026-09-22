@@ -21,6 +21,14 @@ import styles from "./Hunt.module.css";
  * label is softened; "In season, with conditions" and `CONDITIONAL` are the same
  * fact said two ways, and UNKNOWN never becomes anything friendlier.
  */
+/** How the seasons behind an answer are licensed, in words a hunter uses. */
+const AUTHORIZATION_WORDING: Record<string, string> = {
+  DRAW_REQUIRED: "Draw required",
+  MIXED: "Draw or over-the-counter, by hunt",
+  OVER_THE_COUNTER: "Over-the-counter licence",
+  GENERAL_LICENCE: "General licence",
+};
+
 const STATUS_WORDING: Record<string, string> = {
   OPEN: "In season",
   CLOSED: "Closed",
@@ -176,6 +184,30 @@ export default function HuntResult({
             <p className={styles.assumptionsNote}>
               You told North Ground this. Nothing here confirms that a licence, tag or
               residency is valid — only the issuing authority can.
+            </p>
+          </div>
+        ) : null}
+
+        {result.regulation.authorization ? (
+          /* Regulatory availability, never entitlement: which hunts this season
+             is open under and how their licences are issued. North Ground cannot
+             see what anyone holds, and the block says so in its last line. */
+          <div className={styles.assumptions} role="note" aria-label="Licence and hunt">
+            <p className={styles.assumptionsTitle}>
+              {AUTHORIZATION_WORDING[result.regulation.authorization.requirement] ?? result.regulation.authorization.requirement}
+            </p>
+            <ul className={styles.assumptionsList}>
+              {result.regulation.authorization.huntCodes.map((huntCode) => (
+                <li key={huntCode.code}>
+                  <span>{huntCode.authorityTerm}</span> <strong className="ng-numeric">{huntCode.code}</strong>
+                  {" · "}<span>{huntCode.allocation.authorityTerm}</span>
+                  {huntCode.allocation.quota ? <span> · {huntCode.allocation.quota.statedAs}</span> : null}
+                </li>
+              ))}
+              {result.regulation.authorization.draws.map((draw) => <li key={draw.cycleId}>{draw.statedAs}</li>)}
+            </ul>
+            <p className={styles.assumptionsNote}>
+              {result.regulation.authorization.huntCodes[0]?.statedAs}
             </p>
           </div>
         ) : null}

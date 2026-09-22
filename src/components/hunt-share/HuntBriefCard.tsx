@@ -170,6 +170,24 @@ export default function HuntBriefCard({ brief }: { brief: ShareHuntBrief }) {
         </section>
       )}
 
+      {brief.authorization && (
+        <section className={styles.section} aria-labelledby="brief-authorization">
+          {/* The hunt the answer is true under. Availability of the season, never
+              a statement about what the person who shared it holds. */}
+          <h2 id="brief-authorization">Licence and hunt</h2>
+          <ul className={styles.warningList}>
+            {brief.authorization.huntCodes.map((huntCode) => (
+              <li key={huntCode.code}>
+                {huntCode.authorityTerm} <strong>{huntCode.code}</strong> · {huntCode.allocationTerm}
+                {huntCode.quota ? ` · ${huntCode.quota}` : ""}
+              </li>
+            ))}
+            {brief.authorization.draws.map((draw) => <li key={draw}>{draw}</li>)}
+          </ul>
+          <p className={styles.sourceMeta}>{brief.authorization.statedAs}</p>
+        </section>
+      )}
+
       {brief.warnings.length > 0 && (
         <section className={styles.section} aria-labelledby="brief-warnings">
           <h2 id="brief-warnings">Important conditions and warnings</h2>

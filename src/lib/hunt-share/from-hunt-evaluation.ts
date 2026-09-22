@@ -112,6 +112,21 @@ export function huntEvaluationToShareInput(
         : undefined,
     selectedDate: evaluation.input.date,
     assumptions: shareableAssumptions(evaluation),
+    ...(evaluation.regulation.authorization
+      ? {
+          authorization: {
+            requirement: evaluation.regulation.authorization.requirement,
+            huntCodes: evaluation.regulation.authorization.huntCodes.slice(0, 8).map((huntCode) => ({
+              code: huntCode.code,
+              authorityTerm: huntCode.authorityTerm,
+              allocationTerm: huntCode.allocation.authorityTerm,
+              ...(huntCode.allocation.quota ? { quota: huntCode.allocation.quota.statedAs } : {}),
+            })),
+            draws: evaluation.regulation.authorization.draws.slice(0, 4).map((draw) => draw.statedAs),
+            statedAs: evaluation.regulation.authorization.huntCodes[0].statedAs,
+          },
+        }
+      : {}),
     location: context.generalLocation
       ? {
           generalLabel: context.generalLocation.label,

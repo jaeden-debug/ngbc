@@ -6,6 +6,12 @@ import {
 } from "../content-contract/index.ts";
 
 /**
+ * Version 4 adds `authorization`: the hunt codes a result rests on, how each
+ * one's licence is allocated, and where its draw stood on the selected date.
+ * A U.S. answer is usually true only under a particular hunt, so a brief that
+ * dropped the hunt would describe a season the reader may have no licence for.
+ * Versions 1 to 3 are read as written and never acquire one.
+ *
  * Version 3 adds `readiness`: a compact Ready to Hunt checklist — the licences,
  * hunter orange and legal methods the hunt needs, as the result showed them.
  * It deliberately has no field for a licence vendor or any location: vendor
@@ -23,8 +29,8 @@ import {
  * every certified species answered from location and date alone, so they carry
  * no assumptions and none are invented for them.
  */
-export const HUNT_BRIEF_SCHEMA_VERSION = 3 as const;
-export const READABLE_HUNT_BRIEF_VERSIONS = [1, 2, 3] as const;
+export const HUNT_BRIEF_SCHEMA_VERSION = 4 as const;
+export const READABLE_HUNT_BRIEF_VERSIONS = [1, 2, 3, 4] as const;
 export type HuntBriefSchemaVersion = (typeof READABLE_HUNT_BRIEF_VERSIONS)[number];
 export const HUNT_BRIEF_STATUSES = [
   "OPEN",
@@ -85,6 +91,7 @@ export interface HuntShareProjectionInput {
       };
   warnings?: string[];
   assumptions?: Array<{ question: string; answer: string }>;
+  authorization?: HuntBriefAuthorization;
   officialSources?: Array<{
     id?: CanonicalId<"source">;
     authority: string;
@@ -138,6 +145,16 @@ export interface HuntBriefReadiness {
 export interface HuntBriefAssumption {
   question: string;
   answer: string;
+}
+
+/** How the seasons behind a result are licensed. Availability, never entitlement. */
+export interface HuntBriefAuthorization {
+  requirement: "GENERAL_LICENCE" | "OVER_THE_COUNTER" | "DRAW_REQUIRED" | "MIXED";
+  huntCodes: Array<{ code: string; authorityTerm: string; allocationTerm: string; quota?: string }>;
+  /** Where each draw stood on the selected date, in the authority's dates. */
+  draws: string[];
+  /** The entitlement sentence: what holding the licence means, and that it is not verified. */
+  statedAs: string;
 }
 
 export interface ShareHuntBrief {
@@ -210,6 +227,8 @@ export interface ShareHuntBrief {
   assumptions: HuntBriefAssumption[];
   /** Present on version 3 briefs whose result had a Ready to Hunt checklist. */
   readiness?: HuntBriefReadiness;
+  /** Present from version 4, only where the result rests on hunt codes or a draw. */
+  authorization?: HuntBriefAuthorization;
 }
 
 export class HuntBriefValidationError extends Error {
@@ -379,6 +398,33 @@ function parseReadiness(value: unknown): HuntBriefReadiness | undefined {
   };
 }
 
+const AUTHORIZATION_REQUIREMENTS = new Set(["GENERAL_LICENCE", "OVER_THE_COUNTER", "DRAW_REQUIRED", "MIXED"]);
+
+function parseAuthorization(value: unknown): HuntBriefAuthorization | undefined {
+  if (value === undefined) return undefined;
+  const authorization = record(value, "authorization");
+  if (typeof authorization.requirement !== "string" || !AUTHORIZATION_REQUIREMENTS.has(authorization.requirement)) {
+    throw new HuntBriefValidationError("authorization.requirement is unsupported");
+  }
+  if (!Array.isArray(authorization.huntCodes) || authorization.huntCodes.length === 0 || authorization.huntCodes.length > 8) {
+    throw new HuntBriefValidationError("authorization.huntCodes must name one to eight hunts");
+  }
+  return {
+    requirement: authorization.requirement as HuntBriefAuthorization["requirement"],
+    huntCodes: authorization.huntCodes.map((item, index) => {
+      const huntCode = record(item, `authorization.huntCodes[${index}]`);
+      return {
+        code: text(huntCode.code, `authorization.huntCodes[${index}].code`, 40),
+        authorityTerm: text(huntCode.authorityTerm, `authorization.huntCodes[${index}].authorityTerm`, 60),
+        allocationTerm: text(huntCode.allocationTerm, `authorization.huntCodes[${index}].allocationTerm`, 80),
+        quota: optionalText(huntCode.quota, `authorization.huntCodes[${index}].quota`, 120),
+      };
+    }),
+    draws: strings(authorization.draws, "authorization.draws", 4, 280),
+    statedAs: text(authorization.statedAs, "authorization.statedAs", 400),
+  };
+}
+
 function parseSources(value: unknown): ShareHuntBrief["officialSources"] {
   if (value === undefined) return [];
   if (!Array.isArray(value) || value.length > 12) {
@@ -467,6 +513,8 @@ export function createShareableHuntBrief(
   const assumptions = version === 1 ? [] : parseAssumptions(input.assumptions);
   // Likewise, a brief from before Ready to Hunt never acquires a checklist.
   const readiness = version < 3 ? undefined : parseReadiness(input.readiness);
+  // A brief from before version 4 never acquires a hunt code.
+  const authorization = version >= 4 ? parseAuthorization(input.authorization) : undefined;
 
   const brief: ShareHuntBrief = {
     version,
@@ -525,6 +573,7 @@ export function createShareableHuntBrief(
     resourceReferences: parseResources(input.resourceReferences),
     assumptions,
     ...(readiness ? { readiness } : {}),
+    ...(authorization ? { authorization } : {}),
   };
 
   return brief;
@@ -574,6 +623,7 @@ export function parseStoredHuntBrief(value: unknown): StoredHuntBriefResult {
       resourceReferences: candidate.resourceReferences,
       assumptions: candidate.assumptions,
       readiness: candidate.readiness,
+      authorization: candidate.authorization,
     }, {
       shareId: text(candidate.shareId, "shareId", 32),
       createdAt: timestamp(candidate.createdAt, "createdAt"),

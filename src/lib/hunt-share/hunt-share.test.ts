@@ -140,7 +140,7 @@ test("all regulatory statuses are preserved without simplification", () => {
 });
 
 test("unsupported snapshot versions fail gracefully", () => {
-  for (const version of [0, 4, 99]) {
+  for (const version of [0, 5, 99]) {
     assert.deepEqual(parseStoredHuntBrief({ ...huntBriefFixture(), version }), {
       status: "unsupported_version",
       version,
@@ -191,6 +191,34 @@ test("a version 2 brief round-trips the hunter's own answers", () => {
   if (parsed.status !== "found") return;
   assert.equal(parsed.brief.version, 2);
   assert.deepEqual(parsed.brief.assumptions, assumptions);
+});
+
+const AUTHORIZATION = {
+  requirement: "DRAW_REQUIRED",
+  huntCodes: [{ code: "E-E-054-O1-R", authorityTerm: "hunt code", allocationTerm: "limited licence", quota: "150 licences" }],
+  draws: ["Applications for the 2026 primary draw closed April 7, 2026; results are due by May 29, 2026."],
+  statedAs: "This season is open under hunt code E-E-054-O1-R only to holders of a limited licence issued through the draw. North Ground cannot see whether you applied, were drawn, or hold one.",
+};
+
+test("a version 4 brief keeps the hunt a result rests on, and how its licence is issued", () => {
+  const parsed = parseStoredHuntBrief({ ...huntBriefFixture(), version: 4, authorization: AUTHORIZATION });
+  assert.equal(parsed.status, "found");
+  if (parsed.status !== "found") return;
+  assert.deepEqual(parsed.brief.authorization, AUTHORIZATION);
+});
+
+test("a brief from before version 4 never acquires a hunt code it was not created with", () => {
+  for (const version of [1, 2, 3]) {
+    const parsed = parseStoredHuntBrief({ ...huntBriefFixture(), version, authorization: AUTHORIZATION });
+    assert.equal(parsed.status, "found");
+    if (parsed.status !== "found") return;
+    assert.equal(parsed.brief.authorization, undefined);
+  }
+});
+
+test("a malformed authorization refuses the brief rather than being trimmed", () => {
+  assert.equal(parseStoredHuntBrief({ ...huntBriefFixture(), version: 4, authorization: { ...AUTHORIZATION, requirement: "YOU_CAN_HUNT" } }).status, "invalid");
+  assert.equal(parseStoredHuntBrief({ ...huntBriefFixture(), version: 4, authorization: { ...AUTHORIZATION, huntCodes: [] } }).status, "invalid");
 });
 
 test("creation endpoint validates, rate limits and returns an opaque URL", async () => {

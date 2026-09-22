@@ -43,7 +43,8 @@ const brief = () => createShareableHuntBrief(huntEvaluationToShareInput(evaluati
 
 test("a brief carries the licences, orange and legal methods the result showed", () => {
   const shared = brief();
-  assert.equal(shared.version, 3);
+  // New briefs are the current version; readiness arrived in 3 and every later version keeps it.
+  assert.equal(shared.version, 4);
   const names = shared.readiness!.authorizations.map((item) => item.name);
   assert.ok(names.includes("Outdoors Card"));
   assert.ok(names.includes("Small game licence"));
