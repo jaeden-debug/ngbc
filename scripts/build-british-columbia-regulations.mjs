@@ -520,6 +520,14 @@ function crossCheck(rules) {
     // Every rule, disputed ones included: a reviewed dispute is the synopsis's reading, encoded.
     for (const rule of rules.filter((candidate) => candidate.sourceId === SOURCE_ID(schedule))) {
       const group = SPECIES_GROUP[rule.speciesId];
+      /* A species the table does not name would collect its rules under an
+         `undefined` key and be silently cross-checked against nothing. The
+         table has to grow with the bundle, so say so rather than drift. */
+      if (!group) {
+        throw new Error(
+          `${rule.speciesId} has no SPECIES_GROUP entry; add it alongside ${Object.keys(SPECIES_GROUP).join(", ")}`,
+        );
+      }
       const set = bySpecies.get(group) ?? [];
       for (const phrase of rule.seasonPhrase.split("; ")) {
         for (const range of parseSeasons(phrase)) set.push([...range.from, ...range.to]);
