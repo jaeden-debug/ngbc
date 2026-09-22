@@ -150,7 +150,13 @@ export const MANITOBA_VOCABULARY: ConditionalVocabulary = {
 /* ── Overlapping land ───────────────────────────────────────────────────── */
 
 /** Refuges, special conservation areas, WMAs and lands closed to hunting. */
-export const MANITOBA_OVERLAYS = overlaysJson as unknown as OverlayCatalogue;
+/* Manitoba's layers are licensed for redistribution (OpenMB Information and Data
+   Use Licence), so each may be read from its stored copy while that copy is
+   current; see `scripts/ingest-special-areas.mjs`. */
+export const MANITOBA_OVERLAYS: OverlayCatalogue = {
+  ...(overlaysJson as unknown as OverlayCatalogue),
+  layers: (overlaysJson as unknown as OverlayCatalogue).layers.map((layer) => ({ ...layer, storedLayerId: `special_layer:ca-mb-${layer.key}` })),
+};
 
 /** Which of those areas lie inside each GHA, from `scripts/build-overlay-zone-index.mjs`. */
 export const MANITOBA_OVERLAY_ZONES = overlayZonesJson as unknown as OverlayZoneIndex;

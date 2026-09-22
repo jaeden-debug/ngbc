@@ -116,3 +116,70 @@ test("an ArcGIS layer is still asked for OBJECTIDs, exactly as before", async ()
   assert.equal(asked[0].searchParams.get("returnGeometry"), "false");
   assert.deepEqual(lookup.hits.map((hit) => hit.feature?.name), ["Closed land"]);
 });
+
+/* ── Stored copies ───────────────────────────────────────────────────────── */
+
+const STORED_CATALOGUE: OverlayCatalogue = {
+  ...ARCGIS_CATALOGUE,
+  layers: [{ ...ARCGIS_CATALOGUE.layers[0], storedLayerId: "special_layer:ca-mb-closed", contentHash: "sha256:reviewed" }],
+};
+
+type Row = { layer_id: string; catalogue_hash: string | null; servable: boolean; source_record_id: string | null };
+
+function storedClient(rows: Row[] | Error) {
+  const calls: unknown[] = [];
+  const client = () => ({
+    rpc: (name: string, args: unknown) => {
+      calls.push({ name, args });
+      return { abortSignal: async () => rows instanceof Error ? { data: null, error: rows } : { data: rows, error: null } };
+    },
+  });
+  return { client: client as never, calls };
+}
+
+const liveFetcher = (ids: number[], asked: string[]) => (async (input: string | URL) => {
+  asked.push(String(input));
+  return json({ features: ids.map((id) => ({ attributes: { OBJECTID: id } })) });
+}) as typeof fetch;
+
+test("a current stored copy loaded against this catalogue answers without asking the authority", async () => {
+  clearOverlayCache();
+  const asked: string[] = [];
+  const { client, calls } = storedClient([
+    { layer_id: "special_layer:ca-mb-closed", catalogue_hash: "sha256:reviewed", servable: true, source_record_id: "7" },
+    { layer_id: "special_layer:ca-mb-closed", catalogue_hash: "sha256:reviewed", servable: true, source_record_id: null },
+  ]);
+  const lookup = await lookupOverlays(STORED_CATALOGUE, 49.5, -97.1, liveFetcher([], asked), client);
+  assert.equal(calls.length, 1);
+  assert.equal(asked.length, 0);
+  assert.deepEqual(lookup.hits.map((hit) => [hit.objectId, hit.feature?.name]), [[7, "Closed land"]]);
+});
+
+test("a stored copy that is not current, or was loaded against another catalogue, is never read", async () => {
+  for (const marker of [
+    { layer_id: "special_layer:ca-mb-closed", catalogue_hash: "sha256:reviewed", servable: false, source_record_id: null },
+    { layer_id: "special_layer:ca-mb-closed", catalogue_hash: "sha256:older", servable: true, source_record_id: null },
+  ]) {
+    clearOverlayCache();
+    const asked: string[] = [];
+    // The store claims nothing is here; the authority says feature 7 is.
+    const { client } = storedClient([marker]);
+    const lookup = await lookupOverlays(STORED_CATALOGUE, 49.5, -97.1, liveFetcher([7], asked), client);
+    assert.equal(asked.length, 1, JSON.stringify(marker));
+    assert.deepEqual(lookup.hits.map((hit) => hit.objectId), [7]);
+  }
+});
+
+test("a failed store query asks the authority, and a failed authority still makes the answer unavailable", async () => {
+  clearOverlayCache();
+  const asked: string[] = [];
+  const { client } = storedClient(new Error("database down"));
+  const lookup = await lookupOverlays(STORED_CATALOGUE, 49.5, -97.1, liveFetcher([7], asked), client);
+  assert.equal(asked.length, 1);
+  assert.deepEqual(lookup.hits.map((hit) => hit.objectId), [7]);
+
+  clearOverlayCache();
+  const down = (async () => { throw new Error("authority down"); }) as typeof fetch;
+  const unavailable = await lookupOverlays(STORED_CATALOGUE, 49.5, -97.1, down, storedClient(new Error("database down")).client);
+  assert.equal(unavailable.available, false);
+});

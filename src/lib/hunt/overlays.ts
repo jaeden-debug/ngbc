@@ -7,11 +7,18 @@
  * of which the authority publishes separately, with its own restriction text.
  *
  * The catalogue is built from those layers and classified at build time, so the
- * run-time lookup only asks the authority's service which features contain the
- * point and reads the catalogue. A feature the catalogue does not hold (the
+ * run-time lookup only asks which features contain the point and reads the
+ * catalogue. Where the authority's licence lets North Ground store a layer
+ * (`storedLayerId`), that question is one indexed query against the stored
+ * copy (`special_areas_at_point`), used only while the copy is CURRENT and was
+ * loaded against this very catalogue; otherwise the authority's own service is
+ * asked. A feature the catalogue does not hold (the
  * layer has changed since the build) is reported as a restriction North Ground
  * has not read, never ignored.
  */
+
+import type { SupabaseClient } from "@supabase/supabase-js";
+import { defaultSupabaseServerClient } from "../supabase/server.ts";
 
 export interface CatalogueFeature {
   objectId: number;
@@ -38,6 +45,10 @@ export interface OverlayCatalogue {
     protocol?: "ARCGIS" | "WFS";
     /** The WFS type name, when `protocol` is WFS. */
     typeName?: string;
+    /** The stored copy of this layer (`regulatory_special_area_layers`), where the licence permits one. */
+    storedLayerId?: string;
+    /** The catalogue's hash of its features; a stored copy loaded against any other is not used. */
+    contentHash?: string;
     features: CatalogueFeature[];
   }>;
 }
@@ -126,9 +137,51 @@ async function objectIdsAt(url: string, latitude: number, longitude: number, fet
   return payload.features.map((feature) => Number(feature.attributes?.OBJECTID)).filter(Number.isInteger);
 }
 
+/** The Supabase client for stored special areas; tests pass a stand-in or none. */
+export type SpecialAreaClient = (() => Pick<SupabaseClient, "rpc">) | null;
+
+const STORED_TIMEOUT_MS = 1_500;
+
 /**
- * Which catalogued features contain the point, asked of the authority's own
- * layers. A failed layer makes the whole lookup unavailable rather than
+ * Record ids at the point for each stored layer that may be served, in one
+ * query. A layer is absent from the result, and so asked live, when its copy
+ * is not CURRENT, was loaded against a different catalogue, or the query fails.
+ */
+async function storedIdsAt(
+  layers: OverlayCatalogue["layers"],
+  latitude: number,
+  longitude: number,
+  client: SpecialAreaClient,
+): Promise<Map<string, number[]>> {
+  const out = new Map<string, number[]>();
+  const stored = layers.filter((layer) => layer.storedLayerId && layer.contentHash);
+  if (!client || !stored.length) return out;
+  try {
+    const { data, error } = await client()
+      .rpc("special_areas_at_point", { p_latitude: latitude, p_longitude: longitude, p_layer_ids: stored.map((layer) => layer.storedLayerId) })
+      .abortSignal(AbortSignal.timeout(STORED_TIMEOUT_MS));
+    if (error) throw error;
+    const rows = (data ?? []) as Array<{ layer_id: string; catalogue_hash: string | null; servable: boolean; source_record_id: string | null }>;
+    for (const layer of stored) {
+      const own = rows.filter((row) => row.layer_id === layer.storedLayerId);
+      const marker = own.find((row) => row.source_record_id === null);
+      if (!marker?.servable || marker.catalogue_hash !== layer.contentHash) continue;
+      out.set(layer.key, own.filter((row) => row.source_record_id !== null).map((row) => {
+        const id = Number(row.source_record_id);
+        // An id this cannot read is still a restriction: kept as -1, never dropped.
+        return Number.isInteger(id) ? id : -1;
+      }));
+    }
+  } catch {
+    // The store is an accelerator, never the only way to know: every stored layer is asked live.
+    out.clear();
+  }
+  return out;
+}
+
+/**
+ * Which catalogued features contain the point, asked of the stored copy where
+ * one may be served and of the authority's own layers otherwise. A failed layer makes the whole lookup unavailable rather than
  * partially answered: "none found" from half the layers is not "none".
  */
 export async function lookupOverlays(
@@ -136,6 +189,7 @@ export async function lookupOverlays(
   latitude: number,
   longitude: number,
   fetcher: typeof fetch = fetch,
+  specialAreas: SpecialAreaClient = defaultSupabaseServerClient,
 ): Promise<OverlayLookup> {
   // Five decimal places is about a metre: two lookups that close are one place.
   const key = `${catalogue.jurisdictionId}|${latitude.toFixed(5)},${longitude.toFixed(5)}`;
@@ -144,11 +198,12 @@ export async function lookupOverlays(
 
   let value: OverlayLookup;
   try {
+    const stored = await storedIdsAt(catalogue.layers, latitude, longitude, specialAreas);
     const answers = await Promise.all(catalogue.layers.map(async (layer) => ({
       layer,
-      ids: layer.protocol === "WFS"
+      ids: stored.get(layer.key) ?? (layer.protocol === "WFS"
         ? await wfsObjectIdsAt(layer.url, layer.typeName ?? "", latitude, longitude, fetcher)
-        : await objectIdsAt(layer.url, latitude, longitude, fetcher),
+        : await objectIdsAt(layer.url, latitude, longitude, fetcher)),
     })));
     const hits: OverlayHit[] = answers.flatMap(({ layer, ids }) => ids.map((objectId) => ({
       layer: layer.key,
