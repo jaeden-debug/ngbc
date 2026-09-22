@@ -6,6 +6,7 @@ import albertaCertifiedUnits from "../../../content/regulatory/ca-ab-certified-u
 import quebecCertifiedUnits from "../../../content/regulatory/ca-qc-certified-units.json" with { type: "json" };
 import britishColumbiaCertifiedUnits from "../../../content/regulatory/ca-bc-certified-units.json" with { type: "json" };
 import { US_ZONE_LAYERS } from "./united-states/layers.ts";
+import { CANADA_LIVE_ZONE_LAYERS } from "./canada/live-layers.ts";
 import { BRITISH_COLUMBIA_MU_CONFIG, normaliseBritishColumbiaMu } from "./ingestion/british-columbia-mu.ts";
 
 /**
@@ -353,6 +354,8 @@ export const ZONE_LAYERS: ZoneLayer[] = [
   },
   /* United States, first wave. Described in `united-states/layers.ts`; each is
      answered by its state's own live service, and served only once certified. */
+  /* Canadian layers read live from their authority, where reuse terms rule out a copy. */
+  ...CANADA_LIVE_ZONE_LAYERS,
   ...US_ZONE_LAYERS,
 ];
 

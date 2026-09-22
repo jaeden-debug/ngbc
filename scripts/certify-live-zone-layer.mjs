@@ -35,6 +35,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { createArcgisZoneSource } from "../src/lib/hunt/ingestion/arcgis-zone-source.ts";
 import { boundarySamples, pointInGeometry, unitSamples } from "../src/lib/hunt/ingestion/sample-points.ts";
 import { usAdapterConfig } from "../src/lib/hunt/united-states/layers.ts";
+import { canadaLiveAdapterConfig } from "../src/lib/hunt/canada/live-layers.ts";
 import { resolveLayerFromOfficialGis } from "../src/lib/hunt/zone.ts";
 import { layerById } from "../src/lib/hunt/zone-layers.ts";
 
@@ -53,7 +54,7 @@ const concurrency = Math.max(1, Number(argument("--concurrency", "3")) || 3);
 const alongBoundary = Math.max(0, Number(argument("--boundary", "0")) || 0);
 const layer = layerById(layerId);
 if (!layer || layer.resolution !== "LIVE_SERVICE") throw new Error(`${layerId} is not a registered live-service layer`);
-const config = usAdapterConfig(layerId);
+const config = canadaLiveAdapterConfig(layerId) ?? usAdapterConfig(layerId);
 const source = createArcgisZoneSource(config);
 const stateKey = config.jurisdictionKey;
 

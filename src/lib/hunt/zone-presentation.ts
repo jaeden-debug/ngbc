@@ -193,6 +193,21 @@ export const ZONE_PRESENTATION_PROFILES: readonly ZonePresentationProfile[] = [
     designationPattern: /^[1-8]-[1-9]\d?$/,
     stripLeadingZeros: false,
   },
+  {
+    layerId: "layer:ca-sk-wmz",
+    jurisdictionId: "jurisdiction:ca-sk",
+    zoneIdPrefix: "management_zone:ca-sk-wmz-",
+    officialNamePrefix: "Wildlife Management Zone ",
+    sourceLocale: "en-CA",
+    jurisdictionName: { "en-CA": "Saskatchewan", "fr-CA": "Saskatchewan" },
+    // The regulation publishes the term in English only; it is kept, not translated.
+    term: { "en-CA": { long: "Wildlife Management Zone", short: "WMZ" }, "fr-CA": undefined },
+    termIsAbbreviation: true,
+    // Numbered zones with their E/W and N/S halves (2E, 68N), and the Saskatoon,
+    // Regina-Moose Jaw and Prince Albert zones by the ministry's own codes.
+    designationPattern: /^(?:\d{1,2}[EWNS]?|[PRS]WMZ)$/,
+    stripLeadingZeros: false,
+  },
   /*
    * United States. Each state publishes in English only, so no French term is
    * recorded and the English term is kept in French. Every pattern is the set

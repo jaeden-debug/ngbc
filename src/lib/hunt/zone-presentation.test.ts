@@ -190,10 +190,10 @@ test("representative Ontario, Manitoba and Alberta zones read as the authority n
 
 test("10. an unsupported or future jurisdiction is shown raw, never given a name", () => {
   for (const input of [
-    // New Mexico and Saskatchewan have no profile: shown raw, never named.
+    // New Mexico and New Brunswick have no profile: shown raw, never named.
     { designation: "GMU 12", jurisdictionId: "jurisdiction:us-nm" },
-    { designation: "43", jurisdictionId: "jurisdiction:ca-sk" },
-    { designation: "43", layerId: "layer:ca-sk-wmz" },
+    { designation: "21", jurisdictionId: "jurisdiction:ca-nb" },
+    { designation: "21", layerId: "layer:ca-nb-wmz" },
   ]) {
     for (const locale of ZONE_LOCALES) {
       const presented = presentZone(input, locale);
@@ -309,4 +309,11 @@ test("British Columbia's 225 certified Management Units read as the regulation n
   for (const designation of ["9-1", "7-0", "07-15", "7-15A"]) {
     assert.equal(presentZone({ designation, layerId: layer.id }).status, "UNRECOGNIZED_DESIGNATION", designation);
   }
+});
+
+test("Saskatchewan's zones in the ministry's terms, urban zones by their own codes", () => {
+  const layerId = "layer:ca-sk-wmz";
+  assert.equal(presentZone({ designation: "68N", layerId }).fullLabel, "WMZ 68N");
+  assert.equal(presentZone({ designation: "SWMZ", layerId }).status, "PRESENTED");
+  assert.equal(presentZone({ designation: "68N", layerId }, "fr-CA").localized, false);
 });
