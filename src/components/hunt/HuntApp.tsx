@@ -130,6 +130,16 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
     dispatchSession({ type: "DEFAULT_DATE_CORRECTED", iso: today });
   }, []);
 
+  /* The shell never scrolls. Browsers without `overflow: clip` can still
+     scroll a hidden overflow to reveal a focused control; undo that at once. */
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    const reset = () => { if (root.scrollTop || root.scrollLeft) root.scrollTo(0, 0); };
+    root.addEventListener("scroll", reset);
+    return () => root.removeEventListener("scroll", reset);
+  }, []);
+
   /* ── Sheet geometry: measured, never assumed ─────────────────────────── */
 
   useEffect(() => {
@@ -486,6 +496,13 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
   }, [evalKey, retryCount]);
 
   const result = currentResult(session, evalKey);
+
+  /* A question is the next step, so it is shown whole: the sheet rises for each
+     new question the engine asks, never for anything else. */
+  const questionId = result?.completeness === "NEEDS_INPUT" ? result.required?.id ?? null : null;
+  useEffect(() => {
+    if (questionId && layout === "sheet") setSnap("full");
+  }, [questionId, layout]);
   const answered = useMemo(() => {
     const dimensions = result?.dimensions ?? (session.evaluation.kind === "ready" ? session.evaluation.result.dimensions : []);
     return dimensions.flatMap((dimension) => {
@@ -749,12 +766,18 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
       <ZonesPage zones={zonesInView} states={filterStates} onChoose={(key) => selectZone(key, "list")} autoFocus />
     );
   } else if (pin) {
+    // The confirm action lives in the header row, so it is reachable while the sheet is lowered over the map.
     header = (
       <div className={styles.titleRow}>
         <div className={styles.titleText}>
-          <p className={styles.eyebrow}>Preview · not chosen yet</p>
-          <h2 className={styles.title}>Hunt here?</h2>
+          <p className={styles.eyebrow}>Hunt here? · not chosen yet</p>
+          <h2 className={styles.title} data-size="lead" aria-live="polite">
+            {pinZone.kind === "loading" ? "Finding the zone…" : pinZone.kind === "resolved" ? `${pinZone.label} · ${pinZone.jurisdiction}` : "No official zone here"}
+          </h2>
         </div>
+        <button type="button" className={`ng-action ${styles.headerAction}`} onClick={confirmPin} disabled={pinZone.kind === "none"}>
+          Check this spot
+        </button>
         <button type="button" className={styles.iconButton} onClick={() => dispatchMap({ type: "PIN_CANCELLED" })} aria-label="Cancel choosing a spot">
           <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" fill="none"><path d="m2 2 8 8M10 2l-8 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
         </button>
@@ -762,16 +785,10 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
     );
     body = (
       <div className={styles.page}>
-        <p className={styles.lead} aria-live="polite">
-          {pinZone.kind === "loading" ? "Finding the official zone…" : pinZone.kind === "resolved" ? `${pinZone.label} · ${pinZone.jurisdiction}` : pinZone.message}
-        </p>
         <p className={styles.quiet}>
-          {pin.mode === "centre" ? "Move the map to put the crosshair on your spot." : "This point is only a preview until you confirm it."}
+          {pinZone.kind === "none" ? `${pinZone.message} ` : ""}
+          {pin.mode === "centre" ? "Move the map to put the crosshair on your spot." : "This point is only a preview until you check it."}
         </p>
-        <div className={styles.actionsRow}>
-          <button type="button" className="ng-action" onClick={confirmPin}>Check this spot</button>
-          <button type="button" className="ng-action-quiet" onClick={() => dispatchMap({ type: "PIN_CANCELLED" })}>Cancel</button>
-        </div>
         <details className={styles.disclosure}>
           <summary>Coordinates</summary>
           <p className="ng-numeric">{pin.point.latitude.toFixed(5)}, {pin.point.longitude.toFixed(5)}</p>
@@ -805,15 +822,17 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
       </div>
     );
   } else if (selectedRef && exploration.cardOpen && presented && selectedLayer) {
+    // The place's own name, not its whole address: "Bancroft is in this zone".
+    const placeName = hunt?.label.split(",")[0]?.trim() || hunt?.label;
     const relation = isHuntZone && hunt
-      ? hunt.origin === "device" ? "You are in this zone" : hunt.origin === "map" ? "Your chosen spot is in this zone" : `${hunt.label} is in this zone`
+      ? hunt.origin === "device" ? "You are in this zone" : hunt.origin === "map" ? "Your chosen spot is in this zone" : `${placeName} is in this zone`
       : null;
     const summaryReady = summary?.kind === "ready" ? summary.summary : null;
     const entry = species && summaryReady ? summaryReady.species.find((candidate) => candidate.speciesId === species.id) ?? null : null;
     header = (
       <div className={styles.titleRow}>
         <div className={styles.titleText}>
-          <p className={styles.eyebrow}>{presented.termLong ?? selectedLayer.officialTerm} · {selectedLayer.jurisdictionName}</p>
+          <p className={styles.eyebrow}>{selectedLayer.jurisdictionName} · {presented.termLong ?? selectedLayer.officialTerm}</p>
           <h2 className={styles.title} id="hunt-zone-title" tabIndex={-1}>{presented.fullLabel}</h2>
         </div>
         <button type="button" className={styles.iconButton} onClick={() => void share()} aria-label={`Share ${presented.fullLabel}${species ? `, ${species.displayName}` : ""}`}>
@@ -1009,6 +1028,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
           mapMode={mapMode}
           camera={cameraRequest}
           locateOnStart={!initialUrl.zoneId}
+          startBox={geometry.extent}
           padding={padding}
           onView={setView}
           onZoneClick={selectZone}

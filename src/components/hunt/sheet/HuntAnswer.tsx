@@ -37,6 +37,53 @@ export function statusWord(status: string): string {
   return STATUS_WORDING[status] ?? status;
 }
 
+/** How the seasons behind an answer are licensed, in words a hunter uses. */
+const AUTHORIZATION_WORDING: Record<string, string> = {
+  DRAW_REQUIRED: "Draw required",
+  MIXED: "Draw or over-the-counter, by hunt",
+  OVER_THE_COUNTER: "Over-the-counter licence",
+  GENERAL_LICENCE: "General licence",
+};
+
+/**
+ * The part of a regulatory result that says how its seasons are licensed —
+ * hunt codes, draws, quotas — where the authority allocates them that way.
+ * Read structurally so this view works before and after the engine carries it.
+ */
+interface AuthorizationLike {
+  requirement: string;
+  huntCodes: Array<{ code: string; authorityTerm: string; allocation: { authorityTerm: string; quota?: { statedAs: string } }; statedAs: string }>;
+  draws: Array<{ cycleId: string; statedAs: string }>;
+}
+
+function authorizationOf(result: HuntEvaluation): AuthorizationLike | null {
+  return (result.regulation as { authorization?: AuthorizationLike }).authorization ?? null;
+}
+
+/**
+ * Regulatory availability, never entitlement: which hunts a season is open
+ * under and how their licences are issued. North Ground cannot see what anyone
+ * holds, and the block ends by saying so.
+ */
+function AuthorizationBlock({ authorization }: { authorization: AuthorizationLike }) {
+  return (
+    <div className={styles.assumptions} role="note" aria-label="Licence and hunt">
+      <p className={styles.assumptionsTitle}>{AUTHORIZATION_WORDING[authorization.requirement] ?? authorization.requirement}</p>
+      <ul>
+        {authorization.huntCodes.map((huntCode) => (
+          <li key={huntCode.code}>
+            <span>{huntCode.authorityTerm}</span> <strong className="ng-numeric">{huntCode.code}</strong>
+            {" · "}<span>{huntCode.allocation.authorityTerm}</span>
+            {huntCode.allocation.quota ? <span> · {huntCode.allocation.quota.statedAs}</span> : null}
+          </li>
+        ))}
+        {authorization.draws.map((draw) => <li key={draw.cycleId}>{draw.statedAs}</li>)}
+      </ul>
+      {authorization.huntCodes[0]?.statedAs ? <p className={styles.assumptionsNote}>{authorization.huntCodes[0].statedAs}</p> : null}
+    </div>
+  );
+}
+
 export default function HuntAnswer({
   evaluation, result, species, answered, onAnswer, onRetry, placeLabel, jurisdiction, detailed, onShowDetails,
 }: {
@@ -79,11 +126,7 @@ export default function HuntAnswer({
   }
 
   if (result.completeness === "NEEDS_INPUT" && result.required) {
-    return (
-      <div className={styles.answer}>
-        <HuntQuestion dimension={result.required} answered={answered} onAnswer={onAnswer} disabled={evaluation.kind === "loading"} />
-      </div>
-    );
+    return <HuntQuestion dimension={result.required} answered={answered} onAnswer={onAnswer} disabled={evaluation.kind === "loading"} />;
   }
 
   const status = result.regulation.status;
@@ -118,6 +161,8 @@ export default function HuntAnswer({
           ) : null}
         </dl>
       ) : null}
+
+      {authorizationOf(result) ? <AuthorizationBlock authorization={authorizationOf(result)!} /> : null}
 
       {answered.length ? (
         <div className={styles.assumptions} role="note">
