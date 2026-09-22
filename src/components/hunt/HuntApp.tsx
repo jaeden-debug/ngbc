@@ -136,12 +136,22 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
 
   const geometry = useZoneGeometry(view);
 
-  /* Warm the on-demand pages once the browser is idle after the first paint. */
+  /* Warm the on-demand pages once the page has finished loading and the browser
+     is idle — never while the map's own first load is still competing for the
+     connection. They are what the next tap needs, not what this one does. */
   useEffect(() => {
-    const warm = () => { void loadSearch(); void loadSpecies(); void loadDate(); void import("./sheet/AnswerDetail"); };
-    const idle = (window as Window & { requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number }).requestIdleCallback;
-    if (idle) idle(warm, { timeout: 4_000 });
-    else window.setTimeout(warm, 2_500);
+    const warm = () => {
+      const run = () => { void loadSearch(); void loadSpecies(); void loadDate(); void import("./sheet/AnswerDetail"); };
+      const idle = (window as Window & { requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number }).requestIdleCallback;
+      if (idle) idle(run, { timeout: 4_000 });
+      else window.setTimeout(run, 2_500);
+    };
+    if (document.readyState === "complete") {
+      warm();
+      return;
+    }
+    window.addEventListener("load", warm, { once: true });
+    return () => window.removeEventListener("load", warm);
   }, []);
 
   /* ── The device's own calendar day, once mounted ──────────────────────── */
@@ -337,8 +347,18 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
   const chooseOnMap = useCallback(() => {
     setPage("main");
     setSnap("peek");
-    dispatchMap({ type: "PIN_CENTRE_STARTED", point: view ? { latitude: (view.box.north + view.box.south) / 2, longitude: (view.box.east + view.box.west) / 2 } : { latitude: 50, longitude: -85 } });
-  }, [view]);
+    /* From a chosen zone, the spot starts inside THAT zone — the point the
+       drawing puts in its largest part, the one its label sits on — not
+       wherever the map happens to be while its camera is still moving. */
+    const selected = selection.kind === "zone" ? zoneKeyOf(selection.zone) : null;
+    const inZone = selected ? geometry.drawn.find((zone) => zone.key === selected)?.piece.labelPoint : undefined;
+    const point = inZone
+      ? { latitude: inZone[1], longitude: inZone[0] }
+      : view
+        ? { latitude: (view.box.north + view.box.south) / 2, longitude: (view.box.east + view.box.west) / 2 }
+        : { latitude: 50, longitude: -85 };
+    dispatchMap({ type: "PIN_CENTRE_STARTED", point });
+  }, [view, selection, geometry.drawn]);
 
   const confirmPin = useCallback(() => {
     const pin = exploration.pin;
@@ -636,6 +656,8 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
   const cameraRequest = useMemo<CameraRequest | null>(() => {
     if (!camera || camera.target === "self") return null;
     if (camera.target === "hunt") return hunt ? { seq: camera.seq, box: null, point: hunt, minZoom: 9 } : null;
+    // Choosing an exact spot is close work: bring the offered point into view.
+    if (camera.target === "pin") return exploration.pin ? { seq: camera.seq, box: null, point: exploration.pin.point, minZoom: 11 } : null;
     if (selection.kind !== "zone") return null;
     const extent = geometry.zone(zoneKeyOf(selection.zone))?.extent ?? null;
     let box: BBox | null = extent;
@@ -648,7 +670,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
     return { seq: camera.seq, box, point: box ? null : isHuntZone ? hunt : null, minZoom: 9 };
     // `geometry.version` stands for the store's contents.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [camera, hunt, selection, isHuntZone, geometry.version]);
+  }, [camera, hunt, selection, isHuntZone, exploration.pin, geometry.version]);
 
   const padding = useCallback((): Padding => {
     if (layout === "panel") {

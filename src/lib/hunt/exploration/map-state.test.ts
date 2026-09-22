@@ -189,3 +189,14 @@ test("only the map view watches the device", () => {
   const handler = app.slice(app.indexOf("const useMyLocation = useCallback"), app.indexOf("const chooseOnMap"));
   assert.match(handler, /HUNT_SET[\s\S]*origin: "device"/);
 });
+
+test("choosing a spot brings the camera to it, because the crosshair is the map centre", () => {
+  const start = explorationReducer(INITIAL_EXPLORATION, { type: "PIN_CENTRE_STARTED", point: { latitude: 45.06, longitude: -77.85 } });
+  assert.equal(start.pin?.mode, "centre");
+  assert.deepEqual(start.pin?.point, { latitude: 45.06, longitude: -77.85 });
+  assert.equal(start.camera?.target, "pin");
+  // Once the map settles, the crosshair is whatever the centre now is.
+  const moved = explorationReducer(start, { type: "PIN_CENTRE_MOVED", point: { latitude: 45.1, longitude: -77.9 } });
+  assert.deepEqual(moved.pin?.point, { latitude: 45.1, longitude: -77.9 });
+  assert.equal(moved.hunt, null, "previewing never sets the hunt location");
+});
