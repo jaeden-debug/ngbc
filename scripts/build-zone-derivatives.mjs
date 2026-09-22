@@ -67,9 +67,17 @@ async function main() {
   if (!zones.length) throw new Error(`No published ${jurisdiction} zones; publish a run first.`);
   let todo = zones;
   if (missingOnly) {
-    const built = new Set((await rest(`management_zone_display?level=eq.0&select=management_zone_id&management_zone_id=in.(${zones.map(({ id }) => id).join(",")})`))
+    // A zone is complete only with all three derivatives: a drawing without
+    // point-lookup parts still sends resolution to the slow full-geometry path.
+    const ids = zones.map(({ id }) => id).join(",");
+    const has = async (table, filter = "") => new Set((await rest(`${table}?select=management_zone_id${filter}&management_zone_id=in.(${ids})`))
       .map(({ management_zone_id: id }) => id));
-    todo = zones.filter(({ id }) => !built.has(id));
+    const [display, parts, boundary] = await Promise.all([
+      has("management_zone_display", "&level=eq.0"),
+      has("management_zone_parts", "&part_index=eq.1"),
+      has("management_zone_boundary_parts", "&part_index=eq.1"),
+    ]);
+    todo = zones.filter(({ id }) => !(display.has(id) && parts.has(id) && boundary.has(id)));
   }
   console.log(`${jurisdiction}: ${todo.length} of ${zones.length} zones to build`);
   const started = Date.now();
