@@ -29,7 +29,7 @@ import { jurisdictionToday, readPreviousBundle, retrievedAtFor } from "./ontario
 
 let recording = null;
 
-export function useRecording(argv = process.argv) {
+export function recordSourcesFromArgs(argv = process.argv) {
   const at = (flag) => (argv.includes(flag) ? argv[argv.indexOf(flag) + 1] : undefined);
   const save = at("--save-sources");
   const replay = at("--sources");

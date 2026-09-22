@@ -37,7 +37,7 @@
 
 import {
   expectOne, fetchJson, fetchPdf, flatten, jurisdictionToday, parseRange, readPreviousBundle,
-  retrievedAtFor, sha256, useRecording, writeOrCheck,
+  retrievedAtFor, sha256, recordSourcesFromArgs, writeOrCheck,
 } from "./us-source.mjs";
 
 const BUNDLE = "content/regulatory/us-mt-upland-2026.json";
@@ -421,7 +421,7 @@ function buildRules(booklet) {
 
 async function main() {
   const check = process.argv.includes("--check");
-  useRecording();
+  recordSourcesFromArgs();
   const { sha256: pdfHash, pypdf, pages } = await fetchPdf(PDF_URL);
   const booklet = readBooklet(pages);
   const [restricted, uplandRestricted, portions, reservations] = await Promise.all([
