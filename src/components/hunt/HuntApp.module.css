@@ -15,7 +15,10 @@
   --ease: cubic-bezier(0.22, 0.8, 0.2, 1);
   position: fixed;
   inset: 0;
+  /* clip, not hidden: a hidden overflow is still scrollable by focus, which
+     slid the whole shell up when a control below the fold was focused. */
   overflow: hidden;
+  overflow: clip;
   background: #0f130f;
   color: var(--ng-cream);
   -webkit-tap-highlight-color: transparent;
@@ -376,6 +379,7 @@
   flex: 1;
   min-height: 0;
   overflow: hidden;
+  overflow: clip;
   padding: 0 16px calc(20px + env(safe-area-inset-bottom));
 }
 .sheetBody[data-scroll="true"] {
@@ -412,14 +416,12 @@
 .titleText { flex: 1; min-width: 0; }
 
 .eyebrow {
-  margin: 0 0 2px;
-  overflow: hidden;
+  margin: 0 0 3px;
   font-size: 0.68rem;
   font-weight: 700;
+  line-height: 1.35;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   color: var(--ng-bone-faint);
 }
 
@@ -436,6 +438,14 @@
 }
 .title:focus { outline: none; }
 .title[data-size="lead"] { font-size: 1.2rem; font-weight: 700; white-space: normal; }
+
+.headerAction {
+  flex: none;
+  min-height: 44px;
+  padding: 0 14px;
+  font-size: 0.88rem;
+}
+.headerAction:disabled { opacity: 0.5; cursor: default; }
 
 .pageTitle {
   margin: 0;

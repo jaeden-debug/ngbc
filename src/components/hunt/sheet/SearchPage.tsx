@@ -164,7 +164,7 @@ export default function SearchPage({
     state.kind === "unavailable" ? state.message
       : state.kind === "empty" ? "No matching place. Try a town, postal code or nearby landmark."
       : state.kind === "loading" ? "Searching…"
-      : suggestions.length ? `${suggestions.length} places found.`
+      : suggestions.length ? `${suggestions.length} ${suggestions.length === 1 ? "place" : "places"} found.`
       : "";
 
   return (

@@ -103,18 +103,20 @@ export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action }
   }
   const wording = EXPLORATION_WORDING[entry.state];
   const until = entry.season ? readableDay(entry.season.closes) : null;
+  const areas = entry.exceptInside?.length === 1 ? entry.exceptInside[0] : "the restricted areas listed below";
+  const sentence =
+    entry.state === "SEASON_AVAILABLE" && until
+      ? `The season runs across ${zoneLabel} until ${until} for every licence the rules recognise. Licensing, legal hours and local restrictions still apply.`
+      : entry.state === "SEASON_EXCEPT_AREAS"
+        ? `The season runs across ${zoneLabel}${until ? ` until ${until}` : ""}, except inside ${areas}, where the authority restricts it. Licensing, legal hours and local restrictions still apply.`
+        : entry.state === "CHECK_REQUIREMENTS" && entry.question
+          ? `It depends on who is hunting and how. The rules first ask: “${entry.question}”`
+          : entry.detail ?? wording.detail;
   return (
     <div className={styles.answer} data-state={entry.state}>
       <p className={styles.answerStatus}><StateChip state={entry.state} /></p>
-      <p className={styles.answerSummary}>
-        {entry.state === "SEASON_AVAILABLE" && until ? `A season runs across ${zoneLabel} until ${until}. ` : ""}
-        {entry.state === "SEASON_EXCEPT_AREAS"
-          ? `A season runs across ${zoneLabel}${until ? ` until ${until}` : ""}, except inside ${entry.exceptInside?.length === 1 ? entry.exceptInside[0] : "the restricted areas below"}. `
-          : ""}
-        {entry.state === "CHECK_REQUIREMENTS" && entry.question ? `It depends on your hunt. The rules first ask: ${entry.question} ` : ""}
-        {entry.detail && entry.state !== "SEASON_AVAILABLE" ? `${entry.detail} ` : ""}
-        {wording.detail}
-      </p>
+      <p className={styles.answerSummary}>{sentence}</p>
+      {entry.state === "UNKNOWN" && entry.detail ? <p className={styles.detailNote}>{wording.detail}</p> : null}
       {action}
     </div>
   );
