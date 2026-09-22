@@ -14,6 +14,18 @@ export const ZONE_ADAPTERS = {
     module: "../src/lib/hunt/ingestion/alberta-wmu.ts",
     factory: "createAlbertaWmuSource",
   },
+  "ca-nl-moose": {
+    module: "../src/lib/hunt/ingestion/newfoundland-areas.ts",
+    factory: "createNewfoundlandMooseSource",
+  },
+  "ca-nl-caribou": {
+    module: "../src/lib/hunt/ingestion/newfoundland-areas.ts",
+    factory: "createNewfoundlandCaribouSource",
+  },
+  "ca-nl-bear": {
+    module: "../src/lib/hunt/ingestion/newfoundland-areas.ts",
+    factory: "createNewfoundlandBearSource",
+  },
   "ca-mb": {
     module: "../src/lib/hunt/ingestion/manitoba-gha.ts",
     factory: "createManitobaGhaSource",

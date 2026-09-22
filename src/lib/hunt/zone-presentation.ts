@@ -194,6 +194,51 @@ export const ZONE_PRESENTATION_PROFILES: readonly ZonePresentationProfile[] = [
     stripLeadingZeros: false,
   },
   {
+    layerId: "layer:ca-nl-moose-area",
+    jurisdictionId: "jurisdiction:ca-nl",
+    zoneIdPrefix: "management_zone:ca-nl-mma-",
+    officialNamePrefix: "Moose Management Area ",
+    sourceLocale: "en-CA",
+    jurisdictionName: { "en-CA": "Newfoundland and Labrador", "fr-CA": "Terre-Neuve-et-Labrador" },
+    // The Wild Life Regulations publish the term in English only; it is kept, not translated.
+    term: { "en-CA": { long: "Moose Management Area", short: "MMA" }, "fr-CA": undefined },
+    termIsAbbreviation: true,
+    designationPattern: /^\d{3}[A-Z]?$/,
+    // The Wildlife Division's own designation is padded to three digits ("044"),
+    // and it is shown as the province writes it.
+    stripLeadingZeros: false,
+  },
+  {
+    layerId: "layer:ca-nl-caribou-area",
+    jurisdictionId: "jurisdiction:ca-nl",
+    zoneIdPrefix: "management_zone:ca-nl-cma-",
+    officialNamePrefix: "Caribou Management Area ",
+    sourceLocale: "en-CA",
+    jurisdictionName: { "en-CA": "Newfoundland and Labrador", "fr-CA": "Terre-Neuve-et-Labrador" },
+    // The Wild Life Regulations publish the term in English only; it is kept, not translated.
+    term: { "en-CA": { long: "Caribou Management Area", short: "CMA" }, "fr-CA": undefined },
+    termIsAbbreviation: true,
+    designationPattern: /^\d{3}$/,
+    // The Wildlife Division's own designation is padded to three digits ("044"),
+    // and it is shown as the province writes it.
+    stripLeadingZeros: false,
+  },
+  {
+    layerId: "layer:ca-nl-bear-area",
+    jurisdictionId: "jurisdiction:ca-nl",
+    zoneIdPrefix: "management_zone:ca-nl-bma-",
+    officialNamePrefix: "Black Bear Management Area ",
+    sourceLocale: "en-CA",
+    jurisdictionName: { "en-CA": "Newfoundland and Labrador", "fr-CA": "Terre-Neuve-et-Labrador" },
+    // The Wild Life Regulations publish the term in English only; it is kept, not translated.
+    term: { "en-CA": { long: "Black Bear Management Area", short: "BMA" }, "fr-CA": undefined },
+    termIsAbbreviation: true,
+    designationPattern: /^2\d{2}$/,
+    // The Wildlife Division's own designation is padded to three digits ("044"),
+    // and it is shown as the province writes it.
+    stripLeadingZeros: false,
+  },
+  {
     layerId: "layer:ca-sk-wmz",
     jurisdictionId: "jurisdiction:ca-sk",
     zoneIdPrefix: "management_zone:ca-sk-wmz-",

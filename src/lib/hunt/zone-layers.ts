@@ -7,6 +7,7 @@ import quebecCertifiedUnits from "../../../content/regulatory/ca-qc-certified-un
 import britishColumbiaCertifiedUnits from "../../../content/regulatory/ca-bc-certified-units.json" with { type: "json" };
 import { US_ZONE_LAYERS } from "./united-states/layers.ts";
 import { CANADA_LIVE_ZONE_LAYERS } from "./canada/live-layers.ts";
+import { NEWFOUNDLAND_BIG_GAME_SERVICE, NEWFOUNDLAND_LEGAL_STANDING, normaliseNewfoundlandArea } from "./ingestion/newfoundland-areas.ts";
 import { BRITISH_COLUMBIA_MU_CONFIG, normaliseBritishColumbiaMu } from "./ingestion/british-columbia-mu.ts";
 
 /**
@@ -354,6 +355,79 @@ export const ZONE_LAYERS: ZoneLayer[] = [
   },
   /* United States, first wave. Described in `united-states/layers.ts`; each is
      answered by its state's own live service, and served only once certified. */
+  {
+    id: "layer:ca-nl-moose-area",
+    jurisdictionId: "jurisdiction:ca-nl",
+    jurisdictionName: "Newfoundland and Labrador",
+    country: "CA",
+    officialTerm: "Moose Management Area",
+    officialTermShort: "MMA",
+    coverage: "IN_DEVELOPMENT",
+    coverageNote:
+      "Newfoundland and Labrador manages each big-game species in its own geography. These are the province's moose management areas, from the Wildlife Division's own service under the Newfoundland and Labrador Open Government Licence. National parks and the two records the province names \"Not a Labrador Moose Hunting Zone\" are quarantined, not renamed. No Newfoundland rule is certified.",
+    authority: "Newfoundland and Labrador Department of Fisheries, Forestry and Agriculture",
+    sourceId: "source:ca-nl-big-game-area-service",
+    endpoint: `${NEWFOUNDLAND_BIG_GAME_SERVICE}/0/query`,
+    nameField: "mma",
+    bounds: { minLatitude: 46.5, maxLatitude: 60.5, minLongitude: -67.9, maxLongitude: -52.5 },
+    serving: false,
+    officialNamePrefix: "Moose Management Area ",
+    zoneIdPrefix: "management_zone:ca-nl-mma-",
+    designationOf: normaliseNewfoundlandArea,
+    legalStanding: NEWFOUNDLAND_LEGAL_STANDING,
+    speciesScope: ["species:moose"],
+    drawnByDefault: true,
+    timeZone: "America/St_Johns",
+  },
+  {
+    id: "layer:ca-nl-caribou-area",
+    jurisdictionId: "jurisdiction:ca-nl",
+    jurisdictionName: "Newfoundland and Labrador",
+    country: "CA",
+    officialTerm: "Caribou Management Area",
+    officialTermShort: "CMA",
+    coverage: "IN_DEVELOPMENT",
+    coverageNote:
+      "The province's caribou management areas, a different map from its moose areas, from the same Wildlife Division service. They are drawn when caribou is the chosen species. No Newfoundland rule is certified.",
+    authority: "Newfoundland and Labrador Department of Fisheries, Forestry and Agriculture",
+    sourceId: "source:ca-nl-big-game-area-service",
+    endpoint: `${NEWFOUNDLAND_BIG_GAME_SERVICE}/1/query`,
+    nameField: "cma",
+    bounds: { minLatitude: 46.5, maxLatitude: 60.5, minLongitude: -67.9, maxLongitude: -52.5 },
+    serving: false,
+    officialNamePrefix: "Caribou Management Area ",
+    zoneIdPrefix: "management_zone:ca-nl-cma-",
+    designationOf: normaliseNewfoundlandArea,
+    legalStanding: NEWFOUNDLAND_LEGAL_STANDING,
+    speciesScope: ["species:caribou"],
+    drawnByDefault: false,
+    timeZone: "America/St_Johns",
+  },
+  {
+    id: "layer:ca-nl-bear-area",
+    jurisdictionId: "jurisdiction:ca-nl",
+    jurisdictionName: "Newfoundland and Labrador",
+    country: "CA",
+    officialTerm: "Black Bear Management Area",
+    officialTermShort: "BMA",
+    coverage: "IN_DEVELOPMENT",
+    coverageNote:
+      "The province's seven black bear management areas, from the same Wildlife Division service. They are drawn when black bear is the chosen species. No Newfoundland rule is certified.",
+    authority: "Newfoundland and Labrador Department of Fisheries, Forestry and Agriculture",
+    sourceId: "source:ca-nl-big-game-area-service",
+    endpoint: `${NEWFOUNDLAND_BIG_GAME_SERVICE}/2/query`,
+    nameField: "bma",
+    bounds: { minLatitude: 46.5, maxLatitude: 60.5, minLongitude: -67.9, maxLongitude: -52.5 },
+    serving: false,
+    officialNamePrefix: "Black Bear Management Area ",
+    zoneIdPrefix: "management_zone:ca-nl-bma-",
+    designationOf: normaliseNewfoundlandArea,
+    legalStanding: NEWFOUNDLAND_LEGAL_STANDING,
+    speciesScope: ["species:american-black-bear"],
+    drawnByDefault: false,
+    timeZone: "America/St_Johns",
+  },
+  /* Newfoundland and Labrador: one geography per big-game species. */
   /* Canadian layers read live from their authority, where reuse terms rule out a copy. */
   ...CANADA_LIVE_ZONE_LAYERS,
   ...US_ZONE_LAYERS,

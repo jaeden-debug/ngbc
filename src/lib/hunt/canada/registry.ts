@@ -408,8 +408,14 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       status: "IN_DEVELOPMENT",
       officialTerm: "Management Area/Zone (species-specific)",
       officialSourceUrl: "https://www.gov.nl.ca/fal/public-education/wildlife/hunting/boundry/",
+      serviceUrl: "https://services8.arcgis.com/aCyQID5qQcyrJMm2/arcgis/rest/services/WLD_BigGameManagementArea/FeatureServer",
       parityCertified: false,
-      notes: "Moose, caribou and black bear use different area systems, and the island and Labrador differ again.",
+      notes:
+        "Moose, caribou and black bear use different area systems, and the island and Labrador differ again, so this is " +
+        "three species-scoped layers rather than one: 74 moose areas, 19 caribou areas and 7 black bear areas, from the " +
+        "Wildlife Division's own FeatureServer under the Newfoundland and Labrador Open Government Licence. The records " +
+        "the province itself excludes (national parks, the Nunavut sliver, \"Not Applicable\" and \"Not a ... Hunting " +
+        "Zone\") are quarantined, not renumbered. Adapters are reviewed; nothing is ingested yet.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
@@ -418,7 +424,8 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       sourceState: "NOT_INGESTED",
     },
     knownGaps: [
-      "No geometry ingested and no rules certified; every Newfoundland and Labrador query is UNKNOWN.",
+      "No geometry ingested and no rules certified; every Newfoundland and Labrador query is UNKNOWN. The three big-game layers are registered and unserved.",
+      "Caribou has no canonical species record yet, so its layer's scope names a species the library does not hold.",
       "Big game is almost entirely licence-by-draw, so a season lookup is not the product question here.",
     ],
   },

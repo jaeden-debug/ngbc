@@ -317,3 +317,11 @@ test("Saskatchewan's zones in the ministry's terms, urban zones by their own cod
   assert.equal(presentZone({ designation: "SWMZ", layerId }).status, "PRESENTED");
   assert.equal(presentZone({ designation: "68N", layerId }, "fr-CA").localized, false);
 });
+
+test("Newfoundland's three big-game geographies, each in the province's own terms", () => {
+  assert.equal(presentZone({ designation: "044", layerId: "layer:ca-nl-moose-area" }).fullLabel, "MMA 044");
+  assert.equal(presentZone({ designation: "061", layerId: "layer:ca-nl-caribou-area" }).fullLabel, "CMA 061");
+  assert.equal(presentZone({ designation: "200", layerId: "layer:ca-nl-bear-area" }).fullLabel, "BMA 200");
+  // The province publishes these terms in English only.
+  assert.equal(presentZone({ designation: "044", layerId: "layer:ca-nl-moose-area" }, "fr-CA").localized, false);
+});
