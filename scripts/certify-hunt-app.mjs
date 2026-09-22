@@ -308,8 +308,9 @@ const scenarios = {
     await page.keyboard.press("Enter");
     const opened = await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "WMU 57", 15_000);
     check(s, "a zone can be chosen from the zones list without a pointer", opened);
-    const focused = await page.evaluate(() => document.activeElement?.id);
-    check(s, "focus moves to the chosen zone's heading", focused === "hunt-zone-title", String(focused));
+    const focusLanded = await waitFor(page, () => document.activeElement?.id === "hunt-zone-title", 2_000);
+    const focused = await page.evaluate(() => document.activeElement?.id || document.activeElement?.tagName);
+    check(s, "focus moves to the chosen zone's heading", focusLanded, String(focused));
     await page.keyboard.press("Escape");
     await page.waitForTimeout(300);
     check(s, "Escape closes the zone", (await zoneTitle(page)) === null);

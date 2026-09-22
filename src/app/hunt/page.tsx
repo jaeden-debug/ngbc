@@ -12,7 +12,7 @@ import { HUNT_DEFAULT_TIME_ZONE, jurisdictionTodayIso } from "../../lib/hunt/dat
 import { longDayLabel } from "../../lib/hunt/exploration/date-presets";
 import { OVERVIEW_URL } from "../../lib/hunt/exploration/overview";
 import { huntDeepLink, parseHuntUrlState, type HuntUrlValidators } from "../../lib/hunt/exploration/url-state";
-import { ZONE_LAYERS } from "../../lib/hunt/zone-layers";
+import { layerOfZoneId } from "../../lib/hunt/zone-layers";
 import { presentZoneById } from "../../lib/hunt/zone-presentation";
 import { absoluteUrl, SITE_NAME } from "../../lib/site";
 import { getSpeciesPrimaryMediaMap } from "../../lib/species-media/repository";
@@ -22,10 +22,10 @@ export const dynamic = "force-dynamic";
 const canonicalPath = "/hunt";
 const metaTitle = "Hunting Zone & Season Finder | North Ground Hunt";
 const metaDescription =
-  "Find your hunting zone on the map, check current seasons and rules, and read the official source behind every answer. Free, no account.";
+  "Find your hunting area, check current seasons and rules, and read the official source behind every answer. Free, no account.";
 const socialTitle = "North Ground Hunt | Your Zone. Your Season. Your Hunt.";
 const socialDescription =
-  "Find hunting zones, check current seasons and rules, verify official sources, and share your hunt with friends.";
+  "Find hunting zones, check current seasons and rules, verify official sources, and share your Hunt Brief with friends.";
 const socialImage = absoluteUrl("/north-ground-hunt-zones-seasons-share-results.jpg");
 const socialImageAlt =
   "North Ground Hunt social preview showing hunting zones, current seasons, official sources and Hunt Brief sharing.";
@@ -40,7 +40,6 @@ export const viewport: Viewport = {
 type SearchParams = Record<string, string | string[] | undefined>;
 type Props = { searchParams: Promise<SearchParams> };
 
-const SERVED = ZONE_LAYERS.filter((layer) => layer.serving);
 
 async function publishedSpeciesIds(): Promise<Set<string>> {
   const resources = await contentRepository.getPublishedResources({ locale: "en-CA" });
@@ -49,7 +48,7 @@ async function publishedSpeciesIds(): Promise<Set<string>> {
 
 function validators(published: Set<string>): HuntUrlValidators {
   return {
-    isServedZoneId: (id) => SERVED.some((layer) => id.startsWith(layer.zoneIdPrefix)),
+    isServedZoneId: (id) => layerOfZoneId(id)?.serving === true,
     isPublishedSpecies: (id) => published.has(id),
   };
 }
@@ -84,7 +83,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   if (!state.zoneId) return base;
 
   const zone = presentZoneById(state.zoneId);
-  const jurisdiction = SERVED.find((layer) => state.zoneId!.startsWith(layer.zoneIdPrefix))?.jurisdictionName;
+  const jurisdiction = layerOfZoneId(state.zoneId)?.jurisdictionName;
   const species = state.speciesId
     ? (await contentRepository.getPublishedResources({ locale: "en-CA" }))
       .find((resource) => resource.type === "species" && resource.speciesProfile.speciesId === state.speciesId)?.title

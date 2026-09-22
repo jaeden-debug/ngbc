@@ -30,8 +30,10 @@ export const OVERVIEW_ZOOM = lodSpec(0).requestZoom;
  */
 export function servedGeometryVersion(): string {
   const identity = JSON.stringify(SERVED.map((layer) => [
-    layer.id, layer.sourceId, layer.mapGeometry ?? "authority", layer.zoneIdPrefix,
+    layer.id, layer.sourceId, layer.mapGeometry ?? "authority", layer.resolution ?? "REGISTRY", layer.zoneIdPrefix,
     layer.bounds, layer.certifiedDesignations?.size ?? 0,
+    // A species-scoped layer is in the overview only when drawn by default.
+    layer.speciesScope ? [...layer.speciesScope, layer.drawnByDefault === true] : null,
   ]));
   let hash = 0x811c9dc5;
   for (let index = 0; index < identity.length; index += 1) {

@@ -104,3 +104,12 @@ test("designations repeat across jurisdictions, and the id keeps them apart", ()
   assert.equal(ontario?.designation, manitoba?.designation);
   assert.notEqual(ontario?.layerId, manitoba?.layerId);
 });
+
+test("the longest zone-id prefix names the layer, so nested prefixes never collide", () => {
+  const layers = [
+    { id: "layer:us-wy", zoneIdPrefix: "management_zone:us-wy-" },
+    { id: "layer:us-wy-elk-area", zoneIdPrefix: "management_zone:us-wy-elk-area-" },
+  ];
+  assert.deepEqual(zoneRefFromId("management_zone:us-wy-elk-area-7", layers), { layerId: "layer:us-wy-elk-area", designation: "7" });
+  assert.deepEqual(zoneRefFromId("management_zone:us-wy-12", layers), { layerId: "layer:us-wy", designation: "12" });
+});
