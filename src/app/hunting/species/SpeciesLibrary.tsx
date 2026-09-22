@@ -23,6 +23,40 @@ type UploadState = "IMAGE_SET" | "MISSING_IMAGE" | "UPLOADING" | "ERROR";
 const normalize = (value: string) => value.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLocaleLowerCase("en-CA");
 const ALL = "All";
 
+/**
+ * What the administrator is told when an upload is refused. A validation
+ * failure names what to change; a transient failure says to try again, because
+ * nothing about the image was wrong. Every failure leaves the current primary
+ * image unchanged.
+ */
+function uploadErrorMessage(code: string | undefined, status: number | undefined): string {
+  switch (code) {
+    case "PRIMARY_MEDIA_CHANGED":
+    case "REPLACE_CONFIRMATION_REQUIRED":
+      return "The primary image changed. Refresh before replacing it.";
+    case "TOO_LARGE":
+    case "PAYLOAD_TOO_LARGE":
+      return "Use an image smaller than 12 MB.";
+    case "UNSUPPORTED":
+      return "Use JPEG, PNG, WebP or AVIF.";
+    case "ANIMATED":
+      return "Use a single still image, not an animation.";
+    case "EMPTY":
+    case "INVALID":
+      return "This file could not be read as an image.";
+    case "UNAUTHORIZED":
+      return "Your administrator session has ended. Sign in again.";
+    case "RATE_LIMITED":
+      return "Too many uploads this hour. Try again later.";
+    case "UNKNOWN_SPECIES":
+      return "This species is not in the published library.";
+    default:
+      return status === 503 || status === undefined
+        ? "North Ground is temporarily busy. Nothing was changed — try again in a moment."
+        : "Upload failed. The existing primary image was not changed.";
+  }
+}
+
 export default function SpeciesLibrary({ species, adminMode = false }: { species: LibrarySpecies[]; adminMode?: boolean }) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState(ALL);
@@ -90,11 +124,7 @@ export default function SpeciesLibrary({ species, adminMode = false }: { species
     const payload = await response?.json().catch(() => null) as { media?: SpeciesPrimaryMedia; code?: string } | null;
     if (!response?.ok || !payload?.media) {
       setStates((current) => ({ ...current, [item.id]: "ERROR" }));
-      setErrors((current) => ({ ...current, [item.id]: payload?.code === "PRIMARY_MEDIA_CHANGED"
-        ? "The primary image changed. Refresh before replacing it."
-        : ["TOO_LARGE", "PAYLOAD_TOO_LARGE"].includes(payload?.code ?? "")
-          ? "Use an image smaller than 12 MB."
-          : "Upload failed. The existing primary image was not changed." }));
+      setErrors((current) => ({ ...current, [item.id]: uploadErrorMessage(payload?.code, response?.status) }));
       return;
     }
     setItems((current) => current.map((entry) => entry.id === item.id ? { ...entry, image: payload.media! } : entry));

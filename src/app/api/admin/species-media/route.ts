@@ -75,6 +75,7 @@ export async function POST(request: Request) {
       return json({ ok: false, code: error.code }, 409);
     }
     console.error("[species-media] upload failed", error instanceof SpeciesMediaPersistenceError ? error.code : "PROVIDER_ERROR");
-    return json({ ok: false, code: "UPLOAD_FAILED" }, 503);
+    // Storage or the database could not complete the write; nothing was published.
+    return json({ ok: false, code: "TEMPORARILY_UNAVAILABLE" }, 503);
   }
 }

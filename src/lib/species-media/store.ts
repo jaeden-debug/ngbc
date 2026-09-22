@@ -44,6 +44,9 @@ export interface PublishSpeciesMediaInput {
   }>;
 }
 
+/** PostgreSQL query_canceled: the statement timed out and its transaction rolled back. */
+const STATEMENT_TIMEOUT = "57014";
+
 export class SpeciesMediaPersistenceError extends Error {
   constructor(readonly code: string, message = code) {
     super(message);
@@ -123,7 +126,30 @@ export class SupabaseSpeciesMediaStore implements SpeciesMediaStore {
   }
 
   async publishPrimary(input: PublishSpeciesMediaInput): Promise<void> {
-    const { error } = await this.client.rpc("publish_species_primary_media", {
+    let { error } = await this.callPublish(input);
+    /* A statement timeout (57014) is reported only after PostgreSQL has rolled
+       the whole publish transaction back, so asking once more with the same
+       asset id and the same expected current asset is safe: it either commits
+       exactly once or meets the same optimistic check. Owner uploads failed
+       this way on 2026-09-22 while other jobs loaded the database. */
+    if (error?.code === STATEMENT_TIMEOUT) {
+      ({ error } = await this.callPublish(input));
+      // Had the first attempt somehow committed, our own asset is now current: that is success.
+      if (error && /PRIMARY_MEDIA_CHANGED/.test(error.message) &&
+          (await this.currentAssetId(input.speciesId)) === input.assetId) return;
+    }
+    if (error) {
+      const code = /PRIMARY_MEDIA_EXISTS/.test(error.message)
+        ? "PRIMARY_MEDIA_EXISTS"
+        : /PRIMARY_MEDIA_CHANGED/.test(error.message)
+          ? "PRIMARY_MEDIA_CHANGED"
+          : error.code === STATEMENT_TIMEOUT ? "WRITE_BUSY" : "WRITE_FAILED";
+      throw new SpeciesMediaPersistenceError(code, error.message);
+    }
+  }
+
+  private async callPublish(input: PublishSpeciesMediaInput) {
+    return await this.client.rpc("publish_species_primary_media", {
       p_asset_id: input.assetId,
       p_species_id: input.speciesId,
       p_source_type: input.sourceType,
@@ -147,12 +173,12 @@ export class SupabaseSpeciesMediaStore implements SpeciesMediaStore {
       })),
       p_expected_current_asset_id: input.expectedCurrentAssetId,
     });
-    if (error) {
-      const code = /PRIMARY_MEDIA_EXISTS/.test(error.message)
-        ? "PRIMARY_MEDIA_EXISTS"
-        : /PRIMARY_MEDIA_CHANGED/.test(error.message) ? "PRIMARY_MEDIA_CHANGED" : "WRITE_FAILED";
-      throw new SpeciesMediaPersistenceError(code, error.message);
-    }
+  }
+
+  private async currentAssetId(speciesId: CanonicalId<"species">): Promise<string | null> {
+    const { data, error } = await this.client.from("species_primary_media").select("asset_id").eq("species_id", speciesId).maybeSingle();
+    if (error) return null;
+    return (data as { asset_id?: string } | null)?.asset_id ?? null;
   }
 }
 
