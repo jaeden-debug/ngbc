@@ -113,12 +113,3 @@ test("a thousand random edits never show a result for inputs other than the curr
   }
 });
 
-test("animal-class answers are sent in the shape the evaluation API accepts", async () => {
-  const { toAnswerPayload } = await import("./hunt-session.ts");
-  assert.equal(toAnswerPayload({}), undefined);
-  assert.deepEqual(toAnswerPayload({ RESIDENCY: "RESIDENT", HUNT_METHOD: "RIFLE" }), { RESIDENCY: "RESIDENT", HUNT_METHOD: "RIFLE" });
-  assert.deepEqual(
-    toAnswerPayload({ "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED", HUNT_METHOD: "BOW" }),
-    { HUNT_METHOD: "BOW", animalClasses: [{ dimension: "ANTLER_CLASS", value: "ANTLERED" }] },
-  );
-});

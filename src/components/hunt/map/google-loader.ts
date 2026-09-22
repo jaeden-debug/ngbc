@@ -13,8 +13,9 @@
  * Hunt listens for it and falls back to its own boundary view instead.
  */
 
+import { MAPS_READY_CALLBACK as READY_CALLBACK, mapsScriptUrl } from "./maps-script";
+
 let googleMapsPromise: Promise<typeof google.maps> | null = null;
-const READY_CALLBACK = "__northGroundMapsReady";
 const authFailureListeners = new Set<() => void>();
 let authFailed = false;
 
@@ -47,9 +48,7 @@ export function loadGoogleMaps(apiKey: string): Promise<typeof google.maps> {
     };
 
     const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?${new URLSearchParams({
-      key: apiKey, v: "weekly", loading: "async", callback: READY_CALLBACK,
-    })}`;
+    script.src = mapsScriptUrl(apiKey);
     script.async = true;
     script.onerror = () => fail("Google Maps failed to load");
     document.head.appendChild(script);

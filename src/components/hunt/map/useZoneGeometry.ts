@@ -2,10 +2,11 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
-  boxKey, levelForZoom, lodSpec, requestBoxFor, ZoneGeometryStore,
+  boxesIntersect, boxKey, levelForZoom, lodSpec, requestBoxFor, ZoneGeometryStore,
   type BBox, type DrawnZone, type LodLevel, type SourceZoneFeature, type StoredZone,
 } from "../../../lib/hunt/exploration/geometry-store";
 import type { OverlayLayerDescriptor } from "../../../lib/hunt/exploration/overlay-layers";
+import { OVERVIEW_URL, SERVED_EXTENT } from "../../../lib/hunt/exploration/overview";
 import { ZONE_LAYERS } from "../../../lib/hunt/zone-layers";
 
 /**
@@ -18,12 +19,6 @@ import { ZONE_LAYERS } from "../../../lib/hunt/zone-layers";
  */
 
 const SERVED = ZONE_LAYERS.filter((layer) => layer.serving);
-const SERVED_EXTENT: BBox = {
-  west: Math.min(...SERVED.map((layer) => layer.bounds.minLongitude)),
-  south: Math.min(...SERVED.map((layer) => layer.bounds.minLatitude)),
-  east: Math.max(...SERVED.map((layer) => layer.bounds.maxLongitude)),
-  north: Math.max(...SERVED.map((layer) => layer.bounds.maxLatitude)),
-};
 const CLIPPED = new Set(SERVED.filter((layer) => layer.mapGeometry === "stored").map((layer) => layer.id));
 const RETRY_MS = [15_000, 45_000, 120_000];
 const DETAIL_RETRY_MS = 60_000;
@@ -49,6 +44,28 @@ export interface GeometryNotice {
 export interface MapView {
   box: BBox;
   zoom: number;
+}
+
+/*
+ * One overview request per page, however often the component mounts: a
+ * remount (fast refresh, a strict-mode double effect) shares the request in
+ * flight instead of asking again. A failed answer is forgotten, so a retry
+ * really asks again.
+ */
+let overviewInFlight: Promise<ZonesResponse> | null = null;
+function fetchOverview(url: string): Promise<ZonesResponse> {
+  if (!overviewInFlight) {
+    overviewInFlight = fetch(url)
+      .then((response) => response.json() as Promise<ZonesResponse>)
+      .then((payload) => {
+        if (payload.status !== "OK") overviewInFlight = null;
+        return payload;
+      }, (error: unknown) => {
+        overviewInFlight = null;
+        throw error;
+      });
+  }
+  return overviewInFlight;
 }
 
 function authorityOf(layerId: string): string {
@@ -78,10 +95,8 @@ export function useZoneGeometry(view: MapView | null) {
   const attemptRef = useRef(0);
   const loadOverview = useCallback(async () => {
     const seq = store.nextSeq();
-    const bounds = boxKey(SERVED_EXTENT);
     try {
-      const response = await fetch(`/api/hunt/zones?bounds=${bounds}&zoom=${lodSpec(0).requestZoom}`);
-      const payload = await response.json() as ZonesResponse;
+      const payload = await fetchOverview(OVERVIEW_URL);
       if (!aliveRef.current) return;
       if (payload.features?.length) store.apply(0, SERVED_EXTENT, seq, payload.features);
       if (payload.overlays) setOverlayLayers(payload.overlays);
@@ -120,7 +135,7 @@ export function useZoneGeometry(view: MapView | null) {
   /** When each detail box last answered, so a settled view does not ask again. */
   const answeredRef = useRef(new Map<string, number>());
   const failedRef = useRef(new Map<string, number>());
-  const inFlightRef = useRef(new Map<string, AbortController>());
+  const inFlightRef = useRef(new Map<string, { controller: AbortController; box: BBox }>());
 
   const requestDetail = useCallback(async (level: LodLevel, box: BBox) => {
     const key = `${level}|${boxKey(box)}`;
@@ -130,14 +145,20 @@ export function useZoneGeometry(view: MapView | null) {
     const failedAt = failedRef.current.get(key);
     if (failedAt && Date.now() - failedAt < DETAIL_RETRY_MS) return;
 
-    // A view that has moved on does not need every request it started.
+    // A request for ground the view has left is no longer worth waiting for.
+    for (const [otherKey, entry] of inFlightRef.current) {
+      if (!boxesIntersect(entry.box, box)) {
+        entry.controller.abort();
+        inFlightRef.current.delete(otherKey);
+      }
+    }
     if (inFlightRef.current.size >= MAX_IN_FLIGHT) {
-      const [oldest, controller] = inFlightRef.current.entries().next().value as [string, AbortController];
-      controller.abort();
+      const [oldest, entry] = inFlightRef.current.entries().next().value as [string, { controller: AbortController; box: BBox }];
+      entry.controller.abort();
       inFlightRef.current.delete(oldest);
     }
     const controller = new AbortController();
-    inFlightRef.current.set(key, controller);
+    inFlightRef.current.set(key, { controller, box });
     const seq = store.nextSeq();
     try {
       const response = await fetch(`/api/hunt/zones?bounds=${boxKey(box)}&zoom=${lodSpec(level).requestZoom}`, { signal: controller.signal });
@@ -174,7 +195,7 @@ export function useZoneGeometry(view: MapView | null) {
   }, [view, requestDetail, store, missingLayers, overview]);
 
   useEffect(() => () => {
-    for (const controller of inFlightRef.current.values()) controller.abort();
+    for (const entry of inFlightRef.current.values()) entry.controller.abort();
   }, []);
 
   /* ── What to draw now ─────────────────────────────────────────────────── */

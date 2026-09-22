@@ -55,6 +55,23 @@
 
 .mapCanvas { background: #151a15; }
 
+/* The server-drawn zones, aligned to the opening camera, shown until the live map has drawn its own. */
+.poster {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 360ms ease, visibility 0s linear 0s;
+}
+.poster[data-hidden] {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 360ms ease, visibility 0s linear 360ms;
+}
+
 /* Zone names on the Google map, one per zone, placed where they fit. */
 .mapZoneLabel {
   position: absolute;
