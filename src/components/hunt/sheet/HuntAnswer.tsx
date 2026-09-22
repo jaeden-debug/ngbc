@@ -5,6 +5,7 @@ import type { CanonicalId } from "../../../lib/content-contract";
 import type { SpeciesSelectorOption } from "../../../lib/hunt/coverage";
 import { readableCalendarDay, readableIso } from "../../../lib/hunt/date";
 import type { EvaluationState } from "../../../lib/hunt/exploration/hunt-session";
+import type { AuthorizationContext } from "../../../lib/hunt/regulatory/allocation";
 import { partitionEvaluationSources } from "../../../lib/hunt/source-roles";
 import type { HuntEvaluation } from "../../../lib/hunt/types";
 import HuntQuestion from "../HuntQuestion";
@@ -48,26 +49,11 @@ const AUTHORIZATION_WORDING: Record<string, string> = {
 };
 
 /**
- * The part of a regulatory result that says how its seasons are licensed —
- * hunt codes, draws, quotas — where the authority allocates them that way.
- * Read structurally so this view works before and after the engine carries it.
- */
-interface AuthorizationLike {
-  requirement: string;
-  huntCodes: Array<{ code: string; authorityTerm: string; allocation: { authorityTerm: string; quota?: { statedAs: string } }; statedAs: string }>;
-  draws: Array<{ cycleId: string; statedAs: string }>;
-}
-
-function authorizationOf(result: HuntEvaluation): AuthorizationLike | null {
-  return (result.regulation as { authorization?: AuthorizationLike }).authorization ?? null;
-}
-
-/**
  * Regulatory availability, never entitlement: which hunts a season is open
  * under and how their licences are issued. North Ground cannot see what anyone
  * holds, and the block ends by saying so.
  */
-function AuthorizationBlock({ authorization }: { authorization: AuthorizationLike }) {
+function AuthorizationBlock({ authorization }: { authorization: AuthorizationContext }) {
   return (
     <div className={styles.assumptions} role="note" aria-label="Licence and hunt">
       <p className={styles.assumptionsTitle}>{AUTHORIZATION_WORDING[authorization.requirement] ?? authorization.requirement}</p>
@@ -170,7 +156,7 @@ export default function HuntAnswer({
         </dl>
       ) : null}
 
-      {authorizationOf(result) ? <AuthorizationBlock authorization={authorizationOf(result)!} /> : null}
+      {result.regulation.authorization ? <AuthorizationBlock authorization={result.regulation.authorization} /> : null}
 
       {answered.length ? (
         <div className={styles.assumptions} role="note">
