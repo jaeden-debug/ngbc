@@ -169,3 +169,23 @@ describe("provenance dates", () => {
     assert.equal(retrievedAtFor(null, undefined, "sha256:aaa", "2026-09-30"), "2026-09-30");
   });
 });
+
+it("a quote keeps its retrieval date while its source is unchanged, and only then", async () => {
+  const { quoteRetrievedAtIndex } = await import("./ontario-source.mjs");
+  const previous = {
+    sourceHashes: { "source:law": "sha256:a", "source:fees": "sha256:b" },
+    authorizations: [{
+      provenance: [{ sourceId: "source:law", quote: "A licence is required.", retrievedAt: "2026-09-20" }],
+      prices: [{ provenance: { sourceId: "source:fees", quote: "Licence: $8.57", retrievedAt: "2026-09-19" } }],
+    }],
+  };
+  const dateOf = quoteRetrievedAtIndex(previous);
+  // Unchanged source, same words: the committed date, so a rebuild is byte-identical.
+  assert.equal(dateOf("source:law", "A licence is required.", "sha256:a", "2026-09-22"), "2026-09-20");
+  assert.equal(dateOf("source:fees", "Licence: $8.57", "sha256:b", "2026-09-22"), "2026-09-19");
+  // The source moved, or the words are new: re-read today.
+  assert.equal(dateOf("source:law", "A licence is required.", "sha256:changed", "2026-09-22"), "2026-09-22");
+  assert.equal(dateOf("source:fees", "Licence: $9.00", "sha256:b", "2026-09-22"), "2026-09-22");
+  // No previous bundle at all.
+  assert.equal(quoteRetrievedAtIndex(null)("source:law", "A licence is required.", "sha256:a", "2026-09-22"), "2026-09-22");
+});

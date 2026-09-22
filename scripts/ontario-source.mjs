@@ -285,6 +285,31 @@ export function retrievedAtFor(previousBundle, previousHash, currentHash, today)
   return unchanged && previousDate ? previousDate : today;
 }
 
+/**
+ * When a quoted passage was retrieved: the previous bundle's date for the same
+ * source and words while that source's text is unchanged, otherwise today.
+ *
+ * Stamping every quote with the build day moved the bundle's content hash on
+ * every rebuild although no source had moved, so the generated-bundle check
+ * went red daily. The same rule as `retrievedAtFor`, applied per quote.
+ */
+export function quoteRetrievedAtIndex(previousBundle) {
+  const dates = new Map();
+  const visit = (value) => {
+    if (Array.isArray(value)) { value.forEach(visit); return; }
+    if (!value || typeof value !== "object") return;
+    if (typeof value.sourceId === "string" && typeof value.quote === "string" && typeof value.retrievedAt === "string") {
+      dates.set(`${value.sourceId}\u0000${value.quote}`, value.retrievedAt);
+    }
+    Object.values(value).forEach(visit);
+  };
+  visit(previousBundle);
+  return (sourceId, quote, currentSourceHash, today) => {
+    const unchanged = previousBundle?.sourceHashes?.[sourceId] === currentSourceHash;
+    return (unchanged && dates.get(`${sourceId}\u0000${quote}`)) || today;
+  };
+}
+
 /** Read a previously generated bundle, or null when there is not one yet. */
 export function readPreviousBundle(path) {
   try {

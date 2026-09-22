@@ -26,7 +26,7 @@ import { createHash } from "node:crypto";
 import { mkdirSync, writeFileSync } from "node:fs";
 import {
   expandWmuSpec, extractFootnotes, extractTables, fetchOfficialWmuIdentifiers, fetchText, jurisdictionToday,
-  parseWmuCell, readPreviousBundle, retrievedAtFor, stripTags, zoneCanonicalId,
+  parseWmuCell, quoteRetrievedAtIndex, readPreviousBundle, retrievedAtFor, stripTags, zoneCanonicalId,
 } from "./ontario-source.mjs";
 
 const OUT_DIR = "content/regulatory/readiness";
@@ -796,6 +796,10 @@ async function main() {
   Object.assign(texts, overlapping.texts);
   const issuers = await readIssuers();
 
+  const sourceHashes = Object.fromEntries(Object.entries(texts).map(([key, text]) => [SOURCES[key].id, sha256(text)]));
+  const quoteDate = quoteRetrievedAtIndex(previousBundle);
+  const retrievedAt = (sourceId, quote) => quoteDate(sourceId, quote, sourceHashes[sourceId], TODAY);
+
   // Every quote must be in the source it names — re-read today.
   const provenance = (entry) => {
     const source = SOURCES[entry.source];
@@ -805,7 +809,7 @@ async function main() {
     }
     return {
       sourceId: source.id, url: source.url, citation: entry.citation, tier: source.tier,
-      quote: entry.quote, retrievedAt: TODAY,
+      quote: entry.quote, retrievedAt: retrievedAt(source.id, entry.quote),
     };
   };
 
@@ -835,7 +839,8 @@ async function main() {
         licenceYear: LICENCE_YEAR,
         provenance: {
           sourceId: SOURCES.fees.id, url: `${SOURCES.fees.url}#section-0`, citation: `Hunting fees — ${entry.heading}`,
-          tier: SOURCES.fees.tier, quote: `${entry.line}: $${found.amount.toFixed(2)}`, retrievedAt: TODAY,
+          tier: SOURCES.fees.tier, quote: `${entry.line}: $${found.amount.toFixed(2)}`,
+          retrievedAt: retrievedAt(SOURCES.fees.id, `${entry.line}: $${found.amount.toFixed(2)}`),
         },
       };
     }),
@@ -876,7 +881,6 @@ async function main() {
   };
 
   // Hash the facts, not the build: an unchanged source rebuilds byte-identically.
-  const sourceHashes = Object.fromEntries(Object.entries(texts).map(([key, text]) => [SOURCES[key].id, sha256(text)]));
   const contentHash = sha256(JSON.stringify({ authorizations, requirements, methods, ammunition, orange, overlapping: overlapping.seasons }));
   const issuersHash = sha256(JSON.stringify(issuers));
 
