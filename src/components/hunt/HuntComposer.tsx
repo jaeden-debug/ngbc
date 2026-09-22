@@ -11,6 +11,7 @@ import type { HuntEvaluation } from "../../lib/hunt/types";
 import DateField from "./DateField";
 import HuntMap, { type ResolvedZone } from "./HuntMap";
 import HuntQuestion from "./HuntQuestion";
+import { evaluateRequestBody } from "../../lib/hunt/answer-payload";
 import HuntResult from "./HuntResult";
 import LocationSearch, { type SelectedLocation } from "./LocationSearch";
 import SpeciesSelect from "./SpeciesSelect";
@@ -238,10 +239,10 @@ export default function HuntComposer({ googleMapsApiKey, speciesOptions, initial
       const response = await fetch("/api/hunt/evaluate", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          latitude: location.latitude, longitude: location.longitude, date, speciesId,
-          answers: Object.keys(sending).length ? sending : undefined,
-        }),
+        body: JSON.stringify(evaluateRequestBody(
+          { latitude: location.latitude, longitude: location.longitude, date, speciesId },
+          sending,
+        )),
       });
       const payload = await response.json() as HuntEvaluation | { error: string };
       if (!response.ok || "error" in payload) {
