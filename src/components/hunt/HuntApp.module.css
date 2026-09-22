@@ -404,7 +404,15 @@
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
 }
-.sheet[data-snap="full"] .sheetBody { touch-action: pan-y; }
+/* Reading is possible at every height; the sheet itself moves from its header,
+   or from a pull downward once the content is already at its top. */
+.app[data-layout="sheet"] .sheetBody {
+  touch-action: pan-y;
+  /* Exactly what the current height leaves below the header, so anything
+     longer scrolls instead of hiding below the screen. */
+  height: calc(var(--sheet-h, 148px) - var(--sheet-head, 64px));
+  flex: none;
+}
 
 .app[data-layout="panel"] .sheet {
   top: calc(12px + var(--control) + 10px);
@@ -1072,3 +1080,61 @@
   .startButton { font-size: 0.86rem; gap: 6px; padding: 0 8px; }
   .brandText { font-size: 0.72rem; }
 }
+
+/* The one composer: a field at rest, its ways of choosing a place beneath it. */
+.optionGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 4px 4px;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ng-bone-dim);
+}
+.optionGroupAction {
+  min-height: 32px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: var(--ng-radius-pill);
+  background: transparent;
+  font: inherit;
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ng-bone-dim);
+  cursor: pointer;
+}
+.optionGroupAction:hover { color: var(--ng-cream); }
+
+/* Orientation stays one line; the rest is a disclosure that is still in the HTML. */
+.aboutDetails {
+  border-top: 1px solid var(--ng-glass-border);
+  padding: 2px 0;
+}
+.aboutDetails > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 2px;
+  font-size: 0.88rem;
+  font-weight: 620;
+  color: var(--ng-bone);
+  cursor: pointer;
+  list-style: none;
+}
+.aboutDetails > summary::-webkit-details-marker { display: none; }
+.aboutDetails > summary::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 1.6px solid currentColor;
+  border-bottom: 1.6px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px);
+  opacity: 0.6;
+  transition: transform 160ms ease;
+}
+.aboutDetails[open] > summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
+@media (prefers-reduced-motion: reduce) { .aboutDetails > summary::after { transition: none; } }

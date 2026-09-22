@@ -33,9 +33,25 @@ const DRAG_THRESHOLD_PX = 6;
 export default function HuntSheet({ layout, snap, heights, onSnap, label, header, children }: HuntSheetProps) {
   const sheetRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
+
+  /* The sheet is full height and slid down, so only `--sheet-h` of it shows.
+     The body is told what that leaves, or its lower half sits off-screen where
+     nothing can reach it — which is what hid the actions at peek and half. */
+  useEffect(() => {
+    const header = headerRef.current;
+    const sheet = sheetRef.current;
+    if (!header || !sheet) return;
+    const measure = () => sheet.style.setProperty("--sheet-head", `${Math.round(header.getBoundingClientRect().height)}px`);
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(header);
+    return () => observer.disconnect();
+  }, []);
   const suppressClickUntilRef = useRef(0);
   const dragRef = useRef<{
     id: number; startY: number; startHeight: number; lastY: number; lastT: number; velocity: number; active: boolean;
+    inBody: boolean; scrollable: boolean;
   } | null>(null);
 
   const isSheet = layout === "sheet";
@@ -51,13 +67,15 @@ export default function HuntSheet({ layout, snap, heights, onSnap, label, header
     if (!isSheet || !heights) return;
     if (event.pointerType === "mouse" && event.button !== 0) return;
     const inHeader = headerRef.current?.contains(event.target as Node) ?? false;
-    // At full height the body scrolls; only the header moves the sheet.
-    if (snap === "full" && !inHeader) return;
     // Text fields take their own gestures.
     if ((event.target as HTMLElement).closest("input, textarea, select, [data-no-drag]")) return;
+    const body = bodyRef.current;
+    const inBody = !inHeader && (body?.contains(event.target as Node) ?? false);
     dragRef.current = {
       id: event.pointerId, startY: event.clientY, startHeight: heights[snap],
       lastY: event.clientY, lastT: event.timeStamp, velocity: 0, active: false,
+      // Reading has the first claim on a gesture that starts in the body.
+      inBody, scrollable: inBody && body ? body.scrollHeight - body.clientHeight > 2 : false,
     };
   }, [isSheet, heights, snap]);
 
@@ -67,6 +85,15 @@ export default function HuntSheet({ layout, snap, heights, onSnap, label, header
     const delta = drag.startY - event.clientY;
     if (!drag.active) {
       if (Math.abs(delta) < DRAG_THRESHOLD_PX) return;
+      /* Inside scrollable content the gesture is a scroll — until the content
+         is at its top and the hand pulls down, which lowers the sheet. */
+      if (drag.inBody && drag.scrollable) {
+        const atTop = (bodyRef.current?.scrollTop ?? 0) <= 0;
+        if (!(atTop && delta < 0)) {
+          dragRef.current = null;
+          return;
+        }
+      }
       drag.active = true;
       sheetRef.current?.setPointerCapture(event.pointerId);
       sheetRef.current?.setAttribute("data-dragging", "true");
@@ -141,7 +168,7 @@ export default function HuntSheet({ layout, snap, heights, onSnap, label, header
         ) : null}
         {header}
       </div>
-      <div className={styles.sheetBody} data-scroll={isSheet ? (snap === "full" ? "true" : "false") : "true"}>
+      <div className={styles.sheetBody} ref={bodyRef} data-scroll="true">
         {children}
       </div>
     </section>

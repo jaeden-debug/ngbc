@@ -341,7 +341,9 @@ export default function Hero({ onStory }: { onStory: () => void }) {
         </Link>
         <div className={styles.navLinks}>
           <Link href="/hunt">Hunt</Link>
-          <Link href="/hunting/species/ruffed-grouse">Species guide</Link>
+          {/* The library, not one species: a single profile as "Species" made
+              ruffed grouse look like the site's default animal. */}
+          <Link href="/hunting/species">Species</Link>
         </div>
       </nav>
 

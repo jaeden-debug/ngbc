@@ -1769,8 +1769,16 @@ never change the zone, the regulatory answer, the weather or the Hunt Brief. The
 
 ## Location is entered as a place, never as coordinates
 
-The primary input is one search composer — place, town, address or postal/ZIP
-code — backed by Google Places where configured and a keyless provider otherwise.
+The resting sheet is a prompt and one composer — place, town, address or
+postal/ZIP code — backed by Google Places where configured and a keyless
+provider otherwise. There is no second way in beside it: one tap reaches a
+focused field with the keyboard up, and on a phone the sheet rises so the field
+and what it offers stay above the keyboard.
+
+Everything else a person can choose a place with lives INSIDE that opened
+field, as labelled rows below it: their recent places, `Use my location`, and
+`Choose a spot on the map`. A row is never dressed as a place result.
+
 `Use my location` is a separate, explicit action, not a fake suggestion row, and
 the only one that asks the browser for the device position. Its answer sets the
 hunt location and says "You are in [zone]". Hunt never prompts on arrival. Where
@@ -1810,6 +1818,50 @@ forward. A hunt date is a calendar day and is never routed through a timestamp.
 
 The text field and the calendar are two controls over one selected day. They hold
 no separate state and cannot disagree.
+
+## One state, said the same way everywhere
+
+*Decided 2026-09-22.*
+
+The composer, the sheet, the pin and the URL describe one state and can never
+disagree. The field names the hunt location only while the sheet is about that
+location — the opening state, or the hunt's own zone. Reading a zone tapped
+somewhere else it returns to its prompt, because that zone is not that place and
+a zone chosen without a point is not a point answer.
+
+The three ways of choosing a place — a search result, `Use my location`, and a
+confirmed map spot — end in the same state, through the same machine: the hunt
+pin at the point, its official zone resolved and highlighted, the camera framed
+on that zone clear of the sheet, and the zone's own card open. A searched place
+and a tapped zone are the same card, from the same data, by the same path.
+
+The sheet is readable at every height. Anything longer than the height it is
+resting at scrolls; nothing waits below the screen for a drag.
+
+## What this device remembers
+
+*Decided 2026-09-22.*
+
+Coming back should not mean searching again. The URL carries the shareable
+intent; everything else is remembered on the device alone — the chosen place,
+the zone, the species, the day, where the map sat, which layers were on, the
+sheet's height and recent places. None of it is ever sent to North Ground, put
+in a link or a Hunt Brief, or used in analytics.
+
+Three rules keep it honest:
+
+- **A link wins.** Anything a URL names — even something it names badly — is
+  what that visit is about, and nothing stored is restored over it.
+- **The device fix is never stored.** A hunt location taken from the device is
+  the device's position; §41A keeps that out of anything persistent. The zone it
+  resolved to is remembered, so the answer returns; the point is not.
+- **A day that has passed is not restored.** Seasons turn on the date, so a
+  stored day in the past falls back to today rather than quietly answering for a
+  day that has gone. Everything restored is evaluated again.
+
+Storage can be absent, full or blocked; each of those is a device that does not
+remember, never an error. `Start over` clears all of it, including recent
+places, and leaves nothing behind.
 
 ## Shareable Hunt state
 

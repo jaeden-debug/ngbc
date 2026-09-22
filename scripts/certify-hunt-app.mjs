@@ -94,6 +94,18 @@ async function mapReady(page) {
   return waitFor(page, () => Number(document.querySelector("[data-zones]")?.getAttribute("data-zones") ?? 0) > 0, 45_000);
 }
 
+/** Press "Use my location", wherever this state keeps it. */
+async function pressUseMyLocation(page) {
+  const direct = page.getByRole("button", { name: /Use my location/ });
+  if (await direct.count() && await direct.first().isVisible().catch(() => false)) {
+    await direct.first().click();
+    return;
+  }
+  await page.locator("input[type='search']").first().click();
+  await page.waitForTimeout(400);
+  await page.getByRole("button", { name: /Use my location/ }).first().click();
+}
+
 async function chooseSpecies(page, name) {
   await page.locator("button[data-kind='species']").first().click();
   await page.getByRole("button", { name: new RegExp(`^${name}`, "i") }).first().click();
@@ -107,7 +119,7 @@ const scenarios = {
     const { context, page, consoleErrors, requests } = await newPage(browser, { geolocation: BANCROFT, permissions: ["geolocation"] });
     await page.goto(`${BASE}/hunt`);
     check(s, "the map draws official zones", await mapReady(page));
-    await page.getByRole("button", { name: "Use my location" }).first().click();
+    await pressUseMyLocation(page);
     const resolved = await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "WMU 57", 30_000);
     check(s, "the zone the device is in resolves", resolved, String(await zoneTitle(page)));
     check(s, "the sheet says where you are", await page.getByText("You are in this zone").isVisible().catch(() => false));
@@ -143,11 +155,13 @@ const scenarios = {
     const { context, page, consoleErrors } = await newPage(browser);
     await page.goto(`${BASE}/hunt`);
     await mapReady(page);
-    await page.getByRole("button", { name: "Use my location" }).first().click();
+    await page.locator("input[type='search']").first().click();
+    await page.waitForTimeout(400);
+    await pressUseMyLocation(page);
     const explained = await waitFor(page, () => /not sharing your location|could not find|took too long|does not share/.test(document.body.innerText), 15_000);
     check(s, "a refusal is explained, not a dead end", explained);
-    await page.getByRole("button", { name: /^Search a place$/ }).first().click();
-    await page.getByRole("combobox", { name: "Where are you hunting?" }).fill("Winnipeg");
+    await page.locator("input[type='search']").first().click();
+    await page.locator("input[type='search']").first().fill("Winnipeg");
     const suggested = await waitFor(page, () => document.querySelectorAll("[role=option]").length > 0, 20_000);
     // A screen reader hears "Bancroft, ON, Canada", not the two lines run together.
     const option = await page.locator("[role=option]").first().evaluate((element) => ({
@@ -212,7 +226,7 @@ const scenarios = {
     });
     await page.goto(`${BASE}/hunt`);
     await mapReady(page);
-    await page.getByRole("button", { name: "Use my location" }).first().click();
+    await pressUseMyLocation(page);
     await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "WMU 57", 30_000);
     await chooseSpecies(page, "White-tailed deer");
     await page.waitForTimeout(200);
@@ -274,7 +288,7 @@ const scenarios = {
       // The basemap settles one way or the other; with Google, its attribution has drawn.
       await waitFor(page, () => document.querySelector("[data-basemap]")?.getAttribute("data-basemap") !== "loading", 20_000);
       const basemap = await page.getAttribute("[data-basemap]", "data-basemap");
-      if (basemap === "google") await waitFor(page, () => [...document.querySelectorAll(".gm-style a, .gm-style button, .gm-style span")].some((element) => /Terms/.test(element.textContent ?? "")), 10_000);
+      if (basemap === "google") await waitFor(page, () => [...document.querySelectorAll(".gm-style a, .gm-style button, .gm-style span")].some((element) => /Terms/.test(element.textContent ?? "")), 20_000);
       await page.waitForTimeout(700);
       const layout = await page.evaluate(() => {
         const sheet = document.querySelector("section[data-layout]")?.getBoundingClientRect();
@@ -350,12 +364,18 @@ const scenarios = {
         await mapReady(page);
         if (url !== "/hunt") await waitFor(page, () => Boolean(document.getElementById("hunt-zone-title")), 30_000);
         await page.waitForTimeout(600);
-        const offered = await page.getByRole("button", { name: /Use my location/ }).count();
+        let offered = await page.getByRole("button", { name: /Use my location/ }).count();
+        if (!offered) {
+          // At rest it lives inside the composer, one tap away.
+          await page.locator("input[type='search']").first().click();
+          await page.waitForTimeout(400);
+          offered = await page.getByRole("button", { name: /Use my location/ }).count();
+        }
         check(s, `${label}, ${state}`, offered > 0, `${offered} controls`);
         // A refusal is always answered in words, wherever it was pressed.
         if (offered) {
           await page.evaluate(() => { navigator.geolocation.getCurrentPosition = (_ok, fail) => fail({ code: 1, message: "denied" }); });
-          await page.getByRole("button", { name: /Use my location/ }).first().click();
+          await pressUseMyLocation(page);
           const said = await waitFor(page, () => /not sharing your location|Search for a place/i.test(document.body.innerText), 8_000);
           check(s, `${label}, ${state}: a refusal is explained`, said);
         }
@@ -395,6 +415,88 @@ const scenarios = {
     // Nothing is touched from here: no pan, no zoom, no click.
     const cleared = await waitFor(page, () => !/detailed boundaries did not load/.test(document.body.innerText), 90_000);
     check(s, "the notice clears itself without the map being touched", cleared);
+    await context.close();
+  },
+
+  async entryAndMemory(browser) {
+    const s = "B3 one composer, one state, and it is remembered";
+    const { context, page } = await newPage(browser, { width: 390, height: 844 });
+    await page.goto(`${BASE}/hunt`);
+    await mapReady(page);
+    await page.waitForTimeout(600);
+    const field = page.locator("input[type='search']").first();
+    check(s, "the resting sheet is the prompt and one field", await field.count() === 1 && (await field.getAttribute("placeholder")) === "Find your hunting zone");
+    check(s, "no second way in competes with it", await page.getByRole("button", { name: /^Search a place$/ }).count() === 0);
+    // One tap: focused, with its other ways of choosing a place inside it.
+    await field.click();
+    await page.waitForTimeout(600);
+    const opened = await page.evaluate(() => ({
+      focused: document.activeElement?.getAttribute("type") === "search",
+      rows: [...document.querySelectorAll("[class*=optionPrimary]")].map((element) => element.textContent),
+    }));
+    check(s, "one tap reaches a focused field", opened.focused);
+    check(s, "its other ways of choosing are rows inside it", opened.rows.includes("Use my location") && opened.rows.includes("Choose a spot on the map"), opened.rows.join(" / "));
+
+    await field.pressSequentially("Bancroft", { delay: 110 });
+    await waitFor(page, () => document.querySelectorAll("[role=option]").length > 0, 20_000);
+    await page.locator("[role=option]").first().click();
+    await waitFor(page, () => Boolean(document.getElementById("hunt-zone-title")), 30_000);
+    await page.waitForTimeout(2_500);
+    const searched = await page.evaluate(() => ({
+      title: document.getElementById("hunt-zone-title")?.textContent,
+      field: document.querySelector("input[type='search']")?.getAttribute("placeholder"),
+      selectedOnMap: document.querySelectorAll("[class*=mapZoneLabel][data-selected='true']").length,
+      pins: document.querySelectorAll("[class*=mapPin]").length,
+      url: location.search,
+    }));
+    // A searched place reaches the state a zone tap reaches: pin, highlight, card.
+    check(s, "a searched place opens its zone's card", searched.title === "WMU 57", String(searched.title));
+    check(s, "its zone is highlighted on the map", searched.selectedOnMap === 1 && searched.pins >= 1, `${searched.selectedOnMap} selected, ${searched.pins} pins`);
+    check(s, "the field, the sheet and the URL agree", /Bancroft/.test(searched.field ?? "") && /zone=ca-on-wmu-57/.test(searched.url), `${searched.field} :: ${searched.url}`);
+
+    // Tapping another zone must not leave the old place in the field.
+    await page.getByRole("button", { name: /Map layers/ }).click();
+    await page.waitForTimeout(400);
+    await page.getByRole("button", { name: /^List the \d+ zones in view$/ }).click();
+    await page.waitForTimeout(600);
+    const others = page.getByRole("button", { name: /^WMU (?!57\b)\d/ });
+    if (await others.count()) await others.first().click();
+    await page.waitForTimeout(1_500);
+    const elsewhere = await page.evaluate(() => ({
+      title: document.getElementById("hunt-zone-title")?.textContent,
+      field: document.querySelector("input[type='search']")?.getAttribute("placeholder"),
+    }));
+    check(s, "a zone you tap does not claim to be the place you searched",
+      elsewhere.title === "WMU 57" || elsewhere.field === "Find your hunting zone", `${elsewhere.title} :: ${elsewhere.field}`);
+
+    // Coming back: the place, the zone and the recents are still there.
+    await page.goto(`${BASE}/hunt`);
+    await waitFor(page, () => Boolean(document.getElementById("hunt-zone-title")), 40_000);
+    await page.waitForTimeout(2_000);
+    const back = await page.evaluate(() => ({
+      title: document.getElementById("hunt-zone-title")?.textContent,
+      field: document.querySelector("input[type='search']")?.getAttribute("placeholder"),
+    }));
+    check(s, "coming back to /hunt restores the hunt without searching again", back.title === "WMU 57" && /Bancroft/.test(back.field ?? ""), `${back.title} :: ${back.field}`);
+    await page.locator("input[type='search']").first().click();
+    await page.waitForTimeout(500);
+    const recents = await page.evaluate(() => [...document.querySelectorAll("[class*=optionPrimary]")].map((element) => element.textContent));
+    check(s, "recent places come back too", recents.some((row) => /Bancroft/.test(row ?? "")), recents.slice(0, 3).join(" / "));
+
+    // Start over forgets all of it.
+    await page.keyboard.press("Escape");
+    await page.getByRole("button", { name: /Menu/ }).first().click();
+    await page.getByRole("button", { name: /Start over/ }).click();
+    await page.waitForTimeout(1_200);
+    await page.goto(`${BASE}/hunt`);
+    await mapReady(page);
+    await page.waitForTimeout(1_500);
+    const cleared = await page.evaluate(() => ({
+      title: document.getElementById("hunt-zone-title")?.textContent ?? null,
+      field: document.querySelector("input[type='search']")?.getAttribute("placeholder"),
+      stored: (() => { try { return Object.keys(localStorage).filter((key) => key.startsWith("north-ground")).length; } catch { return -1; } })(),
+    }));
+    check(s, "start over leaves nothing behind", cleared.title === null && cleared.field === "Find your hunting zone" && cleared.stored === 0, JSON.stringify(cleared));
     await context.close();
   },
 

@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState, type RefObject } from "react";
 import type { PlaceSuggestion } from "../../../lib/hunt/location";
+import type { StoredPlace } from "../../../lib/hunt/exploration/session-store";
 import styles from "../HuntApp.module.css";
 
 export interface ChosenPlace {
@@ -34,15 +35,24 @@ function newSessionToken(): string {
  * configured and a keyless provider otherwise, and the attribution follows
  * whichever answered. Nothing about the searcher's own position is sent.
  */
-export default function SearchPage({
-  onChoose, onUseMyLocation, onChooseOnMap, locating, locateMessage, autoFocus,
+export default function PlaceComposer({
+  value, onChoose, onUseMyLocation, onChooseOnMap, locating, locateMessage, autoFocus,
+  recents, onClearRecents, open, onOpenChange, inputRef: externalRef,
 }: {
+  /** The hunt place this sheet is about, shown while the field is at rest. */
+  value: string | null;
   onChoose: (place: ChosenPlace) => void;
   onUseMyLocation: () => void;
   onChooseOnMap: () => void;
   locating: boolean;
   locateMessage: string | null;
   autoFocus: boolean;
+  recents: readonly StoredPlace[];
+  onClearRecents: () => void;
+  /** Open: the field is being used, so its ways of choosing a place are shown. */
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  inputRef?: RefObject<HTMLInputElement | null>;
 }) {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState<PlaceSuggestion[]>([]);
@@ -51,7 +61,8 @@ export default function SearchPage({
   const [provider, setProvider] = useState<"google" | "nominatim" | null>(null);
 
   const id = useId();
-  const inputRef = useRef<HTMLInputElement>(null);
+  const ownRef = useRef<HTMLInputElement>(null);
+  const inputRef = externalRef ?? ownRef;
   const abortRef = useRef<AbortController | null>(null);
   const sessionTokenRef = useRef<string>("");
   const skipNextQueryRef = useRef(false);
@@ -147,6 +158,14 @@ export default function SearchPage({
   }, [onChoose]);
 
   function onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setQuery("");
+      setSuggestions([]);
+      onOpenChange(false);
+      inputRef.current?.blur();
+      return;
+    }
     if (!suggestions.length) return;
     if (event.key === "ArrowDown") {
       event.preventDefault();
@@ -186,8 +205,9 @@ export default function SearchPage({
           autoComplete="off"
           autoCorrect="off"
           spellCheck={false}
-          placeholder="Town, address or postal code"
-          value={query}
+          placeholder={value ? value : "Find your hunting zone"}
+          value={open ? query : ""}
+          onFocus={() => onOpenChange(true)}
           aria-expanded={suggestions.length > 0}
           aria-controls={`${id}-list`}
           aria-autocomplete="list"
@@ -211,6 +231,8 @@ export default function SearchPage({
         ) : null}
       </div>
 
+      {open ? (
+        <>
       <p className={styles.searchStatus} id={`${id}-status`} role="status" data-tone={state.kind === "unavailable" ? "error" : undefined}>
         {status}
       </p>
@@ -257,6 +279,32 @@ export default function SearchPage({
         </ul>
       ) : (
         <ul className={styles.optionList} aria-label="Other ways to choose a place">
+          {recents.length ? (
+            <>
+              <li className={styles.optionGroup} role="presentation">
+                <span>Recent</span>
+                <button type="button" className={styles.optionGroupAction} onClick={onClearRecents}>Clear</button>
+              </li>
+              {recents.map((place) => (
+                <li key={`${place.label}-${place.latitude}`}>
+                  <button
+                    type="button"
+                    className={styles.optionRow}
+                    onMouseDown={(event) => event.preventDefault()}
+                    onClick={() => { skipNextQueryRef.current = true; setQuery(""); onChoose(place); }}
+                  >
+                    <span className={styles.optionIcon} aria-hidden="true">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="6.2" stroke="currentColor" strokeWidth="1.4" />
+                        <path d="M8 4.6V8l2.2 1.6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                      </svg>
+                    </span>
+                    <span className={styles.optionText}><span className={styles.optionPrimary}>{place.label}</span></span>
+                  </button>
+                </li>
+              ))}
+            </>
+          ) : null}
           <li>
             <button type="button" className={styles.optionRow} onClick={onUseMyLocation} disabled={locating} aria-busy={locating || undefined}>
               <span className={styles.optionIcon} data-tone="location" aria-hidden="true">
@@ -287,6 +335,10 @@ export default function SearchPage({
           {locateMessage ? <li className={styles.inlineNotice} role="status">{locateMessage}</li> : null}
         </ul>
       )}
+        </>
+      ) : locateMessage ? (
+        <p className={styles.searchStatus} role="status" data-tone="error">{locateMessage}</p>
+      ) : null}
     </div>
   );
 }

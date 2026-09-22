@@ -23,22 +23,26 @@ import { layerById, zoneIdFor, ZONE_LAYERS } from "../../lib/hunt/zone-layers";
 import { presentZone } from "../../lib/hunt/zone-presentation";
 import HuntMapView, { type CameraRequest } from "./HuntMapView";
 import HuntSheet from "./HuntSheet";
+import {
+  browserStorage, clearSession, readSession, withRecent, writeSession,
+  type MemoryStorage, type StoredPlace,
+} from "../../lib/hunt/exploration/session-store";
 import type { Padding } from "./map/GoogleZoneMap";
 import { useZoneGeometry, type MapView } from "./map/useZoneGeometry";
 import HuntAnswer, { statusWord } from "./sheet/HuntAnswer";
-import type { ChosenPlace } from "./sheet/SearchPage";
+import type { ChosenPlace } from "./sheet/PlaceComposer";
 import { InSeasonHere, StateChip, ZoneSpeciesAnswer, ZoneSummaryDetail, type SummaryLoad } from "./sheet/ZoneContext";
 import styles from "./HuntApp.module.css";
 
 /* Pages open on demand, so each is its own chunk; they are fetched once the
    map is up (see below) so a tap never waits on the network. */
 const pageLoading = () => <p className={styles.answerLoading} role="status"><span className={styles.spinner} aria-hidden="true" /> Loading…</p>;
-const loadSearch = () => import("./sheet/SearchPage");
+const loadComposer = () => import("./sheet/PlaceComposer");
 const loadSpecies = () => import("./sheet/SpeciesPage");
 const loadDate = () => import("./sheet/DatePage");
 const loadLayers = () => import("./sheet/LayersPage");
 const loadZones = () => import("./sheet/ZonesPage");
-const SearchPage = dynamic(loadSearch, { ssr: false, loading: pageLoading });
+const PlaceComposer = dynamic(loadComposer, { ssr: false, loading: pageLoading });
 const SpeciesPage = dynamic(loadSpecies, { ssr: false, loading: pageLoading });
 const DatePage = dynamic(loadDate, { ssr: false, loading: pageLoading });
 const LayersPage = dynamic(loadLayers, { ssr: false, loading: pageLoading });
@@ -60,7 +64,7 @@ const ZonesPage = dynamic(loadZones, { ssr: false, loading: pageLoading });
  * zone, is evaluated or reaches a share.
  */
 
-type Page = "main" | "search" | "species" | "date" | "layers" | "zones";
+type Page = "main" | "species" | "date" | "layers" | "zones";
 
 type HuntZone =
   | { kind: "idle" }
@@ -132,10 +136,45 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   const selection = exploration.selection;
 
   const layout = useMediaQuery(PANEL_QUERY) ? "panel" : "sheet";
+  /* Read by callbacks that must stay stable across renders. */
+  const layoutRef = useRef<"sheet" | "panel">(layout);
+  layoutRef.current = layout;
   const [page, setPage] = useState<Page>("main");
   const [snap, setSnap] = useState<SheetSnap>(initialUrl.zoneId ? "half" : "peek");
   const [heights, setHeights] = useState<SheetHeights | null>(null);
   const [view, setView] = useState<MapView | null>(null);
+
+  /* ── What this device remembers ──────────────────────────────────────── */
+
+  const storageRef = useRef<MemoryStorage | null | undefined>(undefined);
+  const memory = () => (storageRef.current === undefined ? (storageRef.current = browserStorage()) : storageRef.current);
+  const [recents, setRecents] = useState<StoredPlace[]>([]);
+  const [composerOpen, setComposerOpen] = useState(false);
+  const composerRef = useRef<HTMLInputElement>(null);
+  /* Raising the sheet first, so a phone's keyboard opens under the field and
+     not over it; the focus follows once the sheet has moved. */
+  const snapBeforeComposerRef = useRef<SheetSnap | null>(null);
+  const openComposer = useCallback((open: boolean) => {
+    setComposerOpen(open);
+    if (!open) {
+      // Back to the height they were reading at, not wherever typing left it.
+      const previous = snapBeforeComposerRef.current;
+      snapBeforeComposerRef.current = null;
+      if (previous) setSnap(previous);
+      return;
+    }
+    setPage("main");
+    /* A phone gives the whole sheet to the field: the keyboard takes the lower
+       half, and what it offers — recent places, the ways of choosing one — has
+       to be readable above it. */
+    setSnap((current) => {
+      if (layoutRef.current !== "sheet") return current;
+      snapBeforeComposerRef.current = current;
+      return "full";
+    });
+    window.setTimeout(() => composerRef.current?.focus({ preventScroll: true }), 80);
+  }, []);
+  const clearRecents = useCallback(() => setRecents([]), []);
   const [basemap, setBasemap] = useState<"loading" | "ready" | "fallback">("loading");
   const [mapMode, setMapMode] = useState<"terrain" | "hybrid">("terrain");
   const [huntZone, setHuntZone] = useState<HuntZone>({ kind: "idle" });
@@ -157,7 +196,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
      connection. They are what the next tap needs, not what this one does. */
   useEffect(() => {
     const warm = () => {
-      const run = () => { void loadSearch(); void loadSpecies(); void loadDate(); void import("./sheet/AnswerDetail"); };
+      const run = () => { void loadComposer(); void loadSpecies(); void loadDate(); void import("./sheet/AnswerDetail"); };
       const idle = (window as Window & { requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number }).requestIdleCallback;
       if (idle) idle(run, { timeout: 4_000 });
       else window.setTimeout(run, 2_500);
@@ -168,6 +207,52 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     }
     window.addEventListener("load", warm, { once: true });
     return () => window.removeEventListener("load", warm);
+  }, []);
+
+  /* ── Restoring, and remembering ──────────────────────────────────────── */
+
+  const restoredRef = useRef(false);
+  useEffect(() => {
+    if (restoredRef.current) return;
+    restoredRef.current = true;
+    const stored = readSession(memory(), todayIso());
+    setRecents(stored.recents);
+    if (stored.overlays.length) setOverlaysOn(stored.overlays);
+    /* An explicit link always wins: it is what was shared, and what the page
+       was already rendered for. Anything the link did not name comes back. */
+    if (!initialUrl.speciesId && stored.speciesId) dispatchSession({ type: "SPECIES_CHOSEN", speciesId: stored.speciesId as CanonicalId<"species"> });
+    if (!initialUrl.date && stored.date) dispatchSession({ type: "DATE_CHOSEN", iso: stored.date });
+    /* The link is about a zone; the stored place is only kept when it is the
+       same zone, so a reload keeps the exact spot rather than falling back to
+       the whole zone — and a link to somewhere else is never overridden. */
+    /* A link that named anything — even something unreadable — is what this
+       visit is about, so nothing is restored over it. */
+    const linkElsewhere = Boolean(linkIssues) || Boolean(initialUrl.zoneId && stored.zoneId !== initialUrl.zoneId);
+    if (stored.hunt && !linkElsewhere) {
+      // The same path a search takes, so the restored state is the searched state.
+      dispatchMap({ type: "HUNT_SET", location: stored.hunt });
+      setSnap(stored.snap && stored.snap !== "peek" ? stored.snap : "half");
+    } else if (!initialUrl.zoneId && !linkIssues && stored.zoneId) {
+      setRestoredZoneId(stored.zoneId);
+      if (stored.snap) setSnap(stored.snap);
+    } else if (stored.snap && !initialUrl.zoneId) {
+      setSnap(stored.snap);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const startOver = useCallback(() => {
+    clearSession(memory());
+    setRecents([]);
+    setRestoredZoneId(null);
+    dispatchMap({ type: "HUNT_CLEARED" });
+    dispatchSession({ type: "SPECIES_CLEARED" });
+    dispatchSession({ type: "DATE_CHOSEN", iso: todayIso() });
+    setOverlaysOn([]);
+    setPage("main");
+    setSnap("peek");
+    setComposerOpen(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   /* ── The device's own calendar day, once mounted ──────────────────────── */
@@ -239,6 +324,14 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   const huntRef = exploration.huntZone;
   const huntKey = huntRef ? zoneKeyOf(huntRef) : null;
   const isHuntZone = Boolean(selectedKey && selectedKey === huntKey);
+  /*
+   * What the field says, so the field, the sheet, the pin and the URL can never
+   * disagree. It names the hunt location only while the sheet is about that
+   * location — the opening state, or its own zone. Reading a zone you tapped
+   * somewhere else, it goes back to its prompt: that zone is not that place,
+   * and a zone chosen without a point is not a point answer (§41A).
+   */
+  const composerValue = hunt && (selection.kind === "none" || isHuntZone) ? hunt.label : null;
   const selectedLayer = selectedRef ? layerById(selectedRef.layerId) ?? null : null;
   const presented = useMemo(() => selectedRef && selectedLayer
     ? presentZone({ designation: selectedRef.designation, layerId: selectedLayer.id, zoneId: zoneIdFor(selectedLayer, selectedRef.designation) })
@@ -327,6 +420,10 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     setLocate({ kind: "idle" });
     setPage("main");
     setSnap("half");
+    setComposerOpen(false);
+    /* A place they chose, kept on this device so they need not search for it
+       again. Nothing about it is ever sent anywhere (see `session-store`). */
+    setRecents((current) => withRecent(current, { label: place.label, latitude: place.latitude, longitude: place.longitude, origin: "search" }));
   }, []);
 
   const useMyLocation = useCallback(() => {
@@ -437,6 +534,12 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     const ref = initialUrl.zoneId ? zoneRefFromId(initialUrl.zoneId, SERVED) : null;
     return ref ? { ref, status: "pending" } : null;
   });
+  /* A zone this device remembers is confirmed the same way a link's is: by the
+     official geometry, before anything is highlighted. */
+  const setRestoredZoneId = useCallback((zoneId: string | null) => {
+    const ref = zoneId ? zoneRefFromId(zoneId, SERVED) : null;
+    setLinkZone(ref ? { ref, status: "pending" } : null);
+  }, []);
 
   useEffect(() => {
     if (!linkZone || linkZone.status !== "pending") return;
@@ -745,6 +848,29 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     return () => window.cancelAnimationFrame(frame);
   }, [listSelection]);
 
+  /* What this device gets back next time. The device's own fix is never part
+     of it (`session-store`), and nothing here leaves the browser. */
+  useEffect(() => {
+    if (!restoredRef.current) return;
+    const timer = window.setTimeout(() => {
+      writeSession(memory(), {
+        hunt: hunt && (hunt.origin === "search" || hunt.origin === "map")
+          ? { label: hunt.label, latitude: hunt.latitude, longitude: hunt.longitude, origin: hunt.origin }
+          : null,
+        zoneId: selectedRef && selectedLayer ? zoneIdFor(selectedLayer, selectedRef.designation) : null,
+        speciesId: session.speciesId,
+        date: session.date.iso,
+        camera: view ? { latitude: (view.box.north + view.box.south) / 2, longitude: (view.box.east + view.box.west) / 2, zoom: view.zoom } : null,
+        overlays: overlaysOn,
+        snap,
+        explore: session.explore,
+        recents,
+      });
+    }, 400);
+    return () => window.clearTimeout(timer);
+     
+  }, [hunt, selectedRef, selectedLayer, session.speciesId, session.date.iso, session.explore, view, overlaysOn, snap, recents]);
+
   /* ── Announcements for assistive technology ──────────────────────────── */
 
   const zoneLabel = presented?.fullLabel ?? null;
@@ -820,7 +946,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
 
   if (page !== "main") {
     const titles: Record<Exclude<Page, "main">, string> = {
-      search: "Where are you hunting?", species: "What are you hunting?", date: "When are you hunting?", layers: "Map layers", zones: "Zones in view",
+      species: "What are you hunting?", date: "When are you hunting?", layers: "Map layers", zones: "Zones in view",
     };
     header = (
       <div className={styles.titleRow}>
@@ -830,9 +956,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
         <h2 className={styles.pageTitle}>{titles[page]}</h2>
       </div>
     );
-    body = page === "search" ? (
-      <SearchPage onChoose={chooseSearchResult} onUseMyLocation={useMyLocation} onChooseOnMap={chooseOnMap} locating={locate.kind === "locating"} locateMessage={locate.kind === "error" ? locate.message : null} autoFocus />
-    ) : page === "species" ? (
+    body = page === "species" ? (
       <SpeciesPage options={speciesOptions} value={session.speciesId} jurisdictionId={selectedLayer?.jurisdictionId} jurisdictionName={selectedLayer?.jurisdictionName} zoneStates={isHuntZone || selectedRef ? zoneStates : null} onChoose={chooseSpecies} autoFocus={layout === "panel"} />
     ) : page === "date" ? (
       <DatePage value={session.date.iso} today={deviceToday} onChoose={(iso) => { dispatchSession({ type: "DATE_CHOSEN", iso }); closePage(); }} />
@@ -1017,7 +1141,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
           <>
             <p className={styles.lead}>{huntZone.message}</p>
             <div className={styles.actionsRow}>
-              <button type="button" className="ng-action" onClick={() => openPage("search")}>Search another place</button>
+              <button type="button" className="ng-action" onClick={() => openComposer(true)}>Search another place</button>
               <button type="button" className="ng-action-quiet" onClick={chooseOnMap}>Choose on the map</button>
             </div>
           </>
@@ -1063,23 +1187,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     );
     body = (
       <div className={styles.page}>
-        <div className={styles.startActions}>
-          <button type="button" className={styles.startButton} data-primary="true" onClick={useMyLocation} disabled={locate.kind === "locating"} aria-busy={locate.kind === "locating" || undefined}>
-            {locate.kind === "locating" ? <span className={styles.spinner} aria-hidden="true" /> : (
-              <svg width="17" height="17" viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="M14.5 1.5 9 14.5l-1.7-5.8L1.5 7 14.5 1.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /></svg>
-            )}
-            {locate.kind === "locating" ? "Finding you…" : "Use my location"}
-          </button>
-          {/* The panel keeps a search field of its own; a phone's sheet needs this way in. */}
-          {layout === "sheet" ? (
-            <button type="button" className={styles.startButton} onClick={() => openPage("search")}>
-              <svg width="17" height="17" viewBox="0 0 20 20" aria-hidden="true" fill="none"><circle cx="8.5" cy="8.5" r="5.75" stroke="currentColor" strokeWidth="1.8" /><path d="m13 13 4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
-              Search a place
-            </button>
-          ) : null}
-        </div>
-        {locate.kind === "error" ? <p className={styles.problem} role="status">{locate.message}</p> : null}
-        <p className={styles.quiet}>Or tap any zone on the map to see what&apos;s in season there. Your location is used only to find your zone; it is never stored or shared.</p>
+        <p className={styles.quiet}>Type a town, address or postal code — or tap any zone on the map to see what&apos;s in season there. Your location is used only to find your zone; it is never stored or shared.</p>
         {species ? (
           <div className={styles.startSpecies}>
             {chips}
@@ -1110,18 +1218,25 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
           <Image className={styles.brandMark} src="/logo-mark.webp" alt="" width={820} height={862} sizes="30px" priority draggable={false} />
           <span className={styles.brandText}>North Ground <span>Hunt</span></span>
         </Link>
-        <button type="button" className={`${styles.topBarButton} ng-glass-control`} data-role="search" onClick={() => openPage("search")} aria-label="Search a place">
-          <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" fill="none"><circle cx="8.5" cy="8.5" r="5.75" stroke="currentColor" strokeWidth="1.8" /><path d="m13 13 4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
-        </button>
-        <SiteMenu />
+        <SiteMenu onStartOver={startOver} />
       </header>
 
       <HuntSheet layout={layout} snap={snap} heights={heights} onSnap={setSnap} label="Hunt details" header={header}>
-        {layout === "panel" && page === "main" && !pin ? (
-          <button type="button" className={styles.panelSearch} onClick={() => openPage("search")}>
-            <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true" fill="none"><circle cx="8.5" cy="8.5" r="5.75" stroke="currentColor" strokeWidth="1.8" /><path d="m13 13 4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
-            {hunt ? hunt.label : "Search a place, town or postal code"}
-          </button>
+        {page === "main" && !pin ? (
+          <PlaceComposer
+            value={composerValue}
+            onChoose={chooseSearchResult}
+            onUseMyLocation={useMyLocation}
+            onChooseOnMap={chooseOnMap}
+            locating={locate.kind === "locating"}
+            locateMessage={locate.kind === "error" ? locate.message : null}
+            autoFocus={false}
+            recents={recents}
+            onClearRecents={clearRecents}
+            open={composerOpen}
+            onOpenChange={openComposer}
+            inputRef={composerRef}
+          />
         ) : null}
         {body}
       </HuntSheet>
@@ -1208,7 +1323,7 @@ const MENU_LINKS: Array<{ href: string; label: string }> = [
 ];
 
 /** Compact site menu: a disclosure with Escape and focus return. */
-function SiteMenu() {
+function SiteMenu({ onStartOver }: { onStartOver: () => void }) {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -1249,6 +1364,10 @@ function SiteMenu() {
               </Link>
             ))}
           </nav>
+          <button type="button" className={styles.menuAction} onClick={() => { setOpen(false); onStartOver(); }}>
+            Start over
+            <span>Clears this device&apos;s hunt, recent searches and map position</span>
+          </button>
         </div>
       ) : null}
     </>
