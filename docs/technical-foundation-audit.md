@@ -1,10 +1,10 @@
 # North Ground Technical Foundation Audit
 
-Audit date: 2026-09-20; extended 2026-09-21 for canonical species-media foundations
+Audit date: 2026-09-20; extended 2026-09-22 for canonical species-media production certification
 
 Scope: current `main` worktree through the technical-foundation remediation commits, excluding uncommitted files owned by other agents.
 
-Method: repository inspection, `next build`, and HTTP inspection of the production build on localhost. No production deployment, third-party analytics property, email provider, or external domain configuration was inspected.
+Method: repository inspection, isolated full release gates, local production-build inspection, and live production browser/API/database/storage certification for canonical species media. No third-party analytics property or email-provider account was inspected.
 
 ## Priority scale
 
@@ -36,7 +36,7 @@ Status vocabulary: **FIXED** is complete in repository code and local production
 | Redirect behavior | **PARTIAL** | A no-trailing-slash policy and 308 normalization are tested. No historical redirects were invented; host/HTTPS rules remain deployment-owned. |
 | Framework signature | **FIXED** | `poweredByHeader` is disabled. |
 | Analytics | **BLOCKED** | No analytics is configured. Provider, consent, coarse-location policy, retention, and event design must be approved before instrumentation. |
-| Canonical species PRIMARY media | **PARTIAL** / production activation **BLOCKED** | Server-authenticated card drop, canonical-ID binding, private storage, metadata-stripping WebP pipeline, service-role-only schema, atomic replacement/history, placeholders and shared library/profile/Hunt consumers are implemented. Schema replay and seven focused tests pass; a real local browser proved sign-in plus first durable upload and immediate library refresh. Production migration/bucket/admin variables and the interrupted replacement/all-consumer browser certification remain. |
+| Canonical species PRIMARY media | Core **FIXED** / permanent admin handoff **BLOCKED** | Migration `20260921113816` and the private WebP-only bucket are live. Production drag/drop, confirmed replacement, optimistic-concurrency rollback and the library/profile/Hunt consumers were certified in real Chromium; API/RLS/private-storage/metadata stripping were adversarially checked. Temporary media and Auth users were removed. The owner must supply the permanent administrator email before its UUID can be allowlisted; until then admin access fails closed and population remains 0/60. |
 | Hero scroll/reflow, modal semantics, native image, lint, media performance | **REMAINS** | These findings are still valid in active visual files and were not modified. |
 | Route error/loading boundaries | **REMAINS** | Still premature until dynamic public route ownership settles. |
 
@@ -98,7 +98,7 @@ This table preserves the evidence captured at audit time. The remediation-status
 | performance | Build passes and media variants are compact, but no CWV certification; P2/P3 findings |
 | newsletter persistence | **FIXED** in code; production credentials **BLOCKED** |
 | analytics | **BLOCKED** on policy/provider decision; intentionally not added |
-| canonical species media | **PARTIAL** in repository; production activation and final replacement/browser sweep **BLOCKED** |
+| canonical species media | Core **FIXED** and production-certified; permanent administrator handoff **BLOCKED** on owner email |
 
 ## Recommended order
 
@@ -132,6 +132,15 @@ GET /does-not-exist/ 308 → /does-not-exist
 npm run test:newsletter  9/9 passed
 npm run test:seo         3/3 passed
 npm run validate:seo     passed against `next start`
+
+2026-09-22 isolated release gate:
+npm run typecheck                    passed
+npm run lint                         passed
+npm test                             passed
+npm run test:species-media           7/7 passed
+npm run build                        passed, 73 routes
+npm run validate:content:published   0 errors, 0 warnings
+npm run validate:seo                 passed
 ```
 
-The audit intentionally makes no claim about production uptime, deployed cache/CDN behavior, Search Console state, real Core Web Vitals, live Resend persistence, or analytics dashboards because credentials and those production systems were not available in the repository evidence.
+The audit makes no claim about Search Console state, real Core Web Vitals, live Resend persistence, or analytics dashboards. Species-media production behavior is claimed only for the explicitly recorded certification paths and deployment.
