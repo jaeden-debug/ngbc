@@ -24,13 +24,27 @@ const EARTH_RADIUS_METRES = 6_371_008.8;
 const AREA_TOLERANCE = 0.000_05; // 0.005%; serialization should be much closer.
 const BBOX_TOLERANCE = 0.000_002; // ~0.2 m longitude at the equator.
 
-const PREFIXES = {
-  "ca-on": "management_zone:ca-on-wmu-",
-  "ca-mb": "management_zone:ca-mb-gha-",
-  "ca-ab": "management_zone:ca-ab-wmu-",
-  "ca-qc": "management_zone:ca-qc-zone-",
-  "ca-bc": "management_zone:ca-bc-mu-",
-};
+/**
+ * The canonical-id prefix a layer's zones share, derived from the adapter's own
+ * id minting rather than a table. A hand-kept table silently answered
+ * "undefined*" for a jurisdiction it had never heard of, which reads as "every
+ * zone is missing" instead of as a bug (Yukon, 2026-09-22).
+ */
+function canonicalPrefix(source, officialFeatures) {
+  const ids = officialFeatures.map(({ canonicalId }) => canonicalId).filter(Boolean);
+  if (ids.length < 2) throw new Error(`${source.layerId}: need at least two official zones to derive a canonical prefix`);
+  let prefix = ids[0];
+  for (const id of ids.slice(1)) {
+    let index = 0;
+    while (index < prefix.length && index < id.length && prefix[index] === id[index]) index += 1;
+    prefix = prefix.slice(0, index);
+  }
+  // Stop at the last separator so a shared leading digit never widens the prefix.
+  const cut = Math.max(prefix.lastIndexOf("-"), prefix.lastIndexOf(":"));
+  prefix = cut >= 0 ? prefix.slice(0, cut + 1) : prefix;
+  if (!prefix.startsWith("management_zone:")) throw new Error(`${source.layerId}: derived an unusable canonical prefix "${prefix}"`);
+  return prefix;
+}
 
 function loadEnv() {
   for (const file of [".env.local", ".env"]) {
@@ -266,8 +280,8 @@ async function api(url, key, path, options = {}) {
   throw lastError;
 }
 
-async function publishedRows(source, env) {
-  const prefix = PREFIXES[source.jurisdictionCanonicalId.replace("jurisdiction:", "")];
+async function publishedRows(source, officialFeatures, env) {
+  const prefix = canonicalPrefix(source, officialFeatures);
   const summary = await api(env.url, env.key,
     `management_zones?canonical_id=like.${encodeURIComponent(`${prefix}*`)}&select=canonical_id,official_identifier,official_name,source_version,source_retrieved_at,source_verified_at,coverage_status&order=official_identifier`);
   const rows = [];
@@ -360,7 +374,7 @@ async function certify(jurisdiction, env) {
     canonicalId: source.canonicalZoneId(feature.officialIdentifier),
     officialName: source.officialName(feature.officialIdentifier),
   }));
-  const published = await publishedRows(source, env);
+  const published = await publishedRows(source, officialFeatures, env);
   const normalizations = await certifiedNormalizations(source, officialFeatures, env);
   const publishedById = new Map(published.map((row) => [row.canonical_id, row]));
   const officialIds = new Set(officialFeatures.map(({ canonicalId }) => canonicalId));

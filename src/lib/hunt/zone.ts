@@ -1,6 +1,6 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { ZoneResolution } from "./types.ts";
-import { designationOfRaw, isLocationLayer, servingLayersAt, ZONE_LAYERS, zoneIdFor, type ZoneLayer } from "./zone-layers.ts";
+import { designationOfRaw, isLocationLayer, officialNameOf, servingLayersAt, ZONE_LAYERS, zoneIdFor, type ZoneLayer } from "./zone-layers.ts";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { defaultSupabaseServerClient, SupabaseServerConfigurationError } from "../supabase/server.ts";
 
@@ -393,7 +393,7 @@ async function askLayerService(
       status: "RESOLVED",
       zoneId: zoneIdFor(layer, designation),
       jurisdictionId: layer.jurisdictionId,
-      officialName: `${layer.officialNamePrefix}${designation}`,
+      officialName: officialNameOf(layer, designation),
       boundaryDistanceMeters: distance,
       nearBoundary: distance <= 150,
       displayRings: displayRings(rings),
@@ -489,7 +489,7 @@ export async function resolveLayerFromWfs(
       status: "RESOLVED",
       zoneId: zoneIdFor(layer, designation),
       jurisdictionId: layer.jurisdictionId,
-      officialName: `${layer.officialNamePrefix}${designation}`,
+      officialName: officialNameOf(layer, designation),
       nearBoundary,
       sourceId,
       message: nearBoundary

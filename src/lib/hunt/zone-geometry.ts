@@ -347,22 +347,38 @@ export function storedLevelForTolerance(tolerance: number): number {
 
 type StoredClient = () => Pick<SupabaseClient, "rpc">;
 
+/*
+ * How many drawings one request may pull, by level. The limit bounds bytes, not
+ * rows, and the two diverge: all 443 Yukon subzones are 102 kB at level 1 and
+ * 3,454 kB at level 4. So a whole jurisdiction fits at the overview levels,
+ * where the map genuinely needs every zone at once, while the detailed levels —
+ * asked for only by small viewports, which hold few zones — stay tight.
+ * `zone_display_in_view` enforces the same ceilings.
+ */
+function storedLimitForLevel(level: number): number {
+  return level <= 1 ? 1_000 : 400;
+}
+
 async function storedRecords(layer: ZoneLayer, box: BoundingBox, tolerance: number, client: StoredClient): Promise<SourceRecord[]> {
   const key = cacheKey("stored", layer.id, box, tolerance);
   const cached = cache.get(key);
   if (cached && cached.expiresAt > Date.now()) return cached.value;
 
+  const level = storedLevelForTolerance(tolerance);
+  const limit = storedLimitForLevel(level);
   const { data, error } = await client()
     .rpc("zone_display_in_view", {
       p_jurisdiction_canonical_id: layer.jurisdictionId,
       p_west: box.west, p_south: box.south, p_east: box.east, p_north: box.north,
-      p_level: storedLevelForTolerance(tolerance),
-      p_limit: 400,
+      p_level: level,
+      p_limit: limit,
     })
     .abortSignal(AbortSignal.timeout(STORED_TIMEOUT_MS));
   if (error) throw error;
   const rows = (data ?? []) as Array<{ official_identifier: string; canonical_id: string; geometry: PolygonGeometry | { type: string } | null }>;
-  if (rows.length >= 400) throw new Error(`${layer.jurisdictionName} stored zone query reached its safety limit`);
+  /* A result that reaches the limit may be truncated, and a partly drawn
+     jurisdiction is a silent lie about where its boundaries are. Refuse it. */
+  if (rows.length >= limit) throw new Error(`${layer.jurisdictionName} stored zone query reached its safety limit`);
   const records: SourceRecord[] = [];
   for (const row of rows) {
     const geometry = row.geometry;

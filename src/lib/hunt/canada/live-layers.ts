@@ -41,6 +41,8 @@ const CANADA_LIVE_LAYERS: CanadaLiveLayer[] = [
       bounds: { minLatitude: 48.89, maxLatitude: 60.1, minLongitude: -110.01, maxLongitude: -101.35 },
       serving: true,
       officialNamePrefix: "Wildlife Management Zone ",
+      // The ministry's own DA_NAME for the three urban zones; numbered zones are "WMZ No. 55".
+      officialNames: { SWMZ: "Saskatoon WMZ", RWMZ: "Regina-Moose Jaw WMZ", PWMZ: "Prince Albert WMZ" },
       zoneIdPrefix: "management_zone:ca-sk-wmz-",
       designationOf: (raw) => {
         const value = typeof raw === "string" ? raw.trim().toUpperCase() : "";

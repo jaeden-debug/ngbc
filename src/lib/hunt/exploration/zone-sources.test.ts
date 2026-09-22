@@ -127,3 +127,49 @@ test("switched on, Québec draws from North Ground's stored drawings, named in t
     clearZoneGeometryCache();
   }
 });
+
+test("a saturated stored result refuses the layer rather than drawing part of it", async () => {
+  /*
+   * The limit is asked for per level, so the refusal has to compare against the
+   * limit the caller actually requested, never a constant. Yukon is why: its
+   * 443 subzones saturated a flat 400-row cap and the whole layer vanished.
+   * A level-1 answer of exactly 1000 rows may be truncated, and a partly drawn
+   * jurisdiction is a silent lie about where its boundaries are.
+   */
+  const quebec = layerById("layer:ca-qc-zone-chasse")!;
+  const was = quebec.serving;
+  quebec.serving = true;
+  try {
+    const fetcher = (async () => { throw new Error("the ministry's WFS is not a map source"); }) as typeof fetch;
+    const rowsAt = (count: number) => Array.from({ length: count }, (_unused, index) => ({
+      official_identifier: String(index + 1),
+      canonical_id: `management_zone:ca-qc-zone-${index + 1}`,
+      geometry: square(-75 + (index % 100) * 0.01, 45.5),
+    }));
+
+    // Level 1 (overview zoom 6): saturating the overview ceiling refuses the layer.
+    clearZoneGeometryCache();
+    const saturated = await fetchLayerGeometry(
+      quebec, { west: -80, south: 44, east: -60, north: 52 }, 6, fetcher, storedClient(rowsAt(1_000)),
+    );
+    assert.equal(saturated.status, "PROVIDER_ERROR", "1000 rows at level 1 may be truncated");
+
+    // One short of it is a complete answer, and is drawn.
+    clearZoneGeometryCache();
+    const complete = await fetchLayerGeometry(
+      quebec, { west: -80, south: 44, east: -60, north: 52 }, 6, fetcher, storedClient(rowsAt(999)),
+    );
+    assert.equal(complete.status, "OK");
+    assert.equal(complete.features.length, 999);
+
+    // 400 rows no longer saturates the overview level, which is the whole point of the change.
+    clearZoneGeometryCache();
+    const fourHundred = await fetchLayerGeometry(
+      quebec, { west: -80, south: 44, east: -60, north: 52 }, 6, fetcher, storedClient(rowsAt(400)),
+    );
+    assert.equal(fourHundred.status, "OK", "Yukon's 443 must fit at the overview level");
+  } finally {
+    quebec.serving = was;
+    clearZoneGeometryCache();
+  }
+});
