@@ -422,9 +422,17 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     spatial: {
       status: "IN_DEVELOPMENT",
       officialTerm: "Game Management Subzone (GMS)",
-      officialSourceUrl: "https://open.yukon.ca/data/datasets/game-management-subzones",
+      officialSourceUrl: "https://open.yukon.ca/data/datasets/game-management-areas-250k",
+      serviceUrl: "https://mapservices.gov.yk.ca/arcgis/rest/services/GeoYukon/GY_AdministrativeBoundaries/MapServer/7",
       parityCertified: false,
-      notes: "Published on Yukon's open-data portal, which is a strong machine-readable candidate.",
+      notes:
+        "GeoYukon's Game Management Areas - 250k layer (Open Government Licence - Yukon). Reconciled 2026-09-22: the " +
+        "service holds 445 distinct GAME_MGMT_AREA_ID values, one feature each, against the 443 the dataset states. " +
+        "Its 2015 download holds exactly 443; the service adds 102 and 103, whose areas (9,735 and 4,351 km²) and " +
+        "point tests match Ivvavik and Vuntut National Parks, while 101, 104 and 105 shrank around them. The dataset " +
+        "says subzones cover the Yukon except national parks, and Kluane has no feature, so 102 and 103 are quarantined " +
+        "until Environment Yukon confirms their standing. The item also says it is generalized from the legal " +
+        "boundaries, which are maps established by order-in-council.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
@@ -434,6 +442,7 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     },
     knownGaps: [
       "No geometry ingested and no rules certified; every Yukon query is UNKNOWN.",
+      "Service features 102 and 103 lie over Ivvavik and Vuntut National Parks and are not in the stated 443; they stay quarantined, and a point there is UNKNOWN, until Environment Yukon confirms whether they are Game Management Subzones.",
       "First Nations harvesting rights operate under Final Agreements and are a separate legal context from licensed recreational hunting. North Ground must not present one as describing the other.",
     ],
   },
@@ -444,10 +453,15 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     nameFr: "Territoires du Nord-Ouest",
     kind: "territory",
     spatial: {
-      status: "IN_DEVELOPMENT",
-      officialTerm: "Wildlife Management Unit/Area",
+      status: "UNAVAILABLE",
+      officialTerm: "Wildlife Management Zone/Area",
       officialSourceUrl: "https://www.gov.nt.ca/ecc/en/services/hunting-trapping-and-harvesting",
       parityCertified: false,
+      notes:
+        "No complete official vector layer exists. The Wildlife Management Zones and Areas Regulations define six " +
+        "zones with nested species and outfitter areas, published as guide maps only. The mobile Bathurst caribou " +
+        "zone is a separate dated coordinate download that can change in season, and its reuse terms are not " +
+        "designated under the NWT open licence. North Ground will not trace a map, so nothing is drawn.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
@@ -458,6 +472,7 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     knownGaps: [
       "No geometry ingested and no rules certified; every Northwest Territories query is UNKNOWN.",
       "Harvesting under land-claim agreements is a distinct legal context from licensed resident hunting and must not be conflated with it.",
+      "Complete vectors and explicit reuse terms have to come from Environment and Climate Change before any zone can be drawn; a mobile caribou zone would need effective-dated geometry history.",
     ],
   },
   {
@@ -467,10 +482,15 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     nameFr: "Nunavut",
     kind: "territory",
     spatial: {
-      status: "IN_DEVELOPMENT",
-      officialTerm: "Hunting Area",
+      status: "UNAVAILABLE",
+      officialTerm: "No territory-wide management unit system",
       officialSourceUrl: "https://www.gov.nu.ca/en/environment-and-wildlife",
       parityCertified: false,
+      notes:
+        "Nunavut has no territory-wide hunting unit. Rules follow species, population and community under the " +
+        "Nunavut Agreement, and the annual guide's maps are reference maps. No machine-readable hunting geography " +
+        "was found, and the Government of Nunavut's terms bar commercial redistribution without permission. " +
+        "Nunavut is not forced into a unit model.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
@@ -481,6 +501,7 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     knownGaps: [
       "No geometry ingested and no rules certified; every Nunavut query is UNKNOWN.",
       "Harvesting is governed substantially by the Nunavut Agreement and regional Hunters and Trappers Organizations. That is a different legal framework from licensed recreational hunting and is not modelled.",
+      "Total allowable harvest, allocation and tag assignment by Hunters and Trappers Organizations need a data-model extension before any rule is encoded; North Ground never infers beneficiary status or an assigned tag.",
     ],
   },
   {

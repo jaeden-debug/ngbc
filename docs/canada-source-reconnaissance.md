@@ -103,11 +103,11 @@ This is a research handoff for the 11 Canadian jurisdictions not owned by the ac
 ### Yukon
 
 - Authority: Yukon Department of Environment; Yukon Laws publishes the Act and regulations.
-- GIS: GeoYukon’s official `Game Management Areas - 250k` MapServer layer is EPSG:3578 and exposes `GAME_MGMT_AREA_ID`. The service returns 445 features while current official text states 443 Game Management Subzones in 11 zones; this likely reflects geometry parts or duplicate identifiers and must be reconciled.
+- GIS: GeoYukon’s official `Game Management Areas - 250k` MapServer layer is EPSG:3578 and exposes `GAME_MGMT_AREA_ID`. The service returns 445 features while current official text states 443 Game Management Subzones in 11 zones. Reconciled 2026-09-22: the 445 are distinct identifiers, one feature each. The 2015 download (`Game_Management_Areas_250k.shp.zip`) holds exactly 443, and the service adds `102` (9,735 km²) and `103` (4,351 km²). Point tests put those inside Ivvavik and Vuntut National Parks, and `101`, `104` and `105` shrank around them. The dataset says subzones cover the Yukon except national parks, and Kluane has no feature. `102` and `103` are quarantined until Environment Yukon confirms their standing.
 - Regulations: primary law plus the current 2026–27 hunting summary and Permit Hunt Authorization source.
 - Licence: OGL-Yukon permits commercial use and derivatives with attribution. The item says it is generalized from legal boundaries and must not be used for legal purposes.
 - Complexity: GMS, permit hunts, residency, non-resident outfitter/guide requirements, species/sex/age, method, special restrictions and First Nation Settlement Land access.
-- Next: group and compare unique identifiers against the 443-unit official list, then model Settlement Land and special restrictions as independent overlays.
+- Next: ask Environment Yukon about `102`/`103`, ingest the other 443 with those two quarantined, then model Settlement Land and special restrictions as independent overlays.
 
 ### Northwest Territories
 
@@ -146,7 +146,7 @@ This is a research handoff for the 11 Canadian jurisdictions not owned by the ac
 
 - “Government-hosted” does not mean legally controlling. Most available vectors are explicitly indicative or generalized.
 - Nova Scotia, Newfoundland and Labrador, the Northwest Territories and Nunavut require multiple species-specific geography types. One `zone_id` namespace is insufficient.
-- Yukon’s 445 service features versus 443 stated GMS and Manitoba’s blank GHA feature need deterministic quarantine/reconciliation rules.
+- Yukon’s 445-versus-443 is reconciled: two national-park features (`102`, `103`) are quarantined. Manitoba’s blank GHA feature needs the same deterministic quarantine.
 - Dynamic areas such as the Bathurst mobile zone require effective instants and historical snapshots, not annual overwrite.
 
 ### Regulatory-ingestion risks
