@@ -5,8 +5,10 @@ import { COVERAGE_EXPLANATIONS, coverageFromDataset, coverageFromRegistry, cover
 import { availableMetrics, derive, DERIVATIONS, mayLabelAs, NEVER_DERIVED } from "./derivation.ts";
 import { EVIDENCE_TIERS, isClaimRefusal, METRIC_TIERS, strongestTierFor, tierOfMetric, tierSupports } from "./evidence-ladder.ts";
 import { habitatModelIsReproducible, mayPublish, SENSITIVITY_RULES } from "./publication.ts";
+import { EVIDENCE_MATRIX, matrixCell, matrixJurisdictions, matrixReport, validateEvidenceMatrix } from "./evidence-matrix.ts";
 import { explainSelection, selectLayer, type LayerCandidate, type LayerRequest } from "./selection.ts";
 import { contains, describeResolution, finestPermittedResolution, permitsVisualisationAt, PRECISION_FOR_GEOGRAPHY_LEVEL } from "./spatial-precision.ts";
+import { CANADA_JURISDICTIONS } from "../canada/registry.ts";
 import type { SourceLicence } from "../source-licence.ts";
 import type { IntelligenceMetric } from "./types.ts";
 
@@ -418,4 +420,51 @@ test("a viewport request is part of the question, so no national dataset can rea
   };
   assert.ok(request.bounds.east > request.bounds.west && request.bounds.north > request.bounds.south);
   assert.ok(request.maxFeatures > 0);
+});
+
+/* ── The evidence matrix ─────────────────────────────────────────────────── */
+
+test("an unresearched cell says nobody has looked, and is never blank or UNAVAILABLE", () => {
+  // The distinction the whole matrix exists to preserve: not looking is not a
+  // finding. A cell with no entry must not read as "this authority publishes
+  // nothing", which is a claim about the data that nobody has earned.
+  const cell = matrixCell("species:moose", "jurisdiction:ca-nl");
+  assert.equal(cell.coverage, "IN_RESEARCH");
+  assert.deepEqual(cell.entries, []);
+  assert.deepEqual(cell.tiers, []);
+  assert.match(cell.explanation, /has not yet researched/);
+  assert.notEqual(cell.coverage, "UNAVAILABLE");
+});
+
+test("the matrix counts what it holds and nothing more, computed rather than typed", () => {
+  // Empty today, and the report says so with numbers. The same computation will
+  // report real coverage later, so no cell can ever be claimed by editing a
+  // constant — the discipline canada/report.ts set for regulatory coverage.
+  assert.deepEqual([...EVIDENCE_MATRIX], []);
+  assert.deepEqual(validateEvidenceMatrix(), []);
+
+  const species = ["species:white-tailed-deer", "species:moose", "species:ruffed-grouse"];
+  const report = matrixReport(species);
+  const jurisdictions = matrixJurisdictions();
+  assert.equal(report.speciesCount, 3);
+  assert.equal(report.jurisdictionCount, jurisdictions.length);
+  assert.equal(report.researchedCells, 0);
+  assert.equal(report.unresearchedCells, 3 * jurisdictions.length);
+  assert.equal(report.byCoverage.IN_RESEARCH, 3 * jurisdictions.length);
+  assert.equal(report.byCoverage.AVAILABLE, 0);
+  assert.deepEqual(report.researched, []);
+  // Every cell is accounted for in exactly one coverage state.
+  assert.equal(Object.values(report.byCoverage).reduce((sum, count) => sum + count, 0), 3 * jurisdictions.length);
+});
+
+test("the matrix targets the jurisdictions the spatial registry declares in scope", () => {
+  const ids = matrixJurisdictions().map(({ id }) => id);
+  // Out-of-scope territories are excluded here rather than counted as gaps, and
+  // are never silently folded into a denominator that flatters coverage.
+  for (const id of ["jurisdiction:ca-on", "jurisdiction:ca-qc", "jurisdiction:ca-yt", "jurisdiction:ca-federal"]) {
+    assert.ok(ids.includes(id as never), `${id} is in the national target`);
+  }
+  const outOfScope = CANADA_JURISDICTIONS.filter(({ scope }) => scope?.state === "OUT_OF_SCOPE");
+  for (const { id } of outOfScope) assert.ok(!ids.includes(id), `${id} is out of scope and not counted`);
+  assert.equal(ids.length + outOfScope.length, CANADA_JURISDICTIONS.length);
 });
