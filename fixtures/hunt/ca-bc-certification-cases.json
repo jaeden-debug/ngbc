@@ -1,0 +1,311 @@
+{
+  "jurisdiction": "jurisdiction:ca-bc",
+  "writtenOn": "2026-09-22",
+  "method": "Every expectation was written from the text of B.C. Reg. 190/84 (Schedules 1-8, consolidated to September 15, 2026) and the Wildlife Act, and every place's Management Unit from the province's own WFS, before any case was run against North Ground. A case that disagrees is a finding, never an expectation to edit.",
+  "viewports": [
+    {
+      "label": "All of British Columbia (zoom 5)",
+      "bounds": "-139.1,48.2,-114,60",
+      "zoom": 5
+    },
+    {
+      "label": "Southern interior (zoom 7)",
+      "bounds": "-124,48.9,-116,52",
+      "zoom": 7
+    },
+    {
+      "label": "Kamloops (zoom 10)",
+      "bounds": "-120.6,50.5,-120.1,50.8",
+      "zoom": 10
+    }
+  ],
+  "cases": [
+    {
+      "id": "kamloops-grouse-october",
+      "place": "Kamloops",
+      "latitude": 50.6745,
+      "longitude": -120.3273,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-10-15",
+      "expect": {
+        "gha": "3-20",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "Schedule 3 item 28: 'BLUE (Dusky) GROUSE; SPRUCE (Franklin) GROUSE; RUFFED GROUSE | 3-12 to 3-20, 3-26 to 3-44 | Sept. 10 to Nov. 30 | 5(15)'. No Part 2 clause reaches 3-20 for grouse outside Sept. 1-9, so nothing is asked."
+    },
+    {
+      "id": "kamloops-grouse-youth-asks",
+      "place": "Kamloops",
+      "latitude": 50.6745,
+      "longitude": -120.3273,
+      "speciesId": "species:spruce-grouse",
+      "date": "2026-09-05",
+      "expect": {
+        "gha": "3-20",
+        "completeness": "NEEDS_INPUT",
+        "required": "HUNTER_AGE"
+      },
+      "law": "Schedule 3 item 28.1 (Sept. 1 to Sept. 9) is restricted by Part 2 s. 9 (d) to persons under 18; the answer depends on age."
+    },
+    {
+      "id": "kamloops-grouse-youth-adult",
+      "place": "Kamloops",
+      "latitude": 50.6745,
+      "longitude": -120.3273,
+      "speciesId": "species:spruce-grouse",
+      "date": "2026-09-05",
+      "answers": {
+        "HUNTER_AGE": "ADULT"
+      },
+      "expect": {
+        "gha": "3-20",
+        "status": "CLOSED"
+      },
+      "law": "Only the youth season covers Sept. 5; an adult has none."
+    },
+    {
+      "id": "kamloops-bear-june-dispute",
+      "place": "Kamloops",
+      "latitude": 50.6745,
+      "longitude": -120.3273,
+      "speciesId": "species:american-black-bear",
+      "date": "2027-06-25",
+      "expect": {
+        "gha": "3-20",
+        "status": "CONFLICT"
+      },
+      "law": "Schedule 3 item 14 opens spring black bear in 3-12 to 3-20 and 3-26 to 3-44 from Apr. 1 to June 20; the 2026-2028 synopsis prints Apr 1 - June 30. June 25 is inside only the synopsis's range, so the sources disagree."
+    },
+    {
+      "id": "kamloops-bear-may",
+      "place": "Kamloops",
+      "latitude": 50.6745,
+      "longitude": -120.3273,
+      "speciesId": "species:american-black-bear",
+      "date": "2027-05-15",
+      "expect": {
+        "gha": "3-20",
+        "status": "CONDITIONAL"
+      },
+      "law": "Schedule 3 item 14: Apr. 1 to June 20."
+    },
+    {
+      "id": "cranbrook-bear-bow-asks",
+      "place": "Cranbrook",
+      "latitude": 49.5097,
+      "longitude": -115.7688,
+      "speciesId": "species:american-black-bear",
+      "date": "2026-09-05",
+      "expect": {
+        "gha": "4-3",
+        "completeness": "NEEDS_INPUT",
+        "required": "HUNT_METHOD"
+      },
+      "law": "Schedule 4 Part 2 s. 15 (2): 'The open season for hunting with a bow only for black bear in M.U.s 4-1 to 4-9 and 4-14 to 4-40 is September 1 to September 9.' Item 17 opens every method only from Sept. 10."
+    },
+    {
+      "id": "cranbrook-bear-crossbow",
+      "place": "Cranbrook",
+      "latitude": 49.5097,
+      "longitude": -115.7688,
+      "speciesId": "species:american-black-bear",
+      "date": "2026-09-05",
+      "answers": {
+        "HUNT_METHOD": "CROSSBOW"
+      },
+      "expect": {
+        "gha": "4-3",
+        "status": "CONDITIONAL"
+      },
+      "law": "The Wildlife Act s. 1 defines 'bow' as 'a longbow or crossbow', so the bow only season admits a crossbow."
+    },
+    {
+      "id": "cranbrook-bear-rifle",
+      "place": "Cranbrook",
+      "latitude": 49.5097,
+      "longitude": -115.7688,
+      "speciesId": "species:american-black-bear",
+      "date": "2026-09-05",
+      "answers": {
+        "HUNT_METHOD": "RIFLE"
+      },
+      "expect": {
+        "gha": "4-3",
+        "status": "CLOSED"
+      },
+      "law": "No season is open to a rifle on Sept. 5 in 4-3."
+    },
+    {
+      "id": "cranbrook-bear-august-private",
+      "place": "Cranbrook",
+      "latitude": 49.5097,
+      "longitude": -115.7688,
+      "speciesId": "species:american-black-bear",
+      "date": "2026-08-15",
+      "expect": {
+        "gha": "4-3",
+        "status": "NEEDS_VERIFICATION",
+        "mentions": [
+          "private property"
+        ]
+      },
+      "law": "Schedule 4 Part 2 s. 21: 'Despite Part 1 of Schedule 4, a person may hunt black bear on private property in M.U.s 4.1 to 4-9 and 4-14 to 4-40 from August 1 to August 31.' Whether the point is private property is not something North Ground can know."
+    },
+    {
+      "id": "atlin-ptarmigan-february",
+      "place": "Atlin",
+      "latitude": 59.5781,
+      "longitude": -133.6895,
+      "speciesId": "species:willow-ptarmigan",
+      "date": "2027-02-15",
+      "expect": {
+        "gha": "6-25",
+        "status": "CONDITIONAL"
+      },
+      "law": "Schedule 6 item 30: 'PTARMIGAN | 6-7, 6-14, 6-16 to 6-29 | Aug. 15 to Feb. 28 | 10(30)'."
+    },
+    {
+      "id": "atlin-hare-january",
+      "place": "Atlin",
+      "latitude": 59.5781,
+      "longitude": -133.6895,
+      "speciesId": "species:snowshoe-hare",
+      "date": "2027-01-10",
+      "expect": {
+        "gha": "6-25",
+        "status": "CONDITIONAL"
+      },
+      "law": "Schedule 6 item 28: 'SNOWSHOE HARE | 6-1 to 6-30 | Apr. 1 to Apr. 30 Aug. 1 to Mar. 31'."
+    },
+    {
+      "id": "prince-george-grouse",
+      "place": "Prince George",
+      "latitude": 53.9171,
+      "longitude": -122.7497,
+      "speciesId": "species:spruce-grouse",
+      "date": "2026-10-01",
+      "expect": {
+        "gha": "7-15",
+        "status": "CONDITIONAL",
+        "mentions": [
+          "contains no clause naming spruce or ruffed grouse"
+        ]
+      },
+      "law": "Schedule 7 item 51: 'SPRUCE (Franklin) GROUSE | 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41** | Sept. 1 to Nov. 15'. Part 2 of Schedule 7 has no grouse clause; the mark is recorded, not invented."
+    },
+    {
+      "id": "prince-george-grouse-after",
+      "place": "Prince George",
+      "latitude": 53.9171,
+      "longitude": -122.7497,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-11-20",
+      "expect": {
+        "gha": "7-15",
+        "status": "CLOSED"
+      },
+      "law": "Schedule 7 item 53 closes Nov. 15."
+    },
+    {
+      "id": "fort-st-john-sharptail",
+      "place": "Fort St. John",
+      "latitude": 56.2524,
+      "longitude": -120.8466,
+      "speciesId": "species:sharp-tailed-grouse",
+      "date": "2026-10-01",
+      "expect": {
+        "gha": "7-33",
+        "status": "CONDITIONAL"
+      },
+      "law": "Schedule 7 item 55: 'SHARP-TAILED GROUSE | 7-20 to 7-22, 7-32 to 7-35, ... | Sept. 1 to Nov. 15 | 3(6)'."
+    },
+    {
+      "id": "penticton-ptarmigan-unknown",
+      "place": "Penticton",
+      "latitude": 49.4991,
+      "longitude": -119.5937,
+      "speciesId": "species:willow-ptarmigan",
+      "date": "2026-10-01",
+      "expect": {
+        "gha": "8-9",
+        "status": "UNKNOWN"
+      },
+      "law": "Schedule 8 lists no ptarmigan row. Limited entry hunting is a separate regulation, so an unnamed unit is UNKNOWN, not closed."
+    },
+    {
+      "id": "penticton-grouse-bow-december",
+      "place": "Penticton",
+      "latitude": 49.4991,
+      "longitude": -119.5937,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-12-05",
+      "answers": {
+        "HUNT_METHOD": "BOW"
+      },
+      "expect": {
+        "gha": "8-9",
+        "status": "CONDITIONAL"
+      },
+      "law": "Schedule 8 Part 2 s. 11 (1): bow only for blue, spruce and ruffed grouse in 8-1 to 8-15 and 8-21 to 8-26 is December 1 to December 10."
+    },
+    {
+      "id": "penticton-grouse-shotgun-december",
+      "place": "Penticton",
+      "latitude": 49.4991,
+      "longitude": -119.5937,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-12-05",
+      "answers": {
+        "HUNT_METHOD": "SHOTGUN"
+      },
+      "expect": {
+        "gha": "8-9",
+        "status": "CLOSED"
+      },
+      "law": "Item 21 closes Nov. 30; only the bow only season covers Dec. 5."
+    },
+    {
+      "id": "williams-lake-sharptail",
+      "place": "Williams Lake",
+      "latitude": 52.1418,
+      "longitude": -122.1417,
+      "speciesId": "species:sharp-tailed-grouse",
+      "date": "2026-10-01",
+      "expect": {
+        "gha": "5-2",
+        "status": "CONDITIONAL"
+      },
+      "law": "Schedule 5 item 21: 'SHARP-TAILED GROUSE | 5-1 to 5-6, 5-12 to 5-14** | Sept. 10 to Nov. 30'. The Part 2 s. 15 closures are in 5-3 and 5-14, not 5-2."
+    },
+    {
+      "id": "smithers-bear-september",
+      "place": "Smithers",
+      "latitude": 54.7804,
+      "longitude": -127.1743,
+      "speciesId": "species:american-black-bear",
+      "date": "2026-09-01",
+      "expect": {
+        "gha": "6-9",
+        "status": "CONDITIONAL"
+      },
+      "law": "Schedule 6 item 21: 'BLACK BEAR | 6-1 to 6-11, 6-14 to 6-30** | Apr. 1 to June 30 Aug. 15 to Nov. 30'. The s. 18 closures are in 6-3 and 6-11."
+    },
+    {
+      "id": "tofino-grouse-park",
+      "place": "Tofino",
+      "latitude": 49.153,
+      "longitude": -125.9066,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-10-01",
+      "expect": {
+        "gha": "1-8",
+        "status": "NEEDS_VERIFICATION",
+        "mentions": [
+          "Gibson Marine"
+        ]
+      },
+      "law": "Schedule 1 Part 2 s. 5 (1): 'There is no open season on wildlife except ducks, ... in ... (c) Gibson Marine Park (M.U. 1-8)'. North Ground holds no park boundary, so a point in 1-8 cannot be settled."
+    }
+  ]
+}

@@ -86,7 +86,8 @@ export const BRITISH_COLUMBIA_VOCABULARY: ConditionalVocabulary = {
       "North Ground has not certified exact astronomical times for this result.",
   },
   standingLimitations: BRITISH_COLUMBIA_BUNDLE.limitations,
-  standingSourceIds: [],
+  // Legal hours (s. 14 (1)) and the meaning of the schedules (s. 4) come from the body of the regulation.
+  standingSourceIds: [REGULATION],
   describe: (dimension, value) => {
     if (dimension === "HUNTER_AGE") return value === "UNDER_18" ? "hunters under 18" : "hunters 18 or older";
     return value;

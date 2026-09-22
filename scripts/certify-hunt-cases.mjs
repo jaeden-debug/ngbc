@@ -38,7 +38,7 @@ async function timed(path, init) {
 
 const post = (path, body) => timed(path, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
 
-const designation = (officialName) => officialName?.match(/(?:Game Hunting Area|Wildlife Management Unit|Zone de chasse) (\S+)$/)?.[1]?.toUpperCase() ?? null;
+const designation = (officialName) => officialName?.match(/(?:Game Hunting Area|Wildlife Management Unit|Management Unit|Zone de chasse) (\S+)$/)?.[1]?.toUpperCase() ?? null;
 
 const results = [];
 for (const item of cases) {
