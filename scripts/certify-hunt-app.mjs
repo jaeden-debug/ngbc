@@ -449,17 +449,22 @@ const scenarios = {
       pins: document.querySelectorAll("[class*=mapPin]").length,
       url: location.search,
     }));
-    // A searched place reaches the state a zone tap reaches: pin, highlight, card.
-    check(s, "a searched place opens its zone's card", searched.title === "WMU 57", String(searched.title));
+    /* A searched place reaches the state a zone tap reaches: pin, highlight,
+       card. Which zone that is depends on the place provider the deployment
+       uses, so what is checked is that everything names the SAME one. */
+    const zoneFromUrl = /zone=([a-z0-9-]+)/.exec(searched.url)?.[1] ?? null;
+    check(s, "a searched place opens its zone's card", /^WMU \d/.test(searched.title ?? ""), String(searched.title));
     check(s, "its zone is highlighted on the map", searched.selectedOnMap === 1 && searched.pins >= 1, `${searched.selectedOnMap} selected, ${searched.pins} pins`);
-    check(s, "the field, the sheet and the URL agree", /Bancroft/.test(searched.field ?? "") && /zone=ca-on-wmu-57/.test(searched.url), `${searched.field} :: ${searched.url}`);
+    const urlNamesTheCard = Boolean(zoneFromUrl && searched.title && zoneFromUrl.endsWith(searched.title.replace(/^WMU /, "").toLowerCase()));
+    check(s, "the field, the sheet and the URL agree", /Bancroft/i.test(searched.field ?? "") && urlNamesTheCard, `${searched.field} :: ${searched.url} :: ${searched.title}`);
 
+    const searchedZone = searched.title;
     // Tapping another zone must not leave the old place in the field.
     await page.getByRole("button", { name: /Map layers/ }).click();
     await page.waitForTimeout(400);
     await page.getByRole("button", { name: /^List the \d+ zones in view$/ }).click();
     await page.waitForTimeout(600);
-    const others = page.getByRole("button", { name: /^WMU (?!57\b)\d/ });
+    const others = page.getByRole("button", { name: new RegExp(`^WMU (?!${(searched.title ?? "WMU 57").replace(/^WMU /, "")}\\b)\\d`) });
     if (await others.count()) await others.first().click();
     await page.waitForTimeout(1_500);
     const elsewhere = await page.evaluate(() => ({
@@ -467,7 +472,7 @@ const scenarios = {
       field: document.querySelector("input[type='search']")?.getAttribute("placeholder"),
     }));
     check(s, "a zone you tap does not claim to be the place you searched",
-      elsewhere.title === "WMU 57" || elsewhere.field === "Find your hunting zone", `${elsewhere.title} :: ${elsewhere.field}`);
+      elsewhere.title === searchedZone || elsewhere.field === "Find your hunting zone", `${elsewhere.title} :: ${elsewhere.field}`);
 
     // Coming back: the place, the zone and the recents are still there.
     await page.goto(`${BASE}/hunt`);
@@ -477,7 +482,7 @@ const scenarios = {
       title: document.getElementById("hunt-zone-title")?.textContent,
       field: document.querySelector("input[type='search']")?.getAttribute("placeholder"),
     }));
-    check(s, "coming back to /hunt restores the hunt without searching again", back.title === "WMU 57" && /Bancroft/.test(back.field ?? ""), `${back.title} :: ${back.field}`);
+    check(s, "coming back to /hunt restores the hunt without searching again", back.title === searchedZone && /Bancroft/i.test(back.field ?? ""), `${back.title} :: ${back.field}`);
     await page.locator("input[type='search']").first().click();
     await page.waitForTimeout(500);
     const recents = await page.evaluate(() => [...document.querySelectorAll("[class*=optionPrimary]")].map((element) => element.textContent));
