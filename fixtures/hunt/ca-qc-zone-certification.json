@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "certifiedOn": "2026-09-21",
+  "certifiedOn": "2026-09-22",
   "jurisdiction": "jurisdiction:ca-qc",
   "layer": "layer:ca-qc-zone-chasse",
   "authority": "Ministère des Forêts, de la Faune et des Parcs",
   "sourceUrl": "https://servicesvecto3.mern.gouv.qc.ca/geoserver/SmartFaunePub/ows",
-  "sourceVersion": "retrieved-2026-09-21",
+  "sourceVersion": "retrieved-2026-09-22",
   "officialZones": 59,
   "officialIdentifiers": [
     "01N",
