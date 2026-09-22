@@ -1,3 +1,4 @@
+import { speciesById } from "../../../../lib/hunt/coverage";
 import { overlayLayersFor } from "../../../../lib/hunt/exploration/overlay-layers";
 import { fetchZoneGeometry, parseBounds } from "../../../../lib/hunt/zone-geometry";
 import { COVERAGE_ROADMAP, layerById, officialTermPlural } from "../../../../lib/hunt/zone-layers";
@@ -39,7 +40,13 @@ export async function GET(request: Request): Promise<Response> {
   }
 
   const zoom = Number(url.searchParams.get("zoom") ?? 5);
-  const result = await fetchZoneGeometry(bounds, zoom);
+  /* A species-scoped jurisdiction is drawn in the geography of the species in
+     hand. An unknown species is ignored rather than refused: the map still
+     draws, in the default geography, exactly as it did before the parameter
+     existed. */
+  const asked = url.searchParams.get("species") ?? undefined;
+  const speciesId = asked && speciesById(asked) ? asked : undefined;
+  const result = await fetchZoneGeometry(bounds, zoom, fetch, { speciesId });
   const describe = (id: string) => {
     const layer = layerById(id);
     return layer

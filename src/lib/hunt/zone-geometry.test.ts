@@ -4,7 +4,7 @@ import {
   boundsIntersect, clearZoneGeometryCache, fetchLayerGeometry, fetchZoneGeometry,
   layersForBounds, parseBounds, toleranceForZoom, type BoundingBox,
 } from "./zone-geometry.ts";
-import { COVERAGE_ROADMAP, layerForPoint, ZONE_LAYERS, zoneCoverage, zoneDisplayLabel } from "./zone-layers.ts";
+import { COVERAGE_ROADMAP, ZONE_LAYERS, layerForPoint, zoneCoverage, zoneDisplayLabel } from "./zone-layers.ts";
 import { resolveOntarioWmuFromOfficialGis } from "./zone.ts";
 
 const ONTARIO = ZONE_LAYERS[0];
@@ -408,4 +408,44 @@ test("a stored path that fails twice still falls back to the authority", async (
   assert.equal(result.status, "OK");
   assert.equal(stored.calls(), 2);
   assert.ok(authorityCalls.length > 0, "the authority answers when the store cannot");
+});
+
+test("a species-scoped jurisdiction is drawn in the geography of the species asked about", () => {
+  /*
+   * Newfoundland's authority writes moose, caribou and black bear seasons in
+   * three different sets of management areas. Drawing the default geography
+   * under a caribou answer would put the wrong official boundary beneath a
+   * right answer, so the species has to reach the drawing path. Absent, the
+   * map draws exactly what it drew before the option existed.
+   */
+  const overNewfoundland = { west: -59.5, south: 46.6, east: -52.5, north: 51.7 };
+  /* Québec's extent reaches Labrador, so the box can hold its layer too; this
+     test is about which of Newfoundland's three geographies is drawn. */
+  const drawn = (speciesId?: string) =>
+    layersForBounds(overNewfoundland, speciesId ? { speciesId } : {})
+      .map((layer) => layer.id).filter((id) => id.startsWith("layer:ca-nl-")).sort();
+
+  const moose = ZONE_LAYERS.find((layer) => layer.id === "layer:ca-nl-moose-area")!;
+  const caribou = ZONE_LAYERS.find((layer) => layer.id === "layer:ca-nl-caribou-area")!;
+  const bear = ZONE_LAYERS.find((layer) => layer.id === "layer:ca-nl-bear-area")!;
+  const was = [moose.serving, caribou.serving, bear.serving];
+  moose.serving = true; caribou.serving = true; bear.serving = true;
+  try {
+    // The geography its hunters think of as "the areas" is drawn before a species is chosen.
+    assert.deepEqual(drawn(), ["layer:ca-nl-moose-area"]);
+    assert.deepEqual(drawn("species:moose"), ["layer:ca-nl-moose-area"]);
+
+    // Choosing another species swaps the geography rather than stacking all three.
+    assert.deepEqual(drawn("species:american-black-bear"), ["layer:ca-nl-bear-area"]);
+    assert.ok(!drawn("species:american-black-bear").includes("layer:ca-nl-moose-area"),
+      "moose areas must not sit under a black bear answer");
+
+    /* A species none of its geographies covers draws none of them: the province
+       has no official boundary for that species to show, and showing another
+       species' areas would be a claim it does not support. The jurisdiction's
+       own answer still says UNKNOWN through the regulatory engine. */
+    assert.deepEqual(drawn("species:ruffed-grouse"), []);
+  } finally {
+    [moose.serving, caribou.serving, bear.serving] = was;
+  }
 });

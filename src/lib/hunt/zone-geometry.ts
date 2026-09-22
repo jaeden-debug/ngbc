@@ -110,7 +110,22 @@ export function boundsIntersect(box: BoundingBox, layer: ZoneLayer): boolean {
 export function layersForBounds(box: BoundingBox, options: { speciesId?: string } = {}): ZoneLayer[] {
   return ZONE_LAYERS.filter((layer) =>
     layer.serving && (Boolean(layer.endpoint) || layer.mapGeometry === "stored") && boundsIntersect(box, layer) &&
-    (!layer.speciesScope || layer.drawnByDefault || (options.speciesId !== undefined && layer.speciesScope.includes(options.speciesId))));
+    drawnForSpecies(layer, options.speciesId));
+}
+
+/*
+ * Which of a jurisdiction's geographies to draw. `drawnByDefault` means what it
+ * says — drawn BEFORE a species is chosen — so once one is, the geography the
+ * authority writes that species' seasons in replaces it rather than sitting
+ * under it. Newfoundland is the case: its moose, caribou and black bear areas
+ * are three different sets of boundaries, and leaving moose areas beneath a
+ * caribou answer would put the wrong official boundary under a right answer.
+ * A jurisdiction with one geography for everything is unaffected either way.
+ */
+function drawnForSpecies(layer: ZoneLayer, speciesId: string | undefined): boolean {
+  if (!layer.speciesScope) return true;
+  if (speciesId === undefined) return layer.drawnByDefault === true;
+  return layer.speciesScope.includes(speciesId);
 }
 
 type Position = [number, number];
@@ -629,8 +644,18 @@ export async function fetchZoneGeometry(
   box: BoundingBox,
   zoom: number,
   fetcher: typeof fetch = fetch,
+  /*
+   * The species being asked about, where one is chosen. A jurisdiction whose
+   * authority writes its seasons in species-specific geography — Newfoundland's
+   * separate moose, caribou and black bear areas — must be drawn in the
+   * geography of the species in hand. Without it only the layer its hunters
+   * think of as "the units" is drawn, so choosing caribou would leave moose
+   * areas on the map beneath a caribou answer: the wrong official boundary
+   * under a right answer. Absent, the map draws exactly what it drew before.
+   */
+  options: { speciesId?: string } = {},
 ): Promise<ZoneGeometryResult> {
-  const layers = layersForBounds(box);
+  const layers = layersForBounds(box, options);
   if (!layers.length) {
     return {
       status: "EMPTY",
