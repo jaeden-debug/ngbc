@@ -189,7 +189,7 @@ test("representative Ontario, Manitoba and Alberta zones read as the authority n
 
 test("10. an unsupported or future jurisdiction is shown raw, never given a name", () => {
   for (const input of [
-    { designation: "GMU 12", jurisdictionId: "jurisdiction:us-co" },
+    { designation: "GMU 12", jurisdictionId: "jurisdiction:us-nm" },
     { designation: "226", jurisdictionId: "jurisdiction:ca-bc" },
     { designation: "7-15", layerId: "layer:ca-bc-mu" },
   ]) {
@@ -201,9 +201,9 @@ test("10. an unsupported or future jurisdiction is shown raw, never given a name
       assert.equal(presented.termShort, null);
     }
   }
-  assert.equal(presentZoneById("management_zone:us-co-gmu-12", "en-CA", "GMU 12").fullLabel, "GMU 12");
+  assert.equal(presentZoneById("management_zone:us-nm-gmu-12", "en-CA", "GMU 12").fullLabel, "GMU 12");
   // The pre-existing fallback for a layer without a profile is unchanged.
-  assert.equal(zoneDisplayLabel({ jurisdictionId: "jurisdiction:us-co" as never, officialTermShort: "GMU" }, "12"), "GMU 12");
+  assert.equal(zoneDisplayLabel({ jurisdictionId: "jurisdiction:us-nm" as never, officialTermShort: "GMU" }, "12"), "GMU 12");
 });
 
 /* ── Locale never reaches a spatial or regulatory decision ─────────────── */

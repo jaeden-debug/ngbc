@@ -1,0 +1,66 @@
+{
+  "outside": [
+    [
+      "Wyoming, Cheyenne",
+      41.14,
+      -104.82
+    ],
+    [
+      "Utah, east of Vernal",
+      40.4,
+      -109.2
+    ],
+    [
+      "New Mexico, Taos",
+      36.41,
+      -105.57
+    ],
+    [
+      "Kansas, Goodland",
+      39.35,
+      -101.71
+    ],
+    [
+      "Nebraska, Sidney",
+      41.14,
+      -102.98
+    ],
+    [
+      "Oklahoma panhandle",
+      36.8,
+      -102.5
+    ]
+  ],
+  "special": [
+    [
+      "Vail (GMU 45)",
+      39.64,
+      -106.37
+    ],
+    [
+      "Durango (GMU 75)",
+      37.27,
+      -107.88
+    ],
+    [
+      "Denver",
+      39.74,
+      -104.99
+    ],
+    [
+      "Rocky Mountain National Park",
+      40.34,
+      -105.68
+    ],
+    [
+      "Grand Junction",
+      39.06,
+      -108.55
+    ],
+    [
+      "Colorado Springs",
+      38.83,
+      -104.82
+    ]
+  ]
+}

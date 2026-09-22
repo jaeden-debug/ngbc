@@ -10,7 +10,7 @@ import { isCertifiedSpecies } from "../../lib/hunt/regulatory/registry";
 import { contentRepository } from "../../lib/content/repository";
 import { COVERAGE_ROADMAP } from "../../lib/hunt/zone-layers";
 import { HUNT_DEFAULT_TIME_ZONE, jurisdictionTodayIso } from "../../lib/hunt/date";
-import { canadaCoverageReport, regulatoryJurisdictionsForSpecies } from "../../lib/hunt/canada/report";
+import { northAmericaCoverageReport, regulatoryJurisdictionsForSpecies } from "../../lib/hunt/north-america/report";
 import { absoluteUrl, SITE_NAME } from "../../lib/site";
 import { getSpeciesPrimaryMediaMap } from "../../lib/species-media/repository";
 
@@ -98,7 +98,7 @@ export default async function HuntPage({ searchParams }: Props) {
   const primaryMedia = await getSpeciesPrimaryMediaMap(resources
     .filter((resource) => resource.type === "species")
     .map((resource) => resource.speciesProfile.speciesId));
-  const coverageReport = canadaCoverageReport();
+  const coverageReport = northAmericaCoverageReport();
   const speciesOptions: SpeciesSelectorOption[] = await Promise.all(resources
     .filter((resource) => resource.type === "species")
     .map(async (resource) => {

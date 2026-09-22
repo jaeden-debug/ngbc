@@ -3,7 +3,7 @@ import Link from "next/link";
 import Breadcrumbs from "../../../components/Breadcrumbs";
 import HuntNav from "../../../components/hunt/HuntNav";
 import { contentRepository } from "../../../lib/content/repository";
-import { canadaCoverageReport, regulatoryJurisdictionsForSpecies } from "../../../lib/hunt/canada/report";
+import { northAmericaCoverageReport, regulatoryJurisdictionsForSpecies } from "../../../lib/hunt/north-america/report";
 import { currentSpeciesMediaAdmin } from "../../../lib/species-media/admin-auth";
 import { getSpeciesPrimaryMediaMap } from "../../../lib/species-media/repository";
 import SpeciesLibrary, { type LibrarySpecies } from "./SpeciesLibrary";
@@ -30,7 +30,7 @@ export const dynamic = "force-dynamic";
  * `/hunt` already uses to build its selector.
  */
 export default async function SpeciesLibraryPage() {
-  const coverageReport = canadaCoverageReport();
+  const coverageReport = northAmericaCoverageReport();
   const resources = (await contentRepository.getPublishedResources({ locale: "en-CA" }))
     .filter((resource) => resource.type === "species");
   const [mediaBySpecies, admin] = await Promise.all([

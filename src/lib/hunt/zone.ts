@@ -1,6 +1,6 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { ZoneResolution } from "./types.ts";
-import { designationOfRaw, servingLayersAt, ZONE_LAYERS, zoneIdFor, type ZoneLayer } from "./zone-layers.ts";
+import { designationOfRaw, isLocationLayer, servingLayersAt, ZONE_LAYERS, zoneIdFor, type ZoneLayer } from "./zone-layers.ts";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { defaultSupabaseServerClient, SupabaseServerConfigurationError } from "../supabase/server.ts";
 
@@ -221,6 +221,19 @@ export async function resolveOntarioWmu(
   return resolveOntarioWmuFromOfficialGis(latitude, longitude, fetcher);
 }
 
+/**
+ * Place a point in one particular layer — a species-scoped geography such as
+ * Montana's upland game bird districts — asked of the layer's own authority.
+ */
+export async function resolveInLayer(
+  layer: ZoneLayer,
+  latitude: number,
+  longitude: number,
+  fetcher: typeof fetch = fetch,
+): Promise<ZoneResolution> {
+  return resolveLayerFromOfficialGis(layer, latitude, longitude, fetcher);
+}
+
 /* ── Every served jurisdiction ─────────────────────────────────────────── */
 
 interface ArcgisPointCollection {
@@ -244,6 +257,10 @@ export async function resolveLayerFromOfficialGis(
   fetcher: typeof fetch = fetch,
 ): Promise<ZoneResolution> {
   const sourceId = layer.sourceId;
+  // An impossible coordinate is answered here, never sent to an authority.
+  if (!Number.isFinite(latitude) || !Number.isFinite(longitude) || Math.abs(latitude) > 90 || Math.abs(longitude) > 180) {
+    return { status: "UNKNOWN", sourceId, message: "The coordinate is invalid; North Ground will not infer a zone." };
+  }
   if (!layer.endpoint || !layer.nameField) {
     return { status: "UNKNOWN", sourceId, message: `North Ground has no reviewed point service for ${layer.jurisdictionName}.` };
   }
@@ -278,7 +295,11 @@ export async function resolveLayerFromOfficialGis(
       };
     }
     const feature = named[0];
-    const designation = designationOfRaw(layer, feature.properties![layer.nameField])!.toUpperCase();
+    /* Unit codes are compared upper-case ("10a" is 10A). A designation made
+       of words — Montana's "East of the Continental Divide" — is the
+       authority's own name for the area and is kept as it writes it. */
+    const raw = designationOfRaw(layer, feature.properties![layer.nameField])!;
+    const designation = /\s/.test(raw) ? raw : raw.toUpperCase();
     if (!feature.geometry || !["Polygon", "MultiPolygon"].includes(feature.geometry.type)) {
       return { status: "UNKNOWN", sourceId, jurisdictionId: layer.jurisdictionId, message: `The official ${layer.officialTerm} response was incomplete.` };
     }
@@ -406,8 +427,13 @@ export async function resolveZoneFromOfficialGis(
   latitude: number,
   longitude: number,
   fetcher: typeof fetch = fetch,
+  only?: (layer: ZoneLayer) => boolean,
 ): Promise<ZoneResolution> {
-  const layers = servingLayersAt(latitude, longitude).filter((layer) => layer.endpoint || layer.wfs);
+  /* Location-only questions are asked of each jurisdiction's location layer.
+     A state's species-scoped geographies (Montana's upland districts) overlap
+     its general one by design and are asked only for their species. */
+  const layers = servingLayersAt(latitude, longitude)
+    .filter((layer) => (layer.endpoint || layer.wfs) && isLocationLayer(layer) && (only?.(layer) ?? true));
   if (!layers.length) {
     return { status: "UNKNOWN", sourceId: "source:ca-on-wmu-service", message: "North Ground does not hold official hunting-zone boundaries for this point." };
   }
@@ -450,12 +476,37 @@ export async function resolveZone(
   supabaseClient: () => SupabaseClient = defaultSupabaseServerClient,
 ): Promise<ZoneResolution> {
   const provider = process.env.SPATIAL_PROVIDER?.trim() || "official-gis";
+  /* Layers North Ground holds no copy of are always asked of their authority.
+     Where the point is only inside such layers — anywhere in a U.S. state —
+     the registry is not asked at all; where extents meet (the 49th parallel),
+     both are asked and a zone from each is a conflict, never a choice. */
+  const here = servingLayersAt(latitude, longitude);
+  const live = here.filter((layer) => layer.resolution === "LIVE_SERVICE" && isLocationLayer(layer));
+  const registryHere = here.some((layer) => layer.resolution !== "LIVE_SERVICE");
+  const liveResult = live.length
+    ? resolveZoneFromOfficialGis(latitude, longitude, fetcher, (layer) => layer.resolution === "LIVE_SERVICE")
+    : null;
   let result: ZoneResolution | null = null;
+  if (live.length && !registryHere) return await liveResult!;
   if (provider === "supabase") {
     result = await resolveOntarioWmuFromSupabase(latitude, longitude, supabaseClient);
     if (result.status === "PROVIDER_ERROR" && process.env.SPATIAL_FALLBACK_PROVIDER === "official-gis") result = null;
   }
-  result ??= await resolveZoneFromOfficialGis(latitude, longitude, fetcher);
+  result ??= await resolveZoneFromOfficialGis(latitude, longitude, fetcher, (layer) => layer.resolution !== "LIVE_SERVICE");
+  if (liveResult) {
+    const fromLive = await liveResult;
+    if (fromLive.status === "RESOLVED" && result.status === "RESOLVED") {
+      return {
+        status: "UNKNOWN",
+        sourceId: result.sourceId,
+        message: "Two jurisdictions' official services both claim this point; human verification is required.",
+      };
+    }
+    if (fromLive.status === "RESOLVED") return fromLive;
+    /* The registry did not place it and the live service could not be asked:
+       the honest answer is that the zone could not be established. */
+    if (result.status !== "RESOLVED" && fromLive.status === "PROVIDER_ERROR") return fromLive;
+  }
   if (result.status !== "RESOLVED" && !result.jurisdictionId) {
     /* Registered layers count whether or not they are served: Québec's layer is
        not yet served, but its extent is still evidence the point may be in

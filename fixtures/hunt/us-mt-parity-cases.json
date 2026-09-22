@@ -1,0 +1,76 @@
+{
+  "outside": [
+    [
+      "Idaho, Moscow",
+      46.73,
+      -117.0
+    ],
+    [
+      "Wyoming, Sheridan",
+      44.8,
+      -106.96
+    ],
+    [
+      "North Dakota, west of Dickinson",
+      47.0,
+      -103.4
+    ],
+    [
+      "Alberta, Lethbridge",
+      49.69,
+      -112.84
+    ],
+    [
+      "South Dakota, northwest corner",
+      45.6,
+      -103.7
+    ],
+    [
+      "Yellowstone National Park, Wyoming",
+      44.6,
+      -110.5
+    ]
+  ],
+  "special": [
+    [
+      "Bozeman",
+      45.68,
+      -111.04
+    ],
+    [
+      "Missoula",
+      46.87,
+      -113.99
+    ],
+    [
+      "Butte",
+      46.0,
+      -112.53
+    ],
+    [
+      "Helena",
+      46.59,
+      -112.04
+    ],
+    [
+      "Glacier National Park",
+      48.7,
+      -113.8
+    ],
+    [
+      "Blackfeet Reservation, Browning",
+      48.56,
+      -113.01
+    ],
+    [
+      "Crow Reservation, Crow Agency",
+      45.6,
+      -107.46
+    ],
+    [
+      "Yellowstone National Park, Montana portion",
+      44.95,
+      -110.7
+    ]
+  ]
+}

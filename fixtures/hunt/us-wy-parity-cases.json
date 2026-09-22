@@ -1,0 +1,71 @@
+{
+  "outside": [
+    [
+      "Montana, Bozeman",
+      45.68,
+      -111.04
+    ],
+    [
+      "Idaho, Driggs",
+      43.72,
+      -111.11
+    ],
+    [
+      "Colorado, Fort Collins",
+      40.58,
+      -105.08
+    ],
+    [
+      "Utah, Evanston border",
+      40.9,
+      -111.1
+    ],
+    [
+      "South Dakota, Rapid City",
+      44.08,
+      -103.23
+    ],
+    [
+      "Nebraska, Scottsbluff",
+      41.87,
+      -103.66
+    ]
+  ],
+  "special": [
+    [
+      "Jackson (Elk Area 84)",
+      43.48,
+      -110.76
+    ],
+    [
+      "Cheyenne (Elk Area 3)",
+      41.14,
+      -104.82
+    ],
+    [
+      "National Elk Refuge (Elk Area 77)",
+      43.52,
+      -110.72
+    ],
+    [
+      "Grand Teton National Park",
+      43.79,
+      -110.68
+    ],
+    [
+      "Yellowstone National Park",
+      44.6,
+      -110.5
+    ],
+    [
+      "Wind River Reservation, Fort Washakie",
+      43.0,
+      -108.88
+    ],
+    [
+      "Casper",
+      42.87,
+      -106.31
+    ]
+  ]
+}

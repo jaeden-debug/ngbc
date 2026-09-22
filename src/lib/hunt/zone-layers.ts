@@ -4,6 +4,7 @@ import certifiedUnits from "../../../content/regulatory/ca-on-certified-units.js
 import manitobaCertifiedUnits from "../../../content/regulatory/ca-mb-certified-units.json" with { type: "json" };
 import albertaCertifiedUnits from "../../../content/regulatory/ca-ab-certified-units.json" with { type: "json" };
 import quebecCertifiedUnits from "../../../content/regulatory/ca-qc-certified-units.json" with { type: "json" };
+import { US_ZONE_LAYERS } from "./united-states/layers.ts";
 
 /**
  * Which hunting-zone geography North Ground can actually draw, and how far the
@@ -21,6 +22,47 @@ import quebecCertifiedUnits from "../../../content/regulatory/ca-qc-certified-un
  */
 
 export type ZoneCoverageStatus = "VERIFIED" | "PARTIAL" | "IN_DEVELOPMENT" | "UNAVAILABLE";
+
+/**
+ * What a published boundary is in law, as its own authority describes it.
+ *
+ * Government GIS can be official and useful without being the legal boundary.
+ * Wyoming says its hunt-area maps are general reference and the written
+ * descriptions control; Alberta calls its layer a small-scale approximation of
+ * the units described in regulation. North Ground certifies that its copy
+ * matches the authority's service — never that the service is the law — and
+ * every answer that rests on a layer carries the layer's own standing.
+ */
+export type LegalStandingKind =
+  /** The geometry itself is the legal boundary. */
+  | "CONTROLLING_GEOMETRY"
+  /** Drawn by the authority from a written legal description, which controls where they differ. */
+  | "DERIVED_FROM_LEGAL_DESCRIPTION"
+  /** A planning or reference map the authority says not to rely on for the legal boundary. */
+  | "PLANNING_GUIDANCE";
+
+export interface LegalStanding {
+  kind: LegalStandingKind;
+  /** The authority's own words about its map, quoted. */
+  statedAs: string;
+  /** Where the controlling text is, when it is not the geometry. */
+  controllingText?: { title: string; url: string };
+}
+
+/**
+ * The regulatory period a layer's geometry is certified for.
+ *
+ * Unit boundaries can move between regulatory years while the unit keeps its
+ * number. A date outside this period is never answered with this geometry, so
+ * a 2027 hunt cannot silently inherit a 2026 polygon. Absent means the
+ * authority publishes one continuing layer with no stated period (Canada's
+ * provincial layers), which is certified as it stands.
+ */
+export interface GeometryPeriod {
+  from: string;
+  to?: string;
+  statedAs: string;
+}
 
 export interface ZoneLayer {
   id: string;
@@ -94,6 +136,43 @@ export interface ZoneLayer {
    * envelope query. Wider views are asked in tiles (see `queryTiles`).
    */
   maxQueryLongitudeSpan?: number;
+  /**
+   * What this layer's boundaries are in law. Required for every layer outside
+   * the original Canadian four, which state theirs in `coverageNote`.
+   */
+  legalStanding?: LegalStanding;
+  /**
+   * The species whose seasons the authority writes in this layer's units.
+   * Absent: every species the jurisdiction's rules name. Present, a species
+   * outside it is not answered with this layer's zones — Montana's pronghorn
+   * seasons are set by antelope districts, not by deer and elk districts.
+   */
+  speciesScope?: readonly string[];
+  geometryPeriod?: GeometryPeriod;
+  /**
+   * For a species-scoped layer: whether the map draws it before a species is
+   * chosen. True for the one geography a jurisdiction's hunters think of as
+   * "the units" (Montana's deer and elk hunting districts); false for the
+   * others, which appear when their species is chosen.
+   */
+  drawnByDefault?: boolean;
+  /** The jurisdiction's own clock, for provenance dates stamped on its behalf. */
+  timeZone?: string;
+  /**
+   * How a point is placed in this layer. REGISTRY (the default): North Ground's
+   * parity-certified PostGIS copy, with the authority's service as fallback.
+   * LIVE_SERVICE: the authority's own service, asked at request time, with no
+   * copy of the geometry stored by North Ground. U.S. state layers are
+   * LIVE_SERVICE: their GIS is published without an open licence, so North
+   * Ground reads it where the state serves it rather than redistributing a copy
+   * (owner decision, 2026-09-21).
+   */
+  resolution?: "REGISTRY" | "LIVE_SERVICE";
+}
+
+/** Whether the layer answers "which zone is this?" from location alone. */
+export function isLocationLayer(layer: Pick<ZoneLayer, "speciesScope" | "drawnByDefault">): boolean {
+  return !layer.speciesScope || layer.drawnByDefault === true;
 }
 
 /** The authority's term for several of its areas ("Wildlife Management Units", "zones de chasse"). */
@@ -236,7 +315,50 @@ export const ZONE_LAYERS: ZoneLayer[] = [
        the map draws North Ground's stored drawings of the certified copy. */
     mapGeometry: "stored",
   },
+  /* United States, first wave. Described in `united-states/layers.ts`; each is
+     answered by its state's own live service, and served only once certified. */
+  ...US_ZONE_LAYERS,
 ];
+
+/**
+ * Whether a layer's zones may be used to answer this species on this date.
+ *
+ * Two guards, each an honest "not with this geometry" rather than a guess:
+ * the species must be one the authority writes in these units, and the date
+ * must fall in the period the geometry is certified for.
+ */
+export function layerApplicability(
+  layer: Pick<ZoneLayer, "speciesScope" | "geometryPeriod" | "officialTerm" | "jurisdictionName">,
+  speciesId: string,
+  date: string,
+): { applies: true } | { applies: false; reason: "SPECIES_OUT_OF_SCOPE" | "OUTSIDE_GEOMETRY_PERIOD"; message: string } {
+  if (layer.speciesScope && !layer.speciesScope.includes(speciesId)) {
+    return {
+      applies: false,
+      reason: "SPECIES_OUT_OF_SCOPE",
+      message:
+        `${layer.jurisdictionName} does not set this species' seasons by ${layer.officialTerm}. It uses a different ` +
+        "geography for it, which North Ground has not certified, so it will not answer from this one.",
+    };
+  }
+  const period = layer.geometryPeriod;
+  if (period && (date < period.from || (period.to !== undefined && date > period.to))) {
+    return {
+      applies: false,
+      reason: "OUTSIDE_GEOMETRY_PERIOD",
+      message:
+        `The ${layer.officialTerm} boundaries North Ground holds are certified for ${period.statedAs}. The selected date ` +
+        "is outside that period, and boundaries can change between regulatory years even where a unit keeps its number.",
+    };
+  }
+  return { applies: true };
+}
+
+/** The country a jurisdiction belongs to, read from its canonical id ("jurisdiction:us-co" → "US"). */
+export function countryOfJurisdiction(jurisdictionId: string | undefined): "CA" | "US" | undefined {
+  const match = /^jurisdiction:(ca|us)-/.exec(jurisdictionId ?? "");
+  return match ? (match[1].toUpperCase() as "CA" | "US") : undefined;
+}
 
 /**
  * Units that carry at least one certified regulatory rule.
@@ -299,8 +421,39 @@ export function layerById(id: string): ZoneLayer | undefined {
   return ZONE_LAYERS.find((layer) => layer.id === id);
 }
 
+/**
+ * The layer a jurisdiction answers location-only questions in: its general
+ * management geography, or the one species-scoped geography it draws by
+ * default. Canada's jurisdictions have one layer each, which is this one.
+ */
 export function layerForJurisdiction(jurisdictionId: string | undefined): ZoneLayer | undefined {
-  return jurisdictionId ? ZONE_LAYERS.find((layer) => layer.jurisdictionId === jurisdictionId) : undefined;
+  if (!jurisdictionId) return undefined;
+  const layers = ZONE_LAYERS.filter((layer) => layer.jurisdictionId === jurisdictionId);
+  return layers.find(isLocationLayer) ?? layers[0];
+}
+
+/**
+ * The served layer a jurisdiction writes this species' seasons in: one scoped
+ * to the species if the authority publishes one, else its general geography.
+ * Undefined when the only served geography is scoped to other species — the
+ * honest answer is then that North Ground holds no geography for it.
+ */
+export function speciesLayerFor(jurisdictionId: string | undefined, speciesId: string): ZoneLayer | undefined {
+  if (!jurisdictionId) return undefined;
+  const served = ZONE_LAYERS.filter((layer) => layer.jurisdictionId === jurisdictionId && layer.serving);
+  return served.find((layer) => layer.speciesScope?.includes(speciesId)) ?? served.find((layer) => !layer.speciesScope);
+}
+
+/**
+ * The layer a canonical zone id was minted in, by its prefix. The longest
+ * matching prefix wins, so a state with several geographies ("us-wy-elk-area-",
+ * "us-wy-deer-area-") can never have one mistaken for another.
+ */
+export function layerOfZoneId(zoneId: string | undefined): ZoneLayer | undefined {
+  if (!zoneId) return undefined;
+  return ZONE_LAYERS
+    .filter((layer) => zoneId.startsWith(layer.zoneIdPrefix))
+    .sort((a, b) => b.zoneIdPrefix.length - a.zoneIdPrefix.length)[0];
 }
 
 /**
@@ -312,11 +465,12 @@ export function layerForJurisdiction(jurisdictionId: string | undefined): ZoneLa
  * registered at all, is not presented, and must not be dressed in another
  * jurisdiction's terms.
  */
-export function layerForResolution(resolution: { status: string; jurisdictionId?: string }):
+export function layerForResolution(resolution: { status: string; jurisdictionId?: string; zoneId?: string }):
   | { kind: "SERVING"; layer: ZoneLayer }
   | { kind: "NOT_SERVING"; layer: ZoneLayer }
   | { kind: "UNREGISTERED" } {
-  const layer = layerForJurisdiction(resolution.jurisdictionId);
+  // A zone names its own layer; a state can hold several.
+  const layer = layerOfZoneId(resolution.zoneId) ?? layerForJurisdiction(resolution.jurisdictionId);
   if (!layer) return { kind: "UNREGISTERED" };
   return layer.serving ? { kind: "SERVING", layer } : { kind: "NOT_SERVING", layer };
 }

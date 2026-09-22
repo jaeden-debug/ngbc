@@ -1,0 +1,3766 @@
+{
+  "layer": "layer:us-mt-upland",
+  "jurisdiction": "jurisdiction:us-mt",
+  "authority": "Montana Fish, Wildlife & Parks",
+  "service": "https://fwp-gis.mt.gov/arcgis/rest/services/admbnd/huntingDistricts/MapServer/31",
+  "sourceVersion": "huntingDistricts/MapServer/31 (no year field; checked 2026-09-21)",
+  "resolution": "LIVE_SERVICE (no copy stored)",
+  "legalStanding": "DERIVED_FROM_LEGAL_DESCRIPTION",
+  "certifiedOn": "2026-09-21",
+  "units": 2,
+  "quarantined": [],
+  "points": 263,
+  "counts": {
+    "across": 2,
+    "boundary": 240,
+    "edge": 2,
+    "inside": 2,
+    "invalid": 3,
+    "outside": 6,
+    "special": 8
+  },
+  "overlapsInAuthorityGeometry": 0,
+  "disagreements": 0,
+  "latencyMs": {
+    "authorityMedian": 102,
+    "authorityP90": 108,
+    "productionMedian": 393,
+    "productionP90": 412
+  },
+  "results": [
+    {
+      "kind": "across",
+      "label": "across East of the Continental Divide",
+      "latitude": 49.0100065,
+      "longitude": -106.5037818,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across West of the Continental Divide",
+      "latitude": 46.6665401,
+      "longitude": -114.3586324,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 1 across East of the Continental Divide",
+      "latitude": 48.8774282,
+      "longitude": -104.0465128,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 1 across West of the Continental Divide",
+      "latitude": 48.9647924,
+      "longitude": -114.4306086,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 1 inside East of the Continental Divide",
+      "latitude": 48.8737924,
+      "longitude": -104.0512858,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 1 inside West of the Continental Divide",
+      "latitude": 48.9588342,
+      "longitude": -114.4299021,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 2 across East of the Continental Divide",
+      "latitude": 49.0018765,
+      "longitude": -109.0358583,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 2 across West of the Continental Divide",
+      "latitude": 47.941084,
+      "longitude": -116.0059543,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 2 inside East of the Continental Divide",
+      "latitude": 48.9981616,
+      "longitude": -109.0311467,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 2 inside West of the Continental Divide",
+      "latitude": 47.9398501,
+      "longitude": -116.0000825,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 3 across East of the Continental Divide",
+      "latitude": 48.6436715,
+      "longitude": -113.3905026,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 3 across West of the Continental Divide",
+      "latitude": 47.8164773,
+      "longitude": -115.8494226,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 3 inside East of the Continental Divide",
+      "latitude": 48.642283,
+      "longitude": -113.3846655,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 3 inside West of the Continental Divide",
+      "latitude": 47.8155743,
+      "longitude": -115.8434909,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 4 across East of the Continental Divide",
+      "latitude": 48.2859601,
+      "longitude": -113.3052254,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 4 across West of the Continental Divide",
+      "latitude": 47.5939284,
+      "longitude": -115.6921409,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 4 inside East of the Continental Divide",
+      "latitude": 48.28485,
+      "longitude": -113.2993289,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 4 inside West of the Continental Divide",
+      "latitude": 47.5938505,
+      "longitude": -115.6861414,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 5 across East of the Continental Divide",
+      "latitude": 48.1953979,
+      "longitude": -113.2361222,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 5 across West of the Continental Divide",
+      "latitude": 47.4564359,
+      "longitude": -115.6495375,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 5 inside East of the Continental Divide",
+      "latitude": 48.1943536,
+      "longitude": -113.2302138,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 5 inside West of the Continental Divide",
+      "latitude": 47.4569499,
+      "longitude": -115.6435595,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 6 across East of the Continental Divide",
+      "latitude": 48.1508549,
+      "longitude": -113.1402388,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 6 across West of the Continental Divide",
+      "latitude": 47.3695589,
+      "longitude": -115.5905805,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 6 inside East of the Continental Divide",
+      "latitude": 48.1498345,
+      "longitude": -113.1343262,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 6 inside West of the Continental Divide",
+      "latitude": 47.3704802,
+      "longitude": -115.5846517,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 7 across East of the Continental Divide",
+      "latitude": 48.1447848,
+      "longitude": -113.0603708,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 7 across West of the Continental Divide",
+      "latitude": 47.210737,
+      "longitude": -115.295837,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 7 inside East of the Continental Divide",
+      "latitude": 48.1437576,
+      "longitude": -113.0544594,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 7 inside West of the Continental Divide",
+      "latitude": 47.2127396,
+      "longitude": -115.290181,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 8 across East of the Continental Divide",
+      "latitude": 48.113567,
+      "longitude": -112.9945701,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 8 across West of the Continental Divide",
+      "latitude": 46.9901791,
+      "longitude": -115.0633935,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 8 inside East of the Continental Divide",
+      "latitude": 48.1125573,
+      "longitude": -112.9886557,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 8 inside West of the Continental Divide",
+      "latitude": 46.9937287,
+      "longitude": -115.0585561,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 9 across East of the Continental Divide",
+      "latitude": 48.0384334,
+      "longitude": -112.952668,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 9 across West of the Continental Divide",
+      "latitude": 46.8210177,
+      "longitude": -114.9008826,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 9 inside East of the Continental Divide",
+      "latitude": 48.0374845,
+      "longitude": -112.9467435,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 9 inside West of the Continental Divide",
+      "latitude": 46.8256079,
+      "longitude": -114.8970187,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 10 across East of the Continental Divide",
+      "latitude": 47.9732642,
+      "longitude": -112.9000479,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 10 across West of the Continental Divide",
+      "latitude": 46.7661711,
+      "longitude": -114.7828561,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 10 inside East of the Continental Divide",
+      "latitude": 47.9723666,
+      "longitude": -112.8941154,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 10 inside West of the Continental Divide",
+      "latitude": 46.7712273,
+      "longitude": -114.7796258,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 11 across East of the Continental Divide",
+      "latitude": 47.889867,
+      "longitude": -112.9516406,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 11 across West of the Continental Divide",
+      "latitude": 46.6947942,
+      "longitude": -114.7663799,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 11 inside East of the Continental Divide",
+      "latitude": 47.8890517,
+      "longitude": -112.9456963,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 11 inside West of the Continental Divide",
+      "latitude": 46.7000105,
+      "longitude": -114.7634151,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 12 across East of the Continental Divide",
+      "latitude": 47.6878459,
+      "longitude": -112.9109675,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 12 across West of the Continental Divide",
+      "latitude": 46.719025,
+      "longitude": -114.6406772,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 12 inside East of the Continental Divide",
+      "latitude": 47.6872105,
+      "longitude": -112.9050012,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 12 inside West of the Continental Divide",
+      "latitude": 46.7245216,
+      "longitude": -114.6382714,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 13 across East of the Continental Divide",
+      "latitude": 47.487053,
+      "longitude": -112.9212056,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 13 across West of the Continental Divide",
+      "latitude": 46.6349459,
+      "longitude": -114.5777928,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 13 inside East of the Continental Divide",
+      "latitude": 47.4866041,
+      "longitude": -112.9152224,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 13 inside West of the Continental Divide",
+      "latitude": 46.6406409,
+      "longitude": -114.5759039,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 14 across East of the Continental Divide",
+      "latitude": 47.3397852,
+      "longitude": -112.8860942,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 14 across West of the Continental Divide",
+      "latitude": 46.6564792,
+      "longitude": -114.404847,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 14 inside East of the Continental Divide",
+      "latitude": 47.3394714,
+      "longitude": -112.8801024,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 14 inside West of the Continental Divide",
+      "latitude": 46.6624117,
+      "longitude": -114.4039497,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 15 across East of the Continental Divide",
+      "latitude": 47.2918417,
+      "longitude": -112.786982,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 15 across West of the Continental Divide",
+      "latitude": 46.572508,
+      "longitude": -114.3302405,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 15 inside East of the Continental Divide",
+      "latitude": 47.2915686,
+      "longitude": -112.7809882,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 15 inside West of the Continental Divide",
+      "latitude": 46.5784956,
+      "longitude": -114.3298562,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 16 across East of the Continental Divide",
+      "latitude": 47.2245683,
+      "longitude": -112.6345266,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 16 across West of the Continental Divide",
+      "latitude": 46.4545327,
+      "longitude": -114.3815434,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 16 inside East of the Continental Divide",
+      "latitude": 47.224354,
+      "longitude": -112.6285305,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 16 inside West of the Continental Divide",
+      "latitude": 46.460501,
+      "longitude": -114.3809275,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 17 across East of the Continental Divide",
+      "latitude": 47.1635346,
+      "longitude": -112.4665111,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 17 across West of the Continental Divide",
+      "latitude": 46.2679705,
+      "longitude": -114.4537964,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 17 inside East of the Continental Divide",
+      "latitude": 47.1633757,
+      "longitude": -112.4605132,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 17 inside West of the Continental Divide",
+      "latitude": 46.2739094,
+      "longitude": -114.4529427,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 18 across East of the Continental Divide",
+      "latitude": 47.067161,
+      "longitude": -112.3483057,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 18 across West of the Continental Divide",
+      "latitude": 46.1624826,
+      "longitude": -114.4660099,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 18 inside East of the Continental Divide",
+      "latitude": 47.0670977,
+      "longitude": -112.342306,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 18 inside West of the Continental Divide",
+      "latitude": 46.1684233,
+      "longitude": -114.4651684,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 19 across East of the Continental Divide",
+      "latitude": 46.9573423,
+      "longitude": -112.4433488,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 19 across West of the Continental Divide",
+      "latitude": 46.1153776,
+      "longitude": -114.504656,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 19 inside East of the Continental Divide",
+      "latitude": 46.957391,
+      "longitude": -112.437349,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 19 inside West of the Continental Divide",
+      "latitude": 46.1212989,
+      "longitude": -114.5036876,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 20 across East of the Continental Divide",
+      "latitude": 46.8450752,
+      "longitude": -112.4882802,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 20 across West of the Continental Divide",
+      "latitude": 46.0385813,
+      "longitude": -114.5013956,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 20 inside East of the Continental Divide",
+      "latitude": 46.8452361,
+      "longitude": -112.4822824,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 20 inside West of the Continental Divide",
+      "latitude": 46.044512,
+      "longitude": -114.5004866,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 21 across East of the Continental Divide",
+      "latitude": 46.7194212,
+      "longitude": -112.466707,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 21 across West of the Continental Divide",
+      "latitude": 45.9675111,
+      "longitude": -114.4082829,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 21 inside East of the Continental Divide",
+      "latitude": 46.7197087,
+      "longitude": -112.4607139,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 21 inside West of the Continental Divide",
+      "latitude": 45.9734877,
+      "longitude": -114.4077535,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 22 across East of the Continental Divide",
+      "latitude": 46.6439598,
+      "longitude": -112.3176123,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 22 across West of the Continental Divide",
+      "latitude": 45.8475397,
+      "longitude": -114.4709971,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 22 inside East of the Continental Divide",
+      "latitude": 46.6443322,
+      "longitude": -112.3116239,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 22 inside West of the Continental Divide",
+      "latitude": 45.8534978,
+      "longitude": -114.4702897,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 23 across East of the Continental Divide",
+      "latitude": 46.4853134,
+      "longitude": -112.3081768,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 23 across West of the Continental Divide",
+      "latitude": 45.7065856,
+      "longitude": -114.4979112,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 23 inside East of the Continental Divide",
+      "latitude": 46.485849,
+      "longitude": -112.3022008,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 23 inside West of the Continental Divide",
+      "latitude": 45.7125399,
+      "longitude": -114.4971719,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 24 across East of the Continental Divide",
+      "latitude": 46.3409173,
+      "longitude": -112.4538388,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 24 across West of the Continental Divide",
+      "latitude": 45.558015,
+      "longitude": -114.4809021,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 24 inside East of the Continental Divide",
+      "latitude": 46.3415833,
+      "longitude": -112.4478759,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 24 inside West of the Continental Divide",
+      "latitude": 45.5639812,
+      "longitude": -114.4802661,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 25 across East of the Continental Divide",
+      "latitude": 46.2332868,
+      "longitude": -112.5986572,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 25 across West of the Continental Divide",
+      "latitude": 45.4840028,
+      "longitude": -114.2711259,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 25 inside East of the Continental Divide",
+      "latitude": 46.234041,
+      "longitude": -112.5927048,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 25 inside West of the Continental Divide",
+      "latitude": 45.4900028,
+      "longitude": -114.2711108,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 26 across East of the Continental Divide",
+      "latitude": 46.0895061,
+      "longitude": -112.4702258,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 26 across West of the Continental Divide",
+      "latitude": 45.640203,
+      "longitude": -114.0399846,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 26 inside East of the Continental Divide",
+      "latitude": 46.0904166,
+      "longitude": -112.4642952,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 26 inside West of the Continental Divide",
+      "latitude": 45.6461626,
+      "longitude": -114.0406802,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 27 across East of the Continental Divide",
+      "latitude": 45.9175321,
+      "longitude": -112.4215437,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 27 across West of the Continental Divide",
+      "latitude": 45.726256,
+      "longitude": -113.9073467,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 27 inside East of the Continental Divide",
+      "latitude": 45.918617,
+      "longitude": -112.4156426,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 27 inside West of the Continental Divide",
+      "latitude": 45.7321463,
+      "longitude": -113.9084887,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 28 across East of the Continental Divide",
+      "latitude": 45.8032585,
+      "longitude": -112.5315259,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 28 across West of the Continental Divide",
+      "latitude": 45.8132341,
+      "longitude": -113.7361305,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 28 inside East of the Continental Divide",
+      "latitude": 45.8044321,
+      "longitude": -112.5256418,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 28 inside West of the Continental Divide",
+      "latitude": 45.8189801,
+      "longitude": -113.7378578,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 29 across East of the Continental Divide",
+      "latitude": 45.8825897,
+      "longitude": -112.664672,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 29 across West of the Continental Divide",
+      "latitude": 45.8911696,
+      "longitude": -113.5354386,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 29 inside East of the Continental Divide",
+      "latitude": 45.8836656,
+      "longitude": -112.6587692,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 29 inside West of the Continental Divide",
+      "latitude": 45.8966743,
+      "longitude": -113.5378258,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 30 across East of the Continental Divide",
+      "latitude": 45.9276953,
+      "longitude": -112.9038503,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 30 across West of the Continental Divide",
+      "latitude": 46.0126375,
+      "longitude": -113.3895748,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 30 inside East of the Continental Divide",
+      "latitude": 45.9286917,
+      "longitude": -112.8979336,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 30 inside West of the Continental Divide",
+      "latitude": 46.0178709,
+      "longitude": -113.3925093,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 31 across East of the Continental Divide",
+      "latitude": 46.0464959,
+      "longitude": -113.0685099,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 31 across West of the Continental Divide",
+      "latitude": 46.0559009,
+      "longitude": -113.1340143,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 31 inside East of the Continental Divide",
+      "latitude": 46.0473632,
+      "longitude": -113.0625729,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 31 inside West of the Continental Divide",
+      "latitude": 46.0607128,
+      "longitude": -113.1375985,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 32 across East of the Continental Divide",
+      "latitude": 46.0154859,
+      "longitude": -113.3299381,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 32 across West of the Continental Divide",
+      "latitude": 45.9432328,
+      "longitude": -112.926811,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 32 inside East of the Continental Divide",
+      "latitude": 46.0163471,
+      "longitude": -113.3240002,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 32 inside West of the Continental Divide",
+      "latitude": 45.9478715,
+      "longitude": -112.9306165,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 33 across East of the Continental Divide",
+      "latitude": 45.9478555,
+      "longitude": -113.5069477,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 33 across West of the Continental Divide",
+      "latitude": 45.8817775,
+      "longitude": -112.694902,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 33 inside East of the Continental Divide",
+      "latitude": 45.9487515,
+      "longitude": -113.501015,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 33 inside West of the Continental Divide",
+      "latitude": 45.8861764,
+      "longitude": -112.6989823,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 34 across East of the Continental Divide",
+      "latitude": 45.8396253,
+      "longitude": -113.6796738,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 34 across West of the Continental Divide",
+      "latitude": 45.8083652,
+      "longitude": -112.5407691,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 34 inside East of the Continental Divide",
+      "latitude": 45.8405876,
+      "longitude": -113.6737515,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 34 inside West of the Continental Divide",
+      "latitude": 45.8126585,
+      "longitude": -112.5449604,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 35 across East of the Continental Divide",
+      "latitude": 45.7782262,
+      "longitude": -113.8650826,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 35 across West of the Continental Divide",
+      "latitude": 45.9131368,
+      "longitude": -112.4164201,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 35 inside East of the Continental Divide",
+      "latitude": 45.7792129,
+      "longitude": -113.8591643,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 35 inside West of the Continental Divide",
+      "latitude": 45.9171476,
+      "longitude": -112.4208825,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 36 across East of the Continental Divide",
+      "latitude": 45.6670689,
+      "longitude": -113.9265788,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 36 across West of the Continental Divide",
+      "latitude": 46.0916355,
+      "longitude": -112.4651935,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 36 inside East of the Continental Divide",
+      "latitude": 45.6681336,
+      "longitude": -113.920674,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 36 inside West of the Continental Divide",
+      "latitude": 46.0954511,
+      "longitude": -112.469824,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 37 across East of the Continental Divide",
+      "latitude": 45.5942791,
+      "longitude": -113.8076792,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 37 across West of the Continental Divide",
+      "latitude": 46.2374357,
+      "longitude": -112.5865901,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 37 inside East of the Continental Divide",
+      "latitude": 45.5954173,
+      "longitude": -113.8017881,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 37 inside West of the Continental Divide",
+      "latitude": 46.2411746,
+      "longitude": -112.5912827,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 38 across East of the Continental Divide",
+      "latitude": 45.4948036,
+      "longitude": -113.7670958,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 38 across West of the Continental Divide",
+      "latitude": 46.3542795,
+      "longitude": -112.4283189,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 38 inside East of the Continental Divide",
+      "latitude": 45.4960254,
+      "longitude": -113.7612215,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 38 inside West of the Continental Divide",
+      "latitude": 46.3576003,
+      "longitude": -112.433316,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 39 across East of the Continental Divide",
+      "latitude": 45.365428,
+      "longitude": -113.7405075,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 39 across West of the Continental Divide",
+      "latitude": 46.5105078,
+      "longitude": -112.3035076,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 39 inside East of the Continental Divide",
+      "latitude": 45.3667542,
+      "longitude": -113.7346559,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 39 inside West of the Continental Divide",
+      "latitude": 46.5133696,
+      "longitude": -112.3087811,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 40 across East of the Continental Divide",
+      "latitude": 45.2515029,
+      "longitude": -113.6856193,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 40 across West of the Continental Divide",
+      "latitude": 46.6786856,
+      "longitude": -112.3205338,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 40 inside East of the Continental Divide",
+      "latitude": 45.2529265,
+      "longitude": -113.6797906,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 40 inside West of the Continental Divide",
+      "latitude": 46.6811974,
+      "longitude": -112.3259828,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 41 across East of the Continental Divide",
+      "latitude": 45.1496527,
+      "longitude": -113.5855011,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 41 across West of the Continental Divide",
+      "latitude": 46.7344325,
+      "longitude": -112.5089844,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 41 inside East of the Continental Divide",
+      "latitude": 45.1511738,
+      "longitude": -113.5796971,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 41 inside West of the Continental Divide",
+      "latitude": 46.7370231,
+      "longitude": -112.5143963,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 42 across East of the Continental Divide",
+      "latitude": 45.0084909,
+      "longitude": -113.441717,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 42 across West of the Continental Divide",
+      "latitude": 46.8825833,
+      "longitude": -112.4980396,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 42 inside East of the Continental Divide",
+      "latitude": 45.0101506,
+      "longitude": -113.4359511,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 42 inside West of the Continental Divide",
+      "latitude": 46.8847726,
+      "longitude": -112.5036259,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 43 across East of the Continental Divide",
+      "latitude": 44.8686532,
+      "longitude": -113.4582874,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 43 across West of the Continental Divide",
+      "latitude": 46.9689126,
+      "longitude": -112.3575949,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 43 inside East of the Continental Divide",
+      "latitude": 44.8704155,
+      "longitude": -113.4525521,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 43 inside West of the Continental Divide",
+      "latitude": 46.97073,
+      "longitude": -112.3633131,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 44 across East of the Continental Divide",
+      "latitude": 44.8154915,
+      "longitude": -113.2430104,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 44 across West of the Continental Divide",
+      "latitude": 47.1014327,
+      "longitude": -112.395877,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 44 inside East of the Continental Divide",
+      "latitude": 44.8173459,
+      "longitude": -113.2373041,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 44 inside West of the Continental Divide",
+      "latitude": 47.1029069,
+      "longitude": -112.4016931,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 45 across East of the Continental Divide",
+      "latitude": 44.4954392,
+      "longitude": -113.029761,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 45 across West of the Continental Divide",
+      "latitude": 47.1780122,
+      "longitude": -112.5670457,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 45 inside East of the Continental Divide",
+      "latitude": 44.4975932,
+      "longitude": -113.024161,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 45 inside West of the Continental Divide",
+      "latitude": 47.1793789,
+      "longitude": -112.572888,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 46 across East of the Continental Divide",
+      "latitude": 44.3661073,
+      "longitude": -112.8306827,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 46 across West of the Continental Divide",
+      "latitude": 47.2510743,
+      "longitude": -112.7367952,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 46 inside East of the Continental Divide",
+      "latitude": 44.3684174,
+      "longitude": -112.8251453,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 46 inside West of the Continental Divide",
+      "latitude": 47.2523193,
+      "longitude": -112.7426646,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 47 across East of the Continental Divide",
+      "latitude": 44.4869858,
+      "longitude": -112.6520195,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 47 across West of the Continental Divide",
+      "latitude": 47.3093704,
+      "longitude": -112.863931,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 47 inside East of the Continental Divide",
+      "latitude": 44.4892603,
+      "longitude": -112.6464673,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 47 inside West of the Continental Divide",
+      "latitude": 47.310489,
+      "longitude": -112.8698258,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 48 across East of the Continental Divide",
+      "latitude": 44.4562552,
+      "longitude": -112.4108848,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 48 across West of the Continental Divide",
+      "latitude": 47.4909585,
+      "longitude": -113.0539686,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 48 inside East of the Continental Divide",
+      "latitude": 44.4586327,
+      "longitude": -112.405376,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 48 inside West of the Continental Divide",
+      "latitude": 47.4913756,
+      "longitude": -113.0599541,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 49 across East of the Continental Divide",
+      "latitude": 44.5495632,
+      "longitude": -112.2321031,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 49 across West of the Continental Divide",
+      "latitude": 47.7429269,
+      "longitude": -113.1101396,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 49 inside East of the Continental Divide",
+      "latitude": 44.5519276,
+      "longitude": -112.2265886,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 49 inside West of the Continental Divide",
+      "latitude": 47.7420663,
+      "longitude": -113.1160775,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 50 across East of the Continental Divide",
+      "latitude": 44.5598627,
+      "longitude": -111.8845049,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 50 across West of the Continental Divide",
+      "latitude": 47.9529721,
+      "longitude": -112.9634509,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 50 inside East of the Continental Divide",
+      "latitude": 44.5623455,
+      "longitude": -111.8790426,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 50 inside West of the Continental Divide",
+      "latitude": 47.9513015,
+      "longitude": -112.9692136,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 51 across East of the Continental Divide",
+      "latitude": 44.5456554,
+      "longitude": -111.4696533,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 51 across West of the Continental Divide",
+      "latitude": 48.0050405,
+      "longitude": -112.8894278,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 51 inside East of the Continental Divide",
+      "latitude": 44.5483187,
+      "longitude": -111.4642768,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 51 inside West of the Continental Divide",
+      "latitude": 48.0032527,
+      "longitude": -112.8951553,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 52 across East of the Continental Divide",
+      "latitude": 44.6968131,
+      "longitude": -111.4905224,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 52 across West of the Continental Divide",
+      "latitude": 48.0745771,
+      "longitude": -112.9734576,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 52 inside East of the Continental Divide",
+      "latitude": 44.6993339,
+      "longitude": -111.4850776,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 52 inside West of the Continental Divide",
+      "latitude": 48.0724153,
+      "longitude": -112.9790546,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 53 across East of the Continental Divide",
+      "latitude": 44.6537326,
+      "longitude": -111.283341,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 53 across West of the Continental Divide",
+      "latitude": 48.1315345,
+      "longitude": -113.0209575,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 53 inside East of the Continental Divide",
+      "latitude": 44.6563817,
+      "longitude": -111.2779574,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 53 inside West of the Continental Divide",
+      "latitude": 48.1290873,
+      "longitude": -113.0264357,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 54 across East of the Continental Divide",
+      "latitude": 45.0336779,
+      "longitude": -111.1201153,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 54 across West of the Continental Divide",
+      "latitude": 48.1397398,
+      "longitude": -113.0987996,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 54 inside East of the Continental Divide",
+      "latitude": 45.0360348,
+      "longitude": -111.1145976,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 54 inside West of the Continental Divide",
+      "latitude": 48.1371278,
+      "longitude": -113.1042012,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 55 across East of the Continental Divide",
+      "latitude": 45.0845149,
+      "longitude": -111.0240628,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 55 across West of the Continental Divide",
+      "latitude": 48.1704491,
+      "longitude": -113.2000969,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 55 inside East of the Continental Divide",
+      "latitude": 45.0868617,
+      "longitude": -111.0185408,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 55 inside West of the Continental Divide",
+      "latitude": 48.1675242,
+      "longitude": -113.2053357,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 56 across East of the Continental Divide",
+      "latitude": 45.0289296,
+      "longitude": -110.8544302,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 56 across West of the Continental Divide",
+      "latitude": 48.2527333,
+      "longitude": -113.2434386,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 56 inside East of the Continental Divide",
+      "latitude": 45.0314115,
+      "longitude": -110.8489675,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 56 inside West of the Continental Divide",
+      "latitude": 48.2494197,
+      "longitude": -113.2484406,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 57 across East of the Continental Divide",
+      "latitude": 45.0286275,
+      "longitude": -110.6633572,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 57 across West of the Continental Divide",
+      "latitude": 48.2983036,
+      "longitude": -113.3872291,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 57 inside East of the Continental Divide",
+      "latitude": 45.0312031,
+      "longitude": -110.6579382,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 57 inside West of the Continental Divide",
+      "latitude": 48.2944915,
+      "longitude": -113.3918624,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 58 across East of the Continental Divide",
+      "latitude": 45.0504186,
+      "longitude": -110.0213507,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 58 across West of the Continental Divide",
+      "latitude": 48.3472734,
+      "longitude": -113.6391271,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 58 inside East of the Continental Divide",
+      "latitude": 45.0533336,
+      "longitude": -110.0161064,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 58 inside West of the Continental Divide",
+      "latitude": 48.3426155,
+      "longitude": -113.6429091,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 59 across East of the Continental Divide",
+      "latitude": 45.759696,
+      "longitude": -104.0400456,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 59 across West of the Continental Divide",
+      "latitude": 48.5031119,
+      "longitude": -113.9191282,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 59 inside East of the Continental Divide",
+      "latitude": 45.7624034,
+      "longitude": -104.0454,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 59 inside West of the Continental Divide",
+      "latitude": 48.4974916,
+      "longitude": -113.9212288,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 60 across East of the Continental Divide",
+      "latitude": 47.9081232,
+      "longitude": -104.0397397,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 60 across West of the Continental Divide",
+      "latitude": 48.7172686,
+      "longitude": -114.2280658,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 60 inside East of the Continental Divide",
+      "latitude": 47.9060595,
+      "longitude": -104.0453736,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "boundary",
+      "label": "boundary 60 inside West of the Continental Divide",
+      "latitude": 48.7112719,
+      "longitude": -114.2282643,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge East of the Continental Divide",
+      "latitude": 48.9900614,
+      "longitude": -106.5037834,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge West of the Continental Divide",
+      "latitude": 46.6755837,
+      "longitude": -114.3577093,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside East of the Continental Divide",
+      "latitude": 47.0055176,
+      "longitude": -106.5039429,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside West of the Continental Divide",
+      "latitude": 47.5754153,
+      "longitude": -114.2658577,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "invalid",
+      "label": "latitude above the pole",
+      "latitude": "95",
+      "longitude": "-107",
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "invalid",
+      "label": "longitude beyond the meridian",
+      "latitude": "40",
+      "longitude": "-200",
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "invalid",
+      "label": "not a number",
+      "latitude": "NaN",
+      "longitude": "-107",
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Alberta, Lethbridge",
+      "latitude": 49.69,
+      "longitude": -112.84,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Idaho, Moscow",
+      "latitude": 46.73,
+      "longitude": -117,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "North Dakota, west of Dickinson",
+      "latitude": 47,
+      "longitude": -103.4,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "South Dakota, northwest corner",
+      "latitude": 45.6,
+      "longitude": -103.7,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Wyoming, Sheridan",
+      "latitude": 44.8,
+      "longitude": -106.96,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Yellowstone National Park, Wyoming",
+      "latitude": 44.6,
+      "longitude": -110.5,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Blackfeet Reservation, Browning",
+      "latitude": 48.56,
+      "longitude": -113.01,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Bozeman",
+      "latitude": 45.68,
+      "longitude": -111.04,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Butte",
+      "latitude": 46,
+      "longitude": -112.53,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Crow Reservation, Crow Agency",
+      "latitude": 45.6,
+      "longitude": -107.46,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Glacier National Park",
+      "latitude": 48.7,
+      "longitude": -113.8,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Helena",
+      "latitude": 46.59,
+      "longitude": -112.04,
+      "geometry": [
+        "East of the Continental Divide"
+      ],
+      "official": [
+        "East of the Continental Divide"
+      ],
+      "production": [
+        "East of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Missoula",
+      "latitude": 46.87,
+      "longitude": -113.99,
+      "geometry": [
+        "West of the Continental Divide"
+      ],
+      "official": [
+        "West of the Continental Divide"
+      ],
+      "production": [
+        "West of the Continental Divide"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Yellowstone National Park, Montana portion",
+      "latitude": 44.95,
+      "longitude": -110.7,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    }
+  ]
+}

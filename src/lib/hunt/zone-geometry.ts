@@ -103,11 +103,14 @@ export function boundsIntersect(box: BoundingBox, layer: ZoneLayer): boolean {
 /**
  * Served layers whose extent overlaps the viewport and that have a drawing
  * source. A layer that is registered but not served (Québec until its parity is
- * certified) is never drawn, whatever source it has.
+ * certified) is never drawn, whatever source it has. A layer scoped to
+ * particular species is drawn only when asked for, so a state with several
+ * simultaneous geographies does not stack them all on one map.
  */
-export function layersForBounds(box: BoundingBox): ZoneLayer[] {
+export function layersForBounds(box: BoundingBox, options: { speciesId?: string } = {}): ZoneLayer[] {
   return ZONE_LAYERS.filter((layer) =>
-    layer.serving && (Boolean(layer.endpoint) || layer.mapGeometry === "stored") && boundsIntersect(box, layer));
+    layer.serving && (Boolean(layer.endpoint) || layer.mapGeometry === "stored") && boundsIntersect(box, layer) &&
+    (!layer.speciesScope || layer.drawnByDefault || (options.speciesId !== undefined && layer.speciesScope.includes(options.speciesId))));
 }
 
 type Position = [number, number];

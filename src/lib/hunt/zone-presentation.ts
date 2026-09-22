@@ -178,6 +178,64 @@ export const ZONE_PRESENTATION_PROFILES: readonly ZonePresentationProfile[] = [
       "19SNO": "Part name « Sud-Nord-Ouest » has no unambiguous compass reading.",
     },
   },
+  /*
+   * United States. Each state publishes in English only, so no French term is
+   * recorded and the English term is kept in French. Every pattern is the set
+   * of designations the state's own service returned at certification
+   * (fixtures/hunt/us-*-live-parity.json). Montana's upland game bird
+   * districts have no row on purpose: their designations are worded ("East of
+   * the Continental Divide") and are shown exactly as FWP writes them.
+   */
+  {
+    layerId: "layer:us-id-gmu",
+    jurisdictionId: "jurisdiction:us-id",
+    zoneIdPrefix: "management_zone:us-id-gmu-",
+    officialNamePrefix: "Game Management Unit ",
+    sourceLocale: "en-CA",
+    jurisdictionName: { "en-CA": "Idaho", "fr-CA": "Idaho" },
+    // Idaho's booklet writes "Unit 10A"; the letter is a subdivision.
+    term: { "en-CA": { long: "Game Management Unit", short: "Unit" }, "fr-CA": undefined },
+    termIsAbbreviation: false,
+    designationPattern: /^\d{1,2}[AB]?$/,
+    stripLeadingZeros: false,
+  },
+  {
+    layerId: "layer:us-mt-deer-elk-hd",
+    jurisdictionId: "jurisdiction:us-mt",
+    zoneIdPrefix: "management_zone:us-mt-hd-",
+    officialNamePrefix: "Hunting District ",
+    sourceLocale: "en-CA",
+    jurisdictionName: { "en-CA": "Montana", "fr-CA": "Montana" },
+    term: { "en-CA": { long: "Deer and Elk Hunting District", short: "HD" }, "fr-CA": undefined },
+    termIsAbbreviation: true,
+    designationPattern: /^\d{3}$/,
+    stripLeadingZeros: false,
+  },
+  {
+    layerId: "layer:us-co-gmu",
+    jurisdictionId: "jurisdiction:us-co",
+    zoneIdPrefix: "management_zone:us-co-gmu-",
+    officialNamePrefix: "Game Management Unit ",
+    sourceLocale: "en-CA",
+    jurisdictionName: { "en-CA": "Colorado", "fr-CA": "Colorado" },
+    term: { "en-CA": { long: "Game Management Unit", short: "GMU" }, "fr-CA": undefined },
+    termIsAbbreviation: true,
+    designationPattern: /^\d{1,3}$/,
+    stripLeadingZeros: false,
+  },
+  {
+    layerId: "layer:us-wy-elk-area",
+    jurisdictionId: "jurisdiction:us-wy",
+    zoneIdPrefix: "management_zone:us-wy-elk-area-",
+    officialNamePrefix: "Elk Hunt Area ",
+    sourceLocale: "en-CA",
+    jurisdictionName: { "en-CA": "Wyoming", "fr-CA": "Wyoming" },
+    // Wyoming numbers hunt areas per species; this is the elk series only.
+    term: { "en-CA": { long: "Elk Hunt Area", short: "Elk Area" }, "fr-CA": undefined },
+    termIsAbbreviation: false,
+    designationPattern: /^\d{1,3}$/,
+    stripLeadingZeros: false,
+  },
 ];
 
 export type ZonePresentationStatus =

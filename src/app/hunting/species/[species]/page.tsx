@@ -14,7 +14,7 @@ import SpeciesPrimaryImage, { SpeciesImagePlaceholder } from "../../../../compon
 import StructuredData from "../../../../components/StructuredData";
 import type { SpeciesResource } from "../../../../lib/content-contract/types";
 import { contentRepository } from "../../../../lib/content/repository";
-import { regulatoryJurisdictionsForSpecies } from "../../../../lib/hunt/canada/report";
+import { regulatoryJurisdictionsForSpecies } from "../../../../lib/hunt/north-america/report";
 import { getSpeciesPrimaryMedia } from "../../../../lib/species-media/repository";
 import { speciesArticleJsonLd } from "../../../../lib/seo/structured-data";
 import { absoluteUrl } from "../../../../lib/site";

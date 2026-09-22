@@ -3,7 +3,7 @@ import type { SpeciesCoverageRow } from "../canada/report.ts";
 import { isMajorGameSpecies, speciesById } from "../coverage.ts";
 import { overlaysInZone, type OverlayZoneIndex } from "../overlay-zones.ts";
 import { lookupOverlays, restrictionsFor, type OverlayCatalogue } from "../overlays.ts";
-import { designationFromOfficialName, layerForJurisdiction } from "../zone-layers.ts";
+import { designationFromOfficialName, layerApplicability, layerForJurisdiction, layerOfZoneId } from "../zone-layers.ts";
 import { presentZoneById } from "../zone-presentation.ts";
 import type { EvaluationCompleteness, HuntInput, RegulatoryResult, ZoneResolution } from "../types.ts";
 import type { ConditionalEvaluation, ConditionalInput, conditionalCoverage } from "./conditional-engine.ts";
@@ -54,6 +54,8 @@ export interface EvaluationContext {
    * left undecided rather than answered for one spot (see `PlaceContext.scope`).
    */
   scope?: "POINT" | "ZONE";
+  /** The species' name from the content library, for answers about species Canada's list does not name. */
+  speciesName?: string;
 }
 
 export interface RegulatoryEntry {
@@ -238,7 +240,8 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
   return {
     jurisdictionId: config.jurisdictionId,
     jurisdictionName: config.jurisdictionName,
-    async evaluate(input, zone, { verifiedAt, fetcher, scope = "POINT" }) {
+    async evaluate(input, zone, context) {
+      const { verifiedAt, fetcher, scope = "POINT" } = context;
       /* Land restrictions come from the authority's own layers. When they cannot
          be read, the answer says so rather than assuming there is nothing there.
          A whole-zone question has no point to ask about; the special areas a
@@ -274,7 +277,28 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
         };
       }
 
-      const speciesName = speciesById(input.speciesId)?.displayName.toLowerCase() ?? input.speciesId.replace("species:", "").replace(/-/g, " ");
+      /* The geometry must be one the authority writes this species in, for a
+         period that includes the date. Otherwise the zone is real but it is
+         the wrong geography to answer from, and the answer says so. */
+      const layer = layerOfZoneId(zone.zoneId);
+      const applicability = layer ? layerApplicability(layer, input.speciesId, input.date) : { applies: true as const };
+      if (!applicability.applies) {
+        return {
+          completeness: "RESOLVED",
+          dimensions: [],
+          regulation: {
+            ...pendingRegulationFallback(verifiedAt),
+            status: applicability.reason === "SPECIES_OUT_OF_SCOPE" ? "UNKNOWN" : "NEEDS_VERIFICATION",
+            summary: applicability.message,
+            limitations: layer?.legalStanding ? [layer.legalStanding.statedAs] : [],
+            sourceIds: [zone.sourceId],
+          },
+        };
+      }
+
+      const speciesName = speciesById(input.speciesId)?.displayName.toLowerCase() ??
+        context.speciesName?.toLowerCase() ??
+        input.speciesId.replace("species:", "").replace(/-/g, " ");
       const evaluation = config.evaluate({
         speciesId: input.speciesId,
         speciesName,

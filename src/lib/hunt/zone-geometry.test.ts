@@ -73,9 +73,11 @@ test("a viewport outside supported geography requests nothing", async () => {
 });
 
 test("Canadian and United States jurisdictions stay distinguishable", () => {
-  assert.ok(ZONE_LAYERS.every((layer) => layer.country === "CA"));
+  // Every layer's country is the one its jurisdiction id names, never assumed.
+  for (const layer of ZONE_LAYERS) assert.equal(layer.country, layer.jurisdictionId.startsWith("jurisdiction:us-") ? "US" : "CA", layer.id);
   assert.equal(layerForPoint(45.23, -77.94)?.jurisdictionName, "Ontario");
-  assert.equal(layerForPoint(46.87, -110.36), undefined, "Montana resolves to no drawn layer");
+  // A point in Montana is never answered in a Canadian layer's terms.
+  assert.notEqual(layerForPoint(46.87, -110.36)?.country, "CA", "Montana resolves to no Canadian layer");
   // A registered layer is not a drawn one: only layers Hunt serves are counted.
   assert.equal(COVERAGE_ROADMAP.drawnJurisdictions, ZONE_LAYERS.filter((layer) => layer.serving).length);
   assert.ok(COVERAGE_ROADMAP.unitedStatesInDevelopment > 0);

@@ -1,0 +1,66 @@
+{
+  "outside": [
+    [
+      "Montana, Missoula",
+      46.87,
+      -113.99
+    ],
+    [
+      "Washington, Spokane",
+      47.66,
+      -117.43
+    ],
+    [
+      "Oregon, west of the Snake River",
+      44.0,
+      -117.2
+    ],
+    [
+      "Nevada, north of Wells",
+      41.6,
+      -114.9
+    ],
+    [
+      "Utah, north of Logan",
+      41.9,
+      -111.9
+    ],
+    [
+      "Wyoming, Jackson",
+      43.48,
+      -110.76
+    ]
+  ],
+  "special": [
+    [
+      "Boise (Unit 38)",
+      43.61,
+      -116.2
+    ],
+    [
+      "Moscow (Unit 8)",
+      46.73,
+      -117.0
+    ],
+    [
+      "Yellowstone National Park, Idaho strip (quarantined record)",
+      44.45,
+      -111.08
+    ],
+    [
+      "Sun Valley",
+      43.697,
+      -114.351
+    ],
+    [
+      "Island Park",
+      44.42,
+      -111.37
+    ],
+    [
+      "Hells Canyon, Snake River",
+      45.45,
+      -116.65
+    ]
+  ]
+}

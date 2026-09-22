@@ -5,11 +5,14 @@ import { regulatoryEntryFor, type RegulatoryOutcome } from "./regulatory/registr
 import type { HuntEvaluation, HuntInput, RegulatoryResult } from "./types.ts";
 import type { ZoneResolution } from "./types.ts";
 import { getWeatherContext } from "./weather.ts";
-import { jurisdictionOfZoneId, resolveZone as resolveZoneDefault } from "./zone.ts";
+import { jurisdictionOfZoneId, resolveInLayer, resolveZone as resolveZoneDefault } from "./zone.ts";
+import { countryOfJurisdiction, layerForJurisdiction, layerOfZoneId, speciesLayerFor } from "./zone-layers.ts";
 
 export interface HuntDependencies {
   repository?: ContentRepository;
   resolveZone?: typeof resolveZoneDefault;
+  /** Places a point in one particular layer, for species-scoped geographies. */
+  resolveInLayer?: typeof resolveInLayer;
   weather?: typeof getWeatherContext;
   /** Used for the authority's own overlay layers, where a jurisdiction has them. */
   fetch?: typeof fetch;
@@ -29,6 +32,7 @@ async function evaluateRegulation(
   zone: ZoneResolution,
   verifiedAt: string,
   fetcher?: typeof fetch,
+  speciesName?: string,
 ): Promise<RegulatoryOutcome> {
   /* A zone's own id decides its jurisdiction. An unresolved point carries one
      only where the resolver could attribute it to a single served layer; where
@@ -38,7 +42,7 @@ async function evaluateRegulation(
   if (!jurisdictionId) return { completeness: "RESOLVED", dimensions: [], regulation: unplacedPoint(zone, verifiedAt) };
   const entry = regulatoryEntryFor(jurisdictionId);
   if (!entry) return { completeness: "RESOLVED", dimensions: [], regulation: uncertifiedJurisdiction(zone, verifiedAt) };
-  return await entry.evaluate(input, zone, { verifiedAt, fetcher });
+  return await entry.evaluate(input, zone, { verifiedAt, fetcher, ...(speciesName ? { speciesName } : {}) });
 }
 
 /** A point no authority placed in a hunting zone, attributable to no one jurisdiction. */
@@ -80,15 +84,31 @@ export async function evaluateHunt(input: HuntInput, dependencies: HuntDependenc
   /* The zone states its jurisdiction explicitly, so everything downstream (the
      rules, the knowledge blocks, the shared brief) reads one field, not a guess. */
   const jurisdictionOfZone = resolved.jurisdictionId ?? jurisdictionOfZoneId(resolved.zoneId);
-  const zone: ZoneResolution = jurisdictionOfZone ? { ...resolved, jurisdictionId: jurisdictionOfZone } : resolved;
+  const located: ZoneResolution = jurisdictionOfZone ? { ...resolved, jurisdictionId: jurisdictionOfZone } : resolved;
 
-  const { completeness, required, dimensions, regulation } = await evaluateRegulation(input, zone, evaluatedAt, dependencies.fetch);
+  /* A state can set different species' seasons in different geographies at
+     the same place. Where the zone a point resolved to is not the geography
+     this species is written in, the point is placed again in the one that is,
+     by that layer's own authority. The jurisdiction stays the one the first
+     answer established. */
+  let zone = located;
+  const locatedLayer = layerOfZoneId(located.zoneId) ?? layerForJurisdiction(located.jurisdictionId);
+  if (located.jurisdictionId && locatedLayer?.speciesScope && !locatedLayer.speciesScope.includes(input.speciesId)) {
+    const speciesLayer = speciesLayerFor(located.jurisdictionId, input.speciesId);
+    if (speciesLayer && speciesLayer.id !== locatedLayer.id) {
+      const placed = await (dependencies.resolveInLayer ?? resolveInLayer)(speciesLayer, input.latitude, input.longitude, dependencies.fetch);
+      zone = { ...placed, jurisdictionId: located.jurisdictionId };
+    }
+  }
+
+  const speciesResource = await repository.getSpecies(input.speciesId);
+  const { completeness, required, dimensions, regulation } = await evaluateRegulation(input, zone, evaluatedAt, dependencies.fetch, speciesResource?.title);
 
   const zoneIds = zone.zoneId ? [zone.zoneId] : undefined;
-  const speciesResource = await repository.getSpecies(input.speciesId);
   const knowledge = await repository.getContextualBlocks({
     locale: "en-CA",
-    countryId: "country:ca",
+    // The country the zone is in, never assumed: a U.S. hunt gets no Canadian-only guidance.
+    countryId: countryOfJurisdiction(zone.jurisdictionId) === "US" ? "country:us" : "country:ca",
     // Unplaced, only guidance that names no jurisdiction can apply.
     jurisdictionIds: zone.jurisdictionId ? [zone.jurisdictionId] : [],
     zoneIds,
