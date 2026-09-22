@@ -23,6 +23,9 @@ type UploadState = "IMAGE_SET" | "MISSING_IMAGE" | "UPLOADING" | "ERROR";
 const normalize = (value: string) => value.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLocaleLowerCase("en-CA");
 const ALL = "All";
 
+/** The card's drawn width at each grid breakpoint (page.module.css), for the photo's srcset. */
+const CARD_IMAGE_SIZES = "(min-width: 1200px) 25vw, (min-width: 900px) 33vw, (min-width: 560px) 50vw, 100vw";
+
 /**
  * What the administrator is told when an upload is refused. A validation
  * failure names what to change; a transient failure says to try again, because
@@ -170,7 +173,7 @@ export default function SpeciesLibrary({ species, adminMode = false }: { species
     </p>
     <h2 className="ng-visually-hidden" id="results-heading">Species</h2>
     {visible.length ? <ul className={styles.grid} aria-labelledby="results-heading">
-      {visible.map((item) => {
+      {visible.map((item, index) => {
         const state = states[item.id] ?? (item.image ? "IMAGE_SET" : "MISSING_IMAGE");
         return <li key={item.id} className={`${styles.card} ng-glass-card`} data-admin={adminMode || undefined} data-drag-over={draggingOver === item.id || undefined}
           onDragEnter={adminMode ? (event) => { event.preventDefault(); setDraggingOver(item.id); } : undefined}
@@ -178,16 +181,21 @@ export default function SpeciesLibrary({ species, adminMode = false }: { species
           onDragLeave={adminMode ? (event) => { if (!event.currentTarget.contains(event.relatedTarget as Node)) setDraggingOver(null); } : undefined}
           onDrop={adminMode ? (event) => { event.preventDefault(); acceptDrop(item, event.dataTransfer.files[0]); } : undefined}>
           <Link className={styles.cardLink} href={item.canonicalUrl} onClick={state === "UPLOADING" ? (event) => event.preventDefault() : undefined}>
-            <span className={styles.cardTop}><span className={styles.cardCategory}>{item.category}</span>
-              {item.image ? <SpeciesPrimaryImage className={styles.thumb} media={item.image} variant="card" /> : <SpeciesImagePlaceholder className={styles.thumbPlaceholder} label={item.commonName} />}
+            {/* The photograph fills the card; the first row is above the fold on every width. */}
+            {item.image
+              ? <SpeciesPrimaryImage className={styles.cardMedia} media={item.image} variant="card" sizes={CARD_IMAGE_SIZES} loading={index < 4 ? "eager" : "lazy"} />
+              : <SpeciesImagePlaceholder className={`${styles.cardMedia} ${styles.cardPlaceholder}`} label={item.commonName} />}
+            {/* Densest glass: measured AA for every line over the brightest part of all 57 photos. */}
+            <span className={`${styles.cardPanel} ng-glass-popover ng-glass-dense`}>
+              <span className={styles.cardCategory}>{item.category}</span>
+              <span className={styles.cardName}>{item.commonName}</span><span className={styles.cardScientific}>{item.scientificName}</span>
+              {item.frenchName ? <span className={styles.cardFrench}>{item.frenchName}</span> : null}
+              <span className={styles.cardFoot}><span className="ng-coverage" data-coverage={item.regulatoryJurisdictions.length ? "VERIFIED" : "IN_DEVELOPMENT"}>
+                {item.regulatoryJurisdictions.length ? `Rules: ${item.regulatoryJurisdictions.join(", ")}` : "Knowledge profile · no certified rules"}
+              </span></span>
             </span>
-            <span className={styles.cardName}>{item.commonName}</span><span className={styles.cardScientific}>{item.scientificName}</span>
-            {item.frenchName ? <span className={styles.cardFrench}>{item.frenchName}</span> : null}
-            <span className={styles.cardFoot}><span className="ng-coverage" data-coverage={item.regulatoryJurisdictions.length ? "VERIFIED" : "IN_DEVELOPMENT"}>
-              {item.regulatoryJurisdictions.length ? `Rules: ${item.regulatoryJurisdictions.join(", ")}` : "Knowledge profile · no certified rules"}
-            </span></span>
           </Link>
-          {adminMode ? <div className={styles.adminState} data-state={state} role="status">{state.replaceAll("_", " ")}{errors[item.id] ? <span>{errors[item.id]}</span> : null}</div> : null}
+          {adminMode ? <div className={`${styles.adminState} ng-glass-overlay`} data-state={state} role="status">{state.replaceAll("_", " ")}{errors[item.id] ? <span>{errors[item.id]}</span> : null}</div> : null}
         </li>;
       })}
     </ul> : <div className={`${styles.empty} ng-glass-card`}><p className={styles.emptyTitle}>No published species matches that search</p><p className={styles.emptyNote}>Try a common, scientific, French or hunter name. Research-only records are not published here.</p></div>}

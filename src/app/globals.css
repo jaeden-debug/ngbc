@@ -198,6 +198,12 @@ button, input, select { font: inherit; }
   box-shadow: var(--ng-shadow-2);
 }
 
+/* Densest tier, for text laid directly over photography (species cards).
+   Declared before the fallbacks below so they still make it opaque. */
+.ng-glass-dense {
+  background-color: var(--ng-glass-bg-dense);
+}
+
 /* A single hairline of inner light along the top edge. This is what reads as
    "glass" rather than "translucent box". */
 .ng-glass-panel::before,

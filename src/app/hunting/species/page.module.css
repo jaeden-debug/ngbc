@@ -180,8 +180,15 @@
   list-style: none;
 }
 
+/* The photograph is the card. A fixed ratio reserves its space before the image
+   arrives (no layout shift); a card whose text needs more room grows taller. */
 .card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
   border-radius: var(--ng-radius);
+  isolation: isolate;
   transition: border-color 140ms ease, transform 140ms ease;
 }
 
@@ -197,19 +204,39 @@
    to tap anywhere is a mobile annoyance, not a feature. */
 .cardLink {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  gap: 3px;
-  min-height: 92px;
-  padding: 14px 15px;
+  justify-content: flex-end;
+  padding: 8px;
   color: inherit;
   text-decoration: none;
 }
 
-.cardTop {
+.cardMedia {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardPlaceholder {
+  display: grid;
+  place-items: center;
+  color: var(--ng-bone-faint);
+}
+
+.cardPlaceholder svg { width: 64px; height: 64px; }
+
+/* Every word on the card sits on the strongest glass tier, which the global
+   rules make opaque under reduced transparency or without backdrop-filter. */
+.cardPanel {
+  z-index: 1;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 10px;
+  flex-direction: column;
+  gap: 3px;
+  padding: 11px 13px 12px;
 }
 
 .cardCategory {
@@ -251,42 +278,28 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 10px;
+  margin-top: 6px;
 }
 
 /* A coverage label can name several jurisdictions, or say a profile has no
    certified rules; on a narrow card it wraps instead of widening the card. */
 .cardFoot :global(.ng-coverage) {
   white-space: normal;
+  /* The faint tier measured 4.3:1 over the brightest photo; one tier up clears AA. */
+  color: var(--ng-bone-dim);
 }
 
-.thumb {
-  flex: none;
-  width: 56px;
-  height: 56px;
-  border-radius: var(--ng-radius-sm);
-  object-fit: cover;
-}
-
-.thumbPlaceholder {
-  display: grid;
-  place-items: center;
-  flex: none;
-  width: 56px;
-  height: 56px;
-  border: 1px solid var(--ng-glass-border);
-  border-radius: var(--ng-radius-sm);
-  color: var(--ng-bone-faint);
-  background: rgba(201, 194, 166, 0.035);
-}
-
-.thumbPlaceholder svg { width: 31px; height: 31px; }
-
+/* The administrator's state rides on the photograph as a glass pill. */
 .adminState {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   gap: 3px;
-  margin: 0 15px 12px;
+  max-width: calc(100% - 16px);
+  padding: 5px 10px;
   color: var(--ng-bone-dim);
   font-size: 0.65rem;
   font-weight: 700;

@@ -13,13 +13,26 @@ export function SpeciesImagePlaceholder({ className, label }: { className?: stri
   );
 }
 
-export default function SpeciesPrimaryImage({ media, variant, className, loading = "lazy" }: {
+export default function SpeciesPrimaryImage({ media, variant, className, loading = "lazy", sizes }: {
   media: SpeciesPrimaryMedia;
   variant: SpeciesMediaVariant;
   className?: string;
   loading?: "eager" | "lazy";
+  /**
+   * When given, the larger profile rendition is offered too, so a card drawn
+   * wider than the card rendition on a dense screen is not upscaled.
+   */
+  sizes?: string;
 }) {
   const rendition = media.renditions[variant];
+  const larger = sizes && variant === "card" ? media.renditions.profile : undefined;
+  if (larger) {
+    // A plain img: next/image with `unoptimized` would drop the srcset.
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img className={className} src={rendition.url} alt={media.altText} width={rendition.width} height={rendition.height}
+      srcSet={`${rendition.url} ${rendition.width}w, ${larger.url} ${larger.width}w`} sizes={sizes}
+      loading={loading} decoding="async" />;
+  }
   return <Image className={className} src={rendition.url} alt={media.altText} width={rendition.width}
     height={rendition.height} loading={loading} decoding="async" unoptimized />;
 }
