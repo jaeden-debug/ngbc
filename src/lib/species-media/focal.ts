@@ -9,3 +9,26 @@ export function parseFocalPointRequest(body: unknown): { assetId: string; x: num
   if (!valid(x) || !valid(y)) return null;
   return { assetId, x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10 };
 }
+
+/** How far a photo overhangs its card in each axis; zero means that axis cannot move. */
+export interface FocalDrag {
+  fx: number;
+  fy: number;
+  spanX: number;
+  spanY: number;
+}
+
+/**
+ * The focal point after dragging a card's photo by (dx, dy) pixels.
+ *
+ * Dragging the photo right reveals more of its left side, so the focal point
+ * moves left: the subject follows the pointer. An axis with no overhang cannot
+ * move, and the result is always inside the frame.
+ */
+export function nextFocal(drag: FocalDrag, dx: number, dy: number): { x: number; y: number } {
+  const clamp = (value: number) => Math.round(Math.min(100, Math.max(0, value)) * 10) / 10;
+  return {
+    x: drag.spanX > 0 ? clamp(drag.fx - (dx / drag.spanX) * 100) : drag.fx,
+    y: drag.spanY > 0 ? clamp(drag.fy - (dy / drag.spanY) * 100) : drag.fy,
+  };
+}

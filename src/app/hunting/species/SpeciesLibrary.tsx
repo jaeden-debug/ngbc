@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import SpeciesPrimaryImage, { SpeciesImagePlaceholder } from "../../../components/species/SpeciesPrimaryImage";
+import { nextFocal } from "../../../lib/species-media/focal";
 import type { SpeciesPrimaryMedia } from "../../../lib/species-media/types";
 import styles from "./page.module.css";
 
@@ -157,12 +158,7 @@ export default function SpeciesLibrary({ species, adminMode = false }: { species
     const dx = event.clientX - drag.x0, dy = event.clientY - drag.y0;
     if (!drag.moved && Math.hypot(dx, dy) < 4) return;
     drag.moved = true;
-    const clamp = (value: number) => Math.round(Math.min(100, Math.max(0, value)) * 10) / 10;
-    // Dragging the photo right reveals more of its left side, so the focal point moves left.
-    setFocusing({ id: drag.id, focal: {
-      x: drag.spanX > 0 ? clamp(drag.fx - (dx / drag.spanX) * 100) : drag.fx,
-      y: drag.spanY > 0 ? clamp(drag.fy - (dy / drag.spanY) * 100) : drag.fy,
-    } });
+    setFocusing({ id: drag.id, focal: nextFocal(drag, dx, dy) });
   }
 
   async function endFocus(event: React.PointerEvent<HTMLAnchorElement>, item: LibrarySpecies) {
