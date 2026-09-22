@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import type { PlaceSuggestion } from "../../lib/hunt/location";
-import styles from "./Hunt.module.css";
+import styles from "./LocationSearch.module.css";
 
 export interface SelectedLocation {
   label: string;

@@ -1,0 +1,96 @@
+/* The basemap-free boundary view: official lines and names, nothing invented. */
+
+.zoneCanvas {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(900px 600px at 30% 20%, rgba(47, 65, 51, 0.28), transparent 65%),
+    #0f1310;
+}
+.zoneCanvas:focus-visible { outline: 2px solid var(--ng-amber); outline-offset: -3px; }
+
+.zoneCanvasSvg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+}
+.zoneCanvasSvg:active { cursor: grabbing; }
+
+.zoneCanvasShape {
+  fill: rgba(139, 168, 131, 0.03);
+  stroke: rgba(160, 190, 150, 0.5);
+  stroke-width: 1;
+  stroke-linejoin: round;
+  cursor: pointer;
+}
+.zoneCanvasShape:hover { fill: rgba(184, 211, 168, 0.1); stroke-width: 1.8; }
+.zoneCanvasShape[data-coverage="VERIFIED"] {
+  fill: rgba(184, 211, 168, 0.07);
+  stroke: rgba(207, 228, 189, 0.8);
+  stroke-width: 1.3;
+}
+.zoneCanvasShape[data-state="SEASON_AVAILABLE"] { fill: rgba(124, 192, 138, 0.3); }
+.zoneCanvasShape[data-state="SEASON_EXCEPT_AREAS"] { fill: rgba(124, 192, 138, 0.16); }
+.zoneCanvasShape[data-state="CHECK_REQUIREMENTS"] { fill: rgba(224, 160, 74, 0.24); }
+.zoneCanvasShape[data-state="NEEDS_VERIFICATION"] { fill: rgba(201, 162, 106, 0.16); }
+.zoneCanvasShape[data-state="CONFLICT"] { fill: rgba(217, 122, 108, 0.2); }
+.zoneCanvasShape[data-state="CLOSED"] { fill: rgba(154, 160, 166, 0.12); }
+.zoneCanvasShape[data-selected] {
+  fill: rgba(216, 230, 200, 0.14);
+  stroke: #f0ead8;
+  stroke-width: 2.8;
+}
+
+.zoneCanvasOverlay {
+  fill: rgba(224, 160, 74, 0.16);
+  stroke: rgba(224, 160, 74, 0.95);
+  stroke-width: 1.4;
+  stroke-dasharray: 4 3;
+  cursor: pointer;
+}
+
+.zoneCanvasLabel {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  fill: var(--ng-cream);
+  paint-order: stroke;
+  stroke: rgba(12, 14, 13, 0.9);
+  stroke-width: 3.5px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+.zoneCanvasLabel[data-selected] { fill: #fff; }
+
+.zoneCanvasSelf { fill: #4c8ee8; stroke: #fff; stroke-width: 3; }
+.zoneCanvasSelfAccuracy { fill: rgba(76, 142, 232, 0.12); stroke: rgba(76, 142, 232, 0.45); stroke-width: 1; }
+
+.zoneCanvasPin path { fill: var(--ng-cream); stroke: #11140f; stroke-width: 2; }
+.zoneCanvasPin circle { fill: none; stroke: #11140f; stroke-width: 2; }
+.zoneCanvasPin[data-preview] path { fill: rgba(224, 160, 74, 0.92); stroke-dasharray: 3 2.2; }
+
+/* Zoom for a view with no basemap and no Google zoom control. */
+.zoneCanvasControls {
+  position: absolute;
+  z-index: 6;
+  right: calc(12px + env(safe-area-inset-right));
+  bottom: 124px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mapControl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--ng-cream);
+  cursor: pointer;
+}

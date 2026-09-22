@@ -54,16 +54,22 @@ export function createLabelLayer(
       this.pool.clear();
     }
 
+    /** Keys drawn last frame, so a pan does not make neighbours trade places. */
+    lastPlaced = new Set<string>();
+
     draw() {
       const projection = this.getProjection();
       const container = this.container;
       if (!projection || !container) return;
       const div = map.getDiv();
       const view = { width: div.clientWidth, height: div.clientHeight };
+      const bounds = map.getBounds();
 
       const candidates: Array<LabelCandidate & { source: LabelSource; divX: number; divY: number }> = [];
       for (const source of this.labels) {
         const [longitude, latitude] = source.labelPoint;
+        // Only labels whose point is in view can be placed; skip projecting the rest.
+        if (!source.selected && bounds && !bounds.contains({ lat: latitude, lng: longitude })) continue;
         const at = new maps.LatLng(latitude, longitude);
         const screen = projection.fromLatLngToContainerPixel(at);
         const placed = projection.fromLatLngToDivPixel(at);
@@ -89,7 +95,7 @@ export function createLabelLayer(
         });
       }
 
-      const placed = placeLabels(candidates, view);
+      const placed = placeLabels(candidates, view, undefined, this.lastPlaced);
       const byKey = new Map(candidates.map((candidate) => [candidate.key, candidate]));
       const seen = new Set<string>();
       for (const label of placed) {
@@ -111,6 +117,7 @@ export function createLabelLayer(
       for (const [key, element] of this.pool) {
         if (!seen.has(key)) element.style.display = "none";
       }
+      this.lastPlaced = seen;
     }
   }
 
@@ -214,26 +221,74 @@ export function createSelfMarker(
   };
 }
 
-/* ── The hunt pin ─────────────────────────────────────────────────────────── */
+/* ── The hunt pin and a previewed point ─────────────────────────────────── */
+
+export interface PointMarkerHandle {
+  update(point: { latitude: number; longitude: number } | null, title: string | null): void;
+  destroy(): void;
+}
 
 /**
- * A teardrop pin in bone with a dark crosshair: "you plan to hunt here". Its
- * shape differs from the round blue self dot as well as its colour, so the two
- * are told apart without relying on colour.
+ * The hunt pin — a bone teardrop with a dark crosshair, "you plan to hunt
+ * here" — and the dashed amber preview of a point not yet chosen. Their shape
+ * differs from the round blue self dot as well as their colour, so the three
+ * locations are told apart without relying on colour. Drawn as page elements
+ * rather than Google markers, which keeps them styleable and needs no map id.
  */
-export function huntPinIcon(maps: typeof google.maps, variant: "hunt" | "preview"): google.maps.Icon {
-  const fill = variant === "hunt" ? "#f0ead8" : "rgba(224,160,74,0.92)";
-  const stroke = variant === "hunt" ? "#11140f" : "#2a1c08";
-  const dash = variant === "preview" ? ' stroke-dasharray="3 2.2"' : "";
-  const svg =
-    `<svg xmlns="http://www.w3.org/2000/svg" width="34" height="46" viewBox="0 0 34 46">` +
-    `<path d="M17 44.5C17 44.5 3 28.6 3 17A14 14 0 0 1 31 17c0 11.6-14 27.5-14 27.5Z" fill="${fill}" stroke="${stroke}" stroke-width="2"${dash}/>` +
-    `<circle cx="17" cy="17" r="6.2" fill="none" stroke="${stroke}" stroke-width="2"/>` +
-    `<path d="M17 7.5v5M17 21.5v5M7.5 17h5M21.5 17h5" stroke="${stroke}" stroke-width="2" stroke-linecap="round"/>` +
-    `</svg>`;
+export function createPointMarker(
+  maps: typeof google.maps,
+  map: google.maps.Map,
+  className: string,
+  variant: "hunt" | "preview",
+): PointMarkerHandle {
+  class PointMarker extends maps.OverlayView {
+    position: google.maps.LatLng | null = null;
+    element: HTMLDivElement | null = null;
+    title: string | null = null;
+
+    onAdd() {
+      this.element = document.createElement("div");
+      this.element.className = className;
+      this.element.dataset.variant = variant;
+      this.element.setAttribute("aria-hidden", "true");
+      this.element.innerHTML =
+        '<svg width="34" height="46" viewBox="0 0 34 46" focusable="false">' +
+        '<path d="M17 44.5C17 44.5 3 28.6 3 17A14 14 0 0 1 31 17c0 11.6-14 27.5-14 27.5Z"/>' +
+        '<circle cx="17" cy="17" r="6.2"/>' +
+        '<path class="cross" d="M17 7.5v5M17 21.5v5M7.5 17h5M21.5 17h5"/></svg>';
+      this.getPanes()?.markerLayer.appendChild(this.element);
+    }
+
+    onRemove() {
+      this.element?.remove();
+      this.element = null;
+    }
+
+    draw() {
+      const projection = this.getProjection();
+      if (!projection || !this.element) return;
+      if (!this.position) {
+        this.element.style.display = "none";
+        return;
+      }
+      const point = projection.fromLatLngToDivPixel(this.position);
+      if (!point) return;
+      this.element.style.display = "";
+      this.element.title = this.title ?? "";
+      this.element.style.transform = `translate(${Math.round(point.x)}px, ${Math.round(point.y)}px) translate(-50%, -100%)`;
+    }
+  }
+
+  const marker = new PointMarker();
+  marker.setMap(map);
   return {
-    url: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`,
-    scaledSize: new maps.Size(34, 46),
-    anchor: new maps.Point(17, 45),
+    update(point, title) {
+      marker.position = point ? new maps.LatLng(point.latitude, point.longitude) : null;
+      marker.title = title;
+      marker.draw();
+    },
+    destroy() {
+      marker.setMap(null);
+    },
   };
 }

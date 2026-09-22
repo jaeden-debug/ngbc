@@ -5,7 +5,7 @@ import {
   addMonths, daysInMonth, isoParts, isoToDisplay, MONTH_NAMES, readableIso, toIso, todayIso,
   WEEKDAY_INITIALS, WEEKDAY_NAMES, weekdayOf,
 } from "../../lib/hunt/date";
-import styles from "./Hunt.module.css";
+import styles from "./Calendar.module.css";
 
 interface CalendarProps {
   /** The single selected hunt day, ISO. */

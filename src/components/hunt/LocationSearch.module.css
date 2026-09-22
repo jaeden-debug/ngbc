@@ -1,0 +1,151 @@
+/* Place search used inside Ready to Hunt's licence-vendor search. */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.searchWrap { position: relative; }
+
+.searchInputRow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: var(--ng-tap);
+  padding: 0 12px;
+  border-radius: var(--ng-radius-sm);
+}
+
+.searchInputRow:focus-within {
+  border-color: var(--ng-glass-border-bright);
+  box-shadow: 0 0 0 3px rgba(139, 168, 131, 0.18);
+}
+
+.searchIcon { flex: none; color: var(--ng-bone-faint); }
+
+.searchInput {
+  flex: 1;
+  align-self: stretch;
+  min-width: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 0.92rem;
+  color: var(--ng-cream);
+  outline: none;
+}
+
+.searchInput::placeholder { color: var(--ng-bone-faint); }
+
+.searchClear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(201, 194, 166, 0.10);
+  color: var(--ng-bone-dim);
+  cursor: pointer;
+}
+
+.suggestions {
+  background-color: var(--ng-glass-bg-dense);
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  max-height: 320px;
+  margin: 0;
+  padding: 6px;
+  overflow-y: auto;
+  border-radius: var(--ng-radius);
+  list-style: none;
+}
+
+.suggestion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 46px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: var(--ng-radius-sm);
+  background: none;
+  font: inherit;
+  color: var(--ng-cream);
+  text-align: left;
+  cursor: pointer;
+}
+
+.suggestion[data-active="true"] { background: rgba(201, 194, 166, 0.11); }
+
+.suggestionIcon { flex: none; color: var(--ng-moss); }
+
+.suggestionText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 1px;
+}
+
+.suggestionPrimary {
+  font-size: 0.89rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.suggestionSecondary {
+  font-size: 0.74rem;
+  color: var(--ng-bone-faint);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.attribution {
+  margin: 4px 0 2px;
+  padding: 0 10px;
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  color: var(--ng-bone-faint);
+}
+
+.searchNote {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--ng-bone-faint);
+  min-height: 1.1em;
+}
+
+.searchNote[data-tone="error"] { color: var(--ng-conflict); }
+
+.spinner {
+  flex: none;
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(201, 194, 166, 0.25);
+  border-top-color: var(--ng-moss);
+  border-radius: 50%;
+  animation: huntSpin 700ms linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation-duration: 2.4s; }
+}
+
+.field { position: relative; }
+
+@keyframes huntSpin { to { transform: rotate(360deg); } }

@@ -2,7 +2,7 @@
 
 import { useId, type KeyboardEvent } from "react";
 import type { RequiredDimension } from "../../lib/hunt/regulatory/dimensions";
-import styles from "./Hunt.module.css";
+import styles from "./HuntQuestion.module.css";
 
 /**
  * The one outstanding fact, asked in the hunter's terms.
