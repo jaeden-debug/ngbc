@@ -236,6 +236,10 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     zoneIdPrefix: "management_zone:ca-on-wmu-",
     // LIO drops units from wide envelope queries; 5° wide returns every unit.
     maxQueryLongitudeSpan: 5,
+    /* The map draws North Ground's stored drawings of the parity-certified copy,
+       falling back to Ontario's own service; the authority is still asked for
+       every point answer. */
+    mapGeometry: "stored",
   },
   {
     id: "layer:ca-mb-gha",
@@ -259,6 +263,10 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     officialNamePrefix: "Game Hunting Area ",
     certifiedDesignations: new Set(manitobaCertifiedUnits.certifiedUnits.map((unit) => unit.toUpperCase())),
     zoneIdPrefix: "management_zone:ca-mb-gha-",
+    /* The map draws North Ground's stored drawings of the parity-certified copy,
+       falling back to Manitoba's own service; the authority is still asked for
+       every point answer. */
+    mapGeometry: "stored",
   },
   {
     id: "layer:ca-ab-wmu",
@@ -288,6 +296,10 @@ export const ZONE_LAYERS: ZoneLayer[] = [
       const designation = String(Number(raw.trim()));
       return /^\d{3}$/.test(designation) ? designation : null;
     },
+    /* The map draws North Ground's stored drawings of the parity-certified copy,
+       falling back to Alberta's own service; the authority is still asked for
+       every point answer. */
+    mapGeometry: "stored",
   },
   {
     id: "layer:ca-qc-zone-chasse",
