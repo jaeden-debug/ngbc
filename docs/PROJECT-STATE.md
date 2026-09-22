@@ -486,6 +486,19 @@ deferred with them, and stays approved for later.
 ### 2026-09-22 — Migrations with triggers or functions are dry-run in production first
 Every migration that creates or changes a trigger or function is run with its assertions inside `BEGIN … ROLLBACK` against production before it is applied. `20260922190000` shipped a trigger function that failed every zone write at commit (42703). Its pgTAP file had never run, because there is no local database harness. The post-apply dry-run caught it, and `20260922200000` fixed it. Bulk writes through REST RPCs are batched under the 8-second statement timeout (≤15 records, ≤400 KB per call); a timed-out attempt is not retried. Repeated attempts loaded production during an owner upload.
 
+### 2026-09-22 — Falling back to a default is safe for a search box and dangerous for geography
+Newfoundland's caribou areas are certified but unreachable, so asking the map about caribou should draw nothing. It drew Newfoundland's MOOSE areas instead.
+
+The cause was a convenience in the zones route: a species the library does not hold was treated as "no species", which falls back to the geography drawn before any species is chosen. That fallback is itself a claim — it puts the wrong official boundary under a species North Ground cannot answer for, which is worse than drawing nothing, because a hunter could read a caribou season against a moose boundary.
+
+Two things about how this was found are worth keeping.
+
+**I predicted this exact failure and then built it.** The species-scoped work exists because I had written, two days of work earlier, that "choosing caribou would leave moose areas on the map beneath a caribou answer". Then I reintroduced it myself, in the validation, while fixing it. Knowing a failure mode is not protection against implementing it.
+
+**The unit tests did not catch it; five end-to-end cases did.** The tests covered `layersForBounds` directly and passed. The defect lived in the route's translation of a query parameter into that call — the seam between the thing tested and the thing shipped. Driving a real server with no species, the right species, another served species, an unserved species and an unrelated species took minutes and found two defects, the other being that black bear was certified but never promoted so it drew nothing at all.
+
+The generalisation, for anyone touching the species parameter or any other input that selects geography: **ignore-and-fall-back-to-the-default is a safe convention for a search box and a dangerous one for geography, because the fallback is a claim.** An input we cannot honour must produce nothing, not something plausible. The species is now passed through on its id shape alone and the layer filter decides.
+
 ### 2026-09-22 — A point sample cannot test a sliver, and saying so is not lowering the bar
 Newfoundland's black bear areas failed parity at 3 of 30 points. Traced: not the derivatives and not the resolver — North Ground's stored source geometry does not contain those points either, by **0.001 m, 0.059 m and 0.006 m**. All three are in areas 200, 201 and 205, three of the four whose invalid geometry we repaired with `ST_MakeValid`.
 
@@ -497,7 +510,7 @@ The certification now records an untestable part as its own outcome, never as ag
 
 **The ceiling is 15% of a layer's samples**, above which the layer fails rather than certifying. The reason for a ceiling at all is that untestable must never become the route by which a badly degenerate layer passes: if sampling loses its power over most of a layer, the inventory is carrying the certification alone and that should be a failure, not a pass. 15% sits above the observed worst case (Newfoundland black bear at 10%, being 3 of 30) and far above every other layer measured (Ontario 1 of 608, Yukon 1 of 1770, Québec 1 of 257 — all under 0.4%), so it admits the degenerate-sliver case without admitting a layer that is mostly untestable.
 
-Re-running every stored jurisdiction after the change left all outcomes **unchanged** — Ontario, Manitoba, Alberta, Québec, British Columbia, Yukon and both certified Newfoundland layers still VERIFIED. It also reclassified two parts that had been passing by luck: Ontario zone 56 (pole-to-edge 0.905 m) and Yukon 1-71 (0.357 m) were being point-tested on differences below the sampling tolerance and now say so.
+Re-running every stored jurisdiction after the change left all outcomes **unchanged** — Ontario, Manitoba, Alberta, Québec, British Columbia, Yukon and both certified Newfoundland layers still VERIFIED. It also reclassified two parts: Ontario zone 56 (pole-to-edge 0.905 m) and Yukon 1-71 (0.357 m). **This is not a regression in either layer — both were passing UNTESTED.** Their sampled points sat closer to their own edges than the tolerance the points were found to, so "agreement" there turned on differences below what the method can resolve; the agreement was luck, not evidence. Both layers remain VERIFIED on their inventories, and the record now states that two of their parts cannot be point-tested instead of quietly counting them as corroboration.
 
 ### 2026-09-22 — The PostgREST wall is 8 seconds and the direct session's is two minutes
 Newfoundland's black bear derivative build failed on its first zone with `57014 canceling statement due to statement timeout`, so none of the seven built. Area 200 — Labrador, 4,210 polygons, 197,117 vertices, 275,389 km² — takes **9.67 s** to build derivatives for, against PostgREST's 8 s limit. The wall was 1.7 seconds wide. The other six take 1.6-6.3 s and would have built had the script not stopped at the first failure, which it correctly does.
