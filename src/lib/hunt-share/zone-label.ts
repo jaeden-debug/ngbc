@@ -9,11 +9,19 @@ import { DEFAULT_ZONE_LOCALE, presentZoneById, type ZoneLocale } from "../hunt/z
 export function briefZoneLabels(
   zone: { id: string; displayName: string } | undefined,
   locale: ZoneLocale = DEFAULT_ZONE_LOCALE,
-): { label: string; officialName: string; accessibleLabel: string } | null {
+): { label: string; officialName: string; accessibleLabel: string; officialNameAddsInformation: boolean } | null {
   if (!zone) return null;
   const presented = presentZoneById(zone.id, locale, zone.displayName);
   if (presented.status !== "PRESENTED") {
-    return { label: zone.displayName, officialName: zone.displayName, accessibleLabel: zone.displayName };
+    return { label: zone.displayName, officialName: zone.displayName, accessibleLabel: zone.displayName, officialNameAddsInformation: false };
   }
-  return { label: presented.fullLabel, officialName: presented.officialName ?? zone.displayName, accessibleLabel: presented.accessibleLabel };
+  const officialName = presented.officialName ?? zone.displayName;
+  return {
+    label: presented.fullLabel,
+    officialName,
+    accessibleLabel: presented.accessibleLabel,
+    // "WMU 61" already says "Wildlife Management Unit 61"; "Zone 10 West" does not say "Zone de chasse 10O".
+    officialNameAddsInformation: officialName !== presented.fullLabel &&
+      officialName !== `${presented.termLong} ${presented.designationLabel}`,
+  };
 }

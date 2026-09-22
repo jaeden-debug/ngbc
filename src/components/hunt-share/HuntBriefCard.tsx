@@ -48,7 +48,7 @@ export default function HuntBriefCard({ brief }: { brief: ShareHuntBrief }) {
           <span>
             {zone ? zone.label : "Management zone unresolved"}
             {/* The authority's own name stays visible beside the readable one. */}
-            {zone && zone.officialName !== zone.label && <> ({zone.officialName})</>}
+            {zone?.officialNameAddsInformation && <> ({zone.officialName})</>}
           </span>
           <span>{brief.jurisdiction.displayName}</span>
           <span>{date}</span>

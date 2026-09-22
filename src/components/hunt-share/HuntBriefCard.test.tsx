@@ -86,7 +86,9 @@ test("7. a Hunt Brief keeps Québec's canonical zone and reads it as Zone 10 Wes
   assert.equal(briefZoneLabels({ id: "management_zone:us-co-gmu-12", displayName: "GMU 12" })?.label, "GMU 12");
 });
 
-test("an Ontario brief reads WMU 57 and names no second label", () => {
+test("an Ontario brief reads WMU 57 without repeating its official name in other words", () => {
   const html = renderToStaticMarkup(<HuntBriefCard brief={huntBriefFixture()} />);
-  assert.match(html, /WMU 57 \(Wildlife Management Unit 57\)/);
+  assert.match(html, /<span>WMU 57<\/span>/);
+  assert.doesNotMatch(html, /\(Wildlife Management Unit 57\)/);
+  assert.equal(briefZoneLabels(huntBriefFixture().managementZone)?.officialNameAddsInformation, false);
 });
