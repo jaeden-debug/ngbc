@@ -8,8 +8,10 @@ test("official Ontario harvest evidence is real, bounded and partial", () => {
   assert.deepEqual(ontarioHarvestEvidenceCoverage(), {
     speciesId: "species:white-tailed-deer",
     jurisdictionId: "jurisdiction:ca-on",
-    geographyCount: 116,
-    evidenceRecordCount: 232,
+    // 101 units the authority's own layer publishes; the 15 areas Ontario
+    // reports at a larger area are carried separately and never ranked.
+    geographyCount: 101,
+    evidenceRecordCount: 202,
     latestObservationYear: 2025,
     coverage: "PARTIAL_DATA",
   });
@@ -19,6 +21,10 @@ test("official Ontario harvest evidence is real, bounded and partial", () => {
   assert.equal(result.result.components.length, 2);
   assert.match(result.limitations.join(" "), /not.*legality/i);
   assert.equal(ontarioWhiteTailedDeerOpportunity("management_zone:ca-on-wmu-51"), null);
+  // A zero-padded reported code now joins the layer's designation: 01C is WMU 1C.
+  assert.ok(ontarioWhiteTailedDeerOpportunity("management_zone:ca-on-wmu-1c"));
+  // A sub-unit of an area reported at a larger area is not given the parent's figures.
+  assert.equal(ontarioWhiteTailedDeerOpportunity("management_zone:ca-on-wmu-76a"), null);
 });
 
 test("dataset registry preserves licence blockers and rejected misuse", () => {

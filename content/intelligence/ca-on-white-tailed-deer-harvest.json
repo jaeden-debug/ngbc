@@ -22,7 +22,8 @@
     "The authority says harvest and active-hunter values are estimates from a sample of resident hunters and are subject to statistical error.",
     "Historical harvest is evidence about past reported hunting outcomes, not a claim that deer are currently present.",
     "The evidence does not determine hunting legality, land access, or permission to hunt.",
-    "Only WMUs with a published 2025 record receive evidence; absence is no-data, not zero harvest."
+    "Only WMUs with a published 2025 record receive evidence; absence is no-data, not zero harvest.",
+    "Fifteen areas are reported by the authority at a larger area than its layer publishes. They are carried in reportedAtLargerArea with the authority's figures, are never apportioned across sub-units, and are excluded from the ranked pool and from opportunity classes."
   ],
   "observations": [
     {
@@ -15894,7 +15895,7 @@
     {
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-01c",
+      "geographyId": "management_zone:ca-on-wmu-1c",
       "geographyType": "MANAGEMENT_ZONE",
       "sourceId": "source:ca-on-white-tailed-deer-harvest",
       "observationPeriod": {
@@ -15908,17 +15909,17 @@
       "spatialPrecision": "Ontario Wildlife Management Unit",
       "version": "2025",
       "superseded": false,
-      "id": "evidence:ca-on-wmu-01c-white-tailed-deer-harvest-2025",
+      "id": "evidence:ca-on-wmu-1c-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 4,
-      "normalizedValue": 0.256522,
+      "normalizedValue": 0.295,
       "unit": "estimated harvested deer",
       "notes": "4 estimated deer harvested; 392 estimated active resident hunters."
     },
     {
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-01c",
+      "geographyId": "management_zone:ca-on-wmu-1c",
       "geographyType": "MANAGEMENT_ZONE",
       "sourceId": "source:ca-on-white-tailed-deer-harvest",
       "observationPeriod": {
@@ -15932,10 +15933,10 @@
       "spatialPrecision": "Ontario Wildlife Management Unit",
       "version": "2025",
       "superseded": false,
-      "id": "evidence:ca-on-wmu-01c-white-tailed-deer-harvest-per-hunter-2025",
+      "id": "evidence:ca-on-wmu-1c-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.010204,
-      "normalizedValue": 0.104348,
+      "normalizedValue": 0.12,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -15959,7 +15960,7 @@
       "id": "evidence:ca-on-wmu-2-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1,
-      "normalizedValue": 0.126087,
+      "normalizedValue": 0.145,
       "unit": "estimated harvested deer",
       "notes": "1 estimated deer harvested; 85 estimated active resident hunters."
     },
@@ -15983,7 +15984,7 @@
       "id": "evidence:ca-on-wmu-2-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.011765,
-      "normalizedValue": 0.113043,
+      "normalizedValue": 0.13,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -16007,7 +16008,7 @@
       "id": "evidence:ca-on-wmu-3-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 13,
-      "normalizedValue": 0.33913,
+      "normalizedValue": 0.39,
       "unit": "estimated harvested deer",
       "notes": "13 estimated deer harvested; 127 estimated active resident hunters."
     },
@@ -16031,7 +16032,7 @@
       "id": "evidence:ca-on-wmu-3-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.102362,
-      "normalizedValue": 0.26087,
+      "normalizedValue": 0.3,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -16055,7 +16056,7 @@
       "id": "evidence:ca-on-wmu-4-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 6,
-      "normalizedValue": 0.286957,
+      "normalizedValue": 0.33,
       "unit": "estimated harvested deer",
       "notes": "6 estimated deer harvested; 56 estimated active resident hunters."
     },
@@ -16079,7 +16080,7 @@
       "id": "evidence:ca-on-wmu-4-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.107143,
-      "normalizedValue": 0.278261,
+      "normalizedValue": 0.32,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -16103,7 +16104,7 @@
       "id": "evidence:ca-on-wmu-5-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 35,
-      "normalizedValue": 0.382609,
+      "normalizedValue": 0.44,
       "unit": "estimated harvested deer",
       "notes": "35 estimated deer harvested; 282 estimated active resident hunters."
     },
@@ -16127,7 +16128,7 @@
       "id": "evidence:ca-on-wmu-5-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.124113,
-      "normalizedValue": 0.304348,
+      "normalizedValue": 0.35,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -16151,7 +16152,7 @@
       "id": "evidence:ca-on-wmu-6-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 3,
-      "normalizedValue": 0.234783,
+      "normalizedValue": 0.27,
       "unit": "estimated harvested deer",
       "notes": "3 estimated deer harvested; 108 estimated active resident hunters."
     },
@@ -16175,14 +16176,14 @@
       "id": "evidence:ca-on-wmu-6-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.027778,
-      "normalizedValue": 0.13913,
+      "normalizedValue": 0.16,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
     {
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-07a",
+      "geographyId": "management_zone:ca-on-wmu-7a",
       "geographyType": "MANAGEMENT_ZONE",
       "sourceId": "source:ca-on-white-tailed-deer-harvest",
       "observationPeriod": {
@@ -16196,17 +16197,17 @@
       "spatialPrecision": "Ontario Wildlife Management Unit",
       "version": "2025",
       "superseded": false,
-      "id": "evidence:ca-on-wmu-07a-white-tailed-deer-harvest-2025",
+      "id": "evidence:ca-on-wmu-7a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 9,
-      "normalizedValue": 0.326087,
+      "normalizedValue": 0.375,
       "unit": "estimated harvested deer",
       "notes": "9 estimated deer harvested; 53 estimated active resident hunters."
     },
     {
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-07a",
+      "geographyId": "management_zone:ca-on-wmu-7a",
       "geographyType": "MANAGEMENT_ZONE",
       "sourceId": "source:ca-on-white-tailed-deer-harvest",
       "observationPeriod": {
@@ -16220,17 +16221,17 @@
       "spatialPrecision": "Ontario Wildlife Management Unit",
       "version": "2025",
       "superseded": false,
-      "id": "evidence:ca-on-wmu-07a-white-tailed-deer-harvest-per-hunter-2025",
+      "id": "evidence:ca-on-wmu-7a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.169811,
-      "normalizedValue": 0.382609,
+      "normalizedValue": 0.43,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
     {
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-07b",
+      "geographyId": "management_zone:ca-on-wmu-7b",
       "geographyType": "MANAGEMENT_ZONE",
       "sourceId": "source:ca-on-white-tailed-deer-harvest",
       "observationPeriod": {
@@ -16244,17 +16245,17 @@
       "spatialPrecision": "Ontario Wildlife Management Unit",
       "version": "2025",
       "superseded": false,
-      "id": "evidence:ca-on-wmu-07b-white-tailed-deer-harvest-2025",
+      "id": "evidence:ca-on-wmu-7b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 358,
-      "normalizedValue": 0.634783,
+      "normalizedValue": 0.7,
       "unit": "estimated harvested deer",
       "notes": "358 estimated deer harvested; 915 estimated active resident hunters."
     },
     {
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-07b",
+      "geographyId": "management_zone:ca-on-wmu-7b",
       "geographyType": "MANAGEMENT_ZONE",
       "sourceId": "source:ca-on-white-tailed-deer-harvest",
       "observationPeriod": {
@@ -16268,10 +16269,10 @@
       "spatialPrecision": "Ontario Wildlife Management Unit",
       "version": "2025",
       "superseded": false,
-      "id": "evidence:ca-on-wmu-07b-white-tailed-deer-harvest-per-hunter-2025",
+      "id": "evidence:ca-on-wmu-7b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.391257,
-      "normalizedValue": 0.921739,
+      "normalizedValue": 0.94,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -16295,7 +16296,7 @@
       "id": "evidence:ca-on-wmu-8-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 905,
-      "normalizedValue": 0.834783,
+      "normalizedValue": 0.86,
       "unit": "estimated harvested deer",
       "notes": "905 estimated deer harvested; 1519 estimated active resident hunters."
     },
@@ -16319,14 +16320,14 @@
       "id": "evidence:ca-on-wmu-8-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.595787,
-      "normalizedValue": 0.982609,
+      "normalizedValue": 0.98,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
     {
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-09a",
+      "geographyId": "management_zone:ca-on-wmu-9a",
       "geographyType": "MANAGEMENT_ZONE",
       "sourceId": "source:ca-on-white-tailed-deer-harvest",
       "observationPeriod": {
@@ -16340,17 +16341,17 @@
       "spatialPrecision": "Ontario Wildlife Management Unit",
       "version": "2025",
       "superseded": false,
-      "id": "evidence:ca-on-wmu-09a-white-tailed-deer-harvest-2025",
+      "id": "evidence:ca-on-wmu-9a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 15,
-      "normalizedValue": 0.347826,
+      "normalizedValue": 0.4,
       "unit": "estimated harvested deer",
       "notes": "15 estimated deer harvested; 151 estimated active resident hunters."
     },
     {
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-09a",
+      "geographyId": "management_zone:ca-on-wmu-9a",
       "geographyType": "MANAGEMENT_ZONE",
       "sourceId": "source:ca-on-white-tailed-deer-harvest",
       "observationPeriod": {
@@ -16364,17 +16365,17 @@
       "spatialPrecision": "Ontario Wildlife Management Unit",
       "version": "2025",
       "superseded": false,
-      "id": "evidence:ca-on-wmu-09a-white-tailed-deer-harvest-per-hunter-2025",
+      "id": "evidence:ca-on-wmu-9a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.099338,
-      "normalizedValue": 0.243478,
+      "normalizedValue": 0.28,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
     {
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-09b",
+      "geographyId": "management_zone:ca-on-wmu-9b",
       "geographyType": "MANAGEMENT_ZONE",
       "sourceId": "source:ca-on-white-tailed-deer-harvest",
       "observationPeriod": {
@@ -16388,17 +16389,17 @@
       "spatialPrecision": "Ontario Wildlife Management Unit",
       "version": "2025",
       "superseded": false,
-      "id": "evidence:ca-on-wmu-09b-white-tailed-deer-harvest-2025",
+      "id": "evidence:ca-on-wmu-9b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 81,
-      "normalizedValue": 0.408696,
+      "normalizedValue": 0.47,
       "unit": "estimated harvested deer",
       "notes": "81 estimated deer harvested; 375 estimated active resident hunters."
     },
     {
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-09b",
+      "geographyId": "management_zone:ca-on-wmu-9b",
       "geographyType": "MANAGEMENT_ZONE",
       "sourceId": "source:ca-on-white-tailed-deer-harvest",
       "observationPeriod": {
@@ -16412,10 +16413,10 @@
       "spatialPrecision": "Ontario Wildlife Management Unit",
       "version": "2025",
       "superseded": false,
-      "id": "evidence:ca-on-wmu-09b-white-tailed-deer-harvest-per-hunter-2025",
+      "id": "evidence:ca-on-wmu-9b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.216,
-      "normalizedValue": 0.513043,
+      "normalizedValue": 0.56,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -16439,7 +16440,7 @@
       "id": "evidence:ca-on-wmu-10-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 631,
-      "normalizedValue": 0.734783,
+      "normalizedValue": 0.785,
       "unit": "estimated harvested deer",
       "notes": "631 estimated deer harvested; 1633 estimated active resident hunters."
     },
@@ -16463,7 +16464,7 @@
       "id": "evidence:ca-on-wmu-10-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.386405,
-      "normalizedValue": 0.913043,
+      "normalizedValue": 0.93,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -16487,7 +16488,7 @@
       "id": "evidence:ca-on-wmu-11a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 9,
-      "normalizedValue": 0.326087,
+      "normalizedValue": 0.375,
       "unit": "estimated harvested deer",
       "notes": "9 estimated deer harvested; 108 estimated active resident hunters."
     },
@@ -16511,7 +16512,7 @@
       "id": "evidence:ca-on-wmu-11a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.083333,
-      "normalizedValue": 0.217391,
+      "normalizedValue": 0.25,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -16535,7 +16536,7 @@
       "id": "evidence:ca-on-wmu-11b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 2,
-      "normalizedValue": 0.195652,
+      "normalizedValue": 0.225,
       "unit": "estimated harvested deer",
       "notes": "2 estimated deer harvested; 58 estimated active resident hunters."
     },
@@ -16559,7 +16560,7 @@
       "id": "evidence:ca-on-wmu-11b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.034483,
-      "normalizedValue": 0.147826,
+      "normalizedValue": 0.17,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -16583,7 +16584,7 @@
       "id": "evidence:ca-on-wmu-12a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 2,
-      "normalizedValue": 0.195652,
+      "normalizedValue": 0.225,
       "unit": "estimated harvested deer",
       "notes": "2 estimated deer harvested; 44 estimated active resident hunters."
     },
@@ -16607,7 +16608,7 @@
       "id": "evidence:ca-on-wmu-12a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.045455,
-      "normalizedValue": 0.182609,
+      "normalizedValue": 0.21,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -16631,7 +16632,7 @@
       "id": "evidence:ca-on-wmu-12b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 63,
-      "normalizedValue": 0.391304,
+      "normalizedValue": 0.45,
       "unit": "estimated harvested deer",
       "notes": "63 estimated deer harvested; 254 estimated active resident hunters."
     },
@@ -16655,7 +16656,7 @@
       "id": "evidence:ca-on-wmu-12b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.248031,
-      "normalizedValue": 0.608696,
+      "normalizedValue": 0.67,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -16679,7 +16680,7 @@
       "id": "evidence:ca-on-wmu-13-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 543,
-      "normalizedValue": 0.704348,
+      "normalizedValue": 0.75,
       "unit": "estimated harvested deer",
       "notes": "543 estimated deer harvested; 2151 estimated active resident hunters."
     },
@@ -16703,7 +16704,7 @@
       "id": "evidence:ca-on-wmu-13-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.252441,
-      "normalizedValue": 0.634783,
+      "normalizedValue": 0.7,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -16727,7 +16728,7 @@
       "id": "evidence:ca-on-wmu-14-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer",
       "notes": "0 estimated deer harvested; 23 estimated active resident hunters."
     },
@@ -16751,7 +16752,7 @@
       "id": "evidence:ca-on-wmu-14-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -16775,7 +16776,7 @@
       "id": "evidence:ca-on-wmu-15a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 2,
-      "normalizedValue": 0.195652,
+      "normalizedValue": 0.225,
       "unit": "estimated harvested deer",
       "notes": "2 estimated deer harvested; 39 estimated active resident hunters."
     },
@@ -16799,7 +16800,7 @@
       "id": "evidence:ca-on-wmu-15a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.051282,
-      "normalizedValue": 0.191304,
+      "normalizedValue": 0.22,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -16823,7 +16824,7 @@
       "id": "evidence:ca-on-wmu-15b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1,
-      "normalizedValue": 0.126087,
+      "normalizedValue": 0.145,
       "unit": "estimated harvested deer",
       "notes": "1 estimated deer harvested; 159 estimated active resident hunters."
     },
@@ -16847,7 +16848,7 @@
       "id": "evidence:ca-on-wmu-15b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.006289,
-      "normalizedValue": 0.095652,
+      "normalizedValue": 0.11,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -16871,7 +16872,7 @@
       "id": "evidence:ca-on-wmu-16a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer",
       "notes": "0 estimated deer harvested; 11 estimated active resident hunters."
     },
@@ -16895,7 +16896,7 @@
       "id": "evidence:ca-on-wmu-16a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -16919,7 +16920,7 @@
       "id": "evidence:ca-on-wmu-16b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 2,
-      "normalizedValue": 0.195652,
+      "normalizedValue": 0.225,
       "unit": "estimated harvested deer",
       "notes": "2 estimated deer harvested; 8 estimated active resident hunters."
     },
@@ -16943,7 +16944,7 @@
       "id": "evidence:ca-on-wmu-16b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.25,
-      "normalizedValue": 0.626087,
+      "normalizedValue": 0.69,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -16967,7 +16968,7 @@
       "id": "evidence:ca-on-wmu-16c-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer",
       "notes": "0 estimated deer harvested; 3 estimated active resident hunters."
     },
@@ -16991,7 +16992,7 @@
       "id": "evidence:ca-on-wmu-16c-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17015,7 +17016,7 @@
       "id": "evidence:ca-on-wmu-17-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 4,
-      "normalizedValue": 0.256522,
+      "normalizedValue": 0.295,
       "unit": "estimated harvested deer",
       "notes": "4 estimated deer harvested; 21 estimated active resident hunters."
     },
@@ -17039,7 +17040,7 @@
       "id": "evidence:ca-on-wmu-17-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.190476,
-      "normalizedValue": 0.434783,
+      "normalizedValue": 0.48,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17063,7 +17064,7 @@
       "id": "evidence:ca-on-wmu-18a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 2,
-      "normalizedValue": 0.195652,
+      "normalizedValue": 0.225,
       "unit": "estimated harvested deer",
       "notes": "2 estimated deer harvested; 13 estimated active resident hunters."
     },
@@ -17087,7 +17088,7 @@
       "id": "evidence:ca-on-wmu-18a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.153846,
-      "normalizedValue": 0.356522,
+      "normalizedValue": 0.4,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17111,7 +17112,7 @@
       "id": "evidence:ca-on-wmu-18b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer",
       "notes": "0 estimated deer harvested; 5 estimated active resident hunters."
     },
@@ -17135,7 +17136,7 @@
       "id": "evidence:ca-on-wmu-18b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17159,7 +17160,7 @@
       "id": "evidence:ca-on-wmu-19-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer",
       "notes": "0 estimated deer harvested; 13 estimated active resident hunters."
     },
@@ -17183,7 +17184,7 @@
       "id": "evidence:ca-on-wmu-19-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17207,7 +17208,7 @@
       "id": "evidence:ca-on-wmu-21a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 4,
-      "normalizedValue": 0.256522,
+      "normalizedValue": 0.295,
       "unit": "estimated harvested deer",
       "notes": "4 estimated deer harvested; 90 estimated active resident hunters."
     },
@@ -17231,7 +17232,7 @@
       "id": "evidence:ca-on-wmu-21a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.044444,
-      "normalizedValue": 0.173913,
+      "normalizedValue": 0.2,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17255,7 +17256,7 @@
       "id": "evidence:ca-on-wmu-21b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer",
       "notes": "0 estimated deer harvested; 20 estimated active resident hunters."
     },
@@ -17279,7 +17280,7 @@
       "id": "evidence:ca-on-wmu-21b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17303,7 +17304,7 @@
       "id": "evidence:ca-on-wmu-22-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1,
-      "normalizedValue": 0.126087,
+      "normalizedValue": 0.145,
       "unit": "estimated harvested deer",
       "notes": "1 estimated deer harvested; 13 estimated active resident hunters."
     },
@@ -17327,7 +17328,7 @@
       "id": "evidence:ca-on-wmu-22-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.076923,
-      "normalizedValue": 0.2,
+      "normalizedValue": 0.23,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17351,7 +17352,7 @@
       "id": "evidence:ca-on-wmu-23-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer",
       "notes": "0 estimated deer harvested; 12 estimated active resident hunters."
     },
@@ -17375,7 +17376,7 @@
       "id": "evidence:ca-on-wmu-23-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17399,7 +17400,7 @@
       "id": "evidence:ca-on-wmu-24-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer",
       "notes": "0 estimated deer harvested; 11 estimated active resident hunters."
     },
@@ -17423,7 +17424,7 @@
       "id": "evidence:ca-on-wmu-24-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17447,7 +17448,7 @@
       "id": "evidence:ca-on-wmu-25-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1,
-      "normalizedValue": 0.126087,
+      "normalizedValue": 0.145,
       "unit": "estimated harvested deer",
       "notes": "1 estimated deer harvested; 9 estimated active resident hunters."
     },
@@ -17471,7 +17472,7 @@
       "id": "evidence:ca-on-wmu-25-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.111111,
-      "normalizedValue": 0.286957,
+      "normalizedValue": 0.33,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17495,7 +17496,7 @@
       "id": "evidence:ca-on-wmu-26-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1,
-      "normalizedValue": 0.126087,
+      "normalizedValue": 0.145,
       "unit": "estimated harvested deer",
       "notes": "1 estimated deer harvested; 10 estimated active resident hunters."
     },
@@ -17519,7 +17520,7 @@
       "id": "evidence:ca-on-wmu-26-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.1,
-      "normalizedValue": 0.252174,
+      "normalizedValue": 0.29,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17543,7 +17544,7 @@
       "id": "evidence:ca-on-wmu-27-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer",
       "notes": "0 estimated deer harvested; 13 estimated active resident hunters."
     },
@@ -17567,7 +17568,7 @@
       "id": "evidence:ca-on-wmu-27-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17591,7 +17592,7 @@
       "id": "evidence:ca-on-wmu-28-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 7,
-      "normalizedValue": 0.304348,
+      "normalizedValue": 0.35,
       "unit": "estimated harvested deer",
       "notes": "7 estimated deer harvested; 89 estimated active resident hunters."
     },
@@ -17615,7 +17616,7 @@
       "id": "evidence:ca-on-wmu-28-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.078652,
-      "normalizedValue": 0.208696,
+      "normalizedValue": 0.24,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17639,7 +17640,7 @@
       "id": "evidence:ca-on-wmu-29-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1,
-      "normalizedValue": 0.126087,
+      "normalizedValue": 0.145,
       "unit": "estimated harvested deer",
       "notes": "1 estimated deer harvested; 23 estimated active resident hunters."
     },
@@ -17663,7 +17664,7 @@
       "id": "evidence:ca-on-wmu-29-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.043478,
-      "normalizedValue": 0.16087,
+      "normalizedValue": 0.185,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17687,7 +17688,7 @@
       "id": "evidence:ca-on-wmu-30-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer",
       "notes": "0 estimated deer harvested; 58 estimated active resident hunters."
     },
@@ -17711,7 +17712,7 @@
       "id": "evidence:ca-on-wmu-30-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17735,7 +17736,7 @@
       "id": "evidence:ca-on-wmu-31-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 2,
-      "normalizedValue": 0.195652,
+      "normalizedValue": 0.225,
       "unit": "estimated harvested deer",
       "notes": "2 estimated deer harvested; 21 estimated active resident hunters."
     },
@@ -17759,7 +17760,7 @@
       "id": "evidence:ca-on-wmu-31-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.095238,
-      "normalizedValue": 0.234783,
+      "normalizedValue": 0.27,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17783,7 +17784,7 @@
       "id": "evidence:ca-on-wmu-32-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1,
-      "normalizedValue": 0.126087,
+      "normalizedValue": 0.145,
       "unit": "estimated harvested deer",
       "notes": "1 estimated deer harvested; 23 estimated active resident hunters."
     },
@@ -17807,7 +17808,7 @@
       "id": "evidence:ca-on-wmu-32-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.043478,
-      "normalizedValue": 0.16087,
+      "normalizedValue": 0.185,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17831,7 +17832,7 @@
       "id": "evidence:ca-on-wmu-33-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer",
       "notes": "0 estimated deer harvested; 4 estimated active resident hunters."
     },
@@ -17855,7 +17856,7 @@
       "id": "evidence:ca-on-wmu-33-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0,
-      "normalizedValue": 0.043478,
+      "normalizedValue": 0.05,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17879,7 +17880,7 @@
       "id": "evidence:ca-on-wmu-34-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 2,
-      "normalizedValue": 0.195652,
+      "normalizedValue": 0.225,
       "unit": "estimated harvested deer",
       "notes": "2 estimated deer harvested; 23 estimated active resident hunters."
     },
@@ -17903,7 +17904,7 @@
       "id": "evidence:ca-on-wmu-34-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.086957,
-      "normalizedValue": 0.226087,
+      "normalizedValue": 0.26,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17927,7 +17928,7 @@
       "id": "evidence:ca-on-wmu-35-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 8,
-      "normalizedValue": 0.313043,
+      "normalizedValue": 0.36,
       "unit": "estimated harvested deer",
       "notes": "8 estimated deer harvested; 77 estimated active resident hunters."
     },
@@ -17951,7 +17952,7 @@
       "id": "evidence:ca-on-wmu-35-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.103896,
-      "normalizedValue": 0.269565,
+      "normalizedValue": 0.31,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -17975,7 +17976,7 @@
       "id": "evidence:ca-on-wmu-36-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 301,
-      "normalizedValue": 0.582609,
+      "normalizedValue": 0.65,
       "unit": "estimated harvested deer",
       "notes": "301 estimated deer harvested; 1588 estimated active resident hunters."
     },
@@ -17999,7 +18000,7 @@
       "id": "evidence:ca-on-wmu-36-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.189547,
-      "normalizedValue": 0.426087,
+      "normalizedValue": 0.47,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18023,7 +18024,7 @@
       "id": "evidence:ca-on-wmu-37-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 267,
-      "normalizedValue": 0.547826,
+      "normalizedValue": 0.61,
       "unit": "estimated harvested deer",
       "notes": "267 estimated deer harvested; 1398 estimated active resident hunters."
     },
@@ -18047,7 +18048,7 @@
       "id": "evidence:ca-on-wmu-37-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.190987,
-      "normalizedValue": 0.443478,
+      "normalizedValue": 0.49,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18071,7 +18072,7 @@
       "id": "evidence:ca-on-wmu-38-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 2,
-      "normalizedValue": 0.195652,
+      "normalizedValue": 0.225,
       "unit": "estimated harvested deer",
       "notes": "2 estimated deer harvested; 116 estimated active resident hunters."
     },
@@ -18095,7 +18096,7 @@
       "id": "evidence:ca-on-wmu-38-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.017241,
-      "normalizedValue": 0.130435,
+      "normalizedValue": 0.15,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18119,7 +18120,7 @@
       "id": "evidence:ca-on-wmu-39-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 121,
-      "normalizedValue": 0.443478,
+      "normalizedValue": 0.51,
       "unit": "estimated harvested deer",
       "notes": "121 estimated deer harvested; 909 estimated active resident hunters."
     },
@@ -18143,7 +18144,7 @@
       "id": "evidence:ca-on-wmu-39-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.133113,
-      "normalizedValue": 0.313043,
+      "normalizedValue": 0.36,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18167,7 +18168,7 @@
       "id": "evidence:ca-on-wmu-40-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1,
-      "normalizedValue": 0.126087,
+      "normalizedValue": 0.145,
       "unit": "estimated harvested deer",
       "notes": "1 estimated deer harvested; 78 estimated active resident hunters."
     },
@@ -18191,7 +18192,7 @@
       "id": "evidence:ca-on-wmu-40-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.012821,
-      "normalizedValue": 0.121739,
+      "normalizedValue": 0.14,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18215,7 +18216,7 @@
       "id": "evidence:ca-on-wmu-41-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 193,
-      "normalizedValue": 0.486957,
+      "normalizedValue": 0.55,
       "unit": "estimated harvested deer",
       "notes": "193 estimated deer harvested; 1205 estimated active resident hunters."
     },
@@ -18239,7 +18240,7 @@
       "id": "evidence:ca-on-wmu-41-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.160166,
-      "normalizedValue": 0.365217,
+      "normalizedValue": 0.41,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18263,7 +18264,7 @@
       "id": "evidence:ca-on-wmu-42-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 475,
-      "normalizedValue": 0.686957,
+      "normalizedValue": 0.73,
       "unit": "estimated harvested deer",
       "notes": "475 estimated deer harvested; 2913 estimated active resident hunters."
     },
@@ -18287,7 +18288,7 @@
       "id": "evidence:ca-on-wmu-42-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.163062,
-      "normalizedValue": 0.373913,
+      "normalizedValue": 0.42,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18311,7 +18312,7 @@
       "id": "evidence:ca-on-wmu-43a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 208,
-      "normalizedValue": 0.495652,
+      "normalizedValue": 0.56,
       "unit": "estimated harvested deer",
       "notes": "208 estimated deer harvested; 927 estimated active resident hunters."
     },
@@ -18335,7 +18336,7 @@
       "id": "evidence:ca-on-wmu-43a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.22438,
-      "normalizedValue": 0.53913,
+      "normalizedValue": 0.59,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18359,7 +18360,7 @@
       "id": "evidence:ca-on-wmu-43b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 2716,
-      "normalizedValue": 0.991304,
+      "normalizedValue": 1,
       "unit": "estimated harvested deer",
       "notes": "2716 estimated deer harvested; 6267 estimated active resident hunters."
     },
@@ -18383,7 +18384,7 @@
       "id": "evidence:ca-on-wmu-43b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.433381,
-      "normalizedValue": 0.93913,
+      "normalizedValue": 0.96,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18407,7 +18408,7 @@
       "id": "evidence:ca-on-wmu-44-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 91,
-      "normalizedValue": 0.426087,
+      "normalizedValue": 0.49,
       "unit": "estimated harvested deer",
       "notes": "91 estimated deer harvested; 136 estimated active resident hunters."
     },
@@ -18431,7 +18432,7 @@
       "id": "evidence:ca-on-wmu-44-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.669118,
-      "normalizedValue": 0.991304,
+      "normalizedValue": 0.99,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18455,7 +18456,7 @@
       "id": "evidence:ca-on-wmu-45-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 401,
-      "normalizedValue": 0.656522,
+      "normalizedValue": 0.715,
       "unit": "estimated harvested deer",
       "notes": "401 estimated deer harvested; 1402 estimated active resident hunters."
     },
@@ -18479,7 +18480,7 @@
       "id": "evidence:ca-on-wmu-45-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.28602,
-      "normalizedValue": 0.747826,
+      "normalizedValue": 0.81,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18503,7 +18504,7 @@
       "id": "evidence:ca-on-wmu-46-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 636,
-      "normalizedValue": 0.747826,
+      "normalizedValue": 0.8,
       "unit": "estimated harvested deer",
       "notes": "636 estimated deer harvested; 2275 estimated active resident hunters."
     },
@@ -18527,7 +18528,7 @@
       "id": "evidence:ca-on-wmu-46-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.27956,
-      "normalizedValue": 0.721739,
+      "normalizedValue": 0.78,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18551,7 +18552,7 @@
       "id": "evidence:ca-on-wmu-47-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1436,
-      "normalizedValue": 0.930435,
+      "normalizedValue": 0.96,
       "unit": "estimated harvested deer",
       "notes": "1436 estimated deer harvested; 6231 estimated active resident hunters."
     },
@@ -18575,7 +18576,7 @@
       "id": "evidence:ca-on-wmu-47-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.230461,
-      "normalizedValue": 0.556522,
+      "normalizedValue": 0.61,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18599,7 +18600,7 @@
       "id": "evidence:ca-on-wmu-48-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 642,
-      "normalizedValue": 0.765217,
+      "normalizedValue": 0.82,
       "unit": "estimated harvested deer",
       "notes": "642 estimated deer harvested; 2580 estimated active resident hunters."
     },
@@ -18623,7 +18624,7 @@
       "id": "evidence:ca-on-wmu-48-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.248837,
-      "normalizedValue": 0.617391,
+      "normalizedValue": 0.68,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18647,7 +18648,7 @@
       "id": "evidence:ca-on-wmu-49-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 876,
-      "normalizedValue": 0.817391,
+      "normalizedValue": 0.84,
       "unit": "estimated harvested deer",
       "notes": "876 estimated deer harvested; 4748 estimated active resident hunters."
     },
@@ -18671,7 +18672,7 @@
       "id": "evidence:ca-on-wmu-49-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.184499,
-      "normalizedValue": 0.408696,
+      "normalizedValue": 0.45,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18695,7 +18696,7 @@
       "id": "evidence:ca-on-wmu-50-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 236,
-      "normalizedValue": 0.521739,
+      "normalizedValue": 0.58,
       "unit": "estimated harvested deer",
       "notes": "236 estimated deer harvested; 1629 estimated active resident hunters."
     },
@@ -18719,7 +18720,7 @@
       "id": "evidence:ca-on-wmu-50-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.144874,
-      "normalizedValue": 0.33913,
+      "normalizedValue": 0.39,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18743,7 +18744,7 @@
       "id": "evidence:ca-on-wmu-53a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 619,
-      "normalizedValue": 0.721739,
+      "normalizedValue": 0.77,
       "unit": "estimated harvested deer",
       "notes": "619 estimated deer harvested; 2591 estimated active resident hunters."
     },
@@ -18767,7 +18768,7 @@
       "id": "evidence:ca-on-wmu-53a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.238904,
-      "normalizedValue": 0.573913,
+      "normalizedValue": 0.63,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18791,7 +18792,7 @@
       "id": "evidence:ca-on-wmu-53b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 85,
-      "normalizedValue": 0.417391,
+      "normalizedValue": 0.48,
       "unit": "estimated harvested deer",
       "notes": "85 estimated deer harvested; 292 estimated active resident hunters."
     },
@@ -18815,7 +18816,7 @@
       "id": "evidence:ca-on-wmu-53b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.291096,
-      "normalizedValue": 0.773913,
+      "normalizedValue": 0.83,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18839,7 +18840,7 @@
       "id": "evidence:ca-on-wmu-54-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 268,
-      "normalizedValue": 0.556522,
+      "normalizedValue": 0.62,
       "unit": "estimated harvested deer",
       "notes": "268 estimated deer harvested; 1426 estimated active resident hunters."
     },
@@ -18863,7 +18864,7 @@
       "id": "evidence:ca-on-wmu-54-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.187938,
-      "normalizedValue": 0.417391,
+      "normalizedValue": 0.46,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18887,7 +18888,7 @@
       "id": "evidence:ca-on-wmu-55a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 237,
-      "normalizedValue": 0.530435,
+      "normalizedValue": 0.59,
       "unit": "estimated harvested deer",
       "notes": "237 estimated deer harvested; 1104 estimated active resident hunters."
     },
@@ -18911,7 +18912,7 @@
       "id": "evidence:ca-on-wmu-55a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.214674,
-      "normalizedValue": 0.504348,
+      "normalizedValue": 0.55,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18935,7 +18936,7 @@
       "id": "evidence:ca-on-wmu-55b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 637,
-      "normalizedValue": 0.756522,
+      "normalizedValue": 0.81,
       "unit": "estimated harvested deer",
       "notes": "637 estimated deer harvested; 2416 estimated active resident hunters."
     },
@@ -18959,7 +18960,7 @@
       "id": "evidence:ca-on-wmu-55b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.263659,
-      "normalizedValue": 0.695652,
+      "normalizedValue": 0.76,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -18983,7 +18984,7 @@
       "id": "evidence:ca-on-wmu-56-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 854,
-      "normalizedValue": 0.808696,
+      "normalizedValue": 0.83,
       "unit": "estimated harvested deer",
       "notes": "854 estimated deer harvested; 3268 estimated active resident hunters."
     },
@@ -19007,7 +19008,7 @@
       "id": "evidence:ca-on-wmu-56-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.261322,
-      "normalizedValue": 0.678261,
+      "normalizedValue": 0.74,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19031,7 +19032,7 @@
       "id": "evidence:ca-on-wmu-57-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1170,
-      "normalizedValue": 0.878261,
+      "normalizedValue": 0.91,
       "unit": "estimated harvested deer",
       "notes": "1170 estimated deer harvested; 4114 estimated active resident hunters."
     },
@@ -19055,7 +19056,7 @@
       "id": "evidence:ca-on-wmu-57-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.284395,
-      "normalizedValue": 0.730435,
+      "normalizedValue": 0.79,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19079,7 +19080,7 @@
       "id": "evidence:ca-on-wmu-58-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1308,
-      "normalizedValue": 0.904348,
+      "normalizedValue": 0.94,
       "unit": "estimated harvested deer",
       "notes": "1308 estimated deer harvested; 4936 estimated active resident hunters."
     },
@@ -19103,7 +19104,7 @@
       "id": "evidence:ca-on-wmu-58-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.264992,
-      "normalizedValue": 0.704348,
+      "normalizedValue": 0.77,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19127,7 +19128,7 @@
       "id": "evidence:ca-on-wmu-59-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1135,
-      "normalizedValue": 0.869565,
+      "normalizedValue": 0.9,
       "unit": "estimated harvested deer",
       "notes": "1135 estimated deer harvested; 3608 estimated active resident hunters."
     },
@@ -19151,7 +19152,7 @@
       "id": "evidence:ca-on-wmu-59-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.314579,
-      "normalizedValue": 0.834783,
+      "normalizedValue": 0.88,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19175,7 +19176,7 @@
       "id": "evidence:ca-on-wmu-60-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 2037,
-      "normalizedValue": 0.973913,
+      "normalizedValue": 0.98,
       "unit": "estimated harvested deer",
       "notes": "2037 estimated deer harvested; 7857 estimated active resident hunters."
     },
@@ -19199,7 +19200,7 @@
       "id": "evidence:ca-on-wmu-60-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.259259,
-      "normalizedValue": 0.669565,
+      "normalizedValue": 0.73,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19223,7 +19224,7 @@
       "id": "evidence:ca-on-wmu-61-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1019,
-      "normalizedValue": 0.843478,
+      "normalizedValue": 0.87,
       "unit": "estimated harvested deer",
       "notes": "1019 estimated deer harvested; 4468 estimated active resident hunters."
     },
@@ -19247,7 +19248,7 @@
       "id": "evidence:ca-on-wmu-61-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.228066,
-      "normalizedValue": 0.547826,
+      "normalizedValue": 0.6,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19271,7 +19272,7 @@
       "id": "evidence:ca-on-wmu-62-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1243,
-      "normalizedValue": 0.895652,
+      "normalizedValue": 0.93,
       "unit": "estimated harvested deer",
       "notes": "1243 estimated deer harvested; 4005 estimated active resident hunters."
     },
@@ -19295,7 +19296,7 @@
       "id": "evidence:ca-on-wmu-62-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.310362,
-      "normalizedValue": 0.817391,
+      "normalizedValue": 0.86,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19319,7 +19320,7 @@
       "id": "evidence:ca-on-wmu-63a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1121,
-      "normalizedValue": 0.852174,
+      "normalizedValue": 0.88,
       "unit": "estimated harvested deer",
       "notes": "1121 estimated deer harvested; 5162 estimated active resident hunters."
     },
@@ -19343,7 +19344,7 @@
       "id": "evidence:ca-on-wmu-63a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.217164,
-      "normalizedValue": 0.521739,
+      "normalizedValue": 0.57,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19367,7 +19368,7 @@
       "id": "evidence:ca-on-wmu-63b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 631,
-      "normalizedValue": 0.734783,
+      "normalizedValue": 0.785,
       "unit": "estimated harvested deer",
       "notes": "631 estimated deer harvested; 1900 estimated active resident hunters."
     },
@@ -19391,7 +19392,7 @@
       "id": "evidence:ca-on-wmu-63b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.332105,
-      "normalizedValue": 0.852174,
+      "normalizedValue": 0.9,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19415,7 +19416,7 @@
       "id": "evidence:ca-on-wmu-64a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1134,
-      "normalizedValue": 0.86087,
+      "normalizedValue": 0.89,
       "unit": "estimated harvested deer",
       "notes": "1134 estimated deer harvested; 3120 estimated active resident hunters."
     },
@@ -19439,7 +19440,7 @@
       "id": "evidence:ca-on-wmu-64a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.363462,
-      "normalizedValue": 0.86087,
+      "normalizedValue": 0.91,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19463,7 +19464,7 @@
       "id": "evidence:ca-on-wmu-64b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 295,
-      "normalizedValue": 0.573913,
+      "normalizedValue": 0.64,
       "unit": "estimated harvested deer",
       "notes": "295 estimated deer harvested; 1015 estimated active resident hunters."
     },
@@ -19487,7 +19488,7 @@
       "id": "evidence:ca-on-wmu-64b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.29064,
-      "normalizedValue": 0.765217,
+      "normalizedValue": 0.82,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19511,7 +19512,7 @@
       "id": "evidence:ca-on-wmu-65-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1639,
-      "normalizedValue": 0.947826,
+      "normalizedValue": 0.97,
       "unit": "estimated harvested deer",
       "notes": "1639 estimated deer harvested; 5035 estimated active resident hunters."
     },
@@ -19535,7 +19536,7 @@
       "id": "evidence:ca-on-wmu-65-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.325521,
-      "normalizedValue": 0.843478,
+      "normalizedValue": 0.89,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19559,7 +19560,7 @@
       "id": "evidence:ca-on-wmu-66a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 401,
-      "normalizedValue": 0.656522,
+      "normalizedValue": 0.715,
       "unit": "estimated harvested deer",
       "notes": "401 estimated deer harvested; 1964 estimated active resident hunters."
     },
@@ -19583,7 +19584,7 @@
       "id": "evidence:ca-on-wmu-66a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.204175,
-      "normalizedValue": 0.478261,
+      "normalizedValue": 0.52,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19607,7 +19608,7 @@
       "id": "evidence:ca-on-wmu-66b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 17,
-      "normalizedValue": 0.365217,
+      "normalizedValue": 0.42,
       "unit": "estimated harvested deer",
       "notes": "17 estimated deer harvested; 100 estimated active resident hunters."
     },
@@ -19631,7 +19632,7 @@
       "id": "evidence:ca-on-wmu-66b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.17,
-      "normalizedValue": 0.391304,
+      "normalizedValue": 0.44,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19655,7 +19656,7 @@
       "id": "evidence:ca-on-wmu-67-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 2441,
-      "normalizedValue": 0.982609,
+      "normalizedValue": 0.99,
       "unit": "estimated harvested deer",
       "notes": "2441 estimated deer harvested; 5808 estimated active resident hunters."
     },
@@ -19679,7 +19680,7 @@
       "id": "evidence:ca-on-wmu-67-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.420282,
-      "normalizedValue": 0.930435,
+      "normalizedValue": 0.95,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19703,7 +19704,7 @@
       "id": "evidence:ca-on-wmu-68a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 338,
-      "normalizedValue": 0.617391,
+      "normalizedValue": 0.69,
       "unit": "estimated harvested deer",
       "notes": "338 estimated deer harvested; 1285 estimated active resident hunters."
     },
@@ -19727,7 +19728,7 @@
       "id": "evidence:ca-on-wmu-68a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.263035,
-      "normalizedValue": 0.686957,
+      "normalizedValue": 0.75,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19751,7 +19752,7 @@
       "id": "evidence:ca-on-wmu-68b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 554,
-      "normalizedValue": 0.713043,
+      "normalizedValue": 0.76,
       "unit": "estimated harvested deer",
       "notes": "554 estimated deer harvested; 2312 estimated active resident hunters."
     },
@@ -19775,55 +19776,7 @@
       "id": "evidence:ca-on-wmu-68b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.239619,
-      "normalizedValue": 0.582609,
-      "unit": "estimated harvested deer per estimated active resident hunter",
-      "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-69a",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-69a-white-tailed-deer-harvest-2025",
-      "metric": "HARVEST_TOTAL",
-      "rawValue": 680,
-      "normalizedValue": 0.773913,
-      "unit": "estimated harvested deer",
-      "notes": "680 estimated deer harvested; 1398 estimated active resident hunters."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-69a",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-69a-white-tailed-deer-harvest-per-hunter-2025",
-      "metric": "HARVEST_PER_HUNTER",
-      "rawValue": 0.486409,
-      "normalizedValue": 0.965217,
+      "normalizedValue": 0.64,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19847,7 +19800,7 @@
       "id": "evidence:ca-on-wmu-69b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 159,
-      "normalizedValue": 0.469565,
+      "normalizedValue": 0.53,
       "unit": "estimated harvested deer",
       "notes": "159 estimated deer harvested; 334 estimated active resident hunters."
     },
@@ -19871,7 +19824,7 @@
       "id": "evidence:ca-on-wmu-69b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.476048,
-      "normalizedValue": 0.947826,
+      "normalizedValue": 0.97,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19895,7 +19848,7 @@
       "id": "evidence:ca-on-wmu-70-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 325,
-      "normalizedValue": 0.591304,
+      "normalizedValue": 0.66,
       "unit": "estimated harvested deer",
       "notes": "325 estimated deer harvested; 1095 estimated active resident hunters."
     },
@@ -19919,7 +19872,7 @@
       "id": "evidence:ca-on-wmu-70-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.296804,
-      "normalizedValue": 0.782609,
+      "normalizedValue": 0.84,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19943,7 +19896,7 @@
       "id": "evidence:ca-on-wmu-71-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 290,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.63,
       "unit": "estimated harvested deer",
       "notes": "290 estimated deer harvested; 1198 estimated active resident hunters."
     },
@@ -19967,7 +19920,7 @@
       "id": "evidence:ca-on-wmu-71-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.24207,
-      "normalizedValue": 0.591304,
+      "normalizedValue": 0.65,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -19991,7 +19944,7 @@
       "id": "evidence:ca-on-wmu-72a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 329,
-      "normalizedValue": 0.6,
+      "normalizedValue": 0.67,
       "unit": "estimated harvested deer",
       "notes": "329 estimated deer harvested; 1282 estimated active resident hunters."
     },
@@ -20015,7 +19968,7 @@
       "id": "evidence:ca-on-wmu-72a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.25663,
-      "normalizedValue": 0.652174,
+      "normalizedValue": 0.72,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -20039,7 +19992,7 @@
       "id": "evidence:ca-on-wmu-72b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 25,
-      "normalizedValue": 0.373913,
+      "normalizedValue": 0.43,
       "unit": "estimated harvested deer",
       "notes": "25 estimated deer harvested; 130 estimated active resident hunters."
     },
@@ -20063,7 +20016,7 @@
       "id": "evidence:ca-on-wmu-72b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.192308,
-      "normalizedValue": 0.452174,
+      "normalizedValue": 0.5,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -20087,7 +20040,7 @@
       "id": "evidence:ca-on-wmu-73-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 509,
-      "normalizedValue": 0.695652,
+      "normalizedValue": 0.74,
       "unit": "estimated harvested deer",
       "notes": "509 estimated deer harvested; 2388 estimated active resident hunters."
     },
@@ -20111,7 +20064,7 @@
       "id": "evidence:ca-on-wmu-73-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.213149,
-      "normalizedValue": 0.495652,
+      "normalizedValue": 0.54,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -20135,7 +20088,7 @@
       "id": "evidence:ca-on-wmu-74a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 152,
-      "normalizedValue": 0.46087,
+      "normalizedValue": 0.52,
       "unit": "estimated harvested deer",
       "notes": "152 estimated deer harvested; 652 estimated active resident hunters."
     },
@@ -20159,7 +20112,7 @@
       "id": "evidence:ca-on-wmu-74a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.233129,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.62,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -20183,7 +20136,7 @@
       "id": "evidence:ca-on-wmu-74b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 245,
-      "normalizedValue": 0.53913,
+      "normalizedValue": 0.6,
       "unit": "estimated harvested deer",
       "notes": "245 estimated deer harvested; 956 estimated active resident hunters."
     },
@@ -20207,7 +20160,7 @@
       "id": "evidence:ca-on-wmu-74b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.256276,
-      "normalizedValue": 0.643478,
+      "normalizedValue": 0.71,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -20231,7 +20184,7 @@
       "id": "evidence:ca-on-wmu-75-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 331,
-      "normalizedValue": 0.608696,
+      "normalizedValue": 0.68,
       "unit": "estimated harvested deer",
       "notes": "331 estimated deer harvested; 1343 estimated active resident hunters."
     },
@@ -20255,103 +20208,7 @@
       "id": "evidence:ca-on-wmu-75-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.246463,
-      "normalizedValue": 0.6,
-      "unit": "estimated harvested deer per estimated active resident hunter",
-      "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-76",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-76-white-tailed-deer-harvest-2025",
-      "metric": "HARVEST_TOTAL",
-      "rawValue": 391,
-      "normalizedValue": 0.643478,
-      "unit": "estimated harvested deer",
-      "notes": "391 estimated deer harvested; 2552 estimated active resident hunters."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-76",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-76-white-tailed-deer-harvest-per-hunter-2025",
-      "metric": "HARVEST_PER_HUNTER",
-      "rawValue": 0.153213,
-      "normalizedValue": 0.347826,
-      "unit": "estimated harvested deer per estimated active resident hunter",
-      "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-77",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-77-white-tailed-deer-harvest-2025",
-      "metric": "HARVEST_TOTAL",
-      "rawValue": 232,
-      "normalizedValue": 0.513043,
-      "unit": "estimated harvested deer",
-      "notes": "232 estimated deer harvested; 1293 estimated active resident hunters."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-77",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-77-white-tailed-deer-harvest-per-hunter-2025",
-      "metric": "HARVEST_PER_HUNTER",
-      "rawValue": 0.179428,
-      "normalizedValue": 0.4,
+      "normalizedValue": 0.66,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -20375,7 +20232,7 @@
       "id": "evidence:ca-on-wmu-77a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 16,
-      "normalizedValue": 0.356522,
+      "normalizedValue": 0.41,
       "unit": "estimated harvested deer",
       "notes": "16 estimated deer harvested; 116 estimated active resident hunters."
     },
@@ -20399,103 +20256,7 @@
       "id": "evidence:ca-on-wmu-77a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.137931,
-      "normalizedValue": 0.321739,
-      "unit": "estimated harvested deer per estimated active resident hunter",
-      "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-78",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-78-white-tailed-deer-harvest-2025",
-      "metric": "HARVEST_TOTAL",
-      "rawValue": 450,
-      "normalizedValue": 0.678261,
-      "unit": "estimated harvested deer",
-      "notes": "450 estimated deer harvested; 1743 estimated active resident hunters."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-78",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-78-white-tailed-deer-harvest-per-hunter-2025",
-      "metric": "HARVEST_PER_HUNTER",
-      "rawValue": 0.258176,
-      "normalizedValue": 0.66087,
-      "unit": "estimated harvested deer per estimated active resident hunter",
-      "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-79",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-79-white-tailed-deer-harvest-2025",
-      "metric": "HARVEST_TOTAL",
-      "rawValue": 146,
-      "normalizedValue": 0.452174,
-      "unit": "estimated harvested deer",
-      "notes": "146 estimated deer harvested; 534 estimated active resident hunters."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-79",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-79-white-tailed-deer-harvest-per-hunter-2025",
-      "metric": "HARVEST_PER_HUNTER",
-      "rawValue": 0.273408,
-      "normalizedValue": 0.713043,
+      "normalizedValue": 0.37,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -20519,7 +20280,7 @@
       "id": "evidence:ca-on-wmu-80-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 884,
-      "normalizedValue": 0.826087,
+      "normalizedValue": 0.85,
       "unit": "estimated harvested deer",
       "notes": "884 estimated deer harvested; 2866 estimated active resident hunters."
     },
@@ -20543,55 +20304,7 @@
       "id": "evidence:ca-on-wmu-80-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.308444,
-      "normalizedValue": 0.808696,
-      "unit": "estimated harvested deer per estimated active resident hunter",
-      "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-81",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-81-white-tailed-deer-harvest-2025",
-      "metric": "HARVEST_TOTAL",
-      "rawValue": 341,
-      "normalizedValue": 0.626087,
-      "unit": "estimated harvested deer",
-      "notes": "341 estimated deer harvested; 1692 estimated active resident hunters."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-81",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-81-white-tailed-deer-harvest-per-hunter-2025",
-      "metric": "HARVEST_PER_HUNTER",
-      "rawValue": 0.201537,
-      "normalizedValue": 0.469565,
+      "normalizedValue": 0.85,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -20615,7 +20328,7 @@
       "id": "evidence:ca-on-wmu-82a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1431,
-      "normalizedValue": 0.921739,
+      "normalizedValue": 0.95,
       "unit": "estimated harvested deer",
       "notes": "1431 estimated deer harvested; 6507 estimated active resident hunters."
     },
@@ -20639,7 +20352,7 @@
       "id": "evidence:ca-on-wmu-82a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.219917,
-      "normalizedValue": 0.530435,
+      "normalizedValue": 0.58,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -20663,7 +20376,7 @@
       "id": "evidence:ca-on-wmu-82b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 188,
-      "normalizedValue": 0.478261,
+      "normalizedValue": 0.54,
       "unit": "estimated harvested deer",
       "notes": "188 estimated deer harvested; 909 estimated active resident hunters."
     },
@@ -20687,7 +20400,7 @@
       "id": "evidence:ca-on-wmu-82b-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.206821,
-      "normalizedValue": 0.486957,
+      "normalizedValue": 0.53,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -20711,7 +20424,7 @@
       "id": "evidence:ca-on-wmu-82c-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 6,
-      "normalizedValue": 0.286957,
+      "normalizedValue": 0.33,
       "unit": "estimated harvested deer",
       "notes": "6 estimated deer harvested; 30 estimated active resident hunters."
     },
@@ -20735,7 +20448,7 @@
       "id": "evidence:ca-on-wmu-82c-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.2,
-      "normalizedValue": 0.46087,
+      "normalizedValue": 0.51,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -20759,7 +20472,7 @@
       "id": "evidence:ca-on-wmu-83a-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 111,
-      "normalizedValue": 0.434783,
+      "normalizedValue": 0.5,
       "unit": "estimated harvested deer",
       "notes": "111 estimated deer harvested; 782 estimated active resident hunters."
     },
@@ -20783,7 +20496,7 @@
       "id": "evidence:ca-on-wmu-83a-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.141944,
-      "normalizedValue": 0.330435,
+      "normalizedValue": 0.38,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -20807,7 +20520,7 @@
       "id": "evidence:ca-on-wmu-83b-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 64,
-      "normalizedValue": 0.4,
+      "normalizedValue": 0.46,
       "unit": "estimated harvested deer",
       "notes": "64 estimated deer harvested; 54 estimated active resident hunters."
     },
@@ -20855,7 +20568,7 @@
       "id": "evidence:ca-on-wmu-83c-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 4,
-      "normalizedValue": 0.256522,
+      "normalizedValue": 0.295,
       "unit": "estimated harvested deer",
       "notes": "4 estimated deer harvested; 14 estimated active resident hunters."
     },
@@ -20879,7 +20592,7 @@
       "id": "evidence:ca-on-wmu-83c-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.285714,
-      "normalizedValue": 0.73913,
+      "normalizedValue": 0.8,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -20903,7 +20616,7 @@
       "id": "evidence:ca-on-wmu-84-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 1215,
-      "normalizedValue": 0.886957,
+      "normalizedValue": 0.92,
       "unit": "estimated harvested deer",
       "notes": "1215 estimated deer harvested; 3909 estimated active resident hunters."
     },
@@ -20927,151 +20640,7 @@
       "id": "evidence:ca-on-wmu-84-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.310821,
-      "normalizedValue": 0.826087,
-      "unit": "estimated harvested deer per estimated active resident hunter",
-      "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-85",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-85-white-tailed-deer-harvest-2025",
-      "metric": "HARVEST_TOTAL",
-      "rawValue": 1871,
-      "normalizedValue": 0.956522,
-      "unit": "estimated harvested deer",
-      "notes": "1871 estimated deer harvested; 4884 estimated active resident hunters."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-85",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-85-white-tailed-deer-harvest-per-hunter-2025",
-      "metric": "HARVEST_PER_HUNTER",
-      "rawValue": 0.383088,
-      "normalizedValue": 0.904348,
-      "unit": "estimated harvested deer per estimated active resident hunter",
-      "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-86",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-86-white-tailed-deer-harvest-2025",
-      "metric": "HARVEST_TOTAL",
-      "rawValue": 442,
-      "normalizedValue": 0.669565,
-      "unit": "estimated harvested deer",
-      "notes": "442 estimated deer harvested; 1543 estimated active resident hunters."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-86",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-86-white-tailed-deer-harvest-per-hunter-2025",
-      "metric": "HARVEST_PER_HUNTER",
-      "rawValue": 0.286455,
-      "normalizedValue": 0.756522,
-      "unit": "estimated harvested deer per estimated active resident hunter",
-      "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-87",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-87-white-tailed-deer-harvest-2025",
-      "metric": "HARVEST_TOTAL",
-      "rawValue": 707,
-      "normalizedValue": 0.791304,
-      "unit": "estimated harvested deer",
-      "notes": "707 estimated deer harvested; 2348 estimated active resident hunters."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-87",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-87-white-tailed-deer-harvest-per-hunter-2025",
-      "metric": "HARVEST_PER_HUNTER",
-      "rawValue": 0.301107,
-      "normalizedValue": 0.791304,
+      "normalizedValue": 0.87,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -21095,7 +20664,7 @@
       "id": "evidence:ca-on-wmu-88-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 210,
-      "normalizedValue": 0.504348,
+      "normalizedValue": 0.57,
       "unit": "estimated harvested deer",
       "notes": "210 estimated deer harvested; 573 estimated active resident hunters."
     },
@@ -21119,247 +20688,7 @@
       "id": "evidence:ca-on-wmu-88-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.366492,
-      "normalizedValue": 0.869565,
-      "unit": "estimated harvested deer per estimated active resident hunter",
-      "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-89",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-89-white-tailed-deer-harvest-2025",
-      "metric": "HARVEST_TOTAL",
-      "rawValue": 1377,
-      "normalizedValue": 0.913043,
-      "unit": "estimated harvested deer",
-      "notes": "1377 estimated deer harvested; 3699 estimated active resident hunters."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-89",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-89-white-tailed-deer-harvest-per-hunter-2025",
-      "metric": "HARVEST_PER_HUNTER",
-      "rawValue": 0.372263,
-      "normalizedValue": 0.886957,
-      "unit": "estimated harvested deer per estimated active resident hunter",
-      "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-90",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-90-white-tailed-deer-harvest-2025",
-      "metric": "HARVEST_TOTAL",
-      "rawValue": 2023,
-      "normalizedValue": 0.965217,
-      "unit": "estimated harvested deer",
-      "notes": "2023 estimated deer harvested; 5281 estimated active resident hunters."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-90",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-90-white-tailed-deer-harvest-per-hunter-2025",
-      "metric": "HARVEST_PER_HUNTER",
-      "rawValue": 0.383071,
-      "normalizedValue": 0.895652,
-      "unit": "estimated harvested deer per estimated active resident hunter",
-      "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-91",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-91-white-tailed-deer-harvest-2025",
-      "metric": "HARVEST_TOTAL",
-      "rawValue": 720,
-      "normalizedValue": 0.8,
-      "unit": "estimated harvested deer",
-      "notes": "720 estimated deer harvested; 2378 estimated active resident hunters."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-91",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-91-white-tailed-deer-harvest-per-hunter-2025",
-      "metric": "HARVEST_PER_HUNTER",
-      "rawValue": 0.302775,
-      "normalizedValue": 0.8,
-      "unit": "estimated harvested deer per estimated active resident hunter",
-      "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-92",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-92-white-tailed-deer-harvest-2025",
-      "metric": "HARVEST_TOTAL",
-      "rawValue": 3276,
-      "normalizedValue": 1,
-      "unit": "estimated harvested deer",
-      "notes": "3276 estimated deer harvested; 6434 estimated active resident hunters."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-92",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-92-white-tailed-deer-harvest-per-hunter-2025",
-      "metric": "HARVEST_PER_HUNTER",
-      "rawValue": 0.50917,
-      "normalizedValue": 0.973913,
-      "unit": "estimated harvested deer per estimated active resident hunter",
-      "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-93",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-93-white-tailed-deer-harvest-2025",
-      "metric": "HARVEST_TOTAL",
-      "rawValue": 1457,
-      "normalizedValue": 0.93913,
-      "unit": "estimated harvested deer",
-      "notes": "1457 estimated deer harvested; 3009 estimated active resident hunters."
-    },
-    {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-93",
-      "geographyType": "MANAGEMENT_ZONE",
-      "sourceId": "source:ca-on-white-tailed-deer-harvest",
-      "observationPeriod": {
-        "from": "2025-01-01",
-        "through": "2025-12-31"
-      },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-93-white-tailed-deer-harvest-per-hunter-2025",
-      "metric": "HARVEST_PER_HUNTER",
-      "rawValue": 0.484214,
-      "normalizedValue": 0.956522,
+      "normalizedValue": 0.92,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
     },
@@ -21383,7 +20712,7 @@
       "id": "evidence:ca-on-wmu-93c-white-tailed-deer-harvest-2025",
       "metric": "HARVEST_TOTAL",
       "rawValue": 6,
-      "normalizedValue": 0.286957,
+      "normalizedValue": 0.33,
       "unit": "estimated harvested deer",
       "notes": "6 estimated deer harvested; 50 estimated active resident hunters."
     },
@@ -21407,57 +20736,300 @@
       "id": "evidence:ca-on-wmu-93c-white-tailed-deer-harvest-per-hunter-2025",
       "metric": "HARVEST_PER_HUNTER",
       "rawValue": 0.12,
-      "normalizedValue": 0.295652,
+      "normalizedValue": 0.34,
       "unit": "estimated harvested deer per estimated active resident hunter",
       "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
-    },
+    }
+  ],
+  "reportedAtLargerArea": [
     {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-94",
-      "geographyType": "MANAGEMENT_ZONE",
+      "reportedAs": "69A",
+      "coversZoneIds": [
+        "management_zone:ca-on-wmu-69a-1",
+        "management_zone:ca-on-wmu-69a-2",
+        "management_zone:ca-on-wmu-69a-3"
+      ],
       "sourceId": "source:ca-on-white-tailed-deer-harvest",
       "observationPeriod": {
         "from": "2025-01-01",
         "through": "2025-12-31"
       },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-94-white-tailed-deer-harvest-2025",
-      "metric": "HARVEST_TOTAL",
-      "rawValue": 685,
-      "normalizedValue": 0.782609,
-      "unit": "estimated harvested deer",
-      "notes": "685 estimated deer harvested; 1856 estimated active resident hunters."
+      "activeHunters": 1398,
+      "totalHarvest": 680,
+      "antleredHarvest": 444,
+      "antlerlessHarvest": 236,
+      "statedAs": "Ontario reports this harvest under WMU 69A. Its Wildlife Management Unit layer, and O. Reg. 663/98 Part 6 behind it, publish 69A-1, 69A-2, 69A-3 and no unit 69A.",
+      "limitation": "The authority does not say how this figure divides among those units, so it is not apportioned, not ranked against single units, and not counted in opportunity classes."
     },
     {
-      "speciesId": "species:white-tailed-deer",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "geographyId": "management_zone:ca-on-wmu-94",
-      "geographyType": "MANAGEMENT_ZONE",
+      "reportedAs": "76",
+      "coversZoneIds": [
+        "management_zone:ca-on-wmu-76a",
+        "management_zone:ca-on-wmu-76b",
+        "management_zone:ca-on-wmu-76c",
+        "management_zone:ca-on-wmu-76d",
+        "management_zone:ca-on-wmu-76e"
+      ],
       "sourceId": "source:ca-on-white-tailed-deer-harvest",
       "observationPeriod": {
         "from": "2025-01-01",
         "through": "2025-12-31"
       },
-      "retrievedAt": "2026-09-21",
-      "verifiedAt": "2026-09-21",
-      "confidence": "MODERATE",
-      "methodology": "Ontario estimates harvest and active hunters from a sample of resident hunter reports; values are subject to statistical error.",
-      "spatialPrecision": "Ontario Wildlife Management Unit",
-      "version": "2025",
-      "superseded": false,
-      "id": "evidence:ca-on-wmu-94-white-tailed-deer-harvest-per-hunter-2025",
-      "metric": "HARVEST_PER_HUNTER",
-      "rawValue": 0.369073,
-      "normalizedValue": 0.878261,
-      "unit": "estimated harvested deer per estimated active resident hunter",
-      "notes": "Derived from the authority's estimated total harvest divided by estimated active resident hunters; not a hunter-success probability."
+      "activeHunters": 2552,
+      "totalHarvest": 391,
+      "antleredHarvest": 282,
+      "antlerlessHarvest": 109,
+      "statedAs": "Ontario reports this harvest under WMU 76. Its Wildlife Management Unit layer, and O. Reg. 663/98 Part 6 behind it, publish 76A, 76B, 76C, 76D, 76E and no unit 76.",
+      "limitation": "The authority does not say how this figure divides among those units, so it is not apportioned, not ranked against single units, and not counted in opportunity classes."
+    },
+    {
+      "reportedAs": "77",
+      "coversZoneIds": [
+        "management_zone:ca-on-wmu-77b",
+        "management_zone:ca-on-wmu-77c"
+      ],
+      "sourceId": "source:ca-on-white-tailed-deer-harvest",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-12-31"
+      },
+      "activeHunters": 1293,
+      "totalHarvest": 232,
+      "antleredHarvest": 170,
+      "antlerlessHarvest": 62,
+      "statedAs": "Ontario reports this harvest under WMU 77. Its Wildlife Management Unit layer, and O. Reg. 663/98 Part 6 behind it, publish 77B, 77C and no unit 77.",
+      "excludesSeparatelyReported": [
+        "management_zone:ca-on-wmu-77a"
+      ],
+      "limitation": "The authority does not say how this figure divides among those units, so it is not apportioned, not ranked against single units, and not counted in opportunity classes."
+    },
+    {
+      "reportedAs": "78",
+      "coversZoneIds": [
+        "management_zone:ca-on-wmu-78a",
+        "management_zone:ca-on-wmu-78b",
+        "management_zone:ca-on-wmu-78c",
+        "management_zone:ca-on-wmu-78d",
+        "management_zone:ca-on-wmu-78e"
+      ],
+      "sourceId": "source:ca-on-white-tailed-deer-harvest",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-12-31"
+      },
+      "activeHunters": 1743,
+      "totalHarvest": 450,
+      "antleredHarvest": 362,
+      "antlerlessHarvest": 88,
+      "statedAs": "Ontario reports this harvest under WMU 78. Its Wildlife Management Unit layer, and O. Reg. 663/98 Part 6 behind it, publish 78A, 78B, 78C, 78D, 78E and no unit 78.",
+      "limitation": "The authority does not say how this figure divides among those units, so it is not apportioned, not ranked against single units, and not counted in opportunity classes."
+    },
+    {
+      "reportedAs": "79",
+      "coversZoneIds": [
+        "management_zone:ca-on-wmu-79c",
+        "management_zone:ca-on-wmu-79d"
+      ],
+      "sourceId": "source:ca-on-white-tailed-deer-harvest",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-12-31"
+      },
+      "activeHunters": 534,
+      "totalHarvest": 146,
+      "antleredHarvest": 110,
+      "antlerlessHarvest": 36,
+      "statedAs": "Ontario reports this harvest under WMU 79. Its Wildlife Management Unit layer, and O. Reg. 663/98 Part 6 behind it, publish 79C, 79D and no unit 79.",
+      "limitation": "The authority does not say how this figure divides among those units, so it is not apportioned, not ranked against single units, and not counted in opportunity classes."
+    },
+    {
+      "reportedAs": "81",
+      "coversZoneIds": [
+        "management_zone:ca-on-wmu-81a",
+        "management_zone:ca-on-wmu-81b"
+      ],
+      "sourceId": "source:ca-on-white-tailed-deer-harvest",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-12-31"
+      },
+      "activeHunters": 1692,
+      "totalHarvest": 341,
+      "antleredHarvest": 237,
+      "antlerlessHarvest": 104,
+      "statedAs": "Ontario reports this harvest under WMU 81. Its Wildlife Management Unit layer, and O. Reg. 663/98 Part 6 behind it, publish 81A, 81B and no unit 81.",
+      "limitation": "The authority does not say how this figure divides among those units, so it is not apportioned, not ranked against single units, and not counted in opportunity classes."
+    },
+    {
+      "reportedAs": "85",
+      "coversZoneIds": [
+        "management_zone:ca-on-wmu-85a",
+        "management_zone:ca-on-wmu-85b",
+        "management_zone:ca-on-wmu-85c"
+      ],
+      "sourceId": "source:ca-on-white-tailed-deer-harvest",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-12-31"
+      },
+      "activeHunters": 4884,
+      "totalHarvest": 1871,
+      "antleredHarvest": 1018,
+      "antlerlessHarvest": 853,
+      "statedAs": "Ontario reports this harvest under WMU 85. Its Wildlife Management Unit layer, and O. Reg. 663/98 Part 6 behind it, publish 85A, 85B, 85C and no unit 85.",
+      "limitation": "The authority does not say how this figure divides among those units, so it is not apportioned, not ranked against single units, and not counted in opportunity classes."
+    },
+    {
+      "reportedAs": "86",
+      "coversZoneIds": [
+        "management_zone:ca-on-wmu-86a",
+        "management_zone:ca-on-wmu-86b"
+      ],
+      "sourceId": "source:ca-on-white-tailed-deer-harvest",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-12-31"
+      },
+      "activeHunters": 1543,
+      "totalHarvest": 442,
+      "antleredHarvest": 252,
+      "antlerlessHarvest": 190,
+      "statedAs": "Ontario reports this harvest under WMU 86. Its Wildlife Management Unit layer, and O. Reg. 663/98 Part 6 behind it, publish 86A, 86B and no unit 86.",
+      "limitation": "The authority does not say how this figure divides among those units, so it is not apportioned, not ranked against single units, and not counted in opportunity classes."
+    },
+    {
+      "reportedAs": "87",
+      "coversZoneIds": [
+        "management_zone:ca-on-wmu-87a",
+        "management_zone:ca-on-wmu-87b",
+        "management_zone:ca-on-wmu-87c",
+        "management_zone:ca-on-wmu-87d",
+        "management_zone:ca-on-wmu-87e"
+      ],
+      "sourceId": "source:ca-on-white-tailed-deer-harvest",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-12-31"
+      },
+      "activeHunters": 2348,
+      "totalHarvest": 707,
+      "antleredHarvest": 501,
+      "antlerlessHarvest": 206,
+      "statedAs": "Ontario reports this harvest under WMU 87. Its Wildlife Management Unit layer, and O. Reg. 663/98 Part 6 behind it, publish 87A, 87B, 87C, 87D, 87E and no unit 87.",
+      "limitation": "The authority does not say how this figure divides among those units, so it is not apportioned, not ranked against single units, and not counted in opportunity classes."
+    },
+    {
+      "reportedAs": "89",
+      "coversZoneIds": [
+        "management_zone:ca-on-wmu-89a",
+        "management_zone:ca-on-wmu-89b"
+      ],
+      "sourceId": "source:ca-on-white-tailed-deer-harvest",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-12-31"
+      },
+      "activeHunters": 3699,
+      "totalHarvest": 1377,
+      "antleredHarvest": 941,
+      "antlerlessHarvest": 436,
+      "statedAs": "Ontario reports this harvest under WMU 89. Its Wildlife Management Unit layer, and O. Reg. 663/98 Part 6 behind it, publish 89A, 89B and no unit 89.",
+      "limitation": "The authority does not say how this figure divides among those units, so it is not apportioned, not ranked against single units, and not counted in opportunity classes."
+    },
+    {
+      "reportedAs": "90",
+      "coversZoneIds": [
+        "management_zone:ca-on-wmu-90a",
+        "management_zone:ca-on-wmu-90b"
+      ],
+      "sourceId": "source:ca-on-white-tailed-deer-harvest",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-12-31"
+      },
+      "activeHunters": 5281,
+      "totalHarvest": 2023,
+      "antleredHarvest": 1131,
+      "antlerlessHarvest": 892,
+      "statedAs": "Ontario reports this harvest under WMU 90. Its Wildlife Management Unit layer, and O. Reg. 663/98 Part 6 behind it, publish 90A, 90B and no unit 90.",
+      "limitation": "The authority does not say how this figure divides among those units, so it is not apportioned, not ranked against single units, and not counted in opportunity classes."
+    },
+    {
+      "reportedAs": "91",
+      "coversZoneIds": [
+        "management_zone:ca-on-wmu-91a",
+        "management_zone:ca-on-wmu-91b"
+      ],
+      "sourceId": "source:ca-on-white-tailed-deer-harvest",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-12-31"
+      },
+      "activeHunters": 2378,
+      "totalHarvest": 720,
+      "antleredHarvest": 426,
+      "antlerlessHarvest": 294,
+      "statedAs": "Ontario reports this harvest under WMU 91. Its Wildlife Management Unit layer, and O. Reg. 663/98 Part 6 behind it, publish 91A, 91B and no unit 91.",
+      "limitation": "The authority does not say how this figure divides among those units, so it is not apportioned, not ranked against single units, and not counted in opportunity classes."
+    },
+    {
+      "reportedAs": "92",
+      "coversZoneIds": [
+        "management_zone:ca-on-wmu-92a",
+        "management_zone:ca-on-wmu-92b",
+        "management_zone:ca-on-wmu-92c",
+        "management_zone:ca-on-wmu-92d"
+      ],
+      "sourceId": "source:ca-on-white-tailed-deer-harvest",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-12-31"
+      },
+      "activeHunters": 6434,
+      "totalHarvest": 3276,
+      "antleredHarvest": 1853,
+      "antlerlessHarvest": 1423,
+      "statedAs": "Ontario reports this harvest under WMU 92. Its Wildlife Management Unit layer, and O. Reg. 663/98 Part 6 behind it, publish 92A, 92B, 92C, 92D and no unit 92.",
+      "limitation": "The authority does not say how this figure divides among those units, so it is not apportioned, not ranked against single units, and not counted in opportunity classes."
+    },
+    {
+      "reportedAs": "93",
+      "coversZoneIds": [
+        "management_zone:ca-on-wmu-93a",
+        "management_zone:ca-on-wmu-93b"
+      ],
+      "sourceId": "source:ca-on-white-tailed-deer-harvest",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-12-31"
+      },
+      "activeHunters": 3009,
+      "totalHarvest": 1457,
+      "antleredHarvest": 827,
+      "antlerlessHarvest": 630,
+      "statedAs": "Ontario reports this harvest under WMU 93. Its Wildlife Management Unit layer, and O. Reg. 663/98 Part 6 behind it, publish 93A, 93B and no unit 93.",
+      "excludesSeparatelyReported": [
+        "management_zone:ca-on-wmu-93c"
+      ],
+      "limitation": "The authority does not say how this figure divides among those units, so it is not apportioned, not ranked against single units, and not counted in opportunity classes."
+    },
+    {
+      "reportedAs": "94",
+      "coversZoneIds": [
+        "management_zone:ca-on-wmu-94a",
+        "management_zone:ca-on-wmu-94b"
+      ],
+      "sourceId": "source:ca-on-white-tailed-deer-harvest",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-12-31"
+      },
+      "activeHunters": 1856,
+      "totalHarvest": 685,
+      "antleredHarvest": 424,
+      "antlerlessHarvest": 261,
+      "statedAs": "Ontario reports this harvest under WMU 94. Its Wildlife Management Unit layer, and O. Reg. 663/98 Part 6 behind it, publish 94A, 94B and no unit 94.",
+      "limitation": "The authority does not say how this figure divides among those units, so it is not apportioned, not ranked against single units, and not counted in opportunity classes."
     }
   ]
 }
