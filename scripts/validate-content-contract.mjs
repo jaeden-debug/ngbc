@@ -283,6 +283,12 @@ bundle.sources.forEach((source, index) => {
   if (!VERIFICATION.has(source?.verificationStatus)) error("INVALID_VERIFICATION", `${path}.verificationStatus`, "unknown verification status");
   if (typeof source?.url !== "string" || !/^https:\/\//.test(source.url)) error("INVALID_SOURCE_URL", `${path}.url`, "source URL must use HTTPS");
   interval(source, path, "effectiveFrom", "effectiveThrough");
+  for (const field of ["licence", "attribution"]) {
+    if (source?.[field] === undefined) continue;
+    if (typeof source[field] !== "string" || !source[field].trim() || source[field] !== source[field].trim()) {
+      error("INVALID_SOURCE_LICENCE", `${path}.${field}`, `${field}, when present, must be non-empty trimmed text`);
+    }
+  }
 });
 
 bundle.claims.forEach((claim, index) => {

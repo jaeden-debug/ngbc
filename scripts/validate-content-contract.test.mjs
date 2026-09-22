@@ -156,3 +156,34 @@ test("sex-specific media requires one verified canonical species", () => {
     },
   );
 });
+
+const SOURCE = {
+  id: "source:ca-mb-gha-service",
+  title: "Manitoba Game Hunting Areas",
+  url: "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/Manitoba_Game_Hunting_Areas/FeatureServer/0",
+  publisher: "Government of Manitoba",
+  retrievedAt: "2026-09-22T00:00:00Z",
+  type: "official",
+  verificationStatus: "verified",
+};
+
+test("a source's licence and attribution are optional, and when present are non-empty trimmed text", () => {
+  withBundle(
+    (bundle) => bundle.sources.push({ ...SOURCE }),
+    (file) => assert.equal(run(["--strict", file]).status, 0),
+  );
+  withBundle(
+    (bundle) => bundle.sources.push({ ...SOURCE, licence: "OpenMB Information and Data Use Licence", attribution: "Contains information from the Manitoba government." }),
+    (file) => assert.equal(run(["--strict", file]).status, 0),
+  );
+  for (const bad of ["", "  padded  ", 7]) {
+    withBundle(
+      (bundle) => bundle.sources.push({ ...SOURCE, attribution: bad }),
+      (file) => {
+        const result = run(["--strict", file]);
+        assert.equal(result.status, 1, JSON.stringify(bad));
+        assert.match(result.stdout, /INVALID_SOURCE_LICENCE/);
+      },
+    );
+  }
+});

@@ -330,6 +330,10 @@ export interface SourceRecord {
   verificationStatus: VerificationStatus;
   contentHash?: string;
   supersededBy?: CanonicalId<"source">;
+  /** The licence the authority publishes this source under, in its own name. */
+  licence?: string;
+  /** The attribution statement that licence requires, verbatim. */
+  attribution?: string;
 }
 
 export interface Claim {
