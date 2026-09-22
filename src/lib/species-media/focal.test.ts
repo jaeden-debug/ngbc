@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { nextFocal, parseFocalPointRequest } from "./focal.ts";
+import { CARD_IMAGE_ZOOM, focalSpans, nextFocal, parseFocalPointRequest } from "./focal.ts";
 
 const assetId = "40a615aa-dfc6-4e73-adbf-9e4d0a233738";
 
@@ -32,4 +32,20 @@ test("dragging the photo moves the subject with the pointer, inside the frame", 
 test("an axis the photo does not overhang cannot move", () => {
   // A photo exactly as tall as the card: horizontal only.
   assert.deepEqual(nextFocal({ fx: 40, fy: 60, spanX: 120, spanY: 0 }, 60, 80), { x: 0, y: 60 });
+});
+
+test("both axes can be dragged, including a landscape photo in a portrait card", () => {
+  // The real case: a 3:2 photograph (960x640) in a 4:5 card (280x350).
+  const spans = focalSpans({ width: 280, height: 350 }, { width: 960, height: 640 });
+  assert.ok(spans.spanX > 0, "sideways has the cover overhang");
+  // Cover leaves no vertical overhang here; the zoom is what makes up and down work.
+  assert.equal(Math.round(spans.spanY), Math.round(350 * (CARD_IMAGE_ZOOM - 1)));
+  assert.ok(spans.spanY > 20, `up and down must move: ${spans.spanY}px`);
+  const moved = nextFocal({ fx: 50, fy: 50, ...spans }, 0, -20);
+  assert.ok(moved.y > 50, "dragging up moves the focal point down the frame");
+});
+
+test("a portrait photo in the same card can still be dragged both ways", () => {
+  const spans = focalSpans({ width: 280, height: 350 }, { width: 640, height: 960 });
+  assert.ok(spans.spanY > 0 && spans.spanX > 0);
 });

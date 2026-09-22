@@ -13,17 +13,25 @@ export function SpeciesImagePlaceholder({ className, label }: { className?: stri
   );
 }
 
-export default function SpeciesPrimaryImage({ media, variant, className, loading = "lazy", focal }: {
+export default function SpeciesPrimaryImage({ media, variant, className, loading = "lazy", focal, zoom }: {
   media: SpeciesPrimaryMedia;
   variant: SpeciesMediaVariant;
   className?: string;
   loading?: "eager" | "lazy";
   /** Overrides the stored focal point while an administrator is dragging it. */
   focal?: { x: number; y: number };
+  /**
+   * Draws the image larger than its box, anchored at the focal point, so a
+   * photograph that already fills one axis can still be moved in the other.
+   */
+  zoom?: number;
 }) {
   const rendition = media.renditions[variant];
   const { x, y } = focal ?? media.focal;
   return <Image className={className} src={rendition.url} alt={media.altText} width={rendition.width}
     height={rendition.height} loading={loading} decoding="async" unoptimized draggable={false}
-    style={{ objectPosition: `${x}% ${y}%` }} />;
+    style={{
+      objectPosition: `${x}% ${y}%`,
+      ...(zoom && zoom !== 1 ? { transform: `scale(${zoom})`, transformOrigin: `${x}% ${y}%` } : {}),
+    }} />;
 }

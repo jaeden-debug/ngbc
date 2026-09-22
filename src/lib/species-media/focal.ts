@@ -10,12 +10,35 @@ export function parseFocalPointRequest(body: unknown): { assetId: string; x: num
   return { assetId, x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10 };
 }
 
+/**
+ * The card image is drawn slightly larger than the card, so BOTH axes can be
+ * positioned. A landscape photograph in a portrait card already shows its whole
+ * height — without this, dragging up or down has nothing to reveal.
+ */
+export const CARD_IMAGE_ZOOM = 1.12;
+
 /** How far a photo overhangs its card in each axis; zero means that axis cannot move. */
 export interface FocalDrag {
   fx: number;
   fy: number;
   spanX: number;
   spanY: number;
+}
+
+/**
+ * The movable overhang in each axis, in pixels: what `object-fit: cover` already
+ * hides, plus what the zoom adds.
+ */
+export function focalSpans(
+  card: { width: number; height: number },
+  image: { width: number; height: number },
+  zoom = CARD_IMAGE_ZOOM,
+): { spanX: number; spanY: number } {
+  const scale = Math.max(card.width / image.width, card.height / image.height);
+  return {
+    spanX: Math.max(0, image.width * scale - card.width) + card.width * (zoom - 1),
+    spanY: Math.max(0, image.height * scale - card.height) + card.height * (zoom - 1),
+  };
 }
 
 /**

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import SpeciesPrimaryImage, { SpeciesImagePlaceholder } from "../../../components/species/SpeciesPrimaryImage";
-import { nextFocal } from "../../../lib/species-media/focal";
+import { CARD_IMAGE_ZOOM, focalSpans, nextFocal } from "../../../lib/species-media/focal";
 import type { SpeciesPrimaryMedia } from "../../../lib/species-media/types";
 import styles from "./page.module.css";
 
@@ -142,12 +142,10 @@ export default function SpeciesLibrary({ species, adminMode = false }: { species
     const img = event.currentTarget.querySelector("img");
     if (!img?.naturalWidth) return;
     const box = event.currentTarget.parentElement!.getBoundingClientRect();
-    const scale = Math.max(box.width / img.naturalWidth, box.height / img.naturalHeight);
     focusDrag.current = {
       id: item.id, pointerId: event.pointerId, x0: event.clientX, y0: event.clientY,
-      fx: item.image.focal.x, fy: item.image.focal.y,
-      // How far the photo overhangs the card in each axis; zero means that axis cannot move.
-      spanX: img.naturalWidth * scale - box.width, spanY: img.naturalHeight * scale - box.height, moved: false,
+      fx: item.image.focal.x, fy: item.image.focal.y, moved: false,
+      ...focalSpans(box, { width: img.naturalWidth, height: img.naturalHeight }),
     };
     event.currentTarget.setPointerCapture(event.pointerId);
   }
@@ -242,7 +240,7 @@ export default function SpeciesLibrary({ species, adminMode = false }: { species
             {/* The photograph fills the card; the first row is above the fold on every width. */}
             {item.image
               ? <SpeciesPrimaryImage className={styles.cardMedia} media={item.image} variant="cover" loading={index < 4 ? "eager" : "lazy"}
-                  focal={focusing?.id === item.id ? focusing.focal : undefined} />
+                  zoom={CARD_IMAGE_ZOOM} focal={focusing?.id === item.id ? focusing.focal : undefined} />
               : <SpeciesImagePlaceholder className={`${styles.cardMedia} ${styles.cardPlaceholder}`} label={item.commonName} />}
             {/* Densest glass: measured AA for every line over the brightest part of all 57 photos. */}
             <span className={`${styles.cardPanel} ng-glass-popover ng-glass-dense`}>
