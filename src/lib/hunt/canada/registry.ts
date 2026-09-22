@@ -321,17 +321,18 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     nameFr: "Colombie-Britannique",
     kind: "province",
     spatial: {
-      // Ingested and parity-certified; not served until its first rules are certified for serving.
-      status: "IN_DEVELOPMENT",
+      // Parity-certified, promoted to VERIFIED and served for drawing and zone resolution.
+      status: "VERIFIED",
       officialTerm: "Management Unit (MU)",
       officialSourceUrl: "https://catalogue.data.gov.bc.ca/dataset/wildlife-management-units",
       serviceUrl: "https://openmaps.gov.bc.ca/geo/pub/WHSE_WILDLIFE_MANAGEMENT.WAA_WILDLIFE_MGMT_UNITS_SVW/ows",
       parityCertified: true,
       notes:
         "All 225 Management Units (B.C. Reg. 64/96 s. 1; BC Data Catalogue; the 2026-2028 synopsis names the same 225) are in " +
-        "PostGIS as NEEDS_VERIFICATION, with 0 geometry disagreements and 890/890 authority-derived points and 696/696 live " +
+        "PostGIS as VERIFIED, with 0 geometry disagreements and 890/890 authority-derived points and 696/696 live " +
         "service points agreeing. Under B.C. Reg. 64/96 the enacted regional maps (B.C. Reg. 89/2026) and the river-bank " +
-        "rule control; the layer is the province's digital product of them. Not yet served.",
+        "rule control; the layer is the province's digital product of them. Served for drawing and zone resolution only: " +
+        "certifying the geometry is not certifying a rule.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
@@ -344,11 +345,13 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       huntingAuthorityUrl: "https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/hunting",
       notes:
         "A first wave is built from the regulation itself (content/regulatory/ca-bc-2026.json): ruffed, spruce and " +
-        "sharp-tailed grouse, rock and willow ptarmigan, snowshoe hare and black bear, 79 rules. It becomes coverage only " +
-        "when the layer is served.",
+        "sharp-tailed grouse, rock and willow ptarmigan, snowshoe hare and black bear, 79 rules. It does not answer yet: " +
+        "the layer serves boundaries only, so British Columbia is not counted as covered and every species there is UNKNOWN " +
+        "until the bundle is certified for serving.",
     },
     knownGaps: [
-      "Not served: every British Columbia query is UNKNOWN until the layer and its first rules are served.",
+      "Boundaries only: the 225 Management Units are drawn, named and resolved, and every British Columbia species query " +
+        "is UNKNOWN until the first rules are certified for serving. A drawn boundary is not a certified rule.",
       "Limited Entry Hunting (B.C. Reg. 134/93) is layered over general open seasons and is not evaluated; a unit no general-season row names is UNKNOWN, not CLOSED.",
       "Closures inside units that the regulation describes in words or on maps, provincial parks named in Part 2 and private-property-only seasons have no boundary North Ground holds; answers there are NEEDS_VERIFICATION.",
       "Deer, moose, elk, sheep, goat, caribou, bison, cougar, wolf, blue grouse and all migratory birds are not encoded.",

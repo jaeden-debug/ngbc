@@ -10,7 +10,7 @@
  * says so with counts rather than adjectives.
  */
 
-import { regulatoryEntryFor } from "../regulatory/registry.ts";
+import { REGULATORY_REGISTRY, regulatoryEntryFor } from "../regulatory/registry.ts";
 import { CANADA_JURISDICTIONS, type CanadaJurisdiction, type CoverageState } from "./registry.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 
@@ -94,7 +94,14 @@ export interface SpeciesJurisdictionCoverage {
 function coverageFor(jurisdiction: CanadaJurisdiction): JurisdictionCoverage {
   const coverage = regulatoryEntryFor(jurisdiction.id)?.coverage();
   const species = coverage?.species ?? [];
-  const officialUnits = coverage?.officialUnits ?? null;
+  /*
+   * How many official units the authority has is a fact about the geography,
+   * so it is read from the bundle itself rather than through the answering
+   * entry: a jurisdiction drawn with no certified rules still has its units
+   * counted, and the reduce below still requires parity certification.
+   */
+  const officialUnits =
+    REGULATORY_REGISTRY.find((entry) => entry.jurisdictionId === jurisdiction.id)?.coverage().officialUnits ?? null;
 
   return {
     id: jurisdiction.id,

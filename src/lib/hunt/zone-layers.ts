@@ -362,8 +362,11 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     authority: "Government of British Columbia",
     sourceId: "source:ca-bc-mu-service",
     bounds: { minLatitude: 48.2, maxLatitude: 60.01, minLongitude: -139.07, maxLongitude: -114.05 },
-    // Not served until its parity is certified and its first rules are.
-    serving: false,
+    /* Boundaries only: parity-certified against the province and drawn, with no
+       rules certified, so every species here answers UNKNOWN and the card sends
+       the person to the Government of British Columbia. `rulesServing` turns on
+       only when the B.C. Reg. 190/84 bundle is certified in production. */
+    serving: true,
     officialNamePrefix: "Management Unit ",
     certifiedDesignations: new Set(britishColumbiaCertifiedUnits.certifiedUnits.map((unit) => unit.toUpperCase())),
     zoneIdPrefix: "management_zone:ca-bc-mu-",
@@ -658,6 +661,13 @@ export function zoneIdFor(layer: Pick<ZoneLayer, "zoneIdPrefix">, designation: s
 
 /** Coverage of a single named zone, which is stricter than its layer's coverage. */
 export function zoneCoverage(layer: ZoneLayer, zoneName: string): ZoneCoverageStatus {
+  /*
+   * Coverage is a claim about RULES, not about geometry. A layer drawn from
+   * parity-certified official boundaries whose rules do not serve is
+   * IN_DEVELOPMENT however well its polygons are certified — otherwise a
+   * boundary-only province would read to a hunter as "certified rules".
+   */
+  if (layer.rulesServing !== true) return "IN_DEVELOPMENT";
   if (!layer.certifiedDesignations) return layer.coverage;
   return layer.certifiedDesignations.has(zoneName.trim().toUpperCase()) ? "VERIFIED" : "IN_DEVELOPMENT";
 }

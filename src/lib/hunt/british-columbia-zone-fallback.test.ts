@@ -31,11 +31,12 @@ function province({ at, contains }: { at: string[]; contains: boolean }) {
   return { fetcher, asked };
 }
 
-test("the British Columbia layer is registered but not served until it is certified", () => {
+test("the layer serves its certified boundaries, and no rule of its own", () => {
   assert.ok(BC);
-  assert.equal(BC.serving, false);
+  assert.equal(BC.serving, true);
+  assert.notEqual(BC.rulesServing, true);
   assert.equal(BC.officialTerm, "Management Unit");
-  assert.equal(layerForResolution({ status: "RESOLVED", jurisdictionId: "jurisdiction:ca-bc" }).kind, "NOT_SERVING");
+  assert.equal(layerForResolution({ status: "RESOLVED", jurisdictionId: "jurisdiction:ca-bc" }).kind, "SERVING");
 });
 
 test("a hyphenated Management Unit resolves through the shared fallback with its own geometry field", async () => {

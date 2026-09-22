@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { ZONE_LAYERS } from "../zone-layers.ts";
 import { isCertifiedSpecies, REGULATORY_REGISTRY, regulatoryEntryFor } from "./registry.ts";
+import { CANADA_JURISDICTIONS } from "../canada/registry.ts";
 
 /**
  * The registry's two invariants, held here so neither can drift.
@@ -13,18 +14,28 @@ import { isCertifiedSpecies, REGULATORY_REGISTRY, regulatoryEntryFor } from "./r
  * are never advertised.
  */
 
-test("every served zone layer has certified rules behind it", () => {
+test("a layer whose rules are certified has rules behind it, and one drawn without them says so", () => {
   for (const layer of ZONE_LAYERS.filter((candidate) => candidate.serving)) {
     const entry = regulatoryEntryFor(layer.jurisdictionId);
-    assert.ok(entry, `${layer.jurisdictionName} is drawn and resolved but has no regulatory entry`);
-    assert.ok(entry.coverage().species.length > 0, `${layer.jurisdictionName} has an entry with no species`);
+    if (layer.rulesServing) {
+      assert.ok(entry, `${layer.jurisdictionName} answers rules but has no regulatory entry`);
+      assert.ok(entry.coverage().species.length > 0, `${layer.jurisdictionName} has an entry with no species`);
+    } else {
+      /* Boundary-only: drawn, named and resolved, with no rules answering. The
+         person is sent to the authority instead, so the jurisdiction must name
+         where its own rules live. */
+      assert.equal(entry, undefined, `${layer.jurisdictionName} is drawn without certified rules but an entry answers`);
+      const jurisdiction = CANADA_JURISDICTIONS.find((candidate) => candidate.id === layer.jurisdictionId);
+      assert.ok(jurisdiction?.regulatory.huntingAuthorityUrl, `${layer.jurisdictionName} must link its own hunting rules`);
+    }
   }
 });
 
-test("an entry answers only where its layer is served", () => {
+test("an entry answers only where its layer is served and its rules are certified", () => {
   for (const entry of REGULATORY_REGISTRY) {
-    const served = ZONE_LAYERS.some((layer) => layer.jurisdictionId === entry.jurisdictionId && layer.serving);
-    assert.equal(Boolean(regulatoryEntryFor(entry.jurisdictionId)), served, entry.jurisdictionId);
+    const answering = ZONE_LAYERS.some((layer) =>
+      layer.jurisdictionId === entry.jurisdictionId && layer.serving && layer.rulesServing);
+    assert.equal(Boolean(regulatoryEntryFor(entry.jurisdictionId)), answering, entry.jurisdictionId);
   }
   assert.equal(regulatoryEntryFor("jurisdiction:ca-sk"), undefined);
   assert.equal(regulatoryEntryFor(undefined), undefined);

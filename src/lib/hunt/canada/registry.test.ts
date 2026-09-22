@@ -88,13 +88,27 @@ test("the report counts only what the certified bundles actually contain", () =>
   assert.equal(manitoba.spatial.officialUnits, 62);
   assert.equal(manitoba.spatial.parityCertified, true);
 
+  // British Columbia is the case the two flags separate: its geography is certified and
+  // counted, and it still holds no rule Hunt will answer.
+  const britishColumbia = report.jurisdictions.find((entry) => entry.code === "CA-BC")!;
+  assert.equal(britishColumbia.spatial.parityCertified, true);
+  assert.equal(britishColumbia.spatial.officialUnits, 225, "certified geography is counted without certified rules");
+  assert.equal(britishColumbia.regulatory.rules, 0, "the British Columbia bundle does not answer");
+  assert.equal(britishColumbia.species.length, 0);
+
   // Every other jurisdiction reports zero rather than being absent from the report.
   for (const jurisdiction of report.jurisdictions) {
     if (withRules.includes(jurisdiction)) continue;
     assert.equal(jurisdiction.regulatory.rules, 0, `${jurisdiction.code} should report zero rules`);
     assert.equal(jurisdiction.regulatory.speciesCertified, 0, `${jurisdiction.code} should report zero species`);
-    assert.equal(jurisdiction.spatial.officialUnits, null, `${jurisdiction.code} has no ingested unit count`);
+    // A unit count is a fact about geography, so it exists exactly where geometry is certified.
+    if (!jurisdiction.spatial.parityCertified) {
+      assert.equal(jurisdiction.spatial.officialUnits, null, `${jurisdiction.code} has no certified geometry to count`);
+    }
   }
+
+  // The headline counts certified geography, not the subset whose rules answer.
+  assert.equal(report.totals.officialUnitsIngested, 686, "151 + 59 + 62 + 189 Ontario/Québec/Manitoba/Alberta, plus 225 British Columbian");
 });
 
 test("no national milestone is claimed before its evidence exists", () => {
