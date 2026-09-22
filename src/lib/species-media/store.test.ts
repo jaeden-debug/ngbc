@@ -65,3 +65,22 @@ test("a conflict or any other failure is not retried", async () => {
     assert.equal(calls.length, 1);
   }
 });
+
+test("repositioning a photograph records who moved it and when", async () => {
+  const updates: Array<Record<string, unknown>> = [];
+  const client = {
+    from: () => ({
+      update: (values: Record<string, unknown>) => {
+        updates.push(values);
+        return { eq: () => ({ eq: () => ({ select: async () => ({ data: [{ id: INPUT.assetId }], error: null }) }) }) };
+      },
+    }),
+  } as unknown as SupabaseClient;
+  const moved = await new SupabaseSpeciesMediaStore(client)
+    .setFocalPoint(INPUT.assetId, { x: 31.3, y: 70 }, "25613234-3273-4baa-8c0d-6a794f88eb0e");
+  assert.equal(moved, true);
+  assert.equal(updates[0].focal_x, 31.3);
+  assert.equal(updates[0].focal_y, 70);
+  assert.equal(updates[0].updated_by, "25613234-3273-4baa-8c0d-6a794f88eb0e");
+  assert.match(String(updates[0].updated_at), /^\d{4}-\d{2}-\d{2}T/);
+});

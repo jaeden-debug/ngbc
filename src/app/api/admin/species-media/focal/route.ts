@@ -32,7 +32,7 @@ export async function POST(request: Request) {
   if (!parsed) return json({ ok: false, code: "INVALID_REQUEST" }, 400);
   try {
     const updated = await new SupabaseSpeciesMediaStore(defaultSupabaseServerClient())
-      .setFocalPoint(parsed.assetId, { x: parsed.x, y: parsed.y });
+      .setFocalPoint(parsed.assetId, { x: parsed.x, y: parsed.y }, admin.userId);
     return updated ? json({ ok: true }, 200) : json({ ok: false, code: "NOT_CURRENT" }, 409);
   } catch {
     console.error("[species-media] focal point update failed");

@@ -60,7 +60,7 @@ export interface SpeciesMediaStore {
   getPrimary(speciesId: CanonicalId<"species">): Promise<SpeciesPrimaryMedia | null>;
   getPrimaryMap(speciesIds?: CanonicalId<"species">[]): Promise<Map<CanonicalId<"species">, SpeciesPrimaryMedia>>;
   publishPrimary(input: PublishSpeciesMediaInput): Promise<void>;
-  setFocalPoint?(assetId: string, focal: { x: number; y: number }): Promise<boolean>;
+  setFocalPoint?(assetId: string, focal: { x: number; y: number }, administratorId: string): Promise<boolean>;
 }
 
 function assemble(
@@ -185,10 +185,13 @@ export class SupabaseSpeciesMediaStore implements SpeciesMediaStore {
     });
   }
 
-  /** Only the active asset moves; returns false when the asset is not current. */
-  async setFocalPoint(assetId: string, focal: { x: number; y: number }): Promise<boolean> {
+  /**
+   * Only the active asset moves; returns false when the asset is not current.
+   * The administrator and the moment are recorded, as they are for an upload.
+   */
+  async setFocalPoint(assetId: string, focal: { x: number; y: number }, administratorId: string): Promise<boolean> {
     const { data, error } = await this.client.from("species_media_assets")
-      .update({ focal_x: focal.x, focal_y: focal.y })
+      .update({ focal_x: focal.x, focal_y: focal.y, updated_by: administratorId, updated_at: new Date().toISOString() })
       .eq("id", assetId).eq("status", "active").select("id");
     if (error) throw new SpeciesMediaPersistenceError("WRITE_FAILED", error.message);
     return (data ?? []).length === 1;

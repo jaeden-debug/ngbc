@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import { authenticateSpeciesMediaAdmin, SPECIES_MEDIA_ADMIN_COOKIE, speciesMediaAdminCookieOptions } from "../../../../../lib/species-media/admin-auth";
 import { canonicalOrigin, sameOrigin } from "../../../../../lib/species-media/request";
-import { createRateLimiter, getClientAddress } from "../../../../../lib/newsletter/rate-limit";
+import { consumeSignInAttempt } from "../../../../../lib/species-media/signin-limit";
+import { defaultSupabaseServerClient } from "../../../../../lib/supabase/server";
 
 export const runtime = "nodejs";
-const limiter = createRateLimiter({ limit: 5, windowMs: 15 * 60 * 1_000 });
 
 function json(body: Record<string, unknown>, status: number) {
   return NextResponse.json(body, { status, headers: { "Cache-Control": "no-store" } });
@@ -14,11 +14,20 @@ export async function POST(request: Request) {
   if (request.headers.get("content-type")?.split(";", 1)[0] !== "application/json") {
     return json({ ok: false, code: "UNSUPPORTED_MEDIA_TYPE" }, 415);
   }
-  const limit = limiter.check(getClientAddress(request));
-  if (!limit.allowed) {
-    const response = json({ ok: false, code: "RATE_LIMITED" }, 429);
-    response.headers.set("Retry-After", String(limit.retryAfterSeconds));
-    return response;
+  /* Pre-authentication, so the limiter is the durable one: a per-instance
+     counter would give an attacker one budget per serverless instance. It fails
+     closed — an unreachable limiter refuses rather than allows. */
+  try {
+    const limit = await consumeSignInAttempt(request, defaultSupabaseServerClient(),
+      process.env.HUNT_SHARE_RATE_LIMIT_SECRET?.trim() ?? "");
+    if (!limit.allowed) {
+      const response = json({ ok: false, code: "RATE_LIMITED" }, 429);
+      response.headers.set("retry-after", String(limit.retryAfterSeconds));
+      return response;
+    }
+  } catch {
+    console.error("[species-media] sign-in rate limiter unavailable");
+    return json({ ok: false, code: "SERVICE_UNAVAILABLE" }, 503);
   }
 
   let body: { email?: unknown; password?: unknown };
