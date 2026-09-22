@@ -44,6 +44,8 @@ export interface HuntSessionMemory {
   date: string | null;
   camera: StoredCamera | null;
   overlays: string[];
+  /** How strongly boundaries are drawn: a per-device preference, not a product decision. */
+  emphasis: "light" | "standard" | "strong" | null;
   snap: "peek" | "half" | "full" | null;
   explore: boolean;
   recents: StoredPlace[];
@@ -51,7 +53,7 @@ export interface HuntSessionMemory {
 
 export const EMPTY_SESSION: HuntSessionMemory = {
   hunt: null, zoneId: null, speciesId: null, date: null,
-  camera: null, overlays: [], snap: null, explore: false, recents: [],
+  camera: null, overlays: [], emphasis: null, snap: null, explore: false, recents: [],
 };
 
 const KEY = "north-ground.hunt.session.v1";
@@ -106,6 +108,7 @@ export function parseSession(raw: string | null, today: string): HuntSessionMemo
     date,
     camera,
     overlays: Array.isArray(stored.overlays) ? stored.overlays.filter((id): id is string => typeof id === "string").slice(0, 12) : [],
+    emphasis: stored.emphasis === "light" || stored.emphasis === "standard" || stored.emphasis === "strong" ? stored.emphasis : null,
     snap: stored.snap === "peek" || stored.snap === "half" || stored.snap === "full" ? stored.snap : null,
     explore: stored.explore === true,
     recents: Array.isArray(stored.recents)
@@ -142,7 +145,7 @@ export function readSession(storage: MemoryStorage | null | undefined, today: st
  * that only says where the map sits would make starting over leave a trace.
  */
 export function isWorthRemembering(session: HuntSessionMemory): boolean {
-  return Boolean(session.hunt || session.zoneId || session.speciesId || session.recents.length || session.overlays.length);
+  return Boolean(session.hunt || session.zoneId || session.speciesId || session.recents.length || session.overlays.length || (session.emphasis && session.emphasis !== "standard"));
 }
 
 export function writeSession(storage: MemoryStorage | null | undefined, session: HuntSessionMemory): void {

@@ -1,37 +1,45 @@
 "use client";
 
 import type { CanonicalId } from "../../../lib/content-contract";
+import type { Emphasis } from "../../../lib/hunt/exploration/cartography";
 import type { SpeciesSelectorOption } from "../../../lib/hunt/coverage";
 import type { OverlayLayerDescriptor } from "../../../lib/hunt/exploration/overlay-layers";
-import { EXPLORATION_WORDING } from "../../../lib/hunt/exploration/states";
-import { officialTermPlural, ZONE_LAYERS } from "../../../lib/hunt/zone-layers";
 import styles from "../HuntApp.module.css";
 
 /**
- * The map's layers, organised around a hunter's questions and nothing else.
+ * What the map looks like, and what is on it.
  *
- * Management zones are always drawn, each authority named. "Season status"
- * colours them by one species on the chosen day, from the same engine a full
- * Hunt runs, with a word and a glyph beside every colour. Special areas appear
- * only where North Ground already reads the authority's own service. No layer is
- * offered to fill the list.
+ * Each row is a label and a control. Nothing here explains itself at length:
+ * where something needs explaining it belongs on the thing it affects — the
+ * authority on the special area it draws, the meaning of a state on the state
+ * itself — not in a sheet of prose nobody reads on a hillside.
  */
 
-const SERVED = ZONE_LAYERS.filter((layer) => layer.serving);
-const LEGEND_STATES = ["SEASON_AVAILABLE", "SEASON_EXCEPT_AREAS", "CHECK_REQUIREMENTS", "NEEDS_VERIFICATION", "CONFLICT", "CLOSED", "UNKNOWN"] as const;
+const EMPHASIS_LABEL: Record<Emphasis, string> = { light: "Light", standard: "Standard", strong: "Strong" };
+const BASEMAPS = [
+  { id: "roadmap", label: "Standard" },
+  { id: "hybrid", label: "Satellite" },
+  { id: "terrain", label: "Terrain" },
+] as const;
+
+export type BasemapMode = (typeof BASEMAPS)[number]["id"];
 
 export default function LayersPage({
-  basemap, mapMode, onMapMode, explorable, speciesId, explore, onExplore, onExploreSpecies,
+  basemap, mapMode, onMapMode, zonesVisible, onZonesVisible, emphasis, onEmphasis,
+  explorable, speciesId, explore, onExplore,
   overlayLayers, overlaysOn, onToggleOverlay, onOpenZones, zonesInView,
 }: {
   basemap: "loading" | "ready" | "fallback";
-  mapMode: "terrain" | "hybrid";
-  onMapMode: (mode: "terrain" | "hybrid") => void;
+  mapMode: BasemapMode;
+  onMapMode: (mode: BasemapMode) => void;
+  zonesVisible: boolean;
+  onZonesVisible: (visible: boolean) => void;
+  emphasis: Emphasis;
+  onEmphasis: (emphasis: Emphasis) => void;
   explorable: SpeciesSelectorOption[];
   speciesId: CanonicalId<"species"> | null;
   explore: boolean;
   onExplore: (on: boolean) => void;
-  onExploreSpecies: (id: CanonicalId<"species">) => void;
   overlayLayers: OverlayLayerDescriptor[];
   overlaysOn: string[];
   onToggleOverlay: (id: string) => void;
@@ -42,82 +50,71 @@ export default function LayersPage({
   return (
     <div className={styles.page}>
       {basemap === "ready" ? (
-        <section aria-labelledby="layers-map">
-          <h3 className={styles.listTitle} id="layers-map">Map</h3>
+        <div className={styles.controlRow}>
+          <span className={styles.controlLabel}>Map</span>
           <div className={styles.segmented} role="group" aria-label="Basemap">
-            {(["terrain", "hybrid"] as const).map((mode) => (
-              <button key={mode} type="button" className={styles.segment} aria-pressed={mapMode === mode} onClick={() => onMapMode(mode)}>
-                {mode === "terrain" ? "Terrain" : "Satellite"}
+            {BASEMAPS.map((mode) => (
+              <button key={mode.id} type="button" className={styles.segment} aria-pressed={mapMode === mode.id} onClick={() => onMapMode(mode.id)}>
+                {mode.label}
               </button>
             ))}
           </div>
-        </section>
+        </div>
       ) : null}
 
-      <section aria-labelledby="layers-zones">
-        <h3 className={styles.listTitle} id="layers-zones">Hunting zones · always shown</h3>
-        <ul className={styles.legendList}>
-          <li><span className={styles.swatch} data-coverage="VERIFIED" aria-hidden="true" /> Certified rules for at least one species</li>
-          <li><span className={styles.swatch} data-coverage="IN_DEVELOPMENT" aria-hidden="true" /> Official boundary only — rules not yet certified</li>
-        </ul>
-        <ul className={styles.authorityList}>
-          {SERVED.map((layer) => (
-            <li key={layer.id}>{layer.jurisdictionName}: {officialTermPlural(layer)} from {layer.authority}</li>
-          ))}
-        </ul>
-        <button type="button" className={styles.linkButton} onClick={onOpenZones}>
-          List the {zonesInView} zones in view
-        </button>
-      </section>
+      <label className={styles.controlRow}>
+        <span className={styles.controlLabel}>Zone boundaries</span>
+        <input type="checkbox" className={styles.switchInput} checked={zonesVisible} onChange={(event) => onZonesVisible(event.target.checked)} />
+      </label>
 
-      <section aria-labelledby="layers-explore">
-        <h3 className={styles.listTitle} id="layers-explore">Season status by species</h3>
-        <p className={styles.detailNote}>Colours each zone by what the certified rules say for the whole zone on your date. Not a legality map: it never says a zone is open to you.</p>
-        <label className={styles.switchRow}>
-          <input type="checkbox" checked={explore} disabled={!selected} onChange={(event) => onExplore(event.target.checked)} />
-          <span>{selected ? `Colour zones for ${selected.displayName}` : "Choose a species to colour zones by"}</span>
-        </label>
-        <ul className={styles.chipList} aria-label="Species with certified rules">
-          {explorable.map((option) => (
-            <li key={option.id}>
-              <button type="button" className={styles.chip} aria-pressed={option.id === speciesId && explore} onClick={() => onExploreSpecies(option.id)}>
-                {option.displayName}
-              </button>
-            </li>
+      <div className={styles.controlRow}>
+        <span className={styles.controlLabel}>Boundary visibility</span>
+        <div className={styles.segmented} role="group" aria-label="Boundary visibility">
+          {(["light", "standard", "strong"] as const).map((level) => (
+            <button key={level} type="button" className={styles.segment} aria-pressed={emphasis === level} onClick={() => onEmphasis(level)}>
+              {EMPHASIS_LABEL[level]}
+            </button>
           ))}
-        </ul>
-        {explore ? (
-          <ul className={styles.legendList} aria-label="What the colours mean">
-            {LEGEND_STATES.map((state) => (
-              <li key={state}>
-                <span className={styles.legendGlyph} data-state={state} aria-hidden="true">{EXPLORATION_WORDING[state].glyph}</span>
-                <span><strong>{EXPLORATION_WORDING[state].label}.</strong> {EXPLORATION_WORDING[state].detail}</span>
-              </li>
-            ))}
-          </ul>
-        ) : null}
-      </section>
+        </div>
+      </div>
 
-      <section aria-labelledby="layers-special">
-        <h3 className={styles.listTitle} id="layers-special">Special areas</h3>
-        {overlayLayers.length ? (
-          <ul className={styles.toggleList}>
-            {overlayLayers.map((layer) => (
-              <li key={layer.id}>
-                <label className={styles.switchRow}>
-                  <input type="checkbox" checked={overlaysOn.includes(layer.id)} onChange={() => onToggleOverlay(layer.id)} />
-                  <span>
-                    <strong>{layer.name}</strong> · {layer.jurisdictionName}
-                    <span className={styles.optionSecondary}>{layer.authority}. {layer.standing}</span>
-                  </span>
-                </label>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className={styles.detailNote}>No certified special-area layer covers this view. North Ground adds one only where the authority publishes it.</p>
-        )}
-      </section>
+      <label className={styles.controlRow}>
+        <span className={styles.controlLabel}>
+          Colour zones by season
+          <span className={styles.controlNote}>{selected ? `For ${selected.displayName.toLowerCase()}, on your date` : "Choose a species first"}</span>
+        </span>
+        <input
+          type="checkbox"
+          className={styles.switchInput}
+          checked={explore}
+          disabled={!selected}
+          onChange={(event) => onExplore(event.target.checked)}
+        />
+      </label>
+
+      {overlayLayers.length ? (
+        overlayLayers.map((layer) => (
+          <label key={layer.id} className={styles.controlRow}>
+            <span className={styles.controlLabel}>
+              {layer.name}
+              {/* The authority belongs to the area it draws; the card names it in full. */}
+              <span className={styles.controlNote}>{layer.jurisdictionName} · {layer.authority}</span>
+            </span>
+            <input
+              type="checkbox"
+              className={styles.switchInput}
+              checked={overlaysOn.includes(layer.id)}
+              onChange={() => onToggleOverlay(layer.id)}
+            />
+          </label>
+        ))
+      ) : (
+        <p className={styles.controlEmpty}>Special regulatory areas: none published for this view.</p>
+      )}
+
+      <button type="button" className={styles.linkButton} onClick={onOpenZones}>
+        List the {zonesInView} zones in view
+      </button>
     </div>
   );
 }

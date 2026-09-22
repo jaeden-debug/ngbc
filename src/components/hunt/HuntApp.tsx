@@ -23,6 +23,8 @@ import { layerById, zoneIdFor, ZONE_LAYERS } from "../../lib/hunt/zone-layers";
 import { presentZone } from "../../lib/hunt/zone-presentation";
 import HuntMapView, { type CameraRequest } from "./HuntMapView";
 import HuntSheet from "./HuntSheet";
+import type { Emphasis } from "../../lib/hunt/exploration/cartography";
+import type { BasemapMode } from "./sheet/LayersPage";
 import {
   browserStorage, clearSession, readSession, withRecent, writeSession,
   type MemoryStorage, type StoredPlace,
@@ -176,7 +178,8 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   }, []);
   const clearRecents = useCallback(() => setRecents([]), []);
   const [basemap, setBasemap] = useState<"loading" | "ready" | "fallback">("loading");
-  const [mapMode, setMapMode] = useState<"terrain" | "hybrid">("terrain");
+  const [mapMode, setMapMode] = useState<BasemapMode>("terrain");
+  const [zonesVisible, setZonesVisible] = useState(true);
   const [huntZone, setHuntZone] = useState<HuntZone>({ kind: "idle" });
   const [locate, setLocate] = useState<LocateState>({ kind: "idle" });
   const [deviceToday, setDeviceToday] = useState<string | null>(null);
@@ -218,6 +221,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     const stored = readSession(memory(), todayIso());
     setRecents(stored.recents);
     if (stored.overlays.length) setOverlaysOn(stored.overlays);
+    if (stored.emphasis) setEmphasis(stored.emphasis);
     /* An explicit link always wins: it is what was shared, and what the page
        was already rendered for. Anything the link did not name comes back. */
     if (!initialUrl.speciesId && stored.speciesId) dispatchSession({ type: "SPECIES_CHOSEN", speciesId: stored.speciesId as CanonicalId<"species"> });
@@ -249,6 +253,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     dispatchSession({ type: "SPECIES_CLEARED" });
     dispatchSession({ type: "DATE_CHOSEN", iso: todayIso() });
     setOverlaysOn([]);
+    setEmphasis("standard");
     setPage("main");
     setSnap("peek");
     setComposerOpen(false);
@@ -738,6 +743,9 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   /* ── Special areas, only when switched on ────────────────────────────── */
 
   const [overlaysOn, setOverlaysOn] = useState<string[]>([]);
+  /* How strongly the official boundaries sit over the basemap. Standard is the
+     tuned default; the other two are for bright sun and for dense country. */
+  const [emphasis, setEmphasis] = useState<Emphasis>("standard");
   const [overlayFeatures, setOverlayFeatures] = useState<OverlayFeature[]>([]);
   const [overlayNotice, setOverlayNotice] = useState<string | null>(null);
   useEffect(() => {
@@ -862,6 +870,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
         date: session.date.iso,
         camera: view ? { latitude: (view.box.north + view.box.south) / 2, longitude: (view.box.east + view.box.west) / 2, zoom: view.zoom } : null,
         overlays: overlaysOn,
+        emphasis,
         snap,
         explore: session.explore,
         recents,
@@ -869,7 +878,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     }, 400);
     return () => window.clearTimeout(timer);
      
-  }, [hunt, selectedRef, selectedLayer, session.speciesId, session.date.iso, session.explore, view, overlaysOn, snap, recents]);
+  }, [hunt, selectedRef, selectedLayer, session.speciesId, session.date.iso, session.explore, view, overlaysOn, emphasis, snap, recents]);
 
   /* ── Announcements for assistive technology ──────────────────────────── */
 
@@ -963,9 +972,10 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     ) : page === "layers" ? (
       <LayersPage
         basemap={basemap} mapMode={mapMode} onMapMode={setMapMode}
+        zonesVisible={zonesVisible} onZonesVisible={setZonesVisible}
+        emphasis={emphasis} onEmphasis={setEmphasis}
         explorable={explorable} speciesId={session.speciesId} explore={session.explore}
         onExplore={(on) => dispatchSession({ type: "EXPLORE_SET", on })}
-        onExploreSpecies={(id) => { dispatchSession({ type: "SPECIES_CHOSEN", speciesId: id }); dispatchSession({ type: "EXPLORE_SET", on: true }); }}
         overlayLayers={overlayLayersInView} overlaysOn={overlaysOn}
         onToggleOverlay={(id) => setOverlaysOn((current) => (current.includes(id) ? current.filter((entry) => entry !== id) : [...current, id]))}
         onOpenZones={() => setPage("zones")} zonesInView={zonesInView.length}
@@ -1257,6 +1267,8 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
           startBox={geometry.extent}
           poster={poster}
           padding={padding}
+          emphasis={emphasis}
+          zonesVisible={zonesVisible}
           onView={setView}
           onZoneClick={selectZone}
           onOverlayClick={onOverlayClick}

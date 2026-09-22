@@ -76,7 +76,7 @@ export default function PlaceComposer({
     // After the sheet has risen, so the keyboard does not push a moving target.
     const timer = window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 60);
     return () => window.clearTimeout(timer);
-  }, [autoFocus]);
+  }, [autoFocus, inputRef]);
 
   useEffect(() => {
     if (skipNextQueryRef.current) {

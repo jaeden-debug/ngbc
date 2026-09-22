@@ -103,13 +103,14 @@
 .mapZoneLabel[data-state="CLOSED"] { color: var(--ng-bone-dim); }
 
 /* The device: the familiar blue dot, never selectable. */
+/* The device's own position: small, high-contrast, unmistakably not a pin. */
 .selfDot {
   position: absolute;
   left: 0;
   top: 0;
-  width: 18px;
-  height: 18px;
-  border: 3px solid #fff;
+  width: 14px;
+  height: 14px;
+  border: 2.5px solid #fff;
   border-radius: 50%;
   background: #4c8ee8;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25), 0 1px 4px rgba(0, 0, 0, 0.45);
@@ -128,16 +129,23 @@
   100% { transform: scale(1.6); opacity: 0; }
 }
 
-/* The hunt pin (bone) and a previewed point (dashed amber). */
+/*
+ * The hunt pin (bone) and a previewed point (dashed amber). It marks the place
+ * a hunt is about, so it is a pin and not a dot — but it is not the subject of
+ * the map either: the chosen zone is. It is scaled back to sit between the
+ * zone's outline and the device's dot.
+ */
 .mapPin {
   position: absolute;
   left: 0;
   top: 0;
   pointer-events: none;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.55));
+  transform-origin: 50% 100%;
+  scale: 0.86;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5));
 }
 .mapPin svg { display: block; }
-.mapPin path:first-child { fill: var(--ng-cream); stroke: #11140f; stroke-width: 2; }
+.mapPin path:first-child { fill: var(--ng-cream); fill-opacity: 0.92; stroke: #11140f; stroke-width: 1.8; }
 .mapPin circle, .mapPin .cross { fill: none; stroke: #11140f; stroke-width: 2; stroke-linecap: round; }
 .mapPin[data-variant="preview"] path:first-child { fill: rgba(224, 160, 74, 0.94); stroke: #2a1c08; stroke-dasharray: 3 2.2; }
 .mapPin[data-variant="preview"] circle, .mapPin[data-variant="preview"] .cross { stroke: #2a1c08; }
@@ -1138,3 +1146,25 @@
 }
 .aboutDetails[open] > summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
 @media (prefers-reduced-motion: reduce) { .aboutDetails > summary::after { transition: none; } }
+
+/* Layers: a label and a control per row, nothing to read. */
+.controlRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 52px;
+  padding: 6px 2px;
+  border-bottom: 1px solid var(--ng-glass-border);
+}
+.controlRow:last-of-type { border-bottom: 0; }
+.controlLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.92rem;
+  color: var(--ng-bone);
+}
+.controlNote { font-size: 0.78rem; color: var(--ng-bone-dim); }
+.controlEmpty { margin: 10px 2px; font-size: 0.82rem; color: var(--ng-bone-dim); }
+.switchInput { width: 44px; height: 26px; accent-color: var(--ng-moss); flex: none; }

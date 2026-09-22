@@ -1,6 +1,7 @@
 "use client";
 
 import { memo, useCallback, useEffect, useMemo, useRef, useState, type Dispatch } from "react";
+import type { Emphasis } from "../../lib/hunt/exploration/cartography";
 import type { BBox, DrawnZone } from "../../lib/hunt/exploration/geometry-store";
 import type { ExplorationEvent, ExplorationState, GeoPoint, SelfFailure } from "../../lib/hunt/exploration/map-state";
 import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
@@ -54,7 +55,7 @@ interface HuntMapViewProps {
   huntKey: string | null;
   filterStates: ReadonlyMap<string, ZoneState> | null;
   overlays: OverlayFeature[];
-  mapMode: "terrain" | "hybrid";
+  mapMode: "terrain" | "hybrid" | "roadmap";
   camera: CameraRequest | null;
   /** On first load with location permission already granted, centre on the device (camera only). */
   locateOnStart: boolean;
@@ -63,6 +64,10 @@ interface HuntMapViewProps {
   /** The server-drawn official zones for the opening camera (a data URI), shown until the live map draws. */
   poster: string | null;
   padding: () => Padding;
+  /** How strongly the boundaries are drawn over the basemap. */
+  emphasis: Emphasis;
+  /** Whether the official zones are drawn at all. */
+  zonesVisible: boolean;
   onView: (view: { box: BBox; zoom: number }) => void;
   onZoneClick: (key: string, origin: "map") => void;
   onOverlayClick: (layerId: string, objectId: number) => void;
@@ -76,7 +81,7 @@ const SELF_FAILURES: Record<number, SelfFailure> = { 1: "denied", 2: "position",
 
 function HuntMapView({
   googleMapsApiKey, exploration, dispatch, drawn, selectedKey, huntKey, filterStates, overlays, mapMode, camera,
-  locateOnStart, startBox, poster, padding, onView, onZoneClick, onOverlayClick, onBasemap,
+  locateOnStart, startBox, poster, padding, emphasis, zonesVisible, onView, onZoneClick, onOverlayClick, onBasemap,
 }: HuntMapViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const controllerRef = useRef<GoogleZoneMap | null>(null);
@@ -166,12 +171,13 @@ function HuntMapView({
   useEffect(() => { live?.setZones(drawn); live?.setLabels(drawn); }, [live, drawn]);
   useEffect(() => {
     if (!live) return;
-    live.setStyleState({ selectedKey, huntKey, filterStates });
+    live.setStyleState({ selectedKey, huntKey, filterStates, emphasis });
     live.setLabels(drawn);
     // `drawn` is applied above; this effect only restyles.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [live, selectedKey, huntKey, filterStates]);
+  }, [live, selectedKey, huntKey, filterStates, emphasis]);
   useEffect(() => { live?.setOverlays(overlays); }, [live, overlays]);
+  useEffect(() => { live?.setZonesVisible(zonesVisible); }, [live, zonesVisible]);
   useEffect(() => { live?.setMapType(mapMode); }, [live, mapMode]);
   useEffect(() => { live?.setHuntPin(hunt, hunt?.label ?? null); }, [live, hunt]);
   useEffect(() => { live?.setPreviewPin(pin?.mode === "pressed" ? pin.point : null); }, [live, pin]);

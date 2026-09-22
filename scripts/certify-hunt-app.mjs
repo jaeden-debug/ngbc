@@ -505,6 +505,78 @@ const scenarios = {
     await context.close();
   },
 
+  async cartography(browser) {
+    const s = "D map reads at three scales";
+    const { context, page, consoleErrors } = await newPage(browser, { width: 1280, height: 800 });
+    /* Google draws polygons into a canvas, so what the map is TOLD to draw is
+       the honest thing to check: every style the app applies is recorded. */
+    await page.addInitScript(() => {
+      window.__zoneStyles = [];
+      const hook = () => {
+        const P = window.google?.maps?.Polygon?.prototype;
+        if (!P || P.__probed) return false;
+        P.__probed = true;
+        const original = P.setOptions;
+        P.setOptions = function (options) {
+          if (options && options.strokeColor) window.__zoneStyles.push({ ...options, at: Date.now() });
+          return original.call(this, options);
+        };
+        return true;
+      };
+      const timer = setInterval(() => { if (hook()) clearInterval(timer); }, 40);
+    });
+    await page.goto(`${BASE}/hunt?zone=ca-on-wmu-57`);
+    await mapReady(page);
+    await waitFor(page, () => Boolean(document.getElementById("hunt-zone-title")), 30_000);
+    await waitFor(page, () => (window.__zoneStyles ?? []).length > 20, 20_000);
+    await page.waitForTimeout(1_500);
+
+    const styles = () => page.evaluate(() => {
+      /* Every style applied since the page opened: the controller only
+         re-applies what changed, so the chosen zone's style is set once. */
+      const recent = window.__zoneStyles;
+      const bone = recent.filter((entry) => String(entry.strokeColor).toLowerCase() === "#f0ead8");
+      const others = recent.filter((entry) => String(entry.strokeColor).toLowerCase() !== "#f0ead8");
+      return {
+        boneCount: bone.length,
+        heaviestBone: Math.max(0, ...bone.map((entry) => entry.strokeWeight ?? 0)),
+        heaviestOther: Math.max(0, ...others.map((entry) => entry.strokeWeight ?? 0)),
+        strongestBoneFill: Math.max(0, ...bone.map((entry) => entry.fillOpacity ?? 0)),
+        strongestOtherFill: Math.max(0, ...others.map((entry) => entry.fillOpacity ?? 0)),
+        tones: [...new Set(others.map((entry) => String(entry.fillColor).toLowerCase()))].length,
+        topZ: Math.max(0, ...bone.map((entry) => entry.zIndex ?? 0)),
+        otherZ: Math.max(0, ...others.map((entry) => entry.zIndex ?? 0)),
+      };
+    });
+
+    const local = await styles();
+    check(s, "the chosen zone wears the only bone outline", local.boneCount >= 1, `${local.boneCount} bone styles`);
+    check(s, "and the heaviest line on the map", local.heaviestBone > local.heaviestOther, `${local.heaviestBone} vs ${local.heaviestOther}`);
+    check(s, "and the strongest fill", local.strongestBoneFill >= local.strongestOtherFill, `${local.strongestBoneFill} vs ${local.strongestOtherFill}`);
+    check(s, "and sits above everything else", local.topZ > local.otherZ, `${local.topZ} vs ${local.otherZ}`);
+    check(s, "jurisdictions are told apart by tone", local.tones >= 2, `${local.tones} tones drawn`);
+
+    await page.getByRole("button", { name: /Map layers/ }).click();
+    await page.waitForTimeout(300);
+    await page.evaluate(() => { window.__zoneStyles.length = 0; });
+    await page.getByRole("button", { name: /^Light$/ }).click();
+    await page.waitForTimeout(900);
+    const light = await styles();
+    await page.evaluate(() => { window.__zoneStyles.length = 0; });
+    await page.getByRole("button", { name: /^Strong$/ }).click();
+    await page.waitForTimeout(900);
+    const strong = await styles();
+    check(s, "boundary visibility changes how strongly they are drawn",
+      strong.strongestOtherFill > light.strongestOtherFill, `${light.strongestOtherFill} → ${strong.strongestOtherFill}`);
+
+    await page.getByRole("checkbox", { name: /Zone boundaries/ }).first().uncheck();
+    await page.waitForTimeout(900);
+    const hidden = await page.evaluate(() => [...document.querySelectorAll("[class*=mapZoneLabel]")].filter((element) => element.offsetParent).length);
+    check(s, "zone boundaries can be switched off", hidden === 0, `${hidden} labels still drawn`);
+    check(s, "no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));
+    await context.close();
+  },
+
   async threeLocations(browser) {
     const s = "I device, hunt and vendor locations stay apart";
     // The device is in Ottawa; the hunt is at Bancroft, chosen on the map through a link.

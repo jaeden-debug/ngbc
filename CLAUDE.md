@@ -1721,6 +1721,47 @@ full Hunt each time.
   management areas and closed lands), each with its authority and legal standing.
   No decorative or unsourced layer is ever added to fill the control.
 
+## The map reads at three scales
+
+*Decided 2026-09-22.*
+
+The same official geometry is drawn three ways, automatically, with no mode
+switch — because a hunter asks a different question at each scale:
+
+- **National** (below zoom 6.5) — *where am I in the country?* Jurisdictions
+  read as quiet tonal blocks, internal lines almost disappear, and only zones
+  with real room on screen are named.
+- **Regional** (to zoom 9.5) — *which zone is which?* Boundaries take over from
+  fills and more names appear.
+- **Local** — *where exactly?* Lines are crisp, fills nearly gone, and the
+  terrain, water and roads underneath carry the ground.
+
+One thing is always loudest: the zone you chose. It wears the only bone
+outline on the map, the strongest fill and the top of the stack, and that is
+computed to clear whatever the loudest unchosen zone can reach — not tuned by
+eye. Its neighbours lose fill but keep their boundaries: a focal plane, never a
+blackout.
+
+Jurisdictions differ by **tone, not by loudness** — a family of quiet greens and
+earths, so Ontario can be told from Manitoba at national scale without
+colouring the country in. Colour still never carries meaning alone: a species
+state is a word and a glyph as well as a tint.
+
+How strongly the boundaries sit over the basemap is the reader's choice —
+**Light / Standard / Strong**, Standard being the tuned default — and it lives
+in the Layers control, which is appearance only: a label and a control per row,
+no paragraphs. Anything needing explanation belongs on the thing it affects.
+
+## The two markers are two different things
+
+*Decided 2026-09-22.*
+
+The device's position is a small high-contrast dot with an accuracy ring. The
+hunt location is the bone pin. They are different concepts (see above) and must
+never read alike; the pin is also scaled to sit between the chosen zone's
+outline and the device's dot, because the subject of the map is the zone, not
+the pin.
+
 ## Zone identity and presentation
 
 *Decided 2026-09-22.*

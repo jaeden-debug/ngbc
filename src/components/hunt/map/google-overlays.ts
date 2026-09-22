@@ -25,6 +25,10 @@ export interface LabelSource {
 
 export interface LabelLayerHandle {
   setLabels(labels: LabelSource[]): void;
+  /** Hide the names with the boundaries they belong to. */
+  setVisible(visible: boolean): void;
+  /** How much screen a zone must own before it is named. */
+  setMinimumSpan(px: number): void;
   /** Container pixel → coordinate, for a long press. Null before the first draw. */
   toCoordinate(x: number, y: number): { latitude: number; longitude: number } | null;
   destroy(): void;
@@ -38,6 +42,10 @@ export function createLabelLayer(
   class LabelLayer extends maps.OverlayView {
     labels: LabelSource[] = [];
     container: HTMLDivElement | null = null;
+    /** Set while the zones they name are switched off. */
+    hidden = false;
+    /** The screen span a zone needs before it is named, from the zoom band. */
+    minimumSpan = 0;
     pool = new Map<string, HTMLSpanElement>();
 
     onAdd() {
@@ -45,6 +53,7 @@ export function createLabelLayer(
       this.container.setAttribute("aria-hidden", "true");
       this.container.style.position = "absolute";
       this.container.style.pointerEvents = "none";
+      if (this.hidden) this.container.style.display = "none";
       this.getPanes()?.overlayLayer.appendChild(this.container);
     }
 
@@ -78,6 +87,13 @@ export function createLabelLayer(
         const corner = projection.fromLatLngToContainerPixel(new maps.LatLng(latitude + spanLat / 2, longitude + spanLng / 2));
         const opposite = projection.fromLatLngToContainerPixel(new maps.LatLng(latitude - spanLat / 2, longitude - spanLng / 2));
         if (!corner || !opposite) continue;
+        const spanWidth = Math.abs(corner.x - opposite.x);
+        const spanHeight = Math.abs(corner.y - opposite.y);
+        /* A zone has to own enough of the screen to be worth naming. At
+           country scale that leaves the big ones talking and the rest quiet,
+           which is what stops the map becoming a wall of numbers. The chosen
+           zone is named wherever it is. */
+        if (!source.selected && Math.max(spanWidth, spanHeight) < layer.minimumSpan) continue;
         const prefix = source.glyph ? `${source.glyph} ` : "";
         candidates.push({
           key: source.key,
@@ -85,8 +101,8 @@ export function createLabelLayer(
           short: `${prefix}${source.short}`,
           x: screen.x,
           y: screen.y,
-          spanWidth: Math.abs(corner.x - opposite.x),
-          spanHeight: Math.abs(corner.y - opposite.y),
+          spanWidth,
+          spanHeight,
           priority: source.priority,
           force: source.selected,
           source,
@@ -127,6 +143,15 @@ export function createLabelLayer(
     setLabels(labels) {
       layer.labels = labels;
       layer.draw();
+    },
+    setMinimumSpan(px) {
+      if (layer.minimumSpan === px) return;
+      layer.minimumSpan = px;
+      layer.draw();
+    },
+    setVisible(visible) {
+      layer.hidden = !visible;
+      if (layer.container) layer.container.style.display = visible ? "" : "none";
     },
     toCoordinate(x, y) {
       const projection = layer.getProjection();

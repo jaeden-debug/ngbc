@@ -23,7 +23,7 @@ function fakeStorage(initial: Record<string, string> = {}): MemoryStorage & { da
 const FULL: HuntSessionMemory = {
   hunt: DELEAGE, zoneId: "management_zone:ca-qc-zone-10o", speciesId: "species:moose",
   date: "2026-10-01", camera: { latitude: 46.3, longitude: -76, zoom: 9 },
-  overlays: ["layer:ca-mb-refuges"], snap: "half", explore: false, recents: [DELEAGE, SPOT],
+  overlays: ["layer:ca-mb-refuges"], emphasis: "strong", snap: "half", explore: false, recents: [DELEAGE, SPOT],
 };
 
 test("a whole session survives a round trip", () => {
@@ -59,6 +59,7 @@ test("nonsense is dropped field by field, not wholesale", () => {
     camera: { latitude: 46, longitude: -76, zoom: 99 },
     overlays: ["layer:ok", 7],
     snap: "enormous",
+    emphasis: "blinding",
     explore: "yes",
     recents: [DELEAGE, { label: "bad" }],
   }), TODAY);
@@ -121,4 +122,13 @@ test("a session with nothing chosen is not stored, so starting over leaves no tr
   writeSession(storage, emptied);
   assert.deepEqual(Object.keys(storage.data), []);
   assert.equal(isWorthRemembering({ ...emptied, zoneId: "management_zone:ca-on-wmu-57" }), true);
+});
+
+test("a boundary-strength preference is remembered, and only when it is not the default", () => {
+  const storage = fakeStorage();
+  writeSession(storage, { ...EMPTY_SESSION, emphasis: "light" });
+  assert.equal(readSession(storage, TODAY).emphasis, "light");
+  // Standard is the tuned default, so it is not worth a record of its own.
+  writeSession(storage, { ...EMPTY_SESSION, emphasis: "standard" });
+  assert.equal(readSession(storage, TODAY).emphasis, null);
 });

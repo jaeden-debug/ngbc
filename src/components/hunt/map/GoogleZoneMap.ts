@@ -3,8 +3,12 @@
 import type { BBox, DrawnZone } from "../../../lib/hunt/exploration/geometry-store";
 import type { GeoPoint } from "../../../lib/hunt/exploration/map-state";
 import type { OverlayFeature } from "../../../lib/hunt/exploration/overlay-layers";
+import {
+  labelMinimumSpanPx, zoneStyle, zoomBand, type Emphasis, type ZoomBand,
+} from "../../../lib/hunt/exploration/cartography";
 import { mapLabelFor } from "../../../lib/hunt/exploration/map-labels";
 import { EXPLORATION_WORDING, type ExplorationState as ZoneState } from "../../../lib/hunt/exploration/states";
+import { layerById } from "../../../lib/hunt/zone-layers";
 import { BASEMAP_STYLE } from "./google-loader";
 import { createLabelLayer, createPointMarker, createSelfMarker, type LabelLayerHandle, type LabelSource, type PointMarkerHandle, type SelfMarkerHandle } from "./google-overlays";
 
@@ -38,18 +42,14 @@ export interface ZoneStyleState {
   selectedKey: string | null;
   huntKey: string | null;
   filterStates: ReadonlyMap<string, ZoneState> | null;
+  /** How strongly the boundaries are drawn over the basemap. */
+  emphasis: Emphasis;
 }
 
 const LONG_PRESS_MS = 550;
 const LONG_PRESS_SLOP_PX = 10;
 const MAX_FRAMING_ZOOM = 13;
 
-const COVERAGE_STROKE: Record<string, string> = {
-  VERIFIED: "#b8d3a8",
-  PARTIAL: "#8faa86",
-  IN_DEVELOPMENT: "#8d9c87",
-  UNAVAILABLE: "#6a6f66",
-};
 
 /* One restrained hue per state, always paired with a glyph and a word in the label and legend. */
 const STATE_FILL: Partial<Record<ZoneState, { color: string; opacity: number }>> = {
@@ -61,30 +61,26 @@ const STATE_FILL: Partial<Record<ZoneState, { color: string; opacity: number }>>
   CLOSED: { color: "#9aa0a6", opacity: 0.1 },
 };
 
-function zoneOptions(coverage: string, flags: { selected: boolean; hunt: boolean; hovered: boolean; state?: ZoneState; filtering: boolean }): google.maps.PolygonOptions {
-  const certified = coverage === "VERIFIED";
-  const fill = flags.state ? STATE_FILL[flags.state] : undefined;
-  if (flags.selected) {
-    return {
-      strokeColor: "#f0ead8", strokeOpacity: 1, strokeWeight: 3,
-      fillColor: fill?.color ?? "#9fbc8e", fillOpacity: fill ? fill.opacity + 0.06 : 0.14, zIndex: 6,
-    };
-  }
-  if (flags.hunt) {
-    return {
-      strokeColor: "#f0ead8", strokeOpacity: 0.8, strokeWeight: 2,
-      fillColor: fill?.color ?? "#9fbc8e", fillOpacity: fill ? fill.opacity : 0.08, zIndex: 5,
-    };
-  }
-  const stroke = COVERAGE_STROKE[coverage] ?? COVERAGE_STROKE.IN_DEVELOPMENT;
-  return {
-    strokeColor: stroke,
-    strokeOpacity: flags.hovered ? 0.95 : certified ? 0.7 : 0.45,
-    strokeWeight: flags.hovered ? 2 : certified ? 1.2 : 0.9,
-    fillColor: fill?.color ?? stroke,
-    fillOpacity: fill ? fill.opacity + (flags.hovered ? 0.06 : 0) : flags.hovered ? 0.1 : flags.filtering ? 0 : certified ? 0.05 : 0.025,
-    zIndex: flags.hovered ? 4 : certified ? 3 : 2,
-  };
+function zoneOptions(
+  coverage: string,
+  flags: {
+    jurisdictionId?: string; selected: boolean; hunt: boolean; hovered: boolean;
+    dimmed: boolean; state?: ZoneState; filtering: boolean; band: ZoomBand; emphasis: Emphasis;
+  },
+): google.maps.PolygonOptions {
+  const stateColor = flags.state ? STATE_FILL[flags.state] : undefined;
+  return zoneStyle({
+    coverage,
+    jurisdictionId: flags.jurisdictionId,
+    selected: flags.selected,
+    hunt: flags.hunt,
+    hovered: flags.hovered,
+    dimmed: flags.dimmed,
+    filtering: flags.filtering,
+    band: flags.band,
+    emphasis: flags.emphasis,
+    ...(stateColor ? { stateColor } : {}),
+  });
 }
 
 function signature(options: google.maps.PolygonOptions): string {
@@ -100,6 +96,8 @@ interface ZoneShape {
   rings: number[][][];
   coverage: string;
   style: string;
+  /** Whose geography this is, for its tonal family. */
+  jurisdictionId?: string;
 }
 
 export class GoogleZoneMap {
@@ -112,8 +110,10 @@ export class GoogleZoneMap {
   private readonly self: SelfMarkerHandle;
   private readonly huntPin: PointMarkerHandle;
   private readonly previewPin: PointMarkerHandle;
-  private style: ZoneStyleState = { selectedKey: null, huntKey: null, filterStates: null };
+  private style: ZoneStyleState = { selectedKey: null, huntKey: null, filterStates: null, emphasis: "standard" };
   private hoverKey: string | null = null;
+  private band: ZoomBand = "national";
+  private zonesVisible = true;
   private suppressClickUntil = 0;
   private readonly cleanups: Array<() => void> = [];
   private readonly reducedMotion: boolean;
@@ -160,7 +160,15 @@ export class GoogleZoneMap {
     const listeners = [
       this.map.addListener("idle", () => {
         const box = this.visibleBox();
-        if (box) callbacks.onViewChange({ box, zoom: this.map.getZoom() ?? options.zoom });
+        const zoom = this.map.getZoom() ?? options.zoom;
+        // Crossing into another band is a different map: restyle before reporting.
+        const band = zoomBand(zoom);
+        if (band !== this.band) {
+          this.band = band;
+          this.restyle();
+          this.labels.setMinimumSpan(labelMinimumSpanPx(band));
+        }
+        if (box) callbacks.onViewChange({ box, zoom });
       }),
       // A plain click away from every zone closes what is open. It never picks a location.
       this.map.addListener("click", () => {
@@ -187,7 +195,7 @@ export class GoogleZoneMap {
       wanted.add(zone.key);
       const existing = this.shapes.get(zone.key);
       if (!existing) {
-        const polygon = new this.maps.Polygon({ map: this.map, paths: toPaths(zone.piece.rings), clickable: true });
+        const polygon = new this.maps.Polygon({ map: this.zonesVisible ? this.map : null, paths: toPaths(zone.piece.rings), clickable: true });
         const key = zone.key;
         polygon.addListener("click", () => {
           if (Date.now() < this.suppressClickUntil) return;
@@ -200,7 +208,10 @@ export class GoogleZoneMap {
         });
         polygon.addListener("mouseover", () => this.setHover(key));
         polygon.addListener("mouseout", () => { if (this.hoverKey === key) this.setHover(null); });
-        this.shapes.set(key, { polygon, rings: zone.piece.rings, coverage: zone.coverage, style: "" });
+        this.shapes.set(key, {
+          polygon, rings: zone.piece.rings, coverage: zone.coverage, style: "",
+          jurisdictionId: layerById(zone.layerId)?.jurisdictionId,
+        });
         continue;
       }
       if (existing.rings !== zone.piece.rings) {
@@ -218,6 +229,14 @@ export class GoogleZoneMap {
     this.restyle();
   }
 
+  /** Hide or show every drawn zone and its label, keeping the drawings themselves. */
+  setZonesVisible(visible: boolean): void {
+    if (this.zonesVisible === visible) return;
+    this.zonesVisible = visible;
+    for (const shape of this.shapes.values()) shape.polygon.setMap(visible ? this.map : null);
+    this.labels.setVisible(visible);
+  }
+
   setStyleState(next: ZoneStyleState): void {
     this.style = next;
     this.restyle();
@@ -232,15 +251,22 @@ export class GoogleZoneMap {
 
   /** Apply each polygon's style, touching only the ones that changed. */
   private restyle(): void {
-    const { selectedKey, huntKey, filterStates } = this.style;
+    const { selectedKey, huntKey, filterStates, emphasis } = this.style;
     const filtering = Boolean(filterStates);
+    const band = zoomBand(this.map.getZoom() ?? 4);
     for (const [key, shape] of this.shapes) {
+      const selected = key === selectedKey;
       const options = zoneOptions(shape.coverage, {
-        selected: key === selectedKey,
+        jurisdictionId: shape.jurisdictionId,
+        selected,
         hunt: key === huntKey,
         hovered: key === this.hoverKey,
+        // A chosen zone puts its neighbours in a quieter plane, boundaries intact.
+        dimmed: Boolean(selectedKey) && !selected && key !== huntKey,
         state: filterStates?.get(key),
         filtering,
+        band,
+        emphasis,
       });
       const next = signature(options);
       if (next === shape.style) continue;
@@ -251,6 +277,7 @@ export class GoogleZoneMap {
 
   setLabels(drawn: readonly DrawnZone[]): void {
     const { selectedKey, huntKey, filterStates } = this.style;
+    this.labels.setMinimumSpan(labelMinimumSpanPx(zoomBand(this.map.getZoom() ?? 4)));
     const sources: LabelSource[] = [];
     for (const zone of drawn) {
       const { labelPoint, labelSpan } = zone.piece;
@@ -314,7 +341,7 @@ export class GoogleZoneMap {
     this.self.update(fix);
   }
 
-  setMapType(mode: "terrain" | "hybrid"): void {
+  setMapType(mode: "terrain" | "hybrid" | "roadmap"): void {
     this.map.setMapTypeId(mode);
   }
 
