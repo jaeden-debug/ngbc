@@ -399,10 +399,18 @@ export async function fetchLayerGeometry(
     if (layer.mapGeometry === "stored") {
       try {
         records = await storedRecords(layer, view, tolerance, storedClient);
-      } catch (error) {
-        // The authority's own service, where there is one, is the fallback; a guess never is.
-        if (!authority) throw error;
-        records = await authorityTiles(layer, view, tolerance, fetcher);
+      } catch {
+        /* The first stored query of a process pays the database's per-connection
+           start-up, which can exhaust the bounded timeout on its own. One retry
+           under the same bound costs a cold caller little and saves the map from
+           dropping a jurisdiction; a second failure falls back as before. */
+        try {
+          records = await storedRecords(layer, view, tolerance, storedClient);
+        } catch (error) {
+          // The authority's own service, where there is one, is the fallback; a guess never is.
+          if (!authority) throw error;
+          records = await authorityTiles(layer, view, tolerance, fetcher);
+        }
       }
     } else {
       records = await authorityTiles(layer, view, tolerance, fetcher);

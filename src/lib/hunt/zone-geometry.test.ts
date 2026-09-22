@@ -367,3 +367,45 @@ test("a view over one province keeps that province's identity", async () => {
   assert.equal(result.layerId, "layer:ca-mb-gha");
   assert.equal(result.features[0].coverage, zoneCoverage(MANITOBA, "38"));
 });
+
+/* ── Stored drawings ─────────────────────────────────────────────────────── */
+
+/** A stored-drawing client that fails its first `failures` calls, then answers. */
+function storedClient(failures: number, rows: Array<{ official_identifier: string; canonical_id: string; geometry: unknown }>) {
+  let calls = 0;
+  const client = () => ({
+    rpc: () => ({
+      abortSignal: async () => {
+        calls += 1;
+        if (calls <= failures) return { data: null, error: new Error("statement timeout") };
+        return { data: rows, error: null };
+      },
+    }),
+  });
+  return { client: client as never, calls: () => calls };
+}
+
+test("a cold stored query is retried once under the same bound before the authority is asked", async () => {
+  clearZoneGeometryCache();
+  const { fetcher, calls: authorityCalls } = stubFetch(collection([{ name: "57", ring: square(-77.9, 45.2, 0.2) }]));
+  const stored = storedClient(1, [{
+    official_identifier: "57",
+    canonical_id: "management_zone:ca-on-wmu-57",
+    geometry: { type: "Polygon", coordinates: [square(-77.9, 45.2, 0.2)] },
+  }]);
+  const result = await fetchLayerGeometry(ONTARIO, { west: -79, south: 44, east: -76, north: 46 }, 8, fetcher, stored.client);
+  assert.equal(result.status, "OK");
+  assert.deepEqual(result.features.map((feature) => feature.name), ["57"]);
+  assert.equal(stored.calls(), 2, "the stored query is tried twice");
+  assert.equal(authorityCalls.length, 0, "the authority is not asked when the retry succeeds");
+});
+
+test("a stored path that fails twice still falls back to the authority", async () => {
+  clearZoneGeometryCache();
+  const { fetcher, calls: authorityCalls } = stubFetch(collection([{ name: "57", ring: square(-77.9, 45.2, 0.2) }]));
+  const stored = storedClient(2, []);
+  const result = await fetchLayerGeometry(ONTARIO, { west: -79, south: 44, east: -76, north: 46 }, 8, fetcher, stored.client);
+  assert.equal(result.status, "OK");
+  assert.equal(stored.calls(), 2);
+  assert.ok(authorityCalls.length > 0, "the authority answers when the store cannot");
+});
