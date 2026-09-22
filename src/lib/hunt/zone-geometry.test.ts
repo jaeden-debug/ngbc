@@ -78,8 +78,9 @@ test("Canadian and United States jurisdictions stay distinguishable", () => {
   assert.equal(layerForPoint(45.23, -77.94)?.jurisdictionName, "Ontario");
   // A point in Montana is never answered in a Canadian layer's terms.
   assert.notEqual(layerForPoint(46.87, -110.36)?.country, "CA", "Montana resolves to no Canadian layer");
-  // A registered layer is not a drawn one: only layers Hunt serves are counted.
-  assert.equal(COVERAGE_ROADMAP.drawnJurisdictions, ZONE_LAYERS.filter((layer) => layer.serving).length);
+  // A registered layer is not a drawn one: only jurisdictions Hunt serves are
+  // counted, once each however many layers they serve (Montana serves two).
+  assert.equal(COVERAGE_ROADMAP.drawnJurisdictions, new Set(ZONE_LAYERS.filter((layer) => layer.serving).map((layer) => layer.jurisdictionId)).size);
   assert.ok(COVERAGE_ROADMAP.unitedStatesInDevelopment > 0);
 });
 

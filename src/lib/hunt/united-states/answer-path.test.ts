@@ -30,7 +30,8 @@ test("an unserved U.S. point is refused as outside covered geography, whatever i
   const response = await handler(new Request(`${ORIGIN}/api/hunt/evaluate`, {
     method: "POST",
     headers: { "content-type": "application/json", origin: ORIGIN },
-    body: JSON.stringify(evaluateRequestBody({ latitude: 46.2, longitude: -116.0, date: "2026-10-01", speciesId: "species:white-tailed-deer" }, { HUNT_CODE: "4007" })),
+    // Central Colorado: no Colorado layer is served.
+    body: JSON.stringify(evaluateRequestBody({ latitude: 39.5, longitude: -106.0, date: "2026-10-01", speciesId: "species:white-tailed-deer" }, { HUNT_CODE: "E-E-054-O1-R" })),
   }));
   assert.equal(response.status, 400);
 });
