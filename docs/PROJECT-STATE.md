@@ -483,6 +483,9 @@ deferred with them, and stays approved for later.
 ### 2026-09-22 — Migrations with triggers or functions are dry-run in production first
 Every migration that creates or changes a trigger or function is run with its assertions inside `BEGIN … ROLLBACK` against production before it is applied. `20260922190000` shipped a trigger function that failed every zone write at commit (42703). Its pgTAP file had never run, because there is no local database harness. The post-apply dry-run caught it, and `20260922200000` fixed it. Bulk writes through REST RPCs are batched under the 8-second statement timeout (≤15 records, ≤400 KB per call); a timed-out attempt is not retried. Repeated attempts loaded production during an owner upload.
 
+### 2026-09-22 — Applying through the MCP assigns the version, so the file is renamed to match
+The platform assigns a migration's version when it is applied through the Supabase MCP rather than the CLI: `20260922233000_zone_display_level_aware_limit.sql` was recorded as `20260922204235`. Left alone the repository would hold a version the ledger does not, and a replay would treat the file as a second, separate migration of the same change — breaking the version-for-version agreement recorded in Data Providers. After every MCP `apply_migration`, read `list_migrations` and rename the file to the version the platform recorded. The check is unchanged: `select version from supabase_migrations.schema_migrations` against `ls supabase/migrations`.
+
 ### 2026-09-22 — A VERIFIED zone always has its derivatives
 The fast resolver reads parts only, so a VERIFIED zone without them would silently match nothing. The database now makes that state impossible, and the resolver fails closed into the authority's own service if it ever occurs.
 
@@ -569,6 +572,8 @@ The homepage stays dark, cinematic and immersive. Hunt is clean, glassy, precise
 Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport are ISO `YYYY-MM-DD`, and a hunt date is treated as a calendar day rather than an instant so no time zone can shift it. Fast numeric entry, pasted-format normalisation and real calendar validation are required behaviour, covered by tests rather than by screenshots.
 
 ## Validation
+
+- **The map and the coverage report agree on 1,212 official units by two independent paths (2026-09-22).** The national overview answer contains 1,212 drawn features across the seven served layers (Ontario 151, Québec 59, Manitoba 62, Alberta 189, British Columbia 225, Saskatchewan 83, Yukon 443), and `canadaCoverageReport()` computes 1,212 parity-certified units from the certified rule bundles and ingestion adapters. Neither number is typed, and they are derived from different sources: one from PostGIS drawings and live services at request time, the other from the bundles and adapters at call time. Their agreement is a real cross-check — if a jurisdiction is ever promoted without being drawn, drawn without being certified, or silently truncated by a query limit, the two numbers separate. Yukon is exactly how that was caught: it reported 443 certified units while the map drew 0, because a 400-row cap refused the layer.
 
 ### Build
 - `canada-bc` landing, 2026-09-22, rebased on `9e82000`: typecheck and lint clean; full `npm test` green (hedge 11/11, `test:hunt` including BC unserved/served-state and the Cranbrook attribution); 5/5 time zones; published content contract 0 errors, 0 warnings; `check:regulatory-sources` all unchanged, BC bundle reproduces byte for byte; production build; hydration check 8 pages × 3 browser time zones clean. Against a local production build (Manitoba store read path live): Manitoba 24/24 (evaluation p90 264 ms), Québec 21/21, Ontario regression 7/7, Alberta regression 13/13.
