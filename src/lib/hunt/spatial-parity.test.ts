@@ -116,7 +116,10 @@ test("the adapter reports a single-part polygon as a MultiPolygon without losing
       geometry: { type: "Polygon", coordinates: square },
     }],
   };
-  const fetcher = (async () => ({ ok: true, status: 200, json: async () => page })) as unknown as typeof fetch;
+  const fetcher = (async (url: string) => ({
+    ok: true, status: 200,
+    json: async () => new URL(String(url)).searchParams.get("returnCountOnly") === "true" ? { count: 1 } : page,
+  })) as unknown as typeof fetch;
   const { features } = await createOntarioWmuSource(fetcher).fetchFeatures();
 
   assert.equal(features.length, 1);
@@ -127,7 +130,7 @@ test("the adapter reports a single-part polygon as a MultiPolygon without losing
   assert.equal(feature.sourceFeatureId, "1");
 });
 
-test("the adapter drops a feature it cannot use rather than staging a broken zone", async () => {
+test("the adapter refuses unreadable authority features rather than staging a partial layer", async () => {
   const page = {
     type: "FeatureCollection",
     features: [
@@ -136,7 +139,9 @@ test("the adapter drops a feature it cannot use rather than staging a broken zon
       { properties: { OFFICIAL_NAME: "59" }, geometry: { type: "Polygon", coordinates: [] } },
     ],
   };
-  const fetcher = (async () => ({ ok: true, status: 200, json: async () => page })) as unknown as typeof fetch;
-  const { features } = await createOntarioWmuSource(fetcher).fetchFeatures();
-  assert.deepEqual(features, []);
+  const fetcher = (async (url: string) => ({
+    ok: true, status: 200,
+    json: async () => new URL(String(url)).searchParams.get("returnCountOnly") === "true" ? { count: 3 } : page,
+  })) as unknown as typeof fetch;
+  await assert.rejects(createOntarioWmuSource(fetcher).fetchFeatures(), /Incomplete Ontario WMU read/);
 });

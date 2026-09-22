@@ -107,6 +107,23 @@ export function designationOfRaw(layer: Pick<ZoneLayer, "designationOf">, raw: u
   return typeof raw === "string" && raw.trim() !== "" ? raw.trim() : null;
 }
 
+/** A readable label without changing the authority's stored designation. */
+export function zoneDisplayLabel(
+  layer: Pick<ZoneLayer, "jurisdictionId" | "officialTermShort">,
+  designation: string,
+): string {
+  if (layer.jurisdictionId === "jurisdiction:ca-qc") {
+    const match = /^(\d+)(SE|SO|E|O|N|S)$/i.exec(designation.trim());
+    if (match) {
+      const direction: Record<string, string> = {
+        E: "East", O: "West", N: "North", S: "South", SE: "Southeast", SO: "Southwest",
+      };
+      return `Zone ${Number(match[1])} ${direction[match[2].toUpperCase()]}`;
+    }
+  }
+  return `${layer.officialTermShort} ${designation}`;
+}
+
 export const ONTARIO_WMU_ENDPOINT =
   "https://ws.lioservices.lrc.gov.on.ca/arcgis2/rest/services/LIO_OPEN_DATA/LIO_Open05/MapServer/5/query";
 

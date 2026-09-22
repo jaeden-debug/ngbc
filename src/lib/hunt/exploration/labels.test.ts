@@ -37,7 +37,7 @@ test("records an authority publishes in parts become one zone with one label", a
   clearZoneGeometryCache();
   const layer = layerById("layer:ca-ab-wmu")!;
   const part = (x: number) => ({ type: "Polygon", coordinates: [[[x, 49], [x + 0.2, 49], [x + 0.2, 49.2], [x, 49.2], [x, 49]]] });
-  const fetcher = (async () => new Response(JSON.stringify({
+  const payload = {
     type: "FeatureCollection",
     features: [
       { properties: { WMUNIT_CODE: "00718" }, geometry: part(-111.8) },
@@ -46,7 +46,10 @@ test("records an authority publishes in parts become one zone with one label", a
       { properties: { WMUNIT_CODE: "00718" }, geometry: part(-111.6) },
       { properties: { WMUNIT_CODE: " " }, geometry: part(-112.4) },
     ],
-  }), { status: 200 })) as typeof fetch;
+  };
+  const fetcher = (async (url: string) => new Response(JSON.stringify(
+    new URL(String(url)).searchParams.get("returnCountOnly") === "true" ? { count: payload.features.length } : payload,
+  ), { status: 200 })) as typeof fetch;
   const result = await fetchLayerGeometry(layer, { west: -113, south: 48.9, east: -110, north: 49.5 }, 7, fetcher);
   assert.deepEqual(result.features.map((feature) => feature.name).sort(), ["102", "718"]);
   const wmu718 = result.features.find((feature) => feature.name === "718")!;
@@ -60,10 +63,13 @@ test("records an authority publishes in parts become one zone with one label", a
 test("Manitoba's labels keep Manitoba's term", async () => {
   clearZoneGeometryCache();
   const layer = layerById("layer:ca-mb-gha")!;
-  const fetcher = (async () => new Response(JSON.stringify({
+  const payload = {
     type: "FeatureCollection",
     features: [{ properties: { GHA: "23A" }, geometry: { type: "Polygon", coordinates: [[[-97, 50], [-96, 50], [-96, 51], [-97, 51], [-97, 50]]] } }],
-  }), { status: 200 })) as typeof fetch;
+  };
+  const fetcher = (async (url: string) => new Response(JSON.stringify(
+    new URL(String(url)).searchParams.get("returnCountOnly") === "true" ? { count: payload.features.length } : payload,
+  ), { status: 200 })) as typeof fetch;
   const result = await fetchLayerGeometry(layer, { west: -98, south: 49.5, east: -95, north: 51.5 }, 7, fetcher);
   assert.equal(result.features[0].label, "GHA 23A");
 });

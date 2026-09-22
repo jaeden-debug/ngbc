@@ -1,7 +1,7 @@
 import { labelPlacement } from "./exploration/label-point.ts";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { defaultSupabaseServerClient } from "../supabase/server.ts";
-import { designationOfRaw, layerById, ZONE_LAYERS, zoneCoverage, zoneIdFor, type ZoneCoverageStatus, type ZoneLayer } from "./zone-layers.ts";
+import { designationOfRaw, layerById, ZONE_LAYERS, zoneCoverage, zoneDisplayLabel, zoneIdFor, type ZoneCoverageStatus, type ZoneLayer } from "./zone-layers.ts";
 
 /**
  * Server-side delivery of official hunting-zone geometry for the map.
@@ -210,6 +210,24 @@ async function authorityRecords(layer: ZoneLayer, box: BoundingBox, tolerance: n
     resultRecordCount: "400",
     f: "geojson",
   });
+  const countParameters = new URLSearchParams(parameters);
+  countParameters.delete("outFields");
+  countParameters.delete("maxAllowableOffset");
+  countParameters.delete("outSR");
+  countParameters.delete("resultRecordCount");
+  countParameters.set("returnGeometry", "false");
+  countParameters.set("returnCountOnly", "true");
+  countParameters.set("f", "json");
+  const countResponse = await fetcher(`${layer.endpoint}?${countParameters}`, {
+    headers: { accept: "application/json" },
+    signal: AbortSignal.timeout(10_000),
+    cache: "no-store",
+  });
+  if (!countResponse.ok) throw new Error(`${layer.jurisdictionName} zone count service returned ${countResponse.status}`);
+  const countPayload = await countResponse.json() as { count?: number };
+  if (!Number.isInteger(countPayload.count) || countPayload.count! < 0 || countPayload.count! > 400) {
+    throw new Error(`${layer.jurisdictionName} zone service returned an unsafe viewport count`);
+  }
   const response = await fetcher(`${layer.endpoint}?${parameters}`, {
     headers: { accept: "application/geo+json, application/json" },
     signal: AbortSignal.timeout(10_000),
@@ -218,6 +236,9 @@ async function authorityRecords(layer: ZoneLayer, box: BoundingBox, tolerance: n
   if (!response.ok) throw new Error(`${layer.jurisdictionName} zone service returned ${response.status}`);
   const payload = await response.json() as FeatureCollection;
   if (payload.type !== "FeatureCollection" || !Array.isArray(payload.features)) throw new Error("Unexpected zone service response");
+  if (payload.features.length !== countPayload.count) {
+    throw new Error(`${layer.jurisdictionName} zone service returned ${payload.features.length} of ${countPayload.count} viewport records`);
+  }
 
   const records: SourceRecord[] = [];
   for (const feature of payload.features) {
@@ -270,6 +291,7 @@ async function storedRecords(layer: ZoneLayer, box: BoundingBox, tolerance: numb
     .abortSignal(AbortSignal.timeout(STORED_TIMEOUT_MS));
   if (error) throw error;
   const rows = (data ?? []) as Array<{ official_identifier: string; canonical_id: string; geometry: PolygonGeometry | { type: string } | null }>;
+  if (rows.length >= 400) throw new Error(`${layer.jurisdictionName} stored zone query reached its safety limit`);
   const records: SourceRecord[] = [];
   for (const row of rows) {
     const geometry = row.geometry;
@@ -342,7 +364,7 @@ export async function fetchLayerGeometry(
     features.push({
       layerId: layer.id,
       name,
-      label: `${layer.officialTermShort} ${name}`,
+      label: zoneDisplayLabel(layer, name),
       coverage: zoneCoverage(layer, name),
       rings: polygons.flat(),
       ...(placement ? { labelPoint: placement.point, labelSpan: placement.span, parts: placement.parts } : {}),

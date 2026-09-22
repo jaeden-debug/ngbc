@@ -38,6 +38,19 @@ interface EsriGeoJson {
   }>;
 }
 
+async function fetchCount(fetcher: typeof fetch): Promise<number> {
+  const parameters = new URLSearchParams({ where: "1=1", returnCountOnly: "true", f: "json" });
+  const response = await fetcher(`${ONTARIO_WMU_QUERY}?${parameters}`, {
+    headers: { accept: "application/json" }, signal: AbortSignal.timeout(30_000), cache: "no-store",
+  });
+  if (!response.ok) throw new Error(`Ontario WMU count service returned ${response.status}`);
+  const payload = await response.json() as { count?: number; error?: { message?: string } };
+  if (!Number.isInteger(payload.count) || payload.count! <= 0) {
+    throw new Error(`Ontario WMU count service returned no valid count${payload.error?.message ? `: ${payload.error.message}` : ""}`);
+  }
+  return payload.count!;
+}
+
 async function fetchPage(offset: number, fetcher: typeof fetch): Promise<EsriGeoJson> {
   const parameters = new URLSearchParams({
     where: "1=1",
@@ -78,11 +91,15 @@ export function createOntarioWmuSource(fetcher: typeof fetch = fetch): ZoneLayer
     async fetchFeatures() {
       const features: ZoneFeatureRecord[] = [];
       const seen = new Set<string>();
+      const expectedCount = await fetchCount(fetcher);
+      let received = 0;
+      const unreadable: string[] = [];
 
       for (let offset = 0; ; offset += PAGE_SIZE) {
         const page = await fetchPage(offset, fetcher);
         const rows = page.features ?? [];
         if (!rows.length) break;
+        received += rows.length;
 
         for (const row of rows) {
           const properties = row.properties ?? {};
@@ -92,8 +109,10 @@ export function createOntarioWmuSource(fetcher: typeof fetch = fetch): ZoneLayer
             ? properties.OFFICIAL_NAME.trim() : "";
           const geometry = row.geometry;
 
-          if (!sourceFeatureId || !officialIdentifier || !geometry) continue;
-          if (geometry.type !== "Polygon" && geometry.type !== "MultiPolygon") continue;
+          if (!sourceFeatureId || !officialIdentifier || !geometry || (geometry.type !== "Polygon" && geometry.type !== "MultiPolygon")) {
+            unreadable.push(sourceFeatureId || `(offset ${offset})`);
+            continue;
+          }
           if (seen.has(sourceFeatureId)) continue;
           seen.add(sourceFeatureId);
 
@@ -111,6 +130,13 @@ export function createOntarioWmuSource(fetcher: typeof fetch = fetch): ZoneLayer
         }
 
         if (rows.length < PAGE_SIZE) break;
+      }
+
+      if (received !== expectedCount || seen.size !== expectedCount || unreadable.length) {
+        throw new Error(
+          `Incomplete Ontario WMU read: ${received} records received, ${seen.size} distinct readable records, ` +
+          `${expectedCount} published${unreadable.length ? `; unreadable ${unreadable.slice(0, 5).join(", ")}` : ""}`,
+        );
       }
 
       return { features, sourceVersion: `retrieved-${new Date().toISOString().slice(0, 10)}` };

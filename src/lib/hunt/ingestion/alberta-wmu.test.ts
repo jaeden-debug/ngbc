@@ -48,10 +48,12 @@ function sourceRows(): Row[] {
 }
 
 function fetcherFor(features: unknown[]) {
-  return (async () => ({
+  return (async (url: string) => ({
     ok: true,
     status: 200,
-    json: async () => ({ type: "FeatureCollection", features }),
+    json: async () => new URL(String(url)).searchParams.get("returnCountOnly") === "true"
+      ? { count: features.length }
+      : { type: "FeatureCollection", features },
   })) as unknown as typeof fetch;
 }
 

@@ -4,7 +4,7 @@ import {
   boundsIntersect, clearZoneGeometryCache, fetchLayerGeometry, fetchZoneGeometry,
   layersForBounds, parseBounds, toleranceForZoom, type BoundingBox,
 } from "./zone-geometry.ts";
-import { COVERAGE_ROADMAP, layerForPoint, ZONE_LAYERS, zoneCoverage } from "./zone-layers.ts";
+import { COVERAGE_ROADMAP, layerForPoint, ZONE_LAYERS, zoneCoverage, zoneDisplayLabel } from "./zone-layers.ts";
 import { resolveOntarioWmuFromOfficialGis } from "./zone.ts";
 
 const ONTARIO = ZONE_LAYERS[0];
@@ -32,6 +32,12 @@ function stubFetch(payload: unknown, ok = true) {
   const calls: string[] = [];
   const fetcher = (async (url: string) => {
     calls.push(String(url));
+    const requested = new URL(String(url));
+    if (ok && requested.searchParams.get("returnCountOnly") === "true") {
+      const count = typeof payload === "object" && payload !== null && "features" in payload && Array.isArray(payload.features)
+        ? payload.features.length : 0;
+      return { ok: true, status: 200, json: async () => ({ count }) } as unknown as Response;
+    }
     return { ok, status: ok ? 200 : 503, json: async () => payload } as unknown as Response;
   }) as unknown as typeof fetch;
   return { fetcher, calls };
@@ -80,6 +86,13 @@ test("the authority's own terminology is never rewritten", () => {
   assert.equal(ONTARIO.officialTermShort, "WMU");
 });
 
+test("Québec cardinal designations are readable without changing their official identifier", () => {
+  const quebec = ZONE_LAYERS.find((layer) => layer.jurisdictionId === "jurisdiction:ca-qc")!;
+  assert.equal(zoneDisplayLabel(quebec, "10O"), "Zone 10 West");
+  assert.equal(zoneDisplayLabel(quebec, "19SE"), "Zone 19 Southeast");
+  assert.equal(zoneDisplayLabel(quebec, "08NZ"), "Zone 08NZ");
+});
+
 /* ── Coverage honesty ────────────────────────────────────────────────────── */
 
 test("drawing a boundary does not claim its rules are certified", () => {
@@ -120,7 +133,7 @@ test("simplification tolerance tightens as the viewer zooms in", () => {
 test("the requested tolerance and viewport are sent to the authority", async () => {
   const { fetcher, calls } = stubFetch(collection([{ name: "57", ring: square(-77.9, 45.2, 0.2) }]));
   await fetchLayerGeometry(ONTARIO, { west: -79, south: 44, east: -76, north: 46 }, 9, fetcher);
-  const requested = new URL(calls[0]);
+  const requested = new URL(calls.find((call) => new URL(call).searchParams.get("returnGeometry") === "true")!);
   assert.equal(requested.searchParams.get("maxAllowableOffset"), String(toleranceForZoom(9)));
   assert.equal(requested.searchParams.get("geometry"), "-79,44,-76,46");
   assert.equal(requested.searchParams.get("geometryType"), "esriGeometryEnvelope");
@@ -133,7 +146,7 @@ test("a repeated viewport is served from cache instead of re-querying the author
   const box: BoundingBox = { west: -79, south: 44, east: -76, north: 46 };
   await fetchLayerGeometry(ONTARIO, box, 8, fetcher);
   await fetchLayerGeometry(ONTARIO, box, 8, fetcher);
-  assert.equal(calls.length, 1);
+  assert.equal(calls.length, 2);
 });
 
 /* ── Failure is explicit ─────────────────────────────────────────────────── */
@@ -146,6 +159,21 @@ test("a provider outage is reported, never filled in", async () => {
   assert.match(result.message!, /will not draw an approximate boundary/);
 });
 
+test("a short authority response fails closed instead of drawing a partial layer", async () => {
+  const payload = collection([{ name: "57", ring: square(-77.9, 45.2, 0.2) }]);
+  const fetcher = (async (url: string) => {
+    const requested = new URL(String(url));
+    return {
+      ok: true,
+      status: 200,
+      json: async () => requested.searchParams.get("returnCountOnly") === "true" ? { count: 2 } : payload,
+    } as unknown as Response;
+  }) as typeof fetch;
+  const result = await fetchLayerGeometry(ONTARIO, { west: -79, south: 44, east: -76, north: 46 }, 7, fetcher);
+  assert.equal(result.status, "PROVIDER_ERROR");
+  assert.deepEqual(result.features, []);
+});
+
 test("an outage is not cached, so the map recovers on the next pan", async () => {
   const box: BoundingBox = { west: -79, south: 44, east: -76, north: 46 };
   const failing = stubFetch({}, false);
@@ -153,7 +181,7 @@ test("an outage is not cached, so the map recovers on the next pan", async () =>
   const recovering = stubFetch(collection([{ name: "57", ring: square(-77.9, 45.2, 0.2) }]));
   const result = await fetchLayerGeometry(ONTARIO, box, 8, recovering.fetcher);
   assert.equal(result.status, "OK");
-  assert.equal(recovering.calls.length, 1);
+  assert.equal(recovering.calls.length, 2);
 });
 
 test("unusable features are dropped rather than drawn as degenerate shapes", async () => {
@@ -251,7 +279,15 @@ function byAuthority(answers: { ontario?: unknown; manitoba?: unknown }, failing
     calls.push(String(url));
     const who = String(url).includes("Manitoba_Game_Hunting_Areas") ? "manitoba" : "ontario";
     const ok = !failing.includes(who);
-    return { ok, status: ok ? 200 : 503, json: async () => answers[who] ?? { type: "FeatureCollection", features: [] } } as unknown as Response;
+    const answer = answers[who] ?? { type: "FeatureCollection", features: [] };
+    const requested = new URL(String(url));
+    return {
+      ok,
+      status: ok ? 200 : 503,
+      json: async () => requested.searchParams.get("returnCountOnly") === "true"
+        ? { count: typeof answer === "object" && answer !== null && "features" in answer && Array.isArray(answer.features) ? answer.features.length : 0 }
+        : answer,
+    } as unknown as Response;
   }) as unknown as typeof fetch;
   return { fetcher, calls };
 }
@@ -270,7 +306,7 @@ test("a view across a provincial border draws both authorities' zones, each in i
     manitoba: ghaCollection([{ gha: "26", ring: square(-95.8, 50.0, 0.3) }, { gha: "35A", ring: square(-96.6, 49.5, 0.3) }]),
   });
   const result = await fetchZoneGeometry(ACROSS_THE_BORDER, 7, fetcher);
-  assert.equal(calls.length, 2, "each authority is asked once");
+  assert.equal(calls.length, 4, "each authority is count-checked and then asked for geometry");
   assert.equal(result.status, "OK");
   assert.equal(result.layerId, undefined, "no single authority's terms name a two-jurisdiction view");
   assert.deepEqual(

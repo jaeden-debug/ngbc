@@ -1,6 +1,6 @@
 import { isWithinSupportedBounds } from "../../../../lib/hunt/coverage";
 import { resolveZone } from "../../../../lib/hunt/zone";
-import { designationFromOfficialName, layerForJurisdiction, layerForPoint, layerForResolution, zoneCoverage } from "../../../../lib/hunt/zone-layers";
+import { designationFromOfficialName, layerForJurisdiction, layerForPoint, layerForResolution, zoneCoverage, zoneDisplayLabel } from "../../../../lib/hunt/zone-layers";
 import { createRateLimiter, getClientAddress } from "../../../../lib/newsletter/rate-limit";
 import { SITE_URL } from "../../../../lib/site";
 
@@ -108,7 +108,7 @@ export async function POST(request: Request): Promise<Response> {
       layerId: layer.id,
       designation: zoneName,
       officialName: resolution.officialName,
-      shortLabel: zoneName ? `${layer.officialTermShort} ${zoneName}` : resolution.officialName,
+      shortLabel: zoneName ? zoneDisplayLabel(layer, zoneName) : resolution.officialName,
       coverage: zoneCoverage(layer, zoneName),
       boundaryDistanceMeters: resolution.boundaryDistanceMeters,
       nearBoundary: resolution.nearBoundary,

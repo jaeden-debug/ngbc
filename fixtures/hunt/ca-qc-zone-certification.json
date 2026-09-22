@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "certifiedOn": "2026-09-21",
+  "jurisdiction": "jurisdiction:ca-qc",
+  "layer": "layer:ca-qc-zone-chasse",
+  "authority": "Ministère des Forêts, de la Faune et des Parcs",
+  "sourceUrl": "https://servicesvecto3.mern.gouv.qc.ca/geoserver/SmartFaunePub/ows",
+  "sourceVersion": "retrieved-2026-09-21",
+  "officialZones": 59,
+  "officialIdentifiers": [
+    "01N",
+    "01S",
+    "02E",
+    "02EI",
+    "02O",
+    "02OI",
+    "03E",
+    "03EI",
+    "03O",
+    "03OI",
+    "04",
+    "05E",
+    "05O",
+    "06N",
+    "06S",
+    "07N",
+    "07S",
+    "08E",
+    "08N",
+    "08NMR",
+    "08NZ",
+    "08S",
+    "09E",
+    "09O",
+    "09OZ",
+    "10E",
+    "10EZ",
+    "10O",
+    "11E",
+    "11O",
+    "12",
+    "13",
+    "13SO",
+    "14",
+    "15E",
+    "15N",
+    "15O",
+    "16",
+    "17",
+    "18",
+    "19N",
+    "19SE",
+    "19SNO",
+    "19SO",
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "26E",
+    "26O",
+    "27E",
+    "27EI",
+    "27ESB",
+    "27O",
+    "27OI",
+    "27OSB",
+    "28",
+    "29"
+  ],
+  "northGroundZones": 59,
+  "quarantined": [],
+  "inventory": {
+    "missing": [],
+    "invented": []
+  },
+  "geometry": {
+    "checked": 59,
+    "normalizations": [
+      {
+        "identifier": "18",
+        "normalization": {
+          "method": "ST_MakeValid",
+          "authorityValidityError": "Ring Self-intersection[-69.92999105 48.24828929]",
+          "symmetricDifferenceSquareMetres": 0
+        },
+        "rawAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 310,
+          "rings": 310,
+          "holes": 0,
+          "vertices": 18799,
+          "bbox": [
+            -70.10764916,
+            48.13521966,
+            -66.92053191,
+            50.00002965
+          ],
+          "areaSquareMetres": 25592772393.441944,
+          "fingerprint": "sha256:6a56971c0b8319290b34b7fe76af34d85f2a9d77a92141ec4a86497c34c20ed4"
+        },
+        "normalizedAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 310,
+          "rings": 311,
+          "holes": 1,
+          "vertices": 18800,
+          "bbox": [
+            -70.10764916,
+            48.13521966,
+            -66.92053191,
+            50.00002965
+          ],
+          "areaSquareMetres": 25592772393.442192,
+          "fingerprint": "sha256:61eb57f3507f5b5047de2ae2bf1debc7e8556f987e40b6c504cfd6ea2873fb2b"
+        }
+      }
+    ],
+    "disagreements": [],
+    "totals": {
+      "authorityFeatures": 9503,
+      "polygons": 9509,
+      "holes": 9318,
+      "vertices": 2424981
+    }
+  },
+  "parity": {
+    "total": 257,
+    "agreements": 257,
+    "disagreements": 0,
+    "unresolved": 0,
+    "counts": {
+      "INTERIOR": 59,
+      "BOUNDARY_INSIDE": 57,
+      "BOUNDARY_OUTSIDE": 57,
+      "INTERIOR_SECOND": 59,
+      "MULTIPART": 19,
+      "HOLE": 6
+    },
+    "failures": [],
+    "sampleHash": "sha256:dd2ad1c4794308fad5f3480fed93f2141ccbbb3b59026c6336583d45cc845285"
+  },
+  "status": "VERIFIED"
+}

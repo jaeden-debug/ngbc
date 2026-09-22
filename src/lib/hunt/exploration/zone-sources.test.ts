@@ -15,13 +15,17 @@ test("Ontario's wide views are asked in tiles no wider than its service answers 
   const ontario = layerById("layer:ca-on-wmu")!;
   const asked: number[][] = [];
   const fetcher = (async (url: string | URL | Request) => {
-    const box = new URL(String(url)).searchParams.get("geometry")!.split(",").map(Number);
-    asked.push(box);
+    const requested = new URL(String(url));
+    const box = requested.searchParams.get("geometry")!.split(",").map(Number);
     // Every tile returns the unit it overlaps, and WMU 13 straddles two tiles, so both return it.
     const features = [
       { id: 13, properties: { OFFICIAL_NAME: "13" }, geometry: square(-86.2, 49.1) },
       { id: Math.round(box[0] * -10), properties: { OFFICIAL_NAME: `T${Math.round(-box[0])}` }, geometry: square(box[0] + 0.5, 50) },
     ];
+    if (requested.searchParams.get("returnCountOnly") === "true") {
+      return new Response(JSON.stringify({ count: features.length }), { status: 200 });
+    }
+    asked.push(box);
     return new Response(JSON.stringify({ type: "FeatureCollection", features }), { status: 200 });
   }) as typeof fetch;
   const result = await fetchLayerGeometry(ontario, { west: -96, south: 49, east: -74, north: 57 }, 4, fetcher);
@@ -101,7 +105,7 @@ test("switched on, Québec draws from North Ground's stored drawings, named in t
     const fetcher = (async () => { throw new Error("the ministry's WFS is not a map source"); }) as typeof fetch;
     const result = await fetchLayerGeometry(quebec, { west: -80, south: 44, east: -60, north: 52 }, 6, fetcher, client);
     assert.equal(result.status, "OK");
-    assert.deepEqual(result.features.map((feature) => feature.label).sort(), ["Zone 10E", "Zone 19SE"]);
+    assert.deepEqual(result.features.map((feature) => feature.label).sort(), ["Zone 10 East", "Zone 19 Southeast"]);
     assert.equal(result.features.find((feature) => feature.name === "19SE")!.parts, 2);
     assert.equal(calls[0].name, "zone_display_in_view");
     assert.equal(calls[0].args.p_jurisdiction_canonical_id, "jurisdiction:ca-qc");

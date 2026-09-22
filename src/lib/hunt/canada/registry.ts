@@ -128,7 +128,7 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
   {
     id: "jurisdiction:ca-qc",
     code: "CA-QC",
-    nameEn: "Quebec",
+    nameEn: "Québec",
     nameFr: "Québec",
     kind: "province",
     spatial: {

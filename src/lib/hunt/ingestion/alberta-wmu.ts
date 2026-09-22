@@ -128,6 +128,18 @@ export function createAlbertaWmuSource(fetcher: typeof fetch = fetch): ZoneLayer
     },
 
     async fetchFeatures() {
+      const countParameters = new URLSearchParams({ where: "1=1", returnCountOnly: "true", f: "json" });
+      const countResponse = await fetcher(`${ALBERTA_WMU_QUERY}?${countParameters}`, {
+        headers: { accept: "application/json" }, signal: AbortSignal.timeout(30_000), cache: "no-store",
+      });
+      if (!countResponse.ok) throw new Error(`Alberta WMU count service returned ${countResponse.status}`);
+      const countPayload = await countResponse.json() as { count?: number; error?: { message?: string } };
+      if (countPayload.error) throw new Error(`Alberta WMU service error: ${countPayload.error.message ?? "unknown error"}`);
+      if (countPayload.count !== EXPECTED_SOURCE_RECORDS) {
+        throw new Error(
+          `Alberta WMU source returned ${countPayload.count ?? "no count"} records; expected ${EXPECTED_SOURCE_RECORDS}`,
+        );
+      }
       const parameters = new URLSearchParams({
         where: "1=1",
         outFields: OUT_FIELDS,

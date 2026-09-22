@@ -1,0 +1,126 @@
+{
+  "base": "https://www.northgroundbushcraft.com",
+  "certifiedAt": "2026-09-21T20:50:20.346Z",
+  "results": [
+    {
+      "layerId": "layer:ca-on-wmu",
+      "zoom": 4,
+      "expected": 151,
+      "actual": 151,
+      "missing": [],
+      "invented": [],
+      "duplicateCount": 0,
+      "status": "VERIFIED"
+    },
+    {
+      "layerId": "layer:ca-on-wmu",
+      "zoom": 7,
+      "expected": 151,
+      "actual": 151,
+      "missing": [],
+      "invented": [],
+      "duplicateCount": 0,
+      "status": "VERIFIED"
+    },
+    {
+      "layerId": "layer:ca-on-wmu",
+      "zoom": 10,
+      "expected": 151,
+      "actual": 151,
+      "missing": [],
+      "invented": [],
+      "duplicateCount": 0,
+      "status": "VERIFIED"
+    },
+    {
+      "layerId": "layer:ca-mb-gha",
+      "zoom": 4,
+      "expected": 62,
+      "actual": 62,
+      "missing": [],
+      "invented": [],
+      "duplicateCount": 0,
+      "status": "VERIFIED"
+    },
+    {
+      "layerId": "layer:ca-mb-gha",
+      "zoom": 7,
+      "expected": 62,
+      "actual": 62,
+      "missing": [],
+      "invented": [],
+      "duplicateCount": 0,
+      "status": "VERIFIED"
+    },
+    {
+      "layerId": "layer:ca-mb-gha",
+      "zoom": 10,
+      "expected": 62,
+      "actual": 62,
+      "missing": [],
+      "invented": [],
+      "duplicateCount": 0,
+      "status": "VERIFIED"
+    },
+    {
+      "layerId": "layer:ca-ab-wmu",
+      "zoom": 4,
+      "expected": 189,
+      "actual": 189,
+      "missing": [],
+      "invented": [],
+      "duplicateCount": 0,
+      "status": "VERIFIED"
+    },
+    {
+      "layerId": "layer:ca-ab-wmu",
+      "zoom": 7,
+      "expected": 189,
+      "actual": 189,
+      "missing": [],
+      "invented": [],
+      "duplicateCount": 0,
+      "status": "VERIFIED"
+    },
+    {
+      "layerId": "layer:ca-ab-wmu",
+      "zoom": 10,
+      "expected": 189,
+      "actual": 189,
+      "missing": [],
+      "invented": [],
+      "duplicateCount": 0,
+      "status": "VERIFIED"
+    },
+    {
+      "layerId": "layer:ca-qc-zone-chasse",
+      "zoom": 4,
+      "expected": 59,
+      "actual": 59,
+      "missing": [],
+      "invented": [],
+      "duplicateCount": 0,
+      "status": "VERIFIED"
+    },
+    {
+      "layerId": "layer:ca-qc-zone-chasse",
+      "zoom": 7,
+      "expected": 59,
+      "actual": 59,
+      "missing": [],
+      "invented": [],
+      "duplicateCount": 0,
+      "status": "VERIFIED"
+    },
+    {
+      "layerId": "layer:ca-qc-zone-chasse",
+      "zoom": 10,
+      "expected": 59,
+      "actual": 59,
+      "missing": [],
+      "invented": [],
+      "duplicateCount": 0,
+      "status": "VERIFIED"
+    }
+  ]
+}

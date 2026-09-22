@@ -235,6 +235,35 @@ async function main() {
     await new Promise((resolve) => setTimeout(resolve, Math.min(30_000, 2_000 * Math.ceil(bytes / 1e6))));
   }
 
+  /* Check each ordinary-sized authority geometry independently. Québec's layer
+     also contains continent-scale features; scanning all of them in one REST
+     statement can exceed the statement timeout before it reaches a small bad
+     feature. The targeted RPC repairs only a topologically lossless defect (at
+     most one square metre of symmetric difference) and otherwise raises. Huge
+     features remain protected by publish_zone_run's validity gate. */
+  const normalized = [];
+  let normalizationCursor = 0;
+  await Promise.all(Array.from({ length: 4 }, async () => {
+    while (normalizationCursor < small.length) {
+      const { feature } = small[normalizationCursor++];
+      const result = await rest("rpc/normalize_zone_ingest_geometry", {
+        method: "POST",
+        body: { p_run_id: run.id, p_source_feature_id: feature.sourceFeatureId },
+      });
+      if (result.normalized) normalized.push(result);
+    }
+  }));
+  if (normalized.length) {
+    console.log("");
+    console.log(`Normalized ${normalized.length} invalid authority geometr${normalized.length === 1 ? "y" : "ies"}:`);
+    for (const item of normalized.sort((left, right) => left.sourceFeatureId.localeCompare(right.sourceFeatureId))) {
+      console.log(
+        `  ${item.sourceFeatureId}: ${item.authorityValidityError}; ` +
+          `${item.symmetricDifferenceSquareMetres} m² symmetric difference`,
+      );
+    }
+  }
+
   /* The comparison validates and measures every staged feature in one
      statement. For a layer with a very large feature that can exceed the REST
      timeout; the run is staged either way, and the comparison is then run

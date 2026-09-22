@@ -3,7 +3,7 @@ import { contentRepository } from "../../content/repository.ts";
 import { speciesById } from "../coverage.ts";
 import { regulatoryEntryFor, type RegulatoryEntry, type RegulatoryOutcome } from "../regulatory/registry.ts";
 import type { ZoneResolution } from "../types.ts";
-import { layerById, zoneCoverage, zoneIdFor, type ZoneLayer } from "../zone-layers.ts";
+import { layerById, zoneCoverage, zoneDisplayLabel, zoneIdFor, type ZoneLayer } from "../zone-layers.ts";
 import type { ExplorationState, SpeciesZoneSummary, ZoneRef, ZoneSummary } from "./states.ts";
 
 export { EXPLORATION_WORDING } from "./states.ts";
@@ -210,7 +210,7 @@ export async function summarizeZone(ref: ZoneRef, date: string): Promise<ZoneSum
     zone: {
       layerId: layer.id,
       designation,
-      label: `${layer.officialTermShort} ${designation}`,
+      label: zoneDisplayLabel(layer, designation),
       officialName: `${layer.officialNamePrefix}${designation}`,
       officialTerm: layer.officialTerm,
       jurisdictionId: layer.jurisdictionId,

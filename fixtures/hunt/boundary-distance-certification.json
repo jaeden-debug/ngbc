@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "certifiedAt": "2026-09-21T20:38:09.541Z",
+  "results": [
+    {
+      "jurisdiction": "jurisdiction:ca-on",
+      "samples": 151,
+      "resolved": 151,
+      "maximumBoundaryDistanceMeters": 631,
+      "failures": [],
+      "status": "VERIFIED"
+    },
+    {
+      "jurisdiction": "jurisdiction:ca-mb",
+      "samples": 62,
+      "resolved": 62,
+      "maximumBoundaryDistanceMeters": 535,
+      "failures": [],
+      "status": "VERIFIED"
+    },
+    {
+      "jurisdiction": "jurisdiction:ca-ab",
+      "samples": 189,
+      "resolved": 189,
+      "maximumBoundaryDistanceMeters": 291,
+      "failures": [],
+      "status": "VERIFIED"
+    }
+  ]
+}
