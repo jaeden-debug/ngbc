@@ -5,6 +5,9 @@ import {
   type DimensionOption, type HuntDimensionAnswers, type HuntDimensionId, type RequiredDimension,
 } from "./dimensions.ts";
 import { appliesInWorld, placeWorlds, type GeographyData, type GeographyExpression, type PlaceContext, type PlaceWorld } from "./geography.ts";
+import { authorizationContext, type DrawCycle } from "./allocation.ts";
+import type { HuntCode } from "./hunt-codes.ts";
+import { rulesInForce, type Amendment, type RuleAuthority } from "./precedence.ts";
 
 /**
  * The jurisdiction-neutral conditional evaluator.
@@ -80,6 +83,21 @@ export interface ConditionalRule {
   sourceSection: string;
   sourceVersion: string;
   reviewStatus: string;
+  /**
+   * The published hunt this season belongs to, where the jurisdiction
+   * allocates seasons per hunt code or hunt number (`bundle.huntCodes`).
+   */
+  huntCodeId?: string;
+  /** The instrument the rule is stated in, for amendment precedence. */
+  authority?: RuleAuthority;
+  /** Which reading of a dispute this rule is (see `appliesInWorld`). */
+  reading?: "PRIMARY" | "ALTERNATIVE";
+  /**
+   * For a rule that declares no season: the authority's own words for why,
+   * used as the answer when only such rules apply here ("closed … to the
+   * hunting of upland game birds with the use of state licenses").
+   */
+  closureStatedAs?: string;
 }
 
 export interface ConditionalCondition {
@@ -120,6 +138,16 @@ export interface ConditionalBundle extends GeographyData {
   sources: Array<{ id: string; conditions?: ConditionalCondition[] }>;
   groups: Array<{ id: string; officialSpec: string; zoneIds: string[]; partialZoneIds?: string[] }>;
   rules: ConditionalRule[];
+  /** Published hunts the rules belong to, where the jurisdiction has them. */
+  huntCodes?: HuntCode[];
+  /** Published draw calendars the hunts' allocations refer to. */
+  drawCycles?: DrawCycle[];
+  /**
+   * Later instruments that change rules for an interval — corrections,
+   * closures, orders. Kept apart from the rules they amend, and applied per
+   * date by `rulesInForce`, so what the law was on any day stays readable.
+   */
+  amendments?: Amendment[];
 }
 
 /* ── Vocabulary ─────────────────────────────────────────────────────────── */
@@ -139,6 +167,14 @@ export interface VocabularyDimension extends Omit<RequiredDimension, "options"> 
    * which would wrongly make age depend on it).
    */
   implies?: Record<string, Record<string, string>>;
+  /**
+   * Where the values offered come from. JURISDICTION (the default): every value
+   * this species' law recognises anywhere, because a resident is still a
+   * resident where only non-residents' seasons reach. PLACE: only values the
+   * rules reaching this place name — for a hunt code, which is meaningful only
+   * where its hunt is, and of which a state publishes hundreds.
+   */
+  valuesFrom?: "JURISDICTION" | "PLACE";
 }
 
 export interface ConditionalVocabulary {
@@ -478,10 +514,32 @@ export function evaluateConditional(
     };
   }
 
+  /* ── The rules in force on this date, after amendments ───────────── */
+
+  const speciesRuleIds = new Set(speciesRules.map((rule) => rule.id));
+  const amendments = (bundle.amendments ?? [])
+    .map((amendment) => ({ ...amendment, amends: amendment.amends.filter((id) => speciesRuleIds.has(id)) }))
+    .filter((amendment) => amendment.amends.length);
+  const inForce = rulesInForce(speciesRules, amendments, date);
+  /* Two instruments that disagree about a rule on this date are both kept, as
+     the two readings of a dispute. The engine answers only where they agree,
+     and CONFLICT where they do not — it never picks the newer page. */
+  const ruleVersions: ConditionalRule[] = [
+    ...inForce.rules,
+    ...inForce.conflicts.flatMap((conflict) => conflict.alternatives.map((alternative, index) => ({
+      ...alternative,
+      id: `${alternative.id}#${index === 0 ? "reading-a" : "reading-b"}`,
+      disputes: [...alternative.disputes, { statedAs: conflict.statedAs }],
+      reading: index === 0 ? "PRIMARY" as const : "ALTERNATIVE" as const,
+    }))),
+  ];
+  const amendedBy = inForce.applied.map((entry) => `${entry.statedAs} (${entry.sourceSection})`);
+  const amendmentSources = inForce.applied.map((entry) => entry.sourceId);
+
   /* ── The worlds this point could be in, and the rules that can reach it ── */
 
-  const { worlds, unknowns } = placeWorlds(bundle, place, speciesRules);
-  const rules = speciesRules.filter((rule) => worlds.some((world) => appliesInWorld(rule, groups, place, world)));
+  const { worlds, unknowns } = placeWorlds(bundle, place, ruleVersions);
+  const rules = ruleVersions.filter((rule) => worlds.some((world) => appliesInWorld(rule, groups, place, world)));
   const context: OutcomeContext = { date, place, groups, absence: bundle.absence, vocabulary };
 
   if (!rules.length) {
@@ -522,10 +580,11 @@ export function evaluateConditional(
     const key = ruleKeyOf(dimension);
     // A method is a fact about the hunter: someone may carry what no season permits.
     if (key === IMPLEMENTS) return dimension.options.map((option) => option.value);
-    const stated = new Set(speciesRules.map((rule) => rule.appliesWhen[key]).filter((value): value is string => typeof value === "string"));
+    const scope = dimension.valuesFrom === "PLACE" ? rules : speciesRules;
+    const stated = new Set(scope.map((rule) => rule.appliesWhen[key]).filter((value): value is string => typeof value === "string"));
     // A rule without the key applies to every value, including values no rule
     // names, such as an adult where only a youth season names age.
-    const unconstrained = speciesRules.some((rule) => rule.appliesWhen[key] === undefined);
+    const unconstrained = scope.some((rule) => rule.appliesWhen[key] === undefined);
     return dimension.options.map((option) => option.value).filter((value) => stated.has(value) || unconstrained);
   };
 
@@ -611,6 +670,7 @@ export function evaluateConditional(
     ? unknowns.map((unknown) => `${unknown.statedAs} The answer is the same either way.`)
     : [];
   const limitations = [
+    ...amendedBy,
     ...agreedDespite,
     ...new Set(cited.flatMap((rule) => [
       ...rule.notes.flatMap((note) => typeof note === "string" ? [note] : !note.zoneId || note.zoneId === place.zoneId ? [note.text] : []),
@@ -619,9 +679,23 @@ export function evaluateConditional(
     ...new Set(conditions.flatMap((condition) => condition.caveats ?? [])),
     ...vocabulary.standingLimitations,
   ];
+  /* Hunts the answer rests on, with how each is licensed. Only for seasons
+     that are open (or would be, in some world) today: a season that is not
+     open is not a reason to name its licence. */
+  const huntCodesById = new Map((bundle.huntCodes ?? []).map((huntCode) => [huntCode.id, huntCode]));
+  const huntCodesCited = [...new Set(everyInSeason.map((rule) => rule.huntCodeId).filter((id): id is string => Boolean(id)))].map((id) => {
+    const huntCode = huntCodesById.get(id);
+    if (!huntCode) throw new Error(`Rule refers to unknown hunt code ${id}`);
+    return huntCode;
+  });
+  const authorization = authorizationContext(huntCodesCited, bundle.drawCycles ?? [], date);
+
   const sourceIds = [...new Set([
     ...cited.map((rule) => rule.sourceId),
     ...conditions.map((condition) => condition.sourceId),
+    ...amendmentSources,
+    ...huntCodesCited.map((huntCode) => huntCode.sourceId),
+    ...(authorization?.draws.map((draw) => draw.sourceId) ?? []),
     ...vocabulary.standingSourceIds,
   ])] as CanonicalId<"source">[];
   const version = cited[0]?.sourceVersion ?? bundle.sourceVersion;
@@ -649,8 +723,13 @@ export function evaluateConditional(
       status: "CONDITIONAL",
       ...(season ? { season } : {}),
       ...(limits ? { limits } : {}),
+      ...(authorization ? { authorization } : {}),
       summary:
         `The certified ${version} season for ${species} in ${unit} includes this date (${seasonsToday.join("; or ")}). ` +
+        (authorization
+          ? `It is open under ${authorization.huntCodes.map((huntCode) => `${huntCode.authorityTerm} ${huntCode.code}`).join(" or ")}, ` +
+            "assuming you hold the licence or tag each requires. "
+          : "") +
         "Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold." +
         listing,
       requirements,
@@ -659,11 +738,19 @@ export function evaluateConditional(
     });
   } else if (outcome.status === "CLOSED") {
     const nothing = allWorldOutcomes.every((entry) => entry.absent);
+    /* Closed because the authority closes this place, in its own words, when
+       only closure rules apply here — not "no season is open", which would
+       hide why. */
+    const closedBy = everyApplicable.length && everyApplicable.every((rule) => rule.declaredNoSeason && rule.closureStatedAs)
+      ? [...new Set(everyApplicable.map((rule) => `${rule.seasonLabel}: ${rule.closureStatedAs}`))]
+      : [];
     result = base({
       status: "CLOSED",
       summary: nothing
         ? `No ${vocabulary.jurisdictionName} licence ${answeredDimensions.length ? "matching what you described " : ""}authorises hunting ${species} in ${unit}. ${bundle.absence.explanation ?? ""} (${bundle.absence.section ?? "source"})`
-        : `No ${species} season in ${unit} is open on this date for ${answeredDimensions.length ? "this combination" : "any licence or equipment"}.${listing}`,
+        : closedBy.length
+          ? `${species.charAt(0).toUpperCase()}${species.slice(1)} may not be hunted here. ${closedBy.join(" ")}`
+          : `No ${species} season in ${unit} is open on this date for ${answeredDimensions.length ? "this combination" : "any licence or equipment"}.${listing}`,
       requirements,
       limitations,
       sourceIds,
@@ -678,6 +765,7 @@ export function evaluateConditional(
   } else {
     result = base({
       status: outcome.status,
+      ...(authorization ? { authorization } : {}),
       summary: outcome.status === "CONFLICT"
         ? `The official sources disagree about ${species} in ${unit} for this combination, and North Ground will not choose between them.${listing}`
         : `North Ground cannot state a ${species} season for this exact point, because the answer depends on something it could not establish.${listing}`,

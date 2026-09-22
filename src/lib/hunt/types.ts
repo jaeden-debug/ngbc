@@ -1,4 +1,5 @@
 import type { BlockResult, CanonicalId, IsoDate, SourceRecord } from "../content-contract/index.ts";
+import type { AuthorizationContext } from "./regulatory/allocation.ts";
 import type { HuntDimensionAnswers, RequiredDimension } from "./regulatory/dimensions.ts";
 import type { ReadinessResult } from "./readiness/types.ts";
 
@@ -49,6 +50,12 @@ export interface RegulatoryResult {
   limitations: string[];
   sourceIds: CanonicalId<"source">[];
   verifiedAt: string;
+  /**
+   * How the seasons behind this answer are licensed — hunt codes, draw or over
+   * the counter — where the jurisdiction allocates them that way. Regulatory
+   * availability only; it never states what the hunter holds.
+   */
+  authorization?: AuthorizationContext;
 }
 
 export interface WeatherResult {

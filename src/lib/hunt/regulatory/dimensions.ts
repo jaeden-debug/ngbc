@@ -35,6 +35,18 @@ export type HuntDimensionId =
   | "LICENCE_TYPE"
   /** Whether the hunter is under 18, where a season is limited to youth. */
   | "HUNTER_AGE"
+  /**
+   * Which published hunt the hunter's licence is for, where a jurisdiction
+   * allocates seasons per hunt code or hunt number. Asked only among the hunts
+   * that reach the place, and only when they give different answers.
+   */
+  | "HUNT_CODE"
+  /**
+   * What kind of land the hunt is on, where a jurisdiction's seasons differ by
+   * it (Montana starts nonresidents on public and access-program land ten days
+   * later). Self-reported; North Ground never infers land status from a point.
+   */
+  | "LAND_TYPE"
   | `ANIMAL_CLASS:${RegulatoryAnimalClassDimension}`;
 
 export interface DimensionOption {
@@ -73,6 +85,8 @@ export interface HuntDimensionAnswers {
   TAG_TYPE?: string;
   LICENCE_TYPE?: string;
   HUNTER_AGE?: string;
+  HUNT_CODE?: string;
+  LAND_TYPE?: string;
   animalClasses?: Array<{ dimension: RegulatoryAnimalClassDimension; value: string }>;
 }
 
@@ -102,6 +116,8 @@ export function answerFor(
   if (id === "TAG_TYPE") return answers.TAG_TYPE;
   if (id === "LICENCE_TYPE") return answers.LICENCE_TYPE;
   if (id === "HUNTER_AGE") return answers.HUNTER_AGE;
+  if (id === "HUNT_CODE") return answers.HUNT_CODE;
+  if (id === "LAND_TYPE") return answers.LAND_TYPE;
   const animalDimension = id.slice("ANIMAL_CLASS:".length) as RegulatoryAnimalClassDimension;
   return answers.animalClasses?.find((entry) => entry.dimension === animalDimension)?.value;
 }

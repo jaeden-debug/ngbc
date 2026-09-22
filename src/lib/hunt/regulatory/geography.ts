@@ -227,13 +227,21 @@ export function appliesInWorld(
     geography?: GeographyExpression;
     regulatoryGroupId: string;
     disputes?: Array<{ zoneId?: string; statedAs: string }>;
+    /**
+     * Which side of a dispute this rule is. A disputed rule is ordinarily the
+     * reading that holds only if the disputed text holds (PRIMARY). Where two
+     * sources each state a different version of the same rule — a correction
+     * notice and the regulation it disagrees with — the second version is the
+     * ALTERNATIVE, in force exactly in the worlds where the first is not.
+     */
+    reading?: "PRIMARY" | "ALTERNATIVE";
   },
   groups: ReadonlyMap<string, { zoneIds: string[] }>,
   place: PlaceContext,
   world: PlaceWorld,
 ): boolean {
   const disputedHere = (rule.disputes ?? []).some((dispute) => !dispute.zoneId || dispute.zoneId === place.zoneId);
-  if (disputedHere && !world.disputedReadingsHold) return false;
+  if (disputedHere && (rule.reading === "ALTERNATIVE" ? world.disputedReadingsHold : !world.disputedReadingsHold)) return false;
 
   const expression = rule.geography;
   if (!expression) return groups.get(rule.regulatoryGroupId)?.zoneIds.includes(place.zoneId) ?? false;
