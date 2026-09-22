@@ -30,12 +30,14 @@ test("geometry is included only when asked for", () => {
   assert.equal("displayRings" in resolvedZoneBody(WMU_57, ONTARIO, { includeGeometry: false }).zone, false);
 });
 
-test("the current map still highlights: its composer asks for geometry, and the pin preview does not", async () => {
-  const composer = await readFile(new URL("../../components/hunt/HuntComposer.tsx", import.meta.url), "utf8");
-  assert.match(composer, /fetch\("\/api\/hunt\/zone"[\s\S]{0,400}includeGeometry: true/);
-  const map = await readFile(new URL("../../components/hunt/HuntMap.tsx", import.meta.url), "utf8");
-  assert.match(map, /zone\.displayRings/, "the map highlights from the composer's zone rings");
-  assert.doesNotMatch(map, /includeGeometry/, "the pin preview reads only the label");
+test("the map highlights from the geometry it already drew, so no lookup asks for rings", async () => {
+  // The map-first app draws every served zone itself and selects one by its
+  // key; a zone lookup is asked for identity alone. Nothing in Hunt sends the
+  // flag, so a zone answer stays small (WMU 26's rings are ~78 KB).
+  for (const path of ["../../components/hunt/HuntApp.tsx", "../../components/hunt/HuntMapView.tsx", "../../components/hunt/map/useZoneGeometry.ts"]) {
+    const source = await readFile(new URL(path, import.meta.url), "utf8");
+    assert.doesNotMatch(source, /includeGeometry|displayRings/, `${path} must not ask a zone lookup for geometry`);
+  }
   const route = await readFile(new URL("../../app/api/hunt/zone/route.ts", import.meta.url), "utf8");
   assert.match(route, /typeof body\.includeGeometry !== "boolean"/, "the flag is validated");
 });

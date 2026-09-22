@@ -52,6 +52,9 @@ async function newPage(browser, options = {}) {
     const text = message.text();
     // Refused map keys on unlisted local ports are reported by Google itself; not the application's.
     if (/RefererNotAllowedMapError|Failed to load resource.*(404|401)/.test(text)) return;
+    // Anything Google's own map scripts log about their own hosts (a refused
+    // origin answers with a CORS failure on its internal RPC) is theirs, not Hunt's.
+    if (/maps\.googleapis\.com|maps\.gstatic\.com/.test(`${text} ${message.location()?.url ?? ""}`)) return;
     // Vercel injects its toolbar into preview deployments only; the site's CSP refuses it there.
     if (/vercel\.live\//.test(text)) return;
     consoleErrors.push(text.slice(0, 200));
