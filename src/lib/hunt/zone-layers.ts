@@ -6,7 +6,7 @@ import albertaCertifiedUnits from "../../../content/regulatory/ca-ab-certified-u
 import quebecCertifiedUnits from "../../../content/regulatory/ca-qc-certified-units.json" with { type: "json" };
 import britishColumbiaCertifiedUnits from "../../../content/regulatory/ca-bc-certified-units.json" with { type: "json" };
 import { US_ZONE_LAYERS } from "./united-states/layers.ts";
-import { normaliseBritishColumbiaMu } from "./ingestion/british-columbia-mu.ts";
+import { BRITISH_COLUMBIA_MU_CONFIG, normaliseBritishColumbiaMu } from "./ingestion/british-columbia-mu.ts";
 
 /**
  * Which hunting-zone geography North Ground can actually draw, and how far the
@@ -339,6 +339,8 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     certifiedDesignations: new Set(britishColumbiaCertifiedUnits.certifiedUnits.map((unit) => unit.toUpperCase())),
     zoneIdPrefix: "management_zone:ca-bc-mu-",
     designationOf: normaliseBritishColumbiaMu,
+    legalStanding: BRITISH_COLUMBIA_MU_CONFIG.legalStanding,
+    timeZone: "America/Vancouver",
     wfs: {
       url: "https://openmaps.gov.bc.ca/geo/pub/WHSE_WILDLIFE_MANAGEMENT.WAA_WILDLIFE_MGMT_UNITS_SVW/ows",
       typeName: "pub:WHSE_WILDLIFE_MANAGEMENT.WAA_WILDLIFE_MGMT_UNITS_SVW",

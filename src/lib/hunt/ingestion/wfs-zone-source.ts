@@ -1,3 +1,4 @@
+import type { LegalStanding } from "../zone-layers.ts";
 import type { QuarantinedFeature, ZoneFeatureRecord, ZoneLayerSource } from "./types.ts";
 
 /**
@@ -68,7 +69,7 @@ export interface WfsZoneSourceConfig {
   /** How the authority dates this geometry, recorded as the run's source version. */
   sourceVersion: string;
   /** The authority's own words about what its map is in law, stored on every unit. */
-  legalStanding: { kind: string; statedAs: string };
+  legalStanding: LegalStanding;
   /** The IANA zone whose calendar day dates this authority's records. */
   timeZone?: string;
   pageSize?: number;

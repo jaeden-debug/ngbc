@@ -60,7 +60,6 @@ export const BRITISH_COLUMBIA_MU_CONFIG: WfsZoneSourceConfig = {
   multipartUnits: {},
   quarantine: [],
   sourceVersion: "BC Data Catalogue record modified 2026-03-10",
-  // TODO(us-foundations): adopt the shared LegalStandingKind once it is on main.
   legalStanding: {
     kind: "DERIVED_FROM_LEGAL_DESCRIPTION",
     statedAs:
@@ -68,6 +67,10 @@ export const BRITISH_COLUMBIA_MU_CONFIG: WfsZoneSourceConfig = {
       "black dashed lines on the attached maps\" (2026 regional maps enacted by B.C. Reg. 89/2026). Where a river or creek forms " +
       "a boundary it follows the right-hand bank facing downstream, and the left-hand bank for the West Road (Blackwater), Liard " +
       "and Peace rivers (s. 2). The enacted maps and those rules control; this layer is the province's digital product of them.",
+    controllingText: {
+      title: "Management Units Regulation, B.C. Reg. 64/96",
+      url: "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/64_96",
+    },
   },
   timeZone: "America/Vancouver",
 };
