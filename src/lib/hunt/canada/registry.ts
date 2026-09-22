@@ -250,17 +250,30 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     nameFr: "Saskatchewan",
     kind: "province",
     spatial: {
-      status: "IN_DEVELOPMENT",
+      // Live-certified against the ministry's own service; served for drawing and resolution, never stored.
+      status: "VERIFIED",
       officialTerm: "Wildlife Management Zone (WMZ)",
       officialSourceUrl: "https://gisappl.saskatchewan.ca/Html5Ext/index.html?viewer=habis",
       serviceUrl: "https://gis.saskatchewan.ca/arcgis/rest/services/WildlifeManagement/MapServer/0",
-      parityCertified: false,
+      parityCertified: true,
       notes:
         "The ministry's own Wildlife Management Zones layer serves 83 features (80 numbered zones with their E/W and N/S " +
-        "halves, plus the Saskatoon, Regina-Moose Jaw and Prince Albert zones). Registered as a live-service layer: the " +
-        "ArcGIS item says \"Not for resale\" despite the province's Standard Unrestricted Use Data Licence, so North Ground " +
-        "stores no copy until the Fish and Wildlife Branch clarifies reuse (owner decision, 2026-09-22). The layer defers " +
-        "to the Wildlife Management Zones and Special Areas Boundaries Regulations.",
+        "halves, plus the Saskatoon, Regina-Moose Jaw and Prince Albert zones), live-certified 2026-09-22: 265 points, " +
+        "0 disagreements, 0 points in two units. Licence, verified at the dataset rather than the province " +
+        "(retrieved 2026-09-22): Saskatchewan's own open-data catalogue record for this item assigns licence id " +
+        "\"sk-suudl\", the Government of Saskatchewan Standard Unrestricted Use Data Licence v2.0, which grants " +
+        "worldwide, royalty-free, perpetual commercial reuse. The ArcGIS Online item for the same dataset " +
+        "(df164d6d57ad437f82c902098d06463d, sha256:38b4927ecfc78678ef32e1f31cf04c45ad750367d146ba024a42faca5ecef88d) " +
+        "carries both that licence and the sentence \"Not for resale\". The restriction is on the ZONES dataset North " +
+        "Ground uses, not on the Wildlife Management Units layer: the MapServer metadata for layer 0 " +
+        "(sha256:7e24fbd42214f1aadc48ec0d1517ed40d440fbbba179ba42ff09647941e18584) and layer 4 " +
+        "(sha256:9139e999def0e41458d313dd3aaacff454f3416fc5a973638d0facc6acf93a5f) carry no licenseInfo at all and " +
+        "neither says resale. North Ground therefore reads the service live, stores no copy, redistributes no file and " +
+        "sells no dataset; whether a stored copy is permitted remains open (owner decision, 2026-09-22). " +
+        "Saskatchewan is the clearest reason to read a licence at the dataset and never at the province: the same " +
+        "ministry publishes this geometry under a licence granting commercial reuse while its Hunter Harvest Survey " +
+        "PDFs fall under the general site copyright, which requires advance written permission for any commercial " +
+        "reproduction. The layer defers to the Wildlife Management Zones and Special Areas Boundaries Regulations.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
@@ -270,8 +283,10 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       huntingAuthorityUrl: "https://www.saskatchewan.ca/residents/parks-culture-heritage-and-sport/hunting-trapping-and-angling/hunting",
     },
     knownGaps: [
-      "No rules certified; every Saskatchewan query is UNKNOWN. The zone layer is registered but unserved until it is live-certified.",
-      "Reuse terms are contradictory (unrestricted licence versus \"Not for resale\"); the owner sends the clarification request. A refusal returns Saskatchewan to UNAVAILABLE.",
+      "Boundaries only: the 83 Wildlife Management Zones are drawn, named and resolved from the ministry's live service, " +
+        "and every Saskatchewan species query is UNKNOWN until rules are certified. A drawn boundary is not a certified rule.",
+      "Whether the Standard Unrestricted Use Data Licence permits North Ground to store or redistribute the raw geometry " +
+        "is unresolved, so the layer stays live-service and no copy is kept. Serving is not affected; only storage is.",
     ],
   },
   {

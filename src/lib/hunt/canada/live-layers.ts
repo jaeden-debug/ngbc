@@ -29,16 +29,17 @@ const CANADA_LIVE_LAYERS: CanadaLiveLayer[] = [
       officialTermShort: "WMZ",
       coverage: "IN_DEVELOPMENT",
       coverageNote:
-        "Saskatchewan's Wildlife Management Zones, read from the Ministry of Environment's own map service at the time of " +
-        "each question. The item is marked \"Not for resale\" despite the province's unrestricted data licence, so North " +
-        "Ground stores no copy until the Fish and Wildlife Branch clarifies reuse (owner decision, 2026-09-22). The " +
-        "Wildlife Management Zones and Special Areas Boundaries Regulations supersede the layer.",
+        "Saskatchewan's 83 Wildlife Management Zones, read from the Ministry of Environment's own map service at the " +
+        "time of each question. The dataset carries the Government of Saskatchewan Standard Unrestricted Use Data " +
+        "Licence v2.0, which grants commercial reuse, and the same item adds \"Not for resale\", so North Ground reads " +
+        "the service live, stores no copy and redistributes no file (owner decision, 2026-09-22). The Wildlife " +
+        "Management Zones and Special Areas Boundaries Regulations supersede the layer.",
       authority: "Saskatchewan Ministry of Environment",
       sourceId: "source:ca-sk-wmz-service",
       endpoint: `${SK_WMZ}/query`,
       nameField: "ZONE_NUM",
       bounds: { minLatitude: 48.89, maxLatitude: 60.1, minLongitude: -110.01, maxLongitude: -101.35 },
-      serving: false,
+      serving: true,
       officialNamePrefix: "Wildlife Management Zone ",
       zoneIdPrefix: "management_zone:ca-sk-wmz-",
       designationOf: (raw) => {

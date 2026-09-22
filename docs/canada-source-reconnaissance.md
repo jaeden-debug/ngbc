@@ -10,10 +10,10 @@ This is a research handoff for the 11 Canadian jurisdictions not owned by the ac
 |---|---|---|---|---|---|---|
 | British Columbia | 225 Management Units in 9 regions; separate LEH/special overlays | WFS, 225 features | Official but indicative | OGL-BC | Current law, regulations, 2026–28 synopsis and 2026–27 LEH found | `READY_FOR_INGESTION` |
 | Alberta | 199 Wildlife Management Units | FeatureServer, 199 features | Official but indicative | OGL-Alberta | Current law/regulation and annual guide/draw hub found | `READY_FOR_INGESTION` |
-| Saskatchewan | 83 Wildlife Management Zones/special areas | MapServer, 83 features | Official but indicative | Conflicting: open licence allows commercial reuse, item says “Not for resale” | Current law/regulation path and 2026–27 guide/draw sources found | `LICENCE_BLOCKED` |
+| Saskatchewan | 83 Wildlife Management Zones/special areas | MapServer, 83 features | Official but indicative | SUUDL v2.0 (commercial reuse granted); same item adds “Not for resale”, so live-service only | Current law/regulation path and 2026–27 guide/draw sources found | `VERIFIED` (boundaries, live service) |
 | Manitoba | 62 named Game Hunting Areas plus one blank service feature | FeatureServer, 63 features | Official but indicative | Open Manitoba licence | Current law, GHA regulation, seasons regulation and 2026 guide hub found | `READY_FOR_INGESTION` |
 | New Brunswick | 27 Wildlife Management Zones; refuges/WMAs separate | FeatureServer, 27 features | Official but indicative | GeoNB ODL | Current law/regulations found; stable summary PDF still identifies 2024–25 | `SOURCE_FOUND_NEEDS_REVIEW` |
-| Nova Scotia | 12 Deer Management Zones and 6 Moose Zone values; other species differ | MapServer: 234 deer and 273 moose polygon parts | Official but indicative | No licence attached to item | Current statute/regulations and summary hub found | `LICENCE_BLOCKED` |
+| Nova Scotia | 12 Deer Management Zones and 6 Moose Zone values; other species differ | MapServer: 234 deer and 273 moose polygon parts; Deer Management Zones also published as open data | Official but indicative | OGL–Nova Scotia on the open-data Deer Management Zones item | Current statute/regulations and summary hub found | `READY_FOR_INGESTION` |
 | Prince Edward Island | No comprehensive numeric hunting-zone system identified | No comprehensive layer | Unresolved pending legal review | Not applicable until a dataset exists | Current Act and 2026–27 summary found | `SOURCE_FOUND_NEEDS_REVIEW` |
 | Newfoundland and Labrador | Separate moose, caribou, black bear and small-game systems for the island and Labrador | Official reference maps only | Reference only | No source-specific open licence | Current law/regulation and 2026–27 guide/boundary pages found | `GIS_BLOCKED` |
 | Yukon | 443 stated Game Management Subzones in 11 zones | MapServer, 445 service features | Official but indicative | OGL-Yukon | Current law/regulation, 2026–27 summary and permit source found | `READY_FOR_INGESTION` |
@@ -47,9 +47,10 @@ This is a research handoff for the 11 Canadian jurisdictions not owned by the ac
 - Authority: Ministry of Environment; Saskatchewan Publications is the legal source.
 - GIS: the official Wildlife Management layer has 83 polygons in EPSG:2957 with `ZONE_NUM` and legislative/name fields. It represents Wildlife Management Zones and special areas but defers to the regulation.
 - Regulations: the Act/regulations and the 2026–27 Hunters and Trappers Guide are separate layers; draw material and chronic-wasting-disease orders add conditions.
-- Licence: blocked. The government’s Standard Unrestricted Use Data Licence v2.0 permits commercial adaptation and distribution, but the official ArcGIS item says “Not for resale.” Obtain written clarification for this item before production use.
+- Licence: resolved for serving, open for storage (verified 2026-09-22). Saskatchewan’s own open-data catalogue record for this dataset assigns licence id `sk-suudl`, the Standard Unrestricted Use Data Licence v2.0, which grants commercial reuse; the ArcGIS Online item for the same dataset carries that licence *and* the sentence “Not for resale.” The restriction sits on the Zones dataset North Ground uses, not on the Units layer — both MapServer layers carry no `licenseInfo` at all. North Ground therefore reads the service live, stores no copy, redistributes no file and sells no dataset. Written clarification is needed only if North Ground later wants to redistribute the raw GIS files.
+- Licence contrast worth remembering: the same ministry publishes this geometry under a licence granting commercial reuse while its Hunter Harvest Survey PDFs fall under the general site copyright, which requires advance written permission for commercial reproduction. Read the licence at the dataset, never at the province.
 - Complexity: forest/farmland distinctions, WMZ and special areas, draw species, residency, licence, method, animal class, compulsory sampling and changing disease-control areas.
-- Next: resolve the licence conflict, then snapshot service metadata and geometry before implementing species-specific overlays.
+- Next: live-certified 2026-09-22 (83 units, 265 points, 0 disagreements) and served boundary-only. Rules remain uncertified, so every Saskatchewan species query is UNKNOWN.
 
 ### Manitoba
 
@@ -76,9 +77,9 @@ This is a research handoff for the 11 Canadian jurisdictions not owned by the ac
 - Authority: Department of Natural Resources and Renewables; Nova Scotia Justice publishes regulations.
 - GIS: the Provincial Landscape Viewer resolves to the official `WLD_ProvLandScapeViewer_WM84` MapServer. Layer 1 has 273 polygon parts across six `Moose_Zone` values; layer 2 has 234 parts across 12 `Deer_Zone` values. These are distinct systems, not one universal layer.
 - Regulations: Wildlife Act, species regulations and the official hunting-summary hub must be composed. Annual determinations and ministerial orders can change independently.
-- Licence: blocked. The ArcGIS item has no `licenseInfo`; neither the general provincial open licence nor the legacy DNR digital-data licence can safely be assumed to apply.
+- Licence: NOT blocked (corrected 2026-09-22). The earlier row read the licence off the Provincial Landscape Viewer’s ArcGIS item, which carries no `licenseInfo`, and concluded Nova Scotia was blocked. Nova Scotia publishes **Deer Management Zones** on its open-data catalogue under the **Nova Scotia Open Government Licence**, and publishes bear harvest, effort and observation data under the same licence. The original error was reading a licence at the province level rather than at the dataset level — the failure mode the licensing pipeline now forbids. Deer and moose *harvest statistics* remain blocked: those sit behind report-card logins and PDFs under Crown copyright with no open licence.
 - Complexity: species-specific geography, deer zone, Cape Breton moose zone, lottery/draw, residency, weapon, animal class, bear restrictions and time-limited orders.
-- Next: obtain source-specific commercial/derivative permission and locate any separate bear or annual-order geometries before ingestion.
+- Next: ingest the OGL-licensed Deer Management Zones for species-scoped boundary-only serving, and ingest the OGL-licensed bear harvest and effort data — noting its geography is **county and region**, not a management zone, and must never be interpolated into one. Seek permission only for the deer and moose harvest statistics.
 
 ### Prince Edward Island
 

@@ -107,8 +107,19 @@ test("the report counts only what the certified bundles actually contain", () =>
     }
   }
 
+  // Saskatchewan is the live-service case: no stored copy and no bundle, so its count comes
+  // from the adapter the live certification asserts against the ministry's own service.
+  const saskatchewan = report.jurisdictions.find((entry) => entry.code === "CA-SK")!;
+  assert.equal(saskatchewan.spatial.parityCertified, true);
+  assert.equal(saskatchewan.spatial.officialUnits, 83);
+  assert.equal(saskatchewan.regulatory.rules, 0);
+
   // The headline counts certified geography, not the subset whose rules answer.
-  assert.equal(report.totals.officialUnitsIngested, 686, "151 + 59 + 62 + 189 Ontario/Québec/Manitoba/Alberta, plus 225 British Columbian");
+  assert.equal(
+    report.totals.officialUnitsIngested,
+    769,
+    "151 + 59 + 62 + 189 Ontario/Québec/Manitoba/Alberta, plus 225 British Columbian and 83 Saskatchewan",
+  );
 });
 
 test("no national milestone is claimed before its evidence exists", () => {

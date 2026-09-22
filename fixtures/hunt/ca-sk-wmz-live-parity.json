@@ -21,10 +21,10 @@
   "overlapsInAuthorityGeometry": 0,
   "disagreements": 0,
   "latencyMs": {
-    "authorityMedian": 98,
-    "authorityP90": 114,
-    "productionMedian": 106,
-    "productionP90": 141
+    "authorityMedian": 101,
+    "authorityP90": 134,
+    "productionMedian": 111,
+    "productionP90": 177
   },
   "results": [
     {

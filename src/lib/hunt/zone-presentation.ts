@@ -95,6 +95,13 @@ export interface ZonePresentationProfile {
   qualifiers?: readonly QualifierEntry[];
   /** Designations whose suffix is deliberately left unexpanded, with the reason. */
   preserved?: Readonly<Record<string, string>>;
+  /**
+   * Designations the authority publishes as a proper name rather than a number,
+   * written exactly as the authority writes them. The name already carries the
+   * term ("Saskatoon WMZ"), so the `term` template is not applied on top of it
+   * and nothing is translated. The map still labels these with the code.
+   */
+  properNames?: Readonly<Record<string, Localized<string>>>;
 }
 
 /** Québec's compass codes, from the ministry's `Partie_zon` values. */
@@ -266,6 +273,12 @@ export const ZONE_PRESENTATION_PROFILES: readonly ZonePresentationProfile[] = [
     // Regina-Moose Jaw and Prince Albert zones by the ministry's own codes.
     designationPattern: /^(?:\d{1,2}[EWNS]?|[PRS]WMZ)$/,
     stripLeadingZeros: false,
+    // The ministry's own DA_NAME for the three urban zones; the numbered zones are "WMZ No. 55".
+    properNames: {
+      SWMZ: { "en-CA": "Saskatoon WMZ" },
+      RWMZ: { "en-CA": "Regina-Moose Jaw WMZ" },
+      PWMZ: { "en-CA": "Prince Albert WMZ" },
+    },
   },
   /*
    * United States. Each state publishes in English only, so no French term is
@@ -413,6 +426,23 @@ export function presentZone(input: ZonePresentationInput, locale: ZoneLocale = D
     return { ...identity, fullLabel: label, designationLabel: designation, compactLabel: designation,
       accessibleLabel: `${profile.termIsAbbreviation ? term.long : term.short} ${designation}, ${jurisdictionName}`,
       localized: false, status: "UNRECOGNIZED_DESIGNATION" };
+  }
+
+  const proper = profile.properNames?.[designation];
+  if (proper) {
+    const name = proper[locale] ?? proper[profile.sourceLocale];
+    if (name) {
+      return {
+        ...identity,
+        fullLabel: name,
+        designationLabel: name,
+        // Tight map space keeps the authority's code, never a truncated proper name.
+        compactLabel: designation,
+        accessibleLabel: `${name}, ${jurisdictionName}`,
+        localized: proper[locale] !== undefined,
+        status: "PRESENTED",
+      };
+    }
   }
 
   const { full, compact, localized: partsLocalized } = labelParts(profile, designation, locale);

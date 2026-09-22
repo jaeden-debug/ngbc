@@ -3,7 +3,7 @@ import test from "node:test";
 import { evaluateHunt } from "./evaluate.ts";
 import type { HuntInput, ZoneResolution } from "./types.ts";
 import { jurisdictionOfZoneId } from "./zone.ts";
-import { designationFromOfficialName, layerForJurisdiction, layerForPoint, layerForResolution } from "./zone-layers.ts";
+import { ZONE_LAYERS, designationFromOfficialName, layerForJurisdiction, layerForPoint, layerForResolution } from "./zone-layers.ts";
 
 /*
  * Bounding boxes overlap. Ontario's layer extent reaches -74° and -95.5°, which
@@ -53,9 +53,27 @@ test("a zone from a jurisdiction with no registered layer is not presented at al
 });
 
 test("a registered but unserved layer is named, never presented as a served zone", () => {
-  // Saskatchewan is registered (live service, unserved until certified).
+  /*
+   * Named by state rather than by province: jurisdictions move from registered
+   * to served as each is certified, and the invariant is about the state, not
+   * about whoever happens to be waiting today.
+   */
+  const unserved = ZONE_LAYERS.filter((layer) => layer.serving !== true);
+  assert.ok(unserved.length > 0, "the queue still holds registered, uncertified layers");
+  for (const layer of unserved) {
+    const presented = layerForResolution({ status: "RESOLVED", jurisdictionId: layer.jurisdictionId });
+    assert.equal(presented.kind, "NOT_SERVING", `${layer.jurisdictionName} is not served and must not be presented`);
+  }
+});
+
+test("Saskatchewan is presented from its live service, with no rule of its own", () => {
   const presented = layerForResolution({ status: "RESOLVED", jurisdictionId: "jurisdiction:ca-sk" });
-  assert.equal(presented.kind, "NOT_SERVING");
+  assert.equal(presented.kind, "SERVING");
+  const layer = layerForJurisdiction("jurisdiction:ca-sk")!;
+  assert.equal(layer.resolution, "LIVE_SERVICE", "no stored copy is kept of Saskatchewan's geometry");
+  assert.notEqual(layer.rulesServing, true);
+  assert.equal(layer.officialTerm, "Wildlife Management Zone");
+  assert.equal(designationFromOfficialName(layer, "Wildlife Management Zone 55"), "55");
 });
 
 test("a Manitoba zone is presented in Manitoba's terms once its layer is served", () => {

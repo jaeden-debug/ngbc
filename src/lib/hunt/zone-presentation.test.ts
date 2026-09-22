@@ -325,3 +325,24 @@ test("Newfoundland's three big-game geographies, each in the province's own term
   // The province publishes these terms in English only.
   assert.equal(presentZone({ designation: "044", layerId: "layer:ca-nl-moose-area" }, "fr-CA").localized, false);
 });
+
+test("Saskatchewan's urban zones are presented by the ministry's own names", () => {
+  /*
+   * The ministry's DA_NAME calls these "Saskatoon WMZ", not "Wildlife
+   * Management Zone SWMZ": the name already carries the term, so the label
+   * template must not be applied on top of it. The map still labels the
+   * polygon with the authority's code.
+   */
+  const saskatoon = presentZone({ layerId: "layer:ca-sk-wmz", designation: "SWMZ" });
+  assert.equal(saskatoon.fullLabel, "Saskatoon WMZ");
+  assert.equal(saskatoon.compactLabel, "SWMZ");
+  assert.equal(saskatoon.accessibleLabel, "Saskatoon WMZ, Saskatchewan");
+  assert.equal(saskatoon.status, "PRESENTED");
+
+  assert.equal(presentZone({ layerId: "layer:ca-sk-wmz", designation: "RWMZ" }).fullLabel, "Regina-Moose Jaw WMZ");
+  assert.equal(presentZone({ layerId: "layer:ca-sk-wmz", designation: "PWMZ" }).fullLabel, "Prince Albert WMZ");
+
+  // A numbered zone still takes the ordinary template, and its halves keep their code.
+  assert.equal(presentZone({ layerId: "layer:ca-sk-wmz", designation: "55" }).fullLabel, "WMZ 55");
+  assert.equal(presentZone({ layerId: "layer:ca-sk-wmz", designation: "2E" }).compactLabel, "2E");
+});

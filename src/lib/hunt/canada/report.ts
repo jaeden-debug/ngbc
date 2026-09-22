@@ -11,6 +11,7 @@
  */
 
 import { REGULATORY_REGISTRY, regulatoryEntryFor } from "../regulatory/registry.ts";
+import { CANADA_LIVE_ZONE_LAYERS, canadaLiveAdapterConfig } from "./live-layers.ts";
 import { CANADA_JURISDICTIONS, type CanadaJurisdiction, type CoverageState } from "./registry.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 
@@ -91,6 +92,17 @@ export interface SpeciesJurisdictionCoverage {
  * Hunt can actually answer cannot disagree. A jurisdiction with no entry has no
  * certified rules, and says so with empty rows rather than a typed zero.
  */
+/**
+ * A live-service jurisdiction has no stored copy and no rules bundle to count,
+ * so its unit count comes from the adapter the certification run asserts
+ * against the authority: `certify-live-zone-layer.mjs` fails closed when the
+ * service disagrees, so this number cannot drift from what the ministry serves.
+ */
+function liveUnitCount(jurisdictionId: string): number | null {
+  const layer = CANADA_LIVE_ZONE_LAYERS.find((candidate) => candidate.jurisdictionId === jurisdictionId);
+  return layer ? canadaLiveAdapterConfig(layer.id)?.expectedUnits ?? null : null;
+}
+
 function coverageFor(jurisdiction: CanadaJurisdiction): JurisdictionCoverage {
   const coverage = regulatoryEntryFor(jurisdiction.id)?.coverage();
   const species = coverage?.species ?? [];
@@ -101,7 +113,8 @@ function coverageFor(jurisdiction: CanadaJurisdiction): JurisdictionCoverage {
    * counted, and the reduce below still requires parity certification.
    */
   const officialUnits =
-    REGULATORY_REGISTRY.find((entry) => entry.jurisdictionId === jurisdiction.id)?.coverage().officialUnits ?? null;
+    REGULATORY_REGISTRY.find((entry) => entry.jurisdictionId === jurisdiction.id)?.coverage().officialUnits
+    ?? liveUnitCount(jurisdiction.id);
 
   return {
     id: jurisdiction.id,
