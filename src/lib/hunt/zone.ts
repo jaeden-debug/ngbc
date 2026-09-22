@@ -448,14 +448,22 @@ export async function resolveZone(
   longitude: number,
   fetcher: typeof fetch = fetch,
   supabaseClient: () => SupabaseClient = defaultSupabaseServerClient,
+  /** Optional per-phase durations in milliseconds, for a Server-Timing header. Never carries a coordinate. */
+  timings?: Record<string, number>,
 ): Promise<ZoneResolution> {
   const provider = process.env.SPATIAL_PROVIDER?.trim() || "official-gis";
   let result: ZoneResolution | null = null;
   if (provider === "supabase") {
+    const started = performance.now();
     result = await resolveOntarioWmuFromSupabase(latitude, longitude, supabaseClient);
+    if (timings) timings.db = performance.now() - started;
     if (result.status === "PROVIDER_ERROR" && process.env.SPATIAL_FALLBACK_PROVIDER === "official-gis") result = null;
   }
-  result ??= await resolveZoneFromOfficialGis(latitude, longitude, fetcher);
+  if (!result) {
+    const started = performance.now();
+    result = await resolveZoneFromOfficialGis(latitude, longitude, fetcher);
+    if (timings) timings.gis = performance.now() - started;
+  }
   if (result.status !== "RESOLVED" && !result.jurisdictionId) {
     /* Registered layers count whether or not they are served: Québec's layer is
        not yet served, but its extent is still evidence the point may be in

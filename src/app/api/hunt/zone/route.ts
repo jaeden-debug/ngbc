@@ -19,6 +19,15 @@ export const dynamic = "force-dynamic";
  */
 
 const limiter = createRateLimiter({ limit: 60, windowMs: 60_000 });
+/* The first request an instance serves is marked "cold" in Server-Timing, so a
+   slow tail can be told apart from a slow lookup. */
+let servedBefore = false;
+
+/** Durations only; nothing that locates a hunter. */
+function serverTiming(timings: Record<string, number>, cold: boolean): string {
+  const phases = Object.entries(timings).map(([name, ms]) => `${name};dur=${ms.toFixed(1)}`);
+  return [...phases, cold ? "cold" : "warm"].join(", ");
+}
 const MAX_BODY_BYTES = 512;
 
 function json(data: unknown, status = 200, headers: HeadersInit = {}) {
@@ -72,12 +81,18 @@ export async function POST(request: Request): Promise<Response> {
     });
   }
 
-  const resolution = await resolveZone(latitude, longitude);
+  const cold = !servedBefore;
+  servedBefore = true;
+  const timings: Record<string, number> = {};
+  const started = performance.now();
+  const resolution = await resolveZone(latitude, longitude, fetch, undefined, timings);
+  timings.resolve = performance.now() - started;
+  const timed = (data: unknown) => json(data, 200, { "server-timing": serverTiming(timings, cold) });
   if (resolution.status !== "RESOLVED") {
     /* Named only when the resolver could attribute the point to one
        jurisdiction; where extents overlap, the first box is not an answer. */
     const context = layerForJurisdiction(resolution.jurisdictionId);
-    return json({
+    return timed({
       status: resolution.status,
       message: resolution.message,
       layer: context ? { jurisdictionName: context.jurisdictionName, officialTerm: context.officialTerm, authority: context.authority } : null,
@@ -88,7 +103,7 @@ export async function POST(request: Request): Promise<Response> {
   if (presented.kind !== "SERVING") {
     /* A zone from another jurisdiction's registry: never answered in the
        terms of the layer whose box the point happened to fall in. */
-    return json({
+    return timed({
       status: "UNSUPPORTED",
       message:
         presented.kind === "NOT_SERVING"
@@ -102,7 +117,7 @@ export async function POST(request: Request): Promise<Response> {
 
   const { layer } = presented;
   const zoneName = designationFromOfficialName(layer, resolution.officialName);
-  return json({
+  return timed({
     status: "RESOLVED",
     zone: {
       id: resolution.zoneId,
