@@ -253,6 +253,19 @@ async function main() {
       if (result.normalized) normalized.push(result);
     }
   }));
+  /* Large features are checked too, one at a time and after the rest.
+     Newfoundland publishes four of its seven black bear areas with ring
+     self-intersections, and refusing to look at them would leave the province
+     unpublishable. The same lossless guard applies, a repair that cannot finish
+     inside the statement timeout fails closed, and publish_zone_run's validity
+     gate still stands behind this. */
+  for (const { feature } of large) {
+    const result = await rest("rpc/normalize_zone_ingest_geometry", {
+      method: "POST",
+      body: { p_run_id: run.id, p_source_feature_id: feature.sourceFeatureId },
+    });
+    if (result.normalized) normalized.push(result);
+  }
   if (normalized.length) {
     console.log("");
     console.log(`Normalized ${normalized.length} invalid authority geometr${normalized.length === 1 ? "y" : "ies"}:`);
