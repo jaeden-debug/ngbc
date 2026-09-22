@@ -4,6 +4,7 @@ import ontario from "../../../fixtures/hunt/ca-on-zone-certification.json" with 
 import manitoba from "../../../fixtures/hunt/ca-mb-zone-certification.json" with { type: "json" };
 import alberta from "../../../fixtures/hunt/ca-ab-zone-certification.json" with { type: "json" };
 import quebec from "../../../fixtures/hunt/ca-qc-zone-certification.json" with { type: "json" };
+import britishColumbia from "../../../fixtures/hunt/ca-bc-zone-certification.json" with { type: "json" };
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { clearOverlayCache } from "./overlays.ts";
 import { clearZoneGeometryCache, fetchLayerGeometry } from "./zone-geometry.ts";
@@ -189,9 +190,10 @@ test("representative Ontario, Manitoba and Alberta zones read as the authority n
 
 test("10. an unsupported or future jurisdiction is shown raw, never given a name", () => {
   for (const input of [
+    // New Mexico and Saskatchewan have no profile: shown raw, never named.
     { designation: "GMU 12", jurisdictionId: "jurisdiction:us-nm" },
-    { designation: "226", jurisdictionId: "jurisdiction:ca-bc" },
-    { designation: "7-15", layerId: "layer:ca-bc-mu" },
+    { designation: "43", jurisdictionId: "jurisdiction:ca-sk" },
+    { designation: "43", layerId: "layer:ca-sk-wmz" },
   ]) {
     for (const locale of ZONE_LOCALES) {
       const presented = presentZone(input, locale);
@@ -283,4 +285,28 @@ test("5–6. map features carry the compact label; zone cards carry the full lab
   assert.equal(card.zone.presentation.zoneId, "management_zone:ca-qc-zone-10o");
   assert.equal(card.zone.designation, "10O");
   assert.equal(card.zone.officialName, "Zone de chasse 10O");
+});
+
+test("British Columbia's 225 certified Management Units read as the regulation names them", () => {
+  const layer = layerById("layer:ca-bc-mu")!;
+  assert.equal(britishColumbia.officialIdentifiers.length, 225);
+  for (const designation of britishColumbia.officialIdentifiers as string[]) {
+    for (const locale of ZONE_LOCALES) {
+      const presented = presentZone({ designation, layerId: layer.id }, locale);
+      assert.equal(presented.status, "PRESENTED", `${designation} ${locale}`);
+      // The hyphen is part of the designation and survives every label.
+      assert.equal(presented.fullLabel, `MU ${designation}`);
+      assert.equal(presented.compactLabel, designation);
+      // B.C. Reg. 64/96 publishes the term in English only: kept, and said so.
+      assert.equal(presented.localized, locale === "en-CA");
+    }
+  }
+  const zoneId = zoneIdFor(layer, "7-15");
+  assert.equal(zoneId, "management_zone:ca-bc-mu-7-15");
+  assert.equal(presentZone({ designation: "7-15", layerId: layer.id }, "en-CA").accessibleLabel, "Management Unit 7-15, British Columbia");
+  assert.equal(presentZoneById(zoneId, "en-CA", "Management Unit 7-15").sourceDesignation, "7-15");
+  // Not a unit the regulation publishes: shown raw, never given a name.
+  for (const designation of ["9-1", "7-0", "07-15", "7-15A"]) {
+    assert.equal(presentZone({ designation, layerId: layer.id }).status, "UNRECOGNIZED_DESIGNATION", designation);
+  }
 });

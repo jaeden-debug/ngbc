@@ -178,6 +178,21 @@ export const ZONE_PRESENTATION_PROFILES: readonly ZonePresentationProfile[] = [
       "19SNO": "Part name « Sud-Nord-Ouest » has no unambiguous compass reading.",
     },
   },
+  {
+    layerId: "layer:ca-bc-mu",
+    jurisdictionId: "jurisdiction:ca-bc",
+    zoneIdPrefix: "management_zone:ca-bc-mu-",
+    officialNamePrefix: "Management Unit ",
+    sourceLocale: "en-CA",
+    jurisdictionName: { "en-CA": "British Columbia", "fr-CA": "Colombie-Britannique" },
+    // B.C. Reg. 64/96 publishes the term in English only; it is kept, not translated.
+    term: { "en-CA": { long: "Management Unit", short: "MU" }, "fr-CA": undefined },
+    termIsAbbreviation: true,
+    // "<region>-<number>" (7-15): the hyphen belongs to the designation, and the
+    // regulation reads "-01" as "-1" (s. 3), so no zero-padded form is published.
+    designationPattern: /^[1-8]-[1-9]\d?$/,
+    stripLeadingZeros: false,
+  },
   /*
    * United States. Each state publishes in English only, so no French term is
    * recorded and the English term is kept in French. Every pattern is the set
