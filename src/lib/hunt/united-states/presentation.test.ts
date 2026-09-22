@@ -20,6 +20,7 @@ function certifiedDesignations(layerId: string): string[] {
 }
 
 const PROFILED = ["layer:us-id-gmu", "layer:us-mt-deer-elk-hd", "layer:us-co-gmu", "layer:us-wy-elk-area"];
+const WORDED = ["layer:us-mt-upland"];
 
 test("each profiled U.S. layer has exactly one profile that mirrors it", () => {
   for (const layerId of PROFILED) {
@@ -31,8 +32,9 @@ test("each profiled U.S. layer has exactly one profile that mirrors it", () => {
     assert.equal(profiles[0].officialNamePrefix, layer.officialNamePrefix);
     assert.equal(profiles[0].term["en-CA"]?.short, layer.officialTermShort);
   }
-  // Every U.S. layer is either profiled or deliberately worded.
-  assert.deepEqual(US_ZONE_LAYERS.map((layer) => layer.id).filter((id) => !PROFILED.includes(id)), ["layer:us-mt-upland"]);
+  // Every U.S. layer has a profile: coded or worded.
+  assert.deepEqual(US_ZONE_LAYERS.map((layer) => layer.id).filter((id) => !PROFILED.includes(id)), WORDED);
+  for (const layerId of WORDED) assert.equal(ZONE_PRESENTATION_PROFILES.filter((profile) => profile.layerId === layerId).length, 1, layerId);
 });
 
 test("every designation a state returned at certification is presented, round-trips by id, and keeps its identity", () => {
@@ -66,7 +68,23 @@ test("labels read as each state writes them", () => {
 });
 
 test("Montana's worded upland districts are shown as FWP writes them, never prefixed or renamed", () => {
-  const presented = presentZoneById("management_zone:us-mt-upland-east-of-the-continental-divide", "en-CA", "East of the Continental Divide");
-  assert.equal(presented.status, "UNSUPPORTED_JURISDICTION");
-  assert.equal(presented.fullLabel, "East of the Continental Divide");
+  for (const designation of certifiedDesignations("layer:us-mt-upland")) {
+    const zoneId = zoneIdFor(layerById("layer:us-mt-upland")!, designation);
+    for (const locale of ZONE_LOCALES) {
+      const presented = presentZoneById(zoneId, locale, designation);
+      assert.equal(presented.status, "PRESENTED");
+      assert.equal(presented.fullLabel, designation);
+      assert.equal(presented.accessibleLabel, `${designation}, Montana`);
+      assert.equal(presented.sourceDesignation, designation);
+    }
+  }
+  // Nothing else is read as a district name.
+  assert.equal(presentZone({ designation: "North of the Divide", layerId: "layer:us-mt-upland" }).status, "UNRECOGNIZED_DESIGNATION");
+});
+
+test("a worded designation is labelled as the authority writes it, with no term in front", async () => {
+  const { zoneDisplayLabel } = await import("../zone-layers.ts");
+  assert.equal(zoneDisplayLabel(layerById("layer:us-mt-upland")!, "East of the Continental Divide"), "East of the Continental Divide");
+  // A coded designation without a profile keeps the established fallback.
+  assert.equal(zoneDisplayLabel({ jurisdictionId: "jurisdiction:us-nm" as never, officialTermShort: "GMU" }, "12"), "GMU 12");
 });

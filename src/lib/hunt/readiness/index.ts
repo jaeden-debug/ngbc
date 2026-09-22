@@ -1,4 +1,5 @@
 import { CANADA_JURISDICTIONS } from "../canada/registry.ts";
+import { unitedStatesJurisdictionById } from "../united-states/registry.ts";
 import type { RegulatoryResult, ZoneResolution } from "../types.ts";
 import { resolveOntarioReadiness } from "./ontario.ts";
 import type { HunterAnswers } from "./resolve.ts";
@@ -51,7 +52,8 @@ export function resolveReadiness(
     );
   }
 
-  const jurisdiction = CANADA_JURISDICTIONS.find((entry) => entry.id === zone.jurisdictionId);
+  const jurisdiction = CANADA_JURISDICTIONS.find((entry) => entry.id === zone.jurisdictionId) ??
+    (zone.jurisdictionId ? unitedStatesJurisdictionById(zone.jurisdictionId) : undefined);
   return {
     coverage: "UNAVAILABLE",
     jurisdictionName: jurisdiction?.nameEn ?? "this jurisdiction",

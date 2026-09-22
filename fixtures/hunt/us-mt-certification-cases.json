@@ -1,0 +1,303 @@
+{
+  "jurisdiction": "jurisdiction:us-mt",
+  "writtenOn": "2026-09-22",
+  "method": "Every expectation below was written from the text of the 2026 Montana Upland Game Bird Hunting Regulations (pp. 2, 4, 9, 10) and from Montana Fish, Wildlife & Parks' own upland game bird district, hunting district and restricted-area layers and the U.S. Census Bureau's TIGERweb reservation layer, each queried at the point on 2026-09-22 (scratchpad proofs/mt-verify-points.mjs), before any case was run against North Ground. A case that disagrees is a finding, never an expectation to edit.",
+  "cases": [
+    {
+      "id": "lewistown-ruffed-open",
+      "place": "Lewistown",
+      "latitude": 47.0625,
+      "longitude": -109.4282,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-10-10",
+      "expect": {
+        "zoneName": "East of the Continental Divide",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "daily": 3,
+        "possession": 12,
+        "authorityPrefix": "source:us-"
+      },
+      "law": "p. 9: mountain grouse (blue, ruffed, Franklin's) Sep. 01 – Jan. 01 statewide for residents and nonresidents alike; 3 in aggregate daily, possession four times the daily bag. FWP places Lewistown east of the Divide. No fact about the hunter changes it, so nothing is asked."
+    },
+    {
+      "id": "lewistown-ruffed-day-before",
+      "place": "Lewistown",
+      "latitude": 47.0625,
+      "longitude": -109.4282,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-08-31",
+      "expect": {
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "p. 9: the mountain grouse season opens Sep. 01."
+    },
+    {
+      "id": "missoula-sharptail-west",
+      "place": "Missoula",
+      "latitude": 46.8721,
+      "longitude": -113.994,
+      "speciesId": "species:sharp-tailed-grouse",
+      "date": "2026-09-15",
+      "expect": {
+        "zoneName": "West of the Continental Divide",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "p. 9: sharp-tailed grouse \"Closed West of the Continental Divide.\" FWP places Missoula west of the Divide. No question can change it."
+    },
+    {
+      "id": "butte-sharptail-west",
+      "place": "Butte",
+      "latitude": 46.0038,
+      "longitude": -112.5348,
+      "speciesId": "species:sharp-tailed-grouse",
+      "date": "2026-09-15",
+      "expect": {
+        "zoneName": "West of the Continental Divide",
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "Butte sits near the Divide; FWP's own upland district layer places this point west of it, so sharp-tailed grouse is closed (p. 9)."
+    },
+    {
+      "id": "glasgow-sharptail-asks-residency",
+      "place": "Glasgow",
+      "latitude": 48.197,
+      "longitude": -106.6367,
+      "speciesId": "species:sharp-tailed-grouse",
+      "date": "2026-09-05",
+      "expect": {
+        "zoneName": "East of the Continental Divide",
+        "completeness": "NEEDS_INPUT",
+        "required": "RESIDENCY"
+      },
+      "law": "p. 9: sharp-tailed grouse Sep. 01 – Jan. 01, but nonresidents on public or access-program land begin Sep. 11. On Sep. 05 the answer depends on residency."
+    },
+    {
+      "id": "glasgow-sharptail-nonresident-public-early",
+      "place": "Glasgow",
+      "latitude": 48.197,
+      "longitude": -106.6367,
+      "speciesId": "species:sharp-tailed-grouse",
+      "date": "2026-09-05",
+      "answers": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS"
+      },
+      "expect": {
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "p. 9: nonresidents on public lands and access-program lands begin Sep. 11."
+    },
+    {
+      "id": "glasgow-sharptail-nonresident-public-day-11",
+      "place": "Glasgow",
+      "latitude": 48.197,
+      "longitude": -106.6367,
+      "speciesId": "species:sharp-tailed-grouse",
+      "date": "2026-09-11",
+      "answers": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS"
+      },
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "p. 9: the nonresident public/access-program opening is Sep. 11."
+    },
+    {
+      "id": "miles-city-pheasant-3-day-opening-week",
+      "place": "Miles City",
+      "latitude": 46.4083,
+      "longitude": -105.8406,
+      "speciesId": "species:ring-necked-pheasant",
+      "date": "2026-10-12",
+      "answers": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "LICENCE_TYPE": "THREE_DAY"
+      },
+      "expect": {
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "p. 10: nonresident 3-day license holders on private land may hunt pheasants from Oct. 17; residents and season-license nonresidents on private land from Oct. 10."
+    },
+    {
+      "id": "miles-city-pheasant-3-day-oct-17",
+      "place": "Miles City",
+      "latitude": 46.4083,
+      "longitude": -105.8406,
+      "speciesId": "species:ring-necked-pheasant",
+      "date": "2026-10-17",
+      "answers": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "LICENCE_TYPE": "THREE_DAY"
+      },
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "p. 10: Oct. 17 for nonresident 3-day license holders on private land."
+    },
+    {
+      "id": "billings-pheasant-youth-weekend-asks-age",
+      "place": "Billings",
+      "latitude": 45.7833,
+      "longitude": -108.5007,
+      "speciesId": "species:ring-necked-pheasant",
+      "date": "2026-09-19",
+      "expect": {
+        "completeness": "NEEDS_INPUT",
+        "required": "HUNTER_AGE"
+      },
+      "law": "p. 10: youth-only pheasant season Sep. 19 – 20 for youth ages 15 and under; nobody else may hunt pheasant that weekend."
+    },
+    {
+      "id": "lame-deer-northern-cheyenne-closed",
+      "place": "Lame Deer (Northern Cheyenne Indian Reservation)",
+      "latitude": 45.623,
+      "longitude": -106.667,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-10-10",
+      "expect": {
+        "zoneName": "East of the Continental Divide",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "mentions": [
+          "with the use of state licenses"
+        ]
+      },
+      "law": "p. 4: the Commission has closed all lands within the exterior boundaries of Montana's Indian Reservations to upland game bird hunting with state licenses unless a cooperative agreement provides otherwise; the booklet names agreements only for the Flathead and (fee land) Crow reservations. TIGERweb places this point in the Northern Cheyenne Indian Reservation."
+    },
+    {
+      "id": "pablo-flathead-needs-verification",
+      "place": "Pablo (Flathead Reservation)",
+      "latitude": 47.6005,
+      "longitude": -114.1188,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-10-10",
+      "expect": {
+        "zoneName": "West of the Continental Divide",
+        "status": "NEEDS_VERIFICATION",
+        "mentions": [
+          "cooperative management agreement"
+        ]
+      },
+      "law": "p. 4: on the Flathead Reservation a State–CSKT cooperative management agreement governs, with its own upland regulations North Ground has not certified. The state answer cannot be given, and neither can closure."
+    },
+    {
+      "id": "gates-of-the-mountains-closed",
+      "place": "Gates of the Mountains Game Preserve",
+      "latitude": 46.86166,
+      "longitude": -111.91463,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-10-10",
+      "expect": {
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "p. 10: Gates of the Mountains Game Preserve — closed to all hunting. FWP's restricted-area layer places this point inside it."
+    },
+    {
+      "id": "carbon-partridge-portion-jan-5",
+      "place": "Carbon County partridge portion",
+      "latitude": 45.14648,
+      "longitude": -108.83185,
+      "speciesId": "species:gray-partridge",
+      "date": "2027-01-05",
+      "answers": {
+        "RESIDENCY": "RESIDENT"
+      },
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "p. 9: partridge Sep. 01 – Jan. 01, except the described portion of Carbon County, open to Jan. 10. FWP's upland portion layer places this point inside it."
+    },
+    {
+      "id": "billings-partridge-jan-5",
+      "place": "Billings",
+      "latitude": 45.7833,
+      "longitude": -108.5007,
+      "speciesId": "species:gray-partridge",
+      "date": "2027-01-05",
+      "answers": {
+        "RESIDENCY": "RESIDENT"
+      },
+      "expect": {
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "p. 9: outside the Carbon County portion the partridge season closes Jan. 01."
+    },
+    {
+      "id": "bozeman-deer-not-certified",
+      "place": "Bozeman",
+      "latitude": 45.677,
+      "longitude": -111.0429,
+      "speciesId": "species:white-tailed-deer",
+      "date": "2026-10-25",
+      "expect": {
+        "zoneName": "Hunting District 309",
+        "status": "UNKNOWN"
+      },
+      "law": "North Ground certifies no Montana deer rules (white-tailed deer is certified only in Canadian jurisdictions). The honest answer is UNKNOWN, never CLOSED, and the zone is FWP's own hunting district 309.",
+      "revision": {
+        "on": "2026-09-22",
+        "original": {
+          "speciesId": "species:elk",
+          "expect": {
+            "zoneName": "Hunting District 309",
+            "status": "UNKNOWN"
+          }
+        },
+        "evidence": "The first run returned HTTP 400: /api/hunt/evaluate accepts only species North Ground certifies in some jurisdiction (isCertifiedSpecies), and elk is certified nowhere, so no one can ask it. The question the case exists for — a certified species with no Montana rules — is asked with white-tailed deer instead. The expected status is unchanged."
+      }
+    },
+    {
+      "id": "bozeman-ruffed-in-restricted-area",
+      "place": "Bozeman (Gallatin Valley Weapons Restriction Area)",
+      "latitude": 45.677,
+      "longitude": -111.0429,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2026-10-10",
+      "expect": {
+        "status": "NEEDS_VERIFICATION",
+        "mentions": [
+          "Gallatin Valley Weapons Restriction Area"
+        ]
+      },
+      "law": "FWP lists this point in the Gallatin Valley Weapons Restriction Area, a published restricted area whose upland rule, if any, is not in the regulations North Ground certified. §41A: a season is never claimed inside a published restricted area."
+    },
+    {
+      "id": "lewistown-ruffed-next-licence-year",
+      "place": "Lewistown",
+      "latitude": 47.0625,
+      "longitude": -109.4282,
+      "speciesId": "species:ruffed-grouse",
+      "date": "2027-03-01",
+      "expect": {
+        "status": "NEEDS_VERIFICATION"
+      },
+      "law": "p. 2: the 2026 regulations are valid March 1, 2026 through Feb. 28, 2027. A date in the next licence year is not answered with them."
+    }
+  ],
+  "viewports": [
+    {
+      "label": "All of Montana (zoom 6)",
+      "bounds": "-116.1,44.3,-104.0,49.1",
+      "zoom": 6
+    },
+    {
+      "label": "Helena and Gates of the Mountains (zoom 9)",
+      "bounds": "-112.3,46.4,-111.5,47.0",
+      "zoom": 9
+    }
+  ]
+}

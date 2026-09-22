@@ -285,8 +285,8 @@ export const ZONE_PRESENTATION_PROFILES: readonly ZonePresentationProfile[] = [
    * recorded and the English term is kept in French. Every pattern is the set
    * of designations the state's own service returned at certification
    * (fixtures/hunt/us-*-live-parity.json). Montana's upland game bird
-   * districts have no row on purpose: their designations are worded ("East of
-   * the Continental Divide") and are shown exactly as FWP writes them.
+   * districts are worded ("East of the Continental Divide"): the name is the
+   * whole label, with no term in front.
    */
   {
     layerId: "layer:us-id-gmu",
@@ -312,6 +312,26 @@ export const ZONE_PRESENTATION_PROFILES: readonly ZonePresentationProfile[] = [
     termIsAbbreviation: true,
     designationPattern: /^\d{3}$/,
     stripLeadingZeros: false,
+  },
+  {
+    // Two districts, named in words by FWP; the name is the whole label.
+    layerId: "layer:us-mt-upland",
+    jurisdictionId: "jurisdiction:us-mt",
+    zoneIdPrefix: "management_zone:us-mt-upland-",
+    officialNamePrefix: "",
+    sourceLocale: "en-CA",
+    jurisdictionName: { "en-CA": "Montana", "fr-CA": "Montana" },
+    term: { "en-CA": { long: "Upland Game Bird District", short: "Upland district" }, "fr-CA": undefined },
+    termIsAbbreviation: false,
+    designationPattern: /^(East|West) of the Continental Divide$/,
+    stripLeadingZeros: false,
+    /* FWP names these districts in words rather than numbering them, so the
+       designation is already the whole name and the term is not applied on
+       top of it. */
+    properNames: {
+      "East of the Continental Divide": { "en-CA": "East of the Continental Divide" },
+      "West of the Continental Divide": { "en-CA": "West of the Continental Divide" },
+    },
   },
   {
     layerId: "layer:us-co-gmu",

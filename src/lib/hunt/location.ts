@@ -12,6 +12,7 @@
  */
 
 import { googleRefusal, googleStatusRefusal, logGoogleFailure } from "./google-refusal.ts";
+import { countryOfJurisdiction, ZONE_LAYERS, type ZoneLayer } from "./zone-layers.ts";
 
 export type LocationProviderName = "google" | "nominatim";
 
@@ -65,8 +66,19 @@ export interface LocationRequestOptions {
 const REQUEST_TIMEOUT_MS = 6_000;
 const MAX_SUGGESTIONS = 6;
 
-/** Canada first: the certified coverage is Canadian and this keeps results relevant. */
-const REGION_CODES = ["ca"];
+/**
+ * Search only the countries North Ground serves hunting zones in, so a result
+ * is a place Hunt can answer for. Canada is always served; the United States
+ * joins the moment a U.S. state's zones are served, and not before.
+ */
+export function searchRegionCodes(layers: readonly Pick<ZoneLayer, "serving" | "jurisdictionId">[] = ZONE_LAYERS): string[] {
+  const countries = new Set(["ca"]);
+  for (const layer of layers) {
+    const country = layer.serving ? countryOfJurisdiction(layer.jurisdictionId) : undefined;
+    if (country) countries.add(country.toLowerCase());
+  }
+  return [...countries];
+}
 
 function selectedProvider(options: LocationRequestOptions): LocationProviderName {
   if (options.provider) return options.provider;
@@ -121,7 +133,7 @@ export async function suggestGooglePlaces(
       },
       body: JSON.stringify({
         input: query,
-        includedRegionCodes: REGION_CODES,
+        includedRegionCodes: searchRegionCodes(),
         languageCode: "en-CA",
         ...(options.sessionToken ? { sessionToken: options.sessionToken } : {}),
       }),
@@ -291,7 +303,7 @@ export async function suggestNominatimPlaces(
     url.searchParams.set("q", query);
     url.searchParams.set("format", "jsonv2");
     url.searchParams.set("addressdetails", "1");
-    url.searchParams.set("countrycodes", REGION_CODES.join(","));
+    url.searchParams.set("countrycodes", searchRegionCodes().join(","));
     url.searchParams.set("limit", String(MAX_SUGGESTIONS));
 
     const response = await (options.fetcher ?? fetch)(url, {

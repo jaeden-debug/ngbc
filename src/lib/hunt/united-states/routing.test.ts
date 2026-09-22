@@ -115,4 +115,25 @@ test("a point inside two of one state's own layers keeps that state, so a reserv
   assert.equal(soleJurisdictionAt(45.623, -106.667), "jurisdiction:us-mt");
   // Cranbrook, B.C. is inside Alberta's box as well as B.C.'s: evidence for neither.
   assert.equal(soleJurisdictionAt(49.5097, -115.7688), undefined);
+test("place search reaches the United States only once a U.S. state's zones are served", async () => {
+  const { searchRegionCodes } = await import("../location.ts");
+  const { US_ZONE_LAYERS } = await import("./layers.ts");
+  const served = US_ZONE_LAYERS.map((layer) => layer.serving);
+  try {
+    for (const layer of US_ZONE_LAYERS) layer.serving = false;
+    assert.deepEqual(searchRegionCodes(), ["ca"], "no U.S. layer served: a U.S. place would be a place Hunt cannot answer for");
+    HD.serving = true;
+    assert.deepEqual(searchRegionCodes(), ["ca", "us"]);
+  } finally {
+    US_ZONE_LAYERS.forEach((layer, index) => { layer.serving = served[index]; });
+  }
+});
+
+test("a zone card accepts a worded designation as the state writes it, and still refuses anything else", async () => {
+  const { isDesignation } = await import("../exploration/zone-summary.ts");
+  assert.equal(isDesignation("East of the Continental Divide"), true);
+  assert.equal(isDesignation("69A-1"), true);
+  assert.equal(isDesignation("x".repeat(49)), false);
+  assert.equal(isDesignation("<script>"), false);
+  assert.equal(isDesignation(" leading space"), false);
 });

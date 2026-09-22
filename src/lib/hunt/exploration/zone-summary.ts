@@ -40,7 +40,9 @@ export function servedLayer(layerId: string): ZoneLayer | null {
   return layer?.serving ? layer : null;
 }
 
-const DESIGNATION = /^[A-Za-z0-9][A-Za-z0-9 .-]{0,15}$/;
+/* Codes ("57", "10O", "69A-1") and worded designations ("East of the
+   Continental Divide", Montana's upland districts), bounded either way. */
+const DESIGNATION = /^[A-Za-z0-9][A-Za-z0-9 .-]{0,47}$/;
 
 export function isDesignation(value: unknown): value is string {
   return typeof value === "string" && DESIGNATION.test(value);
