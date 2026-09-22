@@ -36,8 +36,10 @@ select throws_ok(
   '23514', null,
   'removing a VERIFIED zone''s point-lookup parts is refused');
 
-select lives_ok(
-  $$ select public.build_zone_derivatives(id) from public.management_zones where canonical_id = 'management_zone:ca-on-wmu-57' $$,
+-- A rebuild deletes and re-inserts; the check belongs at the end, as at commit.
+set constraints all deferred;
+select public.build_zone_derivatives(id) from public.management_zones where canonical_id = 'management_zone:ca-on-wmu-57';
+select lives_ok($$ set constraints all immediate $$,
   'rebuilding a VERIFIED zone''s derivatives in one call is allowed');
 
 select throws_ok(
