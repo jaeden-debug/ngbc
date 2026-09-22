@@ -85,9 +85,10 @@ test("the payload converts only animal classes and omits empty answers", () => {
   assert.equal(evaluateRequestBody(HUNT, {}).answers, undefined);
 });
 
-test("the composer posts through evaluateRequestBody, never its raw answer record", async () => {
+test("the app posts through evaluateRequestBody, never its raw answer record", async () => {
   const { readFile } = await import("node:fs/promises");
-  const source = await readFile(new URL("../../components/hunt/HuntComposer.tsx", import.meta.url), "utf8");
+  const source = await readFile(new URL("../../components/hunt/HuntApp.tsx", import.meta.url), "utf8");
   assert.match(source, /JSON\.stringify\(evaluateRequestBody\(/);
-  assert.doesNotMatch(source, /answers:\s*Object\.keys\(sending\)/);
+  // The raw record may key the cache of results; it is never what is posted.
+  assert.doesNotMatch(source, /JSON\.stringify\(\{[^)]*session\.answers/);
 });
