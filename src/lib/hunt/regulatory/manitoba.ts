@@ -223,5 +223,18 @@ export function manitobaSourceRecords(ids: readonly string[]): SourceRecord[] {
       jurisdictionIds: ["jurisdiction:ca-mb" as CanonicalId<"jurisdiction">],
       verificationStatus: "verified" as const,
       contentHash: source.contentHash,
+      /* The province's GIS services are published under the OpenMB licence,
+         which asks every reuse to carry this statement. */
+      ...(OPENMB_SOURCES.has(source.id) ? { licence: OPENMB_LICENCE, attribution: OPENMB_ATTRIBUTION } : {}),
     }));
 }
+
+const OPENMB_LICENCE = "OpenMB Information and Data Use Licence";
+const OPENMB_ATTRIBUTION = "Contains information from the Manitoba government, licensed under the OpenMB Information and Data Use Licence (Manitoba.ca/OpenMB)";
+/** Manitoba's own ArcGIS services, each an item under the OpenMB licence. */
+const OPENMB_SOURCES = new Set([
+  "source:ca-mb-cwd-surveillance-zone-service",
+  "source:ca-mb-gha-service",
+  "source:ca-mb-lands-closed-to-hunting-service",
+  "source:ca-mb-wildlife-lands-service",
+]);

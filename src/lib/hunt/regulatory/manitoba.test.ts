@@ -306,3 +306,12 @@ test("coverage is computed from the rules: grouse everywhere, deer only where de
   assert.equal(row(DEER).unitsUnknown, 0);
   assert.equal(report.disputes, 2);
 });
+
+test("Manitoba's GIS services carry the OpenMB attribution; the regulations do not", async () => {
+  const { manitobaSourceRecords } = await import("./manitoba.ts");
+  const [gha, regulation] = manitobaSourceRecords(["source:ca-mb-gha-service", "source:ca-mb-hunting-seasons-regulation"])
+    .sort((a, b) => a.id.localeCompare(b.id));
+  assert.equal(gha.licence, "OpenMB Information and Data Use Licence");
+  assert.match(gha.attribution ?? "", /^Contains information from the Manitoba government, licensed under the OpenMB/);
+  assert.equal(regulation.attribution, undefined);
+});
