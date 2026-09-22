@@ -687,7 +687,15 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions, initialDate,
   const listSelection = selection.kind === "zone" && selection.origin === "list" ? zoneKeyOf(selection.zone) : null;
   useEffect(() => {
     if (!listSelection) return;
-    const frame = window.requestAnimationFrame(() => document.getElementById("hunt-zone-title")?.focus());
+    // The heading can arrive a frame or two after the choice; wait for it rather than drop focus on the page.
+    let frame = 0;
+    let tries = 0;
+    const land = () => {
+      const title = document.getElementById("hunt-zone-title");
+      if (title) title.focus();
+      else if ((tries += 1) < 30) frame = window.requestAnimationFrame(land);
+    };
+    frame = window.requestAnimationFrame(land);
     return () => window.cancelAnimationFrame(frame);
   }, [listSelection]);
 

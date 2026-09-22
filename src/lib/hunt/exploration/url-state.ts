@@ -122,7 +122,11 @@ export function zoneRefFromId(
   zoneId: string,
   layers: ReadonlyArray<{ id: string; zoneIdPrefix: string }>,
 ): { layerId: string; designation: string } | null {
-  const layer = layers.find((candidate) => zoneId.startsWith(candidate.zoneIdPrefix));
+  // The longest prefix wins, as in `layerOfZoneId`: a state with several
+  // geographies can never have one mistaken for another.
+  const layer = layers
+    .filter((candidate) => zoneId.startsWith(candidate.zoneIdPrefix))
+    .sort((a, b) => b.zoneIdPrefix.length - a.zoneIdPrefix.length)[0];
   if (!layer) return null;
   const suffix = zoneId.slice(layer.zoneIdPrefix.length);
   if (!SLUG.test(suffix)) return null;
