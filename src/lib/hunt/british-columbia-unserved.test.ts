@@ -59,3 +59,44 @@ test("a British Columbia zone is never presented, and its point answers UNKNOWN"
   assert.equal(result.regulation.status, "UNKNOWN");
   assert.ok(result.sources.every((source) => !source.id.startsWith("source:ca-bc-")), result.sources.map((s) => s.id).join(", "));
 });
+
+/* ── Boundaries served, rules not certified ──────────────────────────────── */
+
+test("a layer drawn without certified rules answers UNKNOWN for every species, and is never counted as covered", async () => {
+  const { COVERAGE_SUMMARY, SUPPORTED_SPECIES_IDS } = await import("./coverage.ts");
+  const wasServing = BC.serving;
+  BC.serving = true;
+  // rulesServing stays absent: British Columbia's boundaries are drawn, its rules are not certified.
+  try {
+    assert.notEqual(BC.rulesServing, true);
+    assert.equal(regulatoryEntryFor("jurisdiction:ca-bc"), undefined);
+    assert.doesNotMatch(COVERAGE_SUMMARY, /British Columbia/);
+    const zone: ZoneResolution = {
+      status: "RESOLVED",
+      zoneId: "management_zone:ca-bc-mu-7-15" as ZoneResolution["zoneId"],
+      jurisdictionId: "jurisdiction:ca-bc",
+      officialName: "Management Unit 7-15",
+      boundaryDistanceMeters: 5_000,
+      nearBoundary: false,
+      sourceId: "source:ca-bc-mu-service",
+      message: "",
+    };
+    // The zone itself is presented: the map may draw it and name it.
+    assert.equal(layerForResolution(zone).kind, "SERVING");
+    for (const speciesId of SUPPORTED_SPECIES_IDS) {
+      const result = await evaluateHunt(
+        { latitude: 53.9171, longitude: -122.7497, date: "2026-10-01" as HuntInput["date"], speciesId: speciesId as HuntInput["speciesId"] },
+        {
+          resolveZone: async () => zone,
+          weather: async (_la: number, _lo: number, date: string) => ({ status: "UNAVAILABLE" as const, summary: "", date: date as HuntInput["date"], sourceId: "source:open-meteo" as const }),
+          fetch: (async () => { throw new Error("no request expected"); }) as typeof fetch,
+          now: () => new Date("2026-09-22T12:00:00Z"),
+        },
+      );
+      assert.equal(result.regulation.status, "UNKNOWN", speciesId);
+      assert.ok(result.sources.every((source) => !source.id.startsWith("source:ca-bc-hunting-regulation")), speciesId);
+    }
+  } finally {
+    BC.serving = wasServing;
+  }
+});

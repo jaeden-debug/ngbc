@@ -450,6 +450,32 @@ Do not list aspirational providers as implemented.
 
 ## Recent Product Decisions
 
+### 2026-09-22 — Drawing a boundary and answering its rules are separate switches
+`ZoneLayer.serving` governs drawing and zone resolution; a new `rulesServing`
+(absent means no) governs whether the jurisdiction's certified rules answer.
+Until now one flag did both, so serving a jurisdiction's boundaries would have
+silently switched on any rules bundle it had. That made CLAUDE.md §41A's "a
+drawn boundary is not a claim that the rules inside it are certified" true only
+in the words on the card. It is now true in code: a layer can be drawn, named
+and resolved while every species there answers UNKNOWN with the authority's
+link, and the coverage summary counts a jurisdiction as covered only when its
+rules are certified and answering. Ontario, Manitoba, Alberta and Québec carry
+both flags; British Columbia, Saskatchewan, Newfoundland and Yukon will be
+served boundary-only first.
+
+### 2026-09-22 — The Northwest Territories and Nunavut are out of scope for now
+Owner decision. The current national target is the ten provinces, Yukon and the
+federal layer. This is a scope decision, not a finding: everything established
+about those two territories stands, including that neither publishes reusable
+vector hunting geography and that both prohibit commercial reuse without
+written permission. `CanadaJurisdiction.scope` records the decision with its
+date and reason; the coverage report keeps both territories in its listing, has
+them declare their gaps as before, computes national milestones over in-scope
+jurisdictions only, and states in each milestone that they are out of scope and
+not counted either way. They are never reported as complete and never quietly
+dropped. The Statistics Canada attribution layer the owner approved earlier is
+deferred with them, and stays approved for later.
+
 ### 2026-09-22 — Migrations with triggers or functions are dry-run in production first
 Every migration that creates or changes a trigger or function is run with its assertions inside `BEGIN … ROLLBACK` against production before it is applied. `20260922190000` shipped a trigger function that failed every zone write at commit (42703). Its pgTAP file had never run, because there is no local database harness. The post-apply dry-run caught it, and `20260922200000` fixed it. Bulk writes through REST RPCs are batched under the 8-second statement timeout (≤15 records, ≤400 KB per call); a timed-out attempt is not retried. Repeated attempts loaded production during an owner upload.
 

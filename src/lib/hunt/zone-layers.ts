@@ -111,6 +111,16 @@ export interface ZoneLayer {
    * jurisdiction's terms.
    */
   serving: boolean;
+  /**
+   * Whether this jurisdiction's certified rules answer. Absent means no.
+   *
+   * Drawing a boundary is not a claim that the rules inside it are certified
+   * (CLAUDE.md section 41A), and that has to be true in code, not only in the
+   * words on the card. A layer can therefore be served — drawn, and resolving a
+   * point to its official zone — while every species there answers UNKNOWN with
+   * the authority's own link, until its rules are certified in production.
+   */
+  rulesServing?: boolean;
   /** How the registry prefixes this layer's official names, so the bare designation can be shown. */
   officialNamePrefix: string;
   /**
@@ -231,6 +241,7 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     nameField: "OFFICIAL_NAME",
     bounds: { minLatitude: 41.5, maxLatitude: 57, minLongitude: -95.5, maxLongitude: -74 },
     serving: true,
+    rulesServing: true,
     officialNamePrefix: "Wildlife Management Unit ",
     certifiedDesignations: new Set(certifiedUnits.certifiedUnits.map((unit) => unit.toUpperCase())),
     zoneIdPrefix: "management_zone:ca-on-wmu-",
@@ -260,6 +271,7 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     nameField: "GHA",
     bounds: { minLatitude: 48.99, maxLatitude: 60.01, minLongitude: -102.05, maxLongitude: -88.9 },
     serving: true,
+    rulesServing: true,
     officialNamePrefix: "Game Hunting Area ",
     certifiedDesignations: new Set(manitobaCertifiedUnits.certifiedUnits.map((unit) => unit.toUpperCase())),
     zoneIdPrefix: "management_zone:ca-mb-gha-",
@@ -287,6 +299,7 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     nameField: "WMUNIT_CODE",
     bounds: { minLatitude: 48.99, maxLatitude: 60.01, minLongitude: -120.01, maxLongitude: -109.99 },
     serving: true,
+    rulesServing: true,
     officialNamePrefix: "Wildlife Management Unit ",
     certifiedDesignations: new Set(albertaCertifiedUnits.certifiedUnits),
     zoneIdPrefix: "management_zone:ca-ab-wmu-",
@@ -320,6 +333,7 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     sourceId: "source:ca-qc-zone-chasse-service",
     bounds: { minLatitude: 44.9, maxLatitude: 62.7, minLongitude: -79.9, maxLongitude: -57 },
     serving: true,
+    rulesServing: true,
     officialNamePrefix: "Zone de chasse ",
     certifiedDesignations: new Set(quebecCertifiedUnits.certifiedUnits.map((unit) => unit.toUpperCase())),
     zoneIdPrefix: "management_zone:ca-qc-zone-",

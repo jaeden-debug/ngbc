@@ -70,6 +70,20 @@ export interface JurisdictionRegulatory {
   notes?: string;
 }
 
+/**
+ * Whether a jurisdiction is currently in the national target.
+ *
+ * Absent means in scope. OUT_OF_SCOPE is an owner decision with a date and a
+ * reason, never a quiet omission: a jurisdiction left out still states what is
+ * true about it, still declares its gaps, and is never counted as complete or
+ * hidden from the coverage report.
+ */
+export interface JurisdictionScope {
+  state: "OUT_OF_SCOPE";
+  decidedOn: string;
+  reason: string;
+}
+
 export interface CanadaJurisdiction {
   id: CanonicalId<"jurisdiction">;
   /** ISO 3166-2 subdivision code, or `federal`. */
@@ -80,6 +94,8 @@ export interface CanadaJurisdiction {
   kind: "province" | "territory" | "federal";
   spatial: JurisdictionSpatial;
   regulatory: JurisdictionRegulatory;
+  /** Set only where the owner has decided a jurisdiction is not in the current target. */
+  scope?: JurisdictionScope;
   /**
    * What is known to be missing. Written as prose because a reviewer needs the
    * reason, not a code — and because an empty list here would be a claim of
@@ -486,6 +502,14 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       sourceLeads: ["Northwest Territories Summary of Hunting Regulations"],
       sourceState: "NOT_INGESTED",
     },
+    scope: {
+      state: "OUT_OF_SCOPE",
+      decidedOn: "2026-09-22",
+      reason:
+        "Owner decision: the current national target is the ten provinces, Yukon and the federal layer. This is a " +
+        "scope decision, not a finding about the jurisdiction. Everything already established about it stands, it is " +
+        "never counted as complete, and it is reported as out of scope rather than covered.",
+    },
     knownGaps: [
       "No geometry ingested and no rules certified; every Northwest Territories query is UNKNOWN.",
       "Harvesting under land-claim agreements is a distinct legal context from licensed resident hunting and must not be conflated with it.",
@@ -514,6 +538,14 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       bundleIds: [],
       sourceLeads: ["Nunavut Wildlife Act and regional Hunters and Trappers Organization rules"],
       sourceState: "NOT_INGESTED",
+    },
+    scope: {
+      state: "OUT_OF_SCOPE",
+      decidedOn: "2026-09-22",
+      reason:
+        "Owner decision: the current national target is the ten provinces, Yukon and the federal layer. This is a " +
+        "scope decision, not a finding about the jurisdiction. Everything already established about it stands, it is " +
+        "never counted as complete, and it is reported as out of scope rather than covered.",
     },
     knownGaps: [
       "No geometry ingested and no rules certified; every Nunavut query is UNKNOWN.",

@@ -33,6 +33,8 @@ export interface JurisdictionCoverage {
   nameEn: string;
   nameFr: string;
   kind: CanadaJurisdiction["kind"];
+  /** Present only where the owner has set a jurisdiction outside the current target. */
+  scope?: CanadaJurisdiction["scope"];
   spatial: {
     status: CoverageState;
     officialTerm: string;
@@ -55,6 +57,8 @@ export interface JurisdictionCoverage {
 export interface CanadaCoverageReport {
   generatedFor: "canada";
   jurisdictions: JurisdictionCoverage[];
+  /** Jurisdictions the owner has set outside the current target, with the date and reason. */
+  outOfScope: Array<{ id: CanadaJurisdiction["id"]; name: string; decidedOn: string; reason: string }>;
   totals: {
     jurisdictions: number;
     spatialVerified: number;
@@ -98,6 +102,7 @@ function coverageFor(jurisdiction: CanadaJurisdiction): JurisdictionCoverage {
     nameEn: jurisdiction.nameEn,
     nameFr: jurisdiction.nameFr,
     kind: jurisdiction.kind,
+    ...(jurisdiction.scope ? { scope: jurisdiction.scope } : {}),
     spatial: {
       status: jurisdiction.spatial.status,
       officialTerm: jurisdiction.spatial.officialTerm,
@@ -132,7 +137,11 @@ export function canadaCoverageReport(): CanadaCoverageReport {
 
   const federal = jurisdictions.find((entry) => entry.kind === "federal");
   const provincesAndTerritories = jurisdictions.filter((entry) => entry.kind !== "federal");
-  const withRules = provincesAndTerritories.filter((entry) => entry.regulatory.rules > 0);
+  const inScope = provincesAndTerritories.filter((entry) => entry.scope?.state !== "OUT_OF_SCOPE");
+  const outOfScope = provincesAndTerritories.filter((entry) => entry.scope?.state === "OUT_OF_SCOPE");
+  const outOfScopeNote = outOfScope.length
+    ? ` ${outOfScope.map((entry) => entry.nameEn).join(" and ")} ${outOfScope.length === 1 ? "is" : "are"} out of scope by owner decision and ${outOfScope.length === 1 ? "is" : "are"} not counted either way.`
+    : "";
 
   return {
     generatedFor: "canada",
@@ -148,18 +157,21 @@ export function canadaCoverageReport(): CanadaCoverageReport {
       rules,
       officialUnitsIngested,
     },
+    /* Out of scope is reported, never hidden: a jurisdiction the owner has set
+       aside still says so, with the date and the reason. */
+    outOfScope: outOfScope.map((entry) => ({ id: entry.id, name: entry.nameEn, decidedOn: entry.scope!.decidedOn, reason: entry.scope!.reason })),
     milestones: {
       spatialComplete: {
-        met: provincesAndTerritories.every((entry) => entry.spatial.parityCertified),
+        met: inScope.every((entry) => entry.spatial.parityCertified),
         detail:
-          `${provincesAndTerritories.filter((entry) => entry.spatial.parityCertified).length} of ` +
-          `${provincesAndTerritories.length} provinces and territories have parity-certified official geography.`,
+          `${inScope.filter((entry) => entry.spatial.parityCertified).length} of ` +
+          `${inScope.length} in-scope provinces and territories have parity-certified official geography.${outOfScopeNote}`,
       },
       coreGameComplete: {
-        met: provincesAndTerritories.every((entry) => entry.regulatory.rules > 0),
+        met: inScope.every((entry) => entry.regulatory.rules > 0),
         detail:
-          `${withRules.length} of ${provincesAndTerritories.length} provinces and territories hold at least one ` +
-          "certified regulatory rule.",
+          `${inScope.filter((entry) => entry.regulatory.rules > 0).length} of ${inScope.length} in-scope provinces and ` +
+          `territories hold at least one certified regulatory rule.${outOfScopeNote}`,
       },
       migratoryComplete: {
         met: (federal?.regulatory.rules ?? 0) > 0,

@@ -468,14 +468,18 @@ export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOB
 /**
  * The entry for a jurisdiction — only while its zone layer is served.
  *
- * Rules are useful to a person only where Hunt can place them in a zone. A
- * jurisdiction whose rules are certified but whose geometry is not yet served
- * would otherwise be claimed by the coverage report and the species surfaces as
- * "rules available" at places Hunt cannot answer. Tying the entry to a served
- * layer makes that half-wired state impossible rather than merely avoided.
+ * Rules are useful to a person only where Hunt can place them in a zone, so an
+ * entry needs a served layer. It needs more than that: the layer must also have
+ * its rules certified in production (`rulesServing`). A jurisdiction whose
+ * boundaries are drawn but whose rules are not certified answers UNKNOWN for
+ * every species and points at the authority, which is what section 41A means by
+ * a boundary not being a claim about rules. Both half-wired states — rules
+ * without geometry, geometry without certified rules — are impossible here
+ * rather than merely avoided.
  */
 export function regulatoryEntryFor(jurisdictionId: string | undefined): RegulatoryEntry | undefined {
-  if (!jurisdictionId || layerForJurisdiction(jurisdictionId)?.serving !== true) return undefined;
+  const layer = layerForJurisdiction(jurisdictionId);
+  if (!jurisdictionId || layer?.serving !== true || layer.rulesServing !== true) return undefined;
   return REGULATORY_REGISTRY.find((entry) => entry.jurisdictionId === jurisdictionId);
 }
 

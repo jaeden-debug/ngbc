@@ -15,8 +15,11 @@ import { ZONE_LAYERS } from "./zone-layers.ts";
 
 const BC = ZONE_LAYERS.find((layer) => layer.jurisdictionId === "jurisdiction:ca-bc")!;
 const wasServing = BC.serving;
-before(() => { BC.serving = true; });
-after(() => { BC.serving = wasServing; });
+const wasRulesServing = BC.rulesServing;
+/* Both flags: British Columbia's boundaries and its rules. Serving the
+   boundaries alone is a different state, covered by the unserved test. */
+before(() => { BC.serving = true; BC.rulesServing = true; });
+after(() => { BC.serving = wasServing; BC.rulesServing = wasRulesServing; });
 
 function bcZone(unit: string): ZoneResolution {
   return {
@@ -43,10 +46,13 @@ async function hunt(unit: string, speciesId: string, date: string, answers: Hunt
   );
 }
 
-test("the entry exists only while the layer is served", () => {
+test("the entry exists only while the layer is served AND its rules are certified", () => {
   assert.ok(regulatoryEntryFor("jurisdiction:ca-bc"));
   BC.serving = false;
   try { assert.equal(regulatoryEntryFor("jurisdiction:ca-bc"), undefined); } finally { BC.serving = true; }
+  BC.rulesServing = false;
+  try { assert.equal(regulatoryEntryFor("jurisdiction:ca-bc"), undefined, "drawn boundaries alone never answer with rules"); }
+  finally { BC.rulesServing = true; }
 });
 
 test("Kamloops (MU 3-20) is answered by British Columbia's rules and cites only British Columbia", async () => {

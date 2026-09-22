@@ -22,6 +22,9 @@ import { officialTermPlural, ZONE_LAYERS } from "./zone-layers.ts";
  * jurisdictions.
  */
 const SERVED_LAYERS = ZONE_LAYERS.filter((layer) => layer.serving);
+/* Layers whose rules are certified and answering. A drawn boundary is not a
+   claim about rules, so what Hunt says it covers is this, never SERVED_LAYERS. */
+const RULES_LAYERS = ZONE_LAYERS.filter((layer) => layer.serving && layer.rulesServing);
 
 export const SUPPORTED_BOUNDS = {
   minLatitude: Math.min(41, ...SERVED_LAYERS.map((layer) => layer.bounds.minLatitude)),
@@ -196,10 +199,10 @@ function spokenList(items: readonly string[]): string {
    going stale. Every served layer has a regulatory entry (regulatory/
    registry.test.ts holds that), so each named here has certified rules. */
 /** Where Hunt can answer today: "Ontario and Manitoba". */
-export const COVERED_JURISDICTIONS = spokenList(SERVED_LAYERS.map((layer) => layer.jurisdictionName));
+export const COVERED_JURISDICTIONS = spokenList(RULES_LAYERS.map((layer) => layer.jurisdictionName));
 
 export const COVERAGE_SUMMARY =
-  `Certified rules for selected species in ${spokenList(SERVED_LAYERS.map((layer) => `${layer.jurisdictionName}'s ${officialTermPlural(layer)}`))}.`;
+  `Certified rules for selected species in ${spokenList(RULES_LAYERS.map((layer) => `${layer.jurisdictionName}'s ${officialTermPlural(layer)}`))}.`;
 
 
 export type MajorGameSpeciesId = (typeof SUPPORTED_MAJOR_GAME_SPECIES_IDS)[number];

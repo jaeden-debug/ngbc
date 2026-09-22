@@ -165,3 +165,26 @@ test("lookups resolve by code and by canonical id", () => {
   assert.equal(jurisdictionById("jurisdiction:ca-on")?.nameEn, "Ontario");
   assert.equal(jurisdictionByCode("CA-XX"), undefined);
 });
+
+test("a jurisdiction the owner sets out of scope is reported, never hidden and never counted as complete", async () => {
+  const { canadaCoverageReport } = await import("./report.ts");
+  const report = canadaCoverageReport();
+  assert.deepEqual(report.outOfScope.map((entry) => entry.id).sort(), ["jurisdiction:ca-nt", "jurisdiction:ca-nu"]);
+  for (const entry of report.outOfScope) {
+    assert.equal(entry.decidedOn, "2026-09-22");
+    assert.match(entry.reason, /Owner decision/);
+  }
+  // Still present in the report with everything known about them, and still declaring their gaps.
+  for (const id of ["jurisdiction:ca-nt", "jurisdiction:ca-nu"]) {
+    const row = report.jurisdictions.find((entry) => entry.id === id)!;
+    assert.ok(row, `${id} stays in the report`);
+    assert.ok(row.knownGaps.length > 0, `${id} keeps declaring its gaps`);
+    assert.equal(row.spatial.status, "UNAVAILABLE");
+  }
+  // The milestones are computed over what is in scope, and say so.
+  for (const milestone of [report.milestones.spatialComplete, report.milestones.coreGameComplete]) {
+    assert.match(milestone.detail, /in-scope/);
+    assert.match(milestone.detail, /out of scope by owner decision/);
+    assert.doesNotMatch(milestone.detail, /complete/i);
+  }
+});
