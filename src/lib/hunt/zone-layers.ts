@@ -4,6 +4,7 @@ import certifiedUnits from "../../../content/regulatory/ca-on-certified-units.js
 import manitobaCertifiedUnits from "../../../content/regulatory/ca-mb-certified-units.json" with { type: "json" };
 import albertaCertifiedUnits from "../../../content/regulatory/ca-ab-certified-units.json" with { type: "json" };
 import quebecCertifiedUnits from "../../../content/regulatory/ca-qc-certified-units.json" with { type: "json" };
+import britishColumbiaCertifiedUnits from "../../../content/regulatory/ca-bc-certified-units.json" with { type: "json" };
 import { US_ZONE_LAYERS } from "./united-states/layers.ts";
 import { normaliseBritishColumbiaMu } from "./ingestion/british-columbia-mu.ts";
 
@@ -327,13 +328,15 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     coverageNote:
       "British Columbia's 225 Management Units from the province's own WFS (Open Government Licence – British Columbia). " +
       "Under B.C. Reg. 64/96 the enacted regional maps control, and a river boundary follows the right-hand bank (the " +
-      "left-hand bank for the West Road, Liard and Peace rivers). No British Columbia rule is certified.",
+      "left-hand bank for the West Road, Liard and Peace rivers). " +
+      `A first wave of rules from B.C. Reg. 190/84 reaches ${britishColumbiaCertifiedUnits.certifiedUnits.length} of ${britishColumbiaCertifiedUnits.officialUnitCount} units.`,
     authority: "Government of British Columbia",
     sourceId: "source:ca-bc-mu-service",
     bounds: { minLatitude: 48.2, maxLatitude: 60.01, minLongitude: -139.07, maxLongitude: -114.05 },
     // Not served until its parity is certified and its first rules are.
     serving: false,
     officialNamePrefix: "Management Unit ",
+    certifiedDesignations: new Set(britishColumbiaCertifiedUnits.certifiedUnits.map((unit) => unit.toUpperCase())),
     zoneIdPrefix: "management_zone:ca-bc-mu-",
     designationOf: normaliseBritishColumbiaMu,
     wfs: {

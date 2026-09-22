@@ -1,0 +1,660 @@
+{
+  "pdfSha256": "sha256:17a38843f5b4966d181e42a5f4c1a3cb358a10b67054ef469b6696cd0102216a",
+  "pages": {
+    "1": [
+      23
+    ],
+    "2": [
+      30
+    ],
+    "3": [
+      36
+    ],
+    "4": [
+      41,
+      42
+    ],
+    "5": [
+      46
+    ],
+    "6": [
+      52,
+      53
+    ],
+    "7": [
+      59,
+      64,
+      65
+    ],
+    "8": [
+      70
+    ]
+  },
+  "regions": {
+    "1": {
+      "black-bear": {
+        "ranges": [
+          [
+            4,
+            1,
+            6,
+            15
+          ],
+          [
+            8,
+            25,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            12,
+            10
+          ]
+        ],
+        "blocks": [
+          "BLACK BEAR 1-1 to 1-15 Sept 10 – Dec 10 21-1 to 1-15 Apr 1 - June 15 Bow Only H1-1 to 1-15 Aug 25 - Sept 9 H There is no bow only season on the Gulf Islands in MU 1-1 (except Gabriola Island) or in zone B of MU 1-5 (see Map A12) or on Denman and Hornby Islands (MU 1-6)."
+        ]
+      },
+      "snowshoe-hare": {
+        "ranges": [
+          [
+            8,
+            1,
+            4,
+            30
+          ]
+        ],
+        "blocks": [
+          "SNOWSHOE HARE 1-14, 1-15 Aug 1 - Apr 30 10 (daily) OPOSSUM, SKUNK 1-1 to 1-15 No Closed Season NBL A person who kills an opossum is requested to submit the carcass to an officer of the Wildlife Program at a regional or district office and provide the following information: location of the kill, date of kill, and sex of animal."
+        ]
+      },
+      "ptarmigan": {
+        "ranges": [
+          [
+            9,
+            10,
+            11,
+            30
+          ]
+        ],
+        "blocks": [
+          "PTARMIGAN 1-14, 1-15 Sept 10 - Nov 30 5 (15)"
+        ]
+      },
+      "ruffed-spruce-grouse": {
+        "ranges": [
+          [
+            8,
+            20,
+            8,
+            31
+          ],
+          [
+            9,
+            1,
+            12,
+            31
+          ]
+        ],
+        "blocks": [
+          "GROUSE: SOOTY (Blue) & RUFFED 1-1 to 1-15 Sept 1 - Dec 31 5 each (15 each)Bow Only H1-1 to 1-15 Aug 20 - Aug 31 H There is no bow only season on the Gulf Islands in MU 1-1 (except Gabriola Island) or in zone B of MU 1-5 (see Map A12) or on Denman and Hornby Islands (MU 1-6)"
+        ]
+      }
+    },
+    "2": {
+      "black-bear": {
+        "ranges": [
+          [
+            4,
+            1,
+            6,
+            15
+          ],
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            11,
+            30
+          ]
+        ],
+        "blocks": [
+          "BLACK BEAR 2-2 to 2-19 Sept 10 – Nov 30 H 2 2-2 to 2-19 Apr 1 - June 15 Bow Only 2-2 to 2-19 Sept 1 - Sept 9 H The bag limit for black bears is two per licence year"
+        ]
+      },
+      "snowshoe-hare": {
+        "ranges": [
+          [
+            8,
+            1,
+            4,
+            30
+          ]
+        ],
+        "blocks": [
+          "SNOWSHOE HARE 2-5 to 2-19 Aug 1 - Apr 30 10 (Daily)"
+        ]
+      },
+      "ptarmigan": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            12,
+            15
+          ]
+        ],
+        "blocks": [
+          "PTARMIGAN 2-2, 2-3, 2-5 to 2-19 Sept 10 - Dec 15 5 (15)Bow Only 2-2, 2-3, 2-5 to 2-19 Sept 1 - Sept 9"
+        ]
+      },
+      "ruffed-spruce-grouse": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            12,
+            15
+          ]
+        ],
+        "blocks": [
+          "GROUSE: SOOTY (Blue), RUFFED & SPRUCE 2-2 to 2-19 Sept 10 - Dec 15 10 (30)Bow Only 2-2 to 2-19 Sept 1 - Sept 9 For Sooty/Dusky, Spruce, and Ruffed grouse, the daily aggregate bag limit is 10; the aggregate possession limit is 30."
+        ]
+      }
+    },
+    "3": {
+      "black-bear": {
+        "ranges": [
+          [
+            4,
+            1,
+            6,
+            30
+          ],
+          [
+            9,
+            1,
+            11,
+            30
+          ],
+          [
+            9,
+            20,
+            11,
+            30
+          ]
+        ],
+        "blocks": [
+          "BLACK BEAR 3-12 to 3-20, 3-26 to 3-44 Sept 1 - Nov 30 23-46 Sept 20 - Nov 30 3-12 to 3-20, 3-26 to 3-44, 3-46 Apr 1 - June 30"
+        ]
+      },
+      "snowshoe-hare": {
+        "ranges": [
+          [
+            8,
+            1,
+            4,
+            30
+          ]
+        ],
+        "blocks": [
+          "SNOWSHOE HARE 3-12 to 3-20, 3-26 to 3-44 Aug 1 - Apr 30 10 (daily)"
+        ]
+      },
+      "ptarmigan": {
+        "ranges": [
+          [
+            9,
+            1,
+            11,
+            30
+          ]
+        ],
+        "blocks": [
+          "PTARMIGAN 3-12 to 3-20, 3-26 to 3-44 Sept 1 - Nov 30 5 (15)"
+        ]
+      },
+      "sharp-tailed-grouse": {
+        "ranges": [
+          [
+            9,
+            10,
+            11,
+            30
+          ]
+        ],
+        "blocks": [
+          "SHARP-TAILED GROUSE ]3-30, 3-31 Sept 10 - Nov 30 5 (10) ] There is no open season for sharp-tailed grouse in that portion of MU 3-30 south of the Scottie Creek Forest Service Road (5040 FSR). See Map C18"
+        ]
+      },
+      "ruffed-spruce-grouse": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            11,
+            30
+          ],
+          [
+            9,
+            20,
+            11,
+            30
+          ]
+        ],
+        "blocks": [
+          "GROUSE: DUSKY (Blue), RUFFED & SPRUCE 3-12 to 3-20, 3-26 to 3-44 Sept 10 - Nov 30 5 each (15 each)3-46 Sept 20 - Nov 30 Youth Only* 3-12 to 3-20, 3-26 to 3-44 Sept 1 - Sept 9 For Dusky, Spruce, and Ruffed grouse, the daily aggregate bag limit is 10; the aggregate possession limit is 30. *Restricted to hunters under the age of 18"
+        ]
+      }
+    },
+    "4": {
+      "black-bear": {
+        "ranges": [
+          [
+            4,
+            1,
+            6,
+            30
+          ],
+          [
+            8,
+            1,
+            8,
+            31
+          ],
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            11,
+            30
+          ]
+        ],
+        "blocks": [
+          "BLACK BEAR 4-1 to 4-9, 4-14 to 4-40 Sept 10 - Nov 30 24-1 to 4-9, 4-14 to 4-40 Apr 1 - June 30 s4-1 to 4-9, 4-14 to 4-40 Aug 1 - Aug 31 Bow Only 4-1 to 4-9, 4-14 to 4-40 Sept 1 - Sept 9 s Restricted to private land only, hunter must obtain permission from landowners prior to access."
+        ]
+      },
+      "snowshoe-hare": {
+        "ranges": [
+          [
+            8,
+            1,
+            4,
+            30
+          ]
+        ],
+        "blocks": [
+          "SNOWSHOE HARE 4-1 to 4-9, 4-14 to 4-40 Aug 1 - Apr 30 10 (daily)"
+        ]
+      },
+      "ptarmigan": {
+        "ranges": [
+          [
+            9,
+            10,
+            11,
+            30
+          ]
+        ],
+        "blocks": [
+          "PTARMIGAN 4-1 to 4-9, 4-14 to 4-40 Sept 10 - Nov 30 10 (30)"
+        ]
+      },
+      "ruffed-spruce-grouse": {
+        "ranges": [
+          [
+            9,
+            1,
+            11,
+            30
+          ]
+        ],
+        "blocks": [
+          "GROUSE: DUSKY (Blue), RUFFED & SPRUCE 4-1 to 4-9, 4-14 to 4-40 Sept 1 - Nov 30 5 (15) For Dusky, Spruce, and Ruffed grouse, the daily aggregate bag limit is 5; the aggregate possession limit is 15."
+        ]
+      }
+    },
+    "5": {
+      "black-bear": {
+        "ranges": [
+          [
+            4,
+            1,
+            4,
+            30
+          ],
+          [
+            4,
+            1,
+            5,
+            31
+          ],
+          [
+            4,
+            1,
+            6,
+            30
+          ],
+          [
+            9,
+            1,
+            11,
+            30
+          ],
+          [
+            9,
+            10,
+            11,
+            30
+          ],
+          [
+            10,
+            16,
+            11,
+            30
+          ]
+        ],
+        "blocks": [
+          "BLACK BEAR 5-1 to *5-10, 5-12 to 5-15 Sept 1 - Nov 30 25-1 to *5-10, 5-12 to 5-15 Apr 1 - June 30 5-11 Sept 10 - Nov 30 5-11 Apr 1 - May 31 * Parts of MU 5-9, 6-3, and 6-11 are closed to black bear hunting. See Map F14 (Skeena Section, Page 52). Open season for black bear within 1km of Korich River, Kainet River, Lard River and Salmon Bay is Apr 1 - Apr 30 and Oct 16 - Nov 30."
+        ]
+      },
+      "snowshoe-hare": {
+        "ranges": [
+          [
+            8,
+            1,
+            4,
+            30
+          ]
+        ],
+        "blocks": [
+          "SNOWSHOE HARE 5-1 to 5-9, 5-12 to 5-15 Aug 1 - Apr 30 10 (daily)"
+        ]
+      },
+      "ptarmigan": {
+        "ranges": [
+          [
+            9,
+            1,
+            11,
+            1
+          ]
+        ],
+        "blocks": [
+          "PTARMIGAN 5-3 to 5-6, 5-10 to 5-12, 5-15 Sept 1 - Nov 1 5 (15)"
+        ]
+      },
+      "sharp-tailed-grouse": {
+        "ranges": [
+          [
+            9,
+            10,
+            11,
+            30
+          ]
+        ],
+        "blocks": [
+          "SHARP-TAILED GROUSE 5-1 to 5-6, 5-12 to 5-14 Sept 10 - Nov 30 5 (10) See closed areas in MUs 5-3 and 5-14, Maps E7 and E25."
+        ]
+      },
+      "ruffed-spruce-grouse": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            11,
+            30
+          ]
+        ],
+        "blocks": [
+          "GROUSE: SOOTY/DUSKY (Blue) 5-1 to 5-15 Sept 10 - Nov 30 5 (15)Youth* 5-1 to 5-15 Sept 1 - Sept 9 For Sooty/Dusky, Spruce, and Ruffed grouse, the daily aggregate bag limit is 10; the aggregate possession limit is 30.",
+          "GROUSE: SPRUCE & RUFFED 5-1 to 5-15 Sept 10 - Nov 30 10 (30)Youth* 5-1 to 5-15 Sept 1 - Sept 9 For Sooty/Dusky, Spruce, and Ruffed grouse, the daily aggregate bag limit is 10; the aggregate possession limit is 30."
+        ]
+      }
+    },
+    "6": {
+      "black-bear": {
+        "ranges": [
+          [
+            4,
+            1,
+            6,
+            30
+          ],
+          [
+            8,
+            15,
+            11,
+            30
+          ]
+        ],
+        "blocks": [
+          "BLACK BEAR s6-1 to 6-11, 6-14 to 6-30 Aug 15 - Nov 30 2 s6-1 to 6-11, 6-14 to 6-30 Apr 1 - June 30 s Portions of MUs 5-9, 6-3 and 6-11 are closed to black bear hunting. See Map F14."
+        ]
+      },
+      "snowshoe-hare": {
+        "ranges": [
+          [
+            8,
+            1,
+            4,
+            30
+          ]
+        ],
+        "blocks": [
+          "SNOWSHOE HARE 6-1 to 6-30 Aug 1 - Apr 30 10 (daily)"
+        ]
+      },
+      "ptarmigan": {
+        "ranges": [
+          [
+            8,
+            15,
+            2,
+            28
+          ]
+        ],
+        "blocks": [
+          "PTARMIGAN 6-1 to 6-6, 6-8 to 6-11, 6-15 and 6-30 Aug 15 - Feb 28 5 (15) 6-7, 6-14, 6-16 to 6-29 Aug 15 - Feb 28 10 (30)"
+        ]
+      },
+      "ruffed-spruce-grouse": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            11,
+            15
+          ]
+        ],
+        "blocks": [
+          "GROUSE: SOOTY/DUSKY (Blue), RUFFED & SPRUCE 6-1 to 6-11, 6-14 to 6-30 Sept 10 - Nov 15 10 (30) 6-12, 6-13 Sept 10 - Nov 15 5 (15) Bow Only 6-1 to 6-11, 6-14 to 6-30 Sept 1 - Sept 9 10 (30) Bow Only 6-12, 6-13 Sept 1 - Sept 9 5 (15) The daily aggregate bag limit in MUs 6-1 to 6-11 and 6-14 to 6-30 is 10 and the aggregate possession limit is 30. The daily aggregate bag limit in MUs 6-12 and 6-13 is 5 and the aggregate possession limit is 15."
+        ]
+      }
+    },
+    "7": {
+      "black-bear": {
+        "ranges": [
+          [
+            4,
+            1,
+            6,
+            30
+          ],
+          [
+            8,
+            15,
+            11,
+            15
+          ]
+        ],
+        "blocks": [
+          "BLACK BEAR 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41 Aug 15 - Nov 15 27-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41 Apr 1 - June 30",
+          "BLACK BEAR 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58 Aug 15 - Nov 15 27-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58 Apr 1 - June 30"
+        ]
+      },
+      "snowshoe-hare": {
+        "ranges": [
+          [
+            8,
+            1,
+            4,
+            30
+          ]
+        ],
+        "blocks": [
+          "SNOWSHOE HARE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41 Aug 1 - Apr 30 10 (daily)",
+          "SNOWSHOE HARE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58 Aug 1 - Apr 30 10 (daily)"
+        ]
+      },
+      "ptarmigan": {
+        "ranges": [
+          [
+            8,
+            15,
+            2,
+            28
+          ]
+        ],
+        "blocks": [
+          "PTARMIGAN 7-2 to 7-6, 7-17, 7-18, 7-23, 7-27 to 7-30, 7-37 to 7-41 Aug 15 - Feb 28 10 (30)",
+          "PTARMIGAN 7-19, 7-21,7-22, 7-31, 7-36, 7-42,7-43, 7-50 to 7-55, 7-57 Aug 15 - Feb 28 10 (30)"
+        ]
+      },
+      "sharp-tailed-grouse": {
+        "ranges": [
+          [
+            9,
+            1,
+            11,
+            15
+          ]
+        ],
+        "blocks": [
+          "SHARP-TAILED GROUSE 7-20 to 7-22, 7-32 to 7-35, 7-44 to 7-49, 7-52 to 7-56, 7-58 Sept 1 - Nov 15 3 (6)"
+        ]
+      },
+      "ruffed-spruce-grouse": {
+        "ranges": [
+          [
+            9,
+            1,
+            11,
+            15
+          ]
+        ],
+        "blocks": [
+          "SPRUCE & RUFFED GROUSE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41 Sept 1 - Nov 15 10 (30)",
+          "SPRUCE & RUFFED GROUSE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58 Sept 1 - Nov 15 10 (30) The daily aggregate bag limit for Dusky, Spruce, and Ruffed grouse combined is 10; the aggregate possession limit for Dusky, Spruce, and Ruffed grouse combined is 30."
+        ]
+      }
+    },
+    "8": {
+      "black-bear": {
+        "ranges": [
+          [
+            4,
+            1,
+            6,
+            30
+          ],
+          [
+            8,
+            1,
+            8,
+            31
+          ],
+          [
+            9,
+            1,
+            11,
+            30
+          ]
+        ],
+        "blocks": [
+          "BLACK BEAR 8-1 to 8-15, 8-21 to 8-26 Apr 1 - June 30 2s8-1 to 8-15, 8-21 to 8-26 Aug 1 - Aug 31 8-1 to 8-15, 8-21 to 8-26 Sept 1 - Nov 30 s MU's 8-1 to 8-15 and 8-21 to 8-26 is restricted to private land only. Hunters must obtain permission from landowners."
+        ]
+      },
+      "snowshoe-hare": {
+        "ranges": [
+          [
+            8,
+            1,
+            4,
+            30
+          ]
+        ],
+        "blocks": [
+          "SNOWSHOE HARE 8-1 to 8-15, 8-21 to 8-26 Aug 1 - Apr 30 10 (daily)"
+        ]
+      },
+      "ruffed-spruce-grouse": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            11,
+            30
+          ],
+          [
+            12,
+            1,
+            12,
+            10
+          ]
+        ],
+        "blocks": [
+          "GROUSE: DUSKY (Blue), RUFFED, & SPRUCE 8-1 to 8-15, 8-21 to 8-26 Sept 10 - Nov 30 5 (15)Youth Only* 8-1 to 8-15, 8-21 to 8-26 Sept 1 - Sept 9 Bow Only 8-1 to 8-15, 8-21 to 8-26 Dec 1 - Dec 10 For Dusky, Spruce, and Ruffed grouse, the daily aggregate bag limit is 5; the aggregate possession limit is 15. * Restricted to hunters under the age of 18."
+        ]
+      }
+    }
+  }
+}

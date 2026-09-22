@@ -1,3 +1,4 @@
+import { britishColumbiaCoverageReport, britishColumbiaSourceRecords, evaluateBritishColumbia } from "./british-columbia.ts";
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import type { SpeciesCoverageRow } from "../canada/report.ts";
 import { isMajorGameSpecies, speciesById } from "../coverage.ts";
@@ -450,7 +451,19 @@ const ALBERTA = conditionalEntry({
   sourceRecords: albertaSourceRecords,
 });
 
-export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA];
+/* British Columbia's first wave, from B.C. Reg. 190/84. Its closures without a
+   boundary North Ground holds are unresolved areas inside the bundle, so no
+   overlay is read at run time. Counts only once its layer is served. */
+const BRITISH_COLUMBIA = conditionalEntry({
+  jurisdictionId: "jurisdiction:ca-bc",
+  jurisdictionName: "British Columbia",
+  unitTerm: "Management Unit",
+  evaluate: evaluateBritishColumbia,
+  coverageReport: britishColumbiaCoverageReport,
+  sourceRecords: britishColumbiaSourceRecords,
+});
+
+export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA];
 
 /**
  * The entry for a jurisdiction — only while its zone layer is served.

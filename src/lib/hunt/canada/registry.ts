@@ -290,21 +290,36 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     nameFr: "Colombie-Britannique",
     kind: "province",
     spatial: {
+      // Ingested and parity-certified; not served until its first rules are certified for serving.
       status: "IN_DEVELOPMENT",
       officialTerm: "Management Unit (MU)",
       officialSourceUrl: "https://catalogue.data.gov.bc.ca/dataset/wildlife-management-units",
-      parityCertified: false,
-      notes: "Published through the BC Data Catalogue, which is a strong candidate for machine-readable ingestion.",
+      serviceUrl: "https://openmaps.gov.bc.ca/geo/pub/WHSE_WILDLIFE_MANAGEMENT.WAA_WILDLIFE_MGMT_UNITS_SVW/ows",
+      parityCertified: true,
+      notes:
+        "All 225 Management Units (B.C. Reg. 64/96 s. 1; BC Data Catalogue; the 2026-2028 synopsis names the same 225) are in " +
+        "PostGIS as NEEDS_VERIFICATION, with 0 geometry disagreements and 890/890 authority-derived points and 696/696 live " +
+        "service points agreeing. Under B.C. Reg. 64/96 the enacted regional maps (B.C. Reg. 89/2026) and the river-bank " +
+        "rule control; the layer is the province's digital product of them. Not yet served.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
       bundleIds: [],
-      sourceLeads: ["British Columbia Hunting and Trapping Regulations Synopsis"],
-      sourceState: "NOT_INGESTED",
+      sourceLeads: [
+        "Hunting Regulation, B.C. Reg. 190/84, Schedules 1-8 (controlling; BC Laws consolidation current to September 15, 2026)",
+        "2026-2028 Hunting and Trapping Regulations Synopsis (cross-check only)",
+      ],
+      sourceState: "CURRENT",
+      notes:
+        "A first wave is built from the regulation itself (content/regulatory/ca-bc-2026.json): ruffed, spruce and " +
+        "sharp-tailed grouse, rock and willow ptarmigan, snowshoe hare and black bear, 79 rules. It becomes coverage only " +
+        "when the layer is served.",
     },
     knownGaps: [
-      "No geometry ingested and no rules certified; every British Columbia query is UNKNOWN.",
-      "BC layers Limited Entry Hunting over general open seasons, which a season lookup alone cannot resolve.",
+      "Not served: every British Columbia query is UNKNOWN until the layer and its first rules are served.",
+      "Limited Entry Hunting (B.C. Reg. 134/93) is layered over general open seasons and is not evaluated; a unit no general-season row names is UNKNOWN, not CLOSED.",
+      "Closures inside units that the regulation describes in words or on maps, provincial parks named in Part 2 and private-property-only seasons have no boundary North Ground holds; answers there are NEEDS_VERIFICATION.",
+      "Deer, moose, elk, sheep, goat, caribou, bison, cougar, wolf, blue grouse and all migratory birds are not encoded.",
     ],
   },
   {
