@@ -35,10 +35,43 @@ const BUNDLE = "content/regulatory/ca-federal-2026.json";
 const CACHE = "/tmp/mbr2022.html";
 
 const WAVE_1 = [
-  { part: 2, name: "Prince Edward Island", jurisdictionId: "jurisdiction:ca-pe" },
-  { part: 12, name: "Yukon", jurisdictionId: "jurisdiction:ca-yt" },
-  { part: 9, name: "Alberta", jurisdictionId: "jurisdiction:ca-ab" },
+  {
+    part: 2, name: "Prince Edward Island", jurisdictionId: "jurisdiction:ca-pe",
+    /* "Throughout Prince Edward Island" is the whole province, which is also
+       the whole of its hunting geography (geography level JURISDICTION). */
+    areaKind: "JURISDICTION",
+  },
+  {
+    part: 12, name: "Yukon", jurisdictionId: "jurisdiction:ca-yt",
+    /* Latitude bands the regulation states exactly, so they are computed from
+       the point rather than drawn. */
+    areaKind: "LATITUDE_BAND",
+  },
+  {
+    part: 9, name: "Alberta", jurisdictionId: "jurisdiction:ca-ab",
+    /* Explicit Provincial Wildlife Management Unit lists. */
+    areaKind: "PROVINCIAL_UNITS",
+    inventory: "content/regulatory/ca-ab-certified-units.json",
+  },
 ];
+
+/** Yukon's bands, read from the regulation's own definitions. */
+const LATITUDE_BAND =
+  /^the portion of Yukon lying (?:north of latitude (\d+)\u00b0|south of latitude (\d+)\u00b0|between latitude (\d+)\u00b0 and (\d+)\u00b0)/;
+
+/**
+ * How many areas each Part must yield.
+ *
+ * Without this the degree sign in "between latitude 62\u00b0 and 66\u00b0N" quietly cost
+ * Central Yukon: two bands were derived where the regulation defines three,
+ * and nothing failed. A missing area is not an empty answer — it is a hunter
+ * in central Yukon getting no federal rule while the build reports success.
+ */
+const EXPECTED_AREAS = {
+  "jurisdiction:ca-pe": 1,
+  "jurisdiction:ca-yt": 3,
+  "jurisdiction:ca-ab": 2,
+};
 
 const MONTHS = {
   January: 1, February: 2, March: 3, April: 4, May: 5, June: 6,
@@ -74,6 +107,53 @@ function readLimit(text) {
 
 const stripLabel = (text) => text.replace(/^\((?:[a-z]+|[ivx]+|[A-Z])\)\s*/, "").trim();
 
+
+/**
+ * The provincial units a federal area names, expanded against the AUTHORITY'S
+ * OWN inventory rather than by integer arithmetic.
+ *
+ * "202 to 204" looks like 202, 203, 204 and Alberta's Wildlife Management
+ * Units are not contiguous, so arithmetic would INVENT units that do not
+ * exist — a wrong value that passes, because the arithmetic looks obviously
+ * correct. Every unit named must already be in the certified inventory, and a
+ * reference that resolves to nothing stops the build.
+ */
+function expandUnits(text, inventory, where) {
+  const units = new Set();
+  const unreadable = [];
+  for (const token of text.replace(/\band\b/g, ",").split(",").map((part) => part.trim()).filter(Boolean)) {
+    const range = /^(\d+)\s+to\s+(\d+)$/.exec(token);
+    if (range) {
+      const [from, to] = [Number(range[1]), Number(range[2])];
+      const inside = inventory.filter((unit) => Number(unit) >= from && Number(unit) <= to);
+      if (!inside.length) unreadable.push(token);
+      inside.forEach((unit) => units.add(unit));
+      continue;
+    }
+    if (/^\d+$/.test(token)) {
+      if (inventory.includes(token)) units.add(token);
+      else unreadable.push(token);
+      continue;
+    }
+    unreadable.push(token);
+  }
+  if (unreadable.length) {
+    throw new Error(`${where}: the regulation names units North Ground cannot resolve: ${unreadable.join(", ")}`);
+  }
+  return [...units].sort();
+}
+
+/** One Part's definition block, as "term -> definition" pairs. */
+function definitionsOf(partText) {
+  const defs = new Map();
+  /* "Zone No. 1 Zone No. 1 means Provincial Wildlife Management Units ... ( Zone n o 1 )"
+     — the term is printed twice, then the definition, then the French name. */
+  for (const match of partText.matchAll(/([A-Z][A-Za-z0-9 .'()-]{2,40}?)\s+\1\s+means\s+([^(]+?)\s*\(\s*[^)]*\)/g)) {
+    defs.set(match[1].trim(), match[2].replace(/\s+/g, " ").trim().replace(/\.$/, ""));
+  }
+  return defs;
+}
+
 function main() {
   const html = readFileSync(CACHE, "utf8");
   const documentHash = sha256(html);
@@ -81,10 +161,64 @@ function main() {
 
   const rules = [];
   const notEncoded = [];
+  const areas = [];
   let considered = 0;
 
-  for (const { part, name, jurisdictionId } of WAVE_1) {
-    const tables = partTables(partHtml(schedule, part, name));
+  for (const { part, name, jurisdictionId, areaKind, inventory } of WAVE_1) {
+    const partText = partHtml(schedule, part, name);
+    const flat = cellText(partText.slice(0, partText.indexOf("<table"))).replace(/\u241F/g, " ");
+    const definitions = definitionsOf(flat);
+
+    if (areaKind === "PROVINCIAL_UNITS") {
+      const certified = JSON.parse(readFileSync(inventory, "utf8")).certifiedUnits.map(String);
+      for (const [term, definition] of definitions) {
+        const named = /^Provincial Wildlife Management Units?\s+(.+)$/.exec(definition);
+        if (!named) continue;
+        areas.push({
+          jurisdictionId, kind: areaKind, name: term, statedAs: definition,
+          units: expandUnits(named[1], certified, `${name} ${term}`),
+        });
+      }
+      const inAnyArea = new Set(areas.filter((area) => area.jurisdictionId === jurisdictionId).flatMap((area) => area.units));
+      const outside = certified.filter((unit) => !inAnyArea.has(unit));
+      if (outside.length) {
+        notEncoded.push({
+          where: `${name} Schedule 3`, statedAs: `Units ${outside.join(", ")}`,
+          reason: "the regulation places these certified provincial units in no federal area, so migratory-bird queries there are UNKNOWN rather than assumed into one",
+        });
+      }
+    }
+
+    if (areaKind === "LATITUDE_BAND") {
+      for (const [term, definition] of definitions) {
+        const band = LATITUDE_BAND.exec(definition);
+        if (!band) continue;
+        const [, northOf, southOf, betweenLow, betweenHigh] = band;
+        areas.push({
+          jurisdictionId, kind: areaKind, name: term, statedAs: definition,
+          band: northOf ? { minLatitude: Number(northOf) }
+            : southOf ? { maxLatitude: Number(southOf) }
+            : { minLatitude: Number(betweenLow), maxLatitude: Number(betweenHigh) },
+        });
+      }
+    }
+
+    if (areaKind === "JURISDICTION") {
+      areas.push({
+        jurisdictionId, kind: areaKind, name: `Throughout ${name}`,
+        statedAs: `Throughout ${name}`,
+      });
+    }
+
+    const derived = areas.filter((area) => area.jurisdictionId === jurisdictionId).length;
+    if (derived !== EXPECTED_AREAS[jurisdictionId]) {
+      throw new Error(
+        `${name}: derived ${derived} federal areas, expected ${EXPECTED_AREAS[jurisdictionId]}. ` +
+        "An area the regulation defines and this build did not read would leave a real place with no federal rule.",
+      );
+    }
+
+    const tables = partTables(partText);
     for (const table of tables) {
       const isTable1 = /TABLE 1/.test(table.caption);
       for (const row of table.grid) {
@@ -172,6 +306,7 @@ function main() {
     composition:
       "Federal migratory-bird rules COMPOSE with provincial rules; they never replace them. A hunter must satisfy " +
       "both. Where a federal and a provincial rule disagree, the answer is CONFLICT stating both.",
+    areas,
     rules,
     notEncoded,
   };
@@ -184,6 +319,7 @@ function main() {
     return;
   }
   writeFileSync(BUNDLE, serialised);
+  console.log(`areas derived ${areas.length}: ${areas.map((area) => `${area.name}${area.units ? ` (${area.units.length} units)` : ""}`).join(", ")}`);
   console.log(`rows considered ${considered} | encoded ${rules.length} | refused ${notEncoded.length}`);
   console.log(`  declared closures: ${rules.filter((rule) => rule.declaredNoSeason).length}`);
   for (const reason of new Set(notEncoded.map((entry) => entry.reason))) {

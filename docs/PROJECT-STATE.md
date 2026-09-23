@@ -986,6 +986,13 @@ this is certified in production. Saskatchewan is deferred because it is a
 LIVE_SERVICE layer with no stored identifier list to check the regulation's
 zone references against.
 
+## Agreeing With The Service Is Not Agreeing With The Law
+
+Recorded once, in **Recent Product Decisions** under *2026-09-23 — Audit
+answer: all twelve Canadian spatial certifications are service-only*. That
+entry is the fuller one and carries the containment measurement too; a second
+copy here would drift from it.
+
 ## Known Design Gap — Promotion Cannot Certify A Row It Did Not Insert
 
 **Stated so it is not re-derived (2026-09-23).** `publish_zone_run` sets
