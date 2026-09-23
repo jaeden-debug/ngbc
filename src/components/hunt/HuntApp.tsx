@@ -146,6 +146,8 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   const [page, setPage] = useState<Page>("main");
   const [snap, setSnap] = useState<SheetSnap>(initialUrl.zoneId ? "half" : "peek");
   const [heights, setHeights] = useState<SheetHeights | null>(null);
+  /** What the browser's own chrome covers, so the shell can sit above it. */
+  const [viewportGap, setViewportGap] = useState(0);
   const [view, setView] = useState<MapView | null>(null);
 
   /* ── What this device remembers ──────────────────────────────────────── */
@@ -332,17 +334,43 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   /* ── Sheet geometry: measured, never assumed ─────────────────────────── */
 
   useEffect(() => {
+    /*
+     * THE VISUAL viewport, not the layout one.
+     *
+     * `window.innerHeight` on a phone includes the strip behind the browser's
+     * own toolbar. A sheet sized from it is taller than what the screen shows,
+     * so its last rows sit UNDER the chrome — which is exactly what "expands
+     * out of screen" looks like to someone holding the phone, and exactly what
+     * a desktop emulator cannot reproduce, because there the two are equal.
+     *
+     * `visualViewport` is what is actually visible, and it changes as the
+     * toolbar hides and returns. Measuring from it means the sheet's `full` is
+     * the screen a hunter can really see.
+     */
+    const visible = () => Math.round(window.visualViewport?.height ?? window.innerHeight);
+    let last = 0;
     const measure = () => {
       const headerBottom = headerRef.current?.getBoundingClientRect().bottom ?? 60;
       const safeBottom = safeProbeRef.current?.getBoundingClientRect().height ?? 0;
-      setHeights(sheetHeights({ viewportHeight: window.innerHeight, headerBottom, safeBottom }));
+      last = visible();
+      /* How much of the layout viewport the browser's chrome is sitting over.
+         The shell is lifted by it, so nothing is laid out under the toolbar. */
+      setViewportGap(Math.max(0, window.innerHeight - last));
+      setHeights(sheetHeights({ viewportHeight: last, headerBottom, safeBottom }));
     };
+    /* iOS reports the toolbar sliding as a stream of resizes. Re-laying the
+       sheet out on every one of them is the stutter; a threshold keeps the
+       real changes — rotation, keyboard, toolbar settled — and drops the
+       frames of an animation we do not need to follow. */
+    const onVisualResize = () => { if (Math.abs(visible() - last) > 24) measure(); };
     measure();
     window.addEventListener("resize", measure);
     window.addEventListener("orientationchange", measure);
+    window.visualViewport?.addEventListener("resize", onVisualResize);
     return () => {
       window.removeEventListener("resize", measure);
       window.removeEventListener("orientationchange", measure);
+      window.visualViewport?.removeEventListener("resize", onVisualResize);
     };
   }, []);
 
@@ -366,12 +394,13 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     if (!heights || layout !== "sheet") return undefined;
     return {
       "--sheet-peek": `${heights.peek}px`,
+      "--viewport-gap": `${viewportGap}px`,
       "--sheet-half": `${heights.half}px`,
       "--sheet-full": `${heights.full}px`,
       "--sheet-h": `${heightOf(snap, heights)}px`,
       ...(mapBottom !== null ? { "--map-bottom": `${mapBottom}px` } : {}),
     } as React.CSSProperties;
-  }, [heights, layout, snap, mapBottom]);
+  }, [heights, layout, snap, mapBottom, viewportGap]);
 
   /* ── Selection, zones, presentation ──────────────────────────────────── */
 

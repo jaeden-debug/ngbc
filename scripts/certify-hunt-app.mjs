@@ -1018,6 +1018,64 @@ const scenarios = {
 
 
   /*
+   * EVERY ROW REACHABLE, AT EVERY RESTING HEIGHT.
+   *
+   * 253 checks passed while the owner was looking at a card whose last rows
+   * they could not get to. The suite asserted that content EXISTED and never
+   * that it could be SEEN — the same family as a test that never ran: green,
+   * and about nothing that matters.
+   *
+   * §41A: the sheet is readable at every height, and anything longer than the
+   * height it rests at SCROLLS. So the test is not "does the sheet fit" — it
+   * never fits, and is not meant to. It is: can a hunter reach the last thing
+   * on the card without a gesture nothing tells them about.
+   */
+  async everyRowReachable(browser) {
+    const s = "nothing waits below the screen";
+    for (const [width, height] of [[375, 812], [320, 568], [390, 844]]) {
+      const { context, page } = await newPage(browser, { width, height });
+      const label = `${width}×${height}`;
+      await page.goto(`${BASE}/hunt?zone=ca-qc-zone-10o&date=2026-09-23`);
+      await mapReady(page);
+      await waitFor(page, () => document.querySelectorAll("[class*=speciesRowName]").length > 0, 40_000);
+      await page.waitForTimeout(2_000);
+
+      for (const snap of ["half", "full"]) {
+        // Reach the snap through the control a hunter would use.
+        for (let attempt = 0; attempt < 4; attempt += 1) {
+          if (await page.evaluate((want) => document.querySelector("section[data-layout]")?.getAttribute("data-snap") === want, snap)) break;
+          await page.locator("[class*=grabber]").first().click();
+          await page.waitForTimeout(450);
+        }
+        const reach = await page.evaluate(() => {
+          const body = document.querySelector("[class*=sheetBody]");
+          const sheet = document.querySelector("section[data-layout]");
+          if (!body || !sheet) return null;
+          const rows = [...document.querySelectorAll("[class*=speciesRowName]")];
+          const last = rows[rows.length - 1];
+          if (!last) return null;
+          // Scroll the way a finger would, then look.
+          body.scrollTop = body.scrollHeight;
+          const box = last.getBoundingClientRect();
+          return {
+            snap: sheet.getAttribute("data-snap"),
+            scrollable: body.scrollHeight > body.clientHeight + 1,
+            lastRow: last.textContent?.trim() ?? "",
+            onScreen: box.top >= 0 && box.bottom <= window.innerHeight,
+            bottomOvershoot: Math.round(box.bottom - window.innerHeight),
+          };
+        });
+        check(s, `${label} at ${snap}: the last species row can be reached`,
+          reach && reach.onScreen, JSON.stringify(reach));
+        check(s, `${label} at ${snap}: what overflows scrolls rather than hiding`,
+          reach && (reach.scrollable || reach.onScreen), JSON.stringify(reach));
+      }
+      await context.close();
+    }
+  },
+
+
+  /*
    * SAME HUNT LINK → SAME INITIAL ANSWER.
    *
    * `urlBeatsMemory` proves one client is not polluted. This proves two

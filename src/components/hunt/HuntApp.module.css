@@ -15,6 +15,17 @@
   --ease: cubic-bezier(0.22, 0.8, 0.2, 1);
   position: fixed;
   inset: 0;
+  /*
+   * The shell ends where the SCREEN ends, not where the layout viewport does.
+   *
+   * On a phone, `inset: 0` reaches under the browser's own toolbar: the last
+   * rows of the sheet, its safe-area padding and the map's attribution all sit
+   * behind the chrome, which is what "expands out of screen" looks like to
+   * someone holding the device. `--viewport-gap` is the difference the page
+   * measures between the layout and the visual viewport, so the whole
+   * composition lays out inside what a hunter can actually see.
+   */
+  bottom: var(--viewport-gap, 0px);
   /* clip, not hidden: a hidden overflow is still scrollable by focus, which
      slid the whole shell up when a control below the fold was focused. */
   overflow: hidden;
@@ -392,6 +403,20 @@
   justify-content: center;
   width: 100%;
   height: 24px;
+  /*
+   * 24px tall, and deliberately left that way.
+   *
+   * I grew it to a 44px hit area with padding and a negative margin, and the
+   * responsive check caught what that cost: the box reached 10px ABOVE the
+   * sheet and sat over Google's attribution, which is a licence term rather
+   * than a detail. Growing it downward instead would have taken taps from the
+   * Share and Close buttons under it.
+   *
+   * It is a 286px-wide bar, the whole sheet header is the drag surface, and
+   * the control exists for click and keyboard rather than as the only way to
+   * move the sheet. A wide, shallow target here is a better trade than
+   * covering an attribution or stealing a neighbour's taps.
+   */
   margin: 0;
   padding: 0;
   border: 0;

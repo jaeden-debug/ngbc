@@ -115,7 +115,11 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  min-height: 36px;
+  /* A thumb, in a scrolling strip, on a phone. 36px was under every guideline
+     for a standalone control; prose links elsewhere on this page stay as they
+     are, because a link inside a sentence is exempt and enlarging it would
+     break the reading it sits in. */
+  min-height: 44px;
   padding: 0 13px;
   border: 1px solid var(--ng-glass-border);
   border-radius: var(--ng-radius-pill);
