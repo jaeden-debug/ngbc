@@ -1,0 +1,162 @@
+{
+  "generatedBy": "scripts/derive-federal-species.mjs",
+  "note": "Derived from the published species library. Names are never typed here: a species whose record lacks a verified, sourced scientific name or a slug is WITHHELD and listed below, because a plausible binomial nobody audits is worse than a declared gap. Withheld species remain members of their federal group, so a shared limit still names them in the regulation's own words.",
+  "offered": [
+    {
+      "id": "species:american-wigeon",
+      "displayName": "American wigeon",
+      "scientificName": "Mareca americana",
+      "resourcePath": "/hunting/species/american-wigeon"
+    },
+    {
+      "id": "species:american-woodcock",
+      "displayName": "American woodcock",
+      "scientificName": "Scolopax minor",
+      "resourcePath": "/hunting/species/american-woodcock"
+    },
+    {
+      "id": "species:barrows-goldeneye",
+      "displayName": "Barrow's goldeneye",
+      "scientificName": "Bucephala islandica",
+      "resourcePath": "/hunting/species/barrows-goldeneye"
+    },
+    {
+      "id": "species:blue-winged-teal",
+      "displayName": "Blue-winged teal",
+      "scientificName": "Spatula discors",
+      "resourcePath": "/hunting/species/blue-winged-teal"
+    },
+    {
+      "id": "species:brant",
+      "displayName": "Brant",
+      "scientificName": "Branta bernicla",
+      "resourcePath": "/hunting/species/brant"
+    },
+    {
+      "id": "species:bufflehead",
+      "displayName": "Bufflehead",
+      "scientificName": "Bucephala albeola",
+      "resourcePath": "/hunting/species/bufflehead"
+    },
+    {
+      "id": "species:canada-goose",
+      "displayName": "Canada goose",
+      "scientificName": "Branta canadensis",
+      "resourcePath": "/hunting/species/canada-goose"
+    },
+    {
+      "id": "species:canvasback",
+      "displayName": "Canvasback",
+      "scientificName": "Aythya valisineria",
+      "resourcePath": "/hunting/species/canvasback"
+    },
+    {
+      "id": "species:common-goldeneye",
+      "displayName": "Common goldeneye",
+      "scientificName": "Bucephala clangula",
+      "resourcePath": "/hunting/species/common-goldeneye"
+    },
+    {
+      "id": "species:gadwall",
+      "displayName": "Gadwall",
+      "scientificName": "Mareca strepera",
+      "resourcePath": "/hunting/species/gadwall"
+    },
+    {
+      "id": "species:greater-scaup",
+      "displayName": "Greater scaup",
+      "scientificName": "Aythya marila",
+      "resourcePath": "/hunting/species/greater-scaup"
+    },
+    {
+      "id": "species:greater-white-fronted-goose",
+      "displayName": "Greater white-fronted goose",
+      "scientificName": "Anser albifrons",
+      "resourcePath": "/hunting/species/greater-white-fronted-goose"
+    },
+    {
+      "id": "species:green-winged-teal",
+      "displayName": "Green-winged teal",
+      "scientificName": "Anas crecca",
+      "resourcePath": "/hunting/species/green-winged-teal"
+    },
+    {
+      "id": "species:lesser-scaup",
+      "displayName": "Lesser scaup",
+      "scientificName": "Aythya affinis",
+      "resourcePath": "/hunting/species/lesser-scaup"
+    },
+    {
+      "id": "species:mallard",
+      "displayName": "Mallard",
+      "scientificName": "Anas platyrhynchos",
+      "resourcePath": "/hunting/species/mallard"
+    },
+    {
+      "id": "species:mourning-dove",
+      "displayName": "Mourning dove",
+      "scientificName": "Zenaida macroura",
+      "resourcePath": "/hunting/species/mourning-dove"
+    },
+    {
+      "id": "species:northern-pintail",
+      "displayName": "Northern pintail",
+      "scientificName": "Anas acuta",
+      "resourcePath": "/hunting/species/northern-pintail"
+    },
+    {
+      "id": "species:northern-shoveler",
+      "displayName": "Northern shoveler",
+      "scientificName": "Spatula clypeata",
+      "resourcePath": "/hunting/species/northern-shoveler"
+    },
+    {
+      "id": "species:redhead",
+      "displayName": "Redhead",
+      "scientificName": "Aythya americana",
+      "resourcePath": "/hunting/species/redhead"
+    },
+    {
+      "id": "species:ring-necked-duck",
+      "displayName": "Ring-necked duck",
+      "scientificName": "Aythya collaris",
+      "resourcePath": "/hunting/species/ring-necked-duck"
+    },
+    {
+      "id": "species:sandhill-crane",
+      "displayName": "Sandhill crane",
+      "scientificName": "Antigone canadensis",
+      "resourcePath": "/hunting/species/sandhill-crane"
+    },
+    {
+      "id": "species:snow-goose",
+      "displayName": "Snow goose",
+      "scientificName": "Anser caerulescens",
+      "resourcePath": "/hunting/species/snow-goose"
+    },
+    {
+      "id": "species:wilsons-snipe",
+      "displayName": "Wilson's snipe",
+      "scientificName": "Gallinago delicata",
+      "resourcePath": "/hunting/species/wilsons-snipe"
+    },
+    {
+      "id": "species:wood-duck",
+      "displayName": "Wood duck",
+      "scientificName": "Aix sponsa",
+      "resourcePath": "/hunting/species/wood-duck"
+    }
+  ],
+  "withheld": [
+    {
+      "id": "species:american-black-duck",
+      "displayName": "American black duck",
+      "reason": "the library record lacks a scientific name, a slug, so it has no species page to link to"
+    },
+    {
+      "id": "species:cackling-goose",
+      "displayName": "Cackling goose",
+      "reason": "the library record lacks a scientific name, a slug, so it has no species page to link to"
+    }
+  ]
+}

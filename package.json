@@ -38,7 +38,9 @@
     "provision:species-media": "node scripts/provision-species-media-storage.mjs",
     "test:timezones": "for tz in UTC America/Toronto America/Vancouver America/Denver America/Boise Australia/Sydney Pacific/Kiritimati; do echo \"\u2014 TZ=$tz\"; TZ=$tz node --test src/lib/hunt/date.test.ts src/lib/hunt/server-client-date.test.ts src/lib/hunt/weather.test.ts src/lib/hunt/regulatory/season.test.ts src/lib/hunt/exploration/date-presets.test.ts src/lib/hunt/regulatory/allocation.test.ts src/lib/hunt/regulatory/us-montana.test.ts src/lib/hunt/regulatory/us-idaho.test.ts || exit 1; done",
     "report:us": "node --experimental-strip-types scripts/us-coverage-report.mjs",
-    "certify:served-layers": "node --import tsx scripts/certify-served-layers.mjs"
+    "certify:served-layers": "node --import tsx scripts/certify-served-layers.mjs",
+    "build:federal-species": "node --import tsx scripts/derive-federal-species.mjs",
+    "build:federal-regulations": "node --import tsx scripts/build-federal-migratory-regulations.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.116.0",

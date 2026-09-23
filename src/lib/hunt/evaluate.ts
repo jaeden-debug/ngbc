@@ -2,12 +2,14 @@ import { contentRepository, type ContentRepository } from "../content/repository
 import { isMajorGameSpecies, speciesById } from "./coverage.ts";
 import { resolveReadiness } from "./readiness/index.ts";
 import { regulatoryEntryFor, type RegulatoryOutcome } from "./regulatory/registry.ts";
+import { composeFederalWithProvincial, evaluateFederal, isFederalMigratoryBird } from "./regulatory/federal.ts";
+import { FEDERAL_MIGRATORY_SERVING } from "./coverage.ts";
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { HuntEvaluation, HuntInput, RegulatoryResult } from "./types.ts";
 import type { ZoneResolution } from "./types.ts";
 import { getWeatherContext } from "./weather.ts";
 import { jurisdictionOfZoneId, resolveInLayer, resolveZone as resolveZoneDefault } from "./zone.ts";
-import { countryOfJurisdiction, layerForJurisdiction, layerOfZoneId, speciesLayerFor } from "./zone-layers.ts";
+import { countryOfJurisdiction, designationFromOfficialName, layerForJurisdiction, layerOfZoneId, speciesLayerFor } from "./zone-layers.ts";
 
 export interface HuntDependencies {
   repository?: ContentRepository;
@@ -42,8 +44,39 @@ async function evaluateRegulation(
   const jurisdictionId = zone.jurisdictionId ?? jurisdictionOfZoneId(zone.zoneId);
   if (!jurisdictionId) return { completeness: "RESOLVED", dimensions: [], regulation: unplacedPoint(zone, verifiedAt) };
   const entry = regulatoryEntryFor(jurisdictionId);
-  if (!entry) return { completeness: "RESOLVED", dimensions: [], regulation: uncertifiedJurisdiction(zone, verifiedAt) };
-  return await entry.evaluate(input, zone, { verifiedAt, fetcher, ...(speciesName ? { speciesName } : {}) });
+  const provincial = entry
+    ? await entry.evaluate(input, zone, { verifiedAt, fetcher, ...(speciesName ? { speciesName } : {}) })
+    : { completeness: "RESOLVED" as const, dimensions: [], regulation: uncertifiedJurisdiction(zone, verifiedAt) };
+
+  /*
+   * A migratory game bird's season is Parliament's, not the province's, so the
+   * federal answer composes on top of whatever the province said — including
+   * when the province said nothing. Both bind; neither replaces the other, and
+   * the composed answer names the half North Ground has not certified rather
+   * than implying the federal season is the whole of the law.
+   *
+   * Gated by the same flag that offers these species at all, so a species can
+   * never be selectable without this path answering for it.
+   */
+  if (FEDERAL_MIGRATORY_SERVING && isFederalMigratoryBird(input.speciesId)) {
+    const federal = evaluateFederal(
+      input.speciesId,
+      jurisdictionId,
+      { latitude: input.latitude },
+      input.date,
+      designationFromOfficialName(layerForJurisdiction(jurisdictionId)!, zone.officialName),
+    );
+    return {
+      ...provincial,
+      regulation: composeFederalWithProvincial(
+        federal,
+        provincial.regulation,
+        layerForJurisdiction(jurisdictionId)?.jurisdictionName ?? "This jurisdiction",
+      ),
+    };
+  }
+
+  return provincial;
 }
 
 /** A point no authority placed in a hunting zone, attributable to no one jurisdiction. */

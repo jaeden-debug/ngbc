@@ -1,7 +1,7 @@
 import { britishColumbiaCoverageReport, britishColumbiaSourceRecords, evaluateBritishColumbia } from "./british-columbia.ts";
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import type { SpeciesCoverageRow } from "../canada/report.ts";
-import { isMajorGameSpecies, speciesById } from "../coverage.ts";
+import { FEDERAL_MIGRATORY_SERVING, isMajorGameSpecies, speciesById, SUPPORTED_SPECIES } from "../coverage.ts";
 import { overlaysInZone, type OverlayZoneIndex } from "../overlay-zones.ts";
 import { lookupOverlays, restrictionsFor, type OverlayCatalogue } from "../overlays.ts";
 import { designationFromOfficialName, layerApplicability, layerForJurisdiction, layerOfZoneId } from "../zone-layers.ts";
@@ -526,8 +526,18 @@ let certifiedSpecies: ReadonlySet<string> | undefined;
  * flags are build-time facts), so it is computed once.
  */
 export function isCertifiedSpecies(value: unknown): value is CanonicalId<"species"> {
-  certifiedSpecies ??= new Set(REGULATORY_REGISTRY
-    .filter((entry) => regulatoryEntryFor(entry.jurisdictionId))
-    .flatMap((entry) => entry.coverage().species.map((row) => row.speciesId)));
+  certifiedSpecies ??= new Set([
+    ...REGULATORY_REGISTRY
+      .filter((entry) => regulatoryEntryFor(entry.jurisdictionId))
+      .flatMap((entry) => entry.coverage().species.map((row) => row.speciesId)),
+    /*
+     * The migratory game birds. Federal rules answer for them nationally and
+     * the federal jurisdiction has no zone layer of its own, so they cannot
+     * arrive through the per-jurisdiction path above — they are certified by
+     * the federal bundle, gated by the same one flag that offers them in the
+     * selector, so the two can never disagree about what is answerable.
+     */
+    ...(FEDERAL_MIGRATORY_SERVING ? SUPPORTED_SPECIES.map((species) => species.id) : []),
+  ]);
   return typeof value === "string" && certifiedSpecies.has(value);
 }

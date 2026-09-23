@@ -1,6 +1,7 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { SpeciesPrimaryMedia } from "../species-media/types.ts";
 import { officialTermPlural, speciesLayerFor, ZONE_LAYERS } from "./zone-layers.ts";
+import federalSpecies from "../../../content/regulatory/ca-federal-species.generated.json" with { type: "json" };
 
 /**
  * What North Ground Hunt can currently answer.
@@ -71,12 +72,33 @@ export const SUPPORTED_MAJOR_GAME_SPECIES_IDS = [
   "species:wild-turkey",
 ] as const;
 
+/**
+ * The migratory game birds federal rules answer for.
+ *
+ * DERIVED from the published species library, never typed: twenty-five
+ * hand-written binomials is a fabrication risk in the class nobody audits.
+ * A species whose library record lacks a verified, sourced scientific name or
+ * a slug is WITHHELD there and does not appear here, because a species page
+ * that 404s and a plausible invented name are both worse than a declared gap.
+ *
+ * Gated by `FEDERAL_MIGRATORY_SERVING`, which stays false until the federal
+ * bundle is certified in production. Drawing and answering are separate
+ * switches everywhere else in Hunt; this is the same split for a jurisdiction
+ * that has no layer of its own.
+ */
+export const FEDERAL_MIGRATORY_SERVING = false;
+
+const FEDERAL_MIGRATORY_SPECIES: SupportedSpecies[] = FEDERAL_MIGRATORY_SERVING
+  ? (federalSpecies.offered as SupportedSpecies[])
+  : [];
+
 export const SUPPORTED_SPECIES_IDS = [
   ...SUPPORTED_SMALL_GAME_SPECIES_IDS,
   ...SUPPORTED_MAJOR_GAME_SPECIES_IDS,
-] as const;
+  ...FEDERAL_MIGRATORY_SPECIES.map((species) => species.id),
+] as readonly string[];
 
-export type SupportedSpeciesId = (typeof SUPPORTED_SPECIES_IDS)[number];
+export type SupportedSpeciesId = string;
 
 export interface SupportedSpecies {
   id: SupportedSpeciesId;
@@ -163,7 +185,7 @@ export function speciesAsksQuestionIn(
  * inventory contains far more; none of it is huntable information until it has
  * been certified, and showing it as selectable would imply coverage we do not have.
  */
-export const SUPPORTED_SPECIES: SupportedSpecies[] = [
+const CERTIFIED_PROVINCIAL_SPECIES: SupportedSpecies[] = [
   {
     id: "species:ruffed-grouse",
     displayName: "Ruffed grouse",
@@ -212,6 +234,15 @@ export const SUPPORTED_SPECIES: SupportedSpecies[] = [
     scientificName: "Meleagris gallopavo",
     resourcePath: "/hunting/species/wild-turkey",
   },
+];
+
+/**
+ * Everything Hunt can offer: the provincially certified species, plus the
+ * migratory game birds federal rules answer for once they serve.
+ */
+export const SUPPORTED_SPECIES: SupportedSpecies[] = [
+  ...CERTIFIED_PROVINCIAL_SPECIES,
+  ...FEDERAL_MIGRATORY_SPECIES,
 ];
 
 function spokenList(items: readonly string[]): string {
