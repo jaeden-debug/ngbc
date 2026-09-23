@@ -1,0 +1,114 @@
+{
+  "package": {
+    "jurisdictionId": "jurisdiction:us-id",
+    "preparedBy": "united-states agent",
+    "preparedOn": "2026-09-24"
+  },
+  "fact": "HUNTER_ORANGE",
+  "absenceEvidence": {
+    "fact": "HUNTER_ORANGE",
+    "searchedOn": "2026-09-24",
+    "matching": "WORD_BOUNDARY",
+    "control": {
+      "term": "elk",
+      "instrument": "Idaho Big Game 2026 Seasons & Rules",
+      "matched": true,
+      "hits": 379
+    },
+    "instruments": [
+      "Idaho Big Game 2026 Seasons & Rules (416,889 chars)",
+      "Idaho Upland Game 2026-2027 (158,762 chars)"
+    ],
+    "results": [
+      {
+        "term": "hunter orange",
+        "instrument": "Big Game 2026",
+        "hits": 0
+      },
+      {
+        "term": "blaze orange",
+        "instrument": "Big Game 2026",
+        "hits": 0
+      },
+      {
+        "term": "blaze",
+        "instrument": "Big Game 2026",
+        "hits": 0
+      },
+      {
+        "term": "vest",
+        "instrument": "Big Game 2026",
+        "hits": 0
+      },
+      {
+        "term": "garment",
+        "instrument": "Big Game 2026",
+        "hits": 0
+      },
+      {
+        "term": "visible clothing",
+        "instrument": "Big Game 2026",
+        "hits": 0
+      },
+      {
+        "term": "fluorescent",
+        "instrument": "Big Game 2026",
+        "hits": 3,
+        "classified": "All three are the private-property posting rule — 'bright orange/fluorescent paint at all property corners'. Trespass marking, not clothing."
+      },
+      {
+        "term": "conspicuous",
+        "instrument": "Big Game 2026",
+        "hits": 2,
+        "classified": "Property posting, and a lynx/bobcat identification feature ('ear tufts, conspicuous, 1.5 inches long')."
+      },
+      {
+        "term": "hunter orange",
+        "instrument": "Upland Game 2026-2027",
+        "hits": 2,
+        "classified": "A REAL REQUIREMENT, and it is upland-only — recorded as its own row rather than here."
+      }
+    ],
+    "closedBy": "A positive statement from IDFG that no hunter-orange requirement applies to big game, or a closed-world clause in IDAPA 13.01.08 reaching clothing. Instruments NOT searched that could hold such a rule: IDAPA 13.01.08 (Rules Governing the Taking of Big Game Animals), the Moose/Sheep/Goat proclamation, the Big Game supplemental proclamation, and any WMA-specific rules."
+  },
+  "requirements": [
+    {
+      "category": "VISIBILITY",
+      "kind": "hunter orange",
+      "state": "REQUIRED",
+      "officialName": {
+        "text": "Hunter orange",
+        "lang": "en-CA"
+      },
+      "statedAs": {
+        "text": "All upland game bird hunters are required to wear visible hunter orange (minimum size 36 square inches) above the waist during pheasant season when hunting on properties where pheasants are stocked.",
+        "lang": "en-CA"
+      },
+      "citation": "Idaho Upland Game 2026-2027, Upland Game Bird Permit",
+      "condition": {
+        "statedAs": {
+          "text": "during pheasant season when hunting on properties where pheasants are stocked; and, as an unlawful method, when hunting on locations where an Upland Game Bird Permit is required",
+          "lang": "en-CA"
+        }
+      },
+      "scope": {
+        "speciesIds": [],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "ID"
+          ],
+          "statedAs": null
+        },
+        "methods": null
+      },
+      "unresolved": [
+        "Recorded for the upland species Idaho's rules bundle does not yet cover, so it reaches no species today and certifies nothing. It is kept because it is the ONLY hunter-orange requirement Idaho states, and a later upland build must not re-derive it.",
+        "The requirement is stated twice with different triggers — 'during pheasant season ... where pheasants are stocked' and 'where an Upland Game Bird Permit is required'. Whether those describe the same set of properties is not settled by the booklet."
+      ]
+    }
+  ],
+  "laneNotes": [
+    "Idaho requires hunter orange for UPLAND on stocked-pheasant properties and states none for BIG GAME. The two are in different booklets, and reading only the big game one would have produced a correct answer for pronghorn by luck rather than by evidence."
+  ]
+}

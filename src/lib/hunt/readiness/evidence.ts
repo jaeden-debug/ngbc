@@ -35,6 +35,8 @@ import bcHuntingRegulationSchedule8 from "../../../../content/regulatory/evidenc
 import bcHuntingTrappingSynopsis20262028 from "../../../../content/regulatory/evidence/ca-bc/ca-bc-hunting-trapping-synopsis-2026-2028.json" with { type: "json" };
 import bcWildlifeAct from "../../../../content/regulatory/evidence/ca-bc/ca-bc-wildlife-act.json" with { type: "json" };
 import bcOrangeAbsence from "../../../../content/regulatory/evidence/ca-bc/measured-absence-orange.json" with { type: "json" };
+import idahoBigGame from "../../../../content/regulatory/evidence/us-id/us-id-big-game-2026.json" with { type: "json" };
+import idahoOrangeAbsence from "../../../../content/regulatory/evidence/us-id/us-id-measured-absence-orange.json" with { type: "json" };
 
 export type EvidenceCategory =
   | "AUTHORIZATION" | "VISIBILITY" | "METHOD" | "AMMUNITION" | "LIMIT"
@@ -81,6 +83,7 @@ export interface EvidencePackage {
 }
 
 const PACKAGES: Record<string, EvidencePackage[]> = {
+  "jurisdiction:us-id": [idahoBigGame as EvidencePackage, idahoOrangeAbsence as EvidencePackage],
   "jurisdiction:ca-bc": [
     bcDesignationExemptionRegulation as EvidencePackage,
     bcHuntingLicensingRegulation as EvidencePackage,
@@ -241,11 +244,15 @@ export function certifies(
  * should not be indistinguishable from one that ran none.
  */
 export function measuredAbsence(jurisdictionId: string, category: EvidenceCategory): string | undefined {
-  if (jurisdictionId !== "jurisdiction:ca-bc" || category !== "VISIBILITY") return undefined;
-  const evidence = bcOrangeAbsence as { absenceEvidence?: { instruments?: unknown[]; closedBy?: string } };
-  const instruments = evidence.absenceEvidence?.instruments?.length ?? 0;
+  if (category !== "VISIBILITY") return undefined;
+  const source = jurisdictionId === "jurisdiction:ca-bc" ? bcOrangeAbsence
+    : jurisdictionId === "jurisdiction:us-id" ? idahoOrangeAbsence
+    : undefined;
+  if (!source) return undefined;
+  const evidence = (source as { absenceEvidence?: { instruments?: unknown[]; closedBy?: string } }).absenceEvidence;
+  const instruments = evidence?.instruments?.length ?? 0;
   return `Searched and not found across ${instruments} instruments with a matching control. ${
-    evidence.absenceEvidence?.closedBy ?? "An authority statement would be needed to close it."
+    evidence?.closedBy ?? "An authority statement would be needed to close it."
   }`;
 }
 

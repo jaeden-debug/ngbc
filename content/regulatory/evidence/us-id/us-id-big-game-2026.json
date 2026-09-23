@@ -1,0 +1,261 @@
+{
+  "package": {
+    "jurisdictionId": "jurisdiction:us-id",
+    "preparedBy": "united-states agent",
+    "preparedOn": "2026-09-24"
+  },
+  "authority": {
+    "name": "Idaho Department of Fish and Game",
+    "lang": "en-CA"
+  },
+  "source": {
+    "id": "source:us-id-big-game-seasons-2026",
+    "title": "Idaho Big Game 2026 Seasons & Rules",
+    "url": "https://idfg.idaho.gov/rules/biggame",
+    "tier": "OFFICIAL_SUMMARY",
+    "version": "2026",
+    "retrievedAt": "2026-09-21",
+    "sha256": "feb85a9c8741a72a1aeb40462cceaa391e8d1849df3604fdaa156a07d5494520",
+    "incorporates": [],
+    "inForce": {
+      "state": "IN_FORCE",
+      "statedAs": "Idaho Big Game 2026 Seasons & Rules",
+      "asOf": "2026",
+      "checkedOn": "2026-09-24"
+    }
+  },
+  "requirements": [
+    {
+      "category": "AUTHORIZATION",
+      "kind": "hunting license",
+      "officialName": {
+        "text": "Idaho hunting license",
+        "lang": "en-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "Hunt or take any wildlife without a valid hunting license or hunting passport and without required tag or permit in possession.",
+        "lang": "en-CA"
+      },
+      "citation": "Idaho Big Game 2026 Seasons & Rules, Unlawful To",
+      "scope": {
+        "speciesIds": [
+          "species:pronghorn"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "ID"
+          ],
+          "statedAs": null
+        },
+        "methods": null
+      },
+      "unresolved": [
+        "Stated as a prohibition on hunting WITHOUT one; the licence classes and their fees are in IDFG's licence schedule, which was not read."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "controlled hunt tag",
+      "officialName": {
+        "text": "Pronghorn controlled hunt tag",
+        "lang": "en-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "In addition, a tag is required for all big game species.",
+        "lang": "en-CA"
+      },
+      "citation": "Idaho Big Game 2026 Seasons & Rules, licences and tags",
+      "scope": {
+        "speciesIds": [
+          "species:pronghorn"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "ID"
+          ],
+          "statedAs": null
+        },
+        "methods": null
+      },
+      "requires": [
+        {
+          "officialName": {
+            "text": "Idaho hunting license",
+            "lang": "en-CA"
+          }
+        }
+      ],
+      "unresolved": [
+        "All pronghorn hunting is by controlled hunt, so the tag is allocated by draw; the draw calendar is held in the rules bundle rather than here."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "muzzleloader permit validation",
+      "officialName": {
+        "text": "Muzzleloader permit validation",
+        "lang": "en-CA"
+      },
+      "state": "CONDITIONAL",
+      "statedAs": {
+        "text": "Any person hunting in a muzzleloader only season, including controlled hunts, must have in their possession a license with a muzzleloader permit validation.",
+        "lang": "en-CA"
+      },
+      "citation": "Idaho Big Game 2026 Seasons & Rules, Muzzleloader Only Season",
+      "condition": {
+        "statedAs": {
+          "text": "hunting in a muzzleloader only season, including controlled hunts",
+          "lang": "en-CA"
+        }
+      },
+      "scope": {
+        "speciesIds": [
+          "species:pronghorn"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "ID"
+          ],
+          "statedAs": null
+        },
+        "methods": [
+          "muzzleloader"
+        ]
+      }
+    },
+    {
+      "category": "METHOD",
+      "kind": "short range weapons",
+      "officialName": {
+        "text": "Short-range weapons",
+        "lang": "en-CA"
+      },
+      "state": "ALLOWED",
+      "statedAs": {
+        "text": "In short-range weapon only seasons, it is unlawful to use any weapon other than the following: Any shotgun using any slug or double-aught (#00) or larger buckshot. Any muzzleloader that is at least forty-five (0.45) caliber for deer, pronghorn, mountain lion, or gray wolf. Any bow having a peak draw weight of not less than forty (40) pounds. Any crossbow having a peak draw weight of not less than one hundred fifty (150) pounds. Any handgun using straight wall centerfire cartridges. Any airgun using pre-charged pneumatic power to propel a projectile (excluding shot and arrows) with unignited compressed air or gas and projectiles at least thirty-five (0.35) caliber for deer, pronghorn, mountain lion, or gray wolf.",
+        "lang": "en-CA"
+      },
+      "citation": "Idaho Big Game 2026 Seasons & Rules, Short Range Weapons",
+      "scope": {
+        "speciesIds": [
+          "species:pronghorn"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "ID"
+          ],
+          "statedAs": null
+        },
+        "methods": [
+          "shotgun",
+          "muzzleloader",
+          "bow",
+          "crossbow",
+          "handgun",
+          "airgun"
+        ]
+      },
+      "unresolved": [
+        "This positive list governs SHORT-RANGE seasons. Which weapon a given controlled hunt admits is carried per hunt in the rules bundle's season label (any weapon / archery only / muzzleloader only / short range weapons only)."
+      ]
+    },
+    {
+      "category": "AMMUNITION",
+      "kind": "muzzleloader calibre",
+      "state": "REQUIRED",
+      "officialName": {
+        "text": "Muzzleloader Caliber Requirements",
+        "lang": "en-CA"
+      },
+      "statedAs": {
+        "text": "In any hunt, including general any-weapon seasons and short-range hunts, it is unlawful to pursue or kill big game animals with any muzzleloading rifle or musket that is less than forty-five (0.45) caliber for deer, pronghorn, mountain lion, or gray wolf.",
+        "lang": "en-CA"
+      },
+      "citation": "Idaho Big Game 2026 Seasons & Rules, Muzzleloader Caliber Requirements",
+      "scope": {
+        "speciesIds": [
+          "species:pronghorn"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "ID"
+          ],
+          "statedAs": null
+        },
+        "methods": [
+          "muzzleloader"
+        ]
+      }
+    },
+    {
+      "category": "AMMUNITION",
+      "kind": "airgun projectile",
+      "state": "REQUIRED",
+      "officialName": {
+        "text": "Airguns",
+        "lang": "en-CA"
+      },
+      "statedAs": {
+        "text": "Any airgun used for big game must use pre-charged, pneumatic power to propel a projectile (excluding shot and arrows) with unignited compressed air or gas and projectiles at least thirty-five (0.35) caliber for deer, pronghorn, mountain lion, or gray wolf.",
+        "lang": "en-CA"
+      },
+      "citation": "Idaho Big Game 2026 Seasons & Rules, Airguns",
+      "scope": {
+        "speciesIds": [
+          "species:pronghorn"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "ID"
+          ],
+          "statedAs": null
+        },
+        "methods": [
+          "airgun"
+        ]
+      }
+    },
+    {
+      "category": "SPECIES_CONDITION",
+      "kind": "mandatory hunter report",
+      "state": "REQUIRED",
+      "officialName": {
+        "text": "Mandatory Hunter Reports",
+        "lang": "en-CA"
+      },
+      "statedAs": {
+        "text": "REQUIRED FOR ALL BIG GAME TAG HOLDERS. Hunters must report within 10 days after harvest, or if the hunter does not hunt or harvest (deer, elk, and pronghorn only) within 10 days after the closing date of their season for each tag purchased.",
+        "lang": "en-CA"
+      },
+      "citation": "Idaho Big Game 2026 Seasons & Rules, Mandatory Hunter Reports (p. 9)",
+      "scope": {
+        "speciesIds": [
+          "species:pronghorn"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "ID"
+          ],
+          "statedAs": null
+        },
+        "methods": null
+      },
+      "unresolved": [
+        "Reporting is required whether or not the hunter hunted, which is unusual and easy to present as harvest-only."
+      ]
+    }
+  ],
+  "laneNotes": [
+    "Pronghorn only: Idaho's certified rules bundle covers that species alone.",
+    "Hunter orange: see the measured absence package. This booklet states none for big game."
+  ]
+}
