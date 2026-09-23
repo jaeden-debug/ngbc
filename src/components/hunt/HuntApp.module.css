@@ -1203,9 +1203,14 @@
   font-size: 0.82rem;
   line-height: 1.3;
   color: var(--ng-bone-dim);
+  /* Two lines, then an ellipsis — never one line cut mid-word. A place name
+     clipped to "Mani" reads as a broken app rather than as a long name. */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 
 /* Out of one species and back to the zone's own list — what the dropdown used

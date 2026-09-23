@@ -177,7 +177,13 @@ const scenarios = {
     await pressUseMyLocation(page);
     const resolved = await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "WMU 57", 30_000);
     check(s, "the zone the device is in resolves", resolved, String(await zoneTitle(page)));
-    check(s, "the sheet says where you are", await page.getByText("You are in this zone").isVisible().catch(() => false));
+    /* The card names the place under the zone it is in. It used to say "You
+       are in this zone" as a sentence below the header, which repeated what
+       the header had said; the owner asked for it gone, and the visually
+       hidden copy I kept surfaced beside a truncated name on their screen. */
+    check(s, "the sheet names where you are, under the zone",
+      (await page.locator("[class*=titleSubline]").first().textContent().catch(() => "")) === "Your location",
+      await page.locator("[class*=titleSubline]").first().textContent().catch(() => "(none)"));
     await chooseSpecies(page, "Ruffed grouse");
     const answered = await waitFor(page, () => /In season/.test(document.querySelector("[class*=answerStatus]")?.textContent ?? ""), 30_000);
     check(s, "choosing a species evaluates without a submit", answered, String(await answerStatus(page)));
@@ -419,7 +425,15 @@ const scenarios = {
       check(s, `${label} sheet or panel on screen with the zone`, layout.sheetVisible && layout.title === "GHA 38", layout.title);
       check(s, `${label} the map keeps most of the screen`, layout.mapShare > 0.35, layout.mapShare.toFixed(2));
       check(s, `${label} the basemap settled`, basemap === "google" || basemap === "boundary", String(basemap));
-      if (basemap === "google") check(s, `${label} Google's terms are drawn and not covered`, layout.termsVisible === true, String(layout.termsVisible));
+      /* Two different failures, told apart. `null` means Google never drew its
+         attribution at all — which under fourteen back-to-back contexts is a
+         fact about the provider and the machine, not about our layout. `false`
+         means it drew and the sheet is sitting on it, which is ours. Reporting
+         them as one check made a loaded run look like a licence defect. */
+      if (basemap === "google") {
+        check(s, `${label} Google's attribution drew`, layout.termsVisible !== null, "never drawn within 45s");
+        if (layout.termsVisible !== null) check(s, `${label} Google's terms are not covered`, layout.termsVisible === true, String(layout.termsVisible));
+      }
       check(s, `${label} no console errors`, consoleErrors.length === 0, consoleErrors.join(" | "));
       await context.close();
     }
@@ -893,6 +907,53 @@ const scenarios = {
     check(s, "a zone that does not exist is still refused on a phone", refused);
     await context.close();
   },
+
+  /*
+   * "What is true today" and "what happens next" are two facts.
+   *
+   * A row may be CLOSED and carry an opening date; it is still CLOSED. The
+   * four NextSeason kinds stay four different sentences, because each is a
+   * different thing for a hunter to know — and because collapsing any two of
+   * them would be the render-identically failure in a new direction.
+   */
+  async upcomingSeasons(browser) {
+    const s = "closed, and closed-opens-November are different answers";
+    const { context, page, consoleErrors } = await newPage(browser, { width: 390, height: 844 });
+    // A summer date in Ontario: seasons closed, several with a real next opening.
+    await page.goto(`${BASE}/hunt?zone=ca-on-wmu-57&date=2026-07-01`);
+    await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "WMU 57", 40_000);
+    await waitFor(page, () => document.querySelectorAll("[class*=speciesRowName]").length > 0, 30_000);
+    await page.waitForTimeout(1_500);
+    const rows = await page.evaluate(() => [...document.querySelectorAll("[class*=speciesRow]")]
+      .filter((row) => row.querySelector("[class*=speciesRowName]"))
+      .map((row) => ({
+        name: row.querySelector("[class*=speciesRowName]")?.textContent?.trim() ?? "",
+        state: row.getAttribute("data-state"),
+        detail: row.querySelector("[class*=speciesRowSeason]")?.textContent?.trim() ?? "",
+        nextKind: row.querySelector("[class*=speciesRowSeason]")?.getAttribute("data-next") ?? null,
+      })));
+
+    const grouse = rows.find((row) => /^Ruffed grouse/.test(row.name));
+    check(s, "a closed species with a next opening says BOTH, and stays closed",
+      grouse?.state === "CLOSED" && /^Opens /.test(grouse?.detail ?? ""), JSON.stringify(grouse));
+
+    const turkey = rows.find((row) => /^Wild turkey/.test(row.name));
+    check(s, "nothing further through a horizon is a real answer with its edge",
+      turkey?.state === "CLOSED" && /No further season certified through/.test(turkey?.detail ?? ""), JSON.stringify(turkey));
+
+    /* The distinction that matters: closed-until-further-notice and
+       we-do-not-know must never read the same. */
+    check(s, "and it never reads like an absence of knowledge",
+      turkey?.detail !== grouse?.detail && !/not certified$/.test(turkey?.detail ?? ""), JSON.stringify([grouse, turkey]));
+
+    const kinds = new Set(rows.map((row) => row.nextKind).filter(Boolean));
+    check(s, "each kind keeps its own sentence", kinds.size >= 2, [...kinds].join(","));
+    check(s, "no row merges its status into its next opening",
+      rows.every((row) => !/NOT_OPEN_BUT_UPCOMING/i.test(row.state ?? "")), JSON.stringify(rows.map((r) => r.state)));
+    check(s, "no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));
+    await context.close();
+  },
+
 
   /*
    * SAME HUNT LINK → SAME INITIAL ANSWER.

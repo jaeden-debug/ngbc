@@ -1130,9 +1130,6 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     const subline = isHuntZone && hunt
       ? hunt.origin === "device" ? "Your location" : hunt.origin === "map" ? "Your chosen spot" : placeName ?? null
       : null;
-    const relation = isHuntZone && hunt
-      ? hunt.origin === "device" ? "You are in this zone" : hunt.origin === "map" ? "Your chosen spot is in this zone" : `${placeName} is in this zone`
-      : null;
     const summaryReady = summary?.kind === "ready" ? summary.summary : null;
     const entry = species && summaryReady ? summaryReady.species.find((candidate) => candidate.speciesId === species.id) ?? null : null;
     header = (
@@ -1140,12 +1137,21 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
         <div className={styles.titleText}>
           <p className={styles.eyebrow}>{selectedLayer.jurisdictionName} · {presented.termLong ?? selectedLayer.officialTerm}</p>
           <h2 className={styles.title} id="hunt-zone-title" tabIndex={-1}>{presented.fullLabel}</h2>
-          {subline ? (
-            <p className={styles.titleSubline} data-origin={hunt?.origin}>
-              {subline}
-              <span className="ng-visually-hidden">{relation ? ` — ${relation}` : ""}</span>
-            </p>
-          ) : null}
+          {/*
+            The place, plainly, under the zone it is in.
+
+            I had kept the old sentence — "Maniwaki is in this zone" — as
+            visually-hidden text, reasoning that a subline only reads as "in
+            this zone" if you can SEE it sitting under the zone's name. It has
+            now surfaced to the owner twice, once beside a truncated place name
+            as "Mani— Mani is in this zone", so the caution cost more than it
+            bought. A place under a heading is a well-understood pattern and
+            reading order gives it to a screen reader as proximity gives it to
+            everyone else. If a screen-reader review later says the relation
+            needs stating, it should be stated in the VISIBLE text, for
+            everyone, rather than to one audience in a duplicate.
+          */}
+          {subline ? <p className={styles.titleSubline} data-origin={hunt?.origin}>{subline}</p> : null}
         </div>
         <button type="button" className={styles.iconButton} onClick={() => void share()} aria-label={`Share ${presented.fullLabel}${species ? `, ${species.displayName}` : ""}`}>
           <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="M8 10V2M5 5l3-3 3 3M3 8v5h10V8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -1203,7 +1209,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
         {!species ? (
           <>
             {summary?.kind === "ready" ? (
-              <InSeasonHere summary={summary.summary} options={speciesOptions} onChoose={chooseSpecies} />
+              <InSeasonHere summary={summaryReady ?? summary.summary} options={speciesOptions} onChoose={chooseSpecies} />
             ) : summary?.kind === "error" ? (
               <p className={styles.problem} role="status">{summary.message}</p>
             ) : (
@@ -1286,7 +1292,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
             the map` are rows in the field a hunter opens to search. Offering
             them twice is what the owner meant by "too much", and the composer
             already carries their explanation and their failure messages. */}
-        {detailed && summaryReady && !pointForEvaluation ? <ZoneSummaryDetail summary={summaryReady} options={speciesOptions} parts={storedSelected?.parts} /> : null}
+        {detailed && summaryReady && !pointForEvaluation ? <ZoneSummaryDetail summary={summaryReady} parts={storedSelected?.parts} /> : null}
         {!detailed && summaryReady && !pointForEvaluation ? (
           <button type="button" className={styles.moreButton} onClick={() => setSnap("full")}>
             Everything the rules say about {presented.fullLabel}

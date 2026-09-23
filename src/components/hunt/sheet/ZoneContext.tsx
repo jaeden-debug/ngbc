@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import type { CanonicalId } from "../../../lib/content-contract";
 import type { SpeciesSelectorOption } from "../../../lib/hunt/coverage";
 import { readableCalendarDay } from "../../../lib/hunt/date";
+import type { NextSeason } from "../../../lib/hunt/regulatory/season";
 import { EXPLORATION_WORDING, type ExplorationState as ZoneState, type SpeciesZoneSummary, type ZoneSummary } from "../../../lib/hunt/exploration/states";
 import SpeciesPrimaryImage, { SpeciesImagePlaceholder } from "../../species/SpeciesPrimaryImage";
 import styles from "../HuntApp.module.css";
@@ -82,6 +83,58 @@ function reportUnnameable(speciesId: string, where: string, zone: string): void 
 }
 
 /**
+ * What happens NEXT, said as its own fact.
+ *
+ * A row's status and its upcoming season are orthogonal (owner, 2026-09-23):
+ * "closed" and "closed, opens November 7" are different answers to a hunter
+ * and the SAME legal status. So this never merges into the state word, and
+ * there is no `NOT_OPEN_BUT_UPCOMING` here — inventing one would recreate, in
+ * the presentation layer, exactly the collapse the engine refuses.
+ *
+ * Four kinds, and they stay four sentences, because each is a different thing
+ * to know:
+ *
+ *   SEASON                   it opens on a day, and here is the day
+ *   DEPENDS_ON_HUNTER        there is a next opening; WHICH one turns on you
+ *   NONE_IN_CERTIFIED_PERIOD nothing further through a stated horizon. A real
+ *                            answer with a real edge — a time-bounded
+ *                            provincial publication cannot be projected past
+ *                            what it certifies, so this is not "unknown" and
+ *                            not a blank inviting someone to fill it
+ *   NOT_CERTIFIED            we hold no basis for saying. Never "none"
+ */
+/** States that are themselves an absence: North Ground holds nothing here. */
+const ABSENCE: ReadonlySet<string> = new Set(["UNKNOWN", "NOT_CERTIFIED"]);
+
+function nextSentence(next: NextSeason, state: string): string | null {
+  /*
+   * The same absence must not be stated twice in two vocabularies.
+   *
+   * "Not covered here" above a row reading "Next opening not certified" is one
+   * fact said twice, and a hunter reads two. This is the two-facts rule failing
+   * in the direction nobody expected: not a merge, but two independent fields
+   * each having something to say about the same nothing. `next` earns its line
+   * when the status is a real answer about today — "Closed, opens Nov 7" is two
+   * facts — and has nothing to add when the status is already the absence.
+   */
+  if (next.kind === "NOT_CERTIFIED" && ABSENCE.has(state)) return null;
+  switch (next.kind) {
+    case "SEASON": {
+      const opens = readableDay(next.opens);
+      return opens ? `Opens ${opens}` : null;
+    }
+    case "DEPENDS_ON_HUNTER":
+      return "Next opening depends on your hunt";
+    case "NONE_IN_CERTIFIED_PERIOD": {
+      const through = readableDay(next.through);
+      return through ? `No further season certified through ${through}` : null;
+    }
+    case "NOT_CERTIFIED":
+      return "Next opening not certified";
+  }
+}
+
+/**
  * "What can I hunt here?" — the zone's certified species as rows, grouped by
  * what the rules say across the zone on the day.
  *
@@ -142,7 +195,15 @@ export function InSeasonHere({ summary, options, onChoose }: {
           </span>
           <span className={styles.speciesRowText}>
             <span className={styles.speciesRowName}>{name}</span>
-            {opens && closes ? <span className={styles.speciesRowSeason}>{opens} – {closes}</span> : null}
+            {/* The season it is IN, or — when none is running — what happens
+                next. Never both: a row with a season already answers "when",
+                and the next opening after it is noise a hunter has to read
+                past. */}
+            {opens && closes
+              ? <span className={styles.speciesRowSeason}>{opens} – {closes}</span>
+              : nextSentence(entry.next, entry.state)
+                ? <span className={styles.speciesRowSeason} data-next={entry.next.kind}>{nextSentence(entry.next, entry.state)}</span>
+                : null}
           </span>
           {/* The state travels with the row as a word for assistive technology,
               and as the glyph the group heading already carries for everyone
@@ -224,38 +285,28 @@ export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, 
 }
 
 /** The long form: every certified species by state, restricted areas, requirements and facts. */
-export function ZoneSummaryDetail({ summary, options, parts }: { summary: ZoneSummary; options: SpeciesSelectorOption[]; parts?: number }) {
-  const names = new Map(options.map((option) => [option.id as string, option.displayName]));
-  const groups: ZoneState[] = ["SEASON_AVAILABLE", "SEASON_EXCEPT_AREAS", "CHECK_REQUIREMENTS", "NEEDS_VERIFICATION", "CONFLICT", "CLOSED", "UNKNOWN"];
+export function ZoneSummaryDetail({ summary, parts }: { summary: ZoneSummary; parts?: number }) {
   return (
     <div className={styles.detail}>
-      {summary.species.some((entry) => entry.state !== "UNKNOWN" && entry.state !== "NOT_CERTIFIED") ? (
-        <section aria-label="Certified species in this zone">
-          <h3 className={styles.detailTitle}>What the certified rules say for the whole zone</h3>
-          {groups.map((state) => {
-            const entries = summary.species.filter((entry) => entry.state === state);
-            if (!entries.length) return null;
-            return (
-              <div key={state} className={styles.stateGroup}>
-                <p className={styles.stateGroupTitle}><StateChip state={state} /> <span className={styles.count}>{entries.length}</span></p>
-                {/* Same rule as the rows: a name comes from the presentation
-                    path or it is said to be missing — never invented, never a
-                    raw id, and never dropped. */}
-                <p className={styles.detailText}>
-                  {entries.flatMap((entry) => {
-                    const name = nameOf(entry.speciesId, names);
-                    if (!name) { reportUnnameable(entry.speciesId, "zone summary detail", summary.zone.officialName); return []; }
-                    return [name];
-                  }).join(" · ")}
-                </p>
-              </div>
-            );
-          })}
-          <p className={styles.detailNote}>
-            “In season” means a season is open for every licence the rules recognise. It is not a licence check, and legal hours and local restrictions still apply.
-          </p>
-        </section>
-      ) : null}
+      {/*
+        The species list is NOT here any more.
+
+        This disclosure was the card's only species list until the card grew
+        its own rows. Keeping both meant one fact rendered twice on one screen
+        — and worse than duplicated, capable of DISAGREEING: two components
+        reading the summary through two references can show different species
+        or different states for the same zone at the same moment while one of
+        them is loading. That is "one state, said the same way everywhere"
+        failing in its most visible form, a hunter reading two answers to one
+        question.
+
+        What only lived here stayed: the sentence explaining what the card's
+        headings mean, the restricted areas, the special considerations and the
+        zone's own facts. Only the enumeration went.
+      */}
+      <p className={styles.detailNote}>
+        “In season” means a season is open for every licence the rules recognise. It is not a licence check, and legal hours and local restrictions still apply.
+      </p>
 
       {summary.specialAreas?.length ? (
         <section aria-label="Restricted areas in this zone">
