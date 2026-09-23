@@ -40,6 +40,7 @@ import albertaGuide from "../../../../content/regulatory/evidence/ca-ab/ca-ab-hu
 import albertaOrangeAbsence from "../../../../content/regulatory/evidence/ca-ab/ca-ab-measured-absence-orange.json" with { type: "json" };
 import ontarioOreg66598 from "../../../../content/regulatory/evidence/ca-on/ca-on-oreg-665-98.json" with { type: "json" };
 import idahoBigGame from "../../../../content/regulatory/evidence/us-id/us-id-big-game-2026.json" with { type: "json" };
+import idahoHunterOrange from "../../../../content/regulatory/evidence/us-id/us-id-hunter-orange.json" with { type: "json" };
 import idahoOrangeAbsence from "../../../../content/regulatory/evidence/us-id/us-id-measured-absence-orange.json" with { type: "json" };
 
 export type EvidenceCategory =
@@ -111,7 +112,7 @@ const PACKAGES: Record<string, EvidencePackage[]> = {
   "jurisdiction:ca-on": [ontarioOreg66598 as EvidencePackage],
   "jurisdiction:ca-mb": [manitobaGuide as EvidencePackage],
   "jurisdiction:ca-ab": [albertaGuide as EvidencePackage, albertaOrangeAbsence as EvidencePackage],
-  "jurisdiction:us-id": [idahoBigGame as EvidencePackage, idahoOrangeAbsence as EvidencePackage],
+  "jurisdiction:us-id": [idahoBigGame as EvidencePackage, idahoOrangeAbsence as EvidencePackage, idahoHunterOrange as EvidencePackage],
   "jurisdiction:ca-bc": [
     bcDesignationExemptionRegulation as EvidencePackage,
     bcHuntingLicensingRegulation as EvidencePackage,

@@ -124,6 +124,38 @@ describe("the evidence reader", () => {
     );
   });
 
+  it("closes Idaho's orange absence with a positive statement, without letting the upland rule reach big game", () => {
+    /* The measured-absence package said what would close it — "a positive
+       statement from IDFG" — and this is that statement. What makes it safe to
+       certify is that Idaho's orange requirement has a legal home, IDAPA
+       13.01.09, which governs game birds and upland game animals. Pronghorn is
+       big game under 13.01.08, so the rule does not reach it by its own terms.
+
+       The failure to guard against is the REQUIRED row leaking. A jurisdiction
+       that requires orange SOMEWHERE and not for your species is the exact
+       shape that produces "orange required" on a pronghorn answer, and it
+       would look like caution rather than like an error. */
+    const verdict = certifies("jurisdiction:us-id", "species:pronghorn", "VISIBILITY");
+    assert.equal(verdict.certified, true);
+
+    type Row = { state?: string; statedAs?: { text: string }; divergence?: { direction?: string } };
+    const reaching = rowsFor("jurisdiction:us-id", "species:pronghorn", "VISIBILITY") as Row[];
+    assert.deepEqual(reaching.map((row) => row.state), ["NOT_APPLICABLE"],
+      "only the big-game answer may reach pronghorn — the upland requirement must not");
+
+    /* And the divergence stays recorded: IDFG's own page narrows its own rule
+       to "pheasants" where IDAPA says "locations" and names no species. The
+       summary is NARROWER than the law, so following it can put a hunter in
+       breach — the one direction of summary error that is not merely untidy. */
+    const all = (rowsFor("jurisdiction:us-id", "species:wild-turkey", "VISIBILITY") as Row[])
+      .concat(reaching);
+    const upland = [...new Set(all)].find((row) => row.state === "REQUIRED");
+    if (upland) {
+      assert.match(upland.statedAs!.text, /locations where an Upland Game Bird permit is required/);
+      assert.doesNotMatch(upland.statedAs!.text, /pheasant/i, "the rule names no species; only IDFG's summary does");
+    }
+  });
+
   it("does not reach a species a row does not name", () => {
     assert.equal(certifies("jurisdiction:ca-bc", "species:white-tailed-deer", "LIMIT").certified, false);
   });

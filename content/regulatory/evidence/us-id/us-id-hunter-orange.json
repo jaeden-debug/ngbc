@@ -1,0 +1,117 @@
+{
+  "package": {
+    "jurisdictionId": "jurisdiction:us-id",
+    "preparedBy": "united-states agent",
+    "preparedOn": "2026-09-23",
+    "model": "THE_LAW_S_ANSWER",
+    "note": "Closes the HUNTER_ORANGE measured absence recorded in us-id-measured-absence-orange.json. That package said what would close it — 'a positive statement from IDFG' — and this is that statement, plus the rule the requirement actually lives in."
+  },
+  "authority": { "name": "Idaho Department of Fish and Game", "lang": "en-US" },
+  "source": {
+    "id": "source:us-id-hunter-orange-policy",
+    "title": "Idaho Hunter Orange Policy",
+    "url": "https://idfg.idaho.gov/hunt/orange",
+    "tier": "OFFICIAL_POLICY",
+    "retrievedAt": "2026-09-23",
+    "sha256": "493ce12915b44408ffa5092c7106a26bc44594c9d63517d78cb063ed41d1e63a",
+    "incorporates": [
+      {
+        "id": "source:us-id-commission-orange-policy-2008",
+        "title": "Idaho Fish and Game Commission Statements of Policy Regarding Hunter Orange, adopted November 6, 2008",
+        "url": "https://idfg.idaho.gov/sites/default/files/hunterorange.pdf",
+        "sha256": "f9066821298576262914a231898c6226ec8b2c9e508bf177854abd8b3c77375e",
+        "retrievedAt": "2026-09-23",
+        "why": "The Commission policy the web page summarizes. Adopted under Idaho Code 36-412 and IDAPA 13.01.02."
+      },
+      {
+        "id": "source:us-id-idapa-13-01-09",
+        "title": "IDAPA 13.01.09 — Rules Governing the Taking of Game Birds and Upland Game Animals",
+        "url": "https://proddfmmainsa.blob.core.windows.net/dfm-admin-website/rules/current/13/130109.pdf",
+        "sha256": "79da3feec223cefbee4348aa5b734d23ad02af60ccff06de6c14221b24c04c5a",
+        "retrievedAt": "2026-09-23",
+        "why": "Where the orange requirement legally sits — as an unlawful method of take, not as a dress code."
+      },
+      {
+        "id": "source:us-id-idapa-13-01-08",
+        "title": "IDAPA 13.01.08 — Rules Governing the Taking of Big Game Animals",
+        "url": "https://proddfmmainsa.blob.core.windows.net/dfm-admin-website/rules/current/13/130108.pdf",
+        "sha256": "2e950586d0b002382d4cc8b0269bf2aa6e44c669e9ad94a6286dda0008d20ae4",
+        "retrievedAt": "2026-09-23",
+        "why": "Checked for a big game orange requirement. See searchLimitation — the check is corroborating, not decisive."
+      }
+    ],
+    "inForce": { "state": "IN_FORCE", "statedAs": "Rule sections dated (3-31-22); policy adopted November 6, 2008 and published as current.", "asOf": "2026-09-23", "checkedOn": "2026-09-23" },
+    "licence": {
+      "statedAs": "Idaho Administrative Code and Idaho Fish and Game publications are State of Idaho government works. No reuse restriction was located on either source.",
+      "retrievedAt": "2026-09-23",
+      "permittedUse": "NOT_ESTABLISHED",
+      "licencePermitsServing": true,
+      "licencePermitsStoredCopy": true,
+      "note": "Under CLAUDE.md §8 this package encodes the RULE in North Ground's own words and does not depend on reproducing protected wording, so the licence question is not load-bearing here. Recorded as not established rather than asserted as permissive."
+    }
+  },
+  "requirements": [
+    {
+      "category": "VISIBILITY",
+      "kind": "hunter orange",
+      "state": "NOT_APPLICABLE",
+      "officialName": { "text": "Idaho Hunter Orange Policy", "lang": "en-US" },
+      "rule": "Idaho requires no hunter orange for big game. IDFG states that hunter orange is recommended but required only in enumerated situations, and big game hunting is not among them.",
+      "citation": "Idaho Hunter Orange Policy; Idaho Fish and Game Commission policy adopted November 6, 2008",
+      "scope": {
+        "speciesIds": ["species:pronghorn"],
+        "geography": { "kind": "JURISDICTION", "designations": ["ID"], "statedAs": null },
+        "methods": null,
+        "gearClasses": null
+      },
+      "basis": {
+        "why": "NOT_APPLICABLE needs a positive statement from the authority, never a measured absence. Three independent sources agree, and each was checked rather than assumed:",
+        "evidence": [
+          "IDFG states the requirement is limited — hunter orange is recommended in Idaho and required only in the situations it then enumerates. An enumeration introduced as the complete set of situations is a closed-world statement, not a silence.",
+          "The enumerated situations are hunting where an Upland Game Bird permit is required, including on IDFG properties and leases, and sponsored hunts such as organized youth hunts. Big game is not among them.",
+          "The requirement's legal home is IDAPA 13.01.09, which governs game birds and upland game animals. Pronghorn is big game under IDAPA 13.01.08, so the rule does not reach it by its own terms.",
+          "The complete Idaho Big Game 2026 Seasons & Rules brochure (416,889 characters) returned zero hits for hunter orange, blaze orange, blaze, vest, garment and visible clothing against a control that matched 379 times. Recorded in us-id-measured-absence-orange.json."
+        ]
+      },
+      "limitation": "This certifies that no orange is required for BIG GAME. It is not a finding about every Idaho species — a hunter on an Upland Game Bird permit location is covered by the rule below whatever they are hunting."
+    },
+    {
+      "category": "VISIBILITY",
+      "kind": "hunter orange",
+      "state": "REQUIRED",
+      "officialName": { "text": "IDAPA 13.01.09, Unlawful Methods of Take", "lang": "en-US" },
+      "rule": "When hunting on a location where an Upland Game Bird permit is required, at least 36 square inches of visible hunter orange must be worn above the waist. Taking upland game without it is an unlawful method of take.",
+      "statedAs": {
+        "text": "When hunting on locations where an Upland Game Bird permit is required, without wearing at least thirty-six (36) square inches of visible hunter orange above the waist.",
+        "lang": "en-US"
+      },
+      "statedAsRetainedBecause": "The scope turns on 'hunting on LOCATIONS where an Upland Game Bird permit is required' — a property of the place, not of the species or the licence the hunter holds. The wording is what carries that.",
+      "citation": "IDAPA 13.01.09.300.01.e (3-31-22)",
+      "scope": {
+        "speciesIds": [],
+        "geography": {
+          "kind": "AREAS",
+          "designations": [],
+          "statedAs": "locations where an Upland Game Bird permit is required"
+        },
+        "methods": null
+      },
+      "minimum": { "squareInches": 36, "placement": "above the waist", "statedAs": "at least thirty-six (36) square inches of visible hunter orange above the waist" },
+      "divergence": {
+        "what": "IDFG's own policy page narrows this rule when summarizing it. The page says orange is required 'while hunting PHEASANTS where the Upland Game Bird Permit is required'. The rule says 'when hunting on LOCATIONS where an Upland Game Bird permit is required' and names no species.",
+        "why_it_matters": "A person hunting something other than pheasant on such a location is inside the rule and outside the page's description of it. The rule governs.",
+        "direction": "The summary is narrower than the law, so following the summary can put a hunter in breach."
+      },
+      "unresolved": [
+        "Which locations require an Upland Game Bird permit is not established here. IDFG properties and leases are named by the policy page; the complete list has not been read, and the geography has not been acquired. No point can be tested against this rule yet."
+      ]
+    }
+  ],
+  "searchLimitation": {
+    "what": "The IDAPA searches used a PDF text extractor that recovers only simple text-show operators. It produced 34,545 characters from the 407 KB IDAPA 13.01.08 and 23,008 from the 318 KB IDAPA 13.01.09, so both extractions are INCOMPLETE.",
+    "consequence": "The zero hits for hunter orange in IDAPA 13.01.08 are NOT a sound measured absence and are not offered as one. They corroborate; they do not decide. The certification above rests on IDFG's positive statement and on the requirement's legal home being a rule that governs other species.",
+    "how_it_was_caught": "The first search ran word-boundary matching on the raw extraction and returned zero hits for 'antelope' in the big game rules, which cannot be true. The extractor was letter-spacing text ('ri ver i n koot enai'), so every multi-character term failed. Re-run whitespace-insensitively, the controls discriminate correctly — antelope 1 and bighorn 12 in the big game rules against pheasant 0, and pheasant 10 in the upland rules against antelope 0.",
+    "lesson": "A control that FAILS is the result. Reporting the target's zero from the same run would have been a measured absence produced by a broken instrument, which is worse than no search because it looks like diligence.",
+    "closedBy": "A complete extraction of IDAPA 13.01.08, or IDFG confirming no big game orange provision exists."
+  }
+}
