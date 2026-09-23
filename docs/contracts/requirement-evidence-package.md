@@ -42,9 +42,18 @@ reworded source can be re-read without disturbing the other.
     "url":   "<the exact page or PDF read>",
     "tier":  "LAW | OFFICIAL_SUMMARY | OFFICIAL_FEE_SCHEDULE | OFFICIAL_DATASET",
     "version": "2026-2028",          // the authority's own edition/version string
-    "retrievedAt": "2026-09-24",
+    "retrievedAt": "2026-09-24",     // when YOU looked
     "sha256": "<of the text you read, where you can compute it>",
-    "incorporates": ["<anything it pulls in by reference that you also read>"]
+    "incorporates": ["<anything it pulls in by reference that you also read>"],
+
+    // REQUIRED. A hash pins WHICH text; it does not pin whether that text is law.
+    "inForce": {
+      "state": "IN_FORCE | REPEALED | NOT_YET_IN_FORCE | UNSTATED",
+      "statedAs": "<the status line, VERBATIM: 'Abrogé le 1er mai 2008' / 'À jour au 1er mai 2026'>",
+      "asOf": "2026-05-01",          // the date the SOURCE says it is current to — not when you looked
+      "supersededBy": "<the instrument that replaced it, where the source names one>",
+      "checkedOn": "2026-09-24"
+    }
   },
   "requirements": [ /* rows, below */ ]
 }
@@ -84,6 +93,10 @@ reworded source can be re-read without disturbing the other.
 
   "exceptions": [ { "statedAs": { "text": "<verbatim>", "lang": "fr-CA" }, "citation": "<…>" } ],
 
+  // Only when THIS provision's status differs from the document's — an
+  // amendment printed inline that is not yet in force, or a transitional rule.
+  "provisionInForce": { "state": "NOT_YET_IN_FORCE", "statedAs": "<verbatim note>", "citation": "<…>" },
+
   // AUTHORIZATION rows only.
   "obtain":   { "channels": ["ONLINE", "PHYSICAL_VENDOR"], "infoUrl": "<authority's page>", "note": null },
   "requires": [ { "officialName": { "text": "<prerequisite's own name>", "lang": "fr-CA" }, "citation": "<…>" } ],
@@ -92,7 +105,7 @@ reworded source can be re-read without disturbing the other.
 }
 ```
 
-## Seven rules, each of which has already cost us something
+## Eight rules, each of which has already cost us something
 
 1. **`statedAs` is verbatim.** Never paraphrased, never translated, never
    tidied. If our words are presented as the ministry's, that is the trust
@@ -124,6 +137,48 @@ reworded source can be re-read without disturbing the other.
    and the portion east of Y" is a union; "the portion north of X and east of
    Y" is ONE portion with two conditions. The tell is whether the noun repeats.
    When unsure, quote it and put it in `unresolved`.
+
+## Rule 8: authenticity is not currency
+
+**Required, and it is the newest rule because it nearly cost us a wrong
+answer.** Searching for Québec's hunter-orange requirement leads to
+C-61.1, r. 22 — right title, official publisher, LégisQuébec, and the page
+says **"Ce document a valeur officielle."** It was also **repealed on 1 May
+2008**. The live requirement is r. 1, SECTION III.1, arts. 17.1–17.3, inserted
+by the same decree that repealed r. 22: the requirement MOVED, it did not
+disappear.
+
+**"Ce document a valeur officielle" attests the text's AUTHENTICITY, not its
+CURRENCY.** Every consolidated-statute site has this shape — LégisQuébec,
+e-Laws, CanLII, BC Laws, the US state codes.
+
+What makes it dangerous rather than merely wrong: the repealed text and the
+live one are **nearly identical** — same 2 580 cm², same 595–605 nm colour
+spec, same exemption structure. So citing the dead regulation produces a
+**correct-sounding answer with a dead citation**, which no amount of reading
+the text will catch. Only the status line distinguishes them, and a hash of the
+repealed text verifies perfectly forever.
+
+So:
+
+- **`source.inForce` is REQUIRED, never optional.** An omitted field and a
+  repealed source render identically at every call site that forgets one.
+- **`UNSTATED` is a permitted value and it BLOCKS certification.** Some sources
+  state no currency at all; that is an honest answer and it is not IN_FORCE.
+  Never default to in force — the absence of "repealed" is not a statement that
+  something is current, which is rule 4 in a new place.
+- **`asOf` is the source's own currency date and is NOT `retrievedAt`.** A
+  document fetched today may be current only to 2024. Those are two different
+  facts and conflating them is how a stale consolidation passes as fresh.
+- **`provisionInForce` exists because the document is not always the unit.**
+  Ontario's Time Act carries 2020 c. 28 amendments **printed inline and not in
+  force**: the document is in force, the provision is not, and an implementer
+  reading the notes would encode the wrong UTC offset. A document-level field
+  alone cannot express that.
+- **A requirement whose source is REPEALED, or whose provision is
+  NOT_YET_IN_FORCE, is never CERTIFIED.** Record it, cite the live instrument
+  where the source names one, and note the trap — because the next researcher
+  will hit the same search result.
 
 ## What "complete" means for one species
 
