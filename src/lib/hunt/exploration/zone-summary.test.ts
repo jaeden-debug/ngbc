@@ -2,8 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import type { CanonicalId, IsoDate } from "../../content-contract/index.ts";
 import { regulatoryEntryFor } from "../regulatory/registry.ts";
-import { layerById, zoneIdFor } from "../zone-layers.ts";
-import { clearZoneSummaryCache, summarizeZone, zoneStatesForSpecies, ZoneSummaryError } from "./zone-summary.ts";
+import { ZONE_LAYERS, layerById, officialNameOf, zoneIdFor } from "../zone-layers.ts";
+import { clearZoneSummaryCache, stateOf as engineStateOf, summarizeZone, zoneStatesForSpecies, ZoneSummaryError } from "./zone-summary.ts";
 
 const species = (id: string) => id as CanonicalId<"species">;
 
@@ -228,4 +228,64 @@ test("a species whose answer needs the hunter does not state a next date", async
   for (const row of depends) {
     assert.equal(row.next.kind, "DEPENDS_ON_HUNTER", row.speciesId);
   }
+});
+
+/* ── The bulk path and individual evaluation cannot disagree ── */
+
+test("bulk and individual evaluation agree, in every rules-certified jurisdiction", async () => {
+  /*
+   * THE RISK THIS WHOLE FEATURE CARRIES. A fast path that quietly answers
+   * differently from the slow one is the worst thing we could ship, because
+   * both look right in isolation and nobody compares them in the product.
+   *
+   * One jurisdiction proves the mechanism; all of them prove the claim. This
+   * walks every served layer that has certified rules, several zones in each,
+   * and every species the jurisdiction recognises — comparing the bulk row
+   * against a direct `entry.evaluate` for the same inputs.
+   *
+   * Both sides are mapped through the SAME exported `stateOf`. What is under
+   * test is that the two paths reach the same engine outcome, not that the
+   * mapping is right; re-deriving the mapping here would let a mapping bug
+   * hide behind a second copy of itself.
+   */
+  clearZoneSummaryCache();
+  const date = "2026-11-10";
+  let compared = 0;
+  const jurisdictions = new Set<string>();
+
+  for (const layer of ZONE_LAYERS.filter((candidate) => candidate.serving)) {
+    const entry = regulatoryEntryFor(layer.jurisdictionId);
+    if (!entry || !layer.certifiedDesignations?.size) continue;
+    jurisdictions.add(layer.jurisdictionId);
+
+    /* A spread rather than the first few, so a zone-ordering quirk cannot make
+       the sample unrepresentative. */
+    const all = [...layer.certifiedDesignations];
+    const picks = [all[0], all[Math.floor(all.length / 2)], all.at(-1)!];
+
+    for (const designation of picks) {
+      const summary = await summarizeZone({ layerId: layer.id, designation }, date);
+      for (const row of summary.species) {
+        const outcome = await entry.evaluate(
+          { latitude: Number.NaN, longitude: Number.NaN, date: date as IsoDate, speciesId: row.speciesId, answers: {} },
+          { status: "RESOLVED", zoneId: zoneIdFor(layer, designation), jurisdictionId: layer.jurisdictionId,
+            officialName: officialNameOf(layer, designation), sourceId: layer.sourceId, message: "" },
+          { verifiedAt: new Date(0).toISOString(), scope: "ZONE" },
+        );
+        const where = `${layer.id} ${designation} ${row.speciesId}`;
+        assert.equal(row.state, engineStateOf(outcome), `state disagrees: ${where}`);
+
+        /* `next` too — it is derived from the engine, so it must travel with it. */
+        const expectedNext = outcome.completeness === "NEEDS_INPUT"
+          ? { kind: "DEPENDS_ON_HUNTER" }
+          : outcome.regulation.next;
+        assert.deepEqual(row.next, expectedNext, `next disagrees: ${where}`);
+
+        compared += 1;
+      }
+    }
+  }
+
+  assert.ok(jurisdictions.size >= 5, `expected every rules-certified jurisdiction; walked ${jurisdictions.size}`);
+  assert.ok(compared > 100, `expected a real sample; compared ${compared}`);
 });

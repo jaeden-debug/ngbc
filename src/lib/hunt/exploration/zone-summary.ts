@@ -62,7 +62,16 @@ function zoneResolutionFor(layer: ZoneLayer, designation: string): ZoneResolutio
 
 const ZONE_SCOPE_PHRASE = "where in it you hunt.";
 
-function stateOf(outcome: RegulatoryOutcome): ExplorationState {
+/**
+ * The one mapping from an engine outcome to a map state.
+ *
+ * Exported so the bulk-versus-individual test can map BOTH sides through it.
+ * That is deliberate and not circular: what the test proves is that the two
+ * paths reach the same ENGINE OUTCOME, not that this mapping is correct — the
+ * mapping has its own tests. Re-deriving it inside the test would let a
+ * mapping bug hide behind a second copy of itself.
+ */
+export function stateOf(outcome: RegulatoryOutcome): ExplorationState {
   if (outcome.completeness === "NEEDS_INPUT") return "CHECK_REQUIREMENTS";
   if (outcome.exceptInside?.length && outcome.regulation.status === "NEEDS_VERIFICATION") return "SEASON_EXCEPT_AREAS";
   switch (outcome.regulation.status) {
