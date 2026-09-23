@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import type { CanonicalId, IsoDate } from "../../content-contract/index.ts";
 import { regulatoryEntryFor } from "../regulatory/registry.ts";
+import { contentRepository } from "../../content/repository.ts";
+import { speciesById } from "../coverage.ts";
 import { ZONE_LAYERS, layerById, officialNameOf, zoneIdFor } from "../zone-layers.ts";
 import { clearZoneSummaryCache, stateOf as engineStateOf, summarizeZone, zoneStatesForSpecies, ZoneSummaryError } from "./zone-summary.ts";
 
@@ -288,4 +290,45 @@ test("bulk and individual evaluation agree, in every rules-certified jurisdictio
 
   assert.ok(jurisdictions.size >= 5, `expected every rules-certified jurisdiction; walked ${jurisdictions.size}`);
   assert.ok(compared > 100, `expected a real sample; compared ${compared}`);
+});
+
+/* ── Identity is the server's; naming is the presentation layer's ── */
+
+test("every speciesId a zone summary returns resolves through the presentation path", async () => {
+  /*
+   * THE INVARIANT THAT REPLACES A SERVER-SUPPLIED NAME. The response carries
+   * `speciesId` and no display name, because a server-side name becomes a
+   * second naming system the moment there are two locales — and it would drift
+   * from the canonical path exactly as a second rules interpretation drifts
+   * from the engine.
+   *
+   * That only holds if every id actually resolves. AND THERE IS NO FALLBACK:
+   * an id that does not resolve is a contract or data defect that fails here,
+   * never a hole plugged with a placeholder. A placeholder would be a species
+   * North Ground cannot name appearing as though it could — and it would keep
+   * the name path silently working until a locale was added and nobody could
+   * say which system was in use.
+   *
+   * Resolution deliberately omits the slug fallback in `speciesName`: this
+   * asks whether the canonical path answers, not whether something can be
+   * printed.
+   */
+  clearZoneSummaryCache();
+  const unresolvable: string[] = [];
+  let checked = 0;
+
+  for (const layer of ZONE_LAYERS.filter((candidate) => candidate.serving)) {
+    if (!regulatoryEntryFor(layer.jurisdictionId) || !layer.certifiedDesignations?.size) continue;
+    const designation = [...layer.certifiedDesignations][0];
+    const summary = await summarizeZone({ layerId: layer.id, designation }, "2026-11-10");
+    for (const row of summary.species) {
+      const resolved = speciesById(row.speciesId)?.displayName
+        ?? (await contentRepository.getSpecies(row.speciesId))?.title;
+      if (!resolved) unresolvable.push(`${layer.jurisdictionId} ${row.speciesId}`);
+      checked += 1;
+    }
+  }
+
+  assert.ok(checked > 0, "this test needs species to check; it proves nothing on an empty set");
+  assert.deepEqual(unresolvable, [], "these ids cannot be named by the presentation path");
 });
