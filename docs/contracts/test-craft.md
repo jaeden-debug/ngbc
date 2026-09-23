@@ -1,7 +1,7 @@
 # Contract — Test craft
 
-**Status:** written 2026-09-23, from seven rules each earned by a specific
-failure on this project.
+**Status:** written 2026-09-23, from rules each earned by a specific failure
+on this project, under one parent rule they are all cases of.
 **Scope:** how a check is built, so that it checks rather than agrees.
 
 > These began in `docs/contracts/relative-season-dates.md` because the first of
@@ -13,6 +13,40 @@ list is easy to trim and a list of failures cannot be trimmed without first
 arguing that the failure is acceptable.
 
 ---
+
+## The parent rule: a check must be decided by the property it names
+
+*Added 2026-09-23 by Hunt overhaul, as the family the rules below belong to.*
+
+Every failure in this document is one case of a single fault: **a check whose
+result is determined by something other than the property it names.** It runs,
+it reports, and what it reports is about something else. Three ways it shows up,
+and the middle one is the most dangerous:
+
+- **It can only pass.** A hard-coded example that expired; four assertions that
+  were never in the suite's glob at all and were counted in green reports for a
+  day. Dead weight — it protects nothing and nobody notices.
+- **It can only fail.** A visibility check on a map label, written as
+  `elementFromPoint` over the label's centre. Map labels are `pointer-events:
+  none`, so that call *never* returns one — the check reported "covered"
+  whether the label was covered or not. **Worse than dead weight, because it
+  recruits someone into changing working code to satisfy it.**
+- **It measures the wrong subject.** A geometry floor read 253 where the value
+  was 1425: the number was real and the thing it was a number *about* was a
+  half-loaded map. A viewport comparison that could never see the bug it was
+  aimed at, because on a desktop emulator the two viewports it compared are
+  always equal. Two z-index walkers that returned confident values for the
+  wrong elements.
+
+The question that catches all three, before writing the assertion: **what,
+other than the property I am naming, could decide this result?** A timing
+window, a pointer-events rule, an emulator's equality, a glob — each of those
+has produced a green or red that was about itself.
+
+And the move when a derived number disagrees with your model: **print the raw
+structure, not a second derived number.** Two derivations can share an
+assumption. The ancestor chain, printed once, settled in a single run what two
+z-index walkers had each got confidently wrong.
 
 ## A test's example must be derived, not hard-coded
 
