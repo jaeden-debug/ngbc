@@ -23,6 +23,7 @@ import { general, type Limitation } from "../limitation.ts";
 import { legalTimeFor, legalTimeNotCertified, type LegalTimeRule } from "./legal-time.ts";
 import { timeZoneAtPoint } from "../time-zone.ts";
 import { resolveRelativeWindow, type RelativeWindow } from "./relative-date.ts";
+import type { NextSeason } from "./season.ts";
 import { federalAreaAt, type FederalArea } from "./federal-areas.ts";
 import { FEDERAL_GROUPS, groupsForSpecies, type FederalGroup } from "./federal-groups.ts";
 
@@ -107,6 +108,64 @@ function openingYearOf(window: NonNullable<FederalRule["window"]>, date: IsoDate
  * the season that opened in October, not to one that has not started yet, so
  * both are tested and the containing one is returned.
  */
+/**
+ * When a federal season next opens, across the rules that apply here.
+ *
+ * FEDERAL SEASONS CARRY NO EXPIRY, and that is the fact this rests on. The
+ * Migratory Birds Regulations are standing law, not an annual summary: the
+ * bundle declares no certified period, and `insideWindow` already compares
+ * month and day with no year bound at all — it answers for 2030 today. So the
+ * next OCCURRENCE of a stated season is what the regulation says, whatever
+ * year it falls in, and computing it is consistent with how this engine
+ * already reads these rules rather than a new claim about the future. The
+ * answer carries `verifiedAt` and its source, which is how every standing-law
+ * claim here is qualified.
+ *
+ * `NONE_IN_CERTIFIED_PERIOD` therefore never applies to a federal season —
+ * there is no period for it to be outside of.
+ */
+function federalNextOpening(rules: readonly FederalRule[], date: IsoDate): NextSeason {
+  const year = Number(date.slice(0, 4));
+  const openings: string[] = [];
+
+  for (const rule of rules) {
+    if (rule.declaredNoSeason) continue;
+    /* This year's occurrence if it is still ahead, otherwise next year's. */
+    for (const candidate of [year, year + 1]) {
+      let opens: string | undefined;
+      if (rule.window) {
+        opens = `${candidate}-${String(rule.window.from.month).padStart(2, "0")}-${String(rule.window.from.day).padStart(2, "0")}`;
+        /* A leap-year branch applies only in its own kind of year. */
+        if (rule.leapYear !== undefined && isLeapYear(candidate) !== rule.leapYear) opens = undefined;
+      } else if (rule.relativeWindow) {
+        opens = resolveRelativeWindow(rule.relativeWindow, candidate)?.from;
+      }
+      if (opens && opens > date) { openings.push(opens); break; }
+    }
+  }
+
+  if (!openings.length) return { kind: "NOT_CERTIFIED" };
+  const soonest = openings.sort()[0];
+  /* The window that opens then, so the answer carries both of its ends. */
+  const closes = rules
+    .map((rule) => {
+      if (rule.window) {
+        const opensThis = `${soonest.slice(0, 4)}-${String(rule.window.from.month).padStart(2, "0")}-${String(rule.window.from.day).padStart(2, "0")}`;
+        if (opensThis !== soonest) return null;
+        const endYear = rule.window.crossesYear ? Number(soonest.slice(0, 4)) + 1 : Number(soonest.slice(0, 4));
+        return `${endYear}-${String(rule.window.to.month).padStart(2, "0")}-${String(rule.window.to.day).padStart(2, "0")}`;
+      }
+      if (rule.relativeWindow) {
+        const days = resolveRelativeWindow(rule.relativeWindow, Number(soonest.slice(0, 4)));
+        return days?.from === soonest ? days.to : null;
+      }
+      return null;
+    })
+    .find((value): value is string => value !== null);
+
+  return closes ? { kind: "SEASON", opens: soonest, closes } : { kind: "NOT_CERTIFIED" };
+}
+
 function relativeDaysFor(window: RelativeWindow, date: IsoDate): { from: string; to: string } | null {
   const year = Number(date.slice(0, 4));
   for (const opening of window.crossesYear ? [year, year - 1] : [year]) {
@@ -135,6 +194,8 @@ function insideWindow(window: NonNullable<FederalRule["window"]>, date: IsoDate)
 
 export interface FederalAnswer {
   status: RegulatoryStatus;
+  /** When this group's season next opens here. See `federalNextOpening`. */
+  next: NextSeason;
   summary: string;
   limitations: string[];
   requirements: string[];
@@ -170,6 +231,7 @@ export function evaluateFederal(
   const groups = groupsForSpecies(speciesId);
   if (!groups.length) {
     return {
+      next: { kind: "NOT_CERTIFIED" },
       status: "UNKNOWN",
       summary: "This species is not a migratory game bird the federal regulations name.",
       limitations: [], requirements: [],
@@ -179,6 +241,7 @@ export function evaluateFederal(
   const area = federalAreaAt(jurisdictionId, point, designation);
   if (area.status !== "RESOLVED") {
     return {
+      next: { kind: "NOT_CERTIFIED" },
       status: area.status === "NEEDS_VERIFICATION" ? "NEEDS_VERIFICATION" : "UNKNOWN",
       summary:
         area.status === "NEEDS_VERIFICATION"
@@ -206,6 +269,7 @@ export function evaluateFederal(
   );
   if (!here.length) {
     return {
+      next: { kind: "NOT_CERTIFIED" },
       status: "UNKNOWN",
       summary: `North Ground holds no certified federal rule for this species in ${area.area.name}.`,
       limitations: [`The Migratory Birds Regulations may set one; North Ground has not encoded it. Federal area: ${area.area.statedAs}`],
@@ -219,6 +283,9 @@ export function evaluateFederal(
   const closed = here.find((rule) => rule.declaredNoSeason);
   if (closed && here.every((rule) => rule.declaredNoSeason)) {
     return {
+      /* A declared closure is the authority saying there is no season here;
+         any other group rule for this area still states when one opens. */
+      next: federalNextOpening(here, date),
       status: "CLOSED",
       summary: `The Migratory Birds Regulations declare no open season for ${closed.groupStatedAs} in ${area.area.name}.`,
       limitations: [], requirements, area: area.area,
@@ -246,6 +313,7 @@ export function evaluateFederal(
     );
     if (refused.length) {
       return {
+        next: { kind: "NOT_CERTIFIED" },
         status: "UNKNOWN",
         summary:
           `North Ground cannot say whether ${here[0].groupStatedAs} is open in ${area.area.name} on this date.`,
@@ -256,6 +324,7 @@ export function evaluateFederal(
       };
     }
     return {
+      next: federalNextOpening(here, date),
       status: "CLOSED",
       summary:
         `${date} is outside every federal open season North Ground holds for ${here[0].groupStatedAs} in ${area.area.name}.`,
@@ -265,6 +334,7 @@ export function evaluateFederal(
 
   const group = FEDERAL_GROUPS.find((entry) => entry.id === open.groupId)!;
   return {
+    next: federalNextOpening(here, date),
     status: "CONDITIONAL",
     summary:
       `Federal open season for ${open.groupStatedAs} in ${area.area.name}: ${(open.window ?? open.relativeWindow)!.statedAs}.`,
@@ -401,13 +471,28 @@ export function composeFederalWithProvincial(
 
   return {
     /*
-     * A composed answer needs the first date BOTH layers permit, which is not
-     * either side's own next opening — a federal season opening while the
-     * provincial one is shut is not a date anyone may hunt. Neither side
-     * computes a next opening yet, so composing them cannot invent one; when
-     * one does, this must become that intersection and not a passthrough.
+     * `next` COMPOSES BY THE RULE THE STATUS ALREADY USES, and not by a new one.
+     *
+     * The composed STATUS takes the province's where the province has certified
+     * a binding restriction, and the federal one otherwise. `next` follows
+     * exactly that, because doing anything else would make the two fields
+     * disagree about which layer is governing.
+     *
+     * Where the province has certified nothing (the usual case for migratory
+     * birds), there is no provincial constraint to intersect with and the
+     * federal season is the whole of what North Ground knows — carrying the
+     * same caveat already in `limitations`, that the province's own rules also
+     * apply and are not certified.
+     *
+     * Where the province HAS certified rules, the honest answer is the first
+     * date BOTH layers permit, and that cannot be had from two next-opening
+     * VALUES: a federal opening in October while the province is shut until
+     * November is not a date anyone may hunt, and neither side's own next says
+     * so. It needs both window SETS, which neither result exposes. Until they
+     * do this stays NOT_CERTIFIED, which understates what we could know and
+     * never overstates it. It must not become a passthrough.
      */
-    next: { kind: "NOT_CERTIFIED" },
+    next: provincialCertified ? { kind: "NOT_CERTIFIED" } : federal.next,
     status,
     summary: federal.summary,
     ...(federal.season && status === "CONDITIONAL" ? { season: federal.season } : {}),

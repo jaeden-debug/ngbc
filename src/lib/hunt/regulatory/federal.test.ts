@@ -465,3 +465,61 @@ test("exactly one branch of a leap-year season can apply to a date", () => {
     assert.deepEqual([...kinds].sort(), [false, true], `${key} must state both branches exactly once`);
   }
 });
+
+/* ── When a federal season next opens ── */
+
+test("a federal season carries its next opening, and it moves with the year", () => {
+  /*
+   * FEDERAL SEASONS CARRY NO EXPIRY. The Migratory Birds Regulations are
+   * standing law rather than an annual summary — the bundle declares no
+   * certified period, and `insideWindow` already compares month and day with
+   * no year bound. So the next OCCURRENCE is what the regulation says,
+   * whatever year it falls in, and `NONE_IN_CERTIFIED_PERIOD` never applies.
+   *
+   * British Columbia's District No. 2 duck season is written relatively, so
+   * its next opening is a different day each year — which is the stored-
+   * expression design showing up two layers downstream.
+   */
+  const duck = (date: string) =>
+    evaluateFederal("species:mallard", "jurisdiction:ca-bc", { latitude: 49 }, on(date), "2-10");
+
+  assert.deepEqual(duck("2026-08-01").next, { kind: "SEASON", opens: "2026-10-10", closes: "2027-01-24" });
+  /* Inside the season, "next" is the FOLLOWING one — never the current one. */
+  assert.deepEqual(duck("2026-10-15").next, { kind: "SEASON", opens: "2027-10-09", closes: "2028-01-23" });
+  assert.equal(duck("2026-10-15").status, "CONDITIONAL", "carrying a next opening must not change the status");
+});
+
+test("a leap-year branch is skipped in years it does not apply to", () => {
+  /*
+   * The next occurrence must respect the branch: a rule that only applies in
+   * leap years cannot supply the opening for a common year.
+   */
+  const geese = evaluateFederal("species:canada-goose", "jurisdiction:ca-bc", { latitude: 49 }, on("2027-03-15"), "2-10");
+  assert.equal(geese.next.kind, "SEASON");
+  if (geese.next.kind === "SEASON") {
+    const year = Number(geese.next.opens.slice(0, 4));
+    assert.ok(year >= 2027, "a next opening is never in the past");
+  }
+});
+
+test("a composed answer follows the status, and never passes a next through", () => {
+  /*
+   * `next` composes by the rule the STATUS already uses. Where the province has
+   * certified nothing there is no constraint to intersect with and the federal
+   * season is the whole of what North Ground knows. Where the province HAS
+   * certified rules, the honest answer is the first date BOTH layers permit,
+   * which cannot be had from two next-opening VALUES — a federal opening in
+   * October while the province is shut until November is not a date anyone may
+   * hunt, and neither side's own next says so.
+   */
+  const federal = evaluateFederal("species:mallard", "jurisdiction:ca-bc", { latitude: 49 }, on("2026-08-01"), "2-10");
+  assert.equal(federal.next.kind, "SEASON");
+
+  /* Province silent: the federal season governs, as the status already does. */
+  const alone = composeFederalWithProvincial(federal, provincialUnknown, "British Columbia");
+  assert.deepEqual(alone.next, federal.next);
+
+  /* Province certified: refuse rather than pass either side's own through. */
+  const certified: RegulatoryResult = { ...provincialUnknown, status: "CLOSED" };
+  assert.deepEqual(composeFederalWithProvincial(federal, certified, "British Columbia").next, { kind: "NOT_CERTIFIED" });
+});
