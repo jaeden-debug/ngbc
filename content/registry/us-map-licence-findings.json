@@ -3,6 +3,66 @@
   "purpose": "What each state's own publisher says about reusing its hunting-unit map data, recorded BEFORE any rules work is spent on that state. A state whose licence does not permit commercial use is not researched further; it waits for a person to ask its publisher. Silence is never permission.",
   "findings": [
     {
+      "state": "ME",
+      "checkedOn": "2026-09-23",
+      "geography": {
+        "term": "Wildlife Management District (WMD)",
+        "service": "https://services1.arcgis.com/RbMX0mRVOFNTdLzd/arcgis/rest/services/WMD/FeatureServer/0",
+        "unitCount": 30,
+        "definedBy": "written descriptions"
+      },
+      "licence": {
+        "statedAs": "These boundaries are for reference purposes only. For precise boundary delineation, please refer to the written boundary description. Boundaries and imagery may not overlay precisely due to digitizing error, differences in projections, and the scale at which these boundaries were drawn. Where any discrepancies occur between a mapped feature and the written description, the written description takes precedence.\n\nThese data are provided by the Maine Department of Inland Fisheries and Wildlife solely for individual use or the use of a company for the purpose stated in your request for the data. These data may not be distributed or sold to other users without the written permission of the Commissioner of the Department of Inland Fisheries and Wildlife. Boundary lines should not be used for legal purposes.",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/23d48d9e32294c8d9bf86d52a877b2f2?f=json",
+        "retrievedAt": "2026-09-23",
+        "sha256": "sha256:b4b648d86898e4dfd25476c5e09863f6dbf4d91eb644d7b595676d5f8bee6246",
+        "permittedUse": "RESTRICTED",
+        "redistribution": "PROHIBITED",
+        "attribution": "Maine Department of Inland Fisheries and Wildlife (the dataset's own copyright line; attribution does not cure the restriction).",
+        "note": "Refused twice over. The grant is scoped to \"individual use or the use of a company for the purpose stated in your request for the data\" \u2014 it presupposes a data request naming a purpose, and North Ground has made none \u2014 and redistribution is then forbidden by name: the data \"may not be distributed or sold to other users without the written permission of the Commissioner\". Only the Commissioner can lift this. Recorded with the geography so the ask is concrete: 40 polygon rows are 30 districts (0-29), WMD 25 being ten separate parts and WMD 26 two \u2014 parts are not districts, the trap Nova Scotia already set once. MDIFW states that where the map and the written description disagree, \"the written description takes precedence\". Two items a person should raise in the same letter: an undocumented WMD 0 that appears in the data but not in the published list of 29, and a Moose_Hunting_Zones layer internally named MooseZones2008 with an empty copyright field, which is NEEDS_VERIFICATION rather than usable. A Maine GeoLibrary reuse policy that search results attribute permissive language to returns 404; it is not cited and was not relied on."
+      }
+    },
+    {
+      "state": "MI",
+      "checkedOn": "2026-09-23",
+      "geography": {
+        "term": "Deer Management Unit (DMU), one of 15 game geographies on one service",
+        "service": "https://services3.arcgis.com/Jdnp1TjADvSDxMAX/arcgis/rest/services/WILDGameSpeciesManagementUnitsAndZonesOPENDATA/FeatureServer/3",
+        "unitCount": 115,
+        "definedBy": "written descriptions"
+      },
+      "licence": {
+        "statedAs": "This dataset is a public record and, as more fully described below, there are no restrictions on the use, reproduction, or distribution of this dataset. Notwithstanding the foregoing, the public release of this dataset should not be construed, expressed or implied, as to whether any use constitutes a legally permissible purpose.  It is the sole responsibility of the user to determine if the data is usable for their purposes. This dataset is provided \u201cAS IS\u201d and on an \u201cAS AVAILABLE\u201d basis.  The State of Michigan (\u201cState\u201d) makes no warranties, express or implied, regarding the accuracy, adequacy, reliability, timeliness, or completeness of this dataset. The State also does not make any warranties, express or implied, for the continued quality, accuracy, or currency of this dataset after it has been downloaded, nor the quality or accuracy of any analyses or re-uses of this dataset. THE STATE DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS DATASET AND ANY INFORMATION PROVIDED TO YOU, INCLUDING THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT OF PROPRIETARY RIGHTS. THE STATE WILL NOT BE LIABLE, REGARDLESS OF THE FORM OF ACTION, WHETHER IN CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY OR BY STATUTE OR OTHERWISE, FOR ANY CLAIM FOR CONSEQUENTIAL, INCIDENTAL, INDIRECT, OR SPECIAL DAMAGES, INCLUDING WITHOUT LIMITATION LOST PROFITS AND LOST BUSINESS OPPORTUNITIES, RELATED TO THE ACCESS OR USE OF THIS DATASET. IN NO EVENT WILL THE STATE BE LIABLE FOR ANY AMOUNTS THAT MAY RESULT FROM THE ACCESS OR USE OF THIS DATASET, REGARDLESS OF THE FORM OF ACTION, WHETHER IN CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY, OR BY STATUTE OR OTHERWISE. You forever release the State, its departments, subdivisions, officers, and employees from all claims, rights, actions, demands, damages, liabilities, expenses and fees, which arise out of or relate to your access or use of this dataset. You must defend, indemnify and hold the State, its departments, subdivisions, officers, and employees harmless, without limitation, from and against all actions, claims, losses, liabilities, damages, costs, attorney fees, and expenses (including those required to establish the right to indemnification) arising out of or relating to your access or use of this dataset. The State reserves the right to modify or remove this dataset for any reason, without notice, at any time. Nothing in these terms constitutes or is intended to be a limitation upon, or waiver of, any privileges and immunities that apply to the State. These terms are governed by and interpreted under the laws of the State of Michigan without regard to conflict of laws provisions. These terms do not apply to other materials or content, including maps or logos, that may be located on the site or portal containing this dataset and that may be protected by intellectual property rights such copyright, trademark, or patent. Nothing in these terms should be construed, expressed or implied, as impacting any existing rights or licenses in such materials or content, if any.",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/358541d7964d4a9c9d2d45217ca06588?f=json",
+        "retrievedAt": "2026-09-23",
+        "sha256": "sha256:39eed3af4e6b7d1bde71f7d4d8c9caedda50ce179d35eb7ac85312c3674e4db9",
+        "permittedUse": "PUBLIC_DOMAIN",
+        "redistribution": "PERMITTED",
+        "attribution": "Michigan Department of Natural Resources (no attribution is required; the credit is carried because provenance is shown for every layer). The grant does not extend to State maps, logos or marks, so none is shown.",
+        "note": "A grant, stated plainly: \"This dataset is a public record and \u2026 there are no restrictions on the use, reproduction, or distribution of this dataset.\" Use and redistribution are both permitted, which makes Michigan the first U.S. state whose geometry North Ground could lawfully store \u2014 though the owner's standing decision keeps U.S. layers live-service only, so that permission is held in reserve rather than acted on. Read on the dataset's own ArcGIS item; michigan.gov refuses automated clients, so the terms were read in the browser pane rather than by script. Two facts to carry into the build, not blockers: the Wildlife Conservation Order ch. XII written descriptions are the law and the mapped units are \"condensed summaries\", and the still-published LimitedFirearmZoneBoundary layer was eliminated by regulation for 2026 and must not be drawn. A point at the Lansing capitol returns THREE overlapping DMUs (033 Ingham County, 486 Southern Lower Peninsula, 333 Lansing CWD core) \u2014 a legitimate nesting of county, multicounty and disease geography, not a data conflict, and a state that will exercise overlapping-zone resolution properly."
+      }
+    },
+    {
+      "state": "MN",
+      "checkedOn": "2026-09-23",
+      "geography": {
+        "term": "Deer Permit Area (DPA)",
+        "service": "https://enterprise.gisdata.mn.gov/aghost/rest/services/us_mn_state_dnr/bdry_deer_permit_areas/FeatureServer/0",
+        "unitCount": 130,
+        "definedBy": "written descriptions"
+      },
+      "licence": {
+        "statedAs": "The Minnesota Department of Natural Resources (MNDNR) grants to you a personal, non-exclusive, non-transferrable, limited license to extract information from, use, reproduce, distribute, and modify data and/or software, in source and binary forms, with the acceptance of the following: Terms and Conditions of Use \u2014 Data and/or software may be used for the creation of derivative works; however data and/or software in its entirety may not be resold, distributed or displayed for commercial purposes or otherwise. In the event that another more specific license agreement issued by the MNDNR is expressly associated with the data and/or software, the terms of the other license agreement prevail, and the terms expressed in this more general license agreement are null and void. The entire right, title and interest, including without limitation, all ownership rights and intellectual property rights in and to the data and/or software shall remain with the MNDNR. You agree to abide by copyright law and all other applicable laws of the United States as they apply to the data and software. An MNDNR copyright notice will be included, as appropriate; or MNDNR must be acknowledged as having contributed to any derivative work. ... Map and geographic data should not be interpreted as establishing or describing legal boundaries or legal access and should not be used for navigational purposes. Map and geographic data should be used for reference only. Users of the data are responsible for verifying public land or water boundaries by observing boundary signs and markers, consulting official surveys and maps, and contacting local MNDNR offices. This license does not give the right to use the MNDNR name, marks, or any of its logos and is not an endorsement of the user's products. In States that do not allow the exclusion or limitation of incidental or consequential damages, you may not use these data and/or software.",
+        "url": "https://www.dnr.state.mn.us/sitetools/data_software_license_plain.html",
+        "retrievedAt": "2026-09-23",
+        "sha256": "sha256:77d126416d16127cf8edbc4d74505decf7b381c0b5e32a943ac4447d1cab18c4",
+        "permittedUse": "RESTRICTED",
+        "redistribution": "PROHIBITED",
+        "attribution": "Minnesota Department of Natural Resources (acknowledgement in words; the licence separately withholds the right to use the MNDNR name, marks or logos, so no DNR badge is shown).",
+        "note": "The one state so far whose licence closes the door rather than staying silent. MNDNR grants a \"personal, non-exclusive, non-transferrable, limited license\" and then says the data \"in its entirety may not be resold, distributed or displayed for commercial purposes or otherwise\". North Ground is a commercial product, so that sentence reaches the live display as well as a stored copy: this is not a gap a person can close by reading more carefully, it is a refusal that only MNDNR can lift in writing. Recorded with the geography that would have been used so the ask is concrete. Minnesota also defines its permit areas by written road and river descriptions (Minn. R. 6232.4700, 6236.0810) and says its own map data \"should not be interpreted as establishing or describing legal boundaries\" \u2014 so even with permission the text, not the polygon, would be the law. Minnesota publishes no waterfowl or goose zone GIS at all; those zones are text-only and any boundary North Ground drew would be its own, never the authority's."
+      }
+    },
+    {
       "state": "ND",
       "checkedOn": "2026-09-23",
       "geography": {
@@ -39,7 +99,27 @@
         "permittedUse": "UNRESOLVED",
         "redistribution": "UNRESOLVED",
         "attribution": null,
-        "note": "South Dakota's permission is expressly scoped to “personal or informational use”, which does not reach a commercial product, and it speaks of the website rather than the GIS services. Separately, the deer-unit service answers only when sent a particular Referer and returns 403 otherwise: that is an access control, and North Ground does not route around it. Its units are also defined by county in S.D. Admin. R. 41:06:21:02, with exclusions the GIS attributes do not carry. A person must ask SDGFP."
+        "note": "South Dakota's permission is expressly scoped to \u201cpersonal or informational use\u201d, which does not reach a commercial product, and it speaks of the website rather than the GIS services. Separately, the deer-unit service answers only when sent a particular Referer and returns 403 otherwise: that is an access control, and North Ground does not route around it. Its units are also defined by county in S.D. Admin. R. 41:06:21:02, with exclusions the GIS attributes do not carry. A person must ask SDGFP."
+      }
+    },
+    {
+      "state": "WI",
+      "checkedOn": "2026-09-23",
+      "geography": {
+        "term": "Deer Management Unit, with zone and metro subunit",
+        "service": "https://dnrmaps.wi.gov/arcgis/rest/services/WM_CWD/WM_DMU_MSU_DMZ_Ext/MapServer/2",
+        "unitCount": 111,
+        "definedBy": "GIS"
+      },
+      "licence": {
+        "statedAs": "This data is for informational purposes only and may not have been prepared for or be suitable for legal, engineering or surveying purposes. The user is solely responsible for verifying the accuracy of information before using for any purpose. By using this product for any purpose user agrees to be bound by all disclaimers found here: https://dnr.wisconsin.gov/legal.",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/8a8fdd26d8874f1f969356bdba815341?f=json",
+        "retrievedAt": "2026-09-23",
+        "sha256": "sha256:695f0ada4928e5c0087e4633805b8f842ad5b4715fad4e6c04756a35cf9811bc",
+        "permittedUse": "UNRESOLVED",
+        "redistribution": "UNRESOLVED",
+        "attribution": "Wisconsin Department of Natural Resources - Division of Fish, Wildlife & Parks - Bureau of Wildlife Management (the dataset's own copyrightText; a credit line, not a satisfied licence).",
+        "note": "Silence, recorded as silence. Everything WDNR publishes about this dataset is a warranty disclaimer: nothing grants commercial use, redistribution or attribution terms, and there is no CC licence, state open-data licence or public-domain dedication. The ISO 19115 metadata sets BOTH access and use constraints to \"otherRestrictions\" and leaves the restriction text empty \u2014 the restrictive code is on with nothing said, which is the opposite of a grant. Wisconsin is otherwise one of the easiest states to serve (units mirror county lines and NR 10.28 defines them by map rather than by text), which is exactly why the licence had to be read first."
       }
     }
   ]

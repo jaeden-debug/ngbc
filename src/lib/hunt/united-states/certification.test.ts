@@ -19,7 +19,7 @@ test("a state's map and its rules are certified separately, and neither implies 
   // Map: parity is clean, and the publisher still grants no reuse.
   assert.equal(montana.map.status, "LICENCE_BLOCKED");
   assert.ok(montana.map.layers.every((layer) => layer.disagreements === 0 && (layer.points ?? 0) > 0));
-  assert.match(montana.map.blockedBy!, /No reuse grant recorded for .*us-mt-deer-elk-hd.*us-mt-upland/);
+  assert.match(montana.map.detail!, /No reuse grant recorded for .*us-mt-deer-elk-hd.*us-mt-upland/);
   // Certified rules therefore do not serve.
   assert.equal(montana.regulations.rulesServing, false);
 
@@ -52,11 +52,11 @@ test("an absent intelligence layer is never counted as missing coverage", () => 
 
 test("only states with evidence are reported, and every one is counted once per lane", () => {
   const summary = unitedStatesCertification();
-  assert.deepEqual(statesWithEvidence(), ["CO", "ID", "MT", "ND", "SD", "WY"]);
+  assert.deepEqual(statesWithEvidence(), ["CO", "ID", "ME", "MI", "MN", "MT", "ND", "SD", "WI", "WY"]);
   for (const lane of [summary.totals.map, summary.totals.regulations, summary.totals.intelligence]) {
     assert.equal(Object.values(lane).reduce((total, count) => total + count, 0), summary.states.length);
   }
-  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["CO", "MT", "ND", "SD", "WY"]);
+  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["CO", "ME", "MN", "MT", "ND", "SD", "WI", "WY"]);
   /* Served is counted from the layers themselves, never asserted as a
      constant: a state counts as served exactly when its layers say so. */
   const servingStates = new Set(US_LAYER_IDS.filter((id) => layerById(id)!.serving).map((id) => id.slice("layer:us-".length, id.indexOf("-", "layer:us-".length)).toUpperCase()));
@@ -65,17 +65,41 @@ test("only states with evidence are reported, and every one is counted once per 
 
 test("a state whose publisher refuses us is blocked by name, not left looking unexplored", async () => {
   const { licenceRecordIsIntact } = await import("../source-licence.ts");
-  for (const code of ["ND", "SD"]) {
-    const finding = mapLicenceFindingFor(code)!;
-    assert.ok(finding, `${code} has no recorded map licence`);
+  /* Every recorded finding, not a list written here: a state added to the
+     registry is held to this without anyone remembering to add it. */
+  const recorded = statesWithEvidence().map((code) => [code, mapLicenceFindingFor(code)!] as const).filter(([, finding]) => finding);
+  assert.ok(recorded.length >= 4, "the licence-first registry is empty");
+  for (const [code, finding] of recorded) {
     assert.ok(licenceRecordIsIntact(finding.licence as never), `${code}: the recorded hash does not match the wording`);
-    assert.equal(finding.licence.permittedUse, "UNRESOLVED");
     const state = certificationFor(code);
-    // No layer is registered for either, and they are still not "UNAVAILABLE":
-    // we know exactly what stands in the way, in the publisher's own words.
-    assert.equal(state.map.status, "LICENCE_BLOCKED");
-    assert.match(state.map.blockedBy!, /a person must resolve it with the publisher/);
-    assert.match(state.map.blockedBy!, new RegExp(finding.licence.statedAs.slice(0, 40).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    const permits = ["COMMERCIAL_PERMITTED", "PUBLIC_DOMAIN"].includes(finding.licence.permittedUse);
+    if (permits) {
+      /* A cleared state is waiting on work, and says so — it is never
+         reported as blocked, and never as merely unexplored either. */
+      assert.match(state.map.detail!, /Nothing blocks this state but the work/, `${code} is cleared`);
+      continue;
+    }
+    // No layer is registered for any of the rest, and they are still not
+    // "UNAVAILABLE": we know what stands in the way, in the publisher's words.
+    assert.equal(state.map.status, "LICENCE_BLOCKED", `${code} is blocked, not unexplored`);
+    assert.match(state.map.detail!, new RegExp(finding.licence.statedAs.slice(0, 40).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
     assert.equal(state.regulations.status, "UNAVAILABLE", "no rules work is spent on a state we may not draw");
   }
+});
+
+test("a refusal and a silence are blocked differently, because they are undone differently", () => {
+  /* Minnesota answered: its licence forbids commercial display and
+     redistribution outright. Wisconsin said nothing at all. Both block, but
+     reporting them identically would make a refusal look like an errand. */
+  const minnesota = mapLicenceFindingFor("MN")!;
+  assert.equal(minnesota.licence.permittedUse, "RESTRICTED");
+  assert.equal(minnesota.licence.redistribution, "PROHIBITED");
+  assert.match(certificationFor("MN").map.detail!, /terms refuse this use; only a written exception/);
+
+  const wisconsin = mapLicenceFindingFor("WI")!;
+  assert.equal(wisconsin.licence.permittedUse, "UNRESOLVED");
+  assert.match(certificationFor("WI").map.detail!, /no grant is stated either way; a person must ask/);
+
+  // Neither is ever mistaken for a grant.
+  for (const code of ["MN", "WI"]) assert.notEqual(certificationFor(code).map.status, "SERVED");
 });

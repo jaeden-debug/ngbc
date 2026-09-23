@@ -22,7 +22,7 @@ for (const jurisdiction of states) {
   const code = jurisdiction.code.slice(3);
   const entry = withEvidence.get(code);
   if (!entry) continue;
-  const detail = entry.map.blockedBy
+  const detail = entry.map.detail
     ?? `${entry.regulations.rules} rules, ${entry.regulations.species.length} species, ${entry.regulations.cases} cases`;
   console.log(`${code.padEnd(6)} ${entry.map.status.padEnd(16)} ${entry.regulations.status.padEnd(13)} ${entry.intelligence.status.padEnd(13)} ${detail}`);
 }

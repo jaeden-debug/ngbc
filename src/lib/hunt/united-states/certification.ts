@@ -61,7 +61,8 @@ export interface StateCertification {
       serving: boolean;
     }>;
     /** Why it is not further along, in the terms a person would need to act on. */
-    blockedBy: string | null;
+    /** Why this state stands where it does: what blocks it, or that only the work does. */
+    detail: string | null;
   };
   regulations: {
     status: RegulationsCertification;
@@ -108,6 +109,19 @@ export function statesWithEvidence(): string[] {
   ])].sort();
 }
 
+/**
+ * What would actually unblock a state, which is not the same question for all
+ * of them. A publisher that says nothing may simply never have been asked; a
+ * publisher that forbids commercial use has answered, and reading its terms
+ * again will not change the answer. Reporting both as "ask the publisher"
+ * would make a refusal look like an errand.
+ */
+function remedyFor(finding: MapLicenceFinding): string {
+  return finding.licence.permittedUse === "RESTRICTED" || finding.licence.redistribution === "PROHIBITED"
+    ? "the publisher's own terms refuse this use; only a written exception from it would change that."
+    : "no grant is stated either way; a person must ask the publisher.";
+}
+
 export function certificationFor(code: string): StateCertification {
   const state = code.toUpperCase();
   const layerIds = US_LAYER_IDS.filter((layerId) => stateOfLayer(layerId) === state);
@@ -150,14 +164,18 @@ export function certificationFor(code: string): StateCertification {
         : layers.every((entry) => entry.serving)
           ? "SERVED"
           : "CERTIFIED";
-  const blockedBy = map === "LICENCE_BLOCKED"
+  const detail = map === "LICENCE_BLOCKED"
     ? (layerIds.length === 0 && finding
-        ? `${finding.licence.permittedUse} for ${finding.geography.term} (${finding.geography.unitCount ?? "?"} units), read ${finding.licence.retrievedAt}: "${finding.licence.statedAs.slice(0, 120)}…" — a person must resolve it with the publisher.`
+        ? `${finding.licence.permittedUse} for ${finding.geography.term} (${finding.geography.unitCount ?? "?"} units), read ${finding.licence.retrievedAt}: "${finding.licence.statedAs.slice(0, 120)}…" — ${remedyFor(finding)}`
         : `No reuse grant recorded for ${unlicensed.join(", ")}; a person must resolve it with the publisher.`)
     : map === "IN_DEVELOPMENT"
       ? "No clean live-parity certification recorded."
       : map === "UNAVAILABLE"
-        ? "No reviewed geography service."
+        /* A cleared licence is the one kind of "not built yet" worth telling
+           apart from the other 43: nothing stands in the way but the work. */
+        ? (finding && findingPermits
+            ? `Licence permits reuse (${finding.licence.permittedUse}), read ${finding.licence.retrievedAt}; ${finding.geography.term} reviewed (${finding.geography.unitCount ?? "?"} units). Nothing blocks this state but the work.`
+            : "No reviewed geography service.")
         : null;
 
   const stateBundles = bundles[state] ?? [];
@@ -173,7 +191,7 @@ export function certificationFor(code: string): StateCertification {
 
   return {
     code: state,
-    map: { status: map, layers, blockedBy },
+    map: { status: map, layers, detail },
     regulations: {
       status: regulations,
       bundles: stateBundles.map((bundle) => bundle.bundleId),
@@ -216,6 +234,6 @@ export function unitedStatesCertification(): UnitedStatesCertificationSummary {
     },
     licenceBlocked: states
       .filter((entry) => entry.map.status === "LICENCE_BLOCKED")
-      .map((entry) => ({ code: entry.code, blockedBy: entry.map.blockedBy! })),
+      .map((entry) => ({ code: entry.code, blockedBy: entry.map.detail! })),
   };
 }
