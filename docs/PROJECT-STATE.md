@@ -1408,6 +1408,30 @@ capability was missing.** The failure mode is silent in both directions: the
 refusal looked principled, and the new encoding would have looked like
 progress.
 
+### A refusal whose stated reason restates its own trigger
+
+*2026-09-23.* The sibling of conservatism-has-a-failure-mode, and harder to see,
+because it survives review by looking like two independent safeguards.
+
+British Columbia answered UNKNOWN for a species in four Management Units, and a
+test defended it: *"a certified species in an UNCERTIFIED unit still answers
+UNKNOWN."* That reads as a second, independent reason to withhold an answer —
+the unit is not certified, so say nothing.
+
+It is not independent. `certifiedDesignations` is documented as **"designations
+with at least one certified rule"**, so those units are uncertified *because* no
+row names them. "We will not say closed because the unit is uncertified" and
+"the unit is uncertified because it has no rules" are **the same fact twice**,
+and withholding the authority's own statement on that basis is the refusal
+citing itself as its own justification.
+
+**The tell is that the reason and the trigger are the same observation in
+different vocabulary.** Ask what would have to be true for the safeguard to
+fire while the trigger did not — if nothing could, it is one safeguard doubled,
+and the second copy is buying nothing while costing a real answer.
+
+Here it cost 391 species × unit pairs a certified CLOSED.
+
 ### Conservatism has a failure mode, and it does not announce itself
 
 *2026-09-23.* Québec writes one season for "Districts C and D". District C is
