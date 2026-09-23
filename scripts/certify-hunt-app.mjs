@@ -726,6 +726,7 @@ const scenarios = {
       const response = await page.request.get(link);
       check(s, "the brief opens", response.status() === 200, `${response.status()} ${link}`);
     }
+
     await context.close();
   },
 
@@ -782,6 +783,102 @@ const scenarios = {
     await page.goto(`${BASE}/hunt?zone=ca-bc-mu-999-99`);
     const refused = await waitFor(page, () => /not one North Ground draws/.test(document.body.innerText), 45_000);
     check(s, "a zone that does not exist is still refused on a phone", refused);
+    await context.close();
+  },
+
+  /* The narrowest screen anyone still hunts with. Pinned BEFORE the answer is
+     rebuilt around structured rows, so a regression in the rebuild shows up as
+     a failure here rather than as something a hunter finds outdoors. */
+  async narrowScreen(browser) {
+    const s = "320px, where the map must still be a map";
+    const { context, page, consoleErrors } = await newPage(browser, { width: 320, height: 700 });
+
+    await page.goto(`${BASE}/hunt`);
+    await mapReady(page);
+    const opening = await page.evaluate(() => ({
+      doc: document.documentElement.scrollWidth,
+      win: window.innerWidth,
+    }));
+    check(s, "the opening state does not scroll sideways", opening.doc <= opening.win, JSON.stringify(opening));
+
+    await page.goto(`${BASE}/hunt?zone=ca-qc-zone-10o&species=ruffed-grouse`);
+    await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "Zone 10 West", 40_000);
+    await waitFor(page, () => Boolean(document.querySelector("[class*=answer] [data-state], [class*=answerStatus]")), 30_000);
+    const answered = await page.evaluate(() => ({ doc: document.documentElement.scrollWidth, win: window.innerWidth }));
+    check(s, "and neither does a full answer", answered.doc <= answered.win, JSON.stringify(answered));
+
+    /* §41A: the map is sized to what the sheet leaves, so the sheet never hides
+       the provider's attribution — which is a licence term, not a detail. */
+    // Google draws its own attribution after the map settles; wait for it rather than race it.
+    await waitFor(page, () => [...document.querySelectorAll("a")].some((a) => /Terms/i.test(a.textContent ?? "")), 30_000);
+    const attribution = await page.evaluate(() => {
+      const link = [...document.querySelectorAll("a")].find((a) => /Terms/i.test(a.textContent ?? ""));
+      const sheet = document.querySelector("[class*=sheet]");
+      if (!link || !sheet) return null;
+      const l = link.getBoundingClientRect();
+      const b = sheet.getBoundingClientRect();
+      return { onScreen: l.top >= 0 && l.bottom <= window.innerHeight && l.right <= window.innerWidth, aboveSheet: l.bottom <= b.top + 1 };
+    });
+    check(s, "the provider's attribution is on screen and clear of the sheet", attribution?.onScreen && attribution?.aboveSheet, JSON.stringify(attribution));
+
+    // The two map controls are what a hunter reaches for; neither may be under the sheet.
+    for (const name of ["Show my location on the map", "Map layers and season colours"]) {
+      const reachable = await page.evaluate((label) => {
+        const button = [...document.querySelectorAll("button")].find((b) => b.getAttribute("aria-label") === label);
+        if (!button) return null;
+        const r = button.getBoundingClientRect();
+        if (r.width < 44 || r.height < 44) return { fail: "too small", w: r.width, h: r.height };
+        const hit = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+        return { covered: !button.contains(hit) && hit !== button, onScreen: r.right <= window.innerWidth && r.bottom <= window.innerHeight };
+      }, name);
+      check(s, `"${name}" is reachable`, reachable && !reachable.fail && reachable.onScreen && !reachable.covered, `${name}: ${JSON.stringify(reachable)}`);
+    }
+
+    /* Nothing waits below the screen for a drag: whatever is longer than the
+       sheet's resting height scrolls inside it. */
+    const scrolls = await page.evaluate(() => {
+      const body = document.querySelector("[class*=sheetBody]");
+      if (!body) return null;
+      if (body.scrollHeight <= body.clientHeight) return { needed: false };
+      body.scrollTop = body.scrollHeight;
+      return { needed: true, moved: body.scrollTop > 0 };
+    });
+    check(s, "the sheet scrolls to its end at its resting height", scrolls && (scrolls.needed === false || scrolls.moved), JSON.stringify(scrolls));
+
+    // §40: a state is never colour alone.
+    const stated = await page.evaluate(() => (document.querySelector("[class*=answerStatus], [class*=answer] [data-state]")?.textContent ?? "").trim());
+    check(s, "the status is a word, not a colour", /[A-Za-z]{3,}/.test(stated), stated);
+
+    /* The point answer, on the same narrow screen, and its provenance: the
+       sources are COLLAPSED, but present in the document a crawler and an
+       answer engine receive, and they open like any disclosure. */
+    await page.getByRole("button", { name: "Check an exact spot" }).click();
+    await page.getByRole("button", { name: "Check this spot" }).click();
+    await waitFor(page, () => /In season/.test(document.querySelector("[class*=answerStatus]")?.textContent ?? ""), 30_000);
+    const details = page.getByRole("button", { name: /^Details/ }).first();
+    if (await details.count()) await details.click();
+    await waitFor(page, () => Boolean(document.querySelector("details#hunt-answer-sources")), 30_000);
+    const sources = await page.evaluate(() => {
+      const box = document.querySelector("details#hunt-answer-sources");
+      if (!box) return null;
+      const before = { open: box.open, chars: box.textContent?.length ?? 0 };
+      box.querySelector("summary")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+      return { ...before, opens: box.open };
+    });
+    check(s, "the sources are collapsed, in the HTML, and open on a click",
+      sources && sources.open === false && sources.chars > 200 && sources.opens === true, JSON.stringify(sources));
+    /* And the limitations are NOT collapsed, because this flat list still mixes
+       point-specific notes with standing ones. It collapses when each line
+       carries its own scope, not before. */
+    const wall = await page.evaluate(() => {
+      const heading = [...document.querySelectorAll("h3")].find((h) => /does not resolve/i.test(h.textContent ?? ""));
+      return heading ? { shown: true, inDetails: Boolean(heading.closest("details")) } : { shown: false };
+    });
+    check(s, "and the limitations are still read openly, not behind a disclosure",
+      wall.shown === false || wall.inDetails === false, JSON.stringify(wall));
+    const overflowAfter = await page.evaluate(() => ({ doc: document.documentElement.scrollWidth, win: window.innerWidth }));
+    check(s, "the long answer still does not scroll sideways", overflowAfter.doc <= overflowAfter.win, JSON.stringify(overflowAfter));
+    check(s, "no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));
     await context.close();
   },
 };

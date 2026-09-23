@@ -1116,11 +1116,11 @@
 .optionGroupAction:hover { color: var(--ng-cream); }
 
 /* Orientation stays one line; the rest is a disclosure that is still in the HTML. */
-.aboutDetails {
+.aboutDetails, .disclosure {
   border-top: 1px solid var(--ng-glass-border);
   padding: 2px 0;
 }
-.aboutDetails > summary {
+.aboutDetails > summary, .disclosure > summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1133,8 +1133,8 @@
   cursor: pointer;
   list-style: none;
 }
-.aboutDetails > summary::-webkit-details-marker { display: none; }
-.aboutDetails > summary::after {
+.aboutDetails > summary::-webkit-details-marker, .disclosure > summary::-webkit-details-marker { display: none; }
+.aboutDetails > summary::after, .disclosure > summary::after {
   content: "";
   width: 8px;
   height: 8px;
@@ -1144,8 +1144,17 @@
   opacity: 0.6;
   transition: transform 160ms ease;
 }
-.aboutDetails[open] > summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
-@media (prefers-reduced-motion: reduce) { .aboutDetails > summary::after { transition: none; } }
+.aboutDetails[open] > summary::after, .disclosure[open] > summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
+@media (prefers-reduced-motion: reduce) {
+  .aboutDetails > summary::after, .disclosure > summary::after { transition: none; }
+}
+
+/* The summary's own parts: a label, an optional note under it, an optional
+   count. At 320px the label wraps and the count stays on its line. */
+.disclosureLabel { display: flex; flex-direction: column; gap: 2px; min-width: 0; text-align: left; }
+.disclosureNote { font-size: 0.74rem; font-weight: 500; color: var(--ng-bone-dim); letter-spacing: 0.01em; }
+.disclosureCount { flex: none; font-size: 0.78rem; font-weight: 600; color: var(--ng-bone-dim); }
+.disclosureBody { padding: 2px 2px 12px; }
 
 /* Layers: a label and a control per row, nothing to read. */
 .controlRow {

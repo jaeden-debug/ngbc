@@ -1896,12 +1896,60 @@ person is never asked to type latitude and longitude for normal use.
 
 - **Location** alone resolves the official management zone, its jurisdiction and
   any boundary warning. That is a real question with a real answer.
-- **Date** makes time-specific regulatory evaluation possible.
-- **Species** completes it, producing the full Hunt overview.
+- **Date** makes time-specific regulatory evaluation possible — and a zone and a
+  date are already a useful answer: *what is open here today*.
+- **Species** is a DRILL-DOWN into that answer, not the price of getting one.
+
+*Amended 2026-09-23 (owner).* A resolved zone must be useful without choosing a
+species. Location → zone → what is open here today, automatically. Requiring a
+species first asks a hunter to name the thing they opened the app to find out.
 
 A zone chosen without a point gets the whole-zone answer (zone cards, above); an
 exact point — a place, the device's position or a confirmed pin — gets the point
-answer. Nothing about legality is shown from a zone alone.
+answer. A zone's answer is always zone-scoped: it never becomes a point answer,
+and it never says a rule applies TO THE HUNTER, because no hunter has been
+described yet.
+
+## Hunt answers before it explains
+
+*Decided 2026-09-23 (owner), after using the live app at Maniwaki.*
+
+The result was thorough and backwards: paragraphs where a hunter wanted to scan.
+A hunter should feel ready after a few seconds of looking.
+
+Primary surfaces carry the answer as STRUCTURED data — status, dates, legal
+hours, methods, requirements, critical restrictions. Regulatory explanation and
+provenance move behind progressive disclosure. **Long-form legal prose never
+replaces a concise operational answer where the same information can be
+represented accurately as structured data.** Where it cannot — where the
+authority's own words are the fact — the words stay, quoted, attributed, and in
+the language the authority published them in (§47).
+
+Every sentence on a Hunt surface is classified, and the test is one question:
+*could a hunter who ignored this break the law, be unsafe, or be turned away —
+today, here?*
+
+- **Critical operational warning** — yes. It sits beside the status. **A
+  critical blocker is never progressive disclosure**: "IN SEASON ⚠ Permit
+  required" is right; a permit requirement inside a collapsed section is not.
+- **Contextual limitation** — true only under a condition the system can
+  actually test (near a mapped boundary, inside a published restricted area,
+  one licence class). Shown only when that condition holds, attached to what it
+  qualifies. A warning that fires everywhere is a warning nobody reads, and then
+  it is missing when it is specific.
+- **General limitation** — true everywhere, always. Said once, collapsed, and
+  never diluted: the statement that North Ground does not describe harvesting
+  under treaty or Aboriginal rights is kept verbatim.
+- **Source detail** — the authority's own caveat about its own data. It belongs
+  in Sources, attached to the source it describes.
+- **Redundant** — deleted. A line repeating what the header already says is not
+  thoroughness.
+
+Fifty closed species must never bury six open ones. A summary groups by state,
+names its counts in words, and keeps UNKNOWN and uncertified species reachable
+and labelled as themselves — never folded into "not open", because an absent
+answer drawn as a closed season is the failure this whole product exists to
+avoid.
 
 ## Date entry
 
