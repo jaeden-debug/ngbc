@@ -2145,6 +2145,76 @@ inspectable. User-facing classes are **VERY HIGH, HIGH, MODERATE, LOW** and
 LIMITED DATA, RANGE ONLY** or **NO HEAT-MAP DATA**. Broad range geometry stays a
 range and is never fabricated into local opportunity.
 
+## Species evidence architecture
+
+*Decided 2026-09-22.*
+
+Every statement Hunt makes about where animals are rests on evidence of a
+declared kind, at a declared resolution, from a declared date. The contracts are
+in `src/lib/hunt/intelligence/`; they are deterministic, server-side, and no
+surface may reach around them.
+
+**The governing rule: the resolution of a visualisation may never exceed the
+resolution of its evidence.** A province-wide estimate is never painted per
+management unit, and a range polygon is never shaded into hotspots. Precisions
+that do not nest — a county and an ecoregion — are refused rather than ordered.
+The vocabulary is the spatial registry's own geography LEVEL (ZONE,
+SPECIES_ZONE, JURISDICTION, COUNTY), extended for grids, rasters, polygons,
+corridors and points; a grid or raster without its publisher's cell size is a
+shape, not a resolution.
+
+**Five coexisting evidence tiers**, which never replace one another: measured
+and reported by the authority; estimated by the authority; known range; a North
+Ground habitat model; and context about the place. Each tier declares what it
+may be used to CLAIM and what it may never say. Harvest is a record of hunting,
+not a count of animals. Range says occurs somewhere in here, never more here
+than there. Suitable habitat is not presence, abundance or density. Public land
+and access are never evidence about an animal.
+
+**A rate travels with its denominator or it is not published.** Only three
+divisions are declared, each stating what the result means. A success rate is
+the share of hunters who took an animal, so it is published only where the
+authority published it — harvest over hunters is harvest per hunter and is
+labelled that. A population estimate comes only from the authority's own survey
+or model. A rate is never taken across geographies that do not nest. These rules
+bind labels as well as arithmetic, because a legend is where a total quietly
+becomes a rate.
+
+**When evidence applies is separate from when it was measured.** Evidence does
+not expire; it ages, and its age is stated. What goes stale is North Ground's
+confidence that it is still the current published figure. A period that has not
+begun is never shown as though it had.
+
+**Coverage is machine-readable and always says something.** AVAILABLE, PARTIAL,
+STALE, RESTRICTED, UNRESOLVED, UNAVAILABLE or IN_RESEARCH, mapped to the
+registries already in use rather than forked. A layer that cannot paint explains
+why, because a blank map reads to a hunter as "there are no animals here".
+UNAVAILABLE is a finding about the data; IN_RESEARCH means nobody has looked.
+
+**North Ground habitat models are reproducible or unpublished.** Every input is
+named with the hash of the exact data used, the combining rule is stated, and
+the output is no finer than the coarsest input. Where the research supports only
+qualitative associations the model stays classified and says so; where it
+supports weights, every weight is written down and sums to one. A model whose
+inputs may not be stored cannot promise to be re-runnable and says so.
+
+**Sensitive locations are coarsened or withheld, visibly.** The policy is
+source-declared, never guessed, and the contract exists before any
+field-observation feature may use it. A licence refusal and a protection
+refusal both surface as RESTRICTED rather than as silence.
+
+**Selection is explainable by construction.** The layer drawn is the strongest
+tier that can carry the claim at the resolution requested on the date asked;
+every rejected candidate keeps its reason, and the "Why am I seeing this?"
+record is produced by that same decision rather than written separately. It
+carries what is shown, the authority, when it was measured, how finely it
+describes the ground, what it cannot tell you, and what was not used. It never
+carries a legal status.
+
+**Requests are viewport-scoped.** Bounds and a feature ceiling are part of the
+question, not an optimisation; no national evidence dataset is sent to a
+browser.
+
 ## Crown/Public Land and the land model
 
 Canada uses the layer name **CROWN LAND** where the authority does. United
