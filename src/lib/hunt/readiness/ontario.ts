@@ -2,6 +2,7 @@ import { jurisdictionTodayIso } from "../date.ts";
 import { majorGameImplementBasis, majorGameImplementsOnDate, majorGameSeasonsInUnit } from "../regulatory/major-game.ts";
 import { evaluateSeason, parseSeasonPhrase } from "../regulatory/season.ts";
 import { METHOD_LABELS } from "./format.ts";
+import { authorizationRows } from "./requirements.ts";
 import { resolveAuthorizations, type HunterAnswers } from "./resolve.ts";
 import type {
   AmmunitionRestriction, AuthorizationRecord, LegalMethod, MethodClass, OrangeResult, Provenance,
@@ -363,6 +364,10 @@ export function resolveOntarioReadiness(
     ...base,
     coverage: "VERIFIED",
     authorizations,
+    /* The same authorizations as structure. Additive: the checklist shape
+       above is what Hunt overhaul renders today, and both are produced from
+       one resolution so they cannot disagree. */
+    requirements: authorizationRows(authorizations, bundle.officialInfoUrl),
     orange: ontarioOrange(input.speciesId, input.zoneId, input.date),
     ...ontarioMethodsAndAmmunition(input.speciesId, input.zoneId, input.date, input.answers),
     ...(vendorDirectory

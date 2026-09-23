@@ -45,6 +45,41 @@ describe("readiness coverage", () => {
     assert.ok(Object.keys(bundle.orange.provenance).length > 0);
   });
 
+  it("measures answers a hunter could receive, not records we hold", () => {
+    /* CLAUDE.md §8: capability reporting measures DELIVERABLE answers. This
+       report previously counted a species as covered when a requirement record
+       existed, without asking whether any hunter could reach it — which is the
+       clause landing on my own work. A readiness answer is delivered only
+       where the regulatory engine can produce a season, because the checklist
+       appears only for a CONDITIONAL result. */
+    const [ontario] = readinessCoverageReport();
+    assert.equal(ontario.officialUnits, 151);
+    for (const entry of ontario.capabilities) {
+      assert.equal(entry.deliverable.of, ontario.officialUnits! * Object.keys(bundle.speciesMethods).length);
+      assert.ok(entry.deliverable.pairs <= entry.deliverable.of, `${entry.capability}: more deliverable than possible`);
+      // Encoded but undeliverable must be impossible to read as covered.
+      if (entry.state === "NOT_CERTIFIED") assert.equal(entry.deliverable.pairs, 0, `${entry.capability}`);
+      else assert.ok(entry.deliverable.pairs > 0, `${entry.capability} is certified but reaches nobody`);
+    }
+    /* The number that matters, and the reason this test exists: AUTHORIZATION
+       is complete for every species and still cannot be delivered in 334 of
+       1208 species-unit pairs. "8/8 species" alone would have read as done. */
+    const authorization = ontario.capabilities.find((entry) => entry.capability === "AUTHORIZATION")!;
+    assert.equal(authorization.species.certified, authorization.species.claimed);
+    assert.ok(authorization.deliverable.pairs < authorization.deliverable.of);
+    assert.match(authorization.note!, /cannot be answered because no certified season reaches them/);
+  });
+
+  it("attributes a deliverability shortfall to the lane that owns it", () => {
+    /* The gap is the regulatory engine's unit coverage, not missing
+       requirement data. Saying so keeps someone from being sent to fix the
+       requirement bundle, which is already complete. */
+    const method = readinessCoverageReport()[0].capabilities.find((entry) => entry.capability === "METHOD")!;
+    assert.equal(method.state, "CERTIFIED");
+    assert.match(method.note!, /no certified season reaches them/);
+    assert.doesNotMatch(method.note!, /method table/i, "the shortfall is not a method-data problem");
+  });
+
   it("states are per capability, never one word for the jurisdiction", () => {
     const [ontario] = readinessCoverageReport();
     const states = new Set(ontario.capabilities.map((entry) => entry.state));

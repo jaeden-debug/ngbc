@@ -22,6 +22,8 @@
  * same way Ontario's Outdoors Card + small game licence + turkey tag do.
  */
 
+import type { RequirementRow } from "./requirements.ts";
+
 /* ── Identity ────────────────────────────────────────────────────────────── */
 
 /**
@@ -307,6 +309,19 @@ export interface ReadinessResult {
   vendorSearch?: { directoryId: string; attribution: string };
   /** What this checklist does not cover, so its silence is never read as "none". */
   limitations: string[];
+  /**
+   * The same requirements as STRUCTURE, in the shared statement vocabulary.
+   *
+   * Added beside the existing fields rather than replacing them: five
+   * regulatory producers write the prose form, so it is retired only when all
+   * of them have moved. Until then both exist and must agree, which is
+   * asserted rather than assumed.
+   *
+   * Currently AUTHORIZATION only. A category absent from here is NOT a claim
+   * that nothing is required in it — that is what `coverage` reports, and why
+   * a missing row must never be read as "nothing required".
+   */
+  requirements?: RequirementRow[];
 }
 
 /* ── The requirement vocabulary ──────────────────────────────────────────── */
