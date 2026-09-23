@@ -1,4 +1,5 @@
 import { legalTimeNotCertified } from "./legal-time.ts";
+import { harvestLimitsFrom } from "./harvest-limit.ts";
 import { nextOpening } from "./season.ts";
 import { general, sourceDetail, type Limitation } from "../limitation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
@@ -812,6 +813,10 @@ export function evaluateConditional(
     })).values()];
     const seasonsToday = [...new Set(everyInSeason.map((rule) => `${rule.seasonLabel}, ${rule.seasonPhrase}`))];
     const limitsRule = everyInSeason[0];
+    /* Both kinds were required together, so a season limit could not be
+       expressed and a daily limit with no possession figure was dropped
+       entirely. `harvestLimits` below carries each kind the authority states,
+       on its own. This pair is kept until every consumer has moved. */
     const limits = limitsRule.limits && typeof limitsRule.limits.daily === "number" && typeof limitsRule.limits.possession === "number"
       ? { daily: limitsRule.limits.daily, possession: limitsRule.limits.possession }
       : undefined;
@@ -841,6 +846,7 @@ export function evaluateConditional(
       status: "CONDITIONAL",
       ...(season ? { season } : {}),
       ...(limits ? { limits } : {}),
+      harvestLimits: harvestLimitsFrom(limitsRule.limits),
       ...(authorization ? { authorization } : {}),
       summary:
         `The certified ${version} season for ${species} in ${unit} includes this date (${seasonsToday.join("; or ")}). ` +
@@ -907,7 +913,13 @@ export function evaluateConditional(
       ...result,
       status,
       season: undefined,
+      /* The bundle holds the distinction in the authority's words — BC's
+         {"bag":2,"statedAs":"2 (season bag limit)"} versus
+         {"daily":5,"possession":15}. The old pair could not express a season
+         limit, so it stayed prose; it is structured now and the prose stays
+         too. */
       limits: undefined,
+      harvestLimits: harvestLimitsFrom(rules[0]?.limits),
       legalTime: legalTimeNotCertified(
       "Legal hunting hours are not stated for a point inside a territory closed to all hunting.",
       "the responsible authority",

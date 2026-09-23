@@ -23,16 +23,28 @@
 
 import bundle from "../../../../content/regulatory/readiness/ca-on-2026.json" with { type: "json" };
 import { REGULATORY_REGISTRY } from "../regulatory/registry.ts";
+import { harvestLimitsFrom, limitKinds } from "../regulatory/harvest-limit.ts";
 import { timeZoneAtPoint } from "../time-zone.ts";
 
 /** The nine facts a hunt needs before Ready to Hunt is complete for it. */
 export type ReadinessFact =
   | "SEASON" | "LICENCE" | "METHODS" | "AMMUNITION" | "HUNTER_ORANGE"
-  | "LEGAL_HOURS" | "DAILY_LIMIT" | "POSSESSION_LIMIT" | "CRITICAL_EXCEPTIONS";
+  | "LEGAL_HOURS"
+  /**
+   * "Have all applicable harvest limits for this hunt been resolved?" — NOT
+   * "does this species have a daily limit?".
+   *
+   * The old pair asked the wrong question. A species with only a season limit
+   * is completely answered, not two-thirds answered, and British Columbia
+   * gives black bear exactly that. Asking per kind made a species incomplete
+   * forever for lacking a kind its authority does not use.
+   */
+  | "HARVEST_LIMITS"
+  | "CRITICAL_EXCEPTIONS";
 
 export const READINESS_FACTS: readonly ReadinessFact[] = [
   "SEASON", "LICENCE", "METHODS", "AMMUNITION", "HUNTER_ORANGE",
-  "LEGAL_HOURS", "DAILY_LIMIT", "POSSESSION_LIMIT", "CRITICAL_EXCEPTIONS",
+  "LEGAL_HOURS", "HARVEST_LIMITS", "CRITICAL_EXCEPTIONS",
 ];
 
 export type FactState =
@@ -186,9 +198,10 @@ export async function completenessFor(jurisdictionId: string): Promise<SpeciesCo
     const of = row.unitsCovered;
     const has = (yes: boolean) => (yes ? of : 0);
     const speciesLimits = limits.get(row.speciesId) ?? [];
-    const daily = speciesLimits.some((entryLimits) => typeof entryLimits.daily === "number");
-    const possession = speciesLimits.some((entryLimits) => typeof entryLimits.possession === "number");
-    const seasonBagOnly = !daily && !possession && speciesLimits.some((entryLimits) => typeof entryLimits.bag === "number");
+    /* Kinds the authority actually states, read through the canonical model so
+       the matrix and the answer cannot disagree about what a bundle holds. */
+    const statedKinds = [...new Set(speciesLimits.flatMap((entryLimits) => limitKinds(harvestLimitsFrom(entryLimits))))];
+    const anyLimit = statedKinds.length > 0;
     const known = isOntario && ontarioSpecies.has(row.speciesId);
 
     const facts: FactCell[] = [
@@ -229,25 +242,15 @@ export async function completenessFor(jurisdictionId: string): Promise<SpeciesCo
           ? "A point timezone exists; the jurisdiction's own rule and its listed exceptions are unread."
           : "The point-timezone dataset is licence-blocked, so no clock time can be computed here. Held in Canada's legal-hours lane.",
         0, of),
-      /* A species can legitimately have NO daily limit, and must not read as
-         incomplete forever because of it. But "no record" and "no such limit"
-         are still different claims: NOT_APPLICABLE needs the authority to
-         assign a different period to this class in its own words — B.C. Reg.
-         190/84's Part 1 header does exactly that ("Season bag limits for big
-         game and small game; daily bag limits for upland birds"). Absent such
-         a statement, a season-only bundle is unread, not exempt. */
-      cell("DAILY_LIMIT", daily ? "CERTIFIED" : "RESEARCH_REQUIRED",
-        daily ? "Daily limit stated by the authority."
-          : seasonBagOnly
-            ? "The schedule states a SEASON bag limit and no daily one. NOT_APPLICABLE requires the authority's own statement that this class is periodised by season; until that is recorded this is unread, not exempt."
-            : "No daily limit has been read. Absence of a record is not absence of a limit.",
-        has(daily), of),
-      cell("POSSESSION_LIMIT", possession ? "CERTIFIED" : "RESEARCH_REQUIRED",
-        possession ? "Possession limit stated by the authority."
-          : seasonBagOnly
-            ? "The schedule states a SEASON bag limit; whether a possession limit also applies is unread."
-            : "No possession limit has been read.",
-        has(possession), of),
+      /* One fact, asking whether the APPLICABLE limits are resolved — so a
+         species whose authority states only a season limit is complete rather
+         than permanently two-thirds answered. Absence of a kind the authority
+         does not use is not a gap; absence of ANY limit still is. */
+      cell("HARVEST_LIMITS", anyLimit ? "CERTIFIED" : "RESEARCH_REQUIRED",
+        anyLimit
+          ? `Stated by the authority: ${statedKinds.join(", ").toLowerCase()}.`
+          : "No harvest limit of any kind has been read. Absence of a record is not absence of a limit.",
+        has(anyLimit), of),
       cell("CRITICAL_EXCEPTIONS", entry.specialAreasInZone ? "CERTIFIED" : "RESEARCH_REQUIRED",
         entry.specialAreasInZone
           ? "Published special areas inside a zone are indexed and reach the answer."

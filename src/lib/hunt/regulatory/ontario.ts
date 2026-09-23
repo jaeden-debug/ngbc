@@ -1,3 +1,4 @@
+import { harvestLimitsFrom, type HarvestLimit } from "./harvest-limit.ts";
 import { legalTimeNotCertified } from "./legal-time.ts";
 import { general } from "../limitation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
@@ -142,6 +143,25 @@ function windowsFor(rule: BundleRule): SeasonWindow[] | null {
   return parseSeasonPhrase(rule.seasonPhrase);
 }
 
+/**
+ * Every limit Ontario states for this rule, with its kind.
+ *
+ * `limitsOf` below returns nothing when possession is null, so a rule with a
+ * daily limit and no possession limit produced NO limit at all — the figure
+ * was in the bundle and could not reach a hunter. Here each kind stands on its
+ * own, so a stated daily limit survives a missing possession one.
+ */
+function harvestLimitsOf(rule: BundleRule): HarvestLimit[] {
+  return harvestLimitsFrom({
+    daily: rule.limits.daily,
+    possession: rule.limits.possession,
+    combined: rule.limits.combined,
+    combinedWithNames: rule.limits.combinedWithNames,
+    statedAs: rule.limits.statedAs,
+    section: rule.sourceSection,
+  });
+}
+
 function limitsOf(rule: BundleRule): RegulatoryResult["limits"] {
   if (rule.limits.possession === null) return undefined;
   return {
@@ -235,6 +255,7 @@ export function evaluateOntarioSmallGame(
     next: nextOpening([season], input.date),
     season: { opens: first.opensIso, closes: first.closesIso, datesInclusive: true },
     limits: limitsOf(rule),
+    harvestLimits: harvestLimitsOf(rule),
     sourceIds: [rule.sourceId as CanonicalId<"source">, SUPPORTING_SOURCE],
     verifiedAt: SOURCE.retrievedAt,
   };

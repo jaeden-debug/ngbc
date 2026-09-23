@@ -63,6 +63,8 @@ export interface ZoneResolution {
   message: string;
 }
 
+import type { HarvestLimit } from "./regulatory/harvest-limit.ts";
+
 export interface RegulatoryResult {
   status: RegulatoryStatus;
   summary: string;
@@ -91,7 +93,23 @@ export interface RegulatoryResult {
    * representation — see `NextSeason`. Every producer states which it means.
    */
   next: NextSeason;
+  /**
+   * Daily and possession, in the original shape. Both are required here, so a
+   * SEASON limit cannot be expressed — which is why `harvestLimits` exists.
+   * Retained until every consumer has moved; new readers use `harvestLimits`.
+   *
+   * @deprecated Read `harvestLimits`, which carries the limit KIND.
+   */
   limits?: { daily: number; possession: number; combinedWith?: string };
+  /**
+   * Every harvest limit the authority states, with its KIND as a dimension.
+   *
+   * A limit's kind is not interchangeable: daily, season and possession are
+   * different rules, and the old pair made a season limit inexpressible. Absent
+   * kinds mean the authority does not state them — never that they are unknown,
+   * and never a licence to derive one from another.
+   */
+  harvestLimits?: HarvestLimit[];
   /**
    * The legal hunting window, resolved where North Ground can resolve it and
    * NOT_CERTIFIED (naming the authority) where it cannot. One field and one
