@@ -1,6 +1,6 @@
 import { unstable_cache } from "next/cache";
 import { after } from "next/server";
-import { OVERVIEW_ZOOM, SERVED_EXTENT, servedGeometryVersion } from "../../lib/hunt/exploration/overview";
+import { OPENING_BOX, OVERVIEW_ZOOM, servedGeometryVersion } from "../../lib/hunt/exploration/overview";
 import { posterDataUri, posterSvg } from "../../lib/hunt/exploration/overview-poster";
 import { fetchZoneGeometry } from "../../lib/hunt/zone-geometry";
 
@@ -15,15 +15,15 @@ import { fetchZoneGeometry } from "../../lib/hunt/zone-geometry";
  * cache is filled after the response.
  */
 /*
- * Drawn from the very request the live map makes first — the served overview,
- * same box, same zoom, same server cache — so the picture and the map cannot
+ * Drawn from the very request the live map makes first — the opening camera's
+ * own box, same zoom, same server cache — so the picture and the map cannot
  * come from different geometry. The cache key carries the served-geometry
  * version and the deployment, and it is revalidated as often as the zone
  * drawings themselves are cached at the edge.
  */
 const DEPLOYMENT = process.env.VERCEL_DEPLOYMENT_ID ?? process.env.VERCEL_GIT_COMMIT_SHA ?? "local";
 const cachedPoster = unstable_cache(async (): Promise<string> => {
-  const result = await fetchZoneGeometry(SERVED_EXTENT, OVERVIEW_ZOOM);
+  const result = await fetchZoneGeometry(OPENING_BOX, OVERVIEW_ZOOM);
   if (result.status !== "OK" || !result.features.length) throw new Error("The official geometry was incomplete; no poster.");
   return posterDataUri(posterSvg(result.features));
 }, ["hunt-zones-poster", servedGeometryVersion(), DEPLOYMENT], { revalidate: 21_600 });

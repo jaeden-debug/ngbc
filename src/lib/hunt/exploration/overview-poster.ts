@@ -12,18 +12,18 @@
  * else — no basemap, no invented coastline — and it is never interactive.
  */
 
-import { SERVED_EXTENT } from "./overview.ts";
+import { OPENING_BOX, OPENING_CAMERA } from "./overview.ts";
 
-/** Where the live map opens, on every screen. The poster is drawn for exactly this camera. */
-export const OPENING_CAMERA = { latitude: 52.5, longitude: -90, zoom: 4 } as const;
+export { OPENING_CAMERA };
 
 const TILE = 256;
 
 /**
- * The geographic box the poster covers: exactly the overview's box, because
- * the poster is a drawing of the overview answer and nothing else.
+ * The box the poster covers: exactly the box the map asks for first, because
+ * the poster is a drawing of that answer and nothing else. One declared
+ * camera drives both, so the picture lies under the lines the map draws.
  */
-export const POSTER_BOX = SERVED_EXTENT;
+export const POSTER_BOX = OPENING_BOX;
 
 function worldX(longitude: number, zoom: number): number {
   return ((longitude + 180) / 360) * TILE * 2 ** zoom;

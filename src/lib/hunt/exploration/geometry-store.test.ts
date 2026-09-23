@@ -35,8 +35,13 @@ test("request boxes are the view plus a margin, snapped outward to the level's g
   assert.deepEqual(requestBoxFor(panned, 2, EXTENT), box);
 });
 
-test("the overview asks for the whole served extent, and nothing is asked outside it", () => {
-  assert.deepEqual(requestBoxFor({ west: -80, south: 45, east: -79, north: 46 }, 0, EXTENT), EXTENT);
+test("a request is the viewport, snapped and clamped, and nothing is asked outside coverage", () => {
+  /* Level 0 used to be the whole served extent. It is a viewport now, on a
+     coarse grid, so a country-scale view asks for the cells it can see
+     instead of the union of every layer's bounds. */
+  const wide = requestBoxFor({ west: -80, south: 45, east: -79, north: 46 }, 0, EXTENT)!;
+  assert.ok(wide.east - wide.west < EXTENT.east - EXTENT.west, "narrower than the whole extent");
+  assert.ok(wide.west <= -80 && wide.east >= -79, "and it covers what is in view");
   assert.equal(requestBoxFor({ west: 10, south: 45, east: 11, north: 46 }, 2, EXTENT), null);
   const edge = requestBoxFor({ west: -121, south: 50, east: -119.5, north: 51 }, 2, EXTENT)!;
   assert.equal(edge.west, EXTENT.west, "clamped to the served extent");
@@ -118,4 +123,22 @@ test("drawn() gives every zone exactly one drawing, and bumps a version on chang
   const drawn = geometry.drawn(EXTENT, 0);
   assert.deepEqual(drawn.map((zone) => zone.key).sort(), ["layer:ca-on-wmu|57", "layer:ca-qc-zone-chasse|10O"]);
   assert.ok(drawn.every((zone) => zone.piece.rings.length > 0));
+});
+
+test("a level-0 drawing clipped by a viewport is not mistaken for a whole zone", () => {
+  /* Level 0 used to ask for the whole served extent, so every level-0 piece
+     was whole by construction. Now that it asks for a viewport, a drawing can
+     be clipped — and believing it whole would let the map treat the edge of a
+     request box as a zone's boundary. */
+  const geometry = store();
+  const viewport = { west: -74, south: 47, east: -72, north: 49 };
+  // A zone that runs past the east edge of what was asked for.
+  geometry.apply(0, viewport, geometry.nextSeq(), [feature(QUEBEC, "28", square(-72.9, 47.5, 1.4))]);
+  assert.equal(geometry.get("layer:ca-qc-zone-chasse|28")?.pieces[0]?.whole, false, "it reaches the edge, so it is clipped");
+  assert.equal(geometry.get("layer:ca-qc-zone-chasse|28")?.extent, null, "and its extent is unknown, so nothing frames by it");
+
+  // A zone that sits well inside the same request is whole, and can be framed.
+  geometry.apply(0, viewport, geometry.nextSeq(), [feature(QUEBEC, "29", square(-73.5, 47.5, 0.4))]);
+  assert.equal(geometry.get("layer:ca-qc-zone-chasse|29")?.pieces[0]?.whole, true);
+  assert.notEqual(geometry.get("layer:ca-qc-zone-chasse|29")?.extent, null);
 });

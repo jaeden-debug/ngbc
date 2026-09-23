@@ -1748,6 +1748,40 @@ The selector states which it is: rules here, boundaries only here, or no
 official geography here. Coverage reporting counts only what is answerable; a
 selectable species is not coverage.
 
+## Coverage, camera and request are three different things
+
+*Decided 2026-09-23.*
+
+One constant used to do all three jobs, and the difference matters:
+
+- **Coverage** is the union of every served layer's bounds. It decides whether
+  a point is somewhere North Ground can answer about. It is never widened or
+  narrowed for any other purpose: narrowing it to buy performance would shrink
+  a regulatory claim.
+- **The opening camera** is where the map opens. It is DECLARED, not derived
+  from coverage. Deriving it meant every ingest moved every hunter's opening
+  view — serving a new jurisdiction widened the union, so the map zoomed out
+  and its first request grew with it. Moving the camera is the owner's
+  decision, never a side effect of an ingest.
+- **A request box** is the viewport, clamped to coverage, snapped to the level
+  it is asked at. It is never the union of bounds, and each screen asks for
+  what it can actually show.
+
+Two honesty rules follow, and both are enforced in code:
+
+- A drawing is **whole** only when the box it was asked for holds it with room
+  to spare. Touching the edge is the signature of a clip, and a clipped
+  drawing treated as whole would let the map draw the edge of a request box as
+  a zone's boundary — asserting a boundary no authority gave it, while looking
+  perfectly normal.
+- Ground **nothing has been asked about** is not ground with no zones in it.
+  Panning past the boxes already answered asks again rather than drawing an
+  empty country.
+
+The picture shown before the live map draws is a drawing of that first
+request, from the same declared camera, so it lies under the lines the map is
+about to draw.
+
 ## The map reads at three scales
 
 *Decided 2026-09-22.*

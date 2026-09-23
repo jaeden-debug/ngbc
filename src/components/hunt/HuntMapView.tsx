@@ -59,8 +59,6 @@ interface HuntMapViewProps {
   camera: CameraRequest | null;
   /** On first load with location permission already granted, centre on the device (camera only). */
   locateOnStart: boolean;
-  /** Everything Hunt draws. A wide screen opens framed on it; a phone opens on the middle of it. */
-  startBox: BBox;
   /** The server-drawn official zones for the opening camera (a data URI), shown until the live map draws. */
   poster: string | null;
   padding: () => Padding;
@@ -81,7 +79,7 @@ const SELF_FAILURES: Record<number, SelfFailure> = { 1: "denied", 2: "position",
 
 function HuntMapView({
   googleMapsApiKey, exploration, dispatch, drawn, selectedKey, huntKey, filterStates, overlays, mapMode, camera,
-  locateOnStart, startBox, poster, padding, emphasis, zonesVisible, onView, onZoneClick, onOverlayClick, onBasemap,
+  locateOnStart, poster, padding, emphasis, zonesVisible, onView, onZoneClick, onOverlayClick, onBasemap,
 }: HuntMapViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const controllerRef = useRef<GoogleZoneMap | null>(null);
@@ -138,19 +136,15 @@ function HuntMapView({
           selfClass: styles.selfDot,
           pinClass: styles.mapPin,
         });
-        // A wide screen has room for every served jurisdiction at once; a phone starts on the middle of them.
-        if (containerRef.current.clientWidth >= 700) {
-          controllerRef.current.map.fitBounds(
-            { west: startBox.west, south: startBox.south, east: startBox.east, north: startBox.north },
-            padding(),
-          );
-        }
+        /* Every screen opens at the declared camera. Fitting the served extent
+           meant each new jurisdiction moved everyone's opening view — a camera
+           derived from coverage (see `exploration/overview`). */
         setGoogleReady(true);
       })
       .catch(() => { if (!cancelled) setGoogleFailed(true); });
     return () => { cancelled = true; };
     // Built once; the start box and padding are read at that moment only.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, [useGoogle, googleMapsApiKey]);
 
   useEffect(() => () => {

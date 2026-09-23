@@ -1291,7 +1291,6 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
           mapMode={mapMode}
           camera={cameraRequest}
           locateOnStart={!initialUrl.zoneId}
-          startBox={geometry.extent}
           poster={poster}
           padding={padding}
           emphasis={emphasis}

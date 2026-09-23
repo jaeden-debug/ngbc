@@ -1,12 +1,22 @@
 import { ZONE_LAYERS } from "../zone-layers.ts";
-import { boxKey, lodSpec, type BBox } from "./geometry-store.ts";
+import { boxKey, lodSpec, requestBoxFor, type BBox } from "./geometry-store.ts";
 
 /**
- * The one request for every served zone's overview drawing.
+ * Three different things that were one constant, and the difference matters.
  *
- * Shared by the page, which asks the browser to start it while the HTML is
- * still arriving, and the map's geometry store, which uses that same response —
- * so the geometry the map needs first is never queued behind hydration.
+ * `SERVED_EXTENT` is a COVERAGE claim: the union of the bounds of every layer
+ * North Ground serves. It decides whether a point is somewhere we can answer
+ * about. It must be neither widened nor narrowed for any other purpose —
+ * narrowing it to buy performance would shrink a regulatory claim.
+ *
+ * `OPENING_CAMERA` is where the map OPENS. It is declared here, not derived
+ * from coverage, because deriving it meant every ingest moved every hunter's
+ * opening view: serving Yukon and Newfoundland widened the union, so the map
+ * zoomed out and the first request grew with it. Moving the camera is the
+ * owner's decision, never a side effect of an ingest.
+ *
+ * A REQUEST BOX is the viewport, clamped to coverage. It is what the map asks
+ * for, and it is never the union of bounds.
  */
 const SERVED = ZONE_LAYERS.filter((layer) => layer.serving);
 
@@ -17,18 +27,80 @@ export const SERVED_EXTENT: BBox = {
   north: Math.max(...SERVED.map((layer) => layer.bounds.maxLatitude)),
 };
 
-export const OVERVIEW_URL = `/api/hunt/zones?bounds=${boxKey(SERVED_EXTENT)}&zoom=${lodSpec(0).requestZoom}`;
+/**
+ * Where Hunt opens, on every screen. Declared, and changed only deliberately.
+ */
+export const OPENING_CAMERA = { latitude: 52.5, longitude: -90, zoom: 4 } as const;
+
+/** The reference screen the opening view and the poster are drawn for. */
+const REFERENCE_SCREEN = { width: 1440, height: 900 };
+const TILE = 256;
+
+/** The box a camera shows on a screen of that size, in degrees. */
+export function cameraBox(
+  camera: { latitude: number; longitude: number; zoom: number } = OPENING_CAMERA,
+  screen: { width: number; height: number } = REFERENCE_SCREEN,
+): BBox {
+  const scale = TILE * 2 ** camera.zoom;
+  const degreesPerPx = 360 / scale;
+  const halfWidth = (screen.width / 2) * degreesPerPx;
+  // Latitude compresses with the projection; a Mercator step is enough here.
+  const worldY = (1 - Math.log(Math.tan((camera.latitude * Math.PI) / 180) + 1 / Math.cos((camera.latitude * Math.PI) / 180)) / Math.PI) / 2;
+  const northY = worldY - screen.height / 2 / scale;
+  const southY = worldY + screen.height / 2 / scale;
+  const toLatitude = (y: number) => (180 / Math.PI) * Math.atan(Math.sinh(Math.PI * (1 - 2 * y)));
+  return {
+    west: camera.longitude - halfWidth,
+    east: camera.longitude + halfWidth,
+    north: Math.min(85, toLatitude(Math.max(0, northY))),
+    south: Math.max(-85, toLatitude(Math.min(1, southY))),
+  };
+}
+
+/** A request box: what is visible, never wider than what is covered. */
+export function requestBox(view: BBox): BBox {
+  return {
+    west: Math.max(view.west, SERVED_EXTENT.west),
+    east: Math.min(view.east, SERVED_EXTENT.east),
+    south: Math.max(view.south, SERVED_EXTENT.south),
+    north: Math.min(view.north, SERVED_EXTENT.north),
+  };
+}
+
+/**
+ * The opening view: the declared camera, as the map asks for it — snapped to
+ * the level-0 grid and clamped to coverage. Asking for the raw view instead
+ * left every zone on its edge clipped, which the map then had to ask about a
+ * second time.
+ */
+export const OPENING_BOX: BBox = requestBoxFor(requestBox(cameraBox()), 0, SERVED_EXTENT) ?? requestBox(cameraBox());
+
+/**
+ * The opening view on THIS device.
+ *
+ * A phone at the opening camera sees about a third of the width a laptop does,
+ * and asking for the rest is asking for country it cannot draw. The reference
+ * box above is what the page preloads and the poster is drawn for, because a
+ * server cannot know the screen; this is what the map actually asks for.
+ */
+export function openingBoxFor(screen: { width: number; height: number }): BBox {
+  const view = requestBox(cameraBox(OPENING_CAMERA, screen));
+  return requestBoxFor(view, 0, SERVED_EXTENT) ?? view;
+}
+
+export const OVERVIEW_URL = `/api/hunt/zones?bounds=${boxKey(OPENING_BOX)}&zoom=${lodSpec(0).requestZoom}`;
 
 /**
  * The same request for a chosen species. A jurisdiction that writes its
  * seasons in species geographies (Newfoundland) answers with that species'
  * areas; everywhere else answers exactly as before.
  */
-export function overviewUrl(speciesId?: string | null): string {
-  return speciesId ? `${OVERVIEW_URL}&species=${encodeURIComponent(speciesId)}` : OVERVIEW_URL;
+export function overviewUrl(speciesId?: string | null, box: BBox = OPENING_BOX): string {
+  const url = `/api/hunt/zones?bounds=${boxKey(box)}&zoom=${lodSpec(0).requestZoom}`;
+  return speciesId ? `${url}&species=${encodeURIComponent(speciesId)}` : url;
 }
 
-/** The zoom the overview is asked for; the poster draws exactly this answer. */
+/** The zoom the first request is asked for; the poster draws exactly this answer. */
 export const OVERVIEW_ZOOM = lodSpec(0).requestZoom;
 
 /**

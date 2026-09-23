@@ -7,7 +7,7 @@ import {
 } from "../../../lib/hunt/exploration/geometry-store";
 import { mergeSimplified } from "../../../lib/hunt/exploration/geometry-notices";
 import type { OverlayLayerDescriptor } from "../../../lib/hunt/exploration/overlay-layers";
-import { overviewUrl, SERVED_EXTENT } from "../../../lib/hunt/exploration/overview";
+import { OPENING_BOX, openingBoxFor, overviewUrl, SERVED_EXTENT } from "../../../lib/hunt/exploration/overview";
 import { ZONE_LAYERS } from "../../../lib/hunt/zone-layers";
 
 /**
@@ -86,6 +86,10 @@ export function useZoneGeometry(view: MapView | null, speciesId?: string | null)
   const [missingLayers, setMissingLayers] = useState<string[]>([]);
   const [simplifiedLayers, setSimplifiedLayers] = useState<string[]>([]);
   const speciesRef = useRef<string | null>(speciesId ?? null);
+  /** When each box last answered, so a settled view does not ask again. */
+  const answeredRef = useRef(new Map<string, number>());
+  /** The boxes an answer has actually covered, newest last. */
+  const askedBoxesRef = useRef<BBox[]>([]);
   /** Special regulatory layers the authorities serve, from the overview's own answer. */
   const [overlayLayers, setOverlayLayers] = useState<OverlayLayerDescriptor[]>([]);
 
@@ -101,9 +105,18 @@ export function useZoneGeometry(view: MapView | null, speciesId?: string | null)
   const loadOverview = useCallback(async () => {
     const seq = store.nextSeq();
     try {
-      const payload = await fetchOverview(overviewUrl(speciesRef.current));
+      /* What this screen opens on, not what the country is: the reference box
+         is only what the page could preload without knowing the screen. */
+      const opening = typeof window === "undefined"
+        ? OPENING_BOX
+        : openingBoxFor({ width: window.innerWidth, height: window.innerHeight });
+      const payload = await fetchOverview(overviewUrl(speciesRef.current, opening));
       if (!aliveRef.current) return;
-      if (payload.features?.length) store.apply(0, SERVED_EXTENT, seq, payload.features);
+      if (payload.features?.length) store.apply(0, opening, seq, payload.features);
+      askedBoxesRef.current = [...askedBoxesRef.current.slice(-11), opening];
+      /* Recorded the way a detail request records itself, so the opening view
+         is not asked for a second time by the level-0 path below. */
+      answeredRef.current.set(`0|${boxKey(opening)}`, Date.now());
       if (payload.overlays) setOverlayLayers(payload.overlays);
       const failed = (payload.layers ?? []).filter((layer) => layer.status === "PROVIDER_ERROR").map((layer) => layer.id ?? "");
       const answered = payload.status === "OK" || payload.status === "PARTIAL" || payload.status === "EMPTY";
@@ -143,6 +156,7 @@ export function useZoneGeometry(view: MapView | null, speciesId?: string | null)
     speciesRef.current = next;
     answeredRef.current.clear();
     failedRef.current.clear();
+    askedBoxesRef.current = [];
     store.reset();
     setVersion(store.version);
     void loadOverview();
@@ -152,7 +166,6 @@ export function useZoneGeometry(view: MapView | null, speciesId?: string | null)
   /* ── Detail for the settled view ──────────────────────────────────────── */
 
   /** When each detail box last answered, so a settled view does not ask again. */
-  const answeredRef = useRef(new Map<string, number>());
   const failedRef = useRef(new Map<string, number>());
   const inFlightRef = useRef(new Map<string, { controller: AbortController; box: BBox }>());
   /* A map nobody moves asks for nothing, so a failed request has to come back
@@ -200,7 +213,10 @@ export function useZoneGeometry(view: MapView | null, speciesId?: string | null)
       if (!aliveRef.current) return;
       if (payload.features?.length) store.apply(level, box, seq, payload.features);
       const failed = (payload.layers ?? []).filter((layer) => layer.status === "PROVIDER_ERROR").map((layer) => layer.id ?? "").filter(Boolean);
-      if (payload.status === "OK" || payload.status === "EMPTY") answeredRef.current.set(key, Date.now());
+      if (payload.status === "OK" || payload.status === "EMPTY") {
+        answeredRef.current.set(key, Date.now());
+        askedBoxesRef.current = [...askedBoxesRef.current.slice(-11), box];
+      }
       else failedRef.current.set(key, Date.now());
       // Per layer, from what this answer actually says about each one.
       setSimplifiedLayers((current) => mergeSimplified(current, payload.layers));
@@ -219,15 +235,14 @@ export function useZoneGeometry(view: MapView | null, speciesId?: string | null)
   useEffect(() => {
     if (!view) return;
     const level = levelForZoom(view.zoom);
-    if (level === 0) {
-      setSimplifiedLayers([]);
-      return;
-    }
     const box = requestBoxFor(view.box, level, SERVED_EXTENT);
     if (!box) return;
-    // Nothing to ask when every zone in view already has a drawing at this level.
+    /* Ground nothing has been asked about is not ground with no zones in it
+       (§41B): panning past the boxes already answered has to ask, or the map
+       draws an empty country it simply never requested. */
+    const unasked = store.hasUnaskedGround(view.box, askedBoxesRef.current);
     const layerWithoutOverview = missingLayers.length > 0;
-    if (!layerWithoutOverview && overview === "ready" && !store.needsDetail(view.box, level)) return;
+    if (!unasked && !layerWithoutOverview && overview === "ready" && !store.needsDetail(view.box, level)) return;
     const timer = window.setTimeout(() => { void requestDetail(level, box); }, DEBOUNCE_MS);
     return () => window.clearTimeout(timer);
   }, [view, requestDetail, store, missingLayers, overview]);

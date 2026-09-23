@@ -449,7 +449,7 @@ const scenarios = {
         await field.fill("");
         await page.waitForTimeout(3_000);
       }
-      await field.pressSequentially("Bancroft", { delay: 110 });
+      await field.pressSequentially("Bancroft Ontario", { delay: 90 });
       suggested = await waitFor(page, () => document.querySelectorAll("[role=option]").length > 0, 20_000);
     }
     check(s, "the place provider answers", suggested);

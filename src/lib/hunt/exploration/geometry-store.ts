@@ -56,7 +56,9 @@ export interface LodSpec {
  *   L3  0.0008°  zoom ≥ 12  the finest the stored drawings and the server offer
  */
 export const LOD_LEVELS: readonly LodSpec[] = [
-  { level: 0, requestZoom: 6, minZoom: 0, grid: null },
+  /* Level 0 is a viewport like the others now, on a coarse grid: panning the
+     country fetches the cells it moves into rather than the whole union. */
+  { level: 0, requestZoom: 6, minZoom: 0, grid: 4 },
   { level: 1, requestZoom: 9, minZoom: 8, grid: 2 },
   { level: 2, requestZoom: 11, minZoom: 10, grid: 0.5 },
   { level: 3, requestZoom: 12, minZoom: 12, grid: 0.125 },
@@ -101,7 +103,10 @@ export function requestBoxFor(view: BBox, level: LodLevel, extent: BBox = WORLD)
   if (!limit) return null;
   if (spec.grid === null) return limit;
   const grid = spec.grid;
-  const margin = 0.25 * Math.max(view.east - view.west, view.north - view.south);
+  /* A margin so a small pan does not ask again, but never more than one cell:
+     a quarter of a country-scale view is 18°, which snapping then rounds
+     outward into a request several times the size of the screen. */
+  const margin = Math.min(grid, 0.25 * Math.max(view.east - view.west, view.north - view.south));
   const box = {
     west: snapped(Math.floor((view.west - margin) / grid) * grid, grid),
     south: snapped(Math.floor((view.south - margin) / grid) * grid, grid),
@@ -117,6 +122,20 @@ export function boxKey(box: BBox): string {
 
 export function boxContains(outer: BBox, inner: BBox): boolean {
   return inner.west >= outer.west && inner.east <= outer.east && inner.south >= outer.south && inner.north <= outer.north;
+}
+
+/**
+ * Whether a box holds a drawing with room to spare.
+ *
+ * Touching the edge is the signature of a clip: a drawing whose bounds reach
+ * the box it was asked for almost certainly continues past it. Containment
+ * alone would call that whole and let the map draw a request box's edge as a
+ * zone's boundary.
+ */
+export function boxHolds(outer: BBox, inner: BBox): boolean {
+  const margin = Math.max(1e-6, Math.max(outer.east - outer.west, outer.north - outer.south) * 0.001);
+  return inner.west > outer.west + margin && inner.east < outer.east - margin
+    && inner.south > outer.south + margin && inner.north < outer.north - margin;
 }
 
 export function boxesIntersect(a: BBox, b: BBox): boolean {
@@ -247,8 +266,20 @@ export class ZoneGeometryStore {
     for (const feature of features) {
       if (!Array.isArray(feature.rings) || feature.rings.length === 0) continue;
       const key = zoneKeyOf(feature);
-      // The overview asks for the whole served extent, so its drawings are whole even from a clipping source.
-      const whole = level === 0 || !this.isClippedLayer(feature.layerId);
+      /*
+       * Whole means "this drawing is the whole zone", and it has to be
+       * EVIDENCE, not an assumption. It used to be true for every level-0
+       * piece because level 0 asked for the entire served extent; now that a
+       * request is a viewport, a level-0 drawing can be clipped like any
+       * other. Believing it anyway would let the map treat the edge of a
+       * request box as a zone's boundary — asserting a boundary no authority
+       * gave it (CLAUDE.md §41A) while looking perfectly normal on screen.
+       *
+       * So: a drawing is whole when it lies inside the box that was asked
+       * for, or when its source does not clip at all.
+       */
+      const bounds = boxOfRings(feature.rings);
+      const whole = !this.isClippedLayer(feature.layerId) || (bounds !== null && boxHolds(requestBox, bounds));
       const piece: ZonePiece = {
         level, rings: feature.rings, requestBox, whole, seq,
         ...(feature.labelPoint ? { labelPoint: feature.labelPoint } : {}),
@@ -330,12 +361,25 @@ export class ZoneGeometryStore {
    * arrived or what arrived was clipped to somewhere else.
    */
   needsDetail(view: BBox, wanted: LodLevel): boolean {
-    if (wanted === 0) return false;
     for (const zone of this.inView(view)) {
       const piece = this.pieceFor(zone.key, view, wanted);
       if (!piece || piece.level < wanted) return true;
     }
     return false;
+  }
+
+  /**
+   * Whether this view has ground no answer has covered yet.
+   *
+   * Since a request is a viewport, panning leaves the boxes already asked
+   * for. Empty ground that was never asked about must not be mistaken for
+   * ground with no zones in it, so the map asks before it draws nothing.
+   */
+  hasUnaskedGround(view: BBox, asked: readonly BBox[]): boolean {
+    // A hair of tolerance: the map's own box is never exactly the one asked for.
+    const slack = Math.max(0.02, Math.max(view.east - view.west, view.north - view.south) * 0.02);
+    const inner = { west: view.west + slack, east: view.east - slack, south: view.south + slack, north: view.north - slack };
+    return !asked.some((box) => boxContains(box, inner));
   }
 
   /** Zones whose extent intersects the box: the textual list of what is in view. */

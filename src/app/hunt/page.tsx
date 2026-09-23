@@ -10,7 +10,6 @@ import type { SpeciesSelectorOption } from "../../lib/hunt/coverage";
 import { northAmericaCoverageReport, regulatoryJurisdictionsForSpecies } from "../../lib/hunt/north-america/report";
 import { HUNT_DEFAULT_TIME_ZONE, jurisdictionTodayIso } from "../../lib/hunt/date";
 import { longDayLabel } from "../../lib/hunt/exploration/date-presets";
-import { OVERVIEW_URL } from "../../lib/hunt/exploration/overview";
 import { huntDeepLink, parseHuntUrlState, type HuntUrlValidators } from "../../lib/hunt/exploration/url-state";
 import { layerOfZoneId, ZONE_LAYERS } from "../../lib/hunt/zone-layers";
 import { presentZoneById } from "../../lib/hunt/zone-presentation";
@@ -105,8 +104,10 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 
 export default async function HuntPage({ searchParams }: Props) {
   /* The map is the page: start on Google's script and tile hosts while the HTML is still arriving. */
-  // The overview of every zone is the map's first need; start it with the HTML, not after hydration.
-  preload(OVERVIEW_URL, { as: "fetch", crossOrigin: "anonymous" });
+  /* No geometry preload. The map asks for the box THIS screen opens on, which
+     a server cannot know: preloading a reference box made a phone download the
+     country and then its own view as well. The first paint is carried by the
+     poster below, which is in the HTML already. */
   const mapsKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
   if (mapsKey) {
     preconnect("https://maps.googleapis.com");
