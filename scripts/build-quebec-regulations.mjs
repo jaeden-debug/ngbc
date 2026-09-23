@@ -636,6 +636,70 @@ function crossCheckMoose(built, designations) {
   // "Durant les périodes de chasse à l'arme à feu …": 2026 et 2027 : 19 sud, 29 ; 2027 seulement : 13, 18, 28.
   expectation(/^Périodes de chasse aux armes à feu/, ["19", "29"], ["13", "18", "28"]);
 
+  /*
+   * THE SECOND ANCHOR, AND IT IS INDEPENDENT OF THE FIRST.
+   *
+   * Everything above is checked against MFFP's SUMMARY PROSE. That is one
+   * authority, and the summary is not the law — a point proven four separate
+   * times today across jurisdictions. If the ministry reworded or mis-stated
+   * its own summary, every check above would follow it and still pass.
+   *
+   * So the same expectation is asserted a second time against the REGULATION,
+   * C-61.1, r. 12, art. 17, which enumerates the only cases in which antlerless
+   * moose may be taken. Two anchors are worth more than one only while they
+   * stay independently sourced: this one is derived from the regulation's own
+   * five paragraphs and never from the prose above.
+   *
+   * Encoded as FACTS — zone numbers, years and an engin type number — with a
+   * citation. No legislative wording is stored (§8: the rule, not the
+   * paragraph).
+   */
+  const ARTICLE_17 = {
+    citation: "Règlement sur la chasse, C-61.1, r. 12, art. 17",
+    /* 1°: named zones, for holders of the permits in Annexe I art. 5 a and b. */
+    always: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "14", "15", "16", "22", "26", "27"],
+    /* 2°: zones 13, 18 and 28, "au cours de l'année 2027" — year-specific. */
+    onlyIn2027: ["13", "18", "28"],
+    /* 3°: zone 13, during a hunting period using an engin of type 11. */
+    zone13RequiresEnginType: "11",
+    /* 4°: the southern part of zone 19, and zone 29. */
+    always19And29: ["19", "29"],
+  };
+
+  const antlerlessBy = (year) =>
+    new Set(
+      rules
+        .filter((rule) => rule.seasonLabel === year && rule.animalClasses.includes("ANTLERLESS"))
+        .flatMap((rule) => rule.designations.map(numberOf)),
+    );
+
+  for (const year of ["2026", "2027"]) {
+    for (const zone of antlerlessBy(year)) {
+      const permitted =
+        ARTICLE_17.always.includes(zone) ||
+        ARTICLE_17.always19And29.includes(zone) ||
+        (ARTICLE_17.onlyIn2027.includes(zone) && year === "2027") ||
+        /* 3° keeps zone 13 open in any year, but ONLY during a type 11 period.
+           North Ground does not yet carry engin types (see the gear-class
+           work), so a zone 13 grant outside 2027 is permitted here only when
+           every rule granting it is a bow-and-crossbow season — which is what
+           a type 11 period is. Narrower than the regulation, and it says so. */
+        (zone === "13" &&
+          rules
+            .filter((rule) => rule.seasonLabel === year && rule.animalClasses.includes("ANTLERLESS"))
+            .filter((rule) => rule.designations.some((designation) => numberOf(designation) === "13"))
+            .every((rule) => (rule.permittedImplements ?? []).every((implement) => implement === "BOW" || implement === "CROSSBOW")));
+
+      if (!permitted) {
+        throw new Error(
+          `Antlerless moose is granted in zone ${zone} for ${year}, which ${ARTICLE_17.citation} does not permit. ` +
+            "Art. 17 allows it only in the zones of paragraph 1, in 13/18/28 during 2027, in zone 13 during an engin " +
+            "type 11 period, in the southern part of zone 19 and zone 29, and in the territories of Annexe V.",
+        );
+      }
+    }
+  }
+
   // The prose these expectations were written from must still say exactly that.
   const items = built.crosschecks.map((entry) => normalise(entry.text));
   for (const expected of [
