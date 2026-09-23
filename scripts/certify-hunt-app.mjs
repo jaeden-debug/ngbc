@@ -106,9 +106,53 @@ async function pressUseMyLocation(page) {
   await page.getByRole("button", { name: /Use my location/ }).first().click();
 }
 
+/*
+ * Choosing a species the way a hunter now does (owner, 2026-09-23): the zone
+ * card has no dropdown. From a species answer you come back out through
+ * `All species in [zone]`; from the card's list you tap a species directly, and
+ * `View all species` reaches the ones the list cannot offer.
+ */
 async function chooseSpecies(page, name) {
-  await page.locator("button[data-kind='species']").first().click();
-  await page.getByRole("button", { name: new RegExp(`^${name}`, "i") }).first().click();
+  const back = page.getByRole("button", { name: /^All species in / }).first();
+  if (await back.count()) {
+    await back.click();
+    /* Wait for the card to actually be back on its list rather than guessing at
+       a delay: the list is what offers the next species, and a fixed pause was
+       sometimes shorter than the re-render. */
+    await waitFor(page, () => [...document.querySelectorAll("button")].some((b) => b.textContent?.trim() === "View all species"), 20_000);
+  }
+  /* The helper asserts its own postcondition. Clicking a row in a list that is
+     re-rendering can land on a node React is about to replace, and a silent
+     miss here surfaces thirty seconds later as an unrelated timeout. */
+  const named = () => page.evaluate((want) => {
+    const shown = document.querySelector("[class*=speciesName]")?.textContent?.trim()
+      ?? document.querySelector("button[data-kind='species'] [class*=chipLabel]")?.textContent?.trim() ?? "";
+    return shown.toLowerCase().startsWith(want.toLowerCase());
+  }, name);
+
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    const row = page.getByRole("button", { name: new RegExp(`^${name}`, "i") }).first();
+    if (await row.count()) await row.click().catch(() => {});
+    else {
+      const viewAll = page.getByRole("button", { name: "View all species" }).first();
+      if (await viewAll.count()) await viewAll.click();
+      else await page.locator("button[data-kind='species']").first().click();
+      await page.getByRole("button", { name: new RegExp(`^${name}`, "i") }).first().click();
+    }
+    if (await waitFor(page, () => true, 1) && await named()) return;
+    await page.waitForTimeout(600);
+    if (await named()) return;
+  }
+  throw new Error(`could not choose ${name}`);
+}
+
+/** What the surface says it is answering about, wherever it names it. */
+async function speciesNamed(page) {
+  return page.evaluate(() => {
+    const heading = document.querySelector("[class*=speciesName]")?.textContent?.trim();
+    if (heading) return heading;
+    return document.querySelector("button[data-kind='species'] [class*=chipLabel]")?.textContent?.trim() ?? "";
+  });
 }
 
 /* ── Scenarios ─────────────────────────────────────────────────────────── */
@@ -140,7 +184,11 @@ const scenarios = {
     // A species whose rules turn on the hunter asks, one fact at a time, and the question is shown whole.
     await chooseSpecies(page, "White-tailed deer");
     const asked = await waitFor(page, () => Boolean(document.querySelector("[role=radiogroup]")), 30_000);
-    check(s, "deer asks one question before any status", asked && (await page.locator("[class*=answerStatus] .ng-status").count()) === 0);
+    const whenAsked = await page.evaluate(() => ({
+      statuses: [...document.querySelectorAll("[class*=answerStatus] .ng-status")].map((e) => e.textContent?.trim() ?? ""),
+      named: document.querySelector("[class*=speciesName]")?.textContent?.trim() ?? "",
+    }));
+    check(s, "deer asks one question before any status", asked && whenAsked.statuses.length === 0, JSON.stringify(whenAsked));
     const snap = await page.evaluate(() => document.querySelector("section[data-layout]")?.getAttribute("data-snap"));
     check(s, "the question is shown whole (sheet raised)", snap === "full", String(snap));
     await page.getByRole("radio").first().click();
@@ -190,7 +238,11 @@ const scenarios = {
     await page.goto(`${BASE}/hunt?zone=ca-on-wmu-57&species=ruffed-grouse&date=2026-10-01`);
     const restored = await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "WMU 57", 30_000);
     check(s, "the zone is restored and selected", restored, String(await zoneTitle(page)));
-    check(s, "the species is restored", (await page.locator("button[data-kind='species']").first().textContent())?.includes("Ruffed grouse"));
+    /* The zone card has no species control any more (owner, 2026-09-23), so
+       this asserts the CAPABILITY the link carries rather than a chip that no
+       longer exists: a shared link naming a species still answers for it. */
+    const restoredSpecies = await waitFor(page, () => /Ruffed grouse/.test(document.querySelector("[class*=sheetBody]")?.textContent ?? ""), 30_000);
+    check(s, "the species the link names is answered for", restoredSpecies);
     check(s, "the day is restored", /Oct 1/.test((await page.locator("button[data-kind='date']").first().textContent()) ?? ""));
     const state = await waitFor(page, () => Boolean(document.querySelector("[class*=answer] [data-state]")), 30_000);
     check(s, "the whole-zone answer for the species appears", state);
@@ -209,7 +261,7 @@ const scenarios = {
 
     await page.goto(`${BASE}/hunt?species=${encodeURIComponent("species:ruffed-grouse")}`);
     await page.waitForTimeout(800);
-    check(s, "old species-profile links still preselect", (await page.locator("button[data-kind='species']").first().textContent().catch(() => ""))?.includes("Ruffed grouse"));
+    check(s, "old species-profile links still preselect", (await speciesNamed(page)).includes("Ruffed grouse"), await speciesNamed(page));
     check(s, "no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));
     await context.close();
   },
@@ -237,7 +289,7 @@ const scenarios = {
     // Wait for the answer rather than sampling once: under load the engine
     // can still be answering, and a slow answer is not a stale one.
     await waitFor(page, () => Boolean(document.querySelector("[class*=answerStatus] .ng-status, [class*=answerStatus] [data-state]")?.textContent?.trim()), 20_000);
-    const chip = await page.locator("button[data-kind='species']").first().textContent();
+    const chip = await speciesNamed(page);
     const question = await page.locator("[role=radiogroup]").count();
     const status = await answerStatus(page);
     check(s, "the chosen species is the last one chosen", chip?.includes("Ruffed grouse"), chip);
@@ -252,19 +304,28 @@ const scenarios = {
     await page.goto(`${BASE}/hunt?zone=ca-on-wmu-57`);
     await mapReady(page);
     await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "WMU 57", 30_000);
-    /* Let the framing finish before the baseline is taken. `data-zones` counts
-       what is drawn IN VIEW, and this link frames WMU 57, so a count sampled
-       mid-flight is a different view's count and the whole comparison below is
-       against the wrong number. Settled means two equal reads in a row. */
+    /*
+     * The baseline has to be taken once every authority has answered.
+     *
+     * The count climbs as each layer's drawing arrives, so a read taken between
+     * two answers is a real number of a half-loaded map — 253 of the 1425 that
+     * are coming. Two equal reads a quarter-second apart was not enough: a
+     * pause between one authority and the next looks exactly like a finished
+     * map. So settled means BOTH that the count has stopped moving for two
+     * seconds AND that no geometry request has been made in that time.
+     */
     const settled = async () => {
-      let previous = -1;
-      for (let attempt = 0; attempt < 40; attempt += 1) {
+      let last = -1;
+      let steadySince = Date.now();
+      const deadline = Date.now() + 60_000;
+      while (Date.now() < deadline) {
         const now = Number(await page.getAttribute("[data-zones]", "data-zones"));
-        if (now === previous && now > 0) return now;
-        previous = now;
+        const lastRequest = requests.filter((entry) => entry.path === "/api/hunt/zones").at(-1)?.at ?? 0;
+        if (now !== last) { last = now; steadySince = Date.now(); }
+        if (now > 0 && Date.now() - steadySince > 2_000 && Date.now() - lastRequest > 2_000) return now;
         await page.waitForTimeout(250);
       }
-      return previous;
+      return last;
     };
     const overview = await settled();
     let minimum = overview;
@@ -455,7 +516,11 @@ const scenarios = {
     await mapReady(page);
     await page.waitForTimeout(600);
     const field = page.locator("input[type='search']").first();
-    check(s, "the resting sheet is the prompt and one field", await field.count() === 1 && (await field.getAttribute("placeholder")) === "Find your hunting zone");
+    /* The placeholder is a HINT and never a place (owner, 2026-09-23): a
+       chosen place is the field's value, so it can be told from a suggestion. */
+    check(s, "the resting sheet is the prompt and one field",
+      await field.count() === 1 && (await field.getAttribute("placeholder")) === "Search anywhere",
+      String(await field.getAttribute("placeholder")));
     check(s, "no second way in competes with it", await page.getByRole("button", { name: /^Search a place$/ }).count() === 0);
     // One tap: focused, with its other ways of choosing a place inside it.
     await field.click();
@@ -489,7 +554,7 @@ const scenarios = {
     await page.waitForTimeout(2_500);
     const searched = await page.evaluate(() => ({
       title: document.getElementById("hunt-zone-title")?.textContent,
-      field: document.querySelector("input[type='search']")?.getAttribute("placeholder"),
+      field: (() => { const field = document.querySelector("input[type='search']"); return field ? (field.value || field.getAttribute("placeholder")) : null; })(),
       selectedOnMap: document.querySelectorAll("[class*=mapZoneLabel][data-selected='true']").length,
       pins: document.querySelectorAll("[class*=mapPin]").length,
       url: location.search,
@@ -514,10 +579,10 @@ const scenarios = {
     await page.waitForTimeout(1_500);
     const elsewhere = await page.evaluate(() => ({
       title: document.getElementById("hunt-zone-title")?.textContent,
-      field: document.querySelector("input[type='search']")?.getAttribute("placeholder"),
+      field: (() => { const field = document.querySelector("input[type='search']"); return field ? (field.value || field.getAttribute("placeholder")) : null; })(),
     }));
     check(s, "a zone you tap does not claim to be the place you searched",
-      elsewhere.title === searchedZone || elsewhere.field === "Find your hunting zone", `${elsewhere.title} :: ${elsewhere.field}`);
+      elsewhere.title === searchedZone || elsewhere.field === "Search anywhere", `${elsewhere.title} :: ${elsewhere.field}`);
 
     // Coming back: the place, the zone and the recents are still there.
     await page.goto(`${BASE}/hunt`);
@@ -525,7 +590,7 @@ const scenarios = {
     await page.waitForTimeout(2_000);
     const back = await page.evaluate(() => ({
       title: document.getElementById("hunt-zone-title")?.textContent,
-      field: document.querySelector("input[type='search']")?.getAttribute("placeholder"),
+      field: (() => { const field = document.querySelector("input[type='search']"); return field ? (field.value || field.getAttribute("placeholder")) : null; })(),
     }));
     check(s, "coming back to /hunt restores the hunt without searching again", back.title === searchedZone && /Bancroft/i.test(back.field ?? ""), `${back.title} :: ${back.field}`);
     await page.locator("input[type='search']").first().click();
@@ -546,10 +611,10 @@ const scenarios = {
     await page.waitForTimeout(1_500);
     const cleared = await page.evaluate(() => ({
       title: document.getElementById("hunt-zone-title")?.textContent ?? null,
-      field: document.querySelector("input[type='search']")?.getAttribute("placeholder"),
+      field: (() => { const field = document.querySelector("input[type='search']"); return field ? (field.value || field.getAttribute("placeholder")) : null; })(),
       stored: (() => { try { return Object.keys(localStorage).filter((key) => key.startsWith("north-ground")).length; } catch { return -1; } })(),
     }));
-    check(s, "start over leaves nothing behind", cleared.title === null && cleared.field === "Find your hunting zone" && cleared.stored === 0, JSON.stringify(cleared));
+    check(s, "start over leaves nothing behind", cleared.title === null && cleared.field === "Search anywhere" && cleared.stored === 0, JSON.stringify(cleared));
     await context.close();
   },
 
@@ -668,7 +733,8 @@ const scenarios = {
     await page.waitForTimeout(1_500);
     check(s, "the zone resolves and is named in the authority's terms", (await zoneTitle(page)) === "MU 1-15", String(await zoneTitle(page)));
 
-    await page.locator("button[data-kind='species']").first().click();
+    // The card's own way to every species, including the ones it cannot answer for.
+    await page.getByRole("button", { name: "View all species" }).first().click();
     await page.waitForTimeout(800);
     const groups = await page.evaluate(() => [...document.querySelectorAll("h3")].map((heading) => heading.textContent ?? ""));
     check(s, "the selector says these are boundaries without certified rules",

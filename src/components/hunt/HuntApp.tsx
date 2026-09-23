@@ -965,6 +965,24 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     if (page !== "main") closePage();
   };
 
+  /*
+   * The date alone, for the zone card.
+   *
+   * A zone card has no species picker (owner, 2026-09-23): the card's own list
+   * of what is in season IS the species control, and a dropdown beside it asked
+   * the same question twice. Tapping a species in that list drills in; the
+   * control above the answer comes back out. The date stays, because a zone
+   * card is an answer about a DAY and there is nowhere else to change it.
+   */
+  const dateChip = (
+    <div className={styles.chips} role="group" aria-label="Your hunt">
+      <button type="button" className={styles.chip} data-kind="date" onClick={() => openPage("date")} aria-haspopup="dialog">
+        <span className={styles.chipLabel}>{dateLabel}</span>
+        <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true" fill="none"><path d="m3 5 4 4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      </button>
+    </div>
+  );
+
   const chips = (
     <div className={styles.chips} role="group" aria-label="Your hunt">
       <button type="button" className={styles.chip} data-kind="species" data-empty={!species || undefined} onClick={() => openPage("species")} aria-haspopup="dialog">
@@ -1117,15 +1135,60 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
             Rules can differ on the other side. The map and consumer GPS are not a legal survey.
           </p>
         ) : null}
-        {chips}
+        {dateChip}
+        {/* Out of a species answer and back to the zone's own list. It replaces
+            the dropdown as the way to change species, and it exists only when
+            there is a list to go back to. */}
+        {species ? (
+          <div className={styles.speciesLede}>
+            {/* Out of a species answer and back to the zone's own list. It
+                replaces the dropdown as the way to change species, and exists
+                only when there is a list to come back to. */}
+            {summary?.kind === "ready" ? (
+              <button type="button" className={styles.backToList} onClick={() => dispatchSession({ type: "SPECIES_CLEARED" })}>
+                <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" fill="none"><path d="M7.5 2 3 6l4.5 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                All species in {presented.fullLabel}
+              </button>
+            ) : null}
+            {/*
+              The card has to NAME what it is answering about.
+
+              The dropdown used to do that as a side effect of being a control,
+              and taking it out left an answer that said "In season" over a
+              season's dates with no animal anywhere on the card. The owner's
+              own shape names the species between the way back and the status,
+              and an answer that does not say what it is about is worse than
+              the control that was removed.
+            */}
+            <h3 className={styles.speciesName}>{species.displayName}</h3>
+          </div>
+        ) : null}
         {!species ? (
-          summary?.kind === "ready" ? (
-            <InSeasonHere summary={summary.summary} onChoose={chooseSpecies} />
-          ) : summary?.kind === "error" ? (
-            <p className={styles.problem} role="status">{summary.message}</p>
-          ) : (
-            <p className={styles.answerLoading} role="status"><span className={styles.spinner} aria-hidden="true" /> Reading the certified rules for this zone…</p>
-          )
+          <>
+            {summary?.kind === "ready" ? (
+              <InSeasonHere summary={summary.summary} onChoose={chooseSpecies} />
+            ) : summary?.kind === "error" ? (
+              <p className={styles.problem} role="status">{summary.message}</p>
+            ) : (
+              <p className={styles.answerLoading} role="status"><span className={styles.spinner} aria-hidden="true" /> Reading the certified rules for this zone…</p>
+            )}
+            {/*
+              The way to every species, including the ones this zone's list
+              cannot offer.
+              
+              The card's list is built from what is CERTIFIED here, and in a
+              jurisdiction drawn without certified rules — Saskatchewan, Yukon —
+              it is empty. Taking the dropdown away without this would have
+              taken a capability with it: §41A says a selectable species may
+              ALWAYS be chosen, and that choosing one North Ground cannot answer
+              for is itself an answer, in the engine's own words. It is the
+              owner's own full-width action rather than a control beside the
+              zone, which is what they asked to be rid of.
+            */}
+            <button type="button" className={styles.viewAllSpecies} onClick={() => openPage("species")}>
+              View all species
+            </button>
+          </>
         ) : !speciesCertifiedHere ? (
           /* Selectable, not answerable (§41A). The geography is this species'
              own and the zone is resolved; what North Ground does not have is a

@@ -90,6 +90,12 @@
   white-space: nowrap;
   color: var(--ng-cream);
   pointer-events: none;
+  /* Map furniture, not text. They are `aria-hidden` because the zone list is
+     the textual alternative (§48), and they are unselectable for the same
+     reason: a Select-All copy otherwise picks up nineteen designations with no
+     separators — "10W1211E4865…" — which reads as a defect wherever it lands. */
+  user-select: none;
+  -webkit-user-select: none;
   will-change: transform;
 }
 .mapZoneLabel[data-selected="true"] {
@@ -1201,3 +1207,49 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* Out of one species and back to the zone's own list — what the dropdown used
+   to do, in the place a reader is already looking. */
+.backToList {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 4px;
+  background: none;
+  border: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ng-bone-dim);
+  cursor: pointer;
+}
+.backToList:hover { color: var(--ng-bone); }
+
+/* The way back, and what this answer is about. */
+.speciesLede { display: flex; flex-direction: column; gap: 2px; margin-bottom: 2px; }
+.speciesLede .backToList { align-self: flex-start; margin-left: -4px; }
+.speciesName {
+  margin: 0;
+  font-family: var(--ng-font-display, inherit);
+  font-size: 1.12rem;
+  font-weight: 620;
+  letter-spacing: -0.01em;
+  color: var(--ng-bone);
+}
+
+/* Every species, including the ones a zone's certified list cannot offer. */
+.viewAllSpecies {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin-top: 8px;
+  padding: 0 12px;
+  border: 1px solid var(--ng-glass-border);
+  border-radius: var(--ng-radius-md, 12px);
+  background: transparent;
+  font-size: 0.86rem;
+  font-weight: 620;
+  color: var(--ng-bone);
+  cursor: pointer;
+}
+.viewAllSpecies:hover { border-color: var(--ng-bone-dim); }

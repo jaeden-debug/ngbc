@@ -205,8 +205,18 @@ export default function PlaceComposer({
           autoComplete="off"
           autoCorrect="off"
           spellCheck={false}
-          placeholder={value ? value : "Find your hunting zone"}
-          value={open ? query : ""}
+          /*
+           * A chosen place is a VALUE, not a placeholder.
+           *
+           * It used to be shown as the placeholder, so the field read
+           * "Maniwaki, La Vallée-de-la-Gatineau…" in placeholder grey — and
+           * someone who had chosen Maniwaki could not tell their own choice
+           * from a suggestion the field was making. The placeholder is a hint
+           * now, and never a place: §41A already refuses to dress a row as a
+           * place result, and the same holds for the field itself.
+           */
+          placeholder="Search anywhere"
+          value={open ? query : value ?? ""}
           onFocus={() => onOpenChange(true)}
           aria-expanded={suggestions.length > 0}
           aria-controls={`${id}-list`}
