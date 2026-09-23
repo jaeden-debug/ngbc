@@ -99,6 +99,20 @@ reworded source can be re-read without disturbing the other.
 
   // AUTHORIZATION rows only.
   "obtain":   { "channels": ["ONLINE", "PHYSICAL_VENDOR"], "infoUrl": "<authority's page>", "note": null },
+
+  // When validity ends. REQUIRED on an authorization row.
+  "validity": {
+    "endsOn": "DATE | EVENT | EARLIER_OF",
+    "date": "2027-03-31",
+    "event": { "statedAs": "<verbatim>", "meaning": "<what the authority ties it to>" },
+    "statedAs": "<the whole provision, verbatim>"
+  },
+
+  // The authority's own class/code, never a boolean.
+  "credentialClass": { "code": "F", "statedAs": "<verbatim>", "covers": ["<the authority's own words for what it authorises>"] },
+
+  // How many are ISSUED. NEVER a limit — see below.
+  "issuance": { "count": 2, "statedAs": "<verbatim>", "note": "<why it differs from the limit, where it does>" },
   "requires": [ { "officialName": { "text": "<prerequisite's own name>", "lang": "fr-CA" }, "citation": "<…>" } ],
 
   "unresolved": ["<what this source did not settle, in your words>"]
@@ -252,6 +266,53 @@ wearing the authority's words.
 20 only because s.9(2) says so. Record the cell verbatim AND the provision that
 decodes it; a figure whose notation lives elsewhere is not evidence on its own.
 
+## Validity can end on an EVENT, not a date
+
+Québec r.12 s.11: a hunting licence expires at the end of the season for that
+animal, **or when the animal is tagged — *"ou aurait dû l'être"*, or should have
+been — whichever comes first.** Small game is the exception and runs to a
+printed date.
+
+So most Québec big-game licences are **not licence-year artefacts at all**, and
+a model with only `effectiveFrom`/`effectiveTo` cannot say what they are.
+`validity.endsOn` carries DATE, EVENT or EARLIER_OF with the provision quoted.
+
+**What this does NOT change: North Ground still never states whether a hunter's
+licence is currently valid.** We do not know whether the animal was tagged, or
+should have been. The row states the authority's rule about when validity ends;
+it never states a hunter's status. That is `possessionVerifiable: false`
+holding under a new shape rather than an exception to it — and an event-based
+expiry makes it structurally impossible to drift, because the fact we would
+need is one only the hunter has.
+
+**Fees:** §41A anchors a published fee to *"the licence year in force"*, and
+that anchor does not map onto an authorization that is not a licence-year
+artefact. **Do not encode a fee for one.** Record the finding, cite the
+provision, and leave the figure to the owner's ruling on §41A.
+
+## A certificate's CLASS is part of the requirement
+
+Québec's hunter certificate is **weapon-coded**: «F» firearm, «A» bow and
+crossbow, «P» trapping. "Holds a certificate" as a boolean loses the only fact
+that matters — **a hunter holding «A» is not certified for a firearm season.**
+
+So `credentialClass` carries the authority's own code, its sentence, and what
+the authority says it covers. Never a boolean, and never our inference about
+which methods a code implies: if the authority does not say, `covers` is
+omitted and the gap goes in `unresolved`.
+
+## An ISSUANCE count is not a limit
+
+Québec issues **2 coupons** for black bear while the annual cap is 2
+*distributed by zone*, so some zones allow 1. The two numbers disagree **on
+purpose**.
+
+A coupon count is the most plausible-looking wrong limit available: it is an
+integer, it sits beside the species, and it is usually close to the real
+figure. So issuance is recorded on the AUTHORIZATION row as `issuance`, never
+as a LIMIT row, and a consumer that wants a bag limit must find one stated as a
+bag limit.
+
 ## Rule 9: an exemption's scope is what survives its own carve-outs
 
 B.C. Reg. 168/90 s.9(1) exempts the family **Leporidae** — hares and rabbits —
@@ -269,9 +330,16 @@ exemption row is scoped to snowshoe hare alone and marked NOT_APPLICABLE,
 carrying 9(1) and 9(2)(a) together, so the exemption cannot be read as
 reaching the species it explicitly excludes.
 
+**A carve-out is not always a separate subsection.** Québec puts one INSIDE the
+requiring sentence: no certificate is needed for frog licences, or for
+**snaring hare and cottontail** — species AND method specific, reaching those
+species by no other route. A reader scanning for a numbered exception
+subsection misses it entirely.
+
 The general form, which is rule 4 pointing the other way: **a permission is no
 more inheritable than a prohibition.** Both need reading to the end of the
-provision.
+provision — and "the end of the provision" includes the rest of the sentence
+that imposes it.
 
 ## Rule 8: authenticity is not currency
 
