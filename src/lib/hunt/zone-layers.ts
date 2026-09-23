@@ -399,11 +399,12 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     authority: "Government of British Columbia",
     sourceId: "source:ca-bc-mu-service",
     bounds: { minLatitude: 48.2, maxLatitude: 60.01, minLongitude: -139.07, maxLongitude: -114.05 },
-    /* Boundaries only: parity-certified against the province and drawn, with no
-       rules certified, so every species here answers UNKNOWN and the card sends
-       the person to the Government of British Columbia. `rulesServing` turns on
-       only when the B.C. Reg. 190/84 bundle is certified in production. */
+    /* Parity-certified against the province and drawn. The B.C. Reg. 190/84
+       first wave reaches 221 of the 225 units for seven small-game species;
+       every other unit and species answers UNKNOWN rather than guessing, which
+       is what `certifiedDesignations` below is for. */
     serving: true,
+    rulesServing: true,
     officialNamePrefix: "Management Unit ",
     certifiedDesignations: new Set(britishColumbiaCertifiedUnits.certifiedUnits.map((unit) => unit.toUpperCase())),
     zoneIdPrefix: "management_zone:ca-bc-mu-",

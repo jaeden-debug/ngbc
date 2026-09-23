@@ -31,10 +31,10 @@ function province({ at, contains }: { at: string[]; contains: boolean }) {
   return { fetcher, asked };
 }
 
-test("the layer serves its certified boundaries, and no rule of its own", () => {
+test("the layer serves its certified boundaries, and its certified rules", () => {
   assert.ok(BC);
   assert.equal(BC.serving, true);
-  assert.notEqual(BC.rulesServing, true);
+  assert.equal(BC.rulesServing, true);
   assert.equal(BC.officialTerm, "Management Unit");
   assert.equal(layerForResolution({ status: "RESOLVED", jurisdictionId: "jurisdiction:ca-bc" }).kind, "SERVING");
 });

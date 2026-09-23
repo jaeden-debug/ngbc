@@ -350,8 +350,8 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
         "certifying the geometry is not certifying a rule.",
     },
     regulatory: {
-      status: "IN_DEVELOPMENT",
-      bundleIds: [],
+      status: "PARTIAL",
+      bundleIds: ["bundle:ca-bc-2026"],
       sourceLeads: [
         "Hunting Regulation, B.C. Reg. 190/84, Schedules 1-8 (controlling; BC Laws consolidation current to September 15, 2026)",
         "2026-2028 Hunting and Trapping Regulations Synopsis (cross-check only)",
@@ -359,14 +359,20 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       sourceState: "CURRENT",
       huntingAuthorityUrl: "https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/hunting",
       notes:
-        "A first wave is built from the regulation itself (content/regulatory/ca-bc-2026.json): ruffed, spruce and " +
-        "sharp-tailed grouse, rock and willow ptarmigan, snowshoe hare and black bear, 79 rules. It does not answer yet: " +
-        "the layer serves boundaries only, so British Columbia is not counted as covered and every species there is UNKNOWN " +
-        "until the bundle is certified for serving.",
+        "A first wave answers, built from the regulation itself (content/regulatory/ca-bc-2026.json): ruffed, spruce " +
+        "and sharp-tailed grouse, rock and willow ptarmigan, snowshoe hare and black bear — 79 rules reaching 221 of " +
+        "the 225 Management Units, certified for 2026-07-01 to 2027-06-30. PARTIAL, not VERIFIED: every other species " +
+        "and the remaining four units answer UNKNOWN. Three cross-check disputes between the regulation and the " +
+        "synopsis are encoded as disputes rather than resolved, and surface as CONFLICT where the readings differ.",
     },
     knownGaps: [
-      "Boundaries only: the 225 Management Units are drawn, named and resolved, and every British Columbia species query " +
-        "is UNKNOWN until the first rules are certified for serving. A drawn boundary is not a certified rule.",
+      "Seven species only: ruffed, spruce and sharp-tailed grouse, rock and willow ptarmigan, snowshoe hare and black " +
+        "bear. Every other British Columbia species is UNKNOWN, and a drawn boundary is not a certified rule.",
+      "The wave reaches 221 of 225 Management Units; the other four answer UNKNOWN rather than being assumed closed.",
+      "Outside 2026-07-01 to 2027-06-30 the bundle is not certified, and a date there answers NEEDS_VERIFICATION.",
+      "Two disputes with the 2026-2028 synopsis are unresolved by design and answer CONFLICT: the spring black bear " +
+        "closing date (regulation June 20, synopsis June 30) and a September 1-9 youth grouse season the synopsis " +
+        "prints and Part 1 of Schedule 8 does not list.",
       "Limited Entry Hunting (B.C. Reg. 134/93) is layered over general open seasons and is not evaluated; a unit no general-season row names is UNKNOWN, not CLOSED.",
       "Closures inside units that the regulation describes in words or on maps, provincial parks named in Part 2 and private-property-only seasons have no boundary North Ground holds; answers there are NEEDS_VERIFICATION.",
       "Deer, moose, elk, sheep, goat, caribou, bison, cougar, wolf, blue grouse and all migratory birds are not encoded.",

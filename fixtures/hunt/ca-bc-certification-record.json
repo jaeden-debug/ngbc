@@ -1,0 +1,629 @@
+{
+  "jurisdiction": "jurisdiction:ca-bc",
+  "base": "http://127.0.0.1:3311",
+  "certifiedAt": "2026-09-23T06:52:24.228Z",
+  "summary": {
+    "passed": 20,
+    "failed": 0,
+    "zoneLookupMs": {
+      "median": 125,
+      "p90": 171,
+      "max": 174
+    },
+    "evaluationMs": {
+      "median": 122,
+      "p90": 685,
+      "max": 723
+    },
+    "evaluationBytes": {
+      "median": 14966,
+      "max": 16547
+    }
+  },
+  "geometry": [
+    {
+      "label": "All of British Columbia (zoom 5)",
+      "zoom": 5,
+      "status": "OK",
+      "ms": 21,
+      "bytes": 172245,
+      "features": 339,
+      "byLayer": {
+        "layer:ca-ab-wmu": 109,
+        "layer:ca-bc-mu": 225,
+        "layer:ca-yt-gms": 2,
+        "layer:us-id-gmu": 3
+      }
+    },
+    {
+      "label": "Southern interior (zoom 7)",
+      "zoom": 7,
+      "status": "OK",
+      "ms": 27,
+      "bytes": 102051,
+      "features": 113,
+      "byLayer": {
+        "layer:ca-ab-wmu": 4,
+        "layer:ca-bc-mu": 108,
+        "layer:us-id-gmu": 1
+      }
+    },
+    {
+      "label": "Kamloops (zoom 10)",
+      "zoom": 10,
+      "status": "OK",
+      "ms": 8,
+      "bytes": 5411,
+      "features": 5,
+      "byLayer": {
+        "layer:ca-bc-mu": 5
+      }
+    }
+  ],
+  "results": [
+    {
+      "id": "kamloops-grouse-october",
+      "place": "Kamloops",
+      "date": "2026-10-15",
+      "speciesId": "species:ruffed-grouse",
+      "expected": {
+        "gha": "3-20",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "3-20",
+        "zoneName": "Management Unit 3-20",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false,
+        "daily": 5,
+        "possession": 15
+      },
+      "summary": "The certified B.C. Reg. 190/84, consolidated to September 15, 2026 season for ruffed grouse in MU 3-20 includes this date (General open season, Sept. 10 to Nov. 30). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to any licence here: Youth season Sept. 1 to Sept. 9 (hunters under 18); General open season Sept. 10 to Nov. 30.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 171,
+        "zoneBytes": 1056,
+        "evaluateMs": 660,
+        "evaluateBytes": 13751
+      }
+    },
+    {
+      "id": "kamloops-grouse-youth-asks",
+      "place": "Kamloops",
+      "date": "2026-09-05",
+      "speciesId": "species:spruce-grouse",
+      "expected": {
+        "gha": "3-20",
+        "completeness": "NEEDS_INPUT",
+        "required": "HUNTER_AGE"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "3-20",
+        "zoneName": "Management Unit 3-20",
+        "completeness": "NEEDS_INPUT",
+        "required": "HUNTER_AGE",
+        "nearBoundary": false
+      },
+      "summary": "North Ground holds the applicable British Columbia rules and needs one more fact before it can answer: Are you under 18?",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 89,
+        "zoneBytes": 1056,
+        "evaluateMs": 90,
+        "evaluateBytes": 11739
+      }
+    },
+    {
+      "id": "kamloops-grouse-youth-adult",
+      "place": "Kamloops",
+      "date": "2026-09-05",
+      "speciesId": "species:spruce-grouse",
+      "expected": {
+        "gha": "3-20",
+        "status": "CLOSED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "3-20",
+        "zoneName": "Management Unit 3-20",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "No spruce grouse season in MU 3-20 is open on this date for this combination. Seasons open to this combination here: General open season Sept. 10 to Nov. 30.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 90,
+        "zoneBytes": 1056,
+        "evaluateMs": 78,
+        "evaluateBytes": 13907
+      }
+    },
+    {
+      "id": "kamloops-bear-june-dispute",
+      "place": "Kamloops",
+      "date": "2027-06-25",
+      "speciesId": "species:american-black-bear",
+      "expected": {
+        "gha": "3-20",
+        "status": "CONFLICT"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "3-20",
+        "zoneName": "Management Unit 3-20",
+        "status": "CONFLICT",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "The official sources disagree about american black bear in MU 3-20 for this combination, and North Ground will not choose between them. Seasons open to any licence here: General open season Apr. 1 to June 20; Sept. 1 to Nov. 30; Synopsis-only dates June 21 to June 30.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 92,
+        "zoneBytes": 1056,
+        "evaluateMs": 85,
+        "evaluateBytes": 12955
+      }
+    },
+    {
+      "id": "kamloops-bear-may",
+      "place": "Kamloops",
+      "date": "2027-05-15",
+      "speciesId": "species:american-black-bear",
+      "expected": {
+        "gha": "3-20",
+        "status": "CONDITIONAL"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "3-20",
+        "zoneName": "Management Unit 3-20",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "The certified B.C. Reg. 190/84, consolidated to September 15, 2026 season for american black bear in MU 3-20 includes this date (General open season, Apr. 1 to June 20; Sept. 1 to Nov. 30). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to any licence here: General open season Apr. 1 to June 20; Sept. 1 to Nov. 30; Synopsis-only dates June 21 to June 30.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 83,
+        "zoneBytes": 1056,
+        "evaluateMs": 77,
+        "evaluateBytes": 13564
+      }
+    },
+    {
+      "id": "cranbrook-bear-bow-asks",
+      "place": "Cranbrook",
+      "date": "2026-09-05",
+      "speciesId": "species:american-black-bear",
+      "expected": {
+        "gha": "4-3",
+        "completeness": "NEEDS_INPUT",
+        "required": "HUNT_METHOD"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "4-3",
+        "zoneName": "Management Unit 4-3",
+        "completeness": "NEEDS_INPUT",
+        "required": "HUNT_METHOD",
+        "nearBoundary": false
+      },
+      "summary": "North Ground holds the applicable British Columbia rules and needs one more fact before it can answer: What will you be hunting with?",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 97,
+        "zoneBytes": 1045,
+        "evaluateMs": 86,
+        "evaluateBytes": 13812
+      }
+    },
+    {
+      "id": "cranbrook-bear-crossbow",
+      "place": "Cranbrook",
+      "date": "2026-09-05",
+      "speciesId": "species:american-black-bear",
+      "expected": {
+        "gha": "4-3",
+        "status": "CONDITIONAL"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "4-3",
+        "zoneName": "Management Unit 4-3",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "The certified B.C. Reg. 190/84, consolidated to September 15, 2026 season for american black bear in MU 4-3 includes this date (Bow only season, Sept. 1 to Sept. 9). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to this combination here: General open season Apr. 1 to June 30; Sept. 10 to Nov. 30; Bow only season Sept. 1 to Sept. 9; Private property season Aug. 1 to Aug. 31.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 87,
+        "zoneBytes": 1045,
+        "evaluateMs": 95,
+        "evaluateBytes": 16547
+      }
+    },
+    {
+      "id": "cranbrook-bear-rifle",
+      "place": "Cranbrook",
+      "date": "2026-09-05",
+      "speciesId": "species:american-black-bear",
+      "expected": {
+        "gha": "4-3",
+        "status": "CLOSED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "4-3",
+        "zoneName": "Management Unit 4-3",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "No american black bear season in MU 4-3 is open on this date for this combination. Seasons open to this combination here: General open season Apr. 1 to June 30; Sept. 10 to Nov. 30; Private property season Aug. 1 to Aug. 31.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 84,
+        "zoneBytes": 1045,
+        "evaluateMs": 82,
+        "evaluateBytes": 15706
+      }
+    },
+    {
+      "id": "cranbrook-bear-august-private",
+      "place": "Cranbrook",
+      "date": "2026-08-15",
+      "speciesId": "species:american-black-bear",
+      "expected": {
+        "gha": "4-3",
+        "status": "NEEDS_VERIFICATION",
+        "mentions": [
+          "private property"
+        ]
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "4-3",
+        "zoneName": "Management Unit 4-3",
+        "status": "NEEDS_VERIFICATION",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "North Ground cannot state a american black bear season for this exact point, because the answer depends on something it could not establish. Seasons open to any licence here: General open season Apr. 1 to June 30; Sept. 10 to Nov. 30; Private property season Aug. 1 to Aug. 31; Bow only season Sept. 1 to Sept. 9.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 111,
+        "zoneBytes": 1045,
+        "evaluateMs": 86,
+        "evaluateBytes": 15090
+      }
+    },
+    {
+      "id": "atlin-ptarmigan-february",
+      "place": "Atlin",
+      "date": "2027-02-15",
+      "speciesId": "species:willow-ptarmigan",
+      "expected": {
+        "gha": "6-25",
+        "status": "CONDITIONAL"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "6-25",
+        "zoneName": "Management Unit 6-25",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false,
+        "daily": 10,
+        "possession": 30
+      },
+      "summary": "The certified B.C. Reg. 190/84, consolidated to September 15, 2026 season for willow ptarmigan in MU 6-25 includes this date (General open season, Aug. 15 to Feb. 28). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to any licence here: General open season Aug. 15 to Feb. 28.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 170,
+        "zoneBytes": 1057,
+        "evaluateMs": 133,
+        "evaluateBytes": 15327
+      }
+    },
+    {
+      "id": "atlin-hare-january",
+      "place": "Atlin",
+      "date": "2027-01-10",
+      "speciesId": "species:snowshoe-hare",
+      "expected": {
+        "gha": "6-25",
+        "status": "CONDITIONAL"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "6-25",
+        "zoneName": "Management Unit 6-25",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "The certified B.C. Reg. 190/84, consolidated to September 15, 2026 season for snowshoe hare in MU 6-25 includes this date (General open season, Apr. 1 to Apr. 30; Aug. 1 to Mar. 31). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to any licence here: General open season Apr. 1 to Apr. 30; Aug. 1 to Mar. 31.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 125,
+        "zoneBytes": 1057,
+        "evaluateMs": 144,
+        "evaluateBytes": 15231
+      }
+    },
+    {
+      "id": "prince-george-grouse",
+      "place": "Prince George",
+      "date": "2026-10-01",
+      "speciesId": "species:spruce-grouse",
+      "expected": {
+        "gha": "7-15",
+        "status": "CONDITIONAL",
+        "mentions": [
+          "contains no clause naming spruce or ruffed grouse"
+        ]
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "7-15",
+        "zoneName": "Management Unit 7-15",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false,
+        "daily": 10,
+        "possession": 30
+      },
+      "summary": "The certified B.C. Reg. 190/84, consolidated to September 15, 2026 season for spruce grouse in MU 7-15 includes this date (General open season, Sept. 1 to Nov. 15). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to any licence here: General open season Sept. 1 to Nov. 15.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 127,
+        "zoneBytes": 1057,
+        "evaluateMs": 723,
+        "evaluateBytes": 16311
+      }
+    },
+    {
+      "id": "prince-george-grouse-after",
+      "place": "Prince George",
+      "date": "2026-11-20",
+      "speciesId": "species:ruffed-grouse",
+      "expected": {
+        "gha": "7-15",
+        "status": "CLOSED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "7-15",
+        "zoneName": "Management Unit 7-15",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "No ruffed grouse season in MU 7-15 is open on this date for any licence or equipment. Seasons open to any licence here: General open season Sept. 1 to Nov. 15.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 134,
+        "zoneBytes": 1057,
+        "evaluateMs": 122,
+        "evaluateBytes": 14911
+      }
+    },
+    {
+      "id": "fort-st-john-sharptail",
+      "place": "Fort St. John",
+      "date": "2026-10-01",
+      "speciesId": "species:sharp-tailed-grouse",
+      "expected": {
+        "gha": "7-33",
+        "status": "CONDITIONAL"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "7-33",
+        "zoneName": "Management Unit 7-33",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false,
+        "daily": 3,
+        "possession": 6
+      },
+      "summary": "The certified B.C. Reg. 190/84, consolidated to September 15, 2026 season for sharp-tailed grouse in MU 7-33 includes this date (General open season, Sept. 1 to Nov. 15). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to any licence here: General open season Sept. 1 to Nov. 15.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 174,
+        "zoneBytes": 1057,
+        "evaluateMs": 678,
+        "evaluateBytes": 15242
+      }
+    },
+    {
+      "id": "penticton-ptarmigan-unknown",
+      "place": "Penticton",
+      "date": "2026-10-01",
+      "speciesId": "species:willow-ptarmigan",
+      "expected": {
+        "gha": "8-9",
+        "status": "UNKNOWN"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "8-9",
+        "zoneName": "Management Unit 8-9",
+        "status": "UNKNOWN",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "No certified rule covers willow ptarmigan in MU 8-9. The unit is not named by any season row North Ground has certified, and an absent row is not evidence that the season is closed.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 127,
+        "zoneBytes": 1046,
+        "evaluateMs": 161,
+        "evaluateBytes": 12658
+      }
+    },
+    {
+      "id": "penticton-grouse-bow-december",
+      "place": "Penticton",
+      "date": "2026-12-05",
+      "speciesId": "species:ruffed-grouse",
+      "expected": {
+        "gha": "8-9",
+        "status": "CONDITIONAL"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "8-9",
+        "zoneName": "Management Unit 8-9",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false,
+        "daily": 5,
+        "possession": 15
+      },
+      "summary": "The certified B.C. Reg. 190/84, consolidated to September 15, 2026 season for ruffed grouse in MU 8-9 includes this date (Bow only season, Dec. 1 to Dec. 10). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to this combination here: Bow only season Dec. 1 to Dec. 10; General open season Sept. 10 to Nov. 30; Youth season Sept. 1 to Sept. 9 (hunters under 18).",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 85,
+        "zoneBytes": 1046,
+        "evaluateMs": 76,
+        "evaluateBytes": 14966
+      }
+    },
+    {
+      "id": "penticton-grouse-shotgun-december",
+      "place": "Penticton",
+      "date": "2026-12-05",
+      "speciesId": "species:ruffed-grouse",
+      "expected": {
+        "gha": "8-9",
+        "status": "CLOSED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "8-9",
+        "zoneName": "Management Unit 8-9",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "No ruffed grouse season in MU 8-9 is open on this date for this combination. Seasons open to this combination here: General open season Sept. 10 to Nov. 30; Youth season Sept. 1 to Sept. 9 (hunters under 18).",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 88,
+        "zoneBytes": 1046,
+        "evaluateMs": 87,
+        "evaluateBytes": 14118
+      }
+    },
+    {
+      "id": "williams-lake-sharptail",
+      "place": "Williams Lake",
+      "date": "2026-10-01",
+      "speciesId": "species:sharp-tailed-grouse",
+      "expected": {
+        "gha": "5-2",
+        "status": "CONDITIONAL"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "5-2",
+        "zoneName": "Management Unit 5-2",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false,
+        "daily": 5,
+        "possession": 10
+      },
+      "summary": "The certified B.C. Reg. 190/84, consolidated to September 15, 2026 season for sharp-tailed grouse in MU 5-2 includes this date (General open season, Sept. 10 to Nov. 30). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to any licence here: General open season Sept. 10 to Nov. 30.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 140,
+        "zoneBytes": 1046,
+        "evaluateMs": 685,
+        "evaluateBytes": 15179
+      }
+    },
+    {
+      "id": "smithers-bear-september",
+      "place": "Smithers",
+      "date": "2026-09-01",
+      "speciesId": "species:american-black-bear",
+      "expected": {
+        "gha": "6-9",
+        "status": "CONDITIONAL"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "6-9",
+        "zoneName": "Management Unit 6-9",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "The certified B.C. Reg. 190/84, consolidated to September 15, 2026 season for american black bear in MU 6-9 includes this date (General open season, Apr. 1 to June 30; Aug. 15 to Nov. 30). Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold. Seasons open to any licence here: General open season Apr. 1 to June 30; Aug. 15 to Nov. 30.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 161,
+        "zoneBytes": 1046,
+        "evaluateMs": 176,
+        "evaluateBytes": 15793
+      }
+    },
+    {
+      "id": "tofino-grouse-park",
+      "place": "Tofino",
+      "date": "2026-10-01",
+      "speciesId": "species:ruffed-grouse",
+      "expected": {
+        "gha": "1-8",
+        "status": "NEEDS_VERIFICATION",
+        "mentions": [
+          "Gibson Marine"
+        ]
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "1-8",
+        "zoneName": "Management Unit 1-8",
+        "status": "NEEDS_VERIFICATION",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "North Ground cannot state a ruffed grouse season for this exact point, because the answer depends on something it could not establish. Seasons open to any licence here: General open season Sept. 1 to Dec. 31; Bow only season Aug. 20 to Aug. 31.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 126,
+        "zoneBytes": 1046,
+        "evaluateMs": 545,
+        "evaluateBytes": 14776
+      }
+    }
+  ]
+}

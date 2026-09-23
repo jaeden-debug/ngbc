@@ -4,7 +4,7 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-23 (**Canada spatial complete**: all 11 in-scope provinces and territories have parity-certified official geography, Prince Edward Island last, served at geography level JURISDICTION because the province publishes no units. Rules remain the open front — 7 of 11 hold no certified rule and answer UNKNOWN. Government GIS transient failures are now retried under one stated policy and a national audit survives an unreadable provider.)
+Last updated: 2026-09-23 (**British Columbia serves rules** — a first wave of 79 rules over seven species reaching 221 of 225 units, 20/20 production cases, three disputes preserved as CONFLICT; coreGameComplete 5 of 11. Earlier the same day: **Canada spatial complete**: all 11 in-scope provinces and territories have parity-certified official geography, Prince Edward Island last, served at geography level JURISDICTION because the province publishes no units. Rules remain the open front — 7 of 11 hold no certified rule and answer UNKNOWN. Government GIS transient failures are now retried under one stated policy and a national audit survives an unreadable provider.)
 
 Previously: 2026-09-22 (Canonical species PRIMARY media schema, private storage and every shared consumer are activated and certified in production. Temporary certification media and users were removed; population is 0/60. Permanent administrator access remains fail-closed until the owner supplies the administrator email.)
 
@@ -43,7 +43,22 @@ Previously: 2026-09-22 (Canonical species PRIMARY media schema, private storage 
 - **Saskatchewan is certified and unserved, live-service only.** 83 Wildlife Management Zones are read from the ministry's own service at request time; North Ground stores no copy, because the ArcGIS item says "Not for resale" despite the province's unrestricted licence (owner decision, 2026-09-22). Live-certified 2026-09-22: 265 points, 0 disagreements, 0 overlaps; authority p90 114 ms, production p90 141 ms (`fixtures/hunt/ca-sk-wmz-live-parity.json`). Certified geometry alone does not serve: `layer:ca-sk-wmz` stays `serving:false` until rules exist.
 - **Newfoundland and Yukon are ingested and unserved.** Newfoundland manages each big-game species on its own map, so it is three species-scoped layers over one Wildlife Division service (NL Open Government Licence): 74 moose areas, 19 caribou, 7 black bear. Yukon is 443 Game Management Subzones, rebuilt from the service's integers as the territory writes them (417 -> "4-17"). Both are NEEDS_VERIFICATION, so no point resolves to them and nothing of them is drawn. Records the authority itself excludes are quarantined with its own words and never renumbered: NL's four national parks, the Nunavut sliver, area 000 "Not Applicable" and area 099 "Not a Newfoundland Caribou Hunting Zone"; Yukon's 102 and 103 over Ivvavik and Vuntut National Parks. Production now holds 1,229 zones: 461 VERIFIED (ON 151, MB 62, AB 189, QC 59) and 768 unverified (BC 225, NL 100, YT 443).
 - **Ontario, Manitoba and Alberta draw from stored drawings.** The map reads North Ground's stored drawings of the parity-certified copy, with each authority's service as fallback; point answers still ask the authority and still use full geometry. Measured on a local production build, `/api/hunt/zones` at zooms 4/7/10/12 over each province: p50 1,520 ms → 175 ms, p90 2,257 ms → 516 ms. Stored drawings deviate from the certified geometry by at most 16.7 m, the level-0 tolerance.
-- **British Columbia is ingested and unserved.** 225 Management Units from the province's WFS (`WHSE_WILDLIFE_MANAGEMENT.WAA_WILDLIFE_MGMT_UNITS_SVW`) are published as NEEDS_VERIFICATION with all derivatives, certified 225/225 against the province (890/890 authority-derived points). The first rules wave from B.C. Reg. 190/84 (79 rules, 2026-07-01 → 2027-06-30) and 20 production cases are committed. `layer:ca-bc-mu` is `serving:false`, so Hunt answers nothing British Columbian: no rules entry, not listed as covered, nothing drawn, and a BC zone is never presented (`british-columbia-unserved.test.ts`). Serving waits for the rules certification and the moderator's GO.
+- **British Columbia serves a first rules wave (2026-09-23).** `rulesServing` is
+  on. 79 rules from B.C. Reg. 190/84 (consolidated to 2026-09-15), certified for
+  2026-07-01 → 2027-06-30, reaching **221 of the 225** Management Units for
+  **seven** species: ruffed, spruce and sharp-tailed grouse, rock and willow
+  ptarmigan, snowshoe hare, black bear. PARTIAL, never VERIFIED — every other
+  species, the remaining four units, and any date outside the certified period
+  answer UNKNOWN or NEEDS_VERIFICATION. **20 of 20 production cases agree with
+  the law**, each written from the regulation before the run.
+  **Three cross-check disputes are encoded and unresolved by design**, and
+  surface as CONFLICT stating both readings: the spring black bear closing date
+  (regulation June 20, synopsis June 30) and a September 1–9 youth grouse season
+  the synopsis prints that Part 1 of Schedule 8 does not list (on both ruffed and
+  spruce grouse). `british-columbia-served.test.ts` pins all three by their
+  quoted text, so a rebuild that quietly picks a side fails.
+
+- *Superseded 2026-09-22:* **British Columbia was ingested and unserved.** 225 Management Units from the province's WFS (`WHSE_WILDLIFE_MANAGEMENT.WAA_WILDLIFE_MGMT_UNITS_SVW`) are published as NEEDS_VERIFICATION with all derivatives, certified 225/225 against the province (890/890 authority-derived points). The first rules wave from B.C. Reg. 190/84 (79 rules, 2026-07-01 → 2027-06-30) and 20 production cases are committed. `layer:ca-bc-mu` is `serving:false`, so Hunt answers nothing British Columbian: no rules entry, not listed as covered, nothing drawn, and a BC zone is never presented (`british-columbia-unserved.test.ts`). Serving waits for the rules certification and the moderator's GO.
 - **Every served zone has lookup derivatives.** Point-lookup parts, boundary parts and five drawing levels exist for all 686 published zones: ON 151, MB 62, AB 189, QC 59, BC 225. A database invariant (migrations `20260922190000` and `20260922200000`) now refuses a VERIFIED zone without them. Changing a zone's boundary drops its stale derivatives, so a zone must be built before it is promoted.
 - **Zone resolver in PL/pgSQL, planned per point.** Same signature and answers. It finds zones only through their parts, and as a safety net it raises into the official-GIS fallback if a part-less VERIFIED zone ever lies under the point. Warm in-database: WMU 26 9.8 ms (was 460 ms cold), Québec zone 21 8.6 ms (was 1.5–5 s). Production Québec zone lookup median 258 ms / p90 846 ms (was p90 6.7 s). Proven by the 686-zone authority audit (2,767 points, 0 disagreements), a 1,102-point replay (0 differences old vs new) and the Québec 21-case suite (21/21).
 - **Regulatory special areas are stored where the licence allows.** Migrations `20260922170000` and `20260922180000` add `regulatory_special_areas`, staged batch publishing and `special_areas_at_point`. Manitoba's four layers (closed lands 24, refuges 71, special conservation areas 7, WMAs 129) are stored under the OpenMB licence. Hunt reads a layer from the store only while it is CURRENT and was loaded against the exact committed catalogue; otherwise it asks the live service. Stored vs live at 225 Manitoba points: 0 differences; the zone index rebuilt from the store equals the committed one. `node scripts/ingest-special-areas.mjs --jurisdiction ca-mb --check` is the change watch.
@@ -299,9 +314,9 @@ National position as of 2026-09-23, from `npm run report:canada`:
 | Jurisdictions tracked | 14 (13 provinces and territories + federal) |
 | Spatial VERIFIED | 11 (every in-scope province and territory) |
 | Official units parity-certified | 1,351 |
-| Species with certified rules | 10 |
-| Certified rules | 477 |
-| Jurisdictions with any certified rule | 4 |
+| Species with certified rules | 12 |
+| Certified rules | 556 |
+| Jurisdictions with any certified rule | 5 |
 
 **`spatialComplete` is MET as of 2026-09-23 (11 of 11 in-scope).** Every one of
 the ten provinces and Yukon has its official hunting geography ingested and
@@ -340,11 +355,11 @@ Read it with its two standing caveats, both declared in the registry's
 - **Prince Edward Island** is certified on a provincial outline, because it
   publishes no units to certify (below).
 
-`coreGameComplete` NOT met (4 of 11). `migratoryComplete` NOT met (no federal
+`coreGameComplete` NOT met (**5 of 11** — British Columbia landed 2026-09-23). `migratoryComplete` NOT met (no federal
 rules). `coverageAudited` MET — every jurisdiction declares its own gaps, so
 what is missing is intentionally UNKNOWN rather than accidentally absent.
 
-**Drawing every boundary in Canada is not covering Canada.** Seven of the eleven
+**Drawing every boundary in Canada is not covering Canada.** Six of the eleven
 hold no certified rule, so every species query there is UNKNOWN. The next front
 is rules, jurisdiction by jurisdiction.
 
@@ -891,6 +906,54 @@ The gap was local only.
 read it as. Proven by introducing a deliberate type error the runtime cannot
 see and watching `npm test` fail on it.
 
+It paid for itself within the hour: it caught two real errors in newly written
+British Columbia tests — a property that does not exist on a typed bundle, and
+a possibly-null unit count — both of which the runtime would have passed.
+
+### Cases written from the law protect against the implementer, not only the code
+
+**An argument for the practice, not an anecdote (2026-09-23).** Certifying
+British Columbia, I evaluated the disputed spring black bear window on
+2026-06-25, got `NEEDS_VERIFICATION`, and briefly read it as a defect. It was
+correct: the bundle is certified for 2026-07-01 to 2027-06-30, so June **2026**
+is before the certified period and the dispute is never reached. The case file,
+written from the regulation before any code ran, already carried the right date
+(2027-06-25).
+
+So the cases did not only check the engine. **They checked the person checking
+the engine.** An implementer's assumptions are written *after* they have been
+reasoning about the implementation; cases written from the law are written
+before that reasoning exists, which is exactly what makes them able to catch
+it. That is a reason to keep writing them first that has nothing to do with the
+code being wrong.
+
+### Why cross-review found a clause the author would not have written
+
+**On the viewport contract (2026-09-23).** Hunt overhaul found the `whole`
+invariant — see above — which the contract's own author had not written. The
+reason is worth keeping, because it is the argument for routing shared
+contracts through review rather than trusting the author:
+
+> I was reasoning about what the request ASKS FOR, and they were reasoning
+> about what the answer ASSERTS.
+
+Not more care. A different question.
+
+### True by construction is not a property
+
+**A general form worth keeping (2026-09-23, from the viewport contract).** When
+a request's shape changes, **every value that was true because of the OLD shape
+is suspect.** "True by construction" is not a property of the value; it is a
+coincidence of the design that produced it.
+
+The instance that named it: the geometry store marks every level-0 piece
+`whole`, which is correct only because level 0 *was* the whole served extent.
+Make level 0 a viewport and a piece can be clipped — and a clipped drawing
+treated as a zone's full extent lets the camera frame a zone by a boundary that
+is only the edge of a request box. A map asserting a boundary it was never
+given, looking entirely normal on screen. Nothing about it looks wrong, which
+is exactly why it is the dangerous kind.
+
 ### Measured the wrong thing — the collected forms
 
 Every one of these produced a **number, and the number was real**. What was
@@ -921,6 +984,18 @@ recurring in new disguises.
    refused) and without a species (Newfoundland's caribou and bear areas
    absent). All four were the harness.
 
+6. **Searched for a WORD when the thing is a STRUCTURE (2026-09-23).** Asked
+   to confirm British Columbia's two cross-check disputes survived, a text
+   search of the bundle for `CONFLICT` returned **zero** and nearly had them
+   reported as resolved away. They were all there — modelled as a `disputes[]`
+   array per rule, which is the better design, and as a *status* word they
+   never appear. The search was real; what it searched was wrong. **Check the
+   schema before searching for a word.**
+7. **A test that passes vacuously.** A green that is a number about nothing.
+   `boundary-only-layers.test.ts` guards against it by asserting up front that
+   at least one boundary-only layer exists, and failing with "this file needs
+   deleting, not passing" when the last one is promoted.
+
 **Rule: a round number that exactly equals a known limit is a truncation until
 proven otherwise.** And before reporting a defect from a measurement, confirm
 the harness asked the question the product answers.
@@ -942,6 +1017,12 @@ the harness asked the question the product answers.
 - **The map and the coverage report agree on 1,212 official units by two independent paths (2026-09-22).** The national overview answer contains 1,212 drawn features across the seven served layers (Ontario 151, Québec 59, Manitoba 62, Alberta 189, British Columbia 225, Saskatchewan 83, Yukon 443), and `canadaCoverageReport()` computes 1,212 parity-certified units from the certified rule bundles and ingestion adapters. Neither number is typed, and they are derived from different sources: one from PostGIS drawings and live services at request time, the other from the bundles and adapters at call time. Their agreement is a real cross-check — if a jurisdiction is ever promoted without being drawn, drawn without being certified, or silently truncated by a query limit, the two numbers separate. Yukon is exactly how that was caught: it reported 443 certified units while the map drew 0, because a 400-row cap refused the layer.
 
 - **Canada spatial complete + Prince Edward Island, 2026-09-23** (private worktree): typecheck and lint clean; **722 tests, 0 failures** across every suite (7 new `transient-retry` cases, 7 new Prince Edward Island cases, 1 new presentation case, 1 new milestone-caveat case); production build passes on Next 16. `audit-zone-certification.mjs --all` re-ran **every** jurisdiction after the audit change: BC 890/890, AB 763/763, YT 1769/1769, NL moose 303/303, NL caribou 76/76, NL bear 27/27, NB 118/118, NS 54/54, MB 249/249, ON 608/608, QC 256/256 — all VERIFIED, and **every existing fixture is byte-identical to HEAD** (`git status` shows only the new `ca-pe` file). That is the evidence the audit's designation fix changed nothing for the token-designation jurisdictions. Prince Edward Island certified separately, 5/5 testable, VERIFIED; in the `--all` run its Statistics Canada service exhausted all four attempts and was recorded UNREAD, which is exactly the behaviour intended.
+
+- **British Columbia rules landing, 2026-09-23** (private worktree): typecheck, lint clean; **734 tests, 0 failures**; production build passes. **20 of 20 production cases** against a local production build with the live registry and the province's WFS, each case written from B.C. Reg. 190/84 before the run — CONDITIONAL, CLOSED, UNKNOWN, NEEDS_VERIFICATION, CONFLICT and two ASK states (HUNTER_AGE, HUNT_METHOD) all as the law says. Served-layer certification re-run: 14/14. Coverage report recomputed from the bundles: coreGameComplete 4 → 5 of 11, rules 477 → 556, species certified 10 → 12.
+
+  **Timing, reported as measured rather than as a story.** Zone lookup median 125 ms, p90 171 ms. Evaluation median 122–172 ms across runs, **p90 ~700 ms**, payload median 15 KB. Map: 339 features / 168 KB / 21 ms for the whole province at zoom 5, 5 features / 5 KB / 8 ms at Kamloops zoom 10.
+
+  The p90 is real and **its cause is NOT isolated.** Four of twenty cases sit at ~670–730 ms in every batch run, which looked structural; but a direct A/B on one of those points — same coordinates and species, near date against far date, three runs each — produced overlapping ranges (0.24–1.04 s near, 0.27–0.74 s far) and did **not** reproduce a stable difference. A first hypothesis that it was the weather provider is therefore unsupported, and a second that it was cache warm-up is contradicted by the tail surviving a third full run. Recorded as an open performance question rather than explained; it is the general evaluate path, not anything British Columbia introduced. Do not re-propose the weather or caching explanations without new measurement.
 
 ### Build
 - `canada-bc` landing, 2026-09-22, rebased on `9e82000`: typecheck and lint clean; full `npm test` green (hedge 11/11, `test:hunt` including BC unserved/served-state and the Cranbrook attribution); 5/5 time zones; published content contract 0 errors, 0 warnings; `check:regulatory-sources` all unchanged, BC bundle reproduces byte for byte; production build; hydration check 8 pages × 3 browser time zones clean. Against a local production build (Manitoba store read path live): Manitoba 24/24 (evaluation p90 264 ms), Québec 21/21, Ontario regression 7/7, Alberta regression 13/13.

@@ -68,7 +68,7 @@ test("the report counts only what the certified bundles actually contain", () =>
   // because another jurisdiction gained rules, update it deliberately — the
   // test exists so coverage cannot grow without someone noticing.
   const withRules = report.jurisdictions.filter((entry) => entry.regulatory.rules > 0);
-  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-QC", "CA-MB", "CA-AB"]);
+  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-QC", "CA-MB", "CA-AB", "CA-BC"]);
 
   const ontario = withRules[0];
   assert.equal(ontario.species.length, 8, "four small-game plus four major-game species");
@@ -92,13 +92,33 @@ test("the report counts only what the certified bundles actually contain", () =>
   assert.equal(manitoba.spatial.officialUnits, 62);
   assert.equal(manitoba.spatial.parityCertified, true);
 
-  // British Columbia is the case the two flags separate: its geography is certified and
-  // counted, and it still holds no rule Hunt will answer.
+  /*
+   * British Columbia answers a first wave: 79 rules over seven species, and a
+   * PARTIAL status because the other species and four of its 225 units do not.
+   * A wave that reported VERIFIED would be claiming the province.
+   */
   const britishColumbia = report.jurisdictions.find((entry) => entry.code === "CA-BC")!;
   assert.equal(britishColumbia.spatial.parityCertified, true);
-  assert.equal(britishColumbia.spatial.officialUnits, 225, "certified geography is counted without certified rules");
-  assert.equal(britishColumbia.regulatory.rules, 0, "the British Columbia bundle does not answer");
-  assert.equal(britishColumbia.species.length, 0);
+  assert.equal(britishColumbia.spatial.officialUnits, 225);
+  assert.equal(britishColumbia.regulatory.status, "PARTIAL");
+  assert.equal(britishColumbia.regulatory.rules, 79);
+  assert.equal(britishColumbia.species.length, 7);
+
+  /*
+   * The two flags still separate, tested by STATE rather than by province:
+   * British Columbia stood here until its rules were certified, and naming a
+   * province means rewriting this every time one is promoted. Certified
+   * geography is counted whether or not any rule answers.
+   */
+  const drawnWithoutRules = report.jurisdictions.filter(
+    (entry) => entry.spatial.parityCertified && entry.regulatory.rules === 0,
+  );
+  assert.ok(drawnWithoutRules.length > 0, "no jurisdiction is drawn without rules; this assertion is vacuous");
+  for (const entry of drawnWithoutRules) {
+    assert.equal(entry.species.length, 0, entry.code);
+    /* Null where no adapter states a count; never a number invented to fill it. */
+    assert.ok(entry.spatial.officialUnits === null || entry.spatial.officialUnits >= 0, entry.code);
+  }
 
   // Every other jurisdiction reports zero rather than being absent from the report.
   for (const jurisdiction of report.jurisdictions) {

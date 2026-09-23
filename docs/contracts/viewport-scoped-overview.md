@@ -103,6 +103,21 @@ is negotiable for performance:
 - **Coverage is still judged against `SERVED_EXTENT`.** A point outside the
   opening camera but inside coverage is served normally. The camera is a view,
   never an answer about what is covered.
+- **A flag that was true by construction must be re-derived.** The geometry
+  store marks every level-0 piece `whole`, and that is correct today only
+  because level 0 **was** the whole served extent — the flag is true by
+  construction, not by evidence. Once level 0 is a viewport, a piece can be
+  clipped, and a clipped drawing treated as a zone's full extent means the
+  camera can frame a zone by a boundary that is only the edge of a request box:
+  **a map asserting a boundary it was never given, looking entirely normal on
+  screen.** `whole` must be computed from containment, with a store test. This
+  is the invariant most likely to bite, precisely because nothing about it
+  looks wrong.
+
+  The general form, which applies to anything else the new request shape
+  touches: **when a request's shape changes, every value that was true because
+  of the old shape is suspect. "True by construction" is not a property; it is
+  a coincidence of the old design.**
 - **Every serving layer must still draw.** `npm run certify:served-layers`
   asks each layer in its own bounds, which is independent of the camera; it
   must stay that way, so shrinking the opening view can never make a broken
@@ -128,3 +143,14 @@ this, that is the evidence for tiles.
 4. The poster and the live map open at the same box, from one exported value.
 5. `certify:served-layers` still passes 14/14.
 6. A point inside coverage but outside the opening camera still resolves.
+7. `whole` is derived from containment, not from the level, and a store test
+   covers a clipped piece.
+
+---
+
+## Amendments
+
+**2026-09-23 — `whole` is true by construction (§5, fifth invariant).** Raised
+by Hunt overhaul while planning the implementation, added here so the
+requirement lives in the contract rather than only in their code. They own the
+implementation.
