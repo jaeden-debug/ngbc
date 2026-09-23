@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import type { CanonicalId } from "../../../lib/content-contract";
-import { hasSpeciesCoverageIn, speciesAsksQuestionIn, type SpeciesSelectorOption } from "../../../lib/hunt/coverage";
+import { hasSpeciesCoverageIn, speciesAsksQuestionIn, speciesSelectableIn, type SpeciesSelectorOption } from "../../../lib/hunt/coverage";
 import { EXPLORATION_WORDING, type ExplorationState as ZoneState } from "../../../lib/hunt/exploration/states";
 import SpeciesPrimaryImage from "../../species/SpeciesPrimaryImage";
 import styles from "../HuntApp.module.css";
@@ -45,25 +45,35 @@ export default function SpeciesPage({
     const needle = NORMALIZE(query.trim());
     const matches = options.filter((species) => !needle || [species.displayName, species.scientificName, ...species.searchTerms]
       .some((term) => NORMALIZE(term).includes(needle)));
+    /* Three tiers, because selectable and answerable are different things
+       (§41A): rules here; geography here but no certified rules; and species
+       this jurisdiction has no geography for at all. */
     const here = matches.filter((species) => hasSpeciesCoverageIn(species, jurisdictionId));
-    const rest = matches.filter((species) => !hasSpeciesCoverageIn(species, jurisdictionId));
+    const explorable = matches.filter((species) => !hasSpeciesCoverageIn(species, jurisdictionId) && speciesSelectableIn(species.id, jurisdictionId));
+    const rest = matches.filter((species) => !hasSpeciesCoverageIn(species, jurisdictionId) && !speciesSelectableIn(species.id, jurisdictionId));
     // In season first, where the zone has said; then alphabetical.
     const rank = (species: SpeciesSelectorOption) => {
       const state = zoneStates?.get(species.id);
       return state === "SEASON_AVAILABLE" ? 0 : state === "SEASON_EXCEPT_AREAS" ? 1 : state === "CHECK_REQUIREMENTS" ? 2 : 3;
     };
     here.sort((a, b) => rank(a) - rank(b) || a.displayName.localeCompare(b.displayName));
+    explorable.sort((a, b) => a.displayName.localeCompare(b.displayName));
     rest.sort((a, b) => a.displayName.localeCompare(b.displayName));
-    return { here, rest };
+    return { here, explorable, rest };
   }, [options, query, jurisdictionId, zoneStates]);
 
   const hereTitle = jurisdictionId ? `Certified rules in ${jurisdictionName ?? "this jurisdiction"}` : "Certified rules somewhere North Ground covers";
-  const restTitle = jurisdictionId ? "No certified rules here yet" : "Species profiles without certified rules";
+  const explorableTitle = jurisdictionId
+    ? `Boundaries only in ${jurisdictionName ?? "this jurisdiction"} — no certified rules`
+    : "Knowledge profile · no certified rules";
+  const restTitle = jurisdictionId ? `No official geography in ${jurisdictionName ?? "this jurisdiction"}` : "Species profiles without certified rules";
 
-  const row = (species: SpeciesSelectorOption, covered: boolean) => {
+  const row = (species: SpeciesSelectorOption, covered: boolean, selectable = false) => {
     const state = covered ? zoneStates?.get(species.id) : undefined;
     const detail = !covered
-      ? jurisdictionId ? `Not covered in ${jurisdictionName ?? "this jurisdiction"}` : "Knowledge profile only"
+      ? selectable
+        ? "Zones drawn · rules not certified"
+        : jurisdictionId ? `No official geography here` : "Knowledge profile only"
       : state ? `${EXPLORATION_WORDING[state].glyph} ${EXPLORATION_WORDING[state].label}`
       : jurisdictionId ? (speciesAsksQuestionIn(species, jurisdictionId) ? "Rules here · asks a question" : "Rules here")
       : `Rules: ${species.regulatoryJurisdictions.map(({ name }) => name).join(", ")}`;
@@ -122,13 +132,19 @@ export default function SpeciesPage({
           <ul className={styles.optionList}>{groups.here.map((species) => row(species, true))}</ul>
         </section>
       ) : null}
+      {groups.explorable.length ? (
+        <section aria-labelledby={`${id}-explorable`}>
+          <h3 className={styles.listTitle} id={`${id}-explorable`}>{explorableTitle}</h3>
+          <ul className={styles.optionList}>{groups.explorable.map((species) => row(species, false, true))}</ul>
+        </section>
+      ) : null}
       {groups.rest.length ? (
         <section aria-labelledby={`${id}-rest`}>
           <h3 className={styles.listTitle} id={`${id}-rest`}>{restTitle}</h3>
           <ul className={styles.optionList}>{groups.rest.map((species) => row(species, false))}</ul>
         </section>
       ) : null}
-      {!groups.here.length && !groups.rest.length ? (
+      {!groups.here.length && !groups.explorable.length && !groups.rest.length ? (
         <p className={styles.inlineNotice} role="status">No published species matches that search.</p>
       ) : null}
     </div>

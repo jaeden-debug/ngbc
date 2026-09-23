@@ -105,6 +105,8 @@ export interface HuntAppProps {
   speciesOptions: SpeciesSelectorOption[];
   /** The species photographs, still arriving: the first screen does not show them. */
   speciesMedia: Promise<Record<string, SpeciesPrimaryMedia>>;
+  /** Where each served jurisdiction publishes the rules, for what is not certified. */
+  authorities: Record<string, { title: string; url: string }>;
   /** The day to start from: the link's day if it named one, else the jurisdiction's today. */
   initialDate: string;
   initialUrl: HuntUrlState;
@@ -116,7 +118,7 @@ export interface HuntAppProps {
   poster: string | null;
 }
 
-export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWithoutMedia, speciesMedia, initialDate, initialUrl, linkIssues, about, poster }: HuntAppProps) {
+export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWithoutMedia, speciesMedia, authorities, initialDate, initialUrl, linkIssues, about, poster }: HuntAppProps) {
   /* The pictures join their species when the server's promise resolves; until
      then the picker shows its placeholder, which is what it shows for a species
      with no verified photograph anyway. */
@@ -349,6 +351,8 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
 
   const species = speciesOptions.find((option) => option.id === session.speciesId) ?? null;
   const speciesCertifiedHere = species && selectedLayer ? hasSpeciesCoverageIn(species, selectedLayer.jurisdictionId) : false;
+  /* Where the authority states the rules North Ground has not certified. */
+  const authorityLink = selectedLayer ? authorities[selectedLayer.jurisdictionId] ?? null : null;
   const explorable = useMemo(() => speciesOptions.filter((option) => option.regulatoryJurisdictions.length > 0), [speciesOptions]);
 
   /* ── Hunt location → official zone ───────────────────────────────────── */
@@ -1084,11 +1088,31 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
             <p className={styles.answerLoading} role="status"><span className={styles.spinner} aria-hidden="true" /> Reading the certified rules for this zone…</p>
           )
         ) : !speciesCertifiedHere ? (
-          summaryReady ? (
-            <ZoneSpeciesAnswer entry={null} species={species} summary={summaryReady} zoneLabel={presented.fullLabel} action={null} />
-          ) : (
-            <p className={styles.quiet}>North Ground has not certified {species.displayName.toLowerCase()} rules in {selectedLayer.jurisdictionName}.</p>
-          )
+          /* Selectable, not answerable (§41A). The geography is this species'
+             own and the zone is resolved; what North Ground does not have is a
+             certified rule, and saying so is the answer — never a season. */
+          <div className={styles.answer} data-status="UNKNOWN">
+            <p className={styles.answerStatus}>
+              <span className="ng-status" data-status="UNKNOWN">Not covered here</span>
+            </p>
+            <p className={styles.answerSummary}>
+              North Ground has no certified {species.displayName.toLowerCase()} rules in {selectedLayer.jurisdictionName}.
+              {" "}The {presented.termLong ?? selectedLayer.officialTerm} boundaries are drawn from {selectedLayer.authority}&apos;s own
+              published map, so this is the right zone — the rules for it are the authority&apos;s to state.
+            </p>
+            {/* The authority's own published source where North Ground holds one;
+                never an invented link, and never a GIS endpoint dressed as reading. */}
+            <p className={styles.sourceLine}>
+              {authorityLink ? (
+                <a href={authorityLink.url} target="_blank" rel="noopener noreferrer">{authorityLink.title}</a>
+              ) : null}
+              <span className={styles.sourceMeta}>{selectedLayer.authority}</span>
+            </p>
+            <p className={styles.quiet}>
+              What North Ground does know about {species.displayName.toLowerCase()} is in its{" "}
+              <Link href={species.resourcePath}>species profile</Link>.
+            </p>
+          </div>
         ) : pointForEvaluation ? (
           <HuntAnswer
             evaluation={session.evaluation}

@@ -1,6 +1,6 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { SpeciesPrimaryMedia } from "../species-media/types.ts";
-import { officialTermPlural, ZONE_LAYERS } from "./zone-layers.ts";
+import { officialTermPlural, speciesLayerFor, ZONE_LAYERS } from "./zone-layers.ts";
 
 /**
  * What North Ground Hunt can currently answer.
@@ -109,6 +109,29 @@ export interface SpeciesSelectorOption {
     name: string;
     asksQuestion: boolean;
   }>;
+}
+
+/**
+ * Whether a hunter may choose this species HERE at all — a different question
+ * from whether North Ground can answer for it.
+ *
+ * A species is SELECTABLE where a served layer covers it: the map can draw the
+ * official geography its seasons are written in, and a point can be resolved
+ * to a zone. It is ANSWERABLE (`hasSpeciesCoverageIn`) only where a certified
+ * regulatory record exists.
+ *
+ * Keeping them apart is what lets a hunter in British Columbia, Saskatchewan,
+ * Yukon or Newfoundland — all drawn, none with certified rules — learn which
+ * official zone they are standing in, instead of being offered nothing at all.
+ * What they must never get is a season: an unanswerable species answers
+ * UNKNOWN in the engine's own words, with the authority's link.
+ */
+export function speciesSelectableIn(
+  speciesId: CanonicalId<"species">,
+  jurisdictionId?: CanonicalId<"jurisdiction">,
+): boolean {
+  if (!jurisdictionId) return true;
+  return Boolean(speciesLayerFor(jurisdictionId, speciesId));
 }
 
 export function hasSpeciesCoverageIn(

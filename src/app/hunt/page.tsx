@@ -12,7 +12,7 @@ import { HUNT_DEFAULT_TIME_ZONE, jurisdictionTodayIso } from "../../lib/hunt/dat
 import { longDayLabel } from "../../lib/hunt/exploration/date-presets";
 import { OVERVIEW_URL } from "../../lib/hunt/exploration/overview";
 import { huntDeepLink, parseHuntUrlState, type HuntUrlValidators } from "../../lib/hunt/exploration/url-state";
-import { layerOfZoneId } from "../../lib/hunt/zone-layers";
+import { layerOfZoneId, ZONE_LAYERS } from "../../lib/hunt/zone-layers";
 import { presentZoneById } from "../../lib/hunt/zone-presentation";
 import { absoluteUrl, SITE_NAME } from "../../lib/site";
 import { getSpeciesPrimaryMediaMap } from "../../lib/species-media/repository";
@@ -129,6 +129,16 @@ export default async function HuntPage({ searchParams }: Props) {
     .then((media) => Object.fromEntries(media) as Record<string, SpeciesPrimaryMedia>)
     .catch(() => ({}) as Record<string, SpeciesPrimaryMedia>);
   const coverageReport = northAmericaCoverageReport();
+  /* Where each served jurisdiction publishes its own geography, so a species
+     North Ground cannot answer for still points at the authority that can. */
+  const servedLayers = ZONE_LAYERS.filter((layer) => layer.serving);
+  const sourceRecords = await contentRepository.getSources([...new Set(servedLayers.map((layer) => layer.sourceId))]);
+  const sourceById = new Map(sourceRecords.map((record) => [record.id, record]));
+  const authorities: Record<string, { title: string; url: string }> = {};
+  for (const layer of servedLayers) {
+    const source = sourceById.get(layer.sourceId);
+    if (source?.url && !authorities[layer.jurisdictionId]) authorities[layer.jurisdictionId] = { title: source.title, url: source.url };
+  }
   const speciesOptions: SpeciesSelectorOption[] = await Promise.all(speciesResources.map(async (resource) => {
     const [aliases, groups] = await Promise.all([
       contentRepository.getSpeciesAliases(resource.speciesProfile.speciesId),
@@ -166,6 +176,7 @@ export default async function HuntPage({ searchParams }: Props) {
         googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
         speciesOptions={speciesOptions}
         speciesMedia={speciesMedia}
+        authorities={authorities}
         /* A link's day is kept. Otherwise the server cannot know the viewer's
            time zone, so it renders the jurisdiction's day and the browser
            corrects it to the viewer's own on mount. */

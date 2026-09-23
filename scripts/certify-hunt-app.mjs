@@ -234,6 +234,9 @@ const scenarios = {
     await page.waitForTimeout(200);
     await chooseSpecies(page, "Ruffed grouse");
     await page.waitForTimeout(4_500);
+    // Wait for the answer rather than sampling once: under load the engine
+    // can still be answering, and a slow answer is not a stale one.
+    await waitFor(page, () => Boolean(document.querySelector("[class*=answerStatus] .ng-status, [class*=answerStatus] [data-state]")?.textContent?.trim()), 20_000);
     const chip = await page.locator("button[data-kind='species']").first().textContent();
     const question = await page.locator("[role=radiogroup]").count();
     const status = await answerStatus(page);
@@ -437,8 +440,23 @@ const scenarios = {
     check(s, "one tap reaches a focused field", opened.focused);
     check(s, "its other ways of choosing are rows inside it", opened.rows.includes("Use my location") && opened.rows.includes("Choose a spot on the map"), opened.rows.join(" / "));
 
-    await field.pressSequentially("Bancroft", { delay: 110 });
-    await waitFor(page, () => document.querySelectorAll("[role=option]").length > 0, 20_000);
+    /* The keyless place provider rate-limits when scenarios search back to
+       back, so one retry separates "the app is broken" from "the provider
+       said wait". */
+    let suggested = false;
+    for (let attempt = 0; attempt < 2 && !suggested; attempt += 1) {
+      if (attempt) {
+        await field.fill("");
+        await page.waitForTimeout(3_000);
+      }
+      await field.pressSequentially("Bancroft", { delay: 110 });
+      suggested = await waitFor(page, () => document.querySelectorAll("[role=option]").length > 0, 20_000);
+    }
+    check(s, "the place provider answers", suggested);
+    if (!suggested) {
+      await context.close();
+      return;
+    }
     await page.locator("[role=option]").first().click();
     await waitFor(page, () => Boolean(document.getElementById("hunt-zone-title")), 30_000);
     await page.waitForTimeout(2_500);
@@ -605,6 +623,35 @@ const scenarios = {
       const drawn = Number(await page.getAttribute("[data-zones]", "data-zones"));
       check(s, `and the map still has official zones for ${name}`, drawn > 0, `${drawn} zones`);
     }
+    await context.close();
+  },
+
+  async selectableNotAnswerable(browser) {
+    /* British Columbia is drawn and resolves points; no rule there is
+       certified. A hunter must be able to choose a species and learn their
+       zone, and must never be shown a season for it. */
+    const s = "D3 a drawn jurisdiction can be explored before its rules are certified";
+    const { context, page } = await newPage(browser, { width: 1280, height: 800 });
+    await page.goto(`${BASE}/hunt?zone=ca-bc-mu-1-15`);
+    await mapReady(page);
+    await waitFor(page, () => Boolean(document.getElementById("hunt-zone-title")), 30_000);
+    await page.waitForTimeout(1_500);
+    check(s, "the zone resolves and is named in the authority's terms", (await zoneTitle(page)) === "MU 1-15", String(await zoneTitle(page)));
+
+    await page.locator("button[data-kind='species']").first().click();
+    await page.waitForTimeout(800);
+    const groups = await page.evaluate(() => [...document.querySelectorAll("h3")].map((heading) => heading.textContent ?? ""));
+    check(s, "the selector says these are boundaries without certified rules",
+      groups.some((title) => /Boundaries only in British Columbia/.test(title)), groups.join(" / "));
+    const moose = page.getByRole("button", { name: /^Moose/ }).first();
+    check(s, "a species can still be chosen", await moose.count() > 0);
+    await moose.click();
+    await waitFor(page, () => /Not covered here/.test(document.querySelector("section[data-layout]")?.textContent ?? ""), 20_000);
+    const answer = await page.evaluate(() => document.querySelector("section[data-layout]")?.textContent?.replace(/\s+/g, " ") ?? "");
+    check(s, "the answer is an explicit UNKNOWN naming the authority",
+      /Not covered here/.test(answer) && /Government of British Columbia/.test(answer), answer.slice(0, 120));
+    check(s, "and never a season, a limit or a date",
+      !/In season|Closed|Season:|bag limit|Sept|Oct|Nov/i.test(answer), answer.slice(0, 160));
     await context.close();
   },
 

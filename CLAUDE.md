@@ -1721,6 +1721,33 @@ full Hunt each time.
   management areas and closed lands), each with its authority and legal standing.
   No decorative or unsourced layer is ever added to fill the control.
 
+## Selectable is not answerable
+
+*Decided 2026-09-23.*
+
+Two different questions, and conflating them costs coverage:
+
+- A species is **selectable** where North Ground can draw the official
+  geography its seasons are written in and resolve a point to a zone.
+- A species is **answerable** only where a certified regulatory record exists.
+
+A jurisdiction can be drawn long before its rules are certified (`rulesServing`
+on the layer side). Treating those as "nothing to offer" left hunters in
+British Columbia, Saskatchewan, Yukon and Newfoundland unable to choose
+anything at all — not even to learn which official zone they are standing in,
+which is a real question with a real answer.
+
+So: a selectable species may always be chosen. Choosing one that is not
+answerable draws that species' own geography, resolves the zone, and answers
+with an explicit UNKNOWN in the engine's own words, naming the authority whose
+rules they are and linking the authority's own published source where North
+Ground holds one — never a GIS endpoint dressed as reading, and never an
+invented link. It never shows a season, a limit or a date.
+
+The selector states which it is: rules here, boundaries only here, or no
+official geography here. Coverage reporting counts only what is answerable; a
+selectable species is not coverage.
+
 ## The map reads at three scales
 
 *Decided 2026-09-22.*
