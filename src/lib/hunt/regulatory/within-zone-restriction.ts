@@ -39,8 +39,18 @@
 export type RestrictionKind =
   /** No open season here. The season does not run inside this area. */
   | "NO_OPEN_SEASON"
-  /** No discharge or shooting here. The season is untouched. */
+  /** No discharge or shooting here. The season is untouched, and a hunter
+   *  using a bow is NOT addressed by it. */
   | "NO_DISCHARGE"
+  /**
+   * No hunting here, by any method. Distinct from both neighbours, and Alberta
+   * is why: its 11 road corridor wildlife sanctuaries say "it is unlawful to
+   * HUNT within 365 metres of the centre-line", which closes no season and
+   * does reach a bow hunter. Filed as NO_DISCHARGE it would tell an archer the
+   * rule is not theirs; filed as NO_OPEN_SEASON it would claim the season is
+   * shut everywhere in the unit.
+   */
+  | "NO_HUNTING"
   /** Ammunition or implement limits specific to this area. */
   | "AMMUNITION"
   /** Entry or access is restricted, whatever the season says. */
@@ -65,6 +75,25 @@ export type RestrictionScope =
   /** Real, and names no unit North Ground can match. NEVER silently dropped. */
   | { kind: "UNLISTED"; statedAs: string };
 
+/**
+ * OPEN QUESTION, deliberately not built: the model has NO DATE DIMENSION.
+ *
+ * A restriction that applies only between stated dates cannot be expressed
+ * today, and the model reads every restriction as always-on. That is a real
+ * limitation and it will matter for some jurisdiction.
+ *
+ * It is not built yet because the evidence that prompted it did not support
+ * it: the claim was that British Columbia's seasonal schedules carry a period
+ * PER AREA, and in the transcribed rows no month name appears anywhere in 405
+ * records, while schedules 2, 4, 6, 8 and 10 each share ONE `effectStatedAs`
+ * across every area. The periods may genuinely live in the metes-and-bounds
+ * descriptions, which were correctly not transcribed — but that is a reason to
+ * ask for citations, not to add a field.
+ *
+ * A field built on an unverified claim would be indistinguishable, once
+ * populated, from a field whose data is merely missing. Build it when evidence
+ * arrives, and let the evidence say whether it is per-area or per-schedule.
+ */
 export interface WithinZoneRestriction {
   id: string;
   name: string;
@@ -158,7 +187,8 @@ export function restrictionAt(
 export function restrictionSummary(restriction: WithinZoneRestriction): string {
   switch (restriction.kind) {
     case "NO_OPEN_SEASON": return `No open season inside ${restriction.name}.`;
-    case "NO_DISCHARGE": return `No shooting inside ${restriction.name}. The season itself is not closed here.`;
+    case "NO_DISCHARGE": return `No shooting inside ${restriction.name}. The season itself is not closed here, and this does not reach a hunter using a bow.`;
+    case "NO_HUNTING": return `No hunting of any kind inside ${restriction.name}, whatever the season says.`;
     case "AMMUNITION": return `Ammunition limits apply inside ${restriction.name}.`;
     case "ACCESS": return `Access is restricted inside ${restriction.name}.`;
     default: return `${restriction.name} restricts hunting here.`;

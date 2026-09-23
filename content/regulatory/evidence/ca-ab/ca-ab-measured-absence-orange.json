@@ -1,0 +1,49 @@
+{
+  "package": {
+    "jurisdictionId": "jurisdiction:ca-ab",
+    "preparedBy": "united-states agent",
+    "preparedOn": "2026-09-24"
+  },
+  "fact": "HUNTER_ORANGE",
+  "absenceEvidence": {
+    "fact": "HUNTER_ORANGE",
+    "searchedOn": "2026-09-24",
+    "matching": "WORD_BOUNDARY",
+    "control": {
+      "term": "licence",
+      "instrument": "2026 Alberta Guide to Hunting Regulations",
+      "matched": true,
+      "hits": 423
+    },
+    "instruments": [
+      "2026 Alberta Guide to Hunting Regulations (234,822 chars)"
+    ],
+    "results": [
+      {
+        "term": "hunter orange",
+        "instrument": "Alberta guide 2026",
+        "hits": 0
+      },
+      {
+        "term": "blaze orange",
+        "instrument": "Alberta guide 2026",
+        "hits": 0
+      },
+      {
+        "term": "fluorescent",
+        "instrument": "Alberta guide 2026",
+        "hits": 0
+      },
+      {
+        "term": "conspicuous",
+        "instrument": "Alberta guide 2026",
+        "hits": 0
+      }
+    ],
+    "closedBy": "A positive statement from Alberta Environment and Protected Areas that no hunter-orange requirement applies, or a closed-world clause reaching clothing. Instruments NOT searched that could hold such a rule: the Wildlife Act and the Wildlife Regulation (Alta. Reg. 143/1997), and any provincial park or base-specific rules."
+  },
+  "requirements": [],
+  "laneNotes": [
+    "Four clothing terms, all exact zeroes, against a control matching 423 times in the same text. The guide is the hunter-facing summary; the Regulation itself was not read."
+  ]
+}

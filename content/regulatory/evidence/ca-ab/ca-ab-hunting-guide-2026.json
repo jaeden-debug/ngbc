@@ -1,0 +1,172 @@
+{
+  "package": {
+    "jurisdictionId": "jurisdiction:ca-ab",
+    "preparedBy": "united-states agent",
+    "preparedOn": "2026-09-24"
+  },
+  "authority": {
+    "name": "Alberta Environment and Protected Areas",
+    "lang": "en-CA"
+  },
+  "source": {
+    "id": "source:ca-ab-hunting-guide-2026",
+    "title": "2026 Alberta Guide to Hunting Regulations",
+    "url": "https://albertaregulations.ca/huntingregs/",
+    "tier": "OFFICIAL_SUMMARY",
+    "version": "2026",
+    "retrievedAt": "2026-09-20",
+    "sha256": "7d09962ce183e4ff56b4b67a04f5fa7454cc49d1e6f4966f53335460cfd86d9b",
+    "incorporates": [],
+    "inForce": {
+      "state": "IN_FORCE",
+      "statedAs": "2026 Alberta Guide to Hunting Regulations",
+      "asOf": "2026",
+      "checkedOn": "2026-09-24"
+    }
+  },
+  "requirements": [
+    {
+      "category": "AUTHORIZATION",
+      "kind": "wildlife certificate",
+      "state": "REQUIRED",
+      "officialName": {
+        "text": "Wildlife certificate",
+        "lang": "en-CA"
+      },
+      "statedAs": {
+        "text": "Hunters must possess a valid wildlife certificate and the applicable hunting licence to hunt big game or game birds.",
+        "lang": "en-CA"
+      },
+      "citation": "2026 Alberta Guide to Hunting Regulations, Licence Requirements",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:sharp-tailed-grouse",
+          "species:spruce-grouse",
+          "species:white-tailed-deer"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "AB"
+          ],
+          "statedAs": null
+        },
+        "methods": null
+      }
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "hunting licence",
+      "state": "REQUIRED",
+      "officialName": {
+        "text": "Applicable hunting licence",
+        "lang": "en-CA"
+      },
+      "statedAs": {
+        "text": "Hunters must possess a valid wildlife certificate and the applicable hunting licence to hunt big game or game birds.",
+        "lang": "en-CA"
+      },
+      "citation": "2026 Alberta Guide to Hunting Regulations, Licence Requirements",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:sharp-tailed-grouse",
+          "species:spruce-grouse",
+          "species:white-tailed-deer"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "AB"
+          ],
+          "statedAs": null
+        },
+        "methods": null
+      },
+      "requires": [
+        {
+          "officialName": {
+            "text": "Wildlife certificate",
+            "lang": "en-CA"
+          }
+        }
+      ],
+      "unresolved": [
+        "Which licence applies turns on species class — a game bird licence for grouse, a big game licence for deer. The guide's per-species licence table was not transcribed."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "wildlife identification number",
+      "state": "REQUIRED",
+      "officialName": {
+        "text": "Wildlife Identification Number (WiN)",
+        "lang": "en-CA"
+      },
+      "statedAs": {
+        "text": "Hunters and anglers in Alberta must have a 10-digit wildlife identification number (WiN) to apply for draws, purchase wildlife certificates, licences and replacements.",
+        "lang": "en-CA"
+      },
+      "citation": "2026 Alberta Guide to Hunting Regulations, Wildlife Identification Number (WiN)",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:sharp-tailed-grouse",
+          "species:spruce-grouse",
+          "species:white-tailed-deer"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "AB"
+          ],
+          "statedAs": null
+        },
+        "methods": null
+      }
+    },
+    {
+      "category": "PLACE_CONDITION",
+      "kind": "road corridor wildlife sanctuary",
+      "state": "PROHIBITED",
+      "officialName": {
+        "text": "Road corridor wildlife sanctuary",
+        "lang": "en-CA"
+      },
+      "statedAs": {
+        "text": "It is unlawful to hunt within 365 metres (400 yards) of the centre-line of the road in a designated road corridor wildlife sanctuary (a corridor 730 metres or 800 yards wide). There are 11 road corridor wildlife sanctuaries.",
+        "lang": "en-CA"
+      },
+      "citation": "2026 Alberta Guide to Hunting Regulations, road corridor wildlife sanctuaries",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:sharp-tailed-grouse",
+          "species:spruce-grouse",
+          "species:white-tailed-deer"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "AB"
+          ],
+          "statedAs": null
+        },
+        "methods": null
+      },
+      "restrictionKind": "NO_HUNTING",
+      "restrictionScope": {
+        "kind": "UNLISTED",
+        "statedAs": "Each sanctuary is described by highway segment and centre-line distance, naming no wildlife management unit."
+      },
+      "unresolved": [
+        "The 11 sanctuaries are described by highway segment, so North Ground cannot place a point in one. They are UNLISTED in the within-zone model and must surface as unknown rather than be dropped."
+      ]
+    }
+  ],
+  "laneNotes": [
+    "Alberta's certified species are three grouse and white-tailed deer. Rows are scoped to those.",
+    "The migratory-bird non-toxic shot rule and the CFB Wainwright non-toxic requirement do NOT reach these species: grouse are upland game birds, not migratory, and Wainwright is a base-specific rule. Recorded here so a later reader does not mistake the guide's two non-toxic mentions for a general ammunition restriction."
+  ]
+}

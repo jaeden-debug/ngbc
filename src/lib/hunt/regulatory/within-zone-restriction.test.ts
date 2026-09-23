@@ -70,6 +70,23 @@ describe("a within-zone restriction", () => {
     assert.notEqual(restrictionSummary(noShooting), restrictionSummary(noSeason));
   });
 
+  it("keeps 'no hunting' apart from 'no shooting', because a bow hunter is reached by one and not the other", () => {
+    /* Alberta's road corridor wildlife sanctuaries: "It is unlawful to hunt
+       within 365 metres of the centre-line". No season is closed, and an
+       archer IS addressed — so neither neighbour fits. Filed as NO_DISCHARGE
+       it would tell a bow hunter the rule is not theirs. */
+    const corridor: WithinZoneRestriction = {
+      ...base, id: "r:corridor", name: "the road corridor wildlife sanctuary", kind: "NO_HUNTING",
+      statedAs: "It is unlawful to hunt within 365 metres (400 yards) of the centre-line of the road in a designated road corridor wildlife sanctuary",
+      scope: { kind: "UNLISTED", statedAs: "Described by highway segment, naming no wildlife management unit." },
+      citation: "2026 Alberta Guide to Hunting Regulations, road corridor wildlife sanctuaries",
+    };
+    assert.match(restrictionSummary(corridor), /No hunting of any kind/);
+    assert.doesNotMatch(restrictionSummary(corridor), /does not reach a hunter using a bow/);
+    // And it is unplaceable by unit, so it must be loud rather than dropped.
+    assert.equal(restrictionAt(corridor, { area: "100", scope: "POINT" }).state, "UNKNOWN");
+  });
+
   it("carries an instrument's own precedence where it states one", () => {
     /* B.C. Reg. 76/84 s.1.1, enacted 2026: "this regulation prevails to the
        extent of the conflict". A restriction that overrides the bundle's own
