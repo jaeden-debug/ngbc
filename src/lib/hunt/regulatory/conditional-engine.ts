@@ -1,4 +1,5 @@
 import { legalTimeNotCertified } from "./legal-time.ts";
+import { nextOpening } from "./season.ts";
 import { general, sourceDetail, type Limitation } from "../limitation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { RegulatoryResult, RegulatoryStatus } from "../types.ts";
@@ -487,8 +488,30 @@ export function evaluateConditional(
   const groups = new Map(bundle.groups.map((group) => [group.id, group]));
 
   const base = (overrides: Partial<RegulatoryResult>, rules: ConditionalRule[] = []): RegulatoryResult => ({
-    /* No certified basis for a next opening from this path. Never "none". */
-    next: { kind: "NOT_CERTIFIED" },
+    /*
+     * The next opening, from the rules THIS answer was built from.
+     *
+     * Reuses the one `nextOpening` rather than repeating the search here: a
+     * second implementation is how a next date comes to disagree with the
+     * season beside it. The windows are already resolved to ISO days by the
+     * bundle, and the certified period is the bundle's own — so where nothing
+     * further opens inside it the answer is NONE_IN_CERTIFIED_PERIOD with that
+     * horizon, which is the right answer for a time-bounded provincial
+     * publication and the wrong one for a standing federal regulation.
+     *
+     * Rules are passed to `base` at every site that has them; a site with none
+     * yields NOT_CERTIFIED, which is what having no basis means.
+     */
+    next: nextOpening(
+      rules.filter((rule) => !rule.declaredNoSeason).map((rule) => ({
+        verdict: "OUT_OF_SEASON" as const,
+        windows: rule.windows.map((window) => ({
+          opensIso: window.opensIso, closesIso: window.closesIso, crossesYear: window.closesIso < window.opensIso,
+        })),
+        span: bundle.certifiedPeriod,
+      })),
+      date,
+    ),
     status: "UNKNOWN",
     summary: "",
     legalTime: vocabulary.legalTime,
@@ -791,7 +814,7 @@ export function evaluateConditional(
       requirements,
       limitations,
       sourceIds,
-    });
+    }, cited);
   } else if (outcome.status === "CLOSED") {
     const nothing = allWorldOutcomes.every((entry) => entry.absent);
     /* Closed because the authority closes this place, in its own words, when
@@ -810,14 +833,14 @@ export function evaluateConditional(
       requirements,
       limitations,
       sourceIds,
-    });
+    }, cited);
   } else if (outcome.status === "UNKNOWN") {
     result = base({
       status: "UNKNOWN",
       summary: `No certified rule covers ${species} in ${unit} for this combination, and an absent row is not evidence that the season is closed.`,
       limitations,
       sourceIds,
-    });
+    }, cited);
   } else {
     result = base({
       status: outcome.status,
@@ -828,7 +851,7 @@ export function evaluateConditional(
       requirements,
       limitations: [...outcome.reasons.map((reason) => general(reason)), ...limitations],
       sourceIds,
-    });
+    }, cited);
   }
 
   /* Inside a territory the authority closes to all hunting, the zone's seasons

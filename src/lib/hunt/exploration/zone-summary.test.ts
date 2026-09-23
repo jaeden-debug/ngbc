@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFileSync } from "node:fs";
 import type { CanonicalId, IsoDate } from "../../content-contract/index.ts";
 import { regulatoryEntryFor } from "../regulatory/registry.ts";
 import { contentRepository } from "../../content/repository.ts";
@@ -331,4 +332,58 @@ test("every speciesId a zone summary returns resolves through the presentation p
 
   assert.ok(checked > 0, "this test needs species to check; it proves nothing on an empty set");
   assert.deepEqual(unresolvable, [], "these ids cannot be named by the presentation path");
+});
+
+/* ── British Columbia answers when its next season opens ── */
+
+test("a conditional-engine jurisdiction carries its next opening", async () => {
+  /*
+   * British Columbia answers through `conditional-engine.ts`, which returned
+   * NOT_CERTIFIED for every row — including species that were in season —
+   * because `next` was defaulted there and never wired. It was visible on the
+   * owner's screen as "Next opening not certified" beside six open seasons.
+   *
+   * The rules are passed to the result builder as `cited`: in-season rules,
+   * else the rules that apply to this place. The one `nextOpening` does the
+   * search, so a next date cannot disagree with the season beside it.
+   */
+  clearZoneSummaryCache();
+  const summary = await summarizeZone({ layerId: "layer:ca-bc-mu", designation: "2-8" }, "2026-07-01");
+  const closed = summary.species.filter((row) => row.state === "CLOSED");
+  assert.ok(closed.length > 0, "July should close several British Columbia species");
+  assert.ok(
+    closed.some((row) => row.next.kind === "SEASON"),
+    "a closed species with a season still to come must say when it opens",
+  );
+});
+
+test("a species with no rule here never borrows another zone's next opening", async () => {
+  /*
+   * THE DANGEROUS PROPERTY. When no rule designates this place for a species,
+   * the answer is an absence — and a next opening taken from a rule written
+   * for a different Management Unit would be a date that is real somewhere and
+   * wrong here, which is the worst shape of wrong: checkable, plausible, and
+   * about a place the hunter is not standing in.
+   *
+   * Sharp-tailed grouse is certified in 30 of British Columbia's 225 units, so
+   * the other 195 are the test.
+   */
+  const bundle = JSON.parse(readFileSync("content/regulatory/ca-bc-2026.json", "utf8")) as {
+    officialIdentifiers?: (string | number)[];
+    rules: { speciesId?: string; geography?: { include?: { ghas?: string[] } } }[];
+  };
+  const withRule = new Set(
+    bundle.rules.filter((rule) => rule.speciesId === "species:sharp-tailed-grouse")
+      .flatMap((rule) => rule.geography?.include?.ghas ?? []),
+  );
+  const without = (bundle.officialIdentifiers ?? []).map(String).filter((unit) => !withRule.has(unit));
+  assert.ok(without.length > 0, "this test needs units the species has no rule in");
+
+  for (const designation of without.slice(0, 5)) {
+    clearZoneSummaryCache();
+    const summary = await summarizeZone({ layerId: "layer:ca-bc-mu", designation }, "2026-10-01");
+    const row = summary.species.find((entry) => entry.speciesId === "species:sharp-tailed-grouse");
+    assert.ok(row, `${designation} must still list the species`);
+    assert.equal(row.next.kind, "NOT_CERTIFIED", `${designation} borrowed a season from another unit`);
+  }
 });
