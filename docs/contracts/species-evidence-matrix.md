@@ -67,14 +67,27 @@ every species is a PDF and its unit column is frequently a *group* of WMUs
 rather than a WMU. Good licence, wrong container, and a geography that is not
 what its column heading suggests.
 
-### The evidence ladder is still one rung, but no longer empty above it
+### The evidence ladder, after two passes
 
-Every dataset in the registry today is measured harvest — tier T1. This pass
-found the first genuine **T3 authoritative range** in Canada, and exactly one:
-Québec's 69 terrestrial mammals under CC BY. It also established that federal
-Canada publishes no range for common game species at all, and that IUCN's
-spatial data is barred to a commercial product. Population, seasonal range and
-habitat remain unresearched, and this document does not pretend otherwise.
+Every dataset in the registry is measured harvest — tier T1. Research now says
+that is a gap in North Ground's ingestion, not a gap in Canada.
+
+| Tier | Best usable source in Canada | Verdict |
+|---|---|---|
+| **T1** measured harvest | Ontario, Québec, British Columbia | USABLE |
+| **T2** modelled population | **Ontario moose, per WMU, with 90% CI, XLSX** | **USABLE** |
+| **T3** authoritative range | **Québec, 69 terrestrial mammals, CC BY** | **USABLE**, small-scale |
+| **T4** habitat model input | **NRCan Land Cover of Canada 2020, national, 30 m** | **USABLE** |
+| **T5** context | Out of scope for this pass | — |
+
+The single most useful finding of the second pass: **Ontario publishes moose
+population estimates with confidence intervals on the same WMU geography as its
+harvest data, under the same open licence.** Ontario is therefore the one place
+in Canada where T1 and T2 genuinely coexist on one unit — the case the evidence
+ladder was built for, and until now hypothetical.
+
+**Seasonal range remains unresearched**, and is named in its own section rather
+than left implied.
 
 ---
 
@@ -630,24 +643,218 @@ anywhere in Canada.
 
 ---
 
-## Population and survey, seasonal range, habitat
+## Population and survey estimates (tier T2)
 
-**Not yet researched in any province.**
+Second research pass, 2026-09-23. **Canada does have T2 evidence.** The first
+pass was wrong to leave this blank, and one province turns out to publish it
+cleanly.
 
-This is stated rather than filled in because the alternative — naming plausible
-datasets from general knowledge — is exactly the fabrication CLAUDE.md §61
-forbids, and it would be indistinguishable from research until someone tried to
-ingest it.
+### Ontario — USABLE, and the first T2 evidence North Ground can use **[reached]**
 
-What is known without new research: North Ground's evidence architecture already
-separates these tiers, and a new population or habitat dataset will fail
-`validateEvidenceMatrix()` until someone declares its tier and precision
-deliberately. So the gap is visible in code, not only here.
+| | |
+|---|---|
+| Authority | Ontario Ministry of Natural Resources |
+| Dataset | Moose population monitoring summaries |
+| Evidence kind | **Population estimate from aerial survey** (T2) |
+| Geography level | ZONE, and finer where surveyed |
+| Published unit | "WMU", with `SurveyScale` of `Plot` or `Sub-WMU` |
+| Period | 1975-01-01 to 2026-03-31 |
+| Format | **XLSX, machine-readable** (167,608 bytes, reached) |
+| Licence | Open Government Licence – Ontario |
+| Commercial use | Allowed |
 
-Two leads worth a later pass, neither reached: **NatureServe Canada EBAR**, the
-most plausible remaining source of Canadian range geometry for species that are
-not at risk; and per-province bird range, which this pass did not search for
-specifically.
+Column headers read from the file: `MostRecentUpdate, SurveyYear, SurveyScale,
+SurveyArea, WMU, Type, Aircraft, SamplingEffort, SamplingEffort_WMU, Obsv_Moose,
+Obsv_Bull, Obsv_Cow, Obsv_Calf, Obsv_Unk, Projected_Moose, Projected_Bull,
+Projected_Cow, Projected_Calf, Projected_Unk, CI90perc, CImethod, Notes`.
+
+This matters more than one row suggests. It is a **published population estimate
+with a 90% confidence interval, on the same WMU geography as Ontario's harvest
+data**, under the same open licence. So Ontario is the one place in Canada where
+T1 measured harvest and T2 modelled population genuinely coexist on one unit —
+the case the evidence ladder was built for, and until now hypothetical.
+
+The authority's own caveat, verbatim: "Moose populations are estimated based on a
+sample of plots and are subject to statistical error. We may update data
+periodically as errors are identified and corrected."
+
+**Hard line:** observed counts (`Obsv_*`) and projected estimates (`Projected_*`)
+are different columns and different claims. An observation is what a crew saw
+from an aircraft on a sample of plots; the projection is a model output with an
+interval. They must never be conflated, and the interval must travel with the
+estimate.
+
+### Alberta — PDF_ONLY again **[reached]**
+
+Alberta publishes **one aerial ungulate survey report per WMU per survey year** —
+titles such as "Wildlife Management Unit 353 aerial ungulate survey (2023)". A
+catalogue query returned 279 hits; one PDF was confirmed reachable (255,994
+bytes). Every resource format returned was PDF.
+
+Licence is OGL–Alberta and permits commercial use. The blocker is the same as for
+Alberta's harvest: the estimate for each unit lives in its own PDF.
+
+### British Columbia — the richest survey data in Canada, and LICENCE_BLOCKED **[reached]**
+
+Two live WFS layers from the Wildlife Species Inventory return exactly what a
+careful T2 record needs: `PARAMETER_NAME` ("Individuals/km2"), `PARAMETER_VALUE`,
+`SIGHTABILITY_CORRECTION`, `CONFIDENCE_LIMIT_LOWER`/`UPPER`,
+`CONFIDENCE_LEVEL_PERCENT`, `STANDARD_ERROR`, `COEFFICIENT_VARIATION`,
+`SAMPLE_SIZE`, plus per-point ungulate observations.
+
+**The licence is the wall.** Both carry "Access Only", which is not an open
+licence at all but BC's all-rights-reserved copyright page. Read verbatim at
+<https://www2.gov.bc.ca/gov/content?id=1AAACC9C65754E4D89A118B875E0FBDA>:
+
+> "Copyright © 2026, Province of British Columbia. All rights reserved. This
+> material is owned by the Government of British Columbia and protected by
+> copyright law. It may not be reproduced or redistributed without the prior
+> written permission of the Province of British Columbia."
+
+Note the contrast within one province: BC's harvest statistics are OGL-BC and
+usable, and its survey estimates are all-rights-reserved. **Read the licence at
+the dataset, never at the province** — the same lesson Saskatchewan taught.
+
+Two further notes. The geography is a **survey block** (`BLOCK_LABEL`), not a
+management unit, so these would not paint the MU map even if licensed. And BC
+withholds some records under its Species and Ecosystems Data and Information
+Security Policy — a real-world instance of the sensitivity gate in
+`publication.ts`, arriving before North Ground built one.
+
+### Manitoba — LICENCE_PENDING, and three units in a year **[reached]**
+
+Manitoba's `2024 Big Game Surveys` reports per **Game Hunting Area**, and the
+2024 edition covered **three areas only**: GHA 26, GHA 17A, and GHAs 21 & 21A.
+GHA 26: "The total population is estimated to be 1,405 (90% CI: 1,020 – 1,792)
+moose… approximately 0.19 moose/km2."
+
+**Hard line, and Manitoba states it itself: a minimum count is not a population
+estimate.** For GHAs 21 and 21A, verbatim: "Due to the small number of
+observations, it is not possible to calculate an accurate population estimate;
+therefore, moose population numbers in these GHAs are reported as minimum
+counts." Eleven moose and 29 moose are what was *seen*. Treating either as an
+estimate — or ranking it against GHA 26's 1,405 — would be exactly the
+false-comparison the architecture exists to refuse.
+
+Manitoba also changed method: distance sampling replaced stratified random block
+sampling after 2022, so figures either side of that change are not a series.
+
+**No licence text was found** on or near the PDF. Commercial reuse is unknown,
+not permitted-by-default.
+
+### Nova Scotia — LICENCE_PENDING, and Cape Breton only **[reached]**
+
+`Winter 2024 Cape Breton Moose Survey` reports density per **Moose Management
+Zone** — 0.10, 0.09, 0.0, 0.01 and 0.58 moose/km² across zones 1–5 and the
+national park. It is one ecosystem, one species, not a provincial programme, and
+carries no licence text.
+
+Nova Scotia's deer Pellet Group Inventory is **province-wide only** and its own
+page says reporting is "Internal and available to public upon request" — there is
+no download.
+
+### Québec — NOT_PUBLISHED as open data **[reached]**
+
+Données Québec holds harvest statistics and caribou range, and **no population
+estimates**: a search for "inventaire aérien" returned zero results.
+
+Per-zone aerial inventory reports do exist as PDFs, but on a domain with heavy
+link rot — three candidate URLs returned **404** and one returned 200 without
+being opened. Evidence was found for zones 17, 27 and 28 only.
+
+This is the largest gap among the four biggest provinces: Québec has the best
+harvest licence in Canada and no reachable population data at all.
+
+### Newfoundland and Labrador — a disclaimer worth keeping **[reached]**
+
+NL publishes interpolated moose **density mapping**, and says plainly that it is
+not the estimate: "It is important to note that population estimates developed
+from these aerial surveys do not rely on this mapping methodology." A visual
+product derived from a spatial model is not the survey result, and the authority
+is explicit. No tables or downloads are linked.
+
+### Saskatchewan, New Brunswick, Prince Edward Island
+
+**NOT FOUND** for Saskatchewan and New Brunswick — New Brunswick's big game
+report was read in full (23 pages) and contains harvest tables, not population
+estimates. Prince Edward Island was **not searched**, and this document does not
+claim otherwise.
+
+### Population: verdict
+
+| Province | Verdict |
+|---|---|
+| Ontario | **USABLE** — per-WMU, XLSX, with 90% CI, OGL-Ontario |
+| Alberta | PDF_ONLY — one report per WMU, licence fine |
+| British Columbia | **LICENCE_BLOCKED** — "Access Only"; survey blocks, not units |
+| Manitoba | LICENCE_PENDING — per-GHA, 3 areas in 2024, no licence text |
+| Nova Scotia | LICENCE_PENDING — Cape Breton moose only, no licence text |
+| Québec | NOT_PUBLISHED as open data |
+| Newfoundland and Labrador | NOT_PUBLISHED — density mapping is explicitly not the estimate |
+| Saskatchewan, New Brunswick | NOT FOUND |
+| Prince Edward Island | NOT SEARCHED |
+
+---
+
+## Land cover — the habitat-model input (tier T4)
+
+**Land cover is not habitat.** It is the input a habitat model is built from, and
+the distinction is the whole of tier T4. This section records inputs; North
+Ground holds no habitat model.
+
+### Land Cover of Canada 2020 — USABLE, national, 30 m **[reached]**
+
+| | |
+|---|---|
+| Authority | Natural Resources Canada, Canada Centre for Remote Sensing |
+| Resolution | **30 m**, in the authority's own words |
+| Coverage | National; 2010 and 2015 editions also exist |
+| Format | GeoTIFF — confirmed HTTP 200, `image/tiff`, **2,107,707,760 bytes** |
+| Licence | Open Government Licence – Canada |
+| Commercial use | Allowed |
+
+This closes the input gap. A **CLASSIFIED** habitat model — named associations
+from published research, no invented weights — is buildable in Canada today on
+one national 30 m raster under a commercial licence. That is precisely why the
+CLASSIFIED/WEIGHTED distinction was worth the amendment.
+
+Its resolution also fixes the ceiling: a model built on 30 m land cover is a
+30 m model, and nothing downstream may be drawn finer.
+
+### AAFC Annual Crop Inventory — USABLE, and agricultural **[reached]**
+
+30 m, one raster per province per year, 2009–2025 (national from 2011),
+OGL-Canada, commercial use permitted. The file directory was listed and real
+filenames confirmed. Its **non-agricultural classes are coarse**, so it
+complements the NRCan layer rather than replacing it.
+
+### Provincial land cover — usable, and two cautions **[registry of the research pass]**
+
+Ontario's Far North Land Cover and SOLRIS 2.0 are OGL-Ontario and commercially
+usable. **Neither publishes a raster cell size.** Ontario states a map scale
+(1:100,000) instead, and a scale is not a resolution — it was not converted into
+one here, and must not be. Under the precision contract those are `POLYGON`
+sources of unstated size until someone establishes it.
+
+British Columbia's Vegetation Resource Inventory is open for the **historical
+2002–2024** compilation under OGL-BC, while the **current-year 2025** layers are
+"Access Only". Same programme, same province, opposite licences by year. Do not
+assume the newest edition shares the older one's terms.
+
+### Land cover: verdict
+
+| Source | Verdict |
+|---|---|
+| NRCan Land Cover of Canada 2020 | **USABLE** — national, 30 m, OGL-Canada |
+| AAFC Annual Crop Inventory | **USABLE** — 30 m, agricultural classes coarse |
+| Ontario Far North / SOLRIS | USABLE, **resolution unstated** — treat as unestablished |
+| BC VRI 2002–2024 | USABLE (OGL-BC); the 2025 layers are LICENCE_BLOCKED |
+
+---
+
+## Seasonal range
+
+**Not researched.** Named here so its absence is visible rather than implied.
 
 ---
 
