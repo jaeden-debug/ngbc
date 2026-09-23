@@ -37,6 +37,11 @@ interface FederalRule {
 
 const RULES = bundle.rules as readonly FederalRule[];
 
+/** Rows the build refused, which still cover real dates. */
+const REFUSED = bundle.notEncoded as ReadonlyArray<{
+  jurisdictionId?: string; groupId?: string; coversArea?: string; reason: string; statedAs: string;
+}>;
+
 /** Whether this species is a migratory game bird the federal rules reach. */
 export function isFederalMigratoryBird(speciesId: string): boolean {
   return groupsForSpecies(speciesId).length > 0;
@@ -148,6 +153,28 @@ export function evaluateFederal(
 
   const open = here.find((rule) => rule.window && insideWindow(rule.window, date));
   if (!open) {
+    /*
+     * A row this build REFUSED still covers real dates. Yukon's August duck
+     * season exists — for residents of Yukon — and was refused because the
+     * limit varies by residency. Answering CLOSED for August 20 would tell a
+     * Yukon resident they may not hunt when the law says they may: a
+     * restriction stricter than the source, which is as false as an invented
+     * permission and quieter, because nobody complains about being told no.
+     */
+    const refused = REFUSED.filter(
+      (entry) => entry.jurisdictionId === jurisdictionId && entry.coversArea === area.area.name && entry.groupId && groupIds.has(entry.groupId),
+    );
+    if (refused.length) {
+      return {
+        status: "UNKNOWN",
+        summary:
+          `North Ground cannot say whether ${here[0].groupStatedAs} is open in ${area.area.name} on this date.`,
+        limitations: refused.map(
+          (entry) => `The Migratory Birds Regulations set a season here that North Ground did not encode because ${entry.reason}: ${entry.statedAs}`,
+        ),
+        requirements, area: area.area,
+      };
+    }
     return {
       status: "CLOSED",
       summary:

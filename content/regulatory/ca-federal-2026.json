@@ -975,77 +975,110 @@
       "group": "all Geese, combined",
       "area": "Throughout Prince Edward Island",
       "statedAs": "(i) September 1 to September 15 | 5 (plus an additional 5 Canada Geese or Cackling Geese in any combination) | 20",
-      "reason": "the daily bag carries an additional species-specific allowance"
+      "reason": "the daily bag carries an additional species-specific allowance",
+      "jurisdictionId": "jurisdiction:ca-pe",
+      "groupId": "federal_group:all-geese",
+      "coversArea": "Throughout Prince Edward Island"
     },
     {
       "where": "Prince Edward Island Schedule 3 Table 1 item 1",
       "group": "all Geese, combined",
       "area": "Throughout Prince Edward Island",
       "statedAs": "(ii) October 1 to December 31 | (A) 5 (from October 1 to November 14) | (B) 3 (from November 15 to December 31) | 20",
-      "reason": "the daily bag changes inside the open season"
+      "reason": "the daily bag changes inside the open season",
+      "jurisdictionId": "jurisdiction:ca-pe",
+      "groupId": "federal_group:all-geese",
+      "coversArea": "Throughout Prince Edward Island"
     },
     {
       "where": "Yukon Schedule 3 Table 1 item 1",
       "group": "all Ducks, combined",
       "area": "Northern Yukon",
       "statedAs": "(i) August 15 to August 31, for residents of Yukon only | 25 | No limit",
-      "reason": "the limit or season varies by residency"
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "groupId": "federal_group:all-ducks",
+      "coversArea": "Northern Yukon"
     },
     {
       "where": "Yukon Schedule 3 Table 1 item 1",
       "group": "Canada Geese, Cackling Geese, White-fronted Geese and Brant, combined",
       "area": "Northern Yukon",
       "statedAs": "(i) August 15 to August 31, for residents of Yukon only | 15 | No limit",
-      "reason": "the limit or season varies by residency"
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "groupId": "federal_group:canada-cackling-whitefronted-brant",
+      "coversArea": "Northern Yukon"
     },
     {
       "where": "Yukon Schedule 3 Table 1 item 1",
       "group": "Rails and Coots, combined",
       "area": "Northern Yukon",
       "statedAs": "(i) August 15 to August 31, for residents of Yukon only | 25 | No limit",
-      "reason": "the limit or season varies by residency"
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "groupId": "federal_group:rails-coots",
+      "coversArea": "Northern Yukon"
     },
     {
       "where": "Yukon Schedule 3 Table 1 item 1",
       "group": "Snipe",
       "area": "Northern Yukon",
       "statedAs": "(i) August 15 to August 31, for residents of Yukon only | 10 | No limit",
-      "reason": "the limit or season varies by residency"
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "groupId": "federal_group:snipe",
+      "coversArea": "Northern Yukon"
     },
     {
       "where": "Yukon Schedule 3 Table 1 item 2",
       "group": "all Ducks, combined",
       "area": "Central Yukon",
       "statedAs": "(i) August 15 to August 31, for residents of Yukon only | 8 | 24",
-      "reason": "the limit or season varies by residency"
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "groupId": "federal_group:all-ducks",
+      "coversArea": "Central Yukon"
     },
     {
       "where": "Yukon Schedule 3 Table 1 item 2",
       "group": "Canada Geese, Cackling Geese, White-fronted Geese and Brant, combined",
       "area": "Central Yukon",
       "statedAs": "(i) August 15 to August 31, for residents of Yukon only | 5 | 15",
-      "reason": "the limit or season varies by residency"
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "groupId": "federal_group:canada-cackling-whitefronted-brant",
+      "coversArea": "Central Yukon"
     },
     {
       "where": "Yukon Schedule 3 Table 1 item 2",
       "group": "Sandhill Cranes",
       "area": "Central Yukon",
       "statedAs": "(i) August 15 to August 31, for residents of Yukon only | 2 | 4",
-      "reason": "the limit or season varies by residency"
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "groupId": "federal_group:sandhill-cranes",
+      "coversArea": "Central Yukon"
     },
     {
       "where": "Yukon Schedule 3 Table 1 item 2",
       "group": "Rails and Coots, combined",
       "area": "Central Yukon",
       "statedAs": "(i) August 15 to August 31, for residents of Yukon only | 25 | No limit",
-      "reason": "the limit or season varies by residency"
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "groupId": "federal_group:rails-coots",
+      "coversArea": "Central Yukon"
     },
     {
       "where": "Yukon Schedule 3 Table 1 item 2",
       "group": "Snipe",
       "area": "Central Yukon",
       "statedAs": "(i) August 15 to August 31, for residents of Yukon only | 10 | 30",
-      "reason": "the limit or season varies by residency"
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "groupId": "federal_group:snipe",
+      "coversArea": "Central Yukon"
     },
     {
       "where": "Yukon Schedule 3 Table 2 item 1",
@@ -1097,42 +1130,60 @@
       "group": "all Ducks, combined",
       "area": "Zone No. 1",
       "statedAs": "September 1 to December 16 | 8 | (i) 24 for residents of Canada",
-      "reason": "the limit or season varies by residency"
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "groupId": "federal_group:all-ducks",
+      "coversArea": "Zone No. 1"
     },
     {
       "where": "Alberta Schedule 3 Table 1 item 1",
       "group": "all Ducks, combined",
       "area": "Zone No. 1",
       "statedAs": "September 1 to December 16 | 8 (not more than 2 may be Barrow’s Goldeneye or Common Goldeneye in any combination) | (ii) 24 (not more than 6 may be Barrow’s Goldeneye or Common Goldeneye in any combination) for non-residents of Canada",
-      "reason": "the limit or season varies by residency"
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "groupId": "federal_group:all-ducks",
+      "coversArea": "Zone No. 1"
     },
     {
       "where": "Alberta Schedule 3 Table 1 item 1",
       "group": "Sandhill Cranes",
       "area": "Zone No. 1",
       "statedAs": "September 1 to December 16 (in Provincial Wildlife Management Units 200, 202 to 204, 206, 208, 220, 222, 226, 228, 230, 232, 234, 236, 238, 240, 242, 244, 247, 248, 250, 252, 254, 256, 258, 260, 336, 500 to 510, 514, 515 and 841) | 5 | 15",
-      "reason": "the season applies only in a sub-list of provincial units"
+      "reason": "the season applies only in a sub-list of provincial units",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "groupId": "federal_group:sandhill-cranes",
+      "coversArea": "Zone No. 1"
     },
     {
       "where": "Alberta Schedule 3 Table 1 item 2",
       "group": "all Ducks, combined",
       "area": "Zone No. 2",
       "statedAs": "September 8 to December 23 | 8 | (i) 24 for residents of Canada",
-      "reason": "the limit or season varies by residency"
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "groupId": "federal_group:all-ducks",
+      "coversArea": "Zone No. 2"
     },
     {
       "where": "Alberta Schedule 3 Table 1 item 2",
       "group": "all Ducks, combined",
       "area": "Zone No. 2",
       "statedAs": "September 8 to December 23 | 8 (not more than 2 may be Barrow’s Goldeneye or Common Goldeneye in any combination) | (ii) 24 (not more than 6 may be Barrow’s Goldeneye or Common Goldeneye in any combination) for non-residents of Canada",
-      "reason": "the limit or season varies by residency"
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "groupId": "federal_group:all-ducks",
+      "coversArea": "Zone No. 2"
     },
     {
       "where": "Alberta Schedule 3 Table 1 item 2",
       "group": "Sandhill Cranes",
       "area": "Zone No. 2",
       "statedAs": "September 8 to December 23 (in Provincial Wildlife Management Units 102, 104, 106, 112, 116, 118, 119, 124, 128, 130, 132, 134, 136, 138, 140, 142, 144, 148, 150 to 152, 156, 158, 160, 162 to 164, 166 and 210) | 5 | 15",
-      "reason": "the season applies only in a sub-list of provincial units"
+      "reason": "the season applies only in a sub-list of provincial units",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "groupId": "federal_group:sandhill-cranes",
+      "coversArea": "Zone No. 2"
     },
     {
       "where": "Alberta Schedule 3 Table 2 item 1",

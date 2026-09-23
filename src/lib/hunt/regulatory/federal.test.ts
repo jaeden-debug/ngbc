@@ -115,3 +115,60 @@ test("both authorities' requirements survive composition", () => {
   assert.ok(composed.requirements.some((line) => /Migratory Game Bird Hunting Permit/.test(line)));
   assert.ok(composed.requirements.some((line) => /provincial small game licence/.test(line)));
 });
+
+/* ── A refused row still covers real dates ───────────────────────────────── */
+
+test("a date inside a season this build REFUSED answers UNKNOWN, never CLOSED", () => {
+  /*
+   * Schedule 3 Part 12: Central Yukon ducks are open "(i) August 15 to August
+   * 31, for residents of Yukon only". That row is refused because the season
+   * varies by residency — so North Ground does not know whether THIS hunter
+   * may hunt, which is different from knowing they may not.
+   *
+   * Telling a Yukon resident CLOSED on August 20 would state a restriction
+   * stricter than the law. That is a false regulatory claim, and a quiet one:
+   * nobody complains about being wrongly told no.
+   */
+  const answer = evaluateFederal("species:mallard", "jurisdiction:ca-yt", { latitude: 64 }, on("2026-08-20"));
+  assert.equal(answer.status, "UNKNOWN");
+  assert.notEqual(answer.status, "CLOSED");
+  assert.ok(
+    answer.limitations.some((line) => /residency/.test(line) && /August 15 to August 31/.test(line)),
+    "the refused season is quoted so a hunter can read what was not encoded",
+  );
+});
+
+test("a date outside every season, encoded or refused, is still CLOSED", () => {
+  /* Southern Yukon ducks run September 1 to October 31 with no August row at
+     all, so December really is closed rather than unknown. */
+  const answer = evaluateFederal("species:mallard", "jurisdiction:ca-yt", { latitude: 60.5 }, on("2026-12-10"));
+  assert.equal(answer.status, "CLOSED");
+});
+
+test("Alberta ducks are UNKNOWN rather than CLOSED, because their row varies by residency", () => {
+  const answer = evaluateFederal("species:mallard", "jurisdiction:ca-ab", { latitude: 53.5 }, on("2026-10-01"), "200");
+  assert.equal(answer.status, "UNKNOWN");
+});
+
+test("Alberta geese, whose row does not vary by residency, do answer", () => {
+  /* Zone No. 1: Canada Geese, Cackling Geese and White-fronted Geese,
+     September 1 to December 16, daily 8. */
+  const answer = evaluateFederal("species:canada-goose", "jurisdiction:ca-ab", { latitude: 53.5 }, on("2026-10-01"), "200");
+  assert.equal(answer.status, "CONDITIONAL");
+  assert.equal(answer.sharedLimit?.daily, 8);
+  assert.match(answer.sharedLimit!.sharedWith, /Canada Geese, Cackling Geese and White-fronted Geese/);
+});
+
+test("Alberta Zone No. 2 opens a week later than Zone No. 1, and the map knows which unit is which", () => {
+  /* Zone 1: September 1 to December 16. Zone 2: September 8 to December 23. */
+  const zone2Unit = "102";
+  assert.equal(evaluateFederal("species:canada-goose", "jurisdiction:ca-ab", { latitude: 53 }, on("2026-09-03"), zone2Unit).status, "CLOSED");
+  assert.equal(evaluateFederal("species:canada-goose", "jurisdiction:ca-ab", { latitude: 53 }, on("2026-09-03"), "200").status, "CONDITIONAL");
+  assert.equal(evaluateFederal("species:canada-goose", "jurisdiction:ca-ab", { latitude: 53 }, on("2026-12-20"), zone2Unit).status, "CONDITIONAL");
+});
+
+test("Northern Yukon sandhill crane is a DECLARED closure", () => {
+  const answer = evaluateFederal("species:sandhill-crane", "jurisdiction:ca-yt", { latitude: 67.5 }, on("2026-09-20"));
+  assert.equal(answer.status, "CLOSED");
+  assert.match(answer.summary, /declare no open season/);
+});

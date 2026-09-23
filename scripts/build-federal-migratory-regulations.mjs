@@ -266,7 +266,17 @@ function main() {
           : /plus an additional/i.test(rowText) ? "the daily bag carries an additional species-specific allowance"
           : null;
         if (refusal) {
-          notEncoded.push({ where, group: group.statedAs, area, statedAs: rowText, reason: refusal });
+          /*
+           * Structured, not just prose: the evaluator must be able to find
+           * these. A refused row still covers real dates — Yukon's August duck
+           * season exists, for residents — and a date inside one must answer
+           * UNKNOWN rather than CLOSED. Saying CLOSED there would state a
+           * restriction STRICTER than the law, which is its own false claim.
+           */
+          notEncoded.push({
+            where, group: group.statedAs, area, statedAs: rowText, reason: refusal,
+            jurisdictionId, groupId: group.id, coversArea: area,
+          });
           continue;
         }
 
