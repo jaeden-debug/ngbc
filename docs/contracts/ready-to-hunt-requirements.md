@@ -101,9 +101,19 @@ falconry, dogs, bait, or the next thing a state names. It becomes:
 
 `officialName` is always the authority's own term and is what is displayed.
 `classId` is for behaviour and grouping only, and is `null` where nothing in our
-vocabulary fits — which is a supported state, not a gap. The hardcoded
-`standard` list disappears with it: there is no universal set of methods to take
-a complement against, and taking a complement is what produced the defect above.
+vocabulary fits — which is a supported state, not a gap.
+
+**The worked example, because it is a better argument than the rule.** The
+defect above was not fixed by correcting the hardcoded list. It was fixed by
+deleting the list, because the list was the fault: any closed set of methods
+invites taking its complement, and a complement over a set that does not
+describe the world asserts prohibitions nobody legislated. A longer enum would
+have reproduced the same bug at a larger size — more methods wrongly forbidden,
+not fewer. **There is no universal set of methods to take a complement
+against**, which is why the vocabulary has to open rather than grow.
+
+The same reasoning is why `PROHIBITED` cannot be the default for anything:
+every "everything else is forbidden" is a complement in disguise.
 
 ## Categories
 
