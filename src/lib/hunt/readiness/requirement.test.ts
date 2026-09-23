@@ -55,3 +55,46 @@ describe("a statement carries what makes it true", () => {
     assert.deepEqual(Object.keys(statement).sort(), ["provenance", "state", "value"]);
   });
 });
+
+describe("a fee is two certifications and more than one number", () => {
+  it("keeps the figure's in-force window separate from the instrument's", () => {
+    /* Québec's r.32 still reads "À jour" and remains in force after its
+       amounts are superseded on 1 April. The instrument, the provision and the
+       number each go stale on their own, so `inForce` cannot answer for the
+       figure. */
+    const price = {
+      amount: 25, currency: "CAD" as const, label: "Permis de chasse", appliesTo: {}, licenceYear: 2026,
+      figureInForce: { effectiveFrom: "2026-04-01", supersededOn: "2027-04-01", statedAs: "indexé le 1er avril" },
+      provenance: source,
+    };
+    assert.equal(price.figureInForce.supersededOn, "2027-04-01");
+    assert.notEqual(price.figureInForce.effectiveFrom, String(price.licenceYear));
+  });
+
+  it("cannot state a licence price without the compulsory amounts paid on top", () => {
+    /* The annexe I amount is not what a hunter pays: a mandatory contribution
+       to the Fondation lives in a DIFFERENT annexe. Reading the obviously
+       titled fee table and stopping is wrong on every licence in Québec, and
+       wrong LOW — the direction a hunter discovers at the counter. */
+    const price = {
+      amount: 25, currency: "CAD" as const, label: "Permis de chasse au gros gibier", appliesTo: {}, licenceYear: 2026,
+      chargeType: "LICENCE_FEE" as const,
+      mandatoryAdditions: [{ label: "Contribution à la Fondation pour la biodiversité et la faune", amount: 5.30, statedAs: "5,30 $", citation: "annexe" }],
+      provenance: source,
+    };
+    const payable = price.amount + price.mandatoryAdditions.reduce((total, add) => total + add.amount, 0);
+    assert.equal(payable, 30.30);
+    assert.notEqual(payable, price.amount, "the published amount alone understates it");
+  });
+
+  it("keeps a post-hunt charge out of the licence price", () => {
+    /* Québec's 8,18 $ registration fee is real, payable, and not part of what
+       a licence costs. A model with one kind of money adds it. */
+    const rows = [
+      { amount: 25, chargeType: "LICENCE_FEE" as const },
+      { amount: 8.18, chargeType: "POST_HUNT_REGISTRATION" as const },
+    ];
+    const licenceCost = rows.filter((row) => row.chargeType === "LICENCE_FEE").reduce((total, row) => total + row.amount, 0);
+    assert.equal(licenceCost, 25);
+  });
+});

@@ -158,8 +158,40 @@ export interface Price {
   /**
    * The licence year the fee schedule belongs to. A fee is presented as current
    * only inside that year: a new year's fees are unknown until they are read.
+   *
+   * Not every authority prices by licence year — Québec indexes on 1 April by
+   * CPI — so `currency` below is the general form and this stays for the
+   * jurisdictions that do.
    */
   licenceYear: number;
+  /**
+   * When this FIGURE is the figure, which is not when the instrument is law.
+   *
+   * Québec's r.32 still reads "À jour" and remains in force after its amounts
+   * are superseded on 1 April: the instrument, the provision and the number
+   * can each go stale independently. A fee outside its window is not shown.
+   */
+  figureInForce?: { effectiveFrom: string; supersededOn?: string; statedAs: string };
+  /**
+   * What KIND of money this is, so it cannot be summed into the wrong total.
+   *
+   * Québec's 8,18 $ registration fee is a POST-HUNT charge on deer, moose,
+   * bear and turkey — real, payable, and not part of what a licence costs. A
+   * model with one kind of money adds it to the licence price.
+   */
+  chargeType?: "LICENCE_FEE" | "MANDATORY_CONTRIBUTION" | "POST_HUNT_REGISTRATION" | "SURCHARGE";
+  /**
+   * Compulsory amounts payable ON TOP, set elsewhere than the fee table.
+   *
+   * Québec's contribution to the Fondation pour la biodiversité et la faune —
+   * 5,30 $ big game, 2,59 $ small game — lives in a different annexe from the
+   * obviously-titled fee table. Reading the fee table and stopping is wrong on
+   * every licence in the province, and wrong LOW, which is the direction a
+   * hunter discovers at the counter.
+   */
+  mandatoryAdditions?: Array<{ label: string; amount: number; statedAs: string; citation: string }>;
+  /** The authority's own column heading, where it labels one. Never reconciled. */
+  columnHeading?: string;
   provenance: Provenance;
 }
 

@@ -341,6 +341,73 @@ more inheritable than a prohibition.** Both need reading to the end of the
 provision — and "the end of the provision" includes the rest of the sentence
 that imposes it.
 
+## A fee is two certifications, not one
+
+The fee's currency and the authorization's validity are **independent facts**,
+and Québec proves it in one place: the FEE is indexed annually on 1 April by
+CPI (r.32 s.15), while the BIG-GAME LICENCE it buys expires at season end or on
+tagging (r.12 s.11). **A fee can be perfectly current while the authorization
+has expired, and the reverse.** Collapsing them into one `current` flag is the
+only way to get this wrong.
+
+So two fields, never one:
+
+```jsonc
+"source": {
+  "feeCurrentness": {
+    "basis": "ANNUAL_INDEXATION",       // or FIXED_SCHEDULE, LICENCE_YEAR, …
+    "effectiveFrom": "2026-04-01",
+    "supersededOn": "2027-04-01",       // when this figure stops being the figure
+    "statedAs": "<the indexation provision, verbatim>"
+  }
+}
+```
+
+**`inForce` answers "is this instrument law". It does not answer "is this
+figure the current figure."** After 1 April 2027 every Québec amount is stale
+while r.32 still reads *"À jour"* and remains in force — the repealed-regulation
+trap one level down, in a document that never stops being valid. So a value
+carries its own currency window:
+
+```jsonc
+"figureInForce": { "effectiveFrom": "2026-04-01", "supersededOn": "2027-04-01", "statedAs": "<verbatim>" }
+```
+
+which sits beside a row the way `provisionInForce` sits beside `inForce`: the
+instrument, the provision and the figure are three things that can each go
+stale on their own.
+
+## The published amount is not always what is paid
+
+**Québec's annexe I amount is not the price.** A mandatory contribution to the
+*Fondation pour la biodiversité et la faune du Québec* — 5,30 $ big game,
+2,59 $ small game — is set in a DIFFERENT annexe and payable on top. A lane
+that reads the obviously-titled *«DROITS RELATIFS AUX PERMIS DE CHASSE»* table
+and stops is **wrong on every licence in the province, and wrong low.**
+
+```jsonc
+"mandatoryAdditions": [ { "label": "<authority's own>", "amount": 5.30, "citation": "<…>", "statedAs": "<verbatim>" } ],
+"chargeType": "LICENCE_FEE | MANDATORY_CONTRIBUTION | POST_HUNT_REGISTRATION | SURCHARGE",
+"columnHeading": "Droits annuels"
+```
+
+**`chargeType` exists so a charge cannot be summed into the wrong total.**
+Québec's 8,18 $ registration fee is a POST-HUNT charge on deer, moose, bear and
+turkey — real, payable, and not part of what a licence costs. A model with one
+kind of money adds it to the licence price.
+
+**`columnHeading` is carried verbatim because an authority can contradict
+itself.** Québec heads the fee column *«Droits annuels»* — annual fees — for
+licences s.11 makes expire on an event. That is the authority's inconsistency,
+not ours, and it is exactly the kind of thing that makes *"it says annual, so
+it's annual"* look safe. Record it, leave it unresolved, do not reconcile it.
+
+**An unpriced category is not a missing fee.** Québec establishes «Orignal sans
+bois», the sub-7 cm antlerless deer licence, and black bear licences for zones
+13 and 16 — and r.32 prices none of them, its article 2 d) and e) reading
+*"(paragraphe abrogé)"*. Show no fee. Two of the three are the draw-allocated
+licences, which is a pattern worth noticing rather than a gap to fill.
+
 ## Rule 8: authenticity is not currency
 
 **Required, and it is the newest rule because it nearly cost us a wrong
