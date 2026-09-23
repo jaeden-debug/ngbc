@@ -46,7 +46,13 @@ test("moose in 10 est asks for the implement only because it decides the answer"
 
   const bow = ask(MOOSE, "10E", "2026-10-01", { HUNT_METHOD: "BOW" });
   assert.equal(bow.result?.status, "CONDITIONAL");
-  assert.deepEqual(bow.result?.season, { opens: "2026-09-26", closes: "2026-10-12", datesInclusive: true });
+  assert.deepEqual(bow.result?.season, {
+    opens: "2026-09-26", closes: "2026-10-12", datesInclusive: true,
+    /* The ministry's own name for the segment, carried whole so the status
+       paragraph that used to be the only place it lived can be deleted.
+       Quoted, not translated; tagged, not paraphrased. */
+    label: { text: "Périodes de chasse à l’arbalète et à l’arc", lang: "fr-CA", owner: "AUTHORITY" },
+  });
   // The class is stated, never asked: antlered moose only, antlerless by drawn permit.
   const said = [...(bow.result?.requirements ?? []), ...(bow.result?.limitations ?? []).map((entry) => entry.text)].join("\n");
   assert.match(said, /« Orignal avec bois »/);
@@ -127,7 +133,10 @@ test("ruffed grouse asks nothing where every implement is allowed", () => {
   const result = ask(GROUSE, "10E", "2026-10-01");
   assert.equal(result.completeness, "RESOLVED");
   assert.equal(result.result?.status, "CONDITIONAL");
-  assert.deepEqual(result.result?.season, { opens: "2026-09-19", closes: "2027-01-15", datesInclusive: true });
+  assert.deepEqual(result.result?.season, {
+    opens: "2026-09-19", closes: "2027-01-15", datesInclusive: true,
+    label: { text: "Armes à feu et à air comprimé, arbalète et arc", lang: "fr-CA", owner: "AUTHORITY" },
+  });
 });
 
 test("ruffed grouse in zone 17 asks the implement, because the crossbow is prohibited there", () => {

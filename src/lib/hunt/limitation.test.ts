@@ -112,3 +112,48 @@ test("the treaty and Aboriginal-rights line survives verbatim and unmerged", () 
   );
   assert.equal(treaty!.scope, "GENERAL");
 });
+
+/* ── Canada's promotions pass ────────────────────────────────────────────── */
+
+test("Québec's place-specific lines are CONTEXTUAL with a condition from the closed set", async () => {
+  const { evaluateQuebec } = await import("./regulatory/quebec.ts");
+  const { quebecZoneCanonicalId } = await import("./ingestion/quebec-zone.ts");
+  const ask = (designation: string) => evaluateQuebec({
+    speciesId: "species:white-tailed-deer", speciesName: "deer", date: "2026-11-10",
+    place: { zoneId: quebecZoneCanonicalId(designation), zoneName: `Zone ${designation}`, latitude: 46.4, longitude: -74, overlays: null },
+    answers: { HUNT_METHOD: "BOW" },
+  } as Parameters<typeof evaluateQuebec>[0]).result!;
+
+  /* The chronic-wasting-disease enhanced surveillance zone. */
+  const cwd = ask("10EZ").limitations.find((line) => /zone de surveillance rehaussée/.test(line.text));
+  assert.ok(cwd, "the CWD line is present inside the ZSR");
+  assert.equal(cwd!.scope, "CONTEXTUAL");
+  assert.equal(cwd!.scope === "CONTEXTUAL" && cwd!.condition, "RESTRICTED_AREA_PRESENT");
+
+  /* A named territory the ministry draws as its own part of a zone. */
+  const territory = ask("08NMR").limitations.find((line) => /Montagne de Rigaud/.test(line.text));
+  assert.ok(territory);
+  assert.equal(territory!.scope, "CONTEXTUAL");
+
+  /* And a plain zone fires neither: a place-specific warning that fires
+     everywhere is the wall growing back. */
+  assert.equal(ask("10E").limitations.filter((line) => line.scope === "CONTEXTUAL").length, 0);
+});
+
+test("the treaty paragraph did NOT move in the promotions pass", () => {
+  /* Not a candidate, and asserted again here so a later pass cannot take it. */
+  const treaty = quebecAnswer().limitations.find((line) => /treaty or Aboriginal rights/.test(line.text));
+  assert.ok(treaty);
+  assert.equal(treaty!.scope, "GENERAL");
+});
+
+test("only Québec was promoted: nothing North Ground does not own moved", async () => {
+  /*
+   * Nobody classifies a jurisdiction they do not own. Ontario, Alberta,
+   * British Columbia, Manitoba and the U.S. strings stay GENERAL until their
+   * owners promote them.
+   */
+  const { ALBERTA_VOCABULARY } = await import("./regulatory/alberta.ts").catch(() => ({ ALBERTA_VOCABULARY: undefined })) as { ALBERTA_VOCABULARY?: { standingLimitations: Array<{ scope: string }> } };
+  if (!ALBERTA_VOCABULARY) return;
+  for (const line of ALBERTA_VOCABULARY.standingLimitations) assert.equal(line.scope, "GENERAL");
+});

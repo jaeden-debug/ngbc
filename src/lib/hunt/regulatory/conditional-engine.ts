@@ -64,6 +64,11 @@ export interface ConditionalRule {
   appliesWhen: Record<string, string | string[]>;
   seasonLabel: string;
   seasonPhrase: string;
+  /**
+   * The authority's own name for this season segment, where it names one.
+   * Quoted, never translated or reformatted: it is the ministry's string.
+   */
+  implementLabel?: string;
   windows: ConditionalWindow[];
   declaredNoSeason: boolean;
   limits?: {
@@ -188,6 +193,8 @@ export interface ConditionalVocabulary {
   legalTime: RegulatoryResult["legalTime"];
   /** Carried by every answer, because every answer is subject to them. */
   standingLimitations: Limitation[];
+  /** The language the authority publishes its own labels in. */
+  lang?: "en-CA" | "fr-CA";
   /** Source cited alongside every answer (for example the boundary layer). */
   standingSourceIds: string[];
   /** Readable name for a single-valued answer, for "open to this combination". */
@@ -749,8 +756,22 @@ export function evaluateConditional(
        latest of their openings. Otherwise none is promoted, and the summary
        names each. */
     const commonClose = new Set(windows.map((window) => window.closesIso)).size === 1;
+    /*
+     * The authority's own name for the segment, carried only when every rule
+     * behind this season agrees on it. Where they differ the season is a
+     * combination the authority did not name, and inventing a label for it —
+     * or picking one of them — would attribute a name to a ministry that did
+     * not write it.
+     */
+    const labels = new Set(cited.map((rule) => rule.implementLabel).filter((label): label is string => Boolean(label)));
+    const label = labels.size === 1 ? [...labels][0] : undefined;
     const season = commonClose
-      ? { opens: windows.map((window) => window.opensIso).sort().at(-1)!, closes: windows[0].closesIso, datesInclusive: true }
+      ? {
+          opens: windows.map((window) => window.opensIso).sort().at(-1)!,
+          closes: windows[0].closesIso,
+          datesInclusive: true,
+          ...(label ? { label: { text: label, lang: vocabulary.lang ?? "en-CA", owner: "AUTHORITY" as const } } : {}),
+        }
       : undefined;
     result = base({
       status: "CONDITIONAL",

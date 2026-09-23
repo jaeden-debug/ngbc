@@ -65,7 +65,25 @@ export interface ZoneResolution {
 export interface RegulatoryResult {
   status: RegulatoryStatus;
   summary: string;
-  season?: { opens: string; closes: string; datesInclusive: boolean };
+  season?: {
+    opens: string;
+    closes: string;
+    datesInclusive: boolean;
+    /**
+     * The AUTHORITY'S OWN NAME for this season segment — « Armes à feu et à
+     * air comprimé, arbalète et arc ».
+     *
+     * The only fact in the old status paragraph that lived nowhere else, so
+     * the paragraph could not be deleted without taking it: nothing is deleted
+     * whose fact has nowhere else to go. It is here so the paragraph can go.
+     *
+     * Marked AUTHORITY so a renderer QUOTES it rather than paraphrasing, and
+     * `lang` so it is tagged rather than translated. Never normalised: not
+     * translated, not reformatted, "2026-2027" left exactly as the ministry
+     * writes it.
+     */
+    label?: { text: string; lang: "en-CA" | "fr-CA"; owner: "AUTHORITY" };
+  };
   limits?: { daily: number; possession: number; combinedWith?: string };
   /**
    * The legal hunting window, resolved where North Ground can resolve it and

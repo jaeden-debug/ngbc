@@ -1,5 +1,5 @@
 import { legalTimeNotCertified } from "./legal-time.ts";
-import { general, sourceDetail, type Limitation } from "../limitation.ts";
+import { contextual, general, sourceDetail, type Limitation } from "../limitation.ts";
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/ca-qc-2026.json" with { type: "json" };
 import overlaysJson from "../../../../content/regulatory/ca-qc-overlays.json" with { type: "json" };
@@ -226,6 +226,13 @@ function engineRule(rule: QuebecRule, groupId: string): ConditionalRule {
       rule.seasonType === "RELEVE" ? "relève" : null,
       rule.seasonLabel,
     ].filter(Boolean).join(", "),
+    /*
+     * The ministry's own name for the segment, carried WHOLE. `seasonLabel`
+     * above uses a shortened form for a compact line; this is the string the
+     * ministry actually publishes, and it is the fact that had nowhere else to
+     * live. Not shortened, not translated, not reformatted.
+     */
+    ...(rule.implementLabel ? { implementLabel: rule.implementLabel } : {}),
     seasonPhrase: rule.seasonPhrase ?? "",
     windows: rule.windows.map((window) => ({ opensIso: window.opens, closesIso: window.closes })),
     declaredNoSeason: rule.declaredNoSeason,
@@ -416,27 +423,41 @@ function sourceOf(speciesId: string): string | undefined {
   return QUEBEC_BUNDLE.rules.find((rule) => rule.speciesId === speciesId)?.sourceId;
 }
 
-function placeNotes(speciesId: string, designation: string | null): string[] {
+/**
+ * What applies at THIS point, as distinct from what Québec says generally.
+ *
+ * These are CONTEXTUAL: each is emitted only where the evaluation has already
+ * established that the point falls in a published area, and the condition
+ * naming that is `RESTRICTED_AREA_PRESENT` — a value from the closed set, not
+ * prose for a renderer to interpret. That is what puts them under "applies
+ * here today" instead of in the general wall, where a hunter standing inside a
+ * chronic-wasting-disease surveillance zone would read them last.
+ */
+function placeNotes(speciesId: string, designation: string | null): Limitation[] {
   if (!designation) return [];
-  const notes: string[] = [];
+  const notes: Limitation[] = [];
   if (ZSR.has(designation) && CERVIDS.has(speciesId)) {
-    notes.push(
+    notes.push(contextual(
       "This point is in the part of the zone the ministry's layer marks « ZSR » — the enhanced surveillance zone " +
         "(zone de surveillance rehaussée) for chronic wasting disease. The ministry sets additional cervid measures there " +
         "on its chronic wasting disease pages, which North Ground has not certified.",
-    );
+      "RESTRICTED_AREA_PRESENT",
+    ));
   }
   const territory = NAMED_TERRITORY[designation];
   if (territory) {
-    notes.push(
+    notes.push(contextual(
       `This point is in ${territory}, which the ministry's layer draws as its own part of the zone. Hunting can be ` +
         "prohibited in particular territories of a zone, or follow different terms there; confirm with whoever manages it.",
-    );
+      "RESTRICTED_AREA_PRESENT",
+    ));
   }
   for (const note of QUEBEC_BUNDLE.locationNotes) {
     if (note.speciesIds.includes(speciesId) && note.designations.includes(designation)) {
       const statement = statementById.get(note.statementId);
-      if (statement) notes.push(`« ${statement.text} »`);
+      /* The ministry's own words about this place: quoted, attributed and
+         tagged fr-CA rather than paraphrased, exactly as its page statements. */
+      if (statement) notes.push(sourceDetail(`« ${statement.text} »`, statement.sourceId as CanonicalId<"source">, "fr-CA"));
     }
   }
   return notes;
@@ -489,6 +510,7 @@ export function quebecVocabulary(speciesId: string, designation: string | null):
   return {
     jurisdictionName: "Québec",
     unitTerm: "zone de chasse",
+    lang: "fr-CA" as const,
     dimensions: [
       ...(speciesId === "species:white-tailed-deer" ? [RELEVE_DIMENSION] : []),
       ...(method ? [method] : []),
@@ -505,7 +527,7 @@ export function quebecVocabulary(speciesId: string, designation: string | null):
       "Ministère des Forêts, de la Faune et des Parcs",
     ),
     standingLimitations: [
-      ...placeNotes(speciesId, designation).map((text) => general(text)),
+      ...placeNotes(speciesId, designation),
       ...standingFor(speciesId),
     ],
     standingSourceIds: [ZONE_SOURCE],
