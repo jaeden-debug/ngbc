@@ -411,6 +411,50 @@ Regulatory results should support states such as:
 
 Uncertainty is preferable to false certainty.
 
+## Fidelity, in both directions
+
+*Decided 2026-09-23 (owner).*
+
+North Ground must not overstate or understate what authoritative evidence
+establishes. **A restriction stricter than the authoritative source is a false
+claim just as a restriction looser than the source is.** Likewise,
+UNKNOWN/NEEDS_VERIFICATION must represent genuine unresolved evidence, not
+implementation limitations or unnecessary refusal.
+
+Where authoritative evidence establishes a rule for a resolvable geography and
+population, North Ground should encode that supported rule; uncertainty in a
+separate geography, population, or condition must not erase the supported
+answer. Never fill an evidentiary gap by inference merely to reduce UNKNOWN
+results.
+
+Worked example. A source states a season for Districts C and D. North Ground can
+authoritatively resolve C and deliberately cannot derive D:
+
+- C → encode the rule.
+- D → remain unresolved/unserviceable.
+- Do not throw away C because D is unavailable.
+- Do not invent D's geography just to make the rule usable.
+
+The goal is not maximum conservatism; it is maximum fidelity to authoritative
+evidence. Never claim more than the source establishes, but never deliberately
+claim less either. A refusal always looks defensible, which is why an
+unnecessary one is never reported by anyone.
+
+## Capability reporting measures deliverable answers
+
+*Decided 2026-09-23 (owner).*
+
+**Capability reporting must measure deliverable answers, not merely encoded
+records.** A rule referencing geography that the resolver cannot produce must
+not count as supported coverage. Refusal and reason metrics must use stable
+classification semantics, so that a change in validation order cannot
+masquerade as a coverage improvement.
+
+This is a certification requirement, not a reporting nicety: a system that can
+report something as built when a hunter could never receive it is
+misreporting its own capability, which is as serious as an individual wrong
+rule and much harder to notice.
+
 A coordinate can belong to multiple overlapping regulatory layers.
 
 Do not assume:
