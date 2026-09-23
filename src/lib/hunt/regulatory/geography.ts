@@ -176,7 +176,21 @@ export function placeWorlds(
       if (entry.areas?.includes(area)) known.add(id);
       continue;
     }
-    if (!entry.candidateAreas?.includes(area)) continue;
+    /* An entry with NO candidate areas must not vanish. `!undefined?.includes()`
+       is `!undefined`, which is true, so the old guard skipped it silently —
+       it did not fail, it never fired. That is the can-only-pass shape in the
+       data layer, and British Columbia's Closed Areas Regulation Schedule 1
+       names no management unit at all, so every one of its areas would have
+       been invisible rather than unresolved. */
+    if (!entry.candidateAreas) {
+      open.push(id);
+      unknowns.push({
+        kind: "SPECIAL",
+        statedAs: `${entry.name} names no management unit North Ground can match, so it cannot be placed. ${entry.reason ?? "Its boundary is described in words."}`,
+      });
+      continue;
+    }
+    if (!entry.candidateAreas.includes(area)) continue;
     if (place.scope === "ZONE") {
       // Part of the zone may be inside it; which part is the whole question.
       open.push(id);
