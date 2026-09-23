@@ -6,6 +6,16 @@
  * zone" from "North Ground is not the authority" — so every answer carried a
  * wall of undifferentiated text and the important line sat in the middle of it.
  *
+ * AND AN AUTHORITY'S WORDS ATTACH ONLY TO WHAT THAT AUTHORITY DESCRIBED.
+ * `owner: "AUTHORITY"` is an attribution, and an attribution to a government
+ * is a claim: a line that is North Ground's sentence QUOTING a ministry stays
+ * NORTH_GROUND, because marking the whole line AUTHORITY would put our own
+ * caution in the ministry's mouth. That is the symmetric failure to §8's —
+ * there we must not assert a prohibition nobody legislated; here we must not
+ * assert a caution nobody issued, which is quieter because it looks careful.
+ * Splitting a mixed line into a quotation plus our own sentence is authorship,
+ * not annotation, and belongs to whoever owns that jurisdiction's voice.
+ *
  * The kind is recorded by the AUTHOR of the string, never inferred by a
  * renderer. String-matching prose for legal meaning inverts §57, and a
  * hand-kept list of "which strings are critical" inside a component puts the

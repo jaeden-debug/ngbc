@@ -1058,6 +1058,17 @@ about to be put into. Four invariants broke when `FEDERAL_MIGRATORY_SERVING`
 was flipped; all four were strengthened rather than relaxed, and one was this
 defect.
 
+### The build is part of the gate, not a formality after it
+
+**Recorded as a gate finding, 2026-09-23.** An import prepended ABOVE a
+`"use client"` directive passed `tsc` **and the entire test suite** — 834 tests
+— and was caught only by `npm run build`. A directive that must be the first
+statement in a file is invisible to every other check.
+
+So the build is not a final rubber stamp on work the gate already approved: it
+is the only thing that sees a whole class of defect. Run it before landing, not
+after.
+
 ### A test that passes because its premise expired
 
 The seventh form of measuring the wrong thing, and the quietest: nothing fails,
@@ -1181,6 +1192,37 @@ reasoning about the implementation; cases written from the law are written
 before that reasoning exists, which is exactly what makes them able to catch
 it. That is a reason to keep writing them first that has nothing to do with the
 code being wrong.
+
+### An authority's words attach only to what the authority described
+
+**A rule, from three instances in one day (2026-09-23).** Marking something as
+an authority's words is an attribution, and an attribution to a government is a
+claim. It may only be attached to the thing that authority actually described.
+
+1. **The map-standing line.** "Québec's hunting-zone boundaries are the
+   ministry's map, which states « … n'a aucune portée légale … ». Near a
+   boundary, confirm which zone you are in." Marking the whole line AUTHORITY
+   would attribute *North Ground's* caution to a ministry that never issued it.
+   It stays GENERAL; only the wholly-French page statements are SOURCE_DETAIL.
+2. **`season.label`.** The authority's name for a season segment is carried
+   ONLY where every rule behind that season agrees on it. Where they differ,
+   the season is a combination the ministry never named, and picking one of
+   their labels would attribute a name to a ministry that did not write it.
+3. **Splitting a mixed line** into an attributed quotation plus North Ground's
+   own sentence is **authorship, not annotation**. It is a deliberate editorial
+   act by whoever owns that jurisdiction's voice, never a side effect of a
+   shape migration.
+
+**The symmetric failure to §8's.** There we must not assert a prohibition
+nobody legislated; here we must not assert a *caution nobody issued*. Both put
+words in a government's mouth, and the second is quieter because it looks like
+caution.
+
+**And a related trap, found in the same pass:** Québec already HELD the
+ministry's full segment name and was SHORTENING it into a display label. The
+authority's words were being destroyed at the point of display — upstream of
+anywhere a person would look for them, and invisible because the short form
+read perfectly well.
 
 ### Stop calling it a conflict, rather than describe the conflict better
 
