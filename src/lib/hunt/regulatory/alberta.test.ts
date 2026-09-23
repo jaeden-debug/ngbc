@@ -1,3 +1,4 @@
+import { legalTimeSummary } from "./legal-time.ts";
 import assert from "node:assert/strict";
 import test from "node:test";
 import type { HuntDimensionAnswers } from "./dimensions.ts";
@@ -156,8 +157,15 @@ test("an answer the vocabulary does not offer leaves the question open", () => {
 
 test("every answer carries Alberta's standing and legal-time wording", () => {
   const result = evaluate(RUFFED, "2026-10-10", PLACES.wmu102).result!;
-  assert.equal(result.legalTime.status, "RULE_ONLY");
-  assert.match(result.legalTime.text, /one-half hour after sunset/);
+  /*
+   * Alberta spans more than one IANA zone, so no wall-clock window is stated —
+   * but the RULE'S OWN WORDING survives as the reason, which is the property
+   * that matters. NOT_CERTIFIED here is a statement about the timezone, not
+   * about the law, and it still tells a hunter what the law says.
+   */
+  assert.equal(result.legalTime.status, "NOT_CERTIFIED");
+  assert.match(legalTimeSummary(result.legalTime), /one-half hour after sunset/);
+  assert.equal(result.legalTime.status === "NOT_CERTIFIED" && result.legalTime.authority, "Government of Alberta");
   assert.ok(result.limitations.some((line) => /neither a legal document/.test(line.text)));
   assert.ok(result.limitations.some((line) => /Aboriginal or Métis harvesting rights/.test(line.text)));
 });

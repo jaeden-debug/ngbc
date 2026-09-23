@@ -1,3 +1,4 @@
+import { legalTimeNotCertified } from "./legal-time.ts";
 import { general, sourceDetail, type Limitation } from "../limitation.ts";
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/ca-qc-2026.json" with { type: "json" };
@@ -492,12 +493,17 @@ export function quebecVocabulary(speciesId: string, designation: string | null):
       ...(speciesId === "species:white-tailed-deer" ? [RELEVE_DIMENSION] : []),
       ...(method ? [method] : []),
     ],
-    legalTime: speciesId === "species:wild-turkey" && turkeyHours
-      ? { status: "RULE_ONLY", text: `« ${turkeyHours} » North Ground has not certified exact astronomical times for this result.` }
-      : {
-          status: "NOT_AVAILABLE",
-          text: "Québec's legal hunting hours for this species are set by rules North Ground has not certified.",
-        },
+    /*
+     * Québec spans more than one IANA zone, so a point timezone cannot yet be
+     * established and no window is resolved. The ministry's own turkey hours
+     * are still carried as the reason, which is more than "not certified".
+     */
+    legalTime: legalTimeNotCertified(
+      speciesId === "species:wild-turkey" && turkeyHours
+        ? `« ${turkeyHours} »`
+        : "Québec's legal hunting hours for this species are set by rules North Ground has not certified.",
+      "Ministère des Forêts, de la Faune et des Parcs",
+    ),
     standingLimitations: [
       ...placeNotes(speciesId, designation).map((text) => general(text)),
       ...standingFor(speciesId),

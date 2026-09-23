@@ -1,3 +1,4 @@
+import { legalTimeSummary } from "../hunt/regulatory/legal-time.ts";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { evaluateHunt } from "./evaluate.ts";
@@ -56,7 +57,7 @@ test("an Alberta zone is answered by Alberta's rules, in Alberta's terms, with A
     albertaZone("102"),
   );
   assert.equal(answered.regulation.status, "CONDITIONAL");
-  assert.match(answered.regulation.legalTime.text, /one-half hour after sunset/);
+  assert.match(legalTimeSummary(answered.regulation.legalTime), /one-half hour after sunset/);
   const guide = answered.sources.find((source) => source.id === "source:ca-ab-hunting-guide-2026");
   assert.ok(guide, "the 2026 guide is listed among the sources");
   assert.match(guide.contentHash ?? "", /^sha256:/);

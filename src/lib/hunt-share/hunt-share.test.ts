@@ -1,3 +1,4 @@
+import { legalTimeNotCertified } from "../hunt/regulatory/legal-time.ts";
 import { general } from "../hunt/limitation.ts";
 import assert from "node:assert/strict";
 import test from "node:test";
@@ -67,7 +68,7 @@ test("HuntEvaluation adapter preserves the engine result and excludes coordinate
     regulation: {
       status: "CONDITIONAL",
       summary: "Conditions apply.",
-      legalTime: { status: "RULE_ONLY", text: "Verified rule summary." },
+      legalTime: legalTimeNotCertified("Verified rule summary.", "test authority"),
       requirements: ["Licence required."],
       limitations: [general("Check local restrictions.")],
       sourceIds: ["source:ca-on-small-game-2026"],
@@ -275,7 +276,7 @@ test("a brief's warnings are bounded, and anything beyond the bound is said, not
     regulation: {
       status: "CONDITIONAL",
       summary: "Conditions apply.",
-      legalTime: { status: "RULE_ONLY", text: "Verified rule summary." },
+      legalTime: legalTimeNotCertified("Verified rule summary.", "test authority"),
       requirements: Array.from({ length: count }, (_, index) => `Requirement ${index + 1}.`),
       limitations: [],
       sourceIds: ["source:ca-on-small-game-2026"],

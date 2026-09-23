@@ -1,3 +1,4 @@
+import { legalTimeNotCertified } from "./legal-time.ts";
 import { general } from "../limitation.ts";
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/ca-bc-2026.json" with { type: "json" };
@@ -80,12 +81,11 @@ export const BRITISH_COLUMBIA_VOCABULARY: ConditionalVocabulary = {
       sourceSection: "B.C. Reg. 190/84, Part 2 youth seasons",
     },
   ],
-  legalTime: {
-    status: "RULE_ONLY",
-    text:
+  legalTime: legalTimeNotCertified(
       `British Columbia: "${BRITISH_COLUMBIA_BUNDLE.legalTime.statedAs}" (${BRITISH_COLUMBIA_BUNDLE.legalTime.section}). ` +
       "North Ground has not certified exact astronomical times for this result.",
-  },
+      "Government of British Columbia",
+    ),
   standingLimitations: BRITISH_COLUMBIA_BUNDLE.limitations.map((text) => general(text)),
   // Legal hours (s. 14 (1)) and the meaning of the schedules (s. 4) come from the body of the regulation.
   standingSourceIds: [REGULATION],

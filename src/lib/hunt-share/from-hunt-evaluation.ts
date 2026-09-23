@@ -1,3 +1,4 @@
+import { legalTimeSummary } from "../hunt/regulatory/legal-time.ts";
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { HuntEvaluation } from "../hunt/types.ts";
 import { METHOD_LABELS, priceLine } from "../hunt/readiness/format.ts";
@@ -140,11 +141,13 @@ export function huntEvaluationToShareInput(
       season: evaluation.regulation.season,
     },
     legalTime: {
-      status: evaluation.regulation.legalTime.status,
-      summary: evaluation.regulation.legalTime.text,
-      verified: evaluation.regulation.legalTime.status === "RULE_ONLY",
+      /* The brief records whether a window was RESOLVED, not which rule form
+         produced it: a brief is a record of an answer, not of a calculation. */
+      status: evaluation.regulation.legalTime.status === "RESOLVED" ? "RULE_ONLY" : "NOT_AVAILABLE",
+      summary: legalTimeSummary(evaluation.regulation.legalTime),
+      verified: evaluation.regulation.legalTime.status === "RESOLVED",
       verifiedAt:
-        evaluation.regulation.legalTime.status === "RULE_ONLY"
+        evaluation.regulation.legalTime.status === "RESOLVED"
           ? verificationTimestamp(evaluation.regulation.verifiedAt)
           : undefined,
     },

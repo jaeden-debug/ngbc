@@ -1,3 +1,4 @@
+import { legalTimeNotCertified } from "./legal-time.ts";
 import { general } from "../limitation.ts";
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/ca-ab-2026.json" with { type: "json" };
@@ -97,12 +98,11 @@ export const ALBERTA_VOCABULARY: ConditionalVocabulary = {
       sourceSection: "p. 47, Big Game Seasons (■)",
     },
   ],
-  legalTime: {
-    status: "RULE_ONLY",
-    text:
+  legalTime: legalTimeNotCertified(
       "Alberta makes it unlawful to hunt any wildlife or discharge a firearm between one-half hour after sunset and " +
       "one-half hour before sunrise (2026 guide, p. 30). North Ground has not certified exact astronomical times for this result.",
-  },
+      "Government of Alberta",
+    ),
   standingLimitations: ALBERTA_BUNDLE.limitations.map((text) => general(text)),
   standingSourceIds: [],
   describe: (dimension, value) => {

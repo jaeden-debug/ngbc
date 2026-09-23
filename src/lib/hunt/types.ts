@@ -1,3 +1,4 @@
+import type { LegalTimeResult } from "./regulatory/legal-time.ts";
 import type { Limitation } from "./limitation.ts";
 import type { BlockResult, CanonicalId, IsoDate, SourceRecord } from "../content-contract/index.ts";
 import type { AuthorizationContext } from "./regulatory/allocation.ts";
@@ -66,7 +67,13 @@ export interface RegulatoryResult {
   summary: string;
   season?: { opens: string; closes: string; datesInclusive: boolean };
   limits?: { daily: number; possession: number; combinedWith?: string };
-  legalTime: { status: "RULE_ONLY" | "NOT_AVAILABLE"; text: string };
+  /**
+   * The legal hunting window, resolved where North Ground can resolve it and
+   * NOT_CERTIFIED (naming the authority) where it cannot. One field and one
+   * type: the prose a caller needs is DERIVED from it by `legalTimeSummary`,
+   * so the words and the window cannot disagree.
+   */
+  legalTime: LegalTimeResult;
   requirements: string[];
   /**
    * What limits or qualifies this answer, each carrying what KIND of statement

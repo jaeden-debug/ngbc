@@ -1,3 +1,4 @@
+import { legalTimeNotCertified } from "./legal-time.ts";
 import { general } from "../limitation.ts";
 import { britishColumbiaCoverageReport, britishColumbiaSourceRecords, evaluateBritishColumbia } from "./british-columbia.ts";
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
@@ -105,10 +106,7 @@ export function pendingRegulation(jurisdictionName: string, required: RequiredDi
   return {
     status: "NEEDS_VERIFICATION",
     summary: `North Ground holds the applicable ${jurisdictionName} rules and needs one more fact before it can answer: ${required.question}`,
-    legalTime: {
-      status: "NOT_AVAILABLE",
-      text: "Legal hunting hours are reported once the applicable rule is resolved.",
-    },
+    legalTime: legalTimeNotCertified("Legal hunting hours are reported once the applicable rule is resolved.", "North Ground"),
     requirements: [],
     limitations: [general(required.reason)],
     sourceIds: [],
@@ -122,7 +120,7 @@ export function pendingRegulationFallback(verifiedAt: string): RegulatoryResult 
   return {
     status: "NEEDS_VERIFICATION",
     summary: "North Ground could not complete this regulatory evaluation and will not infer a status.",
-    legalTime: { status: "NOT_AVAILABLE", text: "Legal hunting hours are not available." },
+    legalTime: legalTimeNotCertified("Legal hunting hours are not available.", "North Ground"),
     requirements: [],
     limitations: [],
     sourceIds: [],

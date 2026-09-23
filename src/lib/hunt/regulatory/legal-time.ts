@@ -181,3 +181,26 @@ export function legalTimeFor(
 export function legalTimeNotCertified(reason: string, authority: string, sourceId?: CanonicalId<"source">): LegalTimeResult {
   return { status: "NOT_CERTIFIED", reason, authority, ...(sourceId ? { sourceId } : {}) };
 }
+
+/**
+ * One sentence for a caller that still needs prose.
+ *
+ * Derived from the result rather than authored beside it, so the words and the
+ * window can never disagree. A caller rendering the window itself does not use
+ * this.
+ */
+export function legalTimeSummary(result: LegalTimeResult): string {
+  if (result.status === "RESOLVED") {
+    return `${result.window.opensAt} to ${result.window.closesAt} (${result.timezone}) on ${result.date}. ` +
+      `${result.statedAs}.` +
+      (result.precision.marginMinutes
+        ? ` Narrowed by ${result.precision.marginMinutes} minutes at each end so a calculation error cannot authorise a minute outside the legal window.`
+        : "");
+  }
+  if (result.status === "NO_SOLAR_EVENT") {
+    return result.reason === "SUN_UP_ALL_DAY"
+      ? `The sun does not set at this point on ${result.date}, so this rule states no window for it.`
+      : `The sun does not rise at this point on ${result.date}, so this rule states no window for it.`;
+  }
+  return result.reason;
+}

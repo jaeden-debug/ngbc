@@ -1,3 +1,4 @@
+import { legalTimeNotCertified } from "./legal-time.ts";
 import { general } from "../limitation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { RegulatoryResult, ZoneResolution } from "../types.ts";
@@ -211,13 +212,12 @@ function baseResult(overrides: Partial<RegulatoryResult>, rules: BundleRule[] = 
   const caveats = [...new Set(rules.flatMap((entry) => entry.caveats))];
 
   return {
-    legalTime: {
-      status: "RULE_ONLY",
-      text:
-        "Ontario's general rule permits hunting from 30 minutes before local sunrise to 30 minutes " +
+    legalTime: legalTimeNotCertified(
+      "Ontario's general rule permits hunting from 30 minutes before local sunrise to 30 minutes " +
         "after local sunset, subject to listed exceptions. North Ground has not certified exact " +
         "astronomical times for this result.",
-    },
+      "Ontario Ministry of Natural Resources",
+    ),
     // Each condition keeps the section it came from, so a reader can check the
     // licence requirement and the season against different parts of the source.
     requirements: [

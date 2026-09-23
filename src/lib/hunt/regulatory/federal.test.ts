@@ -1,3 +1,4 @@
+import { legalTimeNotCertified } from "./legal-time.ts";
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import type { IsoDate } from "../../content-contract/index.ts";
@@ -11,7 +12,7 @@ const on = (value: string) => value as IsoDate;
 const provincialUnknown: RegulatoryResult = {
   status: "UNKNOWN",
   summary: "not certified",
-  legalTime: { status: "NOT_AVAILABLE", text: "" },
+  legalTime: legalTimeNotCertified("", "test authority"),
   requirements: [], limitations: [], sourceIds: [], verifiedAt: "2026-09-23T00:00:00Z",
 };
 

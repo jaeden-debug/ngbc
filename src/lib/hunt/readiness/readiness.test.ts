@@ -1,3 +1,4 @@
+import { legalTimeNotCertified } from "../regulatory/legal-time.ts";
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import type { CanonicalId } from "../../content-contract/index.ts";
@@ -347,7 +348,7 @@ describe("legal methods and recommendations stay apart", () => {
       sourceId: "source:x" as CanonicalId<"source">, message: "",
     };
     const regulation = (status: RegulatoryResult["status"]): RegulatoryResult => ({
-      status, summary: "", legalTime: { status: "RULE_ONLY", text: "" }, requirements: [], limitations: [], sourceIds: [], verifiedAt: "",
+      status, summary: "", legalTime: legalTimeNotCertified("", "test authority"), requirements: [], limitations: [], sourceIds: [], verifiedAt: "",
     });
     assert.ok(resolveReadiness({ speciesId: GROUSE, date: "2026-10-15" }, zone, regulation("CONDITIONAL"), { now: NOW }));
     for (const status of ["CLOSED", "UNKNOWN", "NEEDS_VERIFICATION", "CONFLICT"] as const) {
@@ -371,7 +372,7 @@ describe("what the checklist does not know", () => {
       jurisdictionId: "jurisdiction:ca-mb" as CanonicalId<"jurisdiction">, sourceId: "source:x" as CanonicalId<"source">, message: "",
     };
     const regulation: RegulatoryResult = {
-      status: "CONDITIONAL", summary: "", legalTime: { status: "RULE_ONLY", text: "" }, requirements: [], limitations: [], sourceIds: [], verifiedAt: "",
+      status: "CONDITIONAL", summary: "", legalTime: legalTimeNotCertified("", "test authority"), requirements: [], limitations: [], sourceIds: [], verifiedAt: "",
     };
     const result = resolveReadiness({ speciesId: GROUSE, date: "2026-10-15" }, zone, regulation, { now: NOW, fallbackInfoUrl: "https://example.test/mb" })!;
     assert.equal(result.coverage, "UNAVAILABLE");

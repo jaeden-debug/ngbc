@@ -1,3 +1,4 @@
+import { legalTimeSummary } from "../hunt/regulatory/legal-time.ts";
 import assert from "node:assert/strict";
 import test from "node:test";
 import type { SupabaseClient } from "@supabase/supabase-js";
@@ -81,7 +82,7 @@ test("a Manitoba zone is answered by Manitoba's rules, with Manitoba's sources",
   const regulation = answered.sources.find((source) => source.id === "source:ca-mb-hunting-seasons-regulation");
   assert.ok(regulation, "the controlling regulation is listed among the sources");
   assert.match(regulation.contentHash ?? "", /^sha256:/);
-  assert.match(answered.regulation.legalTime.text, /M\.R\. 351\/87 s\. 3/);
+  assert.match(legalTimeSummary(answered.regulation.legalTime), /M\.R\. 351\/87 s\. 3/);
 });
 
 test("grouse in Manitoba asks nothing and is not answered with Ontario's wording", async () => {

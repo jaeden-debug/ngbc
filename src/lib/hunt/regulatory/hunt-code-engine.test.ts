@@ -1,3 +1,4 @@
+import { legalTimeNotCertified } from "./legal-time.ts";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { evaluateConditional, type ConditionalBundle, type ConditionalRule, type ConditionalVocabulary } from "./conditional-engine.ts";
@@ -110,7 +111,7 @@ const VOCABULARY: ConditionalVocabulary = {
       implies: { [LIMITED_FIRST.code]: { LICENCE_TYPE: "LIMITED" }, [LIMITED_LATE.code]: { LICENCE_TYPE: "LIMITED" }, [OTC_SECOND.code]: { LICENCE_TYPE: "OTC" } },
     },
   ],
-  legalTime: { status: "NOT_AVAILABLE", text: "Not certified." },
+  legalTime: legalTimeNotCertified("Not certified.", "test authority"),
   standingLimitations: [],
   standingSourceIds: [],
 };

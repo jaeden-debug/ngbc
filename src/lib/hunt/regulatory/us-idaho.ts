@@ -1,3 +1,4 @@
+import { legalTimeNotCertified } from "./legal-time.ts";
 import { general } from "../limitation.ts";
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/us-id-pronghorn-2026.json" with { type: "json" };
@@ -49,13 +50,12 @@ export const IDAHO_VOCABULARY: ConditionalVocabulary = {
       sourceSection: "pp. 63–66, Pronghorn Controlled Hunts",
     },
   ],
-  legalTime: {
-    status: "RULE_ONLY",
-    // Quoted from p. 95; the builder stops if this wording changes.
-    text:
-      "Idaho: “Big game animals may be hunted only from one-half hour before sunrise to one-half hour after sunset” (p. 95). " +
+  // Quoted from p. 95; the builder stops if this wording changes.
+  legalTime: legalTimeNotCertified(
+    "Idaho: “Big game animals may be hunted only from one-half hour before sunrise to one-half hour after sunset” (p. 95). " +
       "North Ground has not certified exact astronomical times.",
-  },
+    "Idaho Department of Fish and Game",
+  ),
   standingLimitations: IDAHO_BUNDLE.limitations.map((text) => general(text)),
   standingSourceIds: ["source:us-id-gmu-service"],
   describe: (dimension, value) => (dimension === "HUNT_CODE" ? `controlled hunt ${value}` : value),

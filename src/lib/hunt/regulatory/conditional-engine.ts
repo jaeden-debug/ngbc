@@ -1,3 +1,4 @@
+import { legalTimeNotCertified } from "./legal-time.ts";
 import { general, sourceDetail, type Limitation } from "../limitation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { RegulatoryResult, RegulatoryStatus } from "../types.ts";
@@ -822,7 +823,10 @@ export function evaluateConditional(
       status,
       season: undefined,
       limits: undefined,
-      legalTime: { status: "NOT_AVAILABLE", text: "Legal hunting hours are not stated for a point inside a territory closed to all hunting." },
+      legalTime: legalTimeNotCertified(
+      "Legal hunting hours are not stated for a point inside a territory closed to all hunting.",
+      "the responsible authority",
+    ),
       summary: status === "UNKNOWN"
         ? `${where} ${result.summary}`
         : status === "CLOSED"

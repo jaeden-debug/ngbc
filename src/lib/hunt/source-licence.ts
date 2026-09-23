@@ -73,6 +73,21 @@ import { createHash } from "node:crypto";
  * delivery mechanism. When it is genuinely unclear, treat it as a gate and say
  * so — and record what was tried, so the next person inherits evidence rather
  * than a verdict.
+ *
+ * A FOURTH, AND THE WORST OF THEM, BECAUSE THE CHECK COMES BACK CLEAN: THE
+ * LICENCE OF A DATASET IS NOT THE LICENCE OF THE TOOL THAT BUILT IT.
+ * `timezone-boundary-builder` declares MIT in its repository metadata — that
+ * is the CODE. Its own README says the OUTPUT DATA is ODbL, which carries
+ * share-alike on derivative databases. A licence check against repository
+ * metadata returns MIT and proceeds, and nothing fails. Read the project's own
+ * statement about its DATA, not the badge on its source.
+ *
+ * And a clear licence is not authority. They are two independent gates and
+ * passing one has never implied the other: that same dataset describes itself
+ * as "the approximate boundaries … according to community input" with no
+ * stated accuracy, which is third-party community data standing in for a legal
+ * fact — the same shape as the ECCC Draft district layer, which was rejected
+ * for saying it had no legal value.
  */
 
 export type PermittedUse =

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { legalTimeSummary } from "../../../lib/hunt/regulatory/legal-time";
 import { useId } from "react";
 import ShareHuntButton from "../../hunt-share/ShareHuntButton";
 import { huntEvaluationToShareInput } from "../../../lib/hunt-share/from-hunt-evaluation";
@@ -85,7 +86,7 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
 
       <section aria-labelledby={`${id}-time`}>
         <h3 className={styles.detailTitle} id={`${id}-time`}>Legal hunting time</h3>
-        <p className={styles.detailText}>{result.regulation.legalTime.text || "Not stated by the certified record."}</p>
+        <p className={styles.detailText}>{legalTimeSummary(result.regulation.legalTime)}</p>
       </section>
 
       {/*

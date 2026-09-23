@@ -181,3 +181,52 @@ test("a legal result carries no weather provenance", () => {
   }
   assert.equal(result.status === "RESOLVED" ? result.sourceId : "", "source:ca-federal-migratory-birds-regulations");
 });
+
+/* ── PE and YT against the real certified federal rule ───────────────────── */
+
+test("the federal rule states its own latitude split, and Yukon is entirely north of 60", async () => {
+  const { federalLegalTimeRule } = await import("./federal.ts");
+  /* s. 28(3): one hour north of 60°N, half an hour south of it. */
+  assert.equal(federalLegalTimeRule(46.5).beforeSunriseMinutes, 30);
+  /* Southern Yukon's southernmost point is 60.0°N — north of 60, so the whole
+     territory takes the one-hour rule. A rule split at a latitude the
+     jurisdiction sits exactly on is where an off-by-one would live. */
+  assert.equal(federalLegalTimeRule(60.03).beforeSunriseMinutes, 60);
+  assert.equal(federalLegalTimeRule(69.5).beforeSunriseMinutes, 60);
+});
+
+test("Prince Edward Island resolves a real window from the certified federal rule", async () => {
+  const { federalLegalTime } = await import("./federal.ts");
+  const result = federalLegalTime("jurisdiction:ca-pe", { latitude: 46.50355, longitude: -63.61605 }, on("2026-10-05"));
+  assert.equal(result.status, "RESOLVED");
+  if (result.status !== "RESOLVED") return;
+  assert.equal(result.timezone, "America/Halifax");
+  assert.match(result.statedAs, /s\. 28\(3\)\(b\)/);
+  assert.match(result.statedAs, /south of 60/);
+  assert.equal(result.sourceId, "source:ca-federal-migratory-birds-regulations");
+});
+
+test("Yukon resolves with the ONE HOUR rule, not the half hour", async () => {
+  const { federalLegalTime } = await import("./federal.ts");
+  const yukon = federalLegalTime("jurisdiction:ca-yt", { latitude: 60.03257, longitude: -135.09455 }, on("2026-10-05"));
+  const island = federalLegalTime("jurisdiction:ca-pe", { latitude: 46.50355, longitude: -63.61605 }, on("2026-10-05"));
+  assert.equal(yukon.status, "RESOLVED");
+  assert.equal(island.status, "RESOLVED");
+  if (yukon.status !== "RESOLVED" || island.status !== "RESOLVED") return;
+  assert.match(yukon.statedAs, /one hour/);
+  assert.match(island.statedAs, /half an hour/);
+  assert.equal(yukon.timezone, "America/Whitehorse");
+});
+
+test("a multi-zone jurisdiction refuses a window and still says what the law is", async () => {
+  const { federalLegalTime } = await import("./federal.ts");
+  for (const jurisdiction of ["jurisdiction:ca-ab", "jurisdiction:ca-on", "jurisdiction:ca-bc", "jurisdiction:ca-qc"]) {
+    const result = federalLegalTime(jurisdiction, { latitude: 52, longitude: -110 }, on("2026-10-05"));
+    assert.equal(result.status, "NOT_CERTIFIED", jurisdiction);
+    if (result.status !== "NOT_CERTIFIED") continue;
+    /* Refusing a clock is not refusing to say what the law is. */
+    assert.match(result.reason, /spans more than one/);
+    assert.match(result.reason, /s\. 28\(3\)/);
+    assert.equal(result.authority, "Environment and Climate Change Canada");
+  }
+});

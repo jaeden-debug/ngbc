@@ -1,3 +1,4 @@
+import { legalTimeSummary } from "./legal-time.ts";
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { BRITISH_COLUMBIA_BUNDLE, evaluateBritishColumbia } from "./british-columbia.ts";
@@ -119,7 +120,7 @@ test("Omineca-Peace grouse: Sept. 1 to Nov. 15 (Schedule 7 items 51–54); the u
 
 test("every answer carries British Columbia's legal hours and its standing limits, never another province's", () => {
   const outcome = evaluate("3-20", "species:ruffed-grouse", "2026-10-15");
-  assert.match(outcome.result!.legalTime.text, /one hour after sunset/);
+  assert.match(legalTimeSummary(outcome.result!.legalTime), /one hour after sunset/);
   const text = JSON.stringify(outcome.result);
   assert.match(text, /Limited entry hunting/);
   assert.match(text, /Aboriginal or treaty rights/);

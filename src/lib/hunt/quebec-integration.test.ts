@@ -77,7 +77,10 @@ test("inside Parc national de Plaisance the zone's season is never stated as the
   assert.equal(outcome.regulation.season, undefined);
   assert.equal(outcome.regulation.limits, undefined);
   assert.deepEqual(outcome.regulation.requirements, []);
-  assert.equal(outcome.regulation.legalTime.status, "NOT_AVAILABLE");
+  /* No legal hours are stated for a point the ministry closes to all hunting.
+     NOT_CERTIFIED is the only status that can carry that, and it must not be
+     read as the timezone problem: the reason names the closure. */
+  assert.equal(outcome.regulation.legalTime.status, "NOT_CERTIFIED");
   assert.doesNotMatch(outcome.regulation.summary, /\d{4}|septembre|octobre|Seasons open/);
   assert.match(outcome.regulation.summary, /all hunting is prohibited/);
 });

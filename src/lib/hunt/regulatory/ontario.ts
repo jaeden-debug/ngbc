@@ -1,3 +1,4 @@
+import { legalTimeNotCertified } from "./legal-time.ts";
 import { general } from "../limitation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { RegulatoryResult, ZoneResolution } from "../types.ts";
@@ -69,13 +70,12 @@ const PUBLISHABLE = new Set(["VERIFIED", "PUBLISHED"]);
 const SUPPORTING_SOURCE = "source:ca-on-summary-use-2026" as CanonicalId<"source">;
 
 const BASE = {
-  legalTime: {
-    status: "RULE_ONLY" as const,
-    text:
+  legalTime: legalTimeNotCertified(
       "Ontario's general rule permits hunting from 30 minutes before local sunrise to 30 minutes " +
       "after local sunset, subject to listed exceptions. North Ground has not certified exact " +
       "astronomical times for this result.",
-  },
+      "Ontario Ministry of Natural Resources",
+    ),
   requirements: [
     "A valid Ontario Outdoors Card and small game licence are required; confirm all current licensing and local requirements in the official summary.",
   ],

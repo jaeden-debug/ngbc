@@ -1,9 +1,10 @@
+import { legalTimeNotCertified } from "./regulatory/legal-time.ts";
 import { general } from "./limitation.ts";
 import { contentRepository, type ContentRepository } from "../content/repository.ts";
 import { isMajorGameSpecies, speciesById } from "./coverage.ts";
 import { resolveReadiness } from "./readiness/index.ts";
 import { regulatoryEntryFor, type RegulatoryOutcome } from "./regulatory/registry.ts";
-import { composeFederalWithProvincial, evaluateFederal, isFederalMigratoryBird } from "./regulatory/federal.ts";
+import { composeFederalWithProvincial, evaluateFederal, federalLegalTime, isFederalMigratoryBird } from "./regulatory/federal.ts";
 import { FEDERAL_MIGRATORY_SERVING } from "./coverage.ts";
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { HuntEvaluation, HuntInput, RegulatoryResult } from "./types.ts";
@@ -82,6 +83,7 @@ async function evaluateRegulation(
         federal,
         provincial.regulation,
         layerForJurisdiction(jurisdictionId)?.jurisdictionName ?? "This jurisdiction",
+        federalLegalTime(jurisdictionId, { latitude: input.latitude, longitude: input.longitude }, input.date),
       ),
     };
   }
@@ -94,7 +96,7 @@ function unplacedPoint(zone: ZoneResolution, verifiedAt: string): RegulatoryResu
   return {
     status: "NEEDS_VERIFICATION",
     summary: "North Ground could not place this point in an official hunting zone, so it will not infer a hunting status.",
-    legalTime: { status: "NOT_AVAILABLE", text: "Legal hunting hours are not available without a resolved zone." },
+    legalTime: legalTimeNotCertified("Legal hunting hours are not available without a resolved zone.", "North Ground"),
     requirements: [],
     limitations: [general(zone.message)],
     sourceIds: zone.sourceId ? [zone.sourceId] : [],
@@ -109,7 +111,7 @@ function uncertifiedJurisdiction(zone: ZoneResolution, verifiedAt: string): Regu
     summary:
       `${zone.officialName ?? "This zone"} is outside the jurisdictions whose hunting rules North Ground has certified. ` +
       "That is a gap in North Ground's coverage, not a statement that there is no season.",
-    legalTime: { status: "NOT_AVAILABLE", text: "Legal hunting hours are not available for this jurisdiction." },
+    legalTime: legalTimeNotCertified("Legal hunting hours are not available for this jurisdiction.", "North Ground"),
     requirements: [],
     limitations: [],
     sourceIds: zone.sourceId ? [zone.sourceId] : [],

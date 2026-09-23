@@ -1,3 +1,4 @@
+import { legalTimeSummary } from "./legal-time.ts";
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import type { HuntDimensionAnswers } from "./dimensions.ts";
@@ -145,8 +146,10 @@ test("turkey carries its own legal hours and never asks about a rifle", () => {
   const result = ask(TURKEY, "03E", "2026-05-01");
   assert.equal(result.completeness, "RESOLVED");
   assert.equal(result.result?.status, "CONDITIONAL");
-  assert.equal(result.result?.legalTime.status, "RULE_ONLY");
-  assert.match(result.result?.legalTime.text ?? "", /demi-heure avant le lever du soleil jusqu.à midi/);
+  /* Québec spans zones, so the ministry's own hours are carried as the reason
+     rather than resolved into a window. The words survive; the clock does not. */
+  assert.equal(result.result?.legalTime.status, "NOT_CERTIFIED");
+  assert.match(result.result ? legalTimeSummary(result.result.legalTime) : "", /demi-heure avant le lever du soleil jusqu.à midi/);
   assert.match((result.result?.limitations ?? []).map((entry) => entry.text).join("\n"), /« Dindon sauvage porteur d'une barbe »/);
 });
 

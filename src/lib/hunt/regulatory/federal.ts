@@ -20,6 +20,8 @@ import type { RegulatoryResult, RegulatoryStatus } from "../types.ts";
 import type { IsoDate } from "../../content-contract/index.ts";
 import { FEDERAL_SOURCE_ID, federalRequirementsFor } from "./federal-requirements.ts";
 import { general, type Limitation } from "../limitation.ts";
+import { legalTimeFor, legalTimeNotCertified, type LegalTimeRule } from "./legal-time.ts";
+import { timeZoneAtPoint } from "../time-zone.ts";
 import { federalAreaAt, type FederalArea } from "./federal-areas.ts";
 import { FEDERAL_GROUPS, groupsForSpecies, type FederalGroup } from "./federal-groups.ts";
 
@@ -230,10 +232,59 @@ function sharedLimitOf(rule: FederalRule, group: FederalGroup): FederalAnswer["s
  * certified that half, the answer SAYS SO rather than implying the federal
  * season is the whole of the law.
  */
+/**
+ * The federal legal-hours rule, s. 28(3), which states its own latitude split.
+ *
+ * "one hour after sunset ... one hour before sunrise" north of 60°N, and half
+ * an hour either side south of it. The split is the regulation's, computed
+ * from the point exactly as Yukon's federal area bands are — every part of
+ * Yukon is north of 60°N, and Prince Edward Island is south of it.
+ */
+export function federalLegalTimeRule(latitude: number): Extract<LegalTimeRule, { basis: "SUNRISE_SUNSET_OFFSET" }> {
+  const minutes = latitude > 60 ? 60 : 30;
+  return {
+    basis: "SUNRISE_SUNSET_OFFSET",
+    beforeSunriseMinutes: minutes,
+    afterSunsetMinutes: minutes,
+    statedAs:
+      latitude > 60
+        ? "Migratory Birds Regulations, 2022, s. 28(3)(a): hunting is prohibited from one hour after sunset to one hour before sunrise, north of 60° north latitude"
+        : "Migratory Birds Regulations, 2022, s. 28(3)(b): hunting is prohibited from half an hour after sunset to half an hour before sunrise, south of 60° north latitude",
+    section: "s. 28(3)",
+    sourceId: FEDERAL_SOURCE_ID,
+  };
+}
+
+/**
+ * The federal legal window at a point, where the point's timezone is known.
+ *
+ * A jurisdiction spanning several IANA zones has no point timezone yet, so it
+ * answers NOT_CERTIFIED naming the authority rather than a wall-clock time
+ * that would be an hour wrong somewhere in it.
+ */
+export function federalLegalTime(
+  jurisdictionId: string,
+  point: { latitude: number; longitude: number },
+  date: IsoDate,
+) {
+  const timezone = timeZoneAtPoint(jurisdictionId);
+  if (!timezone) {
+    return legalTimeNotCertified(
+      "North Ground cannot establish the timezone at this point, because this jurisdiction spans more than one, so it " +
+        "will not state a legal hunting window here. The federal rule still applies: " +
+        federalLegalTimeRule(point.latitude).statedAs + ".",
+      "Environment and Climate Change Canada",
+      FEDERAL_SOURCE_ID,
+    );
+  }
+  return legalTimeFor(federalLegalTimeRule(point.latitude), point, date, timezone);
+}
+
 export function composeFederalWithProvincial(
   federal: FederalAnswer,
   provincial: RegulatoryResult,
   jurisdictionName: string,
+  federalLegal?: RegulatoryResult["legalTime"],
 ): RegulatoryResult {
   const provincialCertified = provincial.status !== "UNKNOWN";
   const limitations: Limitation[] = [
@@ -266,7 +317,12 @@ export function composeFederalWithProvincial(
     status,
     summary: federal.summary,
     ...(federal.season && status === "CONDITIONAL" ? { season: federal.season } : {}),
-    legalTime: provincial.legalTime,
+    /*
+     * A migratory bird's legal hours are the FEDERAL rule's, because s. 28(3)
+     * sets them. The provincial line is kept only where the federal one could
+     * not be resolved.
+     */
+    legalTime: federalLegal ?? provincial.legalTime,
     requirements: [...federal.requirements, ...provincial.requirements],
     limitations,
     sourceIds: [...new Set([FEDERAL_SOURCE_ID, ...provincial.sourceIds])],
