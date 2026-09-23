@@ -874,6 +874,23 @@ PE 1, NS 12, YT 443, SK 83, ID 99.
 
 ## Corrections To Earlier Claims
 
+### A green suite did not prove types (fixed 2026-09-23)
+
+`npm test` runs the suites through Node's TypeScript type-stripping, which
+**erases** types rather than checking them. A test calling
+`zoneCoverage(layer)` — which takes two arguments — ran and PASSED; `tsc`
+caught it. Every "tests green" reported from a local run was therefore a weaker
+claim than it read as.
+
+CI was never exposed: `.github/workflows/ci.yml` runs `npm run typecheck`
+before `npm test` in the same job, so a type error already failed the build.
+The gap was local only.
+
+`npm test` now runs `npm run typecheck` first. Typecheck is 1–2 s against a
+14 s suite, so the cost is immaterial, and a local green now means what people
+read it as. Proven by introducing a deliberate type error the runtime cannot
+see and watching `npm test` fail on it.
+
 ### Measured the wrong thing — the collected forms
 
 Every one of these produced a **number, and the number was real**. What was

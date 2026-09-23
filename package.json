@@ -34,7 +34,7 @@
     "test:canada": "node --test src/lib/hunt/canada/*.test.ts",
     "test:ingestion": "node --test src/lib/hunt/ingestion/*.test.ts scripts/ewkb.test.mjs",
     "test:intelligence": "node --test src/lib/hunt/intelligence/*.test.ts scripts/build-ontario-harvest-evidence.test.mjs",
-    "test": "npm run test:hunt && npm run test:regulatory-sources && npm run test:regulatory-persistence && npm run test:canada && npm run test:ingestion && npm run test:intelligence && npm run test:hunt-share && npm run test:content-repository && npm run test:content-contract && npm run test:content-urls && npm run test:seo && npm run test:newsletter && npm run test:species-media",
+    "test": "npm run typecheck && npm run test:hunt && npm run test:regulatory-sources && npm run test:regulatory-persistence && npm run test:canada && npm run test:ingestion && npm run test:intelligence && npm run test:hunt-share && npm run test:content-repository && npm run test:content-contract && npm run test:content-urls && npm run test:seo && npm run test:newsletter && npm run test:species-media",
     "provision:species-media": "node scripts/provision-species-media-storage.mjs",
     "test:timezones": "for tz in UTC America/Toronto America/Vancouver America/Denver America/Boise Australia/Sydney Pacific/Kiritimati; do echo \"\u2014 TZ=$tz\"; TZ=$tz node --test src/lib/hunt/date.test.ts src/lib/hunt/server-client-date.test.ts src/lib/hunt/weather.test.ts src/lib/hunt/regulatory/season.test.ts src/lib/hunt/exploration/date-presets.test.ts src/lib/hunt/regulatory/allocation.test.ts src/lib/hunt/regulatory/us-montana.test.ts src/lib/hunt/regulatory/us-idaho.test.ts || exit 1; done",
     "report:us": "node --experimental-strip-types scripts/us-coverage-report.mjs",
