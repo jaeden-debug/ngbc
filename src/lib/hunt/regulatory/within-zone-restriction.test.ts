@@ -1,9 +1,12 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { placeWorlds, type GeographyData } from "./geography.ts";
-import { restrictionAt, restrictionSummary, type WithinZoneRestriction } from "./within-zone-restriction.ts";
+import { periodCovers, restrictionAt, restrictionCovers, restrictionSummary, type WithinZoneRestriction } from "./within-zone-restriction.ts";
 
-const base = { citation: "B.C. Reg. 76/84 s.12", sourceId: "source:example" };
+const base = {
+  citation: "B.C. Reg. 76/84 s.12", sourceId: "source:example",
+  periods: [{ kind: "ALWAYS" as const, statedAs: "the regulation states no period" }],
+};
 
 describe("a within-zone restriction", () => {
   it("applies jurisdiction-wide with no unit to list", () => {
@@ -123,5 +126,75 @@ describe("the live resolver no longer drops an unplaceable special", () => {
       worlds.unknowns.some((entry) => /names no management unit/.test(entry.statedAs)),
       "an unplaceable special must surface as unknown rather than never firing",
     );
+  });
+});
+
+
+describe("when a restriction is in force", () => {
+  it("never resolves a floating boundary into a date of our own", () => {
+    /* Cowichan Bay 7 runs "March 11 to the Saturday following Labour Day". The
+       end is a RULE that resolves per year against a calendar. Storing a
+       computed date for it would put North Ground's arithmetic where the
+       regulation's words belong — and a hunter told the wrong Saturday has our
+       arithmetic, while one told the rule has the authority's. */
+    const cowichan: WithinZoneRestriction = {
+      ...base, id: "r:cowichan", name: "Cowichan Bay 7", kind: "NO_OPEN_SEASON", statedAs: "x",
+      scope: { kind: "UNLISTED", statedAs: "described in words" },
+      periods: [{ kind: "FLOATING", from: { month: 3, day: 11 }, toStatedAs: "the Saturday following Labour Day",
+                  statedAs: "during the period March 11 to the Saturday following Labour Day" }],
+    };
+    assert.equal(restrictionCovers(cowichan, "2026-06-15"), "UNKNOWN", "inside the unresolved window, we do not claim");
+    // And the answer keeps the authority's own wording available to say instead.
+    assert.match(cowichan.periods[0].statedAs, /Saturday following Labour Day/);
+  });
+
+  it("holds two periods of different shapes on one area", () => {
+    /* Pitt Wildlife Management Area is restricted for one period AND on
+       Mondays, Tuesdays, Thursdays and Fridays during another. Not a range,
+       and not one range with a note. */
+    const pitt: WithinZoneRestriction = {
+      ...base, id: "r:pitt", name: "Pitt Wildlife Management Area", kind: "NO_HUNTING", statedAs: "x",
+      scope: { kind: "UNLISTED", statedAs: "described in words" },
+      periods: [
+        { kind: "DATE_RANGE", from: { month: 10, day: 1 }, to: { month: 10, day: 31 }, statedAs: "October 1 to October 31" },
+        { kind: "WEEKDAYS", weekdays: ["MON", "TUE", "THU", "FRI"], within: { from: { month: 11, day: 1 }, to: { month: 12, day: 31 } },
+          statedAs: "on Mondays, Tuesdays, Thursdays and Fridays" },
+      ],
+    };
+    assert.equal(pitt.periods.length, 2);
+    assert.equal(restrictionCovers(pitt, "2026-10-15"), "YES", "inside the plain range");
+    assert.equal(restrictionCovers(pitt, "2026-11-02"), "YES", "a Monday inside the weekday window");
+    assert.equal(restrictionCovers(pitt, "2026-11-01"), "NO", "a Sunday inside the weekday window");
+    assert.equal(restrictionCovers(pitt, "2026-09-15"), "NO", "outside both");
+  });
+
+  it("reads a window that wraps the new year as one window", () => {
+    const winter = { kind: "DATE_RANGE" as const, from: { month: 12, day: 1 }, to: { month: 2, day: 28 }, statedAs: "December 1 to February 28" };
+    assert.equal(periodCovers(winter, "2026-12-15"), "YES");
+    assert.equal(periodCovers(winter, "2027-01-15"), "YES");
+    assert.equal(periodCovers(winter, "2026-06-15"), "NO");
+  });
+
+  it("lets an unresolved period beat a NO but not a YES", () => {
+    /* One period certainly applying settles it; an unresolved one can never be
+       read as absence. */
+    const mixed: WithinZoneRestriction = {
+      ...base, id: "r:mixed", name: "Mixed", kind: "NO_OPEN_SEASON", statedAs: "x",
+      scope: { kind: "AREAS", areas: ["1-1"] },
+      periods: [
+        { kind: "DATE_RANGE", from: { month: 1, day: 1 }, to: { month: 1, day: 31 }, statedAs: "January" },
+        { kind: "AS_STATED", statedAs: "a shape this model has not met" },
+      ],
+    };
+    assert.equal(restrictionCovers(mixed, "2026-01-15"), "YES", "a certain YES wins");
+    assert.equal(restrictionCovers(mixed, "2026-07-15"), "UNKNOWN", "an unresolved period is not absence");
+  });
+
+  it("states ALWAYS rather than leaving the list empty", () => {
+    /* An empty list and "the authority states no period" would look identical,
+       and the first is a gap while the second is a fact. */
+    assert.equal(base.periods.length, 1);
+    assert.equal(base.periods[0].kind, "ALWAYS");
+    assert.ok(base.periods[0].statedAs.length > 0);
   });
 });

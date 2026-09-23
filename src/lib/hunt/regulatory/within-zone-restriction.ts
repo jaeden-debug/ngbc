@@ -75,25 +75,50 @@ export type RestrictionScope =
   /** Real, and names no unit North Ground can match. NEVER silently dropped. */
   | { kind: "UNLISTED"; statedAs: string };
 
+/* ── When a restriction applies ──────────────────────────────────────────── */
+
+/** A day in the year as the authority writes it, with no year attached. */
+export interface MonthDay { month: number; day: number }
+
+export type Weekday = "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "SUN";
+
 /**
- * OPEN QUESTION, deliberately not built: the model has NO DATE DIMENSION.
+ * WHEN a restriction is in force.
  *
- * A restriction that applies only between stated dates cannot be expressed
- * today, and the model reads every restriction as always-on. That is a real
- * limitation and it will matter for some jurisdiction.
+ * A from/to pair cannot hold two shapes British Columbia actually publishes,
+ * and both are in one regulation:
  *
- * It is not built yet because the evidence that prompted it did not support
- * it: the claim was that British Columbia's seasonal schedules carry a period
- * PER AREA, and in the transcribed rows no month name appears anywhere in 405
- * records, while schedules 2, 4, 6, 8 and 10 each share ONE `effectStatedAs`
- * across every area. The periods may genuinely live in the metes-and-bounds
- * descriptions, which were correctly not transcribed — but that is a reason to
- * ask for citations, not to add a field.
+ *  - **A floating boundary.** Cowichan Bay 7 runs "March 11 to the Saturday
+ *    following Labour Day". The end is a RULE, not a date: it resolves per
+ *    year against a calendar. Storing a computed date for it would put North
+ *    Ground's arithmetic where the regulation's words belong, and the
+ *    arithmetic would silently become the citation.
  *
- * A field built on an unverified claim would be indistinguishable, once
- * populated, from a field whose data is merely missing. Build it when evidence
- * arrives, and let the evidence say whether it is per-area or per-schedule.
+ *  - **A weekday pattern.** Pitt Wildlife Management Area is restricted for
+ *    one period AND on Mondays, Tuesdays, Thursdays and Fridays during
+ *    another. Two periods of different shapes on one area — not a range, and
+ *    not one range with a note.
+ *
+ * So a restriction carries a LIST of periods, each of which knows its own
+ * shape, and `AS_STATED` exists for a shape this model has not met. §41A: a
+ * source that does not fit is evidence the schema is incomplete, so an
+ * unmodellable period is carried verbatim rather than flattened into a range.
  */
+export type RestrictionPeriod =
+  /** In force whenever the restriction is. Stated, never inferred from silence. */
+  | { kind: "ALWAYS"; statedAs: string }
+  /** Both ends are calendar days the authority names. */
+  | { kind: "DATE_RANGE"; from: MonthDay; to: MonthDay; statedAs: string }
+  /**
+   * One or both ends is a rule rather than a date. The rule is kept as the
+   * authority's words and is NEVER pre-resolved into a stored date.
+   */
+  | { kind: "FLOATING"; from?: MonthDay; fromStatedAs?: string; to?: MonthDay; toStatedAs?: string; statedAs: string }
+  /** In force on these weekdays, optionally only within a range. */
+  | { kind: "WEEKDAYS"; weekdays: Weekday[]; within?: { from: MonthDay; to: MonthDay }; statedAs: string }
+  /** A shape this model has not met. Carried verbatim, never approximated. */
+  | { kind: "AS_STATED"; statedAs: string };
+
 export interface WithinZoneRestriction {
   id: string;
   name: string;
@@ -103,6 +128,15 @@ export interface WithinZoneRestriction {
   scope: RestrictionScope;
   citation: string;
   sourceId: string;
+  /**
+   * When it is in force. REQUIRED, and a restriction with no stated period
+   * carries an explicit ALWAYS rather than an empty list — because an empty
+   * list and "the authority states no period" would look identical, and the
+   * first is a gap while the second is a fact.
+   *
+   * A LIST because one area can carry periods of different shapes at once.
+   */
+  periods: RestrictionPeriod[];
   /**
    * The instrument's own precedence, where it states one. B.C. Reg. 76/84
    * s.1.1: "If there is a conflict between this regulation and another
@@ -193,4 +227,66 @@ export function restrictionSummary(restriction: WithinZoneRestriction): string {
     case "ACCESS": return `Access is restricted inside ${restriction.name}.`;
     default: return `${restriction.name} restricts hunting here.`;
   }
+}
+
+
+/* ── Evaluating a period ─────────────────────────────────────────────────── */
+
+const MONTH_DAY = (date: string): MonthDay => ({ month: Number(date.slice(5, 7)), day: Number(date.slice(8, 10)) });
+const onOrAfter = (a: MonthDay, b: MonthDay) => a.month > b.month || (a.month === b.month && a.day >= b.day);
+const onOrBefore = (a: MonthDay, b: MonthDay) => a.month < b.month || (a.month === b.month && a.day <= b.day);
+const WEEKDAYS: Weekday[] = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
+function inRange(day: MonthDay, from: MonthDay, to: MonthDay): boolean {
+  /* A window that wraps the new year — December to February — is inside when
+     the day is after the start OR before the end, not both. */
+  return onOrAfter(from, to)
+    ? onOrAfter(day, from) || onOrBefore(day, to)
+    : onOrAfter(day, from) && onOrBefore(day, to);
+}
+
+/**
+ * Whether a period covers a date.
+ *
+ * UNKNOWN is a real answer here and is returned wherever a boundary is a rule
+ * this model cannot resolve. It never guesses a floating date: a hunter told
+ * "restricted until the Saturday following Labour Day" has the authority's
+ * rule, and a hunter told a wrong Saturday has our arithmetic.
+ */
+export function periodCovers(period: RestrictionPeriod, isoDate: string): "YES" | "NO" | "UNKNOWN" {
+  const day = MONTH_DAY(isoDate);
+  switch (period.kind) {
+    case "ALWAYS":
+      return "YES";
+    case "DATE_RANGE":
+      return inRange(day, period.from, period.to) ? "YES" : "NO";
+    case "WEEKDAYS": {
+      if (period.within && !inRange(day, period.within.from, period.within.to)) return "NO";
+      const weekday = WEEKDAYS[new Date(`${isoDate}T00:00:00Z`).getUTCDay()];
+      return period.weekdays.includes(weekday) ? "YES" : "NO";
+    }
+    case "FLOATING": {
+      /* One end may be a plain date, and that alone can settle a NO: before a
+         known start, or after a known end, is outside whatever the other end
+         resolves to. Anything else needs the rule resolved. */
+      if (period.from && !period.to && onOrBefore(day, period.from) && !onOrAfter(day, period.from)) return "NO";
+      if (period.to && !period.from && onOrAfter(day, period.to) && !onOrBefore(day, period.to)) return "NO";
+      return "UNKNOWN";
+    }
+    default:
+      return "UNKNOWN";
+  }
+}
+
+/**
+ * Whether any of a restriction's periods covers a date.
+ *
+ * UNKNOWN wins over NO and loses to YES: if one period certainly applies the
+ * restriction is in force whatever the others do, but an unresolved period
+ * cannot be read as absence.
+ */
+export function restrictionCovers(restriction: WithinZoneRestriction, isoDate: string): "YES" | "NO" | "UNKNOWN" {
+  const verdicts = restriction.periods.map((period) => periodCovers(period, isoDate));
+  if (verdicts.includes("YES")) return "YES";
+  return verdicts.includes("UNKNOWN") ? "UNKNOWN" : "NO";
 }
