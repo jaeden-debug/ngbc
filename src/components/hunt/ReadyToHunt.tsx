@@ -211,14 +211,20 @@ export default function ReadyToHunt({
                 </div>
               </li>
             ))}
-            {readiness.methods.notAllowed.length ? (
-              <li className={styles.row} data-status="NOT_ALLOWED">
+            {/* One row per prohibition, each showing the law behind it. They
+                were once collapsed into a single sourceless line, which made a
+                method North Ground merely had no rule for look exactly like
+                one the law forbids. */}
+            {readiness.methods.notAllowed.map((method) => (
+              <li key={method.method} className={styles.row} data-status="NOT_ALLOWED">
                 <span className={styles.word}>Not allowed</span>
                 <div className={styles.body}>
-                  <p className={styles.name}>{readiness.methods.notAllowed.map((method) => METHOD_LABELS[method]).join(", ")}</p>
+                  <p className={styles.name}>{METHOD_LABELS[method.method]}</p>
+                  {method.restriction ? <p className={styles.condition}>{method.restriction}</p> : null}
+                  <Sources provenance={method.provenance} />
                 </div>
               </li>
-            ) : null}
+            ))}
           </ul>
           <Advice items={readiness.methods.recommended} />
         </>

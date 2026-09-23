@@ -227,8 +227,14 @@ export interface OrangeResult {
 
 export interface LegalMethod {
   method: MethodClass;
-  status: "ALLOWED" | "CONDITIONAL";
-  /** The legal restriction on it, in the authority's terms. */
+  /**
+   * PROHIBITED is a positive claim and needs positive evidence, exactly as an
+   * open season does. The opposite of ALLOWED is "not certified" — which is
+   * absence, and absence is never rendered. A method North Ground cannot speak
+   * about does not appear in either list.
+   */
+  status: "ALLOWED" | "CONDITIONAL" | "PROHIBITED";
+  /** The legal restriction on it, or why it is ruled out, in the authority's terms. */
   restriction?: string;
   provenance: Provenance[];
 }
@@ -289,7 +295,13 @@ export interface ReadinessResult {
   officialInfoUrl: string;
   authorizations: AuthorizationChecklistItem[];
   orange?: OrangeResult;
-  methods?: { allowed: LegalMethod[]; notAllowed: MethodClass[]; recommended: Recommendation[] };
+  /**
+   * `notAllowed` carries the same shape as `allowed` because a prohibition is
+   * a legal statement like any other and must show the law behind it. A bare
+   * method list cannot, and a method with nothing behind it is omitted rather
+   * than listed.
+   */
+  methods?: { allowed: LegalMethod[]; notAllowed: LegalMethod[]; recommended: Recommendation[] };
   ammunition?: { required: AmmunitionRestriction[]; recommended: Recommendation[] };
   /** Present when at least one required authorization can be bought in person. */
   vendorSearch?: { directoryId: string; attribution: string };

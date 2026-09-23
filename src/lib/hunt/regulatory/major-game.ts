@@ -56,6 +56,7 @@ interface BundleSource {
   authority: string;
   title: string;
   url: string;
+  sourceVersion: string;
   conditions: Array<{ id: string; text: string; sourceSection: string; sourceId: string }>;
 }
 
@@ -518,6 +519,49 @@ export function majorGameSeasonsInUnit(zoneId: string, date: string): MajorGameS
  * The chosen implement is deliberately NOT applied, so a hunter sees everything
  * they could legally use, not only what they happened to pick.
  */
+/**
+ * Whether Ontario's certified seasons can speak about this species in this
+ * unit at all, and which sources would be speaking.
+ *
+ * `majorGameImplementsOnDate` returns the implements with an open season. An
+ * empty answer from it is ambiguous on its own: it means either "the seasons
+ * say none today" or "North Ground holds no season for this species here".
+ * Those are opposite facts about what we know, and a caller that cannot tell
+ * them apart will eventually present the second as the first — which is how
+ * Ready to Hunt came to assert four unsourced prohibitions to a hunter in a
+ * unit it had no rules for.
+ *
+ * `certified` is false when no publishable rule covers the species and unit.
+ * Nothing about what is NOT permitted may be stated while it is false.
+ */
+export interface MajorGameImplementBasis {
+  certified: boolean;
+  permitted: string[];
+  /** The sources the certified seasons cite, for a caller that must show them. */
+  sources: { sourceId: string; url: string; title: string; authority: string; sourceVersion: string }[];
+}
+
+export function majorGameImplementBasis(
+  speciesId: string,
+  zoneId: string,
+  date: string,
+  answers: HuntDimensionAnswers = {},
+): MajorGameImplementBasis {
+  const rules = rulesFor(speciesId, zoneId);
+  const sources = [...new Set(rules.map((rule) => rule.sourceId))]
+    .map((id) => SOURCES.get(id))
+    .filter((source): source is BundleSource => source !== undefined)
+    .map((source) => ({
+      sourceId: source.id, url: source.url, title: source.title,
+      authority: source.authority, sourceVersion: source.sourceVersion,
+    }));
+  return {
+    certified: rules.length > 0,
+    permitted: majorGameImplementsOnDate(speciesId, zoneId, date, answers),
+    sources,
+  };
+}
+
 export function majorGameImplementsOnDate(
   speciesId: string,
   zoneId: string,

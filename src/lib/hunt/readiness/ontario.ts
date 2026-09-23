@@ -1,6 +1,7 @@
 import { jurisdictionTodayIso } from "../date.ts";
-import { majorGameImplementsOnDate, majorGameSeasonsInUnit } from "../regulatory/major-game.ts";
+import { majorGameImplementBasis, majorGameImplementsOnDate, majorGameSeasonsInUnit } from "../regulatory/major-game.ts";
 import { evaluateSeason, parseSeasonPhrase } from "../regulatory/season.ts";
+import { METHOD_LABELS } from "./format.ts";
 import { resolveAuthorizations, type HunterAnswers } from "./resolve.ts";
 import type {
   AmmunitionRestriction, AuthorizationRecord, LegalMethod, MethodClass, OrangeResult, Provenance,
@@ -230,11 +231,49 @@ export function ontarioMethodsAndAmmunition(
     };
   });
 
-  // What the law rules out for THIS hunt, named once so nobody has to infer it.
-  const standard: MethodClass[] = ["RIFLE", "SHOTGUN", "MUZZLELOADER", "BOW"];
-  const notAllowed = standard.filter(
-    (method) => !legal.includes(method) && (table.notAllowed[method] || !group.smallGame || speciesId === TURKEY),
-  );
+  /* What the law rules out for THIS hunt — and only what the law rules out.
+     There is no hardcoded list of methods to take a complement against, because
+     a complement is what produced a false claim here: every standard method
+     missing from `legal` was asserted prohibited, so a unit North Ground held
+     no rules for answered "Not allowed: Rifle, Shotgun, Muzzleloader, Bow"
+     with no source behind any of it. A method is ruled out only when we can
+     say who ruled it out. */
+  const basis = group.smallGame && speciesId !== TURKEY
+    ? undefined
+    : majorGameImplementBasis(speciesId, zoneId, date, answers);
+  const seasonProvenance: Provenance[] = (basis?.sources ?? []).map((source) => ({
+    sourceId: source.sourceId,
+    url: source.url,
+    citation: `${source.title} (${source.sourceVersion})`,
+    tier: "OFFICIAL_SUMMARY" as const,
+    retrievedAt: bundle.retrievedAt as string,
+  }));
+
+  /* The methods the SOURCE speaks about — both the ones it permits and the
+     ones it names as not permitted. Iterating only the permitted ones would
+     drop a prohibition the summary states outright: Ontario's turkey table
+     names the rifle as not permitted and never lists it as allowed. */
+  const spokenAbout = [...new Set([...Object.keys(table.allowed), ...Object.keys(table.notAllowed)])] as MethodClass[];
+
+  const notAllowed: LegalMethod[] = spokenAbout
+    .filter((method) => !legal.includes(method))
+    .map((method): LegalMethod | undefined => {
+      // 1. The summary names this implement as not permitted for this species.
+      const stated = table.notAllowed[method];
+      if (stated?.length) {
+        return { method, status: "PROHIBITED", restriction: `${METHOD_LABELS[method]} may not be used for this species.`, provenance: stated };
+      }
+      /* 2. The seasons themselves rule it out: this species' seasons in this
+         unit are certified, they are published by implement, and none open on
+         this date admits this one. That is a statement the season records
+         support, so it carries them. */
+      if (basis?.certified && seasonProvenance.length) {
+        return { method, status: "PROHIBITED", restriction: `No season open here on this date permits ${METHOD_LABELS[method].toLowerCase()}.`, provenance: seasonProvenance };
+      }
+      // 3. Nothing supports it. Say nothing: silence is not prohibition.
+      return undefined;
+    })
+    .filter((entry): entry is LegalMethod => entry !== undefined);
 
   const required: AmmunitionRestriction[] = group.ammunition
     .map((key) => AMMUNITION[key])

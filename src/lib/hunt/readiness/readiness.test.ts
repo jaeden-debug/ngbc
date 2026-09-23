@@ -253,7 +253,61 @@ describe("legal methods and recommendations stay apart", () => {
     // WMU 71: footnote 1 removes rifles from the deer gun season.
     const methods = ready(DEER, "71", "2026-11-10", { RESIDENCY: "RESIDENT", HUNT_METHOD: "SHOTGUN" }).methods!;
     assert.ok(!methods.allowed.some((entry) => entry.method === "RIFLE"));
-    assert.ok(methods.notAllowed.includes("RIFLE"));
+    const rifle = methods.notAllowed.find((entry) => entry.method === "RIFLE");
+    assert.ok(rifle, "WMU 71 rules rifles out of the deer gun season");
+    // And it must be ruled out BY A SOURCE, not by our silence: this is the
+    // only thing separating it from the case below.
+    assert.equal(rifle.status, "PROHIBITED");
+    assert.ok(rifle.provenance.length > 0, "a prohibition shown to a hunter carries the law that imposes it");
+  });
+
+  it("never turns 'North Ground has no rule' into 'the law prohibits it'", () => {
+    /* Ontario's bundle holds no deer rules for WMU 1A and no moose rules for
+       WMU 10. Before this was fixed, both answered "Not allowed: Rifle,
+       Shotgun, Muzzleloader, Bow" — four legal prohibitions asserted to a
+       hunter, with no source behind any of them, because the code took the
+       complement of a hardcoded method list.
+
+       A wrongly-open answer is caught in the field by a hunter who checks. A
+       wrongly-closed one is never caught, because nobody complains about being
+       told no. So absence of knowledge must never render as prohibition. */
+    for (const [species, unit, date] of [[DEER, "1A", "2026-11-10"], [MOOSE, "10", "2026-10-15"]] as const) {
+      const methods = ready(species, unit, date).methods!;
+      assert.deepEqual(
+        methods.notAllowed.map((entry) => entry.method), [],
+        `${species} in WMU ${unit}: nothing is prohibited on our say-so`,
+      );
+    }
+  });
+
+  it("keeps a prohibition the summary states outright, even for a method it never lists as allowed", () => {
+    /* Ontario's turkey table names the rifle as not permitted (O. Reg. 665/98
+       s. 79(1)) and never lists it among allowed methods. A fix that walked
+       only the allowed methods would drop it silently — losing a real,
+       sourced prohibition while tidying away the invented ones. */
+    const rifle = ready(TURKEY, "60", "2026-04-30").methods!.notAllowed.find((entry) => entry.method === "RIFLE");
+    assert.ok(rifle, "the turkey summary rules out rifles and that must survive");
+    assert.equal(rifle.status, "PROHIBITED");
+    assert.ok(rifle.provenance.some((source) => source.citation.includes("665/98")), "cited to the regulation that says so");
+  });
+
+  it("gives every prohibition a source, always", () => {
+    /* The property, not the instance: whatever the hunt, a NOT-ALLOWED line
+       either carries the law behind it or does not appear. */
+    const hunts = [
+      [DEER, "71", "2026-11-10"], [DEER, "60", "2026-11-10"], [DEER, "1A", "2026-11-10"],
+      [TURKEY, "60", "2026-04-30"], [MOOSE, "10", "2026-10-15"], [MOOSE, "15A", "2026-10-15"],
+      [GROUSE, "60", "2026-10-15"], [BEAR, "60", "2026-10-15"],
+    ] as const;
+    for (const [species, unit, date] of hunts) {
+      for (const entry of ready(species, unit, date).methods?.notAllowed ?? []) {
+        assert.equal(entry.status, "PROHIBITED");
+        assert.ok(
+          entry.provenance.length > 0,
+          `${species} in WMU ${unit}: ${entry.method} is shown as prohibited with no source`,
+        );
+      }
+    }
   });
 
   it("never lists a recommendation as an allowed method, or an allowed method as a recommendation", () => {
