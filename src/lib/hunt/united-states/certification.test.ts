@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { certificationFor, statesWithEvidence, unitedStatesCertification } from "./certification.ts";
+import { certificationFor, mapLicenceFindingFor, statesWithEvidence, unitedStatesCertification } from "./certification.ts";
 import { layerById } from "../zone-layers.ts";
 import { US_LAYER_IDS } from "./layers.ts";
 
@@ -52,13 +52,30 @@ test("an absent intelligence layer is never counted as missing coverage", () => 
 
 test("only states with evidence are reported, and every one is counted once per lane", () => {
   const summary = unitedStatesCertification();
-  assert.deepEqual(statesWithEvidence(), ["CO", "ID", "MT", "WY"]);
+  assert.deepEqual(statesWithEvidence(), ["CO", "ID", "MT", "ND", "SD", "WY"]);
   for (const lane of [summary.totals.map, summary.totals.regulations, summary.totals.intelligence]) {
     assert.equal(Object.values(lane).reduce((total, count) => total + count, 0), summary.states.length);
   }
-  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["CO", "MT", "WY"]);
+  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["CO", "MT", "ND", "SD", "WY"]);
   /* Served is counted from the layers themselves, never asserted as a
      constant: a state counts as served exactly when its layers say so. */
   const servingStates = new Set(US_LAYER_IDS.filter((id) => layerById(id)!.serving).map((id) => id.slice("layer:us-".length, id.indexOf("-", "layer:us-".length)).toUpperCase()));
   assert.equal(summary.totals.map.SERVED, summary.states.filter((entry) => servingStates.has(entry.code) && entry.map.status === "SERVED").length);
+});
+
+test("a state whose publisher refuses us is blocked by name, not left looking unexplored", async () => {
+  const { licenceRecordIsIntact } = await import("../source-licence.ts");
+  for (const code of ["ND", "SD"]) {
+    const finding = mapLicenceFindingFor(code)!;
+    assert.ok(finding, `${code} has no recorded map licence`);
+    assert.ok(licenceRecordIsIntact(finding.licence as never), `${code}: the recorded hash does not match the wording`);
+    assert.equal(finding.licence.permittedUse, "UNRESOLVED");
+    const state = certificationFor(code);
+    // No layer is registered for either, and they are still not "UNAVAILABLE":
+    // we know exactly what stands in the way, in the publisher's own words.
+    assert.equal(state.map.status, "LICENCE_BLOCKED");
+    assert.match(state.map.blockedBy!, /a person must resolve it with the publisher/);
+    assert.match(state.map.blockedBy!, new RegExp(finding.licence.statedAs.slice(0, 40).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.equal(state.regulations.status, "UNAVAILABLE", "no rules work is spent on a state we may not draw");
+  }
 });

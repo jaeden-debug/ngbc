@@ -1,4 +1,5 @@
 import evidence from "../../../../content/registry/us-coverage-evidence.generated.json" with { type: "json" };
+import mapLicences from "../../../../content/registry/us-map-licence-findings.json" with { type: "json" };
 import { licencePermitsServing, licencePermitsStoredCopy } from "../source-licence.ts";
 import { layerById } from "../zone-layers.ts";
 import { US_LAYER_IDS } from "./layers.ts";
@@ -78,6 +79,20 @@ const parity = evidence.parity as Record<string, ParityRecord[]>;
 const cases = evidence.cases as Record<string, { cases: number }>;
 const bundles = evidence.bundles as Record<string, Array<{ bundleId: string; rules: number; species: string[] }>>;
 const intelligence = evidence.intelligence as Record<string, string[]>;
+/* What a state's publisher says about its map data, recorded before any rules
+   work is spent there. A state with no layer yet is not simply unexplored if
+   we already know its terms refuse us. */
+type MapLicenceFinding = {
+  state: string; checkedOn: string;
+  geography: { term: string; service: string; unitCount: number | null; definedBy: string };
+  licence: { statedAs: string; url: string; retrievedAt: string; sha256: string; permittedUse: string; redistribution: string; attribution: string | null; note?: string | null };
+};
+const findings = new Map((mapLicences.findings as MapLicenceFinding[]).map((finding) => [finding.state, finding]));
+
+/** Every state whose map licence has been read, whether or not it has a layer. */
+export function mapLicenceFindingFor(code: string): MapLicenceFinding | undefined {
+  return findings.get(code.toUpperCase());
+}
 
 function stateOfLayer(layerId: string): string {
   return layerId.slice("layer:us-".length, layerId.indexOf("-", "layer:us-".length)).toUpperCase();
@@ -89,6 +104,7 @@ export function statesWithEvidence(): string[] {
     ...US_LAYER_IDS.map(stateOfLayer),
     ...Object.keys(parity),
     ...Object.keys(bundles),
+    ...findings.keys(),
   ])].sort();
 }
 
@@ -121,8 +137,12 @@ export function certificationFor(code: string): StateCertification {
   const certifiedParity = layers.length > 0 && layers.every((entry) => entry.points !== null && entry.points > 0 && entry.disagreements === 0);
   const licensed = layerIds.length > 0 && layerIds.every((layerId) => licencePermitsServing(layerById(layerId)?.licence));
   const unlicensed = layerIds.filter((layerId) => !licencePermitsServing(layerById(layerId)?.licence));
+  /* A state with no layer but a licence already read is not "unavailable" in
+     the sense of unknown: we know what stands in the way. */
+  const finding = findings.get(state);
+  const findingPermits = finding ? ["COMMERCIAL_PERMITTED", "PUBLIC_DOMAIN"].includes(finding.licence.permittedUse) : undefined;
   const map: MapCertification = layerIds.length === 0
-    ? "UNAVAILABLE"
+    ? (finding && !findingPermits ? "LICENCE_BLOCKED" : "UNAVAILABLE")
     : !certifiedParity
       ? "IN_DEVELOPMENT"
       : !licensed
@@ -131,7 +151,9 @@ export function certificationFor(code: string): StateCertification {
           ? "SERVED"
           : "CERTIFIED";
   const blockedBy = map === "LICENCE_BLOCKED"
-    ? `No reuse grant recorded for ${unlicensed.join(", ")}; a person must resolve it with the publisher.`
+    ? (layerIds.length === 0 && finding
+        ? `${finding.licence.permittedUse} for ${finding.geography.term} (${finding.geography.unitCount ?? "?"} units), read ${finding.licence.retrievedAt}: "${finding.licence.statedAs.slice(0, 120)}…" — a person must resolve it with the publisher.`
+        : `No reuse grant recorded for ${unlicensed.join(", ")}; a person must resolve it with the publisher.`)
     : map === "IN_DEVELOPMENT"
       ? "No clean live-parity certification recorded."
       : map === "UNAVAILABLE"

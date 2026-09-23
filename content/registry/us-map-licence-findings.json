@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "purpose": "What each state's own publisher says about reusing its hunting-unit map data, recorded BEFORE any rules work is spent on that state. A state whose licence does not permit commercial use is not researched further; it waits for a person to ask its publisher. Silence is never permission.",
+  "findings": [
+    {
+      "state": "ND",
+      "checkedOn": "2026-09-23",
+      "geography": {
+        "term": "Deer Units",
+        "service": "https://ndgishub.nd.gov/ArcGIS/rest/services/Applications/GNF_GeneralInformation/MapServer/33",
+        "unitCount": 39,
+        "definedBy": "GIS"
+      },
+      "licence": {
+        "statedAs": "For redistribution of North Dakota Game and Fish Department data, please contact the Department at 701-328-6369.",
+        "url": "https://gf.nd.gov/maps/data",
+        "retrievedAt": "2026-09-23",
+        "sha256": "sha256:78e79316e51575a250c8d7e842b7d09bf47a9b023982a167eb8808075d087f58",
+        "permittedUse": "UNRESOLVED",
+        "redistribution": "UNRESOLVED",
+        "attribution": null,
+        "note": "The only sentence North Dakota publishes about reuse directs the reuser to telephone the Department. It is an instruction, not a grant, and nothing else on the GIS Hub or in the dataset's ISO metadata grants commercial use; the metadata records constraints as otherRestrictions with a warranty disclaimer. A person must ask the Department."
+      }
+    },
+    {
+      "state": "SD",
+      "checkedOn": "2026-09-23",
+      "geography": {
+        "term": "East River deer units",
+        "service": "https://utility.arcgis.com/usrsvcs/servers/3fc40e83d2d54a37be8623ccec30e317/rest/services/Hunting/HuntUnit_Deer/MapServer/11",
+        "unitCount": 46,
+        "definedBy": "counties"
+      },
+      "licence": {
+        "statedAs": "Anyone may view, copy or distribute information found on the State's website for personal or informational use without owing an obligation to the State. The State makes no warranty that the materials contained within this information are free from copyright claims or other restrictions or limitations on free use or display.",
+        "url": "https://gfp.sd.gov/disclaimer/",
+        "retrievedAt": "2026-09-23",
+        "sha256": "sha256:14d012f23e074412d3016511ac7eaa22c8b9580574848a58f79a67def3664ddb",
+        "permittedUse": "UNRESOLVED",
+        "redistribution": "UNRESOLVED",
+        "attribution": null,
+        "note": "South Dakota's permission is expressly scoped to “personal or informational use”, which does not reach a commercial product, and it speaks of the website rather than the GIS services. Separately, the deer-unit service answers only when sent a particular Referer and returns 403 otherwise: that is an access control, and North Ground does not route around it. Its units are also defined by county in S.D. Admin. R. 41:06:21:02, with exclusions the GIS attributes do not carry. A person must ask SDGFP."
+      }
+    }
+  ]
+}
