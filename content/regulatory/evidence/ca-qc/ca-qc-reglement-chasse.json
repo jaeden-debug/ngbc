@@ -1,0 +1,1566 @@
+{
+  "package": {
+    "jurisdictionId": "jurisdiction:ca-qc",
+    "preparedBy": "admin-access (species/requirements research lane)",
+    "preparedOn": "2026-09-23"
+  },
+  "authority": {
+    "name": "Éditeur officiel du Québec — Légis Québec (Publications du Québec)",
+    "lang": "fr-CA"
+  },
+  "source": {
+    "id": "source:ca-qc-reglement-chasse",
+    "title": "Règlement sur la chasse",
+    "url": "https://www.legisquebec.gouv.qc.ca/fr/document/rc/C-61.1,%20r.%2012",
+    "tier": "LAW",
+    "version": "chapitre C-61.1, r. 12",
+    "retrievedAt": "2026-09-23",
+    "sha256": "49ec1a79304bc55abebbb122afb7ca565096b6b7109c219f38c2adb1f234943a",
+    "incorporates": [
+      "Règlement sur les zones de pêche et de chasse (chapitre C-61.1, r. 34) — s.2(2) says zone numbers refer to zones it establishes. NOT read in this pass.",
+      "Règlement sur les activités de chasse (chapitre C-61.1, r. 1) — cited by s.24 and s.25 for transport coupons. Read; companion package.",
+      "Annexes I, III, IV, V, VI, XI and others — the schedules carrying seasons, zones and permit classes. NOT read in this pass; seasons are the Canada lane's assignment."
+    ],
+    "inForce": {
+      "state": "IN_FORCE",
+      "statedAs": "À jour au 1er mai 2026",
+      "asOf": "2026-05-01",
+      "supersededBy": null,
+      "checkedOn": "2026-09-23"
+    },
+    "sourceNotes": [
+      "Page carries 'Ce document a valeur officielle.' and no 'Abrogé le' line.",
+      "sha256 is of document.body.innerText as rendered, 114190 characters.",
+      "legisquebec.gouv.qc.ca returns HTTP 403 to curl and WebFetch; read in a real browser. A CDN refusing non-browser clients, not an access control."
+    ]
+  },
+  "requirements": [
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": {
+        "text": "LIMITES DE CAPTURE",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "Il est permis à toute personne de tuer, dans une année: 1°  2 cerfs de Virginie, dont 1 dans l’une ou l’autre des zones autres que la zone 20 pour le titulaire d’un permis prévu au paragraphe a de l’article 2 de l’annexe I et l’autre dans une deuxième zone, autre que la zone 20, pour le titulaire d’un permis prévu au paragraphe a.1 de l’article 2 de l’annexe I, à l’exception des zones 4, 5, 6, de la partie sud de la zone 7 et 8 où les 2 cerfs de Virginie peuvent être récoltés dans une seule zone, dont un seul cerf avec bois;",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 24(1)",
+      "period": "LICENCE_YEAR",
+      "value": {
+        "count": 2,
+        "statedAs": "Il est permis à toute personne de tuer, dans une année: 1°  2 cerfs de Virginie, dont 1 dans l’une ou l’autre des zones autres que la zone 20 pour le titulaire d’un permis prévu au paragraphe a de l’article 2 de l’annexe I et l’autre dans une deuxième zone, autre que la zone 20, pour le titulaire d’un permis prévu au paragraphe a.1 de l’article 2 de l’annexe I, à l’exception des zones 4, 5, 6, de la partie sud de la zone 7 et 8 où les 2 cerfs de Virginie peuvent être récoltés dans une seule zone, dont un seul cerf avec bois;"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:white-tailed-deer"
+        ],
+        "statedAs": "2 cerfs de Virginie"
+      },
+      "subCaps": [
+        {
+          "speciesIds": [
+            "species:white-tailed-deer"
+          ],
+          "count": 1,
+          "statedAs": "à l’exception des zones 4, 5, 6, de la partie sud de la zone 7 et 8 où les 2 cerfs de Virginie peuvent être récoltés dans une seule zone, dont un seul cerf avec bois"
+        }
+      ],
+      "derivedByAuthority": null,
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "dans une année ... dans l’une ou l’autre des zones autres que la zone 20"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": [
+        "The two animals are tied to two DIFFERENT permit classes (annexe I, art. 2, paragraphes a and a.1) and to two different zones. Annexe I was not read in this pass, so the permit classes are named but not resolved. hunterClass.licenceType is left null rather than guessed.",
+        "'dont un seul cerf avec bois' in zones 4, 5, 6, southern 7 and 8 is an animal-class sub-cap. 'avec bois' is the authority's own class term and is recorded verbatim; it is not converted to a sex.",
+        "s.24 second paragraph deems an animal tagged with another holder's transport coupon (r.1 ss.7.2.3, 7.2.4) to have been killed by that holder. Those provisions were not read in this pass."
+      ],
+      "composition": {
+        "value": "ALTERNATIVE",
+        "statedAs": "Le nombre d’animaux que toute personne est autorisée à tuer en vertu du présent règlement ne se cumule pas avec celui autorisé par un autre règlement édicté en vertu de la Loi sur la conservation et la mise en valeur de la faune (chapitre C-61.1).",
+        "citation": "C-61.1, r. 12, s. 29"
+      }
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": {
+        "text": "LIMITES DE CAPTURE",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "2°  4 cerfs de Virginie, par séjour, dans la zone 20 dont au plus 2 cerfs avec bois.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 24(2)",
+      "period": "SEASON",
+      "value": {
+        "count": 4,
+        "statedAs": "2°  4 cerfs de Virginie, par séjour, dans la zone 20 dont au plus 2 cerfs avec bois."
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:white-tailed-deer"
+        ],
+        "statedAs": "4 cerfs de Virginie, par séjour, dans la zone 20"
+      },
+      "subCaps": [
+        {
+          "speciesIds": [
+            "species:white-tailed-deer"
+          ],
+          "count": 2,
+          "statedAs": "dont au plus 2 cerfs avec bois"
+        }
+      ],
+      "derivedByAuthority": null,
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "20"
+          ],
+          "statedAs": "dans la zone 20"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": [
+        "'par séjour' is undefined in this regulation. A stay is not bounded by the text I read, so the real cap in a licence year is unresolved."
+      ],
+      "periodNote": "SCHEMA GAP. The authority's period is 'par séjour' — per stay. That is neither DAY, SEASON nor LICENCE_YEAR. SEASON is recorded only because the field is required and has no default; it is NOT what the source says and must not be read as evidence. Reported to the moderator as a contract gap.",
+      "composition": {
+        "value": "ALTERNATIVE",
+        "statedAs": "Le nombre d’animaux que toute personne est autorisée à tuer en vertu du présent règlement ne se cumule pas avec celui autorisé par un autre règlement édicté en vertu de la Loi sur la conservation et la mise en valeur de la faune (chapitre C-61.1).",
+        "citation": "C-61.1, r. 12, s. 29"
+      }
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": {
+        "text": "LIMITES DE CAPTURE",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "Il est permis à toute personne de tuer: 1°  soit 1 orignal, par 2 chasseurs, par année, dans l’une ou l’autre des zones ou parties de zone prévues à l’annexe III;",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 25(1)",
+      "period": "LICENCE_YEAR",
+      "value": {
+        "count": 1,
+        "statedAs": "Il est permis à toute personne de tuer: 1°  soit 1 orignal, par 2 chasseurs, par année, dans l’une ou l’autre des zones ou parties de zone prévues à l’annexe III;"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:moose"
+        ],
+        "statedAs": "1 orignal, par 2 chasseurs, par année"
+      },
+      "subCaps": [
+        {
+          "speciesIds": [
+            "species:moose"
+          ],
+          "count": 1,
+          "statedAs": "2°  soit 1 orignal, par 3 chasseurs, par année, dans les zones d’exploitation contrôlée de l’Anse-Saint-Jean, du Bas-Saint-Laurent, de la Bessonne, Borgia, Bras-Coupé-Désert, Buteux-Bas-Saguenay, Casault, Chapais, du Chapeau-de-Paille, de la Croche, Jeanotte, Kiskissink, du Lac-au-Sable, Lesueur, Louise-Gosford, Maganasipi, des Martres, Mitchinamecus, des Nymphes, Pontiac, de Rapides-des-Joachims, de la Rivière-Blanche, Saint-Patrice et Tawachiche"
+        }
+      ],
+      "derivedByAuthority": null,
+      "scope": {
+        "speciesIds": [
+          "species:moose"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "dans l’une ou l’autre des zones ou parties de zone prévues à l’annexe III"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": [
+        "SCHEMA GAP. This limit is PER GROUP OF HUNTERS, not per hunter: '1 orignal, par 2 chasseurs, par année', and '1 orignal, par 3 chasseurs' in 23 named zecs. value.count is a plain number with no way to carry the divisor, so a reader taking count=1 gets 'one moose per hunter', which is 2x to 3x too permissive. Reported to the moderator as a contract gap. Do NOT use this row's count without its statedAs.",
+        "The 23 zecs in the second paragraph are named, not coded. North Ground does not hold zec boundaries, so they are carried verbatim as a subCap rather than as designations.",
+        "s.25 third paragraph deems a holder whose transport coupon identified a moose (r.1 s.19) to have reached their limit. Not read in this pass."
+      ],
+      "composition": {
+        "value": "ALTERNATIVE",
+        "statedAs": "Le nombre d’animaux que toute personne est autorisée à tuer en vertu du présent règlement ne se cumule pas avec celui autorisé par un autre règlement édicté en vertu de la Loi sur la conservation et la mise en valeur de la faune (chapitre C-61.1).",
+        "citation": "C-61.1, r. 12, s. 29"
+      }
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": {
+        "text": "LIMITES DE CAPTURE",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "Il est permis à toute personne de tuer, dans une même année, un maximum de 2 ours noirs.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 26",
+      "period": "LICENCE_YEAR",
+      "value": {
+        "count": 2,
+        "statedAs": "Il est permis à toute personne de tuer, dans une même année, un maximum de 2 ours noirs."
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "statedAs": "un maximum de 2 ours noirs"
+      },
+      "subCaps": [
+        {
+          "speciesIds": [
+            "species:american-black-bear"
+          ],
+          "count": 1,
+          "statedAs": "1°  1 ours noir lors de la période de chasse printanière dans les zones de chasse 2, 3, 7, 13, 14, 16, 17, 18, 21, la partie est de la zone 27 dont le plan apparaît à l’annexe XI et la zone 28;"
+        },
+        {
+          "speciesIds": [
+            "species:american-black-bear"
+          ],
+          "count": 2,
+          "statedAs": "2°  1 ours noir lors de la période de chasse printanière et 1 ours noir lors de la période de chasse automnale dans les zones de chasse 1, 4, 5, 6, 8, 9, 10, 11, 12, 15, 19, 23, 24, 26, la zone 27 sauf la partie est dont le plan apparaît à l’annexe XI et la zone 29."
+        }
+      ],
+      "derivedByAuthority": null,
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "dans une même année"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": [
+        "The annual maximum of 2 is distributed by zone AND by season segment ('La limite de capture se répartie selon les zones fréquentées et les périodes'). In the listed spring-only zones the effective cap is 1. Carried as subCaps with the zone lists verbatim; the segment names are the authority's and are not mapped to Canada's season bundle here."
+      ],
+      "composition": {
+        "value": "ALTERNATIVE",
+        "statedAs": "Le nombre d’animaux que toute personne est autorisée à tuer en vertu du présent règlement ne se cumule pas avec celui autorisé par un autre règlement édicté en vertu de la Loi sur la conservation et la mise en valeur de la faune (chapitre C-61.1).",
+        "citation": "C-61.1, r. 12, s. 29"
+      }
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": {
+        "text": "LIMITES DE CAPTURE",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "Il est permis à toute personne de tuer, dans une même journée: 1°  5 oiseaux, en tout, faisant partie des espèces gélinotte huppée, tétras à queue fine, perdrix grise et tétras du Canada;",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 27(1)",
+      "period": "DAY",
+      "value": {
+        "count": 5,
+        "statedAs": "Il est permis à toute personne de tuer, dans une même journée: 1°  5 oiseaux, en tout, faisant partie des espèces gélinotte huppée, tétras à queue fine, perdrix grise et tétras du Canada;"
+      },
+      "appliesAcross": {
+        "scope": "AGGREGATE",
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:sharp-tailed-grouse",
+          "species:spruce-grouse"
+        ],
+        "unmappedSpecies": [
+          "perdrix grise (Perdix perdix) — counts toward this aggregate; no canonical North Ground record"
+        ],
+        "statedAs": "5 oiseaux, en tout, faisant partie des espèces gélinotte huppée, tétras à queue fine, perdrix grise et tétras du Canada"
+      },
+      "subCaps": [],
+      "derivedByAuthority": null,
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:sharp-tailed-grouse",
+          "species:spruce-grouse"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "dans une même journée"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": [
+        "The words 'en tout' are what make this an aggregate. Three of the four species are in Québec's certified list; a per-species reading is wrong by 4x."
+      ],
+      "composition": {
+        "value": "ALTERNATIVE",
+        "statedAs": "Le nombre d’animaux que toute personne est autorisée à tuer en vertu du présent règlement ne se cumule pas avec celui autorisé par un autre règlement édicté en vertu de la Loi sur la conservation et la mise en valeur de la faune (chapitre C-61.1).",
+        "citation": "C-61.1, r. 12, s. 29"
+      }
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": {
+        "text": "LIMITES DE CAPTURE",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "Il est permis à toute personne de tuer, dans une même année, un maximum de 3 dindons sauvages soit: 1°  2 dindons sauvages avec barbe, dont le deuxième doit obligatoirement être abattu dans l’une des zones 3, 4, 5, 6, 7, 8, 9, 10, 11, 26 et 27, pendant la période de chasse printanière; 2°  1 dindon sauvage avec ou sans barbe pendant la période de chasse automnale.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 27.1",
+      "period": "LICENCE_YEAR",
+      "value": {
+        "count": 3,
+        "statedAs": "Il est permis à toute personne de tuer, dans une même année, un maximum de 3 dindons sauvages soit: 1°  2 dindons sauvages avec barbe, dont le deuxième doit obligatoirement être abattu dans l’une des zones 3, 4, 5, 6, 7, 8, 9, 10, 11, 26 et 27, pendant la période de chasse printanière; 2°  1 dindon sauvage avec ou sans barbe pendant la période de chasse automnale."
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:wild-turkey"
+        ],
+        "statedAs": "un maximum de 3 dindons sauvages"
+      },
+      "subCaps": [
+        {
+          "speciesIds": [
+            "species:wild-turkey"
+          ],
+          "count": 2,
+          "statedAs": "2 dindons sauvages avec barbe, dont le deuxième doit obligatoirement être abattu dans l’une des zones 3, 4, 5, 6, 7, 8, 9, 10, 11, 26 et 27, pendant la période de chasse printanière"
+        },
+        {
+          "speciesIds": [
+            "species:wild-turkey"
+          ],
+          "count": 1,
+          "statedAs": "1 dindon sauvage avec ou sans barbe pendant la période de chasse automnale"
+        }
+      ],
+      "derivedByAuthority": null,
+      "scope": {
+        "speciesIds": [
+          "species:wild-turkey"
+        ],
+        "animalClass": "avec barbe / avec ou sans barbe (authority's own terms; not derived from sex)",
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "dans une même année"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": [
+        "'avec barbe' is a source-defined animal class carried verbatim. It is NOT converted to male. The second bearded bird is additionally constrained to a named zone list in the spring segment."
+      ],
+      "composition": {
+        "value": "ALTERNATIVE",
+        "statedAs": "Le nombre d’animaux que toute personne est autorisée à tuer en vertu du présent règlement ne se cumule pas avec celui autorisé par un autre règlement édicté en vertu de la Loi sur la conservation et la mise en valeur de la faune (chapitre C-61.1).",
+        "citation": "C-61.1, r. 12, s. 29"
+      }
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": {
+        "text": "LIMITES DE CAPTURE",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "Dans la zone 8, il est permis à toute personne de tuer, dans une même journée, au plus 5 animaux faisant partie des espèces lièvre d’Amérique et lapin à queue blanche.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 28 para 1",
+      "period": "DAY",
+      "value": {
+        "count": 5,
+        "statedAs": "Dans la zone 8, il est permis à toute personne de tuer, dans une même journée, au plus 5 animaux faisant partie des espèces lièvre d’Amérique et lapin à queue blanche."
+      },
+      "appliesAcross": {
+        "scope": "AGGREGATE",
+        "speciesIds": [
+          "species:snowshoe-hare",
+          "species:eastern-cottontail"
+        ],
+        "statedAs": "au plus 5 animaux faisant partie des espèces lièvre d’Amérique et lapin à queue blanche"
+      },
+      "subCaps": [],
+      "derivedByAuthority": null,
+      "scope": {
+        "speciesIds": [
+          "species:snowshoe-hare",
+          "species:eastern-cottontail"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "8"
+          ],
+          "statedAs": "Dans la zone 8"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": [
+        "This aggregate is stated ONLY for zone 8. It does not establish any limit elsewhere in Québec, and no limit elsewhere is inferred from it."
+      ],
+      "composition": {
+        "value": "ALTERNATIVE",
+        "statedAs": "Le nombre d’animaux que toute personne est autorisée à tuer en vertu du présent règlement ne se cumule pas avec celui autorisé par un autre règlement édicté en vertu de la Loi sur la conservation et la mise en valeur de la faune (chapitre C-61.1).",
+        "citation": "C-61.1, r. 12, s. 29"
+      }
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": {
+        "text": "LIMITES DE CAPTURE",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "Dans l’Île-du-Havre-Aubert, il est permis à toute personne de tuer, dans une même journée, au plus 2 lièvres d’Amérique.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 28 para 2",
+      "period": "DAY",
+      "value": {
+        "count": 2,
+        "statedAs": "Dans l’Île-du-Havre-Aubert, il est permis à toute personne de tuer, dans une même journée, au plus 2 lièvres d’Amérique."
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:snowshoe-hare"
+        ],
+        "statedAs": "au plus 2 lièvres d’Amérique"
+      },
+      "subCaps": [],
+      "derivedByAuthority": null,
+      "scope": {
+        "speciesIds": [
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "SPECIAL_AREA",
+          "designations": [
+            "Île-du-Havre-Aubert"
+          ],
+          "statedAs": "Dans l’Île-du-Havre-Aubert"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": [
+        "Île-du-Havre-Aubert is named, not coded. North Ground's Québec zone layer does not carry it as a designation; the season bundle records the same place as an unresolved zone label."
+      ],
+      "composition": {
+        "value": "ALTERNATIVE",
+        "statedAs": "Le nombre d’animaux que toute personne est autorisée à tuer en vertu du présent règlement ne se cumule pas avec celui autorisé par un autre règlement édicté en vertu de la Loi sur la conservation et la mise en valeur de la faune (chapitre C-61.1).",
+        "citation": "C-61.1, r. 12, s. 29"
+      }
+    },
+    {
+      "category": "AMMUNITION",
+      "kind": "balles permises",
+      "officialName": {
+        "text": "MOYENS ET ANIMAUX PERMIS POUR LA CHASSE",
+        "lang": "fr-CA"
+      },
+      "state": "ALLOWED",
+      "statedAs": {
+        "text": "Les moyens à l’aide desquels la chasse d’un animal est permise sont: ... 5°  les balles qui ne sont pas traçantes et les balles autres que celles à pointe dure du type militaire et à bout non écrasant;",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 30(5)",
+      "scope": {
+        "speciesIds": "ALL",
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "la chasse d’un animal"
+        },
+        "seasonSegment": null,
+        "methods": [
+          "balles"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": [
+        "STATE IS ALLOWED, DELIBERATELY NOT PROHIBITED. The regulation frames this as a list of permitted means whose members are bullets that are not tracer and not military hard-point non-expanding. Recording tracer or military hard-point ammunition as PROHIBITED would be the complement of a permitted list, which rule 4 forbids. If Québec states a prohibition elsewhere, it needs its own row from that source."
+      ]
+    },
+    {
+      "category": "METHOD",
+      "kind": "appâtage — dindon sauvage",
+      "officialName": {
+        "text": "appât",
+        "lang": "fr-CA"
+      },
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "Dans le cas du dindon sauvage, tout appâtage est interdit.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 30, fourth paragraph",
+      "scope": {
+        "speciesIds": [
+          "species:wild-turkey"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "Dans le cas du dindon sauvage"
+        },
+        "seasonSegment": null,
+        "methods": [
+          "appâtage"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": [
+        "A direct prohibition in the authority's own words ('est interdit'), not the complement of a permitted list. r.12 s.14 separately requires turkey hunting to be more than 100 m from any place where bait has been deposited; that is a place condition and belongs to the seasons/hours lane."
+      ]
+    },
+    {
+      "category": "METHOD",
+      "kind": "appâtage — ours noir et cerf de Virginie",
+      "officialName": {
+        "text": "appât",
+        "lang": "fr-CA"
+      },
+      "state": "CONDITIONAL",
+      "statedAs": {
+        "text": "Dans le cas de l’ours noir, une substance nutritive ou olfactive ne peut être déposée pour l’appâter au cours de la période du 1er juillet au 15 août en ce qui concerne les zones 16, 17, 19 sud, la zone 27 sauf la partie est dont le plan apparaît à l’annexe XI et 29 et au cours de la période du 1er juillet au 31 août en ce qui concerne les zones 1 à 15, 18, 26, la partie est de la zone 27 et la zone 28.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 30, second paragraph",
+      "condition": {
+        "statedAs": {
+          "text": "ne peut être déposée pour l’appâter au cours de la période du 1er juillet au 15 août ... et au cours de la période du 1er juillet au 31 août ...",
+          "lang": "fr-CA"
+        }
+      },
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "16",
+            "17",
+            "19 sud",
+            "27",
+            "29",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "18",
+            "26",
+            "28"
+          ],
+          "statedAs": "les zones 16, 17, 19 sud, la zone 27 sauf la partie est dont le plan apparaît à l’annexe XI et 29 ... les zones 1 à 15, 18, 26, la partie est de la zone 27 et la zone 28"
+        },
+        "seasonSegment": null,
+        "methods": [
+          "appâtage"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [
+        {
+          "statedAs": {
+            "text": "Dans le cas du cerf de Virginie, une substance nutritive ou olfactive ne peut être déposée pour l’appâter au cours de la période allant du 1er décembre au 31 août, sauf dans la zone 20 où cela est permis en tout temps. L’utilisation d’une substance saline pour l’appâter est permise en tout temps.",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 12, s. 30, third paragraph"
+        },
+        {
+          "statedAs": {
+            "text": "L’utilisation d’urine ou de tout autre substance naturelle prélevée sur un cervidé, à l’exception de l’original, est interdite en tout temps.",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 12, s. 30, fifth paragraph"
+        }
+      ],
+      "unresolved": [
+        "Two zone sets with two different closed periods are carried in ONE sentence; the designations array flattens them and the distinction survives only in statedAs. A reader must use statedAs, not designations.",
+        "'la zone 27 sauf la partie est' is an exclusion the designation list cannot express; annexe XI, which carries the plan, was not read.",
+        "The white-tailed deer baiting rule is a separate sentence for a separate species and is carried here as an exception to keep it attached to its rule; if the engine prefers it as its own row, it should be split.",
+        "s.30 fifth paragraph reads 'à l’exception de l’original' in the published text. 'original' appears to be a typographical error for 'orignal' (moose). Quoted exactly as published; NOT corrected."
+      ]
+    },
+    {
+      "category": "METHOD",
+      "kind": "engins de chasse — types 1 à 14",
+      "officialName": {
+        "text": "Les engins de chasse sont regroupés selon les types suivants",
+        "lang": "fr-CA"
+      },
+      "state": "ALLOWED",
+      "statedAs": {
+        "text": "31. Les engins de chasse sont regroupés selon les types suivants: [types 1 à 14, définis par calibre, pression, diamètre de coupe et type de cartouche — texte intégral conservé dans engineTypes]",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 31",
+      "engineTypes": {
+        "note": "Verbatim definitions, reproduced because every method and ammunition answer for Québec resolves through them. Type 6 and type 11 are the two named by the hunter-orange exemption in r.1 s.17.3(1).",
+        "type5": "les carabines utilisées avec des cartouches à percussion latérale de calibre .22",
+        "type6": "les arcs ayant une pression d’au moins 18 kg à l’intérieur d’une extension de 0 à 71 cm et les flèches à tête d’acier ayant un diamètre de coupe d’au moins 22 mm",
+        "type7": "le collet",
+        "type8": "l’épuisette, l’hameçon, l’assommoir, la fosse, la barrière, le dard ou la main",
+        "type11": "a) les arcs ayant une pression d’au moins 18 kg à l’intérieur d’une extension de 0 à 71 cm et les flèches ayant un diamètre de coupe d’au moins 22 mm; b) les arbalètes ayant une pression d’au moins 54 kg et munies d’un cran de sûreté; le vireton doit avoir une longueur d’au moins 40 cm et la pointe doit avoir un diamètre de coupe d’au moins 22 mm",
+        "typesNotTranscribed": "Types 1, 2, 3, 4, 9, 10, 12, 13 and 14 were read in full and are not transcribed here to keep this package to its scope. They are recoverable from the cited source at the recorded sha256.",
+        "identityCollision": "TYPE 11 AND TYPE 12 SHARE THEIR ENTIRE BOW AND CROSSBOW DEFINITION, WORD FOR WORD. Type 11 is a) arcs + b) arbalètes. Type 12 is the same a) and b) plus c) fusils de calibre 10, 12, 16, 20 à balles ou projectiles ≥ 7,6 mm and d) fusils ou carabines à chargement par la bouche, canon unique, calibre ≥ 11 mm, une seule balle à la fois. Two types with different regulatory identity and an identical archery definition: an implement list of bow+crossbow cannot distinguish them, and provisions such as s.17(3) name exactly one."
+      },
+      "scope": {
+        "speciesIds": "ALL",
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "Les engins de chasse"
+        },
+        "seasonSegment": null,
+        "methods": [
+          "engin de chasse"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": [
+        "s.31 DEFINES the types. WHICH type applies to which species, zone and season segment is set by annexe III (and annexes IV, V, VI for particular territories), which was not read in this pass — seasons are the Canada lane's assignment. So this package establishes what each type IS, not when each is permitted.",
+        "The regulation names 14 types. Note that r.1 s.17.3(1) refers to 'un engin de type 6 ou 11'; both are archery types, which is why the big-game orange exemption is effectively an archery-season exemption. That relationship is stated here as an observation of the two texts, and is NOT a derived rule."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "certificat du chasseur ou du piégeur",
+      "officialName": {
+        "text": "certificat du chasseur ou du piégeur",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "Pour obtenir un permis de chasse pour résident, tout résident doit être titulaire d'un certificat du chasseur ou du piégeur valide; ce certificat n’est pas requis pour les permis de chasse «Grenouille léopard, Grenouille verte, Ouaouaron» et «Lièvre ou lapin à queue blanche au moyen de collet». Ce résident doit également fournir son nom, son adresse et sa date de naissance de même que le numéro de son certificat du chasseur ou du piégeur lorsqu’il est requis.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 7.1, first paragraph",
+      "scope": {
+        "speciesIds": "ALL",
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "tout résident"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "obtain": {
+        "channels": [],
+        "infoUrl": null,
+        "note": "Issuing channels are not stated in this regulation. Not guessed; see the fee/vendor pass."
+      },
+      "requires": [
+        {
+          "officialName": {
+            "text": "le cours d’initiation à la chasse avec arme à feu (pour un certificat pour la chasse à l’aide d’une arme à feu)",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 12, s. 3.1(4)(a)"
+        },
+        {
+          "officialName": {
+            "text": "le cours d’initiation à la chasse avec arc et arbalète (pour un certificat pour la chasse à l’aide de l’arc et de l’arbalète)",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 12, s. 3.1(4)(b)"
+        },
+        {
+          "officialName": {
+            "text": "être titulaire d’une attestation ou d’un certificat confirmant la réussite de ou des examens correspondant aux cours exigés",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 12, s. 3.1(5)"
+        },
+        {
+          "officialName": {
+            "text": "être un résident; être âgée d’au moins 12 ans",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 12, s. 3.1(1)-(2)"
+        }
+      ],
+      "exceptions": [
+        {
+          "statedAs": {
+            "text": "ce certificat n’est pas requis pour les permis de chasse «Grenouille léopard, Grenouille verte, Ouaouaron» et «Lièvre ou lapin à queue blanche au moyen de collet»",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 12, s. 7.1, first paragraph"
+        },
+        {
+          "statedAs": {
+            "text": "Un citoyen canadien qui est un résident au moment de sa demande peut obtenir un certificat du chasseur pour la chasse à l’aide d’une arme à feu sans remplir les conditions mentionnées aux paragraphes 4 et 5 du premier alinéa à la condition de présenter un certificat ou une preuve de compétence équivalente émise par une province ou un territoire canadien.",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 12, s. 3.1, second paragraph"
+        }
+      ],
+      "unresolved": [
+        "THE CERTIFICATE IS WEAPON-CODED, so it interacts with method: s.5 gives code «F» chasse à l’aide d’une arme à feu, code «A» chasse à l’aide d’une arbalète ou d’un arc, code «P» piégeage. A hunter holding only «A» is not certified for a firearm season. The engine needs the code, not merely 'has a certificate'.",
+        "The snare exemption is SPECIES AND METHOD specific: it exempts the «Lièvre ou lapin à queue blanche au moyen de collet» licence, which touches snowshoe hare and eastern cottontail taken by collet (engin de type 7). It does not exempt those species taken by any other means.",
+        "s.5 says the certificate 'est valide tant que le titulaire est un résident'. It does not expire on a date; it lapses on ceasing to be a resident. That is not a licence-year concept.",
+        "The «Lièvre ou lapin à queue blanche au moyen de collet» licence is method-bound to the collet, which s.31(7) defines as «engin de type 7». The certificate exemption therefore attaches to an engin type, not merely to a word."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "permis de chasse pour résident — dispense unique",
+      "officialName": {
+        "text": "permis de chasse pour résident (sans certificat, une seule fois dans sa vie)",
+        "lang": "fr-CA"
+      },
+      "state": "CONDITIONAL",
+      "statedAs": {
+        "text": "Malgré l’article 7.1, un résident de 12 ans et plus peut obtenir, sans être titulaire d’un certificat du chasseur ou du piégeur, toute catégorie de permis de chasse résident prévue à l’annexe I durant la même année, une seule fois dans sa vie et à la condition qu’il n’ait jamais été titulaire d’un certificat du chasseur ou du piégeur portant le code «A» ou «F».",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 7.3, first paragraph",
+      "scope": {
+        "speciesIds": "ALL",
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "un résident de 12 ans et plus"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "RESIDENT",
+          "age": "12+",
+          "licenceType": null
+        }
+      },
+      "obtain": {
+        "channels": [],
+        "infoUrl": null,
+        "note": "Issuing channels are not stated in this regulation. Not guessed; see the fee/vendor pass."
+      },
+      "requires": [],
+      "exceptions": [],
+      "unresolved": [
+        "THIS IS AN EXEMPTION WITH AN EXCEPTION ATTACHED, and reading only the first paragraph inverts the answer. s.7.3 para 1 removes the certificate requirement; s.7.3 para 2 then permits hunting ONLY while accompanied by a certificate holder aged 25+ who is accompanying nobody else. An engine that encodes para 1 alone tells an uncertified hunter they may hunt alone.",
+        "The accompanying holder's certificate must match 'l’engin de chasse qu’il utilise' — the weapon the exempt hunter is using, not the companion's own preference.",
+        "'une seule fois dans sa vie' is a lifetime-scoped condition North Ground cannot verify and must never assert as satisfied."
+      ],
+      "condition": {
+        "statedAs": {
+          "text": "Ce résident ne peut chasser que s’il est accompagné d’un résident titulaire du certificat du chasseur ou du piégeur pour l’engin de chasse qu’il utilise. Ce titulaire doit être âgé d’au moins 25 ans et ne peut accompagner qu’un seul résident à la fois.",
+          "lang": "fr-CA"
+        }
+      }
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "permis de chasse pour non-résident",
+      "officialName": {
+        "text": "permis de chasse pour non-résident",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "Pour obtenir un permis de chasse pour non-résident, le non-résident doit être âgé d’au moins 12 ans et fournir son nom, son adresse et sa date de naissance.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 7.4",
+      "scope": {
+        "speciesIds": "ALL",
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "le non-résident"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "NON_RESIDENT",
+          "age": "12+",
+          "licenceType": null
+        }
+      },
+      "obtain": {
+        "channels": [],
+        "infoUrl": null,
+        "note": "Issuing channels are not stated in this regulation. Not guessed; see the fee/vendor pass."
+      },
+      "requires": [],
+      "exceptions": [],
+      "unresolved": [
+        "s.7.4 states the conditions for a non-resident licence and does NOT mention a certificat du chasseur, which s.7.1 requires of residents. I am recording only what s.7.4 says. I am NOT recording a finding that non-residents need no certificate: the list may not be exhaustive, and a requirement could sit in the Loi or another regulation I have not read. This asymmetry needs a positive statement before it is answered either way."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "permis de chasse — tirage au sort",
+      "officialName": {
+        "text": "sélection par tirage au sort",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "De plus, ce résident doit avoir été sélectionné par tirage au sort pour obtenir les permis de chasse suivants: 2°  «Cerf de Virginie, femelle ou mâle, dont les bois mesurent moins de 7 cm pour toutes les zones sauf pour la zone 20»; 3°  «Orignal sans bois».",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 7.1, second paragraph",
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer",
+          "species:moose"
+        ],
+        "animalClass": "femelle ou mâle dont les bois mesurent moins de 7 cm; orignal sans bois (authority's own terms)",
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "pour toutes les zones sauf pour la zone 20 (cerf); Orignal sans bois"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "obtain": {
+        "channels": [],
+        "infoUrl": null,
+        "note": "Issuing channels are not stated in this regulation. Not guessed; see the fee/vendor pass."
+      },
+      "requires": [],
+      "exceptions": [],
+      "unresolved": [
+        "«orignal sans bois» is defined at s.2(1.1): 'tout orignal qui ne porte pas de bois ou dont les bois mesurent moins de 10 cm'. Note the deer threshold is 7 cm and the moose threshold is 10 cm — different numbers, carried separately, never unified.",
+        "The draw itself (dates, application, quotas) is not in this regulation."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "permis de chasse «Petit gibier»",
+      "officialName": {
+        "text": "Petit gibier",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "7.\ta)\tPetit gibier\t \n \t \ti. résident\t0\n \t \tii. non-résident\t0",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, annexe I, art. 7 (a. 7)",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:snowshoe-hare",
+          "species:eastern-cottontail",
+          "species:arctic-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "résident et non-résident"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "obtain": {
+        "channels": [],
+        "infoUrl": null,
+        "note": "Issuing channels are not stated in this regulation. Not guessed; see the fee/vendor pass."
+      },
+      "requires": [],
+      "exceptions": [],
+      "unresolved": [
+        "Annexe I is a TABLE of 'TYPES ET CATÉGORIES DE PERMIS ET NOMBRE DE COUPONS DE TRANSPORT ÉMIS AVEC LE PERMIS'. statedAs preserves the row including its tab structure; column II (0) is the number of transport coupons, NOT a limit.",
+        "The table names the licence «Petit gibier». It does not itself enumerate which species that covers; «petit gibier» is defined at s.2(1) and includes gélinotte huppée, tétras du Canada, tétras à queue fine, lièvre d’Amérique, lièvre arctique and lapin à queue blanche among many others. speciesIds lists only North Ground's certified small-game species, not the full statutory list.",
+        "Arctic hare is included here because s.2(1) names it in «petit gibier». That is a licence fact and does NOT bear on the separate finding that no BAG LIMIT for arctic hare appears in this regulation."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "permis de chasse «Lièvre ou lapin à queue blanche au moyen de collet»",
+      "officialName": {
+        "text": "Lièvre ou lapin à queue blanche au moyen de collet",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "4.\ta)\tLièvre ou lapin à queue blanche au moyen de collet\t \n \t \ti. résident\t0",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, annexe I, art. 4 (a. 7)",
+      "scope": {
+        "speciesIds": [
+          "species:snowshoe-hare",
+          "species:eastern-cottontail"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "i. résident"
+        },
+        "seasonSegment": null,
+        "methods": [
+          "collet"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": "RESIDENT",
+          "age": null,
+          "licenceType": null
+        },
+        "gearClasses": [
+          "7"
+        ],
+        "gearClassesDerived": {
+          "note": "DERIVED — display and filtering only. NEVER used for matching and NEVER reconstructed into a class. The authority's number in scope.gearClasses is the identity.",
+          "classes": [
+            {
+              "class": "7",
+              "definitionStatedAs": "le collet",
+              "definitionCitation": "C-61.1, r. 12, s. 31(7)",
+              "scopedBy": "C-61.1, r. 12, s. 31(7)",
+              "note": "'collet' in this row is the authority's type 7. Recorded so the method string keeps its regulatory identity."
+            }
+          ]
+        }
+      },
+      "obtain": {
+        "channels": [],
+        "infoUrl": null,
+        "note": "Issuing channels are not stated in this regulation. Not guessed; see the fee/vendor pass."
+      },
+      "requires": [],
+      "exceptions": [
+        {
+          "statedAs": {
+            "text": "ce certificat n’est pas requis pour les permis de chasse «Grenouille léopard, Grenouille verte, Ouaouaron» et «Lièvre ou lapin à queue blanche au moyen de collet»",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 12, s. 7.1, first paragraph"
+        }
+      ],
+      "unresolved": [
+        "Annexe I lists ONLY 'i. résident' for this category — no non-resident row, unlike art. 7 Petit gibier which lists both. Recorded as stated. Whether a non-resident may snare is not settled by this table and is not inferred.",
+        "This is the licence the certificate exemption names, so snaring hare or cottontail is the one small-game route in Québec that needs no hunter certificate — a species-and-method-specific carve-out."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "coupons de transport",
+      "officialName": {
+        "text": "coupons de transport",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "Lorsqu’il s’agit d’un permis de chasse au cerf de Virginie, au dindon sauvage, à l’ours noir ou à l’orignal autre que le permis de chasse «Orignal, Correction de zone», les coupons de transport dont le nombre est prévu à l’annexe I sont émis avec le permis.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 9, second paragraph",
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer",
+          "species:wild-turkey",
+          "species:american-black-bear",
+          "species:moose"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "émis avec le permis"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "obtain": {
+        "channels": [],
+        "infoUrl": null,
+        "note": "Issued WITH the licence, not separately obtained."
+      },
+      "requires": [],
+      "exceptions": [],
+      "counts": {
+        "note": "Annexe I column II, verbatim counts per category.",
+        "Cerf de Virginie ailleurs que dans la zone 20": {
+          "résident": 1,
+          "non-résident": 1
+        },
+        "Cerf de Virginie dans la zone 20": {
+          "résident": 2,
+          "non-résident": 2
+        },
+        "Cerf de Virginie, femelle ou mâle, dont les bois mesurent moins de 7 cm pour toutes les zones sauf pour la zone 20": {
+          "résident": 0
+        },
+        "Orignal pour toutes les zones": {
+          "résident": 1,
+          "non-résident": 1
+        },
+        "Orignal sans bois": {
+          "résident": 0
+        },
+        "Ours noir": {
+          "résident": 2,
+          "non-résident": 2
+        },
+        "Ours noir valide pour la zone 13": {
+          "non-résident": 0
+        },
+        "Ours noir valide pour la zone 16": {
+          "non-résident": 0
+        },
+        "Dindon sauvage printemps": {
+          "résident": 2,
+          "non-résident": 2
+        },
+        "Dindon sauvage automne": {
+          "résident": 1,
+          "non-résident": 1
+        },
+        "Petit gibier": {
+          "résident": 0,
+          "non-résident": 0
+        }
+      },
+      "unresolved": [
+        "A COUPON COUNT IS NOT A BAG LIMIT, and the two disagree on purpose. Black bear is issued 2 coupons and s.26 caps the year at 2 but distributes them by zone and season so that some zones allow only 1. Spring turkey is issued 2 coupons while s.27.1 caps the year at 3 across two segments. Use the LIMIT rows for limits and this row only for what is issued.",
+        "«Ours noir valide pour la zone 13» and «zone 16» are listed for 'ii. non-résident' only, with 0 coupons. Recorded as stated; why they differ is not explained by the table."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "expiration du permis",
+      "officialName": {
+        "text": "expiration du permis de chasse",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "Sous réserve du deuxième alinéa, tout permis de chasse expire à la fin de la période de chasse à l’animal ou au groupe d’animaux pour lequel il est délivré ou lorsque l’animal a été identifié à l’aide d’un coupon de transport ou aurait dû l’être conformément au Règlement sur les activités de chasse (chapitre C-61.1, r. 1) ou, dans le cas des permis de cerf sans bois ou de l’orignal sans bois, lorsqu’une personne qui utilise ce permis tue un animal pour lequel il est délivré.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 11, first paragraph",
+      "scope": {
+        "speciesIds": "ALL",
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "tout permis de chasse"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "obtain": {
+        "channels": [],
+        "infoUrl": null,
+        "note": null
+      },
+      "requires": [],
+      "exceptions": [
+        {
+          "statedAs": {
+            "text": "Malgré le premier alinéa, le permis de chasse au petit gibier est valide de sa date de délivrance jusqu’à la date d’expiration qui y est inscrite.",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 12, s. 11, third paragraph"
+        },
+        {
+          "statedAs": {
+            "text": "Tout permis remplacé, conformément à l’article 12, expire à la date de délivrance du nouveau permis.",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 12, s. 11, second paragraph"
+        }
+      ],
+      "unresolved": [
+        "A Québec hunting licence is NOT a licence-year artefact for most species: it expires when the season ends OR when an animal is tagged, whichever comes first. The small-game licence is the exception and runs to a printed date. Any fee or validity model keyed on a licence year will be wrong for big game.",
+        "'ou aurait dû l’être' means the licence can expire on a tagging that should have happened. North Ground cannot observe that and must never assert a licence is still valid."
+      ]
+    },
+    {
+      "category": "SPECIES_CONDITION",
+      "kind": "chasse à l’orignal sans bois — permise seulement dans les cas énumérés",
+      "officialName": {
+        "text": "La chasse à l’orignal sans bois n’est permise que",
+        "lang": "fr-CA"
+      },
+      "state": "CONDITIONAL",
+      "statedAs": {
+        "text": "17. La chasse à l’orignal sans bois n’est permise que: 1°  dans les zones 1 à 12, 14 à 16, 22, 26 et 27, ainsi que les réserves fauniques et les zones d’exploitation contrôlée mentionnées respectivement aux paragraphes 2 et 3 de l’article 2 de l’annexe II pour un titulaire de chacun des permis prévus aux paragraphes a et b de l’article 5 de l’annexe I; 2°  dans les zones 13, 18 et 28, au cours de l’année 2027; 3°  dans la zone 13 pendant une période de chasse au moyen d’un engin de type 11; 4°  dans la partie sud de la zone 19 et la zone 29; 5°  dans les parties de territoires mentionnées à l’article 1 de l’annexe V.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 17",
+      "condition": {
+        "statedAs": {
+          "text": "n’est permise que: [les cinq cas énumérés]",
+          "lang": "fr-CA"
+        }
+      },
+      "scope": {
+        "speciesIds": [
+          "species:moose"
+        ],
+        "animalClass": "orignal sans bois — «tout orignal qui ne porte pas de bois ou dont les bois mesurent moins de 10 cm» (s. 2(1.1))",
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "18",
+            "19 sud",
+            "22",
+            "26",
+            "27",
+            "28",
+            "29"
+          ],
+          "statedAs": "dans les zones 1 à 12, 14 à 16, 22, 26 et 27 ... dans les zones 13, 18 et 28, au cours de l’année 2027 ... dans la zone 13 pendant une période de chasse au moyen d’un engin de type 11 ... dans la partie sud de la zone 19 et la zone 29"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": "titulaire de chacun des permis prévus aux paragraphes a et b de l’article 5 de l’annexe I"
+        },
+        "gearClasses": [
+          "11"
+        ],
+        "gearClassesDerived": {
+          "note": "DERIVED — display and filtering only. NEVER used for matching and NEVER reconstructed into a class. The authority's number in scope.gearClasses is the identity.",
+          "classes": [
+            {
+              "class": "11",
+              "definitionStatedAs": "a)  les arcs ayant une pression d’au moins 18 kg à l’intérieur d’une extension de 0 à 71 cm et les flèches ayant un diamètre de coupe d’au moins 22 mm; b)  les arbalètes ayant une pression d’au moins 54 kg et munies d’un cran de sûreté; le vireton doit avoir une longueur d’au moins 40 cm et la pointe doit avoir un diamètre de coupe d’au moins 22 mm",
+              "definitionCitation": "C-61.1, r. 12, s. 31(11)",
+              "scopedBy": "C-61.1, r. 12, s. 17(3)"
+            }
+          ]
+        }
+      },
+      "composition": {
+        "value": "NARROWS",
+        "statedAs": "Sous réserve de l’article 17, la chasse est permise pour les animaux et aux conditions prévues à l’annexe III",
+        "citation": "C-61.1, r. 12, s. 14, first paragraph"
+      },
+      "exceptions": [
+        {
+          "statedAs": {
+            "text": "Lorsqu’un permis visé au paragraphe b de l’article 5 de l’annexe I est prévu pour une réserve faunique ou une zone d’exploitation contrôlée mentionnées respectivement aux paragraphes 2 ou 3 de l’article 2 de l’annexe II, un tel permis émis pour la zone n’y est pas valide.",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 12, s. 17, second paragraph"
+        }
+      ],
+      "unresolved": [
+        "s.17 OVERRIDES THE SEASON TABLES. Sections 14, 15 and 25 each open 'Sous réserve de l’article 17', so a season in annexe III does not authorise an antlerless moose hunt unless s.17 also permits it. An engine reading the season annexe alone gets this wrong.",
+        "PARAGRAPH 2 IS YEAR-SPECIFIC: zones 13, 18 and 28 are permitted 'au cours de l’année 2027' only. A date-blind reading makes it permanent. Carried verbatim; the year is not generalised.",
+        "Paragraph 3 turns on 'un engin de type 11' — defined in s.31 and carried in the engine-types row.",
+        "The composition value NARROWS is taken from the authority's own 'Sous réserve de l’article 17' in s.14, not inferred from specificity.",
+        "ENGIN TYPE IS THE AUTHORITY'S DECISIVE UNIT HERE AND AN IMPLEMENT LIST CANNOT CARRY IT. s.31 defines type 11 and type 12 with IDENTICAL bow and crossbow paragraphs, word for word; type 12 adds shotgun slugs and muzzleloaders. So a bow-and-crossbow implement list is ambiguous between types 11 and 12, and s.17(3) names exactly one. Verified against s.31 in this same source."
+      ]
+    },
+    {
+      "category": "SPECIES_CONDITION",
+      "kind": "chasse de nuit — permise seulement dans les cas énumérés",
+      "officialName": {
+        "text": "Toute personne peut chasser la nuit que si",
+        "lang": "fr-CA"
+      },
+      "state": "CONDITIONAL",
+      "statedAs": {
+        "text": "21. Toute personne peut chasser la nuit que si elle chasse le lièvre ou le lapin au moyen de collets, la grenouille léopard, la grenouille verte, le ouaouaron ou le raton laveur avec un chien de chasse.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 21, first paragraph",
+      "condition": {
+        "statedAs": {
+          "text": "que si elle chasse le lièvre ou le lapin au moyen de collets, la grenouille léopard, la grenouille verte, le ouaouaron ou le raton laveur avec un chien de chasse",
+          "lang": "fr-CA"
+        }
+      },
+      "scope": {
+        "speciesIds": [
+          "species:snowshoe-hare",
+          "species:eastern-cottontail"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "Toute personne"
+        },
+        "seasonSegment": null,
+        "methods": [
+          "collet"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        },
+        "gearClasses": [
+          "7"
+        ],
+        "gearClassesDerived": {
+          "note": "DERIVED — display and filtering only. NEVER used for matching and NEVER reconstructed into a class. The authority's number in scope.gearClasses is the identity.",
+          "classes": [
+            {
+              "class": "7",
+              "definitionStatedAs": "le collet",
+              "definitionCitation": "C-61.1, r. 12, s. 31(7)",
+              "scopedBy": "C-61.1, r. 12, s. 31(7)",
+              "note": "'collet' in this row is the authority's type 7. Recorded so the method string keeps its regulatory identity."
+            }
+          ]
+        }
+      },
+      "exceptions": [
+        {
+          "statedAs": {
+            "text": "Dans le cas où une personne chasse la nuit le raton laveur avec un chien de chasse, elle doit utiliser un «chien courant» au sens du Règlement sur les activités de chasse (chapitre C-61.1, r. 1) et d’une race «Hound» et informer, avant 16 heures, la Direction de la protection de la faune de la région où elle entend chasser de nuit, de la date et du lieu de cette activité, des personnes qui l’accompagnent, du nom du responsable du groupe et du numéro de son certificat du chasseur ou du piégeur.",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 12, s. 21, second paragraph"
+        }
+      ],
+      "unresolved": [
+        "BOUNDARY WITH THE HOURS LANE, ROUTED NOT DECIDED. This is a permission to hunt AT NIGHT for named species and methods. It is not a sunrise/sunset window and I have not treated it as one. Snaring hare or cottontail at night is lawful here, which also supplies the 'activité de chasse permise' that qualifies the Act's s.30.3 night-possession prohibition.",
+        "The raccoon condition (chien courant, race «Hound», notice before 16:00) is recorded because it is an exception attached to this rule, though raccoon is not a certified North Ground species."
+      ]
+    },
+    {
+      "category": "SPECIES_CONDITION",
+      "kind": "cerf sans bois — permis requis, et l’asymétrie non-résident",
+      "officialName": {
+        "text": "Le résident peut chasser la femelle du cerf de Virginie ou le mâle, dont les bois mesurent moins de 7 cm",
+        "lang": "fr-CA"
+      },
+      "state": "CONDITIONAL",
+      "statedAs": {
+        "text": "18. Le résident peut chasser la femelle du cerf de Virginie ou le mâle, dont les bois mesurent moins de 7 cm, pendant une période prévue à l’article 4 de l’annexe III ou pendant une période prévue à l’article 2 de l’annexe VIII.1 s’il est une personne visée à l’article 22.1, dans une réserve faunique, dans une zone d’exploitation contrôlée, dans une zone ou une partie de zone, s’il est titulaire de chacun des permis prévus aux paragraphes a et c ou a.1 et c de l’article 2 de l’annexe I.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 18, first paragraph",
+      "condition": {
+        "statedAs": {
+          "text": "s’il est titulaire de chacun des permis prévus aux paragraphes a et c ou a.1 et c de l’article 2 de l’annexe I",
+          "lang": "fr-CA"
+        }
+      },
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer"
+        ],
+        "animalClass": "la femelle du cerf de Virginie ou le mâle, dont les bois mesurent moins de 7 cm",
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "dans une réserve faunique, dans une zone d’exploitation contrôlée, dans une zone ou une partie de zone"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "RESIDENT",
+          "age": null,
+          "licenceType": "permis a et c, ou a.1 et c, de l’article 2 de l’annexe I"
+        }
+      },
+      "exceptions": [
+        {
+          "statedAs": {
+            "text": "Lorsqu’un permis visé au paragraphe c de l’article 2 de l’annexe I est prévu pour une réserve faunique ou une zone d’exploitation contrôlée mentionnées respectivement aux paragraphes 2 ou 3 de l’article 1 de l’annexe II, un tel permis émis pour la zone n’y est pas valide, sauf dans le cas de la réserve faunique Rouge-Matawin lorsque le nombre de permis est de 0.",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 12, s. 18, second paragraph"
+        },
+        {
+          "statedAs": {
+            "text": "Sous réserve des articles 7.1, 7.2 et 7.2.1 du Règlement sur les activités de chasse (chapitre C-61.1, r. 1), un non-résident peut chasser la femelle du cerf de Virginie ou le mâle, dont les bois mesurent moins de 7 cm, pendant une période où un résident peut les chasser sans être titulaire du permis prévu au paragraphe c de l’article 2 de l’annexe I.",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 12, s. 18, third paragraph"
+        }
+      ],
+      "unresolved": [
+        "TWO NESTED EXCEPTIONS. The second paragraph invalidates a zone-issued (c) permit inside certain réserves fauniques and zecs — and then carves back out 'sauf dans le cas de la réserve faunique Rouge-Matawin lorsque le nombre de permis est de 0'. An exception to an exception, turning on a quota being zero.",
+        "THE NON-RESIDENT ASYMMETRY IS STATED HERE, unlike the certificate question I left unresolved earlier: a non-resident may hunt antlerless deer WITHOUT the (c) permit a resident needs, during a period when a resident may. It is 'sous réserve des articles 7.1, 7.2 et 7.2.1' of r.1, which were NOT read in this pass, so the qualification is named and unresolved.",
+        "Annexes II, III, V and VIII.1 are referenced and not read; seasons are the Canada lane's."
+      ]
+    },
+    {
+      "category": "PLACE_CONDITION",
+      "kind": "chasse avec chiens — présence et collier",
+      "officialName": {
+        "text": "Lors de toute activité de chasse avec chiens de chasse",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "22. Lors de toute activité de chasse avec chiens de chasse au sens du Règlement sur les activités de chasse (chapitre C-61.1, r. 1), le chasseur doit être présent; de plus, il doit surveiller son chien et vérifier qu’il porte en tout temps un collier sur lequel sont inscrits le nom et le numéro de téléphone du propriétaire.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 12, s. 22",
+      "scope": {
+        "speciesIds": "ALL",
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "Lors de toute activité de chasse avec chiens de chasse"
+        },
+        "seasonSegment": null,
+        "methods": [
+          "chiens de chasse"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": [
+        "'chiens de chasse' is defined in r.1, which was read for orange and possession but not for this definition."
+      ]
+    }
+  ],
+  "absenceEvidence": [
+    {
+      "fact": "BAG_LIMIT — lièvre arctique (species:arctic-hare)",
+      "searchedOn": "2026-09-23",
+      "instruments": [
+        "Règlement sur la chasse (chapitre C-61.1, r. 12), full text, sha256 49ec1a79…"
+      ],
+      "terms": [
+        "lièvre arctique",
+        "lièvre d’Amérique",
+        "lapin à queue blanche",
+        "LIMITES DE CAPTURE"
+      ],
+      "control": {
+        "term": "lièvre d’Amérique",
+        "matched": true,
+        "count": 3,
+        "note": "Matched 3 times by the same method on the same text; 'lapin à queue blanche' matched 7 times. So the zero for a limit on lièvre arctique is a measured absence, not a broken search."
+      },
+      "finding": "'lièvre arctique' appears exactly ONCE in the whole regulation, in the s.2 definition of «petit gibier». It appears nowhere in SECTION IV LIMITES DE CAPTURE. This source states no bag limit for arctic hare.",
+      "closedBy": "NOT CLOSED. This is a statement about this instrument, not about Québec law. A limit may sit in another regulation, in a territory-specific annexe, or in the small-game guide. Recorded as unresolved, NOT as NOT_APPLICABLE and NOT as 'no limit applies'.",
+      "instrumentNote": "Instrument named in full in `instruments`; no bare section numbers are used in this record."
+    }
+  ],
+  "schemaGapsReported": [
+    "PERIOD 'par séjour' (s.24(2), zone 20 deer): the authority's period is per STAY, which is none of DAY | SEASON | LICENCE_YEAR. Recorded as SEASON with a periodNote saying it is not the source's word.",
+    "PER-GROUP LIMITS (s.25): '1 orignal, par 2 chasseurs, par année' and '1 orignal, par 3 chasseurs' divide the limit across hunters. value.count carries no divisor, so a naive read is 2x-3x too permissive.",
+    "PERIODLESS STANDING CAP (companion package, r.1 s.18): a possession cap with no period stated at all, where period is required and has no default.",
+    "OBSERVATION, not yet a gap: an AUTHORIZATION whose validity ends on an EVENT (tagging an animal) rather than a date — s.11. `obtain`/`requires` carry prerequisites but nothing carries event-based expiry. Flagged before it becomes a wrong date.",
+    "ENGIN TYPE HAS NO STRUCTURED HOME. The authority's decisive unit for method is «engin de type N», referenced throughout r.12 — s.17(3), s.34.1, annexe III — and by r.1 s.17.3(1) for the orange exemption. The schema's scope.methods is a string list, which cannot carry it: s.31 defines types 11 and 12 with identical bow/crossbow paragraphs, so 'bow, crossbow' is ambiguous between two types that the law treats differently. I have added a non-schema scope.enginTypes field on the affected rows rather than flattening; it needs a real home or a ruling to drop it."
+  ],
+  "laneNotes": [
+    "Seasons, zone geography and legal hunting hours are deliberately absent — the Canada lane owns them. r.12 s.14's turkey window was routed to the moderator rather than encoded.",
+    "No English text here is the ministry's.",
+    "Species covered by at least one row: white-tailed deer, moose, black bear, wild turkey, ruffed grouse, sharp-tailed grouse, spruce grouse, snowshoe hare, eastern cottontail. NOT covered: arctic hare (see absenceEvidence).",
+    "Licence pass added 2026-09-23: SECTION II CERTIFICAT ET PERMIS and ANNEXE I, from the same source and the same sha256 as the limits rows. Fees are NOT in this regulation and are a separate pass.",
+    "Critical-exceptions pass added 2026-09-23: s.17, s.18, s.21 and s.22 from the same source and sha256. The Act's prohibitions are a separate package, source:ca-qc-loi-conservation-faune.",
+    "Re-emitted 2026-09-23 against the landed contract: scope.enginTypes became scope.gearClasses (the authority's own numbers as identity), implements moved to gearClassesDerived marked display-only, and EVERY citation in every row now carries its instrument — no bare section numbers anywhere, per 'a citation without its instrument is not a citation'."
+  ]
+}

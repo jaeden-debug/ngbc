@@ -1,0 +1,426 @@
+{
+  "package": {
+    "jurisdictionId": "jurisdiction:ca-qc",
+    "preparedBy": "admin-access (species/requirements research lane)",
+    "preparedOn": "2026-09-23"
+  },
+  "authority": {
+    "name": "Éditeur officiel du Québec — Légis Québec (Publications du Québec)",
+    "lang": "fr-CA"
+  },
+  "source": {
+    "id": "source:ca-qc-loi-conservation-faune",
+    "title": "Loi sur la conservation et la mise en valeur de la faune",
+    "url": "https://www.legisquebec.gouv.qc.ca/fr/document/lc/C-61.1",
+    "tier": "LAW",
+    "version": "chapitre C-61.1",
+    "retrievedAt": "2026-09-23",
+    "sha256": "99b640838c9a01803c40777f089f71f0e44c7f3dbf8a0b98bc4a8b72761a70d5",
+    "incorporates": [
+      "Code criminel (L.R.C. 1985, c. C-46), art. 320.28(5) — the drug list in s.33. NOT read.",
+      "Règlement sur la chasse (C-61.1, r. 12) — the quantities s.34 makes an offence to exceed, and s.21's night-hunting permissions that qualify s.30.3."
+    ],
+    "inForce": {
+      "state": "IN_FORCE",
+      "statedAs": "À jour au 10 juin 2026",
+      "asOf": "2026-06-10",
+      "supersededBy": null,
+      "checkedOn": "2026-09-23"
+    },
+    "sourceNotes": [
+      "NOTE THE DIFFERENT CURRENCY DATE. This Act is 'À jour au 10 juin 2026'; the three regulations in this lane are 'À jour au 1er mai 2026'. Instruments in one family do not share an asOf, so currency must be checked per instrument and never inherited from a sibling.",
+      "sha256 of document.body.innerText, 200414 characters.",
+      "Read in a browser; legisquebec.gouv.qc.ca returns 403 to curl and WebFetch."
+    ]
+  },
+  "requirements": [
+    {
+      "category": "METHOD",
+      "kind": "véhicule, aéronef ou embarcation motorisée",
+      "officialName": {
+        "text": "Nul ne peut",
+        "lang": "fr-CA"
+      },
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "Nul ne peut pourchasser, mutiler ou tuer volontairement un animal avec un véhicule, un aéronef ou une embarcation motorisée.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, s. 27",
+      "scope": {
+        "speciesIds": "ALL",
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": [
+          "véhicule",
+          "aéronef",
+          "embarcation motorisée"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "aéronef",
+      "officialName": {
+        "text": "Nul ne peut",
+        "lang": "fr-CA"
+      },
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "Nul ne peut utiliser un aéronef pour repérer ou pour rabattre un animal afin qu’il soit chassé.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, s. 27.1",
+      "scope": {
+        "speciesIds": "ALL",
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": [
+          "aéronef"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": [
+        "The provision continues beyond the sentence captured ('Dans le présent a…'). The remainder was not read and may qualify this rule."
+      ]
+    },
+    {
+      "category": "METHOD",
+      "kind": "projecteur la nuit",
+      "officialName": {
+        "text": "Nul ne peut",
+        "lang": "fr-CA"
+      },
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "Nul ne peut chasser le gros gibier la nuit avec un projecteur.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, s. 30.1",
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer",
+          "species:moose",
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": [
+          "projecteur"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": [
+        "Applies to «gros gibier». r.12 s.2(1) defines «petit gibier» by enumeration but the Act's «gros gibier» was not located in this pass; speciesIds lists Québec's certified big game and may be incomplete.",
+        "s.30.1 second paragraph creates a PRESUMPTION: possession at night of a projector and a firearm, crossbow or bow in a place frequented by big game is presumed to be for hunting, absent contrary proof. That is an evidentiary rule, not a hunting rule, and is not encoded as one.",
+        "s.30.1 third paragraph defines night FOR THAT PRESUMPTION ONLY: 'la nuit est la période de temps entre une heure et demie après le coucher du soleil et une heure et demie avant son lever.' This is NOT legal hunting hours and must not be used as them — that is the Canada lane's assignment. Recorded because a reader who finds a sunset-relative definition in the Act will be tempted to use it."
+      ]
+    },
+    {
+      "category": "METHOD",
+      "kind": "vision nocturne, imagerie thermique",
+      "officialName": {
+        "text": "Nul ne peut",
+        "lang": "fr-CA"
+      },
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "Nul ne peut utiliser un réflecteur ou un appareil d’éclairage, de vision nocturne ou d’imagerie thermique la nuit pour déceler la présence du gros gibier dans un endroit fréquenté par celui-ci.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, s. 30.2",
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer",
+          "species:moose",
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": [
+          "réflecteur",
+          "appareil d’éclairage",
+          "vision nocturne",
+          "imagerie thermique"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": [
+        "r.12 s.30(1) separately permits 'un appareil optique servant à l’observation visuelle directe par le chasseur autre qu’un équipement de vision nocturne'. The two provisions agree; recorded from both so neither is read alone."
+      ]
+    },
+    {
+      "category": "METHOD",
+      "kind": "arme à feu chargée la nuit",
+      "officialName": {
+        "text": "Nul ne peut",
+        "lang": "fr-CA"
+      },
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "Nul ne peut être en possession la nuit, dans un endroit fréquenté par le gibier, d’une arme à feu chargée ou d’une arbalète armée, sans excuse raisonnable ou à moins de pratiquer une activité de chasse permise ou d’être autorisé, en vertu de la loi, en raison de son emploi ou de ses fonctions, à être en possession d’une arme à feu.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, s. 30.3",
+      "scope": {
+        "speciesIds": "ALL",
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": [
+          "arme à feu chargée",
+          "arbalète armée"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [
+        {
+          "statedAs": {
+            "text": "sans excuse raisonnable ou à moins de pratiquer une activité de chasse permise ou d’être autorisé, en vertu de la loi, en raison de son emploi ou de ses fonctions, à être en possession d’une arme à feu",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, s. 30.3"
+        }
+      ],
+      "unresolved": [
+        "THE EXCEPTION IS INSIDE THE PROHIBITING SENTENCE and reverses it for a lawful night hunt — r.12 s.21 permits snaring hare or rabbit and hunting frogs and raccoon at night. Someone lawfully snaring hare at night is 'pratiquant une activité de chasse permise'. Encoding s.30.3 without its trailing clause would make a legal hunt look unlawful."
+      ]
+    },
+    {
+      "category": "METHOD",
+      "kind": "reproduction artificielle (leurre d’agent)",
+      "officialName": {
+        "text": "Nul ne peut",
+        "lang": "fr-CA"
+      },
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "Nul ne peut tirer ou tenter de le faire, à l’aide d’une arme à feu, d’une arbalète ou d’un arc, sur une reproduction artificielle d’un animal ou partie d’animal installée par un agent de protection de la faune dans le cadre de l’application de la présente loi.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, s. 30.4",
+      "scope": {
+        "speciesIds": "ALL",
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "dispositif de déclenchement à distance",
+      "officialName": {
+        "text": "Nul ne peut",
+        "lang": "fr-CA"
+      },
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "Nul ne peut faire usage d’un dispositif qui relie une arme à feu, un arc ou une arbalète à un mécanisme qui peut en provoquer la décharge ou la détente, sans que la personne ne l’actionne elle-même.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, s. 31",
+      "scope": {
+        "speciesIds": "ALL",
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "poison, explosif, substance délétère, décharge électrique",
+      "officialName": {
+        "text": "Nul ne peut",
+        "lang": "fr-CA"
+      },
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "Nul ne peut utiliser un poison, un explosif, une substance délétère ou une décharge électrique pour chasser ou piéger.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, s. 32",
+      "scope": {
+        "speciesIds": "ALL",
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": [
+          "poison",
+          "explosif",
+          "substance délétère",
+          "décharge électrique"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "alcool ou drogue",
+      "officialName": {
+        "text": "Nul ne peut",
+        "lang": "fr-CA"
+      },
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "Nul ne peut chasser alors qu’il est sous l’influence d’une boisson alcoolisée ou d’une drogue comprise dans les types de drogue visés au paragraphe 5 de l’article 320.28 du Code criminel (L.R.C. 1985, c. C-46), notamment le cannabis.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, s. 33",
+      "scope": {
+        "speciesIds": "ALL",
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": [
+        "Incorporates Criminal Code s.320.28(5) by reference. That federal provision was NOT read in this pass, so the drug list is named but not resolved. 'notamment le cannabis' is the Act's own example, not an exhaustive list."
+      ]
+    },
+    {
+      "category": "METHOD",
+      "kind": "dépassement de la limite",
+      "officialName": {
+        "text": "Nul ne peut",
+        "lang": "fr-CA"
+      },
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "Nul ne peut tuer ou capturer des animaux au-delà de la quantité déterminée par règlement.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, s. 34",
+      "scope": {
+        "speciesIds": "ALL",
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": [
+        "The Act creates the offence; the quantities are in r.12 SECTION IV, carried in the companion package. Neither states the numbers without the other."
+      ]
+    }
+  ],
+  "absenceEvidence": [],
+  "laneNotes": [
+    "THIS IS THE 'DIFFERENT INSTRUMENT FROM THE MATCHING TITLE' SHAPE. Every rule here would make an otherwise-legal Québec hunt unlawful, and NONE of them is in the Règlement sur la chasse. A lane reading only the regulation whose title matches the question would have found none of it.",
+    "All ten rows are PROHIBITED on the authority's own words — each begins 'Nul ne peut'. None is the complement of a permitted list.",
+    "Legal hunting hours are NOT in this package. s.30.1's sunset-relative definition of night is captured only as context for its own presumption, with an explicit warning against reusing it as hunting hours.",
+    "Re-emitted 2026-09-23 against the landed contract: scope.enginTypes became scope.gearClasses (the authority's own numbers as identity), implements moved to gearClassesDerived marked display-only, and EVERY citation in every row now carries its instrument — no bare section numbers anywhere, per 'a citation without its instrument is not a citation'."
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "crossCheck": {
+    "jurisdictionId": "jurisdiction:ca-qc",
+    "preparedBy": "admin-access (species/requirements research lane)",
+    "preparedOn": "2026-09-23",
+    "purpose": "Cross-check the ministry's OFFICIAL_SUMMARY against the LAW-tier regulations already encoded. Disagreements only; agreements are counted, not listed. The regulation outranks the summary throughout — a disagreement is reported, never used to change an encoding."
+  },
+  "summarySource": {
+    "id": "source:ca-qc-chasse-sportive-guide",
+    "title": "Chasse sportive au Québec 2024-2026",
+    "url": "https://cdn-contenu.quebec.ca/cdn-contenu/chasse/Documents/regles-chasse-2024-2026.pdf",
+    "tier": "OFFICIAL_SUMMARY",
+    "version": "2024-2026",
+    "retrievedAt": "2026-09-23",
+    "bytes": 3314417,
+    "pages": 206,
+    "generatedStatedAs": "Document généré le 28 novembre 2025 | 06 h 20",
+    "inForce": {
+      "state": "UNSTATED",
+      "statedAs": "The document states a generation timestamp and an edition range. It carries no 'in force' or repeal statement of its own.",
+      "asOf": null,
+      "checkedOn": "2026-09-23"
+    },
+    "instrumentNote": "Read with pypdf after a crude stream/paren extraction returned zero matches for every term including ones certainly present. That zero was a BROKEN INSTRUMENT, not a finding, and is recorded because reporting it as an absence would have been the exact failure the control rule exists to prevent."
+  },
+  "editionFinding": {
+    "severity": "HIGH — affects whether this document may be used as a cross-check at all",
+    "finding": "The only general-rules summary at the ministry's CDN is the 2024-2026 edition. A parallel 2026-2028 URL returns HTTP 404. Its season tables are headed 'Période de chasse 2024' and 'Période de chasse 2025', and its own footer reads 'Chasse sportive au Québec 2024-2026'.",
+    "consequence": "The summary is behind BOTH the regulations encoded here (all 'À jour au 1er mai 2026') and the ministry's own small-game seasons document (2026-2028). So its season content is superseded and is NOT cross-checked. Only durable requirement content — orange, limits, licence — is compared below, and even there a disagreement may reflect a change since the edition rather than a misstatement.",
+    "notClosed": "A current edition may exist at a URL I did not find. 'Not found at the parallel path' is not 'not published'."
+  },
+  "disagreements": [
+    {
+      "id": "QC-XC-1",
+      "severity": "HIGH — safety-relevant, and it is the exact substitution the contract now forbids",
+      "topic": "Hunter orange — the big-game exemption test",
+      "regulationStatedAs": {
+        "text": "lors d’une chasse à l’orignal, au cerf de Virginie ou à l’ours noir durant une période de chasse à ces gros gibiers au moyen d’un engin de type 6 ou 11 au sens du Règlement sur la chasse (chapitre C-61.1, r. 12)",
+        "lang": "fr-CA",
+        "citation": "C-61.1, r. 1, s. 17.3(1)"
+      },
+      "summaryStatedAs": {
+        "text": "La chasse à l'orignal, au cerf de Virginie ou à l'ours noir durant la saison où seule la chasse à l'arc ou à l'arbalète est permise.",
+        "lang": "fr-CA",
+        "citation": "Chasse sportive au Québec 2024-2026, p. 149, « Port obligatoire du dossard de chasse »"
+      },
+      "analysis": "These are two different tests. The regulation's turns on the GEAR CLASS named for the period — engin de type 6 or 11. The summary's turns on whether the SEASON permits only bow or crossbow, stated in implements. That is a gear class restated as an implement list, which is precisely what the landed contract forbids, and the ministry does it in its own summary of the one requirement whose absence gets somebody shot. The distinction is live: type 6 is BOW ONLY and requires steel-headed arrows; type 11 admits crossbows and requires no steel head. A reader of the summary cannot tell that a crossbow is outside type 6.",
+      "whetherOutcomesDiverge": "UNDETERMINED. Establishing whether any current season makes the two tests give different answers requires annexe III of C-61.1, r. 12, which is the Canada lane's assignment and was not read here. The divergence in the TEST is established; the divergence in OUTCOME is not claimed.",
+      "actionTaken": "None. The encoding follows the regulation and already carries scope.gearClasses ['6','11']. Reported, not reconciled."
+    },
+    {
+      "id": "QC-XC-2",
+      "severity": "MEDIUM — omitted exemptions, one of them a rights question",
+      "topic": "Hunter orange — two exemptions present in law and absent from the summary",
+      "regulationStatedAs": {
+        "text": "2°  aux bénéficiaires de la Convention de la Baie James et du Nord québécois et aux bénéficiaires de la Convention du Nord-Est québécois dans les territoires de ces conventions; … 5°  lors d’une chasse à l’arc ou à l’arbalète dans un endroit où seule la chasse au moyen d’un engin de chasse autre qu’une arme à feu est permise;",
+        "lang": "fr-CA",
+        "citation": "C-61.1, r. 1, s. 17.3(2) and s. 17.3(5)"
+      },
+      "summaryStatedAs": {
+        "text": "[absent — the summary's exception list has seven items and contains neither]",
+        "lang": "fr-CA",
+        "citation": "Chasse sportive au Québec 2024-2026, p. 149"
+      },
+      "analysis": "The regulation's s.17.3 has seven paragraphs; the summary lists seven bullets, but they are not the same seven — it merges s.17.3(3) and (4) into one sentence and drops (2) and (5). The failure direction for an omitted EXEMPTION is a hunter wearing orange when the law does not require it, which is safe. The James Bay and Northeastern Québec Agreement beneficiaries omission is nonetheless a rights question rather than a safety one.",
+      "actionTaken": "None. All seven regulation paragraphs are already encoded as separate exception entries."
+    },
+    {
+      "id": "QC-XC-3",
+      "severity": "MEDIUM — the summary narrows and renames the territories",
+      "topic": "Hunter orange — archery-sector exemption, scope wording",
+      "regulationStatedAs": {
+        "text": "3°  lors d’une chasse à l’arc ou à l’arbalète dans un secteur de chasse réservé à l’usage exclusif de l’arc ou de l’arbalète, dans une réserve faunique ou dans une zone d’exploitation contrôlée; 4°  lors d’une chasse dans un secteur d’un territoire sur lequel des droits exclusifs de chasse ont été donnés à bail et que tous les chasseurs y utilisent un arc ou une arbalète pour la chasse;",
+        "lang": "fr-CA",
+        "citation": "C-61.1, r. 1, s. 17.3(3) and s. 17.3(4)"
+      },
+      "summaryStatedAs": {
+        "text": "La chasse à l'arc ou à l'arbalète dans un secteur de chasse réservé à l'usage exclusif de l'arc ou de l'arbalète dans un territoire faunique et lorsque tous les chasseurs utilisent un arc ou une arbalète au cours d'une chasse dans un secteur d'une pourvoirie à droits exclusifs de chasse.",
+        "lang": "fr-CA",
+        "citation": "Chasse sportive au Québec 2024-2026, p. 149"
+      },
+      "analysis": "Three changes in one sentence. The regulation's «réserve faunique ou zone d’exploitation contrôlée» becomes «territoire faunique», a different and broader term. The regulation's «territoire sur lequel des droits exclusifs de chasse ont été donnés à bail» becomes «pourvoirie à droits exclusifs de chasse», which is a narrower class of holder. And two independent paragraphs are joined by «et», which reads as one cumulative condition where the law states two alternatives. Rule 7 of the contract is exactly this: a conjunction means what it joins, and the tell is whether the noun repeats.",
+      "actionTaken": "None. Encoded from the regulation as two separate exceptions."
+    },
+    {
+      "id": "QC-XC-4",
+      "severity": "LOW — the summary states an obligation the regulation does not",
+      "topic": "Hunter orange — backpack",
+      "regulationStatedAs": {
+        "text": "doit porter un vêtement de façon à ce que soit visible, en tout temps et en tout angle, une surface continue de couleur orangé fluorescent d’au moins 2 580 cm2 s’étalant sur le dos, les épaules et la poitrine",
+        "lang": "fr-CA",
+        "citation": "C-61.1, r. 1, s. 17.2"
+      },
+      "summaryStatedAs": {
+        "text": "Vous devez vous assurer de respecter cette notion de visibilité même lorsque vous portez un sac à dos.",
+        "lang": "fr-CA",
+        "citation": "Chasse sportive au Québec 2024-2026, p. 149"
+      },
+      "analysis": "The regulation says nothing about backpacks. The summary's sentence is arguably entailed by «en tout temps et en tout angle», but it is the ministry's gloss, not its enacted text. Recorded so that a backpack rule is never attributed to the regulation. The summary also adds «(400 pouces carrés)», an imperial conversion absent from the regulation.",
+      "actionTaken": "None. Not encoded, because it is not in the law."
+    },
+    {
+      "id": "QC-XC-5",
+      "severity": "MEDIUM — the summary omits the small-game limits entirely",
+      "topic": "Bag and possession limits for small game",
+      "regulationStatedAs": {
+        "text": "5 oiseaux, en tout, faisant partie des espèces gélinotte huppée, tétras à queue fine, perdrix grise et tétras du Canada [daily] … qu’au plus 15 oiseaux faisant partie des espèces suivantes: la gélinotte huppée, la perdrix grise, le tétras à queue fine ou le tétras du Canada [possession]",
+        "lang": "fr-CA",
+        "citation": "C-61.1, r. 12, s. 27(1) and C-61.1, r. 1, s. 18"
+      },
+      "summaryStatedAs": {
+        "text": "[absent]",
+        "lang": "fr-CA",
+        "citation": "Chasse sportive au Québec 2024-2026, searched whole document"
+      },
+      "control": {
+        "term": "limite de capture",
+        "matched": true,
+        "count": 5,
+        "note": "'limite de capture' matches 5 times in the same text by the same method — all of them about moose — so the search works and the absence of a small-game limit is measured. Searches for 'par jour', 'nombre maximal', 'maximum de N' and '5 oiseaux' all returned 0."
+      },
+      "analysis": "A hunter relying on the ministry's own general-rules summary would not learn that small game carries a five-bird aggregate daily limit or a fifteen-bird possession cap. This is not a contradiction of the regulation; it is a gap in the summary, and it is the kind that produces confident overharvest.",
+      "actionTaken": "None. Both limits are encoded from their regulations."
+    },
+    {
+      "id": "QC-XC-6",
+      "severity": "LOW — terminology, and it is a search trap",
+      "topic": "The word for the orange garment",
+      "regulationStatedAs": {
+        "text": "vêtement de couleur orangé fluorescent",
+        "lang": "fr-CA",
+        "citation": "C-61.1, r. 1, SECTION III.1"
+      },
+      "summaryStatedAs": {
+        "text": "dossard",
+        "lang": "fr-CA",
+        "citation": "Chasse sportive au Québec 2024-2026, 14 occurrences"
+      },
+      "analysis": "«dossard» appears 14 times in the summary and NEVER in the regulation, which uses «vêtement de couleur orangé fluorescent» throughout. Anyone searching the enacted text for the word the ministry itself uses finds nothing. Same shape as the accent trap that made 'orange' miss 'orangé': the popular term and the legal term are different strings.",
+      "actionTaken": "None. Recorded as a search-term note for anyone re-reading these instruments."
+    }
+  ],
+  "agreements": {
+    "count": 8,
+    "note": "Counted, not listed, per instruction. Where the summary and the regulations agree they agree exactly, including on the 2 580 cm² area, the 1 December to 31 March window for coyote, wolf and fox, the wild turkey exemption, the frog exemption, the hare and rabbit snare exemption, the bird-of-prey exemption, the turkey hunting window ending at midday, and — notably — the moose group limit, which the summary states as «la limite de capture annuelle pour l'orignal est de un orignal pour trois chasseurs» in the named zecs, independently confirming the per-group structure reported as schema gap 2."
+  },
+  "conclusion": "Six disagreements, none of which changes an encoding. The regulation outranks the summary and every row already follows it. The most valuable is QC-XC-1: the ministry restates a gear-class test as an implement test on the hunter orange exemption — the exact substitution the engine was just redesigned to refuse, committed by the authority in its own summary. That is the second finding here, and the one nobody else would have found: it is not that our encoding is wrong, it is that the ministry's summary misstates its own law in the direction the contract now treats as unsafe."
+}

@@ -1,0 +1,235 @@
+{
+  "package": {
+    "jurisdictionId": "jurisdiction:ca-qc",
+    "preparedBy": "admin-access (species/requirements research lane)",
+    "preparedOn": "2026-09-23"
+  },
+  "authority": {
+    "name": "Éditeur officiel du Québec — Légis Québec (Publications du Québec)",
+    "lang": "fr-CA"
+  },
+  "source": {
+    "id": "source:ca-qc-reglement-activites-chasse",
+    "title": "Règlement sur les activités de chasse",
+    "url": "https://www.legisquebec.gouv.qc.ca/fr/document/rc/C-61.1,%20r.%201",
+    "tier": "LAW",
+    "version": "chapitre C-61.1, r. 1",
+    "retrievedAt": "2026-09-23",
+    "sha256": "da19dc6fdbfb43471b29a60b3a6689bc4900f6623930892f043bcc2290e7d1a1",
+    "incorporates": [
+      "Règlement sur les zones de pêche et de chasse (chapitre C-61.1, r. 34) — named by s.17.2 as the source of the hunting zones in which the obligation applies. NOT read in this pass.",
+      "Règlement sur la chasse (chapitre C-61.1, r. 12) — named by s.17.3(1) for 'engin de type 6 ou 11' and for the definition of 'oiseaux migrateurs'. Read; see package source:ca-qc-reglement-chasse."
+    ],
+    "inForce": {
+      "state": "IN_FORCE",
+      "statedAs": "À jour au 1er mai 2026",
+      "asOf": "2026-05-01",
+      "supersededBy": null,
+      "checkedOn": "2026-09-23"
+    },
+    "sourceNotes": [
+      "Page carries 'Ce document a valeur officielle.' and no 'Abrogé le' line; the absence of a repeal line was verified by the same extraction that found the currency line.",
+      "sha256 is of document.body.innerText as rendered by the publisher, 35168 characters, not of a PDF.",
+      "legisquebec.gouv.qc.ca returns HTTP 403 to curl and to the WebFetch tool. Read in a real browser. This is a CDN refusing non-browser clients, not an access control on the document."
+    ]
+  },
+  "requirements": [
+    {
+      "category": "VISIBILITY",
+      "kind": "vêtement de couleur orangé fluorescent",
+      "officialName": {
+        "text": "vêtement de couleur orangé fluorescent",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "Sous réserve de l’article 17.3, tout chasseur en activité de chasse, guide ou autre personne qui accompagne un chasseur en activité de chasse dans les zones de chasse prévues au Règlement sur les zones de pêche et de chasse (chapitre C-61.1, r. 34), doit porter un vêtement de façon à ce que soit visible, en tout temps et en tout angle, une surface continue de couleur orangé fluorescent d’au moins 2 580 cm2 s’étalant sur le dos, les épaules et la poitrine.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 1, s. 17.2 (D. 332-2008, a. 24)",
+      "northGroundSummary": {
+        "text": "North Ground's summary, NOT the ministry's words: a continuous 2,580 cm² of fluorescent orange must be visible at all times and from every angle, across the back, shoulders and chest. It binds the hunter, a guide, and anyone accompanying a hunter.",
+        "lang": "en-CA"
+      },
+      "scope": {
+        "speciesIds": "ALL",
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "dans les zones de chasse prévues au Règlement sur les zones de pêche et de chasse (chapitre C-61.1, r. 34)"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        },
+        "gearClasses": [
+          "6",
+          "11"
+        ],
+        "gearClassesDerived": {
+          "note": "DERIVED — display and filtering only. NEVER used for matching and NEVER reconstructed into a class. The authority's number in scope.gearClasses is the identity.",
+          "classes": [
+            {
+              "class": "6",
+              "definitionStatedAs": "les arcs ayant une pression d’au moins 18 kg à l’intérieur d’une extension de 0 à 71 cm et les flèches à tête d’acier ayant un diamètre de coupe d’au moins 22 mm",
+              "definitionCitation": "C-61.1, r. 12, s. 31(6)",
+              "scopedBy": "C-61.1, r. 1, s. 17.3(1)",
+              "note": "Type 6 requires STEEL-HEADED arrows («flèches à tête d’acier») and is BOW ONLY — no crossbow. Type 11 includes crossbows and does not require steel heads. The orange exemption names both, but they are not interchangeable."
+            },
+            {
+              "class": "11",
+              "definitionStatedAs": "a) les arcs ... b) les arbalètes ayant une pression d’au moins 54 kg et munies d’un cran de sûreté ...",
+              "definitionCitation": "C-61.1, r. 12, s. 31(11)",
+              "scopedBy": "C-61.1, r. 1, s. 17.3(1)",
+              "note": "Type 11 is also word-for-word identical to type 12's paragraphs a) and b). The exemption names type 11 and NOT type 12, so a bow-or-crossbow implement list cannot decide whether the exemption applies."
+            }
+          ]
+        }
+      },
+      "supporting": [
+        {
+          "label": "definition of «orangé fluorescent»",
+          "statedAs": {
+            "text": "Dans la présente section, l’expression «orangé fluorescent» désigne une couleur dont la longueur d’onde dominante est comprise entre 595 et 605 nm, la pureté d’excitation est d’au moins 85% et le facteur minimal de luminance lumineuse est de 40%.",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 1, s. 17.1"
+        }
+      ],
+      "exceptions": [
+        {
+          "statedAs": {
+            "text": "lors d’une chasse à l’orignal, au cerf de Virginie ou à l’ours noir durant une période de chasse à ces gros gibiers au moyen d’un engin de type 6 ou 11 au sens du Règlement sur la chasse (chapitre C-61.1, r. 12), lors d’une chasse à la corneille d’Amérique, au pigeon biset, à la grenouille léopard, à la grenouille verte, au ouaouaron, au lièvre arctique ou d’Amérique ou au lapin à queue blanche au moyen d’un collet, aux oiseaux migrateurs au sens du Règlement sur la chasse ou, du 1er décembre au 31 mars lors d’une chasse au coyote, au loup ou au renard roux, croisé ou argenté;",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 1, s. 17.3(1)"
+        },
+        {
+          "statedAs": {
+            "text": "aux bénéficiaires de la Convention de la Baie James et du Nord québécois et aux bénéficiaires de la Convention du Nord-Est québécois dans les territoires de ces conventions;",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 1, s. 17.3(2)"
+        },
+        {
+          "statedAs": {
+            "text": "lors d’une chasse à l’arc ou à l’arbalète dans un secteur de chasse réservé à l’usage exclusif de l’arc ou de l’arbalète, dans une réserve faunique ou dans une zone d’exploitation contrôlée;",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 1, s. 17.3(3)"
+        },
+        {
+          "statedAs": {
+            "text": "lors d’une chasse dans un secteur d’un territoire sur lequel des droits exclusifs de chasse ont été donnés à bail et que tous les chasseurs y utilisent un arc ou une arbalète pour la chasse;",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 1, s. 17.3(4)"
+        },
+        {
+          "statedAs": {
+            "text": "lors d’une chasse à l’arc ou à l’arbalète dans un endroit où seule la chasse au moyen d’un engin de chasse autre qu’une arme à feu est permise;",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 1, s. 17.3(5)"
+        },
+        {
+          "statedAs": {
+            "text": "lors d’une chasse au petit gibier à l’aide d’un oiseau de proie et qu’aucun participant n’est en possession d’une arme;",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 1, s. 17.3(6)"
+        },
+        {
+          "statedAs": {
+            "text": "lors d’une chasse au dindon sauvage.",
+            "lang": "fr-CA"
+          },
+          "citation": "C-61.1, r. 1, s. 17.3(7)"
+        }
+      ],
+      "unresolved": [
+        "s.17.2 binds 'dans les zones de chasse prévues au Règlement sur les zones de pêche et de chasse (chapitre C-61.1, r. 34)'. I did not read r. 34 in this pass, so I cannot state whether every Québec hunting location falls inside a zone it establishes. Recorded as JURISDICTION with the sentence quoted rather than widened to 'everywhere in Québec' or narrowed to a designation list.",
+        "The s.17.3(1) exception turns on 'un engin de type 6 ou 11'. Those types are defined in r. 12 s.31 and are carried in the companion package; the mapping from a season segment's permitted implements to an engine TYPE is not stated in either regulation and is not inferred here.",
+        "'en activité de chasse' is not defined in this regulation. Whether it covers travel to and from a hunting site is unsettled by this source.",
+        "THE ORANGE EXEMPTION TURNS ON AN ENGIN TYPE, NOT ON A WEAPON. s.17.3(1) exempts big-game hunting 'au moyen d’un engin de type 6 ou 11'. Type 6 is bow-only with steel-headed arrows; type 11 adds crossbows; type 12 shares type 11's entire archery definition and is NOT named. An engine holding 'bow, crossbow' cannot tell whether this exemption applies, and getting it wrong means telling a hunter they need no orange when they do."
+      ]
+    },
+    {
+      "category": "LIMIT",
+      "kind": "POSSESSION",
+      "officialName": {
+        "text": "POSSESSION D’ANIMAUX",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "Toute personne ne peut avoir en sa possession qu’au plus 15 oiseaux faisant partie des espèces suivantes: la gélinotte huppée, la perdrix grise, le tétras à queue fine ou le tétras du Canada et qu’au plus 30 oiseaux faisant partie des espèces suivantes: le lagopède alpin ou le lagopède des saules.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 1, s. 18 (D. 858-99, a. 18)",
+      "period": "LICENCE_YEAR",
+      "periodNote": "NOT STATED BY THE SOURCE. s.18 says only 'avoir en sa possession' with no period at all. period is a required field with no default, and this is the least-wrong value available; treat it as unresolved, below, not as evidence.",
+      "value": {
+        "count": 15,
+        "statedAs": "qu’au plus 15 oiseaux faisant partie des espèces suivantes: la gélinotte huppée, la perdrix grise, le tétras à queue fine ou le tétras du Canada"
+      },
+      "appliesAcross": {
+        "scope": "AGGREGATE",
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:sharp-tailed-grouse",
+          "species:spruce-grouse"
+        ],
+        "unmappedSpecies": [
+          "perdrix grise (Perdix perdix) — grey partridge; no canonical North Ground species record, and it counts toward this aggregate"
+        ],
+        "statedAs": "qu’au plus 15 oiseaux faisant partie des espèces suivantes: la gélinotte huppée, la perdrix grise, le tétras à queue fine ou le tétras du Canada"
+      },
+      "subCaps": [],
+      "derivedByAuthority": null,
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:sharp-tailed-grouse",
+          "species:spruce-grouse"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "Toute personne"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "composition": {
+        "value": "ALTERNATIVE",
+        "statedAs": "Le nombre d’animaux qu’une personne est autorisée à posséder en vertu du premier alinéa ne se cumule pas avec celui qu’elle est autorisée à posséder en vertu d’un autre règlement édicté en vertu de la Loi sur la conservation et la mise en valeur de la faune (chapitre C-61.1).",
+        "citation": "C-61.1, r. 1, s. 18, second paragraph"
+      },
+      "exceptions": [],
+      "unresolved": [
+        "THE PERIOD IS NOT STATED. s.18 caps what a person may 'avoir en sa possession' and attaches no period to it — it reads as a standing cap on holdings at any moment, not a per-day or per-year accumulation. The schema requires a period with no default, so LICENCE_YEAR is recorded with this note. If the schema can carry a periodless standing cap, this row should change; I have reported it to the moderator as a possible contract gap rather than picking a period that reads as evidence.",
+        "A second aggregate of 30 birds covers lagopède alpin and lagopède des saules. Neither has a canonical North Ground species record, so no row is written for it. Recorded here so its absence is deliberate rather than an oversight.",
+        "This possession cap is in a DIFFERENT regulation from the daily bag limit (r. 12 s.27, 5 birds across the same four species). Neither text relates the two numbers and 15 is not derivable from 5. No derivedByAuthority is recorded, because the authority states no derivation."
+      ]
+    }
+  ],
+  "absenceEvidence": [],
+  "laneNotes": [
+    "One package per source, per the contract. The companion package for Règlement sur la chasse (C-61.1, r. 12) carries bag limits, permitted means, ammunition and engine types.",
+    "No English text in this package is the ministry's. Where an English rendering appears it is labelled northGroundSummary.",
+    "Re-emitted 2026-09-23 against the landed contract: scope.enginTypes became scope.gearClasses (the authority's own numbers as identity), implements moved to gearClassesDerived marked display-only, and EVERY citation in every row now carries its instrument — no bare section numbers anywhere, per 'a citation without its instrument is not a citation'."
+  ]
+}

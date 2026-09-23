@@ -15,11 +15,14 @@ describe("completeness matrix", () => {
     assert.equal(found, true);
     assert.ok(remaining.length > 0);
     const facts = remaining.map((cell) => cell.fact);
-    for (const expected of ["LICENCE", "METHODS", "AMMUNITION", "HUNTER_ORANGE", "LEGAL_HOURS"]) {
-      assert.ok(facts.includes(expected as never), `${expected} should remain for Québec ruffed grouse`);
-    }
-    // Québec has a certified season, so SEASON is NOT on the remaining list.
+    /* WHICH facts remain moves as evidence lands — this list shrank when the
+       Québec lane's four packages were consumed — so the test holds the
+       PROPERTY rather than a frozen baseline: legal hours cannot be answered
+       without a point timezone, and a certified season is never on the
+       remaining list. */
+    assert.ok(facts.includes("LEGAL_HOURS" as never), "legal hours are blocked on the timezone dataset");
     assert.ok(!facts.includes("SEASON" as never), "Québec's ruffed grouse season is certified");
+    assert.ok(facts.length < 8, "consuming evidence must reduce what remains");
     // Every remaining item tells a research lane what to do, not merely that it is missing.
     for (const cell of remaining) assert.ok(cell.note.length > 10, `${cell.fact} has no actionable note`);
   });
@@ -32,8 +35,13 @@ describe("completeness matrix", () => {
     const hours = remaining.find((cell) => cell.fact === "LEGAL_HOURS")!;
     assert.equal(hours.state, "SOURCE_BLOCKED");
     assert.match(hours.note, /licence-blocked/);
-    const licence = remaining.find((cell) => cell.fact === "LICENCE")!;
-    assert.equal(licence.state, "RESEARCH_REQUIRED");
+    /* And the third kind, which the other two would hide: a fact North Ground
+       could appear to answer and deliberately does not. Québec's hunter-orange
+       exemption turns on a gear class nobody has populated; answering from the
+       implement list instead would tell a bow hunter no orange is required. */
+    const orange = remaining.find((cell) => cell.fact === "HUNTER_ORANGE")!;
+    assert.equal(orange.state, "SAFETY_GATED");
+    assert.match(orange.note, /gear class/);
   });
 
   it("counts species-unit PAIRS, and never reports a species count as coverage", async () => {

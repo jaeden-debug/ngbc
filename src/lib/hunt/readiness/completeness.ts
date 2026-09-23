@@ -23,6 +23,7 @@
 
 import bundle from "../../../../content/regulatory/readiness/ca-on-2026.json" with { type: "json" };
 import { REGULATORY_REGISTRY } from "../regulatory/registry.ts";
+import { certifies, hasEvidence } from "./evidence.ts";
 import { harvestLimitsFrom, limitKinds } from "../regulatory/harvest-limit.ts";
 import { timeZoneAtPoint } from "../time-zone.ts";
 
@@ -71,7 +72,23 @@ export type FactState =
   /** The source exists and cannot lawfully or technically be used. */
   | "SOURCE_BLOCKED"
   /** Two authoritative readings disagree and a person must settle it. */
-  | "EVIDENTIARY_CONFLICT";
+  | "EVIDENTIARY_CONFLICT"
+  /**
+   * North Ground COULD appear to answer this and deliberately does not,
+   * because answering without a missing input risks the unsafe direction.
+   *
+   * Distinct from RESEARCH_REQUIRED and SOURCE_BLOCKED on purpose. Those say
+   * nobody has looked, or the source cannot be used — both are things to go
+   * and fix. This says the gate is working. Québec's hunter-orange exemption
+   * turns on a gear class we cannot establish; the available "fix" is to
+   * ignore the class and answer from the implement list, which would tell a
+   * bow hunter no orange is required when it is.
+   *
+   * Without its own state it reads as a gap, and a gap invites closing. **A
+   * number that goes up because a safety gate was loosened is worse than one
+   * that does not move.**
+   */
+  | "SAFETY_GATED";
 
 export interface FactCell {
   fact: ReadinessFact;
@@ -200,19 +217,56 @@ export async function completenessFor(jurisdictionId: string): Promise<SpeciesCo
     const speciesLimits = limits.get(row.speciesId) ?? [];
     /* Kinds the authority actually states, read through the canonical model so
        the matrix and the answer cannot disagree about what a bundle holds. */
+    const evidenced = hasEvidence(jurisdictionId);
     const statedKinds = [...new Set(speciesLimits.flatMap((entryLimits) => limitKinds(harvestLimitsFrom(entryLimits))))];
-    const anyLimit = statedKinds.length > 0;
+    /* A jurisdiction's limits may come from its certified bundle OR from a
+       lane's evidence — Québec states nine in its regulations and holds none
+       in the bundle. Either is the authority; neither is a fallback. */
+    const limitEvidence = evidenced ? certifies(jurisdictionId, row.speciesId, "LIMIT") : { certified: false, reason: "" };
+    const anyLimit = statedKinds.length > 0 || limitEvidence.certified;
+    /* CRITICAL_EXCEPTIONS is NOT fed from PLACE_CONDITION evidence, and the
+       attempt is recorded because it was wrong in the flattering direction.
+       The fact means restrictions that vary WITHIN a unit — refuges, closed
+       lands, special areas a zone-level answer cannot see. Québec's only
+       place-condition row is s.22, requiring a hunter be present when hunting
+       with dogs: a real rule, about conduct, nowhere near the question. It
+       took Québec to 74% and the number was wrong.
+       
+       Certifying a fact from a category that merely sounds adjacent is how a
+       matrix flatters a landing. It stays on indexed special areas until
+       evidence names them. */
+    const exceptions = { certified: false, reason: "" };
     const known = isOntario && ontarioSpecies.has(row.speciesId);
+
+    /* Ontario's own bundle, or a lane's evidence package — one path, so a
+       jurisdiction is covered by whatever evidence exists for it rather than
+       by being Ontario. */
+    const licence = known
+      ? { certified: ontarioRequirements[row.speciesId] !== undefined, reason: ontarioRequirements[row.speciesId] !== undefined ? "Authorizations resolved from the certified requirement records." : "No requirement record has been read for this species." }
+      : evidenced ? certifies(jurisdictionId, row.speciesId, "AUTHORIZATION")
+      : { certified: false, reason: "No requirement record has been read for this species." };
+    const methodsCertified = known && Object.keys(ontarioMethods[ontarioSpeciesMethods[row.speciesId]?.methods]?.allowed ?? {}).length > 0;
+    const methods = known
+      ? { certified: methodsCertified, reason: methodsCertified ? "Legal implements from the authority's own tables." : "No positive list of allowed methods has been read." }
+      : evidenced ? certifies(jurisdictionId, row.speciesId, "METHOD")
+      : { certified: false, reason: "No positive list of allowed methods has been read. Prohibitions alone cannot certify this: the complement of a ban list is not a permission." };
+    const ammoCertified = known && (ontarioSpeciesMethods[row.speciesId]?.ammunition.length ?? 0) > 0;
+    const ammunition = known
+      ? { certified: ammoCertified, reason: ammoCertified ? "Restrictions stated by the authority." : "No ammunition restriction has been read. Silence is not 'no restriction'." }
+      : evidenced ? certifies(jurisdictionId, row.speciesId, "AMMUNITION")
+      : { certified: false, reason: "No ammunition restriction has been read. Silence is not 'no restriction'." };
+    const orangeEvidence = known
+      ? { certified: ontarioOrangeRules > 0, reason: ontarioOrangeRules > 0 ? `${ontarioOrangeRules} certified rules, including the exemptions.` : "No hunter-orange rule has been read for this jurisdiction." }
+      : evidenced ? certifies(jurisdictionId, row.speciesId, "VISIBILITY")
+      : { certified: false, reason: "No hunter-orange rule has been read for this jurisdiction." };
+    /* A refusal that names a gear class is the gate holding, not a gap. */
+    const orange = { ...orangeEvidence, gated: !orangeEvidence.certified && orangeEvidence.reason.includes("gear class") };
 
     const facts: FactCell[] = [
       cell("SEASON", of > 0 ? "CERTIFIED" : "RESEARCH_REQUIRED",
         of > 0 ? `${of} of ${coverage.officialUnits ?? "?"} units carry a certified season.` : "No certified season.",
         has(of > 0), of),
-      cell("LICENCE", known && ontarioRequirements[row.speciesId] !== undefined ? "CERTIFIED" : "RESEARCH_REQUIRED",
-        known && ontarioRequirements[row.speciesId] !== undefined
-          ? "Authorizations resolved from the certified requirement records."
-          : "No requirement record has been read for this species.",
-        has(known && ontarioRequirements[row.speciesId] !== undefined), of),
+      cell("LICENCE", licence.certified ? "CERTIFIED" : "RESEARCH_REQUIRED", licence.reason, has(licence.certified), of),
       /* METHODS certifies only from a POSITIVE list of what is allowed. An
          authority that packages methods as prohibitions — British Columbia
          states bans plus bow-only and youth-only segments, with no allowed
@@ -221,22 +275,11 @@ export async function completenessFor(jurisdictionId: string): Promise<SpeciesCo
          that does not describe the world is how a prohibition nobody
          legislated reaches a hunter. The prohibitions are still shown; they
          are simply not an ALLOWED answer. */
-      cell("METHODS",
-        known && Object.keys(ontarioMethods[ontarioSpeciesMethods[row.speciesId]?.methods]?.allowed ?? {}).length > 0
-          ? "CERTIFIED" : "RESEARCH_REQUIRED",
-        known ? "Legal implements from the authority's own tables." : "No positive list of allowed methods has been read. Prohibitions alone cannot certify this: the complement of a ban list is not a permission.",
-        has(known && Object.keys(ontarioMethods[ontarioSpeciesMethods[row.speciesId]?.methods]?.allowed ?? {}).length > 0), of),
-      cell("AMMUNITION",
-        known && (ontarioSpeciesMethods[row.speciesId]?.ammunition.length ?? 0) > 0 ? "CERTIFIED" : "RESEARCH_REQUIRED",
-        known && (ontarioSpeciesMethods[row.speciesId]?.ammunition.length ?? 0) > 0
-          ? "Restrictions stated by the authority."
-          : "No ammunition restriction has been read. Silence is not 'no restriction'.",
-        has(known && (ontarioSpeciesMethods[row.speciesId]?.ammunition.length ?? 0) > 0), of),
-      cell("HUNTER_ORANGE", known && ontarioOrangeRules > 0 ? "CERTIFIED" : "RESEARCH_REQUIRED",
-        known && ontarioOrangeRules > 0
-          ? `${ontarioOrangeRules} certified rules, including the exemptions.`
-          : "No hunter-orange rule has been read for this jurisdiction.",
-        has(known && ontarioOrangeRules > 0), of),
+      cell("METHODS", methods.certified ? "CERTIFIED" : "RESEARCH_REQUIRED", methods.reason, has(methods.certified), of),
+      cell("AMMUNITION", ammunition.certified ? "CERTIFIED" : "RESEARCH_REQUIRED", ammunition.reason, has(ammunition.certified), of),
+      cell("HUNTER_ORANGE",
+        orange.certified ? "CERTIFIED" : orange.gated ? "SAFETY_GATED" : "RESEARCH_REQUIRED",
+        orange.reason, has(orange.certified), of),
       cell("LEGAL_HOURS", timezone ? "RESEARCH_REQUIRED" : "SOURCE_BLOCKED",
         timezone
           ? "A point timezone exists; the jurisdiction's own rule and its listed exceptions are unread."
@@ -247,17 +290,22 @@ export async function completenessFor(jurisdictionId: string): Promise<SpeciesCo
          than permanently two-thirds answered. Absence of a kind the authority
          does not use is not a gap; absence of ANY limit still is. */
       cell("HARVEST_LIMITS", anyLimit ? "CERTIFIED" : "RESEARCH_REQUIRED",
-        anyLimit
+        statedKinds.length > 0
           ? `Stated by the authority: ${statedKinds.join(", ").toLowerCase()}.`
-          : "No harvest limit of any kind has been read. Absence of a record is not absence of a limit.",
+          : limitEvidence.certified
+            ? limitEvidence.reason
+            : "No harvest limit of any kind has been read. Absence of a record is not absence of a limit.",
         has(anyLimit), of),
-      cell("CRITICAL_EXCEPTIONS", entry.specialAreasInZone ? "CERTIFIED" : "RESEARCH_REQUIRED",
+      cell("CRITICAL_EXCEPTIONS",
+        entry.specialAreasInZone || exceptions.certified ? "CERTIFIED" : "RESEARCH_REQUIRED",
         entry.specialAreasInZone
           ? "Published special areas inside a zone are indexed and reach the answer."
-          : entry.pointOnlyChecks
-            ? "Restrictions are checked only at an exact point; the zone-level answer says so but the areas are not indexed."
-            : "Special areas within a zone have not been indexed for this jurisdiction.",
-        has(Boolean(entry.specialAreasInZone)), of),
+          : exceptions.certified
+            ? exceptions.reason
+            : entry.pointOnlyChecks
+              ? "Restrictions are checked only at an exact point; the zone-level answer says so but the areas are not indexed."
+              : "Special areas within a zone have not been indexed for this jurisdiction.",
+        has(Boolean(entry.specialAreasInZone) || exceptions.certified), of),
     ];
 
     return {

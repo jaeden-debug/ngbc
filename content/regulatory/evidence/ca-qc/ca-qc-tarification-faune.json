@@ -1,0 +1,1279 @@
+{
+  "package": {
+    "jurisdictionId": "jurisdiction:ca-qc",
+    "preparedBy": "admin-access (species/requirements research lane)",
+    "preparedOn": "2026-09-23"
+  },
+  "authority": {
+    "name": "Éditeur officiel du Québec — Légis Québec (Publications du Québec)",
+    "lang": "fr-CA"
+  },
+  "source": {
+    "id": "source:ca-qc-tarification-faune",
+    "title": "Règlement sur la tarification reliée à l’exploitation de la faune",
+    "url": "https://www.legisquebec.gouv.qc.ca/fr/document/rc/C-61.1,%20r.%2032",
+    "tier": "OFFICIAL_FEE_SCHEDULE",
+    "version": "chapitre C-61.1, r. 32",
+    "retrievedAt": "2026-09-23",
+    "sha256": "e1f1cc90987c60cad39c9efe8e1b2453b5ad82a7cce2fe9374e26c6a975e403e",
+    "incorporates": [
+      "Règlement sur la chasse (C-61.1, r. 12), annexe I — the licence categories these fees price, and s.11, which sets how long the licence lasts.",
+      "Règlement sur les zones de pêche et de chasse (C-61.1, r. 34) — zone numbers. NOT read."
+    ],
+    "inForce": {
+      "state": "IN_FORCE",
+      "statedAs": "À jour au 1er mai 2026",
+      "asOf": "2026-05-01",
+      "supersededBy": null,
+      "checkedOn": "2026-09-23"
+    },
+    "feeCurrentness": {
+      "basis": "ANNUAL_INDEXATION",
+      "statedAs": "Les droits prévus au règlement ont été indexés à compter du 1er avril 2026 selon l'avis publié à la Partie 1 de la Gazette officielle du Québec le 22 novembre 2025, page 623.",
+      "mechanism": "Tout droit ou coût ainsi que toute contribution pour le financement de la Fondation pour la biodiversité et la faune du Québec, exigible en vertu du présent règlement, sont indexés annuellement, au 1er avril de chaque année, en appliquant à leur valeur de l’année précédente le pourcentage de variation annuelle, calculé pour le mois de juin de l’année précédente, de l’indice général des prix à la consommation (IPC) publié par Statistique Canada.",
+      "mechanismCitation": "C-61.1, r. 32, s. 15",
+      "effectiveFrom": "2026-04-01",
+      "supersededOn": "2027-04-01",
+      "note": "Every amount here is the indexation effective 2026-04-01 and is superseded on 2027-04-01. Read 2026-09-23, so current. AFTER 2027-04-01 EVERY FIGURE IN THIS PACKAGE IS STALE and must be re-read, even though the regulation itself will still say 'in force'."
+    }
+  },
+  "requirements": [
+    {
+      "category": "FEE",
+      "kind": "droit relatif au permis de chasse",
+      "officialName": {
+        "text": "Cerf de Virginie ailleurs que dans la zone 20",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "2\t \ta) Cerf de Virginie ailleurs que dans la zone 20\t \t \n \t \ti. résident\t \t54,20 $",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 32, annexe I (a. 3)",
+      "amount": {
+        "value": 54.2,
+        "currency": "CAD",
+        "statedAs": "2\t \ta) Cerf de Virginie ailleurs que dans la zone 20\t \t \n \t \ti. résident\t \t54,20 $",
+        "columnHeading": {
+          "text": "Droits annuels",
+          "lang": "fr-CA"
+        }
+      },
+      "mandatoryAddition": {
+        "value": 5.3,
+        "currency": "CAD",
+        "officialName": {
+          "text": "contribution pour le financement de la Fondation pour la biodiversité et la faune du Québec",
+          "lang": "fr-CA"
+        },
+        "citation": "C-61.1, r. 32, annexe VI (a. 14)"
+      },
+      "appliesToAuthorization": {
+        "officialName": {
+          "text": "Cerf de Virginie ailleurs que dans la zone 20",
+          "lang": "fr-CA"
+        },
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), annexe I"
+      },
+      "validityBasis": {
+        "endsOn": "EARLIER_OF",
+        "statedAs": "Sous réserve du deuxième alinéa, tout permis de chasse expire à la fin de la période de chasse à l’animal ou au groupe d’animaux pour lequel il est délivré ou lorsque l’animal a été identifié à l’aide d’un coupon de transport ou aurait dû l’être conformément au Règlement sur les activités de chasse (chapitre C-61.1, r. 1)...",
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), s. 11, first paragraph",
+        "note": "EVENT-based. The fee column is headed 'Droits annuels'; the authorization it buys is not annual. Both are recorded; neither is normalised into the other."
+      },
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "FEE",
+      "kind": "droit relatif au permis de chasse",
+      "officialName": {
+        "text": "Cerf de Virginie ailleurs que dans la zone 20",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "ii. non-résident\t \t313,70 $",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 32, annexe I (a. 3)",
+      "amount": {
+        "value": 313.7,
+        "currency": "CAD",
+        "statedAs": "ii. non-résident\t \t313,70 $",
+        "columnHeading": {
+          "text": "Droits annuels",
+          "lang": "fr-CA"
+        }
+      },
+      "mandatoryAddition": {
+        "value": 5.3,
+        "currency": "CAD",
+        "officialName": {
+          "text": "contribution pour le financement de la Fondation pour la biodiversité et la faune du Québec",
+          "lang": "fr-CA"
+        },
+        "citation": "C-61.1, r. 32, annexe VI (a. 14)"
+      },
+      "appliesToAuthorization": {
+        "officialName": {
+          "text": "Cerf de Virginie ailleurs que dans la zone 20",
+          "lang": "fr-CA"
+        },
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), annexe I"
+      },
+      "validityBasis": {
+        "endsOn": "EARLIER_OF",
+        "statedAs": "Sous réserve du deuxième alinéa, tout permis de chasse expire à la fin de la période de chasse à l’animal ou au groupe d’animaux pour lequel il est délivré ou lorsque l’animal a été identifié à l’aide d’un coupon de transport ou aurait dû l’être conformément au Règlement sur les activités de chasse (chapitre C-61.1, r. 1)...",
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), s. 11, first paragraph",
+        "note": "EVENT-based. The fee column is headed 'Droits annuels'; the authorization it buys is not annual. Both are recorded; neither is normalised into the other."
+      },
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "NON_RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "FEE",
+      "kind": "droit relatif au permis de chasse",
+      "officialName": {
+        "text": "Cerf de Virginie dans la zone 20",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "b) Cerf de Virginie dans la zone 20\t \t \n \t \ti. résident\t \t70,20 $",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 32, annexe I (a. 3)",
+      "amount": {
+        "value": 70.2,
+        "currency": "CAD",
+        "statedAs": "b) Cerf de Virginie dans la zone 20\t \t \n \t \ti. résident\t \t70,20 $",
+        "columnHeading": {
+          "text": "Droits annuels",
+          "lang": "fr-CA"
+        }
+      },
+      "mandatoryAddition": {
+        "value": 5.3,
+        "currency": "CAD",
+        "officialName": {
+          "text": "contribution pour le financement de la Fondation pour la biodiversité et la faune du Québec",
+          "lang": "fr-CA"
+        },
+        "citation": "C-61.1, r. 32, annexe VI (a. 14)"
+      },
+      "appliesToAuthorization": {
+        "officialName": {
+          "text": "Cerf de Virginie dans la zone 20",
+          "lang": "fr-CA"
+        },
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), annexe I"
+      },
+      "validityBasis": {
+        "endsOn": "EARLIER_OF",
+        "statedAs": "Sous réserve du deuxième alinéa, tout permis de chasse expire à la fin de la période de chasse à l’animal ou au groupe d’animaux pour lequel il est délivré ou lorsque l’animal a été identifié à l’aide d’un coupon de transport ou aurait dû l’être conformément au Règlement sur les activités de chasse (chapitre C-61.1, r. 1)...",
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), s. 11, first paragraph",
+        "note": "EVENT-based. The fee column is headed 'Droits annuels'; the authorization it buys is not annual. Both are recorded; neither is normalised into the other."
+      },
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "20"
+          ],
+          "statedAs": "dans la zone 20"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "FEE",
+      "kind": "droit relatif au permis de chasse",
+      "officialName": {
+        "text": "Cerf de Virginie dans la zone 20",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "ii. non-résident\t \t403,12 $",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 32, annexe I (a. 3)",
+      "amount": {
+        "value": 403.12,
+        "currency": "CAD",
+        "statedAs": "ii. non-résident\t \t403,12 $",
+        "columnHeading": {
+          "text": "Droits annuels",
+          "lang": "fr-CA"
+        }
+      },
+      "mandatoryAddition": {
+        "value": 5.3,
+        "currency": "CAD",
+        "officialName": {
+          "text": "contribution pour le financement de la Fondation pour la biodiversité et la faune du Québec",
+          "lang": "fr-CA"
+        },
+        "citation": "C-61.1, r. 32, annexe VI (a. 14)"
+      },
+      "appliesToAuthorization": {
+        "officialName": {
+          "text": "Cerf de Virginie dans la zone 20",
+          "lang": "fr-CA"
+        },
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), annexe I"
+      },
+      "validityBasis": {
+        "endsOn": "EARLIER_OF",
+        "statedAs": "Sous réserve du deuxième alinéa, tout permis de chasse expire à la fin de la période de chasse à l’animal ou au groupe d’animaux pour lequel il est délivré ou lorsque l’animal a été identifié à l’aide d’un coupon de transport ou aurait dû l’être conformément au Règlement sur les activités de chasse (chapitre C-61.1, r. 1)...",
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), s. 11, first paragraph",
+        "note": "EVENT-based. The fee column is headed 'Droits annuels'; the authorization it buys is not annual. Both are recorded; neither is normalised into the other."
+      },
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "20"
+          ],
+          "statedAs": "dans la zone 20"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "NON_RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "FEE",
+      "kind": "droit relatif au permis de chasse",
+      "officialName": {
+        "text": "Femelle du cerf de Virginie ou mâle dont les bois mesurent moins de 7 cm, dans la zone 20",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "c) Femelle du cerf de Virginie ou mâle dont les bois mesurent moins de 7 cm, dans la zone 20\t \t \n \t \ti. résident\t \t34,25 $",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 32, annexe I (a. 3)",
+      "amount": {
+        "value": 34.25,
+        "currency": "CAD",
+        "statedAs": "c) Femelle du cerf de Virginie ou mâle dont les bois mesurent moins de 7 cm, dans la zone 20\t \t \n \t \ti. résident\t \t34,25 $",
+        "columnHeading": {
+          "text": "Droits annuels",
+          "lang": "fr-CA"
+        }
+      },
+      "mandatoryAddition": {
+        "value": 5.3,
+        "currency": "CAD",
+        "officialName": {
+          "text": "contribution pour le financement de la Fondation pour la biodiversité et la faune du Québec",
+          "lang": "fr-CA"
+        },
+        "citation": "C-61.1, r. 32, annexe VI (a. 14)"
+      },
+      "appliesToAuthorization": {
+        "officialName": {
+          "text": "Femelle du cerf de Virginie ou mâle dont les bois mesurent moins de 7 cm, dans la zone 20",
+          "lang": "fr-CA"
+        },
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), annexe I"
+      },
+      "validityBasis": {
+        "endsOn": "EARLIER_OF",
+        "statedAs": "Sous réserve du deuxième alinéa, tout permis de chasse expire à la fin de la période de chasse à l’animal ou au groupe d’animaux pour lequel il est délivré ou lorsque l’animal a été identifié à l’aide d’un coupon de transport ou aurait dû l’être conformément au Règlement sur les activités de chasse (chapitre C-61.1, r. 1)...",
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), s. 11, first paragraph",
+        "note": "EVENT-based. The fee column is headed 'Droits annuels'; the authorization it buys is not annual. Both are recorded; neither is normalised into the other."
+      },
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer"
+        ],
+        "animalClass": "Femelle du cerf de Virginie ou mâle dont les bois mesurent moins de 7 cm (authority's own class)",
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "20"
+          ],
+          "statedAs": "dans la zone 20"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "FEE",
+      "kind": "droit relatif au permis de chasse",
+      "officialName": {
+        "text": "Femelle du cerf de Virginie ou mâle dont les bois mesurent moins de 7 cm, dans la zone 20",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "ii. non-résident\t \t206,15 $",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 32, annexe I (a. 3)",
+      "amount": {
+        "value": 206.15,
+        "currency": "CAD",
+        "statedAs": "ii. non-résident\t \t206,15 $",
+        "columnHeading": {
+          "text": "Droits annuels",
+          "lang": "fr-CA"
+        }
+      },
+      "mandatoryAddition": {
+        "value": 5.3,
+        "currency": "CAD",
+        "officialName": {
+          "text": "contribution pour le financement de la Fondation pour la biodiversité et la faune du Québec",
+          "lang": "fr-CA"
+        },
+        "citation": "C-61.1, r. 32, annexe VI (a. 14)"
+      },
+      "appliesToAuthorization": {
+        "officialName": {
+          "text": "Femelle du cerf de Virginie ou mâle dont les bois mesurent moins de 7 cm, dans la zone 20",
+          "lang": "fr-CA"
+        },
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), annexe I"
+      },
+      "validityBasis": {
+        "endsOn": "EARLIER_OF",
+        "statedAs": "Sous réserve du deuxième alinéa, tout permis de chasse expire à la fin de la période de chasse à l’animal ou au groupe d’animaux pour lequel il est délivré ou lorsque l’animal a été identifié à l’aide d’un coupon de transport ou aurait dû l’être conformément au Règlement sur les activités de chasse (chapitre C-61.1, r. 1)...",
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), s. 11, first paragraph",
+        "note": "EVENT-based. The fee column is headed 'Droits annuels'; the authorization it buys is not annual. Both are recorded; neither is normalised into the other."
+      },
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer"
+        ],
+        "animalClass": "Femelle du cerf de Virginie ou mâle dont les bois mesurent moins de 7 cm",
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "20"
+          ],
+          "statedAs": "dans la zone 20"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "NON_RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "FEE",
+      "kind": "droit relatif au permis de chasse",
+      "officialName": {
+        "text": "Orignal pour toutes les zones",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "5\t \ta) Orignal pour toutes les zones\t \t \n \t \ti. résident\t \t73,29 $",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 32, annexe I (a. 3)",
+      "amount": {
+        "value": 73.29,
+        "currency": "CAD",
+        "statedAs": "5\t \ta) Orignal pour toutes les zones\t \t \n \t \ti. résident\t \t73,29 $",
+        "columnHeading": {
+          "text": "Droits annuels",
+          "lang": "fr-CA"
+        }
+      },
+      "mandatoryAddition": {
+        "value": 5.3,
+        "currency": "CAD",
+        "officialName": {
+          "text": "contribution pour le financement de la Fondation pour la biodiversité et la faune du Québec",
+          "lang": "fr-CA"
+        },
+        "citation": "C-61.1, r. 32, annexe VI (a. 14)"
+      },
+      "appliesToAuthorization": {
+        "officialName": {
+          "text": "Orignal pour toutes les zones",
+          "lang": "fr-CA"
+        },
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), annexe I"
+      },
+      "validityBasis": {
+        "endsOn": "EARLIER_OF",
+        "statedAs": "Sous réserve du deuxième alinéa, tout permis de chasse expire à la fin de la période de chasse à l’animal ou au groupe d’animaux pour lequel il est délivré ou lorsque l’animal a été identifié à l’aide d’un coupon de transport ou aurait dû l’être conformément au Règlement sur les activités de chasse (chapitre C-61.1, r. 1)...",
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), s. 11, first paragraph",
+        "note": "EVENT-based. The fee column is headed 'Droits annuels'; the authorization it buys is not annual. Both are recorded; neither is normalised into the other."
+      },
+      "scope": {
+        "speciesIds": [
+          "species:moose"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "FEE",
+      "kind": "droit relatif au permis de chasse",
+      "officialName": {
+        "text": "Orignal pour toutes les zones",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "ii. non-résident\t \t515,48 $",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 32, annexe I (a. 3)",
+      "amount": {
+        "value": 515.48,
+        "currency": "CAD",
+        "statedAs": "ii. non-résident\t \t515,48 $",
+        "columnHeading": {
+          "text": "Droits annuels",
+          "lang": "fr-CA"
+        }
+      },
+      "mandatoryAddition": {
+        "value": 5.3,
+        "currency": "CAD",
+        "officialName": {
+          "text": "contribution pour le financement de la Fondation pour la biodiversité et la faune du Québec",
+          "lang": "fr-CA"
+        },
+        "citation": "C-61.1, r. 32, annexe VI (a. 14)"
+      },
+      "appliesToAuthorization": {
+        "officialName": {
+          "text": "Orignal pour toutes les zones",
+          "lang": "fr-CA"
+        },
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), annexe I"
+      },
+      "validityBasis": {
+        "endsOn": "EARLIER_OF",
+        "statedAs": "Sous réserve du deuxième alinéa, tout permis de chasse expire à la fin de la période de chasse à l’animal ou au groupe d’animaux pour lequel il est délivré ou lorsque l’animal a été identifié à l’aide d’un coupon de transport ou aurait dû l’être conformément au Règlement sur les activités de chasse (chapitre C-61.1, r. 1)...",
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), s. 11, first paragraph",
+        "note": "EVENT-based. The fee column is headed 'Droits annuels'; the authorization it buys is not annual. Both are recorded; neither is normalised into the other."
+      },
+      "scope": {
+        "speciesIds": [
+          "species:moose"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "NON_RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "FEE",
+      "kind": "droit relatif au permis de chasse",
+      "officialName": {
+        "text": "Ours noir",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "6\t \tOurs noir\t \t \n \t \ti. résident\t \t51,13 $",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 32, annexe I (a. 3)",
+      "amount": {
+        "value": 51.13,
+        "currency": "CAD",
+        "statedAs": "6\t \tOurs noir\t \t \n \t \ti. résident\t \t51,13 $",
+        "columnHeading": {
+          "text": "Droits annuels",
+          "lang": "fr-CA"
+        }
+      },
+      "mandatoryAddition": {
+        "value": 5.3,
+        "currency": "CAD",
+        "officialName": {
+          "text": "contribution pour le financement de la Fondation pour la biodiversité et la faune du Québec",
+          "lang": "fr-CA"
+        },
+        "citation": "C-61.1, r. 32, annexe VI (a. 14)"
+      },
+      "appliesToAuthorization": {
+        "officialName": {
+          "text": "Ours noir",
+          "lang": "fr-CA"
+        },
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), annexe I"
+      },
+      "validityBasis": {
+        "endsOn": "EARLIER_OF",
+        "statedAs": "Sous réserve du deuxième alinéa, tout permis de chasse expire à la fin de la période de chasse à l’animal ou au groupe d’animaux pour lequel il est délivré ou lorsque l’animal a été identifié à l’aide d’un coupon de transport ou aurait dû l’être conformément au Règlement sur les activités de chasse (chapitre C-61.1, r. 1)...",
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), s. 11, first paragraph",
+        "note": "EVENT-based. The fee column is headed 'Droits annuels'; the authorization it buys is not annual. Both are recorded; neither is normalised into the other."
+      },
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "FEE",
+      "kind": "droit relatif au permis de chasse",
+      "officialName": {
+        "text": "Ours noir",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "ii. non-résident\t \t195,89 $",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 32, annexe I (a. 3)",
+      "amount": {
+        "value": 195.89,
+        "currency": "CAD",
+        "statedAs": "ii. non-résident\t \t195,89 $",
+        "columnHeading": {
+          "text": "Droits annuels",
+          "lang": "fr-CA"
+        }
+      },
+      "mandatoryAddition": {
+        "value": 5.3,
+        "currency": "CAD",
+        "officialName": {
+          "text": "contribution pour le financement de la Fondation pour la biodiversité et la faune du Québec",
+          "lang": "fr-CA"
+        },
+        "citation": "C-61.1, r. 32, annexe VI (a. 14)"
+      },
+      "appliesToAuthorization": {
+        "officialName": {
+          "text": "Ours noir",
+          "lang": "fr-CA"
+        },
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), annexe I"
+      },
+      "validityBasis": {
+        "endsOn": "EARLIER_OF",
+        "statedAs": "Sous réserve du deuxième alinéa, tout permis de chasse expire à la fin de la période de chasse à l’animal ou au groupe d’animaux pour lequel il est délivré ou lorsque l’animal a été identifié à l’aide d’un coupon de transport ou aurait dû l’être conformément au Règlement sur les activités de chasse (chapitre C-61.1, r. 1)...",
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), s. 11, first paragraph",
+        "note": "EVENT-based. The fee column is headed 'Droits annuels'; the authorization it buys is not annual. Both are recorded; neither is normalised into the other."
+      },
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "NON_RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "FEE",
+      "kind": "droit relatif au permis de chasse",
+      "officialName": {
+        "text": "Petit gibier",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "7\t \tPetit gibier\t \t \n \t \ti. résident\t \t18,85 $",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 32, annexe I (a. 3)",
+      "amount": {
+        "value": 18.85,
+        "currency": "CAD",
+        "statedAs": "7\t \tPetit gibier\t \t \n \t \ti. résident\t \t18,85 $",
+        "columnHeading": {
+          "text": "Droits annuels",
+          "lang": "fr-CA"
+        }
+      },
+      "mandatoryAddition": {
+        "value": 2.59,
+        "currency": "CAD",
+        "officialName": {
+          "text": "contribution pour le financement de la Fondation pour la biodiversité et la faune du Québec",
+          "lang": "fr-CA"
+        },
+        "citation": "C-61.1, r. 32, annexe VI (a. 14)"
+      },
+      "appliesToAuthorization": {
+        "officialName": {
+          "text": "Petit gibier",
+          "lang": "fr-CA"
+        },
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), annexe I"
+      },
+      "validityBasis": {
+        "endsOn": "DATE",
+        "statedAs": "Malgré le premier alinéa, le permis de chasse au petit gibier est valide de sa date de délivrance jusqu’à la date d’expiration qui y est inscrite.",
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), s. 11, third paragraph",
+        "note": "Runs to a date PRINTED ON THE LICENCE, which North Ground cannot read. The basis is a date; the date itself is per-licence and unknowable to us."
+      },
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:snowshoe-hare",
+          "species:eastern-cottontail",
+          "species:arctic-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "The annexe VI contribution for this licence is stated as «Petit gibier, sauf pour la chasse du lièvre ou du lapin à queue blanche au moyen de collet» — the snare licence is excluded here and carries its own contribution line."
+      ]
+    },
+    {
+      "category": "FEE",
+      "kind": "droit relatif au permis de chasse",
+      "officialName": {
+        "text": "Petit gibier",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "ii. non-résident\t \t97,18 $",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 32, annexe I (a. 3)",
+      "amount": {
+        "value": 97.18,
+        "currency": "CAD",
+        "statedAs": "ii. non-résident\t \t97,18 $",
+        "columnHeading": {
+          "text": "Droits annuels",
+          "lang": "fr-CA"
+        }
+      },
+      "mandatoryAddition": {
+        "value": 2.59,
+        "currency": "CAD",
+        "officialName": {
+          "text": "contribution pour le financement de la Fondation pour la biodiversité et la faune du Québec",
+          "lang": "fr-CA"
+        },
+        "citation": "C-61.1, r. 32, annexe VI (a. 14)"
+      },
+      "appliesToAuthorization": {
+        "officialName": {
+          "text": "Petit gibier",
+          "lang": "fr-CA"
+        },
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), annexe I"
+      },
+      "validityBasis": {
+        "endsOn": "DATE",
+        "statedAs": "Malgré le premier alinéa, le permis de chasse au petit gibier est valide de sa date de délivrance jusqu’à la date d’expiration qui y est inscrite.",
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), s. 11, third paragraph",
+        "note": "Runs to a date PRINTED ON THE LICENCE, which North Ground cannot read. The basis is a date; the date itself is per-licence and unknowable to us."
+      },
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:snowshoe-hare",
+          "species:eastern-cottontail",
+          "species:arctic-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "NON_RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "FEE",
+      "kind": "droit relatif au permis de chasse",
+      "officialName": {
+        "text": "Lièvre ou lapin à queue blanche au moyen de collet",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "4\t \tLièvre ou lapin à queue blanche au moyen de collet\t \t \n \t \ti. résident\t \t19,75 $",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 32, annexe I (a. 3)",
+      "amount": {
+        "value": 19.75,
+        "currency": "CAD",
+        "statedAs": "4\t \tLièvre ou lapin à queue blanche au moyen de collet\t \t \n \t \ti. résident\t \t19,75 $",
+        "columnHeading": {
+          "text": "Droits annuels",
+          "lang": "fr-CA"
+        }
+      },
+      "mandatoryAddition": {
+        "value": 2.59,
+        "currency": "CAD",
+        "officialName": {
+          "text": "contribution pour le financement de la Fondation pour la biodiversité et la faune du Québec",
+          "lang": "fr-CA"
+        },
+        "citation": "C-61.1, r. 32, annexe VI (a. 14)"
+      },
+      "appliesToAuthorization": {
+        "officialName": {
+          "text": "Lièvre ou lapin à queue blanche au moyen de collet",
+          "lang": "fr-CA"
+        },
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), annexe I"
+      },
+      "validityBasis": {
+        "endsOn": "DATE",
+        "statedAs": "Malgré le premier alinéa, le permis de chasse au petit gibier est valide de sa date de délivrance jusqu’à la date d’expiration qui y est inscrite.",
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), s. 11, third paragraph",
+        "note": "Runs to a date PRINTED ON THE LICENCE, which North Ground cannot read. The basis is a date; the date itself is per-licence and unknowable to us."
+      },
+      "scope": {
+        "speciesIds": [
+          "species:snowshoe-hare",
+          "species:eastern-cottontail"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": null,
+        "methods": [
+          "collet"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": "RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Annexe I prices only 'i. résident'. No non-resident row exists for this category, matching r.12 annexe I which also lists only a resident row. Recorded as stated; not read as a prohibition."
+      ]
+    },
+    {
+      "category": "FEE",
+      "kind": "droit relatif au permis de chasse",
+      "officialName": {
+        "text": "Dindon sauvage printemps",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "9\t \ta) Dindon sauvage printemps\t \t \n \t \ti. résident\t \t31,82 $",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 32, annexe I (a. 3)",
+      "amount": {
+        "value": 31.82,
+        "currency": "CAD",
+        "statedAs": "9\t \ta) Dindon sauvage printemps\t \t \n \t \ti. résident\t \t31,82 $",
+        "columnHeading": {
+          "text": "Droits annuels",
+          "lang": "fr-CA"
+        }
+      },
+      "mandatoryAddition": {
+        "value": 5.3,
+        "currency": "CAD",
+        "officialName": {
+          "text": "contribution pour le financement de la Fondation pour la biodiversité et la faune du Québec",
+          "lang": "fr-CA"
+        },
+        "citation": "C-61.1, r. 32, annexe VI (a. 14)"
+      },
+      "appliesToAuthorization": {
+        "officialName": {
+          "text": "Dindon sauvage printemps",
+          "lang": "fr-CA"
+        },
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), annexe I"
+      },
+      "validityBasis": {
+        "endsOn": "EARLIER_OF",
+        "statedAs": "Sous réserve du deuxième alinéa, tout permis de chasse expire à la fin de la période de chasse à l’animal ou au groupe d’animaux pour lequel il est délivré ou lorsque l’animal a été identifié à l’aide d’un coupon de transport ou aurait dû l’être conformément au Règlement sur les activités de chasse (chapitre C-61.1, r. 1)...",
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), s. 11, first paragraph",
+        "note": "EVENT-based. The fee column is headed 'Droits annuels'; the authorization it buys is not annual. Both are recorded; neither is normalised into the other."
+      },
+      "scope": {
+        "speciesIds": [
+          "species:wild-turkey"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": {
+          "label": {
+            "text": "printemps",
+            "lang": "fr-CA"
+          },
+          "statedAs": "Dindon sauvage printemps"
+        },
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "FEE",
+      "kind": "droit relatif au permis de chasse",
+      "officialName": {
+        "text": "Dindon sauvage printemps",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "ii. non-résident\t \t173,95 $",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 32, annexe I (a. 3)",
+      "amount": {
+        "value": 173.95,
+        "currency": "CAD",
+        "statedAs": "ii. non-résident\t \t173,95 $",
+        "columnHeading": {
+          "text": "Droits annuels",
+          "lang": "fr-CA"
+        }
+      },
+      "mandatoryAddition": {
+        "value": 5.3,
+        "currency": "CAD",
+        "officialName": {
+          "text": "contribution pour le financement de la Fondation pour la biodiversité et la faune du Québec",
+          "lang": "fr-CA"
+        },
+        "citation": "C-61.1, r. 32, annexe VI (a. 14)"
+      },
+      "appliesToAuthorization": {
+        "officialName": {
+          "text": "Dindon sauvage printemps",
+          "lang": "fr-CA"
+        },
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), annexe I"
+      },
+      "validityBasis": {
+        "endsOn": "EARLIER_OF",
+        "statedAs": "Sous réserve du deuxième alinéa, tout permis de chasse expire à la fin de la période de chasse à l’animal ou au groupe d’animaux pour lequel il est délivré ou lorsque l’animal a été identifié à l’aide d’un coupon de transport ou aurait dû l’être conformément au Règlement sur les activités de chasse (chapitre C-61.1, r. 1)...",
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), s. 11, first paragraph",
+        "note": "EVENT-based. The fee column is headed 'Droits annuels'; the authorization it buys is not annual. Both are recorded; neither is normalised into the other."
+      },
+      "scope": {
+        "speciesIds": [
+          "species:wild-turkey"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": {
+          "label": {
+            "text": "printemps",
+            "lang": "fr-CA"
+          },
+          "statedAs": "Dindon sauvage printemps"
+        },
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "NON_RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "FEE",
+      "kind": "droit relatif au permis de chasse",
+      "officialName": {
+        "text": "Dindon sauvage automne",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "b) Dindon sauvage automne\t \t \n \t \ti. résident\t \t11,42 $",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 32, annexe I (a. 3)",
+      "amount": {
+        "value": 11.42,
+        "currency": "CAD",
+        "statedAs": "b) Dindon sauvage automne\t \t \n \t \ti. résident\t \t11,42 $",
+        "columnHeading": {
+          "text": "Droits annuels",
+          "lang": "fr-CA"
+        }
+      },
+      "mandatoryAddition": {
+        "value": 5.3,
+        "currency": "CAD",
+        "officialName": {
+          "text": "contribution pour le financement de la Fondation pour la biodiversité et la faune du Québec",
+          "lang": "fr-CA"
+        },
+        "citation": "C-61.1, r. 32, annexe VI (a. 14)"
+      },
+      "appliesToAuthorization": {
+        "officialName": {
+          "text": "Dindon sauvage automne",
+          "lang": "fr-CA"
+        },
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), annexe I"
+      },
+      "validityBasis": {
+        "endsOn": "EARLIER_OF",
+        "statedAs": "Sous réserve du deuxième alinéa, tout permis de chasse expire à la fin de la période de chasse à l’animal ou au groupe d’animaux pour lequel il est délivré ou lorsque l’animal a été identifié à l’aide d’un coupon de transport ou aurait dû l’être conformément au Règlement sur les activités de chasse (chapitre C-61.1, r. 1)...",
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), s. 11, first paragraph",
+        "note": "EVENT-based. The fee column is headed 'Droits annuels'; the authorization it buys is not annual. Both are recorded; neither is normalised into the other."
+      },
+      "scope": {
+        "speciesIds": [
+          "species:wild-turkey"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": {
+          "label": {
+            "text": "automne",
+            "lang": "fr-CA"
+          },
+          "statedAs": "Dindon sauvage automne"
+        },
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "FEE",
+      "kind": "droit relatif au permis de chasse",
+      "officialName": {
+        "text": "Dindon sauvage automne",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "ii. non-résident\t \t55,54 $",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 32, annexe I (a. 3)",
+      "amount": {
+        "value": 55.54,
+        "currency": "CAD",
+        "statedAs": "ii. non-résident\t \t55,54 $",
+        "columnHeading": {
+          "text": "Droits annuels",
+          "lang": "fr-CA"
+        }
+      },
+      "mandatoryAddition": {
+        "value": 5.3,
+        "currency": "CAD",
+        "officialName": {
+          "text": "contribution pour le financement de la Fondation pour la biodiversité et la faune du Québec",
+          "lang": "fr-CA"
+        },
+        "citation": "C-61.1, r. 32, annexe VI (a. 14)"
+      },
+      "appliesToAuthorization": {
+        "officialName": {
+          "text": "Dindon sauvage automne",
+          "lang": "fr-CA"
+        },
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), annexe I"
+      },
+      "validityBasis": {
+        "endsOn": "EARLIER_OF",
+        "statedAs": "Sous réserve du deuxième alinéa, tout permis de chasse expire à la fin de la période de chasse à l’animal ou au groupe d’animaux pour lequel il est délivré ou lorsque l’animal a été identifié à l’aide d’un coupon de transport ou aurait dû l’être conformément au Règlement sur les activités de chasse (chapitre C-61.1, r. 1)...",
+        "citation": "Règlement sur la chasse (C-61.1, r. 12), s. 11, first paragraph",
+        "note": "EVENT-based. The fee column is headed 'Droits annuels'; the authorization it buys is not annual. Both are recorded; neither is normalised into the other."
+      },
+      "scope": {
+        "speciesIds": [
+          "species:wild-turkey"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": ""
+        },
+        "seasonSegment": {
+          "label": {
+            "text": "automne",
+            "lang": "fr-CA"
+          },
+          "statedAs": "Dindon sauvage automne"
+        },
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "NON_RESIDENT",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "FEE",
+      "kind": "droits d’enregistrement",
+      "officialName": {
+        "text": "enregistrement",
+        "lang": "fr-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "Les droits exigibles pour l’enregistrement du cerf de Virginie, de l’orignal, de l’ours noir ou du dindon sauvage auprès de la personne, de la société ou de l’association que le ministre autorise en vertu de l’article 56.1 de la Loi sur la conservation et la mise en valeur de la faune (chapitre C-61.1) sont de 8,18 $.",
+        "lang": "fr-CA"
+      },
+      "citation": "C-61.1, r. 32, s. 14.1",
+      "amount": {
+        "value": 8.18,
+        "currency": "CAD",
+        "statedAs": "sont de 8,18 $"
+      },
+      "mandatoryAddition": null,
+      "appliesToAuthorization": null,
+      "validityBasis": null,
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer",
+          "species:moose",
+          "species:american-black-bear",
+          "species:wild-turkey"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [],
+          "statedAs": "auprès de la personne, de la société ou de l’association que le ministre autorise"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "A SEPARATE fee from the licence, payable on registering an animal after the hunt. It is not part of the cost of obtaining a licence and must not be added to one."
+      ]
+    }
+  ],
+  "absenceEvidence": [
+    {
+      "fact": "FEE — three licence categories that exist in the licence regulation are NOT PRICED in the fee regulation",
+      "searchedOn": "2026-09-23",
+      "instruments": [
+        "Règlement sur la tarification reliée à l’exploitation de la faune (C-61.1, r. 32), full text, sha256 e1f1cc90…, annexes I and VI"
+      ],
+      "terms": [
+        "Orignal sans bois",
+        "femelle ou mâle, dont les bois mesurent moins de 7 cm pour toutes les zones sauf pour la zone 20",
+        "Ours noir valide pour la zone 13",
+        "Ours noir valide pour la zone 16"
+      ],
+      "control": {
+        "term": "Orignal",
+        "matched": true,
+        "count": 21,
+        "note": "'Orignal' matched 21 times and 'Ours noir' 21 times by the same method on the same text, and annexe I prices 'Orignal pour toutes les zones' and 'Orignal, Correction de zone'. So the absence of an 'Orignal sans bois' price is measured, not a broken search."
+      },
+      "finding": "r.12 annexe I establishes «Orignal sans bois», «Cerf de Virginie, femelle ou mâle, dont les bois mesurent moins de 7 cm pour toutes les zones sauf pour la zone 20», «Ours noir valide pour la zone 13» and «Ours noir valide pour la zone 16». r.32 annexe I prices none of them: it prices the zone-20 antlerless deer only, and paragraphs d) and e) of its article 2 are '(paragraphe abrogé)'. The two draw-allocated licences are exactly the ones with no fee row.",
+      "closedBy": "NOT CLOSED. A fee may sit in another instrument, in a draw-specific tariff, or be nil. NO FEE IS SHOWN for these authorizations and the evidentiary state is kept, per CLAUDE.md §41A as amended: an omitted fee with its evidence is the correct answer.",
+      "instrumentNote": "Instrument named in full in `instruments`; no bare section numbers are used in this record."
+    }
+  ],
+  "schemaGapsReported": [
+    "FEE CURRENTNESS AND AUTHORIZATION VALIDITY ARE INDEPENDENT CLOCKS IN QUÉBEC, and the amended rule asks whether the fee source is current 'for that authorization's own validity basis'. Here they do not align and cannot be made to: the FEE is indexed annually on 1 April (s.15), while the BIG-GAME LICENCE it buys expires on an event (r.12 s.11). A fee can be perfectly current while the authorization has already expired, and vice versa. Both are recorded separately — source.feeCurrentness and the row's validityBasis — rather than collapsed into one 'current' flag.",
+    "THE FEE COLUMN IS HEADED «Droits annuels» — ANNUAL — FOR LICENCES THAT ARE NOT ANNUAL. Québec's own fee table calls these annual fees while r.12 s.11 makes most of them expire at season end or on tagging. That is the authority contradicting its own framing, not an error of ours. Recorded verbatim as amount.columnHeading; NOT resolved."
+  ],
+  "laneNotes": [
+    "THE ANNEXE I AMOUNT IS NOT WHAT A HUNTER PAYS. A mandatory contribution to the Fondation pour la biodiversité et la faune du Québec is set per licence category in annexe VI and is payable in addition. Carried on every row as mandatoryAddition. Showing the annexe I figure alone understates the cost of every Québec licence.",
+    "Annexe VI as published lists «b) Cerf de Virginie ... 5,30 $» on the category line AND 5,30 $ on both of its sub-lines i and ii for non-residents. Quoted as published; not tidied.",
+    "The annexe VI contribution for «Petit gibier» is expressly «sauf pour la chasse du lièvre ou du lapin à queue blanche au moyen de collet», which has its own line — so the snare licence is excluded from the petit gibier contribution and carries its own.",
+    "Resident and non-resident are separate rows throughout. No figure is shown without its category.",
+    "Non-resident rows are absent for «Lièvre ou lapin à queue blanche au moyen de collet» in BOTH regulations. Recorded, not interpreted.",
+    "Re-emitted 2026-09-23 against the landed contract: scope.enginTypes became scope.gearClasses (the authority's own numbers as identity), implements moved to gearClassesDerived marked display-only, and EVERY citation in every row now carries its instrument — no bare section numbers anywhere, per 'a citation without its instrument is not a citation'."
+  ]
+}
