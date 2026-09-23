@@ -1007,6 +1007,40 @@ before that reasoning exists, which is exactly what makes them able to catch
 it. That is a reason to keep writing them first that has nothing to do with the
 code being wrong.
 
+### Stop calling it a conflict, rather than describe the conflict better
+
+**From the overlap exchange with the U.S. agent, 2026-09-23.** Newfoundland's
+moose, caribou and black bear areas stack over the same ground. That LOOKED
+like a conflict and was not one — the province publishes those layers over each
+other deliberately. The fix was not to name the overlapping zones better; it
+was to stop calling it a conflict at all (`isLocationLayer` removes
+species-scoped layers from the location-only question).
+
+The principle generalises, and it is the reasoning behind Michigan's design
+too: **before improving how a conflict is reported, check whether it is a
+conflict.** Three situations look identical at a point and are not:
+
+1. **One authority's layers stacking by design** — not a conflict. Answer from
+   the location layer.
+2. **Two authorities both claiming a point** (Québec 19N and Newfoundland's
+   moose area 050 in Labrador) — a real conflict, named, never resolved by
+   preferring whoever answered.
+3. **One authority's service returning several of its own features** — a real
+   ambiguity within one source.
+
+A fourth, which Michigan forces: **units that nest by design**, where a point
+is in three at once and all three apply. That is not a conflict either, and a
+flat list of "conflicting" ids cannot express it. Letting the ABSENCE of a
+precedence rule push nesting into the conflict bucket would report a defect
+where the authority intends a hierarchy. UNKNOWN is for what North Ground does
+not know; nesting the authority publishes on purpose is something it does know.
+
+Note the limit of North Ground's own mechanism, which the U.S. agent caught:
+Michigan's nesting is WITHIN ONE LAYER — 115 units in one service with no field
+distinguishing county from CWD-core from urban — so there is nothing for
+`isLocationLayer` to filter on. The Newfoundland mechanism does not transfer,
+and the containment state is being designed as a shared concept instead.
+
 ### Why cross-review found a clause the author would not have written
 
 **On the viewport contract (2026-09-23).** Hunt overhaul found the `whole`
