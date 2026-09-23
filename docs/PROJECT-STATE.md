@@ -4,7 +4,7 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-23 (**British Columbia serves rules** — a first wave of 79 rules over seven species reaching 221 of 225 units, 20/20 production cases, three disputes preserved as CONFLICT; coreGameComplete 5 of 11. Earlier the same day: **Canada spatial complete**: all 11 in-scope provinces and territories have parity-certified official geography, Prince Edward Island last, served at geography level JURISDICTION because the province publishes no units. Rules remain the open front — 7 of 11 hold no certified rule and answer UNKNOWN. Government GIS transient failures are now retried under one stated policy and a national audit survives an unreadable provider.)
+Last updated: 2026-09-23 (**British Columbia serves rules** — a first wave of 79 rules over seven species reaching 221 of 225 units, 20/20 production cases, three disputes preserved as CONFLICT; coreGameComplete 5 of 11. Earlier the same day: **Canada spatial complete**: all 11 in-scope provinces and territories have parity-certified official geography, Prince Edward Island last, served at geography level JURISDICTION because the province publishes no units. Rules remain the open front — 7 of 11 hold no certified rule and answer UNKNOWN. Government GIS transient failures are now retried under one stated policy and a national audit survives an unreadable provider. **United States: licence-first.** Six more states' map licences read and recorded verbatim with hashes — Michigan clears (public record, no reuse restrictions), Wisconsin, North Dakota and South Dakota are silent, Minnesota and Maine refuse outright. Eight of the ten states with any evidence may not be drawn, so the 50-state bottleneck is permissions rather than engineering; eight letters are drafted for the owner. A silence and a refusal are now reported differently because they are undone differently. An overlap names its zones instead of counting them. Michigan is next and is held until its Wildlife Conservation Order is read: its deer units nest by design, and deliberate nesting is not a conflict.)
 
 Previously: 2026-09-22 (Canonical species PRIMARY media schema, private storage and every shared consumer are activated and certified in production. Temporary certification media and users were removed; population is 0/60. Permanent administrator access remains fail-closed until the owner supplies the administrator email.)
 
@@ -510,10 +510,86 @@ bundle; it is the difference between a day of work and a week of rediscovery.
 Not assumed complete.
 Add jurisdictions only when genuinely implemented.
 
-- Research inventory: IN DEVELOPMENT for federal plus all 50 states; D.C. relevance remains unresolved. Principal wildlife authorities and official hunting hubs are inventoried. Every state now has at least one species/source evidence lead, but current-guide and claim-level certification is not complete.
-- Regulatory/GIS reconnaissance is now explicit and machine-readable in `research/hunting/us/`: 51 state/district readiness rows and 65 official-source rows, including a deeper first pass for Alaska, Arizona, Colorado, Idaho, Montana, New Mexico, Utah and Wyoming. This is research only. It adds no runtime rules, geometry, UI support, database migrations or public U.S. coverage claim.
-- The Wave 1 pass confirms the existing engine is only partially compatible. U.S. implementation needs first-class hunt numbers/codes, draw and quota lifecycles, typed species-specific geography, land/authority overlays, amendment precedence, jurisdiction-defined method classes and multi-source citations. Migratory birds require federal plus state/tribal composition; federal and tribal subsistence or treaty regimes must remain separate authorities rather than state-rule flags.
-- No Wave 1 GIS source is production-certified. Current blockers include unresolved reuse terms or stable service contracts, map disclaimers that defer to written legal descriptions, species-dependent boundaries, mutable corrections/emergency orders, and New Mexico's official downloadable GMU data being dated October 2017. Canada remains the first complete geographic target before broad U.S. implementation.
+**One state is served. One more is certified and withheld. Eight may not be
+drawn at all.** Every count below is computed by `npm run report:us` from
+evidence at call time; none is typed into a constant, so no state can be made
+to look covered by editing a number.
+
+Per-state status is three independent lanes — MAP, REGULATIONS, INTELLIGENCE —
+and a state is never promoted past what its evidence supports:
+`UNAVAILABLE → LICENCE_BLOCKED → IN_DEVELOPMENT → CERTIFIED → SERVED`.
+
+As of 2026-09-23, 10 of 51 have evidence of any kind:
+
+- **Idaho — SERVED, both lanes.** The first U.S. state live. CC-BY licence,
+  708-point live parity with 0 disagreements, 54 pronghorn rules over 40 hunt
+  areas built from the 2026 Big Game booklet, 16 of 16 certification cases.
+  Hunt codes are a first-class dimension; a tag for an area that does not cover
+  the point is answered ("a tag for it does not authorise hunting here"), not
+  ignored.
+- **Montana — REGULATIONS CERTIFIED, MAP LICENCE_BLOCKED, nothing served.** 28
+  rules across 5 species, 18 of 18 cases, 9 of 9 change drills. FWP grants
+  access "on a strictly 'as is' basis" and states no reuse terms, so the code
+  enforces the block and the work is withheld in full. This is the clearest
+  case of the programme's real bottleneck: the engineering is done and the
+  permission is not.
+- **Michigan — licence CLEARED, not yet built.** A public record with no
+  restrictions on use, reproduction or distribution — the only state so far
+  that permits a stored copy (not acted on; U.S. layers stay live-service by
+  the owner's decision). 115 deer units plus 14 further game geographies on one
+  service. Next state to build.
+- **Licence-blocked (8): CO, ME, MN, MT, ND, SD, WI, WY.** Each blocked in its
+  publisher's own words, recorded verbatim with a hash in
+  `content/registry/us-map-licence-findings.json`, with a drafted letter in
+  `docs/correspondence/`.
+- **41 states and D.C. have no evidence of any kind**, so every query there is
+  UNKNOWN.
+
+**Licence-first is the working order**, adopted after Montana: a state's MAP
+licence is read and recorded before any rules work is spent on it. Silence is
+never permission. Two blocked kinds are kept distinct because they are undone
+differently — a SILENCE (UNRESOLVED) means the publisher may never have been
+asked, so a person must ask; a REFUSAL (RESTRICTED/PROHIBITED) means it has
+answered, and only a written exception would change that. Reporting them
+identically would make a refusal look like an errand.
+
+**The bottleneck is permissions, not engineering.** Two of ten states cleared.
+Eight letters are drafted for the owner to send or not; nothing in the codebase
+moves them.
+
+Supporting architecture now in place:
+
+- **A state resolver independent of hunting geometry.** `point → state →
+  hunting geography → rules`, from Census TIGERweb (public domain, 17 U.S.C.
+  § 105), bounded and cached, never drawn, never a zone id, never a rule input.
+  A unit layer's extent is a rectangle and cannot answer "which state".
+- **`SourceLicence` records** hold the publisher's words verbatim with a
+  sha256, so a reworded licence is a visible change. Using and KEEPING are
+  separate permissions (`licencePermitsServing` vs `licencePermitsStoredCopy`);
+  an ingest asks the second, never the first.
+- **`serving` and `rulesServing` are separate flags**, so drawing a boundary is
+  never a claim that the rules inside it are certified.
+- **Opening-payload cost is measured before a state is served**
+  (`scripts/us-overview-budget.mjs`), at brotli quality 5 as a CDN serves, and
+  refuses to report a number if any layer failed to draw.
+
+Known, unresolved, and blocking Michigan:
+
+- **Nesting is not conflict, and the engine has no third state for it.**
+  Michigan publishes a county unit, a multicounty unit and a CWD core over the
+  same ground on purpose — the Lansing capitol is in three deer units at once,
+  Detroit in two — all on ONE layer with no field distinguishing kind.
+  Reporting that as a conflict would show a hunter a defect where the authority
+  intends a hierarchy. Whether the Wildlife Conservation Order states a
+  precedence rule is being read; if it does not, that is recorded as explicitly
+  absent rather than inferred from code ranges.
+- Earlier reconnaissance in `research/hunting/us/` (51 readiness rows, 65
+  source rows) remains research only and is superseded, where they disagree, by
+  the certification report.
+- Several states define units by written description and say the text governs
+  where the map disagrees (MN, ME, SD by county in rule). A polygon there is a
+  depiction, not the law, and intra-unit exclusions are often absent from GIS
+  attributes.
 
 ### Other Countries
 Future.
