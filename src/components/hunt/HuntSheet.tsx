@@ -132,11 +132,22 @@ export default function HuntSheet({ layout, snap, heights, onSnap, label, header
     return () => element.removeEventListener("click", swallow, true);
   }, []);
 
-  /* Keyboard focus never lands on something below the visible part of the sheet. */
+  /*
+   * Keyboard focus never lands on something below the visible part of the sheet.
+   *
+   * Measured against the VISUAL viewport, not `window.innerHeight`. The layout
+   * viewport does not shrink when a phone keyboard opens — on an iPhone it
+   * stays 874 while roughly 475 is visible — so comparing against it says a
+   * control is on screen when the keyboard is sitting on top of it, and the
+   * sheet never rises. Mixing the two viewports is the whole family of bug
+   * this file has already been bitten by once.
+   */
   const onFocusCapture = useCallback((event: React.FocusEvent<HTMLElement>) => {
     if (!isSheet || snap === "full") return;
+    const view = window.visualViewport;
+    const visibleBottom = (view?.offsetTop ?? 0) + (view?.height ?? window.innerHeight);
     const rect = (event.target as HTMLElement).getBoundingClientRect();
-    if (rect.bottom > window.innerHeight - 4) onSnap("full");
+    if (rect.bottom > visibleBottom - 4) onSnap("full");
   }, [isSheet, snap, onSnap]);
 
   /* Closed is a real state, so the control that reopens it says what it does

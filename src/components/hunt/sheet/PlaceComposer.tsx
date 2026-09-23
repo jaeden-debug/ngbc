@@ -66,6 +66,8 @@ export default function PlaceComposer({
   const abortRef = useRef<AbortController | null>(null);
   const sessionTokenRef = useRef<string>("");
   const skipNextQueryRef = useRef(false);
+  /* One submission per press of Search, however many events the key produces. */
+  const submittingRef = useRef(false);
 
   useEffect(() => {
     sessionTokenRef.current = newSessionToken();
@@ -174,6 +176,26 @@ export default function PlaceComposer({
       inputRef.current?.blur();
       return;
     }
+    /*
+     * THE KEYBOARD'S OWN SEARCH KEY IS A SUBMISSION.
+     *
+     * It used to act only when a suggestion had been highlighted with the
+     * arrow keys, which on a phone never happens — there are no arrow keys.
+     * So pressing Search did nothing at all: no result, and the keyboard
+     * staying up over the answer. Enter now takes the highlighted place, or
+     * the first one offered, exactly once; and when there is nothing to take,
+     * it still dismisses the keyboard, because the person has finished typing
+     * either way.
+     */
+    if (event.key === "Enter") {
+      event.preventDefault();
+      if (submittingRef.current) return;
+      const pick = suggestions[activeIndex >= 0 ? activeIndex : 0];
+      if (!pick) { inputRef.current?.blur(); return; }
+      submittingRef.current = true;
+      void Promise.resolve(choose(pick)).finally(() => { submittingRef.current = false; });
+      return;
+    }
     if (!suggestions.length) return;
     if (event.key === "ArrowDown") {
       event.preventDefault();
@@ -181,10 +203,6 @@ export default function PlaceComposer({
     } else if (event.key === "ArrowUp") {
       event.preventDefault();
       setActiveIndex((index) => (index <= 0 ? suggestions.length - 1 : index - 1));
-    } else if (event.key === "Enter" && activeIndex >= 0) {
-      event.preventDefault();
-      inputRef.current?.blur();
-      void choose(suggestions[activeIndex]);
     }
   }
 

@@ -38,6 +38,7 @@ import { useZoneGeometry, type MapView } from "./map/useZoneGeometry";
 import HuntAnswer, { statusWord } from "./sheet/HuntAnswer";
 import type { ChosenPlace } from "./sheet/PlaceComposer";
 import { InSeasonHere, StateChip, ZoneSpeciesAnswer, ZoneSummaryDetail, type SummaryLoad } from "./sheet/ZoneContext";
+import HuntDiagnostics from "./HuntDiagnostics";
 import styles from "./HuntApp.module.css";
 
 /* Pages open on demand, so each is its own chunk; they are fetched once the
@@ -1088,6 +1089,9 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   /* ── Content ─────────────────────────────────────────────────────────── */
 
   const detailed = layout === "panel" || snap === "full";
+  /* TEMPORARY: measuring iOS keyboard geometry on a real device. Delete with the fix. */
+  const [diagnostics, setDiagnostics] = useState(false);
+  useEffect(() => { setDiagnostics(new URLSearchParams(window.location.search).get("diag") === "1"); }, []);
   const dateLabel = deviceToday ? dateChipLabel(session.date.iso, new Date(`${deviceToday}T12:00:00`)) : session.date.explicit ? longDayLabel(session.date.iso) : "Today";
   /*
    * Choosing a species answers a different question depending on where it was
@@ -1550,7 +1554,9 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   ];
 
   return (
-    <div className={styles.app} ref={rootRef} style={rootStyle} data-layout={layout} data-snap={layout === "sheet" ? snap : undefined}>
+    <div className={styles.app} ref={rootRef} style={rootStyle} data-layout={layout} data-snap={layout === "sheet" ? snap : undefined} data-hunt-root="">
+      {/* TEMPORARY, ?diag=1 only: a geometry readout for measuring on a real device. */}
+      {diagnostics ? <HuntDiagnostics /> : null}
       <div className={styles.safeProbe} ref={safeProbeRef} aria-hidden="true" />
 
       {/* Reading order: the header, then the answer, then the map and its controls. Stacking is by z-index. */}
