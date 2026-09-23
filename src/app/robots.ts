@@ -5,7 +5,9 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: "/",
+      /* Species photos are public, EXIF-stripped renditions of active assets and
+         are the image of every species page; the rest of /api/ is not content. */
+      allow: ["/", "/api/species-media/"],
       disallow: "/api/",
     },
     sitemap: absoluteUrl("/sitemap.xml"),

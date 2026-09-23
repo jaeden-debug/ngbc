@@ -1,28 +1,37 @@
+/* eslint-disable @next/next/no-img-element -- ImageResponse renders these, not a browser */
 import { ImageResponse } from "next/og";
+import { isPublishedSpeciesSlug } from "../../../../lib/content/species-route";
 import { contentRepository } from "../../../../lib/content/repository";
 import { speciesTitleCase } from "../../../../lib/seo/species-metadata";
-import { getSpeciesPrimaryMedia } from "../../../../lib/species-media/repository";
-import { photoCredit, speciesPhotoDataUrl } from "../../../../lib/species-media/social";
+import { cachedSpeciesPrimaryMedia, photoCredit, speciesPhotoDataUrl } from "../../../../lib/species-media/social";
 
 export const runtime = "nodejs";
-export const alt = "Species profile | North Ground";
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
+const size = { width: 1200, height: 630 };
 
 type Props = { params: Promise<{ species: string }> };
+
+async function speciesFor(slug: string) {
+  const resource = await contentRepository.getResourceBySlug(slug, { locale: "en-CA" });
+  return resource?.type === "species" ? resource : null;
+}
 
 /**
  * The species' own verified PRIMARY photo under a quiet North Ground band. No
  * photo is ever substituted: without a verified PRIMARY the card is the name on
  * the brand ground, exactly as the profile shows a placeholder.
+ *
+ * A route rather than the profile segment's opengraph-image so the page can
+ * give each card its own alt text without prerendering it: the PRIMARY photo
+ * is live data, and a card built at deploy would keep a replaced photo.
  */
-export default async function SpeciesOpenGraphImage({ params }: Props) {
+export async function GET(_request: Request, { params }: Props) {
   const { species } = await params;
-  const resource = await contentRepository.getResourceBySlug(species, { locale: "en-CA" });
-  const profile = resource?.type === "species" ? resource.speciesProfile : null;
+  if (!isPublishedSpeciesSlug(species)) return new Response(null, { status: 404 });
+  const resource = await speciesFor(species);
+  const profile = resource?.speciesProfile ?? null;
   const name = speciesTitleCase(resource?.title ?? "Species");
   const [media, groups] = profile
-    ? await Promise.all([getSpeciesPrimaryMedia(profile.speciesId), contentRepository.getSpeciesGroups(profile.speciesId)])
+    ? await Promise.all([cachedSpeciesPrimaryMedia(profile.speciesId), contentRepository.getSpeciesGroups(profile.speciesId)])
     : [null, []];
   const photo = media ? await speciesPhotoDataUrl(media, size.width, size.height) : null;
   const group = groups[0]?.names.find(({ locale }) => locale === "en-CA")?.value ?? null;
@@ -44,6 +53,6 @@ export default async function SpeciesOpenGraphImage({ params }: Props) {
         </div>
       </div>
     </div>,
-    size,
+    { ...size, headers: { "Cache-Control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800" } },
   );
 }

@@ -4,7 +4,10 @@ import Breadcrumbs from "../../../components/Breadcrumbs";
 import HuntNav from "../../../components/hunt/HuntNav";
 import { contentRepository } from "../../../lib/content/repository";
 import { northAmericaCoverageReport, regulatoryJurisdictionsForSpecies } from "../../../lib/hunt/north-america/report";
+import StructuredData from "../../../components/StructuredData";
+import { OPEN_GRAPH_BASE } from "../../../lib/seo/open-graph";
 import { SPECIES_LIBRARY_METADATA } from "../../../lib/seo/species-metadata";
+import { collectionPageJsonLd } from "../../../lib/seo/structured-data";
 import { currentSpeciesMediaAdmin } from "../../../lib/species-media/admin-auth";
 import { getSpeciesPrimaryMediaMap } from "../../../lib/species-media/repository";
 import SpeciesLibrary, { type LibrarySpecies } from "./SpeciesLibrary";
@@ -18,6 +21,7 @@ export const metadata: Metadata = {
   description: SPECIES_LIBRARY_METADATA.description,
   alternates: { canonical: "/hunting/species" },
   openGraph: {
+    ...OPEN_GRAPH_BASE,
     type: "website",
     url: "/hunting/species",
     title: SPECIES_LIBRARY_METADATA.ogTitle,
@@ -87,6 +91,12 @@ export default async function SpeciesLibraryPage() {
 
   return (
     <main className="ng-product-page">
+      <StructuredData data={collectionPageJsonLd({
+        path: "/hunting/species",
+        name: SPECIES_LIBRARY_METADATA.title,
+        description: SPECIES_LIBRARY_METADATA.description,
+        items: species.map((item) => ({ name: item.commonName, path: item.canonicalUrl })),
+      })} />
       <HuntNav current="/hunting/species" />
 
       <div className={`ng-shell ${styles.shell}`}>
@@ -100,7 +110,7 @@ export default async function SpeciesLibraryPage() {
 
         <header className={styles.header}>
           <p className="ng-eyebrow">North Ground Hunt</p>
-          <h1 className={styles.title}>Species library</h1>
+          <h1 className={styles.title}>North American species library</h1>
           <p className={styles.lede}>
             Identification, habitat and field marks for {species.length} North American species.
             Search a common, scientific, French or hunter name.

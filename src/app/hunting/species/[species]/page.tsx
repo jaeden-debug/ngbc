@@ -15,7 +15,8 @@ import StructuredData from "../../../../components/StructuredData";
 import type { SpeciesResource } from "../../../../lib/content-contract/types";
 import { contentRepository } from "../../../../lib/content/repository";
 import { regulatoryJurisdictionsForSpecies } from "../../../../lib/hunt/north-america/report";
-import { getSpeciesPrimaryMedia } from "../../../../lib/species-media/repository";
+import { OPEN_GRAPH_BASE } from "../../../../lib/seo/open-graph";
+import { cachedSpeciesPrimaryMedia } from "../../../../lib/species-media/social";
 import { speciesMetadataCopy } from "../../../../lib/seo/species-metadata";
 import { speciesArticleJsonLd } from "../../../../lib/seo/structured-data";
 import { absoluteUrl } from "../../../../lib/site";
@@ -46,32 +47,49 @@ export async function generateStaticParams() {
   return resources.filter((resource) => resource.type === "species").map((resource) => ({ species: resource.slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { species } = await params;
-  const resource = await getSpeciesResource(species);
-  if (!resource) return {};
+/** Search, social and structured-data copy all say the same thing. */
+function speciesCopy(resource: SpeciesResource, groups: readonly { id: string }[]) {
   const speciesId = resource.speciesProfile.speciesId;
-  const groups = await contentRepository.getSpeciesGroups(speciesId);
-  const copy = speciesMetadataCopy({
+  return speciesMetadataCopy({
     name: resource.title,
     groupIds: groups.map((group) => group.id),
     regulatoryJurisdictions: regulatoryJurisdictionsForSpecies(speciesId),
   });
-  /* The social image is this segment's opengraph-image: the species' own photo. */
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { species } = await params;
+  const resource = await getSpeciesResource(species);
+  if (!resource) return {};
+  const [groups, media] = await Promise.all([
+    contentRepository.getSpeciesGroups(resource.speciesProfile.speciesId),
+    cachedSpeciesPrimaryMedia(resource.speciesProfile.speciesId),
+  ]);
+  const copy = speciesCopy(resource, groups);
+  /* The species' own card; its alt text is the verified photo's, where there is one. */
+  const image = {
+    url: `/og/species/${resource.slug}`,
+    width: 1200,
+    height: 630,
+    alt: media?.altText ?? copy.ogTitle,
+  };
   return {
     title: copy.title,
     description: copy.description,
     alternates: { canonical: resource.canonicalUrl },
     openGraph: {
+      ...OPEN_GRAPH_BASE,
       type: "article",
       url: resource.canonicalUrl,
       title: copy.ogTitle,
       description: copy.ogDescription,
+      images: [image],
     },
     twitter: {
       card: "summary_large_image",
       title: copy.ogTitle,
       description: copy.ogDescription,
+      images: [image],
     },
   };
 }
@@ -93,7 +111,7 @@ export default async function SpeciesPage({ params }: Props) {
   const [related, relatedSpecies, image, blocks, groups] = await Promise.all([
     contentRepository.getRelatedResources(resource.id, { locale: resource.locale, limit: 5 }),
     contentRepository.getRelatedSpecies(speciesId),
-    getSpeciesPrimaryMedia(speciesId),
+    cachedSpeciesPrimaryMedia(speciesId),
     blocksPromise,
     contentRepository.getSpeciesGroups(speciesId),
   ]);
@@ -133,7 +151,10 @@ export default async function SpeciesPage({ params }: Props) {
 
   return (
     <main className="ng-product-page">
-      <StructuredData data={speciesArticleJsonLd(resource, absoluteUrl(canonicalUrl))} />
+      <StructuredData data={speciesArticleJsonLd(resource, absoluteUrl(canonicalUrl), {
+        description: speciesCopy(resource, groups).description,
+        imageUrl: image ? absoluteUrl(image.renditions.profile.url) : null,
+      })} />
       <HuntNav current="/hunting/species" />
 
       <div className={`ng-shell ${styles.shell}`}>
@@ -173,7 +194,7 @@ export default async function SpeciesPage({ params }: Props) {
           <div className={styles.actions}>
             <Link
               className="ng-action"
-              href={hasRegulatoryCoverage ? `/hunt?species=${encodeURIComponent(speciesId)}` : "/hunt"}
+              href={hasRegulatoryCoverage ? `/hunt?species=${encodeURIComponent(speciesId.slice("species:".length))}` : "/hunt"}
             >
               {hasRegulatoryCoverage ? "Open this species in Hunt" : "Check current Hunt coverage"}
             </Link>

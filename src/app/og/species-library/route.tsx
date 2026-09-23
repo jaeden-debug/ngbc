@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element -- ImageResponse renders these, not a browser */
 import { ImageResponse } from "next/og";
 import { getSpeciesPrimaryMediaMap } from "../../../lib/species-media/repository";
 import { speciesPhotoDataUrl } from "../../../lib/species-media/social";
@@ -33,7 +34,6 @@ export async function GET() {
   return new ImageResponse(
     <div style={{ display: "flex", width: "100%", height: "100%", position: "relative", background: "linear-gradient(145deg, #10130f, #050706 62%)", color: "#e8e1c9" }}>
       <div style={{ position: "absolute", top: 0, left: 0, width: size.width, height: size.height, display: "flex" }}>
-        {/* eslint-disable-next-line @next/next/no-img-element -- rendered by ImageResponse, not the browser */}
         {photos.map((photo, index) => (
           <img key={index} src={photo} width={stripWidth} height={size.height} alt="" style={{ borderRight: "2px solid #050706" }} />
         ))}

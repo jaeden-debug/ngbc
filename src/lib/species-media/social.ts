@@ -1,5 +1,7 @@
+import { cache } from "react";
 import sharp from "sharp";
 import { readSpeciesRendition } from "./read";
+import { getSpeciesPrimaryMedia } from "./repository";
 import type { SpeciesPrimaryMedia } from "./types";
 
 /**
@@ -38,3 +40,9 @@ export async function speciesPhotoDataUrl(
 export function photoCredit(media: SpeciesPrimaryMedia): string {
   return `${media.creator} · ${media.licence}`;
 }
+
+/**
+ * One PRIMARY lookup per request: the profile, its structured data and its
+ * social-image metadata all ask for the same photo.
+ */
+export const cachedSpeciesPrimaryMedia = cache(getSpeciesPrimaryMedia);
