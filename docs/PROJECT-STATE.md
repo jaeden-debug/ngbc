@@ -308,6 +308,9 @@ Examples:
 - Owner action: replace production's refused `GOOGLE_MAPS_SERVER_API_KEY` (see Known Problems). Hunt works without it on Open-Meteo and Nominatim, so this blocks Google, not Hunt.
 - Owner decision: serving Québec. Three steps, each blocked on approval in the Québec session: the resolver swap (proven identical for Ontario, Manitoba and Alberta; it does not change their boundary distance — see Known Problems), promoting the 59 Québec zones to VERIFIED, and deploying the serving switch.
 - Ontario Crown-land production layer: the catalogue combines Open Government Licence metadata with additional OGDE-only features. Production storage/redistribution is blocked until the service schema is certified and the redistributable subset can be proved, or Ontario confirms the rights.
+- Owner decision: reading legisquebec.gouv.qc.ca programmatically, and storing verbatim Éditeur officiel text. Two facts, tested 2026-09-23: the site returns **403** to our own agent (`NorthGroundBushcraft/1.0`) and **200** to a browser agent, so any scripted read means presenting a user-agent we are not; and no reuse terms appear on the regulation page, whose publisher is « L'Éditeur officiel du Québec », while North Ground is a commercial use. Its `robots.txt` disallows `/fr/resource`, and the annexe III PDF is served from `/fr/ressource` — the French spelling, not a literal prefix match, which is too thin a thing to rely on. Settled already, per `source-licence.ts`: a general bot filter on a public regulations page is not an access control on a data service, so a **human-equivalent browser read is fine and is not at issue**. The open question is scripted ingestion and storage.
+  Blocks three items, which is why it goes up as one question: populating Québec gear classes (`scope.gearClasses`), anchoring art. 17 to the regulation rather than only to MFFP's summary prose, and most of Québec legal hours. Everything Québec in the bundle today comes from quebec.ca, a different source with different terms.
+  Do NOT work around it by reconstructing a gear class from `permittedImplements`: r. 12 art. 31 defines types 11 and 12 with identical bow and crossbow paragraphs, type 12 adding slugs and muzzleloaders, and the hunter-orange exemption reaches 6 and 11 but not 12. The failure direction is telling a hunter they need no orange when the law requires it, so the correct output is UNKNOWN.
 
 ## Regulatory Coverage
 
@@ -1164,6 +1167,49 @@ ON 151, MB 62, AB 189, QC 59, BC 225, NL moose 74 / caribou 19 / bear 7, NB 27,
 PE 1, NS 12, YT 443, SK 83, ID 99.
 
 ## Corrections To Earlier Claims
+
+### Québec antlerless moose was already guarded (corrected 2026-09-23)
+
+A finding relayed to the owner said Québec's antlerless-moose rows were
+unconstrained and that "correctness rests on the rows happening to match —
+nothing would stop a future ingest reintroducing an unpermitted grant."
+
+**That was wrong, and it was flattering to the finding, which is the kind that
+spreads.** `crossCheckMoose` (`scripts/build-quebec-regulations.mjs:609`,
+called at `:767`) already asserts the antlerless designation sets per implement
+section and per year, then re-verifies that the MFFP prose it was written from
+still says what it said. The committed bundle satisfies it exactly:
+
+    bow 2026: 13, 19, 29        bow 2027: 13, 18, 19, 28, 29
+    gun 2026:     19, 29        gun 2027: 13, 18, 19, 28, 29
+
+Zone 13 is **absent** from gun-2026. That is r. 12 art. 17 3° already enforced
+in the data: in 2026 zone 13 antlerless is permitted only during an « engin de
+type 11 » period, and the bundle grants it only on the bow/crossbow rows.
+
+The guard has now been fired rather than only read. A live read with
+`--save-pages` (186 rules, hash matching the committed bundle) gave a passing
+control at exit 0; perturbing the gun-2026 expectation to claim zone 13 exits 1
+with *"prose says 13,19,29, tables say 19,29"*, and perturbing one expected
+prose string exits 1 too. **The control is what makes the failures mean
+anything** — without it a throw could have been the offline mode. `--out`
+protects production: `:889` writes the certified-units file only when the
+output path is the committed one.
+
+Two things that were real, and remain open. The citation first relayed named
+the *Loi* (C-61.1); art. 17 is in the *Règlement* (C-61.1, r. 12), and the
+Act's art. 17 concerns seizure reports — a wrong citation attached to a true
+finding discredits it. And the guard is anchored to **MFFP's summary prose, not
+to the regulation**, so if the ministry's summary were rewritten the build would
+follow it; anchoring the same expectation to art. 17 gives a second anchor that
+cannot drift with the first. That anchor is blocked (see Blocked).
+
+The zone 13 / 13SO 2026 row is **certified, not NEEDS_VERIFICATION**: annexe
+III lists zone 13 under type 11 for "du samedi le ou le plus près du 27
+septembre au dimanche le ou le plus près du 5 octobre", which resolves for 2026
+to 26 September – 4 October, exactly the rule's window. It remains
+**unevidenced in the data** until gear classes are populated — a different
+repair from being wrong.
 
 ### A green suite did not prove types (fixed 2026-09-23)
 
