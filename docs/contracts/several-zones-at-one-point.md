@@ -7,6 +7,15 @@ point, and how those answers are told apart.
 **Not in scope:** which zone's rules govern (that is precedence, below), any
 jurisdiction's actual geography, styling, or regulatory evaluation.
 
+> **This is a United-States-shaped mechanism living in shared code, and it says
+> so deliberately.** Measured 2026-09-23: no Canadian layer nests within
+> itself — 73 bounding-box candidates across every certified Canadian layer,
+> zero true containments, maximum overlap 0.206%. Canadian overlap is only ever
+> species-scoped (filtered upstream) or cross-authority (already a conflict).
+> The mechanism belongs in shared code because the resolver is shared, not
+> because the problem is general. A later jurisdiction may need it; none does
+> today, and the contract should not claim otherwise.
+
 ---
 
 ## The problem
@@ -161,10 +170,11 @@ not be a unit.
 
 ## Open questions
 
-1. **Open, with Canada.** Does any Canadian jurisdiction nest *within one
-   layer* this way, or is Canadian overlap always species-scoped or
-   cross-authority? If Canada never hits case 3, this stays a U.S.-shaped
-   mechanism in shared code, and the contract should say so plainly.
+1. **Answered 2026-09-23 — NO Canadian layer nests within itself**, measured
+   against the database rather than recalled: 73 bounding-box candidates across
+   all certified Canadian layers, **zero** true containments, maximum overlap
+   0.206% — boundary slivers, not nesting. Canadian overlap is only ever
+   species-scoped or cross-authority.
 2. **Answered 2026-09-23 — SEPARATE STATUS.** Not by analogy but by
    measurement: `HuntApp.tsx:383` and `:524` both read `payload.status ===
    "RESOLVED"` and take `payload.zone` — singular — as THE zone, which becomes
