@@ -252,7 +252,21 @@ const scenarios = {
     await page.goto(`${BASE}/hunt?zone=ca-on-wmu-57`);
     await mapReady(page);
     await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "WMU 57", 30_000);
-    const overview = Number(await page.getAttribute("[data-zones]", "data-zones"));
+    /* Let the framing finish before the baseline is taken. `data-zones` counts
+       what is drawn IN VIEW, and this link frames WMU 57, so a count sampled
+       mid-flight is a different view's count and the whole comparison below is
+       against the wrong number. Settled means two equal reads in a row. */
+    const settled = async () => {
+      let previous = -1;
+      for (let attempt = 0; attempt < 40; attempt += 1) {
+        const now = Number(await page.getAttribute("[data-zones]", "data-zones"));
+        if (now === previous && now > 0) return now;
+        previous = now;
+        await page.waitForTimeout(250);
+      }
+      return previous;
+    };
+    const overview = await settled();
     let minimum = overview;
     const sample = async () => { minimum = Math.min(minimum, Number(await page.getAttribute("[data-zones]", "data-zones"))); };
     await page.mouse.move(900, 450);
@@ -269,6 +283,19 @@ const scenarios = {
       await sample();
     }
     await page.waitForTimeout(1_500);
+    /*
+     * The invariant is `minimum === overview`: zooming and panning may never
+     * LOSE a zone that was drawn. The floor beside it stops that passing on an
+     * empty map, where 0 === 0.
+     *
+     * This failed intermittently and the count in the failure (253) made it
+     * look as though the viewport change had shrunk what the map draws. It had
+     * not: settled, this view draws all 1425 served zones, the same as before.
+     * The baseline was simply being read while the camera was still flying to
+     * WMU 57, so it measured a frame of the journey. The wait above is the fix;
+     * the floor is left where it was, because nothing about what the map draws
+     * actually changed.
+     */
     check(s, "every served zone stays on the map", overview > 400 && minimum === overview, `overview ${overview}, minimum ${minimum}`);
     const selected = await zoneTitle(page);
     check(s, "the selected zone stays selected", selected === "WMU 57", String(selected));
