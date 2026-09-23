@@ -63,7 +63,7 @@ reworded source can be re-read without disturbing the other.
 
 ```jsonc
 {
-  "category": "AUTHORIZATION | VISIBILITY | METHOD | AMMUNITION | SPECIES_CONDITION | PLACE_CONDITION | TIME_CONDITION",
+  "category": "AUTHORIZATION | VISIBILITY | METHOD | AMMUNITION | LIMIT | SPECIES_CONDITION | PLACE_CONDITION | TIME_CONDITION",
   "kind": "<the authority's OWN term: 'permis de chasse au petit gibier', 'tag', 'validation'>",
   "officialName": { "text": "<verbatim>", "lang": "fr-CA" },
 
@@ -138,6 +138,74 @@ reworded source can be re-read without disturbing the other.
    Y" is ONE portion with two conditions. The tell is whether the noun repeats.
    When unsure, quote it and put it in `unresolved`.
 
+## The LIMIT category
+
+Bag and possession limits are their own category because two of the nine
+completeness facts are limits, and because every shortcut here is wrong by a
+multiple rather than by a detail.
+
+```jsonc
+{
+  "category": "LIMIT",
+  "kind": "BAG | POSSESSION",
+
+  // REQUIRED. No default, ever.
+  "period": "DAY | SEASON | LICENCE_YEAR",
+
+  "value": { "count": 10, "statedAs": "<the verbatim cell or sentence>" },
+
+  // REQUIRED. Say which, with the sentence that settles it — never leave it implied.
+  "appliesAcross": {
+    "scope": "THIS_SPECIES | AGGREGATE",
+    "speciesIds": ["species:blue-grouse", "species:spruce-grouse", "species:ruffed-grouse"],
+    "statedAs": "the daily aggregate bag limit is 10"
+  },
+
+  // An aggregate that caps one member below the whole.
+  "subCaps": [ { "speciesIds": ["species:blue-grouse"], "count": 5, "statedAs": "of which only 5 can be blue grouse" } ],
+
+  // ONLY when the AUTHORITY states the derivation. Never when we compute one.
+  "derivedByAuthority": {
+    "ofKind": "BAG", "ofPeriod": "DAY", "multiplier": 3,
+    "statedAs": "3 times the daily bag limit for game birds, excluding migratory game birds",
+    "excludes": ["migratory game birds"], "citation": "s.12(b)(vii)"
+  },
+
+  // Where the figure is a table notation rather than prose.
+  "notationDefinedBy": { "citation": "s.9(2)", "statedAs": "<the provision that decodes '5(15)'>" }
+}
+```
+
+**`period` is required and has no default.** A season limit rendered as a daily
+one is wrong by an order of magnitude, and B.C. Reg. 190/84 proves both live in
+one instrument: its own Part 1 header reads *"Season bag limits for big game
+and small game; daily bag limits for upland birds."* A model that assumes daily
+gets big game wrong throughout.
+
+**`appliesAcross` is required, and "this species" is a claim needing a
+sentence.** Québec's five-bird daily limit is an AGGREGATE across four species;
+a per-species reading is wrong by 4×. British Columbia does the same and then
+caps one member below the whole. Leaving the field out so it defaults to
+per-species is precisely the error, so there is no default — say which, and
+quote the sentence.
+
+**`derivedByAuthority` exists because the rule it appears to break is narrower
+than it sounds.** "Never derive a possession limit from a daily one" was
+written against US doing the deriving. B.C. s.12(b)(vii) has the AUTHORITY
+doing it: *"3 times the daily bag limit for game birds, excluding migratory
+game birds."* That is the regulation's own sentence, and refusing to represent
+it would be claiming less than the source establishes — the other half of §8.
+
+So the rule means: **never compute a derivation the authority did not state.**
+A stated one is recorded with its multiplier, its exclusions and its sentence,
+and the engine may evaluate it **only when the limit it references is itself
+certified** — a derivation from an uncertified base is a number we calculated
+wearing the authority's words.
+
+**A table cell is not self-describing.** `"5(15)"` means daily 10 / possession
+20 only because s.9(2) says so. Record the cell verbatim AND the provision that
+decodes it; a figure whose notation lives elsewhere is not evidence on its own.
+
 ## Rule 8: authenticity is not currency
 
 **Required, and it is the newest rule because it nearly cost us a wrong
@@ -179,6 +247,43 @@ So:
   NOT_YET_IN_FORCE, is never CERTIFIED.** Record it, cite the live instrument
   where the source names one, and note the trap — because the next researcher
   will hit the same search result.
+
+## Reporting a measured absence
+
+You searched properly and found nothing. That is a result, not a blank, and it
+has its own shape:
+
+```jsonc
+"absenceEvidence": {
+  "fact": "HUNTER_ORANGE",
+  "searchedOn": "2026-09-24",
+  "instruments": ["B.C. Reg. 190/84", "Wildlife Act", "<…the rest…>", "2026-2028 synopsis"],
+  "terms": ["orange", "fluorescent", "blaze", "<…nine…>"],
+  "control": { "term": "Blazed Creek", "matched": true },
+  "closedBy": "<what would settle it: an authority statement, or a closed-world clause>"
+}
+```
+
+**Run a control.** A term you know is present in the same text, matched by the
+same method. Without it a zero is indistinguishable from a broken search — a
+wrong regex, a PDF whose text layer is images, a page that loaded empty. BC's
+lane matched "Blazed Creek", which is why its nine zeroes are evidence.
+
+**Do not record it as NOT_APPLICABLE on your own authority**, and the BC lane
+was right not to. *"No provision found in these instruments"* and *"this
+jurisdiction has no such requirement"* are different claims. The first is about
+your search; the second is about the law, and it does not follow, because the
+provision may live in an instrument that was not among the ones you read.
+
+**What closes it:** a positive statement from the authority ("no hunter orange
+requirement applies to..."), or a closed-world clause reaching that requirement
+class — the way B.C. Reg. 190/84 s.4 closes the world for SEASONS by saying the
+open seasons ARE those in the Schedules. A closed-world clause for one class
+does not close another: BC's seasons clause says nothing about clothing.
+
+Until then the fact stays RESEARCH_REQUIRED **with your evidence attached**, so
+nobody searches those nine terms again and the next lane knows exactly what to
+go and get.
 
 ## What "complete" means for one species
 

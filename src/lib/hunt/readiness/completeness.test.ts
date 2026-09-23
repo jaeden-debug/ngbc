@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { READINESS_FACTS, completenessFor, completenessMatrix, remainingFor } from "./completeness.ts";
+import { READINESS_FACTS, completenessFor, completenessMatrix, remainingFor, type FactCell } from "./completeness.ts";
 
 /**
  * The completeness matrix, held to the two rules that make it a coordination
@@ -65,6 +65,37 @@ describe("completeness matrix", () => {
       rowsIn.reduce((total, row) => total + row.facts.filter((cell) => cell.state === "CERTIFIED").length, 0);
     const quebec = await completenessFor("jurisdiction:ca-qc");
     assert.ok(certified(ontario) / ontario.length > certified(quebec) / quebec.length);
+  });
+
+  it("a measured absence is not NOT_APPLICABLE", () => {
+    /* BC's lane searched nine terms across five instruments plus an 84-page
+       synopsis for a hunter-orange requirement, found zero, and ran a false-zero
+       control ("Blazed Creek" matched, so the search works on that text). They
+       declined to call it NOT_APPLICABLE on their own authority and were right:
+       "no provision found in these instruments" is a claim about the search,
+       "this jurisdiction has no such requirement" is a claim about the law, and
+       the second does not follow — the provision may live in an act, a regional
+       order or a park regulation that was not among the five.
+
+       So the state stays RESEARCH_REQUIRED and the evidence rides with it: the
+       negative result is preserved, nobody re-runs those nine terms, and
+       `closedBy` names what would actually settle it. */
+    const cell: FactCell = {
+      fact: "HUNTER_ORANGE", state: "RESEARCH_REQUIRED",
+      note: "Searched and not found; needs an authority statement to close.",
+      deliverable: { pairs: 0, of: 225 },
+      absenceEvidence: {
+        searchedOn: "2026-09-24",
+        instruments: ["B.C. Reg. 190/84", "Wildlife Act", "2026-2028 synopsis"],
+        terms: ["orange", "fluorescent", "blaze"],
+        control: { term: "Blazed Creek", matched: true },
+        closedBy: "A positive statement from the authority, or a closed-world clause reaching clothing.",
+      },
+    };
+    assert.notEqual(cell.state, "NOT_APPLICABLE");
+    assert.equal(cell.deliverable.pairs, 0, "an absence never delivers an answer");
+    assert.equal(cell.absenceEvidence!.control.matched, true, "a zero without a control is not evidence");
+    assert.ok(cell.absenceEvidence!.closedBy.length > 0, "a recorded absence says what would close it");
   });
 
   it("no species is complete yet, and the matrix says so plainly", async () => {

@@ -38,7 +38,21 @@ export const READINESS_FACTS: readonly ReadinessFact[] = [
 export type FactState =
   /** Hunt can answer this correctly for this species here. */
   | "CERTIFIED"
-  /** The authority's scheme has no such fact here, and says so. */
+  /**
+   * The authority's scheme has no such fact here, AND SAYS SO.
+   *
+   * This requires a POSITIVE statement from the authority, or a closed-world
+   * clause covering the requirement class. A measured absence does not reach
+   * it: "we searched five instruments and found no provision" is a claim about
+   * our SEARCH, and "this jurisdiction imposes no such requirement" is a claim
+   * about the LAW. The second does not follow from the first, because the
+   * search space may be incomplete — a provision can live in an act, a
+   * regional order or a park regulation that was not among the five.
+   *
+   * A measured absence stays RESEARCH_REQUIRED and carries its evidence, so
+   * the work is not repeated and the next lane knows exactly what would close
+   * it. See `absenceEvidence`.
+   */
   | "NOT_APPLICABLE"
   /** Nobody has read the authority for it yet. A queue item, not a property of the law. */
   | "RESEARCH_REQUIRED"
@@ -54,6 +68,26 @@ export interface FactCell {
   note: string;
   /** Species-unit pairs this fact can actually be delivered in, of those possible. */
   deliverable: { pairs: number; of: number };
+  /**
+   * A search that was run and found nothing — recorded so it is not repeated,
+   * and so the negative result is not mistaken for nobody having looked.
+   *
+   * It does NOT promote the cell to NOT_APPLICABLE. What would: a positive
+   * statement from the authority, or a closed-world clause reaching this
+   * requirement class. `closedBy` names which is missing.
+   *
+   * `control` is what makes the zero trustworthy — a term known to be present
+   * in the same text, matched by the same method. Without it a zero is
+   * indistinguishable from a broken search, and BC's lane ran one
+   * ("Blazed Creek" matched, so the search works on that text).
+   */
+  absenceEvidence?: {
+    searchedOn: string;
+    instruments: string[];
+    terms: string[];
+    control: { term: string; matched: boolean };
+    closedBy: string;
+  };
 }
 
 export interface SpeciesCompleteness {
