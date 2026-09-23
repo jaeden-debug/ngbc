@@ -141,8 +141,45 @@ function pointInRing([x, y], ring) {
   return inside;
 }
 
+/*
+ * Even-odd, over every ring, rather than "ring 0 is the exterior and the rest
+ * are holes".
+ *
+ * That positional rule is the GeoJSON convention, and it is wrong for geometry
+ * that came from ESRI, which distinguishes exterior rings from interior ones by
+ * ORIENTATION and not by position. A conversion that preserves ESRI's ring
+ * order turns a second EXTERIOR ring — a separate island — into a "hole", and a
+ * point on that island is then judged outside the zone while the authority's
+ * own service and PostGIS both correctly place it inside. New Brunswick's zones
+ * 3, 4 and 26 failed exactly that way.
+ *
+ * Counting rings is orientation-free, so it is right for both conventions and
+ * for geometry whose winding survived a conversion imperfectly: a point inside
+ * an odd number of rings is inside the polygon. A point in a true hole is
+ * inside two (the exterior and the hole) and is outside; a point on an island
+ * within a hole is inside three and is inside again.
+ */
 function pointInPolygon(point, polygon) {
-  return Boolean(polygon[0] && pointInRing(point, polygon[0]) && !polygon.slice(1).some((hole) => pointInRing(point, hole)));
+  let inside = 0;
+  for (const ring of polygon) if (pointInRing(point, ring)) inside += 1;
+  return inside % 2 === 1;
+}
+
+/**
+ * The rings of a polygon that are genuinely holes: those whose own interior
+ * lies inside an odd number of the polygon's OTHER rings. Position says
+ * nothing, so neither does this.
+ */
+function holeRingsOf(polygon) {
+  return polygon.filter((ring, index) => {
+    if (ring.length < 4) return false;
+    const inside = poleOfInaccessibility([ring], 0.000_01);
+    let enclosing = 0;
+    polygon.forEach((other, otherIndex) => {
+      if (otherIndex !== index && pointInRing(inside, other)) enclosing += 1;
+    });
+    return enclosing % 2 === 1;
+  });
 }
 
 function pointInGeometry(point, geometry) {
@@ -290,12 +327,35 @@ function sampleOfficialFeatures(features) {
     // the largest and smallest exclusion per zone; Québec contains thousands,
     // and asking the live resolver once per ring would add load without adding
     // a different class of evidence.
-    const holes = polygons.flatMap(({ polygon }) => polygon.slice(1))
-      .filter((hole) => hole.length >= 4)
+    const holes = polygons.flatMap(({ polygon }) => holeRingsOf(polygon))
       .map((hole) => ({ hole, area: ringArea(hole) }))
       .sort((left, right) => right.area - left.area);
     for (const { hole } of [holes[0], ...(holes.length > 1 ? [holes.at(-1)] : [])].filter(Boolean)) {
-      samples.push({ kind: "HOLE", zone: feature.officialIdentifier, point: poleOfInaccessibility([hole], 0.000_01) });
+      /*
+       * A hole is point-tested the same way a part is, and is untestable on the
+       * same grounds: New Brunswick publishes zero-area holes of three and four
+       * points, whose furthest-from-any-edge point is ON their edge, so whether
+       * a point is "in" them turns on differences far below what any boundary
+       * North Ground reports. Recorded as its own outcome, never as agreement.
+       */
+      const inside = poleOfInaccessibility([hole], SAMPLE_TOLERANCE_DEGREES);
+      const edge = closestBoundary(inside, [hole]);
+      const poleToEdgeMetres = edge ? metresBetween(inside, edge) : null;
+      const untestable = poleToEdgeMetres !== null && poleToEdgeMetres < SAMPLE_TOLERANCE_METRES;
+      samples.push({
+        kind: "HOLE",
+        zone: feature.officialIdentifier,
+        point: inside,
+        ...(untestable
+          ? {
+              untestable: true,
+              reason: "SLIVER_BELOW_SAMPLING_TOLERANCE",
+              poleToEdgeMetres: Number(poleToEdgeMetres.toFixed(4)),
+              toleranceMetres: SAMPLE_TOLERANCE_METRES,
+              ringPoints: hole.length,
+            }
+          : {}),
+      });
     }
   }
   return samples.map((sample) => ({

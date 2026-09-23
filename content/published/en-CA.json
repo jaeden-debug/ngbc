@@ -791,6 +791,20 @@
       ],
       "verificationStatus": "verified",
       "licence": "Nova Scotia Open Government Licence"
+    },
+    {
+      "id": "source:ca-nb-wmz-service",
+      "authority": "New Brunswick Department of Natural Resources and Energy Development",
+      "title": "Wildlife Management Zones — New Brunswick Open Data",
+      "url": "https://gnb.socrata.com/d/5nbi-4ve3",
+      "publisher": "Government of New Brunswick",
+      "retrievedAt": "2026-09-23T06:00:00Z",
+      "type": "official",
+      "jurisdictionIds": [
+        "jurisdiction:ca-nb"
+      ],
+      "verificationStatus": "verified",
+      "licence": "New Brunswick Open Government Licence"
     }
   ],
   "claims": [

@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "certifiedOn": "2026-09-23",
+  "jurisdiction": "jurisdiction:ca-nb",
+  "layer": "layer:ca-nb-wmz",
+  "authority": "New Brunswick Department of Natural Resources and Energy Development",
+  "sourceUrl": "https://gis-erd-der.gnb.ca/server/rest/services/OpenData/WMZ/MapServer/0",
+  "sourceVersion": "OpenData/WMZ/MapServer/0, read 2026-09-23",
+  "officialZones": 27,
+  "officialIdentifiers": [
+    "1",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "2",
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ],
+  "northGroundZones": 27,
+  "quarantined": [],
+  "inventory": {
+    "missing": [],
+    "invented": []
+  },
+  "geometry": {
+    "checked": 27,
+    "normalizations": [
+      {
+        "identifier": "10",
+        "normalization": {
+          "method": "ST_MakeValid",
+          "authorityValidityError": "Ring Self-intersection[-67.7896473759524 46.8208595709393]",
+          "symmetricDifferenceSquareMetres": 0
+        },
+        "rawAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 1,
+          "rings": 1,
+          "holes": 0,
+          "vertices": 3132,
+          "bbox": [
+            -67.79026824,
+            46.13360153,
+            -67.17129501,
+            47.06621418
+          ],
+          "areaSquareMetres": 2714316351.2974806,
+          "fingerprint": "sha256:2a1f96f92c5d50d5871662d83fa2fa0e6b7111580fd92db65a8673bf43bf50b8"
+        },
+        "normalizedAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 1,
+          "rings": 2,
+          "holes": 1,
+          "vertices": 3133,
+          "bbox": [
+            -67.79026824,
+            46.13360153,
+            -67.17129501,
+            47.06621418
+          ],
+          "areaSquareMetres": 2714316351.2970266,
+          "fingerprint": "sha256:0d9a5177c32f9859c3c7f869d0a699b17bac4392e199833807b1e9cc270e6318"
+        }
+      },
+      {
+        "identifier": "20",
+        "normalization": {
+          "method": "ST_MakeValid",
+          "authorityValidityError": "Ring Self-intersection[-67.295726236817 45.1704798309865]",
+          "symmetricDifferenceSquareMetres": 0
+        },
+        "rawAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 91,
+          "rings": 109,
+          "holes": 18,
+          "vertices": 41169,
+          "bbox": [
+            -67.50385184,
+            44.93614597,
+            -66.04104612,
+            45.7427334
+          ],
+          "areaSquareMetres": 5323027030.069764,
+          "fingerprint": "sha256:bbc3b6334bbb8eb41b318619e7095e8b2bd7bf80ae38c867ef4e085fc48b6af2"
+        },
+        "normalizedAuthority": {
+          "geometryType": "MultiPolygon",
+          "polygons": 91,
+          "rings": 110,
+          "holes": 19,
+          "vertices": 41170,
+          "bbox": [
+            -67.50385184,
+            44.93614597,
+            -66.04104612,
+            45.7427334
+          ],
+          "areaSquareMetres": 5323027030.069584,
+          "fingerprint": "sha256:509221c83c85044056f2b712493580b2854ad0d26d7668513e6cebaf4befa738"
+        }
+      }
+    ],
+    "disagreements": [],
+    "totals": {
+      "authorityFeatures": 27,
+      "polygons": 276,
+      "holes": 46,
+      "vertices": 195608
+    }
+  },
+  "parity": {
+    "total": 127,
+    "agreements": 118,
+    "disagreements": 0,
+    "testable": 118,
+    "untestable": [
+      {
+        "zone": "3",
+        "kind": "HOLE",
+        "reason": "SLIVER_BELOW_SAMPLING_TOLERANCE",
+        "poleToEdgeMetres": 0,
+        "toleranceMetres": 1.2,
+        "northGroundRepaired": false
+      },
+      {
+        "zone": "3",
+        "kind": "HOLE",
+        "reason": "SLIVER_BELOW_SAMPLING_TOLERANCE",
+        "poleToEdgeMetres": 0.0085,
+        "toleranceMetres": 1.2,
+        "northGroundRepaired": false
+      },
+      {
+        "zone": "4",
+        "kind": "HOLE",
+        "reason": "SLIVER_BELOW_SAMPLING_TOLERANCE",
+        "poleToEdgeMetres": 0.0092,
+        "toleranceMetres": 1.2,
+        "northGroundRepaired": false
+      },
+      {
+        "zone": "4",
+        "kind": "HOLE",
+        "reason": "SLIVER_BELOW_SAMPLING_TOLERANCE",
+        "poleToEdgeMetres": 0,
+        "toleranceMetres": 1.2,
+        "northGroundRepaired": false
+      },
+      {
+        "zone": "5",
+        "kind": "HOLE",
+        "reason": "SLIVER_BELOW_SAMPLING_TOLERANCE",
+        "poleToEdgeMetres": 0,
+        "toleranceMetres": 1.2,
+        "northGroundRepaired": false
+      },
+      {
+        "zone": "15",
+        "kind": "HOLE",
+        "reason": "SLIVER_BELOW_SAMPLING_TOLERANCE",
+        "poleToEdgeMetres": 0,
+        "toleranceMetres": 1.2,
+        "northGroundRepaired": false
+      },
+      {
+        "zone": "20",
+        "kind": "HOLE",
+        "reason": "SLIVER_BELOW_SAMPLING_TOLERANCE",
+        "poleToEdgeMetres": 0.0284,
+        "toleranceMetres": 1.2,
+        "northGroundRepaired": true
+      },
+      {
+        "zone": "26",
+        "kind": "HOLE",
+        "reason": "SLIVER_BELOW_SAMPLING_TOLERANCE",
+        "poleToEdgeMetres": 0.0013,
+        "toleranceMetres": 1.2,
+        "northGroundRepaired": false
+      },
+      {
+        "zone": "27",
+        "kind": "HOLE",
+        "reason": "SLIVER_BELOW_SAMPLING_TOLERANCE",
+        "poleToEdgeMetres": 0,
+        "toleranceMetres": 1.2,
+        "northGroundRepaired": false
+      }
+    ],
+    "untestableShare": 0.0709,
+    "untestableCeiling": 0.15,
+    "unresolved": 0,
+    "counts": {
+      "INTERIOR": 27,
+      "BOUNDARY_INSIDE": 23,
+      "BOUNDARY_OUTSIDE": 23,
+      "INTERIOR_SECOND": 27,
+      "HOLE": 16,
+      "MULTIPART": 11
+    },
+    "failures": [],
+    "sampleHash": "sha256:b692b7a17c903a52132a774ebc47ed71fe9fa94ff372a80f2df323774dac20f7"
+  },
+  "status": "VERIFIED"
+}

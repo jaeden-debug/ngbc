@@ -260,6 +260,24 @@ export const ZONE_PRESENTATION_PROFILES: readonly ZonePresentationProfile[] = [
     stripLeadingZeros: false,
   },
   {
+    layerId: "layer:ca-nb-wmz",
+    jurisdictionId: "jurisdiction:ca-nb",
+    zoneIdPrefix: "management_zone:ca-nb-wmz-",
+    officialNamePrefix: "Wildlife Management Zone ",
+    sourceLocale: "en-CA",
+    jurisdictionName: { "en-CA": "New Brunswick", "fr-CA": "Nouveau-Brunswick" },
+    /* New Brunswick is officially bilingual and publishes the term in both, so
+       both are the authority's own words rather than a translation. */
+    term: {
+      "en-CA": { long: "Wildlife Management Zone", short: "WMZ" },
+      "fr-CA": { long: "Zone d'aménagement de la faune", short: "ZAF" },
+    },
+    termIsAbbreviation: true,
+    // 1 to 27, as the regulation numbers them.
+    designationPattern: /^([1-9]|1\d|2[0-7])$/,
+    stripLeadingZeros: false,
+  },
+  {
     layerId: "layer:ca-ns-deer-zone",
     jurisdictionId: "jurisdiction:ca-ns",
     zoneIdPrefix: "management_zone:ca-ns-dmz-",

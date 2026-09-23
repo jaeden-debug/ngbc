@@ -9,6 +9,7 @@ import britishColumbiaCertifiedUnits from "../../../content/regulatory/ca-bc-cer
 import { US_ZONE_LAYERS } from "./united-states/layers.ts";
 import { CANADA_LIVE_ZONE_LAYERS } from "./canada/live-layers.ts";
 import { NEWFOUNDLAND_BIG_GAME_SERVICE, NEWFOUNDLAND_LEGAL_STANDING, normaliseNewfoundlandArea } from "./ingestion/newfoundland-areas.ts";
+import { NEW_BRUNSWICK_WMZ_LEGAL_STANDING, normaliseNewBrunswickWmz } from "./ingestion/new-brunswick-wmz.ts";
 import { NOVA_SCOTIA_DEER_LEGAL_STANDING, normaliseNovaScotiaDeerZone } from "./ingestion/nova-scotia-deer.ts";
 import { YUKON_GMS_LAYER, YUKON_LEGAL_STANDING, normaliseYukonSubzone } from "./ingestion/yukon-subzones.ts";
 import { BRITISH_COLUMBIA_MU_CONFIG, normaliseBritishColumbiaMu } from "./ingestion/british-columbia-mu.ts";
@@ -490,6 +491,32 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     speciesScope: ["species:american-black-bear"],
     drawnByDefault: false,
     timeZone: "America/St_Johns",
+  },
+  {
+    id: "layer:ca-nb-wmz",
+    jurisdictionId: "jurisdiction:ca-nb",
+    jurisdictionName: "New Brunswick",
+    country: "CA",
+    officialTerm: "Wildlife Management Zone",
+    officialTermShort: "WMZ",
+    coverage: "IN_DEVELOPMENT",
+    coverageNote:
+      "New Brunswick's 27 Wildlife Management Zones from the province's own service, under the New Brunswick Open " +
+      "Government Licence. The regulations under the Fish and Wildlife Act control; the layer is the province's " +
+      "digital product of them. No New Brunswick rule is certified, so every species here answers UNKNOWN.",
+    authority: "New Brunswick Department of Natural Resources and Energy Development",
+    sourceId: "source:ca-nb-wmz-service",
+    bounds: { minLatitude: 44.49, maxLatitude: 48.08, minLongitude: -69.06, maxLongitude: -63.76 },
+    /* Boundaries only: 27 zones parity-certified against the province
+       (118/118 testable points; nine degenerate holes below the sampling
+       tolerance recorded as untestable). */
+    serving: true,
+    mapGeometry: "stored",
+    officialNamePrefix: "Wildlife Management Zone ",
+    zoneIdPrefix: "management_zone:ca-nb-wmz-",
+    designationOf: normaliseNewBrunswickWmz,
+    legalStanding: NEW_BRUNSWICK_WMZ_LEGAL_STANDING,
+    timeZone: "America/Moncton",
   },
   {
     id: "layer:ca-ns-deer-zone",

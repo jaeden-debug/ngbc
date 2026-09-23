@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "certifiedOn": "2026-09-22",
+  "certifiedOn": "2026-09-23",
   "jurisdiction": "jurisdiction:ca-ab",
   "layer": "layer:ca-ab-wmu",
   "authority": "Government of Alberta",
@@ -245,7 +245,7 @@
       "MULTIPART": 3
     },
     "failures": [],
-    "sampleHash": "sha256:21679d2cf6d72321e33cc5847590f4919c162bcb5e456e8a363152c943b66d88"
+    "sampleHash": "sha256:41e2f95dff47f21f7c612c261920b4c3ce0ddbfd133819241ab9df29feaad3b3"
   },
   "status": "VERIFIED"
 }

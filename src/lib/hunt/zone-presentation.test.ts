@@ -190,10 +190,11 @@ test("representative Ontario, Manitoba and Alberta zones read as the authority n
 
 test("10. an unsupported or future jurisdiction is shown raw, never given a name", () => {
   for (const input of [
-    // New Mexico and New Brunswick have no profile: shown raw, never named.
+    // New Mexico and Prince Edward Island have no profile: shown raw, never named.
+    // New Brunswick stood here until its zones were served and given one.
     { designation: "GMU 12", jurisdictionId: "jurisdiction:us-nm" },
-    { designation: "21", jurisdictionId: "jurisdiction:ca-nb" },
-    { designation: "21", layerId: "layer:ca-nb-wmz" },
+    { designation: "21", jurisdictionId: "jurisdiction:ca-pe" },
+    { designation: "21", layerId: "layer:ca-pe-wma" },
   ]) {
     for (const locale of ZONE_LOCALES) {
       const presented = presentZone(input, locale);

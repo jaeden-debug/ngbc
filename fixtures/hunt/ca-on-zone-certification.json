@@ -178,10 +178,10 @@
     }
   },
   "parity": {
-    "total": 608,
-    "agreements": 607,
+    "total": 609,
+    "agreements": 608,
     "disagreements": 0,
-    "testable": 607,
+    "testable": 608,
     "untestable": [
       {
         "zone": "56",
@@ -201,11 +201,11 @@
       "BOUNDARY_INSIDE": 149,
       "BOUNDARY_OUTSIDE": 149,
       "INTERIOR_SECOND": 151,
-      "HOLE": 5,
+      "HOLE": 6,
       "MULTIPART": 3
     },
     "failures": [],
-    "sampleHash": "sha256:7ebfc99e5f271d2854d712ab0388018dadb22260e7d0625e7d4679531338b209"
+    "sampleHash": "sha256:a96da7da4ae1b46e8132ad86221eda8a5a04e4760c162587ea1ea1a7e8d13f46"
   },
   "status": "VERIFIED"
 }

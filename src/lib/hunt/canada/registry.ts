@@ -379,18 +379,34 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     nameFr: "Nouveau-Brunswick",
     kind: "province",
     spatial: {
-      status: "IN_DEVELOPMENT",
+      // Parity-certified and served boundary-only.
+      status: "VERIFIED",
       officialTerm: "Wildlife Management Zone (WMZ)",
       officialSourceUrl: "https://geonb.snb.ca/geonb/",
-      parityCertified: false,
+      serviceUrl: "https://gis-erd-der.gnb.ca/server/rest/services/OpenData/WMZ/MapServer/0",
+      parityCertified: true,
+      notes:
+        "All 27 Wildlife Management Zones (1-27) are in PostGIS as VERIFIED with their derivatives built, " +
+        "parity-certified 2026-09-23: 27/27 inventory, 0 missing, 0 invented, 0 geometry disagreements and " +
+        "118/118 testable points, with nine degenerate holes below the 1.2 m sampling tolerance recorded as " +
+        "untestable. Two invalid authority geometries (zones 10 and 20, ring self-intersections) were repaired " +
+        "with 0 m² symmetric difference. Total area 73,604 km² against the province's 72,908 km² including " +
+        "water, the excess being zones reaching into coastal bays. New Brunswick Open Government Licence, read " +
+        "from the province's catalogue record because the service itself carries no copyright text.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
       bundleIds: [],
       sourceLeads: ["New Brunswick Hunting Regulations Summary"],
       sourceState: "NOT_INGESTED",
+      huntingAuthorityUrl: "https://www2.gnb.ca/content/gnb/en/departments/erd/fish-and-wildlife/content/go-hunting.html",
     },
-    knownGaps: ["No geometry ingested and no rules certified; every New Brunswick query is UNKNOWN."],
+    knownGaps: [
+      "Boundaries only: the 27 Wildlife Management Zones are drawn, named and resolved, and every New Brunswick " +
+        "species query is UNKNOWN until rules are certified. A drawn boundary is not a certified rule.",
+      "The province publishes zero-area holes of three and four points in several zones; they are recorded as " +
+        "untestable by point sampling rather than as disagreements, and certification rests on the inventory.",
+    ],
   },
   {
     id: "jurisdiction:ca-ns",
