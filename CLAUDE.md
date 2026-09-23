@@ -2108,11 +2108,51 @@ permit or stamp, conservation requirement — keeping the authority's own name f
 each. Federal and state/provincial requirements compose in one list. North Ground
 never infers that a hunter holds anything.
 
-**Fees are never guessed.** A fee appears only when it is from the licence year in
-force and the hunter's category is known; resident and non-resident figures are
-never mixed. Where the category matters and is unknown, the hunter is asked once,
-through the same answer the regulation reads — never a second questionnaire.
-Otherwise the line says "Check current official fee" and links the authority.
+**Fees are never guessed.** *Amended 2026-09-23 (owner): the previous rule said a
+fee appears only when it is from "the licence year in force". That contained a
+jurisdiction-specific assumption which does not hold — most Québec big-game
+licences are not licence-year artefacts at all.*
+
+A fee appears only when North Ground has certified that it belongs to the
+licence, permit or authorization applicable to the evaluated hunt, AND that the
+fee source is current for that authorization's own **validity basis**. A
+validity basis may be a licence year, a calendar period, a season, fixed dates,
+an event-based expiry, a tagging or harvest event, or another condition the
+authority defines. **Never invent an annual licence period where the authority
+defines none**; model the difference rather than normalising it away.
+
+The hunter's category must also be known, and resident and non-resident figures
+are never mixed. Where the category matters and is unknown, the hunter is asked
+once, through the same answer the regulation reads — never a second
+questionnaire.
+
+**If applicability or currentness cannot be established, omit the fee and keep
+the evidentiary state.** Do not display an old or current-looking number merely
+because one was found. Otherwise the line says "Check current official fee" and
+links the authority.
+
+**Legal hunting hours are shown as the clock the hunter should follow.**
+*Decided 2026-09-23 (owner).* Where a jurisdiction's statutory time basis and
+the locally observed civil clock differ — Atikokan is the first case — BOTH are
+preserved: the statutory basis is the source of legal truth, and the converted
+local clock is presentation and actionability. **The compact answer shows the
+actionable local time**; Details and exceptions explains that the rule is
+defined on a different statutory basis and shows the conversion and its
+provenance. The hunter is never asked to perform the conversion.
+
+The conversion is deterministic and tested, DST and non-DST behaviour is
+explicit, and a date is evaluated under the rule applicable to that date. The
+statutory basis is never silently discarded. A weather provider's sunrise and
+sunset are never shown as legal hunting hours, and a general solar rule is never
+assumed to apply where a relevant exception has not been resolved.
+
+**The source model wins over our schema.** *Decided 2026-09-23 (owner).* If an
+authority publishes something a North Ground field cannot express, expand the
+model. Do not round the source into the nearest existing field, collapse legally
+different concepts for convenience, manufacture a generic period, or mark
+something incomplete merely because the schema expected a fact the authority
+does not use. **A source that does not fit the schema is evidence that the
+schema may be incomplete.**
 
 **Vendors come only from an authority's own dataset.** A business on a map has not
 thereby been shown to issue a licence. "Find a licence vendor near me" asks for the
