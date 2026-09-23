@@ -163,22 +163,80 @@ Unchanged and already correct: only from the licence year in force, category
 known, resident and non-resident never mixed, otherwise "Check current official
 fee". `PriceState` already models this.
 
-## What I need from Hunt overhaul
+## Settled with Hunt overhaul, ratified by the moderator 2026-09-24
 
-1. Can you render a `CONDITIONAL` in one scannable pass without dropping its
-   condition? If a condition cannot survive the layout, the layout decides the
-   legal claim, and I need to know that before I build states you cannot show.
-2. How should `NOT_CERTIFIED` read? It must be visibly different from both
-   "not required" and "prohibited", and a scanner must not read its absence of
-   a requirement as absence of requirements.
-3. Do you need a stable display order across categories, or will you order them?
+The three questions are answered and the answers are binding. Recorded here
+rather than in a thread, because a settled cross-agent contract that lives in
+messages is one restart away from being renegotiated.
 
-## What I need from Canada
+**1. CONDITIONAL renders with its condition — enforced from both ends.** Their
+commitment: *"`condition` is mandatory when state is CONDITIONAL, and I will
+refuse to render a CONDITIONAL row without one."* With `Statement<T>` making
+one impossible to construct, the rule is held by the type and by the renderer
+independently. Neither relies on the other's discipline.
 
-1. Legal hunting time is yours — confirm it stays out of this model, referenced
-   rather than duplicated.
-2. Québec's checklist is currently a sentence saying we have not built one. Is
-   Québec yours to populate once this shape is agreed, or mine?
+**2. `NOT_CERTIFIED`, not `UNKNOWN`, throughout.** Hunt overhaul's half said
+UNKNOWN and conceded: NOT_CERTIFIED is a fact about NORTH GROUND, where UNKNOWN
+reads as a fact about the law. It renders "Verify requirement" with `verifyAt`,
+never as a missing row. To be renamed everywhere in one pass so both words are
+not alive at once.
+
+**3. They order for display; the model emits any order.** If an ordering ever
+carries meaning it becomes a field rather than a convention.
+
+### The first card: authorization, visibility, method, then ammunition
+
+Ordered by **how a hunt actually fails**, not by how the regulation is
+organised: turned away at the check station (authorization), stopped or unsafe
+on sight (visibility), holding a thing you may not use (method). Ammunition is
+fourth because it refines method rather than being a separate way to be
+stopped. Authorization is built first — it is also the cheapest, but that is a
+coincidence and not the reason.
+
+### Five fields the row carries that this contract originally omitted
+
+All approved. Each exists because its absence produces a specific wrong
+outcome, which is why they are listed with the outcome rather than alone:
+
+- **`obtain`** — online, phone, in person, draw, licensed operator, federal
+  program. §41A requires "where to obtain each item"; a checklist that says
+  what you need but not where to get it is half a checklist. Optional per row,
+  absent where unknown.
+- **`requires: string[]`** of row ids, so prerequisites render NESTED. A flat
+  list implies independent purchases, and a hunter buys the wrong thing. The
+  difference between a list and a path.
+- **A stable row `id`** — keys, tests, and so a Hunt Brief can name one row.
+- **`exceptions[]` with their own `statedAs`**, rather than exemptions inside
+  prose. "Required — except while [X]" keeps the exception attached to the rule
+  it modifies; prose lets it float away from it, and a hunter reads half.
+- **`lang` and owner markers on every authority string** — `statedAs`, the
+  authority's own name, exception text. A French `statedAs` without
+  `lang="fr-CA"` is read aloud in English by a screen reader, and our
+  paraphrase presented as the ministry's words is the trust failure both halves
+  exist to prevent.
+
+### RECOMMENDED never shares the row shape — binding
+
+A separate list, or an explicit `owner: NORTH_GROUND` that the whole row's
+styling and wording key off. §41A already forbids blending law and advice; this
+makes it **unrepresentable rather than merely forbidden**. If advice can arrive
+in the same array as a legal requirement distinguished only by a `state` field,
+exactly one careless render puts North Ground's opinion in a REQUIRED row.
+
+### What has real content today
+
+Ontario: LICENCE, AUTHORIZATION, VISIBILITY and METHOD certified for all 8
+species; AMMUNITION 4 of 8; SEASON_STATUS, LEGAL_TIME, BAG_POSSESSION,
+TAGGING_REPORTING and LOCATION_RESTRICTIONS not certified. So a first card of
+authorization + visibility + method is a shippable card with honest
+NOT_CERTIFIED everywhere else, rather than an empty one. Québec has no
+checklist and says so, linking the authority — the current true answer.
+
+## Settled with Canada
+
+Legal hunting time stays theirs, referenced rather than duplicated here.
+Québec is theirs to populate once their legal-time work lands — they hold the
+sources and the language. North Ground's side owns the model; Canada fills it.
 
 ## Migration
 

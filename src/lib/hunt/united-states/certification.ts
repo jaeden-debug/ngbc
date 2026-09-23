@@ -124,6 +124,26 @@ function remedyFor(finding: MapLicenceFinding): string {
     : "no grant is stated either way; a person must ask the publisher.";
 }
 
+/**
+ * A row says what was CHECKED, or it says nothing.
+ *
+ * Both of this report's wrong answers came from the same place: a check that
+ * answered a narrower question than its wording implied.
+ *
+ *  - Michigan's row read "Nothing blocks this state but the work" because a
+ *    clean licence was the only blocker the report could see. It was false,
+ *    and it was the sentence that would have sent the next agent to build
+ *    Michigan on minutes that are not an instrument.
+ *  - The readiness report called Ontario's hunter-orange rule NOT_CERTIFIED
+ *    while eight certified rules sat in the bundle, because it read an object
+ *    as an array.
+ *
+ * Opposite directions, one cause. A report that can only see one kind of
+ * blocker will confidently report the absence of every other kind, and
+ * under-claiming teaches people to distrust the report, which gets it
+ * overridden by hand. So a detail line states the thing it actually
+ * established — never a summary that implies more was looked at.
+ */
 export function certificationFor(code: string): StateCertification {
   const state = code.toUpperCase();
   const layerIds = US_LAYER_IDS.filter((layerId) => stateOfLayer(layerId) === state);
