@@ -287,6 +287,13 @@
       ]
     }
   ],
+  "leapYear": {
+    "februaryYear": 2027,
+    "leapFebruary": false,
+    "branches": 6,
+    "missing": [],
+    "wronglyPresent": []
+  },
   "result": "VERIFIED",
   "computed": 24,
   "refused": 19,

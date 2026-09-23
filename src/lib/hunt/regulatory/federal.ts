@@ -45,6 +45,21 @@ interface FederalRule {
    * published dates (scripts/certify-relative-dates.mjs).
    */
   relativeWindow?: RelativeWindow;
+  /*
+   * The season applies only in these provincial units, not across the whole
+   * federal district. British Columbia's District No. 6 ducks runs September
+   * 1-30 in most units, October 1 - November 30 EVERYWHERE, and December 1 -
+   * January 15 in the rest: the narrowed entries ADD windows rather than
+   * replace the district-wide one, which is how Schedule 3 states them.
+   */
+  units?: readonly string[];
+  /*
+   * The season runs on different days depending on whether the year is a leap
+   * year, and this rule is one branch of it. Stored as the branch rather than
+   * as the days it produced when the bundle was built, for the same reason a
+   * relative date is: it would be right for one year and wrong for the next.
+   */
+  leapYear?: boolean;
   daily?: { kind: string; count?: number; subLimit?: string; statedAs: string };
   possession?: { kind: string; count?: number; subLimit?: string; statedAs: string };
 }
@@ -67,6 +82,22 @@ export function federalSpeciesIds(): ReadonlyArray<CanonicalId<"species">> {
 }
 
 const dayOfYear = (month: number, day: number) => month * 100 + day;
+
+const isLeapYear = (year: number) => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+
+/**
+ * The year a stored window OPENED in, for a date inside it.
+ *
+ * A season crossing the new year opened the PREVIOUS year when the date falls
+ * in its tail. The leap-year branch is a property of the season, so it must be
+ * tested against the year the season began — not against whatever year the
+ * hunter's date happens to sit in.
+ */
+function openingYearOf(window: NonNullable<FederalRule["window"]>, date: IsoDate): number {
+  const year = Number(date.slice(0, 4));
+  if (!window.crossesYear) return year;
+  return Number(date.slice(5, 7)) <= window.to.month ? year - 1 : year;
+}
 
 /**
  * The exact days a relative season runs, for the season a date falls in.
@@ -160,7 +191,18 @@ export function evaluateFederal(
 
   const groupIds = new Set(groups.map((group) => group.id));
   const here = RULES.filter(
-    (rule) => rule.jurisdictionId === jurisdictionId && rule.area === area.area.name && groupIds.has(rule.groupId),
+    (rule) =>
+      rule.jurisdictionId === jurisdictionId && rule.area === area.area.name && groupIds.has(rule.groupId)
+      /*
+       * A rule narrowed to named units cannot be shown to apply without the
+       * unit, so it does not. Applying it district-wide would give a season
+       * that is right in part of the district and wrong in the rest; applying
+       * it to an unknown unit would be the same claim with less evidence.
+       */
+      && (rule.units === undefined || (designation !== undefined && rule.units.includes(designation)))
+      /* One branch of a leap-year season applies only in its own kind of year. */
+      && (rule.leapYear === undefined || rule.window === undefined
+          || isLeapYear(openingYearOf(rule.window, date)) === rule.leapYear),
   );
   if (!here.length) {
     return {

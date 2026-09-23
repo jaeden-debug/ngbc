@@ -30,6 +30,7 @@ import { parseRelativeWindow, resolveRelativeWindow } from "../src/lib/hunt/regu
 
 const CACHE = "/tmp/mbr2022.html";
 const RECORD = "fixtures/hunt/ca-federal-relative-date-certification.json";
+const BUNDLE = "content/regulatory/ca-federal-2026.json";
 
 /**
  * The season the summaries in force describe, and the year its openings fall
@@ -156,6 +157,41 @@ async function main() {
 
     report.jurisdictions.push({ jurisdiction: name, part, computed, refused });
   }
+
+  /*
+   * ── LEAP-YEAR BRANCHES, CHECKED IN BOTH DIRECTIONS ──
+   *
+   * British Columbia states one season twice: "in a year that is not a leap
+   * year, February 10 to March 10" and "in a leap year, February 11 to March
+   * 10". Unlike a relative date this needs no interpretation — the days are
+   * literal — so what must be verified is the BRANCH SELECTION.
+   *
+   * February of the Aug 2026 - Jul 2027 season falls in 2027, which is not a
+   * leap year, so the authority's summary is a two-sided check: every non-leap
+   * window must APPEAR in what it published, and every leap-only window must be
+   * ABSENT from it. A build that took the wrong branch would fail both halves.
+   */
+  const bundle = JSON.parse(readFileSync(BUNDLE, "utf8"));
+  const februaryYear = SEASON.openingYear + 1;
+  const leapFebruary = (februaryYear % 4 === 0 && februaryYear % 100 !== 0) || februaryYear % 400 === 0;
+  const asWindow = (rule) => `${asDay(`0000-${String(rule.window.from.month).padStart(2, "0")}-${String(rule.window.from.day).padStart(2, "0")}`)} to ${asDay(`0000-${String(rule.window.to.month).padStart(2, "0")}-${String(rule.window.to.day).padStart(2, "0")}`)}`;
+
+  const branches = bundle.rules.filter((rule) => rule.leapYear !== undefined && rule.window);
+  const publishedEverywhere = new Set(report.verifiedAgainst.flatMap((entry) =>
+    [...publishedWindows(readFileSync(`/tmp/mbsum-${PARTS.find((p) => p.name === entry.jurisdiction).summary}.html`, "utf8"))]));
+
+  const shouldApply = branches.filter((rule) => rule.leapYear === leapFebruary).map(asWindow);
+  const shouldNot = branches.filter((rule) => rule.leapYear !== leapFebruary).map(asWindow);
+  const missing = [...new Set(shouldApply)].filter((w) => !publishedEverywhere.has(w));
+  /* A branch that should NOT apply may still coincide with another row's
+     published window, so only a window no other row can produce is evidence. */
+  const wronglyPresent = [...new Set(shouldNot)].filter((w) => publishedEverywhere.has(w) && !shouldApply.includes(w));
+
+  console.log(`\nLeap-year branches: February ${februaryYear} is ${leapFebruary ? "" : "not "}a leap year.`);
+  console.log(`  ${branches.length} branch rules | applying branch published: ${[...new Set(shouldApply)].length - missing.length}/${[...new Set(shouldApply)].length} | non-applying branch correctly absent: ${[...new Set(shouldNot)].length - wronglyPresent.length}/${[...new Set(shouldNot)].length}`);
+  if (missing.length) { console.log(`  MISSING from the authority's summary: ${missing.join(", ")}`); failures += missing.length; }
+  if (wronglyPresent.length) { console.log(`  PRESENT although this branch should not apply: ${wronglyPresent.join(", ")}`); failures += wronglyPresent.length; }
+  report.leapYear = { februaryYear, leapFebruary, branches: branches.length, missing, wronglyPresent };
 
   const total = report.jurisdictions.reduce((sum, j) => sum + j.computed.length, 0);
   const refusedTotal = report.jurisdictions.reduce((sum, j) => sum + j.refused.length, 0);

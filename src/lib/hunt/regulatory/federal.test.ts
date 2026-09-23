@@ -313,22 +313,154 @@ test("no row is filed as a date problem when its dates actually read", () => {
   assert.deepEqual(misfiled, [], "these rows' dates read fine; they are refused for something else");
 });
 
-test("the four rows that genuinely cannot be read are the leap-year ones", () => {
+test("no season in Schedule 3 is refused for its dates at all", () => {
   /*
-   * What is left after the mislabels are corrected, and it is the honest
-   * remainder: British Columbia writes "in a year that is not a leap year,
-   * February 10 to March 10" against "in a leap year, February 11 to March 10".
+   * This replaces a test that asserted "the four unreadable windows are the
+   * leap-year form". It failed the moment that form was read — which is what it
+   * was written to do: demand deletion rather than pass vacuously on zero rows.
+   * Recording the succession here because a test whose premise expires is easy
+   * to delete quietly and pretend it never constrained anything.
    *
-   * Stated as a premise the test checks rather than a count it trusts — if a
-   * future build teaches this form, this test should fail and be deleted, not
-   * silently pass on zero rows the way an expired premise does.
+   * What replaces it is stronger. Every season date this build meets is now
+   * either read or refused for a reason that is not about dates — plain
+   * windows, relative dates, and the leap-year branches between them.
+   *
+   * So a date-blamed refusal reappearing is never a pass-by-default. It is one
+   * of exactly two things, and both need a person: a genuinely new phrasing the
+   * authority has started using, or a detector that has stopped matching one it
+   * already used. The companion test above then says which.
    */
   const bundle = JSON.parse(readFileSync("content/regulatory/ca-federal-2026.json", "utf8")) as {
-    notEncoded: { reason: string; statedAs?: string }[];
+    notEncoded: { reason: string; statedAs?: string; where?: string }[];
   };
-  const unread = bundle.notEncoded.filter((entry) => /not a plain calendar window/.test(entry.reason));
-  assert.ok(unread.length > 0, "this test needs deleting, not passing, once the form is read");
-  for (const entry of unread) {
-    assert.match(entry.statedAs ?? "", /leap year/, "an unreadable window that is not the leap-year form is a new finding");
+  const blamed = bundle.notEncoded
+    .filter((entry) => /relative-date phrasing|not a plain calendar window/.test(entry.reason))
+    .map((entry) => `${entry.where}: ${entry.statedAs}`);
+  assert.deepEqual(blamed, [], "a season refused for its dates is a new phrasing or a broken detector; read it");
+});
+
+/* ── A season narrowed to named units inside a federal district ── */
+
+test("a narrowed season ADDS a window; it does not replace the district-wide one", () => {
+  /*
+   * Schedule 3 Part 10, British Columbia District No. 6, ducks:
+   *   (i)   September 1 to September 30 (only in Units 6-1, 6-2, 6-4 to 6-10
+   *         and 6-15 to 6-30)
+   *   (ii)  October 1 to November 30                      — the whole district
+   *   (iii) December 1 to January 15 (only in Units 6-3 and 6-11 to 6-14)
+   *
+   * Read from the regulation rather than assumed. Treating a narrowed entry as
+   * an override would have closed (ii) for everyone; treating it as unscoped
+   * would open September in units the regulation excludes.
+   */
+  const duck = (unit: string, date: string) =>
+    evaluateFederal("species:mallard", "jurisdiction:ca-bc", { latitude: 49 }, on(date), unit);
+
+  assert.equal(duck("6-1", "2026-09-15").season?.opens, "09-01", "6-1 is in the September sub-list");
+  assert.notEqual(duck("6-3", "2026-09-15").status, "CONDITIONAL", "6-3 is not");
+
+  /* The district-wide entry reaches both. */
+  assert.equal(duck("6-1", "2026-10-15").season?.opens, "10-01");
+  assert.equal(duck("6-3", "2026-10-15").season?.opens, "10-01");
+
+  assert.equal(duck("6-3", "2026-12-15").season?.opens, "12-01", "6-3 is in the December sub-list");
+  assert.notEqual(duck("6-1", "2026-12-15").status, "CONDITIONAL", "6-1 is not");
+});
+
+test("a narrowed season is never applied without the unit", () => {
+  /*
+   * Without a designation a narrowed rule cannot be shown to apply, so it does
+   * not. Applying it across the district would be a season right in part of it
+   * and wrong in the rest.
+   */
+  const noUnit = evaluateFederal("species:mallard", "jurisdiction:ca-bc", { latitude: 49 }, on("2026-09-15"));
+  assert.notEqual(noUnit.status, "CONDITIONAL");
+});
+
+test("units covered by no season answer UNKNOWN, never CLOSED", () => {
+  /*
+   * District No. 2's Brant seasons are all narrowed to other units, so 2-10 is
+   * covered by none. The partition is CHECKED at build time and the gap is
+   * recorded; nothing is synthesised for it. CLOSED here would be a
+   * restriction stricter than the source.
+   */
+  const answer = evaluateFederal("species:brant", "jurisdiction:ca-bc", { latitude: 49 }, on("2026-11-01"), "2-10");
+  assert.equal(answer.status, "UNKNOWN");
+});
+
+test("a sub-list may never name a unit outside its own federal district", () => {
+  /*
+   * The build refuses such a row rather than widening the district: a sub-list
+   * naming a unit the district does not contain is a misreading of the row, not
+   * a narrowing of it. Asserted over the bundle so a future jurisdiction cannot
+   * introduce one silently.
+   */
+  const bundle = JSON.parse(readFileSync("content/regulatory/ca-federal-2026.json", "utf8")) as {
+    areas: { jurisdictionId: string; name: string; units?: string[] }[];
+    rules: { jurisdictionId: string; area: string; units?: string[] }[];
+  };
+  const narrowed = bundle.rules.filter((rule) => rule.units);
+  assert.ok(narrowed.length > 0, "this test needs deleting, not passing, if no rule is unit-scoped");
+  for (const rule of narrowed) {
+    const district = bundle.areas.find((a) => a.jurisdictionId === rule.jurisdictionId && a.name === rule.area);
+    const outside = rule.units!.filter((unit) => !district?.units?.includes(unit));
+    assert.deepEqual(outside, [], `${rule.area} has a season scoped to units it does not contain`);
+  }
+});
+
+/* ── A season that depends on the length of February ── */
+
+test("a leap-year season takes the branch the year actually is", () => {
+  /*
+   * Schedule 3 Part 10, British Columbia District No. 2, Canada and Cackling
+   * Geese, stated as two branches of one season:
+   *   "in a year that is not a leap year, February 10 to March 10"
+   *   "in a leap year, February 11 to March 10"
+   *
+   * 2027 is not a leap year; 2028 is. February 10 is therefore open in 2027 and
+   * CLOSED in 2028 — one day, opposite answers, decided by the branch. Storing
+   * whichever branch applied when the bundle was built would be right for one
+   * year and wrong for the next, exactly as with a relative date.
+   *
+   * The branch selection is verified against the authority in
+   * scripts/certify-relative-dates.mjs, in both directions: for the season in
+   * force its non-leap windows appear in ECCC's published summary and its
+   * leap-only windows are absent from it.
+   */
+  const geese = (date: string) =>
+    evaluateFederal("species:canada-goose", "jurisdiction:ca-bc", { latitude: 49 }, on(date), "2-10");
+
+  assert.equal(geese("2027-02-10").status, "CONDITIONAL", "2027 is not a leap year: the season opens February 10");
+  assert.equal(geese("2027-02-10").season?.opens, "02-10");
+
+  assert.notEqual(geese("2028-02-10").status, "CONDITIONAL", "2028 IS a leap year: February 10 is before it opens");
+  assert.equal(geese("2028-02-11").status, "CONDITIONAL");
+  assert.equal(geese("2028-02-11").season?.opens, "02-11");
+
+  /* Both branches close on the same day, which the regulation states outright. */
+  assert.equal(geese("2027-03-10").status, "CONDITIONAL");
+  assert.equal(geese("2028-03-10").status, "CONDITIONAL");
+});
+
+test("exactly one branch of a leap-year season can apply to a date", () => {
+  /*
+   * The two branches overlap on every day from the later opening onward, so a
+   * build that failed to filter by year would find both and answer from
+   * whichever came first. Asserted over the bundle rather than by example: no
+   * date may match more than one branch of the same season.
+   */
+  const bundle = JSON.parse(readFileSync("content/regulatory/ca-federal-2026.json", "utf8")) as {
+    rules: { area: string; groupId: string; leapYear?: boolean; units?: string[] }[];
+  };
+  const branches = bundle.rules.filter((rule) => rule.leapYear !== undefined);
+  assert.ok(branches.length > 0, "this test needs deleting, not passing, if no season branches on leap years");
+
+  const byScope = new Map<string, boolean[]>();
+  for (const rule of branches) {
+    const key = `${rule.area}|${rule.groupId}|${(rule.units ?? []).join(",")}`;
+    byScope.set(key, [...(byScope.get(key) ?? []), rule.leapYear!]);
+  }
+  for (const [key, kinds] of byScope) {
+    assert.deepEqual([...kinds].sort(), [false, true], `${key} must state both branches exactly once`);
   }
 });

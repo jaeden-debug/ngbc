@@ -434,6 +434,8 @@ async function main() {
      is refused knowingly; a row naming something in neither list is a parse
      failure and must be loud. */
   const refusedAreas = new Map();
+  /* Each jurisdiction's certified unit inventory, by canonical id. */
+  const certifiedByJurisdiction = new Map();
   let considered = 0;
 
   for (const { part, name, jurisdictionId, areaKind, inventory, unitPhrase, liveInventory } of WAVE_1) {
@@ -455,6 +457,9 @@ async function main() {
       const certified = live
         ? live.identifiers
         : JSON.parse(readFileSync(inventory, "utf8")).certifiedUnits.map(String);
+      /* The same inventory, reachable from the row loop below, which needs it
+         to expand a season narrowed to named units. */
+      certifiedByJurisdiction.set(jurisdictionId, certified);
       /* The ministry's own DA_NAME, minus its "WMZ" suffix, for the zones the
          regulation names in words rather than by number. */
       const namedZones = new Map(
@@ -673,9 +678,18 @@ async function main() {
              half of such a row would publish a limit that is right for some
              hunters and wrong for others. */
           const rowText = [...seasons, ...bags, possessionCell].join(" | ");
+          /*
+           * The sub-list test looks at the LIMIT cells only. A season narrowed
+           * to a sub-list of units is now encoded (below) against the units the
+           * regulation names; a LIMIT narrowed that way is a different fact —
+           * Ontario's "6 (in Provincial Wildlife Management Units 60 to 87E …)"
+           * against "6 (in … 88 to 95 …)" is a bag that changes inside the
+           * district — and stays refused.
+           */
+          const limitText = [...bags, possessionCell].join(" | ");
           const refusal =
             /resident/i.test(rowText) ? "the limit or season varies by residency"
-            : SUB_LIST_OF_UNITS.test(rowText) ? "the season applies only in a sub-list of provincial units"
+            : SUB_LIST_OF_UNITS.test(limitText) ? "the daily bag or possession limit changes between units inside the federal district"
             : /\(from [A-Z]/i.test(rowText) ? "the daily bag changes inside the open season"
             : EXTRA_ALLOWANCE.test(rowText) ? "the daily bag carries an additional species-specific allowance"
             : ONLY_ON_FARMLAND.test(rowText) ? "the season applies only on farmland, which North Ground cannot resolve from a point"
@@ -696,78 +710,173 @@ async function main() {
             continue;
           }
 
-          if (seasons.length !== 1 || bags.length !== 1) {
+          /*
+           * ONE BAG, POSSIBLY SEVERAL SEASONS.
+           *
+           * Schedule 3 states alternative open seasons for one species, area
+           * and limit. British Columbia's District No. 6 ducks is the shape:
+           *
+           *   (i)   September 1 to September 30 (only in Units 6-1, 6-2,
+           *         6-4 to 6-10 and 6-15 to 6-30)
+           *   (ii)  October 1 to November 30
+           *   (iii) December 1 to January 15 (only in Units 6-3 and 6-11 to 6-14)
+           *
+           * Read from the regulation, not assumed: the narrowed entries ADD
+           * windows rather than replace the district-wide one. A hunter in unit
+           * 6-1 has (i) and (ii); one in 6-3 has (ii) and (iii). Treating a
+           * narrowed season as an override would have closed (ii) for everyone.
+           *
+           * Several BAG entries is the opposite case and is refused above: that
+           * is one limit for some units and another for the rest.
+           */
+          if (bags.length !== 1) {
             notEncoded.push({ where, group: group.statedAs, area, statedAs: rowText,
-              reason: "the row carries more than one season or bag entry and is not a single window" });
+              jurisdictionId, groupId: group.id, coversArea: area,
+              reason: "the row states more than one bag entry, so the limit is not one number for the whole area" });
             continue;
           }
 
-          const window = readWindow(stripLabel(seasons[0]));
           const daily = readLimit(stripLabel(bags[0]));
           const possession = readLimit(possessionCell);
+          if (!daily || !possession) {
+            notEncoded.push({ where, group: group.statedAs, area, statedAs: rowText,
+              jurisdictionId, groupId: group.id, coversArea: area,
+              reason: "a daily bag or possession limit is not in a form this build reads exactly" });
+            continue;
+          }
 
-          /*
-           * A season the regulation writes as a RULE rather than as days. Tried
-           * only after the plain calendar reading, so nothing already encoded
-           * changes shape. It is stored as the rule, never as the days it
-           * produces this year: the same rule lands on a different pair of days
-           * every year, and storing one year's answer would be right once and
-           * quietly wrong afterwards.
-           *
-           * Every wording accepted here was checked against Environment and
-           * Climate Change Canada's OWN published provincial summaries, which
-           * state the same seasons as calendar dates —
-           * scripts/certify-relative-dates.mjs, 24/24 at the time of writing.
-           * A phrasing that check never confirmed is refused below.
-           */
-          const relativeWindow = window ? null : parseRelativeWindow(stripLabel(seasons[0]));
-          if (relativeWindow && daily && possession) {
+          /* The units of the district this row is about, for the subset check. */
+          const districtUnits = areas.find(
+            (entry) => entry.jurisdictionId === jurisdictionId && entry.name === area,
+          )?.units;
+
+          for (const item of seasons) {
+            const stated = stripLabel(item);
+            /*
+             * A season narrowed to named units. The units are EXPANDED against
+             * the authority's certified inventory, exactly as a district
+             * definition is, so no reference can invent a unit — and then
+             * checked to be a SUBSET of the district the row is about. A
+             * sub-list naming a unit outside its own district is a
+             * misunderstanding of the row, not a narrowing of it, and refuses.
+             */
+            const scoped = /^(.*?)\s*\((?:only )?in (?:the )?(?:Provincial [A-Za-z ]*?(?:Units?|Zones?|Areas?))\s+([^)]+)\)$/i.exec(stated);
+            let units;
+            if (scoped) {
+              if (!districtUnits) {
+                notEncoded.push({ where, group: group.statedAs, area, statedAs: stated,
+                  jurisdictionId, groupId: group.id, coversArea: area,
+                  reason: "the season names provincial units but this federal area is not defined over units North Ground holds" });
+                continue;
+              }
+              try {
+                units = expandUnits(scoped[2], certifiedByJurisdiction.get(jurisdictionId) ?? [], `${name} ${where}`);
+              } catch (error) {
+                notEncoded.push({ where, group: group.statedAs, area, statedAs: stated,
+                  jurisdictionId, groupId: group.id, coversArea: area,
+                  /*
+                   * Ontario's Schedule 3 names unit "69A"; the province
+                   * publishes 69A-1, 69A-2 and 69A-3 and nothing called 69A.
+                   * A range over NUMBERS already covers lettered subdivisions
+                   * (53 covers 53A and 53B) because that was read from the
+                   * authority — but treating "69A" as a prefix for 69A-1..3 is
+                   * an inference about what the regulation means by a name, not
+                   * a reading of it. It refuses rather than assuming.
+                   */
+                  reason: `the season names a provincial unit the authority's own inventory does not publish (${/resolve: (.+)$/.exec(error.message)?.[1] ?? "unknown"}), so its geography cannot be resolved` });
+                continue;
+              }
+              const outside = units.filter((unit) => !districtUnits.includes(unit));
+              if (outside.length) {
+                notEncoded.push({ where, group: group.statedAs, area, statedAs: stated,
+                  jurisdictionId, groupId: group.id, coversArea: area,
+                  reason: `the season names units outside this federal district (${outside.join(", ")}), which this build does not read` });
+                continue;
+              }
+            }
+
+            /*
+             * A SEASON THAT DEPENDS ON THE LENGTH OF FEBRUARY.
+             *
+             * British Columbia states two branches of the same season:
+             *   "in a year that is not a leap year, February 10 to March 10"
+             *   "in a leap year, February 11 to March 10"
+             *
+             * Like a relative date, this is a rule producing different days in
+             * different years — but unlike one it needs no interpretation: the
+             * days are literal and the only computation is which branch a year
+             * takes. So it is stored as the branch plus its window, never as
+             * whichever branch happened to apply when the bundle was built.
+             */
+            const leapBranch = /^in a (leap year|year that is not a leap year),\s*(.+)$/i.exec(scoped ? scoped[1].trim() : stated);
+            const leapYear = leapBranch ? /^leap year$/i.test(leapBranch[1]) : undefined;
+
+            const seasonText = leapBranch ? leapBranch[2].trim() : scoped ? scoped[1].trim() : stated;
+            const window = readWindow(seasonText);
+            const relativeWindow = window ? null : parseRelativeWindow(seasonText);
+            if (!window && !relativeWindow) {
+              const relative = /\b(first|second|third|fourth|last)\s+[A-Z]?[a-z]+day\b/i.test(seasonText);
+              notEncoded.push({
+                where, group: group.statedAs, area, statedAs: stated,
+                jurisdictionId, groupId: group.id, coversArea: area,
+                reason: relative
+                  ? "the season is written in a relative-date phrasing this build does not recognise exactly, and no nearest match is guessed"
+                  : "the season is not a plain calendar window this build reads",
+              });
+              continue;
+            }
+
             rules.push({
               jurisdictionId, area, groupId: group.id, groupStatedAs: group.statedAs,
-              relativeWindow, daily, possession, declaredNoSeason: false, sourceSection: where,
+              ...(window ? { window } : { relativeWindow }),
+              ...(units ? { units } : {}),
+              ...(leapYear === undefined ? {} : { leapYear }),
+              daily, possession, declaredNoSeason: false, sourceSection: where,
             });
-            continue;
           }
-
-          if (!window || !daily || !possession) {
-            /*
-             * Say WHICH part could not be read. A single catch-all reason hid
-             * the fact that 53 of 84 refusals were one thing — a RELATIVE DATE
-             * ("the first Saturday after the first Monday in October") — and a
-             * bucket that large and that uniform is a missing capability, not a
-             * collection of oddities. A refusal that cannot be counted cannot be
-             * prioritised.
-             */
-            const unreadSeason = !window && !relativeWindow;
-            /*
-             * A relative date this build does NOT recognise exactly keeps its
-             * own reason, so the bucket stays countable. "The first Sunday after
-             * January 19" and "the first Sunday ON OR AFTER January 19" differ by
-             * up to seven days and read almost identically, so there is no
-             * nearest-match and no fallback: an unrecognised phrasing is refused,
-             * not approximated. Where the date is unreadable the answer is
-             * UNKNOWN, never a date nudged somewhere safe — a season is a
-             * two-ended fact and there is no safe direction to move it.
-             */
-            const relative = unreadSeason && /\b(first|second|third|fourth|last)\s+[A-Z]?[a-z]+day\b/i.test(stripLabel(seasons[0]));
-            notEncoded.push({
-              where, group: group.statedAs, area, statedAs: rowText,
-              jurisdictionId, groupId: group.id, coversArea: area,
-              reason: relative
-                ? "the season is written in a relative-date phrasing this build does not recognise exactly, and no nearest match is guessed"
-                : unreadSeason
-                  ? "the season is not a plain calendar window this build reads"
-                  : "a daily bag or possession limit is not in a form this build reads exactly",
-            });
-            continue;
-          }
-
-          rules.push({
-            jurisdictionId, area, groupId: group.id, groupStatedAs: group.statedAs,
-            window, daily, possession, declaredNoSeason: false, sourceSection: where,
-          });
         }
       }
+    }
+  }
+
+  /*
+   * THE PARTITION IS CHECKED, NEVER ASSUMED.
+   *
+   * British Columbia's two District No. 6 sub-lists happen to cover all 30 of
+   * its units exactly, and District No. 1's cover all 15. That is inviting and
+   * it is not a rule: a district whose sub-lists leave units out must leave
+   * those units UNKNOWN for that species, never inherit a neighbouring row's
+   * season.
+   *
+   * Nothing is synthesised here. The evaluator already answers correctly — a
+   * unit in no sub-list matches no narrowed rule — so this exists to make the
+   * gap MACHINE-READABLE instead of silent, which is what §8 asks of a
+   * coverage claim. A species with a district-wide season as well is not a gap:
+   * the narrowed entries add windows to it rather than replacing it.
+   */
+  for (const entry of areas) {
+    const units = entry.units;
+    if (!units?.length) continue;
+    const groupsHere = new Set(
+      rules.filter((rule) => rule.jurisdictionId === entry.jurisdictionId && rule.area === entry.name).map((rule) => rule.groupId),
+    );
+    for (const groupId of groupsHere) {
+      const mine = rules.filter(
+        (rule) => rule.jurisdictionId === entry.jurisdictionId && rule.area === entry.name && rule.groupId === groupId,
+      );
+      const narrowed = mine.filter((rule) => rule.units);
+      if (!narrowed.length) continue;
+      /* A season stated for the whole district covers every unit already. */
+      if (mine.some((rule) => !rule.units && !rule.declaredNoSeason)) continue;
+      const covered = new Set(narrowed.flatMap((rule) => rule.units));
+      const uncovered = units.filter((unit) => !covered.has(unit));
+      if (!uncovered.length) continue;
+      notEncoded.push({
+        where: `${entry.name} Schedule 3`, group: narrowed[0].groupStatedAs, area: entry.name,
+        jurisdictionId: entry.jurisdictionId, groupId, coversArea: entry.name,
+        statedAs: `Units ${uncovered.join(", ")}`,
+        reason: "every season the regulation states for this species in this federal district is narrowed to other units, so these units answer UNKNOWN rather than inheriting a neighbouring unit's season",
+      });
     }
   }
 
