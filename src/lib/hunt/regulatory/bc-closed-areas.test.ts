@@ -159,3 +159,118 @@ test("repealed entries are not areas", () => {
   assert.equal(repealed.length, enumeration.areas.length - live.length);
   for (const area of repealed) assert.equal(at(area.schedule, area.entryNumber).length, 0);
 });
+
+/* ── The resolver: what 76/84 does to an answer ──────────────────────────── */
+
+test("a no-shooting area never closes a season, which is the majority of the rows", async () => {
+  /*
+   * THE CONSTRAINT THIS RESOLVER EXISTS FOR. 193 of the 325 rows are
+   * NO_DISCHARGE: they forbid shooting and say nothing about the season.
+   * Rendering them as a closed season tells a hunter a running season is shut,
+   * and tells a bow hunter that a rule about discharging a firearm is theirs.
+   *
+   * Asserted over EVERY unit that has only discharge rows, not a sample.
+   */
+  const { closedAreaEffectAt, seasonIsOverriddenBy, BC_CLOSED_AREAS } = await import("./bc-closed-areas.ts");
+
+  const unitsWithDischargeOnly = new Set<string>();
+  for (const row of BC_CLOSED_AREAS) {
+    if (row.kind !== "NO_DISCHARGE" || row.scope.kind !== "CANDIDATE_AREAS") continue;
+    for (const unit of row.scope.candidateAreas) unitsWithDischargeOnly.add(unit);
+  }
+  for (const row of BC_CLOSED_AREAS) {
+    if (row.kind === "NO_OPEN_SEASON" && row.scope.kind === "CANDIDATE_AREAS") {
+      for (const unit of row.scope.candidateAreas) unitsWithDischargeOnly.delete(unit);
+    }
+  }
+  assert.ok(unitsWithDischargeOnly.size > 0, "there are units reached only by no-shooting areas");
+
+  for (const unit of unitsWithDischargeOnly) {
+    const effect = closedAreaEffectAt({ area: unit, scope: "POINT" });
+    assert.equal(seasonIsOverriddenBy(effect), undefined, `${unit}: a no-shooting area must not close the season`);
+    assert.notEqual(effect.discharge.state, "NONE", `${unit}: the discharge fact must still be stated`);
+  }
+});
+
+test("no row in this regulation can close a season today, and the reason is geometry", async () => {
+  /*
+   * THE CEILING, ASSERTED SO IT CANNOT BE CROSSED BY ACCIDENT.
+   *
+   * All 325 rows are UNLISTED (134) or CANDIDATE_AREAS (191). Neither yields
+   * APPLIES, because North Ground holds no boundary for any of these areas and
+   * a unit that CONTAINS a closed area is not the closed area. So 76/84 can
+   * say a closed area may reach you and what it says; it cannot say a season
+   * is shut.
+   *
+   * This is the honest ceiling rather than a defect — asserting a closure from
+   * "your unit contains one of these" would shut a season across a whole
+   * management unit on the strength of a name. If a row ever gains real
+   * geometry this test fails, which is correct: that is a deliberate change in
+   * what North Ground claims, and it should not happen quietly.
+   */
+  const { closedAreaEffectAt, seasonIsOverriddenBy, BC_CLOSED_AREAS } = await import("./bc-closed-areas.ts");
+
+  assert.ok(
+    BC_CLOSED_AREAS.every((row) => row.scope.kind === "UNLISTED" || row.scope.kind === "CANDIDATE_AREAS"),
+    "every row is unplaceable or merely contained; none carries its own boundary",
+  );
+
+  const units = new Set<string>();
+  for (const row of BC_CLOSED_AREAS) {
+    if (row.scope.kind === "CANDIDATE_AREAS") for (const unit of row.scope.candidateAreas) units.add(unit);
+  }
+  for (const unit of units) {
+    const effect = closedAreaEffectAt({ area: unit, scope: "POINT" });
+    assert.equal(seasonIsOverriddenBy(effect), undefined, `${unit}: a contained area may not assert a closure`);
+    assert.notEqual(effect.season.state, "APPLIES");
+  }
+});
+
+test("the precedence surface carries s. 1.1 when it is reached", async () => {
+  /*
+   * Unreachable from today's data (above), so exercised directly: the day an
+   * area arrives with geometry, precedence must already be modelled rather
+   * than assembled under pressure — which is when it gets built as ordering.
+   */
+  const { closedAreaEffectAt, seasonIsOverriddenBy, BC_CLOSED_AREAS } = await import("./bc-closed-areas.ts");
+  const template = BC_CLOSED_AREAS.find((row) => row.kind === "NO_OPEN_SEASON");
+  assert.ok(template);
+
+  const placed = { ...template, scope: { kind: "AREAS", areas: ["1-1"] } } as typeof template;
+  const { restrictionAt } = await import("./within-zone-restriction.ts");
+  assert.equal(restrictionAt(placed, { area: "1-1", scope: "POINT" }).state, "APPLIES");
+
+  /* And the same fact through the resolver's own shape. */
+  const effect = closedAreaEffectAt({ area: "1-1", scope: "POINT" });
+  assert.equal(seasonIsOverriddenBy(effect), undefined, "still nothing today");
+  assert.match(template.prevailsOverConflicting!.citation, /s\. 1\.1/);
+  assert.match(template.prevailsOverConflicting!.statedAs, /prevails to the extent of the conflict/);
+});
+
+test("an area that cannot be placed is MAY_APPLY, never NONE", async () => {
+  /*
+   * 134 rows name no unit North Ground can match. Resolving those to "no
+   * restriction" is the silent-drop this whole model replaced, and it is the
+   * §8 failure: could not place is not does not apply.
+   */
+  const { closedAreaEffectAt } = await import("./bc-closed-areas.ts");
+  const effect = closedAreaEffectAt({ area: "no-such-unit-anywhere", scope: "POINT" });
+
+  for (const fact of [effect.season, effect.discharge] as const) {
+    assert.equal(fact.state, "MAY_APPLY");
+    if (fact.state !== "MAY_APPLY") continue;
+    assert.ok(fact.rows.length > 0);
+    assert.ok(fact.because.every((line) => line.length > 0), "every unknown says why");
+  }
+});
+
+test("every row is asked, and a verdict is kept for each", async () => {
+  /* Including DOES_NOT_APPLY: "consulted and it does not reach here" is a
+     different answer from never having looked. */
+  const { closedAreaEffectAt, BC_CLOSED_AREAS } = await import("./bc-closed-areas.ts");
+  const effect = closedAreaEffectAt({ area: "1-1", scope: "POINT" });
+  assert.equal(effect.verdicts.length, BC_CLOSED_AREAS.length);
+  for (const verdict of effect.verdicts) {
+    assert.ok(["APPLIES", "DOES_NOT_APPLY", "UNKNOWN"].includes(verdict.state));
+  }
+});
