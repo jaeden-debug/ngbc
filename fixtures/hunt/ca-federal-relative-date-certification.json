@@ -1,0 +1,294 @@
+{
+  "citation": "Migratory Birds Regulations, 2022, SOR/2022-105",
+  "sourceUrl": "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2022-105/FullText.html",
+  "documentHash": "sha256:b2f702691cca4fddb31dae4e4af26e9d8bd3f890a97df991e862043c7c920802",
+  "season": {
+    "label": "August 2026 to July 2027",
+    "openingYear": 2026
+  },
+  "verifiedAgainst": [
+    {
+      "jurisdiction": "British Columbia",
+      "url": "https://www.canada.ca/en/environment-climate-change/services/migratory-game-bird-hunting/regulations-provincial-territorial-summaries/british-columbia.html",
+      "publishedWindows": 23,
+      "documentHash": "sha256:76bba9cbd46eb917e4b14866b3f83ce3fcef323e1da47a59ee4f4f2363df115d"
+    },
+    {
+      "jurisdiction": "Ontario",
+      "url": "https://www.canada.ca/en/environment-climate-change/services/migratory-game-bird-hunting/regulations-provincial-territorial-summaries/ontario.html",
+      "publishedWindows": 23,
+      "documentHash": "sha256:fbff1984e9a820d08db5c18aad7dfa8aff01fe21d1f3a3d9afcc56ed313563c9"
+    },
+    {
+      "jurisdiction": "Quebec",
+      "url": "https://www.canada.ca/en/environment-climate-change/services/migratory-game-bird-hunting/regulations-provincial-territorial-summaries/quebec.html",
+      "publishedWindows": 27,
+      "documentHash": "sha256:29ed25f695485816b33d23e3cb9089435381987983be1b2cbbdcfe0beabca9c1"
+    }
+  ],
+  "jurisdictions": [
+    {
+      "jurisdiction": "British Columbia",
+      "part": 10,
+      "computed": [
+        {
+          "statedAs": "The Saturday after the first Monday in October to the first Sunday after January 19",
+          "computed": {
+            "from": "2026-10-10",
+            "to": "2027-01-24"
+          },
+          "asPublished": "October 10 to January 24",
+          "agrees": true
+        },
+        {
+          "statedAs": "The first Saturday after the first Monday in October to the first Sunday after January 19",
+          "computed": {
+            "from": "2026-10-10",
+            "to": "2027-01-24"
+          },
+          "asPublished": "October 10 to January 24",
+          "agrees": true
+        },
+        {
+          "statedAs": "the Saturday after the first Monday in October to the first Sunday after November 17",
+          "computed": {
+            "from": "2026-10-10",
+            "to": "2026-11-22"
+          },
+          "asPublished": "October 10 to November 22",
+          "agrees": true
+        },
+        {
+          "statedAs": "the Saturday after the first Monday in October to the first Tuesday after December 31",
+          "computed": {
+            "from": "2026-10-10",
+            "to": "2027-01-05"
+          },
+          "asPublished": "October 10 to January 5",
+          "agrees": true
+        },
+        {
+          "statedAs": "the first Saturday in September to the Tuesday after the second Saturday in September",
+          "computed": {
+            "from": "2026-09-05",
+            "to": "2026-09-15"
+          },
+          "asPublished": "September 5 to September 15",
+          "agrees": true
+        },
+        {
+          "statedAs": "the third Saturday in December to the first Sunday after January 5",
+          "computed": {
+            "from": "2026-12-19",
+            "to": "2027-01-10"
+          },
+          "asPublished": "December 19 to January 10",
+          "agrees": true
+        }
+      ],
+      "refused": [
+        "the first Monday after January 6 to the first Sunday after January 19 (only in Provincial Management Units 1-3 and 1-8 to 1-15)",
+        "the first Monday after November 18 to the Friday before the third Saturday in December (only in Provincial Management Units 1-3 and 1-8 to 1-15)",
+        "the first Saturday in September to the Tuesday after the second Saturday in September (only in Provincial Management Units 1-1, 1-2 and 1-4 to 1-7)"
+      ]
+    },
+    {
+      "jurisdiction": "Ontario",
+      "part": 6,
+      "computed": [
+        {
+          "statedAs": "September 1 to the Friday before the third Saturday in September",
+          "computed": {
+            "from": "2026-09-01",
+            "to": "2026-09-18"
+          },
+          "asPublished": "September 1 to September 18",
+          "agrees": true
+        },
+        {
+          "statedAs": "The fourth Saturday in September to the first Sunday after January 5",
+          "computed": {
+            "from": "2026-09-26",
+            "to": "2027-01-10"
+          },
+          "asPublished": "September 26 to January 10",
+          "agrees": true
+        },
+        {
+          "statedAs": "The third Saturday in September to the first Sunday after December 29",
+          "computed": {
+            "from": "2026-09-19",
+            "to": "2027-01-03"
+          },
+          "asPublished": "September 19 to January 3",
+          "agrees": true
+        },
+        {
+          "statedAs": "the fourth Saturday in September to the first Sunday after January 5",
+          "computed": {
+            "from": "2026-09-26",
+            "to": "2027-01-10"
+          },
+          "asPublished": "September 26 to January 10",
+          "agrees": true
+        },
+        {
+          "statedAs": "the third Saturday in September to December 16",
+          "computed": {
+            "from": "2026-09-19",
+            "to": "2026-12-16"
+          },
+          "asPublished": "September 19 to December 16",
+          "agrees": true
+        }
+      ],
+      "refused": [
+        "The Saturday following the fourth Saturday in September to the first Sunday after January 5 (in Provincial Wildlife Management Units 69A, 70 to 73, 77 to 81 and 86 to 93)",
+        "The Saturday following the fourth Saturday in September to the first Wednesday after December 25 (in Provincial Wildlife Management Units 69A, 70 to 73, 77 to 81 and 86 to 93)",
+        "The Thursday after the first Monday of September to the second Sunday after that Monday",
+        "The first Saturday after September 11 to the first Friday after September 24, only for residents of Canada and on farmland in Provincial Wildlife Management Units 23, 24, 27 to 30, 36, 37, 39 to 41 and 45",
+        "The first Saturday after September 11 to the first Friday after September 24, only for residents of Canada and on farmland in Provincial Wildlife Management Units 42, 43, 47 and 48",
+        "The fourth Saturday in February to the following Friday (in Provincial Wildlife Management Units 69A, 70 to 73, 77 to 81 and 86 to 93)",
+        "The fourth Saturday in September to the first Wednesday after December 25 (in Provincial Wildlife Management Units 60 to 68, 69B, 74 to 76, 82 to 85, 94 and 95)",
+        "the fourth Saturday in September to the first Sunday after January 5 (excluding Sundays in municipalities where hunting with guns on Sundays is not permitted by provincial regulations)"
+      ]
+    },
+    {
+      "jurisdiction": "Quebec",
+      "part": 5,
+      "computed": [
+        {
+          "statedAs": "November 15 to the first Saturday after December 25",
+          "computed": {
+            "from": "2026-11-15",
+            "to": "2026-12-26"
+          },
+          "asPublished": "November 15 to December 26",
+          "agrees": true
+        },
+        {
+          "statedAs": "September 26 to the first Saturday after December 25",
+          "computed": {
+            "from": "2026-09-26",
+            "to": "2026-12-26"
+          },
+          "asPublished": "September 26 to December 26",
+          "agrees": true
+        },
+        {
+          "statedAs": "The first Saturday after August 31 to the first Saturday after December 14",
+          "computed": {
+            "from": "2026-09-05",
+            "to": "2026-12-19"
+          },
+          "asPublished": "September 5 to December 19",
+          "agrees": true
+        },
+        {
+          "statedAs": "The first Saturday after September 11 to October 20",
+          "computed": {
+            "from": "2026-09-12",
+            "to": "2026-10-20"
+          },
+          "asPublished": "September 12 to October 20",
+          "agrees": true
+        },
+        {
+          "statedAs": "The first Saturday after September 11 to the first Saturday after December 25",
+          "computed": {
+            "from": "2026-09-12",
+            "to": "2026-12-26"
+          },
+          "asPublished": "September 12 to December 26",
+          "agrees": true
+        },
+        {
+          "statedAs": "The first Saturday after September 14 to the first Saturday after December 28",
+          "computed": {
+            "from": "2026-09-19",
+            "to": "2027-01-02"
+          },
+          "asPublished": "September 19 to January 2",
+          "agrees": true
+        },
+        {
+          "statedAs": "The first Saturday after September 18 to the first Saturday after January 1",
+          "computed": {
+            "from": "2026-09-19",
+            "to": "2027-01-02"
+          },
+          "asPublished": "September 19 to January 2",
+          "agrees": true
+        },
+        {
+          "statedAs": "The last Saturday of September to December 26",
+          "computed": {
+            "from": "2026-09-26",
+            "to": "2026-12-26"
+          },
+          "asPublished": "September 26 to December 26",
+          "agrees": true
+        },
+        {
+          "statedAs": "the first Saturday after September 11 to September 25",
+          "computed": {
+            "from": "2026-09-12",
+            "to": "2026-09-25"
+          },
+          "asPublished": "September 12 to September 25",
+          "agrees": true
+        },
+        {
+          "statedAs": "the first Saturday after September 11 to the first Saturday after December 25",
+          "computed": {
+            "from": "2026-09-12",
+            "to": "2026-12-26"
+          },
+          "asPublished": "September 12 to December 26",
+          "agrees": true
+        },
+        {
+          "statedAs": "the first Saturday after September 18 to October 20",
+          "computed": {
+            "from": "2026-09-19",
+            "to": "2026-10-20"
+          },
+          "asPublished": "September 19 to October 20",
+          "agrees": true
+        },
+        {
+          "statedAs": "the first Saturday after September 18 to September 25",
+          "computed": {
+            "from": "2026-09-19",
+            "to": "2026-09-25"
+          },
+          "asPublished": "September 19 to September 25",
+          "agrees": true
+        },
+        {
+          "statedAs": "the first Saturday after September 18 to the first Saturday after January 1",
+          "computed": {
+            "from": "2026-09-19",
+            "to": "2027-01-02"
+          },
+          "asPublished": "September 19 to January 2",
+          "agrees": true
+        }
+      ],
+      "refused": [
+        "October 21 to the first Saturday after December 25 (not an open season for Barrow’s Goldeneye or Common Goldeneye in locations that are within Provincial Hunting Zone 21 or within 100 m of that Zone)",
+        "October 21 to the first Saturday after January 1 (not an open season for Barrow’s Goldeneye or Common Goldeneye in locations between Pointe Jureux (Saint-Irénée) and Gros Cap à l’Aigle (Saint-Fidèle) from routes 362 and 138 and extending 2 km within Provincial Hunting Zone 21)",
+        "September 1 to the first Friday after September 10 (only on farmland)",
+        "September 6 to the first Friday after September 17 (only on farmland)",
+        "The first Saturday after September 11 to the first Friday after September 24, only for residents of Canada and on farmland",
+        "the first Saturday after September 11 to September 30, for Ducks other than Eiders and Long-tailed Ducks",
+        "the first Sunday after December 26 to January 14, only for Eiders and Long-tailed Ducks",
+        "the last Saturday in September to October 31 (not an open season for Eiders or Long-tailed Ducks)"
+      ]
+    }
+  ],
+  "result": "VERIFIED",
+  "computed": 24,
+  "refused": 19,
+  "disagreements": 0
+}

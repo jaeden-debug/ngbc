@@ -30,6 +30,7 @@ import {
   MBR_CITATION, MBR_URL, cellItems, cellText, partHtml, partTables, scheduleThree, sha256,
 } from "./federal-migratory-source.mjs";
 import { federalGroupFor, isRepealedRow } from "../src/lib/hunt/regulatory/federal-groups.ts";
+import { parseRelativeWindow } from "../src/lib/hunt/regulatory/relative-date.ts";
 
 const BUNDLE = "content/regulatory/ca-federal-2026.json";
 const CACHE = "/tmp/mbr2022.html";
@@ -441,6 +442,30 @@ function main() {
         const window = readWindow(stripLabel(seasons[0]));
         const daily = readLimit(stripLabel(bags[0]));
         const possession = readLimit(possessionCell);
+
+        /*
+         * A season the regulation writes as a RULE rather than as days. Tried
+         * only after the plain calendar reading, so nothing already encoded
+         * changes shape. It is stored as the rule, never as the days it
+         * produces this year: the same rule lands on a different pair of days
+         * every year, and storing one year's answer would be right once and
+         * quietly wrong afterwards.
+         *
+         * Every wording accepted here was checked against Environment and
+         * Climate Change Canada's OWN published provincial summaries, which
+         * state the same seasons as calendar dates —
+         * scripts/certify-relative-dates.mjs, 24/24 at the time of writing.
+         * A phrasing that check never confirmed is refused below.
+         */
+        const relativeWindow = window ? null : parseRelativeWindow(stripLabel(seasons[0]));
+        if (relativeWindow && daily && possession) {
+          rules.push({
+            jurisdictionId, area, groupId: group.id, groupStatedAs: group.statedAs,
+            relativeWindow, daily, possession, declaredNoSeason: false, sourceSection: where,
+          });
+          continue;
+        }
+
         if (!window || !daily || !possession) {
           /*
            * Say WHICH part could not be read. A single catch-all reason hid
@@ -450,12 +475,23 @@ function main() {
            * collection of oddities. A refusal that cannot be counted cannot be
            * prioritised.
            */
-          const unreadSeason = !window;
+          const unreadSeason = !window && !relativeWindow;
+          /*
+           * A relative date this build does NOT recognise exactly keeps its
+           * own reason, so the bucket stays countable. "The first Sunday after
+           * January 19" and "the first Sunday ON OR AFTER January 19" differ by
+           * up to seven days and read almost identically, so there is no
+           * nearest-match and no fallback: an unrecognised phrasing is refused,
+           * not approximated. Where the date is unreadable the answer is
+           * UNKNOWN, never a date nudged somewhere safe — a season is a
+           * two-ended fact and there is no safe direction to move it.
+           */
           const relative = unreadSeason && /\b(first|second|third|fourth|last)\s+[A-Z]?[a-z]+day\b/i.test(stripLabel(seasons[0]));
           notEncoded.push({
             where, group: group.statedAs, area, statedAs: rowText,
+            jurisdictionId, groupId: group.id, coversArea: area,
             reason: relative
-              ? "the season is written as a relative date (\"the first Saturday after the first Monday in October\"), which this build does not yet compute"
+              ? "the season is written in a relative-date phrasing this build does not recognise exactly, and no nearest match is guessed"
               : unreadSeason
                 ? "the season is not a plain calendar window this build reads"
                 : "a daily bag or possession limit is not in a form this build reads exactly",

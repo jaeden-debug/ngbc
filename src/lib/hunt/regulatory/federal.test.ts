@@ -173,3 +173,58 @@ test("Northern Yukon sandhill crane is a DECLARED closure", () => {
   assert.equal(answer.status, "CLOSED");
   assert.match(answer.summary, /declare no open season/);
 });
+
+/*
+ * ── Seasons the regulation writes as a rule rather than as days ──
+ *
+ * Schedule 3 Part 10 gives British Columbia's District No. 2 duck season as
+ * "The Saturday after the first Monday in October to the first Sunday after
+ * January 19". Environment and Climate Change Canada's own published summary
+ * for British Columbia states that same season, for August 2026 to July 2027,
+ * as OCTOBER 10 TO JANUARY 24. These cases are written from the authority's
+ * published days, not from what the code computes.
+ */
+test("a relative season opens on the day the authority published", () => {
+  const open = evaluateFederal("species:mallard", "jurisdiction:ca-bc", { latitude: 49.2 }, on("2026-10-10"), "2-10");
+  assert.equal(open.status, "CONDITIONAL");
+  assert.equal(open.season?.opens, "10-10");
+  assert.equal(open.season?.closes, "01-24");
+});
+
+test("a relative season is not open the day before it opens", () => {
+  const before = evaluateFederal("species:mallard", "jurisdiction:ca-bc", { latitude: 49.2 }, on("2026-10-09"), "2-10");
+  assert.notEqual(before.status, "CONDITIONAL");
+});
+
+test("both ends of a computed season are inclusive", () => {
+  const last = evaluateFederal("species:mallard", "jurisdiction:ca-bc", { latitude: 49.2 }, on("2027-01-24"), "2-10");
+  assert.equal(last.status, "CONDITIONAL");
+  const after = evaluateFederal("species:mallard", "jurisdiction:ca-bc", { latitude: 49.2 }, on("2027-01-25"), "2-10");
+  assert.notEqual(after.status, "CONDITIONAL");
+});
+
+test("the season moves with the year, because the rule does", () => {
+  /*
+   * The whole reason the rule is stored instead of the days. The first Monday
+   * in October 2027 is the 4th, so this season opens on the 9th — a day that
+   * is NOT open in 2026. A build that computed the days once and stored them
+   * would answer October 10 here and be wrong by a day, in the direction that
+   * tells a hunter the season is closed when it is open.
+   */
+  const opensLater = evaluateFederal("species:mallard", "jurisdiction:ca-bc", { latitude: 49.2 }, on("2027-10-08"), "2-10");
+  assert.notEqual(opensLater.status, "CONDITIONAL");
+  const opensNow = evaluateFederal("species:mallard", "jurisdiction:ca-bc", { latitude: 49.2 }, on("2027-10-09"), "2-10");
+  assert.equal(opensNow.status, "CONDITIONAL");
+  assert.equal(opensNow.season?.opens, "10-09");
+});
+
+test("a date inside the tail of a season that opened last year is open", () => {
+  /*
+   * January 3 belongs to the season that opened in October, not to one that
+   * has not started. A resolver that only ever tried the date's own year
+   * would answer CLOSED for every January day of every crossing season.
+   */
+  const january = evaluateFederal("species:mallard", "jurisdiction:ca-bc", { latitude: 49.2 }, on("2027-01-03"), "2-10");
+  assert.equal(january.status, "CONDITIONAL");
+  assert.equal(january.season?.opens, "10-10");
+});

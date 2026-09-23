@@ -22,6 +22,7 @@ import { FEDERAL_SOURCE_ID, federalRequirementsFor } from "./federal-requirement
 import { general, type Limitation } from "../limitation.ts";
 import { legalTimeFor, legalTimeNotCertified, type LegalTimeRule } from "./legal-time.ts";
 import { timeZoneAtPoint } from "../time-zone.ts";
+import { resolveRelativeWindow, type RelativeWindow } from "./relative-date.ts";
 import { federalAreaAt, type FederalArea } from "./federal-areas.ts";
 import { FEDERAL_GROUPS, groupsForSpecies, type FederalGroup } from "./federal-groups.ts";
 
@@ -34,6 +35,16 @@ interface FederalRule {
   statedAs?: string;
   sourceSection: string;
   window?: { from: { month: number; day: number }; to: { month: number; day: number }; crossesYear: boolean; statedAs: string };
+  /*
+   * A season Schedule 3 writes as a RULE rather than as days — "the Saturday
+   * after the first Monday in October to the first Sunday after January 19".
+   * It is stored as the rule and resolved for the year being asked about,
+   * because it lands on a different pair of days every year: computing it once
+   * and storing the days would be right for one season and quietly wrong for
+   * the next. Every wording here was checked against the authority's own
+   * published dates (scripts/certify-relative-dates.mjs).
+   */
+  relativeWindow?: RelativeWindow;
   daily?: { kind: string; count?: number; subLimit?: string; statedAs: string };
   possession?: { kind: string; count?: number; subLimit?: string; statedAs: string };
 }
@@ -56,6 +67,24 @@ export function federalSpeciesIds(): ReadonlyArray<CanonicalId<"species">> {
 }
 
 const dayOfYear = (month: number, day: number) => month * 100 + day;
+
+/**
+ * The exact days a relative season runs, for the season a date falls in.
+ *
+ * A window crossing the new year has TWO candidate seasons on any date: the
+ * one that opened this year and the one that opened last. January 3 belongs to
+ * the season that opened in October, not to one that has not started yet, so
+ * both are tested and the containing one is returned.
+ */
+function relativeDaysFor(window: RelativeWindow, date: IsoDate): { from: string; to: string } | null {
+  const year = Number(date.slice(0, 4));
+  for (const opening of window.crossesYear ? [year, year - 1] : [year]) {
+    const days = resolveRelativeWindow(window, opening);
+    /* ISO dates compare correctly as strings; both ends are inclusive. */
+    if (days && date >= days.from && date <= days.to) return days;
+  }
+  return null;
+}
 
 function insideWindow(window: NonNullable<FederalRule["window"]>, date: IsoDate): boolean {
   /* Element 0 is the whole match, so the year must be skipped explicitly.
@@ -154,7 +183,13 @@ export function evaluateFederal(
     };
   }
 
-  const open = here.find((rule) => rule.window && insideWindow(rule.window, date));
+  /* A rule is open on this date by a stored window or by a computed one. */
+  const open = here.find((rule) =>
+    rule.window
+      ? insideWindow(rule.window, date)
+      : rule.relativeWindow !== undefined && relativeDaysFor(rule.relativeWindow, date) !== null,
+  );
+  const openDays = open?.relativeWindow ? relativeDaysFor(open.relativeWindow, date) : null;
   if (!open) {
     /*
      * A row this build REFUSED still covers real dates. Yukon's August duck
@@ -190,12 +225,21 @@ export function evaluateFederal(
   return {
     status: "CONDITIONAL",
     summary:
-      `Federal open season for ${open.groupStatedAs} in ${area.area.name}: ${open.window!.statedAs}.`,
-    season: {
-      opens: monthDay(open.window!.from.month, open.window!.from.day),
-      closes: monthDay(open.window!.to.month, open.window!.to.day),
-      datesInclusive: true,
-    },
+      `Federal open season for ${open.groupStatedAs} in ${area.area.name}: ${(open.window ?? open.relativeWindow)!.statedAs}.`,
+    /*
+     * A computed season reports the days it actually runs this year, not the
+     * rule that produced them: "the first Sunday after January 19" is not a
+     * date a hunter can act on, and the hunter asked about a date.
+     */
+    season: openDays
+      ? { opens: monthDay(Number(openDays.from.slice(5, 7)), Number(openDays.from.slice(8, 10))),
+          closes: monthDay(Number(openDays.to.slice(5, 7)), Number(openDays.to.slice(8, 10))),
+          datesInclusive: true }
+      : {
+          opens: monthDay(open.window!.from.month, open.window!.from.day),
+          closes: monthDay(open.window!.to.month, open.window!.to.day),
+          datesInclusive: true,
+        },
     sharedLimit: sharedLimitOf(open, group),
     limitations: [], requirements, area: area.area,
   };
