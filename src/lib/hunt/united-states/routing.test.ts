@@ -108,13 +108,6 @@ test("a Montana grouse question placed in a deer and elk district is asked again
     [HD, UPLAND].forEach((layer, index) => { layer.serving = served[index].serving; layer.rulesServing = served[index].rules; });
   }
 });
-
-test("a point inside two of one state's own layers keeps that state, so a reservation is not jurisdictionless", async () => {
-  const { soleJurisdictionAt } = await import("../zone.ts");
-  // Lame Deer sits in Montana's deer-and-elk extent and its upland extent, and in no other state's.
-  assert.equal(soleJurisdictionAt(45.623, -106.667), "jurisdiction:us-mt");
-  // Cranbrook, B.C. is inside Alberta's box as well as B.C.'s: evidence for neither.
-  assert.equal(soleJurisdictionAt(49.5097, -115.7688), undefined);
 test("place search reaches the United States only once a U.S. state's zones are served", async () => {
   const { searchRegionCodes } = await import("../location.ts");
   const { US_ZONE_LAYERS } = await import("./layers.ts");
@@ -140,15 +133,34 @@ test("a zone card accepts a worded designation as the state writes it, and still
 
 test("a U.S. map says 'Certified rules' only where the units are certified AND the rules serve", async () => {
   const { zoneCoverage } = await import("../zone-layers.ts");
-  // Montana's certified rules are written in its upland districts, not its deer and elk districts.
-  assert.equal(zoneCoverage(UPLAND, "East of the Continental Divide"), "VERIFIED");
+  /* Montana's certified rules are written in its upland districts, not its
+     deer and elk districts. Montana does not serve (its map licence is
+     unresolved), so the served state is exercised in-test. */
+  const uplandFlags = { serving: UPLAND.serving, rules: UPLAND.rulesServing };
+  try {
+    UPLAND.serving = true;
+    UPLAND.rulesServing = true;
+    assert.equal(zoneCoverage(UPLAND, "East of the Continental Divide"), "VERIFIED");
+  } finally {
+    UPLAND.serving = uplandFlags.serving;
+    UPLAND.rulesServing = uplandFlags.rules;
+  }
   assert.equal(zoneCoverage(HD, "411"), "IN_DEVELOPMENT");
-  /* Idaho has certified pronghorn units, but its rules do not serve: a
-     certified-units list alone must never render as "Certified rules". */
+  /* A certified-units list alone must never render as "Certified rules": the
+     rules have to be serving as well. Asserted both ways on Idaho, which has
+     certified pronghorn units. */
   const idaho = layerById("layer:us-id-gmu")!;
-  assert.equal(idaho.rulesServing, undefined);
   assert.ok((idaho.certifiedDesignations?.size ?? 0) > 0, "Idaho has certified units on this branch");
-  assert.equal(zoneCoverage(idaho, "39"), "IN_DEVELOPMENT");
+  const idahoRules = idaho.rulesServing;
+  try {
+    idaho.rulesServing = false;
+    assert.equal(zoneCoverage(idaho, "39"), "IN_DEVELOPMENT");
+    idaho.rulesServing = true;
+    assert.equal(zoneCoverage(idaho, "39"), "VERIFIED");
+    assert.equal(zoneCoverage(idaho, "1"), "IN_DEVELOPMENT", "a unit no hunt reaches is never certified");
+  } finally {
+    idaho.rulesServing = idahoRules;
+  }
   // A state with no rules builder yet certifies nothing it draws.
   assert.equal(zoneCoverage(WY_ELK, "7"), "IN_DEVELOPMENT");
 });

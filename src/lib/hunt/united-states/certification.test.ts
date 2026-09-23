@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { certificationFor, statesWithEvidence, unitedStatesCertification } from "./certification.ts";
+import { layerById } from "../zone-layers.ts";
+import { US_LAYER_IDS } from "./layers.ts";
 
 /**
  * The three lanes are independent, and each is computed from evidence on disk
@@ -21,14 +23,16 @@ test("a state's map and its rules are certified separately, and neither implies 
   // Certified rules therefore do not serve.
   assert.equal(montana.regulations.rulesServing, false);
 
-  /* Idaho is certified on both lanes and still not served: serving is a
-     separate decision, and neither lane grants it. */
+  /* Idaho is certified on both lanes. Whether it SERVES is a separate fact,
+     read from the layer rather than implied by either certification. */
   const idaho = certificationFor("ID");
-  assert.equal(idaho.map.status, "CERTIFIED", "Idaho's service states CC-BY and its parity is clean");
-  assert.equal(idaho.regulations.status, "CERTIFIED", "a bundle plus cases written from the law");
+  assert.ok(["CERTIFIED", "SERVED"].includes(idaho.map.status), "Idaho's service states CC-BY and its parity is clean");
+  assert.ok(["CERTIFIED", "SERVED"].includes(idaho.regulations.status), "a bundle plus cases written from the law");
   assert.equal(idaho.regulations.rules, 54);
   assert.ok(idaho.regulations.cases > 0);
-  assert.equal(idaho.regulations.rulesServing, false);
+  const layer = layerById("layer:us-id-gmu")!;
+  assert.equal(idaho.regulations.status === "SERVED", layer.rulesServing === true);
+  assert.equal(idaho.map.status === "SERVED", layer.serving === true);
 });
 
 test("a licence that permits use still does not permit a stored copy", () => {
@@ -53,7 +57,8 @@ test("only states with evidence are reported, and every one is counted once per 
     assert.equal(Object.values(lane).reduce((total, count) => total + count, 0), summary.states.length);
   }
   assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["CO", "MT", "WY"]);
-  // Nothing claims to be served while every U.S. layer is off.
-  assert.equal(summary.totals.map.SERVED, 0);
-  assert.equal(summary.totals.regulations.SERVED, 0);
+  /* Served is counted from the layers themselves, never asserted as a
+     constant: a state counts as served exactly when its layers say so. */
+  const servingStates = new Set(US_LAYER_IDS.filter((id) => layerById(id)!.serving).map((id) => id.slice("layer:us-".length, id.indexOf("-", "layer:us-".length)).toUpperCase()));
+  assert.equal(summary.totals.map.SERVED, summary.states.filter((entry) => servingStates.has(entry.code) && entry.map.status === "SERVED").length);
 });

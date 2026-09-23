@@ -538,6 +538,7 @@ export async function resolveZoneFromOfficialGis(
     return {
       status: "UNKNOWN",
       sourceId: resolved[0].sourceId,
+      conflictingZoneIds: resolved.map((result) => result.zoneId!).filter(Boolean),
       message: "Two jurisdictions' official services both claim this point; human verification is required.",
     };
   }
@@ -658,6 +659,11 @@ export async function resolveZone(
     if (timings) timings.live = performance.now() - liveStarted;
     const conflict = zoneConflict(result, fromLive, "ACROSS_JURISDICTIONS");
     if (conflict) return conflict;
+    /* Two live services already disagreed with each other. That is a conflict,
+       not an absence, so the registry's own answer does not settle it: a point
+       claimed by several authorities needs a person, whichever of them
+       answered last. */
+    if (fromLive.conflictingZoneIds?.length) return fromLive;
     if (fromLive.status === "RESOLVED") return fromLive;
     /* The registry did not place it and the live service could not be asked:
        the honest answer is that the zone could not be established. */

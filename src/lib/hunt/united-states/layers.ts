@@ -61,7 +61,9 @@ const US_LAYERS: UsLayer[] = [
       endpoint: "https://gisportal-idfg.idaho.gov/hosting/rest/services/Hunting/MapServer/3/query",
       nameField: "NAME",
       bounds: { minLatitude: 41.98, maxLatitude: 49.01, minLongitude: -117.25, maxLongitude: -111.03 },
-      serving: false,
+      serving: true,
+      // Certified pronghorn rules (54 controlled hunts) answer through this layer.
+      rulesServing: true,
       officialNamePrefix: "Game Management Unit ",
       zoneIdPrefix: "management_zone:us-id-gmu-",
       // The layer's Yellowstone National Park record is not an Idaho unit.

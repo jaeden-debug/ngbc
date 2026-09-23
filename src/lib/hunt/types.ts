@@ -35,6 +35,12 @@ export interface ZoneResolution {
   verificationFlag?: string;
   boundaryDistanceMeters?: number;
   nearBoundary?: boolean;
+  /**
+   * Set when more than one authority's own service placed the point in a zone.
+   * An UNKNOWN carrying this is a CONFLICT, not "no zone here", and must never
+   * be resolved by preferring another source that did answer.
+   */
+  conflictingZoneIds?: string[];
   displayRings?: number[][][];
   sourceId: CanonicalId<"source">;
   message: string;
