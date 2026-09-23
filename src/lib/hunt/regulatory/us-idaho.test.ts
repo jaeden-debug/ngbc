@@ -85,7 +85,7 @@ test("a tag for a hunt whose area is elsewhere is answered, never ignored", () =
 test("a unit no booklet hunt names is UNKNOWN, never CLOSED, and says what North Ground has not certified", () => {
   const result = evaluate("1", "2026-10-01").result!;
   assert.equal(result.status, "UNKNOWN");
-  assert.ok(result.limitations.some((line) => /Landowner Permission Hunts/.test(line)));
+  assert.ok(result.limitations.some((line) => /Landowner Permission Hunts/.test(line.text)));
 });
 
 test("a date outside the 2026 booklet's period is not answered with 2026 rules", () => {

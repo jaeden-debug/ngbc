@@ -207,7 +207,7 @@ test("every certified result can name the authority that produced it", () => {
 test("a result never claims a hunting zone is a place you may hunt", () => {
   const result = evaluate("57", "species:ruffed-grouse", "2026-10-15");
   assert.ok(
-    result.limitations.some((item) => /land access|permission to hunt|not permission/i.test(item)),
+    result.limitations.some((item) => /land access|permission to hunt|not permission/i.test(item.text)),
     "the answer must keep zone membership and land access apart",
   );
 });

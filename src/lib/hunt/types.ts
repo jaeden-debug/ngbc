@@ -1,3 +1,4 @@
+import type { Limitation } from "./limitation.ts";
 import type { BlockResult, CanonicalId, IsoDate, SourceRecord } from "../content-contract/index.ts";
 import type { AuthorizationContext } from "./regulatory/allocation.ts";
 import type { HuntDimensionAnswers, RequiredDimension } from "./regulatory/dimensions.ts";
@@ -67,7 +68,11 @@ export interface RegulatoryResult {
   limits?: { daily: number; possession: number; combinedWith?: string };
   legalTime: { status: "RULE_ONLY" | "NOT_AVAILABLE"; text: string };
   requirements: string[];
-  limitations: string[];
+  /**
+   * What limits or qualifies this answer, each carrying what KIND of statement
+   * it is. Classified by the author of the string; see `limitation.ts`.
+   */
+  limitations: Limitation[];
   sourceIds: CanonicalId<"source">[];
   verifiedAt: string;
   /**

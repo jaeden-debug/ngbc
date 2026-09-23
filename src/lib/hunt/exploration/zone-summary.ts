@@ -84,8 +84,8 @@ function stateOf(outcome: RegulatoryOutcome): ExplorationState {
 
 function detailOf(outcome: RegulatoryOutcome, state: ExplorationState): string | undefined {
   if (state !== "NEEDS_VERIFICATION") return undefined;
-  const varies = outcome.regulation.limitations.find((line) => line.endsWith(ZONE_SCOPE_PHRASE));
-  if (varies) return varies;
+  const varies = outcome.regulation.limitations.find((line) => line.text.endsWith(ZONE_SCOPE_PHRASE));
+  if (varies) return varies.text;
   const first = outcome.regulation.summary.split(/(?<=\.)\s/)[0];
   return first || undefined;
 }

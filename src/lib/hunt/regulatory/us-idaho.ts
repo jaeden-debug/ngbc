@@ -1,3 +1,4 @@
+import { general } from "../limitation.ts";
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/us-id-pronghorn-2026.json" with { type: "json" };
 import {
@@ -55,7 +56,7 @@ export const IDAHO_VOCABULARY: ConditionalVocabulary = {
       "Idaho: “Big game animals may be hunted only from one-half hour before sunrise to one-half hour after sunset” (p. 95). " +
       "North Ground has not certified exact astronomical times.",
   },
-  standingLimitations: IDAHO_BUNDLE.limitations,
+  standingLimitations: IDAHO_BUNDLE.limitations.map((text) => general(text)),
   standingSourceIds: ["source:us-id-gmu-service"],
   describe: (dimension, value) => (dimension === "HUNT_CODE" ? `controlled hunt ${value}` : value),
 };

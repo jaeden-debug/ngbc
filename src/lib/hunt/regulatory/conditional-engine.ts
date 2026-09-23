@@ -1,3 +1,4 @@
+import { general, sourceDetail, type Limitation } from "../limitation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { RegulatoryResult, RegulatoryStatus } from "../types.ts";
 import {
@@ -185,7 +186,7 @@ export interface ConditionalVocabulary {
   dimensions: VocabularyDimension[];
   legalTime: RegulatoryResult["legalTime"];
   /** Carried by every answer, because every answer is subject to them. */
-  standingLimitations: string[];
+  standingLimitations: Limitation[];
   /** Source cited alongside every answer (for example the boundary layer). */
   standingSourceIds: string[];
   /** Readable name for a single-valued answer, for "open to this combination". */
@@ -509,7 +510,7 @@ export function evaluateConditional(
         summary:
           `North Ground has certified ${vocabulary.jurisdictionName}'s rules for ${bundle.certifiedPeriod.from} to ${bundle.certifiedPeriod.to}. ` +
           "The selected date falls outside that period, so a version of the law North Ground has not read governs it.",
-        limitations: [...vocabulary.standingLimitations, ...(bundle.certifiedPeriod.reason ? [bundle.certifiedPeriod.reason] : [])],
+        limitations: [...vocabulary.standingLimitations, ...(bundle.certifiedPeriod.reason ? [general(bundle.certifiedPeriod.reason)] : [])],
       }, speciesRules.slice(0, 1)),
     };
   }
@@ -633,7 +634,7 @@ export function evaluateConditional(
             "A tag for it does not authorise hunting here, whatever is open here under another hunt.",
           limitations: [
             ...vocabulary.standingLimitations,
-            `Hunts whose area does reach ${unit} are listed when the question is asked again without this answer.`,
+            general(`Hunts whose area does reach ${unit} are listed when the question is asked again without this answer.`),
           ],
         }, elsewhere ? bundle.rules.filter((rule) => rule.huntCodeId === elsewhere.id).slice(0, 1) : []),
       };
@@ -696,14 +697,18 @@ export function evaluateConditional(
   const agreedDespite = worlds.length > 1 && outcome.status !== "NEEDS_VERIFICATION" && outcome.status !== "CONFLICT"
     ? unknowns.map((unknown) => `${unknown.statedAs} The answer is the same either way.`)
     : [];
-  const limitations = [
-    ...amendedBy,
-    ...agreedDespite,
-    ...new Set(cited.flatMap((rule) => [
+  /* Everything authored as a bare string defaults to GENERAL, untriaged. The
+     wall collapses into one said-once section the moment the shape lands; each
+     jurisdiction's owner promotes its own lines afterwards, and nobody
+     classifies a jurisdiction they do not own. */
+  const limitations: Limitation[] = [
+    ...amendedBy.map((text) => general(text)),
+    ...agreedDespite.map((text) => general(text)),
+    ...[...new Set(cited.flatMap((rule) => [
       ...rule.notes.flatMap((note) => typeof note === "string" ? [note] : !note.zoneId || note.zoneId === place.zoneId ? [note.text] : []),
       ...rule.caveats,
-    ])),
-    ...new Set(conditions.flatMap((condition) => condition.caveats ?? [])),
+    ]))].map((text) => general(text)),
+    ...[...new Set(conditions.flatMap((condition) => condition.caveats ?? []))].map((text) => general(text)),
     ...vocabulary.standingLimitations,
   ];
   /* Hunts the answer rests on, with how each is licensed. Only for seasons
@@ -797,7 +802,7 @@ export function evaluateConditional(
         ? `The official sources disagree about ${species} in ${unit} for this combination, and North Ground will not choose between them.${listing}`
         : `North Ground cannot state a ${species} season for this exact point, because the answer depends on something it could not establish.${listing}`,
       requirements,
-      limitations: [...outcome.reasons, ...limitations],
+      limitations: [...outcome.reasons.map((reason) => general(reason)), ...limitations],
       sourceIds,
     });
   }
@@ -828,7 +833,7 @@ export function evaluateConditional(
          rule's own notes ("this season allows …") describe a season and are
          not carried inside a territory where none applies. */
       limitations: [
-        ...input.restrictions.map((restriction) => `${restriction.name}: “${restriction.statedAs}”`),
+        ...input.restrictions.map((restriction) => sourceDetail(`${restriction.name}: “${restriction.statedAs}”`, restriction.sourceId as CanonicalId<"source">)),
         ...vocabulary.standingLimitations,
       ],
       sourceIds: [...new Set([...result.sourceIds, ...input.restrictions.map((restriction) => restriction.sourceId as CanonicalId<"source">)])],
@@ -849,7 +854,7 @@ export function evaluateConditional(
         `This point is inside ${input.restrictions.map((restriction) => restriction.name).join(" and ")}, where ${vocabulary.jurisdictionName} publishes a hunting restriction. ` +
         `North Ground has not certified how it applies to this hunt, so it will not state a season status here. Outside it: ${result.summary}`,
       limitations: [
-        ...input.restrictions.map((restriction) => `${restriction.name}: “${restriction.statedAs}”`),
+        ...input.restrictions.map((restriction) => sourceDetail(`${restriction.name}: “${restriction.statedAs}”`, restriction.sourceId as CanonicalId<"source">)),
         ...result.limitations,
       ],
       sourceIds: [...new Set([...result.sourceIds, ...input.restrictions.map((restriction) => restriction.sourceId as CanonicalId<"source">)])],

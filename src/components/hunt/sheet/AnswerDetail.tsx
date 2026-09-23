@@ -63,7 +63,7 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
       {result.regulation.limitations.length ? (
         <section aria-labelledby={`${id}-lim`}>
           <h3 className={styles.detailTitle} id={`${id}-lim`}>What this does not resolve</h3>
-          <ul className={styles.bullets}>{result.regulation.limitations.map((line) => <li key={line}>{line}</li>)}</ul>
+          <ul className={styles.bullets}>{result.regulation.limitations.map((limitation) => <li key={limitation.id}>{limitation.text}</li>)}</ul>
         </section>
       ) : null}
 

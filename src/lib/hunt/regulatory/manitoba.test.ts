@@ -104,14 +104,14 @@ test("a season that crosses the year closes on 1 January 2027, inclusive", () =>
 test("in the zone 2/3 band the answer stands only where both zones agree", () => {
   const early = evaluate(RUFFED, "2026-09-05", PLACES.gha14Band);
   assert.equal(early.result?.status, "NEEDS_VERIFICATION");
-  assert.ok(early.result?.limitations.some((line) => /line between game bird hunting zones 2 and 3/.test(line)));
+  assert.ok(early.result?.limitations.some((line) => /line between game bird hunting zones 2 and 3/.test(line.text)));
 
   const later = evaluate(RUFFED, "2026-10-05", PLACES.gha14Band);
   assert.equal(later.result?.status, "CONDITIONAL");
   // Both possible seasons are named; the one shown is open in either zone.
   assert.match(later.result?.summary ?? "", /Sept\. 1 – Jan\. 1; or Open season, Sept\. 8 – Jan\. 1/);
   assert.deepEqual(later.result?.season, { opens: "2026-09-08", closes: "2027-01-01", datesInclusive: true });
-  assert.ok(later.result?.limitations.some((line) => /The answer is the same either way/.test(line)));
+  assert.ok(later.result?.limitations.some((line) => /The answer is the same either way/.test(line.text)));
 });
 
 test("sharp-tailed grouse carry the reduced limit only in the areas the regulation names", () => {
@@ -228,7 +228,7 @@ test("a non-Canadian resident is not asked for a licence where only one could ap
 test("GHA 7A under a non-Canadian archery licence is a conflict North Ground will not resolve", () => {
   const evaluation = evaluate(DEER, "2026-10-15", PLACES.gha7a, { RESIDENCY: "NON_CANADIAN_RESIDENT", LICENCE_TYPE: "NON_CANADIAN_ARCHERY_WTD", HUNT_METHOD: "BOW" });
   assert.equal(evaluation.result?.status, "CONFLICT");
-  assert.ok(evaluation.result?.limitations.some((line) => /range "5-8"/.test(line) && /guide lists no/.test(line)));
+  assert.ok(evaluation.result?.limitations.some((line) => /range "5-8"/.test(line.text) && /guide lists no/.test(line.text)));
   // A Manitoba resident's licences do not reach 7A at all: that is closed, not a conflict.
   assert.equal(status(evaluate(DEER, "2026-10-15", PLACES.gha7a, { RESIDENCY: "MANITOBA_RESIDENT" })), "CLOSED");
 });
@@ -236,7 +236,7 @@ test("GHA 7A under a non-Canadian archery licence is a conflict North Ground wil
 test("where the regulation and the guide differ, the regulation governs and the difference is disclosed", () => {
   const canadian = evaluate(DEER, "2026-12-05", PLACES.gha33, { RESIDENCY: "CANADIAN_RESIDENT", HUNT_METHOD: "BOW" }).result!;
   assert.equal(canadian.status, "CLOSED");
-  assert.ok(canadian.limitations.some((line) => /2026 guide shows 2026-08-31 to 2026-12-20/.test(line) && /regulation, which controls/.test(line)));
+  assert.ok(canadian.limitations.some((line) => /2026 guide shows 2026-08-31 to 2026-12-20/.test(line.text) && /regulation, which controls/.test(line.text)));
   const resident = evaluate(DEER, "2026-12-05", PLACES.gha33, { RESIDENCY: "MANITOBA_RESIDENT", LICENCE_TYPE: "MB_RESIDENT_GENERAL_WTD", HUNT_METHOD: "BOW" }).result!;
   assert.equal(resident.status, "CONDITIONAL");
 });
@@ -285,7 +285,7 @@ test("a published restriction at the point stops a CONDITIONAL answer", () => {
     restrictions: [{ name: "Example Game Bird Refuge", statedAs: "No person shall hunt ... a game bird", sourceId: "source:ca-mb-wildlife-lands-service" }],
   });
   assert.equal(evaluation.result?.status, "NEEDS_VERIFICATION");
-  assert.ok(evaluation.result?.limitations[0].startsWith("Example Game Bird Refuge"));
+  assert.ok(evaluation.result?.limitations[0].text.startsWith("Example Game Bird Refuge"));
 });
 
 test("a species Manitoba's bundle does not certify is unknown, not closed", () => {

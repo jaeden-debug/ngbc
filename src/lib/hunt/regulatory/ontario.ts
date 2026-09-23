@@ -1,3 +1,4 @@
+import { general } from "../limitation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { RegulatoryResult, ZoneResolution } from "../types.ts";
 import { evaluateSeason, parseSeasonPhrase, type SeasonWindow } from "./season.ts";
@@ -79,9 +80,9 @@ const BASE = {
     "A valid Ontario Outdoors Card and small game licence are required; confirm all current licensing and local requirements in the official summary.",
   ],
   limitations: [
-    "The Ontario Hunting Regulations Summary is a convenient reference, not the complete law.",
-    "This result does not resolve municipal discharge rules, land access, Sunday gun-hunting rules, protected areas or overlapping restrictions.",
-    "Being inside a wildlife management unit is not permission to hunt there: land access, ownership and local restrictions are separate questions North Ground has not resolved.",
+    general("The Ontario Hunting Regulations Summary is a convenient reference, not the complete law."),
+    general("This result does not resolve municipal discharge rules, land access, Sunday gun-hunting rules, protected areas or overlapping restrictions."),
+    general("Being inside a wildlife management unit is not permission to hunt there: land access, ownership and local restrictions are separate questions North Ground has not resolved."),
   ],
 };
 

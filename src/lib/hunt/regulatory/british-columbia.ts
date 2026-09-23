@@ -1,3 +1,4 @@
+import { general } from "../limitation.ts";
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/ca-bc-2026.json" with { type: "json" };
 import {
@@ -85,7 +86,7 @@ export const BRITISH_COLUMBIA_VOCABULARY: ConditionalVocabulary = {
       `British Columbia: "${BRITISH_COLUMBIA_BUNDLE.legalTime.statedAs}" (${BRITISH_COLUMBIA_BUNDLE.legalTime.section}). ` +
       "North Ground has not certified exact astronomical times for this result.",
   },
-  standingLimitations: BRITISH_COLUMBIA_BUNDLE.limitations,
+  standingLimitations: BRITISH_COLUMBIA_BUNDLE.limitations.map((text) => general(text)),
   // Legal hours (s. 14 (1)) and the meaning of the schedules (s. 4) come from the body of the regulation.
   standingSourceIds: [REGULATION],
   describe: (dimension, value) => {

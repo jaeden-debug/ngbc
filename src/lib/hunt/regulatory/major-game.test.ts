@@ -256,7 +256,7 @@ describe("Ontario major game — what the result carries", () => {
     );
     assert.equal(result!.status, "CONDITIONAL");
     assert.ok(
-      result!.limitations.some((line) => /algonquin/i.test(line) && /cannot tell you which side/i.test(line)),
+      result!.limitations.some((line) => /algonquin/i.test(line.text) && /cannot tell you which side/i.test(line.text)),
       "an uninterpretable geographic exclusion must be stated, not dropped",
     );
   });
@@ -269,7 +269,7 @@ describe("Ontario major game — what the result carries", () => {
       zone("54"),
       { ...RESIDENT, HUNT_METHOD: ONTARIO_METHODS.BOW },
     );
-    assert.ok(result!.limitations.some((line) => /algonquin/i.test(line)));
+    assert.ok(result!.limitations.some((line) => /algonquin/i.test(line.text)));
   });
 
   it("does not attach that caveat to a hunter the excluded season does not apply to", () => {
@@ -280,7 +280,7 @@ describe("Ontario major game — what the result carries", () => {
       zone("54"),
       { ...RESIDENT, HUNT_METHOD: ONTARIO_METHODS.RIFLE },
     );
-    assert.ok(!result!.limitations.some((line) => /algonquin/i.test(line)));
+    assert.ok(!result!.limitations.some((line) => /algonquin/i.test(line.text)));
   });
 
   it("refuses to state a status when the unit itself is uncertain", () => {

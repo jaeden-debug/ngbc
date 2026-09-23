@@ -185,7 +185,7 @@ test("an emergency closure order closes the hunt for its interval and is cited, 
   const answers = { LICENCE_TYPE: "LIMITED", HUNT_CODE: LIMITED_FIRST.code };
   const during = evaluate(bundle(RULES, { amendments: [closure] }), "2026-10-12", answers).result!;
   assert.equal(during.status, "CLOSED");
-  assert.ok(during.limitations.some((line) => line.includes("closed to all hunting because of wildfire")));
+  assert.ok(during.limitations.some((line) => line.text.includes("closed to all hunting because of wildfire")));
   assert.ok(during.sourceIds.includes("source:test-closures" as never));
   assert.equal(evaluate(bundle(RULES, { amendments: [closure] }), "2026-10-13", answers).result?.status, "CONDITIONAL");
 });

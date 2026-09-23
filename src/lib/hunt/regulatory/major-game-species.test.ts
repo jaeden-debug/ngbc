@@ -141,7 +141,7 @@ describe("Black bear", () => {
     const { result } = evaluateOntarioMajorGame({ speciesId: BEAR, date: "2026-05-05" }, zone("82A"), {});
     assert.equal(result!.status, "CONDITIONAL");
     assert.ok(
-      result!.limitations.some((line) => /geographic townships/i.test(line) && /which side of it you are on/i.test(line)),
+      result!.limitations.some((line) => /geographic townships/i.test(line.text) && /which side of it you are on/i.test(line.text)),
     );
   });
 

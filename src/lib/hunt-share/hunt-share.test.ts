@@ -1,3 +1,4 @@
+import { general } from "../hunt/limitation.ts";
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
@@ -68,7 +69,7 @@ test("HuntEvaluation adapter preserves the engine result and excludes coordinate
       summary: "Conditions apply.",
       legalTime: { status: "RULE_ONLY", text: "Verified rule summary." },
       requirements: ["Licence required."],
-      limitations: ["Check local restrictions."],
+      limitations: [general("Check local restrictions.")],
       sourceIds: ["source:ca-on-small-game-2026"],
       verifiedAt: "2026-09-20",
     },

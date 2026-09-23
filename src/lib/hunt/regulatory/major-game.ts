@@ -1,3 +1,4 @@
+import { general } from "../limitation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { RegulatoryResult, ZoneResolution } from "../types.ts";
 import {
@@ -224,11 +225,11 @@ function baseResult(overrides: Partial<RegulatoryResult>, rules: BundleRule[] = 
       ...conditions.map((condition) => `${condition.text} (${condition.sourceSection})`),
     ],
     limitations: [
-      ...caveats.map(
-        (caveat) => `${caveat} North Ground holds wildlife management unit boundaries, not this one, and cannot tell you which side of it you are on.`,
-      ),
-      "The Ontario Hunting Regulations Summary is a convenient reference, not the complete law.",
-      "Being inside a wildlife management unit is not permission to hunt there: land access, ownership and local restrictions are separate questions North Ground has not resolved.",
+      ...caveats.map((caveat) => general(
+        `${caveat} North Ground holds wildlife management unit boundaries, not this one, and cannot tell you which side of it you are on.`,
+      )),
+      general("The Ontario Hunting Regulations Summary is a convenient reference, not the complete law."),
+      general("Being inside a wildlife management unit is not permission to hunt there: land access, ownership and local restrictions are separate questions North Ground has not resolved."),
     ],
     sourceIds: rule ? [rule.sourceId as CanonicalId<"source">] : [],
     verifiedAt: bundle.retrievedAt as string,

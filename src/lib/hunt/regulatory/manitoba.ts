@@ -1,3 +1,4 @@
+import { general } from "../limitation.ts";
 import type { CanonicalId, IsoDate, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/ca-mb-2026.json" with { type: "json" };
 import overlaysJson from "../../../../content/regulatory/ca-mb-overlays.json" with { type: "json" };
@@ -133,10 +134,10 @@ export const MANITOBA_VOCABULARY: ConditionalVocabulary = {
       "(General Hunting Regulation, M.R. 351/87 s. 3). North Ground has not certified exact astronomical times for this result.",
   },
   standingLimitations: [
-    "M.R. 165/91 is the controlling source for this answer. The 2026 Manitoba Hunting Guide is a summary and was used only to cross-check it.",
-    "Game Hunting Area boundaries are the province's map of the written descriptions in M.R. 220/86, which control. Near a boundary, confirm which area you are in.",
-    "Being inside a Game Hunting Area is not permission to hunt there. Private land, First Nation reserve land, parks, refuges, wildlife management areas and other closed lands are separate questions North Ground has not resolved here.",
-    "This describes licensed hunting under Manitoba's Wildlife Act. It does not describe harvesting under Treaty or Aboriginal rights, which is a separate legal context.",
+    general("M.R. 165/91 is the controlling source for this answer. The 2026 Manitoba Hunting Guide is a summary and was used only to cross-check it."),
+    general("Game Hunting Area boundaries are the province's map of the written descriptions in M.R. 220/86, which control. Near a boundary, confirm which area you are in."),
+    general("Being inside a Game Hunting Area is not permission to hunt there. Private land, First Nation reserve land, parks, refuges, wildlife management areas and other closed lands are separate questions North Ground has not resolved here."),
+    general("This describes licensed hunting under Manitoba's Wildlife Act. It does not describe harvesting under Treaty or Aboriginal rights, which is a separate legal context."),
   ],
   standingSourceIds: [],
   describe: (dimension, value) => {

@@ -19,6 +19,7 @@ import type { CanonicalId } from "../../content-contract/index.ts";
 import type { RegulatoryResult, RegulatoryStatus } from "../types.ts";
 import type { IsoDate } from "../../content-contract/index.ts";
 import { FEDERAL_SOURCE_ID, federalRequirementsFor } from "./federal-requirements.ts";
+import { general, type Limitation } from "../limitation.ts";
 import { federalAreaAt, type FederalArea } from "./federal-areas.ts";
 import { FEDERAL_GROUPS, groupsForSpecies, type FederalGroup } from "./federal-groups.ts";
 
@@ -235,23 +236,23 @@ export function composeFederalWithProvincial(
   jurisdictionName: string,
 ): RegulatoryResult {
   const provincialCertified = provincial.status !== "UNKNOWN";
-  const limitations = [
-    ...federal.limitations,
+  const limitations: Limitation[] = [
+    ...federal.limitations.map((text) => general(text)),
     ...provincial.limitations,
   ];
   if (!provincialCertified) {
-    limitations.unshift(
+    limitations.unshift(general(
       `Federal rules set the season and limits for migratory game birds. ${jurisdictionName}'s own requirements — its ` +
       "hunting licence, and any area it closes or restricts — also apply, and North Ground has not certified them. " +
       "Check the province before relying on this.",
-    );
+    ));
   }
   if (federal.sharedLimit) {
-    limitations.push(
+    limitations.push(general(
       `The daily and possession limits are SHARED across ${federal.sharedLimit.sharedWith}` +
       (federal.sharedLimit.coversUnlisted ? ", including birds North Ground does not publish" : "") +
       `, not per species: ${federal.sharedLimit.statedAs}.`,
-    );
+    ));
   }
 
   /* A province that has certified a restriction can only make the answer more

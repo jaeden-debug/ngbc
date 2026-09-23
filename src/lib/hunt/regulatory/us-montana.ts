@@ -1,3 +1,4 @@
+import { general } from "../limitation.ts";
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/us-mt-upland-2026.json" with { type: "json" };
 import overlaysJson from "../../../../content/regulatory/us-mt-overlays.json" with { type: "json" };
@@ -97,7 +98,7 @@ export const MONTANA_VOCABULARY: ConditionalVocabulary = {
       "Montana: “Authorized hunting hours for the taking of upland game birds begin one-half hour before sunrise and end " +
       "one-half hour after sunset each day of the hunting season” (p. 4). North Ground has not certified exact astronomical times.",
   },
-  standingLimitations: MONTANA_BUNDLE.limitations,
+  standingLimitations: MONTANA_BUNDLE.limitations.map((text) => general(text)),
   standingSourceIds: ["source:us-mt-upland-district-service"],
   describe: (dimension, value) => {
     if (dimension === "RESIDENCY") return value === "RESIDENT" ? "Montana residents" : "nonresidents";

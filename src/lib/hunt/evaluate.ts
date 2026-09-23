@@ -1,3 +1,4 @@
+import { general } from "./limitation.ts";
 import { contentRepository, type ContentRepository } from "../content/repository.ts";
 import { isMajorGameSpecies, speciesById } from "./coverage.ts";
 import { resolveReadiness } from "./readiness/index.ts";
@@ -95,7 +96,7 @@ function unplacedPoint(zone: ZoneResolution, verifiedAt: string): RegulatoryResu
     summary: "North Ground could not place this point in an official hunting zone, so it will not infer a hunting status.",
     legalTime: { status: "NOT_AVAILABLE", text: "Legal hunting hours are not available without a resolved zone." },
     requirements: [],
-    limitations: [zone.message],
+    limitations: [general(zone.message)],
     sourceIds: zone.sourceId ? [zone.sourceId] : [],
     verifiedAt,
   };

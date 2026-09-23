@@ -158,8 +158,8 @@ test("every answer carries Alberta's standing and legal-time wording", () => {
   const result = evaluate(RUFFED, "2026-10-10", PLACES.wmu102).result!;
   assert.equal(result.legalTime.status, "RULE_ONLY");
   assert.match(result.legalTime.text, /one-half hour after sunset/);
-  assert.ok(result.limitations.some((line) => /neither a legal document/.test(line)));
-  assert.ok(result.limitations.some((line) => /Aboriginal or Métis harvesting rights/.test(line)));
+  assert.ok(result.limitations.some((line) => /neither a legal document/.test(line.text)));
+  assert.ok(result.limitations.some((line) => /Aboriginal or Métis harvesting rights/.test(line.text)));
 });
 
 /* ── Coverage ───────────────────────────────────────────────────────────── */

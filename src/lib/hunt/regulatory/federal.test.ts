@@ -75,10 +75,10 @@ test("a shared limit always names what it is shared with", () => {
 test("composing states the limit as SHARED, in words, not as a number beside the species", () => {
   const answer = evaluateFederal("species:mallard", "jurisdiction:ca-pe", { latitude: 46.24 }, on("2026-11-05"));
   const composed = composeFederalWithProvincial(answer, provincialUnknown, "Prince Edward Island");
-  const shared = composed.limitations.find((line) => /SHARED/.test(line));
+  const shared = composed.limitations.find((line) => /SHARED/.test(line.text));
   assert.ok(shared, "the shared-limit sentence is present");
-  assert.match(shared!, /not per species/);
-  assert.match(shared!, /Ducks/);
+  assert.match(shared!.text, /not per species/);
+  assert.match(shared!.text, /Ducks/);
 });
 
 /* ── Composition is conjunction ──────────────────────────────────────────── */
@@ -88,7 +88,7 @@ test("an uncertified province is said out loud, never implied away", () => {
   const composed = composeFederalWithProvincial(answer, provincialUnknown, "Prince Edward Island");
   assert.equal(composed.status, "CONDITIONAL");
   assert.ok(
-    composed.limitations.some((line) => /also apply, and North Ground has not certified them/.test(line)),
+    composed.limitations.some((line) => /also apply, and North Ground has not certified them/.test(line.text)),
     "the province's own half is named as uncertified",
   );
   assert.ok(composed.sourceIds.includes("source:ca-federal-migratory-birds-regulations"));

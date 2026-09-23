@@ -1,3 +1,4 @@
+import { general } from "../limitation.ts";
 import { britishColumbiaCoverageReport, britishColumbiaSourceRecords, evaluateBritishColumbia } from "./british-columbia.ts";
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import type { SpeciesCoverageRow } from "../canada/report.ts";
@@ -109,7 +110,7 @@ export function pendingRegulation(jurisdictionName: string, required: RequiredDi
       text: "Legal hunting hours are reported once the applicable rule is resolved.",
     },
     requirements: [],
-    limitations: [required.reason],
+    limitations: [general(required.reason)],
     sourceIds: [],
     verifiedAt,
   };
@@ -271,9 +272,9 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
             ...pendingRegulationFallback(verifiedAt),
             summary: `North Ground could not place this point in a certified ${config.unitTerm}, so it will not infer a hunting status.`,
             limitations: [
-              zone.message,
-              ...restrictions.map((restriction) => `${restriction.name}: \u201c${restriction.statedAs}\u201d`),
-              ...unreadOverlays,
+              general(zone.message),
+              ...restrictions.map((restriction) => general(`${restriction.name}: \u201c${restriction.statedAs}\u201d`)),
+              ...unreadOverlays.map((text) => general(text)),
             ],
             sourceIds: [...new Set([zone.sourceId, ...restrictions.map((restriction) => restriction.sourceId as CanonicalId<"source">)])].filter((id): id is CanonicalId<"source"> => Boolean(id)),
           },
@@ -293,7 +294,7 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
             ...pendingRegulationFallback(verifiedAt),
             status: applicability.reason === "SPECIES_OUT_OF_SCOPE" ? "UNKNOWN" : "NEEDS_VERIFICATION",
             summary: applicability.message,
-            limitations: layer?.legalStanding ? [layer.legalStanding.statedAs] : [],
+            limitations: layer?.legalStanding ? [general(layer.legalStanding.statedAs)] : [],
             sourceIds: zone.sourceId ? [zone.sourceId] : [],
           },
         };
@@ -341,9 +342,11 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
           ...regulation,
           status: "NEEDS_VERIFICATION",
           limitations: [
-            `${names.length === 1 ? names[0] : `${names.length} published areas`} inside this ${config.unitTerm} ` +
-              `restrict${names.length === 1 ? "s" : ""} this hunt, so the answer depends on where in it you hunt.`,
-            ...zoneRestrictions.map((restriction) => `${restriction.name}: \u201c${restriction.statedAs}\u201d`),
+            general(
+              `${names.length === 1 ? names[0] : `${names.length} published areas`} inside this ${config.unitTerm} ` +
+                `restrict${names.length === 1 ? "s" : ""} this hunt, so the answer depends on where in it you hunt.`,
+            ),
+            ...zoneRestrictions.map((restriction) => general(`${restriction.name}: \u201c${restriction.statedAs}\u201d`)),
             ...regulation.limitations,
           ],
           sourceIds: [...new Set([...regulation.sourceIds, ...zoneRestrictions.map((restriction) => restriction.sourceId as CanonicalId<"source">)])],
@@ -352,7 +355,9 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
       return {
         completeness: "RESOLVED",
         dimensions: evaluation.dimensions,
-        regulation: unreadOverlays.length ? { ...regulation, limitations: [...unreadOverlays, ...regulation.limitations] } : regulation,
+        regulation: unreadOverlays.length
+          ? { ...regulation, limitations: [...unreadOverlays.map((text) => general(text)), ...regulation.limitations] }
+          : regulation,
         ...(exceptInside ? { exceptInside } : {}),
       };
     },

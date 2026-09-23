@@ -71,7 +71,7 @@ test("Kootenay black bear: a bow only season Sept. 1 to Sept. 9 (Schedule 4 s. 1
 test("Kootenay black bear in August is open on private property only (Schedule 4 s. 21): the point cannot be settled", () => {
   const outcome = evaluate("4-3", "species:american-black-bear", "2026-08-15");
   assert.equal(outcome.result?.status, "NEEDS_VERIFICATION");
-  assert.ok(outcome.result?.limitations.some((line) => /private property/i.test(line)) || /private property/i.test(outcome.result?.summary ?? ""));
+  assert.ok(outcome.result?.limitations.some((line) => /private property/i.test(line.text)) || /private property/i.test(outcome.result?.summary ?? ""));
 });
 
 test("closures inside a unit with no boundary North Ground holds are never answered as open", () => {
@@ -113,7 +113,7 @@ test("a unit no row names for the species is UNKNOWN, not closed; a date outside
 test("Omineca-Peace grouse: Sept. 1 to Nov. 15 (Schedule 7 items 51–54); the unexplained \"**\" is recorded, not invented", () => {
   const outcome = evaluate("7-15", "species:spruce-grouse", "2026-10-01");
   assert.equal(outcome.result?.status, "CONDITIONAL");
-  assert.ok(outcome.result?.limitations.some((line) => /contains no clause naming spruce or ruffed grouse/.test(line)));
+  assert.ok(outcome.result?.limitations.some((line) => /contains no clause naming spruce or ruffed grouse/.test(line.text)));
   assert.equal(status("7-15", "species:spruce-grouse", "2026-11-20"), "CLOSED");
 });
 

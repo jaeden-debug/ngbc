@@ -69,7 +69,7 @@ test("inside Parc national de Plaisance the zone's season is never stated as the
   const outcome = await evaluate(MOOSE_BOW, ministry([80]));
   assert.equal(outcome.regulation.status, "NEEDS_VERIFICATION");
   assert.match(outcome.regulation.summary, /inside Parc national de Plaisance/);
-  assert.ok(outcome.regulation.limitations.includes(
+  assert.ok(outcome.regulation.limitations.map((entry) => entry.text).includes(
     "Parc national de Plaisance: “« Territoires où toute activité de chasse est interdite. » (Parc national).”"));
   assert.ok(outcome.regulation.sourceIds.includes("source:ca-qc-chasse-interdite-service" as never));
   // The ministry closes the park to all hunting: no season, date, listing, bag
@@ -87,21 +87,21 @@ test("inside the park on a date the zone is closed, CLOSED stays CLOSED and list
   assert.equal(outcome.regulation.status, "CLOSED");
   assert.match(outcome.regulation.summary, /inside Parc national de Plaisance/);
   assert.doesNotMatch(outcome.regulation.summary, /\d{4}|septembre|octobre|Seasons open/);
-  assert.ok(outcome.regulation.limitations.some((line) => /toute activité de chasse est interdite/.test(line)));
+  assert.ok(outcome.regulation.limitations.some((line) => /toute activité de chasse est interdite/.test(line.text)));
 });
 
 test("a territory the catalogue does not hold still stops the season being stated", async () => {
   const outcome = await evaluate(MOOSE_BOW, ministry([999]));
   assert.equal(outcome.regulation.status, "NEEDS_VERIFICATION");
-  assert.ok(outcome.regulation.limitations.some((line) => /does not include/.test(line)));
+  assert.ok(outcome.regulation.limitations.some((line) => /does not include/.test(line.text)));
 });
 
 test("when the ministry's layer cannot be reached, the answer says so in Québec's terms", async () => {
   const outcome = await evaluate(MOOSE_BOW, ministry("outage"));
-  assert.ok(outcome.regulation.limitations.includes(
+  assert.ok(outcome.regulation.limitations.map((entry) => entry.text).includes(
     "North Ground could not reach Québec's layer of territories closed to all hunting for this point, so it has not checked whether one of them restricts this hunt here."));
   // Never Manitoba's layers, in any wording.
-  assert.ok(!outcome.regulation.limitations.some((line) => /refuge|wildlife-management-area/.test(line)));
+  assert.ok(!outcome.regulation.limitations.some((line) => /refuge|wildlife-management-area/.test(line.text)));
 });
 
 test("a whole-zone question asks nothing about a point, and says the territories are checked only at one", async () => {

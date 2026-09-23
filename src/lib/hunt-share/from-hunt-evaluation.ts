@@ -163,7 +163,7 @@ export function huntEvaluationToShareInput(
     warnings: boundedWarnings([
       ...zoneWarning,
       ...evaluation.regulation.requirements,
-      ...evaluation.regulation.limitations,
+      ...evaluation.regulation.limitations.map((limitation) => limitation.text),
       ...identificationWarnings,
     ]),
     /* Only the sources that decided the answer. A field note's supporting page

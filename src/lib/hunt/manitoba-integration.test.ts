@@ -105,7 +105,7 @@ test("a published refuge restriction at the point stops a CONDITIONAL grouse ans
   );
   assert.equal(result.regulation.status, "NEEDS_VERIFICATION");
   assert.match(result.regulation.summary, /Delta Game Bird Refuge/);
-  assert.ok(result.regulation.limitations[0].includes("No person shall hunt"));
+  assert.ok(result.regulation.limitations[0].text.includes("No person shall hunt"));
 });
 
 test("a restriction that names only other species does not touch this one", async () => {
@@ -125,7 +125,7 @@ test("when the overlay layers cannot be read, the answer says so and named place
     overlayFetch({}, true),
   );
   assert.equal(far.regulation.status, "CONDITIONAL");
-  assert.ok(far.regulation.limitations.some((line) => /could not reach Manitoba's refuge/.test(line)));
+  assert.ok(far.regulation.limitations.some((line) => /could not reach Manitoba's refuge/.test(line.text)));
 
   // Inside CFB Shilo's extent, an unread overlay means the carve-out cannot be applied.
   const nearShilo = await hunt(
@@ -161,7 +161,7 @@ test("a point in no Game Hunting Area is answered in Manitoba's terms, with the 
   );
   assert.equal(result.regulation.status, "NEEDS_VERIFICATION");
   assert.match(result.regulation.summary, /certified Game Hunting Area/);
-  assert.ok(result.regulation.limitations.some((line) => line.startsWith("Riding Mountain National Park")));
+  assert.ok(result.regulation.limitations.some((line) => line.text.startsWith("Riding Mountain National Park")));
 });
 
 /* ── Zone resolution across served layers ─────────────────────────────── */

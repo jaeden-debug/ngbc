@@ -1,3 +1,4 @@
+import { general } from "../limitation.ts";
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/ca-ab-2026.json" with { type: "json" };
 import {
@@ -102,7 +103,7 @@ export const ALBERTA_VOCABULARY: ConditionalVocabulary = {
       "Alberta makes it unlawful to hunt any wildlife or discharge a firearm between one-half hour after sunset and " +
       "one-half hour before sunrise (2026 guide, p. 30). North Ground has not certified exact astronomical times for this result.",
   },
-  standingLimitations: ALBERTA_BUNDLE.limitations,
+  standingLimitations: ALBERTA_BUNDLE.limitations.map((text) => general(text)),
   standingSourceIds: [],
   describe: (dimension, value) => {
     if (dimension === "LICENCE_TYPE") return value === "SPECIAL" ? "special-licence holders" : "general licence holders";

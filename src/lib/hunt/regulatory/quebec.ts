@@ -1,3 +1,4 @@
+import { general, sourceDetail, type Limitation } from "../limitation.ts";
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/ca-qc-2026.json" with { type: "json" };
 import overlaysJson from "../../../../content/regulatory/ca-qc-overlays.json" with { type: "json" };
@@ -440,27 +441,44 @@ function placeNotes(speciesId: string, designation: string | null): string[] {
   return notes;
 }
 
-function standingFor(speciesId: string): string[] {
+function standingFor(speciesId: string): Limitation[] {
   const source = sourceOf(speciesId);
   const pageStatements = QUEBEC_BUNDLE.statements
     .filter((statement) => statement.sourceId === source && statement.scope === "page")
     .filter((statement) => !statement.speciesIds || statement.speciesIds.includes(speciesId))
-    .map((statement) => `« ${statement.text} »`);
+    .map((statement) => sourceDetail(`« ${statement.text} »`, statement.sourceId as CanonicalId<"source">, "fr-CA"));
   const zecs = [...new Set(QUEBEC_BUNDLE.zecs.filter((entry) => entry.sourceId === source).map((entry) => entry.zec))];
   /* Most decisive first. A shared Hunt Brief keeps a fixed number of these, so
      what the answer covers and where hunting is permitted at all come before
      the ministry's general reservations and the map's standing. */
   return [
-    "This describes sport hunting under Québec's Loi sur la conservation et la mise en valeur de la faune. It does not " +
-      "describe harvesting under treaty or Aboriginal rights, which is a separate legal context North Ground does not evaluate.",
-    "Being inside a hunting zone is not permission to hunt there. Private land, parks, ecological reserves, wildlife " +
-      "reserves, zecs and outfitters' territories are separate questions North Ground has not resolved here.",
+    /* Verbatim, GENERAL, and never shortened, paraphrased or merged. */
+    general(
+      "This describes sport hunting under Québec's Loi sur la conservation et la mise en valeur de la faune. It does not " +
+        "describe harvesting under treaty or Aboriginal rights, which is a separate legal context North Ground does not evaluate.",
+    ),
+    general(
+      "Being inside a hunting zone is not permission to hunt there. Private land, parks, ecological reserves, wildlife " +
+        "reserves, zecs and outfitters' territories are separate questions North Ground has not resolved here.",
+    ),
     ...(zecs.length
-      ? [`Different seasons apply in these zecs: ${zecs.join(", ")}. North Ground does not hold zec boundaries.`]
+      ? [general(`Different seasons apply in these zecs: ${zecs.join(", ")}. North Ground does not hold zec boundaries.`)]
       : []),
+    /* The ministry's own words, wholly in French, attached to its source and
+       tagged fr-CA. Not translated: §47 keeps an official statement in the
+       language the authority published it in, and an invented translation of
+       law is worse than a quotation a reader can take to the ministry. */
     ...pageStatements,
-    "Québec's hunting-zone boundaries are the ministry's map, which states « cette compilation cartographique n'a aucune " +
-      "portée légale, seuls les documents déposés ont force de loi ». Near a boundary, confirm which zone you are in.",
+    /*
+     * North Ground's sentence, which QUOTES the ministry inside it. GENERAL
+     * rather than SOURCE_DETAIL: marking the whole line as the authority's
+     * would attribute "Near a boundary, confirm which zone you are in" to the
+     * ministry, which did not write it.
+     */
+    general(
+      "Québec's hunting-zone boundaries are the ministry's map, which states « cette compilation cartographique n'a aucune " +
+        "portée légale, seuls les documents déposés ont force de loi ». Near a boundary, confirm which zone you are in.",
+    ),
   ];
 }
 
@@ -480,7 +498,10 @@ export function quebecVocabulary(speciesId: string, designation: string | null):
           status: "NOT_AVAILABLE",
           text: "Québec's legal hunting hours for this species are set by rules North Ground has not certified.",
         },
-    standingLimitations: [...placeNotes(speciesId, designation), ...standingFor(speciesId)],
+    standingLimitations: [
+      ...placeNotes(speciesId, designation).map((text) => general(text)),
+      ...standingFor(speciesId),
+    ],
     standingSourceIds: [ZONE_SOURCE],
     describe: (dimension, value) => (dimension === "SEASON_TYPE" && value === "RELEVE" ? "relève weekend participants only" : value),
   };

@@ -91,8 +91,8 @@ test("pheasant opens Oct. 10, Oct. 17 or Oct. 20 depending on residency, land an
 test("on a reservation the Commission closed to state licenses, the answer is CLOSED and says what it does not describe", () => {
   const result = evaluate("species:ruffed-grouse", "2026-10-10", {}, { overlays: ["us-mt-reservation-state-licence-closed"] }).result!;
   assert.equal(result.status, "CLOSED");
-  assert.ok(result.limitations.some((line) => /with the use of state licenses/.test(line)));
-  assert.ok(result.limitations.some((line) => /under the tribe's own authority/.test(line)));
+  assert.ok(result.limitations.some((line) => /with the use of state licenses/.test(line.text)));
+  assert.ok(result.limitations.some((line) => /under the tribe's own authority/.test(line.text)));
 });
 
 test("on the Flathead or Crow reservation North Ground does not state a status", () => {
@@ -101,7 +101,7 @@ test("on the Flathead or Crow reservation North Ground does not state a status",
     restrictions: [{ name: flathead.name, statedAs: flathead.statedAs, sourceId: "source:us-census-tigerweb-federal-reservations-2026" }],
   }).result!;
   assert.equal(result.status, "NEEDS_VERIFICATION");
-  assert.ok(result.limitations.some((line) => /cooperative management agreement/.test(line)));
+  assert.ok(result.limitations.some((line) => /cooperative management agreement/.test(line.text)));
 });
 
 test("Gates of the Mountains Game Preserve is closed to all hunting", () => {

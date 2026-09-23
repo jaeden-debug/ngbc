@@ -47,7 +47,7 @@ test("moose in 10 est asks for the implement only because it decides the answer"
   assert.equal(bow.result?.status, "CONDITIONAL");
   assert.deepEqual(bow.result?.season, { opens: "2026-09-26", closes: "2026-10-12", datesInclusive: true });
   // The class is stated, never asked: antlered moose only, antlerless by drawn permit.
-  const said = [...(bow.result?.requirements ?? []), ...(bow.result?.limitations ?? [])].join("\n");
+  const said = [...(bow.result?.requirements ?? []), ...(bow.result?.limitations ?? []).map((entry) => entry.text)].join("\n");
   assert.match(said, /« Orignal avec bois »/);
   assert.match(said, /drawn antlerless moose permit \(tirage au sort\)/);
 
@@ -64,7 +64,7 @@ test("a date no moose season covers is closed without asking anything", () => {
 test("zone 17 moose is closed to sport hunting because the ministry says so", () => {
   const result = ask(MOOSE, "17", "2026-10-01");
   assert.equal(result.result?.status, "CLOSED");
-  const said = [result.result?.summary, ...(result.result?.requirements ?? []), ...(result.result?.limitations ?? [])].join("\n");
+  const said = [result.result?.summary, ...(result.result?.requirements ?? []), ...(result.result?.limitations ?? []).map((entry) => entry.text)].join("\n");
   assert.match(said, /La chasse sportive est interdite/);
   // Rights-based harvesting is named as a separate context, never evaluated.
   assert.match(said, /treaty or Aboriginal rights, which is a separate legal context North Ground does not evaluate/);
@@ -85,8 +85,8 @@ test("zone 13 moose keeps a different animal class in each published year", () =
   const in2027 = ask(MOOSE, "13", "2027-10-15", { HUNT_METHOD: "RIFLE" });
   assert.equal(in2026.result?.status, "CONDITIONAL");
   assert.equal(in2027.result?.status, "CONDITIONAL");
-  const said2026 = [...(in2026.result?.requirements ?? []), ...(in2026.result?.limitations ?? [])].join("\n");
-  const said2027 = [...(in2027.result?.requirements ?? []), ...(in2027.result?.limitations ?? [])].join("\n");
+  const said2026 = [...(in2026.result?.requirements ?? []), ...(in2026.result?.limitations ?? []).map((entry) => entry.text)].join("\n");
+  const said2027 = [...(in2027.result?.requirements ?? []), ...(in2027.result?.limitations ?? []).map((entry) => entry.text)].join("\n");
   assert.match(said2026, /« Orignal avec bois » \(Moose with antlers 10 cm or longer\), as the ministry states it for 2026/);
   assert.match(said2027, /« Orignal » \(Moose with antlers 10 cm or longer or Antlerless moose/);
 });
@@ -98,7 +98,7 @@ test("an unresolved row makes its dates unverifiable where it may apply, never c
   assert.equal(ask(MOOSE, "29", "2026-09-08", { HUNT_METHOD: "BOW" }).result?.status, "CONDITIONAL");
   const southeast = ask(MOOSE, "19SE", "2026-09-08", { HUNT_METHOD: "BOW" });
   assert.equal(southeast.result?.status, "NEEDS_VERIFICATION");
-  assert.match((southeast.result?.limitations ?? []).join("\n"), /Partie est et partie ouest de 19 sud/);
+  assert.match((southeast.result?.limitations ?? []).map((entry) => entry.text).join("\n"), /Partie est et partie ouest de 19 sud/);
   // Its own resolved firearms row still answers once its dates arrive.
   assert.equal(ask(MOOSE, "19SE", "2026-09-25", { HUNT_METHOD: "RIFLE" }).result?.status, "CONDITIONAL");
 });
@@ -119,7 +119,7 @@ test("deer in the CWD enhanced surveillance zone is unknown, and says where it i
   // No deer row names 08NZ; « 8 nord » is 08N alone.
   const result = ask(DEER, "08NZ", "2026-11-10", { HUNT_METHOD: "RIFLE" });
   assert.equal(result.result?.status, "UNKNOWN");
-  assert.match((result.result?.limitations ?? []).join("\n"), /zone de surveillance rehaussée/);
+  assert.match((result.result?.limitations ?? []).map((entry) => entry.text).join("\n"), /zone de surveillance rehaussée/);
 });
 
 test("ruffed grouse asks nothing where every implement is allowed", () => {
@@ -147,7 +147,7 @@ test("turkey carries its own legal hours and never asks about a rifle", () => {
   assert.equal(result.result?.status, "CONDITIONAL");
   assert.equal(result.result?.legalTime.status, "RULE_ONLY");
   assert.match(result.result?.legalTime.text ?? "", /demi-heure avant le lever du soleil jusqu.à midi/);
-  assert.match((result.result?.limitations ?? []).join("\n"), /« Dindon sauvage porteur d'une barbe »/);
+  assert.match((result.result?.limitations ?? []).map((entry) => entry.text).join("\n"), /« Dindon sauvage porteur d'une barbe »/);
 });
 
 test("coverage is computed from the bundle, per species", () => {
