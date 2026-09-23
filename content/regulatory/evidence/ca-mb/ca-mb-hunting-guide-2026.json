@@ -1,0 +1,212 @@
+{
+  "package": {
+    "jurisdictionId": "jurisdiction:ca-mb",
+    "preparedBy": "united-states agent",
+    "preparedOn": "2026-09-24"
+  },
+  "authority": {
+    "name": "Manitoba Natural Resources",
+    "lang": "en-CA"
+  },
+  "source": {
+    "id": "source:ca-mb-hunting-guide-2026",
+    "title": "Manitoba 2026 Hunting Guide",
+    "url": "https://www.gov.mb.ca/nrnd/fish-wildlife/hunting/",
+    "tier": "OFFICIAL_SUMMARY",
+    "version": "2026",
+    "retrievedAt": "2026-09-21",
+    "sha256": "74a15553c9a4f4be0a79b17f7e7a451ca8330c9041c26711b7fc3df824a1f36e",
+    "incorporates": [],
+    "inForce": {
+      "state": "IN_FORCE",
+      "statedAs": "Manitoba 2026 Hunting Guide",
+      "asOf": "2026",
+      "checkedOn": "2026-09-24"
+    }
+  },
+  "requirements": [
+    {
+      "category": "AUTHORIZATION",
+      "kind": "hunting licence",
+      "state": "REQUIRED",
+      "officialName": {
+        "text": "Hunting licence for the species",
+        "lang": "en-CA"
+      },
+      "statedAs": {
+        "text": "If you wish to hunt, you must have a valid licence for the species you are hunting, and you must carry your required licence, and any associated game tags, along with your Hunter Education Certificate with you while hunting.",
+        "lang": "en-CA"
+      },
+      "citation": "Manitoba 2026 Hunting Guide, licences",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:sharp-tailed-grouse",
+          "species:spruce-grouse",
+          "species:white-tailed-deer"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "MB"
+          ],
+          "statedAs": null
+        },
+        "methods": null
+      }
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "hunter education certificate",
+      "state": "REQUIRED",
+      "officialName": {
+        "text": "Hunter Education Certificate",
+        "lang": "en-CA"
+      },
+      "statedAs": {
+        "text": "you must carry your required licence, and any associated game tags, along with your Hunter Education Certificate with you while hunting",
+        "lang": "en-CA"
+      },
+      "citation": "Manitoba 2026 Hunting Guide, licences",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:sharp-tailed-grouse",
+          "species:spruce-grouse",
+          "species:white-tailed-deer"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "MB"
+          ],
+          "statedAs": null
+        },
+        "methods": null
+      },
+      "unresolved": [
+        "Stated as a carry requirement. Whether it is also a condition of issue, and what substitutes for it, is in the licensing pages which were not transcribed."
+      ]
+    },
+    {
+      "category": "VISIBILITY",
+      "kind": "hunter orange",
+      "state": "REQUIRED",
+      "officialName": {
+        "text": "Hunter Dress",
+        "lang": "en-CA"
+      },
+      "statedAs": {
+        "text": "A hunter orange garment and hat must be worn by any person who is hunting, dressing or retrieving a big game animal or coyote or by any person accompanying or assisting a person hunting big game or coyote. The hat must be solid hunter orange except that it may have a crest or logo not exceeding 78 sq. cm (12 sq. in.). The outer garment must consist of not less than 2,580 sq. cm (400 sq. in.) of hunter orange material, above the waist and visible from all sides. Hunter orange camouflage is legal if the hunter orange portion meets the above requirement.",
+        "lang": "en-CA"
+      },
+      "citation": "Manitoba 2026 Hunting Guide, Hunter Dress (p. 19)",
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "MB"
+          ],
+          "statedAs": null
+        },
+        "methods": null
+      },
+      "exceptions": [
+        {
+          "statedAs": {
+            "text": "Bowhunters are exempt during archery seasons, but are encouraged to wear hunter orange when hunting in an area where there is a concurrent general season. The use of archery equipment during a season not specified as archery is not included in this hunter orange exemption.",
+            "lang": "en-CA"
+          },
+          "citation": "Hunter Dress"
+        },
+        {
+          "statedAs": {
+            "text": "Wolf and coyote hunters are exempt in hunting areas while no other big game season is on.",
+            "lang": "en-CA"
+          },
+          "citation": "Hunter Dress"
+        }
+      ],
+      "unresolved": [
+        "The bowhunter exemption turns on whether the season is 'specified as archery', not on the implement carried — an archer in a general season is NOT exempt. That distinction is the one a reader is most likely to invert."
+      ]
+    },
+    {
+      "category": "VISIBILITY",
+      "kind": "hunter orange",
+      "state": "CONDITIONAL",
+      "officialName": {
+        "text": "Hunter Dress — upland game birds",
+        "lang": "en-CA"
+      },
+      "statedAs": {
+        "text": "During the general (rifle) deer season, upland game bird hunters must meet the hunter dress requirements, which include a hunter orange garment and hat.",
+        "lang": "en-CA"
+      },
+      "citation": "Manitoba 2026 Hunting Guide, Game Bird Regulations, Hunter Dress (p. 52)",
+      "condition": {
+        "statedAs": {
+          "text": "during the general (rifle) deer season",
+          "lang": "en-CA"
+        }
+      },
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:sharp-tailed-grouse",
+          "species:spruce-grouse"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "MB"
+          ],
+          "statedAs": null
+        },
+        "methods": null
+      },
+      "unresolved": [
+        "Outside that season the guide says upland hunters are 'encouraged' to wear it, which is advice and not a requirement. A renderer must not present the encouragement as the rule."
+      ]
+    },
+    {
+      "category": "AMMUNITION",
+      "kind": "shotgun magazine capacity",
+      "state": "REQUIRED",
+      "officialName": {
+        "text": "Shotgun magazine",
+        "lang": "en-CA"
+      },
+      "statedAs": {
+        "text": "For upland game bird, wild turkey and migratory game bird hunting, the magazine of a shotgun must be plugged or altered to carry no more than two shells.",
+        "lang": "en-CA"
+      },
+      "citation": "Manitoba 2026 Hunting Guide, Game Bird Regulations",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:sharp-tailed-grouse",
+          "species:spruce-grouse"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "MB"
+          ],
+          "statedAs": null
+        },
+        "methods": [
+          "shotgun"
+        ]
+      }
+    }
+  ],
+  "laneNotes": [
+    "Manitoba's hunter-orange rule is SPECIES-DIFFERENTIATED and that is the point of splitting it into two rows: for big game it is unconditional with exemptions; for upland game birds it applies only during the general (rifle) deer season. One row for both would have made a grouse hunter's orange either always required or never.",
+    "The guide's single non-toxic mention is the migratory-bird rule and does NOT reach the three grouse or deer. Recorded so a later reader does not count AMMUNITION certified for deer from it.",
+    "No positive list of permitted implements for deer was found in the guide; METHODS stays unread rather than being inferred from season names such as 'Shotgun/Muzzleloader'."
+  ]
+}

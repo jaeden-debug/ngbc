@@ -35,6 +35,7 @@ import bcHuntingRegulationSchedule8 from "../../../../content/regulatory/evidenc
 import bcHuntingTrappingSynopsis20262028 from "../../../../content/regulatory/evidence/ca-bc/ca-bc-hunting-trapping-synopsis-2026-2028.json" with { type: "json" };
 import bcWildlifeAct from "../../../../content/regulatory/evidence/ca-bc/ca-bc-wildlife-act.json" with { type: "json" };
 import bcOrangeAbsence from "../../../../content/regulatory/evidence/ca-bc/measured-absence-orange.json" with { type: "json" };
+import manitobaGuide from "../../../../content/regulatory/evidence/ca-mb/ca-mb-hunting-guide-2026.json" with { type: "json" };
 import albertaGuide from "../../../../content/regulatory/evidence/ca-ab/ca-ab-hunting-guide-2026.json" with { type: "json" };
 import albertaOrangeAbsence from "../../../../content/regulatory/evidence/ca-ab/ca-ab-measured-absence-orange.json" with { type: "json" };
 import idahoBigGame from "../../../../content/regulatory/evidence/us-id/us-id-big-game-2026.json" with { type: "json" };
@@ -85,6 +86,7 @@ export interface EvidencePackage {
 }
 
 const PACKAGES: Record<string, EvidencePackage[]> = {
+  "jurisdiction:ca-mb": [manitobaGuide as EvidencePackage],
   "jurisdiction:ca-ab": [albertaGuide as EvidencePackage, albertaOrangeAbsence as EvidencePackage],
   "jurisdiction:us-id": [idahoBigGame as EvidencePackage, idahoOrangeAbsence as EvidencePackage],
   "jurisdiction:ca-bc": [
