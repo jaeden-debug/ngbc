@@ -99,7 +99,7 @@
         "permittedUse": "UNRESOLVED",
         "redistribution": "UNRESOLVED",
         "attribution": null,
-        "note": "South Dakota's permission is expressly scoped to \u201cpersonal or informational use\u201d, which does not reach a commercial product, and it speaks of the website rather than the GIS services. Separately, the deer-unit service answers only when sent a particular Referer and returns 403 otherwise: that is an access control, and North Ground does not route around it. Its units are also defined by county in S.D. Admin. R. 41:06:21:02, with exclusions the GIS attributes do not carry. A person must ask SDGFP."
+        "note": "South Dakota's permission is expressly scoped to \u201cpersonal or informational use\u201d, which does not reach a commercial product, and it speaks of the website rather than the GIS services. Separately \u2014 and this is recorded so that no one later mistakes it for a technical obstacle to solve \u2014 the deer-unit service returns 403 to an anonymous request and answers only when sent an experience.arcgis.com Referer, and its ArcGIS Online item description reads, in full, \u201cLimit Usage in place.\u201d That is a deliberate access control stating its own purpose. It was found and honoured: North Ground does not route around it, and a future agent must not \u201cfix\u201d the 403. Only three statewide archery/muzzleloader polygons are genuinely open. South Dakota's units are also defined by county in S.D. Admin. R. 41:06:21:02 (\u201cUnit ERD-03A: Brown County, excluding Sand Lake National Wildlife Refuge\u201d), with exclusions the GIS attributes do not carry, and the rule codes (ERD-12A) differ from the GIS UNITNO (12A). A person must ask SDGFP."
       }
     },
     {
@@ -122,5 +122,6 @@
         "note": "Silence, recorded as silence. Everything WDNR publishes about this dataset is a warranty disclaimer: nothing grants commercial use, redistribution or attribution terms, and there is no CC licence, state open-data licence or public-domain dedication. The ISO 19115 metadata sets BOTH access and use constraints to \"otherRestrictions\" and leaves the restriction text empty \u2014 the restrictive code is on with nothing said, which is the opposite of a grant. Wisconsin is otherwise one of the easiest states to serve (units mirror county lines and NR 10.28 defines them by map rather than by text), which is exactly why the licence had to be read first."
       }
     }
-  ]
+  ],
+  "silenceIsNotRefusal": "Two different states of the world are both recorded as blocked, and they are undone differently. SILENCE (UNRESOLVED) means no grant is stated either way: the publisher may simply never have been asked, so a person must ask it. A REFUSAL (RESTRICTED, or redistribution PROHIBITED) means the publisher has answered, and the answer is no: reading its terms more carefully will not change them, and only a written exception from it would. Reporting the two identically would make a refusal look like an errand."
 }
