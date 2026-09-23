@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { certificationContradictions, certifies, withinZoneRestrictions } from "./evidence.ts";
+import { certificationContradictions, certifies, rowsFor, withinZoneRestrictions } from "./evidence.ts";
 import ontarioBundle from "../../../../content/regulatory/readiness/ca-on-2026.json" with { type: "json" };
 
 /**
@@ -84,6 +84,44 @@ describe("the evidence reader", () => {
        them. This is the shape that flattered Québec to 74% once. */
     assert.equal(certifies("jurisdiction:ca-on", "species:ruffed-grouse", "PLACE_CONDITION").certified, true);
     assert.equal(withinZoneRestrictions("jurisdiction:ca-on", "species:ruffed-grouse").placeable, 0);
+  });
+
+  it("holds Ontario's limits as a tag scheme, and does not let a figure escape its condition", () => {
+    /* Ontario publishes no big game bag number. A tag authorizes one animal,
+       and a hunter's limit is their tag count — so the risky failure here is
+       not under-claiming, it is a figure appearing without the condition that
+       makes it true.
+
+       Three specific traps, each pinned:
+
+       1. Bear's season limit of two is written for a RESIDENT. A non-resident
+          must not inherit it, so the row is CONDITIONAL and carries the
+          residency discriminator a consumer needs to avoid showing it.
+       2. Turkey's spring and fall limits DIFFER. One number is wrong for both.
+       3. Moose has no individual number at all — a tagless hunter may hunt on
+          a party member's tag. The absence is deliberate and is asserted, so
+          that nobody later "completes" the row with a 1 and makes it look
+          finished while being wrong in both directions at once. */
+    for (const speciesId of ["species:white-tailed-deer", "species:moose", "species:american-black-bear", "species:wild-turkey"]) {
+      assert.equal(certifies("jurisdiction:ca-on", speciesId, "LIMIT").certified, true, speciesId);
+    }
+
+    type LimitRow = { state?: string; limits?: Record<string, unknown>; limitAppliesTo?: { residency?: string }; limitModel?: { kind?: string } };
+    const rowsOf = (speciesId: string) => rowsFor("jurisdiction:ca-on", speciesId, "LIMIT") as LimitRow[];
+
+    const bear = rowsOf("species:american-black-bear").find((row) => row.limits?.season === 2)!;
+    assert.equal(bear.state, "CONDITIONAL", "a resident-only figure is never an unconditional limit");
+    assert.equal(bear.limitAppliesTo?.residency, "RESIDENT", "the figure must carry who it applies to");
+
+    const turkey = rowsOf("species:wild-turkey").find((row) => row.limits?.season)!;
+    assert.deepEqual(turkey.limits!.season, { spring: 2, fall: 1 }, "spring and fall differ and both are held");
+
+    const moose = rowsOf("species:moose");
+    assert.ok(moose.some((row) => row.limitModel?.kind === "PARTY"), "moose is party-scoped");
+    assert.ok(
+      moose.every((row) => row.limits === undefined),
+      "moose must carry NO individual count — the tag belongs to the party, not the person",
+    );
   });
 
   it("does not reach a species a row does not name", () => {

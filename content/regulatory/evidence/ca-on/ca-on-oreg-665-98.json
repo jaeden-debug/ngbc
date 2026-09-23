@@ -4,7 +4,7 @@
     "preparedBy": "united-states agent",
     "preparedOn": "2026-09-23",
     "model": "THE_LAW_S_ANSWER",
-    "note": "Encoded under CLAUDE.md §8 'The law's answer, not a copy of the law's prose'. Every row carries `rule` — North Ground's own concise statement of the legal fact, which is what a consumer answers from. `statedAs` is retained here as EVIDENCE, not as the answer, and only on the provisions whose scope turns on their exact wording. Ontario is the jurisdiction where retaining it costs nothing: the King's Printer expressly permits any person to reproduce Ontario regulations without permission and without charge (see source.licence)."
+    "note": "Encoded under CLAUDE.md §8 'The law's answer, not a copy of the law's prose'. Every row carries `rule` — North Ground's own concise statement of the legal fact, which is what a consumer answers from. `statedAs` is retained here as EVIDENCE, not as the answer, and only on the provisions whose scope turns on their exact wording. Ontario is the jurisdiction where retaining it costs nothing: the King's Printer expressly permits any person to reproduce Ontario regulations without permission and without charge (see source.licence). Harvest limits added 2026-09-23: Ontario states big game limits as a TAG SCHEME rather than as bag numbers, which is why the LIMIT rows carry a limitModel rather than only a count."
   },
   "authority": {
     "name": "King's Printer for Ontario",
@@ -46,9 +46,18 @@
           "checkedOn": "2026-09-23",
           "evidence": "e-Laws returns 404 for this regulation. The check is controlled: the same URL pattern returns 200 for R.R.O. 1990, Reg. 950 and R.R.O. 1990, Reg. 194, so the pattern is right and the regulation is absent — not mistyped. A frozen historical text of a regulation e-Laws no longer serves is, additionally, not the current text of anything.",
           "control": [
-            { "regulation": "R.R.O. 1990, Reg. 950", "status": 200 },
-            { "regulation": "R.R.O. 1990, Reg. 194", "status": 200 },
-            { "regulation": "R.R.O. 1990, Reg. 484", "status": 404 }
+            {
+              "regulation": "R.R.O. 1990, Reg. 950",
+              "status": 200
+            },
+            {
+              "regulation": "R.R.O. 1990, Reg. 194",
+              "status": 200
+            },
+            {
+              "regulation": "R.R.O. 1990, Reg. 484",
+              "status": 404
+            }
           ]
         }
       }
@@ -98,7 +107,10 @@
       "category": "AMMUNITION",
       "kind": "shot size and rifle type during a big game season",
       "state": "PROHIBITED",
-      "officialName": { "text": "O. Reg. 665/98, s. 77", "lang": "en-CA" },
+      "officialName": {
+        "text": "O. Reg. 665/98, s. 77",
+        "lang": "en-CA"
+      },
       "rule": "A small game hunter who is in an area while a big game season is open there may not possess or use a centre-fire rifle, or shells loaded with ball or with shot larger than No. 2. A small game licence holder may still use steel shot up to triple BBB or bismuth shot up to double BB.",
       "ruleNote": "The steel and bismuth allowance is written 'Despite clause (1)(b)' — clause (b) is the shot limb alone. It does not relieve the centre-fire rifle prohibition in clause (a). Ontario's own Hunting Regulations Summary compresses both limbs into one sentence with the steel and bismuth allowance as a single parenthetical, which reads as though it qualified the whole prohibition. The regulation is the source encoded here.",
       "statedAs": {
@@ -114,12 +126,21 @@
           "species:spruce-grouse",
           "species:snowshoe-hare"
         ],
-        "geography": { "kind": "JURISDICTION", "designations": ["ON"], "statedAs": null },
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "ON"
+          ],
+          "statedAs": null
+        },
         "methods": null
       },
       "condition": {
         "rule": "Applies only while a big game season is open in the same area the hunter is in.",
-        "statedAs": { "text": "when in an area during an open season in the area for a species of big game", "lang": "en-CA" }
+        "statedAs": {
+          "text": "when in an area during an open season in the area for a species of big game",
+          "lang": "en-CA"
+        }
       },
       "exceptions": [
         {
@@ -140,7 +161,10 @@
       "category": "AMMUNITION",
       "kind": "rifle calibre limit by area",
       "state": "PROHIBITED",
-      "officialName": { "text": "O. Reg. 665/98, s. 78", "lang": "en-CA" },
+      "officialName": {
+        "text": "O. Reg. 665/98, s. 78",
+        "lang": "en-CA"
+      },
       "rule": "In the geographic areas O. Reg. 663/98 describes in Schedule 4 to Part 8, a small game hunter may not carry or use a rifle of greater calibre than a .275. A muzzle-loading rifle is exempt.",
       "citation": "O. Reg. 665/98, s. 78",
       "scope": {
@@ -165,14 +189,19 @@
       "category": "AMMUNITION",
       "kind": "shot size and rifle type in one management unit",
       "state": "PROHIBITED",
-      "officialName": { "text": "O. Reg. 665/98, s. 67", "lang": "en-CA" },
+      "officialName": {
+        "text": "O. Reg. 665/98, s. 67",
+        "lang": "en-CA"
+      },
       "rule": "In wildlife management unit 7A from August 15 to December 15, a shotgun hunter may not possess a shell loaded with ball or with shot larger than No. 2, and no hunter may use or possess a centre-fire rifle while hunting. Steel shot up to triple BBB and bismuth shot up to double BB remain permitted.",
       "citation": "O. Reg. 665/98, s. 67 (1), (2), (4)",
       "scope": {
         "speciesIds": "ALL",
         "geography": {
           "kind": "MANAGEMENT_UNITS",
-          "designations": ["7A"],
+          "designations": [
+            "7A"
+          ],
           "statedAs": "wildlife management unit 7A"
         },
         "methods": null
@@ -189,7 +218,10 @@
       "category": "AMMUNITION",
       "kind": "minimum projectile for big game",
       "state": "PROHIBITED",
-      "officialName": { "text": "O. Reg. 665/98, s. 75", "lang": "en-CA" },
+      "officialName": {
+        "text": "O. Reg. 665/98, s. 75",
+        "lang": "en-CA"
+      },
       "rule": "Big game may not be hunted with a rim-fire rifle, with a shotgun smaller than 20 gauge loaded with shot, or with any shotgun loaded with shot smaller than SG or No. 1 buck.",
       "citation": "O. Reg. 665/98, s. 75",
       "scope": {
@@ -198,18 +230,200 @@
           "species:moose",
           "species:american-black-bear"
         ],
-        "geography": { "kind": "JURISDICTION", "designations": ["ON"], "statedAs": null },
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "ON"
+          ],
+          "statedAs": null
+        },
         "methods": null
       },
       "note": "Ontario's big game ammunition was already certified from the readiness bundle, which took it from the Hunting Regulations Summary. This row carries the same fact at LAW tier, from the regulation itself."
+    },
+    {
+      "category": "LIMIT",
+      "kind": "tag scheme",
+      "state": "CONDITIONAL",
+      "officialName": {
+        "text": "O. Reg. 665/98, s. 14",
+        "lang": "en-CA"
+      },
+      "rule": "Ontario does not state a big game bag limit as a number. A tag authorizes killing no more than one animal of the species named on it, a hunter may hold only one tag per species per year unless the regulation permits more, and a licence holder may not kill more animals than the number of tags issued to them that year. A hunter's limit is therefore the number of tags they hold, and tags may also restrict age, sex or type, the units where they are valid, and other conditions.",
+      "statedAs": {
+        "text": "A tag authorizes the person to whom it is issued to hunt and kill no more than one member of the wildlife species specified on the tag.",
+        "lang": "en-CA"
+      },
+      "statedAsRetainedBecause": "This sentence IS the limit mechanism. Every big game figure below is one animal times a tag count, and stating it any other way would imply Ontario publishes bag limits it does not publish.",
+      "citation": "O. Reg. 665/98, s. 14 (1), (2), (3), (4)",
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer",
+          "species:moose",
+          "species:american-black-bear",
+          "species:wild-turkey"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "ON"
+          ],
+          "statedAs": null
+        },
+        "methods": null
+      },
+      "limitModel": {
+        "kind": "PER_AUTHORIZATION",
+        "perAuthorization": 1,
+        "note": "The quantity is a function of an authorization the hunter holds. North Ground never infers that a hunter holds anything, so the number of tags is a hunter input, not a gap in what is known about the law. The law is fully stated; the hunter's own figure is not derivable from it."
+      },
+      "unresolved": [
+        "s.14(3) is expressly 'subject to the rules on hunting in a party under Part III'. For moose that is not a qualifier but a different structure — see the moose row."
+      ]
+    },
+    {
+      "category": "LIMIT",
+      "kind": "season and possession limit",
+      "state": "REQUIRED",
+      "officialName": {
+        "text": "O. Reg. 665/98, s. 36",
+        "lang": "en-CA"
+      },
+      "rule": "A small game licence holder may be issued two wild turkey spring tags and one fall tag. A holder of two spring tags may not kill more than one turkey in a day. No person may possess more than two turkeys killed in the spring season, or more than one killed in the fall seasons.",
+      "citation": "O. Reg. 665/98, s. 36 (1), (4), (5)",
+      "scope": {
+        "speciesIds": [
+          "species:wild-turkey"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "ON"
+          ],
+          "statedAs": null
+        },
+        "methods": null
+      },
+      "limits": {
+        "season": {
+          "spring": 2,
+          "fall": 1
+        },
+        "daily": 1,
+        "possession": {
+          "spring": 2,
+          "fall": 1
+        }
+      },
+      "note": "Turkey is the one species here whose limit Ontario states as figures rather than only as a tag count, and the spring and fall seasons carry different ones. A single number would be wrong for both."
+    },
+    {
+      "category": "LIMIT",
+      "kind": "season limit by tag count",
+      "state": "CONDITIONAL",
+      "officialName": {
+        "text": "O. Reg. 665/98, s. 51",
+        "lang": "en-CA"
+      },
+      "rule": "A resident may not apply for or possess more than two bear tags in a year, so a resident's season limit is two bears. A non-resident's licence is a bear tag plus a validation certificate from a licensed bear operator.",
+      "citation": "O. Reg. 665/98, s. 51 (1), (3); s. 53 (1)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "ON"
+          ],
+          "statedAs": null
+        },
+        "methods": null
+      },
+      "limits": {
+        "season": 2
+      },
+      "limitAppliesTo": {
+        "residency": "RESIDENT"
+      },
+      "unresolved": [
+        "The two-tag cap is written for a resident. This reading did not find an equivalent cap for non-residents, and the absence of one is NOT a finding that none exists — s.53 and the bear operator validation scheme were not read through. A non-resident's season limit is UNKNOWN, and must not inherit the resident figure."
+      ]
+    },
+    {
+      "category": "LIMIT",
+      "kind": "tag count",
+      "state": "CONDITIONAL",
+      "officialName": {
+        "text": "O. Reg. 665/98, s. 37",
+        "lang": "en-CA"
+      },
+      "rule": "A deer licence carries one deer tag. A hunter may hold more than one deer tag in a year only where the Ministry makes additional tags available that year. A resident's tag may authorize antlered or antlerless deer as it specifies; a non-resident's authorizes antlered deer only, unless they hold an additional tag.",
+      "citation": "O. Reg. 665/98, s. 37 (1), (2), (3), (5)",
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "ON"
+          ],
+          "statedAs": null
+        },
+        "methods": null
+      },
+      "limits": {
+        "season": 1
+      },
+      "limitQualifier": "Base entitlement. Additional tags, where the Ministry issues them, raise it by one each.",
+      "unresolved": [
+        "Whether additional deer tags are available in a given year and unit is a Ministry decision made annually, not a figure in the regulation. Our answer states the base entitlement and the mechanism, never a total."
+      ]
+    },
+    {
+      "category": "LIMIT",
+      "kind": "party-level limit",
+      "state": "CONDITIONAL",
+      "officialName": {
+        "text": "O. Reg. 665/98, s. 43",
+        "lang": "en-CA"
+      },
+      "rule": "A moose licence is either a moose tag with a licence summary, or a licence summary alone where the hunter is hunting in a party with at least one person who holds a valid moose tag. A hunter without a tag may therefore lawfully hunt moose on a party member's tag, and the tag sets the calf, cow or bull class, the area and the conditions for every hunter in the party.",
+      "citation": "O. Reg. 665/98, s. 43 (1), (3), (4); s. 14 (3)",
+      "scope": {
+        "speciesIds": [
+          "species:moose"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "ON"
+          ],
+          "statedAs": null
+        },
+        "methods": null
+      },
+      "limitModel": {
+        "kind": "PARTY",
+        "note": "An individual cap is the wrong model here and stating one would be wrong in the permissive direction for the tagless hunter and the restrictive direction for the party. What the regulation caps is the party's tags, not the person's."
+      },
+      "unresolved": [
+        "Part III's party rules were not read. What is encoded is that the moose limit is party-scoped and why, not how many moose a party may take."
+      ]
     },
     {
       "category": "PLACE_CONDITION",
       "kind": "provincial parks and designated Crown land",
       "state": "PROHIBITED",
       "restrictionKind": "NO_HUNTING",
-      "restrictionScope": { "kind": "UNLISTED" },
-      "officialName": { "text": "O. Reg. 665/98, s. 104", "lang": "en-CA" },
+      "restrictionScope": {
+        "kind": "UNLISTED"
+      },
+      "officialName": {
+        "text": "O. Reg. 665/98, s. 104",
+        "lang": "en-CA"
+      },
       "rule": "Hunting in a provincial park, or on the Crown land O. Reg. 663/98 describes in Part 3, is prohibited except as Part XIV of O. Reg. 665/98 allows. Part XIV opens named parks to named species on named terms.",
       "citation": "O. Reg. 665/98, ss. 104-114",
       "scope": {
@@ -235,8 +449,13 @@
       "kind": "Crown game preserves",
       "state": "PROHIBITED",
       "restrictionKind": "NO_HUNTING",
-      "restrictionScope": { "kind": "UNLISTED" },
-      "officialName": { "text": "O. Reg. 665/98, Part XIII", "lang": "en-CA" },
+      "restrictionScope": {
+        "kind": "UNLISTED"
+      },
+      "officialName": {
+        "text": "O. Reg. 665/98, Part XIII",
+        "lang": "en-CA"
+      },
       "rule": "Hunting and trapping are prohibited in a Crown game preserve, as are possessing and using a firearm there. A person who lives on a preserve is exempt on the part they own or occupy, and a person driving through on a road is exempt on conditions.",
       "citation": "O. Reg. 665/98, ss. 100-102.1; FWCA s. 9",
       "scope": {
@@ -259,8 +478,13 @@
       "kind": "Sunday gun hunting",
       "state": "PROHIBITED",
       "restrictionKind": "NO_DISCHARGE",
-      "restrictionScope": { "kind": "UNLISTED" },
-      "officialName": { "text": "O. Reg. 665/98, s. 66", "lang": "en-CA" },
+      "restrictionScope": {
+        "kind": "UNLISTED"
+      },
+      "officialName": {
+        "text": "O. Reg. 665/98, s. 66",
+        "lang": "en-CA"
+      },
       "rule": "South of the French and Mattawa rivers, a firearm other than a long-bow or cross-bow may not be carried or discharged for hunting on a Sunday, except in the municipalities O. Reg. 663/98 lists in Part 7. Licensed game bird hunting preserves are exempt.",
       "citation": "O. Reg. 665/98, s. 66",
       "scope": {
@@ -271,7 +495,13 @@
           "statedAs": "any area lying south of the French and Mattawa rivers except those municipalities listed in Part 7 of Ontario Regulation 663/98 (Area Descriptions)"
         }
       },
-      "period": { "kind": "WEEKDAYS", "days": ["SUNDAY"], "statedAs": "on a Sunday" },
+      "period": {
+        "kind": "WEEKDAYS",
+        "days": [
+          "SUNDAY"
+        ],
+        "statedAs": "on a Sunday"
+      },
       "placement": {
         "state": "NOT_YET_PLACED",
         "reason": "The permitted municipalities are listed in O. Reg. 663/98 Part 7, which has not been read. Municipal boundaries are published by Ontario; the list is what is missing."
@@ -283,8 +513,13 @@
       "kind": "loaded firearm in a public right of way",
       "state": "PROHIBITED",
       "restrictionKind": "NO_DISCHARGE",
-      "restrictionScope": { "kind": "UNLISTED" },
-      "officialName": { "text": "O. Reg. 665/98, s. 63", "lang": "en-CA" },
+      "restrictionScope": {
+        "kind": "UNLISTED"
+      },
+      "officialName": {
+        "text": "O. Reg. 665/98, s. 63",
+        "lang": "en-CA"
+      },
       "rule": "In the geographic areas O. Reg. 663/98 describes in Schedule 1 to Part 8, it is prohibited to have a loaded firearm in, or to discharge a firearm in or across, a right of way for public vehicular traffic. In the Schedule 2 areas the same prohibition applies during any open deer or elk season that is not bow-only. Where a right of way is maintained only seasonally, the section applies only while it is maintained.",
       "citation": "O. Reg. 665/98, s. 63",
       "scope": {
