@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { FEDERAL_AREAS, federalAreaAt } from "./federal-areas.ts";
+import { readFileSync } from "node:fs";
+import { FEDERAL_AREAS, UNRESOLVABLE_BECAUSE, federalAreaAt } from "./federal-areas.ts";
 
 /**
  * A federal area is resolved FROM the provincial answer, because that is how
@@ -91,8 +92,19 @@ test("a jurisdiction this build has not encoded answers UNKNOWN, never silence",
     "jurisdiction:ca-nl", "jurisdiction:ca-ns", "jurisdiction:ca-nb",
     "jurisdiction:ca-nt", "jurisdiction:ca-nu",
   ];
-  const unencoded = canadian.find((id) => !encoded.has(id));
-  assert.ok(unencoded, "every jurisdiction is encoded; this test needs deleting, not passing");
+  /*
+   * NOT READ is a third state, and it is the one this test is about. A Part
+   * that was read and could not be resolved has its own message and its own
+   * test; excluding it here is what keeps this test testing what it claims to.
+   *
+   * It has now fired twice — once when Manitoba was encoded, once when
+   * Newfoundland, Nova Scotia and New Brunswick became read-and-blocked, a
+   * state that did not exist when this was written. Both times it failed rather
+   * than passing on a subject that had moved, which is the whole argument for
+   * deriving the example instead of naming one.
+   */
+  const unencoded = canadian.find((id) => !encoded.has(id) && !UNRESOLVABLE_BECAUSE[id]);
+  assert.ok(unencoded, "every jurisdiction is encoded or read-and-blocked; this test needs deleting, not passing");
 
   const resolved = federalAreaAt(unencoded, { latitude: 50 }, "26");
   assert.equal(resolved.status, "UNKNOWN");
@@ -170,4 +182,62 @@ test("a region cannot be resolved from a point that carries no longitude", () =>
   const noLongitude = federalAreaAt("jurisdiction:ca-mb", { latitude: 56.5 });
   assert.equal(noLongitude.status, "UNKNOWN");
   assert.match(noLongitude.statedAs, /defined partly by longitude/);
+});
+
+/* ── Read and blocked is not the same fact as not read ── */
+
+test("a Part that was READ and cannot be resolved says which geography is missing", () => {
+  /*
+   * Three different states that all end in UNKNOWN and must not render alike:
+   *
+   *   RESOLVED          the point is in a federal area.
+   *   READ AND BLOCKED  the Part was parsed, its zones are drawn on geography
+   *                     North Ground does not hold, and it says which.
+   *   NOT READ          nobody has looked at this Part.
+   *
+   * The second and third were indistinguishable until the bundle carried the
+   * reason. "Not encoded" invites waiting; naming the blocker says what would
+   * have to be acquired — Nova Scotia's two zones are COUNTIES, and the
+   * province publishes county-based data under its own open licence, so that
+   * is a concrete unlock rather than an open question.
+   */
+  const novaScotia = federalAreaAt("jurisdiction:ca-ns", { latitude: 45.3, longitude: -63.3 }, "1");
+  assert.equal(novaScotia.status, "UNKNOWN");
+  assert.match(novaScotia.statedAs, /has read this jurisdiction's Part/);
+  assert.match(novaScotia.statedAs, /by COUNTY/);
+
+  const newfoundland = federalAreaAt("jurisdiction:ca-nl", { latitude: 53.3, longitude: -60.4 });
+  assert.equal(newfoundland.status, "UNKNOWN");
+  assert.match(newfoundland.statedAs, /coastline, lines through named capes/);
+
+  /* The Northwest Territories are out of scope (§9) and genuinely unread. */
+  const notRead = federalAreaAt("jurisdiction:ca-nt", { latitude: 62, longitude: -114 });
+  assert.equal(notRead.status, "UNKNOWN");
+  assert.match(notRead.statedAs, /has not encoded/);
+  assert.doesNotMatch(notRead.statedAs, /has read/);
+});
+
+test("a blocked Part contributes no rules, and says so rather than going quiet", () => {
+  /*
+   * The risk of carrying a Part that yields nothing is that it looks like
+   * coverage in a count. It must not: the bundle holds its definitions as
+   * refusals with their reason, and zero areas.
+   */
+  const bundle = JSON.parse(readFileSync("content/regulatory/ca-federal-2026.json", "utf8")) as {
+    unresolvableBecause?: Record<string, string>;
+    areas: { jurisdictionId: string }[];
+    rules: { jurisdictionId: string }[];
+    notEncoded: { jurisdictionId?: string; reason: string }[];
+  };
+  const blocked = Object.keys(bundle.unresolvableBecause ?? {});
+  assert.ok(blocked.length > 0, "this test needs deleting, not passing, if no Part is read-and-blocked");
+
+  for (const id of blocked) {
+    assert.equal(bundle.areas.filter((area) => area.jurisdictionId === id).length, 0, `${id} must derive no areas`);
+    assert.equal(bundle.rules.filter((rule) => rule.jurisdictionId === id).length, 0, `${id} must contribute no rules`);
+    assert.ok(
+      bundle.notEncoded.some((entry) => entry.jurisdictionId === id && /cannot resolve this zone/.test(entry.reason)),
+      `${id} must record WHY, not just yield nothing`,
+    );
+  }
 });

@@ -5,6 +5,11 @@
       "Game Bird Hunting Zone No. 3"
     ]
   },
+  "unresolvableBecause": {
+    "jurisdiction:ca-nl": "the Migratory Birds Regulations divide Newfoundland and Labrador into fifteen zones drawn from the coastline, lines through named capes, and the boundary between Labrador and the Island — none of which North Ground holds",
+    "jurisdiction:ca-ns": "the Migratory Birds Regulations divide Nova Scotia into two zones by COUNTY, and North Ground holds the province's deer management zones rather than its county boundaries",
+    "jurisdiction:ca-nb": "the Migratory Birds Regulations draw New Brunswick's Zone No. 1 along No. 1 Highway, Saint John Harbour and named islands, and its Zone No. 2 is whatever that leaves — so neither can be resolved without the first"
+  },
   "schemaVersion": 1,
   "bundleId": "bundle:ca-federal-2026",
   "jurisdictionId": "jurisdiction:ca-federal",
@@ -33,6 +38,18 @@
     {
       "name": "Ontario",
       "jurisdictionId": "jurisdiction:ca-on"
+    },
+    {
+      "name": "Newfoundland and Labrador",
+      "jurisdictionId": "jurisdiction:ca-nl"
+    },
+    {
+      "name": "Nova Scotia",
+      "jurisdictionId": "jurisdiction:ca-ns"
+    },
+    {
+      "name": "New Brunswick",
+      "jurisdictionId": "jurisdiction:ca-nb"
     },
     {
       "name": "Manitoba",
@@ -6735,6 +6752,120 @@
       "where": "Ontario Schedule 3 Table 2 item 1",
       "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Ontario",
       "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Newfoundland and Labrador Schedule 3 definitions",
+      "statedAs": "Avalon-Burin Coastal Newfoundland Zone: the portion of the coast of the Island of Newfoundland, and of the adjacent offshore islands, lying less than 100 m from the mean ordinary high-water mark and the adjacent marine coastal waters, bounded by a straight line drawn due south from Cape Rosey, and from there in a generally easterly and northerly direction along the coast, ending at a boundary line drawn due northeast from Cape Bonavista",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations divide Newfoundland and Labrador into fifteen zones drawn from the coastline, lines through named capes, and the boundary between Labrador and the Island — none of which North Ground holds"
+    },
+    {
+      "where": "Newfoundland and Labrador Schedule 3 definitions",
+      "statedAs": "Central Labrador Zone: the portion of Labrador that is not within the Northern Labrador Zone, the Western Labrador Zone or the Southern Labrador Zone",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations divide Newfoundland and Labrador into fifteen zones drawn from the coastline, lines through named capes, and the boundary between Labrador and the Island — none of which North Ground holds"
+    },
+    {
+      "where": "Newfoundland and Labrador Schedule 3 definitions",
+      "statedAs": "Inland Newfoundland Zone: the portion of the Island of Newfoundland, and of the adjacent offshore islands, that is not within the Northwestern Coastal Newfoundland Zone, the Northern Coastal Newfoundland Zone, the Southern Coastal Newfoundland Zone, the Southwestern Coastal Newfoundland Zone, the Northeastern Coastal Newfoundland Zone or the Avalon-Burin Coastal Newfoundland Zone",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations divide Newfoundland and Labrador into fifteen zones drawn from the coastline, lines through named capes, and the boundary between Labrador and the Island — none of which North Ground holds"
+    },
+    {
+      "where": "Newfoundland and Labrador Schedule 3 definitions",
+      "statedAs": "Murre Zone No. 1: the coastal waters in the Northern Labrador Zone and the Central Labrador Zone",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations divide Newfoundland and Labrador into fifteen zones drawn from the coastline, lines through named capes, and the boundary between Labrador and the Island — none of which North Ground holds"
+    },
+    {
+      "where": "Newfoundland and Labrador Schedule 3 definitions",
+      "statedAs": "Murre Zone No. 2: the coastal waters in the Southern Labrador Zone and the portions of the Northwestern Coastal Newfoundland Zone, the Northern Coastal Newfoundland Zone and the Northeastern Coastal Newfoundland Zone bounded by a line drawn due northeast from Deadman’s Point",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations divide Newfoundland and Labrador into fifteen zones drawn from the coastline, lines through named capes, and the boundary between Labrador and the Island — none of which North Ground holds"
+    },
+    {
+      "where": "Newfoundland and Labrador Schedule 3 definitions",
+      "statedAs": "Murre Zone No. 3: the portions of the Southwestern Coastal Newfoundland Zone and the Avalon-Burin Coastal Newfoundland Zone bounded by a line drawn due west from Cape St. Gregory",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations divide Newfoundland and Labrador into fifteen zones drawn from the coastline, lines through named capes, and the boundary between Labrador and the Island — none of which North Ground holds"
+    },
+    {
+      "where": "Newfoundland and Labrador Schedule 3 definitions",
+      "statedAs": "Murre Zone No. 4: the portions of the Avalon-Burin Coastal Newfoundland Zone and the Northeastern Coastal Newfoundland Zone bounded by a line drawn due east from Cape Race",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations divide Newfoundland and Labrador into fifteen zones drawn from the coastline, lines through named capes, and the boundary between Labrador and the Island — none of which North Ground holds"
+    },
+    {
+      "where": "Newfoundland and Labrador Schedule 3 definitions",
+      "statedAs": "Northeastern Coastal Newfoundland Zone: the portion of the coast of the Island of Newfoundland, and of the adjacent offshore islands, lying less than 100 m from the mean ordinary high-water mark and adjacent marine coastal waters, bounded by a line drawn due northeast through Cape Bonavista, and from there in a generally westerly direction along the coast, ending at a boundary line drawn due northeast through Cape St. John",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations divide Newfoundland and Labrador into fifteen zones drawn from the coastline, lines through named capes, and the boundary between Labrador and the Island — none of which North Ground holds"
+    },
+    {
+      "where": "Newfoundland and Labrador Schedule 3 definitions",
+      "statedAs": "Northern Coastal Newfoundland Zone: the portion of the coast of the Island of Newfoundland, and of the adjacent offshore islands, lying less than 100 m from the mean ordinary high-water mark and the adjacent marine coastal waters, bounded by a line drawn due northeast from Cape Bauld, and from there southward along the east coast, ending in a boundary line drawn due northeast through Cape St. John",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations divide Newfoundland and Labrador into fifteen zones drawn from the coastline, lines through named capes, and the boundary between Labrador and the Island — none of which North Ground holds"
+    },
+    {
+      "where": "Newfoundland and Labrador Schedule 3 definitions",
+      "statedAs": "Northern Labrador Zone: the portion of Labrador lying north of latitude 54°24′N and east of longitude 65°W",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations divide Newfoundland and Labrador into fifteen zones drawn from the coastline, lines through named capes, and the boundary between Labrador and the Island — none of which North Ground holds"
+    },
+    {
+      "where": "Newfoundland and Labrador Schedule 3 definitions",
+      "statedAs": "Northwestern Coastal Newfoundland Zone: the portion of the coast of the Island of Newfoundland, and of the adjacent offshore islands, lying less than 100 m from the mean ordinary high-water mark and the adjacent marine coastal waters, bounded by a line drawn due west from Cape St. Gregory, and from there northward and eastward along the coast, ending in a boundary line drawn due northeast through Cape Bauld",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations divide Newfoundland and Labrador into fifteen zones drawn from the coastline, lines through named capes, and the boundary between Labrador and the Island — none of which North Ground holds"
+    },
+    {
+      "where": "Newfoundland and Labrador Schedule 3 definitions",
+      "statedAs": "Southern Coastal Newfoundland Zone: the portion of the coast of the Island of Newfoundland, and of the adjacent offshore islands, lying less than 100 m from the mean ordinary high-water mark and the adjacent marine coastal waters, bounded by a line drawn due west through Cape Ray, and from there southward and eastward along the coast, ending at a line drawn due south through Cape Rosey",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations divide Newfoundland and Labrador into fifteen zones drawn from the coastline, lines through named capes, and the boundary between Labrador and the Island — none of which North Ground holds"
+    },
+    {
+      "where": "Newfoundland and Labrador Schedule 3 definitions",
+      "statedAs": "Southern Labrador Zone: the portion of Labrador lying south of latitude 53°06′N",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations divide Newfoundland and Labrador into fifteen zones drawn from the coastline, lines through named capes, and the boundary between Labrador and the Island — none of which North Ground holds"
+    },
+    {
+      "where": "Newfoundland and Labrador Schedule 3 definitions",
+      "statedAs": "Southwestern Coastal Newfoundland Zone: the portion of the coast of the Island of Newfoundland, and of the adjacent offshore islands, lying less than 100 m from the mean ordinary high-water mark and the adjacent marine coastal waters, bounded by a line drawn due west from Cape St. Gregory, and from there southward along the coast, ending in a boundary line drawn due west through Cape Ray",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations divide Newfoundland and Labrador into fifteen zones drawn from the coastline, lines through named capes, and the boundary between Labrador and the Island — none of which North Ground holds"
+    },
+    {
+      "where": "Newfoundland and Labrador Schedule 3 definitions",
+      "statedAs": "Western Labrador Zone: the portion of Labrador lying west of longitude 65°W",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations divide Newfoundland and Labrador into fifteen zones drawn from the coastline, lines through named capes, and the boundary between Labrador and the Island — none of which North Ground holds"
+    },
+    {
+      "where": "Nova Scotia Schedule 3 definitions",
+      "statedAs": "Zone No. 1: the counties of Antigonish, Pictou, Colchester, Cumberland, Hants, Kings and Annapolis",
+      "jurisdictionId": "jurisdiction:ca-ns",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations divide Nova Scotia into two zones by COUNTY, and North Ground holds the province's deer management zones rather than its county boundaries"
+    },
+    {
+      "where": "Nova Scotia Schedule 3 definitions",
+      "statedAs": "Zone No. 2: the counties of Digby, Yarmouth, Shelburne, Queens, Lunenburg, Halifax, Guysborough, Cape Breton, Victoria, Inverness and Richmond",
+      "jurisdictionId": "jurisdiction:ca-ns",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations divide Nova Scotia into two zones by COUNTY, and North Ground holds the province's deer management zones rather than its county boundaries"
+    },
+    {
+      "where": "New Brunswick Schedule 3 definitions",
+      "statedAs": "Zone No. 1: the portion of Saint John County lying south of No. 1 Highway and west of Saint John Harbour, and the portion of Charlotte County lying south of No. 1 Highway including the islands of the Grand Manan Group and Campobello Island",
+      "jurisdictionId": "jurisdiction:ca-nb",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations draw New Brunswick's Zone No. 1 along No. 1 Highway, Saint John Harbour and named islands, and its Zone No. 2 is whatever that leaves — so neither can be resolved without the first"
+    },
+    {
+      "where": "New Brunswick Schedule 3 definitions",
+      "statedAs": "Zone No. 2: any portion of New Brunswick that is not in Zone No. 1 or the areas described in section 2",
+      "jurisdictionId": "jurisdiction:ca-nb",
+      "reason": "North Ground cannot resolve this zone: the Migratory Birds Regulations draw New Brunswick's Zone No. 1 along No. 1 Highway, Saint John Harbour and named islands, and its Zone No. 2 is whatever that leaves — so neither can be resolved without the first"
     },
     {
       "where": "Manitoba Schedule 3 definitions",

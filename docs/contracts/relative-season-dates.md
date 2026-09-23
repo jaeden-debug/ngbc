@@ -150,3 +150,75 @@ were reclassified to the first reason that applies.
 **A count that moves because the classifier reordered is not a count that
 moved.** A bucket's size is comparable only against itself under an unchanged
 classifier; when the order changes, say so beside the numbers.
+
+
+---
+
+## A test's example must be derived, not hard-coded
+
+*Added 2026-09-23, after the third instance in one day.*
+
+A test that needs an example of something North Ground does **not** yet cover
+should **derive the example from the data and assert that the category is
+non-empty**. Hard-coding one guarantees it expires silently the day the work
+succeeds.
+
+Three instances, all the same shape:
+
+- a test used `species:mallard` as "a species we do not certify", and stopped
+  testing anything the day mallard was certified;
+- a test asserted "the four unreadable windows are the leap-year form", and
+  failed the day that form was read;
+- a test named Manitoba as "a jurisdiction we have not encoded", and failed the
+  day Manitoba was encoded.
+
+Only the first failed *silently*, and only because the other two were written
+with an explicit premise check. That is the construction to copy: asserting the
+category is non-empty makes the test **demand its own deletion** when the last
+member is covered, rather than passing vacuously forever.
+
+## Three states that all end in UNKNOWN
+
+*Added 2026-09-23.*
+
+They must never render alike, because they call for different actions:
+
+| state | what it means | what it asks of us |
+|---|---|---|
+| **read and resolved** | the point is in a federal area | nothing |
+| **read and blocked** | the Part was parsed; its zones are drawn on geography North Ground does not hold, and it names which | acquire that geography |
+| **not read** | nobody has looked | read it |
+
+"North Ground has not encoded this jurisdiction" invites waiting. Naming the
+blocker says what would have to be acquired — Nova Scotia's two federal zones
+are **counties**, and the province publishes county-based data under its own
+open licence, so that is a concrete unlock rather than an open question.
+
+The same distinction, one level down, separates two UNKNOWNs about a *point*:
+Alberta's unit 728 is in **no** federal area, because the regulation does not
+place it — a real answer about the regulation. A Manitoba hunting area outside
+Zone No. 4 **is** placed, in Zone No. 2 or No. 3, and North Ground cannot say
+which. Saying "the regulation places this in no federal area" there would be a
+false claim about the law, not merely an unhelpful one.
+
+## A conjunction in legal prose means what it joins
+
+*Added 2026-09-23.*
+
+Never what the word suggests. Three readings of "and" in Schedule 3, each
+settled by its operands and each wrong if carried to the next:
+
+- **a list** — "Districts C and D" is two districts;
+- **one description** — Nunavut's "the islands and waters of James Bay" is a
+  single place, and splitting it yields fragments that are not zones;
+- **a union of portions** — Manitoba's "the portion lying north of latitude
+  57°N and the portion lying east of longitude 94°W" is two portions joined;
+  reading it as an intersection would shrink the zone to a northeast corner and
+  leave most of the province in no federal area;
+- **an intersection of conditions** — Newfoundland's "the portion of Labrador
+  lying north of latitude 54°24′N and east of longitude 65°W" is ONE portion
+  with two conditions. The same sentence shape as Manitoba's, the opposite
+  meaning, decided entirely by whether "the portion" is repeated.
+
+Each is matched against the authority's own sentence, so a reworded definition
+refuses rather than being approximated.

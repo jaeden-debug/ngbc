@@ -164,6 +164,42 @@ const WAVE_1 = [
     areaKind: "PROVINCIAL_UNITS",
     inventory: "content/regulatory/ca-on-certified-units.json",
   },
+  /*
+   * ── READ, AND BLOCKED ON GEOGRAPHY ──
+   *
+   * These Parts are parsed and their definitions counted, so a change to the
+   * regulation is loud — but none of their zones can be resolved from geography
+   * North Ground holds, so they contribute NO rules.
+   *
+   * They are in the wave anyway, because "we have read this Part and its zones
+   * are drawn on things we do not have" is a different claim from "we have not
+   * looked at this Part", and until now a hunter in all three got the second
+   * one. §9 asks North Ground to state exactly what it knows and what it does
+   * not; an unexamined Part and an examined-and-blocked Part are not the same
+   * fact and must not render alike.
+   */
+  {
+    part: 1, name: "Newfoundland and Labrador", jurisdictionId: "jurisdiction:ca-nl",
+    areaKind: "READ_BUT_UNRESOLVABLE", expectedDefinitions: 15,
+    unresolvableBecause:
+      "the Migratory Birds Regulations divide Newfoundland and Labrador into fifteen zones drawn from the " +
+      "coastline, lines through named capes, and the boundary between Labrador and the Island — none of which " +
+      "North Ground holds",
+  },
+  {
+    part: 3, name: "Nova Scotia", jurisdictionId: "jurisdiction:ca-ns",
+    areaKind: "READ_BUT_UNRESOLVABLE", expectedDefinitions: 2,
+    unresolvableBecause:
+      "the Migratory Birds Regulations divide Nova Scotia into two zones by COUNTY, and North Ground holds the " +
+      "province's deer management zones rather than its county boundaries",
+  },
+  {
+    part: 4, name: "New Brunswick", jurisdictionId: "jurisdiction:ca-nb",
+    areaKind: "READ_BUT_UNRESOLVABLE", expectedDefinitions: 2,
+    unresolvableBecause:
+      "the Migratory Birds Regulations draw New Brunswick's Zone No. 1 along No. 1 Highway, Saint John Harbour " +
+      "and named islands, and its Zone No. 2 is whatever that leaves — so neither can be resolved without the first",
+  },
   {
     part: 7, name: "Manitoba", jurisdictionId: "jurisdiction:ca-mb",
     unitPhrase: "Provincial Game Hunting Areas",
@@ -477,9 +513,11 @@ async function main() {
   /* Areas a Part defines that this build could not resolve — distinct from a
      unit the regulation places in no area at all. */
   const unresolvedAreas = new Map();
+  /* Why a Part that was READ still yields no areas. */
+  const unresolvableBecauseBy = new Map();
   let considered = 0;
 
-  for (const { part, name, jurisdictionId, areaKind, inventory, unitPhrase, liveInventory } of WAVE_1) {
+  for (const { part, name, jurisdictionId, areaKind, inventory, unitPhrase, liveInventory, expectedDefinitions, unresolvableBecause } of WAVE_1) {
     const partText = partHtml(schedule, part, name);
     const flat = cellText(partText.slice(0, partText.indexOf("<table"))).replace(/\u241F/g, " ");
     const definitions = definitionsOf(flat);
@@ -578,6 +616,29 @@ async function main() {
           reason: "the regulation places these certified provincial units in no federal area, so migratory-bird queries there are UNKNOWN rather than assumed into one",
         });
       }
+    }
+
+    if (areaKind === "READ_BUT_UNRESOLVABLE") {
+      /*
+       * Counted, so the regulation changing shape stops the build rather than
+       * silently reducing what we claim to have read.
+       */
+      if (definitions.size !== expectedDefinitions) {
+        throw new Error(
+          `${name}: read ${definitions.size} zone definitions, expected ${expectedDefinitions}. ` +
+          "The Part's structure has changed and its blockers must be re-read before this build claims to know them.",
+        );
+      }
+      unresolvableBecauseBy.set(jurisdictionId, unresolvableBecause);
+      for (const [term, definition] of definitions) {
+        refusedAreas.set(jurisdictionId, [...(refusedAreas.get(jurisdictionId) ?? []), term]);
+        notEncoded.push({
+          where: `${name} Schedule 3 definitions`, statedAs: `${term}: ${definition}`,
+          jurisdictionId,
+          reason: `North Ground cannot resolve this zone: ${unresolvableBecause}`,
+        });
+      }
+      continue;
     }
 
     if (areaKind === "MANITOBA_MIXED") {
@@ -963,6 +1024,7 @@ async function main() {
 
   const bundle = {
     unresolvedAreas: Object.fromEntries(unresolvedAreas),
+    unresolvableBecause: Object.fromEntries(unresolvableBecauseBy),
     schemaVersion: 1,
     bundleId: "bundle:ca-federal-2026",
     jurisdictionId: "jurisdiction:ca-federal",

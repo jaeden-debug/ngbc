@@ -59,6 +59,16 @@ export interface FederalArea {
  */
 export const UNRESOLVED_AREAS = (bundle.unresolvedAreas ?? {}) as Readonly<Record<string, readonly string[]>>;
 
+/**
+ * Why a Part this build has READ still yields no areas.
+ *
+ * "North Ground has not encoded this jurisdiction" and "North Ground has read
+ * this jurisdiction's Part and its zones are drawn on geography it does not
+ * hold" are different facts, and until this existed they rendered identically.
+ * The first invites waiting; the second names what would have to be acquired.
+ */
+export const UNRESOLVABLE_BECAUSE = (bundle.unresolvableBecause ?? {}) as Readonly<Record<string, string>>;
+
 export const FEDERAL_AREAS = bundle.areas as readonly FederalArea[];
 
 /**
@@ -90,9 +100,13 @@ export function federalAreaAt(
 ): FederalAreaResolution {
   const here = FEDERAL_AREAS.filter((area) => area.jurisdictionId === jurisdictionId);
   if (!here.length) {
+    const blocked = UNRESOLVABLE_BECAUSE[jurisdictionId];
     return {
       status: "UNKNOWN",
-      statedAs: "North Ground has not encoded the federal migratory-bird areas for this jurisdiction.",
+      statedAs: blocked
+        ? `North Ground has read this jurisdiction's Part of the Migratory Birds Regulations and cannot place a ` +
+          `point in any of its federal areas, because ${blocked}.`
+        : "North Ground has not encoded the federal migratory-bird areas for this jurisdiction.",
     };
   }
 
