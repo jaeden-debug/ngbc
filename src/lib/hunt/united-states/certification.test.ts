@@ -21,10 +21,14 @@ test("a state's map and its rules are certified separately, and neither implies 
   // Certified rules therefore do not serve.
   assert.equal(montana.regulations.rulesServing, false);
 
+  /* Idaho is certified on both lanes and still not served: serving is a
+     separate decision, and neither lane grants it. */
   const idaho = certificationFor("ID");
   assert.equal(idaho.map.status, "CERTIFIED", "Idaho's service states CC-BY and its parity is clean");
-  assert.equal(idaho.regulations.status, "PARTIAL", "a bundle with no certification cases is not certified");
+  assert.equal(idaho.regulations.status, "CERTIFIED", "a bundle plus cases written from the law");
   assert.equal(idaho.regulations.rules, 54);
+  assert.ok(idaho.regulations.cases > 0);
+  assert.equal(idaho.regulations.rulesServing, false);
 });
 
 test("a licence that permits use still does not permit a stored copy", () => {
