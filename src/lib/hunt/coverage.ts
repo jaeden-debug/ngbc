@@ -116,7 +116,16 @@ export interface SpeciesSelectorOption {
   aliases: string[];
   /** Compact server-built vocabulary: aliases, French names, groups and hunter terms. */
   searchTerms: string[];
-  resourcePath: string;
+  /**
+   * The species' own published profile, or NULL when it has none.
+   *
+   * Never constructed. A path built from a slug is a link North Ground made
+   * up: it happens to resolve for every species published today, and nothing
+   * checks that it will for the next one. `null` means DO NOT LINK — the same
+   * rule as an unresolvable species id, which fails rather than being rendered
+   * around (`docs/contracts/hunt-sheet-presentation.md` §3).
+   */
+  resourcePath: string | null;
   /** Canonical PRIMARY image, resolved server-side from the media relationship. */
   image: SpeciesPrimaryMedia | null;
   /**

@@ -53,6 +53,16 @@ export function retireFindGameHint(): void {
   remember(MAX_SHOWINGS);
 }
 
+/**
+ * `Start over` leaves NOTHING behind (§41A), and this counter is part of
+ * nothing. Exempting it would have been the easier change and the wrong one:
+ * the promise is that the device is clean afterwards, not that it is clean
+ * except for the things we found convenient to keep.
+ */
+export function forgetFindGameHint(): void {
+  try { window.localStorage.removeItem(KEY); } catch { /* nothing to forget */ }
+}
+
 export default function FindGameHint({ active, onOpen }: { active: boolean; onOpen: () => void }) {
   const [showing, setShowing] = useState(false);
 

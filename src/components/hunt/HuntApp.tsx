@@ -22,7 +22,7 @@ import type { HuntEvaluation } from "../../lib/hunt/types";
 import { layerById, zoneIdFor, ZONE_LAYERS } from "../../lib/hunt/zone-layers";
 import { presentZone } from "../../lib/hunt/zone-presentation";
 import HuntMapView, { type CameraRequest } from "./HuntMapView";
-import FindGameHint, { retireFindGameHint } from "./FindGameHint";
+import FindGameHint, { forgetFindGameHint, retireFindGameHint } from "./FindGameHint";
 import HuntSheet from "./HuntSheet";
 import type { Emphasis } from "../../lib/hunt/exploration/cartography";
 import type { BasemapMode } from "./sheet/LayersPage";
@@ -303,6 +303,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
 
   const startOver = useCallback(() => {
     clearSession(memory());
+    forgetFindGameHint();
     setRecents([]);
     setRestoredZoneId(null);
     dispatchMap({ type: "HUNT_CLEARED" });
@@ -1314,10 +1315,14 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
               ) : null}
               <span className={styles.sourceMeta}>{selectedLayer.authority}</span>
             </p>
-            <p className={styles.quiet}>
-              What North Ground does know about {species.displayName.toLowerCase()} is in its{" "}
-              <Link href={species.resourcePath}>species profile</Link>.
-            </p>
+            {/* Only where a profile is actually published: a species with none
+                gets no link rather than a constructed one. */}
+            {species.resourcePath ? (
+              <p className={styles.quiet}>
+                What North Ground does know about {species.displayName.toLowerCase()} is in its{" "}
+                <Link href={species.resourcePath}>species profile</Link>.
+              </p>
+            ) : null}
           </div>
         ) : pointForEvaluation ? (
           <HuntAnswer

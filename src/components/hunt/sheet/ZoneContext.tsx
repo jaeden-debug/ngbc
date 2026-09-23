@@ -252,7 +252,9 @@ export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, 
           North Ground has not certified {species.displayName.toLowerCase()} rules in {summary.zone.jurisdictionName}.
           {" "}{summary.zone.authority} publishes them; nothing here says whether a season is open.
         </p>
-        <p className={styles.detailNote}><Link href={species.resourcePath}>{species.displayName} profile →</Link></p>
+        {species.resourcePath ? (
+          <p className={styles.detailNote}><Link href={species.resourcePath}>{species.displayName} profile →</Link></p>
+        ) : null}
       </div>
     );
   }

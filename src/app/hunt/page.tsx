@@ -160,7 +160,10 @@ export default async function HuntPage({ searchParams }: Props) {
       category: groups[0]?.names.find(({ locale }) => locale === "en-CA")?.value ?? "Other",
       aliases: aliases.map(({ value }) => value),
       searchTerms: [...new Set(searchTerms)],
-      resourcePath: resource.canonicalUrl ?? `/hunting/species/${resource.slug}`,
+      /* The published canonical URL or nothing. A path assembled from the slug
+         would be a guess that looks like a fact — and a "Learn more" link that
+         404s is worse than no link at all. */
+      resourcePath: resource.canonicalUrl ?? null,
       image: null,
       /* Where rules exist, and whether each jurisdiction answers straight away or
          asks a question first. Both are fully certified; saying so up front stops

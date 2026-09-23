@@ -132,7 +132,7 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
               <p>{block.content.plainText}</p>
             </div>
           ))}
-          {species ? <p className={styles.detailNote}><Link href={species.resourcePath}>Full {species.displayName.toLowerCase()} profile →</Link></p> : null}
+          {species?.resourcePath ? <p className={styles.detailNote}><Link href={species.resourcePath}>Full {species.displayName.toLowerCase()} profile →</Link></p> : null}
         </section>
       ) : null}
 
