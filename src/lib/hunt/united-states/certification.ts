@@ -87,6 +87,8 @@ type MapLicenceFinding = {
   state: string; checkedOn: string;
   geography: { term: string; service: string; unitCount: number | null; definedBy: string };
   licence: { statedAs: string; url: string; retrievedAt: string; sha256: string; permittedUse: string; redistribution: string; attribution: string | null; note?: string | null };
+  /** A recorded decision NOT to serve a state whose licence is clear. */
+  servingDecision?: { decidedOn: string; state: string; reason: string; askedOfAuthority?: string };
 };
 const findings = new Map((mapLicences.findings as MapLicenceFinding[]).map((finding) => [finding.state, finding]));
 
@@ -173,9 +175,16 @@ export function certificationFor(code: string): StateCertification {
       : map === "UNAVAILABLE"
         /* A cleared licence is the one kind of "not built yet" worth telling
            apart from the other 43: nothing stands in the way but the work. */
-        ? (finding && findingPermits
-            ? `Licence permits reuse (${finding.licence.permittedUse}), read ${finding.licence.retrievedAt}; ${finding.geography.term} reviewed (${finding.geography.unitCount ?? "?"} units). Nothing blocks this state but the work.`
-            : "No reviewed geography service.")
+        ? (finding?.servingDecision
+            /* A cleared licence does not mean nothing else stands in the way.
+               Michigan's licence is clean and Michigan still cannot be served,
+               because the instrument rescinding two of its units has not been
+               read. Saying "nothing blocks this but the work" there would send
+               the next agent to build it. */
+            ? `${finding.servingDecision.reason}${finding.servingDecision.askedOfAuthority ? ` Asked of the authority: ${finding.servingDecision.askedOfAuthority}` : ""}`
+            : finding && findingPermits
+              ? `Licence permits reuse (${finding.licence.permittedUse}), read ${finding.licence.retrievedAt}; ${finding.geography.term} reviewed (${finding.geography.unitCount ?? "?"} units). Nothing blocks this state but the work.`
+              : "No reviewed geography service.")
         : null;
 
   const stateBundles = bundles[state] ?? [];

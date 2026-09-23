@@ -74,9 +74,15 @@ test("a state whose publisher refuses us is blocked by name, not left looking un
     const state = certificationFor(code);
     const permits = ["COMMERCIAL_PERMITTED", "PUBLIC_DOMAIN"].includes(finding.licence.permittedUse);
     if (permits) {
-      /* A cleared state is waiting on work, and says so — it is never
-         reported as blocked, and never as merely unexplored either. */
-      assert.match(state.map.detail!, /Nothing blocks this state but the work/, `${code} is cleared`);
+      /* A cleared state says what it is waiting on — never "blocked", never
+         merely "unexplored". Usually that is the work; where a serving
+         decision has been recorded against it, it is that decision instead,
+         because a clear licence is not a clear road. */
+      if (finding.servingDecision) {
+        assert.match(state.map.detail!, new RegExp(finding.servingDecision.reason.slice(0, 40).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `${code}'s recorded decision is what its row says`);
+      } else {
+        assert.match(state.map.detail!, /Nothing blocks this state but the work/, `${code} is cleared and waiting only on work`);
+      }
       continue;
     }
     // No layer is registered for any of the rest, and they are still not
@@ -85,6 +91,19 @@ test("a state whose publisher refuses us is blocked by name, not left looking un
     assert.match(state.map.detail!, new RegExp(finding.licence.statedAs.slice(0, 40).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
     assert.equal(state.regulations.status, "UNAVAILABLE", "no rules work is spent on a state we may not draw");
   }
+});
+
+test("a cleared licence is not a clear road: a recorded refusal to serve outranks it", () => {
+  /* Michigan's licence is a public record with no reuse restrictions, so the
+     report would otherwise say "nothing blocks this state but the work" — and
+     send the next agent to build a state whose unit list we cannot establish.
+     A recorded serving decision replaces that sentence. */
+  const finding = mapLicenceFindingFor("MI")!;
+  assert.ok(["COMMERCIAL_PERMITTED", "PUBLIC_DOMAIN"].includes(finding.licence.permittedUse), "MI's licence permits reuse");
+  const michigan = certificationFor("MI");
+  assert.equal(michigan.map.status, "UNAVAILABLE");
+  assert.doesNotMatch(michigan.map.detail!, /Nothing blocks this state but the work/);
+  assert.match(michigan.map.detail!, /not the instrument that decided it/);
 });
 
 test("a refusal and a silence are blocked differently, because they are undone differently", () => {
