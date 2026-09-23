@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import type { CanonicalId } from "../content-contract/index.ts";
-import { hasSpeciesCoverageIn, speciesSelectableIn } from "./coverage.ts";
+import { hasSpeciesCoverageIn, isCoordinate, speciesSelectableIn } from "./coverage.ts";
 import { ZONE_LAYERS } from "./zone-layers.ts";
 
 const BC = "jurisdiction:ca-bc" as CanonicalId<"jurisdiction">;
@@ -41,4 +41,17 @@ test("a species-scoped jurisdiction only offers the species it has geography for
       `${species} follows Newfoundland's served geographies`,
     );
   }
+});
+
+test("a number is not yet a coordinate, and \"not a coordinate\" is not \"not covered\"", () => {
+  assert.equal(isCoordinate(45, -77.8), true);
+  assert.equal(isCoordinate(-90, -180), true, "the poles and the antimeridian are places");
+  assert.equal(isCoordinate(90, 180), true);
+  for (const [lat, lng] of [[999, 0], [0, 400], [-91, 0], [0, -181], [NaN, 0], [Infinity, 0]]) {
+    assert.equal(isCoordinate(lat, lng), false, `${lat},${lng}`);
+  }
+  // A swapped pair can still be a real place; only the resolver can say it is not covered.
+  assert.equal(isCoordinate(-77.8, 45), true, "a lat/lng swap is a coordinate, just the wrong one");
+  assert.equal(isCoordinate("45", -77.8), false, "a string is not a coordinate");
+  assert.equal(isCoordinate(undefined, undefined), false);
 });

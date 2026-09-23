@@ -5,7 +5,6 @@ import type { Emphasis } from "../../lib/hunt/exploration/cartography";
 import type { BBox, DrawnZone } from "../../lib/hunt/exploration/geometry-store";
 import type { ExplorationEvent, ExplorationState, GeoPoint, SelfFailure } from "../../lib/hunt/exploration/map-state";
 import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
-import { servedJurisdictionList } from "../../lib/hunt/exploration/overview";
 import { OPENING_CAMERA, posterFrame } from "../../lib/hunt/exploration/overview-poster";
 import { mapLabelFor } from "../../lib/hunt/exploration/map-labels";
 import { EXPLORATION_WORDING, type ExplorationState as ZoneState } from "../../lib/hunt/exploration/states";
@@ -60,7 +59,7 @@ interface HuntMapViewProps {
   /** On first load with location permission already granted, centre on the device (camera only). */
   locateOnStart: boolean;
   /** The server-drawn official zones for the opening camera (a data URI), shown until the live map draws. */
-  poster: string | null;
+  poster: { uri: string; alt: string } | null;
   padding: () => Padding;
   /** How strongly the boundaries are drawn over the basemap. */
   emphasis: Emphasis;
@@ -74,7 +73,6 @@ interface HuntMapViewProps {
 
 const START: Viewport = { ...OPENING_CAMERA };
 const POSTER = posterFrame();
-const POSTER_ALT = `Official hunting-zone boundaries for ${servedJurisdictionList()}, shown while the interactive map loads.`;
 const SELF_FAILURES: Record<number, SelfFailure> = { 1: "denied", 2: "position", 3: "timeout" };
 
 function HuntMapView({
@@ -355,8 +353,8 @@ function HuntMapView({
       // eslint-disable-next-line @next/next/no-img-element
       <img
         className={styles.poster}
-        src={poster}
-        alt={POSTER_ALT}
+        src={poster.uri}
+        alt={poster.alt}
         width={POSTER.width}
         height={POSTER.height}
         decoding="sync"

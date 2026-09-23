@@ -1,4 +1,4 @@
-import { isWithinSupportedBounds } from "../../../../lib/hunt/coverage";
+import { isCoordinate, isWithinSupportedBounds } from "../../../../lib/hunt/coverage";
 import { resolveZone } from "../../../../lib/hunt/zone";
 import { resolvedZoneBody } from "../../../../lib/hunt/zone-response";
 import { layerForJurisdiction, layerForPoint, layerForResolution } from "../../../../lib/hunt/zone-layers";
@@ -67,6 +67,15 @@ export async function POST(request: Request): Promise<Response> {
   const includeGeometry = body.includeGeometry === true;
   if (typeof latitude !== "number" || typeof longitude !== "number" || !Number.isFinite(latitude) || !Number.isFinite(longitude)) {
     return json({ status: "ERROR", message: "Provide a numeric latitude and longitude." }, 400);
+  }
+  /* A number is not yet a coordinate. Without this, latitude 999 fell through
+     to the coverage test and came back UNSUPPORTED — "North Ground does not
+     publish boundaries for this area" — about somewhere that is not an area. */
+  if (!isCoordinate(latitude, longitude)) {
+    return json({
+      status: "ERROR",
+      message: "Latitude must be between -90 and 90, and longitude between -180 and 180.",
+    }, 400);
   }
 
   const rate = limiter.check(getClientAddress(request));

@@ -76,7 +76,17 @@ function authorityOf(layerId: string): string {
   return SERVED.find((layer) => layer.id === layerId)?.authority ?? "The authority";
 }
 
-export function useZoneGeometry(view: MapView | null, speciesId?: string | null) {
+/**
+ * Whether the ground a link's zone lives on has been asked for yet.
+ *
+ * "asking" and "unreachable" are both "we do not know"; only "answered" lets a
+ * caller conclude anything about a zone it cannot find.
+ */
+export type NeededGround = "idle" | "asking" | "answered" | "unreachable";
+
+const NEED_RETRY_MS = [1_500, 5_000, 15_000];
+
+export function useZoneGeometry(view: MapView | null, speciesId?: string | null, need?: BBox | null) {
   const storeRef = useRef<ZoneGeometryStore | null>(null);
   if (!storeRef.current) storeRef.current = new ZoneGeometryStore({ isClippedLayer: (layerId) => CLIPPED.has(layerId) });
   const store = storeRef.current;
@@ -247,6 +257,37 @@ export function useZoneGeometry(view: MapView | null, speciesId?: string | null)
     return () => window.clearTimeout(timer);
   }, [view, requestDetail, store, missingLayers, overview]);
 
+  /* ── Ground a link needs, wherever the map happens to be looking ──────
+   *
+   * A link names a zone; the map opens on a viewport. Those are different
+   * places, and a phone's opening viewport is a fraction of the country. Until
+   * this was asked for, a link to a British Columbia unit opened on a phone,
+   * failed to find the zone in what the phone had drawn, and told the hunter
+   * it was "not one North Ground draws" — about a zone North Ground draws.
+   * Not asked is not absent (§41A).
+   */
+  const [neededGround, setNeededGround] = useState<NeededGround>("idle");
+  const needBox = useMemo(() => (need ? requestBoxFor(need, 0, SERVED_EXTENT) : null), [need]);
+  const needKey = needBox ? boxKey(needBox) : null;
+  useEffect(() => {
+    if (!needBox || !needKey) { setNeededGround("idle"); return; }
+    let cancelled = false;
+    let attempt = 0;
+    let timer = 0;
+    setNeededGround("asking");
+    const ask = async () => {
+      await requestDetail(0, needBox);
+      if (cancelled) return;
+      if (answeredRef.current.has(`0|${needKey}`)) { setNeededGround("answered"); return; }
+      // Already in flight, or the authority did not answer: look again, then stop.
+      if (attempt >= NEED_RETRY_MS.length) { setNeededGround("unreachable"); return; }
+      timer = window.setTimeout(() => { void ask(); }, NEED_RETRY_MS[attempt]);
+      attempt += 1;
+    };
+    void ask();
+    return () => { cancelled = true; window.clearTimeout(timer); };
+  }, [needBox, needKey, requestDetail]);
+
   useEffect(() => () => {
     window.clearTimeout(detailRetryRef.current);
     for (const entry of inFlightRef.current.values()) entry.controller.abort();
@@ -275,5 +316,5 @@ export function useZoneGeometry(view: MapView | null, speciesId?: string | null)
     })),
   ], [missingLayers, simplifiedLayers]);
 
-  return { drawn, version, overview, notices, inView, zone, overlayLayers, extent: SERVED_EXTENT };
+  return { drawn, version, overview, notices, inView, zone, overlayLayers, neededGround, extent: SERVED_EXTENT };
 }

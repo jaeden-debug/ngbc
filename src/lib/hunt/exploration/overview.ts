@@ -124,8 +124,19 @@ export function servedGeometryVersion(): string {
   return hash.toString(16).padStart(8, "0");
 }
 
-/** Readers' names for the served jurisdictions: "Alberta, Manitoba, Ontario and Québec". */
-export function servedJurisdictionList(): string {
-  const names = [...new Set(SERVED.map((layer) => layer.jurisdictionName))].sort((a, b) => a.localeCompare(b, "en-CA"));
-  return names.length <= 1 ? names.join("") : `${names.slice(0, -1).join(", ")} and ${names.at(-1)}`;
+/** "Alberta, Manitoba, Ontario and Québec" from a set of names. */
+export function readAsList(names: Iterable<string>): string {
+  const sorted = [...new Set(names)].sort((a, b) => a.localeCompare(b, "en-CA"));
+  return sorted.length <= 1 ? sorted.join("") : `${sorted.slice(0, -1).join(", ")} and ${sorted.at(-1)}`;
+}
+
+/** Whose geography a set of drawn features is, by the layer each came from. */
+export function jurisdictionsDrawn(features: readonly { layerId: string }[]): string[] {
+  const byId = new Map(SERVED.map((layer) => [layer.id, layer.jurisdictionName]));
+  const names = new Set<string>();
+  for (const feature of features) {
+    const name = byId.get(feature.layerId);
+    if (name) names.add(name);
+  }
+  return [...names];
 }

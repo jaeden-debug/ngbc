@@ -263,6 +263,21 @@ export function isSupportedSpecies(value: unknown): value is SupportedSpeciesId 
  * inside a served layer's extent. Registry-driven, so serving a jurisdiction's
  * layer is what brings it into scope — no code change per province.
  */
+/**
+ * A pair that could name a place on Earth at all.
+ *
+ * Distinct from coverage on purpose. "We do not cover there" is a statement
+ * about North Ground; "that is not a coordinate" is a statement about the
+ * request. Answering the second with the first tells a caller whose latitude
+ * and longitude are swapped, or whose value is in the wrong unit, that we do
+ * not serve their area — and they go looking in the wrong place for the fault.
+ */
+export function isCoordinate(latitude: unknown, longitude: unknown): boolean {
+  return typeof latitude === "number" && typeof longitude === "number"
+    && Number.isFinite(latitude) && Number.isFinite(longitude)
+    && latitude >= -90 && latitude <= 90 && longitude >= -180 && longitude <= 180;
+}
+
 export function isWithinSupportedBounds(latitude: number, longitude: number): boolean {
   if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return false;
   const inside = (box: { minLatitude: number; maxLatitude: number; minLongitude: number; maxLongitude: number }) =>

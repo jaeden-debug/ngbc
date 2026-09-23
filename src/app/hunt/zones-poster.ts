@@ -1,6 +1,6 @@
 import { unstable_cache } from "next/cache";
 import { after } from "next/server";
-import { OPENING_BOX, OVERVIEW_ZOOM, servedGeometryVersion } from "../../lib/hunt/exploration/overview";
+import { jurisdictionsDrawn, OPENING_BOX, OVERVIEW_ZOOM, readAsList, servedGeometryVersion } from "../../lib/hunt/exploration/overview";
 import { posterDataUri, posterSvg } from "../../lib/hunt/exploration/overview-poster";
 import { fetchZoneGeometry } from "../../lib/hunt/zone-geometry";
 
@@ -21,11 +21,22 @@ import { fetchZoneGeometry } from "../../lib/hunt/zone-geometry";
  * version and the deployment, and it is revalidated as often as the zone
  * drawings themselves are cached at the edge.
  */
+/** The picture, and a description of the picture. */
+export interface Poster { uri: string; alt: string }
+
 const DEPLOYMENT = process.env.VERCEL_DEPLOYMENT_ID ?? process.env.VERCEL_GIT_COMMIT_SHA ?? "local";
-const cachedPoster = unstable_cache(async (): Promise<string> => {
+const cachedPoster = unstable_cache(async (): Promise<Poster> => {
   const result = await fetchZoneGeometry(OPENING_BOX, OVERVIEW_ZOOM);
   if (result.status !== "OK" || !result.features.length) throw new Error("The official geometry was incomplete; no poster.");
-  return posterDataUri(posterSvg(result.features));
+  /* The description is of THIS drawing, not of the served list. The two are not
+     the same thing: the opening box is a viewport, and a jurisdiction outside it
+     is served but not drawn. Naming it here would describe a picture that does
+     not contain it — to someone who cannot see that it does not. */
+  const drawn = jurisdictionsDrawn(result.features);
+  return {
+    uri: posterDataUri(posterSvg(result.features)),
+    alt: `Official hunting-zone boundaries for ${readAsList(drawn)}, shown while the interactive map loads.`,
+  };
 }, ["hunt-zones-poster", servedGeometryVersion(), DEPLOYMENT], { revalidate: 21_600 });
 
 /**
@@ -36,9 +47,9 @@ const cachedPoster = unstable_cache(async (): Promise<string> => {
  */
 const MEMORY_KEY = `${servedGeometryVersion()}:${DEPLOYMENT}`;
 const MEMORY_MS = 21_600_000;
-let memory: { key: string; value: string; expiresAt: number } | null = null;
+let memory: { key: string; value: Poster; expiresAt: number } | null = null;
 
-export async function zonesPoster(waitMs = 350): Promise<string | null> {
+export async function zonesPoster(waitMs = 350): Promise<Poster | null> {
   if (memory && memory.key === MEMORY_KEY && memory.expiresAt > Date.now()) return memory.value;
   const started = Date.now();
   const pending = cachedPoster().then((value) => {

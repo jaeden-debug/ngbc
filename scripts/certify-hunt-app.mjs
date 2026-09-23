@@ -511,6 +511,9 @@ const scenarios = {
     await page.getByRole("button", { name: /Menu/ }).first().click();
     await page.getByRole("button", { name: /Start over/ }).click();
     await page.waitForTimeout(1_200);
+    // The control that ran unmounted itself; focus has to come back somewhere real.
+    const afterStartOver = await page.evaluate(() => document.activeElement?.textContent?.trim() ?? document.activeElement?.tagName ?? "");
+    check(s, "start over returns focus to the menu, not to the top of the page", /Menu/.test(afterStartOver), afterStartOver);
     await page.goto(`${BASE}/hunt`);
     await mapReady(page);
     await page.waitForTimeout(1_500);
@@ -646,8 +649,12 @@ const scenarios = {
     const moose = page.getByRole("button", { name: /^Moose/ }).first();
     check(s, "a species can still be chosen", await moose.count() > 0);
     await moose.click();
-    await waitFor(page, () => /Not covered here/.test(document.querySelector("section[data-layout]")?.textContent ?? ""), 20_000);
-    const answer = await page.evaluate(() => document.querySelector("section[data-layout]")?.textContent?.replace(/\s+/g, " ") ?? "");
+    /* The ANSWER, not the sheet. The sheet also holds the zone's summary for
+       every species and the server-rendered explainer, both of which say
+       "In season" about other things — so reading the sheet would have this
+       check fail the moment a jurisdiction gains rules for anything. */
+    await waitFor(page, () => /Not covered here/.test(document.querySelector("[class*=answer][data-status]")?.textContent ?? ""), 20_000);
+    const answer = await page.evaluate(() => document.querySelector("[class*=answer][data-status]")?.textContent?.replace(/\s+/g, " ") ?? "");
     check(s, "the answer is an explicit UNKNOWN naming the authority",
       /Not covered here/.test(answer) && /Government of British Columbia/.test(answer), answer.slice(0, 120));
     check(s, "and never a season, a limit or a date",
@@ -719,6 +726,62 @@ const scenarios = {
       const response = await page.request.get(link);
       check(s, "the brief opens", response.status() === 200, `${response.status()} ${link}`);
     }
+    await context.close();
+  },
+
+  /* The date field was only ever exercised through the URL and through date.ts's
+     pure functions, so nobody had typed into it while it held a date — which is
+     the only state a hunter ever meets it in. It ignored every keystroke. */
+  async typingADate(browser) {
+    const s = "typing a date";
+    const { context, page, consoleErrors } = await newPage(browser, { width: 390, height: 844 });
+    await page.goto(`${BASE}/hunt?zone=ca-on-wmu-57&species=ruffed-grouse`);
+    await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "WMU 57", 30_000);
+    await page.locator("button[data-kind='date']").first().click();
+    const field = page.locator("input[placeholder='YYYY/MM/DD']");
+    const before = await field.inputValue();
+    check(s, "the field opens holding the day in view", /^\d{4}\/\d{2}\/\d{2}$/.test(before), before);
+
+    // One tap, eight digits, no separator key — the whole promise. The finished
+    // date commits and the page closes behind it, so the URL is the evidence.
+    await field.click();
+    await field.type("20261225");
+    const took = await waitFor(page, () => /date=2026-12-25/.test(location.search), 10_000);
+    check(s, "eight digits replace the day already there", took, page.url());
+    await page.locator("button[data-kind='date']").first().click();
+    check(s, "and the field comes back holding it", (await field.inputValue()) === "2026/12/25", await field.inputValue());
+
+    // A finished impossible date is refused with a reason, not rolled forward.
+    await field.click();
+    await field.type("20260231");
+    const refusal = await page.locator("[data-tone='error']").first().textContent().catch(() => "");
+    check(s, "February 31st is refused with the reason", /February 2026 has 28 days/.test(refusal ?? ""), refusal);
+    check(s, "and the refused date is not taken", /date=2026-12-25/.test(page.url()), page.url());
+    check(s, "no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));
+    await context.close();
+  },
+
+  /* A link names a zone. The map opens on a viewport. Once the opening request
+     became the viewport rather than the country, a phone opening a link to a
+     zone a province away found it in nothing it had drawn — and said so, in
+     those words, about a zone North Ground draws. */
+  async linkToADistantZone(browser) {
+    const s = "a link to a zone the opening view does not reach";
+    const { context, page } = await newPage(browser, { width: 390, height: 844 });
+    // The opening camera looks at central Canada; this unit is on the Pacific.
+    await page.goto(`${BASE}/hunt?zone=ca-bc-mu-1-15`);
+    await mapReady(page);
+    const restored = await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "MU 1-15", 40_000);
+    check(s, "a phone restores a zone outside its opening view", restored, String(await zoneTitle(page)));
+    check(s, "and the link keeps its zone", /zone=ca-bc-mu-1-15/.test(page.url()), page.url());
+    const notice = await page.evaluate(() => document.body.innerText);
+    check(s, "and is never told the zone is not one North Ground draws",
+      !/not one North Ground draws/.test(notice));
+
+    // A zone that really is not drawn is still refused, on the same screen.
+    await page.goto(`${BASE}/hunt?zone=ca-bc-mu-999-99`);
+    const refused = await waitFor(page, () => /not one North Ground draws/.test(document.body.innerText), 45_000);
+    check(s, "a zone that does not exist is still refused on a phone", refused);
     await context.close();
   },
 };

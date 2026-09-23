@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { ZONE_LAYERS } from "../zone-layers.ts";
-import { SERVED_EXTENT, servedGeometryVersion, servedJurisdictionList } from "./overview.ts";
+import { jurisdictionsDrawn, readAsList, SERVED_EXTENT, servedGeometryVersion } from "./overview.ts";
 import { OPENING_CAMERA, POSTER_BOX, posterFrame, posterSvg } from "./overview-poster.ts";
 
 test("the poster covers every served jurisdiction and holds the opening camera inside it", () => {
@@ -45,9 +45,25 @@ test("the data URI carries the SVG with only URI-unsafe characters escaped", asy
   assert.equal(decodeURIComponent(uri.slice("data:image/svg+xml,".length)), svg);
 });
 
-test("the poster's cache key moves with the served geometry, and its alt text names what it shows", () => {
+test("the poster's cache key moves with the served geometry", () => {
   assert.match(servedGeometryVersion(), /^[0-9a-f]{8}$/);
   assert.equal(servedGeometryVersion(), servedGeometryVersion(), "stable for the same served set");
-  const names = servedJurisdictionList();
-  for (const layer of ZONE_LAYERS.filter((entry) => entry.serving)) assert.ok(names.includes(layer.jurisdictionName), layer.jurisdictionName);
+});
+
+test("the poster is described by what it drew, never by what is served", () => {
+  /* The opening box is a viewport. A served jurisdiction outside it is not in
+     the picture, and naming it would describe a drawing that does not contain
+     it — to the one reader who cannot check. */
+  const served = ZONE_LAYERS.filter((entry) => entry.serving);
+  const first = served[0];
+  const drawn = jurisdictionsDrawn([{ layerId: first.id }, { layerId: first.id }]);
+  assert.deepEqual(drawn, [first.jurisdictionName], "one layer's features name one jurisdiction, once");
+  const absent = served.find((entry) => entry.jurisdictionName !== first.jurisdictionName);
+  if (absent) assert.ok(!drawn.includes(absent.jurisdictionName), "and no jurisdiction it did not draw");
+  // A layer that is not served cannot put a name in the description at all.
+  assert.deepEqual(jurisdictionsDrawn([{ layerId: "layer:not-a-layer" }]), []);
+  assert.equal(readAsList(["Ontario", "Alberta", "Ontario"]), "Alberta and Ontario");
+  assert.equal(readAsList(["Yukon", "Alberta", "Manitoba"]), "Alberta, Manitoba and Yukon");
+  assert.equal(readAsList(["Ontario"]), "Ontario");
+  assert.equal(readAsList([]), "");
 });

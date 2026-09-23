@@ -115,7 +115,7 @@ export interface HuntAppProps {
   /** Server-rendered explanation of what Hunt is and covers. */
   about: ReactNode;
   /** The official zones drawn for the opening camera, as a data URI, when the server has it ready. */
-  poster: string | null;
+  poster: { uri: string; alt: string } | null;
 }
 
 export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWithoutMedia, speciesMedia, authorities, initialDate, initialUrl, linkIssues, about, poster }: HuntAppProps) {
@@ -194,10 +194,31 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   const safeProbeRef = useRef<HTMLDivElement>(null);
   const previousSnapRef = useRef<SheetSnap>("peek");
 
+  const [linkZone, setLinkZone] = useState<{ ref: ZoneRef; status: "pending" | "done" | "missing" } | null>(() => {
+    const ref = initialUrl.zoneId ? zoneRefFromId(initialUrl.zoneId, SERVED) : null;
+    return ref ? { ref, status: "pending" } : null;
+  });
+  /* A zone this device remembers is confirmed the same way a link's is: by the
+     official geometry, before anything is highlighted. */
+  const setRestoredZoneId = useCallback((zoneId: string | null) => {
+    const ref = zoneId ? zoneRefFromId(zoneId, SERVED) : null;
+    setLinkZone(ref ? { ref, status: "pending" } : null);
+  }, []);
+
+  /* Where a named zone lives, so its ground can be asked for wherever the map
+     is looking. A link is a promise about a zone, not about a viewport. */
+  const needZone = useMemo(() => {
+    if (!linkZone || linkZone.status !== "pending") return null;
+    const layer = SERVED.find((entry) => entry.id === linkZone.ref.layerId);
+    return layer
+      ? { west: layer.bounds.minLongitude, south: layer.bounds.minLatitude, east: layer.bounds.maxLongitude, north: layer.bounds.maxLatitude }
+      : null;
+  }, [linkZone]);
+
   /* The drawn geography follows the species: Newfoundland writes its seasons
      in moose, caribou and bear areas, and the boundary under an answer has to
      be that species' own. */
-  const geometry = useZoneGeometry(view, session.speciesId);
+  const geometry = useZoneGeometry(view, session.speciesId, needZone);
 
   /* Warm the on-demand pages once the page has finished loading and the browser
      is idle — never while the map's own first load is still competing for the
@@ -542,17 +563,6 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
 
   /* ── Deep link: select the zone it names, once the geometry confirms it exists ── */
 
-  const [linkZone, setLinkZone] = useState<{ ref: ZoneRef; status: "pending" | "done" | "missing" } | null>(() => {
-    const ref = initialUrl.zoneId ? zoneRefFromId(initialUrl.zoneId, SERVED) : null;
-    return ref ? { ref, status: "pending" } : null;
-  });
-  /* A zone this device remembers is confirmed the same way a link's is: by the
-     official geometry, before anything is highlighted. */
-  const setRestoredZoneId = useCallback((zoneId: string | null) => {
-    const ref = zoneId ? zoneRefFromId(zoneId, SERVED) : null;
-    setLinkZone(ref ? { ref, status: "pending" } : null);
-  }, []);
-
   useEffect(() => {
     if (!linkZone || linkZone.status !== "pending") return;
     const key = zoneKeyOf(linkZone.ref);
@@ -563,7 +573,18 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
       return;
     }
     const layerMissing = geometry.notices.some((notice) => notice.layerId === linkZone.ref.layerId && notice.kind === "missing");
-    if (geometry.overview === "ready" && !layerMissing) {
+    /*
+     * "Not in what this screen drew" is not "not drawn": the map opens on a
+     * viewport, and the zone may be a province away from it. The store is asked
+     * for the zone's own ground (`needZone` below) and only its answer can rule
+     * a zone out — otherwise a phone told hunters that a British Columbia unit
+     * was not one North Ground draws.
+     */
+    if (geometry.neededGround === "unreachable" && !layerMissing) {
+      setLinkNotice("North Ground could not reach the authority's map service for the zone in this link. The link opened on the map instead.");
+      return;
+    }
+    if (geometry.neededGround === "answered" && !layerMissing) {
       setLinkZone({ ...linkZone, status: "missing" });
       setLinkNotice("The zone in this link is not one North Ground draws, so the link opened on the map instead.");
     }
@@ -1402,7 +1423,9 @@ function SiteMenu({ onStartOver }: { onStartOver: () => void }) {
               </Link>
             ))}
           </nav>
-          <button type="button" className={styles.menuAction} onClick={() => { setOpen(false); onStartOver(); }}>
+          {/* Escape returns focus here; so must this, or the control that ran
+              unmounts itself and leaves a keyboard user at the top of the page. */}
+          <button type="button" className={styles.menuAction} onClick={() => { setOpen(false); toggleRef.current?.focus(); onStartOver(); }}>
             Start over
             <span>Clears this device&apos;s hunt, recent searches and map position</span>
           </button>
