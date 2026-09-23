@@ -3,9 +3,47 @@
 This is the release gate for every served management-zone layer. A matching
 count is not certification.
 
+## Service parity is necessary and not sufficient
+
+Everything below treats the authority's own GIS service as the expected side.
+That is right about DRAWING and wrong about LAW, and the difference is not
+theoretical: Michigan's open-data layer still publishes deer management units
+351 and 352, stamped with the current year and edited the day before they were
+checked, which Michigan's own 2026 regulations say "have been rescinded"
+(verified 2026-09-23). Every step below passes on that layer. A hunter would be
+shown a rescinded unit as current, certified.
+
+So a map lane is certified only when BOTH hold:
+
+- **it draws what the service publishes** — the evidence below; and
+- **the service agrees with a regulatory product** — the regulations summary,
+  the hunting guide, or the regulation itself. The unit LIST is the thing to
+  check: does the authority's law still recognise every unit its GIS returns,
+  for the licence year being served?
+
+A layer with only the first is not thereby wrong. It is **unverified against
+the law**, which is a smaller claim than certification, and it must be recorded
+as the smaller claim rather than promoted to the larger one.
+
+Where the two disagree, the regulatory product wins and the difference is
+excluded by an **explicit, sourced list naming the instrument that changed it**
+— never by a rule inferred from the data. Inferring which units are stale from
+their numbers, their edit dates or their name text is the same mistake in a new
+place: the data is what is wrong, so the data cannot be the test.
+
+### What each served layer was actually certified against
+
+| Layer | Draws what the service publishes | Agrees with a regulatory product |
+| --- | --- | --- |
+| `layer:us-id-gmu` | Yes — 99 units, 708 points, 0 disagreements, Yellowstone National Park quarantined as drawn-but-not-a-unit (`fixtures/hunt/us-id-gmu-live-parity.json`, 2026-09-21) | **PARTIAL.** The 2026 Big Game booklet and IDFG's Hunt Planner were read for pronghorn and cross-checked with 0 disputes, which reached 42 of the 99 units (`content/regulatory/us-id-certified-units.json`). The remaining 57 units are drawn and resolvable but have never been checked against any regulatory product, and the unit list as a whole was validated against the service alone. |
+
+Idaho's rules lane is honest about this already: a unit outside
+`certifiedUnits` answers UNKNOWN rather than guessing. The gap is the map lane,
+where "unit 1 exists in 2026" currently rests on IDFG's GIS and nothing else.
+
 ## Authority-first evidence
 
-The government layer is always the expected side. North Ground's PostGIS rows,
+The government layer is always the expected side FOR DRAWING (see above). North Ground's PostGIS rows,
 resolver, map API and labels are systems under test. A run must:
 
 1. read the complete authority layer with a count/identifier completeness check;
