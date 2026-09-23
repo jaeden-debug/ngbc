@@ -13,17 +13,52 @@ checked, which Michigan's own 2026 regulations say "have been rescinded"
 (verified 2026-09-23). Every step below passes on that layer. A hunter would be
 shown a rescinded unit as current, certified.
 
-So a map lane is certified only when BOTH hold:
+These are **two certifications, not one widened one** — the same reasoning
+that split `serving` from `rulesServing`. A layer carries two independent
+facts:
 
-- **it draws what the service publishes** — the evidence below; and
-- **the service agrees with a regulatory product** — the regulations summary,
-  the hunting guide, or the regulation itself. The unit LIST is the thing to
-  check: does the authority's law still recognise every unit its GIS returns,
-  for the licence year being served?
+- **MAP CERTIFIED: SERVICE** — North Ground draws what the authority's service
+  publishes. Everything below is the evidence for this, and it is the only
+  question the existing audit can answer.
+- **MAP CERTIFIED: LAW** — the service itself agrees with a regulatory product:
+  the regulations summary, the hunting guide, or the regulation. The unit LIST
+  is the thing to check, because that is what a rescission changes: does the
+  authority's law still recognise every unit its GIS returns, for the licence
+  year being served?
 
-A layer with only the first is not thereby wrong. It is **unverified against
-the law**, which is a smaller claim than certification, and it must be recorded
-as the smaller claim rather than promoted to the larger one.
+A layer holding only the first is not thereby wrong. It is **unverified against
+the law**, which is a smaller claim than certification, and it must read as the
+smaller claim rather than be promoted to the larger one. Keeping them separate
+is what makes that possible: one fact cannot be quietly satisfied by the other.
+
+*(Not built. The owner decides the ordering of a second certification pass
+across every existing lane. This section states the shape so that whatever is
+built matches it, and so that nothing is certified against the law by accident
+of wording in the meantime.)*
+
+### Where every lane actually stands, 2026-09-23
+
+**Every certified layer in the product is SERVICE-ONLY.** All twelve Canadian
+spatial certifications and Idaho's. This is true by construction, not by
+oversight: `audit-zone-certification.mjs` asks the authority's SERVICE for its
+inventory and resolves its parity points against that same service, so "does
+our copy match the service" is the only question it is capable of asking. Every
+fixture's `sourceUrl` is a GIS endpoint.
+
+Incidental law cross-checks that do exist, recorded so nobody re-derives them
+and so nobody mistakes them for certification:
+
+- **Prince Edward Island** — "publishes no hunting zones" came from the Hunting
+  Regulations text itself. Law-verified, but about EXISTENCE, not inventory.
+- **British Columbia** — the rules bundle carries 225 `officialIdentifiers`
+  from B.C. Reg. 190/84 and the service returns 225. The spatial certification
+  never consults it, so the agreement is real but unused.
+- **Alberta** — checked against Migratory Birds Regulations Schedule 3 as a
+  by-product of other work.
+- **Yukon** — "443 subzones Yukon states" does not record WHERE Yukon states
+  it. That is its own finding, not a cross-check.
+- **Ontario, Québec, Manitoba, New Brunswick, Newfoundland** — none of any
+  kind.
 
 Where the two disagree, the regulatory product wins and the difference is
 excluded by an **explicit, sourced list naming the instrument that changed it**
@@ -33,7 +68,7 @@ place: the data is what is wrong, so the data cannot be the test.
 
 ### What each served layer was actually certified against
 
-| Layer | Draws what the service publishes | Agrees with a regulatory product |
+| Layer | MAP CERTIFIED: SERVICE | MAP CERTIFIED: LAW |
 | --- | --- | --- |
 | `layer:us-id-gmu` | Yes — 99 units, 708 points, 0 disagreements, Yellowstone National Park quarantined as drawn-but-not-a-unit (`fixtures/hunt/us-id-gmu-live-parity.json`, 2026-09-21) | **PARTIAL.** The 2026 Big Game booklet and IDFG's Hunt Planner were read for pronghorn and cross-checked with 0 disputes, which reached 42 of the 99 units (`content/regulatory/us-id-certified-units.json`). The remaining 57 units are drawn and resolvable but have never been checked against any regulatory product, and the unit list as a whole was validated against the service alone. |
 
