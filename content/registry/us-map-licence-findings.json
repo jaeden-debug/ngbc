@@ -49,6 +49,36 @@
         "redistribution": "PERMITTED",
         "attribution": "Michigan Department of Natural Resources (no attribution is required; the credit is carried because provenance is shown for every layer). The grant does not extend to State maps, logos or marks, so none is shown.",
         "note": "A grant, stated plainly: \"This dataset is a public record and \u2026 there are no restrictions on the use, reproduction, or distribution of this dataset.\" Use and redistribution are both permitted, which makes Michigan the first U.S. state whose geometry North Ground could lawfully store \u2014 though the owner's standing decision keeps U.S. layers live-service only, so that permission is held in reserve rather than acted on. Read on the dataset's own ArcGIS item; michigan.gov refuses automated clients, so the terms were read in the browser pane rather than by script. Two facts to carry into the build, not blockers: the Wildlife Conservation Order ch. XII written descriptions are the law and the mapped units are \"condensed summaries\", and the still-published LimitedFirearmZoneBoundary layer was eliminated by regulation for 2026 and must not be drawn. A point at the Lansing capitol returns THREE overlapping DMUs (033 Ingham County, 486 Southern Lower Peninsula, 333 Lansing CWD core) \u2014 a legitimate nesting of county, multicounty and disease geography, not a data conflict, and a state that will exercise overlapping-zone resolution properly."
+      },
+      "servingDecision": {
+        "decidedOn": "2026-09-24",
+        "state": "UNAVAILABLE",
+        "reason": "Michigan is NOT served, and the licence is not what blocks it \u2014 the licence is clear. The rescission of DMU 351 and DMU 352 is established as a FACT but not as an INSTRUMENT. Minutes of the adopting vote are evidence that a thing was decided; they are not the instrument that decided it. Nobody has read the repealing sentence, and there is no effective date. There is no version of serving this that is honest.",
+        "exclusionList": {
+          "codes": [
+            "351",
+            "352"
+          ],
+          "instrument": "Wildlife Conservation Order Amendment No. 6 of 2026, as amended from the floor and adopted by the Natural Resources Commission on 2026-05-13",
+          "evidenceTier": "MINUTES_OF_ADOPTING_VOTE",
+          "quote": "Commissioner Walters motioned to amend Wildlife Conservation Order Amendment No. 6 of 2026 to rescind Deer Management Units (DMUs) 351 and 351 in the Upper Peninsula. Commissioner Fewins supported the motion. \u2026 The motion to approve the amendment passed by a vote of 6 to 1.",
+          "quoteNote": "\"351 and 351\" is verbatim; the second is a source typo for 352.",
+          "url": "https://www.michigan.gov/dnr/-/media/Project/Websites/dnr/Documents/Boards/NRC/2026/June-2026/Minutes_May_2026_Draft.pdf",
+          "corroboration": "MDNR news release, 2026-05-15: \"Deer Management Units 351 and 352 have been rescinded.\"",
+          "alsoRescinded": "The limited firearms deer zone, by a separate floor motion, also 6-1.",
+          "effectiveDate": "UNKNOWN. \"Sept. 12, 2026\" in the regulations summary is the Liberty Hunt opening day, not an order effective date \u2014 a plausible-wrong number that would have become our effective date had anyone been moving faster.",
+          "conformedTextRead": false,
+          "conformedTextNote": "The conformed text as adopted is NOT PUBLISHED so far as we can establish: nine filename variants were probed across five 2026 NRC folders and all returned 404. Recorded as UNREAD, not as non-existent \u2014 'we could not read it' is never 'it does not exist'. The candidate Signed_06WCO2026_Action_Edited.pdf is the right amendment number and the wrong version: it predates the meeting (ModDate 2026-04-15) and still contains sections 3.124, 12.483, 12.484, 1.2(17) and 2.1(4) unstruck."
+        },
+        "neverCertifyFrom": "THE CONSOLIDATED WILDLIFE CONSERVATION ORDER. WCO.pdf and every chapter PDF carry amendment history only through Am. 5 of 2026 (eff. 2026-04-08) and still contain the rescinded sections 3.124, 12.483 and 12.484 and the eliminated limited-firearms-zone definitions 1.2(17) and 2.1(4). It is the obvious document for a future agent to reach for, and certifying Michigan deer from it would reproduce exactly the defect this decision refuses to ship.",
+        "precedence": {
+          "stated": false,
+          "evidence": "Not merely unfound \u2014 absent by drafting choice, which is a stronger finding. Across 183 pages: 'precedence' 0 hits, 'supersede' 0, 'most restrictive' 0, 'shall govern' 0, 'shall control' 0, 'overlap' 0. The single 'more restrictive \u2026 shall prevail' concerns federal versus state migratory-bird permits, not geography. Where the drafters wanted mutual exclusion they wrote it into the definitions \u2014 \u00a712.19b defines its unit as counties 'except those lands defined in section 12.33a' \u2014 so the absence elsewhere is deliberate. Units 486, 487, 499 and 333 genuinely overlap the county units and nothing resolves them: evaluate every containing unit and return CONFLICT."
+        },
+        "kindNotDerivable": "A unit's kind must be assigned per Chapter XII section and stored as data, never inferred. Decisive on its own: the layer contains code 261, which does not occur anywhere in the Wildlife Conservation Order. The GIS also contradicts the Order twice \u2014 DMU-499's GIS heading says 'Urban deer management zone' while \u00a712.499's operative sentence defines a 'January archery deer management zone', and 359's number never appears in the body of its own section. Number ranges do not encode kind either (349/351, 354/359 and 486/487/499 are different kinds within the same hundreds).",
+        "unitsThatGovernNothing": "DMU-486 governs nothing in the Order: the string 486 occurs only inside \u00a712.486 itself. It is a licence-administration and mapping construct. DMU-487 by contrast is a row in \u00a73.105a Table 4, which is why an antlerless licence for it is sellable.",
+        "lowerPeninsulaIsCounty": "CONFIRMED from the Order's own words: 'establish limits on the number of universal antlerless deer licenses that hunters could use for each deer management unit in the Upper Peninsula and each county in the Lower Peninsula.' The Order's table is literally keyed two ways \u2014 the UP column headed 'Deer Management Unit', the LP column headed 'County'. Fifteen Lower Peninsula DMUs (161, 162, 261, 262, 311, 312, 332, 341, 354, 359, 361, 452, 486, 487, 499) are not coterminous with counties, so a county-keyed limit CANNOT be resolved by DMU lookup. Michigan's Lower Peninsula cannot be answered until county geography exists, with its own licence reviewed to the same standard as any unit layer.",
+        "askedOfAuthority": "The conformed text of WCO Amendment No. 6 of 2026 as adopted, and its effective date."
       }
     },
     {

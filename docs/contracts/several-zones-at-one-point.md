@@ -119,10 +119,28 @@ containment is necessary, not sufficient. `ST_Contains` settled it at zero.
 Québec 02E/02EI, Ontario 46/53B and Manitoba 14/14A all look like nesting BY
 NAME and are not by geometry.
 
-**Precedence is a separate question from nesting, and its absence is recorded.**
-`governing` appears only when an authority's own words say which of its units
-prevails — quoted, cited. Where no such provision exists, `governing` is absent
-and the answer still stands: *these three all apply, and here is how they nest*
+**Precedence is a separate question from nesting, and its absence is recorded
+as a finding rather than as a failure to find.** `governing` appears only when
+an authority's own words say which of its units prevails — quoted, cited.
+
+Michigan, read 2026-09-24, is the worked example and it settles the default on
+evidence rather than on caution. Across 183 pages of the Wildlife Conservation
+Order: `precedence` 0 hits, `supersede` 0, `most restrictive` 0, `shall govern`
+0, `shall control` 0, `overlap` 0. The single "more restrictive … shall
+prevail" concerns federal versus state migratory-bird permits, not geography.
+
+What makes that conclusive rather than merely negative: **where the drafters
+wanted mutual exclusion, they wrote it into the definitions.** §12.19b defines
+its unit as named counties "except those lands defined in section 12.33a". So
+the absence elsewhere is a drafting choice, not an omission — units 486, 487,
+499 and 333 genuinely overlap the county units and nothing resolves them.
+
+The rule therefore stands on evidence: evaluate every containing unit and
+return CONFLICT. That matters because a rule justified only by caution is one a
+later agent can decide to trade away.
+
+Where no provision exists, `governing` is absent and the answer still stands:
+*these three all apply, and here is how they nest*
 is useful, and is the truth. An absent precedence rule is recorded as
 **explicitly absent**, not as not-yet-found, so nobody re-reads the same order
 hoping for a different result.
@@ -206,9 +224,33 @@ between authorities, specialization within a nested layer, and this, which is
 so far unnamed. Naming it is out of scope here; mistaking it for either of the
 others is what this paragraph exists to prevent.
 
-It is recorded here because it is the strongest evidence for the rule above:
-precedence is never inferable from unit numbers, because the governing unit may
-not be a unit.
+**The worked example, confirmed from the Order itself 2026-09-24.** Michigan's
+own table is keyed two ways: the Upper Peninsula column is headed "Deer
+Management Unit" and the Lower Peninsula column is headed "County". The Order's
+words are "each deer management unit in the Upper Peninsula and each county in
+the Lower Peninsula".
+
+Fifteen Lower Peninsula DMUs — 161, 162, 261, 262, 311, 312, 332, 341, 354,
+359, 361, 452, 486, 487 and 499 — are not coterminous with counties. So a
+county-keyed limit **cannot be resolved by DMU lookup at all**. This is not a
+presentation problem and not a nesting problem: it is a rule whose geography
+North Ground does not hold.
+
+The consequence is plain and is not deferred: **Michigan's Lower Peninsula
+cannot be answered until county geography exists**, with its own licence
+reviewed to the same standard as any hunting-unit layer. A state GIS office's
+county layer is not automatically reusable, and a rule's geography being
+"just counties" does not make it free.
+
+What stays deferred is the MECHANISM — how the model expresses a rule whose
+geography is a different layer from the one the hunt resolves in. That is
+composition across layers, it is neither conjunction nor specialization, and it
+needs its own answer rather than being forced into containment because
+containment is the mechanism that exists.
+
+It is recorded here because it is also the strongest evidence for the rule
+above: precedence is never inferable from unit numbers, because the governing
+unit may not be a unit.
 
 ## Open questions
 
