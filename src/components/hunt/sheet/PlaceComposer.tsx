@@ -175,6 +175,7 @@ export default function PlaceComposer({
       setActiveIndex((index) => (index <= 0 ? suggestions.length - 1 : index - 1));
     } else if (event.key === "Enter" && activeIndex >= 0) {
       event.preventDefault();
+      inputRef.current?.blur();
       void choose(suggestions[activeIndex]);
     }
   }
