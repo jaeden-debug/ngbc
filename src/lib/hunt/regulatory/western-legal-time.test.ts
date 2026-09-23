@@ -3,7 +3,7 @@ import { test } from "node:test";
 import { readFileSync } from "node:fs";
 import type { IsoDate } from "../../content-contract/index.ts";
 import type { PointTimeZone } from "../time-zone.ts";
-import { legalTimeFor, SOLAR_UNCERTAINTY_MINUTES } from "./legal-time.ts";
+import { legalTimeFor, legalTimeSummary, SOLAR_UNCERTAINTY_MINUTES } from "./legal-time.ts";
 import { albertaHoursRules, ALBERTA_GENERAL_HOURS } from "./alberta-legal-time.ts";
 import { manitobaHoursRules, MANITOBA_GENERAL_HOURS } from "./manitoba-legal-time.ts";
 import { britishColumbiaHoursRules, BRITISH_COLUMBIA_GENERAL_HOURS } from "./british-columbia-legal-time.ts";
@@ -207,5 +207,31 @@ test("Montana's hours reach upland game birds and stop there", () => {
 
   for (const outside of ["species:white-tailed-deer", "species:moose", "species:american-black-bear"]) {
     assert.deepEqual(montanaHoursRules(outside, iso("2026-10-15")), [], `${outside} is not an upland game bird`);
+  }
+});
+
+test("no timezone, no window — for every jurisdiction, not just the one that had the bug", () => {
+  /*
+   * `britishColumbiaLegalTime` handed an undefined zone returned RESOLVED and
+   * rendered "09:35 to 22:20 (undefined)" — a thirteen-hour window computed
+   * against UTC, telling a hunter it was lawful to shoot until 22:20. It read
+   * as an answer rather than an error.
+   *
+   * The guard used to live in each CALLER, which is the arrangement where the
+   * next jurisdiction wired up inherits the bug. It now lives in `legalTimeFor`,
+   * so this asserts the chokepoint across every rule rather than patching BC.
+   */
+  const rules = [
+    ALBERTA_GENERAL_HOURS,
+    MANITOBA_GENERAL_HOURS,
+    BRITISH_COLUMBIA_GENERAL_HOURS,
+    MONTANA_UPLAND_HOURS,
+  ];
+  for (const rule of rules) {
+    const result = legalTimeFor(rule, KAMLOOPS, iso("2026-10-15"), undefined);
+    assert.equal(result.status, "NOT_CERTIFIED", `${rule.section} must refuse without a timezone`);
+    assert.doesNotMatch(legalTimeSummary(result), /undefined/, "no answer may contain the word undefined");
+    /* Refusing a clock is not refusing to say what the law is. */
+    assert.match(legalTimeSummary(result), /wall-clock/);
   }
 });

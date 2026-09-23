@@ -167,8 +167,31 @@ export function legalTimeFor(
   rule: LegalTimeRule,
   point: { latitude: number; longitude: number },
   date: IsoDate,
-  timezone: PointTimeZone,
+  timezone: PointTimeZone | undefined,
 ): LegalTimeResult {
+  /*
+   * A WINDOW IS A WALL-CLOCK TIME, SO WITHOUT A ZONE THERE IS NO WINDOW.
+   *
+   * `timezone` is branded, so the compiler stops an ordinary string — but a
+   * caller holding `PointTimeZone | undefined` from `timeZoneAtPoint` can pass
+   * the undefined through, and every jurisdiction that resolves its own zone
+   * holds exactly that. Until now the guard lived in each CALLER, which is the
+   * arrangement where the next jurisdiction to be wired up inherits the bug.
+   *
+   * Handed nothing, this computed against UTC and returned RESOLVED: British
+   * Columbia rendered "09:35 to 22:20 (undefined)", a thirteen-hour window
+   * telling a hunter it is lawful to shoot until 22:20. It read as an answer,
+   * not as an error, which is the failure this whole module is built to avoid.
+   */
+  if (!timezone) {
+    return legalTimeNotCertified(
+      "North Ground cannot state a legal hunting window without the timezone at the hunt location, because the " +
+        "window is a wall-clock time.",
+      "North Ground",
+      rule.sourceId,
+    );
+  }
+
   const [year, month, day] = date.split("-").map(Number);
 
   if (rule.basis === "FIXED_LOCAL_TIMES") {
