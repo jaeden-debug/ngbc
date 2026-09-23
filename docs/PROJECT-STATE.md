@@ -1361,6 +1361,25 @@ recurring in new disguises.
 proven otherwise.** And before reporting a defect from a measurement, confirm
 the harness asked the question the product answers.
 
+### A count that moves because the classifier reordered is not a count that moved
+
+*2026-09-23.* Refusal buckets are now something work is prioritised from — 53 of
+84 refusals being one thing is what identified relative dates as a missing
+capability rather than a pile of oddities. That makes bucket arithmetic
+load-bearing, and it has a trap.
+
+The federal area check runs BEFORE the residency and window checks, so when it
+was added, rows refused for those reasons that ALSO named a refused district
+moved into the area bucket. Across that one commit "the limit or season varies
+by residency" read 23 → 15 and "the season is not a plain calendar window" read
+27 → 22. **Those rows did not become readable.** They were reclassified to the
+first reason that applies, and anyone comparing the two commits would read an
+improvement that did not happen.
+
+A bucket's size is comparable only against itself **under an unchanged
+classifier**. When the order changes, say so beside the numbers. Full statement
+in `docs/contracts/relative-season-dates.md`.
+
 ### A refusal can rest on a reason that is about to stop being true
 
 *2026-09-23.* One level up from the test whose premise expired, and the same
