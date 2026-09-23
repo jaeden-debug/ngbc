@@ -899,7 +899,11 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
         camera: view ? { latitude: (view.box.north + view.box.south) / 2, longitude: (view.box.east + view.box.west) / 2, zoom: view.zoom } : null,
         overlays: overlaysOn,
         emphasis,
-        snap,
+        /* A dismissed sheet is not a remembered height. Coming back to a map
+           with no sheet would look like the app had failed to restore
+           anything, so a device that was left closed returns at peek — with
+           whatever it remembers, which is the point of remembering. */
+        snap: snap === "closed" ? "peek" : snap,
         explore: session.explore,
         recents,
       });
@@ -1121,7 +1125,15 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
         <button type="button" className={styles.iconButton} onClick={() => void share()} aria-label={`Share ${presented.fullLabel}${species ? `, ${species.displayName}` : ""}`}>
           <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="M8 10V2M5 5l3-3 3 3M3 8v5h10V8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </button>
-        <button type="button" className={styles.iconButton} onClick={() => { dispatchMap({ type: "CARD_CLOSED" }); setSnap("peek"); }} aria-label={`Close ${presented.fullLabel}`}>
+        {/*
+          X means X (owner, 2026-09-23).
+
+          It used to drop to a short sheet that still carried the last species
+          and the whole explainer — which is not closing anything. It now
+          dismisses the card, forgets the species with it so reopening never
+          shows a previous hunt's animal, and leaves the map.
+        */}
+        <button type="button" className={styles.iconButton} onClick={() => { dispatchMap({ type: "CARD_CLOSED" }); dispatchSession({ type: "SPECIES_CLEARED" }); setSnap("closed"); }} aria-label={`Close ${presented.fullLabel}`}>
           <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" fill="none"><path d="m2 2 8 8M10 2l-8 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
         </button>
       </div>
@@ -1244,15 +1256,11 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
         ) : (
           <p className={styles.answerLoading} role="status"><span className={styles.spinner} aria-hidden="true" /> Reading the certified rules for this zone…</p>
         )}
-        {/* Reachable from every zone state: without this row, a zone card with no
-            species chosen offered no way to use your own location at all. */}
-        <div className={styles.actionsRow}>
-          <button type="button" className="ng-action" onClick={chooseOnMap}>Check an exact spot</button>
-          <button type="button" className="ng-action-quiet" onClick={useMyLocation} disabled={locate.kind === "locating"}>
-            {locate.kind === "locating" ? "Finding you…" : "Use my location"}
-          </button>
-        </div>
-        {locate.kind === "error" ? <p className={styles.quiet} role="status">{locate.message}</p> : null}
+        {/* The two actions that used to sit here are inside the composer above,
+            which is on this card too: `Use my location` and `Choose a spot on
+            the map` are rows in the field a hunter opens to search. Offering
+            them twice is what the owner meant by "too much", and the composer
+            already carries their explanation and their failure messages. */}
         {detailed && summaryReady && !pointForEvaluation ? <ZoneSummaryDetail summary={summaryReady} parts={storedSelected?.parts} /> : null}
         {!detailed && summaryReady && !pointForEvaluation ? (
           <button type="button" className={styles.moreButton} onClick={() => setSnap("full")}>

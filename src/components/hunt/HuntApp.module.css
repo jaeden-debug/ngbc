@@ -1253,3 +1253,12 @@
   cursor: pointer;
 }
 .viewAllSpecies:hover { border-color: var(--ng-bone-dim); }
+
+/* Remembered places, bounded. Beyond about five rows the list scrolls rather
+   than growing the card past the two actions underneath it. */
+.recentScroll {
+  max-height: 232px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}

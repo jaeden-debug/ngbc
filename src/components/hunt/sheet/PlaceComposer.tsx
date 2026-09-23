@@ -288,8 +288,19 @@ export default function PlaceComposer({
           ) : null}
         </ul>
       ) : (
-        <ul className={styles.optionList} aria-label="Other ways to choose a place">
-          {recents.length ? (
+        <>
+        {/*
+          Recents scroll; the two ways in do not.
+
+          A pile of remembered places used to make the card as tall as the pile
+          (owner, 2026-09-23), which pushed `Use my location` and `Choose a spot
+          on the map` off the bottom — the two things a hunter with no place in
+          mind is looking for. The list gets a bounded, scrollable region and
+          the two actions sit under it where they can always be reached.
+        */}
+        {recents.length ? (
+        <div className={styles.recentScroll}>
+        <ul className={styles.optionList} aria-label="Recent searches">
             <>
               <li className={styles.optionGroup} role="presentation">
                 <span>Recent</span>
@@ -314,7 +325,10 @@ export default function PlaceComposer({
                 </li>
               ))}
             </>
-          ) : null}
+        </ul>
+        </div>
+        ) : null}
+        <ul className={styles.optionList} aria-label="Other ways to choose a place">
           <li>
             <button type="button" className={styles.optionRow} onClick={onUseMyLocation} disabled={locating} aria-busy={locating || undefined}>
               <span className={styles.optionIcon} data-tone="location" aria-hidden="true">
@@ -344,6 +358,7 @@ export default function PlaceComposer({
           </li>
           {locateMessage ? <li className={styles.inlineNotice} role="status">{locateMessage}</li> : null}
         </ul>
+        </>
       )}
         </>
       ) : locateMessage ? (

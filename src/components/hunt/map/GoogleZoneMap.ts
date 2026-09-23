@@ -440,8 +440,18 @@ export class GoogleZoneMap {
       if (!centre) return;
       const wanted = { lat: (box.north + box.south) / 2, lng: (box.east + box.west) / 2 };
       const span = Math.max(box.east - box.west, 0.05);
-      // Off by more than the box is wide: the framing did not take.
-      if (Math.abs(centre.lng() - wanted.lng) > span) this.fitAndConfirm(bounds, box, padding, false);
+      /*
+       * Off by more than the box is wide, in EITHER direction: the framing did
+       * not take. Longitude alone was checked, which catches a clamp along the
+       * antimeridian but not a map that has landed somewhere unrelated — a
+       * view over the Atlantic differs from a Québec zone in both numbers, and
+       * checking one of them let that through. A map resting somewhere nobody
+       * asked about, under a card that answers about a zone, is the map and
+       * the sheet disagreeing about what the screen is about.
+       */
+      const latitudeSpan = Math.max(box.north - box.south, 0.05);
+      const missed = Math.abs(centre.lng() - wanted.lng) > span || Math.abs(centre.lat() - wanted.lat) > latitudeSpan;
+      if (missed) this.fitAndConfirm(bounds, box, padding, false);
     });
   }
 

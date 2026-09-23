@@ -95,6 +95,17 @@ async function mapReady(page) {
 }
 
 /** Press "Use my location", wherever this state keeps it. */
+/*
+ * Choosing an exact spot the way a hunter now does. The card's two buttons are
+ * gone (owner, 2026-09-23) because the composer already offers both: the ways
+ * in live inside the field someone opens to search.
+ */
+async function chooseOnMap(page) {
+  await page.locator("input[type='search']").first().click();
+  await page.waitForTimeout(400);
+  await page.getByRole("button", { name: /Choose a spot on the map/ }).first().click();
+}
+
 async function pressUseMyLocation(page) {
   const direct = page.getByRole("button", { name: /Use my location/ });
   if (await direct.count() && await direct.first().isVisible().catch(() => false)) {
@@ -761,7 +772,7 @@ const scenarios = {
     const { context, page, requests } = await newPage(browser, { geolocation: OTTAWA, permissions: ["geolocation"] });
     await page.goto(`${BASE}/hunt?zone=ca-on-wmu-57&species=ruffed-grouse`);
     await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "WMU 57", 30_000);
-    await page.getByRole("button", { name: "Check an exact spot" }).click();
+    await chooseOnMap(page);
     await page.getByRole("button", { name: "Check this spot" }).click();
     const answered = await waitFor(page, () => /In season/.test(document.querySelector("[class*=answerStatus]")?.textContent ?? ""), 30_000);
     check(s, "the chosen spot is evaluated", answered);
@@ -802,7 +813,7 @@ const scenarios = {
     const { context, page, requests } = await newPage(browser, { width: 1280, height: 800 });
     await page.goto(`${BASE}/hunt?zone=ca-on-wmu-57&species=ruffed-grouse`);
     await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "WMU 57", 30_000);
-    await page.getByRole("button", { name: "Check an exact spot" }).click();
+    await chooseOnMap(page);
     await page.getByRole("button", { name: "Check this spot" }).click();
     await waitFor(page, () => /In season/.test(document.querySelector("[class*=answerStatus]")?.textContent ?? ""), 30_000);
     // The long form carries the brief, as it carries the sources; a wide panel already shows it.
@@ -879,6 +890,42 @@ const scenarios = {
     await context.close();
   },
 
+  /* X has to mean X (owner, 2026-09-23): the card goes, the map comes back, and
+     what comes back when the sheet is raised again is not the last hunt. */
+  async closingMeansClosed(browser) {
+    const s = "X closes the card";
+    const { context, page, consoleErrors } = await newPage(browser, { width: 390, height: 844 });
+    await page.goto(`${BASE}/hunt?zone=ca-qc-zone-10o&species=ruffed-grouse`);
+    await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "Zone 10 West", 40_000);
+    await waitFor(page, () => Boolean(document.querySelector("[class*=answerStatus]")), 30_000);
+
+    await page.getByRole("button", { name: /^Close Zone 10 West/ }).click();
+    await page.waitForTimeout(1_200);
+    const closed = await page.evaluate(() => {
+      const sheet = document.querySelector("section[data-layout]");
+      return {
+        snap: sheet?.getAttribute("data-snap"),
+        showing: (sheet?.innerText ?? "").trim().length,
+        species: /Ruffed grouse/.test(document.body.innerText),
+        mapBelow: Math.round(window.innerHeight - (sheet?.getBoundingClientRect().top ?? 0)),
+      };
+    });
+    check(s, "the sheet is dismissed, not shortened", closed.snap === "closed" && closed.showing === 0, JSON.stringify(closed));
+    check(s, "and it leaves the map, not a wall of explanation", closed.mapBelow < 100, JSON.stringify(closed));
+    check(s, "the species goes with the card it was answering in", closed.species === false, JSON.stringify(closed));
+
+    await page.getByRole("button", { name: "Open the panel" }).click();
+    await waitFor(page, () => document.querySelector("section[data-layout]")?.getAttribute("data-snap") !== "closed", 10_000);
+    const back = await page.evaluate(() => ({
+      species: /Ruffed grouse/.test(document.body.innerText),
+      field: document.querySelector("input[type='search']")?.getAttribute("placeholder"),
+    }));
+    check(s, "raising it again offers the search, not the last hunt",
+      back.species === false && back.field === "Search anywhere", JSON.stringify(back));
+    check(s, "no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));
+    await context.close();
+  },
+
   /*
    * The pair that decides whether "Applies here today" is a band or a wall.
    *
@@ -890,14 +937,26 @@ const scenarios = {
   async contextualBand(browser) {
     const s = "what applies HERE, and nowhere else";
     const { context, page } = await newPage(browser, { width: 390, height: 844 });
-    const read = async (place, expectZone) => {
-      await page.goto(`${BASE}/hunt?species=ruffed-grouse`);
-      await mapReady(page);
-      await page.locator("input[type='search']").first().click();
-      await page.locator("input[type='search']").first().fill(place);
-      const suggested = await waitFor(page, () => document.querySelectorAll("[role=option]").length > 0, 25_000);
-      if (!suggested) return null;
-      await page.locator("[role=option]").first().click();
+    /* `at` is either a place to search for, or a zone to open and confirm a
+       point inside. The plain case takes the second route on purpose: two
+       geocoder calls back to back are throttled by the keyless provider, and a
+       rate limit is not a finding about the product. */
+    const read = async (at, expectZone) => {
+      if (at.zone) {
+        await page.goto(`${BASE}/hunt?zone=${at.zone}&species=ruffed-grouse`);
+        await mapReady(page);
+        await waitFor(page, () => expectZone.test(document.getElementById("hunt-zone-title")?.textContent ?? ""), 40_000);
+        await chooseOnMap(page);
+        await page.getByRole("button", { name: "Check this spot" }).click();
+      } else {
+        await page.goto(`${BASE}/hunt?species=ruffed-grouse`);
+        await mapReady(page);
+        await page.locator("input[type='search']").first().click();
+        await page.locator("input[type='search']").first().fill(at.place);
+        const suggested = await waitFor(page, () => document.querySelectorAll("[role=option]").length > 0, 25_000);
+        if (!suggested) return null;
+        await page.locator("[role=option]").first().click();
+      }
       await waitFor(page, () => expectZone.test(document.getElementById("hunt-zone-title")?.textContent ?? ""), 40_000);
       await waitFor(page, () => Boolean(document.querySelector("[class*=answerStatus]")), 30_000);
       const details = page.getByRole("button", { name: /^Details/ }).first();
@@ -916,11 +975,11 @@ const scenarios = {
       });
     };
 
-    const rigaud = await read("Rigaud, Quebec", /^Zone 8/);
+    const rigaud = await read({ place: "Rigaud, Quebec" }, /^Zone 8/);
     check(s, "a named territory the ministry draws puts a line beside the status",
       rigaud && rigaud.band && rigaud.bandLines > 0 && rigaud.bandCollapsed === false, JSON.stringify(rigaud));
 
-    const plain = await read("Maniwaki, Quebec", /^Zone 10/);
+    const plain = await read({ zone: "ca-qc-zone-10o" }, /^Zone 10/);
     check(s, "and a plain point in the same province shows NO such band",
       plain && plain.band === false, JSON.stringify(plain));
     check(s, "while both still carry the province's standing limitations, collapsed",
@@ -995,7 +1054,7 @@ const scenarios = {
     /* The point answer, on the same narrow screen, and its provenance: the
        sources are COLLAPSED, but present in the document a crawler and an
        answer engine receive, and they open like any disclosure. */
-    await page.getByRole("button", { name: "Check an exact spot" }).click();
+    await chooseOnMap(page);
     await page.getByRole("button", { name: "Check this spot" }).click();
     await waitFor(page, () => /In season/.test(document.querySelector("[class*=answerStatus]")?.textContent ?? ""), 30_000);
     const details = page.getByRole("button", { name: /^Details/ }).first();

@@ -139,7 +139,10 @@ export default function HuntSheet({ layout, snap, heights, onSnap, label, header
     if (rect.bottom > window.innerHeight - 4) onSnap("full");
   }, [isSheet, snap, onSnap]);
 
-  const grabberLabel = snap === "full" ? "Lower the panel" : "Raise the panel";
+  /* Closed is a real state, so the control that reopens it says what it does
+     rather than inheriting the grabber's wording. */
+  const closed = isSheet && snap === "closed";
+  const grabberLabel = closed ? "Open the panel" : snap === "full" ? "Lower the panel" : "Raise the panel";
 
   return (
     <section
@@ -160,15 +163,17 @@ export default function HuntSheet({ layout, snap, heights, onSnap, label, header
             type="button"
             className={styles.grabber}
             aria-label={grabberLabel}
-            aria-expanded={snap !== "peek"}
+            aria-expanded={snap !== "closed" && snap !== "peek"}
             onClick={() => onSnap(snap === "full" ? stepSnap(heights, snap, -1) : stepSnap(heights, snap, 1))}
           >
             <span aria-hidden="true" />
           </button>
         ) : null}
-        {header}
+        {/* Closed shows the pill and nothing else: the header would otherwise
+            keep naming a card the hunter has just dismissed. */}
+        {closed ? null : header}
       </div>
-      <div className={styles.sheetBody} ref={bodyRef} data-scroll="true">
+      <div className={styles.sheetBody} ref={bodyRef} data-scroll="true" hidden={closed || undefined}>
         {children}
       </div>
     </section>
