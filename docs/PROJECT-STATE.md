@@ -1555,3 +1555,35 @@ Hunting content is namespaced under `/hunting/` with no trailing slashes; `/tool
 
 ### 2026-09-20 — Production
 Superseded by the current Production validation section above. The earlier apex/canonical issue is resolved: `NEXT_PUBLIC_SITE_URL` is the `www` origin and the apex now redirects permanently with 308.
+
+### 2026-09-23 — Agreeing with the GIS service is not agreeing with the law
+Michigan's open-data DMU layer still publishes DMU 351 and DMU 352, and still publishes the
+limited-firearms deer zone. Michigan's own 2026 Deer Hunting Regulations Summary says 351 and 352
+"have been rescinded" and the limited firearms deer zone "has been eliminated". All 115 rows carry
+`Year = "2026"`; the rescinded rows were last edited 2026-09-22. Nothing in the data distinguishes
+them. Verified live twice through the browser pane — curl and WebFetch receive 403.
+
+**A fifth instance of the sentinel class, and the first one inside a GATE rather than a dataset.**
+Map-lane parity certification asks whether North Ground draws what the authority's service
+publishes. When the service is itself stale, that check PASSES while the map is wrong: a hunter
+would be shown a rescinded unit as current, certified. Service parity is necessary and not
+sufficient. A map lane is certified only when it also agrees with a REGULATORY product — the
+regulations summary, the hunting guide, the regulation itself. Idaho is believed safe because it
+was certified against IDFG's Hunt Planner, a regulatory product, rather than against its GIS
+alone; that belief is being recorded as evidence rather than left as an assumption. An audit is
+open with Canada: for each certified Canadian layer, was it certified against the service ALONE,
+or also against a regulatory product. A layer in the service-only column is not thereby wrong — it
+is unverified against the law, which is a smaller claim than our certification currently implies.
+
+Michigan stays held, and UNAVAILABLE is the correct answer while it is. The rescinded units may be
+excluded only by an explicit sourced list from the instrument that rescinds them, never by a rule
+inferred from the data. The summary is not that instrument and is not the complete legal picture
+either: it never mentions DMU-333, DMU-419 (two different Lansing CWD geographies), DMU-486,
+DMU-487 or DMU-499, yet it sells a "DMU 487 antlerless deer license". The Wildlife Conservation
+Order is unread. These are recorded as UNREAD, not as absent.
+
+One Michigan fact reshapes the containment contract: universal antlerless use limits are set "by
+DMU in the Upper Peninsula and by county in the Lower Peninsula". The governing geography is not
+the same KIND of thing in the two halves of one state — a further reason precedence is never
+inferable from unit numbers, and a case where the governing geography may not be in the DMU layer
+at all.
