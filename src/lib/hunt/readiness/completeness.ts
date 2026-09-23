@@ -192,6 +192,31 @@ async function limitsBySpecies(jurisdictionId: string): Promise<Map<string, Limi
   return out;
 }
 
+/**
+ * A jurisdiction's own certified bundle and a research lane's evidence package
+ * are BOTH the authority. Either may certify a fact; neither is a fallback.
+ *
+ * The old shape was `known ? bundle : evidenced ? evidence : nothing`, which
+ * meant a jurisdiction that HAD a bundle could never be improved by evidence —
+ * research into Ontario's regulations was read for other purposes and then
+ * discarded for every fact the bundle already spoke to, including the ones it
+ * spoke to by saying nothing. Ontario's four small-game species had no
+ * ammunition record in the bundle and a certified one in O. Reg. 665/98, and
+ * the ternary preferred the silence because the bundle existed.
+ *
+ * **A source that is consulted only when no other source exists is not a
+ * source, it is a placeholder.** Both are asked; whichever states the fact,
+ * states it.
+ */
+function either(
+  bundle: { certified: boolean; reason: string },
+  evidence: { certified: boolean; reason: string },
+): { certified: boolean; reason: string } {
+  if (bundle.certified) return bundle;
+  if (evidence.certified) return evidence;
+  return { certified: false, reason: bundle.reason || evidence.reason };
+}
+
 function cell(fact: ReadinessFact, state: FactState, note: string, pairs: number, of: number): FactCell {
   return { fact, state, note, deliverable: { pairs, of } };
 }
@@ -239,13 +264,30 @@ export async function completenessFor(jurisdictionId: string): Promise<SpeciesCo
        a Québec row about hunting with dogs. A row counts only when it carries
        the within-zone model's own fields, and only a PLACEABLE one certifies:
        a restriction we know of and cannot locate does not reach a point. */
-    const restrictions = evidenced ? withinZoneRestrictions(jurisdictionId, row.speciesId) : { known: 0, placeable: 0 };
+    const restrictions = evidenced
+      ? withinZoneRestrictions(jurisdictionId, row.speciesId)
+      : { known: 0, placeable: 0, notYetPlaced: 0, notPlaceable: 0 };
+    /* The note says what would actually close the gap, and it is DERIVED from
+       the rows rather than written once. The generic sentence "what is needed
+       is boundaries, not more reading" was true of Alberta's sanctuaries and
+       false of Ontario the moment Ontario arrived: three of Ontario's four
+       restrictions need an area LIST read out of another regulation, and one
+       needs a dataset acquired. A note asserted about one jurisdiction becomes
+       a false claim about the next — the same failure the Alberta cell was
+       fixed for, one level up. */
+    const remedy = [
+      restrictions.notYetPlaced > 0 ? `${restrictions.notYetPlaced} await geography or a list that exists and has not been acquired` : "",
+      restrictions.notPlaceable > 0 ? `${restrictions.notPlaceable} cannot be placed by anyone — the authority does not publish the geometry` : "",
+      restrictions.known - restrictions.notYetPlaced - restrictions.notPlaceable > 0
+        ? `${restrictions.known - restrictions.notYetPlaced - restrictions.notPlaceable} have not been triaged`
+        : "",
+    ].filter(Boolean).join("; ");
     const exceptions = {
       certified: restrictions.placeable > 0,
       reason: restrictions.placeable > 0
         ? `${restrictions.placeable} of ${restrictions.known} recorded within-zone restrictions can be placed.`
         : restrictions.known > 0
-          ? `${restrictions.known} within-zone restrictions are recorded and NONE can be placed — each is described in words, naming no management unit. Known and unplaceable is not the same as unexamined: what is needed is boundaries, not more reading.`
+          ? `${restrictions.known} within-zone restrictions are recorded and none can be placed yet: ${remedy}. Recorded and unplaced is not unexamined.`
           : "",
     };
     const known = isOntario && ontarioSpecies.has(row.speciesId);
@@ -254,21 +296,21 @@ export async function completenessFor(jurisdictionId: string): Promise<SpeciesCo
        jurisdiction is covered by whatever evidence exists for it rather than
        by being Ontario. */
     const licence = known
-      ? { certified: ontarioRequirements[row.speciesId] !== undefined, reason: ontarioRequirements[row.speciesId] !== undefined ? "Authorizations resolved from the certified requirement records." : "No requirement record has been read for this species." }
+      ? either({ certified: ontarioRequirements[row.speciesId] !== undefined, reason: ontarioRequirements[row.speciesId] !== undefined ? "Authorizations resolved from the certified requirement records." : "No requirement record has been read for this species." }, evidenced ? certifies(jurisdictionId, row.speciesId, "AUTHORIZATION") : { certified: false, reason: "" })
       : evidenced ? certifies(jurisdictionId, row.speciesId, "AUTHORIZATION")
       : { certified: false, reason: "No requirement record has been read for this species." };
     const methodsCertified = known && Object.keys(ontarioMethods[ontarioSpeciesMethods[row.speciesId]?.methods]?.allowed ?? {}).length > 0;
     const methods = known
-      ? { certified: methodsCertified, reason: methodsCertified ? "Legal implements from the authority's own tables." : "No positive list of allowed methods has been read." }
+      ? either({ certified: methodsCertified, reason: methodsCertified ? "Legal implements from the authority's own tables." : "No positive list of allowed methods has been read." }, evidenced ? certifies(jurisdictionId, row.speciesId, "METHOD") : { certified: false, reason: "" })
       : evidenced ? certifies(jurisdictionId, row.speciesId, "METHOD")
       : { certified: false, reason: "No positive list of allowed methods has been read. Prohibitions alone cannot certify this: the complement of a ban list is not a permission." };
     const ammoCertified = known && (ontarioSpeciesMethods[row.speciesId]?.ammunition.length ?? 0) > 0;
     const ammunition = known
-      ? { certified: ammoCertified, reason: ammoCertified ? "Restrictions stated by the authority." : "No ammunition restriction has been read. Silence is not 'no restriction'." }
+      ? either({ certified: ammoCertified, reason: ammoCertified ? "Restrictions stated by the authority." : "No ammunition restriction has been read. Silence is not 'no restriction'." }, evidenced ? certifies(jurisdictionId, row.speciesId, "AMMUNITION") : { certified: false, reason: "" })
       : evidenced ? certifies(jurisdictionId, row.speciesId, "AMMUNITION")
       : { certified: false, reason: "No ammunition restriction has been read. Silence is not 'no restriction'." };
     const orangeEvidence = known
-      ? { certified: ontarioOrangeRules > 0, reason: ontarioOrangeRules > 0 ? `${ontarioOrangeRules} certified rules, including the exemptions.` : "No hunter-orange rule has been read for this jurisdiction." }
+      ? either({ certified: ontarioOrangeRules > 0, reason: ontarioOrangeRules > 0 ? `${ontarioOrangeRules} certified rules, including the exemptions.` : "No hunter-orange rule has been read for this jurisdiction." }, evidenced ? certifies(jurisdictionId, row.speciesId, "VISIBILITY") : { certified: false, reason: "" })
       : evidenced ? certifies(jurisdictionId, row.speciesId, "VISIBILITY")
       : { certified: false, reason: "No hunter-orange rule has been read for this jurisdiction." };
     /* A refusal that names a gear class is the gate holding, not a gap. */

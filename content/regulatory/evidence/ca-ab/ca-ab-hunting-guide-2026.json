@@ -162,7 +162,12 @@
       },
       "unresolved": [
         "The 11 sanctuaries are described by highway segment, so North Ground cannot place a point in one. They are UNLISTED in the within-zone model and must surface as unknown rather than be dropped."
-      ]
+      ],
+      "placement": {
+        "state": "NOT_YET_PLACED",
+        "reason": "The 11 sanctuaries are described as segments of named highways with stated distances either side of the centre line. That is a linear buffer over road geometry, which is derivable in principle — Alberta publishes its highway network — rather than an area nobody can obtain.",
+        "blocker": "No dataset of the sanctuary polygons themselves has been located, and deriving them from highway centrelines would be North Ground drawing a regulatory boundary, which §41A forbids. What would close it is an authoritative polygon set, or the authority confirming the buffer construction."
+      }
     },
     {
       "category": "AMMUNITION",

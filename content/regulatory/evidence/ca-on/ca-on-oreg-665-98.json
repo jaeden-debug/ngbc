@@ -1,0 +1,317 @@
+{
+  "package": {
+    "jurisdictionId": "jurisdiction:ca-on",
+    "preparedBy": "united-states agent",
+    "preparedOn": "2026-09-23",
+    "model": "THE_LAW_S_ANSWER",
+    "note": "Encoded under CLAUDE.md §8 'The law's answer, not a copy of the law's prose'. Every row carries `rule` — North Ground's own concise statement of the legal fact, which is what a consumer answers from. `statedAs` is retained here as EVIDENCE, not as the answer, and only on the provisions whose scope turns on their exact wording. Ontario is the jurisdiction where retaining it costs nothing: the King's Printer expressly permits any person to reproduce Ontario regulations without permission and without charge (see source.licence)."
+  },
+  "authority": {
+    "name": "King's Printer for Ontario",
+    "lang": "en-CA"
+  },
+  "source": {
+    "id": "source:ca-on-oreg-665-98",
+    "title": "O. Reg. 665/98 (Hunting) under the Fish and Wildlife Conservation Act, 1997",
+    "url": "https://www.ontario.ca/laws/regulation/980665",
+    "tier": "LAW",
+    "version": "as amended by O. Reg. 121/26",
+    "retrievedAt": "2026-09-23",
+    "sha256": "5b14587b4cff24c028372f41405b37fe7d849e1d18cd9292934d5bbf1e6fa9a6",
+    "incorporates": [
+      {
+        "id": "source:ca-on-oreg-669-98",
+        "title": "O. Reg. 669/98 (Wildlife Schedules)",
+        "url": "https://www.ontario.ca/laws/regulation/980669",
+        "sha256": "4a807144e22e315b4a20a74745ae16b302c02a824ba94a35bde038c206b0f871",
+        "retrievedAt": "2026-09-23",
+        "why": "Supplies the species classification the ammunition rules turn on: which species are game birds, and which are game mammals."
+      },
+      {
+        "id": "source:ca-on-oreg-663-98",
+        "title": "O. Reg. 663/98 (Area Descriptions)",
+        "url": "https://www.ontario.ca/laws/regulation/980663",
+        "retrievedAt": "2026-09-23",
+        "why": "Holds the geography for s.63, s.66 and s.78. Its areas are described in words and name no management unit, which is why those rows are UNLISTED.",
+        "read": false
+      },
+      {
+        "id": "source:ca-on-rro-1990-reg-484",
+        "title": "R.R.O. 1990, Reg. 484 — Appendix A and Schedules 1 to 11 of Appendix B",
+        "url": "https://www.ontario.ca/laws/regulation/900484",
+        "why": "s.100 prescribes the Crown game preserves by pointing at these appendices AS THEY READ THE DAY BEFORE O. Reg. 665/98 came into force.",
+        "read": false,
+        "availability": {
+          "state": "NOT_PUBLISHED_BY_THE_AUTHORITY",
+          "checkedOn": "2026-09-23",
+          "evidence": "e-Laws returns 404 for this regulation. The check is controlled: the same URL pattern returns 200 for R.R.O. 1990, Reg. 950 and R.R.O. 1990, Reg. 194, so the pattern is right and the regulation is absent — not mistyped. A frozen historical text of a regulation e-Laws no longer serves is, additionally, not the current text of anything.",
+          "control": [
+            { "regulation": "R.R.O. 1990, Reg. 950", "status": 200 },
+            { "regulation": "R.R.O. 1990, Reg. 194", "status": 200 },
+            { "regulation": "R.R.O. 1990, Reg. 484", "status": 404 }
+          ]
+        }
+      }
+    ],
+    "inForce": {
+      "state": "IN_FORCE",
+      "statedAs": "Consolidation Period: From July 1, 2026 to the e-Laws currency date. Last amendment: 121/26.",
+      "asOf": "2026-07-01",
+      "checkedOn": "2026-09-23"
+    },
+    "licence": {
+      "statedAs": "The King's Printer for Ontario holds copyright in Ontario statutes, regulations and judicial decisions. The King's Printer permits any person to reproduce the text and images contained in the statutes, regulations and judicial decisions without seeking permission and without charge. The legal materials must be reproduced accurately, and Crown copyright in the legal materials must be acknowledged in the following form: © King's Printer for Ontario, 20__.",
+      "url": "https://www.ontario.ca/page/copyright-information",
+      "retrievedAt": "2026-09-23",
+      "permittedUse": "COMMERCIAL",
+      "redistribution": "PERMITTED",
+      "licencePermitsServing": true,
+      "licencePermitsStoredCopy": true,
+      "obligations": [
+        "Reproduce accurately.",
+        "Acknowledge Crown copyright in the form '© King's Printer for Ontario, 1998.' (1998 being the year of first publication of O. Reg. 665/98).",
+        "State that this is not an official version. The Legislation Act, 2006 sets out which copies are official; reproductions that are not official copies MUST say so."
+      ],
+      "obligationsMet": {
+        "accurate": true,
+        "acknowledgement": "© King's Printer for Ontario, 1998.",
+        "notAnOfficialVersion": "This is not an official version of O. Reg. 665/98.",
+        "note": "The third obligation is met inside this package. Whether every SURFACE that shows Ontario legal text carries it is a separate question and is reported as an open item, not asserted here."
+      },
+      "scopeOfThisGrant": "Ontario LEGAL MATERIALS only — statutes, regulations, judicial decisions. It does NOT extend to the Ontario Hunting Regulations Summary on ontario.ca, which is ministry-authored content, is not labelled Open Government Licence – Ontario, and whose commercial reproduction the same page reserves to a licence from the King's Printer. That is why every row below is encoded from the regulation and none from the summary."
+    }
+  },
+  "speciesClassification": {
+    "why": "Sections 77 and 78 restrict 'a person hunting small game'. Whether they reach grouse and hare is the whole question, and it is answered by a chain of three instruments rather than by the phrase sounding right. This is recorded because a category that sounds adjacent is how this lane has twice over-claimed.",
+    "chain": [
+      "O. Reg. 665/98 s.1: 'small game' means the wildlife listed in section 27.",
+      "O. Reg. 665/98 s.27: small game is (1) game birds, including wild turkeys; (2) game mammals other than big game; (3) named furbearing mammals; (4) wildlife huntable under FWCA cl. 6(1)(g),(h).",
+      "O. Reg. 669/98 s.3: the species in Schedule 3 are prescribed as game birds. Schedule 3 lists Ruffed Grouse, Sharp-tailed Grouse and Spruce Grouse.",
+      "O. Reg. 669/98 s.2: the species in Schedule 2 are prescribed as game mammals. Schedule 2 lists Snowshoe (Varying) Hare.",
+      "O. Reg. 665/98 s.1 and FWCA s.1(1): 'big game' means black bear, woodland caribou, white-tailed deer, American elk and moose. Snowshoe hare is none of these, so it is a game mammal other than big game."
+    ],
+    "conclusion": "All four of ruffed grouse, sharp-tailed grouse, spruce grouse and snowshoe hare are small game under O. Reg. 665/98, so s.77 and s.78 reach them.",
+    "tension": "s.27 opens 'The following are small game for the purposes of this Part', and s.27 sits in Part IV while s.77 and s.78 sit in Part XI. The definition in Part I resolves it: it does not repeat s.27's limiting words, it adopts s.27's LIST as the regulation-wide meaning of the term. Recorded rather than passed over, because reading s.27's own words alone would put these rules out of reach of the species they plainly govern."
+  },
+  "requirements": [
+    {
+      "category": "AMMUNITION",
+      "kind": "shot size and rifle type during a big game season",
+      "state": "PROHIBITED",
+      "officialName": { "text": "O. Reg. 665/98, s. 77", "lang": "en-CA" },
+      "rule": "A small game hunter who is in an area while a big game season is open there may not possess or use a centre-fire rifle, or shells loaded with ball or with shot larger than No. 2. A small game licence holder may still use steel shot up to triple BBB or bismuth shot up to double BB.",
+      "ruleNote": "The steel and bismuth allowance is written 'Despite clause (1)(b)' — clause (b) is the shot limb alone. It does not relieve the centre-fire rifle prohibition in clause (a). Ontario's own Hunting Regulations Summary compresses both limbs into one sentence with the steel and bismuth allowance as a single parenthetical, which reads as though it qualified the whole prohibition. The regulation is the source encoded here.",
+      "statedAs": {
+        "text": "A person hunting small game, when in an area during an open season in the area for a species of big game, shall not possess or use, (a) a centre-fire rifle; or (b) shells loaded with ball or shot larger than number two shot.",
+        "lang": "en-CA"
+      },
+      "statedAsRetainedBecause": "The scope turns on 'when in an area during an open season in the area for a species of big game' — a condition about where and when the hunter is, not about what the hunter is hunting.",
+      "citation": "O. Reg. 665/98, s. 77 (1), (2)",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:sharp-tailed-grouse",
+          "species:spruce-grouse",
+          "species:snowshoe-hare"
+        ],
+        "geography": { "kind": "JURISDICTION", "designations": ["ON"], "statedAs": null },
+        "methods": null
+      },
+      "condition": {
+        "rule": "Applies only while a big game season is open in the same area the hunter is in.",
+        "statedAs": { "text": "when in an area during an open season in the area for a species of big game", "lang": "en-CA" }
+      },
+      "exceptions": [
+        {
+          "rule": "Does not apply to a hunter who holds a valid licence for the big game species whose season is open in that area at that time.",
+          "citation": "s. 77 (1.1) (a)"
+        },
+        {
+          "rule": "Does not apply to a hunter with a valid wolf or coyote licence who is hunting wolf or coyote under it.",
+          "citation": "s. 77 (1.1) (b)"
+        },
+        {
+          "rule": "Does not apply to a small game licence holder hunting south of the French and Mattawa rivers during a deer season restricted to bows.",
+          "citation": "s. 77 (3)"
+        }
+      ]
+    },
+    {
+      "category": "AMMUNITION",
+      "kind": "rifle calibre limit by area",
+      "state": "PROHIBITED",
+      "officialName": { "text": "O. Reg. 665/98, s. 78", "lang": "en-CA" },
+      "rule": "In the geographic areas O. Reg. 663/98 describes in Schedule 4 to Part 8, a small game hunter may not carry or use a rifle of greater calibre than a .275. A muzzle-loading rifle is exempt.",
+      "citation": "O. Reg. 665/98, s. 78",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:sharp-tailed-grouse",
+          "species:spruce-grouse",
+          "species:snowshoe-hare"
+        ],
+        "geography": {
+          "kind": "AREAS",
+          "designations": [],
+          "statedAs": "the geographic areas described in Schedule 4 to Part 8 of Ontario Regulation 663/98 (Area Descriptions)"
+        },
+        "methods": null
+      },
+      "unresolved": [
+        "The areas are described in another regulation and name no wildlife management unit, so a point cannot yet be tested against them. O. Reg. 663/98 has not been read. What is missing is the area list, not the rule."
+      ]
+    },
+    {
+      "category": "AMMUNITION",
+      "kind": "shot size and rifle type in one management unit",
+      "state": "PROHIBITED",
+      "officialName": { "text": "O. Reg. 665/98, s. 67", "lang": "en-CA" },
+      "rule": "In wildlife management unit 7A from August 15 to December 15, a shotgun hunter may not possess a shell loaded with ball or with shot larger than No. 2, and no hunter may use or possess a centre-fire rifle while hunting. Steel shot up to triple BBB and bismuth shot up to double BB remain permitted.",
+      "citation": "O. Reg. 665/98, s. 67 (1), (2), (4)",
+      "scope": {
+        "speciesIds": "ALL",
+        "geography": {
+          "kind": "MANAGEMENT_UNITS",
+          "designations": ["7A"],
+          "statedAs": "wildlife management unit 7A"
+        },
+        "methods": null
+      },
+      "period": {
+        "kind": "DATE_RANGE",
+        "from": "08-15",
+        "to": "12-15",
+        "statedAs": "during the period from August 15 to December 15 in any year"
+      },
+      "note": "Unlike s.77 and s.78, this one names a management unit, so it resolves from a point today. It restricts the whole of 7A rather than part of it, which is why it is an ammunition rule scoped to a unit and not a within-zone restriction."
+    },
+    {
+      "category": "AMMUNITION",
+      "kind": "minimum projectile for big game",
+      "state": "PROHIBITED",
+      "officialName": { "text": "O. Reg. 665/98, s. 75", "lang": "en-CA" },
+      "rule": "Big game may not be hunted with a rim-fire rifle, with a shotgun smaller than 20 gauge loaded with shot, or with any shotgun loaded with shot smaller than SG or No. 1 buck.",
+      "citation": "O. Reg. 665/98, s. 75",
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer",
+          "species:moose",
+          "species:american-black-bear"
+        ],
+        "geography": { "kind": "JURISDICTION", "designations": ["ON"], "statedAs": null },
+        "methods": null
+      },
+      "note": "Ontario's big game ammunition was already certified from the readiness bundle, which took it from the Hunting Regulations Summary. This row carries the same fact at LAW tier, from the regulation itself."
+    },
+    {
+      "category": "PLACE_CONDITION",
+      "kind": "provincial parks and designated Crown land",
+      "state": "PROHIBITED",
+      "restrictionKind": "NO_HUNTING",
+      "restrictionScope": { "kind": "UNLISTED" },
+      "officialName": { "text": "O. Reg. 665/98, s. 104", "lang": "en-CA" },
+      "rule": "Hunting in a provincial park, or on the Crown land O. Reg. 663/98 describes in Part 3, is prohibited except as Part XIV of O. Reg. 665/98 allows. Part XIV opens named parks to named species on named terms.",
+      "citation": "O. Reg. 665/98, ss. 104-114",
+      "scope": {
+        "speciesIds": "ALL",
+        "geography": {
+          "kind": "AREAS",
+          "designations": [],
+          "statedAs": "a provincial park or on Crown land described in Part 3 of Ontario Regulation 663/98 (Area Descriptions)"
+        }
+      },
+      "placement": {
+        "state": "NOT_YET_PLACED",
+        "reason": "Provincial park boundaries are published as a dataset by the authority — 'Provincial park regulated boundary' on Ontario GeoHub. Geometry exists and has not been acquired.",
+        "candidateDataset": "https://geohub.lio.gov.on.ca/",
+        "blocker": "The dataset's licence is listed as 'custom' and has not been reviewed. Licence first: it is not to be used until read."
+      },
+      "unresolved": [
+        "Part XIV's per-park permissions (ss. 106-114) have not been transcribed. They are what turns this from a blanket closure into a set of conditional openings, so the rule as encoded is the prohibition and not yet the exceptions."
+      ]
+    },
+    {
+      "category": "PLACE_CONDITION",
+      "kind": "Crown game preserves",
+      "state": "PROHIBITED",
+      "restrictionKind": "NO_HUNTING",
+      "restrictionScope": { "kind": "UNLISTED" },
+      "officialName": { "text": "O. Reg. 665/98, Part XIII", "lang": "en-CA" },
+      "rule": "Hunting and trapping are prohibited in a Crown game preserve, as are possessing and using a firearm there. A person who lives on a preserve is exempt on the part they own or occupy, and a person driving through on a road is exempt on conditions.",
+      "citation": "O. Reg. 665/98, ss. 100-102.1; FWCA s. 9",
+      "scope": {
+        "speciesIds": "ALL",
+        "geography": {
+          "kind": "AREAS",
+          "designations": [],
+          "statedAs": "Crown game preserves described in Appendix A and Schedules 1 to 11 of Appendix B of Regulation 484 of the Revised Regulations of Ontario, 1990, as those appendices read on the day before this Regulation came into force"
+        }
+      },
+      "placement": {
+        "state": "NOT_YET_PLACED",
+        "reason": "The legal text defining these areas is not published by the authority (see source.incorporates, controlled 404). But a 'Crown Game Preserves' dataset is published on Ontario GeoHub, so the GEOGRAPHY is obtainable even though the incorporated legal description is not.",
+        "candidateDataset": "https://geohub.lio.gov.on.ca/",
+        "blocker": "The dataset's licence is listed as 'custom' and has not been reviewed. Separately, a dataset agreeing with a frozen 1990 legal description is an assumption, not a finding — the two would have to be reconciled before a preserve boundary could be served as the law's."
+      }
+    },
+    {
+      "category": "PLACE_CONDITION",
+      "kind": "Sunday gun hunting",
+      "state": "PROHIBITED",
+      "restrictionKind": "NO_DISCHARGE",
+      "restrictionScope": { "kind": "UNLISTED" },
+      "officialName": { "text": "O. Reg. 665/98, s. 66", "lang": "en-CA" },
+      "rule": "South of the French and Mattawa rivers, a firearm other than a long-bow or cross-bow may not be carried or discharged for hunting on a Sunday, except in the municipalities O. Reg. 663/98 lists in Part 7. Licensed game bird hunting preserves are exempt.",
+      "citation": "O. Reg. 665/98, s. 66",
+      "scope": {
+        "speciesIds": "ALL",
+        "geography": {
+          "kind": "AREAS",
+          "designations": [],
+          "statedAs": "any area lying south of the French and Mattawa rivers except those municipalities listed in Part 7 of Ontario Regulation 663/98 (Area Descriptions)"
+        }
+      },
+      "period": { "kind": "WEEKDAYS", "days": ["SUNDAY"], "statedAs": "on a Sunday" },
+      "placement": {
+        "state": "NOT_YET_PLACED",
+        "reason": "The permitted municipalities are listed in O. Reg. 663/98 Part 7, which has not been read. Municipal boundaries are published by Ontario; the list is what is missing."
+      },
+      "note": "This is the clearest case in Ontario of a rule that varies WITHIN a wildlife management unit: a single unit south of the line can contain both municipalities that permit Sunday gun hunting and municipalities that do not. A zone-level answer cannot see it, which is what makes it a within-zone restriction rather than a zone attribute."
+    },
+    {
+      "category": "PLACE_CONDITION",
+      "kind": "loaded firearm in a public right of way",
+      "state": "PROHIBITED",
+      "restrictionKind": "NO_DISCHARGE",
+      "restrictionScope": { "kind": "UNLISTED" },
+      "officialName": { "text": "O. Reg. 665/98, s. 63", "lang": "en-CA" },
+      "rule": "In the geographic areas O. Reg. 663/98 describes in Schedule 1 to Part 8, it is prohibited to have a loaded firearm in, or to discharge a firearm in or across, a right of way for public vehicular traffic. In the Schedule 2 areas the same prohibition applies during any open deer or elk season that is not bow-only. Where a right of way is maintained only seasonally, the section applies only while it is maintained.",
+      "citation": "O. Reg. 665/98, s. 63",
+      "scope": {
+        "speciesIds": "ALL",
+        "geography": {
+          "kind": "AREAS",
+          "designations": [],
+          "statedAs": "the geographic areas described in Schedule 1 to Part 8 of Ontario Regulation 663/98 (Area Descriptions)"
+        }
+      },
+      "placement": {
+        "state": "NOT_YET_PLACED",
+        "reason": "The areas are described in O. Reg. 663/98, which has not been read."
+      },
+      "unresolved": [
+        "Whether this belongs in a hunter's within-zone picture at all is a judgement. It restricts conduct near roads rather than closing an area to hunting, and it applies across whole named areas. It is recorded because it genuinely varies by place and a hunter can be charged under it; it is deliberately NOT counted as a placeable within-zone closure."
+      ]
+    }
+  ],
+  "cannotCertify": [
+    {
+      "fact": "METHODS",
+      "reason": "O. Reg. 665/98 states firearm CLASSES for deer, elk and moose (s.69 Table, s.70) and a set of prohibitions, but this reading did not establish a positive allowed-implement list for small game. Ontario's METHODS is already certified from its readiness bundle's own tables; this package does not add to it and must not be read as a second, weaker source for it."
+    },
+    {
+      "fact": "CRITICAL_EXCEPTIONS",
+      "reason": "Four within-zone restrictions are now recorded, and NONE of them can be placed. Three depend on area lists in O. Reg. 663/98 that have not been read; the fourth depends on geography whose defining legal text the authority no longer publishes. Recorded-and-unplaceable is not certified, and the remedy is named per row rather than left as 'more research'."
+    }
+  ]
+}

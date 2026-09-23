@@ -116,16 +116,27 @@ describe("completeness matrix", () => {
     assert.ok(cell.absenceEvidence!.closedBy.length > 0, "a recorded absence says what would close it");
   });
 
-  it("tells a known-but-unplaceable restriction apart from an unexamined one", async () => {
-    /* Alberta's 11 road corridor wildlife sanctuaries are recorded and cannot
-       be placed — each is described by highway segment, naming no management
-       unit. "Not indexed" would have been false and would have sent a lane to
-       re-read a guide whose restrictions are already transcribed. What is
-       needed is boundaries, which is different work. */
-    const alberta = (await completenessFor("jurisdiction:ca-ab"))[0].facts.find((cell) => cell.fact === "CRITICAL_EXCEPTIONS")!;
-    assert.equal(alberta.state, "RESEARCH_REQUIRED", "unplaceable does not certify — it reaches no point");
-    assert.match(alberta.note, /recorded and NONE can be placed/);
-    assert.match(alberta.note, /boundaries, not more reading/);
+  it("tells a recorded-but-unplaced restriction apart from an unexamined one, and says what would close it", async () => {
+    /* Alberta's 11 road corridor wildlife sanctuaries are recorded and do not
+       reach a point — each is described by highway segment, naming no
+       management unit. "Not indexed" would have been false and would have sent
+       a lane to re-read a guide whose restrictions are already transcribed.
+
+       The note is now DERIVED from the rows rather than written once. The
+       original wording said "what is needed is boundaries, not more reading",
+       which was true of Alberta and false of Ontario within one landing: three
+       of Ontario's four restrictions need an area LIST read out of another
+       regulation. A remedy asserted about the jurisdiction you are looking at
+       becomes a false claim about the next one — the same failure this cell
+       was fixed for, one level up. So the test asserts a remedy is NAMED, not
+       which remedy it is. */
+    for (const jurisdictionId of ["jurisdiction:ca-ab", "jurisdiction:ca-on"]) {
+      const cell = (await completenessFor(jurisdictionId))[0].facts.find((row) => row.fact === "CRITICAL_EXCEPTIONS")!;
+      assert.equal(cell.state, "RESEARCH_REQUIRED", `${jurisdictionId}: unplaced does not certify — it reaches no point`);
+      assert.match(cell.note, /within-zone restrictions are recorded/, jurisdictionId);
+      assert.match(cell.note, /Recorded and unplaced is not unexamined/, jurisdictionId);
+      assert.match(cell.note, /await geography or a list|cannot be placed by anyone|have not been triaged/, jurisdictionId);
+    }
 
     /* And the over-claim stays fixed: Québec's only place-condition row is
        about a hunter being present when hunting with dogs, carries none of the

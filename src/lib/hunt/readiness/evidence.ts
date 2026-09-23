@@ -38,6 +38,7 @@ import bcOrangeAbsence from "../../../../content/regulatory/evidence/ca-bc/measu
 import manitobaGuide from "../../../../content/regulatory/evidence/ca-mb/ca-mb-hunting-guide-2026.json" with { type: "json" };
 import albertaGuide from "../../../../content/regulatory/evidence/ca-ab/ca-ab-hunting-guide-2026.json" with { type: "json" };
 import albertaOrangeAbsence from "../../../../content/regulatory/evidence/ca-ab/ca-ab-measured-absence-orange.json" with { type: "json" };
+import ontarioOreg66598 from "../../../../content/regulatory/evidence/ca-on/ca-on-oreg-665-98.json" with { type: "json" };
 import idahoBigGame from "../../../../content/regulatory/evidence/us-id/us-id-big-game-2026.json" with { type: "json" };
 import idahoOrangeAbsence from "../../../../content/regulatory/evidence/us-id/us-id-measured-absence-orange.json" with { type: "json" };
 
@@ -56,6 +57,24 @@ export interface EvidenceRow {
   /** Present on a row that IS a within-zone restriction, per that model. */
   restrictionKind?: string;
   restrictionScope?: { kind?: string };
+  /**
+   * Why an UNLISTED restriction is not on the map yet — and whether that is a
+   * queue item or a closed question.
+   *
+   * These read identically without it and call for opposite actions. British
+   * Columbia's Schedule 15 areas bind to maps the regulation itself exempts
+   * from publication: no amount of looking produces that geometry, and saying
+   * so is a FINDING. Ontario's provincial parks are a published dataset nobody
+   * has acquired: that is WORK. Reporting both as "cannot be placed" tells a
+   * reader to keep looking for something that does not exist, and tells them
+   * to stop looking for something that does.
+   */
+  placement?: {
+    state?: "NOT_YET_PLACED" | "NOT_PLACEABLE" | "PLACED";
+    /** What is actually missing — geometry, a list to read, or a licence. */
+    reason?: string;
+    blocker?: string;
+  };
   scope?: {
     /** A list, or the string "ALL" where the source says so. */
     speciesIds?: string[] | "ALL" | null;
@@ -89,6 +108,7 @@ export interface EvidencePackage {
 }
 
 const PACKAGES: Record<string, EvidencePackage[]> = {
+  "jurisdiction:ca-on": [ontarioOreg66598 as EvidencePackage],
   "jurisdiction:ca-mb": [manitobaGuide as EvidencePackage],
   "jurisdiction:ca-ab": [albertaGuide as EvidencePackage, albertaOrangeAbsence as EvidencePackage],
   "jurisdiction:us-id": [idahoBigGame as EvidencePackage, idahoOrangeAbsence as EvidencePackage],
@@ -305,11 +325,20 @@ export function certificationContradictions(
 export function withinZoneRestrictions(jurisdictionId: string, speciesId: string): {
   known: number;
   placeable: number;
+  /** Geometry or a list exists and has not been acquired. A queue item. */
+  notYetPlaced: number;
+  /** The geometry cannot be obtained by anyone. A finding, not a backlog. */
+  notPlaceable: number;
 } {
   const rows = rowsFor(jurisdictionId, speciesId, "PLACE_CONDITION").filter((row) => row.restrictionKind);
   const placeable = rows.filter((row) => {
     const kind = row.restrictionScope?.kind;
     return kind === "AREAS" || kind === "CANDIDATE_AREAS" || kind === "JURISDICTION_WIDE";
   });
-  return { known: rows.length, placeable: placeable.length };
+  return {
+    known: rows.length,
+    placeable: placeable.length,
+    notYetPlaced: rows.filter((row) => row.placement?.state === "NOT_YET_PLACED").length,
+    notPlaceable: rows.filter((row) => row.placement?.state === "NOT_PLACEABLE").length,
+  };
 }
