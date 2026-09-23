@@ -21,12 +21,15 @@ export const dynamic = "force-dynamic";
 
 const canonicalPath = "/hunt";
 const metaTitle = "Hunting Zone & Season Finder | North Ground Hunt";
+/* The description names only Canada because only Canadian layers serve today. It gains "and the
+   United States" when the first U.S. layer serves, not before: a meta description is a coverage
+   claim like any other. */
 const metaDescription =
-  "Find your hunting area, check current seasons and rules, and read the official source behind every answer. Free, no account.";
-const socialTitle = "North Ground Hunt | Your Zone. Your Season. Your Hunt.";
+  "Find your hunting zone anywhere North Ground supports in Canada, check hunting seasons by species and date, and verify results against official government sources.";
+const socialTitle = "Know Your Zone. Know Your Season. | North Ground Hunt";
 const socialDescription =
-  "Find hunting zones, check current seasons and rules, verify official sources, and share your Hunt Brief with friends.";
-const socialImage = absoluteUrl("/north-ground-hunt-zones-seasons-share-results.jpg");
+  "Explore Canadian hunting zones on an interactive map, choose your species and date, and check your hunt against official government sources.";
+const socialImage = absoluteUrl("/north-ground-hunt-social-card.jpg");
 const socialImageAlt =
   "North Ground Hunt social preview showing hunting zones, current seasons, official sources and Hunt Brief sharing.";
 
@@ -71,7 +74,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
       siteName: SITE_NAME,
       title: socialTitle,
       description: socialDescription,
-      images: [{ url: socialImage, width: 1536, height: 803, alt: socialImageAlt }],
+      images: [{ url: socialImage, width: 1200, height: 630, alt: socialImageAlt }],
     },
     twitter: {
       card: "summary_large_image",

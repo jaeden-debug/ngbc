@@ -91,9 +91,9 @@ async function validate() {
   assert.match(tool, /<link rel="canonical" href="https:\/\/www\.northgroundbushcraft\.com\/hunt"/i);
   assert.equal(countMatches(tool, /<link rel="canonical"/gi), 1, "Hunt should emit one canonical tag");
   assert.match(tool, /<title>Hunting Zone (?:&|&amp;) Season Finder \| North Ground Hunt<\/title>/i);
-  assert.match(tool, /<meta name="description" content="Find your hunting area, check current seasons and rules, and read the official source behind every answer\. Free, no account\."/i);
-  assert.match(tool, /<meta property="og:title" content="North Ground Hunt \| Your Zone\. Your Season\. Your Hunt\."/i);
-  assert.match(tool, /<meta property="og:description" content="Find hunting zones, check current seasons and rules, verify official sources, and share your Hunt Brief with friends\."/i);
+  assert.match(tool, /<meta name="description" content="Find your hunting zone anywhere North Ground supports in Canada, check hunting seasons by species and date, and verify results against official government sources\."/i);
+  assert.match(tool, /<meta property="og:title" content="Know Your Zone\. Know Your Season\. \| North Ground Hunt"/i);
+  assert.match(tool, /<meta property="og:description" content="Explore Canadian hunting zones on an interactive map, choose your species and date, and check your hunt against official government sources\."/i);
   assert.match(tool, /<meta property="og:url" content="https:\/\/www\.northgroundbushcraft\.com\/hunt"/i);
 
   // The superseded path must keep working for anything already linking to it.
@@ -101,15 +101,15 @@ async function validate() {
   assert.equal(supersededResponse.status, 308, "the superseded Hunt path should redirect permanently");
   assert.equal(supersededResponse.headers.get("location"), "/hunt");
   assert.match(tool, /<meta property="og:site_name" content="North Ground"/i);
-  assert.match(tool, /<meta property="og:image" content="https:\/\/www\.northgroundbushcraft\.com\/north-ground-hunt-zones-seasons-share-results\.jpg"/i);
+  assert.match(tool, /<meta property="og:image" content="https:\/\/www\.northgroundbushcraft\.com\/north-ground-hunt-social-card\.jpg"/i);
   assert.match(tool, /<meta property="og:image:alt" content="North Ground Hunt social preview showing hunting zones, current seasons, official sources and Hunt Brief sharing\."/i);
   assert.match(tool, /<meta name="twitter:card" content="summary_large_image"/i);
-  assert.match(tool, /<meta name="twitter:title" content="North Ground Hunt \| Your Zone\. Your Season\. Your Hunt\."/i);
-  assert.match(tool, /<meta name="twitter:description" content="Find hunting zones, check current seasons and rules, verify official sources, and share your Hunt Brief with friends\."/i);
-  assert.match(tool, /<meta name="twitter:image" content="https:\/\/www\.northgroundbushcraft\.com\/north-ground-hunt-zones-seasons-share-results\.jpg"/i);
+  assert.match(tool, /<meta name="twitter:title" content="Know Your Zone\. Know Your Season\. \| North Ground Hunt"/i);
+  assert.match(tool, /<meta name="twitter:description" content="Explore Canadian hunting zones on an interactive map, choose your species and date, and check your hunt against official government sources\."/i);
+  assert.match(tool, /<meta name="twitter:image" content="https:\/\/www\.northgroundbushcraft\.com\/north-ground-hunt-social-card\.jpg"/i);
   assert.match(tool, /<meta name="twitter:image:alt" content="North Ground Hunt social preview showing hunting zones, current seasons, official sources and Hunt Brief sharing\."/i);
 
-  const huntImageResponse = await fetch(`${baseUrl}/north-ground-hunt-zones-seasons-share-results.jpg`);
+  const huntImageResponse = await fetch(`${baseUrl}/north-ground-hunt-social-card.jpg`);
   assert.equal(huntImageResponse.status, 200, "Hunt social image should return 200");
   assert.match(huntImageResponse.headers.get("content-type") || "", /^image\/jpeg/i);
   assert.ok((await huntImageResponse.arrayBuffer()).byteLength > 0, "Hunt social image should not be empty");
