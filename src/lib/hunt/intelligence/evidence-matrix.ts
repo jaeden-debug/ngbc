@@ -56,18 +56,25 @@ export const DATASET_EVIDENCE: Record<string, DatasetEvidenceKind> = {
   "dataset:ca-on-wild-turkey-harvest": { tier: "T1_OFFICIAL_MEASURED", precision: "MANAGEMENT_UNIT" },
   "dataset:ca-on-elk-harvest": {
     tier: "T1_OFFICIAL_MEASURED",
-    // Nine Elk Harvest Areas, which are NOT the WMU geography. This is exactly
-    // what SPECIES_MANAGEMENT_AREA is for, and it does not nest with the units
-    // the map draws, so it may never be repainted as WMUs.
+    // Nine Elk Harvest Areas (57-01 to 63-08), which are NOT the WMU geography.
+    // This is what SPECIES_MANAGEMENT_AREA is for, and it does not nest with
+    // the units the map draws, so it may never be repainted as WMUs.
+    //
+    // But non-nesting is the second fact. The first is that North Ground does
+    // not HOLD the Elk Harvest Area geometry at all, so there is nothing to
+    // draw at any resolution. The registry says so in its own field —
+    // ingestionStatus REJECTED_FOR_GEOGRAPHY — and openly licensed data with
+    // no geometry is still unpaintable.
     precision: "SPECIES_MANAGEMENT_AREA",
-    caveat: "Reported by Elk Harvest Area (9), a different geography from the Wildlife Management Units the map draws.",
+    caveat: "Reported by Elk Harvest Area (57-01 to 63-08), a geography North Ground does not hold or certify. Openly licensed; held back for want of the geometry, not for a licence.",
   },
   "dataset:ca-on-cwd-surveillance-2025": {
     tier: "T1_OFFICIAL_MEASURED",
     // The registry says the reusable spatial fields still need schema review.
     // Unestablished is not fine-grained; it is unpaintable until someone looks.
     precision: null,
-    caveat: "Sample records whose reusable spatial fields have not passed schema review, so no precision is established.",
+    caveat:
+      "Sample records whose reusable spatial fields have not passed schema review, so no precision is established. A sample record is not a confirmed detection area, not a mandatory-testing area and not a carcass-transport restriction — three different legal objects a reader would otherwise assume from a dot on a map. That distinction must survive if this ever becomes paintable, not merely the resolution.",
   },
   "dataset:ca-qc-moose-harvest": { tier: "T1_OFFICIAL_MEASURED", precision: "MANAGEMENT_UNIT" },
   "dataset:ca-qc-white-tailed-deer-harvest": { tier: "T1_OFFICIAL_MEASURED", precision: "MANAGEMENT_UNIT" },
@@ -76,26 +83,44 @@ export const DATASET_EVIDENCE: Record<string, DatasetEvidenceKind> = {
   "dataset:ca-bc-big-game-harvest": {
     tier: "T1_OFFICIAL_MEASURED",
     precision: "MANAGEMENT_UNIT",
-    caveat: "Carries region and province rollup rows that are not units. Those rows are jurisdiction-level evidence and must never be painted per management unit.",
+    /* The rollup rows are EXCLUDED, not demoted. Region (R99), province (999)
+       and the regional codes 100–900 with 770/780 for regions 7A Omineca and
+       7B Peace are totals over the units beneath them. Reading them as
+       coarser evidence would put a provincial number on the map that
+       double-counts its own units — worse than dropping them. */
+    caveat:
+      "Region (R99), province (999) and regional rollup codes (100–900, with 770/780 for regions 7A Omineca and 7B Peace) are totals over the units beneath them, not units, and carry no evidence at any resolution. Resident and non-resident hunters, hunter days and kills stay separate components; success is never derived beyond the authority's own denominators. Cougar, mountain goat, mountain sheep and grizzly bear appear in the file but build no evidence, as North Ground holds no canonical record for them; grizzly hunting has been closed in British Columbia since 2017.",
   },
   "dataset:ca-bc-hunter-sample-survey-estimates": { tier: "T1_OFFICIAL_MEASURED", precision: "MANAGEMENT_UNIT" },
   "dataset:ca-sk-hunter-harvest-survey": {
     tier: "T1_OFFICIAL_MEASURED",
     precision: "MANAGEMENT_UNIT",
-    caveat: "Only draw and big-game-management licences are reported by zone; ordinary resident licences are reported province-wide and are jurisdiction-level evidence.",
+    /* Licence first: the site-wide Crown copyright requires advance written
+       permission for commercial use, so this is blocked outright and the
+       precision question does not yet arise. And zone resolution is the
+       MINORITY of the data, not the default with exceptions. */
+    caveat:
+      "Blocked: the site-wide Crown copyright requires advance written permission for commercial use. Separately, zone resolution covers the minority of the data — only draw and big-game-management licences are reported by zone, while the highest-volume regular-licence harvest, including resident white-tailed deer, is published province-wide with no zone breakdown at all.",
   },
   "dataset:ca-nb-big-game-harvest": { tier: "T1_OFFICIAL_MEASURED", precision: "MANAGEMENT_UNIT" },
   "dataset:ca-ns-deer-moose-harvest": {
     tier: "T1_OFFICIAL_MEASURED",
     precision: "MANAGEMENT_UNIT",
-    caveat: "The authority publishes a moose success rate by zone. It is publishable as such because the authority computed it; North Ground never derives one.",
+    /* The edition is part of the identity here. Per-zone deer harvest appears
+       in the 2022, 2023 and 2024 editions and was DROPPED from 2025, which is
+       province-wide only — so a pipeline that follows "latest" silently loses
+       all zone resolution and reports no error. Exactly the failure this
+       architecture exists to make loud. */
+    caveat:
+      "Pin the edition and its hash; never follow \"latest\". Per-zone deer harvest appears in the 2022, 2023 and 2024 editions and was dropped from the 2025 edition, which is province-wide only, so following the newest edition silently downgrades zone evidence to jurisdiction evidence without error. The authority publishes a moose success rate by zone, which is publishable because the authority computed it; North Ground never derives one. Nova Scotia's only openly licensed wildlife data is its bear extracts, which are county-level and therefore the wrong geography for a zone map.",
   },
   "dataset:ca-nl-big-game-area-evidence": {
     tier: "T1_OFFICIAL_MEASURED",
     // Moose Management Areas and Caribou Management Areas are separate
     // species-specific geographies, not one set of units.
     precision: "SPECIES_MANAGEMENT_AREA",
-    caveat: "Moose and caribou are reported on separate species-specific area maps, which are not interchangeable with each other.",
+    caveat:
+      "Moose and caribou are reported on separate species-specific area maps, which are not interchangeable with each other. North Ground has parity-certified both geographies (74 Moose Management Areas, 19 Caribou Management Areas), so the blocker is the licence, which names none and does not address commercial use. One page mixes vintages — 2022 survey tables beside 2024 success rates — so every record must carry its own effective period rather than the page's.",
   },
   "dataset:ca-nt-harvest-evidence": {
     tier: "T1_OFFICIAL_MEASURED",
@@ -116,6 +141,8 @@ export interface EvidenceMatrixEntry {
   tier: EvidenceTier;
   coverage: IntelligenceCoverage;
   precision: SpatialPrecision | null;
+  /** The registry's own pipeline state, read rather than inferred. */
+  ingestionStatus: string;
   authority: string;
   sourceUrl: string;
   /** The registry's own limitation, plus any geography caveat declared here. */
@@ -138,6 +165,7 @@ export function evidenceMatrixEntries(): EvidenceMatrixEntry[] {
         tier: kind.tier,
         coverage: coverageFromDataset(dataset.productionStatus),
         precision: kind.precision,
+        ingestionStatus: dataset.ingestionStatus,
         authority: dataset.authority,
         sourceUrl: dataset.url,
         limitation: kind.caveat ? `${dataset.limitations} ${kind.caveat}` : dataset.limitations,
@@ -164,6 +192,26 @@ export interface MatrixCell {
   explanation: string;
 }
 
+/**
+ * Whether one entry could actually put something on a map today.
+ *
+ * Three independent conditions, because each can fail on its own and each has
+ * a different remedy:
+ *
+ *   INGESTED — the registry's own field. Ontario's elk harvest is openly
+ *   licensed and perfectly good, and North Ground does not hold the nine Elk
+ *   Harvest Areas at all (REJECTED_FOR_GEOGRAPHY), so there is nothing to draw
+ *   at any resolution. Read rather than inferred, so nobody can make it
+ *   paintable by promoting its production status while the geometry is missing.
+ *   COVERAGE — the licence and certification state.
+ *   PRECISION — an established geography. Unknown is not fine.
+ */
+export function entryIsPaintable(entry: EvidenceMatrixEntry): boolean {
+  return entry.ingestionStatus === "INGESTED"
+    && entry.precision !== null
+    && ["AVAILABLE", "PARTIAL", "STALE"].includes(entry.coverage);
+}
+
 /* Best-covered first. A cell takes its best entry's state, and the weaker
    entries stay listed rather than being averaged away. */
 const COVERAGE_ORDER: IntelligenceCoverage[] = ["AVAILABLE", "PARTIAL", "STALE", "UNRESOLVED", "RESTRICTED", "UNAVAILABLE", "IN_RESEARCH"];
@@ -185,10 +233,7 @@ export function matrixCell(speciesId: string, jurisdictionId: string, entries = 
     };
   }
   const coverage = COVERAGE_ORDER.find((state) => cell.some((entry) => entry.coverage === state))!;
-  // Paintable needs BOTH a servable coverage state and an established
-  // precision. A dataset whose geography has not been resolved cannot be drawn,
-  // however good its licence.
-  const paintable = cell.some((entry) => entry.precision !== null && ["AVAILABLE", "PARTIAL", "STALE"].includes(entry.coverage));
+  const paintable = cell.some(entryIsPaintable);
   return {
     speciesId, jurisdictionId, coverage,
     tiers: [...new Set(cell.map(({ tier }) => tier))].sort(),
@@ -285,6 +330,9 @@ export function validateEvidenceMatrix(): string[] {
     // the registry's own IN_DEVELOPMENT — and that is still "not usable yet".
     // The distinction that matters is IN_RESEARCH against UNAVAILABLE, which is
     // a finding that the authority publishes nothing usable.
+    if (entry.ingestionStatus === "INGESTED" && entry.precision === null) {
+      problems.push(`${entry.datasetId} is ingested yet declares no precision; an ingested dataset has a geography, so establish it`);
+    }
     if (entry.coverage === "UNAVAILABLE" && entry.precision !== null) {
       problems.push(`${entry.datasetId} is recorded UNAVAILABLE yet declares a precision; a dataset that publishes nothing usable has no geography to state`);
     }

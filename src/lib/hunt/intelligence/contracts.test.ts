@@ -5,7 +5,7 @@ import { COVERAGE_EXPLANATIONS, coverageFromDataset, coverageFromRegistry, cover
 import { availableMetrics, derive, DERIVATIONS, mayLabelAs, NEVER_DERIVED } from "./derivation.ts";
 import { EVIDENCE_TIERS, isClaimRefusal, METRIC_TIERS, strongestTierFor, tierOfMetric, tierSupports } from "./evidence-ladder.ts";
 import { habitatModelIsReproducible, mayPublish, SENSITIVITY_RULES } from "./publication.ts";
-import { DATASET_EVIDENCE, evidenceMatrixEntries, matrixCell, matrixJurisdictions, matrixReport, validateEvidenceMatrix } from "./evidence-matrix.ts";
+import { DATASET_EVIDENCE, entryIsPaintable, evidenceMatrixEntries, matrixCell, matrixJurisdictions, matrixReport, validateEvidenceMatrix } from "./evidence-matrix.ts";
 import { intelligenceDatasetRegistry } from "./registry.ts";
 import { explainSelection, selectLayer, type LayerCandidate, type LayerRequest } from "./selection.ts";
 import { contains, describeResolution, finestPermittedResolution, permitsVisualisationAt, PRECISION_FOR_GEOGRAPHY_LEVEL } from "./spatial-precision.ts";
@@ -483,6 +483,79 @@ test("a species-bearing dataset with no declared kind is a failure, not a defaul
   // means the first modelled or range dataset trips this test and gets decided.
   const kinds = new Set(Object.values(DATASET_EVIDENCE).map(({ tier }) => tier));
   assert.deepEqual([...kinds], ["T1_OFFICIAL_MEASURED"]);
+});
+
+test("openly licensed evidence whose geometry North Ground does not hold is unpaintable", () => {
+  // Ontario's elk harvest is open data, usable, and reported by nine Elk
+  // Harvest Areas that North Ground does not hold. Non-nesting is the second
+  // fact; the first is that there is nothing to draw at ANY resolution. The
+  // registry says so in its own field, which is read rather than inferred, so
+  // promoting the dataset's production status cannot make it paintable while
+  // the geometry is still missing.
+  const elk = matrixCell("species:elk", "jurisdiction:ca-on");
+  assert.equal(elk.paintable, false);
+  const harvest = elk.entries.find(({ datasetId }) => datasetId === "dataset:ca-on-elk-harvest")!;
+  assert.equal(harvest.ingestionStatus, "REJECTED_FOR_GEOGRAPHY");
+  assert.equal(entryIsPaintable(harvest), false);
+  assert.match(DATASET_EVIDENCE["dataset:ca-on-elk-harvest"].caveat ?? "", /does not hold or certify/);
+  assert.match(DATASET_EVIDENCE["dataset:ca-on-elk-harvest"].caveat ?? "", /not for a licence/);
+  // Pretending it were licensed-and-covered still would not paint it.
+  assert.equal(entryIsPaintable({ ...harvest, coverage: "AVAILABLE" }), false);
+  assert.equal(entryIsPaintable({ ...harvest, coverage: "AVAILABLE", ingestionStatus: "INGESTED" }), true);
+  // Only ingested datasets paint anything at all today.
+  for (const entry of evidenceMatrixEntries()) {
+    if (entryIsPaintable(entry)) assert.equal(entry.ingestionStatus, "INGESTED", entry.datasetId);
+  }
+});
+
+test("a rollup row is not coarser evidence, it is not evidence", () => {
+  // British Columbia's region and province rows are totals over the units
+  // beneath them. Demoting them to jurisdiction-level evidence would put a
+  // provincial number on the map that double-counts its own units — worse than
+  // dropping them, and a mistake the word "rollup" invites.
+  const bc = DATASET_EVIDENCE["dataset:ca-bc-big-game-harvest"].caveat ?? "";
+  assert.match(bc, /carry no evidence at any resolution/);
+  assert.match(bc, /R99/);
+  assert.match(bc, /770\/780/);
+  // Harvest, effort and success stay separate, so a published success rate is
+  // never confused with one North Ground computed.
+  assert.match(bc, /success is never derived beyond the authority's own denominators/);
+  // Species with no canonical record build no evidence, even in the same file.
+  assert.match(bc, /grizzly/);
+});
+
+test("an edition is part of an identity where zone resolution can be dropped", () => {
+  // Nova Scotia published per-zone deer harvest in 2022, 2023 and 2024 and
+  // dropped it from the 2025 edition, which is province-wide only. A pipeline
+  // following "latest" would silently downgrade zone evidence to jurisdiction
+  // evidence and report no error at all.
+  const ns = DATASET_EVIDENCE["dataset:ca-ns-deer-moose-harvest"].caveat ?? "";
+  assert.match(ns, /Pin the edition and its hash/);
+  assert.match(ns, /never follow "latest"/);
+  assert.match(ns, /silently downgrades zone evidence to jurisdiction evidence/);
+  // County-level bear extracts are why COUNTY had to be first-class rather than
+  // flattened into the nearest management unit.
+  assert.match(ns, /county-level/);
+  assert.equal(permitsVisualisationAt({ precision: "COUNTY" }, { precision: "MANAGEMENT_UNIT" }).permitted, false);
+});
+
+test("a licence block is stated before a precision caveat, because it is the operative fact", () => {
+  const sk = DATASET_EVIDENCE["dataset:ca-sk-hunter-harvest-survey"].caveat ?? "";
+  assert.match(sk, /^Blocked:/);
+  assert.match(sk, /advance written permission for commercial use/);
+  // And zone resolution is the minority of the data, not the default.
+  assert.match(sk, /minority of the data/);
+  assert.equal(matrixCell("species:white-tailed-deer", "jurisdiction:ca-sk").coverage, "RESTRICTED");
+});
+
+test("a CWD sample record is not a detection, a testing area or a transport restriction", () => {
+  // Three different legal objects a reader would assume from a dot on a map.
+  // The distinction has to survive if this ever becomes paintable, not just
+  // the resolution.
+  const cwd = DATASET_EVIDENCE["dataset:ca-on-cwd-surveillance-2025"].caveat ?? "";
+  assert.match(cwd, /not a confirmed detection area/);
+  assert.match(cwd, /not a mandatory-testing area/);
+  assert.match(cwd, /not a carcass-transport restriction/);
 });
 
 test("a geography that does not nest with the drawn units keeps its own precision", () => {
