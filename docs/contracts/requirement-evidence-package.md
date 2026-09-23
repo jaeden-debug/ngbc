@@ -75,7 +75,7 @@ reworded source can be re-read without disturbing the other.
     "speciesIds": ["species:ruffed-grouse"],      // or "ALL", meaning the source says so
     "animalClass": null,                           // source-defined only: 'antlered', 'bearded'. Never derived from sex
     "geography": {
-      "kind": "JURISDICTION | ZONE | SUBZONE | COUNTY | SPECIAL_AREA",
+      "kind": "JURISDICTION | REGION | ZONE | SUBZONE | COUNTY | SPECIAL_AREA",
       "designations": ["10O"],                     // the authority's own codes
       "statedAs": "<the sentence that sets the geography>"
     },
@@ -105,7 +105,7 @@ reworded source can be re-read without disturbing the other.
 }
 ```
 
-## Eight rules, each of which has already cost us something
+## Nine rules, each of which has already cost us something
 
 1. **`statedAs` is verbatim.** Never paraphrased, never translated, never
    tidied. If our words are presented as the ministry's, that is the trust
@@ -149,10 +149,20 @@ multiple rather than by a detail.
   "category": "LIMIT",
   "kind": "BAG | POSSESSION",
 
-  // REQUIRED. No default, ever.
-  "period": "DAY | SEASON | LICENCE_YEAR",
+  // REQUIRED. No default, ever. Both AS_STATED and UNSTATED are facts about
+  // the source rather than readings of it.
+  "period": "DAY | SEASON | LICENCE_YEAR | AS_STATED | UNSTATED",
+  "periodStatedAs": "par séjour",           // REQUIRED when AS_STATED
 
   "value": { "count": 10, "statedAs": "<the verbatim cell or sentence>" },
+
+  // REQUIRED. WHO the figure is for. A missing field silently meaning "each
+  // hunter" is the same failure as defaulting to per-species, one field over.
+  "allocatedTo": {
+    "scope": "EACH_HUNTER | SHARED_BY_GROUP",
+    "hunters": 2,                           // REQUIRED when SHARED_BY_GROUP
+    "statedAs": "1 orignal, par 2 chasseurs, par année"
+  },
 
   // REQUIRED. Say which, with the sentence that settles it — never leave it implied.
   "appliesAcross": {
@@ -182,6 +192,42 @@ one instrument: its own Part 1 header reads *"Season bag limits for big game
 and small game; daily bag limits for upland birds."* A model that assumes daily
 gets big game wrong throughout.
 
+**`UNSTATED` is for a limit the authority periodises nowhere**, and it is a
+fact about the source rather than an interpretation. B.C. s.9(2) states a
+possession limit with no period — *"exceeds the possession limit of 3 times the
+daily bag limit for game birds"* — because a possession limit is a standing cap
+rather than a rate. Writing `AT_ANY_TIME` there would be our reading of the
+law; `UNSTATED` is what we actually know.
+
+**`AS_STATED` is for a period the authority NAMES and our vocabulary does not
+model.** Québec r. 12 s.24(2) caps zone 20 deer at 4 *"par séjour"* — per stay.
+That is not DAY, SEASON or LICENCE_YEAR, and recording SEASON with a note
+saying "this is not the source's word" puts prose beside a wrong enum, which is
+weaker than an honest enum. `AS_STATED` carries the authority's own word in
+`periodStatedAs` and **blocks certification**: we hold the rule faithfully and
+admit we cannot evaluate it. Québec compounds it — *séjour* is undefined in the
+regulation, so the annual cap is genuinely unresolved, and a row that claimed
+SEASON would have hidden that.
+
+It carries different weight by kind, and this is the part to get right:
+
+- **On a POSSESSION row, `UNSTATED` does not block certification.** "Possession
+  limit: 15" is the complete rule as the authority states it, and adding a
+  period would be inventing one.
+- **On a BAG row, `UNSTATED` blocks certification.** A bag limit whose period
+  is unknown is ambiguous by an order of magnitude, which is the exact failure
+  `period` exists to prevent.
+
+**`allocatedTo` is required, because a limit is not always per hunter.** Québec
+r. 12 s.25: *"1 orignal, par 2 chasseurs, par année"* — one moose shared by TWO
+hunters, and by three in 23 named zecs. A `count: 1` read as one-per-hunter is
+**two to three times too permissive, on big game**. It fails in the same
+direction as the 4× aggregate error and for the same reason: a field whose
+absence silently means the common case.
+
+So there is no default and no omission. `EACH_HUNTER` is a claim like any
+other and carries the sentence that supports it.
+
 **`appliesAcross` is required, and "this species" is a claim needing a
 sentence.** Québec's five-bird daily limit is an AGGREGATE across four species;
 a per-species reading is wrong by 4×. British Columbia does the same and then
@@ -205,6 +251,27 @@ wearing the authority's words.
 **A table cell is not self-describing.** `"5(15)"` means daily 10 / possession
 20 only because s.9(2) says so. Record the cell verbatim AND the provision that
 decodes it; a figure whose notation lives elsewhere is not evidence on its own.
+
+## Rule 9: an exemption's scope is what survives its own carve-outs
+
+B.C. Reg. 168/90 s.9(1) exempts the family **Leporidae** — hares and rabbits —
+from the licence requirement and the plug rule. **s.9(2)(a) then removes
+snowshoe hare from that exemption.**
+
+An implementer who reads 9(1) and stops tells hare hunters they need no
+licence. Snowshoe hare is one of British Columbia's seven served species, so
+that is a false negative reaching real hunters on a real hunt.
+
+So an exemption is recorded with the scope that **remains after its own
+exceptions**, and the sub-provision that narrows it is part of the same
+`statedAs` rather than a separate row. The BC lane did this correctly: its
+exemption row is scoped to snowshoe hare alone and marked NOT_APPLICABLE,
+carrying 9(1) and 9(2)(a) together, so the exemption cannot be read as
+reaching the species it explicitly excludes.
+
+The general form, which is rule 4 pointing the other way: **a permission is no
+more inheritable than a prohibition.** Both need reading to the end of the
+provision.
 
 ## Rule 8: authenticity is not currency
 
@@ -278,6 +345,11 @@ five terms were exact zeroes, four produced hits it had read and dismissed. So
 report **per term, per instrument**, with every non-zero hit classified. A
 summary that is wrong in a way which does not change the answer is still a
 summary nobody can check.
+
+**Watch for invisible characters.** Québec writes *"2 580 cm2"* with a
+NON-BREAKING SPACE, which read zero against a normal-space search — caught only
+because a control was running. Normalise whitespace and Unicode before
+matching, or the text you searched is not the text that exists.
 
 **Run a control.** A term you know is present in the same text, matched by the
 same method. Without it a zero is indistinguishable from a broken search — a

@@ -200,10 +200,18 @@ export async function completenessFor(jurisdictionId: string): Promise<SpeciesCo
           ? "Authorizations resolved from the certified requirement records."
           : "No requirement record has been read for this species.",
         has(known && ontarioRequirements[row.speciesId] !== undefined), of),
+      /* METHODS certifies only from a POSITIVE list of what is allowed. An
+         authority that packages methods as prohibitions — British Columbia
+         states bans plus bow-only and youth-only segments, with no allowed
+         list anywhere in its sources — cannot certify this fact, because
+         "everything not banned" is a complement, and a complement over a set
+         that does not describe the world is how a prohibition nobody
+         legislated reaches a hunter. The prohibitions are still shown; they
+         are simply not an ALLOWED answer. */
       cell("METHODS",
         known && Object.keys(ontarioMethods[ontarioSpeciesMethods[row.speciesId]?.methods]?.allowed ?? {}).length > 0
           ? "CERTIFIED" : "RESEARCH_REQUIRED",
-        known ? "Legal implements from the authority's own tables." : "No method table has been read for this species.",
+        known ? "Legal implements from the authority's own tables." : "No positive list of allowed methods has been read. Prohibitions alone cannot certify this: the complement of a ban list is not a permission.",
         has(known && Object.keys(ontarioMethods[ontarioSpeciesMethods[row.speciesId]?.methods]?.allowed ?? {}).length > 0), of),
       cell("AMMUNITION",
         known && (ontarioSpeciesMethods[row.speciesId]?.ammunition.length ?? 0) > 0 ? "CERTIFIED" : "RESEARCH_REQUIRED",
@@ -221,10 +229,17 @@ export async function completenessFor(jurisdictionId: string): Promise<SpeciesCo
           ? "A point timezone exists; the jurisdiction's own rule and its listed exceptions are unread."
           : "The point-timezone dataset is licence-blocked, so no clock time can be computed here. Held in Canada's legal-hours lane.",
         0, of),
+      /* A species can legitimately have NO daily limit, and must not read as
+         incomplete forever because of it. But "no record" and "no such limit"
+         are still different claims: NOT_APPLICABLE needs the authority to
+         assign a different period to this class in its own words — B.C. Reg.
+         190/84's Part 1 header does exactly that ("Season bag limits for big
+         game and small game; daily bag limits for upland birds"). Absent such
+         a statement, a season-only bundle is unread, not exempt. */
       cell("DAILY_LIMIT", daily ? "CERTIFIED" : "RESEARCH_REQUIRED",
         daily ? "Daily limit stated by the authority."
           : seasonBagOnly
-            ? "The schedule states a SEASON bag limit; whether a daily limit also applies is unread."
+            ? "The schedule states a SEASON bag limit and no daily one. NOT_APPLICABLE requires the authority's own statement that this class is periodised by season; until that is recorded this is unread, not exempt."
             : "No daily limit has been read. Absence of a record is not absence of a limit.",
         has(daily), of),
       cell("POSSESSION_LIMIT", possession ? "CERTIFIED" : "RESEARCH_REQUIRED",
