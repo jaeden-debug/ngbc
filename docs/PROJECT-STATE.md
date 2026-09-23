@@ -1587,3 +1587,66 @@ DMU in the Upper Peninsula and by county in the Lower Peninsula". The governing 
 the same KIND of thing in the two halves of one state — a further reason precedence is never
 inferable from unit numbers, and a case where the governing geography may not be in the DMU layer
 at all.
+
+### 2026-09-23 — Audit answer: all twelve Canadian spatial certifications are service-only
+Asked whether any certified Canadian layer was certified against a regulatory product as well as
+against the authority's GIS service. **None was.** Every certification fixture's `sourceUrl` is a
+GIS endpoint — Alberta MIMAS, BC openmaps WFS, Manitoba ArcGIS FeatureServer, Ontario LIO, Québec
+GeoServer, Yukon GeoYukon MapServer, NL WLD_BigGameManagementArea, NS Socrata, NB gis-erd-der, PE
+StatCan. Zero cite a regulations summary, hunting guide or regulation.
+
+It is true **by construction, not by accident**: `audit-zone-certification.mjs` asks the
+authority's SERVICE for its inventory and then resolves parity points against that same service.
+The question it answers is "does North Ground's copy match the service", and it cannot answer any
+other. So the Michigan finding lands on every Canadian lane. A layer in this column is not thereby
+wrong — it is unverified against the law, a smaller claim than the certification currently
+implies.
+
+Regulatory cross-checks that do exist are incidental, and none is part of certification:
+- **Prince Edward Island** — strongest, and about EXISTENCE rather than inventory. "PEI publishes
+  no hunting zones" came from the Wildlife Conservation Act Hunting Regulations text itself (zone
+  0, county 0, district 0; Schedule 2 province-wide), corroborated by the Migratory Birds
+  Regulations' "Throughout Prince Edward Island". Geometry is StatCan's; the regulatory claim is
+  law-verified.
+- **Alberta** — cross-checked today as a by-product of the federal work: Migratory Birds
+  Regulations Schedule 3 names Alberta's WMUs explicitly, every named unit exists in our certified
+  inventory, 177 of 179 fall in a federal zone.
+- **British Columbia** — the RULES bundle carries `officialIdentifiers` (225) read from B.C. Reg.
+  190/84, matching the service's 225. A real law-vs-service inventory check, but the SPATIAL
+  certification does not consult it.
+- **Yukon** — 445 service features reconciled against "the 443 subzones Yukon states", but the
+  comment does not record WHERE Yukon states 443. That provenance gap is itself a finding.
+- **Nova Scotia** — total area against the province's published ~55,284 km². Plausibility, not
+  inventory, not a regulatory product.
+
+No regulatory cross-check of any kind: **Ontario, Québec, Manitoba, New Brunswick, Newfoundland
+(all three layers).**
+
+**The instrument for five provinces already exists.** Schedule 3 of the Migratory Birds
+Regulations enumerates provincial units BY NAME for British Columbia, Alberta, Saskatchewan,
+Ontario and Québec ("District No. 1 means Provincial Management Units 1-1 to 1-15"). That is a
+federal regulatory product independently listing five provinces' units, from a different authority
+than the one publishing the service, and the federal build already expands and verifies those
+references — so the check is nearly free. It cannot detect everything: a unit rescinded
+provincially may still be named federally, and the federal list is itself dated. It gives nothing
+for MB, NB, NS, NL, PE or YT, which need their own regulatory product read.
+
+**A cheaper tripwire worth considering first:** most provinces publish a unit COUNT in their
+hunting summary. A mismatch does not say which unit is wrong, but it is fast and it is exactly
+what Michigan would have failed (115 rows including two rescinded). Yukon's 443 is that check
+already, done informally with its provenance unrecorded.
+
+**Recommendation carried to the owner: make law-certification a SECOND, SEPARATE certification
+with its own name and state, rather than widening the existing one.** The current certification's
+claim is true and useful — it is what catches an ingest defect — and widening its meaning would be
+the same mistake avoided with serving/rulesServing and with RESOLVED-vs-containment. Two facts:
+"MAP CERTIFIED: service" and "MAP CERTIFIED: law".
+
+**Canada's answer to the containment contract, measured rather than recalled: no Canadian layer
+nests within itself.** 73 bounding-box candidates across all certified layers, ZERO true
+containments, maximum overlap 0.206% — boundary slivers. Canadian overlap is only ever
+species-scoped or cross-authority, so within-layer nesting is a US-shaped mechanism and the
+contract should say so. And Michigan's by-county fact is a stronger constraint than nesting: if
+antlerless limits are set by DMU in the Upper Peninsula and by county in the Lower, the governing
+geography may not be in the DMU layer at all, which a model that only orders units WITHIN one
+layer cannot express.
