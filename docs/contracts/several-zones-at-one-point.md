@@ -252,6 +252,44 @@ It is recorded here because it is also the strongest evidence for the rule
 above: precedence is never inferable from unit numbers, because the governing
 unit may not be a unit.
 
+## A fourth relation: the hunter's class selects WHICH MAP
+
+*Found in Iowa, 2026-09-24. Named here so it is not mistaken for one of the
+other three. Nothing is built for it.*
+
+Iowa draws **two independent zone systems over the same ground for the same
+animal**, and which one applies depends on the hunter's class. Resident ZONE A
+/ ZONE B, introduced for 2026, decides whether a resident's deer licence is
+either-sex or antlered-buck-only. The published GIS layer models the
+**nonresident** system only; Zone A/B exists in no layer anywhere — the DNR
+org, all sixteen service folders and the state clearinghouse were swept.
+
+This is upstream of everything else in this document, and of the spatial model
+generally. Hunt assumes:
+
+> coordinate + date → zone → (hunter attributes narrow what the rules say
+> inside it)
+
+Iowa says the hunter's class selects **which map is consulted at all**. The
+attributes do not narrow the answer within a zone; they choose the zone system.
+Nothing in the zone layer, the presentation contract or the open-species path
+expects that.
+
+It is none of the other three relations, which is the reason for naming it:
+
+- not **conjunction** — one authority, not two;
+- not **specialization** — the systems are not nested, they are alternatives;
+- not the **across-layer** case — the rule's geography is not a different
+  published layer, it is an unpublished one.
+
+**Partial recovery, and the part that must stay UNKNOWN.** Iowa's DNR names the
+eight Zone B counties in HTML and all eight exist in the 99-county layer, so
+that much is reconstructible from the authority's own words. The Zone A
+antlered-buck-only first-gun-season restriction is **map shading only** and has
+no textual enumeration: it stays UNKNOWN. And the "Resident Deer Hunting Zones"
+map that the RULE ITSELF names is a raster with zero extractable characters —
+the regulation pointing at a picture.
+
 ## Open questions
 
 1. **Answered 2026-09-23 — NO Canadian layer nests within itself**, measured

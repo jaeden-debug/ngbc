@@ -60,6 +60,26 @@ and so nobody mistakes them for certification:
 - **Ontario, Québec, Manitoba, New Brunswick, Newfoundland** — none of any
   kind.
 
+### The check passes and fails, which is what makes it a check
+
+Measured across four states, 2026-09-23/24:
+
+| State | GIS vs law |
+| --- | --- |
+| Michigan | **FAILS** — DMUs 351 and 352 still served, rescinded by the NRC on 2026-05-13 |
+| Missouri | **FAILS** — a `CWD Management Zone` polygon still served; the phrase occurs zero times in the current Wildlife Code and the 2026 digest says it was removed |
+| Indiana | **FAILS** — two layers from one DNR org disagree at the same coordinate on Porter County, which the regulation suspends for 2026-27 |
+| Iowa | **PASSES, three times** — nonresident deer {1–10} against IAC 106.7(1), nonresident turkey {4–8} against 98.10, resident fall turkey {4–9} against 98.2(3) |
+
+Iowa's passes are evidence, not a null result. **A check that never passes is
+not a check** — it is a check that cannot distinguish, and three exact
+agreements are what make the three failures meaningful rather than anecdotal.
+
+The failures are SILENT, which is the reason this cannot be left to
+inspection. Missouri's dead layer carries no name, no year and no edit field:
+nothing on the service would have warned anyone. Michigan's rescinded units
+carry `Year = "2026"` like every other row.
+
 Where the two disagree, the regulatory product wins and the difference is
 excluded by an **explicit, sourced list naming the instrument that changed it**
 — never by a rule inferred from the data. Inferring which units are stale from

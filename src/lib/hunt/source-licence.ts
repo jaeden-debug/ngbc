@@ -58,6 +58,16 @@ import { createHash } from "node:crypto";
  * the §8 inference failure wearing a research coat. Treat every 403 as a bot
  * filter and we route around real access controls.
  *
+ * A THIRD THING THAT LOOKS LIKE PERMISSION AND IS NOT: the word "Public" in a
+ * dataset's title. It is the ArcGIS sharing level — who may call the service —
+ * and says nothing about what may be done with what comes back. Indiana
+ * publishes `Indiana Counties Public` and `Waterfowl Hunting Zones Public`,
+ * both anonymously queryable, and both stating: "restricted for use by the
+ * Indiana Department of Natural Resources Division of Fish and Wildlife and
+ * approved partners only." A refusal wearing the word Public, on a service
+ * that answers. It will catch someone, and the catching will feel like
+ * success: the data arrives, the query works, and nothing fails.
+ *
  * The test is WHAT is refusing and to WHOM: a data service gating its callers
  * is a gate; a public document's CDN declining non-browser clients is a
  * delivery mechanism. When it is genuinely unclear, treat it as a gate and say
