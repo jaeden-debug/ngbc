@@ -144,6 +144,9 @@ test("only a single-zone jurisdiction yields a point timezone", () => {
   assert.ok(timeZoneAtPoint("jurisdiction:ca-yt"));
   /* These genuinely span zones. A jurisdiction-wide value would be wrong
      somewhere, so there is none to give. */
+  /* Whole-extent-one-zone, established from the tz database's own table. */
+  assert.equal(timeZoneAtPoint("jurisdiction:ca-ab"), "America/Edmonton");
+  assert.equal(timeZoneAtPoint("jurisdiction:ca-mb"), "America/Winnipeg");
   assert.equal(timeZoneAtPoint("jurisdiction:ca-bc"), undefined);
   assert.equal(timeZoneAtPoint("jurisdiction:ca-on"), undefined);
   assert.equal(timeZoneAtPoint("jurisdiction:ca-nl"), undefined);
@@ -220,7 +223,12 @@ test("Yukon resolves with the ONE HOUR rule, not the half hour", async () => {
 
 test("a multi-zone jurisdiction refuses a window and still says what the law is", async () => {
   const { federalLegalTime } = await import("./federal.ts");
-  for (const jurisdiction of ["jurisdiction:ca-ab", "jurisdiction:ca-on", "jurisdiction:ca-bc", "jurisdiction:ca-qc"]) {
+  /*
+   * Alberta was in this list and does not belong: the tz database puts it
+   * wholly inside America/Edmonton. Ontario, BC and Québec genuinely span
+   * zones whose wall clocks differ.
+   */
+  for (const jurisdiction of ["jurisdiction:ca-on", "jurisdiction:ca-bc", "jurisdiction:ca-qc"]) {
     const result = federalLegalTime(jurisdiction, { latitude: 52, longitude: -110 }, on("2026-10-05"));
     assert.equal(result.status, "NOT_CERTIFIED", jurisdiction);
     if (result.status !== "NOT_CERTIFIED") continue;

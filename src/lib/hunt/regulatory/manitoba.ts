@@ -1,4 +1,6 @@
 import { legalTimeNotCertified } from "./legal-time.ts";
+import { timeZoneAtPoint } from "../time-zone.ts";
+import { manitobaLegalTime } from "./manitoba-legal-time.ts";
 import { general } from "../limitation.ts";
 import type { CanonicalId, IsoDate, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/ca-mb-2026.json" with { type: "json" };
@@ -128,11 +130,17 @@ export const MANITOBA_VOCABULARY: ConditionalVocabulary = {
       sourceSection: "M.R. 165/91 Schedule B, Part A, footnote 1",
     },
   ],
+  /* The fallback, for a zone-scoped question where no point is known. */
   legalTime: legalTimeNotCertified(
       "Manitoba prohibits hunting wildlife between half an hour after sunset and half an hour before sunrise the following day " +
-      "(General Hunting Regulation, M.R. 351/87 s. 3). North Ground has not certified exact astronomical times for this result.",
+      "(General Hunting Regulation, M.R. 351/87 s. 3). North Ground states exact times for a point, not for a whole zone.",
       "Manitoba Natural Resources and Indigenous Futures",
     ),
+  legalTimeAt: (speciesId, place, date) => {
+    if (place.scope === "ZONE") return undefined;
+    const timezone = timeZoneAtPoint("jurisdiction:ca-mb");
+    return timezone ? manitobaLegalTime(speciesId, place, date as IsoDate, timezone) : undefined;
+  },
   standingLimitations: [
     general("M.R. 165/91 is the controlling source for this answer. The 2026 Manitoba Hunting Guide is a summary and was used only to cross-check it."),
     general("Game Hunting Area boundaries are the province's map of the written descriptions in M.R. 220/86, which control. Near a boundary, confirm which area you are in."),

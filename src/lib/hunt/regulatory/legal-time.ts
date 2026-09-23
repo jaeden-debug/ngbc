@@ -115,6 +115,15 @@ export type LegalTimeResult =
       timezone: string;
       date: IsoDate;
       statedAs: string;
+      /**
+       * The pinpoint the window comes from ("M.R. 351/87, s. 3").
+       *
+       * A refusal always named its provision, because the reason string
+       * carried it. A stated window did not, so certifying a jurisdiction
+       * silently REMOVED its citation from the answer — provenance going
+       * backwards as coverage went forwards. It travels with the window now.
+       */
+      section: string;
       sourceId: CanonicalId<"source">;
       /** Stated, never implied: the margin already applied, and the algorithm. */
       precision: { marginMinutes: number; appliedInward: true; algorithm: string };
@@ -168,7 +177,7 @@ export function legalTimeFor(
       status: "RESOLVED",
       basis: rule.basis,
       window: { opensAt: rule.opensAt, closesAt: rule.closesAt },
-      timezone, date, statedAs: rule.statedAs, sourceId: rule.sourceId,
+      timezone, date, statedAs: rule.statedAs, section: rule.section, sourceId: rule.sourceId,
       precision: { marginMinutes: 0, appliedInward: true, algorithm: "none" },
     };
   }
@@ -214,7 +223,7 @@ export function legalTimeFor(
     status: "RESOLVED",
     basis: rule.basis,
     window: { opensAt, closesAt },
-    timezone, date, statedAs: rule.statedAs, sourceId: rule.sourceId,
+    timezone, date, statedAs: rule.statedAs, section: rule.section, sourceId: rule.sourceId,
     precision: {
       marginMinutes: SOLAR_UNCERTAINTY_MINUTES,
       appliedInward: true,
@@ -237,8 +246,15 @@ export function legalTimeNotCertified(reason: string, authority: string, sourceI
  */
 export function legalTimeSummary(result: LegalTimeResult): string {
   if (result.status === "RESOLVED") {
+    /*
+     * The provision supplies its own full stop when it is a whole sentence —
+     * Ontario's s. 20 (1) and Alberta's s. 28 both end in one — so appending
+     * another produced "wildlife.. Narrowed by". Quoted legal text is never
+     * reworded to fit our punctuation; the punctuation gives way.
+     */
+    const stated = /[.!?]$/.test(result.statedAs) ? result.statedAs : `${result.statedAs}.`;
     return `${result.window.opensAt} to ${result.window.closesAt} (${result.timezone}) on ${result.date}. ` +
-      `${result.statedAs}.` +
+      `${stated} (${result.section})` +
       (result.precision.marginMinutes
         ? ` Narrowed by ${result.precision.marginMinutes} minutes at each end so a calculation error cannot authorise a minute outside the legal window.`
         : "");
@@ -304,6 +320,8 @@ export function intersectLegalTime(results: readonly LegalTimeResult[]): LegalTi
     status: "RESOLVED",
     window: { opensAt, closesAt },
     statedAs: [...new Set(resolved.map((result) => result.statedAs))].join(" "),
+    /* Both provisions bind, so both are cited — the window is their intersection. */
+    section: [...new Set(resolved.map((result) => result.section))].join("; "),
     basis: bindingClose.basis,
     precision: bindingOpen.precision,
   };
