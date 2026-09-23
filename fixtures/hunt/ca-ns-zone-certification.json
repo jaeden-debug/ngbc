@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "certifiedOn": "2026-09-23",
+  "jurisdiction": "jurisdiction:ca-ns",
+  "layer": "layer:ca-ns-deer-zone",
+  "authority": "Nova Scotia Department of Natural Resources and Renewables",
+  "sourceUrl": "https://data.novascotia.ca/resource/m6qa-i3w9.geojson",
+  "sourceVersion": "data.novascotia.ca/resource/m6qa-i3w9, read 2026-09-23",
+  "officialZones": 12,
+  "officialIdentifiers": [
+    "101",
+    "102",
+    "103",
+    "104",
+    "105",
+    "106",
+    "107",
+    "108",
+    "109",
+    "110",
+    "111",
+    "112"
+  ],
+  "northGroundZones": 12,
+  "quarantined": [],
+  "inventory": {
+    "missing": [],
+    "invented": []
+  },
+  "geometry": {
+    "checked": 12,
+    "normalizations": [],
+    "disagreements": [],
+    "totals": {
+      "authorityFeatures": 12,
+      "polygons": 234,
+      "holes": 0,
+      "vertices": 96351
+    }
+  },
+  "parity": {
+    "total": 56,
+    "agreements": 54,
+    "disagreements": 0,
+    "testable": 54,
+    "untestable": [
+      {
+        "zone": "103",
+        "kind": "MULTIPART",
+        "reason": "SLIVER_BELOW_SAMPLING_TOLERANCE",
+        "poleToEdgeMetres": 0,
+        "toleranceMetres": 1.2,
+        "partAreaKm2": 0.000008,
+        "northGroundRepaired": false
+      },
+      {
+        "zone": "112",
+        "kind": "MULTIPART",
+        "reason": "SLIVER_BELOW_SAMPLING_TOLERANCE",
+        "poleToEdgeMetres": 0.0042,
+        "toleranceMetres": 1.2,
+        "partAreaKm2": 0,
+        "northGroundRepaired": false
+      }
+    ],
+    "untestableShare": 0.0357,
+    "untestableCeiling": 0.15,
+    "unresolved": 0,
+    "counts": {
+      "INTERIOR": 12,
+      "BOUNDARY_INSIDE": 11,
+      "BOUNDARY_OUTSIDE": 11,
+      "INTERIOR_SECOND": 12,
+      "MULTIPART": 10
+    },
+    "failures": [],
+    "sampleHash": "sha256:da4aedd0078c7c49960dda0502363defce7b197182ccb564781900e6c6d8e3a8"
+  },
+  "status": "VERIFIED"
+}

@@ -9,6 +9,7 @@ import britishColumbiaCertifiedUnits from "../../../content/regulatory/ca-bc-cer
 import { US_ZONE_LAYERS } from "./united-states/layers.ts";
 import { CANADA_LIVE_ZONE_LAYERS } from "./canada/live-layers.ts";
 import { NEWFOUNDLAND_BIG_GAME_SERVICE, NEWFOUNDLAND_LEGAL_STANDING, normaliseNewfoundlandArea } from "./ingestion/newfoundland-areas.ts";
+import { NOVA_SCOTIA_DEER_LEGAL_STANDING, normaliseNovaScotiaDeerZone } from "./ingestion/nova-scotia-deer.ts";
 import { YUKON_GMS_LAYER, YUKON_LEGAL_STANDING, normaliseYukonSubzone } from "./ingestion/yukon-subzones.ts";
 import { BRITISH_COLUMBIA_MU_CONFIG, normaliseBritishColumbiaMu } from "./ingestion/british-columbia-mu.ts";
 
@@ -489,6 +490,36 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     speciesScope: ["species:american-black-bear"],
     drawnByDefault: false,
     timeZone: "America/St_Johns",
+  },
+  {
+    id: "layer:ca-ns-deer-zone",
+    jurisdictionId: "jurisdiction:ca-ns",
+    jurisdictionName: "Nova Scotia",
+    country: "CA",
+    officialTerm: "Deer Management Zone",
+    officialTermShort: "DMZ",
+    coverage: "IN_DEVELOPMENT",
+    coverageNote:
+      "Nova Scotia's 12 Deer Management Zones from the province's own open data, under the Nova Scotia Open " +
+      "Government Licence. The Wildlife Act and its regulations control; the dataset is the province's digital " +
+      "product of them. No Nova Scotia rule is certified, so every species here answers UNKNOWN. The province " +
+      "licenses no moose geography as open data, so North Ground holds none and draws none.",
+    authority: "Nova Scotia Department of Natural Resources and Renewables",
+    sourceId: "source:ca-ns-deer-zone-service",
+    bounds: { minLatitude: 43.39, maxLatitude: 47.23, minLongitude: -66.4, maxLongitude: -59.67 },
+    /* Boundaries only: 12 zones parity-certified against the province (54/54
+       testable points; two slivers below the sampling tolerance recorded as
+       untestable). Scoped to deer because that is the geography the authority
+       writes deer seasons in and the only one it licenses. */
+    serving: true,
+    mapGeometry: "stored",
+    officialNamePrefix: "Deer Management Zone ",
+    zoneIdPrefix: "management_zone:ca-ns-dmz-",
+    designationOf: normaliseNovaScotiaDeerZone,
+    speciesScope: ["species:white-tailed-deer"],
+    drawnByDefault: true,
+    legalStanding: NOVA_SCOTIA_DEER_LEGAL_STANDING,
+    timeZone: "America/Halifax",
   },
   {
     id: "layer:ca-yt-gms",

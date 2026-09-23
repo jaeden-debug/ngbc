@@ -30,6 +30,10 @@ export const ZONE_ADAPTERS = {
     module: "../src/lib/hunt/ingestion/newfoundland-areas.ts",
     factory: "createNewfoundlandBearSource",
   },
+  "ca-ns": {
+    module: "../src/lib/hunt/ingestion/nova-scotia-deer.ts",
+    factory: "createNovaScotiaDeerSource",
+  },
   "ca-mb": {
     module: "../src/lib/hunt/ingestion/manitoba-gha.ts",
     factory: "createManitobaGhaSource",

@@ -260,6 +260,20 @@ export const ZONE_PRESENTATION_PROFILES: readonly ZonePresentationProfile[] = [
     stripLeadingZeros: false,
   },
   {
+    layerId: "layer:ca-ns-deer-zone",
+    jurisdictionId: "jurisdiction:ca-ns",
+    zoneIdPrefix: "management_zone:ca-ns-dmz-",
+    officialNamePrefix: "Deer Management Zone ",
+    sourceLocale: "en-CA",
+    jurisdictionName: { "en-CA": "Nova Scotia", "fr-CA": "Nouvelle-Écosse" },
+    // The province publishes the term in English only; it is kept, not translated.
+    term: { "en-CA": { long: "Deer Management Zone", short: "DMZ" }, "fr-CA": undefined },
+    termIsAbbreviation: true,
+    // Twelve zones, 101 to 112, as the regulation numbers them.
+    designationPattern: /^1(0[1-9]|1[0-2])$/,
+    stripLeadingZeros: false,
+  },
+  {
     layerId: "layer:ca-sk-wmz",
     jurisdictionId: "jurisdiction:ca-sk",
     zoneIdPrefix: "management_zone:ca-sk-wmz-",

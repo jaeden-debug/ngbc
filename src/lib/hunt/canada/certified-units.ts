@@ -2,6 +2,7 @@ import { BRITISH_COLUMBIA_MU_CONFIG } from "../ingestion/british-columbia-mu.ts"
 import {
   NEWFOUNDLAND_BEAR_CONFIG, NEWFOUNDLAND_CARIBOU_CONFIG, NEWFOUNDLAND_MOOSE_CONFIG,
 } from "../ingestion/newfoundland-areas.ts";
+import { NOVA_SCOTIA_DEER_CONFIG } from "../ingestion/nova-scotia-deer.ts";
 import { YUKON_GMS_CONFIG } from "../ingestion/yukon-subzones.ts";
 import { CANADA_LIVE_ZONE_LAYERS, canadaLiveAdapterConfig } from "./live-layers.ts";
 
@@ -23,6 +24,7 @@ const STORED_CONFIGS = [
   NEWFOUNDLAND_MOOSE_CONFIG,
   NEWFOUNDLAND_CARIBOU_CONFIG,
   NEWFOUNDLAND_BEAR_CONFIG,
+  NOVA_SCOTIA_DEER_CONFIG,
 ];
 
 /** The authority's own unit count for one layer, from its certified adapter. */

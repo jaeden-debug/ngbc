@@ -149,9 +149,9 @@ test("the report counts only what the certified bundles actually contain", () =>
   // The headline counts certified geography, not the subset whose rules answer.
   assert.equal(
     report.totals.officialUnitsIngested,
-    1_312,
+    1_324,
     "151 + 59 + 62 + 189 Ontario/Québec/Manitoba/Alberta, plus 225 British Columbian, 83 Saskatchewan, " +
-      "443 Yukon and 100 Newfoundland",
+      "443 Yukon, 100 Newfoundland and 12 Nova Scotian",
   );
 });
 

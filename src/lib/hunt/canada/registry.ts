@@ -399,20 +399,34 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     nameFr: "Nouvelle-Écosse",
     kind: "province",
     spatial: {
-      status: "IN_DEVELOPMENT",
+      // Deer zones parity-certified and served; moose and bear are not licensed as open data.
+      status: "VERIFIED",
       officialTerm: "Deer/Bear/Moose Management Zone",
       officialSourceUrl: "https://novascotia.ca/natr/hunt/regulations/",
-      parityCertified: false,
-      notes: "Nova Scotia zones differ per species, so one boundary set cannot serve every species.",
+      parityCertified: true,
+      notes:
+        "Nova Scotia zones differ per species, so one boundary set cannot serve every species. The 12 Deer " +
+        "Management Zones (101-112) are in PostGIS as VERIFIED with their derivatives built, parity-certified " +
+        "2026-09-23: 12/12 inventory, 0 missing, 0 invented, 0 geometry disagreements and 54/54 testable points, " +
+        "with two slivers below the 1.2 m sampling tolerance recorded as untestable rather than as agreement. " +
+        "The province publishes them as 234 polygon-part rows on Socrata, one row per part, and the adapter " +
+        "declares how many parts each zone has so a redrawn boundary fails the ingest. Total area 55,263 km² " +
+        "against the province's own ~55,284 km². Served for drawing and zone resolution only.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
       bundleIds: [],
       sourceLeads: ["Nova Scotia Hunting and Furharvesting Summary"],
+      huntingAuthorityUrl: "https://novascotia.ca/natr/hunt/",
       sourceState: "NOT_INGESTED",
     },
     knownGaps: [
-      "No geometry ingested and no rules certified; every Nova Scotia query is UNKNOWN.",
+      "Boundaries only: the 12 Deer Management Zones are drawn, named and resolved, and every Nova Scotia species " +
+        "query is UNKNOWN until rules are certified. A drawn boundary is not a certified rule.",
+      "No moose or bear geography: the province licenses only its deer zones as open data. Its moose zones appear " +
+        "solely on the Provincial Landscape Viewer's ArcGIS service, which carries no licence of any kind, so North " +
+        "Ground holds no Nova Scotia moose boundary and draws none rather than showing deer zones under a moose " +
+        "answer. This is a licence finding, not a missing ingest.",
       "Management zones are species-specific, so the usual one-zone-per-point model does not hold here.",
     ],
   },

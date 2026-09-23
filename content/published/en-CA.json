@@ -777,6 +777,20 @@
         "jurisdiction:ca-nl"
       ],
       "verificationStatus": "verified"
+    },
+    {
+      "id": "source:ca-ns-deer-zone-service",
+      "authority": "Nova Scotia Department of Natural Resources and Renewables",
+      "title": "Deer Management Zones — Nova Scotia Open Data",
+      "url": "https://data.novascotia.ca/d/m6qa-i3w9",
+      "publisher": "Government of Nova Scotia",
+      "retrievedAt": "2026-09-23T05:30:00Z",
+      "type": "official",
+      "jurisdictionIds": [
+        "jurisdiction:ca-ns"
+      ],
+      "verificationStatus": "verified",
+      "licence": "Nova Scotia Open Government Licence"
     }
   ],
   "claims": [
