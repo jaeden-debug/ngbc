@@ -1068,8 +1068,21 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
       </div>
     );
   } else if (selectedRef && exploration.cardOpen && presented && selectedLayer) {
-    // The place's own name, not its whole address: "Bancroft is in this zone".
+    /*
+     * Where the hunt is, said ONCE — in the header, under the zone it is in.
+     * It used to be a sentence below the header that repeated what the header
+     * had just said: "Zone 10 West" / "Maniwaki is in this zone". The place is
+     * the zone title's subline instead, which is the same fact in the place a
+     * reader looks for it.
+     *
+     * The relation stays a full sentence for assistive technology, because a
+     * subline reads as "in this zone" only if you can SEE that it sits under
+     * the zone's name.
+     */
     const placeName = hunt?.label.split(",")[0]?.trim() || hunt?.label;
+    const subline = isHuntZone && hunt
+      ? hunt.origin === "device" ? "Your location" : hunt.origin === "map" ? "Your chosen spot" : placeName ?? null
+      : null;
     const relation = isHuntZone && hunt
       ? hunt.origin === "device" ? "You are in this zone" : hunt.origin === "map" ? "Your chosen spot is in this zone" : `${placeName} is in this zone`
       : null;
@@ -1080,6 +1093,12 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
         <div className={styles.titleText}>
           <p className={styles.eyebrow}>{selectedLayer.jurisdictionName} · {presented.termLong ?? selectedLayer.officialTerm}</p>
           <h2 className={styles.title} id="hunt-zone-title" tabIndex={-1}>{presented.fullLabel}</h2>
+          {subline ? (
+            <p className={styles.titleSubline} data-origin={hunt?.origin}>
+              {subline}
+              <span className="ng-visually-hidden">{relation ? ` — ${relation}` : ""}</span>
+            </p>
+          ) : null}
         </div>
         <button type="button" className={styles.iconButton} onClick={() => void share()} aria-label={`Share ${presented.fullLabel}${species ? `, ${species.displayName}` : ""}`}>
           <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="M8 10V2M5 5l3-3 3 3M3 8v5h10V8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -1091,7 +1110,6 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     );
     body = (
       <div className={styles.page}>
-        {relation ? <p className={styles.relation} data-origin={hunt?.origin}>{relation}</p> : null}
         {isHuntZone && huntZone.kind === "resolved" && huntZone.nearBoundary ? (
           <p className={styles.warning} role="note">
             <strong>Near a zone boundary.</strong>{" "}

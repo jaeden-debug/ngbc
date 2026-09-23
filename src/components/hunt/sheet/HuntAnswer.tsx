@@ -134,8 +134,22 @@ export default function HuntAnswer({
           </button>
         ) : null}
       </div>
-      <p className={styles.answerSummary} data-clamp={!detailed || undefined}>{result.regulation.summary}</p>
+      {/*
+        The facts first, the sentence after.
 
+        The prose used to sit directly under the status, so the first thing a
+        hunter read was a paragraph whose every fact is in the list below it —
+        the season dates, the limits — plus two things that are not: the
+        authority's own name for the season segment ("Armes à feu et à air
+        comprimé, arbalète et arc") and the reminder that North Ground has not
+        verified what anyone holds.
+
+        Deleting it would take the segment label with it, and that label only
+        exists inside this string; it is a real fact with nowhere else to live
+        until `season` carries it as a field. So it moves rather than goes:
+        status, dates and limits are the scan, and the sentence follows for
+        whoever reads on.
+      */}
       {result.regulation.season || result.regulation.limits ? (
         <dl className={styles.facts}>
           {result.regulation.season ? (
@@ -155,6 +169,8 @@ export default function HuntAnswer({
           ) : null}
         </dl>
       ) : null}
+
+      <p className={styles.answerSummary} data-clamp={!detailed || undefined}>{result.regulation.summary}</p>
 
       {result.regulation.authorization ? <AuthorizationBlock authorization={result.regulation.authorization} /> : null}
 
