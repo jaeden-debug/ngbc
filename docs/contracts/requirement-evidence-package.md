@@ -81,6 +81,7 @@ reworded source can be re-read without disturbing the other.
     },
     "seasonSegment": { "label": { "text": "<authority's own segment name>", "lang": "fr-CA" }, "statedAs": "<…>" },
     "methods": ["<authority's own words>"],         // null where the rule does not turn on method
+    "gearClasses": ["6", "11"],                    // the authority's OWN numbers, where it regulates by class
     "dates":   { "from": "2026-09-19", "to": "2026-12-15", "statedAs": "<verbatim>" },
     "hunterClass": { "residency": null, "age": null, "licenceType": null }
   },
@@ -407,6 +408,60 @@ bois», the sub-7 cm antlerless deer licence, and black bear licences for zones
 13 and 16 — and r.32 prices none of them, its article 2 d) and e) reading
 *"(paragraphe abrogé)"*. Show no fee. Two of the three are the draw-allocated
 licences, which is a pattern worth noticing rather than a gap to fill.
+
+## A numbered gear class is an IDENTITY, not a list of equipment
+
+Some authorities do not regulate by what a hunter carries. Québec regulates by
+a numbered **« engin de type »** that bundles equipment with regulatory
+meaning, and references the number throughout — r.12 art. 17, art. 34.1,
+annexe III.
+
+**Identity cannot be a function of the implements, and r.12 s.31 proves it:**
+
+> **Type 11** is (a) arcs + (b) arbalètes.
+> **Type 12** is **the same two paragraphs word for word**, plus (c) shotgun
+> slugs and (d) muzzleloaders.
+
+Two classes sharing their entire bow-and-crossbow definition. `["BOW",
+"CROSSBOW"]` cannot tell them apart, and no widening of a method list ever
+will.
+
+**And this one is a SAFETY concern rather than a correctness one.** r.1
+s.17.3(1) exempts big game hunted *« au moyen d'un engin de type 6 ou 11 »*
+from hunter orange — **and not type 12.** Type 6 is bow-only and requires
+steel-headed arrows; type 11 admits crossbows and requires none. A hunter
+drawing a bow may be under type 11 or type 12, and the exemption reaches only
+one.
+
+An engine holding "bow, crossbow" cannot tell which, and **its failure
+direction is telling a hunter they need NO ORANGE when the law says they do** —
+the one requirement whose absence gets somebody shot.
+
+So:
+
+- Record the authority's own number in `scope.gearClasses`. It is the identity.
+- **Never derive a gear class from an implement list, and never reconstruct an
+  implement list as a substitute for one.** Types 11 and 12 collide on the
+  first attempt in both directions.
+- The implements a class happens to list are recorded as DERIVED, for display
+  and filtering, never for matching.
+- **Where a rule is scoped by class and the class is unknown, the answer is
+  UNKNOWN** — not the exemption, and not its negation.
+
+Both lanes preserved this rather than flattening it, before anyone ruled on the
+shape. That is the contract's own rule working: a source that does not fit is a
+finding about the schema.
+
+## A citation without its instrument is not a citation
+
+Both Québec regulations have an **article 17**. r.1 s.17.2 is hunter orange;
+r.12 s.17 is the antlerless moose constraint. **Two sibling regulations under
+one enabling Act, the same article number, completely different subjects.**
+
+So every `citation` carries its instrument, and a bare section number is never
+sufficient — not as shorthand in a note, not in a hand-off, not in a message.
+The relay of this very finding went wrong on exactly that ambiguity, which is
+the strongest argument available for the rule.
 
 ## Rule 8: authenticity is not currency
 
