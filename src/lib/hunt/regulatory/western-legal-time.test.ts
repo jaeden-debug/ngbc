@@ -7,6 +7,8 @@ import { legalTimeFor, SOLAR_UNCERTAINTY_MINUTES } from "./legal-time.ts";
 import { albertaHoursRules, ALBERTA_GENERAL_HOURS } from "./alberta-legal-time.ts";
 import { manitobaHoursRules, MANITOBA_GENERAL_HOURS } from "./manitoba-legal-time.ts";
 import { britishColumbiaHoursRules, BRITISH_COLUMBIA_GENERAL_HOURS } from "./british-columbia-legal-time.ts";
+import { montanaHoursRules, MONTANA_UPLAND_HOURS } from "./montana-legal-time.ts";
+import { timeZoneAtPoint } from "../time-zone.ts";
 import { sunriseSunset } from "./solar.ts";
 
 const iso = (value: string) => value as IsoDate;
@@ -173,5 +175,37 @@ test("every rule carries the authority's own words and a pinpoint citation", () 
      * point of asserting against all three rather than the one in front of you.
      */
     assert.match(rule.statedAs, /shall not|no person shall|prohibited/i);
+  }
+});
+
+test("Montana states a window and Idaho does not, from the same instrument", () => {
+  /*
+   * The sweep that found this asked, of every refusal, "is the premise true?"
+   * Montana's and Idaho's read identically — "has not certified exact
+   * astronomical times" — and the answers are opposite.
+   *
+   * `zone1970.tab` describes US zones by exception and names them down to
+   * single counties, so a state it does not name has one clock. Montana is
+   * named nowhere; Idaho is named ("Mountain - ID (south), OR (east)").
+   */
+  assert.equal(timeZoneAtPoint("jurisdiction:us-mt"), "America/Denver");
+  assert.equal(timeZoneAtPoint("jurisdiction:us-id"), undefined);
+});
+
+test("Montana's hours reach upland game birds and stop there", () => {
+  /*
+   * The authority's sentence is scoped to upland game birds. A species outside
+   * that scope must get NO rule rather than this one: Montana sets big-game
+   * hours elsewhere, and a window from the wrong rule is worse than none.
+   *
+   * The served species are read from the bundle, so this cannot pass by
+   * agreeing with a list copied out of it.
+   */
+  const served = montanaHoursRules("species:ring-necked-pheasant", iso("2026-10-15"));
+  assert.equal(served.length, 1);
+  assert.equal(served[0], MONTANA_UPLAND_HOURS);
+
+  for (const outside of ["species:white-tailed-deer", "species:moose", "species:american-black-bear"]) {
+    assert.deepEqual(montanaHoursRules(outside, iso("2026-10-15")), [], `${outside} is not an upland game bird`);
   }
 });

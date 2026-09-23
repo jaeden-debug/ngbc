@@ -94,6 +94,15 @@ export const SINGLE_ZONE_JURISDICTIONS: Readonly<Record<string, string>> = {
   "jurisdiction:ca-yt": "America/Whitehorse",
   "jurisdiction:ca-ab": "America/Edmonton",
   "jurisdiction:ca-mb": "America/Winnipeg",
+  /*
+   * United States zones are described by EXCEPTION in the same table, so
+   * membership here rests on an absence — which is evidence only because the
+   * table would have shown it: it names exceptions down to single counties
+   * (`Central - ND (Oliver)`, `Eastern - KY (Wayne)`). Montana is named in
+   * none. Idaho IS named (`Mountain - ID (south), OR (east)`) and is therefore
+   * absent from this table.
+   */
+  "jurisdiction:us-mt": "America/Denver",
 };
 
 /**
