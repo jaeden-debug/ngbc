@@ -6,6 +6,7 @@ import { hasSpeciesCoverageIn, speciesAsksQuestionIn } from "../coverage.ts";
 import { certifiedUnitsForLayer } from "./certified-units.ts";
 import { speciesById } from "../coverage.ts";
 import { ZONE_LAYERS } from "../zone-layers.ts";
+import { contentRepository } from "../../content/repository.ts";
 
 /**
  * The registry's job is to make a false coverage claim hard to make.
@@ -290,11 +291,18 @@ test("what the map can draw across every species equals what the report counts, 
   const drawable = ZONE_LAYERS
     .filter((layer) => layer.jurisdictionId === "jurisdiction:ca-nl" && layer.serving === true)
     .reduce((total, layer) => total + (certifiedUnitsForLayer(layer.id) ?? 0), 0);
-  assert.equal(drawable, 81, "74 moose and 7 black bear; caribou is certified but unreachable");
+  assert.equal(drawable, 100, "74 moose, 19 caribou and 7 black bear: every area the province publishes");
 
-  // And the reason is a species the library does not hold, not a certification gap.
+  /*
+   * Caribou was the case that made the union differ from the headline. It was
+   * unreachable while the selector admitted only species with certified rules,
+   * so serving its geography would have drawn boundaries nothing could select.
+   * Once selectability stopped meaning answerability, serving it is what made
+   * it reachable — so Newfoundland now draws every area it publishes, and the
+   * engine answers "Not covered here" rather than a season.
+   */
   const caribou = ZONE_LAYERS.find((layer) => layer.id === "layer:ca-nl-caribou-area")!;
-  assert.notEqual(caribou.serving, true);
+  assert.equal(caribou.serving, true);
   assert.deepEqual(caribou.speciesScope, ["species:caribou"]);
   /*
    * Not selectable, which is not the same as not existing: the canonical record
@@ -302,5 +310,31 @@ test("what the map can draw across every species equals what the report counts, 
    * only where North Ground can answer for it somewhere, and no Newfoundland
    * caribou rule is certified. The layer waits on a rule, not on an identity.
    */
-  assert.equal(speciesById("species:caribou"), undefined, "not selectable: no certified caribou rule anywhere");
+  // Still not in SUPPORTED_SPECIES, which is about certified rules; selectability is now the layer's job.
+  assert.equal(speciesById("species:caribou"), undefined, "no certified caribou rule anywhere");
+});
+
+test("every served jurisdiction cites a page a hunter can read, never a GIS endpoint", async () => {
+  /*
+   * When North Ground cannot answer for a species, Hunt says so and names the
+   * authority whose rules they are, linking its published source. That link is
+   * the source record's url, so a record pointing at a FeatureServer would put
+   * a machine endpoint in front of a hunter — §7 wants the authority's own
+   * published source, which is a page someone can read.
+   */
+  const served = ZONE_LAYERS.filter((layer) => layer.serving === true && layer.country === "CA");
+  const records = await contentRepository.getSources([...new Set(served.map((layer) => layer.sourceId))]);
+  const byId = new Map(records.map((record) => [record.id, record]));
+
+  for (const layer of served) {
+    const record = byId.get(layer.sourceId);
+    assert.ok(record, `${layer.jurisdictionName} is served with no published source record, so it can link nothing`);
+    assert.ok(
+      !/arcgis|\/rest\/services|FeatureServer|MapServer|\/ows\b/i.test(record.url),
+      `${layer.jurisdictionName} cites ${record.url}, which is a GIS endpoint rather than something a hunter can read`,
+    );
+    assert.ok(record.url.startsWith("https://"), `${layer.jurisdictionName}'s citation must be https`);
+    assert.ok(record.title.length > 0 && !/feature layer$/i.test(record.title),
+      `${layer.jurisdictionName}'s citation needs a readable title, not a layer name`);
+  }
 });

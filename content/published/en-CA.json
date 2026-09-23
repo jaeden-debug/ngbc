@@ -68,7 +68,7 @@
         },
         {
           "locale": "fr-CA",
-          "value": "G\u00e9linotte hupp\u00e9e",
+          "value": "Gélinotte huppée",
           "official": true
         }
       ],
@@ -289,7 +289,7 @@
           },
           {
             "locale": "fr-CA",
-            "value": "G\u00e9linotte hupp\u00e9e",
+            "value": "Gélinotte huppée",
             "official": true
           }
         ],
@@ -323,7 +323,7 @@
         ],
         "identification": [
           {
-            "text": "Confirm the bird as ruffed grouse rather than relying on the regional name \u201cpartridge.\u201d Ontario groups ruffed and spruce grouse in some WMU season tables, but species identity still matters wherever rules differ.",
+            "text": "Confirm the bird as ruffed grouse rather than relying on the regional name “partridge.” Ontario groups ruffed and spruce grouse in some WMU season tables, but species identity still matters wherever rules differ.",
             "sourceIds": [
               "source:ca-on-small-game-2026"
             ]
@@ -486,7 +486,7 @@
       "locale": "en-CA",
       "status": "published",
       "content": {
-        "plainText": "Do not resolve \u201cpartridge\u201d directly to ruffed grouse. That regional name is ambiguous, and Ontario's grouse rules differ among WMU groups. Confirm the species and the applicable row in the current official table."
+        "plainText": "Do not resolve “partridge” directly to ruffed grouse. That regional name is ambiguous, and Ontario's grouse rules differ among WMU groups. Confirm the species and the applicable row in the current official table."
       },
       "applicability": {
         "jurisdictionIds": [
@@ -609,7 +609,7 @@
     {
       "id": "source:ca-on-small-game-2026",
       "authority": "Ontario Ministry of Natural Resources",
-      "title": "Small game and furbearing mammals \u2014 2026 Ontario Hunting Regulations Summary",
+      "title": "Small game and furbearing mammals — 2026 Ontario Hunting Regulations Summary",
       "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/small-game-and-furbearing-mammals",
       "publisher": "Government of Ontario",
       "retrievedAt": "2026-09-20T12:00:00Z",
@@ -639,10 +639,10 @@
     {
       "id": "source:ca-on-wmu-service",
       "authority": "Ontario Ministry of Natural Resources",
-      "title": "Wildlife Management Unit feature layer",
-      "url": "https://ws.lioservices.lrc.gov.on.ca/arcgis2/rest/services/LIO_OPEN_DATA/LIO_Open05/MapServer/5",
+      "title": "Wildlife Management Units — Ontario GeoHub",
+      "url": "https://geohub.lio.gov.on.ca/datasets/mnrf::wildlife-management-unit/about",
       "publisher": "Government of Ontario",
-      "retrievedAt": "2026-09-20T12:00:00Z",
+      "retrievedAt": "2026-09-23T00:00:00Z",
       "type": "official",
       "jurisdictionIds": [
         "jurisdiction:ca-on"
@@ -685,6 +685,97 @@
       "publisher": "U.S. Department of Agriculture",
       "retrievedAt": "2026-09-20T12:00:00Z",
       "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:ca-qc-zone-chasse-service",
+      "authority": "Ministère de l'Environnement, de la Lutte contre les changements climatiques, de la Faune et des Parcs",
+      "title": "Cartes des zones de chasse — Québec.ca",
+      "url": "https://www.quebec.ca/en/tourism-recreation-sport/sporting-and-outdoor-activities/sport-hunting/hunting-zone-maps",
+      "publisher": "Gouvernement du Québec",
+      "retrievedAt": "2026-09-23T00:00:00Z",
+      "type": "official",
+      "jurisdictionIds": [
+        "jurisdiction:ca-qc"
+      ],
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:ca-mb-gha-service",
+      "authority": "Government of Manitoba",
+      "title": "Hunting Areas and Zones Regulation, M.R. 220/86",
+      "url": "https://web2.gov.mb.ca/laws/regs/current/220-86.php",
+      "publisher": "Government of Manitoba",
+      "retrievedAt": "2026-09-23T00:00:00Z",
+      "type": "official",
+      "jurisdictionIds": [
+        "jurisdiction:ca-mb"
+      ],
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:ca-ab-wmu-service",
+      "authority": "Alberta Environment and Protected Areas",
+      "title": "Wildlife Management Units — Alberta.ca",
+      "url": "https://www.alberta.ca/wildlife-management-units",
+      "publisher": "Government of Alberta",
+      "retrievedAt": "2026-09-23T00:00:00Z",
+      "type": "official",
+      "jurisdictionIds": [
+        "jurisdiction:ca-ab"
+      ],
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:ca-bc-mu-service",
+      "authority": "Government of British Columbia",
+      "title": "Wildlife Management Units — BC Data Catalogue",
+      "url": "https://catalogue.data.gov.bc.ca/dataset/wildlife-management-units",
+      "publisher": "Government of British Columbia",
+      "retrievedAt": "2026-09-23T00:00:00Z",
+      "type": "official",
+      "jurisdictionIds": [
+        "jurisdiction:ca-bc"
+      ],
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:ca-sk-wmz-service",
+      "authority": "Saskatchewan Ministry of Environment",
+      "title": "Hunting — Government of Saskatchewan",
+      "url": "https://www.saskatchewan.ca/residents/parks-culture-heritage-and-sport/hunting-trapping-and-angling/hunting",
+      "publisher": "Government of Saskatchewan",
+      "retrievedAt": "2026-09-23T00:00:00Z",
+      "type": "official",
+      "jurisdictionIds": [
+        "jurisdiction:ca-sk"
+      ],
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:ca-yt-gms-service",
+      "authority": "Government of Yukon, Department of Environment",
+      "title": "Game Management Areas — Yukon Open Data",
+      "url": "https://open.yukon.ca/data/datasets/game-management-areas-250k",
+      "publisher": "Government of Yukon",
+      "retrievedAt": "2026-09-23T00:00:00Z",
+      "type": "official",
+      "jurisdictionIds": [
+        "jurisdiction:ca-yt"
+      ],
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:ca-nl-big-game-area-service",
+      "authority": "Newfoundland and Labrador Department of Fisheries, Forestry and Agriculture",
+      "title": "Hunting Area Boundaries — Government of Newfoundland and Labrador",
+      "url": "https://www.gov.nl.ca/fal/public-education/wildlife/hunting/boundry/",
+      "publisher": "Government of Newfoundland and Labrador",
+      "retrievedAt": "2026-09-23T00:00:00Z",
+      "type": "official",
+      "jurisdictionIds": [
+        "jurisdiction:ca-nl"
+      ],
       "verificationStatus": "verified"
     }
   ],

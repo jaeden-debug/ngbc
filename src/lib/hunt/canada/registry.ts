@@ -446,7 +446,7 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     nameFr: "Terre-Neuve-et-Labrador",
     kind: "province",
     spatial: {
-      // Parity-certified; moose and black bear are served, caribou certified but unreachable.
+      // Parity-certified; all three species geographies served, boundaries only.
       status: "VERIFIED",
       officialTerm: "Management Area/Zone (species-specific)",
       officialSourceUrl: "https://www.gov.nl.ca/fal/public-education/wildlife/hunting/boundry/",
@@ -462,7 +462,7 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
         "27/27 testable points. Three black bear parts are slivers below the 1.2 m sampling tolerance (pole-to-edge " +
         "0 m, 0.061 m and 0.011 m, in areas 200, 201 and 205, all three repaired by North Ground) and are recorded as " +
         "untestable rather than as agreement; certification there rests on the full component inventory, which is " +
-        "clean. Moose and black bear are served for drawing and zone resolution; caribou is not.",
+        "clean. All three geographies are served for drawing and zone resolution.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
@@ -472,15 +472,9 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       huntingAuthorityUrl: "https://www.gov.nl.ca/hunting-trapping-guide/",
     },
     knownGaps: [
-      "Boundaries only: the 74 moose and 7 black bear areas are drawn, named and resolved, and every Newfoundland and " +
-        "Labrador species query is UNKNOWN until rules are certified. A drawn boundary is not a certified rule.",
-      "Certified geometry, unreachable: the 19 Caribou Management Areas are parity-certified and promoted, but " +
-        "no Newfoundland rule is certified, so `species:caribou` is not selectable and no species selection can reach " +
-        "that layer. Its canonical species record exists and is published; the gate is certified rules. It counts " +
-        "toward the 100 official areas the province publishes and is not among the 81 the map can draw. The layer " +
-        "serves the moment the species record exists, with no re-certification.",
-      "Caribou is published in the species library but is not selectable, because selectability is gated on having a " +
-        "certified regulatory record somewhere and no Newfoundland caribou rule is certified. The gate is rules, not identity.",
+      "Boundaries only: all 100 areas — 74 moose, 19 caribou, 7 black bear — are drawn, named and resolved, and every " +
+        "Newfoundland and Labrador species query is UNKNOWN until rules are certified. A drawn boundary is not a " +
+        "certified rule; choosing a species here answers \"Not covered here\" and names the authority.",
       "Big game is almost entirely licence-by-draw, so a season lookup is not the product question here.",
     ],
   },

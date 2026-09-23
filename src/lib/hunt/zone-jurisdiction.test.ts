@@ -72,10 +72,16 @@ test("a registered but unserved layer is named, never presented as a served zone
     assert.equal(presented.kind, "NOT_SERVING", `${layer.jurisdictionName} is not served and must not be presented`);
   }
 
-  // A served jurisdiction with an unserved geography is still presented.
-  const caribou = ZONE_LAYERS.find((layer) => layer.id === "layer:ca-nl-caribou-area")!;
-  assert.notEqual(caribou.serving, true);
+  /*
+   * Newfoundland is presented, and now with all three of its species
+   * geographies served rather than two. The rule this test protects is about
+   * jurisdictions with nothing served at all, which is why it survived the
+   * caribou layer changing state.
+   */
   assert.equal(layerForResolution({ status: "RESOLVED", jurisdictionId: "jurisdiction:ca-nl" }).kind, "SERVING");
+  const newfoundland = ZONE_LAYERS.filter((layer) => layer.jurisdictionId === "jurisdiction:ca-nl");
+  assert.equal(newfoundland.length, 3);
+  assert.ok(newfoundland.every((layer) => layer.serving === true), "moose, caribou and black bear areas are all drawn");
 });
 
 test("Saskatchewan is presented from its live service, with no rule of its own", () => {

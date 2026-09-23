@@ -444,14 +444,15 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     endpoint: `${NEWFOUNDLAND_BIG_GAME_SERVICE}/1/query`,
     nameField: "cma",
     bounds: { minLatitude: 46.5, maxLatitude: 60.5, minLongitude: -67.9, maxLongitude: -52.5 },
-    /* Certified geometry, unreachable: the 19 Caribou Management Areas are
-       parity-certified (76/76 points) and promoted, but no Newfoundland rule is
-       certified, so `species:caribou` is not in SUPPORTED_SPECIES (coverage.ts)
-       and no species selection can reach this layer. The canonical species
-       record exists and is published — the gate is certified rules, not
-       identity. It serves when a Newfoundland caribou rule is certified, with
-       no re-certification of the geometry. */
-    serving: false,
+    /* Boundaries only: 19 Caribou Management Areas, parity-certified (76/76
+       points). No Newfoundland caribou rule is certified, so choosing caribou
+       here draws this geography, resolves the zone and answers "Not covered
+       here" in the engine's own words — never a season. It stayed unserved
+       while the selector admitted only species with certified rules, which made
+       it unreachable; once selectability stopped meaning answerability, serving
+       it is what makes it reachable. */
+    serving: true,
+    mapGeometry: "stored",
     officialNamePrefix: "Caribou Management Area ",
     zoneIdPrefix: "management_zone:ca-nl-cma-",
     designationOf: normaliseNewfoundlandArea,
