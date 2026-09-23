@@ -1178,7 +1178,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
         {!species ? (
           <>
             {summary?.kind === "ready" ? (
-              <InSeasonHere summary={summary.summary} onChoose={chooseSpecies} />
+              <InSeasonHere summary={summary.summary} options={speciesOptions} onChoose={chooseSpecies} />
             ) : summary?.kind === "error" ? (
               <p className={styles.problem} role="status">{summary.message}</p>
             ) : (

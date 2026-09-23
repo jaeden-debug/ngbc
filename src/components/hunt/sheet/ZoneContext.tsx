@@ -6,6 +6,7 @@ import type { CanonicalId } from "../../../lib/content-contract";
 import type { SpeciesSelectorOption } from "../../../lib/hunt/coverage";
 import { readableCalendarDay } from "../../../lib/hunt/date";
 import { EXPLORATION_WORDING, type ExplorationState as ZoneState, type SpeciesZoneSummary, type ZoneSummary } from "../../../lib/hunt/exploration/states";
+import SpeciesPrimaryImage, { SpeciesImagePlaceholder } from "../../species/SpeciesPrimaryImage";
 import styles from "../HuntApp.module.css";
 
 /**
@@ -37,10 +38,27 @@ function readableDay(iso: string): string | null {
   return readableCalendarDay(iso);
 }
 
-/** "What can I hunt here?" — the zone's certified species, grouped by what the rules say on the day. */
-export function InSeasonHere({ summary, onChoose }: { summary: ZoneSummary; onChoose: (id: CanonicalId<"species">) => void }) {
-  const inSeason = summary.species.filter((entry) => entry.state === "SEASON_AVAILABLE" || entry.state === "SEASON_EXCEPT_AREAS");
-  const depends = summary.species.filter((entry) => entry.state === "CHECK_REQUIREMENTS");
+/**
+ * "What can I hunt here?" — the zone's certified species as rows, grouped by
+ * what the rules say across the zone on the day.
+ *
+ * A row is the species' own photo, its name, and the season the rules give it
+ * — enough to decide without opening anything, which is the point (owner,
+ * 2026-09-23). The headings stay the zone vocabulary: a zone card never says
+ * OPEN, because nothing here has been told who the hunter is.
+ *
+ * A closed row carries NO date. The summary knows a season is not running; it
+ * does not yet carry when the next one starts, and "closed today" and "closed
+ * until further notice" must never share a representation. When the engine
+ * carries a next opening, it appears here and nowhere else changes.
+ */
+const GROUPS: ZoneState[] = ["SEASON_AVAILABLE", "SEASON_EXCEPT_AREAS", "CHECK_REQUIREMENTS", "NEEDS_VERIFICATION", "CONFLICT", "CLOSED", "UNKNOWN"];
+
+export function InSeasonHere({ summary, options, onChoose }: {
+  summary: ZoneSummary;
+  options: SpeciesSelectorOption[];
+  onChoose: (id: CanonicalId<"species">) => void;
+}) {
   if (summary.counts.jurisdictionSpecies === 0) {
     return (
       <p className={styles.quiet}>
@@ -48,35 +66,60 @@ export function InSeasonHere({ summary, onChoose }: { summary: ZoneSummary; onCh
       </p>
     );
   }
-  if (!inSeason.length && !depends.length) {
+  const byState = new Map<ZoneState, SpeciesZoneSummary[]>();
+  for (const entry of summary.species) {
+    const list = byState.get(entry.state) ?? [];
+    list.push(entry);
+    byState.set(entry.state, list);
+  }
+  const shown = GROUPS.filter((state) => byState.get(state)?.length);
+  if (!shown.length) {
     return (
       <p className={styles.quiet}>
         No certified season is running here for every hunter on this day. Choose a species to see why — a gap in coverage is shown as a gap, never as a closed season.
       </p>
     );
   }
-  const chip = (entry: SpeciesZoneSummary) => (
-    <li key={entry.speciesId}>
-      <button type="button" className={styles.quickSpecies} data-state={entry.state} onClick={() => onChoose(entry.speciesId)}>
-        <span aria-hidden="true">{EXPLORATION_WORDING[entry.state].glyph}</span>
-        {entry.name}
-      </button>
-    </li>
-  );
+  const media = new Map(options.map((option) => [option.id as string, option.image ?? null]));
+  const row = (entry: SpeciesZoneSummary) => {
+    const opens = entry.season ? readableDay(entry.season.opens) : null;
+    const closes = entry.season ? readableDay(entry.season.closes) : null;
+    const image = media.get(entry.speciesId) ?? null;
+    return (
+      <li key={entry.speciesId}>
+        <button type="button" className={styles.speciesRow} data-state={entry.state} onClick={() => onChoose(entry.speciesId)}>
+          <span className={styles.speciesRowMedia} aria-hidden="true">
+            {image ? <SpeciesPrimaryImage media={image} variant="avatar" /> : <SpeciesImagePlaceholder label={entry.name} />}
+          </span>
+          <span className={styles.speciesRowText}>
+            <span className={styles.speciesRowName}>{entry.name}</span>
+            {opens && closes ? <span className={styles.speciesRowSeason}>{opens} – {closes}</span> : null}
+          </span>
+          {/* The state travels with the row as a word for assistive technology,
+              and as the glyph the group heading already carries for everyone
+              else — never as the colour alone (§40). */}
+          <span className="ng-visually-hidden">{EXPLORATION_WORDING[entry.state].label}</span>
+          <svg className={styles.speciesRowChevron} width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none">
+            <path d="m5 3 4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+      </li>
+    );
+  };
   return (
     <div className={styles.quickGroups}>
-      {inSeason.length ? (
-        <div>
-          <p className={styles.quickTitle}><StateChip state="SEASON_AVAILABLE" /></p>
-          <ul className={styles.quickList}>{inSeason.map(chip)}</ul>
+      {shown.map((state) => (
+        <div key={state}>
+          <p className={styles.quickTitle}>
+            <StateChip state={state} />
+            {/* A space the layout does not need, so the heading reads as
+                "In season 6" wherever this text is copied or extracted. */}
+            {" "}
+            <span className={styles.count}>{byState.get(state)!.length}</span>
+          </p>
+          <ul className={styles.speciesRows}>{byState.get(state)!.map(row)}</ul>
         </div>
-      ) : null}
-      {depends.length ? (
-        <div>
-          <p className={styles.quickTitle}><StateChip state="CHECK_REQUIREMENTS" /></p>
-          <ul className={styles.quickList}>{depends.map(chip)}</ul>
-        </div>
-      ) : null}
+      ))}
     </div>
   );
 }
