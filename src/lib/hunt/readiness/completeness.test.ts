@@ -86,15 +86,25 @@ describe("completeness matrix", () => {
       deliverable: { pairs: 0, of: 225 },
       absenceEvidence: {
         searchedOn: "2026-09-24",
-        instruments: ["B.C. Reg. 190/84", "Wildlife Act", "2026-2028 synopsis"],
-        terms: ["orange", "fluorescent", "blaze"],
-        control: { term: "Blazed Creek", matched: true },
+        matching: "WORD_BOUNDARY",
+        control: { term: "Blazed Creek", instrument: "B.C. Reg. 190/84", matched: true },
+        results: [
+          { term: "orange", instrument: "B.C. Reg. 190/84", hits: 0 },
+          { term: "visib", instrument: "B.C. Reg. 190/84", hits: 3, classified: "all 'visible bony antlers' — an animal description" },
+          { term: "vest", instrument: "2026-2028 synopsis", hits: 112, classified: "substring noise: harvest, livestock, invested", uninspected: "one standalone 'vest' not inspected" },
+        ],
         closedBy: "A positive statement from the authority, or a closed-world clause reaching clothing.",
       },
     };
     assert.notEqual(cell.state, "NOT_APPLICABLE");
     assert.equal(cell.deliverable.pairs, 0, "an absence never delivers an answer");
     assert.equal(cell.absenceEvidence!.control.matched, true, "a zero without a control is not evidence");
+    /* Every non-zero hit is classified. A bare count is not evidence: BC's own
+       "zero matches across five instruments" was false as worded while its
+       conclusion held, because four terms had hits it had read and dismissed. */
+    for (const result of cell.absenceEvidence!.results) {
+      if (result.hits > 0) assert.ok(result.classified, `${result.term}: ${result.hits} hits and no classification`);
+    }
     assert.ok(cell.absenceEvidence!.closedBy.length > 0, "a recorded absence says what would close it");
   });
 

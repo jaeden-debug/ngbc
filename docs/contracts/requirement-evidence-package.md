@@ -257,16 +257,44 @@ has its own shape:
 "absenceEvidence": {
   "fact": "HUNTER_ORANGE",
   "searchedOn": "2026-09-24",
-  "instruments": ["B.C. Reg. 190/84", "Wildlife Act", "<…the rest…>", "2026-2028 synopsis"],
-  "terms": ["orange", "fluorescent", "blaze", "<…nine…>"],
-  "control": { "term": "Blazed Creek", "matched": true },
+  "matching": "WORD_BOUNDARY",              // or SUBSTRING — see below
+  "control": { "term": "Blazed Creek", "instrument": "B.C. Reg. 190/84", "matched": true },
+  "results": [
+    { "term": "orange", "instrument": "B.C. Reg. 190/84", "hits": 0 },
+    { "term": "visib",  "instrument": "B.C. Reg. 190/84", "hits": 3,
+      "classified": "all 'visible bony antlers' — an animal description, not a clothing rule" },
+    { "term": "vest",   "instrument": "2026-2028 synopsis", "hits": 112,
+      "classified": "substring noise: harvest, livestock, invested, vested",
+      "uninspected": "one standalone 'vest' not inspected; that pass used substring matching" }
+  ],
   "closedBy": "<what would settle it: an authority statement, or a closed-world clause>"
 }
 ```
 
+**A bare zero is not the evidence. Classified hits are.** "Zero matches across
+five instruments" collapses five results into one claim — and BC's lane found,
+checking its own report, that the claim was FALSE while the conclusion held:
+five terms were exact zeroes, four produced hits it had read and dismissed. So
+report **per term, per instrument**, with every non-zero hit classified. A
+summary that is wrong in a way which does not change the answer is still a
+summary nobody can check.
+
 **Run a control.** A term you know is present in the same text, matched by the
 same method. Without it a zero is indistinguishable from a broken search — a
-wrong regex, a PDF whose text layer is images, a page that loaded empty. BC's
+wrong regex, a PDF whose text layer is images, a page that loaded empty — and
+all three look exactly like "there is no such rule". BC matched "Blazed Creek",
+which is what makes its zeroes evidence.
+
+**Substring matching is its own false-positive class, and it is the mirror of
+the false negative.** `vest` matched *harvest*, *livestock*, *invested*,
+*vested* — 112 hits in one document. A lane could report "vest: 112 hits,
+requirement present" exactly as easily as it could miss `orangé` by searching
+only `orange`. Both directions of the same failure now have an instance.
+
+So: **match on word boundaries, or classify every hit.** State which in
+`matching`. If a substring pass leaves a hit uninspected, say so on that result
+rather than dropping it — an honestly flagged gap tells the next lane exactly
+what to look at.
 lane matched "Blazed Creek", which is why its nine zeroes are evidence.
 
 **Do not record it as NOT_APPLICABLE on your own authority**, and the BC lane

@@ -83,9 +83,32 @@ export interface FactCell {
    */
   absenceEvidence?: {
     searchedOn: string;
-    instruments: string[];
-    terms: string[];
-    control: { term: string; matched: boolean };
+    /**
+     * How terms were matched. SUBSTRING is its own false-positive class and
+     * the mirror of the false negative: `vest` matches *harvest*, *livestock*,
+     * *invested* — 112 hits in one document — and "112 hits, requirement
+     * present" is as easy to report as missing `orangé` by searching only
+     * `orange`. Word boundaries, or every hit classified.
+     */
+    matching: "WORD_BOUNDARY" | "SUBSTRING";
+    control: { term: string; instrument: string; matched: boolean };
+    /**
+     * Per term, per instrument, with every non-zero hit classified.
+     *
+     * Not a term list and a count: "zero matches across five instruments"
+     * collapses five results into one claim, and that claim can be false while
+     * the conclusion holds — which is what happened here, caught by the lane
+     * checking its own report. A summary nobody can check is not evidence.
+     */
+    results: Array<{
+      term: string;
+      instrument: string;
+      hits: number;
+      /** Required whenever hits > 0: what they actually were. */
+      classified?: string;
+      /** An honestly flagged gap beats a tidy list. */
+      uninspected?: string;
+    }>;
     closedBy: string;
   };
 }
