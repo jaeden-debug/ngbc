@@ -867,15 +867,31 @@ const scenarios = {
     });
     check(s, "the sources are collapsed, in the HTML, and open on a click",
       sources && sources.open === false && sources.chars > 200 && sources.opens === true, JSON.stringify(sources));
-    /* And the limitations are NOT collapsed, because this flat list still mixes
-       point-specific notes with standing ones. It collapses when each line
-       carries its own scope, not before. */
-    const wall = await page.evaluate(() => {
+    /* Each limitation goes where its AUTHOR's scope sends it, and the three
+       destinations are the whole point: what applies here is never collapsed,
+       what is always true is said once, and the authority's own words sit with
+       the source they describe rather than in a hunter's way. */
+    const scoped = await page.evaluate(() => {
       const heading = [...document.querySelectorAll("h3")].find((h) => /does not resolve/i.test(h.textContent ?? ""));
-      return heading ? { shown: true, inDetails: Boolean(heading.closest("details")) } : { shown: false };
+      const here = [...document.querySelectorAll("h3")].find((h) => /Applies here today/i.test(h.textContent ?? ""));
+      return {
+        // Present AND collapsed — a vanished wall must not pass as a tidy one.
+        generalLines: heading?.closest("details")?.querySelectorAll("li").length ?? 0,
+        generalCollapsed: Boolean(heading?.closest("details")),
+        hereShown: Boolean(here),
+        hereCollapsed: here ? Boolean(here.closest("details")) : false,
+        frenchInTheWay: [...document.querySelectorAll("[lang='fr-CA']")].filter((e) => !e.closest("details")).length,
+        frenchTagged: [...document.querySelectorAll("blockquote")].every((q) => q.getAttribute("lang")),
+      };
     });
-    check(s, "and the limitations are still read openly, not behind a disclosure",
-      wall.shown === false || wall.inDetails === false, JSON.stringify(wall));
+    check(s, "the general limitations are still all there, said once and collapsed",
+      scoped.generalCollapsed && scoped.generalLines > 0, JSON.stringify(scoped));
+    check(s, "anything that applies here is never behind a disclosure", scoped.hereCollapsed === false, JSON.stringify(scoped));
+    /* §47: the ministry's French is preserved, tagged and attributed in Sources
+       — the answer to an untranslated wall is attribution, not a paraphrase of
+       law invented by a renderer. */
+    check(s, "the authority's French is out of the scan path and language-tagged",
+      scoped.frenchInTheWay === 0 && scoped.frenchTagged, JSON.stringify(scoped));
     const overflowAfter = await page.evaluate(() => ({ doc: document.documentElement.scrollWidth, win: window.innerWidth }));
     check(s, "the long answer still does not scroll sideways", overflowAfter.doc <= overflowAfter.win, JSON.stringify(overflowAfter));
     check(s, "no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));

@@ -1152,6 +1152,7 @@
 /* The summary's own parts: a label, an optional note under it, an optional
    count. At 320px the label wraps and the count stays on its line. */
 .disclosureLabel { display: flex; flex-direction: column; gap: 2px; min-width: 0; text-align: left; }
+.disclosureHeading { margin: 0; font: inherit; color: inherit; }
 .disclosureNote { font-size: 0.74rem; font-weight: 500; color: var(--ng-bone-dim); letter-spacing: 0.01em; }
 .disclosureCount { flex: none; font-size: 0.78rem; font-weight: 600; color: var(--ng-bone-dim); }
 .disclosureBody { padding: 2px 2px 12px; }
@@ -1177,3 +1178,14 @@
 .controlNote { font-size: 0.78rem; color: var(--ng-bone-dim); }
 .controlEmpty { margin: 10px 2px; font-size: 0.82rem; color: var(--ng-bone-dim); }
 .switchInput { width: 44px; height: 26px; accent-color: var(--ng-moss); flex: none; }
+
+/* The authority's own words about its own data, beside the source they describe.
+   Quoted and set apart, so nobody reads them as North Ground's sentence. */
+.sourceQuote {
+  margin: 6px 0 0;
+  padding-left: 10px;
+  border-left: 2px solid var(--ng-glass-border);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ng-bone-dim);
+}

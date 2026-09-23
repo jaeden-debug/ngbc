@@ -10,6 +10,7 @@ import { readableCalendarDay } from "../../../lib/hunt/date";
 import { partitionEvaluationSources } from "../../../lib/hunt/source-roles";
 import type { HuntEvaluation } from "../../../lib/hunt/types";
 import Disclosure from "./Disclosure";
+import { groupLimitations, orphanCaveats, sourceCaveats, type LimitationGroups } from "./limitation-groups";
 import ReadyToHunt from "../ReadyToHunt";
 import styles from "../HuntApp.module.css";
 
@@ -28,6 +29,7 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
 }) {
   const id = useId();
   const sourceGroups = partitionEvaluationSources(result);
+  const limitations = groupLimitations(result.regulation.limitations);
   const weather = result.weather;
   return (
     <div className={styles.detail}>
@@ -37,6 +39,31 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
           {result.zone.boundaryDistanceMeters !== undefined ? `This point is about ${result.zone.boundaryDistanceMeters.toLocaleString("en-CA")} m from the mapped line. ` : ""}
           Rules can differ on the other side, and consumer GPS is not a legal position fix.
         </p>
+      ) : null}
+
+      {/*
+        What applies HERE, today: the lines their authors marked CRITICAL or
+        CONTEXTUAL. They sit above everything else and never behind a
+        disclosure — a hunter who misses one of these can be stopped, fined or
+        hurt, and tidiness is not a reason to hide that (§41A).
+
+        A CONTEXTUAL line arrives only once the evaluation has decided its
+        condition, so its presence is the condition holding; nothing here
+        re-tests it. If a jurisdiction ever emits a NEAR_BOUNDARY line, it will
+        read alongside the boundary warning above rather than replacing it —
+        two statements of the same fact is a smaller fault than losing one.
+      */}
+      {limitations.here.length ? (
+        <section aria-labelledby={`${id}-here`} className={styles.warning} role="note">
+          <h3 className={styles.detailTitle} id={`${id}-here`}>Applies here today</h3>
+          <ul className={styles.bullets}>
+            {limitations.here.map((limitation) => (
+              <li key={limitation.id} lang={limitation.lang}>
+                {limitation.owner === "AUTHORITY" ? `« ${limitation.text} »` : limitation.text}
+              </li>
+            ))}
+          </ul>
+        </section>
       ) : null}
 
       {result.regulation.requirements.length ? (
@@ -62,37 +89,22 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
       </section>
 
       {/*
-        STILL OPEN, and deliberately.
-
-        These want collapsing — the owner is right that they are a wall — but
-        `limitations` is one flat `string[]`, and two very different kinds of
-        statement are concatenated into it. Québec's `placeNotes` fire only for
-        THIS point: "this point is in the part of the zone the ministry marks
-        ZSR", where extra cervid measures apply, or "this point is in [named
-        territory]… hunting can be prohibited in particular territories". Those
-        are true here, today, about where the hunter is standing. Its
-        `standingFor` lines are the opposite: true everywhere in the province,
-        always.
-
-        Collapsing the array hides the first kind along with the second, and a
-        critical statement does not move behind a disclosure to make a screen
-        tidier (§41A). Telling them apart by their WORDING — promoting anything
-        that starts "This point is in" — is a renderer guessing at legal
-        meaning, which fails silently the first time a jurisdiction phrases one
-        differently.
-
-        So it stays open until each line carries its own scope from the author
-        who wrote it. Then the general ones collapse, the point-specific ones
-        move up beside the status, and the authority's own caveats go to
-        Sources. Québec already separates the two at authoring time
-        (`quebec.ts:483`), so the knowledge exists — it is only lost at this
-        boundary.
+        The GENERAL lines: true everywhere this jurisdiction reaches, always.
+        Said once, collapsed, complete. Nothing was cut to get here — what left
+        this list went UP to "Applies here today" or ACROSS into Sources,
+        each because its author said which it was.
       */}
-      {result.regulation.limitations.length ? (
-        <section aria-labelledby={`${id}-lim`}>
-          <h3 className={styles.detailTitle} id={`${id}-lim`}>What this does not resolve</h3>
-          <ul className={styles.bullets}>{result.regulation.limitations.map((limitation) => <li key={limitation.id}>{limitation.text}</li>)}</ul>
-        </section>
+      {limitations.always.length ? (
+        <Disclosure
+          title="What this does not resolve"
+          note="True of every answer in this jurisdiction"
+          count={limitations.always.length}
+          id={`${id}-lim`}
+        >
+          <ul className={styles.bullets}>
+            {limitations.always.map((limitation) => <li key={limitation.id} lang={limitation.lang}>{limitation.text}</li>)}
+          </ul>
+        </Disclosure>
       ) : null}
 
       {weather.status === "AVAILABLE" || weather.summary ? (
@@ -155,15 +167,20 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
         {sourceGroups.authority.length ? (
           <>
             <p className={styles.detailNote}>What decided this answer: the rules and the zone boundary.</p>
-            <SourceList sources={sourceGroups.authority} />
+            <SourceList sources={sourceGroups.authority} caveats={limitations} />
           </>
         ) : <p className={styles.detailText}>No official source is attached to this answer.</p>}
         {sourceGroups.context.length ? (
           <>
             <p className={styles.detailNote}>Behind the field notes and weather — not the authority for this answer.</p>
-            <SourceList sources={sourceGroups.context} />
+            <SourceList sources={sourceGroups.context} caveats={limitations} />
           </>
         ) : null}
+        {/* A caveat whose source is not listed above is still the authority's
+            own statement, and is shown rather than dropped. */}
+        {orphanCaveats(limitations, [...sourceGroups.authority, ...sourceGroups.context].map((source) => source.id)).map((caveat) => (
+          <blockquote key={caveat.id} className={styles.sourceQuote} lang={caveat.lang}>« {caveat.text} »</blockquote>
+        ))}
         <p className={styles.detailNote}>
           North Ground organises official information. It does not replace the legislation, regulations or instructions of the
           responsible authority. Confirm current requirements before you hunt.
@@ -182,7 +199,7 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
   );
 }
 
-function SourceList({ sources }: { sources: HuntEvaluation["sources"] }) {
+function SourceList({ sources, caveats }: { sources: HuntEvaluation["sources"]; caveats: LimitationGroups }) {
   return (
     <ul className={styles.sourceList}>
       {sources.map((source) => {
@@ -198,6 +215,18 @@ function SourceList({ sources }: { sources: HuntEvaluation["sources"] }) {
             {(source as { attribution?: string }).attribution ? (
               <span className={styles.sourceMeta}>{(source as { attribution?: string }).attribution}</span>
             ) : null}
+            {/*
+              The authority's own caveat about its own data, with the source it
+              is about. It is quoted, attributed and tagged with the language it
+              was published in — never translated: §47 keeps an official term in
+              the authority's words, and a paraphrase of law presented as the
+              ministry's statement is the failure this product exists to avoid.
+              An English summary, when one is written, is content someone owns
+              and publishes as data — not a sentence a renderer invents.
+            */}
+            {sourceCaveats(caveats, source.id).map((caveat) => (
+              <blockquote key={caveat.id} className={styles.sourceQuote} lang={caveat.lang}>« {caveat.text} »</blockquote>
+            ))}
           </li>
         );
       })}

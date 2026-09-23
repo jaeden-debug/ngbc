@@ -34,11 +34,14 @@ export default function Disclosure({ title, note, count, children, id }: {
 }) {
   return (
     <details className={styles.disclosure} id={id}>
+      {/* The title stays a HEADING inside the summary: a disclosure is still a
+          section of the page, and collapsing it must not remove it from the
+          heading order a screen-reader user navigates by. */}
       <summary>
-        <span className={styles.disclosureLabel}>
-          {title}
+        <div className={styles.disclosureLabel}>
+          <h3 className={styles.disclosureHeading}>{title}</h3>
           {note ? <span className={styles.disclosureNote}>{note}</span> : null}
-        </span>
+        </div>
         {count !== undefined ? <span className={`${styles.disclosureCount} ng-numeric`}>{count}</span> : null}
       </summary>
       <div className={styles.disclosureBody}>{children}</div>
