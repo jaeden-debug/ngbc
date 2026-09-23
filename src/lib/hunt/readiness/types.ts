@@ -244,7 +244,15 @@ export interface AuthorizationRequirement {
 
 /* ── Hunter orange ───────────────────────────────────────────────────────── */
 
-export type RequirementStatus = "REQUIRED" | "NOT_REQUIRED" | "CONDITIONAL" | "UNKNOWN";
+/**
+ * NOT_CERTIFIED rather than UNKNOWN, throughout.
+ *
+ * UNKNOWN reads as a fact about the LAW — that nobody knows whether orange is
+ * required here. NOT_CERTIFIED is a fact about NORTH GROUND: we hold no
+ * certified record. The second is what is true, and the name should say which.
+ * Agreed with Hunt overhaul, who conceded their half's wording.
+ */
+export type RequirementStatus = "REQUIRED" | "NOT_REQUIRED" | "CONDITIONAL" | "NOT_CERTIFIED";
 
 export interface OrangeResult {
   status: RequirementStatus;
@@ -306,7 +314,7 @@ export type PriceState =
 
 export interface AuthorizationChecklistItem {
   id: AuthorizationId;
-  status: "REQUIRED" | "CONDITIONAL" | "UNKNOWN";
+  status: "REQUIRED" | "CONDITIONAL" | "NOT_CERTIFIED";
   officialName: string;
   kind: AuthorizationKind;
   authority: string;

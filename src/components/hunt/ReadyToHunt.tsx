@@ -18,8 +18,8 @@ import styles from "./ReadyToHunt.module.css";
  * word, so nothing depends on colour.
  */
 
-const AUTHORIZATION_WORD = { REQUIRED: "Required", CONDITIONAL: "Depends", UNKNOWN: "Unknown" } as const;
-const ORANGE_WORD = { REQUIRED: "Required", NOT_REQUIRED: "Not required", CONDITIONAL: "Depends", UNKNOWN: "Unknown" } as const;
+const AUTHORIZATION_WORD = { REQUIRED: "Required", CONDITIONAL: "Depends", NOT_CERTIFIED: "Verify requirement" } as const;
+const ORANGE_WORD = { REQUIRED: "Required", NOT_REQUIRED: "Not required", CONDITIONAL: "Depends", NOT_CERTIFIED: "Verify requirement" } as const;
 
 function Sources({ provenance }: { provenance: Provenance[] }) {
   if (!provenance.length) return null;

@@ -118,7 +118,17 @@ export interface HuntShareProjectionInput {
   readiness?: HuntBriefReadiness;
 }
 
-export const HUNT_BRIEF_READINESS_STATUSES = ["REQUIRED", "NOT_REQUIRED", "CONDITIONAL", "UNKNOWN"] as const;
+export const HUNT_BRIEF_READINESS_STATUSES = ["REQUIRED", "NOT_REQUIRED", "CONDITIONAL", "NOT_CERTIFIED"] as const;
+
+/**
+ * What older briefs wrote, and what it means now.
+ *
+ * A Hunt Brief is a SAVED artefact and versions 1 to 4 are readable, so briefs
+ * carrying "UNKNOWN" exist on people's devices. `oneOf` throws on an
+ * unsupported value, which means a plain rename would not degrade an old brief
+ * — it would make it unopenable. Read both, write the new one.
+ */
+const LEGACY_READINESS_STATUS: Readonly<Record<string, string>> = { UNKNOWN: "NOT_CERTIFIED" };
 export type HuntBriefReadinessStatus = (typeof HUNT_BRIEF_READINESS_STATUSES)[number];
 
 /**
@@ -130,7 +140,7 @@ export interface HuntBriefReadiness {
   jurisdictionName: string;
   officialInfoUrl?: string;
   authorizations: Array<{
-    status: "REQUIRED" | "CONDITIONAL" | "UNKNOWN";
+    status: "REQUIRED" | "CONDITIONAL" | "NOT_CERTIFIED";
     name: string;
     authority: string;
     condition?: string;
@@ -356,12 +366,14 @@ function parseAssumptions(value: unknown): HuntBriefAssumption[] {
 }
 
 const READINESS_STATUS_SET = new Set<string>(HUNT_BRIEF_READINESS_STATUSES);
-const AUTHORIZATION_STATUS_SET = new Set(["REQUIRED", "CONDITIONAL", "UNKNOWN"]);
+const AUTHORIZATION_STATUS_SET = new Set(["REQUIRED", "CONDITIONAL", "NOT_CERTIFIED", "UNKNOWN"]);
 const COVERAGE_SET = new Set(["VERIFIED", "PARTIAL", "UNAVAILABLE"]);
 
 function oneOf<T extends string>(value: unknown, allowed: Set<string>, field: string): T {
   if (typeof value !== "string" || !allowed.has(value)) throw new HuntBriefValidationError(`${field} is unsupported`);
-  return value as T;
+  /* An older brief's word is accepted and carried forward under the current
+     one, so a saved brief keeps opening and never shows a retired term. */
+  return (LEGACY_READINESS_STATUS[value] ?? value) as T;
 }
 
 /**

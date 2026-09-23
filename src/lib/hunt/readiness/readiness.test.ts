@@ -100,7 +100,7 @@ describe("federal and provincial requirements together", () => {
       new Map(),
       { answers: {}, licenceYearToday: 2026 },
     );
-    assert.equal(entry.status, "UNKNOWN");
+    assert.equal(entry.status, "NOT_CERTIFIED");
     assert.match(entry.officialName, /not yet described/);
     assert.equal(entry.price.kind, "CHECK_OFFICIAL");
   });

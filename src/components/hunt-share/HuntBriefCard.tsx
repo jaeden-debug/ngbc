@@ -26,8 +26,8 @@ function statusLabel(status: ShareHuntBrief["regulatory"]["status"]): string {
 }
 
 /* Status is always a word, never only a colour. */
-const AUTHORIZATION_STATUS_LABEL = { REQUIRED: "Required", CONDITIONAL: "Depends", UNKNOWN: "Unknown" } as const;
-const ORANGE_STATUS_LABEL = { REQUIRED: "Required", NOT_REQUIRED: "Not required", CONDITIONAL: "Depends", UNKNOWN: "Unknown" } as const;
+const AUTHORIZATION_STATUS_LABEL = { REQUIRED: "Required", CONDITIONAL: "Depends", NOT_CERTIFIED: "Verify requirement" } as const;
+const ORANGE_STATUS_LABEL = { REQUIRED: "Required", NOT_REQUIRED: "Not required", CONDITIONAL: "Depends", NOT_CERTIFIED: "Verify requirement" } as const;
 
 export default function HuntBriefCard({ brief }: { brief: ShareHuntBrief }) {
   const date = formatDate(brief.selectedDate, {

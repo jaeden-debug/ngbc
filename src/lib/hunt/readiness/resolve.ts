@@ -37,6 +37,16 @@ export interface ResolveContext {
   seasonVariant?: string;
 }
 
+/**
+ * Whether a hunter's ANSWER matches a condition.
+ *
+ * Its UNKNOWN is deliberately NOT the requirements model's NOT_CERTIFIED and
+ * must not be renamed with it: this one means the hunter has not told us
+ * something, which is a fact about the conversation. NOT_CERTIFIED means North
+ * Ground holds no certified record, which is a fact about our data. Three
+ * different UNKNOWNs live in this lane — this one, the certification state,
+ * and RegulatoryStatus.UNKNOWN — and a blanket rename would merge them.
+ */
 type Match = "MATCH" | "NO_MATCH" | "UNKNOWN";
 
 /**
@@ -122,7 +132,7 @@ export function resolveAuthorizations(
     if (!record) {
       items.push({
         id: requirement.authorizationId,
-        status: "UNKNOWN",
+        status: "NOT_CERTIFIED",
         officialName: "Authorization required — not yet described by North Ground",
         kind: "OTHER",
         authority: "Check the official source",
