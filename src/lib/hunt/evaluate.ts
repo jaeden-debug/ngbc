@@ -73,7 +73,7 @@ async function evaluateRegulation(
     const federal = evaluateFederal(
       input.speciesId,
       jurisdictionId,
-      { latitude: input.latitude },
+      { latitude: input.latitude, longitude: input.longitude },
       input.date,
       designationFromOfficialName(layerForJurisdiction(jurisdictionId)!, zone.officialName),
     );

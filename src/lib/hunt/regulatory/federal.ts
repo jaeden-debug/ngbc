@@ -159,7 +159,7 @@ const monthDay = (month: number, day: number) => `${String(month).padStart(2, "0
 export function evaluateFederal(
   speciesId: string,
   jurisdictionId: string,
-  point: { latitude: number },
+  point: { latitude: number; longitude?: number },
   date: IsoDate,
   designation?: string,
 ): FederalAnswer {

@@ -88,6 +88,21 @@ const PORTION_OF_A_UNIT =
  * a stable-but-WRONG reason misleads exactly as much as a reordered bucket,
  * because these buckets are what work gets prioritised from.
  */
+/*
+ * Manitoba Game Bird Hunting Zone No. 1, matched against the regulation's own
+ * sentence rather than a general geometry grammar:
+ *
+ *   "the portion of Manitoba lying north of latitude 57°N and the portion
+ *    lying east of longitude 94°W and north of latitude 56°N"
+ *
+ * The "and" joins two PORTIONS, so the zone is their UNION, not the points
+ * satisfying both — reading it as an intersection would shrink the zone to the
+ * northeast corner and put the rest of it in no area at all. Declared exactly,
+ * so a reworded definition refuses instead of being approximated.
+ */
+const MANITOBA_ZONE_1 =
+  /^the portion of Manitoba lying north of latitude (\d+)\u00b0N and the portion lying east of longitude (\d+)\u00b0W and north of latitude (\d+)\u00b0N$/i;
+
 const SUB_LIST_OF_UNITS = /\((?:only )?in (?:the )?Provincial\b|\bonly in (?:the )?Provincial\b/i;
 /*
  * Two more scope qualifiers, found by the same sweep and for the same reason:
@@ -150,6 +165,27 @@ const WAVE_1 = [
     inventory: "content/regulatory/ca-on-certified-units.json",
   },
   {
+    part: 7, name: "Manitoba", jurisdictionId: "jurisdiction:ca-mb",
+    unitPhrase: "Provincial Game Hunting Areas",
+    /*
+     * The first Part whose areas are defined TWO WAYS AT ONCE, so its kinds are
+     * decided per definition rather than per jurisdiction:
+     *
+     *   Zone No. 1  latitude and longitude, stated exactly — resolvable.
+     *   Zone No. 4  a list of Provincial Game Hunting Areas — resolvable.
+     *   Zone No. 2  bounded by the east shore of Lake Winnipegosis and the
+     *               northern limit of Township 43 — lines North Ground does
+     *               not hold.
+     *   Zone No. 3  "between Zone No. 2 and Zone No. 4", so it inherits Zone
+     *               No. 2's problem.
+     *
+     * Encode 1 and 4, leave 2 and 3 unresolved, and do not invent Lake
+     * Winnipegosis's shoreline to make 2 usable.
+     */
+    areaKind: "MANITOBA_MIXED",
+    inventory: "content/regulatory/ca-mb-certified-units.json",
+  },
+  {
     part: 8, name: "Saskatchewan", jurisdictionId: "jurisdiction:ca-sk",
     unitPhrase: "Provincial Wildlife Management Zones",
     /*
@@ -187,6 +223,8 @@ const LATITUDE_BAND =
 const EXPECTED_AREAS = {
   "jurisdiction:ca-pe": 1,
   "jurisdiction:ca-sk": 2,
+  /* Zones 1 and 4 only; 2 and 3 are refused by design. */
+  "jurisdiction:ca-mb": 2,
   "jurisdiction:ca-yt": 3,
   "jurisdiction:ca-ab": 2,
   "jurisdiction:ca-bc": 8,
@@ -436,6 +474,9 @@ async function main() {
   const refusedAreas = new Map();
   /* Each jurisdiction's certified unit inventory, by canonical id. */
   const certifiedByJurisdiction = new Map();
+  /* Areas a Part defines that this build could not resolve — distinct from a
+     unit the regulation places in no area at all. */
+  const unresolvedAreas = new Map();
   let considered = 0;
 
   for (const { part, name, jurisdictionId, areaKind, inventory, unitPhrase, liveInventory } of WAVE_1) {
@@ -535,6 +576,46 @@ async function main() {
         notEncoded.push({
           where: `${name} Schedule 3`, statedAs: `Units ${outside.join(", ")}`,
           reason: "the regulation places these certified provincial units in no federal area, so migratory-bird queries there are UNKNOWN rather than assumed into one",
+        });
+      }
+    }
+
+    if (areaKind === "MANITOBA_MIXED") {
+      const certified = JSON.parse(readFileSync(inventory, "utf8")).certifiedUnits.map(String);
+      certifiedByJurisdiction.set(jurisdictionId, certified);
+      for (const [term, definition] of definitions) {
+        const region = MANITOBA_ZONE_1.exec(definition);
+        if (region) {
+          const [, north, east, alsoNorth] = region;
+          areas.push({
+            jurisdictionId, kind: "LATITUDE_LONGITUDE_REGION", name: term, statedAs: definition,
+            region: { clauses: [
+              { minLatitude: Number(north) },
+              { minLatitude: Number(alsoNorth), minLongitude: -Number(east) },
+            ] },
+          });
+          continue;
+        }
+        const named = new RegExp(`${unitPhrase}\\s+(.+?)(?:\\s+as described in\\b.*)?$`).exec(definition);
+        if (named) {
+          areas.push({
+            jurisdictionId, kind: "PROVINCIAL_UNITS", name: term, statedAs: definition,
+            units: expandUnits(named[1], certified, `${name} ${term}`),
+          });
+          continue;
+        }
+        /*
+         * Zones No. 2 and No. 3. Recorded as UNRESOLVED rather than merely
+         * refused, because a point outside Zones 1 and 4 IS placed by the
+         * regulation — in one of these — and saying "no federal area" there
+         * would be a false claim about the law. Alberta's unit 728 is the
+         * other fact and must not share a message with it.
+         */
+        refusedAreas.set(jurisdictionId, [...(refusedAreas.get(jurisdictionId) ?? []), term]);
+        unresolvedAreas.set(jurisdictionId, [...(unresolvedAreas.get(jurisdictionId) ?? []), term]);
+        notEncoded.push({
+          where: `${name} Schedule 3 definitions`, statedAs: `${term}: ${definition}`,
+          reason: "the zone is bounded by a lake shoreline and a township limit, which North Ground does not hold, so a point cannot be placed inside or outside it",
         });
       }
     }
@@ -881,6 +962,7 @@ async function main() {
   }
 
   const bundle = {
+    unresolvedAreas: Object.fromEntries(unresolvedAreas),
     schemaVersion: 1,
     bundleId: "bundle:ca-federal-2026",
     jurisdictionId: "jurisdiction:ca-federal",

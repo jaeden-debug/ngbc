@@ -1,4 +1,10 @@
 {
+  "unresolvedAreas": {
+    "jurisdiction:ca-mb": [
+      "Game Bird Hunting Zone No. 2",
+      "Game Bird Hunting Zone No. 3"
+    ]
+  },
   "schemaVersion": 1,
   "bundleId": "bundle:ca-federal-2026",
   "jurisdictionId": "jurisdiction:ca-federal",
@@ -27,6 +33,10 @@
     {
       "name": "Ontario",
       "jurisdictionId": "jurisdiction:ca-on"
+    },
+    {
+      "name": "Manitoba",
+      "jurisdictionId": "jurisdiction:ca-mb"
     },
     {
       "name": "Saskatchewan",
@@ -659,6 +669,53 @@
         "94A",
         "94B",
         "95"
+      ]
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "kind": "LATITUDE_LONGITUDE_REGION",
+      "name": "Game Bird Hunting Zone No. 1",
+      "statedAs": "the portion of Manitoba lying north of latitude 57°N and the portion lying east of longitude 94°W and north of latitude 56°N",
+      "region": {
+        "clauses": [
+          {
+            "minLatitude": 57
+          },
+          {
+            "minLatitude": 56,
+            "minLongitude": -94
+          }
+        ]
+      }
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "kind": "PROVINCIAL_UNITS",
+      "name": "Game Bird Hunting Zone No. 4",
+      "statedAs": "Provincial Game Hunting Areas 22, 23, 24, 25A, 25B, 27, 28, 29, 29A, 30, 31, 31A, 32, 33, 34, 34A, 34B, 34C, 35, 35A, 36 and 38 as described in Manitoba’s Hunting Areas and Zones Regulation , M.R. 220/86, made under The Wildlife Act , C.C.S.M., c. W130",
+      "units": [
+        "22",
+        "23",
+        "24",
+        "25A",
+        "25B",
+        "27",
+        "28",
+        "29",
+        "29A",
+        "30",
+        "31",
+        "31A",
+        "32",
+        "33",
+        "34",
+        "34A",
+        "34B",
+        "34C",
+        "35",
+        "35A",
+        "36",
+        "38"
       ]
     },
     {
@@ -5190,6 +5247,255 @@
       "sourceSection": "Ontario Schedule 3 Table 1 item 4"
     },
     {
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "area": "Game Bird Hunting Zone No. 1",
+      "groupId": "federal_group:all-ducks",
+      "groupStatedAs": "all Ducks, combined",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 10,
+          "day": 31
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to October 31"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 8,
+        "statedAs": "8"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 24,
+        "statedAs": "24"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Manitoba Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "area": "Game Bird Hunting Zone No. 1",
+      "groupId": "federal_group:canada-cackling-whitefronted-brant",
+      "groupStatedAs": "Canada Geese, Cackling Geese, White-fronted Geese and Brant, combined",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 10,
+          "day": 31
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to October 31"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 8,
+        "statedAs": "8"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 24,
+        "statedAs": "24"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Manitoba Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "area": "Game Bird Hunting Zone No. 1",
+      "groupId": "federal_group:sandhill-cranes",
+      "groupStatedAs": "Sandhill Cranes",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 11,
+          "day": 30
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to November 30"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 5,
+        "statedAs": "5"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 15,
+        "statedAs": "15"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Manitoba Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "area": "Game Bird Hunting Zone No. 1",
+      "groupId": "federal_group:coots",
+      "groupStatedAs": "Coots",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 10,
+          "day": 31
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to October 31"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 8,
+        "statedAs": "8"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 24,
+        "statedAs": "24"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Manitoba Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "area": "Game Bird Hunting Zone No. 1",
+      "groupId": "federal_group:woodcock",
+      "groupStatedAs": "Woodcock",
+      "declaredNoSeason": true,
+      "statedAs": "No open season",
+      "sourceSection": "Manitoba Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "area": "Game Bird Hunting Zone No. 1",
+      "groupId": "federal_group:snipe",
+      "groupStatedAs": "Snipe",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 10,
+          "day": 31
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to October 31"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 10,
+        "statedAs": "10"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 30,
+        "statedAs": "30"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Manitoba Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "area": "Game Bird Hunting Zone No. 4",
+      "groupId": "federal_group:sandhill-cranes",
+      "groupStatedAs": "Sandhill Cranes",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 12,
+          "day": 6
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to December 6"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 5,
+        "statedAs": "5"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 15,
+        "statedAs": "15"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Manitoba Schedule 3 Table 1 item 4"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "area": "Game Bird Hunting Zone No. 4",
+      "groupId": "federal_group:coots",
+      "groupStatedAs": "Coots",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 24
+        },
+        "to": {
+          "month": 12,
+          "day": 6
+        },
+        "crossesYear": false,
+        "statedAs": "September 24 to December 6"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 8,
+        "statedAs": "8"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 24,
+        "statedAs": "24"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Manitoba Schedule 3 Table 1 item 4"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "area": "Game Bird Hunting Zone No. 4",
+      "groupId": "federal_group:snipe",
+      "groupStatedAs": "Snipe",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 24
+        },
+        "to": {
+          "month": 12,
+          "day": 6
+        },
+        "crossesYear": false,
+        "statedAs": "September 24 to December 6"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 10,
+        "statedAs": "10"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 30,
+        "statedAs": "30"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Manitoba Schedule 3 Table 1 item 4"
+    },
+    {
       "jurisdictionId": "jurisdiction:ca-sk",
       "area": "District No. 1 (North)",
       "groupId": "federal_group:all-ducks",
@@ -6428,6 +6734,296 @@
     {
       "where": "Ontario Schedule 3 Table 2 item 1",
       "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Ontario",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Manitoba Schedule 3 definitions",
+      "statedAs": "Game Bird Hunting Zone No. 2: the portion of Manitoba lying between Game Bird Hunting Zone No. 1 and the line commencing at the intersection of the boundary between Manitoba and Saskatchewan and latitude 53°N; from there easterly along that parallel of latitude to the east shore of Lake Winnipegosis; from there southeasterly along the shoreline of that lake to the northern limit of Township 43; from there easterly along the northern limit of that township to the boundary between Manitoba and Ontario",
+      "reason": "the zone is bounded by a lake shoreline and a township limit, which North Ground does not hold, so a point cannot be placed inside or outside it"
+    },
+    {
+      "where": "Manitoba Schedule 3 definitions",
+      "statedAs": "Game Bird Hunting Zone No. 3: the portion of Manitoba lying between Game Bird Hunting Zone No. 2 and Game Bird Hunting Zone No. 4",
+      "reason": "the zone is bounded by a lake shoreline and a township limit, which North Ground does not hold, so a point cannot be placed inside or outside it"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 2",
+      "group": "all Ducks, combined",
+      "area": "Game Bird Hunting Zone No. 2",
+      "statedAs": "(i) September 1 to September 7, for residents of Canada only | 8",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 2, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 2",
+      "group": "all Ducks, combined",
+      "area": "Game Bird Hunting Zone No. 2",
+      "statedAs": "(ii) September 8 to November 30 | 8",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 2, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 2",
+      "group": "Canada Geese, Cackling Geese, White-fronted Geese and Brant, combined",
+      "area": "Game Bird Hunting Zone No. 2",
+      "statedAs": "(i) September 1 to September 7, for residents of Canada only | 8",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 2, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 2",
+      "group": "Canada Geese, Cackling Geese, White-fronted Geese and Brant, combined",
+      "area": "Game Bird Hunting Zone No. 2",
+      "statedAs": "(ii) September 8 to November 30 | (A) 8 for residents of Canada | (B) 5 for non-residents of Canada",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 2, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 2",
+      "group": "Sandhill Cranes",
+      "area": "Game Bird Hunting Zone No. 2",
+      "statedAs": "September 1 to November 30 | 5",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 2, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 2",
+      "group": "Coots",
+      "area": "Game Bird Hunting Zone No. 2",
+      "statedAs": "(i) September 1 to September 7, for residents of Canada only | 8",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 2, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 2",
+      "group": "Coots",
+      "area": "Game Bird Hunting Zone No. 2",
+      "statedAs": "(ii) September 8 to November 30 | 8",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 2, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 2",
+      "group": "Woodcock",
+      "area": "Game Bird Hunting Zone No. 2",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 2, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 2",
+      "group": "Snipe",
+      "area": "Game Bird Hunting Zone No. 2",
+      "statedAs": "(i) September 1 to September 7, for residents of Canada only | 10",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 2, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 2",
+      "group": "Snipe",
+      "area": "Game Bird Hunting Zone No. 2",
+      "statedAs": "(ii) September 8 to November 30 | 10",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 2, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 3",
+      "group": "all Ducks, combined",
+      "area": "Game Bird Hunting Zone No. 3",
+      "statedAs": "(i) September 1 to September 23, for residents of Canada only | 8",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 3, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 3",
+      "group": "all Ducks, combined",
+      "area": "Game Bird Hunting Zone No. 3",
+      "statedAs": "(ii) September 24 to December 6 | 8",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 3, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 3",
+      "group": "Canada Geese, Cackling Geese, White-fronted Geese and Brant, combined",
+      "area": "Game Bird Hunting Zone No. 3",
+      "statedAs": "(i) September 1 to September 23, for residents of Canada only | 8",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 3, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 3",
+      "group": "Canada Geese, Cackling Geese, White-fronted Geese and Brant, combined",
+      "area": "Game Bird Hunting Zone No. 3",
+      "statedAs": "(ii) September 24 to December 6 | (A) 8 for residents of Canada | (B) 5 for non-residents of Canada",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 3, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 3",
+      "group": "Sandhill Cranes",
+      "area": "Game Bird Hunting Zone No. 3",
+      "statedAs": "September 1 to December 6 | 5",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 3, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 3",
+      "group": "Coots",
+      "area": "Game Bird Hunting Zone No. 3",
+      "statedAs": "(i) September 1 to September 23, for residents of Canada only | 8",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 3, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 3",
+      "group": "Coots",
+      "area": "Game Bird Hunting Zone No. 3",
+      "statedAs": "(ii) September 24 to December 6 | 8",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 3, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 3",
+      "group": "Woodcock",
+      "area": "Game Bird Hunting Zone No. 3",
+      "statedAs": "September 8 to December 6 | (i) 8 for residents of Canada | (ii) 4 for non-residents of Canada",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 3, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 3",
+      "group": "Snipe",
+      "area": "Game Bird Hunting Zone No. 3",
+      "statedAs": "(i) September 1 to September 23, for residents of Canada only | 10",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 3, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 3",
+      "group": "Snipe",
+      "area": "Game Bird Hunting Zone No. 3",
+      "statedAs": "(ii) September 24 to December 6 | 10",
+      "reason": "the regulation writes this season for Game Bird Hunting Zone No. 3, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 4",
+      "group": "all Ducks, combined",
+      "area": "Game Bird Hunting Zone No. 4",
+      "statedAs": "(i) September 1 to September 23, for residents of Canada only | 8 | 24 for residents of Canada␟24 for non-residents of Canada (not more than 12 may be Redheads or Canvasbacks in any combination)",
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "groupId": "federal_group:all-ducks",
+      "coversArea": "Game Bird Hunting Zone No. 4"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 4",
+      "group": "all Ducks, combined",
+      "area": "Game Bird Hunting Zone No. 4",
+      "statedAs": "(ii) September 24 to December 6 | (A) 8 for residents of Canada | (B) 8 for non-residents of Canada (not more than 4 may be Redheads or Canvasbacks in any combination) | 24 for residents of Canada␟24 for non-residents of Canada (not more than 12 may be Redheads or Canvasbacks in any combination)",
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "groupId": "federal_group:all-ducks",
+      "coversArea": "Game Bird Hunting Zone No. 4"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 4",
+      "group": "Canada Geese, Cackling Geese, White-fronted Geese and Brant, combined",
+      "area": "Game Bird Hunting Zone No. 4",
+      "statedAs": "(i) September 1 to September 23, for residents of Canada only | 8 (plus an additional 4 in Provincial Game Hunting Area 38) | 24 for residents of Canada␟15 for non-residents of Canada",
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "groupId": "federal_group:canada-cackling-whitefronted-brant",
+      "coversArea": "Game Bird Hunting Zone No. 4"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 4",
+      "group": "Canada Geese, Cackling Geese, White-fronted Geese and Brant, combined",
+      "area": "Game Bird Hunting Zone No. 4",
+      "statedAs": "(ii) September 24 to December 6 | (A) 8 for residents of Canada | (B) 5 for non-residents of Canada | 24 for residents of Canada␟15 for non-residents of Canada",
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "groupId": "federal_group:canada-cackling-whitefronted-brant",
+      "coversArea": "Game Bird Hunting Zone No. 4"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 4",
+      "group": "Coots",
+      "area": "Game Bird Hunting Zone No. 4",
+      "statedAs": "(i) September 1 to September 23, for residents of Canada only | 8 | 24",
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "groupId": "federal_group:coots",
+      "coversArea": "Game Bird Hunting Zone No. 4"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 4",
+      "group": "Woodcock",
+      "area": "Game Bird Hunting Zone No. 4",
+      "statedAs": "September 8 to December 6 | (i) 8 for residents of Canada | (ii) 4 for non-residents of Canada | 24 for residents of Canada␟12 for non-residents of Canada",
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "groupId": "federal_group:woodcock",
+      "coversArea": "Game Bird Hunting Zone No. 4"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 1 item 4",
+      "group": "Snipe",
+      "area": "Game Bird Hunting Zone No. 4",
+      "statedAs": "(i) September 1 to September 23, for residents of Canada only | 10 | 30",
+      "reason": "the limit or season varies by residency",
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "groupId": "federal_group:snipe",
+      "coversArea": "Game Bird Hunting Zone No. 4"
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 2 item 1",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Manitoba",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 2 item 1",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Manitoba",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 2 item 1",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Manitoba",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 2 item 2",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Manitoba",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 2 item 2",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Manitoba",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 2 item 2",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Manitoba",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 2 item 3",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Manitoba",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 2 item 3",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Manitoba",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 2 item 3",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Manitoba",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 2 item 3",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Manitoba",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 2 item 4",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Manitoba",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 2 item 4",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Manitoba",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 2 item 4",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Manitoba",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Manitoba Schedule 3 Table 2 item 4",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Manitoba",
       "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
     },
     {
