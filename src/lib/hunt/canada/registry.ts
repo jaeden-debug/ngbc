@@ -475,10 +475,12 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       "Boundaries only: the 74 moose and 7 black bear areas are drawn, named and resolved, and every Newfoundland and " +
         "Labrador species query is UNKNOWN until rules are certified. A drawn boundary is not a certified rule.",
       "Certified geometry, unreachable: the 19 Caribou Management Areas are parity-certified and promoted, but " +
-        "`species:caribou` has no canonical species record, so no species selection can reach that layer. It counts " +
+        "no Newfoundland rule is certified, so `species:caribou` is not selectable and no species selection can reach " +
+        "that layer. Its canonical species record exists and is published; the gate is certified rules. It counts " +
         "toward the 100 official areas the province publishes and is not among the 81 the map can draw. The layer " +
         "serves the moment the species record exists, with no re-certification.",
-      "Caribou has no canonical species record yet, so its layer's scope names a species the library does not hold.",
+      "Caribou is published in the species library but is not selectable, because selectability is gated on having a " +
+        "certified regulatory record somewhere and no Newfoundland caribou rule is certified. The gate is rules, not identity.",
       "Big game is almost entirely licence-by-draw, so a season lookup is not the product question here.",
     ],
   },

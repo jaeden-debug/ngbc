@@ -272,7 +272,7 @@ test("what the map can draw across every species equals what the report counts, 
      * A geography the report counts but the map cannot draw is allowed only
      * when the registry states it. Newfoundland's 19 caribou areas are
      * certified and promoted, and no species selection can reach them because
-     * `species:caribou` has no canonical record — so the difference is
+     * caribou is not selectable while no Newfoundland rule is certified — so the difference is
      * declared rather than discovered by a reader comparing two numbers.
      */
     const declared = jurisdiction.knownGaps.some((gap) => gap.includes("Certified geometry, unreachable"));
@@ -296,5 +296,11 @@ test("what the map can draw across every species equals what the report counts, 
   const caribou = ZONE_LAYERS.find((layer) => layer.id === "layer:ca-nl-caribou-area")!;
   assert.notEqual(caribou.serving, true);
   assert.deepEqual(caribou.speciesScope, ["species:caribou"]);
-  assert.equal(speciesById("species:caribou"), undefined, "the layer waits on the species record, nothing else");
+  /*
+   * Not selectable, which is not the same as not existing: the canonical record
+   * is published in the species library. `SUPPORTED_SPECIES` admits a species
+   * only where North Ground can answer for it somewhere, and no Newfoundland
+   * caribou rule is certified. The layer waits on a rule, not on an identity.
+   */
+  assert.equal(speciesById("species:caribou"), undefined, "not selectable: no certified caribou rule anywhere");
 });

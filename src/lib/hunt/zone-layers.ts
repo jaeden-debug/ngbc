@@ -445,9 +445,12 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     nameField: "cma",
     bounds: { minLatitude: 46.5, maxLatitude: 60.5, minLongitude: -67.9, maxLongitude: -52.5 },
     /* Certified geometry, unreachable: the 19 Caribou Management Areas are
-       parity-certified (76/76 points) and promoted, but `species:caribou` has no
-       canonical record, so no species selection can reach this layer. It serves
-       the moment that record exists, with no re-certification. */
+       parity-certified (76/76 points) and promoted, but no Newfoundland rule is
+       certified, so `species:caribou` is not in SUPPORTED_SPECIES (coverage.ts)
+       and no species selection can reach this layer. The canonical species
+       record exists and is published — the gate is certified rules, not
+       identity. It serves when a Newfoundland caribou rule is certified, with
+       no re-certification of the geometry. */
     serving: false,
     officialNamePrefix: "Caribou Management Area ",
     zoneIdPrefix: "management_zone:ca-nl-cma-",

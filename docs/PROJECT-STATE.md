@@ -488,6 +488,17 @@ deferred with them, and stays approved for later.
 ### 2026-09-22 — Migrations with triggers or functions are dry-run in production first
 Every migration that creates or changes a trigger or function is run with its assertions inside `BEGIN … ROLLBACK` against production before it is applied. `20260922190000` shipped a trigger function that failed every zone write at commit (42703). Its pgTAP file had never run, because there is no local database harness. The post-apply dry-run caught it, and `20260922200000` fixed it. Bulk writes through REST RPCs are batched under the 8-second statement timeout (≤15 records, ≤400 KB per call); a timed-out attempt is not retried. Repeated attempts loaded production during an owner upload.
 
+### 2026-09-23 — Checking a gate and reporting it as an absence nearly minted a duplicate species
+The Newfoundland caribou layer is correctly unserved, but the reason recorded on it was wrong, and the wrong reason was load-bearing.
+
+I wrote that `species:caribou` "has no canonical species record". I had checked `speciesById()`, which reads `SUPPORTED_SPECIES` — the SELECTABILITY gate, admitting only species North Ground can answer for somewhere — and reported its answer as a fact about the species LIBRARY. The record exists and is published: `content/published/species-wave-2d.json` holds `species:caribou`, status active, with Rangifer tarandus as a verified alias, loaded by the repository and the species route, and the production species page returns 200. The real blocker is that no Newfoundland caribou rule is certified, so the species is not selectable, so nothing reaches the layer. The layer's own `coverageNote` had been saying the true thing all along.
+
+**What it nearly cost.** The moderator read that comment and tasked Agent C with creating the missing record. Agent C checked before building; had it not, it would have minted a duplicate canonical `species:caribou` — one day after the rule that caribou must be exactly one canonical species, with herds and subspecies as attributes and as jurisdiction-specific regulatory geography, so that a hunting ban attaches to a jurisdiction's rules and never to a biological identity.
+
+The generalisation: **a gate's answer is not a fact about the world.** `speciesById` returning undefined means "not selectable", not "does not exist"; `regulatoryEntryFor` returning undefined means "does not answer", not "no rules exist". When recording WHY something is absent, name the specific gate and the file it lives in, so the next reader can check the gate rather than trusting a paraphrase. A comment stating a cause is an instruction to whoever reads it next.
+
+Related structural gap, routed to Hunt overhaul and the owner: `SUPPORTED_SPECIES` conflates SELECTABLE with ANSWERABLE. §41A solved the same problem on the layer side with `rulesServing` — drawing a boundary and answering its rules are separate switches — and the species side has no equivalent. It is the same shape British Columbia, Saskatchewan, Yukon and Newfoundland all need, and it is what would actually make the 19 certified caribou areas reachable.
+
 ### 2026-09-22 — Falling back to a default is safe for a search box and dangerous for geography
 Newfoundland's caribou areas are certified but unreachable, so asking the map about caribou should draw nothing. It drew Newfoundland's MOOSE areas instead.
 
