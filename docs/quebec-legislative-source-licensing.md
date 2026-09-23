@@ -17,6 +17,19 @@ Two questions are asked here, and **they may not have the same answer**:
 A yes to Q1 with a no to Q2 is a coherent outcome and there is a design for it
 (section 7).
 
+> **UPDATE, 2026-09-23, and it widens the question.** Q2 now has a documented
+> answer, and it was not on legisquebec. The governing notice is
+> **`https://www.quebec.ca/droit-auteur`**, it names **« des lois et
+> règlements »** explicitly, it prohibits reproducing, **downloading and
+> storing** without prior authorisation, and it has **no exception**
+> (section 2).
+>
+> **It is a quebec.ca notice, so it covers the source we already ingest.** The
+> live question is therefore not "may we add legisquebec" but **"what
+> authorises what we already do"** — see section 2.4 for what the shipped
+> bundle holds. That is a question for the owner and, on their own stated
+> standard, probably for counsel.
+
 ---
 
 ## 0. What is already settled, so it is not re-argued
@@ -37,6 +50,26 @@ The same file also states the standard this package tries to meet:
 
 > When it is genuinely unclear, treat it as a gate and say so — and record what
 > was tried, so the next person inherits evidence rather than a verdict.
+
+---
+
+## 0.5 What a "no" actually costs, per item — the asymmetry is the decision
+
+Measured in section 6, not assumed. **The two gated items are not in the same
+position, and that is the most decidable fact in this package:**
+
+| Gated item | If we may not use the Règlement | Route that remains |
+|---|---|---|
+| **Gear classes** (`scope.gearClasses`) | **Unobtainable, full stop.** | **None.** `engin de type` appears **0 times** across all five quebec.ca pages we ingest. The ministry publishes the equipment; only the Règlement publishes the numbered identity. |
+| **The art. 17 anchor** | No independent anchor | The build stays correct and guarded by MFFP's summary prose — a single anchor rather than two. |
+| **Québec legal hours** | Falls back, does not vanish | **Partial: 1 of 10 species.** quebec.ca publishes turkey's hours and **we already carry them**. |
+
+**So a "no" costs everything for gear classes and costs nine-tenths for hours.**
+One has no route at all; the other has a narrow existing one.
+
+And the cost is not proportional to the rule counts (section 5): the gear-class
+gap is a **safety** gap, because the hunter-orange exemption reaches engin types
+6 and 11 and **not** 12, and those are indistinguishable from an implement list.
 
 ---
 
@@ -85,56 +118,92 @@ quebec.ca carries this (section 6).
 
 ---
 
-## 2. The terms — **NOT ESTABLISHED**, and the absence is **uncontrolled**
+## 2. The terms — **FOUND, and restrictive**
 
-**This is the weakest part of the package and it is labelled as such.**
+*Resolved 2026-09-23. This section previously read "NOT ESTABLISHED, and the
+absence is uncontrolled". It is kept in the history because the search that
+closed it is the reason the finding below was found at all.*
 
-In the codebase's own vocabulary the honest current record is
-`permittedUse: "UNRESOLVED"` and `redistribution: "UNRESOLVED"` — **not**
-`RESTRICTED`, and certainly not permitted. No `statedAs` can be quoted because
-none has been found.
+### 2.1 Where they were — not on legisquebec
 
-### Where I actually looked
+| Page | Result |
+|---|---|
+| `/fr/document/rc/c-61.1, r. 12` (the regulation, 776,835 bytes) | publisher name and "Ce document a valeur officielle." Only `reproduction` match was substantive text about decoys. |
+| **`/fr/contenu/mjqpol`** — Politique du ministre de la Justice | Consolidation, classification, citation, update notes. **Does not address reproduction**: 0 hits for droit d'auteur, reproduction, copyright, licence, commercial. Its only "utilisation" is « d'utilisation courante ». |
+| **`/fr/contenu/editeurofficiel`** — L'Éditeur officiel du Québec | Purely historical. 0 hits on the same terms. |
+| `robots.txt` | Section 3. |
 
-One place: the **regulation document page itself** (`/fr/document/rc/c-61.1, r.
-12`, 776,835 bytes of HTML). Searched for `droit d'auteur`, `Éditeur officiel`,
-`reproduction`, and every link whose text matched
-`droit|auteur|condition|utilisation|copyright|avis`.
+legisquebec's footer carries **« © Gouvernement du Québec »** and links to
+Québec.ca. It has **no conditions-of-use page of its own**, so the governing
+notice is site-wide.
 
-**Found:** the publisher name « L'Éditeur officiel du Québec », and
-"Ce document a valeur officielle." **The only `reproduction` match was
-substantive text about decoys**, not a licence.
+### 2.2 The governing notice, verbatim
 
-### Why that is not yet an answer
+**`https://www.quebec.ca/droit-auteur`** — "Droit d'auteur et demande
+d'autorisation de reproduction", last updated **10 February 2025**:
 
-**An absence without a control is exactly what this project forbids
-everywhere else.** I searched one page and found nothing; I have not shown that
-the search would have found terms had they existed elsewhere. Reporting "no
-terms exist" from that would be the §8 inference failure — *I could not find a
-restriction* silently becoming *there is no restriction* — in the one place
-where it would be most expensive.
+> « Le gouvernement du Québec détient les droits exclusifs de propriété
+> intellectuelle sur tous les documents, données, compilations et autres œuvres
+> qu'il produit, publie ou diffuse, que ces documents soient des textes
+> officiels ou administratifs, **des lois et règlements**, des rapports annuels,
+> des brochures, etc. »
 
-### Where the terms most likely are — named, not read
+> « Il est **interdit de reproduire, télécharger, stocker**, traduire, adapter,
+> publier ou représenter en public les contenus du gouvernement du Québec
+> **sans autorisation préalable**. »
 
-These links are present **on the document page itself**, so they cost one click
-each:
+**Reproduce, download, store.** It names laws and regulations. Searched for a
+carve-out — exception, sauf, gratuit, sans frais, libre, licence, non
+commercial, court extrait, citation — and **there is none**.
 
-| Candidate | Path | Why it is a candidate |
-|---|---|---|
-| **Politique du ministre de la Justice** | `/fr/contenu/mjqpol` | A ministerial policy on the official publication service is the most probable home for reproduction conditions |
-| Note d'information | `/fr/contenu/noteinfo` | Often carries status and use notes |
-| Quoi de neuf? | `/fr/contenu/neuf` | Lower probability; listed for completeness |
+The only route the publisher offers is a **formal authorisation request**: an
+online form (`/droit-auteur/demande-autorisation`), about **15 business days**,
+`droitdauteur@mcc.gouv.qc.ca`. One request may cover several works. The form
+asks for the intended use, the number of copies, and **the person or
+organisation to be billed** — so a fee may attach.
 
-Not yet examined either: the **Éditeur officiel's own publisher site**, the
-**Loi sur les publications officielles / Loi sur le Centre de services
-partagés** or whatever governs official publication, and the **PDF's own
-metadata**.
+### 2.3 In the codebase's vocabulary
 
-> **This package cannot answer Q2 until at least `/fr/contenu/mjqpol` is read.**
-> That read is a browser-pane read of a public page, which section 0 records as
-> already settled. It was not done because the instruction for this task was
-> "nothing new retrieved". **Flagged rather than performed**, and it is one
-> click from being resolved.
+No longer `UNRESOLVED`. The publisher's own words restrict use:
+
+    permittedUse:    "RESTRICTED"
+    redistribution:  "PROHIBITED"
+    attribution:     (not reached — authorisation precedes use)
+
+### 2.4 The part that is not about legisquebec
+
+**The notice is a quebec.ca notice**, and quebec.ca is the source every Québec
+rule we ship already comes from. It covers « tous les documents, données,
+compilations ». So the committed bundle is in scope, and it holds:
+
+| In `content/regulatory/ca-qc-2026.json` | |
+|---|---|
+| `seasonPhrase` | 81 distinct, 2,990 chars of verbatim French |
+| `zoneLabel` | 51 distinct, 3,216 chars |
+| `implementLabel` / `classLabel` / `sourceSection` | 31 distinct, 1,476 chars |
+| `statements` | 26 records, 6,041 chars of authority prose |
+| `caveats` | 58 quoted exclusions |
+| `legalTime` | 1 verbatim sentence (the turkey noon rule) |
+
+**What this package does NOT claim.** Not that North Ground is infringing. Not
+whether a blanket web notice binds, how it interacts with the texts being *law*,
+whether extracting dates and zone codes into structured data is reproduction of
+« documents, données, compilations » or the use of facts, or whether anything in
+the Loi sur le droit d'auteur or Québec practice carves out legislative texts.
+**Those are legal judgements, and this is the territory the owner said they
+would want counsel for.**
+
+**What it does claim, narrowly and with evidence:** there is a published,
+explicit, exception-free prohibition on reproducing, downloading and storing
+Québec government content without prior authorisation; it names laws and
+regulations; it governs **both** Québec sources; and no authorisation has been
+obtained.
+
+**Safest posture until this is answered: change nothing, add nothing.** Adding
+further verbatim Québec text is the one action that makes the position worse.
+Withdrawing shipped answers is also an action and should not be taken on a
+reading of a web page — §8's fidelity rule cuts both ways, and a refusal
+stricter than the source is a false claim too.
 
 ---
 
@@ -293,17 +362,33 @@ reproducible, identity certified"*.
 
 ---
 
-## 8. What would make this package complete
+## 8. What is still open
 
-1. **Read `/fr/contenu/mjqpol`**, plus the Note d'information, the Éditeur
-   officiel's publisher page, and whatever statute governs official
-   publication. Quote what is found, verbatim, with a retrieval date and a
-   hash. **One browser read is likely to resolve Q2 outright.**
-2. If terms are found, record them as a `SourceLicence` — `statedAs`, `url`,
-   `retrievedAt`, `sha256`, `permittedUse`, `redistribution`, `attribution` —
-   so a reworded licence later shows up as a visible change.
-3. If terms are genuinely absent after a controlled search, **that is itself a
-   finding** and the state stays `UNRESOLVED`, which blocks serving until a
-   person resolves it. Absent is not permissive.
+Item 2 is closed. What remains is not research:
 
-Until then this records evidence, not a verdict.
+1. **A decision the owner makes, probably with counsel.** Whether the quebec.ca
+   notice binds as written, and how it applies to structured data extracted from
+   published regulations, are legal questions rather than research ones. Section
+   2.4 states precisely what is claimed and what is not.
+2. **The authorisation request, if it is wanted.** The publisher specifies the
+   route: `/droit-auteur/demande-autorisation`, ~15 business days, one request
+   may cover several works, billing contact required. It would resolve
+   legisquebec **and** quebec.ca together. **Not to be sent by an agent** — it
+   names a billing party and commits North Ground.
+3. **Record the outcome as a `SourceLicence`** — `statedAs`, `url`,
+   `retrievedAt`, `sha256`, `permittedUse`, `redistribution`, `attribution` — so
+   a reworded notice later shows up as a visible change rather than a silent
+   one. Today's honest values are in section 2.3.
+4. **Q1 is still unanswered and is separable.** Nothing found addresses
+   automated retrieval or user-agents; the quebec.ca notice is about *use*, not
+   *access*. Section 3 is the evidence, and section 7 is what each combination
+   permits.
+
+**Changed in this revision:** section 2 previously reported the terms as
+NOT ESTABLISHED with an uncontrolled absence. Reading the ministerial policy —
+where terms would be, and where they are not — is what led to the site-wide
+notice that does contain them. **The absence was the finding that produced the
+answer**, which is the argument for controlling absences rather than reporting
+them.
+
+This records evidence, not a verdict.
