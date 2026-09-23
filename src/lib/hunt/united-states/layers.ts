@@ -1,3 +1,4 @@
+import type { ProvenanceTimeZone } from "../time-zone.ts";
 import idahoCertifiedUnits from "../../../../content/regulatory/us-id-certified-units.json" with { type: "json" };
 import montanaCertifiedUnits from "../../../../content/regulatory/us-mt-certified-units.json" with { type: "json" };
 import type { ArcgisZoneSourceConfig } from "../ingestion/arcgis-zone-source.ts";
@@ -76,7 +77,7 @@ const US_LAYERS: UsLayer[] = [
           "considered a best representation only.” The booklet's Unit Boundary Descriptions control.",
         controllingText: { title: "Idaho Big Game 2026 Seasons & Rules, Unit Boundary Descriptions", url: "https://idfg.idaho.gov/sites/default/files/seasons-rules-big-game-2026.pdf" },
       },
-      timeZone: "America/Boise",
+      provenanceTimeZone: "America/Boise" as ProvenanceTimeZone,
       resolution: "LIVE_SERVICE",
     },
     adapter: {
@@ -125,7 +126,7 @@ const US_LAYERS: UsLayer[] = [
         },
       },
       geometryPeriod: { from: "2026-03-01", to: "2027-02-28", statedAs: "Montana's 2026 licence year (March 1, 2026 to February 28, 2027)" },
-      timeZone: "America/Denver",
+      provenanceTimeZone: "America/Denver" as ProvenanceTimeZone,
       resolution: "LIVE_SERVICE",
     },
     adapter: {
@@ -173,7 +174,7 @@ const US_LAYERS: UsLayer[] = [
         controllingText: { title: "2026 Montana Upland Game Bird Regulations", url: "https://fwp.mt.gov/binaries/content/assets/fwp/hunt/regulations/2026/2026-upgbrd-final-for-web.pdf" },
       },
       geometryPeriod: { from: "2026-03-01", to: "2027-02-28", statedAs: "Montana's 2026 licence year (March 1, 2026 to February 28, 2027)" },
-      timeZone: "America/Denver",
+      provenanceTimeZone: "America/Denver" as ProvenanceTimeZone,
       resolution: "LIVE_SERVICE",
     },
     adapter: {
@@ -217,7 +218,7 @@ const US_LAYERS: UsLayer[] = [
           "in this brochure are approximate.” The unit descriptions in regulation (Chapter W-0) control.",
         controllingText: { title: "2026 Colorado Big Game Brochure, Game Management Unit boundary descriptions", url: "https://cpw.state.co.us/sites/default/files/dam/erjzbk48be/colorado-big-game-hunting-brochure.pdf" },
       },
-      timeZone: "America/Denver",
+      provenanceTimeZone: "America/Denver" as ProvenanceTimeZone,
       resolution: "LIVE_SERVICE",
     },
     adapter: {
@@ -266,7 +267,7 @@ const US_LAYERS: UsLayer[] = [
         controllingText: { title: "Chapter 7, Elk Hunting Seasons, Section 9 hunt area descriptions (effective June 10, 2026)", url: "https://wgfd.wyo.gov/media/33695/download?inline" },
       },
       geometryPeriod: { from: "2026-06-10", to: "2027-05-31", statedAs: "Chapter 7 as filed effective June 10, 2026, before its three-year successor" },
-      timeZone: "America/Denver",
+      provenanceTimeZone: "America/Denver" as ProvenanceTimeZone,
       resolution: "LIVE_SERVICE",
     },
     adapter: {

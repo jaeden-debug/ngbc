@@ -1,3 +1,4 @@
+import type { ProvenanceTimeZone } from "../time-zone.ts";
 import type { ArcgisZoneSourceConfig } from "../ingestion/arcgis-zone-source.ts";
 import type { ZoneLayer } from "../zone-layers.ts";
 
@@ -60,7 +61,7 @@ const CANADA_LIVE_LAYERS: CanadaLiveLayer[] = [
           url: "https://publications.saskatchewan.ca/#/products/1607",
         },
       },
-      timeZone: "America/Regina",
+      provenanceTimeZone: "America/Regina" as ProvenanceTimeZone,
       resolution: "LIVE_SERVICE",
     },
     adapter: {

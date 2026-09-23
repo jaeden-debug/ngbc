@@ -1,5 +1,6 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { SourceLicence } from "./source-licence.ts";
+import type { ProvenanceTimeZone } from "./time-zone.ts";
 import { presentZone } from "./zone-presentation.ts";
 import certifiedUnits from "../../../content/regulatory/ca-on-certified-units.json" with { type: "json" };
 import manitobaCertifiedUnits from "../../../content/regulatory/ca-mb-certified-units.json" with { type: "json" };
@@ -190,8 +191,24 @@ export interface ZoneLayer {
    * others, which appear when their species is chosen.
    */
   drawnByDefault?: boolean;
-  /** The jurisdiction's own clock, for provenance dates stamped on its behalf. */
-  timeZone?: string;
+  /**
+   * The jurisdiction's own clock, for PROVENANCE DATES stamped on its behalf.
+   *
+   * NOT the timezone at a hunt point, and deliberately unusable as one. A
+   * jurisdiction can span several IANA zones, and this field is already wrong
+   * for parts of two served ones: British Columbia is declared
+   * America/Vancouver while its Peace River region is America/Dawson_Creek
+   * (one hour out in December, and correct in September — so an in-season
+   * check passes), and Newfoundland and Labrador is declared America/St_Johns
+   * while Labrador is America/Goose_Bay (thirty minutes out year-round, which
+   * is the size of a typical legal-time offset, so a "thirty minutes before
+   * sunrise" rule evaluated there silently cancels or doubles itself).
+   *
+   * Harmless for stamping a date on a record. A SAFETY DEFECT the moment a
+   * legal hunting time reads it, so the type makes that impossible: a legal
+   * time takes a `PointTimeZone`, which this is not and cannot be widened to.
+   */
+  provenanceTimeZone?: ProvenanceTimeZone;
   /**
    * How a point is placed in this layer. REGISTRY (the default): North Ground's
    * parity-certified PostGIS copy, with the authority's service as fallback.
@@ -410,7 +427,7 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     zoneIdPrefix: "management_zone:ca-bc-mu-",
     designationOf: normaliseBritishColumbiaMu,
     legalStanding: BRITISH_COLUMBIA_MU_CONFIG.legalStanding,
-    timeZone: "America/Vancouver",
+    provenanceTimeZone: "America/Vancouver" as ProvenanceTimeZone,
     wfs: {
       url: "https://openmaps.gov.bc.ca/geo/pub/WHSE_WILDLIFE_MANAGEMENT.WAA_WILDLIFE_MGMT_UNITS_SVW/ows",
       typeName: "pub:WHSE_WILDLIFE_MANAGEMENT.WAA_WILDLIFE_MGMT_UNITS_SVW",
@@ -449,7 +466,7 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     legalStanding: NEWFOUNDLAND_LEGAL_STANDING,
     speciesScope: ["species:moose"],
     drawnByDefault: true,
-    timeZone: "America/St_Johns",
+    provenanceTimeZone: "America/St_Johns" as ProvenanceTimeZone,
   },
   {
     id: "layer:ca-nl-caribou-area",
@@ -481,7 +498,7 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     legalStanding: NEWFOUNDLAND_LEGAL_STANDING,
     speciesScope: ["species:caribou"],
     drawnByDefault: false,
-    timeZone: "America/St_Johns",
+    provenanceTimeZone: "America/St_Johns" as ProvenanceTimeZone,
   },
   {
     id: "layer:ca-nl-bear-area",
@@ -510,7 +527,7 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     legalStanding: NEWFOUNDLAND_LEGAL_STANDING,
     speciesScope: ["species:american-black-bear"],
     drawnByDefault: false,
-    timeZone: "America/St_Johns",
+    provenanceTimeZone: "America/St_Johns" as ProvenanceTimeZone,
   },
   {
     id: "layer:ca-nb-wmz",
@@ -536,7 +553,7 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     zoneIdPrefix: "management_zone:ca-nb-wmz-",
     designationOf: normaliseNewBrunswickWmz,
     legalStanding: NEW_BRUNSWICK_WMZ_LEGAL_STANDING,
-    timeZone: "America/Moncton",
+    provenanceTimeZone: "America/Moncton" as ProvenanceTimeZone,
   },
   {
     id: "layer:ca-pe-province",
@@ -568,7 +585,7 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     geographyLevel: "JURISDICTION",
     designationOf: normalisePrinceEdwardIsland,
     legalStanding: PRINCE_EDWARD_ISLAND_LEGAL_STANDING,
-    timeZone: "America/Halifax",
+    provenanceTimeZone: "America/Halifax" as ProvenanceTimeZone,
   },
   {
     id: "layer:ca-ns-deer-zone",
@@ -598,7 +615,7 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     speciesScope: ["species:white-tailed-deer"],
     drawnByDefault: true,
     legalStanding: NOVA_SCOTIA_DEER_LEGAL_STANDING,
-    timeZone: "America/Halifax",
+    provenanceTimeZone: "America/Halifax" as ProvenanceTimeZone,
   },
   {
     id: "layer:ca-yt-gms",
@@ -628,7 +645,7 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     zoneIdPrefix: "management_zone:ca-yt-gms-",
     designationOf: normaliseYukonSubzone,
     legalStanding: YUKON_LEGAL_STANDING,
-    timeZone: "America/Whitehorse",
+    provenanceTimeZone: "America/Whitehorse" as ProvenanceTimeZone,
   },
   /* Newfoundland and Labrador: one geography per big-game species. */
   /* Canadian layers read live from their authority, where reuse terms rule out a copy. */
