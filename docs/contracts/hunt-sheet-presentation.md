@@ -123,6 +123,41 @@ fact, each said once, about itself.
 Pinned by `zone-list-labels.test.ts`, which asserts the two flags are
 independent and that the case exists.
 
+## 4b. The selected zone's label outranks its own polygon
+
+The map paints in this order, and it is render order at Google's own layer
+rather than CSS fighting a canvas:
+
+```
+base map → ordinary fills → ordinary borders → ordinary labels
+        → selected fill → selected border → SELECTED LABEL → self marker
+```
+
+Google draws polygons into `overlayLayer` (pane z-index 101). A label in that
+pane is inside the polygon's stacking context, so the selected zone —
+deliberately the loudest fill on the map — painted over the name of the zone it
+was highlighting, worst at far zoom where the shape is small and the label sits
+inside it. Ordinary labels stay in `overlayLayer`; the **selected** label is
+appended to `markerLayer` (103). The self marker shares that pane and carries a
+higher z-index, because a hunter's own position is the one thing a zone name may
+never cover.
+
+**No geometry changes to solve a render-order problem.** No nudged anchor, no
+shrunken fill, no second polygon.
+
+**And the selected label is EXEMPT from the leave-it-out rule.** §41A says one
+label per zone, inside its largest part, and labels that do not fit are left out
+rather than stacked — *that is for ORDINARY labels*. The selected one is named
+wherever it is, at any zoom, however small its polygon. It is also `force`d
+through collision (`labels.ts`), so a neighbour may yield but the selected name
+is never suppressed.
+
+Pinned by `selectedLabelOnTop` at three zooms. It asserts PANE ORDER, not hit
+testing: map labels are pointer-transparent, so `elementFromPoint` never returns
+one and a naive check would report "covered" whether it was or not — and mere
+existence proves nothing, because a label painted under a polygon is still in
+the DOM.
+
 ## 5. The sheet's resting states
 
 `closed`, `peek`, `half`, `full` (`src/lib/hunt/exploration/sheet.ts`).

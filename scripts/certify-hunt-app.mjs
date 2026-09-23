@@ -1192,6 +1192,87 @@ const scenarios = {
 
 
   /*
+   * THE SELECTED ZONE'S LABEL OUTRANKS ITS OWN POLYGON, AT EVERY ZOOM.
+   *
+   * Google draws polygons into `overlayLayer`. A label in that same pane is
+   * inside the polygon's stacking context, so the selected zone — deliberately
+   * the loudest fill on the map — painted over the name of the zone it was
+   * highlighting, worst at far zoom where the shape is small and the label
+   * sits inside it.
+   *
+   * The required order: ordinary fills → ordinary borders → ordinary labels →
+   * selected fill → selected border → SELECTED LABEL → self marker.
+   *
+   * Asserted as PANE ORDER rather than by hit-testing, because map labels are
+   * pointer-transparent: `elementFromPoint` never returns one, so a naive
+   * check would report "covered" whether it was or not. And existence is not
+   * enough either — a label painted under a polygon is still in the DOM.
+   */
+  async selectedLabelOnTop(browser) {
+    const s = "the chosen zone keeps its name";
+    const { context, page, consoleErrors } = await newPage(browser, { width: 390, height: 844 });
+    await page.goto(`${BASE}/hunt?zone=ca-qc-zone-10o&date=2026-09-23`);
+    await mapReady(page);
+    await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "Zone 10 West", 40_000);
+    await waitFor(page, () => [...document.querySelectorAll("[class*=mapZoneLabel]")].some((e) => e.dataset.selected === "true"), 40_000);
+    await page.waitForTimeout(2_500);
+
+    const look = () => page.evaluate(() => {
+      const labels = [...document.querySelectorAll("[class*=mapZoneLabel]")];
+      const selected = labels.find((e) => e.dataset.selected === "true");
+      const ordinary = labels.find((e) => e.dataset.selected !== "true" && e.style.display !== "none");
+      /*
+       * The GOOGLE PANE's z-index, which is the number that decides what is
+       * painted over what.
+       *
+       * Not the first numeric ancestor — our own container inside the pane
+       * carries one too, and comparing that against another label's PANE
+       * compares two different things, which is what my first probe did. And
+       * not the outermost either, which walks past the pane into the shell.
+       * Google composites its panes in the 100s: mapPane 100, overlayLayer
+       * 101 (where the polygons are drawn), markerLayer 103.
+       */
+      const paneZ = (el) => {
+        for (let node = el?.parentElement; node; node = node.parentElement) {
+          const z = Number.parseInt(getComputedStyle(node).zIndex, 10);
+          if (Number.isFinite(z) && z >= 100) return z;
+        }
+        return null;
+      };
+      const self = document.querySelector("[class*=selfDot], [class*=mapSelf]");
+      const box = selected?.getBoundingClientRect();
+      return {
+        text: selected?.textContent ?? null,
+        shown: Boolean(selected) && selected.style.display !== "none" && (box?.width ?? 0) > 0,
+        selectedPane: paneZ(selected),
+        ordinaryPane: ordinary ? paneZ(ordinary) : null,
+        selfPane: self ? paneZ(self) : null,
+        selfZ: self ? getComputedStyle(self).zIndex : null,
+        selectedZ: selected ? getComputedStyle(selected.parentElement).zIndex : null,
+      };
+    });
+
+    for (const [tag, wheels] of [["framed", 0], ["medium", 2], ["far", 4]]) {
+      if (wheels) {
+        await page.mouse.move(195, 250);
+        for (let i = 0; i < wheels; i += 1) { await page.mouse.wheel(0, 400); await page.waitForTimeout(400); }
+        await page.waitForTimeout(3_000);
+      }
+      const seen = await look();
+      check(s, `${tag}: the selected zone is still named`, seen.shown && seen.text === "10W", JSON.stringify(seen));
+      check(s, `${tag}: its label is composited ABOVE the polygon pane`,
+        seen.selectedPane !== null && seen.ordinaryPane !== null && seen.selectedPane > seen.ordinaryPane, JSON.stringify(seen));
+      if (seen.selfPane !== null) {
+        check(s, `${tag}: and the hunter's own position stays above the label`,
+          seen.selfPane > seen.selectedPane || Number(seen.selfZ) > Number(seen.selectedZ), JSON.stringify(seen));
+      }
+    }
+    check(s, "no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));
+    await context.close();
+  },
+
+
+  /*
    * SAME HUNT LINK → SAME INITIAL ANSWER.
    *
    * `urlBeatsMemory` proves one client is not polluted. This proves two

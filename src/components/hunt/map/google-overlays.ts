@@ -41,25 +41,60 @@ export function createLabelLayer(
 ): LabelLayerHandle {
   class LabelLayer extends maps.OverlayView {
     labels: LabelSource[] = [];
-    container: HTMLDivElement | null = null;
     /** Set while the zones they name are switched off. */
     hidden = false;
     /** The screen span a zone needs before it is named, from the zoom band. */
     minimumSpan = 0;
     pool = new Map<string, HTMLSpanElement>();
 
+    /*
+     * TWO PANES, because the selected zone's label has to outrank its own
+     * polygon.
+     *
+     * Google draws polygons into `overlayLayer`. A label in that same pane is
+     * in the polygon's stacking context, so the selected zone — which is
+     * deliberately the loudest fill and stroke on the map — paints over the
+     * name of the zone it is highlighting, and does it worst at far zoom where
+     * the shape is small and the label sits inside it.
+     *
+     * So ordinary labels stay in `overlayLayer`, below the selected fill, as
+     * the hierarchy requires; the SELECTED label is appended to `markerLayer`,
+     * which Google composites above the polygon pane. That is render order at
+     * the map's own layer rather than a CSS z-index fighting a canvas, and it
+     * is why the fix needs no change to any geometry.
+     *
+     * Within `markerLayer` the self marker must still sit above the label, so
+     * both carry an explicit z-index: the hunter's own position is never
+     * obscured by a name.
+     */
+    /** Ordinary labels: with the polygons, under the selected zone's fill. */
+    container: HTMLDivElement | null = null;
+    /** The selected zone's label: above every polygon, below the self marker. */
+    topContainer: HTMLDivElement | null = null;
+
     onAdd() {
+      const panes = this.getPanes();
       this.container = document.createElement("div");
       this.container.setAttribute("aria-hidden", "true");
       this.container.style.position = "absolute";
       this.container.style.pointerEvents = "none";
       if (this.hidden) this.container.style.display = "none";
-      this.getPanes()?.overlayLayer.appendChild(this.container);
+      panes?.overlayLayer.appendChild(this.container);
+
+      this.topContainer = document.createElement("div");
+      this.topContainer.setAttribute("aria-hidden", "true");
+      this.topContainer.style.position = "absolute";
+      this.topContainer.style.pointerEvents = "none";
+      this.topContainer.style.zIndex = "1";
+      if (this.hidden) this.topContainer.style.display = "none";
+      panes?.markerLayer.appendChild(this.topContainer);
     }
 
     onRemove() {
       this.container?.remove();
       this.container = null;
+      this.topContainer?.remove();
+      this.topContainer = null;
       this.pool.clear();
     }
 
@@ -120,9 +155,12 @@ export function createLabelLayer(
         if (!element) {
           element = document.createElement("span");
           element.className = className;
-          container.appendChild(element);
           this.pool.set(label.key, element);
         }
+        /* The selected label lives in the pane above the polygons; every other
+           one lives with them. Selection changes, so the element moves. */
+        const host = (candidate.source.selected ? this.topContainer : container) ?? container;
+        if (element.parentElement !== host) host.appendChild(element);
         if (element.textContent !== label.text) element.textContent = label.text;
         element.style.transform = `translate(${Math.round(candidate.divX)}px, ${Math.round(candidate.divY)}px) translate(-50%, -50%)`;
         element.dataset.selected = candidate.source.selected ? "true" : "";
@@ -151,7 +189,10 @@ export function createLabelLayer(
     },
     setVisible(visible) {
       layer.hidden = !visible;
+      /* Both panes: the selected label lives in the other one, and switching
+         zone boundaries off must not leave a name floating over an empty map. */
       if (layer.container) layer.container.style.display = visible ? "" : "none";
+      if (layer.topContainer) layer.topContainer.style.display = visible ? "" : "none";
     },
     toCoordinate(x, y) {
       const projection = layer.getProjection();
@@ -190,6 +231,9 @@ export function createSelfMarker(
       this.element.className = className;
       this.element.setAttribute("aria-hidden", "true");
       this.element.innerHTML = "<span></span>";
+      /* Above the selected zone's label, which shares this pane: the hunter's
+         own position is the one thing a zone name may never cover. */
+      this.element.style.zIndex = "3";
       this.getPanes()?.markerLayer.appendChild(this.element);
     }
 
