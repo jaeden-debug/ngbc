@@ -13,9 +13,10 @@
   "absence": {
     "meaning": "UNKNOWN",
     "excludedCombination": "CLOSED",
-    "statedAs": "Montana's upland seasons are statewide. A combination the booklet gives no season to on a date — a nonresident on public land before the tenth day, a sharp-tailed grouse west of the Divide — is closed by the booklet's own table.",
-    "section": "pp. 9–10",
-    "sourceId": "source:us-mt-upland-regulations-2026"
+    "statedAs": "Montana's upland seasons are statewide. A combination the booklet gives no season to on a date \u2014 a nonresident on public land before the tenth day, a sharp-tailed grouse west of the Divide \u2014 is closed by the booklet's own table.",
+    "section": "pp. 9\u201310",
+    "sourceId": "source:us-mt-upland-regulations-2026",
+    "meaningNote": "UNKNOWN is retained deliberately, and the disagreement with statedAs is the finding rather than the defect. British Columbia's CLOSED rests on a QUOTED CATEGORICAL CLAUSE \u2014 B.C. Reg. 190/84 s.4, 'the open seasons ... are those set forth in Parts 1 and 2 of each Schedule'. Montana's statedAs asserts a CONCLUSION about how the booklet's table works ('is closed by the booklet's own table'), which is North Ground's reading rather than the authority's sentence. A closed world declared from our own characterisation would make every unnamed combination CLOSED on our say-so, which is the stricter-than-source error \u00a78 names \u2014 and stricter is not the safe direction: it tells a hunter a season is shut when it may be open. WHAT WOULD CLOSE IT: the booklet's own sentence establishing that the seasons it lists are the only seasons. Montana is licence-blocked and unserved, so nothing is withheld from anyone while that is obtained."
   },
   "officialUnitCount": 2,
   "units": [
@@ -33,7 +34,7 @@
       "id": "us-mt-reservation-state-licence-closed",
       "name": "Indian reservation closed to state-licensed upland game bird hunting",
       "resolution": "OVERLAY",
-      "statedAs": "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana’s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana.",
+      "statedAs": "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana\u2019s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana.",
       "candidateAreas": [
         "East of the Continental Divide",
         "West of the Continental Divide"
@@ -64,7 +65,7 @@
       "authority": "Montana Fish, Wildlife & Parks",
       "title": "2026 Montana Upland Game Bird Hunting Regulations",
       "url": "https://fwp.mt.gov/binaries/content/assets/fwp/hunt/regulations/2026/2026-upgbrd-final-for-web.pdf",
-      "licence": "Published regulations; North Ground records facts — dates, areas, limits — with the page as provenance.",
+      "licence": "Published regulations; North Ground records facts \u2014 dates, areas, limits \u2014 with the page as provenance.",
       "extractedWith": "pypdf 6.19.0",
       "sourceHashes": {
         "pdf": "sha256:8786f83ecbe6de5f55176cc40b213a68fc08bd6e70a64a29911210bbbc82be0e",
@@ -111,7 +112,7 @@
       "authority": "U.S. Census Bureau",
       "title": "TIGERweb Federal American Indian Reservations (January 1, 2026 vintage)",
       "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/AIANNHA/MapServer/2",
-      "licence": "A work of the United States Government, not subject to copyright in the United States (17 U.S.C. § 105)."
+      "licence": "A work of the United States Government, not subject to copyright in the United States (17 U.S.C. \u00a7 105)."
     },
     {
       "id": "source:us-mt-upland-district-service",
@@ -217,10 +218,10 @@
         "combinedWithNames": [
           "blue grouse",
           "ruffed grouse",
-          "Franklin’s grouse"
+          "Franklin\u2019s grouse"
         ],
-        "statedAs": "3 in aggregate daily (blue, ruffed and Franklin’s grouse); possession limit four times the daily bag limit",
-        "section": "pp. 9–10"
+        "statedAs": "3 in aggregate daily (blue, ruffed and Franklin\u2019s grouse); possession limit four times the daily bag limit",
+        "section": "pp. 9\u201310"
       },
       "sourceSection": "p. 9, Mountain Grouse"
     },
@@ -233,7 +234,7 @@
       ],
       "caveats": [],
       "notes": [
-        "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana’s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana. This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it."
+        "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana\u2019s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana. This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it."
       ],
       "disputes": [],
       "sourceId": "source:us-mt-upland-regulations-2026",
@@ -317,7 +318,7 @@
       ],
       "caveats": [],
       "notes": [
-        "Montana calls the spruce grouse “Franklin’s grouse” (“spruce (Franklin) grouse”, p. 2)."
+        "Montana calls the spruce grouse \u201cFranklin\u2019s grouse\u201d (\u201cspruce (Franklin) grouse\u201d, p. 2)."
       ],
       "disputes": [],
       "sourceId": "source:us-mt-upland-regulations-2026",
@@ -364,10 +365,10 @@
         "combinedWithNames": [
           "blue grouse",
           "ruffed grouse",
-          "Franklin’s grouse"
+          "Franklin\u2019s grouse"
         ],
-        "statedAs": "3 in aggregate daily (blue, ruffed and Franklin’s grouse); possession limit four times the daily bag limit",
-        "section": "pp. 9–10"
+        "statedAs": "3 in aggregate daily (blue, ruffed and Franklin\u2019s grouse); possession limit four times the daily bag limit",
+        "section": "pp. 9\u201310"
       },
       "sourceSection": "p. 9, Mountain Grouse"
     },
@@ -380,7 +381,7 @@
       ],
       "caveats": [],
       "notes": [
-        "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana’s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana. This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it."
+        "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana\u2019s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana. This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it."
       ],
       "disputes": [],
       "sourceId": "source:us-mt-upland-regulations-2026",
@@ -464,7 +465,7 @@
       ],
       "caveats": [],
       "notes": [
-        "Montana’s “Hungarian partridge” is the gray partridge."
+        "Montana\u2019s \u201cHungarian partridge\u201d is the gray partridge."
       ],
       "disputes": [],
       "sourceId": "source:us-mt-upland-regulations-2026",
@@ -516,7 +517,7 @@
           "chukar partridge"
         ],
         "statedAs": "8 in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit",
-        "section": "pp. 9–10"
+        "section": "pp. 9\u201310"
       },
       "sourceSection": "p. 9, Partridge"
     },
@@ -529,7 +530,7 @@
       ],
       "caveats": [],
       "notes": [
-        "Montana’s “Hungarian partridge” is the gray partridge."
+        "Montana\u2019s \u201cHungarian partridge\u201d is the gray partridge."
       ],
       "disputes": [],
       "sourceId": "source:us-mt-upland-regulations-2026",
@@ -582,7 +583,7 @@
           "chukar partridge"
         ],
         "statedAs": "8 in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit",
-        "section": "pp. 9–10"
+        "section": "pp. 9\u201310"
       },
       "sourceSection": "p. 9, Partridge"
     },
@@ -595,7 +596,7 @@
       ],
       "caveats": [],
       "notes": [
-        "Montana’s “Hungarian partridge” is the gray partridge."
+        "Montana\u2019s \u201cHungarian partridge\u201d is the gray partridge."
       ],
       "disputes": [],
       "sourceId": "source:us-mt-upland-regulations-2026",
@@ -648,7 +649,7 @@
           "chukar partridge"
         ],
         "statedAs": "8 in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit",
-        "section": "pp. 9–10"
+        "section": "pp. 9\u201310"
       },
       "sourceSection": "p. 9, Partridge"
     },
@@ -661,7 +662,7 @@
       ],
       "caveats": [],
       "notes": [
-        "Montana’s “Hungarian partridge” is the gray partridge.",
+        "Montana\u2019s \u201cHungarian partridge\u201d is the gray partridge.",
         "Portion of Carbon County within the following boundary: Beginning at the junction of Route 72 and the Wyoming-Montana state line, then northerly along said route to Bridger, then northerly along Hwy. 310 to Edgar, then east on the Edgar-Pryor Road to the Crow Indian Reservation boundary, then southerly and easterly along said boundary to the west shore of Big Horn Lake, then southerly along said shore to the Wyoming-Montana state line, then west along said state line to its junction with Route 72, the point of beginning."
       ],
       "disputes": [],
@@ -712,7 +713,7 @@
           "chukar partridge"
         ],
         "statedAs": "8 in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit",
-        "section": "pp. 9–10"
+        "section": "pp. 9\u201310"
       },
       "sourceSection": "p. 9, Partridge"
     },
@@ -725,7 +726,7 @@
       ],
       "caveats": [],
       "notes": [
-        "Montana’s “Hungarian partridge” is the gray partridge.",
+        "Montana\u2019s \u201cHungarian partridge\u201d is the gray partridge.",
         "Portion of Carbon County within the following boundary: Beginning at the junction of Route 72 and the Wyoming-Montana state line, then northerly along said route to Bridger, then northerly along Hwy. 310 to Edgar, then east on the Edgar-Pryor Road to the Crow Indian Reservation boundary, then southerly and easterly along said boundary to the west shore of Big Horn Lake, then southerly along said shore to the Wyoming-Montana state line, then west along said state line to its junction with Route 72, the point of beginning."
       ],
       "disputes": [],
@@ -777,7 +778,7 @@
           "chukar partridge"
         ],
         "statedAs": "8 in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit",
-        "section": "pp. 9–10"
+        "section": "pp. 9\u201310"
       },
       "sourceSection": "p. 9, Partridge"
     },
@@ -790,7 +791,7 @@
       ],
       "caveats": [],
       "notes": [
-        "Montana’s “Hungarian partridge” is the gray partridge.",
+        "Montana\u2019s \u201cHungarian partridge\u201d is the gray partridge.",
         "Portion of Carbon County within the following boundary: Beginning at the junction of Route 72 and the Wyoming-Montana state line, then northerly along said route to Bridger, then northerly along Hwy. 310 to Edgar, then east on the Edgar-Pryor Road to the Crow Indian Reservation boundary, then southerly and easterly along said boundary to the west shore of Big Horn Lake, then southerly along said shore to the Wyoming-Montana state line, then west along said state line to its junction with Route 72, the point of beginning."
       ],
       "disputes": [],
@@ -842,7 +843,7 @@
           "chukar partridge"
         ],
         "statedAs": "8 in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit",
-        "section": "pp. 9–10"
+        "section": "pp. 9\u201310"
       },
       "sourceSection": "p. 9, Partridge"
     },
@@ -855,7 +856,7 @@
       ],
       "caveats": [],
       "notes": [
-        "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana’s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana. This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it."
+        "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana\u2019s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana. This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it."
       ],
       "disputes": [],
       "sourceId": "source:us-mt-upland-regulations-2026",
@@ -983,7 +984,7 @@
         "possession": 16,
         "combined": false,
         "statedAs": "4 daily; possession limit four times the daily bag limit",
-        "section": "pp. 9–10"
+        "section": "pp. 9\u201310"
       },
       "sourceSection": "p. 9, Sharp-tailed Grouse"
     },
@@ -1041,7 +1042,7 @@
         "possession": 16,
         "combined": false,
         "statedAs": "4 daily; possession limit four times the daily bag limit",
-        "section": "pp. 9–10"
+        "section": "pp. 9\u201310"
       },
       "sourceSection": "p. 9, Sharp-tailed Grouse"
     },
@@ -1099,7 +1100,7 @@
         "possession": 16,
         "combined": false,
         "statedAs": "4 daily; possession limit four times the daily bag limit",
-        "section": "pp. 9–10"
+        "section": "pp. 9\u201310"
       },
       "sourceSection": "p. 9, Sharp-tailed Grouse"
     },
@@ -1155,7 +1156,7 @@
       ],
       "caveats": [],
       "notes": [
-        "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana’s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana. This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it."
+        "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana\u2019s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana. This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it."
       ],
       "disputes": [],
       "sourceId": "source:us-mt-upland-regulations-2026",
@@ -1285,7 +1286,7 @@
         "possession": 9,
         "combined": false,
         "statedAs": "3 cock pheasants daily; possession limit three times the daily bag limit",
-        "section": "pp. 9–10"
+        "section": "pp. 9\u201310"
       },
       "sourceSection": "p. 10, Ring-necked Pheasant"
     },
@@ -1343,7 +1344,7 @@
         "possession": 9,
         "combined": false,
         "statedAs": "3 cock pheasants daily; possession limit three times the daily bag limit",
-        "section": "pp. 9–10"
+        "section": "pp. 9\u201310"
       },
       "sourceSection": "p. 10, Ring-necked Pheasant"
     },
@@ -1403,7 +1404,7 @@
         "possession": 9,
         "combined": false,
         "statedAs": "3 cock pheasants daily; possession limit three times the daily bag limit",
-        "section": "pp. 9–10"
+        "section": "pp. 9\u201310"
       },
       "sourceSection": "p. 10, Ring-necked Pheasant"
     },
@@ -1463,7 +1464,7 @@
         "possession": 9,
         "combined": false,
         "statedAs": "3 cock pheasants daily; possession limit three times the daily bag limit",
-        "section": "pp. 9–10"
+        "section": "pp. 9\u201310"
       },
       "sourceSection": "p. 10, Ring-necked Pheasant"
     },
@@ -1523,7 +1524,7 @@
         "possession": 9,
         "combined": false,
         "statedAs": "3 cock pheasants daily; possession limit three times the daily bag limit",
-        "section": "pp. 9–10"
+        "section": "pp. 9\u201310"
       },
       "sourceSection": "p. 10, Ring-necked Pheasant"
     },
@@ -1583,7 +1584,7 @@
         "possession": 9,
         "combined": false,
         "statedAs": "3 cock pheasants daily; possession limit three times the daily bag limit",
-        "section": "pp. 9–10"
+        "section": "pp. 9\u201310"
       },
       "sourceSection": "p. 10, Ring-necked Pheasant"
     },
@@ -1596,7 +1597,7 @@
       ],
       "caveats": [],
       "notes": [
-        "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana’s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana. This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it."
+        "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana\u2019s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana. This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it."
       ],
       "disputes": [],
       "sourceId": "source:us-mt-upland-regulations-2026",

@@ -63,6 +63,21 @@ export interface EvidencePackage {
   package?: { jurisdictionId?: string };
   source?: { id?: string; inForce?: { state?: string; asOf?: string } };
   requirements?: EvidenceRow[];
+  /**
+   * Facts the LANE concluded cannot be certified from this source, and why.
+   *
+   * A researcher who reads a whole instrument and concludes "this province
+   * publishes no positive allowed-methods list" knows something the reader
+   * cannot see from the rows. When the reader certifies it anyway, the
+   * evidence and the certification disagree and nothing surfaces it — which
+   * is exactly what happened to British Columbia's methods, and is the worst
+   * shape of over-claim because the correction already existed and was
+   * silently overridden.
+   *
+   * So a declared non-certification is a CONTRADICTION to raise, never a
+   * difference to resolve in the reader's favour.
+   */
+  cannotCertify?: Array<{ fact: string; reason: string }>;
 }
 
 const PACKAGES: Record<string, EvidencePackage[]> = {
@@ -232,4 +247,26 @@ export function measuredAbsence(jurisdictionId: string, category: EvidenceCatego
   return `Searched and not found across ${instruments} instruments with a matching control. ${
     evidence.absenceEvidence?.closedBy ?? "An authority statement would be needed to close it."
   }`;
+}
+
+
+/**
+ * Where this reader would certify a fact the lane said it cannot.
+ *
+ * Returns the disagreements rather than resolving them. A reader that wins
+ * these silently is a reader that discards research, and the researcher is the
+ * one who read the whole instrument.
+ */
+export function certificationContradictions(
+  jurisdictionId: string,
+  speciesId: string,
+): Array<{ fact: string; laneReason: string; readerReason: string }> {
+  const declared = evidenceFor(jurisdictionId).flatMap((entry) => entry.cannotCertify ?? []);
+  return declared.flatMap((claim) => {
+    const category = claim.fact as EvidenceCategory;
+    const verdict = certifies(jurisdictionId, speciesId, category);
+    return verdict.certified
+      ? [{ fact: claim.fact, laneReason: claim.reason, readerReason: verdict.reason }]
+      : [];
+  });
 }
