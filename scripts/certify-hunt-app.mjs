@@ -890,6 +890,74 @@ const scenarios = {
     await context.close();
   },
 
+  /*
+   * PRECEDENCE: explicit URL > explicit action > remembered session > defaults.
+   *
+   * The owner watched a zone-and-date link come back from the address bar
+   * carrying a species the device remembered. A link that gains a species is a
+   * link that no longer means what it said — the person it was sent to gets
+   * someone else's animal. This walks the exact sequence they asked for.
+   */
+  async urlBeatsMemory(browser) {
+    const s = "an explicit link means what it says";
+    const { context, page, consoleErrors } = await newPage(browser, { width: 390, height: 844 });
+    const where = () => page.evaluate(() => {
+      const link = [...document.querySelectorAll("a")].find((a) => /maps\.google\.com\/maps\?ll=/.test(a.href));
+      const ll = link ? (new URL(link.href).searchParams.get("ll") ?? "").split(",").map(Number) : [];
+      return {
+        title: document.getElementById("hunt-zone-title")?.textContent ?? null,
+        url: location.search,
+        latitude: ll[0] ?? null,
+        longitude: ll[1] ?? null,
+        species: document.querySelector("[class*=speciesName]")?.textContent?.trim() ?? "",
+      };
+    });
+
+    // 1. An Ontario hunt, with a species and a camera, remembered by the device.
+    await page.goto(`${BASE}/hunt?zone=ca-on-wmu-57&species=white-tailed-deer&date=2026-11-10`);
+    await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "WMU 57", 40_000);
+    await page.waitForTimeout(5_000);
+    const ontario = await where();
+    check(s, "the Ontario link establishes its own state", ontario.title === "WMU 57" && /species=white-tailed-deer/.test(ontario.url), JSON.stringify(ontario));
+    const remembered = await page.evaluate(() => { try { return JSON.parse(localStorage.getItem("north-ground.hunt.session.v1") ?? "null"); } catch { return null; } });
+    check(s, "and the device remembers that species and camera", remembered?.speciesId === "species:white-tailed-deer" && Boolean(remembered?.camera), JSON.stringify(remembered?.camera ?? null));
+
+    // 2. Same tab: an explicit Québec zone and date, naming NO species.
+    await page.goto(`${BASE}/hunt?zone=ca-qc-zone-10o&date=2026-09-23`);
+    await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "Zone 10 West", 40_000);
+    await page.waitForTimeout(6_000);
+    const quebec = await where();
+
+    // 3, 6. Québec wins, and the remembered species is not inserted.
+    check(s, "the link's zone wins over what the device remembers", quebec.title === "Zone 10 West", JSON.stringify(quebec));
+    check(s, "the remembered species is NOT added to the link", !/species=/.test(quebec.url), quebec.url);
+    check(s, "and no species is answered for", quebec.species === "", JSON.stringify(quebec));
+
+    /* 4, 5. The camera frames the named zone in BOTH axes. Longitude alone
+       would pass for a map still sitting on Ontario's latitude. */
+    const inQuebecZone = quebec.latitude !== null && Math.abs(quebec.latitude - 46.25) < 1.5 && Math.abs((quebec.longitude ?? 0) + 76.39) < 2;
+    check(s, "the camera frames Zone 10 West in latitude and longitude", inQuebecZone, JSON.stringify(quebec));
+    const stillOntario = quebec.latitude !== null && Math.abs(quebec.latitude - 45.3) < 0.3 && Math.abs((quebec.longitude ?? 0) + 77.74) < 0.3;
+    check(s, "the Ontario camera does not survive the navigation", !stillOntario, JSON.stringify(quebec));
+
+    // 7. And a reload of the same link is stable.
+    await page.reload();
+    await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "Zone 10 West", 40_000);
+    await page.waitForTimeout(5_000);
+    const reloaded = await where();
+    check(s, "reloading the link keeps it meaning the same thing",
+      reloaded.title === "Zone 10 West" && !/species=/.test(reloaded.url) && reloaded.species === "", JSON.stringify(reloaded));
+
+    // And a bare /hunt is still restored in full: memory hydrates what is missing.
+    await page.goto(`${BASE}/hunt`);
+    await mapReady(page);
+    await page.waitForTimeout(5_000);
+    const bare = await where();
+    check(s, "a bare /hunt is still restored from memory", /zone=ca-qc-zone-10o/.test(bare.url), JSON.stringify(bare));
+    check(s, "no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));
+    await context.close();
+  },
+
   /* X has to mean X (owner, 2026-09-23): the card goes, the map comes back, and
      what comes back when the sheet is raised again is not the last hunt. */
   async closingMeansClosed(browser) {
@@ -951,9 +1019,16 @@ const scenarios = {
       } else {
         await page.goto(`${BASE}/hunt?species=ruffed-grouse`);
         await mapReady(page);
-        await page.locator("input[type='search']").first().click();
-        await page.locator("input[type='search']").first().fill(at.place);
-        const suggested = await waitFor(page, () => document.querySelectorAll("[role=option]").length > 0, 25_000);
+        /* The keyless geocoder throttles; a rate limit is not a finding about
+           the product, so ask again once rather than reporting a failure that
+           is about someone else's quota. */
+        let suggested = false;
+        for (let attempt = 0; attempt < 2 && !suggested; attempt += 1) {
+          if (attempt) { await page.waitForTimeout(4_000); await page.locator("input[type='search']").first().fill(""); }
+          await page.locator("input[type='search']").first().click();
+          await page.locator("input[type='search']").first().fill(at.place);
+          suggested = await waitFor(page, () => document.querySelectorAll("[role=option]").length > 0, 25_000);
+        }
         if (!suggested) return null;
         await page.locator("[role=option]").first().click();
       }

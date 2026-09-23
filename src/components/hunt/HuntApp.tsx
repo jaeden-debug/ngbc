@@ -248,10 +248,31 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     setRecents(stored.recents);
     if (stored.overlays.length) setOverlaysOn(stored.overlays);
     if (stored.emphasis) setEmphasis(stored.emphasis);
-    /* An explicit link always wins: it is what was shared, and what the page
-       was already rendered for. Anything the link did not name comes back. */
-    if (!initialUrl.speciesId && stored.speciesId) dispatchSession({ type: "SPECIES_CHOSEN", speciesId: stored.speciesId as CanonicalId<"species"> });
-    if (!initialUrl.date && stored.date) dispatchSession({ type: "DATE_CHOSEN", iso: stored.date });
+    /*
+     * PRECEDENCE: explicit URL state > the current explicit action > remembered
+     * session state > defaults.
+     *
+     * Memory may hydrate state that is genuinely MISSING; it may never augment
+     * an explicit link in a way that changes what the link says. A link naming
+     * a zone and a date used to come back from this effect carrying a species
+     * the device happened to remember — and then the URL-sync effect wrote that
+     * species INTO the address bar. A link that gains a species is a link that
+     * no longer means what it said: the hunter who shared it sent their zone,
+     * and whoever opened it got someone else's animal.
+     *
+     * So a link that names ANY hunt dimension is explicit, and no other
+     * dimension is filled from memory. A bare `/hunt` names nothing and is
+     * restored in full, which is what remembering is for.
+     *
+     * The stored PLACE is not in this rule and is handled below: it is only
+     * kept inside the link's own zone, it sharpens a zone answer into a point
+     * answer without changing which zone the link is about, and no coordinate
+     * ever reaches the URL — so the link a person shares still says exactly
+     * what they shared.
+     */
+    const linkIsExplicit = Boolean(initialUrl.zoneId || initialUrl.speciesId || initialUrl.date || initialUrl.explore || linkIssues);
+    if (!linkIsExplicit && stored.speciesId) dispatchSession({ type: "SPECIES_CHOSEN", speciesId: stored.speciesId as CanonicalId<"species"> });
+    if (!linkIsExplicit && stored.date) dispatchSession({ type: "DATE_CHOSEN", iso: stored.date });
     /* The link is about a zone; the stored place is only kept when it is the
        same zone, so a reload keeps the exact spot rather than falling back to
        the whole zone — and a link to somewhere else is never overridden. */
