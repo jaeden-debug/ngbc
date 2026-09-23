@@ -94,6 +94,58 @@ This is the sibling of "do not share the subject's blind spot" one level up:
 that rule is about how a check is built, this one is about which outputs you
 bother to check at all.
 
+## Measure the expander that actually runs
+
+*Added 2026-09-23, from getting this wrong while hunting exactly this class.*
+
+A sweep checked which test files the `test:*` scripts reach, by expanding each
+script's globs and comparing. It reported `limitation-groups.test.ts` as
+unreached by anything. **It runs, and it passes, six subtests at a time.**
+
+The script is `node --test src/components/**/*.test.ts`. npm runs scripts
+through `sh`, which has no globstar, so `**` is passed through **literally** —
+`sh -c 'set -- src/components/**/*.test.ts; echo $#'` prints `1`, the unexpanded
+pattern. **Node 22's `--test` then does its own glob expansion, which does
+support `**`.** The files run, via Node, not via the shell.
+
+So the sweep was correct arithmetic over the wrong expander. **Ask which
+component actually resolves the thing you are measuring** — here, three
+candidates disagree: the shell that launches the script, the runner that
+receives the argument, and the developer's interactive shell (zsh expands it,
+which is why it looks fine by hand).
+
+**Verify by what was LOADED, not by what a pattern expands to.** `node --test`
+names each file it ran; that list is the measurement. Applied to this
+repository, every test file is reached — one orphan was real
+(`validate-canada-source-reconnaissance.test.mjs`, now in
+`test:regulatory-sources`) and one was an artefact of the wrong expander.
+
+**And the arrangement is fragile although it works:** it depends on the runner's
+glob support, and the same script under a different runner or an older Node
+would silently drop those files. A green count would not change — the files
+would simply stop being in it.
+
+## An asymmetry is justified by its failure directions
+
+*Added 2026-09-23.*
+
+A margin, tolerance or rounding rule is justified by **which way it is wrong**,
+so it does not travel to a fact whose failure directions differ.
+
+- **Legal hunting time** — the solar margin is applied INWARD, narrowing the
+  window, because a hunter who waits two extra minutes breaks no law.
+- **A season** — two-ended, with no safe direction. Narrowing it tells a hunter
+  a season is closed when it is open.
+
+The dangerous shape is not carelessness: it is a **correct habit carried across
+a boundary where its justification does not hold**, and it passes review
+because the habit is genuinely right where it came from.
+
+The test before transferring one: **name both failure directions in the new
+context and check they are still unequal in the same way.** If they are not, the
+margin is not conservative there — it is wrong in a direction nobody is
+watching.
+
 ## The gate is proportionate to what the change can break
 
 *Added 2026-09-23.*
