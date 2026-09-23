@@ -813,6 +813,56 @@ const scenarios = {
     await context.close();
   },
 
+  /*
+   * The pair that decides whether "Applies here today" is a band or a wall.
+   *
+   * Populated inside a named territory the ministry draws, EMPTY on a plain
+   * point in the same province. The empty half is the assertion that matters:
+   * a contextual band that populates everywhere is the wall growing back under
+   * a better name.
+   */
+  async contextualBand(browser) {
+    const s = "what applies HERE, and nowhere else";
+    const { context, page } = await newPage(browser, { width: 390, height: 844 });
+    const read = async (place, expectZone) => {
+      await page.goto(`${BASE}/hunt?species=ruffed-grouse`);
+      await mapReady(page);
+      await page.locator("input[type='search']").first().click();
+      await page.locator("input[type='search']").first().fill(place);
+      const suggested = await waitFor(page, () => document.querySelectorAll("[role=option]").length > 0, 25_000);
+      if (!suggested) return null;
+      await page.locator("[role=option]").first().click();
+      await waitFor(page, () => expectZone.test(document.getElementById("hunt-zone-title")?.textContent ?? ""), 40_000);
+      await waitFor(page, () => Boolean(document.querySelector("[class*=answerStatus]")), 30_000);
+      const details = page.getByRole("button", { name: /^Details/ }).first();
+      if (await details.count()) await details.click();
+      await page.waitForTimeout(2_500);
+      return page.evaluate(() => {
+        const band = [...document.querySelectorAll("h3")].find((h) => /Applies here today/i.test(h.textContent ?? ""));
+        const wall = [...document.querySelectorAll("h3")].find((h) => /does not resolve/i.test(h.textContent ?? ""));
+        return {
+          band: Boolean(band),
+          bandLines: band?.parentElement?.querySelectorAll("li").length ?? 0,
+          bandCollapsed: band ? Boolean(band.closest("details")) : false,
+          wallLines: wall?.closest("details")?.querySelectorAll("li").length ?? 0,
+          zone: document.getElementById("hunt-zone-title")?.textContent ?? "",
+        };
+      });
+    };
+
+    const rigaud = await read("Rigaud, Quebec", /^Zone 8/);
+    check(s, "a named territory the ministry draws puts a line beside the status",
+      rigaud && rigaud.band && rigaud.bandLines > 0 && rigaud.bandCollapsed === false, JSON.stringify(rigaud));
+
+    const plain = await read("Maniwaki, Quebec", /^Zone 10/);
+    check(s, "and a plain point in the same province shows NO such band",
+      plain && plain.band === false, JSON.stringify(plain));
+    check(s, "while both still carry the province's standing limitations, collapsed",
+      plain && plain.wallLines > 0 && rigaud && rigaud.wallLines > 0,
+      `${JSON.stringify(plain)} :: ${JSON.stringify(rigaud)}`);
+    await context.close();
+  },
+
   /* The narrowest screen anyone still hunts with. Pinned BEFORE the answer is
      rebuilt around structured rows, so a regression in the rebuild shows up as
      a failure here rather than as something a hunter finds outdoors. */
@@ -894,6 +944,28 @@ const scenarios = {
     });
     check(s, "the sources are collapsed, in the HTML, and open on a click",
       sources && sources.open === false && sources.chars > 200 && sources.opens === true, JSON.stringify(sources));
+    /* The scan is status → dates → the authority's own segment → limits, and
+       the segment is QUOTED and tagged in the language it was published in.
+       Where the rules behind a season disagree it is absent, and nothing takes
+       its place — a North Ground substitute there would be attributing a name
+       to a ministry that never wrote it. */
+    const segment = await page.evaluate(() => {
+      const value = document.querySelector("[class*=facts] dd");
+      const note = value?.querySelector("[class*=factNote]");
+      return {
+        beforeProse: !/[A-Z][a-z]+ [a-z]+ [a-z]+ [a-z]+ [a-z]+ [a-z]+ [a-z]+/.test(value?.textContent ?? ""),
+        label: note?.textContent?.trim() ?? null,
+        lang: note?.getAttribute("lang") ?? null,
+      };
+    });
+    check(s, "the authority's season segment is quoted and language-tagged, or absent",
+      segment.label === null || (/^«.+»$/.test(segment.label) && Boolean(segment.lang)), JSON.stringify(segment));
+    const prose = await page.evaluate(() => {
+      const paragraph = [...document.querySelectorAll("h3")].find((h) => /Why this answer/i.test(h.textContent ?? ""));
+      return { moved: Boolean(paragraph?.closest("details")) };
+    });
+    check(s, "and the paragraph that used to lead the answer is behind a disclosure", prose.moved, JSON.stringify(prose));
+
     /* Each limitation goes where its AUTHOR's scope sends it, and the three
        destinations are the whole point: what applies here is never collapsed,
        what is always true is said once, and the authority's own words sit with
@@ -907,7 +979,14 @@ const scenarios = {
         generalCollapsed: Boolean(heading?.closest("details")),
         hereShown: Boolean(here),
         hereCollapsed: here ? Boolean(here.closest("details")) : false,
-        frenchInTheWay: [...document.querySelectorAll("[lang='fr-CA']")].filter((e) => !e.closest("details")).length,
+        /* French in the scan is allowed in exactly one place: the authority's
+           own name for the season segment, inside the facts list, quoted. A
+           ministry caveat is prose and belongs in Sources; a segment name is a
+           NAME and belongs beside the dates the owner asked to see. Anything
+           French anywhere else in the scan is the wall coming back. */
+        frenchInTheWay: [...document.querySelectorAll("[lang='fr-CA']")]
+          .filter((e) => !e.closest("details") && !e.closest("[class*=facts]")).length,
+        frenchQuotesInScan: [...document.querySelectorAll("blockquote[lang='fr-CA']")].filter((q) => !q.closest("details")).length,
         frenchTagged: [...document.querySelectorAll("blockquote")].every((q) => q.getAttribute("lang")),
       };
     });
@@ -917,8 +996,8 @@ const scenarios = {
     /* §47: the ministry's French is preserved, tagged and attributed in Sources
        — the answer to an untranslated wall is attribution, not a paraphrase of
        law invented by a renderer. */
-    check(s, "the authority's French is out of the scan path and language-tagged",
-      scoped.frenchInTheWay === 0 && scoped.frenchTagged, JSON.stringify(scoped));
+    check(s, "the ministry's French prose is out of the scan path, and every quotation is tagged",
+      scoped.frenchInTheWay === 0 && scoped.frenchQuotesInScan === 0 && scoped.frenchTagged, JSON.stringify(scoped));
     const overflowAfter = await page.evaluate(() => ({ doc: document.documentElement.scrollWidth, win: window.innerWidth }));
     check(s, "the long answer still does not scroll sideways", overflowAfter.doc <= overflowAfter.win, JSON.stringify(overflowAfter));
     check(s, "no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));

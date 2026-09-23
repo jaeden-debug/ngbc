@@ -8,6 +8,7 @@ import type { EvaluationState } from "../../../lib/hunt/exploration/hunt-session
 import type { AuthorizationContext } from "../../../lib/hunt/regulatory/allocation";
 import { partitionEvaluationSources } from "../../../lib/hunt/source-roles";
 import type { HuntEvaluation } from "../../../lib/hunt/types";
+import Disclosure from "./Disclosure";
 import HuntQuestion from "../HuntQuestion";
 import styles from "../HuntApp.module.css";
 
@@ -155,7 +156,26 @@ export default function HuntAnswer({
           {result.regulation.season ? (
             <div>
               <dt>Season</dt>
-              <dd className="ng-numeric">{readableIso(result.regulation.season.opens)} – {readableIso(result.regulation.season.closes)}</dd>
+              <dd className="ng-numeric">
+                {readableIso(result.regulation.season.opens)} – {readableIso(result.regulation.season.closes)}
+                {/*
+                  The authority's own name for this segment, quoted and tagged
+                  in the language it was published in — never translated, never
+                  reformatted (§47).
+
+                  It is ABSENT whenever the rules behind the season disagree on
+                  it, because that combination is one the ministry never named.
+                  Nothing takes its place: putting a label there would be
+                  attributing a name to an authority that did not write it,
+                  which is the quiet mirror of inventing a prohibition. An
+                  absent segment is the normal case, not a gap.
+                */}
+                {result.regulation.season.label ? (
+                  <span className={styles.factNote} lang={result.regulation.season.label.lang}>
+                    {" "}« {result.regulation.season.label.text} »
+                  </span>
+                ) : null}
+              </dd>
             </div>
           ) : null}
           {result.regulation.limits ? (
@@ -170,7 +190,24 @@ export default function HuntAnswer({
         </dl>
       ) : null}
 
-      <p className={styles.answerSummary} data-clamp={!detailed || undefined}>{result.regulation.summary}</p>
+      {/*
+        Out of the scan, and not deleted.
+
+        The scan is now status → dates → the authority's own segment → limits,
+        which is the answer. This sentence still holds two things that are
+        nowhere else: the other season segments the record lists (next year's,
+        and any this date does not fall in), and the reminder that North Ground
+        has not verified what the hunter holds. Deleting it would take those
+        with it, so it moves behind a disclosure until each has a home of its
+        own — the same rule that kept it on screen before `season.label`
+        existed.
+      */}
+      <Disclosure
+        title="Why this answer"
+        note="The seasons behind it, and what it does not confirm"
+      >
+        <p className={styles.answerSummary}>{result.regulation.summary}</p>
+      </Disclosure>
 
       {result.regulation.authorization ? <AuthorizationBlock authorization={result.regulation.authorization} /> : null}
 
