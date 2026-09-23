@@ -11,6 +11,7 @@ import { CANADA_LIVE_ZONE_LAYERS } from "./canada/live-layers.ts";
 import { NEWFOUNDLAND_BIG_GAME_SERVICE, NEWFOUNDLAND_LEGAL_STANDING, normaliseNewfoundlandArea } from "./ingestion/newfoundland-areas.ts";
 import { NEW_BRUNSWICK_WMZ_LEGAL_STANDING, normaliseNewBrunswickWmz } from "./ingestion/new-brunswick-wmz.ts";
 import { NOVA_SCOTIA_DEER_LEGAL_STANDING, normaliseNovaScotiaDeerZone } from "./ingestion/nova-scotia-deer.ts";
+import { PRINCE_EDWARD_ISLAND_LEGAL_STANDING, normalisePrinceEdwardIsland } from "./ingestion/prince-edward-island.ts";
 import { YUKON_GMS_LAYER, YUKON_LEGAL_STANDING, normaliseYukonSubzone } from "./ingestion/yukon-subzones.ts";
 import { BRITISH_COLUMBIA_MU_CONFIG, normaliseBritishColumbiaMu } from "./ingestion/british-columbia-mu.ts";
 
@@ -201,6 +202,24 @@ export interface ZoneLayer {
    * (owner decision, 2026-09-21).
    */
   resolution?: "REGISTRY" | "LIVE_SERVICE";
+  /**
+   * What this layer's areas ARE. "ZONE" (the default): the authority divides
+   * its territory into units, and a point resolves to one of them.
+   * "JURISDICTION": the authority publishes no units because its rules apply
+   * to the whole jurisdiction, so a point resolves to the jurisdiction itself
+   * and carries NO zone id.
+   *
+   * Prince Edward Island is the first of these: its Hunting Regulations name
+   * no zone, county or district and list harvestable wildlife province-wide.
+   * A stored row still holds the province's shape so the map can draw it, but
+   * that row is storage, not a unit, and must never reach a hunter as one.
+   */
+  geographyLevel?: "ZONE" | "JURISDICTION";
+}
+
+/** Whether this layer's areas are units a point resolves to, or the jurisdiction itself. */
+export function isJurisdictionGeography(layer: Pick<ZoneLayer, "geographyLevel">): boolean {
+  return layer.geographyLevel === "JURISDICTION";
 }
 
 /** Whether the layer answers "which zone is this?" from location alone. */
@@ -517,6 +536,38 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     designationOf: normaliseNewBrunswickWmz,
     legalStanding: NEW_BRUNSWICK_WMZ_LEGAL_STANDING,
     timeZone: "America/Moncton",
+  },
+  {
+    id: "layer:ca-pe-province",
+    jurisdictionId: "jurisdiction:ca-pe",
+    jurisdictionName: "Prince Edward Island",
+    country: "CA",
+    /* The authority's own word for the area. There is no smaller one. */
+    officialTerm: "Province",
+    /* There is no abbreviation to show: the label is the province's own name. */
+    officialTermShort: "Province",
+    coverage: "IN_DEVELOPMENT",
+    coverageNote:
+      "Prince Edward Island publishes no hunting zones because its rules do not use any: the Wildlife Conservation " +
+      "Act Hunting Regulations name no zone, county or district, and list harvestable wildlife province-wide. Hunt " +
+      "therefore answers with the province and no unit. The outline drawn is Statistics Canada's cartographic " +
+      "provincial boundary under the Open Government Licence - Canada, which is provenance for the shape only; the " +
+      "authority for every rule remains the province. No Prince Edward Island rule is certified, so every species " +
+      "here answers UNKNOWN. The four Wildlife Management Areas the regulations name are restricted places inside a " +
+      "single prohibition, not management geography, and are never drawn as zones.",
+    authority: "Prince Edward Island Department of Environment, Energy and Climate Action",
+    sourceId: "source:ca-pe-provincial-boundary",
+    bounds: { minLatitude: 45.94, maxLatitude: 47.07, minLongitude: -64.42, maxLongitude: -61.95 },
+    /* Boundaries only: the province parity-certified against the published
+       outline (5/5 testable points). */
+    serving: true,
+    mapGeometry: "stored",
+    officialNamePrefix: "",
+    zoneIdPrefix: "management_zone:ca-pe-",
+    geographyLevel: "JURISDICTION",
+    designationOf: normalisePrinceEdwardIsland,
+    legalStanding: PRINCE_EDWARD_ISLAND_LEGAL_STANDING,
+    timeZone: "America/Halifax",
   },
   {
     id: "layer:ca-ns-deer-zone",

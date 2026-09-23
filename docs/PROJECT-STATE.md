@@ -4,7 +4,9 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-22 (Canonical species PRIMARY media schema, private storage and every shared consumer are activated and certified in production. Temporary certification media and users were removed; population is 0/60. Permanent administrator access remains fail-closed until the owner supplies the administrator email.)
+Last updated: 2026-09-23 (**Canada spatial complete**: all 11 in-scope provinces and territories have parity-certified official geography, Prince Edward Island last, served at geography level JURISDICTION because the province publishes no units. Rules remain the open front — 7 of 11 hold no certified rule and answer UNKNOWN. Government GIS transient failures are now retried under one stated policy and a national audit survives an unreadable provider.)
+
+Previously: 2026-09-22 (Canonical species PRIMARY media schema, private storage and every shared consumer are activated and certified in production. Temporary certification media and users were removed; population is 0/60. Permanent administrator access remains fail-closed until the owner supplies the administrator email.)
 
 ## Current Product State
 
@@ -290,21 +292,75 @@ declares structure and known gaps; `src/lib/hunt/canada/report.ts` computes ever
 count from the certified bundles. Run `npm run report:canada`. Do not restate
 those counts here — they would go stale the moment a bundle changes.
 
-National position as of 2026-09-21, from `npm run report:canada`:
+National position as of 2026-09-23, from `npm run report:canada`:
 
 | | |
 | --- | --- |
 | Jurisdictions tracked | 14 (13 provinces and territories + federal) |
-| Spatial VERIFIED | 3 (Ontario, Manitoba, Alberta) |
-| Official units parity-certified | 402 (151 + 62 + 189) |
-| Species with certified rules | 8 |
-| Certified rules | 281 (146 + 85 + 50) |
-| Jurisdictions with any certified rule | 3 |
+| Spatial VERIFIED | 11 (every in-scope province and territory) |
+| Official units parity-certified | 1,351 |
+| Species with certified rules | 10 |
+| Certified rules | 477 |
+| Jurisdictions with any certified rule | 4 |
 
-Milestones: `spatialComplete` NOT met (3 of 13). `coreGameComplete` NOT met
-(3 of 13). `migratoryComplete` NOT met (no federal rules). `coverageAudited`
-MET — every jurisdiction declares its own gaps, so what is missing is
-intentionally UNKNOWN rather than accidentally absent.
+**`spatialComplete` is MET as of 2026-09-23 (11 of 11 in-scope).** Every one of
+the ten provinces and Yukon has its official hunting geography ingested and
+parity-certified against its own authority; Prince Edward Island was the last,
+and the Northwest Territories and Nunavut remain out of scope by owner decision
+and are counted in neither direction. The flag is computed from the
+certifications by `report.ts`, not typed, so it cannot be turned on by editing a
+constant — and it makes no claim at all about rules.
+
+Read it with its two standing caveats, both declared in the registry's
+`knownGaps` and pinned by a test:
+
+- **Nova Scotia** is certified on the 12 deer zones it licenses as open data and
+  holds no moose or bear boundary at all, because the province licenses none.
+  That is a licence finding, not a missing ingest.
+- **Prince Edward Island** is certified on a provincial outline, because it
+  publishes no units to certify (below).
+
+`coreGameComplete` NOT met (4 of 11). `migratoryComplete` NOT met (no federal
+rules). `coverageAudited` MET — every jurisdiction declares its own gaps, so
+what is missing is intentionally UNKNOWN rather than accidentally absent.
+
+**Drawing every boundary in Canada is not covering Canada.** Seven of the eleven
+hold no certified rule, so every species query there is UNKNOWN. The next front
+is rules, jurisdiction by jurisdiction.
+
+#### Prince Edward Island: the province IS the hunting geography (2026-09-23)
+
+Prince Edward Island has no hunting zones, and that was established from the
+authority's own text rather than assumed from an absent dataset. Searching the
+consolidated Wildlife Conservation Act Hunting Regulations: **"zone" appears 0
+times, "county" 0 times, "district" 0 times.** Schedule 2 lists harvestable
+wildlife province-wide with no geographic qualifier. **"Wildlife management
+area" appears 6 times**, every one inside a single prohibition — no hunting
+migratory waterfowl within 100 m of the centre line of a highway right-of-way
+forming a boundary of the Indian River, Rollo Bay, New Glasgow or Pisquid River
+Wildlife Management Areas.
+
+So the province is the extent to which its hunting rules apply. The layer is
+registered at **geography level JURISDICTION**: a point resolves to the province
+and carries **no zone id**, because handing a hunter
+`management_zone:ca-pe-prince-edward-island` would invent a unit out of a
+storage key. `ZoneLayer.geographyLevel` and `isJurisdictionGeography()` are the
+general mechanism; every other layer is asserted to be zone-shaped, so the new
+field cannot silently unit-strip a jurisdiction that really does publish units.
+
+The outline drawn is **Statistics Canada's 2021 cartographic provincial boundary
+(PRUID 11)** under the Open Government Licence – Canada. It is provenance for
+the shape only and is never the authority for a rule; the citation a hunter
+reads stays the province's own hunting page. Parity-certified 2026-09-23: 1/1
+inventory, 0 missing, 0 invented, 0 geometry disagreements, 5/5 testable points,
+472 parts.
+
+**The four Wildlife Management Areas are a declared gap, not a layer.** They
+carry a real restriction, but the province publishes no boundary for them that
+North Ground may use: its own open data and ArcGIS Online returned only
+third-party mirrors (a conservation NGO, university accounts), which are not the
+authority. North Ground holds no geometry for them and draws none rather than
+approximating a legal boundary. This is a source-availability finding.
 
 Record each jurisdiction as:
 VERIFIED / PARTIAL / IN DEVELOPMENT / UNAVAILABLE
@@ -711,9 +767,53 @@ The homepage stays dark, cinematic and immersive. Hunt is clean, glassy, precise
 ### 2026-09-20 — Hunt Date Model
 Only `Today` and `Choose date`. Display is `YYYY/MM/DD`, storage and transport are ISO `YYYY-MM-DD`, and a hunt date is treated as a calendar day rather than an instant so no time zone can shift it. Fast numeric entry, pasted-format normalisation and real calendar validation are required behaviour, covered by tests rather than by screenshots.
 
+## Source Reliability
+
+**Government GIS services fail transiently, and a run must survive it
+(2026-09-23).** Measured, not assumed: Statistics Canada's boundary service
+answered one byte-identical geometry request 500, then 200, then 500; British
+Columbia's GeoServer answered 400 once mid-run and then 200 on four consecutive
+probes of the same URL. Either was enough to abort a whole certification part-way
+through thousands of parity reads.
+
+Three changes, in `src/lib/hunt/ingestion/transient-retry.ts` and the audit:
+
+- **One retry policy, stated rather than inferred.** 5xx, 429 and transport
+  failures are the service's fault and are retried; **4xx is never retried**,
+  because a wrong request repeated is still wrong. The one exception is opt-in
+  per status with measured evidence — the WFS adapter declares 400 transient
+  *for British Columbia's GeoServer specifically*. A malformed body is not a
+  transient fault and is not retried either.
+- **Every retry is announced.** A service that needs coaxing is a fact about the
+  source; smoothing it into silence would hide a degrading authority.
+- **`--all` no longer abandons the national audit at the first bad provider.**
+  The jurisdiction is recorded **UNREAD** — neither certified nor uncertified,
+  just unanswered — every other jurisdiction is still audited, and the run still
+  exits non-zero. A single-jurisdiction run still re-throws.
+
+This replaced an indiscriminate 3-attempt retry in the WFS adapter that repeated
+4xx as readily as 5xx, and gave the ArcGIS adapter (which had none) the same
+policy. `transient-retry.test.ts` pins the boundary in both directions.
+
+## Corrections To Earlier Claims
+
+- **The ESRI-orientation fix was NOT what fixed New Brunswick's holes
+  (2026-09-23).** Both facts belong together: the orientation change was
+  approved and applied, and it did not resolve the failures. The real cause was
+  zero-area 3–4-point holes below the sampling tolerance, now recorded as
+  untestable rather than as agreement.
+- **A level-1 drawing is not its source geometry.** New Brunswick's payload was
+  reported at 150.9 KB from measuring the source geometry; the drawing the map
+  actually ships is **2.3 KB**. That nearly triggered an unneeded tiling
+  project. Related lesson from the same area: approximating geometry while
+  omitting per-feature label metadata moved a payload 2.3 → 4.2 KB — **zone
+  count costs, not vertex count.**
+
 ## Validation
 
 - **The map and the coverage report agree on 1,212 official units by two independent paths (2026-09-22).** The national overview answer contains 1,212 drawn features across the seven served layers (Ontario 151, Québec 59, Manitoba 62, Alberta 189, British Columbia 225, Saskatchewan 83, Yukon 443), and `canadaCoverageReport()` computes 1,212 parity-certified units from the certified rule bundles and ingestion adapters. Neither number is typed, and they are derived from different sources: one from PostGIS drawings and live services at request time, the other from the bundles and adapters at call time. Their agreement is a real cross-check — if a jurisdiction is ever promoted without being drawn, drawn without being certified, or silently truncated by a query limit, the two numbers separate. Yukon is exactly how that was caught: it reported 443 certified units while the map drew 0, because a 400-row cap refused the layer.
+
+- **Canada spatial complete + Prince Edward Island, 2026-09-23** (private worktree): typecheck and lint clean; **722 tests, 0 failures** across every suite (7 new `transient-retry` cases, 7 new Prince Edward Island cases, 1 new presentation case, 1 new milestone-caveat case); production build passes on Next 16. `audit-zone-certification.mjs --all` re-ran **every** jurisdiction after the audit change: BC 890/890, AB 763/763, YT 1769/1769, NL moose 303/303, NL caribou 76/76, NL bear 27/27, NB 118/118, NS 54/54, MB 249/249, ON 608/608, QC 256/256 — all VERIFIED, and **every existing fixture is byte-identical to HEAD** (`git status` shows only the new `ca-pe` file). That is the evidence the audit's designation fix changed nothing for the token-designation jurisdictions. Prince Edward Island certified separately, 5/5 testable, VERIFIED; in the `--all` run its Statistics Canada service exhausted all four attempts and was recorded UNREAD, which is exactly the behaviour intended.
 
 ### Build
 - `canada-bc` landing, 2026-09-22, rebased on `9e82000`: typecheck and lint clean; full `npm test` green (hedge 11/11, `test:hunt` including BC unserved/served-state and the Cranbrook attribution); 5/5 time zones; published content contract 0 errors, 0 warnings; `check:regulatory-sources` all unchanged, BC bundle reproduces byte for byte; production build; hydration check 8 pages × 3 browser time zones clean. Against a local production build (Manitoba store read path live): Manitoba 24/24 (evaluation p90 264 ms), Québec 21/21, Ontario regression 7/7, Alberta regression 13/13.

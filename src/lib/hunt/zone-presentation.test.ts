@@ -188,13 +188,38 @@ test("representative Ontario, Manitoba and Alberta zones read as the authority n
   }
 });
 
+test("10b. a served jurisdiction is never given a designation it does not publish", () => {
+  /*
+   * Prince Edward Island HAS a profile, so it is not "unsupported" — but its
+   * one designation is the province's own name. A number is not a Prince
+   * Edward Island zone and must not be dressed up as one.
+   */
+  for (const locale of ZONE_LOCALES) {
+    const presented = presentZone({ designation: "21", jurisdictionId: "jurisdiction:ca-pe" }, locale);
+    assert.equal(presented.status, "UNRECOGNIZED_DESIGNATION");
+    assert.equal(presented.designationLabel, "21");
+  }
+  const province = presentZone({ designation: "Prince Edward Island", jurisdictionId: "jurisdiction:ca-pe" }, "en-CA");
+  assert.equal(province.status, "PRESENTED");
+  assert.equal(province.fullLabel, "Prince Edward Island");
+  // The area is the jurisdiction, so the name is not read out twice.
+  assert.equal(province.accessibleLabel, "Prince Edward Island");
+  assert.equal(
+    presentZone({ designation: "Prince Edward Island", jurisdictionId: "jurisdiction:ca-pe" }, "fr-CA").fullLabel,
+    "Île-du-Prince-Édouard",
+  );
+});
+
 test("10. an unsupported or future jurisdiction is shown raw, never given a name", () => {
   for (const input of [
-    // New Mexico and Prince Edward Island have no profile: shown raw, never named.
-    // New Brunswick stood here until its zones were served and given one.
+    // New Mexico and the Northwest Territories have no profile: shown raw, never
+    // named. New Brunswick stood here until its zones were served and given one,
+    // and Prince Edward Island until its province-level geography was served.
+    // The Northwest Territories is out of scope and publishes no reusable
+    // hunting geography, so it is a lasting example rather than a waiting one.
     { designation: "GMU 12", jurisdictionId: "jurisdiction:us-nm" },
-    { designation: "21", jurisdictionId: "jurisdiction:ca-pe" },
-    { designation: "21", layerId: "layer:ca-pe-wma" },
+    { designation: "21", jurisdictionId: "jurisdiction:ca-nt" },
+    { designation: "21", layerId: "layer:ca-nt-wma" },
   ]) {
     for (const locale of ZONE_LOCALES) {
       const presented = presentZone(input, locale);

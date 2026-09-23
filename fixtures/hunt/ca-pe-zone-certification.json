@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "certifiedOn": "2026-09-23",
+  "jurisdiction": "jurisdiction:ca-pe",
+  "layer": "layer:ca-pe-province",
+  "authority": "Prince Edward Island Department of Environment, Energy and Climate Action",
+  "sourceUrl": "https://geo.statcan.gc.ca/geo_wa/rest/services/2021/Cartographic_boundary_files/MapServer/0",
+  "sourceVersion": "Statistics Canada 2021 cartographic boundary file, PR layer, read 2026-09-23",
+  "officialZones": 1,
+  "officialIdentifiers": [
+    "Prince Edward Island"
+  ],
+  "northGroundZones": 1,
+  "quarantined": [],
+  "inventory": {
+    "missing": [],
+    "invented": []
+  },
+  "geometry": {
+    "checked": 1,
+    "normalizations": [],
+    "disagreements": [],
+    "totals": {
+      "authorityFeatures": 1,
+      "polygons": 111,
+      "holes": 0,
+      "vertices": 43044
+    }
+  },
+  "parity": {
+    "total": 5,
+    "agreements": 5,
+    "disagreements": 0,
+    "testable": 5,
+    "untestable": [],
+    "untestableShare": 0,
+    "untestableCeiling": 0.15,
+    "unresolved": 0,
+    "counts": {
+      "INTERIOR": 1,
+      "BOUNDARY_INSIDE": 1,
+      "BOUNDARY_OUTSIDE": 1,
+      "INTERIOR_SECOND": 1,
+      "MULTIPART": 1
+    },
+    "failures": [],
+    "sampleHash": "sha256:8cdb2f84a957354d216f1af93ea02a35054c70216c403b8bd10f8f900897a7e5"
+  },
+  "status": "VERIFIED"
+}

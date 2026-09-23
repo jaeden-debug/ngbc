@@ -805,6 +805,34 @@
       ],
       "verificationStatus": "verified",
       "licence": "New Brunswick Open Government Licence"
+    },
+    {
+      "id": "source:ca-pe-provincial-boundary",
+      "authority": "Statistics Canada",
+      "title": "Prince Edward Island provincial boundary (PRUID 11) — 2021 Census Cartographic Boundary Files",
+      "url": "https://www150.statcan.gc.ca/n1/en/catalogue/92-160-X",
+      "publisher": "Statistics Canada",
+      "retrievedAt": "2026-09-23T00:00:00Z",
+      "type": "official",
+      "jurisdictionIds": [
+        "jurisdiction:ca-pe"
+      ],
+      "verificationStatus": "verified",
+      "licence": "Open Government Licence - Canada",
+      "attribution": "Contains information licensed under the Open Government Licence - Canada."
+    },
+    {
+      "id": "source:ca-pe-hunting-regulations",
+      "authority": "Prince Edward Island Department of Environment, Energy and Climate Action",
+      "title": "Wildlife Conservation Act Hunting Regulations (Prince Edward Island)",
+      "url": "https://www.princeedwardisland.ca/sites/default/files/legislation/w04-1-5-wildlife_conservation_act_hunting_regulations.pdf",
+      "publisher": "Government of Prince Edward Island",
+      "retrievedAt": "2026-09-23T00:00:00Z",
+      "type": "official",
+      "jurisdictionIds": [
+        "jurisdiction:ca-pe"
+      ],
+      "verificationStatus": "verified"
     }
   ],
   "claims": [

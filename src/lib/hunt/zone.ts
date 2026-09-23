@@ -1,7 +1,7 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { ZoneResolution } from "./types.ts";
 import { unitedStatesStateAt } from "./united-states/state-boundary.ts";
-import { countryOfJurisdiction, designationOfRaw, isLocationLayer, layerOfZoneId, officialNameOf, servingLayersAt, ZONE_LAYERS, zoneIdFor, type ZoneLayer } from "./zone-layers.ts";
+import { countryOfJurisdiction, designationOfRaw, isJurisdictionGeography, isLocationLayer, layerOfZoneId, officialNameOf, servingLayersAt, ZONE_LAYERS, zoneIdFor, type ZoneLayer } from "./zone-layers.ts";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { defaultSupabaseServerClient, SupabaseServerConfigurationError } from "../supabase/server.ts";
 
@@ -224,9 +224,17 @@ export async function resolveZoneFromRegistry(
     }
     const row = rows[0];
     const distance = Math.round(row.boundary_distance_meters);
+    /*
+     * A jurisdiction-level geography has no units, so it yields no unit. The
+     * stored row exists to hold the province's shape; Prince Edward Island's
+     * hunting rules name no zone, and handing a hunter
+     * "management_zone:ca-pe-prince-edward-island" would invent one out of a
+     * storage key. The answer is the province, and the zone id is omitted.
+     */
+    const jurisdictionGeography = isJurisdictionGeography(layerOfZoneId(row.canonical_id) ?? {});
     return {
       status: "RESOLVED",
-      zoneId: row.canonical_id as ZoneResolution["zoneId"],
+      ...(jurisdictionGeography ? {} : { zoneId: row.canonical_id as ZoneResolution["zoneId"] }),
       jurisdictionId: jurisdictionOfZoneId(row.canonical_id),
       officialName: row.official_name,
       locationAccuracy: row.location_accuracy ?? undefined,
@@ -408,7 +416,8 @@ async function askLayerService(
     const distance = Math.round(boundaryDistance([longitude, latitude], rings));
     return {
       status: "RESOLVED",
-      zoneId: zoneIdFor(layer, designation),
+      /* No unit exists to name where the geography IS the jurisdiction. */
+      ...(isJurisdictionGeography(layer) ? {} : { zoneId: zoneIdFor(layer, designation) }),
       jurisdictionId: layer.jurisdictionId,
       officialName: officialNameOf(layer, designation),
       boundaryDistanceMeters: distance,
@@ -504,7 +513,8 @@ export async function resolveLayerFromWfs(
     const nearBoundary = inside.length === 0;
     return {
       status: "RESOLVED",
-      zoneId: zoneIdFor(layer, designation),
+      /* No unit exists to name where the geography IS the jurisdiction. */
+      ...(isJurisdictionGeography(layer) ? {} : { zoneId: zoneIdFor(layer, designation) }),
       jurisdictionId: layer.jurisdictionId,
       officialName: officialNameOf(layer, designation),
       nearBoundary,

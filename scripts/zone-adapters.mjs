@@ -30,6 +30,10 @@ export const ZONE_ADAPTERS = {
     module: "../src/lib/hunt/ingestion/newfoundland-areas.ts",
     factory: "createNewfoundlandBearSource",
   },
+  "ca-pe": {
+    module: "../src/lib/hunt/ingestion/prince-edward-island.ts",
+    factory: "createPrinceEdwardIslandSource",
+  },
   "ca-nb": {
     module: "../src/lib/hunt/ingestion/new-brunswick-wmz.ts",
     factory: "createNewBrunswickWmzSource",

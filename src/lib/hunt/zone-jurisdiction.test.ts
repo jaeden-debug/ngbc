@@ -48,8 +48,11 @@ test("a registered layer that is not served is never presented", () => {
 });
 
 test("a zone from a jurisdiction with no registered layer is not presented at all", () => {
-  // Prince Edward Island has no layer of any kind; New Brunswick used to stand here and is now served.
-  assert.deepEqual(layerForResolution({ status: "RESOLVED", jurisdictionId: "jurisdiction:ca-pe" }), { kind: "UNREGISTERED" });
+  /* The Northwest Territories has no layer of any kind. New Brunswick stood
+     here until it was served, then Prince Edward Island until its province-
+     level geography was; the Territories is out of scope and publishes no
+     reusable hunting geography, so it is a lasting example. */
+  assert.deepEqual(layerForResolution({ status: "RESOLVED", jurisdictionId: "jurisdiction:ca-nt" }), { kind: "UNREGISTERED" });
   assert.deepEqual(layerForResolution({ status: "RESOLVED" }), { kind: "UNREGISTERED" });
 });
 

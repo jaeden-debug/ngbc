@@ -453,21 +453,42 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     nameFr: "Île-du-Prince-Édouard",
     kind: "province",
     spatial: {
-      status: "UNKNOWN",
-      officialTerm: "Wildlife Management Area",
+      // The province IS the hunting geography; its outline is served.
+      status: "VERIFIED",
+      officialTerm: "Province",
       officialSourceUrl: "https://www.princeedwardisland.ca/en/topic/hunting",
-      parityCertified: false,
+      parityCertified: true,
       notes:
-        "Whether Prince Edward Island divides hunting into mapped zones at all has not been established. " +
-        "UNKNOWN rather than IN_DEVELOPMENT because the question is unresearched, not merely unfinished.",
+        "Prince Edward Island has no hunting zones, and this was established from the authority's own text rather " +
+        "than assumed from an absent dataset. The consolidated Wildlife Conservation Act Hunting Regulations " +
+        "contain \"zone\" zero times, \"county\" zero times and \"district\" zero times; Schedule 2 lists " +
+        "harvestable wildlife province-wide with no geographic qualifier. \"Wildlife management area\" appears " +
+        "six times, only inside one prohibition on hunting migratory waterfowl within 100 m of the centre line of " +
+        "a highway right-of-way forming a boundary of the Indian River, Rollo Bay, New Glasgow or Pisquid River " +
+        "Wildlife Management Areas — restricted places, not management geography. The province is therefore the " +
+        "extent to which its hunting rules apply, and the layer is registered at geography level JURISDICTION so a " +
+        "point resolves to the province with NO zone id. The outline drawn is Statistics Canada's 2021 cartographic " +
+        "provincial boundary (PRUID 11) under the Open Government Licence - Canada, which is provenance for the " +
+        "shape only and is never the authority for a rule. One area in PostGIS with its derivatives built (472 " +
+        "parts), parity-certified 2026-09-23: 1/1 inventory, 0 missing, 0 invented, 0 geometry disagreements, 5/5 " +
+        "testable points. Served for drawing and jurisdiction resolution only.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
       bundleIds: [],
-      sourceLeads: ["Prince Edward Island Hunting Regulations"],
+      sourceLeads: ["Wildlife Conservation Act Hunting Regulations (Prince Edward Island)"],
+      huntingAuthorityUrl: "https://www.princeedwardisland.ca/en/topic/hunting",
       sourceState: "NOT_INGESTED",
     },
-    knownGaps: ["No geometry ingested and no rules certified; every Prince Edward Island query is UNKNOWN."],
+    knownGaps: [
+      "Boundaries only: the province is drawn and resolved, and every Prince Edward Island species query is UNKNOWN " +
+        "until rules are certified. A drawn outline is not a certified rule.",
+      "The four Wildlife Management Areas the regulations name (Indian River, Rollo Bay, New Glasgow, Pisquid " +
+        "River) carry a real restriction, but the province publishes no boundary for them that North Ground may " +
+        "use: searching the province's own open data and ArcGIS Online returned only third-party mirrors, which " +
+        "are not the authority. North Ground holds no geometry for them and draws none rather than approximating " +
+        "a legal boundary. This is a source-availability finding, not a missing ingest.",
+    ],
   },
   {
     id: "jurisdiction:ca-nl",

@@ -1,3 +1,4 @@
+import { readSource } from "./transient-retry.ts";
 import type { QuarantinedFeature, ZoneFeatureRecord, ZoneLayerSource } from "./types.ts";
 
 /**
@@ -73,6 +74,13 @@ export interface ArcgisZoneSourceConfig {
   pageSize?: number;
   /** The layer's object-id field, for stable paging. Most are OBJECTID; Colorado's is FID. */
   objectIdField?: string;
+  /**
+   * A filter for a layer that serves more than this jurisdiction's geography.
+   * Statistics Canada's province layer carries all thirteen, and Prince Edward
+   * Island wants one of them; fetching all and quarantining twelve would make
+   * "1 of 13 staged" the record of a successful ingest. Defaults to everything.
+   */
+  where?: string;
 }
 
 type Geometry = { type: string; coordinates: unknown };
@@ -116,15 +124,21 @@ export function createArcgisZoneSource(config: ArcgisZoneSourceConfig, fetcher: 
     `${config.zoneIdPrefix}${identifier.trim().toLowerCase().replace(/[^a-z0-9-]+/g, "-")}`;
 
   async function page(parameters: URLSearchParams, timeoutMs: number): Promise<GeoJsonPage> {
-    const response = await fetcher(`${query}?${parameters}`, {
-      headers: { accept: "application/geo+json, application/json" },
-      signal: AbortSignal.timeout(timeoutMs),
-      cache: "no-store",
-    });
-    if (!response.ok) throw new Error(`${config.authority} layer returned ${response.status}`);
-    const payload = await response.json() as GeoJsonPage;
-    if (payload.error) throw new Error(`${config.authority} layer error: ${payload.error.message ?? "unknown error"}`);
-    return payload;
+    return readSource(
+      fetcher,
+      `${query}?${parameters}`,
+      {
+        headers: { accept: "application/geo+json, application/json" },
+        signal: AbortSignal.timeout(timeoutMs),
+        cache: "no-store",
+      },
+      { label: config.layerId, authority: `${config.authority} layer` },
+      async (response) => {
+        const payload = await response.json() as GeoJsonPage;
+        if (payload.error) throw new Error(`${config.authority} layer error: ${payload.error.message ?? "unknown error"}`);
+        return payload;
+      },
+    );
   }
 
   function quarantineRuleFor(properties: Record<string, unknown>): ArcgisQuarantineRule | undefined {
@@ -145,7 +159,7 @@ export function createArcgisZoneSource(config: ArcgisZoneSourceConfig, fetcher: 
 
     async officialIdentifiersAt(latitude, longitude) {
       const parameters = new URLSearchParams({
-        where: "1=1",
+        where: config.where ?? "1=1",
         geometry: `${longitude},${latitude}`,
         geometryType: "esriGeometryPoint",
         inSR: "4326",
@@ -173,7 +187,7 @@ export function createArcgisZoneSource(config: ArcgisZoneSourceConfig, fetcher: 
       const rows: NonNullable<GeoJsonPage["features"]> = [];
       for (let offset = 0; ; offset += pageSize) {
         const payload = await page(new URLSearchParams({
-          where: "1=1",
+          where: config.where ?? "1=1",
           outFields,
           returnGeometry: "true",
           outSR: "4326",

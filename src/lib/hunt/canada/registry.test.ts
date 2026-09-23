@@ -156,12 +156,41 @@ test("the report counts only what the certified bundles actually contain", () =>
 });
 
 test("no national milestone is claimed before its evidence exists", () => {
-  const { milestones } = canadaCoverageReport();
-  assert.equal(milestones.spatialComplete.met, false, "twelve jurisdictions have no certified geometry");
-  assert.equal(milestones.coreGameComplete.met, false, "twelve jurisdictions have no certified rules");
+  const { milestones, jurisdictions } = canadaCoverageReport();
+  /*
+   * Spatial is met, and it is met by evidence rather than by assertion: each
+   * of the 11 in-scope provinces and territories has its official geography
+   * ingested and parity-certified against its own authority, Prince Edward
+   * Island last (2026-09-23). The flag is computed from those certifications,
+   * so it cannot be turned on by editing a constant — and it says nothing
+   * whatever about rules.
+   */
+  assert.equal(milestones.spatialComplete.met, true);
+  /* The federal entry carries rules that compose with a province's; it has no
+     geography of its own, so it is not one of the 11 counted here. */
+  const inScope = jurisdictions.filter((entry) => !entry.scope && entry.kind !== "federal");
+  assert.equal(inScope.length, 11, "ten provinces and Yukon");
+  assert.deepEqual(inScope.filter((entry) => !entry.spatial.parityCertified).map(({ id }) => id), []);
+
+  // Drawing a boundary is not certifying a rule. These stay false on evidence.
+  assert.equal(milestones.coreGameComplete.met, false, "most jurisdictions have no certified rules");
   assert.equal(milestones.migratoryComplete.met, false, "no federal migratory-bird rules exist");
-  // The only milestone currently met, and the one that makes the rest honest.
   assert.equal(milestones.coverageAudited.met, true);
+});
+
+test("spatial completeness does not paper over a declared geography gap", () => {
+  /*
+   * The milestone counts jurisdictions, so a jurisdiction whose geography is
+   * only partly licensed must still say so out loud. Nova Scotia is certified
+   * on the deer zones it licenses and holds no moose or bear boundary at all;
+   * Prince Edward Island is certified on a provincial outline because it
+   * publishes no units. Neither fact may disappear behind the flag.
+   */
+  const { jurisdictions } = canadaCoverageReport();
+  const novaScotia = jurisdictions.find(({ id }) => id === "jurisdiction:ca-ns")!;
+  assert.ok(novaScotia.knownGaps.some((gap) => /No moose or bear geography/.test(gap)));
+  const pei = jurisdictions.find(({ id }) => id === "jurisdiction:ca-pe")!;
+  assert.ok(pei.knownGaps.some((gap) => /Boundaries only/.test(gap)));
 });
 
 test("every species row splits covered, declared-closed and unknown", () => {

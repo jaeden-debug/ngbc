@@ -1,3 +1,4 @@
+import { readSource } from "./transient-retry.ts";
 import type { LegalStanding } from "../zone-layers.ts";
 import type { QuarantinedFeature, ZoneFeatureRecord, ZoneLayerSource } from "./types.ts";
 
@@ -134,14 +135,27 @@ export function createWfsZoneSource(config: WfsZoneSourceConfig, fetcher: typeof
 
   /* GeoServer answers `resultType=hits` as a WFS XML document whatever
      `outputFormat` says; other servers honour JSON. Either carries the count. */
+  /*
+   * GeoServer, which British Columbia serves this from, answers a byte-
+   * identical well-formed request with 400 under load: one arrived mid-run on
+   * 2026-09-23 and four consecutive probes of the same URL then returned 200.
+   * That is the service, not the request, so 400 is transient HERE and is
+   * declared rather than assumed for every source.
+   */
+  const RETRY = { label: config.layerId, authority: `${config.authority} WFS`, alsoTransient: [400] } as const;
+
   async function publishedCount(): Promise<number | null> {
-    const response = await fetcher(url({ resultType: "hits" }), {
-      headers: { accept: "application/json, application/xml" },
-      signal: AbortSignal.timeout(60_000),
-      cache: "no-store",
-    });
-    if (!response.ok) throw new Error(`${config.authority} WFS returned ${response.status} for its record count`);
-    const text = await response.text();
+    const text = await readSource(
+      fetcher,
+      url({ resultType: "hits" }),
+      {
+        headers: { accept: "application/json, application/xml" },
+        signal: AbortSignal.timeout(60_000),
+        cache: "no-store",
+      },
+      RETRY,
+      (response) => response.text(),
+    );
     if (text.trimStart().startsWith("{")) {
       const body = JSON.parse(text) as WfsPage;
       return count(body.numberMatched) ?? count(body.totalFeatures);
@@ -151,22 +165,13 @@ export function createWfsZoneSource(config: WfsZoneSourceConfig, fetcher: typeof
   }
 
   async function read(target: string, timeoutMs: number): Promise<WfsPage> {
-    let lastError: unknown;
-    for (let attempt = 1; attempt <= 3; attempt += 1) {
-      try {
-        const response = await fetcher(target, {
-          headers: { accept: "application/json" },
-          signal: AbortSignal.timeout(timeoutMs),
-          cache: "no-store",
-        });
-        if (!response.ok) throw new Error(`${config.authority} WFS returned ${response.status}`);
-        return await response.json() as WfsPage;
-      } catch (error) {
-        lastError = error;
-        if (attempt < 3) await new Promise((resolve) => setTimeout(resolve, 1_500 * attempt));
-      }
-    }
-    throw lastError instanceof Error ? lastError : new Error(`${config.authority} WFS could not be read`);
+    return readSource(
+      fetcher,
+      target,
+      { headers: { accept: "application/json" }, signal: AbortSignal.timeout(timeoutMs), cache: "no-store" },
+      RETRY,
+      (response) => response.json() as Promise<WfsPage>,
+    );
   }
 
   return {

@@ -102,6 +102,13 @@ export interface ZonePresentationProfile {
    * and nothing is translated. The map still labels these with the code.
    */
   properNames?: Readonly<Record<string, Localized<string>>>;
+  /**
+   * The area IS the jurisdiction, so its accessible label is not suffixed with
+   * the jurisdiction's name: Prince Edward Island publishes no units, and
+   * "Prince Edward Island, Prince Edward Island" is what a screen reader would
+   * otherwise read out.
+   */
+  geographyIsJurisdiction?: boolean;
 }
 
 /** Québec's compass codes, from the ministry's `Partie_zon` values. */
@@ -290,6 +297,28 @@ export const ZONE_PRESENTATION_PROFILES: readonly ZonePresentationProfile[] = [
     // Twelve zones, 101 to 112, as the regulation numbers them.
     designationPattern: /^1(0[1-9]|1[0-2])$/,
     stripLeadingZeros: false,
+  },
+  {
+    layerId: "layer:ca-pe-province",
+    jurisdictionId: "jurisdiction:ca-pe",
+    zoneIdPrefix: "management_zone:ca-pe-",
+    officialNamePrefix: "",
+    sourceLocale: "en-CA",
+    jurisdictionName: { "en-CA": "Prince Edward Island", "fr-CA": "Île-du-Prince-Édouard" },
+    /*
+     * The area is the province, so the "term" is the word Province and it is
+     * never composed on top of the name: the proper name below carries the
+     * whole label. Both names are the ones Statistics Canada publishes in
+     * PRNAME for PRUID 11, so neither is translated by North Ground.
+     */
+    term: { "en-CA": { long: "Province", short: "Province" }, "fr-CA": { long: "Province", short: "Province" } },
+    termIsAbbreviation: false,
+    designationPattern: /^Prince Edward Island$/,
+    stripLeadingZeros: false,
+    properNames: {
+      "Prince Edward Island": { "en-CA": "Prince Edward Island", "fr-CA": "Île-du-Prince-Édouard" },
+    },
+    geographyIsJurisdiction: true,
   },
   {
     layerId: "layer:ca-sk-wmz",
@@ -490,7 +519,7 @@ export function presentZone(input: ZonePresentationInput, locale: ZoneLocale = D
         designationLabel: name,
         // Tight map space keeps the authority's code, never a truncated proper name.
         compactLabel: designation,
-        accessibleLabel: `${name}, ${jurisdictionName}`,
+        accessibleLabel: profile.geographyIsJurisdiction ? name : `${name}, ${jurisdictionName}`,
         localized: proper[locale] !== undefined,
         status: "PRESENTED",
       };

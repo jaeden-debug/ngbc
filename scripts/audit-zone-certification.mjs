@@ -32,7 +32,21 @@ const BBOX_TOLERANCE = 0.000_002; // ~0.2 m longitude at the equator.
  */
 function canonicalPrefix(source, officialFeatures) {
   const ids = officialFeatures.map(({ canonicalId }) => canonicalId).filter(Boolean);
-  if (ids.length < 2) throw new Error(`${source.layerId}: need at least two official zones to derive a canonical prefix`);
+  /*
+   * A jurisdiction whose official geography is a single area — Prince Edward
+   * Island, whose regulations set hunting province-wide — has no second id to
+   * find a common prefix with. Its prefix is the one the adapter mints with,
+   * recovered by removing the slug the adapter would append. Same rule, read
+   * from the adapter rather than guessed from a table.
+   */
+  if (ids.length === 1) {
+    const [identifier] = officialFeatures.map(({ officialIdentifier }) => officialIdentifier);
+    const slug = String(identifier).trim().toLowerCase().replace(/[^a-z0-9-]+/g, "-");
+    const only = ids[0];
+    if (!only.endsWith(slug)) throw new Error(`${source.layerId}: cannot recover the canonical prefix from ${only}`);
+    return only.slice(0, only.length - slug.length);
+  }
+  if (ids.length < 2) throw new Error(`${source.layerId}: no official zones, so no canonical prefix`);
   let prefix = ids[0];
   for (const id of ids.slice(1)) {
     let index = 0;
@@ -419,7 +433,16 @@ async function certifiedNormalizations(source, officialFeatures, env) {
   return new Map(rows.map((row) => [row.official_identifier, row]));
 }
 
-async function resolveSamples(samples, source, env) {
+async function resolveSamples(samples, source, env, officialFeatures) {
+  /*
+   * The authority's own spelling of each designation, keyed by canonical id.
+   * Reconstructing it by stripping the prefix and upper-casing works while
+   * every designation is a token like "57" or "10W", and mangles anything
+   * else: Prince Edward Island, whose single area is the province, came back
+   * as "PRINCE-EDWARD-ISLAND" against the authority's "Prince Edward Island".
+   * The id is the join; the spelling is read, never rebuilt.
+   */
+  const identifierById = new Map((officialFeatures ?? []).map(({ canonicalId, officialIdentifier }) => [canonicalId, officialIdentifier]));
   const prefix = source.canonicalZoneId("X").replace(/x$/i, "");
   const results = new Array(samples.length);
   let cursor = 0;
@@ -443,7 +466,7 @@ async function resolveSamples(samples, source, env) {
       });
       const actual = rows.map(({ canonical_id: id }) => String(id))
         .filter((id) => id.startsWith(prefix))
-        .map((id) => id.slice(prefix.length).toUpperCase())
+        .map((id) => identifierById.get(id) ?? id.slice(prefix.length).toUpperCase())
         .sort();
       results[index] = { ...sample, actual, agree: JSON.stringify(sample.expected) === JSON.stringify(actual) };
       completed += 1;
@@ -512,7 +535,7 @@ async function certify(jurisdiction, env) {
 
   console.log("  deriving parity points from government polygons...");
   const samples = sampleOfficialFeatures(officialFeatures);
-  const parity = await resolveSamples(samples, source, env);
+  const parity = await resolveSamples(samples, source, env, officialFeatures);
   /* An untestable part is its own outcome and never counts as agreement. */
   const untestable = parity.filter(({ untestable: skip }) => skip);
   const testable = parity.filter(({ untestable: skip }) => !skip);
@@ -603,8 +626,26 @@ async function main() {
   }
   const env = loadEnv();
   const results = [];
-  for (const jurisdiction of jurisdictions) results.push(await certify(jurisdiction, env));
-  if (results.some(({ status }) => status !== "VERIFIED")) process.exitCode = 1;
+  const unread = [];
+  for (const jurisdiction of jurisdictions) {
+    try {
+      results.push(await certify(jurisdiction, env));
+    } catch (cause) {
+      /*
+       * One authority's service being unwell is not a reason to abandon the
+       * national audit and report nothing. The jurisdiction is recorded as
+       * UNREAD — which is neither certified nor uncertified, just unanswered —
+       * every other jurisdiction is still audited, and the run still fails.
+       * A single jurisdiction run re-throws, because there is nothing to
+       * continue to and the caller wants the stack.
+       */
+      if (jurisdictions.length === 1) throw cause;
+      console.error(`  UNREAD: ${cause.message}`);
+      unread.push(jurisdiction);
+    }
+  }
+  if (unread.length) console.error(`\nnot read from their authority: ${unread.join(", ")}`);
+  if (unread.length || results.some(({ status }) => status !== "VERIFIED")) process.exitCode = 1;
 }
 
 main().catch((error) => {
