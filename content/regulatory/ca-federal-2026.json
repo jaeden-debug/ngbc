@@ -1,0 +1,924 @@
+{
+  "schemaVersion": 1,
+  "bundleId": "bundle:ca-federal-2026",
+  "jurisdictionId": "jurisdiction:ca-federal",
+  "sourceVersion": "Migratory Birds Regulations, 2022, SOR/2022-105",
+  "sourceUrl": "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2022-105/FullText.html",
+  "retrievedAt": "2026-09-23",
+  "contentHash": "sha256:b2f702691cca4fddb31dae4e4af26e9d8bd3f890a97df991e862043c7c920802",
+  "wave": 1,
+  "waveCovers": [
+    {
+      "name": "Prince Edward Island",
+      "jurisdictionId": "jurisdiction:ca-pe"
+    },
+    {
+      "name": "Yukon",
+      "jurisdictionId": "jurisdiction:ca-yt"
+    },
+    {
+      "name": "Alberta",
+      "jurisdictionId": "jurisdiction:ca-ab"
+    }
+  ],
+  "composition": "Federal migratory-bird rules COMPOSE with provincial rules; they never replace them. A hunter must satisfy both. Where a federal and a provincial rule disagree, the answer is CONFLICT stating both.",
+  "rules": [
+    {
+      "jurisdictionId": "jurisdiction:ca-pe",
+      "area": "Throughout Prince Edward Island",
+      "groupId": "federal_group:sea-ducks",
+      "groupStatedAs": "Common and Red-breasted Mergansers, Long-tailed Ducks, Eiders and Scoters, combined",
+      "window": {
+        "from": {
+          "month": 10,
+          "day": 1
+        },
+        "to": {
+          "month": 1,
+          "day": 15
+        },
+        "crossesYear": true,
+        "statedAs": "October 1 to January 15"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 6,
+        "subLimit": "not more than 4 may be Eiders and not more than 4 may be Scoters",
+        "statedAs": "6 (not more than 4 may be Eiders and not more than 4 may be Scoters)"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 12,
+        "subLimit": "not more than 8 may be Eiders and not more than 8 may be Scoters",
+        "statedAs": "12 (not more than 8 may be Eiders and not more than 8 may be Scoters)"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Prince Edward Island Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-pe",
+      "area": "Throughout Prince Edward Island",
+      "groupId": "federal_group:ducks-other-than-sea-ducks",
+      "groupStatedAs": "Ducks (other than Harlequin Ducks, Common and Red-breasted Mergansers, Long-tailed Ducks, Eiders and Scoters), combined",
+      "window": {
+        "from": {
+          "month": 10,
+          "day": 1
+        },
+        "to": {
+          "month": 1,
+          "day": 15
+        },
+        "crossesYear": true,
+        "statedAs": "October 1 to January 15"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 6,
+        "subLimit": "not more than 1 may be Barrow’s Goldeneye",
+        "statedAs": "6 (not more than 1 may be Barrow’s Goldeneye)"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 18,
+        "subLimit": "not more than 1 may be Barrow’s Goldeneye",
+        "statedAs": "18 (not more than 1 may be Barrow’s Goldeneye)"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Prince Edward Island Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-pe",
+      "area": "Throughout Prince Edward Island",
+      "groupId": "federal_group:harlequin-ducks",
+      "groupStatedAs": "Harlequin Ducks",
+      "declaredNoSeason": true,
+      "statedAs": "No open season",
+      "sourceSection": "Prince Edward Island Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-pe",
+      "area": "Throughout Prince Edward Island",
+      "groupId": "federal_group:woodcock",
+      "groupStatedAs": "Woodcock",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 26
+        },
+        "to": {
+          "month": 12,
+          "day": 10
+        },
+        "crossesYear": false,
+        "statedAs": "September 26 to December 10"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 8,
+        "statedAs": "8"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 16,
+        "statedAs": "16"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Prince Edward Island Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-pe",
+      "area": "Throughout Prince Edward Island",
+      "groupId": "federal_group:snipe",
+      "groupStatedAs": "Snipe",
+      "window": {
+        "from": {
+          "month": 10,
+          "day": 1
+        },
+        "to": {
+          "month": 12,
+          "day": 31
+        },
+        "crossesYear": false,
+        "statedAs": "October 1 to December 31"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 10,
+        "statedAs": "10"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 20,
+        "statedAs": "20"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Prince Edward Island Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "area": "Northern Yukon",
+      "groupId": "federal_group:all-ducks",
+      "groupStatedAs": "all Ducks, combined",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 10,
+          "day": 31
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to October 31"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 25,
+        "statedAs": "25"
+      },
+      "possession": {
+        "kind": "NO_LIMIT",
+        "statedAs": "No limit"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Yukon Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "area": "Northern Yukon",
+      "groupId": "federal_group:canada-cackling-whitefronted-brant",
+      "groupStatedAs": "Canada Geese, Cackling Geese, White-fronted Geese and Brant, combined",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 10,
+          "day": 31
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to October 31"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 15,
+        "statedAs": "15"
+      },
+      "possession": {
+        "kind": "NO_LIMIT",
+        "statedAs": "No limit"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Yukon Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "area": "Northern Yukon",
+      "groupId": "federal_group:sandhill-cranes",
+      "groupStatedAs": "Sandhill Cranes",
+      "declaredNoSeason": true,
+      "statedAs": "No open season",
+      "sourceSection": "Yukon Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "area": "Northern Yukon",
+      "groupId": "federal_group:rails-coots",
+      "groupStatedAs": "Rails and Coots, combined",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 10,
+          "day": 31
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to October 31"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 25,
+        "statedAs": "25"
+      },
+      "possession": {
+        "kind": "NO_LIMIT",
+        "statedAs": "No limit"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Yukon Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "area": "Northern Yukon",
+      "groupId": "federal_group:snipe",
+      "groupStatedAs": "Snipe",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 10,
+          "day": 31
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to October 31"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 10,
+        "statedAs": "10"
+      },
+      "possession": {
+        "kind": "NO_LIMIT",
+        "statedAs": "No limit"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Yukon Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "area": "Central Yukon",
+      "groupId": "federal_group:all-ducks",
+      "groupStatedAs": "all Ducks, combined",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 10,
+          "day": 31
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to October 31"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 8,
+        "statedAs": "8"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 24,
+        "statedAs": "24"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Yukon Schedule 3 Table 1 item 2"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "area": "Central Yukon",
+      "groupId": "federal_group:canada-cackling-whitefronted-brant",
+      "groupStatedAs": "Canada Geese, Cackling Geese, White-fronted Geese and Brant, combined",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 10,
+          "day": 31
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to October 31"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 5,
+        "statedAs": "5"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 15,
+        "statedAs": "15"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Yukon Schedule 3 Table 1 item 2"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "area": "Central Yukon",
+      "groupId": "federal_group:sandhill-cranes",
+      "groupStatedAs": "Sandhill Cranes",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 10,
+          "day": 31
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to October 31"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 2,
+        "statedAs": "2"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 4,
+        "statedAs": "4"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Yukon Schedule 3 Table 1 item 2"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "area": "Central Yukon",
+      "groupId": "federal_group:rails-coots",
+      "groupStatedAs": "Rails and Coots, combined",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 10,
+          "day": 31
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to October 31"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 25,
+        "statedAs": "25"
+      },
+      "possession": {
+        "kind": "NO_LIMIT",
+        "statedAs": "No limit"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Yukon Schedule 3 Table 1 item 2"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "area": "Central Yukon",
+      "groupId": "federal_group:snipe",
+      "groupStatedAs": "Snipe",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 10,
+          "day": 31
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to October 31"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 10,
+        "statedAs": "10"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 30,
+        "statedAs": "30"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Yukon Schedule 3 Table 1 item 2"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "area": "Southern Yukon",
+      "groupId": "federal_group:all-ducks",
+      "groupStatedAs": "all Ducks, combined",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 10,
+          "day": 31
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to October 31"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 8,
+        "statedAs": "8"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 24,
+        "statedAs": "24"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Yukon Schedule 3 Table 1 item 3"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "area": "Southern Yukon",
+      "groupId": "federal_group:canada-cackling-whitefronted-brant",
+      "groupStatedAs": "Canada Geese, Cackling Geese, White-fronted Geese and Brant, combined",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 10,
+          "day": 31
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to October 31"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 5,
+        "statedAs": "5"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 15,
+        "statedAs": "15"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Yukon Schedule 3 Table 1 item 3"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "area": "Southern Yukon",
+      "groupId": "federal_group:sandhill-cranes",
+      "groupStatedAs": "Sandhill Cranes",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 10,
+          "day": 31
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to October 31"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 2,
+        "statedAs": "2"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 4,
+        "statedAs": "4"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Yukon Schedule 3 Table 1 item 3"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "area": "Southern Yukon",
+      "groupId": "federal_group:rails-coots",
+      "groupStatedAs": "Rails and Coots, combined",
+      "declaredNoSeason": true,
+      "statedAs": "No open season",
+      "sourceSection": "Yukon Schedule 3 Table 1 item 3"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "area": "Southern Yukon",
+      "groupId": "federal_group:snipe",
+      "groupStatedAs": "Snipe",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 10,
+          "day": 31
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to October 31"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 10,
+        "statedAs": "10"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 30,
+        "statedAs": "30"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Yukon Schedule 3 Table 1 item 3"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "area": "Zone No. 1",
+      "groupId": "federal_group:canada-cackling-whitefronted",
+      "groupStatedAs": "Canada Geese, Cackling Geese and White-fronted Geese, combined",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 12,
+          "day": 16
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to December 16"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 8,
+        "statedAs": "8"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 24,
+        "statedAs": "24"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Alberta Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "area": "Zone No. 1",
+      "groupId": "federal_group:coots",
+      "groupStatedAs": "Coots",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 12,
+          "day": 16
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to December 16"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 8,
+        "statedAs": "8"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 24,
+        "statedAs": "24"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Alberta Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "area": "Zone No. 1",
+      "groupId": "federal_group:snipe",
+      "groupStatedAs": "Snipe",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 12,
+          "day": 16
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to December 16"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 8,
+        "statedAs": "8"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 24,
+        "statedAs": "24"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Alberta Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "area": "Zone No. 2",
+      "groupId": "federal_group:canada-cackling-whitefronted",
+      "groupStatedAs": "Canada Geese, Cackling Geese and White-fronted Geese, combined",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 8
+        },
+        "to": {
+          "month": 12,
+          "day": 23
+        },
+        "crossesYear": false,
+        "statedAs": "September 8 to December 23"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 8,
+        "statedAs": "8"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 24,
+        "statedAs": "24"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Alberta Schedule 3 Table 1 item 2"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "area": "Zone No. 2",
+      "groupId": "federal_group:coots",
+      "groupStatedAs": "Coots",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 8
+        },
+        "to": {
+          "month": 12,
+          "day": 23
+        },
+        "crossesYear": false,
+        "statedAs": "September 8 to December 23"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 8,
+        "statedAs": "8"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 24,
+        "statedAs": "24"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Alberta Schedule 3 Table 1 item 2"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "area": "Zone No. 2",
+      "groupId": "federal_group:snipe",
+      "groupStatedAs": "Snipe",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 8
+        },
+        "to": {
+          "month": 12,
+          "day": 23
+        },
+        "crossesYear": false,
+        "statedAs": "September 8 to December 23"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 8,
+        "statedAs": "8"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 24,
+        "statedAs": "24"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Alberta Schedule 3 Table 1 item 2"
+    }
+  ],
+  "notEncoded": [
+    {
+      "where": "Prince Edward Island Schedule 3 Table 1 item 1",
+      "group": "all Geese, combined",
+      "area": "Throughout Prince Edward Island",
+      "statedAs": "(i) September 1 to September 15 | 5 (plus an additional 5 Canada Geese or Cackling Geese in any combination) | 20",
+      "reason": "the daily bag carries an additional species-specific allowance"
+    },
+    {
+      "where": "Prince Edward Island Schedule 3 Table 1 item 1",
+      "group": "all Geese, combined",
+      "area": "Throughout Prince Edward Island",
+      "statedAs": "(ii) October 1 to December 31 | (A) 5 (from October 1 to November 14) | (B) 3 (from November 15 to December 31) | 20",
+      "reason": "the daily bag changes inside the open season"
+    },
+    {
+      "where": "Yukon Schedule 3 Table 1 item 1",
+      "group": "all Ducks, combined",
+      "area": "Northern Yukon",
+      "statedAs": "(i) August 15 to August 31, for residents of Yukon only | 25 | No limit",
+      "reason": "the limit or season varies by residency"
+    },
+    {
+      "where": "Yukon Schedule 3 Table 1 item 1",
+      "group": "Canada Geese, Cackling Geese, White-fronted Geese and Brant, combined",
+      "area": "Northern Yukon",
+      "statedAs": "(i) August 15 to August 31, for residents of Yukon only | 15 | No limit",
+      "reason": "the limit or season varies by residency"
+    },
+    {
+      "where": "Yukon Schedule 3 Table 1 item 1",
+      "group": "Rails and Coots, combined",
+      "area": "Northern Yukon",
+      "statedAs": "(i) August 15 to August 31, for residents of Yukon only | 25 | No limit",
+      "reason": "the limit or season varies by residency"
+    },
+    {
+      "where": "Yukon Schedule 3 Table 1 item 1",
+      "group": "Snipe",
+      "area": "Northern Yukon",
+      "statedAs": "(i) August 15 to August 31, for residents of Yukon only | 10 | No limit",
+      "reason": "the limit or season varies by residency"
+    },
+    {
+      "where": "Yukon Schedule 3 Table 1 item 2",
+      "group": "all Ducks, combined",
+      "area": "Central Yukon",
+      "statedAs": "(i) August 15 to August 31, for residents of Yukon only | 8 | 24",
+      "reason": "the limit or season varies by residency"
+    },
+    {
+      "where": "Yukon Schedule 3 Table 1 item 2",
+      "group": "Canada Geese, Cackling Geese, White-fronted Geese and Brant, combined",
+      "area": "Central Yukon",
+      "statedAs": "(i) August 15 to August 31, for residents of Yukon only | 5 | 15",
+      "reason": "the limit or season varies by residency"
+    },
+    {
+      "where": "Yukon Schedule 3 Table 1 item 2",
+      "group": "Sandhill Cranes",
+      "area": "Central Yukon",
+      "statedAs": "(i) August 15 to August 31, for residents of Yukon only | 2 | 4",
+      "reason": "the limit or season varies by residency"
+    },
+    {
+      "where": "Yukon Schedule 3 Table 1 item 2",
+      "group": "Rails and Coots, combined",
+      "area": "Central Yukon",
+      "statedAs": "(i) August 15 to August 31, for residents of Yukon only | 25 | No limit",
+      "reason": "the limit or season varies by residency"
+    },
+    {
+      "where": "Yukon Schedule 3 Table 1 item 2",
+      "group": "Snipe",
+      "area": "Central Yukon",
+      "statedAs": "(i) August 15 to August 31, for residents of Yukon only | 10 | 30",
+      "reason": "the limit or season varies by residency"
+    },
+    {
+      "where": "Yukon Schedule 3 Table 2 item 1",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Yukon",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Yukon Schedule 3 Table 2 item 1",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Yukon",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Yukon Schedule 3 Table 2 item 1",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Yukon",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Yukon Schedule 3 Table 2 item 2",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Yukon",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Yukon Schedule 3 Table 2 item 2",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Yukon",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Yukon Schedule 3 Table 2 item 2",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Yukon",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Yukon Schedule 3 Table 2 item 3",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Yukon",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Yukon Schedule 3 Table 2 item 3",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Yukon",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Alberta Schedule 3 Table 1 item 1",
+      "group": "all Ducks, combined",
+      "area": "Zone No. 1",
+      "statedAs": "September 1 to December 16 | 8 | (i) 24 for residents of Canada",
+      "reason": "the limit or season varies by residency"
+    },
+    {
+      "where": "Alberta Schedule 3 Table 1 item 1",
+      "group": "all Ducks, combined",
+      "area": "Zone No. 1",
+      "statedAs": "September 1 to December 16 | 8 (not more than 2 may be Barrow’s Goldeneye or Common Goldeneye in any combination) | (ii) 24 (not more than 6 may be Barrow’s Goldeneye or Common Goldeneye in any combination) for non-residents of Canada",
+      "reason": "the limit or season varies by residency"
+    },
+    {
+      "where": "Alberta Schedule 3 Table 1 item 1",
+      "group": "Sandhill Cranes",
+      "area": "Zone No. 1",
+      "statedAs": "September 1 to December 16 (in Provincial Wildlife Management Units 200, 202 to 204, 206, 208, 220, 222, 226, 228, 230, 232, 234, 236, 238, 240, 242, 244, 247, 248, 250, 252, 254, 256, 258, 260, 336, 500 to 510, 514, 515 and 841) | 5 | 15",
+      "reason": "the season applies only in a sub-list of provincial units"
+    },
+    {
+      "where": "Alberta Schedule 3 Table 1 item 2",
+      "group": "all Ducks, combined",
+      "area": "Zone No. 2",
+      "statedAs": "September 8 to December 23 | 8 | (i) 24 for residents of Canada",
+      "reason": "the limit or season varies by residency"
+    },
+    {
+      "where": "Alberta Schedule 3 Table 1 item 2",
+      "group": "all Ducks, combined",
+      "area": "Zone No. 2",
+      "statedAs": "September 8 to December 23 | 8 (not more than 2 may be Barrow’s Goldeneye or Common Goldeneye in any combination) | (ii) 24 (not more than 6 may be Barrow’s Goldeneye or Common Goldeneye in any combination) for non-residents of Canada",
+      "reason": "the limit or season varies by residency"
+    },
+    {
+      "where": "Alberta Schedule 3 Table 1 item 2",
+      "group": "Sandhill Cranes",
+      "area": "Zone No. 2",
+      "statedAs": "September 8 to December 23 (in Provincial Wildlife Management Units 102, 104, 106, 112, 116, 118, 119, 124, 128, 130, 132, 134, 136, 138, 140, 142, 144, 148, 150 to 152, 156, 158, 160, 162 to 164, 166 and 210) | 5 | 15",
+      "reason": "the season applies only in a sub-list of provincial units"
+    },
+    {
+      "where": "Alberta Schedule 3 Table 2 item 1",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Alberta",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Alberta Schedule 3 Table 2 item 1",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Alberta",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Alberta Schedule 3 Table 2 item 2",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Alberta",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Alberta Schedule 3 Table 2 item 2",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Alberta",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    }
+  ]
+}
