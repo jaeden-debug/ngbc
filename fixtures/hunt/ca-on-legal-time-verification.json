@@ -1,0 +1,33 @@
+{
+  "jurisdiction": "jurisdiction:ca-on",
+  "verifiedAgainst": {
+    "authority": "Herzberg Astronomy and Astrophysics Research Centre, National Research Council Canada",
+    "why": "Fish and Wildlife Conservation Act, 1997, s. 110 makes a written confirmation certified by the Herzberg Institute admissible as proof of the times of sunrise or sunset in a prosecution under s. 20. Ontario's own statute names the table, so it is the standard rather than one chosen on merit.",
+    "tool": "https://nrc.canada.ca/en/research-development/products-services/software-applications/sun-calculator/",
+    "note": "NRC reports in standard time and states: \"Add one hour to listed times when Daylight Saving Time is in effect (when applicable).\" Both samples fall inside the Time Act's daylight saving period, so one hour is added.",
+    "readAt": "2026-09-23"
+  },
+  "point": { "latitude": 44.3, "longitude": -78.31666666666666, "statedAs": "44° 18' N, 78° 19' W — entered in the degrees and minutes the calculator takes, and computed at the same coordinates so the comparison is like for like" },
+  "samples": [
+    {
+      "date": "2026-05-15",
+      "nrcStandard": { "sunrise": "04:46", "sunset": "19:34" },
+      "nrcDaylight": { "sunrise": "05:46", "sunset": "20:34" },
+      "northGround": { "sunrise": "05:46:28", "sunset": "20:32:56" },
+      "deviationSeconds": { "sunrise": 28, "sunset": -64 }
+    },
+    {
+      "date": "2026-10-15",
+      "nrcStandard": { "sunrise": "06:28", "sunset": "17:29" },
+      "nrcDaylight": { "sunrise": "07:28", "sunset": "18:29" },
+      "northGround": { "sunrise": "07:27:49", "sunset": "18:29:57" },
+      "deviationSeconds": { "sunrise": -11, "sunset": 57 }
+    }
+  ],
+  "result": {
+    "worstDeviationSeconds": 64,
+    "marginMinutes": 2,
+    "marginAppliedInward": true,
+    "conclusion": "Every deviation observed is smaller than the declared margin, and the margin is applied inward, so the window North Ground publishes is narrower than the one the authority's own table would give. The error that remains is in the direction a hunter waits rather than the direction they go out early."
+  }
+}

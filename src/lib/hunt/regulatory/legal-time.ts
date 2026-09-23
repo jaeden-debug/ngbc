@@ -33,6 +33,7 @@ export const SOLAR_UNCERTAINTY_MINUTES = 2;
 export type LegalTimeBasis =
   | "SUNRISE_TO_SUNSET"
   | "SUNRISE_SUNSET_OFFSET"
+  | "SUNRISE_OFFSET_TO_FIXED_CLOSE"
   | "FIXED_LOCAL_TIMES"
   | "AUTHORITY_TABLE";
 
@@ -63,6 +64,28 @@ export type LegalTimeRule =
   | {
       basis: "FIXED_LOCAL_TIMES";
       opensAt: string;
+      closesAt: string;
+      statedAs: string;
+      section: string;
+      sourceId: CanonicalId<"source">;
+    }
+  /*
+   * A window whose two ends come from different kinds of fact: one solar, one
+   * a clock time the regulation names. Two jurisdictions state wild turkey
+   * this way and both END EARLY —
+   *
+   *   Ontario  O. Reg. 670/98, Table 7.2: half an hour before sunrise to 7 p.m.
+   *   Québec   C-61.1, r. 12, s. 14:      half an hour before sunrise to noon
+   *
+   * Neither is expressible as an offset pair or as two fixed times, and
+   * computing either from a general sunrise-to-sunset rule overshoots by
+   * hours — Ontario's by about two in mid-May.
+   */
+  | {
+      basis: "SUNRISE_OFFSET_TO_FIXED_CLOSE";
+      /** Minutes before sunrise the window opens. */
+      beforeSunriseMinutes: number;
+      /** The clock time it closes, in the statute's own terms. */
       closesAt: string;
       statedAs: string;
       section: string;
@@ -159,10 +182,19 @@ export function legalTimeFor(
     };
   }
 
-  const before = rule.basis === "SUNRISE_SUNSET_OFFSET" ? rule.beforeSunriseMinutes : 0;
+  const before = rule.basis === "SUNRISE_SUNSET_OFFSET" || rule.basis === "SUNRISE_OFFSET_TO_FIXED_CLOSE"
+    ? rule.beforeSunriseMinutes
+    : 0;
   const after = rule.basis === "SUNRISE_SUNSET_OFFSET" ? rule.afterSunsetMinutes : 0;
   const opensAt = shift(wallClock(solar.sunrise, timezone), -before + SOLAR_UNCERTAINTY_MINUTES);
-  const closesAt = shift(wallClock(solar.sunset, timezone), after - SOLAR_UNCERTAINTY_MINUTES);
+  /*
+   * A closing the regulation names as a clock time carries NO solar margin —
+   * it is not a solar term, so there is nothing to be uncertain about. Only the
+   * sunrise end is nudged inward.
+   */
+  const closesAt = rule.basis === "SUNRISE_OFFSET_TO_FIXED_CLOSE"
+    ? rule.closesAt
+    : shift(wallClock(solar.sunset, timezone), after - SOLAR_UNCERTAINTY_MINUTES);
 
   return {
     status: "RESOLVED",
@@ -203,4 +235,62 @@ export function legalTimeSummary(result: LegalTimeResult): string {
       : `The sun does not rise at this point on ${result.date}, so this rule states no window for it.`;
   }
   return result.reason;
+}
+
+/**
+ * Two rules that both bind, composed into the window a hunter may actually use.
+ *
+ * INTERSECTION, NEVER REPLACEMENT. Ontario is the worked case: the Fish and
+ * Wildlife Conservation Act s. 20 PROHIBITS hunting between half an hour after
+ * sunset and half an hour before sunrise, while O. Reg. 670/98 Table 7.2
+ * PRESCRIBES times for wild turkey. A hunter must satisfy both, so the lawful
+ * window is the overlap — the later opening and the earlier closing.
+ *
+ * It would be easy to skip this: in spring turkey the table's 7 p.m. always
+ * falls before sunset plus thirty minutes, so the table simply wins, and
+ * "narrower replaces broader" would give the right answer every time. That is a
+ * fact about this season's arithmetic, not about the law, and encoding it would
+ * break silently the first time a prescribed time fell later than the general
+ * rule's close. The overlap is computed rather than assumed.
+ *
+ * An empty overlap is a real answer — no lawful window that day — not an error.
+ */
+export function intersectLegalTime(results: readonly LegalTimeResult[]): LegalTimeResult {
+  if (!results.length) {
+    return legalTimeNotCertified("No legal-time rule was supplied for this answer.", "North Ground");
+  }
+  /* A rule that could not be resolved makes the composition unresolvable: the
+     unknown half could be the binding one. */
+  const unresolved = results.find((result) => result.status !== "RESOLVED");
+  if (unresolved) return unresolved;
+
+  const resolved = results.filter((result): result is Extract<LegalTimeResult, { status: "RESOLVED" }> =>
+    result.status === "RESOLVED");
+
+  const opensAt = resolved.map((result) => result.window.opensAt).sort().at(-1)!;
+  const closesAt = resolved.map((result) => result.window.closesAt).sort()[0]!;
+
+  if (opensAt >= closesAt) {
+    return {
+      status: "NOT_CERTIFIED",
+      reason:
+        "The rules that apply here leave no overlapping time on this date. North Ground will not state a window it " +
+        "cannot show a hunter may use.",
+      authority: resolved[0].sourceId ? "Province of Ontario" : "North Ground",
+    };
+  }
+
+  /* The binding end carries its own provenance: a hunter asking why the day
+     ends at seven should be shown the rule that ends it, not the other one. */
+  const bindingClose = resolved.find((result) => result.window.closesAt === closesAt)!;
+  const bindingOpen = resolved.find((result) => result.window.opensAt === opensAt)!;
+
+  return {
+    ...bindingClose,
+    status: "RESOLVED",
+    window: { opensAt, closesAt },
+    statedAs: [...new Set(resolved.map((result) => result.statedAs))].join(" "),
+    basis: bindingClose.basis,
+    precision: bindingOpen.precision,
+  };
 }
