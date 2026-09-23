@@ -19,6 +19,15 @@ export const SERVED_EXTENT: BBox = {
 
 export const OVERVIEW_URL = `/api/hunt/zones?bounds=${boxKey(SERVED_EXTENT)}&zoom=${lodSpec(0).requestZoom}`;
 
+/**
+ * The same request for a chosen species. A jurisdiction that writes its
+ * seasons in species geographies (Newfoundland) answers with that species'
+ * areas; everywhere else answers exactly as before.
+ */
+export function overviewUrl(speciesId?: string | null): string {
+  return speciesId ? `${OVERVIEW_URL}&species=${encodeURIComponent(speciesId)}` : OVERVIEW_URL;
+}
+
 /** The zoom the overview is asked for; the poster draws exactly this answer. */
 export const OVERVIEW_ZOOM = lodSpec(0).requestZoom;
 

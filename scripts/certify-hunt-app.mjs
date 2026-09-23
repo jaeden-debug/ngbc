@@ -577,6 +577,37 @@ const scenarios = {
     await context.close();
   },
 
+  async speciesGeography(browser) {
+    /* Newfoundland writes its seasons in species geographies. The boundary a
+       hunter reads an answer against must be that species' own, or they read a
+       black bear season against a moose area. */
+    const s = "D2 the drawn geography follows the species";
+    const { context, page, requests } = await newPage(browser, { width: 1280, height: 800 });
+    const zoneAsks = () => requests.filter((request) => request.path === "/api/hunt/zones").map((request) => request.search);
+
+    await page.goto(`${BASE}/hunt`);
+    await mapReady(page);
+    await page.waitForTimeout(800);
+    check(s, "with no species chosen, the default geography is asked for", zoneAsks().length > 0 && zoneAsks().every((search) => !/species=/.test(search)), zoneAsks().slice(-1).join(""));
+
+    for (const [name, id] of [["black bear", "species%3Aamerican-black-bear"], ["moose", "species%3Amoose"]]) {
+      const before = zoneAsks().length;
+      await page.goto(`${BASE}/hunt?species=${id.replace("%3A", ":")}`);
+      await mapReady(page);
+      const asked = await waitFor(page, () => true, 50) && await (async () => {
+        for (let attempt = 0; attempt < 40; attempt += 1) {
+          if (zoneAsks().slice(before).some((search) => search.includes(id))) return true;
+          await page.waitForTimeout(250);
+        }
+        return false;
+      })();
+      check(s, `${name} is drawn in its own geography`, asked, zoneAsks().slice(-1).join(""));
+      const drawn = Number(await page.getAttribute("[data-zones]", "data-zones"));
+      check(s, `and the map still has official zones for ${name}`, drawn > 0, `${drawn} zones`);
+    }
+    await context.close();
+  },
+
   async threeLocations(browser) {
     const s = "I device, hunt and vendor locations stay apart";
     // The device is in Ottawa; the hunt is at Bancroft, chosen on the map through a link.

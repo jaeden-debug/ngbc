@@ -7,7 +7,7 @@ import {
 } from "../../../lib/hunt/exploration/geometry-store";
 import { mergeSimplified } from "../../../lib/hunt/exploration/geometry-notices";
 import type { OverlayLayerDescriptor } from "../../../lib/hunt/exploration/overlay-layers";
-import { OVERVIEW_URL, SERVED_EXTENT } from "../../../lib/hunt/exploration/overview";
+import { overviewUrl, SERVED_EXTENT } from "../../../lib/hunt/exploration/overview";
 import { ZONE_LAYERS } from "../../../lib/hunt/zone-layers";
 
 /**
@@ -54,8 +54,11 @@ export interface MapView {
  * really asks again.
  */
 let overviewInFlight: Promise<ZonesResponse> | null = null;
+let overviewInFlightUrl: string | null = null;
 function fetchOverview(url: string): Promise<ZonesResponse> {
-  if (!overviewInFlight) {
+  // One request per URL: the species is part of it, so two species never share one.
+  if (!overviewInFlight || overviewInFlightUrl !== url) {
+    overviewInFlightUrl = url;
     overviewInFlight = fetch(url)
       .then((response) => response.json() as Promise<ZonesResponse>)
       .then((payload) => {
@@ -73,7 +76,7 @@ function authorityOf(layerId: string): string {
   return SERVED.find((layer) => layer.id === layerId)?.authority ?? "The authority";
 }
 
-export function useZoneGeometry(view: MapView | null) {
+export function useZoneGeometry(view: MapView | null, speciesId?: string | null) {
   const storeRef = useRef<ZoneGeometryStore | null>(null);
   if (!storeRef.current) storeRef.current = new ZoneGeometryStore({ isClippedLayer: (layerId) => CLIPPED.has(layerId) });
   const store = storeRef.current;
@@ -82,6 +85,7 @@ export function useZoneGeometry(view: MapView | null) {
   const [overview, setOverview] = useState<"loading" | "ready" | "failed">("loading");
   const [missingLayers, setMissingLayers] = useState<string[]>([]);
   const [simplifiedLayers, setSimplifiedLayers] = useState<string[]>([]);
+  const speciesRef = useRef<string | null>(speciesId ?? null);
   /** Special regulatory layers the authorities serve, from the overview's own answer. */
   const [overlayLayers, setOverlayLayers] = useState<OverlayLayerDescriptor[]>([]);
 
@@ -97,7 +101,7 @@ export function useZoneGeometry(view: MapView | null) {
   const loadOverview = useCallback(async () => {
     const seq = store.nextSeq();
     try {
-      const payload = await fetchOverview(OVERVIEW_URL);
+      const payload = await fetchOverview(overviewUrl(speciesRef.current));
       if (!aliveRef.current) return;
       if (payload.features?.length) store.apply(0, SERVED_EXTENT, seq, payload.features);
       if (payload.overlays) setOverlayLayers(payload.overlays);
@@ -130,6 +134,20 @@ export function useZoneGeometry(view: MapView | null) {
     void loadOverview();
     return () => window.clearTimeout(retryTimerRef.current);
   }, [loadOverview]);
+
+  /* Changing the species changes which geography is official, so the drawings
+     are asked for again rather than left as another species' areas. */
+  useEffect(() => {
+    const next = speciesId ?? null;
+    if (speciesRef.current === next) return;
+    speciesRef.current = next;
+    answeredRef.current.clear();
+    failedRef.current.clear();
+    store.reset();
+    setVersion(store.version);
+    void loadOverview();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [speciesId]);
 
   /* ── Detail for the settled view ──────────────────────────────────────── */
 
@@ -172,7 +190,12 @@ export function useZoneGeometry(view: MapView | null) {
     inFlightRef.current.set(key, { controller, box });
     const seq = store.nextSeq();
     try {
-      const response = await fetch(`/api/hunt/zones?bounds=${boxKey(box)}&zoom=${lodSpec(level).requestZoom}`, { signal: controller.signal });
+      /* A jurisdiction whose seasons are written in species geographies
+         (Newfoundland's moose, caribou and bear areas) must be drawn in the
+         geography of the species in hand, or the boundary under the answer is
+         the wrong one. The species travels with every geometry request. */
+      const species = speciesRef.current ? `&species=${encodeURIComponent(speciesRef.current)}` : "";
+      const response = await fetch(`/api/hunt/zones?bounds=${boxKey(box)}&zoom=${lodSpec(level).requestZoom}${species}`, { signal: controller.signal });
       const payload = await response.json() as ZonesResponse;
       if (!aliveRef.current) return;
       if (payload.features?.length) store.apply(level, box, seq, payload.features);

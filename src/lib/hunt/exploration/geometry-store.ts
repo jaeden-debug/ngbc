@@ -210,6 +210,16 @@ export class ZoneGeometryStore {
   }
 
   /** A sequence number for a request about to be made. */
+  /**
+   * Forget every drawing. Used when the official geography itself changes —
+   * a species whose seasons are written in another geography — so one
+   * species' areas can never be left on screen under another's answer.
+   */
+  reset(): void {
+    this.zones.clear();
+    this.version += 1;
+  }
+
   nextSeq(): number {
     this.seqCounter += 1;
     return this.seqCounter;

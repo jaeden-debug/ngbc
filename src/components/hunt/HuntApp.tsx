@@ -192,7 +192,10 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   const safeProbeRef = useRef<HTMLDivElement>(null);
   const previousSnapRef = useRef<SheetSnap>("peek");
 
-  const geometry = useZoneGeometry(view);
+  /* The drawn geography follows the species: Newfoundland writes its seasons
+     in moose, caribou and bear areas, and the boundary under an answer has to
+     be that species' own. */
+  const geometry = useZoneGeometry(view, session.speciesId);
 
   /* Warm the on-demand pages once the page has finished loading and the browser
      is idle — never while the map's own first load is still competing for the
