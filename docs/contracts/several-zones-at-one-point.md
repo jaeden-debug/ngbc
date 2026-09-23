@@ -62,6 +62,13 @@ zones: Array<{
   /** Larger zones first; the innermost zone is last. */
   containedBy: string[];
 }>;
+/**
+ * The smallest zone containing the point, stated outright. NEVER re-derived
+ * from array position: position-as-meaning is how a renderer eventually shows
+ * the wrong unit as the specific one, and an explicit field cannot be misread
+ * where a documented convention can.
+ */
+innermostZoneId: string;
 /** Which zone's rules govern, WHERE THE AUTHORITY SAYS SO. Absent otherwise. */
 governing?: { zoneId: string; statedAs: string; citation: string };
 ```
@@ -88,6 +95,28 @@ is useful, and is the truth. An absent precedence rule is recorded as
 **explicitly absent**, not as not-yet-found, so nobody re-reads the same order
 hoping for a different result.
 
+## How it reads, and what that requires of the answer
+
+Reviewed by Hunt overhaul, 2026-09-23. The rendering lead with what is the
+SAME, not what differs: three nested units are one place described at three
+grains, read innermost-first as a single line —
+
+> You are in the CWD Core Area, inside Deer Management Unit 333, inside the
+> multicounty unit.
+
+— with the names as evidence, not as options to choose between.
+
+The split that stops nesting reading as a defect: **the location reads certain;
+the disagreement surfaces where it belongs.** Where no `governing` exists the
+geography is NOT hedged — "all three apply" is a complete statement about where
+someone is standing. What is unsettled is which RULE wins, and that belongs to
+the regulatory line, as the engine's existing CONFLICT naming the units that
+disagree.
+
+So NESTED must carry enough to write that sentence without the renderer
+inferring anything: every zone's official name, the containment order, and the
+innermost zone stated outright.
+
 ## What each caller does with it
 
 - **Zone card / Hunt result** — names every applicable zone, innermost first,
@@ -109,18 +138,49 @@ moves into it, and nothing already in it moves out. A UI reading that field as
 "conflict" stays correct, which is the point — today, nesting rendering through
 it would read as a defect.
 
-## Open questions for Canada and Hunt overhaul
+## The governing geography may not be in the layer at all
 
-1. Does any Canadian jurisdiction nest *within one layer* this way, or is
-   Canadian overlap always species-scoped or cross-authority? If Canada never
-   hits case 3, this stays a U.S.-shaped mechanism in shared code, and the
-   contract should say so plainly.
-2. Should `NESTED` be a `status`, or a RESOLVED carrying `alsoApplies[]`? A
-   separate status is safer — no existing `status === "RESOLVED"` branch starts
-   silently seeing multi-zone answers — but it is one more state for every
-   consumer to handle. **Proposed: separate status**, for that safety.
-3. Hunt overhaul: does anything today branch on `conflictingZoneIds` being
-   non-empty in a way that would need a NESTED branch beside it?
+*Added 2026-09-23, from Michigan.*
+
+Michigan sets universal antlerless licence use limits "by DMU in the Upper
+Peninsula and by county in the Lower Peninsula". The governing geography is not
+the same KIND of thing in the two halves of one state, and in the Lower
+Peninsula it is **not the DMU layer** — it is counties, which North Ground does
+not draw as hunting geography at all.
+
+This contract does not cover that, and should not pretend to. NESTED describes
+several zones OF ONE LAYER covering a point. A rule whose geography is a county
+while the hunting layer is a DMU is a different problem — composition across
+layers, as federal and provincial rules already compose — and it needs its own
+answer rather than being forced into containment because containment is the
+mechanism that exists.
+
+It is recorded here because it is the strongest evidence for the rule above:
+precedence is never inferable from unit numbers, because the governing unit may
+not be a unit.
+
+## Open questions
+
+1. **Open, with Canada.** Does any Canadian jurisdiction nest *within one
+   layer* this way, or is Canadian overlap always species-scoped or
+   cross-authority? If Canada never hits case 3, this stays a U.S.-shaped
+   mechanism in shared code, and the contract should say so plainly.
+2. **Answered 2026-09-23 — SEPARATE STATUS.** Not by analogy but by
+   measurement: `HuntApp.tsx:383` and `:524` both read `payload.status ===
+   "RESOLVED"` and take `payload.zone` — singular — as THE zone, which becomes
+   the highlighted polygon, the pin's zone, the card's subject, the URL's
+   `zone=` and the Hunt Brief's zone id. Under RESOLVED-with-`alsoApplies[]`
+   neither site changes behaviour and neither fails: a hunter at the Lansing
+   capitol would be shown ONE Michigan unit, confidently, and would share a
+   link naming only that unit. A quietly narrowed truth that looks exactly like
+   a correct answer. A separate status makes both fall through to the
+   unresolved path instead — wrong but loud, and only until the NESTED branch
+   is written.
+3. **Answered 2026-09-23 — nothing.** `conflictingZoneIds` appears in three
+   places, all server-side (`types.ts:43`, `zone.ts:568`, `zone.ts:693`).
+   Components see `status` and `message` only, so no UI branches on it and
+   there is no existing "conflict" rendering that nesting could be mistaken
+   for. A NESTED answer renders today as the plain unresolved sentence.
 
 ## Why this is not being built yet
 
