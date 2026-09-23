@@ -153,64 +153,12 @@ classifier; when the order changes, say so beside the numbers.
 
 
 ---
+## Test craft
 
-## A test's example must be derived, not hard-coded
-
-*Added 2026-09-23, after the third instance in one day.*
-
-A test that needs an example of something North Ground does **not** yet cover
-should **derive the example from the data and assert that the category is
-non-empty**. Hard-coding one guarantees it expires silently the day the work
-succeeds.
-
-Three instances, all the same shape:
-
-- a test used `species:mallard` as "a species we do not certify", and stopped
-  testing anything the day mallard was certified;
-- a test asserted "the four unreadable windows are the leap-year form", and
-  failed the day that form was read;
-- a test named Manitoba as "a jurisdiction we have not encoded", and failed the
-  day Manitoba was encoded.
-
-Only the first failed *silently*, and only because the other two were written
-with an explicit premise check. That is the construction to copy: asserting the
-category is non-empty makes the test **demand its own deletion** when the last
-member is covered, rather than passing vacuously forever.
-
-## A test must not share its subject's blind spot
-
-*Added 2026-09-23. Two instances, one lesson.*
-
-A check that is built the same way as the thing it checks does not check it.
-It agrees with it, which looks identical from the outside and is worth nothing.
-
-- **The Oxford comma.** The area-cell splitter mishandled `", and "`, and the
-  structural test written to classify those cells **split them the same way** —
-  so it agreed that Newfoundland's five-zone cell was prose. The bug and its
-  test shared one blind spot, and the test's green was a second copy of the
-  defect rather than a check on it.
-- **The repeated mapping.** The first bulk-versus-individual test re-derived
-  the engine-outcome → state mapping inline, so a mapping bug would have been
-  reproduced identically on both sides and cancelled out. Exporting the one
-  `stateOf` and running both sides through it fixes what is actually under
-  test: that the two paths reach the same **engine outcome**. The mapping has
-  its own tests. **A test that repeats the mapping lets a mapping bug hide
-  behind a second copy of itself.**
-
-The rule: a test should reach its expectation by a **different route** than the
-code reaches its answer — from the authority's published value, from an
-independent calendar, from the law read by hand — or, where it must share a
-step, share the *same instance* of that step rather than a copy of it.
-
-This is the same family as the derived-example rule above. Both are about a
-test whose subject has quietly moved underneath it: there, because the example
-graduated; here, because the check was never independent to begin with.
-
-*Note on where this lives:* the three test-craft rules in this contract — derive
-the example, assert the category is non-empty, and do not share the subject's
-blind spot — are general and have nothing to do with relative season dates.
-They are here because the first of them was written here. They deserve their
-own home once there is a fourth.
+The rules about how a test is built — derive its example, assert its category
+is non-empty, do not share its subject's blind spot, and size the gate to what
+the change can break — moved to **`docs/contracts/test-craft.md`**. They are
+general and were only here because the first of them was written here.
 
 ## Three states that all end in UNKNOWN
 
