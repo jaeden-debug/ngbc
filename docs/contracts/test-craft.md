@@ -1,6 +1,6 @@
 # Contract — Test craft
 
-**Status:** written 2026-09-23, from four rules each earned by a specific
+**Status:** written 2026-09-23, from seven rules each earned by a specific
 failure on this project.
 **Scope:** how a check is built, so that it checks rather than agrees.
 
@@ -169,3 +169,47 @@ repository before.
 The rule generalises: **a check earns its place by what it would catch, not by
 what it costs.** A gate that runs everywhere regardless becomes a ritual, and a
 ritual is skipped quietly rather than deliberately.
+
+---
+
+## A file is not a document
+
+*Added 2026-09-23, after the third instance in one day.*
+
+**Verify that a retrieved artefact IS what was asked for before believing
+anything about its contents.** A fetch that returns bytes has not necessarily
+returned the document, and the filename is the one piece of evidence that came
+from us rather than from the server.
+
+Three instances, all on the same day, all in source ingestion:
+
+- **Cached 404 pages at summary cache paths.** The files existed, were the
+  right size for prose, and sat exactly where the summaries belonged. Read as
+  summaries they reported British Columbia 0/6 and Ontario 0/5 — a certification
+  failure that was really a retrieval failure. Fixed by `assertIsASummary()`,
+  and by never caching a non-200.
+- **919 bytes of HTML written to `annexe-iii.pdf`.** legisquebec returns 403 to
+  curl's default agent and serves the file to a browser agent. `curl -o` wrote
+  the refusal body under the name we chose. `file` caught it in one command:
+  `PDF document` versus `HTML document text`.
+- **A cached file standing in for a cached document**, which is why
+  `assertIsASummary()` exists at all.
+
+The shape is always the same: **the transport succeeded and the retrieval
+failed**, so every downstream check runs happily against the wrong bytes. It is
+particularly dangerous in ingestion because the next step is usually a parser,
+and a parser that finds nothing reports *the source does not contain this* —
+which is a claim about the authority, not about our plumbing. That is how a
+retrieval failure becomes a false finding about a government's own data.
+
+The check is cheap and belongs at the boundary, before any parse:
+
+- Assert the **content type or magic bytes** match what was requested
+  (`file`, a leading `%PDF-`, a JSON parse, an expected root element).
+- Assert a **document-specific invariant** — a title, a known heading, a
+  section number the document must contain. Size alone proves nothing: a 404
+  page and a summary are both a few kilobytes of HTML.
+- **Never cache a non-200**, and never let the cache path imply the contents.
+
+**Never infer the contents from the extension, the path or the byte count** —
+all three were chosen by us, and none of them was sent by the server.
