@@ -311,6 +311,26 @@ and are counted in neither direction. The flag is computed from the
 certifications by `report.ts`, not typed, so it cannot be turned on by editing a
 constant — and it makes no claim at all about rules.
 
+**RULE — `spatialComplete` is a MAP claim, and is governed (moderator ruling,
+2026-09-23).** It is true as computed and it is also the most misreadable
+sentence in the project, because "Canada complete" is exactly what a reader
+wants it to mean.
+
+- **Internally**, state it as the milestone states it — "11 of 11 in-scope
+  provinces and territories have parity-certified official geography" — always
+  with the two caveats below attached, and never as a bare boolean in prose.
+- **Publicly / hunter-facing**, it may NOT be stated as "Canada is covered",
+  "North Ground covers all of Canada", or anything a hunter would read as rules
+  coverage. The permitted public form is about maps specifically — e.g.
+  "official hunting-zone boundaries for every province and Yukon" — and only
+  where the interface simultaneously makes clear that rules are certified in
+  four jurisdictions.
+- **`spatialComplete` never appears near a coverage claim without
+  `coreGameComplete` (4 of 11) beside it.** CLAUDE.md section 9 is explicit:
+  coverage means North Ground can state, per jurisdiction and per species, what
+  applies. Drawing every boundary is not that.
+- If a marketing surface wants the sentence, it goes through the moderator.
+
 Read it with its two standing caveats, both declared in the registry's
 `knownGaps` and pinned by a test:
 
@@ -795,7 +815,98 @@ This replaced an indiscriminate 3-attempt retry in the WFS adapter that repeated
 4xx as readily as 5xx, and gave the ArcGIS adapter (which had none) the same
 policy. `transient-retry.test.ts` pins the boundary in both directions.
 
+## Known Design Gap — Promotion Cannot Certify A Row It Did Not Insert
+
+**Stated so it is not re-derived (2026-09-23).** `publish_zone_run` sets
+`coverage_status = 'VERIFIED'` on INSERT and its `ON CONFLICT` branch
+deliberately does **not** touch `coverage_status` — correctly, because
+republishing geometry must never silently certify it. The consequence is that a
+zone row created **outside** that function enters as `NEEDS_VERIFICATION` and
+**no promotion path can ever lift it**. Republishing reports "1 updated" and
+changes nothing that matters.
+
+Prince Edward Island hit this because its row had to exist before its
+derivatives could be built. Any future jurisdiction in the same position hits
+the identical wall, and the symptom is severe and quiet: `zone_display_in_view`
+returns only VERIFIED zones, so the map draws nothing while the coverage report
+calls the jurisdiction certified.
+
+It was closed for PEI by `20260923_certify_prince_edward_island_province`, a
+one-row UPDATE scoped to that canonical id with its certification evidence in
+the comment. **That is the symptom, not the fix.**
+
+The missing capability — the same one the `publish_zone_run` coverage-argument
+proposal already logged describes from the other side — is **a promotion path
+that takes certification EVIDENCE as its input** rather than inferring status
+from which function happened to insert the row. Not built; stated.
+
+## Served Layers Must Actually Draw
+
+`npm run certify:served-layers` → `fixtures/hunt/served-layers.json`, replayed
+without a network by `src/lib/hunt/served-layers.test.ts`.
+
+**Why it exists.** Three times the coverage report said VERIFIED while the map
+showed nothing: Yukon (refused by a 400-row cap), Newfoundland's caribou areas
+(unreachable behind a species gate), Prince Edward Island (certified, never
+promoted).
+
+**Why the old cross-check could not catch the third.** It compared a national
+**sum** of official units against a national sum of drawn features. Prince
+Edward Island contributes **zero** units — a jurisdiction-level geography has
+none — and drew zero. Zero equalled zero, the sum balanced, and it would have
+balanced at any moment it ran. The defect was the check's *shape*, not its
+timing.
+
+**The shape now.** Expectations are per layer and never satisfied by a balance:
+a zone layer must draw its authority's own unit count; a jurisdiction-level
+layer must draw exactly one area; **any serving layer drawing zero is a
+failure, always.** Counts are read from the ingestion adapter, the U.S. adapter
+table, or the layer's own certification fixture — never typed.
+
+**It makes the class impossible, not merely detectable.** A layer switched to
+`serving: true` without re-certifying fails the suite by name, and a layer left
+in the record after it stops serving fails too. Both directions are tested by
+deliberately corrupting the fixture.
+
+Current state: **14 of 14 serving layers draw**, 13 against an exact count —
+ON 151, MB 62, AB 189, QC 59, BC 225, NL moose 74 / caribou 19 / bear 7, NB 27,
+PE 1, NS 12, YT 443, SK 83, ID 99.
+
 ## Corrections To Earlier Claims
+
+### Measured the wrong thing — the collected forms
+
+Every one of these produced a **number, and the number was real**. What was
+wrong was what it was a number **about**. Collected because the class keeps
+recurring in new disguises.
+
+1. **Source geometry, not the drawing.** New Brunswick's payload reported at
+   150.9 KB; the level-1 drawing the map ships is 2.3 KB. Nearly triggered an
+   unneeded tiling project.
+2. **A stale server.** A performance run measured a build with no British
+   Columbia layer. Caught only because the overview returned four layers.
+3. **A configuration that was not the product (2026-09-23).** A probe run
+   without `.env.local` made the Supabase client throw, so stored-geometry
+   layers silently fell back to live services and the Maritimes box reported
+   **0 features**. With credentials: 46. There was no defect.
+4. **A truncated page read as a complete set (2026-09-23).** An audit of
+   `coverage_status` returned `ca-yt VERIFIED 174` against a certified 443 —
+   one step from reporting Yukon as a production defect an order of magnitude
+   worse than the real one. The query had returned exactly **1000** rows:
+   PostgREST's default cap. Re-queried with exact counts, Yukon is 443/443.
+   **The tell was the total being exactly a round number equal to a known
+   limit.** Note what this is: the *same failure mode* as the Yukon 400-row cap
+   that started the served-but-not-drawn class, arriving this time in the
+   diagnostic rather than in the product.
+5. **A harness that asks a different question than the product (2026-09-23).**
+   The first run of `certify-served-layers.mjs` reported four FAILs against
+   working code: it asked at a zoom the map never requests (Yukon's whole layer
+   refused) and without a species (Newfoundland's caribou and bear areas
+   absent). All four were the harness.
+
+**Rule: a round number that exactly equals a known limit is a truncation until
+proven otherwise.** And before reporting a defect from a measurement, confirm
+the harness asked the question the product answers.
 
 - **The ESRI-orientation fix was NOT what fixed New Brunswick's holes
   (2026-09-23).** Both facts belong together: the orientation change was

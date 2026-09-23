@@ -32,7 +32,7 @@ test("the province is served for drawing, and its rules are not certified", () =
   assert.equal(PE.serving, true);
   assert.notEqual(PE.rulesServing, true);
   assert.equal(regulatoryEntryFor("jurisdiction:ca-pe"), undefined);
-  assert.equal(zoneCoverage(PE), "IN_DEVELOPMENT");
+  assert.equal(zoneCoverage(PE, "Prince Edward Island"), "IN_DEVELOPMENT");
 });
 
 test("Prince Edward Island is not named as covered", () => {

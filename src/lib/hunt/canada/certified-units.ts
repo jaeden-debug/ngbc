@@ -27,6 +27,13 @@ const STORED_CONFIGS = [
   NEWFOUNDLAND_BEAR_CONFIG,
   NOVA_SCOTIA_DEER_CONFIG,
   NEW_BRUNSWICK_WMZ_CONFIG,
+  /*
+   * Prince Edward Island is deliberately ABSENT. These configs answer "how
+   * many units does this authority publish?", and the province publishes none
+   * — that is what geography level JURISDICTION means. Counting its one area
+   * here would report 1,352 Canadian management units, of which one is not a
+   * unit. Its served-layer expectation comes from the geography level instead.
+   */
 ];
 
 /** The authority's own unit count for one layer, from its certified adapter. */

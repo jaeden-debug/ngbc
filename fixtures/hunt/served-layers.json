@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "certifiedOn": "2026-09-23",
+  "layers": [
+    {
+      "layerId": "layer:ca-on-wmu",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "speciesId": null,
+      "expected": {
+        "kind": "EXACTLY",
+        "count": 151,
+        "why": "the authority's zone count recorded by this layer's certification run"
+      },
+      "drawn": 151,
+      "failure": null,
+      "ok": true
+    },
+    {
+      "layerId": "layer:ca-mb-gha",
+      "jurisdictionId": "jurisdiction:ca-mb",
+      "speciesId": null,
+      "expected": {
+        "kind": "EXACTLY",
+        "count": 62,
+        "why": "the authority's zone count recorded by this layer's certification run"
+      },
+      "drawn": 62,
+      "failure": null,
+      "ok": true
+    },
+    {
+      "layerId": "layer:ca-ab-wmu",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "speciesId": null,
+      "expected": {
+        "kind": "EXACTLY",
+        "count": 189,
+        "why": "the authority's zone count recorded by this layer's certification run"
+      },
+      "drawn": 189,
+      "failure": null,
+      "ok": true
+    },
+    {
+      "layerId": "layer:ca-qc-zone-chasse",
+      "jurisdictionId": "jurisdiction:ca-qc",
+      "speciesId": null,
+      "expected": {
+        "kind": "EXACTLY",
+        "count": 59,
+        "why": "the authority's zone count recorded by this layer's certification run"
+      },
+      "drawn": 59,
+      "failure": null,
+      "ok": true
+    },
+    {
+      "layerId": "layer:ca-bc-mu",
+      "jurisdictionId": "jurisdiction:ca-bc",
+      "speciesId": null,
+      "expected": {
+        "kind": "EXACTLY",
+        "count": 225,
+        "why": "the authority's own unit count, asserted by the ingestion adapter"
+      },
+      "drawn": 225,
+      "failure": null,
+      "ok": true
+    },
+    {
+      "layerId": "layer:ca-nl-moose-area",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "speciesId": "species:moose",
+      "expected": {
+        "kind": "EXACTLY",
+        "count": 74,
+        "why": "the authority's own unit count, asserted by the ingestion adapter"
+      },
+      "drawn": 74,
+      "failure": null,
+      "ok": true
+    },
+    {
+      "layerId": "layer:ca-nl-caribou-area",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "speciesId": "species:caribou",
+      "expected": {
+        "kind": "EXACTLY",
+        "count": 19,
+        "why": "the authority's own unit count, asserted by the ingestion adapter"
+      },
+      "drawn": 19,
+      "failure": null,
+      "ok": true
+    },
+    {
+      "layerId": "layer:ca-nl-bear-area",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "speciesId": "species:american-black-bear",
+      "expected": {
+        "kind": "EXACTLY",
+        "count": 7,
+        "why": "the authority's own unit count, asserted by the ingestion adapter"
+      },
+      "drawn": 7,
+      "failure": null,
+      "ok": true
+    },
+    {
+      "layerId": "layer:ca-nb-wmz",
+      "jurisdictionId": "jurisdiction:ca-nb",
+      "speciesId": null,
+      "expected": {
+        "kind": "EXACTLY",
+        "count": 27,
+        "why": "the authority's own unit count, asserted by the ingestion adapter"
+      },
+      "drawn": 27,
+      "failure": null,
+      "ok": true
+    },
+    {
+      "layerId": "layer:ca-pe-province",
+      "jurisdictionId": "jurisdiction:ca-pe",
+      "speciesId": null,
+      "expected": {
+        "kind": "EXACTLY",
+        "count": 1,
+        "why": "a jurisdiction-level geography is one area, not a set of units"
+      },
+      "drawn": 1,
+      "failure": null,
+      "ok": true
+    },
+    {
+      "layerId": "layer:ca-ns-deer-zone",
+      "jurisdictionId": "jurisdiction:ca-ns",
+      "speciesId": "species:white-tailed-deer",
+      "expected": {
+        "kind": "EXACTLY",
+        "count": 12,
+        "why": "the authority's own unit count, asserted by the ingestion adapter"
+      },
+      "drawn": 12,
+      "failure": null,
+      "ok": true
+    },
+    {
+      "layerId": "layer:ca-yt-gms",
+      "jurisdictionId": "jurisdiction:ca-yt",
+      "speciesId": null,
+      "expected": {
+        "kind": "EXACTLY",
+        "count": 443,
+        "why": "the authority's own unit count, asserted by the ingestion adapter"
+      },
+      "drawn": 443,
+      "failure": null,
+      "ok": true
+    },
+    {
+      "layerId": "layer:ca-sk-wmz",
+      "jurisdictionId": "jurisdiction:ca-sk",
+      "speciesId": null,
+      "expected": {
+        "kind": "EXACTLY",
+        "count": 83,
+        "why": "the authority's own unit count, asserted by the ingestion adapter"
+      },
+      "drawn": 83,
+      "failure": null,
+      "ok": true
+    },
+    {
+      "layerId": "layer:us-id-gmu",
+      "jurisdictionId": "jurisdiction:us-id",
+      "speciesId": null,
+      "expected": {
+        "kind": "EXACTLY",
+        "count": 99,
+        "why": "the authority's own unit count, asserted by the ingestion adapter"
+      },
+      "drawn": 99,
+      "failure": null,
+      "ok": true
+    }
+  ],
+  "status": "VERIFIED"
+}
