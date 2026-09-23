@@ -1076,6 +1076,122 @@ const scenarios = {
 
 
   /*
+   * FIND GAME, regulatory half: "where can I hunt this", answered from the
+   * certified rules alone.
+   *
+   * §41B keeps two questions apart that look alike on a map. This one is
+   * REGULATORY AVAILABILITY — where a season is open — and it needs no
+   * evidence dataset. It is NOT the Specie Heat Map, and the assertions below
+   * exist mostly to prove it never becomes one by accident: no ranking, no
+   * "best", no heat classes, and closing it takes the layer with it.
+   */
+  async findGameRegulatory(browser) {
+    const s = "where can I hunt this";
+    const { context, page, consoleErrors } = await newPage(browser, { width: 390, height: 844 });
+    await page.goto(`${BASE}/hunt`);
+    await mapReady(page);
+    await page.waitForTimeout(2_500);
+
+    await page.getByRole("button", { name: /Find game/ }).click();
+    await page.waitForTimeout(1_000);
+    const asks = await page.evaluate(() => document.querySelector("[class*=sheetHeader]")?.innerText ?? "");
+    check(s, "it asks for an animal, not a place", /Find an animal to hunt/.test(asks), asks.split("\n")[0]);
+
+    await page.getByRole("button", { name: /^Ruffed grouse/ }).first().click();
+    await waitFor(page, () => /Season status/i.test(document.querySelector("[class*=titleRow]")?.textContent ?? ""), 30_000);
+    await waitFor(page, () => /zones?$|zones\b/.test(document.querySelector("[class*=legendList]")?.textContent ?? ""), 40_000);
+    await page.waitForTimeout(3_000);
+
+    const card = await page.evaluate(() => {
+      const body = document.querySelector("[class*=sheetBody]");
+      const rows = [...document.querySelectorAll("[class*=speciesRowName]")].map((e) => e.textContent?.trim() ?? "");
+      return {
+        text: body?.textContent?.replace(/\s+/g, " ") ?? "",
+        zones: rows,
+        url: location.search,
+      };
+    });
+    check(s, "the map is shaded and the state is shareable", /species=ruffed-grouse/.test(card.url) && /explore=1/.test(card.url), card.url);
+    check(s, "zones where a season is open are named", card.zones.length > 0, card.zones.slice(0, 4).join(", "));
+
+    /* The line §41B draws. Regulatory availability may be shown wherever the
+       rules support it; ABUNDANCE may only be shown where evidence supports
+       it, and no evidence layer exists. So none of its vocabulary may appear. */
+    check(s, "it never ranks a zone or claims opportunity",
+      !/\bbest\b|\bvery high\b|\bmoderate\b|\bheat\b|\babundan/i.test(card.text), card.text.slice(0, 160));
+    check(s, "and the zones are in their own name order, not a ranking",
+      card.zones.length < 2 || [...card.zones].sort((a, b) => a.localeCompare(b, "en", { numeric: true })).join("|") === card.zones.join("|"),
+      card.zones.slice(0, 5).join(", "));
+
+    // Closing it takes the layer with it (§41B).
+    await page.getByRole("button", { name: /Stop colouring zones/ }).click();
+    await page.waitForTimeout(1_200);
+    const after = await page.evaluate(() => ({ url: location.search, stillShaded: /Season status/i.test(document.querySelector("[class*=titleRow]")?.textContent ?? "") }));
+    check(s, "closing removes the layer", !/explore=1/.test(after.url) && !after.stillShaded, JSON.stringify(after));
+    check(s, "no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));
+    await context.close();
+  },
+
+
+  /*
+   * The Find Game hint, and the manners that keep a hint from being nagging.
+   *
+   * Find Game answers a question nothing else on the screen answers, and a
+   * buck on a map control does not say that by itself. So it says it — beside
+   * the control, on a quiet map, and then it stops.
+   */
+  async findGameHint(browser) {
+    const s = "a hint that stops";
+    const { context, page, consoleErrors } = await newPage(browser, { width: 390, height: 844 });
+    await page.goto(`${BASE}/hunt`);
+    /* Checked BEFORE waiting for the map: `mapReady` alone can outlast the
+       hint's own delay, so measuring after it would test my patience rather
+       than the product's. */
+    /* `exact`, because the buck's own label is "Find game: where a species is
+       in season" and Playwright matches a name by substring by default — the
+       locator was finding the control instead of the hint pointing at it. */
+    const hint = page.getByRole("button", { name: "Find game", exact: true });
+    check(s, "it does not interrupt straight away", (await hint.count()) === 0);
+    await mapReady(page);
+
+    const appeared = await waitFor(page, () => [...document.querySelectorAll("button")].some((b) => b.textContent?.trim().startsWith("Find game")), 20_000);
+    check(s, "on a quiet map it appears", appeared);
+
+    const placed = await page.evaluate(() => {
+      const tip = [...document.querySelectorAll("button")].find((b) => b.textContent?.trim().startsWith("Find game"));
+      const buck = [...document.querySelectorAll("button")].find((b) => /Find game:/.test(b.getAttribute("aria-label") ?? ""));
+      const terms = [...document.querySelectorAll(".gm-style a, .gm-style span")].find((e) => /Terms/.test(e.textContent ?? ""));
+      if (!tip || !buck) return null;
+      const t = tip.getBoundingClientRect(), k = buck.getBoundingClientRect();
+      const a = terms?.getBoundingClientRect();
+      return {
+        beside: Math.abs((t.top + t.height / 2) - (k.top + k.height / 2)) < 12 && t.right <= k.left + 2,
+        onScreen: t.left >= 0 && t.right <= window.innerWidth && t.bottom <= window.innerHeight,
+        // The lesson from the grabber: a hint that covers a licence term is worse than no hint.
+        clearOfAttribution: !a || t.bottom <= a.top || t.top >= a.bottom || t.right <= a.left || t.left >= a.right,
+      };
+    });
+    check(s, "it points at the control it names", placed?.beside === true, JSON.stringify(placed));
+    check(s, "it stays on screen and clear of the map's attribution",
+      placed?.onScreen === true && placed?.clearOfAttribution === true, JSON.stringify(placed));
+
+    // Tapping it does the thing it suggests.
+    await hint.first().click();
+    const opened = await waitFor(page, () => /Find an animal to hunt/.test(document.querySelector("[class*=sheetHeader]")?.textContent ?? ""), 15_000);
+    check(s, "tapping it opens Find Game", opened);
+
+    // And having been used, it is done — on this device, for good.
+    await page.goto(`${BASE}/hunt`);
+    await mapReady(page);
+    await page.waitForTimeout(13_000);
+    const returned = await page.evaluate(() => [...document.querySelectorAll("button")].some((b) => b.textContent?.trim().startsWith("Find game")));
+    check(s, "once used, it never comes back", returned === false);
+    check(s, "no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));
+    await context.close();
+  },
+
+
+  /*
    * SAME HUNT LINK → SAME INITIAL ANSWER.
    *
    * `urlBeatsMemory` proves one client is not polluted. This proves two

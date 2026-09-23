@@ -22,6 +22,7 @@ import type { HuntEvaluation } from "../../lib/hunt/types";
 import { layerById, zoneIdFor, ZONE_LAYERS } from "../../lib/hunt/zone-layers";
 import { presentZone } from "../../lib/hunt/zone-presentation";
 import HuntMapView, { type CameraRequest } from "./HuntMapView";
+import FindGameHint, { retireFindGameHint } from "./FindGameHint";
 import HuntSheet from "./HuntSheet";
 import type { Emphasis } from "../../lib/hunt/exploration/cartography";
 import type { BasemapMode } from "./sheet/LayersPage";
@@ -148,6 +149,8 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   const [heights, setHeights] = useState<SheetHeights | null>(null);
   /** What the browser's own chrome covers, so the shell can sit above it. */
   const [viewportGap, setViewportGap] = useState(0);
+  /** The species page was opened to answer "where can I hunt this", not "what about here". */
+  const [findingGame, setFindingGame] = useState(false);
   const [view, setView] = useState<MapView | null>(null);
 
   /* ── What this device remembers ──────────────────────────────────────── */
@@ -1036,8 +1039,19 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
 
   const detailed = layout === "panel" || snap === "full";
   const dateLabel = deviceToday ? dateChipLabel(session.date.iso, new Date(`${deviceToday}T12:00:00`)) : session.date.explicit ? longDayLabel(session.date.iso) : "Today";
+  /*
+   * Choosing a species answers a different question depending on where it was
+   * asked (§41B): from a ZONE card it is "what about this animal, here" and
+   * drills in; from FIND GAME it is "where can I hunt this", which is the map
+   * shaded by what the certified rules say across every zone in view.
+   */
   const chooseSpecies = (id: CanonicalId<"species">) => {
     dispatchSession({ type: "SPECIES_CHOSEN", speciesId: id });
+    if (findingGame) {
+      dispatchSession({ type: "EXPLORE_SET", on: true });
+      dispatchMap({ type: "CARD_CLOSED" });
+      setFindingGame(false);
+    }
     if (page !== "main") closePage();
   };
 
@@ -1077,7 +1091,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
 
   if (page !== "main") {
     const titles: Record<Exclude<Page, "main">, string> = {
-      species: "What are you hunting?", date: "When are you hunting?", layers: "Map layers", zones: "Zones in view",
+      species: findingGame ? "Find an animal to hunt" : "What are you hunting?", date: "When are you hunting?", layers: "Map layers", zones: "Zones in view",
     };
     header = (
       <div className={styles.titleRow}>
@@ -1378,6 +1392,14 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   } else if (exploreSpecies) {
     const counts = new Map<ZoneState, number>();
     for (const state of filterStates?.values() ?? []) counts.set(state, (counts.get(state) ?? 0) + 1);
+    /* Where a season is actually running, by the zones' own names. Sorted by
+       name and never ranked: nothing here knows one zone is better than
+       another, and §41B keeps that question in a different layer entirely. */
+    const openZonesInView = zonesInView
+      .map((zone) => ({ ...zone, state: filterStates?.get(zone.key) }))
+      .filter((zone) => zone.state === "SEASON_AVAILABLE" || zone.state === "SEASON_EXCEPT_AREAS")
+      .map((zone) => ({ ...zone, jurisdictionName: layerById(zone.layerId)?.jurisdictionName ?? "" }))
+      .sort((a, b) => a.label.localeCompare(b.label, "en", { numeric: true }));
     header = (
       <div className={styles.titleRow}>
         <div className={styles.titleText}>
@@ -1392,13 +1414,53 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     body = (
       <div className={styles.page}>
         {chips}
-        <p className={styles.quiet}>Zones in view are coloured by what the certified rules say across each zone. Tap one for its details.</p>
+        <p className={styles.quiet}>Zones in view, by what the certified rules say across each one. Tap a zone for its details.</p>
+        {/*
+          NAMED ZONES, IN THE RULES' OWN ORDER OF CERTAINTY — never ranked.
+          
+          §41B keeps regulatory availability and species opportunity apart: this
+          is "where is a season open", which the certified rules answer on their
+          own. It is NOT the Specie Heat Map, carries no evidence, and says
+          nothing about where animals are or where hunting would be better. The
+          groups are the engine's own states; within a group the order is the
+          zones' own names, because nothing here ranks one above another.
+        */}
         <ul className={styles.legendList} aria-label="Zones in view by status">
           {[...counts.entries()].sort((a, b) => b[1] - a[1]).map(([state, count]) => (
             <li key={state}><StateChip state={state} /> <span className={styles.count}>{count} {count === 1 ? "zone" : "zones"}</span></li>
           ))}
           {!counts.size ? <li className={styles.quiet}>Reading the certified rules for the zones in view…</li> : null}
         </ul>
+        {/*
+          The answer to "where can I hunt this", named. The counts above say how
+          the view divides; these are the zones a hunter can actually go to
+          today. Capped, with the rest one tap away in the full list — which
+          stays the place every zone is named, so this is a short answer rather
+          than a second copy of that list.
+        */}
+        {openZonesInView.length ? (
+          <>
+            <p className={styles.quickTitle}><StateChip state="SEASON_AVAILABLE" /></p>
+            <ul className={styles.speciesRows}>
+              {openZonesInView.slice(0, 6).map((zone) => (
+                <li key={zone.key}>
+                  <button type="button" className={styles.speciesRow} data-state={zone.state} onClick={() => selectZone(zone.key, "list")}>
+                    <span className={styles.speciesRowText}>
+                      <span className={styles.speciesRowName}>{zone.label}</span>
+                      <span className={styles.speciesRowSeason}>{zone.jurisdictionName}</span>
+                    </span>
+                    <svg className={styles.speciesRowChevron} width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none">
+                      <path d="m5 3 4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                </li>
+              ))}
+            </ul>
+            {openZonesInView.length > 6 ? (
+              <p className={styles.quiet}>{openZonesInView.length - 6} more in view.</p>
+            ) : null}
+          </>
+        ) : null}
         <button type="button" className={styles.linkButton} onClick={() => openPage("zones")}>List these zones in words</button>
       </div>
     );
@@ -1497,6 +1559,46 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
               <path d="M10 1.5v3M10 15.5v3M1.5 10h3M15.5 10h3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
             </svg>
           </button>
+          {/*
+            FIND GAME (§41B): the species-first way in. Everything else on this
+            screen asks "what can I hunt HERE"; this asks "where can I hunt
+            THIS", and answers it from the certified rules alone — where a
+            season is open today, and where it is not. No evidence layer is
+            involved, and nothing here ranks a zone as better than another.
+          */}
+          <span className={styles.findGameSlot}>
+          {/* Beside the buck, so it points at the thing it names, and inside
+              the control stack, which is already positioned clear of Google's
+              terms line. */}
+          <FindGameHint
+            active={layout === "sheet" && page === "main" && !session.explore && !exploration.cardOpen && !pin}
+            onOpen={() => { setFindingGame(true); openPage("species"); }}
+          />
+          <button
+            type="button"
+            className={`${styles.mapControl} ng-glass-control`}
+            onClick={() => { retireFindGameHint(); setFindingGame(true); openPage("species"); }}
+            aria-label="Find game: where a species is in season"
+            aria-pressed={session.explore || undefined}
+          >
+            {/* A buck: antlers read as "game" at 20px where a generic paw or
+                pin does not. The owner asked for the obvious one. */}
+            <svg width="22" height="22" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+              {/* Antlers, with tines. */}
+              <path d="M7.3 7.2C6.9 5.6 5.9 4.3 4.3 3.6" />
+              <path d="M6.6 5.4 4.7 5.9" />
+              <path d="M6.9 3.9 5.6 2.7" />
+              <path d="M12.7 7.2c.4-1.6 1.4-2.9 3-3.6" />
+              <path d="M13.4 5.4l1.9.5" />
+              <path d="M13.1 3.9l1.3-1.2" />
+              {/* Ears. */}
+              <path d="M7.2 8.5 5.1 9.2" />
+              <path d="M12.8 8.5l2.1.7" />
+              {/* Head and muzzle. */}
+              <path d="M7.2 8.2c0 2.6 1.1 4.9 2.8 6.4 1.7-1.5 2.8-3.8 2.8-6.4 0-1.6-1.3-2.7-2.8-2.7S7.2 6.6 7.2 8.2Z" />
+            </svg>
+          </button>
+          </span>
           <button type="button" className={`${styles.mapControl} ng-glass-control`} onClick={() => openPage("layers")} aria-label="Map layers and season colours" aria-pressed={session.explore || overlaysOn.length > 0 || undefined}>
             <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="none">
               <path d="m10 2.5 8 4.2-8 4.2-8-4.2 8-4.2Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />

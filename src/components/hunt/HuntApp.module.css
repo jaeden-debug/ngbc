@@ -1336,3 +1336,55 @@
   color: var(--ng-bone);
 }
 .legalZone { font-size: 0.74rem; font-weight: 500; color: var(--ng-bone-dim); letter-spacing: 0.02em; }
+
+/* A nudge toward Find Game, beside the control it points at and clear of the
+   map's attribution. It bounces where motion is welcome and holds still where
+   it is not — the hint is the point, the movement is only how it is noticed. */
+.findGameSlot { position: relative; display: inline-flex; }
+.findGameHint {
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 13px;
+  border: 1px solid var(--ng-glass-border);
+  border-radius: var(--ng-radius-pill);
+  background: var(--ng-glass-bg-dense, rgba(12, 14, 13, 0.9));
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  color: var(--ng-bone);
+  font-size: 0.84rem;
+  font-weight: 620;
+  white-space: nowrap;
+  cursor: pointer;
+  /* Three nudges, then it holds still. An element that never stops moving is
+     a harder target for a thumb — and, as the certification found, for any
+     tool that waits for a control to settle before touching it. A hint that
+     wobbles forever is a nag; one that catches the eye and then rests is a
+     hint. */
+  animation: findGameNudge 1.9s ease-in-out 3;
+}
+/* The little point at the control. */
+.findGameHintTail {
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  border-right: 1px solid var(--ng-glass-border);
+  border-top: 1px solid var(--ng-glass-border);
+  border-radius: 1px;
+  background: inherit;
+  transform: rotate(45deg);
+}
+@keyframes findGameNudge {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-50%) translateX(-5px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .findGameHint { animation: none; }
+}
