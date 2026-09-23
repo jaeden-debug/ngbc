@@ -308,3 +308,96 @@ export interface ReadinessResult {
   /** What this checklist does not cover, so its silence is never read as "none". */
   limitations: string[];
 }
+
+/* ── The requirement vocabulary ──────────────────────────────────────────── */
+
+/**
+ * One vocabulary for every statement Ready to Hunt makes, so that "required",
+ * "allowed" and "forbidden" mean the same thing in every category.
+ *
+ * The rule that holds the whole thing up:
+ *
+ *   PROHIBITED needs positive evidence exactly as an open season does, and the
+ *   opposite of ALLOWED is NOT_CERTIFIED, not PROHIBITED.
+ *
+ * Which is a consequence of a more general one, learned from a real defect
+ * here: every "everything else is forbidden" is a complement in disguise. A
+ * closed set of possibilities invites taking its complement, and a complement
+ * over a set that does not describe the world asserts prohibitions nobody
+ * legislated. Ontario's hunting methods were one instance — `notAllowed` was
+ * the complement of a hardcoded four-method list, so a unit North Ground held
+ * no rules for answered "Not allowed: Rifle, Shotgun, Muzzleloader, Bow".
+ *
+ * So no category may default to PROHIBITED, and none may be derived by
+ * subtraction.
+ */
+export type RequirementState =
+  /** The law requires it for this hunt. */
+  | "REQUIRED"
+  /** The law permits it. */
+  | "ALLOWED"
+  /** The law forbids it — and a source says so. Never derived from absence. */
+  | "PROHIBITED"
+  /** The law addresses it and it does not reach this hunt. */
+  | "NOT_APPLICABLE"
+  /** It applies only under a stated condition, which travels with it. */
+  | "CONDITIONAL"
+  /** North Ground has not established this. The default for everything. */
+  | "NOT_CERTIFIED";
+
+/**
+ * What a CONDITIONAL statement turns on.
+ *
+ * Both forms are required and neither substitutes for the other. `when` is the
+ * engine's own dimensions, so the checklist reuses answers already given
+ * instead of asking twice. `statedAs` is the authority's words, so a surface
+ * that cannot use the machine form still has a true sentence to show — and so
+ * a condition the dimensions cannot express is still carried rather than lost.
+ */
+export interface RequirementCondition {
+  when: ApplicabilityCondition;
+  /** "while hunting deer during a gun season", in the authority's own words. */
+  statedAs: string;
+}
+
+/**
+ * A single statement about one requirement.
+ *
+ * A discriminated union rather than an object with optional fields, so that a
+ * CONDITIONAL without its condition does not compile. Rendering "Hunter orange
+ * ✓" where the law says "while hunting X during Y" is a false claim, and a
+ * convention would eventually lose to a builder in a hurry. Hunt overhaul
+ * refuses to render a CONDITIONAL that arrives without a condition; this makes
+ * one impossible to send.
+ *
+ * NOT_CERTIFIED carries no provenance — there is nothing to cite — but it does
+ * carry where to go instead, because it must render as "Verify requirement"
+ * rather than vanish. A row that disappears reads as "nothing required", which
+ * is the one thing silence must never mean.
+ *
+ * Deliberately absent: any notion of importance or criticality. Loudness is
+ * presentation and belongs to Hunt overhaul; this supplies `kind`, `state` and
+ * `condition` only. Two lanes owning one judgement is how they come to
+ * disagree without anyone noticing.
+ */
+export type Statement<T> =
+  | { state: "REQUIRED" | "ALLOWED" | "PROHIBITED" | "NOT_APPLICABLE"; value: T; provenance: Provenance[] }
+  | { state: "CONDITIONAL"; value: T; condition: RequirementCondition; provenance: Provenance[] }
+  | { state: "NOT_CERTIFIED"; value: T; verifyAt: string };
+
+/** True when this statement is the law rather than North Ground's silence. */
+export function isCertified<T>(statement: Statement<T>): boolean {
+  return statement.state !== "NOT_CERTIFIED";
+}
+
+/**
+ * Every legal statement carries its source, and one that does not is refused
+ * at the boundary rather than rendered. This is the runtime companion to the
+ * type: a builder can satisfy `Provenance[]` with an empty array, and an empty
+ * array is exactly what let a sourceless prohibition reach a hunter before.
+ */
+export function statementIsSound<T>(statement: Statement<T>): boolean {
+  if (statement.state === "NOT_CERTIFIED") return statement.verifyAt.length > 0;
+  if (statement.provenance.length === 0) return false;
+  return statement.state !== "CONDITIONAL" || statement.condition.statedAs.trim().length > 0;
+}
