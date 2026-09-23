@@ -1890,3 +1890,42 @@ contract should say so. And Michigan's by-county fact is a stronger constraint t
 antlerless limits are set by DMU in the Upper Peninsula and by county in the Lower, the governing
 geography may not be in the DMU layer at all, which a model that only orders units WITHIN one
 layer cannot express.
+
+### 2026-09-23 — The detector sweep, handed off part-done
+A pattern written from the first jurisdiction that needed it works perfectly on that
+jurisdiction and silently mislabels every other one. Three confirmed instances before the sweep
+began — `"Provincial Management Units"` vs `"Provincial WILDLIFE Management Units"`, the
+district-portion classifier, and `/\(in Provincial/i` — and the sweep found a fourth before it was
+paused. **It is unfinished. Whoever resumes the Canada lane finishes it BEFORE building the 39
+recoverable rows**, because two of those rows' refusal reasons are wrong for this reason.
+
+The form required is which jurisdictions' ACTUAL WORDING a pattern was checked against — not
+whether it looks general. A pattern verified against fewer than all seven is a finding whether or
+not it is currently wrong.
+
+| detector | verified against | status |
+|---|---|---|
+| `/resident/i` | all 7 jurisdictions carrying the concept, 47/47 | clean |
+| `/\(in Provincial/i` | Alberta only (2/2); Ontario 10/12 | **misses BC entirely — 22 rows** |
+| `/plus an additional/i` | PE, NS, NB, MB | **misses BC — 3 rows** |
+| `/\(from [A-Z]/i` | Prince Edward Island only | one jurisdiction — a finding by the standard |
+
+Unswept: `^No open season$`, `^No limit$`, `^N/A$`, `^\[Repealed`, the
+`(Districts|Zones|Units)` conjunction plural, `PORTION_OF_A_UNIT`, the definitions parser, and
+`expandRange`'s two forms.
+
+**The extra-allowance miss is not a live defect, and WHY it is not is the finding.** BC writes the
+allowance as a new sentence — `10 (not more than 5 may be Ross's Geese). An additional 5 Snow
+Geese may be killed or taken in Provincial Management Units 2-4 and 2-5` — so `/plus an
+additional/i` never matches. Zero encoded rules carry that cell, but **they are refused by
+`readLimit`, not by the allowance detector**: the cell ends in `2-5` rather than a closing paren,
+so it matches neither limit form and returns null. A strictness written for something else is what
+stopped a bag of 10 being published where the law allows 15 in two units. **The guard that held
+was not the guard designed for it**, which is luck, and luck is not a control. The safety survives
+the 39-row work — `readLimit` refuses that cell regardless of whether its season becomes readable,
+verified specifically — but two of the three refusal REASONS are wrong, which is the same
+mislabelling class and must be fixed in the same pass.
+
+**A refusal reason is itself a claim, and it can be wrong while the refusal is right.** §8 now
+requires refusal metrics to use stable classification semantics; this adds that they must also be
+accurate, because a stable-but-wrong reason misleads exactly as much as a reordered bucket.
