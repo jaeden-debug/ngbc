@@ -1014,6 +1014,67 @@ this is certified in production. Saskatchewan is deferred because it is a
 LIVE_SERVICE layer with no stored identifier list to check the regulation's
 zone references against.
 
+## The Wrong-Bundle Answer
+
+**The worst failure mode this product has, found 2026-09-23. Recorded as a
+CLASS, not a Canada note.**
+
+A species that is SELECTABLE in a jurisdiction whose bundle does not certify it
+fell through to that jurisdiction's SMALL GAME path and answered from the wrong
+bundle. **A grouse season returned for a mallard** — not an error, not an
+UNKNOWN: a normal-looking answer, with a season and a limit, for the wrong
+animal.
+
+Every honesty mechanism in Hunt assumes a wrong answer LOOKS UNCERTAIN. This
+one looked right.
+
+Fixed by asking an engine only about species its own bundle certifies, and by
+restating Ontario's species lists as a **partition** — provincially certified
+or federal migratory, never both and never neither — which makes the
+fall-through *unrepresentable* rather than merely unreached.
+
+Three things about it that generalise:
+
+1. **The hazard predated the work that exposed it.** It would be reached by any
+   species certified somewhere other than where it is offered, which is now the
+   normal shape of expansion rather than an edge case.
+2. **The existing test KNEW.** It described the fall-through precisely and was
+   unreachable only because `SUPPORTED_SPECIES` and the provincial bundles
+   happened to be the same list. **A safety property held by coincidence is not
+   held.** The selectable-vs-answerable split was always going to break that
+   coincidence, and it did.
+3. **Running the full suite with the flag ON before landing is what caught
+   it.** A flag flipped after the gate would have shipped it.
+
+### Standard: a flag flip is gated with the flag ON
+
+**Every future flag flip runs the whole suite in its ON state before landing,
+and the flip lands only if that passes.** A feature built behind a flag is
+tested in its OFF state by default, which proves nothing about the state it is
+about to be put into. Four invariants broke when `FEDERAL_MIGRATORY_SERVING`
+was flipped; all four were strengthened rather than relaxed, and one was this
+defect.
+
+### A test that passes because its premise expired
+
+The seventh form of measuring the wrong thing, and the quietest: nothing fails,
+and coverage still reports the test as passing.
+
+A test used `species:mallard` as its example of "not certified". It silently
+stopped testing anything the day mallard became certified.
+
+**The fix is not a better example — it is making a test ASSERT ITS OWN
+PREMISE**, so expiry fails loudly with an instruction. `registry.test.ts` now
+checks that `species:gray-wolf` is still uncertified before relying on it, and
+fails with "this test needs a different uncertified example, not a passing
+assertion". Proven by pointing it at a certified species and watching it fire.
+
+Swept for siblings: `zone-jurisdiction.test.ts` uses `jurisdiction:ca-nt`,
+whose premise is durable by owner decision (out of scope, no reusable
+geography) and is annotated as such. `united-states/routing.test.ts` asserts
+Montana's rules never answer because Montana is not served — the same shape,
+in the U.S. agent's file, and reported to them rather than edited here.
+
 ## Agreeing With The Service Is Not Agreeing With The Law
 
 Recorded once, in **Recent Product Decisions** under *2026-09-23 — Audit

@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { isFederalMigratoryBird } from "./federal.ts";
 import { ZONE_LAYERS } from "../zone-layers.ts";
 import { isCertifiedSpecies, REGULATORY_REGISTRY, regulatoryEntryFor } from "./registry.ts";
 import { CANADA_JURISDICTIONS } from "../canada/registry.ts";
@@ -59,7 +60,26 @@ test("an evaluation accepts exactly the species some served jurisdiction certifi
       if (!certified.has(row.speciesId)) assert.equal(isCertifiedSpecies(row.speciesId), false, row.speciesId);
     }
   }
-  // Published in the species library with no certified rules anywhere, and not a species at all.
+  /*
+   * Published in the species library with no certified rules anywhere.
+   *
+   * THE TEST ASSERTS ITS OWN PREMISE FIRST. A test whose example was chosen
+   * for a property our own work can change stops testing anything the day that
+   * property changes, and passes while doing it: `species:mallard` was used
+   * exactly this way as "not certified", and went on passing after the federal
+   * rules made it certified, because the assertion had become trivially true
+   * of a species nobody would now pick. Here, if gray wolf is ever certified,
+   * this fails and SAYS to pick another example rather than quietly going
+   * hollow.
+   */
+  const stillUncertified = !REGULATORY_REGISTRY
+    .filter((entry) => regulatoryEntryFor(entry.jurisdictionId))
+    .some((entry) => entry.coverage().species.some((row) => row.speciesId === "species:gray-wolf"))
+    && !isFederalMigratoryBird("species:gray-wolf");
+  assert.ok(
+    stillUncertified,
+    "species:gray-wolf is now certified somewhere — this test needs a different uncertified example, not a passing assertion",
+  );
   assert.equal(isCertifiedSpecies("species:gray-wolf"), false);
   assert.equal(isCertifiedSpecies(42), false);
 });
