@@ -36,9 +36,17 @@ export interface ZoneResolution {
   boundaryDistanceMeters?: number;
   nearBoundary?: boolean;
   /**
-   * Set when more than one authority's own service placed the point in a zone.
-   * An UNKNOWN carrying this is a CONFLICT, not "no zone here", and must never
-   * be resolved by preferring another source that did answer.
+   * Set when more than one zone claims this point: either two authorities'
+   * services both placed it in a zone of their own, or one authority's service
+   * returned several of its own features for it. An UNKNOWN carrying this is a
+   * CONFLICT, not "no zone here", and must never be resolved by preferring
+   * another source that did answer.
+   *
+   * The ids are recorded rather than merely counted. "Overlapping features"
+   * with the features thrown away cannot be investigated, cannot be shown to a
+   * hunter, and cannot tell a legitimate nesting (Michigan draws a county unit,
+   * a multicounty unit and a CWD core over the same ground) apart from a real
+   * defect. Which zones is the whole question.
    */
   conflictingZoneIds?: string[];
   displayRings?: number[][][];

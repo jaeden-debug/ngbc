@@ -86,7 +86,11 @@ test("when no record of the zone contains the disk, the point is near the bounda
 test("overlapping zones and no zone are both unknown, never a guess", async () => {
   const overlap = await resolveLayerFromWfs(QUEBEC, 46, -72, ministry({ at: ["06N", "06S"] }).fetcher);
   assert.equal(overlap.status, "UNKNOWN");
-  assert.match(overlap.message, /overlapping/);
+  // Which zones, not just that there were two: an overlap that names nothing
+  // cannot be investigated and cannot be shown to anyone.
+  assert.deepEqual(overlap.conflictingZoneIds, ["management_zone:ca-qc-zone-06n", "management_zone:ca-qc-zone-06s"]);
+  assert.match(overlap.message, /06N, 06S/);
+  assert.equal(overlap.zoneId, undefined);
   const none = await resolveLayerFromWfs(QUEBEC, 45.4215, -75.6972, ministry({ at: [] }).fetcher);
   assert.equal(none.status, "UNKNOWN");
   assert.match(none.message, /places this point in no Zone de chasse/);

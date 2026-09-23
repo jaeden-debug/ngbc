@@ -65,10 +65,15 @@ test("an impossible coordinate is refused before any state service is asked", as
   assert.equal(calls.length, 0);
 });
 
-test("two features at one point are a question for a person, never a choice", async () => {
+test("two features at one point are a question for a person, never a choice — and both are named", async () => {
   const result = await resolveLayerFromOfficialGis(HD, 45.65, -111.05, service([{ properties: { DISTRICT: "309" } }, { properties: { DISTRICT: "310" } }]).fetcher);
   assert.equal(result.status, "UNKNOWN");
-  assert.match(result.message, /overlapping/);
+  /* Not merely "overlapping": which districts, kept as zone ids. A count
+     cannot be investigated and tells a hunter nothing. */
+  assert.deepEqual(result.conflictingZoneIds, ["management_zone:us-mt-hd-309", "management_zone:us-mt-hd-310"]);
+  assert.match(result.message, /309, 310/);
+  assert.match(result.message, /will not choose between them/);
+  assert.equal(result.zoneId, undefined, "an overlap never resolves to one of them");
 });
 
 test("a Montana grouse question placed in a deer and elk district is asked again in the upland districts", async () => {

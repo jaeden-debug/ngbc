@@ -358,6 +358,34 @@ async function liveLookup(layer: ZoneLayer, latitude: number, longitude: number,
   return request;
 }
 
+/**
+ * One authority's own service returned several of its own features for one
+ * point.
+ *
+ * This stays UNKNOWN — North Ground does not pick a unit for a hunter — but it
+ * says WHICH units, and it keeps them as zone ids so the answer can be
+ * investigated, shown, and told apart from a defect. Michigan draws a county
+ * unit, a multicounty unit and a CWD core over the same ground on purpose; a
+ * message reading "overlapping features" with the features discarded cannot
+ * distinguish that published hierarchy from a broken layer, and cannot tell a
+ * hunter standing in Lansing anything at all.
+ *
+ * Naming them is not the same as ranking them. Until an authority's own words
+ * say which of its units governs which decision, there is no precedence to
+ * apply, and inventing one would be exactly the kind of plausible guess that
+ * a correct UNKNOWN exists to prevent.
+ */
+function overlapping(layer: ZoneLayer, designations: string[]): ZoneResolution {
+  const unique = [...new Set(designations.map((designation) => designation.toUpperCase()))].sort();
+  return {
+    status: "UNKNOWN",
+    sourceId: layer.sourceId,
+    jurisdictionId: layer.jurisdictionId,
+    ...(isJurisdictionGeography(layer) ? {} : { conflictingZoneIds: unique.map((designation) => zoneIdFor(layer, designation)) }),
+    message: `The official ${layer.jurisdictionName} service places this point in ${unique.length} ${layer.officialTerm} features at once (${unique.join(", ")}); North Ground will not choose between them.`,
+  };
+}
+
 async function askLayerService(
   layer: ZoneLayer,
   latitude: number,
@@ -394,13 +422,12 @@ async function askLayerService(
     if (payload.type !== "FeatureCollection" || !Array.isArray(payload.features)) throw new Error("Unexpected response");
     const named = payload.features.filter((feature) => designationOfRaw(layer, feature.properties?.[layer.nameField!]) !== null);
     if (named.length !== 1) {
+      if (named.length > 1) return overlapping(layer, named.map((feature) => designationOfRaw(layer, feature.properties![layer.nameField!])!));
       return {
         status: "UNKNOWN",
         sourceId,
         jurisdictionId: layer.jurisdictionId,
-        message: named.length > 1
-          ? `The official ${layer.jurisdictionName} service returned overlapping ${layer.officialTerm} features; human verification is required.`
-          : `The official ${layer.jurisdictionName} service places this point in no ${layer.officialTerm}.`,
+        message: `The official ${layer.jurisdictionName} service places this point in no ${layer.officialTerm}.`,
       };
     }
     const feature = named[0];
@@ -495,13 +522,12 @@ export async function resolveLayerFromWfs(
     const geometry = wfs.geometryField ?? "the_geom";
     const designations = await ask(`INTERSECTS(${geometry},${point})`);
     if (designations.length !== 1) {
+      if (designations.length > 1) return overlapping(layer, designations);
       return {
         status: "UNKNOWN",
         sourceId,
         jurisdictionId: layer.jurisdictionId,
-        message: designations.length > 1
-          ? `The official ${layer.jurisdictionName} service returned overlapping ${layer.officialTerm} features; human verification is required.`
-          : `The official ${layer.jurisdictionName} service places this point in no ${layer.officialTerm}.`,
+        message: `The official ${layer.jurisdictionName} service places this point in no ${layer.officialTerm}.`,
       };
     }
     const designation = designations[0].toUpperCase();
