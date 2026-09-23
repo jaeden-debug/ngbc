@@ -90,11 +90,34 @@ features at one point remain what they are today: not a nesting, and not
 silently promoted into one. A layer whose features overlap *unexpectedly* is
 still a defect and must still read as one.
 
+**NESTED requires a TOTAL order, and anything less is not NESTED.**
+Containment is a PARTIAL order: three zones can each contain the point while
+two of them merely overlap each other. NESTED describes a chain — every zone in
+the set contains, or is contained by, every other — and `containedBy` as an
+array only means anything under that condition. A set that is not fully
+containment-ordered falls back to today's behaviour rather than being ranked
+into a chain it does not form. Stated as a positive requirement because the
+contract otherwise excludes it only by implication, and an implication is not a
+check.
+
+**Partial overlap in a nesting-declared layer is STILL a defect.** Declaring a
+layer nesting-capable must not silently downgrade real geometry defects there:
+two units of one layer that overlap without containing each other are as wrong
+in Michigan as anywhere else. Otherwise the declaration becomes a way for
+breakage to stop being reported — the sentinel class wearing a new hat.
+
 **Containment is computed from the geometry, not from the codes.** Which zone
 sits inside which is a spatial fact the service can answer. A unit's kind is
 **never** inferred from its number: "4xx means multicounty" is a sentinel value
 waiting to happen, and Michigan gives us no field that carries kind. If
 containment cannot be established from geometry, the answer is not NESTED.
+
+Canada demonstrated this against real data while measuring whether Canadian
+layers nest: an envelope query returned 73 "containment pairs", and reporting
+those as nesting would have been the wrong measurement — bounding-box
+containment is necessary, not sufficient. `ST_Contains` settled it at zero.
+Québec 02E/02EI, Ontario 46/53B and Manitoba 14/14A all look like nesting BY
+NAME and are not by geometry.
 
 **Precedence is a separate question from nesting, and its absence is recorded.**
 `governing` appears only when an authority's own words say which of its units
@@ -131,11 +154,23 @@ innermost zone stated outright.
 - **Zone card / Hunt result** — names every applicable zone, innermost first,
   and says they nest rather than that they conflict. No status word changes:
   NESTED is about geography, not legality.
-- **Regulatory engine** — evaluates against every zone in the set and composes,
-  exactly as federal and provincial layers already compose. Where the rules
-  disagree and no `governing` is stated, that disagreement surfaces as the
-  engine's existing CONFLICT — which is then a real one, about rules, and no
-  longer hidden behind a geographic UNKNOWN.
+- **Regulatory engine** — evaluates against every zone in the set and
+  composes. **This is NOT the federal/provincial conjunction, and the federal
+  composition path must not be reused for it.** Federal and provincial rules
+  are two authorities with separate powers, both binding, neither refining the
+  other: a hunter satisfies both. Nested units are ONE authority speaking at
+  two granularities, whose ordinary legal reading is SPECIALIZATION — the inner
+  refines the outer, and the specific governs. Encoding specialization as
+  conjunction would MANUFACTURE conflicts the law does not intend: a CWD core
+  zone permitting something the surrounding county unit restricts is not a
+  contradiction, it is the entire point of having a core zone.
+
+  That is what `governing` records, where the authority says so — and it is why
+  its ABSENCE yields CONFLICT rather than a silent choice. Where the rules
+  disagree and no `governing` is stated, the disagreement surfaces as the
+  engine's existing CONFLICT: a real one, about rules, no longer hidden behind
+  a geographic UNKNOWN. North Ground does not resolve a specialization the
+  authority has not written down.
 - **Map** — highlights the innermost zone; the containing zones stay visible.
 - **Hunt Brief** — stores every zone id. A brief naming one of three units is
   not a record of where someone was.
@@ -159,10 +194,17 @@ not draw as hunting geography at all.
 
 This contract does not cover that, and should not pretend to. NESTED describes
 several zones OF ONE LAYER covering a point. A rule whose geography is a county
-while the hunting layer is a DMU is a different problem — composition across
-layers, as federal and provincial rules already compose — and it needs its own
+while the hunting layer is a DMU is a different problem, and it needs its own
 answer rather than being forced into containment because containment is the
 mechanism that exists.
+
+It is not the federal/provincial conjunction either, and should not borrow that
+path any more than nesting should: Michigan's county-based antlerless limit and
+its DMU rules come from ONE authority using two geographies, not from two
+authorities with separate powers. Three different relations, then — conjunction
+between authorities, specialization within a nested layer, and this, which is
+so far unnamed. Naming it is out of scope here; mistaking it for either of the
+others is what this paragraph exists to prevent.
 
 It is recorded here because it is the strongest evidence for the rule above:
 precedence is never inferable from unit numbers, because the governing unit may
