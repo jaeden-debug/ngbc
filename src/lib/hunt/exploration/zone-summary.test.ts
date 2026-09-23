@@ -169,3 +169,63 @@ test("a summary carries no coordinate", async () => {
   const summary = await summarizeZone({ layerId: "layer:ca-on-wmu", designation: "57" }, "2026-09-21");
   assert.doesNotMatch(JSON.stringify(summary), /latitude|longitude/);
 });
+
+/* ── `next` rides alongside the status, and is never one ── */
+
+test("a CLOSED species carries its next opening and stays CLOSED", async () => {
+  /*
+   * The owner's ruling: `next` is supplementary temporal information, not a
+   * ninth state. "Closed" and "closed, opens September 15" are different
+   * answers to a hunter and neither is a different legal status — so the state
+   * must not move when a next opening exists.
+   */
+  clearZoneSummaryCache();
+  const summary = await summarizeZone({ layerId: "layer:ca-on-wmu", designation: "57" }, "2026-07-15");
+  const closed = summary.species.filter((row) => row.state === "CLOSED");
+  assert.ok(closed.length > 0, "this test needs a closed species; July should supply several");
+
+  const withNext = closed.filter((row) => row.next.kind === "SEASON");
+  assert.ok(withNext.length > 0, "a July date should have seasons still to come");
+  for (const row of withNext) {
+    assert.equal(row.state, "CLOSED", "carrying a next opening must not change the state");
+  }
+});
+
+test("every row states a next, and the four kinds stay distinguishable", async () => {
+  /*
+   * Required rather than optional, because the distinction the owner asked for
+   * — closed-until-further-notice versus we-do-not-know — dies the moment it
+   * is carried by absence. An absent field and a null field render alike at
+   * every call site that forgets which it meant.
+   */
+  clearZoneSummaryCache();
+  const kinds = new Set<string>();
+  for (const designation of ["57", "71"]) {
+    const summary = await summarizeZone({ layerId: "layer:ca-on-wmu", designation }, "2026-11-10");
+    for (const row of summary.species) {
+      assert.ok(row.next, `${row.speciesId} states no next`);
+      assert.match(row.next.kind, /^(SEASON|DEPENDS_ON_HUNTER|NONE_IN_CERTIFIED_PERIOD|NOT_CERTIFIED)$/);
+      kinds.add(row.next.kind);
+      /* Each kind carries exactly what it claims and nothing it does not. */
+      if (row.next.kind === "SEASON") assert.ok(row.next.opens && row.next.closes);
+      if (row.next.kind === "NONE_IN_CERTIFIED_PERIOD") assert.ok(row.next.through);
+    }
+  }
+  assert.ok(kinds.size > 1, "a single kind everywhere would not prove they are distinguishable");
+});
+
+test("a species whose answer needs the hunter does not state a next date", async () => {
+  /*
+   * Where the engine returns before evaluating any window, there is nothing to
+   * read a next opening from — and one stated anyway would be true for only
+   * some licences. DEPENDS_ON_HUNTER is read from the engine's own
+   * `completeness`, never from a second pass over the rules.
+   */
+  clearZoneSummaryCache();
+  const summary = await summarizeZone({ layerId: "layer:ca-on-wmu", designation: "57" }, "2026-11-10");
+  const depends = summary.species.filter((row) => row.state === "CHECK_REQUIREMENTS");
+  assert.ok(depends.length > 0, "this test needs a species that asks the hunter something");
+  for (const row of depends) {
+    assert.equal(row.next.kind, "DEPENDS_ON_HUNTER", row.speciesId);
+  }
+});

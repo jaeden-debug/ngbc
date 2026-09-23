@@ -104,6 +104,7 @@ export interface SpecialAreaInZone {
  */
 export function pendingRegulation(jurisdictionName: string, required: RequiredDimension, verifiedAt: string): RegulatoryResult {
   return {
+    next: { kind: "NOT_CERTIFIED" },
     status: "NEEDS_VERIFICATION",
     summary: `North Ground holds the applicable ${jurisdictionName} rules and needs one more fact before it can answer: ${required.question}`,
     legalTime: legalTimeNotCertified("Legal hunting hours are reported once the applicable rule is resolved.", "North Ground"),
@@ -118,6 +119,7 @@ export function pendingRegulation(jurisdictionName: string, required: RequiredDi
    engine change cannot silently produce an evaluation with no regulatory field. */
 export function pendingRegulationFallback(verifiedAt: string): RegulatoryResult {
   return {
+    next: { kind: "NOT_CERTIFIED" },
     status: "NEEDS_VERIFICATION",
     summary: "North Ground could not complete this regulatory evaluation and will not infer a status.",
     legalTime: legalTimeNotCertified("Legal hunting hours are not available.", "North Ground"),
@@ -338,7 +340,8 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
         exceptInside = names;
         regulation = {
           ...regulation,
-          status: "NEEDS_VERIFICATION",
+          next: { kind: "NOT_CERTIFIED" },
+    status: "NEEDS_VERIFICATION",
           limitations: [
             general(
               `${names.length === 1 ? names[0] : `${names.length} published areas`} inside this ${config.unitTerm} ` +

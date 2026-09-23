@@ -7,7 +7,7 @@ import {
   ontarioResidencyDimension, ontarioTagDimension,
   type HuntDimensionAnswers, type HuntDimensionId, type RequiredDimension,
 } from "./dimensions.ts";
-import { evaluateSeason, parseSeasonPhrase } from "./season.ts";
+import { nextOpening, evaluateSeason, parseSeasonPhrase } from "./season.ts";
 import bundle from "../../../../content/regulatory/ca-on-major-game-2026.json" with { type: "json" };
 
 /**
@@ -212,6 +212,8 @@ function baseResult(overrides: Partial<RegulatoryResult>, rules: BundleRule[] = 
   const caveats = [...new Set(rules.flatMap((entry) => entry.caveats))];
 
   return {
+    /* No certified basis for a next opening from this path. Never "none". */
+    next: { kind: "NOT_CERTIFIED" },
     legalTime: legalTimeNotCertified(
       "Ontario's general rule permits hunting from 30 minutes before local sunrise to 30 minutes " +
         "after local sunset, subject to listed exceptions. North Ground has not certified exact " +
@@ -374,6 +376,14 @@ export function evaluateOntarioMajorGame(
     .map(({ rule }) => `${rule.seasonLabel} ${rule.seasonPhrase}`)
     .join("; ");
 
+  /*
+   * The next opening, read from the SAME resolved windows this answer is built
+   * from, so a next date cannot disagree with the season beside it. Computed
+   * once and shared by the in-season and closed paths — a hunter asks "when can
+   * I next go" in both.
+   */
+  const next = nextOpening(evaluated.map(({ season }) => season), input.date);
+
   const inSeason = evaluated.find(({ season }) => season.verdict === "IN_SEASON");
   if (inSeason) {
     const containing = inSeason.season.window!;
@@ -382,6 +392,7 @@ export function evaluateOntarioMajorGame(
       dimensions,
       result: baseResult({
         status: "CONDITIONAL",
+        next,
         season: { opens: containing.opensIso, closes: containing.closesIso, datesInclusive: true },
         summary:
           `The certified ${inSeason.rule.sourceVersion} season for ${unitName} includes this date ` +
@@ -404,6 +415,7 @@ export function evaluateOntarioMajorGame(
       dimensions,
       result: baseResult({
         status: "CLOSED",
+        next,
         summary:
           `No certified ${withinCertified.rule.sourceVersion} season for ${unitName} covers this date. ` +
           `Seasons open to this combination here: ${applicable}.`,

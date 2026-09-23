@@ -347,7 +347,7 @@ describe("legal methods and recommendations stay apart", () => {
       status: "RESOLVED", zoneId: wmu("60") as CanonicalId<"management_zone">, jurisdictionId: "jurisdiction:ca-on" as CanonicalId<"jurisdiction">,
       sourceId: "source:x" as CanonicalId<"source">, message: "",
     };
-    const regulation = (status: RegulatoryResult["status"]): RegulatoryResult => ({
+    const regulation = (status: RegulatoryResult["status"]): RegulatoryResult => ({ next: { kind: "NOT_CERTIFIED" },
       status, summary: "", legalTime: legalTimeNotCertified("", "test authority"), requirements: [], limitations: [], sourceIds: [], verifiedAt: "",
     });
     assert.ok(resolveReadiness({ speciesId: GROUSE, date: "2026-10-15" }, zone, regulation("CONDITIONAL"), { now: NOW }));
@@ -372,6 +372,7 @@ describe("what the checklist does not know", () => {
       jurisdictionId: "jurisdiction:ca-mb" as CanonicalId<"jurisdiction">, sourceId: "source:x" as CanonicalId<"source">, message: "",
     };
     const regulation: RegulatoryResult = {
+      next: { kind: "NOT_CERTIFIED" },
       status: "CONDITIONAL", summary: "", legalTime: legalTimeNotCertified("", "test authority"), requirements: [], limitations: [], sourceIds: [], verifiedAt: "",
     };
     const result = resolveReadiness({ speciesId: GROUSE, date: "2026-10-15" }, zone, regulation, { now: NOW, fallbackInfoUrl: "https://example.test/mb" })!;

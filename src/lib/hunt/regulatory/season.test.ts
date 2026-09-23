@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  nextOpening,
   anchorToLicenceYear, certifiedSpan, crossesYear, evaluateResolvedWindows, evaluateSeason,
   parseSeasonPhrase, resolveWindow,
   type SeasonWindow,
@@ -248,4 +249,64 @@ test("resolved windows answer only inside the span the source speaks to", () => 
   // Before the version in force, and after the licence year: not closed — uncertified.
   assert.equal(evaluateResolvedWindows(windows, certified, "2026-06-15").verdict, "OUTSIDE_CERTIFIED_PERIOD");
   assert.equal(evaluateResolvedWindows(windows, certified, "2027-04-01").verdict, "OUTSIDE_CERTIFIED_PERIOD");
+});
+
+/* ── When the next season opens ── */
+
+const windowsOf = (...pairs: Array<[string, string]>) => ({
+  verdict: "OUT_OF_SEASON" as const,
+  windows: pairs.map(([opensIso, closesIso]) => ({ opensIso, closesIso, crossesYear: false })),
+  span: { from: pairs[0][0], to: pairs.at(-1)![1] },
+});
+
+test("the next opening is the earliest one strictly after the date", () => {
+  const evaluation = windowsOf(["2026-09-15", "2026-12-31"], ["2027-02-01", "2027-02-28"]);
+  assert.deepEqual(nextOpening([evaluation], "2026-07-15"), {
+    kind: "SEASON", opens: "2026-09-15", closes: "2026-12-31",
+  });
+  /* Past the first, the second is what a hunter is waiting for. */
+  assert.deepEqual(nextOpening([evaluation], "2027-01-10"), {
+    kind: "SEASON", opens: "2027-02-01", closes: "2027-02-28",
+  });
+});
+
+test("a season that opened today is not the NEXT one", () => {
+  /*
+   * STRICTLY after. The answer already reports the season containing the date;
+   * repeating it as "next" would tell a hunter to wait for a day that has
+   * arrived.
+   */
+  const evaluation = windowsOf(["2026-09-15", "2026-12-31"]);
+  assert.equal(nextOpening([evaluation], "2026-09-15").kind, "NONE_IN_CERTIFIED_PERIOD");
+});
+
+test("nothing further is a statement about the CERTIFIED PERIOD, carrying its date", () => {
+  /*
+   * Not a claim about the world: the authority's next summary may open a season
+   * the day after this period ends. So the claim stops at what is certified and
+   * says through when.
+   */
+  const evaluation = windowsOf(["2026-09-15", "2026-12-31"]);
+  assert.deepEqual(nextOpening([evaluation], "2027-06-01"), {
+    kind: "NONE_IN_CERTIFIED_PERIOD", through: "2026-12-31",
+  });
+});
+
+test("no evaluated season is NOT_CERTIFIED, never 'none'", () => {
+  /*
+   * The owner's requirement: closed-until-further-notice and we-do-not-know
+   * must not share a representation. With no windows there is no basis for
+   * either, and saying "none" would be the stronger claim.
+   */
+  assert.deepEqual(nextOpening([], "2026-07-15"), { kind: "NOT_CERTIFIED" });
+});
+
+test("the earliest opening across SEVERAL rules is the one a hunter waits for", () => {
+  /* Different implements or licences each carry windows; the hunter asks when
+     they may next go, not when a particular rule next opens. */
+  const bow = windowsOf(["2026-10-01", "2026-10-31"]);
+  const gun = windowsOf(["2026-09-20", "2026-09-30"]);
+  assert.deepEqual(nextOpening([bow, gun], "2026-08-01"), {
+    kind: "SEASON", opens: "2026-09-20", closes: "2026-09-30",
+  });
 });

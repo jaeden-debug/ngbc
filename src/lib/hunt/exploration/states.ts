@@ -1,3 +1,4 @@
+import type { NextSeason } from "../regulatory/season.ts";
 import type { ZonePresentation } from "../zone-presentation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { ZoneCoverageStatus } from "../zone-layers.ts";
@@ -73,6 +74,18 @@ export interface SpeciesZoneSummary {
   state: ExplorationState;
   /** The certified season window containing the date, when the engine states one. */
   season?: { opens: string; closes: string };
+  /**
+   * When the next season opens — SUPPLEMENTARY TEMPORAL INFORMATION, never a
+   * ninth state. A row can be CLOSED and carry a next opening; it stays CLOSED.
+   * "What is true today" and "what happens next" are orthogonal facts, and
+   * folding one into the other would be the render-identically failure in a
+   * new direction: "closed" and "closed, opens November 7" are different
+   * answers to a hunter and neither is a different legal status.
+   *
+   * Required, and a discriminated union, so closed-until-further-notice and
+   * we-do-not-know cannot share a representation.
+   */
+  next: NextSeason;
   /** The first fact the engine would ask, in its own words, when the hunter decides. */
   question?: string;
   /** One sentence the engine produced about this zone, when it adds something. */

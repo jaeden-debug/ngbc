@@ -66,6 +66,7 @@ test("HuntEvaluation adapter preserves the engine result and excludes coordinate
       message: "Resolved from the official service.",
     },
     regulation: {
+      next: { kind: "NOT_CERTIFIED" },
       status: "CONDITIONAL",
       summary: "Conditions apply.",
       legalTime: legalTimeNotCertified("Verified rule summary.", "test authority"),
@@ -274,6 +275,7 @@ test("a brief's warnings are bounded, and anything beyond the bound is said, not
     species: { id: "species:ruffed-grouse", name: "Ruffed grouse", canonicalPath: "/hunting/species/ruffed-grouse" },
     zone: { status: "RESOLVED", zoneId: "management_zone:ca-on-wmu-57", officialName: "Wildlife Management Unit 57", sourceId: "source:ca-on-wmu-service", message: "Resolved." },
     regulation: {
+      next: { kind: "NOT_CERTIFIED" },
       status: "CONDITIONAL",
       summary: "Conditions apply.",
       legalTime: legalTimeNotCertified("Verified rule summary.", "test authority"),

@@ -151,6 +151,14 @@ async function summarizeSpecies(
     speciesId,
     name: await speciesName(speciesId),
     state,
+    /*
+     * The engine's own next opening, except where the answer needs a fact from
+     * the hunter. There the engine returns BEFORE evaluating any season window,
+     * so there is nothing to read one from — and a next date stated anyway
+     * would be true for only some licences. This reads the engine's
+     * `completeness`, not its rules, so it is not a second interpretation.
+     */
+    next: state === "CHECK_REQUIREMENTS" ? { kind: "DEPENDS_ON_HUNTER" } : outcome.regulation.next,
     ...(season ? { season } : {}),
     ...(state === "CHECK_REQUIREMENTS" && outcome.required ? { question: outcome.required.question } : {}),
     ...(detail ? { detail } : {}),

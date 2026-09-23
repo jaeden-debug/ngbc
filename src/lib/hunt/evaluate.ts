@@ -94,6 +94,7 @@ async function evaluateRegulation(
 /** A point no authority placed in a hunting zone, attributable to no one jurisdiction. */
 function unplacedPoint(zone: ZoneResolution, verifiedAt: string): RegulatoryResult {
   return {
+    next: { kind: "NOT_CERTIFIED" },
     status: "NEEDS_VERIFICATION",
     summary: "North Ground could not place this point in an official hunting zone, so it will not infer a hunting status.",
     legalTime: legalTimeNotCertified("Legal hunting hours are not available without a resolved zone.", "North Ground"),
@@ -107,6 +108,7 @@ function unplacedPoint(zone: ZoneResolution, verifiedAt: string): RegulatoryResu
 /** A zone in a jurisdiction whose hunting rules North Ground has not certified. */
 function uncertifiedJurisdiction(zone: ZoneResolution, verifiedAt: string): RegulatoryResult {
   return {
+    next: { kind: "NOT_CERTIFIED" },
     status: "UNKNOWN",
     summary:
       `${zone.officialName ?? "This zone"} is outside the jurisdictions whose hunting rules North Ground has certified. ` +

@@ -487,6 +487,8 @@ export function evaluateConditional(
   const groups = new Map(bundle.groups.map((group) => [group.id, group]));
 
   const base = (overrides: Partial<RegulatoryResult>, rules: ConditionalRule[] = []): RegulatoryResult => ({
+    /* No certified basis for a next opening from this path. Never "none". */
+    next: { kind: "NOT_CERTIFIED" },
     status: "UNKNOWN",
     summary: "",
     legalTime: vocabulary.legalTime,

@@ -1,3 +1,4 @@
+import type { NextSeason } from "./regulatory/season.ts";
 import type { LegalTimeResult } from "./regulatory/legal-time.ts";
 import type { Limitation } from "./limitation.ts";
 import type { BlockResult, CanonicalId, IsoDate, SourceRecord } from "../content-contract/index.ts";
@@ -84,6 +85,12 @@ export interface RegulatoryResult {
      */
     label?: { text: string; lang: "en-CA" | "fr-CA"; owner: "AUTHORITY" };
   };
+  /**
+   * When the next season opens. REQUIRED, and a discriminated union, because
+   * "closed until further notice" and "we do not know" must not share a
+   * representation — see `NextSeason`. Every producer states which it means.
+   */
+  next: NextSeason;
   limits?: { daily: number; possession: number; combinedWith?: string };
   /**
    * The legal hunting window, resolved where North Ground can resolve it and

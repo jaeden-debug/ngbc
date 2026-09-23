@@ -2,7 +2,7 @@ import { legalTimeNotCertified } from "./legal-time.ts";
 import { general } from "../limitation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { RegulatoryResult, ZoneResolution } from "../types.ts";
-import { evaluateSeason, parseSeasonPhrase, type SeasonWindow } from "./season.ts";
+import { evaluateSeason, nextOpening, parseSeasonPhrase, type SeasonWindow } from "./season.ts";
 import bundle from "../../../../content/regulatory/ca-on-small-game-2026.json" with { type: "json" };
 
 /**
@@ -88,6 +88,8 @@ const BASE = {
 
 function baseResult(overrides: Partial<RegulatoryResult>): RegulatoryResult {
   return {
+    /* No certified basis for a next opening from this path. Never "none". */
+    next: { kind: "NOT_CERTIFIED" },
     ...BASE,
     requirements: [...BASE.requirements],
     limitations: [...BASE.limitations],
@@ -222,6 +224,15 @@ export function evaluateOntarioSmallGame(
   const season = evaluateSeason(windows, rule.sourceYear, input.date);
   const first = season.windows[0];
   const shared = {
+    /*
+     * Supplementary, never a status. A CLOSED row carries its next opening and
+     * stays CLOSED: "closed" and "closed, opens November 7" are different
+     * answers to a hunter and neither is a different legal status.
+     *
+     * Read from the SAME resolved windows this answer is built from, so the
+     * next date cannot disagree with the season beside it.
+     */
+    next: nextOpening([season], input.date),
     season: { opens: first.opensIso, closes: first.closesIso, datesInclusive: true },
     limits: limitsOf(rule),
     sourceIds: [rule.sourceId as CanonicalId<"source">, SUPPORTING_SOURCE],

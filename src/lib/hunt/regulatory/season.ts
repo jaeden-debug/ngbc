@@ -265,3 +265,67 @@ export function parseSeasonPhrase(phrase: string): SeasonWindow[] | null {
   if (residue.length > 0) return null;
   return windows;
 }
+
+/**
+ * When the next season opens, as a fact that cannot be mistaken for another.
+ *
+ * The owner's requirement is that **closed-until-further-notice and we-do-not-
+ * know must not share a representation**. An optional field with `null` leaves
+ * that one typo from breaking — `next?: {…} | null` renders "absent" and "null"
+ * identically at every call site that forgets which it meant. So this is a
+ * discriminated union and the field is REQUIRED: every producer has to say
+ * which of these it means, and the compiler asks.
+ *
+ * DEPENDS_ON_HUNTER is not a hedge. When an answer needs a fact from the
+ * hunter, the engine returns before it evaluates any season window at all —
+ * there is literally nothing to read a next opening from, and computing one
+ * anyway would mean evaluating windows the engine deliberately did not, which
+ * is a second interpretation of the rules. A next opening stated there would
+ * also be true for only some licences, which is the stricter-or-looser-than-
+ * the-source failure wearing a helpful face.
+ */
+export type NextSeason =
+  /** A further season is established, and these are its days. */
+  | { kind: "SEASON"; opens: string; closes: string }
+  /** There is a next opening, but which one depends on who is hunting. */
+  | { kind: "DEPENDS_ON_HUNTER" }
+  /** Certified through this date, and no further season begins before it. */
+  | { kind: "NONE_IN_CERTIFIED_PERIOD"; through: string }
+  /** North Ground holds no certified basis for saying. Never "none". */
+  | { kind: "NOT_CERTIFIED" };
+
+/**
+ * The earliest opening strictly after `date`, across every season the engine
+ * evaluated for this answer.
+ *
+ * Reads the engine's OWN resolved windows rather than re-deriving them, so a
+ * next opening cannot disagree with the season the same answer reports. Where
+ * several rules apply, the earliest future opening among them is the one a
+ * hunter is waiting for.
+ */
+export function nextOpening(
+  evaluations: readonly SeasonEvaluation[],
+  date: string,
+): NextSeason {
+  if (!evaluations.length) return { kind: "NOT_CERTIFIED" };
+
+  const upcoming = evaluations
+    .flatMap((evaluation) => evaluation.windows)
+    /* STRICTLY after: a window that opened today is the current season, which
+       the answer already reports, and repeating it as "next" would tell a
+       hunter to wait for a day that has arrived. */
+    .filter((window) => window.opensIso > date)
+    .sort((a, b) => a.opensIso.localeCompare(b.opensIso));
+
+  const soonest = upcoming[0];
+  if (soonest) return { kind: "SEASON", opens: soonest.opensIso, closes: soonest.closesIso };
+
+  /*
+   * Nothing further inside what the sources certify. That is a statement about
+   * the CERTIFIED PERIOD, not about the world: the authority's next summary may
+   * well open a season the day after it ends, so the date is carried and the
+   * claim stops there.
+   */
+  const through = evaluations.map((evaluation) => evaluation.span.to).sort().at(-1);
+  return through ? { kind: "NONE_IN_CERTIFIED_PERIOD", through } : { kind: "NOT_CERTIFIED" };
+}

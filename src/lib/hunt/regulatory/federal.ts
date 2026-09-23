@@ -400,6 +400,14 @@ export function composeFederalWithProvincial(
       : federal.status;
 
   return {
+    /*
+     * A composed answer needs the first date BOTH layers permit, which is not
+     * either side's own next opening — a federal season opening while the
+     * provincial one is shut is not a date anyone may hunt. Neither side
+     * computes a next opening yet, so composing them cannot invent one; when
+     * one does, this must become that intersection and not a passthrough.
+     */
+    next: { kind: "NOT_CERTIFIED" },
     status,
     summary: federal.summary,
     ...(federal.season && status === "CONDITIONAL" ? { season: federal.season } : {}),

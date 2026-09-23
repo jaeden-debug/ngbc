@@ -12,6 +12,7 @@ import {
 const on = (value: string) => value as IsoDate;
 
 const provincialUnknown: RegulatoryResult = {
+  next: { kind: "NOT_CERTIFIED" },
   status: "UNKNOWN",
   summary: "not certified",
   legalTime: legalTimeNotCertified("", "test authority"),
