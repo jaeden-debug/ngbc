@@ -150,8 +150,8 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   const [page, setPage] = useState<Page>("main");
   const [snap, setSnap] = useState<SheetSnap>(initialUrl.zoneId ? "half" : "peek");
   const [heights, setHeights] = useState<SheetHeights | null>(null);
-  /** What the browser's own chrome covers, so the shell can sit above it. */
-  const [viewportGap, setViewportGap] = useState(0);
+  /** The band the hunter can actually see, inset from the layout viewport. */
+  const [viewportInset, setViewportInset] = useState({ top: 0, bottom: 0 });
   /** The species page was opened to answer "where can I hunt this", not "what about here". */
   const [findingGame, setFindingGame] = useState(false);
   const [view, setView] = useState<MapView | null>(null);
@@ -354,30 +354,62 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
      * toolbar hides and returns. Measuring from it means the sheet's `full` is
      * the screen a hunter can really see.
      */
-    const visible = () => Math.round(window.visualViewport?.height ?? window.innerHeight);
-    let last = 0;
+    /*
+     * THE SHELL IS THE BAND A HUNTER CAN SEE — both edges of it.
+     *
+     * `position: fixed` is fixed to the LAYOUT viewport, which never moves. A
+     * phone's VISUAL viewport does: the toolbar takes height off the bottom,
+     * and a keyboard both shrinks it AND scrolls it down, so
+     * `visualViewport.offsetTop` becomes non-zero. Sizing for the bottom alone
+     * left the sheet's top 58px above the visible area with a keyboard open —
+     * measured — which is "the keyboard throws the sheet out of view from the
+     * top" exactly.
+     *
+     * So the shell is inset to `[offsetTop, offsetTop + height]` and the sheet
+     * is measured against that height. Then the sheet's top is on screen
+     * whatever the browser does with its own chrome.
+     */
+    const band = () => {
+      const view = window.visualViewport;
+      const height = Math.round(view?.height ?? window.innerHeight);
+      const top = Math.round(view?.offsetTop ?? 0);
+      return { top, height, bottom: Math.max(0, window.innerHeight - top - height) };
+    };
+    let last = { top: -1, height: -1, bottom: -1 };
     const measure = () => {
       const headerBottom = headerRef.current?.getBoundingClientRect().bottom ?? 60;
       const safeBottom = safeProbeRef.current?.getBoundingClientRect().height ?? 0;
-      last = visible();
-      /* How much of the layout viewport the browser's chrome is sitting over.
-         The shell is lifted by it, so nothing is laid out under the toolbar. */
-      setViewportGap(Math.max(0, window.innerHeight - last));
-      setHeights(sheetHeights({ viewportHeight: last, headerBottom, safeBottom }));
+      last = band();
+      setViewportInset({ top: last.top, bottom: last.bottom });
+      setHeights(sheetHeights({ viewportHeight: last.height, headerBottom, safeBottom }));
     };
-    /* iOS reports the toolbar sliding as a stream of resizes. Re-laying the
-       sheet out on every one of them is the stutter; a threshold keeps the
-       real changes — rotation, keyboard, toolbar settled — and drops the
-       frames of an animation we do not need to follow. */
-    const onVisualResize = () => { if (Math.abs(visible() - last) > 24) measure(); };
+    /*
+     * Two reasons not to follow every frame:
+     *
+     * iOS reports a toolbar sliding, and a keyboard opening, as a STREAM of
+     * resizes. Re-laying the sheet out on each one is the stutter the owner
+     * described as glitching; a threshold keeps the real changes — rotation,
+     * a settled keyboard, a settled toolbar — and drops the animation.
+     *
+     * And never mid-drag: re-measuring while a finger is moving the sheet
+     * changes the geometry the gesture is being resolved against, which is
+     * the gesture fighting the layout.
+     */
+    const settle = () => {
+      if (document.querySelector("[data-dragging]")) return;
+      const now = band();
+      if (Math.abs(now.height - last.height) > 24 || Math.abs(now.top - last.top) > 8) measure();
+    };
     measure();
     window.addEventListener("resize", measure);
     window.addEventListener("orientationchange", measure);
-    window.visualViewport?.addEventListener("resize", onVisualResize);
+    window.visualViewport?.addEventListener("resize", settle);
+    window.visualViewport?.addEventListener("scroll", settle);
     return () => {
       window.removeEventListener("resize", measure);
       window.removeEventListener("orientationchange", measure);
-      window.visualViewport?.removeEventListener("resize", onVisualResize);
+      window.visualViewport?.removeEventListener("resize", settle);
+      window.visualViewport?.removeEventListener("scroll", settle);
     };
   }, []);
 
@@ -401,13 +433,14 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     if (!heights || layout !== "sheet") return undefined;
     return {
       "--sheet-peek": `${heights.peek}px`,
-      "--viewport-gap": `${viewportGap}px`,
+      "--viewport-top": `${viewportInset.top}px`,
+      "--viewport-gap": `${viewportInset.bottom}px`,
       "--sheet-half": `${heights.half}px`,
       "--sheet-full": `${heights.full}px`,
       "--sheet-h": `${heightOf(snap, heights)}px`,
       ...(mapBottom !== null ? { "--map-bottom": `${mapBottom}px` } : {}),
     } as React.CSSProperties;
-  }, [heights, layout, snap, mapBottom, viewportGap]);
+  }, [heights, layout, snap, mapBottom, viewportInset]);
 
   /* ── Selection, zones, presentation ──────────────────────────────────── */
 
@@ -1482,7 +1515,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
             ) : null}
           </>
         ) : null}
-        <button type="button" className={styles.linkButton} onClick={() => openPage("zones")}>List these zones in words</button>
+        <button type="button" className={styles.linkButton} onClick={() => openPage("zones")}>List these zones</button>
       </div>
     );
   } else {

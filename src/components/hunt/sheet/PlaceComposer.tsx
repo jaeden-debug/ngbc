@@ -129,6 +129,14 @@ export default function PlaceComposer({
     skipNextQueryRef.current = true;
     setQuery(suggestion.primary);
     setSuggestions([]);
+    /*
+     * The question has been answered, so the keyboard goes.
+     *
+     * Leaving it up covers the answer the person just asked for with the tool
+     * they used to ask — on a phone that is most of the screen, and they have
+     * to dismiss it themselves before they can read anything.
+     */
+    inputRef.current?.blur();
     const label = [suggestion.primary, suggestion.secondary].filter(Boolean).join(", ");
     // The keyless provider returns the coordinate with the suggestion; no second trip.
     if (typeof suggestion.latitude === "number" && typeof suggestion.longitude === "number") {
@@ -155,7 +163,7 @@ export default function PlaceComposer({
     } finally {
       sessionTokenRef.current = newSessionToken();
     }
-  }, [onChoose]);
+  }, [onChoose, inputRef]);
 
   function onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Escape") {
@@ -313,7 +321,7 @@ export default function PlaceComposer({
                     type="button"
                     className={styles.optionRow}
                     onMouseDown={(event) => event.preventDefault()}
-                    onClick={() => { skipNextQueryRef.current = true; setQuery(""); onChoose(place); }}
+                    onClick={() => { skipNextQueryRef.current = true; setQuery(""); inputRef.current?.blur(); onChoose(place); }}
                   >
                     <span className={styles.optionIcon} aria-hidden="true">
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -331,7 +339,7 @@ export default function PlaceComposer({
         ) : null}
         <ul className={styles.optionList} aria-label="Other ways to choose a place">
           <li>
-            <button type="button" className={styles.optionRow} onClick={onUseMyLocation} disabled={locating} aria-busy={locating || undefined}>
+            <button type="button" className={styles.optionRow} onClick={() => { inputRef.current?.blur(); onUseMyLocation(); }} disabled={locating} aria-busy={locating || undefined}>
               <span className={styles.optionIcon} data-tone="location" aria-hidden="true">
                 {locating ? <span className={styles.spinner} /> : (
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14.5 1.5 9 14.5l-1.7-5.8L1.5 7 14.5 1.5Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" /></svg>
@@ -344,7 +352,7 @@ export default function PlaceComposer({
             </button>
           </li>
           <li>
-            <button type="button" className={styles.optionRow} onClick={onChooseOnMap}>
+            <button type="button" className={styles.optionRow} onClick={() => { inputRef.current?.blur(); onChooseOnMap(); }}>
               <span className={styles.optionIcon} aria-hidden="true">
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
                   <path d="M10 18.5s-5.6-6.3-5.6-10.6a5.6 5.6 0 0 1 11.2 0c0 4.3-5.6 10.6-5.6 10.6Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />

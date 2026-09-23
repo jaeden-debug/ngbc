@@ -25,6 +25,7 @@
    * measures between the layout and the visual viewport, so the whole
    * composition lays out inside what a hunter can actually see.
    */
+  top: var(--viewport-top, 0px);
   bottom: var(--viewport-gap, 0px);
   /* clip, not hidden: a hidden overflow is still scrollable by focus, which
      slid the whole shell up when a control below the fold was focused. */
@@ -1063,8 +1064,10 @@
 .aboutMeanings { display: grid; gap: 8px; margin: 0; }
 .aboutMeanings dt { font-size: 0.86rem; font-weight: 700; color: var(--ng-cream); }
 .aboutMeanings dd { margin: 2px 0 0; font-size: 0.82rem; line-height: 1.5; color: var(--ng-bone-dim); }
-.aboutLinks { margin: 0; font-size: 0.86rem; }
-.aboutLinks a { color: var(--ng-cream); }
+.aboutLinks { margin: -8px 0 0; font-size: 0.86rem; }
+/* Inline links in a footer are a 16px-tall target on a phone. The text stays
+   where it was; the box around it grows to something a thumb can hit. */
+.aboutLinks a { display: inline-block; padding: 10px 2px; color: var(--ng-cream); }
 
 /* ── Feedback ──────────────────────────────────────────────────────────── */
 

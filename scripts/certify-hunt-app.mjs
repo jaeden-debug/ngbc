@@ -1273,6 +1273,81 @@ const scenarios = {
 
 
   /*
+   * THE KEYBOARD, AND THE EDGE THE SUITE HAS NEVER ASSERTED.
+   *
+   * Everything here has been checked against the BOTTOM of the viewport. The
+   * owner's report was the top: with a keyboard open the sheet's header went
+   * off the top of the screen. A phone's keyboard both shrinks the visual
+   * viewport AND scrolls it down, so `visualViewport.offsetTop` becomes
+   * non-zero — and `position: fixed` is fixed to the LAYOUT viewport, which
+   * never moves. Measured before the fix: sheet top 62, visible band starting
+   * at 120, so 58px of the sheet including its header was above the screen.
+   *
+   * `visualViewport.height` alone cannot tell a keyboard from a toolbar. The
+   * offset can, and the shell is inset by both edges.
+   */
+  async keyboardAndTheSheet(browser) {
+    const s = "the keyboard does not take the sheet with it";
+    const { context, page, consoleErrors } = await newPage(browser, { width: 390, height: 844 });
+    await page.goto(`${BASE}/hunt`);
+    await mapReady(page);
+    await page.waitForTimeout(2_000);
+
+    await page.locator("input[type='search']").first().click();
+    await page.waitForTimeout(600);
+    // A phone keyboard: the visible band shrinks AND slides down.
+    await page.evaluate(() => {
+      Object.defineProperty(window.visualViewport, "height", { configurable: true, get: () => 508 });
+      Object.defineProperty(window.visualViewport, "offsetTop", { configurable: true, get: () => 120 });
+      window.visualViewport.dispatchEvent(new Event("resize"));
+      window.visualViewport.dispatchEvent(new Event("scroll"));
+    });
+    await page.waitForTimeout(1_200);
+
+    const withKeyboard = await page.evaluate(() => {
+      const sheet = document.querySelector("section[data-layout]")?.getBoundingClientRect();
+      const field = document.querySelector("input[type='search']")?.getBoundingClientRect();
+      const view = window.visualViewport;
+      const top = view.offsetTop, bottom = view.offsetTop + view.height;
+      if (!sheet || !field) return null;
+      return {
+        visible: [Math.round(top), Math.round(bottom)],
+        sheet: [Math.round(sheet.top), Math.round(sheet.bottom)],
+        topOnScreen: sheet.top >= top - 1,
+        fieldOnScreen: field.top >= top - 1 && field.bottom <= bottom + 1,
+      };
+    });
+    check(s, "the sheet's TOP stays on screen with a keyboard open",
+      withKeyboard?.topOnScreen === true, JSON.stringify(withKeyboard));
+    check(s, "and the field a hunter is typing into is above the keyboard",
+      withKeyboard?.fieldOnScreen === true, JSON.stringify(withKeyboard));
+
+    // Put the viewport back, then answer the question and expect the keyboard to go.
+    await page.evaluate(() => {
+      Object.defineProperty(window.visualViewport, "height", { configurable: true, get: () => 844 });
+      Object.defineProperty(window.visualViewport, "offsetTop", { configurable: true, get: () => 0 });
+      window.visualViewport.dispatchEvent(new Event("resize"));
+    });
+    await page.waitForTimeout(600);
+    await page.locator("input[type='search']").first().fill("Bancroft Ontario");
+    const suggested = await waitFor(page, () => document.querySelectorAll("[role=option]").length > 0, 25_000);
+    if (suggested) {
+      await page.locator("[role=option]").first().click();
+      await page.waitForTimeout(1_200);
+      const focus = await page.evaluate(() => ({
+        stillInField: document.activeElement === document.querySelector("input[type='search']"),
+        tag: document.activeElement?.tagName ?? "",
+      }));
+      /* Leaving the keyboard up covers the answer with the tool used to ask
+         for it — on a phone that is most of the screen. */
+      check(s, "choosing a place dismisses the keyboard", focus.stillInField === false, JSON.stringify(focus));
+    }
+    check(s, "no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));
+    await context.close();
+  },
+
+
+  /*
    * SAME HUNT LINK → SAME INITIAL ANSWER.
    *
    * `urlBeatsMemory` proves one client is not polluted. This proves two
