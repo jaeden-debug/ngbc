@@ -4,17 +4,32 @@ import Breadcrumbs from "../../../components/Breadcrumbs";
 import HuntNav from "../../../components/hunt/HuntNav";
 import { contentRepository } from "../../../lib/content/repository";
 import { northAmericaCoverageReport, regulatoryJurisdictionsForSpecies } from "../../../lib/hunt/north-america/report";
+import { SPECIES_LIBRARY_METADATA } from "../../../lib/seo/species-metadata";
 import { currentSpeciesMediaAdmin } from "../../../lib/species-media/admin-auth";
 import { getSpeciesPrimaryMediaMap } from "../../../lib/species-media/repository";
 import SpeciesLibrary, { type LibrarySpecies } from "./SpeciesLibrary";
 import styles from "./page.module.css";
 
+const SPECIES_LIBRARY_OG_IMAGE = "/og/species-library";
+
 export const metadata: Metadata = {
-  /* The layout template already appends the brand. Setting it here too produced
-     "Species Library | North Ground | North Ground" in the live tab. */
-  title: "Species library",
-  description: "Field-useful species profiles with verified taxonomy, identification cautions, habitat context and clear separation from hunting regulations.",
+  /* The layout template already appends the brand. */
+  title: SPECIES_LIBRARY_METADATA.title,
+  description: SPECIES_LIBRARY_METADATA.description,
   alternates: { canonical: "/hunting/species" },
+  openGraph: {
+    type: "website",
+    url: "/hunting/species",
+    title: SPECIES_LIBRARY_METADATA.ogTitle,
+    description: SPECIES_LIBRARY_METADATA.ogDescription,
+    images: [{ url: SPECIES_LIBRARY_OG_IMAGE, width: 1200, height: 630, alt: SPECIES_LIBRARY_METADATA.ogTitle }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SPECIES_LIBRARY_METADATA.ogTitle,
+    description: SPECIES_LIBRARY_METADATA.ogDescription,
+    images: [SPECIES_LIBRARY_OG_IMAGE],
+  },
 };
 export const dynamic = "force-dynamic";
 

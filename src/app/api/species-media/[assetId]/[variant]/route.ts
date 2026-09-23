@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-import { defaultSupabaseServerClient } from "../../../../../lib/supabase/server";
-import { SPECIES_MEDIA_BUCKET } from "../../../../../lib/species-media/paths";
+import { readSpeciesRendition } from "../../../../../lib/species-media/read";
 import { SPECIES_MEDIA_VARIANTS, type SpeciesMediaVariant } from "../../../../../lib/species-media/types";
 
 export const runtime = "nodejs";
@@ -13,15 +12,9 @@ export async function GET(_request: Request, { params }: Props) {
     return new NextResponse(null, { status: 404 });
   }
   try {
-    const client = defaultSupabaseServerClient();
-    const { data: asset } = await client.from("species_media_assets").select("status").eq("id", assetId).maybeSingle();
-    if (asset?.status !== "active") return new NextResponse(null, { status: 404 });
-    const { data: rendition } = await client.from("species_media_renditions")
-      .select("storage_path").eq("asset_id", assetId).eq("variant", variant).maybeSingle();
-    if (!rendition?.storage_path) return new NextResponse(null, { status: 404 });
-    const { data, error } = await client.storage.from(SPECIES_MEDIA_BUCKET).download(rendition.storage_path);
-    if (error || !data) return new NextResponse(null, { status: 404 });
-    return new NextResponse(await data.arrayBuffer(), {
+    const bytes = await readSpeciesRendition(assetId, variant as SpeciesMediaVariant);
+    if (!bytes) return new NextResponse(null, { status: 404 });
+    return new NextResponse(bytes, {
       headers: {
         "Content-Type": "image/webp",
         "Cache-Control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",

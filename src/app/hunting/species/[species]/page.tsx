@@ -16,6 +16,7 @@ import type { SpeciesResource } from "../../../../lib/content-contract/types";
 import { contentRepository } from "../../../../lib/content/repository";
 import { regulatoryJurisdictionsForSpecies } from "../../../../lib/hunt/north-america/report";
 import { getSpeciesPrimaryMedia } from "../../../../lib/species-media/repository";
+import { speciesMetadataCopy } from "../../../../lib/seo/species-metadata";
 import { speciesArticleJsonLd } from "../../../../lib/seo/structured-data";
 import { absoluteUrl } from "../../../../lib/site";
 import styles from "./page.module.css";
@@ -49,27 +50,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { species } = await params;
   const resource = await getSpeciesResource(species);
   if (!resource) return {};
+  const speciesId = resource.speciesProfile.speciesId;
+  const groups = await contentRepository.getSpeciesGroups(speciesId);
+  const copy = speciesMetadataCopy({
+    name: resource.title,
+    groupIds: groups.map((group) => group.id),
+    regulatoryJurisdictions: regulatoryJurisdictionsForSpecies(speciesId),
+  });
+  /* The social image is this segment's opengraph-image: the species' own photo. */
   return {
-    title: resource.title,
-    description: resource.description,
+    title: copy.title,
+    description: copy.description,
     alternates: { canonical: resource.canonicalUrl },
     openGraph: {
       type: "article",
       url: resource.canonicalUrl,
-      title: resource.title,
-      description: resource.description,
-      images: [{
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: `${resource.title} | North Ground`,
-      }],
+      title: copy.ogTitle,
+      description: copy.ogDescription,
     },
     twitter: {
       card: "summary_large_image",
-      title: resource.title,
-      description: resource.description,
-      images: ["/opengraph-image"],
+      title: copy.ogTitle,
+      description: copy.ogDescription,
     },
   };
 }
