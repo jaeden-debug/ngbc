@@ -858,6 +858,134 @@ assume the newest edition shares the older one's terms.
 
 ---
 
+## The United States — Idaho and the federal layer
+
+*Added 2026-09-23.* Idaho is the one U.S. state where North Ground serves both
+boundaries and rules, so it is where U.S. evidence would first become useful.
+
+### Idaho harvest — the best-structured data in this entire research effort, and LICENCE_BLOCKED **[reached]**
+
+| | |
+|---|---|
+| Authority | Idaho Department of Fish and Game |
+| Dataset | `{year} {Species} {General\|Controlled} Hunt Harvest Statistics` (Hunt Planner) |
+| Evidence kind | Harvest, hunters, **hunter days**, success, antler class |
+| Geography level | ZONE |
+| Published unit | "Unit" — Game Management Unit |
+| Period | 2000–2025 for deer, elk, bear, lion; turkey from 1996; wolf from 2009 |
+| Format | Server-rendered HTML tables. **No CSV, no JSON, no API** |
+| Licence | **Commercial use prohibited** |
+
+Columns read from the live 2024 elk page: `Take Method, Unit, Harvest, Hunters,
+Success%, Days, Antlered, Antlerless, %Spike, %6+Pts, Year` — 325 data rows.
+
+This is the richest harvest structure found anywhere in this research. It has
+what British Columbia has — hunters *and* days, so harvest per unit effort is
+derivable — plus take method and antler class, per unit, twenty-six years deep.
+
+And it cannot be used. Read verbatim at <https://idfg.idaho.gov/terms>:
+
+> "Permission is granted to temporarily download one copy of the materials
+> (information or software) on our Websites for personal, non-commercial
+> transitory viewing only. This is the grant of a license, not a transfer of
+> title, and under this license, you may not: modify or copy the materials; use
+> the materials for any commercial purpose, or any public display (commercial or
+> non-commercial); … or transfer the materials to another person or "mirror" the
+> materials on any other server."
+
+Three separate clauses bite: commercial use, copying, and mirroring on another
+server. A formal request through <https://idfg.idaho.gov/data/request> is the
+only route, and that is an owner decision.
+
+**Hard line: Idaho deer is ONE species in this data.** Mule deer and white-tailed
+deer are not separate records — whitetail share is a `%Whitetail` *column*. A
+per-species Idaho deer figure must be derived from that percentage, with the
+derivation and its denominator carried, or not stated at all.
+
+### Idaho population estimates — PDF_ONLY and stale, under a different licence **[reached]**
+
+IDFG's Surveys and Inventories statewide reports exist for elk, mule deer,
+white-tailed deer, black bear, moose, pronghorn, sheep and goat — as PDFs, moved
+off IDFG's own site to the Idaho Commission for Libraries, and the most recent
+reachable are **2014–2016**. One was downloaded and confirmed genuine.
+
+Their rights statement there is materially different and better: "Publication is
+in the public domain. Copyright does not apply." That applies to the library's
+copies, **not** to the Hunt Planner tables. One agency, two licences, depending
+where the file is hosted — the same lesson Saskatchewan and British Columbia
+taught, in a third form.
+
+### Idaho GIS — USABLE, and a precision trap avoided **[reached]**
+
+IDFG's open-data portal carries 37 feature services, **none of them harvest or
+population**. Their licences state no commercial prohibition, only a no-warranty
+disclaimer — again different from the website terms.
+
+Its **Species Ranges** service is live and queryable, covering every Idaho game
+species including ruffed, dusky, spruce and sharp-tailed grouse, with a `Season`
+and a `Data_Source` per record. IDFG states the scale itself — "Should be used at
+1:100000-scale" — and draws the distinction this architecture draws:
+
+> "Species ranges provide a general representation of where a species might occur
+> during its lifetime. It's important to distinguish these from species
+> 'distribution models,' which pinpoint potential habitat within the range."
+
+**The trap: IDFG's own sampling unit for mule deer is not the GMU.** Its Mule
+Deer Data Analysis Units are "comprised of multiple Game Management Units… now
+used as the sampling unit for mule deer management". A GMU-keyed mule deer
+population layer would invent a resolution the authority does not use. This is
+Ontario's elk problem and Alberta's WMU groups again, in a third jurisdiction —
+the pattern is now established rather than incidental.
+
+### U.S. federal datasets
+
+**USGS GAP species habitat and range maps** — 30 m habitat maps and
+sub-watershed range maps, marked **CC0 1.0**, covering elk, mule deer,
+white-tailed deer, moose and black bear; ruffed grouse has a range map and no
+habitat map was found. Two caveats that matter more than the licence. The models
+are built on **2001 ground conditions** — 25 years stale. And USGS names
+"determining species abundance" among inappropriate uses: GAP is a suitability
+surface, and it belongs in a heat map only as a labelled habitat component,
+never as the score. **Not reached** — ScienceBase returns HTTP 403 to this
+environment, so file formats and sizes are unverified.
+
+**NLCD** — 30 m, 1985–2025, **CONUS only** (Alaska and Hawaii planned), public
+domain, and its WMS was confirmed live by a successful GetMap over Idaho. The
+U.S. counterpart to Canada's NRCan land cover, and the T4 input for any U.S.
+habitat model.
+
+**USFWS Waterfowl Breeding Population and Habitat Survey** — the most completely
+verified U.S. dataset here: stratum polygons (81 records) and per-stratum
+densities (36,234 rows, 22 species codes, 2000–2026), CSV and shapefile,
+federal work with no commercial restriction stated. **Its geography is the
+traditional survey area** — prairie and boreal Canada, the Dakotas, Montana,
+Alaska. It is not a national layer and not an Idaho layer, and must never be
+presented as national duck density.
+
+**PAD-US** public-land services are live; terms not verified. Context, not
+species evidence.
+
+### United States: verdict
+
+| Source | Verdict |
+|---|---|
+| Idaho Hunt Planner harvest | **LICENCE_BLOCKED** — per-GMU, 26 years, hunters and days; commercial use prohibited |
+| Idaho statewide survey reports | PDF_ONLY and stale (2014–2016); public domain at the library |
+| Idaho Species Ranges service | **USABLE** — 1:100,000, range not distribution |
+| Idaho GMU and DAU boundaries | **USABLE** — no commercial prohibition stated |
+| USGS GAP habitat and range | **USABLE** (CC0), not reached; 2001 conditions; never an abundance claim |
+| NLCD land cover | **USABLE** — 30 m, CONUS |
+| USFWS WBPHS waterfowl | **USABLE** — stratum polygons and densities; not national |
+| PAD-US | Live; terms NOT VERIFIED |
+
+**The U.S. position mirrors Canada's exactly.** The best harvest data in this
+entire research effort is in the one state North Ground serves, at the right
+resolution, with the effort denominator Canada mostly lacks — and it is locked
+behind a terms-of-use page. Federal range, habitat and land cover are open and
+usable; state harvest is not.
+
+---
+
 ## Consequences for the product
 
 **1. The heat map is viable in three provinces today, not nationally.** Ontario,
@@ -905,10 +1033,27 @@ where it otherwise says nothing about where to look; used carelessly it is the
 single most likely source of a fabricated heat map, because it is tempting and
 it is dense enough to look precise.
 
-**7. Birds have nothing, anywhere.** No harvest for upland birds or waterfowl in
-Alberta, no bird range in Québec's file, and nothing federal newer than 1957.
-Ruffed grouse is a supported species in Hunt with certified rules, and there is
-currently no evidence layer for it in Canada at all.
+**7. Birds have nothing in Canada.** No upland or waterfowl harvest in Alberta,
+no birds in Québec's range file, nothing federal newer than 1957, EBAR empty and
+eBird barred. Ruffed grouse has certified rules in Hunt and no evidence layer
+anywhere in Canada. It does have an Idaho range polygon and a USGS GAP range
+map, so the first grouse evidence North Ground could hold would be American.
+
+**8. The same pattern holds on both sides of the border, and it is a licence
+pattern.** Canada: eight provinces publish zone-resolution harvest, three are
+usable. United States: the one state North Ground serves publishes the best
+harvest structure found in this entire effort — per-unit, twenty-six years,
+hunters *and* days — under terms forbidding commercial use. Meanwhile federal
+land cover, federal range and federal waterfowl surveys are open on both sides.
+**Authorities publish their geography and their science openly, and reserve
+their hunter data.** That is the shape of the problem, and no amount of
+engineering changes it.
+
+**9. Three jurisdictions have now shown the same precision trap.** Ontario
+reports elk by Elk Harvest Area, Alberta by groups of WMUs, and Idaho manages
+mule deer by Data Analysis Units — none of which is the unit the map draws.
+Joining any of them to the drawn unit would invent evidence. This is routine,
+not exceptional, and `reportedAtLargerArea` is the contract that carries it.
 
 ---
 
