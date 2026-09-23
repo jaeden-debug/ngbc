@@ -102,6 +102,38 @@ describe("what Ready to Hunt refuses, and why", () => {
     assert.equal(checked, 74);
   });
 
+  it("FAILS IF THE GATE WIDENS: no checklist beside CLOSED, UNKNOWN or NEEDS_VERIFICATION", async () => {
+    /* This is the specific thing to defend, stated as its own test rather than
+       left as a property of the sweep above.
+       
+       The danger was never an empty checklist appearing — nothing can produce
+       one, because every checklist that reaches a hunter today is complete.
+       The danger is SOMEONE RELAXING THE GATE, which will look like
+       helpfulness: showing requirements beside a closed or unknown answer so
+       the card has something in it. That would produce checklists for 206 of
+       280 Ontario combinations, 85 of them where North Ground does not know
+       the law.
+       
+       A checklist beside UNKNOWN says we know the hunt is possible. We do not. */
+    const cases: Array<[string, string, string]> = [
+      ["species:white-tailed-deer", "1A", "2026-11-10"],
+      ["species:moose", "60", "2026-04-30"],
+      ["species:wild-turkey", "95", "2026-11-10"],
+      ["species:american-black-bear", "82C", "2027-01-15"],
+    ];
+    let sawNonConditional = 0;
+    for (const [speciesId, unit, date] of cases) {
+      const { regulation, readiness } = await evaluate(speciesId, unit, date);
+      if (regulation.status === "CONDITIONAL") continue;
+      sawNonConditional += 1;
+      assert.equal(
+        readiness, undefined,
+        `${speciesId} WMU ${unit} ${date} is ${regulation.status} and produced a checklist — the gate has widened`,
+      );
+    }
+    assert.ok(sawNonConditional >= 3, "these cases must keep exercising non-CONDITIONAL statuses");
+  });
+
   it("says a jurisdiction has no checklist rather than showing an empty one", async () => {
     /* The other refusal, and it must stay a SENTENCE rather than an empty
        card: an unbuilt jurisdiction with no limitations reads as "nothing
