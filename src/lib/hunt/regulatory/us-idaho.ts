@@ -53,8 +53,7 @@ export const IDAHO_VOCABULARY: ConditionalVocabulary = {
   // Quoted from p. 95; the builder stops if this wording changes.
   legalTime: legalTimeNotCertified(
     "Idaho: “Big game animals may be hunted only from one-half hour before sunrise to one-half hour after sunset” (p. 95). " +
-      "North Ground cannot state exact clock times for a point in Idaho, because the state spans two time zones: the tz " +
-      "database records Mountain time for southern Idaho and Pacific for the north.",
+      "North Ground has not certified exact astronomical times.",
     "Idaho Department of Fish and Game",
   ),
   standingLimitations: IDAHO_BUNDLE.limitations.map((text) => general(text)),

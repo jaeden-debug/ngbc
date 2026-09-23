@@ -205,19 +205,6 @@ export interface ConditionalVocabulary {
   /** Asked in this order when more than one fact is outstanding. */
   dimensions: VocabularyDimension[];
   legalTime: RegulatoryResult["legalTime"];
-  /**
-   * The legal window computed AT a point, where the jurisdiction can.
-   *
-   * Returns undefined to fall back to `legalTime` above — for a ZONE-scoped
-   * question, where no point is known, or where the point's timezone cannot be
-   * established. Each jurisdiction resolves its own timezone, because each
-   * knows its own extent; the engine does not learn a jurisdiction lookup.
-   */
-  legalTimeAt?: (
-    speciesId: string,
-    place: { latitude: number; longitude: number; scope?: "POINT" | "ZONE" },
-    date: string,
-  ) => RegulatoryResult["legalTime"] | undefined;
   /** Carried by every answer, because every answer is subject to them. */
   standingLimitations: Limitation[];
   /** The language the authority publishes its own labels in. */
@@ -565,7 +552,7 @@ export function evaluateConditional(
     ),
     status: "UNKNOWN",
     summary: "",
-    legalTime: vocabulary.legalTimeAt?.(input.speciesId, place, date) ?? vocabulary.legalTime,
+    legalTime: vocabulary.legalTime,
     requirements: [],
     limitations: [...vocabulary.standingLimitations],
     sourceIds: [...new Set([...rules.map((rule) => rule.sourceId), ...vocabulary.standingSourceIds])] as CanonicalId<"source">[],

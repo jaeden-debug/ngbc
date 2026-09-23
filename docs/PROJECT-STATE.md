@@ -188,28 +188,6 @@ Previously: 2026-09-22 (Canonical species PRIMARY media schema, private storage 
 
 ## Known Problems / Technical Debt
 
-### Saskatchewan's point timezone is one zone short of the truth (found 2026-09-23)
-
-`SINGLE_ZONE_JURISDICTIONS` in `src/lib/hunt/time-zone.ts` maps
-`jurisdiction:ca-sk` to `America/Regina`. The tz database's own country table
-puts Saskatchewan in **three** zones: `America/Regina` (most areas),
-`America/Swift_Current` (midwest) and `America/Edmonton` ("SK(W)"). Regina and
-Swift_Current agree on the wall clock — both CST year-round — but the SK(W)
-area around Lloydminster keeps Alberta time: MDT in summer, agreeing with CST,
-and **MST in winter, an hour apart**.
-
-That is the failure shape `time-zone.ts` was written about — correct in one
-season, wrong in the other, so an in-season check passes. It is live rather
-than theoretical: `timeZoneAtPoint` feeds federal migratory-bird legal hours
-and readiness, and those seasons run into November and December.
-
-**Deliberately not fixed by the lane that found it.** Making it undefined
-withholds a legal time across the whole province to be right about one border
-strip, which §8 treats as its own false claim. It belongs to whoever owns
-Saskatchewan's serving posture. Alberta and Manitoba were added to the same
-table on the opposite evidence: each is wholly inside one zone, and refusing
-them a clock had been shipping a stricter-than-evidence refusal.
-
 - **The Supabase advisor's INFO items are deliberate (assessed 2026-09-22).** 8 unindexed foreign keys (management_zones.source_id, regulatory_groups.jurisdiction_id/source_id, regulatory_rules.jurisdiction_id/source_id, regulatory_sources.jurisdiction_id, regulatory_special_area_layers.published_run_id, zone_ingest_runs.jurisdiction_id) and 4 unused indexes (regulatory_rules_lookup_idx, hunt_brief_snapshots_created_at_idx, zone_ingest_features_geometry_gix, regulatory_rule_sources_source_idx). None sits on a request path: Hunt evaluates regulations from the committed bundles, and those tables are a mirror for coverage reporting and the review lifecycle, joined only by the publisher and admin tooling. The indexes are cheap to keep and needed again the moment the mirror is queried or an ingest runs. Do not "optimise" them away.
 
 - **Newfoundland publishes invalid geometry in four of its seven black bear areas.** Areas 200, 201, 205 and 206 arrive with ring self-intersections or nested shells. Each was repaired with `ST_MakeValid` under the standing guard and measured at 0.000000 m² symmetric difference, so no boundary moved; area 200 went from 4,221 to 4,210 polygons and 197,116 to 197,117 vertices. Every repair is recorded on the staged feature (`attributes.geometryNormalization`: authority, date, the authority's own validity error, polygon and vertex counts before and after, area delta), the Québec Zone 18 standard. Area 200 could not be repaired through the ordinary REST path: `ST_MakeValid` takes 58 s and the guard 33 s against an 8 s statement timeout, so it was done in one guarded transaction from a direct session. Per-polygon repair was measured and rejected: only 1 of 4,221 polygons is invalid, and the residual defect is between polygons, which per-polygon work cannot fix by construction.
@@ -291,6 +269,8 @@ them a clock had been shipping a stricter-than-evidence refusal.
 
 ## Next Priorities
 
+1. **Verbatim-dependency audit (owner-directed 2026-09-23).** Per CLAUDE.md §8 "The law's answer, not a copy of the law's prose", classify every stored verbatim legislative quotation: (1) what is actually displayed to users, (2) what exists only as internal evidence, (3) what can safely become a structured fact in North Ground's own wording, (4) what genuinely requires verbatim retention because the authority's words ARE the fact. Do not recklessly delete or rewrite production evidence. The output is the list of items — if any — for which an authorization request is genuinely needed. No authorization requests are sent before this audit.
+
 Priorities 1 to 4 of the previous wave are complete: the conditional UI, the
 selector, conditional persistence and Hunt Brief v2 all landed on 2026-09-20.
 The national rollout order below replaces them.
@@ -334,9 +314,12 @@ Examples:
 - Owner action: replace production's refused `GOOGLE_MAPS_SERVER_API_KEY` (see Known Problems). Hunt works without it on Open-Meteo and Nominatim, so this blocks Google, not Hunt.
 - Owner decision: serving Québec. Three steps, each blocked on approval in the Québec session: the resolver swap (proven identical for Ontario, Manitoba and Alberta; it does not change their boundary distance — see Known Problems), promoting the 59 Québec zones to VERIFIED, and deploying the serving switch.
 - Ontario Crown-land production layer: the catalogue combines Open Government Licence metadata with additional OGDE-only features. Production storage/redistribution is blocked until the service schema is certified and the redistributable subset can be proved, or Ontario confirms the rights.
-- Owner decision: reading legisquebec.gouv.qc.ca programmatically, and storing verbatim Éditeur officiel text. Two facts, tested 2026-09-23: the site returns **403** to our own agent (`NorthGroundBushcraft/1.0`) and **200** to a browser agent, so any scripted read means presenting a user-agent we are not; and no reuse terms appear on the regulation page, whose publisher is « L'Éditeur officiel du Québec », while North Ground is a commercial use. Its `robots.txt` disallows `/fr/resource`, and the annexe III PDF is served from `/fr/ressource` — the French spelling, not a literal prefix match, which is too thin a thing to rely on. Settled already, per `source-licence.ts`: a general bot filter on a public regulations page is not an access control on a data service, so a **human-equivalent browser read is fine and is not at issue**. The open question is scripted ingestion and storage.
-  Blocks three items, which is why it goes up as one question: populating Québec gear classes (`scope.gearClasses`), anchoring art. 17 to the regulation rather than only to MFFP's summary prose, and most of Québec legal hours. Everything Québec in the bundle today comes from quebec.ca, a different source with different terms.
-  Do NOT work around it by reconstructing a gear class from `permittedImplements`: r. 12 art. 31 defines types 11 and 12 with identical bow and crossbow paragraphs, type 12 adding slugs and muzzleloaders, and the hunter-orange exemption reaches 6 and 11 but not 12. The failure direction is telling a hunter they need no orange when the law requires it, so the correct output is UNKNOWN.
+- **Verbatim legislative text — freeze, narrowed 2026-09-23 (owner).** New VERBATIM legislative text may not be added from Alberta's King's Printer, Manitoba Laws or LégisQuébec while their reproduction terms are unresolved. Already-shipped text stays. **BC is settled and unfrozen:** BC Laws is the King's Printer Licence – British Columbia (verified at the licence page 2026-09-23), which permits commercial reuse and inclusion in our own product, conditional on a required attribution statement.
+  **The freeze does NOT block the work.** Per CLAUDE.md §8 "The law's answer, not a copy of the law's prose", research, fact extraction, structured encoding, original North Ground wording, Ready to Hunt, legal hours, methods, ammunition, hunter orange, licences, limits and season certification all continue in those three jurisdictions. Treat a reproduction licence as a blocker only where answering genuinely requires protected wording.
+  No authorization requests are to be sent. An audit of what remains genuinely verbatim-dependent comes first (see Next Priorities).
+- **Live compliance gap:** the King's Printer Licence – British Columbia requires its attribution statement ("…THESE MATERIALS ARE NOT AN OFFICIAL VERSION") to be prominently displayed at least once with any reproduction. `grep "NOT AN OFFICIAL VERSION"` across `src` and `content` returns zero while BC verbatim text is live in production. Assigned to the Hunt surfaces lane, to be rendered per-source from data rather than as a BC-shaped string.
+- Owner decision: reading legisquebec.gouv.qc.ca programmatically. The site returns **403** to our own agent (`NorthGroundBushcraft/1.0`) and **200** to a browser agent, so any scripted read means presenting a user-agent we are not. Settled already, per `source-licence.ts`: a general bot filter on a public regulations page is not an access control on a data service, so a **human-equivalent browser read is fine and is not at issue**. The open question is scripted ingestion only — storage of verbatim text is now governed by the freeze above, and most Québec facts should be reachable as structured facts without it.
+  Do NOT reconstruct a Québec gear class from `permittedImplements`: r. 12 art. 31 defines types 11 and 12 with identical bow and crossbow paragraphs, type 12 adding slugs and muzzleloaders, and the hunter-orange exemption reaches 6 and 11 but not 12. The failure direction is telling a hunter they need no orange when the law requires it, so the correct output is UNKNOWN.
 
 ## Regulatory Coverage
 
@@ -376,7 +359,6 @@ constant — and it makes no claim at all about rules.
 sentence in the project, because "Canada complete" is exactly what a reader
 wants it to mean.
 
-- Owner decision, and it generalises the Québec one: **what authorises storing and serving verbatim LEGISLATIVE text commercially, for BC, Alberta and Manitoba as well as Québec.** The Québec finding was never Québec-specific — it was the first time anyone looked. `src/lib/hunt/regulatory/{alberta,manitoba,british-columbia}-legal-time.ts` each store a quoted provision from BC Laws (Queen's Printer), Alberta's King's Printer and Manitoba Laws respectively. BC's and Manitoba's sentences were already in the shipped bundles before 2026-09-23; **Alberta's Wildlife Act s. 28 sentence is new that day**. BC Laws material is Queen's Printer content and is NOT covered by any open-data portal licence established for other datasets. Should go up as ONE question across four provinces, not four. Shipping continued rather than withholding, because two of three quotes were already shipped and a refusal stricter than the evidence is its own false claim (§8) — but verbatim legislative text is not to be expanded further until this is answered.
 - **Internally**, state it as the milestone states it — "11 of 11 in-scope
   provinces and territories have parity-certified official geography" — always
   with the two caveats below attached, and never as a bare boolean in prose.

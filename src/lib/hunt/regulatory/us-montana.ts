@@ -1,8 +1,6 @@
 import { legalTimeNotCertified } from "./legal-time.ts";
 import { general } from "../limitation.ts";
-import type { CanonicalId, IsoDate, SourceRecord } from "../../content-contract/index.ts";
-import { timeZoneAtPoint } from "../time-zone.ts";
-import { montanaLegalTime } from "./montana-legal-time.ts";
+import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/us-mt-upland-2026.json" with { type: "json" };
 import overlaysJson from "../../../../content/regulatory/us-mt-overlays.json" with { type: "json" };
 import type { OverlayCatalogue } from "../overlays.ts";
@@ -95,18 +93,11 @@ export const MONTANA_VOCABULARY: ConditionalVocabulary = {
       sourceSection: "p. 10, Ring-necked Pheasant",
     },
   ],
-  /* The fallback, for a zone-scoped question where no point is known. */
   legalTime: legalTimeNotCertified(
       "Montana: “Authorized hunting hours for the taking of upland game birds begin one-half hour before sunrise and end " +
-      "one-half hour after sunset each day of the hunting season” (p. 4). North Ground states exact times for a point, " +
-      "not for a whole district.",
+      "one-half hour after sunset each day of the hunting season” (p. 4). North Ground has not certified exact astronomical times.",
       "Montana Fish, Wildlife & Parks",
     ),
-  legalTimeAt: (speciesId, place, date) => {
-    if (place.scope === "ZONE") return undefined;
-    const timezone = timeZoneAtPoint("jurisdiction:us-mt");
-    return timezone ? montanaLegalTime(speciesId, place, date as IsoDate, timezone) : undefined;
-  },
   standingLimitations: MONTANA_BUNDLE.limitations.map((text) => general(text)),
   standingSourceIds: ["source:us-mt-upland-district-service"],
   describe: (dimension, value) => {

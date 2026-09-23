@@ -82,12 +82,7 @@ test("a Manitoba zone is answered by Manitoba's rules, with Manitoba's sources",
   const regulation = answered.sources.find((source) => source.id === "source:ca-mb-hunting-seasons-regulation");
   assert.ok(regulation, "the controlling regulation is listed among the sources");
   assert.match(regulation.contentHash ?? "", /^sha256:/);
-  /*
-   * Still cites its provision, and now also states the window. The citation is
-   * the point: certifying a jurisdiction must not remove its provenance.
-   */
-  assert.match(legalTimeSummary(answered.regulation.legalTime), /M\.R\. 351\/87, s\. 3/);
-  assert.equal(answered.regulation.legalTime.status, "RESOLVED");
+  assert.match(legalTimeSummary(answered.regulation.legalTime), /M\.R\. 351\/87 s\. 3/);
 });
 
 test("grouse in Manitoba asks nothing and is not answered with Ontario's wording", async () => {

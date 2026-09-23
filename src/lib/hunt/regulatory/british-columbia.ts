@@ -81,19 +81,9 @@ export const BRITISH_COLUMBIA_VOCABULARY: ConditionalVocabulary = {
       sourceSection: "B.C. Reg. 190/84, Part 2 youth seasons",
     },
   ],
-  /*
-   * The rule IS certified and is encoded in `british-columbia-legal-time.ts` —
-   * an hour either side, not the half-hour three other provinces use. What is
-   * missing is not the law but the CLOCK: British Columbia spans Pacific and
-   * Mountain time and the Peace River region keeps Mountain time year-round,
-   * so North Ground cannot establish the timezone at a point here and a
-   * wall-clock time cannot be stated. Naming the real blocker matters, because
-   * "not certified" reads as though the regulation had not been read.
-   */
   legalTime: legalTimeNotCertified(
       `British Columbia: "${BRITISH_COLUMBIA_BUNDLE.legalTime.statedAs}" (${BRITISH_COLUMBIA_BUNDLE.legalTime.section}). ` +
-      "North Ground cannot state exact clock times for a point in British Columbia, because the province spans two " +
-      "time zones and part of it does not observe daylight saving.",
+      "North Ground has not certified exact astronomical times for this result.",
       "Government of British Columbia",
     ),
   standingLimitations: BRITISH_COLUMBIA_BUNDLE.limitations.map((text) => general(text)),

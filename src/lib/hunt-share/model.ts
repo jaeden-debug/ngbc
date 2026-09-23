@@ -571,14 +571,7 @@ export function createShareableHuntBrief(
       legalTime?.verified === true
         ? {
             status: legalTime.status === "NOT_AVAILABLE" ? "NOT_AVAILABLE" : "RULE_ONLY",
-            /*
-             * 400, not the generic 280: a stated window now carries its own
-             * pinpoint citation as well as the provision and the inward-margin
-             * note, and Manitoba's runs to 315 characters. The cap existed to
-             * bound a field, not to budget a legal time — and truncating this
-             * one would drop either the authority's words or the citation.
-             */
-            summary: text(legalTime.summary, "legalTime.summary", 400),
+            summary: text(legalTime.summary, "legalTime.summary", 280),
             verifiedAt: timestamp(legalTime.verifiedAt, "legalTime.verifiedAt"),
           }
         : undefined,

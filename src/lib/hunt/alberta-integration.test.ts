@@ -57,9 +57,7 @@ test("an Alberta zone is answered by Alberta's rules, in Alberta's terms, with A
     albertaZone("102"),
   );
   assert.equal(answered.regulation.status, "CONDITIONAL");
-  /* The Act's own words now, not the guide's paraphrase, and a real window. */
-  assert.match(legalTimeSummary(answered.regulation.legalTime), /1\/2 hour after sunset/);
-  assert.equal(answered.regulation.legalTime.status, "RESOLVED");
+  assert.match(legalTimeSummary(answered.regulation.legalTime), /one-half hour after sunset/);
   const guide = answered.sources.find((source) => source.id === "source:ca-ab-hunting-guide-2026");
   assert.ok(guide, "the 2026 guide is listed among the sources");
   assert.match(guide.contentHash ?? "", /^sha256:/);

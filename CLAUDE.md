@@ -455,6 +455,51 @@ report something as built when a hunter could never receive it is
 misreporting its own capability, which is as serious as an individual wrong
 rule and much harder to notice.
 
+## The law's answer, not a copy of the law's prose
+
+*Decided 2026-09-23 (owner).*
+
+North Ground does not need to reproduce government legislative prose
+word-for-word in order to build hunting answers. The default model is:
+
+**READ → INTERPRET ACCURATELY → STRUCTURE THE FACT → WRITE IT IN NORTH GROUND'S
+OWN CONCISE WORDING → CITE THE OFFICIAL SOURCE.**
+
+Where an authority establishes an orange requirement, a legal method, an
+ammunition restriction, a licence requirement, an hours rule or a limit, what
+North Ground needs is the **rule** — not a copied paragraph. Encode the fact:
+licence required, additional permit or tag, permitted methods, ammunition and
+projectile restrictions, hunter orange, legal hunting hours, daily/season/
+possession limits, tagging and reporting, applicable restrictions.
+
+Provenance is never reduced by this. Every fact keeps its authority, official
+source URL, section/table/page where applicable, retrieval and verification
+dates, scope and applicability, and whatever evidence is needed to audit the
+interpretation.
+
+Four limits on it:
+
+- **Extract and model the actual legal fact.** Do not paraphrase legislative
+  text sentence-by-sentence to make it look different; that is neither
+  original wording nor a structured fact.
+- **Do not change the legal meaning.**
+- **Do not reproduce substantial tables, maps, images or other protected
+  material** by altering a few words.
+- **Do not remove attribution or evidence provenance.**
+
+Verbatim retention remains correct where the authority's own words ARE the
+fact — a quoted restriction whose exact scope turns on its wording, a stated
+window, a critical exception — as §41A already requires. That is a deliberate
+exception, not the default.
+
+**A reproduction licence is therefore rarely a blocker.** Before treating one
+as such, ask: does answering this genuinely require reproducing protected
+wording, or can the underlying rule be encoded accurately as structured data in
+North Ground's own words, citing the authority? If the latter, it is not a
+licensing blocker and the work continues. Bring forward an authorization
+request only for a specific piece of source material that is genuinely needed
+and cannot be replaced this way.
+
 A coordinate can belong to multiple overlapping regulatory layers.
 
 Do not assume:

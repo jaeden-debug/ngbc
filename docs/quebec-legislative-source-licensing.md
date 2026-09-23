@@ -1,89 +1,146 @@
-# Québec source licensing — decision packet
+# Decision package — Québec legislative sources (legisquebec.gouv.qc.ca)
 
-**For:** the owner, and counsel if they want one.
-**Prepared:** 2026-09-23. **Structure:** the owner's 13-item specification.
-**This is evidence, not a recommendation.** Item 11 is my reading, item 12 is
-the strongest case against it, item 13 is what we can do if neither is settled.
+**Status:** evidence for an owner decision. **This is not a recommendation.**
+**Prepared:** 2026-09-23.
+**Why it exists:** the owner declined to rule casually, on the grounds that it
+"can affect every Québec rule rather than one UI behaviour." That is correct,
+and section 5 quantifies it.
 
-> **The authorisation request is not to be sent by an agent.** It names a
-> billing party and commits North Ground. If it is to be sent, a person sends
-> it. Stated first because of the request's shape rather than its difficulty:
-> it looks like paperwork, an agent could obviously fill it in, and it **names
-> who gets billed**. That is exactly where "it is just a form" becomes a
-> commitment made by a session.
+Two questions are asked here, and **they may not have the same answer**:
 
----
+- **Q1 — retrieval.** May North Ground read legisquebec **programmatically**,
+  given that the site refuses our own user-agent and serves a browser one?
+- **Q2 — reuse.** May North Ground **store verbatim text** from the Éditeur
+  officiel in its bundles and **serve it to hunters commercially**, and under
+  what attribution?
 
-## The decision in one page
+A yes to Q1 with a no to Q2 is a coherent outcome and there is a design for it
+(section 7).
 
-**Two questions, and they are independent.** Nothing found addresses the second.
-
-- **Q2 — reuse.** May we store and serve Québec government text commercially?
-  **Answered, restrictively** (items 4, 5).
-- **Q1 — access.** May we retrieve programmatically, given the site refuses our
-  user-agent and serves a browser one? **Untouched by that answer**, because the
-  notice governs *use*, not *access* (appendix A).
-
-**The reframe that matters:** this began as "may we add legisquebec". The terms
-are not on legisquebec at all — they are site-wide on **quebec.ca**, the source
-every Québec rule we already ship comes from. **The live question is what
-authorises what we already do.**
-
-**What a "no" costs is lopsided, which is the most decidable fact here:**
-
-| Gated | Cost of a no | Route that remains |
-|---|---|---|
-| **Gear classes** | **Total** | **None.** `engin de type` appears **0 times** across all five quebec.ca pages we ingest. Only the Règlement publishes the numbered identity. |
-| **Art. 17 anchor** | One anchor instead of two | Build stays correct, guarded by MFFP's summary prose. |
-| **Québec legal hours** | Nine-tenths | **1 of 10 species.** quebec.ca publishes turkey's and we already hold it. |
-
-Not proportional to rule counts: the gear-class gap is the **safety** one,
-because the hunter-orange exemption reaches engin types 6 and 11 and **not** 12,
-and those are indistinguishable from an implement list.
-
-**And the exposure is concentrated, not diffuse** (item 8): 184 of 186 rules
-already carry structured dates, and **~81% of the verbatim French we store is
-duplicative of facts we hold anyway.**
+> **UPDATE, 2026-09-23, and it widens the question.** Q2 now has a documented
+> answer, and it was not on legisquebec. The governing notice is
+> **`https://www.quebec.ca/droit-auteur`**, it names **« des lois et
+> règlements »** explicitly, it prohibits reproducing, **downloading and
+> storing** without prior authorisation, and it has **no exception**
+> (section 2).
+>
+> **It is a quebec.ca notice, so it covers the source we already ingest.** The
+> live question is therefore not "may we add legisquebec" but **"what
+> authorises what we already do"** — see section 2.4 for what the shipped
+> bundle holds. That is a question for the owner and, on their own stated
+> standard, probably for counsel.
 
 ---
 
-## 1. Exact dataset / document name
+## 0. What is already settled, so it is not re-argued
 
-| # | Document | Form |
+`src/lib/hunt/source-licence.ts` draws the line and it was applied here:
+
+> A **bot filter** on a public web page … is not a decision about who may read
+> the regulations; the page is published TO THE PUBLIC and the refusal is aimed
+> at automated clients generally. Reading it in a real browser is not
+> circumvention: it is using the document the way it is published.
+
+legisquebec is a public legislation site, not a gated data service. **A
+human-equivalent read through the browser pane is settled as permitted and is
+not part of this decision.** Everything read so far was read that way, plus one
+manual file retrieval described in section 1.
+
+The same file also states the standard this package tries to meet:
+
+> When it is genuinely unclear, treat it as a gate and say so — and record what
+> was tried, so the next person inherits evidence rather than a verdict.
+
+---
+
+## 0.5 What a "no" actually costs, per item — the asymmetry is the decision
+
+Measured in section 6, not assumed. **The two gated items are not in the same
+position, and that is the most decidable fact in this package:**
+
+| Gated item | If we may not use the Règlement | Route that remains |
 |---|---|---|
-| 1a | **Règlement sur la chasse**, C-61.1, r. 12 | HTML, consolidated |
-| 1b | **Annexe III — « Périodes de chasse dans les zones »** (annex to 1a) | PDF, 9 pages |
-| 1c | **Loi sur la conservation et la mise en valeur de la faune**, C-61.1 | HTML, consolidated |
-| 1d | **Règlement sur les activités de chasse**, C-61.1, r. 1 | HTML — *needed for hunter orange, not yet read* |
-| 1e | **Périodes de chasse** season pages — orignal, cerf-virginie, ours-noir, dindon-sauvage, petit-gibier | HTML, 5 pages — **already ingested** |
+| **Gear classes** (`scope.gearClasses`) | **Unobtainable, full stop.** | **None.** `engin de type` appears **0 times** across all five quebec.ca pages we ingest. The ministry publishes the equipment; only the Règlement publishes the numbered identity. |
+| **The art. 17 anchor** | No independent anchor | The build stays correct and guarded by MFFP's summary prose — a single anchor rather than two. |
+| **Québec legal hours** | Falls back, does not vanish | **Partial: 1 of 10 species.** quebec.ca publishes turkey's hours and **we already carry them**. |
 
-## 2. Exact publisher
+**So a "no" costs everything for gear classes and costs nine-tenths for hours.**
+One has no route at all; the other has a narrow existing one.
 
-- **1a–1d:** « L'Éditeur officiel du Québec ». Site operated by **Les
-  Publications du Québec**, under the **Ministère de l'Emploi et de la
-  Solidarité sociale**. Footer: « © Gouvernement du Québec ».
-- **1e:** Gouvernement du Québec — **ministère de l'Environnement, de la Lutte
-  contre les changements climatiques, de la Faune et des Parcs**.
-- Rights administered centrally: `droitdauteur@mcc.gouv.qc.ca` (Ministère de la
-  Culture et des Communications).
+And the cost is not proportional to the rule counts (section 5): the gear-class
+gap is a **safety** gap, because the hunter-orange exemption reaches engin types
+6 and 11 and **not** 12, and those are indistinguishable from an implement list.
 
-## 3. Official URL
+---
 
-| # | URL |
+## 1. The source, exactly
+
+Publisher: **« L'Éditeur officiel du Québec »**. The document page carries
+**"Ce document a valeur officielle."**
+
+### Already read (browser pane, human-equivalent)
+
+| Instrument | Form | URL | `asOf` |
+|---|---|---|---|
+| **C-61.1, r. 12 — Règlement sur la chasse** | HTML, consolidated | `/fr/document/rc/c-61.1, r. 12` | **« à jour au 1er mai 2026 »** |
+| — art. 17 (antlerless moose, five permitted cases) | within the above | same | same |
+| — art. 31 (definition of the 14 numbered **engin** types) | within the above | same | same |
+| **C-61.1 — Loi sur la conservation et la mise en valeur de la faune** | HTML, consolidated | `/fr/document/lc/C-61.1` | **« à jour au 10 juin 2026 »** |
+
+**The two `asOf` dates differ by nearly six weeks, and that is a real property, not an
+error.** `asOf` is per instrument and must never be inherited from a sibling: a
+statute and its regulation are consolidated on their own schedules.
+
+### Already retrieved as a file (one manual download)
+
+| Artefact | Detail |
 |---|---|
-| 1a | `https://www.legisquebec.gouv.qc.ca/fr/document/rc/c-61.1, r. 12` — **« à jour au 1er mai 2026 »** |
-| 1b | `https://www.legisquebec.gouv.qc.ca/fr/ressource/rc/C-61.1R12_FR_002_020.pdf` — sha256 `a92326176f3c369c45193d80c78d5fcc53116a016a3b99bfe8708c1d6ca9f62e`, 148,728 bytes |
-| 1c | `https://www.legisquebec.gouv.qc.ca/fr/document/lc/C-61.1` — **« à jour au 10 juin 2026 »** |
-| 1e | `https://www.quebec.ca/tourisme-loisirs-sport/activites-sportives-et-de-plein-air/chasse-sportive/periodes-limites/…` |
-| terms | `https://www.quebec.ca/droit-auteur` — last updated **10 February 2025** |
+| **Annexe III — « Périodes de chasse dans les zones »** | PDF, 9 pages, **148,728 bytes**, `%PDF-1.7`, internal title `Microsoft Word - ANNEXE III (16 janvier)` |
+| URL | `/fr/ressource/rc/C-61.1R12_FR_002_020.pdf?langCont=fr&cible=…` |
+| sha256 | `a92326176f3c369c45193d80c78d5fcc53116a016a3b99bfe8708c1d6ca9f62e` |
+| How | one `curl` with a browser user-agent, **after** the same URL had been opened in the browser pane. No crawl, nothing scripted, not committed; held in session scratchpad. |
 
-The two `asOf` dates are **40 days apart**. That is a real property: `asOf` is
-per instrument and is never inherited from a sibling.
+This is the one act in the record that is **not** purely a browser read, and it
+is disclosed rather than buried. It is also the reason Q1 is being asked now
+rather than later.
 
-## 4. The reuse wording, quoted faithfully
+**Annexe III is the only place that assigns a numbered engin type to a (zone,
+period).** Its moose section is organised by type first, zone second. Nothing on
+quebec.ca carries this (section 6).
 
-From `https://www.quebec.ca/droit-auteur`, "Droit d'auteur et demande
-d'autorisation de reproduction":
+### Would need to be read, and is not yet
+
+| Needed for | Instrument |
+|---|---|
+| Québec legal hunting hours | r. 12 arts. 30.1, 30.3 and 21 — each already flagged as a trap: s.30.1's night definition supports an **evidentiary presumption**, not legal hours; s.21's night snaring of hare is a **permission**, not a window; s.30.3 carries its exception **inside the sentence** (« à moins de pratiquer une activité de chasse permise »), so omitting it makes a lawful night hare hunt read as illegal |
+| Hunter orange, and why gear class is a **safety** matter | **C-61.1, r. 1**, s. 17.3(1) — exempts big game hunted « au moyen d'un engin de type 6 ou 11 », and **not** type 12 |
+| The art. 17 anchor | r. 12 art. 17 is read; anchoring it in the build needs it as stored data |
+
+---
+
+## 2. The terms — **FOUND, and restrictive**
+
+*Resolved 2026-09-23. This section previously read "NOT ESTABLISHED, and the
+absence is uncontrolled". It is kept in the history because the search that
+closed it is the reason the finding below was found at all.*
+
+### 2.1 Where they were — not on legisquebec
+
+| Page | Result |
+|---|---|
+| `/fr/document/rc/c-61.1, r. 12` (the regulation, 776,835 bytes) | publisher name and "Ce document a valeur officielle." Only `reproduction` match was substantive text about decoys. |
+| **`/fr/contenu/mjqpol`** — Politique du ministre de la Justice | Consolidation, classification, citation, update notes. **Does not address reproduction**: 0 hits for droit d'auteur, reproduction, copyright, licence, commercial. Its only "utilisation" is « d'utilisation courante ». |
+| **`/fr/contenu/editeurofficiel`** — L'Éditeur officiel du Québec | Purely historical. 0 hits on the same terms. |
+| `robots.txt` | Section 3. |
+
+legisquebec's footer carries **« © Gouvernement du Québec »** and links to
+Québec.ca. It has **no conditions-of-use page of its own**, so the governing
+notice is site-wide.
+
+### 2.2 The governing notice, verbatim
+
+**`https://www.quebec.ca/droit-auteur`** — "Droit d'auteur et demande
+d'autorisation de reproduction", last updated **10 February 2025**:
 
 > « Le gouvernement du Québec détient les droits exclusifs de propriété
 > intellectuelle sur tous les documents, données, compilations et autres œuvres
@@ -95,248 +152,64 @@ d'autorisation de reproduction":
 > publier ou représenter en public les contenus du gouvernement du Québec
 > **sans autorisation préalable**. »
 
-Authorisation route the publisher itself specifies:
-`/droit-auteur/demande-autorisation`, ~15 business days,
+**Reproduce, download, store.** It names laws and regulations. Searched for a
+carve-out — exception, sauf, gratuit, sans frais, libre, licence, non
+commercial, court extrait, citation — and **there is none**.
+
+The only route the publisher offers is a **formal authorisation request**: an
+online form (`/droit-auteur/demande-autorisation`), about **15 business days**,
 `droitdauteur@mcc.gouv.qc.ca`. One request may cover several works. The form
-asks the intended use, the number of copies, and **the party to be billed**.
+asks for the intended use, the number of copies, and **the person or
+organisation to be billed** — so a fee may attach.
 
-**Searched for a carve-out; there is none:** exception, sauf, gratuit, sans
-frais, libre, licence, non commercial, court extrait, citation. No
-non-commercial allowance, no short-extract allowance, no legislative-text
-exception.
+### 2.3 In the codebase's vocabulary
 
-## 5. Which licence governs
+No longer `UNRESOLVED`. The publisher's own words restrict use:
 
-**No open licence. The quebec.ca notice governs both sources.**
+    permittedUse:    "RESTRICTED"
+    redistribution:  "PROHIBITED"
+    attribution:     (not reached — authorisation precedes use)
 
-Where I looked and what each returned — recorded because the first two nulls are
-what led to the third:
+### 2.4 The part that is not about legisquebec
 
-| Page | Result |
+**The notice is a quebec.ca notice**, and quebec.ca is the source every Québec
+rule we ship already comes from. It covers « tous les documents, données,
+compilations ». So the committed bundle is in scope, and it holds:
+
+| In `content/regulatory/ca-qc-2026.json` | |
 |---|---|
-| The regulation itself (776,835 bytes) | Publisher name; "Ce document a valeur officielle." The only `reproduction` hit was substantive text about decoys. |
-| `/fr/contenu/mjqpol` — Politique du ministre de la Justice | Consolidation, classification, citation, update notes. **Reproduction: 0 hits**, likewise droit d'auteur, copyright, licence, commercial. Its only "utilisation" is « d'utilisation courante ». |
-| `/fr/contenu/editeurofficiel` | Purely historical. 0 hits. |
-| Footer → `quebec.ca/droit-auteur` | **The terms.** |
+| `seasonPhrase` | 81 distinct, 2,990 chars of verbatim French |
+| `zoneLabel` | 51 distinct, 3,216 chars |
+| `implementLabel` / `classLabel` / `sourceSection` | 31 distinct, 1,476 chars |
+| `statements` | 26 records, 6,041 chars of authority prose |
+| `caveats` | 58 quoted exclusions |
+| `legalTime` | 1 verbatim sentence (the turkey noon rule) |
 
-legisquebec has **no conditions-of-use page of its own**, which is why the
-site-wide notice governs. In our vocabulary: `permittedUse: "RESTRICTED"`,
-`redistribution: "PROHIBITED"` — **not** `UNRESOLVED`.
+**What this package does NOT claim.** Not that North Ground is infringing. Not
+whether a blanket web notice binds, how it interacts with the texts being *law*,
+whether extracting dates and zone codes into structured data is reproduction of
+« documents, données, compilations » or the use of facts, or whether anything in
+the Loi sur le droit d'auteur or Québec practice carves out legislative texts.
+**Those are legal judgements, and this is the territory the owner said they
+would want counsel for.**
 
-## 6. Third-party material inside the documents
+**What it does claim, narrowly and with evidence:** there is a published,
+explicit, exception-free prohibition on reproducing, downloading and storing
+Québec government content without prior authorisation; it names laws and
+regulations; it governs **both** Québec sources; and no authorisation has been
+obtained.
 
-**Checked rather than assumed. Essentially none, with two qualifications.**
-
-- **Annexe III (1b):** PDF metadata gives `/Author: Couture, Daniel (DCHALTF)`,
-  `/Producer: Microsoft: Print To PDF`, created 2026-01-20, modified 2026-04-15.
-  Searched the extracted text for ©, copyright, « source : », adapté, reproduit,
-  « avec la permission », photo, crédit — **all absent**. The single "Canada"
-  match is the species name « Tétras du Canada » (spruce grouse). **Wholly
-  Québec-authored.**
-- **Season pages (1e):** no third-party credit terms on any of the five. Each
-  carries exactly 3 `<img>` — Facebook, X and YouTube **social icons**:
-  third-party trademarks, template furniture, not content, and not ingested.
-- **One genuine third-party pointer:** petit-gibier refers to « la brochure du
-  Règlement de chasse aux oiseaux migrateurs d'Environnement et Changement
-  climatique Canada ». It **points out to** the federal instrument rather than
-  reproducing it. We already read the federal migratory-bird regulations from
-  the federal source, so nothing federal reaches us through Québec.
-
-**Consequence: a Québec authorisation would not be encumbered by third-party
-rights** — the province appears able to grant what it is being asked for.
-
-## 7. Exactly what North Ground wants to do, itemised
-
-Stated without softening. **North Ground is a commercial product**, and under
-blueprint §11 the regulatory engine may later be licensed to third parties or
-governments — so any grant should be read with that in view, not only against
-today's website.
-
-| Act | Wanted? | Detail |
-|---|---|---|
-| **Read / query** | **Yes** | Browser today for the Règlement; scheduled programmatic reads wanted (Q1). |
-| **Extract** | **Yes** | Dates, zone codes, species, implements, engin type numbers. |
-| **Locally store** | **Yes** | Committed JSON bundles in the repository. |
-| **Transform** | **Yes** | French season phrases → ISO date windows; headings → enums. |
-| **Derive structured facts** | **Yes** | The regulatory records the engine evaluates. |
-| **Display** | **Yes, partly** | Status, dates and hours are derived. Some **authority prose is shown verbatim**, which §41A and §47 require where the authority's words *are* the fact. |
-| **Redistribute** | **Indirectly** | Not as a dataset. Bundles sit in a repository and answers are served publicly. |
-| **Cache** | **Yes** | Retrieved source documents, for change detection and provenance. |
-
-## 8. Do we need the raw work, or only facts derived from it?
-
-**Overwhelmingly the facts.** Measured, and it is the item that most changes the
-shape of the ask.
-
-**184 of 186 rules already carry structured ISO date windows** (the other 2 are
-`declaredNoSeason`). **No rule depends on the French phrase to express its
-season.** The operational answer is carried by 58 zone designations, 4 animal
-classes, 7 implement enums and ISO dates.
-
-Splitting the stored verbatim French by whether we *also* hold the same fact
-structurally:
-
-| Verbatim French held | Chars | Structured equivalent? |
-|---|---|---|
-| `implementLabel` + `classLabel` + `sourceSection` | 22,834 | **Yes** — enums |
-| `seasonPhrase` (184 rules) | 6,576 | **Yes** — ISO windows |
-| `zoneLabel` | 11,004 | **Yes** — designations |
-| **subtotal, duplicative** | **40,414** | |
-| `caveats` — 58 quoted exclusions | 3,220 | **No** |
-| `statements` — 26 records of authority prose | 6,041 | **No** |
-| `legalTime` — 1 sentence (turkey noon rule) | ~90 | **No** |
-| **subtotal, load-bearing expression** | **~9,261** | |
-
-**~81% of the verbatim text we store is duplicative of facts we hold anyway.**
-The genuine need for *expression* is ~9,261 characters, and it exists for a
-product reason rather than convenience: §41A keeps the authority's own words
-where the words are the fact, and §47 forbids translating official terminology.
-
-**So the honest ask is narrow**, which is what item 13 builds on.
-
-## 9. Exactly which facts, species and capabilities are blocked
-
-Bundle: **186 rules, 10 species, 58 designations.**
-
-| Blocked | Scope |
-|---|---|
-| **Gear classes** (`scope.gearClasses`) | **52 rules**, 3 species, 51 designations — the bow/crossbow-only seasons where engin types 11 and 12 are indistinguishable. 178 of 186 rules carry an implement set; 114 include a firearm. |
-| **Hunter-orange exemption** | Cannot be evaluated for those 52. Failure direction: telling a hunter they need **no orange** when the law requires it. |
-| **Art. 17 anchor** | **16 antlerless-moose rules**, 8 designations. Currently correct and guarded, but against MFFP prose rather than the regulation. |
-| **Québec legal hours** | **9 of 10 species.** |
-| Ready to Hunt | Québec cannot state legal methods by the authority's own class, nor the orange minimum, for those 52. |
-
-## 10. Can another authoritative Québec source establish the same facts?
-
-**Measured across the five quebec.ca pages we already ingest.**
-
-**Gear type definitions — no.**
-
-| Page | "engin" | "engin de type" | any "type N" |
-|---|---|---|---|
-| cerf-virginie | 2 | **0** | **0** |
-| dindon-sauvage | 0 | **0** | **0** |
-| orignal | 0 | **0** | **0** |
-| ours-noir | 0 | **0** | **0** |
-| petit-gibier | 13 | **0** | **0** |
-
-The ministry uses « Engin » as a **column heading** whose values are implement
-names — "Engin : arbalète et arc". **It never publishes the numbered class.**
-The ministry publishes the equipment; only the Règlement publishes the identity
-that art. 17 and the orange exemption turn on.
-
-**Legal hours — partly.** quebec.ca states turkey's and we already hold it:
-« La chasse est permise à partir d'une demi-heure avant le lever du soleil
-jusqu'à midi. » Controlled search — the query **finds** turkey, so the zeros are
-real absences rather than a broken query: `lever du soleil` scores 1/0/0/0/0
-across the five pages. **1 of 10 species.**
-
-**Not yet examined:** whether MFFP publishes a hunter's guide or brochure
-restating engin types in plain language. If one exists it is a
-quebec.ca-licensed route to the same facts, and it is **worth checking before
-any authorisation request is sent**, because it could narrow the ask further.
-
-## 11. My evidence-based interpretation
-
-Narrow, and confined to what is sourced:
-
-There is a **published, explicit, exception-free** prohibition on reproducing,
-downloading and storing Québec government content without prior authorisation.
-It **names laws and regulations**. It governs **both** Québec sources, including
-the one we already ingest. **No authorisation has been obtained.**
-
-On its face that covers what we do. The prudent reading is that our position
-rests on either (a) an authorisation, or (b) the proposition that what we mostly
-store are *facts* rather than protected expression — which is item 12, and which
-item 8 shows is most of the volume.
-
-**I am not a lawyer and this is not a legal opinion.** I have not weighed
-whether a unilateral web notice binds, how it interacts with the texts being
-*law*, or whether the Copyright Act resolves it differently from the notice.
-
-## 12. The strongest interpretation against my conclusion
-
-Argued properly, because a packet that argues only one way is not decidable.
-**Several of these are strong, and the first is the strongest.**
-
-1. **Copyright protects expression, not facts.** A season date, a zone code, a
-   species name and an implement list are facts. Canadian law requires skill and
-   judgement for originality (*CCH Canadian Ltd v Law Society of Upper Canada*,
-   2004 SCC 13). **Item 8 measures that ~81% of what we store duplicates facts**,
-   and our structure is our own rather than the ministry's arrangement. On this
-   reading most of the bundle is not protected subject matter at all, and no
-   authorisation is needed for it.
-2. **A website notice is not a licence agreement.** It is a unilateral
-   assertion. Reading a public page forms no contract absent assent, and an
-   assertion cannot enlarge rights beyond what the Copyright Act confers. The
-   word « interdit » describes what the government wishes, not necessarily what
-   the law grants.
-3. **Copyright is federal.** A provincial policy page cannot expand it. Crown
-   copyright (s. 12) exists, but its application to **statutes and regulations**
-   is contested, and there is a strong public-interest argument for access to
-   the law one is required to obey.
-4. **Fair dealing is a user's right**, to be read large and liberally (*CCH*),
-   with research an enumerated purpose.
-5. **Substantiality.** Infringement requires a substantial part (*Cinar
-   Corporation v Robinson*, 2013 SCC 73). ~9,261 characters of short exclusions
-   and statements, spread across a long regulation, may well not be substantial.
-6. **Purpose and practice.** The ministry publishes season dates precisely so
-   hunters act on them, and every outfitter, app and newspaper restates them. A
-   reading where restating a season date requires written permission would make
-   ordinary compliance journalism unlawful.
-
-**Where this leaves me:** points 1 and 5 are the ones I would expect to carry,
-and both point the same way as item 8 — **our exposure is concentrated in the
-~19% that is expression**, not spread across the bundle. That is a far smaller
-and more tractable problem than the notice's wording suggests on a first
-reading.
-
-**The counter-counter, stated so it is not lost:** none of this makes the notice
-irrelevant. It is evidence of the rights-holder's position, it names laws and
-regulations specifically, and a commercial product that also intends to license
-its engine onward (§11) is the least sympathetic possible profile for a
-fair-dealing argument.
-
-## 13. The smallest safe use, if the broader use stays uncertain
-
-**Facts only, no stored expression.** Buildable now, and it keeps every answer
-we currently give.
-
-- **Keep:** ISO date windows, zone designations, species ids, animal-class and
-  implement enums, engin type **numbers** — all facts (item 12 ¶1), and the
-  whole operational answer (item 8).
-- **Keep the citation, drop the copy:** where prose is needed today, store the
-  pinpoint reference and link the authority's own page instead of the text.
-- **Stop adding** the 40,414 duplicative characters, which cost nothing to lose
-  because the structured equivalent already exists.
-- **Isolate** the ~9,261 load-bearing characters as the *only* thing an
-  authorisation needs to cover. That converts the ask from "may we use Québec's
-  regulations" into "may we quote 58 exclusions and 26 statements" — a far
-  easier request to grant.
-- **For gear classes specifically:** store the **code** ("11"), the **official
-  term** (« engin de type », four words), and the **citation** — no reproduced
-  definition. This unblocks art. 17 and the orange exemption without copying the
-  art. 31 text.
-
-**The one caveat**, carried from the engine owner's review: if
-`GearClass.statedAs` becomes optional to allow this, it must be a **named
-state** meaning *"definition not yet reproducible, identity certified"* — not a
-field that can simply be absent, or a row that legally cannot carry a definition
-becomes indistinguishable from one that forgot.
-
-**Ranked, if only one thing is done:** the item-13 path first, because it is
-ours to build and needs nobody's permission; then the authorisation request for
-the ~9,261 characters; then Q1.
+**Safest posture until this is answered: change nothing, add nothing.** Adding
+further verbatim Québec text is the one action that makes the position worse.
+Withdrawing shipped answers is also an action and should not be taken on a
+reading of a web page — §8's fidelity rule cuts both ways, and a refusal
+stricter than the source is a false claim too.
 
 ---
 
-## Appendix A — Q1, access, which none of the above answers
+## 3. The access fact — measured
 
-The quebec.ca notice governs **use**, not **access**. Nothing found addresses
-user-agents or automated retrieval, so **Q2 could be answered and Q1 still
-owed.**
-
-Measured, same URL, same moment:
+Same URL, same moment, only the user-agent differing:
 
 ```
 User-Agent: NorthGroundBushcraft/1.0 (+https://www.northgroundbushcraft.com)   -> 403
@@ -344,7 +217,8 @@ User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
             (KHTML, like Gecko) Chrome/125.0 Safari/537.36                     -> 200
 ```
 
-`robots.txt`, itself 403 to a short agent and 200 to the browser string:
+`robots.txt` itself behaves the same way (403 to a short agent, 200 to the full
+browser string). Its full contents:
 
 ```
 User-agent: *
@@ -357,27 +231,172 @@ Disallow: /fr/result
 Disallow: /fr/searchannual
 ```
 
-Both spellings, printed so the difference can be judged rather than taken on
-trust:
+**The spelling, printed so it can be judged rather than taken on trust:**
 
 ```
-disallowed :  /fr/resource      ← one s
-annexe III :  /fr/ressource/…   ← two s, the French spelling
+disallowed :  /fr/resource     ← one s
+annexe III :  /fr/ressource/rc/C-61.1R12_FR_002_020.pdf     ← two s, the French spelling
 ```
 
-Literally, `/fr/ressource/…` is **not** matched. My assessment is unchanged:
-**too thin to rely on** — that is reading a permission into what is probably a
-typo, and `/fr/showPdf` being disallowed suggests the intent was to keep
-crawlers off document files generally.
+As literal prefix matching, `/fr/ressource/…` **is not** matched by
+`Disallow: /fr/resource`. My own assessment, unchanged: **a one-letter spelling
+difference is too thin a thing to rely on**, and relying on it would be reading
+a permission into what is very possibly a typo. `/fr/showPdf` is also
+disallowed, which suggests the intent was to keep crawlers off document files
+generally.
 
-**Already settled** (`src/lib/hunt/source-licence.ts`): a bot filter on a public
-page is not an access control on a data service, so **browser reads are fine and
-are not part of this decision.** What is open is *scripted* retrieval presenting
-an agent we are not.
+---
 
-## Appendix B — disclosure
+## 4. The proposed use — stated without softening
 
-The annexe III PDF was fetched once with `curl` carrying a browser user-agent,
-**after** the same URL had been opened in the browser pane. One file, no crawl,
-nothing scheduled, not committed; held in session scratchpad. It is the only act
-in this record that is not a plain browser read, and it is the reason Q1 is live.
+A licensing decision made against a softened description is worthless, so:
+
+1. **North Ground is a commercial product.**
+2. We would **store verbatim regulation text** in committed bundles — the art.
+   31 definitions of each engin type are the immediate case, and Québec legal
+   hours would be more.
+3. We would **serve that text to hunters**, in the authority's own language
+   (§47 requires the authority's words where the words are the fact).
+4. We would **automate retrieval on a schedule**, to detect consolidation
+   changes — which under the current access behaviour means a scripted client
+   **presenting a user-agent we are not**.
+5. We would **derive structured data from it** (gear classes, the art. 17
+   constraint) and serve those derivations.
+6. Per blueprint §11, the regulatory engine **may later be licensed to third
+   parties or governments**. Any grant relied on should be read with that in
+   view, not only against today's website.
+
+Point 4 is Q1. Points 1–3, 5 and 6 are Q2.
+
+---
+
+## 5. What it gates, with counts
+
+Counted from the committed bundle `content/regulatory/ca-qc-2026.json`:
+**186 rules, 10 species, 58 zone designations.**
+
+| Gated item | Scope |
+|---|---|
+| **Gear classes (`scope.gearClasses`)** | **52 rules** across **3 species** and **51 designations** are bow/crossbow-only seasons — precisely where type 11 and type 12 are indistinguishable from the implement list. 178 of 186 rules carry an implement set; 114 include a firearm. |
+| **The art. 17 anchor** | **16 antlerless-moose rules** across **8 designations**. The build is currently correct and guarded — but anchored to **MFFP's summary prose**, not to the regulation. |
+| **Québec legal hours** | **9 of 10 species have no hours statement at all** from our licensed source (section 6). |
+
+**The safety weighting, which is not proportional to the counts.** The 52
+bow/crossbow rules are not merely a completeness gap: r. 1 s. 17.3(1) exempts
+big game hunted with an **engin de type 6 or 11** from hunter orange, and not
+type 12. A hunter drawing a bow may be under either. An engine holding
+`["BOW","CROSSBOW"]` cannot tell, and the failure direction is telling someone
+they need **no orange** when the law requires it.
+
+> A wrong season is caught by a hunter who checks. **A wrong orange exemption is
+> discovered by not being seen.**
+
+This is why the correct output while blocked is **UNKNOWN**, and why
+reconstructing a class from `permittedImplements` must not be used as a
+workaround. That is recorded in `docs/PROJECT-STATE.md` under Blocked.
+
+---
+
+## 6. Alternatives — measured, not assumed
+
+### Gear type definitions: **no alternative exists on quebec.ca**
+
+Across all five quebec.ca season pages we already ingest (saved copies, 86–95 KB
+each):
+
+| Page | "engin" | "engin de type" | any "type N" |
+|---|---|---|---|
+| cerf-virginie | 2 | **0** | **0** |
+| dindon-sauvage | 0 | **0** | **0** |
+| orignal | 0 | **0** | **0** |
+| ours-noir | 0 | **0** | **0** |
+| petit-gibier | 13 | **0** | **0** |
+
+The ministry uses **« Engin »** as a *column heading* whose values are implement
+names — "Engin : arbalète et arc", "Engin : armes à feu, à l'arbalète et à
+l'arc". **It never publishes the numbered class.** That is the whole gap: the
+ministry publishes the equipment, and only the Règlement publishes the identity
+that the orange exemption and art. 17 turn on.
+
+### Legal hours: a **partial** alternative exists
+
+quebec.ca **does** state hours for wild turkey, and we already carry it:
+
+> « La chasse est permise à partir d'une demi-heure avant le lever du soleil
+> jusqu'à midi. »
+
+Controlled search across the same five pages — the query **finds** the turkey
+statement, so a zero elsewhere is a real absence and not a broken query:
+
+| Page | "lever du soleil" | "demi-heure" | "midi" |
+|---|---|---|---|
+| dindon-sauvage | **1** | **1** | **1** |
+| cerf-virginie | 0 | 0 | 0 |
+| orignal | 0 | 0 | 0 |
+| ours-noir | 0 | 0 | 0 |
+| petit-gibier | 0 | 0 | 0 |
+
+So **1 of 10 species** has hours from the already-licensed source, and **9 do
+not**. A no to Q2 does not leave Québec hours at zero — it leaves them at
+turkey.
+
+**A blocked source with a viable alternative is a different decision from one
+without.** Here: gear classes have **no** alternative; hours have a **partial**
+one.
+
+---
+
+## 7. The two questions, and what each outcome permits
+
+| | **Q2 = yes** (store and serve verbatim) | **Q2 = no** |
+|---|---|---|
+| **Q1 = yes** (retrieve programmatically) | Everything in section 5 proceeds; scheduled change-detection works. | **Identity-only path**: store the **code** ("11"), the **official term** (« engin de type », four words), and the **citation** — no reproduced definition. Art. 17 anchor and gear classes both become possible; the authority's own wording is linked, never copied. |
+| **Q1 = no** | Verbatim text permitted but every read is manual and periodic; no change-detection. Workable for a one-off population, fragile as a standing source. | Québec stays as it is today: correct, guarded by MFFP prose, and with gear class permanently **UNKNOWN** — which is a safe answer, not a wrong one. |
+
+The identity-only path was proposed to the engine owner, **with a caveat now
+attached to it**: making `GearClass.statedAs` merely optional would weaken the
+verbatim guarantee everywhere, and a row that legally *cannot* carry a
+definition would look identical to one that simply forgot it. If that path is
+taken, the optionality should be a **named state** meaning *"definition not yet
+reproducible, identity certified"*.
+
+---
+
+## 8. What is still open
+
+> **The authorisation request is not to be sent by an agent.** It names a
+> billing party and commits North Ground. If the owner wants it sent, a person
+> sends it.
+>
+> It is worth stating at the top because of its shape rather than its
+> difficulty: it looks like paperwork, an agent could obviously fill it in, and
+> it **names who gets billed**. That is exactly where "it is just a form"
+> becomes a commitment made by a session.
+
+Item 2 is closed. What remains is not research:
+
+1. **A decision the owner makes, probably with counsel.** Whether the quebec.ca
+   notice binds as written, and how it applies to structured data extracted from
+   published regulations, are legal questions rather than research ones. Section
+   2.4 states precisely what is claimed and what is not.
+2. **The authorisation request, if it is wanted.** The publisher specifies the
+   route: `/droit-auteur/demande-autorisation`, ~15 business days, one request
+   may cover several works, billing contact required. It would resolve
+   legisquebec **and** quebec.ca together. Sent by a person, per the note above.
+3. **Record the outcome as a `SourceLicence`** — `statedAs`, `url`,
+   `retrievedAt`, `sha256`, `permittedUse`, `redistribution`, `attribution` — so
+   a reworded notice later shows up as a visible change rather than a silent
+   one. Today's honest values are in section 2.3.
+4. **Q1 is still unanswered and is separable.** Nothing found addresses
+   automated retrieval or user-agents; the quebec.ca notice is about *use*, not
+   *access*. Section 3 is the evidence, and section 7 is what each combination
+   permits.
+
+**Changed in this revision:** section 2 previously reported the terms as
+NOT ESTABLISHED with an uncontrolled absence. Reading the ministerial policy —
+where terms would be, and where they are not — is what led to the site-wide
+notice that does contain them. **The absence was the finding that produced the
+answer**, which is the argument for controlling absences rather than reporting
+them.
+
+This records evidence, not a verdict.
