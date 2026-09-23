@@ -661,12 +661,20 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       officialSourceUrl: "https://open.canada.ca/data/en/dataset",
       parityCertified: false,
       notes:
-        "Migratory-bird districts are federal geography that does not follow provincial management units, so it " +
-        "composes with them rather than replacing them. Environment and Climate Change Canada does publish district " +
-        "boundaries for Québec (open.canada.ca, Open Government Licence, updated 2025-06-17), but the dataset is " +
-        "labelled Draft and states the limits are indicative only and carry no legal value. North Ground does not " +
-        "draw a regulatory boundary the authority itself disclaims, so this cannot be ingested as certified geometry " +
-        "in its current form. The legal boundaries live in the Migratory Birds Regulations text.",
+        "CORRECTED 2026-09-23. The note here previously said federal district geometry was blocked. That was wrong " +
+        "for most of the country, and a stale blocker costs more than a stale gap because nobody re-examines a door " +
+        "marked closed. The Migratory Birds Regulations, 2022 (SOR/2022-105) carry Schedule 3, which s. 28(1) binds " +
+        "to directly, and it defines most federal areas as NAMED SETS OF PROVINCIAL UNITS North Ground already " +
+        "holds parity-certified: British Columbia's District No. 1 is Provincial Management Units 1-1 to 1-15; " +
+        "Alberta's Zone No. 1 is an explicit Wildlife Management Unit list; Saskatchewan's District No. 1 (North) " +
+        "is Provincial Wildlife Management Zones 43 and 47 to 76. Yukon's are latitude bands, computable exactly " +
+        "from a point. Prince Edward Island's is Throughout Prince Edward Island, the jurisdiction-level geography " +
+        "landed the same day, which this validates. So the federal layer composes with provincial geography by the " +
+        "regulation's own construction rather than needing a parallel dataset. ECCC's Quebec district layer remains " +
+        "Draft with no legal value and is not read. What genuinely needs geometry North Ground lacks: Manitoba " +
+        "(latitude, longitude, shorelines, township limits), Nova Scotia (counties), New Brunswick (county portions " +
+        "cut by highways) and Newfoundland (coastal descriptions), plus the partial-unit splits in Ontario and " +
+        "Quebec, which are NEEDS_VERIFICATION with the clause quoted.",
     },
     regulatory: {
       status: "IN_DEVELOPMENT",
@@ -678,8 +686,9 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
       sourceState: "NOT_INGESTED",
     },
     knownGaps: [
-      "No federal migratory-bird geography or rules are ingested. Every duck, goose and other migratory-bird query is UNKNOWN, including for the 25 waterfowl and migratory species that already have published biological profiles.",
-      "The one district dataset located so far (Québec, ECCC) is marked Draft and expressly has no legal value, so it fails the boundary standard. Certified district geometry has to come from the regulation's own descriptions or from a layer the authority stands behind.",
+      "Wave 1 encodes Prince Edward Island, Yukon and Alberta from Schedule 3 and is NOT yet wired into Hunt, so every migratory-bird query still answers UNKNOWN until it is certified in production.",
+      "Schedule 3's remaining Parts are not encoded. Saskatchewan's federal districts name provincial zones, but North Ground holds no stored identifier list for a LIVE_SERVICE layer to check them against. British Columbia, Ontario and Québec mix whole-unit districts with partial-unit splits. Manitoba, Nova Scotia, New Brunswick and Newfoundland describe their federal areas by lines, counties and coastlines North Ground holds no geometry for.",
+      "The ECCC Québec district dataset is marked Draft and expressly has no legal value, so it fails the boundary standard and is not read. It is also not needed for most of the country: the regulation defines federal areas over provincial units instead (see the spatial note).",
       "A provincial hunting summary is not the authority for migratory birds, so provincial coverage does not extend to them.",
     ],
   },

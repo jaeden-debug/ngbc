@@ -831,6 +831,72 @@ This replaced an indiscriminate 3-attempt retry in the WFS adapter that repeated
 4xx as readily as 5xx, and gave the ArcGIS adapter (which had none) the same
 policy. `transient-retry.test.ts` pins the boundary in both directions.
 
+## Federal Migratory Birds — The Blocker Was Wrong
+
+**A stale blocker costs more than a stale gap (2026-09-23).** The registry
+recorded federal district geometry as blocked: the only district dataset found
+was Environment and Climate Change Canada's Québec layer, published as **Draft,
+indicative only, no legal value**. That layer is still unusable and is not read.
+
+But the blocker was wrong for most of the country, and nobody re-examines a
+door marked closed.
+
+**The Migratory Birds Regulations, 2022 (SOR/2022-105) carry Schedule 3**,
+which s. 28(1) binds to directly — "a person must not hunt a species of
+migratory game bird in an area referred to in Schedule 3 except during ... any
+open season for that area and that species". Columns: Area, Species, Possession
+Limit, Open Season, Daily Bag Limit. It is the binding text, not the annual
+summary.
+
+**And it defines most federal areas as named sets of provincial units North
+Ground already holds parity-certified**, in the regulation's own words:
+
+- British Columbia — "District No. 1 means Provincial Management Units 1-1 to 1-15."
+- Alberta — "Zone No. 1 means Provincial Wildlife Management Units 200, 202 to 204, ..."
+- Saskatchewan — "District No. 1 (North) means Provincial Wildlife Management Zones 43 and 47 to 76."
+- Ontario, Québec — districts defined over provincial WMUs and Hunting Zones.
+- Yukon — latitude bands, computable **exactly** from a point.
+- Prince Edward Island — "Throughout Prince Edward Island", which is the
+  jurisdiction-level geography landed the same morning. That model earned its
+  place the day it shipped.
+
+So the federal layer **composes with provincial geography by the regulation's
+own construction**. It is not a parallel dataset to be sourced.
+
+### What wave 1 encodes, and what it refuses
+
+PE, YT and AB. 55 rows considered, **26 encoded** (3 of them declared
+closures), **29 refused** into `notEncoded` with the regulation's own words:
+residency-varying limits, seasons narrowed to a sub-list of units, bags that
+change inside a window, and Table 2's overabundant-species regime. Encoding the
+readable half of such a row would publish a limit right for some hunters and
+wrong for others.
+
+**Groups, never per-species limits.** Schedule 3 regulates "all Ducks,
+combined", not mallard. Six a day is shared across seventeen library species; a
+page printing "6" beside mallard tells a hunter they may take six mallards.
+Every group carries the regulation's words, states whether it binds birds the
+library does not publish, and is matched on **exact text** — "Ducks (other than
+Harlequin Ducks)" and "Ducks (other than Harlequin Ducks, Common and
+Red-breasted Mergansers, Long-tailed Ducks, Eiders and Scoters)" are different
+groups with different limits, and a test asserts no normaliser can merge them.
+
+**Harlequin Duck's "No open season" is CLOSED, not UNKNOWN** — a declared
+closure is a fact from the authority, not an absence of one.
+
+**The registry closes both ways**: 474 Schedule 3 rows across all of Canada, 32
+groups, **zero unmatched cells and zero unused groups**, with the single
+`[Repealed, SOR/2024-129]` row skipped rather than encoded.
+
+**Alberta's unit references were checked against the certified inventory**:
+every unit the regulation names exists, 177 of 179 fall in a federal zone, and
+the two that fall in none (728, 730) answer UNKNOWN rather than being assumed.
+
+**Not yet wired into Hunt.** Migratory-bird queries still answer UNKNOWN until
+this is certified in production. Saskatchewan is deferred because it is a
+LIVE_SERVICE layer with no stored identifier list to check the regulation's
+zone references against.
+
 ## Known Design Gap — Promotion Cannot Certify A Row It Did Not Insert
 
 **Stated so it is not re-derived (2026-09-23).** `publish_zone_run` sets
