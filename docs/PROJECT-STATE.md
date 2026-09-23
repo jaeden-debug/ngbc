@@ -1327,10 +1327,85 @@ recurring in new disguises.
    `boundary-only-layers.test.ts` guards against it by asserting up front that
    at least one boundary-only layer exists, and failing with "this file needs
    deleting, not passing" when the last one is promoted.
+8. **A cached FILE read as a cached DOCUMENT (2026-09-23).** The relative-date
+   certification reported every British Columbia and Ontario window as
+   disagreeing with the authority — 0/6 and 0/5 — and the dates were correct.
+   An earlier fetch of a wrong URL had left Canada.ca's **404 page** at the two
+   cache paths the script reads, and because the files *existed* it read them.
+   The script now requires the page to BE a summary, for the declared season,
+   before believing it, and never caches a non-200. **A cached file is not a
+   cached document.** Note what this form does that the others do not: a broken
+   verifier does not fail safe — without the check we would have shipped 24
+   correct windows unverified, and with a naive one we would have gone hunting
+   a parser bug that did not exist. **It sends you to fix the wrong thing.**
+9. **A count of what was ENCODED, not of what can be ANSWERED (2026-09-23).**
+   The federal build reported 194 rules; 67 of them — over a third — named an
+   area the bundle does not contain. Conjunctions stored whole ("Districts C
+   and D"), and rows for districts whose definitions the same build had
+   refused. **No hunter ever saw anything false** — an unmatched area already
+   answers UNKNOWN — so this one is invisible from the product side entirely.
+   It is the inverse of every other form here: not a wrong answer, a wrong
+   account of what we can answer. It is the same family as the coverage-report
+   false negative the American agent found: **reports about capability**, which
+   nothing else in the gate looks at. Real count 145, pinned by a test asserting
+   zero rules name an underived area, so it cannot drift back.
+
+   Reconciling the two numbers, because they do not subtract cleanly: of the 67,
+   **54 were removed outright** (rows for districts whose definitions were
+   refused — they are refusals now) and **13 were recovered as 18 rules** (8
+   Québec rows for "Districts C and D" now encode for District C; 5 Saskatchewan
+   rows naming both districts in one cell now encode for each). 194 − 67 + 18 =
+   145.
 
 **Rule: a round number that exactly equals a known limit is a truncation until
 proven otherwise.** And before reporting a defect from a measurement, confirm
 the harness asked the question the product answers.
+
+### A refusal can rest on a reason that is about to stop being true
+
+*2026-09-23.* One level up from the test whose premise expired, and the same
+shape.
+
+Fifty-seven federal rows were refused because their seasons were written as
+relative dates. Among them were rows that ALSO carry a qualifier — "(only on
+farmland)", "(only in Provincial Management Units 1-3 and 1-8 to 1-15)", ",
+for Ducks other than Eiders". Those rows were being refused for their
+unreadable **dates**, not for their **qualifiers**.
+
+Teaching the build to compute relative dates therefore removed a shield nobody
+had noticed was load-bearing. The dates became readable; nothing about who the
+seasons apply to changed; and rows whose scope North Ground still cannot honour
+became encodable. A window now splits at its first `" to "` and both halves
+must parse whole, so a qualifier refuses the season, with a test pinning eight
+specific rows as refused.
+
+**Before adding a capability, ask what was being refused only because that
+capability was missing.** The failure mode is silent in both directions: the
+refusal looked principled, and the new encoding would have looked like
+progress.
+
+### Conservatism has a failure mode, and it does not announce itself
+
+*2026-09-23.* Québec writes one season for "Districts C and D". District C is
+derived; D was refused. The first fix refused both, reasoning that encoding
+half was a quieter error than encoding none.
+
+That was wrong, and worth recording because it was wrong in the direction this
+project usually rewards. There was no guess to refuse: the season the
+regulation states for both districts is correct in C, and a point in D cannot
+resolve to D in the first place. Refusing C discarded eight real rules to
+protect against nothing.
+
+**Conservatism has a failure mode too, and it isn't free — it just doesn't
+announce itself, because a refusal always looks defensible.**
+
+This is the counterweight to everything else built this week. All of that
+machinery exists to stop false certainty, and every piece of it can be
+over-applied at a cost nobody will ever report: a wrongly-refused rule produces
+an UNKNOWN indistinguishable from an honest one. It is the same principle as
+the stricter-than-source rule, read from the other end — **a restriction
+stricter than the source is false, and a refusal stricter than the evidence is
+a loss.** "Refuse rather than guess" applies where there is a guess.
 
 - **The ESRI-orientation fix was NOT what fixed New Brunswick's holes
   (2026-09-23).** Both facts belong together: the orientation change was

@@ -1,5 +1,6 @@
 import { legalTimeNotCertified } from "./legal-time.ts";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import type { IsoDate } from "../../content-contract/index.ts";
 import type { RegulatoryResult } from "../types.ts";
@@ -227,4 +228,55 @@ test("a date inside the tail of a season that opened last year is open", () => {
   const january = evaluateFederal("species:mallard", "jurisdiction:ca-bc", { latitude: 49.2 }, on("2027-01-03"), "2-10");
   assert.equal(january.status, "CONDITIONAL");
   assert.equal(january.season?.opens, "10-10");
+});
+
+/* ── Saskatchewan: the inventory read live, and the zone left out ── */
+
+test("Saskatchewan answers in both districts, including a zone the regulation names in words", () => {
+  /* Schedule 3 Part 8: ducks, September 1 to December 16, daily 8, possession
+     24, in both District No. 1 (North) and District No. 2 (South). */
+  const north = evaluateFederal("species:mallard", "jurisdiction:ca-sk", { latitude: 54.5 }, on("2026-10-01"), "55");
+  assert.equal(north.status, "CONDITIONAL");
+  assert.equal(north.area?.name, "District No. 1 (North)");
+  assert.equal(north.sharedLimit?.daily, 8);
+
+  const south = evaluateFederal("species:mallard", "jurisdiction:ca-sk", { latitude: 50.4 }, on("2026-10-01"), "10");
+  assert.equal(south.status, "CONDITIONAL");
+  assert.equal(south.area?.name, "District No. 2 (South)");
+
+  /* "the Saskatoon and Regina-Moose Jaw Provincial Wildlife Management Zones"
+     — named in words, matched to the ministry's own name for the zone. */
+  const saskatoon = evaluateFederal("species:mallard", "jurisdiction:ca-sk", { latitude: 52.1 }, on("2026-10-01"), "SWMZ");
+  assert.equal(saskatoon.status, "CONDITIONAL");
+  assert.equal(saskatoon.area?.name, "District No. 2 (South)");
+});
+
+test("Prince Albert WMZ is in no federal district, and says so", () => {
+  /*
+   * Schedule 3 Part 8 names the Saskatoon and Regina-Moose Jaw zones and NOT
+   * Prince Albert. The province publishes three urban zones; the regulation
+   * places two. A build that assumed the third into the district around it
+   * would invent a federal season for a real place.
+   */
+  const answer = evaluateFederal("species:mallard", "jurisdiction:ca-sk", { latitude: 53.2 }, on("2026-10-01"), "PWMZ");
+  assert.equal(answer.status, "UNKNOWN");
+});
+
+test("every encoded rule names an area the bundle actually derived", () => {
+  /*
+   * 67 of 194 rules once named an area that did not exist — conjunctions
+   * ("Districts C and D") stored whole, and rows for districts whose
+   * definitions were refused. None of them published a wrong season, because
+   * an unmatched area already answers UNKNOWN. What they did was inflate the
+   * encoded count by more than a third, so the build reported coverage the
+   * engine could not deliver. This is the assertion that keeps the count
+   * honest, and it is about the BUNDLE, not about any one jurisdiction.
+   */
+  const bundle = JSON.parse(readFileSync("content/regulatory/ca-federal-2026.json", "utf8")) as {
+    areas: { name: string }[];
+    rules: { area: string }[];
+  };
+  const derived = new Set(bundle.areas.map((area) => area.name));
+  const orphaned = bundle.rules.filter((rule) => !derived.has(rule.area)).map((rule) => rule.area);
+  assert.deepEqual([...new Set(orphaned)], [], "every rule must name a derived federal area");
 });

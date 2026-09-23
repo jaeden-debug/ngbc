@@ -29,6 +29,10 @@
       "jurisdictionId": "jurisdiction:ca-on"
     },
     {
+      "name": "Saskatchewan",
+      "jurisdictionId": "jurisdiction:ca-sk"
+    },
+    {
       "name": "Quebec",
       "jurisdictionId": "jurisdiction:ca-qc"
     }
@@ -655,6 +659,104 @@
         "94A",
         "94B",
         "95"
+      ]
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-sk",
+      "kind": "PROVINCIAL_UNITS",
+      "name": "District No. 1 (North)",
+      "statedAs": "Provincial Wildlife Management Zones 43 and 47 to 76",
+      "units": [
+        "43",
+        "47",
+        "48",
+        "49",
+        "50",
+        "52",
+        "53",
+        "54",
+        "55",
+        "56",
+        "57",
+        "58",
+        "59",
+        "60",
+        "61",
+        "62",
+        "63",
+        "64",
+        "65",
+        "66",
+        "67",
+        "68N",
+        "68S",
+        "69",
+        "70",
+        "71",
+        "72",
+        "73",
+        "74",
+        "75",
+        "76"
+      ]
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-sk",
+      "kind": "PROVINCIAL_UNITS",
+      "name": "District No. 2 (South)",
+      "statedAs": "Provincial Wildlife Management Zones 1 to 42 and 44 to 46, and the Saskatoon and Regina-Moose Jaw Provincial Wildlife Management Zones",
+      "units": [
+        "1",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14E",
+        "14W",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "2E",
+        "2W",
+        "3",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "4",
+        "40",
+        "41",
+        "42E",
+        "42W",
+        "44",
+        "45E",
+        "45W",
+        "46",
+        "5",
+        "6",
+        "7E",
+        "7W",
+        "8",
+        "9",
+        "RWMZ",
+        "SWMZ"
       ]
     },
     {
@@ -3379,464 +3481,6 @@
     },
     {
       "jurisdictionId": "jurisdiction:ca-on",
-      "area": "Hudson-James Bay District",
-      "groupId": "federal_group:ducks-other-than-harlequin",
-      "groupStatedAs": "Ducks (other than Harlequin Ducks), combined",
-      "window": {
-        "from": {
-          "month": 9,
-          "day": 1
-        },
-        "to": {
-          "month": 12,
-          "day": 16
-        },
-        "crossesYear": false,
-        "statedAs": "September 1 to December 16"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 6,
-        "subLimit": "not more than 1 may be Barrow’s Goldeneye",
-        "statedAs": "6 (not more than 1 may be Barrow’s Goldeneye)"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 18,
-        "subLimit": "not more than 1 may be Barrow’s Goldeneye",
-        "statedAs": "18 (not more than 1 may be Barrow’s Goldeneye)"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Ontario Schedule 3 Table 1 item 1"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-on",
-      "area": "Hudson-James Bay District",
-      "groupId": "federal_group:harlequin-ducks",
-      "groupStatedAs": "Harlequin Ducks",
-      "declaredNoSeason": true,
-      "statedAs": "No open season",
-      "sourceSection": "Ontario Schedule 3 Table 1 item 1"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-on",
-      "area": "Hudson-James Bay District",
-      "groupId": "federal_group:canada-cackling",
-      "groupStatedAs": "Canada Geese and Cackling Geese, combined",
-      "window": {
-        "from": {
-          "month": 9,
-          "day": 1
-        },
-        "to": {
-          "month": 12,
-          "day": 16
-        },
-        "crossesYear": false,
-        "statedAs": "September 1 to December 16"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 5,
-        "statedAs": "5"
-      },
-      "possession": {
-        "kind": "NO_LIMIT",
-        "statedAs": "No limit"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Ontario Schedule 3 Table 1 item 1"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-on",
-      "area": "Hudson-James Bay District",
-      "groupId": "federal_group:snow-ross",
-      "groupStatedAs": "Snow Geese and Ross’s Geese, combined",
-      "window": {
-        "from": {
-          "month": 9,
-          "day": 1
-        },
-        "to": {
-          "month": 12,
-          "day": 16
-        },
-        "crossesYear": false,
-        "statedAs": "September 1 to December 16"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 50,
-        "statedAs": "50"
-      },
-      "possession": {
-        "kind": "NO_LIMIT",
-        "statedAs": "No limit"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Ontario Schedule 3 Table 1 item 1"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-on",
-      "area": "Hudson-James Bay District",
-      "groupId": "federal_group:geese-other-than-canada-cackling-snow-ross",
-      "groupStatedAs": "Geese (other than Canada Geese, Cackling Geese, Snow Geese and Ross’s Geese), combined",
-      "window": {
-        "from": {
-          "month": 9,
-          "day": 1
-        },
-        "to": {
-          "month": 12,
-          "day": 16
-        },
-        "crossesYear": false,
-        "statedAs": "September 1 to December 16"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 5,
-        "statedAs": "5"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 15,
-        "statedAs": "15"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Ontario Schedule 3 Table 1 item 1"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-on",
-      "area": "Hudson-James Bay District",
-      "groupId": "federal_group:rails-coots-gallinules",
-      "groupStatedAs": "Rails (other than Yellow Rails and King Rails), Coots and Gallinules, combined",
-      "window": {
-        "from": {
-          "month": 9,
-          "day": 1
-        },
-        "to": {
-          "month": 12,
-          "day": 16
-        },
-        "crossesYear": false,
-        "statedAs": "September 1 to December 16"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 10,
-        "subLimit": "not more than 8 may be Coots and not more than 4 may be Gallinules",
-        "statedAs": "10 (not more than 8 may be Coots and not more than 4 may be Gallinules)"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 30,
-        "statedAs": "30"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Ontario Schedule 3 Table 1 item 1"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-on",
-      "area": "Hudson-James Bay District",
-      "groupId": "federal_group:woodcock",
-      "groupStatedAs": "Woodcock",
-      "window": {
-        "from": {
-          "month": 9,
-          "day": 15
-        },
-        "to": {
-          "month": 12,
-          "day": 16
-        },
-        "crossesYear": false,
-        "statedAs": "September 15 to December 16"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 8,
-        "statedAs": "8"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 24,
-        "statedAs": "24"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Ontario Schedule 3 Table 1 item 1"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-on",
-      "area": "Hudson-James Bay District",
-      "groupId": "federal_group:snipe",
-      "groupStatedAs": "Snipe",
-      "window": {
-        "from": {
-          "month": 9,
-          "day": 1
-        },
-        "to": {
-          "month": 12,
-          "day": 16
-        },
-        "crossesYear": false,
-        "statedAs": "September 1 to December 16"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 10,
-        "statedAs": "10"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 30,
-        "statedAs": "30"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Ontario Schedule 3 Table 1 item 1"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-on",
-      "area": "Hudson-James Bay District",
-      "groupId": "federal_group:mourning-doves",
-      "groupStatedAs": "Mourning Doves",
-      "declaredNoSeason": true,
-      "statedAs": "No open season",
-      "sourceSection": "Ontario Schedule 3 Table 1 item 1"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-on",
-      "area": "Northern District",
-      "groupId": "federal_group:ducks-other-than-harlequin",
-      "groupStatedAs": "Ducks (other than Harlequin Ducks), combined",
-      "window": {
-        "from": {
-          "month": 9,
-          "day": 10
-        },
-        "to": {
-          "month": 12,
-          "day": 25
-        },
-        "crossesYear": false,
-        "statedAs": "September 10 to December 25"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 6,
-        "subLimit": "not more than 1 may be Barrow’s Goldeneye",
-        "statedAs": "6 (not more than 1 may be Barrow’s Goldeneye)"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 18,
-        "subLimit": "not more than 1 may be Barrow’s Goldeneye",
-        "statedAs": "18 (not more than 1 may be Barrow’s Goldeneye)"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Ontario Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-on",
-      "area": "Northern District",
-      "groupId": "federal_group:harlequin-ducks",
-      "groupStatedAs": "Harlequin Ducks",
-      "declaredNoSeason": true,
-      "statedAs": "No open season",
-      "sourceSection": "Ontario Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-on",
-      "area": "Northern District",
-      "groupId": "federal_group:canada-cackling",
-      "groupStatedAs": "Canada Geese and Cackling Geese, combined",
-      "window": {
-        "from": {
-          "month": 9,
-          "day": 10
-        },
-        "to": {
-          "month": 12,
-          "day": 16
-        },
-        "crossesYear": false,
-        "statedAs": "September 10 to December 16"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 5,
-        "statedAs": "5"
-      },
-      "possession": {
-        "kind": "NO_LIMIT",
-        "statedAs": "No limit"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Ontario Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-on",
-      "area": "Northern District",
-      "groupId": "federal_group:snow-ross",
-      "groupStatedAs": "Snow Geese and Ross’s Geese, combined",
-      "window": {
-        "from": {
-          "month": 9,
-          "day": 1
-        },
-        "to": {
-          "month": 12,
-          "day": 16
-        },
-        "crossesYear": false,
-        "statedAs": "September 1 to December 16"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 20,
-        "statedAs": "20"
-      },
-      "possession": {
-        "kind": "NO_LIMIT",
-        "statedAs": "No limit"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Ontario Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-on",
-      "area": "Northern District",
-      "groupId": "federal_group:geese-other-than-canada-cackling-snow-ross",
-      "groupStatedAs": "Geese (other than Canada Geese, Cackling Geese, Snow Geese and Ross’s Geese), combined",
-      "window": {
-        "from": {
-          "month": 9,
-          "day": 1
-        },
-        "to": {
-          "month": 12,
-          "day": 16
-        },
-        "crossesYear": false,
-        "statedAs": "September 1 to December 16"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 5,
-        "statedAs": "5"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 15,
-        "statedAs": "15"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Ontario Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-on",
-      "area": "Northern District",
-      "groupId": "federal_group:rails-coots-gallinules",
-      "groupStatedAs": "Rails (other than Yellow Rails and King Rails), Coots and Gallinules, combined",
-      "window": {
-        "from": {
-          "month": 9,
-          "day": 10
-        },
-        "to": {
-          "month": 12,
-          "day": 25
-        },
-        "crossesYear": false,
-        "statedAs": "September 10 to December 25"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 10,
-        "subLimit": "not more than 8 may be Coots and not more than 4 may be Gallinules",
-        "statedAs": "10 (not more than 8 may be Coots and not more than 4 may be Gallinules)"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 30,
-        "statedAs": "30"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Ontario Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-on",
-      "area": "Northern District",
-      "groupId": "federal_group:woodcock",
-      "groupStatedAs": "Woodcock",
-      "window": {
-        "from": {
-          "month": 9,
-          "day": 15
-        },
-        "to": {
-          "month": 12,
-          "day": 16
-        },
-        "crossesYear": false,
-        "statedAs": "September 15 to December 16"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 8,
-        "statedAs": "8"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 24,
-        "statedAs": "24"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Ontario Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-on",
-      "area": "Northern District",
-      "groupId": "federal_group:snipe",
-      "groupStatedAs": "Snipe",
-      "window": {
-        "from": {
-          "month": 9,
-          "day": 10
-        },
-        "to": {
-          "month": 12,
-          "day": 25
-        },
-        "crossesYear": false,
-        "statedAs": "September 10 to December 25"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 10,
-        "statedAs": "10"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 30,
-        "statedAs": "30"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Ontario Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-on",
-      "area": "Northern District",
-      "groupId": "federal_group:mourning-doves",
-      "groupStatedAs": "Mourning Doves",
-      "declaredNoSeason": true,
-      "statedAs": "No open season",
-      "sourceSection": "Ontario Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-on",
       "area": "Central District",
       "groupId": "federal_group:ducks-other-than-harlequin",
       "groupStatedAs": "Ducks (other than Harlequin Ducks), combined",
@@ -4285,6 +3929,306 @@
       "sourceSection": "Ontario Schedule 3 Table 1 item 4"
     },
     {
+      "jurisdictionId": "jurisdiction:ca-sk",
+      "area": "District No. 1 (North)",
+      "groupId": "federal_group:all-ducks",
+      "groupStatedAs": "all Ducks, combined",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 12,
+          "day": 16
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to December 16"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 8,
+        "statedAs": "8"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 24,
+        "statedAs": "24"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Saskatchewan Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-sk",
+      "area": "District No. 2 (South)",
+      "groupId": "federal_group:all-ducks",
+      "groupStatedAs": "all Ducks, combined",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 12,
+          "day": 16
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to December 16"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 8,
+        "statedAs": "8"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 24,
+        "statedAs": "24"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Saskatchewan Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-sk",
+      "area": "District No. 1 (North)",
+      "groupId": "federal_group:canada-cackling-whitefronted",
+      "groupStatedAs": "Canada Geese, Cackling Geese and White-fronted Geese, combined",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 12,
+          "day": 16
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to December 16"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 8,
+        "statedAs": "8"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 24,
+        "statedAs": "24"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Saskatchewan Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-sk",
+      "area": "District No. 2 (South)",
+      "groupId": "federal_group:canada-cackling-whitefronted",
+      "groupStatedAs": "Canada Geese, Cackling Geese and White-fronted Geese, combined",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 12,
+          "day": 16
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to December 16"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 8,
+        "statedAs": "8"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 24,
+        "statedAs": "24"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Saskatchewan Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-sk",
+      "area": "District No. 1 (North)",
+      "groupId": "federal_group:sandhill-cranes",
+      "groupStatedAs": "Sandhill Cranes",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 12,
+          "day": 16
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to December 16"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 5,
+        "statedAs": "5"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 15,
+        "statedAs": "15"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Saskatchewan Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-sk",
+      "area": "District No. 2 (South)",
+      "groupId": "federal_group:sandhill-cranes",
+      "groupStatedAs": "Sandhill Cranes",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 12,
+          "day": 16
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to December 16"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 5,
+        "statedAs": "5"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 15,
+        "statedAs": "15"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Saskatchewan Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-sk",
+      "area": "District No. 1 (North)",
+      "groupId": "federal_group:coots",
+      "groupStatedAs": "Coots",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 12,
+          "day": 16
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to December 16"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 10,
+        "statedAs": "10"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 30,
+        "statedAs": "30"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Saskatchewan Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-sk",
+      "area": "District No. 2 (South)",
+      "groupId": "federal_group:coots",
+      "groupStatedAs": "Coots",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 12,
+          "day": 16
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to December 16"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 10,
+        "statedAs": "10"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 30,
+        "statedAs": "30"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Saskatchewan Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-sk",
+      "area": "District No. 1 (North)",
+      "groupId": "federal_group:snipe",
+      "groupStatedAs": "Snipe",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 12,
+          "day": 16
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to December 16"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 10,
+        "statedAs": "10"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 30,
+        "statedAs": "30"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Saskatchewan Schedule 3 Table 1 item 1"
+    },
+    {
+      "jurisdictionId": "jurisdiction:ca-sk",
+      "area": "District No. 2 (South)",
+      "groupId": "federal_group:snipe",
+      "groupStatedAs": "Snipe",
+      "window": {
+        "from": {
+          "month": 9,
+          "day": 1
+        },
+        "to": {
+          "month": 12,
+          "day": 16
+        },
+        "crossesYear": false,
+        "statedAs": "September 1 to December 16"
+      },
+      "daily": {
+        "kind": "COUNT",
+        "count": 10,
+        "statedAs": "10"
+      },
+      "possession": {
+        "kind": "COUNT",
+        "count": 30,
+        "statedAs": "30"
+      },
+      "declaredNoSeason": false,
+      "sourceSection": "Saskatchewan Schedule 3 Table 1 item 1"
+    },
+    {
       "jurisdictionId": "jurisdiction:ca-qc",
       "area": "District A",
       "groupId": "federal_group:ducks-other-than-harlequin",
@@ -4501,242 +4445,7 @@
     },
     {
       "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District B",
-      "groupId": "federal_group:ducks-other-than-harlequin",
-      "groupStatedAs": "Ducks (other than Harlequin Ducks), combined",
-      "window": {
-        "from": {
-          "month": 10,
-          "day": 1
-        },
-        "to": {
-          "month": 10,
-          "day": 24
-        },
-        "crossesYear": false,
-        "statedAs": "October 1 to October 24"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 6,
-        "subLimit": "not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal",
-        "statedAs": "6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal)"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 18,
-        "subLimit": "not more than 1 may be Barrow’s Goldeneye and not more than 2 may be Blue-winged Teal",
-        "statedAs": "18 (not more than 1 may be Barrow’s Goldeneye and not more than 2 may be Blue-winged Teal)"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District B",
-      "groupId": "federal_group:ducks-other-than-harlequin",
-      "groupStatedAs": "Ducks (other than Harlequin Ducks), combined",
-      "relativeWindow": {
-        "from": {
-          "kind": "CALENDAR",
-          "month": 11,
-          "day": 15
-        },
-        "to": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 12,
-          "day": 25
-        },
-        "crossesYear": false,
-        "statedAs": "November 15 to the first Saturday after December 25"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 6,
-        "subLimit": "not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal",
-        "statedAs": "6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal)"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 18,
-        "subLimit": "not more than 1 may be Barrow’s Goldeneye and not more than 2 may be Blue-winged Teal",
-        "statedAs": "18 (not more than 1 may be Barrow’s Goldeneye and not more than 2 may be Blue-winged Teal)"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District B",
-      "groupId": "federal_group:harlequin-ducks",
-      "groupStatedAs": "Harlequin Ducks",
-      "declaredNoSeason": true,
-      "statedAs": "No open season",
-      "sourceSection": "Quebec Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District B",
-      "groupId": "federal_group:canada-cackling",
-      "groupStatedAs": "Canada Geese and Cackling Geese, combined",
-      "relativeWindow": {
-        "from": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 9,
-          "day": 11
-        },
-        "to": {
-          "kind": "CALENDAR",
-          "month": 9,
-          "day": 25
-        },
-        "crossesYear": false,
-        "statedAs": "the first Saturday after September 11 to September 25"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 10,
-        "statedAs": "10"
-      },
-      "possession": {
-        "kind": "NO_LIMIT",
-        "statedAs": "No limit"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District B",
-      "groupId": "federal_group:canada-cackling",
-      "groupStatedAs": "Canada Geese and Cackling Geese, combined",
-      "relativeWindow": {
-        "from": {
-          "kind": "CALENDAR",
-          "month": 9,
-          "day": 26
-        },
-        "to": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 12,
-          "day": 25
-        },
-        "crossesYear": false,
-        "statedAs": "September 26 to the first Saturday after December 25"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 5,
-        "statedAs": "5"
-      },
-      "possession": {
-        "kind": "NO_LIMIT",
-        "statedAs": "No limit"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District B",
-      "groupId": "federal_group:geese-other-than-snow-canada-cackling",
-      "groupStatedAs": "Geese (other than Snow Geese, Canada Geese and Cackling Geese), combined",
-      "relativeWindow": {
-        "from": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 9,
-          "day": 11
-        },
-        "to": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 12,
-          "day": 25
-        },
-        "crossesYear": false,
-        "statedAs": "The first Saturday after September 11 to the first Saturday after December 25"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 5,
-        "statedAs": "5"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 15,
-        "statedAs": "15"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District B",
-      "groupId": "federal_group:coots-gallinules",
-      "groupStatedAs": "Coots and Gallinules, combined",
-      "declaredNoSeason": true,
-      "statedAs": "No open season",
-      "sourceSection": "Quebec Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District B",
-      "groupId": "federal_group:snipe",
-      "groupStatedAs": "Snipe",
-      "relativeWindow": {
-        "from": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 9,
-          "day": 11
-        },
-        "to": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 12,
-          "day": 25
-        },
-        "crossesYear": false,
-        "statedAs": "The first Saturday after September 11 to the first Saturday after December 25"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 10,
-        "statedAs": "10"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 30,
-        "statedAs": "30"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District B",
-      "groupId": "federal_group:mourning-doves",
-      "groupStatedAs": "Mourning Doves",
-      "declaredNoSeason": true,
-      "statedAs": "No open season",
-      "sourceSection": "Quebec Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District B",
-      "groupId": "federal_group:sandhill-cranes",
-      "groupStatedAs": "Sandhill Cranes",
-      "declaredNoSeason": true,
-      "statedAs": "No open season",
-      "sourceSection": "Quebec Schedule 3 Table 1 item 2"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "Districts C and D",
+      "area": "District C",
       "groupId": "federal_group:ducks-other-than-harlequin",
       "groupStatedAs": "Ducks (other than Harlequin Ducks), combined",
       "relativeWindow": {
@@ -4772,7 +4481,7 @@
     },
     {
       "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "Districts C and D",
+      "area": "District C",
       "groupId": "federal_group:harlequin-ducks",
       "groupStatedAs": "Harlequin Ducks",
       "declaredNoSeason": true,
@@ -4781,7 +4490,7 @@
     },
     {
       "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "Districts C and D",
+      "area": "District C",
       "groupId": "federal_group:canada-cackling",
       "groupStatedAs": "Canada Geese and Cackling Geese, combined",
       "relativeWindow": {
@@ -4813,7 +4522,7 @@
     },
     {
       "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "Districts C and D",
+      "area": "District C",
       "groupId": "federal_group:canada-cackling",
       "groupStatedAs": "Canada Geese and Cackling Geese, combined",
       "window": {
@@ -4842,7 +4551,7 @@
     },
     {
       "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "Districts C and D",
+      "area": "District C",
       "groupId": "federal_group:geese-other-than-snow-canada-cackling",
       "groupStatedAs": "Geese (other than Snow Geese, Canada Geese and Cackling Geese), combined",
       "relativeWindow": {
@@ -4876,7 +4585,7 @@
     },
     {
       "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "Districts C and D",
+      "area": "District C",
       "groupId": "federal_group:coots-gallinules",
       "groupStatedAs": "Coots and Gallinules, combined",
       "declaredNoSeason": true,
@@ -4885,7 +4594,7 @@
     },
     {
       "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "Districts C and D",
+      "area": "District C",
       "groupId": "federal_group:snipe",
       "groupStatedAs": "Snipe",
       "relativeWindow": {
@@ -4919,625 +4628,12 @@
     },
     {
       "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "Districts C and D",
+      "area": "District C",
       "groupId": "federal_group:mourning-doves",
       "groupStatedAs": "Mourning Doves",
       "declaredNoSeason": true,
       "statedAs": "No open season",
       "sourceSection": "Quebec Schedule 3 Table 1 item 3"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District E",
-      "groupId": "federal_group:ducks-other-than-harlequin",
-      "groupStatedAs": "Ducks (other than Harlequin Ducks), combined",
-      "relativeWindow": {
-        "from": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 9,
-          "day": 11
-        },
-        "to": {
-          "kind": "CALENDAR",
-          "month": 10,
-          "day": 20
-        },
-        "crossesYear": false,
-        "statedAs": "The first Saturday after September 11 to October 20"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 6,
-        "subLimit": "not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal",
-        "statedAs": "6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal)"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 18,
-        "subLimit": "not more than 1 may be Barrow’s Goldeneye and not more than 2 may be Blue-winged Teal",
-        "statedAs": "18 (not more than 1 may be Barrow’s Goldeneye and not more than 2 may be Blue-winged Teal)"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 4"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District E",
-      "groupId": "federal_group:harlequin-ducks",
-      "groupStatedAs": "Harlequin Ducks",
-      "declaredNoSeason": true,
-      "statedAs": "No open season",
-      "sourceSection": "Quebec Schedule 3 Table 1 item 4"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District E",
-      "groupId": "federal_group:canada-cackling",
-      "groupStatedAs": "Canada Geese and Cackling Geese, combined",
-      "relativeWindow": {
-        "from": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 9,
-          "day": 11
-        },
-        "to": {
-          "kind": "CALENDAR",
-          "month": 9,
-          "day": 25
-        },
-        "crossesYear": false,
-        "statedAs": "the first Saturday after September 11 to September 25"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 10,
-        "statedAs": "10"
-      },
-      "possession": {
-        "kind": "NO_LIMIT",
-        "statedAs": "No limit"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 4"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District E",
-      "groupId": "federal_group:canada-cackling",
-      "groupStatedAs": "Canada Geese and Cackling Geese, combined",
-      "window": {
-        "from": {
-          "month": 9,
-          "day": 26
-        },
-        "to": {
-          "month": 12,
-          "day": 16
-        },
-        "crossesYear": false,
-        "statedAs": "September 26 to December 16"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 5,
-        "statedAs": "5"
-      },
-      "possession": {
-        "kind": "NO_LIMIT",
-        "statedAs": "No limit"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 4"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District E",
-      "groupId": "federal_group:geese-other-than-snow-canada-cackling",
-      "groupStatedAs": "Geese (other than Snow Geese, Canada Geese and Cackling Geese), combined",
-      "relativeWindow": {
-        "from": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 9,
-          "day": 11
-        },
-        "to": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 12,
-          "day": 25
-        },
-        "crossesYear": false,
-        "statedAs": "The first Saturday after September 11 to the first Saturday after December 25"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 5,
-        "statedAs": "5"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 15,
-        "statedAs": "15"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 4"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District E",
-      "groupId": "federal_group:coots-gallinules",
-      "groupStatedAs": "Coots and Gallinules, combined",
-      "declaredNoSeason": true,
-      "statedAs": "No open season",
-      "sourceSection": "Quebec Schedule 3 Table 1 item 4"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District E",
-      "groupId": "federal_group:snipe",
-      "groupStatedAs": "Snipe",
-      "relativeWindow": {
-        "from": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 9,
-          "day": 11
-        },
-        "to": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 12,
-          "day": 25
-        },
-        "crossesYear": false,
-        "statedAs": "The first Saturday after September 11 to the first Saturday after December 25"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 10,
-        "statedAs": "10"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 30,
-        "statedAs": "30"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 4"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District E",
-      "groupId": "federal_group:mourning-doves",
-      "groupStatedAs": "Mourning Doves",
-      "declaredNoSeason": true,
-      "statedAs": "No open season",
-      "sourceSection": "Quebec Schedule 3 Table 1 item 4"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District E",
-      "groupId": "federal_group:sandhill-cranes",
-      "groupStatedAs": "Sandhill Cranes",
-      "declaredNoSeason": true,
-      "statedAs": "No open season",
-      "sourceSection": "Quebec Schedule 3 Table 1 item 4"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District F",
-      "groupId": "federal_group:ducks-other-than-harlequin",
-      "groupStatedAs": "Ducks (other than Harlequin Ducks), combined",
-      "relativeWindow": {
-        "from": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 9,
-          "day": 18
-        },
-        "to": {
-          "kind": "CALENDAR",
-          "month": 10,
-          "day": 20
-        },
-        "crossesYear": false,
-        "statedAs": "the first Saturday after September 18 to October 20"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 6,
-        "subLimit": "not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal",
-        "statedAs": "6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal)"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 18,
-        "subLimit": "not more than 1 may be Barrow’s Goldeneye and not more than 2 may be Blue-winged Teal",
-        "statedAs": "18 (not more than 1 may be Barrow’s Goldeneye and not more than 2 may be Blue-winged Teal)"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 5"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District F",
-      "groupId": "federal_group:harlequin-ducks",
-      "groupStatedAs": "Harlequin Ducks",
-      "declaredNoSeason": true,
-      "statedAs": "No open season",
-      "sourceSection": "Quebec Schedule 3 Table 1 item 5"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District F",
-      "groupId": "federal_group:canada-cackling",
-      "groupStatedAs": "Canada Geese and Cackling Geese, combined",
-      "relativeWindow": {
-        "from": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 9,
-          "day": 18
-        },
-        "to": {
-          "kind": "CALENDAR",
-          "month": 9,
-          "day": 25
-        },
-        "crossesYear": false,
-        "statedAs": "the first Saturday after September 18 to September 25"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 10,
-        "statedAs": "10"
-      },
-      "possession": {
-        "kind": "NO_LIMIT",
-        "statedAs": "No limit"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 5"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District F",
-      "groupId": "federal_group:canada-cackling",
-      "groupStatedAs": "Canada Geese and Cackling Geese, combined",
-      "window": {
-        "from": {
-          "month": 9,
-          "day": 26
-        },
-        "to": {
-          "month": 12,
-          "day": 21
-        },
-        "crossesYear": false,
-        "statedAs": "September 26 to December 21"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 5,
-        "statedAs": "5"
-      },
-      "possession": {
-        "kind": "NO_LIMIT",
-        "statedAs": "No limit"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 5"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District F",
-      "groupId": "federal_group:geese-other-than-snow-canada-cackling",
-      "groupStatedAs": "Geese (other than Snow Geese, Canada Geese and Cackling Geese), combined",
-      "relativeWindow": {
-        "from": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 9,
-          "day": 18
-        },
-        "to": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 1,
-          "day": 1
-        },
-        "crossesYear": true,
-        "statedAs": "The first Saturday after September 18 to the first Saturday after January 1"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 5,
-        "statedAs": "5"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 15,
-        "statedAs": "15"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 5"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District F",
-      "groupId": "federal_group:coots-gallinules",
-      "groupStatedAs": "Coots and Gallinules, combined",
-      "relativeWindow": {
-        "from": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 9,
-          "day": 18
-        },
-        "to": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 1,
-          "day": 1
-        },
-        "crossesYear": true,
-        "statedAs": "The first Saturday after September 18 to the first Saturday after January 1"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 4,
-        "statedAs": "4"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 12,
-        "statedAs": "12"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 5"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District F",
-      "groupId": "federal_group:snipe",
-      "groupStatedAs": "Snipe",
-      "relativeWindow": {
-        "from": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 9,
-          "day": 18
-        },
-        "to": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 1,
-          "day": 1
-        },
-        "crossesYear": true,
-        "statedAs": "The first Saturday after September 18 to the first Saturday after January 1"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 10,
-        "statedAs": "10"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 30,
-        "statedAs": "30"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 5"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District F",
-      "groupId": "federal_group:mourning-doves",
-      "groupStatedAs": "Mourning Doves",
-      "relativeWindow": {
-        "from": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 9,
-          "day": 14
-        },
-        "to": {
-          "kind": "FIRST_WEEKDAY_AFTER_DATE",
-          "weekday": 6,
-          "month": 12,
-          "day": 28
-        },
-        "crossesYear": false,
-        "statedAs": "The first Saturday after September 14 to the first Saturday after December 28"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 8,
-        "statedAs": "8"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 24,
-        "statedAs": "24"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 5"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District F",
-      "groupId": "federal_group:sandhill-cranes",
-      "groupStatedAs": "Sandhill Cranes",
-      "declaredNoSeason": true,
-      "statedAs": "No open season",
-      "sourceSection": "Quebec Schedule 3 Table 1 item 5"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District G",
-      "groupId": "federal_group:ducks-other-than-harlequin",
-      "groupStatedAs": "Ducks (other than Harlequin Ducks), combined",
-      "window": {
-        "from": {
-          "month": 11,
-          "day": 1
-        },
-        "to": {
-          "month": 12,
-          "day": 26
-        },
-        "crossesYear": false,
-        "statedAs": "November 1 to December 26"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 6,
-        "subLimit": "not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal",
-        "statedAs": "6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal)"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 18,
-        "subLimit": "not more than 1 may be Barrow’s Goldeneye and not more than 2 may be Blue-winged Teal",
-        "statedAs": "18 (not more than 1 may be Barrow’s Goldeneye and not more than 2 may be Blue-winged Teal)"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 6"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District G",
-      "groupId": "federal_group:harlequin-ducks",
-      "groupStatedAs": "Harlequin Ducks",
-      "declaredNoSeason": true,
-      "statedAs": "No open season",
-      "sourceSection": "Quebec Schedule 3 Table 1 item 6"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District G",
-      "groupId": "federal_group:canada-cackling",
-      "groupStatedAs": "Canada Geese and Cackling Geese, combined",
-      "relativeWindow": {
-        "from": {
-          "kind": "LAST_WEEKDAY_IN_MONTH",
-          "weekday": 6,
-          "month": 9
-        },
-        "to": {
-          "kind": "CALENDAR",
-          "month": 12,
-          "day": 26
-        },
-        "crossesYear": false,
-        "statedAs": "The last Saturday of September to December 26"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 5,
-        "statedAs": "5"
-      },
-      "possession": {
-        "kind": "NO_LIMIT",
-        "statedAs": "No limit"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 6"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District G",
-      "groupId": "federal_group:geese-other-than-snow-canada-cackling",
-      "groupStatedAs": "Geese (other than Snow Geese, Canada Geese and Cackling Geese), combined",
-      "relativeWindow": {
-        "from": {
-          "kind": "LAST_WEEKDAY_IN_MONTH",
-          "weekday": 6,
-          "month": 9
-        },
-        "to": {
-          "kind": "CALENDAR",
-          "month": 12,
-          "day": 26
-        },
-        "crossesYear": false,
-        "statedAs": "The last Saturday of September to December 26"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 5,
-        "statedAs": "5"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 15,
-        "statedAs": "15"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 6"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District G",
-      "groupId": "federal_group:coots-gallinules",
-      "groupStatedAs": "Coots and Gallinules, combined",
-      "declaredNoSeason": true,
-      "statedAs": "No open season",
-      "sourceSection": "Quebec Schedule 3 Table 1 item 6"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District G",
-      "groupId": "federal_group:snipe",
-      "groupStatedAs": "Snipe",
-      "relativeWindow": {
-        "from": {
-          "kind": "LAST_WEEKDAY_IN_MONTH",
-          "weekday": 6,
-          "month": 9
-        },
-        "to": {
-          "kind": "CALENDAR",
-          "month": 12,
-          "day": 26
-        },
-        "crossesYear": false,
-        "statedAs": "The last Saturday of September to December 26"
-      },
-      "daily": {
-        "kind": "COUNT",
-        "count": 10,
-        "statedAs": "10"
-      },
-      "possession": {
-        "kind": "COUNT",
-        "count": 30,
-        "statedAs": "30"
-      },
-      "declaredNoSeason": false,
-      "sourceSection": "Quebec Schedule 3 Table 1 item 6"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District G",
-      "groupId": "federal_group:mourning-doves",
-      "groupStatedAs": "Mourning Doves",
-      "declaredNoSeason": true,
-      "statedAs": "No open season",
-      "sourceSection": "Quebec Schedule 3 Table 1 item 6"
-    },
-    {
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "area": "District G",
-      "groupId": "federal_group:sandhill-cranes",
-      "groupStatedAs": "Sandhill Cranes",
-      "declaredNoSeason": true,
-      "statedAs": "No open season",
-      "sourceSection": "Quebec Schedule 3 Table 1 item 6"
     }
   ],
   "notEncoded": [
@@ -6073,33 +5169,150 @@
     },
     {
       "where": "Ontario Schedule 3 Table 1 item 1",
+      "group": "Ducks (other than Harlequin Ducks), combined",
+      "area": "Hudson-James Bay District",
+      "statedAs": "September 1 to December 16 | 6 (not more than 1 may be Barrow’s Goldeneye)",
+      "reason": "the regulation writes this season for Hudson-James Bay District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Ontario Schedule 3 Table 1 item 1",
+      "group": "Harlequin Ducks",
+      "area": "Hudson-James Bay District",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for Hudson-James Bay District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Ontario Schedule 3 Table 1 item 1",
+      "group": "Canada Geese and Cackling Geese, combined",
+      "area": "Hudson-James Bay District",
+      "statedAs": "September 1 to December 16 | 5",
+      "reason": "the regulation writes this season for Hudson-James Bay District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Ontario Schedule 3 Table 1 item 1",
+      "group": "Snow Geese and Ross’s Geese, combined",
+      "area": "Hudson-James Bay District",
+      "statedAs": "September 1 to December 16 | 50",
+      "reason": "the regulation writes this season for Hudson-James Bay District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Ontario Schedule 3 Table 1 item 1",
+      "group": "Geese (other than Canada Geese, Cackling Geese, Snow Geese and Ross’s Geese), combined",
+      "area": "Hudson-James Bay District",
+      "statedAs": "September 1 to December 16 | 5",
+      "reason": "the regulation writes this season for Hudson-James Bay District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Ontario Schedule 3 Table 1 item 1",
+      "group": "Rails (other than Yellow Rails and King Rails), Coots and Gallinules, combined",
+      "area": "Hudson-James Bay District",
+      "statedAs": "September 1 to December 16 | 10 (not more than 8 may be Coots and not more than 4 may be Gallinules)",
+      "reason": "the regulation writes this season for Hudson-James Bay District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Ontario Schedule 3 Table 1 item 1",
+      "group": "Woodcock",
+      "area": "Hudson-James Bay District",
+      "statedAs": "September 15 to December 16 | 8",
+      "reason": "the regulation writes this season for Hudson-James Bay District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Ontario Schedule 3 Table 1 item 1",
+      "group": "Snipe",
+      "area": "Hudson-James Bay District",
+      "statedAs": "September 1 to December 16 | 10",
+      "reason": "the regulation writes this season for Hudson-James Bay District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Ontario Schedule 3 Table 1 item 1",
+      "group": "Mourning Doves",
+      "area": "Hudson-James Bay District",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for Hudson-James Bay District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Ontario Schedule 3 Table 1 item 1",
       "group": "Sandhill Cranes",
       "area": "Hudson-James Bay District",
-      "statedAs": "September 1 to September 14, for residents of Canada only | 1 | 1",
-      "reason": "the limit or season varies by residency",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "groupId": "federal_group:sandhill-cranes",
-      "coversArea": "Hudson-James Bay District"
+      "statedAs": "September 1 to September 14, for residents of Canada only | 1",
+      "reason": "the regulation writes this season for Hudson-James Bay District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Ontario Schedule 3 Table 1 item 2",
+      "group": "Ducks (other than Harlequin Ducks), combined",
+      "area": "Northern District",
+      "statedAs": "September 10 to December 25 | 6 (not more than 1 may be Barrow’s Goldeneye)",
+      "reason": "the regulation writes this season for Northern District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Ontario Schedule 3 Table 1 item 2",
+      "group": "Harlequin Ducks",
+      "area": "Northern District",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for Northern District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
     },
     {
       "where": "Ontario Schedule 3 Table 1 item 2",
       "group": "Canada Geese and Cackling Geese, combined",
       "area": "Northern District",
-      "statedAs": "(i) September 1 to September 9 | (A) 10 (in Provincial Wildlife Management Units 8, 10, 13, 36, 37, 39, 41 and 45) | (B) 5 (in other Provincial Wildlife Management Units) | No limit",
-      "reason": "the season applies only in a sub-list of provincial units",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "groupId": "federal_group:canada-cackling",
-      "coversArea": "Northern District"
+      "statedAs": "(i) September 1 to September 9 | (A) 10 (in Provincial Wildlife Management Units 8, 10, 13, 36, 37, 39, 41 and 45) | (B) 5 (in other Provincial Wildlife Management Units)",
+      "reason": "the regulation writes this season for Northern District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Ontario Schedule 3 Table 1 item 2",
+      "group": "Canada Geese and Cackling Geese, combined",
+      "area": "Northern District",
+      "statedAs": "(ii) September 10 to December 16 | 5",
+      "reason": "the regulation writes this season for Northern District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Ontario Schedule 3 Table 1 item 2",
+      "group": "Snow Geese and Ross’s Geese, combined",
+      "area": "Northern District",
+      "statedAs": "September 1 to December 16 | 20",
+      "reason": "the regulation writes this season for Northern District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Ontario Schedule 3 Table 1 item 2",
+      "group": "Geese (other than Canada Geese, Cackling Geese, Snow Geese and Ross’s Geese), combined",
+      "area": "Northern District",
+      "statedAs": "September 1 to December 16 | 5",
+      "reason": "the regulation writes this season for Northern District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Ontario Schedule 3 Table 1 item 2",
+      "group": "Rails (other than Yellow Rails and King Rails), Coots and Gallinules, combined",
+      "area": "Northern District",
+      "statedAs": "September 10 to December 25 | 10 (not more than 8 may be Coots and not more than 4 may be Gallinules)",
+      "reason": "the regulation writes this season for Northern District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Ontario Schedule 3 Table 1 item 2",
+      "group": "Woodcock",
+      "area": "Northern District",
+      "statedAs": "September 15 to December 16 | 8",
+      "reason": "the regulation writes this season for Northern District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Ontario Schedule 3 Table 1 item 2",
+      "group": "Snipe",
+      "area": "Northern District",
+      "statedAs": "September 10 to December 25 | 10",
+      "reason": "the regulation writes this season for Northern District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Ontario Schedule 3 Table 1 item 2",
+      "group": "Mourning Doves",
+      "area": "Northern District",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for Northern District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
     },
     {
       "where": "Ontario Schedule 3 Table 1 item 2",
       "group": "Sandhill Cranes",
       "area": "Northern District",
-      "statedAs": "The first Saturday after September 11 to the first Friday after September 24, only for residents of Canada and on farmland in Provincial Wildlife Management Units 23, 24, 27 to 30, 36, 37, 39 to 41 and 45 | 1 | 1",
-      "reason": "the limit or season varies by residency",
-      "jurisdictionId": "jurisdiction:ca-on",
-      "groupId": "federal_group:sandhill-cranes",
-      "coversArea": "Northern District"
+      "statedAs": "The first Saturday after September 11 to the first Friday after September 24, only for residents of Canada and on farmland in Provincial Wildlife Management Units 23, 24, 27 to 30, 36, 37, 39 to 41 and 45 | 1",
+      "reason": "the regulation writes this season for Northern District, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
     },
     {
       "where": "Ontario Schedule 3 Table 1 item 3",
@@ -6227,6 +5440,21 @@
       "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
     },
     {
+      "where": "Saskatchewan Schedule 3",
+      "statedAs": "Units PWMZ",
+      "reason": "the regulation places these certified provincial units in no federal area, so migratory-bird queries there are UNKNOWN rather than assumed into one"
+    },
+    {
+      "where": "Saskatchewan Schedule 3 Table 2 item 1",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Saskatchewan",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
+      "where": "Saskatchewan Schedule 3 Table 2 item 1",
+      "statedAs": "TABLE 2 — Special Measures for Overabundant Species in Saskatchewan",
+      "reason": "Special measures for overabundant species are a separate regime and are not encoded in wave 1."
+    },
+    {
       "where": "Quebec Schedule 3 definitions",
       "statedAs": "District B: the portion of Quebec included in Provincial Hunting Zones 19 south, 20 and 29 and the portion of Provincial Hunting Zone 21 included in the electoral district of Duplessis that is situated opposite to Provincial Hunting Zones 19 south and 20",
       "reason": "the district is defined by a portion of a provincial unit, and North Ground holds no line to place a point on a side of"
@@ -6295,191 +5523,398 @@
       "where": "Quebec Schedule 3 Table 1 item 2",
       "group": "Ducks (other than Harlequin Ducks), combined",
       "area": "District B",
-      "statedAs": "(i) the first Saturday after September 11 to September 30, for Ducks other than Eiders and Long-tailed Ducks | 6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal) | 18 (not more than 1 may be Barrow’s Goldeneye and not more than 2 may be Blue-winged Teal)",
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "groupId": "federal_group:ducks-other-than-harlequin",
-      "coversArea": "District B",
-      "reason": "the season is written in a relative-date phrasing this build does not recognise exactly, and no nearest match is guessed"
+      "statedAs": "(i) the first Saturday after September 11 to September 30, for Ducks other than Eiders and Long-tailed Ducks | 6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal)",
+      "reason": "the regulation writes this season for District B, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 2",
       "group": "Ducks (other than Harlequin Ducks), combined",
       "area": "District B",
-      "statedAs": "(iii) October 25 to November 14 (not an open season for Eiders and Long-tailed Ducks in locations on the North Shore that are west of the Natashquan River) | 6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal) | 18 (not more than 1 may be Barrow’s Goldeneye and not more than 2 may be Blue-winged Teal)",
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "groupId": "federal_group:ducks-other-than-harlequin",
-      "coversArea": "District B",
-      "reason": "the season is not a plain calendar window this build reads"
+      "statedAs": "(ii) October 1 to October 24 | 6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal)",
+      "reason": "the regulation writes this season for District B, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 2",
       "group": "Ducks (other than Harlequin Ducks), combined",
       "area": "District B",
-      "statedAs": "(v) the first Sunday after December 26 to January 14, only for Eiders and Long-tailed Ducks | 6 | 18 (not more than 1 may be Barrow’s Goldeneye and not more than 2 may be Blue-winged Teal)",
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "groupId": "federal_group:ducks-other-than-harlequin",
-      "coversArea": "District B",
-      "reason": "the season is written in a relative-date phrasing this build does not recognise exactly, and no nearest match is guessed"
+      "statedAs": "(iii) October 25 to November 14 (not an open season for Eiders and Long-tailed Ducks in locations on the North Shore that are west of the Natashquan River) | 6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal)",
+      "reason": "the regulation writes this season for District B, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 2",
       "group": "Ducks (other than Harlequin Ducks), combined",
       "area": "District B",
-      "statedAs": "(vi) January 15 to February 5, only for Eiders and Long-tailed Ducks in locations on the North Shore that are west of the Natashquan River | 6 | 18 (not more than 1 may be Barrow’s Goldeneye and not more than 2 may be Blue-winged Teal)",
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "groupId": "federal_group:ducks-other-than-harlequin",
-      "coversArea": "District B",
-      "reason": "the season is not a plain calendar window this build reads"
+      "statedAs": "(iv) November 15 to the first Saturday after December 25 | 6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal)",
+      "reason": "the regulation writes this season for District B, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 2",
+      "group": "Ducks (other than Harlequin Ducks), combined",
+      "area": "District B",
+      "statedAs": "(v) the first Sunday after December 26 to January 14, only for Eiders and Long-tailed Ducks | 6",
+      "reason": "the regulation writes this season for District B, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 2",
+      "group": "Ducks (other than Harlequin Ducks), combined",
+      "area": "District B",
+      "statedAs": "(vi) January 15 to February 5, only for Eiders and Long-tailed Ducks in locations on the North Shore that are west of the Natashquan River | 6",
+      "reason": "the regulation writes this season for District B, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 2",
+      "group": "Harlequin Ducks",
+      "area": "District B",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for District B, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 2",
+      "group": "Canada Geese and Cackling Geese, combined",
+      "area": "District B",
+      "statedAs": "(i) the first Saturday after September 11 to September 25 | 10",
+      "reason": "the regulation writes this season for District B, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 2",
+      "group": "Canada Geese and Cackling Geese, combined",
+      "area": "District B",
+      "statedAs": "(ii) September 26 to the first Saturday after December 25 | 5",
+      "reason": "the regulation writes this season for District B, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 2",
+      "group": "Geese (other than Snow Geese, Canada Geese and Cackling Geese), combined",
+      "area": "District B",
+      "statedAs": "The first Saturday after September 11 to the first Saturday after December 25 | 5",
+      "reason": "the regulation writes this season for District B, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 2",
+      "group": "Coots and Gallinules, combined",
+      "area": "District B",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for District B, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 2",
       "group": "Woodcock",
       "area": "District B",
-      "statedAs": "The first Saturday after August 31 to the first Saturday after December 14 | (i) 8 for residents of Canada | (ii) 4 for non-residents of Canada | 24",
-      "reason": "the limit or season varies by residency",
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "groupId": "federal_group:woodcock",
-      "coversArea": "District B"
+      "statedAs": "The first Saturday after August 31 to the first Saturday after December 14 | (i) 8 for residents of Canada | (ii) 4 for non-residents of Canada",
+      "reason": "the regulation writes this season for District B, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 2",
+      "group": "Snipe",
+      "area": "District B",
+      "statedAs": "The first Saturday after September 11 to the first Saturday after December 25 | 10",
+      "reason": "the regulation writes this season for District B, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 2",
+      "group": "Mourning Doves",
+      "area": "District B",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for District B, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 2",
+      "group": "Sandhill Cranes",
+      "area": "District B",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for District B, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 3",
       "group": "Canada Geese and Cackling Geese, combined",
-      "area": "Districts C and D",
+      "area": "District C",
       "statedAs": "(i) September 1 to the first Friday after September 10 (only on farmland) | 10 | No limit",
       "jurisdictionId": "jurisdiction:ca-qc",
       "groupId": "federal_group:canada-cackling",
-      "coversArea": "Districts C and D",
+      "coversArea": "District C",
       "reason": "the season is written in a relative-date phrasing this build does not recognise exactly, and no nearest match is guessed"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 3",
       "group": "Canada Geese and Cackling Geese, combined",
-      "area": "Districts C and D",
+      "area": "District C",
       "statedAs": "(iv) [Repealed, SOR/2026-118, s. 16] | (iv) [Repealed, SOR/2026-118, s. 16] | No limit",
       "jurisdictionId": "jurisdiction:ca-qc",
       "groupId": "federal_group:canada-cackling",
-      "coversArea": "Districts C and D",
+      "coversArea": "District C",
       "reason": "the season is not a plain calendar window this build reads"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 3",
       "group": "Woodcock",
-      "area": "Districts C and D",
+      "area": "District C",
       "statedAs": "The first Saturday after August 31 to the first Saturday after December 14 | (i) 8 for residents of Canada | (ii) 4 for non-residents of Canada | 24",
       "reason": "the limit or season varies by residency",
       "jurisdictionId": "jurisdiction:ca-qc",
       "groupId": "federal_group:woodcock",
-      "coversArea": "Districts C and D"
+      "coversArea": "District C"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 3",
       "group": "Sandhill Cranes",
-      "area": "Districts C and D",
+      "area": "District C",
       "statedAs": "The first Saturday after September 11 to the first Friday after September 24, only for residents of Canada and on farmland | 1 | 1",
       "reason": "the limit or season varies by residency",
       "jurisdictionId": "jurisdiction:ca-qc",
       "groupId": "federal_group:sandhill-cranes",
-      "coversArea": "Districts C and D"
+      "coversArea": "District C"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 4",
       "group": "Ducks (other than Harlequin Ducks), combined",
       "area": "District E",
-      "statedAs": "(ii) October 21 to the first Saturday after December 25 (not an open season for Barrow’s Goldeneye or Common Goldeneye in locations that are within Provincial Hunting Zone 21 or within 100 m of that Zone) | 6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal) | 18 (not more than 1 may be Barrow’s Goldeneye and not more than 2 may be Blue-winged Teal)",
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "groupId": "federal_group:ducks-other-than-harlequin",
-      "coversArea": "District E",
-      "reason": "the season is written in a relative-date phrasing this build does not recognise exactly, and no nearest match is guessed"
+      "statedAs": "(i) The first Saturday after September 11 to October 20 | 6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal)",
+      "reason": "the regulation writes this season for District E, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 4",
+      "group": "Ducks (other than Harlequin Ducks), combined",
+      "area": "District E",
+      "statedAs": "(ii) October 21 to the first Saturday after December 25 (not an open season for Barrow’s Goldeneye or Common Goldeneye in locations that are within Provincial Hunting Zone 21 or within 100 m of that Zone) | 6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal)",
+      "reason": "the regulation writes this season for District E, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 4",
+      "group": "Harlequin Ducks",
+      "area": "District E",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for District E, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 4",
       "group": "Canada Geese and Cackling Geese, combined",
       "area": "District E",
-      "statedAs": "(i) September 1 to the first Friday after September 10 (only on farmland) | 10 | No limit",
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "groupId": "federal_group:canada-cackling",
-      "coversArea": "District E",
-      "reason": "the season is written in a relative-date phrasing this build does not recognise exactly, and no nearest match is guessed"
+      "statedAs": "(i) September 1 to the first Friday after September 10 (only on farmland) | 10",
+      "reason": "the regulation writes this season for District E, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 4",
+      "group": "Canada Geese and Cackling Geese, combined",
+      "area": "District E",
+      "statedAs": "(ii) the first Saturday after September 11 to September 25 | 10",
+      "reason": "the regulation writes this season for District E, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 4",
+      "group": "Canada Geese and Cackling Geese, combined",
+      "area": "District E",
+      "statedAs": "(iii) September 26 to December 16 | 5",
+      "reason": "the regulation writes this season for District E, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 4",
+      "group": "Geese (other than Snow Geese, Canada Geese and Cackling Geese), combined",
+      "area": "District E",
+      "statedAs": "The first Saturday after September 11 to the first Saturday after December 25 | 5",
+      "reason": "the regulation writes this season for District E, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 4",
+      "group": "Coots and Gallinules, combined",
+      "area": "District E",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for District E, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 4",
       "group": "Woodcock",
       "area": "District E",
-      "statedAs": "The first Saturday after August 31 to the first Saturday after December 14 | (i) 8 for residents of Canada | (ii) 4 for non-residents of Canada | 24",
-      "reason": "the limit or season varies by residency",
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "groupId": "federal_group:woodcock",
-      "coversArea": "District E"
+      "statedAs": "The first Saturday after August 31 to the first Saturday after December 14 | (i) 8 for residents of Canada | (ii) 4 for non-residents of Canada",
+      "reason": "the regulation writes this season for District E, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 4",
+      "group": "Snipe",
+      "area": "District E",
+      "statedAs": "The first Saturday after September 11 to the first Saturday after December 25 | 10",
+      "reason": "the regulation writes this season for District E, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 4",
+      "group": "Mourning Doves",
+      "area": "District E",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for District E, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 4",
+      "group": "Sandhill Cranes",
+      "area": "District E",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for District E, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 5",
       "group": "Ducks (other than Harlequin Ducks), combined",
       "area": "District F",
-      "statedAs": "(ii) October 21 to the first Saturday after January 1 (not an open season for Barrow’s Goldeneye or Common Goldeneye in locations between Pointe Jureux (Saint-Irénée) and Gros Cap à l’Aigle (Saint-Fidèle) from routes 362 and 138 and extending 2 km within Provincial Hunting Zone 21) | 6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal) | 18 (not more than 1 may be Barrow’s Goldeneye and not more than 2 may be Blue-winged Teal)",
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "groupId": "federal_group:ducks-other-than-harlequin",
-      "coversArea": "District F",
-      "reason": "the season is written in a relative-date phrasing this build does not recognise exactly, and no nearest match is guessed"
+      "statedAs": "(i) the first Saturday after September 18 to October 20 | 6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal)",
+      "reason": "the regulation writes this season for District F, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 5",
+      "group": "Ducks (other than Harlequin Ducks), combined",
+      "area": "District F",
+      "statedAs": "(ii) October 21 to the first Saturday after January 1 (not an open season for Barrow’s Goldeneye or Common Goldeneye in locations between Pointe Jureux (Saint-Irénée) and Gros Cap à l’Aigle (Saint-Fidèle) from routes 362 and 138 and extending 2 km within Provincial Hunting Zone 21) | 6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal)",
+      "reason": "the regulation writes this season for District F, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 5",
+      "group": "Harlequin Ducks",
+      "area": "District F",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for District F, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 5",
       "group": "Canada Geese and Cackling Geese, combined",
       "area": "District F",
-      "statedAs": "(i) September 6 to the first Friday after September 17 (only on farmland) | 10 | No limit",
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "groupId": "federal_group:canada-cackling",
-      "coversArea": "District F",
-      "reason": "the season is written in a relative-date phrasing this build does not recognise exactly, and no nearest match is guessed"
+      "statedAs": "(i) September 6 to the first Friday after September 17 (only on farmland) | 10",
+      "reason": "the regulation writes this season for District F, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 5",
       "group": "Canada Geese and Cackling Geese, combined",
       "area": "District F",
-      "statedAs": "(iv) [Repealed, SOR/2026-118, s. 18] | (iv) [Repealed, SOR/2026-118, s. 18] | No limit",
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "groupId": "federal_group:canada-cackling",
-      "coversArea": "District F",
-      "reason": "the season is not a plain calendar window this build reads"
+      "statedAs": "(ii) the first Saturday after September 18 to September 25 | 10",
+      "reason": "the regulation writes this season for District F, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 5",
+      "group": "Canada Geese and Cackling Geese, combined",
+      "area": "District F",
+      "statedAs": "(iii) September 26 to December 21 | 5",
+      "reason": "the regulation writes this season for District F, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 5",
+      "group": "Canada Geese and Cackling Geese, combined",
+      "area": "District F",
+      "statedAs": "(iv) [Repealed, SOR/2026-118, s. 18] | (iv) [Repealed, SOR/2026-118, s. 18]",
+      "reason": "the regulation writes this season for District F, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 5",
+      "group": "Geese (other than Snow Geese, Canada Geese and Cackling Geese), combined",
+      "area": "District F",
+      "statedAs": "The first Saturday after September 18 to the first Saturday after January 1 | 5",
+      "reason": "the regulation writes this season for District F, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 5",
+      "group": "Coots and Gallinules, combined",
+      "area": "District F",
+      "statedAs": "The first Saturday after September 18 to the first Saturday after January 1 | 4",
+      "reason": "the regulation writes this season for District F, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 5",
       "group": "Woodcock",
       "area": "District F",
-      "statedAs": "The first Saturday after August 31 to the first Saturday after December 14 | (i) 8 for residents of Canada | (ii) 4 for non-residents of Canada | 24",
-      "reason": "the limit or season varies by residency",
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "groupId": "federal_group:woodcock",
-      "coversArea": "District F"
+      "statedAs": "The first Saturday after August 31 to the first Saturday after December 14 | (i) 8 for residents of Canada | (ii) 4 for non-residents of Canada",
+      "reason": "the regulation writes this season for District F, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 5",
+      "group": "Snipe",
+      "area": "District F",
+      "statedAs": "The first Saturday after September 18 to the first Saturday after January 1 | 10",
+      "reason": "the regulation writes this season for District F, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 5",
+      "group": "Mourning Doves",
+      "area": "District F",
+      "statedAs": "The first Saturday after September 14 to the first Saturday after December 28 | 8",
+      "reason": "the regulation writes this season for District F, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 5",
+      "group": "Sandhill Cranes",
+      "area": "District F",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for District F, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 6",
       "group": "Ducks (other than Harlequin Ducks), combined",
       "area": "District G",
-      "statedAs": "(i) the last Saturday in September to October 31 (not an open season for Eiders or Long-tailed Ducks) | 6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal) | 18 (not more than 1 may be Barrow’s Goldeneye and not more than 2 may be Blue-winged Teal)",
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "groupId": "federal_group:ducks-other-than-harlequin",
-      "coversArea": "District G",
-      "reason": "the season is written in a relative-date phrasing this build does not recognise exactly, and no nearest match is guessed"
+      "statedAs": "(i) the last Saturday in September to October 31 (not an open season for Eiders or Long-tailed Ducks) | 6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal)",
+      "reason": "the regulation writes this season for District G, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 6",
       "group": "Ducks (other than Harlequin Ducks), combined",
       "area": "District G",
-      "statedAs": "(iii) December 27 to February 14 (only for Eiders and Long-tailed Ducks) | 6 | 18 (not more than 1 may be Barrow’s Goldeneye and not more than 2 may be Blue-winged Teal)",
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "groupId": "federal_group:ducks-other-than-harlequin",
-      "coversArea": "District G",
-      "reason": "the season is not a plain calendar window this build reads"
+      "statedAs": "(ii) November 1 to December 26 | 6 (not more than 1 may be Barrow’s Goldeneye and not more than 1 may be Blue-winged Teal)",
+      "reason": "the regulation writes this season for District G, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 6",
+      "group": "Ducks (other than Harlequin Ducks), combined",
+      "area": "District G",
+      "statedAs": "(iii) December 27 to February 14 (only for Eiders and Long-tailed Ducks) | 6",
+      "reason": "the regulation writes this season for District G, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 6",
+      "group": "Harlequin Ducks",
+      "area": "District G",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for District G, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 6",
+      "group": "Canada Geese and Cackling Geese, combined",
+      "area": "District G",
+      "statedAs": "The last Saturday of September to December 26 | 5",
+      "reason": "the regulation writes this season for District G, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 6",
+      "group": "Geese (other than Snow Geese, Canada Geese and Cackling Geese), combined",
+      "area": "District G",
+      "statedAs": "The last Saturday of September to December 26 | 5",
+      "reason": "the regulation writes this season for District G, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 6",
+      "group": "Coots and Gallinules, combined",
+      "area": "District G",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for District G, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 6",
       "group": "Woodcock",
       "area": "District G",
-      "statedAs": "The last Saturday of September to December 26 | (i) 8 for residents of Canada | (ii) 4 for non-residents of Canada | 24",
-      "reason": "the limit or season varies by residency",
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "groupId": "federal_group:woodcock",
-      "coversArea": "District G"
+      "statedAs": "The last Saturday of September to December 26 | (i) 8 for residents of Canada | (ii) 4 for non-residents of Canada",
+      "reason": "the regulation writes this season for District G, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 6",
+      "group": "Snipe",
+      "area": "District G",
+      "statedAs": "The last Saturday of September to December 26 | 10",
+      "reason": "the regulation writes this season for District G, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 6",
+      "group": "Mourning Doves",
+      "area": "District G",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for District G, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
+    },
+    {
+      "where": "Quebec Schedule 3 Table 1 item 6",
+      "group": "Sandhill Cranes",
+      "area": "District G",
+      "statedAs": "No open season | N/A",
+      "reason": "the regulation writes this season for District G, whose definition North Ground refused, so a point there answers UNKNOWN rather than being given this season"
     },
     {
       "where": "Quebec Schedule 3 Table 2 item 1",

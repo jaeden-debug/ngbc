@@ -31,6 +31,7 @@ import {
 } from "./federal-migratory-source.mjs";
 import { federalGroupFor, isRepealedRow } from "../src/lib/hunt/regulatory/federal-groups.ts";
 import { parseRelativeWindow } from "../src/lib/hunt/regulatory/relative-date.ts";
+import { saskatchewanZones } from "./saskatchewan-live-inventory.mjs";
 
 const BUNDLE = "content/regulatory/ca-federal-2026.json";
 const CACHE = "/tmp/mbr2022.html";
@@ -95,6 +96,19 @@ const WAVE_1 = [
     inventory: "content/regulatory/ca-on-certified-units.json",
   },
   {
+    part: 8, name: "Saskatchewan", jurisdictionId: "jurisdiction:ca-sk",
+    unitPhrase: "Provincial Wildlife Management Zones",
+    /*
+     * Two whole-zone districts, and the only jurisdiction here whose inventory
+     * is read from the authority's LIVE service instead of a stored file —
+     * Saskatchewan's data may be used commercially but not resold, so North
+     * Ground keeps no copy (owner decision, 2026-09-22). The build fails
+     * closed if that service cannot be read.
+     */
+    areaKind: "PROVINCIAL_UNITS",
+    liveInventory: "ca-sk",
+  },
+  {
     part: 5, name: "Quebec", jurisdictionId: "jurisdiction:ca-qc",
     unitPhrase: "Provincial Hunting Zones",
     /* Districts A, C and G are whole-zone; B, D, E and F split zones 2, 18,
@@ -118,6 +132,7 @@ const LATITUDE_BAND =
  */
 const EXPECTED_AREAS = {
   "jurisdiction:ca-pe": 1,
+  "jurisdiction:ca-sk": 2,
   "jurisdiction:ca-yt": 3,
   "jurisdiction:ca-ab": 2,
   "jurisdiction:ca-bc": 8,
@@ -174,10 +189,23 @@ const stripLabel = (text) => text.replace(/^\((?:[a-z]+|[ivx]+|[A-Z])\)\s*/, "")
  * correct. Every unit named must already be in the certified inventory, and a
  * reference that resolves to nothing stops the build.
  */
-function expandUnits(text, inventory, where) {
+function expandUnits(text, inventory, where, namedZones = new Map(), unitPhrase = "") {
   const units = new Set();
   const unreadable = [];
-  for (const token of text.replace(/\band\b/g, ",").split(",").map((part) => part.trim()).filter(Boolean)) {
+  for (const raw of text.replace(/\band\b/g, ",").split(",").map((part) => part.trim()).filter(Boolean)) {
+    /*
+     * A zone the regulation names in WORDS rather than by number: Saskatchewan
+     * puts "the Saskatoon and Regina-Moose Jaw Provincial Wildlife Management
+     * Zones" in District No. 2 (South). The name is matched against the
+     * ministry's OWN name for the zone, exactly — never by resemblance, and
+     * never against a designation this build made up from the words. A name
+     * the authority does not publish is unreadable and refuses the district.
+     */
+    const bare = raw.replace(/^the\s+/i, "").replace(new RegExp(`\\s*${unitPhrase}$`, "i"), "").trim();
+    const byName = namedZones.get(bare.toLowerCase());
+    if (byName) { units.add(byName); continue; }
+
+    const token = raw;
     const range = /^(\S+)\s+to\s+(\S+)$/.exec(token);
     if (range) {
       const inside = expandRange(range[1], range[2], inventory, where);
@@ -244,6 +272,46 @@ function expandRange(from, to, inventory, where) {
   throw new Error(`${where}: the range ${from} to ${to} is not in a form this build reads.`);
 }
 
+/**
+ * The derived areas an area cell names — by selection, never by parsing.
+ *
+ * Exactly one name, or a conjunction ("Districts C and D", "District No. 1
+ * (North) and District No. 2 (South)").
+ *
+ * Every part must be a district the build RECOGNISES — one it derived, or one
+ * it explicitly refused. That distinction is what keeps a silent parse failure
+ * from looking like a refusal: an unrecognised name returns null and refuses
+ * the whole row loudly, naming the district.
+ *
+ * A conjunction is then encoded for the parts that were DERIVED. Québec writes
+ * one season for "Districts C and D"; C is derived and D was refused, and the
+ * season the regulation states for both is correct in C. Dropping C too would
+ * discard real coverage to no purpose — a point in D cannot resolve to D in
+ * the first place, so nothing is gained by also refusing C.
+ */
+function areasNamedBy(cell, derived, recognised) {
+  const value = cell.replace(/\u241F/g, " ").replace(/\s+/g, " ").trim();
+  if (derived.includes(value)) return [value];
+  if (recognised.includes(value)) return [];
+
+  /* "Districts C and D" distributes the plural noun across both parts, so the
+     singular is restored before matching; "District No. 1 (North) and District
+     No. 2 (South)" already repeats it. */
+  const plural = /^(Districts|Zones|Units)\s+(.+)$/.exec(value);
+  const parts = (plural ? plural[2] : value).split(/\s+and\s+|,\s*/).map((part) => part.trim()).filter(Boolean);
+  if (parts.length < 2) return null;
+
+  const singular = plural ? plural[1].replace(/s$/, "") : null;
+  const named = parts.map((part) => {
+    for (const candidate of [part, singular ? `${singular} ${part}` : null]) {
+      if (candidate && (derived.includes(candidate) || recognised.includes(candidate))) return candidate;
+    }
+    return null;
+  });
+  if (!named.every(Boolean)) return null;
+  return named.filter((part) => derived.includes(part));
+}
+
 /** One Part's definition block, as "term -> definition" pairs. */
 function definitionsOf(partText) {
   const defs = new Map();
@@ -255,7 +323,21 @@ function definitionsOf(partText) {
   return defs;
 }
 
-function main() {
+async function main() {
+  /*
+   * Read every live inventory BEFORE any parsing, so an unreachable authority
+   * stops the build at the start rather than half-way through writing a
+   * bundle. A partial bundle is worse than no bundle: it looks complete.
+   */
+  const liveZones = new Map();
+  for (const entry of WAVE_1) {
+    if (entry.liveInventory && !liveZones.has(entry.liveInventory)) {
+      const zones = await saskatchewanZones();
+      console.log(`${entry.name}: read ${zones.identifiers.length} zone identifiers live from ${zones.serviceUrl}`);
+      liveZones.set(entry.liveInventory, zones);
+    }
+  }
+
   const html = readFileSync(CACHE, "utf8");
   const documentHash = sha256(html);
   const schedule = scheduleThree(html);
@@ -263,15 +345,38 @@ function main() {
   const rules = [];
   const notEncoded = [];
   const areas = [];
+  /* Districts whose DEFINITION was refused, per jurisdiction. A row naming one
+     is refused knowingly; a row naming something in neither list is a parse
+     failure and must be loud. */
+  const refusedAreas = new Map();
   let considered = 0;
 
-  for (const { part, name, jurisdictionId, areaKind, inventory, unitPhrase } of WAVE_1) {
+  for (const { part, name, jurisdictionId, areaKind, inventory, unitPhrase, liveInventory } of WAVE_1) {
     const partText = partHtml(schedule, part, name);
     const flat = cellText(partText.slice(0, partText.indexOf("<table"))).replace(/\u241F/g, " ");
     const definitions = definitionsOf(flat);
 
     if (areaKind === "PROVINCIAL_UNITS") {
-      const certified = JSON.parse(readFileSync(inventory, "utf8")).certifiedUnits.map(String);
+      /*
+       * The authority's inventory: a certified file, or — for Saskatchewan,
+       * whose dataset North Ground is licensed to use but not to keep — the
+       * ministry's own service, read now. Both do the same job: no unit
+       * reference in the regulation may expand into a zone the province does
+       * not publish. Saskatchewan's read failing stops the build; it is never
+       * replaced by a remembered list, because a remembered list IS the stored
+       * copy the licence decision rules out.
+       */
+      const live = liveInventory ? liveZones.get(liveInventory) : undefined;
+      const certified = live
+        ? live.identifiers
+        : JSON.parse(readFileSync(inventory, "utf8")).certifiedUnits.map(String);
+      /* The ministry's own DA_NAME, minus its "WMZ" suffix, for the zones the
+         regulation names in words rather than by number. */
+      const namedZones = new Map(
+        [...(live?.names ?? [])]
+          .map(([designation, daName]) => [daName.replace(/\s*WMZ$/i, "").trim().toLowerCase(), designation])
+          .filter(([label]) => label && !/^wmz no\.?/i.test(label)),
+      );
       for (const [term, definition] of definitions) {
         /*
          * A district that defines only a PORTION of a unit is refused whole.
@@ -287,6 +392,7 @@ function main() {
             where: `${name} Schedule 3 definitions`, statedAs: `${term}: ${definition}`,
             reason: "the district is defined by a portion of a provincial unit, and North Ground holds no line to place a point on a side of",
           });
+          refusedAreas.set(jurisdictionId, [...(refusedAreas.get(jurisdictionId) ?? []), term]);
           continue;
         }
         /*
@@ -320,10 +426,11 @@ function main() {
             where: `${name} Schedule 3 definitions`, statedAs: `${term}: ${definition}`,
             reason: `the district is not defined over ${unitPhrase}, so North Ground cannot resolve it from provincial geography it holds`,
           });
+          refusedAreas.set(jurisdictionId, [...(refusedAreas.get(jurisdictionId) ?? []), term]);
           continue;
         }
         const split = new Set(SPLIT_UNITS[jurisdictionId] ?? []);
-        const units = expandUnits(named[1], certified, `${name} ${term}`).filter((unit) => !split.has(unit));
+        const units = expandUnits(named[1], certified, `${name} ${term}`, namedZones, unitPhrase).filter((unit) => !split.has(unit));
         areas.push({ jurisdictionId, kind: areaKind, name: term, statedAs: definition, units });
       }
       for (const unit of SPLIT_UNITS[jurisdictionId] ?? []) {
@@ -392,117 +499,163 @@ function main() {
         const group = federalGroupFor(speciesCell);
         if (!group) throw new Error(`${where}: unrecognised species group ${JSON.stringify(speciesCell)}`);
 
-        const area = cellText(row[1] ?? "");
-        const seasons = cellItems(row[4] ?? "");
-        const bags = cellItems(row[5] ?? "");
-        const possessionCell = cellText(row[3] ?? "");
-
-        /* A declared closure is CLOSED, not UNKNOWN: the authority has said
-           there is no season, which is a different fact from silence. */
-        if (seasons.length === 1 && /^No open season$/i.test(stripLabel(seasons[0]))) {
-          rules.push({
-            jurisdictionId, area, groupId: group.id, groupStatedAs: group.statedAs,
-            declaredNoSeason: true, statedAs: "No open season", sourceSection: where,
-          });
-          continue;
-        }
-
-        /* Anything with a residency condition, a unit sub-list, or a limit that
-           changes inside the window is refused whole. Encoding the readable
-           half of such a row would publish a limit that is right for some
-           hunters and wrong for others. */
-        const rowText = [...seasons, ...bags, possessionCell].join(" | ");
-        const refusal =
-          /resident/i.test(rowText) ? "the limit or season varies by residency"
-          : /\(in Provincial/i.test(rowText) ? "the season applies only in a sub-list of provincial units"
-          : /\(from [A-Z]/i.test(rowText) ? "the daily bag changes inside the open season"
-          : /plus an additional/i.test(rowText) ? "the daily bag carries an additional species-specific allowance"
-          : null;
-        if (refusal) {
-          /*
-           * Structured, not just prose: the evaluator must be able to find
-           * these. A refused row still covers real dates — Yukon's August duck
-           * season exists, for residents — and a date inside one must answer
-           * UNKNOWN rather than CLOSED. Saying CLOSED there would state a
-           * restriction STRICTER than the law, which is its own false claim.
-           */
-          notEncoded.push({
-            where, group: group.statedAs, area, statedAs: rowText, reason: refusal,
-            jurisdictionId, groupId: group.id, coversArea: area,
-          });
-          continue;
-        }
-
-        if (seasons.length !== 1 || bags.length !== 1) {
-          notEncoded.push({ where, group: group.statedAs, area, statedAs: rowText,
-            reason: "the row carries more than one season or bag entry and is not a single window" });
-          continue;
-        }
-
-        const window = readWindow(stripLabel(seasons[0]));
-        const daily = readLimit(stripLabel(bags[0]));
-        const possession = readLimit(possessionCell);
-
         /*
-         * A season the regulation writes as a RULE rather than as days. Tried
-         * only after the plain calendar reading, so nothing already encoded
-         * changes shape. It is stored as the rule, never as the days it
-         * produces this year: the same rule lands on a different pair of days
-         * every year, and storing one year's answer would be right once and
-         * quietly wrong afterwards.
+         * WHICH DERIVED AREAS THIS ROW IS ABOUT.
          *
-         * Every wording accepted here was checked against Environment and
-         * Climate Change Canada's OWN published provincial summaries, which
-         * state the same seasons as calendar dates —
-         * scripts/certify-relative-dates.mjs, 24/24 at the time of writing.
-         * A phrasing that check never confirmed is refused below.
+         * The area cell was previously taken verbatim, and 67 of 194 rules —
+         * over a third — named an area the bundle does not contain. Two
+         * causes, both silent:
+         *
+         *   A CONJUNCTION. Saskatchewan's table says "District No. 1 (North)
+         *   and District No. 2 (South)" in one cell; Québec's says "Districts
+         *   C and D". Stored whole, the string matches neither district and
+         *   the rule can never be found.
+         *
+         *   A REFUSED DISTRICT. Ontario's Hudson-James Bay and Northern
+         *   districts, and Québec's B, E, F and G, were refused at definition
+         *   time because the regulation splits provincial units along lines
+         *   North Ground does not hold. Their ROWS were still encoded, against
+         *   areas that were deliberately never derived.
+         *
+         * Neither published a wrong season — every one of those points already
+         * answered UNKNOWN — but the build REPORTED them as encoded, and a
+         * coverage count that overstates what can be answered is the thing
+         * this project treats as the defect. A jurisdiction is serviced only
+         * when it truthfully states what it knows.
+         *
+         * So the cell is resolved by SELECTION from the areas actually
+         * derived for this jurisdiction, never by parsing district names out
+         * of prose: an exact name, or a conjunction whose every part is a
+         * derived name. Anything else is refused, with the district named.
          */
-        const relativeWindow = window ? null : parseRelativeWindow(stripLabel(seasons[0]));
-        if (relativeWindow && daily && possession) {
+        const areaCell = cellText(row[1] ?? "");
+        const derived = areas.filter((entry) => entry.jurisdictionId === jurisdictionId).map((entry) => entry.name);
+        const areaNames = areasNamedBy(areaCell, derived, refusedAreas.get(jurisdictionId) ?? []);
+        if (!areaNames?.length) {
+          notEncoded.push({
+            where, group: group.statedAs, area: areaCell,
+            statedAs: [...cellItems(row[4] ?? ""), ...cellItems(row[5] ?? "")].join(" | "),
+            reason: areaNames
+              ? `the regulation writes this season for ${areaCell}, whose definition North Ground refused, so a point ` +
+                `there answers UNKNOWN rather than being given this season`
+              : `the regulation writes this season for ${areaCell}, which this build could not match to any federal ` +
+                `area it derived or refused, so the row is refused rather than assigned to a district`,
+          });
+          continue;
+        }
+
+        for (const area of areaNames) {
+          const seasons = cellItems(row[4] ?? "");
+          const bags = cellItems(row[5] ?? "");
+          const possessionCell = cellText(row[3] ?? "");
+
+          /* A declared closure is CLOSED, not UNKNOWN: the authority has said
+             there is no season, which is a different fact from silence. */
+          if (seasons.length === 1 && /^No open season$/i.test(stripLabel(seasons[0]))) {
+            rules.push({
+              jurisdictionId, area, groupId: group.id, groupStatedAs: group.statedAs,
+              declaredNoSeason: true, statedAs: "No open season", sourceSection: where,
+            });
+            continue;
+          }
+
+          /* Anything with a residency condition, a unit sub-list, or a limit that
+             changes inside the window is refused whole. Encoding the readable
+             half of such a row would publish a limit that is right for some
+             hunters and wrong for others. */
+          const rowText = [...seasons, ...bags, possessionCell].join(" | ");
+          const refusal =
+            /resident/i.test(rowText) ? "the limit or season varies by residency"
+            : /\(in Provincial/i.test(rowText) ? "the season applies only in a sub-list of provincial units"
+            : /\(from [A-Z]/i.test(rowText) ? "the daily bag changes inside the open season"
+            : /plus an additional/i.test(rowText) ? "the daily bag carries an additional species-specific allowance"
+            : null;
+          if (refusal) {
+            /*
+             * Structured, not just prose: the evaluator must be able to find
+             * these. A refused row still covers real dates — Yukon's August duck
+             * season exists, for residents — and a date inside one must answer
+             * UNKNOWN rather than CLOSED. Saying CLOSED there would state a
+             * restriction STRICTER than the law, which is its own false claim.
+             */
+            notEncoded.push({
+              where, group: group.statedAs, area, statedAs: rowText, reason: refusal,
+              jurisdictionId, groupId: group.id, coversArea: area,
+            });
+            continue;
+          }
+
+          if (seasons.length !== 1 || bags.length !== 1) {
+            notEncoded.push({ where, group: group.statedAs, area, statedAs: rowText,
+              reason: "the row carries more than one season or bag entry and is not a single window" });
+            continue;
+          }
+
+          const window = readWindow(stripLabel(seasons[0]));
+          const daily = readLimit(stripLabel(bags[0]));
+          const possession = readLimit(possessionCell);
+
+          /*
+           * A season the regulation writes as a RULE rather than as days. Tried
+           * only after the plain calendar reading, so nothing already encoded
+           * changes shape. It is stored as the rule, never as the days it
+           * produces this year: the same rule lands on a different pair of days
+           * every year, and storing one year's answer would be right once and
+           * quietly wrong afterwards.
+           *
+           * Every wording accepted here was checked against Environment and
+           * Climate Change Canada's OWN published provincial summaries, which
+           * state the same seasons as calendar dates —
+           * scripts/certify-relative-dates.mjs, 24/24 at the time of writing.
+           * A phrasing that check never confirmed is refused below.
+           */
+          const relativeWindow = window ? null : parseRelativeWindow(stripLabel(seasons[0]));
+          if (relativeWindow && daily && possession) {
+            rules.push({
+              jurisdictionId, area, groupId: group.id, groupStatedAs: group.statedAs,
+              relativeWindow, daily, possession, declaredNoSeason: false, sourceSection: where,
+            });
+            continue;
+          }
+
+          if (!window || !daily || !possession) {
+            /*
+             * Say WHICH part could not be read. A single catch-all reason hid
+             * the fact that 53 of 84 refusals were one thing — a RELATIVE DATE
+             * ("the first Saturday after the first Monday in October") — and a
+             * bucket that large and that uniform is a missing capability, not a
+             * collection of oddities. A refusal that cannot be counted cannot be
+             * prioritised.
+             */
+            const unreadSeason = !window && !relativeWindow;
+            /*
+             * A relative date this build does NOT recognise exactly keeps its
+             * own reason, so the bucket stays countable. "The first Sunday after
+             * January 19" and "the first Sunday ON OR AFTER January 19" differ by
+             * up to seven days and read almost identically, so there is no
+             * nearest-match and no fallback: an unrecognised phrasing is refused,
+             * not approximated. Where the date is unreadable the answer is
+             * UNKNOWN, never a date nudged somewhere safe — a season is a
+             * two-ended fact and there is no safe direction to move it.
+             */
+            const relative = unreadSeason && /\b(first|second|third|fourth|last)\s+[A-Z]?[a-z]+day\b/i.test(stripLabel(seasons[0]));
+            notEncoded.push({
+              where, group: group.statedAs, area, statedAs: rowText,
+              jurisdictionId, groupId: group.id, coversArea: area,
+              reason: relative
+                ? "the season is written in a relative-date phrasing this build does not recognise exactly, and no nearest match is guessed"
+                : unreadSeason
+                  ? "the season is not a plain calendar window this build reads"
+                  : "a daily bag or possession limit is not in a form this build reads exactly",
+            });
+            continue;
+          }
+
           rules.push({
             jurisdictionId, area, groupId: group.id, groupStatedAs: group.statedAs,
-            relativeWindow, daily, possession, declaredNoSeason: false, sourceSection: where,
+            window, daily, possession, declaredNoSeason: false, sourceSection: where,
           });
-          continue;
         }
-
-        if (!window || !daily || !possession) {
-          /*
-           * Say WHICH part could not be read. A single catch-all reason hid
-           * the fact that 53 of 84 refusals were one thing — a RELATIVE DATE
-           * ("the first Saturday after the first Monday in October") — and a
-           * bucket that large and that uniform is a missing capability, not a
-           * collection of oddities. A refusal that cannot be counted cannot be
-           * prioritised.
-           */
-          const unreadSeason = !window && !relativeWindow;
-          /*
-           * A relative date this build does NOT recognise exactly keeps its
-           * own reason, so the bucket stays countable. "The first Sunday after
-           * January 19" and "the first Sunday ON OR AFTER January 19" differ by
-           * up to seven days and read almost identically, so there is no
-           * nearest-match and no fallback: an unrecognised phrasing is refused,
-           * not approximated. Where the date is unreadable the answer is
-           * UNKNOWN, never a date nudged somewhere safe — a season is a
-           * two-ended fact and there is no safe direction to move it.
-           */
-          const relative = unreadSeason && /\b(first|second|third|fourth|last)\s+[A-Z]?[a-z]+day\b/i.test(stripLabel(seasons[0]));
-          notEncoded.push({
-            where, group: group.statedAs, area, statedAs: rowText,
-            jurisdictionId, groupId: group.id, coversArea: area,
-            reason: relative
-              ? "the season is written in a relative-date phrasing this build does not recognise exactly, and no nearest match is guessed"
-              : unreadSeason
-                ? "the season is not a plain calendar window this build reads"
-                : "a daily bag or possession limit is not in a form this build reads exactly",
-          });
-          continue;
-        }
-
-        rules.push({
-          jurisdictionId, area, groupId: group.id, groupStatedAs: group.statedAs,
-          window, daily, possession, declaredNoSeason: false, sourceSection: where,
-        });
       }
     }
   }
@@ -542,4 +695,4 @@ function main() {
   console.log(`Wrote ${BUNDLE} (${documentHash})`);
 }
 
-main();
+await main();
