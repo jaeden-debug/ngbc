@@ -316,6 +316,8 @@ JURISDICTION level.
 | Format | **PDF only** |
 | Licence | Open Government Licence – Alberta v2.2 — <https://open.alberta.ca/licence> |
 | Commercial use | **Allowed**, explicitly |
+| **Hard line** | Alberta's "estimated hunter success" **exceeds 100%** in published rows (103%, 115%, 131% in the 2024 elk report). It is not a share of hunters. It must never be rendered as a percentage of hunters, never compared against another province's success rate, and never passed to a range check written for a bounded rate — it will pass one written for a count. |
+| **Hard line** | The unit column mixes single WMUs with **groups** of WMUs. A group is `reportedAtLargerArea`. It must never be split across its member units. |
 
 The licence is the best of any province and is not the blocker. Read verbatim at
 that URL on 2026-09-23:
@@ -436,6 +438,8 @@ person should read the terms directly.
 | Format | GeoJSON, GPKG, SHP, FGDB, SQLITE — machine-readable |
 | Licence | Creative Commons Attribution 4.0 (CC BY) — <https://www.donneesquebec.ca/fr/licence/> |
 | Commercial use | **Allowed** — "même à des fins commerciales" |
+| **Hard line** | This layer may say **"this species occurs in Québec"** and may **NEVER** support a hotspot, a ranking, a per-zone class or any comparison between places. The authority calls it "produced on a small scale… indicative". It is tier T3 `RANGE_PRESENCE`, whose only permitted claim is `PRESENCE_EXTENT`. Painting it per zone de chasse, or shading it by any value, is fabrication. |
+| **Why this needs guarding** | It is 776 MB for 69 features — dense enough to *look* precise at any zoom. It is simultaneously the first real T3 evidence North Ground has in Canada and the single most likely source of a fabricated heat map. The temptation is the danger. |
 
 The GeoJSON was reached: HTTP 200, **776,037,558 bytes (776 MB)** for 69
 features, confirmed by Content-Length. That is extraordinarily dense geometry and
