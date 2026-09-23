@@ -188,6 +188,28 @@ Previously: 2026-09-22 (Canonical species PRIMARY media schema, private storage 
 
 ## Known Problems / Technical Debt
 
+### Saskatchewan's point timezone is one zone short of the truth (found 2026-09-23)
+
+`SINGLE_ZONE_JURISDICTIONS` in `src/lib/hunt/time-zone.ts` maps
+`jurisdiction:ca-sk` to `America/Regina`. The tz database's own country table
+puts Saskatchewan in **three** zones: `America/Regina` (most areas),
+`America/Swift_Current` (midwest) and `America/Edmonton` ("SK(W)"). Regina and
+Swift_Current agree on the wall clock — both CST year-round — but the SK(W)
+area around Lloydminster keeps Alberta time: MDT in summer, agreeing with CST,
+and **MST in winter, an hour apart**.
+
+That is the failure shape `time-zone.ts` was written about — correct in one
+season, wrong in the other, so an in-season check passes. It is live rather
+than theoretical: `timeZoneAtPoint` feeds federal migratory-bird legal hours
+and readiness, and those seasons run into November and December.
+
+**Deliberately not fixed by the lane that found it.** Making it undefined
+withholds a legal time across the whole province to be right about one border
+strip, which §8 treats as its own false claim. It belongs to whoever owns
+Saskatchewan's serving posture. Alberta and Manitoba were added to the same
+table on the opposite evidence: each is wholly inside one zone, and refusing
+them a clock had been shipping a stricter-than-evidence refusal.
+
 - **The Supabase advisor's INFO items are deliberate (assessed 2026-09-22).** 8 unindexed foreign keys (management_zones.source_id, regulatory_groups.jurisdiction_id/source_id, regulatory_rules.jurisdiction_id/source_id, regulatory_sources.jurisdiction_id, regulatory_special_area_layers.published_run_id, zone_ingest_runs.jurisdiction_id) and 4 unused indexes (regulatory_rules_lookup_idx, hunt_brief_snapshots_created_at_idx, zone_ingest_features_geometry_gix, regulatory_rule_sources_source_idx). None sits on a request path: Hunt evaluates regulations from the committed bundles, and those tables are a mirror for coverage reporting and the review lifecycle, joined only by the publisher and admin tooling. The indexes are cheap to keep and needed again the moment the mirror is queried or an ingest runs. Do not "optimise" them away.
 
 - **Newfoundland publishes invalid geometry in four of its seven black bear areas.** Areas 200, 201, 205 and 206 arrive with ring self-intersections or nested shells. Each was repaired with `ST_MakeValid` under the standing guard and measured at 0.000000 m² symmetric difference, so no boundary moved; area 200 went from 4,221 to 4,210 polygons and 197,116 to 197,117 vertices. Every repair is recorded on the staged feature (`attributes.geometryNormalization`: authority, date, the authority's own validity error, polygon and vertex counts before and after, area delta), the Québec Zone 18 standard. Area 200 could not be repaired through the ordinary REST path: `ST_MakeValid` takes 58 s and the guard 33 s against an 8 s statement timeout, so it was done in one guarded transaction from a direct session. Per-polygon repair was measured and rejected: only 1 of 4,221 polygons is invalid, and the residual defect is between polygons, which per-polygon work cannot fix by construction.
@@ -354,6 +376,7 @@ constant — and it makes no claim at all about rules.
 sentence in the project, because "Canada complete" is exactly what a reader
 wants it to mean.
 
+- Owner decision, and it generalises the Québec one: **what authorises storing and serving verbatim LEGISLATIVE text commercially, for BC, Alberta and Manitoba as well as Québec.** The Québec finding was never Québec-specific — it was the first time anyone looked. `src/lib/hunt/regulatory/{alberta,manitoba,british-columbia}-legal-time.ts` each store a quoted provision from BC Laws (Queen's Printer), Alberta's King's Printer and Manitoba Laws respectively. BC's and Manitoba's sentences were already in the shipped bundles before 2026-09-23; **Alberta's Wildlife Act s. 28 sentence is new that day**. BC Laws material is Queen's Printer content and is NOT covered by any open-data portal licence established for other datasets. Should go up as ONE question across four provinces, not four. Shipping continued rather than withholding, because two of three quotes were already shipped and a refusal stricter than the evidence is its own false claim (§8) — but verbatim legislative text is not to be expanded further until this is answered.
 - **Internally**, state it as the milestone states it — "11 of 11 in-scope
   provinces and territories have parity-certified official geography" — always
   with the two caveats below attached, and never as a bare boolean in prose.
