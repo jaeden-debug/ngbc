@@ -186,7 +186,9 @@ Previously: 2026-09-22 (Canonical species PRIMARY media schema, private storage 
 - Structured North Ground content/resource system.
 - Search/keyword research informing Hunt terminology, URLs and content.
 
-## Known Problems / Technical Debt
+## Known Problems
+
+- **`britishColumbiaLegalTime` computes a window from an undefined timezone.** Called directly it returns "09:35 to 22:20 (undefined)" — a legal hunting window computed against nothing, rendered into user-facing text. It is unwired today (BC falls back to the static `legalTime` refusal, which quotes s. 14 (1) and names the real blocker), so nothing ships it. But the guard lives in every caller (`alberta.ts`, `federal.ts`) rather than in the function, so wiring BC up without remembering the guard emits nonsense. Push the guard down: no timezone, no window, `legalTimeNotCertified` instead. / Technical Debt
 
 - **The Supabase advisor's INFO items are deliberate (assessed 2026-09-22).** 8 unindexed foreign keys (management_zones.source_id, regulatory_groups.jurisdiction_id/source_id, regulatory_rules.jurisdiction_id/source_id, regulatory_sources.jurisdiction_id, regulatory_special_area_layers.published_run_id, zone_ingest_runs.jurisdiction_id) and 4 unused indexes (regulatory_rules_lookup_idx, hunt_brief_snapshots_created_at_idx, zone_ingest_features_geometry_gix, regulatory_rule_sources_source_idx). None sits on a request path: Hunt evaluates regulations from the committed bundles, and those tables are a mirror for coverage reporting and the review lifecycle, joined only by the publisher and admin tooling. The indexes are cheap to keep and needed again the moment the mirror is queried or an ingest runs. Do not "optimise" them away.
 
