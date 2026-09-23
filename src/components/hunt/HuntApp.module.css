@@ -1300,3 +1300,14 @@
 .speciesRowSeason { font-size: 0.76rem; color: var(--ng-bone-dim); }
 .speciesRowChevron { flex: none; color: var(--ng-bone-dim); }
 
+
+/* Legal hours and Ready to Hunt, in the answer rather than behind it. */
+.readyBlock { margin-top: 12px; }
+.legalWindow {
+  margin: 2px 0 0;
+  font-size: 1.18rem;
+  font-weight: 640;
+  letter-spacing: -0.01em;
+  color: var(--ng-bone);
+}
+.legalZone { font-size: 0.74rem; font-weight: 500; color: var(--ng-bone-dim); letter-spacing: 0.02em; }

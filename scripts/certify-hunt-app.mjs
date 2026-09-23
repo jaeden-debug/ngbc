@@ -956,6 +956,68 @@ const scenarios = {
 
 
   /*
+   * The drill-down the owner drew: status, season, LEGAL HOURS and READY TO
+   * HUNT, before anything anyone has to open.
+   *
+   * Both blocks used to sit behind "Details", three screens down. Both are
+   * asserted in their honest states rather than only in the good one: Yukon
+   * resolves a real migratory window, Québec cannot — its zones span several
+   * timezones — and says so while naming the authority. A shape that only
+   * looks right where the data is complete is a shape that lies everywhere
+   * else.
+   */
+  async legalHoursAndReadiness(browser) {
+    const s = "what you need, before what you open";
+    const { context, page, consoleErrors } = await newPage(browser, { width: 390, height: 844 });
+
+    const readAnswer = async (zone, species, date) => {
+      await page.goto(`${BASE}/hunt?zone=${zone}&species=${species}&date=${date}`);
+      await mapReady(page);
+      await waitFor(page, () => Boolean(document.getElementById("hunt-zone-title")), 40_000);
+      await chooseOnMap(page);
+      await page.getByRole("button", { name: "Check this spot" }).click();
+      await waitFor(page, () => Boolean(document.querySelector("[class*=answerStatus]")), 40_000);
+      await page.waitForTimeout(3_500);
+      return page.evaluate(() => {
+        const hours = [...document.querySelectorAll("h3")].find((h) => /Legal hunting hours/i.test(h.textContent ?? ""));
+        const ready = [...document.querySelectorAll("h3")].find((h) => /Ready to hunt/i.test(h.textContent ?? ""));
+        const section = hours?.closest("section");
+        return {
+          hoursShown: Boolean(hours),
+          hoursBehindDisclosure: hours ? Boolean(hours.closest("details")) : null,
+          readyShown: Boolean(ready),
+          readyBehindDisclosure: ready ? Boolean(ready.closest("details")) : null,
+          window: section?.querySelector("[class*=legalWindow]")?.textContent?.trim() ?? "",
+          text: section?.textContent?.replace(/\s+/g, " ").trim() ?? "",
+          // Said once: the detail must not repeat what the answer now carries.
+          hoursHeadings: [...document.querySelectorAll("h3")].filter((h) => /Legal hunting hours/i.test(h.textContent ?? "")).length,
+        };
+      });
+    };
+
+    /* Yukon is one timezone, so the federal migratory rule resolves to a real
+       window — the clock AND the rule that produced it, which are two
+       different things to know. */
+    const yukon = await readAnswer("ca-yt-gms-8-13", "canada-goose", "2026-10-15");
+    check(s, "a resolved window shows the clock", /\d{2}:\d{2} – \d{2}:\d{2}/.test(yukon.window), JSON.stringify(yukon.window));
+    check(s, "and the authority's own rule beside it",
+      /Migratory Birds Regulations/.test(yukon.text) && /sunrise|sunset/i.test(yukon.text), yukon.text.slice(0, 140));
+    check(s, "legal hours are in the answer, not behind Details", yukon.hoursShown && yukon.hoursBehindDisclosure === false, JSON.stringify(yukon));
+    check(s, "and said once", yukon.hoursHeadings === 1, String(yukon.hoursHeadings));
+
+    /* Québec spans several timezones, so it will not state a window. That is
+       the true answer, and it names whose rule it is rather than going blank. */
+    const quebec = await readAnswer("ca-qc-zone-10o", "ruffed-grouse", "2026-09-23");
+    check(s, "where it cannot be stated, it says so and names the authority",
+      /Not yet verified/i.test(quebec.text) && /Ministère|Québec/.test(quebec.text), quebec.text.slice(0, 160));
+    check(s, "the block is still there rather than blank", quebec.hoursShown && quebec.window === "", JSON.stringify(quebec));
+    check(s, "Ready to Hunt is in the answer too", quebec.readyShown && quebec.readyBehindDisclosure === false, JSON.stringify(quebec));
+    check(s, "no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));
+    await context.close();
+  },
+
+
+  /*
    * SAME HUNT LINK → SAME INITIAL ANSWER.
    *
    * `urlBeatsMemory` proves one client is not polluted. This proves two

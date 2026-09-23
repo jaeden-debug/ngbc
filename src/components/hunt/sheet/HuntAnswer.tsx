@@ -9,6 +9,8 @@ import type { AuthorizationContext } from "../../../lib/hunt/regulatory/allocati
 import { partitionEvaluationSources } from "../../../lib/hunt/source-roles";
 import type { HuntEvaluation } from "../../../lib/hunt/types";
 import Disclosure from "./Disclosure";
+import LegalHours from "./LegalHours";
+import ReadyToHunt from "../ReadyToHunt";
 import HuntQuestion from "../HuntQuestion";
 import styles from "../HuntApp.module.css";
 
@@ -191,6 +193,27 @@ export default function HuntAnswer({
       ) : null}
 
       {/*
+        The two things a hunter came for, before anything they have to open.
+
+        Legal hours and what they need to carry used to sit behind "Details",
+        three screens down, with the answer's prose above them. The owner's
+        shape puts them directly under the season, and both are honest wherever
+        a jurisdiction has not certified them: a NOT_CERTIFIED window says why
+        and names the authority, and a jurisdiction with no checklist says so
+        rather than showing an empty table.
+      */}
+      <LegalHours legalTime={result.regulation.legalTime} />
+      {result.readiness ? (
+        <ReadyToHunt
+          readiness={result.readiness}
+          speciesMedia={species?.image ?? null}
+          speciesName={result.species.name}
+          residency={result.input.answers?.RESIDENCY}
+          onChooseResidency={(value) => onAnswer("RESIDENCY", value)}
+        />
+      ) : null}
+
+      {/*
         Out of the scan, and not deleted.
 
         The scan is now status → dates → the authority's own segment → limits,
@@ -229,7 +252,7 @@ export default function HuntAnswer({
           <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none"><path d="m3 9 4-4 4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </button>
       ) : (
-        <AnswerDetail result={result} species={species} placeLabel={placeLabel} jurisdiction={jurisdiction} onAnswer={onAnswer} />
+        <AnswerDetail result={result} species={species} placeLabel={placeLabel} jurisdiction={jurisdiction} />
       )}
     </div>
   );

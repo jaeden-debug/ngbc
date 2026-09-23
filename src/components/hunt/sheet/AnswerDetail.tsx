@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { legalTimeSummary } from "../../../lib/hunt/regulatory/legal-time";
 import { useId } from "react";
 import ShareHuntButton from "../../hunt-share/ShareHuntButton";
 import { huntEvaluationToShareInput } from "../../../lib/hunt-share/from-hunt-evaluation";
@@ -12,7 +11,6 @@ import { partitionEvaluationSources } from "../../../lib/hunt/source-roles";
 import type { HuntEvaluation } from "../../../lib/hunt/types";
 import Disclosure from "./Disclosure";
 import { groupLimitations, orphanCaveats, sourceCaveats, type LimitationGroups } from "./limitation-groups";
-import ReadyToHunt from "../ReadyToHunt";
 import styles from "../HuntApp.module.css";
 
 /**
@@ -21,12 +19,11 @@ import styles from "../HuntApp.module.css";
  * resolve, weather, field notes, the sources that decided it and the Hunt
  * Brief. Loaded on demand.
  */
-export default function AnswerDetail({ result, species, placeLabel, jurisdiction, onAnswer }: {
+export default function AnswerDetail({ result, species, placeLabel, jurisdiction }: {
   result: HuntEvaluation;
   species: SpeciesSelectorOption | null;
   placeLabel: string | null;
   jurisdiction: { id: CanonicalId<"jurisdiction">; displayName: string } | null;
-  onAnswer: (dimensionId: string, value: string) => void;
 }) {
   const id = useId();
   const sourceGroups = partitionEvaluationSources(result);
@@ -74,20 +71,10 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
         </section>
       ) : null}
 
-      {result.readiness ? (
-        <ReadyToHunt
-          readiness={result.readiness}
-          speciesMedia={species?.image ?? null}
-          speciesName={result.species.name}
-          residency={result.input.answers?.RESIDENCY}
-          onChooseResidency={(value) => onAnswer("RESIDENCY", value)}
-        />
-      ) : null}
-
-      <section aria-labelledby={`${id}-time`}>
-        <h3 className={styles.detailTitle} id={`${id}-time`}>Legal hunting time</h3>
-        <p className={styles.detailText}>{legalTimeSummary(result.regulation.legalTime)}</p>
-      </section>
+      {/* Legal hours and Ready to Hunt moved UP into the answer itself — they
+          are what a hunter came for, not what they open afterwards. They are
+          not repeated here: the duplicate species list taught that one fact
+          rendered twice on one card can disagree with itself. */}
 
       {/*
         The GENERAL lines: true everywhere this jurisdiction reaches, always.

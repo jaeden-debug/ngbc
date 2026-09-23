@@ -671,7 +671,25 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   /* ── The point-level evaluation, automatic, with stale answers dropped ── */
 
   const pointForEvaluation = isHuntZone && hunt && huntZone.kind === "resolved" ? hunt : null;
-  const evalKey = pointForEvaluation && species && speciesCertifiedHere
+  /*
+   * `speciesCertifiedHere` is coverage metadata about a JURISDICTION, and it is
+   * not the last word on whether an answer exists at a POINT.
+   *
+   * Canada goose in Yukon reads as uncovered by that field — Yukon does not
+   * certify it, because the rules are FEDERAL. Ask the engine at a point and
+   * it answers CONDITIONAL with a resolved legal window from the Migratory
+   * Birds Regulations. Skipping the evaluation on the metadata told a hunter
+   * "North Ground has no certified canada goose rules in Yukon" while the
+   * engine held a real answer for exactly where they were standing — an
+   * UNDERSTATEMENT of what the evidence establishes, which §8 forbids in the
+   * same breath as overstatement and which is the quieter of the two.
+   *
+   * So where a point can be asked, the ENGINE decides coverage, and whatever it
+   * says — including its own UNKNOWN, in its own words, with its sources — is
+   * the answer. The metadata still governs the zone-scope branch below, where
+   * there is no point to ask about.
+   */
+  const evalKey = pointForEvaluation && species
     ? evaluationKey({ point: pointForEvaluation, speciesId: species.id, date: session.date.iso, answers: session.answers })
     : null;
   const resultCacheRef = useRef(new Map<string, { at: number; result: HuntEvaluation }>());
@@ -1232,7 +1250,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
               View all species
             </button>
           </>
-        ) : !speciesCertifiedHere ? (
+        ) : !speciesCertifiedHere && !pointForEvaluation ? (
           /* Selectable, not answerable (§41A). The geography is this species'
              own and the zone is resolved; what North Ground does not have is a
              certified rule, and saying so is the answer — never a season. */
