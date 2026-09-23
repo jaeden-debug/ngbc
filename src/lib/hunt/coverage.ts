@@ -86,7 +86,7 @@ export const SUPPORTED_MAJOR_GAME_SPECIES_IDS = [
  * switches everywhere else in Hunt; this is the same split for a jurisdiction
  * that has no layer of its own.
  */
-export const FEDERAL_MIGRATORY_SERVING = false;
+export const FEDERAL_MIGRATORY_SERVING = true;
 
 const FEDERAL_MIGRATORY_SPECIES: SupportedSpecies[] = FEDERAL_MIGRATORY_SERVING
   ? (federalSpecies.offered as SupportedSpecies[])

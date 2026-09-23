@@ -4,7 +4,7 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-23 (**British Columbia serves rules** — a first wave of 79 rules over seven species reaching 221 of 225 units, 20/20 production cases, three disputes preserved as CONFLICT; coreGameComplete 5 of 11. Earlier the same day: **Canada spatial complete**: all 11 in-scope provinces and territories have parity-certified official geography, Prince Edward Island last, served at geography level JURISDICTION because the province publishes no units. Rules remain the open front — 7 of 11 hold no certified rule and answer UNKNOWN. Government GIS transient failures are now retried under one stated policy and a national audit survives an unreadable provider. **United States: licence-first.** Six more states' map licences read and recorded verbatim with hashes — Michigan clears (public record, no reuse restrictions), Wisconsin, North Dakota and South Dakota are silent, Minnesota and Maine refuse outright. Eight of the ten states with any evidence may not be drawn, so the 50-state bottleneck is permissions rather than engineering; eight letters are drafted for the owner. A silence and a refusal are now reported differently because they are undone differently. An overlap names its zones instead of counting them. Michigan is next and is held until its Wildlife Conservation Order is read: its deer units nest by design, and deliberate nesting is not a conflict.)
+Last updated: 2026-09-23 (**Federal migratory game birds answer**: 24 species selectable nationally, PE/YT/AB with certified seasons, 18/18 cases. Earlier: **British Columbia serves rules** — a first wave of 79 rules over seven species reaching 221 of 225 units, 20/20 production cases, three disputes preserved as CONFLICT; coreGameComplete 5 of 11. Earlier the same day: **Canada spatial complete**: all 11 in-scope provinces and territories have parity-certified official geography, Prince Edward Island last, served at geography level JURISDICTION because the province publishes no units. Rules remain the open front — 7 of 11 hold no certified rule and answer UNKNOWN. Government GIS transient failures are now retried under one stated policy and a national audit survives an unreadable provider. **United States: licence-first.** Six more states' map licences read and recorded verbatim with hashes — Michigan clears (public record, no reuse restrictions), Wisconsin, North Dakota and South Dakota are silent, Minnesota and Maine refuse outright. Eight of the ten states with any evidence may not be drawn, so the 50-state bottleneck is permissions rather than engineering; eight letters are drafted for the owner. A silence and a refusal are now reported differently because they are undone differently. An overlap names its zones instead of counting them. Michigan is next and is held until its Wildlife Conservation Order is read: its deer units nest by design, and deliberate nesting is not a conflict.)
 
 Previously: 2026-09-22 (Canonical species PRIMARY media schema, private storage and every shared consumer are activated and certified in production. Temporary certification media and users were removed; population is 0/60. Permanent administrator access remains fail-closed until the owner supplies the administrator email.)
 
@@ -982,6 +982,32 @@ against that answer, and record the retrieval with a hash like any other source
 read. **If the service is unreachable at build time the build fails**, rather
 than emitting unverified references — the same posture as every other source
 check here.
+
+**WIRED AND CERTIFIED 2026-09-23.** `FEDERAL_MIGRATORY_SERVING` is on: 24
+migratory game birds are selectable and answerable nationally. 18 of 18
+certification cases agree with the law, each written from Schedule 3 before any
+of them ran. Zone lookup median 111 ms / p90 414 ms; evaluation median 140 ms /
+p90 678 ms.
+
+**Flipping the flag broke four invariants, and each encoded a real assumption
+that had quietly stopped being true: that SELECTABLE species ARE provincially
+certified species.** All four were strengthened rather than relaxed:
+
+- **A selectable species with no engine falls through to small game and answers
+  from the wrong bundle** — a grouse season for a mallard, which reads as a
+  normal answer. An engine is now asked only about species its OWN bundle
+  certifies. The hazard predates the federal work; migratory birds, selectable
+  nationally while almost no province certifies them, are what made it
+  reachable.
+- Ontario's species lists are now a **partition**: every selectable species is
+  provincially certified or a federal migratory bird, never both, never
+  neither.
+- A boundary-only layer claims no **provincial** rule. A federal season may
+  still apply inside it, and that is composition working rather than the
+  boundary-only claim leaking.
+- A test used `species:mallard` as its example of "not certified". It silently
+  stopped testing anything the day mallard became certified, so it now uses a
+  species that is genuinely uncertified.
 
 **Not yet wired into Hunt.** Migratory-bird queries still answer UNKNOWN until
 this is certified in production. Saskatchewan is deferred because it is a

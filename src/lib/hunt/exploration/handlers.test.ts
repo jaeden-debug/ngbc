@@ -53,7 +53,16 @@ test("zone status: rejects what it cannot answer rather than guessing", async ()
   const payload = await ok.json() as { states: Array<{ state: string }> };
   assert.equal(payload.states[0].state, "SEASON_AVAILABLE");
 
-  assert.equal((await POST(post({ speciesId: "species:mallard", date: "2026-09-21", zones: [] }))).status, 400);
+  /*
+   * An UNCERTIFIED species is refused. Gray wolf, not mallard: mallard became
+   * answerable when the federal migratory rules landed, and a test that uses a
+   * species as its example of "not certified" silently stops testing anything
+   * the day that species IS certified.
+   */
+  assert.equal((await POST(post({ speciesId: "species:gray-wolf", date: "2026-09-21", zones: [{ layerId: "layer:ca-on-wmu", designation: "57" }] }))).status, 400);
+  /* An empty zone list is NOT an error — it asks about nothing and is answered
+     with nothing. The original 400 here came from the species, not the list. */
+  assert.equal((await POST(post({ speciesId: "species:ruffed-grouse", date: "2026-09-21", zones: [] }))).status, 200);
   await whileQuebecUnserved(async () => {
     assert.equal((await POST(post({ speciesId: "species:ruffed-grouse", date: "2026-09-21", zones: [{ layerId: "layer:ca-qc-zone-chasse", designation: "10E" }] }))).status, 400);
   });

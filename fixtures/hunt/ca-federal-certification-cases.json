@@ -1,0 +1,242 @@
+{
+  "jurisdiction": "jurisdiction:ca-federal",
+  "writtenOn": "2026-09-23",
+  "method": "Written from the Migratory Birds Regulations, 2022 (SOR/2022-105) Schedule 3 BEFORE running any of them. Each case quotes the row it was read from. Points are point-on-surface interior points of the named provincial units, taken from the certified registry, so the federal area is resolved the way a hunt resolves it rather than asserted.",
+  "viewports": [],
+  "cases": [
+    {
+      "id": "pei-snipe-november",
+      "place": "Prince Edward Island",
+      "latitude": 46.50355,
+      "longitude": -63.61605,
+      "speciesId": "species:wilsons-snipe",
+      "date": "2026-11-05",
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "Schedule 3 Part 2 Table 1 item 1(f): 'Snipe | 20 | October 1 to December 31 | 10'. November 5 is inside."
+    },
+    {
+      "id": "pei-snipe-july",
+      "place": "Prince Edward Island",
+      "latitude": 46.50355,
+      "longitude": -63.61605,
+      "speciesId": "species:wilsons-snipe",
+      "date": "2026-07-04",
+      "expect": {
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "Same row. July 4 is outside October 1 to December 31, and no other Part 2 row opens Snipe, so it is CLOSED rather than unknown."
+    },
+    {
+      "id": "pei-mallard-november",
+      "place": "Prince Edward Island",
+      "latitude": 46.50355,
+      "longitude": -63.61605,
+      "speciesId": "species:mallard",
+      "date": "2026-11-05",
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "Item 1(b): 'Ducks (other than Harlequin Ducks, Common and Red-breasted Mergansers, Long-tailed Ducks, Eiders and Scoters), combined | 18 (not more than 1 may be Barrow's Goldeneye) | October 1 to January 15 | 6 (not more than 1 may be Barrow's Goldeneye)'. Mallard is in that group; the limit is the GROUP's."
+    },
+    {
+      "id": "pei-mallard-january-crosses-year",
+      "place": "Prince Edward Island",
+      "latitude": 46.50355,
+      "longitude": -63.61605,
+      "speciesId": "species:mallard",
+      "date": "2027-01-10",
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "Same row. October 1 to January 15 runs over the new year, so January 10 is inside it."
+    },
+    {
+      "id": "pei-mallard-september",
+      "place": "Prince Edward Island",
+      "latitude": 46.50355,
+      "longitude": -63.61605,
+      "speciesId": "species:mallard",
+      "date": "2026-09-15",
+      "expect": {
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "Same row. September 15 is before October 1 and after January 15, so outside the season on both ends."
+    },
+    {
+      "id": "pei-woodcock-october",
+      "place": "Prince Edward Island",
+      "latitude": 46.50355,
+      "longitude": -63.61605,
+      "speciesId": "species:american-woodcock",
+      "date": "2026-10-05",
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "Item 1(e): 'Woodcock | 16 | September 26 to December 10 | 8'."
+    },
+    {
+      "id": "pei-goose-refused-row",
+      "place": "Prince Edward Island",
+      "latitude": 46.50355,
+      "longitude": -63.61605,
+      "speciesId": "species:canada-goose",
+      "date": "2026-10-10",
+      "expect": {
+        "status": "UNKNOWN",
+        "completeness": "RESOLVED"
+      },
+      "law": "Item 1(d): 'all Geese, combined' carries a bag that CHANGES inside the season \u2014 '(A) 5 (from October 1 to November 14)', '(B) 3 (from November 15 to December 31)' \u2014 and a September row with 'plus an additional 5 Canada Geese or Cackling Geese'. North Ground refuses rows it cannot state exactly, so this is UNKNOWN naming the refusal, never a guessed number."
+    },
+    {
+      "id": "alberta-zone1-goose-october",
+      "place": "Alberta WMU 200 (federal Zone No. 1)",
+      "latitude": 52.17227,
+      "longitude": -110.42911,
+      "speciesId": "species:canada-goose",
+      "date": "2026-10-01",
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "Schedule 3 Part 9: 'Zone No. 1 means Provincial Wildlife Management Units 200, ...'. Table 1 Zone No. 1: 'Canada Geese, Cackling Geese and White-fronted Geese, combined | September 1 to December 16 | 8'."
+    },
+    {
+      "id": "alberta-zone1-goose-september-3",
+      "place": "Alberta WMU 200 (federal Zone No. 1)",
+      "latitude": 52.17227,
+      "longitude": -110.42911,
+      "speciesId": "species:canada-goose",
+      "date": "2026-09-03",
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "Same row. Zone No. 1 opens September 1, so September 3 is inside."
+    },
+    {
+      "id": "alberta-zone2-goose-september-3",
+      "place": "Alberta WMU 102 (federal Zone No. 2)",
+      "latitude": 49.2392,
+      "longitude": -110.69459,
+      "speciesId": "species:canada-goose",
+      "date": "2026-09-03",
+      "expect": {
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "'Zone No. 2 means Provincial Wildlife Management Units 102, ...' and its geese season is 'September 8 to December 23'. September 3 is before it. The two zones differ by a week, which is the whole reason the federal area must be resolved from the PROVINCIAL unit."
+    },
+    {
+      "id": "alberta-zone2-goose-december-20",
+      "place": "Alberta WMU 102 (federal Zone No. 2)",
+      "latitude": 49.2392,
+      "longitude": -110.69459,
+      "speciesId": "species:canada-goose",
+      "date": "2026-12-20",
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "Zone No. 2 runs to December 23, where Zone No. 1 ended December 16."
+    },
+    {
+      "id": "alberta-mallard-residency-refused",
+      "place": "Alberta WMU 200",
+      "latitude": 52.17227,
+      "longitude": -110.42911,
+      "speciesId": "species:mallard",
+      "date": "2026-10-01",
+      "expect": {
+        "status": "UNKNOWN",
+        "completeness": "RESOLVED"
+      },
+      "law": "Alberta's duck rows carry possession '(i) 24 for residents of Canada' and '(ii) 24 (not more than 6 may be Barrow's Goldeneye or Common Goldeneye in any combination) for non-residents of Canada'. A limit that varies by residency cannot be stated for an unknown hunter, so the row is refused and the answer is UNKNOWN \u2014 not CLOSED, because the season exists."
+    },
+    {
+      "id": "alberta-unit-in-no-federal-area",
+      "place": "Alberta WMU 728",
+      "latitude": 52.73777,
+      "longitude": -111.03202,
+      "speciesId": "species:canada-goose",
+      "date": "2026-10-01",
+      "expect": {
+        "status": "UNKNOWN",
+        "completeness": "RESOLVED"
+      },
+      "law": "Schedule 3 Part 9 names neither 728 nor 730 in Zone No. 1 or Zone No. 2. The regulation places this certified provincial unit in no federal area, so North Ground holds no federal season for it and must not assume it into a neighbour."
+    },
+    {
+      "id": "yukon-southern-mallard-september",
+      "place": "Southern Yukon (GMS 7-34)",
+      "latitude": 60.03257,
+      "longitude": -135.09455,
+      "speciesId": "species:mallard",
+      "date": "2026-09-20",
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "Part 12: 'Southern Yukon means the portion of Yukon lying south of latitude 62 degrees N'. Table 1 Southern Yukon: 'all Ducks, combined | September 1 to October 31 | 8'."
+    },
+    {
+      "id": "yukon-southern-mallard-december",
+      "place": "Southern Yukon (GMS 7-34)",
+      "latitude": 60.03257,
+      "longitude": -135.09455,
+      "speciesId": "species:mallard",
+      "date": "2026-12-10",
+      "expect": {
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "Southern Yukon has no August row at all, so December is outside every season encoded or refused, and CLOSED is the honest answer."
+    },
+    {
+      "id": "yukon-central-mallard-august-residents-only",
+      "place": "Central Yukon (GMS 2-62)",
+      "latitude": 63.99954,
+      "longitude": -135.59999,
+      "speciesId": "species:mallard",
+      "date": "2026-08-20",
+      "expect": {
+        "status": "UNKNOWN",
+        "completeness": "RESOLVED"
+      },
+      "law": "Central Yukon ducks: '(i) August 15 to August 31, for residents of Yukon only'. That season EXISTS for a Yukon resident, so CLOSED would state a restriction stricter than the law. North Ground answers UNKNOWN and quotes the refused row."
+    },
+    {
+      "id": "yukon-northern-crane-declared-closure",
+      "place": "Northern Yukon (GMS 1-01)",
+      "latitude": 69.57673,
+      "longitude": -139.05457,
+      "speciesId": "species:sandhill-crane",
+      "date": "2026-09-20",
+      "expect": {
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "Northern Yukon: 'Sandhill Cranes | N/A | No open season | N/A'. A declared closure is the authority saying there is no season, which is CLOSED and not UNKNOWN."
+    },
+    {
+      "id": "yukon-central-crane-september",
+      "place": "Central Yukon (GMS 2-62)",
+      "latitude": 63.99954,
+      "longitude": -135.59999,
+      "speciesId": "species:sandhill-crane",
+      "date": "2026-09-20",
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "Central Yukon: 'Sandhill Cranes | (ii) September 1 to October 31 | 2'. The same species is closed one band north and open here, which is what makes the band resolution load-bearing."
+    }
+  ]
+}

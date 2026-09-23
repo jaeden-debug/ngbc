@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { isFederalMigratoryBird } from "./federal.ts";
+import { REGULATORY_REGISTRY } from "./registry.ts";
 import {
   evaluationShape,
   SUPPORTED_MAJOR_GAME_SPECIES_IDS,
@@ -223,10 +225,20 @@ test("the browser-facing species lists match the regulatory bundles exactly", ()
     [...SUPPORTED_MAJOR_GAME_SPECIES_IDS].sort(),
     [...ONTARIO_MAJOR_GAME_SPECIES].sort(),
   );
-  // The union is what the selector and the endpoint accept.
+  /*
+   * The selector also accepts the migratory game birds, which are certified
+   * FEDERALLY rather than by any province and so appear in no Ontario list.
+   * Stated as a partition so neither half can quietly absorb the other: every
+   * selectable species is either an Ontario-engine species or a federal
+   * migratory bird, and never both.
+   */
+  const provincial = new Set<string>([...ONTARIO_SMALL_GAME_SPECIES, ...ONTARIO_MAJOR_GAME_SPECIES]);
+  const migratory = SUPPORTED_SPECIES_IDS.filter((id) => isFederalMigratoryBird(id));
+  for (const id of migratory) assert.ok(!provincial.has(id), `${id} is both provincial and federal`);
   assert.deepEqual(
     [...SUPPORTED_SPECIES_IDS].sort(),
-    [...ONTARIO_SMALL_GAME_SPECIES, ...ONTARIO_MAJOR_GAME_SPECIES].sort(),
+    [...provincial, ...migratory].sort(),
+    "every selectable species is provincially certified or a federal migratory bird",
   );
 });
 
@@ -244,8 +256,37 @@ test("every selectable species is routed to an engine", () => {
   for (const id of SUPPORTED_SPECIES_IDS) {
     const smallGame = (ONTARIO_SMALL_GAME_SPECIES as readonly string[]).includes(id);
     const majorGame = (ONTARIO_MAJOR_GAME_SPECIES as readonly string[]).includes(id);
+    if (isFederalMigratoryBird(id)) {
+      /*
+       * A migratory game bird is answered by the federal path, and Ontario's
+       * engine is never asked about it. That is the whole hazard this test
+       * guards: asked anyway, the engine falls through to small game and
+       * returns a grouse season for a mallard, which reads as a normal answer.
+       * `evaluateRegulation` now asks an engine only about species its own
+       * bundle certifies, so the fall-through cannot be reached.
+       */
+      assert.ok(!smallGame && !majorGame, `${id} is federal and must not be in an Ontario engine list`);
+      continue;
+    }
     assert.ok(smallGame !== majorGame, `${id} must be handled by exactly one engine`);
     assert.equal(evaluationShape(id), majorGame ? "CONDITIONAL" : "DIRECT");
+  }
+});
+
+test("an engine is never asked about a species its own bundle does not certify", () => {
+  /*
+   * The guard that makes the above true, asserted directly rather than
+   * inferred. Ontario's coverage must not name a species Ontario does not
+   * certify, whatever the selector offers nationally.
+   */
+  const ontario = REGULATORY_REGISTRY.find((entry) => entry.jurisdictionId === "jurisdiction:ca-on")!;
+  const certified = new Set(ontario.coverage().species.map((row) => row.speciesId));
+  for (const id of SUPPORTED_SPECIES_IDS) {
+    if (certified.has(id)) continue;
+    assert.ok(isFederalMigratoryBird(id) || !certified.has(id), `${id} leaked into Ontario coverage`);
+  }
+  for (const id of certified) {
+    assert.ok(!isFederalMigratoryBird(id), `${id} is federal and must not be in Ontario's coverage`);
   }
 });
 

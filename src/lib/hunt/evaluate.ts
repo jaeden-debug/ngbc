@@ -44,7 +44,16 @@ async function evaluateRegulation(
   const jurisdictionId = zone.jurisdictionId ?? jurisdictionOfZoneId(zone.zoneId);
   if (!jurisdictionId) return { completeness: "RESOLVED", dimensions: [], regulation: unplacedPoint(zone, verifiedAt) };
   const entry = regulatoryEntryFor(jurisdictionId);
-  const provincial = entry
+  /*
+   * A jurisdiction's engine is only asked about a species its own bundle
+   * certifies. Handing it one it does not know is how a mallard gets answered
+   * out of a grouse bundle: the engine falls through to its small-game path
+   * and returns a season for the wrong animal, which reads as a normal answer.
+   * Migratory game birds made this reachable — they are selectable nationally
+   * while almost no province certifies them — but the hazard was always there.
+   */
+  const provincialCertifies = entry?.coverage().species.some((row) => row.speciesId === input.speciesId) ?? false;
+  const provincial = entry && provincialCertifies
     ? await entry.evaluate(input, zone, { verifiedAt, fetcher, ...(speciesName ? { speciesName } : {}) })
     : { completeness: "RESOLVED" as const, dimensions: [], regulation: uncertifiedJurisdiction(zone, verifiedAt) };
 

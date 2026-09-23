@@ -1,0 +1,512 @@
+{
+  "jurisdiction": "jurisdiction:ca-federal",
+  "base": "http://127.0.0.1:3322",
+  "certifiedAt": "2026-09-23T10:12:18.598Z",
+  "summary": {
+    "passed": 18,
+    "failed": 0,
+    "zoneLookupMs": {
+      "median": 111,
+      "p90": 414,
+      "max": 564
+    },
+    "evaluationMs": {
+      "median": 140,
+      "p90": 678,
+      "max": 740
+    },
+    "evaluationBytes": {
+      "median": 15309,
+      "max": 25808
+    }
+  },
+  "geometry": [],
+  "results": [
+    {
+      "id": "pei-snipe-november",
+      "place": "Prince Edward Island",
+      "date": "2026-11-05",
+      "speciesId": "species:wilsons-snipe",
+      "expected": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": null,
+        "zoneName": "Prince Edward Island",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "Federal open season for Snipe in Throughout Prince Edward Island: October 1 to December 31.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 564,
+        "zoneBytes": 1137,
+        "evaluateMs": 300,
+        "evaluateBytes": 25569
+      }
+    },
+    {
+      "id": "pei-snipe-july",
+      "place": "Prince Edward Island",
+      "date": "2026-07-04",
+      "speciesId": "species:wilsons-snipe",
+      "expected": {
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": null,
+        "zoneName": "Prince Edward Island",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "2026-07-04 is outside every federal open season North Ground holds for Snipe in Throughout Prince Edward Island.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 345,
+        "zoneBytes": 1137,
+        "evaluateMs": 302,
+        "evaluateBytes": 25418
+      }
+    },
+    {
+      "id": "pei-mallard-november",
+      "place": "Prince Edward Island",
+      "date": "2026-11-05",
+      "speciesId": "species:mallard",
+      "expected": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": null,
+        "zoneName": "Prince Edward Island",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "Federal open season for Ducks (other than Harlequin Ducks, Common and Red-breasted Mergansers, Long-tailed Ducks, Eiders and Scoters), combined in Throughout Prince Edward Island: October 1 to January 15.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 232,
+        "zoneBytes": 1137,
+        "evaluateMs": 302,
+        "evaluateBytes": 25808
+      }
+    },
+    {
+      "id": "pei-mallard-january-crosses-year",
+      "place": "Prince Edward Island",
+      "date": "2027-01-10",
+      "speciesId": "species:mallard",
+      "expected": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": null,
+        "zoneName": "Prince Edward Island",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "Federal open season for Ducks (other than Harlequin Ducks, Common and Red-breasted Mergansers, Long-tailed Ducks, Eiders and Scoters), combined in Throughout Prince Edward Island: October 1 to January 15.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 414,
+        "zoneBytes": 1137,
+        "evaluateMs": 258,
+        "evaluateBytes": 25808
+      }
+    },
+    {
+      "id": "pei-mallard-september",
+      "place": "Prince Edward Island",
+      "date": "2026-09-15",
+      "speciesId": "species:mallard",
+      "expected": {
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": null,
+        "zoneName": "Prince Edward Island",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "2026-09-15 is outside every federal open season North Ground holds for Ducks (other than Harlequin Ducks, Common and Red-breasted Mergansers, Long-tailed Ducks, Eiders and Scoters), combined in Throughout Prince Edward Island.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 289,
+        "zoneBytes": 1137,
+        "evaluateMs": 254,
+        "evaluateBytes": 25406
+      }
+    },
+    {
+      "id": "pei-woodcock-october",
+      "place": "Prince Edward Island",
+      "date": "2026-10-05",
+      "speciesId": "species:american-woodcock",
+      "expected": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": null,
+        "zoneName": "Prince Edward Island",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "Federal open season for Woodcock in Throughout Prince Edward Island: September 26 to December 10.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 147,
+        "zoneBytes": 1137,
+        "evaluateMs": 140,
+        "evaluateBytes": 25513
+      }
+    },
+    {
+      "id": "pei-goose-refused-row",
+      "place": "Prince Edward Island",
+      "date": "2026-10-10",
+      "speciesId": "species:canada-goose",
+      "expected": {
+        "status": "UNKNOWN",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": null,
+        "zoneName": "Prince Edward Island",
+        "status": "UNKNOWN",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "North Ground holds no certified federal rule for this species in Throughout Prince Edward Island.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 140,
+        "zoneBytes": 1137,
+        "evaluateMs": 130,
+        "evaluateBytes": 25447
+      }
+    },
+    {
+      "id": "alberta-zone1-goose-october",
+      "place": "Alberta WMU 200 (federal Zone No. 1)",
+      "date": "2026-10-01",
+      "speciesId": "species:canada-goose",
+      "expected": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "200",
+        "zoneName": "Wildlife Management Unit 200",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "Federal open season for Canada Geese, Cackling Geese and White-fronted Geese, combined in Zone No. 1: September 1 to December 16.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 111,
+        "zoneBytes": 1074,
+        "evaluateMs": 740,
+        "evaluateBytes": 10803
+      }
+    },
+    {
+      "id": "alberta-zone1-goose-september-3",
+      "place": "Alberta WMU 200 (federal Zone No. 1)",
+      "date": "2026-09-03",
+      "speciesId": "species:canada-goose",
+      "expected": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "200",
+        "zoneName": "Wildlife Management Unit 200",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "Federal open season for Canada Geese, Cackling Geese and White-fronted Geese, combined in Zone No. 1: September 1 to December 16.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 231,
+        "zoneBytes": 1074,
+        "evaluateMs": 72,
+        "evaluateBytes": 10744
+      }
+    },
+    {
+      "id": "alberta-zone2-goose-september-3",
+      "place": "Alberta WMU 102 (federal Zone No. 2)",
+      "date": "2026-09-03",
+      "speciesId": "species:canada-goose",
+      "expected": {
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "102",
+        "zoneName": "Wildlife Management Unit 102",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "2026-09-03 is outside every federal open season North Ground holds for Canada Geese, Cackling Geese and White-fronted Geese, combined in Zone No. 2.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 101,
+        "zoneBytes": 1073,
+        "evaluateMs": 66,
+        "evaluateBytes": 9240
+      }
+    },
+    {
+      "id": "alberta-zone2-goose-december-20",
+      "place": "Alberta WMU 102 (federal Zone No. 2)",
+      "date": "2026-12-20",
+      "speciesId": "species:canada-goose",
+      "expected": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "102",
+        "zoneName": "Wildlife Management Unit 102",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "Federal open season for Canada Geese, Cackling Geese and White-fronted Geese, combined in Zone No. 2: September 8 to December 23.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 74,
+        "zoneBytes": 1073,
+        "evaluateMs": 76,
+        "evaluateBytes": 9825
+      }
+    },
+    {
+      "id": "alberta-mallard-residency-refused",
+      "place": "Alberta WMU 200",
+      "date": "2026-10-01",
+      "speciesId": "species:mallard",
+      "expected": {
+        "status": "UNKNOWN",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "200",
+        "zoneName": "Wildlife Management Unit 200",
+        "status": "UNKNOWN",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "North Ground holds no certified federal rule for this species in Zone No. 1.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 91,
+        "zoneBytes": 1074,
+        "evaluateMs": 678,
+        "evaluateBytes": 10638
+      }
+    },
+    {
+      "id": "alberta-unit-in-no-federal-area",
+      "place": "Alberta WMU 728",
+      "date": "2026-10-01",
+      "speciesId": "species:canada-goose",
+      "expected": {
+        "status": "UNKNOWN",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": "728",
+        "zoneName": "Wildlife Management Unit 728",
+        "status": "UNKNOWN",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "North Ground holds no federal migratory-bird season for this point.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 90,
+        "zoneBytes": 1073,
+        "evaluateMs": 165,
+        "evaluateBytes": 9113
+      }
+    },
+    {
+      "id": "yukon-southern-mallard-september",
+      "place": "Southern Yukon (GMS 7-34)",
+      "date": "2026-09-20",
+      "speciesId": "species:mallard",
+      "expected": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": null,
+        "zoneName": "Game Management Subzone 7-34",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "Federal open season for all Ducks, combined in Southern Yukon: September 1 to October 31.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 88,
+        "zoneBytes": 1106,
+        "evaluateMs": 77,
+        "evaluateBytes": 9392
+      }
+    },
+    {
+      "id": "yukon-southern-mallard-december",
+      "place": "Southern Yukon (GMS 7-34)",
+      "date": "2026-12-10",
+      "speciesId": "species:mallard",
+      "expected": {
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": null,
+        "zoneName": "Game Management Subzone 7-34",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "2026-12-10 is outside every federal open season North Ground holds for all Ducks, combined in Southern Yukon.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 74,
+        "zoneBytes": 1106,
+        "evaluateMs": 68,
+        "evaluateBytes": 8808
+      }
+    },
+    {
+      "id": "yukon-central-mallard-august-residents-only",
+      "place": "Central Yukon (GMS 2-62)",
+      "date": "2026-08-20",
+      "speciesId": "species:mallard",
+      "expected": {
+        "status": "UNKNOWN",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": null,
+        "zoneName": "Game Management Subzone 2-62",
+        "status": "UNKNOWN",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "North Ground cannot say whether all Ducks, combined is open in Central Yukon on this date.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 110,
+        "zoneBytes": 1106,
+        "evaluateMs": 86,
+        "evaluateBytes": 15804
+      }
+    },
+    {
+      "id": "yukon-northern-crane-declared-closure",
+      "place": "Northern Yukon (GMS 1-01)",
+      "date": "2026-09-20",
+      "speciesId": "species:sandhill-crane",
+      "expected": {
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": null,
+        "zoneName": "Game Management Subzone 1-01",
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "The Migratory Birds Regulations declare no open season for Sandhill Cranes in Northern Yukon.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 101,
+        "zoneBytes": 1106,
+        "evaluateMs": 83,
+        "evaluateBytes": 12363
+      }
+    },
+    {
+      "id": "yukon-central-crane-september",
+      "place": "Central Yukon (GMS 2-62)",
+      "date": "2026-09-20",
+      "speciesId": "species:sandhill-crane",
+      "expected": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "actual": {
+        "httpStatus": 200,
+        "gha": null,
+        "zoneName": "Game Management Subzone 2-62",
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "nearBoundary": false
+      },
+      "summary": "Federal open season for Sandhill Cranes in Central Yukon: September 1 to October 31.",
+      "passed": true,
+      "failures": [],
+      "timing": {
+        "zoneMs": 99,
+        "zoneBytes": 1106,
+        "evaluateMs": 99,
+        "evaluateBytes": 15309
+      }
+    }
+  ]
+}

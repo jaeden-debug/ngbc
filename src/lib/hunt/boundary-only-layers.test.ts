@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { evaluateHunt } from "./evaluate.ts";
+import { isFederalMigratoryBird } from "./regulatory/federal.ts";
 import { regulatoryEntryFor, REGULATORY_REGISTRY } from "./regulatory/registry.ts";
 import type { HuntInput, ZoneResolution } from "./types.ts";
 import { ZONE_LAYERS, layerForResolution, zoneCoverage } from "./zone-layers.ts";
@@ -39,9 +40,19 @@ test("a boundary-only layer is drawn and named, and answers no rule", async () =
     /* The zone is still presented: the map may draw it and name it. */
     assert.equal(layerForResolution(zone).kind, "SERVING", layer.id);
 
-    /* Every species answers UNKNOWN, and no rule of this jurisdiction is cited. */
+    /*
+     * Every species answers UNKNOWN, and no rule of this jurisdiction is cited.
+     *
+     * Migratory game birds are excluded, and the exclusion is the point rather
+     * than an exemption: their season is FEDERAL. A province drawn without
+     * certified rules of its own may still sit inside a federal area with a
+     * certified federal season, and answering that is composition working, not
+     * the boundary-only claim leaking. What must stay true is that no rule of
+     * THIS jurisdiction is cited, which is asserted for every species below.
+     */
     const jurisdictionKey = layer.jurisdictionId.replace("jurisdiction:", "");
     for (const speciesId of SUPPORTED_SPECIES_IDS) {
+      if (isFederalMigratoryBird(speciesId)) continue;
       const result = await evaluateHunt(
         {
           latitude: (layer.bounds.minLatitude + layer.bounds.maxLatitude) / 2,
@@ -90,4 +101,33 @@ test("a layer whose rules serve does report its certified units", () => {
     assert.equal(zoneCoverage(layer, designation), "VERIFIED", `${layer.id} ${designation}`);
     assert.ok(REGULATORY_REGISTRY.some((entry) => entry.jurisdictionId === layer.jurisdictionId), layer.id);
   }
+});
+
+test("a boundary-only province cites no rule of its own even where a federal season applies", async () => {
+  /*
+   * The claim that must survive: Prince Edward Island has no certified
+   * provincial rules, and a duck answer there comes from the Migratory Birds
+   * Regulations. The federal source may be cited; a Prince Edward Island rule
+   * may not, and the answer must say the province's own half is uncertified.
+   */
+  const layer = BOUNDARY_ONLY.find((candidate) => candidate.jurisdictionId === "jurisdiction:ca-pe");
+  if (!layer) return;
+  const zone: ZoneResolution = {
+    status: "RESOLVED",
+    jurisdictionId: "jurisdiction:ca-pe" as ZoneResolution["jurisdictionId"],
+    officialName: "Prince Edward Island",
+    boundaryDistanceMeters: 12_000,
+    nearBoundary: false,
+    message: "",
+  };
+  const result = await evaluateHunt(
+    { latitude: 46.5, longitude: -63.6, date: "2026-11-05" as HuntInput["date"], speciesId: "species:mallard" as HuntInput["speciesId"] },
+    {
+      resolveZone: async () => zone,
+      weather: async (_la: number, _lo: number, date: string) => ({ status: "UNAVAILABLE" as const, summary: "", date: date as HuntInput["date"], sourceId: "source:open-meteo" as const }),
+      fetch: (async () => { throw new Error("no request expected"); }) as typeof fetch,
+      now: () => new Date("2026-09-23T12:00:00Z"),
+    },
+  );
+  assert.ok(result.sources.every((source) => !source.id.startsWith("source:ca-pe-hunting-regulation")));
 });
