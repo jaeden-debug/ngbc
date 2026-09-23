@@ -1,0 +1,903 @@
+{
+  "package": {
+    "jurisdictionId": "jurisdiction:ca-bc",
+    "preparedBy": "bc-requirements-research (session dfe3d7f3)",
+    "preparedOn": "2026-09-23"
+  },
+  "authority": {
+    "name": "Province of British Columbia — King's Printer (BC Laws)",
+    "lang": "en-CA"
+  },
+  "source": {
+    "id": "source:ca-bc-hunting-regulation-190-84-schedule-7",
+    "title": "Hunting Regulation — Schedule 7 — Region 7 — Omineca-Peace",
+    "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/190_84_08",
+    "tier": "LAW",
+    "version": "B.C. Reg. 190/84, consolidation current to September 15, 2026",
+    "retrievedAt": "2026-09-23",
+    "sha256": "24792970d3c9d36041e8b0edd351492a1d65d8c5b8a31e5b45d41187a65a7759",
+    "incorporates": [],
+    "inForce": {
+      "state": "IN_FORCE",
+      "statedAs": "This consolidation is current to September 15, 2026. [Last amended July 1, 2026 by B.C. Reg. 97/2026]",
+      "asOf": "2026-09-15",
+      "supersededBy": null,
+      "checkedOn": "2026-09-23",
+      "basis": "BC Laws presents this as the current consolidation of an unrepealed enactment; no repeal line appears in the document. The site's separate 'Amendments Not in Force' list was not reachable by the routes tried (see researchNotes); the Point in Time index for B.C. Reg. 190/84 lists no version dated after July 1, 2026."
+    }
+  },
+  "requirements": [
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "38 BLACK BEAR 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58 Apr. 1 to June 30 Aug. 15 to Nov. 15 2",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — BLACK BEAR",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "7-19 to 7-22",
+            "7-31 to 7-36",
+            "7-42 to 7-58"
+          ],
+          "statedAs": "38 BLACK BEAR 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58 Apr. 1 to June 30 Aug. 15 to Nov. 15 2"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "THIS_SPECIES rests on the item naming a single species; no sentence says 'per species'."
+      ],
+      "period": "SEASON",
+      "value": {
+        "count": 2,
+        "statedAs": "38 BLACK BEAR 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58 Apr. 1 to June 30 Aug. 15 to Nov. 15 2"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "statedAs": "38 BLACK BEAR 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58 Apr. 1 to June 30 Aug. 15 to Nov. 15 2"
+      },
+      "periodStatedAs": "* Season bag limits for big game and small game; daily bag limits for upland birds."
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "38.1 BLACK BEAR 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41 Apr. 1 to June 30 Aug. 15 to Nov. 15 2",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — BLACK BEAR",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "7-2 to 7-18",
+            "7-23 to 7-30",
+            "7-37 to 7-41"
+          ],
+          "statedAs": "38.1 BLACK BEAR 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41 Apr. 1 to June 30 Aug. 15 to Nov. 15 2"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "THIS_SPECIES rests on the item naming a single species; no sentence says 'per species'."
+      ],
+      "period": "SEASON",
+      "value": {
+        "count": 2,
+        "statedAs": "38.1 BLACK BEAR 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41 Apr. 1 to June 30 Aug. 15 to Nov. 15 2"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "statedAs": "38.1 BLACK BEAR 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41 Apr. 1 to June 30 Aug. 15 to Nov. 15 2"
+      },
+      "periodStatedAs": "* Season bag limits for big game and small game; daily bag limits for upland birds."
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "48 SNOWSHOE HARE 7-2 to 7-58 Apr. 1 to Apr. 30 Aug. 1 to Mar. 31 10***",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — SNOWSHOE HARE",
+      "scope": {
+        "speciesIds": [
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "7-2 to 7-58"
+          ],
+          "statedAs": "48 SNOWSHOE HARE 7-2 to 7-58 Apr. 1 to Apr. 30 Aug. 1 to Mar. 31 10***"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "THIS_SPECIES rests on the item naming a single species; no sentence says 'per species'.",
+        "Period DAY is inferred from the Part 1 header ('daily bag limits for upland birds' does not reach hare) — NOT stated for this cell; the cell omits 'per day' unlike other regions. The *** points to a Part 3 that has no hare provision."
+      ],
+      "period": null,
+      "value": {
+        "count": 10,
+        "statedAs": "48 SNOWSHOE HARE 7-2 to 7-58 Apr. 1 to Apr. 30 Aug. 1 to Mar. 31 10***"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:snowshoe-hare"
+        ],
+        "statedAs": "48 SNOWSHOE HARE 7-2 to 7-58 Apr. 1 to Apr. 30 Aug. 1 to Mar. 31 10***"
+      }
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "51 SPRUCE (Franklin) GROUSE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41** Sept. 1 to Nov. 15 10(30)",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — SPRUCE (Franklin) GROUSE",
+      "scope": {
+        "speciesIds": [
+          "species:spruce-grouse"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "7-2 to 7-18",
+            "7-23 to 7-30",
+            "7-37 to 7-41"
+          ],
+          "statedAs": "51 SPRUCE (Franklin) GROUSE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41** Sept. 1 to Nov. 15 10(30)"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "THIS_SPECIES rests on the item naming a single species; no sentence says 'per species'."
+      ],
+      "period": "DAY",
+      "value": {
+        "count": 10,
+        "statedAs": "51 SPRUCE (Franklin) GROUSE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41** Sept. 1 to Nov. 15 10(30)"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:spruce-grouse"
+        ],
+        "statedAs": "51 SPRUCE (Franklin) GROUSE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41** Sept. 1 to Nov. 15 10(30)"
+      },
+      "notationDefinedBy": {
+        "citation": "B.C. Reg. 190/84 s. 9 (2)",
+        "statedAs": "(2) An entry such as \"10 (20)\" in Part 1 of a Schedule means, in the case of all game birds except turkeys, that the bag limit is 10 birds a day, while the possession limit is 20."
+      },
+      "exceptions": []
+    },
+    {
+      "category": "LIMIT",
+      "kind": "POSSESSION",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "51 SPRUCE (Franklin) GROUSE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41** Sept. 1 to Nov. 15 10(30)",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — SPRUCE (Franklin) GROUSE",
+      "scope": {
+        "speciesIds": [
+          "species:spruce-grouse"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "7-2 to 7-18",
+            "7-23 to 7-30",
+            "7-37 to 7-41"
+          ],
+          "statedAs": "51 SPRUCE (Franklin) GROUSE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41** Sept. 1 to Nov. 15 10(30)"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "THIS_SPECIES rests on the item naming a single species; no sentence says 'per species'.",
+        "The contract makes `period` required (DAY | SEASON | LICENCE_YEAR), but s. 9 (2) states a possession limit with no period ('while the possession limit is 20'). Recorded as null; reported to the moderator as a schema gap."
+      ],
+      "period": null,
+      "value": {
+        "count": 30,
+        "statedAs": "51 SPRUCE (Franklin) GROUSE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41** Sept. 1 to Nov. 15 10(30)"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:spruce-grouse"
+        ],
+        "statedAs": "51 SPRUCE (Franklin) GROUSE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41** Sept. 1 to Nov. 15 10(30)"
+      },
+      "notationDefinedBy": {
+        "citation": "B.C. Reg. 190/84 s. 9 (2)",
+        "statedAs": "(2) An entry such as \"10 (20)\" in Part 1 of a Schedule means, in the case of all game birds except turkeys, that the bag limit is 10 birds a day, while the possession limit is 20."
+      },
+      "exceptions": []
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "52 SPRUCE (Franklin) GROUSE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58** Sept. 1 to Nov. 15 10(30)",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — SPRUCE (Franklin) GROUSE",
+      "scope": {
+        "speciesIds": [
+          "species:spruce-grouse"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "7-19 to 7-22",
+            "7-31 to 7-36",
+            "7-42 to 7-58"
+          ],
+          "statedAs": "52 SPRUCE (Franklin) GROUSE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58** Sept. 1 to Nov. 15 10(30)"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "THIS_SPECIES rests on the item naming a single species; no sentence says 'per species'."
+      ],
+      "period": "DAY",
+      "value": {
+        "count": 10,
+        "statedAs": "52 SPRUCE (Franklin) GROUSE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58** Sept. 1 to Nov. 15 10(30)"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:spruce-grouse"
+        ],
+        "statedAs": "52 SPRUCE (Franklin) GROUSE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58** Sept. 1 to Nov. 15 10(30)"
+      },
+      "notationDefinedBy": {
+        "citation": "B.C. Reg. 190/84 s. 9 (2)",
+        "statedAs": "(2) An entry such as \"10 (20)\" in Part 1 of a Schedule means, in the case of all game birds except turkeys, that the bag limit is 10 birds a day, while the possession limit is 20."
+      },
+      "exceptions": []
+    },
+    {
+      "category": "LIMIT",
+      "kind": "POSSESSION",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "52 SPRUCE (Franklin) GROUSE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58** Sept. 1 to Nov. 15 10(30)",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — SPRUCE (Franklin) GROUSE",
+      "scope": {
+        "speciesIds": [
+          "species:spruce-grouse"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "7-19 to 7-22",
+            "7-31 to 7-36",
+            "7-42 to 7-58"
+          ],
+          "statedAs": "52 SPRUCE (Franklin) GROUSE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58** Sept. 1 to Nov. 15 10(30)"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "THIS_SPECIES rests on the item naming a single species; no sentence says 'per species'.",
+        "The contract makes `period` required (DAY | SEASON | LICENCE_YEAR), but s. 9 (2) states a possession limit with no period ('while the possession limit is 20'). Recorded as null; reported to the moderator as a schema gap."
+      ],
+      "period": null,
+      "value": {
+        "count": 30,
+        "statedAs": "52 SPRUCE (Franklin) GROUSE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58** Sept. 1 to Nov. 15 10(30)"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:spruce-grouse"
+        ],
+        "statedAs": "52 SPRUCE (Franklin) GROUSE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58** Sept. 1 to Nov. 15 10(30)"
+      },
+      "notationDefinedBy": {
+        "citation": "B.C. Reg. 190/84 s. 9 (2)",
+        "statedAs": "(2) An entry such as \"10 (20)\" in Part 1 of a Schedule means, in the case of all game birds except turkeys, that the bag limit is 10 birds a day, while the possession limit is 20."
+      },
+      "exceptions": []
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "53 RUFFED GROUSE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41** Sept. 1 to Nov. 15 10(30)",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — RUFFED GROUSE",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "7-2 to 7-18",
+            "7-23 to 7-30",
+            "7-37 to 7-41"
+          ],
+          "statedAs": "53 RUFFED GROUSE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41** Sept. 1 to Nov. 15 10(30)"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "THIS_SPECIES rests on the item naming a single species; no sentence says 'per species'."
+      ],
+      "period": "DAY",
+      "value": {
+        "count": 10,
+        "statedAs": "53 RUFFED GROUSE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41** Sept. 1 to Nov. 15 10(30)"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:ruffed-grouse"
+        ],
+        "statedAs": "53 RUFFED GROUSE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41** Sept. 1 to Nov. 15 10(30)"
+      },
+      "notationDefinedBy": {
+        "citation": "B.C. Reg. 190/84 s. 9 (2)",
+        "statedAs": "(2) An entry such as \"10 (20)\" in Part 1 of a Schedule means, in the case of all game birds except turkeys, that the bag limit is 10 birds a day, while the possession limit is 20."
+      },
+      "exceptions": []
+    },
+    {
+      "category": "LIMIT",
+      "kind": "POSSESSION",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "53 RUFFED GROUSE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41** Sept. 1 to Nov. 15 10(30)",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — RUFFED GROUSE",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "7-2 to 7-18",
+            "7-23 to 7-30",
+            "7-37 to 7-41"
+          ],
+          "statedAs": "53 RUFFED GROUSE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41** Sept. 1 to Nov. 15 10(30)"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "THIS_SPECIES rests on the item naming a single species; no sentence says 'per species'.",
+        "The contract makes `period` required (DAY | SEASON | LICENCE_YEAR), but s. 9 (2) states a possession limit with no period ('while the possession limit is 20'). Recorded as null; reported to the moderator as a schema gap."
+      ],
+      "period": null,
+      "value": {
+        "count": 30,
+        "statedAs": "53 RUFFED GROUSE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41** Sept. 1 to Nov. 15 10(30)"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:ruffed-grouse"
+        ],
+        "statedAs": "53 RUFFED GROUSE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41** Sept. 1 to Nov. 15 10(30)"
+      },
+      "notationDefinedBy": {
+        "citation": "B.C. Reg. 190/84 s. 9 (2)",
+        "statedAs": "(2) An entry such as \"10 (20)\" in Part 1 of a Schedule means, in the case of all game birds except turkeys, that the bag limit is 10 birds a day, while the possession limit is 20."
+      },
+      "exceptions": []
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "54 RUFFED GROUSE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58** Sept. 1 to Nov. 15 10(30)",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — RUFFED GROUSE",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "7-19 to 7-22",
+            "7-31 to 7-36",
+            "7-42 to 7-58"
+          ],
+          "statedAs": "54 RUFFED GROUSE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58** Sept. 1 to Nov. 15 10(30)"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "THIS_SPECIES rests on the item naming a single species; no sentence says 'per species'."
+      ],
+      "period": "DAY",
+      "value": {
+        "count": 10,
+        "statedAs": "54 RUFFED GROUSE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58** Sept. 1 to Nov. 15 10(30)"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:ruffed-grouse"
+        ],
+        "statedAs": "54 RUFFED GROUSE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58** Sept. 1 to Nov. 15 10(30)"
+      },
+      "notationDefinedBy": {
+        "citation": "B.C. Reg. 190/84 s. 9 (2)",
+        "statedAs": "(2) An entry such as \"10 (20)\" in Part 1 of a Schedule means, in the case of all game birds except turkeys, that the bag limit is 10 birds a day, while the possession limit is 20."
+      },
+      "exceptions": []
+    },
+    {
+      "category": "LIMIT",
+      "kind": "POSSESSION",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "54 RUFFED GROUSE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58** Sept. 1 to Nov. 15 10(30)",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — RUFFED GROUSE",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "7-19 to 7-22",
+            "7-31 to 7-36",
+            "7-42 to 7-58"
+          ],
+          "statedAs": "54 RUFFED GROUSE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58** Sept. 1 to Nov. 15 10(30)"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "THIS_SPECIES rests on the item naming a single species; no sentence says 'per species'.",
+        "The contract makes `period` required (DAY | SEASON | LICENCE_YEAR), but s. 9 (2) states a possession limit with no period ('while the possession limit is 20'). Recorded as null; reported to the moderator as a schema gap."
+      ],
+      "period": null,
+      "value": {
+        "count": 30,
+        "statedAs": "54 RUFFED GROUSE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58** Sept. 1 to Nov. 15 10(30)"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:ruffed-grouse"
+        ],
+        "statedAs": "54 RUFFED GROUSE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58** Sept. 1 to Nov. 15 10(30)"
+      },
+      "notationDefinedBy": {
+        "citation": "B.C. Reg. 190/84 s. 9 (2)",
+        "statedAs": "(2) An entry such as \"10 (20)\" in Part 1 of a Schedule means, in the case of all game birds except turkeys, that the bag limit is 10 birds a day, while the possession limit is 20."
+      },
+      "exceptions": []
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "55 SHARP-TAILED GROUSE 7-20 to 7-22, 7-32 to 7-35, 7-44 to 7-49, 7-52 to 7-56, 7-58 Sept. 1 to Nov. 15 3(6)",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — SHARP-TAILED GROUSE",
+      "scope": {
+        "speciesIds": [
+          "species:sharp-tailed-grouse"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "7-20 to 7-22",
+            "7-32 to 7-35",
+            "7-44 to 7-49",
+            "7-52 to 7-56",
+            "7-58"
+          ],
+          "statedAs": "55 SHARP-TAILED GROUSE 7-20 to 7-22, 7-32 to 7-35, 7-44 to 7-49, 7-52 to 7-56, 7-58 Sept. 1 to Nov. 15 3(6)"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "THIS_SPECIES rests on the item naming a single species; no sentence says 'per species'."
+      ],
+      "period": "DAY",
+      "value": {
+        "count": 3,
+        "statedAs": "55 SHARP-TAILED GROUSE 7-20 to 7-22, 7-32 to 7-35, 7-44 to 7-49, 7-52 to 7-56, 7-58 Sept. 1 to Nov. 15 3(6)"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:sharp-tailed-grouse"
+        ],
+        "statedAs": "55 SHARP-TAILED GROUSE 7-20 to 7-22, 7-32 to 7-35, 7-44 to 7-49, 7-52 to 7-56, 7-58 Sept. 1 to Nov. 15 3(6)"
+      },
+      "notationDefinedBy": {
+        "citation": "B.C. Reg. 190/84 s. 9 (2)",
+        "statedAs": "(2) An entry such as \"10 (20)\" in Part 1 of a Schedule means, in the case of all game birds except turkeys, that the bag limit is 10 birds a day, while the possession limit is 20."
+      },
+      "exceptions": []
+    },
+    {
+      "category": "LIMIT",
+      "kind": "POSSESSION",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "55 SHARP-TAILED GROUSE 7-20 to 7-22, 7-32 to 7-35, 7-44 to 7-49, 7-52 to 7-56, 7-58 Sept. 1 to Nov. 15 3(6)",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — SHARP-TAILED GROUSE",
+      "scope": {
+        "speciesIds": [
+          "species:sharp-tailed-grouse"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "7-20 to 7-22",
+            "7-32 to 7-35",
+            "7-44 to 7-49",
+            "7-52 to 7-56",
+            "7-58"
+          ],
+          "statedAs": "55 SHARP-TAILED GROUSE 7-20 to 7-22, 7-32 to 7-35, 7-44 to 7-49, 7-52 to 7-56, 7-58 Sept. 1 to Nov. 15 3(6)"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "THIS_SPECIES rests on the item naming a single species; no sentence says 'per species'.",
+        "The contract makes `period` required (DAY | SEASON | LICENCE_YEAR), but s. 9 (2) states a possession limit with no period ('while the possession limit is 20'). Recorded as null; reported to the moderator as a schema gap."
+      ],
+      "period": null,
+      "value": {
+        "count": 6,
+        "statedAs": "55 SHARP-TAILED GROUSE 7-20 to 7-22, 7-32 to 7-35, 7-44 to 7-49, 7-52 to 7-56, 7-58 Sept. 1 to Nov. 15 3(6)"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:sharp-tailed-grouse"
+        ],
+        "statedAs": "55 SHARP-TAILED GROUSE 7-20 to 7-22, 7-32 to 7-35, 7-44 to 7-49, 7-52 to 7-56, 7-58 Sept. 1 to Nov. 15 3(6)"
+      },
+      "notationDefinedBy": {
+        "citation": "B.C. Reg. 190/84 s. 9 (2)",
+        "statedAs": "(2) An entry such as \"10 (20)\" in Part 1 of a Schedule means, in the case of all game birds except turkeys, that the bag limit is 10 birds a day, while the possession limit is 20."
+      },
+      "exceptions": []
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "56 PTARMIGAN 7-2 to 7-6, 7-17 to 7-19, 7-21 to 7-23, 7-27 to 7-31, 7-36 to 7-43, 7-50 to 7-55, 7-57 Aug. 15 to Feb. 28 10(30)",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — PTARMIGAN",
+      "scope": {
+        "speciesIds": [
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "7-2 to 7-6",
+            "7-17 to 7-19",
+            "7-21 to 7-23",
+            "7-27 to 7-31",
+            "7-36 to 7-43",
+            "7-50 to 7-55",
+            "7-57"
+          ],
+          "statedAs": "56 PTARMIGAN 7-2 to 7-6, 7-17 to 7-19, 7-21 to 7-23, 7-27 to 7-31, 7-36 to 7-43, 7-50 to 7-55, 7-57 Aug. 15 to Feb. 28 10(30)"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Row is headed 'PTARMIGAN' (genus Lagopus: willow, rock and white-tailed). Per-species or aggregate is not stated."
+      ],
+      "period": "DAY",
+      "value": {
+        "count": 10,
+        "statedAs": "56 PTARMIGAN 7-2 to 7-6, 7-17 to 7-19, 7-21 to 7-23, 7-27 to 7-31, 7-36 to 7-43, 7-50 to 7-55, 7-57 Aug. 15 to Feb. 28 10(30)"
+      },
+      "appliesAcross": {
+        "scope": null,
+        "speciesIds": [
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "statedAs": "56 PTARMIGAN 7-2 to 7-6, 7-17 to 7-19, 7-21 to 7-23, 7-27 to 7-31, 7-36 to 7-43, 7-50 to 7-55, 7-57 Aug. 15 to Feb. 28 10(30)"
+      },
+      "notationDefinedBy": {
+        "citation": "B.C. Reg. 190/84 s. 9 (2)",
+        "statedAs": "(2) An entry such as \"10 (20)\" in Part 1 of a Schedule means, in the case of all game birds except turkeys, that the bag limit is 10 birds a day, while the possession limit is 20."
+      },
+      "exceptions": []
+    },
+    {
+      "category": "LIMIT",
+      "kind": "POSSESSION",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "56 PTARMIGAN 7-2 to 7-6, 7-17 to 7-19, 7-21 to 7-23, 7-27 to 7-31, 7-36 to 7-43, 7-50 to 7-55, 7-57 Aug. 15 to Feb. 28 10(30)",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — PTARMIGAN",
+      "scope": {
+        "speciesIds": [
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "7-2 to 7-6",
+            "7-17 to 7-19",
+            "7-21 to 7-23",
+            "7-27 to 7-31",
+            "7-36 to 7-43",
+            "7-50 to 7-55",
+            "7-57"
+          ],
+          "statedAs": "56 PTARMIGAN 7-2 to 7-6, 7-17 to 7-19, 7-21 to 7-23, 7-27 to 7-31, 7-36 to 7-43, 7-50 to 7-55, 7-57 Aug. 15 to Feb. 28 10(30)"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Row is headed 'PTARMIGAN' (genus Lagopus: willow, rock and white-tailed). Per-species or aggregate is not stated.",
+        "The contract makes `period` required (DAY | SEASON | LICENCE_YEAR), but s. 9 (2) states a possession limit with no period ('while the possession limit is 20'). Recorded as null; reported to the moderator as a schema gap."
+      ],
+      "period": null,
+      "value": {
+        "count": 30,
+        "statedAs": "56 PTARMIGAN 7-2 to 7-6, 7-17 to 7-19, 7-21 to 7-23, 7-27 to 7-31, 7-36 to 7-43, 7-50 to 7-55, 7-57 Aug. 15 to Feb. 28 10(30)"
+      },
+      "appliesAcross": {
+        "scope": null,
+        "speciesIds": [
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "statedAs": "56 PTARMIGAN 7-2 to 7-6, 7-17 to 7-19, 7-21 to 7-23, 7-27 to 7-31, 7-36 to 7-43, 7-50 to 7-55, 7-57 Aug. 15 to Feb. 28 10(30)"
+      },
+      "notationDefinedBy": {
+        "citation": "B.C. Reg. 190/84 s. 9 (2)",
+        "statedAs": "(2) An entry such as \"10 (20)\" in Part 1 of a Schedule means, in the case of all game birds except turkeys, that the bag limit is 10 birds a day, while the possession limit is 20."
+      },
+      "exceptions": []
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "The daily aggregate bag limit for blue (Dusky), spruce (Franklin) and ruffed grouse is 10.",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule 7 Part 3 s. 4",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:spruce-grouse"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "Region 7 — Omineca-Peace"
+          ],
+          "statedAs": "The daily aggregate bag limit for blue (Dusky), spruce (Franklin) and ruffed grouse is 10."
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "s. 7 applies Part 3 where a Part 1 bag limit carries ***; whether this Part 3 aggregate governs Part 1 items WITHOUT *** is not settled.",
+        "Part 1 item 48 SNOWSHOE HARE prints its bag limit as '10***' (s. 7: triple asterisk means Part 3 restrictions apply), but Part 3 of Schedule 7 contains no hare provision (sections: Deer bag limit, repealed 2, repealed 3, Grouse, repealed 5). Dangling reference; the provincial s. 11 (1) (j) '10 snowshoe hare per day' is the only hare limit found."
+      ],
+      "period": "DAY",
+      "value": {
+        "count": 10,
+        "statedAs": "The daily aggregate bag limit for blue (Dusky), spruce (Franklin) and ruffed grouse is 10."
+      },
+      "appliesAcross": {
+        "scope": "AGGREGATE",
+        "speciesIds": [
+          "species:blue-grouse",
+          "species:spruce-grouse",
+          "species:ruffed-grouse"
+        ],
+        "statedAs": "The daily aggregate bag limit for blue (Dusky), spruce (Franklin) and ruffed grouse is 10."
+      }
+    }
+  ],
+  "researchNotes": [
+    "LIMIT rows: 'Region N — …' designations mean every M.U. in that Schedule; the contract's geography.kind has no REGION value, so ZONE is used with the region's own name."
+  ]
+}

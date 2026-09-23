@@ -1,0 +1,316 @@
+{
+  "absenceEvidence": {
+    "fact": "HUNTER_ORANGE",
+    "searchedOn": "2026-09-23",
+    "instruments": [
+      "Wildlife Act, RSBC 1996 c. 488",
+      "B.C. Reg. 190/84 ss. 1–19",
+      "B.C. Reg. 190/84 Schedule 1",
+      "B.C. Reg. 190/84 Schedule 2",
+      "B.C. Reg. 190/84 Schedule 3",
+      "B.C. Reg. 190/84 Schedule 4",
+      "B.C. Reg. 190/84 Schedule 5",
+      "B.C. Reg. 190/84 Schedule 6",
+      "B.C. Reg. 190/84 Schedule 7",
+      "B.C. Reg. 190/84 Schedule 8",
+      "B.C. Reg. 8/99 Hunting Licensing Regulation",
+      "B.C. Reg. 168/90 Designation and Exemption Regulation",
+      "Hunting and Trapping Regulations Synopsis 2026–2028 (pypdf text layer, 84 pp.)"
+    ],
+    "terms": [
+      "orange",
+      "blaze\\w*",
+      "fluoresc\\w*",
+      "garment\\w*",
+      "apparel",
+      "visib\\w*",
+      "colou?r\\w*",
+      "clothing",
+      "vests?"
+    ],
+    "method": "Python re, case-insensitive, WORD-BOUNDARY (\\b…\\b) over whitespace-preserved text; every hit's context captured and classified. An earlier substring pass (no word boundaries) matched 'vest' inside 'harvest'/'livestock' etc.; that pass is superseded by this one.",
+    "control": {
+      "term": "Blazed Creek",
+      "matched": true,
+      "note": "Present in the Synopsis text layer; the same method finds it. For the BC Laws HTML texts the positive control is that the method matches 'visible bony antlers' in B.C. Reg. 190/84 s. 1 and 'coloured black bear' in s. 13.7."
+    },
+    "result": "No hit is a clothing, visibility-garment or hunter-orange provision. Every hit is classified below.",
+    "closedBy": "An authority statement that no hunter-orange/visibility requirement applies, or a closed-world clause reaching clothing requirements. B.C. Reg. 190/84 s. 4 closes SEASONS only. Instruments NOT searched that could hold such a rule: Firearm Act [RSBC 1996] c. 139 and its regulations; Closed Areas Regulation B.C. Reg. 76/84; Permit Regulation B.C. Reg. 253/2000 (downloaded, not searched); Limited Entry Hunting Regulation B.C. Reg. 134/93 and the LEH Synopsis; park regulations under the Park Act; federal instruments.",
+    "perInstrument": [
+      {
+        "instrument": "Wildlife Act, RSBC 1996 c. 488",
+        "file": "96488_01.txt",
+        "sha256": "838a265f722e468eb5f7655fcd4ba5a0cbb95a83ec92b8ab3a1552fd4fdbf5fe",
+        "hitCount": 1,
+        "hits": [
+          {
+            "term": "vests?",
+            "match": "vest",
+            "context": "section 97.71, all rights and interests in the species individual (a) vest in the person to whom it has been sold or otherwise disposed of, and",
+            "classification": "legal verb 'vest' (property rights) — not clothing"
+          }
+        ]
+      },
+      {
+        "instrument": "B.C. Reg. 190/84 ss. 1–19",
+        "file": "190_84_01.txt",
+        "sha256": "005d3b562f8124b939b4bb0eb425cc7ecf289c7ca61f32cd9ee05effd9e6573e",
+        "hitCount": 4,
+        "hits": [
+          {
+            "term": "visib\\w*",
+            "match": "visible",
+            "context": "ct ; \"antlerless animal\" means a member of the deer family bearing no visible bony antlers and, for the purposes of this definition, the small skin",
+            "classification": "antler definition — not clothing"
+          },
+          {
+            "term": "visib\\w*",
+            "match": "visible",
+            "context": "uck\" or \"bull\" with reference to deer, moose or elk means one bearing visible bony antlers, but does not include a calf; \"buck\" or \"bull\" with refe",
+            "classification": "antler definition — not clothing"
+          },
+          {
+            "term": "visib\\w*",
+            "match": "visible",
+            "context": "calf; \"buck\" or \"bull\" with reference to caribou means a male bearing visible bony antlers, but does not include a calf; \"calf\" in reference to a m",
+            "classification": "antler definition — not clothing"
+          },
+          {
+            "term": "colou?r\\w*",
+            "match": "coloured",
+            "context": "d or a black bear in the company of it; (c) a white or blue (glacier) coloured black bear; (d) a cougar kitten or a cougar in the company of it; (e)",
+            "classification": "animal colour / identification — not clothing"
+          }
+        ]
+      },
+      {
+        "instrument": "B.C. Reg. 190/84 Schedule 1",
+        "file": "190_84_02.txt",
+        "sha256": "980d5593c69605e74fb69dbbe927b7c5126477e83e18c52b1f145ed2ef9df8ac",
+        "hitCount": 0,
+        "hits": []
+      },
+      {
+        "instrument": "B.C. Reg. 190/84 Schedule 2",
+        "file": "190_84_03.txt",
+        "sha256": "168249f384c8641e78f74ccadf0f498f6542c0afbdf3fabf34d857fa8a7dcfb6",
+        "hitCount": 0,
+        "hits": []
+      },
+      {
+        "instrument": "B.C. Reg. 190/84 Schedule 3",
+        "file": "190_84_04.txt",
+        "sha256": "b9c0226fe6280aceb8f19cbc24f0c3add3e435d552ca58e8db40335f1290e6d9",
+        "hitCount": 0,
+        "hits": []
+      },
+      {
+        "instrument": "B.C. Reg. 190/84 Schedule 4",
+        "file": "190_84_05.txt",
+        "sha256": "f0cc04a7b4dc77231352e45f74d819ea293f65d6549fd5023c050125ffbd8651",
+        "hitCount": 0,
+        "hits": []
+      },
+      {
+        "instrument": "B.C. Reg. 190/84 Schedule 5",
+        "file": "190_84_06.txt",
+        "sha256": "1f2229431d6e0fbf1966db24f92a7e705558db7934516dfbde8489960b8fc78a",
+        "hitCount": 0,
+        "hits": []
+      },
+      {
+        "instrument": "B.C. Reg. 190/84 Schedule 6",
+        "file": "190_84_07.txt",
+        "sha256": "5abb3f5a20d4ab6ae0899bd7babf314cd0eea44a03b907edc38af40d1da9f55a",
+        "hitCount": 0,
+        "hits": []
+      },
+      {
+        "instrument": "B.C. Reg. 190/84 Schedule 7",
+        "file": "190_84_08.txt",
+        "sha256": "fe8940e2dc144855e8ec92e9e19dbf6c5c0a3b58880fae1ee1199e7ea15dc8c9",
+        "hitCount": 0,
+        "hits": []
+      },
+      {
+        "instrument": "B.C. Reg. 190/84 Schedule 8",
+        "file": "190_84_09.txt",
+        "sha256": "c367137c56a5c5a1ac53b61d27d0b373857dd815fd003dca8331159017814327",
+        "hitCount": 0,
+        "hits": []
+      },
+      {
+        "instrument": "B.C. Reg. 8/99 Hunting Licensing Regulation",
+        "file": "8_99.txt",
+        "sha256": "acc4c1750f625f6c6160b90dc5a1c7d37ab737d8faca517411d3244828897606",
+        "hitCount": 0,
+        "hits": []
+      },
+      {
+        "instrument": "B.C. Reg. 168/90 Designation and Exemption Regulation",
+        "file": "13_168_90.txt",
+        "sha256": "fe6e74bc972590f4a78289966bf8605b5ef1b8affe17c7136564dd1fec97fd0e",
+        "hitCount": 0,
+        "hits": []
+      },
+      {
+        "instrument": "Hunting and Trapping Regulations Synopsis 2026–2028 (pypdf text layer, 84 pp.)",
+        "file": "synopsis.txt",
+        "sha256": "7b0a2b3c8c1bc8f7fe4d71da352f2a60bed3ed297ecf7008cfdd7d744611457e",
+        "hitCount": 25,
+        "hits": [
+          {
+            "term": "blaze\\w*",
+            "match": "Blazed",
+            "context": "Corn Creek Marsh No Hunting Areas (MU 4-7). Stagleap Provincial Park Blazed Creek Road L.1243 Sl2 L.1381 Sl1 Darkwoods Forest Sheep Cr. Wolf Cr.",
+            "classification": "place name (control)"
+          },
+          {
+            "term": "blaze\\w*",
+            "match": "Blazed",
+            "context": "rkwoods Forest Sheep Cr. Wolf Cr. Lost Cr. Summit Cr. Carolina Cr. Blazed Cr. Placer Cr. Next Cr. Bayonne Cr. M.U. 4–7 M.U. 4–8 3 Map D5 Se",
+            "classification": "place name (control)"
+          },
+          {
+            "term": "visib\\w*",
+            "match": "visible",
+            "context": "MAL - means a member of the deer family over one year of age bearing visible bony antlers. ANTLERLESS ANIMALANTLERLESS ANIMAL - means a member o",
+            "classification": "antler definition — not clothing"
+          },
+          {
+            "term": "visib\\w*",
+            "match": "visible",
+            "context": "ALANTLERLESS ANIMAL - means a member of the deer family bearing no visible antlers. The small skin or hair covered protuberances of male fawns",
+            "classification": "antler definition — not clothing"
+          },
+          {
+            "term": "visib\\w*",
+            "match": "visible",
+            "context": "UCK OR BULL - with reference to deer, moose or elk means one bearing visible bony antlers but does not include a calf; with reference to caribou",
+            "classification": "antler definition — not clothing"
+          },
+          {
+            "term": "visib\\w*",
+            "match": "visible",
+            "context": "not include a calf; with reference to caribou means a male bearing visible bony antlers but does not include a calf. CALFCALF - means a moose, e",
+            "classification": "antler definition — not clothing"
+          },
+          {
+            "term": "visib\\w*",
+            "match": "visible",
+            "context": "e permits, licences and authorizations are fully electronic and are visible on your profile and can be printed from your profile if you require",
+            "classification": "electronic licence display — not clothing"
+          },
+          {
+            "term": "visib\\w*",
+            "match": "visible",
+            "context": "if any one of the following conditions are met: • there are clearly visible signs prohibiting trespassing posted at each ordinary access point;",
+            "classification": "signage — not clothing"
+          },
+          {
+            "term": "visib\\w*",
+            "match": "visible",
+            "context": "e less than 4 cm (2 in) long and curved. Claw marks are not usually visible in tracks. I t is important for hunters to be able to distinguish bet",
+            "classification": "track identification — not clothing"
+          },
+          {
+            "term": "colou?r\\w*",
+            "match": "colour",
+            "context": "or any bear in its company. 15. To hunt the white or blue (Glacier) colour phases of the black bear. 16. To hunt a cougar kitten (any cougar wi",
+            "classification": "animal colour / identification — not clothing"
+          },
+          {
+            "term": "colou?r\\w*",
+            "match": "colour",
+            "context": "tings of a Grizzly Bear on Vancouver Island (which would be brown in colour compared to the uniformly black colour of Black Bears on Vancouver I",
+            "classification": "animal colour / identification — not clothing"
+          },
+          {
+            "term": "colou?r\\w*",
+            "match": "colour",
+            "context": "and (which would be brown in colour compared to the uniformly black colour of Black Bears on Vancouver Island) to the Nanaimo Regional office,",
+            "classification": "animal colour / identification — not clothing"
+          },
+          {
+            "term": "colou?r\\w*",
+            "match": "colour",
+            "context": "den Bear Access Rd (MUs 6-22 and 6-26). » White and blue (Glacier) colour phases of the black bear are closed to hunting. Note that these anim",
+            "classification": "animal colour / identification — not clothing"
+          },
+          {
+            "term": "colou?r\\w*",
+            "match": "colour",
+            "context": "ar are closed to hunting. Note that these animals are rarely pure in colour and are usually somewhat dirty. Hunters should pass up any very ligh",
+            "classification": "animal colour / identification — not clothing"
+          },
+          {
+            "term": "colou?r\\w*",
+            "match": "coloured",
+            "context": "nd are usually somewhat dirty. Hunters should pass up any very light-coloured black bear. » Hunting, trapping and the discharge of firearms are",
+            "classification": "animal colour / identification — not clothing"
+          },
+          {
+            "term": "colou?r\\w*",
+            "match": "colour",
+            "context": "inhorn sheep, that have traditionally been classified based on pelage colour: the white coated and more northerly distributed Dall’s sheep, and t",
+            "classification": "animal colour / identification — not clothing"
+          },
+          {
+            "term": "colou?r\\w*",
+            "match": "colouration",
+            "context": "hinhorn sheep range, sheep with a wide range of dark and intermediate colouration occur in south-central Yukon and north-western British Columbia. The",
+            "classification": "animal colour / identification — not clothing"
+          },
+          {
+            "term": "colou?r\\w*",
+            "match": "colour",
+            "context": "e distributions. This research has shown that previous geographic and colour-based subspecies classifications are not accurate. Recent work led f",
+            "classification": "taxonomy text — not clothing"
+          },
+          {
+            "term": "colou?r\\w*",
+            "match": "color",
+            "context": "the head compared to mule deer • Brown rump, flattened tail brown in color with a white fringe Underside of tail is white. Body generally brown",
+            "classification": "animal colour / identification — not clothing"
+          },
+          {
+            "term": "colou?r\\w*",
+            "match": "color",
+            "context": "white fringe Underside of tail is white. Body generally brownish in color • Raises and flags its tail when alarmed • Runs when escaping, as opp",
+            "classification": "animal colour / identification — not clothing"
+          },
+          {
+            "term": "colou?r\\w*",
+            "match": "color",
+            "context": "tch, rope-like white tail with a black tip Body generally greyish in color • Does not raise its tail when alarmed • Bounds in stiff-legged gai",
+            "classification": "animal colour / identification — not clothing"
+          },
+          {
+            "term": "colou?r\\w*",
+            "match": "Colour",
+            "context": "light face and nose • Antlers (of older males) fork and fork again Colour and size can be misleading. Look for a combination of characteristic",
+            "classification": "animal colour / identification — not clothing"
+          },
+          {
+            "term": "colou?r\\w*",
+            "match": "Colour",
+            "context": "a combination of characteristics. Identifying Bears Grizzly Bear 1. Colour varies from blond to black. 2. Distinctive shoulder hump. 3. Rump is",
+            "classification": "animal colour / identification — not clothing"
+          },
+          {
+            "term": "colou?r\\w*",
+            "match": "Colour",
+            "context": "between eyes and snout. 5. Ears are short and rounded. Black Bear 1. Colour varies from blond to black, including white and blue. 2. No distinct",
+            "classification": "animal colour / identification — not clothing"
+          },
+          {
+            "term": "colou?r\\w*",
+            "match": "colour",
+            "context": "s no open season on grizzly bear or white (Kermode) or blue (Glacier) colour phases of the black bear. 5. Contact the nearest Fish and Wildlife o",
+            "classification": "animal colour / identification — not clothing"
+          }
+        ]
+      }
+    ]
+  }
+}

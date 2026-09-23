@@ -1,0 +1,1408 @@
+{
+  "package": {
+    "jurisdictionId": "jurisdiction:ca-bc",
+    "preparedBy": "bc-requirements-research (session dfe3d7f3)",
+    "preparedOn": "2026-09-23"
+  },
+  "authority": {
+    "name": "Province of British Columbia — King's Printer (BC Laws)",
+    "lang": "en-CA"
+  },
+  "source": {
+    "id": "source:ca-bc-hunting-regulation-190-84-s1-19",
+    "title": "Hunting Regulation — Sections 1 to 19",
+    "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/190_84_01",
+    "tier": "LAW",
+    "version": "B.C. Reg. 190/84, consolidation current to September 15, 2026",
+    "retrievedAt": "2026-09-23",
+    "sha256": "22b642106f0bba09363493a22b5d48e30b3ca78e1472623455fe0c3d609c1125",
+    "incorporates": [
+      "Designation and Exemption Regulation, B.C. Reg. 168/90, Schedule C (for s. 18 (1) (j))"
+    ],
+    "inForce": {
+      "state": "IN_FORCE",
+      "statedAs": "This consolidation is current to September 15, 2026. [Last amended July 1, 2026 by B.C. Reg. 97/2026]",
+      "asOf": "2026-09-15",
+      "supersededBy": null,
+      "checkedOn": "2026-09-23",
+      "basis": "BC Laws presents this as the current consolidation of an unrepealed enactment; no repeal line appears in the document. The site's separate 'Amendments Not in Force' list was not reachable by the routes tried (see researchNotes); the Point in Time index for B.C. Reg. 190/84 lists no version dated after July 1, 2026."
+    }
+  },
+  "requirements": [
+    {
+      "category": "AMMUNITION",
+      "kind": "rifle bullet type",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person hunts (a) with a rifle using (i) a full metal jacketed non-expanding bullet, or (ii) a tracer, incendiary, or explosive bullet,",
+        "lang": "en-CA"
+      },
+      "citation": "B.C. Reg. 190/84 s. 17 (1) (a)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": [
+          "rifle"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "AMMUNITION",
+      "kind": "rimfire cartridge for big game",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person hunts (b) big game, other than lynx, bobcat or wolverine, with a rifle using a rimfire cartridge,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 17 (1) (b)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": [
+          "rifle"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "AMMUNITION",
+      "kind": "shotgun shell type",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person hunts (c) with a shotgun using a tracer or incendiary shot shell,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 17 (1) (c)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": [
+          "shotgun"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "AMMUNITION",
+      "kind": "shotgun gauge and shot size for black bear",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person hunts (e) deer, black bear, cougar, coyote, lynx, bobcat, wolverine or wolf with a shotgun (i) smaller than 20 gauge, or (ii) using a shot shell loaded with shot smaller than the shot size 1 Buck,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 17 (1) (e)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": [
+          "shotgun"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "rifle for game birds",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person hunts (f) game birds, other than turkey, grouse and ptarmigan, with a rifle,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 17 (1) (f)",
+      "scope": {
+        "speciesIds": [],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": [
+          "rifle"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [
+        {
+          "statedAs": {
+            "text": "(f) game birds, other than turkey, grouse and ptarmigan, with a rifle,",
+            "lang": "en-CA"
+          },
+          "citation": "s. 17 (1) (f) — grouse and ptarmigan are carved out of this prohibition"
+        }
+      ],
+      "unresolved": [
+        "Recorded with empty speciesIds on purpose: s. 17 (1) (f) prohibits rifles for game birds OTHER than turkey, grouse and ptarmigan, so it does not reach any of the five birds in scope. The carve-out removes this prohibition; it is not itself a statement that rifles are ALLOWED for grouse or ptarmigan. No provision read states rifles are allowed for grouse or ptarmigan; s. 17 (1) (a) rifle-ammunition limits still apply."
+      ]
+    },
+    {
+      "category": "METHOD",
+      "kind": "crossbow draw weight for small game and game birds",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person hunts (g) small game, game birds, other than migratory game birds, lynx, bobcat, wolverine, mule (black-tailed) deer, white-tailed deer or fallow deer with a crossbow, other than a compound crossbow, having a draw weight of less than 55 kg,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 17 (1) (g)",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": [
+          "crossbow, other than a compound crossbow"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Snowshoe hare and the grouse/ptarmigan are 'small game' / 'game birds' by B.C. Reg. 168/90 ss. 14–15 (separate package)."
+      ]
+    },
+    {
+      "category": "METHOD",
+      "kind": "crossbow draw weight and broadhead for big game",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person hunts (h) big game, other than deer, lynx, bobcat or wolverine, with a crossbow, other than a compound crossbow, (i) having a draw weight of less than 68 kg, or (ii) having a bolt with a broadhead less than 2.22 cm at the widest point,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 17 (1) (h)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": [
+          "crossbow, other than a compound crossbow"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "compound crossbow draw weight",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person hunts (i) with a compound crossbow having a draw weight of less than 45 kg,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 17 (1) (i)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": [
+          "compound crossbow"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "AMMUNITION",
+      "kind": "crossbow bolt weight",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person hunts (j) with a crossbow having a bolt weighing less than 16.2 g,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 17 (1) (j)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": [
+          "crossbow"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "bow draw weight",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person hunts (k) with a bow having a draw weight of less than 18 kg,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 17 (1) (k)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": [
+          "bow"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "AMMUNITION",
+      "kind": "broadhead width for big game",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person hunts (l) big game with a bow using an arrow with a broadhead less than 2.2 cm at the widest point,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 17 (1) (l)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": [
+          "bow"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "bear baiting",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person hunts (m) bear (i) by placing bait, or (ii) by using a dead animal or part of it as bait,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 17 (1) (m)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "handgun or short barrel",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person hunts (s) with a firearm that is designed, altered or intended to be aimed and fired by the action of one hand or that has a barrel less than 305 mm in length,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 17 (1) (s)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "electronic firing mechanism",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person hunts (t) with a firearm that has an electronically controlled firing mechanism,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 17 (1) (t)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "weapons permitted for black bear",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person hunts (u) big game, other than bison, caribou, elk, grizzly bear, moose, mountain sheep or mountain goat, with a weapon other than a bow, muzzleloader, rifle or shotgun,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 17 (1) (u)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": [
+          "a weapon other than a bow, muzzleloader, rifle or shotgun"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "This row prohibits weapons OTHER than bow, muzzleloader, rifle or shotgun for black bear. It is not a statement that those four are ALLOWED without condition: s. 17 (1) (a), (b), (e), (h), (k), (l), (s), (t) and (v) each still restrict them.",
+        "Whether an air rifle is a 'rifle' for s. 17 (1) (u) is not settled by the text read: s. 17 (1) (v) separately prohibits black bear 'with an air rifle that is less than .35 calibre', which implies an air rifle of .35 calibre or more is contemplated, but no provision read says so. Left unresolved."
+      ]
+    },
+    {
+      "category": "METHOD",
+      "kind": "air rifle calibre for black bear",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person hunts (v) black bear, bobcat, cougar, deer, goat, lynx, sheep, wolf or wolverine with an air rifle that is less than .35 calibre, or",
+        "lang": "en-CA"
+      },
+      "citation": "s. 17 (1) (v)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": [
+          "air rifle"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "TIME_CONDITION",
+      "kind": "continuing to hunt after limit",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person (d) continues to hunt a species of wildlife (i) on the day on which the person has taken that person's daily bag limit, or (ii) on or subsequent to the day on which the person has taken that person's seasonal bag limit of that species of wildlife,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 18 (1) (d)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "live decoys or recorded calls for game birds",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person (f) uses live birds as decoys or recorded bird calls to hunt game birds,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 18 (1) (f)",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "recorded or electronic calls",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person (j) uses recorded or electronic calls for the purpose of hunting wildlife, other than for hunting wolf, coyote, cougar, lynx, bobcat or any bird listed in Schedule C of the Designation and Exemption Regulation, B.C. Reg. 168/90,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 18 (1) (j)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Schedule C of B.C. Reg. 168/90 (read 2026-09-23) lists no grouse, ptarmigan, bear or hare, so the carve-out does not reach any species in scope."
+      ]
+    },
+    {
+      "category": "METHOD",
+      "kind": "cocked crossbow in vehicle",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person (g) carries a cocked crossbow in or on a vehicle,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 18 (1) (g)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "bow from vehicle",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person (h) hunts with a bow or discharges a bow from a vehicle of any kind,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 18 (1) (h)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "infrared optics",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person (o) while on a hunting expedition, uses or possesses infrared optics,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 18 (1) (o)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "aircraft-obtained location",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person (p) hunts using information on the location of wildlife that is obtained by means of an aircraft,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 18 (1) (p)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "wireless camera",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person (r) uses a wireless camera for the purposes of hunting (i) in Region 1, at any time of the year, and (ii) in Regions 2 to 8, from August 1 to December 10.",
+        "lang": "en-CA"
+      },
+      "citation": "s. 18 (1) (r)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Geography and dates differ by region inside one sentence; kept as one row with the verbatim text rather than split, because the sentence joins them with 'and'."
+      ]
+    },
+    {
+      "category": "METHOD",
+      "kind": "drones",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(2) A person commits an offence if, while on a hunting or trapping expedition, the person (a) operates a drone, (b) has a drone in that person's possession, charge or control, or (c) uses information that a drone obtains during, or less than 6 hours before the start of, the expedition.",
+        "lang": "en-CA"
+      },
+      "citation": "s. 17.1 (2)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "goat, sheep or camelid as aid",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person (l) hunts while accompanied by, or with the use or aid of, a goat or sheep, including by using the goat or sheep as a pack animal,",
+        "lang": "en-CA"
+      },
+      "citation": "s. 18 (1) (l)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "dogs pursuing small game or black bear",
+      "officialName": null,
+      "state": "ALLOWED",
+      "statedAs": {
+        "text": "(2) A person does not commit an offence under section 78 of the Act where the person, while hunting, causes or allows a dog to pursue (a) small game, black bear, bobcat, lynx or cougar, or",
+        "lang": "en-CA"
+      },
+      "citation": "s. 18 (2) (a)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:snowshoe-hare",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [
+        {
+          "statedAs": {
+            "text": "provided the game is being pursued in an area in which and at a time at which an open season exists for that game and also provided the person holds a valid hunting licence and is otherwise conforming with the requirements of the Act and regulations.",
+            "lang": "en-CA"
+          },
+          "citation": "s. 18 (2), closing words"
+        }
+      ],
+      "unresolved": [
+        "The proviso that follows s. 18 (2) (b) — 'provided the game is being pursued in an area in which and at a time at which an open season exists for that game and also provided the person holds a valid hunting licence and is otherwise conforming' — governs this allowance; see exceptions."
+      ]
+    },
+    {
+      "category": "METHOD",
+      "kind": "dogs pursuing game birds",
+      "officialName": null,
+      "state": "ALLOWED",
+      "statedAs": {
+        "text": "(3) A person does not commit an offence under section 78 of the Act where the person causes or allows a dog to pursue game birds between the dates August 1 to April 30 provided the dog is under supervision of the person.",
+        "lang": "en-CA"
+      },
+      "citation": "s. 18 (3)",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": {
+          "from": "08-01",
+          "to": "04-30",
+          "statedAs": "between the dates August 1 to April 30"
+        },
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "SPECIES_CONDITION",
+      "kind": "protected black bear: young and with young",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person takes or kills any of the following: (b) a black bear less than 2 years old or a black bear in the company of it;",
+        "lang": "en-CA"
+      },
+      "citation": "s. 13.7 (1) (b)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "SPECIES_CONDITION",
+      "kind": "protected black bear: white or blue (glacier) colour",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence where the person takes or kills any of the following: (c) a white or blue (glacier) coloured black bear;",
+        "lang": "en-CA"
+      },
+      "citation": "s. 13.7 (1) (c)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "PLACE_CONDITION",
+      "kind": "hunting restrictions in parks",
+      "officialName": null,
+      "state": "CONDITIONAL",
+      "statedAs": {
+        "text": "(5) Except during the open season, for the purpose of section 26 (1) (c) of the Act, a person must not hunt in the following parks, conservancies, recreation areas and protected areas:",
+        "lang": "en-CA"
+      },
+      "citation": "s. 19",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "SPECIAL_AREA",
+          "designations": [
+            "parks, conservancies, recreation areas and protected areas listed in s. 19"
+          ],
+          "statedAs": "B.C. Reg. 190/84 s. 19 (1)–(5) and following subsections"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "condition": {
+        "statedAs": {
+          "text": "(1) Between June 16 and September 9, inclusive, of each year, for the purpose of section 26 (1) (c) of the Act, there is no open season in the following parks and recreation areas:",
+          "lang": "en-CA"
+        }
+      },
+      "unresolved": [
+        "s. 19 lists named parks with their own closed windows; they were NOT itemised into rows here. s. 19 continues beyond subsection (5); only (1)–(5) were read in full.",
+        "This is season/place material that overlaps the Canada lane's season work; flagged rather than modelled."
+      ]
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "(1) Subject to exceptions for areas noted in Parts 1 and 3 of each Schedule, a person commits an offence where the person exceeds the Provincial bag limit for a species or type of animal as follows: (b) 2 black bear;",
+        "lang": "en-CA"
+      },
+      "citation": "B.C. Reg. 190/84 s. 11 (1) (b)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": "(1) Subject to exceptions for areas noted in Parts 1 and 3 of each Schedule, a person commits an offence where the person exceeds the Provincial bag limit for a species or type of animal as follows:"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "s. 11 states no period for '2 black bear'. The Schedules' Part 1 header says 'Season bag limits for big game' and B.C. Reg. 8/99 s. 16 (1) (a) caps black bear species licences at 2 per licence year, but neither is this provision's period. Left null."
+      ],
+      "period": null,
+      "value": {
+        "count": 2,
+        "statedAs": "(1) Subject to exceptions for areas noted in Parts 1 and 3 of each Schedule, a person commits an offence where the person exceeds the Provincial bag limit for a species or type of animal as follows: (b) 2 black bear;"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "statedAs": "(b) 2 black bear;"
+      }
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "(1) Subject to exceptions for areas noted in Parts 1 and 3 of each Schedule, a person commits an offence where the person exceeds the Provincial bag limit for a species or type of animal as follows: (j) 10 snowshoe hare per day.",
+        "lang": "en-CA"
+      },
+      "citation": "B.C. Reg. 190/84 s. 11 (1) (j)",
+      "scope": {
+        "speciesIds": [
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": "(1) Subject to exceptions for areas noted in Parts 1 and 3 of each Schedule, a person commits an offence where the person exceeds the Provincial bag limit for a species or type of animal as follows:"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [],
+      "period": "DAY",
+      "value": {
+        "count": 10,
+        "statedAs": "(1) Subject to exceptions for areas noted in Parts 1 and 3 of each Schedule, a person commits an offence where the person exceeds the Provincial bag limit for a species or type of animal as follows: (j) 10 snowshoe hare per day."
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:snowshoe-hare"
+        ],
+        "statedAs": "(j) 10 snowshoe hare per day."
+      }
+    },
+    {
+      "category": "LIMIT",
+      "kind": "POSSESSION",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "Subject to the exceptions noted in Parts 1 and 3 of each Schedule, a person commits an offence where the person (b) exceeds the possession limit of (vii) 3 times the daily bag limit for game birds, excluding migratory game birds,",
+        "lang": "en-CA"
+      },
+      "citation": "B.C. Reg. 190/84 s. 12 (b) (vii)",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": "(1) Subject to exceptions for areas noted in Parts 1 and 3 of each Schedule, a person commits an offence where the person exceeds the Provincial bag limit for a species or type of animal as follows:"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "The contract makes `period` required (DAY | SEASON | LICENCE_YEAR), but s. 9 (2) states a possession limit with no period ('while the possession limit is 20'). Recorded as null; reported to the moderator as a schema gap.",
+        "appliesAcross THIS_SPECIES is our reading of 'the daily bag limit for game birds'; where the daily limit is an aggregate the multiplier's base is that aggregate. Not settled by the text.",
+        "Evaluate only when the referenced daily limit is certified (contract)."
+      ],
+      "period": null,
+      "value": {
+        "count": null,
+        "statedAs": "Subject to the exceptions noted in Parts 1 and 3 of each Schedule, a person commits an offence where the person (b) exceeds the possession limit of (vii) 3 times the daily bag limit for game birds, excluding migratory game birds,"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "statedAs": "(vii) 3 times the daily bag limit for game birds, excluding migratory game birds,"
+      },
+      "derivedByAuthority": {
+        "ofKind": "BAG",
+        "ofPeriod": "DAY",
+        "multiplier": 3,
+        "statedAs": "(vii) 3 times the daily bag limit for game birds, excluding migratory game birds,",
+        "excludes": [
+          "migratory game birds"
+        ],
+        "citation": "s. 12 (b) (vii)"
+      }
+    }
+  ],
+  "researchNotes": [
+    "s. 14 'Prohibited hours for hunting' — ROUTED to Canada lane; not read.",
+    "s. 17 (1) (p) (non-toxic shot for waterfowl, coot or snipe) and s. 17 (2) do not reach the seven species in scope; no NOT_APPLICABLE row written because no source states inapplicability."
+  ]
+}

@@ -21,6 +21,21 @@ import quebecActivites from "../../../../content/regulatory/evidence/ca-qc/ca-qc
 import quebecChasse from "../../../../content/regulatory/evidence/ca-qc/ca-qc-reglement-chasse.json" with { type: "json" };
 import quebecTarification from "../../../../content/regulatory/evidence/ca-qc/ca-qc-tarification-faune.json" with { type: "json" };
 
+import bcDesignationExemptionRegulation from "../../../../content/regulatory/evidence/ca-bc/ca-bc-designation-exemption-regulation.json" with { type: "json" };
+import bcHuntingLicensingRegulation from "../../../../content/regulatory/evidence/ca-bc/ca-bc-hunting-licensing-regulation.json" with { type: "json" };
+import bcHuntingRegulationS119 from "../../../../content/regulatory/evidence/ca-bc/ca-bc-hunting-regulation-s1-19.json" with { type: "json" };
+import bcHuntingRegulationSchedule1 from "../../../../content/regulatory/evidence/ca-bc/ca-bc-hunting-regulation-schedule-1.json" with { type: "json" };
+import bcHuntingRegulationSchedule2 from "../../../../content/regulatory/evidence/ca-bc/ca-bc-hunting-regulation-schedule-2.json" with { type: "json" };
+import bcHuntingRegulationSchedule3 from "../../../../content/regulatory/evidence/ca-bc/ca-bc-hunting-regulation-schedule-3.json" with { type: "json" };
+import bcHuntingRegulationSchedule4 from "../../../../content/regulatory/evidence/ca-bc/ca-bc-hunting-regulation-schedule-4.json" with { type: "json" };
+import bcHuntingRegulationSchedule5 from "../../../../content/regulatory/evidence/ca-bc/ca-bc-hunting-regulation-schedule-5.json" with { type: "json" };
+import bcHuntingRegulationSchedule6 from "../../../../content/regulatory/evidence/ca-bc/ca-bc-hunting-regulation-schedule-6.json" with { type: "json" };
+import bcHuntingRegulationSchedule7 from "../../../../content/regulatory/evidence/ca-bc/ca-bc-hunting-regulation-schedule-7.json" with { type: "json" };
+import bcHuntingRegulationSchedule8 from "../../../../content/regulatory/evidence/ca-bc/ca-bc-hunting-regulation-schedule-8.json" with { type: "json" };
+import bcHuntingTrappingSynopsis20262028 from "../../../../content/regulatory/evidence/ca-bc/ca-bc-hunting-trapping-synopsis-2026-2028.json" with { type: "json" };
+import bcWildlifeAct from "../../../../content/regulatory/evidence/ca-bc/ca-bc-wildlife-act.json" with { type: "json" };
+import bcOrangeAbsence from "../../../../content/regulatory/evidence/ca-bc/measured-absence-orange.json" with { type: "json" };
+
 export type EvidenceCategory =
   | "AUTHORIZATION" | "VISIBILITY" | "METHOD" | "AMMUNITION" | "LIMIT"
   | "SPECIES_CONDITION" | "PLACE_CONDITION" | "TIME_CONDITION" | "FEE";
@@ -35,8 +50,10 @@ export interface EvidenceRow {
   citation?: string;
   scope?: {
     /** A list, or the string "ALL" where the source says so. */
-    speciesIds?: string[] | "ALL";
-    gearClasses?: string[];
+    speciesIds?: string[] | "ALL" | null;
+    gearClasses?: string[] | null;
+    /** What the row is about, where it turns on method. Null where it does not. */
+    methods?: string[] | null;
   };
   /** Present where a package could not settle something. Never inferred away. */
   unresolved?: string[];
@@ -49,6 +66,21 @@ export interface EvidencePackage {
 }
 
 const PACKAGES: Record<string, EvidencePackage[]> = {
+  "jurisdiction:ca-bc": [
+    bcDesignationExemptionRegulation as EvidencePackage,
+    bcHuntingLicensingRegulation as EvidencePackage,
+    bcHuntingRegulationS119 as EvidencePackage,
+    bcHuntingRegulationSchedule1 as EvidencePackage,
+    bcHuntingRegulationSchedule2 as EvidencePackage,
+    bcHuntingRegulationSchedule3 as EvidencePackage,
+    bcHuntingRegulationSchedule4 as EvidencePackage,
+    bcHuntingRegulationSchedule5 as EvidencePackage,
+    bcHuntingRegulationSchedule6 as EvidencePackage,
+    bcHuntingRegulationSchedule7 as EvidencePackage,
+    bcHuntingRegulationSchedule8 as EvidencePackage,
+    bcHuntingTrappingSynopsis20262028 as EvidencePackage,
+    bcWildlifeAct as EvidencePackage,
+  ],
   "jurisdiction:ca-qc": [
     quebecLoi as EvidencePackage,
     quebecActivites as EvidencePackage,
@@ -111,16 +143,45 @@ export function certifies(
   category: EvidenceCategory,
 ): { certified: boolean; reason: string } {
   const rows = rowsFor(jurisdictionId, speciesId, category);
-  if (rows.length === 0) return { certified: false, reason: "No evidence row reaches this species." };
+  if (rows.length === 0) {
+    /* A MEASURED absence is a different answer from an unexamined one, and it
+       must not read as "nobody looked". British Columbia's lane searched nine
+       terms across five instruments and an 84-page synopsis for a hunter
+       orange requirement, with a control that matched, and found none. That
+       work is recorded and surfaced here so it is not repeated — and it still
+       does not certify NOT_APPLICABLE, because the provision could sit in an
+       instrument that was not among the ones read. */
+    const measured = measuredAbsence(jurisdictionId, category);
+    return measured
+      ? { certified: false, reason: measured }
+      : { certified: false, reason: "No evidence row reaches this species." };
+  }
 
   if (category === "METHOD") {
-    const allowed = rows.filter((row) => row.state === "ALLOWED").length;
-    return allowed > 0
-      ? { certified: true, reason: `${allowed} positive allowed-method rows.` }
-      : {
-          certified: false,
-          reason: `${rows.length} method rows, none stating what is ALLOWED. The complement of a prohibition list is not a permission.`,
-        };
+    /* An ALLOWED row certifies only when it says WHICH implements it permits.
+       British Columbia's two ALLOWED method rows are dog-pursuit carve-outs —
+       "a person does not commit an offence where the person causes a dog to
+       pursue small game" — which is an exception to a prohibition, not a
+       statement of what may be hunted with. They carry no `scope.methods`,
+       and certifying from them said BC had a positive list when its lane had
+       reported, correctly, that it has none. */
+    const positive = rows.filter((row) => row.state === "ALLOWED" && (row.scope?.methods?.length ?? 0) > 0);
+    if (positive.length === 0) {
+      const carveOuts = rows.filter((row) => row.state === "ALLOWED").length;
+      return {
+        certified: false,
+        reason: carveOuts > 0
+          ? `${rows.length} method rows. The ${carveOuts} marked ALLOWED are carve-outs from prohibitions and name no implements, so they are not a positive list.`
+          : `${rows.length} method rows, none stating what is ALLOWED. The complement of a prohibition list is not a permission.`,
+      };
+    }
+    const gearScoped = positive.some((row) => (row.scope?.methods ?? []).some((method) => /engin|type/i.test(method)));
+    return {
+      certified: true,
+      reason: gearScoped
+        ? `${positive.length} positive rows, expressed as the authority's numbered gear classes. Which apply to a given season needs the class populated; the list of permitted implements itself is stated.`
+        : `${positive.length} positive rows naming permitted implements.`,
+    };
   }
 
   if (category === "VISIBILITY") {
@@ -154,4 +215,21 @@ export function certifies(
       ? `${stated.length} evidence rows; ${unresolved.length} open questions recorded alongside them.`
       : `${stated.length} evidence rows.`,
   };
+}
+
+
+/**
+ * A recorded search that found nothing, for a jurisdiction and category.
+ *
+ * Kept apart from "no rows" because the two mean opposite things about what
+ * anybody knows, and because a lane that ran nine searches with a control
+ * should not be indistinguishable from one that ran none.
+ */
+export function measuredAbsence(jurisdictionId: string, category: EvidenceCategory): string | undefined {
+  if (jurisdictionId !== "jurisdiction:ca-bc" || category !== "VISIBILITY") return undefined;
+  const evidence = bcOrangeAbsence as { absenceEvidence?: { instruments?: unknown[]; closedBy?: string } };
+  const instruments = evidence.absenceEvidence?.instruments?.length ?? 0;
+  return `Searched and not found across ${instruments} instruments with a matching control. ${
+    evidence.absenceEvidence?.closedBy ?? "An authority statement would be needed to close it."
+  }`;
 }

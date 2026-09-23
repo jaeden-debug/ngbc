@@ -1,0 +1,734 @@
+{
+  "package": {
+    "jurisdictionId": "jurisdiction:ca-bc",
+    "preparedBy": "bc-requirements-research (session dfe3d7f3)",
+    "preparedOn": "2026-09-23"
+  },
+  "authority": {
+    "name": "Province of British Columbia — King's Printer (BC Laws)",
+    "lang": "en-CA"
+  },
+  "source": {
+    "id": "source:ca-bc-hunting-licensing-regulation-8-99",
+    "title": "Hunting Licensing Regulation",
+    "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/8_99",
+    "tier": "LAW",
+    "version": "B.C. Reg. 8/99, consolidation current to September 15, 2026",
+    "retrievedAt": "2026-09-23",
+    "sha256": "b394d90010d2bea34017dc9a7e865718b063bf8f32c02e724b483f6f271306c0",
+    "incorporates": [
+      "Designation and Exemption Regulation, B.C. Reg. 168/90, s. 14 (definition of upland game birds)"
+    ],
+    "inForce": {
+      "state": "IN_FORCE",
+      "statedAs": "This consolidation is current to September 15, 2026. [Last amended January 30, 2023 by B.C. Reg. 16/2023]",
+      "asOf": "2026-09-15",
+      "supersededBy": null,
+      "checkedOn": "2026-09-23",
+      "basis": "BC Laws presents this as the current consolidation of an unrepealed enactment; no repeal line appears in the document. The site's separate 'Amendments Not in Force' list was not reachable by the routes tried (see researchNotes); the Point in Time index for B.C. Reg. 190/84 lists no version dated after July 1, 2026."
+    }
+  },
+  "requirements": [
+    {
+      "category": "AUTHORIZATION",
+      "kind": "species licence",
+      "officialName": {
+        "text": "species licence",
+        "lang": "en-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "(1) For the purposes of section 11 (1) (c) of the Act, a person who hunts any of the following species must hold an uncancelled species licence for that species: (b) black bear;",
+        "lang": "en-CA"
+      },
+      "citation": "B.C. Reg. 8/99 s. 5 (1) (b)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [
+        {
+          "statedAs": {
+            "text": "(2) Section 5 (1) does not apply to a person in respect of a species if (a) a youth hunting licence is held on the person's behalf, and (b) the person is hunting with a supervising hunter who holds an uncancelled species licence for the species.",
+            "lang": "en-CA"
+          },
+          "citation": "s. 5.2 (2)"
+        },
+        {
+          "statedAs": {
+            "text": "(1) Section 5 (1) does not apply to a person if the person holds an initiation hunting licence and the person is hunting with a supervising hunter who holds an uncancelled species licence for the species hunted.",
+            "lang": "en-CA"
+          },
+          "citation": "s. 5.3 (1) (Exemptions — initiation hunting licence)"
+        },
+        {
+          "statedAs": {
+            "text": "(1) Section 5 (1) does not apply to a hunting companion.",
+            "lang": "en-CA"
+          },
+          "citation": "s. 5.1 (1) (Exemptions — hunting companion for disabled hunter permit holder)"
+        }
+      ],
+      "obtain": {
+        "channels": [
+          "ONLINE",
+          "PHYSICAL_VENDOR",
+          "GOVERNMENT_OFFICE"
+        ],
+        "infoUrl": "https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/hunting",
+        "note": "Channels from the 2026–2028 Synopsis ('Buying Licences'), not from this regulation."
+      },
+      "requires": [
+        {
+          "officialName": {
+            "text": "hunting licence, other than an initiation hunting licence or a youth hunting licence",
+            "lang": "en-CA"
+          },
+          "citation": "B.C. Reg. 8/99 s. 5.4 (1) (a)"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "species licence eligibility (non-resident accompaniment)",
+      "officialName": {
+        "text": "species licence",
+        "lang": "en-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "(1) To be eligible for a species licence, a person must (a) hold a hunting licence, other than an initiation hunting licence or a youth hunting licence, and (b) if the person is a non-resident or non-resident alien, demonstrate that the person is to be accompanied by (i) a guide outfitter, (ii) an assistant guide issued a written authorization under section 48 (1.2) of the Act, or (iii) another person who holds a permit issued under section 70 (1) (a) of the Act that authorizes the other person to accompany the person who is the non-resident or non-resident alien.",
+        "lang": "en-CA"
+      },
+      "citation": "s. 5.4 (1)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "SPECIES_CONDITION",
+      "kind": "cancel species licence immediately after kill",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "(1) If a person hunts and kills wildlife in respect of which the person is required to hold a species licence, the person commits an offence unless, immediately after killing the wildlife and before handling the wildlife killed, the person cancels the species licence in accordance with the instructions on that licence.",
+        "lang": "en-CA"
+      },
+      "citation": "s. 7 (1)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "carry all species licences",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "It is a condition of every hunting licence that the holder must not hunt wildlife unless the holder (a) carries, while hunting, each species licence issued to the holder during the term of the holder's hunting licence, whether or not any species licence has been cancelled, and (b) produces, on the request of an officer, all species licences referred to in paragraph (a).",
+        "lang": "en-CA"
+      },
+      "citation": "s. 7.1",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Applies to every hunting-licence holder while hunting any wildlife, including the six species that need no species licence, if the holder holds species licences for other species."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "black bear species licences per licence year",
+      "officialName": null,
+      "state": "CONDITIONAL",
+      "statedAs": {
+        "text": "(1) For the purpose of section 14 of the Act, the maximum number of licences of each kind that a person may obtain or hold, during each licence year, is as follows: (a) 2 black bear species licences;",
+        "lang": "en-CA"
+      },
+      "citation": "s. 16 (1) (a)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "condition": {
+        "statedAs": {
+          "text": "(1) For the purpose of section 14 of the Act, the maximum number of licences of each kind that a person may obtain or hold, during each licence year, is as follows:",
+          "lang": "en-CA"
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "upland game bird licence",
+      "officialName": {
+        "text": "upland game bird licence",
+        "lang": "en-CA"
+      },
+      "state": "CONDITIONAL",
+      "statedAs": {
+        "text": "(3) For the purposes of section 11 (1) (c) of the Act, a non-resident or non-resident alien who hunts upland game birds must hold an upland game bird licence.",
+        "lang": "en-CA"
+      },
+      "citation": "s. 5 (3)",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "non-resident or non-resident alien",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "condition": {
+        "statedAs": {
+          "text": "a non-resident or non-resident alien who hunts upland game birds",
+          "lang": "en-CA"
+        }
+      },
+      "exceptions": [
+        {
+          "statedAs": {
+            "text": "(2.2) Section 5 (3) does not apply to a person if (a) a youth hunting licence is held on the person's behalf, and (b) the person is hunting with a supervising hunter who (i) is a resident, or (ii) holds an upland game bird licence.",
+            "lang": "en-CA"
+          },
+          "citation": "s. 5.2 (2.2)"
+        }
+      ],
+      "obtain": {
+        "channels": [
+          "ONLINE",
+          "PHYSICAL_VENDOR",
+          "GOVERNMENT_OFFICE"
+        ],
+        "infoUrl": "https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/hunting",
+        "note": "Synopsis lists it as electronic-only ('registered on your FWID profile after purchase')."
+      },
+      "requires": [
+        {
+          "officialName": {
+            "text": "hunting licence, other than a youth hunting licence",
+            "lang": "en-CA"
+          },
+          "citation": "s. 5.41 (1)"
+        }
+      ],
+      "unresolved": [
+        "'upland game birds' is not defined in this regulation; B.C. Reg. 168/90 s. 14 (a) designates 'upland game birds' of the genera listed, which include Bonasa, Dendragapus (blue, spruce and Franklin grouse), Tympanuchus (sharp-tailed grouse) and Lagopus (willow, rock and white tailed ptarmigan). Snowshoe hare is not an upland game bird."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "non-resident hunting licence accompaniment",
+      "officialName": null,
+      "state": "CONDITIONAL",
+      "statedAs": {
+        "text": "It is a condition of every hunting licence that the holder must not hunt wildlife unless accompanied by a person described in section 17 (2) (a), (b) or (c) of the Act if the holder was, at the time the licence was issued, an unexamined non-resident or non-resident alien.",
+        "lang": "en-CA"
+      },
+      "citation": "s. 4.1",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "unexamined non-resident or non-resident alien",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "condition": {
+        "statedAs": {
+          "text": "if the holder was, at the time the licence was issued, an unexamined non-resident or non-resident alien.",
+          "lang": "en-CA"
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "fee: hunting licence — resident",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "The fees and habitat conservation trust fund surcharges payable for a licence set out in the Schedule are those set out opposite the licence in the Schedule. (a) a resident to hunt wildlife 25.00 7.00",
+        "lang": "en-CA"
+      },
+      "citation": "B.C. Reg. 8/99 s. 19 and Schedule",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "resident",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Schedule columns are 'Licence Fee' and 'Surcharge' ($); the total is their sum. The 2026–2028 Synopsis prints the same totals (e.g. black bear resident $20.00, non-resident $180.00), consistent with this Schedule. Fees exclude GST per the Synopsis. The first '(a) black bear' cell is item 3 (resident) and the second is item 4 (non-resident); both strings occur in that order."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "fee: hunting licence — resident 65 or older",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "The fees and habitat conservation trust fund surcharges payable for a licence set out in the Schedule are those set out opposite the licence in the Schedule. (b) a resident, who is 65 years of age or older, to hunt wildlife 6.00 1.00",
+        "lang": "en-CA"
+      },
+      "citation": "B.C. Reg. 8/99 s. 19 and Schedule",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "resident, 65 years of age or older",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Schedule columns are 'Licence Fee' and 'Surcharge' ($); the total is their sum. The 2026–2028 Synopsis prints the same totals (e.g. black bear resident $20.00, non-resident $180.00), consistent with this Schedule. Fees exclude GST per the Synopsis. The first '(a) black bear' cell is item 3 (resident) and the second is item 4 (non-resident); both strings occur in that order."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "fee: hunting licence — non-resident",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "The fees and habitat conservation trust fund surcharges payable for a licence set out in the Schedule are those set out opposite the licence in the Schedule. (c) a non-resident to hunt wildlife 53.00 22.00",
+        "lang": "en-CA"
+      },
+      "citation": "B.C. Reg. 8/99 s. 19 and Schedule",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "non-resident",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Schedule columns are 'Licence Fee' and 'Surcharge' ($); the total is their sum. The 2026–2028 Synopsis prints the same totals (e.g. black bear resident $20.00, non-resident $180.00), consistent with this Schedule. Fees exclude GST per the Synopsis. The first '(a) black bear' cell is item 3 (resident) and the second is item 4 (non-resident); both strings occur in that order."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "fee: hunting licence — non-resident alien",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "The fees and habitat conservation trust fund surcharges payable for a licence set out in the Schedule are those set out opposite the licence in the Schedule. (d) a non-resident alien to hunt wildlife 126.00 54.00",
+        "lang": "en-CA"
+      },
+      "citation": "B.C. Reg. 8/99 s. 19 and Schedule",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "non-resident alien",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Schedule columns are 'Licence Fee' and 'Surcharge' ($); the total is their sum. The 2026–2028 Synopsis prints the same totals (e.g. black bear resident $20.00, non-resident $180.00), consistent with this Schedule. Fees exclude GST per the Synopsis. The first '(a) black bear' cell is item 3 (resident) and the second is item 4 (non-resident); both strings occur in that order."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "fee: initiation hunting licence",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "The fees and habitat conservation trust fund surcharges payable for a licence set out in the Schedule are those set out opposite the licence in the Schedule. 2.1 For an initiation hunting licence 15.00 4.00",
+        "lang": "en-CA"
+      },
+      "citation": "B.C. Reg. 8/99 s. 19 and Schedule",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Schedule columns are 'Licence Fee' and 'Surcharge' ($); the total is their sum. The 2026–2028 Synopsis prints the same totals (e.g. black bear resident $20.00, non-resident $180.00), consistent with this Schedule. Fees exclude GST per the Synopsis. The first '(a) black bear' cell is item 3 (resident) and the second is item 4 (non-resident); both strings occur in that order."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "fee: youth hunting licence",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "The fees and habitat conservation trust fund surcharges payable for a licence set out in the Schedule are those set out opposite the licence in the Schedule. 2.2 For a youth hunting licence 6.00 1.00",
+        "lang": "en-CA"
+      },
+      "citation": "B.C. Reg. 8/99 s. 19 and Schedule",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Schedule columns are 'Licence Fee' and 'Surcharge' ($); the total is their sum. The 2026–2028 Synopsis prints the same totals (e.g. black bear resident $20.00, non-resident $180.00), consistent with this Schedule. Fees exclude GST per the Synopsis. The first '(a) black bear' cell is item 3 (resident) and the second is item 4 (non-resident); both strings occur in that order."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "fee: upland game bird licence",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "The fees and habitat conservation trust fund surcharges payable for a licence set out in the Schedule are those set out opposite the licence in the Schedule. 2.5 For an upland game bird licence 35.00 15.00",
+        "lang": "en-CA"
+      },
+      "citation": "B.C. Reg. 8/99 s. 19 and Schedule",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "non-resident or non-resident alien",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Schedule columns are 'Licence Fee' and 'Surcharge' ($); the total is their sum. The 2026–2028 Synopsis prints the same totals (e.g. black bear resident $20.00, non-resident $180.00), consistent with this Schedule. Fees exclude GST per the Synopsis. The first '(a) black bear' cell is item 3 (resident) and the second is item 4 (non-resident); both strings occur in that order."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "fee: black bear species licence — resident",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "The fees and habitat conservation trust fund surcharges payable for a licence set out in the Schedule are those set out opposite the licence in the Schedule. (a) black bear 16.00 4.00",
+        "lang": "en-CA"
+      },
+      "citation": "B.C. Reg. 8/99 s. 19 and Schedule",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "resident",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Schedule columns are 'Licence Fee' and 'Surcharge' ($); the total is their sum. The 2026–2028 Synopsis prints the same totals (e.g. black bear resident $20.00, non-resident $180.00), consistent with this Schedule. Fees exclude GST per the Synopsis. The first '(a) black bear' cell is item 3 (resident) and the second is item 4 (non-resident); both strings occur in that order."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "fee: black bear species licence — non-resident or non-resident alien",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "The fees and habitat conservation trust fund surcharges payable for a licence set out in the Schedule are those set out opposite the licence in the Schedule. (a) black bear 126.00 54.00",
+        "lang": "en-CA"
+      },
+      "citation": "B.C. Reg. 8/99 s. 19 and Schedule",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "non-resident or non-resident alien",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Schedule columns are 'Licence Fee' and 'Surcharge' ($); the total is their sum. The 2026–2028 Synopsis prints the same totals (e.g. black bear resident $20.00, non-resident $180.00), consistent with this Schedule. Fees exclude GST per the Synopsis. The first '(a) black bear' cell is item 3 (resident) and the second is item 4 (non-resident); both strings occur in that order."
+      ]
+    }
+  ]
+}

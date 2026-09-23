@@ -1,0 +1,120 @@
+{
+  "package": {
+    "jurisdictionId": "jurisdiction:ca-bc",
+    "preparedBy": "bc-requirements-research (session dfe3d7f3)",
+    "preparedOn": "2026-09-23"
+  },
+  "authority": {
+    "name": "Province of British Columbia — King's Printer (BC Laws)",
+    "lang": "en-CA"
+  },
+  "source": {
+    "id": "source:ca-bc-designation-exemption-regulation-168-90",
+    "title": "Designation and Exemption Regulation",
+    "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/13_168_90",
+    "tier": "LAW",
+    "version": "B.C. Reg. 168/90, consolidation current to September 15, 2026",
+    "retrievedAt": "2026-09-23",
+    "sha256": "02c259646777b4fe85721febcc546b9e9948277348db4b8e27ee876f75b63483",
+    "incorporates": [],
+    "inForce": {
+      "state": "IN_FORCE",
+      "statedAs": "This consolidation is current to September 15, 2026. [Last amended July 1, 2026 by B.C. Reg. 97/2026]",
+      "asOf": "2026-09-15",
+      "supersededBy": null,
+      "checkedOn": "2026-09-23",
+      "basis": "BC Laws presents this as the current consolidation of an unrepealed enactment; no repeal line appears in the document. The site's separate 'Amendments Not in Force' list was not reachable by the routes tried (see researchNotes); the Point in Time index for B.C. Reg. 190/84 lists no version dated after July 1, 2026."
+    }
+  },
+  "requirements": [
+    {
+      "category": "AUTHORIZATION",
+      "kind": "Leporidae exemption from hunting licence (s. 11 (1) of the Act)",
+      "officialName": null,
+      "state": "NOT_APPLICABLE",
+      "statedAs": {
+        "text": "9 (1) A person is exempt from sections 11 (1), 21, 22, 26 (1) (h), 27 (4), 29, 33, 35 (2) (b), 37, 75 and 78 of the Wildlife Act where that person hunts, takes, traps, wounds or kills an animal of the species of the family Leporidae — hares and rabbits. (2) Subsection (1) does not apply to: (a) Lepus americanus — snowshoe hare;",
+        "lang": "en-CA"
+      },
+      "citation": "B.C. Reg. 168/90 s. 9 (1)–(2) (a)",
+      "scope": {
+        "speciesIds": [
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "TRAP FOR IMPLEMENTERS: s. 9 (1) alone reads as if hares need no hunting licence and are exempt from the shotgun-plug rule (Act s. 26 (1) (h)). s. 9 (2) (a) removes snowshoe hare from that exemption, so for snowshoe hare the Act's s. 11 (1) licence requirement and s. 26 (1) (h) plug rule stand."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "property-protection exemption",
+      "officialName": null,
+      "state": "CONDITIONAL",
+      "statedAs": {
+        "text": "2 (1) A person is exempted from sections 11, 17.1 (3) and (4), 17.2 (2) and (3), 26 (1) (c), 27 (4), 29 and 35 (2) (b) of the Wildlife Act where wildlife listed in Schedule B or C is killed (a) by the person for the protection of that person's property, or (b) by the person on property owned or occupied by that person or the spouse, parent, guardian, or child of that person.",
+        "lang": "en-CA"
+      },
+      "citation": "B.C. Reg. 168/90 s. 2 (1)",
+      "scope": {
+        "speciesIds": [
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "condition": {
+        "statedAs": {
+          "text": "where wildlife listed in Schedule B or C is killed (a) by the person for the protection of that person's property, or (b) by the person on property owned or occupied by that person or the spouse, parent, guardian, or child of that person.",
+          "lang": "en-CA"
+        }
+      },
+      "exceptions": [
+        {
+          "statedAs": {
+            "text": "(2) Subsection (1) does not apply with respect to Lepus americanus — snowshoe hare in Region 2 as defined in section 3 of B.C. Reg. 190/84, the Hunting Regulation.",
+            "lang": "en-CA"
+          },
+          "citation": "s. 2 (2)"
+        }
+      ],
+      "unresolved": [
+        "Snowshoe hare appears in Schedule B ('(d) Lepus americanus — snowshoe hare'); whether it is in Schedule B for the whole province or only outside Region 2 is settled by s. 2 (2) for this exemption only. This is a landowner/property exemption, not a general hunting rule; recorded because it removes the licence requirement in its own circumstances outside Region 2."
+      ]
+    }
+  ],
+  "researchNotes": [
+    "Classification used by the other packages (not requirements themselves): s. 14 (a) designates as game birds 'upland game birds of the following genera of the order Galliformes: (i) grouse (A) Dendragapus — blue grouse, spruce grouse and Franklin grouse; (B) Bonasa — ruffed grouse; (C) Tympanuchus — prairie chicken and sharp-tailed grouse; ... (ii) Lagopus — willow, rock and white tailed ptarmigan'. s. 15 designates as small game '(h) Lepus americanus — snowshoe hare' and '(j) game birds'. Wildlife Act s. 1 defines big game to include '(c) bear, cougar or wolf'.",
+    "Name mapping for implementers: the Schedules of B.C. Reg. 190/84 use 'SPRUCE (Franklin) GROUSE' for species:spruce-grouse and a single 'PTARMIGAN' row for all ptarmigan (rock, willow and white-tailed together). A ptarmigan season or limit row therefore covers species:rock-ptarmigan and species:willow-ptarmigan jointly; whether its bag limit is per species or aggregate is not stated in Part 1 or Part 3 (see the LIMIT rows (SUPERSEDED-limits-pending.json is the raw extraction))."
+  ]
+}

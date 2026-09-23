@@ -1,0 +1,661 @@
+{
+  "package": {
+    "jurisdictionId": "jurisdiction:ca-bc",
+    "preparedBy": "bc-requirements-research (session dfe3d7f3)",
+    "preparedOn": "2026-09-23"
+  },
+  "authority": {
+    "name": "Province of British Columbia — King's Printer (BC Laws)",
+    "lang": "en-CA"
+  },
+  "source": {
+    "id": "source:ca-bc-wildlife-act",
+    "title": "Wildlife Act",
+    "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/96488_01",
+    "tier": "LAW",
+    "version": "consolidation current to September 15, 2026",
+    "retrievedAt": "2026-09-23",
+    "sha256": "1ed29fedfbacc744066614e5cd7cc99f12dd82d0ea4a6ed14f3add811c991b48",
+    "incorporates": [
+      "B.C. Reg. 190/84 s. 17 (3)"
+    ],
+    "inForce": {
+      "state": "IN_FORCE",
+      "statedAs": "This Act is current to September 15, 2026",
+      "asOf": "2026-09-15",
+      "supersededBy": null,
+      "checkedOn": "2026-09-23",
+      "basis": "BC Laws presents this as the current consolidation of an unrepealed enactment; no repeal line appears in the document. The site's separate 'Amendments Not in Force' list was not reachable by the routes tried (see researchNotes); the Point in Time index for B.C. Reg. 190/84 lists no version dated after July 1, 2026."
+    }
+  },
+  "requirements": [
+    {
+      "category": "AUTHORIZATION",
+      "kind": "hunting licence",
+      "officialName": {
+        "text": "hunting licence",
+        "lang": "en-CA"
+      },
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "11 (1) A person who hunts wildlife commits an offence unless the person holds all of the following: (a) a hunting licence issued to the person under this Act;",
+        "lang": "en-CA"
+      },
+      "citation": "Wildlife Act s. 11 (1) (a)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [
+        {
+          "statedAs": {
+            "text": "(1.1) Subsection (1) does not apply to a person under 18 years of age on whose behalf the parent or guardian holds a hunting licence.",
+            "lang": "en-CA"
+          },
+          "citation": "s. 11 (1.1)"
+        },
+        {
+          "statedAs": {
+            "text": "(9) Subsections (1) (a) and (c) and (8) do not apply to an Indian residing in British Columbia.",
+            "lang": "en-CA"
+          },
+          "citation": "s. 11 (9)"
+        }
+      ],
+      "obtain": {
+        "channels": [
+          "ONLINE",
+          "PHYSICAL_VENDOR",
+          "GOVERNMENT_OFFICE"
+        ],
+        "infoUrl": "https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/hunting",
+        "note": "Channels are from the 2026–2028 Synopsis package, not this Act."
+      },
+      "requires": [
+        {
+          "officialName": {
+            "text": "examinations, approved by the director, about conservation, outdoor recreation and safety",
+            "lang": "en-CA"
+          },
+          "citation": "Wildlife Act s. 17 (1)"
+        }
+      ],
+      "unresolved": [
+        "Which of the Designation and Exemption Regulation (B.C. Reg. 168/90) exemptions from s. 11 apply is recorded in that source's package; s. 9 (1) of that regulation exempts Leporidae from s. 11 (1) but s. 9 (2) (a) removes snowshoe hare from that exemption."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "limited entry hunting authorization",
+      "officialName": null,
+      "state": "CONDITIONAL",
+      "statedAs": {
+        "text": "(b) any limited entry hunting authorization that is required by regulation;",
+        "lang": "en-CA"
+      },
+      "citation": "Wildlife Act s. 11 (1) (b)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "condition": {
+        "statedAs": {
+          "text": "(b) any limited entry hunting authorization that is required by regulation;",
+          "lang": "en-CA"
+        }
+      },
+      "unresolved": [
+        "Where an LEH authorization is required is set by the Limited Entry Hunting Regulation, B.C. Reg. 134/93, Schedule I, already read by the Canada lane (black bear appears; grouse, ptarmigan and hare do not). Not re-read here by instruction."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "other licence or permit required by regulation",
+      "officialName": null,
+      "state": "CONDITIONAL",
+      "statedAs": {
+        "text": "(c) any other licence that is required by regulation; (d) any other permit that is required by regulation.",
+        "lang": "en-CA"
+      },
+      "citation": "Wildlife Act s. 11 (1) (c)–(d)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "condition": {
+        "statedAs": {
+          "text": "(c) any other licence that is required by regulation;",
+          "lang": "en-CA"
+        }
+      },
+      "unresolved": [
+        "The licences prescribed under s. 11 (1) (c) are in the Hunting Licensing Regulation, B.C. Reg. 8/99 (separate package)."
+      ]
+    },
+    {
+      "category": "SPECIES_CONDITION",
+      "kind": "supervision of hunters under 18",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "(5) A person under 18 years of age commits an offence if the person hunts unless the person is accompanied by and under the close personal supervision of a person who (a) is 18 years of age or older, (b) holds a hunting licence, other than an initiation hunting licence, or is exempted from holding a hunting licence, and (c) meets the prescribed qualifications.",
+        "lang": "en-CA"
+      },
+      "citation": "Wildlife Act s. 11 (5)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": "under 18 years of age",
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "'prescribed qualifications' for a supervising hunter are set by regulation not read in this lane."
+      ]
+    },
+    {
+      "category": "SPECIES_CONDITION",
+      "kind": "initiation hunting licence supervision",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "(2) A person who holds an initiation hunting licence commits an offence if the person hunts unless the person is accompanied by and under the close personal supervision of a person who (a) is 18 years of age or older, and (b) meets the prescribed qualifications.",
+        "lang": "en-CA"
+      },
+      "citation": "Wildlife Act s. 17.2 (2)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": "initiation hunting licence"
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "AMMUNITION",
+      "kind": "shotgun magazine plug",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "(h) with a pump, repeating or auto loading shotgun unless the magazine contains a plug that is incapable of removal except by disassembling the gun, and that makes the magazine incapable of holding more than 2 cartridges.",
+        "lang": "en-CA"
+      },
+      "citation": "Wildlife Act s. 26 (1) (h)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": [
+          "pump, repeating or auto loading shotgun"
+        ],
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [
+        {
+          "statedAs": {
+            "text": "(3) A person who hunts big game with a shotgun loaded with single-projectile ammunition is exempt from section 26 (1) (h) of the Act.",
+            "lang": "en-CA"
+          },
+          "citation": "B.C. Reg. 190/84 s. 17 (3) — applies to big game only (black bear here)"
+        },
+        {
+          "statedAs": {
+            "text": "(2) Subsection (1) (c), (d), (e) and (h) does not apply to a person who hunts or traps wildlife that is on the person's property and is a menace to a domestic animal or bird.",
+            "lang": "en-CA"
+          },
+          "citation": "Wildlife Act s. 26 (2)"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "lights",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence if the person hunts, takes, traps, wounds or kills wildlife (e) by the use or with the aid of a light or illuminating device,",
+        "lang": "en-CA"
+      },
+      "citation": "Wildlife Act s. 26 (1) (e)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "poison",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence if the person hunts, takes, traps, wounds or kills wildlife (f) with poison,",
+        "lang": "en-CA"
+      },
+      "citation": "Wildlife Act s. 26 (1) (f)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "set gun",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence if the person hunts, takes, traps, wounds or kills wildlife (g) with a set gun, or",
+        "lang": "en-CA"
+      },
+      "citation": "Wildlife Act s. 26 (1) (g)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "METHOD",
+      "kind": "discharge from motor vehicle or motorboat",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person who discharges a firearm or wounds or kills wildlife from a motor vehicle or from a boat that is propelled by a motor commits an offence.",
+        "lang": "en-CA"
+      },
+      "citation": "Wildlife Act s. 27 (1)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "TIME_CONDITION",
+      "kind": "hunting after being airborne",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(4) A person who hunts game within 6 hours after being airborne in an aircraft, other than a regularly scheduled commercial aircraft, commits an offence.",
+        "lang": "en-CA"
+      },
+      "citation": "Wildlife Act s. 27 (4)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "PLACE_CONDITION",
+      "kind": "shooting across highway",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "A person who discharges a firearm on or across the travelled portions of a highway prescribed under section 108 commits an offence.",
+        "lang": "en-CA"
+      },
+      "citation": "Wildlife Act s. 31",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Which highways are 'prescribed under section 108' is not in this Act; not read."
+      ]
+    },
+    {
+      "category": "PLACE_CONDITION",
+      "kind": "cultivated land and grazing lease consent",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "(1) A person commits an offence if the person, without the consent of the owner, lessee or occupier of land, (a) hunts over or traps in or on cultivated land, or (b) hunts over Crown land that is subject to a grazing lease while the land is occupied by livestock.",
+        "lang": "en-CA"
+      },
+      "citation": "Wildlife Act s. 39 (1)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": []
+    },
+    {
+      "category": "SPECIES_CONDITION",
+      "kind": "retrieval and edible portions",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "(2) A person commits an offence if the person hunts wildlife and kills or injures that wildlife and fails to make every reasonable effort to (a) retrieve the wildlife, and if it is alive to kill it and include it in his or her bag limit, and (b) remove the edible portions of the carcass of game to the person's normal dwelling place or to a meatcutter or the owner or operator of a cold storage plant, unless exempted by regulation.",
+        "lang": "en-CA"
+      },
+      "citation": "Wildlife Act s. 35 (2)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Regulatory exemptions from s. 35 (2) (b) exist in B.C. Reg. 168/90 for listed species; none found for the seven species in scope, but exemption lists outside 168/90 were not searched."
+      ]
+    }
+  ],
+  "researchNotes": [
+    "Wildlife Act s. 26 (1) (d) ('with a firearm or a bow during the prohibited hours') — ROUTED to the Canada lane (legal hours); not read further here."
+  ]
+}

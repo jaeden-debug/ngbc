@@ -1,0 +1,285 @@
+{
+  "package": {
+    "jurisdictionId": "jurisdiction:ca-bc",
+    "preparedBy": "bc-requirements-research (session dfe3d7f3)",
+    "preparedOn": "2026-09-23"
+  },
+  "authority": {
+    "name": "British Columbia Ministry of Water, Land and Resource Stewardship",
+    "lang": "en-CA"
+  },
+  "source": {
+    "id": "source:ca-bc-hunting-trapping-synopsis-2026-2028",
+    "title": "Hunting and Trapping Regulations Synopsis 2026–2028",
+    "url": "https://www2.gov.bc.ca/assets/gov/sports-recreation-arts-and-culture/outdoor-recreation/fishing-and-hunting/hunting/regulations/hunting-trapping-synopsis.pdf",
+    "tier": "OFFICIAL_SUMMARY",
+    "version": "2026–2028",
+    "retrievedAt": "2026-09-23",
+    "sha256": "17a38843f5b4966d181e42a5f4c1a3cb358a10b67054ef469b6696cd0102216a",
+    "incorporates": [],
+    "inForce": {
+      "state": "IN_FORCE",
+      "statedAs": "Effective July 1, 2026 to June 30, 2028",
+      "asOf": "2026-07-01",
+      "supersededBy": null,
+      "checkedOn": "2026-09-23",
+      "basis": "A summary, not law: its own period statement is the only currency signal. It also says 'For in-season regulation changes visit www.gov.bc.ca/hunting', which was not checked."
+    }
+  },
+  "requirements": [
+    {
+      "category": "AUTHORIZATION",
+      "kind": "where to obtain licences",
+      "officialName": null,
+      "state": "ALLOWED",
+      "statedAs": {
+        "text": "Licences are available online at www.gov.bc.ca/hunting and at Service BC, FrontCounter BC and participating commercial outlets and sporting goods stores.",
+        "lang": "en-CA"
+      },
+      "citation": "Synopsis 2026–2028, 'Buying Licences' (p. 8)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "obtain": {
+        "channels": [
+          "ONLINE",
+          "GOVERNMENT_OFFICE",
+          "PHYSICAL_VENDOR"
+        ],
+        "infoUrl": "https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/hunting",
+        "note": "If you buy your species licence online, it will be mailed to you and it is subject to Canada Post delivery times."
+      },
+      "unresolved": []
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "species licence fee table",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "Species licences are required for the hunting of the following animals and are required in addition to the basic hunting licences. Black Bear $20.00 $180.00",
+        "lang": "en-CA"
+      },
+      "citation": "Synopsis 2026–2028, 'Species Licence Fees' (p. 8)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Columns are 'B.C. RESIDENT' and 'NON-B.C. RESIDENT'; 'Fees include HCTF surcharge, but not G.S.T.' Matches B.C. Reg. 8/99 Schedule items 3 (a) and 4 (a) (16.00+4.00; 126.00+54.00)."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "upland game bird licence fee",
+      "officialName": null,
+      "state": "CONDITIONAL",
+      "statedAs": {
+        "text": "Upland Game Birds No Species licence required $50.00",
+        "lang": "en-CA"
+      },
+      "citation": "Synopsis 2026–2028, 'Species Licence Fees' (p. 8)",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "non-resident",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "condition": {
+        "statedAs": {
+          "text": "NON-B.C. RESIDENT",
+          "lang": "en-CA"
+        }
+      },
+      "unresolved": [
+        "The table's text layer prints the resident cell 'No Species licence required' and the non-resident cell '$50.00'. B.C. Reg. 8/99 Schedule item 2.5 gives 35.00 + 15.00 = 50.00, and s. 5 (3) requires it of 'a non-resident or non-resident alien'. The condition statedAs is our description of the column, not a sentence: the source has none."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "hunting licence fees",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "B.C. resident to hunt all game $32.00",
+        "lang": "en-CA"
+      },
+      "citation": "Synopsis 2026–2028, 'Hunting Licence Fees' (p. 8)",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear",
+          "species:ruffed-grouse",
+          "species:spruce-grouse",
+          "species:sharp-tailed-grouse",
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan",
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "BC"
+          ],
+          "statedAs": null
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": "resident",
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Other fee lines (65+ resident $7.00; non-resident $75.00; non-resident alien $180.00; initiation $19.00; youth $7.00) are in the same table but interleaved in the PDF text layer; the LAW-tier figures are in the Hunting Licensing Regulation package and agree."
+      ]
+    },
+    {
+      "category": "PLACE_CONDITION",
+      "kind": "landowner permission for private-property black bear window (summary gloss)",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "Restricted to private land only, hunter must obtain permission from landowners prior to access.",
+        "lang": "en-CA"
+      },
+      "citation": "Synopsis 2026–2028, Region 4 black bear table note",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "4-1 to 4-9",
+            "4-14 to 4-40"
+          ],
+          "statedAs": "Restricted to private land only, hunter must obtain permission from landowners prior to access."
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": {
+          "from": "08-01",
+          "to": "08-31",
+          "statedAs": "Aug 1 - Aug 31"
+        },
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "TIER: this sentence is the Synopsis (OFFICIAL_SUMMARY), not law. The governing provision, B.C. Reg. 190/84 Schedule 4 Part 2 s. 21, says only 'on private property' and says nothing about permission. Do not present the permission requirement as a regulation; if shown, attribute it to the ministry's Synopsis. Trespass law (not read) may independently require permission."
+      ]
+    },
+    {
+      "category": "PLACE_CONDITION",
+      "kind": "landowner permission for private-property black bear window (summary gloss)",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "MU's 8-1 to 8-15 and 8-21 to 8-26 is restricted to private land only. Hunters must obtain permission from landowners.",
+        "lang": "en-CA"
+      },
+      "citation": "Synopsis 2026–2028, Region 8 black bear table note",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "8-1 to 8-15",
+            "8-21 to 8-26"
+          ],
+          "statedAs": "MU's 8-1 to 8-15 and 8-21 to 8-26 is restricted to private land only. Hunters must obtain permission from landowners."
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": {
+          "from": "08-01",
+          "to": "08-31",
+          "statedAs": "Aug 1 - Aug 31"
+        },
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "TIER: this sentence is the Synopsis (OFFICIAL_SUMMARY), not law. The governing provision, B.C. Reg. 190/84 Schedule 8 Part 2 s. 13, says only 'on private property' and says nothing about permission. Do not present the permission requirement as a regulation; if shown, attribute it to the ministry's Synopsis. Trespass law (not read) may independently require permission."
+      ]
+    }
+  ],
+  "researchNotes": [
+    "Text layer extracted with pypdf; two-column pages interleave, so only sentences verified contiguous in the extracted text are quoted. Requirements are sourced from LAW-tier packages; this package supplies obtain channels and a fee cross-check only.",
+    "The Synopsis introduction states the proposed lead-shot prohibition 'was put on hold'; the upland-bird ammunition rows therefore rest on B.C. Reg. 190/84 s. 17 alone.",
+    "Hunter orange: see measured-absence-orange.json."
+  ]
+}

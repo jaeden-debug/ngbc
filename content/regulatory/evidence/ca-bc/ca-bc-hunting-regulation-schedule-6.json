@@ -1,0 +1,654 @@
+{
+  "package": {
+    "jurisdictionId": "jurisdiction:ca-bc",
+    "preparedBy": "bc-requirements-research (session dfe3d7f3)",
+    "preparedOn": "2026-09-23"
+  },
+  "authority": {
+    "name": "Province of British Columbia — King's Printer (BC Laws)",
+    "lang": "en-CA"
+  },
+  "source": {
+    "id": "source:ca-bc-hunting-regulation-190-84-schedule-6",
+    "title": "Hunting Regulation — Schedule 6 — Region 6 — Skeena",
+    "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/190_84_07",
+    "tier": "LAW",
+    "version": "B.C. Reg. 190/84, consolidation current to September 15, 2026",
+    "retrievedAt": "2026-09-23",
+    "sha256": "f5ea997c12aa4fafd66ecf1c63165a0ed0613a1aae8e78156ae095fe28568e8a",
+    "incorporates": [],
+    "inForce": {
+      "state": "IN_FORCE",
+      "statedAs": "This consolidation is current to September 15, 2026. [Last amended July 1, 2026 by B.C. Reg. 97/2026]",
+      "asOf": "2026-09-15",
+      "supersededBy": null,
+      "checkedOn": "2026-09-23",
+      "basis": "BC Laws presents this as the current consolidation of an unrepealed enactment; no repeal line appears in the document. The site's separate 'Amendments Not in Force' list was not reachable by the routes tried (see researchNotes); the Point in Time index for B.C. Reg. 190/84 lists no version dated after July 1, 2026."
+    }
+  },
+  "requirements": [
+    {
+      "category": "METHOD",
+      "kind": "bow only season",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "The open season for hunting blue, spruce (Franklin) and ruffed grouse with a bow only in M.U.s 6-1 to 6-30 is September 1 to September 9.",
+        "lang": "en-CA"
+      },
+      "citation": "Sch. 6 Part 2 s. 15",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:spruce-grouse"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "6-1 to 6-30"
+          ],
+          "statedAs": "The open season for hunting blue, spruce (Franklin) and ruffed grouse with a bow only in M.U.s 6-1 to 6-30 is September 1 to September 9."
+        },
+        "seasonSegment": {
+          "label": {
+            "text": "bow only season",
+            "lang": "en-CA"
+          },
+          "statedAs": "The open season for hunting blue, spruce (Franklin) and ruffed grouse with a bow only in M.U.s 6-1 to 6-30 is September 1 to September 9."
+        },
+        "methods": [
+          "bow"
+        ],
+        "dates": {
+          "from": "09-01",
+          "to": "09-09",
+          "statedAs": "The open season for hunting blue, spruce (Franklin) and ruffed grouse with a bow only in M.U.s 6-1 to 6-30 is September 1 to September 9."
+        },
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "exceptions": [],
+      "unresolved": [
+        "'bow' is defined in Wildlife Act s. 1 as 'a longbow or crossbow'. Whether this window ADDS to or is separate from the Part 1 season is not stated in words; composition deliberately omitted (contract rule 3)."
+      ]
+    },
+    {
+      "category": "PLACE_CONDITION",
+      "kind": "no open season in described portion",
+      "officialName": null,
+      "state": "PROHIBITED",
+      "statedAs": {
+        "text": "There is no open season for black bear in those portions of M.U.s 6-3 and 6-11 outlined in red on map '2022 Black Bear MUs 6-3 and 6-11 Closed Season'.",
+        "lang": "en-CA"
+      },
+      "citation": "Sch. 6 Part 2 s. 18",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "SPECIAL_AREA",
+          "designations": [
+            "map '2022 Black Bear MUs 6-3 and 6-11 Closed Season'"
+          ],
+          "statedAs": "There is no open season for black bear in those portions of M.U.s 6-3 and 6-11 outlined in red on map '2022 Black Bear MUs 6-3 and 6-11 Closed Season'."
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "The portion is described by metes and bounds or a named map in the regulation; the boundary itself was not digitised in this lane."
+      ]
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "21 BLACK BEAR 6-1 to 6-11, 6-14 to 6-30** Apr. 1 to June 30 Aug. 15 to Nov. 30 2",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — BLACK BEAR",
+      "scope": {
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "6-1 to 6-11",
+            "6-14 to 6-30"
+          ],
+          "statedAs": "21 BLACK BEAR 6-1 to 6-11, 6-14 to 6-30** Apr. 1 to June 30 Aug. 15 to Nov. 30 2"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "THIS_SPECIES rests on the item naming a single species; no sentence says 'per species'."
+      ],
+      "period": "SEASON",
+      "value": {
+        "count": 2,
+        "statedAs": "21 BLACK BEAR 6-1 to 6-11, 6-14 to 6-30** Apr. 1 to June 30 Aug. 15 to Nov. 30 2"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:american-black-bear"
+        ],
+        "statedAs": "21 BLACK BEAR 6-1 to 6-11, 6-14 to 6-30** Apr. 1 to June 30 Aug. 15 to Nov. 30 2"
+      },
+      "periodStatedAs": "* Season bag limits for big game and small game; daily bag limits for upland birds."
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "28 SNOWSHOE HARE 6-1 to 6-30 Apr. 1 to Apr. 30 Aug. 1 to Mar. 31 10 per day",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — SNOWSHOE HARE",
+      "scope": {
+        "speciesIds": [
+          "species:snowshoe-hare"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "6-1 to 6-30"
+          ],
+          "statedAs": "28 SNOWSHOE HARE 6-1 to 6-30 Apr. 1 to Apr. 30 Aug. 1 to Mar. 31 10 per day"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "THIS_SPECIES rests on the item naming a single species; no sentence says 'per species'.",
+        "No possession limit for snowshoe hare was found: s. 12 (b) (vii) covers game birds only, and snowshoe hare is small game (B.C. Reg. 168/90 s. 15 (h))."
+      ],
+      "period": "DAY",
+      "value": {
+        "count": 10,
+        "statedAs": "28 SNOWSHOE HARE 6-1 to 6-30 Apr. 1 to Apr. 30 Aug. 1 to Mar. 31 10 per day"
+      },
+      "appliesAcross": {
+        "scope": "THIS_SPECIES",
+        "speciesIds": [
+          "species:snowshoe-hare"
+        ],
+        "statedAs": "28 SNOWSHOE HARE 6-1 to 6-30 Apr. 1 to Apr. 30 Aug. 1 to Mar. 31 10 per day"
+      }
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "29 BLUE (Sooty, Dusky) GROUSE; SPRUCE (Franklin) GROUSE; RUFFED GROUSE 6-1 to 6-30 Sept. 10 to Nov. 15 10(30)**",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — SPRUCE (Franklin) GROUSE",
+      "scope": {
+        "speciesIds": [
+          "species:spruce-grouse",
+          "species:ruffed-grouse"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "6-1 to 6-30"
+          ],
+          "statedAs": "29 BLUE (Sooty, Dusky) GROUSE; SPRUCE (Franklin) GROUSE; RUFFED GROUSE 6-1 to 6-30 Sept. 10 to Nov. 15 10(30)**"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Part 1 lists several grouse in one item with one figure; whether it is per species or an aggregate is not stated in Part 1. See this Schedule's Part 3 rows, which s. 7 ties to a *** marker."
+      ],
+      "period": "DAY",
+      "value": {
+        "count": 10,
+        "statedAs": "29 BLUE (Sooty, Dusky) GROUSE; SPRUCE (Franklin) GROUSE; RUFFED GROUSE 6-1 to 6-30 Sept. 10 to Nov. 15 10(30)**"
+      },
+      "appliesAcross": {
+        "scope": null,
+        "speciesIds": [
+          "species:spruce-grouse",
+          "species:ruffed-grouse"
+        ],
+        "statedAs": "29 BLUE (Sooty, Dusky) GROUSE; SPRUCE (Franklin) GROUSE; RUFFED GROUSE 6-1 to 6-30 Sept. 10 to Nov. 15 10(30)**"
+      },
+      "notationDefinedBy": {
+        "citation": "B.C. Reg. 190/84 s. 9 (2)",
+        "statedAs": "(2) An entry such as \"10 (20)\" in Part 1 of a Schedule means, in the case of all game birds except turkeys, that the bag limit is 10 birds a day, while the possession limit is 20."
+      },
+      "exceptions": []
+    },
+    {
+      "category": "LIMIT",
+      "kind": "POSSESSION",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "29 BLUE (Sooty, Dusky) GROUSE; SPRUCE (Franklin) GROUSE; RUFFED GROUSE 6-1 to 6-30 Sept. 10 to Nov. 15 10(30)**",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — SPRUCE (Franklin) GROUSE",
+      "scope": {
+        "speciesIds": [
+          "species:spruce-grouse",
+          "species:ruffed-grouse"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "6-1 to 6-30"
+          ],
+          "statedAs": "29 BLUE (Sooty, Dusky) GROUSE; SPRUCE (Franklin) GROUSE; RUFFED GROUSE 6-1 to 6-30 Sept. 10 to Nov. 15 10(30)**"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Part 1 lists several grouse in one item with one figure; whether it is per species or an aggregate is not stated in Part 1. See this Schedule's Part 3 rows, which s. 7 ties to a *** marker.",
+        "The contract makes `period` required (DAY | SEASON | LICENCE_YEAR), but s. 9 (2) states a possession limit with no period ('while the possession limit is 20'). Recorded as null; reported to the moderator as a schema gap."
+      ],
+      "period": null,
+      "value": {
+        "count": 30,
+        "statedAs": "29 BLUE (Sooty, Dusky) GROUSE; SPRUCE (Franklin) GROUSE; RUFFED GROUSE 6-1 to 6-30 Sept. 10 to Nov. 15 10(30)**"
+      },
+      "appliesAcross": {
+        "scope": null,
+        "speciesIds": [
+          "species:spruce-grouse",
+          "species:ruffed-grouse"
+        ],
+        "statedAs": "29 BLUE (Sooty, Dusky) GROUSE; SPRUCE (Franklin) GROUSE; RUFFED GROUSE 6-1 to 6-30 Sept. 10 to Nov. 15 10(30)**"
+      },
+      "notationDefinedBy": {
+        "citation": "B.C. Reg. 190/84 s. 9 (2)",
+        "statedAs": "(2) An entry such as \"10 (20)\" in Part 1 of a Schedule means, in the case of all game birds except turkeys, that the bag limit is 10 birds a day, while the possession limit is 20."
+      },
+      "exceptions": []
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "30 PTARMIGAN 6-7, 6-14, 6-16 to 6-29 Aug. 15 to Feb. 28 10(30)",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — PTARMIGAN",
+      "scope": {
+        "speciesIds": [
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "6-7",
+            "6-14",
+            "6-16 to 6-29"
+          ],
+          "statedAs": "30 PTARMIGAN 6-7, 6-14, 6-16 to 6-29 Aug. 15 to Feb. 28 10(30)"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Row is headed 'PTARMIGAN' (genus Lagopus: willow, rock and white-tailed). Per-species or aggregate is not stated."
+      ],
+      "period": "DAY",
+      "value": {
+        "count": 10,
+        "statedAs": "30 PTARMIGAN 6-7, 6-14, 6-16 to 6-29 Aug. 15 to Feb. 28 10(30)"
+      },
+      "appliesAcross": {
+        "scope": null,
+        "speciesIds": [
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "statedAs": "30 PTARMIGAN 6-7, 6-14, 6-16 to 6-29 Aug. 15 to Feb. 28 10(30)"
+      },
+      "notationDefinedBy": {
+        "citation": "B.C. Reg. 190/84 s. 9 (2)",
+        "statedAs": "(2) An entry such as \"10 (20)\" in Part 1 of a Schedule means, in the case of all game birds except turkeys, that the bag limit is 10 birds a day, while the possession limit is 20."
+      },
+      "exceptions": []
+    },
+    {
+      "category": "LIMIT",
+      "kind": "POSSESSION",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "30 PTARMIGAN 6-7, 6-14, 6-16 to 6-29 Aug. 15 to Feb. 28 10(30)",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — PTARMIGAN",
+      "scope": {
+        "speciesIds": [
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "6-7",
+            "6-14",
+            "6-16 to 6-29"
+          ],
+          "statedAs": "30 PTARMIGAN 6-7, 6-14, 6-16 to 6-29 Aug. 15 to Feb. 28 10(30)"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Row is headed 'PTARMIGAN' (genus Lagopus: willow, rock and white-tailed). Per-species or aggregate is not stated.",
+        "The contract makes `period` required (DAY | SEASON | LICENCE_YEAR), but s. 9 (2) states a possession limit with no period ('while the possession limit is 20'). Recorded as null; reported to the moderator as a schema gap."
+      ],
+      "period": null,
+      "value": {
+        "count": 30,
+        "statedAs": "30 PTARMIGAN 6-7, 6-14, 6-16 to 6-29 Aug. 15 to Feb. 28 10(30)"
+      },
+      "appliesAcross": {
+        "scope": null,
+        "speciesIds": [
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "statedAs": "30 PTARMIGAN 6-7, 6-14, 6-16 to 6-29 Aug. 15 to Feb. 28 10(30)"
+      },
+      "notationDefinedBy": {
+        "citation": "B.C. Reg. 190/84 s. 9 (2)",
+        "statedAs": "(2) An entry such as \"10 (20)\" in Part 1 of a Schedule means, in the case of all game birds except turkeys, that the bag limit is 10 birds a day, while the possession limit is 20."
+      },
+      "exceptions": []
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "30.1 PTARMIGAN 6-1 to 6-6, 6-8 to 6-11, 6-15, 6-30 Aug. 15 to Feb. 28 5(15)",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — PTARMIGAN",
+      "scope": {
+        "speciesIds": [
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "6-1 to 6-6",
+            "6-8 to 6-11",
+            "6-15",
+            "6-30"
+          ],
+          "statedAs": "30.1 PTARMIGAN 6-1 to 6-6, 6-8 to 6-11, 6-15, 6-30 Aug. 15 to Feb. 28 5(15)"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Row is headed 'PTARMIGAN' (genus Lagopus: willow, rock and white-tailed). Per-species or aggregate is not stated."
+      ],
+      "period": "DAY",
+      "value": {
+        "count": 5,
+        "statedAs": "30.1 PTARMIGAN 6-1 to 6-6, 6-8 to 6-11, 6-15, 6-30 Aug. 15 to Feb. 28 5(15)"
+      },
+      "appliesAcross": {
+        "scope": null,
+        "speciesIds": [
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "statedAs": "30.1 PTARMIGAN 6-1 to 6-6, 6-8 to 6-11, 6-15, 6-30 Aug. 15 to Feb. 28 5(15)"
+      },
+      "notationDefinedBy": {
+        "citation": "B.C. Reg. 190/84 s. 9 (2)",
+        "statedAs": "(2) An entry such as \"10 (20)\" in Part 1 of a Schedule means, in the case of all game birds except turkeys, that the bag limit is 10 birds a day, while the possession limit is 20."
+      },
+      "exceptions": []
+    },
+    {
+      "category": "LIMIT",
+      "kind": "POSSESSION",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "30.1 PTARMIGAN 6-1 to 6-6, 6-8 to 6-11, 6-15, 6-30 Aug. 15 to Feb. 28 5(15)",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule Part 1 — PTARMIGAN",
+      "scope": {
+        "speciesIds": [
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "6-1 to 6-6",
+            "6-8 to 6-11",
+            "6-15",
+            "6-30"
+          ],
+          "statedAs": "30.1 PTARMIGAN 6-1 to 6-6, 6-8 to 6-11, 6-15, 6-30 Aug. 15 to Feb. 28 5(15)"
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "Row is headed 'PTARMIGAN' (genus Lagopus: willow, rock and white-tailed). Per-species or aggregate is not stated.",
+        "The contract makes `period` required (DAY | SEASON | LICENCE_YEAR), but s. 9 (2) states a possession limit with no period ('while the possession limit is 20'). Recorded as null; reported to the moderator as a schema gap."
+      ],
+      "period": null,
+      "value": {
+        "count": 15,
+        "statedAs": "30.1 PTARMIGAN 6-1 to 6-6, 6-8 to 6-11, 6-15, 6-30 Aug. 15 to Feb. 28 5(15)"
+      },
+      "appliesAcross": {
+        "scope": null,
+        "speciesIds": [
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "statedAs": "30.1 PTARMIGAN 6-1 to 6-6, 6-8 to 6-11, 6-15, 6-30 Aug. 15 to Feb. 28 5(15)"
+      },
+      "notationDefinedBy": {
+        "citation": "B.C. Reg. 190/84 s. 9 (2)",
+        "statedAs": "(2) An entry such as \"10 (20)\" in Part 1 of a Schedule means, in the case of all game birds except turkeys, that the bag limit is 10 birds a day, while the possession limit is 20."
+      },
+      "exceptions": []
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "(1) The daily aggregate bag limit for blue (Sooty and Dusky), spruce (Franklin) and ruffed grouse in M.U.s 6-1 to 6-11 and 6-14 to 6-30 is 10.",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule 6 Part 3 s. 1",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:spruce-grouse"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "6-1 to 6-11",
+            "6-14 to 6-30"
+          ],
+          "statedAs": "(1) The daily aggregate bag limit for blue (Sooty and Dusky), spruce (Franklin) and ruffed grouse in M.U.s 6-1 to 6-11 and 6-14 to 6-30 is 10."
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "s. 7 applies Part 3 where a Part 1 bag limit carries ***; whether this Part 3 aggregate governs Part 1 items WITHOUT *** is not settled.",
+        "Part 1 item 29 grouse '10(30)**' carries no triple asterisk, yet Part 3 s. 1 sets aggregate limits for M.U.s 6-1 to 6-11 and 6-14 to 6-30 (10) and 6-12 and 6-13 (5). Whether Part 3 applies without the *** marker (s. 7) is not settled by the text."
+      ],
+      "period": "DAY",
+      "value": {
+        "count": 10,
+        "statedAs": "(1) The daily aggregate bag limit for blue (Sooty and Dusky), spruce (Franklin) and ruffed grouse in M.U.s 6-1 to 6-11 and 6-14 to 6-30 is 10."
+      },
+      "appliesAcross": {
+        "scope": "AGGREGATE",
+        "speciesIds": [
+          "species:blue-grouse",
+          "species:spruce-grouse",
+          "species:ruffed-grouse"
+        ],
+        "statedAs": "(1) The daily aggregate bag limit for blue (Sooty and Dusky), spruce (Franklin) and ruffed grouse in M.U.s 6-1 to 6-11 and 6-14 to 6-30 is 10."
+      }
+    },
+    {
+      "category": "LIMIT",
+      "kind": "BAG",
+      "officialName": null,
+      "state": "REQUIRED",
+      "statedAs": {
+        "text": "(2) The daily aggregate bag limit for blue (Sooty and Dusky), spruce (Franklin) and ruffed grouse in M.U.s 6-12 and 6-13 is 5.",
+        "lang": "en-CA"
+      },
+      "citation": "Schedule 6 Part 3 s. 1",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:spruce-grouse"
+        ],
+        "animalClass": null,
+        "geography": {
+          "kind": "ZONE",
+          "designations": [
+            "6-12",
+            "6-13"
+          ],
+          "statedAs": "(2) The daily aggregate bag limit for blue (Sooty and Dusky), spruce (Franklin) and ruffed grouse in M.U.s 6-12 and 6-13 is 5."
+        },
+        "seasonSegment": null,
+        "methods": null,
+        "dates": null,
+        "hunterClass": {
+          "residency": null,
+          "age": null,
+          "licenceType": null
+        }
+      },
+      "unresolved": [
+        "s. 7 applies Part 3 where a Part 1 bag limit carries ***; whether this Part 3 aggregate governs Part 1 items WITHOUT *** is not settled.",
+        "Part 1 item 29 grouse '10(30)**' carries no triple asterisk, yet Part 3 s. 1 sets aggregate limits for M.U.s 6-1 to 6-11 and 6-14 to 6-30 (10) and 6-12 and 6-13 (5). Whether Part 3 applies without the *** marker (s. 7) is not settled by the text."
+      ],
+      "period": "DAY",
+      "value": {
+        "count": 5,
+        "statedAs": "(2) The daily aggregate bag limit for blue (Sooty and Dusky), spruce (Franklin) and ruffed grouse in M.U.s 6-12 and 6-13 is 5."
+      },
+      "appliesAcross": {
+        "scope": "AGGREGATE",
+        "speciesIds": [
+          "species:blue-grouse",
+          "species:spruce-grouse",
+          "species:ruffed-grouse"
+        ],
+        "statedAs": "(2) The daily aggregate bag limit for blue (Sooty and Dusky), spruce (Franklin) and ruffed grouse in M.U.s 6-12 and 6-13 is 5."
+      }
+    }
+  ],
+  "researchNotes": []
+}
