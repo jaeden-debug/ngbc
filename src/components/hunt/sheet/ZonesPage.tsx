@@ -14,6 +14,24 @@ import styles from "../HuntApp.module.css";
  */
 
 const JURISDICTION = new Map(ZONE_LAYERS.map((layer) => [layer.id, layer.jurisdictionName]));
+/**
+ * Whether North Ground holds certified RULES for a layer — a different fact
+ * from whether its BOUNDARY is certified, and they must not be read off each
+ * other.
+ *
+ * This list said "Certified rules" or "Boundary only" from `zone.coverage`,
+ * which is the status of the GEOMETRY: whether the authority's own map is
+ * parity-certified. British Columbia made the confusion visible — its units
+ * now answer CLOSED quoting B.C. Reg. 190/84 while their geometry is still
+ * IN_DEVELOPMENT, so the list called a zone "boundary only" beside a card
+ * answering from certified rules with a source.
+ *
+ * Both claims were true; one was being said at the wrong scope. Neither is
+ * deleted: rules come from `rulesServing`, the boundary's own standing is said
+ * about the boundary, and the per-species answer on the card is unchanged —
+ * it is the most specific true thing and outranks either summary.
+ */
+const RULES_SERVING = new Map(ZONE_LAYERS.map((layer) => [layer.id, Boolean(layer.rulesServing)]));
 
 export default function ZonesPage({ zones, states, onChoose, autoFocus }: {
   zones: StoredZone[];
@@ -70,7 +88,9 @@ export default function ZonesPage({ zones, states, onChoose, autoFocus }: {
                     {JURISDICTION.get(zone.layerId) ?? ""}
                     {state
                       ? ` · ${EXPLORATION_WORDING[state].glyph} ${EXPLORATION_WORDING[state].label}`
-                      : zone.coverage === "VERIFIED" ? " · Certified rules" : " · Boundary only"}
+                      : RULES_SERVING.get(zone.layerId)
+                        ? " · Certified rules"
+                        : " · Official boundary, rules not yet certified"}
                   </span>
                 </span>
               </button>

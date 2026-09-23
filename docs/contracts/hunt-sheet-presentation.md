@@ -98,6 +98,31 @@ and is rendered by `groupLimitations`:
 The rule for anything new: *could a hunter who ignored this break the law, be
 unsafe, or be turned away — today, here?* If yes it is not a disclosure.
 
+## 4a. A boundary's standing and a zone's rules are two facts
+
+They are said at their own scopes and neither is deleted to make the other
+legible.
+
+- **The per-species answer on the card** is the most specific true thing and
+  outranks either summary. A species that the engine answers CLOSED for, with a
+  source, is closed — whatever the zone's coverage says.
+- **Rules coverage** comes from the layer's `rulesServing`. That is what the
+  zone list means by "Certified rules".
+- **The boundary's own standing** is `coverage` on the layer — whether the
+  authority's map is parity-certified. It belongs to the boundary, and is never
+  rendered as a claim about rules.
+
+British Columbia made the confusion visible: its units answer CLOSED quoting
+B.C. Reg. 190/84 while their geometry is still `IN_DEVELOPMENT`, so the zone
+list called them "boundary only" beside a card answering from certified rules.
+Both claims were true; one was being made at the wrong scope. The list now
+reads `rulesServing`, and says *"Official boundary, rules not yet certified"*
+where the rules genuinely are not — which is the boundary fact and the rules
+fact, each said once, about itself.
+
+Pinned by `zone-list-labels.test.ts`, which asserts the two flags are
+independent and that the case exists.
+
 ## 5. The sheet's resting states
 
 `closed`, `peek`, `half`, `full` (`src/lib/hunt/exploration/sheet.ts`).
