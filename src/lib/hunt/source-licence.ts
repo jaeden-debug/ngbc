@@ -25,6 +25,44 @@ import { createHash } from "node:crypto";
  *     something someone remembered.
  *
  * Jurisdiction-neutral: Canadian and U.S. layers use the same record.
+ *
+ * ---
+ *
+ * A FIFTH RULE, about ACCESS rather than terms, because the two get confused
+ * and confusing them breaks research in both directions.
+ *
+ * A publisher can refuse us in two quite different ways, and they are not
+ * answered the same way:
+ *
+ *  - An ACCESS CONTROL on a data service — a query endpoint that returns 403
+ *    anonymously and answers only for a particular referrer, an item reading
+ *    "Limit Usage in place", a key requirement. That is the publisher deciding
+ *    who may call its service. North Ground honours it: we do not add a
+ *    referrer, spoof a user agent, or reach the data through a proxy endpoint,
+ *    and a future agent must not "fix" the 403. South Dakota's deer service is
+ *    the recorded example.
+ *
+ *  - A BOT FILTER on a public web page — a regulations summary or a hunting
+ *    guide that a CDN serves to browsers and refuses to curl. That is not a
+ *    decision about who may read the regulations; the page is published TO THE
+ *    PUBLIC and the refusal is aimed at automated clients generally. Reading it
+ *    in a real browser is not circumvention: it is using the document the way
+ *    it is published. Michigan's is the recorded example — michigan.gov returns
+ *    403 to curl and to WebFetch and serves its accessible HTML perfectly to
+ *    the browser pane.
+ *
+ * The distinction has to be drawn explicitly, because collapsing it breaks
+ * something either way. Treat every 403 as a gate and we can never read any
+ * state's regulations — a rule defeating its own purpose, and one that would
+ * quietly turn "we could not read it" into "they do not publish it", which is
+ * the §8 inference failure wearing a research coat. Treat every 403 as a bot
+ * filter and we route around real access controls.
+ *
+ * The test is WHAT is refusing and to WHOM: a data service gating its callers
+ * is a gate; a public document's CDN declining non-browser clients is a
+ * delivery mechanism. When it is genuinely unclear, treat it as a gate and say
+ * so — and record what was tried, so the next person inherits evidence rather
+ * than a verdict.
  */
 
 export type PermittedUse =
