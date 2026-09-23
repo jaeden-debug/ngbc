@@ -120,8 +120,12 @@ test("switched on, Québec draws from North Ground's stored drawings, named in t
     const card = await summarizeZone({ layerId: quebec.id, designation: "10E" }, "2026-10-01");
     assert.equal(card.zone.officialName, "Zone de chasse 10E");
     assert.equal(card.zone.jurisdictionName, "Québec");
-    assert.ok(card.counts.certifiedHere > 0);
-    assert.ok(card.species.some((entry) => entry.name === "Arctic hare"), "names come from the species library");
+    /* Counts are derived from the rows, not sent: a count cannot then disagree
+       with the list beside it. */
+    assert.ok(card.species.some((entry) => entry.state !== "UNKNOWN" && entry.state !== "NOT_CERTIFIED"));
+    /* Identity, not name — naming moved to the presentation layer, and that
+       every id resolves through it is asserted in zone-summary.test.ts. */
+    assert.ok(card.species.some((entry) => entry.speciesId === "species:arctic-hare"));
   } finally {
     quebec.serving = was;
     clearZoneGeometryCache();

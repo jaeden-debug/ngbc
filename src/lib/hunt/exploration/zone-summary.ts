@@ -158,7 +158,6 @@ async function summarizeSpecies(
     : undefined;
   return remember(key, {
     speciesId,
-    name: await speciesName(speciesId),
     state,
     /*
      * The engine's own next opening, except where the answer needs a fact from
@@ -217,7 +216,14 @@ export async function summarizeZone(ref: ZoneRef, date: string): Promise<ZoneSum
     : [];
 
   const order: ExplorationState[] = ["SEASON_AVAILABLE", "SEASON_EXCEPT_AREAS", "CHECK_REQUIREMENTS", "NEEDS_VERIFICATION", "CONFLICT", "CLOSED", "UNKNOWN", "NOT_CERTIFIED"];
-  species.sort((a, b) => order.indexOf(a.state) - order.indexOf(b.state) || a.name.localeCompare(b.name));
+  /*
+   * ORDERING IS THE CONSUMER'S, and this is only a deterministic arrangement so
+   * the same inputs produce the same bytes. The tiebreak is the id, not a name:
+   * a server sorting alphabetically sorts in ONE locale, and would be wrong in
+   * the other the moment French and English disagree — which is the concrete
+   * consequence of there being one naming system rather than two.
+   */
+  species.sort((a, b) => order.indexOf(a.state) - order.indexOf(b.state) || a.speciesId.localeCompare(b.speciesId));
 
   const areas = entry?.specialAreasInZone ? entry.specialAreasInZone(designation) : undefined;
   const specialAreas = areas
@@ -262,12 +268,10 @@ export async function summarizeZone(ref: ZoneRef, date: string): Promise<ZoneSum
     // An indexed jurisdiction whose index lacks this zone has not been checked here — never "nothing there".
     pointOnlyChecks: entry?.pointOnlyChecks ?? (areas === null ? "published special areas" : null),
     specialAreas,
-    counts: {
-      certifiedHere: species.filter((summary) => summary.state !== "UNKNOWN" && summary.state !== "NOT_CERTIFIED").length,
-      inSeason: species.filter((summary) => summary.state === "SEASON_AVAILABLE" || summary.state === "SEASON_EXCEPT_AREAS").length,
-      dependsOnHunter: species.filter((summary) => summary.state === "CHECK_REQUIREMENTS").length,
-      jurisdictionSpecies: speciesIds.length,
-    },
+    /*
+     * No counts. They are derived by the consumer from the rows it draws, so a
+     * count can never disagree with the list beside it.
+     */
     verifiedAt: verified.at(-1) ?? null,
   };
 }

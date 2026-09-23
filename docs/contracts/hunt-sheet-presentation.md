@@ -56,8 +56,30 @@ shows versus the drill-down, and every word of presentation.
   never disagree with the list beside it.
 - **Names.** Every `speciesId` resolves through the canonical presentation path.
   A server-supplied name would be a second naming system the moment there are
-  two locales. **There is no fallback**: an id that does not resolve is a defect
-  that fails loudly and is reported, never rendered around with a placeholder.
+  two locales.
+
+  Three layers, which must not be conflated (owner, 2026-09-23):
+
+  1. **The invariant.** Every id the canonical zone summary returns MUST
+     resolve through the presentation registry **without invoking its
+     humanisation fallback**. An unresolved id is a failing invariant, enforced
+     at build and test time.
+  2. **The escape hatch**, for a violation that reaches production anyway:
+     **fail the ROW, never the Hunt.** Every other species still renders. A
+     structured error carries the id, the surface and the zone.
+  3. **The loophole, closed:** `speciesName` in `zone-summary.ts` turns
+     `species:foo-bar` into "Foo bar". **That is not resolution.** It invents a
+     name for any id at all, so relying on it would make the invariant pass on
+     everything.
+
+  A hunter is never shown a raw id, a prettified slug, "Unknown species", or
+  any other invented name. The hatch is not permission for unresolved ids to
+  pass certification.
+
+  *A narrower rule was argued for here — keep the row, say it cannot be named —
+  and overruled. A missing row is a defect an engineer finds from the error; a
+  row reading "Unknown species" is a defect a HUNTER reads, in a forest, with
+  no way to tell how much else on the card was invented.*
 - **A criticality flag.** What is loud is presentation; what is true is the
   engine. One judgement in two lanes is one judgement that can disagree with
   itself.
@@ -88,11 +110,29 @@ restore rather than as a choice.
 ## 6. Precedence: a link means what it says
 
 > **explicit URL state > the current explicit action > remembered session state > defaults**
+>
+> **SAME HUNT LINK → SAME INITIAL ANSWER.**
 
-Memory may hydrate state that is genuinely missing. It may **never** augment an
-explicit link in a way that changes what the link says. A URL naming any hunt
-dimension — zone, species, date, explore — is explicit, and no other dimension
-is filled from memory; a bare `/hunt` names nothing and is restored in full.
+An explicit link is restored onto **not at all** — not the place, not the
+species, not the date, not the camera, not the sheet's height, not a layer,
+**however compatible any of it looks** (owner, 2026-09-23). Compatibility is
+exactly the justification that lets an exception grow: a remembered place inside
+the link's own zone is compatible, a camera near it is compatible, a date inside
+the season is compatible, and one by one they make a link mean something
+different for each person who opens it.
+
+A URL naming any hunt dimension — zone, species, date, explore — is explicit. A
+bare `/hunt` names nothing, is not a link to anywhere, and is restored in full;
+that is what remembering is for. Recent places survive either way: they live
+inside the composer, are never shown until the field is opened, and are neither
+the answer nor the view.
+
+Nothing is lost that a hunter cannot reach. Once they search, use their
+location, choose a point or choose a species, that explicit action specialises
+the Hunt normally. What is forbidden is arriving there without having asked.
+
+And coordinates stay out of shared URLs until a location-sharing feature is
+deliberately designed.
 
 The defect this prevents: a link naming a zone and a date came back from restore
 carrying a species the device happened to remember, and the URL-sync effect then
@@ -100,13 +140,12 @@ wrote that species into the address bar. **A link that gains a species is a link
 that no longer means what it said** — the person it was sent to gets someone
 else's animal.
 
-The stored PLACE is the one exception, and it is not an exception to the rule
-above: it is kept only inside the link's own zone, it sharpens a zone answer
-into a point answer without changing which zone the link is about, and no
-coordinate ever reaches a URL — so the link a person shares still says exactly
-what they shared.
-
-Pinned by `urlBeatsMemory` in `scripts/certify-hunt-app.mjs`, which walks the
+Pinned by two scenarios, because they prove different things.
+`twoDevicesOneLink` seeds **two genuinely different histories** — one hunter
+last in Ontario after deer, one last in Québec after grouse at a remembered spot
+— opens the same link on both, and proves they converge on the same rows, the
+same camera, no species and no place. A seeded-versus-clean pair would pass
+while the real case failed. And `urlBeatsMemory` in `scripts/certify-hunt-app.mjs`, which walks the
 sequence the owner asked for: establish an Ontario hunt with a species and a
 camera, navigate in the same tab to an explicit Québec zone-and-date link with no
 species, and prove that Québec wins, that the camera frames it in **both** axes,

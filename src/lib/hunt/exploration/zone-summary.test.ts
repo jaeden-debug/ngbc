@@ -27,9 +27,9 @@ test("a zone card is the canonical engine's answer, asked about the whole zone",
     const expected = outcome.completeness === "NEEDS_INPUT" ? "CHECK_REQUIREMENTS"
       : outcome.regulation.status === "CONDITIONAL" || outcome.regulation.status === "OPEN" ? "SEASON_AVAILABLE"
       : outcome.regulation.status;
-    assert.equal(row.state, expected, row.name);
+    assert.equal(row.state, expected, row.speciesId);
   }
-  assert.equal(summary.counts.jurisdictionSpecies, entry.coverage().species.length);
+  assert.equal(summary.species.length, entry.coverage().species.length, "every recognised species is present");
 });
 
 test("a species that depends on the hunter is never shown as in season", async () => {
@@ -46,7 +46,7 @@ test("UNKNOWN stays UNKNOWN and is never drawn as CLOSED", async () => {
   assert.equal(stateOf(wmu71, "species:moose"), "UNKNOWN");
 
   const wmu718 = await summarizeZone({ layerId: "layer:ca-ab-wmu", designation: "718" }, "2026-09-21");
-  assert.equal(wmu718.counts.certifiedHere, 0);
+  assert.equal(wmu718.species.filter((entry) => entry.state !== "UNKNOWN" && entry.state !== "NOT_CERTIFIED").length, 0);
   assert.ok(wmu718.species.every((entry) => entry.state === "UNKNOWN"));
 
   // Algonquin: no small-game row names WMU 51, and absence there is not a closure.

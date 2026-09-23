@@ -390,7 +390,11 @@ const scenarios = {
       // The basemap settles one way or the other; with Google, its attribution has drawn.
       await waitFor(page, () => document.querySelector("[data-basemap]")?.getAttribute("data-basemap") !== "loading", 20_000);
       const basemap = await page.getAttribute("[data-basemap]", "data-basemap");
-      if (basemap === "google") await waitFor(page, () => [...document.querySelectorAll(".gm-style a, .gm-style button, .gm-style span")].some((element) => /Terms/.test(element.textContent ?? "")), 20_000);
+      /* Google draws its attribution after the map settles, and this scenario
+         runs fourteen viewports back to back — 20 s was short enough that a
+         loaded machine reported "not drawn" where the layout was fine. The
+         assertion below keeps its full strength; only the patience changes. */
+      if (basemap === "google") await waitFor(page, () => [...document.querySelectorAll(".gm-style a, .gm-style button, .gm-style span")].some((element) => /Terms/.test(element.textContent ?? "")), 45_000);
       await page.waitForTimeout(700);
       const layout = await page.evaluate(() => {
         const sheet = document.querySelector("section[data-layout]")?.getBoundingClientRect();
@@ -889,6 +893,74 @@ const scenarios = {
     check(s, "a zone that does not exist is still refused on a phone", refused);
     await context.close();
   },
+
+  /*
+   * SAME HUNT LINK → SAME INITIAL ANSWER.
+   *
+   * `urlBeatsMemory` proves one client is not polluted. This proves two
+   * DIFFERENTLY polluted clients converge, which is the property a shared link
+   * actually needs: two hunters, each with their own history, opening the same
+   * URL, must begin at the same answer. Neither side is clean on purpose — a
+   * seeded-versus-empty pair would pass while the real case failed.
+   */
+  async twoDevicesOneLink(browser) {
+    const s = "two hunters, one link, one answer";
+    const LINK = `${BASE}/hunt?zone=ca-qc-zone-10o&date=2026-09-23`;
+    const histories = [
+      {
+        who: "last in Ontario, after deer",
+        session: {
+          hunt: { label: "Bancroft, Ontario", latitude: 45.0573, longitude: -77.8558, origin: "search" },
+          zoneId: "management_zone:ca-on-wmu-57", speciesId: "species:white-tailed-deer", date: "2026-11-10",
+          camera: { latitude: 45.29, longitude: -77.73, zoom: 8 }, overlays: [], emphasis: "strong", snap: "full",
+          explore: false, recents: [{ label: "Bancroft, Ontario", latitude: 45.0573, longitude: -77.8558, origin: "search" }],
+        },
+      },
+      {
+        who: "last in Québec, after grouse, at a remembered spot",
+        session: {
+          hunt: { label: "Maniwaki, Québec", latitude: 46.3778, longitude: -75.9808, origin: "search" },
+          zoneId: "management_zone:ca-qc-zone-10o", speciesId: "species:ruffed-grouse", date: "2026-10-01",
+          camera: { latitude: 46.1, longitude: -76.1, zoom: 10 }, overlays: [], emphasis: "light", snap: "half",
+          explore: false, recents: [{ label: "Maniwaki, Québec", latitude: 46.3778, longitude: -75.9808, origin: "search" }],
+        },
+      },
+    ];
+
+    const answers = [];
+    for (const history of histories) {
+      const { context, page } = await newPage(browser, { width: 390, height: 844 });
+      await page.goto(`${BASE}/hunt`);
+      await page.evaluate((session) => localStorage.setItem("north-ground.hunt.session.v1", JSON.stringify(session)), history.session);
+      await page.goto(LINK);
+      await waitFor(page, () => document.getElementById("hunt-zone-title")?.textContent === "Zone 10 West", 40_000);
+      await page.waitForTimeout(6_000);
+      // Google draws its attribution after the map settles; wait rather than race it.
+      await waitFor(page, () => [...document.querySelectorAll("a")].some((a) => /maps\.google\.com\/maps\?ll=/.test(a.href)), 30_000);
+      answers.push({ who: history.who, ...(await page.evaluate(() => {
+        const link = [...document.querySelectorAll("a")].find((a) => /maps\.google\.com\/maps\?ll=/.test(a.href));
+        const body = document.querySelector("[class*=sheetBody]");
+        return {
+          zone: document.getElementById("hunt-zone-title")?.textContent ?? null,
+          url: location.search,
+          species: document.querySelector("[class*=speciesName]")?.textContent?.trim() ?? "",
+          // The rows the card opens on ARE the answer at zone scope.
+          rows: [...(body?.querySelectorAll("[class*=speciesRowName]") ?? [])].map((e) => e.textContent?.trim() ?? "").join(","),
+          place: document.querySelector("input[type='search']")?.value ?? "",
+          camera: link ? new URL(link.href).searchParams.get("ll") : null,
+        };
+      })) });
+      await context.close();
+    }
+
+    const [a, b] = answers;
+    check(s, "both open on the zone the link names", a.zone === "Zone 10 West" && b.zone === "Zone 10 West", JSON.stringify(answers));
+    check(s, "both show the same answer", a.rows === b.rows && a.rows.length > 0, `${a.rows} :: ${b.rows}`);
+    check(s, "neither link gains a species", !/species=/.test(a.url) && !/species=/.test(b.url) && !a.species && !b.species, `${a.url} :: ${b.url}`);
+    check(s, "neither carries a remembered place into the link", a.place === "" && b.place === "", `"${a.place}" :: "${b.place}"`);
+    check(s, "and both cameras frame the same zone", a.camera === b.camera, `${a.camera} :: ${b.camera}`);
+  },
+
 
   /*
    * PRECEDENCE: explicit URL > explicit action > remembered session > defaults.

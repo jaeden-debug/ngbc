@@ -70,7 +70,6 @@ export interface ZoneRef {
 
 export interface SpeciesZoneSummary {
   speciesId: CanonicalId<"species">;
-  name: string;
   state: ExplorationState;
   /** The certified season window containing the date, when the engine states one. */
   season?: { opens: string; closes: string };
@@ -130,7 +129,6 @@ export interface ZoneSummary {
    * read from the authority's layers. Null where the jurisdiction has none indexed.
    */
   specialAreas: Array<{ name: string; layer: string; statedAs: string; species: string[] }> | null;
-  counts: { certifiedHere: number; inSeason: number; dependsOnHunter: number; jurisdictionSpecies: number };
   /** The most recent date the underlying rules were read from their source. */
   verifiedAt: string | null;
 }

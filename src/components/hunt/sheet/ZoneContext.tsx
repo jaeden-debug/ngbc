@@ -39,6 +39,49 @@ function readableDay(iso: string): string | null {
 }
 
 /**
+ * What a species is CALLED, resolved through the one presentation path.
+ *
+ * The server sends ids and nothing else (owner, 2026-09-23): a name from the
+ * engine would be a second naming system the moment there are two locales.
+ *
+ * THREE LAYERS, and they must not be conflated (owner ruling, 2026-09-23):
+ *
+ *  1. The INVARIANT. Every species id the canonical zone summary returns must
+ *     resolve here. That is enforced at build and test time, and an unresolved
+ *     id is a FAILING invariant — not a case to design around.
+ *  2. This, the ESCAPE HATCH, for a violation that reaches production anyway:
+ *     fail the ROW, never the Hunt. Every other row survives.
+ *  3. The loophole, closed explicitly: `speciesName` in `zone-summary.ts`
+ *     prettifies `species:foo-bar` into "Foo bar". **That is not resolution.**
+ *     It invents a name for any id at all, so relying on it would make the
+ *     invariant pass on everything and put a name North Ground made up in
+ *     front of a hunter.
+ *
+ * I had argued for keeping the row and saying it could not be named. The owner
+ * ruled otherwise and the reasoning holds: a missing row is a defect an
+ * engineer finds from the error, while a row carrying "Unknown species" is a
+ * defect a HUNTER reads, standing in a forest, with no way to tell how much
+ * else on the card is invented. The hatch is not permission for unresolved ids
+ * to pass certification.
+ */
+function nameOf(speciesId: string, names: Map<string, string>): string | null {
+  return names.get(speciesId) ?? null;
+}
+
+const reported = new Set<string>();
+/** Loud where engineers look, silent where hunters do. */
+function reportUnnameable(speciesId: string, where: string, zone: string): void {
+  const key = `${where}:${speciesId}`;
+  if (reported.has(key)) return;
+  reported.add(key);
+  console.error("[hunt] zone summary returned a species id the presentation registry cannot resolve", {
+    speciesId, surface: where, zone,
+    contract: "docs/contracts/hunt-sheet-presentation.md#3",
+    effect: "row omitted; every other species still rendered",
+  });
+}
+
+/**
  * "What can I hunt here?" — the zone's certified species as rows, grouped by
  * what the rules say across the zone on the day.
  *
@@ -59,7 +102,7 @@ export function InSeasonHere({ summary, options, onChoose }: {
   options: SpeciesSelectorOption[];
   onChoose: (id: CanonicalId<"species">) => void;
 }) {
-  if (summary.counts.jurisdictionSpecies === 0) {
+  if (summary.species.length === 0) {
     return (
       <p className={styles.quiet}>
         North Ground has not certified hunting rules in {summary.zone.jurisdictionName} yet. The boundary is official; what applies inside it is not covered.
@@ -81,18 +124,24 @@ export function InSeasonHere({ summary, options, onChoose }: {
     );
   }
   const media = new Map(options.map((option) => [option.id as string, option.image ?? null]));
+  const names = new Map(options.map((option) => [option.id as string, option.displayName]));
   const row = (entry: SpeciesZoneSummary) => {
     const opens = entry.season ? readableDay(entry.season.opens) : null;
     const closes = entry.season ? readableDay(entry.season.closes) : null;
     const image = media.get(entry.speciesId) ?? null;
+    const name = nameOf(entry.speciesId, names);
+    if (!name) {
+      reportUnnameable(entry.speciesId, "zone card row", summary.zone.officialName);
+      return null;
+    }
     return (
       <li key={entry.speciesId}>
         <button type="button" className={styles.speciesRow} data-state={entry.state} onClick={() => onChoose(entry.speciesId)}>
           <span className={styles.speciesRowMedia} aria-hidden="true">
-            {image ? <SpeciesPrimaryImage media={image} variant="avatar" /> : <SpeciesImagePlaceholder label={entry.name} />}
+            {image ? <SpeciesPrimaryImage media={image} variant="avatar" /> : <SpeciesImagePlaceholder label={name} />}
           </span>
           <span className={styles.speciesRowText}>
-            <span className={styles.speciesRowName}>{entry.name}</span>
+            <span className={styles.speciesRowName}>{name}</span>
             {opens && closes ? <span className={styles.speciesRowSeason}>{opens} – {closes}</span> : null}
           </span>
           {/* The state travels with the row as a word for assistive technology,
@@ -175,11 +224,12 @@ export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, 
 }
 
 /** The long form: every certified species by state, restricted areas, requirements and facts. */
-export function ZoneSummaryDetail({ summary, parts }: { summary: ZoneSummary; parts?: number }) {
+export function ZoneSummaryDetail({ summary, options, parts }: { summary: ZoneSummary; options: SpeciesSelectorOption[]; parts?: number }) {
+  const names = new Map(options.map((option) => [option.id as string, option.displayName]));
   const groups: ZoneState[] = ["SEASON_AVAILABLE", "SEASON_EXCEPT_AREAS", "CHECK_REQUIREMENTS", "NEEDS_VERIFICATION", "CONFLICT", "CLOSED", "UNKNOWN"];
   return (
     <div className={styles.detail}>
-      {summary.counts.certifiedHere > 0 ? (
+      {summary.species.some((entry) => entry.state !== "UNKNOWN" && entry.state !== "NOT_CERTIFIED") ? (
         <section aria-label="Certified species in this zone">
           <h3 className={styles.detailTitle}>What the certified rules say for the whole zone</h3>
           {groups.map((state) => {
@@ -188,7 +238,16 @@ export function ZoneSummaryDetail({ summary, parts }: { summary: ZoneSummary; pa
             return (
               <div key={state} className={styles.stateGroup}>
                 <p className={styles.stateGroupTitle}><StateChip state={state} /> <span className={styles.count}>{entries.length}</span></p>
-                <p className={styles.detailText}>{entries.map((entry) => entry.name).join(" · ")}</p>
+                {/* Same rule as the rows: a name comes from the presentation
+                    path or it is said to be missing — never invented, never a
+                    raw id, and never dropped. */}
+                <p className={styles.detailText}>
+                  {entries.flatMap((entry) => {
+                    const name = nameOf(entry.speciesId, names);
+                    if (!name) { reportUnnameable(entry.speciesId, "zone summary detail", summary.zone.officialName); return []; }
+                    return [name];
+                  }).join(" · ")}
+                </p>
               </div>
             );
           })}
@@ -226,7 +285,9 @@ export function ZoneSummaryDetail({ summary, parts }: { summary: ZoneSummary; pa
       ) : null}
 
       <dl className={styles.facts}>
-        <div><dt>Certified here</dt><dd>{summary.counts.certifiedHere} of {summary.counts.jurisdictionSpecies} species</dd></div>
+        {/* Derived from the rows above, so a count can never disagree with the
+            list beside it — which is why the server no longer sends one. */}
+        <div><dt>Certified here</dt><dd>{summary.species.filter((entry) => entry.state !== "UNKNOWN" && entry.state !== "NOT_CERTIFIED").length} of {summary.species.length} species</dd></div>
         <div><dt>Authority</dt><dd>{summary.zone.authority}</dd></div>
         <div><dt>Official name</dt><dd>{summary.zone.officialName}</dd></div>
         {parts && parts > 1 ? <div><dt>Published as</dt><dd>{parts.toLocaleString("en-CA")} parts</dd></div> : null}

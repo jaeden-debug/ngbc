@@ -245,48 +245,52 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     if (restoredRef.current) return;
     restoredRef.current = true;
     const stored = readSession(memory(), todayIso());
+    /*
+     * PRECEDENCE — explicit URL > the current explicit action > remembered
+     * session > defaults. The invariant it exists for:
+     *
+     *     SAME HUNT LINK → SAME INITIAL ANSWER
+     *
+     * Two hunters with different histories must open the same link onto the
+     * same answer, or a shared link is not a shared thing at all.
+     *
+     * So an explicit link is restored onto NOT AT ALL. Not the place, not the
+     * species, not the date, not the camera, not the sheet's height, not a
+     * layer — however compatible any of it looks. Compatibility is exactly the
+     * justification that lets an exception grow: a remembered place inside the
+     * link's own zone is compatible, a camera near it is compatible, a date
+     * inside the season is compatible, and one by one they make a link mean
+     * something different for each person who opens it. (Owner, 2026-09-23,
+     * overruling a narrower rule I had argued for.)
+     *
+     * Nothing is lost that a hunter cannot reach: once they search, use their
+     * location, pick a point or choose a species, that explicit action
+     * specialises the Hunt normally. What is forbidden is arriving there
+     * without having asked.
+     *
+     * A bare `/hunt` names nothing, so it is not a link to anywhere and memory
+     * restores it in full. That is what remembering is for.
+     *
+     * Recent places are the one thing kept either way: they live inside the
+     * composer, are never shown until someone opens the field, and are neither
+     * the answer nor the view.
+     */
     setRecents(stored.recents);
+    const linkIsExplicit = Boolean(initialUrl.zoneId || initialUrl.speciesId || initialUrl.date || initialUrl.explore || linkIssues);
+    if (linkIsExplicit) return;
+
     if (stored.overlays.length) setOverlaysOn(stored.overlays);
     if (stored.emphasis) setEmphasis(stored.emphasis);
-    /*
-     * PRECEDENCE: explicit URL state > the current explicit action > remembered
-     * session state > defaults.
-     *
-     * Memory may hydrate state that is genuinely MISSING; it may never augment
-     * an explicit link in a way that changes what the link says. A link naming
-     * a zone and a date used to come back from this effect carrying a species
-     * the device happened to remember — and then the URL-sync effect wrote that
-     * species INTO the address bar. A link that gains a species is a link that
-     * no longer means what it said: the hunter who shared it sent their zone,
-     * and whoever opened it got someone else's animal.
-     *
-     * So a link that names ANY hunt dimension is explicit, and no other
-     * dimension is filled from memory. A bare `/hunt` names nothing and is
-     * restored in full, which is what remembering is for.
-     *
-     * The stored PLACE is not in this rule and is handled below: it is only
-     * kept inside the link's own zone, it sharpens a zone answer into a point
-     * answer without changing which zone the link is about, and no coordinate
-     * ever reaches the URL — so the link a person shares still says exactly
-     * what they shared.
-     */
-    const linkIsExplicit = Boolean(initialUrl.zoneId || initialUrl.speciesId || initialUrl.date || initialUrl.explore || linkIssues);
-    if (!linkIsExplicit && stored.speciesId) dispatchSession({ type: "SPECIES_CHOSEN", speciesId: stored.speciesId as CanonicalId<"species"> });
-    if (!linkIsExplicit && stored.date) dispatchSession({ type: "DATE_CHOSEN", iso: stored.date });
-    /* The link is about a zone; the stored place is only kept when it is the
-       same zone, so a reload keeps the exact spot rather than falling back to
-       the whole zone — and a link to somewhere else is never overridden. */
-    /* A link that named anything — even something unreadable — is what this
-       visit is about, so nothing is restored over it. */
-    const linkElsewhere = Boolean(linkIssues) || Boolean(initialUrl.zoneId && stored.zoneId !== initialUrl.zoneId);
-    if (stored.hunt && !linkElsewhere) {
+    if (stored.speciesId) dispatchSession({ type: "SPECIES_CHOSEN", speciesId: stored.speciesId as CanonicalId<"species"> });
+    if (stored.date) dispatchSession({ type: "DATE_CHOSEN", iso: stored.date });
+    if (stored.hunt) {
       // The same path a search takes, so the restored state is the searched state.
       dispatchMap({ type: "HUNT_SET", location: stored.hunt });
       setSnap(stored.snap && stored.snap !== "peek" ? stored.snap : "half");
-    } else if (!initialUrl.zoneId && !linkIssues && stored.zoneId) {
+    } else if (stored.zoneId) {
       setRestoredZoneId(stored.zoneId);
       if (stored.snap) setSnap(stored.snap);
-    } else if (stored.snap && !initialUrl.zoneId) {
+    } else if (stored.snap) {
       setSnap(stored.snap);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -1282,7 +1286,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
             the map` are rows in the field a hunter opens to search. Offering
             them twice is what the owner meant by "too much", and the composer
             already carries their explanation and their failure messages. */}
-        {detailed && summaryReady && !pointForEvaluation ? <ZoneSummaryDetail summary={summaryReady} parts={storedSelected?.parts} /> : null}
+        {detailed && summaryReady && !pointForEvaluation ? <ZoneSummaryDetail summary={summaryReady} options={speciesOptions} parts={storedSelected?.parts} /> : null}
         {!detailed && summaryReady && !pointForEvaluation ? (
           <button type="button" className={styles.moreButton} onClick={() => setSnap("full")}>
             Everything the rules say about {presented.fullLabel}
