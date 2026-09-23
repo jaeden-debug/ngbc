@@ -205,6 +205,15 @@ false claim about the law, not merely an unhelpful one.
 
 *Added 2026-09-23.*
 
+**This is the detector-from-the-first-jurisdiction pattern arriving in grammar
+rather than in a regex** — a reading taken from the first Part that needed it,
+correct there and silently wrong everywhere else. Manitoba's "the portion lying
+north of latitude 57°N and the portion lying east of longitude 94°W" is a
+UNION of two portions; Newfoundland's "the portion of Labrador lying north of
+latitude 54°24′N and east of longitude 65°W" is an INTERSECTION of two
+conditions on one portion. The tell is whether "the portion" is repeated, and
+nothing downstream can catch getting it wrong.
+
 Never what the word suggests. Three readings of "and" in Schedule 3, each
 settled by its operands and each wrong if carried to the next:
 
