@@ -484,6 +484,150 @@ not range.** They must not be relabelled as range if they are ever ingested.
 | Every other province | NOT YET RESEARCHED |
 | Bird range, anywhere in Canada | NOT FOUND in the searches run |
 
+
+---
+
+## Bird evidence, and the two leads closed
+
+Second research pass, 2026-09-23. Both open leads now have verdicts rather than
+remaining leads.
+
+### NatureServe Canada EBAR — NOT_PUBLISHED for game species **[reached]**
+
+The most plausible remaining source of Canadian range geometry for species that
+are *not* at risk. It is real, it is live, its licence is clean — and it holds
+none of what North Ground needs.
+
+Queried live against its own public feature service
+(`gis.natureserve.ca/arcgis/rest/services/EBAR-KBA/EBARPublic/FeatureServer`,
+layer 1), counting range polygons by scientific name:
+
+| Genus | Features |
+|---|---|
+| *Alces* (moose) | **0** |
+| *Odocoileus* (white-tailed and mule deer) | **0** |
+| *Cervus* (elk) | **0** |
+| *Ursus americanus* (black bear) | **0** |
+| *Bonasa* (ruffed grouse) | **0** |
+| *Meleagris* (wild turkey) | **0** |
+| *Branta* (geese) | **0** |
+| **Whole layer** | **21,706** |
+
+So this is a decisive negative, not an empty service: EBAR holds 21,706 range
+polygons and not one of them is a game species. Its 34 mammals are bats, shrews,
+prairie dogs, badger, swift fox and similar — a species-at-risk product, exactly
+as its own scope statement says (COSEWIC priorities, Key Biodiversity Area
+trigger species, ECCC priorities).
+
+The licence is CC BY 4.0 and would have permitted commercial use. That is not
+the blocker; the absence of the species is. NatureServe also states the project
+**concluded 31 March 2026 due to funding constraints.**
+
+**Do not reopen this lead** unless the species list changes.
+
+### eBird Status and Trends — LICENCE_BLOCKED **[reached]**
+
+eBird publishes exactly what a heat map would want: modelled seasonal range and
+weekly relative abundance for the game birds North Ground lacks. It is barred.
+
+Read verbatim at <https://ebird.org/about/products-access-terms-of-use>
+(2026-09-23), under the section heading **"Websites, web-based platforms, mobile
+applications, and decision-support tools"** — a heading that describes this
+product precisely:
+
+> "No use of eBird Status and Trends Data Products is permitted without the prior
+> written consent of the Cornell Lab of Ornithology."
+
+And separately:
+
+> "Use for Commercial Purposes is not covered in these Terms, and require
+> separate permission, which may be requested at ebird@cornell.edu."
+
+Two independent bars, and the terms add that where several uses apply, "the most
+restrictive type of use shall apply". Nothing may be built on this before
+written permission. The contact is on record; whether to ask is an owner
+decision.
+
+### Birds Canada / NatureCounts — LICENCE_PENDING, and the wrong shape **[reached]**
+
+Breeding bird atlases publish **observation records on a 10 × 10 km square**, not
+range geometry. There is no blanket licence: each dataset carries its own policy,
+custodian approval is required at most access levels, and the default is stated
+plainly — "As a general rule, data acquired from NatureCounts should not be
+redistributed directly to third parties or made available publicly for download."
+
+Even resolved, this is tabular observation evidence, not a range layer.
+
+### ECCC waterfowl surveys — USABLE, and they are survey evidence, not range **[registry of the research pass]**
+
+The Canadian Wildlife Service publishes waterfowl survey data under the **Open
+Government Licence – Canada**, machine-readable and commercially usable. The
+Eastern Waterfowl Survey's own files were downloaded during research: a 12.4 MB
+file geodatabase and a KMZ carrying **332 survey-plot polygons**, covering
+Ontario, Québec and Atlantic Canada.
+
+ECCC's own description of the unit: helicopters survey "square plots located
+either systematically (Ontario and Québec) or semi-randomly (Atlantic region)",
+historically "202 10x10 km (100 km²) plots".
+
+**This is T1 measured survey observation at POLYGON precision — it is not
+range.** It says where CWS flew and what they counted. A plot with no
+observations is a plot, not an absence of ducks.
+
+Roughly ten further CWS waterfowl survey packages exist in the same catalogue
+under the same licence; only this one's files were opened.
+
+**No federal bird *range* geometry exists.** The North American Breeding Bird
+Survey "maps for Canada" are PDFs of volunteer route maps, not distribution.
+
+### Yukon Wildlife Key Areas — USABLE, and they are not range either **[reached]**
+
+Outside this document's provincial scope, but recorded because it is the only
+place in Canada with usable game-*bird* geometry, and Yukon is served.
+
+Queried live against `mapservices.gov.yk.ca/.../GY_Biological/MapServer`:
+
+| Layer | Features |
+|---|---|
+| WKA Sharp-tailed Grouse – 250k | 25 |
+| WKA Waterfowl – 250k | 244 |
+| WKA Moose – 250k | 359 |
+| WKA Elk – 250k | 13 |
+
+**Hard line: a key area is not a range.** Yukon's own description — "Wildlife Key
+Areas (WKA) are locations used by wildlife for critical, seasonal life functions
+… identified by interpreting observed locations of wildlife at key times of year,
+not through intensive habitat assessment". Relabelling these as range would claim
+the species is absent everywhere else in Yukon, which the layer does not say and
+which is false.
+
+**Licence caveat, and it is unresolved.** OGL–Yukon is reported to permit
+commercial use, but `yukon.ca` returns **HTTP 403** to programmatic access,
+including to this snapshot's own check. The verbatim text available came from an
+Internet Archive capture dated 2026-08-31, not the live page. **A person must
+read the live licence before anything is built on this.**
+
+### Bird evidence: verdict
+
+| Source | Verdict |
+|---|---|
+| NatureServe Canada EBAR | **NOT_PUBLISHED** — 21,706 polygons, zero game species; lead closed |
+| eBird Status and Trends | **LICENCE_BLOCKED** — commercial and decision-support both barred |
+| Birds Canada / NatureCounts atlases | **LICENCE_PENDING** — and observation records, not range |
+| ECCC / CWS waterfowl surveys | **USABLE** — OGL-Canada; survey plots, not range |
+| ECCC bird range geometry | **NOT_PUBLISHED** |
+| Breeding Bird Survey maps for Canada | **PDF_ONLY** — route maps, not distribution |
+| Yukon Wildlife Key Areas | **USABLE**, licence unverified live; key areas, not range |
+| BC sharp-tailed grouse leks, CRIMS geese | **LICENCE_BLOCKED** — catalogue "Access Only" |
+| Any other provincial game-bird range | **NOT_FOUND** |
+
+**There is no Canada-wide game-bird range geometry available to a commercial
+platform.** What exists is jurisdiction-scoped survey and key-area evidence,
+which fits the evidence model — and which must never be presented as range.
+
+Ruffed grouse, which has certified rules in Hunt, still has no evidence layer
+anywhere in Canada.
+
 ---
 
 ## Population and survey, seasonal range, habitat
