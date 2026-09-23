@@ -2113,13 +2113,21 @@ fee appears only when it is from "the licence year in force". That contained a
 jurisdiction-specific assumption which does not hold — most Québec big-game
 licences are not licence-year artefacts at all.*
 
-A fee appears only when North Ground has certified that it belongs to the
-licence, permit or authorization applicable to the evaluated hunt, AND that the
-fee source is current for that authorization's own **validity basis**. A
-validity basis may be a licence year, a calendar period, a season, fixed dates,
-an event-based expiry, a tagging or harvest event, or another condition the
-authority defines. **Never invent an annual licence period where the authority
-defines none**; model the difference rather than normalising it away.
+A fee appears only when North Ground has certified **two independent things**:
+that the fee belongs to the licence, permit or authorization applicable to the
+evaluated hunt, and that **the fee source is current in its own terms**. An
+authorization also carries its own **validity basis** — a licence year, a
+calendar period, a season, fixed dates, an event-based expiry, a tagging or
+harvest event, or another condition the authority defines. **Never invent an
+annual licence period where the authority defines none**; model the difference
+rather than normalising it away.
+
+*Clarified 2026-09-23: the fee's currentness and the authorization's validity
+are separate facts and must not be collapsed into one flag. Québec indexes its
+fees annually on 1 April while the big-game licence those fees buy expires at
+season end or on tagging — so a fee can be perfectly current while the
+authorization has expired, and the reverse. A single "current" flag can only be
+right by coincidence.*
 
 The hunter's category must also be known, and resident and non-resident figures
 are never mixed. Where the category matters and is unknown, the hunter is asked
