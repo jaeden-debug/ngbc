@@ -861,7 +861,25 @@ export function servingLayersAt(latitude: number, longitude: number): ZoneLayer[
     longitude >= layer.bounds.minLongitude && longitude <= layer.bounds.maxLongitude);
 }
 
-export const COVERAGE_WORDING: Record<ZoneCoverageStatus, { label: string; detail: string }> = {
+/*
+ * WORDING FOR `zoneCoverage()`'s RESULT, AND FOR NOTHING ELSE.
+ *
+ * `ZoneCoverageStatus` is returned by two things that mean different things:
+ *
+ *   layer.coverage        the standing of the BOUNDARY layer
+ *   zoneCoverage(layer, z) whether the RULES are certified for that zone —
+ *                          it folds in `rulesServing` and the certified
+ *                          designations, and says so in its own comment
+ *
+ * These sentences are rules claims. Passing `layer.coverage` to them prints a
+ * statement about rules from a fact about geometry — which is exactly the
+ * defect the zone list carried until British Columbia's certified CLOSED
+ * answers made it visible. The conflation was authored here.
+ *
+ * So the record is not exported. `zoneCoverageWording(layer, zoneName)` is,
+ * because it cannot be handed the wrong input.
+ */
+const COVERAGE_WORDING: Record<ZoneCoverageStatus, { label: string; detail: string }> = {
   VERIFIED: {
     label: "Certified",
     detail: "Seasons and limits here are encoded from the authority's current published record.",
@@ -876,6 +894,18 @@ export const COVERAGE_WORDING: Record<ZoneCoverageStatus, { label: string; detai
   },
   UNAVAILABLE: {
     label: "Not available",
-    detail: "No reviewed official source is available for this area yet.",
+    detail: "North Ground has certified no rules for this area, and has no reviewed official source for them yet.",
   },
 };
+
+/**
+ * How to describe what North Ground can answer inside a zone.
+ *
+ * Takes the layer and the zone rather than a status, so the geometry's standing
+ * cannot be passed where a rules claim is printed. The boundary's own standing
+ * is a separate question with a separate answer — `layer.coverage` and
+ * `legalStanding` — and it is not this sentence.
+ */
+export function zoneCoverageWording(layer: ZoneLayer, zoneName: string): { label: string; detail: string } {
+  return COVERAGE_WORDING[zoneCoverage(layer, zoneName)];
+}
