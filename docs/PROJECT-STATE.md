@@ -892,6 +892,19 @@ groups, **zero unmatched cells and zero unused groups**, with the single
 every unit the regulation names exists, 177 of 179 fall in a federal zone, and
 the two that fall in none (728, 730) answer UNKNOWN rather than being assumed.
 
+**Saskatchewan — decided 2026-09-23 (moderator), so wave 2 does not re-litigate
+it.** SK's federal districts name provincial zones ("Zones 43 and 47 to 76",
+plus the named Saskatoon and Regina-Moose Jaw zones), but SK is a LIVE_SERVICE
+layer by owner decision and holds no stored identifier list to check those
+references against. The fix is a **live identifier check in the build**, not a
+stored inventory: storing one would quietly reverse the live-service-only
+decision and create a copy whose staleness nobody watches. At build time, ask
+SK's own service for its zone identifiers, expand the federal references
+against that answer, and record the retrieval with a hash like any other source
+read. **If the service is unreachable at build time the build fails**, rather
+than emitting unverified references — the same posture as every other source
+check here.
+
 **Not yet wired into Hunt.** Migratory-bird queries still answer UNKNOWN until
 this is certified in production. Saskatchewan is deferred because it is a
 LIVE_SERVICE layer with no stored identifier list to check the regulation's

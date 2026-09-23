@@ -833,6 +833,19 @@
         "jurisdiction:ca-pe"
       ],
       "verificationStatus": "verified"
+    },
+    {
+      "id": "source:ca-federal-migratory-birds-regulations",
+      "authority": "Environment and Climate Change Canada",
+      "title": "Migratory Birds Regulations, 2022 (SOR/2022-105)",
+      "url": "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2022-105/FullText.html",
+      "publisher": "Department of Justice Canada",
+      "retrievedAt": "2026-09-23T00:00:00Z",
+      "type": "official",
+      "jurisdictionIds": [
+        "jurisdiction:ca-federal"
+      ],
+      "verificationStatus": "verified"
     }
   ],
   "claims": [
