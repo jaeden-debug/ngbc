@@ -158,14 +158,17 @@ test("an answer the vocabulary does not offer leaves the question open", () => {
 test("every answer carries Alberta's standing and legal-time wording", () => {
   const result = evaluate(RUFFED, "2026-10-10", PLACES.wmu102).result!;
   /*
-   * Alberta spans more than one IANA zone, so no wall-clock window is stated —
-   * but the RULE'S OWN WORDING survives as the reason, which is the property
-   * that matters. NOT_CERTIFIED here is a statement about the timezone, not
-   * about the law, and it still tells a hunter what the law says.
+   * Alberta states a real window now. The old expectation here was that it
+   * could not, on the premise that Alberta "spans more than one IANA zone" —
+   * which the tz database disproves: `America/Edmonton` covers the province
+   * whole. Withholding a legal time for a limitation that does not apply is
+   * the §8 stricter-than-evidence failure, and it had been shipped.
    */
-  assert.equal(result.legalTime.status, "NOT_CERTIFIED");
-  assert.match(legalTimeSummary(result.legalTime), /one-half hour after sunset/);
-  assert.equal(result.legalTime.status === "NOT_CERTIFIED" && result.legalTime.authority, "Government of Alberta");
+  assert.equal(result.legalTime.status, "RESOLVED");
+  assert.match(legalTimeSummary(result.legalTime), /1\/2 hour after sunset/);
+  assert.match(legalTimeSummary(result.legalTime), /America\/Edmonton/);
+  /* The pinpoint travels with the window, not only with a refusal. */
+  assert.match(legalTimeSummary(result.legalTime), /s\. 28/);
   assert.ok(result.limitations.some((line) => /neither a legal document/.test(line.text)));
   assert.ok(result.limitations.some((line) => /Aboriginal or Métis harvesting rights/.test(line.text)));
 });

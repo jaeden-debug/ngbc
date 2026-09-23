@@ -1,6 +1,8 @@
 import { legalTimeNotCertified } from "./legal-time.ts";
 import { general } from "../limitation.ts";
-import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
+import type { CanonicalId, IsoDate, SourceRecord } from "../../content-contract/index.ts";
+import { timeZoneAtPoint } from "../time-zone.ts";
+import { albertaLegalTime } from "./alberta-legal-time.ts";
 import bundleJson from "../../../../content/regulatory/ca-ab-2026.json" with { type: "json" };
 import {
   conditionalCoverage, evaluateConditional,
@@ -98,11 +100,23 @@ export const ALBERTA_VOCABULARY: ConditionalVocabulary = {
       sourceSection: "p. 47, Big Game Seasons (■)",
     },
   ],
+  /*
+   * The fallback, for a zone-scoped question where no point is known. The
+   * point answer comes from `legalTimeAt` below and is computed from the ACT,
+   * not from the guide this sentence used to cite: a summary is where the rule
+   * is described, not where it is enacted.
+   */
   legalTime: legalTimeNotCertified(
-      "Alberta makes it unlawful to hunt any wildlife or discharge a firearm between one-half hour after sunset and " +
-      "one-half hour before sunrise (2026 guide, p. 30). North Ground has not certified exact astronomical times for this result.",
+      "Alberta makes it unlawful to hunt wildlife, except by trapping, between one-half hour after sunset and " +
+      "one-half hour before sunrise (Wildlife Act, RSA 2000, c. W-10, s. 28). North Ground states exact times for a " +
+      "point, not for a whole zone.",
       "Government of Alberta",
     ),
+  legalTimeAt: (speciesId, place, date) => {
+    if (place.scope === "ZONE") return undefined;
+    const timezone = timeZoneAtPoint("jurisdiction:ca-ab");
+    return timezone ? albertaLegalTime(speciesId, place, date as IsoDate, timezone) : undefined;
+  },
   standingLimitations: ALBERTA_BUNDLE.limitations.map((text) => general(text)),
   standingSourceIds: [],
   describe: (dimension, value) => {
