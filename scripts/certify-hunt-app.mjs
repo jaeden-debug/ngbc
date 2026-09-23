@@ -1272,7 +1272,122 @@ const scenarios = {
   },
 
 
-  /*
+    /*
+   * THE KEYBOARD STATE MACHINE, END TO END.
+   *
+   * normal -> composer focused -> keyboard-sized viewport -> search submitted
+   * -> composer blurred -> normal viewport, at two widths.
+   *
+   * Every assertion here is one the owner's real-device screenshots would have
+   * failed. The mechanism is the one WebKit actually uses and the one nothing
+   * in the code was reading: a keyboard shrinks the visual viewport AND scrolls
+   * it down, so `offsetTop` goes non-zero while `position: fixed` stays pinned
+   * to the layout viewport. Simulating only the height reproduces nothing,
+   * which is exactly how this shipped.
+   */
+  async keyboardStateMachine(browser) {
+    const s = "the keyboard state machine";
+    for (const width of [375, 320]) {
+      const { context, page, consoleErrors } = await newPage(browser, { width, height: 812 });
+      await page.goto(`${BASE}/hunt`);
+      await mapReady(page);
+      await page.waitForTimeout(2_000);
+
+      const geometry = () => page.evaluate(() => {
+        const view = window.visualViewport;
+        const bandTop = Math.round(view?.offsetTop ?? 0);
+        const bandBottom = bandTop + Math.round(view?.height ?? window.innerHeight);
+        const sheet = document.querySelector("section[data-layout]");
+        const rect = sheet?.getBoundingClientRect();
+        const shell = document.querySelector("[data-hunt-root]")?.getBoundingClientRect();
+        const field = document.querySelector("input[type='search']")?.getBoundingClientRect();
+        const scroller = sheet?.querySelector("[data-scroll='true']");
+        /* Any element other than the intended scroller that has become
+           scrollable is a second owner of vertical scrolling, which is how
+           content gets navigated by the document instead of by the sheet. */
+        const others = [];
+        for (const element of document.querySelectorAll("html, body, [class]")) {
+          if (element === scroller) continue;
+          const style = getComputedStyle(element);
+          if (!["auto", "scroll"].includes(style.overflowY)) continue;
+          if (element.scrollHeight <= element.clientHeight + 2) continue;
+          others.push(`${element.tagName.toLowerCase()}.${String(element.className).split(" ")[0].slice(-18)}`);
+        }
+        return {
+          band: [bandTop, bandBottom],
+          shell: [Math.round(shell?.top ?? -1), Math.round(shell?.bottom ?? -1)],
+          /* The void: ground inside the visible band that the shell does not
+             cover. In the owner's screenshots this is the black strip, and it
+             is the same missing offsetTop seen from the other end. */
+          uncovered: shell ? Math.round(Math.max(0, bandBottom - shell.bottom) + Math.max(0, shell.top - bandTop)) : -1,
+          sheetTop: Math.round(rect?.top ?? -1),
+          topOnScreen: rect ? rect.top >= bandTop - 1 : false,
+          fieldOnScreen: field ? field.top >= bandTop - 1 && field.bottom <= bandBottom + 1 : false,
+          scroll: scroller ? { height: scroller.scrollHeight, client: scroller.clientHeight } : null,
+          otherScrollers: others,
+          focused: document.activeElement?.tagName ?? "",
+          isField: document.activeElement === document.querySelector("input[type='search']"),
+        };
+      });
+      const keyboard = (on) => page.evaluate((open) => {
+        const view = window.visualViewport;
+        Object.defineProperty(view, "height", { configurable: true, get: () => (open ? 470 : 812) });
+        Object.defineProperty(view, "offsetTop", { configurable: true, get: () => (open ? 150 : 0) });
+        view.dispatchEvent(new Event("resize"));
+        view.dispatchEvent(new Event("scroll"));
+      }, on);
+
+      await page.locator("input[type='search']").first().click();
+      await page.waitForTimeout(500);
+      await keyboard(true);
+      await page.waitForTimeout(1_200);
+
+      const open = await geometry();
+      check(s, `${width}: the sheet's top stays on screen with the keyboard open`, open.topOnScreen, JSON.stringify(open));
+      check(s, `${width}: the composer stays above the keyboard`, open.fieldOnScreen, JSON.stringify(open));
+      check(s, `${width}: the shell covers the whole visible band — no black strip`,
+        open.uncovered <= 1, JSON.stringify({ band: open.band, shell: open.shell, uncovered: open.uncovered }));
+      check(s, `${width}: nothing else has become a vertical scroller`,
+        open.otherScrollers.length === 0, open.otherScrollers.join(", "));
+      /* The void: a scroller whose content ends long before its scroll height
+         is empty space a thumb can travel through. Half a screen of it is the
+         owner's black region. */
+      const tail = open.scroll ? open.scroll.height - open.scroll.client : 0;
+      check(s, `${width}: no large empty tail below the sheet's content`,
+        open.scroll !== null && tail < 1_400, JSON.stringify(open.scroll));
+
+      // Search submitted from the keyboard's own key.
+      await page.locator("input[type='search']").first().fill("Bancroft Ontario");
+      const suggested = await waitFor(page, () => document.querySelectorAll("[role=option]").length > 0, 25_000);
+      if (suggested) {
+        await page.locator("input[type='search']").first().press("Enter");
+        await page.waitForTimeout(2_500);
+        const submitted = await geometry();
+        check(s, `${width}: Search moves focus off the composer`, submitted.isField === false, JSON.stringify(submitted));
+        const zone = await page.evaluate(() => document.querySelector("section[data-layout] h1,section[data-layout] h2,section[data-layout] h3")?.textContent?.trim() ?? "");
+        check(s, `${width}: and the search resolved to a zone`, /WMU\s*\d/.test(zone), zone);
+
+        // The keyboard goes; the answer must survive it.
+        await keyboard(false);
+        await page.waitForTimeout(1_200);
+        const after = await geometry();
+        const zoneAfter = await page.evaluate(() => document.querySelector("section[data-layout] h1,section[data-layout] h2,section[data-layout] h3")?.textContent?.trim() ?? "");
+        check(s, `${width}: restoring the viewport leaves the zone alone`, zoneAfter === zone, `${zone} -> ${zoneAfter}`);
+        check(s, `${width}: and does not refocus the composer`, after.isField === false, JSON.stringify(after));
+        check(s, `${width}: the sheet is back inside the restored viewport`, after.topOnScreen, JSON.stringify(after));
+
+        // Tapping it again focuses it, as it would on a phone.
+        await page.locator("input[type='search']").first().click();
+        await page.waitForTimeout(600);
+        const refocused = await geometry();
+        check(s, `${width}: tapping the composer afterwards focuses it again`, refocused.isField, JSON.stringify(refocused));
+      }
+      check(s, `${width}: no console errors`, consoleErrors.length === 0, consoleErrors.join(" | "));
+      await context.close();
+    }
+  },
+
+/*
    * THE KEYBOARD, AND THE EDGE THE SUITE HAS NEVER ASSERTED.
    *
    * Everything here has been checked against the BOTTOM of the viewport. The
