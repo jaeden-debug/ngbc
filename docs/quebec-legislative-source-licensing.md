@@ -364,6 +364,15 @@ reproducible, identity certified"*.
 
 ## 8. What is still open
 
+> **The authorisation request is not to be sent by an agent.** It names a
+> billing party and commits North Ground. If the owner wants it sent, a person
+> sends it.
+>
+> It is worth stating at the top because of its shape rather than its
+> difficulty: it looks like paperwork, an agent could obviously fill it in, and
+> it **names who gets billed**. That is exactly where "it is just a form"
+> becomes a commitment made by a session.
+
 Item 2 is closed. What remains is not research:
 
 1. **A decision the owner makes, probably with counsel.** Whether the quebec.ca
@@ -373,8 +382,7 @@ Item 2 is closed. What remains is not research:
 2. **The authorisation request, if it is wanted.** The publisher specifies the
    route: `/droit-auteur/demande-autorisation`, ~15 business days, one request
    may cover several works, billing contact required. It would resolve
-   legisquebec **and** quebec.ca together. **Not to be sent by an agent** — it
-   names a billing party and commits North Ground.
+   legisquebec **and** quebec.ca together. Sent by a person, per the note above.
 3. **Record the outcome as a `SourceLicence`** — `statedAs`, `url`,
    `retrievedAt`, `sha256`, `permittedUse`, `redistribution`, `attribution` — so
    a reworded notice later shows up as a visible change rather than a silent
