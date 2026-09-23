@@ -147,7 +147,11 @@ export type IntelligenceCoverage =
   | "UNRESOLVED"
   /** Looked for, and the authority publishes nothing usable. A finding, not a gap. */
   | "UNAVAILABLE"
-  /** Not yet investigated. The honest default, and never dressed as UNAVAILABLE. */
+  /**
+   * Work is not finished: nobody has looked yet, or a source is identified and
+   * not certified. Either way nothing here is usable, and neither is ever
+   * dressed up as UNAVAILABLE, which is a finding about the authority's data.
+   */
   | "IN_RESEARCH";
 
 /** Canada's registry vocabulary, mapped rather than duplicated. */
@@ -196,5 +200,5 @@ export const COVERAGE_EXPLANATIONS: Record<IntelligenceCoverage, string> = {
   RESTRICTED: "Evidence exists but North Ground may not publish it here, because of the publisher's terms or a protection on this species.",
   UNRESOLVED: "Sources for this area disagree, or have not been reconciled against the authority. Nothing is shown until they are.",
   UNAVAILABLE: "North Ground looked: this authority publishes nothing usable for this species. That is a finding about the data, not about the animals.",
-  IN_RESEARCH: "North Ground has not yet researched this species here. Nothing is claimed either way.",
+  IN_RESEARCH: "North Ground has not finished researching this species here — nobody has looked, or a source is identified and not yet certified. Nothing is claimed either way.",
 };

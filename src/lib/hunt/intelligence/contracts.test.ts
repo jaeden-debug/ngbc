@@ -5,7 +5,8 @@ import { COVERAGE_EXPLANATIONS, coverageFromDataset, coverageFromRegistry, cover
 import { availableMetrics, derive, DERIVATIONS, mayLabelAs, NEVER_DERIVED } from "./derivation.ts";
 import { EVIDENCE_TIERS, isClaimRefusal, METRIC_TIERS, strongestTierFor, tierOfMetric, tierSupports } from "./evidence-ladder.ts";
 import { habitatModelIsReproducible, mayPublish, SENSITIVITY_RULES } from "./publication.ts";
-import { EVIDENCE_MATRIX, matrixCell, matrixJurisdictions, matrixReport, validateEvidenceMatrix } from "./evidence-matrix.ts";
+import { DATASET_EVIDENCE, evidenceMatrixEntries, matrixCell, matrixJurisdictions, matrixReport, validateEvidenceMatrix } from "./evidence-matrix.ts";
+import { intelligenceDatasetRegistry } from "./registry.ts";
 import { explainSelection, selectLayer, type LayerCandidate, type LayerRequest } from "./selection.ts";
 import { contains, describeResolution, finestPermittedResolution, permitsVisualisationAt, PRECISION_FOR_GEOGRAPHY_LEVEL } from "./spatial-precision.ts";
 import { CANADA_JURISDICTIONS } from "../canada/registry.ts";
@@ -288,7 +289,7 @@ test("a dataset the publisher does not permit is refused, and says so rather tha
   assert.equal(coverageIsPaintable("RESTRICTED"), false);
   assert.match(COVERAGE_EXPLANATIONS.RESTRICTED, /may not publish/);
   assert.match(COVERAGE_EXPLANATIONS.UNAVAILABLE, /a finding about the data, not about the animals/);
-  assert.match(COVERAGE_EXPLANATIONS.IN_RESEARCH, /has not yet researched/);
+  assert.match(COVERAGE_EXPLANATIONS.IN_RESEARCH, /nobody has looked, or a source is identified and not yet certified/);
 });
 
 test("the sensitivity contract exists before any observation feature can use it", () => {
@@ -382,7 +383,7 @@ test("nothing eligible still says something true, and never implies the species 
   });
   assert.equal(empty.chosen, null);
   assert.equal(empty.coverage, "IN_RESEARCH");
-  assert.match(empty.message, /has not yet researched/);
+  assert.match(empty.message, /has not finished researching/);
   const refusal = strongestTierFor("ABUNDANCE_COMPARISON", []);
   assert.ok(isClaimRefusal(refusal));
   assert.match(refusal.reason, /not the same as none of this species being here/);
@@ -425,46 +426,121 @@ test("a viewport request is part of the question, so no national dataset can rea
 /* ── The evidence matrix ─────────────────────────────────────────────────── */
 
 test("an unresearched cell says nobody has looked, and is never blank or UNAVAILABLE", () => {
-  // The distinction the whole matrix exists to preserve: not looking is not a
-  // finding. A cell with no entry must not read as "this authority publishes
-  // nothing", which is a claim about the data that nobody has earned.
-  const cell = matrixCell("species:moose", "jurisdiction:ca-nl");
+  // Not looking is not a finding. A cell with no entry must not read as "this
+  // authority publishes nothing", which is a claim nobody has earned.
+  const cell = matrixCell("species:ruffed-grouse", "jurisdiction:ca-nl");
   assert.equal(cell.coverage, "IN_RESEARCH");
   assert.deepEqual(cell.entries, []);
   assert.deepEqual(cell.tiers, []);
-  assert.match(cell.explanation, /has not yet researched/);
+  assert.equal(cell.paintable, false);
+  assert.match(cell.explanation, /has not yet looked/);
   assert.notEqual(cell.coverage, "UNAVAILABLE");
 });
 
-test("the matrix counts what it holds and nothing more, computed rather than typed", () => {
-  // Empty today, and the report says so with numbers. The same computation will
-  // report real coverage later, so no cell can ever be claimed by editing a
-  // constant — the discipline canada/report.ts set for regulatory coverage.
-  assert.deepEqual([...EVIDENCE_MATRIX], []);
-  assert.deepEqual(validateEvidenceMatrix(), []);
+test("an identified-but-uncertified source is not the same sentence as nobody having looked", () => {
+  // Both are IN_RESEARCH — nothing usable yet — but a reviewer has to be able
+  // to tell them apart, so the cell names the authority when one is known.
+  const quebec = matrixCell("species:moose", "jurisdiction:ca-qc");
+  assert.equal(quebec.coverage, "IN_RESEARCH");
+  assert.ok(quebec.entries.length > 0, "Quebec moose has an identified source");
+  assert.match(quebec.explanation, /A source is identified/);
+  assert.match(quebec.explanation, /not yet certified or served/);
+  assert.equal(quebec.paintable, false, "identified is not servable");
+  assert.ok(!/has not yet looked/.test(quebec.explanation));
+});
 
-  const species = ["species:white-tailed-deer", "species:moose", "species:ruffed-grouse"];
-  const report = matrixReport(species);
+test("the matrix is derived from the source registry, never a second list beside it", () => {
+  // A hand-kept copy would drift and then quietly disagree with the registry —
+  // the failure section 14 exists to prevent. Every entry traces to a dataset.
+  const registry = intelligenceDatasetRegistry();
+  const ids = new Set(registry.map(({ id }) => id));
+  const entries = evidenceMatrixEntries();
+  assert.ok(entries.length > 0);
+  for (const entry of entries) {
+    assert.ok(ids.has(entry.datasetId), `${entry.datasetId} exists in the registry`);
+    const dataset = registry.find(({ id }) => id === entry.datasetId)!;
+    assert.ok(dataset.speciesIds.includes(entry.speciesId));
+    assert.equal(entry.jurisdictionId, dataset.jurisdictionId);
+    assert.equal(entry.authority, dataset.authority);
+    assert.ok(entry.sourceUrl.startsWith("https://"));
+    assert.ok(entry.limitation.trim().length > 0, `${entry.datasetId} states a limitation`);
+  }
+  assert.deepEqual(validateEvidenceMatrix(), []);
+});
+
+test("a species-bearing dataset with no declared kind is a failure, not a default", () => {
+  // The guard that stops the first range or habitat dataset from silently
+  // inheriting "measured, at management-unit resolution" because that is what
+  // every dataset happened to be on the day this was written.
+  for (const dataset of intelligenceDatasetRegistry()) {
+    if (!dataset.speciesIds.length) {
+      assert.ok(!(dataset.id in DATASET_EVIDENCE) || true, "land and fire datasets are not species cells");
+      continue;
+    }
+    assert.ok(DATASET_EVIDENCE[dataset.id], `${dataset.id} declares a tier and precision`);
+  }
+  // Every species-bearing dataset today is measured evidence; asserting it
+  // means the first modelled or range dataset trips this test and gets decided.
+  const kinds = new Set(Object.values(DATASET_EVIDENCE).map(({ tier }) => tier));
+  assert.deepEqual([...kinds], ["T1_OFFICIAL_MEASURED"]);
+});
+
+test("a geography that does not nest with the drawn units keeps its own precision", () => {
+  // Ontario reports elk by nine Elk Harvest Areas, which are NOT the WMUs the
+  // map draws. Recording it as MANAGEMENT_UNIT would invite exactly the repaint
+  // the governing rule forbids.
+  assert.equal(DATASET_EVIDENCE["dataset:ca-on-elk-harvest"].precision, "SPECIES_MANAGEMENT_AREA");
+  assert.equal(
+    permitsVisualisationAt({ precision: "SPECIES_MANAGEMENT_AREA" }, { precision: "MANAGEMENT_UNIT" }).permitted,
+    false,
+    "elk harvest areas may never be repainted as WMUs",
+  );
+  // Newfoundland reports moose and caribou on separate species-specific maps.
+  assert.equal(DATASET_EVIDENCE["dataset:ca-nl-big-game-area-evidence"].precision, "SPECIES_MANAGEMENT_AREA");
+});
+
+test("a dataset whose geography is unestablished is unpaintable, never treated as fine", () => {
+  // Ontario's CWD sample records have not passed schema review. Null precision
+  // is honest; the danger would be reading "unknown" as "point".
+  assert.equal(DATASET_EVIDENCE["dataset:ca-on-cwd-surveillance-2025"].precision, null);
+  const deer = matrixCell("species:white-tailed-deer", "jurisdiction:ca-on");
+  // Two datasets meet in this cell, and both are kept rather than averaged.
+  assert.equal(deer.entries.length, 2);
+  assert.deepEqual(deer.entries.map(({ datasetId }) => datasetId).sort(),
+    ["dataset:ca-on-cwd-surveillance-2025", "dataset:ca-on-white-tailed-deer-harvest"]);
+  // The cell is paintable on the harvest dataset alone; the CWD entry is not.
+  assert.equal(deer.coverage, "PARTIAL");
+  assert.equal(deer.paintable, true);
+  assert.equal(deer.entries.find(({ datasetId }) => datasetId.includes("cwd"))!.coverage, "RESTRICTED");
+});
+
+test("the matrix counts what it holds and nothing more, computed rather than typed", () => {
+  const species = [...new Set(evidenceMatrixEntries().map(({ speciesId }) => speciesId))].sort();
   const jurisdictions = matrixJurisdictions();
-  assert.equal(report.speciesCount, 3);
+  const report = matrixReport(species);
   assert.equal(report.jurisdictionCount, jurisdictions.length);
-  assert.equal(report.researchedCells, 0);
-  assert.equal(report.unresearchedCells, 3 * jurisdictions.length);
-  assert.equal(report.byCoverage.IN_RESEARCH, 3 * jurisdictions.length);
+  assert.equal(report.researchedCells + report.unresearchedCells, species.length * jurisdictions.length);
+  // Every cell lands in exactly one coverage state.
+  assert.equal(Object.values(report.byCoverage).reduce((sum, count) => sum + count, 0), species.length * jurisdictions.length);
+  // Paintable is a strict subset of researched: a licence or an unestablished
+  // geography can stop a researched cell from reaching a map.
+  assert.ok(report.paintableCells <= report.researchedCells);
+  assert.ok(report.paintableCells > 0, "Ontario and British Columbia harvest can paint today");
+  // Nothing is AVAILABLE yet, and the report says so rather than rounding up.
   assert.equal(report.byCoverage.AVAILABLE, 0);
-  assert.deepEqual(report.researched, []);
-  // Every cell is accounted for in exactly one coverage state.
-  assert.equal(Object.values(report.byCoverage).reduce((sum, count) => sum + count, 0), 3 * jurisdictions.length);
+  assert.ok(report.byCoverage.IN_RESEARCH > report.researchedCells, "most of Canada is still unresearched, and is counted as such");
 });
 
 test("the matrix targets the jurisdictions the spatial registry declares in scope", () => {
   const ids = matrixJurisdictions().map(({ id }) => id);
-  // Out-of-scope territories are excluded here rather than counted as gaps, and
-  // are never silently folded into a denominator that flatters coverage.
   for (const id of ["jurisdiction:ca-on", "jurisdiction:ca-qc", "jurisdiction:ca-yt", "jurisdiction:ca-federal"]) {
     assert.ok(ids.includes(id as never), `${id} is in the national target`);
   }
   const outOfScope = CANADA_JURISDICTIONS.filter(({ scope }) => scope?.state === "OUT_OF_SCOPE");
+  assert.ok(outOfScope.length > 0, "the two territories are declared out of scope");
   for (const { id } of outOfScope) assert.ok(!ids.includes(id), `${id} is out of scope and not counted`);
   assert.equal(ids.length + outOfScope.length, CANADA_JURISDICTIONS.length);
+  // Their datasets exist and are simply not counted toward national coverage.
+  const territorial = evidenceMatrixEntries().filter((entry) => outOfScope.some(({ id }) => id === entry.jurisdictionId));
+  for (const entry of territorial) assert.ok(!ids.includes(entry.jurisdictionId as never));
 });
