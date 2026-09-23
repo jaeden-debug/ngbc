@@ -275,7 +275,7 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
               ...restrictions.map((restriction) => `${restriction.name}: \u201c${restriction.statedAs}\u201d`),
               ...unreadOverlays,
             ],
-            sourceIds: [...new Set([zone.sourceId, ...restrictions.map((restriction) => restriction.sourceId as CanonicalId<"source">)])],
+            sourceIds: [...new Set([zone.sourceId, ...restrictions.map((restriction) => restriction.sourceId as CanonicalId<"source">)])].filter((id): id is CanonicalId<"source"> => Boolean(id)),
           },
         };
       }
@@ -294,7 +294,7 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
             status: applicability.reason === "SPECIES_OUT_OF_SCOPE" ? "UNKNOWN" : "NEEDS_VERIFICATION",
             summary: applicability.message,
             limitations: layer?.legalStanding ? [layer.legalStanding.statedAs] : [],
-            sourceIds: [zone.sourceId],
+            sourceIds: zone.sourceId ? [zone.sourceId] : [],
           },
         };
       }

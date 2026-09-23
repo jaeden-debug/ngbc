@@ -2,6 +2,7 @@ import { contentRepository, type ContentRepository } from "../content/repository
 import { isMajorGameSpecies, speciesById } from "./coverage.ts";
 import { resolveReadiness } from "./readiness/index.ts";
 import { regulatoryEntryFor, type RegulatoryOutcome } from "./regulatory/registry.ts";
+import type { CanonicalId } from "../content-contract/index.ts";
 import type { HuntEvaluation, HuntInput, RegulatoryResult } from "./types.ts";
 import type { ZoneResolution } from "./types.ts";
 import { getWeatherContext } from "./weather.ts";
@@ -53,7 +54,7 @@ function unplacedPoint(zone: ZoneResolution, verifiedAt: string): RegulatoryResu
     legalTime: { status: "NOT_AVAILABLE", text: "Legal hunting hours are not available without a resolved zone." },
     requirements: [],
     limitations: [zone.message],
-    sourceIds: [zone.sourceId],
+    sourceIds: zone.sourceId ? [zone.sourceId] : [],
     verifiedAt,
   };
 }
@@ -68,7 +69,7 @@ function uncertifiedJurisdiction(zone: ZoneResolution, verifiedAt: string): Regu
     legalTime: { status: "NOT_AVAILABLE", text: "Legal hunting hours are not available for this jurisdiction." },
     requirements: [],
     limitations: [],
-    sourceIds: [zone.sourceId],
+    sourceIds: zone.sourceId ? [zone.sourceId] : [],
     verifiedAt,
   };
 }
@@ -122,7 +123,11 @@ export async function evaluateHunt(input: HuntInput, dependencies: HuntDependenc
     blockTypes: ["habitat_tip", "identification_warning", "legal_note"],
     limit: 6,
   });
-  const sourceIds = [...new Set([...regulation.sourceIds, zone.sourceId, weather.sourceId, ...knowledge.blocks.flatMap(({ block }) => block.sourceIds ?? [])])];
+  /* A zone with no authority cites none: a point outside every served layer
+     has no source, and inventing one named Ontario everywhere for as long as
+     Ontario was the only jurisdiction served. */
+  const sourceIds = [...new Set([...regulation.sourceIds, zone.sourceId, weather.sourceId, ...knowledge.blocks.flatMap(({ block }) => block.sourceIds ?? [])])]
+    .filter((id) => Boolean(id)) as CanonicalId<"source">[];
   const known = await repository.getSources(sourceIds);
   /* Sources a jurisdiction's bundle cites and the content registry does not
      hold are described from the bundle itself, which carries their version and

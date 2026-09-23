@@ -16,7 +16,9 @@ export function partitionEvaluationSources(evaluation: Pick<HuntEvaluation, "sou
   authority: SourceRecord[];
   context: SourceRecord[];
 } {
-  const decisive = new Set<string>([...evaluation.regulation.sourceIds, evaluation.zone.sourceId]);
+  const decisive = new Set<string>(
+    [...evaluation.regulation.sourceIds, evaluation.zone.sourceId].filter((id) => Boolean(id)) as string[],
+  );
   const authority: SourceRecord[] = [];
   const context: SourceRecord[] = [];
   for (const source of evaluation.sources) (decisive.has(source.id) ? authority : context).push(source);

@@ -42,7 +42,13 @@ export interface ZoneResolution {
    */
   conflictingZoneIds?: string[];
   displayRings?: number[][][];
-  sourceId: CanonicalId<"source">;
+  /**
+   * The authority whose geography produced this answer. Absent where there is
+   * no such authority: a point outside every served layer has no source to
+   * cite, and citing one anyway named Ontario at a point in Labrador for as
+   * long as Ontario was the only jurisdiction North Ground served.
+   */
+  sourceId?: CanonicalId<"source">;
   message: string;
 }
 

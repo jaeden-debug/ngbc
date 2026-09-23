@@ -1,7 +1,7 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { ZoneResolution } from "./types.ts";
 import { unitedStatesStateAt } from "./united-states/state-boundary.ts";
-import { countryOfJurisdiction, designationOfRaw, isLocationLayer, officialNameOf, servingLayersAt, ZONE_LAYERS, zoneIdFor, type ZoneLayer } from "./zone-layers.ts";
+import { countryOfJurisdiction, designationOfRaw, isLocationLayer, layerOfZoneId, officialNameOf, servingLayersAt, ZONE_LAYERS, zoneIdFor, type ZoneLayer } from "./zone-layers.ts";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { defaultSupabaseServerClient, SupabaseServerConfigurationError } from "../supabase/server.ts";
 
@@ -170,7 +170,7 @@ export async function resolveOntarioWmuFromOfficialGis(
   }
 }
 
-export async function resolveOntarioWmuFromSupabase(
+export async function resolveZoneFromRegistry(
   latitude: number,
   longitude: number,
   supabaseClient: () => SupabaseClient = defaultSupabaseServerClient,
@@ -178,9 +178,9 @@ export async function resolveOntarioWmuFromSupabase(
   signal?: AbortSignal,
 ): Promise<ZoneResolution> {
   if (!Number.isFinite(latitude) || !Number.isFinite(longitude) || latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180) {
+    // An invalid coordinate is in no jurisdiction, so it cites no authority.
     return {
       status: "UNKNOWN",
-      sourceId: "source:ca-on-wmu-service",
       message: "The coordinate is invalid; North Ground will not infer a zone.",
     };
   }
@@ -196,14 +196,30 @@ export async function resolveOntarioWmuFromSupabase(
         ? AbortSignal.any([AbortSignal.timeout(SUPABASE_ZONE_TIMEOUT_MS), signal])
         : AbortSignal.timeout(SUPABASE_ZONE_TIMEOUT_MS));
     if (error) throw error;
-    const rows = data as SupabaseZoneRow[] | null;
+    const all = data as SupabaseZoneRow[] | null;
+    /*
+     * "Which zone is this?" is asked of each jurisdiction's LOCATION layer. A
+     * species-scoped geography is not a second truth about the same question:
+     * Newfoundland publishes separate moose, caribou and black bear areas over
+     * the same ground, so a point in Labrador sits in several of its layers by
+     * design. The official-GIS path has filtered these since Montana; the
+     * registry path never did, so serving Newfoundland turned normal stacking
+     * into "overlapping regulatory zones". Where a species is known, the
+     * caller places the point again in that species' own geography.
+     */
+    const rows = all?.filter((row) => {
+      const layer = layerOfZoneId(row.canonical_id);
+      return !layer || isLocationLayer(layer);
+    }) ?? null;
     if (!rows || rows.length !== 1) {
+      /* No authority to cite: this path answers for every jurisdiction, and
+         naming one anyway cited Ontario at a point in Labrador. A conflict
+         cites the authorities actually in conflict. */
       return {
         status: "UNKNOWN",
-        sourceId: "source:ca-on-wmu-service",
-        message: rows && rows.length > 1
-          ? "The verified database returned overlapping regulatory zones; human verification is required."
-          : "The verified database does not contain a management zone for this point.",
+        ...(rows && rows.length > 1
+          ? { message: `The verified database returned overlapping regulatory zones (${rows.map((row) => row.official_name).join("; ")}); human verification is required.` }
+          : { message: "The verified database does not contain a management zone for this point." }),
       };
     }
     const row = rows[0];
@@ -225,9 +241,9 @@ export async function resolveOntarioWmuFromSupabase(
     };
   } catch (error) {
     if (!(error instanceof SupabaseServerConfigurationError) && !signal?.aborted) console.error("[hunt-zone] Supabase spatial lookup failed");
+    // The registry serves every jurisdiction; its outage belongs to no one authority.
     return {
       status: "PROVIDER_ERROR",
-      sourceId: "source:ca-on-wmu-service",
       message: "The verified spatial registry is temporarily unavailable; North Ground will not infer a zone.",
     };
   }
@@ -240,7 +256,7 @@ export async function resolveOntarioWmu(
 ): Promise<ZoneResolution> {
   const provider = process.env.SPATIAL_PROVIDER?.trim() || "official-gis";
   if (provider === "supabase") {
-    const result = await resolveOntarioWmuFromSupabase(latitude, longitude);
+    const result = await resolveZoneFromRegistry(latitude, longitude);
     if (result.status !== "PROVIDER_ERROR" || process.env.SPATIAL_FALLBACK_PROVIDER !== "official-gis") return result;
   }
   return resolveOntarioWmuFromOfficialGis(latitude, longitude, fetcher);
@@ -524,7 +540,8 @@ export async function resolveZoneFromOfficialGis(
   const layers = servingLayersAt(latitude, longitude)
     .filter((layer) => (layer.endpoint || layer.wfs) && isLocationLayer(layer) && (only?.(layer) ?? true));
   if (!layers.length) {
-    return { status: "UNKNOWN", sourceId: "source:ca-on-wmu-service", message: "North Ground does not hold official hunting-zone boundaries for this point." };
+    // No served layer covers this point, so there is no authority to cite.
+    return { status: "UNKNOWN", message: "North Ground does not hold official hunting-zone boundaries for this point." };
   }
   const results = await Promise.all(layers.map((layer) =>
     layer.id === "layer:ca-on-wmu"
@@ -641,7 +658,7 @@ export async function resolveZone(
     // The registry's own race: PostGIS, then its authorities as well if PostGIS is slow.
     result = await resolveHedged(latitude, longitude, fetcher, supabaseClient, registryLayers, timings);
   } else if (provider === "supabase") {
-    result = await resolveOntarioWmuFromSupabase(latitude, longitude, supabaseClient);
+    result = await resolveZoneFromRegistry(latitude, longitude, supabaseClient);
     if (timings) timings.db = performance.now() - started;
   } else {
     const gisStarted = performance.now();
@@ -750,7 +767,7 @@ async function resolveHedged(
   const gisAbort = new AbortController();
   const settled: Settled[] = [];
 
-  const db: Promise<Settled> = resolveOntarioWmuFromSupabase(latitude, longitude, supabaseClient, dbAbort.signal)
+  const db: Promise<Settled> = resolveZoneFromRegistry(latitude, longitude, supabaseClient, dbAbort.signal)
     .then((result) => {
       if (timings) timings.db = performance.now() - started;
       const entry = { source: "db" as const, result };
