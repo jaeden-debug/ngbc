@@ -1575,9 +1575,13 @@ Map-lane parity certification asks whether North Ground draws what the authority
 publishes. When the service is itself stale, that check PASSES while the map is wrong: a hunter
 would be shown a rescinded unit as current, certified. Service parity is necessary and not
 sufficient. A map lane is certified only when it also agrees with a REGULATORY product — the
-regulations summary, the hunting guide, the regulation itself. Idaho is believed safe because it
-was certified against IDFG's Hunt Planner, a regulatory product, rather than against its GIS
-alone; that belief is being recorded as evidence rather than left as an assumption. An audit is
+regulations summary, the hunting guide, the regulation itself. **Idaho was believed safe by method
+and was not**: checked against the fixture rather than left as a belief, its MAP lane was certified
+against IDFG's GIS service alone (`fixtures/hunt/us-id-gmu-live-parity.json`, 99 units, 708 points,
+0 disagreements), and the Hunt Planner cross-check belongs to the RULES lane, where it reached 42 of
+99 units — `content/regulatory/us-id-certified-units.json` already records that split. So 57 units
+are drawn and resolvable having never been checked against any regulatory product, and the unit LIST
+never was. Thirteen lanes service-only, not twelve plus a safe one. An audit is
 open with Canada: for each certified Canadian layer, was it certified against the service ALONE,
 or also against a regulatory product. A layer in the service-only column is not thereby wrong — it
 is unverified against the law, which is a smaller claim than our certification currently implies.

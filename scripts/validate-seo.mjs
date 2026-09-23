@@ -91,7 +91,7 @@ async function validate() {
   assert.match(tool, /<link rel="canonical" href="https:\/\/www\.northgroundbushcraft\.com\/hunt"/i);
   assert.equal(countMatches(tool, /<link rel="canonical"/gi), 1, "Hunt should emit one canonical tag");
   assert.match(tool, /<title>Hunting Zone (?:&|&amp;) Season Finder \| North Ground Hunt<\/title>/i);
-  assert.match(tool, /<meta name="description" content="Find your hunting zone anywhere North Ground supports in Canada, check hunting seasons by species and date, and verify results against official government sources\."/i);
+  assert.match(tool, /<meta name="description" content="Find your hunting zone anywhere North Ground supports in Canada and USA, check hunting seasons by species and date, and verify results against official government sources\."/i);
   assert.match(tool, /<meta property="og:title" content="Know Your Zone\. Know Your Season\. \| North Ground Hunt"/i);
   assert.match(tool, /<meta property="og:description" content="Explore Canadian hunting zones on an interactive map, choose your species and date, and check your hunt against official government sources\."/i);
   assert.match(tool, /<meta property="og:url" content="https:\/\/www\.northgroundbushcraft\.com\/hunt"/i);

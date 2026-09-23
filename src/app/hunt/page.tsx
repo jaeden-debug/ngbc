@@ -21,11 +21,10 @@ export const dynamic = "force-dynamic";
 
 const canonicalPath = "/hunt";
 const metaTitle = "Hunting Zone & Season Finder | North Ground Hunt";
-/* The description names only Canada because only Canadian layers serve today. It gains "and the
-   United States" when the first U.S. layer serves, not before: a meta description is a coverage
-   claim like any other. */
+/* "anywhere North Ground supports" is the honest qualifier: twelve Canadian layers and Idaho serve
+   today, and the sentence stays true as that list grows without naming a coverage it lacks. */
 const metaDescription =
-  "Find your hunting zone anywhere North Ground supports in Canada, check hunting seasons by species and date, and verify results against official government sources.";
+  "Find your hunting zone anywhere North Ground supports in Canada and USA, check hunting seasons by species and date, and verify results against official government sources.";
 const socialTitle = "Know Your Zone. Know Your Season. | North Ground Hunt";
 const socialDescription =
   "Explore Canadian hunting zones on an interactive map, choose your species and date, and check your hunt against official government sources.";
