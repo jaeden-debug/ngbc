@@ -51,11 +51,37 @@ export type StatutoryClock =
        * reading a local clock is not reading this one.
        */
       divergence?: StatutoryClockDivergence;
+      /** Whether the locally observed clock is the statutory one — see `ObservedClock`. */
+      observed: ObservedClock;
     }
   | {
       status: "NOT_CERTIFIED";
       reason: string;
       authority: string;
+    };
+
+/**
+ * Whether the clock a hunter's phone shows is the clock the rule is written in.
+ *
+ * §41A requires the hunter-facing time to be the one they should actually
+ * follow, and forbids making them convert. Both facts are kept: the statutory
+ * basis is the legal truth and is never discarded, and the observed clock is
+ * presentation and actionability only.
+ *
+ * Where they are the same, one window serves both and there is nothing to
+ * convert. Where they may differ, North Ground does not invent a local clock it
+ * cannot place a point in — showing a time an hour out is worse in both
+ * directions than showing the statutory time and saying so.
+ */
+export type ObservedClock =
+  | {
+      status: "SAME_AS_STATUTORY";
+      /** How that was established, rather than assumed. */
+      statedAs: string;
+    }
+  | {
+      status: "NOT_CERTIFIED";
+      reason: string;
     };
 
 export interface StatutoryClockDivergence {
@@ -139,6 +165,7 @@ export function ontarioStatutoryClock(
       ? "Standard time in the part of Ontario that lies east of the meridian of 90° W. longitude shall be reckoned as five hours behind Greenwich time."
       : "Standard time in the part of Ontario that lies west of the meridian of 90° W. longitude shall be reckoned as six hours behind Greenwich time.",
     section: east ? "Time Act, R.S.O. 1990, c. T.9, s. 2 (1)" : "Time Act, R.S.O. 1990, c. T.9, s. 2 (2)",
+    observed: east ? OBSERVED_EAST : OBSERVED_WEST,
     ...(east ? {} : { divergence: ONTARIO_WEST_DIVERGENCE }),
   };
 }
@@ -164,4 +191,43 @@ const ONTARIO_WEST_DIVERGENCE: StatutoryClockDivergence = {
   statedAs:
     "No regulation under the Time Act provides for this. Section 2 (5) permits the Lieutenant Governor in Council to " +
     "vary the reckoning; it was exercised once, by O. Reg. 111/06, which was revoked on 2 March 2010.",
+};
+
+
+/**
+ * East of the meridian the two clocks are the same, and that is MEASURED.
+ *
+ * Every day of 2026 and 2027 — 730 of them — `America/Toronto`'s offset equals
+ * the offset computed from the Act, with no exceptions. So the statutory window
+ * is already the window a hunter's phone shows, one window serves both purposes
+ * and nothing is converted. The IANA zone is the evidence here, never the
+ * source: the offset still comes from the statute.
+ */
+const OBSERVED_EAST: ObservedClock = {
+  status: "SAME_AS_STATUTORY",
+  statedAs:
+    "East of the meridian the locally observed clock and the Time Act's reckoning agree on every day of 2026 and " +
+    "2027, checked against the IANA zone America/Toronto. The window shown is the statutory one and needs no conversion.",
+};
+
+/**
+ * West of it, North Ground cannot say which clock a point keeps.
+ *
+ * Most of western Ontario observes the statutory reckoning — `America/Winnipeg`
+ * agrees with it on all 730 days — but Atikokan and Pickle Lake keep Eastern
+ * time all year, and `America/Atikokan` differs from the statute on 254 of
+ * those days, every one of them outside the daylight saving period.
+ *
+ * Which of the two a point keeps is a question about where those communities
+ * extend, and NORTH GROUND HOLDS NO AUTHORITY'S DESCRIPTION OF THAT. Inventing
+ * a boundary to produce a friendlier answer is the same error as inventing a
+ * zone line. The statutory window stands as the legal answer; the local clock
+ * is refused rather than guessed.
+ */
+const OBSERVED_WEST: ObservedClock = {
+  status: "NOT_CERTIFIED",
+  reason:
+    "West of the meridian, some communities keep Eastern time all year while others follow the statutory reckoning, " +
+    "and North Ground holds no official description of where each applies. The times here are the Time Act's; a clock " +
+    "at this location may read an hour later outside the daylight saving period.",
 };

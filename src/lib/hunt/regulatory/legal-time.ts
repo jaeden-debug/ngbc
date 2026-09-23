@@ -12,6 +12,7 @@
  */
 
 import type { CanonicalId } from "../../content-contract/index.ts";
+import type { ObservedClock } from "./statutory-time.ts";
 import type { IsoDate } from "../../content-contract/index.ts";
 import type { PointTimeZone } from "../time-zone.ts";
 import { SOLAR_ALGORITHM_VERSION, localDate, sunriseSunset, wallClock } from "./solar.ts";
@@ -98,6 +99,19 @@ export type LegalTimeResult =
       basis: LegalTimeBasis;
       /** Wall-clock times ON the requested date, in `timezone`. */
       window: { opensAt: string; closesAt: string };
+      /*
+       * Whether this window is also the clock a hunter reads at the point.
+       *
+       * The window is always the LEGAL truth, in the basis the rule is written
+       * in. Where the locally observed clock is the same one, it is directly
+       * actionable and nothing is converted. Where North Ground cannot place
+       * the point's observed clock, this says so, and the renderer must not
+       * present the time as a local reading (§41A).
+       *
+       * Absent where the jurisdiction has no statutory-versus-observed
+       * question to answer.
+       */
+      observedClock?: ObservedClock;
       timezone: string;
       date: IsoDate;
       statedAs: string;

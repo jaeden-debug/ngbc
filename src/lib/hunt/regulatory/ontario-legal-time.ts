@@ -35,7 +35,8 @@
  */
 
 import type { CanonicalId, IsoDate } from "../../content-contract/index.ts";
-import type { LegalTimeRule } from "./legal-time.ts";
+import { intersectLegalTime, legalTimeFor, legalTimeNotCertified, type LegalTimeResult, type LegalTimeRule } from "./legal-time.ts";
+import { ontarioStatutoryClock } from "./statutory-time.ts";
 
 const ACT = "source:ca-on-fish-wildlife-conservation-act" as CanonicalId<"source">;
 const OPEN_SEASONS = "source:ca-on-open-seasons-regulation" as CanonicalId<"source">;
@@ -129,4 +130,49 @@ export function ontarioHoursRules(
   }
 
   return rules;
+}
+
+/**
+ * Ontario's legal hunting window at a point, for a species, unit and date.
+ *
+ * Everything the rule needs and nothing it does not: the statutory clock from
+ * the Time Act, the general prohibition, whatever exception the Tables
+ * prescribe, and the intersection of them.
+ *
+ * A whole-zone question has no answer here, and that is not a gap. A zone spans
+ * degrees of longitude and its sunrise differs across it, so there is no single
+ * legal window for one — the answer belongs to a point. `scope: "ZONE"`
+ * evaluations pass no usable coordinate and correctly receive NOT_CERTIFIED.
+ */
+export function ontarioLegalTime(
+  speciesId: string,
+  designation: string | undefined,
+  point: { latitude: number; longitude: number },
+  date: IsoDate,
+): LegalTimeResult {
+  if (!Number.isFinite(point.latitude) || !Number.isFinite(point.longitude)) {
+    return legalTimeNotCertified(
+      "Legal hunting time depends on sunrise and sunset at a place. A zone spans too much longitude to have one, so " +
+      "North Ground states it for a point rather than for a whole zone.",
+      "Province of Ontario",
+      ACT,
+    );
+  }
+
+  const clock = ontarioStatutoryClock(point, date);
+  if (clock.status !== "RESOLVED") {
+    return legalTimeNotCertified(clock.reason, clock.authority, ACT);
+  }
+
+  const composed = intersectLegalTime(
+    ontarioHoursRules(speciesId, designation, date)
+      .map((rule) => legalTimeFor(rule, point, date, clock.zone as Parameters<typeof legalTimeFor>[3])),
+  );
+
+  /*
+   * The window is the law's. Whether it is also the clock at this point is a
+   * separate fact and travels with it, so a renderer can show an actionable
+   * local time where they agree and must not pretend to one where they do not.
+   */
+  return composed.status === "RESOLVED" ? { ...composed, observedClock: clock.observed } : composed;
 }
