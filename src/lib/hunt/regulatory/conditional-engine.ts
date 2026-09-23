@@ -135,13 +135,25 @@ export interface ConditionalBundle extends GeographyData {
    * closed there, while an unnamed unit is not something its guide speaks to.
    * Defaults to `meaning`.
    */
-  absence: {
-    meaning: "CLOSED" | "UNKNOWN";
-    excludedCombination?: "CLOSED" | "UNKNOWN";
-    statedAs?: string;
-    section?: string;
-    sourceId?: string;
-    explanation?: string;
+  absence: AbsenceMeaning & {
+    /*
+     * WHAT AN UNLISTED PLACE MEANS IS NOT ALWAYS ONE FACT PER JURISDICTION.
+     *
+     * British Columbia's Hunting Regulation is closed-world — s. 4 says the
+     * open seasons ARE those set forth in the Schedules — so an unlisted unit
+     * is CLOSED. But a SECOND instrument, the Limited Entry Hunting Regulation,
+     * can set seasons for the species it names, and for those species North
+     * Ground cannot say an unlisted unit is closed.
+     *
+     * Declared per species, because the alternative is what BC had: one
+     * caveat, true of black bear alone, suppressing a certified CLOSED for six
+     * other species across 391 unit combinations. A refusal that looks
+     * principled, applied where its reason does not hold.
+     *
+     * Each exception states its OWN authority — it is a different instrument,
+     * so it is a different citation.
+     */
+    speciesExceptions?: Record<string, AbsenceMeaning>;
   };
   sources: Array<{ id: string; conditions?: ConditionalCondition[] }>;
   groups: Array<{ id: string; officialSpec: string; zoneIds: string[]; partialZoneIds?: string[] }>;
@@ -203,6 +215,31 @@ export interface ConditionalVocabulary {
 }
 
 /* ── Input ──────────────────────────────────────────────────────────────── */
+
+/** What the absence of a rule means, and on whose authority. */
+export interface AbsenceMeaning {
+  meaning: "CLOSED" | "UNKNOWN";
+  excludedCombination?: "CLOSED" | "UNKNOWN";
+  statedAs?: string;
+  section?: string;
+  sourceId?: string;
+  explanation?: string;
+}
+
+/**
+ * What an unlisted place means FOR THIS SPECIES.
+ *
+ * The jurisdiction's own rule, unless another instrument reaches this species
+ * — in which case that instrument's statement replaces it whole rather than
+ * being merged, so a citation can never be half one authority and half
+ * another.
+ */
+export function absenceFor(
+  bundle: Pick<ConditionalBundle, "absence">,
+  speciesId: string,
+): AbsenceMeaning {
+  return bundle.absence.speciesExceptions?.[speciesId] ?? bundle.absence;
+}
 
 export interface ConditionalInput {
   speciesId: string;
@@ -574,10 +611,12 @@ export function evaluateConditional(
 
   const { worlds, unknowns } = placeWorlds(bundle, place, ruleVersions);
   const rules = ruleVersions.filter((rule) => worlds.some((world) => appliesInWorld(rule, groups, place, world)));
-  const context: OutcomeContext = { date, place, groups, absence: bundle.absence, vocabulary };
+  /* What an unlisted place means FOR THIS SPECIES — see `absenceFor`. */
+  const absence = absenceFor(bundle, input.speciesId);
+  const context: OutcomeContext = { date, place, groups, absence, vocabulary };
 
   if (!rules.length) {
-    if (bundle.absence.meaning === "CLOSED") {
+    if (absence.meaning === "CLOSED") {
       return {
         completeness: "RESOLVED",
         dimensions: [],
@@ -585,7 +624,7 @@ export function evaluateConditional(
           status: "CLOSED",
           summary:
             `No ${vocabulary.jurisdictionName} licence authorises hunting ${species} in ${unit}. ` +
-            `${bundle.absence.explanation ?? ""} (${bundle.absence.section ?? "source"})`.trim(),
+            `${absence.explanation ?? ""} (${absence.section ?? "source"})`.trim(),
         }, speciesRules.slice(0, 1)),
       };
     }
@@ -826,7 +865,7 @@ export function evaluateConditional(
     result = base({
       status: "CLOSED",
       summary: nothing
-        ? `No ${vocabulary.jurisdictionName} licence ${answeredDimensions.length ? "matching what you described " : ""}authorises hunting ${species} in ${unit}. ${bundle.absence.explanation ?? ""} (${bundle.absence.section ?? "source"})`
+        ? `No ${vocabulary.jurisdictionName} licence ${answeredDimensions.length ? "matching what you described " : ""}authorises hunting ${species} in ${unit}. ${absence.explanation ?? ""} (${absence.section ?? "source"})`
         : closedBy.length
           ? `${species.charAt(0).toUpperCase()}${species.slice(1)} may not be hunted here. ${closedBy.join(" ")}`
           : `No ${species} season in ${unit} is open on this date for ${answeredDimensions.length ? "this combination" : "any licence or equipment"}.${listing}`,
@@ -934,8 +973,8 @@ export function conditionalCoverage(bundle: ConditionalBundle & { officialUnitCo
       unitsReached: reached.size,
       /* Where the law makes an unlisted unit closed, the rest are closed by
          that provision rather than unknown. */
-      unitsClosedByAbsence: bundle.absence.meaning === "CLOSED" ? officialUnits - reached.size : 0,
-      unitsUnknown: bundle.absence.meaning === "CLOSED" ? 0 : officialUnits - reached.size,
+      unitsClosedByAbsence: absenceFor(bundle, speciesId).meaning === "CLOSED" ? officialUnits - reached.size : 0,
+      unitsUnknown: absenceFor(bundle, speciesId).meaning === "CLOSED" ? 0 : officialUnits - reached.size,
       /* Whether evaluating can ever ask anything: true only if two rules for
          the same place disagree about dates or limits. Grouse rules are keyed
          by licence but every licence gives the same season, so grouse asks

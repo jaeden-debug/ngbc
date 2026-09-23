@@ -36,7 +36,10 @@ test("the bundle is built from the regulation, for 225 units, over one certified
   assert.deepEqual(BRITISH_COLUMBIA_BUNDLE.certifiedPeriod.from, "2026-07-01");
   assert.deepEqual(BRITISH_COLUMBIA_BUNDLE.certifiedPeriod.to, "2027-06-30");
   assert.match(BRITISH_COLUMBIA_BUNDLE.sourceVersion, /B\.C\. Reg\. 190\/84, consolidated to September 15, 2026/);
-  assert.equal(BRITISH_COLUMBIA_BUNDLE.absence.meaning, "UNKNOWN");
+  /* s. 4 makes an unlisted unit closed; the limited entry caveat now attaches
+     per species rather than suppressing the statement for all of them. */
+  assert.equal(BRITISH_COLUMBIA_BUNDLE.absence.meaning, "CLOSED");
+  assert.deepEqual(Object.keys(BRITISH_COLUMBIA_BUNDLE.absence.speciesExceptions ?? {}), ["species:american-black-bear"]);
 });
 
 test("Kamloops (M.U. 3-20): ruffed grouse Sept. 10 to Nov. 30 (Schedule 3 item 28), nothing asked", () => {
@@ -104,9 +107,11 @@ test("northern British Columbia: Atlin ptarmigan to Feb. 28 and snowshoe hare th
   assert.equal(status("6-25", "species:snowshoe-hare", "2027-01-10"), "CONDITIONAL");
 });
 
-test("a unit no row names for the species is UNKNOWN, not closed; a date outside the certified year is not an answer", () => {
-  // Region 8 has no ptarmigan row at all.
-  assert.equal(status("8-9", "species:willow-ptarmigan", "2026-10-01"), "UNKNOWN");
+test("a unit no row names is CLOSED where limited entry does not reach; a date outside the certified year is not an answer", () => {
+  /* Region 8 has no ptarmigan row at all — and s. 4 makes that a closure, since
+     limited entry hunting does not name ptarmigan. This read UNKNOWN until
+     B.C. Reg. 134/93 Schedule I was read and the caveat became per species. */
+  assert.equal(status("8-9", "species:willow-ptarmigan", "2026-10-01"), "CLOSED");
   // July 2027 is after the certified year ends.
   assert.notEqual(status("3-20", "species:american-black-bear", "2027-07-15"), "CONDITIONAL");
 });

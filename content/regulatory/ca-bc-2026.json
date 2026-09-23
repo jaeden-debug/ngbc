@@ -4,19 +4,29 @@
   "jurisdictionId": "jurisdiction:ca-bc",
   "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
   "retrievedAt": "2026-09-15",
-  "contentHash": "sha256:0803b32527791f829972d78bf9179d2aeb968663db698b8d27cc7939e546d29f",
+  "contentHash": "sha256:2128b759d7dbea0301cf6e59fd9388139b273cd6ae8146317930fef8de38679b",
   "certifiedPeriod": {
     "from": "2026-07-01",
     "to": "2027-06-30",
     "reason": "B.C. Reg. 190/84 as amended to B.C. Reg. 97/2026 (in force July 1, 2026), certified for one year of seasons."
   },
   "absence": {
-    "meaning": "UNKNOWN",
+    "meaning": "CLOSED",
     "excludedCombination": "CLOSED",
     "statedAs": "The open seasons for the hunting of each species and type of game animal, subject to section 6, are those set forth in Parts 1 and 2 of each Schedule.",
     "section": "B.C. Reg. 190/84, s. 4",
     "sourceId": "source:ca-bc-hunting-regulation",
-    "explanation": "No row of the Hunting Regulation's schedules names this Management Unit for this species. Limited entry hunting seasons are set by a separate regulation (B.C. Reg. 134/93) that North Ground has not read, so this is not stated as closed."
+    "explanation": "No row of the Hunting Regulation's schedules names this Management Unit for this species, and s. 4 states that the open seasons are those set forth in the Schedules.",
+    "speciesExceptions": {
+      "species:american-black-bear": {
+        "meaning": "UNKNOWN",
+        "excludedCombination": "CLOSED",
+        "statedAs": "a limited entry hunting authorization is required to hunt a species of wildlife referred to in column 5 of an item in Schedule I during a period set out in column 4 of the item in an area defined by columns 1, 2 and 3 of the item",
+        "section": "B.C. Reg. 134/93, s. 1.1",
+        "sourceId": "source:ca-bc-limited-entry-hunting",
+        "explanation": "No row of the Hunting Regulation's schedules names this Management Unit for this species, but limited entry hunting seasons for it are set by B.C. Reg. 134/93, Schedule I, which North Ground has not encoded — so this is not stated as closed."
+      }
+    }
   },
   "officialUnitCount": 225,
   "officialIdentifiers": [

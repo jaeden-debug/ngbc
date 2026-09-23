@@ -29,6 +29,13 @@ export const BC_DOCUMENTS = {
   6: { id: "190_84_07", title: "Hunting Regulation, Schedule 6 — Region 6 (Skeena)" },
   7: { id: "190_84_08", title: "Hunting Regulation, Schedule 7 — Region 7 (Omineca-Peace)" },
   8: { id: "190_84_09", title: "Hunting Regulation, Schedule 8 — Region 8 (Okanagan)" },
+  /*
+   * The OTHER instrument that can set a season. s. 4 of the Hunting Regulation
+   * makes an unlisted unit closed, but limited entry hunting is set separately
+   * — so before an unlisted unit can be stated CLOSED for a species, this
+   * schedule has to be read to see whether it names that species.
+   */
+  leh: { id: "134_93_02", title: "Limited Entry Hunting Regulation, B.C. Reg. 134/93, Schedule I" },
 };
 
 export const BC_SYNOPSIS_URL =

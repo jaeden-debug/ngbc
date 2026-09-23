@@ -230,12 +230,63 @@ const MONTH_NAMES = ["", "January", "February", "March", "April", "May", "June",
 const stable = (value) => JSON.stringify(value);
 const hash8 = (value) => sha256(stable(value)).slice(7, 15);
 
+/*
+ * How to recognise each of this bundle's species in the Limited Entry Hunting
+ * schedule, declared rather than guessed.
+ *
+ * DECLARED SO THE BUILD FAILS CLOSED. A species added to this bundle without a
+ * probe here stops the build, because the alternative is silently treating it
+ * as "not in LEH" and stating an unlisted unit CLOSED for a species limited
+ * entry may well cover — a restriction stricter than the source, which is as
+ * false as an invented permission.
+ *
+ * The probes are the common names the schedule itself uses. Checked 2026-09-23
+ * against B.C. Reg. 134/93 Schedule I: black bear appears (item 1177, Haida
+ * Gwaii, MUs 6-12 and 6-13); grouse, ptarmigan and hare appear NOWHERE. Turkey
+ * appears 24 times, so game birds are not categorically outside limited entry
+ * — which is why this is read rather than assumed.
+ */
+const LEH_PROBES = {
+  "species:american-black-bear": ["black bear"],
+  "species:ruffed-grouse": ["ruffed grouse", "grouse"],
+  "species:spruce-grouse": ["spruce grouse", "grouse"],
+  "species:sharp-tailed-grouse": ["sharp-tailed grouse", "sharp tailed grouse", "grouse"],
+  "species:rock-ptarmigan": ["rock ptarmigan", "ptarmigan"],
+  "species:willow-ptarmigan": ["willow ptarmigan", "ptarmigan"],
+  "species:snowshoe-hare": ["snowshoe hare"],
+};
+
+/** The species B.C. Reg. 134/93 Schedule I names, read from the schedule. */
+function limitedEntrySpecies(lehText, speciesIds) {
+  const text = lehText.toLowerCase();
+  const named = new Set();
+  for (const speciesId of speciesIds) {
+    const probes = LEH_PROBES[speciesId];
+    if (!probes) {
+      throw new Error(
+        `${speciesId} has no limited-entry probe. Add one to LEH_PROBES after checking B.C. Reg. 134/93 ` +
+        "Schedule I: without it this build cannot say whether an unlisted unit is closed for this species.",
+      );
+    }
+    if (probes.some((probe) => text.includes(probe))) named.add(speciesId);
+  }
+  return named;
+}
+
 export async function build({ offline } = {}) {
   const inventory = JSON.parse(readFileSync(INVENTORY, "utf8")).officialIdentifiers;
   if (inventory.length !== 225) throw new Error(`Expected the 225 certified Management Units, found ${inventory.length}`);
   const zoneIdOf = (unit) => `${ZONE_PREFIX}${unit}`;
 
   const body = await read(BC_DOCUMENTS.body.id, offline);
+  /*
+   * The limited entry schedule, read so the closed-world claim above can be
+   * made for the species it does NOT name — and withheld for the ones it does.
+   */
+  const lehText = (await read(BC_DOCUMENTS.leh.id, offline)).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const LEH_STATED = "a limited entry hunting authorization is required to hunt a species of wildlife referred to in column 5 of an item in Schedule I " +
+    "during a period set out in column 4 of the item in an area defined by columns 1, 2 and 3 of the item";
+  const LEH_SOURCE = "source:ca-bc-limited-entry-hunting";
   const consolidated = consolidationDate(body);
   const bodyText = body.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
   const LEGAL_TIME = "The prohibited hours for hunting wildlife are from one hour after sunset on any day until one hour before sunrise of the day following.";
@@ -424,6 +475,19 @@ export async function build({ offline } = {}) {
   crossCheck(rules);
 
   const unitsWithRules = new Set(rules.flatMap((rule) => [...rule.geography.include.ghas, ...rule.geography.include.special.flatMap((id) => specialGeographies.find((special) => special.id === id).candidateAreas)]));
+  /*
+   * Which of this bundle's species limited entry actually names. Read from the
+   * schedule rather than declared, so the closed-world claim rests on the
+   * authority and a species nobody has checked stops the build.
+   */
+  const limitedEntry = limitedEntrySpecies(lehText, [...new Set(rules.map((rule) => rule.speciesId))].sort());
+  if (!limitedEntry.size) {
+    throw new Error(
+      "No species in this bundle was found in B.C. Reg. 134/93 Schedule I. Black bear is expected there " +
+      "(item 1177, Haida Gwaii); finding none means the schedule was not read as reviewed.",
+    );
+  }
+
   const bundle = {
     schemaVersion: 1,
     bundleId: "bundle:ca-bc-2026",
@@ -432,15 +496,44 @@ export async function build({ offline } = {}) {
     retrievedAt: isoDate(consolidated),
     contentHash: "",
     certifiedPeriod: PERIOD,
+    /*
+     * AN UNLISTED UNIT IS CLOSED, BECAUSE THE REGULATION SAYS SO.
+     *
+     * s. 4: "The open seasons ... are those set forth in Parts 1 and 2 of each
+     * Schedule." s. 6, the only thing s. 4 is subject to, is "Restrictions on
+     * open seasons" — it restricts Part 1 seasons and creates none. So the
+     * Hunting Regulation is closed-world and a species with no row in a
+     * Schedule has no general open season there.
+     *
+     * This read UNKNOWN until 2026-09-23, on one caveat: limited entry hunting
+     * is set by a separate regulation nobody had read. That caveat is true —
+     * for the species limited entry names. It was being applied to all of
+     * them, so a certified CLOSED was suppressed for six species across 391
+     * unit combinations. A refusal that looked principled, applied where its
+     * reason did not hold.
+     *
+     * The caveat now attaches per species, to the ones B.C. Reg. 134/93
+     * Schedule I actually names, read at build time.
+     */
     absence: {
-      meaning: "UNKNOWN",
+      meaning: "CLOSED",
       excludedCombination: "CLOSED",
       statedAs: ABSENCE,
       section: "B.C. Reg. 190/84, s. 4",
       sourceId: BODY_SOURCE,
       explanation:
-        "No row of the Hunting Regulation's schedules names this Management Unit for this species. Limited entry hunting seasons are set by a " +
-        "separate regulation (B.C. Reg. 134/93) that North Ground has not read, so this is not stated as closed.",
+        "No row of the Hunting Regulation's schedules names this Management Unit for this species, and s. 4 states that the open seasons are " +
+        "those set forth in the Schedules.",
+      speciesExceptions: Object.fromEntries([...limitedEntry].map((speciesId) => [speciesId, {
+        meaning: "UNKNOWN",
+        excludedCombination: "CLOSED",
+        statedAs: LEH_STATED,
+        section: "B.C. Reg. 134/93, s. 1.1",
+        sourceId: LEH_SOURCE,
+        explanation:
+          "No row of the Hunting Regulation's schedules names this Management Unit for this species, but limited entry hunting seasons for it " +
+          "are set by B.C. Reg. 134/93, Schedule I, which North Ground has not encoded — so this is not stated as closed.",
+      }])),
     },
     officialUnitCount: inventory.length,
     officialIdentifiers: inventory,

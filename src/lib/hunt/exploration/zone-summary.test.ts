@@ -384,6 +384,58 @@ test("a species with no rule here never borrows another zone's next opening", as
     const summary = await summarizeZone({ layerId: "layer:ca-bc-mu", designation }, "2026-10-01");
     const row = summary.species.find((entry) => entry.speciesId === "species:sharp-tailed-grouse");
     assert.ok(row, `${designation} must still list the species`);
-    assert.equal(row.next.kind, "NOT_CERTIFIED", `${designation} borrowed a season from another unit`);
+    /*
+     * The property, not a particular kind. A unit with no rule for this species
+     * may legitimately answer NONE_IN_CERTIFIED_PERIOD — s. 4 closes it and
+     * nothing further opens inside the certified year. What it must NEVER do is
+     * name a date, because the only date available to it would come from a rule
+     * written for a different Management Unit.
+     */
+    assert.notEqual(row.next.kind, "SEASON", `${designation} borrowed a season from another unit`);
+  }
+});
+
+/* ── What an unlisted Management Unit means, per species ── */
+
+test("an unlisted unit is CLOSED where the regulation says the seasons are the listed ones", async () => {
+  /*
+   * B.C. Reg. 190/84 s. 4: "The open seasons ... are those set forth in Parts 1
+   * and 2 of each Schedule." s. 6, the only thing s. 4 is subject to, restricts
+   * Part 1 seasons and creates none — so the regulation is closed-world and a
+   * species with no row has no general open season there.
+   *
+   * This answered UNKNOWN until the caveat below was made per species. Sharp-
+   * tailed grouse is certified in 30 of 225 units; the owner found it reading
+   * "Not covered here" in MU 2-8, which is one of the other 195.
+   */
+  clearZoneSummaryCache();
+  const summary = await summarizeZone({ layerId: "layer:ca-bc-mu", designation: "2-8" }, "2026-10-01");
+  const row = summary.species.find((entry) => entry.speciesId === "species:sharp-tailed-grouse");
+  assert.ok(row);
+  assert.equal(row.state, "CLOSED", "the regulation closes an unlisted unit");
+});
+
+test("a species limited entry hunting names keeps UNKNOWN, and it is not hypothetical", async () => {
+  /*
+   * THE REASON THIS IS PER SPECIES. A second instrument — B.C. Reg. 134/93 —
+   * can set seasons for the species it names, so for those species North Ground
+   * cannot say an unlisted unit is closed.
+   *
+   * Black bear is the only one of this bundle's seven that Schedule I names,
+   * and the six units where the Hunting Regulation gives it no row INCLUDE
+   * 6-12 and 6-13 — which are exactly the Management Units of Schedule I item
+   * 1177, Haida Gwaii. A blanket CLOSED would have contradicted a real limited
+   * entry season, not merely overstated a silence.
+   */
+  for (const designation of ["6-12", "6-13"]) {
+    clearZoneSummaryCache();
+    const summary = await summarizeZone({ layerId: "layer:ca-bc-mu", designation }, "2026-10-01");
+    const bear = summary.species.find((entry) => entry.speciesId === "species:american-black-bear");
+    assert.ok(bear);
+    assert.equal(bear.state, "UNKNOWN", `${designation} must not be stated closed for a limited entry species`);
+
+    /* The same unit, same absence, different species: closed by s. 4. */
+    const grouse = summary.species.find((entry) => entry.speciesId === "species:sharp-tailed-grouse");
+    assert.equal(grouse?.state, "CLOSED", `${designation} is closed for a species limited entry does not name`);
   }
 });

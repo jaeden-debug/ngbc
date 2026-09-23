@@ -92,8 +92,16 @@ test("a certified species in an UNCERTIFIED unit still answers UNKNOWN", async (
     .filter((designation) => !BC.certifiedDesignations!.has(designation.toUpperCase()));
   assert.equal(uncertified.length, 4, "four units are outside the wave");
   for (const designation of uncertified) {
+    /*
+     * CLOSED, not UNKNOWN, since 2026-09-23. `certifiedDesignations` is
+     * "designations with at least one certified rule", so these four are
+     * outside the wave BECAUSE no row names them — and s. 4 makes exactly that
+     * absence a closure for a species limited entry does not name. Withholding
+     * the regulation's own statement because our coverage flag says
+     * IN_DEVELOPMENT would be the same fact refusing itself.
+     */
     const result = await evaluate(zoneIn(designation), "species:ruffed-grouse");
-    assert.equal(result.regulation.status, "UNKNOWN", designation);
+    assert.equal(result.regulation.status, "CLOSED", designation);
     assert.equal(zoneCoverage(BC, designation), "IN_DEVELOPMENT", designation);
   }
 });

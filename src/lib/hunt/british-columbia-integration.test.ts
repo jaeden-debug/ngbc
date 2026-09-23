@@ -73,15 +73,25 @@ test("a question the law turns on is asked through Hunt, then answered", async (
   assert.equal(answered.regulation.status, "CONDITIONAL");
 });
 
-test("the four units no schedule row names answer UNKNOWN, never CLOSED (B.C. Reg. 190/84, s. 4)", async () => {
-  // 2-1, 3-45, 5-16 and 7-1 appear in no Part 1 row of Schedules 1-8. Section 4
-  // makes the schedules the open seasons, but limited entry seasons are set by
-  // B.C. Reg. 134/93, which North Ground has not read: silence is not a closure.
+test("the four units no schedule row names answer per species, not alike", async () => {
+  /*
+   * 2-1, 3-45, 5-16 and 7-1 appear in no Part 1 row of Schedules 1-8.
+   *
+   * This asserted UNKNOWN for both species until 2026-09-23, on the reasoning
+   * that "limited entry seasons are set by B.C. Reg. 134/93, which North Ground
+   * has not read: silence is not a closure". The reasoning was sound and its
+   * premise has changed — Schedule I has now been read, at build time.
+   *
+   * It names black bear (item 1177, Haida Gwaii) and does not name grouse. So
+   * the same absence in the same unit means different things for the two, and
+   * that difference is what this test now holds.
+   */
   for (const unit of ["2-1", "3-45", "5-16", "7-1"]) {
-    for (const [speciesId, date] of [["species:ruffed-grouse", "2026-10-15"], ["species:american-black-bear", "2026-09-15"]]) {
-      const result = await hunt(unit, speciesId, date);
-      assert.equal(result.regulation.status, "UNKNOWN", `${unit} ${speciesId}`);
-    }
+    const grouse = await hunt(unit, "species:ruffed-grouse", "2026-10-15");
+    assert.equal(grouse.regulation.status, "CLOSED", `${unit} ruffed grouse: s. 4 closes an unlisted unit`);
+
+    const bear = await hunt(unit, "species:american-black-bear", "2026-09-15");
+    assert.equal(bear.regulation.status, "UNKNOWN", `${unit} black bear: limited entry may set a season`);
   }
 });
 
