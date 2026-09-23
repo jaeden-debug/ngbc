@@ -1,0 +1,308 @@
+{
+  "jurisdiction": "jurisdiction:us-id",
+  "writtenOn": "2026-09-23",
+  "method": "Every expectation below was written from the text of the Idaho Big Game 2026 Seasons and Rules (pp. 7, 63–66, 67, 95) and from Idaho Fish and Game's own Game Management Unit service queried at each point on 2026-09-23, before any case was run against North Ground. Idaho states that all pronghorn hunting, including archery seasons, is by controlled hunt (p. 63), so every answer here turns on which controlled hunt a tag is for. A case that disagrees is a finding, never an expectation to edit.",
+  "cases": [
+    {
+      "id": "challis-asks-which-hunt",
+      "place": "Challis (Unit 36B)",
+      "latitude": 44.5049,
+      "longitude": -114.2311,
+      "speciesId": "species:pronghorn",
+      "date": "2026-09-01",
+      "expect": {
+        "completeness": "NEEDS_INPUT",
+        "required": "HUNT_CODE"
+      },
+      "law": "Two hunts reach Unit 36B and they differ on this date: 4027 (Hunt Area 28-1, archery, Aug 15 – Sep 15) is running and 4004 (Hunt Area 36B-1, Sep 25 – Oct 24) is not. The answer therefore depends on which controlled hunt the tag is for."
+    },
+    {
+      "id": "challis-4027-archery-open",
+      "place": "Challis (Unit 36B)",
+      "latitude": 44.5049,
+      "longitude": -114.2311,
+      "speciesId": "species:pronghorn",
+      "date": "2026-09-01",
+      "answers": {
+        "HUNT_CODE": "4027"
+      },
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "mentions": [
+          "archery",
+          "controlled hunt tag"
+        ],
+        "authorityPrefix": "source:us-"
+      },
+      "law": "p. 66: hunt 4027, Hunt Area 28-1 (All of Units 28, 36B, 37 and 37A), unlimited tags 1st choice only, Aug 15 – Sep 15, buck only, archery only — archery permit validation required (p. 63). North Ground cannot see whether the hunter was drawn or holds the tag."
+    },
+    {
+      "id": "challis-4004-before-it-opens",
+      "place": "Challis (Unit 36B)",
+      "latitude": 44.5049,
+      "longitude": -114.2311,
+      "speciesId": "species:pronghorn",
+      "date": "2026-09-01",
+      "answers": {
+        "HUNT_CODE": "4004"
+      },
+      "expect": {
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "p. 64: hunt 4004 runs Sep 25 – Oct 24. September 1 is before it opens."
+    },
+    {
+      "id": "challis-4004-open",
+      "place": "Challis (Unit 36B)",
+      "latitude": 44.5049,
+      "longitude": -114.2311,
+      "speciesId": "species:pronghorn",
+      "date": "2026-10-01",
+      "answers": {
+        "HUNT_CODE": "4004"
+      },
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "p. 64: hunt 4004, Hunt Area 36B-1 (All of Unit 36B and Unit 28), 10 tags, Sep 25 – Oct 24. One pronghorn per tag (p. 63)."
+    },
+    {
+      "id": "weiser-4003-open",
+      "place": "Weiser (Unit 31)",
+      "latitude": 44.251,
+      "longitude": -116.9693,
+      "speciesId": "species:pronghorn",
+      "date": "2026-10-01",
+      "answers": {
+        "HUNT_CODE": "4003"
+      },
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "p. 64: hunt 4003, Hunt Area 31-1 (All of Units 31, 32 and 32A), 5 tags, Sep 25 – Oct 24."
+    },
+    {
+      "id": "weiser-4003-last-day",
+      "place": "Weiser (Unit 31)",
+      "latitude": 44.251,
+      "longitude": -116.9693,
+      "speciesId": "species:pronghorn",
+      "date": "2026-10-24",
+      "answers": {
+        "HUNT_CODE": "4003"
+      },
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "p. 64: the season runs Sep 25 – Oct 24 and the closing date is inclusive."
+    },
+    {
+      "id": "weiser-4003-day-after",
+      "place": "Weiser (Unit 31)",
+      "latitude": 44.251,
+      "longitude": -116.9693,
+      "speciesId": "species:pronghorn",
+      "date": "2026-10-25",
+      "answers": {
+        "HUNT_CODE": "4003"
+      },
+      "expect": {
+        "status": "CLOSED",
+        "completeness": "RESOLVED"
+      },
+      "law": "p. 64: hunt 4003 closes Oct 24."
+    },
+    {
+      "id": "weiser-hunt-code-that-is-not-here",
+      "place": "Weiser (Unit 31)",
+      "latitude": 44.251,
+      "longitude": -116.9693,
+      "speciesId": "species:pronghorn",
+      "date": "2026-10-01",
+      "answers": {
+        "HUNT_CODE": "4014"
+      },
+      "expect": {
+        "status": "CLOSED",
+        "completeness": "RESOLVED",
+        "mentions": [
+          "does not cover",
+          "Hunt Area 50"
+        ]
+      },
+      "law": "p. 65: hunt 4014 is Hunt Area 50 (All of Unit 50), which does not reach Unit 31. A tag for a hunt whose area is elsewhere authorises nothing here, so the answer is closed for that hunter and names where the hunt actually is — whatever other hunts are open in Unit 31.",
+      "revision": {
+        "on": "2026-09-23",
+        "original": {
+          "expect": {
+            "completeness": "NEEDS_INPUT",
+            "required": "HUNT_CODE"
+          },
+          "law": "p. 65: hunt 4014 is Hunt Area 50, which does not reach Unit 31. A hunt number that does not cover this place cannot be applied to it, so the question stays open rather than producing an answer for a hunt that is somewhere else."
+        },
+        "evidence": "The first run returned CONDITIONAL: the engine dropped an answer the place does not offer and evaluated the hunts that DO reach Unit 31, telling a hunter whose tag is for Hunt Area 50 that the season is open. That is a defect, and it was fixed (conditional-engine.ts): a PLACE-scoped answer the jurisdiction publishes but this place does not offer is now answered as CLOSED, naming the hunt's real area. My original expectation — that the question stays open — was also wrong in law: the tag is a fact about the hunter, not missing information."
+      }
+    },
+    {
+      "id": "dubois-4046-muzzleloader",
+      "place": "Dubois (Unit 60A)",
+      "latitude": 44.1766,
+      "longitude": -112.2305,
+      "speciesId": "species:pronghorn",
+      "date": "2026-10-01",
+      "answers": {
+        "HUNT_CODE": "4046"
+      },
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED",
+        "mentions": [
+          "muzzleloader"
+        ]
+      },
+      "law": "p. 67: hunt 4046, Hunt Area 60A-1, 30 tags, Sep 25 – Oct 24, either sex, muzzleloader only — muzzleloader permit validation required (p. 63)."
+    },
+    {
+      "id": "mackay-4014-open",
+      "place": "Mackay (Unit 50)",
+      "latitude": 43.9116,
+      "longitude": -113.6116,
+      "speciesId": "species:pronghorn",
+      "date": "2026-10-01",
+      "answers": {
+        "HUNT_CODE": "4014"
+      },
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "p. 65: hunt 4014, Hunt Area 50 (All of Unit 50), 50 tags, Sep 25 – Oct 24."
+    },
+    {
+      "id": "salmon-asks-which-hunt",
+      "place": "Salmon (Unit 29)",
+      "latitude": 45.1755,
+      "longitude": -113.8961,
+      "speciesId": "species:pronghorn",
+      "date": "2026-10-01",
+      "expect": {
+        "completeness": "NEEDS_INPUT",
+        "required": "HUNT_CODE"
+      },
+      "law": "Three hunts reach Unit 29 and they do not agree on this date: 4001 and 4005 run Sep 25 – Oct 24 but each covers only part of the unit (the Poison Creek drainage divides them, p. 68), while 4028 covers the whole unit and closed on Sep 15. The answer therefore depends on which controlled hunt the tag is for.",
+      "revision": {
+        "on": "2026-09-23",
+        "original": {
+          "id": "salmon-partial-area-needs-verification",
+          "expect": {
+            "status": "NEEDS_VERIFICATION",
+            "mentions": [
+              "Poison Creek"
+            ]
+          },
+          "law": "p. 68: Hunt Area 29-1 is 'All of Unit 29 except the Poison Creek drainage' and Hunt Area 37-1 includes 'that part of Unit 29 in the Poison Creek drainage'. Both hunts run Sep 25 – Oct 24, and North Ground holds no boundary for the drainage, so it cannot say which side of it this point is on."
+        },
+        "evidence": "The first run asked for the hunt code rather than answering NEEDS_VERIFICATION. The product was right and the expectation was wrong: I reasoned only about 4001 and 4005, both partial, and forgot that 4028 (Hunt Area 30A-1, all of Unit 29) also reaches this point and is CLOSED on Oct 1. Outcomes therefore differ and a question is the honest response. The partial-area behaviour the original case existed to prove is now proved by salmon-4001-partial-area, with the hunt code answered."
+      }
+    },
+    {
+      "id": "salmon-4001-partial-area",
+      "place": "Salmon (Unit 29)",
+      "latitude": 45.1755,
+      "longitude": -113.8961,
+      "speciesId": "species:pronghorn",
+      "date": "2026-10-01",
+      "answers": {
+        "HUNT_CODE": "4001"
+      },
+      "expect": {
+        "status": "NEEDS_VERIFICATION",
+        "mentions": [
+          "Poison Creek"
+        ]
+      },
+      "law": "p. 68: Hunt Area 29-1 is 'All of Unit 29 except the Poison Creek drainage'. North Ground holds no boundary for the drainage, so with the hunt answered it still cannot say whether this point is inside the hunt area, and quotes Idaho's description rather than guessing."
+    },
+    {
+      "id": "salmon-4028-whole-unit",
+      "place": "Salmon (Unit 29)",
+      "latitude": 45.1755,
+      "longitude": -113.8961,
+      "speciesId": "species:pronghorn",
+      "date": "2026-08-20",
+      "answers": {
+        "HUNT_CODE": "4028"
+      },
+      "expect": {
+        "status": "CONDITIONAL",
+        "completeness": "RESOLVED"
+      },
+      "law": "p. 68: Hunt Area 30A-1 is 'All of Units 21A, 29, 30, and 30A', so it covers the whole of Unit 29 with no drainage to settle. p. 66: hunt 4028, unlimited tags 1st choice only, Aug 15 – Sep 15, buck only, archery only."
+    },
+    {
+      "id": "montpelier-4024-partial-area",
+      "place": "Montpelier (Unit 76)",
+      "latitude": 42.3227,
+      "longitude": -111.2977,
+      "speciesId": "species:pronghorn",
+      "date": "2026-08-20",
+      "answers": {
+        "HUNT_CODE": "4024"
+      },
+      "expect": {
+        "status": "NEEDS_VERIFICATION",
+        "mentions": [
+          "Highway 89"
+        ]
+      },
+      "law": "p. 68: Hunt Area 76-1 is 'That portion of Unit 76 south of Highway 89'. North Ground holds no boundary for that portion, so it quotes the description rather than guessing which side of the highway the point is on."
+    },
+    {
+      "id": "sandpoint-no-pronghorn-hunt",
+      "place": "Sandpoint (Unit 1)",
+      "latitude": 48.2766,
+      "longitude": -116.5535,
+      "speciesId": "species:pronghorn",
+      "date": "2026-10-01",
+      "expect": {
+        "status": "UNKNOWN",
+        "mentions": [
+          "Landowner Permission Hunts"
+        ]
+      },
+      "law": "No controlled hunt in the booklet names Unit 1. Idaho also issues Landowner Permission Hunts in a separate brochure that North Ground has not certified, so the honest answer is UNKNOWN, never CLOSED."
+    },
+    {
+      "id": "weiser-next-licence-year",
+      "place": "Weiser (Unit 31)",
+      "latitude": 44.251,
+      "longitude": -116.9693,
+      "speciesId": "species:pronghorn",
+      "date": "2027-08-01",
+      "answers": {
+        "HUNT_CODE": "4003"
+      },
+      "expect": {
+        "status": "NEEDS_VERIFICATION"
+      },
+      "law": "Cover and p. 7: the 2026 booklet covers July 2026 – June 2027. August 2027 is the next licence year and is not answered with these rules."
+    }
+  ],
+  "viewports": [
+    {
+      "label": "All of Idaho (zoom 6)",
+      "bounds": "-117.3,41.9,-111.0,49.1",
+      "zoom": 6
+    },
+    {
+      "label": "Salmon and Unit 29 (zoom 9)",
+      "bounds": "-114.3,44.9,-113.4,45.5",
+      "zoom": 9
+    }
+  ]
+}

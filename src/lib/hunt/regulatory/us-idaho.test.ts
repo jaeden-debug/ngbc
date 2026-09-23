@@ -71,8 +71,15 @@ test("a hunt whose area is only part of this unit is NEEDS_VERIFICATION, quoting
   assert.ok(JSON.stringify(partial).includes("Poison Creek"), "the booklet's own words for the part are shown");
 });
 
-test("a hunt number that does not reach this unit is not applied: the question stays open", () => {
-  assert.equal(status(evaluate("39", "2026-08-20", { HUNT_CODE: "4027" })), "ASK HUNT_CODE");
+test("a tag for a hunt whose area is elsewhere is answered, never ignored", () => {
+  /* 4027 is Hunt Area 28-1 and does not reach Unit 39. Dropping that answer
+     would evaluate the hunts that DO reach Unit 39 and tell this hunter the
+     season is open, which is the one thing their tag does not do. */
+  const result = evaluate("39", "2026-08-20", { HUNT_CODE: "4027" }).result!;
+  assert.equal(result.status, "CLOSED");
+  assert.match(result.summary, /does not cover Unit 39/);
+  assert.match(result.summary, /Hunt Area 28-1/);
+  assert.match(result.summary, /does not authorise hunting here/);
 });
 
 test("a unit no booklet hunt names is UNKNOWN, never CLOSED, and says what North Ground has not certified", () => {

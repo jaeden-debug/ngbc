@@ -610,6 +610,33 @@ export function evaluateConditional(
     // question open rather than narrowing the rules into a false closure.
     if (value !== undefined && isAnswerValid(offeredHere, value) && coherent({ ...known, [dimension.id]: value })) {
       known[dimension.id] = value;
+      continue;
+    }
+    /* A value the jurisdiction publishes but this place does not offer is a
+       fact about the hunter, not a bad answer: a tag for a hunt whose area is
+       somewhere else does not authorise anything here. Dropping it would
+       answer for the hunts that ARE here and tell that hunter the season is
+       open. Only a PLACE-scoped dimension can say this — a residency or age
+       the local rules never name is still a real person, answered by the
+       rules that do apply. */
+    if (dimension.valuesFrom === "PLACE" && value !== undefined && dimension.options.some((option) => option.value === value)) {
+      const elsewhere = bundle.huntCodes?.find((huntCode) => huntCode.code === value);
+      const named = vocabulary.describe?.(dimension.id, value) ?? value;
+      return {
+        completeness: "RESOLVED",
+        dimensions: [],
+        result: base({
+          status: "CLOSED",
+          summary:
+            `${named.charAt(0).toUpperCase()}${named.slice(1)} does not cover ${unit}` +
+            `${elsewhere ? `: its area is ${elsewhere.geography.statedAs}` : ""}. ` +
+            "A tag for it does not authorise hunting here, whatever is open here under another hunt.",
+          limitations: [
+            ...vocabulary.standingLimitations,
+            `Hunts whose area does reach ${unit} are listed when the question is asked again without this answer.`,
+          ],
+        }, elsewhere ? bundle.rules.filter((rule) => rule.huntCodeId === elsewhere.id).slice(0, 1) : []),
+      };
     }
   }
 
