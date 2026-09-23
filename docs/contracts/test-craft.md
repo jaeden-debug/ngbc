@@ -68,6 +68,32 @@ graduated; here, because the check was never independent to begin with.
 
 ---
 
+## Verify the output you did not predict
+
+*Added 2026-09-23.*
+
+Checking only the results that match your model tests **the model**, not the
+code. Both outcomes are bad and neither announces itself: a correct answer you
+did not expect gets reported as a bug, and a wrong answer you did expect gets
+shipped.
+
+British Columbia's next-opening work produced several species sharing one
+September 1–9 window. It looked exactly like the leak I was hunting — a season
+borrowed from another Management Unit. It was a real MU 2-8 rule, geography
+"2-2 to 2-19", one of two the bundle holds there. Had I verified only the rows
+that looked right, I would have shipped believing a correct answer was a defect,
+or the reverse.
+
+So: **before believing an output, check the row you cannot explain.** And check
+the dangerous property directly rather than inferring it from the rows that
+happened to look sensible — in that case, that a species with no rule in a unit
+never names a date, proved across the 195 units where sharp-tailed grouse has
+none.
+
+This is the sibling of "do not share the subject's blind spot" one level up:
+that rule is about how a check is built, this one is about which outputs you
+bother to check at all.
+
 ## The gate is proportionate to what the change can break
 
 *Added 2026-09-23.*
