@@ -116,6 +116,24 @@ describe("completeness matrix", () => {
     assert.ok(cell.absenceEvidence!.closedBy.length > 0, "a recorded absence says what would close it");
   });
 
+  it("tells a known-but-unplaceable restriction apart from an unexamined one", async () => {
+    /* Alberta's 11 road corridor wildlife sanctuaries are recorded and cannot
+       be placed — each is described by highway segment, naming no management
+       unit. "Not indexed" would have been false and would have sent a lane to
+       re-read a guide whose restrictions are already transcribed. What is
+       needed is boundaries, which is different work. */
+    const alberta = (await completenessFor("jurisdiction:ca-ab"))[0].facts.find((cell) => cell.fact === "CRITICAL_EXCEPTIONS")!;
+    assert.equal(alberta.state, "RESEARCH_REQUIRED", "unplaceable does not certify — it reaches no point");
+    assert.match(alberta.note, /recorded and NONE can be placed/);
+    assert.match(alberta.note, /boundaries, not more reading/);
+
+    /* And the over-claim stays fixed: Québec's only place-condition row is
+       about a hunter being present when hunting with dogs, carries none of the
+       within-zone model's fields, and must still not count. */
+    const quebec = (await completenessFor("jurisdiction:ca-qc"))[0].facts.find((cell) => cell.fact === "CRITICAL_EXCEPTIONS")!;
+    assert.doesNotMatch(quebec.note, /recorded/);
+  });
+
   it("no species is complete yet, and the matrix says so plainly", async () => {
     /* Recorded as of 2026-09-24. When this fails, something became genuinely
        complete — check it against the nine facts before celebrating. */

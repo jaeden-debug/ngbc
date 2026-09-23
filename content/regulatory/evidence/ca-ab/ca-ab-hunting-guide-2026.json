@@ -163,10 +163,72 @@
       "unresolved": [
         "The 11 sanctuaries are described by highway segment, so North Ground cannot place a point in one. They are UNLISTED in the within-zone model and must surface as unknown rather than be dropped."
       ]
+    },
+    {
+      "category": "AMMUNITION",
+      "kind": "authorized bow and arrow",
+      "state": "REQUIRED",
+      "officialName": {
+        "text": "Authorized bow and authorized arrow",
+        "lang": "en-CA"
+      },
+      "statedAs": {
+        "text": "Persons hunting big game must use an authorized bow and an authorized arrow. An authorized bow is one that is held, drawn and released by muscular power and has a draw weight of not less than 16 kilograms (35 pounds). This is the number of kilograms (pounds) required to draw an arrow of 71 cm (28 inches) to its head. An authorized arrow is one that is not less than 61 cm (24 inches) in length.",
+        "lang": "en-CA"
+      },
+      "citation": "2026 Alberta Guide to Hunting Regulations, archery equipment",
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "AB"
+          ],
+          "statedAs": null
+        },
+        "methods": [
+          "bow"
+        ]
+      }
+    },
+    {
+      "category": "AMMUNITION",
+      "kind": "authorized crossbow",
+      "state": "REQUIRED",
+      "officialName": {
+        "text": "Authorized crossbow",
+        "lang": "en-CA"
+      },
+      "statedAs": {
+        "text": "Persons hunting big game with a crossbow must use an authorized crossbow and arrow (bolt). An authorized crossbow is one that requires 45.4 kilograms (100 pounds) or more of pull to draw the string or cable to its cocked position. There is no restriction on arrow length, however it must have a tip that bears a head that is not intentionally designed to resist being withdrawn after it has penetrated an object.",
+        "lang": "en-CA"
+      },
+      "citation": "2026 Alberta Guide to Hunting Regulations, crossbow equipment",
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "AB"
+          ],
+          "statedAs": null
+        },
+        "methods": [
+          "crossbow"
+        ]
+      },
+      "unresolved": [
+        "The guide also states 'Crossbows may not be used to hunt big game during arche[ry seasons]' — a season-scoped prohibition recorded here as unresolved because the sentence was truncated in extraction and must be re-read before being encoded as a rule."
+      ]
     }
   ],
   "laneNotes": [
     "Alberta's certified species are three grouse and white-tailed deer. Rows are scoped to those.",
-    "The migratory-bird non-toxic shot rule and the CFB Wainwright non-toxic requirement do NOT reach these species: grouse are upland game birds, not migratory, and Wainwright is a base-specific rule. Recorded here so a later reader does not mistake the guide's two non-toxic mentions for a general ammunition restriction."
+    "The migratory-bird non-toxic shot rule and the CFB Wainwright non-toxic requirement do NOT reach these species: grouse are upland game birds, not migratory, and Wainwright is a base-specific rule. Recorded here so a later reader does not mistake the guide's two non-toxic mentions for a general ammunition restriction.",
+    "METHODS is deliberately NOT certified from these rows. They specify what an authorized bow, arrow and crossbow ARE — equipment specifications — not which implements may be used for a given species and season. A specification of an implement is not a permission to use it."
   ]
 }

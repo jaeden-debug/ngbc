@@ -53,6 +53,9 @@ export interface EvidenceRow {
   state?: EvidenceState;
   kind?: string;
   citation?: string;
+  /** Present on a row that IS a within-zone restriction, per that model. */
+  restrictionKind?: string;
+  restrictionScope?: { kind?: string };
   scope?: {
     /** A list, or the string "ALL" where the source says so. */
     speciesIds?: string[] | "ALL" | null;
@@ -282,4 +285,31 @@ export function certificationContradictions(
       ? [{ fact: claim.fact, laneReason: claim.reason, readerReason: verdict.reason }]
       : [];
   });
+}
+
+
+/**
+ * Within-zone restrictions this jurisdiction has evidence for, and whether any
+ * of them can actually be placed.
+ *
+ * The distinction matters to two different readers: a hunter is better served
+ * by "eleven areas exist and we cannot place them" than by silence, and a
+ * research lane is told to go and find boundaries rather than to go and look
+ * for restrictions that are already recorded.
+ *
+ * A row counts only when it carries the within-zone model's own fields. That
+ * is a discriminator in the DATA rather than a category that sounds adjacent —
+ * Québec's one place-condition row is about a hunter being present when
+ * hunting with dogs, and counting it here once put the matrix 13 points out.
+ */
+export function withinZoneRestrictions(jurisdictionId: string, speciesId: string): {
+  known: number;
+  placeable: number;
+} {
+  const rows = rowsFor(jurisdictionId, speciesId, "PLACE_CONDITION").filter((row) => row.restrictionKind);
+  const placeable = rows.filter((row) => {
+    const kind = row.restrictionScope?.kind;
+    return kind === "AREAS" || kind === "CANDIDATE_AREAS" || kind === "JURISDICTION_WIDE";
+  });
+  return { known: rows.length, placeable: placeable.length };
 }

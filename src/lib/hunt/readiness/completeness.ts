@@ -23,7 +23,7 @@
 
 import bundle from "../../../../content/regulatory/readiness/ca-on-2026.json" with { type: "json" };
 import { REGULATORY_REGISTRY } from "../regulatory/registry.ts";
-import { certifies, hasEvidence } from "./evidence.ts";
+import { certifies, hasEvidence, withinZoneRestrictions } from "./evidence.ts";
 import { harvestLimitsFrom, limitKinds } from "../regulatory/harvest-limit.ts";
 import { timeZoneAtPoint } from "../time-zone.ts";
 
@@ -235,7 +235,19 @@ export async function completenessFor(jurisdictionId: string): Promise<SpeciesCo
        Certifying a fact from a category that merely sounds adjacent is how a
        matrix flatters a landing. It stays on indexed special areas until
        evidence names them. */
-    const exceptions = { certified: false, reason: "" };
+    /* Not fed from PLACE_CONDITION category alone — that over-claimed once, on
+       a Québec row about hunting with dogs. A row counts only when it carries
+       the within-zone model's own fields, and only a PLACEABLE one certifies:
+       a restriction we know of and cannot locate does not reach a point. */
+    const restrictions = evidenced ? withinZoneRestrictions(jurisdictionId, row.speciesId) : { known: 0, placeable: 0 };
+    const exceptions = {
+      certified: restrictions.placeable > 0,
+      reason: restrictions.placeable > 0
+        ? `${restrictions.placeable} of ${restrictions.known} recorded within-zone restrictions can be placed.`
+        : restrictions.known > 0
+          ? `${restrictions.known} within-zone restrictions are recorded and NONE can be placed — each is described in words, naming no management unit. Known and unplaceable is not the same as unexamined: what is needed is boundaries, not more reading.`
+          : "",
+    };
     const known = isOntario && ontarioSpecies.has(row.speciesId);
 
     /* Ontario's own bundle, or a lane's evidence package — one path, so a
@@ -302,7 +314,9 @@ export async function completenessFor(jurisdictionId: string): Promise<SpeciesCo
           ? "Published special areas inside a zone are indexed and reach the answer."
           : exceptions.certified
             ? exceptions.reason
-            : entry.pointOnlyChecks
+            : exceptions.reason
+              ? exceptions.reason
+              : entry.pointOnlyChecks
               ? "Restrictions are checked only at an exact point; the zone-level answer says so but the areas are not indexed."
               : "Special areas within a zone have not been indexed for this jurisdiction.",
         has(Boolean(entry.specialAreasInZone) || exceptions.certified), of),
