@@ -5,6 +5,7 @@ import type { IsoDate } from "../../content-contract/index.ts";
 import { intersectLegalTime, legalTimeFor, SOLAR_UNCERTAINTY_MINUTES } from "./legal-time.ts";
 import { ontarioHoursRules } from "./ontario-legal-time.ts";
 import { ontarioStatutoryClock } from "./statutory-time.ts";
+import { regulatoryEntryFor } from "./registry.ts";
 import { sunriseSunset } from "./solar.ts";
 
 const on = (value: string) => value as IsoDate;
@@ -111,4 +112,46 @@ test("the computed solar times sit inside the margin against the authority's own
     }
   }
   assert.ok(record.result.worstDeviationSeconds < SOLAR_UNCERTAINTY_MINUTES * 60);
+});
+
+test("the legal window reaches the engine's answer, for a point and not for a zone", async () => {
+  /*
+   * The delivery step. Everything above computes a window; this asserts it
+   * arrives in what a caller actually receives.
+   *
+   * `HuntInput` has always carried the coordinate and the registry always
+   * passed it — the evaluators declared a narrower parameter that hid it, and
+   * the major game call site rebuilt an object that dropped it outright.
+   */
+  const entry = regulatoryEntryFor("jurisdiction:ca-on")!;
+  const zone = {
+    status: "RESOLVED",
+    zoneId: "management_zone:ca-on-wmu-60",
+    jurisdictionId: "jurisdiction:ca-on",
+    officialName: "Wildlife Management Unit 60",
+    sourceId: "source:ca-on-small-game-2026",
+    message: "",
+  } as unknown as Parameters<NonNullable<ReturnType<typeof regulatoryEntryFor>>["evaluate"]>[1];
+  const at = async (speciesId: string, date: string, point: { latitude: number; longitude: number }) =>
+    (await entry.evaluate({ ...point, date: on(date), speciesId: speciesId as never, answers: {} }, zone,
+      { verifiedAt: new Date(0).toISOString() })).regulation.legalTime;
+
+  /* Small game: resolved, and its window is the statutory clock a hunter reads. */
+  const grouse = await at("species:ruffed-grouse", "2026-10-15", POINT);
+  assert.equal(grouse.status, "RESOLVED");
+  assert.equal(grouse.status === "RESOLVED" && grouse.observedClock?.status, "SAME_AS_STATUTORY");
+
+  /*
+   * Major game with a pending question STILL reports the window, because it
+   * turns on species, unit and date and not on the hunter's answer. Withholding
+   * it would hide wild turkey's 7 p.m. closing behind a licence question — and
+   * turkey is the species that closing exists for.
+   */
+  const turkey = await at("species:wild-turkey", "2026-05-15", POINT);
+  assert.equal(turkey.status, "RESOLVED");
+  assert.equal(turkey.status === "RESOLVED" && turkey.window.closesAt, "19:00");
+
+  /* A whole-zone question has no single sunrise, and says so. */
+  const zoned = await at("species:ruffed-grouse", "2026-10-15", { latitude: Number.NaN, longitude: Number.NaN });
+  assert.equal(zoned.status, "NOT_CERTIFIED");
 });

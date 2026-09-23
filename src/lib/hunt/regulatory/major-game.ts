@@ -8,6 +8,8 @@ import {
   type HuntDimensionAnswers, type HuntDimensionId, type RequiredDimension,
 } from "./dimensions.ts";
 import { nextOpening, evaluateSeason, parseSeasonPhrase } from "./season.ts";
+import { ontarioLegalTime } from "./ontario-legal-time.ts";
+import type { IsoDate } from "../../content-contract/index.ts";
 import bundle from "../../../../content/regulatory/ca-on-major-game-2026.json" with { type: "json" };
 
 /**
@@ -82,6 +84,16 @@ export interface MajorGameEvaluation {
   result?: RegulatoryResult;
   /** The dimensions this species and unit turn on, answered or not. */
   dimensions: RequiredDimension[];
+  /*
+   * The legal hunting window, present on BOTH branches.
+   *
+   * It turns on species, unit and date and nothing else — `ontarioHoursRules`
+   * structurally cannot take a hunter's answers — so it is a fact we hold even
+   * while another one is pending. Withholding it until the hunter answers a
+   * question about their licence would hide wild turkey's 7 p.m. closing behind
+   * an unrelated one, and turkey is the species the exception exists for.
+   */
+  legalTime?: RegulatoryResult["legalTime"];
 }
 
 function rulesFor(speciesId: string, zoneId: string): BundleRule[] {
@@ -249,15 +261,31 @@ function baseResult(overrides: Partial<RegulatoryResult>, rules: BundleRule[] = 
  * result produced here states that a licence, tag or residency has been verified.
  */
 export function evaluateOntarioMajorGame(
-  input: { speciesId: string; date: string },
+  /*
+   * The coordinate is optional and the registry supplies it. It was being
+   * discarded one line before this call — see the note there — while the small
+   * game path passed the same field through intact.
+   */
+  input: { speciesId: string; date: string; latitude?: number; longitude?: number },
   zone: ZoneResolution,
   answers: HuntDimensionAnswers = {},
 ): MajorGameEvaluation {
+  /* The legal window for this answer, resolved once. Wild turkey is major game
+     in Ontario, so this is the path its 7 p.m. closing actually reaches. */
+  const legalTime = ontarioLegalTime(
+    input.speciesId,
+    zone.status === "RESOLVED" && zone.zoneId
+      ? String(zone.zoneId).replace(/^management_zone:ca-on-wmu-/, "")
+      : undefined,
+    { latitude: input.latitude ?? Number.NaN, longitude: input.longitude ?? Number.NaN },
+    input.date as IsoDate,
+  );
+
   if (zone.status !== "RESOLVED" || !zone.zoneId) {
     return {
       completeness: "RESOLVED",
       dimensions: [],
-      result: baseResult({
+      result: baseResult({ legalTime,
         status: "NEEDS_VERIFICATION",
         summary: "North Ground could not certify the wildlife management unit, so it will not infer a hunting status.",
       }),
@@ -272,7 +300,7 @@ export function evaluateOntarioMajorGame(
     return {
       completeness: "RESOLVED",
       dimensions: [],
-      result: baseResult({
+      result: baseResult({ legalTime,
         status: "UNKNOWN",
         summary:
           `No certified rule covers this species in ${unitName}. The unit is not named by any season ` +
@@ -291,7 +319,7 @@ export function evaluateOntarioMajorGame(
   // answer stays meaningful even where no question was put.
   const matching = narrow(candidates, answers, availableDimensions(candidates, sourceId));
   const missing = nextMissingDimension(requiredDimensions(matching, sourceId), answers);
-  if (missing) return { completeness: "NEEDS_INPUT", required: missing, dimensions };
+  if (missing) return { completeness: "NEEDS_INPUT", required: missing, dimensions, legalTime };
 
   if (!matching.length) {
     // Every published rule for this unit excludes what was described. That is a
@@ -300,7 +328,7 @@ export function evaluateOntarioMajorGame(
     return {
       completeness: "RESOLVED",
       dimensions,
-      result: baseResult({
+      result: baseResult({ legalTime,
         status: "CLOSED",
         summary:
           `No published season in ${unitName} is open to this combination. The tables covering ` +
@@ -314,7 +342,7 @@ export function evaluateOntarioMajorGame(
     return {
       completeness: "RESOLVED",
       dimensions,
-      result: baseResult({
+      result: baseResult({ legalTime,
         status: "CLOSED",
         summary:
           `The official table states no season for this combination in ${unitName}. ` +
@@ -341,7 +369,7 @@ export function evaluateOntarioMajorGame(
       return {
         completeness: "RESOLVED",
         dimensions,
-        result: baseResult({
+        result: baseResult({ legalTime,
           status: "CONFLICT",
           summary:
             `Two published rules that apply to the same hunter give ${unitName} different ` +
@@ -362,7 +390,7 @@ export function evaluateOntarioMajorGame(
       return {
         completeness: "RESOLVED",
         dimensions,
-        result: baseResult({
+        result: baseResult({ legalTime,
           status: "NEEDS_VERIFICATION",
           summary: `North Ground cannot interpret the published season wording for ${unitName} ("${rule.seasonPhrase}").`,
         }, [rule]),
@@ -390,7 +418,7 @@ export function evaluateOntarioMajorGame(
     return {
       completeness: "RESOLVED",
       dimensions,
-      result: baseResult({
+      result: baseResult({ legalTime,
         status: "CONDITIONAL",
         next,
         season: { opens: containing.opensIso, closes: containing.closesIso, datesInclusive: true },
@@ -413,7 +441,7 @@ export function evaluateOntarioMajorGame(
     return {
       completeness: "RESOLVED",
       dimensions,
-      result: baseResult({
+      result: baseResult({ legalTime,
         status: "CLOSED",
         next,
         summary:
@@ -427,7 +455,7 @@ export function evaluateOntarioMajorGame(
   return {
     completeness: "RESOLVED",
     dimensions,
-    result: baseResult({
+    result: baseResult({ legalTime,
       status: "NEEDS_VERIFICATION",
       summary:
         `The selected date falls outside the period the ${outside.rule.sourceVersion} summary certifies for ` +

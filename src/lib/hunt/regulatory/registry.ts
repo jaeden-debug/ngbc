@@ -146,13 +146,25 @@ const ONTARIO: RegulatoryEntry = {
     if (!isMajorGameSpecies(input.speciesId)) {
       return { completeness: "RESOLVED", dimensions: [], regulation: evaluateOntarioSmallGame(input, zone) };
     }
-    const evaluation = evaluateOntarioMajorGame({ speciesId: input.speciesId, date: input.date }, zone, input.answers ?? {});
+    /*
+     * THE WHOLE INPUT, NOT A RECONSTRUCTION. This line rebuilt an object from
+     * two fields and discarded the coordinate, one line after the small game
+     * path passed the same input through intact. Two sibling paths disagreeing
+     * about their own contract, with nothing recorded about which was intended
+     * — and legal hunting time needs the point that was being dropped.
+     */
+    const evaluation = evaluateOntarioMajorGame(input, zone, input.answers ?? {});
     if (evaluation.completeness === "NEEDS_INPUT" && evaluation.required) {
       return {
         completeness: "NEEDS_INPUT",
         required: evaluation.required,
         dimensions: evaluation.dimensions,
-        regulation: pendingRegulation("Ontario", evaluation.required, verifiedAt),
+        /* The legal window does not depend on the pending answer, so it is not
+           withheld pending it. */
+        regulation: {
+          ...pendingRegulation("Ontario", evaluation.required, verifiedAt),
+          ...(evaluation.legalTime ? { legalTime: evaluation.legalTime } : {}),
+        },
       };
     }
     return {

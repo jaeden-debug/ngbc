@@ -1,9 +1,10 @@
 import { harvestLimitsFrom, type HarvestLimit } from "./harvest-limit.ts";
 import { legalTimeNotCertified } from "./legal-time.ts";
 import { general } from "../limitation.ts";
-import type { CanonicalId } from "../../content-contract/index.ts";
+import type { CanonicalId, IsoDate } from "../../content-contract/index.ts";
 import type { RegulatoryResult, ZoneResolution } from "../types.ts";
 import { evaluateSeason, nextOpening, parseSeasonPhrase, type SeasonWindow } from "./season.ts";
+import { ontarioLegalTime } from "./ontario-legal-time.ts";
 import bundle from "../../../../content/regulatory/ca-on-small-game-2026.json" with { type: "json" };
 
 /**
@@ -181,11 +182,37 @@ function limitsOf(rule: BundleRule): RegulatoryResult["limits"] {
  * `zone` must already be resolved; this function never guesses a location.
  */
 export function evaluateOntarioSmallGame(
-  input: { speciesId: string; date: string },
+  /*
+   * The coordinate is OPTIONAL and the registry already supplies it: `HuntInput`
+   * has carried latitude and longitude all along, and this path was passing them
+   * through while declaring a narrower type that hid them.
+   *
+   * Optional rather than required because a caller may genuinely have no point —
+   * a whole-zone question — and should say so rather than pass NaN. Legal time
+   * then answers NOT_CERTIFIED, which is correct: a zone spans too much
+   * longitude to have one sunrise.
+   */
+  input: { speciesId: string; date: string; latitude?: number; longitude?: number },
   zone: ZoneResolution,
 ): RegulatoryResult {
+  /*
+   * The legal window, computed once for this answer. It needs the unit only for
+   * the wild turkey table, so it is resolved here rather than after the zone
+   * check — an unresolved zone still has a lawful sunrise-to-sunset window.
+   */
+  const designation = zone.status === "RESOLVED" && zone.zoneId
+    ? String(zone.zoneId).replace(/^management_zone:ca-on-wmu-/, "")
+    : undefined;
+  const legalTime = ontarioLegalTime(
+    input.speciesId,
+    designation,
+    { latitude: input.latitude ?? Number.NaN, longitude: input.longitude ?? Number.NaN },
+    input.date as IsoDate,
+  );
+  const timed = (overrides: Partial<RegulatoryResult>): RegulatoryResult => baseResult({ legalTime, ...overrides });
+
   if (zone.status !== "RESOLVED" || !zone.zoneId) {
-    return baseResult({
+    return timed({
       status: "NEEDS_VERIFICATION",
       summary: "North Ground could not certify the wildlife management unit, so it will not infer a hunting status.",
     });
@@ -202,7 +229,7 @@ export function evaluateOntarioSmallGame(
   );
 
   if (matching.length > 1) {
-    return baseResult({
+    return timed({
       status: "CONFLICT",
       summary:
         `More than one official rule reaches ${unitName} for this species ` +
@@ -217,14 +244,14 @@ export function evaluateOntarioSmallGame(
     );
     if (declared) {
       // The source states there is no season here, which is a real answer.
-      return baseResult({
+      return timed({
         status: "CLOSED",
         summary:
           `The official summary states there is no ${input.speciesId.replace("species:", "").replace(/-/g, " ")} ` +
           `season in ${unitName} (${declared.statedAs}).`,
       });
     }
-    return baseResult({
+    return timed({
       status: "UNKNOWN",
       summary:
         `No certified rule covers this species in ${unitName}. The unit is not named by any ` +
@@ -235,7 +262,7 @@ export function evaluateOntarioSmallGame(
   const rule = matching[0];
   const windows = windowsFor(rule);
   if (!windows) {
-    return baseResult({
+    return timed({
       status: "NEEDS_VERIFICATION",
       summary: `North Ground cannot interpret the published season wording for ${unitName} ("${rule.seasonPhrase}").`,
     });
@@ -261,7 +288,7 @@ export function evaluateOntarioSmallGame(
   };
 
   if (season.verdict === "IN_SEASON") {
-    return baseResult({
+    return timed({
       ...shared,
       status: "CONDITIONAL",
       summary:
@@ -272,7 +299,7 @@ export function evaluateOntarioSmallGame(
   }
 
   if (season.verdict === "OUT_OF_SEASON") {
-    return baseResult({
+    return timed({
       ...shared,
       status: "CLOSED",
       summary:
@@ -281,7 +308,7 @@ export function evaluateOntarioSmallGame(
     });
   }
 
-  return baseResult({
+  return timed({
     ...shared,
     status: "NEEDS_VERIFICATION",
     summary:
