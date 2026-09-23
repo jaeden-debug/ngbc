@@ -1,4 +1,5 @@
 import { legalTimeNotCertified } from "./legal-time.ts";
+import { parseRelativeWindow } from "./relative-date.ts";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
@@ -279,4 +280,55 @@ test("every encoded rule names an area the bundle actually derived", () => {
   const derived = new Set(bundle.areas.map((area) => area.name));
   const orphaned = bundle.rules.filter((rule) => !derived.has(rule.area)).map((rule) => rule.area);
   assert.deepEqual([...new Set(orphaned)], [], "every rule must name a derived federal area");
+});
+
+/* ── A refusal reason is a claim, and it can be wrong while the refusal is right ── */
+
+test("no row is filed as a date problem when its dates actually read", () => {
+  /*
+   * The defect this pins: `/\(in Provincial/i` matched Alberta's wording and
+   * missed British Columbia's "(ONLY in Provincial Management Units …)", so 19
+   * rows blocked by SCOPE were stamped "a relative-date phrasing this build
+   * does not recognise". The bucket reported a missing CAPABILITY that did not
+   * exist — and refusal buckets are what work gets prioritised from, so the
+   * wrong reason sent effort at the wrong thing.
+   *
+   * The assertion is self-checking rather than a list of known rows: for every
+   * refusal whose reason blames the DATES, the dates must genuinely fail to
+   * read. A future detector that misses another jurisdiction's wording lands
+   * its rows here and fails this test, instead of quietly renaming the bucket.
+   */
+  const bundle = JSON.parse(readFileSync("content/regulatory/ca-federal-2026.json", "utf8")) as {
+    notEncoded: { reason: string; statedAs?: string; where?: string }[];
+  };
+
+  const blamesTheDates = /relative-date phrasing|not a plain calendar window/;
+  const plainWindow = /^([A-Z][a-z]+)\s+(\d{1,2})\s+to\s+([A-Z][a-z]+)\s+(\d{1,2})$/;
+
+  const misfiled = bundle.notEncoded
+    .filter((entry) => blamesTheDates.test(entry.reason))
+    .map((entry) => (entry.statedAs ?? "").split(" | ")[0].replace(/^\((?:[a-z]+|[ivx]+|[A-Z])\)\s*/, "").trim())
+    .filter((season) => season && (plainWindow.test(season) || parseRelativeWindow(season) !== null));
+
+  assert.deepEqual(misfiled, [], "these rows' dates read fine; they are refused for something else");
+});
+
+test("the four rows that genuinely cannot be read are the leap-year ones", () => {
+  /*
+   * What is left after the mislabels are corrected, and it is the honest
+   * remainder: British Columbia writes "in a year that is not a leap year,
+   * February 10 to March 10" against "in a leap year, February 11 to March 10".
+   *
+   * Stated as a premise the test checks rather than a count it trusts — if a
+   * future build teaches this form, this test should fail and be deleted, not
+   * silently pass on zero rows the way an expired premise does.
+   */
+  const bundle = JSON.parse(readFileSync("content/regulatory/ca-federal-2026.json", "utf8")) as {
+    notEncoded: { reason: string; statedAs?: string }[];
+  };
+  const unread = bundle.notEncoded.filter((entry) => /not a plain calendar window/.test(entry.reason));
+  assert.ok(unread.length > 0, "this test needs deleting, not passing, once the form is read");
+  for (const entry of unread) {
+    assert.match(entry.statedAs ?? "", /leap year/, "an unreadable window that is not the leap-year form is a new finding");
+  }
 });

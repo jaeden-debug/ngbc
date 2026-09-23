@@ -54,6 +54,60 @@ const CACHE = "/tmp/mbr2022.html";
 const PORTION_OF_A_UNIT =
   /portions?\s+of\s+(?:Provincial\s+)?(?:Wildlife\s+Management\s+)?(?:Hunting\s+)?(?:Units?|Zones?)\b/i;
 
+/*
+ * Two detectors that match the AUTHORITY'S PROSE, and the reason they are
+ * declared here with their evidence rather than written inline.
+ *
+ * Both were previously written from the first jurisdiction that needed them and
+ * silently mislabelled every other one — the fourth and fifth instances of that
+ * pattern in this build, after the unit phrase and the district-portion
+ * classifier. A prose detector works perfectly on the jurisdiction it was born
+ * from, which is exactly why it never announces itself.
+ *
+ * So each was swept against the Table-1 cells of ALL THIRTEEN Parts of Schedule
+ * 3 before being changed, and each gains rows, loses none, and fires zero times
+ * where the concept is absent:
+ *
+ *   SUB_LIST_OF_UNITS  was /\(in Provincial/i — verified against Alberta only.
+ *     It missed all 19 British Columbia rows, which write "(ONLY in Provincial
+ *     Management Units 1-1, 1-2 and 1-4 to 1-7)". Those rows were then stamped
+ *     "a relative-date phrasing this build does not recognise" — reported as a
+ *     missing CAPABILITY when the blocker was SCOPE.
+ *
+ *   EXTRA_ALLOWANCE    was /plus an additional/i — verified against Prince
+ *     Edward Island, Nova Scotia, New Brunswick and Manitoba. It missed 3
+ *     British Columbia rows, which begin a NEW SENTENCE: "10 (not more than 5
+ *     may be Ross's Geese). AN additional 5 Snow Geese may be killed or taken
+ *     in Provincial Management Units 2-4 and 2-5". Nothing false was published,
+ *     but only because readLimit refuses that cell for an unrelated reason — it
+ *     ends in "2-5" rather than a closing paren. The guard that held was not
+ *     the guard designed for it.
+ *
+ * A refusal reason is itself a claim, and it can be wrong while the refusal is
+ * right. §8 requires refusal metrics to use stable classification semantics;
+ * a stable-but-WRONG reason misleads exactly as much as a reordered bucket,
+ * because these buckets are what work gets prioritised from.
+ */
+const SUB_LIST_OF_UNITS = /\((?:only )?in (?:the )?Provincial\b|\bonly in (?:the )?Provincial\b/i;
+/*
+ * Two more scope qualifiers, found by the same sweep and for the same reason:
+ * the ladder had no rung for either, so both were falling through to the
+ * season reader and being reported as DATE problems. Their dates parse.
+ *
+ *   ONLY_ON_FARMLAND  Québec 4, Ontario 2. "farmland" is the only wording in
+ *     Schedule 3. North Ground holds no land-use layer, so a point cannot be
+ *     placed on or off farmland — a genuine evidentiary gap, unlike the unit
+ *     sub-lists, whose geography we already hold.
+ *
+ *   EXCLUDES_SUNDAYS  Ontario 1, wording "excluding Sundays". The season turns
+ *     on MUNICIPAL rules North Ground does not hold, so the answer depends on
+ *     a layer below the province. Swept precisely: a loose /Sunday/ matches 24
+ *     rows that merely say "the first Sunday after January 5", which is a DATE.
+ */
+const ONLY_ON_FARMLAND = /\bfarmland\b/i;
+const EXCLUDES_SUNDAYS = /(?:excluding|except|not|other than)\s+(?:on\s+)?Sundays/i;
+const EXTRA_ALLOWANCE = /\b(?:plus an|An|an) additional\b/;
+
 const SPLIT_UNITS = {
   "jurisdiction:ca-on": ["1D", "25", "26"],
   "jurisdiction:ca-qc": ["2", "18", "21", "27", "28"],
@@ -297,8 +351,39 @@ function areasNamedBy(cell, derived, recognised) {
   /* "Districts C and D" distributes the plural noun across both parts, so the
      singular is restored before matching; "District No. 1 (North) and District
      No. 2 (South)" already repeats it. */
-  const plural = /^(Districts|Zones|Units)\s+(.+)$/.exec(value);
-  const parts = (plural ? plural[2] : value).split(/\s+and\s+|,\s*/).map((part) => part.trim()).filter(Boolean);
+  /*
+   * A CONJUNCTION IS A LIST OF NAMES, NOT PROSE THAT CONTAINS "and".
+   *
+   * Swept against all 44 distinct area cells in Schedule 3. Six contain a
+   * separator, and they fall into two kinds that must not be treated alike:
+   *
+   *   LIST   "Districts C and D"                              (Québec)
+   *          "District No. 1 (North) and District No. 2 (South)" (Saskatchewan)
+   *          "Avalon-Burin Coastal Newfoundland Zone, …, and
+   *           Southwestern Newfoundland Coastal Zone"         (Newfoundland)
+   *
+   *   PROSE  "The portion of the islands AND waters of James Bay south of
+   *           latitude 55°N AND west of longitude 80°15′W"    (Nunavut)
+   *
+   * Splitting the Nunavut form yields fragments that are not zones at all.
+   * Requiring every fragment to be a known name already refuses it, but that
+   * guard holds only by accident: a prose cell whose fragments happened to tile
+   * onto known names would resolve silently and wrongly. The structural test is
+   * the real guard — a list of names carries no lowercase content words.
+   *
+   * The Oxford comma is normalised first because ", and " defeated BOTH the
+   * split and the test, refusing Newfoundland's five-zone rows outright. That
+   * failure was loud rather than wrong, but it is lost coverage either way.
+   */
+  const listed = value.replace(/,\s*and\s+/gi, ", ");
+  const plural = /^(Districts|Zones|Units)\s+(.+)$/.exec(listed);
+  const body = plural ? plural[2] : listed;
+  const isNameList = body.split(/\s+and\s+|,\s*/).every((part) =>
+    part.trim().split(/\s+/).every((token) =>
+      /^[("']?[A-Z0-9]/.test(token) || /^(?:No\.|of|the|de|du|des)$/.test(token)));
+  if (!isNameList) return null;
+
+  const parts = body.split(/\s+and\s+|,\s*/).map((part) => part.trim()).filter(Boolean);
   if (parts.length < 2) return null;
 
   const singular = plural ? plural[1].replace(/s$/, "") : null;
@@ -549,6 +634,30 @@ async function main() {
           const bags = cellItems(row[5] ?? "");
           const possessionCell = cellText(row[3] ?? "");
 
+          /*
+           * A REPEALED ENTRY IS NOT A SEASON. `isRepealedRow` was applied to
+           * the SPECIES cell only, so an entry the regulation has removed —
+           * Québec's "[Repealed, SOR/2026-118, s. 16]" — reached the season
+           * reader and was reported as "not a plain calendar window this build
+           * reads": a row we understand perfectly, classified as one we do not.
+           *
+           * Recorded rather than skipped silently. Nothing is refused here in
+           * the usual sense — the authority removed the entry — but a row that
+           * vanishes without a trace cannot be counted, and a refusal that
+           * cannot be counted cannot be prioritised.
+           *
+           * It is never CLOSED. Repealing an entry REMOVES it, which is not the
+           * regulation saying "No open season"; reading a removal as a closure
+           * would state a restriction the authority did not make.
+           */
+          if (seasons.length === 1 && isRepealedRow(stripLabel(seasons[0]))) {
+            notEncoded.push({
+              where, group: group.statedAs, area: areaCell, statedAs: stripLabel(seasons[0]),
+              reason: "the regulation has repealed this entry, so there is no season here to encode",
+            });
+            continue;
+          }
+
           /* A declared closure is CLOSED, not UNKNOWN: the authority has said
              there is no season, which is a different fact from silence. */
           if (seasons.length === 1 && /^No open season$/i.test(stripLabel(seasons[0]))) {
@@ -566,9 +675,11 @@ async function main() {
           const rowText = [...seasons, ...bags, possessionCell].join(" | ");
           const refusal =
             /resident/i.test(rowText) ? "the limit or season varies by residency"
-            : /\(in Provincial/i.test(rowText) ? "the season applies only in a sub-list of provincial units"
+            : SUB_LIST_OF_UNITS.test(rowText) ? "the season applies only in a sub-list of provincial units"
             : /\(from [A-Z]/i.test(rowText) ? "the daily bag changes inside the open season"
-            : /plus an additional/i.test(rowText) ? "the daily bag carries an additional species-specific allowance"
+            : EXTRA_ALLOWANCE.test(rowText) ? "the daily bag carries an additional species-specific allowance"
+            : ONLY_ON_FARMLAND.test(rowText) ? "the season applies only on farmland, which North Ground cannot resolve from a point"
+            : EXCLUDES_SUNDAYS.test(rowText) ? "the season excludes Sundays in municipalities whose own rules North Ground does not hold"
             : null;
           if (refusal) {
             /*

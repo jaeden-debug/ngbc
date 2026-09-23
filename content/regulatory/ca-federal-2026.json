@@ -4882,50 +4882,50 @@
       "group": "Canada Geese and Cackling Geese, combined",
       "area": "District No. 1",
       "statedAs": "(i) the first Saturday in September to the Tuesday after the second Saturday in September (only in Provincial Management Units 1-1, 1-2 and 1-4 to 1-7) | 10 | 30",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:canada-cackling",
-      "coversArea": "District No. 1",
-      "reason": "the season is written in a relative-date phrasing this build does not recognise exactly, and no nearest match is guessed"
+      "coversArea": "District No. 1"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 1",
       "group": "Canada Geese and Cackling Geese, combined",
       "area": "District No. 1",
       "statedAs": "(iii) the first Monday after November 18 to the Friday before the third Saturday in December (only in Provincial Management Units 1-3 and 1-8 to 1-15) | 10 | 30",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:canada-cackling",
-      "coversArea": "District No. 1",
-      "reason": "the season is written in a relative-date phrasing this build does not recognise exactly, and no nearest match is guessed"
+      "coversArea": "District No. 1"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 1",
       "group": "Canada Geese and Cackling Geese, combined",
       "area": "District No. 1",
       "statedAs": "(v) the first Monday after January 6 to the first Sunday after January 19 (only in Provincial Management Units 1-3 and 1-8 to 1-15) | 10 | 30",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:canada-cackling",
-      "coversArea": "District No. 1",
-      "reason": "the season is written in a relative-date phrasing this build does not recognise exactly, and no nearest match is guessed"
+      "coversArea": "District No. 1"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 1",
       "group": "Canada Geese and Cackling Geese, combined",
       "area": "District No. 1",
       "statedAs": "(vi) in a year that is not a leap year, February 10 to March 10 (only in Provincial Management Units 1-1, 1-2 and 1-4 to 1-7) | 10 | 30",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:canada-cackling",
-      "coversArea": "District No. 1",
-      "reason": "the season is not a plain calendar window this build reads"
+      "coversArea": "District No. 1"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 1",
       "group": "Canada Geese and Cackling Geese, combined",
       "area": "District No. 1",
       "statedAs": "(vii) in a leap year, February 11 to March 10 (only in Provincial Management Units 1-1, 1-2 and 1-4 to 1-7) | 10 | 30",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:canada-cackling",
-      "coversArea": "District No. 1",
-      "reason": "the season is not a plain calendar window this build reads"
+      "coversArea": "District No. 1"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 2",
@@ -4952,170 +4952,170 @@
       "group": "Snow Geese and Ross’s Geese, combined",
       "area": "District No. 2",
       "statedAs": "(i) the Saturday after the first Monday in October to the first Tuesday after December 31 | 10 (not more than 5 may be Ross’s Geese). An additional 5 Snow Geese may be killed or taken in Provincial Management Units 2-4 and 2-5 | 30 (not more than 15 may be Ross’s Geese). An additional 15 Snow Geese may be possessed in Provincial Management Units 2-4 and 2-5",
+      "reason": "the daily bag carries an additional species-specific allowance",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:snow-ross",
-      "coversArea": "District No. 2",
-      "reason": "a daily bag or possession limit is not in a form this build reads exactly"
+      "coversArea": "District No. 2"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 2",
       "group": "Snow Geese and Ross’s Geese, combined",
       "area": "District No. 2",
       "statedAs": "(ii) in a year that is not a leap year, February 20 to March 10 | 10 (not more than 5 may be Ross’s Geese). An additional 5 Snow Geese may be killed or taken in Provincial Management Units 2-4 and 2-5 | 30 (not more than 15 may be Ross’s Geese). An additional 15 Snow Geese may be possessed in Provincial Management Units 2-4 and 2-5",
+      "reason": "the daily bag carries an additional species-specific allowance",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:snow-ross",
-      "coversArea": "District No. 2",
-      "reason": "the season is not a plain calendar window this build reads"
+      "coversArea": "District No. 2"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 2",
       "group": "Snow Geese and Ross’s Geese, combined",
       "area": "District No. 2",
       "statedAs": "(iii) in a leap year, February 21 to March 10 | 10 (not more than 5 may be Ross’s Geese). An additional 5 Snow Geese may be killed or taken in Provincial Management Units 2-4 and 2-5 | 30 (not more than 15 may be Ross’s Geese). An additional 15 Snow Geese may be possessed in Provincial Management Units 2-4 and 2-5",
+      "reason": "the daily bag carries an additional species-specific allowance",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:snow-ross",
-      "coversArea": "District No. 2",
-      "reason": "the season is not a plain calendar window this build reads"
+      "coversArea": "District No. 2"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 2",
       "group": "Brant",
       "area": "District No. 2",
       "statedAs": "March 1 to March 10 (only in Provincial Management Unit 2-4) | 3 | 9",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:brant",
-      "coversArea": "District No. 2",
-      "reason": "the season is not a plain calendar window this build reads"
+      "coversArea": "District No. 2"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 3",
       "group": "Band-tailed Pigeons",
       "area": "District No. 3",
       "statedAs": "September 15 to September 30 (only in Provincial Management Units 3-13 to 3-17) | 5 | 15",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:band-tailed-pigeons",
-      "coversArea": "District No. 3",
-      "reason": "the season is not a plain calendar window this build reads"
+      "coversArea": "District No. 3"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 6",
       "group": "all Ducks, combined",
       "area": "District No. 6",
       "statedAs": "(i) September 1 to September 30 (only in Provincial Management Units 6-1, 6-2, 6-4 to 6-10 and 6-15 to 6-30) | 8 (not more than 4 may be Northern Pintails, not more than 4 may be Canvasbacks, not more than 2 may be Barrow’s Goldeneyes or Common Goldeneyes, in any combination, and not more than 2 may be Harlequin Ducks) | 24 (not more than 12 may be Northern Pintails, not more than 12 may be Canvasbacks, not more than 6 may be Barrow’s Goldeneyes or Common Goldeneyes, in any combination, and not more than 6 may be Harlequin Ducks)",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:all-ducks",
-      "coversArea": "District No. 6",
-      "reason": "the season is not a plain calendar window this build reads"
+      "coversArea": "District No. 6"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 6",
       "group": "all Ducks, combined",
       "area": "District No. 6",
       "statedAs": "(iii) December 1 to January 15 (only in Provincial Management Units 6-3 and 6-11 to 6-14) | 8 (not more than 4 may be Northern Pintails, not more than 4 may be Canvasbacks, not more than 2 may be Barrow’s Goldeneyes or Common Goldeneyes, in any combination, and not more than 2 may be Harlequin Ducks) | 24 (not more than 12 may be Northern Pintails, not more than 12 may be Canvasbacks, not more than 6 may be Barrow’s Goldeneyes or Common Goldeneyes, in any combination, and not more than 6 may be Harlequin Ducks)",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:all-ducks",
-      "coversArea": "District No. 6",
-      "reason": "the season is not a plain calendar window this build reads"
+      "coversArea": "District No. 6"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 6",
       "group": "Canada Geese and Cackling Geese, combined",
       "area": "District No. 6",
       "statedAs": "(i) September 1 to September 30 (only in Provincial Management Units 6-1, 6-2, 6-4 to 6-10 and 6-15 to 6-30) | 10 | 30",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:canada-cackling",
-      "coversArea": "District No. 6",
-      "reason": "the season is not a plain calendar window this build reads"
+      "coversArea": "District No. 6"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 6",
       "group": "Canada Geese and Cackling Geese, combined",
       "area": "District No. 6",
       "statedAs": "(iii) December 1 to January 15 (only in Provincial Management Units 6-3 and 6-11 to 6-14) | 10 | 30",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:canada-cackling",
-      "coversArea": "District No. 6",
-      "reason": "the season is not a plain calendar window this build reads"
+      "coversArea": "District No. 6"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 6",
       "group": "White-fronted Geese",
       "area": "District No. 6",
       "statedAs": "(i) September 1 to September 30 (only in Provincial Management Units 6-1, 6-2, 6-4 to 6-10 and 6-15 to 6-30) | 5 | 15",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:white-fronted-geese",
-      "coversArea": "District No. 6",
-      "reason": "the season is not a plain calendar window this build reads"
+      "coversArea": "District No. 6"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 6",
       "group": "White-fronted Geese",
       "area": "District No. 6",
       "statedAs": "(iii) December 1 to January 15 (only in Provincial Management Units 6-3 and 6-11 to 6-14) | 5 | 15",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:white-fronted-geese",
-      "coversArea": "District No. 6",
-      "reason": "the season is not a plain calendar window this build reads"
+      "coversArea": "District No. 6"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 6",
       "group": "Snow Geese and Ross’s Geese, combined",
       "area": "District No. 6",
       "statedAs": "(i) September 1 to September 30 (only in Provincial Management Units 6-1, 6-2, 6-4 to 6-10 and 6-15 to 6-30) | 5 | 15",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:snow-ross",
-      "coversArea": "District No. 6",
-      "reason": "the season is not a plain calendar window this build reads"
+      "coversArea": "District No. 6"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 6",
       "group": "Snow Geese and Ross’s Geese, combined",
       "area": "District No. 6",
       "statedAs": "(iii) December 1 to January 15 (only in Provincial Management Units 6-3 and 6-11 to 6-14) | 5 | 15",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:snow-ross",
-      "coversArea": "District No. 6",
-      "reason": "the season is not a plain calendar window this build reads"
+      "coversArea": "District No. 6"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 6",
       "group": "Coots",
       "area": "District No. 6",
       "statedAs": "(i) September 1 to September 30 (only in Provincial Management Units 6-1, 6-2, 6-4 to 6-10 and 6-15 to 6-30) | 10 | 30",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:coots",
-      "coversArea": "District No. 6",
-      "reason": "the season is not a plain calendar window this build reads"
+      "coversArea": "District No. 6"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 6",
       "group": "Coots",
       "area": "District No. 6",
       "statedAs": "(iii) December 1 to January 15 (only in Provincial Management Units 6-3 and 6-11 to 6-14) | 10 | 30",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:coots",
-      "coversArea": "District No. 6",
-      "reason": "the season is not a plain calendar window this build reads"
+      "coversArea": "District No. 6"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 6",
       "group": "Snipe",
       "area": "District No. 6",
       "statedAs": "(i) September 1 to September 30 (only in Provincial Management Units 6-1, 6-2, 6-4 to 6-10 and 6-15 to 6-30) | 10 | 30",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:snipe",
-      "coversArea": "District No. 6",
-      "reason": "the season is not a plain calendar window this build reads"
+      "coversArea": "District No. 6"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 6",
       "group": "Snipe",
       "area": "District No. 6",
       "statedAs": "(iii) December 1 to January 15 (only in Provincial Management Units 6-3 and 6-11 to 6-14) | 10 | 30",
+      "reason": "the season applies only in a sub-list of provincial units",
       "jurisdictionId": "jurisdiction:ca-bc",
       "groupId": "federal_group:snipe",
-      "coversArea": "District No. 6",
-      "reason": "the season is not a plain calendar window this build reads"
+      "coversArea": "District No. 6"
     },
     {
       "where": "British Columbia Schedule 3 Table 1 item 8",
@@ -5379,10 +5379,10 @@
       "group": "Snow Geese and Ross’s Geese, combined",
       "area": "Southern District",
       "statedAs": "(i) the fourth Saturday in September to the first Sunday after January 5 (excluding Sundays in municipalities where hunting with guns on Sundays is not permitted by provincial regulations) | 20 | No limit",
+      "reason": "the season excludes Sundays in municipalities whose own rules North Ground does not hold",
       "jurisdictionId": "jurisdiction:ca-on",
       "groupId": "federal_group:snow-ross",
-      "coversArea": "Southern District",
-      "reason": "the season is written in a relative-date phrasing this build does not recognise exactly, and no nearest match is guessed"
+      "coversArea": "Southern District"
     },
     {
       "where": "Ontario Schedule 3 Table 1 item 4",
@@ -5629,20 +5629,17 @@
       "group": "Canada Geese and Cackling Geese, combined",
       "area": "District C",
       "statedAs": "(i) September 1 to the first Friday after September 10 (only on farmland) | 10 | No limit",
+      "reason": "the season applies only on farmland, which North Ground cannot resolve from a point",
       "jurisdictionId": "jurisdiction:ca-qc",
       "groupId": "federal_group:canada-cackling",
-      "coversArea": "District C",
-      "reason": "the season is written in a relative-date phrasing this build does not recognise exactly, and no nearest match is guessed"
+      "coversArea": "District C"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 3",
       "group": "Canada Geese and Cackling Geese, combined",
-      "area": "District C",
-      "statedAs": "(iv) [Repealed, SOR/2026-118, s. 16] | (iv) [Repealed, SOR/2026-118, s. 16] | No limit",
-      "jurisdictionId": "jurisdiction:ca-qc",
-      "groupId": "federal_group:canada-cackling",
-      "coversArea": "District C",
-      "reason": "the season is not a plain calendar window this build reads"
+      "area": "Districts C and D",
+      "statedAs": "[Repealed, SOR/2026-118, s. 16]",
+      "reason": "the regulation has repealed this entry, so there is no season here to encode"
     },
     {
       "where": "Quebec Schedule 3 Table 1 item 3",
