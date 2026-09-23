@@ -117,6 +117,21 @@ export interface RegulatoryResult {
    * so the words and the window cannot disagree.
    */
   legalTime: LegalTimeResult;
+  /**
+   * What a prevailing within-zone instrument says about this place, one state
+   * per FACT.
+   *
+   * Three facts and never one verdict, because they are not interchangeable: a
+   * no-shooting area leaves the season running and may not reach a bow, while
+   * no-open-season closes it for every method. Collapsing them is wrong in
+   * both directions at once.
+   *
+   * `closesSeasonHere` is stated rather than inferred by a reader, and it is
+   * the assertion the engine makes: a renderer must not derive a closure from
+   * the presence of restrictions. Absent where the jurisdiction has no such
+   * instrument.
+   */
+  withinZoneRestrictions?: WithinZoneRestrictionFacts;
   requirements: string[];
   /**
    * What limits or qualifies this answer, each carrying what KIND of statement
@@ -183,4 +198,47 @@ export interface HuntEvaluation {
    */
   readiness?: ReadinessResult;
   evaluatedAt: string;
+}
+
+/** How well North Ground can place a restricted area against this hunt. */
+export type WithinZonePlacement =
+  /** The authority's own list puts this area in this unit; where inside is open. */
+  | "CONTAINED_BY_UNIT"
+  /** No unit North Ground can match, or none it could resolve. Loud, never dropped. */
+  | "UNPLACEABLE";
+
+export interface WithinZoneArea {
+  name: string;
+  /** The authority's own words for what it restricts. */
+  statedAs: string;
+  /** Pinpoint: instrument, schedule and item. */
+  citation: string;
+  sourceId: string;
+  placement: WithinZonePlacement;
+  /** Why this could not be decided, where it could not. */
+  because?: string;
+}
+
+export interface WithinZoneFactState {
+  /** MAY_APPLY is not a weak APPLIES: it means it could not be placed. */
+  state: "APPLIES" | "MAY_APPLY" | "NONE";
+  areas: WithinZoneArea[];
+  /** The instrument that governs, and the clause making it govern. */
+  governedBy?: { citation: string; statedAs: string; sourceId: string };
+}
+
+export interface WithinZoneRestrictionFacts {
+  /** Closes the season inside the area. */
+  season: WithinZoneFactState;
+  /** Forbids discharging; the season is untouched. */
+  discharge: WithinZoneFactState;
+  /** Ammunition or implement limits specific to the area. */
+  ammunition: WithinZoneFactState;
+  /**
+   * Whether any of it actually closes the season HERE.
+   *
+   * Stated by the engine so no renderer has to decide it. False while the
+   * restricted areas cannot be placed — which is every one of them today.
+   */
+  closesSeasonHere: boolean;
 }

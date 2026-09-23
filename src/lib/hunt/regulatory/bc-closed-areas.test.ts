@@ -274,3 +274,53 @@ test("every row is asked, and a verdict is kept for each", async () => {
     assert.ok(["APPLIES", "DOES_NOT_APPLY", "UNKNOWN"].includes(verdict.state));
   }
 });
+
+test("the unit key the evaluator uses is the key the regulation lists", async () => {
+  /*
+   * THE SILENT NO-OP, GUARDED. 76/84 lists units as the authority writes them
+   * — "4-25", "3-19". The zone's PROSE name is "Management Unit 4-25". Keyed
+   * on the prose name nothing would ever match: every row would resolve to
+   * UNKNOWN, and the regulation would be consulted and found irrelevant
+   * everywhere, while looking like working code.
+   *
+   * So this asserts the two vocabularies actually intersect, against the
+   * certified unit list rather than a literal.
+   */
+  const { BC_CLOSED_AREAS } = await import("./bc-closed-areas.ts");
+  const certified = new Set(
+    (JSON.parse(readFileSync("content/regulatory/ca-bc-certified-units.json", "utf8")) as { certifiedUnits: string[] })
+      .certifiedUnits,
+  );
+
+  const listed = new Set<string>();
+  for (const row of BC_CLOSED_AREAS) {
+    if (row.scope.kind === "CANDIDATE_AREAS") for (const unit of row.scope.candidateAreas) listed.add(unit);
+  }
+  assert.ok(listed.size > 0);
+
+  const matched = [...listed].filter((unit) => certified.has(unit));
+  assert.ok(
+    matched.length > listed.size / 2,
+    `only ${matched.length} of ${listed.size} closed-area units match a certified Management Unit; the key is wrong`,
+  );
+});
+
+test("a real BC zone id reaches the rows that name its unit", async () => {
+  const { withinZoneFactsAt, BC_CLOSED_AREAS } = await import("./bc-closed-areas.ts");
+  const row = BC_CLOSED_AREAS.find((r) => r.scope.kind === "CANDIDATE_AREAS");
+  assert.ok(row && row.scope.kind === "CANDIDATE_AREAS");
+  const unit = row.scope.candidateAreas[0];
+
+  const facts = withinZoneFactsAt({ area: unit, scope: "POINT" });
+  const named = [facts.season, facts.discharge, facts.ammunition].flatMap((fact) => fact.areas.map((a) => a.name));
+  assert.ok(named.includes(row.name), `${unit} must reach ${row.name}`);
+
+  /* And the engine's own assertion travels with it. */
+  assert.equal(facts.closesSeasonHere, false, "nothing can be placed today, so nothing closes a season");
+  for (const fact of [facts.season, facts.discharge]) {
+    for (const area of fact.areas) {
+      assert.ok(area.citation.length > 0 && area.statedAs.length > 0, "each area carries its pinpoint and the authority's words");
+      assert.ok(["CONTAINED_BY_UNIT", "UNPLACEABLE"].includes(area.placement));
+    }
+  }
+});

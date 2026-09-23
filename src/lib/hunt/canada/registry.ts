@@ -366,6 +366,26 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
         "synopsis are encoded as disputes rather than resolved, and surface as CONFLICT where the readings differ.",
     },
     knownGaps: [
+      "B.C. Reg. 76/84 (Closed Areas Regulation) PREVAILS over 190/84 to the extent of the conflict (s. 1.1). Its 254 " +
+        "live areas are encoded as 325 within-zone restrictions — 103 close a season, 193 forbid discharging with the " +
+        "season left open, 29 restrict ammunition — and they reach every British Columbia answer. None of them can be " +
+        "PLACED: 191 name only a Management Unit that CONTAINS the area, and 134 name no unit at all, so each resolves " +
+        "to MAY_APPLY and never to a decided answer. They therefore contribute nothing to coverage, by the rule that " +
+        "coverage counts deliverable answers rather than encoded records.",
+      "The missing input is geometry, and it is a CONSTRAINT rather than a backlog item. B.C. Reg. 76/84 Schedule 15 " +
+        "carries 28 map references and the regulation's own note states the maps are \u201cexempt from publication and " +
+        "may be inspected at the offices of the Wildlife Branch\u201d in Victoria. There is no published version to " +
+        "licence, mirror or ingest, by the authority\u2019s own instrument \u2014 so this is not a matter of searching " +
+        "harder. For the roughly 92 areas with neither a named unit nor a map reference, the only geography is " +
+        "metes-and-bounds prose about railway stations and highway centre lines, which is not a source of coordinates. " +
+        "An intentional, evidenced UNKNOWN.",
+      "British Columbia's ammunition fact moved from a corpus KNOWN INCOMPLETE (190/84 alone) to a corpus COMPLETE with " +
+        "PLACEMENT UNKNOWN: the 29 ammunition areas of 76/84 are read and carried, and none can yet be placed. That is " +
+        "an improvement in the evidence and is not answerability.",
+      "Legal hunting hours are read and cited (B.C. Reg. 190/84 s. 14 (1) \u2014 one hour either side, not the half hour " +
+        "three other provinces use) but no clock time is stated: British Columbia spans two time zones and the Peace " +
+        "River region keeps Mountain time year-round, so North Ground cannot establish the timezone at a point. The " +
+        "refusal is about the clock, not the law.",
       "Seven species only: ruffed, spruce and sharp-tailed grouse, rock and willow ptarmigan, snowshoe hare and black " +
         "bear. Every other British Columbia species is UNKNOWN, and a drawn boundary is not a certified rule.",
       "The wave reaches 221 of 225 Management Units; the other four answer UNKNOWN rather than being assumed closed.",

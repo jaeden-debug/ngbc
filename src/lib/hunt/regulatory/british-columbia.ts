@@ -1,4 +1,5 @@
 import { legalTimeNotCertified } from "./legal-time.ts";
+import { withinZoneFactsAt } from "./bc-closed-areas.ts";
 import { general } from "../limitation.ts";
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/ca-bc-2026.json" with { type: "json" };
@@ -105,8 +106,42 @@ export const BRITISH_COLUMBIA_VOCABULARY: ConditionalVocabulary = {
   },
 };
 
+/**
+ * The bare Management Unit designation, from the canonical zone id.
+ *
+ * NOT the zone's prose name. 76/84 lists units as the authority writes them —
+ * "4-25", "3-19" — and the prose name is "Management Unit 4-25". Keyed on the
+ * name, nothing would ever have matched: every row would have resolved to
+ * UNKNOWN and the regulation would have been consulted and silently found
+ * irrelevant everywhere. That is the exact silent-no-op this model replaced,
+ * reintroduced one layer up, and it would have looked like working code.
+ */
+function managementUnitOf(zoneId: string): string | undefined {
+  const prefix = "management_zone:ca-bc-mu-";
+  return zoneId.startsWith(prefix) ? zoneId.slice(prefix.length) : undefined;
+}
+
 export function evaluateBritishColumbia(input: ConditionalInput): ConditionalEvaluation {
-  return evaluateConditional(BRITISH_COLUMBIA_BUNDLE, BRITISH_COLUMBIA_VOCABULARY, input);
+  const evaluation = evaluateConditional(BRITISH_COLUMBIA_BUNDLE, BRITISH_COLUMBIA_VOCABULARY, input);
+
+  /*
+   * B.C. Reg. 76/84 prevails over this bundle's own regulation to the extent
+   * of the conflict (s. 1.1), so its facts travel with every BC answer rather
+   * than being merged into one. They are attached, never applied: today no
+   * area can be placed, so none of them closes a season, and
+   * `closesSeasonHere` says so rather than leaving a reader to infer it.
+   */
+  if (!evaluation.result) return evaluation;
+  return {
+    ...evaluation,
+    result: {
+      ...evaluation.result,
+      withinZoneRestrictions: withinZoneFactsAt({
+        area: managementUnitOf(input.place.zoneId),
+        scope: input.place.scope === "ZONE" ? "ZONE" : "POINT",
+      }),
+    },
+  };
 }
 
 /** Species with at least one certified British Columbia rule. */

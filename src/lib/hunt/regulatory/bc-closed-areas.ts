@@ -43,6 +43,7 @@
  * be placed is a reason to say so, not a reason to be silent (§8).
  */
 
+import type { WithinZoneArea, WithinZoneFactState, WithinZoneRestrictionFacts } from "../types.ts";
 import bundle from "../../../../content/regulatory/ca-bc-closed-areas.json" with { type: "json" };
 import {
   restrictionAt,
@@ -147,4 +148,54 @@ export function closedAreaEffectAt(place: { area?: string; scope: "POINT" | "ZON
  */
 export function seasonIsOverriddenBy(effect: ClosedAreaEffect): GoverningInstrument | undefined {
   return effect.season.state === "APPLIES" ? effect.season.governedBy : undefined;
+}
+
+/**
+ * The resolver's output in the shape a result object carries.
+ *
+ * Every row that bears on this place travels with its name, the authority's
+ * own words, its pinpoint and how well it could be placed — so a surface can
+ * say "in season outside restricted areas" and NAME them (§41A) without
+ * reaching back into the regulation.
+ *
+ * Nothing here decides how many to show or how to group them. That is a
+ * surface judgement with volume constraints the engine cannot see, and a
+ * warning that fires everywhere is a warning nobody reads.
+ */
+function areasOf(state: ClosedAreaState, verdicts: readonly RestrictionVerdict[]): WithinZoneArea[] {
+  if (state.state === "NONE") return [];
+  const because = new Map(
+    verdicts
+      .filter((verdict): verdict is Extract<RestrictionVerdict, { state: "UNKNOWN" }> => verdict.state === "UNKNOWN")
+      .map((verdict) => [verdict.restriction.id, verdict.because]),
+  );
+  return state.rows.map((row) => ({
+    name: row.name,
+    statedAs: row.statedAs,
+    citation: row.citation,
+    sourceId: row.sourceId,
+    placement: row.scope.kind === "CANDIDATE_AREAS" ? "CONTAINED_BY_UNIT" : "UNPLACEABLE",
+    ...(because.has(row.id) ? { because: because.get(row.id) } : {}),
+  }));
+}
+
+function factOf(state: ClosedAreaState, verdicts: readonly RestrictionVerdict[]): WithinZoneFactState {
+  return {
+    state: state.state,
+    areas: areasOf(state, verdicts),
+    ...(state.state === "APPLIES" ? { governedBy: state.governedBy } : {}),
+  };
+}
+
+/** Everything a result object needs, with the closure question already answered. */
+export function withinZoneFactsAt(place: { area?: string; scope: "POINT" | "ZONE" }): WithinZoneRestrictionFacts {
+  const effect = closedAreaEffectAt(place);
+  return {
+    season: factOf(effect.season, effect.verdicts),
+    discharge: factOf(effect.discharge, effect.verdicts),
+    ammunition: factOf(effect.ammunition, effect.verdicts),
+    /* Asserted here so no renderer derives a closure from the mere presence
+       of restrictions. */
+    closesSeasonHere: seasonIsOverriddenBy(effect) !== undefined,
+  };
 }
