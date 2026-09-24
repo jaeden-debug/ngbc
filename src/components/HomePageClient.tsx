@@ -7,7 +7,11 @@ import MissionDeck from "./MissionDeck";
 import NewsletterForm from "./NewsletterForm";
 import { siteYear } from "../lib/site";
 
-export default function HomePageClient() {
+export default function HomePageClient({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [deckOpen, setDeckOpen] = useState(false);
   const [deckKey, setDeckKey] = useState(0);
 
@@ -35,6 +39,8 @@ export default function HomePageClient() {
       <Hero onStory={openDeck} />
 
       {deckOpen && <MissionDeck open deckKey={deckKey} onClose={closeDeck} />}
+
+      {children}
 
       <footer id="after-deck" className={styles.footer}>
         <div className={styles.wrap}>

@@ -880,6 +880,175 @@
   backdrop-filter: blur(10px);
 }
 
+/* HOMEPAGE DISCOVERY
+   Crawlable product context between the immersive entrance and newsletter.
+   Deliberately quieter than the hero: this explains North Ground rather than
+   competing with the brand experience above it. */
+.discovery{
+  position: relative;
+  padding: 104px 20px 112px;
+  overflow: hidden;
+  background:
+    radial-gradient(760px 420px at 8% 12%, rgba(47,65,51,.18), transparent 68%),
+    radial-gradient(620px 360px at 94% 82%, rgba(74,63,47,.13), transparent 70%),
+    #080908;
+  border-top: 1px solid rgba(201,194,166,.10);
+}
+
+.discoveryWrap{
+  width: min(980px, 100%);
+  margin: 0 auto;
+}
+
+.discoveryIntro{
+  max-width: 760px;
+}
+
+.discoveryEyebrow,
+.discoveryKicker,
+.discoveryStepLabel{
+  display: block;
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 750;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(201,194,166,.62);
+}
+
+.discoveryTitle{
+  max-width: 760px;
+  margin: 18px 0 22px;
+  font-size: clamp(36px, 6vw, 68px);
+  line-height: .98;
+  letter-spacing: -.035em;
+  color: rgba(255,255,255,.96);
+  text-wrap: balance;
+}
+
+.discoveryLead{
+  max-width: 660px;
+  margin: 0;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.7;
+  color: rgba(201,194,166,.84);
+}
+
+.discoveryProduct{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 300px);
+  gap: 64px;
+  align-items: end;
+  margin-top: 72px;
+  padding: 34px 0;
+  border-top: 1px solid rgba(201,194,166,.18);
+  border-bottom: 1px solid rgba(201,194,166,.18);
+}
+
+.discoveryProductCopy{
+  max-width: 620px;
+}
+
+.discoveryProductTitle{
+  margin: 12px 0 12px;
+  font-size: clamp(24px, 3.5vw, 36px);
+  line-height: 1.08;
+  letter-spacing: -.02em;
+  color: rgba(255,255,255,.94);
+}
+
+.discoveryText{
+  margin: 0;
+  max-width: 600px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(201,194,166,.78);
+}
+
+.discoveryActions{
+  display: grid;
+  gap: 10px;
+}
+
+.discoveryPrimary,
+.discoverySecondary{
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: .02em;
+  transition:
+    border-color .18s ease,
+    background .18s ease,
+    color .18s ease,
+    transform .18s ease;
+}
+
+.discoveryPrimary{
+  border: 1px solid rgba(201,194,166,.38);
+  background: rgba(201,194,166,.10);
+  color: rgba(255,255,255,.94);
+}
+
+.discoverySecondary{
+  border: 1px solid rgba(201,194,166,.14);
+  background: rgba(0,0,0,.12);
+  color: rgba(201,194,166,.82);
+}
+
+.discoveryPrimary:hover{
+  border-color: rgba(201,194,166,.62);
+  background: rgba(201,194,166,.15);
+  transform: translateY(-1px);
+}
+
+.discoverySecondary:hover{
+  border-color: rgba(201,194,166,.28);
+  color: rgba(255,255,255,.92);
+  transform: translateY(-1px);
+}
+
+.discoveryPrimary:focus-visible,
+.discoverySecondary:focus-visible{
+  outline: 3px solid #e7a75d;
+  outline-offset: 3px;
+}
+
+.discoverySteps{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 38px;
+}
+
+.discoveryStep{
+  min-width: 0;
+  padding: 0 28px;
+  border-left: 1px solid rgba(201,194,166,.14);
+}
+
+.discoveryStep:first-child{
+  padding-left: 0;
+  border-left: 0;
+}
+
+.discoveryStep:last-child{
+  padding-right: 0;
+}
+
+.discoveryStep p{
+  margin: 10px 0 0;
+  max-width: 230px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(201,194,166,.72);
+}
+
 /* FOOTER (kept) */
 .footer{
   padding: 72px 18px;
@@ -1007,6 +1176,60 @@
   .cta{
     padding: 14px 18px;
     border-radius: 14px;
+  }
+
+  .discovery{
+    padding: 72px 18px 80px;
+  }
+
+  .discoveryTitle{
+    margin-top: 14px;
+    font-size: clamp(34px, 11vw, 48px);
+    line-height: 1;
+  }
+
+  .discoveryLead{
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .discoveryProduct{
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 52px;
+    padding: 28px 0;
+  }
+
+  .discoveryActions{
+    width: 100%;
+  }
+
+  .discoveryPrimary,
+  .discoverySecondary{
+    min-height: 52px;
+  }
+
+  .discoverySteps{
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 32px;
+  }
+
+  .discoveryStep,
+  .discoveryStep:first-child,
+  .discoveryStep:last-child{
+    padding: 20px 0;
+    border-left: 0;
+    border-top: 1px solid rgba(201,194,166,.12);
+  }
+
+  .discoveryStep:first-child{
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .discoveryStep p{
+    max-width: none;
   }
 }
 

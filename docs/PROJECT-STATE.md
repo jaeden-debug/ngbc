@@ -1994,6 +1994,31 @@ antlerless limits are set by DMU in the Upper Peninsula and by county in the Low
 geography may not be in the DMU layer at all, which a model that only orders units WITHIN one
 layer cannot express.
 
+
+### 2026-09-24 — Homepage semantic/search discovery layer certified
+The homepage now preserves the existing immersive North Ground entrance while adding a
+server-rendered discovery layer that explains North Ground's current hunting product surface.
+
+The crawlable homepage now has exactly one H1: "Canadian hunting knowledge, built for the field."
+It introduces North Ground Hunt, distinguishes zone/species/season discovery, and provides real
+crawlable links to `/hunt` and `/hunting/species`. No future jurisdiction or zone destinations
+were invented.
+
+Certification passed:
+- `git diff --check`
+- `npm run typecheck`
+- scoped ESLint
+- `npm run test:seo` — 9/9 passed
+- `npm run test:content-urls` — 22/22 passed
+- `npm run build`
+- post-build `npm run validate:seo`
+- production artifact inspection confirmed meaningful prerendered homepage content, exactly one H1,
+  and crawlable `/hunt` and `/hunting/species` links.
+
+The initial pre-build SEO-validator attempt failed only because `.next` did not yet contain a
+production build; after `npm run build`, the required post-build validator passed. The implementation
+did not create `/hunting/`; that remains the next separate material SEO/AEO change.
+
 ### 2026-09-23 — The detector sweep, handed off part-done
 A pattern written from the first jurisdiction that needed it works perfectly on that
 jurisdiction and silently mislabels every other one. Three confirmed instances before the sweep

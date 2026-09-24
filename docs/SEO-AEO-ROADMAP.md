@@ -513,9 +513,9 @@ Update `/CLAUDE.md` only when product direction itself materially changes and th
 
 Current sequence as of 2026-09-24:
 
-- [ ] Audit current homepage/Hunt/species SEO implementation
-- [ ] Certify homepage semantic/search baseline
-- [ ] Improve homepage semantic layer if required
+- [x] Audit current homepage/Hunt/species SEO implementation
+- [x] Certify homepage semantic/search baseline
+- [x] Improve homepage semantic layer if required
 - [ ] Design and implement `/hunting/`
 - [ ] Validate `/hunting/` in development
 - [ ] Design jurisdiction-page data contract/template
@@ -563,6 +563,15 @@ The planned discovery architecture is:
 `/hunting/` → jurisdictions → zones → jurisdiction/species resources → Hunt.
 
 Exact child URL patterns remain subject to repository/data-contract inspection before implementation.
+
+
+### 2026-09-24 — Homepage discovery baseline complete
+
+The homepage semantic/search baseline is certified. The existing immersive entrance remains intact,
+with a server-rendered discovery layer providing one coherent H1, concise explanation of North
+Ground's hunting surface, and crawlable paths to North Ground Hunt and the species library.
+
+The next separate material change is design and implementation of `/hunting/`.
 
 ### 2026-09-24 — Controlled programmatic expansion
 
