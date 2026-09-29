@@ -17,6 +17,7 @@ import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
 import { huntSharePayload, shareHunt } from "../../lib/hunt/exploration/share";
 import { heightOf, mapBottomFor, sheetHeights, type SheetHeights, type SheetSnap } from "../../lib/hunt/exploration/sheet";
 import { seasonIsOpen } from "../../lib/hunt/exploration/species-layer";
+import { bandHasMoved, UNMEASURED_BAND, visibleBand } from "../../lib/hunt/exploration/viewport";
 import { type ExplorationState as ZoneState, type ZoneRef } from "../../lib/hunt/exploration/states";
 import { serializeHuntUrlState, zoneRefFromId, type HuntUrlState } from "../../lib/hunt/exploration/url-state";
 import type { HuntEvaluation } from "../../lib/hunt/types";
@@ -370,13 +371,15 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
      * is measured against that height. Then the sheet's top is on screen
      * whatever the browser does with its own chrome.
      */
-    const band = () => {
-      const view = window.visualViewport;
-      const height = Math.round(view?.height ?? window.innerHeight);
-      const top = Math.round(view?.offsetTop ?? 0);
-      return { top, height, bottom: Math.max(0, window.innerHeight - top - height) };
-    };
-    let last = { top: -1, height: -1, bottom: -1 };
+    /* The arithmetic is in `exploration/viewport.ts`, where `npm test` can
+       reach it: this used to be inline, so the only thing that exercised it
+       was a full browser run and a regression shipped green. */
+    const band = () => visibleBand({
+      innerHeight: window.innerHeight,
+      viewportHeight: window.visualViewport?.height,
+      viewportTop: window.visualViewport?.offsetTop,
+    });
+    let last = UNMEASURED_BAND;
     const measure = () => {
       const headerBottom = headerRef.current?.getBoundingClientRect().bottom ?? 60;
       const safeBottom = safeProbeRef.current?.getBoundingClientRect().height ?? 0;
@@ -398,8 +401,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
      */
     const settle = () => {
       if (document.querySelector("[data-dragging]")) return;
-      const now = band();
-      if (Math.abs(now.height - last.height) > 24 || Math.abs(now.top - last.top) > 8) measure();
+      if (bandHasMoved(last, band())) measure();
     };
     measure();
     window.addEventListener("resize", measure);

@@ -1287,8 +1287,18 @@ const scenarios = {
    */
   async keyboardStateMachine(browser) {
     const s = "the keyboard state machine";
-    for (const width of [375, 320]) {
-      const { context, page, consoleErrors } = await newPage(browser, { width, height: 812 });
+    /*
+     * Two real phones, not two widths of one. The small one matters: at
+     * 320x568 the keyboard leaves so little room that what the field offers
+     * MUST overflow its region — which is the only way "the last row is
+     * reachable" tests anything. An earlier run passed that check with
+     * scrollHeight === clientHeight, i.e. because there was nothing to scroll.
+     */
+    for (const { width, height, kbHeight, kbTop } of [
+      { width: 375, height: 812, kbHeight: 470, kbTop: 150 },
+      { width: 320, height: 568, kbHeight: 270, kbTop: 96 },
+    ]) {
+      const { context, page, consoleErrors } = await newPage(browser, { width, height });
       await page.goto(`${BASE}/hunt`);
       await mapReady(page);
       await page.waitForTimeout(2_000);
@@ -1306,8 +1316,12 @@ const scenarios = {
            scrollable is a second owner of vertical scrolling, which is how
            content gets navigated by the document instead of by the sheet. */
         const others = [];
+        /* In the anchored state the composer's own region is THE scroller, so
+           it is not a second one. Both are excluded and anything else is a
+           finding. */
+        const anchoredScroller = sheet?.querySelector("[class*='composerScroll']");
         for (const element of document.querySelectorAll("html, body, [class]")) {
-          if (element === scroller) continue;
+          if (element === scroller || element === anchoredScroller) continue;
           const style = getComputedStyle(element);
           if (!["auto", "scroll"].includes(style.overflowY)) continue;
           if (element.scrollHeight <= element.clientHeight + 2) continue;
@@ -1321,6 +1335,8 @@ const scenarios = {
              is the same missing offsetTop seen from the other end. */
           uncovered: shell ? Math.round(Math.max(0, bandBottom - shell.bottom) + Math.max(0, shell.top - bandTop)) : -1,
           sheetTop: Math.round(rect?.top ?? -1),
+          sheetBottom: Math.round(rect?.bottom ?? -1),
+          snap: sheet?.dataset.snap ?? null,
           topOnScreen: rect ? rect.top >= bandTop - 1 : false,
           fieldOnScreen: field ? field.top >= bandTop - 1 && field.bottom <= bandBottom + 1 : false,
           scroll: scroller ? { height: scroller.scrollHeight, client: scroller.clientHeight } : null,
@@ -1344,13 +1360,14 @@ const scenarios = {
             .filter((name) => /dismiss|hide keyboard|close keyboard|^done$/i.test(name)),
         };
       });
-      const keyboard = (on) => page.evaluate((open) => {
+      const keyboard = (on) => page.evaluate((size) => {
+        const open = size.open;
         const view = window.visualViewport;
-        Object.defineProperty(view, "height", { configurable: true, get: () => (open ? 470 : 812) });
-        Object.defineProperty(view, "offsetTop", { configurable: true, get: () => (open ? 150 : 0) });
+        Object.defineProperty(view, "height", { configurable: true, get: () => (open ? size.kbHeight : size.height) });
+        Object.defineProperty(view, "offsetTop", { configurable: true, get: () => (open ? size.kbTop : 0) });
         view.dispatchEvent(new Event("resize"));
         view.dispatchEvent(new Event("scroll"));
-      }, on);
+      }, { open: on, ...{ height, kbHeight, kbTop } });
 
       await page.locator("input[type='search']").first().click();
       await page.waitForTimeout(500);
@@ -1369,6 +1386,35 @@ const scenarios = {
        */
       check(s, `${width}: the composer is anchored below its results`,
         open.anchored === true, JSON.stringify(open.anchor));
+      /*
+       * The LAST thing the field offers must be reachable with a thumb.
+       *
+       * Asserting "the scroller did not overflow" would have been a check
+       * guaranteed by its own conditions — it passed in an earlier run only
+       * because the content happened to fit (scrollHeight === clientHeight).
+       * This scrolls the region to its end and asks whether the last row is
+       * on screen, which is true whether or not it overflowed and false in
+       * the case that actually hurts.
+       */
+      const reach = await page.evaluate(() => {
+        const scroller = document.querySelector("[class*='composerScroll']");
+        if (!scroller) return null;
+        scroller.scrollTop = scroller.scrollHeight;
+        const rows = scroller.querySelectorAll("button");
+        const last = rows[rows.length - 1]?.getBoundingClientRect();
+        const view = window.visualViewport;
+        const top = view?.offsetTop ?? 0;
+        const bottom = top + (view?.height ?? window.innerHeight);
+        const field = document.querySelector("input[type='search']")?.getBoundingClientRect();
+        return last
+          ? { onScreen: last.top >= top - 1 && last.bottom <= bottom + 1,
+              clearOfField: field ? last.bottom <= field.top + 1 : null,
+              overflowed: scroller.scrollHeight > scroller.clientHeight + 2,
+              last: [Math.round(last.top), Math.round(last.bottom)] }
+          : null;
+      });
+      check(s, `${width}: the last thing the field offers is reachable`,
+        reach !== null && reach.onScreen === true && reach.clearOfField === true, JSON.stringify(reach));
       /* There is no close-keyboard control, and there must never be one: the
          lifecycle is tap to open, submit / swipe / choose / close to dismiss. */
       check(s, `${width}: no keyboard-dismiss control exists`,
@@ -1387,13 +1433,18 @@ const scenarios = {
       const suggested = await waitFor(page, () => document.querySelectorAll("[role=option]").length > 0, 25_000);
       if (suggested) {
         await page.locator("input[type='search']").first().press("Enter");
-        await page.waitForTimeout(2_500);
+        /* Poll for the zone rather than sleeping for it. A fixed wait passed at
+           375 and failed at 320 purely on timing, which makes the check a
+           measurement of the machine rather than of the product. */
+        await waitFor(page, () => /WMU\s*\d/.test(document.querySelector("section[data-layout]")?.textContent ?? ""), 30_000);
+        await page.waitForTimeout(800);
         const submitted = await geometry();
         check(s, `${width}: Search moves focus off the composer`, submitted.isField === false, JSON.stringify(submitted));
         const zone = await page.evaluate(() => document.querySelector("section[data-layout] h1,section[data-layout] h2,section[data-layout] h3")?.textContent?.trim() ?? "");
         check(s, `${width}: and the search resolved to a zone`, /WMU\s*\d/.test(zone), zone);
 
         // The keyboard goes; the answer must survive it.
+        const beforeDismiss = await geometry();
         await keyboard(false);
         await page.waitForTimeout(1_200);
         const after = await geometry();
@@ -1401,6 +1452,72 @@ const scenarios = {
         check(s, `${width}: restoring the viewport leaves the zone alone`, zoneAfter === zone, `${zone} -> ${zoneAfter}`);
         check(s, `${width}: and does not refocus the composer`, after.isField === false, JSON.stringify(after));
         check(s, `${width}: the sheet is back inside the restored viewport`, after.topOnScreen, JSON.stringify(after));
+
+        /*
+         * Steps 18, 19 and 20, which are about what the screen looks like
+         * AFTER the keyboard has gone: no blank space where it was, the sheet
+         * back where it started, and the document not left scrolled.
+         */
+        check(s, `${width}: no blank space is left where the keyboard was`,
+          after.uncovered <= 1, JSON.stringify({ band: after.band, shell: after.shell, uncovered: after.uncovered }));
+        /*
+         * Step 19 is about the KEYBOARD, not about the search. Comparing the
+         * sheet's position against its position before the hunt was run was my
+         * mistake: resolving a zone legitimately moves the sheet from peek to
+         * half, so that assertion failed on correct behaviour. What must be
+         * true is that dismissing the keyboard does not leave the sheet
+         * displaced — same resting height, fully inside the restored band.
+         */
+        check(s, `${width}: dismissing the keyboard does not change the sheet's resting height`,
+          after.snap === beforeDismiss.snap, `${beforeDismiss.snap} -> ${after.snap}`);
+        /* Its TOP, not its box. The sheet is a full-height element translated
+           down to its resting height, so its bottom legitimately extends past
+           the viewport at every snap — asserting otherwise failed on correct
+           behaviour. What must be on screen is the edge a hunter reads from. */
+        check(s, `${width}: and the sheet's top is inside the restored viewport`,
+          after.topOnScreen && after.sheetTop >= after.band[0] - 1,
+          JSON.stringify({ band: after.band, top: after.sheetTop }));
+        const scrolled = await page.evaluate(() => ({ y: Math.round(window.scrollY), doc: Math.round(document.documentElement.scrollTop) }));
+        check(s, `${width}: the page itself is not left scrolled`,
+          scrolled.y === 0 && scrolled.doc === 0, JSON.stringify(scrolled));
+
+        /*
+         * Step 15: several open/close cycles. A single cycle can pass on state
+         * that only happens to be right the first time — the dvh fallback and
+         * the measured value agree on the first open and could diverge after.
+         */
+        for (let cycle = 0; cycle < 3; cycle += 1) {
+          await page.locator("input[type='search']").first().click();
+          await keyboard(true);
+          await page.waitForTimeout(600);
+          const inCycle = await geometry();
+          check(s, `${width}: cycle ${cycle + 1} keeps the sheet on screen and the field anchored`,
+            inCycle.topOnScreen && inCycle.anchored === true, JSON.stringify({ top: inCycle.sheetTop, band: inCycle.band, anchored: inCycle.anchored }));
+          await page.keyboard.press("Escape");
+          await keyboard(false);
+          await page.waitForTimeout(600);
+        }
+
+        /*
+         * Step 16, as far as a desktop browser can honestly go: an orientation
+         * change. This is a resize plus the event, NOT a real device rotation —
+         * it is the case where a `100dvh` fallback and a measured value are
+         * most likely to disagree, so it is worth exercising even simulated.
+         */
+        await page.setViewportSize({ width: height, height: width });
+        await page.evaluate(() => {
+          const view = window.visualViewport;
+          Object.defineProperty(view, "height", { configurable: true, get: () => window.innerHeight });
+          Object.defineProperty(view, "offsetTop", { configurable: true, get: () => 0 });
+          window.dispatchEvent(new Event("orientationchange"));
+          view.dispatchEvent(new Event("resize"));
+        });
+        await page.waitForTimeout(1_200);
+        const rotated = await geometry();
+        check(s, `${width}: a rotation leaves the sheet inside the viewport`,
+          rotated.topOnScreen && rotated.uncovered <= 1, JSON.stringify({ band: rotated.band, shell: rotated.shell, top: rotated.sheetTop }));
+        await page.setViewportSize({ width, height });
+        await page.waitForTimeout(800);
 
         /* A swipe-down is a decision. Nothing may take it back — the owner
            asked explicitly that an interactive dismissal not be fought. */

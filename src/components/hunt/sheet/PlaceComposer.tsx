@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useId, useRef, useState, type RefObject } from "react";
 import type { PlaceSuggestion } from "../../../lib/hunt/location";
 import type { StoredPlace } from "../../../lib/hunt/exploration/session-store";
+import { closingShouldBlur, submitsOnEnter } from "../../../lib/hunt/exploration/viewport";
 import styles from "../HuntApp.module.css";
 
 export interface ChosenPlace {
@@ -87,7 +88,7 @@ export default function PlaceComposer({
    */
   const wasOpenRef = useRef(open);
   useEffect(() => {
-    if (wasOpenRef.current && !open) inputRef.current?.blur();
+    if (closingShouldBlur(wasOpenRef.current, open)) inputRef.current?.blur();
     wasOpenRef.current = open;
   }, [open, inputRef]);
 
@@ -194,7 +195,7 @@ export default function PlaceComposer({
      * is still typing. `isComposing` is the platform's own answer to this;
      * keyCode 229 is the older browsers' way of saying the same thing.
      */
-    if (event.nativeEvent.isComposing || event.keyCode === 229) return;
+    if (event.key === "Enter" && !submitsOnEnter({ key: event.key, isComposing: event.nativeEvent.isComposing, keyCode: event.keyCode })) return;
     if (event.key === "Escape") {
       event.preventDefault();
       setQuery("");
