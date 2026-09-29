@@ -7,8 +7,8 @@ import type { ExplorationEvent, ExplorationState, GeoPoint, SelfFailure } from "
 import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
 import { OPENING_CAMERA, posterFrame } from "../../lib/hunt/exploration/overview-poster";
 import { mapLabelFor } from "../../lib/hunt/exploration/map-labels";
-import { seasonIsOpen } from "../../lib/hunt/exploration/species-layer";
-import { EXPLORATION_WORDING, type ExplorationState as ZoneState } from "../../lib/hunt/exploration/states";
+import { CONDITION_GLYPH, conditionMarkerLabel, zoneHasConditions, zoneIsGreen } from "../../lib/hunt/exploration/species-layer";
+import { EXPLORATION_WORDING, type ZoneSpeciesAnswer } from "../../lib/hunt/exploration/states";
 import type { OpportunityClass } from "../../lib/hunt/intelligence/types";
 import type { ZoneFeature } from "../../lib/hunt/zone-geometry";
 import dynamic from "next/dynamic";
@@ -20,6 +20,9 @@ import styles from "./HuntApp.module.css";
 
 /* The boundary view is the fallback when Google is unavailable: its own chunk. */
 const ZoneCanvas = dynamic(() => import("./ZoneCanvas"), { ssr: false });
+
+/* Only ever mounted once a `!` has been pressed: its own chunk. */
+const ConditionHint = dynamic(() => import("./ConditionHint"), { ssr: false });
 
 /* The Maps script starts downloading the moment this module is evaluated —
    before hydration — rather than after the first render. */
@@ -54,7 +57,7 @@ interface HuntMapViewProps {
   drawn: DrawnZone[];
   selectedKey: string | null;
   huntKey: string | null;
-  filterStates: ReadonlyMap<string, ZoneState> | null;
+  zoneAnswers: ReadonlyMap<string, ZoneSpeciesAnswer> | null;
   /**
    * The species layer's heat class per zone key. A zone that is ABSENT holds no
    * certified opportunity evidence and is drawn with no heat at all — never a
@@ -84,7 +87,7 @@ const POSTER = posterFrame();
 const SELF_FAILURES: Record<number, SelfFailure> = { 1: "denied", 2: "position", 3: "timeout" };
 
 function HuntMapView({
-  googleMapsApiKey, exploration, dispatch, drawn, selectedKey, huntKey, filterStates, heat = null, overlays, mapMode, camera,
+  googleMapsApiKey, exploration, dispatch, drawn, selectedKey, huntKey, zoneAnswers, heat = null, overlays, mapMode, camera,
   locateOnStart, poster, padding, emphasis, zonesVisible, onView, onZoneClick, onOverlayClick, onBasemap,
 }: HuntMapViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -100,6 +103,16 @@ function HuntMapView({
   handlers.current = { onView, onZoneClick, onOverlayClick, dispatch };
   const pinModeRef = useRef<"pressed" | "centre" | null>(null);
   pinModeRef.current = pin?.mode ?? null;
+
+  /**
+   * The zone whose condition indicator is open, and where its `!` sits.
+   *
+   * State here rather than in HuntApp because the position is in the map
+   * surface's own pixels: it belongs to whichever renderer produced it, and
+   * travelling any further would mean a coordinate that means one thing on the
+   * Google map and another on the canvas.
+   */
+  const [conditionHint, setConditionHint] = useState<{ key: string; x: number; y: number } | null>(null);
 
   useEffect(() => {
     onBasemap(useGoogle ? (googleReady ? "ready" : "loading") : "fallback");
@@ -127,6 +140,7 @@ function HuntMapView({
           onEmptyClick: () => handlers.current.dispatch({ type: "MAP_TAPPED_EMPTY" }),
           onLongPress: (point) => handlers.current.dispatch({ type: "PIN_PRESSED", point }),
           onOverlayClick: (layerId, objectId) => handlers.current.onOverlayClick(layerId, objectId),
+          onConditionMarker: (key, at) => setConditionHint({ key, ...at }),
           onViewChange: (view) => {
             handlers.current.onView(view);
             if (pinModeRef.current === "centre") {
@@ -141,6 +155,7 @@ function HuntMapView({
           labelClass: styles.mapZoneLabel,
           selfClass: styles.selfDot,
           pinClass: styles.mapPin,
+          conditionMarkerClass: styles.conditionMarker,
         });
         /* Every screen opens at the declared camera. Fitting the served extent
            meant each new jurisdiction moved everyone's opening view — a camera
@@ -171,11 +186,11 @@ function HuntMapView({
   useEffect(() => { live?.setZones(drawn); live?.setLabels(drawn); }, [live, drawn]);
   useEffect(() => {
     if (!live) return;
-    live.setStyleState({ selectedKey, huntKey, filterStates, heat, emphasis });
+    live.setStyleState({ selectedKey, huntKey, zoneAnswers, heat, emphasis });
     live.setLabels(drawn);
     // `drawn` is applied above; this effect only restyles.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [live, selectedKey, huntKey, filterStates, heat, emphasis]);
+  }, [live, selectedKey, huntKey, zoneAnswers, heat, emphasis]);
   useEffect(() => { live?.setOverlays(overlays); }, [live, overlays]);
   useEffect(() => { live?.setZonesVisible(zonesVisible); }, [live, zonesVisible]);
   useEffect(() => { live?.setMapType(mapMode); }, [live, mapMode]);
@@ -296,6 +311,21 @@ function HuntMapView({
     if (west < east && south < north) setViewport(fitViewport({ west, south, east, north }, canvasSize, padding()));
   }, [useGoogle, canvasSize, drawn, request, padding]);
 
+  /* A hint describes ONE zone, species and date. When any of them changes, or
+     the map moves under it, the popover is describing an answer that is no
+     longer the one on screen — so it closes rather than going stale. */
+  useEffect(() => { setConditionHint(null); }, [zoneAnswers, drawn]);
+
+  /* The hint only exists while its zone still has a conditional opportunity —
+     so a species change that closes the season closes the popover with it. */
+  const hintAnswer = conditionHint ? zoneAnswers?.get(conditionHint.key) ?? null : null;
+  const surfaceRef = useRef<HTMLDivElement>(null);
+
+  /* `aria-expanded` on the imperative map's own button. */
+  useEffect(() => {
+    controllerRef.current?.setOpenConditionMarker(conditionHint?.key ?? null);
+  }, [conditionHint]);
+
   const canvasFeatures = useMemo<ZoneFeature[]>(() => (useGoogle ? [] : drawn.map((zone) => ({
     layerId: zone.layerId,
     name: zone.name,
@@ -312,16 +342,17 @@ function HuntMapView({
     const { labelPoint, labelSpan } = zone.piece;
     const text = mapLabelFor(zone);
     if (!labelPoint || !labelSpan || !text) return [];
-    const state = filterStates?.get(zone.key);
+    const answer = zoneAnswers?.get(zone.key);
     const selected = zone.key === selectedKey || zone.key === huntKey;
-    // Only an open season earns a glyph, exactly as on the Google map.
-    const open = seasonIsOpen(state);
+    // Only a legal opportunity earns a glyph, exactly as on the Google map.
+    const open = zoneIsGreen(answer);
     return [{
       key: zone.key, text, short: text, labelPoint, labelSpan,
       priority: selected ? 100 : open ? 50 : zone.coverage === "VERIFIED" ? 2 : 1, selected,
-      ...(open && state ? { glyph: EXPLORATION_WORDING[state].glyph, state } : {}),
+      ...(open && answer ? { glyph: EXPLORATION_WORDING[answer.state].glyph, state: answer.state } : {}),
+      ...(zoneHasConditions(answer) ? { marker: { glyph: CONDITION_GLYPH, label: conditionMarkerLabel(text) } } : {}),
     }];
-  })), [useGoogle, drawn, filterStates, selectedKey, huntKey]);
+  })), [useGoogle, drawn, zoneAnswers, selectedKey, huntKey]);
 
   const zoneKeyOfFeature = useCallback((feature: ZoneFeature) => `${feature.layerId}|${feature.name.toUpperCase()}`, []);
   const selectedFeatureLabel = selectedKey ? drawn.find((zone) => zone.key === selectedKey)?.accessibleLabel ?? null : null;
@@ -329,7 +360,7 @@ function HuntMapView({
   return (
     /* `data-zones` states how many official zones are on the map right now, for
        certification and monitoring: it must never fall to zero while the map moves. */
-    <div className={styles.mapSurface} data-basemap={useGoogle ? (googleReady ? "google" : "loading") : "boundary"} data-zones={drawn.length}>
+    <div ref={surfaceRef} className={styles.mapSurface} data-basemap={useGoogle ? (googleReady ? "google" : "loading") : "boundary"} data-zones={drawn.length}>
       {useGoogle ? (
         <div ref={containerRef} className={styles.mapCanvas} />
       ) : (
@@ -347,7 +378,7 @@ function HuntMapView({
           selectedZoneKey={selectedKey ?? huntKey}
           selectedZoneLabel={selectedFeatureLabel}
           labels={canvasLabels}
-          filterStates={filterStates}
+          zoneAnswers={zoneAnswers}
           heat={heat}
           zoneKeyOf={zoneKeyOfFeature}
           onZoneClick={(feature) => onZoneClick(zoneKeyOfFeature(feature), "map")}
@@ -355,8 +386,24 @@ function HuntMapView({
           onLongPress={(point) => dispatch({ type: "PIN_PRESSED", point })}
           overlays={overlays}
           onOverlayClick={(feature) => onOverlayClick(feature.layerId, feature.objectId)}
+          onConditionMarker={(key, at) => setConditionHint({ key, ...at })}
+          openConditionMarker={conditionHint?.key ?? null}
         />
       )}
+
+      {hintAnswer && conditionHint ? (
+        <ConditionHint
+          zoneKey={conditionHint.key}
+          zoneLabel={drawn.find((zone) => zone.key === conditionHint.key)?.accessibleLabel ?? "this zone"}
+          answer={hintAnswer}
+          at={{ x: conditionHint.x, y: conditionHint.y }}
+          surface={canvasSize ?? (surfaceRef.current
+            ? { width: surfaceRef.current.clientWidth, height: surfaceRef.current.clientHeight }
+            : null)}
+          onClose={() => setConditionHint(null)}
+          onOpenZone={(key) => onZoneClick(key, "map")}
+        />
+      ) : null}
 
       {/* The official zones as a picture until the live map has drawn them, lying exactly under where it will.
           A plain <img>: an SVG gains nothing from the image optimiser, and its fixed frame must not be resized. */}

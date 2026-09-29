@@ -1,4 +1,5 @@
 import type { OpportunityClass } from "../intelligence/types.ts";
+import type { LimitationLang } from "../limitation.ts";
 import type { OpportunityCondition } from "./opportunity.ts";
 import type { ZoneSpeciesAnswer } from "./states.ts";
 
@@ -95,10 +96,27 @@ export const CONDITION_GLYPH = "!";
 /** How many conditions the compact popover names before counting the rest. */
 export const CONDITIONS_SHOWN = 3;
 
-/** The conditions to name, and how many are left over. */
-export function conditionDigest(answer: ZoneSpeciesAnswer | undefined): { shown: OpportunityCondition[]; further: number } {
+/**
+ * The conditions to name on the map, and how many are left over.
+ *
+ * ONE LANGUAGE — THE INTERFACE'S. A condition can be an authority's own French,
+ * and the map has no room for the original, the translation, the control that
+ * swaps them and the attribution that makes either honest. A line the reader
+ * cannot read is not shown; it is COUNTED into the remainder, so the popover
+ * never understates how much the zone's answer holds, and the sheet — which
+ * carries the original beside its translation with its provenance — is one tap
+ * away. Untranslated it would be a wall of French on a map; translated without
+ * its original it would be the authority's words rewritten (§41A).
+ *
+ * The language is the record's own metadata, never re-detected from the text.
+ */
+export function conditionDigest(
+  answer: ZoneSpeciesAnswer | undefined,
+  lang: LimitationLang = "en-CA",
+): { shown: OpportunityCondition[]; further: number } {
   const all = answer?.opportunity.conditions ?? [];
-  return { shown: all.slice(0, CONDITIONS_SHOWN), further: Math.max(0, all.length - CONDITIONS_SHOWN) };
+  const readable = all.filter((condition) => condition.lang === lang);
+  return { shown: readable.slice(0, CONDITIONS_SHOWN), further: all.length - Math.min(readable.length, CONDITIONS_SHOWN) };
 }
 
 /**

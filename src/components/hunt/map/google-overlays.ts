@@ -21,10 +21,25 @@ export interface LabelSource {
   labelSpan: [number, number];
   priority: number;
   selected?: boolean;
+  /**
+   * The one condition indicator, where a legal opportunity here turns on
+   * something material (§41A, 2026-09-29).
+   *
+   * It rides WITH the zone's label rather than being placed on its own,
+   * because §41A already solved "one mark per zone, in its largest part,
+   * omitted rather than stacked" once. A second placer would be a second
+   * answer to a question that has one, and the two would disagree the first
+   * time a label was dropped for a collision. A zone too small to be named
+   * here is a zone whose mark would have nothing to sit beside; it stays in
+   * the zone list and in its own card, which is where the answer lives.
+   */
+  marker?: { glyph: string; label: string };
 }
 
 export interface LabelLayerHandle {
   setLabels(labels: LabelSource[]): void;
+  /** Which zone's condition indicator is currently showing its popover. */
+  setOpenMarker(key: string | null): void;
   /** Hide the names with the boundaries they belong to. */
   setVisible(visible: boolean): void;
   /** How much screen a zone must own before it is named. */
@@ -38,6 +53,11 @@ export function createLabelLayer(
   maps: typeof google.maps,
   map: google.maps.Map,
   className: string,
+  marker?: {
+    className: string;
+    /** Container pixels, so the caller can anchor a popover over the map div. */
+    onActivate(key: string, at: { x: number; y: number }): void;
+  },
 ): LabelLayerHandle {
   class LabelLayer extends maps.OverlayView {
     labels: LabelSource[] = [];
@@ -71,6 +91,20 @@ export function createLabelLayer(
     container: HTMLDivElement | null = null;
     /** The selected zone's label: above every polygon, below the self marker. */
     topContainer: HTMLDivElement | null = null;
+    /**
+     * The condition indicators.
+     *
+     * Its own container, and the ONLY one of the three that is neither
+     * `aria-hidden` nor `pointer-events: none`. The label panes are decoration
+     * — a drawing of a name a screen reader gets better from the zone list —
+     * while §41A requires this to be a real control reachable by touch, mouse,
+     * keyboard and screen reader. Putting a button inside an `aria-hidden`
+     * subtree would hide it from the assistive technology it is meant for, and
+     * nothing in the styling would show it.
+     */
+    markerContainer: HTMLDivElement | null = null;
+    markerPool = new Map<string, HTMLButtonElement>();
+    openMarker: string | null = null;
 
     onAdd() {
       const panes = this.getPanes();
@@ -88,6 +122,12 @@ export function createLabelLayer(
       this.topContainer.style.zIndex = "1";
       if (this.hidden) this.topContainer.style.display = "none";
       panes?.markerLayer.appendChild(this.topContainer);
+
+      this.markerContainer = document.createElement("div");
+      this.markerContainer.style.position = "absolute";
+      this.markerContainer.style.zIndex = "2";
+      if (this.hidden) this.markerContainer.style.display = "none";
+      panes?.markerLayer.appendChild(this.markerContainer);
     }
 
     onRemove() {
@@ -95,11 +135,52 @@ export function createLabelLayer(
       this.container = null;
       this.topContainer?.remove();
       this.topContainer = null;
+      this.markerContainer?.remove();
+      this.markerContainer = null;
       this.pool.clear();
+      this.markerPool.clear();
     }
 
     /** Keys drawn last frame, so a pan does not make neighbours trade places. */
     lastPlaced = new Set<string>();
+
+    /** The condition indicator, at the trailing edge of the name it qualifies. */
+    placeMarker(
+      label: { key: string; width: number },
+      candidate: { source: LabelSource; divX: number; divY: number; x: number; y: number },
+    ): void {
+      const host = this.markerContainer;
+      const spec = candidate.source.marker;
+      if (!host || !marker) return;
+      if (!spec) {
+        const existing = this.markerPool.get(label.key);
+        if (existing) existing.style.display = "none";
+        return;
+      }
+      let button = this.markerPool.get(label.key);
+      if (!button) {
+        button = document.createElement("button");
+        button.type = "button";
+        button.className = marker.className;
+        this.markerPool.set(label.key, button);
+        host.appendChild(button);
+        button.addEventListener("click", (event) => {
+          /* The zone underneath is a click target too, and a tap on the
+             indicator must not also open the sheet behind it. */
+          event.stopPropagation();
+          const at = this.markerPool.get(label.key);
+          marker.onActivate(label.key, { x: Number(at?.dataset.screenX ?? 0), y: Number(at?.dataset.screenY ?? 0) });
+        });
+      }
+      if (button.textContent !== spec.glyph) button.textContent = spec.glyph;
+      if (button.getAttribute("aria-label") !== spec.label) button.setAttribute("aria-label", spec.label);
+      button.setAttribute("aria-expanded", this.openMarker === label.key ? "true" : "false");
+      const offset = Math.round(label.width / 2) + 9;
+      button.dataset.screenX = String(Math.round(candidate.x + offset));
+      button.dataset.screenY = String(Math.round(candidate.y));
+      button.style.transform = `translate(${Math.round(candidate.divX + offset)}px, ${Math.round(candidate.divY)}px) translate(-50%, -50%)`;
+      button.style.display = "";
+    }
 
     draw() {
       const projection = this.getProjection();
@@ -167,8 +248,14 @@ export function createLabelLayer(
         element.dataset.state = candidate.source.state ?? "";
         element.style.display = "";
         seen.add(label.key);
+        this.placeMarker(label, candidate);
       }
       for (const [key, element] of this.pool) {
+        if (!seen.has(key)) element.style.display = "none";
+      }
+      /* A zone whose name was not drawn has no anchor, so its indicator is not
+         drawn either — never left floating at a stale position. */
+      for (const [key, element] of this.markerPool) {
         if (!seen.has(key)) element.style.display = "none";
       }
       this.lastPlaced = seen;
@@ -187,12 +274,21 @@ export function createLabelLayer(
       layer.minimumSpan = px;
       layer.draw();
     },
+    setOpenMarker(key) {
+      if (layer.openMarker === key) return;
+      layer.openMarker = key;
+      for (const [markerKey, button] of layer.markerPool) {
+        button.setAttribute("aria-expanded", markerKey === key ? "true" : "false");
+      }
+    },
     setVisible(visible) {
       layer.hidden = !visible;
-      /* Both panes: the selected label lives in the other one, and switching
-         zone boundaries off must not leave a name floating over an empty map. */
+      /* All three panes: the selected label lives in the second, the condition
+         indicators in the third, and switching zone boundaries off must not
+         leave a name or a control floating over an empty map. */
       if (layer.container) layer.container.style.display = visible ? "" : "none";
       if (layer.topContainer) layer.topContainer.style.display = visible ? "" : "none";
+      if (layer.markerContainer) layer.markerContainer.style.display = visible ? "" : "none";
     },
     toCoordinate(x, y) {
       const projection = layer.getProjection();

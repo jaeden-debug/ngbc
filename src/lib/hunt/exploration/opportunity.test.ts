@@ -170,7 +170,7 @@ test("a closed season is neither green nor conditional, whatever the date's next
   const future: RegulatoryOutcome = {
     completeness: "RESOLVED",
     dimensions: [],
-    regulation: { ...regulation("CLOSED"), next: { kind: "OPENS", date: "2026-11-07" } },
+    regulation: { ...regulation("CLOSED"), next: { kind: "SEASON", opens: "2026-11-07", closes: "2026-12-15" } },
   };
   const result = await opportunityOf(future, async () => future);
   assert.equal(result.hasCurrentLegalOpportunity, false);

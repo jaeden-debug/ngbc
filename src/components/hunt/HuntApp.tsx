@@ -16,9 +16,9 @@ import { explorationReducer, INITIAL_EXPLORATION, roundedPoint, type Exploration
 import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
 import { huntSharePayload, shareHunt } from "../../lib/hunt/exploration/share";
 import { heightOf, mapBottomFor, sheetHeights, type SheetHeights, type SheetSnap } from "../../lib/hunt/exploration/sheet";
-import { seasonIsOpen } from "../../lib/hunt/exploration/species-layer";
+import { zoneHasConditions, zoneIsGreen } from "../../lib/hunt/exploration/species-layer";
 import { bandHasMoved, placeChoiceSubject, UNMEASURED_BAND, visibleBand } from "../../lib/hunt/exploration/viewport";
-import { type ExplorationState as ZoneState, type ZoneRef } from "../../lib/hunt/exploration/states";
+import { type ExplorationState as ZoneState, type ZoneRef, type ZoneSpeciesAnswer as ZoneAnswer } from "../../lib/hunt/exploration/states";
 import { serializeHuntUrlState, zoneRefFromId, type HuntUrlState } from "../../lib/hunt/exploration/url-state";
 import type { HuntEvaluation } from "../../lib/hunt/types";
 import { layerById, zoneIdFor, ZONE_LAYERS } from "../../lib/hunt/zone-layers";
@@ -858,13 +858,18 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   /* ── Explore: the chosen species' status across the zones in view ────── */
 
   const exploreSpecies = session.explore && species && species.regulatoryJurisdictions.length ? species : null;
-  const [filterStates, setFilterStates] = useState<Map<string, ZoneState> | null>(null);
-  const filterCacheRef = useRef(new Map<string, ZoneState>());
+  const [filterStates, setFilterStates] = useState<Map<string, ZoneAnswer> | null>(null);
+  const filterCacheRef = useRef(new Map<string, ZoneAnswer>());
   const zonesInView = useMemo(() => (view ? geometry.inView(view.box) : []),
     // `geometry.version` stands for the store's contents.
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [view, geometry.version]);
   const inViewKey = useMemo(() => zonesInView.map((zone) => zone.key).sort().join(","), [zonesInView]);
+  /* The zone list speaks the engine's eight words, not the map's two channels.
+     Derived from the one answer map so the two can never disagree. */
+  const zoneListStates = useMemo<Map<string, ZoneState> | null>(() => (filterStates
+    ? new Map([...filterStates].map(([key, answer]) => [key, answer.state]))
+    : null), [filterStates]);
 
   useEffect(() => {
     if (!exploreSpecies) {
@@ -872,7 +877,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
       return;
     }
     const prefix = `${exploreSpecies.id}|${session.date.iso}|`;
-    const known = new Map<string, ZoneState>();
+    const known = new Map<string, ZoneAnswer>();
     const missing: ZoneRef[] = [];
     for (const zone of zonesInView) {
       const cached = filterCacheRef.current.get(prefix + zone.key);
@@ -890,13 +895,14 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
         signal: controller.signal,
       })
         .then(async (response) => {
-          const payload = await response.json() as { status: string; states?: Array<ZoneRef & { state: ZoneState }> };
+          const payload = await response.json() as { status: string; states?: Array<ZoneRef & ZoneAnswer> };
           if (payload.status !== "OK" || !payload.states) throw new Error("status unavailable");
           const next = new Map(known);
           for (const entry of payload.states) {
             const key = zoneKeyOf(entry);
-            filterCacheRef.current.set(prefix + key, entry.state);
-            next.set(key, entry.state);
+            const answer: ZoneAnswer = { state: entry.state, opportunity: entry.opportunity };
+            filterCacheRef.current.set(prefix + key, answer);
+            next.set(key, answer);
           }
           setFilterStates(next);
         })
@@ -1194,7 +1200,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
         onOpenZones={() => setPage("zones")} zonesInView={zonesInView.length}
       />
     ) : (
-      <ZonesPage zones={zonesInView} states={filterStates} onChoose={(key) => selectZone(key, "list")} autoFocus />
+      <ZonesPage zones={zonesInView} states={zoneListStates} onChoose={(key) => selectZone(key, "list")} autoFocus />
     );
   } else if (pin) {
     // The confirm action lives in the header row, so it is reachable while the sheet is lowered over the map.
@@ -1472,12 +1478,12 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     );
   } else if (exploreSpecies) {
     const counts = new Map<ZoneState, number>();
-    for (const state of filterStates?.values() ?? []) counts.set(state, (counts.get(state) ?? 0) + 1);
+    for (const answer of filterStates?.values() ?? []) counts.set(answer.state, (counts.get(answer.state) ?? 0) + 1);
     /* Where a season is actually running, by the zones' own names. Sorted by
        name and never ranked: nothing here knows one zone is better than
        another, and §41B keeps that question in a different layer entirely. */
     const openZonesInView = zonesInView
-      .map((zone) => ({ ...zone, state: filterStates?.get(zone.key) }))
+      .map((zone) => ({ ...zone, state: filterStates?.get(zone.key)?.state }))
       .filter((zone) => zone.state === "SEASON_AVAILABLE" || zone.state === "SEASON_EXCEPT_AREAS")
       .map((zone) => ({ ...zone, jurisdictionName: layerById(zone.layerId)?.jurisdictionName ?? "" }))
       .sort((a, b) => a.label.localeCompare(b.label, "en", { numeric: true }));
@@ -1628,7 +1634,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
           drawn={geometry.drawn}
           selectedKey={selectedKey}
           huntKey={huntKey}
-          filterStates={filterStates}
+          zoneAnswers={filterStates}
           heat={heat}
           overlays={overlayFeatures}
           mapMode={mapMode}
@@ -1708,7 +1714,8 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
             speciesName={species.displayName}
             shadedZones={heat?.size ?? 0}
             hasEvidence={Boolean(species.hasOpportunityEvidence)}
-            openZones={[...(filterStates?.values() ?? [])].filter((state) => seasonIsOpen(state)).length}
+            openZones={[...(filterStates?.values() ?? [])].filter((answer) => zoneIsGreen(answer)).length}
+            conditionalZones={[...(filterStates?.values() ?? [])].filter((answer) => zoneHasConditions(answer)).length}
           />
         ) : null}
 

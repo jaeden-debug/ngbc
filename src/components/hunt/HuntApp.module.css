@@ -1448,3 +1448,102 @@
   max-height: none;
   overflow: visible;
 }
+
+/* ── The condition indicator and its popover ─────────────────────────────
+   §41A (2026-09-29): a green zone whose opportunity turns on something
+   material wears ONE compact `!`. It is a real control — touch, mouse,
+   keyboard, screen reader — never a hover affordance, and it is deliberately
+   NOT an error badge: it reports that a hunt exists, so it wears the palette's
+   own regulatory green rather than a warning red. */
+.conditionMarker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 1px solid rgba(124, 192, 138, 0.85);
+  border-radius: 50%;
+  /* Opaque, not glass: it sits over heat, green, boundaries and the basemap,
+     and a translucent 18px disc is unreadable over at least one of them. */
+  background: rgba(12, 14, 13, 0.92);
+  color: var(--ng-open);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.conditionMarker:hover,
+.conditionMarker[aria-expanded="true"] {
+  background: var(--ng-open);
+  color: var(--ng-black);
+}
+
+.conditionMarker:focus-visible {
+  outline: 2px solid var(--ng-cream);
+  outline-offset: 2px;
+}
+
+.conditionHint {
+  position: absolute;
+  z-index: 6;
+  /* `left`/`top` are the indicator's own position; the popover is centred on it
+     and sits above by default, below where there is no room overhead. */
+  transform: translate(-50%, -100%);
+  padding: 11px 12px 10px;
+  border-radius: var(--ng-radius-md);
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--ng-bone);
+  text-align: left;
+}
+
+.conditionHint[data-below] { transform: translate(-50%, 0); }
+
+.conditionHintTitle {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--ng-open);
+}
+
+.conditionHintList {
+  margin: 0;
+  padding: 0 0 0 14px;
+  list-style: disc;
+}
+
+.conditionHintList li + li { margin-top: 3px; }
+
+.conditionHintMore {
+  margin: 6px 0 0;
+  color: var(--ng-bone-dim);
+}
+
+.conditionHintAction {
+  margin-top: 9px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ng-cream);
+  font: inherit;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  /* Large enough to hit with a gloved thumb (§40) without a box around it. */
+  min-height: 32px;
+}
+
+.conditionHintAction:focus-visible {
+  outline: 2px solid var(--ng-cream);
+  outline-offset: 2px;
+}

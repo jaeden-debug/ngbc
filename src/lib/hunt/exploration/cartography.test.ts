@@ -4,7 +4,9 @@ import {
   jurisdictionTone, labelMinimumSpanPx, SEASON_OPEN_STROKE, SELECTED_STROKE, zoneStyle, zoomBand,
   type Emphasis, type ZoneStyleInput, type ZoomBand,
 } from "./cartography.ts";
-import { heatFillFor, HEAT_FILL, seasonIsOpen } from "./species-layer.ts";
+import { heatFillFor, HEAT_FILL, zoneHasConditions, zoneIsGreen } from "./species-layer.ts";
+import type { ExplorationState, ZoneSpeciesAnswer } from "./states.ts";
+import type { ZoneOpportunity } from "./opportunity.ts";
 
 const BANDS: ZoomBand[] = ["national", "regional", "local"];
 const EMPHASES: Emphasis[] = ["light", "standard", "strong"];
@@ -119,16 +121,42 @@ test("a zone with no certified evidence draws no heat, and is not a cold one", (
   assert.equal(heatFillFor(undefined), null);
 });
 
-test("green is binary, and nothing else on the layer is drawn", () => {
-  assert.equal(seasonIsOpen("SEASON_AVAILABLE"), true);
-  assert.equal(seasonIsOpen("SEASON_EXCEPT_AREAS"), true, "a season open across the zone, with named exceptions inside it");
-  // Everything else is simply unhighlighted. NOT-GREEN IS NOT CLOSED, and no
-  // separate indicator is drawn for any of these.
+/** A zone answer whose state and opportunity are stated independently. */
+function answer(state: ExplorationState, opportunity: Partial<ZoneOpportunity> = {}): ZoneSpeciesAnswer {
+  return {
+    state,
+    opportunity: {
+      hasCurrentLegalOpportunity: false, hasMaterialConditions: false, conditions: [],
+      coverage: "CLOSED", exhaustive: true, ...opportunity,
+    },
+  };
+}
+
+test("green follows the opportunity, not the zone list's word for it", () => {
+  /* The production defect in one assertion: CHECK_REQUIREMENTS is the word the
+     zone list uses, and it is green whenever the engine established a hunt. */
+  const conditional = answer("CHECK_REQUIREMENTS", { hasCurrentLegalOpportunity: true, hasMaterialConditions: true, coverage: "OPEN" });
+  assert.equal(zoneIsGreen(conditional), true);
+  assert.equal(zoneHasConditions(conditional), true);
+  assert.equal(zoneIsGreen(answer("SEASON_AVAILABLE", { hasCurrentLegalOpportunity: true, coverage: "OPEN" })), true);
+
+  // NOT-GREEN IS NOT CLOSED, and there is still no second map colour: every one
+  // of these draws the jurisdiction's own quiet tone and nothing else.
   for (const state of ["CHECK_REQUIREMENTS", "CLOSED", "NEEDS_VERIFICATION", "CONFLICT", "UNKNOWN", "NOT_CERTIFIED"] as const) {
-    assert.equal(seasonIsOpen(state), false, state);
-    assert.equal(zoneStyle(zone({ seasonOpen: seasonIsOpen(state) })).strokeColor, jurisdictionTone("jurisdiction:ca-on"), state);
+    const shut = answer(state);
+    assert.equal(zoneIsGreen(shut), false, state);
+    assert.equal(zoneHasConditions(shut), false, state);
+    assert.equal(zoneStyle(zone({ seasonOpen: zoneIsGreen(shut) })).strokeColor, jurisdictionTone("jurisdiction:ca-on"), state);
   }
-  assert.equal(seasonIsOpen(undefined), false);
+  assert.equal(zoneIsGreen(undefined), false);
+  assert.equal(zoneHasConditions(undefined), false);
+});
+
+test("the condition indicator is never drawn on a zone that is not green", () => {
+  /* On its own it would read as a warning about a hunt that does not exist —
+     and a hunter would take it for the opposite of what it means. */
+  const impossible = answer("CLOSED", { hasCurrentLegalOpportunity: false, hasMaterialConditions: true });
+  assert.equal(zoneHasConditions(impossible), false);
 });
 
 test("the heat ramp is monotonic and stays under the ceiling the chosen zone clears", () => {

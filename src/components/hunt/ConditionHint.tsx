@@ -1,0 +1,103 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import { conditionDigest } from "../../lib/hunt/exploration/species-layer";
+import type { ZoneSpeciesAnswer } from "../../lib/hunt/exploration/states";
+import styles from "./HuntApp.module.css";
+
+/**
+ * What the `!` on a green zone means, in one glance.
+ *
+ * §41A: "the most important one to three conditions, with any remainder counted
+ * rather than listed, and a path into the zone sheet where the complete sourced
+ * answer already lives. The popover never duplicates the sheet."
+ *
+ * Every line here comes from `ZoneOpportunity.conditions`, which the regulatory
+ * engine established — there is no hand-written map prose in this component,
+ * and adding some would put a regulatory sentence in a React file (§57). The
+ * only words this file owns are the heading, the "+n more" and the action.
+ *
+ * ONE LANGUAGE — THE INTERFACE'S. A condition may be an authority's own French,
+ * and the map is not the place to read it: it has no room for the original
+ * beside the translation, for the control that swaps them, or for the
+ * attribution that makes either honest. So a line that is not in the interface
+ * language is not shown here; it is counted into the remainder and read in the
+ * sheet, which carries the original, the translation and the provenance
+ * together. Showing it untranslated would be a wall of French on a map, and
+ * translating it without its original would be §41A's other failure.
+ */
+export default function ConditionHint({
+  zoneKey,
+  zoneLabel,
+  answer,
+  at,
+  onClose,
+  onOpenZone,
+  surface,
+}: {
+  zoneKey: string;
+  zoneLabel: string;
+  answer: ZoneSpeciesAnswer;
+  /** Canvas/container pixels of the indicator this belongs to. */
+  at: { x: number; y: number };
+  onClose: () => void;
+  onOpenZone: (key: string) => void;
+  /** The map's own size, so the popover is kept inside it. */
+  surface: { width: number; height: number } | null;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  /* Escape closes and a tap outside closes, as every popover does. Focus moves
+     in, so a keyboard reaches the conditions it just opened. */
+  useEffect(() => {
+    ref.current?.focus();
+    const onKey = (event: KeyboardEvent) => { if (event.key === "Escape") onClose(); };
+    const onDown = (event: PointerEvent) => {
+      if (!ref.current?.contains(event.target as Node)) onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onDown);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onDown);
+    };
+  }, [onClose]);
+
+  const { shown, further } = conditionDigest(answer);
+  const WIDTH = 248;
+  const half = WIDTH / 2;
+  const left = surface ? Math.min(Math.max(at.x, half + 8), Math.max(half + 8, surface.width - half - 8)) : at.x;
+  /* Above the indicator where there is room, below it where there is not. */
+  const below = at.y < 150;
+
+  return (
+    <div
+      ref={ref}
+      className={`${styles.conditionHint} ng-glass-overlay`}
+      role="dialog"
+      aria-label={`Conditions on the current hunting opportunity in ${zoneLabel}`}
+      tabIndex={-1}
+      data-below={below || undefined}
+      style={{ left: `${left}px`, top: `${below ? at.y + 20 : at.y - 16}px`, width: `${WIDTH}px` }}
+    >
+      <p className={styles.conditionHintTitle}>A hunt is open here, with conditions</p>
+      <ul className={styles.conditionHintList}>
+        {shown.map((condition) => (
+          <li key={condition.id} lang={condition.lang}>
+            {/* An authority's words are quoted; North Ground's are not. The tag
+                is the author's, never guessed from the text (`limitation.ts`). */}
+            {condition.owner === "AUTHORITY" ? `« ${condition.text} »` : condition.text}
+          </li>
+        ))}
+      </ul>
+      {further > 0 ? <p className={styles.conditionHintMore}>+{further} more in the zone&apos;s answer</p> : null}
+      <button
+        type="button"
+        className={styles.conditionHintAction}
+        onClick={() => { onOpenZone(zoneKey); onClose(); }}
+      >
+        View details
+      </button>
+    </div>
+  );
+}

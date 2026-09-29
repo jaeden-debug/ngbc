@@ -2,7 +2,7 @@
 
 import { useId, useState } from "react";
 import { SEASON_OPEN_STROKE } from "../../lib/hunt/exploration/cartography";
-import { HEAT_FILL, HEAT_WORDING, SPECIES_LAYER_LEGEND } from "../../lib/hunt/exploration/species-layer";
+import { CONDITION_GLYPH, HEAT_FILL, HEAT_WORDING, SPECIES_LAYER_LEGEND } from "../../lib/hunt/exploration/species-layer";
 import type { OpportunityClass } from "../../lib/hunt/intelligence/types";
 import styles from "./SpeciesLayerLegend.module.css";
 
@@ -29,11 +29,14 @@ export default function SpeciesLayerLegend({
   /** How many zones in view hold heat evidence, and how many wear the green outline. */
   shadedZones,
   openZones,
+  conditionalZones,
   hasEvidence,
 }: {
   speciesName: string;
   shadedZones: number;
   openZones: number;
+  /** Of those, how many carry the condition indicator. */
+  conditionalZones: number;
   /** Whether this species has certified opportunity evidence ANYWHERE. */
   hasEvidence: boolean;
 }) {
@@ -54,7 +57,8 @@ export default function SpeciesLayerLegend({
            spans reads as one run-on sentence — and the counts have to arrive
            in a screen reader in the same order a sighted reader gets them. */
         aria-label={
-          `${speciesName} layer. ${openZones} ${openZones === 1 ? "zone" : "zones"} in season; `
+          `${speciesName} layer. ${openZones} ${openZones === 1 ? "zone" : "zones"} with a hunt open`
+          + `${conditionalZones ? `, ${conditionalZones} of them with conditions` : ""}; `
           + `${hasEvidence ? `${shadedZones} with heat evidence` : "no heat evidence held for this species"}. `
           + "A zone without a green outline is not closed. Open the full key."
         }
@@ -62,7 +66,7 @@ export default function SpeciesLayerLegend({
       >
         <span className={styles.summaryTitle}>{speciesName} layer</span>
         <span className={styles.summaryCounts}>
-          {openZones} {openZones === 1 ? "zone" : "zones"} in season · {hasEvidence ? `${shadedZones} with evidence` : "no heat evidence held"}
+          {openZones} {openZones === 1 ? "zone" : "zones"} open{conditionalZones ? ` · ${conditionalZones} with ${CONDITION_GLYPH}` : ""} · {hasEvidence ? `${shadedZones} with evidence` : "no heat evidence held"}
         </span>
         {/* Never behind the disclosure: this is the one sentence that prevents a false closure. */}
         <span className={styles.summaryGuard}>A zone without a green outline is not closed.</span>
@@ -108,10 +112,17 @@ export default function SpeciesLayerLegend({
             <h3 className={styles.sectionTitle}>{SPECIES_LAYER_LEGEND.seasonTitle}</h3>
             <p className={styles.seasonRow}>
               <span className={styles.seasonSwatch} aria-hidden="true" style={{ borderColor: SEASON_OPEN_STROKE }} />
-              <span>In season across the zone on this date</span>
+              <span>A legal hunt is open here on this date</span>
             </p>
             <p className={styles.detail}>{SPECIES_LAYER_LEGEND.seasonDetail}</p>
             <p className={styles.guard}>{SPECIES_LAYER_LEGEND.notGreen}</p>
+          </section>
+
+          {/* The `!` has its own row rather than a colour: there is no
+              conditional tint on this layer, by owner decision. */}
+          <section className={styles.section}>
+            <h3 className={styles.sectionTitle}>{SPECIES_LAYER_LEGEND.conditionTitle}</h3>
+            <p className={styles.detail}>{SPECIES_LAYER_LEGEND.conditionDetail}</p>
           </section>
 
           {hasEvidence ? <p className={styles.detail}>{SPECIES_LAYER_LEGEND.independent}</p> : null}

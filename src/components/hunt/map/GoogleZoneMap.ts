@@ -7,8 +7,8 @@ import {
   labelMinimumSpanPx, zoneStyle, zoomBand, type Emphasis, type ZoomBand,
 } from "../../../lib/hunt/exploration/cartography";
 import { mapLabelFor } from "../../../lib/hunt/exploration/map-labels";
-import { heatFillFor, seasonIsOpen } from "../../../lib/hunt/exploration/species-layer";
-import { EXPLORATION_WORDING, type ExplorationState as ZoneState } from "../../../lib/hunt/exploration/states";
+import { CONDITION_GLYPH, conditionMarkerLabel, heatFillFor, zoneHasConditions, zoneIsGreen } from "../../../lib/hunt/exploration/species-layer";
+import { EXPLORATION_WORDING, type ZoneSpeciesAnswer } from "../../../lib/hunt/exploration/states";
 import type { OpportunityClass } from "../../../lib/hunt/intelligence/types";
 import { layerById } from "../../../lib/hunt/zone-layers";
 import { BASEMAP_STYLE } from "./google-loader";
@@ -36,6 +36,8 @@ export interface MapCallbacks {
   onViewChange(view: { box: BBox; zoom: number }): void;
   onOverlayClick(layerId: string, objectId: number): void;
   onZoneHover?(key: string | null): void;
+  /** The zone's condition indicator was activated, at these container pixels. */
+  onConditionMarker(key: string, at: { x: number; y: number }): void;
 }
 
 export interface Padding { top: number; right: number; bottom: number; left: number }
@@ -43,7 +45,7 @@ export interface Padding { top: number; right: number; bottom: number; left: num
 export interface ZoneStyleState {
   selectedKey: string | null;
   huntKey: string | null;
-  filterStates: ReadonlyMap<string, ZoneState> | null;
+  zoneAnswers: ReadonlyMap<string, ZoneSpeciesAnswer> | null;
   /**
    * The species layer's heat class per zone. A zone that is ABSENT holds no
    * certified evidence and takes no heat; it is never given a low value.
@@ -67,7 +69,7 @@ function zoneOptions(
   coverage: string,
   flags: {
     jurisdictionId?: string; selected: boolean; hunt: boolean; hovered: boolean;
-    dimmed: boolean; state?: ZoneState; heat?: OpportunityClass; band: ZoomBand; emphasis: Emphasis;
+    dimmed: boolean; answer?: ZoneSpeciesAnswer; heat?: OpportunityClass; band: ZoomBand; emphasis: Emphasis;
   },
 ): google.maps.PolygonOptions {
   const heat = heatFillFor(flags.heat);
@@ -78,7 +80,7 @@ function zoneOptions(
     hunt: flags.hunt,
     hovered: flags.hovered,
     dimmed: flags.dimmed,
-    seasonOpen: seasonIsOpen(flags.state),
+    seasonOpen: zoneIsGreen(flags.answer),
     band: flags.band,
     emphasis: flags.emphasis,
     ...(heat ? { heat } : {}),
@@ -112,7 +114,7 @@ export class GoogleZoneMap {
   private readonly self: SelfMarkerHandle;
   private readonly huntPin: PointMarkerHandle;
   private readonly previewPin: PointMarkerHandle;
-  private style: ZoneStyleState = { selectedKey: null, huntKey: null, filterStates: null, heat: null, emphasis: "standard" };
+  private style: ZoneStyleState = { selectedKey: null, huntKey: null, zoneAnswers: null, heat: null, emphasis: "standard" };
   private hoverKey: string | null = null;
   private band: ZoomBand = "national";
   private zonesVisible = true;
@@ -122,7 +124,7 @@ export class GoogleZoneMap {
   private framingListener: google.maps.MapsEventListener | null = null;
 
   constructor(container: HTMLElement, maps: typeof google.maps, callbacks: MapCallbacks, options: {
-    center: GeoPoint; zoom: number; fineControls: boolean; labelClass: string; selfClass: string; pinClass: string;
+    center: GeoPoint; zoom: number; fineControls: boolean; labelClass: string; selfClass: string; pinClass: string; conditionMarkerClass: string;
   }) {
     this.maps = maps;
     this.callbacks = callbacks;
@@ -154,7 +156,10 @@ export class GoogleZoneMap {
        */
       backgroundColor: "#151a15",
     });
-    this.labels = createLabelLayer(maps, this.map, options.labelClass);
+    this.labels = createLabelLayer(maps, this.map, options.labelClass, {
+      className: options.conditionMarkerClass,
+      onActivate: (key, at) => this.callbacks.onConditionMarker(key, at),
+    });
     this.self = createSelfMarker(maps, this.map, options.selfClass);
     this.huntPin = createPointMarker(maps, this.map, options.pinClass, "hunt");
     this.previewPin = createPointMarker(maps, this.map, options.pinClass, "preview");
@@ -253,7 +258,7 @@ export class GoogleZoneMap {
 
   /** Apply each polygon's style, touching only the ones that changed. */
   private restyle(): void {
-    const { selectedKey, huntKey, filterStates, heat, emphasis } = this.style;
+    const { selectedKey, huntKey, zoneAnswers, heat, emphasis } = this.style;
     const band = zoomBand(this.map.getZoom() ?? 4);
     for (const [key, shape] of this.shapes) {
       const selected = key === selectedKey;
@@ -264,7 +269,7 @@ export class GoogleZoneMap {
         hovered: key === this.hoverKey,
         // A chosen zone puts its neighbours in a quieter plane, boundaries intact.
         dimmed: Boolean(selectedKey) && !selected && key !== huntKey,
-        state: filterStates?.get(key),
+        answer: zoneAnswers?.get(key),
         heat: heat?.get(key),
         band,
         emphasis,
@@ -277,7 +282,7 @@ export class GoogleZoneMap {
   }
 
   setLabels(drawn: readonly DrawnZone[]): void {
-    const { selectedKey, huntKey, filterStates } = this.style;
+    const { selectedKey, huntKey, zoneAnswers } = this.style;
     this.labels.setMinimumSpan(labelMinimumSpanPx(zoomBand(this.map.getZoom() ?? 4)));
     const sources: LabelSource[] = [];
     for (const zone of drawn) {
@@ -285,12 +290,14 @@ export class GoogleZoneMap {
       // Compact label, else the designation label, else no label — never a raw code.
       const text = mapLabelFor(zone);
       if (!labelPoint || !labelSpan || !text) continue;
-      const state = filterStates?.get(zone.key);
+      const answer = zoneAnswers?.get(zone.key);
       const selected = zone.key === selectedKey || zone.key === huntKey;
-      /* Only an open season earns a glyph on the map. The other states are not
-         map indicators any more (§41A, 2026-09-29); they are in the zone list
-         and in the zone's own card, where there is room to say what they mean. */
-      const open = seasonIsOpen(state);
+      /* Only a legal opportunity earns a glyph on the map. The other states are
+         not map indicators any more (§41A, 2026-09-29); they are in the zone
+         list and in the zone's own card, where there is room to say what they
+         mean. The glyph still comes from the zone's own exploration state, so
+         a conditional opportunity reads as the ◐ it is rather than as ●. */
+      const open = zoneIsGreen(answer);
       sources.push({
         key: zone.key,
         text,
@@ -299,10 +306,17 @@ export class GoogleZoneMap {
         labelSpan,
         priority: selected ? 100 : open ? 50 : zone.coverage === "VERIFIED" ? 2 : 1,
         selected,
-        ...(open && state ? { glyph: EXPLORATION_WORDING[state].glyph, state } : {}),
+        ...(open && answer ? { glyph: EXPLORATION_WORDING[answer.state].glyph, state: answer.state } : {}),
+        /* The one condition indicator, beside the name it belongs to. */
+        ...(zoneHasConditions(answer) ? { marker: { glyph: CONDITION_GLYPH, label: conditionMarkerLabel(text) } } : {}),
       });
     }
     this.labels.setLabels(sources);
+  }
+
+  /** Which zone's condition indicator is showing its popover, for `aria-expanded`. */
+  setOpenConditionMarker(key: string | null): void {
+    this.labels.setOpenMarker(key);
   }
 
   /* ── Special areas ─────────────────────────────────────────────────────── */

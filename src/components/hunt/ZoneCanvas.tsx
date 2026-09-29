@@ -3,8 +3,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { placeLabels } from "../../lib/hunt/exploration/labels";
 import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
-import { heatFillFor, seasonIsOpen } from "../../lib/hunt/exploration/species-layer";
-import type { ExplorationState } from "../../lib/hunt/exploration/states";
+import { heatFillFor, zoneIsGreen } from "../../lib/hunt/exploration/species-layer";
+import type { ZoneSpeciesAnswer } from "../../lib/hunt/exploration/states";
 import type { OpportunityClass } from "../../lib/hunt/intelligence/types";
 import type { ZoneFeature } from "../../lib/hunt/zone-geometry";
 import type { LabelSource } from "./map/google-overlays";
@@ -27,7 +27,7 @@ interface ZoneCanvasProps {
   /** How the selected zone is named to assistive technology ("GHA 23A"). */
   selectedZoneLabel: string | null;
   labels: LabelSource[];
-  filterStates: ReadonlyMap<string, ExplorationState> | null;
+  zoneAnswers: ReadonlyMap<string, ZoneSpeciesAnswer> | null;
   /** The species layer's heat class per zone; absent means no evidence is held. */
   heat?: ReadonlyMap<string, OpportunityClass> | null;
   zoneKeyOf: (feature: ZoneFeature) => string;
@@ -39,6 +39,10 @@ interface ZoneCanvasProps {
   onOverlayClick: (feature: OverlayFeature) => void;
   /** Reports the drawing area so the caller can frame the geometry to it. */
   onResize?: (size: { width: number; height: number }) => void;
+  /** A zone's condition indicator was activated, at these canvas pixels. */
+  onConditionMarker?: (key: string, at: { x: number; y: number }) => void;
+  /** Which zone's indicator currently has its popover open, for `aria-expanded`. */
+  openConditionMarker?: string | null;
 }
 
 /**
@@ -55,7 +59,8 @@ const LONG_PRESS_MS = 550;
 
 export default function ZoneCanvas({
   features, viewport, onViewportChange, huntPoint, selfFix, previewPoint, selectedZoneKey, selectedZoneLabel,
-  labels, filterStates, heat = null, zoneKeyOf, onZoneClick, onEmptyClick, onLongPress, overlays, onOverlayClick, onResize,
+  labels, zoneAnswers, heat = null, zoneKeyOf, onZoneClick, onEmptyClick, onLongPress, overlays, onOverlayClick, onResize,
+  onConditionMarker, openConditionMarker = null,
 }: ZoneCanvasProps) {
   const frameRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 720, height: 520 });
@@ -260,9 +265,9 @@ export default function ZoneCanvas({
               data-zone-key={key}
               className={styles.zoneCanvasShape}
               data-coverage={feature.coverage}
-              data-state={filterStates?.get(key)}
+              data-state={zoneAnswers?.get(key)?.state}
               /* Binary. A zone without this attribute is NOT closed — the legend says so. */
-              data-open={seasonIsOpen(filterStates?.get(key)) || undefined}
+              data-open={zoneIsGreen(zoneAnswers?.get(key)) || undefined}
               data-selected={key === selectedZoneKey || undefined}
               {...(fill ? { style: { fill: fill.color, fillOpacity: fill.opacity } } : {})}
             />
@@ -287,6 +292,40 @@ export default function ZoneCanvas({
             {label.text}
           </text>
         ))}
+
+        {/*
+          The condition indicator, riding with the name it qualifies.
+
+          A real control, not a drawn glyph: §41A requires touch, mouse,
+          keyboard and screen reader, and never hover alone. It is a `<button>`
+          inside `<foreignObject>` rather than an SVG shape with `role` bolted
+          on, because a button is focusable, activates on Enter and Space, and
+          announces its `aria-expanded` without any of that being reimplemented
+          here. The labels above stay `aria-hidden`; this does not.
+        */}
+        {onConditionMarker ? placed.map((label) => {
+          const source = labels.find((row) => row.key === label.key);
+          if (!source?.marker) return null;
+          const x = label.x + label.width / 2 + 2;
+          return (
+            <foreignObject key={`marker-${label.key}`} x={x} y={label.y - 11} width={22} height={22} overflow="visible">
+              <button
+                type="button"
+                className={styles.conditionMarker}
+                aria-label={source.marker.label}
+                aria-expanded={openConditionMarker === label.key}
+                data-zone-marker={label.key}
+                onPointerDown={(event) => event.stopPropagation()}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  onConditionMarker(label.key, { x, y: label.y });
+                }}
+              >
+                {source.marker.glyph}
+              </button>
+            </foreignObject>
+          );
+        }) : null}
 
         {self && selfFix ? (
           <g transform={`translate(${self[0].toFixed(1)} ${self[1].toFixed(1)})`} aria-hidden="true">

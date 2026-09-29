@@ -2,7 +2,9 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { SEASON_OPEN_STROKE } from "./cartography.ts";
-import { HEAT_FILL, HEAT_WORDING, SPECIES_LAYER_LEGEND, heatFillFor, seasonIsOpen } from "./species-layer.ts";
+import { CONDITIONS_SHOWN, HEAT_FILL, HEAT_WORDING, SPECIES_LAYER_LEGEND, conditionDigest, conditionMarkerLabel, heatFillFor, zoneIsGreen } from "./species-layer.ts";
+import type { ZoneSpeciesAnswer } from "./states.ts";
+import type { OpportunityCondition } from "./opportunity.ts";
 
 const globals = readFileSync(new URL("../../../app/globals.css", import.meta.url), "utf8");
 const token = (name: string): string => {
@@ -68,5 +70,41 @@ test("absence and a low rank are different answers", () => {
   assert.equal(heatFillFor(undefined), null, "no evidence held");
   assert.equal(heatFillFor("LIMITED_DATA"), null, "evidence held that will not support a rank");
   assert.notEqual(heatFillFor("LOW"), null, "a low rank is a value and is drawn");
-  assert.equal(seasonIsOpen(undefined), false);
+  assert.equal(zoneIsGreen(undefined), false);
+});
+
+/* ── The condition indicator ───────────────────────────────────────────── */
+
+const condition = (id: string, lang: OpportunityCondition["lang"]): OpportunityCondition =>
+  ({ id, kind: "STATED_CONDITION", text: `line ${id}`, lang, owner: "AUTHORITY" });
+
+const withConditions = (conditions: OpportunityCondition[]): ZoneSpeciesAnswer => ({
+  state: "CHECK_REQUIREMENTS",
+  opportunity: { hasCurrentLegalOpportunity: true, hasMaterialConditions: true, conditions, coverage: "OPEN", exhaustive: true },
+});
+
+test("the popover names a few conditions and COUNTS the rest", () => {
+  const many = ["a", "b", "c", "d", "e"].map((id) => condition(id, "en-CA"));
+  const digest = conditionDigest(withConditions(many), "en-CA");
+  assert.equal(digest.shown.length, CONDITIONS_SHOWN);
+  assert.equal(digest.further, many.length - CONDITIONS_SHOWN);
+});
+
+test("a condition the reader cannot read is counted, never dropped and never shown untranslated", () => {
+  /* The map shows one language. A French ministry line has no room here for its
+     original, its translation and the attribution that makes either honest — so
+     it goes to the sheet, which has all three. What must NOT happen is the
+     popover quietly reporting fewer conditions than the zone actually carries. */
+  const mixed = [condition("en", "en-CA"), condition("fr1", "fr-CA"), condition("fr2", "fr-CA")];
+  const digest = conditionDigest(withConditions(mixed), "en-CA");
+  assert.deepEqual(digest.shown.map((row) => row.id), ["en"]);
+  assert.equal(digest.further, 2, "the French lines are counted, not forgotten");
+});
+
+test("the indicator's accessible name says what it MEANS", () => {
+  const label = conditionMarkerLabel("WMU 57");
+  assert.match(label, /WMU 57/);
+  // "Exclamation" tells a screen-reader user nothing (§48).
+  assert.match(label, /conditions/i);
+  assert.doesNotMatch(label, /exclamation/i);
 });
