@@ -1636,6 +1636,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
           <SpeciesLayerLegend
             speciesName={species.displayName}
             shadedZones={heat?.size ?? 0}
+            hasEvidence={Boolean(species.hasOpportunityEvidence)}
             openZones={[...(filterStates?.values() ?? [])].filter((state) => seasonIsOpen(state)).length}
           />
         ) : null}

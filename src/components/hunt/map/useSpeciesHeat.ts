@@ -68,7 +68,7 @@ export function useSpeciesHeat(speciesId: string | null, zonesInView: readonly H
     const asked = missing.slice(0, MAX_ZONES);
     const controller = new AbortController();
     const timer = window.setTimeout(() => {
-      fetch("/api/hunt/opportunity", {
+      fetch("/api/hunt/opportunity/heat", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ speciesId, zones: asked.map((zone) => ({ layerId: zone.layerId, designation: zone.name })) }),

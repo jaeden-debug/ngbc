@@ -29,11 +29,17 @@ export default function SpeciesLayerLegend({
   /** How many zones in view hold heat evidence, and how many wear the green outline. */
   shadedZones,
   openZones,
+  hasEvidence,
 }: {
   speciesName: string;
   shadedZones: number;
   openZones: number;
+  /** Whether this species has certified opportunity evidence ANYWHERE. */
+  hasEvidence: boolean;
 }) {
+  /* Nothing shaded anywhere is a different statement from nothing shaded HERE,
+     and only the first justifies dropping the ramp. `shadedZones` alone cannot
+     tell them apart, so the caller passes whether any evidence exists at all. */
   const [open, setOpen] = useState(false);
   const panelId = useId();
 
@@ -44,11 +50,19 @@ export default function SpeciesLayerLegend({
         className={styles.summary}
         aria-expanded={open}
         aria-controls={panelId}
+        /* Explicit, because the accessible name computed from three sibling
+           spans reads as one run-on sentence — and the counts have to arrive
+           in a screen reader in the same order a sighted reader gets them. */
+        aria-label={
+          `${speciesName} layer. ${openZones} ${openZones === 1 ? "zone" : "zones"} in season; `
+          + `${hasEvidence ? `${shadedZones} with heat evidence` : "no heat evidence held for this species"}. `
+          + "A zone without a green outline is not closed. Open the full key."
+        }
         onClick={() => setOpen((was) => !was)}
       >
         <span className={styles.summaryTitle}>{speciesName} layer</span>
         <span className={styles.summaryCounts}>
-          {openZones} {openZones === 1 ? "zone" : "zones"} in season · {shadedZones} with evidence
+          {openZones} {openZones === 1 ? "zone" : "zones"} in season · {hasEvidence ? `${shadedZones} with evidence` : "no heat evidence held"}
         </span>
         {/* Never behind the disclosure: this is the one sentence that prevents a false closure. */}
         <span className={styles.summaryGuard}>A zone without a green outline is not closed.</span>
@@ -59,6 +73,7 @@ export default function SpeciesLayerLegend({
 
       {open ? (
         <div className={styles.panel} id={panelId}>
+          {hasEvidence ? (
           <section className={styles.section}>
             <h3 className={styles.sectionTitle}>{SPECIES_LAYER_LEGEND.heatTitle}</h3>
             <ul className={styles.ramp}>
@@ -77,11 +92,17 @@ export default function SpeciesLayerLegend({
               <li className={styles.rampRow}>
                 <span className={styles.swatchEmpty} aria-hidden="true" />
                 <span className={styles.rampGlyph} aria-hidden="true">{HEAT_WORDING.LIMITED_DATA.glyph}</span>
-                <span className={styles.rampLabel}>No shading — no certified evidence held here</span>
+                <span className={styles.rampLabel}>No shading — none held here</span>
               </li>
             </ul>
             <p className={styles.detail}>{SPECIES_LAYER_LEGEND.heatDetail}</p>
           </section>
+          ) : (
+            <section className={styles.section}>
+              <h3 className={styles.sectionTitle}>{SPECIES_LAYER_LEGEND.noHeatTitle}</h3>
+              <p className={styles.detail}>{SPECIES_LAYER_LEGEND.noHeatDetail}</p>
+            </section>
+          )}
 
           <section className={styles.section}>
             <h3 className={styles.sectionTitle}>{SPECIES_LAYER_LEGEND.seasonTitle}</h3>
@@ -93,7 +114,7 @@ export default function SpeciesLayerLegend({
             <p className={styles.guard}>{SPECIES_LAYER_LEGEND.notGreen}</p>
           </section>
 
-          <p className={styles.detail}>{SPECIES_LAYER_LEGEND.independent}</p>
+          {hasEvidence ? <p className={styles.detail}>{SPECIES_LAYER_LEGEND.independent}</p> : null}
         </div>
       ) : null}
     </div>
