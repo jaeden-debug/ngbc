@@ -17,7 +17,7 @@ import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
 import { huntSharePayload, shareHunt } from "../../lib/hunt/exploration/share";
 import { heightOf, mapBottomFor, sheetHeights, type SheetHeights, type SheetSnap } from "../../lib/hunt/exploration/sheet";
 import { zoneHasConditions, zoneIsGreen } from "../../lib/hunt/exploration/species-layer";
-import { bandHasMoved, placeChoiceSubject, UNMEASURED_BAND, visibleBand } from "../../lib/hunt/exploration/viewport";
+import { bandHasMoved, headerBottomInBand, placeChoiceSubject, UNMEASURED_BAND, visibleBand } from "../../lib/hunt/exploration/viewport";
 import { type ExplorationState as ZoneState, type ZoneRef, type ZoneSpeciesAnswer as ZoneAnswer } from "../../lib/hunt/exploration/states";
 import { serializeHuntUrlState, zoneRefFromId, type HuntUrlState } from "../../lib/hunt/exploration/url-state";
 import type { HuntEvaluation } from "../../lib/hunt/types";
@@ -403,7 +403,13 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     });
     let last = UNMEASURED_BAND;
     const measure = () => {
-      const headerBottom = headerRef.current?.getBoundingClientRect().bottom ?? 60;
+      /* ONE ORIGIN. The header is inside the shell, and the shell is inset to
+         the band — so its viewport-relative bottom carries an inset that
+         `band.height` does not, and the one standing in the DOM is the
+         PREVIOUS one. `headerBottomInBand` takes it off both sides. */
+      const header = headerRef.current?.getBoundingClientRect();
+      const shellTop = rootRef.current?.getBoundingClientRect().top ?? 0;
+      const headerBottom = header ? headerBottomInBand(header.bottom, shellTop) : 60;
       const safeBottom = safeProbeRef.current?.getBoundingClientRect().height ?? 0;
       last = band();
       setViewportInset({ top: last.top, bottom: last.bottom });

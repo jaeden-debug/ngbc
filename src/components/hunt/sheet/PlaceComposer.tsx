@@ -242,7 +242,7 @@ export default function PlaceComposer({
       : "";
 
   return (
-    <div className={open ? `${styles.page} ${styles.composerAnchored}` : styles.page}>
+    <div className={open ? `${styles.page} ${styles.composerOpen}` : styles.page}>
       {/* A search, not a form: Enter picks the highlighted place and nothing is ever submitted. */}
       <div className={styles.searchField} role="search">
         <svg className={styles.searchIcon} width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" fill="none">
@@ -255,6 +255,10 @@ export default function PlaceComposer({
           id={`${id}-input`}
           className={styles.searchInput}
           type="search"
+          /* A location search, told to the platform as one: a search keyboard,
+             a Search return key, and no autofill semantics that would invite
+             Safari to offer a password, a card or a contact. */
+          inputMode="search"
           enterKeyHint="search"
           role="combobox"
           autoComplete="off"

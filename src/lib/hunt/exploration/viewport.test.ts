@@ -1,8 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  bandHasMoved, closingShouldBlur, placeChoiceSubject, submitsOnEnter, UNMEASURED_BAND, visibleBand,
+  bandHasMoved, closingShouldBlur, headerBottomInBand, placeChoiceSubject, submitsOnEnter, UNMEASURED_BAND, visibleBand,
 } from "./viewport.ts";
+import { sheetHeights } from "./sheet.ts";
 
 /* An iPhone 13/14/15 in portrait, and the same phone with the keyboard up.
    The numbers are the ones measured on the device, not invented. */
@@ -119,4 +120,47 @@ test("a different point is a different choice", () => {
     placeChoiceSubject({ ...BANCROFT, origin: "search" }, null),
     placeChoiceSubject({ latitude: 45.4215, longitude: -75.6972, origin: "search" }, null),
   );
+});
+
+test("the sheet's height does not depend on where the band sits", () => {
+  /*
+   * THE PROPERTY, not the arithmetic. The header sits a fixed distance inside
+   * the shell; the shell is inset to the band. So for any band top, the header
+   * measured against the shell is the SAME number — which is what keeps a
+   * keyboard from being charged to the sheet twice.
+   *
+   * The measured failure this stands for: 375x667 WebKit, composer open, a
+   * keyboard scrolling the visual viewport down 48px. `full` went 605 → 269 and
+   * came back 557 instead of 605, and stayed short after the keyboard was gone.
+   */
+  const HEADER_INSIDE_SHELL = 111;
+  for (const bandTop of [0, 8, 48, 120]) {
+    assert.equal(
+      headerBottomInBand(bandTop + HEADER_INSIDE_SHELL, bandTop),
+      HEADER_INSIDE_SHELL,
+      `a band ${bandTop}px down must not change the header's place in the shell`,
+    );
+  }
+});
+
+test("a stale inset cannot shorten the sheet", () => {
+  /*
+   * The case that actually bit: the shell in the DOM still carries the PREVIOUS
+   * inset when the measurement runs, because React applies the new one after
+   * the effect. Both rects come from that same stale DOM, so the answer is
+   * right anyway — which is the whole point of measuring against the shell
+   * rather than the viewport.
+   */
+  const staleShellTop = 48;
+  const headerBottom = staleShellTop + 111; // read from the same stale DOM
+  const heights = sheetHeights({
+    viewportHeight: 667, // the band as it is NOW, keyboard gone
+    headerBottom: headerBottomInBand(headerBottom, staleShellTop),
+    safeBottom: 0,
+  });
+  assert.equal(heights.full, 548, "full is the band less the header, with no keyboard left in it");
+
+  const naive = sheetHeights({ viewportHeight: 667, headerBottom, safeBottom: 0 });
+  assert.equal(naive.full, 500, "and the viewport-relative reading is short by exactly the stale inset");
+  assert.equal(heights.full - naive.full, staleShellTop, "48px, which is what the owner saw");
 });

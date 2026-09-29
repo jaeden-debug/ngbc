@@ -4,7 +4,9 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-29 (**The heat measures the animals, not the hunters.** The species layer averaged every normalized series a bundle carried, and two of British Columbia's five are HUNTER COUNT and HUNTER DAYS — so two fifths of what the map drew as *where to look for an animal* was a measure of how many people went hunting there. `opportunity-v2` declares a ROLE per metric: only evidence about the animals may move the shade, effort is carried and shown and marked `contributesToIntensity: false`, and the applied weights travel in every result. Measured across all 1,297 zone-species pairs: **540 (41.6%) change band**, the largest single movement 165 MODERATE→LOW — crowded, low-yield units losing warmth they had borrowed from their own hunters. The shade is now CONTINUOUS along a six-stop ramp from cold indigo-slate to ember, carries its own STRENGTH (a thin measurement can rank high) and its RENDER KIND (zone evidence can never produce a hotspot inside a unit), and the key says how it was calculated from the same read model the map is painted from. Three more Ontario datasets served under the same Open Government Licence: moose, black bear, wild turkey — **13 datasets, 1,469 zone-species pairs, 6,642 records, 10 species**. Two Ontario datasets deliberately NOT served, neither for a licence: wolf-and-coyote publishes one combined column for two species, and elk is reported by a geography North Ground does not hold.)
+Last updated: 2026-09-29 (**The mobile composer keeps its place; the keyboard only takes viewport away.** Reported from an iPhone and reproduced: tapping Search anywhere sent the search field down onto the keyboard's edge. The cause was two CSS `order` declarations under `[data-composer="open"]` that drew the field last — a deliberate messaging-composer model the owner has now decided against, so §41A is amended. Both are gone and document order is visual order; no offset, unit or second keyboard detector was added. Certifying that fix exposed a second real defect in the same lane: the sheet's height mixed a viewport-relative header rect with a shell-relative band height, charging a scrolled keyboard to the sheet twice — and, because the inset in the DOM is a state behind, the error outlived the keyboard and left the sheet 48px short after dismissal. `headerBottomInBand` now takes the inset off both sides. The control bar above the keyboard is Safari's own AutoFill bar, not North Ground's; the half we control was checked and is clean.)
+
+Previously: 2026-09-29 (**The heat measures the animals, not the hunters.** The species layer averaged every normalized series a bundle carried, and two of British Columbia's five are HUNTER COUNT and HUNTER DAYS — so two fifths of what the map drew as *where to look for an animal* was a measure of how many people went hunting there. `opportunity-v2` declares a ROLE per metric: only evidence about the animals may move the shade, effort is carried and shown and marked `contributesToIntensity: false`, and the applied weights travel in every result. Measured across all 1,297 zone-species pairs: **540 (41.6%) change band**, the largest single movement 165 MODERATE→LOW — crowded, low-yield units losing warmth they had borrowed from their own hunters. The shade is now CONTINUOUS along a six-stop ramp from cold indigo-slate to ember, carries its own STRENGTH (a thin measurement can rank high) and its RENDER KIND (zone evidence can never produce a hotspot inside a unit), and the key says how it was calculated from the same read model the map is painted from. Three more Ontario datasets served under the same Open Government Licence: moose, black bear, wild turkey — **13 datasets, 1,469 zone-species pairs, 6,642 records, 10 species**. Two Ontario datasets deliberately NOT served, neither for a licence: wolf-and-coyote publishes one combined column for two species, and elk is reported by a geography North Ground does not hold.)
 
 Previously: 2026-09-29 (**The species answer became a decision surface, and Québec stopped saying "not yet verified".** Québec legal hunting hours now RESOLVE at a point: the Legal Time Act (T-5.1) splits the province at the 63rd meridian and answers completely west of it, while the east is refused by naming the three territories whose boundaries North Ground does not hold. The hours themselves are the complement of C-61.1 s. 1's « nuit » under s. 56's prohibition, narrowed by r. 12 s. 21's night permission — ±30 minutes, established by three independent reads. Québec Ready to Hunt ships PARTIAL: certificat du chasseur, permis de petit gibier, the hare-by-snare licence, the federal firearms licence and hunter orange, with legal methods, ammunition and fees carried as explicitly unresolved. Conditions are structured and shown under the status; "in season, with conditions" is now earned by a condition that exists. Served-matrix invariants are declared per jurisdiction rather than derived.)
 
@@ -794,6 +796,39 @@ blueprint keeps those out of North Ground's answers.
 
 ## Recent Product Decisions
 
+### The composer keeps its place; the keyboard only takes viewport away (2026-09-29)
+
+Reported by the owner from an iPhone, reproduced: tapping **Search anywhere**
+sent the search field DOWN to sit on the keyboard's edge, with the rows it
+offers rearranging above it. That was deliberate once — a messaging-composer
+model — and the owner has decided against it. §41A is amended: the field stays
+at the top of the sheet, what it offers scrolls below it, and the keyboard only
+takes viewport away.
+
+**The cause was two CSS `order` declarations**, not a viewport bug:
+`.searchField { order: 1 }` with `.composerScroll { order: 0 }` under
+`[data-composer="open"]` drew the field LAST. Both are gone, the state class is
+`composerOpen`, and document order is now visual order. No offset, no unit and
+no detector was added — the one viewport model in `HuntApp` was already right.
+
+**Certifying that fix exposed a second, real defect in the same lane.** The
+sheet's height was computed from a header rect read in VIEWPORT coordinates
+against a band height measured in the SHELL's, so a keyboard that scrolls the
+visual viewport was charged to the sheet twice — and because React applies the
+inset after the effect runs, the error OUTLIVED the keyboard: dismissing it left
+the sheet short until something else moved. Measured at 375x667, `full` went
+605 → 269 → **557**, where 605 was correct. `headerBottomInBand` in
+`exploration/viewport.ts` now takes the inset off both sides, and the property —
+the header's place in the shell does not depend on where the band sits — is
+asserted for band tops of 0, 8, 48 and 120.
+
+**The control bar above the keyboard is Safari's own AutoFill/QuickType bar**,
+which a page cannot remove. What was checkable was checked and is clean: no
+`<form>` wrapper, no fixed or sticky bottom bar in any Hunt stylesheet, no
+accessory or keyboard-dismiss component anywhere in the source, and the field
+declares `type="search"`, `inputMode="search"`, `enterKeyHint="search"` and
+`autoComplete="off"` with no credential, address or payment token.
+
 ### 2026-09-29 — Heat is evidence about animals, and it says how much
 
 **The defect.** `classifyOpportunity` averaged every normalized value a zone
@@ -901,7 +936,6 @@ its Wildlife Management Unit geography is the same good geography every other
 Ontario harvest dataset uses; the old rule would have forced it to disclaim a
 precision it genuinely has — a false statement about a source, made in order to
 satisfy a rule about sources.
-
 
 ### Green is an opportunity, not a season open to everybody (2026-09-29)
 
@@ -2115,6 +2149,37 @@ a loss.** "Refuse rather than guess" applies where there is a guess.
 
 ## Validation
 
+- **Hunt mobile composer, 2026-09-29** (private worktree `kbfix`, branch
+  `hunt-composer-keyboard`, rebased onto `origin/main` fe78c54): typecheck 0
+  errors; `npm test` exit 0, **1,584 passing, 0 failing** (10 new: 8
+  composer-layout invariants, 2 band-relative geometry, measured on the rebased
+  tree); production build clean on Next 16; lint
+  0 errors (8 pre-existing warnings); `git diff --check` clean; `validate:seo`,
+  `validate:content` and `check:intelligence-sources` pass.
+
+  **Both guards were proven able to fail** before being trusted: reinstating the
+  `order` pair fails 1 of 8, and restoring the viewport-relative header read
+  fails the geometry test. The served CSS bundle was checked directly — 5
+  `[data-composer=open]` blocks, 0 declaring `order` — with a positive control
+  that injected the regression into a copy and made the same probe fire.
+
+  **Browser certification is Chromium (the app's browser pane, Pixel 8 mobile UA
+  at phone widths) against a local production build — not WebKit, and not a
+  physical device.** At 360x740, 375x667, 390x844 and 430x932 the composer opens
+  with the field above the rows it offers, and simulating the keyboard through
+  `visualViewport` (height shrunk 336 px, `offsetTop` 0 and 52) moves the field
+  by **0 px** while the region below it shrinks to the space that is left; with
+  the band scrolled, field and sheet move together by exactly the offset;
+  dismissing returns every measurement to its resting value **exactly**. One
+  scroller, no transform on the shell, no horizontal overflow at any width.
+  Desktop 1440x900 keeps the panel layout with the field above the list.
+
+- `check:regulatory-sources` **fails on the base commit too** and is unrelated to
+  this work: quebec.ca published a zec paragraph the ingest classifier does not
+  recognise, and the builder refuses to promote it. Reproduced on `02f68fd` with
+  none of these changes present. That refusal is the pipeline behaving as §41B
+  requires; the paragraph needs reading and classifying in the Québec lane.
+
 - **Species heat intelligence, 2026-09-29** (private worktree `feat/species-heat-intelligence`): typecheck 0 errors; `npm test` exit 0, **1,574 passing, 0 failures** (baseline 1,542; +32 new assertions across `methodology.test.ts`, `rendering.test.ts`, `ontario-harvest.test.mjs`, and extensions to the bundle, route and species-layer suites); production build clean; lint **0 errors, 8 pre-existing warnings**; `validate:seo` clean; `check:intelligence-sources` reproduces all four Ontario and both British Columbia bundles byte-for-byte from the live authoritative CSVs; `git diff --check` clean.
 
   **The band-movement figure was predicted before it was measured** (320–440 predicted, 540 measured, 41.6%) and the gap is recorded above with its cause rather than the number alone.
@@ -2135,7 +2200,6 @@ a loss.** "Refuse rather than guess" applies where there is a guess.
   Two consequences, neither yet fixed. The client (`useSpeciesHeat.ts`) caps its own request at 450, so for a long-id layer it can ask for a request the server will refuse. And the refusal it gets is the *body-size* error, not the zone-count error, so a caller obeying the documented 450 is told the wrong thing about why. A refused heat request paints nothing, and §41B is explicit that a blank map reads to a hunter as "there are no animals here" — which is why this is a defect to reconcile rather than a tuning note. It is pre-existing on production, not introduced by this work: both constants and the client cap are identical at `9329453`.
 
   **Production-smoked on the real map** at 375×812: Ontario white-tailed deer draws 101 zones with continuous multi-tone heat under the green outlines and the `!` markers, the chosen zone keeps the only bone outline, and "How is this calculated?" opens the real record naming both authorities with weights summing to 100% and both effort measures shown as "not counted". Ontario moose (a dataset that did not exist this morning) draws 66 zones, warm in the north and unshaded in the south. Wild turkey resolves and answers "In season" with no heat ramp claim it cannot support. The basemap did not load — this host's Google key is refused — and the official boundaries and every answer were unaffected, which is the behaviour §41A requires.
-
 
 - **Provenance split completed, 2026-09-29** (Codex worktree `codex/provenance-split`): typecheck 0 errors; `npm test` exit 0, **1,421 passing, 0 failing, 0 skipped**; production build clean; lint **0 errors** (9 pre-existing warnings); `validate:seo` and `validate:content:published` clean. The B.C. closed-areas artifact was verified by REGENERATING it from source and comparing rather than by reading the generated JSON — byte-identical, 325 restrictions, 180/145. Every regulatory generator was run twice with no drift. The compile-time protections were falsified and restored individually.
 

@@ -1403,38 +1403,47 @@
 }
 
 
-/* ── The composer, anchored above the keyboard ─────────────────────────── */
+/* ── The composer, filling the sheet ───────────────────────────────────── */
 
 /*
- * With the keyboard open the field sits on the visible bottom edge and what it
- * offers takes the space above it, the way a phone messaging composer does.
+ * THE FIELD STAYS WHERE IT LIVES. It is first in the DOM and first on screen,
+ * at the top of the sheet, and the keyboard does not move it.
  *
- * The field is LAST visually and FIRST in the DOM. That is deliberate: `order`
- * moves the box, not the document, so a screen reader still meets the input
- * before the listbox it controls, and `aria-activedescendant` still points
- * where it did. Reordering the markup instead would have changed what a
- * screen-reader user hears in order to move a box on a screen.
+ * It used to be the other way round — `order: 1` on the field and `order: 0`
+ * on the scroller put the input last visually, on the visible bottom edge, the
+ * way a phone messaging composer works. On a real iPhone that reads as the
+ * search field CHASING the keyboard: it drops to the keyboard's top edge as
+ * the keyboard rises and the rest of the sheet rearranges around it
+ * (owner, 2026-09-29, reproduced on iPhone Safari). §41A now says the composer
+ * keeps its place and the keyboard simply takes viewport away.
  *
- * There is exactly ONE scroller here — the region above the field. The sheet
- * body stops scrolling in this state and the recents list gives up its own
+ * So there is no `order` here at all. Document order IS visual order, which is
+ * also the arrangement a screen reader was always given — the old rule moved
+ * the box without moving the document precisely so the two would not diverge,
+ * and now they do not need to.
+ *
+ * The keyboard is handled in ONE place and it is not here: the shell is inset
+ * to the visible band in `HuntApp`, so a keyboard shrinks the sheet and this
+ * layout simply gets less room. No offset, no transform, no second detector.
+ *
+ * There is exactly ONE scroller — the region BELOW the field. The sheet body
+ * stops scrolling in this state and the recents list gives up its own
  * max-height, because two nested scrollers is how content becomes unreachable
  * with a thumb.
  */
 .app[data-layout="sheet"][data-composer="open"] .sheetBody { overflow: hidden; }
 
-.app[data-layout="sheet"][data-composer="open"] .composerAnchored {
+.app[data-layout="sheet"][data-composer="open"] .composerOpen {
   display: flex;
   flex-direction: column;
   height: 100%;
   min-height: 0;
   gap: 10px;
 }
-.app[data-layout="sheet"][data-composer="open"] .composerAnchored .searchField {
-  order: 1;
+.app[data-layout="sheet"][data-composer="open"] .composerOpen .searchField {
   flex: none;
 }
 .app[data-layout="sheet"][data-composer="open"] .composerScroll {
-  order: 0;
   flex: 1;
   min-height: 0;
   display: flex;

@@ -2057,8 +2057,24 @@ never change the zone, the regulatory answer, the weather or the Hunt Brief. The
 The resting sheet is a prompt and one composer — place, town, address or
 postal/ZIP code — backed by Google Places where configured and a keyless
 provider otherwise. There is no second way in beside it: one tap reaches a
-focused field with the keyboard up, and on a phone the sheet rises so the field
-and what it offers stay above the keyboard.
+focused field with the keyboard up.
+
+**The composer keeps its place; the keyboard only takes viewport away.**
+*Amended 2026-09-29 (owner), reproduced on iPhone Safari.* The field stays where
+it lives at the top of the sheet and does NOT move to sit above the keyboard.
+Tapping it opens the sheet, focuses the input, and the keyboard rises from the
+bottom; what remains between the field and the keyboard is the usable viewport,
+and the sheet's content adapts to it. The previous rule made the field a
+messaging-style bottom composer anchored to the visible bottom edge, which on a
+real phone reads as the search field chasing the keyboard, with the sheet
+rearranging around it.
+
+There is ONE viewport model: the shell is inset to the visual viewport's visible
+band. No second keyboard detector, no device-specific offset, no transform that
+moves the sheet when the keyboard opens, and nothing of North Ground's floating
+above the native keyboard — no custom accessory row and no keyboard-dismiss
+control. The search field carries search semantics so the platform treats it as
+a location search rather than as credentials or payment input.
 
 Everything else a person can choose a place with lives INSIDE that opened
 field, as labelled rows below it: their recent places, `Use my location`, and

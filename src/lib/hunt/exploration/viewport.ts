@@ -95,9 +95,11 @@ export function closingShouldBlur(wasOpen: boolean, isOpen: boolean): boolean {
 /**
  * What the composer is still waiting to be told, as a key.
  *
- * The composer OWNS the sheet while it is open — §41A's messaging-composer
- * model: what it offers scrolls above, the field sits on the visible bottom
- * edge, and nothing renders after it. That suppression is intended. What is
+ * The composer OWNS the sheet while it is open — the field keeps its place at
+ * the top, what it offers scrolls BELOW it, and nothing else renders. (It was
+ * a messaging-composer model until 2026-09-29: the field sat on the visible
+ * bottom edge, which on a real iPhone reads as the field chasing the keyboard.
+ * §41A now says it keeps its place.) That suppression is intended. What is
  * not intended is leaving it open once the place it was opened to choose HAS
  * been chosen, because then the suppression hides the answer the choosing was
  * for: the species list, the evaluation, and the pin's own confirm control.
@@ -124,4 +126,29 @@ export function placeChoiceSubject(
   if (pin) return "pin";
   if (!hunt) return null;
   return `${hunt.origin}:${hunt.latitude},${hunt.longitude}`;
+}
+
+/**
+ * The floating header's bottom edge, in the SHELL's coordinates rather than the
+ * viewport's.
+ *
+ * WHY THIS EXISTS. The shell is inset to the visible band, so a rect read off
+ * the header carries that inset: with the band scrolled down 48px by a
+ * keyboard, `header.bottom` is 48 larger while `band.height` is not. Subtracting
+ * one from the other charged the band's top to the sheet a second time, and the
+ * sheet came out 48px short.
+ *
+ * It outlived the keyboard, which is what made it visible. The inset standing in
+ * the DOM at measuring time is the PREVIOUS one — React applies this
+ * measurement's inset after the effect has run — so dismissing the keyboard
+ * measured against the still-inset shell and left the sheet short until
+ * something else moved. Measured on a 375x667 WebKit viewport, 2026-09-29:
+ * full went 605 → 269 → 557, where it began and should have returned.
+ *
+ * Reading the header against the shell's own top takes the inset off both
+ * sides, so the answer is the same whichever inset happens to be applied — the
+ * property `sheet-geometry` in the tests asserts exactly that.
+ */
+export function headerBottomInBand(headerBottom: number, shellTop: number): number {
+  return Math.round(headerBottom - shellTop);
 }
