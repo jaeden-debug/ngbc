@@ -4,7 +4,9 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-23 (**Federal migratory game birds answer**: 24 species selectable nationally, PE/YT/AB with certified seasons, 18/18 cases. Earlier: **British Columbia serves rules** — a first wave of 79 rules over seven species reaching 221 of 225 units, 20/20 production cases, three disputes preserved as CONFLICT; coreGameComplete 5 of 11. Earlier the same day: **Canada spatial complete**: all 11 in-scope provinces and territories have parity-certified official geography, Prince Edward Island last, served at geography level JURISDICTION because the province publishes no units. Rules remain the open front — 7 of 11 hold no certified rule and answer UNKNOWN. Government GIS transient failures are now retried under one stated policy and a national audit survives an unreadable provider. **United States: licence-first.** Six more states' map licences read and recorded verbatim with hashes — Michigan clears (public record, no reuse restrictions), Wisconsin, North Dakota and South Dakota are silent, Minnesota and Maine refuse outright. Eight of the ten states with any evidence may not be drawn, so the 50-state bottleneck is permissions rather than engineering; eight letters are drafted for the owner. A silence and a refusal are now reported differently because they are undone differently. An overlap names its zones instead of counting them. Michigan is next and is held until its Wildlife Conservation Order is read: its deer units nest by design, and deliberate nesting is not a conflict.)
+Last updated: 2026-09-29 (**The species answer became a decision surface, and Québec stopped saying "not yet verified".** Québec legal hunting hours now RESOLVE at a point: the Legal Time Act (T-5.1) splits the province at the 63rd meridian and answers completely west of it, while the east is refused by naming the three territories whose boundaries North Ground does not hold. The hours themselves are the complement of C-61.1 s. 1's « nuit » under s. 56's prohibition, narrowed by r. 12 s. 21's night permission — ±30 minutes, established by three independent reads. Québec Ready to Hunt ships PARTIAL: certificat du chasseur, permis de petit gibier, the hare-by-snare licence, the federal firearms licence and hunter orange, with legal methods, ammunition and fees carried as explicitly unresolved. Conditions are structured and shown under the status; "in season, with conditions" is now earned by a condition that exists. Served-matrix invariants are declared per jurisdiction rather than derived.)
+
+Previously: 2026-09-23 (**Federal migratory game birds answer**: 24 species selectable nationally, PE/YT/AB with certified seasons, 18/18 cases. Earlier: **British Columbia serves rules** — a first wave of 79 rules over seven species reaching 221 of 225 units, 20/20 production cases, three disputes preserved as CONFLICT; coreGameComplete 5 of 11. Earlier the same day: **Canada spatial complete**: all 11 in-scope provinces and territories have parity-certified official geography, Prince Edward Island last, served at geography level JURISDICTION because the province publishes no units. Rules remain the open front — 7 of 11 hold no certified rule and answer UNKNOWN. Government GIS transient failures are now retried under one stated policy and a national audit survives an unreadable provider. **United States: licence-first.** Six more states' map licences read and recorded verbatim with hashes — Michigan clears (public record, no reuse restrictions), Wisconsin, North Dakota and South Dakota are silent, Minnesota and Maine refuse outright. Eight of the ten states with any evidence may not be drawn, so the 50-state bottleneck is permissions rather than engineering; eight letters are drafted for the owner. A silence and a refusal are now reported differently because they are undone differently. An overlap names its zones instead of counting them. Michigan is next and is held until its Wildlife Conservation Order is read: its deer units nest by design, and deliberate nesting is not a conflict.)
 
 Previously: 2026-09-22 (Canonical species PRIMARY media schema, private storage and every shared consumer are activated and certified in production. Temporary certification media and users were removed; population is 0/60. Permanent administrator access remains fail-closed until the owner supplies the administrator email.)
 
@@ -666,6 +668,112 @@ Record actual production providers here once selected:
 - Error monitoring:
 
 Do not list aspirational providers as implemented.
+
+## Hunt Species Detail — Decision Surface (2026-09-29)
+
+### What a hunter now sees
+Opening a species in a zone leads with the answer: status, then the conditions
+that qualify it, then the season as two labelled dates, then legal hours, then
+Ready to Hunt. Regulatory prose and provenance moved behind disclosure; nothing
+operational did.
+
+- **Conditions are structured and in the scan.** `RegulatoryCondition` keeps a
+  line's text apart from its pinpoint and source, so several conditions group
+  under one source affordance and a validator can test that a line HAS a source.
+  `RegulatoryResult.requirements` is unchanged for the zone card, the Hunt Brief
+  and the long form, and is now DERIVED from the structured list.
+- **"With conditions" is earned by the data.** `settle()` has no OPEN branch —
+  every in-season rule returns CONDITIONAL — while Québec, BC, Ontario small
+  game and the federal bundle enumerate none. The engine's STATUS is unchanged
+  (it gates Ready to Hunt); the displayed word drops the qualifier when no
+  condition can be shown, which also stops the sheet disagreeing with the zone
+  card on the same evaluation.
+- **Closed species show when they next open**, rendered per `NextSeason`
+  variant so "not yet published" can never draw as "no further season".
+- **Fixed a measured overflow**: at 375px the "In season, with conditions" pill
+  is 276px and pushed Details 17px past the card edge. Fixed from the sheet's
+  own stylesheet, not `HuntApp.module.css`.
+
+### Québec legal hunting hours — RESOLVED
+- **Clock:** Loi sur le temps légal, CQLR c. T-5.1, s. 1 — the 63rd meridian
+  West, not the 68th. West of it the Act answers completely (every southern
+  hunting zone). East of it three reckonings turn on named territories (MRC de
+  Minganie; Îles-de-la-Madeleine and Listuguj; the remainder, Atlantic standard
+  all year with no summer shift). Each is settled in the Act; what North Ground
+  cannot do is place a POINT in one, so the east is refused and says which
+  boundaries would settle it.
+- **Hours:** there is no hours section. « heures de chasse » returns zero across
+  r. 12 and r. 1 — Québec legislates hunting time under « nuit ». C-61.1 s. 56
+  prohibits hunting except as a regulation permits, s. 1 defines night, and
+  r. 12 s. 21 permits night hunting for an enumerated few. The complement is
+  ±30 minutes. Three independent reads agree.
+- **`LegalTimeException`** is a new contract field: s. 21's night permission
+  turns on the METHOD (hare by snare), which no single window can express. It
+  carries a stated direction, because WIDENS and NARROWS fail differently.
+- **Turkey** cites r. 12, art. 14, **septième alinéa**, anchored. It shipped
+  once as "para. 6" — an index from zero — which landed on a real provision
+  about small game in zone 3. A citation to nothing gets caught; one to the
+  wrong real rule gets believed. A test sweeps for bare paragraph indices.
+
+### Québec Ready to Hunt — PARTIAL, small game only
+Covers arctic hare, snowshoe hare, eastern cottontail, ruffed/spruce/sharp-tailed
+grouse. Big game gets no checklist rather than one built from the nearest thing
+to hand.
+
+- **Hunter orange is in the Règlement sur les ACTIVITÉS de chasse (r. 1) ss.
+  17.1–17.3, NOT r. 12.** r. 12 contains zero occurrences of « orang » in
+  114,000 characters against 283 for « chasse » — a measured negative. Verified
+  independently before encoding; a test asserts every orange citation names r. 1.
+- **Orange turns on the method for hare only**: s. 17.3(1°)(c) exempts arctic
+  hare, snowshoe hare and eastern cottontail taken BY SNARE. Grouse reach no
+  exemption. With no method given the answer is CONDITIONAL.
+- **`MethodClass` gained SNARE.** The engine modelled « collet » all along;
+  readiness silently discarded a SNARE answer, so the checklist could only tell
+  an exempt hunter that orange was required.
+- **Explicitly unresolved, not omitted:** legal methods and ammunition (r. 12
+  art. 31 defines the engin types, but Annexe III — which says which type is
+  permitted where — has no body text on the official consolidation) and fees
+  (a separate tarification regulation, unread; every row is CHECK_OFFICIAL).
+- A PARTIAL checklist now says so above its rows; previously PARTIAL rendered
+  identically to VERIFIED.
+
+### Legal-hours coverage, served matrix
+| Jurisdiction | Point hours | Note |
+|---|---|---|
+| Ontario | RESOLVED | Time Act 90°W; Atikokan divergence stated |
+| Alberta | RESOLVED | Wildlife Act s. 28; "except by trapping" carve-out carried |
+| Manitoba | RESOLVED | M.R. 351/87 s. 3 |
+| Québec | RESOLVED | **new**; see above |
+| Federal migratory | RESOLVED | composes with provincial layers |
+| British Columbia | NOT_CERTIFIED | rule encoded (B.C. Reg. 190/84 s. 14(1), ONE hour); clock blocked |
+| Idaho | NOT_CERTIFIED | 49 CFR § 71.9 — Salmon River centreline and municipality override not held |
+
+### Validators added
+`answer-invariants.test.ts` runs the served matrix and enforces, **declared per
+jurisdiction rather than derived**, that hours still resolve where they should
+and still refuse where they should; that a refusal names its authority; that a
+resolved window cites its provision and states a real timezone; that a
+"with conditions" answer can name one; that every condition has a source and a
+pinpoint; that `requirements` stays in step with `conditions`; and that a next
+opening is strictly future. The carve-out test asks both whether the answer
+carries the carve-out and whether it applies to the hunter being answered —
+Manitoba asserts ABSENCE, because its ss. 12.1/12.2 are rights-based and the
+blueprint keeps those out of North Ground's answers.
+
+### Known gaps from this pass
+- **BC hours are unblocked in principle**: Interpretation Act s. 26 (not s. 34)
+  makes BC UTC−7 province-wide with no DST after B.C. Reg. 20/2026. The in-force
+  date could not be verified, and it governs backdated evaluation, so BC stays
+  NOT_CERTIFIED and pinned. Owned by another lane.
+- **BC bundle lacks s. 14(2)**, the migratory half-hour tier. Latent: BC serves
+  seven species, none migratory, and `british-columbia-legal-time.ts` records
+  the tier. Becomes live when a migratory species is served.
+- **Manitoba s. 12(2)** deems spotlighting with a loaded firearm to be night
+  hunting — three conjunctive limbs, in scope for licensed hunters, unencoded.
+- **Multiple season windows** are not yet surfaced per-window; the engine
+  reports one season plus `next`.
+- Québec methods, ammunition and fees, as above.
+
 
 ## Recent Product Decisions
 
