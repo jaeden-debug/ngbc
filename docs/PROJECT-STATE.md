@@ -1126,6 +1126,92 @@ geography) and is annotated as such. `united-states/routing.test.ts` asserts
 Montana's rules never answer because Montana is not served — the same shape,
 in the U.S. agent's file, and reported to them rather than edited here.
 
+## Provenance — Whose Words, Enforced By The Type
+
+*Implemented 2026-09-29 (Codex, finished by the United States agent).*
+
+**The invariant.** AUTHORITY-owned text must be the authority's actual wording and
+must carry its provenance. NORTH_GROUND-owned text must be structurally
+incapable of being rendered or serialized as an authority quotation merely
+because it sits in a generic string field.
+
+**Where it lives.** `src/lib/hunt/provenance.ts`. It GENERALISES `limitation.ts`'s
+existing `owner: "AUTHORITY" | "NORTH_GROUND"` tag rather than introducing a
+second vocabulary (§14):
+
+- `AuthorityQuotation` — `owner`, `text`, and **mandatory** `sourceId`,
+  `citation` and `lang`. There is no overload that omits them: a quotation
+  without a source is a rumour, and a language that defaults mislabels
+  Québec's French as English (§47).
+- `NorthGroundStatement` — `owner` and `text`, and deliberately **no**
+  `sourceId`. Giving it an optional one would let authored text drift back
+  into an attributed position, which is the failure the type exists to prevent.
+- `quoting()` / `authored()` are the only constructors; `isQuotation()` reads
+  the tag and never infers from another field; `provenancedLine()` decides the
+  quote marks from authorship, so no renderer types a quotation mark itself.
+
+**Why a second field would not have been enough.** The defect was produced by a
+convention held at six call sites. Six chances to get it right is not a
+guarantee. `src/lib/hunt/provenance.test.ts` asserts the wrong construction
+**does not compile**, using `@ts-expect-error`: TypeScript reports an unused
+directive as an error and `npm test` runs `tsc --noEmit` first, so widening a
+type to "make it easier" fails the gate. Both mechanisms were verified by
+falsification — widening the renderer, and defaulting `lang`, each break the
+build.
+
+**Where the split reaches.** Overlay catalogue features (`CatalogueFeature`,
+`OverlayFeature` — `statedAs` exists only on the authority branch), restriction
+records, within-zone restrictions, gear-class definitions, the generated B.C.
+closed-areas artifact, absence rules, disputes and amendment conflicts. The
+zone-summary API payload carries only a pre-rendered `line`, so no ambiguous
+field crosses the boundary at all.
+
+**The lesson that cost three repeats: data + type + GENERATOR must move together.**
+A converted JSON file survives until the next rebuild and then silently
+reverts. It happened three times and each was found by regenerating, never by
+reading:
+
+1. Montana's 50 big-game-restricted features (one North Ground sentence) were
+   converted in the catalogue but not in `build-us-mt-upland.mjs`.
+2. Absence rules and disputes were typed but still emitted as bare strings by
+   five generators.
+3. Manitoba's and Québec's catalogue `lang` was set in JSON only.
+
+Regeneration is now idempotent: every generator run twice produces no drift.
+
+**Classification is decided by evidence, not by reading the prose.** An absence
+sentence is the authority's where its generator verifies it verbatim against
+the live instrument (`containsVerbatim`, `requireProvision` throw if the
+wording moves) — British Columbia and Manitoba. It is North Ground's where it
+is a hand-written constant — Alberta, Idaho, Montana. Disputes and amendment
+conflicts are authored **by construction**: a dispute exists because North
+Ground's cross-check found two readings, and an `AmendmentConflict` is COMPOSED
+by joining sentences. A composition is authorship, not annotation.
+
+**Québec's absence carries no `words`, deliberately.** It held a French ministry
+sentence with no `sourceId` and no section. The type requires a citation, and
+that refusal is the point: a quotation nobody can cite is not evidence, calling
+it ours would be the opposite lie, and inventing a citation is forbidden. The
+absence RULE is stated beside it in North Ground's own words (§8). Restoring
+the quotation needs one thing — the page it appears on.
+
+**Measured corpus, 2026-09-29:** 1,122 provenanced records — **522 AUTHORITY**
+(0 missing `sourceId`/`citation`/`lang`, 0 naming North Ground) and **600
+NORTH_GROUND** (0 carrying authority fields). 2,630 bare `statedAs` strings
+remain and **0 of them name North Ground**. B.C. closed areas: 325
+restrictions, 180 AUTHORITY / 145 NORTH_GROUND — the 145 being the known mixed
+summaries, which can no longer be marked as quotations. Montana catalogue: 13
+authority / 50 authored.
+
+**Genuine remaining ambiguity, stated rather than closed.** The 2,630 bare
+`statedAs` strings are authority-sourced and none launders our words today, but
+most of their declarations still carry **no doc comment stating whose words they
+hold** — `seasonPhrase` (verbatim, in each jurisdiction's own format and
+language, the largest uncontracted quotation field), `officialSpec`,
+`implementLabel` (whose contract, *"Quoted, never translated or reformatted"*,
+is on only one of its two declarations). Giving each declaration a contract is
+the remaining work; nothing in it is known to be misattributed.
+
 ## Agreeing With The Service Is Not Agreeing With The Law
 
 Recorded once, in **Recent Product Decisions** under *2026-09-23 — Audit
@@ -1542,6 +1628,10 @@ a loss.** "Refuse rather than guess" applies where there is a guess.
   count costs, not vertex count.**
 
 ## Validation
+
+- **Provenance split completed, 2026-09-29** (Codex worktree `codex/provenance-split`): typecheck 0 errors; `npm test` exit 0, **1,421 passing, 0 failing, 0 skipped**; production build clean; lint **0 errors** (9 pre-existing warnings); `validate:seo` and `validate:content:published` clean. The B.C. closed-areas artifact was verified by REGENERATING it from source and comparing rather than by reading the generated JSON — byte-identical, 325 restrictions, 180/145. Every regulatory generator was run twice with no drift. The compile-time protections were falsified and restored individually.
+
+  **B.C. Reg. 190/84 re-consolidated September 15 → September 22, 2026** during this work and the pin was advanced only after review (§45): every rule, group and unit is byte-identical across the two consolidations (79 rules, 225 units), only `retrievedAt`, the content hash and the consolidation sentence moved, and the generator's own verbatim guards on s. 4 and s. 5 did not fire.
 
 - **The map and the coverage report agree on 1,212 official units by two independent paths (2026-09-22).** The national overview answer contains 1,212 drawn features across the seven served layers (Ontario 151, Québec 59, Manitoba 62, Alberta 189, British Columbia 225, Saskatchewan 83, Yukon 443), and `canadaCoverageReport()` computes 1,212 parity-certified units from the certified rule bundles and ingestion adapters. Neither number is typed, and they are derived from different sources: one from PostGIS drawings and live services at request time, the other from the bundles and adapters at call time. Their agreement is a real cross-check — if a jurisdiction is ever promoted without being drawn, drawn without being certified, or silently truncated by a query limit, the two numbers separate. Yukon is exactly how that was caught: it reported 443 certified units while the map drew 0, because a 400-row cap refused the layer.
 
