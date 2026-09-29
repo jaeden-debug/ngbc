@@ -4,7 +4,7 @@
   "jurisdictionId": "jurisdiction:ca-bc",
   "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
   "retrievedAt": "2026-09-22",
-  "contentHash": "sha256:01a6cf8143e301c5731c0c3d7408e0c7a880a4493222dcaa964801f65ebba1a7",
+  "contentHash": "sha256:3800910085a4ad32dd5627dc4d9e75ddf38c3064727f6952f63c44b81fdbb686",
   "certifiedPeriod": {
     "from": "2026-07-01",
     "to": "2027-06-30",
@@ -1359,6 +1359,13 @@
     "statedAs": "The prohibited hours for hunting wildlife are from one hour after sunset on any day until one hour before sunrise of the day following.",
     "section": "B.C. Reg. 190/84, s. 14 (1)"
   },
+  "legalTimeExceptions": [
+    {
+      "statedAs": "Despite subsection (1), the prohibited hours for hunting migratory game birds are from one-half hour after sunset on any day until one-half hour before sunrise of the day following.",
+      "section": "B.C. Reg. 190/84, s. 14 (2)",
+      "appliesTo": "migratory game birds"
+    }
+  ],
   "sources": [
     {
       "id": "source:ca-bc-hunting-regulation",
@@ -1366,7 +1373,7 @@
       "title": "Hunting Regulation, B.C. Reg. 190/84 (sections 1 to 19)",
       "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/190_84_01",
       "sourceHashes": {
-        "body": "sha256:f7f7076b55937442ea874418c2f4beefe5fd1a83ee2c414666446340ae580532"
+        "body": "sha256:88d4b51cc6573551094c94a30a7e21085ba49c7b3b28ec5839d5611d8d8d3633"
       }
     },
     {

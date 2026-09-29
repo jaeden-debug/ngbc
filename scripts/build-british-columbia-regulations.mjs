@@ -291,6 +291,16 @@ export async function build({ offline } = {}) {
   const bodyText = body.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
   const LEGAL_TIME = "The prohibited hours for hunting wildlife are from one hour after sunset on any day until one hour before sunrise of the day following.";
   if (!containsVerbatim(bodyText, LEGAL_TIME)) throw new Error("s. 14 (1) no longer reads as reviewed");
+  /*
+   * s. 14 (2) narrows MIGRATORY GAME BIRDS to half an hour either side, DESPITE
+   * s. 14 (1)'s hour. It binds no species British Columbia serves today, so it
+   * is latent — and that is exactly why it is carried rather than left out. A
+   * migratory species served later would otherwise inherit the hour, a window
+   * 30 minutes too generous at each end, in the direction that puts a hunter
+   * outside the law. Read once now, or remembered by someone later.
+   */
+  const LEGAL_TIME_MIGRATORY = "Despite subsection (1), the prohibited hours for hunting migratory game birds are from one-half hour after sunset on any day until one-half hour before sunrise of the day following.";
+  if (!containsVerbatim(bodyText, LEGAL_TIME_MIGRATORY)) throw new Error("s. 14 (2) no longer reads as reviewed");
   const ABSENCE = "The open seasons for the hunting of each species and type of game animal, subject to section 6, are those set forth in Parts 1 and 2 of each Schedule.";
   if (!containsVerbatim(bodyText, ABSENCE)) throw new Error("s. 4 no longer reads as reviewed");
   const CLOSURE_ORDERS = "An open season declared by this regulation shall cease to be in effect in any area";
@@ -299,7 +309,7 @@ export async function build({ offline } = {}) {
   const schedules = {};
   const sources = [{
     id: BODY_SOURCE, authority: "Province of British Columbia", title: BC_DOCUMENTS.body.title,
-    url: `${BC_LAWS}/${BC_DOCUMENTS.body.id}`, sourceHashes: { body: sha256([LEGAL_TIME, ABSENCE, CLOSURE_ORDERS].join("\n")) },
+    url: `${BC_LAWS}/${BC_DOCUMENTS.body.id}`, sourceHashes: { body: sha256([LEGAL_TIME, LEGAL_TIME_MIGRATORY, ABSENCE, CLOSURE_ORDERS].join("\n")) },
   }];
   for (let schedule = 1; schedule <= 8; schedule += 1) {
     const html = await read(BC_DOCUMENTS[schedule].id, offline);
@@ -543,6 +553,19 @@ export async function build({ offline } = {}) {
     units: inventory.map((unit) => ({ identifier: unit, zoneId: zoneIdOf(unit) })),
     specialGeographies,
     legalTime: { statedAs: LEGAL_TIME, section: "B.C. Reg. 190/84, s. 14 (1)" },
+    /*
+     * Exceptions to the general rule, each naming what it applies to. Kept
+     * beside `legalTime` rather than replacing it: the general rule is still
+     * the general rule, and a consumer reading only `legalTime` is not
+     * silently given a narrower window meant for a different species group.
+     */
+    legalTimeExceptions: [
+      {
+        statedAs: LEGAL_TIME_MIGRATORY,
+        section: "B.C. Reg. 190/84, s. 14 (2)",
+        appliesTo: "migratory game birds",
+      },
+    ],
     sources: [
       ...sources,
       { id: SYNOPSIS_SOURCE, authority: "Province of British Columbia", title: "2026–2028 Hunting and Trapping Regulations Synopsis (cross-check only)",

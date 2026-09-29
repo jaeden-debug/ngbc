@@ -342,3 +342,41 @@ test("s. 14 (2) binds migratory game birds at half an hour, and nothing BC serve
   if (BRITISH_COLUMBIA_MIGRATORY_HOURS.basis !== "SUNRISE_SUNSET_OFFSET") return;
   assert.equal(BRITISH_COLUMBIA_MIGRATORY_HOURS.beforeSunriseMinutes, 30);
 });
+
+test("the BC bundle carries s. 14 (2), and the module's rule is the bundle's words", async () => {
+  /*
+   * The module encoded s. 14 (2) while the bundle carried only s. 14 (1), so
+   * the two could drift with nothing to notice. They are the same fact from the
+   * same regulation; the test is that they cannot disagree.
+   *
+   * `statedAs` is compared rather than the offsets, because the offsets are our
+   * reading and the sentence is the authority's — if the regulation is reworded,
+   * the generator's verbatim guard stops the build and this pins that the module
+   * was updated with it.
+   */
+  const { BRITISH_COLUMBIA_MIGRATORY_HOURS, BRITISH_COLUMBIA_GENERAL_HOURS } =
+    await import("./british-columbia-legal-time.ts");
+  const bundle = JSON.parse(readFileSync("content/regulatory/ca-bc-2026.json", "utf8")) as {
+    legalTime: { statedAs: string; section: string };
+    legalTimeExceptions?: Array<{ statedAs: string; section: string; appliesTo: string }>;
+  };
+
+  assert.equal(bundle.legalTime.statedAs, BRITISH_COLUMBIA_GENERAL_HOURS.statedAs);
+
+  const exceptions = bundle.legalTimeExceptions ?? [];
+  assert.equal(exceptions.length, 1, "s. 14 (2) is carried in the bundle");
+  const [migratory] = exceptions;
+  assert.equal(migratory.statedAs, BRITISH_COLUMBIA_MIGRATORY_HOURS.statedAs);
+  assert.match(migratory.section, /s\. 14 \(2\)/);
+  assert.equal(migratory.appliesTo, "migratory game birds");
+
+  /* And the exception is narrower than the rule it excepts, which is the whole
+     reason it must not be inherited by the general case. */
+  assert.ok(BRITISH_COLUMBIA_MIGRATORY_HOURS.basis === "SUNRISE_SUNSET_OFFSET");
+  assert.ok(BRITISH_COLUMBIA_GENERAL_HOURS.basis === "SUNRISE_SUNSET_OFFSET");
+  if (BRITISH_COLUMBIA_MIGRATORY_HOURS.basis !== "SUNRISE_SUNSET_OFFSET") return;
+  if (BRITISH_COLUMBIA_GENERAL_HOURS.basis !== "SUNRISE_SUNSET_OFFSET") return;
+  assert.ok(
+    BRITISH_COLUMBIA_MIGRATORY_HOURS.beforeSunriseMinutes < BRITISH_COLUMBIA_GENERAL_HOURS.beforeSunriseMinutes,
+  );
+});
