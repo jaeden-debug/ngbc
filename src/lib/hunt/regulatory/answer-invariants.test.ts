@@ -48,6 +48,9 @@ const MATRIX = [
     speciesId: "species:white-tailed-deer",
     point: { latitude: 49.5, longitude: -112.0 },
     date: "2026-11-05",
+    /* Alberta asks which antler class before it will answer. Supplied, so this
+       row is actually EVALUATED — see `no row is silently skipped` below. */
+    answers: { animalClasses: [{ dimension: "ANTLER_CLASS", value: "ANTLERED" }] },
     hours: "RESOLVED",
   },
   {
@@ -104,6 +107,8 @@ const MATRIX = [
     speciesId: "species:pronghorn",
     point: { latitude: 43.5, longitude: -114.0 },
     date: "2026-09-15",
+    /* Idaho allocates pronghorn per hunt code and asks for one. */
+    answers: { HUNT_CODE: "4005" },
     /*
      * DECLARED NOT_CERTIFIED. Idaho's time-zone boundary is federal (49 CFR
      * § 71.9) and runs along the main channel of the Salmon River, with a
@@ -138,7 +143,7 @@ async function answer(entry: (typeof MATRIX)[number]): Promise<RegulatoryResult 
     ...entry.point,
     date: entry.date as IsoDate,
     speciesId: entry.speciesId as CanonicalId<"species">,
-    answers: {},
+    answers: ("answers" in entry ? entry.answers : {}) as HuntInput["answers"],
   };
   const outcome = await registry.evaluate(input, zoneFor(entry), {
     verifiedAt: "2026-09-29", fetcher: offline, scope: "POINT",
@@ -147,6 +152,33 @@ async function answer(entry: (typeof MATRIX)[number]): Promise<RegulatoryResult 
      fact. It has no settled regulation to assert invariants against. */
   return outcome.completeness === "NEEDS_INPUT" ? null : outcome.regulation;
 }
+
+
+test("no row is silently skipped", async () => {
+  /*
+   * THE HOLE THIS CLOSES, FOUND IN THIS FILE'S OWN FIRST VERSION.
+   *
+   * Every assertion below begins `const regulation = await answer(entry); if
+   * (!regulation) continue;` — and `answer` returns null when the engine needs
+   * a fact from the hunter. Alberta asks for an antler class and Idaho for a
+   * hunt code, so BOTH rows fell straight through the `continue` and asserted
+   * NOTHING. Two of six jurisdictions were declared and never checked, and the
+   * file reported a clean pass either way.
+   *
+   * That is the exact failure this file was written against, arriving from the
+   * inside: a measurement whose method guarantees its own result. Alberta is
+   * one of the four jurisdictions that once lost their legal hours in
+   * production, so it is precisely the row that must not be skippable.
+   *
+   * The fix is the answers above, and this guard, which fails if any row ever
+   * stops resolving again — including because a jurisdiction started asking a
+   * NEW question that the declared answers do not satisfy.
+   */
+  for (const entry of MATRIX) {
+    const regulation = await answer(entry);
+    assert.ok(regulation, `${entry.jurisdiction} resolves to a regulation, so its invariants are actually tested`);
+  }
+});
 
 test("every served jurisdiction still states its legal hunting hours", async () => {
   /*
