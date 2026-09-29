@@ -82,8 +82,13 @@ const HOVER_FILL = 1.55;
 export const MAX_STATE_FILL = 0.32;
 const STATE_BAND_SCALE: Record<ZoomBand, number> = { national: 0.9, regional: 0.8, local: 0.7 };
 
-/** The one green an open season wears. Nothing else on the map uses it. */
-export const SEASON_OPEN_STROKE = "#63d585";
+/**
+ * The one green an open season wears: `--ng-open`, the palette's own regulatory
+ * green, so the ring on the map and the "In season" chip in the sheet are the
+ * same colour rather than two greens a hunter has to reconcile. Literal hex
+ * because Google's polygon options cannot take a CSS variable.
+ */
+export const SEASON_OPEN_STROKE = "#7cc08a";
 /* Heavier than an ordinary boundary at every band, and still lighter than the
    chosen zone's bone outline, which has to stay the loudest line on the map. */
 const SEASON_STROKE_WEIGHT: Record<ZoomBand, number> = { national: 1.9, regional: 2.3, local: 2.5 };
@@ -174,8 +179,14 @@ export function zoneStyle(input: ZoneStyleInput): ZoneStyle {
   }
 
   /* Everything else. Dimming a neighbour takes fill, never its boundary: the
-     point is a focal plane, not a blacked-out map. */
-  const dim = input.dimmed ? 0.42 : 1;
+     point is a focal plane, not a blacked-out map.
+     HEAT IS EXEMPT. The focal-plane rule was written when a fill was decoration
+     — a jurisdiction's tone. Heat is the layer's CONTENT, and dimming it meant
+     that choosing one zone erased the evidence for every other zone on screen,
+     which is the whole thing the hunter switched the layer on to see. The
+     chosen zone still leads: its fill is computed to clear the undimmed
+     ceiling, which already allows for the top of the ramp. */
+  const dim = input.dimmed && !input.heat ? 0.42 : 1;
   const dimStroke = input.dimmed ? 0.72 : 1;
   const hover = input.hovered ? HOVER_FILL : 1;
   /* No evidence is not a cold value: the zone keeps the map's own quiet tone

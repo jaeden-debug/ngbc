@@ -40,7 +40,7 @@
   binary, and never a fill — so both channels read at once.
 */
 .zoneCanvasShape[data-open] {
-  stroke: #63d585;
+  stroke: var(--ng-open);
   stroke-width: 2.4;
 }
 .zoneCanvasShape[data-open]:hover { stroke-width: 3; }

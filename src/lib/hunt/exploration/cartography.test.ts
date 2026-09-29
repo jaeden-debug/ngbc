@@ -49,6 +49,16 @@ test("the chosen zone is the loudest thing on the map, at every band and setting
   }
 });
 
+test("choosing a zone does not erase the heat on every other zone", () => {
+  // The layer's content survives the focal plane; only a decorative tone recedes.
+  const hot = zoneStyle(zone({ heat: HEAT_FILL.HIGH }));
+  const hotDimmed = zoneStyle(zone({ heat: HEAT_FILL.HIGH, dimmed: true }));
+  assert.equal(hotDimmed.fillOpacity, hot.fillOpacity, "a neighbour's evidence is still readable");
+  // And the chosen zone still leads over an undimmed neighbour at the top of the ramp.
+  const selected = zoneStyle(zone({ selected: true, heat: HEAT_FILL.VERY_HIGH }));
+  assert.ok(selected.fillOpacity >= zoneStyle(zone({ heat: HEAT_FILL.VERY_HIGH, hovered: true })).fillOpacity);
+});
+
 test("a dimmed neighbour keeps its boundary: a focal plane, not a blackout", () => {
   const plain = zoneStyle(zone());
   const dimmed = zoneStyle(zone({ dimmed: true }));

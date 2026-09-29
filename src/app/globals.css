@@ -72,6 +72,17 @@ button, input, select { font: inherit; }
   --ng-amber: #d98b3a;
   --ng-amber-soft: rgba(217, 139, 58, 0.16);
 
+  /* ── Species-layer heat, along the amber line and nowhere else ──
+        LOW is --ng-bark-light and HIGH is --ng-amber; the other two are one
+        step cooler into the bark and one step hotter into the ember. Heat is
+        EVIDENCE, never a legal status, so it never borrows a regulatory token.
+        `exploration/species-layer.ts` carries the same values for the map,
+        which cannot be given a CSS variable. ── */
+  --ng-heat-low: #8a7657;
+  --ng-heat-moderate: #b58248;
+  --ng-heat-high: #d98b3a;
+  --ng-heat-very-high: #c4542c;
+
   /* ── Regulatory semantics. Never the only signal: every status also
         carries a text label and a glyph. ── */
   --ng-open: #7cc08a;

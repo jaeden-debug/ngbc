@@ -11,12 +11,25 @@ import type { ExplorationState } from "./states.ts";
  * component can invent a sixth tint or a seventh state.
  */
 
-/** Ember, deliberately outside the greens and earths of the jurisdiction tones. */
+/**
+ * The heat ramp, inside §38's own campfire-amber family rather than beside it.
+ *
+ * Two of the four steps ARE palette tokens — LOW is `--ng-bark-light` and HIGH
+ * is `--ng-amber` — and the other two are interpolations along the same line:
+ * one step cooler into the bark, one step hotter into the ember. Nothing here
+ * is a new colour direction, and nothing reuses a regulatory semantic token
+ * (`--ng-conflict` is the warmest red in the palette and is already spoken for
+ * by "sources disagree").
+ *
+ * Literal hex because a Google `PolygonOptions` cannot take a CSS variable —
+ * the same reason `SELECTED_STROKE` mirrors `--ng-cream` in `cartography.ts`.
+ * These are the values `--ng-heat-*` in `globals.css` carry for the legend.
+ */
 export const HEAT_FILL: Record<Exclude<OpportunityClass, "LIMITED_DATA">, { color: string; opacity: number }> = {
-  VERY_HIGH: { color: "#d1553c", opacity: 0.32 },
-  HIGH: { color: "#dd7b3c", opacity: 0.25 },
-  MODERATE: { color: "#e4a04a", opacity: 0.18 },
-  LOW: { color: "#cfb15e", opacity: 0.11 },
+  VERY_HIGH: { color: "#c4542c", opacity: 0.32 },
+  HIGH: { color: "#d98b3a", opacity: 0.25 },
+  MODERATE: { color: "#b58248", opacity: 0.18 },
+  LOW: { color: "#8a7657", opacity: 0.11 },
 };
 
 /** Each class in words and a glyph, so the ramp is never read by colour alone. */
@@ -72,4 +85,13 @@ export const SPECIES_LAYER_LEGEND = {
   notGreen:
     "A zone WITHOUT a green outline is not thereby closed. Zones North Ground has not certified, and zones whose answer depends on who is hunting, are simply not highlighted. Tap any zone for its full answer.",
   independent: "Heat never implies a season is open, and green never implies animals are present. They are two layers over one map.",
+  /*
+    A species North Ground holds no opportunity evidence for anywhere. The
+    layer's green half still works; the heat half simply is not drawn, and the
+    legend has to SAY that rather than show an empty ramp, or a hunter would
+    read "nothing is hot here" from a map that was never asked the question.
+  */
+  noHeatTitle: "No heat for this species",
+  noHeatDetail:
+    "North Ground holds no certified opportunity evidence for this species anywhere yet, so nothing is shaded. That is a gap in what has been gathered, not a finding about where the animals are. The green outlines below are unaffected.",
 } as const;
