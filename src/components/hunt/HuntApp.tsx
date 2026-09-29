@@ -1132,7 +1132,10 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     dispatchSession({ type: "SPECIES_CHOSEN", speciesId: id });
     if (findingGame) {
       dispatchSession({ type: "EXPLORE_SET", on: true });
-      dispatchMap({ type: "CARD_CLOSED" });
+      /* The card closes; the ZONE stays. §41B: these modes share the selected
+         zone, and `CARD_CLOSED` would reset the selection to the hunt's own —
+         which, for a link carrying a zone and no hunt point, is nothing. */
+      dispatchMap({ type: "LAYER_OPENED_OVER_SELECTION" });
       setFindingGame(false);
     }
     if (page !== "main") closePage();

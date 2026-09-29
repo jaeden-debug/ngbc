@@ -97,6 +97,21 @@ export type ExplorationEvent =
   | { type: "ZONE_SELECTED"; zone: ZoneRef; origin: "map" | "list" | "link" }
   | { type: "OVERLAY_SELECTED"; layerId: string; objectId: number }
   | { type: "CARD_CLOSED" }
+  /**
+   * The species layer opened over the zone the hunter is already looking at.
+   *
+   * Distinct from `CARD_CLOSED` because closing a card and changing what is
+   * selected are two different facts, and this needs only the first. §41B:
+   * EXPLORE, FIND GAME and CHECK HUNT "share the same species, date, hunt
+   * location, selected zone, camera and layer state" — so entering Find game
+   * from a zone must not discard the zone.
+   *
+   * It did. `CARD_CLOSED` falls back to the hunt's own zone, and a deep link
+   * carries a zone with no hunt POINT, so the fallback was "none": the
+   * selection went, the URL lost `zone=`, and a reload of what looked like the
+   * same link opened a different Hunt at the national camera.
+   */
+  | { type: "LAYER_OPENED_OVER_SELECTION" }
   | { type: "MAP_TAPPED_EMPTY" }
   | { type: "PIN_PRESSED"; point: GeoPoint }
   | { type: "PIN_CENTRE_STARTED"; point: GeoPoint }
@@ -183,6 +198,9 @@ export function explorationReducer(state: ExplorationState, event: ExplorationEv
       return { ...state, selection: { kind: "overlay", layerId: event.layerId, objectId: event.objectId }, cardOpen: true, pin: null };
     case "CARD_CLOSED":
       return { ...state, cardOpen: false, selection: huntSelection(state) };
+    case "LAYER_OPENED_OVER_SELECTION":
+      /* The card goes; the zone stays exactly as it was. */
+      return state.cardOpen ? { ...state, cardOpen: false } : state;
     case "MAP_TAPPED_EMPTY":
       /* A plain tap never selects a hunting location. It closes what is open
          and cancels a pressed preview; a centre-follow preview is kept, because

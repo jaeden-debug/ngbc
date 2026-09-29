@@ -200,3 +200,34 @@ test("choosing a spot brings the camera to it, because the crosshair is the map 
   assert.deepEqual(moved.pin?.point, { latitude: 45.1, longitude: -77.9 });
   assert.equal(moved.hunt, null, "previewing never sets the hunt location");
 });
+
+test("opening the species layer over a zone keeps the zone — Find game does not discard it", () => {
+  /*
+   * §41B: EXPLORE, FIND GAME and CHECK HUNT "share the same species, date,
+   * hunt location, selected zone, camera and layer state".
+   *
+   * The defect this pins, measured on production: choosing a species from Find
+   * game dispatched `CARD_CLOSED`, which falls back to the HUNT's zone — and a
+   * deep link carries a zone with no hunt POINT, so the fallback was "none".
+   * The selection went, the URL lost `zone=`, and reloading what looked like
+   * the same link opened a different Hunt at the national camera with three
+   * markers instead of twelve.
+   */
+  const linked = run([{ type: "ZONE_SELECTED", zone: WMU_57, origin: "link" }]);
+  assert.deepEqual(linked.selection, { kind: "zone", zone: WMU_57, origin: "link" });
+  assert.equal(linked.cardOpen, true);
+
+  const layered = run([{ type: "LAYER_OPENED_OVER_SELECTION" }], linked);
+  assert.equal(layered.cardOpen, false, "the card goes");
+  assert.deepEqual(layered.selection, linked.selection, "and the zone stays exactly as it was");
+
+  /* The old action still does what its own callers need: a card closed over a
+     zone that is not the hunt's falls back to the hunt's. Both behaviours are
+     wanted; conflating them is what lost the zone. */
+  const hunting = run([{ type: "HUNT_SET", location: BANCROFT }, { type: "HUNT_ZONE_RESOLVED", zone: WMU_57 }]);
+  assert.deepEqual(run([{ type: "CARD_CLOSED" }], hunting).selection,
+    { kind: "zone", zone: WMU_57, origin: "hunt" });
+  /* With no hunt point there is nothing to fall back TO, which is the case the
+     link hits and the reason this needed its own event rather than a tweak. */
+  assert.deepEqual(run([{ type: "CARD_CLOSED" }], linked).selection, { kind: "none" });
+});
