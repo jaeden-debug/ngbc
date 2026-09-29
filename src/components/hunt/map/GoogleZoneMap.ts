@@ -7,9 +7,9 @@ import {
   labelMinimumSpanPx, zoneStyle, zoomBand, type Emphasis, type ZoomBand,
 } from "../../../lib/hunt/exploration/cartography";
 import { mapLabelFor } from "../../../lib/hunt/exploration/map-labels";
-import { CONDITION_GLYPH, conditionMarkerLabel, heatFillFor, zoneHasConditions, zoneIsGreen } from "../../../lib/hunt/exploration/species-layer";
+import type { ZoneHeat } from "../../../lib/hunt/exploration/species-layer";
+import { CONDITION_GLYPH, conditionMarkerLabel, heatPaintFor, zoneHasConditions, zoneIsGreen } from "../../../lib/hunt/exploration/species-layer";
 import { EXPLORATION_WORDING, type ZoneSpeciesAnswer } from "../../../lib/hunt/exploration/states";
-import type { OpportunityClass } from "../../../lib/hunt/intelligence/types";
 import { layerById } from "../../../lib/hunt/zone-layers";
 import { BASEMAP_STYLE } from "./google-loader";
 import { createLabelLayer, createPointMarker, createSelfMarker, type LabelLayerHandle, type LabelSource, type PointMarkerHandle, type SelfMarkerHandle } from "./google-overlays";
@@ -47,10 +47,11 @@ export interface ZoneStyleState {
   huntKey: string | null;
   zoneAnswers: ReadonlyMap<string, ZoneSpeciesAnswer> | null;
   /**
-   * The species layer's heat class per zone. A zone that is ABSENT holds no
-   * certified evidence and takes no heat; it is never given a low value.
+   * The species layer's heat per zone — the continuous rank, its band, how well
+   * it is evidenced and how finely it may be drawn. A zone that is ABSENT holds
+   * no certified evidence and takes no heat; it is never given a low value.
    */
-  heat: ReadonlyMap<string, OpportunityClass> | null;
+  heat: ReadonlyMap<string, ZoneHeat> | null;
   /** How strongly the boundaries are drawn over the basemap. */
   emphasis: Emphasis;
 }
@@ -69,10 +70,10 @@ function zoneOptions(
   coverage: string,
   flags: {
     jurisdictionId?: string; selected: boolean; hunt: boolean; hovered: boolean;
-    dimmed: boolean; answer?: ZoneSpeciesAnswer; heat?: OpportunityClass; band: ZoomBand; emphasis: Emphasis;
+    dimmed: boolean; answer?: ZoneSpeciesAnswer; heat?: ZoneHeat; band: ZoomBand; emphasis: Emphasis;
   },
 ): google.maps.PolygonOptions {
-  const heat = heatFillFor(flags.heat);
+  const heat = heatPaintFor(flags.heat);
   return zoneStyle({
     coverage,
     jurisdictionId: flags.jurisdictionId,

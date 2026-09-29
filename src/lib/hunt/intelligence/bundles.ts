@@ -9,7 +9,18 @@ import bcMuleDeer from "../../../../content/intelligence/ca-bc-mule-deer-harvest
 import bcWhiteTailedDeer from "../../../../content/intelligence/ca-bc-white-tailed-deer-harvest.json" with { type: "json" };
 import onWhiteTailedDeer from "../../../../content/intelligence/ca-on-white-tailed-deer-harvest.json" with { type: "json" };
 import { classifyOpportunity } from "./classification.ts";
-import type { EvidenceRecord, OpportunityResult } from "./types.ts";
+import {
+  METRIC_MEANINGS,
+  METRIC_ROLES,
+  OPPORTUNITY_METHODOLOGY,
+  appliedWeights,
+  evidenceGrade,
+  independentValueCount,
+} from "./methodology.ts";
+import type { EvidenceGrade } from "./methodology.ts";
+import type { HeatRenderKind } from "./rendering.ts";
+import { RENDER_KIND_MEANINGS, renderKindFor } from "./rendering.ts";
+import type { EvidenceRecord, IntelligenceMetric, OpportunityResult } from "./types.ts";
 
 /**
  * Every certified opportunity bundle, and what each one can actually answer.
@@ -67,6 +78,16 @@ export interface ServableDataset {
   methodologyVersion: string;
   sourceId: string;
   authority: string;
+  /** Every metric the dataset publishes for this species, and what each may do. */
+  metrics: Array<{ metric: IntelligenceMetric; role: string; contributes: boolean }>;
+  /** How many of those are independently published rather than derived from the others. */
+  independentValues: number;
+  /** The owner's A-E engineering grade of this evidence. */
+  grade: EvidenceGrade;
+  /** The finest way it may be drawn. */
+  renderKind: HeatRenderKind;
+  /** The authority's own words for how finely it describes the ground. */
+  spatialPrecision: string;
 }
 
 interface Indexed {
@@ -92,19 +113,33 @@ for (const entry of indexed) {
   bySpecies.set(entry.bundle.speciesId, list);
 }
 
+function metricsOf(bundle: IntelligenceBundle): IntelligenceMetric[] {
+  return [...new Set(bundle.evidence.map(({ metric }) => metric))].sort();
+}
+
 /** Every species × jurisdiction pair the committed evidence can answer for. */
 export function servableDatasets(): readonly ServableDataset[] {
-  return indexed.map(({ bundle, byGeography }) => ({
-    speciesId: bundle.speciesId,
-    jurisdictionId: bundle.jurisdictionId,
-    geographyCount: byGeography.size,
-    evidenceRecordCount: bundle.evidence.length,
-    latestObservationYear: bundle.latestObservationYear,
-    coverage: bundle.coverage,
-    methodologyVersion: bundle.methodologyVersion,
-    sourceId: bundle.source.id,
-    authority: bundle.source.authority,
-  }));
+  return indexed.map(({ bundle, byGeography }) => {
+    const metrics = metricsOf(bundle);
+    const weights = appliedWeights(metrics);
+    return {
+      speciesId: bundle.speciesId,
+      jurisdictionId: bundle.jurisdictionId,
+      geographyCount: byGeography.size,
+      evidenceRecordCount: bundle.evidence.length,
+      latestObservationYear: bundle.latestObservationYear,
+      coverage: bundle.coverage,
+      methodologyVersion: bundle.methodologyVersion,
+      sourceId: bundle.source.id,
+      authority: bundle.source.authority,
+      metrics: metrics.map((metric) => ({ metric, role: METRIC_ROLES[metric], contributes: weights.has(metric) })),
+      independentValues: independentValueCount(metrics),
+      grade: evidenceGrade(metrics),
+      renderKind: renderKindFor(bundle.evidence.map(({ geographyType }) => geographyType)),
+      /* The authority's own prose, read from a record rather than restated here. */
+      spatialPrecision: bundle.evidence[0]?.spatialPrecision ?? "not stated",
+    };
+  });
 }
 
 /** The species that have any opportunity evidence at all. */
@@ -151,7 +186,13 @@ export function opportunityAt(speciesId: string, geographyId: string): Opportuni
 export interface ZoneOpportunity {
   geographyId: string;
   classification: OpportunityResult["classification"];
+  /** The continuous value the ramp paints; null where the evidence will not rank. */
+  intensity: OpportunityResult["intensity"];
   coverage: OpportunityResult["coverage"];
+  /** How well-evidenced the shade is, carried beside it and never folded into it. */
+  strength: OpportunityResult["strength"];
+  /** The finest way this zone's evidence may be drawn. */
+  renderKind: OpportunityResult["renderKind"];
 }
 
 /**
@@ -173,7 +214,14 @@ export function opportunityAcross(speciesId: string, geographyIds: readonly stri
       if (!records) continue;
       const result = classifyOpportunity(records);
       if (!result) break;
-      out.push({ geographyId, classification: result.classification, coverage: result.coverage });
+      out.push({
+        geographyId,
+        classification: result.classification,
+        intensity: result.intensity,
+        coverage: result.coverage,
+        strength: result.strength,
+        renderKind: result.renderKind,
+      });
       break;
     }
   }
@@ -201,4 +249,86 @@ export function evidenceProvenance(speciesId: string): Array<{
     latestObservationYear: bundle.latestObservationYear,
     limitations: bundle.limitations,
   }));
+}
+
+export interface HeatMethodology {
+  speciesId: string;
+  methodology: typeof OPPORTUNITY_METHODOLOGY;
+  /** One entry per authority whose dataset contributes to this species' heat. */
+  datasets: Array<{
+    jurisdictionId: string;
+    authority: string;
+    title: string;
+    url: string;
+    licence: string;
+    attribution?: string;
+    /** The year of the observations actually drawn. */
+    observationYear: number;
+    /** The authority's own words for how finely it describes the ground. */
+    spatialPrecision: string;
+    renderKind: HeatRenderKind;
+    renderKindMeaning: string;
+    grade: EvidenceGrade;
+    zoneCount: number;
+    recordCount: number;
+    independentValues: number;
+    /** Every metric, its role, its applied weight and what it means. */
+    measures: Array<{
+      metric: IntelligenceMetric;
+      role: string;
+      meaning: string;
+      contributes: boolean;
+      /** Present only where it contributes; the renormalized weight actually used. */
+      weight?: number;
+    }>;
+    limitations: string[];
+  }>;
+}
+
+/**
+ * Everything "How is this calculated?" needs, assembled from the same bundles
+ * the map is painted from.
+ *
+ * Nothing here is written for the panel. If the panel and the map could be fed
+ * from two places they would eventually disagree, and the panel is precisely
+ * where a hunter goes to find out whether to believe the map.
+ *
+ * Null means no certified evidence for this species anywhere — which the caller
+ * must state as a gap in gathering, not as a finding about the animals.
+ */
+export function heatMethodology(speciesId: string): HeatMethodology | null {
+  const datasets = bySpecies.get(speciesId);
+  if (!datasets?.length) return null;
+  return {
+    speciesId,
+    methodology: OPPORTUNITY_METHODOLOGY,
+    datasets: datasets.map(({ bundle, byGeography }) => {
+      const metrics = metricsOf(bundle);
+      const weights = appliedWeights(metrics);
+      return {
+        jurisdictionId: bundle.jurisdictionId,
+        authority: bundle.source.authority,
+        title: bundle.source.title,
+        url: bundle.source.url,
+        licence: bundle.source.licence,
+        ...(bundle.source.attribution ? { attribution: bundle.source.attribution } : {}),
+        observationYear: bundle.latestObservationYear,
+        spatialPrecision: bundle.evidence[0]?.spatialPrecision ?? "not stated",
+        renderKind: renderKindFor(bundle.evidence.map(({ geographyType }) => geographyType)),
+        renderKindMeaning: RENDER_KIND_MEANINGS[renderKindFor(bundle.evidence.map(({ geographyType }) => geographyType))],
+        grade: evidenceGrade(metrics),
+        zoneCount: byGeography.size,
+        recordCount: bundle.evidence.length,
+        independentValues: independentValueCount(metrics),
+        measures: metrics.map((metric) => ({
+          metric,
+          role: METRIC_ROLES[metric],
+          meaning: METRIC_MEANINGS[metric],
+          contributes: weights.has(metric),
+          ...(weights.has(metric) ? { weight: Number(weights.get(metric)!.toFixed(4)) } : {}),
+        })),
+        limitations: bundle.limitations,
+      };
+    }),
+  };
 }

@@ -1,4 +1,6 @@
 import type { CanonicalId } from "../../content-contract/index.ts";
+import type { EvidenceGrade, EvidenceStrength, MetricRole } from "./methodology.ts";
+import type { HeatRenderKind } from "./rendering.ts";
 
 /** Opportunity evidence is descriptive. It can never produce a legal status. */
 export type IntelligenceMetric =
@@ -124,6 +126,20 @@ export interface OpportunityComponent {
   normalizedValue?: number;
   confidence: EvidenceConfidence;
   sourceIds: CanonicalId<"source">[];
+  /** What this metric is allowed to do to the shade. See `methodology.ts`. */
+  role: MetricRole;
+  /**
+   * Whether this component moved the intensity at all.
+   *
+   * False for every hunter count and hunter day. It is a field rather than an
+   * inference so that a reader of a response body — or a test — can see that
+   * effort was carried and not scored, instead of having to know the rule.
+   */
+  contributesToIntensity: boolean;
+  /** The renormalized weight actually applied here. Absent when it contributed nothing. */
+  appliedWeight?: number;
+  /** What the metric means, in the words a hunter is shown. */
+  meaning: string;
   explanation: string;
 }
 
@@ -131,7 +147,23 @@ export interface OpportunityResult {
   speciesId: CanonicalId<"species">;
   geographyId: string;
   classification: OpportunityClass;
+  /**
+   * The continuous rank the map paints, 0 to 1, or null where the evidence
+   * will not support a rank.
+   *
+   * Null and zero are different answers and must stay different: zero is the
+   * bottom of a dataset that WAS ranked, null is a refusal to rank. Drawing
+   * null at the cold end of the ramp would state the first while meaning the
+   * second.
+   */
+  intensity: number | null;
   coverage: EvidenceCoverage;
+  /** How well-evidenced the shade is — never how hot it is. */
+  strength: EvidenceStrength;
+  /** The engineering grade of the evidence behind it (A-E). */
+  grade: EvidenceGrade;
+  /** The finest way this evidence may be drawn. */
+  renderKind: HeatRenderKind;
   methodologyVersion: string;
   components: OpportunityComponent[];
   explanation: string[];

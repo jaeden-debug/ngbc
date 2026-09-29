@@ -1,3 +1,5 @@
+import type { EvidenceStrength } from "../intelligence/methodology.ts";
+import type { HeatRenderKind } from "../intelligence/rendering.ts";
 import type { OpportunityClass } from "../intelligence/types.ts";
 import type { LimitationLang } from "../limitation.ts";
 import type { OpportunityCondition } from "./opportunity.ts";
@@ -14,42 +16,137 @@ import type { ZoneSpeciesAnswer } from "./states.ts";
  */
 
 /**
- * The heat ramp, inside §38's own campfire-amber family rather than beside it.
+ * One zone's heat, as the map holds it.
  *
- * Two of the four steps ARE palette tokens — LOW is `--ng-bark-light` and HIGH
- * is `--ng-amber` — and the other two are interpolations along the same line:
- * one step cooler into the bark, one step hotter into the ember. Nothing here
- * is a new colour direction, and nothing reuses a regulatory semantic token
- * (`--ng-conflict` is the warmest red in the palette and is already spoken for
- * by "sources disagree").
+ * Deliberately NOT just a class. The class is a word for a band; `intensity` is
+ * the continuous rank the ramp is painted from, `strength` is how well that
+ * rank is evidenced — a separate question from how hot it is — and `renderKind`
+ * is how finely this evidence may be drawn at all.
+ */
+export interface ZoneHeat {
+  classification: OpportunityClass;
+  intensity: number | null;
+  strength: EvidenceStrength;
+  renderKind: HeatRenderKind;
+}
+
+/**
+ * The heat ramp: a continuous line through North Ground's own palette.
+ *
+ * It replaces four fixed amber tints. Four buckets could not make a heat map —
+ * a hunter scanning a province saw four flat tones and read them as categories,
+ * which is what they were. The map now paints the CONTINUOUS rank the engine
+ * computes, and the four words survive only as names for the bands it falls in.
+ *
+ * The line runs cold to hot: a cold indigo-slate, through a muted plum, into
+ * the bark and ochre of §38's earth neutrals, ending in campfire amber and
+ * ember. Two constraints shaped it and neither is negotiable:
+ *
+ *   NO GREEN, ANYWHERE ON IT. Green on this map means a legal hunt exists.
+ *   A cool end reaching for teal would put the legality colour at the bottom of
+ *   an abundance ramp, and "cold" would read as "closed".
+ *
+ *   NO SEMANTIC TOKEN. `--ng-conflict` is the palette's warmest red and already
+ *   means "sources disagree"; the ember end stops short of it.
  *
  * Literal hex because a Google `PolygonOptions` cannot take a CSS variable —
  * the same reason `SELECTED_STROKE` mirrors `--ng-cream` in `cartography.ts`.
- * These are the values `--ng-heat-*` in `globals.css` carry for the legend.
  */
+export const HEAT_RAMP: ReadonlyArray<{ at: number; color: string; opacity: number }> = [
+  { at: 0.0, color: "#47526b", opacity: 0.13 },
+  { at: 0.2, color: "#6b6070", opacity: 0.18 },
+  { at: 0.4, color: "#96704f", opacity: 0.24 },
+  { at: 0.6, color: "#c08a40", opacity: 0.31 },
+  { at: 0.8, color: "#d4702c", opacity: 0.39 },
+  { at: 1.0, color: "#a8331f", opacity: 0.46 },
+];
+
+function channels(hex: string): [number, number, number] {
+  return [1, 3, 5].map((offset) => Number.parseInt(hex.slice(offset, offset + 2), 16)) as [number, number, number];
+}
+
+function hex(channel: number): string {
+  return Math.round(Math.min(255, Math.max(0, channel))).toString(16).padStart(2, "0");
+}
+
+/**
+ * The paint for a continuous intensity, interpolated between the ramp's stops.
+ *
+ * Clamped rather than thrown on, because an out-of-range value reaching here is
+ * a bug upstream and a blank province is a worse way to learn about it than an
+ * end-stop shade. The engine's own range check is the place that refuses.
+ */
+export function rampAt(intensity: number): { color: string; opacity: number } {
+  const value = Math.min(1, Math.max(0, intensity));
+  const upper = HEAT_RAMP.findIndex((stop) => value <= stop.at);
+  if (upper <= 0) return { color: HEAT_RAMP[0].color, opacity: HEAT_RAMP[0].opacity };
+  const from = HEAT_RAMP[upper - 1];
+  const to = HEAT_RAMP[upper];
+  const t = (value - from.at) / (to.at - from.at);
+  const a = channels(from.color);
+  const b = channels(to.color);
+  return {
+    color: `#${a.map((channel, index) => hex(channel + (b[index] - channel) * t)).join("")}`,
+    opacity: Number((from.opacity + (to.opacity - from.opacity) * t).toFixed(4)),
+  };
+}
+
+/** The middle of each named band, so the legend's swatches sit on the same line the map paints. */
+const BAND_MIDPOINTS: Record<Exclude<OpportunityClass, "LIMITED_DATA">, number> = {
+  LOW: 0.2, MODERATE: 0.5, HIGH: 0.7, VERY_HIGH: 0.9,
+};
+
+/** The legend's swatch for a band — derived from the ramp, never a second table. */
 export const HEAT_FILL: Record<Exclude<OpportunityClass, "LIMITED_DATA">, { color: string; opacity: number }> = {
-  VERY_HIGH: { color: "#c4542c", opacity: 0.32 },
-  HIGH: { color: "#d98b3a", opacity: 0.25 },
-  MODERATE: { color: "#b58248", opacity: 0.18 },
-  LOW: { color: "#8a7657", opacity: 0.11 },
+  VERY_HIGH: rampAt(BAND_MIDPOINTS.VERY_HIGH),
+  HIGH: rampAt(BAND_MIDPOINTS.HIGH),
+  MODERATE: rampAt(BAND_MIDPOINTS.MODERATE),
+  LOW: rampAt(BAND_MIDPOINTS.LOW),
 };
 
 /** Each class in words and a glyph, so the ramp is never read by colour alone. */
 export const HEAT_WORDING: Record<OpportunityClass, { label: string; glyph: string }> = {
-  VERY_HIGH: { label: "Very high", glyph: "▰▰▰▰" },
-  HIGH: { label: "High", glyph: "▰▰▰▱" },
-  MODERATE: { label: "Moderate", glyph: "▰▰▱▱" },
-  LOW: { label: "Low", glyph: "▰▱▱▱" },
-  LIMITED_DATA: { label: "Not enough evidence to rank", glyph: "▱▱▱▱" },
+  VERY_HIGH: { label: "Very high", glyph: "\u25b0\u25b0\u25b0\u25b0" },
+  HIGH: { label: "High", glyph: "\u25b0\u25b0\u25b0\u25b1" },
+  MODERATE: { label: "Moderate", glyph: "\u25b0\u25b0\u25b1\u25b1" },
+  LOW: { label: "Low", glyph: "\u25b0\u25b1\u25b1\u25b1" },
+  LIMITED_DATA: { label: "Not enough evidence to rank", glyph: "\u25b1\u25b1\u25b1\u25b1" },
+};
+
+/** How strongly a zone's shade is evidenced, in words. Never a colour. */
+export const STRENGTH_WORDING: Record<EvidenceStrength, string> = {
+  STRONG: "well evidenced",
+  MODERATE: "moderately evidenced",
+  WEAK: "thinly evidenced",
+  INSUFFICIENT: "not evidenced enough to rank",
 };
 
 /**
- * The fill for a class, or null for none.
+ * What one zone's heat is painted with, or null for nothing.
  *
- * LIMITED_DATA takes no fill: evidence is held but will not support a rank, and
- * drawing it at the bottom of the ramp would state a rank the evidence refuses.
- * A zone absent from the heat map takes no fill for the stronger reason — no
- * evidence is held at all, and absent evidence is not evidence of absence.
+ * Three separate reasons to paint nothing, and they are not the same statement:
+ *
+ *   NO ENTRY — no certified evidence is held for this zone at all. Absent
+ *   evidence is not evidence of absence.
+ *   NULL INTENSITY / LIMITED_DATA — evidence is held and refuses to rank.
+ *   Drawing it at the cold end would assert the rank the evidence declined.
+ *   RANGE_EXTENT — the evidence says the species occurs here and nothing about
+ *   more or less, so it carries no ramp at all (§41B).
+ *
+ * All three are rendered identically — unshaded — and the legend carries the
+ * difference in words, because a map cannot say three things with one absence.
+ */
+export function heatPaintFor(heat: ZoneHeat | undefined): { color: string; opacity: number } | null {
+  if (!heat || heat.classification === "LIMITED_DATA" || heat.intensity === null) return null;
+  if (heat.renderKind !== "ZONE_AREA" && heat.renderKind !== "CONTINUOUS_SURFACE") return null;
+  return rampAt(heat.intensity);
+}
+
+/**
+ * The previous signature, kept for callers that hold only a class.
+ *
+ * Deliberately paints the BAND MIDPOINT rather than inventing a value: a class
+ * is a band, and the honest paint for a band is its middle.
  */
 export function heatFillFor(classification: OpportunityClass | undefined): { color: string; opacity: number } | null {
   if (!classification || classification === "LIMITED_DATA") return null;
@@ -144,7 +241,19 @@ export function conditionMarkerLabel(zoneLabel: string): string {
 export const SPECIES_LAYER_LEGEND = {
   heatTitle: "Heat: where the evidence suggests looking",
   heatDetail:
-    "Shaded from the authority's own published harvest and effort figures for this species. The shade is a zone's RANK AGAINST THE OTHER ZONES of the same jurisdiction's dataset — not a count of animals and not a density. An unshaded zone is one North Ground holds no certified evidence for; it is not a zone with no animals.",
+    "Shaded along a continuous scale from the authority's own published measurements for this species. The shade is a zone's RANK AGAINST THE OTHER ZONES of the same jurisdiction's dataset — not a count of animals, and never a density unless the authority itself published a density. An unshaded zone is one North Ground holds no certified evidence for, or one whose evidence will not support a rank; it is not a zone with no animals.",
+  /* The defect this version exists to correct, said on the face of the key
+     rather than only in the methodology panel. A hunter who believes the shade
+     follows hunters will misread every crowded unit on the map. */
+  heatEffort:
+    "How many people hunted somewhere is shown as context and never moves the shade. Hunting pressure follows roads, towns and tradition as much as it follows animals.",
+  heatResolution:
+    "Each authority publishes one figure per whole management area, so an area is shaded evenly. Nowhere inside an area is hotter than anywhere else in it — where the animals are within an area is not something this evidence can say.",
+  heatStrength:
+    "How strongly a shade is evidenced is a different question from how hot it is. A zone can rank near the top of its dataset on a single thin measurement.",
+  howCalculated: "How is this calculated?",
+  howCalculatedDetail:
+    "The datasets, authorities, years, measurements and weights behind this species' shading.",
   seasonTitle: "Green outline: a legal hunt exists here now",
   seasonDetail:
     "Outlined where the certified rules give at least one current legal hunting opportunity for this species on the chosen date \u2014 including one that turns on the hunter. It is not a licence check, and it never states that you personally may hunt: the zone's card carries the full answer.",

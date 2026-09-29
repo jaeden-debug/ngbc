@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { zoneKeyOf } from "../../../lib/hunt/exploration/geometry-store";
-import type { OpportunityClass } from "../../../lib/hunt/intelligence/types";
+import type { ZoneHeat } from "../../../lib/hunt/exploration/species-layer";
 
 /**
  * The heat half of the species layer.
@@ -31,18 +31,18 @@ const DEBOUNCE_MS = 250;
 
 interface HeatReply {
   status?: string;
-  zones?: Array<{ layerId: string; designation: string; classification: OpportunityClass }>;
+  zones?: Array<{ layerId: string; designation: string } & ZoneHeat>;
 }
 
 /**
  * @param speciesId the chosen species, or null when the layer is off.
  * @param zonesInView the official zones the map is currently drawing.
  */
-export function useSpeciesHeat(speciesId: string | null, zonesInView: readonly HeatZoneRef[]): ReadonlyMap<string, OpportunityClass> | null {
-  const [heat, setHeat] = useState<Map<string, OpportunityClass> | null>(null);
+export function useSpeciesHeat(speciesId: string | null, zonesInView: readonly HeatZoneRef[]): ReadonlyMap<string, ZoneHeat> | null {
+  const [heat, setHeat] = useState<Map<string, ZoneHeat> | null>(null);
   /* Answers are immutable for a deployment — the bundles are committed files —
      so a zone answered once is never asked about again. */
-  const cacheRef = useRef(new Map<string, OpportunityClass>());
+  const cacheRef = useRef(new Map<string, ZoneHeat>());
   /* Asked and told "nothing here": remembered too, or panning would re-ask
      about the same evidence-less zones on every move. */
   const emptyRef = useRef(new Set<string>());
@@ -55,7 +55,7 @@ export function useSpeciesHeat(speciesId: string | null, zonesInView: readonly H
       return;
     }
     const prefix = `${speciesId}|`;
-    const known = new Map<string, OpportunityClass>();
+    const known = new Map<string, ZoneHeat>();
     const missing: HeatZoneRef[] = [];
     for (const zone of zonesInView) {
       const cached = cacheRef.current.get(prefix + zone.key);
@@ -84,8 +84,14 @@ export function useSpeciesHeat(speciesId: string | null, zonesInView: readonly H
                a polygon can never disagree about which zone they describe. */
             const key = zoneKeyOf({ layerId: entry.layerId, designation: entry.designation });
             answered.add(key);
-            cacheRef.current.set(prefix + key, entry.classification);
-            next.set(key, entry.classification);
+            const zoneHeat: ZoneHeat = {
+              classification: entry.classification,
+              intensity: entry.intensity,
+              strength: entry.strength,
+              renderKind: entry.renderKind,
+            };
+            cacheRef.current.set(prefix + key, zoneHeat);
+            next.set(key, zoneHeat);
           }
           /* Everything asked about and not answered holds no evidence. That is
              a real answer, so it is recorded — but it is recorded as ABSENCE,

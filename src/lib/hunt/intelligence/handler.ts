@@ -1,5 +1,6 @@
 import { layerById, zoneIdFor } from "../zone-layers.ts";
-import { evidenceProvenance, hasEvidenceForSpecies, opportunityAcross, opportunityAt, servableDatasets } from "./bundles.ts";
+import { evidenceProvenance, hasEvidenceForSpecies, heatMethodology, opportunityAcross, opportunityAt, servableDatasets } from "./bundles.ts";
+import { OPPORTUNITY_METHODOLOGY } from "./methodology.ts";
 
 /**
  * The opportunity endpoints.
@@ -66,6 +67,19 @@ export function createOpportunityCoverageHandler() {
         speciesJurisdictionPairs: datasets.length,
         geographyCount: datasets.reduce((sum, dataset) => sum + dataset.geographyCount, 0),
         evidenceRecordCount: datasets.reduce((sum, dataset) => sum + dataset.evidenceRecordCount, 0),
+        methodologyVersion: OPPORTUNITY_METHODOLOGY.version,
+        /* The owner's A-E engineering grades, counted rather than asserted. No
+           number in this reply is typed anywhere; all of it is computed from the
+           committed bundles at call time, so a dataset cannot be made to look
+           stronger than its evidence by editing a constant. */
+        byGrade: datasets.reduce<Record<string, number>>((counts, dataset) => {
+          counts[dataset.grade] = (counts[dataset.grade] ?? 0) + 1;
+          return counts;
+        }, {}),
+        byRenderKind: datasets.reduce<Record<string, number>>((counts, dataset) => {
+          counts[dataset.renderKind] = (counts[dataset.renderKind] ?? 0) + 1;
+          return counts;
+        }, {}),
         datasets,
       },
       200,
@@ -131,21 +145,70 @@ export function createSpeciesHeatHandler({ canonicalOrigin }: { canonicalOrigin:
        canonical id in the browser; only zones that hold evidence come back. */
     const heat = refs.flatMap(({ layerId, designation, geographyId }) => {
       const entry = classes.get(geographyId);
-      return entry ? [{ layerId, designation, geographyId, classification: entry.classification, coverage: entry.coverage }] : [];
+      return entry
+        ? [{
+          layerId,
+          designation,
+          geographyId,
+          classification: entry.classification,
+          /* The continuous value the ramp paints. Null is a refusal to rank and
+             is never to be drawn at the cold end. */
+          intensity: entry.intensity,
+          coverage: entry.coverage,
+          /* Carried beside the shade, never folded into it (§41B, §17 of the
+             brief): a thin measurement can rank high and still be weak. */
+          strength: entry.strength,
+          renderKind: entry.renderKind,
+        }]
+        : [];
     });
     return json(
       {
         status: "OK",
         speciesId,
-        methodologyVersion: "opportunity-v1",
+        methodologyVersion: OPPORTUNITY_METHODOLOGY.version,
         /* The peer set the percentile is against. A class is RELATIVE — it is
            never a claim about how many animals are on the ground. */
         peerSet: "this species, within each jurisdiction's own published dataset",
+        /* Stated on every reply so a renderer cannot choose a finer primitive
+           than the evidence supports (§41B, brief §9 and §29). */
+        renderKind: heat.length ? heat[0].renderKind : "NONE",
+        effort: OPPORTUNITY_METHODOLOGY.effort,
         zones: heat,
         sources: evidenceProvenance(speciesId),
       },
       200,
       EVIDENCE_CACHE,
     );
+  };
+}
+
+/**
+ * "How is this calculated?" — the real datasets, authorities, years, measures,
+ * weights, resolution and limitations behind one species' heat.
+ *
+ * Its own endpoint rather than a fatter heat reply, because the panel is opened
+ * rarely and the heat reply is sent on every pan.
+ */
+export function createHeatMethodologyHandler() {
+  return async function GET(request: Request): Promise<Response> {
+    const speciesId = new URL(request.url).searchParams.get("speciesId") ?? "";
+    if (!SPECIES_ID.test(speciesId)) {
+      return json({ status: "ERROR", message: "Provide a species id." }, 400, NO_STORE);
+    }
+    const methodology = heatMethodology(speciesId);
+    if (!methodology) {
+      return json(
+        {
+          status: "NO_HEAT_MAP_DATA",
+          speciesId,
+          methodology: OPPORTUNITY_METHODOLOGY,
+          message: "North Ground holds no certified opportunity evidence for this species anywhere yet. That is a gap in what has been gathered, not a finding about where the animals are.",
+        },
+        404,
+        EVIDENCE_CACHE,
+      );
+    }
+    return json({ status: "OK", ...methodology }, 200, EVIDENCE_CACHE);
   };
 }

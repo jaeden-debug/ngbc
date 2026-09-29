@@ -9,7 +9,7 @@ import { OPENING_CAMERA, posterFrame } from "../../lib/hunt/exploration/overview
 import { mapLabelFor } from "../../lib/hunt/exploration/map-labels";
 import { CONDITION_GLYPH, conditionMarkerLabel, zoneHasConditions, zoneIsGreen } from "../../lib/hunt/exploration/species-layer";
 import { EXPLORATION_WORDING, type ZoneSpeciesAnswer } from "../../lib/hunt/exploration/states";
-import type { OpportunityClass } from "../../lib/hunt/intelligence/types";
+import type { ZoneHeat } from "../../lib/hunt/exploration/species-layer";
 import type { ZoneFeature } from "../../lib/hunt/zone-geometry";
 import dynamic from "next/dynamic";
 import type { LabelSource } from "./map/google-overlays";
@@ -59,11 +59,11 @@ interface HuntMapViewProps {
   huntKey: string | null;
   zoneAnswers: ReadonlyMap<string, ZoneSpeciesAnswer> | null;
   /**
-   * The species layer's heat class per zone key. A zone that is ABSENT holds no
+   * The species layer's heat per zone key. A zone that is ABSENT holds no
    * certified opportunity evidence and is drawn with no heat at all — never a
    * cold value (CLAUDE.md §41A, species layer).
    */
-  heat?: ReadonlyMap<string, OpportunityClass> | null;
+  heat?: ReadonlyMap<string, ZoneHeat> | null;
   overlays: OverlayFeature[];
   mapMode: "terrain" | "hybrid" | "roadmap";
   camera: CameraRequest | null;

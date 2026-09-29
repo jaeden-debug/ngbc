@@ -3,9 +3,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { placeLabels } from "../../lib/hunt/exploration/labels";
 import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
-import { heatFillFor, zoneIsGreen } from "../../lib/hunt/exploration/species-layer";
+import type { ZoneHeat } from "../../lib/hunt/exploration/species-layer";
+import { heatPaintFor, zoneIsGreen } from "../../lib/hunt/exploration/species-layer";
 import type { ZoneSpeciesAnswer } from "../../lib/hunt/exploration/states";
-import type { OpportunityClass } from "../../lib/hunt/intelligence/types";
 import type { ZoneFeature } from "../../lib/hunt/zone-geometry";
 import type { LabelSource } from "./map/google-overlays";
 import { projectX, projectY, TILE, unprojectLatitude, unprojectLongitude, type Viewport } from "./map/viewport";
@@ -28,8 +28,8 @@ interface ZoneCanvasProps {
   selectedZoneLabel: string | null;
   labels: LabelSource[];
   zoneAnswers: ReadonlyMap<string, ZoneSpeciesAnswer> | null;
-  /** The species layer's heat class per zone; absent means no evidence is held. */
-  heat?: ReadonlyMap<string, OpportunityClass> | null;
+  /** The species layer's heat per zone; absent means no evidence is held. */
+  heat?: ReadonlyMap<string, ZoneHeat> | null;
   zoneKeyOf: (feature: ZoneFeature) => string;
   onZoneClick: (feature: ZoneFeature) => void;
   onEmptyClick: () => void;
@@ -256,7 +256,7 @@ export default function ZoneCanvas({
         }}
       >
         {shapes.map(({ feature, key, d }) => {
-          const fill = heatFillFor(heat?.get(key));
+          const fill = heatPaintFor(heat?.get(key));
           return (
             <path
               key={key}
