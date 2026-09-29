@@ -92,12 +92,14 @@ test("the species layer asks about one viewport and gets back only zones with ev
   assert.equal(response.status, 200);
   const body = await response.json();
   assert.equal(body.status, "OK");
-  const keyed = new Map(body.zones.map((zone: { designation: string }) => [zone.designation, zone]));
+  const keyed = new Map<string, { layerId: string; designation: string; geographyId: string }>(
+    (body.zones as Array<{ layerId: string; designation: string; geographyId: string }>).map((zone) => [zone.designation, zone]),
+  );
   assert.equal(keyed.size, 2, "the Ontario zone and the invented BC unit hold no moose evidence and are absent");
   assert.ok(keyed.has("7-42") && keyed.has("3-12"));
   // The caller keys by what it asked with; it never mints a canonical id in the browser.
-  assert.equal(keyed.get("7-42").layerId, "layer:ca-bc-mu");
-  assert.equal(keyed.get("7-42").geographyId, "management_zone:ca-bc-mu-7-42");
+  assert.equal(keyed.get("7-42")!.layerId, "layer:ca-bc-mu");
+  assert.equal(keyed.get("7-42")!.geographyId, "management_zone:ca-bc-mu-7-42");
   // The peer set is stated, because the class is a rank and not a density.
   assert.match(body.peerSet, /within each jurisdiction/);
   assert.ok(body.sources.length > 0 && body.sources[0].limitations.length > 0);
