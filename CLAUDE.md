@@ -2396,6 +2396,55 @@ permission to enter or hunt. High opportunity is not an open season. A mapped
 road is not proof of public vehicle access. Weather or fire conditions are not a
 legal closure unless an authoritative rule or order says so.
 
+## Heat is a real-data spatial species-intelligence layer
+
+*Decided 2026-09-29 (owner). This sharpens the SPECIE HEAT MAP section below; it
+does not replace it.*
+
+The heat layer is a genuine, source-backed, refreshable spatial wildlife
+intelligence surface — not a shaded restatement of a zone list. It is rendered
+as a semi-transparent multi-stop ramp UNDER the regulatory outlines and the
+interaction layer, so the basemap, zone boundaries, the green legality outline,
+the `!` marker and the selected zone all remain readable through it.
+
+- **Heat and legal status are wholly independent.** Heat never affects legality
+  and legality never affects heat. HOT+GREEN, HOT+not-green, LOW+GREEN,
+  NO-HEAT+GREEN and NO-HEAT+unknown are all legitimate and must all render.
+- **Green belongs to legality.** The heat ramp never borrows the semantic green
+  used for an open season.
+- **A metric is named for what its source actually measures.** Harvest density
+  is harvest density; habitat suitability is habitat suitability; occurrence
+  probability is occurrence probability. **Only a source measuring animals per
+  unit area may be called population density.** The consumer-facing umbrella is
+  ANIMAL HEAT or SPECIE HEAT MAP, with the evidence named beneath it. North
+  Ground never manufactures density from an unrelated metric.
+- **Visualisation resolution may never exceed evidence resolution.** Point and
+  grid evidence may render as continuous intensity; zone-level evidence shades
+  the zone and **never paints hotspots inside it**; a range polygon shows range
+  and is never shaded into density.
+- **Hunting pressure is not abundance.** Hunter counts and hunter-days measure
+  effort, which tracks access, popularity and tradition as much as animals. If
+  effort enters a derived score at all, the reason is documented and the
+  denominator is the authority's own — never invented.
+- **No data is not low population.** Absent evidence renders as no heat, never
+  as a cold value, and the legend says so in words. Missing data is never
+  normalised to zero.
+- **Confidence is a separate dimension from intensity.** Sparse evidence never
+  becomes a confident hotspot.
+- **Evidence is dated, and how years combine is declared.** Latest year, a
+  multi-year average, a weighted history — whichever is used is documented and
+  the evidence period is exposed. Years are never silently combined.
+- **Derived heat is versioned.** A methodology carries its id, version,
+  effective date, inputs, normalisation, weights, missing-data handling and
+  confidence rule. Changing any of them is a new version, not an edit.
+- **Raw authority evidence stays immutable and provenance-preserved**, and a
+  derived North Ground value is North Ground-owned. Source class and confidence
+  survive normalisation: community observation data never silently becomes
+  equivalent to a government survey.
+- **It is infrastructure, not a visualisation.** A new official dataset is
+  ingested, normalised, validated and republished, and the map consumes the new
+  artifact without a component being rewritten.
+
 ## SPECIE HEAT MAP
 
 The user-facing name is **SPECIE HEAT MAP**. It answers:
