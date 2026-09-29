@@ -17,7 +17,7 @@ import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
 import { huntSharePayload, shareHunt } from "../../lib/hunt/exploration/share";
 import { heightOf, mapBottomFor, sheetHeights, type SheetHeights, type SheetSnap } from "../../lib/hunt/exploration/sheet";
 import { seasonIsOpen } from "../../lib/hunt/exploration/species-layer";
-import { bandHasMoved, UNMEASURED_BAND, visibleBand } from "../../lib/hunt/exploration/viewport";
+import { bandHasMoved, placeChoiceSubject, UNMEASURED_BAND, visibleBand } from "../../lib/hunt/exploration/viewport";
 import { type ExplorationState as ZoneState, type ZoneRef } from "../../lib/hunt/exploration/states";
 import { serializeHuntUrlState, zoneRefFromId, type HuntUrlState } from "../../lib/hunt/exploration/url-state";
 import type { HuntEvaluation } from "../../lib/hunt/types";
@@ -188,6 +188,28 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     });
     window.setTimeout(() => composerRef.current?.focus({ preventScroll: true }), 80);
   }, []);
+  /*
+   * The composer closes when the place it was opened to choose has been chosen.
+   *
+   * It owns the sheet while open, so everything the sheet would otherwise show
+   * is not rendered — intended, and the reason this has to be a rule rather
+   * than a courtesy. `chooseSearchResult` closed it; `useMyLocation` and
+   * `chooseOnMap` did not, so granting location left the answer, the species
+   * list and the pin's confirm control unmounted behind an open search field.
+   * §41A: the three ways in end in the same state, so they end the same way
+   * out. The subject key is in `exploration/viewport.ts`, where `npm test`
+   * reaches it.
+   */
+  const composerSubjectRef = useRef<string | null>(null);
+  useEffect(() => {
+    const subject = placeChoiceSubject(exploration.hunt, exploration.pin);
+    if (subject === composerSubjectRef.current) return;
+    composerSubjectRef.current = subject;
+    if (!subject) return;
+    snapBeforeComposerRef.current = null;
+    setComposerOpen(false);
+  }, [exploration.hunt, exploration.pin]);
+
   const clearRecents = useCallback(() => setRecents([]), []);
   const [basemap, setBasemap] = useState<"loading" | "ready" | "fallback">("loading");
   const [mapMode, setMapMode] = useState<BasemapMode>("terrain");
@@ -556,7 +578,6 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     setLocate({ kind: "idle" });
     setPage("main");
     setSnap("half");
-    setComposerOpen(false);
     /* A place they chose, kept on this device so they need not search for it
        again. Nothing about it is ever sent anywhere (see `session-store`). */
     setRecents((current) => withRecent(current, { label: place.label, latitude: place.latitude, longitude: place.longitude, origin: "search" }));

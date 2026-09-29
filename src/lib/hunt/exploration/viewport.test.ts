@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  bandHasMoved, closingShouldBlur, submitsOnEnter, UNMEASURED_BAND, visibleBand,
+  bandHasMoved, closingShouldBlur, placeChoiceSubject, submitsOnEnter, UNMEASURED_BAND, visibleBand,
 } from "./viewport.ts";
 
 /* An iPhone 13/14/15 in portrait, and the same phone with the keyboard up.
@@ -69,4 +69,54 @@ test("closing the search blurs, and nothing else does", () => {
   assert.equal(closingShouldBlur(false, false), false, "already closed is not an edge");
   assert.equal(closingShouldBlur(false, true), false, "opening never blurs");
   assert.equal(closingShouldBlur(true, true), false, "still open never blurs");
+});
+
+/* The composer owns the sheet while it is open, so an answer that arrives
+   behind an open composer is an answer nobody can reach. Measured on the
+   branch before this rule existed: after `Use my location` resolved WMU 57,
+   `data-composer` was still "open" and the DOM held ZERO species controls. */
+const BANCROFT = { latitude: 45.0573, longitude: -77.8546 };
+
+test("the composer's question is answered by any of the three ways in", () => {
+  assert.equal(placeChoiceSubject(null, null), null, "nothing chosen yet leaves it open");
+
+  const searched = placeChoiceSubject({ ...BANCROFT, origin: "search" }, null);
+  const device = placeChoiceSubject({ ...BANCROFT, origin: "device" }, null);
+  const confirmed = placeChoiceSubject({ ...BANCROFT, origin: "map" }, null);
+  for (const [name, subject] of [["search", searched], ["device", device], ["map", confirmed]] as const) {
+    assert.ok(subject, `${name} answers the composer's question`);
+    assert.notEqual(subject, null);
+  }
+  /* The three are distinguishable, so arriving at the same coordinate a second
+     way is still a new choice. */
+  assert.equal(new Set([searched, device, confirmed]).size, 3);
+
+  /* Choosing on the map answers it too, before any hunt location exists:
+     `chooseOnMap` is pressed FROM INSIDE the composer, and the control that
+     confirms the spot lives in the body the composer suppresses. */
+  assert.equal(placeChoiceSubject(null, { point: BANCROFT }), "pin");
+});
+
+test("a rename and a moving pin are not new choices", () => {
+  /* `HUNT_LABELLED` renames a point after a reverse geocode answers. Keying on
+     the label would shut a composer someone had deliberately re-opened. The
+     two readings below differ in their label and in nothing else. */
+  const unnamed = { ...BANCROFT, origin: "device", label: "Your location" };
+  const named = { ...BANCROFT, origin: "device", label: "Near Bancroft, ON" };
+  assert.notEqual(unnamed.label, named.label, "the two readings really do differ");
+  assert.equal(placeChoiceSubject(unnamed, null), placeChoiceSubject(named, null));
+
+  /* A centre pin follows the map, so keying it by its point would re-answer
+     the same question on every frame of a pan. */
+  assert.equal(
+    placeChoiceSubject(null, { point: { latitude: 50, longitude: -85 } }),
+    placeChoiceSubject(null, { point: { latitude: 51.4, longitude: -86.2 } }),
+  );
+});
+
+test("a different point is a different choice", () => {
+  assert.notEqual(
+    placeChoiceSubject({ ...BANCROFT, origin: "search" }, null),
+    placeChoiceSubject({ latitude: 45.4215, longitude: -75.6972, origin: "search" }, null),
+  );
 });

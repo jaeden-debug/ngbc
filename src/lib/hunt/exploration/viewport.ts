@@ -91,3 +91,37 @@ export function submitsOnEnter(event: { key: string; isComposing?: boolean; keyC
 export function closingShouldBlur(wasOpen: boolean, isOpen: boolean): boolean {
   return wasOpen && !isOpen;
 }
+
+/**
+ * What the composer is still waiting to be told, as a key.
+ *
+ * The composer OWNS the sheet while it is open — §41A's messaging-composer
+ * model: what it offers scrolls above, the field sits on the visible bottom
+ * edge, and nothing renders after it. That suppression is intended. What is
+ * not intended is leaving it open once the place it was opened to choose HAS
+ * been chosen, because then the suppression hides the answer the choosing was
+ * for: the species list, the evaluation, and the pin's own confirm control.
+ *
+ * §41A: the three ways of choosing a place end in the SAME state. So the rule
+ * is one rule, not one per call site — which is exactly how two of the three
+ * came to be missing it. A hunt location set by a search result, by the
+ * device's position or by a confirmed pin, and a pin preview that has moved
+ * the choosing onto the map itself, each answer the composer's question.
+ *
+ * A key rather than a boolean, so that re-opening the composer over an already
+ * resolved hunt is not shut again the moment it opens: only a CHANGE of
+ * subject closes it. The label is deliberately not part of the key — a reverse
+ * geocode renames a hunt point after it is set (`HUNT_LABELLED`) and that is
+ * still the same place, not a new choice.
+ */
+export function placeChoiceSubject(
+  hunt: { latitude: number; longitude: number; origin: string } | null,
+  pin: { point: { latitude: number; longitude: number } } | null,
+): string | null {
+  /* One key for the whole preview, not one per position: a centre pin follows
+     the map, so keying it by its point would re-answer the same question on
+     every frame of a pan. */
+  if (pin) return "pin";
+  if (!hunt) return null;
+  return `${hunt.origin}:${hunt.latitude},${hunt.longitude}`;
+}

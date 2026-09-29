@@ -36,6 +36,43 @@ function check(scenario, name, ok, detail = "") {
   console.log(`${ok ? "PASS" : "FAIL"}  ${scenario} · ${name}${detail ? ` — ${detail}` : ""}`);
 }
 
+/*
+ * AN ASSERTION THAT DID NOT RUN IS NOT A PASS, AND SILENCE IS NOT A REPORT.
+ *
+ * This suite exited 0 while dropping 21 assertions inside an `if` whose
+ * condition nothing asserted — 39 checks reported where 48 were expected, and
+ * no line said so. That instance was fixed by asserting the condition. The
+ * moderator then measured a 42-check swing between two runs of IDENTICAL code,
+ * which says the shape is still here: a total that moves on its own cannot
+ * tell you whether a fix restored anything.
+ *
+ * Some conditions genuinely may not hold — a Google basemap needs a key
+ * authorised for the host under test, and the self dot exists only where a
+ * device position was granted. Those are not defects and must not fail. What
+ * they must not do is VANISH. Every one of them now records a SKIP, one entry
+ * per assertion not run, so the run's arithmetic is constant and the output
+ * says which assertions did not happen and why.
+ */
+function skip(scenario, name, why) {
+  results.push({ scenario, name, ok: true, skipped: true, detail: why });
+  console.log(`SKIP  ${scenario} · ${name} — ${why}`);
+}
+
+/*
+ * The fewest entries each scenario must contribute — checks and skips together.
+ *
+ * A per-width count that can differ between widths is a count that can quietly
+ * go to zero, and the same is true of a per-scenario one. A scenario that ends
+ * early, loses a block to a provider hiccup, or is edited without its
+ * assertions, now FAILS on the shortfall instead of shrinking the suite. A new
+ * scenario with no entry here fails too: declaring the number is the point.
+ *
+ * These are minima, not equalities, because a few blocks legitimately run more
+ * assertions on some hosts than others (a real Google basemap reports its
+ * camera; a fallback has none). The skips keep the floor honest.
+ */
+const MINIMUM_CHECKS = {};
+
 async function newPage(browser, options = {}) {
   const { width = 390, height = 844, geolocation, permissions = [], share = "stub" } = options;
   const context = await browser.newContext({
@@ -433,6 +470,14 @@ const scenarios = {
       if (basemap === "google") {
         check(s, `${label} Google's attribution drew`, layout.termsVisible !== null, "never drawn within 45s");
         if (layout.termsVisible !== null) check(s, `${label} Google's terms are not covered`, layout.termsVisible === true, String(layout.termsVisible));
+        else skip(s, `${label} Google's terms are not covered`, "the attribution never drew, so there was nothing to measure");
+      } else {
+        /* A host without a key authorised for it gets the fallback basemap.
+           That is the environment, not the layout — but the two assertions
+           still have to be ACCOUNTED for, or the suite's total moves with the
+           machine it runs on. */
+        skip(s, `${label} Google's attribution drew`, `basemap is "${basemap}", not Google`);
+        skip(s, `${label} Google's terms are not covered`, `basemap is "${basemap}", not Google`);
       }
       check(s, `${label} no console errors`, consoleErrors.length === 0, consoleErrors.join(" | "));
       await context.close();
@@ -505,7 +550,7 @@ const scenarios = {
   },
 
   async noticeRecovery(browser) {
-    if (!SLOW) return;
+    if (!SLOW) { skip("E2 a settled map heals itself", "the whole scenario", "--slow was not given; it waits out a real 60 s retry"); return; }
     /* One transient outage used to be permanent: the notice was set from the
        last completed answer, and a map nobody moves never asks again. */
     const s = "E2 a settled map heals itself";
@@ -826,7 +871,7 @@ const scenarios = {
   },
 
   async brief(browser) {
-    if (!BRIEF) return;
+    if (!BRIEF) { skip("Hunt Brief from the new answer", "the whole scenario", "--brief was not given"); return; }
     const s = "Hunt Brief from the new answer";
     const { context, page, requests } = await newPage(browser, { width: 1280, height: 800 });
     await page.goto(`${BASE}/hunt?zone=ca-on-wmu-57&species=ruffed-grouse`);
@@ -847,6 +892,8 @@ const scenarios = {
     if (link) {
       const response = await page.request.get(link);
       check(s, "the brief opens", response.status() === 200, `${response.status()} ${link}`);
+    } else {
+      check(s, "the brief opens", false, "no brief link was produced, so it could not be opened");
     }
 
     await context.close();
@@ -1265,6 +1312,11 @@ const scenarios = {
       if (seen.selfPane !== null) {
         check(s, `${tag}: and the hunter's own position stays above the label`,
           seen.selfPane > seen.selectedPane || Number(seen.selfZ) > Number(seen.selectedZ), JSON.stringify(seen));
+      } else {
+        /* This scenario never grants a device position, so there is usually no
+           self dot to be covered. Absent is a legitimate answer; unreported is
+           not. */
+        skip(s, `${tag}: and the hunter's own position stays above the label`, "no self marker on the map to be covered");
       }
     }
     check(s, "no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));
@@ -1632,6 +1684,10 @@ const scenarios = {
     await page.waitForTimeout(600);
     await page.locator("input[type='search']").first().fill("Bancroft Ontario");
     const suggested = await waitFor(page, () => document.querySelectorAll("[role=option]").length > 0, 25_000);
+    /* Same rule as the keyboard state machine: a provider hiccup must FAIL
+       here rather than silently remove the assertion below it. */
+    check(s, "the place provider answered, so the keyboard check below can run",
+      suggested === true, "no suggestions returned");
     if (suggested) {
       await page.locator("[role=option]").first().click();
       await page.waitForTimeout(1_200);
@@ -2034,14 +2090,26 @@ const scenarios = {
 const browser = await chromium.launch();
 for (const [name, run] of Object.entries(scenarios)) {
   if (ONLY && !ONLY.has(name)) continue;
+  const before = results.length;
   try {
     await run(browser);
   } catch (error) {
     check(name, "ran to completion", false, error instanceof Error ? error.message.split("\n")[0] : String(error));
   }
+  /* Watch the totals, not just the colour: a scenario that contributed less
+     than it declares has skipped assertions nobody asked it to skip. */
+  const contributed = results.length - before;
+  const minimum = MINIMUM_CHECKS[name];
+  check(name, "contributed its full set of checks",
+    minimum !== undefined && contributed >= minimum,
+    minimum === undefined
+      ? `no minimum declared for "${name}" — it contributed ${contributed}; declare one in MINIMUM_CHECKS`
+      : `${contributed} entries, minimum ${minimum}`);
 }
 await browser.close();
 
 const failed = results.filter((result) => !result.ok);
+const skipped = results.filter((result) => result.skipped);
 console.log(`\n${results.length - failed.length}/${results.length} checks passed against ${BASE}`);
+if (skipped.length) console.log(`${skipped.length} assertion${skipped.length === 1 ? "" : "s"} did not run (SKIP above); they are counted, never passed.`);
 process.exit(failed.length ? 1 : 0);
