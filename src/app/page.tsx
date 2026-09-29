@@ -7,11 +7,11 @@ import { OPEN_GRAPH_BASE } from "../lib/seo/open-graph";
    Guides, field tests and further tools are named when they exist (§30, §61). */
 const HOME_DESCRIPTION =
   "Canadian outdoor knowledge from North Ground. Find your hunting zone and check seasons with North Ground Hunt, and explore North American game species.";
-const HOME_SOCIAL_TITLE = "North Ground | Canadian Outdoor Knowledge & Tools";
+const HOME_SOCIAL_TITLE = "North Ground | Canadian Outdoor Knowledge";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "North Ground Bushcraft | Canadian Outdoor Knowledge & Tools",
+    absolute: "North Ground Bushcraft | Canadian Outdoor Knowledge",
   },
   description: HOME_DESCRIPTION,
   alternates: {

@@ -37,7 +37,7 @@ async function validate() {
   const home = await homeResponse.text();
 
   assert.match(home, /<html lang="en-CA"/i, "document language should be en-CA");
-  assert.match(home, /<title>North Ground Bushcraft \| Canadian Outdoor Knowledge (?:&|&amp;) Tools<\/title>/i);
+  assert.match(home, /<title>North Ground Bushcraft \| Canadian Outdoor Knowledge<\/title>/i);
   assert.match(
     home,
     /<link rel="canonical" href="https:\/\/www\.northgroundbushcraft\.com\/?"/i,
