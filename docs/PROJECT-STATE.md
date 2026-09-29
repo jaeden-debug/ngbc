@@ -4,7 +4,7 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-29 (**Green means a legal opportunity exists, and an authority's words stop being untranslatable.** The species layer drew green only where a season was open to every licence, so Ontario moose drew ZERO green over zones that had a season — the map said *nothing is open* about the commonest big-game answer in the province. Green now means §41A's amended test: at least one current legal hunting opportunity for this species, zone and date, ESTABLISHED by walking the engine's own answer tree rather than assumed from a pending question. Measured on 2026-09-29: Ontario moose 0 → 49 zones, Ontario deer 0 → 36, Manitoba deer 0 → 41. Conditional opportunities carry ONE compact `!`, a real control with a popover built from structured conditions; there is no conditional colour. Separately, authority language became a first-class fact: a translation is North Ground presentation over an original that is kept, and is structurally unable to render as an authority quotation. A new language-integrity sweep found two live mislabels the existing suite could not see — Québec ministry notes tagged English and attributed to North Ground, and ministry statements transcribed with guillemets baked in under a North Ground attribution — and both are fixed at the producer.)
+Last updated: 2026-09-29 (**The heat measures the animals, not the hunters.** The species layer averaged every normalized series a bundle carried, and two of British Columbia's five are HUNTER COUNT and HUNTER DAYS — so two fifths of what the map drew as *where to look for an animal* was a measure of how many people went hunting there. `opportunity-v2` declares a ROLE per metric: only evidence about the animals may move the shade, effort is carried and shown and marked `contributesToIntensity: false`, and the applied weights travel in every result. Measured across all 1,297 zone-species pairs: **540 (41.6%) change band**, the largest single movement 165 MODERATE→LOW — crowded, low-yield units losing warmth they had borrowed from their own hunters. The shade is now CONTINUOUS along a six-stop ramp from cold indigo-slate to ember, carries its own STRENGTH (a thin measurement can rank high) and its RENDER KIND (zone evidence can never produce a hotspot inside a unit), and the key says how it was calculated from the same read model the map is painted from. Three more Ontario datasets served under the same Open Government Licence: moose, black bear, wild turkey — **13 datasets, 1,469 zone-species pairs, 6,642 records, 10 species**. Two Ontario datasets deliberately NOT served, neither for a licence: wolf-and-coyote publishes one combined column for two species, and elk is reported by a geography North Ground does not hold.)
 
 Previously: 2026-09-29 (**The species answer became a decision surface, and Québec stopped saying "not yet verified".** Québec legal hunting hours now RESOLVE at a point: the Legal Time Act (T-5.1) splits the province at the 63rd meridian and answers completely west of it, while the east is refused by naming the three territories whose boundaries North Ground does not hold. The hours themselves are the complement of C-61.1 s. 1's « nuit » under s. 56's prohibition, narrowed by r. 12 s. 21's night permission — ±30 minutes, established by three independent reads. Québec Ready to Hunt ships PARTIAL: certificat du chasseur, permis de petit gibier, the hare-by-snare licence, the federal firearms licence and hunter orange, with legal methods, ammunition and fees carried as explicitly unresolved. Conditions are structured and shown under the status; "in season, with conditions" is now earned by a condition that exists. Served-matrix invariants are declared per jurisdiction rather than derived.)
 
@@ -793,6 +793,115 @@ blueprint keeps those out of North Ground's answers.
 
 
 ## Recent Product Decisions
+
+### 2026-09-29 — Heat is evidence about animals, and it says how much
+
+**The defect.** `classifyOpportunity` averaged every normalized value a zone
+carried. British Columbia's bundles carry five per unit — reported harvest,
+harvest per hunter, harvest per hunter day, hunter count and hunter days — so
+**40% of every BC zone's shade was a measure of hunting pressure**, in the
+colour a hunter reads as abundance. A unit beside a highway with many hunters
+and little game outranked a remote unit with few hunters and good game. Nothing
+in the suite could see it, because nothing asserted what the number was made of.
+
+**The fix.** `methodology.ts` declares a ROLE per metric —
+`ABUNDANCE_SIGNAL`, `EFFORT_CONTEXT`, `EXTENT_ONLY`, `PLACE_CONTEXT` — and only
+the first may carry a weight. Effort is still ingested, still shown, and marked
+`contributesToIntensity: false` in every component; a measurement silently
+dropped looks exactly like one that was never published. The declared weights
+are renormalized over what a zone actually holds, sum to one, and travel in the
+result.
+
+**Measured, having predicted first.** Predicted 320–440 of 1,297 zone-species
+pairs would change band; **measured 540 (41.6%)**. The under-prediction was
+mine: I assumed effort ranks correlate strongly with harvest ranks, which they
+do, but ignored that removing two of five series also widens the distribution,
+so more zones cross thresholds in both directions. The movement breakdown:
+MODERATE→LOW 165, MODERATE→HIGH 92, HIGH→VERY_HIGH 81, HIGH→MODERATE 74,
+MODERATE→VERY_HIGH 45, VERY_HIGH→HIGH 42, LOW→MODERATE 26, HIGH→LOW 12,
+LOW→HIGH 3. The largest single movement being *downward out of MODERATE* is
+the signature of the correction: those are the crowded, low-yield units.
+
+**Three things the one number was answering, now separated.**
+
+- **Intensity** is continuous, 0 to 1, and null where the evidence refuses to
+  rank. Null and zero are different answers: zero is the bottom of a ranking
+  that happened, null is a refusal to rank, and drawing null at the cold end
+  would assert the first while meaning the second.
+- **Strength** is how well-evidenced the shade is. It counts INDEPENDENT FACTS
+  ABOUT THE ANIMALS, so a rate whose numerator is already present adds nothing —
+  BC's five metrics reduce to **one** animal fact, the reported harvest, and
+  every served dataset is therefore `WEAK` today. That is the true answer, and
+  it is asserted in the suite so that the day it changes is a deliberate act.
+- **Render kind** is how finely the evidence may be drawn. Every served dataset
+  is `ZONE_AREA`, and `permitsSubAreaVariation` is false for it, so no blurred
+  hotspot can ever appear inside a unit the authority reported one number for.
+  A mixed set is drawn at the COARSEST kind present.
+
+**`evidenceCoverage` counts independent values, not distinct metrics.** BC's
+five metric names are three published numbers and two rates derived from them;
+counting names graded that `ROBUST_DATA` — the strongest coverage word the
+product has — for restating three facts five ways. That grade was also
+structurally incapable of noticing the rank-copy defect found earlier, which is
+why it is fixed here rather than left as a note.
+
+**The ramp.** Six stops from a cold indigo-slate through the palette's bark and
+ochre into campfire amber and ember, interpolated continuously. Four flat amber
+tints could not make a heat map; they made four categories, which is what they
+were and what the evidence is not. **No green anywhere along it**, asserted at
+every hundredth of the line rather than at the stops — green means a legal hunt
+exists, and a teal cool end would make "cold" read as "closed".
+
+**`MAX_STATE_FILL` is derived from the ramp**, not a constant that happened to
+equal its maximum. The moment the ramp changed, the two parted company and a
+hot neighbour out-filled the chosen zone at regional zoom on the light setting.
+§41A says the chosen zone is always the loudest thing on the map; exactly one
+assertion noticed.
+
+**"How is this calculated?"** is served by `/api/hunt/opportunity/methodology`
+from the same read model the map is painted from, so the panel cannot describe a
+calculation the map did not perform. It names every authority, dataset, year,
+area count, resolution, measurement with its applied weight, licence and the
+authority's own limitations. Fetched only when opened; the heat reply the map
+sends on every pan stays small.
+
+### 2026-09-29 — Three more Ontario datasets, and two deliberately refused
+
+Served from data.ontario.ca under the same Open Government Licence – Ontario the
+deer dataset already used, with the resource URLs, resolutions and pitfalls the
+source registry had already recorded: **moose** (66 units), **black bear** (78),
+**wild turkey** (28). Coverage moves from 10 datasets / 1,297 zone-species pairs
+/ 6,182 records / 9 species to **13 / 1,469 / 6,642 / 10**.
+
+`scripts/ontario-harvest.mjs` holds the rules once rather than per species. Each
+exists because getting it wrong is invisible: a suppressed cell read as zero
+publishes "nothing was taken here" over data the authority withheld; a
+zero-padded code mints units no layer has, so the map goes blank exactly where
+harvest was reported; a parent-area figure apportioned across sub-units draws a
+division the authority never made. Ontario uses BOTH ellipsis characters for
+suppression, sometimes in adjacent rows of the same file.
+
+**Wild turkey publishes no hunter count, so it gets no rate** — one independent
+value, `LIMITED_DATA`, `WEAK`. That is the derivation module doing its job: the
+honest name for what remains is a total.
+
+**Two Ontario datasets are deliberately not served, and neither is a licence
+problem.**
+
+- **Wolf and coyote** — one combined "Harvest" column covering both species.
+  Attributing it to either overstates that one; splitting it publishes two
+  numbers the authority never released. Recorded as
+  `REJECTED_FOR_SPECIES_ATTRIBUTION`.
+- **Elk** — reported by Elk Harvest Area, a geography North Ground does not
+  hold. Unchanged from its earlier finding.
+
+`validateEvidenceMatrix` no longer reads every `UNAVAILABLE` as "the authority
+publishes nothing". Wolf-and-coyote is unavailable for species attribution and
+its Wildlife Management Unit geography is the same good geography every other
+Ontario harvest dataset uses; the old rule would have forced it to disclaim a
+precision it genuinely has — a false statement about a source, made in order to
+satisfy a rule about sources.
+
 
 ### Green is an opportunity, not a season open to everybody (2026-09-29)
 
@@ -2005,6 +2114,26 @@ a loss.** "Refuse rather than guess" applies where there is a guess.
   count costs, not vertex count.**
 
 ## Validation
+
+- **Species heat intelligence, 2026-09-29** (private worktree `feat/species-heat-intelligence`): typecheck 0 errors; `npm test` exit 0, **1,574 passing, 0 failures** (baseline 1,542; +32 new assertions across `methodology.test.ts`, `rendering.test.ts`, `ontario-harvest.test.mjs`, and extensions to the bundle, route and species-layer suites); production build clean; lint **0 errors, 8 pre-existing warnings**; `validate:seo` clean; `check:intelligence-sources` reproduces all four Ontario and both British Columbia bundles byte-for-byte from the live authoritative CSVs; `git diff --check` clean.
+
+  **The band-movement figure was predicted before it was measured** (320–440 predicted, 540 measured, 41.6%) and the gap is recorded above with its cause rather than the number alone.
+
+  **Measured against a local production build** (`next start`, nothing else on the machine), server-side:
+
+  | endpoint | p50 | p90 | payload |
+  | --- | --- | --- | --- |
+  | `/heat`, 10 zones | 2 ms | 3 ms | 4.7 KB |
+  | `/heat`, 50 zones (one phone viewport) | 1 ms | 1 ms | 12.5 KB |
+  | `/heat`, 430 zones (the practical ceiling) | 2 ms | 2 ms | 39 KB |
+  | `/coverage` | 1 ms | — | 10.3 KB |
+  | `/methodology?speciesId=…` | 1 ms | — | 6.0 KB |
+  | `/opportunity?speciesId=…&geographyId=…` | 1 ms | — | 3.8 KB |
+
+  **`MAX_HEAT_ZONES` (450) and `MAX_BODY_BYTES` (24,000) disagree, and the body limit binds first.** A 450-zone request is 24.7 KB and is refused at 400 before the zone ceiling is reached; ~430 zones is the real maximum. Not a defect — the tighter limit is the safer one — but the two constants should be reconciled so the stated ceiling is the one enforced.
+
+  **Production-smoked on the real map** at 375×812: Ontario white-tailed deer draws 101 zones with continuous multi-tone heat under the green outlines and the `!` markers, the chosen zone keeps the only bone outline, and "How is this calculated?" opens the real record naming both authorities with weights summing to 100% and both effort measures shown as "not counted". Ontario moose (a dataset that did not exist this morning) draws 66 zones, warm in the north and unshaded in the south. Wild turkey resolves and answers "In season" with no heat ramp claim it cannot support. The basemap did not load — this host's Google key is refused — and the official boundaries and every answer were unaffected, which is the behaviour §41A requires.
+
 
 - **Provenance split completed, 2026-09-29** (Codex worktree `codex/provenance-split`): typecheck 0 errors; `npm test` exit 0, **1,421 passing, 0 failing, 0 skipped**; production build clean; lint **0 errors** (9 pre-existing warnings); `validate:seo` and `validate:content:published` clean. The B.C. closed-areas artifact was verified by REGENERATING it from source and comparing rather than by reading the generated JSON — byte-identical, 325 restrictions, 180/145. Every regulatory generator was run twice with no drift. The compile-time protections were falsified and restored individually.
 
