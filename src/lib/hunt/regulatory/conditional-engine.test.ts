@@ -1,3 +1,4 @@
+import { authored } from "../provenance.ts";
 import { legalTimeNotCertified } from "./legal-time.ts";
 import assert from "node:assert/strict";
 import test from "node:test";
@@ -141,7 +142,7 @@ test("an answer that contradicts another is not applied", () => {
 });
 
 test("a disputed reading that decides the answer is a conflict, and one that does not is disclosed", () => {
-  const disputed = rule({ id: "r:disputed", disputes: [{ zoneId: "management_zone:xx-yy-unit-1", statedAs: "The range may not reach unit 1." }] });
+  const disputed = rule({ id: "r:disputed", disputes: [{ zoneId: "management_zone:xx-yy-unit-1", words: authored("The range may not reach unit 1.") }] });
   assert.equal(status(evaluate(bundle([disputed], { meaning: "CLOSED" }), "2026-10-01")), "CONFLICT");
   // Outside its window the disputed rule changes nothing.
   assert.equal(status(evaluate(bundle([disputed], { meaning: "CLOSED" }), "2026-12-15")), "CLOSED");

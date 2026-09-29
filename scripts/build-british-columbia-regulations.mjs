@@ -439,7 +439,8 @@ export async function build({ offline } = {}) {
           addRule({
             ...common,
             ranges: parseSeasons(dispute.synopsisOnly),
-            disputes: [{ statedAs: dispute.statedAs }],
+            /* A dispute is North Ground's reading of a conflict its cross-check found, so it is authored by construction. */
+            disputes: [{ words: { owner: "NORTH_GROUND", text: dispute.statedAs } }],
             label: "Synopsis-only dates",
             notes: [...common.notes, "Only the 2026–2028 synopsis states these dates; the regulation does not."],
           });
@@ -464,7 +465,7 @@ export async function build({ offline } = {}) {
           ...(clause.onlyIn?.endsWith("estuaries") ? ["This season applies only within one km of the named estuaries; elsewhere in M.U. 5-9 the general season applies."] : []),
           ...(clause.appliesWhen.HUNTER_AGE ? [`Restricted to persons under 18 (Schedule ${clause.schedule} Part 2 ${clause.section}).`] : []),
         ],
-        disputes: clause.dispute ? [{ statedAs: clause.dispute }] : [],
+        disputes: clause.dispute ? [{ words: { owner: "NORTH_GROUND", text: clause.dispute } }] : [],
         excludeSpecials: [...excludedBySpecies(clause.schedule, speciesId, { bowOnly: Boolean(bow), own: clause.onlyIn }), ...(clause.excludeAreas ?? [])],
         includeSpecials: clause.onlyIn ? [clause.onlyIn] : [],
         label: bow ? "Bow only season" : clause.onlyIn?.endsWith("private") ? "Private property season" : clause.onlyIn ? "Estuary season" : "Youth season",
@@ -518,7 +519,9 @@ export async function build({ offline } = {}) {
     absence: {
       meaning: "CLOSED",
       excludedCombination: "CLOSED",
-      statedAs: ABSENCE,
+      /* The authority's own sentence: `containsVerbatim` above throws if s. 4
+         no longer reads this way, so this is a checked quotation. */
+      words: { owner: "AUTHORITY", text: ABSENCE, sourceId: BODY_SOURCE, citation: "B.C. Reg. 190/84, s. 4", lang: "en-CA" },
       section: "B.C. Reg. 190/84, s. 4",
       sourceId: BODY_SOURCE,
       explanation:
@@ -527,7 +530,7 @@ export async function build({ offline } = {}) {
       speciesExceptions: Object.fromEntries([...limitedEntry].map((speciesId) => [speciesId, {
         meaning: "UNKNOWN",
         excludedCombination: "CLOSED",
-        statedAs: LEH_STATED,
+        words: { owner: "AUTHORITY", text: LEH_STATED, sourceId: LEH_SOURCE, citation: "B.C. Reg. 134/93, s. 1.1", lang: "en-CA" },
         section: "B.C. Reg. 134/93, s. 1.1",
         sourceId: LEH_SOURCE,
         explanation:

@@ -373,7 +373,12 @@ async function main() {
          booklet hunt names is not something this bundle can call closed. */
       meaning: "UNKNOWN",
       excludedCombination: "CLOSED",
-      statedAs: "All pronghorn hunting, including archery seasons, is by controlled hunt (p. 63). A hunt that does not match what you hold, or is not running on this date, is closed to you.",
+      /* OURS: the booklet states the controlled-hunt rule; the inference about
+         what an absent unit therefore means is North Ground's. */
+      words: {
+        owner: "NORTH_GROUND",
+        text: "All pronghorn hunting, including archery seasons, is by controlled hunt (p. 63). A hunt that does not match what you hold, or is not running on this date, is closed to you.",
+      },
       section: "p. 63",
       sourceId: SOURCE_ID,
     },

@@ -1,6 +1,5 @@
 {
   "jurisdictionId": "jurisdiction:ca-mb",
-  "lang": "en-CA",
   "purpose": "Published restrictions on land that can close or limit a hunt at a point. Classified at build time; a feature that is not in this catalogue, or has changed, is treated as a restriction North Ground has not certified.",
   "layers": [
     {

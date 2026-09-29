@@ -343,7 +343,24 @@ function bindPeriod(kind: "bigGame" | "smallGame"): ConditionalBundle {
     absence: {
       meaning: "UNKNOWN",
       excludedCombination: "CLOSED",
-      statedAs: "Les dates de chasse sont établies en fonction de la zone où la chasse est permise et du type d'arme utilisé.",
+      /* No `words`, deliberately.
+         
+         This carried a French ministry sentence — « Les dates de chasse sont
+         établies en fonction de la zone où la chasse est permise et du type
+         d'arme utilisé. » — with NO sourceId and NO section. The scraper's
+         classifier (`build-quebec-regulations.mjs`) shows the ministry does
+         publish it, but it appears as a shared context paragraph and nothing
+         here records WHICH page, so its citation cannot be named.
+
+         The new type requires a citation for an authority quotation, and that
+         is the refusal working rather than an obstacle: a quotation nobody can
+         cite is not evidence. Calling it North Ground's would be the opposite
+         lie — we did not write French ministry prose. Inventing a citation is
+         forbidden outright.
+
+         Nothing is lost, because the absence RULE is stated below in North
+         Ground's own words, which is §8's default. Restoring the quotation
+         needs one thing: the page it appears on. */
       explanation:
         "The ministry's tables list every season, by implement, for each zone they name, so a combination no row permits " +
         "in a named zone has no season there. A zone no row names is not something the pages speak to.",

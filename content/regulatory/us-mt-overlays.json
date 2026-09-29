@@ -1,6 +1,5 @@
 {
   "jurisdictionId": "jurisdiction:us-mt",
-  "lang": "en-CA",
   "purpose": "Published areas that change an upland game bird answer at a point: Indian reservations (U.S. Census Bureau boundaries, Montana Commission rule), Montana's restricted areas and the Carbon County partridge portion. Read live at the point; only names and ids are kept here, never geometry.",
   "layers": [
     {
@@ -145,7 +144,7 @@
       "url": "https://fwp-gis.mt.gov/arcgis/rest/services/admbnd/huntingDistricts/MapServer/2",
       "sourceId": "source:us-mt-fwp-restricted-areas-service",
       "featureCount": 53,
-      "contentHash": "sha256:6d474d6446e139216b9e01fa1c28a997dacd57d9524afb184a4f675d9814b04f",
+      "contentHash": "sha256:9f774104b76a32ae3ef9ba1aae5f45f43efbfb2addb5659aa7c664b1bff64a86",
       "features": [
         {
           "objectId": 961,

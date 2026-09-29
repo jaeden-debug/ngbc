@@ -14,7 +14,7 @@ import { authorizationContext, type DrawCycle } from "./allocation.ts";
 import type { HuntCode } from "./hunt-codes.ts";
 import { rulesInForce, type Amendment, type RuleAuthority } from "./precedence.ts";
 import type { RestrictionRecord } from "../overlays.ts";
-import { isQuotation, provenancedLine } from "../provenance.ts";
+import { isQuotation, provenancedLine, type NorthGroundStatement, type ProvenancedText } from "../provenance.ts";
 
 /**
  * The jurisdiction-neutral conditional evaluator.
@@ -92,7 +92,14 @@ export interface ConditionalRule {
   caveats: string[];
   /** Plain notes; a note naming a zone is shown only for that zone. */
   notes: Array<string | { zoneId?: string; text: string }>;
-  disputes: Array<{ zoneId?: string; statedAs: string }>;
+  /**
+   * Where North Ground's cross-check found two defensible readings of the same
+   * instrument. `words` is always OURS: a dispute exists because WE compared
+   * two sources and found them capable of disagreeing, so the sentence
+   * describing it is a reading, never a quotation. It was a bare `statedAs`,
+   * which is the one name in this codebase that claims the opposite.
+   */
+  disputes: Array<{ zoneId?: string; words: NorthGroundStatement }>;
   sourceId: string;
   sourceSection: string;
   sourceVersion: string;
@@ -235,11 +242,36 @@ export interface ConditionalVocabulary {
 
 /* ── Input ──────────────────────────────────────────────────────────────── */
 
-/** What the absence of a rule means, and on whose authority. */
+/**
+ * What the absence of a rule means, and on whose authority.
+ *
+ * `words` replaced a bare `statedAs`, and the reason is the whole provenance
+ * split in miniature. That field sat beside `sourceId` and `section` under a
+ * doc comment saying "on whose authority" — and **three of its five values
+ * were North Ground's own reasoning**, not any authority's:
+ *
+ * - British Columbia and Manitoba hold regulation text their generators verify
+ *   VERBATIM against the live instrument (`containsVerbatim`, `requireProvision`
+ *   throw if the wording moves). Those are quotations.
+ * - Alberta, Idaho and Montana hold hand-written constants that say things like
+ *   "so North Ground reports UNKNOWN rather than CLOSED". Those are ours.
+ *
+ * Nothing rendered the field, so nothing was misattributed — but it is exactly
+ * the generic string field the invariant names: its name, its neighbours and
+ * its doc comment all invite a future consumer to quote it against `sourceId`.
+ * Declaring authorship is what stops that, and the discriminator is evidence
+ * (does a generator verify it against the source?) rather than a reading of
+ * the prose.
+ *
+ * `section` and `sourceId` stay: they cite the provision the absence RULE rests
+ * on, which is a fact about the bundle even where the sentence explaining it is
+ * ours.
+ */
 export interface AbsenceMeaning {
   meaning: "CLOSED" | "UNKNOWN";
   excludedCombination?: "CLOSED" | "UNKNOWN";
-  statedAs?: string;
+  /** Whose words explain the absence. Never a bare string. */
+  words?: ProvenancedText;
   section?: string;
   sourceId?: string;
   explanation?: string;
@@ -626,7 +658,7 @@ export function evaluateConditional(
     ...inForce.conflicts.flatMap((conflict) => conflict.alternatives.map((alternative, index) => ({
       ...alternative,
       id: `${alternative.id}#${index === 0 ? "reading-a" : "reading-b"}`,
-      disputes: [...alternative.disputes, { statedAs: conflict.statedAs }],
+      disputes: [...alternative.disputes, { words: conflict.words }],
       reading: index === 0 ? "PRIMARY" as const : "ALTERNATIVE" as const,
     }))),
   ];

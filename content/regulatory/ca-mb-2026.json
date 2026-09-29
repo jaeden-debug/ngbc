@@ -17,7 +17,13 @@
   },
   "absence": {
     "meaning": "CLOSED",
-    "statedAs": "3 Except where this regulation provides otherwise, the holder of a hunting licence may only hunt (a) the species of wild animal named in the licence; (b) using the type of equipment stated in the licence; and (c) in an area designated in this regulation for such a species, licence and equipment type.",
+    "words": {
+      "owner": "AUTHORITY",
+      "text": "3 Except where this regulation provides otherwise, the holder of a hunting licence may only hunt (a) the species of wild animal named in the licence; (b) using the type of equipment stated in the licence; and (c) in an area designated in this regulation for such a species, licence and equipment type.",
+      "sourceId": "source:ca-mb-hunting-seasons-regulation",
+      "citation": "M.R. 165/91 s. 3",
+      "lang": "en-CA"
+    },
     "section": "M.R. 165/91 s. 3",
     "sourceId": "source:ca-mb-hunting-seasons-regulation",
     "explanation": "A licence authorises hunting only in the areas, with the equipment and in the seasons the regulation designates for it. Where no row designates this place for this licence, the regulation closes it."
@@ -8831,7 +8837,10 @@
       "disputes": [
         {
           "zoneId": "management_zone:ca-mb-gha-7a",
-          "statedAs": "M.R. 165/91 reaches GHA 7A for this licence only through the range \"5-8\", read so that it includes lettered areas between its ends. The 2026 guide lists no archery season for non canadian residents in GHA 7A. North Ground will not choose between them."
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "M.R. 165/91 reaches GHA 7A for this licence only through the range \"5-8\", read so that it includes lettered areas between its ends. The 2026 guide lists no archery season for non canadian residents in GHA 7A. North Ground will not choose between them."
+          }
         }
       ],
       "sourceId": "source:ca-mb-hunting-seasons-regulation",
@@ -9235,7 +9244,10 @@
       "disputes": [
         {
           "zoneId": "management_zone:ca-mb-gha-7a",
-          "statedAs": "M.R. 165/91 reaches GHA 7A for this licence only through the range \"5-8\", read so that it includes lettered areas between its ends. The 2026 guide lists no muzzleloader season for non canadian residents in GHA 7A. North Ground will not choose between them."
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "M.R. 165/91 reaches GHA 7A for this licence only through the range \"5-8\", read so that it includes lettered areas between its ends. The 2026 guide lists no muzzleloader season for non canadian residents in GHA 7A. North Ground will not choose between them."
+          }
         }
       ],
       "sourceId": "source:ca-mb-hunting-seasons-regulation",

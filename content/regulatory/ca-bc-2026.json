@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "bundleId": "bundle:ca-bc-2026",
   "jurisdictionId": "jurisdiction:ca-bc",
-  "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
-  "retrievedAt": "2026-09-15",
-  "contentHash": "sha256:2128b759d7dbea0301cf6e59fd9388139b273cd6ae8146317930fef8de38679b",
+  "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
+  "retrievedAt": "2026-09-22",
+  "contentHash": "sha256:01a6cf8143e301c5731c0c3d7408e0c7a880a4493222dcaa964801f65ebba1a7",
   "certifiedPeriod": {
     "from": "2026-07-01",
     "to": "2027-06-30",
@@ -13,7 +13,13 @@
   "absence": {
     "meaning": "CLOSED",
     "excludedCombination": "CLOSED",
-    "statedAs": "The open seasons for the hunting of each species and type of game animal, subject to section 6, are those set forth in Parts 1 and 2 of each Schedule.",
+    "words": {
+      "owner": "AUTHORITY",
+      "text": "The open seasons for the hunting of each species and type of game animal, subject to section 6, are those set forth in Parts 1 and 2 of each Schedule.",
+      "sourceId": "source:ca-bc-hunting-regulation",
+      "citation": "B.C. Reg. 190/84, s. 4",
+      "lang": "en-CA"
+    },
     "section": "B.C. Reg. 190/84, s. 4",
     "sourceId": "source:ca-bc-hunting-regulation",
     "explanation": "No row of the Hunting Regulation's schedules names this Management Unit for this species, and s. 4 states that the open seasons are those set forth in the Schedules.",
@@ -21,7 +27,13 @@
       "species:american-black-bear": {
         "meaning": "UNKNOWN",
         "excludedCombination": "CLOSED",
-        "statedAs": "a limited entry hunting authorization is required to hunt a species of wildlife referred to in column 5 of an item in Schedule I during a period set out in column 4 of the item in an area defined by columns 1, 2 and 3 of the item",
+        "words": {
+          "owner": "AUTHORITY",
+          "text": "a limited entry hunting authorization is required to hunt a species of wildlife referred to in column 5 of an item in Schedule I during a period set out in column 4 of the item in an area defined by columns 1, 2 and 3 of the item",
+          "sourceId": "source:ca-bc-limited-entry-hunting",
+          "citation": "B.C. Reg. 134/93, s. 1.1",
+          "lang": "en-CA"
+        },
         "section": "B.C. Reg. 134/93, s. 1.1",
         "sourceId": "source:ca-bc-limited-entry-hunting",
         "explanation": "No row of the Hunting Regulation's schedules names this Management Unit for this species, but limited entry hunting seasons for it are set by B.C. Reg. 134/93, Schedule I, which North Ground has not encoded — so this is not stated as closed."
@@ -1461,7 +1473,7 @@
     "Hunting is prohibited in all national parks. No-shooting areas, motor vehicle prohibitions and provincial park and protected-area rules are not evaluated here.",
     "This describes licensed hunting under the Wildlife Act. It does not describe harvesting under Aboriginal or treaty rights, which is a separate legal context North Ground does not evaluate.",
     "Management Unit boundaries are the regulation's enacted maps (B.C. Reg. 64/96); a river boundary follows the right-hand bank, or the left-hand bank of the West Road (Blackwater), Liard and Peace rivers. North Ground's map is the province's digital product of them.",
-    "BC Laws states this consolidation is current to September 15, 2026; it is not the official version of the regulation. In-season changes are published by the province."
+    "BC Laws states this consolidation is current to September 22, 2026; it is not the official version of the regulation. In-season changes are published by the province."
   ],
   "notEncoded": [
     "Blue (Dusky, Sooty) grouse, which the species library does not hold.",
@@ -2170,7 +2182,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch3",
       "sourceSection": "Schedule 3, Part 1, item 14",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -2223,7 +2235,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch5",
       "sourceSection": "Schedule 5, Part 2, s. 17 (2)",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -2269,7 +2281,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch8",
       "sourceSection": "Schedule 8, Part 2, s. 13",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -2353,7 +2365,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch4",
       "sourceSection": "Schedule 4, Part 1, item 17",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -2422,7 +2434,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch8",
       "sourceSection": "Schedule 8, Part 1, item 14",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -2488,7 +2500,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch2",
       "sourceSection": "Schedule 2, Part 1, item 10",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -2563,7 +2575,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch7",
       "sourceSection": "Schedule 7, Part 1, item 38",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -2641,63 +2653,11 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch6",
       "sourceSection": "Schedule 6, Part 1, item 21",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
-      "id": "regulatory_rule:ca-bc-2026-american-black-bear-4e0687b6",
-      "speciesId": "species:american-black-bear",
-      "regulatoryGroupId": "regulatory_group:ca-bc-2026-ca9cfabb",
-      "geography": {
-        "statedAs": "5-11",
-        "include": {
-          "ghas": [
-            "5-11"
-          ],
-          "gbhz": [],
-          "special": []
-        },
-        "exclude": {
-          "ghas": [],
-          "special": [
-            "bc-s5-17-bear",
-            "bc-s5-17-estuaries"
-          ]
-        }
-      },
-      "appliesWhen": {},
-      "seasonLabel": "General open season",
-      "seasonPhrase": "Sept. 10 to Nov. 30; Apr. 1 to May 31",
-      "windows": [
-        {
-          "opensIso": "2026-09-10",
-          "closesIso": "2026-11-30",
-          "statedAs": "Sept. 10 to Nov. 30"
-        },
-        {
-          "opensIso": "2027-04-01",
-          "closesIso": "2027-05-31",
-          "statedAs": "Apr. 1 to May 31"
-        }
-      ],
-      "declaredNoSeason": false,
-      "limits": {
-        "bag": 2,
-        "combined": false,
-        "statedAs": "2 (season bag limit)",
-        "section": "Schedule 5, Part 1"
-      },
-      "conditionIds": [],
-      "caveats": [],
-      "notes": [],
-      "disputes": [],
-      "sourceId": "source:ca-bc-hunting-regulation-sch5",
-      "sourceSection": "Schedule 5, Part 1, item 9",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
-      "reviewStatus": "VERIFIED"
-    },
-    {
-      "id": "regulatory_rule:ca-bc-2026-american-black-bear-533a08a5",
+      "id": "regulatory_rule:ca-bc-2026-american-black-bear-4c8c7cab",
       "speciesId": "species:american-black-bear",
       "regulatoryGroupId": "regulatory_group:ca-bc-2026-ec72ea79",
       "geography": {
@@ -2765,12 +2725,67 @@
       ],
       "disputes": [
         {
-          "statedAs": "B.C. Reg. 190/84 Schedule 3 item 14 opens the spring black bear season in M.U.s 3-12 to 3-20 and 3-26 to 3-44 from April 1 to June 20; the 2026–2028 synopsis prints April 1 to June 30."
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "B.C. Reg. 190/84 Schedule 3 item 14 opens the spring black bear season in M.U.s 3-12 to 3-20 and 3-26 to 3-44 from April 1 to June 20; the 2026–2028 synopsis prints April 1 to June 30."
+          }
         }
       ],
       "sourceId": "source:ca-bc-hunting-regulation-sch3",
       "sourceSection": "Schedule 3, Part 1, item 14",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-american-black-bear-4e0687b6",
+      "speciesId": "species:american-black-bear",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-ca9cfabb",
+      "geography": {
+        "statedAs": "5-11",
+        "include": {
+          "ghas": [
+            "5-11"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "bc-s5-17-bear",
+            "bc-s5-17-estuaries"
+          ]
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Sept. 10 to Nov. 30; Apr. 1 to May 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-10",
+          "closesIso": "2026-11-30",
+          "statedAs": "Sept. 10 to Nov. 30"
+        },
+        {
+          "opensIso": "2027-04-01",
+          "closesIso": "2027-05-31",
+          "statedAs": "Apr. 1 to May 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 2,
+        "combined": false,
+        "statedAs": "2 (season bag limit)",
+        "section": "Schedule 5, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch5",
+      "sourceSection": "Schedule 5, Part 1, item 9",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -2839,7 +2854,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch1",
       "sourceSection": "Schedule 1, Part 2, s. 4 (1) (a)",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -2904,7 +2919,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch5",
       "sourceSection": "Schedule 5, Part 1, item 8",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -2950,7 +2965,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch4",
       "sourceSection": "Schedule 4, Part 2, s. 21",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -2999,7 +3014,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch3",
       "sourceSection": "Schedule 3, Part 1, item 16",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -3066,7 +3081,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch1",
       "sourceSection": "Schedule 1, Part 1, item 6",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -3144,7 +3159,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch7",
       "sourceSection": "Schedule 7, Part 1, item 38.1",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -3212,7 +3227,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch2",
       "sourceSection": "Schedule 2, Part 2, s. 4 (a)",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -3298,7 +3313,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch4",
       "sourceSection": "Schedule 4, Part 2, s. 15 (2)",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -3373,7 +3388,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch3",
       "sourceSection": "Schedule 3, Part 1, item 31",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -3428,7 +3443,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch5",
       "sourceSection": "Schedule 5, Part 1, item 22",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -3480,7 +3495,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch1",
       "sourceSection": "Schedule 1, Part 1, item 15",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -3539,7 +3554,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch6",
       "sourceSection": "Schedule 6, Part 1, item 30.1",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -3610,7 +3625,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch2",
       "sourceSection": "Schedule 2, Part 2, s. 4 (b)",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -3688,7 +3703,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch7",
       "sourceSection": "Schedule 7, Part 1, item 56",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -3771,7 +3786,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch4",
       "sourceSection": "Schedule 4, Part 1, item 30",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -3835,7 +3850,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch2",
       "sourceSection": "Schedule 2, Part 1, item 22",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -3898,7 +3913,84 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch6",
       "sourceSection": "Schedule 6, Part 1, item 30",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-ruffed-grouse-1047c625",
+      "speciesId": "species:ruffed-grouse",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-cc2a45f8",
+      "geography": {
+        "statedAs": "8-1 to 8-15, 8-21 to 8-26",
+        "include": {
+          "ghas": [
+            "8-1",
+            "8-10",
+            "8-11",
+            "8-12",
+            "8-13",
+            "8-14",
+            "8-15",
+            "8-2",
+            "8-3",
+            "8-4",
+            "8-5",
+            "8-6",
+            "8-7",
+            "8-8",
+            "8-9",
+            "8-21",
+            "8-22",
+            "8-23",
+            "8-24",
+            "8-25",
+            "8-26"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNTER_AGE": "UNDER_18"
+      },
+      "seasonLabel": "Youth season",
+      "seasonPhrase": "Sept. 1 to Sept. 9",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-09-09",
+          "statedAs": "Sept. 1 to Sept. 9"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 5,
+        "possession": 15,
+        "combined": true,
+        "statedAs": "5 per day, 15 in possession",
+        "section": "Schedule 8, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Restricted to persons under 18 (Schedule 8 Part 2 s. 15 (d)).",
+        "Bag limit, Schedule 8 Part 3: The daily aggregate bag limit for blue, spruce (Franklin) and ruffed grouse is 5."
+      ],
+      "disputes": [
+        {
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "Schedule 8 s. 15 (d) restricts a September 1 to September 9 grouse season to persons under 18, and the 2026–2028 synopsis prints it, but Part 1 of Schedule 8 lists no such season."
+          }
+        }
+      ],
+      "sourceId": "source:ca-bc-hunting-regulation-sch8",
+      "sourceSection": "Schedule 8, Part 2, s. 15 (d)",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -3969,7 +4061,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch1",
       "sourceSection": "Schedule 1, Part 2, s. 4 (1) (b)",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -4045,7 +4137,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch6",
       "sourceSection": "Schedule 6, Part 1, item 29",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -4127,7 +4219,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch4",
       "sourceSection": "Schedule 4, Part 1, item 29",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -4191,7 +4283,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch1",
       "sourceSection": "Schedule 1, Part 1, item 14",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -4273,7 +4365,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch6",
       "sourceSection": "Schedule 6, Part 2, s. 15",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -4334,7 +4426,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch5",
       "sourceSection": "Schedule 5, Part 1, item 20.2",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -4407,7 +4499,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch8",
       "sourceSection": "Schedule 8, Part 2, s. 11 (1)",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -4454,7 +4546,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch3",
       "sourceSection": "Schedule 3, Part 1, item 30",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -4518,7 +4610,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch5",
       "sourceSection": "Schedule 5, Part 1, item 20.3",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -4595,7 +4687,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch3",
       "sourceSection": "Schedule 3, Part 1, item 28.1",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -4662,7 +4754,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch8",
       "sourceSection": "Schedule 8, Part 1, item 21",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -4736,7 +4828,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch7",
       "sourceSection": "Schedule 7, Part 1, item 54",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -4813,81 +4905,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch7",
       "sourceSection": "Schedule 7, Part 1, item 53",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
-      "reviewStatus": "VERIFIED"
-    },
-    {
-      "id": "regulatory_rule:ca-bc-2026-ruffed-grouse-d6dfe06a",
-      "speciesId": "species:ruffed-grouse",
-      "regulatoryGroupId": "regulatory_group:ca-bc-2026-cc2a45f8",
-      "geography": {
-        "statedAs": "8-1 to 8-15, 8-21 to 8-26",
-        "include": {
-          "ghas": [
-            "8-1",
-            "8-10",
-            "8-11",
-            "8-12",
-            "8-13",
-            "8-14",
-            "8-15",
-            "8-2",
-            "8-3",
-            "8-4",
-            "8-5",
-            "8-6",
-            "8-7",
-            "8-8",
-            "8-9",
-            "8-21",
-            "8-22",
-            "8-23",
-            "8-24",
-            "8-25",
-            "8-26"
-          ],
-          "gbhz": [],
-          "special": []
-        },
-        "exclude": {
-          "ghas": [],
-          "special": []
-        }
-      },
-      "appliesWhen": {
-        "HUNTER_AGE": "UNDER_18"
-      },
-      "seasonLabel": "Youth season",
-      "seasonPhrase": "Sept. 1 to Sept. 9",
-      "windows": [
-        {
-          "opensIso": "2026-09-01",
-          "closesIso": "2026-09-09",
-          "statedAs": "Sept. 1 to Sept. 9"
-        }
-      ],
-      "declaredNoSeason": false,
-      "limits": {
-        "daily": 5,
-        "possession": 15,
-        "combined": true,
-        "statedAs": "5 per day, 15 in possession",
-        "section": "Schedule 8, Part 1"
-      },
-      "conditionIds": [],
-      "caveats": [],
-      "notes": [
-        "Restricted to persons under 18 (Schedule 8 Part 2 s. 15 (d)).",
-        "Bag limit, Schedule 8 Part 3: The daily aggregate bag limit for blue, spruce (Franklin) and ruffed grouse is 5."
-      ],
-      "disputes": [
-        {
-          "statedAs": "Schedule 8 s. 15 (d) restricts a September 1 to September 9 grouse season to persons under 18, and the 2026–2028 synopsis prints it, but Part 1 of Schedule 8 lists no such season."
-        }
-      ],
-      "sourceId": "source:ca-bc-hunting-regulation-sch8",
-      "sourceSection": "Schedule 8, Part 2, s. 15 (d)",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -4951,7 +4969,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch2",
       "sourceSection": "Schedule 2, Part 1, item 20",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -5021,7 +5039,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch2",
       "sourceSection": "Schedule 2, Part 2, s. 4 (a)",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -5095,7 +5113,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch3",
       "sourceSection": "Schedule 3, Part 1, item 28",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -5143,7 +5161,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch3",
       "sourceSection": "Schedule 3, Part 1, item 29",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -5198,7 +5216,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch5",
       "sourceSection": "Schedule 5, Part 1, item 21",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -5261,7 +5279,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch7",
       "sourceSection": "Schedule 7, Part 1, item 55",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -5337,7 +5355,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch3",
       "sourceSection": "Schedule 3, Part 1, item 26",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -5398,7 +5416,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch5",
       "sourceSection": "Schedule 5, Part 1, item 19",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -5467,7 +5485,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch8",
       "sourceSection": "Schedule 8, Part 1, item 20",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -5519,7 +5537,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch1",
       "sourceSection": "Schedule 1, Part 1, item 12",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -5582,7 +5600,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch2",
       "sourceSection": "Schedule 2, Part 1, item 19",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -5660,7 +5678,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch6",
       "sourceSection": "Schedule 6, Part 1, item 28",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -5744,7 +5762,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch4",
       "sourceSection": "Schedule 4, Part 1, item 27",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -5849,7 +5867,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch7",
       "sourceSection": "Schedule 7, Part 1, item 48",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -5923,7 +5941,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch7",
       "sourceSection": "Schedule 7, Part 1, item 52",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -5993,7 +6011,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch2",
       "sourceSection": "Schedule 2, Part 2, s. 4 (a)",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -6067,7 +6085,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch3",
       "sourceSection": "Schedule 3, Part 1, item 28",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -6149,7 +6167,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch6",
       "sourceSection": "Schedule 6, Part 2, s. 15",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -6231,7 +6249,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch4",
       "sourceSection": "Schedule 4, Part 1, item 29",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -6292,7 +6310,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch5",
       "sourceSection": "Schedule 5, Part 1, item 20.2",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -6369,7 +6387,84 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch3",
       "sourceSection": "Schedule 3, Part 1, item 28.1",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-spruce-grouse-68a59bfa",
+      "speciesId": "species:spruce-grouse",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-cc2a45f8",
+      "geography": {
+        "statedAs": "8-1 to 8-15, 8-21 to 8-26",
+        "include": {
+          "ghas": [
+            "8-1",
+            "8-10",
+            "8-11",
+            "8-12",
+            "8-13",
+            "8-14",
+            "8-15",
+            "8-2",
+            "8-3",
+            "8-4",
+            "8-5",
+            "8-6",
+            "8-7",
+            "8-8",
+            "8-9",
+            "8-21",
+            "8-22",
+            "8-23",
+            "8-24",
+            "8-25",
+            "8-26"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "HUNTER_AGE": "UNDER_18"
+      },
+      "seasonLabel": "Youth season",
+      "seasonPhrase": "Sept. 1 to Sept. 9",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-09-09",
+          "statedAs": "Sept. 1 to Sept. 9"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 5,
+        "possession": 15,
+        "combined": true,
+        "statedAs": "5 per day, 15 in possession",
+        "section": "Schedule 8, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Restricted to persons under 18 (Schedule 8 Part 2 s. 15 (d)).",
+        "Bag limit, Schedule 8 Part 3: The daily aggregate bag limit for blue, spruce (Franklin) and ruffed grouse is 5."
+      ],
+      "disputes": [
+        {
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "Schedule 8 s. 15 (d) restricts a September 1 to September 9 grouse season to persons under 18, and the 2026–2028 synopsis prints it, but Part 1 of Schedule 8 lists no such season."
+          }
+        }
+      ],
+      "sourceId": "source:ca-bc-hunting-regulation-sch8",
+      "sourceSection": "Schedule 8, Part 2, s. 15 (d)",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -6442,81 +6537,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch8",
       "sourceSection": "Schedule 8, Part 2, s. 11 (1)",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
-      "reviewStatus": "VERIFIED"
-    },
-    {
-      "id": "regulatory_rule:ca-bc-2026-spruce-grouse-78c35ad7",
-      "speciesId": "species:spruce-grouse",
-      "regulatoryGroupId": "regulatory_group:ca-bc-2026-cc2a45f8",
-      "geography": {
-        "statedAs": "8-1 to 8-15, 8-21 to 8-26",
-        "include": {
-          "ghas": [
-            "8-1",
-            "8-10",
-            "8-11",
-            "8-12",
-            "8-13",
-            "8-14",
-            "8-15",
-            "8-2",
-            "8-3",
-            "8-4",
-            "8-5",
-            "8-6",
-            "8-7",
-            "8-8",
-            "8-9",
-            "8-21",
-            "8-22",
-            "8-23",
-            "8-24",
-            "8-25",
-            "8-26"
-          ],
-          "gbhz": [],
-          "special": []
-        },
-        "exclude": {
-          "ghas": [],
-          "special": []
-        }
-      },
-      "appliesWhen": {
-        "HUNTER_AGE": "UNDER_18"
-      },
-      "seasonLabel": "Youth season",
-      "seasonPhrase": "Sept. 1 to Sept. 9",
-      "windows": [
-        {
-          "opensIso": "2026-09-01",
-          "closesIso": "2026-09-09",
-          "statedAs": "Sept. 1 to Sept. 9"
-        }
-      ],
-      "declaredNoSeason": false,
-      "limits": {
-        "daily": 5,
-        "possession": 15,
-        "combined": true,
-        "statedAs": "5 per day, 15 in possession",
-        "section": "Schedule 8, Part 1"
-      },
-      "conditionIds": [],
-      "caveats": [],
-      "notes": [
-        "Restricted to persons under 18 (Schedule 8 Part 2 s. 15 (d)).",
-        "Bag limit, Schedule 8 Part 3: The daily aggregate bag limit for blue, spruce (Franklin) and ruffed grouse is 5."
-      ],
-      "disputes": [
-        {
-          "statedAs": "Schedule 8 s. 15 (d) restricts a September 1 to September 9 grouse season to persons under 18, and the 2026–2028 synopsis prints it, but Part 1 of Schedule 8 lists no such season."
-        }
-      ],
-      "sourceId": "source:ca-bc-hunting-regulation-sch8",
-      "sourceSection": "Schedule 8, Part 2, s. 15 (d)",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -6592,7 +6613,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch6",
       "sourceSection": "Schedule 6, Part 1, item 29",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -6656,7 +6677,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch5",
       "sourceSection": "Schedule 5, Part 1, item 20.3",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -6723,7 +6744,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch8",
       "sourceSection": "Schedule 8, Part 1, item 21",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -6787,7 +6808,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch2",
       "sourceSection": "Schedule 2, Part 1, item 20",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -6864,7 +6885,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch7",
       "sourceSection": "Schedule 7, Part 1, item 51",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -6911,7 +6932,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch3",
       "sourceSection": "Schedule 3, Part 1, item 30",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -6974,7 +6995,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch6",
       "sourceSection": "Schedule 6, Part 1, item 30",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -7033,7 +7054,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch6",
       "sourceSection": "Schedule 6, Part 1, item 30.1",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -7085,7 +7106,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch1",
       "sourceSection": "Schedule 1, Part 1, item 15",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -7149,7 +7170,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch2",
       "sourceSection": "Schedule 2, Part 1, item 22",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -7220,7 +7241,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch2",
       "sourceSection": "Schedule 2, Part 2, s. 4 (b)",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -7275,7 +7296,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch5",
       "sourceSection": "Schedule 5, Part 1, item 22",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -7350,7 +7371,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch3",
       "sourceSection": "Schedule 3, Part 1, item 31",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -7433,7 +7454,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch4",
       "sourceSection": "Schedule 4, Part 1, item 30",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     },
     {
@@ -7511,7 +7532,7 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch7",
       "sourceSection": "Schedule 7, Part 1, item 56",
-      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 15, 2026",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to September 22, 2026",
       "reviewStatus": "VERIFIED"
     }
   ]

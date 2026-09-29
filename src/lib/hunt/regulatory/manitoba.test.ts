@@ -75,10 +75,18 @@ test("the bundle is the 2026-27 hunting year, from the consolidation in force si
   }
 });
 
-test("absence is closed because the regulation says so, and the provision is quoted", () => {
+test("absence is closed because the regulation says so, and the provision is quoted AS the regulation's", () => {
   assert.equal(MANITOBA_BUNDLE.absence.meaning, "CLOSED");
   assert.equal(MANITOBA_BUNDLE.absence.section, "M.R. 165/91 s. 3");
-  assert.match(MANITOBA_BUNDLE.absence.statedAs ?? "", /may only hunt .* in an area designated in this regulation for such a species, licence and equipment type/);
+  const words = MANITOBA_BUNDLE.absence.words!;
+  /* Manitoba's absence rests on the regulation's OWN sentence — the generator
+     verifies it verbatim with `requireProvision` — so it must be declared the
+     authority's and carry the provenance that makes quoting it checkable.
+     Alberta's, Idaho's and Montana's absence sentences are North Ground's
+     reasoning and must not reach this branch. */
+  assert.equal(words.owner, "AUTHORITY");
+  assert.match(words.text, /may only hunt .* in an area designated in this regulation for such a species, licence and equipment type/);
+  assert.equal(words.owner === "AUTHORITY" && words.citation, "M.R. 165/91 s. 3");
 });
 
 /* ── Grouse: direct, whatever the licence ───────────────────────────────── */

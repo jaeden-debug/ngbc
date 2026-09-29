@@ -100,6 +100,11 @@ test("on a reservation the Commission closed to state licenses, the answer is CL
 
 test("on the Flathead or Crow reservation North Ground does not state a status", () => {
   const flathead = MONTANA_OVERLAYS.layers.find((layer) => layer.key === "reservations")!.features.find((feature) => feature.name === "Flathead Reservation")!;
+  /* Narrowing the catalogue union is itself the assertion worth making: the
+     cooperative-agreement sentence is the AUTHORITY's, so Flathead must be on
+     the `statedAs` branch. If it ever moves to `northGroundSummary` this stops
+     compiling rather than silently quoting our words as Montana's. */
+  assert.ok(flathead.statedAs !== undefined, "Flathead's wording is the authority's, not North Ground's");
   const result = evaluate("species:ruffed-grouse", "2026-10-10", {}, {
     restrictions: [{
       name: flathead.name,

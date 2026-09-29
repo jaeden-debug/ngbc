@@ -35,7 +35,16 @@ test("the bundle is built from the regulation, for 225 units, over one certified
   assert.equal(BRITISH_COLUMBIA_BUNDLE.officialUnitCount, 225);
   assert.deepEqual(BRITISH_COLUMBIA_BUNDLE.certifiedPeriod.from, "2026-07-01");
   assert.deepEqual(BRITISH_COLUMBIA_BUNDLE.certifiedPeriod.to, "2027-06-30");
-  assert.match(BRITISH_COLUMBIA_BUNDLE.sourceVersion, /B\.C\. Reg\. 190\/84, consolidated to September 15, 2026/);
+  /* Advanced from September 15 to September 22, 2026 — BC Laws re-consolidated
+     B.C. Reg. 190/84 while this bundle was being regenerated. The date was NOT
+     simply updated to make the test pass: the regenerated bundle was compared
+     against the committed one and every rule, group and unit is byte-identical
+     (79 rules, 225 units), with only `retrievedAt`, the content hash and the
+     consolidation sentence moving. The generator's own `containsVerbatim`
+     guards on s. 4 and s. 5 also did not fire. §45 asks that a changed
+     government document trigger review; this records that the review happened
+     and found no substantive change. */
+  assert.match(BRITISH_COLUMBIA_BUNDLE.sourceVersion, /B\.C\. Reg\. 190\/84, consolidated to September 22, 2026/);
   /* s. 4 makes an unlisted unit closed; the limited entry caveat now attaches
      per species rather than suppressing the statement for all of them. */
   assert.equal(BRITISH_COLUMBIA_BUNDLE.absence.meaning, "CLOSED");

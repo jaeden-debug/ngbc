@@ -44,6 +44,8 @@
  * not map cleanly onto this list, its builder records the mapping with the
  * source text that justifies it; nothing is ranked by inference at runtime.
  */
+import { authored, type NorthGroundStatement } from "../provenance.ts";
+
 export const AUTHORITY_LEVELS = [
   "FEDERAL_STATUTE",
   "FEDERAL_REGULATION",
@@ -119,7 +121,15 @@ export interface AppliedAmendment {
 export interface AmendmentConflict {
   ruleId: string;
   amendmentIds: string[];
-  statedAs: string;
+  /**
+   * Always NORTH GROUND'S. A conflict exists because this engine COMPOSED a
+   * sentence out of several instruments' positions — joining them, or saying
+   * that two amendments collide. A composition is authorship, not annotation:
+   * the same shape as British Columbia's mixed summaries, where an authority's
+   * sentence and our caveat were concatenated into one string that then
+   * carried a citation.
+   */
+  words: NorthGroundStatement;
 }
 
 export interface RulesInForce<R> {
@@ -214,9 +224,10 @@ export function rulesInForce<R extends AmendableRule>(rules: readonly R[], amend
         refused.push({
           ruleId: rule.id,
           amendmentIds: [amendment.id],
-          statedAs:
+          words: authored(
             `${amendment.authority.instrument} would change a rule stated in ${(rule.authority ?? DEFAULT_AUTHORITY).instrument}, ` +
             "which ranks above it. North Ground does not apply it and treats the rule as disputed.",
+          ),
         });
         continue;
       }
@@ -229,7 +240,7 @@ export function rulesInForce<R extends AmendableRule>(rules: readonly R[], amend
       conflicts.push({
         ruleId: rule.id,
         amendmentIds: refusedHere.flatMap((entry) => entry.amendmentIds),
-        statedAs: refusedHere.map((entry) => entry.statedAs).join(" "),
+        words: authored(refusedHere.map((entry) => entry.words.text).join(" ")),
         alternatives: [rule, alternative ?? { ...rule, windows: [] }],
       });
       continue;
@@ -258,9 +269,10 @@ export function rulesInForce<R extends AmendableRule>(rules: readonly R[], amend
       conflicts.push({
         ruleId: rule.id,
         amendmentIds: winners.map((amendment) => amendment.id),
-        statedAs:
+        words: authored(
           `${winners.map((amendment) => amendment.authority.instrument).join(" and ")} each change this rule for the same date, ` +
           "and neither says it replaces the other.",
+        ),
         alternatives: [readings[0], readings[1]],
       });
       continue;

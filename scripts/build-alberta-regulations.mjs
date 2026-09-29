@@ -334,7 +334,9 @@ function build({ pages, pdf, officialIdentifiers }, crosscheck, previous) {
   const disputesFor = (key) => {
     const verdict = verdicts.get(key);
     if (!verdict) throw new Error(`Row ${key} has no PDF cross-check verdict; re-run the cross-check`);
-    return verdict.agree ? [] : [{ statedAs: `The online guide and the published PDF disagree for this row: ${verdict.detail}` }];
+    /* North Ground's own cross-check found the disagreement; the sentence
+       describing it is ours, not either document's. */
+    return verdict.agree ? [] : [{ words: { owner: "NORTH_GROUND", text: `The online guide and the published PDF disagree for this row: ${verdict.detail}` } }];
   };
 
   for (const row of birds) {
@@ -442,9 +444,16 @@ function build({ pages, pdf, officialIdentifiers }, crosscheck, previous) {
       certifiedPeriod: { from: `${LICENCE_YEAR}-04-01`, to: `${LICENCE_YEAR + 1}-03-31` },
       absence: {
         meaning: "UNKNOWN",
-        statedAs:
-          "No row of the 2026 guide names this unit for this species. The guide is a summary and does not say an " +
-          "unnamed unit is closed for big game, so North Ground reports UNKNOWN rather than CLOSED.",
+        /* OURS. The guide states no such thing; this is North Ground's reading
+           of what its silence does and does not establish, and it says so in
+           its own text. It is not verified verbatim against any source, which
+           is the discriminator. */
+        words: {
+          owner: "NORTH_GROUND",
+          text:
+            "No row of the 2026 guide names this unit for this species. The guide is a summary and does not say an " +
+            "unnamed unit is closed for big game, so North Ground reports UNKNOWN rather than CLOSED.",
+        },
         section: "Big Game Seasons; Game Bird Seasons and Bag Limits",
         sourceId: SOURCE_ID,
         /* A unit the guide DOES name for a species has its seasons listed in

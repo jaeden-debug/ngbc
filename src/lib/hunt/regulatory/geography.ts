@@ -16,6 +16,7 @@
  * not. The engine evaluates every consistent world and answers only if they
  * agree, and it names what it could not establish when they do not.
  */
+import type { NorthGroundStatement } from "../provenance.ts";
 
 export interface GeographyExpression {
   statedAs: string;
@@ -151,7 +152,7 @@ function specialById(data: GeographyData, id: string): SpecialGeography {
 export function placeWorlds(
   data: GeographyData,
   place: PlaceContext,
-  rules: ReadonlyArray<{ geography?: GeographyExpression; disputes?: Array<{ zoneId?: string; statedAs: string }> }>,
+  rules: ReadonlyArray<{ geography?: GeographyExpression; disputes?: Array<{ zoneId?: string; words: NorthGroundStatement }> }>,
 ): WorldSet {
   const area = areaOf(data, place.zoneId);
   const unknowns: WorldSet["unknowns"] = [];
@@ -217,7 +218,7 @@ export function placeWorlds(
   const disputed = rules.flatMap((rule) => (rule.disputes ?? []).filter((dispute) => !dispute.zoneId || dispute.zoneId === place.zoneId));
   const readings = disputed.length ? [true, false] : [true];
   for (const dispute of disputed) {
-    if (!unknowns.some((unknown) => unknown.statedAs === dispute.statedAs)) unknowns.push({ kind: "DISPUTE", statedAs: dispute.statedAs });
+    if (!unknowns.some((unknown) => unknown.statedAs === dispute.words.text)) unknowns.push({ kind: "DISPUTE", statedAs: dispute.words.text });
   }
 
   const worlds: PlaceWorld[] = [];
@@ -240,7 +241,7 @@ export function appliesInWorld(
   rule: {
     geography?: GeographyExpression;
     regulatoryGroupId: string;
-    disputes?: Array<{ zoneId?: string; statedAs: string }>;
+    disputes?: Array<{ zoneId?: string; words: NorthGroundStatement }>;
     /**
      * Which side of a dispute this rule is. A disputed rule is ordinarily the
      * reading that holds only if the disputed text holds (PRIMARY). Where two

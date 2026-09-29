@@ -763,7 +763,10 @@ async function main() {
       if (finding.effect === "DISPUTE") {
         rule.disputes.push({
           zoneId: zoneId(area),
-          statedAs: `M.R. 165/91 reaches ${where} for this licence only through the range "${rule.geography.include.interpretive.find((entry) => entry.area === area)?.range}", read so that it includes lettered areas between its ends. The 2026 guide lists no ${finding.seasonType.toLowerCase()} season for ${finding.residency.replace(/_/g, " ").toLowerCase()}s in ${where}. North Ground will not choose between them.`,
+          /* North Ground's reading of a conflict IT found between the
+             regulation and the guide — it ends "North Ground will not choose
+             between them", which no authority would write. */
+          words: { owner: "NORTH_GROUND", text: `M.R. 165/91 reaches ${where} for this licence only through the range "${rule.geography.include.interpretive.find((entry) => entry.area === area)?.range}", read so that it includes lettered areas between its ends. The 2026 guide lists no ${finding.seasonType.toLowerCase()} season for ${finding.residency.replace(/_/g, " ").toLowerCase()}s in ${where}. North Ground will not choose between them.` },
         });
       } else {
         const guideText = finding.guide.length ? finding.guide.map((key) => key.replace("/", " to ")).join(", ") : "no such season";
@@ -903,7 +906,14 @@ async function main() {
     },
     absence: {
       meaning: "CLOSED",
-      statedAs: provisions.exhaustive.text,
+      /* `requireProvision` verified this verbatim against the regulation body. */
+      words: {
+        owner: "AUTHORITY",
+        text: provisions.exhaustive.text,
+        sourceId: "source:ca-mb-hunting-seasons-regulation",
+        citation: provisions.exhaustive.section,
+        lang: "en-CA",
+      },
       section: provisions.exhaustive.section,
       sourceId: "source:ca-mb-hunting-seasons-regulation",
       explanation: "A licence authorises hunting only in the areas, with the equipment and in the seasons the regulation designates for it. Where no row designates this place for this licence, the regulation closes it.",

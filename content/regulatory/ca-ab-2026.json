@@ -11,7 +11,10 @@
   },
   "absence": {
     "meaning": "UNKNOWN",
-    "statedAs": "No row of the 2026 guide names this unit for this species. The guide is a summary and does not say an unnamed unit is closed for big game, so North Ground reports UNKNOWN rather than CLOSED.",
+    "words": {
+      "owner": "NORTH_GROUND",
+      "text": "No row of the 2026 guide names this unit for this species. The guide is a summary and does not say an unnamed unit is closed for big game, so North Ground reports UNKNOWN rather than CLOSED."
+    },
     "section": "Big Game Seasons; Game Bird Seasons and Bag Limits",
     "sourceId": "source:ca-ab-hunting-guide-2026",
     "excludedCombination": "CLOSED"

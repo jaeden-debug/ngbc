@@ -125,14 +125,14 @@ test("the three cross-check disputes are still encoded, not resolved away", () =
   assert.equal(disputed.length, 3);
 
   const bear = disputed.find((rule) => rule.speciesId === "species:american-black-bear")!;
-  assert.match(bear.disputes[0].statedAs, /April 1 to June 20;.*synopsis prints April 1 to June 30/);
+  assert.match(bear.disputes[0].words.text, /April 1 to June 20;.*synopsis prints April 1 to June 30/);
 
   /* The youth-season dispute reaches both grouse the clause names. */
   const grouse = disputed.filter((rule) => rule.speciesId !== "species:american-black-bear");
   assert.deepEqual(grouse.map((rule) => rule.speciesId).sort(), ["species:ruffed-grouse", "species:spruce-grouse"]);
   for (const rule of grouse) {
-    assert.match(rule.disputes[0].statedAs, /September 1 to September 9 grouse season to persons under 18/);
-    assert.match(rule.disputes[0].statedAs, /Part 1 of Schedule 8 lists no such season/);
+    assert.match(rule.disputes[0].words.text, /September 1 to September 9 grouse season to persons under 18/);
+    assert.match(rule.disputes[0].words.text, /Part 1 of Schedule 8 lists no such season/);
   }
 });
 

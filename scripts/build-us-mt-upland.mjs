@@ -219,9 +219,17 @@ function buildOverlays(booklet, restricted, uplandRestricted, portions, reservat
     if (BIG_GAME_RESTRICTED_UPLAND_LAYER.includes(name)) {
       return { objectId: row.OBJECTID, name, statedAs: "", regulation: "Read from FWP's upland restricted-areas layer", tokens: [], unclassified: [], specialIds: [] };
     }
+    /* OURS, and it says so: FWP lists the area, but "any rule it has for upland
+       game birds is not in the regulations North Ground has certified" is a
+       statement about OUR reading, not FWP's. It goes in `northGroundSummary`
+       so the catalogue union keeps it off the quotation branch.
+
+       This is emitted HERE, in the generator, because the catalogue is
+       generated: converting the JSON alone left the split intact until the
+       next rebuild, and a rebuild silently restored all 50 to `statedAs`. */
     return {
       objectId: row.OBJECTID, name,
-      statedAs: "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+      northGroundSummary: "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
       regulation: "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer", tokens: ["restricted_area_not_evaluated"], unclassified: [], specialIds: [],
     };
   });
@@ -449,9 +457,14 @@ async function main() {
     absence: {
       meaning: "UNKNOWN",
       excludedCombination: "CLOSED",
-      statedAs:
-        "Montana's upland seasons are statewide. A combination the booklet gives no season to on a date — a nonresident on public land " +
-        "before the tenth day, a sharp-tailed grouse west of the Divide — is closed by the booklet's own table.",
+      /* OURS: a characterisation of what the booklet's table implies, not a
+         sentence the booklet prints. */
+      words: {
+        owner: "NORTH_GROUND",
+        text:
+          "Montana's upland seasons are statewide. A combination the booklet gives no season to on a date — a nonresident on public land " +
+          "before the tenth day, a sharp-tailed grouse west of the Divide — is closed by the booklet's own table.",
+      },
       section: "pp. 9–10",
       sourceId: SOURCE_ID,
     },
