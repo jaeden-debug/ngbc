@@ -1431,6 +1431,20 @@ const scenarios = {
       // Search submitted from the keyboard's own key.
       await page.locator("input[type='search']").first().fill("Bancroft Ontario");
       const suggested = await waitFor(page, () => document.querySelectorAll("[role=option]").length > 0, 25_000);
+      /*
+       * A SKIPPED BLOCK IS NOT A PASS.
+       *
+       * Everything below this point — submit, blur, the three open/close
+       * cycles, the rotation and steps 18 to 20 — used to hang off `if
+       * (suggested)` with no check attached. One run had no suggestions at 375
+       * and quietly dropped 21 assertions while still exiting 0: 39 checks
+       * reported green where 48 were expected, and nothing said so. A provider
+       * hiccup must FAIL here rather than silently reduce the suite, which is
+       * the same defect as a certification that crashes and prints no FAIL
+       * lines.
+       */
+      check(s, `${width}: the place provider answered, so the rest of this scenario can run`,
+        suggested === true, "no suggestions returned — the checks below did not run");
       if (suggested) {
         await page.locator("input[type='search']").first().press("Enter");
         /* Poll for the zone rather than sleeping for it. A fixed wait passed at
@@ -1495,7 +1509,27 @@ const scenarios = {
             inCycle.topOnScreen && inCycle.anchored === true, JSON.stringify({ top: inCycle.sheetTop, band: inCycle.band, anchored: inCycle.anchored }));
           await page.keyboard.press("Escape");
           await keyboard(false);
-          await page.waitForTimeout(600);
+          await page.waitForTimeout(700);
+          /*
+           * THE ANSWER MUST COME BACK.
+           *
+           * While the composer is open it owns the sheet, so the answer is
+           * deliberately not rendered. That is the owner's model — but it means
+           * every close is a restore, and the sheet body now carries the
+           * status, conditions, season ends, legal hours and Ready to Hunt. A
+           * hunter re-entering it has more to lose than when this state was
+           * only a place prompt. Geometry returning is not the answer
+           * returning, and only one of those was being checked.
+           */
+          const restored = await page.evaluate(() => {
+            const sheet = document.querySelector("section[data-layout]");
+            return { text: (sheet?.textContent ?? "").slice(0, 400), snap: sheet?.dataset.snap ?? null,
+                     scrollY: Math.round(window.scrollY) };
+          });
+          check(s, `${width}: cycle ${cycle + 1} brings the answer back`,
+            /WMU\s*\d/.test(restored.text), JSON.stringify({ snap: restored.snap, head: restored.text.slice(0, 80) }));
+          check(s, `${width}: cycle ${cycle + 1} leaves the page unscrolled`,
+            restored.scrollY === 0, String(restored.scrollY));
         }
 
         /*
