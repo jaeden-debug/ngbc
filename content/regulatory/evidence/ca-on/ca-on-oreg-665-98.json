@@ -72,10 +72,8 @@
       "statedAs": "The King's Printer for Ontario holds copyright in Ontario statutes, regulations and judicial decisions. The King's Printer permits any person to reproduce the text and images contained in the statutes, regulations and judicial decisions without seeking permission and without charge. The legal materials must be reproduced accurately, and Crown copyright in the legal materials must be acknowledged in the following form: © King's Printer for Ontario, 20__.",
       "url": "https://www.ontario.ca/page/copyright-information",
       "retrievedAt": "2026-09-23",
-      "permittedUse": "COMMERCIAL",
+      "permittedUse": "COMMERCIAL_PERMITTED",
       "redistribution": "PERMITTED",
-      "licencePermitsServing": true,
-      "licencePermitsStoredCopy": true,
       "obligations": [
         "Reproduce accurately.",
         "Acknowledge Crown copyright in the form '© King's Printer for Ontario, 1998.' (1998 being the year of first publication of O. Reg. 665/98).",
@@ -87,7 +85,10 @@
         "notAnOfficialVersion": "This is not an official version of O. Reg. 665/98.",
         "note": "The third obligation is met inside this package. Whether every SURFACE that shows Ontario legal text carries it is a separate question and is reported as an open item, not asserted here."
       },
-      "scopeOfThisGrant": "Ontario LEGAL MATERIALS only — statutes, regulations, judicial decisions. It does NOT extend to the Ontario Hunting Regulations Summary on ontario.ca, which is ministry-authored content, is not labelled Open Government Licence – Ontario, and whose commercial reproduction the same page reserves to a licence from the King's Printer. That is why every row below is encoded from the regulation and none from the summary."
+      "scopeOfThisGrant": "Ontario LEGAL MATERIALS only — statutes, regulations, judicial decisions. It does NOT extend to the Ontario Hunting Regulations Summary on ontario.ca, which is ministry-authored content, is not labelled Open Government Licence – Ontario, and whose commercial reproduction the same page reserves to a licence from the King's Printer. That is why every row below is encoded from the regulation and none from the summary.",
+      "attribution": "© King's Printer for Ontario, 1998.",
+      "sha256": "b33bc52a1d973afa2f5fed3318b67cd9eb6e31fe1f779110a9fc113cb6c74758",
+      "note": "Conformed to the canonical SourceLicence model 2026-09-29. `permittedUse` previously read \"COMMERCIAL\", which is not one of the five canonical values, and the record stored `licencePermitsServing` and `licencePermitsStoredCopy` — which the canonical model COMPUTES from `permittedUse` and `redistribution`. Storing a derived permission is how a licence record comes to disagree with itself."
     }
   },
   "speciesClassification": {

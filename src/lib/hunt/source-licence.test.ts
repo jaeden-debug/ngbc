@@ -68,3 +68,59 @@ test("the recorded wording is hashed, so a reworded licence is a visible change"
   // Hashing is over the exact text: whitespace is not normalised away.
   assert.notEqual(licenceHash("Open Government Licence"), licenceHash("Open Government  Licence"));
 });
+
+test("an evidence package's licence record uses the canonical vocabulary and stores no derived permission", async () => {
+  /* Both licence blocks in the evidence corpus were written by hand, and both
+     were wrong the same two ways — which is what a hand-written second model
+     of an existing type produces.
+
+     `permittedUse` had invented values ("COMMERCIAL", "NOT_ESTABLISHED"), and
+     both records STORED `licencePermitsServing` and `licencePermitsStoredCopy`,
+     which this module COMPUTES. A stored derived permission is how a record
+     comes to assert a permission and deny establishing one in the same breath:
+     each field reads plausibly alone, and only the pair is wrong, so a
+     reviewer reads past it.
+
+     The first attempt at fixing it replaced one invented value with another
+     and kept the booleans. That is why this assertion exists and a corrected
+     record does not: a fix that does not close the shape invites the next
+     instance to look different enough to pass. */
+  const { readdir, readFile } = await import("node:fs/promises");
+  const root = "content/regulatory/evidence";
+  const canonical = new Set(["COMMERCIAL_PERMITTED", "PUBLIC_DOMAIN", "NON_COMMERCIAL_ONLY", "PROHIBITED", "UNRESOLVED"]);
+  const redistribution = new Set(["PERMITTED", "UNRESOLVED", "PROHIBITED"]);
+  let checked = 0;
+
+  for (const jurisdiction of await readdir(root)) {
+    for (const file of await readdir(`${root}/${jurisdiction}`)) {
+      const at = `${jurisdiction}/${file}`;
+      const parsed = JSON.parse(await readFile(`${root}/${at}`, "utf8")) as {
+        source?: { licence?: Record<string, unknown> };
+      };
+      const licence = parsed.source?.licence;
+      if (!licence) continue;
+      checked += 1;
+
+      assert.ok(canonical.has(licence.permittedUse as string),
+        `${at}: permittedUse ${JSON.stringify(licence.permittedUse)} is not one of the canonical values`);
+      if (licence.redistribution !== undefined) {
+        assert.ok(redistribution.has(licence.redistribution as string),
+          `${at}: redistribution ${JSON.stringify(licence.redistribution)} is not canonical`);
+      }
+      for (const derived of ["licencePermitsServing", "licencePermitsStoredCopy"]) {
+        assert.ok(!(derived in licence),
+          `${at}: ${derived} is COMPUTED from permittedUse and redistribution and must never be stored`);
+      }
+      /* `statedAs` means the publisher's words. Ours belongs in its own field,
+         and a record with no publisher statement carries neither rather than
+         borrowing the quotation field to hold a finding. */
+      if (typeof licence.statedAs === "string") {
+        assert.doesNotMatch(licence.statedAs, /North Ground/,
+          `${at}: statedAs is the publisher's words — a North Ground finding belongs in northGroundFinding`);
+      }
+    }
+  }
+
+  /* An empty sweep would pass every assertion above. */
+  assert.ok(checked >= 2, `expected to check at least 2 licence records, checked ${checked}`);
+});

@@ -51,10 +51,8 @@
     },
     "licence": {
       "retrievedAt": "2026-09-23",
-      "permittedUse": "NOT_ESTABLISHED",
-      "licencePermitsServing": "NOT_ESTABLISHED_NOT_RELIED_ON",
-      "licencePermitsStoredCopy": "NOT_ESTABLISHED_NOT_RELIED_ON",
-      "note": "Two defects fixed 2026-09-29. (1) The finding above previously sat in `statedAs` — documented as “the publisher's words, quoted exactly and never paraphrased” — which made North Ground's own licence reading read as Idaho's statement about itself. A publisher does not say that about itself. (2) `licencePermitsServing` and `licencePermitsStoredCopy` read `true` beside `permittedUse: NOT_ESTABLISHED`, so the record asserted a permission and denied establishing one at the same time. Both now say what is actually true: nothing was established, and nothing here relies on it.",
+      "permittedUse": "UNRESOLVED",
+      "note": "Conformed to the canonical SourceLicence vocabulary 2026-09-29. Two earlier defects and one that outlasted the first fix: (1) North Ground's licence finding sat in `statedAs`, documented as the publisher's words — moved to `northGroundFinding`. (2) `licencePermitsServing` and `licencePermitsStoredCopy` read `true` beside a `permittedUse` that denied establishing anything. (3) The first fix replaced the invented value \"NOT_ESTABLISHED\" with the invented value \"NOT_ESTABLISHED_NOT_RELIED_ON\" and kept the stored booleans — a second ad-hoc vocabulary in place of the first. The canonical word for no grant of use found is UNRESOLVED, and the two permissions are computed, never stored.",
       "publisherStatement": {
         "state": "NONE_LOCATED",
         "checkedOn": "2026-09-23",
@@ -65,7 +63,10 @@
         "count": 1,
         "where": "The IDAPA 13.01.09.300.01.e row, whose scope turns on 'locations' rather than a species.",
         "note": "Everything else in this package is encoded as a structured rule in North Ground's own words under §8, so the licence question reaches exactly one sentence rather than the package."
-      }
+      },
+      "redistribution": "UNRESOLVED",
+      "attribution": null,
+      "modelGap": "The canonical SourceLicence requires `statedAs`, `url` and `sha256` — the publisher's words and their hash. This source has no licence statement to quote, so those three cannot be populated and are absent rather than invented. A source whose licence was SOUGHT AND NOT FOUND is a state the canonical type cannot currently express, and filling `statedAs` with our own finding is exactly the defect this record was fixed for. Reported rather than papered over."
     }
   },
   "requirements": [
