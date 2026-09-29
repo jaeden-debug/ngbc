@@ -9,7 +9,7 @@ import { collectionPageJsonLd } from "../../lib/seo/structured-data";
 import { isJurisdictionGeography, officialTermPlural, ZONE_LAYERS } from "../../lib/hunt/zone-layers";
 import styles from "./page.module.css";
 
-const HUB_TITLE = "Hunting in Canada | Zones, Seasons & Species";
+const HUB_TITLE = "Hunting in Canada | Hunt & Species Library";
 /* The page sets its own openGraph, which replaces the layout's wholesale, so the
    site card has to be named here or the hub shares with no image. */
 const HUB_IMAGE = { url: "/opengraph-image", width: 1200, height: 630, alt: "North Ground" };
