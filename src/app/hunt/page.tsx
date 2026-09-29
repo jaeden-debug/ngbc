@@ -7,6 +7,7 @@ import { zonesPoster } from "./zones-poster";
 import type { CanonicalId } from "../../lib/content-contract";
 import { contentRepository } from "../../lib/content/repository";
 import type { SpeciesSelectorOption } from "../../lib/hunt/coverage";
+import { hasEvidenceForSpecies } from "../../lib/hunt/intelligence/bundles";
 import { northAmericaCoverageReport, regulatoryJurisdictionsForSpecies } from "../../lib/hunt/north-america/report";
 import { HUNT_DEFAULT_TIME_ZONE, jurisdictionTodayIso } from "../../lib/hunt/date";
 import { longDayLabel } from "../../lib/hunt/exploration/date-presets";
@@ -170,6 +171,8 @@ export default async function HuntPage({ searchParams }: Props) {
          the question arriving as a surprise. */
       regulatoryJurisdictions: regulatoryJurisdictionsForSpecies(resource.speciesProfile.speciesId, coverageReport)
         .map(({ id, nameEn, requiresInput }) => ({ id, name: nameEn, asksQuestion: requiresInput })),
+      /* Derived from the committed evidence bundles, never a list kept here. */
+      hasOpportunityEvidence: hasEvidenceForSpecies(resource.speciesProfile.speciesId),
     };
   }));
 

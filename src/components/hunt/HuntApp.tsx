@@ -16,13 +16,16 @@ import { explorationReducer, INITIAL_EXPLORATION, roundedPoint, type Exploration
 import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
 import { huntSharePayload, shareHunt } from "../../lib/hunt/exploration/share";
 import { heightOf, mapBottomFor, sheetHeights, type SheetHeights, type SheetSnap } from "../../lib/hunt/exploration/sheet";
-import { EXPLORATION_WORDING, type ExplorationState as ZoneState, type ZoneRef } from "../../lib/hunt/exploration/states";
+import { seasonIsOpen } from "../../lib/hunt/exploration/species-layer";
+import { type ExplorationState as ZoneState, type ZoneRef } from "../../lib/hunt/exploration/states";
 import { serializeHuntUrlState, zoneRefFromId, type HuntUrlState } from "../../lib/hunt/exploration/url-state";
 import type { HuntEvaluation } from "../../lib/hunt/types";
 import { layerById, zoneIdFor, ZONE_LAYERS } from "../../lib/hunt/zone-layers";
 import { presentZone } from "../../lib/hunt/zone-presentation";
 import HuntMapView, { type CameraRequest } from "./HuntMapView";
 import FindGameHint, { forgetFindGameHint, retireFindGameHint } from "./FindGameHint";
+import SpeciesLayerLegend from "./SpeciesLayerLegend";
+import { useSpeciesHeat } from "./map/useSpeciesHeat";
 import HuntSheet from "./HuntSheet";
 import type { Emphasis } from "../../lib/hunt/exploration/cartography";
 import type { BasemapMode } from "./sheet/LayersPage";
@@ -432,7 +435,13 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   const speciesCertifiedHere = species && selectedLayer ? hasSpeciesCoverageIn(species, selectedLayer.jurisdictionId) : false;
   /* Where the authority states the rules North Ground has not certified. */
   const authorityLink = selectedLayer ? authorities[selectedLayer.jurisdictionId] ?? null : null;
-  const explorable = useMemo(() => speciesOptions.filter((option) => option.regulatoryJurisdictions.length > 0), [speciesOptions]);
+  /* Rules OR evidence. Six of the nine species with committed harvest evidence
+     have no certified rules anywhere; gating on rules alone kept the heat layer
+     unreachable for all of them (§41A, "selectable is not answerable"). */
+  const explorable = useMemo(
+    () => speciesOptions.filter((option) => option.regulatoryJurisdictions.length > 0 || option.hasOpportunityEvidence),
+    [speciesOptions],
+  );
 
   /* ── Hunt location → official zone ───────────────────────────────────── */
 
@@ -843,6 +852,13 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     // `inViewKey` stands for `zonesInView`.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [exploreSpecies, session.date.iso, inViewKey]);
+
+  /* ── Explore: the heat half of the species layer ─────────────────────── */
+
+  /* Deliberately NOT keyed on `exploreSpecies`, which requires certified rules.
+     Heat is evidence about animals and green is evidence about law; §41B keeps
+     them in separate lanes, so a species can have one without the other. */
+  const heat = useSpeciesHeat(session.explore && session.speciesId ? session.speciesId : null, zonesInView);
 
   /* ── Special areas, only when switched on ────────────────────────────── */
 
@@ -1542,6 +1558,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
           selectedKey={selectedKey}
           huntKey={huntKey}
           filterStates={filterStates}
+          heat={heat}
           overlays={overlayFeatures}
           mapMode={mapMode}
           camera={cameraRequest}
@@ -1612,14 +1629,15 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
           </button>
         </div>
 
-        {exploreSpecies && filterStates?.size ? (
-          <button type="button" className={`${styles.legendChip} ng-glass-overlay`} onClick={() => openPage("layers")} aria-label={`Colours show ${exploreSpecies.displayName} season status. Open layers for the key.`}>
-            {[...new Set(filterStates.values())].slice(0, 4).map((state) => (
-              <span key={state} className={styles.legendChipItem} data-state={state}>
-                <span aria-hidden="true">{EXPLORATION_WORDING[state].glyph}</span> {EXPLORATION_WORDING[state].label}
-              </span>
-            ))}
-          </button>
+        {/* The layer's key. It carries "a zone without a green outline is not
+            closed" on its face, because that is the one inference a hunter
+            could draw from the colours that would be false (§48). */}
+        {session.explore && species && (heat?.size || filterStates?.size) ? (
+          <SpeciesLayerLegend
+            speciesName={species.displayName}
+            shadedZones={heat?.size ?? 0}
+            openZones={[...(filterStates?.values() ?? [])].filter((state) => seasonIsOpen(state)).length}
+          />
         ) : null}
 
         {noticeList.length || exploration.notice || linkNotice ? (

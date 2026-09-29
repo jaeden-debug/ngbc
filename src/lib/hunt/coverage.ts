@@ -140,6 +140,18 @@ export interface SpeciesSelectorOption {
     name: string;
     asksQuestion: boolean;
   }>;
+  /**
+   * Whether North Ground holds certified OPPORTUNITY evidence for this species
+   * anywhere — a different fact again from both of the above.
+   *
+   * Six of the nine species with committed harvest evidence have no certified
+   * rules in any jurisdiction (bobcat, lynx, caribou, elk, gray wolf, mule
+   * deer). Gating the species layer on rules alone would have left every one of
+   * them unreachable, which is the same conflation §41A named: selectable is
+   * not answerable, and now neither is the same as "we know something about
+   * where it is".
+   */
+  hasOpportunityEvidence?: boolean;
 }
 
 /**
