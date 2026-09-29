@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { preconnect, preload } from "react-dom";
 import HuntAbout from "../../components/hunt/HuntAbout";
+import StructuredData from "../../components/StructuredData";
 import HuntApp from "../../components/hunt/HuntApp";
 import { mapsScriptUrl } from "../../components/hunt/map/maps-script";
 import { zonesPoster } from "./zones-poster";
@@ -14,6 +15,7 @@ import { longDayLabel } from "../../lib/hunt/exploration/date-presets";
 import { huntDeepLink, parseHuntUrlState, type HuntUrlValidators } from "../../lib/hunt/exploration/url-state";
 import { layerOfZoneId, ZONE_LAYERS } from "../../lib/hunt/zone-layers";
 import { presentZoneById } from "../../lib/hunt/zone-presentation";
+import { huntWebApplicationJsonLd } from "../../lib/seo/hunt-structured-data";
 import { absoluteUrl, SITE_NAME } from "../../lib/site";
 import { getSpeciesPrimaryMediaMap } from "../../lib/species-media/repository";
 import type { SpeciesPrimaryMedia } from "../../lib/species-media/types";
@@ -179,6 +181,10 @@ export default async function HuntPage({ searchParams }: Props) {
   const poster = await posterPromise;
   return (
     <main className="hunt-page">
+      {/* Hunt as an application. areaServed is derived from the layer registry at
+          request time — jurisdictions whose certified rules answer, never those
+          only drawn — so the machine claim can never exceed the product. */}
+      <StructuredData data={huntWebApplicationJsonLd({ description: metaDescription, layers: ZONE_LAYERS })} />
       {/* The page's name for every reader; the map and sheet are its interface. */}
       <h1 className="ng-visually-hidden">Your zone. Your season. Your hunt.</h1>
       <HuntApp
