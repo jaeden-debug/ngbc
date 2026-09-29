@@ -1712,6 +1712,8 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
         {session.explore && species && (heat?.size || filterStates?.size) ? (
           <SpeciesLayerLegend
             speciesName={species.displayName}
+            /* Only so the key can ask for its own methodology when opened. */
+            speciesId={species.id}
             shadedZones={heat?.size ?? 0}
             hasEvidence={Boolean(species.hasOpportunityEvidence)}
             openZones={[...(filterStates?.values() ?? [])].filter((answer) => zoneIsGreen(answer)).length}
