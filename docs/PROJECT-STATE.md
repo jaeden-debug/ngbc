@@ -190,6 +190,8 @@ Previously: 2026-09-22 (Canonical species PRIMARY media schema, private storage 
 
 ## Known Problems
 
+- **British Columbia's harvest bundles carry the HARVEST percentile on their hunter-count and hunter-day records.** `scripts/build-bc-harvest-evidence.mjs` lines 167 and 168 both pass `harvestRanks[index]` as the `normalizedValue` for `HUNTER_COUNT` and `HUNTER_DAYS`, instead of ranks of their own. Proof it is a copy-paste bug and not a coincidence: MU 3-14 (0 killed, 5 hunters, 18 days) and MU 3-17 (0 killed, 65 hunters, 318 days) carry the identical `0.081461` for all three metrics, which cannot happen if hunters were ranked on hunter counts; all 179 moose units show the three metrics agreeing to six decimal places. Two consequences: (a) the single-zone GET publishes a `normalizedValue` on a hunter record that is not that record's rank — a false number on a sourced record (§61); (b) the composite the heat class is computed from is the mean of five values of which three are the same harvest rank, so it is an unintended harvest-weighted score rather than the equal weighting `opportunity-v1` claims. The heat classes currently drawn are therefore defensible as a harvest ranking but are NOT what the methodology says they are. Fixing it means regenerating nine bundles (5,980 records) from the pinned CSV, which changes published heat values — and raises a second question the owner should answer first: whether hunter COUNT and hunter DAYS belong in an opportunity score at all, since high hunter days is evidence of pressure rather than of opportunity. Not touched in the species-layer lane. / Data Integrity / Owner decision needed
+
 - **`britishColumbiaLegalTime` computes a window from an undefined timezone.** Called directly it returns "09:35 to 22:20 (undefined)" — a legal hunting window computed against nothing, rendered into user-facing text. It is unwired today (BC falls back to the static `legalTime` refusal, which quotes s. 14 (1) and names the real blocker), so nothing ships it. But the guard lives in every caller (`alberta.ts`, `federal.ts`) rather than in the function, so wiring BC up without remembering the guard emits nonsense. Push the guard down: no timezone, no window, `legalTimeNotCertified` instead. / Technical Debt
 
 - **The Supabase advisor's INFO items are deliberate (assessed 2026-09-22).** 8 unindexed foreign keys (management_zones.source_id, regulatory_groups.jurisdiction_id/source_id, regulatory_rules.jurisdiction_id/source_id, regulatory_sources.jurisdiction_id, regulatory_special_area_layers.published_run_id, zone_ingest_runs.jurisdiction_id) and 4 unused indexes (regulatory_rules_lookup_idx, hunt_brief_snapshots_created_at_idx, zone_ingest_features_geometry_gix, regulatory_rule_sources_source_idx). None sits on a request path: Hunt evaluates regulations from the committed bundles, and those tables are a mirror for coverage reporting and the review lifecycle, joined only by the publisher and admin tooling. The indexes are cheap to keep and needed again the moment the mirror is queried or an ingest runs. Do not "optimise" them away.
@@ -776,6 +778,64 @@ blueprint keeps those out of North Ground's answers.
 
 
 ## Recent Product Decisions
+
+### 2026-09-29 — The species layer ships: heat and open season, over one geography
+CLAUDE.md §41A's species-layer decision is now implemented end to end.
+
+**The gap it closed.** `intelligence/handler.ts` tested
+`speciesId !== "species:white-tailed-deer"` against an Ontario-shaped zone
+pattern. Nine of the ten committed bundles — 5,980 records, every British
+Columbia species — returned 400. Every test passed, because every test asked
+about Ontario deer. What is servable is now DERIVED from the bundles
+(`intelligence/bundles.ts`); no route, handler or UI constant names a species,
+a jurisdiction or a zone shape. **10 species x jurisdiction pairs, 1,297 zones,
+6,182 records**, all reachable, and `/api/hunt/opportunity/coverage` computes
+those three numbers at call time so none can be typed by hand.
+
+**Absence is a finding.** A well-formed species at a zone holding no evidence is
+404 NO_HEAT_MAP_DATA, not 400. A zone missing from the viewport reply holds no
+evidence and draws NO heat — never a cold value. LOW stays distinguishable from
+no-data by hue and by opacity, and LIMITED_DATA takes no fill either, because
+the evidence will not support a rank.
+
+**Two channels, deliberately different ones.** Heat is the FILL (an ember ramp
+along §38's campfire-amber line: LOW is `--ng-bark-light`, HIGH is `--ng-amber`,
+and no step borrows a regulatory semantic token). An open season is the STROKE,
+binary, in `--ng-open` — the same green as the sheet's "In season" chip. The
+eight-state colour ramp is gone: five tints answered no question at a glance,
+and one of them drew CLOSED, which a map must never assert.
+
+**Heat is exempt from the focal-plane dim.** The rule that a neighbour's fill
+recedes when a zone is chosen was written when a fill was decoration. Dimming
+heat meant choosing one zone erased the evidence for every other zone on
+screen — the whole thing the hunter switched the layer on to see. The chosen
+zone still leads: its fill is computed to clear the undimmed ceiling.
+
+**Selectable is not answerable, again, one level down.** Six of the nine species
+with committed evidence — bobcat, lynx, caribou, elk, gray wolf, mule deer —
+have no certified rules in any jurisdiction. `explorable` was gated on rules
+alone, so all six were unselectable and their evidence unreachable. It is now
+rules OR evidence, and heat is keyed on the chosen species directly rather than
+on `exploreSpecies`, which still requires rules and still drives the green.
+
+**The two sentences the layer cannot ship without** are in
+`exploration/species-layer.ts` and asserted by
+`species-layer.test.ts`: a zone without a green outline is not closed, and an
+unshaded zone is not a zone with no animals. The first is on the legend's
+COLLAPSED face, not behind its disclosure, because a false closure is the
+failure this product exists to avoid.
+
+**Exercised on a phone (375x812) against the live engine**, not fixtures:
+Find Game -> Moose turns the layer on; searching Prince George resolves MU 7-15
+and BC heat appears (0 -> 10 -> 17 zones with evidence as the viewport grows,
+so unasked ground is asked about rather than drawn cold); American black bear on
+Nov 10 draws 16 green and 16 shaded at once, and on Dec 20 draws 0 green and
+still 16 shaded, so green is date-dependent and heat is not; Ruffed grouse (no
+evidence anywhere) draws no heat and the legend says "no heat evidence held";
+Mule deer — previously unselectable — draws 23 shaded with no value leaked from
+either previous species. Also verified on the no-basemap boundary view and at
+1440x900.
+
 
 ### 2026-09-22 — Drawing a boundary and answering its rules are separate switches
 `ZoneLayer.serving` governs drawing and zone resolution; a new `rulesServing`
