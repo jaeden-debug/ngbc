@@ -213,6 +213,17 @@ export interface AuthorizationRecord {
   kind: AuthorizationKind;
   /** The authority's own name, kept exactly — never translated or normalised. */
   officialName: string;
+  /**
+   * The language that name is in, from the bundle's own declaration.
+   *
+   * Québec's authorizations are named in French — « Certificat du chasseur »,
+   * « Permis de chasse au petit gibier » — and every row was hardcoded `en-CA`,
+   * so a screen reader pronounced them with English phonetics. The name itself
+   * is NOT translated: §47 keeps an official name in the authority's own words,
+   * and a licence a hunter has to ask a vendor for by name is exactly the case
+   * that rule exists for. What was wrong was the label, not the name.
+   */
+  officialNameLang?: "en-CA" | "fr-CA";
   officialNameFr?: string;
   authority: string;
   jurisdictionId: string;
@@ -329,13 +340,15 @@ export interface AuthorizationChecklistItem {
   id: AuthorizationId;
   status: "REQUIRED" | "CONDITIONAL" | "NOT_CERTIFIED";
   officialName: string;
+  /** The language of `officialName`, carried from the record's own declaration. */
+  officialNameLang?: "en-CA" | "fr-CA";
   kind: AuthorizationKind;
   authority: string;
   /** Present when status is CONDITIONAL: the fact it turns on, in plain words. */
   conditionText?: string;
   price: PriceState;
   purchase?: PurchaseOptions;
-  prerequisites: { id: AuthorizationId; officialName: string }[];
+  prerequisites: { id: AuthorizationId; officialName: string; officialNameLang?: "en-CA" | "fr-CA" }[];
   draw?: AuthorizationRecord["draw"];
   note?: string;
   provenance: Provenance[];

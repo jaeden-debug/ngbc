@@ -2,6 +2,7 @@
 
 import type { LegalTimeResult } from "../../../lib/hunt/regulatory/legal-time";
 import Disclosure from "./Disclosure";
+import AuthorityText from "./AuthorityText";
 import styles from "./Answer.module.css";
 
 /**
@@ -108,7 +109,14 @@ export default function LegalHours({ legalTime }: { legalTime: LegalTimeResult }
     <section className={styles.block} aria-labelledby="hunt-legal-hours">
       <h3 className={styles.blockTitle} id="hunt-legal-hours">Legal hunting hours</h3>
       <p><span className="ng-status" data-status="UNKNOWN">Not yet verified</span></p>
-      <p className={styles.hoursRule}>{legalTime.reason}</p>
+      {/* The refusal can be the authority's OWN words, in its own language —
+          Québec's wild-turkey hours are the ministry's French sentence. A
+          hunter must not need French to read a legal-hours answer, and the
+          ministry's sentence must not be rewritten, so the reading is shown
+          with the original one control away. */}
+      <p className={styles.hoursRule}>
+        <AuthorityText text={{ text: legalTime.reason, lang: legalTime.reasonLang ?? "en-CA", owner: legalTime.reasonOwner ?? "NORTH_GROUND" }} />
+      </p>
       <p className={styles.hoursNote}>{legalTime.authority} states the rule.</p>
     </section>
   );

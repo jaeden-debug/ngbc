@@ -563,14 +563,19 @@ export function quebecVocabulary(speciesId: string, designation: string | null):
      * is missing is a point to compute sunrise at. Saying so names the rule
      * while refusing the arithmetic, which is the accurate refusal.
      */
-    legalTime: legalTimeNotCertified(
-      speciesId === "species:wild-turkey" && turkeyHours
-        ? `« ${turkeyHours} »`
-        : "Québec prohibits hunting at night, night being half an hour after sunset to half an hour before sunrise " +
+    /* TWO DIFFERENT KINDS OF SENTENCE, and they were going out as one. The
+       turkey line is the ministry's own French; the other is North Ground's
+       English summary of C-61.1. Both landed in `reason` untagged, so a hunter
+       reading an English interface got a LEGAL-HOURS ANSWER in French with
+       nothing saying whose words it was or that a reading exists. */
+    legalTime: speciesId === "species:wild-turkey" && turkeyHours
+      ? legalTimeNotCertified(`« ${turkeyHours} »`, "Gouvernement du Québec", undefined, { lang: "fr-CA", owner: "AUTHORITY" })
+      : legalTimeNotCertified(
+        "Québec prohibits hunting at night, night being half an hour after sunset to half an hour before sunrise " +
           "(C-61.1, ss. 1 and 56; Règlement sur la chasse, r. 12, s. 21). North Ground states exact times for a " +
           "point, not for a whole zone.",
-      "Gouvernement du Québec",
-    ),
+        "Gouvernement du Québec",
+      ),
     /*
      * The window at a point, on the Legal Time Act's own clock.
      *

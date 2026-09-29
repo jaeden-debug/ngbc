@@ -155,6 +155,7 @@ export function resolveAuthorizations(
       id: record.id,
       status: unknown || requirement.alwaysConditional ? "CONDITIONAL" : "REQUIRED",
       officialName: record.officialName,
+      ...(record.officialNameLang ? { officialNameLang: record.officialNameLang } : {}),
       kind: record.kind,
       authority: record.authority,
       ...(unknown || requirement.alwaysConditional ? { conditionText: requirement.conditionText } : {}),
@@ -175,7 +176,14 @@ export function resolveAuthorizations(
     if (!record) continue;
     item.prerequisites = record.prerequisites
       .filter((id) => !shownIds.has(id))
-      .map((id) => ({ id: id as AuthorizationId, officialName: records.get(id)?.officialName ?? id }));
+      .map((id) => {
+        const prerequisite = records.get(id);
+        return {
+          id: id as AuthorizationId,
+          officialName: prerequisite?.officialName ?? id,
+          ...(prerequisite?.officialNameLang ? { officialNameLang: prerequisite.officialNameLang } : {}),
+        };
+      });
   }
   return items;
 }

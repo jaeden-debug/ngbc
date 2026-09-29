@@ -97,7 +97,8 @@
           "retrievedAt": "2026-09-21"
         }
       ],
-      "note": "An Ontario-recognized equivalent, such as accreditation from a recognized jurisdiction, also qualifies."
+      "note": "An Ontario-recognized equivalent, such as accreditation from a recognized jurisdiction, also qualifies.",
+      "officialNameLang": "en-CA"
     },
     {
       "id": "authorization:ca-on-outdoors-card",
@@ -165,7 +166,8 @@
           "retrievedAt": "2026-09-21"
         }
       ],
-      "note": "It is mailed in about 20 days; until it arrives you can hunt by carrying your licence summary."
+      "note": "It is mailed in about 20 days; until it arrives you can hunt by carrying your licence summary.",
+      "officialNameLang": "en-CA"
     },
     {
       "id": "authorization:ca-on-small-game-licence",
@@ -290,7 +292,8 @@
           "quote": "Game birds, including wild turkeys.",
           "retrievedAt": "2026-09-21"
         }
-      ]
+      ],
+      "officialNameLang": "en-CA"
     },
     {
       "id": "authorization:ca-on-wild-turkey-tag",
@@ -410,7 +413,8 @@
           "retrievedAt": "2026-09-21"
         }
       ],
-      "note": "A turkey tag is used with a small game licence, not instead of one."
+      "note": "A turkey tag is used with a small game licence, not instead of one.",
+      "officialNameLang": "en-CA"
     },
     {
       "id": "authorization:ca-on-deer-licence",
@@ -498,7 +502,8 @@
             "retrievedAt": "2026-09-21"
           }
         }
-      }
+      },
+      "officialNameLang": "en-CA"
     },
     {
       "id": "authorization:ca-on-bear-licence",
@@ -581,7 +586,8 @@
           "quote": "A licence to hunt bear that is issued to a non-resident shall consist of a licence summary that lists the bear hunting licence together with a bear tag and a bear hunting validation certificate obtained from a licensed bear operator.",
           "retrievedAt": "2026-09-21"
         }
-      ]
+      ],
+      "officialNameLang": "en-CA"
     },
     {
       "id": "authorization:ca-on-bear-hunting-validation-certificate",
@@ -622,7 +628,8 @@
           "retrievedAt": "2026-09-21"
         }
       ],
-      "note": "Valid only for the area and period written on it, and only while your contract with that operator is in force."
+      "note": "Valid only for the area and period written on it, and only while your contract with that operator is in force.",
+      "officialNameLang": "en-CA"
     },
     {
       "id": "authorization:ca-on-moose-licence",
@@ -697,7 +704,8 @@
           "quote": "a moose tag together with a licence summary that identifies the moose licence",
           "retrievedAt": "2026-09-21"
         }
-      ]
+      ],
+      "officialNameLang": "en-CA"
     },
     {
       "id": "authorization:ca-on-moose-tag",
@@ -801,7 +809,8 @@
           "retrievedAt": "2026-09-21"
         }
       ],
-      "note": "The tag fee depends on the tag you are allocated."
+      "note": "The tag fee depends on the tag you are allocated.",
+      "officialNameLang": "en-CA"
     },
     {
       "id": "authorization:ca-federal-firearms-licence",
@@ -853,7 +862,8 @@
           "retrievedAt": "2026-09-21"
         }
       ],
-      "note": "Accepted: a possession and acquisition licence, a minor's licence, or proof of passing the Canadian Firearms Safety Course. Carry it while hunting."
+      "note": "Accepted: a possession and acquisition licence, a minor's licence, or proof of passing the Canadian Firearms Safety Course. Carry it while hunting.",
+      "officialNameLang": "en-CA"
     }
   ],
   "requirements": {
@@ -2613,5 +2623,6 @@
       "sourceId": "source:ca-on-moose-2026",
       "section": "Resident seasons with controlled hunter numbers"
     }
-  ]
+  ],
+  "officialNameLang": "en-CA"
 }

@@ -95,7 +95,9 @@ export interface RequirementRow {
  *                  because a missing row reads as "nothing required".
  */
 export function authorizationRow(item: AuthorizationChecklistItem, verifyAt: string): RequirementRow {
-  const officialName: AuthorityText = { text: item.officialName, lang: "en-CA", owner: "AUTHORITY" };
+  /* The bundle's own declaration, not a default. A hardcoded `en-CA` labelled
+     every Québec licence as English, and nothing on screen showed it. */
+  const officialName: AuthorityText = { text: item.officialName, lang: item.officialNameLang ?? "en-CA", owner: "AUTHORITY" };
   const base = {
     id: item.id,
     category: "AUTHORIZATION" as const,
@@ -103,7 +105,7 @@ export function authorizationRow(item: AuthorizationChecklistItem, verifyAt: str
     officialName,
     requires: item.prerequisites.map((entry) => ({
       id: entry.id,
-      officialName: { text: entry.officialName, lang: "en-CA" as const, owner: "AUTHORITY" as const },
+      officialName: { text: entry.officialName, lang: entry.officialNameLang ?? ("en-CA" as const), owner: "AUTHORITY" as const },
     })),
     ...(item.purchase
       ? {

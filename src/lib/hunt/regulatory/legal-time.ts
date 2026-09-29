@@ -11,6 +11,7 @@
  * is deliberately not given the raw solar times to recompute one from.
  */
 
+import type { LimitationLang } from "../limitation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { ObservedClock } from "./statutory-time.ts";
 import type { IsoDate } from "../../content-contract/index.ts";
@@ -183,6 +184,18 @@ export type LegalTimeResult =
       status: "NOT_CERTIFIED";
       /** Why, and who to ask. Never an error state. */
       reason: string;
+      /**
+       * The language `reason` is written in, and whose words it is.
+       *
+       * Absent means North Ground's own English — which is what every one of
+       * these was until Québec put the ministry's own wild-turkey sentence
+       * here: « La chasse est permise à partir d'une demi-heure avant le lever
+       * du soleil jusqu'à midi. » A LEGAL-HOURS ANSWER, rendered in a language
+       * the reader may not have, with nothing saying whose words they were.
+       * Declared by the producer; never detected at render.
+       */
+      reasonLang?: LimitationLang;
+      reasonOwner?: "AUTHORITY" | "NORTH_GROUND";
       authority: string;
       sourceId?: CanonicalId<"source">;
     };
@@ -298,8 +311,20 @@ export function legalTimeFor(
 }
 
 /** The honest answer where the point's timezone cannot be established. */
-export function legalTimeNotCertified(reason: string, authority: string, sourceId?: CanonicalId<"source">): LegalTimeResult {
-  return { status: "NOT_CERTIFIED", reason, authority, ...(sourceId ? { sourceId } : {}) };
+export function legalTimeNotCertified(
+  reason: string,
+  authority: string,
+  sourceId?: CanonicalId<"source">,
+  /** Supplied where `reason` is not North Ground's own English. */
+  words?: { lang: LimitationLang; owner: "AUTHORITY" | "NORTH_GROUND" },
+): LegalTimeResult {
+  return {
+    status: "NOT_CERTIFIED",
+    reason,
+    authority,
+    ...(sourceId ? { sourceId } : {}),
+    ...(words ? { reasonLang: words.lang, reasonOwner: words.owner } : {}),
+  };
 }
 
 /**

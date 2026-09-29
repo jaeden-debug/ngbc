@@ -9,6 +9,7 @@ import type { SpeciesSelectorOption } from "../../../lib/hunt/coverage";
 import { readableCalendarDay } from "../../../lib/hunt/date";
 import { partitionEvaluationSources } from "../../../lib/hunt/source-roles";
 import type { HuntEvaluation } from "../../../lib/hunt/types";
+import AuthorityText from "./AuthorityText";
 import Disclosure from "./Disclosure";
 import { groupLimitations, orphanCaveats, sourceCaveats, type LimitationGroups } from "./limitation-groups";
 import styles from "../HuntApp.module.css";
@@ -56,8 +57,8 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
           <h3 className={styles.detailTitle} id={`${id}-here`}>Applies here today</h3>
           <ul className={styles.bullets}>
             {limitations.here.map((limitation) => (
-              <li key={limitation.id} lang={limitation.lang}>
-                {limitation.owner === "AUTHORITY" ? `« ${limitation.text} »` : limitation.text}
+              <li key={limitation.id}>
+                <AuthorityText text={{ text: limitation.text, lang: limitation.lang, owner: limitation.owner }} />
               </li>
             ))}
           </ul>
@@ -87,7 +88,13 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
           id={`${id}-lim`}
         >
           <ul className={styles.bullets}>
-            {limitations.always.map((limitation) => <li key={limitation.id} lang={limitation.lang}>{limitation.text}</li>)}
+            {/* A GENERAL line can now be the authority's own — a ministry note
+                that qualifies an answer rather than captions a source. */}
+            {limitations.always.map((limitation) => (
+              <li key={limitation.id}>
+                <AuthorityText text={{ text: limitation.text, lang: limitation.lang, owner: limitation.owner }} />
+              </li>
+            ))}
           </ul>
         </Disclosure>
       ) : null}
@@ -164,7 +171,9 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
         {/* A caveat whose source is not listed above is still the authority's
             own statement, and is shown rather than dropped. */}
         {orphanCaveats(limitations, [...sourceGroups.authority, ...sourceGroups.context].map((source) => source.id)).map((caveat) => (
-          <blockquote key={caveat.id} className={styles.sourceQuote} lang={caveat.lang}>« {caveat.text} »</blockquote>
+          <blockquote key={caveat.id} className={styles.sourceQuote}>
+            <AuthorityText text={{ text: caveat.text, lang: caveat.lang, owner: caveat.owner }} />
+          </blockquote>
         ))}
         <p className={styles.detailNote}>
           North Ground organises official information. It does not replace the legislation, regulations or instructions of the
@@ -210,7 +219,9 @@ function SourceList({ sources, caveats }: { sources: HuntEvaluation["sources"]; 
               and publishes as data — not a sentence a renderer invents.
             */}
             {sourceCaveats(caveats, source.id).map((caveat) => (
-              <blockquote key={caveat.id} className={styles.sourceQuote} lang={caveat.lang}>« {caveat.text} »</blockquote>
+              <blockquote key={caveat.id} className={styles.sourceQuote}>
+                <AuthorityText text={{ text: caveat.text, lang: caveat.lang, owner: caveat.owner }} />
+              </blockquote>
             ))}
           </li>
         );

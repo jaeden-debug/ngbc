@@ -286,3 +286,35 @@
     rotate: 90deg;
   }
 }
+
+/* ── A reading of an authority's text ────────────────────────────────────
+   §41A (2026-09-29): the reading is North Ground presentation laid over an
+   original that is kept and reachable. The note below it is never optional —
+   a reader must always be able to tell whose words they are looking at. */
+.translated {
+  display: block;
+}
+
+.translatedNote {
+  display: block;
+  margin-top: 2px;
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--ng-bone-dim);
+}
+
+.translatedToggle {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ng-cream);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.translatedToggle:focus-visible {
+  outline: 2px solid var(--ng-cream);
+  outline-offset: 2px;
+}

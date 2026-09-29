@@ -2,6 +2,7 @@
 
 import { conditionsBySource, type RegulatoryCondition } from "../../../lib/hunt/regulatory/condition";
 import type { HuntEvaluation } from "../../../lib/hunt/types";
+import AuthorityText from "./AuthorityText";
 import styles from "./Answer.module.css";
 
 /**
@@ -49,8 +50,10 @@ export default function Conditions({ conditions, sources }: {
                * attributing our own caution to a ministry is the quiet mirror
                * of asserting a prohibition nobody legislated.
                */
-              <li key={condition.id} lang={condition.lang}>
-                {condition.owner === "AUTHORITY" ? `« ${condition.text} »` : condition.text}
+              <li key={condition.id}>
+                {/* The reading, with the original one control away. A hunter
+                    must not need French to learn what a condition is. */}
+                <AuthorityText text={{ text: condition.text, lang: condition.lang, owner: condition.owner }} />
                 <span className={styles.conditionWhere}>
                   {condition.sourceSection}
                   {source ? (
