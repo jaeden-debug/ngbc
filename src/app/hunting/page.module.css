@@ -1,0 +1,295 @@
+.shell {
+  padding-top: 28px;
+}
+
+.hero {
+  max-width: 780px;
+  padding: 64px 0 54px;
+}
+
+.title {
+  margin: 14px 0 18px;
+  font-size: clamp(3.2rem, 8vw, 6.8rem);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+  color: var(--ng-cream);
+}
+
+.lede {
+  max-width: 690px;
+  margin: 0;
+  font-size: clamp(1.05rem, 2vw, 1.28rem);
+  line-height: 1.65;
+  color: var(--ng-bone-dim);
+}
+
+.paths {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+  gap: 18px;
+}
+
+.pathCard {
+  min-width: 0;
+  min-height: 310px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 42px;
+  padding: clamp(26px, 4vw, 42px);
+}
+
+.huntCard {
+  background:
+    radial-gradient(circle at 88% 10%, rgba(201, 194, 166, 0.09), transparent 38%),
+    rgba(18, 21, 18, 0.76);
+}
+
+.pathTitle {
+  max-width: 520px;
+  margin: 13px 0 14px;
+  font-size: clamp(1.7rem, 3.3vw, 2.65rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--ng-cream);
+}
+
+.pathText {
+  max-width: 590px;
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--ng-bone-dim);
+}
+
+.pathCard :global(.ng-action),
+.pathCard :global(.ng-action-quiet) {
+  align-self: flex-start;
+}
+
+.coverage,
+.model {
+  padding: 96px 0 0;
+}
+
+.sectionIntro {
+  max-width: 720px;
+}
+
+.sectionTitle {
+  margin: 12px 0 14px;
+  font-size: clamp(2rem, 4vw, 3.15rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--ng-cream);
+}
+
+.sectionText {
+  max-width: 680px;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ng-bone-dim);
+}
+
+.coverageGroups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 34px;
+}
+
+.coverageGroup {
+  min-width: 0;
+  padding: 26px;
+}
+
+.coverageCountry {
+  margin: 0 0 20px;
+  font-size: 1.1rem;
+  color: var(--ng-cream);
+}
+
+.jurisdictionList {
+  display: grid;
+}
+
+.jurisdiction {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 15px 0;
+  border-top: 1px solid var(--ng-glass-border);
+}
+
+.jurisdiction:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.jurisdiction:last-child {
+  padding-bottom: 0;
+}
+
+.jurisdiction > div {
+  min-width: 0;
+}
+
+.jurisdiction strong,
+.jurisdiction span {
+  display: block;
+}
+
+.jurisdiction strong {
+  font-size: 0.94rem;
+  color: var(--ng-cream);
+}
+
+.jurisdiction > div > span {
+  margin-top: 4px;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--ng-bone-faint);
+}
+
+.rulesState {
+  flex: none;
+  max-width: 128px;
+  font-size: 0.68rem;
+  line-height: 1.35;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: right;
+  text-transform: uppercase;
+  color: var(--ng-bone-faint);
+}
+
+.rulesState[data-rules="available"] {
+  color: var(--ng-bone-dim);
+}
+
+.coverageNote,
+.authorityNote {
+  max-width: 760px;
+  margin: 22px 0 0;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--ng-bone-faint);
+}
+
+.modelGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 34px;
+  border-top: 1px solid var(--ng-glass-border-bright);
+  border-bottom: 1px solid var(--ng-glass-border);
+}
+
+.modelItem {
+  min-width: 0;
+  padding: 28px 28px 30px;
+  border-left: 1px solid var(--ng-glass-border);
+}
+
+.modelItem:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.modelItem p {
+  max-width: 310px;
+  margin: 10px 0 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ng-bone-dim);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 80px 0 10px;
+  font-size: 0.82rem;
+  color: var(--ng-bone-faint);
+}
+
+.footer a {
+  color: var(--ng-bone-dim);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: var(--ng-cream);
+}
+
+@media (max-width: 760px) {
+  .shell {
+    padding-top: 18px;
+  }
+
+  .hero {
+    padding: 48px 0 38px;
+  }
+
+  .title {
+    font-size: clamp(3.4rem, 18vw, 5rem);
+  }
+
+  .lede {
+    font-size: 1rem;
+  }
+
+  .paths,
+  .coverageGroups {
+    grid-template-columns: 1fr;
+  }
+
+  .pathCard {
+    min-height: 0;
+    gap: 32px;
+    padding: 26px 22px;
+  }
+
+  .coverage,
+  .model {
+    padding-top: 72px;
+  }
+
+  .coverageGroup {
+    padding: 22px 18px;
+  }
+
+  .jurisdiction {
+    align-items: flex-start;
+  }
+
+  .rulesState {
+    max-width: 104px;
+    font-size: 0.62rem;
+  }
+
+  .modelGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .modelItem,
+  .modelItem:first-child {
+    padding: 22px 0;
+    border-left: 0;
+    border-top: 1px solid var(--ng-glass-border);
+  }
+
+  .modelItem:first-child {
+    border-top: 0;
+  }
+
+  .modelItem p {
+    max-width: none;
+  }
+
+  .footer {
+    padding-top: 64px;
+  }
+}

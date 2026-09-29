@@ -126,6 +126,7 @@ export default async function SpeciesPage({ params }: Props) {
 
   const breadcrumbs = [
     { name: "Home", path: "/" },
+    { name: "Hunting", path: "/hunting" },
     { name: "Species library", path: "/hunting/species" },
     { name: resource.title, path: canonicalUrl },
   ];

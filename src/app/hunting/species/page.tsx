@@ -90,7 +90,13 @@ export default async function SpeciesLibraryPage() {
       <HuntNav current="/hunting/species" />
 
       <div className={`ng-shell ${styles.shell}`}>
-        <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Species library", path: "/hunting/species" }]} />
+        <Breadcrumbs
+          items={[
+            { name: "Home", path: "/" },
+            { name: "Hunting", path: "/hunting" },
+            { name: "Species library", path: "/hunting/species" },
+          ]}
+        />
 
         <header className={styles.header}>
           <p className="ng-eyebrow">North Ground Hunt</p>

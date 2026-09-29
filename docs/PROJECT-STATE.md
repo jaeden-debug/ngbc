@@ -2016,8 +2016,34 @@ Certification passed:
   and crawlable `/hunt` and `/hunting/species` links.
 
 The initial pre-build SEO-validator attempt failed only because `.next` did not yet contain a
-production build; after `npm run build`, the required post-build validator passed. The implementation
-did not create `/hunting/`; that remains the next separate material SEO/AEO change.
+production build; after `npm run build`, the required post-build validator passed.
+
+### 2026-09-24 — Hunting discovery hub established
+`/hunting` is now the crawlable parent discovery hub between the main North Ground site and the
+Hunt/species surfaces. It is deliberately separate from `/hunt`: `/hunting` explains and organizes
+the hunting knowledge/product surface, while `/hunt` remains the interactive regulatory tool.
+
+The hub is server-rendered and statically prerendered. It has one H1 (`Hunting`), canonical
+metadata, crawlable paths into `/hunt` and `/hunting/species`, and derives current mapped
+jurisdictions from `ZONE_LAYERS` rather than maintaining a second hand-written coverage list.
+Boundary coverage is explicitly distinguished from served regulatory coverage; the hub does
+not infer certification from `rulesServing`, and no jurisdiction or zone destination was invented.
+
+The information hierarchy is now Home → Hunting → Species library → canonical species profile.
+Species-profile breadcrumbs include `/hunting`; the species library exposes the Hunting parent;
+`HuntNav` exposes the Hunting hub; and `/hunting` is included in the generated sitemap.
+
+Certification passed:
+- `git diff --check`
+- `npm run test:seo` — 9/9 passed
+- `npm run validate:seo`
+- `npm run test:content-urls` — 22/22 passed
+- `npm run build`
+- production build output confirmed `/hunting` as statically prerendered
+- source inspection confirmed exactly one `/hunting` H1 and real links to `/hunt` and
+  `/hunting/species`.
+
+The unrelated untracked media files and `supabase/.temp/` were not part of this change.
 
 ### 2026-09-23 — The detector sweep, handed off part-done
 A pattern written from the first jurisdiction that needed it works perfectly on that
