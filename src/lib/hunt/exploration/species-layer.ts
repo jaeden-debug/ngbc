@@ -53,13 +53,23 @@ export interface ZoneHeat {
  * the same reason `SELECTED_STROKE` mirrors `--ng-cream` in `cartography.ts`.
  */
 export const HEAT_RAMP: ReadonlyArray<{ at: number; color: string; opacity: number }> = [
-  { at: 0.0, color: "#47526b", opacity: 0.13 },
-  { at: 0.2, color: "#6b6070", opacity: 0.18 },
-  { at: 0.4, color: "#96704f", opacity: 0.24 },
-  { at: 0.6, color: "#c08a40", opacity: 0.31 },
-  { at: 0.8, color: "#d4702c", opacity: 0.39 },
-  { at: 1.0, color: "#a8331f", opacity: 0.46 },
+  { at: 0.0, color: "#47526b", opacity: 0.10 },
+  { at: 0.2, color: "#6b6070", opacity: 0.145 },
+  { at: 0.4, color: "#96704f", opacity: 0.19 },
+  { at: 0.6, color: "#c08a40", opacity: 0.235 },
+  { at: 0.8, color: "#d4702c", opacity: 0.28 },
+  { at: 1.0, color: "#a8331f", opacity: 0.32 },
 ];
+
+/**
+ * The loudest a heat fill can be. `cartography.ts` derives the map's own fill
+ * ceiling from it rather than carrying a constant that merely happens to
+ * match: the two were equal by coincidence, and the first change to this ramp
+ * let an unchosen hot zone outshout the chosen one at one zoom and one
+ * emphasis setting — which §41A says must never happen, and which nothing
+ * would have noticed but one assertion.
+ */
+export const MAX_HEAT_OPACITY = Math.max(...HEAT_RAMP.map(({ opacity }) => opacity));
 
 function channels(hex: string): [number, number, number] {
   return [1, 3, 5].map((offset) => Number.parseInt(hex.slice(offset, offset + 2), 16)) as [number, number, number];

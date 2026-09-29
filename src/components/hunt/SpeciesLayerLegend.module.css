@@ -137,3 +137,89 @@
   font-size: 0.72rem;
   line-height: 1.45;
 }
+
+/* ── The heat scale ──────────────────────────────────────────────────────
+   A continuous bar rather than four swatches, because the map now paints a
+   continuous value. Four stacked chips said "four categories", which is what
+   they were and what the evidence is not. The end labels and the band words
+   below carry the meaning in text (§48); the bar alone carries none. ── */
+
+.scale { display: flex; flex-direction: column; gap: 5px; }
+
+.scaleBar {
+  height: 12px;
+  border-radius: 3px;
+  background: var(--ng-heat-gradient);
+  border: 1px solid var(--ng-glass-border);
+}
+
+.scaleEnds {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--ng-bone-faint);
+}
+
+/* The band names under the bar, each over the part of the line it covers. */
+.bands {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.band { display: flex; flex-direction: column; gap: 2px; font-size: 0.68rem; }
+.bandGlyph { letter-spacing: 0.05em; opacity: 0.85; }
+
+.noShade {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 0.7rem;
+  color: var(--ng-bone-faint);
+}
+
+/* ── "How is this calculated?" ───────────────────────────────────────── */
+
+.method {
+  align-self: flex-start;
+  padding: 6px 0;
+  min-height: 36px;
+  background: none;
+  border: 0;
+  color: var(--ng-bone);
+  font: inherit;
+  font-size: 0.72rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.methodPanel { display: flex; flex-direction: column; gap: 10px; }
+
+.dataset {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 10px;
+  border: 1px solid var(--ng-glass-border);
+  border-radius: 10px;
+}
+
+.datasetTitle { margin: 0; font-size: 0.74rem; font-weight: 600; }
+
+.measures { display: flex; flex-direction: column; gap: 3px; margin: 0; padding: 0; list-style: none; }
+
+.measure {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 10px;
+  font-size: 0.7rem;
+}
+
+.measureWeight { color: var(--ng-bone-faint); font-variant-numeric: tabular-nums; }
+.measureMeaning { grid-column: 1 / -1; font-size: 0.68rem; line-height: 1.4; color: var(--ng-bone-faint); }

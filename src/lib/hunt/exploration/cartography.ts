@@ -36,6 +36,8 @@
  * both meanings in words.
  */
 
+import { MAX_HEAT_OPACITY } from "./species-layer.ts";
+
 export type ZoomBand = "national" | "regional" | "local";
 export type Emphasis = "light" | "standard" | "strong";
 
@@ -79,7 +81,19 @@ const HOVER_FILL = 1.55;
 /* Heat tints a zone, but the chosen zone still has to lead, so the tints are
    held below it: the ceiling below is what any unchosen zone can reach, and
    the chosen one is computed to clear it. */
-export const MAX_STATE_FILL = 0.32;
+/**
+ * The loudest any UNCHOSEN zone may be drawn: the top of the heat ramp, which
+ * is the loudest thing that can legitimately fill a polygon.
+ *
+ * DERIVED, not tuned. It was 0.32, which was also the old ramp's maximum — and
+ * the moment the ramp changed the two parted company and a hot neighbour could
+ * out-fill the chosen zone. A constant that is right by coincidence is a
+ * constant that will be wrong silently.
+ */
+export const MAX_STATE_FILL = MAX_HEAT_OPACITY;
+
+/** What the chosen zone is allowed to reach, so it always clears the above. */
+const SELECTED_FILL_CEILING = MAX_STATE_FILL + 0.12;
 const STATE_BAND_SCALE: Record<ZoomBand, number> = { national: 0.9, regional: 0.8, local: 0.7 };
 
 /**
@@ -161,7 +175,7 @@ export function zoneStyle(input: ZoneStyleInput): ZoneStyle {
       strokeOpacity: 1,
       strokeWeight: input.band === "national" ? 2.6 : 3.2,
       fillColor: input.heat?.color ?? tone,
-      fillOpacity: clamp(Math.max(0.17 * scale, ceiling + 0.04, (input.heat?.opacity ?? 0) + 0.06), 0.1, 0.44),
+      fillOpacity: clamp(Math.max(0.17 * scale, ceiling + 0.04, (input.heat?.opacity ?? 0) + 0.06), 0.1, SELECTED_FILL_CEILING),
       zIndex: 8,
     };
   }

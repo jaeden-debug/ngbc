@@ -1,10 +1,14 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { createOpportunityCoverageHandler, createOpportunityHandler, createSpeciesHeatHandler, MAX_HEAT_ZONES } from "./handler.ts";
+import { createHeatMethodologyHandler, createOpportunityCoverageHandler, createOpportunityHandler, createSpeciesHeatHandler, MAX_HEAT_ZONES } from "./handler.ts";
 
 const GET = createOpportunityHandler();
 const COVERAGE = createOpportunityCoverageHandler();
 const POST = createSpeciesHeatHandler({ canonicalOrigin: "https://northground.example" });
+const METHOD = createHeatMethodologyHandler();
+
+const methodology = (speciesId: string) =>
+  METHOD(new Request(`https://northground.example/api/hunt/opportunity/methodology?speciesId=${encodeURIComponent(speciesId)}`));
 
 const ask = (speciesId: string, geographyId: string) =>
   GET(new Request(`https://northground.example/api/hunt/opportunity?speciesId=${encodeURIComponent(speciesId)}&geographyId=${encodeURIComponent(geographyId)}`));
@@ -134,5 +138,80 @@ test("coverage is computed from the bundles at call time, never typed by hand", 
     assert.match(dataset.speciesId, /^species:/);
     assert.match(dataset.jurisdictionId, /^jurisdiction:/);
     assert.ok(dataset.geographyCount > 0, "a pair that answers for no geography is not coverage");
+  }
+});
+
+test("the heat reply carries the continuous value, its strength and its resolution", async () => {
+  const response = await heat({
+    speciesId: "species:moose",
+    zones: [{ layerId: "layer:ca-bc-mu", designation: "7-42" }, { layerId: "layer:ca-on-wmu", designation: "57" }],
+  });
+  const body = await response.json();
+  assert.equal(body.methodologyVersion, "opportunity-v2");
+  /* Stated on every reply, so a renderer cannot choose a finer primitive than
+     the evidence supports. */
+  assert.equal(body.renderKind, "ZONE_AREA");
+  assert.match(body.effort, /never move the shade/);
+  for (const zone of body.zones as Array<{ classification: string; intensity: number | null; strength: string; renderKind: string }>) {
+    assert.ok(["STRONG", "MODERATE", "WEAK", "INSUFFICIENT"].includes(zone.strength));
+    assert.equal(zone.renderKind, "ZONE_AREA");
+    if (zone.classification === "LIMITED_DATA") assert.equal(zone.intensity, null);
+    else assert.ok(typeof zone.intensity === "number" && zone.intensity >= 0 && zone.intensity <= 1);
+  }
+  // The separation holds in the wire format too.
+  assert.equal(JSON.stringify(body).includes("legalStatus"), false);
+});
+
+test("the methodology endpoint describes the calculation the map actually performed", async () => {
+  const response = await methodology("species:white-tailed-deer");
+  assert.equal(response.status, 200);
+  const body = await response.json();
+  assert.equal(body.methodology.version, "opportunity-v2");
+  assert.equal(body.datasets.length, 2, "deer is served by two authorities and both must be named");
+
+  for (const dataset of body.datasets as Array<{ authority: string; url: string; observationYear: number; measures: Array<{ metric: string; contributes: boolean; weight?: number }>; limitations: string[]; renderKindMeaning: string; grade: string }>) {
+    assert.match(dataset.url, /^https:\/\//, "the authority's own source travels with its numbers");
+    assert.ok(dataset.observationYear >= 2020);
+    assert.ok(dataset.limitations.length > 0);
+    assert.match(dataset.renderKindMeaning, /Nothing inside an area is hotter/);
+    assert.notEqual(dataset.grade, "A", "no committed dataset measures animals per square kilometre");
+
+    const contributing = dataset.measures.filter(({ contributes }) => contributes);
+    const total = contributing.reduce((sum, measure) => sum + (measure.weight ?? 0), 0);
+    assert.ok(Math.abs(total - 1) < 0.01, `${dataset.authority} weights must sum to one, got ${total}`);
+    /* Effort is LISTED and shown as not counted, rather than omitted. A
+       measurement silently dropped looks exactly like one never published. */
+    for (const measure of dataset.measures) {
+      if (measure.metric === "HUNTER_COUNT" || measure.metric === "HUNTER_DAYS") {
+        assert.equal(measure.contributes, false);
+        assert.equal(measure.weight, undefined);
+      }
+    }
+  }
+});
+
+test("a species with no evidence gets a gap, said as a gap", async () => {
+  const response = await methodology("species:ruffed-grouse");
+  assert.equal(response.status, 404);
+  const body = await response.json();
+  assert.equal(body.status, "NO_HEAT_MAP_DATA");
+  assert.match(body.message, /not a finding about where the animals are/);
+  // The methodology itself is still returned: how it WOULD be calculated is
+  // not a secret, and saying nothing reads as "there is no method".
+  assert.equal(body.methodology.version, "opportunity-v2");
+  assert.equal((await methodology("not-a-species")).status, 400);
+});
+
+test("the coverage report grades every dataset from its own evidence", async () => {
+  const body = await (await COVERAGE()).json();
+  assert.equal(body.methodologyVersion, "opportunity-v2");
+  /* Every dataset served today is Ontario or British Columbia harvest, so every
+     one is grade C and drawn per management area. Counted, never declared. */
+  assert.deepEqual(body.byGrade, { C: 13 });
+  assert.deepEqual(body.byRenderKind, { ZONE_AREA: 13 });
+  for (const dataset of body.datasets) {
+    assert.ok(dataset.independentValues >= 1);
+    assert.ok(dataset.metrics.length >= 1);
+    assert.ok(dataset.spatialPrecision.length > 0);
   }
 });
