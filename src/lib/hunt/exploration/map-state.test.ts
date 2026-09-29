@@ -307,3 +307,36 @@ test("searching again after closing starts from nothing stale", () => {
   assert.deepEqual(again.hunt, BANCROFT);
   assert.equal(again.huntZone?.designation, "57");
 });
+
+test("opening the species layer over a zone keeps the zone — Find game does not discard it", () => {
+  /*
+   * §41B: EXPLORE, FIND GAME and CHECK HUNT "share the same species, date,
+   * hunt location, selected zone, camera and layer state".
+   *
+   * The defect this pins, measured on production: choosing a species from Find
+   * game dispatched `CARD_CLOSED`, which falls back to the HUNT's zone — and a
+   * deep link carries a zone with no hunt POINT, so the fallback was "none".
+   * The selection went, the URL lost `zone=`, and reloading what looked like
+   * the same link opened a different Hunt at the national camera.
+   */
+  const linked = run([{ type: "ZONE_SELECTED", zone: WMU_57, origin: "link" }]);
+  assert.deepEqual(linked.selection, { kind: "zone", zone: WMU_57, origin: "link" });
+  assert.equal(linked.cardOpen, true);
+
+  const layered = run([{ type: "LAYER_OPENED_OVER_SELECTION" }], linked);
+  assert.equal(layered.cardOpen, false, "the card goes");
+  assert.deepEqual(layered.selection, linked.selection, "and the zone stays exactly as it was");
+
+  /*
+   * With no hunt point there is nothing to fall back TO, which is the case the
+   * link hits and the reason this needed its own event rather than a tweak.
+   *
+   * RECONCILED 2026-09-29: this test originally also asserted that closing the
+   * card over the HUNT's own zone re-selected that zone. The owner has since
+   * decided the opposite — closing your own answer clears it — so that
+   * assertion now lives in the clear-selection test above, with the new
+   * expectation. The two facts were only ever adjacent, never the same: this
+   * test is about the species layer, not about closing a card.
+   */
+  assert.deepEqual(run([{ type: "CARD_CLOSED" }], linked).selection, { kind: "none" });
+});
