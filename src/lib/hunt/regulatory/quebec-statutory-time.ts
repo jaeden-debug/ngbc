@@ -119,8 +119,10 @@ export function quebecStatutoryClock(
       reason:
         "East of the meridian of 63° W. longitude, Québec's Legal Time Act applies three different reckonings " +
         "depending on territory: the MRC de Minganie keeps Eastern time, the Îles-de-la-Madeleine and the Listuguj " +
-        "reserve observe Atlantic time with advanced time, and the remainder observes Atlantic standard time all " +
-        "year. North Ground holds no official boundary for those territories and will not guess which governs here.",
+        "reserve observe Atlantic time and advance it in summer, and everywhere else east of the line observes " +
+        "Atlantic standard time all year without a summer shift. Each of the three is settled in the Act; what " +
+        "North Ground cannot do is place a point in one of them, because it holds no official boundary for the " +
+        "MRC de Minganie, the Îles-de-la-Madeleine or the Listuguj reserve.",
       authority: "Gouvernement du Québec",
     };
   }

@@ -3,7 +3,7 @@ import test from "node:test";
 import type { IsoDate } from "../../content-contract/index.ts";
 import { daylightSavingInEffect } from "./statutory-time.ts";
 import { quebecStatutoryClock } from "./quebec-statutory-time.ts";
-import { quebecHoursRules, quebecLegalTime, quebecNightPermission, QUEBEC_GENERAL_HOURS } from "./quebec-legal-time.ts";
+import { quebecHoursRules, quebecLegalTime, quebecNightPermission, QUEBEC_GENERAL_HOURS, QUEBEC_TURKEY_HOURS } from "./quebec-legal-time.ts";
 
 /**
  * Québec's hours, tested on the seams rather than on the happy path.
@@ -137,7 +137,7 @@ test("wild turkey composes to the morning close, and it beats the general rule",
   assert.equal(result.status, "RESOLVED");
   if (result.status !== "RESOLVED") return;
   assert.equal(result.window.closesAt, "12:00");
-  assert.match(result.section, /s\. 14/);
+  assert.match(result.section, /art\. 14, septième alinéa/);
 });
 
 test("a whole-zone question gets no window, and says it is about a point", () => {
@@ -146,6 +146,40 @@ test("a whole-zone question gets no window, and says it is about a point", () =>
   assert.equal(result.status, "NOT_CERTIFIED");
   if (result.status !== "NOT_CERTIFIED") return;
   assert.match(result.reason, /point/);
+});
+
+test("the turkey citation is the septième alinéa, and it is anchored as well as numbered", () => {
+  /*
+   * THIS SHIPPED WRONG ONCE, AS "s. 14, para. 6".
+   *
+   * The turkey text is at index 6 counting from zero; the Québec alinéa
+   * convention makes the opening paragraph the PREMIER alinéa, so the correct
+   * ordinal is the seventh. What makes this worth a test of its own is where
+   * the wrong citation LANDED: the sixième alinéa is a real provision about
+   * small-game hunting in zone 3. An off-by-one that points at nothing gets
+   * caught; one that points at a different real rule gets believed, because a
+   * reader who checks it finds a genuine provision and concludes the reference
+   * is sound and the text was mis-transcribed.
+   *
+   * The anchor is asserted too. An index is a position and positions move when
+   * a regulation is amended, which is how this class of error is born.
+   */
+  assert.match(QUEBEC_TURKEY_HOURS.section, /art\. 14, septième alinéa/);
+  assert.doesNotMatch(QUEBEC_TURKEY_HOURS.section, /para\. \d/, "never cited by a zero-based paragraph index");
+  assert.match(QUEBEC_TURKEY_HOURS.section, /dindon sauvage/, "carries a locator, not only a position");
+});
+
+test("no Québec hours citation is pinned by a bare paragraph index", () => {
+  /* A sweep rather than a spot check: every rule this module can emit. An
+     index-derived citation is the defect shape, so none may reappear anywhere. */
+  const sections = [
+    QUEBEC_GENERAL_HOURS.section,
+    QUEBEC_TURKEY_HOURS.section,
+    quebecNightPermission("species:arctic-hare")!.section,
+  ];
+  for (const section of sections) {
+    assert.doesNotMatch(section, /\bpara\. \d/, `${section} is not pinned by a paragraph index`);
+  }
 });
 
 test("the one-and-a-half-hour definition of night never reaches the window", () => {

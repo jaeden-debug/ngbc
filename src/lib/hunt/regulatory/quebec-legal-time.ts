@@ -119,10 +119,26 @@ export const QUEBEC_GENERAL_HOURS: LegalTimeRule = {
 /**
  * Wild turkey, narrowed to the morning.
  *
- * r. 12, s. 14, SIXTH PARAGRAPH — not a section of its own. s. 14 is the
+ * r. 12, art. 14, SEPTIÈME ALINÉA — not a section of its own. art. 14 is the
  * general "hunting is permitted in accordance with Annexe III" provision and
  * the turkey window is a paragraph inside it, so citing it as "s. 16" or as a
  * standalone section would be citing a provision that does not say this.
+ *
+ * THIS CITATION WAS WRONG ONCE, AND THE WAY IT WAS WRONG IS THE LESSON.
+ * It read "para. 6" — the turkey text is at index 6 counting from zero, and
+ * under the Québec alinéa convention the opening paragraph is the PREMIER
+ * alinéa, so the correct ordinal is the seventh. An off-by-one would normally
+ * be caught by landing on nothing; this one landed on a REAL provision about
+ * something else entirely — the sixième alinéa governs small-game hunting in
+ * zone 3. A citation that points at nothing gets caught. A citation that
+ * points at the wrong real rule gets BELIEVED: a reader checking the turkey
+ * window against it finds a genuine provision and concludes the reference is
+ * sound and the text was mis-transcribed, which is the opposite of the truth.
+ *
+ * So the citation is ANCHORED as well as numbered. An index is a position, and
+ * positions move when a regulation is amended — which is exactly how this
+ * class of error is born. The anchor is a locator, not stored legislative
+ * text: a few opening words, enough to find the paragraph if it moves.
  *
  * Ontario narrows spring turkey to 7 p.m. and Québec narrows it to noon. Both
  * end on a clock time the regulation names, which is why the contract carries
@@ -134,7 +150,7 @@ export const QUEBEC_TURKEY_HOURS: LegalTimeRule = {
   beforeSunriseMinutes: 30,
   closesAt: "12:00",
   statedAs: "During a wild turkey season, hunting is permitted only from half an hour before sunrise until noon.",
-  section: "Règlement sur la chasse, CQLR c. C-61.1, r. 12, s. 14, para. 6",
+  section: "Règlement sur la chasse, CQLR c. C-61.1, r. 12, art. 14, septième alinéa (« Durant une période de chasse au dindon sauvage »)",
   sourceId: HUNTING_REGULATION,
 };
 

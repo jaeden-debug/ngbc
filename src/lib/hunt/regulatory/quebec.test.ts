@@ -166,7 +166,8 @@ test("turkey carries its own legal hours and never asks about a rifle", () => {
    *
    * THE CITATION ALSO IMPROVED, which is the part worth noticing. The old
    * reason quoted `ca-qc-dindon-sauvage-2026-2027` — the ministry's SUMMARY
-   * page. The window now cites Règlement sur la chasse, r. 12, s. 14, para. 6:
+   * page. The window now cites Règlement sur la chasse, r. 12, art. 14,
+   * septième alinéa:
    * the instrument that actually enacts the narrowing. This project has found
    * four cases of a ministry summary misstating its own regulation, so moving a
    * citation from the summary to the regulation is the direction that matters.
@@ -176,7 +177,7 @@ test("turkey carries its own legal hours and never asks about a rifle", () => {
     result.result?.legalTime.status === "RESOLVED" ? result.result.legalTime.window.closesAt : null,
     "12:00",
   );
-  assert.match(result.result ? legalTimeSummary(result.result.legalTime) : "", /r\. 12, s\. 14/);
+  assert.match(result.result ? legalTimeSummary(result.result.legalTime) : "", /art\. 14, septième alinéa/);
   assert.match((result.result?.limitations ?? []).map((entry) => entry.text).join("\n"), /« Dindon sauvage porteur d'une barbe »/);
 });
 
