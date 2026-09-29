@@ -93,12 +93,54 @@ export type LegalTimeRule =
       sourceId: CanonicalId<"source">;
     };
 
+/**
+ * A provision that is in force for this hunt but does not move the computed
+ * window, because whether it bites turns on a fact the evaluation does not hold.
+ *
+ * THE SCHEMA EXPECTED A WINDOW AND QUÉBEC PUBLISHES A PROHIBITION WITH NAMED
+ * PERMISSIONS. Its general hours are not stated as hours at all: C-61.1 s. 56
+ * forbids hunting except as a regulation permits, s. 1 defines night, and
+ * Règlement sur la chasse, r. 12, s. 21 then permits hunting AT NIGHT for a
+ * short enumerated list — hare or rabbit by snare, three frogs, and raccoon
+ * with a hound. For a hare hunter the lawful window therefore depends on what
+ * they carry: a rifle is bound by the day window, a snare is not bound at all.
+ *
+ * Rounding that into the nearest existing field would be wrong in the direction
+ * §41A warns about. Dropping the permission tells a lawful snare hunter their
+ * hunt is illegal — a restriction stricter than the source, which §8 makes as
+ * false as a loose one. Widening the window to fit the permission tells a rifle
+ * hunter they may shoot at night. Neither is available, so the exception is
+ * carried BESIDE the window as its own fact, with its own citation.
+ *
+ * `effect` is the safety-relevant half and is stated, never inferred from the
+ * wording: WIDENS means the shown window is narrower than the law for a hunter
+ * this reaches, NARROWS means it may be more permissive than their real one.
+ */
+export interface LegalTimeException {
+  /** Stable, so a consumer can key and test one line. */
+  id: string;
+  /** What it does, in North Ground's own words — never a paraphrase passed off as the law's. */
+  text: string;
+  /** Which way it moves the real window for a hunter it reaches. */
+  effect: "WIDENS" | "NARROWS";
+  section: string;
+  sourceId: CanonicalId<"source">;
+}
+
 export type LegalTimeResult =
   | {
       status: "RESOLVED";
       basis: LegalTimeBasis;
       /** Wall-clock times ON the requested date, in `timezone`. */
       window: { opensAt: string; closesAt: string };
+      /**
+       * In force here today, but outside the computed window — see
+       * `LegalTimeException`. A renderer shows these WITH the window and never
+       * behind a disclosure: an exception that widens the law is the one a
+       * hunter is most likely to be wrongly denied by, and one that narrows it
+       * is the one they can be charged under.
+       */
+      exceptions?: LegalTimeException[];
       /*
        * Whether this window is also the clock a hunter reads at the point.
        *

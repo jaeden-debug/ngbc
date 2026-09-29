@@ -1,6 +1,7 @@
 import { legalTimeNotCertified } from "./legal-time.ts";
+import { quebecLegalTime, QUEBEC_LEGISLATION_SOURCES } from "./quebec-legal-time.ts";
 import { contextual, general, sourceDetail, type Limitation } from "../limitation.ts";
-import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
+import type { CanonicalId, IsoDate, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/ca-qc-2026.json" with { type: "json" };
 import overlaysJson from "../../../../content/regulatory/ca-qc-overlays.json" with { type: "json" };
 import { QUEBEC_ZONE_TYPE_NAME, QUEBEC_ZONE_WFS, quebecZoneCanonicalId } from "../ingestion/quebec-zone.ts";
@@ -516,16 +517,37 @@ export function quebecVocabulary(speciesId: string, designation: string | null):
       ...(method ? [method] : []),
     ],
     /*
-     * Québec spans more than one IANA zone, so a point timezone cannot yet be
-     * established and no window is resolved. The ministry's own turkey hours
-     * are still carried as the reason, which is more than "not certified".
+     * The fallback, for a zone-scoped question where no point is known.
+     *
+     * Not "not certified" any more: the rule IS certified — it is the day
+     * window that C-61.1 ss. 1 and 56 and r. 12 s. 21 leave standing — and what
+     * is missing is a point to compute sunrise at. Saying so names the rule
+     * while refusing the arithmetic, which is the accurate refusal.
      */
     legalTime: legalTimeNotCertified(
       speciesId === "species:wild-turkey" && turkeyHours
         ? `« ${turkeyHours} »`
-        : "Québec's legal hunting hours for this species are set by rules North Ground has not certified.",
-      "Ministère des Forêts, de la Faune et des Parcs",
+        : "Québec prohibits hunting at night, night being half an hour after sunset to half an hour before sunrise " +
+          "(C-61.1, ss. 1 and 56; Règlement sur la chasse, r. 12, s. 21). North Ground states exact times for a " +
+          "point, not for a whole zone.",
+      "Gouvernement du Québec",
     ),
+    /*
+     * The window at a point, on the Legal Time Act's own clock.
+     *
+     * Unlike Manitoba this does NOT go through `timeZoneAtPoint`, which
+     * correctly returns undefined for Québec: the province spans zones, and a
+     * jurisdiction-wide IANA value is exactly the substitution that file
+     * brands its types to prevent. The clock comes from the statute instead,
+     * which divides the province at the 63rd meridian and answers completely
+     * west of it — every hunting zone in the settled south — while refusing
+     * the east, where three reckonings turn on territories North Ground holds
+     * no boundary for.
+     */
+    legalTimeAt: (species, place, date) => {
+      if (place.scope === "ZONE") return undefined;
+      return quebecLegalTime(species, place, date as IsoDate);
+    },
     standingLimitations: [
       ...placeNotes(speciesId, designation),
       ...standingFor(speciesId),
@@ -694,5 +716,13 @@ export function quebecSourceRecords(ids: readonly string[]): SourceRecord[] {
       .filter((source) => wanted.has(source.id))
       // As the ministry's GeoServer names itself.
       .map((source) => record({ ...source, authority: "Ministère des Forêts, de la Faune et des Parcs" })),
+    /*
+     * The consolidated legislation behind the legal-hours window, already in
+     * SourceRecord shape and passed through untouched — `record` would stamp
+     * the bundle's retrieval day on them, and these were read on their own day
+     * and carry their own consolidation. A window citing a provision whose
+     * instrument a hunter cannot open is provenance in name only.
+     */
+    ...QUEBEC_LEGISLATION_SOURCES.filter((source) => wanted.has(source.id)),
   ];
 }

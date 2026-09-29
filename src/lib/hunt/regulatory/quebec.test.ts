@@ -155,10 +155,28 @@ test("turkey carries its own legal hours and never asks about a rifle", () => {
   const result = ask(TURKEY, "03E", "2026-05-01");
   assert.equal(result.completeness, "RESOLVED");
   assert.equal(result.result?.status, "CONDITIONAL");
-  /* Québec spans zones, so the ministry's own hours are carried as the reason
-     rather than resolved into a window. The words survive; the clock does not. */
-  assert.equal(result.result?.legalTime.status, "NOT_CERTIFIED");
-  assert.match(result.result ? legalTimeSummary(result.result.legalTime) : "", /demi-heure avant le lever du soleil jusqu.à midi/);
+  /*
+   * The window now resolves, and it resolves to noon.
+   *
+   * This test used to assert NOT_CERTIFIED and match the ministry's French
+   * sentence, because Québec's clock was thought unavailable — the province
+   * spans IANA zones. It is available: the Legal Time Act states the reckoning
+   * itself and divides the province at the 63rd meridian, and this point
+   * (47, -72) is west of it. `quebec-statutory-time.ts` carries the reasoning.
+   *
+   * THE CITATION ALSO IMPROVED, which is the part worth noticing. The old
+   * reason quoted `ca-qc-dindon-sauvage-2026-2027` — the ministry's SUMMARY
+   * page. The window now cites Règlement sur la chasse, r. 12, s. 14, para. 6:
+   * the instrument that actually enacts the narrowing. This project has found
+   * four cases of a ministry summary misstating its own regulation, so moving a
+   * citation from the summary to the regulation is the direction that matters.
+   */
+  assert.equal(result.result?.legalTime.status, "RESOLVED");
+  assert.equal(
+    result.result?.legalTime.status === "RESOLVED" ? result.result.legalTime.window.closesAt : null,
+    "12:00",
+  );
+  assert.match(result.result ? legalTimeSummary(result.result.legalTime) : "", /r\. 12, s\. 14/);
   assert.match((result.result?.limitations ?? []).map((entry) => entry.text).join("\n"), /« Dindon sauvage porteur d'une barbe »/);
 });
 
