@@ -311,14 +311,19 @@ function HuntMapView({
     if (west < east && south < north) setViewport(fitViewport({ west, south, east, north }, canvasSize, padding()));
   }, [useGoogle, canvasSize, drawn, request, padding]);
 
-  /* A hint describes ONE zone, species and date. When any of them changes, or
-     the map moves under it, the popover is describing an answer that is no
-     longer the one on screen — so it closes rather than going stale. */
-  useEffect(() => { setConditionHint(null); }, [zoneAnswers, drawn]);
-
-  /* The hint only exists while its zone still has a conditional opportunity —
-     so a species change that closes the season closes the popover with it. */
-  const hintAnswer = conditionHint ? zoneAnswers?.get(conditionHint.key) ?? null : null;
+  /*
+   * The hint is DERIVED, never snapshotted: its conditions are read from
+   * `zoneAnswers` on every render, so changing species or date recomputes what
+   * it says and a previous species' conditions cannot survive in it. When the
+   * new answer has no conditional opportunity the hint simply stops existing.
+   *
+   * It is deliberately NOT closed by an effect on `zoneAnswers`/`drawn`. Those
+   * are rebuilt as geometry streams in, so the popover closed on the render
+   * after it opened — it was never visible. What must not go stale is the
+   * CONTENT, and derivation already guarantees that.
+   */
+  const answerForHint = conditionHint ? zoneAnswers?.get(conditionHint.key) ?? null : null;
+  const hintAnswer = answerForHint && zoneHasConditions(answerForHint) ? answerForHint : null;
   const surfaceRef = useRef<HTMLDivElement>(null);
 
   /* `aria-expanded` on the imperative map's own button. */
@@ -368,6 +373,10 @@ function HuntMapView({
           features={canvasFeatures}
           viewport={viewport}
           onViewportChange={(next) => {
+            /* The indicator moved with the map, so its popover no longer points
+               at anything. A deliberate pan is the honest close signal; the
+               geometry arriving is not. */
+            setConditionHint(null);
             setViewport(next);
             if (pin?.mode === "centre") dispatch({ type: "PIN_CENTRE_MOVED", point: { latitude: next.latitude, longitude: next.longitude } });
           }}

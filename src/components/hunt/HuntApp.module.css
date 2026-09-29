@@ -1493,7 +1493,10 @@
 
 .conditionHint {
   position: absolute;
-  z-index: 6;
+  /* Above the map's own notices (z-index 6 and 8). A popover a hunter opened
+     deliberately must not sit under a standing message about a provider —
+     it did, and the only visible sign was a sliver of text behind the notice. */
+  z-index: 25;
   /* `left`/`top` are the indicator's own position; the popover is centred on it
      and sits above by default, below where there is no room overhead. */
   transform: translate(-50%, -100%);
