@@ -97,7 +97,7 @@
       "id": "evidence:ca-bc-mu-3-37-caribou-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 6,
-      "normalizedValue": 0.125,
+      "normalizedValue": 0,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -217,7 +217,7 @@
       "id": "evidence:ca-bc-mu-6-18-caribou-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 8,
-      "normalizedValue": 0.125,
+      "normalizedValue": 0.083333,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -313,7 +313,7 @@
       "id": "evidence:ca-bc-mu-6-19-caribou-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 35,
-      "normalizedValue": 0.833333,
+      "normalizedValue": 0.583333,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -337,7 +337,7 @@
       "id": "evidence:ca-bc-mu-6-19-caribou-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 220,
-      "normalizedValue": 0.833333,
+      "normalizedValue": 0.583333,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -433,7 +433,7 @@
       "id": "evidence:ca-bc-mu-6-20-caribou-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 81,
-      "normalizedValue": 0.583333,
+      "normalizedValue": 1,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -457,7 +457,7 @@
       "id": "evidence:ca-bc-mu-6-20-caribou-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 591,
-      "normalizedValue": 0.583333,
+      "normalizedValue": 0.916667,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -553,7 +553,7 @@
       "id": "evidence:ca-bc-mu-6-22-caribou-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 63,
-      "normalizedValue": 1,
+      "normalizedValue": 0.833333,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -577,7 +577,7 @@
       "id": "evidence:ca-bc-mu-6-22-caribou-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 480,
-      "normalizedValue": 1,
+      "normalizedValue": 0.833333,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -673,7 +673,7 @@
       "id": "evidence:ca-bc-mu-6-23-caribou-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 38,
-      "normalizedValue": 0.5,
+      "normalizedValue": 0.666667,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -697,7 +697,7 @@
       "id": "evidence:ca-bc-mu-6-23-caribou-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 358,
-      "normalizedValue": 0.5,
+      "normalizedValue": 0.666667,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -793,7 +793,7 @@
       "id": "evidence:ca-bc-mu-6-24-caribou-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 49,
-      "normalizedValue": 0.666667,
+      "normalizedValue": 0.75,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -817,7 +817,7 @@
       "id": "evidence:ca-bc-mu-6-24-caribou-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 414,
-      "normalizedValue": 0.666667,
+      "normalizedValue": 0.75,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -937,7 +937,7 @@
       "id": "evidence:ca-bc-mu-6-25-caribou-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 627,
-      "normalizedValue": 0.916667,
+      "normalizedValue": 1,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1033,7 +1033,7 @@
       "id": "evidence:ca-bc-mu-6-26-caribou-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 17,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.5,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1057,7 +1057,7 @@
       "id": "evidence:ca-bc-mu-6-26-caribou-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 98,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.416667,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1177,7 +1177,7 @@
       "id": "evidence:ca-bc-mu-7-37-caribou-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 14,
-      "normalizedValue": 0.125,
+      "normalizedValue": 0.25,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1297,7 +1297,7 @@
       "id": "evidence:ca-bc-mu-7-39-caribou-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 120,
-      "normalizedValue": 0.416667,
+      "normalizedValue": 0.5,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1417,7 +1417,7 @@
       "id": "evidence:ca-bc-mu-7-40-caribou-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 14,
-      "normalizedValue": 0.125,
+      "normalizedValue": 0.25,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1537,7 +1537,7 @@
       "id": "evidence:ca-bc-mu-7-41-caribou-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 14,
-      "normalizedValue": 0.333333,
+      "normalizedValue": 0.25,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },

@@ -73,7 +73,7 @@
       "id": "evidence:ca-bc-mu-3-12-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 10,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.673913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -97,7 +97,7 @@
       "id": "evidence:ca-bc-mu-3-12-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 45,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.630435,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -193,7 +193,7 @@
       "id": "evidence:ca-bc-mu-3-13-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 12,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.798913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -217,7 +217,7 @@
       "id": "evidence:ca-bc-mu-3-13-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 54,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.684783,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -313,7 +313,7 @@
       "id": "evidence:ca-bc-mu-3-17-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.657609,
+      "normalizedValue": 0.396739,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -337,7 +337,7 @@
       "id": "evidence:ca-bc-mu-3-17-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 9,
-      "normalizedValue": 0.657609,
+      "normalizedValue": 0.141304,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -433,7 +433,7 @@
       "id": "evidence:ca-bc-mu-3-18-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 12,
-      "normalizedValue": 0.880435,
+      "normalizedValue": 0.798913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -457,7 +457,7 @@
       "id": "evidence:ca-bc-mu-3-18-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 70,
-      "normalizedValue": 0.880435,
+      "normalizedValue": 0.766304,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -553,7 +553,7 @@
       "id": "evidence:ca-bc-mu-3-19-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 13,
-      "normalizedValue": 0.657609,
+      "normalizedValue": 0.853261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -577,7 +577,7 @@
       "id": "evidence:ca-bc-mu-3-19-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 84,
-      "normalizedValue": 0.657609,
+      "normalizedValue": 0.836957,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -673,7 +673,7 @@
       "id": "evidence:ca-bc-mu-3-20-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 15,
-      "normalizedValue": 0.657609,
+      "normalizedValue": 0.918478,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -697,7 +697,7 @@
       "id": "evidence:ca-bc-mu-3-20-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 38,
-      "normalizedValue": 0.657609,
+      "normalizedValue": 0.576087,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -793,7 +793,7 @@
       "id": "evidence:ca-bc-mu-3-26-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 6,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.456522,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -817,7 +817,7 @@
       "id": "evidence:ca-bc-mu-3-26-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 70,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.766304,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -913,7 +913,7 @@
       "id": "evidence:ca-bc-mu-3-27-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 9,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.619565,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -937,7 +937,7 @@
       "id": "evidence:ca-bc-mu-3-27-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 74,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.804348,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1033,7 +1033,7 @@
       "id": "evidence:ca-bc-mu-3-28-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 12,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.798913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1057,7 +1057,7 @@
       "id": "evidence:ca-bc-mu-3-28-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 96,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.858696,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1153,7 +1153,7 @@
       "id": "evidence:ca-bc-mu-3-29-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.396739,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1177,7 +1177,7 @@
       "id": "evidence:ca-bc-mu-3-29-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 37,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.559783,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1273,7 +1273,7 @@
       "id": "evidence:ca-bc-mu-3-30-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 9,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.619565,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1297,7 +1297,7 @@
       "id": "evidence:ca-bc-mu-3-30-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 67,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.73913,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1417,7 +1417,7 @@
       "id": "evidence:ca-bc-mu-3-31-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 99,
-      "normalizedValue": 0.956522,
+      "normalizedValue": 0.869565,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1513,7 +1513,7 @@
       "id": "evidence:ca-bc-mu-3-32-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 7,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.494565,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1537,7 +1537,7 @@
       "id": "evidence:ca-bc-mu-3-32-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 35,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.516304,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1633,7 +1633,7 @@
       "id": "evidence:ca-bc-mu-3-36-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 9,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.619565,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1657,7 +1657,7 @@
       "id": "evidence:ca-bc-mu-3-36-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 140,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.913043,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1753,7 +1753,7 @@
       "id": "evidence:ca-bc-mu-3-37-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.657609,
+      "normalizedValue": 0.548913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1777,7 +1777,7 @@
       "id": "evidence:ca-bc-mu-3-37-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 12,
-      "normalizedValue": 0.657609,
+      "normalizedValue": 0.233696,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1873,7 +1873,7 @@
       "id": "evidence:ca-bc-mu-3-38-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 3,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.228261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1897,7 +1897,7 @@
       "id": "evidence:ca-bc-mu-3-38-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 12,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.233696,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1993,7 +1993,7 @@
       "id": "evidence:ca-bc-mu-3-42-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 3,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.228261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2017,7 +2017,7 @@
       "id": "evidence:ca-bc-mu-3-42-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 0,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.027174,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2113,7 +2113,7 @@
       "id": "evidence:ca-bc-mu-4-1-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.548913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2137,7 +2137,7 @@
       "id": "evidence:ca-bc-mu-4-1-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 37,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.559783,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2233,7 +2233,7 @@
       "id": "evidence:ca-bc-mu-4-2-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 9,
-      "normalizedValue": 0.820652,
+      "normalizedValue": 0.619565,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2257,7 +2257,7 @@
       "id": "evidence:ca-bc-mu-4-2-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 32,
-      "normalizedValue": 0.820652,
+      "normalizedValue": 0.483696,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2353,7 +2353,7 @@
       "id": "evidence:ca-bc-mu-4-3-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 12,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.798913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2377,7 +2377,7 @@
       "id": "evidence:ca-bc-mu-4-3-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 56,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.695652,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2473,7 +2473,7 @@
       "id": "evidence:ca-bc-mu-4-4-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 3,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.228261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2497,7 +2497,7 @@
       "id": "evidence:ca-bc-mu-4-4-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 27,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.434783,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2593,7 +2593,7 @@
       "id": "evidence:ca-bc-mu-4-5-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.396739,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2617,7 +2617,7 @@
       "id": "evidence:ca-bc-mu-4-5-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 40,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.597826,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2713,7 +2713,7 @@
       "id": "evidence:ca-bc-mu-4-6-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.048913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2737,7 +2737,7 @@
       "id": "evidence:ca-bc-mu-4-6-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 5,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.097826,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2833,7 +2833,7 @@
       "id": "evidence:ca-bc-mu-4-8-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 2,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.130435,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2857,7 +2857,7 @@
       "id": "evidence:ca-bc-mu-4-8-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 0,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.027174,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2953,7 +2953,7 @@
       "id": "evidence:ca-bc-mu-4-9-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.396739,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2977,7 +2977,7 @@
       "id": "evidence:ca-bc-mu-4-9-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 23,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.391304,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3073,7 +3073,7 @@
       "id": "evidence:ca-bc-mu-4-15-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 2,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.130435,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3097,7 +3097,7 @@
       "id": "evidence:ca-bc-mu-4-15-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 35,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.516304,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3193,7 +3193,7 @@
       "id": "evidence:ca-bc-mu-4-20-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 10,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.673913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3217,7 +3217,7 @@
       "id": "evidence:ca-bc-mu-4-20-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 68,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.75,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3313,7 +3313,7 @@
       "id": "evidence:ca-bc-mu-4-21-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 13,
-      "normalizedValue": 0.657609,
+      "normalizedValue": 0.853261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3337,7 +3337,7 @@
       "id": "evidence:ca-bc-mu-4-21-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 75,
-      "normalizedValue": 0.657609,
+      "normalizedValue": 0.826087,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3433,7 +3433,7 @@
       "id": "evidence:ca-bc-mu-4-22-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.048913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3457,7 +3457,7 @@
       "id": "evidence:ca-bc-mu-4-22-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 5,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.097826,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3553,7 +3553,7 @@
       "id": "evidence:ca-bc-mu-4-23-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 9,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.619565,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3577,7 +3577,7 @@
       "id": "evidence:ca-bc-mu-4-23-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 350,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.98913,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3673,7 +3673,7 @@
       "id": "evidence:ca-bc-mu-4-24-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 3,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.228261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3697,7 +3697,7 @@
       "id": "evidence:ca-bc-mu-4-24-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 3,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.076087,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3793,7 +3793,7 @@
       "id": "evidence:ca-bc-mu-4-25-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 4,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.315217,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3817,7 +3817,7 @@
       "id": "evidence:ca-bc-mu-4-25-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 18,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.326087,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3913,7 +3913,7 @@
       "id": "evidence:ca-bc-mu-4-26-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 2,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.130435,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3937,7 +3937,7 @@
       "id": "evidence:ca-bc-mu-4-26-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 74,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.804348,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4033,7 +4033,7 @@
       "id": "evidence:ca-bc-mu-4-32-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.048913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4057,7 +4057,7 @@
       "id": "evidence:ca-bc-mu-4-32-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 9,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.141304,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4153,7 +4153,7 @@
       "id": "evidence:ca-bc-mu-4-34-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.396739,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4177,7 +4177,7 @@
       "id": "evidence:ca-bc-mu-4-34-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 36,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.538043,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4273,7 +4273,7 @@
       "id": "evidence:ca-bc-mu-4-35-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 2,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.130435,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4297,7 +4297,7 @@
       "id": "evidence:ca-bc-mu-4-35-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 74,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.804348,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4393,7 +4393,7 @@
       "id": "evidence:ca-bc-mu-5-1-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 14,
-      "normalizedValue": 0.945652,
+      "normalizedValue": 0.891304,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4417,7 +4417,7 @@
       "id": "evidence:ca-bc-mu-5-1-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 39,
-      "normalizedValue": 0.945652,
+      "normalizedValue": 0.586957,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4633,7 +4633,7 @@
       "id": "evidence:ca-bc-mu-5-3-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 10,
-      "normalizedValue": 0.918478,
+      "normalizedValue": 0.673913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4657,7 +4657,7 @@
       "id": "evidence:ca-bc-mu-5-3-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 25,
-      "normalizedValue": 0.918478,
+      "normalizedValue": 0.413043,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4753,7 +4753,7 @@
       "id": "evidence:ca-bc-mu-5-4-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.048913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4777,7 +4777,7 @@
       "id": "evidence:ca-bc-mu-5-4-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 9,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.141304,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4873,7 +4873,7 @@
       "id": "evidence:ca-bc-mu-5-5-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 11,
-      "normalizedValue": 0.880435,
+      "normalizedValue": 0.728261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4897,7 +4897,7 @@
       "id": "evidence:ca-bc-mu-5-5-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 47,
-      "normalizedValue": 0.880435,
+      "normalizedValue": 0.641304,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4993,7 +4993,7 @@
       "id": "evidence:ca-bc-mu-5-12-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 2,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.130435,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5017,7 +5017,7 @@
       "id": "evidence:ca-bc-mu-5-12-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 10,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.168478,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5113,7 +5113,7 @@
       "id": "evidence:ca-bc-mu-5-13-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 39,
-      "normalizedValue": 0.967391,
+      "normalizedValue": 0.972826,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5137,7 +5137,7 @@
       "id": "evidence:ca-bc-mu-5-13-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 338,
-      "normalizedValue": 0.967391,
+      "normalizedValue": 0.978261,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5233,7 +5233,7 @@
       "id": "evidence:ca-bc-mu-5-14-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.880435,
+      "normalizedValue": 0.548913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5257,7 +5257,7 @@
       "id": "evidence:ca-bc-mu-5-14-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 21,
-      "normalizedValue": 0.880435,
+      "normalizedValue": 0.36413,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5353,7 +5353,7 @@
       "id": "evidence:ca-bc-mu-6-4-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 39,
-      "normalizedValue": 0.983696,
+      "normalizedValue": 0.972826,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5377,7 +5377,7 @@
       "id": "evidence:ca-bc-mu-6-4-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 242,
-      "normalizedValue": 0.983696,
+      "normalizedValue": 0.967391,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5473,7 +5473,7 @@
       "id": "evidence:ca-bc-mu-6-5-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 2,
-      "normalizedValue": 0.657609,
+      "normalizedValue": 0.130435,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5497,7 +5497,7 @@
       "id": "evidence:ca-bc-mu-6-5-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 5,
-      "normalizedValue": 0.657609,
+      "normalizedValue": 0.097826,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5593,7 +5593,7 @@
       "id": "evidence:ca-bc-mu-6-6-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 4,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.315217,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5617,7 +5617,7 @@
       "id": "evidence:ca-bc-mu-6-6-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 10,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.168478,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5713,7 +5713,7 @@
       "id": "evidence:ca-bc-mu-6-8-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 28,
-      "normalizedValue": 0.880435,
+      "normalizedValue": 0.945652,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5833,7 +5833,7 @@
       "id": "evidence:ca-bc-mu-6-9-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 13,
-      "normalizedValue": 0.918478,
+      "normalizedValue": 0.853261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5857,7 +5857,7 @@
       "id": "evidence:ca-bc-mu-6-9-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 36,
-      "normalizedValue": 0.918478,
+      "normalizedValue": 0.538043,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5953,7 +5953,7 @@
       "id": "evidence:ca-bc-mu-6-15-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 7,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.494565,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5977,7 +5977,7 @@
       "id": "evidence:ca-bc-mu-6-15-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 20,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.347826,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6073,7 +6073,7 @@
       "id": "evidence:ca-bc-mu-6-25-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 2,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.130435,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6097,7 +6097,7 @@
       "id": "evidence:ca-bc-mu-6-25-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 26,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.423913,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6193,7 +6193,7 @@
       "id": "evidence:ca-bc-mu-6-30-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 11,
-      "normalizedValue": 0.847826,
+      "normalizedValue": 0.728261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6217,7 +6217,7 @@
       "id": "evidence:ca-bc-mu-6-30-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 29,
-      "normalizedValue": 0.847826,
+      "normalizedValue": 0.456522,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6313,7 +6313,7 @@
       "id": "evidence:ca-bc-mu-7-8-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 3,
-      "normalizedValue": 0.657609,
+      "normalizedValue": 0.228261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6337,7 +6337,7 @@
       "id": "evidence:ca-bc-mu-7-8-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 12,
-      "normalizedValue": 0.657609,
+      "normalizedValue": 0.233696,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6433,7 +6433,7 @@
       "id": "evidence:ca-bc-mu-7-9-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 14,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.891304,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6457,7 +6457,7 @@
       "id": "evidence:ca-bc-mu-7-9-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 220,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.956522,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6553,7 +6553,7 @@
       "id": "evidence:ca-bc-mu-7-10-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 12,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.798913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6577,7 +6577,7 @@
       "id": "evidence:ca-bc-mu-7-10-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 42,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.619565,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6673,7 +6673,7 @@
       "id": "evidence:ca-bc-mu-7-11-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 6,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.456522,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6697,7 +6697,7 @@
       "id": "evidence:ca-bc-mu-7-11-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 13,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.271739,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6793,7 +6793,7 @@
       "id": "evidence:ca-bc-mu-7-12-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 43,
-      "normalizedValue": 0.983696,
+      "normalizedValue": 0.98913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6817,7 +6817,7 @@
       "id": "evidence:ca-bc-mu-7-12-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 104,
-      "normalizedValue": 0.983696,
+      "normalizedValue": 0.891304,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6913,7 +6913,7 @@
       "id": "evidence:ca-bc-mu-7-13-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 12,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.798913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6937,7 +6937,7 @@
       "id": "evidence:ca-bc-mu-7-13-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 60,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.711957,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7033,7 +7033,7 @@
       "id": "evidence:ca-bc-mu-7-15-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 15,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.918478,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7057,7 +7057,7 @@
       "id": "evidence:ca-bc-mu-7-15-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 153,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.923913,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7153,7 +7153,7 @@
       "id": "evidence:ca-bc-mu-7-16-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 13,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.853261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7177,7 +7177,7 @@
       "id": "evidence:ca-bc-mu-7-16-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 51,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.652174,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7273,7 +7273,7 @@
       "id": "evidence:ca-bc-mu-7-20-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.820652,
+      "normalizedValue": 0.396739,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7297,7 +7297,7 @@
       "id": "evidence:ca-bc-mu-7-20-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 22,
-      "normalizedValue": 0.820652,
+      "normalizedValue": 0.380435,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7393,7 +7393,7 @@
       "id": "evidence:ca-bc-mu-7-21-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 9,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.619565,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7417,7 +7417,7 @@
       "id": "evidence:ca-bc-mu-7-21-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 90,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.847826,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7513,7 +7513,7 @@
       "id": "evidence:ca-bc-mu-7-22-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 7,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.494565,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7537,7 +7537,7 @@
       "id": "evidence:ca-bc-mu-7-22-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 28,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.445652,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7633,7 +7633,7 @@
       "id": "evidence:ca-bc-mu-7-24-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 9,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.619565,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7657,7 +7657,7 @@
       "id": "evidence:ca-bc-mu-7-24-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 60,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.711957,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7753,7 +7753,7 @@
       "id": "evidence:ca-bc-mu-7-25-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 3,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.228261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7777,7 +7777,7 @@
       "id": "evidence:ca-bc-mu-7-25-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 30,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.467391,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7873,7 +7873,7 @@
       "id": "evidence:ca-bc-mu-7-31-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.396739,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7897,7 +7897,7 @@
       "id": "evidence:ca-bc-mu-7-31-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 17,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.304348,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7993,7 +7993,7 @@
       "id": "evidence:ca-bc-mu-7-32-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 4,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.315217,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8017,7 +8017,7 @@
       "id": "evidence:ca-bc-mu-7-32-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 14,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.282609,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8113,7 +8113,7 @@
       "id": "evidence:ca-bc-mu-7-33-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 14,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.891304,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8137,7 +8137,7 @@
       "id": "evidence:ca-bc-mu-7-33-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 119,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.902174,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8233,7 +8233,7 @@
       "id": "evidence:ca-bc-mu-7-34-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 4,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.315217,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8257,7 +8257,7 @@
       "id": "evidence:ca-bc-mu-7-34-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 18,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.326087,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8353,7 +8353,7 @@
       "id": "evidence:ca-bc-mu-7-35-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 19,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.934783,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8377,7 +8377,7 @@
       "id": "evidence:ca-bc-mu-7-35-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 180,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.934783,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8473,7 +8473,7 @@
       "id": "evidence:ca-bc-mu-7-37-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.048913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8497,7 +8497,7 @@
       "id": "evidence:ca-bc-mu-7-37-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 8,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.119565,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8593,7 +8593,7 @@
       "id": "evidence:ca-bc-mu-7-38-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.048913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8617,7 +8617,7 @@
       "id": "evidence:ca-bc-mu-7-38-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.065217,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8713,7 +8713,7 @@
       "id": "evidence:ca-bc-mu-7-43-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 7,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.494565,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8737,7 +8737,7 @@
       "id": "evidence:ca-bc-mu-7-43-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 211,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.945652,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8833,7 +8833,7 @@
       "id": "evidence:ca-bc-mu-7-45-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 11,
-      "normalizedValue": 0.820652,
+      "normalizedValue": 0.728261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8857,7 +8857,7 @@
       "id": "evidence:ca-bc-mu-7-45-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 32,
-      "normalizedValue": 0.820652,
+      "normalizedValue": 0.483696,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8953,7 +8953,7 @@
       "id": "evidence:ca-bc-mu-7-46-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 4,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.315217,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8977,7 +8977,7 @@
       "id": "evidence:ca-bc-mu-7-46-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 11,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.190217,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9073,7 +9073,7 @@
       "id": "evidence:ca-bc-mu-7-48-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 4,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.315217,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9097,7 +9097,7 @@
       "id": "evidence:ca-bc-mu-7-48-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 16,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.293478,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9193,7 +9193,7 @@
       "id": "evidence:ca-bc-mu-7-56-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 2,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.130435,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9217,7 +9217,7 @@
       "id": "evidence:ca-bc-mu-7-56-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 12,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.233696,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9313,7 +9313,7 @@
       "id": "evidence:ca-bc-mu-7-58-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 4,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.315217,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9337,7 +9337,7 @@
       "id": "evidence:ca-bc-mu-7-58-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 0,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.027174,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9433,7 +9433,7 @@
       "id": "evidence:ca-bc-mu-8-1-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 0,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.005435,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9457,7 +9457,7 @@
       "id": "evidence:ca-bc-mu-8-1-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 0,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.027174,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9553,7 +9553,7 @@
       "id": "evidence:ca-bc-mu-8-4-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 3,
-      "normalizedValue": 0.657609,
+      "normalizedValue": 0.228261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9577,7 +9577,7 @@
       "id": "evidence:ca-bc-mu-8-4-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 12,
-      "normalizedValue": 0.657609,
+      "normalizedValue": 0.233696,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9673,7 +9673,7 @@
       "id": "evidence:ca-bc-mu-8-5-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.548913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9697,7 +9697,7 @@
       "id": "evidence:ca-bc-mu-8-5-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 34,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.5,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9793,7 +9793,7 @@
       "id": "evidence:ca-bc-mu-8-7-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 2,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.130435,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9817,7 +9817,7 @@
       "id": "evidence:ca-bc-mu-8-7-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 12,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.233696,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9913,7 +9913,7 @@
       "id": "evidence:ca-bc-mu-8-8-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 11,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.728261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9937,7 +9937,7 @@
       "id": "evidence:ca-bc-mu-8-8-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 52,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.663043,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10033,7 +10033,7 @@
       "id": "evidence:ca-bc-mu-8-9-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 11,
-      "normalizedValue": 0.880435,
+      "normalizedValue": 0.728261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10057,7 +10057,7 @@
       "id": "evidence:ca-bc-mu-8-9-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 73,
-      "normalizedValue": 0.880435,
+      "normalizedValue": 0.782609,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10153,7 +10153,7 @@
       "id": "evidence:ca-bc-mu-8-10-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 11,
-      "normalizedValue": 0.934783,
+      "normalizedValue": 0.728261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10177,7 +10177,7 @@
       "id": "evidence:ca-bc-mu-8-10-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 41,
-      "normalizedValue": 0.934783,
+      "normalizedValue": 0.608696,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10273,7 +10273,7 @@
       "id": "evidence:ca-bc-mu-8-12-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.396739,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10297,7 +10297,7 @@
       "id": "evidence:ca-bc-mu-8-12-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 21,
-      "normalizedValue": 0.565217,
+      "normalizedValue": 0.36413,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10393,7 +10393,7 @@
       "id": "evidence:ca-bc-mu-8-13-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 3,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.228261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10417,7 +10417,7 @@
       "id": "evidence:ca-bc-mu-8-13-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 0,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.027174,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10513,7 +10513,7 @@
       "id": "evidence:ca-bc-mu-8-14-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 6,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.456522,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10537,7 +10537,7 @@
       "id": "evidence:ca-bc-mu-8-14-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 18,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.326087,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10633,7 +10633,7 @@
       "id": "evidence:ca-bc-mu-8-15-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 0,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.005435,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10657,7 +10657,7 @@
       "id": "evidence:ca-bc-mu-8-15-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 0,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.027174,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10753,7 +10753,7 @@
       "id": "evidence:ca-bc-mu-8-23-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 11,
-      "normalizedValue": 0.820652,
+      "normalizedValue": 0.728261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10777,7 +10777,7 @@
       "id": "evidence:ca-bc-mu-8-23-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 24,
-      "normalizedValue": 0.820652,
+      "normalizedValue": 0.402174,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10873,7 +10873,7 @@
       "id": "evidence:ca-bc-mu-8-24-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.548913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10897,7 +10897,7 @@
       "id": "evidence:ca-bc-mu-8-24-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 53,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.673913,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10993,7 +10993,7 @@
       "id": "evidence:ca-bc-mu-8-25-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.548913,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11017,7 +11017,7 @@
       "id": "evidence:ca-bc-mu-8-25-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 64,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.728261,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11113,7 +11113,7 @@
       "id": "evidence:ca-bc-mu-8-26-canada-lynx-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 3,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.228261,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11137,7 +11137,7 @@
       "id": "evidence:ca-bc-mu-8-26-canada-lynx-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 11,
-      "normalizedValue": 0.255435,
+      "normalizedValue": 0.190217,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },

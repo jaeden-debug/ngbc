@@ -73,7 +73,7 @@
       "id": "evidence:ca-bc-mu-3-12-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 497,
-      "normalizedValue": 0.781457,
+      "normalizedValue": 0.854305,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -97,7 +97,7 @@
       "id": "evidence:ca-bc-mu-3-12-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 3096,
-      "normalizedValue": 0.781457,
+      "normalizedValue": 0.788079,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -193,7 +193,7 @@
       "id": "evidence:ca-bc-mu-3-13-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 249,
-      "normalizedValue": 0.569536,
+      "normalizedValue": 0.655629,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -217,7 +217,7 @@
       "id": "evidence:ca-bc-mu-3-13-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1348,
-      "normalizedValue": 0.569536,
+      "normalizedValue": 0.582781,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -313,7 +313,7 @@
       "id": "evidence:ca-bc-mu-3-14-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 34,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.221854,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -337,7 +337,7 @@
       "id": "evidence:ca-bc-mu-3-14-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 103,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.139073,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -433,7 +433,7 @@
       "id": "evidence:ca-bc-mu-3-15-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 25,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.155629,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -457,7 +457,7 @@
       "id": "evidence:ca-bc-mu-3-15-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 74,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.089404,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -553,7 +553,7 @@
       "id": "evidence:ca-bc-mu-3-16-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 24,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.145695,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -577,7 +577,7 @@
       "id": "evidence:ca-bc-mu-3-16-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 55,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.056291,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -673,7 +673,7 @@
       "id": "evidence:ca-bc-mu-3-17-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 155,
-      "normalizedValue": 0.370861,
+      "normalizedValue": 0.529801,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -697,7 +697,7 @@
       "id": "evidence:ca-bc-mu-3-17-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1010,
-      "normalizedValue": 0.370861,
+      "normalizedValue": 0.503311,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -793,7 +793,7 @@
       "id": "evidence:ca-bc-mu-3-18-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 562,
-      "normalizedValue": 0.539735,
+      "normalizedValue": 0.874172,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -817,7 +817,7 @@
       "id": "evidence:ca-bc-mu-3-18-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 3887,
-      "normalizedValue": 0.539735,
+      "normalizedValue": 0.84106,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -913,7 +913,7 @@
       "id": "evidence:ca-bc-mu-3-19-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 928,
-      "normalizedValue": 0.758278,
+      "normalizedValue": 0.94702,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -937,7 +937,7 @@
       "id": "evidence:ca-bc-mu-3-19-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 6813,
-      "normalizedValue": 0.758278,
+      "normalizedValue": 0.927152,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1033,7 +1033,7 @@
       "id": "evidence:ca-bc-mu-3-20-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 645,
-      "normalizedValue": 0.745033,
+      "normalizedValue": 0.887417,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1057,7 +1057,7 @@
       "id": "evidence:ca-bc-mu-3-20-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 4916,
-      "normalizedValue": 0.745033,
+      "normalizedValue": 0.880795,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1153,7 +1153,7 @@
       "id": "evidence:ca-bc-mu-3-26-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 758,
-      "normalizedValue": 0.857616,
+      "normalizedValue": 0.907285,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1177,7 +1177,7 @@
       "id": "evidence:ca-bc-mu-3-26-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 5822,
-      "normalizedValue": 0.857616,
+      "normalizedValue": 0.907285,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1273,7 +1273,7 @@
       "id": "evidence:ca-bc-mu-3-27-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 772,
-      "normalizedValue": 0.874172,
+      "normalizedValue": 0.913907,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1297,7 +1297,7 @@
       "id": "evidence:ca-bc-mu-3-27-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 5329,
-      "normalizedValue": 0.874172,
+      "normalizedValue": 0.89404,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1393,7 +1393,7 @@
       "id": "evidence:ca-bc-mu-3-28-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 260,
-      "normalizedValue": 0.539735,
+      "normalizedValue": 0.662252,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1417,7 +1417,7 @@
       "id": "evidence:ca-bc-mu-3-28-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1722,
-      "normalizedValue": 0.539735,
+      "normalizedValue": 0.642384,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1513,7 +1513,7 @@
       "id": "evidence:ca-bc-mu-3-29-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 428,
-      "normalizedValue": 0.745033,
+      "normalizedValue": 0.807947,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1537,7 +1537,7 @@
       "id": "evidence:ca-bc-mu-3-29-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2574,
-      "normalizedValue": 0.745033,
+      "normalizedValue": 0.741722,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1633,7 +1633,7 @@
       "id": "evidence:ca-bc-mu-3-30-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 794,
-      "normalizedValue": 0.675497,
+      "normalizedValue": 0.92053,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1657,7 +1657,7 @@
       "id": "evidence:ca-bc-mu-3-30-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 4408,
-      "normalizedValue": 0.675497,
+      "normalizedValue": 0.874172,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1753,7 +1753,7 @@
       "id": "evidence:ca-bc-mu-3-31-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 238,
-      "normalizedValue": 0.539735,
+      "normalizedValue": 0.642384,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1777,7 +1777,7 @@
       "id": "evidence:ca-bc-mu-3-31-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1507,
-      "normalizedValue": 0.539735,
+      "normalizedValue": 0.609272,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1873,7 +1873,7 @@
       "id": "evidence:ca-bc-mu-3-32-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 29,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.178808,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1897,7 +1897,7 @@
       "id": "evidence:ca-bc-mu-3-32-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 109,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.145695,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1993,7 +1993,7 @@
       "id": "evidence:ca-bc-mu-3-33-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 33,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.201987,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2017,7 +2017,7 @@
       "id": "evidence:ca-bc-mu-3-33-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 147,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.165563,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2113,7 +2113,7 @@
       "id": "evidence:ca-bc-mu-3-34-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 15,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.099338,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2137,7 +2137,7 @@
       "id": "evidence:ca-bc-mu-3-34-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 56,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.066225,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2233,7 +2233,7 @@
       "id": "evidence:ca-bc-mu-3-35-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 50,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.284768,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2257,7 +2257,7 @@
       "id": "evidence:ca-bc-mu-3-35-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 464,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.324503,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2353,7 +2353,7 @@
       "id": "evidence:ca-bc-mu-3-36-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 460,
-      "normalizedValue": 0.933775,
+      "normalizedValue": 0.834437,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2377,7 +2377,7 @@
       "id": "evidence:ca-bc-mu-3-36-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 3137,
-      "normalizedValue": 0.933775,
+      "normalizedValue": 0.794702,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2473,7 +2473,7 @@
       "id": "evidence:ca-bc-mu-3-37-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 264,
-      "normalizedValue": 0.728477,
+      "normalizedValue": 0.668874,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2497,7 +2497,7 @@
       "id": "evidence:ca-bc-mu-3-37-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1694,
-      "normalizedValue": 0.728477,
+      "normalizedValue": 0.635762,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2593,7 +2593,7 @@
       "id": "evidence:ca-bc-mu-3-38-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 199,
-      "normalizedValue": 0.589404,
+      "normalizedValue": 0.576159,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2617,7 +2617,7 @@
       "id": "evidence:ca-bc-mu-3-38-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1242,
-      "normalizedValue": 0.589404,
+      "normalizedValue": 0.569536,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2713,7 +2713,7 @@
       "id": "evidence:ca-bc-mu-3-39-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 129,
-      "normalizedValue": 0.413907,
+      "normalizedValue": 0.483444,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2737,7 +2737,7 @@
       "id": "evidence:ca-bc-mu-3-39-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 763,
-      "normalizedValue": 0.413907,
+      "normalizedValue": 0.430464,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2833,7 +2833,7 @@
       "id": "evidence:ca-bc-mu-3-40-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 67,
-      "normalizedValue": 0.370861,
+      "normalizedValue": 0.360927,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2953,7 +2953,7 @@
       "id": "evidence:ca-bc-mu-3-41-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 41,
-      "normalizedValue": 0.370861,
+      "normalizedValue": 0.251656,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2977,7 +2977,7 @@
       "id": "evidence:ca-bc-mu-3-41-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 514,
-      "normalizedValue": 0.370861,
+      "normalizedValue": 0.357616,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3073,7 +3073,7 @@
       "id": "evidence:ca-bc-mu-3-42-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 40,
-      "normalizedValue": 0.437086,
+      "normalizedValue": 0.245033,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3097,7 +3097,7 @@
       "id": "evidence:ca-bc-mu-3-42-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 315,
-      "normalizedValue": 0.437086,
+      "normalizedValue": 0.241722,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3193,7 +3193,7 @@
       "id": "evidence:ca-bc-mu-3-43-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.016556,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3217,7 +3217,7 @@
       "id": "evidence:ca-bc-mu-3-43-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 79,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.099338,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3313,7 +3313,7 @@
       "id": "evidence:ca-bc-mu-3-46-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 35,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.235099,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3337,7 +3337,7 @@
       "id": "evidence:ca-bc-mu-3-46-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 287,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.231788,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3433,7 +3433,7 @@
       "id": "evidence:ca-bc-mu-4-1-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 193,
-      "normalizedValue": 0.60596,
+      "normalizedValue": 0.562914,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3457,7 +3457,7 @@
       "id": "evidence:ca-bc-mu-4-1-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1801,
-      "normalizedValue": 0.60596,
+      "normalizedValue": 0.649007,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3553,7 +3553,7 @@
       "id": "evidence:ca-bc-mu-4-2-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 516,
-      "normalizedValue": 0.927152,
+      "normalizedValue": 0.860927,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3577,7 +3577,7 @@
       "id": "evidence:ca-bc-mu-4-2-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 4229,
-      "normalizedValue": 0.927152,
+      "normalizedValue": 0.86755,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3673,7 +3673,7 @@
       "id": "evidence:ca-bc-mu-4-3-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1615,
-      "normalizedValue": 1,
+      "normalizedValue": 0.993377,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3793,7 +3793,7 @@
       "id": "evidence:ca-bc-mu-4-4-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 436,
-      "normalizedValue": 0.900662,
+      "normalizedValue": 0.821192,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3817,7 +3817,7 @@
       "id": "evidence:ca-bc-mu-4-4-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 3788,
-      "normalizedValue": 0.900662,
+      "normalizedValue": 0.834437,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3913,7 +3913,7 @@
       "id": "evidence:ca-bc-mu-4-5-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 238,
-      "normalizedValue": 0.639073,
+      "normalizedValue": 0.642384,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3937,7 +3937,7 @@
       "id": "evidence:ca-bc-mu-4-5-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1899,
-      "normalizedValue": 0.639073,
+      "normalizedValue": 0.662252,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4033,7 +4033,7 @@
       "id": "evidence:ca-bc-mu-4-6-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 577,
-      "normalizedValue": 0.940397,
+      "normalizedValue": 0.880795,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4057,7 +4057,7 @@
       "id": "evidence:ca-bc-mu-4-6-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 5577,
-      "normalizedValue": 0.940397,
+      "normalizedValue": 0.900662,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4153,7 +4153,7 @@
       "id": "evidence:ca-bc-mu-4-7-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 205,
-      "normalizedValue": 0.735099,
+      "normalizedValue": 0.599338,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4177,7 +4177,7 @@
       "id": "evidence:ca-bc-mu-4-7-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 830,
-      "normalizedValue": 0.735099,
+      "normalizedValue": 0.450331,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4273,7 +4273,7 @@
       "id": "evidence:ca-bc-mu-4-8-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 378,
-      "normalizedValue": 0.821192,
+      "normalizedValue": 0.764901,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4297,7 +4297,7 @@
       "id": "evidence:ca-bc-mu-4-8-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2875,
-      "normalizedValue": 0.821192,
+      "normalizedValue": 0.774834,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4393,7 +4393,7 @@
       "id": "evidence:ca-bc-mu-4-9-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 339,
-      "normalizedValue": 0.711921,
+      "normalizedValue": 0.735099,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4417,7 +4417,7 @@
       "id": "evidence:ca-bc-mu-4-9-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2780,
-      "normalizedValue": 0.711921,
+      "normalizedValue": 0.754967,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4513,7 +4513,7 @@
       "id": "evidence:ca-bc-mu-4-14-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 133,
-      "normalizedValue": 0.711921,
+      "normalizedValue": 0.503311,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4537,7 +4537,7 @@
       "id": "evidence:ca-bc-mu-4-14-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 838,
-      "normalizedValue": 0.711921,
+      "normalizedValue": 0.456954,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4633,7 +4633,7 @@
       "id": "evidence:ca-bc-mu-4-15-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 272,
-      "normalizedValue": 0.675497,
+      "normalizedValue": 0.682119,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4657,7 +4657,7 @@
       "id": "evidence:ca-bc-mu-4-15-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2195,
-      "normalizedValue": 0.675497,
+      "normalizedValue": 0.708609,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4753,7 +4753,7 @@
       "id": "evidence:ca-bc-mu-4-16-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 222,
-      "normalizedValue": 0.834437,
+      "normalizedValue": 0.615894,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4777,7 +4777,7 @@
       "id": "evidence:ca-bc-mu-4-16-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1588,
-      "normalizedValue": 0.834437,
+      "normalizedValue": 0.629139,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4873,7 +4873,7 @@
       "id": "evidence:ca-bc-mu-4-17-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 60,
-      "normalizedValue": 0.562914,
+      "normalizedValue": 0.324503,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4897,7 +4897,7 @@
       "id": "evidence:ca-bc-mu-4-17-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 596,
-      "normalizedValue": 0.562914,
+      "normalizedValue": 0.390728,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4993,7 +4993,7 @@
       "id": "evidence:ca-bc-mu-4-18-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 122,
-      "normalizedValue": 0.516556,
+      "normalizedValue": 0.456954,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5017,7 +5017,7 @@
       "id": "evidence:ca-bc-mu-4-18-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1222,
-      "normalizedValue": 0.516556,
+      "normalizedValue": 0.562914,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5113,7 +5113,7 @@
       "id": "evidence:ca-bc-mu-4-19-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 34,
-      "normalizedValue": 0.456954,
+      "normalizedValue": 0.221854,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5137,7 +5137,7 @@
       "id": "evidence:ca-bc-mu-4-19-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 258,
-      "normalizedValue": 0.456954,
+      "normalizedValue": 0.211921,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5233,7 +5233,7 @@
       "id": "evidence:ca-bc-mu-4-20-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1154,
-      "normalizedValue": 0.980132,
+      "normalizedValue": 0.966887,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5257,7 +5257,7 @@
       "id": "evidence:ca-bc-mu-4-20-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 12033,
-      "normalizedValue": 0.980132,
+      "normalizedValue": 0.993377,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5353,7 +5353,7 @@
       "id": "evidence:ca-bc-mu-4-21-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 437,
-      "normalizedValue": 0.92053,
+      "normalizedValue": 0.827815,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5377,7 +5377,7 @@
       "id": "evidence:ca-bc-mu-4-21-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 3993,
-      "normalizedValue": 0.92053,
+      "normalizedValue": 0.847682,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5473,7 +5473,7 @@
       "id": "evidence:ca-bc-mu-4-22-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1396,
-      "normalizedValue": 0.993377,
+      "normalizedValue": 0.986755,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5497,7 +5497,7 @@
       "id": "evidence:ca-bc-mu-4-22-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 11249,
-      "normalizedValue": 0.993377,
+      "normalizedValue": 0.986755,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5593,7 +5593,7 @@
       "id": "evidence:ca-bc-mu-4-23-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 544,
-      "normalizedValue": 0.857616,
+      "normalizedValue": 0.86755,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5617,7 +5617,7 @@
       "id": "evidence:ca-bc-mu-4-23-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 7054,
-      "normalizedValue": 0.857616,
+      "normalizedValue": 0.953642,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5713,7 +5713,7 @@
       "id": "evidence:ca-bc-mu-4-24-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 266,
-      "normalizedValue": 0.827815,
+      "normalizedValue": 0.675497,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5737,7 +5737,7 @@
       "id": "evidence:ca-bc-mu-4-24-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1921,
-      "normalizedValue": 0.827815,
+      "normalizedValue": 0.668874,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5833,7 +5833,7 @@
       "id": "evidence:ca-bc-mu-4-25-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 238,
-      "normalizedValue": 0.768212,
+      "normalizedValue": 0.642384,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5857,7 +5857,7 @@
       "id": "evidence:ca-bc-mu-4-25-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1544,
-      "normalizedValue": 0.768212,
+      "normalizedValue": 0.622517,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5953,7 +5953,7 @@
       "id": "evidence:ca-bc-mu-4-26-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 434,
-      "normalizedValue": 0.913907,
+      "normalizedValue": 0.81457,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5977,7 +5977,7 @@
       "id": "evidence:ca-bc-mu-4-26-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 3332,
-      "normalizedValue": 0.913907,
+      "normalizedValue": 0.807947,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6073,7 +6073,7 @@
       "id": "evidence:ca-bc-mu-4-27-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 21,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.139073,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6097,7 +6097,7 @@
       "id": "evidence:ca-bc-mu-4-27-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 178,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.18543,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6193,7 +6193,7 @@
       "id": "evidence:ca-bc-mu-4-28-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.016556,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6217,7 +6217,7 @@
       "id": "evidence:ca-bc-mu-4-28-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 5,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.006623,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6313,7 +6313,7 @@
       "id": "evidence:ca-bc-mu-4-29-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 15,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.099338,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6337,7 +6337,7 @@
       "id": "evidence:ca-bc-mu-4-29-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 72,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.07947,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6433,7 +6433,7 @@
       "id": "evidence:ca-bc-mu-4-30-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 27,
-      "normalizedValue": 0.516556,
+      "normalizedValue": 0.165563,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6457,7 +6457,7 @@
       "id": "evidence:ca-bc-mu-4-30-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 91,
-      "normalizedValue": 0.516556,
+      "normalizedValue": 0.125828,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6553,7 +6553,7 @@
       "id": "evidence:ca-bc-mu-4-31-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 98,
-      "normalizedValue": 0.622517,
+      "normalizedValue": 0.410596,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6577,7 +6577,7 @@
       "id": "evidence:ca-bc-mu-4-31-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 399,
-      "normalizedValue": 0.622517,
+      "normalizedValue": 0.298013,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6673,7 +6673,7 @@
       "id": "evidence:ca-bc-mu-4-32-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 233,
-      "normalizedValue": 0.622517,
+      "normalizedValue": 0.625828,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6697,7 +6697,7 @@
       "id": "evidence:ca-bc-mu-4-32-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1401,
-      "normalizedValue": 0.622517,
+      "normalizedValue": 0.589404,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6793,7 +6793,7 @@
       "id": "evidence:ca-bc-mu-4-33-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 47,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.271523,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6817,7 +6817,7 @@
       "id": "evidence:ca-bc-mu-4-33-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 336,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.264901,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6913,7 +6913,7 @@
       "id": "evidence:ca-bc-mu-4-34-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 366,
-      "normalizedValue": 0.887417,
+      "normalizedValue": 0.748344,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6937,7 +6937,7 @@
       "id": "evidence:ca-bc-mu-4-34-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 3405,
-      "normalizedValue": 0.887417,
+      "normalizedValue": 0.81457,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7033,7 +7033,7 @@
       "id": "evidence:ca-bc-mu-4-35-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 99,
-      "normalizedValue": 0.556291,
+      "normalizedValue": 0.42053,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7057,7 +7057,7 @@
       "id": "evidence:ca-bc-mu-4-35-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 776,
-      "normalizedValue": 0.556291,
+      "normalizedValue": 0.437086,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7153,7 +7153,7 @@
       "id": "evidence:ca-bc-mu-4-36-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 132,
-      "normalizedValue": 0.695364,
+      "normalizedValue": 0.496689,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7177,7 +7177,7 @@
       "id": "evidence:ca-bc-mu-4-36-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1011,
-      "normalizedValue": 0.695364,
+      "normalizedValue": 0.509934,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7273,7 +7273,7 @@
       "id": "evidence:ca-bc-mu-4-38-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 53,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.291391,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7297,7 +7297,7 @@
       "id": "evidence:ca-bc-mu-4-38-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 357,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.291391,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7393,7 +7393,7 @@
       "id": "evidence:ca-bc-mu-4-39-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 16,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.119205,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7417,7 +7417,7 @@
       "id": "evidence:ca-bc-mu-4-39-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 64,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.072848,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7513,7 +7513,7 @@
       "id": "evidence:ca-bc-mu-5-1-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 816,
-      "normalizedValue": 0.804636,
+      "normalizedValue": 0.927152,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7537,7 +7537,7 @@
       "id": "evidence:ca-bc-mu-5-1-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 6939,
-      "normalizedValue": 0.804636,
+      "normalizedValue": 0.933775,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7633,7 +7633,7 @@
       "id": "evidence:ca-bc-mu-5-2-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1315,
-      "normalizedValue": 0.89404,
+      "normalizedValue": 0.97351,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7657,7 +7657,7 @@
       "id": "evidence:ca-bc-mu-5-2-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 10498,
-      "normalizedValue": 0.89404,
+      "normalizedValue": 0.97351,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7753,7 +7753,7 @@
       "id": "evidence:ca-bc-mu-5-3-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 140,
-      "normalizedValue": 0.337748,
+      "normalizedValue": 0.516556,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7777,7 +7777,7 @@
       "id": "evidence:ca-bc-mu-5-3-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 958,
-      "normalizedValue": 0.337748,
+      "normalizedValue": 0.476821,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7873,7 +7873,7 @@
       "id": "evidence:ca-bc-mu-5-4-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 93,
-      "normalizedValue": 0.370861,
+      "normalizedValue": 0.397351,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7897,7 +7897,7 @@
       "id": "evidence:ca-bc-mu-5-4-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 757,
-      "normalizedValue": 0.370861,
+      "normalizedValue": 0.423841,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7993,7 +7993,7 @@
       "id": "evidence:ca-bc-mu-5-5-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 12,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.072848,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8017,7 +8017,7 @@
       "id": "evidence:ca-bc-mu-5-5-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 85,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.112583,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8113,7 +8113,7 @@
       "id": "evidence:ca-bc-mu-5-6-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 25,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.155629,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8137,7 +8137,7 @@
       "id": "evidence:ca-bc-mu-5-6-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 95,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.13245,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8233,7 +8233,7 @@
       "id": "evidence:ca-bc-mu-5-12-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 72,
-      "normalizedValue": 0.503311,
+      "normalizedValue": 0.377483,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8257,7 +8257,7 @@
       "id": "evidence:ca-bc-mu-5-12-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 458,
-      "normalizedValue": 0.503311,
+      "normalizedValue": 0.317881,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8353,7 +8353,7 @@
       "id": "evidence:ca-bc-mu-5-13-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 494,
-      "normalizedValue": 0.84106,
+      "normalizedValue": 0.847682,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8377,7 +8377,7 @@
       "id": "evidence:ca-bc-mu-5-13-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 4068,
-      "normalizedValue": 0.84106,
+      "normalizedValue": 0.854305,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8473,7 +8473,7 @@
       "id": "evidence:ca-bc-mu-5-14-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 384,
-      "normalizedValue": 0.794702,
+      "normalizedValue": 0.781457,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8497,7 +8497,7 @@
       "id": "evidence:ca-bc-mu-5-14-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2024,
-      "normalizedValue": 0.794702,
+      "normalizedValue": 0.695364,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8593,7 +8593,7 @@
       "id": "evidence:ca-bc-mu-5-15-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 99,
-      "normalizedValue": 0.324503,
+      "normalizedValue": 0.42053,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8617,7 +8617,7 @@
       "id": "evidence:ca-bc-mu-5-15-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 704,
-      "normalizedValue": 0.324503,
+      "normalizedValue": 0.403974,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8713,7 +8713,7 @@
       "id": "evidence:ca-bc-mu-6-1-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 56,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.298013,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8737,7 +8737,7 @@
       "id": "evidence:ca-bc-mu-6-1-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 342,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.278146,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8833,7 +8833,7 @@
       "id": "evidence:ca-bc-mu-6-2-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.016556,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8857,7 +8857,7 @@
       "id": "evidence:ca-bc-mu-6-2-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 33,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.033113,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8953,7 +8953,7 @@
       "id": "evidence:ca-bc-mu-6-3-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 10,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.05298,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8977,7 +8977,7 @@
       "id": "evidence:ca-bc-mu-6-3-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 55,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.056291,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9073,7 +9073,7 @@
       "id": "evidence:ca-bc-mu-6-4-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 233,
-      "normalizedValue": 0.516556,
+      "normalizedValue": 0.625828,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9097,7 +9097,7 @@
       "id": "evidence:ca-bc-mu-6-4-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1424,
-      "normalizedValue": 0.516556,
+      "normalizedValue": 0.596026,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9193,7 +9193,7 @@
       "id": "evidence:ca-bc-mu-6-5-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 43,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.261589,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9217,7 +9217,7 @@
       "id": "evidence:ca-bc-mu-6-5-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 340,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.271523,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9313,7 +9313,7 @@
       "id": "evidence:ca-bc-mu-6-6-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 15,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.099338,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9337,7 +9337,7 @@
       "id": "evidence:ca-bc-mu-6-6-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 83,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.10596,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9433,7 +9433,7 @@
       "id": "evidence:ca-bc-mu-6-8-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 128,
-      "normalizedValue": 0.476821,
+      "normalizedValue": 0.470199,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9457,7 +9457,7 @@
       "id": "evidence:ca-bc-mu-6-8-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1200,
-      "normalizedValue": 0.476821,
+      "normalizedValue": 0.549669,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9553,7 +9553,7 @@
       "id": "evidence:ca-bc-mu-6-9-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 213,
-      "normalizedValue": 0.476821,
+      "normalizedValue": 0.609272,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9577,7 +9577,7 @@
       "id": "evidence:ca-bc-mu-6-9-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1344,
-      "normalizedValue": 0.476821,
+      "normalizedValue": 0.576159,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9673,7 +9673,7 @@
       "id": "evidence:ca-bc-mu-6-10-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 20,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.13245,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9697,7 +9697,7 @@
       "id": "evidence:ca-bc-mu-6-10-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 129,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.15894,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9793,7 +9793,7 @@
       "id": "evidence:ca-bc-mu-6-11-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 15,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.099338,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9817,7 +9817,7 @@
       "id": "evidence:ca-bc-mu-6-11-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 74,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.089404,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9913,7 +9913,7 @@
       "id": "evidence:ca-bc-mu-6-15-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 10,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.05298,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9937,7 +9937,7 @@
       "id": "evidence:ca-bc-mu-6-15-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 15,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.019868,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10033,7 +10033,7 @@
       "id": "evidence:ca-bc-mu-6-30-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 49,
-      "normalizedValue": 0.370861,
+      "normalizedValue": 0.278146,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10057,7 +10057,7 @@
       "id": "evidence:ca-bc-mu-6-30-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 352,
-      "normalizedValue": 0.370861,
+      "normalizedValue": 0.284768,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10153,7 +10153,7 @@
       "id": "evidence:ca-bc-mu-7-2-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 120,
-      "normalizedValue": 0.639073,
+      "normalizedValue": 0.450331,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10177,7 +10177,7 @@
       "id": "evidence:ca-bc-mu-7-2-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1135,
-      "normalizedValue": 0.639073,
+      "normalizedValue": 0.536424,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10273,7 +10273,7 @@
       "id": "evidence:ca-bc-mu-7-3-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 141,
-      "normalizedValue": 0.60596,
+      "normalizedValue": 0.523179,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10297,7 +10297,7 @@
       "id": "evidence:ca-bc-mu-7-3-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1075,
-      "normalizedValue": 0.60596,
+      "normalizedValue": 0.523179,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10393,7 +10393,7 @@
       "id": "evidence:ca-bc-mu-7-4-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 67,
-      "normalizedValue": 0.413907,
+      "normalizedValue": 0.360927,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10417,7 +10417,7 @@
       "id": "evidence:ca-bc-mu-7-4-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 583,
-      "normalizedValue": 0.413907,
+      "normalizedValue": 0.384106,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10513,7 +10513,7 @@
       "id": "evidence:ca-bc-mu-7-5-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 58,
-      "normalizedValue": 0.463576,
+      "normalizedValue": 0.317881,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10537,7 +10537,7 @@
       "id": "evidence:ca-bc-mu-7-5-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 470,
-      "normalizedValue": 0.463576,
+      "normalizedValue": 0.331126,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10633,7 +10633,7 @@
       "id": "evidence:ca-bc-mu-7-6-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 19,
-      "normalizedValue": 0.192053,
+      "normalizedValue": 0.125828,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10753,7 +10753,7 @@
       "id": "evidence:ca-bc-mu-7-7-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 110,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.443709,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10777,7 +10777,7 @@
       "id": "evidence:ca-bc-mu-7-7-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 918,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.470199,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10873,7 +10873,7 @@
       "id": "evidence:ca-bc-mu-7-8-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 201,
-      "normalizedValue": 0.413907,
+      "normalizedValue": 0.586093,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10897,7 +10897,7 @@
       "id": "evidence:ca-bc-mu-7-8-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1931,
-      "normalizedValue": 0.413907,
+      "normalizedValue": 0.675497,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10993,7 +10993,7 @@
       "id": "evidence:ca-bc-mu-7-9-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 201,
-      "normalizedValue": 0.476821,
+      "normalizedValue": 0.586093,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11017,7 +11017,7 @@
       "id": "evidence:ca-bc-mu-7-9-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1948,
-      "normalizedValue": 0.476821,
+      "normalizedValue": 0.682119,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11113,7 +11113,7 @@
       "id": "evidence:ca-bc-mu-7-10-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 281,
-      "normalizedValue": 0.337748,
+      "normalizedValue": 0.688742,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11137,7 +11137,7 @@
       "id": "evidence:ca-bc-mu-7-10-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2301,
-      "normalizedValue": 0.337748,
+      "normalizedValue": 0.721854,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11233,7 +11233,7 @@
       "id": "evidence:ca-bc-mu-7-11-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 129,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.483444,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11257,7 +11257,7 @@
       "id": "evidence:ca-bc-mu-7-11-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1157,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.543046,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11353,7 +11353,7 @@
       "id": "evidence:ca-bc-mu-7-12-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 311,
-      "normalizedValue": 0.576159,
+      "normalizedValue": 0.715232,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11377,7 +11377,7 @@
       "id": "evidence:ca-bc-mu-7-12-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 3209,
-      "normalizedValue": 0.576159,
+      "normalizedValue": 0.801325,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11473,7 +11473,7 @@
       "id": "evidence:ca-bc-mu-7-13-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 329,
-      "normalizedValue": 0.688742,
+      "normalizedValue": 0.721854,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11497,7 +11497,7 @@
       "id": "evidence:ca-bc-mu-7-13-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 3668,
-      "normalizedValue": 0.688742,
+      "normalizedValue": 0.821192,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11593,7 +11593,7 @@
       "id": "evidence:ca-bc-mu-7-14-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 57,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.307947,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11617,7 +11617,7 @@
       "id": "evidence:ca-bc-mu-7-14-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 545,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.364238,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11713,7 +11713,7 @@
       "id": "evidence:ca-bc-mu-7-15-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 306,
-      "normalizedValue": 0.337748,
+      "normalizedValue": 0.695364,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11737,7 +11737,7 @@
       "id": "evidence:ca-bc-mu-7-15-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2852,
-      "normalizedValue": 0.337748,
+      "normalizedValue": 0.768212,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11833,7 +11833,7 @@
       "id": "evidence:ca-bc-mu-7-16-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 103,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.437086,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11857,7 +11857,7 @@
       "id": "evidence:ca-bc-mu-7-16-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 728,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.410596,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11953,7 +11953,7 @@
       "id": "evidence:ca-bc-mu-7-17-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 62,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.331126,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11977,7 +11977,7 @@
       "id": "evidence:ca-bc-mu-7-17-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 431,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.311258,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12073,7 +12073,7 @@
       "id": "evidence:ca-bc-mu-7-18-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 33,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.201987,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12097,7 +12097,7 @@
       "id": "evidence:ca-bc-mu-7-18-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 315,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.241722,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12193,7 +12193,7 @@
       "id": "evidence:ca-bc-mu-7-19-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 76,
-      "normalizedValue": 0.496689,
+      "normalizedValue": 0.384106,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12217,7 +12217,7 @@
       "id": "evidence:ca-bc-mu-7-19-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 405,
-      "normalizedValue": 0.496689,
+      "normalizedValue": 0.304636,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12313,7 +12313,7 @@
       "id": "evidence:ca-bc-mu-7-20-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 412,
-      "normalizedValue": 0.86755,
+      "normalizedValue": 0.801325,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12337,7 +12337,7 @@
       "id": "evidence:ca-bc-mu-7-20-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 3671,
-      "normalizedValue": 0.86755,
+      "normalizedValue": 0.827815,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12433,7 +12433,7 @@
       "id": "evidence:ca-bc-mu-7-21-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 465,
-      "normalizedValue": 0.907285,
+      "normalizedValue": 0.84106,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12457,7 +12457,7 @@
       "id": "evidence:ca-bc-mu-7-21-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 4126,
-      "normalizedValue": 0.907285,
+      "normalizedValue": 0.860927,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12553,7 +12553,7 @@
       "id": "evidence:ca-bc-mu-7-22-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 173,
-      "normalizedValue": 0.711921,
+      "normalizedValue": 0.536424,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12577,7 +12577,7 @@
       "id": "evidence:ca-bc-mu-7-22-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1425,
-      "normalizedValue": 0.711921,
+      "normalizedValue": 0.602649,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12673,7 +12673,7 @@
       "id": "evidence:ca-bc-mu-7-23-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 28,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.172185,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12697,7 +12697,7 @@
       "id": "evidence:ca-bc-mu-7-23-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 248,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.205298,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12793,7 +12793,7 @@
       "id": "evidence:ca-bc-mu-7-24-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 129,
-      "normalizedValue": 0.413907,
+      "normalizedValue": 0.483444,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12817,7 +12817,7 @@
       "id": "evidence:ca-bc-mu-7-24-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 988,
-      "normalizedValue": 0.413907,
+      "normalizedValue": 0.483444,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12913,7 +12913,7 @@
       "id": "evidence:ca-bc-mu-7-25-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 43,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.261589,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12937,7 +12937,7 @@
       "id": "evidence:ca-bc-mu-7-25-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 266,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.218543,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13033,7 +13033,7 @@
       "id": "evidence:ca-bc-mu-7-26-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 14,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.07947,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13057,7 +13057,7 @@
       "id": "evidence:ca-bc-mu-7-26-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 155,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.172185,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13153,7 +13153,7 @@
       "id": "evidence:ca-bc-mu-7-27-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.016556,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13177,7 +13177,7 @@
       "id": "evidence:ca-bc-mu-7-27-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 11,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.013245,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13273,7 +13273,7 @@
       "id": "evidence:ca-bc-mu-7-28-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 10,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.05298,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13297,7 +13297,7 @@
       "id": "evidence:ca-bc-mu-7-28-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 116,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.152318,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13393,7 +13393,7 @@
       "id": "evidence:ca-bc-mu-7-29-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 33,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.201987,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13417,7 +13417,7 @@
       "id": "evidence:ca-bc-mu-7-29-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 487,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.344371,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13513,7 +13513,7 @@
       "id": "evidence:ca-bc-mu-7-30-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 66,
-      "normalizedValue": 0.370861,
+      "normalizedValue": 0.347682,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13537,7 +13537,7 @@
       "id": "evidence:ca-bc-mu-7-30-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 476,
-      "normalizedValue": 0.370861,
+      "normalizedValue": 0.337748,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13633,7 +13633,7 @@
       "id": "evidence:ca-bc-mu-7-31-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 102,
-      "normalizedValue": 0.655629,
+      "normalizedValue": 0.430464,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13657,7 +13657,7 @@
       "id": "evidence:ca-bc-mu-7-31-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 730,
-      "normalizedValue": 0.655629,
+      "normalizedValue": 0.417219,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13753,7 +13753,7 @@
       "id": "evidence:ca-bc-mu-7-32-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 843,
-      "normalizedValue": 0.94702,
+      "normalizedValue": 0.933775,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13777,7 +13777,7 @@
       "id": "evidence:ca-bc-mu-7-32-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 6953,
-      "normalizedValue": 0.94702,
+      "normalizedValue": 0.940397,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13873,7 +13873,7 @@
       "id": "evidence:ca-bc-mu-7-33-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1070,
-      "normalizedValue": 0.986755,
+      "normalizedValue": 0.960265,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13897,7 +13897,7 @@
       "id": "evidence:ca-bc-mu-7-33-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 9391,
-      "normalizedValue": 0.986755,
+      "normalizedValue": 0.960265,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13993,7 +13993,7 @@
       "id": "evidence:ca-bc-mu-7-34-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 310,
-      "normalizedValue": 0.804636,
+      "normalizedValue": 0.705298,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14017,7 +14017,7 @@
       "id": "evidence:ca-bc-mu-7-34-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2261,
-      "normalizedValue": 0.804636,
+      "normalizedValue": 0.715232,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14113,7 +14113,7 @@
       "id": "evidence:ca-bc-mu-7-35-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 375,
-      "normalizedValue": 0.847682,
+      "normalizedValue": 0.754967,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14137,7 +14137,7 @@
       "id": "evidence:ca-bc-mu-7-35-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 3041,
-      "normalizedValue": 0.847682,
+      "normalizedValue": 0.781457,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14233,7 +14233,7 @@
       "id": "evidence:ca-bc-mu-7-36-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 15,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.099338,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14257,7 +14257,7 @@
       "id": "evidence:ca-bc-mu-7-36-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 52,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.046358,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14353,7 +14353,7 @@
       "id": "evidence:ca-bc-mu-7-37-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.016556,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14377,7 +14377,7 @@
       "id": "evidence:ca-bc-mu-7-37-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 0,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14473,7 +14473,7 @@
       "id": "evidence:ca-bc-mu-7-38-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.016556,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14497,7 +14497,7 @@
       "id": "evidence:ca-bc-mu-7-38-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 48,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.039735,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14593,7 +14593,7 @@
       "id": "evidence:ca-bc-mu-7-42-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 33,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.201987,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14617,7 +14617,7 @@
       "id": "evidence:ca-bc-mu-7-42-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 235,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.198675,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14713,7 +14713,7 @@
       "id": "evidence:ca-bc-mu-7-43-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 92,
-      "normalizedValue": 0.539735,
+      "normalizedValue": 0.390728,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14737,7 +14737,7 @@
       "id": "evidence:ca-bc-mu-7-43-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 822,
-      "normalizedValue": 0.539735,
+      "normalizedValue": 0.443709,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14833,7 +14833,7 @@
       "id": "evidence:ca-bc-mu-7-44-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 134,
-      "normalizedValue": 0.711921,
+      "normalizedValue": 0.509934,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14857,7 +14857,7 @@
       "id": "evidence:ca-bc-mu-7-44-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 999,
-      "normalizedValue": 0.711921,
+      "normalizedValue": 0.490066,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14953,7 +14953,7 @@
       "id": "evidence:ca-bc-mu-7-45-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 174,
-      "normalizedValue": 0.758278,
+      "normalizedValue": 0.546358,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14977,7 +14977,7 @@
       "id": "evidence:ca-bc-mu-7-45-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1518,
-      "normalizedValue": 0.758278,
+      "normalizedValue": 0.615894,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15073,7 +15073,7 @@
       "id": "evidence:ca-bc-mu-7-46-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 94,
-      "normalizedValue": 0.596026,
+      "normalizedValue": 0.403974,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15097,7 +15097,7 @@
       "id": "evidence:ca-bc-mu-7-46-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 561,
-      "normalizedValue": 0.596026,
+      "normalizedValue": 0.377483,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15193,7 +15193,7 @@
       "id": "evidence:ca-bc-mu-7-48-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 30,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.18543,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15217,7 +15217,7 @@
       "id": "evidence:ca-bc-mu-7-48-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 271,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.225166,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15313,7 +15313,7 @@
       "id": "evidence:ca-bc-mu-7-49-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 57,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.307947,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15337,7 +15337,7 @@
       "id": "evidence:ca-bc-mu-7-49-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 494,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.350993,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15433,7 +15433,7 @@
       "id": "evidence:ca-bc-mu-7-54-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 10,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.05298,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15457,7 +15457,7 @@
       "id": "evidence:ca-bc-mu-7-54-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 29,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.02649,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15553,7 +15553,7 @@
       "id": "evidence:ca-bc-mu-7-57-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 10,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.05298,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15577,7 +15577,7 @@
       "id": "evidence:ca-bc-mu-7-57-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 86,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.119205,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15673,7 +15673,7 @@
       "id": "evidence:ca-bc-mu-7-58-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 70,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.370861,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15697,7 +15697,7 @@
       "id": "evidence:ca-bc-mu-7-58-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 612,
-      "normalizedValue": 0.258278,
+      "normalizedValue": 0.397351,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15793,7 +15793,7 @@
       "id": "evidence:ca-bc-mu-8-1-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 410,
-      "normalizedValue": 0.81457,
+      "normalizedValue": 0.794702,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15817,7 +15817,7 @@
       "id": "evidence:ca-bc-mu-8-1-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2847,
-      "normalizedValue": 0.81457,
+      "normalizedValue": 0.761589,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15913,7 +15913,7 @@
       "id": "evidence:ca-bc-mu-8-2-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 66,
-      "normalizedValue": 0.437086,
+      "normalizedValue": 0.347682,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15937,7 +15937,7 @@
       "id": "evidence:ca-bc-mu-8-2-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 324,
-      "normalizedValue": 0.437086,
+      "normalizedValue": 0.258278,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16033,7 +16033,7 @@
       "id": "evidence:ca-bc-mu-8-3-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 35,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.235099,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16057,7 +16057,7 @@
       "id": "evidence:ca-bc-mu-8-3-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 177,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.178808,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16153,7 +16153,7 @@
       "id": "evidence:ca-bc-mu-8-4-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 174,
-      "normalizedValue": 0.437086,
+      "normalizedValue": 0.546358,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16177,7 +16177,7 @@
       "id": "evidence:ca-bc-mu-8-4-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1048,
-      "normalizedValue": 0.437086,
+      "normalizedValue": 0.516556,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16273,7 +16273,7 @@
       "id": "evidence:ca-bc-mu-8-5-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 348,
-      "normalizedValue": 0.450331,
+      "normalizedValue": 0.741722,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16297,7 +16297,7 @@
       "id": "evidence:ca-bc-mu-8-5-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1995,
-      "normalizedValue": 0.450331,
+      "normalizedValue": 0.688742,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16393,7 +16393,7 @@
       "id": "evidence:ca-bc-mu-8-6-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 378,
-      "normalizedValue": 0.490066,
+      "normalizedValue": 0.764901,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16417,7 +16417,7 @@
       "id": "evidence:ca-bc-mu-8-6-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2461,
-      "normalizedValue": 0.490066,
+      "normalizedValue": 0.728477,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16513,7 +16513,7 @@
       "id": "evidence:ca-bc-mu-8-7-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 195,
-      "normalizedValue": 0.397351,
+      "normalizedValue": 0.569536,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16537,7 +16537,7 @@
       "id": "evidence:ca-bc-mu-8-7-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1093,
-      "normalizedValue": 0.397351,
+      "normalizedValue": 0.529801,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16633,7 +16633,7 @@
       "id": "evidence:ca-bc-mu-8-8-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 743,
-      "normalizedValue": 0.662252,
+      "normalizedValue": 0.89404,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16657,7 +16657,7 @@
       "id": "evidence:ca-bc-mu-8-8-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 4951,
-      "normalizedValue": 0.662252,
+      "normalizedValue": 0.887417,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16753,7 +16753,7 @@
       "id": "evidence:ca-bc-mu-8-9-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 403,
-      "normalizedValue": 0.675497,
+      "normalizedValue": 0.788079,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16777,7 +16777,7 @@
       "id": "evidence:ca-bc-mu-8-9-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2547,
-      "normalizedValue": 0.675497,
+      "normalizedValue": 0.735099,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16873,7 +16873,7 @@
       "id": "evidence:ca-bc-mu-8-10-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 858,
-      "normalizedValue": 0.880795,
+      "normalizedValue": 0.940397,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16897,7 +16897,7 @@
       "id": "evidence:ca-bc-mu-8-10-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 6019,
-      "normalizedValue": 0.880795,
+      "normalizedValue": 0.913907,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16993,7 +16993,7 @@
       "id": "evidence:ca-bc-mu-8-11-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 337,
-      "normalizedValue": 0.582781,
+      "normalizedValue": 0.728477,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17017,7 +17017,7 @@
       "id": "evidence:ca-bc-mu-8-11-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1851,
-      "normalizedValue": 0.582781,
+      "normalizedValue": 0.655629,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17113,7 +17113,7 @@
       "id": "evidence:ca-bc-mu-8-12-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1619,
-      "normalizedValue": 0.966887,
+      "normalizedValue": 1,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17137,7 +17137,7 @@
       "id": "evidence:ca-bc-mu-8-12-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 11097,
-      "normalizedValue": 0.966887,
+      "normalizedValue": 0.980132,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17233,7 +17233,7 @@
       "id": "evidence:ca-bc-mu-8-13-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 64,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.337748,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17257,7 +17257,7 @@
       "id": "evidence:ca-bc-mu-8-13-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 319,
-      "normalizedValue": 0.092715,
+      "normalizedValue": 0.251656,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17353,7 +17353,7 @@
       "id": "evidence:ca-bc-mu-8-14-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1372,
-      "normalizedValue": 0.97351,
+      "normalizedValue": 0.980132,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17377,7 +17377,7 @@
       "id": "evidence:ca-bc-mu-8-14-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 9594,
-      "normalizedValue": 0.97351,
+      "normalizedValue": 0.966887,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17473,7 +17473,7 @@
       "id": "evidence:ca-bc-mu-8-15-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 754,
-      "normalizedValue": 0.953642,
+      "normalizedValue": 0.900662,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17497,7 +17497,7 @@
       "id": "evidence:ca-bc-mu-8-15-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 7046,
-      "normalizedValue": 0.953642,
+      "normalizedValue": 0.94702,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17593,7 +17593,7 @@
       "id": "evidence:ca-bc-mu-8-21-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 126,
-      "normalizedValue": 0.370861,
+      "normalizedValue": 0.463576,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17617,7 +17617,7 @@
       "id": "evidence:ca-bc-mu-8-21-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 887,
-      "normalizedValue": 0.370861,
+      "normalizedValue": 0.463576,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17713,7 +17713,7 @@
       "id": "evidence:ca-bc-mu-8-22-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 205,
-      "normalizedValue": 0.622517,
+      "normalizedValue": 0.599338,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17737,7 +17737,7 @@
       "id": "evidence:ca-bc-mu-8-22-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1208,
-      "normalizedValue": 0.622517,
+      "normalizedValue": 0.556291,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17833,7 +17833,7 @@
       "id": "evidence:ca-bc-mu-8-23-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 951,
-      "normalizedValue": 0.960265,
+      "normalizedValue": 0.953642,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17857,7 +17857,7 @@
       "id": "evidence:ca-bc-mu-8-23-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 6056,
-      "normalizedValue": 0.960265,
+      "normalizedValue": 0.92053,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17953,7 +17953,7 @@
       "id": "evidence:ca-bc-mu-8-24-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 186,
-      "normalizedValue": 0.649007,
+      "normalizedValue": 0.556291,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17977,7 +17977,7 @@
       "id": "evidence:ca-bc-mu-8-24-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1002,
-      "normalizedValue": 0.649007,
+      "normalizedValue": 0.496689,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18073,7 +18073,7 @@
       "id": "evidence:ca-bc-mu-8-25-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 381,
-      "normalizedValue": 0.781457,
+      "normalizedValue": 0.774834,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18097,7 +18097,7 @@
       "id": "evidence:ca-bc-mu-8-25-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2158,
-      "normalizedValue": 0.781457,
+      "normalizedValue": 0.701987,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18193,7 +18193,7 @@
       "id": "evidence:ca-bc-mu-8-26-white-tailed-deer-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 310,
-      "normalizedValue": 0.781457,
+      "normalizedValue": 0.705298,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18217,7 +18217,7 @@
       "id": "evidence:ca-bc-mu-8-26-white-tailed-deer-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2746,
-      "normalizedValue": 0.781457,
+      "normalizedValue": 0.748344,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },

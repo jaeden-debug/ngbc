@@ -190,7 +190,6 @@ Previously: 2026-09-22 (Canonical species PRIMARY media schema, private storage 
 
 ## Known Problems
 
-- **British Columbia's harvest bundles carry the HARVEST percentile on their hunter-count and hunter-day records.** `scripts/build-bc-harvest-evidence.mjs` lines 167 and 168 both pass `harvestRanks[index]` as the `normalizedValue` for `HUNTER_COUNT` and `HUNTER_DAYS`, instead of ranks of their own. Proof it is a copy-paste bug and not a coincidence: MU 3-14 (0 killed, 5 hunters, 18 days) and MU 3-17 (0 killed, 65 hunters, 318 days) carry the identical `0.081461` for all three metrics, which cannot happen if hunters were ranked on hunter counts; all 179 moose units show the three metrics agreeing to six decimal places. Two consequences: (a) the single-zone GET publishes a `normalizedValue` on a hunter record that is not that record's rank — a false number on a sourced record (§61); (b) the composite the heat class is computed from is the mean of five values of which three are the same harvest rank, so it is an unintended harvest-weighted score rather than the equal weighting `opportunity-v1` claims. The heat classes currently drawn are therefore defensible as a harvest ranking but are NOT what the methodology says they are. Fixing it means regenerating nine bundles (5,980 records) from the pinned CSV, which changes published heat values — and raises a second question the owner should answer first: whether hunter COUNT and hunter DAYS belong in an opportunity score at all, since high hunter days is evidence of pressure rather than of opportunity. Not touched in the species-layer lane. / Data Integrity / Owner decision needed
 
 - **`britishColumbiaLegalTime` computes a window from an undefined timezone.** Called directly it returns "09:35 to 22:20 (undefined)" — a legal hunting window computed against nothing, rendered into user-facing text. It is unwired today (BC falls back to the static `legalTime` refusal, which quotes s. 14 (1) and names the real blocker), so nothing ships it. But the guard lives in every caller (`alberta.ts`, `federal.ts`) rather than in the function, so wiring BC up without remembering the guard emits nonsense. Push the guard down: no timezone, no window, `legalTimeNotCertified` instead. / Technical Debt
 
@@ -778,6 +777,63 @@ blueprint keeps those out of North Ground's answers.
 
 
 ## Recent Product Decisions
+
+### 2026-09-29 — A latent false number became publishable, so it was fixed first
+`build-bc-harvest-evidence.mjs` passed `harvestRanks[index]` as the
+`normalizedValue` for `HARVEST_TOTAL`, **`HUNTER_COUNT` and `HUNTER_DAYS`
+alike**, while the two ratio metrics correctly used their own series. A rank
+attributed to a metric it was never computed from is a fabricated number on a
+sourced record (§61).
+
+**Why it had to be fixed in this lane rather than deferred.** The endpoint
+served Ontario white-tailed deer only, so the false values were unreachable.
+The species layer makes all 5,980 British Columbia records reachable — it turns
+a latent defect into a published one, at scale, on a visible surface.
+
+**The discriminating fact is `HUNTER_COUNT`, not the row of equal numbers.**
+MU 3-14 (5 hunters) and MU 3-17 (65 hunters) both carried `0.081461` — a
+thirteenfold difference in hunters producing an identical rank. Both units have
+zero kills, so three of their five metrics tie *legitimately*; a reader
+comparing all five and seeing them equal would conclude "correlated data" from
+the right observation. After the fix those two read `0.011236` and `0.36236`,
+and **0 of 179 moose units still have all three metrics tied**.
+
+**Blast radius, measured rather than asserted.** The source hash still matches
+the pinned `EXPECTED_HASH`, so the authority's CSV is unchanged. Across all
+5,980 records the only field that differs anywhere is `normalizedValue`, and
+only on `HUNTER_COUNT` (1,176 records) and `HUNTER_DAYS` (1,184). Bundle
+headers are byte-identical and record counts unchanged.
+
+**Effect on the map: 308 of 1,196 BC zones (25.8%) changed heat class; Ontario
+0.** The distribution moved off the extremes and toward the middle — VERY_HIGH
+203 -> 140, LOW 545 -> 418, MODERATE 254 -> 411, HIGH 295 -> 328. That is the
+signature of removing a triple-weighted variable: the old score was 3/5 one
+series, which pushed zones to the tails. Largest single move is LOW -> MODERATE
+(135), because the many zero-kill units all shared one harvest rank and spread
+out once ranked on hunters. Sixty-three fewer zones are now drawn at the top of
+the ramp. `opportunity-v1` is unchanged — the data now matches the definition
+rather than the definition being bent to the data.
+
+**Prediction and gap, recorded.** ~500 BC zones were predicted to change, range
+420-580. The measurement was 308: a 62% overshoot, outside the stated range.
+The error was assuming the hunter-effort ranks would diverge substantially from
+the harvest rank; they are strongly rank-correlated with kills, so the
+correction is much smaller than the triple-weighting suggested.
+
+**Coverage semantics: a gap worth naming.** `evidenceCoverage` counts DISTINCT
+METRICS, not independent values, so five metrics carrying three values still
+graded `ROBUST_DATA`. The class could not have detected this defect, and did
+not. British Columbia's `ROBUST_DATA` is now true rather than accidentally
+true. Ontario's `PARTIAL_DATA` was and remains correct: its script ranks each
+of its two metrics on its own series and never had the bug, so the two
+jurisdictions now compare like with like — 2 real metrics against 5 real ones.
+
+**Guarded structurally, not by field name.** `bundles.test.ts` asserts that no
+metric's normalized series is a copy of another's across every geography of
+every bundle. Written against the signature rather than the two fields that had
+it, and deliberately not "these metrics never tie" — zero-harvest units tie
+honestly. Falsified against the actual pre-fix bundles: it fails with
+`HUNTER_COUNT carries HARVEST_TOTAL's rank on all 206 geographies`.
 
 ### 2026-09-29 — The species layer ships: heat and open season, over one geography
 CLAUDE.md §41A's species-layer decision is now implemented end to end.

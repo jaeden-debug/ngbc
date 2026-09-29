@@ -73,7 +73,7 @@
       "id": "evidence:ca-bc-mu-3-12-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 417,
-      "normalizedValue": 0.77809,
+      "normalizedValue": 0.949438,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -97,7 +97,7 @@
       "id": "evidence:ca-bc-mu-3-12-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1960,
-      "normalizedValue": 0.77809,
+      "normalizedValue": 0.870787,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -193,7 +193,7 @@
       "id": "evidence:ca-bc-mu-3-13-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 130,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.620787,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -217,7 +217,7 @@
       "id": "evidence:ca-bc-mu-3-13-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 571,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.44382,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -313,7 +313,7 @@
       "id": "evidence:ca-bc-mu-3-14-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.011236,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -337,7 +337,7 @@
       "id": "evidence:ca-bc-mu-3-14-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 18,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.005618,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -433,7 +433,7 @@
       "id": "evidence:ca-bc-mu-3-16-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 14,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.061798,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -457,7 +457,7 @@
       "id": "evidence:ca-bc-mu-3-16-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 34,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.022472,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -553,7 +553,7 @@
       "id": "evidence:ca-bc-mu-3-17-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 65,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.36236,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -577,7 +577,7 @@
       "id": "evidence:ca-bc-mu-3-17-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 318,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.30618,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -673,7 +673,7 @@
       "id": "evidence:ca-bc-mu-3-18-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 203,
-      "normalizedValue": 0.505618,
+      "normalizedValue": 0.769663,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -697,7 +697,7 @@
       "id": "evidence:ca-bc-mu-3-18-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1158,
-      "normalizedValue": 0.505618,
+      "normalizedValue": 0.707865,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -793,7 +793,7 @@
       "id": "evidence:ca-bc-mu-3-19-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 411,
-      "normalizedValue": 0.623596,
+      "normalizedValue": 0.932584,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -817,7 +817,7 @@
       "id": "evidence:ca-bc-mu-3-19-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2196,
-      "normalizedValue": 0.623596,
+      "normalizedValue": 0.898876,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -913,7 +913,7 @@
       "id": "evidence:ca-bc-mu-3-20-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 262,
-      "normalizedValue": 0.474719,
+      "normalizedValue": 0.853933,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -937,7 +937,7 @@
       "id": "evidence:ca-bc-mu-3-20-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1230,
-      "normalizedValue": 0.474719,
+      "normalizedValue": 0.727528,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1033,7 +1033,7 @@
       "id": "evidence:ca-bc-mu-3-26-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 429,
-      "normalizedValue": 0.691011,
+      "normalizedValue": 0.960674,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1057,7 +1057,7 @@
       "id": "evidence:ca-bc-mu-3-26-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2366,
-      "normalizedValue": 0.691011,
+      "normalizedValue": 0.904494,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1153,7 +1153,7 @@
       "id": "evidence:ca-bc-mu-3-27-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 187,
-      "normalizedValue": 0.587079,
+      "normalizedValue": 0.741573,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1177,7 +1177,7 @@
       "id": "evidence:ca-bc-mu-3-27-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1152,
-      "normalizedValue": 0.587079,
+      "normalizedValue": 0.696629,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1273,7 +1273,7 @@
       "id": "evidence:ca-bc-mu-3-28-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 163,
-      "normalizedValue": 0.803371,
+      "normalizedValue": 0.710674,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1297,7 +1297,7 @@
       "id": "evidence:ca-bc-mu-3-28-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 905,
-      "normalizedValue": 0.803371,
+      "normalizedValue": 0.61236,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1393,7 +1393,7 @@
       "id": "evidence:ca-bc-mu-3-29-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 151,
-      "normalizedValue": 0.674157,
+      "normalizedValue": 0.679775,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1417,7 +1417,7 @@
       "id": "evidence:ca-bc-mu-3-29-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 655,
-      "normalizedValue": 0.674157,
+      "normalizedValue": 0.505618,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1513,7 +1513,7 @@
       "id": "evidence:ca-bc-mu-3-30-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 251,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.831461,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1537,7 +1537,7 @@
       "id": "evidence:ca-bc-mu-3-30-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1875,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.853933,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1633,7 +1633,7 @@
       "id": "evidence:ca-bc-mu-3-31-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 255,
-      "normalizedValue": 0.603933,
+      "normalizedValue": 0.842697,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1657,7 +1657,7 @@
       "id": "evidence:ca-bc-mu-3-31-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1742,
-      "normalizedValue": 0.603933,
+      "normalizedValue": 0.831461,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1753,7 +1753,7 @@
       "id": "evidence:ca-bc-mu-3-32-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 105,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.514045,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1777,7 +1777,7 @@
       "id": "evidence:ca-bc-mu-3-32-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 724,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.522472,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1873,7 +1873,7 @@
       "id": "evidence:ca-bc-mu-3-33-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 58,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.348315,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1897,7 +1897,7 @@
       "id": "evidence:ca-bc-mu-3-33-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 327,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.320225,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1993,7 +1993,7 @@
       "id": "evidence:ca-bc-mu-3-34-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 34,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.22191,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2017,7 +2017,7 @@
       "id": "evidence:ca-bc-mu-3-34-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 201,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.185393,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2113,7 +2113,7 @@
       "id": "evidence:ca-bc-mu-3-35-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 77,
-      "normalizedValue": 0.525281,
+      "normalizedValue": 0.412921,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2137,7 +2137,7 @@
       "id": "evidence:ca-bc-mu-3-35-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 575,
-      "normalizedValue": 0.525281,
+      "normalizedValue": 0.449438,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2233,7 +2233,7 @@
       "id": "evidence:ca-bc-mu-3-36-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 243,
-      "normalizedValue": 0.811798,
+      "normalizedValue": 0.814607,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2257,7 +2257,7 @@
       "id": "evidence:ca-bc-mu-3-36-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1404,
-      "normalizedValue": 0.811798,
+      "normalizedValue": 0.769663,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2353,7 +2353,7 @@
       "id": "evidence:ca-bc-mu-3-37-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 217,
-      "normalizedValue": 0.55618,
+      "normalizedValue": 0.775281,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2377,7 +2377,7 @@
       "id": "evidence:ca-bc-mu-3-37-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1548,
-      "normalizedValue": 0.55618,
+      "normalizedValue": 0.797753,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2473,7 +2473,7 @@
       "id": "evidence:ca-bc-mu-3-38-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 141,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.662921,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2497,7 +2497,7 @@
       "id": "evidence:ca-bc-mu-3-38-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1075,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.679775,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2593,7 +2593,7 @@
       "id": "evidence:ca-bc-mu-3-39-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 126,
-      "normalizedValue": 0.691011,
+      "normalizedValue": 0.592697,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2617,7 +2617,7 @@
       "id": "evidence:ca-bc-mu-3-39-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1027,
-      "normalizedValue": 0.691011,
+      "normalizedValue": 0.668539,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2713,7 +2713,7 @@
       "id": "evidence:ca-bc-mu-3-40-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 73,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.398876,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2737,7 +2737,7 @@
       "id": "evidence:ca-bc-mu-3-40-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 485,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.398876,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2833,7 +2833,7 @@
       "id": "evidence:ca-bc-mu-3-41-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 47,
-      "normalizedValue": 0.55618,
+      "normalizedValue": 0.317416,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2857,7 +2857,7 @@
       "id": "evidence:ca-bc-mu-3-41-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 421,
-      "normalizedValue": 0.55618,
+      "normalizedValue": 0.370787,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2953,7 +2953,7 @@
       "id": "evidence:ca-bc-mu-3-42-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 82,
-      "normalizedValue": 0.38764,
+      "normalizedValue": 0.44382,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2977,7 +2977,7 @@
       "id": "evidence:ca-bc-mu-3-42-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 521,
-      "normalizedValue": 0.38764,
+      "normalizedValue": 0.426966,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3073,7 +3073,7 @@
       "id": "evidence:ca-bc-mu-3-43-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 18,
-      "normalizedValue": 0.38764,
+      "normalizedValue": 0.095506,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3097,7 +3097,7 @@
       "id": "evidence:ca-bc-mu-3-43-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 89,
-      "normalizedValue": 0.38764,
+      "normalizedValue": 0.089888,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3193,7 +3193,7 @@
       "id": "evidence:ca-bc-mu-3-44-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 14,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.061798,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3217,7 +3217,7 @@
       "id": "evidence:ca-bc-mu-3-44-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 35,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.02809,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3313,7 +3313,7 @@
       "id": "evidence:ca-bc-mu-3-46-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 68,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.376404,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3337,7 +3337,7 @@
       "id": "evidence:ca-bc-mu-3-46-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 508,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.412921,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3433,7 +3433,7 @@
       "id": "evidence:ca-bc-mu-4-1-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 46,
-      "normalizedValue": 0.328652,
+      "normalizedValue": 0.308989,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3457,7 +3457,7 @@
       "id": "evidence:ca-bc-mu-4-1-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 449,
-      "normalizedValue": 0.328652,
+      "normalizedValue": 0.376404,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3553,7 +3553,7 @@
       "id": "evidence:ca-bc-mu-4-2-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 45,
-      "normalizedValue": 0.328652,
+      "normalizedValue": 0.300562,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3577,7 +3577,7 @@
       "id": "evidence:ca-bc-mu-4-2-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 337,
-      "normalizedValue": 0.328652,
+      "normalizedValue": 0.331461,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3673,7 +3673,7 @@
       "id": "evidence:ca-bc-mu-4-3-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 77,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.412921,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3697,7 +3697,7 @@
       "id": "evidence:ca-bc-mu-4-3-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 604,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.483146,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3793,7 +3793,7 @@
       "id": "evidence:ca-bc-mu-4-4-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 22,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.126404,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3817,7 +3817,7 @@
       "id": "evidence:ca-bc-mu-4-4-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 211,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.202247,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3913,7 +3913,7 @@
       "id": "evidence:ca-bc-mu-4-5-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 106,
-      "normalizedValue": 0.55618,
+      "normalizedValue": 0.525281,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3937,7 +3937,7 @@
       "id": "evidence:ca-bc-mu-4-5-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 959,
-      "normalizedValue": 0.55618,
+      "normalizedValue": 0.640449,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4033,7 +4033,7 @@
       "id": "evidence:ca-bc-mu-4-6-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 99,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.488764,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4057,7 +4057,7 @@
       "id": "evidence:ca-bc-mu-4-6-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 603,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.47191,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4153,7 +4153,7 @@
       "id": "evidence:ca-bc-mu-4-7-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 50,
-      "normalizedValue": 0.176966,
+      "normalizedValue": 0.331461,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4177,7 +4177,7 @@
       "id": "evidence:ca-bc-mu-4-7-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 306,
-      "normalizedValue": 0.176966,
+      "normalizedValue": 0.27809,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4273,7 +4273,7 @@
       "id": "evidence:ca-bc-mu-4-8-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 80,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.432584,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4297,7 +4297,7 @@
       "id": "evidence:ca-bc-mu-4-8-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 770,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.567416,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4393,7 +4393,7 @@
       "id": "evidence:ca-bc-mu-4-9-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 120,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.573034,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4417,7 +4417,7 @@
       "id": "evidence:ca-bc-mu-4-9-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 926,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.626404,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4513,7 +4513,7 @@
       "id": "evidence:ca-bc-mu-4-14-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 45,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.300562,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4537,7 +4537,7 @@
       "id": "evidence:ca-bc-mu-4-14-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 304,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.269663,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4633,7 +4633,7 @@
       "id": "evidence:ca-bc-mu-4-15-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 71,
-      "normalizedValue": 0.22191,
+      "normalizedValue": 0.393258,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4657,7 +4657,7 @@
       "id": "evidence:ca-bc-mu-4-15-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 318,
-      "normalizedValue": 0.22191,
+      "normalizedValue": 0.30618,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4753,7 +4753,7 @@
       "id": "evidence:ca-bc-mu-4-16-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 36,
-      "normalizedValue": 0.22191,
+      "normalizedValue": 0.235955,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4777,7 +4777,7 @@
       "id": "evidence:ca-bc-mu-4-16-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 317,
-      "normalizedValue": 0.22191,
+      "normalizedValue": 0.294944,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4873,7 +4873,7 @@
       "id": "evidence:ca-bc-mu-4-17-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 17,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.075843,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4897,7 +4897,7 @@
       "id": "evidence:ca-bc-mu-4-17-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 78,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.078652,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4993,7 +4993,7 @@
       "id": "evidence:ca-bc-mu-4-18-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 65,
-      "normalizedValue": 0.38764,
+      "normalizedValue": 0.36236,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5017,7 +5017,7 @@
       "id": "evidence:ca-bc-mu-4-18-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 328,
-      "normalizedValue": 0.38764,
+      "normalizedValue": 0.325843,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5113,7 +5113,7 @@
       "id": "evidence:ca-bc-mu-4-19-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.011236,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5137,7 +5137,7 @@
       "id": "evidence:ca-bc-mu-4-19-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 23,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.011236,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5233,7 +5233,7 @@
       "id": "evidence:ca-bc-mu-4-20-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 146,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.674157,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5257,7 +5257,7 @@
       "id": "evidence:ca-bc-mu-4-20-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1700,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.820225,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5353,7 +5353,7 @@
       "id": "evidence:ca-bc-mu-4-21-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 30,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.191011,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5377,7 +5377,7 @@
       "id": "evidence:ca-bc-mu-4-21-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 126,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.132022,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5473,7 +5473,7 @@
       "id": "evidence:ca-bc-mu-4-22-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 81,
-      "normalizedValue": 0.38764,
+      "normalizedValue": 0.438202,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5497,7 +5497,7 @@
       "id": "evidence:ca-bc-mu-4-22-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 534,
-      "normalizedValue": 0.38764,
+      "normalizedValue": 0.432584,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5593,7 +5593,7 @@
       "id": "evidence:ca-bc-mu-4-23-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 182,
-      "normalizedValue": 0.77809,
+      "normalizedValue": 0.735955,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5617,7 +5617,7 @@
       "id": "evidence:ca-bc-mu-4-23-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1921,
-      "normalizedValue": 0.77809,
+      "normalizedValue": 0.865169,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5713,7 +5713,7 @@
       "id": "evidence:ca-bc-mu-4-24-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 69,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.382022,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5737,7 +5737,7 @@
       "id": "evidence:ca-bc-mu-4-24-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 565,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.438202,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5833,7 +5833,7 @@
       "id": "evidence:ca-bc-mu-4-25-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 41,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.27809,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5857,7 +5857,7 @@
       "id": "evidence:ca-bc-mu-4-25-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 317,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.294944,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5953,7 +5953,7 @@
       "id": "evidence:ca-bc-mu-4-26-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 55,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.342697,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5977,7 +5977,7 @@
       "id": "evidence:ca-bc-mu-4-26-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 370,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.345506,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6073,7 +6073,7 @@
       "id": "evidence:ca-bc-mu-4-27-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.025281,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6097,7 +6097,7 @@
       "id": "evidence:ca-bc-mu-4-27-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 67,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.05618,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6193,7 +6193,7 @@
       "id": "evidence:ca-bc-mu-4-28-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 4,
-      "normalizedValue": 0.22191,
+      "normalizedValue": 0,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6217,7 +6217,7 @@
       "id": "evidence:ca-bc-mu-4-28-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 106,
-      "normalizedValue": 0.22191,
+      "normalizedValue": 0.117978,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6313,7 +6313,7 @@
       "id": "evidence:ca-bc-mu-4-29-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 18,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.095506,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6337,7 +6337,7 @@
       "id": "evidence:ca-bc-mu-4-29-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 80,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.08427,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6433,7 +6433,7 @@
       "id": "evidence:ca-bc-mu-4-30-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 22,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.126404,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6457,7 +6457,7 @@
       "id": "evidence:ca-bc-mu-4-30-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 99,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.109551,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6553,7 +6553,7 @@
       "id": "evidence:ca-bc-mu-4-31-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 27,
-      "normalizedValue": 0.22191,
+      "normalizedValue": 0.168539,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6577,7 +6577,7 @@
       "id": "evidence:ca-bc-mu-4-31-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 239,
-      "normalizedValue": 0.22191,
+      "normalizedValue": 0.233146,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6673,7 +6673,7 @@
       "id": "evidence:ca-bc-mu-4-32-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 157,
-      "normalizedValue": 0.634831,
+      "normalizedValue": 0.702247,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6697,7 +6697,7 @@
       "id": "evidence:ca-bc-mu-4-32-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1198,
-      "normalizedValue": 0.634831,
+      "normalizedValue": 0.719101,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6793,7 +6793,7 @@
       "id": "evidence:ca-bc-mu-4-33-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 27,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.168539,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6817,7 +6817,7 @@
       "id": "evidence:ca-bc-mu-4-33-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 144,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.157303,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6913,7 +6913,7 @@
       "id": "evidence:ca-bc-mu-4-34-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 36,
-      "normalizedValue": 0.328652,
+      "normalizedValue": 0.235955,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6937,7 +6937,7 @@
       "id": "evidence:ca-bc-mu-4-34-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 271,
-      "normalizedValue": 0.328652,
+      "normalizedValue": 0.252809,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7033,7 +7033,7 @@
       "id": "evidence:ca-bc-mu-4-35-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 20,
-      "normalizedValue": 0.191011,
+      "normalizedValue": 0.115169,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7057,7 +7057,7 @@
       "id": "evidence:ca-bc-mu-4-35-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 126,
-      "normalizedValue": 0.191011,
+      "normalizedValue": 0.132022,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7153,7 +7153,7 @@
       "id": "evidence:ca-bc-mu-4-36-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 18,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.095506,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7177,7 +7177,7 @@
       "id": "evidence:ca-bc-mu-4-36-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 139,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.151685,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7273,7 +7273,7 @@
       "id": "evidence:ca-bc-mu-4-37-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 40,
-      "normalizedValue": 0.55618,
+      "normalizedValue": 0.264045,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7297,7 +7297,7 @@
       "id": "evidence:ca-bc-mu-4-37-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 207,
-      "normalizedValue": 0.55618,
+      "normalizedValue": 0.196629,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7393,7 +7393,7 @@
       "id": "evidence:ca-bc-mu-4-38-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 290,
-      "normalizedValue": 0.983146,
+      "normalizedValue": 0.876404,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7417,7 +7417,7 @@
       "id": "evidence:ca-bc-mu-4-38-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1883,
-      "normalizedValue": 0.983146,
+      "normalizedValue": 0.859551,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7513,7 +7513,7 @@
       "id": "evidence:ca-bc-mu-4-39-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 127,
-      "normalizedValue": 0.474719,
+      "normalizedValue": 0.603933,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7537,7 +7537,7 @@
       "id": "evidence:ca-bc-mu-4-39-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 769,
-      "normalizedValue": 0.474719,
+      "normalizedValue": 0.561798,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7633,7 +7633,7 @@
       "id": "evidence:ca-bc-mu-4-40-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 39,
-      "normalizedValue": 0.22191,
+      "normalizedValue": 0.252809,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7657,7 +7657,7 @@
       "id": "evidence:ca-bc-mu-4-40-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 387,
-      "normalizedValue": 0.22191,
+      "normalizedValue": 0.359551,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7753,7 +7753,7 @@
       "id": "evidence:ca-bc-mu-5-1-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 199,
-      "normalizedValue": 0.901685,
+      "normalizedValue": 0.761236,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7777,7 +7777,7 @@
       "id": "evidence:ca-bc-mu-5-1-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1635,
-      "normalizedValue": 0.901685,
+      "normalizedValue": 0.808989,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7873,7 +7873,7 @@
       "id": "evidence:ca-bc-mu-5-2-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 422,
-      "normalizedValue": 1,
+      "normalizedValue": 0.955056,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7897,7 +7897,7 @@
       "id": "evidence:ca-bc-mu-5-2-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2926,
-      "normalizedValue": 1,
+      "normalizedValue": 0.949438,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7993,7 +7993,7 @@
       "id": "evidence:ca-bc-mu-5-3-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 42,
-      "normalizedValue": 0.603933,
+      "normalizedValue": 0.286517,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8017,7 +8017,7 @@
       "id": "evidence:ca-bc-mu-5-3-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 244,
-      "normalizedValue": 0.603933,
+      "normalizedValue": 0.241573,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8113,7 +8113,7 @@
       "id": "evidence:ca-bc-mu-5-4-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 48,
-      "normalizedValue": 0.735955,
+      "normalizedValue": 0.325843,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8137,7 +8137,7 @@
       "id": "evidence:ca-bc-mu-5-4-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 297,
-      "normalizedValue": 0.735955,
+      "normalizedValue": 0.258427,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8233,7 +8233,7 @@
       "id": "evidence:ca-bc-mu-5-5-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 32,
-      "normalizedValue": 0.55618,
+      "normalizedValue": 0.207865,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8257,7 +8257,7 @@
       "id": "evidence:ca-bc-mu-5-5-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 206,
-      "normalizedValue": 0.55618,
+      "normalizedValue": 0.191011,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8353,7 +8353,7 @@
       "id": "evidence:ca-bc-mu-5-6-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 20,
-      "normalizedValue": 0.176966,
+      "normalizedValue": 0.115169,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8377,7 +8377,7 @@
       "id": "evidence:ca-bc-mu-5-6-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 109,
-      "normalizedValue": 0.176966,
+      "normalizedValue": 0.123596,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8473,7 +8473,7 @@
       "id": "evidence:ca-bc-mu-5-10-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 9,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.033708,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8497,7 +8497,7 @@
       "id": "evidence:ca-bc-mu-5-10-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 69,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.061798,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8593,7 +8593,7 @@
       "id": "evidence:ca-bc-mu-5-11-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 18,
-      "normalizedValue": 0.328652,
+      "normalizedValue": 0.095506,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8617,7 +8617,7 @@
       "id": "evidence:ca-bc-mu-5-11-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 54,
-      "normalizedValue": 0.328652,
+      "normalizedValue": 0.044944,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8713,7 +8713,7 @@
       "id": "evidence:ca-bc-mu-5-12-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 133,
-      "normalizedValue": 0.879213,
+      "normalizedValue": 0.632022,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8737,7 +8737,7 @@
       "id": "evidence:ca-bc-mu-5-12-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 808,
-      "normalizedValue": 0.879213,
+      "normalizedValue": 0.578652,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8833,7 +8833,7 @@
       "id": "evidence:ca-bc-mu-5-13-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 171,
-      "normalizedValue": 0.924157,
+      "normalizedValue": 0.719101,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8857,7 +8857,7 @@
       "id": "evidence:ca-bc-mu-5-13-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1146,
-      "normalizedValue": 0.924157,
+      "normalizedValue": 0.691011,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8953,7 +8953,7 @@
       "id": "evidence:ca-bc-mu-5-14-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 47,
-      "normalizedValue": 0.713483,
+      "normalizedValue": 0.317416,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8977,7 +8977,7 @@
       "id": "evidence:ca-bc-mu-5-14-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 138,
-      "normalizedValue": 0.713483,
+      "normalizedValue": 0.146067,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9073,7 +9073,7 @@
       "id": "evidence:ca-bc-mu-5-15-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 356,
-      "normalizedValue": 0.977528,
+      "normalizedValue": 0.921348,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9097,7 +9097,7 @@
       "id": "evidence:ca-bc-mu-5-15-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2748,
-      "normalizedValue": 0.977528,
+      "normalizedValue": 0.932584,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9193,7 +9193,7 @@
       "id": "evidence:ca-bc-mu-6-1-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 271,
-      "normalizedValue": 0.870787,
+      "normalizedValue": 0.859551,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9217,7 +9217,7 @@
       "id": "evidence:ca-bc-mu-6-1-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1262,
-      "normalizedValue": 0.870787,
+      "normalizedValue": 0.747191,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9313,7 +9313,7 @@
       "id": "evidence:ca-bc-mu-6-2-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 119,
-      "normalizedValue": 0.752809,
+      "normalizedValue": 0.567416,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9337,7 +9337,7 @@
       "id": "evidence:ca-bc-mu-6-2-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 789,
-      "normalizedValue": 0.752809,
+      "normalizedValue": 0.573034,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9433,7 +9433,7 @@
       "id": "evidence:ca-bc-mu-6-3-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 27,
-      "normalizedValue": 0.491573,
+      "normalizedValue": 0.168539,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9457,7 +9457,7 @@
       "id": "evidence:ca-bc-mu-6-3-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 66,
-      "normalizedValue": 0.491573,
+      "normalizedValue": 0.050562,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9553,7 +9553,7 @@
       "id": "evidence:ca-bc-mu-6-4-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 156,
-      "normalizedValue": 0.932584,
+      "normalizedValue": 0.696629,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9577,7 +9577,7 @@
       "id": "evidence:ca-bc-mu-6-4-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 853,
-      "normalizedValue": 0.932584,
+      "normalizedValue": 0.589888,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9673,7 +9673,7 @@
       "id": "evidence:ca-bc-mu-6-5-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 26,
-      "normalizedValue": 0.491573,
+      "normalizedValue": 0.151685,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9697,7 +9697,7 @@
       "id": "evidence:ca-bc-mu-6-5-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 222,
-      "normalizedValue": 0.491573,
+      "normalizedValue": 0.210674,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9793,7 +9793,7 @@
       "id": "evidence:ca-bc-mu-6-6-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 102,
-      "normalizedValue": 0.83427,
+      "normalizedValue": 0.5,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9817,7 +9817,7 @@
       "id": "evidence:ca-bc-mu-6-6-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 732,
-      "normalizedValue": 0.83427,
+      "normalizedValue": 0.533708,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9913,7 +9913,7 @@
       "id": "evidence:ca-bc-mu-6-8-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 257,
-      "normalizedValue": 0.955056,
+      "normalizedValue": 0.848315,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9937,7 +9937,7 @@
       "id": "evidence:ca-bc-mu-6-8-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1978,
-      "normalizedValue": 0.955056,
+      "normalizedValue": 0.876404,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10033,7 +10033,7 @@
       "id": "evidence:ca-bc-mu-6-9-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 292,
-      "normalizedValue": 0.941011,
+      "normalizedValue": 0.884831,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10057,7 +10057,7 @@
       "id": "evidence:ca-bc-mu-6-9-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1869,
-      "normalizedValue": 0.941011,
+      "normalizedValue": 0.848315,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10153,7 +10153,7 @@
       "id": "evidence:ca-bc-mu-6-10-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 24,
-      "normalizedValue": 0.705056,
+      "normalizedValue": 0.140449,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10177,7 +10177,7 @@
       "id": "evidence:ca-bc-mu-6-10-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 169,
-      "normalizedValue": 0.705056,
+      "normalizedValue": 0.162921,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10273,7 +10273,7 @@
       "id": "evidence:ca-bc-mu-6-11-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.011236,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10297,7 +10297,7 @@
       "id": "evidence:ca-bc-mu-6-11-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 14,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10393,7 +10393,7 @@
       "id": "evidence:ca-bc-mu-6-15-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 23,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.134831,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10417,7 +10417,7 @@
       "id": "evidence:ca-bc-mu-6-15-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 99,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.109551,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10513,7 +10513,7 @@
       "id": "evidence:ca-bc-mu-6-17-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 79,
-      "normalizedValue": 0.623596,
+      "normalizedValue": 0.426966,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10537,7 +10537,7 @@
       "id": "evidence:ca-bc-mu-6-17-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 486,
-      "normalizedValue": 0.623596,
+      "normalizedValue": 0.404494,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10633,7 +10633,7 @@
       "id": "evidence:ca-bc-mu-6-18-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 41,
-      "normalizedValue": 0.578652,
+      "normalizedValue": 0.27809,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10657,7 +10657,7 @@
       "id": "evidence:ca-bc-mu-6-18-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 191,
-      "normalizedValue": 0.578652,
+      "normalizedValue": 0.179775,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10753,7 +10753,7 @@
       "id": "evidence:ca-bc-mu-6-19-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 40,
-      "normalizedValue": 0.643258,
+      "normalizedValue": 0.264045,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10777,7 +10777,7 @@
       "id": "evidence:ca-bc-mu-6-19-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 370,
-      "normalizedValue": 0.643258,
+      "normalizedValue": 0.345506,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10873,7 +10873,7 @@
       "id": "evidence:ca-bc-mu-6-20-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 152,
-      "normalizedValue": 0.910112,
+      "normalizedValue": 0.685393,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10897,7 +10897,7 @@
       "id": "evidence:ca-bc-mu-6-20-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1276,
-      "normalizedValue": 0.910112,
+      "normalizedValue": 0.752809,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10993,7 +10993,7 @@
       "id": "evidence:ca-bc-mu-6-21-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 90,
-      "normalizedValue": 0.72191,
+      "normalizedValue": 0.47191,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11017,7 +11017,7 @@
       "id": "evidence:ca-bc-mu-6-21-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 603,
-      "normalizedValue": 0.72191,
+      "normalizedValue": 0.47191,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11113,7 +11113,7 @@
       "id": "evidence:ca-bc-mu-6-22-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 115,
-      "normalizedValue": 0.856742,
+      "normalizedValue": 0.547753,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11137,7 +11137,7 @@
       "id": "evidence:ca-bc-mu-6-22-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 918,
-      "normalizedValue": 0.856742,
+      "normalizedValue": 0.617978,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11233,7 +11233,7 @@
       "id": "evidence:ca-bc-mu-6-23-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 137,
-      "normalizedValue": 0.893258,
+      "normalizedValue": 0.646067,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11257,7 +11257,7 @@
       "id": "evidence:ca-bc-mu-6-23-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 926,
-      "normalizedValue": 0.893258,
+      "normalizedValue": 0.626404,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11353,7 +11353,7 @@
       "id": "evidence:ca-bc-mu-6-24-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 140,
-      "normalizedValue": 0.825843,
+      "normalizedValue": 0.657303,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11377,7 +11377,7 @@
       "id": "evidence:ca-bc-mu-6-24-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1154,
-      "normalizedValue": 0.825843,
+      "normalizedValue": 0.702247,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11473,7 +11473,7 @@
       "id": "evidence:ca-bc-mu-6-25-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 218,
-      "normalizedValue": 0.988764,
+      "normalizedValue": 0.780899,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11497,7 +11497,7 @@
       "id": "evidence:ca-bc-mu-6-25-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1846,
-      "normalizedValue": 0.988764,
+      "normalizedValue": 0.842697,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11593,7 +11593,7 @@
       "id": "evidence:ca-bc-mu-6-26-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 70,
-      "normalizedValue": 0.657303,
+      "normalizedValue": 0.38764,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11617,7 +11617,7 @@
       "id": "evidence:ca-bc-mu-6-26-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 512,
-      "normalizedValue": 0.657303,
+      "normalizedValue": 0.421348,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11713,7 +11713,7 @@
       "id": "evidence:ca-bc-mu-6-27-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 78,
-      "normalizedValue": 0.820225,
+      "normalizedValue": 0.421348,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11737,7 +11737,7 @@
       "id": "evidence:ca-bc-mu-6-27-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 508,
-      "normalizedValue": 0.820225,
+      "normalizedValue": 0.412921,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11833,7 +11833,7 @@
       "id": "evidence:ca-bc-mu-6-28-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 14,
-      "normalizedValue": 0.38764,
+      "normalizedValue": 0.061798,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11857,7 +11857,7 @@
       "id": "evidence:ca-bc-mu-6-28-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 96,
-      "normalizedValue": 0.38764,
+      "normalizedValue": 0.101124,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11953,7 +11953,7 @@
       "id": "evidence:ca-bc-mu-6-29-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 11,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.042135,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11977,7 +11977,7 @@
       "id": "evidence:ca-bc-mu-6-29-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 93,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.095506,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12073,7 +12073,7 @@
       "id": "evidence:ca-bc-mu-6-30-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 67,
-      "normalizedValue": 0.735955,
+      "normalizedValue": 0.370787,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12097,7 +12097,7 @@
       "id": "evidence:ca-bc-mu-6-30-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 753,
-      "normalizedValue": 0.735955,
+      "normalizedValue": 0.550562,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12193,7 +12193,7 @@
       "id": "evidence:ca-bc-mu-7-2-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 85,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.457865,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12217,7 +12217,7 @@
       "id": "evidence:ca-bc-mu-7-2-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 989,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.657303,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12313,7 +12313,7 @@
       "id": "evidence:ca-bc-mu-7-3-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 88,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.466292,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12337,7 +12337,7 @@
       "id": "evidence:ca-bc-mu-7-3-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 691,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.516854,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12433,7 +12433,7 @@
       "id": "evidence:ca-bc-mu-7-4-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 121,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.578652,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12457,7 +12457,7 @@
       "id": "evidence:ca-bc-mu-7-4-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1129,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.685393,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12553,7 +12553,7 @@
       "id": "evidence:ca-bc-mu-7-5-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 101,
-      "normalizedValue": 0.657303,
+      "normalizedValue": 0.494382,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12577,7 +12577,7 @@
       "id": "evidence:ca-bc-mu-7-5-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 901,
-      "normalizedValue": 0.657303,
+      "normalizedValue": 0.606742,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12673,7 +12673,7 @@
       "id": "evidence:ca-bc-mu-7-6-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 189,
-      "normalizedValue": 0.474719,
+      "normalizedValue": 0.747191,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12697,7 +12697,7 @@
       "id": "evidence:ca-bc-mu-7-6-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1439,
-      "normalizedValue": 0.474719,
+      "normalizedValue": 0.786517,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12793,7 +12793,7 @@
       "id": "evidence:ca-bc-mu-7-7-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 414,
-      "normalizedValue": 0.949438,
+      "normalizedValue": 0.94382,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12817,7 +12817,7 @@
       "id": "evidence:ca-bc-mu-7-7-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 3218,
-      "normalizedValue": 0.949438,
+      "normalizedValue": 0.97191,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12913,7 +12913,7 @@
       "id": "evidence:ca-bc-mu-7-8-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 451,
-      "normalizedValue": 0.901685,
+      "normalizedValue": 0.966292,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12937,7 +12937,7 @@
       "id": "evidence:ca-bc-mu-7-8-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 3760,
-      "normalizedValue": 0.901685,
+      "normalizedValue": 0.977528,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13033,7 +13033,7 @@
       "id": "evidence:ca-bc-mu-7-9-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 273,
-      "normalizedValue": 0.794944,
+      "normalizedValue": 0.865169,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13057,7 +13057,7 @@
       "id": "evidence:ca-bc-mu-7-9-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2854,
-      "normalizedValue": 0.794944,
+      "normalizedValue": 0.94382,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13153,7 +13153,7 @@
       "id": "evidence:ca-bc-mu-7-10-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 582,
-      "normalizedValue": 0.77809,
+      "normalizedValue": 0.988764,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13177,7 +13177,7 @@
       "id": "evidence:ca-bc-mu-7-10-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 4934,
-      "normalizedValue": 0.77809,
+      "normalizedValue": 0.994382,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13273,7 +13273,7 @@
       "id": "evidence:ca-bc-mu-7-11-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 340,
-      "normalizedValue": 0.941011,
+      "normalizedValue": 0.910112,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13297,7 +13297,7 @@
       "id": "evidence:ca-bc-mu-7-11-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2636,
-      "normalizedValue": 0.941011,
+      "normalizedValue": 0.921348,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13393,7 +13393,7 @@
       "id": "evidence:ca-bc-mu-7-12-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 772,
-      "normalizedValue": 0.994382,
+      "normalizedValue": 1,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13417,7 +13417,7 @@
       "id": "evidence:ca-bc-mu-7-12-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 6978,
-      "normalizedValue": 0.994382,
+      "normalizedValue": 1,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13513,7 +13513,7 @@
       "id": "evidence:ca-bc-mu-7-13-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 310,
-      "normalizedValue": 0.525281,
+      "normalizedValue": 0.893258,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13537,7 +13537,7 @@
       "id": "evidence:ca-bc-mu-7-13-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2996,
-      "normalizedValue": 0.525281,
+      "normalizedValue": 0.960674,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13633,7 +13633,7 @@
       "id": "evidence:ca-bc-mu-7-14-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 332,
-      "normalizedValue": 0.865169,
+      "normalizedValue": 0.904494,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13657,7 +13657,7 @@
       "id": "evidence:ca-bc-mu-7-14-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 3048,
-      "normalizedValue": 0.865169,
+      "normalizedValue": 0.966292,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13753,7 +13753,7 @@
       "id": "evidence:ca-bc-mu-7-15-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 512,
-      "normalizedValue": 0.657303,
+      "normalizedValue": 0.977528,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13777,7 +13777,7 @@
       "id": "evidence:ca-bc-mu-7-15-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 4553,
-      "normalizedValue": 0.657303,
+      "normalizedValue": 0.988764,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13873,7 +13873,7 @@
       "id": "evidence:ca-bc-mu-7-16-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 403,
-      "normalizedValue": 0.97191,
+      "normalizedValue": 0.926966,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13897,7 +13897,7 @@
       "id": "evidence:ca-bc-mu-7-16-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2791,
-      "normalizedValue": 0.97191,
+      "normalizedValue": 0.938202,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13993,7 +13993,7 @@
       "id": "evidence:ca-bc-mu-7-17-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 199,
-      "normalizedValue": 0.848315,
+      "normalizedValue": 0.761236,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14017,7 +14017,7 @@
       "id": "evidence:ca-bc-mu-7-17-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1740,
-      "normalizedValue": 0.848315,
+      "normalizedValue": 0.825843,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14113,7 +14113,7 @@
       "id": "evidence:ca-bc-mu-7-18-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 115,
-      "normalizedValue": 0.856742,
+      "normalizedValue": 0.547753,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14137,7 +14137,7 @@
       "id": "evidence:ca-bc-mu-7-18-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 967,
-      "normalizedValue": 0.856742,
+      "normalizedValue": 0.646067,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14233,7 +14233,7 @@
       "id": "evidence:ca-bc-mu-7-19-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 44,
-      "normalizedValue": 0.38764,
+      "normalizedValue": 0.292135,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14257,7 +14257,7 @@
       "id": "evidence:ca-bc-mu-7-19-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 188,
-      "normalizedValue": 0.38764,
+      "normalizedValue": 0.174157,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14353,7 +14353,7 @@
       "id": "evidence:ca-bc-mu-7-20-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 292,
-      "normalizedValue": 0.83427,
+      "normalizedValue": 0.884831,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14377,7 +14377,7 @@
       "id": "evidence:ca-bc-mu-7-20-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1250,
-      "normalizedValue": 0.83427,
+      "normalizedValue": 0.741573,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14473,7 +14473,7 @@
       "id": "evidence:ca-bc-mu-7-21-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 224,
-      "normalizedValue": 0.77809,
+      "normalizedValue": 0.797753,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14497,7 +14497,7 @@
       "id": "evidence:ca-bc-mu-7-21-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 990,
-      "normalizedValue": 0.77809,
+      "normalizedValue": 0.662921,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14593,7 +14593,7 @@
       "id": "evidence:ca-bc-mu-7-22-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 127,
-      "normalizedValue": 0.752809,
+      "normalizedValue": 0.603933,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14617,7 +14617,7 @@
       "id": "evidence:ca-bc-mu-7-22-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 734,
-      "normalizedValue": 0.752809,
+      "normalizedValue": 0.539326,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14713,7 +14713,7 @@
       "id": "evidence:ca-bc-mu-7-23-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 349,
-      "normalizedValue": 0.963483,
+      "normalizedValue": 0.91573,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14737,7 +14737,7 @@
       "id": "evidence:ca-bc-mu-7-23-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2973,
-      "normalizedValue": 0.963483,
+      "normalizedValue": 0.955056,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14833,7 +14833,7 @@
       "id": "evidence:ca-bc-mu-7-24-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 552,
-      "normalizedValue": 0.924157,
+      "normalizedValue": 0.983146,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14857,7 +14857,7 @@
       "id": "evidence:ca-bc-mu-7-24-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 4456,
-      "normalizedValue": 0.924157,
+      "normalizedValue": 0.983146,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14953,7 +14953,7 @@
       "id": "evidence:ca-bc-mu-7-25-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 275,
-      "normalizedValue": 0.525281,
+      "normalizedValue": 0.870787,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14977,7 +14977,7 @@
       "id": "evidence:ca-bc-mu-7-25-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2462,
-      "normalizedValue": 0.525281,
+      "normalizedValue": 0.91573,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15073,7 +15073,7 @@
       "id": "evidence:ca-bc-mu-7-26-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 244,
-      "normalizedValue": 0.91573,
+      "normalizedValue": 0.820225,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15097,7 +15097,7 @@
       "id": "evidence:ca-bc-mu-7-26-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2039,
-      "normalizedValue": 0.91573,
+      "normalizedValue": 0.882022,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15193,7 +15193,7 @@
       "id": "evidence:ca-bc-mu-7-27-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 116,
-      "normalizedValue": 0.705056,
+      "normalizedValue": 0.55618,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15217,7 +15217,7 @@
       "id": "evidence:ca-bc-mu-7-27-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 899,
-      "normalizedValue": 0.705056,
+      "normalizedValue": 0.601124,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15313,7 +15313,7 @@
       "id": "evidence:ca-bc-mu-7-28-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 247,
-      "normalizedValue": 0.842697,
+      "normalizedValue": 0.825843,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15337,7 +15337,7 @@
       "id": "evidence:ca-bc-mu-7-28-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2045,
-      "normalizedValue": 0.842697,
+      "normalizedValue": 0.88764,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15433,7 +15433,7 @@
       "id": "evidence:ca-bc-mu-7-29-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 144,
-      "normalizedValue": 0.603933,
+      "normalizedValue": 0.668539,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15457,7 +15457,7 @@
       "id": "evidence:ca-bc-mu-7-29-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1309,
-      "normalizedValue": 0.603933,
+      "normalizedValue": 0.758427,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15553,7 +15553,7 @@
       "id": "evidence:ca-bc-mu-7-30-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 175,
-      "normalizedValue": 0.752809,
+      "normalizedValue": 0.730337,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15577,7 +15577,7 @@
       "id": "evidence:ca-bc-mu-7-30-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1432,
-      "normalizedValue": 0.752809,
+      "normalizedValue": 0.780899,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15673,7 +15673,7 @@
       "id": "evidence:ca-bc-mu-7-31-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 114,
-      "normalizedValue": 0.674157,
+      "normalizedValue": 0.539326,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15697,7 +15697,7 @@
       "id": "evidence:ca-bc-mu-7-31-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 584,
-      "normalizedValue": 0.674157,
+      "normalizedValue": 0.455056,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15793,7 +15793,7 @@
       "id": "evidence:ca-bc-mu-7-32-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 228,
-      "normalizedValue": 0.328652,
+      "normalizedValue": 0.803371,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15817,7 +15817,7 @@
       "id": "evidence:ca-bc-mu-7-32-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1812,
-      "normalizedValue": 0.328652,
+      "normalizedValue": 0.837079,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15913,7 +15913,7 @@
       "id": "evidence:ca-bc-mu-7-33-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 626,
-      "normalizedValue": 0.963483,
+      "normalizedValue": 0.994382,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15937,7 +15937,7 @@
       "id": "evidence:ca-bc-mu-7-33-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2401,
-      "normalizedValue": 0.963483,
+      "normalizedValue": 0.910112,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16033,7 +16033,7 @@
       "id": "evidence:ca-bc-mu-7-34-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 85,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.457865,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16057,7 +16057,7 @@
       "id": "evidence:ca-bc-mu-7-34-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 598,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.460674,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16153,7 +16153,7 @@
       "id": "evidence:ca-bc-mu-7-35-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 236,
-      "normalizedValue": 0.505618,
+      "normalizedValue": 0.808989,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16177,7 +16177,7 @@
       "id": "evidence:ca-bc-mu-7-35-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1690,
-      "normalizedValue": 0.505618,
+      "normalizedValue": 0.814607,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16273,7 +16273,7 @@
       "id": "evidence:ca-bc-mu-7-36-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 28,
-      "normalizedValue": 0.38764,
+      "normalizedValue": 0.179775,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16297,7 +16297,7 @@
       "id": "evidence:ca-bc-mu-7-36-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 228,
-      "normalizedValue": 0.38764,
+      "normalizedValue": 0.224719,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16393,7 +16393,7 @@
       "id": "evidence:ca-bc-mu-7-37-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 30,
-      "normalizedValue": 0.196629,
+      "normalizedValue": 0.191011,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16417,7 +16417,7 @@
       "id": "evidence:ca-bc-mu-7-37-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 367,
-      "normalizedValue": 0.196629,
+      "normalizedValue": 0.337079,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16513,7 +16513,7 @@
       "id": "evidence:ca-bc-mu-7-38-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 134,
-      "normalizedValue": 0.811798,
+      "normalizedValue": 0.640449,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16537,7 +16537,7 @@
       "id": "evidence:ca-bc-mu-7-38-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 976,
-      "normalizedValue": 0.811798,
+      "normalizedValue": 0.651685,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16633,7 +16633,7 @@
       "id": "evidence:ca-bc-mu-7-39-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 26,
-      "normalizedValue": 0.474719,
+      "normalizedValue": 0.151685,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16657,7 +16657,7 @@
       "id": "evidence:ca-bc-mu-7-39-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 224,
-      "normalizedValue": 0.474719,
+      "normalizedValue": 0.219101,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16753,7 +16753,7 @@
       "id": "evidence:ca-bc-mu-7-40-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 31,
-      "normalizedValue": 0.356742,
+      "normalizedValue": 0.202247,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16777,7 +16777,7 @@
       "id": "evidence:ca-bc-mu-7-40-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 222,
-      "normalizedValue": 0.356742,
+      "normalizedValue": 0.210674,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16873,7 +16873,7 @@
       "id": "evidence:ca-bc-mu-7-41-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 30,
-      "normalizedValue": 0.328652,
+      "normalizedValue": 0.191011,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16897,7 +16897,7 @@
       "id": "evidence:ca-bc-mu-7-41-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 303,
-      "normalizedValue": 0.328652,
+      "normalizedValue": 0.264045,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16993,7 +16993,7 @@
       "id": "evidence:ca-bc-mu-7-42-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 154,
-      "normalizedValue": 0.643258,
+      "normalizedValue": 0.691011,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17017,7 +17017,7 @@
       "id": "evidence:ca-bc-mu-7-42-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1230,
-      "normalizedValue": 0.643258,
+      "normalizedValue": 0.727528,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17113,7 +17113,7 @@
       "id": "evidence:ca-bc-mu-7-43-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 172,
-      "normalizedValue": 0.55618,
+      "normalizedValue": 0.724719,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17137,7 +17137,7 @@
       "id": "evidence:ca-bc-mu-7-43-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1419,
-      "normalizedValue": 0.55618,
+      "normalizedValue": 0.775281,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17233,7 +17233,7 @@
       "id": "evidence:ca-bc-mu-7-44-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 105,
-      "normalizedValue": 0.735955,
+      "normalizedValue": 0.514045,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17257,7 +17257,7 @@
       "id": "evidence:ca-bc-mu-7-44-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 951,
-      "normalizedValue": 0.735955,
+      "normalizedValue": 0.634831,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17353,7 +17353,7 @@
       "id": "evidence:ca-bc-mu-7-45-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 96,
-      "normalizedValue": 0.691011,
+      "normalizedValue": 0.483146,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17377,7 +17377,7 @@
       "id": "evidence:ca-bc-mu-7-45-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 725,
-      "normalizedValue": 0.691011,
+      "normalizedValue": 0.52809,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17473,7 +17473,7 @@
       "id": "evidence:ca-bc-mu-7-46-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 113,
-      "normalizedValue": 0.587079,
+      "normalizedValue": 0.533708,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17497,7 +17497,7 @@
       "id": "evidence:ca-bc-mu-7-46-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 450,
-      "normalizedValue": 0.587079,
+      "normalizedValue": 0.382022,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17593,7 +17593,7 @@
       "id": "evidence:ca-bc-mu-7-47-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.025281,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17617,7 +17617,7 @@
       "id": "evidence:ca-bc-mu-7-47-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 40,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.033708,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17713,7 +17713,7 @@
       "id": "evidence:ca-bc-mu-7-48-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 51,
-      "normalizedValue": 0.356742,
+      "normalizedValue": 0.337079,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17737,7 +17737,7 @@
       "id": "evidence:ca-bc-mu-7-48-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 306,
-      "normalizedValue": 0.356742,
+      "normalizedValue": 0.27809,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17833,7 +17833,7 @@
       "id": "evidence:ca-bc-mu-7-49-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 91,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.477528,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17857,7 +17857,7 @@
       "id": "evidence:ca-bc-mu-7-49-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 475,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.390449,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17953,7 +17953,7 @@
       "id": "evidence:ca-bc-mu-7-50-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 84,
-      "normalizedValue": 0.603933,
+      "normalizedValue": 0.449438,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17977,7 +17977,7 @@
       "id": "evidence:ca-bc-mu-7-50-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 743,
-      "normalizedValue": 0.603933,
+      "normalizedValue": 0.544944,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18073,7 +18073,7 @@
       "id": "evidence:ca-bc-mu-7-51-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 126,
-      "normalizedValue": 0.88764,
+      "normalizedValue": 0.592697,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18097,7 +18097,7 @@
       "id": "evidence:ca-bc-mu-7-51-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 882,
-      "normalizedValue": 0.88764,
+      "normalizedValue": 0.595506,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18193,7 +18193,7 @@
       "id": "evidence:ca-bc-mu-7-52-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 106,
-      "normalizedValue": 0.72191,
+      "normalizedValue": 0.525281,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18217,7 +18217,7 @@
       "id": "evidence:ca-bc-mu-7-52-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 761,
-      "normalizedValue": 0.72191,
+      "normalizedValue": 0.55618,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18313,7 +18313,7 @@
       "id": "evidence:ca-bc-mu-7-53-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 12,
-      "normalizedValue": 0.176966,
+      "normalizedValue": 0.050562,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18337,7 +18337,7 @@
       "id": "evidence:ca-bc-mu-7-53-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 46,
-      "normalizedValue": 0.176966,
+      "normalizedValue": 0.039326,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18433,7 +18433,7 @@
       "id": "evidence:ca-bc-mu-7-54-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 34,
-      "normalizedValue": 0.356742,
+      "normalizedValue": 0.22191,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18457,7 +18457,7 @@
       "id": "evidence:ca-bc-mu-7-54-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 400,
-      "normalizedValue": 0.356742,
+      "normalizedValue": 0.365169,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18553,7 +18553,7 @@
       "id": "evidence:ca-bc-mu-7-55-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 33,
-      "normalizedValue": 0.22191,
+      "normalizedValue": 0.213483,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18577,7 +18577,7 @@
       "id": "evidence:ca-bc-mu-7-55-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 135,
-      "normalizedValue": 0.22191,
+      "normalizedValue": 0.140449,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18673,7 +18673,7 @@
       "id": "evidence:ca-bc-mu-7-56-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 38,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.247191,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18697,7 +18697,7 @@
       "id": "evidence:ca-bc-mu-7-56-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 239,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.233146,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18793,7 +18793,7 @@
       "id": "evidence:ca-bc-mu-7-57-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 40,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.264045,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18817,7 +18817,7 @@
       "id": "evidence:ca-bc-mu-7-57-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 320,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.314607,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18913,7 +18913,7 @@
       "id": "evidence:ca-bc-mu-7-58-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 26,
-      "normalizedValue": 0.22191,
+      "normalizedValue": 0.151685,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18937,7 +18937,7 @@
       "id": "evidence:ca-bc-mu-7-58-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 311,
-      "normalizedValue": 0.22191,
+      "normalizedValue": 0.286517,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19033,7 +19033,7 @@
       "id": "evidence:ca-bc-mu-8-1-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 75,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.404494,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19057,7 +19057,7 @@
       "id": "evidence:ca-bc-mu-8-1-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 381,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.353933,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19153,7 +19153,7 @@
       "id": "evidence:ca-bc-mu-8-2-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 17,
-      "normalizedValue": 0.22191,
+      "normalizedValue": 0.075843,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19177,7 +19177,7 @@
       "id": "evidence:ca-bc-mu-8-2-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 70,
-      "normalizedValue": 0.22191,
+      "normalizedValue": 0.067416,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19273,7 +19273,7 @@
       "id": "evidence:ca-bc-mu-8-3-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 11,
-      "normalizedValue": 0.176966,
+      "normalizedValue": 0.042135,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19297,7 +19297,7 @@
       "id": "evidence:ca-bc-mu-8-3-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 33,
-      "normalizedValue": 0.176966,
+      "normalizedValue": 0.016854,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19393,7 +19393,7 @@
       "id": "evidence:ca-bc-mu-8-4-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 118,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.561798,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19417,7 +19417,7 @@
       "id": "evidence:ca-bc-mu-8-4-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 667,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.511236,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19513,7 +19513,7 @@
       "id": "evidence:ca-bc-mu-8-5-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 221,
-      "normalizedValue": 0.505618,
+      "normalizedValue": 0.786517,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19537,7 +19537,7 @@
       "id": "evidence:ca-bc-mu-8-5-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1244,
-      "normalizedValue": 0.505618,
+      "normalizedValue": 0.735955,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19633,7 +19633,7 @@
       "id": "evidence:ca-bc-mu-8-6-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 252,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.837079,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19657,7 +19657,7 @@
       "id": "evidence:ca-bc-mu-8-6-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1453,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.792135,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19753,7 +19753,7 @@
       "id": "evidence:ca-bc-mu-8-7-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 130,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.620787,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19777,7 +19777,7 @@
       "id": "evidence:ca-bc-mu-8-7-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 849,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.58427,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19873,7 +19873,7 @@
       "id": "evidence:ca-bc-mu-8-8-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 319,
-      "normalizedValue": 0.623596,
+      "normalizedValue": 0.898876,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19897,7 +19897,7 @@
       "id": "evidence:ca-bc-mu-8-8-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1569,
-      "normalizedValue": 0.623596,
+      "normalizedValue": 0.803371,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19993,7 +19993,7 @@
       "id": "evidence:ca-bc-mu-8-9-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 138,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.651685,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20017,7 +20017,7 @@
       "id": "evidence:ca-bc-mu-8-9-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 603,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.47191,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20113,7 +20113,7 @@
       "id": "evidence:ca-bc-mu-8-10-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 223,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.792135,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20137,7 +20137,7 @@
       "id": "evidence:ca-bc-mu-8-10-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1170,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.713483,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20233,7 +20233,7 @@
       "id": "evidence:ca-bc-mu-8-11-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 471,
-      "normalizedValue": 0.879213,
+      "normalizedValue": 0.97191,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20257,7 +20257,7 @@
       "id": "evidence:ca-bc-mu-8-11-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2160,
-      "normalizedValue": 0.879213,
+      "normalizedValue": 0.893258,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20353,7 +20353,7 @@
       "id": "evidence:ca-bc-mu-8-12-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 413,
-      "normalizedValue": 0.764045,
+      "normalizedValue": 0.938202,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20377,7 +20377,7 @@
       "id": "evidence:ca-bc-mu-8-12-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2640,
-      "normalizedValue": 0.764045,
+      "normalizedValue": 0.926966,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20473,7 +20473,7 @@
       "id": "evidence:ca-bc-mu-8-13-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 18,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.095506,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20497,7 +20497,7 @@
       "id": "evidence:ca-bc-mu-8-13-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 75,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.073034,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20593,7 +20593,7 @@
       "id": "evidence:ca-bc-mu-8-14-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 196,
-      "normalizedValue": 0.794944,
+      "normalizedValue": 0.752809,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20617,7 +20617,7 @@
       "id": "evidence:ca-bc-mu-8-14-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1387,
-      "normalizedValue": 0.794944,
+      "normalizedValue": 0.764045,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20713,7 +20713,7 @@
       "id": "evidence:ca-bc-mu-8-15-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 163,
-      "normalizedValue": 0.525281,
+      "normalizedValue": 0.710674,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20737,7 +20737,7 @@
       "id": "evidence:ca-bc-mu-8-15-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1050,
-      "normalizedValue": 0.525281,
+      "normalizedValue": 0.674157,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20833,7 +20833,7 @@
       "id": "evidence:ca-bc-mu-8-21-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 59,
-      "normalizedValue": 0.55618,
+      "normalizedValue": 0.353933,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20857,7 +20857,7 @@
       "id": "evidence:ca-bc-mu-8-21-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 246,
-      "normalizedValue": 0.55618,
+      "normalizedValue": 0.247191,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20953,7 +20953,7 @@
       "id": "evidence:ca-bc-mu-8-22-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 36,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.235955,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20977,7 +20977,7 @@
       "id": "evidence:ca-bc-mu-8-22-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 177,
-      "normalizedValue": 0.081461,
+      "normalizedValue": 0.168539,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -21073,7 +21073,7 @@
       "id": "evidence:ca-bc-mu-8-23-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 129,
-      "normalizedValue": 0.356742,
+      "normalizedValue": 0.61236,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -21097,7 +21097,7 @@
       "id": "evidence:ca-bc-mu-8-23-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 610,
-      "normalizedValue": 0.356742,
+      "normalizedValue": 0.488764,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -21193,7 +21193,7 @@
       "id": "evidence:ca-bc-mu-8-24-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 122,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.58427,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -21217,7 +21217,7 @@
       "id": "evidence:ca-bc-mu-8-24-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 633,
-      "normalizedValue": 0.435393,
+      "normalizedValue": 0.5,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -21313,7 +21313,7 @@
       "id": "evidence:ca-bc-mu-8-25-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 103,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.505618,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -21337,7 +21337,7 @@
       "id": "evidence:ca-bc-mu-8-25-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 475,
-      "normalizedValue": 0.27809,
+      "normalizedValue": 0.390449,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -21433,7 +21433,7 @@
       "id": "evidence:ca-bc-mu-8-26-moose-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 133,
-      "normalizedValue": 0.674157,
+      "normalizedValue": 0.632022,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -21457,7 +21457,7 @@
       "id": "evidence:ca-bc-mu-8-26-moose-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 618,
-      "normalizedValue": 0.674157,
+      "normalizedValue": 0.494382,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },

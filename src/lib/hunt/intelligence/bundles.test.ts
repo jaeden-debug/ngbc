@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFileSync, readdirSync } from "node:fs";
 import { evidenceProvenance, hasEvidenceForSpecies, opportunityAcross, opportunityAt, servableDatasets, speciesWithEvidence } from "./bundles.ts";
 
 /**
@@ -118,4 +119,55 @@ test("every classification stays inside the published vocabulary, across every z
   }
   for (const value of classes) assert.ok(["VERY_HIGH", "HIGH", "MODERATE", "LOW", "LIMITED_DATA"].includes(value));
   for (const value of coverages) assert.ok(["ROBUST_DATA", "PARTIAL_DATA", "LIMITED_DATA", "RANGE_ONLY", "NO_HEAT_MAP_DATA"].includes(value));
+});
+
+/**
+ * A rank attributed to a metric it was not computed from is a fabricated
+ * number on a sourced record (§61), and the composite is the mean of those
+ * numbers, so it reaches the map.
+ *
+ * `build-bc-harvest-evidence.mjs` passed `harvestRanks` as the normalizedValue
+ * for HARVEST_TOTAL, HUNTER_COUNT and HUNTER_DAYS alike. Nothing caught it:
+ * the coverage class counts DISTINCT METRICS, not independent values, so five
+ * metrics carrying three values still graded ROBUST_DATA. The signature is
+ * structural — one metric's series being a copy of another's — so the test is
+ * written against the signature rather than against the two fields that had it.
+ *
+ * Deliberately not "these two never tie": zero-harvest units tie legitimately,
+ * and MU 3-14 and MU 3-17 tie on three of five metrics for that honest reason.
+ * A copy shows up as agreement on EVERY geography at once.
+ */
+test("no metric's normalized series is a copy of another metric's", () => {
+  const dir = new URL("../../../../content/intelligence/", import.meta.url);
+  const files = readdirSync(dir).filter((name) => name.startsWith("ca-") && name.endsWith(".json"));
+  assert.ok(files.length >= 10, "every committed bundle is examined");
+
+  for (const file of files) {
+    const bundle = JSON.parse(readFileSync(new URL(file, dir), "utf8")) as {
+      evidence: Array<{ geographyId: string; metric: string; normalizedValue?: number }>;
+    };
+    const series = new Map<string, Map<string, number>>();
+    for (const record of bundle.evidence) {
+      if (typeof record.normalizedValue !== "number") continue;
+      const byGeography = series.get(record.metric) ?? new Map<string, number>();
+      byGeography.set(record.geographyId, record.normalizedValue);
+      series.set(record.metric, byGeography);
+    }
+    const metrics = [...series.keys()].sort();
+    for (let i = 0; i < metrics.length; i += 1) {
+      for (let j = i + 1; j < metrics.length; j += 1) {
+        const left = series.get(metrics[i])!;
+        const right = series.get(metrics[j])!;
+        const shared = [...left.keys()].filter((geographyId) => right.has(geographyId));
+        // A series with one distinct value carries no information to copy.
+        if (shared.length < 2 || new Set(shared.map((id) => left.get(id)!)).size < 2) continue;
+        const identical = shared.every((geographyId) => left.get(geographyId) === right.get(geographyId));
+        assert.equal(
+          identical,
+          false,
+          `${file}: ${metrics[j]} carries ${metrics[i]}'s rank on all ${shared.length} geographies — it was never ranked on its own series`,
+        );
+      }
+    }
+  }
 });

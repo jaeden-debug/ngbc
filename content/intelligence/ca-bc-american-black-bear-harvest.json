@@ -73,7 +73,7 @@
       "id": "evidence:ca-bc-mu-1-1-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.068293,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -97,7 +97,7 @@
       "id": "evidence:ca-bc-mu-1-1-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 5,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.021951,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -193,7 +193,7 @@
       "id": "evidence:ca-bc-mu-1-2-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 72,
-      "normalizedValue": 0.595122,
+      "normalizedValue": 0.580488,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -217,7 +217,7 @@
       "id": "evidence:ca-bc-mu-1-2-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 536,
-      "normalizedValue": 0.595122,
+      "normalizedValue": 0.639024,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -313,7 +313,7 @@
       "id": "evidence:ca-bc-mu-1-3-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 232,
-      "normalizedValue": 0.973171,
+      "normalizedValue": 0.941463,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -337,7 +337,7 @@
       "id": "evidence:ca-bc-mu-1-3-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 726,
-      "normalizedValue": 0.973171,
+      "normalizedValue": 0.721951,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -433,7 +433,7 @@
       "id": "evidence:ca-bc-mu-1-4-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 368,
-      "normalizedValue": 0.946341,
+      "normalizedValue": 0.995122,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -457,7 +457,7 @@
       "id": "evidence:ca-bc-mu-1-4-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2394,
-      "normalizedValue": 0.946341,
+      "normalizedValue": 0.980488,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -553,7 +553,7 @@
       "id": "evidence:ca-bc-mu-1-5-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 188,
-      "normalizedValue": 0.860976,
+      "normalizedValue": 0.890244,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -577,7 +577,7 @@
       "id": "evidence:ca-bc-mu-1-5-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1302,
-      "normalizedValue": 0.860976,
+      "normalizedValue": 0.882927,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -673,7 +673,7 @@
       "id": "evidence:ca-bc-mu-1-6-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 188,
-      "normalizedValue": 0.897561,
+      "normalizedValue": 0.890244,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -697,7 +697,7 @@
       "id": "evidence:ca-bc-mu-1-6-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1185,
-      "normalizedValue": 0.897561,
+      "normalizedValue": 0.853659,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -793,7 +793,7 @@
       "id": "evidence:ca-bc-mu-1-7-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 123,
-      "normalizedValue": 0.846341,
+      "normalizedValue": 0.773171,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -817,7 +817,7 @@
       "id": "evidence:ca-bc-mu-1-7-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 670,
-      "normalizedValue": 0.846341,
+      "normalizedValue": 0.697561,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -913,7 +913,7 @@
       "id": "evidence:ca-bc-mu-1-8-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 27,
-      "normalizedValue": 0.546341,
+      "normalizedValue": 0.285366,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -937,7 +937,7 @@
       "id": "evidence:ca-bc-mu-1-8-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 108,
-      "normalizedValue": 0.546341,
+      "normalizedValue": 0.243902,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1033,7 +1033,7 @@
       "id": "evidence:ca-bc-mu-1-9-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 86,
-      "normalizedValue": 0.836585,
+      "normalizedValue": 0.62439,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1057,7 +1057,7 @@
       "id": "evidence:ca-bc-mu-1-9-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 385,
-      "normalizedValue": 0.836585,
+      "normalizedValue": 0.556098,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1153,7 +1153,7 @@
       "id": "evidence:ca-bc-mu-1-10-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 288,
-      "normalizedValue": 0.990244,
+      "normalizedValue": 0.980488,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1177,7 +1177,7 @@
       "id": "evidence:ca-bc-mu-1-10-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2123,
-      "normalizedValue": 0.990244,
+      "normalizedValue": 0.970732,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1273,7 +1273,7 @@
       "id": "evidence:ca-bc-mu-1-11-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 124,
-      "normalizedValue": 0.926829,
+      "normalizedValue": 0.780488,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1297,7 +1297,7 @@
       "id": "evidence:ca-bc-mu-1-11-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 429,
-      "normalizedValue": 0.926829,
+      "normalizedValue": 0.57561,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1393,7 +1393,7 @@
       "id": "evidence:ca-bc-mu-1-12-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 104,
-      "normalizedValue": 0.914634,
+      "normalizedValue": 0.687805,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1417,7 +1417,7 @@
       "id": "evidence:ca-bc-mu-1-12-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 367,
-      "normalizedValue": 0.914634,
+      "normalizedValue": 0.531707,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1513,7 +1513,7 @@
       "id": "evidence:ca-bc-mu-1-13-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 168,
-      "normalizedValue": 0.973171,
+      "normalizedValue": 0.834146,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1537,7 +1537,7 @@
       "id": "evidence:ca-bc-mu-1-13-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 704,
-      "normalizedValue": 0.973171,
+      "normalizedValue": 0.712195,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1633,7 +1633,7 @@
       "id": "evidence:ca-bc-mu-1-14-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1,
-      "normalizedValue": 0.153659,
+      "normalizedValue": 0.009756,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1657,7 +1657,7 @@
       "id": "evidence:ca-bc-mu-1-14-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1,
-      "normalizedValue": 0.153659,
+      "normalizedValue": 0,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1753,7 +1753,7 @@
       "id": "evidence:ca-bc-mu-1-15-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 13,
-      "normalizedValue": 0.2,
+      "normalizedValue": 0.182927,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1777,7 +1777,7 @@
       "id": "evidence:ca-bc-mu-1-15-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 60,
-      "normalizedValue": 0.2,
+      "normalizedValue": 0.131707,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1873,7 +1873,7 @@
       "id": "evidence:ca-bc-mu-2-1-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1,
-      "normalizedValue": 0.153659,
+      "normalizedValue": 0.009756,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1897,7 +1897,7 @@
       "id": "evidence:ca-bc-mu-2-1-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2,
-      "normalizedValue": 0.153659,
+      "normalizedValue": 0.007317,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1993,7 +1993,7 @@
       "id": "evidence:ca-bc-mu-2-2-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 46,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.453659,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2017,7 +2017,7 @@
       "id": "evidence:ca-bc-mu-2-2-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 194,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.353659,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2113,7 +2113,7 @@
       "id": "evidence:ca-bc-mu-2-3-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 91,
-      "normalizedValue": 0.853659,
+      "normalizedValue": 0.634146,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2137,7 +2137,7 @@
       "id": "evidence:ca-bc-mu-2-3-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 240,
-      "normalizedValue": 0.853659,
+      "normalizedValue": 0.417073,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2233,7 +2233,7 @@
       "id": "evidence:ca-bc-mu-2-4-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 34,
-      "normalizedValue": 0.521951,
+      "normalizedValue": 0.37561,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2257,7 +2257,7 @@
       "id": "evidence:ca-bc-mu-2-4-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 143,
-      "normalizedValue": 0.521951,
+      "normalizedValue": 0.302439,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2353,7 +2353,7 @@
       "id": "evidence:ca-bc-mu-2-5-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 60,
-      "normalizedValue": 0.741463,
+      "normalizedValue": 0.539024,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2377,7 +2377,7 @@
       "id": "evidence:ca-bc-mu-2-5-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 387,
-      "normalizedValue": 0.741463,
+      "normalizedValue": 0.560976,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2473,7 +2473,7 @@
       "id": "evidence:ca-bc-mu-2-6-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 62,
-      "normalizedValue": 0.521951,
+      "normalizedValue": 0.55122,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2497,7 +2497,7 @@
       "id": "evidence:ca-bc-mu-2-6-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 275,
-      "normalizedValue": 0.521951,
+      "normalizedValue": 0.458537,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2593,7 +2593,7 @@
       "id": "evidence:ca-bc-mu-2-7-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 34,
-      "normalizedValue": 0.407317,
+      "normalizedValue": 0.37561,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2617,7 +2617,7 @@
       "id": "evidence:ca-bc-mu-2-7-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 113,
-      "normalizedValue": 0.407317,
+      "normalizedValue": 0.24878,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2713,7 +2713,7 @@
       "id": "evidence:ca-bc-mu-2-8-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 63,
-      "normalizedValue": 0.621951,
+      "normalizedValue": 0.556098,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2737,7 +2737,7 @@
       "id": "evidence:ca-bc-mu-2-8-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 366,
-      "normalizedValue": 0.621951,
+      "normalizedValue": 0.526829,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2833,7 +2833,7 @@
       "id": "evidence:ca-bc-mu-2-9-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 27,
-      "normalizedValue": 0.468293,
+      "normalizedValue": 0.285366,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2857,7 +2857,7 @@
       "id": "evidence:ca-bc-mu-2-9-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 123,
-      "normalizedValue": 0.468293,
+      "normalizedValue": 0.263415,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2953,7 +2953,7 @@
       "id": "evidence:ca-bc-mu-2-10-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 16,
-      "normalizedValue": 0.358537,
+      "normalizedValue": 0.202439,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2977,7 +2977,7 @@
       "id": "evidence:ca-bc-mu-2-10-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 68,
-      "normalizedValue": 0.358537,
+      "normalizedValue": 0.146341,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3073,7 +3073,7 @@
       "id": "evidence:ca-bc-mu-2-11-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 85,
-      "normalizedValue": 0.621951,
+      "normalizedValue": 0.617073,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3097,7 +3097,7 @@
       "id": "evidence:ca-bc-mu-2-11-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 478,
-      "normalizedValue": 0.621951,
+      "normalizedValue": 0.609756,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3193,7 +3193,7 @@
       "id": "evidence:ca-bc-mu-2-12-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 51,
-      "normalizedValue": 0.468293,
+      "normalizedValue": 0.478049,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3217,7 +3217,7 @@
       "id": "evidence:ca-bc-mu-2-12-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 369,
-      "normalizedValue": 0.468293,
+      "normalizedValue": 0.541463,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3313,7 +3313,7 @@
       "id": "evidence:ca-bc-mu-2-13-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 11,
-      "normalizedValue": 0.407317,
+      "normalizedValue": 0.143902,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3337,7 +3337,7 @@
       "id": "evidence:ca-bc-mu-2-13-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 22,
-      "normalizedValue": 0.407317,
+      "normalizedValue": 0.070732,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3433,7 +3433,7 @@
       "id": "evidence:ca-bc-mu-2-17-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 80,
-      "normalizedValue": 0.621951,
+      "normalizedValue": 0.6,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3457,7 +3457,7 @@
       "id": "evidence:ca-bc-mu-2-17-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 194,
-      "normalizedValue": 0.621951,
+      "normalizedValue": 0.353659,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3553,7 +3553,7 @@
       "id": "evidence:ca-bc-mu-2-18-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 114,
-      "normalizedValue": 0.756098,
+      "normalizedValue": 0.741463,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3577,7 +3577,7 @@
       "id": "evidence:ca-bc-mu-2-18-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 330,
-      "normalizedValue": 0.756098,
+      "normalizedValue": 0.507317,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3673,7 +3673,7 @@
       "id": "evidence:ca-bc-mu-2-19-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 57,
-      "normalizedValue": 0.468293,
+      "normalizedValue": 0.517073,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3697,7 +3697,7 @@
       "id": "evidence:ca-bc-mu-2-19-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 278,
-      "normalizedValue": 0.468293,
+      "normalizedValue": 0.463415,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3793,7 +3793,7 @@
       "id": "evidence:ca-bc-mu-3-12-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 156,
-      "normalizedValue": 0.887805,
+      "normalizedValue": 0.819512,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3817,7 +3817,7 @@
       "id": "evidence:ca-bc-mu-3-12-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1001,
-      "normalizedValue": 0.887805,
+      "normalizedValue": 0.8,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3913,7 +3913,7 @@
       "id": "evidence:ca-bc-mu-3-13-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 248,
-      "normalizedValue": 0.878049,
+      "normalizedValue": 0.956098,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3937,7 +3937,7 @@
       "id": "evidence:ca-bc-mu-3-13-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1351,
-      "normalizedValue": 0.878049,
+      "normalizedValue": 0.897561,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4033,7 +4033,7 @@
       "id": "evidence:ca-bc-mu-3-14-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 108,
-      "normalizedValue": 0.507317,
+      "normalizedValue": 0.704878,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4057,7 +4057,7 @@
       "id": "evidence:ca-bc-mu-3-14-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 327,
-      "normalizedValue": 0.507317,
+      "normalizedValue": 0.495122,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4153,7 +4153,7 @@
       "id": "evidence:ca-bc-mu-3-15-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 40,
-      "normalizedValue": 0.646341,
+      "normalizedValue": 0.414634,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4177,7 +4177,7 @@
       "id": "evidence:ca-bc-mu-3-15-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 234,
-      "normalizedValue": 0.646341,
+      "normalizedValue": 0.395122,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4273,7 +4273,7 @@
       "id": "evidence:ca-bc-mu-3-16-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 39,
-      "normalizedValue": 0.719512,
+      "normalizedValue": 0.407317,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4297,7 +4297,7 @@
       "id": "evidence:ca-bc-mu-3-16-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 254,
-      "normalizedValue": 0.719512,
+      "normalizedValue": 0.429268,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4393,7 +4393,7 @@
       "id": "evidence:ca-bc-mu-3-17-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 150,
-      "normalizedValue": 0.792683,
+      "normalizedValue": 0.814634,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4417,7 +4417,7 @@
       "id": "evidence:ca-bc-mu-3-17-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1019,
-      "normalizedValue": 0.792683,
+      "normalizedValue": 0.804878,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4513,7 +4513,7 @@
       "id": "evidence:ca-bc-mu-3-18-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 173,
-      "normalizedValue": 0.441463,
+      "normalizedValue": 0.858537,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4537,7 +4537,7 @@
       "id": "evidence:ca-bc-mu-3-18-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 705,
-      "normalizedValue": 0.441463,
+      "normalizedValue": 0.717073,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4633,7 +4633,7 @@
       "id": "evidence:ca-bc-mu-3-19-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 173,
-      "normalizedValue": 0.407317,
+      "normalizedValue": 0.858537,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4657,7 +4657,7 @@
       "id": "evidence:ca-bc-mu-3-19-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1379,
-      "normalizedValue": 0.407317,
+      "normalizedValue": 0.902439,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4753,7 +4753,7 @@
       "id": "evidence:ca-bc-mu-3-20-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 101,
-      "normalizedValue": 0.546341,
+      "normalizedValue": 0.678049,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4777,7 +4777,7 @@
       "id": "evidence:ca-bc-mu-3-20-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 473,
-      "normalizedValue": 0.546341,
+      "normalizedValue": 0.602439,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4873,7 +4873,7 @@
       "id": "evidence:ca-bc-mu-3-26-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 228,
-      "normalizedValue": 0.921951,
+      "normalizedValue": 0.934146,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4897,7 +4897,7 @@
       "id": "evidence:ca-bc-mu-3-26-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1672,
-      "normalizedValue": 0.921951,
+      "normalizedValue": 0.936585,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4993,7 +4993,7 @@
       "id": "evidence:ca-bc-mu-3-27-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 173,
-      "normalizedValue": 0.907317,
+      "normalizedValue": 0.858537,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5017,7 +5017,7 @@
       "id": "evidence:ca-bc-mu-3-27-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1288,
-      "normalizedValue": 0.907317,
+      "normalizedValue": 0.873171,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5113,7 +5113,7 @@
       "id": "evidence:ca-bc-mu-3-28-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 146,
-      "normalizedValue": 0.897561,
+      "normalizedValue": 0.809756,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5137,7 +5137,7 @@
       "id": "evidence:ca-bc-mu-3-28-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 637,
-      "normalizedValue": 0.897561,
+      "normalizedValue": 0.687805,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5233,7 +5233,7 @@
       "id": "evidence:ca-bc-mu-3-29-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 169,
-      "normalizedValue": 0.868293,
+      "normalizedValue": 0.841463,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5257,7 +5257,7 @@
       "id": "evidence:ca-bc-mu-3-29-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1133,
-      "normalizedValue": 0.868293,
+      "normalizedValue": 0.829268,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5353,7 +5353,7 @@
       "id": "evidence:ca-bc-mu-3-30-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 264,
-      "normalizedValue": 0.873171,
+      "normalizedValue": 0.965854,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5377,7 +5377,7 @@
       "id": "evidence:ca-bc-mu-3-30-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1198,
-      "normalizedValue": 0.873171,
+      "normalizedValue": 0.858537,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5473,7 +5473,7 @@
       "id": "evidence:ca-bc-mu-3-31-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 165,
-      "normalizedValue": 0.826829,
+      "normalizedValue": 0.829268,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5497,7 +5497,7 @@
       "id": "evidence:ca-bc-mu-3-31-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1104,
-      "normalizedValue": 0.826829,
+      "normalizedValue": 0.819512,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5593,7 +5593,7 @@
       "id": "evidence:ca-bc-mu-3-32-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 187,
-      "normalizedValue": 0.956098,
+      "normalizedValue": 0.880488,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5617,7 +5617,7 @@
       "id": "evidence:ca-bc-mu-3-32-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 799,
-      "normalizedValue": 0.956098,
+      "normalizedValue": 0.736585,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5713,7 +5713,7 @@
       "id": "evidence:ca-bc-mu-3-33-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 52,
-      "normalizedValue": 0.687805,
+      "normalizedValue": 0.487805,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5737,7 +5737,7 @@
       "id": "evidence:ca-bc-mu-3-33-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 363,
-      "normalizedValue": 0.687805,
+      "normalizedValue": 0.517073,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5833,7 +5833,7 @@
       "id": "evidence:ca-bc-mu-3-35-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 35,
-      "normalizedValue": 0.707317,
+      "normalizedValue": 0.387805,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5857,7 +5857,7 @@
       "id": "evidence:ca-bc-mu-3-35-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 197,
-      "normalizedValue": 0.707317,
+      "normalizedValue": 0.365854,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5953,7 +5953,7 @@
       "id": "evidence:ca-bc-mu-3-36-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 98,
-      "normalizedValue": 0.687805,
+      "normalizedValue": 0.665854,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5977,7 +5977,7 @@
       "id": "evidence:ca-bc-mu-3-36-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 580,
-      "normalizedValue": 0.687805,
+      "normalizedValue": 0.673171,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6073,7 +6073,7 @@
       "id": "evidence:ca-bc-mu-3-37-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 115,
-      "normalizedValue": 0.897561,
+      "normalizedValue": 0.75122,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6097,7 +6097,7 @@
       "id": "evidence:ca-bc-mu-3-37-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 845,
-      "normalizedValue": 0.897561,
+      "normalizedValue": 0.760976,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6193,7 +6193,7 @@
       "id": "evidence:ca-bc-mu-3-38-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 59,
-      "normalizedValue": 0.546341,
+      "normalizedValue": 0.529268,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6217,7 +6217,7 @@
       "id": "evidence:ca-bc-mu-3-38-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 272,
-      "normalizedValue": 0.546341,
+      "normalizedValue": 0.453659,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6313,7 +6313,7 @@
       "id": "evidence:ca-bc-mu-3-39-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 89,
-      "normalizedValue": 0.756098,
+      "normalizedValue": 0.629268,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6337,7 +6337,7 @@
       "id": "evidence:ca-bc-mu-3-39-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 409,
-      "normalizedValue": 0.756098,
+      "normalizedValue": 0.570732,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6433,7 +6433,7 @@
       "id": "evidence:ca-bc-mu-3-40-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 41,
-      "normalizedValue": 0.621951,
+      "normalizedValue": 0.419512,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6457,7 +6457,7 @@
       "id": "evidence:ca-bc-mu-3-40-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 196,
-      "normalizedValue": 0.621951,
+      "normalizedValue": 0.360976,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6553,7 +6553,7 @@
       "id": "evidence:ca-bc-mu-3-41-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 30,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.331707,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6577,7 +6577,7 @@
       "id": "evidence:ca-bc-mu-3-41-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 186,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.326829,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6673,7 +6673,7 @@
       "id": "evidence:ca-bc-mu-3-42-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 24,
-      "normalizedValue": 0.182927,
+      "normalizedValue": 0.256098,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6697,7 +6697,7 @@
       "id": "evidence:ca-bc-mu-3-42-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 152,
-      "normalizedValue": 0.182927,
+      "normalizedValue": 0.307317,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6793,7 +6793,7 @@
       "id": "evidence:ca-bc-mu-3-43-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 12,
-      "normalizedValue": 0.278049,
+      "normalizedValue": 0.163415,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6817,7 +6817,7 @@
       "id": "evidence:ca-bc-mu-3-43-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 30,
-      "normalizedValue": 0.278049,
+      "normalizedValue": 0.095122,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6913,7 +6913,7 @@
       "id": "evidence:ca-bc-mu-3-44-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 6,
-      "normalizedValue": 0.278049,
+      "normalizedValue": 0.082927,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6937,7 +6937,7 @@
       "id": "evidence:ca-bc-mu-3-44-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 17,
-      "normalizedValue": 0.278049,
+      "normalizedValue": 0.058537,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7033,7 +7033,7 @@
       "id": "evidence:ca-bc-mu-3-46-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 11,
-      "normalizedValue": 0.278049,
+      "normalizedValue": 0.143902,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7057,7 +7057,7 @@
       "id": "evidence:ca-bc-mu-3-46-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 62,
-      "normalizedValue": 0.278049,
+      "normalizedValue": 0.136585,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7153,7 +7153,7 @@
       "id": "evidence:ca-bc-mu-4-1-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 59,
-      "normalizedValue": 0.441463,
+      "normalizedValue": 0.529268,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7177,7 +7177,7 @@
       "id": "evidence:ca-bc-mu-4-1-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 702,
-      "normalizedValue": 0.441463,
+      "normalizedValue": 0.707317,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7273,7 +7273,7 @@
       "id": "evidence:ca-bc-mu-4-2-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 61,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.546341,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7297,7 +7297,7 @@
       "id": "evidence:ca-bc-mu-4-2-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 463,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.595122,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7393,7 +7393,7 @@
       "id": "evidence:ca-bc-mu-4-3-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 137,
-      "normalizedValue": 0.731707,
+      "normalizedValue": 0.804878,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7417,7 +7417,7 @@
       "id": "evidence:ca-bc-mu-4-3-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1060,
-      "normalizedValue": 0.731707,
+      "normalizedValue": 0.809756,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7513,7 +7513,7 @@
       "id": "evidence:ca-bc-mu-4-4-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 47,
-      "normalizedValue": 0.278049,
+      "normalizedValue": 0.458537,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7537,7 +7537,7 @@
       "id": "evidence:ca-bc-mu-4-4-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 306,
-      "normalizedValue": 0.278049,
+      "normalizedValue": 0.482927,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7633,7 +7633,7 @@
       "id": "evidence:ca-bc-mu-4-5-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 75,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.585366,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7657,7 +7657,7 @@
       "id": "evidence:ca-bc-mu-4-5-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 734,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.726829,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7753,7 +7753,7 @@
       "id": "evidence:ca-bc-mu-4-6-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 133,
-      "normalizedValue": 0.358537,
+      "normalizedValue": 0.797561,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7777,7 +7777,7 @@
       "id": "evidence:ca-bc-mu-4-6-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1484,
-      "normalizedValue": 0.358537,
+      "normalizedValue": 0.921951,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7873,7 +7873,7 @@
       "id": "evidence:ca-bc-mu-4-7-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 64,
-      "normalizedValue": 0.621951,
+      "normalizedValue": 0.563415,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7897,7 +7897,7 @@
       "id": "evidence:ca-bc-mu-4-7-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 625,
-      "normalizedValue": 0.621951,
+      "normalizedValue": 0.682927,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7993,7 +7993,7 @@
       "id": "evidence:ca-bc-mu-4-8-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 104,
-      "normalizedValue": 0.595122,
+      "normalizedValue": 0.687805,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8017,7 +8017,7 @@
       "id": "evidence:ca-bc-mu-4-8-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 513,
-      "normalizedValue": 0.595122,
+      "normalizedValue": 0.634146,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8113,7 +8113,7 @@
       "id": "evidence:ca-bc-mu-4-9-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 51,
-      "normalizedValue": 0.621951,
+      "normalizedValue": 0.478049,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8137,7 +8137,7 @@
       "id": "evidence:ca-bc-mu-4-9-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 388,
-      "normalizedValue": 0.621951,
+      "normalizedValue": 0.565854,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8233,7 +8233,7 @@
       "id": "evidence:ca-bc-mu-4-14-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 17,
-      "normalizedValue": 0.153659,
+      "normalizedValue": 0.209756,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8257,7 +8257,7 @@
       "id": "evidence:ca-bc-mu-4-14-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 78,
-      "normalizedValue": 0.153659,
+      "normalizedValue": 0.170732,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8353,7 +8353,7 @@
       "id": "evidence:ca-bc-mu-4-15-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 38,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.4,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8377,7 +8377,7 @@
       "id": "evidence:ca-bc-mu-4-15-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 263,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.44878,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8473,7 +8473,7 @@
       "id": "evidence:ca-bc-mu-4-16-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 60,
-      "normalizedValue": 0.407317,
+      "normalizedValue": 0.539024,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8497,7 +8497,7 @@
       "id": "evidence:ca-bc-mu-4-16-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 473,
-      "normalizedValue": 0.407317,
+      "normalizedValue": 0.602439,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8593,7 +8593,7 @@
       "id": "evidence:ca-bc-mu-4-17-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 16,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.202439,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8617,7 +8617,7 @@
       "id": "evidence:ca-bc-mu-4-17-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 104,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.239024,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8713,7 +8713,7 @@
       "id": "evidence:ca-bc-mu-4-18-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 53,
-      "normalizedValue": 0.485366,
+      "normalizedValue": 0.492683,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8737,7 +8737,7 @@
       "id": "evidence:ca-bc-mu-4-18-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 329,
-      "normalizedValue": 0.485366,
+      "normalizedValue": 0.502439,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8833,7 +8833,7 @@
       "id": "evidence:ca-bc-mu-4-19-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.097561,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8857,7 +8857,7 @@
       "id": "evidence:ca-bc-mu-4-19-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 39,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.112195,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8953,7 +8953,7 @@
       "id": "evidence:ca-bc-mu-4-20-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 186,
-      "normalizedValue": 0.385366,
+      "normalizedValue": 0.873171,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8977,7 +8977,7 @@
       "id": "evidence:ca-bc-mu-4-20-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1588,
-      "normalizedValue": 0.385366,
+      "normalizedValue": 0.931707,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9073,7 +9073,7 @@
       "id": "evidence:ca-bc-mu-4-21-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 49,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.468293,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9097,7 +9097,7 @@
       "id": "evidence:ca-bc-mu-4-21-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 909,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.780488,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9193,7 +9193,7 @@
       "id": "evidence:ca-bc-mu-4-22-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 97,
-      "normalizedValue": 0.407317,
+      "normalizedValue": 0.658537,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9217,7 +9217,7 @@
       "id": "evidence:ca-bc-mu-4-22-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 830,
-      "normalizedValue": 0.407317,
+      "normalizedValue": 0.75122,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9313,7 +9313,7 @@
       "id": "evidence:ca-bc-mu-4-23-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 228,
-      "normalizedValue": 0.546341,
+      "normalizedValue": 0.934146,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9337,7 +9337,7 @@
       "id": "evidence:ca-bc-mu-4-23-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 4068,
-      "normalizedValue": 0.546341,
+      "normalizedValue": 0.995122,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9433,7 +9433,7 @@
       "id": "evidence:ca-bc-mu-4-24-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 31,
-      "normalizedValue": 0.195122,
+      "normalizedValue": 0.346341,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9457,7 +9457,7 @@
       "id": "evidence:ca-bc-mu-4-24-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 191,
-      "normalizedValue": 0.195122,
+      "normalizedValue": 0.343902,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9553,7 +9553,7 @@
       "id": "evidence:ca-bc-mu-4-25-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 29,
-      "normalizedValue": 0.441463,
+      "normalizedValue": 0.312195,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9577,7 +9577,7 @@
       "id": "evidence:ca-bc-mu-4-25-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 300,
-      "normalizedValue": 0.441463,
+      "normalizedValue": 0.473171,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9673,7 +9673,7 @@
       "id": "evidence:ca-bc-mu-4-26-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 58,
-      "normalizedValue": 0.153659,
+      "normalizedValue": 0.521951,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9697,7 +9697,7 @@
       "id": "evidence:ca-bc-mu-4-26-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 301,
-      "normalizedValue": 0.153659,
+      "normalizedValue": 0.478049,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9793,7 +9793,7 @@
       "id": "evidence:ca-bc-mu-4-27-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 20,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.226829,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9817,7 +9817,7 @@
       "id": "evidence:ca-bc-mu-4-27-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 98,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.217073,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9913,7 +9913,7 @@
       "id": "evidence:ca-bc-mu-4-28-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.068293,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9937,7 +9937,7 @@
       "id": "evidence:ca-bc-mu-4-28-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 22,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.070732,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10033,7 +10033,7 @@
       "id": "evidence:ca-bc-mu-4-29-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 11,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.143902,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10057,7 +10057,7 @@
       "id": "evidence:ca-bc-mu-4-29-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 27,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.082927,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10177,7 +10177,7 @@
       "id": "evidence:ca-bc-mu-4-31-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 232,
-      "normalizedValue": 0.407317,
+      "normalizedValue": 0.385366,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10273,7 +10273,7 @@
       "id": "evidence:ca-bc-mu-4-32-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 67,
-      "normalizedValue": 0.595122,
+      "normalizedValue": 0.57561,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10297,7 +10297,7 @@
       "id": "evidence:ca-bc-mu-4-32-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 327,
-      "normalizedValue": 0.595122,
+      "normalizedValue": 0.495122,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10393,7 +10393,7 @@
       "id": "evidence:ca-bc-mu-4-33-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 28,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.297561,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10417,7 +10417,7 @@
       "id": "evidence:ca-bc-mu-4-33-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 90,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.209756,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10513,7 +10513,7 @@
       "id": "evidence:ca-bc-mu-4-34-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 55,
-      "normalizedValue": 0.707317,
+      "normalizedValue": 0.502439,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10537,7 +10537,7 @@
       "id": "evidence:ca-bc-mu-4-34-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 252,
-      "normalizedValue": 0.707317,
+      "normalizedValue": 0.42439,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10633,7 +10633,7 @@
       "id": "evidence:ca-bc-mu-4-35-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 30,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.331707,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10657,7 +10657,7 @@
       "id": "evidence:ca-bc-mu-4-35-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 235,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.4,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10753,7 +10753,7 @@
       "id": "evidence:ca-bc-mu-4-36-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 26,
-      "normalizedValue": 0.495122,
+      "normalizedValue": 0.278049,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10777,7 +10777,7 @@
       "id": "evidence:ca-bc-mu-4-36-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 130,
-      "normalizedValue": 0.495122,
+      "normalizedValue": 0.273171,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10873,7 +10873,7 @@
       "id": "evidence:ca-bc-mu-4-37-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 6,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.082927,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10897,7 +10897,7 @@
       "id": "evidence:ca-bc-mu-4-37-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 23,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.078049,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10993,7 +10993,7 @@
       "id": "evidence:ca-bc-mu-4-38-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 85,
-      "normalizedValue": 0.565854,
+      "normalizedValue": 0.617073,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11017,7 +11017,7 @@
       "id": "evidence:ca-bc-mu-4-38-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 481,
-      "normalizedValue": 0.565854,
+      "normalizedValue": 0.614634,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11113,7 +11113,7 @@
       "id": "evidence:ca-bc-mu-4-39-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 20,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.226829,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11137,7 +11137,7 @@
       "id": "evidence:ca-bc-mu-4-39-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 84,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.192683,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11233,7 +11233,7 @@
       "id": "evidence:ca-bc-mu-4-40-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 18,
-      "normalizedValue": 0.278049,
+      "normalizedValue": 0.214634,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11257,7 +11257,7 @@
       "id": "evidence:ca-bc-mu-4-40-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 36,
-      "normalizedValue": 0.278049,
+      "normalizedValue": 0.102439,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11353,7 +11353,7 @@
       "id": "evidence:ca-bc-mu-5-1-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 343,
-      "normalizedValue": 0.985366,
+      "normalizedValue": 0.990244,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11377,7 +11377,7 @@
       "id": "evidence:ca-bc-mu-5-1-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2827,
-      "normalizedValue": 0.985366,
+      "normalizedValue": 0.990244,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11593,7 +11593,7 @@
       "id": "evidence:ca-bc-mu-5-3-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 96,
-      "normalizedValue": 0.673171,
+      "normalizedValue": 0.653659,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11617,7 +11617,7 @@
       "id": "evidence:ca-bc-mu-5-3-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 507,
-      "normalizedValue": 0.673171,
+      "normalizedValue": 0.629268,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11713,7 +11713,7 @@
       "id": "evidence:ca-bc-mu-5-4-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 29,
-      "normalizedValue": 0.521951,
+      "normalizedValue": 0.312195,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11737,7 +11737,7 @@
       "id": "evidence:ca-bc-mu-5-4-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 191,
-      "normalizedValue": 0.521951,
+      "normalizedValue": 0.343902,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11833,7 +11833,7 @@
       "id": "evidence:ca-bc-mu-5-5-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 29,
-      "normalizedValue": 0.468293,
+      "normalizedValue": 0.312195,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11857,7 +11857,7 @@
       "id": "evidence:ca-bc-mu-5-5-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 240,
-      "normalizedValue": 0.468293,
+      "normalizedValue": 0.417073,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11953,7 +11953,7 @@
       "id": "evidence:ca-bc-mu-5-6-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 13,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.182927,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11977,7 +11977,7 @@
       "id": "evidence:ca-bc-mu-5-6-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 132,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.280488,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12073,7 +12073,7 @@
       "id": "evidence:ca-bc-mu-5-9-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 2,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.029268,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12097,7 +12097,7 @@
       "id": "evidence:ca-bc-mu-5-9-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 8,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.039024,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12193,7 +12193,7 @@
       "id": "evidence:ca-bc-mu-5-11-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.009756,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12217,7 +12217,7 @@
       "id": "evidence:ca-bc-mu-5-11-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.007317,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12313,7 +12313,7 @@
       "id": "evidence:ca-bc-mu-5-12-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 56,
-      "normalizedValue": 0.802439,
+      "normalizedValue": 0.509756,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12337,7 +12337,7 @@
       "id": "evidence:ca-bc-mu-5-12-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 238,
-      "normalizedValue": 0.802439,
+      "normalizedValue": 0.409756,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12433,7 +12433,7 @@
       "id": "evidence:ca-bc-mu-5-13-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 278,
-      "normalizedValue": 0.995122,
+      "normalizedValue": 0.97561,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12457,7 +12457,7 @@
       "id": "evidence:ca-bc-mu-5-13-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1895,
-      "normalizedValue": 0.995122,
+      "normalizedValue": 0.946341,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12553,7 +12553,7 @@
       "id": "evidence:ca-bc-mu-5-14-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 116,
-      "normalizedValue": 0.819512,
+      "normalizedValue": 0.758537,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12577,7 +12577,7 @@
       "id": "evidence:ca-bc-mu-5-14-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 560,
-      "normalizedValue": 0.819512,
+      "normalizedValue": 0.668293,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12673,7 +12673,7 @@
       "id": "evidence:ca-bc-mu-5-15-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 105,
-      "normalizedValue": 0.836585,
+      "normalizedValue": 0.697561,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12697,7 +12697,7 @@
       "id": "evidence:ca-bc-mu-5-15-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 547,
-      "normalizedValue": 0.836585,
+      "normalizedValue": 0.64878,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12793,7 +12793,7 @@
       "id": "evidence:ca-bc-mu-6-1-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 30,
-      "normalizedValue": 0.707317,
+      "normalizedValue": 0.331707,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12817,7 +12817,7 @@
       "id": "evidence:ca-bc-mu-6-1-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 187,
-      "normalizedValue": 0.707317,
+      "normalizedValue": 0.331707,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12913,7 +12913,7 @@
       "id": "evidence:ca-bc-mu-6-2-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 9,
-      "normalizedValue": 0.278049,
+      "normalizedValue": 0.112195,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12937,7 +12937,7 @@
       "id": "evidence:ca-bc-mu-6-2-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 68,
-      "normalizedValue": 0.278049,
+      "normalizedValue": 0.146341,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13033,7 +13033,7 @@
       "id": "evidence:ca-bc-mu-6-3-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 42,
-      "normalizedValue": 0.37561,
+      "normalizedValue": 0.426829,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13057,7 +13057,7 @@
       "id": "evidence:ca-bc-mu-6-3-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 223,
-      "normalizedValue": 0.37561,
+      "normalizedValue": 0.380488,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13153,7 +13153,7 @@
       "id": "evidence:ca-bc-mu-6-4-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 181,
-      "normalizedValue": 0.965854,
+      "normalizedValue": 0.868293,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13177,7 +13177,7 @@
       "id": "evidence:ca-bc-mu-6-4-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 996,
-      "normalizedValue": 0.965854,
+      "normalizedValue": 0.795122,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13273,7 +13273,7 @@
       "id": "evidence:ca-bc-mu-6-5-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 51,
-      "normalizedValue": 0.780488,
+      "normalizedValue": 0.478049,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13297,7 +13297,7 @@
       "id": "evidence:ca-bc-mu-6-5-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 233,
-      "normalizedValue": 0.780488,
+      "normalizedValue": 0.390244,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13393,7 +13393,7 @@
       "id": "evidence:ca-bc-mu-6-6-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 45,
-      "normalizedValue": 0.468293,
+      "normalizedValue": 0.441463,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13417,7 +13417,7 @@
       "id": "evidence:ca-bc-mu-6-6-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 312,
-      "normalizedValue": 0.468293,
+      "normalizedValue": 0.487805,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13513,7 +13513,7 @@
       "id": "evidence:ca-bc-mu-6-7-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 14,
-      "normalizedValue": 0.153659,
+      "normalizedValue": 0.195122,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13537,7 +13537,7 @@
       "id": "evidence:ca-bc-mu-6-7-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 86,
-      "normalizedValue": 0.153659,
+      "normalizedValue": 0.204878,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13633,7 +13633,7 @@
       "id": "evidence:ca-bc-mu-6-8-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 259,
-      "normalizedValue": 0.980488,
+      "normalizedValue": 0.960976,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13657,7 +13657,7 @@
       "id": "evidence:ca-bc-mu-6-8-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1674,
-      "normalizedValue": 0.980488,
+      "normalizedValue": 0.941463,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13753,7 +13753,7 @@
       "id": "evidence:ca-bc-mu-6-9-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 202,
-      "normalizedValue": 0.914634,
+      "normalizedValue": 0.92439,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13777,7 +13777,7 @@
       "id": "evidence:ca-bc-mu-6-9-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 790,
-      "normalizedValue": 0.914634,
+      "normalizedValue": 0.731707,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13873,7 +13873,7 @@
       "id": "evidence:ca-bc-mu-6-10-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 30,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.331707,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13897,7 +13897,7 @@
       "id": "evidence:ca-bc-mu-6-10-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 128,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.268293,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13993,7 +13993,7 @@
       "id": "evidence:ca-bc-mu-6-11-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 23,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.241463,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14017,7 +14017,7 @@
       "id": "evidence:ca-bc-mu-6-11-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 116,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.253659,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14113,7 +14113,7 @@
       "id": "evidence:ca-bc-mu-6-14-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 37,
-      "normalizedValue": 0.768293,
+      "normalizedValue": 0.395122,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14137,7 +14137,7 @@
       "id": "evidence:ca-bc-mu-6-14-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 163,
-      "normalizedValue": 0.768293,
+      "normalizedValue": 0.312195,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14233,7 +14233,7 @@
       "id": "evidence:ca-bc-mu-6-15-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 99,
-      "normalizedValue": 0.780488,
+      "normalizedValue": 0.673171,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14257,7 +14257,7 @@
       "id": "evidence:ca-bc-mu-6-15-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 484,
-      "normalizedValue": 0.780488,
+      "normalizedValue": 0.619512,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14353,7 +14353,7 @@
       "id": "evidence:ca-bc-mu-6-16-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 24,
-      "normalizedValue": 0.546341,
+      "normalizedValue": 0.256098,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14377,7 +14377,7 @@
       "id": "evidence:ca-bc-mu-6-16-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 80,
-      "normalizedValue": 0.546341,
+      "normalizedValue": 0.180488,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14473,7 +14473,7 @@
       "id": "evidence:ca-bc-mu-6-17-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 21,
-      "normalizedValue": 0.507317,
+      "normalizedValue": 0.234146,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14497,7 +14497,7 @@
       "id": "evidence:ca-bc-mu-6-17-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 51,
-      "normalizedValue": 0.507317,
+      "normalizedValue": 0.117073,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14593,7 +14593,7 @@
       "id": "evidence:ca-bc-mu-6-18-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 3,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.046341,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14617,7 +14617,7 @@
       "id": "evidence:ca-bc-mu-6-18-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 28,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.087805,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14713,7 +14713,7 @@
       "id": "evidence:ca-bc-mu-6-19-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 10,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.126829,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14737,7 +14737,7 @@
       "id": "evidence:ca-bc-mu-6-19-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 68,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.146341,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14833,7 +14833,7 @@
       "id": "evidence:ca-bc-mu-6-20-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 9,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.112195,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14857,7 +14857,7 @@
       "id": "evidence:ca-bc-mu-6-20-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 85,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.2,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14953,7 +14953,7 @@
       "id": "evidence:ca-bc-mu-6-21-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.009756,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14977,7 +14977,7 @@
       "id": "evidence:ca-bc-mu-6-21-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 6,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.031707,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15073,7 +15073,7 @@
       "id": "evidence:ca-bc-mu-6-22-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.068293,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15097,7 +15097,7 @@
       "id": "evidence:ca-bc-mu-6-22-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 10,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.043902,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15193,7 +15193,7 @@
       "id": "evidence:ca-bc-mu-6-23-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 13,
-      "normalizedValue": 0.278049,
+      "normalizedValue": 0.182927,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15217,7 +15217,7 @@
       "id": "evidence:ca-bc-mu-6-23-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 99,
-      "normalizedValue": 0.278049,
+      "normalizedValue": 0.22439,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15313,7 +15313,7 @@
       "id": "evidence:ca-bc-mu-6-24-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 12,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.163415,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15337,7 +15337,7 @@
       "id": "evidence:ca-bc-mu-6-24-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 103,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.234146,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15433,7 +15433,7 @@
       "id": "evidence:ca-bc-mu-6-25-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 12,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.163415,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15457,7 +15457,7 @@
       "id": "evidence:ca-bc-mu-6-25-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 440,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.585366,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15553,7 +15553,7 @@
       "id": "evidence:ca-bc-mu-6-26-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 3,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.046341,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15577,7 +15577,7 @@
       "id": "evidence:ca-bc-mu-6-26-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 19,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.063415,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15673,7 +15673,7 @@
       "id": "evidence:ca-bc-mu-6-27-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 6,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.082927,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15697,7 +15697,7 @@
       "id": "evidence:ca-bc-mu-6-27-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 38,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.107317,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15793,7 +15793,7 @@
       "id": "evidence:ca-bc-mu-6-30-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 42,
-      "normalizedValue": 0.578049,
+      "normalizedValue": 0.426829,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15817,7 +15817,7 @@
       "id": "evidence:ca-bc-mu-6-30-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 132,
-      "normalizedValue": 0.578049,
+      "normalizedValue": 0.280488,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15913,7 +15913,7 @@
       "id": "evidence:ca-bc-mu-7-2-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 10,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.126829,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15937,7 +15937,7 @@
       "id": "evidence:ca-bc-mu-7-2-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 72,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.160976,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16033,7 +16033,7 @@
       "id": "evidence:ca-bc-mu-7-3-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 13,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.182927,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16057,7 +16057,7 @@
       "id": "evidence:ca-bc-mu-7-3-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 58,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.12439,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16153,7 +16153,7 @@
       "id": "evidence:ca-bc-mu-7-4-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 12,
-      "normalizedValue": 0.153659,
+      "normalizedValue": 0.163415,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16177,7 +16177,7 @@
       "id": "evidence:ca-bc-mu-7-4-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 100,
-      "normalizedValue": 0.153659,
+      "normalizedValue": 0.229268,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16273,7 +16273,7 @@
       "id": "evidence:ca-bc-mu-7-5-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 25,
-      "normalizedValue": 0.485366,
+      "normalizedValue": 0.270732,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16297,7 +16297,7 @@
       "id": "evidence:ca-bc-mu-7-5-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 84,
-      "normalizedValue": 0.485366,
+      "normalizedValue": 0.192683,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16393,7 +16393,7 @@
       "id": "evidence:ca-bc-mu-7-6-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 35,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.387805,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16417,7 +16417,7 @@
       "id": "evidence:ca-bc-mu-7-6-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 550,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.653659,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16513,7 +16513,7 @@
       "id": "evidence:ca-bc-mu-7-7-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 92,
-      "normalizedValue": 0.660976,
+      "normalizedValue": 0.639024,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16537,7 +16537,7 @@
       "id": "evidence:ca-bc-mu-7-7-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 582,
-      "normalizedValue": 0.660976,
+      "normalizedValue": 0.678049,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16633,7 +16633,7 @@
       "id": "evidence:ca-bc-mu-7-8-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 116,
-      "normalizedValue": 0.846341,
+      "normalizedValue": 0.758537,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16657,7 +16657,7 @@
       "id": "evidence:ca-bc-mu-7-8-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1244,
-      "normalizedValue": 0.846341,
+      "normalizedValue": 0.863415,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16753,7 +16753,7 @@
       "id": "evidence:ca-bc-mu-7-9-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 123,
-      "normalizedValue": 0.639024,
+      "normalizedValue": 0.773171,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16777,7 +16777,7 @@
       "id": "evidence:ca-bc-mu-7-9-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1172,
-      "normalizedValue": 0.639024,
+      "normalizedValue": 0.84878,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16873,7 +16873,7 @@
       "id": "evidence:ca-bc-mu-7-10-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 195,
-      "normalizedValue": 0.780488,
+      "normalizedValue": 0.912195,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16897,7 +16897,7 @@
       "id": "evidence:ca-bc-mu-7-10-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1392,
-      "normalizedValue": 0.780488,
+      "normalizedValue": 0.907317,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16993,7 +16993,7 @@
       "id": "evidence:ca-bc-mu-7-11-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 112,
-      "normalizedValue": 0.731707,
+      "normalizedValue": 0.726829,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17017,7 +17017,7 @@
       "id": "evidence:ca-bc-mu-7-11-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 861,
-      "normalizedValue": 0.731707,
+      "normalizedValue": 0.768293,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17113,7 +17113,7 @@
       "id": "evidence:ca-bc-mu-7-12-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 273,
-      "normalizedValue": 0.95122,
+      "normalizedValue": 0.970732,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17137,7 +17137,7 @@
       "id": "evidence:ca-bc-mu-7-12-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2005,
-      "normalizedValue": 0.95122,
+      "normalizedValue": 0.965854,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17233,7 +17233,7 @@
       "id": "evidence:ca-bc-mu-7-13-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 198,
-      "normalizedValue": 0.756098,
+      "normalizedValue": 0.917073,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17257,7 +17257,7 @@
       "id": "evidence:ca-bc-mu-7-13-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2185,
-      "normalizedValue": 0.756098,
+      "normalizedValue": 0.97561,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17353,7 +17353,7 @@
       "id": "evidence:ca-bc-mu-7-14-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 83,
-      "normalizedValue": 0.37561,
+      "normalizedValue": 0.609756,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17377,7 +17377,7 @@
       "id": "evidence:ca-bc-mu-7-14-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1255,
-      "normalizedValue": 0.37561,
+      "normalizedValue": 0.868293,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17473,7 +17473,7 @@
       "id": "evidence:ca-bc-mu-7-15-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 189,
-      "normalizedValue": 0.578049,
+      "normalizedValue": 0.897561,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17497,7 +17497,7 @@
       "id": "evidence:ca-bc-mu-7-15-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1960,
-      "normalizedValue": 0.578049,
+      "normalizedValue": 0.956098,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17593,7 +17593,7 @@
       "id": "evidence:ca-bc-mu-7-16-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 202,
-      "normalizedValue": 0.931707,
+      "normalizedValue": 0.92439,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17617,7 +17617,7 @@
       "id": "evidence:ca-bc-mu-7-16-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1161,
-      "normalizedValue": 0.931707,
+      "normalizedValue": 0.839024,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17713,7 +17713,7 @@
       "id": "evidence:ca-bc-mu-7-17-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 113,
-      "normalizedValue": 0.802439,
+      "normalizedValue": 0.731707,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17737,7 +17737,7 @@
       "id": "evidence:ca-bc-mu-7-17-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 557,
-      "normalizedValue": 0.802439,
+      "normalizedValue": 0.663415,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17833,7 +17833,7 @@
       "id": "evidence:ca-bc-mu-7-18-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 33,
-      "normalizedValue": 0.358537,
+      "normalizedValue": 0.363415,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17857,7 +17857,7 @@
       "id": "evidence:ca-bc-mu-7-18-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 257,
-      "normalizedValue": 0.358537,
+      "normalizedValue": 0.434146,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17953,7 +17953,7 @@
       "id": "evidence:ca-bc-mu-7-19-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 45,
-      "normalizedValue": 0.182927,
+      "normalizedValue": 0.441463,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17977,7 +17977,7 @@
       "id": "evidence:ca-bc-mu-7-19-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 379,
-      "normalizedValue": 0.182927,
+      "normalizedValue": 0.546341,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18073,7 +18073,7 @@
       "id": "evidence:ca-bc-mu-7-20-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 133,
-      "normalizedValue": 0.660976,
+      "normalizedValue": 0.797561,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18097,7 +18097,7 @@
       "id": "evidence:ca-bc-mu-7-20-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1482,
-      "normalizedValue": 0.660976,
+      "normalizedValue": 0.917073,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18193,7 +18193,7 @@
       "id": "evidence:ca-bc-mu-7-21-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 98,
-      "normalizedValue": 0.570732,
+      "normalizedValue": 0.665854,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18217,7 +18217,7 @@
       "id": "evidence:ca-bc-mu-7-21-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 861,
-      "normalizedValue": 0.570732,
+      "normalizedValue": 0.768293,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18313,7 +18313,7 @@
       "id": "evidence:ca-bc-mu-7-22-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 64,
-      "normalizedValue": 0.731707,
+      "normalizedValue": 0.563415,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18337,7 +18337,7 @@
       "id": "evidence:ca-bc-mu-7-22-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 439,
-      "normalizedValue": 0.731707,
+      "normalizedValue": 0.580488,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18433,7 +18433,7 @@
       "id": "evidence:ca-bc-mu-7-23-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 110,
-      "normalizedValue": 0.687805,
+      "normalizedValue": 0.714634,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18457,7 +18457,7 @@
       "id": "evidence:ca-bc-mu-7-23-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 917,
-      "normalizedValue": 0.687805,
+      "normalizedValue": 0.785366,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18553,7 +18553,7 @@
       "id": "evidence:ca-bc-mu-7-24-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 192,
-      "normalizedValue": 0.939024,
+      "normalizedValue": 0.902439,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18577,7 +18577,7 @@
       "id": "evidence:ca-bc-mu-7-24-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1319,
-      "normalizedValue": 0.939024,
+      "normalizedValue": 0.887805,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18673,7 +18673,7 @@
       "id": "evidence:ca-bc-mu-7-25-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 132,
-      "normalizedValue": 0.939024,
+      "normalizedValue": 0.790244,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18697,7 +18697,7 @@
       "id": "evidence:ca-bc-mu-7-25-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 808,
-      "normalizedValue": 0.939024,
+      "normalizedValue": 0.741463,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18793,7 +18793,7 @@
       "id": "evidence:ca-bc-mu-7-26-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 32,
-      "normalizedValue": 0.746341,
+      "normalizedValue": 0.353659,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18817,7 +18817,7 @@
       "id": "evidence:ca-bc-mu-7-26-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 141,
-      "normalizedValue": 0.746341,
+      "normalizedValue": 0.292683,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18913,7 +18913,7 @@
       "id": "evidence:ca-bc-mu-7-27-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 19,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.219512,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18937,7 +18937,7 @@
       "id": "evidence:ca-bc-mu-7-27-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 98,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.217073,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19033,7 +19033,7 @@
       "id": "evidence:ca-bc-mu-7-28-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 56,
-      "normalizedValue": 0.660976,
+      "normalizedValue": 0.509756,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19057,7 +19057,7 @@
       "id": "evidence:ca-bc-mu-7-28-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 443,
-      "normalizedValue": 0.660976,
+      "normalizedValue": 0.590244,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19153,7 +19153,7 @@
       "id": "evidence:ca-bc-mu-7-29-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 30,
-      "normalizedValue": 0.358537,
+      "normalizedValue": 0.331707,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19177,7 +19177,7 @@
       "id": "evidence:ca-bc-mu-7-29-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 167,
-      "normalizedValue": 0.358537,
+      "normalizedValue": 0.317073,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19273,7 +19273,7 @@
       "id": "evidence:ca-bc-mu-7-30-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 48,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.463415,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19297,7 +19297,7 @@
       "id": "evidence:ca-bc-mu-7-30-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 357,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.512195,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19393,7 +19393,7 @@
       "id": "evidence:ca-bc-mu-7-31-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 78,
-      "normalizedValue": 0.860976,
+      "normalizedValue": 0.595122,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19417,7 +19417,7 @@
       "id": "evidence:ca-bc-mu-7-31-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 368,
-      "normalizedValue": 0.860976,
+      "normalizedValue": 0.536585,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19513,7 +19513,7 @@
       "id": "evidence:ca-bc-mu-7-32-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 169,
-      "normalizedValue": 0.687805,
+      "normalizedValue": 0.841463,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19537,7 +19537,7 @@
       "id": "evidence:ca-bc-mu-7-32-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1550,
-      "normalizedValue": 0.687805,
+      "normalizedValue": 0.926829,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19633,7 +19633,7 @@
       "id": "evidence:ca-bc-mu-7-33-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 159,
-      "normalizedValue": 0.546341,
+      "normalizedValue": 0.82439,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19657,7 +19657,7 @@
       "id": "evidence:ca-bc-mu-7-33-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1348,
-      "normalizedValue": 0.546341,
+      "normalizedValue": 0.892683,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19753,7 +19753,7 @@
       "id": "evidence:ca-bc-mu-7-34-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 66,
-      "normalizedValue": 0.278049,
+      "normalizedValue": 0.570732,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19777,7 +19777,7 @@
       "id": "evidence:ca-bc-mu-7-34-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 677,
-      "normalizedValue": 0.278049,
+      "normalizedValue": 0.702439,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19873,7 +19873,7 @@
       "id": "evidence:ca-bc-mu-7-35-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 93,
-      "normalizedValue": 0.719512,
+      "normalizedValue": 0.643902,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19897,7 +19897,7 @@
       "id": "evidence:ca-bc-mu-7-35-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 899,
-      "normalizedValue": 0.719512,
+      "normalizedValue": 0.77561,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20017,7 +20017,7 @@
       "id": "evidence:ca-bc-mu-7-36-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 291,
-      "normalizedValue": 0.37561,
+      "normalizedValue": 0.468293,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20113,7 +20113,7 @@
       "id": "evidence:ca-bc-mu-7-37-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.097561,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20137,7 +20137,7 @@
       "id": "evidence:ca-bc-mu-7-37-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 69,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.156098,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20233,7 +20233,7 @@
       "id": "evidence:ca-bc-mu-7-38-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 81,
-      "normalizedValue": 0.768293,
+      "normalizedValue": 0.604878,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20257,7 +20257,7 @@
       "id": "evidence:ca-bc-mu-7-38-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 506,
-      "normalizedValue": 0.768293,
+      "normalizedValue": 0.62439,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20353,7 +20353,7 @@
       "id": "evidence:ca-bc-mu-7-40-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 2,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.029268,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20377,7 +20377,7 @@
       "id": "evidence:ca-bc-mu-7-40-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 5,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.021951,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20473,7 +20473,7 @@
       "id": "evidence:ca-bc-mu-7-41-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 4,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.058537,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20497,7 +20497,7 @@
       "id": "evidence:ca-bc-mu-7-41-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 30,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.095122,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20593,7 +20593,7 @@
       "id": "evidence:ca-bc-mu-7-42-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 28,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.297561,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20617,7 +20617,7 @@
       "id": "evidence:ca-bc-mu-7-42-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 137,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.287805,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20713,7 +20713,7 @@
       "id": "evidence:ca-bc-mu-7-43-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 32,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.353659,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20737,7 +20737,7 @@
       "id": "evidence:ca-bc-mu-7-43-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 262,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.441463,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20833,7 +20833,7 @@
       "id": "evidence:ca-bc-mu-7-44-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 24,
-      "normalizedValue": 0.278049,
+      "normalizedValue": 0.256098,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20857,7 +20857,7 @@
       "id": "evidence:ca-bc-mu-7-44-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 171,
-      "normalizedValue": 0.278049,
+      "normalizedValue": 0.321951,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20953,7 +20953,7 @@
       "id": "evidence:ca-bc-mu-7-45-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 24,
-      "normalizedValue": 0.441463,
+      "normalizedValue": 0.256098,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20977,7 +20977,7 @@
       "id": "evidence:ca-bc-mu-7-45-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 142,
-      "normalizedValue": 0.441463,
+      "normalizedValue": 0.297561,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -21097,7 +21097,7 @@
       "id": "evidence:ca-bc-mu-7-46-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 365,
-      "normalizedValue": 0.441463,
+      "normalizedValue": 0.521951,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -21193,7 +21193,7 @@
       "id": "evidence:ca-bc-mu-7-47-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 3,
-      "normalizedValue": 0.182927,
+      "normalizedValue": 0.046341,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -21217,7 +21217,7 @@
       "id": "evidence:ca-bc-mu-7-47-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 14,
-      "normalizedValue": 0.182927,
+      "normalizedValue": 0.053659,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -21313,7 +21313,7 @@
       "id": "evidence:ca-bc-mu-7-48-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 2,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.029268,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -21337,7 +21337,7 @@
       "id": "evidence:ca-bc-mu-7-48-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 58,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.12439,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -21433,7 +21433,7 @@
       "id": "evidence:ca-bc-mu-7-49-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 23,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.241463,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -21457,7 +21457,7 @@
       "id": "evidence:ca-bc-mu-7-49-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 119,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.258537,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -21553,7 +21553,7 @@
       "id": "evidence:ca-bc-mu-7-50-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.009756,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -21577,7 +21577,7 @@
       "id": "evidence:ca-bc-mu-7-50-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 6,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.031707,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -21673,7 +21673,7 @@
       "id": "evidence:ca-bc-mu-7-51-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 9,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.112195,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -21697,7 +21697,7 @@
       "id": "evidence:ca-bc-mu-7-51-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 13,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.04878,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -21793,7 +21793,7 @@
       "id": "evidence:ca-bc-mu-7-52-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 10,
-      "normalizedValue": 0.153659,
+      "normalizedValue": 0.126829,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -21817,7 +21817,7 @@
       "id": "evidence:ca-bc-mu-7-52-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 78,
-      "normalizedValue": 0.153659,
+      "normalizedValue": 0.170732,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -21913,7 +21913,7 @@
       "id": "evidence:ca-bc-mu-7-53-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.097561,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -21937,7 +21937,7 @@
       "id": "evidence:ca-bc-mu-7-53-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 81,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.185366,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -22033,7 +22033,7 @@
       "id": "evidence:ca-bc-mu-7-54-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 3,
-      "normalizedValue": 0.153659,
+      "normalizedValue": 0.046341,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -22057,7 +22057,7 @@
       "id": "evidence:ca-bc-mu-7-54-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 4,
-      "normalizedValue": 0.153659,
+      "normalizedValue": 0.014634,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -22153,7 +22153,7 @@
       "id": "evidence:ca-bc-mu-7-58-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 11,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.143902,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -22177,7 +22177,7 @@
       "id": "evidence:ca-bc-mu-7-58-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 78,
-      "normalizedValue": 0.065854,
+      "normalizedValue": 0.170732,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -22273,7 +22273,7 @@
       "id": "evidence:ca-bc-mu-8-1-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 104,
-      "normalizedValue": 0.595122,
+      "normalizedValue": 0.687805,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -22297,7 +22297,7 @@
       "id": "evidence:ca-bc-mu-8-1-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 835,
-      "normalizedValue": 0.595122,
+      "normalizedValue": 0.756098,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -22393,7 +22393,7 @@
       "id": "evidence:ca-bc-mu-8-2-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 45,
-      "normalizedValue": 0.507317,
+      "normalizedValue": 0.441463,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -22417,7 +22417,7 @@
       "id": "evidence:ca-bc-mu-8-2-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 203,
-      "normalizedValue": 0.507317,
+      "normalizedValue": 0.37561,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -22513,7 +22513,7 @@
       "id": "evidence:ca-bc-mu-8-3-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 25,
-      "normalizedValue": 0.546341,
+      "normalizedValue": 0.270732,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -22537,7 +22537,7 @@
       "id": "evidence:ca-bc-mu-8-3-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 189,
-      "normalizedValue": 0.546341,
+      "normalizedValue": 0.336585,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -22633,7 +22633,7 @@
       "id": "evidence:ca-bc-mu-8-4-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 130,
-      "normalizedValue": 0.792683,
+      "normalizedValue": 0.785366,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -22657,7 +22657,7 @@
       "id": "evidence:ca-bc-mu-8-4-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 826,
-      "normalizedValue": 0.792683,
+      "normalizedValue": 0.746341,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -22753,7 +22753,7 @@
       "id": "evidence:ca-bc-mu-8-5-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 321,
-      "normalizedValue": 0.960976,
+      "normalizedValue": 0.985366,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -22777,7 +22777,7 @@
       "id": "evidence:ca-bc-mu-8-5-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1938,
-      "normalizedValue": 0.960976,
+      "normalizedValue": 0.95122,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -22873,7 +22873,7 @@
       "id": "evidence:ca-bc-mu-8-6-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 118,
-      "normalizedValue": 0.182927,
+      "normalizedValue": 0.765854,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -22897,7 +22897,7 @@
       "id": "evidence:ca-bc-mu-8-6-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 969,
-      "normalizedValue": 0.182927,
+      "normalizedValue": 0.790244,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -22993,7 +22993,7 @@
       "id": "evidence:ca-bc-mu-8-7-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 111,
-      "normalizedValue": 0.646341,
+      "normalizedValue": 0.721951,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -23017,7 +23017,7 @@
       "id": "evidence:ca-bc-mu-8-7-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 537,
-      "normalizedValue": 0.646341,
+      "normalizedValue": 0.643902,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -23113,7 +23113,7 @@
       "id": "evidence:ca-bc-mu-8-8-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 193,
-      "normalizedValue": 0.407317,
+      "normalizedValue": 0.907317,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -23137,7 +23137,7 @@
       "id": "evidence:ca-bc-mu-8-8-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1980,
-      "normalizedValue": 0.407317,
+      "normalizedValue": 0.960976,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -23233,7 +23233,7 @@
       "id": "evidence:ca-bc-mu-8-9-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 110,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.714634,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -23257,7 +23257,7 @@
       "id": "evidence:ca-bc-mu-8-9-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1297,
-      "normalizedValue": 0.32439,
+      "normalizedValue": 0.878049,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -23353,7 +23353,7 @@
       "id": "evidence:ca-bc-mu-8-10-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 245,
-      "normalizedValue": 0.882927,
+      "normalizedValue": 0.95122,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -23377,7 +23377,7 @@
       "id": "evidence:ca-bc-mu-8-10-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2469,
-      "normalizedValue": 0.882927,
+      "normalizedValue": 0.985366,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -23473,7 +23473,7 @@
       "id": "evidence:ca-bc-mu-8-11-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 114,
-      "normalizedValue": 0.407317,
+      "normalizedValue": 0.741463,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -23497,7 +23497,7 @@
       "id": "evidence:ca-bc-mu-8-11-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 654,
-      "normalizedValue": 0.407317,
+      "normalizedValue": 0.692683,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -23593,7 +23593,7 @@
       "id": "evidence:ca-bc-mu-8-12-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 242,
-      "normalizedValue": 0.660976,
+      "normalizedValue": 0.946341,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -23617,7 +23617,7 @@
       "id": "evidence:ca-bc-mu-8-12-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1476,
-      "normalizedValue": 0.660976,
+      "normalizedValue": 0.912195,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -23713,7 +23713,7 @@
       "id": "evidence:ca-bc-mu-8-13-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 28,
-      "normalizedValue": 0.441463,
+      "normalizedValue": 0.297561,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -23737,7 +23737,7 @@
       "id": "evidence:ca-bc-mu-8-13-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 198,
-      "normalizedValue": 0.441463,
+      "normalizedValue": 0.370732,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -23833,7 +23833,7 @@
       "id": "evidence:ca-bc-mu-8-14-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 187,
-      "normalizedValue": 0.812195,
+      "normalizedValue": 0.880488,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -23857,7 +23857,7 @@
       "id": "evidence:ca-bc-mu-8-14-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1162,
-      "normalizedValue": 0.812195,
+      "normalizedValue": 0.843902,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -23953,7 +23953,7 @@
       "id": "evidence:ca-bc-mu-8-15-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 114,
-      "normalizedValue": 0.495122,
+      "normalizedValue": 0.741463,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -23977,7 +23977,7 @@
       "id": "evidence:ca-bc-mu-8-15-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1153,
-      "normalizedValue": 0.495122,
+      "normalizedValue": 0.834146,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -24073,7 +24073,7 @@
       "id": "evidence:ca-bc-mu-8-21-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 33,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.363415,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -24097,7 +24097,7 @@
       "id": "evidence:ca-bc-mu-8-21-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 237,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.404878,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -24193,7 +24193,7 @@
       "id": "evidence:ca-bc-mu-8-22-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 54,
-      "normalizedValue": 0.595122,
+      "normalizedValue": 0.497561,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -24217,7 +24217,7 @@
       "id": "evidence:ca-bc-mu-8-22-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 384,
-      "normalizedValue": 0.595122,
+      "normalizedValue": 0.55122,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -24313,7 +24313,7 @@
       "id": "evidence:ca-bc-mu-8-23-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 170,
-      "normalizedValue": 0.826829,
+      "normalizedValue": 0.84878,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -24337,7 +24337,7 @@
       "id": "evidence:ca-bc-mu-8-23-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1128,
-      "normalizedValue": 0.826829,
+      "normalizedValue": 0.82439,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -24433,7 +24433,7 @@
       "id": "evidence:ca-bc-mu-8-24-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 77,
-      "normalizedValue": 0.687805,
+      "normalizedValue": 0.590244,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -24457,7 +24457,7 @@
       "id": "evidence:ca-bc-mu-8-24-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 262,
-      "normalizedValue": 0.687805,
+      "normalizedValue": 0.441463,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -24553,7 +24553,7 @@
       "id": "evidence:ca-bc-mu-8-25-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 108,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.704878,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -24577,7 +24577,7 @@
       "id": "evidence:ca-bc-mu-8-25-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 553,
-      "normalizedValue": 0.229268,
+      "normalizedValue": 0.658537,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -24673,7 +24673,7 @@
       "id": "evidence:ca-bc-mu-8-26-american-black-bear-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 94,
-      "normalizedValue": 0.812195,
+      "normalizedValue": 0.64878,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -24697,7 +24697,7 @@
       "id": "evidence:ca-bc-mu-8-26-american-black-bear-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1099,
-      "normalizedValue": 0.812195,
+      "normalizedValue": 0.814634,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },

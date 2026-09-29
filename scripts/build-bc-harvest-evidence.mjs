@@ -136,6 +136,15 @@ export function buildBundles(csv) {
     if (!units.length) throw new Error(`No ${code} row named a published Management Unit`);
 
     const harvestRanks = percentileRanks(units.map(({ kills }) => kills));
+    /* Each metric is ranked on ITS OWN series. Hunters and hunter days were
+       both given `harvestRanks`, which published a rank attributed to a metric
+       it was never computed from: MU 3-14 (5 hunters) and MU 3-17 (65 hunters)
+       carried the identical 0.081461, impossible if either had been ranked on
+       hunter counts. The tell was HUNTER_COUNT alone — both units have zero
+       kills, so the other metrics tie legitimately, and a reader comparing all
+       five would have concluded "correlated data" from the right observation. */
+    const hunterRanks = percentileRanks(units.map(({ hunters }) => hunters));
+    const dayRanks = percentileRanks(units.map(({ days }) => days));
     const perHunter = units.map(({ kills, hunters }) => (hunters ? kills / hunters : 0));
     const perHunterRanks = percentileRanks(perHunter);
     const perHundredDays = units.map(({ kills, days }) => (days ? (kills / days) * 100 : 0));
@@ -164,8 +173,8 @@ export function buildBundles(csv) {
       };
       return [
         { ...common, id: id("harvest"), metric: "HARVEST_TOTAL", rawValue: unit.kills, normalizedValue: Number(harvestRanks[index].toFixed(6)), unit: "animals killed", notes: `${unit.kills} killed by ${unit.hunters} hunters over ${unit.days} hunter days.` },
-        { ...common, id: id("hunters"), metric: "HUNTER_COUNT", rawValue: unit.hunters, normalizedValue: Number(harvestRanks[index].toFixed(6)), unit: "hunters", notes: "Resident and non-resident hunters, as the authority reports them." },
-        { ...common, id: id("hunter-days"), metric: "HUNTER_DAYS", rawValue: unit.days, normalizedValue: Number(harvestRanks[index].toFixed(6)), unit: "hunter days", notes: "Resident and non-resident hunter days, as the authority reports them." },
+        { ...common, id: id("hunters"), metric: "HUNTER_COUNT", rawValue: unit.hunters, normalizedValue: Number(hunterRanks[index].toFixed(6)), unit: "hunters", notes: "Resident and non-resident hunters, as the authority reports them." },
+        { ...common, id: id("hunter-days"), metric: "HUNTER_DAYS", rawValue: unit.days, normalizedValue: Number(dayRanks[index].toFixed(6)), unit: "hunter days", notes: "Resident and non-resident hunter days, as the authority reports them." },
         { ...common, id: id("harvest-per-hunter"), metric: "HARVEST_PER_HUNTER", rawValue: Number(perHunter[index].toFixed(6)), normalizedValue: Number(perHunterRanks[index].toFixed(6)), unit: "animals per hunter", notes: "Derived from the authority's own kills and hunters. It is not a hunter-success probability, which British Columbia does not publish." },
         { ...common, id: id("harvest-per-100-hunter-days"), metric: "HARVEST_PER_EFFORT", rawValue: Number(perHundredDays[index].toFixed(6)), normalizedValue: Number(perDayRanks[index].toFixed(6)), unit: "animals per 100 hunter days", notes: "Derived from the authority's own kills and hunter days." },
       ];

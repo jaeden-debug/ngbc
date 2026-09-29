@@ -73,7 +73,7 @@
       "id": "evidence:ca-bc-mu-1-1-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 16,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.303571,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -97,7 +97,7 @@
       "id": "evidence:ca-bc-mu-1-1-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 111,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.309524,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -193,7 +193,7 @@
       "id": "evidence:ca-bc-mu-1-2-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.008929,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -217,7 +217,7 @@
       "id": "evidence:ca-bc-mu-1-2-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 10,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.041667,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -313,7 +313,7 @@
       "id": "evidence:ca-bc-mu-1-3-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 7,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.083333,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -337,7 +337,7 @@
       "id": "evidence:ca-bc-mu-1-3-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 22,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.089286,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -433,7 +433,7 @@
       "id": "evidence:ca-bc-mu-1-4-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 31,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.541667,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -457,7 +457,7 @@
       "id": "evidence:ca-bc-mu-1-4-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 198,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.47619,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -553,7 +553,7 @@
       "id": "evidence:ca-bc-mu-1-5-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 31,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.541667,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -577,7 +577,7 @@
       "id": "evidence:ca-bc-mu-1-5-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 394,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.708333,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -673,7 +673,7 @@
       "id": "evidence:ca-bc-mu-1-6-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 24,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.470238,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -697,7 +697,7 @@
       "id": "evidence:ca-bc-mu-1-6-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 271,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.535714,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -793,7 +793,7 @@
       "id": "evidence:ca-bc-mu-1-7-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 32,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.5625,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -817,7 +817,7 @@
       "id": "evidence:ca-bc-mu-1-7-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 307,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.613095,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -913,7 +913,7 @@
       "id": "evidence:ca-bc-mu-1-9-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 23,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.440476,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -937,7 +937,7 @@
       "id": "evidence:ca-bc-mu-1-9-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 62,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.220238,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1033,7 +1033,7 @@
       "id": "evidence:ca-bc-mu-1-10-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 55,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.797619,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1057,7 +1057,7 @@
       "id": "evidence:ca-bc-mu-1-10-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 514,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.797619,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1153,7 +1153,7 @@
       "id": "evidence:ca-bc-mu-1-12-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 4,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.044643,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1177,7 +1177,7 @@
       "id": "evidence:ca-bc-mu-1-12-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 16,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.068452,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1273,7 +1273,7 @@
       "id": "evidence:ca-bc-mu-1-15-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 16,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.303571,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1297,7 +1297,7 @@
       "id": "evidence:ca-bc-mu-1-15-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 118,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.324405,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1393,7 +1393,7 @@
       "id": "evidence:ca-bc-mu-2-11-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 16,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 0.303571,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1417,7 +1417,7 @@
       "id": "evidence:ca-bc-mu-2-11-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 90,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 0.267857,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1513,7 +1513,7 @@
       "id": "evidence:ca-bc-mu-2-12-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 15,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.270833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1537,7 +1537,7 @@
       "id": "evidence:ca-bc-mu-2-12-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 305,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.604167,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1633,7 +1633,7 @@
       "id": "evidence:ca-bc-mu-2-14-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.145833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1657,7 +1657,7 @@
       "id": "evidence:ca-bc-mu-2-14-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 109,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.300595,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1753,7 +1753,7 @@
       "id": "evidence:ca-bc-mu-2-16-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 17,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.342262,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1777,7 +1777,7 @@
       "id": "evidence:ca-bc-mu-2-16-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 75,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.244048,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1873,7 +1873,7 @@
       "id": "evidence:ca-bc-mu-3-13-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 16,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.303571,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -1897,7 +1897,7 @@
       "id": "evidence:ca-bc-mu-3-13-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 440,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.732143,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -1993,7 +1993,7 @@
       "id": "evidence:ca-bc-mu-3-16-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 5,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.053571,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2017,7 +2017,7 @@
       "id": "evidence:ca-bc-mu-3-16-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 30,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.133929,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2113,7 +2113,7 @@
       "id": "evidence:ca-bc-mu-3-17-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 58,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.830357,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2137,7 +2137,7 @@
       "id": "evidence:ca-bc-mu-3-17-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 381,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.696429,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2233,7 +2233,7 @@
       "id": "evidence:ca-bc-mu-3-18-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 41,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.684524,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2257,7 +2257,7 @@
       "id": "evidence:ca-bc-mu-3-18-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 293,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.583333,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2353,7 +2353,7 @@
       "id": "evidence:ca-bc-mu-3-19-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 57,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.821429,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2377,7 +2377,7 @@
       "id": "evidence:ca-bc-mu-3-19-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 450,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.75,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2473,7 +2473,7 @@
       "id": "evidence:ca-bc-mu-3-20-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 40,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.666667,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2497,7 +2497,7 @@
       "id": "evidence:ca-bc-mu-3-20-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 291,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.577381,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2593,7 +2593,7 @@
       "id": "evidence:ca-bc-mu-3-26-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 24,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.470238,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2617,7 +2617,7 @@
       "id": "evidence:ca-bc-mu-3-26-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 284,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.565476,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2713,7 +2713,7 @@
       "id": "evidence:ca-bc-mu-3-27-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 16,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.303571,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2737,7 +2737,7 @@
       "id": "evidence:ca-bc-mu-3-27-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 96,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.285714,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2833,7 +2833,7 @@
       "id": "evidence:ca-bc-mu-3-28-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 40,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.666667,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2857,7 +2857,7 @@
       "id": "evidence:ca-bc-mu-3-28-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 241,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.529762,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -2953,7 +2953,7 @@
       "id": "evidence:ca-bc-mu-3-29-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 56,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.8125,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -2977,7 +2977,7 @@
       "id": "evidence:ca-bc-mu-3-29-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 503,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.767857,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3073,7 +3073,7 @@
       "id": "evidence:ca-bc-mu-3-30-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 158,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.994048,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3097,7 +3097,7 @@
       "id": "evidence:ca-bc-mu-3-30-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1163,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.964286,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3193,7 +3193,7 @@
       "id": "evidence:ca-bc-mu-3-31-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 56,
-      "normalizedValue": 0.794643,
+      "normalizedValue": 0.8125,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3217,7 +3217,7 @@
       "id": "evidence:ca-bc-mu-3-31-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 415,
-      "normalizedValue": 0.794643,
+      "normalizedValue": 0.720238,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3313,7 +3313,7 @@
       "id": "evidence:ca-bc-mu-3-32-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 72,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 0.869048,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3337,7 +3337,7 @@
       "id": "evidence:ca-bc-mu-3-32-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 518,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 0.803571,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3433,7 +3433,7 @@
       "id": "evidence:ca-bc-mu-3-33-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.145833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3457,7 +3457,7 @@
       "id": "evidence:ca-bc-mu-3-33-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 25,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.104167,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3553,7 +3553,7 @@
       "id": "evidence:ca-bc-mu-3-35-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.145833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3577,7 +3577,7 @@
       "id": "evidence:ca-bc-mu-3-35-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 16,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.068452,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3673,7 +3673,7 @@
       "id": "evidence:ca-bc-mu-3-36-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 25,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.491071,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3697,7 +3697,7 @@
       "id": "evidence:ca-bc-mu-3-36-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 225,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.52381,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3793,7 +3793,7 @@
       "id": "evidence:ca-bc-mu-3-37-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 50,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 0.755952,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3817,7 +3817,7 @@
       "id": "evidence:ca-bc-mu-3-37-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 664,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 0.860119,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -3913,7 +3913,7 @@
       "id": "evidence:ca-bc-mu-3-38-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 17,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.342262,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -3937,7 +3937,7 @@
       "id": "evidence:ca-bc-mu-3-38-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 125,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.348214,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4033,7 +4033,7 @@
       "id": "evidence:ca-bc-mu-3-39-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.145833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4057,7 +4057,7 @@
       "id": "evidence:ca-bc-mu-3-39-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 17,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.077381,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4153,7 +4153,7 @@
       "id": "evidence:ca-bc-mu-3-40-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 32,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 0.5625,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4177,7 +4177,7 @@
       "id": "evidence:ca-bc-mu-3-40-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 87,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 0.255952,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4273,7 +4273,7 @@
       "id": "evidence:ca-bc-mu-3-42-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.008929,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4297,7 +4297,7 @@
       "id": "evidence:ca-bc-mu-3-42-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 10,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.041667,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4393,7 +4393,7 @@
       "id": "evidence:ca-bc-mu-4-1-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 46,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.720238,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4417,7 +4417,7 @@
       "id": "evidence:ca-bc-mu-4-1-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 402,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.714286,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4513,7 +4513,7 @@
       "id": "evidence:ca-bc-mu-4-2-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 83,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.934524,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4537,7 +4537,7 @@
       "id": "evidence:ca-bc-mu-4-2-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1035,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.946429,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4633,7 +4633,7 @@
       "id": "evidence:ca-bc-mu-4-3-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 91,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.955357,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4657,7 +4657,7 @@
       "id": "evidence:ca-bc-mu-4-3-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 670,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.869048,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4753,7 +4753,7 @@
       "id": "evidence:ca-bc-mu-4-4-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 26,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.502976,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4777,7 +4777,7 @@
       "id": "evidence:ca-bc-mu-4-4-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 312,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.625,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4873,7 +4873,7 @@
       "id": "evidence:ca-bc-mu-4-5-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 55,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.797619,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -4897,7 +4897,7 @@
       "id": "evidence:ca-bc-mu-4-5-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 510,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.782738,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -4993,7 +4993,7 @@
       "id": "evidence:ca-bc-mu-4-6-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 77,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.910714,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5017,7 +5017,7 @@
       "id": "evidence:ca-bc-mu-4-6-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 580,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.815476,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5113,7 +5113,7 @@
       "id": "evidence:ca-bc-mu-4-7-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 82,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.925595,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5137,7 +5137,7 @@
       "id": "evidence:ca-bc-mu-4-7-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 422,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.72619,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5233,7 +5233,7 @@
       "id": "evidence:ca-bc-mu-4-8-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 31,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.541667,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5257,7 +5257,7 @@
       "id": "evidence:ca-bc-mu-4-8-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 511,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.791667,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5353,7 +5353,7 @@
       "id": "evidence:ca-bc-mu-4-9-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.145833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5377,7 +5377,7 @@
       "id": "evidence:ca-bc-mu-4-9-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 39,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.157738,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5473,7 +5473,7 @@
       "id": "evidence:ca-bc-mu-4-14-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 23,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.440476,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5497,7 +5497,7 @@
       "id": "evidence:ca-bc-mu-4-14-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 125,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.348214,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5593,7 +5593,7 @@
       "id": "evidence:ca-bc-mu-4-15-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 16,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.303571,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5617,7 +5617,7 @@
       "id": "evidence:ca-bc-mu-4-15-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 39,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.157738,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5713,7 +5713,7 @@
       "id": "evidence:ca-bc-mu-4-16-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.145833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5737,7 +5737,7 @@
       "id": "evidence:ca-bc-mu-4-16-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 47,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.184524,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5833,7 +5833,7 @@
       "id": "evidence:ca-bc-mu-4-17-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 16,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.303571,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5857,7 +5857,7 @@
       "id": "evidence:ca-bc-mu-4-17-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 47,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.184524,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -5953,7 +5953,7 @@
       "id": "evidence:ca-bc-mu-4-18-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 27,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.514881,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -5977,7 +5977,7 @@
       "id": "evidence:ca-bc-mu-4-18-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 223,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.511905,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6073,7 +6073,7 @@
       "id": "evidence:ca-bc-mu-4-19-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.145833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6097,7 +6097,7 @@
       "id": "evidence:ca-bc-mu-4-19-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 55,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.208333,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6193,7 +6193,7 @@
       "id": "evidence:ca-bc-mu-4-20-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 93,
-      "normalizedValue": 0.958333,
+      "normalizedValue": 0.964286,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6217,7 +6217,7 @@
       "id": "evidence:ca-bc-mu-4-20-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1064,
-      "normalizedValue": 0.958333,
+      "normalizedValue": 0.952381,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6313,7 +6313,7 @@
       "id": "evidence:ca-bc-mu-4-21-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 17,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.342262,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6337,7 +6337,7 @@
       "id": "evidence:ca-bc-mu-4-21-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 148,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.422619,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6433,7 +6433,7 @@
       "id": "evidence:ca-bc-mu-4-22-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 60,
-      "normalizedValue": 0.892857,
+      "normalizedValue": 0.848214,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6457,7 +6457,7 @@
       "id": "evidence:ca-bc-mu-4-22-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 376,
-      "normalizedValue": 0.892857,
+      "normalizedValue": 0.684524,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6553,7 +6553,7 @@
       "id": "evidence:ca-bc-mu-4-23-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 79,
-      "normalizedValue": 0.958333,
+      "normalizedValue": 0.916667,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6673,7 +6673,7 @@
       "id": "evidence:ca-bc-mu-4-24-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 59,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.839286,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6697,7 +6697,7 @@
       "id": "evidence:ca-bc-mu-4-24-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 999,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.934524,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6793,7 +6793,7 @@
       "id": "evidence:ca-bc-mu-4-25-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 35,
-      "normalizedValue": 0.994048,
+      "normalizedValue": 0.604167,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6817,7 +6817,7 @@
       "id": "evidence:ca-bc-mu-4-25-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 620,
-      "normalizedValue": 0.994048,
+      "normalizedValue": 0.827381,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -6913,7 +6913,7 @@
       "id": "evidence:ca-bc-mu-4-26-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 39,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.645833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -6937,7 +6937,7 @@
       "id": "evidence:ca-bc-mu-4-26-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 664,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.860119,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7033,7 +7033,7 @@
       "id": "evidence:ca-bc-mu-4-27-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 9,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.21131,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7057,7 +7057,7 @@
       "id": "evidence:ca-bc-mu-4-27-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 28,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.113095,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7153,7 +7153,7 @@
       "id": "evidence:ca-bc-mu-4-30-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.145833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7177,7 +7177,7 @@
       "id": "evidence:ca-bc-mu-4-30-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 118,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.324405,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7273,7 +7273,7 @@
       "id": "evidence:ca-bc-mu-4-32-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 55,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.797619,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7297,7 +7297,7 @@
       "id": "evidence:ca-bc-mu-4-32-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 281,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.553571,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7393,7 +7393,7 @@
       "id": "evidence:ca-bc-mu-4-34-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 53,
-      "normalizedValue": 0.973214,
+      "normalizedValue": 0.770833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7417,7 +7417,7 @@
       "id": "evidence:ca-bc-mu-4-34-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 917,
-      "normalizedValue": 0.973214,
+      "normalizedValue": 0.916667,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7513,7 +7513,7 @@
       "id": "evidence:ca-bc-mu-4-35-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 40,
-      "normalizedValue": 0.973214,
+      "normalizedValue": 0.666667,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7537,7 +7537,7 @@
       "id": "evidence:ca-bc-mu-4-35-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 799,
-      "normalizedValue": 0.973214,
+      "normalizedValue": 0.904762,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7633,7 +7633,7 @@
       "id": "evidence:ca-bc-mu-4-36-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 20,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.389881,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7657,7 +7657,7 @@
       "id": "evidence:ca-bc-mu-4-36-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 146,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.416667,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7753,7 +7753,7 @@
       "id": "evidence:ca-bc-mu-4-38-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 9,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.21131,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7777,7 +7777,7 @@
       "id": "evidence:ca-bc-mu-4-38-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 0,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.002976,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7873,7 +7873,7 @@
       "id": "evidence:ca-bc-mu-5-1-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 97,
-      "normalizedValue": 0.943452,
+      "normalizedValue": 0.970238,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -7897,7 +7897,7 @@
       "id": "evidence:ca-bc-mu-5-1-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1238,
-      "normalizedValue": 0.943452,
+      "normalizedValue": 0.970238,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -7993,7 +7993,7 @@
       "id": "evidence:ca-bc-mu-5-2-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 346,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 1,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8017,7 +8017,7 @@
       "id": "evidence:ca-bc-mu-5-2-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 4774,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 1,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8113,7 +8113,7 @@
       "id": "evidence:ca-bc-mu-5-3-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 75,
-      "normalizedValue": 1,
+      "normalizedValue": 0.89881,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8137,7 +8137,7 @@
       "id": "evidence:ca-bc-mu-5-3-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 652,
-      "normalizedValue": 1,
+      "normalizedValue": 0.845238,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8233,7 +8233,7 @@
       "id": "evidence:ca-bc-mu-5-4-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 27,
-      "normalizedValue": 0.794643,
+      "normalizedValue": 0.514881,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8257,7 +8257,7 @@
       "id": "evidence:ca-bc-mu-5-4-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 156,
-      "normalizedValue": 0.794643,
+      "normalizedValue": 0.446429,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8353,7 +8353,7 @@
       "id": "evidence:ca-bc-mu-5-5-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 6,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.065476,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8377,7 +8377,7 @@
       "id": "evidence:ca-bc-mu-5-5-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 43,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.172619,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8473,7 +8473,7 @@
       "id": "evidence:ca-bc-mu-5-6-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.943452,
+      "normalizedValue": 0.145833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8497,7 +8497,7 @@
       "id": "evidence:ca-bc-mu-5-6-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 0,
-      "normalizedValue": 0.943452,
+      "normalizedValue": 0.002976,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8593,7 +8593,7 @@
       "id": "evidence:ca-bc-mu-5-12-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 21,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.407738,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8617,7 +8617,7 @@
       "id": "evidence:ca-bc-mu-5-12-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 129,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.363095,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8713,7 +8713,7 @@
       "id": "evidence:ca-bc-mu-5-13-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 73,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.883929,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8737,7 +8737,7 @@
       "id": "evidence:ca-bc-mu-5-13-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 521,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.809524,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8833,7 +8833,7 @@
       "id": "evidence:ca-bc-mu-5-14-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 60,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.848214,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8857,7 +8857,7 @@
       "id": "evidence:ca-bc-mu-5-14-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 300,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.589286,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -8953,7 +8953,7 @@
       "id": "evidence:ca-bc-mu-5-15-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 32,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.5625,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -8977,7 +8977,7 @@
       "id": "evidence:ca-bc-mu-5-15-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 282,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.559524,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9073,7 +9073,7 @@
       "id": "evidence:ca-bc-mu-6-1-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 32,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.5625,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9097,7 +9097,7 @@
       "id": "evidence:ca-bc-mu-6-1-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 194,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.470238,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9193,7 +9193,7 @@
       "id": "evidence:ca-bc-mu-6-2-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 17,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.342262,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9217,7 +9217,7 @@
       "id": "evidence:ca-bc-mu-6-2-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 174,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.464286,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9313,7 +9313,7 @@
       "id": "evidence:ca-bc-mu-6-3-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.145833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9337,7 +9337,7 @@
       "id": "evidence:ca-bc-mu-6-3-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 54,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.202381,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9433,7 +9433,7 @@
       "id": "evidence:ca-bc-mu-6-4-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 100,
-      "normalizedValue": 0.922619,
+      "normalizedValue": 0.97619,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9457,7 +9457,7 @@
       "id": "evidence:ca-bc-mu-6-4-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 731,
-      "normalizedValue": 0.922619,
+      "normalizedValue": 0.892857,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9553,7 +9553,7 @@
       "id": "evidence:ca-bc-mu-6-5-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 6,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.065476,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9577,7 +9577,7 @@
       "id": "evidence:ca-bc-mu-6-5-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 29,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.122024,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9673,7 +9673,7 @@
       "id": "evidence:ca-bc-mu-6-6-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 20,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.389881,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9697,7 +9697,7 @@
       "id": "evidence:ca-bc-mu-6-6-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 151,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.434524,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9793,7 +9793,7 @@
       "id": "evidence:ca-bc-mu-6-7-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.008929,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9817,7 +9817,7 @@
       "id": "evidence:ca-bc-mu-6-7-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 9,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.029762,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -9913,7 +9913,7 @@
       "id": "evidence:ca-bc-mu-6-8-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 85,
-      "normalizedValue": 0.934524,
+      "normalizedValue": 0.940476,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -9937,7 +9937,7 @@
       "id": "evidence:ca-bc-mu-6-8-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 510,
-      "normalizedValue": 0.934524,
+      "normalizedValue": 0.782738,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10033,7 +10033,7 @@
       "id": "evidence:ca-bc-mu-6-9-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 49,
-      "normalizedValue": 0.982143,
+      "normalizedValue": 0.747024,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10057,7 +10057,7 @@
       "id": "evidence:ca-bc-mu-6-9-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 288,
-      "normalizedValue": 0.982143,
+      "normalizedValue": 0.571429,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10153,7 +10153,7 @@
       "id": "evidence:ca-bc-mu-6-11-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 15,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.270833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10177,7 +10177,7 @@
       "id": "evidence:ca-bc-mu-6-11-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 132,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.369048,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10273,7 +10273,7 @@
       "id": "evidence:ca-bc-mu-6-14-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 9,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.21131,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10297,7 +10297,7 @@
       "id": "evidence:ca-bc-mu-6-14-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 10,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.041667,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10393,7 +10393,7 @@
       "id": "evidence:ca-bc-mu-6-16-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.794643,
+      "normalizedValue": 0.145833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10417,7 +10417,7 @@
       "id": "evidence:ca-bc-mu-6-16-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 29,
-      "normalizedValue": 0.794643,
+      "normalizedValue": 0.122024,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10513,7 +10513,7 @@
       "id": "evidence:ca-bc-mu-6-17-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 24,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.470238,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10537,7 +10537,7 @@
       "id": "evidence:ca-bc-mu-6-17-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 91,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.27381,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10633,7 +10633,7 @@
       "id": "evidence:ca-bc-mu-6-18-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 20,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.389881,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10657,7 +10657,7 @@
       "id": "evidence:ca-bc-mu-6-18-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 171,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.458333,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10753,7 +10753,7 @@
       "id": "evidence:ca-bc-mu-6-19-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 42,
-      "normalizedValue": 0.892857,
+      "normalizedValue": 0.693452,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10777,7 +10777,7 @@
       "id": "evidence:ca-bc-mu-6-19-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 201,
-      "normalizedValue": 0.892857,
+      "normalizedValue": 0.485119,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10873,7 +10873,7 @@
       "id": "evidence:ca-bc-mu-6-20-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 33,
-      "normalizedValue": 0.988095,
+      "normalizedValue": 0.580357,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -10897,7 +10897,7 @@
       "id": "evidence:ca-bc-mu-6-20-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 279,
-      "normalizedValue": 0.988095,
+      "normalizedValue": 0.541667,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -10993,7 +10993,7 @@
       "id": "evidence:ca-bc-mu-6-21-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 24,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.470238,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11017,7 +11017,7 @@
       "id": "evidence:ca-bc-mu-6-21-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 157,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.452381,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11113,7 +11113,7 @@
       "id": "evidence:ca-bc-mu-6-22-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 54,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 0.782738,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11137,7 +11137,7 @@
       "id": "evidence:ca-bc-mu-6-22-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 454,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 0.755952,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11233,7 +11233,7 @@
       "id": "evidence:ca-bc-mu-6-23-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 35,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.604167,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11257,7 +11257,7 @@
       "id": "evidence:ca-bc-mu-6-23-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 449,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.744048,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11353,7 +11353,7 @@
       "id": "evidence:ca-bc-mu-6-24-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 26,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.502976,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11377,7 +11377,7 @@
       "id": "evidence:ca-bc-mu-6-24-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 204,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.5,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11473,7 +11473,7 @@
       "id": "evidence:ca-bc-mu-6-25-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 43,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.705357,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11497,7 +11497,7 @@
       "id": "evidence:ca-bc-mu-6-25-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 143,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.407738,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11593,7 +11593,7 @@
       "id": "evidence:ca-bc-mu-6-26-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 49,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.747024,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11617,7 +11617,7 @@
       "id": "evidence:ca-bc-mu-6-26-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 364,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.669643,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11713,7 +11713,7 @@
       "id": "evidence:ca-bc-mu-6-30-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 22,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.419643,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11737,7 +11737,7 @@
       "id": "evidence:ca-bc-mu-6-30-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 89,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.261905,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11833,7 +11833,7 @@
       "id": "evidence:ca-bc-mu-7-2-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.145833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11857,7 +11857,7 @@
       "id": "evidence:ca-bc-mu-7-2-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 25,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.104167,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -11953,7 +11953,7 @@
       "id": "evidence:ca-bc-mu-7-3-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 22,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.419643,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -11977,7 +11977,7 @@
       "id": "evidence:ca-bc-mu-7-3-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1626,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.982143,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12073,7 +12073,7 @@
       "id": "evidence:ca-bc-mu-7-4-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 9,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.21131,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12097,7 +12097,7 @@
       "id": "evidence:ca-bc-mu-7-4-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 65,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.229167,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12193,7 +12193,7 @@
       "id": "evidence:ca-bc-mu-7-5-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 17,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 0.342262,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12217,7 +12217,7 @@
       "id": "evidence:ca-bc-mu-7-5-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 107,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 0.291667,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12313,7 +12313,7 @@
       "id": "evidence:ca-bc-mu-7-6-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 21,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.407738,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12337,7 +12337,7 @@
       "id": "evidence:ca-bc-mu-7-6-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 143,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.407738,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12433,7 +12433,7 @@
       "id": "evidence:ca-bc-mu-7-7-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 14,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.255952,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12457,7 +12457,7 @@
       "id": "evidence:ca-bc-mu-7-7-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 53,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.196429,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12553,7 +12553,7 @@
       "id": "evidence:ca-bc-mu-7-8-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 33,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.580357,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12577,7 +12577,7 @@
       "id": "evidence:ca-bc-mu-7-8-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 202,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.494048,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12673,7 +12673,7 @@
       "id": "evidence:ca-bc-mu-7-9-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 76,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.904762,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12697,7 +12697,7 @@
       "id": "evidence:ca-bc-mu-7-9-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 2053,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.988095,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12793,7 +12793,7 @@
       "id": "evidence:ca-bc-mu-7-10-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 54,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.782738,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12817,7 +12817,7 @@
       "id": "evidence:ca-bc-mu-7-10-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 663,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.85119,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -12913,7 +12913,7 @@
       "id": "evidence:ca-bc-mu-7-11-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 37,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.625,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -12937,7 +12937,7 @@
       "id": "evidence:ca-bc-mu-7-11-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 311,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.619048,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13033,7 +13033,7 @@
       "id": "evidence:ca-bc-mu-7-12-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 106,
-      "normalizedValue": 0.958333,
+      "normalizedValue": 0.982143,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13057,7 +13057,7 @@
       "id": "evidence:ca-bc-mu-7-12-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 695,
-      "normalizedValue": 0.958333,
+      "normalizedValue": 0.877976,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13153,7 +13153,7 @@
       "id": "evidence:ca-bc-mu-7-13-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 72,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.869048,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13177,7 +13177,7 @@
       "id": "evidence:ca-bc-mu-7-13-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 969,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.928571,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13273,7 +13273,7 @@
       "id": "evidence:ca-bc-mu-7-14-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 43,
-      "normalizedValue": 0.922619,
+      "normalizedValue": 0.705357,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13297,7 +13297,7 @@
       "id": "evidence:ca-bc-mu-7-14-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 328,
-      "normalizedValue": 0.922619,
+      "normalizedValue": 0.636905,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13393,7 +13393,7 @@
       "id": "evidence:ca-bc-mu-7-15-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 91,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.955357,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13417,7 +13417,7 @@
       "id": "evidence:ca-bc-mu-7-15-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1624,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.97619,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13513,7 +13513,7 @@
       "id": "evidence:ca-bc-mu-7-16-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 58,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.830357,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13537,7 +13537,7 @@
       "id": "evidence:ca-bc-mu-7-16-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 345,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.651786,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13633,7 +13633,7 @@
       "id": "evidence:ca-bc-mu-7-17-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 53,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.770833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13657,7 +13657,7 @@
       "id": "evidence:ca-bc-mu-7-17-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 318,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.630952,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13753,7 +13753,7 @@
       "id": "evidence:ca-bc-mu-7-18-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 28,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.52381,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13777,7 +13777,7 @@
       "id": "evidence:ca-bc-mu-7-18-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 150,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.428571,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13873,7 +13873,7 @@
       "id": "evidence:ca-bc-mu-7-19-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 17,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.342262,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -13897,7 +13897,7 @@
       "id": "evidence:ca-bc-mu-7-19-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 140,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.392857,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -13993,7 +13993,7 @@
       "id": "evidence:ca-bc-mu-7-20-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 15,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.270833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14017,7 +14017,7 @@
       "id": "evidence:ca-bc-mu-7-20-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 69,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.238095,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14113,7 +14113,7 @@
       "id": "evidence:ca-bc-mu-7-21-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 40,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.666667,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14137,7 +14137,7 @@
       "id": "evidence:ca-bc-mu-7-21-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 333,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.642857,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14233,7 +14233,7 @@
       "id": "evidence:ca-bc-mu-7-22-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.145833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14257,7 +14257,7 @@
       "id": "evidence:ca-bc-mu-7-22-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 120,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.33631,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14353,7 +14353,7 @@
       "id": "evidence:ca-bc-mu-7-23-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 42,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.693452,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14377,7 +14377,7 @@
       "id": "evidence:ca-bc-mu-7-23-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 364,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.669643,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14473,7 +14473,7 @@
       "id": "evidence:ca-bc-mu-7-24-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 19,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.372024,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14497,7 +14497,7 @@
       "id": "evidence:ca-bc-mu-7-24-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 109,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.300595,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14593,7 +14593,7 @@
       "id": "evidence:ca-bc-mu-7-25-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 34,
-      "normalizedValue": 0.815476,
+      "normalizedValue": 0.589286,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14617,7 +14617,7 @@
       "id": "evidence:ca-bc-mu-7-25-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 141,
-      "normalizedValue": 0.815476,
+      "normalizedValue": 0.39881,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14713,7 +14713,7 @@
       "id": "evidence:ca-bc-mu-7-26-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 18,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.363095,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14737,7 +14737,7 @@
       "id": "evidence:ca-bc-mu-7-26-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 115,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.315476,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14833,7 +14833,7 @@
       "id": "evidence:ca-bc-mu-7-27-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 6,
-      "normalizedValue": 0.794643,
+      "normalizedValue": 0.065476,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14857,7 +14857,7 @@
       "id": "evidence:ca-bc-mu-7-27-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 42,
-      "normalizedValue": 0.794643,
+      "normalizedValue": 0.166667,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -14953,7 +14953,7 @@
       "id": "evidence:ca-bc-mu-7-28-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 35,
-      "normalizedValue": 0.794643,
+      "normalizedValue": 0.604167,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -14977,7 +14977,7 @@
       "id": "evidence:ca-bc-mu-7-28-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 223,
-      "normalizedValue": 0.794643,
+      "normalizedValue": 0.511905,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15073,7 +15073,7 @@
       "id": "evidence:ca-bc-mu-7-29-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 1,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.008929,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15097,7 +15097,7 @@
       "id": "evidence:ca-bc-mu-7-29-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 8,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.02381,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15193,7 +15193,7 @@
       "id": "evidence:ca-bc-mu-7-30-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 15,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 0.270833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15217,7 +15217,7 @@
       "id": "evidence:ca-bc-mu-7-30-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 135,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 0.380952,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15313,7 +15313,7 @@
       "id": "evidence:ca-bc-mu-7-31-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 10,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.229167,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15337,7 +15337,7 @@
       "id": "evidence:ca-bc-mu-7-31-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 77,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.25,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15433,7 +15433,7 @@
       "id": "evidence:ca-bc-mu-7-32-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 52,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.761905,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15457,7 +15457,7 @@
       "id": "evidence:ca-bc-mu-7-32-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 377,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.690476,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15553,7 +15553,7 @@
       "id": "evidence:ca-bc-mu-7-33-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 38,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.636905,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15577,7 +15577,7 @@
       "id": "evidence:ca-bc-mu-7-33-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 950,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.922619,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15673,7 +15673,7 @@
       "id": "evidence:ca-bc-mu-7-34-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 46,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.720238,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15697,7 +15697,7 @@
       "id": "evidence:ca-bc-mu-7-34-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 606,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.821429,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15793,7 +15793,7 @@
       "id": "evidence:ca-bc-mu-7-35-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 73,
-      "normalizedValue": 0.892857,
+      "normalizedValue": 0.883929,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15817,7 +15817,7 @@
       "id": "evidence:ca-bc-mu-7-35-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 3914,
-      "normalizedValue": 0.892857,
+      "normalizedValue": 0.994048,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -15913,7 +15913,7 @@
       "id": "evidence:ca-bc-mu-7-36-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 11,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.238095,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -15937,7 +15937,7 @@
       "id": "evidence:ca-bc-mu-7-36-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 126,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.357143,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16033,7 +16033,7 @@
       "id": "evidence:ca-bc-mu-7-37-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 13,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.247024,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16057,7 +16057,7 @@
       "id": "evidence:ca-bc-mu-7-37-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 134,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.375,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16153,7 +16153,7 @@
       "id": "evidence:ca-bc-mu-7-38-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 82,
-      "normalizedValue": 0.910714,
+      "normalizedValue": 0.925595,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16177,7 +16177,7 @@
       "id": "evidence:ca-bc-mu-7-38-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 642,
-      "normalizedValue": 0.910714,
+      "normalizedValue": 0.839286,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16273,7 +16273,7 @@
       "id": "evidence:ca-bc-mu-7-39-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 13,
-      "normalizedValue": 0.892857,
+      "normalizedValue": 0.247024,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16297,7 +16297,7 @@
       "id": "evidence:ca-bc-mu-7-39-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 47,
-      "normalizedValue": 0.892857,
+      "normalizedValue": 0.184524,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16393,7 +16393,7 @@
       "id": "evidence:ca-bc-mu-7-40-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 3,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.032738,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16417,7 +16417,7 @@
       "id": "evidence:ca-bc-mu-7-40-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 15,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.056548,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16513,7 +16513,7 @@
       "id": "evidence:ca-bc-mu-7-41-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.145833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16537,7 +16537,7 @@
       "id": "evidence:ca-bc-mu-7-41-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 65,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.229167,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16633,7 +16633,7 @@
       "id": "evidence:ca-bc-mu-7-42-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 37,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.625,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16657,7 +16657,7 @@
       "id": "evidence:ca-bc-mu-7-42-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 201,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.485119,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16753,7 +16753,7 @@
       "id": "evidence:ca-bc-mu-7-43-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 23,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.440476,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16777,7 +16777,7 @@
       "id": "evidence:ca-bc-mu-7-43-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 305,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.604167,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16873,7 +16873,7 @@
       "id": "evidence:ca-bc-mu-7-44-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 39,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.645833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -16897,7 +16897,7 @@
       "id": "evidence:ca-bc-mu-7-44-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 304,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.595238,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -16993,7 +16993,7 @@
       "id": "evidence:ca-bc-mu-7-45-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 23,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.440476,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17017,7 +17017,7 @@
       "id": "evidence:ca-bc-mu-7-45-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 137,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.386905,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17113,7 +17113,7 @@
       "id": "evidence:ca-bc-mu-7-46-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 40,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 0.666667,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17137,7 +17137,7 @@
       "id": "evidence:ca-bc-mu-7-46-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 1011,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 0.940476,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17233,7 +17233,7 @@
       "id": "evidence:ca-bc-mu-7-47-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 3,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.032738,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17257,7 +17257,7 @@
       "id": "evidence:ca-bc-mu-7-47-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 30,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.133929,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17353,7 +17353,7 @@
       "id": "evidence:ca-bc-mu-7-48-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 20,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.389881,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17377,7 +17377,7 @@
       "id": "evidence:ca-bc-mu-7-48-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 280,
-      "normalizedValue": 0.75,
+      "normalizedValue": 0.547619,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17473,7 +17473,7 @@
       "id": "evidence:ca-bc-mu-7-49-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 19,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.372024,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17497,7 +17497,7 @@
       "id": "evidence:ca-bc-mu-7-49-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 223,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.511905,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17593,7 +17593,7 @@
       "id": "evidence:ca-bc-mu-7-50-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 48,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.735119,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17617,7 +17617,7 @@
       "id": "evidence:ca-bc-mu-7-50-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 389,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.702381,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17713,7 +17713,7 @@
       "id": "evidence:ca-bc-mu-7-51-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 109,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.988095,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17737,7 +17737,7 @@
       "id": "evidence:ca-bc-mu-7-51-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 641,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.833333,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17857,7 +17857,7 @@
       "id": "evidence:ca-bc-mu-7-52-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 444,
-      "normalizedValue": 0.892857,
+      "normalizedValue": 0.738095,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -17953,7 +17953,7 @@
       "id": "evidence:ca-bc-mu-7-53-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 7,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.083333,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -17977,7 +17977,7 @@
       "id": "evidence:ca-bc-mu-7-53-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 20,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.083333,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18073,7 +18073,7 @@
       "id": "evidence:ca-bc-mu-7-54-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 24,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.470238,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18097,7 +18097,7 @@
       "id": "evidence:ca-bc-mu-7-54-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 120,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.33631,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18193,7 +18193,7 @@
       "id": "evidence:ca-bc-mu-7-57-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.145833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18217,7 +18217,7 @@
       "id": "evidence:ca-bc-mu-7-57-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 56,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.214286,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18313,7 +18313,7 @@
       "id": "evidence:ca-bc-mu-8-1-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 37,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.625,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18337,7 +18337,7 @@
       "id": "evidence:ca-bc-mu-8-1-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 723,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.886905,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18433,7 +18433,7 @@
       "id": "evidence:ca-bc-mu-8-3-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 4,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.044643,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18457,7 +18457,7 @@
       "id": "evidence:ca-bc-mu-8-3-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 23,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.095238,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18553,7 +18553,7 @@
       "id": "evidence:ca-bc-mu-8-4-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 2,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.02381,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18577,7 +18577,7 @@
       "id": "evidence:ca-bc-mu-8-4-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 6,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.011905,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18673,7 +18673,7 @@
       "id": "evidence:ca-bc-mu-8-5-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 72,
-      "normalizedValue": 0.922619,
+      "normalizedValue": 0.869048,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18697,7 +18697,7 @@
       "id": "evidence:ca-bc-mu-8-5-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 508,
-      "normalizedValue": 0.922619,
+      "normalizedValue": 0.77381,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18793,7 +18793,7 @@
       "id": "evidence:ca-bc-mu-8-6-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 25,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 0.491071,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18817,7 +18817,7 @@
       "id": "evidence:ca-bc-mu-8-6-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 490,
-      "normalizedValue": 0.848214,
+      "normalizedValue": 0.761905,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -18913,7 +18913,7 @@
       "id": "evidence:ca-bc-mu-8-7-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 10,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.229167,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -18937,7 +18937,7 @@
       "id": "evidence:ca-bc-mu-8-7-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 35,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.142857,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19033,7 +19033,7 @@
       "id": "evidence:ca-bc-mu-8-8-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 30,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.529762,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19057,7 +19057,7 @@
       "id": "evidence:ca-bc-mu-8-8-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 822,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.910714,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19153,7 +19153,7 @@
       "id": "evidence:ca-bc-mu-8-9-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 7,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.083333,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19177,7 +19177,7 @@
       "id": "evidence:ca-bc-mu-8-9-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 7,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.017857,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19273,7 +19273,7 @@
       "id": "evidence:ca-bc-mu-8-10-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 46,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.720238,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19297,7 +19297,7 @@
       "id": "evidence:ca-bc-mu-8-10-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 354,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.660714,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19393,7 +19393,7 @@
       "id": "evidence:ca-bc-mu-8-11-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 23,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.440476,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19417,7 +19417,7 @@
       "id": "evidence:ca-bc-mu-8-11-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 154,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.440476,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19513,7 +19513,7 @@
       "id": "evidence:ca-bc-mu-8-12-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 87,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.946429,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19537,7 +19537,7 @@
       "id": "evidence:ca-bc-mu-8-12-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 695,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.877976,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19633,7 +19633,7 @@
       "id": "evidence:ca-bc-mu-8-13-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.145833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19657,7 +19657,7 @@
       "id": "evidence:ca-bc-mu-8-13-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 15,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.056548,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19753,7 +19753,7 @@
       "id": "evidence:ca-bc-mu-8-14-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 71,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.857143,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19777,7 +19777,7 @@
       "id": "evidence:ca-bc-mu-8-14-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 742,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.89881,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19873,7 +19873,7 @@
       "id": "evidence:ca-bc-mu-8-15-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 35,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.604167,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -19897,7 +19897,7 @@
       "id": "evidence:ca-bc-mu-8-15-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 371,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.678571,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -19993,7 +19993,7 @@
       "id": "evidence:ca-bc-mu-8-21-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.145833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20017,7 +20017,7 @@
       "id": "evidence:ca-bc-mu-8-21-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 92,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.279762,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20113,7 +20113,7 @@
       "id": "evidence:ca-bc-mu-8-23-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 48,
-      "normalizedValue": 0.794643,
+      "normalizedValue": 0.735119,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20137,7 +20137,7 @@
       "id": "evidence:ca-bc-mu-8-23-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 345,
-      "normalizedValue": 0.794643,
+      "normalizedValue": 0.651786,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
@@ -20233,7 +20233,7 @@
       "id": "evidence:ca-bc-mu-8-25-gray-wolf-hunters-2024",
       "metric": "HUNTER_COUNT",
       "rawValue": 8,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.145833,
       "unit": "hunters",
       "notes": "Resident and non-resident hunters, as the authority reports them."
     },
@@ -20257,7 +20257,7 @@
       "id": "evidence:ca-bc-mu-8-25-gray-wolf-hunter-days-2024",
       "metric": "HUNTER_DAYS",
       "rawValue": 38,
-      "normalizedValue": 0.360119,
+      "normalizedValue": 0.14881,
       "unit": "hunter days",
       "notes": "Resident and non-resident hunter days, as the authority reports them."
     },
