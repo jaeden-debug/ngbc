@@ -112,7 +112,14 @@ export const CONDITIONS_SHOWN = 3;
  */
 export function conditionDigest(
   answer: ZoneSpeciesAnswer | undefined,
-  lang: LimitationLang = "en-CA",
+  /*
+   * REQUIRED, not defaulted. This filters which conditions a reader can
+   * actually read, so a default would quietly decide that for every caller —
+   * and the one call site was taking it. A defaulted `lang` has mislabelled
+   * authority text in this codebase once already; the cost of requiring it is
+   * one word at the call site.
+   */
+  lang: LimitationLang,
 ): { shown: OpportunityCondition[]; further: number } {
   const all = answer?.opportunity.conditions ?? [];
   const readable = all.filter((condition) => condition.lang === lang);

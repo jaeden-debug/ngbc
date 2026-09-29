@@ -119,6 +119,21 @@ const LANGUAGE_NAME: Record<LimitationLang, string> = {
 
 export const languageName = (lang: LimitationLang): string => LANGUAGE_NAME[lang] ?? lang;
 
+/**
+ * The language the interface is in.
+ *
+ * One declared value rather than a literal at each call site, and rather than a
+ * DEFAULT PARAMETER. The difference matters: a default makes the language
+ * invisible at the call site, so a caller that should have thought about it
+ * never does — and a defaulted `lang` has already mislabelled authority text in
+ * this codebase once. Naming it here makes every reader of a call site see
+ * which language was chosen, and gives a locale selector one place to attach.
+ *
+ * It is the READER's language, never a source's. Nothing about a record's own
+ * language is decided here.
+ */
+export const INTERFACE_LANGUAGE: LimitationLang = "en-CA";
+
 interface TranslationRow {
   /** The source text, verbatim and complete. The key. */
   from: string;

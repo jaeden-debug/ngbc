@@ -38,6 +38,13 @@ import type { LimitationLang } from "./limitation.ts";
  *    latent: reverting the fix leaves this file green. It is recorded here
  *    rather than left to look tested.
  *
+ *    COVERED ELSEWHERE SINCE 2026-09-29: `conditional-engine.test.ts` builds a
+ *    synthetic `fr-CA` bundle that DOES encode a limit, so the case exists on a
+ *    fixture rather than waiting for a real jurisdiction to grow one. Reverting
+ *    the engine's `lang: "en-CA"` fails there and still leaves this file green,
+ *    which was checked rather than assumed. This paragraph stays: it describes
+ *    what THIS sweep can and cannot see, and that has not changed.
+ *
  * So the guard below refuses to pass on a sweep that found nothing to look at.
  */
 

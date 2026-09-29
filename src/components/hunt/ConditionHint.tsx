@@ -2,6 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef } from "react";
 import { conditionDigest } from "../../lib/hunt/exploration/species-layer";
+import { INTERFACE_LANGUAGE } from "../../lib/hunt/translation";
 import type { ZoneSpeciesAnswer } from "../../lib/hunt/exploration/states";
 import styles from "./HuntApp.module.css";
 
@@ -63,7 +64,7 @@ export default function ConditionHint({
     };
   }, [onClose]);
 
-  const { shown, further } = conditionDigest(answer);
+  const { shown, further } = conditionDigest(answer, INTERFACE_LANGUAGE);
   const WIDTH = 248;
   const half = WIDTH / 2;
   const left = surface ? Math.min(Math.max(at.x, half + 8), Math.max(half + 8, surface.width - half - 8)) : at.x;

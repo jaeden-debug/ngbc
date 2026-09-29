@@ -158,3 +158,51 @@ test("a rule that has not cleared review never answers", () => {
   const b = bundle([rule({ id: "r:draft", reviewStatus: "DRAFT" })], { meaning: "CLOSED" });
   assert.equal(status(evaluate(b, "2026-10-01")), "UNKNOWN");
 });
+
+test("a bag limit in a French-language bundle is still North Ground's English sentence", () => {
+  /*
+   * THE INSTRUMENT FOR A GUARD THAT COULD NOT FAIL.
+   *
+   * The engine composes "Bag limit: …" itself, in English, and once tagged it
+   * with the BUNDLE'S language — so a Québec bag limit would have gone out
+   * labelled French. The fix is one line in the engine, and
+   * `language-integrity.test.ts` says in its own header that it cannot see it:
+   * Québec is the only bundle declaring `fr-CA` and it encodes no harvest
+   * limit, so reverting the fix leaves that sweep green.
+   *
+   * A guard nobody can make fail is not a guard. This is the missing case, on
+   * the synthetic jurisdiction rather than on Québec, so it holds whatever
+   * Québec's bundle happens to encode next year.
+   *
+   * REVERTING THE ENGINE'S `lang: "en-CA"` TO `vocabulary.lang` FAILS HERE.
+   */
+  const withLimit = [rule({
+    id: "r:limit",
+    limits: { statedAs: "1 lièvre par jour", section: "Annexe I" },
+  })];
+
+  const french: ConditionalVocabulary = { ...VOCABULARY, lang: "fr-CA" };
+  const evaluation = evaluateConditional(bundle(withLimit), french, {
+    speciesId: DEER, speciesName: "white-tailed deer", date: "2026-10-01", answers: {},
+    place: { zoneId: "management_zone:xx-yy-unit-1", zoneName: "Unit unit-1", latitude: 50, longitude: -100, overlays: new Set() },
+  });
+
+  /* The structured conditions, not the derived strings: `lang` lives on the
+     structure, and the strings are built from it. */
+  const limits = (evaluation.result?.conditions ?? []).filter((line) => line.text.startsWith("Bag limit"));
+  assert.equal(limits.length, 1, "the bundle encodes a limit, so the engine states one");
+
+  const [line] = limits;
+  /* The sentence is North Ground's, in English, even though the bundle is
+     French. The authority's figure inside it is a quoted fragment, and a mixed
+     line is tagged by its OUTER author. */
+  assert.equal(line.lang, "en-CA");
+  assert.equal(line.owner, "NORTH_GROUND");
+  assert.match(line.text, /^Bag limit: /);
+  assert.match(line.text, /1 lièvre par jour/, "the authority's own figure is carried, not translated");
+
+  /* And the bundle really was French, so this cannot pass by the fixture being
+     English by accident — the failure mode that made the original guard
+     untestable. */
+  assert.equal(french.lang, "fr-CA");
+});
