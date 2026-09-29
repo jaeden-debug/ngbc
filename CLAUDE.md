@@ -1796,8 +1796,39 @@ full Hunt each time.
   refuge) is "Needs a closer look"; UNKNOWN stays UNKNOWN and is never drawn as
   CLOSED. A season is never claimed inside a published restricted area that lies
   within the zone: the card says "In season outside restricted areas" and names
-  each area with the authority's own restriction text. The optional species filter uses the same states, with a word and a glyph
-  as well as a colour — never a green/red legality heatmap.
+  each area with the authority's own restriction text.
+
+## The species layer: heat and open season
+
+*Decided 2026-09-29 (owner). This supersedes the previous rule that the species
+filter must never use colour for legality.*
+
+Choosing a species turns the map into a **layer** over the same geography: a
+semi-translucent **heat signature** showing where the evidence suggests
+investigating, and a **green highlight** on the zones whose season is open for
+that species. Nothing else is drawn. The layer answers one question — *where
+should I look, and where is it open* — and it answers it at a glance.
+
+- **Open is binary on the layer.** A zone is highlighted green or it is not.
+  Conditional, needs-a-closer-look, unknown and not-certified are **not**
+  separate map indicators; drawing five states on a map answers no question
+  quickly. This is a deliberate simplification of the *map layer only*.
+- **The zone card is unchanged and remains the full answer.** Tapping a zone
+  opens the ordinary zone sheet, with every state, condition, source and
+  limitation §41A already requires. The layer is a way in, never the answer.
+- **Green means a season is open for that species in that zone.** It is not a
+  licence check and never implies one. Anything that turns on the hunter belongs
+  in the card, where there is room to say it.
+- **A zone that is not green is not thereby closed.** Uncertified and unknown
+  zones are simply unhighlighted, and the layer's own legend says so in words.
+  §48 still binds: the meaning is never carried by colour alone, so the legend
+  and the card carry it in text.
+- **Heat never implies legality and green never implies animals.** They are two
+  independent layers over one geography, and §41B's separation of species
+  opportunity from legal status is unchanged.
+- **Heat resolution never exceeds evidence resolution** (§41B). A zone with no
+  certified evidence draws no heat rather than a cold value, because absent
+  evidence is not evidence of absence.
 - **Address → zone card.** Choosing a searched place sets the hunt location, drops
   the hunt pin, resolves and highlights the official zone, frames it beside the card
   and opens that zone's card.
