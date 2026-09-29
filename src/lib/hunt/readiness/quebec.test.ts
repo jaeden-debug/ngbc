@@ -219,3 +219,31 @@ test("quebecOrange is pure in its inputs, so the sheet and the brief cannot disa
   const b = quebecOrange("species:arctic-hare", { HUNT_METHOD: "SNARE" });
   assert.deepEqual(a, b);
 });
+
+/* ── Language ────────────────────────────────────────────────────────────── */
+
+test("the ministry's licence names stay French, and stop claiming to be English", () => {
+  /*
+   * « Certificat du chasseur », « Permis de chasse au petit gibier ». The row
+   * builder hardcoded `en-CA`, so a screen reader pronounced them with English
+   * phonetics and nothing on screen showed it.
+   *
+   * THE NAMES ARE NOT TRANSLATED. §47 keeps an official name in the authority's
+   * own words, and a licence a hunter has to ask a vendor for by name is
+   * exactly what that rule exists for. What was wrong was the label.
+   *
+   * The language is DECLARED by the jurisdiction module rather than stored in
+   * the bundle: Ontario's readiness bundle is generated, so a field hand-added
+   * to a generated file disappears at the next rebuild — silently, with the
+   * mislabel back and nothing to show it.
+   */
+  const result = check("species:snowshoe-hare");
+  const rows = result.requirements ?? [];
+  assert.ok(rows.length > 0, "Québec states authorizations for snowshoe hare");
+  for (const row of rows) {
+    assert.equal(row.officialName.lang, "fr-CA", row.officialName.text);
+    assert.equal(row.officialName.owner, "AUTHORITY");
+    // And the name itself is untouched — never rendered into English.
+    assert.doesNotMatch(row.officialName.text, /\blicence for\b|\bhunter certificate\b/i);
+  }
+});

@@ -37,8 +37,28 @@ import bundle from "../../../../content/regulatory/readiness/ca-qc-2026.json" wi
  * VERIFIED, so the checklist reads as partial rather than as complete.
  */
 
+/*
+ * THE LANGUAGE QUÉBEC NAMES ITS AUTHORIZATIONS IN, declared here rather than in
+ * the bundle.
+ *
+ * « Certificat du chasseur », « Permis de chasse au petit gibier ». Every row
+ * was hardcoded `en-CA` downstream, so a screen reader pronounced them with
+ * English phonetics. The names themselves are NOT translated — §47 keeps an
+ * official name in the authority's own words, and a licence a hunter has to ask
+ * a vendor for by name is exactly what that rule is for. What was wrong was the
+ * label.
+ *
+ * In code, not in the JSON, because Ontario's readiness bundle is GENERATED
+ * (`scripts/build-ontario-readiness.mjs`): a field hand-added to a generated
+ * file disappears at the next rebuild, silently, and the mislabel comes back
+ * with nothing to show it. The jurisdiction module is the owner of this fact
+ * and is not regenerated.
+ */
+const NAME_LANG = "fr-CA" as const;
+
 const RECORDS = new Map<string, AuthorizationRecord>(
-  (bundle.authorizations as unknown as AuthorizationRecord[]).map((record) => [record.id, record]),
+  (bundle.authorizations as unknown as AuthorizationRecord[])
+    .map((record) => [record.id, { ...record, officialNameLang: NAME_LANG }]),
 );
 const REQUIREMENTS = bundle.requirements as unknown as Record<string, Parameters<typeof resolveAuthorizations>[0]>;
 const ORANGE = bundle.orange as unknown as {
