@@ -380,13 +380,23 @@
   bottom: 0;
   display: flex;
   flex-direction: column;
-  height: var(--sheet-full, 88dvh);
+  /*
+   * ONE source of truth for this height.
+   *
+   * It used to fall back to `88dvh`, which is the LAYOUT viewport — so before
+   * the first measurement the sheet was sized from one viewport and after it
+   * from another, which is the double compensation that makes a keyboard
+   * behave differently on the first open than on the second. The fallback is
+   * now the same arithmetic the measurement produces, in dynamic-viewport CSS,
+   * so the two agree instead of taking turns.
+   */
+  height: var(--sheet-full, calc(100dvh - 8px));
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
   border-bottom: 0;
   border-radius: var(--sheet-radius) var(--sheet-radius) 0 0;
   background-color: var(--ng-glass-bg-dense);
-  transform: translateY(calc(var(--sheet-full, 88dvh) - var(--sheet-h, calc(148px + env(safe-area-inset-bottom)))));
+  transform: translateY(calc(var(--sheet-full, calc(100dvh - 8px)) - var(--sheet-h, calc(148px + env(safe-area-inset-bottom)))));
   transition: transform 300ms var(--ease);
   touch-action: none;
   overscroll-behavior: contain;
@@ -1390,4 +1400,51 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .findGameHint { animation: none; }
+}
+
+
+/* ── The composer, anchored above the keyboard ─────────────────────────── */
+
+/*
+ * With the keyboard open the field sits on the visible bottom edge and what it
+ * offers takes the space above it, the way a phone messaging composer does.
+ *
+ * The field is LAST visually and FIRST in the DOM. That is deliberate: `order`
+ * moves the box, not the document, so a screen reader still meets the input
+ * before the listbox it controls, and `aria-activedescendant` still points
+ * where it did. Reordering the markup instead would have changed what a
+ * screen-reader user hears in order to move a box on a screen.
+ *
+ * There is exactly ONE scroller here — the region above the field. The sheet
+ * body stops scrolling in this state and the recents list gives up its own
+ * max-height, because two nested scrollers is how content becomes unreachable
+ * with a thumb.
+ */
+.app[data-layout="sheet"][data-composer="open"] .sheetBody { overflow: hidden; }
+
+.app[data-layout="sheet"][data-composer="open"] .composerAnchored {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  gap: 10px;
+}
+.app[data-layout="sheet"][data-composer="open"] .composerAnchored .searchField {
+  order: 1;
+  flex: none;
+}
+.app[data-layout="sheet"][data-composer="open"] .composerScroll {
+  order: 0;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.app[data-layout="sheet"][data-composer="open"] .recentScroll {
+  max-height: none;
+  overflow: visible;
 }

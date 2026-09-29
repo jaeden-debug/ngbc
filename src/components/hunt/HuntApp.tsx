@@ -1554,7 +1554,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   ];
 
   return (
-    <div className={styles.app} ref={rootRef} style={rootStyle} data-layout={layout} data-snap={layout === "sheet" ? snap : undefined} data-hunt-root="">
+    <div className={styles.app} ref={rootRef} style={rootStyle} data-layout={layout} data-snap={layout === "sheet" ? snap : undefined} data-composer={composerOpen && layout === "sheet" ? "open" : undefined} data-hunt-root="">
       {/* TEMPORARY, ?diag=1 only: a geometry readout for measuring on a real device. */}
       {diagnostics ? <HuntDiagnostics /> : null}
       <div className={styles.safeProbe} ref={safeProbeRef} aria-hidden="true" />
@@ -1585,7 +1585,16 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
             inputRef={composerRef}
           />
         ) : null}
-        {body}
+        {/*
+          While the field is open on a phone the composer owns the sheet.
+          The keyboard takes the lower half and the field is pinned to what is
+          left, so anything rendered after it would sit BETWEEN the results and
+          the field a hunter is typing in — which is the layout the owner
+          described as the composer migrating up the page. §41A already says
+          every way of choosing a place lives inside the opened field; this is
+          that, in the one state where the screen cannot hold both.
+        */}
+        {composerOpen && layout === "sheet" ? null : body}
       </HuntSheet>
 
       <div className={styles.mapRegion}>

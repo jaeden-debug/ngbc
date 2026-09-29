@@ -1327,6 +1327,21 @@ const scenarios = {
           otherScrollers: others,
           focused: document.activeElement?.tagName ?? "",
           isField: document.activeElement === document.querySelector("input[type='search']"),
+          anchored: (() => {
+            const composer = document.querySelector("[class*='composerAnchored']");
+            const results = composer?.querySelector("[class*='composerScroll']");
+            if (!composer || !results || !field) return null;
+            const r = results.getBoundingClientRect();
+            return field.top >= r.bottom - 1;
+          })(),
+          anchor: (() => {
+            const results = document.querySelector("[class*='composerScroll']")?.getBoundingClientRect();
+            return { field: field ? [Math.round(field.top), Math.round(field.bottom)] : null,
+                     results: results ? [Math.round(results.top), Math.round(results.bottom)] : null };
+          })(),
+          dismissControls: [...document.querySelectorAll("section[data-layout] button")]
+            .map((b) => (b.getAttribute("aria-label") || b.textContent || "").trim())
+            .filter((name) => /dismiss|hide keyboard|close keyboard|^done$/i.test(name)),
         };
       });
       const keyboard = (on) => page.evaluate((open) => {
@@ -1347,6 +1362,17 @@ const scenarios = {
       check(s, `${width}: the composer stays above the keyboard`, open.fieldOnScreen, JSON.stringify(open));
       check(s, `${width}: the shell covers the whole visible band — no black strip`,
         open.uncovered <= 1, JSON.stringify({ band: open.band, shell: open.shell, uncovered: open.uncovered }));
+      /*
+       * The owner's model: the field on the visible bottom edge, what it
+       * offers above it. Asserted as an ORDER, not a pixel offset — the point
+       * is that the field is the last thing before the keyboard, at any size.
+       */
+      check(s, `${width}: the composer is anchored below its results`,
+        open.anchored === true, JSON.stringify(open.anchor));
+      /* There is no close-keyboard control, and there must never be one: the
+         lifecycle is tap to open, submit / swipe / choose / close to dismiss. */
+      check(s, `${width}: no keyboard-dismiss control exists`,
+        open.dismissControls.length === 0, open.dismissControls.join(", "));
       check(s, `${width}: nothing else has become a vertical scroller`,
         open.otherScrollers.length === 0, open.otherScrollers.join(", "));
       /* The void: a scroller whose content ends long before its scroll height
@@ -1375,6 +1401,15 @@ const scenarios = {
         check(s, `${width}: restoring the viewport leaves the zone alone`, zoneAfter === zone, `${zone} -> ${zoneAfter}`);
         check(s, `${width}: and does not refocus the composer`, after.isField === false, JSON.stringify(after));
         check(s, `${width}: the sheet is back inside the restored viewport`, after.topOnScreen, JSON.stringify(after));
+
+        /* A swipe-down is a decision. Nothing may take it back — the owner
+           asked explicitly that an interactive dismissal not be fought. */
+        await page.locator("input[type='search']").first().click();
+        await page.waitForTimeout(500);
+        await page.evaluate(() => document.querySelector("input[type='search']")?.blur());
+        await page.waitForTimeout(1_500);
+        const afterBlur = await geometry();
+        check(s, `${width}: a dismissal is not undone by a refocus`, afterBlur.isField === false, JSON.stringify(afterBlur.focused));
 
         // Tapping it again focuses it, as it would on a phone.
         await page.locator("input[type='search']").first().click();

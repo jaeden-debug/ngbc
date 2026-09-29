@@ -73,6 +73,24 @@ export default function PlaceComposer({
     sessionTokenRef.current = newSessionToken();
   }, []);
 
+  /*
+   * Closing the search takes the keyboard with it.
+   *
+   * The three ways out — submitting, choosing a result, and closing — all end
+   * with the field blurred, so the keyboard is never left sitting over the
+   * answer someone just asked for. This is the third; the other two blur at
+   * their own call sites.
+   *
+   * It fires only on the OPEN -> CLOSED edge. Blurring on every render would
+   * fight a hunter who has swiped the keyboard down and then tapped the field
+   * again, which is the one thing the owner asked us not to do.
+   */
+  const wasOpenRef = useRef(open);
+  useEffect(() => {
+    if (wasOpenRef.current && !open) inputRef.current?.blur();
+    wasOpenRef.current = open;
+  }, [open, inputRef]);
+
   useEffect(() => {
     if (!autoFocus) return;
     // After the sheet has risen, so the keyboard does not push a moving target.
@@ -168,6 +186,15 @@ export default function PlaceComposer({
   }, [onChoose, inputRef]);
 
   function onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    /*
+     * Never submit mid-composition. An IME (Japanese, Chinese, Korean, and a
+     * phone's own predictive input) uses Enter to COMMIT the characters being
+     * composed, and that keystroke arrives here as a plain Enter. Submitting
+     * on it searches for half a word and takes the keyboard away while someone
+     * is still typing. `isComposing` is the platform's own answer to this;
+     * keyCode 229 is the older browsers' way of saying the same thing.
+     */
+    if (event.nativeEvent.isComposing || event.keyCode === 229) return;
     if (event.key === "Escape") {
       event.preventDefault();
       setQuery("");
@@ -214,7 +241,7 @@ export default function PlaceComposer({
       : "";
 
   return (
-    <div className={styles.page}>
+    <div className={open ? `${styles.page} ${styles.composerAnchored}` : styles.page}>
       {/* A search, not a form: Enter picks the highlighted place and nothing is ever submitted. */}
       <div className={styles.searchField} role="search">
         <svg className={styles.searchIcon} width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" fill="none">
@@ -268,8 +295,9 @@ export default function PlaceComposer({
         ) : null}
       </div>
 
+      {/* Everything the field offers, as the ONE scroller in this state. */}
       {open ? (
-        <>
+        <div className={styles.composerScroll}>
       <p className={styles.searchStatus} id={`${id}-status`} role="status" data-tone={state.kind === "unavailable" ? "error" : undefined}>
         {status}
       </p>
@@ -387,7 +415,7 @@ export default function PlaceComposer({
         </ul>
         </>
       )}
-        </>
+        </div>
       ) : locateMessage ? (
         <p className={styles.searchStatus} role="status" data-tone="error">{locateMessage}</p>
       ) : null}
