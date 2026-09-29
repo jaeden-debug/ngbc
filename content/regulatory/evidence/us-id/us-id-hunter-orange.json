@@ -6,7 +6,10 @@
     "model": "THE_LAW_S_ANSWER",
     "note": "Closes the HUNTER_ORANGE measured absence recorded in us-id-measured-absence-orange.json. That package said what would close it — 'a positive statement from IDFG' — and this is that statement, plus the rule the requirement actually lives in."
   },
-  "authority": { "name": "Idaho Department of Fish and Game", "lang": "en-US" },
+  "authority": {
+    "name": "Idaho Department of Fish and Game",
+    "lang": "en-US"
+  },
   "source": {
     "id": "source:us-id-hunter-orange-policy",
     "title": "Idaho Hunter Orange Policy",
@@ -40,14 +43,29 @@
         "why": "Checked for a big game orange requirement. See searchLimitation — the check is corroborating, not decisive."
       }
     ],
-    "inForce": { "state": "IN_FORCE", "statedAs": "Rule sections dated (3-31-22); policy adopted November 6, 2008 and published as current.", "asOf": "2026-09-23", "checkedOn": "2026-09-23" },
+    "inForce": {
+      "state": "IN_FORCE",
+      "statedAs": "Rule sections dated (3-31-22); policy adopted November 6, 2008 and published as current.",
+      "asOf": "2026-09-23",
+      "checkedOn": "2026-09-23"
+    },
     "licence": {
-      "statedAs": "Idaho Administrative Code and Idaho Fish and Game publications are State of Idaho government works. No reuse restriction was located on either source.",
       "retrievedAt": "2026-09-23",
       "permittedUse": "NOT_ESTABLISHED",
-      "licencePermitsServing": true,
-      "licencePermitsStoredCopy": true,
-      "note": "Under CLAUDE.md §8 this package encodes the RULE in North Ground's own words and does not depend on reproducing protected wording, so the licence question is not load-bearing here. Recorded as not established rather than asserted as permissive."
+      "licencePermitsServing": "NOT_ESTABLISHED_NOT_RELIED_ON",
+      "licencePermitsStoredCopy": "NOT_ESTABLISHED_NOT_RELIED_ON",
+      "note": "Two defects fixed 2026-09-29. (1) The finding above previously sat in `statedAs` — documented as “the publisher's words, quoted exactly and never paraphrased” — which made North Ground's own licence reading read as Idaho's statement about itself. A publisher does not say that about itself. (2) `licencePermitsServing` and `licencePermitsStoredCopy` read `true` beside `permittedUse: NOT_ESTABLISHED`, so the record asserted a permission and denied establishing one at the same time. Both now say what is actually true: nothing was established, and nothing here relies on it.",
+      "publisherStatement": {
+        "state": "NONE_LOCATED",
+        "checkedOn": "2026-09-23",
+        "note": "No reuse or copyright statement was located on either source. This record therefore carries NO `statedAs`: that field means the publisher's words quoted exactly, and there are none to quote."
+      },
+      "northGroundFinding": "Idaho Administrative Code and Idaho Fish and Game publications appear to be State of Idaho government works, and no reuse restriction was located on either source. This is North Ground's reading, not a statement by the publisher.",
+      "dependsOnVerbatim": {
+        "count": 1,
+        "where": "The IDAPA 13.01.09.300.01.e row, whose scope turns on 'locations' rather than a species.",
+        "note": "Everything else in this package is encoded as a structured rule in North Ground's own words under §8, so the licence question reaches exactly one sentence rather than the package."
+      }
     }
   },
   "requirements": [
@@ -55,12 +73,23 @@
       "category": "VISIBILITY",
       "kind": "hunter orange",
       "state": "NOT_APPLICABLE",
-      "officialName": { "text": "Idaho Hunter Orange Policy", "lang": "en-US" },
+      "officialName": {
+        "text": "Idaho Hunter Orange Policy",
+        "lang": "en-US"
+      },
       "rule": "Idaho requires no hunter orange for big game. IDFG states that hunter orange is recommended but required only in enumerated situations, and big game hunting is not among them.",
       "citation": "Idaho Hunter Orange Policy; Idaho Fish and Game Commission policy adopted November 6, 2008",
       "scope": {
-        "speciesIds": ["species:pronghorn"],
-        "geography": { "kind": "JURISDICTION", "designations": ["ID"], "statedAs": null },
+        "speciesIds": [
+          "species:pronghorn"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "ID"
+          ],
+          "statedAs": null
+        },
         "methods": null,
         "gearClasses": null
       },
@@ -79,7 +108,10 @@
       "category": "VISIBILITY",
       "kind": "hunter orange",
       "state": "REQUIRED",
-      "officialName": { "text": "IDAPA 13.01.09, Unlawful Methods of Take", "lang": "en-US" },
+      "officialName": {
+        "text": "IDAPA 13.01.09, Unlawful Methods of Take",
+        "lang": "en-US"
+      },
       "rule": "When hunting on a location where an Upland Game Bird permit is required, at least 36 square inches of visible hunter orange must be worn above the waist. Taking upland game without it is an unlawful method of take.",
       "statedAs": {
         "text": "When hunting on locations where an Upland Game Bird permit is required, without wearing at least thirty-six (36) square inches of visible hunter orange above the waist.",
@@ -96,7 +128,11 @@
         },
         "methods": null
       },
-      "minimum": { "squareInches": 36, "placement": "above the waist", "statedAs": "at least thirty-six (36) square inches of visible hunter orange above the waist" },
+      "minimum": {
+        "squareInches": 36,
+        "placement": "above the waist",
+        "statedAs": "at least thirty-six (36) square inches of visible hunter orange above the waist"
+      },
       "divergence": {
         "what": "IDFG's own policy page narrows this rule when summarizing it. The page says orange is required 'while hunting PHEASANTS where the Upland Game Bird Permit is required'. The rule says 'when hunting on LOCATIONS where an Upland Game Bird permit is required' and names no species.",
         "why_it_matters": "A person hunting something other than pheasant on such a location is inside the rule and outside the page's description of it. The rule governs.",
