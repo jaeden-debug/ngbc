@@ -24,6 +24,7 @@ import { dirname, join } from "node:path";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const MATRIX = join(ROOT, "research/hunting/us/state-coverage-matrix.csv");
 const MANIFEST = join(ROOT, "research/hunting/us/source-manifest.csv");
+const AUTHORITIES = join(ROOT, "research/hunting/authorities.csv");
 const OUT = join(ROOT, "src/lib/hunt/united-states/jurisdictions.generated.json");
 
 /** RFC 4180 CSV, which the research files are: quoted fields may hold commas. */
@@ -53,9 +54,11 @@ export function parseCsv(text) {
   });
 }
 
-export function buildRegistry(matrixText, manifestText) {
+export function buildRegistry(matrixText, manifestText, authoritiesText) {
   const matrix = parseCsv(matrixText);
   const manifest = parseCsv(manifestText);
+  const authorities = parseCsv(authoritiesText);
+  const authorityById = new Map(authorities.map((row) => [row.authority_id, row]));
   if (matrix.length !== 51) throw new Error(`Research matrix has ${matrix.length} rows; expected 50 states and D.C.`);
   const codes = new Set(matrix.map((row) => row.subdivision_code));
   if (codes.size !== 51) throw new Error("Research matrix repeats a subdivision code");
@@ -66,13 +69,15 @@ export function buildRegistry(matrixText, manifestText) {
       const sources = sourcesFor(row.jurisdiction_id);
       const hub = sources.find((source) => source.scope === "STATE_OFFICIAL_HUB");
       if (!hub) throw new Error(`${row.jurisdiction_id} has no official hub in the source manifest`);
+      const authority = authorityById.get(row.authority_id);
+      if (!authority) throw new Error(`${row.jurisdiction_id} has no authority record for ${row.authority_id}`);
       if (!/^https:\/\//.test(hub.url)) throw new Error(`${row.jurisdiction_id} hub is not https: ${hub.url}`);
       return {
         id: row.jurisdiction_id,
         code: `US-${row.subdivision_code}`,
         name: row.jurisdiction_name,
         kind: row.subdivision_code === "DC" ? "district" : "state",
-        authorityId: row.authority_id,
+        authority: { id: row.authority_id, name: authority.official_name, url: authority.official_url },
         managementGeographies: row.management_geographies,
         officialSourceUrl: hub.url,
         research: {
@@ -86,9 +91,15 @@ export function buildRegistry(matrixText, manifestText) {
           annualArtifact: row.annual_artifact,
           reviewedAt: row.reviewed_at,
         },
-        sourceLeads: sources
-          .filter((source) => source.scope !== "STATE_OFFICIAL_HUB")
-          .map((source) => ({ title: source.title, url: source.url, legalStanding: source.legal_standing })),
+        officialSources: sources.map((source) => ({
+          id: source.source_key,
+          scope: source.scope,
+          title: source.title,
+          url: source.url,
+          legalStanding: source.legal_standing,
+          licenceStatus: source.licence_status,
+          verificationStatus: source.verification_status,
+        })),
         knownGaps: [row.known_blockers, `Federal dependencies: ${row.federal_land_dependencies}`].filter(Boolean),
       };
     })
@@ -114,7 +125,7 @@ function render(registry) {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const next = render(buildRegistry(readFileSync(MATRIX, "utf8"), readFileSync(MANIFEST, "utf8")));
+  const next = render(buildRegistry(readFileSync(MATRIX, "utf8"), readFileSync(MANIFEST, "utf8"), readFileSync(AUTHORITIES, "utf8")));
   if (process.argv.includes("--check")) {
     let current = "";
     try { current = readFileSync(OUT, "utf8"); } catch { /* absent */ }

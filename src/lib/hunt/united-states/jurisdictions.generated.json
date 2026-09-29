@@ -9,7 +9,11 @@
       "code": "US-AK",
       "name": "Alaska",
       "kind": "state",
-      "authorityId": "authority:us-ak-adfg",
+      "authority": {
+        "id": "authority:us-ak-adfg",
+        "name": "Alaska Department of Fish and Game Division of Wildlife Conservation",
+        "url": "https://www.adfg.alaska.gov/index.cfm?adfg=hunting.main"
+      },
       "managementGeographies": "Game Management Units and subunits; controlled-use/closed/management areas; federal subsistence areas",
       "officialSourceUrl": "https://www.adfg.alaska.gov/index.cfm?adfg=hunting.main",
       "research": {
@@ -23,11 +27,24 @@
         "annualArtifact": "Annual statewide/GMU regulation PDFs plus permit supplements and emergency orders",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [
+      "officialSources": [
         {
+          "id": "source:us-ak-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Hunting in Alaska",
+          "url": "https://www.adfg.alaska.gov/index.cfm?adfg=hunting.main",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        },
+        {
+          "id": "us-ak-gmu-maps",
+          "scope": "GIS_AND_HUNT_INDEX",
           "title": "Alaska hunting maps by GMU/species/hunt number",
           "url": "https://www.adfg.alaska.gov/index.cfm?adfg=huntingmaps.main",
-          "legalStanding": "Guidance; regulations and emergency orders control"
+          "legalStanding": "Guidance; regulations and emergency orders control",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "SOURCE_FOUND"
         }
       ],
       "knownGaps": [
@@ -40,7 +57,11 @@
       "code": "US-AL",
       "name": "Alabama",
       "kind": "state",
-      "authorityId": "authority:us-al-dcnr",
+      "authority": {
+        "id": "authority:us-al-dcnr",
+        "name": "Alabama Department of Conservation and Natural Resources Division of Wildlife and Freshwater Fisheries",
+        "url": "https://www.outdooralabama.com/hunting"
+      },
       "managementGeographies": "Game Management Area (GMA)",
       "officialSourceUrl": "https://www.outdooralabama.com/hunting",
       "research": {
@@ -54,7 +75,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-al-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Outdoor Alabama Hunting",
+          "url": "https://www.outdooralabama.com/hunting",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -65,7 +96,11 @@
       "code": "US-AR",
       "name": "Arkansas",
       "kind": "state",
-      "authorityId": "authority:us-ar-agfc",
+      "authority": {
+        "id": "authority:us-ar-agfc",
+        "name": "Arkansas Game and Fish Commission",
+        "url": "https://www.agfc.com/hunting/"
+      },
       "managementGeographies": "Zone/Management Area",
       "officialSourceUrl": "https://www.agfc.com/hunting/",
       "research": {
@@ -79,7 +114,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-ar-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Arkansas Hunting",
+          "url": "https://www.agfc.com/hunting/",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -90,7 +135,11 @@
       "code": "US-AZ",
       "name": "Arizona",
       "kind": "state",
-      "authorityId": "authority:us-az-gfd",
+      "authority": {
+        "id": "authority:us-az-gfd",
+        "name": "Arizona Game and Fish Department",
+        "url": "https://www.azgfd.com/hunting/"
+      },
       "managementGeographies": "Game Management Units and species hunt areas; six administrative regions; special access/closure areas",
       "officialSourceUrl": "https://www.azgfd.com/hunting/",
       "research": {
@@ -104,11 +153,24 @@
         "annualArtifact": "Annual regulations/draw booklet and species commission orders",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [
+      "officialSources": [
         {
+          "id": "source:us-az-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Arizona Hunting",
+          "url": "https://www.azgfd.com/hunting/",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        },
+        {
+          "id": "us-az-regulations",
+          "scope": "REGULATION_INDEX",
           "title": "Arizona hunting regulations and draw booklets",
           "url": "https://www.azgfd.com/hunting/regulations/",
-          "legalStanding": "Official regulations/booklets; commission orders also required"
+          "legalStanding": "Official regulations/booklets; commission orders also required",
+          "licenceStatus": "PUBLICATION_REUSE_REVIEW_REQUIRED",
+          "verificationStatus": "SOURCE_FOUND"
         }
       ],
       "knownGaps": [
@@ -121,7 +183,11 @@
       "code": "US-CA",
       "name": "California",
       "kind": "state",
-      "authorityId": "authority:us-ca-cdfw",
+      "authority": {
+        "id": "authority:us-ca-cdfw",
+        "name": "California Department of Fish and Wildlife",
+        "url": "https://wildlife.ca.gov/Hunting"
+      },
       "managementGeographies": "Zone/Hunt Area",
       "officialSourceUrl": "https://wildlife.ca.gov/Hunting",
       "research": {
@@ -135,7 +201,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-ca-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "California Hunting",
+          "url": "https://wildlife.ca.gov/Hunting",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -146,7 +222,11 @@
       "code": "US-CO",
       "name": "Colorado",
       "kind": "state",
-      "authorityId": "authority:us-co-cpw",
+      "authority": {
+        "id": "authority:us-co-cpw",
+        "name": "Colorado Parks and Wildlife",
+        "url": "https://cpw.state.co.us/hunting"
+      },
       "managementGeographies": "Game Management Units; species-specific hunt-code unit sets; Ranching for Wildlife/private-land programs",
       "officialSourceUrl": "https://cpw.state.co.us/hunting",
       "research": {
@@ -160,11 +240,24 @@
         "annualArtifact": "Species-specific annual brochures and correction notices",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [
+      "officialSources": [
         {
+          "id": "source:us-co-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Colorado Hunting",
+          "url": "https://cpw.state.co.us/hunting",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        },
+        {
+          "id": "us-co-big-game-2026",
+          "scope": "ANNUAL_REGULATION",
           "title": "2026 Colorado Big Game brochure",
           "url": "https://cpw.state.co.us/sites/default/files/dam/erjzbk48be/colorado-big-game-hunting-brochure.pdf",
-          "legalStanding": "Current official brochure; corrections must be composed"
+          "legalStanding": "Current official brochure; corrections must be composed",
+          "licenceStatus": "PUBLICATION_REUSE_REVIEW_REQUIRED",
+          "verificationStatus": "SOURCE_FOUND"
         }
       ],
       "knownGaps": [
@@ -177,7 +270,11 @@
       "code": "US-CT",
       "name": "Connecticut",
       "kind": "state",
-      "authorityId": "authority:us-ct-deep",
+      "authority": {
+        "id": "authority:us-ct-deep",
+        "name": "Connecticut Department of Energy and Environmental Protection Wildlife Division",
+        "url": "https://portal.ct.gov/deep/hunting/hunting-and-trapping"
+      },
       "managementGeographies": "Deer/Turkey Management Zone",
       "officialSourceUrl": "https://portal.ct.gov/deep/wildlife/wildlife-publications-and-forms",
       "research": {
@@ -191,7 +288,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-ct-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Connecticut Wildlife Publications and Forms",
+          "url": "https://portal.ct.gov/deep/wildlife/wildlife-publications-and-forms",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "SOURCE_FOUND"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -202,7 +309,11 @@
       "code": "US-DC",
       "name": "District of Columbia",
       "kind": "district",
-      "authorityId": "authority:us-dc-doee",
+      "authority": {
+        "id": "authority:us-dc-doee",
+        "name": "District of Columbia Department of Energy and Environment",
+        "url": "https://doee.dc.gov/service/fisheries-and-wildlife"
+      },
       "managementGeographies": "UNRESOLVED",
       "officialSourceUrl": "https://doee.dc.gov/service/fisheries-and-wildlife",
       "research": {
@@ -216,7 +327,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-dc-wildlife",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Fisheries and Wildlife",
+          "url": "https://doee.dc.gov/service/fisheries-and-wildlife",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "NEEDS_REVIEW"
+        }
+      ],
       "knownGaps": [
         "Confirm statutory prohibition/absence and any controlled wildlife-management exceptions",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -227,7 +348,11 @@
       "code": "US-DE",
       "name": "Delaware",
       "kind": "state",
-      "authorityId": "authority:us-de-dnrec",
+      "authority": {
+        "id": "authority:us-de-dnrec",
+        "name": "Delaware Department of Natural Resources and Environmental Control Division of Fish and Wildlife",
+        "url": "https://dnrec.delaware.gov/fish-wildlife/hunting/"
+      },
       "managementGeographies": "Wildlife Area/Zone",
       "officialSourceUrl": "https://dnrec.delaware.gov/fish-wildlife/hunting/",
       "research": {
@@ -241,7 +366,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-de-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Delaware Hunting",
+          "url": "https://dnrec.delaware.gov/fish-wildlife/hunting/",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -252,7 +387,11 @@
       "code": "US-FL",
       "name": "Florida",
       "kind": "state",
-      "authorityId": "authority:us-fl-fwc",
+      "authority": {
+        "id": "authority:us-fl-fwc",
+        "name": "Florida Fish and Wildlife Conservation Commission",
+        "url": "https://myfwc.com/hunting/"
+      },
       "managementGeographies": "Zone/Wildlife Management Area",
       "officialSourceUrl": "https://myfwc.com/hunting/",
       "research": {
@@ -266,7 +405,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-fl-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Florida Hunting",
+          "url": "https://myfwc.com/hunting/",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -277,7 +426,11 @@
       "code": "US-GA",
       "name": "Georgia",
       "kind": "state",
-      "authorityId": "authority:us-ga-dnr",
+      "authority": {
+        "id": "authority:us-ga-dnr",
+        "name": "Georgia Department of Natural Resources Wildlife Resources Division",
+        "url": "https://georgiawildlife.com/hunting"
+      },
       "managementGeographies": "Zone/Wildlife Management Area",
       "officialSourceUrl": "https://georgiawildlife.com/hunting",
       "research": {
@@ -291,7 +444,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-ga-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Georgia Hunting",
+          "url": "https://georgiawildlife.com/hunting",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -302,7 +465,11 @@
       "code": "US-HI",
       "name": "Hawaii",
       "kind": "state",
-      "authorityId": "authority:us-hi-dofaw",
+      "authority": {
+        "id": "authority:us-hi-dofaw",
+        "name": "Hawaii Division of Forestry and Wildlife",
+        "url": "https://dlnr.hawaii.gov/recreation/hunting/"
+      },
       "managementGeographies": "Public Hunting Area/Unit",
       "officialSourceUrl": "https://dlnr.hawaii.gov/recreation/hunting/",
       "research": {
@@ -316,7 +483,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-hi-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Hawaii Hunting",
+          "url": "https://dlnr.hawaii.gov/recreation/hunting/",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -327,7 +504,11 @@
       "code": "US-IA",
       "name": "Iowa",
       "kind": "state",
-      "authorityId": "authority:us-ia-dnr",
+      "authority": {
+        "id": "authority:us-ia-dnr",
+        "name": "Iowa Department of Natural Resources",
+        "url": "https://www.iowadnr.gov/things-to-do/hunting-trapping"
+      },
       "managementGeographies": "Zone/County",
       "officialSourceUrl": "https://www.iowadnr.gov/things-do/hunting-trapping/hunting-regulations-laws",
       "research": {
@@ -341,7 +522,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-ia-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Iowa Hunting Regulations and Laws",
+          "url": "https://www.iowadnr.gov/things-do/hunting-trapping/hunting-regulations-laws",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "SOURCE_FOUND"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -352,7 +543,11 @@
       "code": "US-ID",
       "name": "Idaho",
       "kind": "state",
-      "authorityId": "authority:us-id-fg",
+      "authority": {
+        "id": "authority:us-id-fg",
+        "name": "Idaho Department of Fish and Game",
+        "url": "https://idfg.idaho.gov/hunt"
+      },
       "managementGeographies": "Game Management Units; Elk Zones; Controlled Hunt Areas; Access Yes properties",
       "officialSourceUrl": "https://idfg.idaho.gov/hunt",
       "research": {
@@ -366,11 +561,24 @@
         "annualArtifact": "Big-game season/rule PDFs plus hunt-planner datasets",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [
+      "officialSources": [
         {
+          "id": "source:us-id-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Idaho Hunting",
+          "url": "https://idfg.idaho.gov/hunt",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        },
+        {
+          "id": "us-id-hunt-planner",
+          "scope": "REGULATION_AND_GIS_PLANNER",
           "title": "Idaho Hunt Planner",
           "url": "https://idfg.idaho.gov/ifwis/huntplanner/",
-          "legalStanding": "Planning tool; regulation booklets control boundaries"
+          "legalStanding": "Planning tool; regulation booklets control boundaries",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "SOURCE_FOUND"
         }
       ],
       "knownGaps": [
@@ -383,7 +591,11 @@
       "code": "US-IL",
       "name": "Illinois",
       "kind": "state",
-      "authorityId": "authority:us-il-dnr",
+      "authority": {
+        "id": "authority:us-il-dnr",
+        "name": "Illinois Department of Natural Resources",
+        "url": "https://dnr.illinois.gov/hunting.html"
+      },
       "managementGeographies": "County/Site",
       "officialSourceUrl": "https://dnr.illinois.gov/hunting.html",
       "research": {
@@ -397,7 +609,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-il-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Illinois Hunting",
+          "url": "https://dnr.illinois.gov/hunting.html",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -408,7 +630,11 @@
       "code": "US-IN",
       "name": "Indiana",
       "kind": "state",
-      "authorityId": "authority:us-in-dnr",
+      "authority": {
+        "id": "authority:us-in-dnr",
+        "name": "Indiana Department of Natural Resources Division of Fish and Wildlife",
+        "url": "https://www.in.gov/dnr/fish-and-wildlife/hunting-and-trapping/"
+      },
       "managementGeographies": "County/Fish and Wildlife Area",
       "officialSourceUrl": "https://www.in.gov/dnr/fish-and-wildlife/hunting-and-trapping/",
       "research": {
@@ -422,7 +648,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-in-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Indiana Hunting and Trapping",
+          "url": "https://www.in.gov/dnr/fish-and-wildlife/hunting-and-trapping/",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -433,7 +669,11 @@
       "code": "US-KS",
       "name": "Kansas",
       "kind": "state",
-      "authorityId": "authority:us-ks-kdwp",
+      "authority": {
+        "id": "authority:us-ks-kdwp",
+        "name": "Kansas Department of Wildlife and Parks",
+        "url": "https://ksoutdoors.com/Hunting"
+      },
       "managementGeographies": "Deer Management Unit",
       "officialSourceUrl": "https://ksoutdoors.com/Hunting",
       "research": {
@@ -447,7 +687,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-ks-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Kansas Hunting",
+          "url": "https://ksoutdoors.com/Hunting",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -458,7 +708,11 @@
       "code": "US-KY",
       "name": "Kentucky",
       "kind": "state",
-      "authorityId": "authority:us-ky-dfw",
+      "authority": {
+        "id": "authority:us-ky-dfw",
+        "name": "Kentucky Department of Fish and Wildlife Resources",
+        "url": "https://fw.ky.gov/Hunt/Pages/default.aspx"
+      },
       "managementGeographies": "Zone/County",
       "officialSourceUrl": "https://fw.ky.gov/Hunt/Pages/default.aspx",
       "research": {
@@ -472,7 +726,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-ky-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Kentucky Hunting",
+          "url": "https://fw.ky.gov/Hunt/Pages/default.aspx",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -483,7 +747,11 @@
       "code": "US-LA",
       "name": "Louisiana",
       "kind": "state",
-      "authorityId": "authority:us-la-wlf",
+      "authority": {
+        "id": "authority:us-la-wlf",
+        "name": "Louisiana Department of Wildlife and Fisheries",
+        "url": "https://www.wlf.louisiana.gov/page/hunting"
+      },
       "managementGeographies": "Area/Wildlife Management Area",
       "officialSourceUrl": "https://www.wlf.louisiana.gov/page/hunting",
       "research": {
@@ -497,7 +765,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-la-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Louisiana Hunting",
+          "url": "https://www.wlf.louisiana.gov/page/hunting",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -508,7 +786,11 @@
       "code": "US-MA",
       "name": "Massachusetts",
       "kind": "state",
-      "authorityId": "authority:us-ma-masswildlife",
+      "authority": {
+        "id": "authority:us-ma-masswildlife",
+        "name": "Massachusetts Division of Fisheries and Wildlife",
+        "url": "https://www.mass.gov/hunting-regulations"
+      },
       "managementGeographies": "Wildlife Management Zone",
       "officialSourceUrl": "https://www.mass.gov/hunting-regulations",
       "research": {
@@ -522,7 +804,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-ma-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Massachusetts Hunting Regulations",
+          "url": "https://www.mass.gov/hunting-regulations",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -533,7 +825,11 @@
       "code": "US-MD",
       "name": "Maryland",
       "kind": "state",
-      "authorityId": "authority:us-md-dnr",
+      "authority": {
+        "id": "authority:us-md-dnr",
+        "name": "Maryland Department of Natural Resources Wildlife and Heritage Service",
+        "url": "https://dnr.maryland.gov/wildlife/Pages/hunt_trap/home.aspx"
+      },
       "managementGeographies": "Region/County",
       "officialSourceUrl": "https://dnr.maryland.gov/wildlife/Pages/hunt_trap/home.aspx",
       "research": {
@@ -547,7 +843,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-md-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Maryland Hunting and Trapping",
+          "url": "https://dnr.maryland.gov/wildlife/Pages/hunt_trap/home.aspx",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -558,7 +864,11 @@
       "code": "US-ME",
       "name": "Maine",
       "kind": "state",
-      "authorityId": "authority:us-me-ifw",
+      "authority": {
+        "id": "authority:us-me-ifw",
+        "name": "Maine Department of Inland Fisheries and Wildlife",
+        "url": "https://www.maine.gov/ifw/hunting-trapping/index.html"
+      },
       "managementGeographies": "Wildlife Management District (WMD)",
       "officialSourceUrl": "https://www.maine.gov/ifw/hunting-trapping/index.html",
       "research": {
@@ -572,7 +882,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-me-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Maine Hunting and Trapping",
+          "url": "https://www.maine.gov/ifw/hunting-trapping/index.html",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -583,7 +903,11 @@
       "code": "US-MI",
       "name": "Michigan",
       "kind": "state",
-      "authorityId": "authority:us-mi-dnr",
+      "authority": {
+        "id": "authority:us-mi-dnr",
+        "name": "Michigan Department of Natural Resources",
+        "url": "https://www.michigan.gov/dnr/things-to-do/hunting"
+      },
       "managementGeographies": "Deer Management Unit (DMU)",
       "officialSourceUrl": "https://www.michigan.gov/dnr/things-to-do/hunting",
       "research": {
@@ -597,7 +921,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-mi-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Michigan Hunting",
+          "url": "https://www.michigan.gov/dnr/things-to-do/hunting",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -608,7 +942,11 @@
       "code": "US-MN",
       "name": "Minnesota",
       "kind": "state",
-      "authorityId": "authority:us-mn-dnr",
+      "authority": {
+        "id": "authority:us-mn-dnr",
+        "name": "Minnesota Department of Natural Resources",
+        "url": "https://www.dnr.state.mn.us/hunting/index.html"
+      },
       "managementGeographies": "Permit Area",
       "officialSourceUrl": "https://www.dnr.state.mn.us/hunting/index.html",
       "research": {
@@ -622,7 +960,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-mn-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Minnesota Hunting",
+          "url": "https://www.dnr.state.mn.us/hunting/index.html",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -633,7 +981,11 @@
       "code": "US-MO",
       "name": "Missouri",
       "kind": "state",
-      "authorityId": "authority:us-mo-mdc",
+      "authority": {
+        "id": "authority:us-mo-mdc",
+        "name": "Missouri Department of Conservation",
+        "url": "https://mdc.mo.gov/hunting-trapping"
+      },
       "managementGeographies": "County/Zone",
       "officialSourceUrl": "https://mdc.mo.gov/hunting-trapping",
       "research": {
@@ -647,7 +999,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-mo-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Missouri Hunting and Trapping",
+          "url": "https://mdc.mo.gov/hunting-trapping",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -658,7 +1020,11 @@
       "code": "US-MS",
       "name": "Mississippi",
       "kind": "state",
-      "authorityId": "authority:us-ms-mdwfp",
+      "authority": {
+        "id": "authority:us-ms-mdwfp",
+        "name": "Mississippi Department of Wildlife Fisheries and Parks",
+        "url": "https://www.mdwfp.com/wildlife-hunting"
+      },
       "managementGeographies": "Zone/Wildlife Management Area",
       "officialSourceUrl": "https://www.mdwfp.com/wildlife-hunting",
       "research": {
@@ -672,7 +1038,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-ms-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Mississippi Wildlife and Hunting",
+          "url": "https://www.mdwfp.com/wildlife-hunting",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -683,7 +1059,11 @@
       "code": "US-MT",
       "name": "Montana",
       "kind": "state",
-      "authorityId": "authority:us-mt-fwp",
+      "authority": {
+        "id": "authority:us-mt-fwp",
+        "name": "Montana Fish Wildlife and Parks",
+        "url": "https://fwp.mt.gov/hunt"
+      },
       "managementGeographies": "Species hunting districts; administrative regions; Block Management Areas and access overlays",
       "officialSourceUrl": "https://fwp.mt.gov/hunt",
       "research": {
@@ -697,16 +1077,33 @@
         "annualArtifact": "Species booklets and annual hunting-district legal descriptions",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [
+      "officialSources": [
         {
-          "title": "Montana hunting regulations and adopted district descriptions",
-          "url": "https://fwp.mt.gov/hunt/regulations",
-          "legalStanding": "Commission-adopted legal descriptions and regulations control"
+          "id": "source:us-mt-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Montana Hunt",
+          "url": "https://fwp.mt.gov/hunt",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
         },
         {
+          "id": "us-mt-regulations",
+          "scope": "REGULATION_INDEX",
+          "title": "Montana hunting regulations and adopted district descriptions",
+          "url": "https://fwp.mt.gov/hunt/regulations",
+          "legalStanding": "Commission-adopted legal descriptions and regulations control",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "SOURCE_FOUND"
+        },
+        {
+          "id": "us-mt-hunt-planner",
+          "scope": "GIS_PLANNER",
           "title": "Montana FWP Hunt Planner",
           "url": "https://fwp.mt.gov/gis/maps/huntPlanner/",
-          "legalStanding": "Guidance only; regulations control"
+          "legalStanding": "Guidance only; regulations control",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "SOURCE_FOUND"
         }
       ],
       "knownGaps": [
@@ -719,7 +1116,11 @@
       "code": "US-NC",
       "name": "North Carolina",
       "kind": "state",
-      "authorityId": "authority:us-nc-wrc",
+      "authority": {
+        "id": "authority:us-nc-wrc",
+        "name": "North Carolina Wildlife Resources Commission",
+        "url": "https://www.ncwildlife.gov/hunting"
+      },
       "managementGeographies": "Zone/Game Land",
       "officialSourceUrl": "https://www.ncwildlife.gov/hunting",
       "research": {
@@ -733,7 +1134,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-nc-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "North Carolina Hunting",
+          "url": "https://www.ncwildlife.gov/hunting",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -744,7 +1155,11 @@
       "code": "US-ND",
       "name": "North Dakota",
       "kind": "state",
-      "authorityId": "authority:us-nd-gf",
+      "authority": {
+        "id": "authority:us-nd-gf",
+        "name": "North Dakota Game and Fish Department",
+        "url": "https://gf.nd.gov/hunting"
+      },
       "managementGeographies": "Unit",
       "officialSourceUrl": "https://gf.nd.gov/hunting",
       "research": {
@@ -758,7 +1173,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-nd-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "North Dakota Hunting",
+          "url": "https://gf.nd.gov/hunting",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -769,7 +1194,11 @@
       "code": "US-NE",
       "name": "Nebraska",
       "kind": "state",
-      "authorityId": "authority:us-ne-ngpc",
+      "authority": {
+        "id": "authority:us-ne-ngpc",
+        "name": "Nebraska Game and Parks Commission",
+        "url": "https://outdoornebraska.gov/hunt/"
+      },
       "managementGeographies": "Unit",
       "officialSourceUrl": "https://outdoornebraska.gov/hunt/",
       "research": {
@@ -783,7 +1212,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-ne-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Nebraska Hunt",
+          "url": "https://outdoornebraska.gov/hunt/",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -794,7 +1233,11 @@
       "code": "US-NH",
       "name": "New Hampshire",
       "kind": "state",
-      "authorityId": "authority:us-nh-fg",
+      "authority": {
+        "id": "authority:us-nh-fg",
+        "name": "New Hampshire Fish and Game Department",
+        "url": "https://www.wildlife.nh.gov/hunting-nh"
+      },
       "managementGeographies": "Wildlife Management Unit (WMU)",
       "officialSourceUrl": "https://www.wildlife.nh.gov/hunting-nh",
       "research": {
@@ -808,7 +1251,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-nh-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Hunting in New Hampshire",
+          "url": "https://www.wildlife.nh.gov/hunting-nh",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -819,7 +1272,11 @@
       "code": "US-NJ",
       "name": "New Jersey",
       "kind": "state",
-      "authorityId": "authority:us-nj-fws",
+      "authority": {
+        "id": "authority:us-nj-fws",
+        "name": "New Jersey Division of Fish and Wildlife",
+        "url": "https://dep.nj.gov/njfw/hunting/"
+      },
       "managementGeographies": "Deer/Turkey Management Zone",
       "officialSourceUrl": "https://dep.nj.gov/njfw/hunting/",
       "research": {
@@ -833,7 +1290,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-nj-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "New Jersey Hunting",
+          "url": "https://dep.nj.gov/njfw/hunting/",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -844,7 +1311,11 @@
       "code": "US-NM",
       "name": "New Mexico",
       "kind": "state",
-      "authorityId": "authority:us-nm-dgf",
+      "authority": {
+        "id": "authority:us-nm-dgf",
+        "name": "New Mexico Department of Game and Fish",
+        "url": "https://www.wildlife.state.nm.us/hunting/"
+      },
       "managementGeographies": "Game Management Units; species ranges; EPLUS/private-land units; Open Gate and state/federal/tribal land overlays",
       "officialSourceUrl": "https://www.wildlife.state.nm.us/hunting/",
       "research": {
@@ -858,16 +1329,33 @@
         "annualArtifact": "Annual Hunting Rules and Information PDF plus unit descriptions and program pages",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [
+      "officialSources": [
         {
-          "title": "New Mexico current rules and information publications",
-          "url": "https://wildlife.dgf.nm.gov/home/publications/",
-          "legalStanding": "Official summary; cited statutes and administrative rules control"
+          "id": "source:us-nm-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "New Mexico Hunting",
+          "url": "https://www.wildlife.state.nm.us/hunting/",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
         },
         {
+          "id": "us-nm-publications",
+          "scope": "REGULATION_INDEX",
+          "title": "New Mexico current rules and information publications",
+          "url": "https://wildlife.dgf.nm.gov/home/publications/",
+          "legalStanding": "Official summary; cited statutes and administrative rules control",
+          "licenceStatus": "PUBLICATION_REUSE_REVIEW_REQUIRED",
+          "verificationStatus": "SOURCE_FOUND"
+        },
+        {
+          "id": "us-nm-gmu",
+          "scope": "GIS_AND_DESCRIPTIONS",
           "title": "New Mexico GMU maps, descriptions, shapefile and KMZ",
           "url": "https://wildlife.dgf.nm.gov/hunting/maps/big-game-unit-maps-pdfs/",
-          "legalStanding": "Statewide map disclaims precise-boundary use; descriptions control"
+          "legalStanding": "Statewide map disclaims precise-boundary use; descriptions control",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "SOURCE_FOUND_STALE_DATA"
         }
       ],
       "knownGaps": [
@@ -880,7 +1368,11 @@
       "code": "US-NV",
       "name": "Nevada",
       "kind": "state",
-      "authorityId": "authority:us-nv-ndow",
+      "authority": {
+        "id": "authority:us-nv-ndow",
+        "name": "Nevada Department of Wildlife",
+        "url": "https://www.ndow.org/get-outside/hunting/"
+      },
       "managementGeographies": "Unit",
       "officialSourceUrl": "https://www.ndow.org/get-outside/hunting/",
       "research": {
@@ -894,7 +1386,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-nv-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Nevada Hunting",
+          "url": "https://www.ndow.org/get-outside/hunting/",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -905,7 +1407,11 @@
       "code": "US-NY",
       "name": "New York",
       "kind": "state",
-      "authorityId": "authority:us-ny-dec",
+      "authority": {
+        "id": "authority:us-ny-dec",
+        "name": "New York State Department of Environmental Conservation",
+        "url": "https://dec.ny.gov/things-to-do/hunting"
+      },
       "managementGeographies": "Wildlife Management Unit (WMU)",
       "officialSourceUrl": "https://dec.ny.gov/things-to-do/hunting",
       "research": {
@@ -919,7 +1425,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-ny-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "New York Hunting",
+          "url": "https://dec.ny.gov/things-to-do/hunting",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -930,7 +1446,11 @@
       "code": "US-OH",
       "name": "Ohio",
       "kind": "state",
-      "authorityId": "authority:us-oh-dow",
+      "authority": {
+        "id": "authority:us-oh-dow",
+        "name": "Ohio Department of Natural Resources Division of Wildlife",
+        "url": "https://ohiodnr.gov/discover-and-learn/safety-conservation/wildlife-management/hunting"
+      },
       "managementGeographies": "County/Wildlife Area",
       "officialSourceUrl": "https://codes.ohio.gov/ohio-administrative-code/1501%3A31",
       "research": {
@@ -944,7 +1464,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-oh-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Ohio Administrative Code Chapter 1501:31 Wildlife",
+          "url": "https://codes.ohio.gov/ohio-administrative-code/1501%3A31",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "SOURCE_FOUND"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -955,7 +1485,11 @@
       "code": "US-OK",
       "name": "Oklahoma",
       "kind": "state",
-      "authorityId": "authority:us-ok-wd",
+      "authority": {
+        "id": "authority:us-ok-wd",
+        "name": "Oklahoma Department of Wildlife Conservation",
+        "url": "https://www.wildlifedepartment.com/hunting"
+      },
       "managementGeographies": "Zone/Wildlife Management Area",
       "officialSourceUrl": "https://www.wildlifedepartment.com/hunting",
       "research": {
@@ -969,7 +1503,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-ok-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Oklahoma Hunting",
+          "url": "https://www.wildlifedepartment.com/hunting",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -980,7 +1524,11 @@
       "code": "US-OR",
       "name": "Oregon",
       "kind": "state",
-      "authorityId": "authority:us-or-odfw",
+      "authority": {
+        "id": "authority:us-or-odfw",
+        "name": "Oregon Department of Fish and Wildlife",
+        "url": "https://myodfw.com/hunting"
+      },
       "managementGeographies": "Wildlife Management Unit",
       "officialSourceUrl": "https://myodfw.com/sites/default/files/2025-11/26_BG_regs.pdf",
       "research": {
@@ -994,7 +1542,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-or-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Oregon Big Game Hunting Regulations 2026",
+          "url": "https://myodfw.com/sites/default/files/2025-11/26_BG_regs.pdf",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "SOURCE_FOUND"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -1005,7 +1563,11 @@
       "code": "US-PA",
       "name": "Pennsylvania",
       "kind": "state",
-      "authorityId": "authority:us-pa-pgc",
+      "authority": {
+        "id": "authority:us-pa-pgc",
+        "name": "Pennsylvania Game Commission",
+        "url": "https://www.pa.gov/agencies/pgc/huntingandtrapping.html"
+      },
       "managementGeographies": "Wildlife Management Unit (WMU)",
       "officialSourceUrl": "https://www.pa.gov/agencies/pgc/huntingandtrapping.html",
       "research": {
@@ -1019,7 +1581,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-pa-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Pennsylvania Hunting and Trapping",
+          "url": "https://www.pa.gov/agencies/pgc/huntingandtrapping.html",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -1030,7 +1602,11 @@
       "code": "US-RI",
       "name": "Rhode Island",
       "kind": "state",
-      "authorityId": "authority:us-ri-dem",
+      "authority": {
+        "id": "authority:us-ri-dem",
+        "name": "Rhode Island Department of Environmental Management Division of Fish and Wildlife",
+        "url": "https://dem.ri.gov/natural-resources-bureau/fish-wildlife/hunting-trapping"
+      },
       "managementGeographies": "Zone/Management Area",
       "officialSourceUrl": "https://dem.ri.gov/natural-resources-bureau/fish-wildlife/hunting-trapping",
       "research": {
@@ -1044,7 +1620,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-ri-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Rhode Island Hunting and Trapping",
+          "url": "https://dem.ri.gov/natural-resources-bureau/fish-wildlife/hunting-trapping",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -1055,7 +1641,11 @@
       "code": "US-SC",
       "name": "South Carolina",
       "kind": "state",
-      "authorityId": "authority:us-sc-dnr",
+      "authority": {
+        "id": "authority:us-sc-dnr",
+        "name": "South Carolina Department of Natural Resources",
+        "url": "https://www.dnr.sc.gov/hunting.html"
+      },
       "managementGeographies": "Game Zone/Wildlife Management Area",
       "officialSourceUrl": "https://www.dnr.sc.gov/hunting.html",
       "research": {
@@ -1069,7 +1659,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-sc-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "South Carolina Hunting",
+          "url": "https://www.dnr.sc.gov/hunting.html",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -1080,7 +1680,11 @@
       "code": "US-SD",
       "name": "South Dakota",
       "kind": "state",
-      "authorityId": "authority:us-sd-gfp",
+      "authority": {
+        "id": "authority:us-sd-gfp",
+        "name": "South Dakota Game Fish and Parks",
+        "url": "https://gfp.sd.gov/hunt/"
+      },
       "managementGeographies": "Unit",
       "officialSourceUrl": "https://gfp.sd.gov/hunt/",
       "research": {
@@ -1094,7 +1698,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-sd-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "South Dakota Hunt",
+          "url": "https://gfp.sd.gov/hunt/",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -1105,7 +1719,11 @@
       "code": "US-TN",
       "name": "Tennessee",
       "kind": "state",
-      "authorityId": "authority:us-tn-twra",
+      "authority": {
+        "id": "authority:us-tn-twra",
+        "name": "Tennessee Wildlife Resources Agency",
+        "url": "https://www.tn.gov/twra/hunting.html"
+      },
       "managementGeographies": "Unit/Zone/Wildlife Management Area",
       "officialSourceUrl": "https://www.tn.gov/twra/hunting.html",
       "research": {
@@ -1119,7 +1737,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-tn-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Tennessee Hunting",
+          "url": "https://www.tn.gov/twra/hunting.html",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -1130,7 +1758,11 @@
       "code": "US-TX",
       "name": "Texas",
       "kind": "state",
-      "authorityId": "authority:us-tx-tpwd",
+      "authority": {
+        "id": "authority:us-tx-tpwd",
+        "name": "Texas Parks and Wildlife Department",
+        "url": "https://tpwd.texas.gov/regulations/outdoor-annual/hunting/"
+      },
       "managementGeographies": "County/Zone/Wildlife Management Area",
       "officialSourceUrl": "https://tpwd.texas.gov/regulations/outdoor-annual/hunting/",
       "research": {
@@ -1144,7 +1776,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-tx-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Texas Outdoor Annual Hunting",
+          "url": "https://tpwd.texas.gov/regulations/outdoor-annual/hunting/",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -1155,7 +1797,11 @@
       "code": "US-UT",
       "name": "Utah",
       "kind": "state",
-      "authorityId": "authority:us-ut-dwr",
+      "authority": {
+        "id": "authority:us-ut-dwr",
+        "name": "Utah Division of Wildlife Resources",
+        "url": "https://wildlife.utah.gov/hunting.html"
+      },
       "managementGeographies": "Species hunt units; limited-entry and antlerless boundaries; CWMUs; extended-archery areas",
       "officialSourceUrl": "https://wildlife.utah.gov/guidebooks",
       "research": {
@@ -1169,16 +1815,33 @@
         "annualArtifact": "Versioned application and field guidebooks plus correction entries",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [
+      "officialSources": [
         {
-          "title": "Utah hunting guidebooks and corrections",
+          "id": "source:us-ut-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Utah Hunting and Fishing Guidebooks",
           "url": "https://wildlife.utah.gov/guidebooks",
-          "legalStanding": "Guidebooks summarize statutes/rules and publish corrections"
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "SOURCE_FOUND"
         },
         {
+          "id": "us-ut-guidebooks",
+          "scope": "REGULATION_INDEX",
+          "title": "Utah hunting guidebooks and corrections",
+          "url": "https://wildlife.utah.gov/guidebooks",
+          "legalStanding": "Guidebooks summarize statutes/rules and publish corrections",
+          "licenceStatus": "PUBLICATION_REUSE_REVIEW_REQUIRED",
+          "verificationStatus": "SOURCE_FOUND"
+        },
+        {
+          "id": "us-ut-boundaries",
+          "scope": "GIS_PLANNER",
           "title": "Utah hunt boundary maps",
           "url": "https://dwrapps.utah.gov/huntboundary/hbstart",
-          "legalStanding": "Boundary guidance; current descriptions/rules control"
+          "legalStanding": "Boundary guidance; current descriptions/rules control",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "SOURCE_FOUND"
         }
       ],
       "knownGaps": [
@@ -1191,7 +1854,11 @@
       "code": "US-VA",
       "name": "Virginia",
       "kind": "state",
-      "authorityId": "authority:us-va-dwr",
+      "authority": {
+        "id": "authority:us-va-dwr",
+        "name": "Virginia Department of Wildlife Resources",
+        "url": "https://dwr.virginia.gov/hunting/"
+      },
       "managementGeographies": "County/Management Area",
       "officialSourceUrl": "https://dwr.virginia.gov/hunting/",
       "research": {
@@ -1205,7 +1872,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-va-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Virginia Hunting",
+          "url": "https://dwr.virginia.gov/hunting/",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -1216,7 +1893,11 @@
       "code": "US-VT",
       "name": "Vermont",
       "kind": "state",
-      "authorityId": "authority:us-vt-fw",
+      "authority": {
+        "id": "authority:us-vt-fw",
+        "name": "Vermont Fish and Wildlife Department",
+        "url": "https://www.vtfishandwildlife.com/hunt"
+      },
       "managementGeographies": "Wildlife Management Unit (WMU)",
       "officialSourceUrl": "https://www.vtfishandwildlife.com/hunt",
       "research": {
@@ -1230,7 +1911,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-vt-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Vermont Hunt",
+          "url": "https://www.vtfishandwildlife.com/hunt",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -1241,7 +1932,11 @@
       "code": "US-WA",
       "name": "Washington",
       "kind": "state",
-      "authorityId": "authority:us-wa-wdfw",
+      "authority": {
+        "id": "authority:us-wa-wdfw",
+        "name": "Washington Department of Fish and Wildlife",
+        "url": "https://wdfw.wa.gov/hunting"
+      },
       "managementGeographies": "Game Management Unit (GMU)",
       "officialSourceUrl": "https://wdfw.wa.gov/hunting",
       "research": {
@@ -1255,7 +1950,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-wa-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Washington Hunting",
+          "url": "https://wdfw.wa.gov/hunting",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -1266,7 +1971,11 @@
       "code": "US-WI",
       "name": "Wisconsin",
       "kind": "state",
-      "authorityId": "authority:us-wi-dnr",
+      "authority": {
+        "id": "authority:us-wi-dnr",
+        "name": "Wisconsin Department of Natural Resources",
+        "url": "https://dnr.wisconsin.gov/topic/hunt"
+      },
       "managementGeographies": "Deer Management Unit/Zone",
       "officialSourceUrl": "https://dnr.wisconsin.gov/topic/hunt",
       "research": {
@@ -1280,7 +1989,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-wi-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Wisconsin Hunting",
+          "url": "https://dnr.wisconsin.gov/topic/hunt",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -1291,7 +2010,11 @@
       "code": "US-WV",
       "name": "West Virginia",
       "kind": "state",
-      "authorityId": "authority:us-wv-dnr",
+      "authority": {
+        "id": "authority:us-wv-dnr",
+        "name": "West Virginia Division of Natural Resources",
+        "url": "https://wvdnr.gov/hunting/"
+      },
       "managementGeographies": "County/Wildlife Management Area",
       "officialSourceUrl": "https://wvdnr.gov/hunting/",
       "research": {
@@ -1305,7 +2028,17 @@
         "annualArtifact": "Current official hunting hub identified; annual controlling artifact unresolved",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [],
+      "officialSources": [
+        {
+          "id": "source:us-wv-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "West Virginia Hunting",
+          "url": "https://wvdnr.gov/hunting/",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        }
+      ],
       "knownGaps": [
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending"
@@ -1316,7 +2049,11 @@
       "code": "US-WY",
       "name": "Wyoming",
       "kind": "state",
-      "authorityId": "authority:us-wy-wgfd",
+      "authority": {
+        "id": "authority:us-wy-wgfd",
+        "name": "Wyoming Game and Fish Department",
+        "url": "https://wgfd.wyo.gov/hunting"
+      },
       "managementGeographies": "Species-specific hunt areas; nonresident regions; HMAs/WHMAs/walk-in areas; wilderness overlays",
       "officialSourceUrl": "https://wgfd.wyo.gov/hunting",
       "research": {
@@ -1330,11 +2067,24 @@
         "annualArtifact": "Species season chapters, maps, brochures, and access-property rules",
         "reviewedAt": "2026-09-20"
       },
-      "sourceLeads": [
+      "officialSources": [
         {
+          "id": "source:us-wy-hunting",
+          "scope": "STATE_OFFICIAL_HUB",
+          "title": "Wyoming Hunting",
+          "url": "https://wgfd.wyo.gov/hunting",
+          "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "DISCOVERED"
+        },
+        {
+          "id": "us-wy-regulations",
+          "scope": "REGULATION_INDEX",
           "title": "Wyoming regulations and species hunt-area chapters",
           "url": "https://wgfd.wyo.gov/regulations",
-          "legalStanding": "Written hunt-area descriptions control over reference maps"
+          "legalStanding": "Written hunt-area descriptions control over reference maps",
+          "licenceStatus": "UNRESOLVED",
+          "verificationStatus": "SOURCE_FOUND"
         }
       ],
       "knownGaps": [

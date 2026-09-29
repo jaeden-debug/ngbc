@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { clearUnitedStatesStateCache, unitedStatesStateAt, US_STATE_TIMEOUT_MS } from "./state-boundary.ts";
+import { clearUnitedStatesStateCache, couldBeUnitedStatesState, unitedStatesStateAt, US_STATE_TIMEOUT_MS } from "./state-boundary.ts";
 
 /** The Census service, stubbed; nothing here reaches the network. */
 function census(features: Array<{ NAME: string; STUSAB: string }>, options: { status?: number } = {}) {
@@ -67,4 +67,13 @@ test("an impossible coordinate is never sent to the Bureau", async () => {
   assert.equal(await unitedStatesStateAt(95, -114, fetcher), undefined);
   assert.equal(await unitedStatesStateAt(Number.NaN, -114, fetcher), undefined);
   assert.equal(calls.length, 0);
+});
+
+test("the state-service request guard covers all three U.S. regions without claiming they are states", () => {
+  assert.equal(couldBeUnitedStatesState(38.5, -98.2), true, "contiguous states");
+  assert.equal(couldBeUnitedStatesState(64.2, -149.5), true, "Alaska");
+  assert.equal(couldBeUnitedStatesState(52, 179), true, "Aleutians across the antimeridian");
+  assert.equal(couldBeUnitedStatesState(20.8, -156.3), true, "Hawaii");
+  assert.equal(couldBeUnitedStatesState(51.05, -114.07), false, "Calgary");
+  assert.equal(couldBeUnitedStatesState(48.86, 2.35), false, "Paris");
 });

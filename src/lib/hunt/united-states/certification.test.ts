@@ -50,9 +50,11 @@ test("an absent intelligence layer is never counted as missing coverage", () => 
   assert.equal(certificationFor("MT").intelligence.status, "NONE");
 });
 
-test("only states with evidence are reported, and every one is counted once per lane", () => {
+test("all 50 states and D.C. are reported, and every one is counted once per lane", () => {
   const summary = unitedStatesCertification();
   assert.deepEqual(statesWithEvidence(), ["CO", "ID", "ME", "MI", "MN", "MT", "ND", "SD", "WI", "WY"]);
+  assert.equal(summary.states.length, 51);
+  assert.equal(new Set(summary.states.map((entry) => entry.code)).size, 51);
   for (const lane of [summary.totals.map, summary.totals.regulations, summary.totals.intelligence]) {
     assert.equal(Object.values(lane).reduce((total, count) => total + count, 0), summary.states.length);
   }

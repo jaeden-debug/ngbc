@@ -1,0 +1,3198 @@
+{
+  "schemaVersion": 1,
+  "states": [
+    {
+      "code": "AK",
+      "jurisdictionId": "jurisdiction:us-ak",
+      "name": "Alaska",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-ak-adfg",
+        "name": "Alaska Department of Fish and Game Division of Wildlife Conservation",
+        "url": "https://www.adfg.alaska.gov/index.cfm?adfg=hunting.main"
+      },
+      "regulationsSource": {
+        "id": "source:us-ak-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Hunting in Alaska",
+        "url": "https://www.adfg.alaska.gov/index.cfm?adfg=hunting.main",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": {
+        "id": "us-ak-gmu-maps",
+        "scope": "GIS_AND_HUNT_INDEX",
+        "title": "Alaska hunting maps by GMU/species/hunt number",
+        "url": "https://www.adfg.alaska.gov/index.cfm?adfg=huntingmaps.main",
+        "legalStanding": "Guidance; regulations and emergency orders control",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "SOURCE_FOUND"
+      },
+      "managementGeography": "Game Management Units and subunits; controlled-use/closed/management areas; federal subsistence areas",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Alaska query is UNKNOWN.",
+        "No stable feature-service contract certified; state/federal subsistence conflicts require separate authority scopes; emergency orders are mutable",
+        "Federal dependencies: USFWS refuges; NPS units; BLM/USFS access; federal subsistence regime",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "AL",
+      "jurisdictionId": "jurisdiction:us-al",
+      "name": "Alabama",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-al-dcnr",
+        "name": "Alabama Department of Conservation and Natural Resources Division of Wildlife and Freshwater Fisheries",
+        "url": "https://www.outdooralabama.com/hunting"
+      },
+      "regulationsSource": {
+        "id": "source:us-al-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Outdoor Alabama Hunting",
+        "url": "https://www.outdooralabama.com/hunting",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Game Management Area (GMA)",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Alabama query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "AR",
+      "jurisdictionId": "jurisdiction:us-ar",
+      "name": "Arkansas",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-ar-agfc",
+        "name": "Arkansas Game and Fish Commission",
+        "url": "https://www.agfc.com/hunting/"
+      },
+      "regulationsSource": {
+        "id": "source:us-ar-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Arkansas Hunting",
+        "url": "https://www.agfc.com/hunting/",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Zone/Management Area",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Arkansas query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "AZ",
+      "jurisdictionId": "jurisdiction:us-az",
+      "name": "Arizona",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-az-gfd",
+        "name": "Arizona Game and Fish Department",
+        "url": "https://www.azgfd.com/hunting/"
+      },
+      "regulationsSource": {
+        "id": "source:us-az-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Arizona Hunting",
+        "url": "https://www.azgfd.com/hunting/",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Game Management Units and species hunt areas; six administrative regions; special access/closure areas",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Arizona query is UNKNOWN.",
+        "Commission orders and draw booklets must be composed; unit-map service and reuse terms not certified",
+        "Federal dependencies: USFS/BLM; National Wildlife Refuges; tribal lands; border/military access constraints",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "CA",
+      "jurisdictionId": "jurisdiction:us-ca",
+      "name": "California",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-ca-cdfw",
+        "name": "California Department of Fish and Wildlife",
+        "url": "https://wildlife.ca.gov/Hunting"
+      },
+      "regulationsSource": {
+        "id": "source:us-ca-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "California Hunting",
+        "url": "https://wildlife.ca.gov/Hunting",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Zone/Hunt Area",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every California query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "CO",
+      "jurisdictionId": "jurisdiction:us-co",
+      "name": "Colorado",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-co-cpw",
+        "name": "Colorado Parks and Wildlife",
+        "url": "https://cpw.state.co.us/hunting"
+      },
+      "regulationsSource": {
+        "id": "source:us-co-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Colorado Hunting",
+        "url": "https://cpw.state.co.us/hunting",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": {
+        "id": "layer:us-co-gmu:official-service",
+        "scope": "OFFICIAL_GIS_SERVICE",
+        "title": "Official hunting-management boundary service",
+        "url": "https://services5.arcgis.com/ttNGmDvKQA7oeDQ3/arcgis/rest/services/CPWAdminData/FeatureServer/6",
+        "legalStanding": "DERIVED_FROM_LEGAL_DESCRIPTION",
+        "licenceStatus": "SEE_MAP_LAYER_LICENCE",
+        "verificationStatus": "CERTIFIED_PARITY"
+      },
+      "managementGeography": "Game Management Units; species-specific hunt-code unit sets; Ranching for Wildlife/private-land programs",
+      "map": {
+        "status": "LICENCE_BLOCKED",
+        "layers": [
+          {
+            "layerId": "layer:us-co-gmu",
+            "points": 1317,
+            "disagreements": 0,
+            "certifiedOn": "2026-09-21",
+            "licence": {
+              "permittedUse": "UNRESOLVED",
+              "redistribution": "UNRESOLVED",
+              "storedCopyPermitted": false
+            },
+            "serving": false
+          }
+        ],
+        "detail": "No reuse grant recorded for layer:us-co-gmu; a person must resolve it with the publisher."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "Hunt-code tables and post-publication corrections need structured diffing; GIS layer/version and reuse terms not certified",
+        "Federal dependencies: USFS/BLM access; NPS and refuge closures; wilderness/access constraints",
+        "No reuse grant recorded for layer:us-co-gmu; a person must resolve it with the publisher.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "CT",
+      "jurisdictionId": "jurisdiction:us-ct",
+      "name": "Connecticut",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-ct-deep",
+        "name": "Connecticut Department of Energy and Environmental Protection Wildlife Division",
+        "url": "https://portal.ct.gov/deep/hunting/hunting-and-trapping"
+      },
+      "regulationsSource": {
+        "id": "source:us-ct-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Connecticut Wildlife Publications and Forms",
+        "url": "https://portal.ct.gov/deep/wildlife/wildlife-publications-and-forms",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "SOURCE_FOUND"
+      },
+      "boundarySource": null,
+      "managementGeography": "Deer/Turkey Management Zone",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Connecticut query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "DC",
+      "jurisdictionId": "jurisdiction:us-dc",
+      "name": "District of Columbia",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-dc-doee",
+        "name": "District of Columbia Department of Energy and Environment",
+        "url": "https://doee.dc.gov/service/fisheries-and-wildlife"
+      },
+      "regulationsSource": {
+        "id": "source:us-dc-wildlife",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Fisheries and Wildlife",
+        "url": "https://doee.dc.gov/service/fisheries-and-wildlife",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "NEEDS_REVIEW"
+      },
+      "boundarySource": null,
+      "managementGeography": "UNRESOLVED",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every District of Columbia query is UNKNOWN.",
+        "Confirm statutory prohibition/absence and any controlled wildlife-management exceptions",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "DE",
+      "jurisdictionId": "jurisdiction:us-de",
+      "name": "Delaware",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-de-dnrec",
+        "name": "Delaware Department of Natural Resources and Environmental Control Division of Fish and Wildlife",
+        "url": "https://dnrec.delaware.gov/fish-wildlife/hunting/"
+      },
+      "regulationsSource": {
+        "id": "source:us-de-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Delaware Hunting",
+        "url": "https://dnrec.delaware.gov/fish-wildlife/hunting/",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Wildlife Area/Zone",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Delaware query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "FL",
+      "jurisdictionId": "jurisdiction:us-fl",
+      "name": "Florida",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-fl-fwc",
+        "name": "Florida Fish and Wildlife Conservation Commission",
+        "url": "https://myfwc.com/hunting/"
+      },
+      "regulationsSource": {
+        "id": "source:us-fl-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Florida Hunting",
+        "url": "https://myfwc.com/hunting/",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Zone/Wildlife Management Area",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Florida query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "GA",
+      "jurisdictionId": "jurisdiction:us-ga",
+      "name": "Georgia",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-ga-dnr",
+        "name": "Georgia Department of Natural Resources Wildlife Resources Division",
+        "url": "https://georgiawildlife.com/hunting"
+      },
+      "regulationsSource": {
+        "id": "source:us-ga-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Georgia Hunting",
+        "url": "https://georgiawildlife.com/hunting",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Zone/Wildlife Management Area",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Georgia query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "HI",
+      "jurisdictionId": "jurisdiction:us-hi",
+      "name": "Hawaii",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-hi-dofaw",
+        "name": "Hawaii Division of Forestry and Wildlife",
+        "url": "https://dlnr.hawaii.gov/recreation/hunting/"
+      },
+      "regulationsSource": {
+        "id": "source:us-hi-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Hawaii Hunting",
+        "url": "https://dlnr.hawaii.gov/recreation/hunting/",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Public Hunting Area/Unit",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Hawaii query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "IA",
+      "jurisdictionId": "jurisdiction:us-ia",
+      "name": "Iowa",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-ia-dnr",
+        "name": "Iowa Department of Natural Resources",
+        "url": "https://www.iowadnr.gov/things-to-do/hunting-trapping"
+      },
+      "regulationsSource": {
+        "id": "source:us-ia-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Iowa Hunting Regulations and Laws",
+        "url": "https://www.iowadnr.gov/things-do/hunting-trapping/hunting-regulations-laws",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "SOURCE_FOUND"
+      },
+      "boundarySource": null,
+      "managementGeography": "Zone/County",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Iowa query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "ID",
+      "jurisdictionId": "jurisdiction:us-id",
+      "name": "Idaho",
+      "productionStatus": "PARTIAL",
+      "authority": {
+        "id": "authority:us-id-fg",
+        "name": "Idaho Department of Fish and Game",
+        "url": "https://idfg.idaho.gov/hunt"
+      },
+      "regulationsSource": {
+        "id": "source:us-id-big-game-seasons-2026",
+        "scope": "ANNUAL_REGULATION",
+        "title": "Idaho Big Game 2026 Seasons and Rules",
+        "url": "https://idfg.idaho.gov/sites/default/files/seasons-rules-big-game-2026.pdf",
+        "legalStanding": "Published regulations; North Ground records facts — hunts, areas, dates and quotas — with the page as provenance.",
+        "licenceStatus": "FACT_EXTRACTION_RECORDED",
+        "verificationStatus": "CERTIFIED"
+      },
+      "boundarySource": {
+        "id": "layer:us-id-gmu:official-service",
+        "scope": "OFFICIAL_GIS_SERVICE",
+        "title": "Official hunting-management boundary service",
+        "url": "https://gisportal-idfg.idaho.gov/hosting/rest/services/Hunting/MapServer/3",
+        "legalStanding": "DERIVED_FROM_LEGAL_DESCRIPTION",
+        "licenceStatus": "SEE_MAP_LAYER_LICENCE",
+        "verificationStatus": "CERTIFIED_PARITY"
+      },
+      "managementGeography": "Game Management Units; Elk Zones; Controlled Hunt Areas; Access Yes properties",
+      "map": {
+        "status": "SERVED",
+        "layers": [
+          {
+            "layerId": "layer:us-id-gmu",
+            "points": 708,
+            "disagreements": 0,
+            "certifiedOn": "2026-09-21",
+            "licence": {
+              "permittedUse": "COMMERCIAL_PERMITTED",
+              "redistribution": "UNRESOLVED",
+              "storedCopyPermitted": false
+            },
+            "serving": true
+          }
+        ],
+        "detail": null
+      },
+      "species": {
+        "status": "SERVED",
+        "canonicalIds": [
+          "species:pronghorn"
+        ]
+      },
+      "regulations": {
+        "status": "SERVED",
+        "bundles": [
+          "regulatory_bundle:us-id-pronghorn-2026"
+        ],
+        "rules": 54,
+        "species": [
+          "species:pronghorn"
+        ],
+        "cases": 16,
+        "rulesServing": true
+      },
+      "huntingHours": {
+        "status": "RULE_CERTIFIED_EXACT_CLOCK_UNAVAILABLE",
+        "basis": "SUNRISE_SUNSET_OFFSET",
+        "sourceId": "source:us-id-big-game-seasons-2026",
+        "citation": "Idaho Big Game 2026 Seasons and Rules, p. 95",
+        "detail": "The half-hour-before-sunrise to half-hour-after-sunset rule is certified. Exact clock times remain unavailable because point-level Idaho timezone resolution is not certified."
+      },
+      "provenance": "CERTIFIED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "PARTIAL",
+      "knownGaps": [
+        "Controlled-hunt areas may be portions/combinations of units; downloadable dataset version and license need capture",
+        "Federal dependencies: USFWS refuge special rules; USFS/BLM access; tribal jurisdiction",
+        "Ready to Hunt covers the hunting licence and controlled-hunt tag only; methods, orange, education, ammunition and current fees remain uncertified."
+      ]
+    },
+    {
+      "code": "IL",
+      "jurisdictionId": "jurisdiction:us-il",
+      "name": "Illinois",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-il-dnr",
+        "name": "Illinois Department of Natural Resources",
+        "url": "https://dnr.illinois.gov/hunting.html"
+      },
+      "regulationsSource": {
+        "id": "source:us-il-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Illinois Hunting",
+        "url": "https://dnr.illinois.gov/hunting.html",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "County/Site",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Illinois query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "IN",
+      "jurisdictionId": "jurisdiction:us-in",
+      "name": "Indiana",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-in-dnr",
+        "name": "Indiana Department of Natural Resources Division of Fish and Wildlife",
+        "url": "https://www.in.gov/dnr/fish-and-wildlife/hunting-and-trapping/"
+      },
+      "regulationsSource": {
+        "id": "source:us-in-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Indiana Hunting and Trapping",
+        "url": "https://www.in.gov/dnr/fish-and-wildlife/hunting-and-trapping/",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "County/Fish and Wildlife Area",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Indiana query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "KS",
+      "jurisdictionId": "jurisdiction:us-ks",
+      "name": "Kansas",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-ks-kdwp",
+        "name": "Kansas Department of Wildlife and Parks",
+        "url": "https://ksoutdoors.com/Hunting"
+      },
+      "regulationsSource": {
+        "id": "source:us-ks-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Kansas Hunting",
+        "url": "https://ksoutdoors.com/Hunting",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Deer Management Unit",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Kansas query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "KY",
+      "jurisdictionId": "jurisdiction:us-ky",
+      "name": "Kentucky",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-ky-dfw",
+        "name": "Kentucky Department of Fish and Wildlife Resources",
+        "url": "https://fw.ky.gov/Hunt/Pages/default.aspx"
+      },
+      "regulationsSource": {
+        "id": "source:us-ky-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Kentucky Hunting",
+        "url": "https://fw.ky.gov/Hunt/Pages/default.aspx",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Zone/County",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Kentucky query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "LA",
+      "jurisdictionId": "jurisdiction:us-la",
+      "name": "Louisiana",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-la-wlf",
+        "name": "Louisiana Department of Wildlife and Fisheries",
+        "url": "https://www.wlf.louisiana.gov/page/hunting"
+      },
+      "regulationsSource": {
+        "id": "source:us-la-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Louisiana Hunting",
+        "url": "https://www.wlf.louisiana.gov/page/hunting",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Area/Wildlife Management Area",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Louisiana query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "MA",
+      "jurisdictionId": "jurisdiction:us-ma",
+      "name": "Massachusetts",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-ma-masswildlife",
+        "name": "Massachusetts Division of Fisheries and Wildlife",
+        "url": "https://www.mass.gov/hunting-regulations"
+      },
+      "regulationsSource": {
+        "id": "source:us-ma-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Massachusetts Hunting Regulations",
+        "url": "https://www.mass.gov/hunting-regulations",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Wildlife Management Zone",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Massachusetts query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "MD",
+      "jurisdictionId": "jurisdiction:us-md",
+      "name": "Maryland",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-md-dnr",
+        "name": "Maryland Department of Natural Resources Wildlife and Heritage Service",
+        "url": "https://dnr.maryland.gov/wildlife/Pages/hunt_trap/home.aspx"
+      },
+      "regulationsSource": {
+        "id": "source:us-md-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Maryland Hunting and Trapping",
+        "url": "https://dnr.maryland.gov/wildlife/Pages/hunt_trap/home.aspx",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Region/County",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Maryland query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "ME",
+      "jurisdictionId": "jurisdiction:us-me",
+      "name": "Maine",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-me-ifw",
+        "name": "Maine Department of Inland Fisheries and Wildlife",
+        "url": "https://www.maine.gov/ifw/hunting-trapping/index.html"
+      },
+      "regulationsSource": {
+        "id": "source:us-me-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Maine Hunting and Trapping",
+        "url": "https://www.maine.gov/ifw/hunting-trapping/index.html",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Wildlife Management District (WMD)",
+      "map": {
+        "status": "LICENCE_BLOCKED",
+        "layers": [],
+        "detail": "RESTRICTED for Wildlife Management District (WMD) (30 units), read 2026-09-23: \"These boundaries are for reference purposes only. For precise boundary delineation, please refer to the written boundary…\" — the publisher's own terms refuse this use; only a written exception from it would change that."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Maine query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "RESTRICTED for Wildlife Management District (WMD) (30 units), read 2026-09-23: \"These boundaries are for reference purposes only. For precise boundary delineation, please refer to the written boundary…\" — the publisher's own terms refuse this use; only a written exception from it would change that.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "MI",
+      "jurisdictionId": "jurisdiction:us-mi",
+      "name": "Michigan",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-mi-dnr",
+        "name": "Michigan Department of Natural Resources",
+        "url": "https://www.michigan.gov/dnr/things-to-do/hunting"
+      },
+      "regulationsSource": {
+        "id": "source:us-mi-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Michigan Hunting",
+        "url": "https://www.michigan.gov/dnr/things-to-do/hunting",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Deer Management Unit (DMU)",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "Michigan is NOT served, and the licence is not what blocks it — the licence is clear. The rescission of DMU 351 and DMU 352 is established as a FACT but not as an INSTRUMENT. Minutes of the adopting vote are evidence that a thing was decided; they are not the instrument that decided it. Nobody has read the repealing sentence, and there is no effective date. There is no version of serving this that is honest. Asked of the authority: The conformed text of WCO Amendment No. 6 of 2026 as adopted, and its effective date."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Michigan query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "Michigan is NOT served, and the licence is not what blocks it — the licence is clear. The rescission of DMU 351 and DMU 352 is established as a FACT but not as an INSTRUMENT. Minutes of the adopting vote are evidence that a thing was decided; they are not the instrument that decided it. Nobody has read the repealing sentence, and there is no effective date. There is no version of serving this that is honest. Asked of the authority: The conformed text of WCO Amendment No. 6 of 2026 as adopted, and its effective date.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "MN",
+      "jurisdictionId": "jurisdiction:us-mn",
+      "name": "Minnesota",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-mn-dnr",
+        "name": "Minnesota Department of Natural Resources",
+        "url": "https://www.dnr.state.mn.us/hunting/index.html"
+      },
+      "regulationsSource": {
+        "id": "source:us-mn-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Minnesota Hunting",
+        "url": "https://www.dnr.state.mn.us/hunting/index.html",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Permit Area",
+      "map": {
+        "status": "LICENCE_BLOCKED",
+        "layers": [],
+        "detail": "RESTRICTED for Deer Permit Area (DPA) (130 units), read 2026-09-23: \"The Minnesota Department of Natural Resources (MNDNR) grants to you a personal, non-exclusive, non-transferrable, limite…\" — the publisher's own terms refuse this use; only a written exception from it would change that."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Minnesota query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "RESTRICTED for Deer Permit Area (DPA) (130 units), read 2026-09-23: \"The Minnesota Department of Natural Resources (MNDNR) grants to you a personal, non-exclusive, non-transferrable, limite…\" — the publisher's own terms refuse this use; only a written exception from it would change that.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "MO",
+      "jurisdictionId": "jurisdiction:us-mo",
+      "name": "Missouri",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-mo-mdc",
+        "name": "Missouri Department of Conservation",
+        "url": "https://mdc.mo.gov/hunting-trapping"
+      },
+      "regulationsSource": {
+        "id": "source:us-mo-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Missouri Hunting and Trapping",
+        "url": "https://mdc.mo.gov/hunting-trapping",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "County/Zone",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Missouri query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "MS",
+      "jurisdictionId": "jurisdiction:us-ms",
+      "name": "Mississippi",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-ms-mdwfp",
+        "name": "Mississippi Department of Wildlife Fisheries and Parks",
+        "url": "https://www.mdwfp.com/wildlife-hunting"
+      },
+      "regulationsSource": {
+        "id": "source:us-ms-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Mississippi Wildlife and Hunting",
+        "url": "https://www.mdwfp.com/wildlife-hunting",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Zone/Wildlife Management Area",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Mississippi query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "MT",
+      "jurisdictionId": "jurisdiction:us-mt",
+      "name": "Montana",
+      "productionStatus": "REGULATIONS_ONLY",
+      "authority": {
+        "id": "authority:us-mt-fwp",
+        "name": "Montana Fish Wildlife and Parks",
+        "url": "https://fwp.mt.gov/hunt"
+      },
+      "regulationsSource": {
+        "id": "source:us-mt-upland-regulations-2026",
+        "scope": "ANNUAL_REGULATION",
+        "title": "2026 Montana Upland Game Bird Hunting Regulations",
+        "url": "https://fwp.mt.gov/binaries/content/assets/fwp/hunt/regulations/2026/2026-upgbrd-final-for-web.pdf",
+        "legalStanding": "Published regulations; North Ground records facts — dates, areas, limits — with the page as provenance.",
+        "licenceStatus": "FACT_EXTRACTION_RECORDED",
+        "verificationStatus": "CERTIFIED"
+      },
+      "boundarySource": {
+        "id": "layer:us-mt-deer-elk-hd:official-service",
+        "scope": "OFFICIAL_GIS_SERVICE",
+        "title": "Official hunting-management boundary service",
+        "url": "https://fwp-gis.mt.gov/arcgis/rest/services/admbnd/huntingDistricts/MapServer/11",
+        "legalStanding": "DERIVED_FROM_LEGAL_DESCRIPTION",
+        "licenceStatus": "SEE_MAP_LAYER_LICENCE",
+        "verificationStatus": "CERTIFIED_PARITY"
+      },
+      "managementGeography": "Species hunting districts; administrative regions; Block Management Areas and access overlays",
+      "map": {
+        "status": "LICENCE_BLOCKED",
+        "layers": [
+          {
+            "layerId": "layer:us-mt-deer-elk-hd",
+            "points": 998,
+            "disagreements": 0,
+            "certifiedOn": "2026-09-21",
+            "licence": {
+              "permittedUse": "UNRESOLVED",
+              "redistribution": "UNRESOLVED",
+              "storedCopyPermitted": false
+            },
+            "serving": false
+          },
+          {
+            "layerId": "layer:us-mt-upland",
+            "points": 263,
+            "disagreements": 0,
+            "certifiedOn": "2026-09-21",
+            "licence": {
+              "permittedUse": "UNRESOLVED",
+              "redistribution": "UNRESOLVED",
+              "storedCopyPermitted": false
+            },
+            "serving": false
+          }
+        ],
+        "detail": "No reuse grant recorded for layer:us-mt-deer-elk-hd, layer:us-mt-upland; a person must resolve it with the publisher."
+      },
+      "species": {
+        "status": "CERTIFIED",
+        "canonicalIds": [
+          "species:gray-partridge",
+          "species:ring-necked-pheasant",
+          "species:ruffed-grouse",
+          "species:sharp-tailed-grouse",
+          "species:spruce-grouse"
+        ]
+      },
+      "regulations": {
+        "status": "CERTIFIED",
+        "bundles": [
+          "regulatory_bundle:us-mt-upland-2026"
+        ],
+        "rules": 28,
+        "species": [
+          "species:gray-partridge",
+          "species:ring-necked-pheasant",
+          "species:ruffed-grouse",
+          "species:sharp-tailed-grouse",
+          "species:spruce-grouse"
+        ],
+        "cases": 18,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "CERTIFIED_EXACT_POINT",
+        "basis": "SUNRISE_SUNSET_OFFSET",
+        "sourceId": "source:us-mt-upland-regulations-2026",
+        "citation": "2026 Montana Upland Game Bird Hunting Regulations, p. 4",
+        "detail": "Exact point times are calculated from the certified half-hour-before-sunrise to half-hour-after-sunset rule."
+      },
+      "provenance": "CERTIFIED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "District geometry is species-dependent; legal descriptions are separately versioned; planner disclaimer prevents legal substitution",
+        "Federal dependencies: USFS/BLM access; refuge-specific rules; tribal jurisdiction boundaries",
+        "No reuse grant recorded for layer:us-mt-deer-elk-hd, layer:us-mt-upland; a person must resolve it with the publisher.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "NC",
+      "jurisdictionId": "jurisdiction:us-nc",
+      "name": "North Carolina",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-nc-wrc",
+        "name": "North Carolina Wildlife Resources Commission",
+        "url": "https://www.ncwildlife.gov/hunting"
+      },
+      "regulationsSource": {
+        "id": "source:us-nc-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "North Carolina Hunting",
+        "url": "https://www.ncwildlife.gov/hunting",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Zone/Game Land",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every North Carolina query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "ND",
+      "jurisdictionId": "jurisdiction:us-nd",
+      "name": "North Dakota",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-nd-gf",
+        "name": "North Dakota Game and Fish Department",
+        "url": "https://gf.nd.gov/hunting"
+      },
+      "regulationsSource": {
+        "id": "source:us-nd-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "North Dakota Hunting",
+        "url": "https://gf.nd.gov/hunting",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Unit",
+      "map": {
+        "status": "LICENCE_BLOCKED",
+        "layers": [],
+        "detail": "UNRESOLVED for Deer Units (39 units), read 2026-09-23: \"For redistribution of North Dakota Game and Fish Department data, please contact the Department at 701-328-6369.…\" — no grant is stated either way; a person must ask the publisher."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every North Dakota query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "UNRESOLVED for Deer Units (39 units), read 2026-09-23: \"For redistribution of North Dakota Game and Fish Department data, please contact the Department at 701-328-6369.…\" — no grant is stated either way; a person must ask the publisher.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "NE",
+      "jurisdictionId": "jurisdiction:us-ne",
+      "name": "Nebraska",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-ne-ngpc",
+        "name": "Nebraska Game and Parks Commission",
+        "url": "https://outdoornebraska.gov/hunt/"
+      },
+      "regulationsSource": {
+        "id": "source:us-ne-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Nebraska Hunt",
+        "url": "https://outdoornebraska.gov/hunt/",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Unit",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Nebraska query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "NH",
+      "jurisdictionId": "jurisdiction:us-nh",
+      "name": "New Hampshire",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-nh-fg",
+        "name": "New Hampshire Fish and Game Department",
+        "url": "https://www.wildlife.nh.gov/hunting-nh"
+      },
+      "regulationsSource": {
+        "id": "source:us-nh-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Hunting in New Hampshire",
+        "url": "https://www.wildlife.nh.gov/hunting-nh",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Wildlife Management Unit (WMU)",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every New Hampshire query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "NJ",
+      "jurisdictionId": "jurisdiction:us-nj",
+      "name": "New Jersey",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-nj-fws",
+        "name": "New Jersey Division of Fish and Wildlife",
+        "url": "https://dep.nj.gov/njfw/hunting/"
+      },
+      "regulationsSource": {
+        "id": "source:us-nj-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "New Jersey Hunting",
+        "url": "https://dep.nj.gov/njfw/hunting/",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Deer/Turkey Management Zone",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every New Jersey query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "NM",
+      "jurisdictionId": "jurisdiction:us-nm",
+      "name": "New Mexico",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-nm-dgf",
+        "name": "New Mexico Department of Game and Fish",
+        "url": "https://www.wildlife.state.nm.us/hunting/"
+      },
+      "regulationsSource": {
+        "id": "source:us-nm-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "New Mexico Hunting",
+        "url": "https://www.wildlife.state.nm.us/hunting/",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": {
+        "id": "us-nm-gmu",
+        "scope": "GIS_AND_DESCRIPTIONS",
+        "title": "New Mexico GMU maps, descriptions, shapefile and KMZ",
+        "url": "https://wildlife.dgf.nm.gov/hunting/maps/big-game-unit-maps-pdfs/",
+        "legalStanding": "Statewide map disclaims precise-boundary use; descriptions control",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "SOURCE_FOUND_STALE_DATA"
+      },
+      "managementGeography": "Game Management Units; species ranges; EPLUS/private-land units; Open Gate and state/federal/tribal land overlays",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every New Mexico query is UNKNOWN.",
+        "Published downloadable GMU data is dated October 2017; private-land systems and tribal authority cannot be inferred from GMU",
+        "Federal dependencies: BLM/USFS; Valles Caldera/NPS; refuges; tribal licenses and lawful-possession documentation",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "NV",
+      "jurisdictionId": "jurisdiction:us-nv",
+      "name": "Nevada",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-nv-ndow",
+        "name": "Nevada Department of Wildlife",
+        "url": "https://www.ndow.org/get-outside/hunting/"
+      },
+      "regulationsSource": {
+        "id": "source:us-nv-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Nevada Hunting",
+        "url": "https://www.ndow.org/get-outside/hunting/",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Unit",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Nevada query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "NY",
+      "jurisdictionId": "jurisdiction:us-ny",
+      "name": "New York",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-ny-dec",
+        "name": "New York State Department of Environmental Conservation",
+        "url": "https://dec.ny.gov/things-to-do/hunting"
+      },
+      "regulationsSource": {
+        "id": "source:us-ny-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "New York Hunting",
+        "url": "https://dec.ny.gov/things-to-do/hunting",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Wildlife Management Unit (WMU)",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every New York query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "OH",
+      "jurisdictionId": "jurisdiction:us-oh",
+      "name": "Ohio",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-oh-dow",
+        "name": "Ohio Department of Natural Resources Division of Wildlife",
+        "url": "https://ohiodnr.gov/discover-and-learn/safety-conservation/wildlife-management/hunting"
+      },
+      "regulationsSource": {
+        "id": "source:us-oh-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Ohio Administrative Code Chapter 1501:31 Wildlife",
+        "url": "https://codes.ohio.gov/ohio-administrative-code/1501%3A31",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "SOURCE_FOUND"
+      },
+      "boundarySource": null,
+      "managementGeography": "County/Wildlife Area",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Ohio query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "OK",
+      "jurisdictionId": "jurisdiction:us-ok",
+      "name": "Oklahoma",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-ok-wd",
+        "name": "Oklahoma Department of Wildlife Conservation",
+        "url": "https://www.wildlifedepartment.com/hunting"
+      },
+      "regulationsSource": {
+        "id": "source:us-ok-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Oklahoma Hunting",
+        "url": "https://www.wildlifedepartment.com/hunting",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Zone/Wildlife Management Area",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Oklahoma query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "OR",
+      "jurisdictionId": "jurisdiction:us-or",
+      "name": "Oregon",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-or-odfw",
+        "name": "Oregon Department of Fish and Wildlife",
+        "url": "https://myodfw.com/hunting"
+      },
+      "regulationsSource": {
+        "id": "source:us-or-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Oregon Big Game Hunting Regulations 2026",
+        "url": "https://myodfw.com/sites/default/files/2025-11/26_BG_regs.pdf",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "SOURCE_FOUND"
+      },
+      "boundarySource": null,
+      "managementGeography": "Wildlife Management Unit",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Oregon query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "PA",
+      "jurisdictionId": "jurisdiction:us-pa",
+      "name": "Pennsylvania",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-pa-pgc",
+        "name": "Pennsylvania Game Commission",
+        "url": "https://www.pa.gov/agencies/pgc/huntingandtrapping.html"
+      },
+      "regulationsSource": {
+        "id": "source:us-pa-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Pennsylvania Hunting and Trapping",
+        "url": "https://www.pa.gov/agencies/pgc/huntingandtrapping.html",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Wildlife Management Unit (WMU)",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Pennsylvania query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "RI",
+      "jurisdictionId": "jurisdiction:us-ri",
+      "name": "Rhode Island",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-ri-dem",
+        "name": "Rhode Island Department of Environmental Management Division of Fish and Wildlife",
+        "url": "https://dem.ri.gov/natural-resources-bureau/fish-wildlife/hunting-trapping"
+      },
+      "regulationsSource": {
+        "id": "source:us-ri-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Rhode Island Hunting and Trapping",
+        "url": "https://dem.ri.gov/natural-resources-bureau/fish-wildlife/hunting-trapping",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Zone/Management Area",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Rhode Island query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "SC",
+      "jurisdictionId": "jurisdiction:us-sc",
+      "name": "South Carolina",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-sc-dnr",
+        "name": "South Carolina Department of Natural Resources",
+        "url": "https://www.dnr.sc.gov/hunting.html"
+      },
+      "regulationsSource": {
+        "id": "source:us-sc-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "South Carolina Hunting",
+        "url": "https://www.dnr.sc.gov/hunting.html",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Game Zone/Wildlife Management Area",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every South Carolina query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "SD",
+      "jurisdictionId": "jurisdiction:us-sd",
+      "name": "South Dakota",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-sd-gfp",
+        "name": "South Dakota Game Fish and Parks",
+        "url": "https://gfp.sd.gov/hunt/"
+      },
+      "regulationsSource": {
+        "id": "source:us-sd-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "South Dakota Hunt",
+        "url": "https://gfp.sd.gov/hunt/",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Unit",
+      "map": {
+        "status": "LICENCE_BLOCKED",
+        "layers": [],
+        "detail": "UNRESOLVED for East River deer units (46 units), read 2026-09-23: \"Anyone may view, copy or distribute information found on the State's website for personal or informational use without o…\" — no grant is stated either way; a person must ask the publisher."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every South Dakota query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "UNRESOLVED for East River deer units (46 units), read 2026-09-23: \"Anyone may view, copy or distribute information found on the State's website for personal or informational use without o…\" — no grant is stated either way; a person must ask the publisher.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "TN",
+      "jurisdictionId": "jurisdiction:us-tn",
+      "name": "Tennessee",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-tn-twra",
+        "name": "Tennessee Wildlife Resources Agency",
+        "url": "https://www.tn.gov/twra/hunting.html"
+      },
+      "regulationsSource": {
+        "id": "source:us-tn-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Tennessee Hunting",
+        "url": "https://www.tn.gov/twra/hunting.html",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Unit/Zone/Wildlife Management Area",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Tennessee query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "TX",
+      "jurisdictionId": "jurisdiction:us-tx",
+      "name": "Texas",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-tx-tpwd",
+        "name": "Texas Parks and Wildlife Department",
+        "url": "https://tpwd.texas.gov/regulations/outdoor-annual/hunting/"
+      },
+      "regulationsSource": {
+        "id": "source:us-tx-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Texas Outdoor Annual Hunting",
+        "url": "https://tpwd.texas.gov/regulations/outdoor-annual/hunting/",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "County/Zone/Wildlife Management Area",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Texas query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "UT",
+      "jurisdictionId": "jurisdiction:us-ut",
+      "name": "Utah",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-ut-dwr",
+        "name": "Utah Division of Wildlife Resources",
+        "url": "https://wildlife.utah.gov/hunting.html"
+      },
+      "regulationsSource": {
+        "id": "source:us-ut-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Utah Hunting and Fishing Guidebooks",
+        "url": "https://wildlife.utah.gov/guidebooks",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "SOURCE_FOUND"
+      },
+      "boundarySource": {
+        "id": "us-ut-boundaries",
+        "scope": "GIS_PLANNER",
+        "title": "Utah hunt boundary maps",
+        "url": "https://dwrapps.utah.gov/huntboundary/hbstart",
+        "legalStanding": "Boundary guidance; current descriptions/rules control",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "SOURCE_FOUND"
+      },
+      "managementGeography": "Species hunt units; limited-entry and antlerless boundaries; CWMUs; extended-archery areas",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Utah query is UNKNOWN.",
+        "Guidebooks receive dated corrections; CWMU and extended-archery geometries are independent overlays; boundary API not certified",
+        "Federal dependencies: USFS/BLM; refuge/park restrictions; tribal land permissions",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "VA",
+      "jurisdictionId": "jurisdiction:us-va",
+      "name": "Virginia",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-va-dwr",
+        "name": "Virginia Department of Wildlife Resources",
+        "url": "https://dwr.virginia.gov/hunting/"
+      },
+      "regulationsSource": {
+        "id": "source:us-va-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Virginia Hunting",
+        "url": "https://dwr.virginia.gov/hunting/",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "County/Management Area",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Virginia query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "VT",
+      "jurisdictionId": "jurisdiction:us-vt",
+      "name": "Vermont",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-vt-fw",
+        "name": "Vermont Fish and Wildlife Department",
+        "url": "https://www.vtfishandwildlife.com/hunt"
+      },
+      "regulationsSource": {
+        "id": "source:us-vt-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Vermont Hunt",
+        "url": "https://www.vtfishandwildlife.com/hunt",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Wildlife Management Unit (WMU)",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Vermont query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "WA",
+      "jurisdictionId": "jurisdiction:us-wa",
+      "name": "Washington",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-wa-wdfw",
+        "name": "Washington Department of Fish and Wildlife",
+        "url": "https://wdfw.wa.gov/hunting"
+      },
+      "regulationsSource": {
+        "id": "source:us-wa-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Washington Hunting",
+        "url": "https://wdfw.wa.gov/hunting",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Game Management Unit (GMU)",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Washington query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "WI",
+      "jurisdictionId": "jurisdiction:us-wi",
+      "name": "Wisconsin",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-wi-dnr",
+        "name": "Wisconsin Department of Natural Resources",
+        "url": "https://dnr.wisconsin.gov/topic/hunt"
+      },
+      "regulationsSource": {
+        "id": "source:us-wi-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Wisconsin Hunting",
+        "url": "https://dnr.wisconsin.gov/topic/hunt",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "Deer Management Unit/Zone",
+      "map": {
+        "status": "LICENCE_BLOCKED",
+        "layers": [],
+        "detail": "UNRESOLVED for Deer Management Unit, with zone and metro subunit (111 units), read 2026-09-23: \"This data is for informational purposes only and may not have been prepared for or be suitable for legal, engineering or…\" — no grant is stated either way; a person must ask the publisher."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every Wisconsin query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "UNRESOLVED for Deer Management Unit, with zone and metro subunit (111 units), read 2026-09-23: \"This data is for informational purposes only and may not have been prepared for or be suitable for legal, engineering or…\" — no grant is stated either way; a person must ask the publisher.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "WV",
+      "jurisdictionId": "jurisdiction:us-wv",
+      "name": "West Virginia",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-wv-dnr",
+        "name": "West Virginia Division of Natural Resources",
+        "url": "https://wvdnr.gov/hunting/"
+      },
+      "regulationsSource": {
+        "id": "source:us-wv-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "West Virginia Hunting",
+        "url": "https://wvdnr.gov/hunting/",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": null,
+      "managementGeography": "County/Wildlife Management Area",
+      "map": {
+        "status": "UNAVAILABLE",
+        "layers": [],
+        "detail": "No reviewed geography service."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "No geometry ingested and no rules certified; every West Virginia query is UNKNOWN.",
+        "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
+        "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
+        "No reviewed geography service.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    },
+    {
+      "code": "WY",
+      "jurisdictionId": "jurisdiction:us-wy",
+      "name": "Wyoming",
+      "productionStatus": "UNSUPPORTED",
+      "authority": {
+        "id": "authority:us-wy-wgfd",
+        "name": "Wyoming Game and Fish Department",
+        "url": "https://wgfd.wyo.gov/hunting"
+      },
+      "regulationsSource": {
+        "id": "source:us-wy-hunting",
+        "scope": "STATE_OFFICIAL_HUB",
+        "title": "Wyoming Hunting",
+        "url": "https://wgfd.wyo.gov/hunting",
+        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
+        "licenceStatus": "UNRESOLVED",
+        "verificationStatus": "DISCOVERED"
+      },
+      "boundarySource": {
+        "id": "layer:us-wy-elk-area:official-service",
+        "scope": "OFFICIAL_GIS_SERVICE",
+        "title": "Official hunting-management boundary service",
+        "url": "https://services6.arcgis.com/cWzdqIyxbijuhPLw/arcgis/rest/services/ElkHuntAreas/FeatureServer/0",
+        "legalStanding": "PLANNING_GUIDANCE",
+        "licenceStatus": "SEE_MAP_LAYER_LICENCE",
+        "verificationStatus": "CERTIFIED_PARITY"
+      },
+      "managementGeography": "Species-specific hunt areas; nonresident regions; HMAs/WHMAs/walk-in areas; wilderness overlays",
+      "map": {
+        "status": "LICENCE_BLOCKED",
+        "layers": [
+          {
+            "layerId": "layer:us-wy-elk-area",
+            "points": 751,
+            "disagreements": 0,
+            "certifiedOn": "2026-09-21",
+            "licence": {
+              "permittedUse": "UNRESOLVED",
+              "redistribution": "UNRESOLVED",
+              "storedCopyPermitted": false
+            },
+            "serving": false
+          }
+        ],
+        "detail": "No reuse grant recorded for layer:us-wy-elk-area; a person must resolve it with the publisher."
+      },
+      "species": {
+        "status": "UNAVAILABLE",
+        "canonicalIds": []
+      },
+      "regulations": {
+        "status": "UNAVAILABLE",
+        "bundles": [],
+        "rules": 0,
+        "species": [],
+        "cases": 0,
+        "rulesServing": false
+      },
+      "huntingHours": {
+        "status": "NOT_CERTIFIED",
+        "basis": null,
+        "sourceId": null,
+        "citation": null,
+        "detail": "No state hunting-hours rule is certified in the production regulatory path."
+      },
+      "provenance": "DISCOVERED",
+      "intelligence": {
+        "status": "NONE",
+        "datasets": []
+      },
+      "readyToHunt": "NOT_IMPLEMENTED",
+      "knownGaps": [
+        "Species-specific geometries cannot be replaced by one statewide unit layer; written descriptions must be retained and versioned",
+        "Federal dependencies: National Elk Refuge; USFS/BLM; wilderness guide rule for nonresidents; refuge permits",
+        "No reuse grant recorded for layer:us-wy-elk-area; a person must resolve it with the publisher.",
+        "Hunting-hours coverage is not certified.",
+        "Ready to Hunt requirements are not implemented for this state."
+      ]
+    }
+  ]
+}

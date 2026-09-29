@@ -78,6 +78,15 @@ function bundles() {
       rules: record.rules.length,
       species: [...new Set(record.rules.map((rule) => rule.speciesId))].sort(),
       huntCodes: record.huntCodes?.length ?? 0,
+      source: Array.isArray(record.sources) && record.sources[0]
+        ? {
+            id: record.sources[0].id,
+            authority: record.sources[0].authority,
+            title: record.sources[0].title,
+            url: record.sources[0].url,
+            licence: record.sources[0].licence ?? null,
+          }
+        : null,
     });
   }
   for (const list of Object.values(found)) list.sort((a, b) => a.bundleId.localeCompare(b.bundleId));

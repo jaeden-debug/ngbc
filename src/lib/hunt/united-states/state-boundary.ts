@@ -71,6 +71,21 @@ export function unitedStatesStateSource(retrievedAt: string): SourceRecord {
 }
 
 /**
+ * A cheap request guard, not a jurisdiction answer. The rectangles are
+ * deliberately generous around the contiguous states, Alaska (including the
+ * Aleutians across the antimeridian) and Hawaii. Census still decides whether
+ * the point is in a state; this only keeps an unrelated world point from
+ * waiting on Census before receiving the generic unsupported response.
+ */
+export function couldBeUnitedStatesState(latitude: number, longitude: number): boolean {
+  if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return false;
+  const contiguous = latitude >= 24.2 && latitude <= 49.5 && longitude >= -125.1 && longitude <= -66.7;
+  const alaska = latitude >= 51 && latitude <= 72 && (longitude >= 172 || longitude <= -129);
+  const hawaii = latitude >= 18 && latitude <= 29 && longitude >= -180 && longitude <= -154;
+  return contiguous || alaska || hawaii;
+}
+
+/**
  * The state or territory containing the point, or undefined where the Bureau
  * places it in none (anywhere outside the United States) or could not be
  * asked. Undefined is never read as "no state": it only means Hunt cannot say.

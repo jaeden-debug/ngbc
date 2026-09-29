@@ -3,6 +3,7 @@ import mapLicences from "../../../../content/registry/us-map-licence-findings.js
 import { licencePermitsServing, licencePermitsStoredCopy } from "../source-licence.ts";
 import { layerById } from "../zone-layers.ts";
 import { US_LAYER_IDS } from "./layers.ts";
+import { UNITED_STATES_JURISDICTIONS } from "./registry.ts";
 
 /**
  * How far each state has actually got, in three lanes that never substitute
@@ -246,12 +247,13 @@ export interface UnitedStatesCertificationSummary {
 }
 
 /**
- * The three lanes for every state with any evidence, plus counts. States with
- * no evidence are UNAVAILABLE on every lane and are counted through
- * `unitedStatesCoverageReport`, which knows the full list of 51.
+ * The three lanes for every state and D.C., plus counts. A state with no
+ * evidence is an explicit UNAVAILABLE row, never absence from the matrix.
  */
 export function unitedStatesCertification(): UnitedStatesCertificationSummary {
-  const states = statesWithEvidence().map(certificationFor);
+  const states = UNITED_STATES_JURISDICTIONS
+    .filter((entry) => entry.kind !== "federal")
+    .map((entry) => certificationFor(entry.code.slice(3)));
   const count = <T extends string>(values: readonly T[], of: (entry: StateCertification) => T): Record<T, number> =>
     Object.fromEntries(values.map((value) => [value, states.filter((entry) => of(entry) === value).length])) as Record<T, number>;
   return {

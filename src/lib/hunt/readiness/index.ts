@@ -3,6 +3,7 @@ import { unitedStatesJurisdictionById } from "../united-states/registry.ts";
 import type { RegulatoryResult, ZoneResolution } from "../types.ts";
 import { resolveOntarioReadiness } from "./ontario.ts";
 import { resolveQuebecReadiness } from "./quebec.ts";
+import { resolveIdahoReadiness } from "./idaho.ts";
 import type { HunterAnswers } from "./resolve.ts";
 import type { ReadinessResult } from "./types.ts";
 
@@ -22,6 +23,7 @@ const READINESS_BUILDERS: Readonly<Record<string, (
 ) => ReadinessResult>> = {
   "jurisdiction:ca-on": resolveOntarioReadiness,
   "jurisdiction:ca-qc": resolveQuebecReadiness,
+  "jurisdiction:us-id": resolveIdahoReadiness,
 };
 
 const RESIDENCIES = new Set(["RESIDENT", "NON_RESIDENT"]);

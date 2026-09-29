@@ -4,8 +4,8 @@
   "jurisdictionId": "jurisdiction:ca-qc",
   "authority": "Gouvernement du Québec — ministère de l'Environnement, de la Lutte contre les changements climatiques, de la Faune et des Parcs",
   "language": "fr",
-  "retrievedAt": "2026-09-20",
-  "contentHash": "sha256:50bb01f097a2f36fd3d97e1edb56eebbe9a873dbcc05d1838158495641c90b14",
+  "retrievedAt": "2026-09-29",
+  "contentHash": "sha256:5d23a1bbedc4c81d84bc484d04417cd9bdc546f07667bb54aa64f527da741013",
   "certifiedPeriods": {
     "bigGame": {
       "from": "2026-01-01",
@@ -479,8 +479,8 @@
       "title": "Périodes de chasse à l’orignal 2026-2027",
       "url": "https://www.quebec.ca/tourisme-loisirs-sport/activites-sportives-et-de-plein-air/chasse-sportive/periodes-limites/orignal",
       "language": "fr",
-      "lastUpdated": "2026-09-18",
-      "contentHash": "sha256:7a0aafc49748a64b5157b41a0442400505eeb061c4a1316b760d8fa0fe7e7bd3",
+      "lastUpdated": "2026-09-23",
+      "contentHash": "sha256:937843e5febf0a026bc002257c9f3ef83f149f146475c830e9bdc95a35b0e65a",
       "sections": [
         {
           "heading": "Maintien des restrictions dans la zone 17",
@@ -507,12 +507,16 @@
           "contentHash": "sha256:2b71eb3de300e8269f69a83a461b83b655c48e0de030123f395ab439f5e587ef"
         },
         {
+          "heading": "Période de chasse dans des zecs",
+          "contentHash": "sha256:7fed046d125d1814e311fbbbaaddcc432b8d25689cbd4716e7350ffcc51d6357"
+        },
+        {
           "heading": "Biodiversité, Faune et Parcs - Service clientèle",
           "contentHash": "sha256:9dd11d2bb1c8bf3021562c0b1009ca6d6577914966345ebcb3372ee50aed83d3"
         },
         {
           "heading": "À consulter aussi",
-          "contentHash": "sha256:7944831c99a826b57f8747c5948d0ed7721d88ccbcad039470d9437385a825fb"
+          "contentHash": "sha256:89eb693f8ab342b0e11c35e4b29f4a6ef36499f4254709e0fc6c68ffd1113863"
         }
       ]
     },
@@ -523,7 +527,7 @@
       "url": "https://www.quebec.ca/tourisme-loisirs-sport/activites-sportives-et-de-plein-air/chasse-sportive/periodes-limites/cerf-virginie",
       "language": "fr",
       "lastUpdated": "2026-05-21",
-      "contentHash": "sha256:ab1c75ca39d5d964545027259207b67969e9835e2c4299c9ec23243493b8f139",
+      "contentHash": "sha256:c1d7380d23a45817fc821187ee2fee1c512be28d718951206dd3de33ccab1a74",
       "sections": [
         {
           "heading": "Périodes de chasse pour le cerf de Virginie 2026-2027",

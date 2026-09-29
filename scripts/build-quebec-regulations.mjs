@@ -272,6 +272,10 @@ const PARAGRAPHS = [
   { page: "orignal", starts: "En 2026 et 2027 :", kind: "CROSSCHECK" },
   { page: "orignal", starts: "En 2027 seulement :", kind: "CROSSCHECK" },
   { page: "orignal", starts: "Note : L'utilisation de l'arbalète est interdite", kind: "CROSSBOW" },
+  /* The default for zecs; the exception tables below are already recorded as
+     limitations because North Ground does not hold zec boundaries. This
+     sentence changes no zone-table answer and must not be promoted into one. */
+  { page: "orignal", starts: "Sauf indication contraire dans cette section, les dates d'ouverture de la zone", kind: "CONTEXT" },
 
   // Deer
   { page: "cerf-virginie", starts: "Dans les réserves fauniques, dans certaines pourvoiries", kind: "STATEMENT", id: "cerf-territoires-structures", scope: "page" },

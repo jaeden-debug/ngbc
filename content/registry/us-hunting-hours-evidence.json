@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "states": {
+    "ID": {
+      "status": "RULE_CERTIFIED_EXACT_CLOCK_UNAVAILABLE",
+      "basis": "SUNRISE_SUNSET_OFFSET",
+      "sourceId": "source:us-id-big-game-seasons-2026",
+      "citation": "Idaho Big Game 2026 Seasons and Rules, p. 95",
+      "detail": "The half-hour-before-sunrise to half-hour-after-sunset rule is certified. Exact clock times remain unavailable because point-level Idaho timezone resolution is not certified."
+    },
+    "MT": {
+      "status": "CERTIFIED_EXACT_POINT",
+      "basis": "SUNRISE_SUNSET_OFFSET",
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "citation": "2026 Montana Upland Game Bird Hunting Regulations, p. 4",
+      "detail": "Exact point times are calculated from the certified half-hour-before-sunrise to half-hour-after-sunset rule."
+    }
+  }
+}

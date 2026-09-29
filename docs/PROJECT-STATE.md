@@ -16,6 +16,17 @@ Previously: 2026-09-22 (Canonical species PRIMARY media schema, private storage 
 
 ## Current Product State
 
+**Current external-source hold (2026-09-29).** The live source gate found that
+Manitoba replaced its 2026 hunting-guide artifact: the downloaded guide is now
+`sha256:402f9485…`, while the certified cross-check transcription belongs to
+`sha256:74a15553…`. The regulation remains the controlling source and all
+deterministic tests pass, but `npm run check:regulatory-sources` must remain red
+until the replacement guide is re-transcribed and compared; accepting the new
+hash without that review would make the cross-check fictitious. The same run
+found a Québec page update dated 2026-09-23. That change was reviewed: it adds
+the ZEC-default-date context, changes 0 rules and 0 designations, and the Québec
+bundle now reproduces byte for byte from the current page.
+
 ### Main Site
 - Visual/hero work is currently being developed.
 - Brand direction: dark boreal, warm, rustic, clean, outdoorsy; not tactical.
@@ -573,23 +584,36 @@ bundle; it is the difference between a day of work and a week of rediscovery.
 Not assumed complete.
 Add jurisdictions only when genuinely implemented.
 
-**One state is served. One more is certified and withheld. Eight may not be
-drawn at all.** Every count below is computed by `npm run report:us` from
-evidence at call time; none is typed into a constant, so no state can be made
-to look covered by editing a number.
+**One state is served. One more has certified regulations and is withheld.
+Eight may not be drawn at all. No state is complete end to end.** Every count
+below is computed by `npm run report:us` from evidence at call time. The
+generated `content/registry/us-state-coverage-matrix.generated.json` covers all
+50 states and the District of Columbia and is checked by
+`npm run validate:us-coverage`. It records authority, readable regulations,
+exact GIS source where parity-tested, real management terminology,
+map/rules/species/hours, provenance, intelligence, Ready to Hunt and explicit
+gaps. A state cannot look covered merely because a status was edited.
 
 Per-state status is three independent lanes — MAP, REGULATIONS, INTELLIGENCE —
 and a state is never promoted past what its evidence supports:
 `UNAVAILABLE → LICENCE_BLOCKED → IN_DEVELOPMENT → CERTIFIED → SERVED`.
 
-As of 2026-09-23, 10 of 51 have evidence of any kind:
+As of 2026-09-29, four states have checked implementation evidence (live
+parity, a certified bundle, or both). The honest end-to-end classification is
+**0 COMPLETE, 1 PARTIAL, 1 REGULATIONS ONLY, 49 UNSUPPORTED**:
 
 - **Idaho — SERVED, both lanes.** The first U.S. state live. CC-BY licence,
   708-point live parity with 0 disagreements, 54 pronghorn rules over 40 hunt
   areas built from the 2026 Big Game booklet, 16 of 16 certification cases.
   Hunt codes are a first-class dimension; a tag for an area that does not cover
   the point is answered ("a tag for it does not authorise hunting here"), not
-  ignored.
+  ignored. Hunting hours are certified as half an hour before sunrise through
+  half an hour after sunset, but exact clock times remain unavailable until the
+  Salmon River/municipality time-zone rule is implemented. Ready to Hunt is
+  PARTIAL for pronghorn: it carries the Idaho hunting licence and controlled-
+  hunt tag/draw requirements with official provenance and purchase channels;
+  current fees, education, hunter orange, methods, ammunition and method-
+  specific validations remain explicitly uncertified.
 - **Montana — REGULATIONS CERTIFIED, MAP LICENCE_BLOCKED, nothing served.** 28
   rules across 5 species, 18 of 18 cases, 9 of 9 change drills. FWP grants
   access "on a strictly 'as is' basis" and states no reuse terms, so the code
@@ -600,13 +624,23 @@ As of 2026-09-23, 10 of 51 have evidence of any kind:
   restrictions on use, reproduction or distribution — the only state so far
   that permits a stored copy (not acted on; U.S. layers stay live-service by
   the owner's decision). 115 deer units plus 14 further game geographies on one
-  service. Next state to build.
+  service. Serving is blocked on the conformed text and effective date of WCO
+  Amendment No. 6 of 2026, which rescinded DMUs 351 and 352: meeting minutes
+  establish the vote but are not the instrument and supply neither fact.
 - **Licence-blocked (8): CO, ME, MN, MT, ND, SD, WI, WY.** Each blocked in its
   publisher's own words, recorded verbatim with a hash in
   `content/registry/us-map-licence-findings.json`, with a drafted letter in
   `docs/correspondence/`.
-- **41 states and D.C. have no evidence of any kind**, so every query there is
-  UNKNOWN.
+- **49 jurisdictions are UNSUPPORTED end to end.** Some have discovery sources
+  or blocked parity work, but no production path. Every one has an explicit
+  matrix row; no jurisdiction can silently disappear from the report.
+
+The zone endpoint now asks Census TIGERweb for state identity when a valid U.S.
+point is outside every served hunting layer. It returns the state, authority,
+readable official source and exact coverage state while refusing to invent a
+unit. Census geometry remains attribution only — never drawn as hunting
+geography and never used as a regulatory input. Provider failure or a point
+outside the United States retains the generic unsupported answer.
 
 **Licence-first is the working order**, adopted after Montana: a state's MAP
 licence is read and recorded before any rules work is spent on it. Silence is
@@ -616,9 +650,12 @@ asked, so a person must ask; a REFUSAL (RESTRICTED/PROHIBITED) means it has
 answered, and only a written exception would change that. Reporting them
 identically would make a refusal look like an errand.
 
-**The bottleneck is permissions, not engineering.** Two of ten states cleared.
-Eight letters are drafted for the owner to send or not; nothing in the codebase
-moves them.
+**Permissions remain a material bottleneck, but discovery and regulatory
+engineering are also incomplete.** Eight reviewed map paths require publisher
+action or an exception. Michigan's licence is clear but its controlling 2026
+instrument is missing. The remaining states still require authoritative source,
+licence, geometry and regulation certification; the matrix states each gap
+rather than grouping discovery-only rows with implementation evidence.
 
 Supporting architecture now in place:
 

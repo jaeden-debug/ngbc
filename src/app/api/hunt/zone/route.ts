@@ -2,6 +2,9 @@ import { isCoordinate, isWithinSupportedBounds } from "../../../../lib/hunt/cove
 import { resolveZone } from "../../../../lib/hunt/zone";
 import { resolvedZoneBody } from "../../../../lib/hunt/zone-response";
 import { layerForJurisdiction, layerForPoint, layerForResolution } from "../../../../lib/hunt/zone-layers";
+import { unitedStatesJurisdictionById } from "../../../../lib/hunt/united-states/registry";
+import { couldBeUnitedStatesState, unitedStatesStateAt } from "../../../../lib/hunt/united-states/state-boundary";
+import { unsupportedUnitedStatesResponse } from "../../../../lib/hunt/united-states/unsupported-response";
 import { createRateLimiter, getClientAddress } from "../../../../lib/newsletter/rate-limit";
 import { SITE_URL } from "../../../../lib/site";
 
@@ -89,6 +92,11 @@ export async function POST(request: Request): Promise<Response> {
   // jurisdiction a zone belongs to comes from the zone, below.
   const hint = layerForPoint(latitude, longitude);
   if (!hint || !isWithinSupportedBounds(latitude, longitude)) {
+    const place = couldBeUnitedStatesState(latitude, longitude)
+      ? await unitedStatesStateAt(latitude, longitude, fetch)
+      : undefined;
+    const jurisdiction = place ? unitedStatesJurisdictionById(place.jurisdictionId) : undefined;
+    if (place && jurisdiction) return json(unsupportedUnitedStatesResponse(place, jurisdiction));
     return json({
       status: "UNSUPPORTED",
       message:

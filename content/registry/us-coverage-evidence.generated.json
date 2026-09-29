@@ -103,7 +103,14 @@
         "species": [
           "species:pronghorn"
         ],
-        "huntCodes": 54
+        "huntCodes": 54,
+        "source": {
+          "id": "source:us-id-big-game-seasons-2026",
+          "authority": "Idaho Department of Fish and Game",
+          "title": "Idaho Big Game 2026 Seasons and Rules",
+          "url": "https://idfg.idaho.gov/sites/default/files/seasons-rules-big-game-2026.pdf",
+          "licence": "Published regulations; North Ground records facts — hunts, areas, dates and quotas — with the page as provenance."
+        }
       }
     ],
     "MT": [
@@ -111,7 +118,7 @@
         "bundleId": "regulatory_bundle:us-mt-upland-2026",
         "file": "content/regulatory/us-mt-upland-2026.json",
         "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
-        "retrievedAt": "2026-09-22",
+        "retrievedAt": "2026-09-29",
         "certifiedPeriod": {
           "from": "2026-03-01",
           "to": "2027-02-28",
@@ -125,7 +132,14 @@
           "species:sharp-tailed-grouse",
           "species:spruce-grouse"
         ],
-        "huntCodes": 0
+        "huntCodes": 0,
+        "source": {
+          "id": "source:us-mt-upland-regulations-2026",
+          "authority": "Montana Fish, Wildlife & Parks",
+          "title": "2026 Montana Upland Game Bird Hunting Regulations",
+          "url": "https://fwp.mt.gov/binaries/content/assets/fwp/hunt/regulations/2026/2026-upgbrd-final-for-web.pdf",
+          "licence": "Published regulations; North Ground records facts — dates, areas, limits — with the page as provenance."
+        }
       }
     ]
   },

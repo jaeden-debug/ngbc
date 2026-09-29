@@ -11,7 +11,11 @@ const research = (file: string) => readFileSync(new URL(`../../../../research/hu
 
 test("the registry is exactly what the research inventory produces, so fifty-one entries are never retyped", () => {
   const committed = JSON.parse(readFileSync(new URL("./jurisdictions.generated.json", import.meta.url), "utf8"));
-  assert.deepEqual(committed, buildRegistry(research("state-coverage-matrix.csv"), research("source-manifest.csv")));
+  assert.deepEqual(committed, buildRegistry(
+    research("state-coverage-matrix.csv"),
+    research("source-manifest.csv"),
+    readFileSync(new URL("../../../../research/hunting/authorities.csv", import.meta.url), "utf8"),
+  ));
 });
 
 test("every state and D.C. is tracked once, plus the federal layer, and none is claimed without evidence", () => {

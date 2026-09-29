@@ -29,6 +29,16 @@ export interface UnitedStatesJurisdiction {
   nameEn: string;
   /** Federal layers compose WITH a state's rules; they never replace them. */
   kind: "state" | "district" | "federal";
+  authority: { id: string; name: string; url: string };
+  officialSources: Array<{
+    id: string;
+    scope: string;
+    title: string;
+    url: string;
+    legalStanding: string;
+    licenceStatus: string;
+    verificationStatus: string;
+  }>;
   spatial: JurisdictionSpatial;
   regulatory: JurisdictionRegulatory;
   /** How deep the research behind this entry went, from the inventory. */
@@ -41,6 +51,7 @@ interface GeneratedJurisdiction {
   code: string;
   name: string;
   kind: "state" | "district";
+  authority: UnitedStatesJurisdiction["authority"];
   managementGeographies: string;
   officialSourceUrl: string;
   research: {
@@ -50,7 +61,7 @@ interface GeneratedJurisdiction {
     engineGaps: string;
     annualArtifact: string;
   };
-  sourceLeads: Array<{ title: string; url: string }>;
+  officialSources: UnitedStatesJurisdiction["officialSources"];
   knownGaps: string[];
 }
 
@@ -87,7 +98,7 @@ function fromResearch(entry: GeneratedJurisdiction): UnitedStatesJurisdiction {
   const regulatory: JurisdictionRegulatory = certified?.regulatory ?? {
     status: entry.kind === "district" ? "UNAVAILABLE" : "IN_DEVELOPMENT",
     bundleIds: [],
-    sourceLeads: [entry.research.annualArtifact, ...entry.sourceLeads.map((lead) => lead.title)],
+    sourceLeads: [entry.research.annualArtifact, ...entry.officialSources.filter((source) => source.scope !== "STATE_OFFICIAL_HUB").map((source) => source.title)],
     sourceState: "NOT_INGESTED",
   };
   return {
@@ -95,6 +106,8 @@ function fromResearch(entry: GeneratedJurisdiction): UnitedStatesJurisdiction {
     code: entry.code,
     nameEn: entry.name,
     kind: entry.kind,
+    authority: entry.authority,
+    officialSources: entry.officialSources,
     spatial,
     regulatory,
     research: {
@@ -113,6 +126,16 @@ const FEDERAL: UnitedStatesJurisdiction = {
   code: "US-FEDERAL",
   nameEn: "United States (federal)",
   kind: "federal",
+  authority: { id: "authority:us-fws", name: "U.S. Fish and Wildlife Service", url: generated.federal.sources[0].url },
+  officialSources: generated.federal.sources.map((source) => ({
+    id: "source:us-federal",
+    scope: source.scope,
+    title: source.title,
+    url: source.url,
+    legalStanding: source.legalStanding,
+    licenceStatus: "UNRESOLVED",
+    verificationStatus: "SOURCE_FOUND",
+  })),
   spatial: {
     status: "IN_DEVELOPMENT",
     officialTerm: "Migratory bird flyway and zone; National Wildlife Refuge; National Park; federal land unit",
