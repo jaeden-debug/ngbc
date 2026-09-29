@@ -95,7 +95,7 @@ test("a season that runs across a zone is not claimed inside the restricted area
   assert.ok(grouse.season, "the season window is still stated for the rest of the zone");
 
   const winnipeg = gha38.specialAreas?.find((area) => area.name === "Portion of GHA 38 and City of Winnipeg");
-  assert.equal(winnipeg?.statedAs, "No person shall hunt or kill wildlife");
+  assert.equal(winnipeg?.line, "Portion of GHA 38 and City of Winnipeg: “No person shall hunt or kill wildlife”");
   assert.ok(winnipeg?.species.includes("White-tailed deer"));
   // "big game other than white-tailed deer": the R.M. of Macdonald portion does not reach deer.
   const macdonald = gha38.specialAreas?.find((area) => area.name === "Portion of GHA 38 in RM of MacDonald");

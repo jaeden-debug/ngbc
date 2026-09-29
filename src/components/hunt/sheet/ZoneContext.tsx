@@ -315,8 +315,8 @@ export function ZoneSummaryDetail({ summary, parts }: { summary: ZoneSummary; pa
           <h3 className={styles.detailTitle}>Restricted areas inside this zone</h3>
           <ul className={styles.bullets}>
             {summary.specialAreas.slice(0, 6).map((area) => (
-              <li key={`${area.name}|${area.statedAs}`}>
-                <strong>{area.name}</strong> — “{area.statedAs}” <span className={styles.factNote}>Affects {area.species.join(", ").toLowerCase()}.</span>
+              <li key={area.line}>
+                {area.line} <span className={styles.factNote}>Affects {area.species.join(", ").toLowerCase()}.</span>
               </li>
             ))}
             {summary.specialAreas.length > 6 ? <li>{summary.specialAreas.length - 6} more — switch them on under Layers to see where they are.</li> : null}

@@ -128,8 +128,8 @@ export interface ZoneSummary {
    * Published special areas inside the zone that restrict a certified species,
    * read from the authority's layers. Null where the jurisdiction has none indexed.
    */
-  specialAreas: Array<{ name: string; layer: string; statedAs: string; species: string[] }> | null;
+  /** `line` already contains quotation marks only when the words are the authority's. */
+  specialAreas: Array<{ name: string; layer: string; line: string; species: string[] }> | null;
   /** The most recent date the underlying rules were read from their source. */
   verifiedAt: string | null;
 }
-

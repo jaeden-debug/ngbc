@@ -3,6 +3,8 @@ import type { OverlayCatalogue } from "../overlays.ts";
 import { layerForJurisdiction } from "../zone-layers.ts";
 import { toleranceForZoom, type BoundingBox } from "../zone-geometry.ts";
 import { labelPlacement, type PolygonGeometry } from "./label-point.ts";
+import type { CanonicalId } from "../../content-contract/index.ts";
+import { authored, quoting, type AuthorityQuotation, type NorthGroundStatement } from "../provenance.ts";
 
 /**
  * Special regulatory geography the map may draw on request.
@@ -28,22 +30,30 @@ export interface OverlayLayerDescriptor {
   extent: BoundingBox;
 }
 
-export interface OverlayFeature {
+interface OverlayFeatureBase {
   layerId: string;
   objectId: number;
   name: string;
   type?: string;
-  /** The authority's restriction text, verbatim; empty where it publishes none. */
-  statedAs: string;
   regulation?: string;
   rings: number[][][];
   labelPoint?: [number, number];
   labelSpan?: [number, number];
 }
 
+/**
+ * Map-overlay wording has declared authorship. `statedAs` exists only on the
+ * authority branch, so the existing quotation UI cannot receive our words.
+ */
+export type OverlayFeature = OverlayFeatureBase & (
+  | { words: AuthorityQuotation; statedAs: string; northGroundSummary?: never }
+  | { words: NorthGroundStatement; statedAs?: never; northGroundSummary: string }
+);
+
 interface CatalogueLayer {
   descriptor: OverlayLayerDescriptor;
   url: string;
+  lang: OverlayCatalogue["lang"];
   catalogue: OverlayCatalogue["layers"][number];
 }
 
@@ -73,6 +83,7 @@ function fromCatalogue(catalogue: OverlayCatalogue): CatalogueLayer[] {
     .filter((entry) => ((entry as { protocol?: string }).protocol ?? "ARCGIS") === "ARCGIS")
     .map((entry) => ({
       url: entry.url,
+      lang: catalogue.lang,
       catalogue: entry,
       descriptor: {
         id: `overlay:${catalogue.jurisdictionId.replace("jurisdiction:", "")}-${entry.key}`,
@@ -163,17 +174,31 @@ export async function fetchOverlayGeometry(
         .filter((ring) => ring.length >= 4) as number[][][];
       if (!rings.length) continue;
       const placement = labelPlacement(geometry);
-      features.push({
+      const base: OverlayFeatureBase = {
         layerId: id,
         objectId,
         // A feature the catalogue does not hold is drawn and named as unread, never dropped.
         name: known?.name ?? "An area North Ground has not read",
         ...(known?.type ? { type: known.type } : {}),
-        statedAs: known ? known.statedAs : "The authority has published this area since North Ground last read the layer. Check the authority's own record.",
         ...(known?.regulation ? { regulation: known.regulation } : {}),
         rings,
         ...(placement ? { labelPoint: placement.point, labelSpan: placement.span } : {}),
-      });
+      };
+      if (known?.statedAs) {
+        const words = quoting(
+          known.statedAs,
+          layer.catalogue.sourceId as CanonicalId<"source">,
+          known.regulation ?? `${layer.catalogue.key} layer, feature ${objectId}`,
+          layer.lang,
+        );
+        features.push({ ...base, words, statedAs: words.text });
+      } else if (known?.northGroundSummary) {
+        const words = authored(known.northGroundSummary);
+        features.push({ ...base, words, northGroundSummary: words.text });
+      } else {
+        const words = authored("The authority has published this area since North Ground last read the layer. Check the authority's own record.");
+        features.push({ ...base, words, northGroundSummary: words.text });
+      }
     }
     if (cache.size >= CACHE_MAX) {
       const oldest = cache.keys().next();

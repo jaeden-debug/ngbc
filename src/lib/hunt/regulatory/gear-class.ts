@@ -38,9 +38,21 @@
  */
 
 import type { CanonicalId } from "../../content-contract/index.ts";
+import type { AuthorityQuotation } from "../provenance.ts";
 
 /** `gear_class:ca-qc-11`. The code is the authority's, never ours. */
 export type GearClassId = `gear_class:${string}`;
+
+/**
+ * Whether the authority's definition may be reproduced.
+ *
+ * Identity can be certified from the official code and term without storing
+ * the definition. This explicit state distinguishes that deliberate outcome
+ * from a record whose definition was simply forgotten.
+ */
+export type GearClassDefinition =
+  | { state: "QUOTED"; quotation: AuthorityQuotation }
+  | { state: "IDENTITY_CERTIFIED_DEFINITION_NOT_REPRODUCIBLE" };
 
 export interface GearClass {
   id: GearClassId;
@@ -49,8 +61,7 @@ export interface GearClass {
   code: string;
   /** The authority's term for the concept: « engin de type ». Never translated. */
   officialTerm: { text: string; lang: "en-CA" | "fr-CA"; owner: "AUTHORITY" };
-  /** The definition, verbatim. */
-  statedAs: { text: string; lang: "en-CA" | "fr-CA"; owner: "AUTHORITY" };
+  definition: GearClassDefinition;
   citation: string;
   /**
    * The implements the definition happens to list.

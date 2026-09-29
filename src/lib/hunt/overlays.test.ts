@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { clearOverlayCache, lookupOverlays, restrictionsFor, type OverlayCatalogue } from "./overlays.ts";
+import { isQuotation } from "./provenance.ts";
 
 /**
  * The run-time overlay lookup, for both protocols an authority may serve.
@@ -13,6 +14,7 @@ import { clearOverlayCache, lookupOverlays, restrictionsFor, type OverlayCatalog
 
 const WFS_CATALOGUE: OverlayCatalogue = {
   jurisdictionId: "jurisdiction:ca-qc",
+  lang: "fr-CA",
   layers: [{
     key: "chasse-interdite",
     url: "https://example.qc.ca/geoserver/SmartFaunePub/ows",
@@ -32,6 +34,7 @@ const WFS_CATALOGUE: OverlayCatalogue = {
 
 const ARCGIS_CATALOGUE: OverlayCatalogue = {
   jurisdictionId: "jurisdiction:ca-mb",
+  lang: "en-CA",
   layers: [{
     key: "closed",
     url: "https://example.ca/arcgis/rest/services/Lands_Closed_to_Hunting/FeatureServer/0",
@@ -66,7 +69,13 @@ test("a WFS layer is asked about the point in EWKT, for ids only, never for outl
   assert.deepEqual(lookup.hits.map((hit) => [hit.objectId, hit.feature?.name]), [[80, "Parc national de Plaisance"]]);
   assert.deepEqual(restrictionsFor(lookup, ["all"]), [{
     name: "Parc national de Plaisance",
-    statedAs: "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+    words: {
+      owner: "AUTHORITY",
+      text: "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+      sourceId: "source:ca-qc-chasse-interdite-service",
+      citation: "chasse-interdite layer, feature 80",
+      lang: "fr-CA",
+    },
     sourceId: "source:ca-qc-chasse-interdite-service",
   }]);
 });
@@ -84,7 +93,10 @@ test("a WFS feature the catalogue does not hold, or whose id cannot be read, is 
   assert.equal(lookup.available, true);
   assert.deepEqual(lookup.hits.map((hit) => [hit.objectId, hit.feature]), [[131, null], [-1, null]]);
   assert.equal(restrictions.length, 2);
-  for (const restriction of restrictions) assert.match(restriction.statedAs, /does not include/);
+  for (const restriction of restrictions) {
+    assert.equal(isQuotation(restriction.words), false, "North Ground's sentence is never an authority quotation");
+    assert.match(restriction.words.text, /does not include/);
+  }
 });
 
 test("a WFS layer that fails or answers garbage makes the lookup unavailable, not empty", async () => {

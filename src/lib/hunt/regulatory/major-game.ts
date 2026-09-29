@@ -34,6 +34,7 @@ import bundle from "../../../../content/regulatory/ca-on-major-game-2026.json" w
 
 interface BundleGroup {
   id: string;
+  /** AUTHORITY: the source table's exact geographic specification. */
   officialSpec: string;
   zoneIds: string[];
   officialIdentifiers: string[];
@@ -45,6 +46,7 @@ interface BundleRule {
   regulatoryGroupId: string;
   appliesWhen: { permittedImplements: string[] } & Record<string, unknown>;
   seasonLabel: string;
+  /** AUTHORITY: the source table's exact season cell. */
   seasonPhrase: string | null;
   declaredNoSeason: boolean;
   caveats: string[];

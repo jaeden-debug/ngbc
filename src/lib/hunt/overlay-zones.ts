@@ -29,6 +29,7 @@ export function overlaysInZone(catalogue: OverlayCatalogue, index: OverlayZoneIn
     available: true,
     // Which special geographies contain a POINT is not a zone fact; the engine treats them as open worlds.
     specialIds: null,
+    lang: catalogue.lang,
     hits: entries.map(({ layer, objectId }) => {
       const source = catalogue.layers.find((candidate) => candidate.key === layer);
       return {

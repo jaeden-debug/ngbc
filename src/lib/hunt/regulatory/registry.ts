@@ -6,6 +6,7 @@ import type { SpeciesCoverageRow } from "../canada/report.ts";
 import { FEDERAL_MIGRATORY_SERVING, isMajorGameSpecies, speciesById, SUPPORTED_SPECIES } from "../coverage.ts";
 import { overlaysInZone, type OverlayZoneIndex } from "../overlay-zones.ts";
 import { lookupOverlays, restrictionsFor, type OverlayCatalogue } from "../overlays.ts";
+import { provenancedLine, type ProvenancedText } from "../provenance.ts";
 import { designationFromOfficialName, layerApplicability, layerForJurisdiction, layerOfZoneId } from "../zone-layers.ts";
 import { presentZoneById } from "../zone-presentation.ts";
 import type { EvaluationCompleteness, HuntInput, RegulatoryResult, ZoneResolution } from "../types.ts";
@@ -89,7 +90,8 @@ export interface SpecialAreaInZone {
   name: string;
   /** The authority's layer the area comes from ("closed", "refuges"). */
   layer: string;
-  statedAs: string;
+  /** Authorship remains explicit across the domain/API boundary. */
+  words: ProvenancedText;
   sourceId: string;
   speciesIds: string[];
 }
@@ -285,7 +287,7 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
             summary: `North Ground could not place this point in a certified ${config.unitTerm}, so it will not infer a hunting status.`,
             limitations: [
               general(zone.message),
-              ...restrictions.map((restriction) => general(`${restriction.name}: \u201c${restriction.statedAs}\u201d`)),
+              ...restrictions.map((restriction) => general(provenancedLine(restriction.name, restriction.words))),
               ...unreadOverlays.map((text) => general(text)),
             ],
             sourceIds: [...new Set([zone.sourceId, ...restrictions.map((restriction) => restriction.sourceId as CanonicalId<"source">)])].filter((id): id is CanonicalId<"source"> => Boolean(id)),
@@ -359,7 +361,7 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
               `${names.length === 1 ? names[0] : `${names.length} published areas`} inside this ${config.unitTerm} ` +
                 `restrict${names.length === 1 ? "s" : ""} this hunt, so the answer depends on where in it you hunt.`,
             ),
-            ...zoneRestrictions.map((restriction) => general(`${restriction.name}: \u201c${restriction.statedAs}\u201d`)),
+            ...zoneRestrictions.map((restriction) => general(provenancedLine(restriction.name, restriction.words))),
             ...regulation.limitations,
           ],
           sourceIds: [...new Set([...regulation.sourceIds, ...zoneRestrictions.map((restriction) => restriction.sourceId as CanonicalId<"source">)])],
@@ -407,11 +409,11 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
           const [restriction] = restrictionsFor(single, overlays.tokensFor(reached[0]));
           if (!restriction) continue;
           // One area published as several pieces is listed once.
-          const key = `${restriction.name}|${restriction.statedAs}`;
+          const key = `${restriction.name}|${restriction.words.text}`;
           areas.set(key, {
             name: restriction.name,
             layer: hit.layer,
-            statedAs: restriction.statedAs,
+            words: restriction.words,
             sourceId: restriction.sourceId,
             speciesIds: [...new Set([...(areas.get(key)?.speciesIds ?? []), ...reached])].sort(),
           });

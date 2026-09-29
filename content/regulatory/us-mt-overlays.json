@@ -1,5 +1,6 @@
 {
   "jurisdictionId": "jurisdiction:us-mt",
+  "lang": "en-CA",
   "purpose": "Published areas that change an upland game bird answer at a point: Indian reservations (U.S. Census Bureau boundaries, Montana Commission rule), Montana's restricted areas and the Carbon County partridge portion. Read live at the point; only names and ids are kept here, never geometry.",
   "layers": [
     {
@@ -149,7 +150,7 @@
         {
           "objectId": 961,
           "name": "Milk River Wildlife Management Area",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -160,7 +161,7 @@
         {
           "objectId": 962,
           "name": "HD 632 the Charles M. Russell National Wildlife Refuge (CMR) in Valley County",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -171,7 +172,7 @@
         {
           "objectId": 963,
           "name": "Missouri River between the mouth of Sand Coulee Crk downstream to Great Falls city limits",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -182,7 +183,7 @@
         {
           "objectId": 964,
           "name": "Muskrat Valley (near Boulder)",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -193,7 +194,7 @@
         {
           "objectId": 965,
           "name": "Prison Ranch Archery Only Area",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -204,7 +205,7 @@
         {
           "objectId": 966,
           "name": "Prickly Pear Weapons Restriction Area",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -215,7 +216,7 @@
         {
           "objectId": 967,
           "name": "Poindexter Slough Area south of Dillon",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -226,7 +227,7 @@
         {
           "objectId": 968,
           "name": "Rookery Wildlife Management Area",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -237,7 +238,7 @@
         {
           "objectId": 969,
           "name": "Slippery Ann Elk Viewing Area",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -248,7 +249,7 @@
         {
           "objectId": 970,
           "name": "Yellowstone River Islands restricted to ArchEquip Only",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -259,7 +260,7 @@
         {
           "objectId": 971,
           "name": "UL Bend National Wildlife Refuge",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -270,7 +271,7 @@
         {
           "objectId": 972,
           "name": "Warm Springs Wildlife Management Area",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -281,7 +282,7 @@
         {
           "objectId": 973,
           "name": "Fort Harrison",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -292,7 +293,7 @@
         {
           "objectId": 974,
           "name": "Limestone Hills Training Range",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -303,7 +304,7 @@
         {
           "objectId": 975,
           "name": "Jeffers Weapons Restriction Area",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -314,7 +315,7 @@
         {
           "objectId": 976,
           "name": "Red Rock Lakes National Wildlife Refuge",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -325,7 +326,7 @@
         {
           "objectId": 977,
           "name": "Sun River Wildlife Management Area",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -336,7 +337,7 @@
         {
           "objectId": 978,
           "name": "Gardiner Closure",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -347,7 +348,7 @@
         {
           "objectId": 979,
           "name": "Charles M. Russell National Wildlife Refuge",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -358,7 +359,7 @@
         {
           "objectId": 980,
           "name": "Flathead WPA",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -369,7 +370,7 @@
         {
           "objectId": 981,
           "name": "Blasdel WPA",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -389,7 +390,7 @@
         {
           "objectId": 983,
           "name": "Yellowstone National Park",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -400,7 +401,7 @@
         {
           "objectId": 984,
           "name": "Glacier National Park",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -411,7 +412,7 @@
         {
           "objectId": 985,
           "name": "Sun River Game Preserve",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -422,7 +423,7 @@
         {
           "objectId": 986,
           "name": "Lincoln Closed Area",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -444,7 +445,7 @@
         {
           "objectId": 988,
           "name": "Seeley Lake Game Preserve",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -464,7 +465,7 @@
         {
           "objectId": 990,
           "name": "Lee Metcalf Refuge",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -475,7 +476,7 @@
         {
           "objectId": 991,
           "name": "Lake Bowdoin Migratory Waterfowl Refuge",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -486,7 +487,7 @@
         {
           "objectId": 992,
           "name": "Grant Kohrs Ranch near Deer Lodge",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -497,7 +498,7 @@
         {
           "objectId": 993,
           "name": "Lake Helena Wildlife Management Area",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -508,7 +509,7 @@
         {
           "objectId": 994,
           "name": "Cree Crossing WMA",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -519,7 +520,7 @@
         {
           "objectId": 995,
           "name": "Lincoln Archery District",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -530,7 +531,7 @@
         {
           "objectId": 996,
           "name": "BNSF right-of-way from Marias Pass to the Java Creek Bridge",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -541,7 +542,7 @@
         {
           "objectId": 997,
           "name": "Flathead Weapons Restriction Area",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -552,7 +553,7 @@
         {
           "objectId": 998,
           "name": "Fort Peck Dam Site",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -563,7 +564,7 @@
         {
           "objectId": 999,
           "name": "Gallatin Valley Weapons Restriction Area",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -574,7 +575,7 @@
         {
           "objectId": 1000,
           "name": "East Ovando Archery Only Area",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -585,7 +586,7 @@
         {
           "objectId": 1001,
           "name": "Townsend Weapons Restriction Area",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -596,7 +597,7 @@
         {
           "objectId": 1002,
           "name": "Helmville-Ovando Archery District",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -607,7 +608,7 @@
         {
           "objectId": 1003,
           "name": "Aunt Molly WMA",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -618,7 +619,7 @@
         {
           "objectId": 1004,
           "name": "Ennis Airport Weapons Restriction Area",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -629,7 +630,7 @@
         {
           "objectId": 1005,
           "name": "HD 120 North between Smith Lake Road and US Route 2",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -640,7 +641,7 @@
         {
           "objectId": 1006,
           "name": "Libby Big Game Archery Only Hunting Area",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -651,7 +652,7 @@
         {
           "objectId": 1007,
           "name": "The Pines Recreation Area",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -662,7 +663,7 @@
         {
           "objectId": 1008,
           "name": "HD 650 on the CMR Refuge at the Fort Peck dam site",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -673,7 +674,7 @@
         {
           "objectId": 1009,
           "name": "Medicine Lake National Wildlife Refuge",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -684,7 +685,7 @@
         {
           "objectId": 1010,
           "name": "Swan River Refuge",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -695,7 +696,7 @@
         {
           "objectId": 1011,
           "name": "Bitterroot-Clark Fork Archery District Portion of HD 260",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -706,7 +707,7 @@
         {
           "objectId": 1012,
           "name": "Blackwood Exclusion Zone",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
@@ -717,7 +718,7 @@
         {
           "objectId": 1013,
           "name": "Sourdough Exclusion Zone",
-          "statedAs": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
+          "northGroundSummary": "Listed in Montana Fish, Wildlife & Parks' Big Game Restricted Areas; any rule it has for upland game birds is not in the regulations North Ground has certified.",
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"

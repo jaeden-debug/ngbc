@@ -1,5 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import type { CanonicalId } from "../../content-contract/index.ts";
+import type { RestrictionRecord } from "../overlays.ts";
+import { quoting } from "../provenance.ts";
 import type { HuntDimensionAnswers } from "./dimensions.ts";
 import { evaluateMontana, MONTANA_BUNDLE, MONTANA_OVERLAYS, montanaCoverageReport } from "./us-montana.ts";
 
@@ -23,7 +26,7 @@ import { evaluateMontana, MONTANA_BUNDLE, MONTANA_OVERLAYS, montanaCoverageRepor
 const EAST = "management_zone:us-mt-upland-east-of-the-continental-divide";
 const WEST = "management_zone:us-mt-upland-west-of-the-continental-divide";
 
-function evaluate(speciesId: string, date: string, answers: HuntDimensionAnswers = {}, options: { zone?: string; overlays?: string[]; restrictions?: Array<{ name: string; statedAs: string; sourceId: string }> } = {}) {
+function evaluate(speciesId: string, date: string, answers: HuntDimensionAnswers = {}, options: { zone?: string; overlays?: string[]; restrictions?: RestrictionRecord[] } = {}) {
   const zoneId = options.zone ?? EAST;
   return evaluateMontana({
     speciesId, speciesName: speciesId.slice(8).replace(/-/g, " "), date, answers,
@@ -98,7 +101,16 @@ test("on a reservation the Commission closed to state licenses, the answer is CL
 test("on the Flathead or Crow reservation North Ground does not state a status", () => {
   const flathead = MONTANA_OVERLAYS.layers.find((layer) => layer.key === "reservations")!.features.find((feature) => feature.name === "Flathead Reservation")!;
   const result = evaluate("species:ruffed-grouse", "2026-10-10", {}, {
-    restrictions: [{ name: flathead.name, statedAs: flathead.statedAs, sourceId: "source:us-census-tigerweb-federal-reservations-2026" }],
+    restrictions: [{
+      name: flathead.name,
+      words: quoting(
+        flathead.statedAs,
+        "source:us-census-tigerweb-federal-reservations-2026" as CanonicalId<"source">,
+        "TIGERweb federal reservations",
+        "en-CA",
+      ),
+      sourceId: "source:us-census-tigerweb-federal-reservations-2026",
+    }],
   }).result!;
   assert.equal(result.status, "NEEDS_VERIFICATION");
   assert.ok(result.limitations.some((line) => /cooperative management agreement/.test(line.text)));

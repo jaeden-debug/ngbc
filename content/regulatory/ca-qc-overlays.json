@@ -1,5 +1,6 @@
 {
   "jurisdictionId": "jurisdiction:ca-qc",
+  "lang": "fr-CA",
   "layers": [
     {
       "key": "chasse-interdite",

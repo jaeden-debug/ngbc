@@ -98,8 +98,12 @@ test("overlays: features are named from the catalogue, and an unread feature is 
   }), { status: 200 })) as typeof fetch;
   const GET = createOverlayHandler({ limiter: open(), fetcher });
   const response = await GET(new Request(`${ORIGIN}/api/hunt/overlays?layer=overlay:ca-mb-refuges&bounds=-98,49,-97,50&zoom=9`));
-  const payload = await response.json() as { features: Array<{ name: string; statedAs: string }> };
+  const payload = await response.json() as {
+    features: Array<{ name: string; statedAs?: string; northGroundSummary?: string; words: { owner: string; text: string } }>;
+  };
   assert.equal(payload.features[0].name, "Harry Cox");
   assert.equal(payload.features[1].name, "An area North Ground has not read");
-  assert.match(payload.features[1].statedAs, /Check the authority's own record/);
+  assert.equal(payload.features[1].words.owner, "NORTH_GROUND");
+  assert.equal(payload.features[1].statedAs, undefined, "North Ground wording never occupies the authority field");
+  assert.match(payload.features[1].northGroundSummary ?? "", /Check the authority's own record/);
 });

@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import type { CanonicalId } from "../../content-contract/index.ts";
+import { quoting } from "../provenance.ts";
 import type { HuntDimensionAnswers } from "./dimensions.ts";
 import { evaluateManitoba, manitobaCoverageReport, MANITOBA_BUNDLE, MANITOBA_SPECIES } from "./manitoba.ts";
 
@@ -282,7 +284,16 @@ test("outside the certified period the answer is not closed, it is uncertified",
 test("a published restriction at the point stops a CONDITIONAL answer", () => {
   const evaluation = evaluateManitoba({
     speciesId: RUFFED, speciesName: "ruffed grouse", date: "2026-10-05", place: PLACES.gha26, answers: {},
-    restrictions: [{ name: "Example Game Bird Refuge", statedAs: "No person shall hunt ... a game bird", sourceId: "source:ca-mb-wildlife-lands-service" }],
+    restrictions: [{
+      name: "Example Game Bird Refuge",
+      words: quoting(
+        "No person shall hunt ... a game bird",
+        "source:ca-mb-wildlife-lands-service" as CanonicalId<"source">,
+        "Wildlife Lands service",
+        "en-CA",
+      ),
+      sourceId: "source:ca-mb-wildlife-lands-service",
+    }],
   });
   assert.equal(evaluation.result?.status, "NEEDS_VERIFICATION");
   assert.ok(evaluation.result?.limitations[0].text.startsWith("Example Game Bird Refuge"));

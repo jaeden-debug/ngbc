@@ -29,6 +29,7 @@ import bundle from "../../../../content/regulatory/ca-on-small-game-2026.json" w
 
 interface BundleGroup {
   id: string;
+  /** AUTHORITY: the source table's exact geographic specification. */
   officialSpec: string;
   zoneIds: string[];
   officialIdentifiers: string[];
@@ -38,6 +39,7 @@ interface BundleRule {
   id: string;
   speciesId: string;
   regulatoryGroupId: string;
+  /** AUTHORITY: the source table's exact season cell. */
   seasonPhrase: string;
   limits: {
     daily: number;

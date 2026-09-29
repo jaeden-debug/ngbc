@@ -29,6 +29,8 @@
  * cited only as the evidence that each case is real.
  */
 
+import type { AuthorityQuotation, NorthGroundStatement, ProvenancedText } from "../provenance.ts";
+
 /**
  * WHAT the restriction does. Required — there is no sensible default, and a
  * wrong one is consequential in both directions: reading a no-shooting area as
@@ -55,7 +57,7 @@ export type RestrictionKind =
   | "AMMUNITION"
   /** Entry or access is restricted, whatever the season says. */
   | "ACCESS"
-  /** Something else the authority states; `statedAs` carries it. */
+  /** Something else the authority states; `words` carries it. */
   | "OTHER";
 
 /**
@@ -67,13 +69,13 @@ export type RestrictionKind =
  */
 export type RestrictionScope =
   /** Everywhere in the jurisdiction. No unit list, and none is expected. */
-  | { kind: "JURISDICTION_WIDE"; statedAs: string }
+  | { kind: "JURISDICTION_WIDE"; words: ProvenancedText }
   /** Wholly contains these units. */
   | { kind: "AREAS"; areas: string[] }
   /** Lies partly within these units; where inside is the open question. */
   | { kind: "CANDIDATE_AREAS"; candidateAreas: string[] }
   /** Real, and names no unit North Ground can match. NEVER silently dropped. */
-  | { kind: "UNLISTED"; statedAs: string };
+  | { kind: "UNLISTED"; words: NorthGroundStatement };
 
 /* ── When a restriction applies ──────────────────────────────────────────── */
 
@@ -106,24 +108,24 @@ export type Weekday = "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "SUN";
  */
 export type RestrictionPeriod =
   /** In force whenever the restriction is. Stated, never inferred from silence. */
-  | { kind: "ALWAYS"; statedAs: string }
+  | { kind: "ALWAYS"; words: ProvenancedText }
   /** Both ends are calendar days the authority names. */
-  | { kind: "DATE_RANGE"; from: MonthDay; to: MonthDay; statedAs: string }
+  | { kind: "DATE_RANGE"; from: MonthDay; to: MonthDay; words: ProvenancedText }
   /**
    * One or both ends is a rule rather than a date. The rule is kept as the
    * authority's words and is NEVER pre-resolved into a stored date.
    */
-  | { kind: "FLOATING"; from?: MonthDay; fromStatedAs?: string; to?: MonthDay; toStatedAs?: string; statedAs: string }
+  | { kind: "FLOATING"; from?: MonthDay; fromStatedAs?: string; to?: MonthDay; toStatedAs?: string; words: ProvenancedText }
   /** In force on these weekdays, optionally only within a range. */
-  | { kind: "WEEKDAYS"; weekdays: Weekday[]; within?: { from: MonthDay; to: MonthDay }; statedAs: string }
+  | { kind: "WEEKDAYS"; weekdays: Weekday[]; within?: { from: MonthDay; to: MonthDay }; words: ProvenancedText }
   /** A shape this model has not met. Carried verbatim, never approximated. */
-  | { kind: "AS_STATED"; statedAs: string };
+  | { kind: "AS_STATED"; words: ProvenancedText };
 
 export interface WithinZoneRestriction {
   id: string;
   name: string;
-  /** The authority's own words. */
-  statedAs: string;
+  /** Authority wording or an explicitly North Ground-authored summary. */
+  words: ProvenancedText;
   kind: RestrictionKind;
   scope: RestrictionScope;
   citation: string;
@@ -144,7 +146,7 @@ export interface WithinZoneRestriction {
    * the conflict." Recorded because a restriction that prevails over the
    * bundle's own source is not an ordinary overlay.
    */
-  prevailsOverConflicting?: { statedAs: string; citation: string };
+  prevailsOverConflicting?: { words: AuthorityQuotation };
 }
 
 export type RestrictionVerdict =
@@ -181,7 +183,7 @@ export function restrictionAt(
     return {
       state: "UNKNOWN",
       restriction,
-      because: `${restriction.name} names no management unit North Ground can match, so it cannot be placed. ${scope.statedAs}`,
+      because: `${restriction.name} names no management unit North Ground can match, so it cannot be placed. ${scope.words.text}`,
     };
   }
 

@@ -5,7 +5,7 @@ import { gearClassApplies, sameGearClass, type GearClass } from "./gear-class.ts
 const quebec = (code: string, implementsList: string[]): GearClass => ({
   id: `gear_class:ca-qc-${code}`, jurisdictionId: "jurisdiction:ca-qc", code,
   officialTerm: { text: "engin de type", lang: "fr-CA", owner: "AUTHORITY" },
-  statedAs: { text: `engin de type ${code}`, lang: "fr-CA", owner: "AUTHORITY" },
+  definition: { state: "IDENTITY_CERTIFIED_DEFINITION_NOT_REPRODUCIBLE" },
   citation: "r.12 s.31", includesImplements: implementsList,
 });
 
@@ -19,6 +19,14 @@ describe("gear class is an identity, not a list of equipment", () => {
     assert.equal(sameGearClass(eleven, twelve), false);
     // A hunter drawing a bow could be under either; the bow does not decide it.
     assert.ok(eleven.includesImplements!.every((implement) => twelve.includesImplements!.includes(implement)));
+  });
+
+  it("certifies identity without pretending the definition was forgotten", () => {
+    const eleven = quebec("11", ["BOW", "CROSSBOW"]);
+    assert.equal(eleven.definition.state, "IDENTITY_CERTIFIED_DEFINITION_NOT_REPRODUCIBLE");
+    assert.equal(eleven.code, "11");
+    assert.equal(eleven.officialTerm.text, "engin de type");
+    assert.equal(eleven.citation, "r.12 s.31");
   });
 
   it("answers UNKNOWN rather than guessing the hunter-orange exemption", () => {

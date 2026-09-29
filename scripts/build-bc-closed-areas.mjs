@@ -82,11 +82,27 @@ function ranges(phrase) {
  * AS_STATED rather than approximated into a range. A shape this parser has not
  * met is evidence the schema is incomplete (§41A), never a licence to round.
  */
-function periodsFor(phrase) {
+function authorityWords(value, sourceId, citation) {
+  return { owner: "AUTHORITY", text: value, sourceId, citation, lang: "en-CA" };
+}
+
+function northGroundWords(value) {
+  return { owner: "NORTH_GROUND", text: value };
+}
+
+function effectWords(row, sourceId, citation) {
+  const value = text(row.effectStatedAs);
+  /* These legacy strings concatenate a source-derived summary with North
+     Ground's explicit caveat. The whole sentence therefore belongs to North
+     Ground; it must never be sent through the quotation branch. */
+  return value.includes("NOT") ? northGroundWords(value) : authorityWords(value, sourceId, citation);
+}
+
+function periodsFor(phrase, sourceId, citation) {
   if (!phrase) {
     return [{
       kind: "ALWAYS",
-      statedAs: "B.C. Reg. 76/84 states no period for this area, so the restriction is in force whenever the regulation is.",
+      words: northGroundWords("B.C. Reg. 76/84 states no period for this area, so the restriction is in force whenever the regulation is."),
     }];
   }
 
@@ -97,7 +113,7 @@ function periodsFor(phrase) {
       kind: "FLOATING",
       ...(start ? { from: monthDay(start[1], start[2]) } : {}),
       toStatedAs: "the Saturday following Labour Day",
-      statedAs: phrase,
+      words: authorityWords(phrase, sourceId, citation),
     }];
   }
 
@@ -107,20 +123,20 @@ function periodsFor(phrase) {
        within a second range. Pitt Wildlife Management Area. */
     const found = ranges(phrase);
     const periods = [];
-    if (found[0]) periods.push({ kind: "DATE_RANGE", ...found[0], statedAs: phrase });
+    if (found[0]) periods.push({ kind: "DATE_RANGE", from: found[0].from, to: found[0].to, words: authorityWords(phrase, sourceId, citation) });
     periods.push({
       kind: "WEEKDAYS",
       weekdays: named.map(([, code]) => code),
       ...(found[1] ? { within: { from: found[1].from, to: found[1].to } } : {}),
-      statedAs: phrase,
+      words: authorityWords(phrase, sourceId, citation),
     });
     return periods;
   }
 
   const found = ranges(phrase);
-  if (found.length === 1) return [{ kind: "DATE_RANGE", from: found[0].from, to: found[0].to, statedAs: phrase }];
+  if (found.length === 1) return [{ kind: "DATE_RANGE", from: found[0].from, to: found[0].to, words: authorityWords(phrase, sourceId, citation) }];
 
-  return [{ kind: "AS_STATED", statedAs: phrase }];
+  return [{ kind: "AS_STATED", words: authorityWords(phrase, sourceId, citation) }];
 }
 
 function scopeFor(row) {
@@ -129,14 +145,15 @@ function scopeFor(row) {
   if (row.unitDetermination === "NOT_DETERMINED") {
     return {
       kind: "UNLISTED",
-      statedAs:
+      words: northGroundWords(
         `North Ground could not resolve which management units this area lies in: ${row.unitDeterminationReason} ` +
         "This is a gap in North Ground's reading, not a statement that the regulation names none.",
+      ),
     };
   }
   return {
     kind: "UNLISTED",
-    statedAs: "B.C. Reg. 76/84 names no management unit for this area; its geography is the boundary description only.",
+    words: northGroundWords("B.C. Reg. 76/84 names no management unit for this area; its geography is the boundary description only."),
   };
 }
 
@@ -153,26 +170,29 @@ const enumeration = JSON.parse(readFileSync(INPUT, "utf8"));
 const live = enumeration.areas.filter((row) => row.status === "LIVE");
 
 const PREVAILS = {
-  statedAs:
+  words: authorityWords(
     "If there is a conflict between this regulation and another regulation made under the Act, this regulation " +
-    "prevails to the extent of the conflict.",
-  citation: "B.C. Reg. 76/84, s. 1.1",
+      "prevails to the extent of the conflict.",
+    enumeration.source.id,
+    "B.C. Reg. 76/84, s. 1.1",
+  ),
 };
 
 const restrictions = [];
 for (const row of live) {
   const kinds = kindsFor(row);
   if (!kinds.length) throw new Error(`Schedule ${row.schedule} #${row.entryNumber} states no restriction fact`);
-  const periods = periodsFor(text(row.periodStatedAs));
+  const citation = `${row.governingSection}, Schedule ${row.schedule}, item ${row.entryNumber}`;
+  const periods = periodsFor(text(row.periodStatedAs), enumeration.source.id, citation);
   const scope = scopeFor(row);
   for (const kind of kinds) {
     restrictions.push({
       id: `within_zone_restriction:ca-bc-76-84-s${row.schedule}-${row.entryNumber}-${kind.toLowerCase().replace(/_/g, "-")}`,
       name: text(row.areaName),
-      statedAs: text(row.effectStatedAs),
+      words: effectWords(row, enumeration.source.id, citation),
       kind,
       scope,
-      citation: `${row.governingSection}, Schedule ${row.schedule}, item ${row.entryNumber}`,
+      citation,
       sourceId: enumeration.source.id,
       periods,
       prevailsOverConflicting: PREVAILS,

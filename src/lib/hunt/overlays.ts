@@ -19,20 +19,30 @@
 
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { defaultSupabaseServerClient } from "../supabase/server.ts";
+import type { CanonicalId } from "../content-contract/index.ts";
+import type { LimitationLang } from "./limitation.ts";
+import { authored, quoting, type ProvenancedText } from "./provenance.ts";
 
-export interface CatalogueFeature {
+interface CatalogueFeatureBase {
   objectId: number;
   name: string;
   type?: string;
-  statedAs: string;
   regulation?: string;
   tokens: string[];
   unclassified: string[];
   specialIds: string[];
 }
 
+/** Catalogue wording declares its author before it can enter a renderer. */
+export type CatalogueFeature = CatalogueFeatureBase & (
+  | { statedAs: string; northGroundSummary?: never }
+  | { statedAs?: never; northGroundSummary: string }
+);
+
 export interface OverlayCatalogue {
   jurisdictionId: string;
+  /** The language in which this authority publishes the catalogue wording. */
+  lang: LimitationLang;
   layers: Array<{
     key: string;
     url: string;
@@ -67,6 +77,8 @@ export interface OverlayLookup {
   /** Special geographies containing the point, or null when not available. */
   specialIds: ReadonlySet<string> | null;
   hits: OverlayHit[];
+  /** Carried from the catalogue; never guessed by the quotation constructor. */
+  lang: LimitationLang;
 }
 
 const CACHE_TTL_MS = 6 * 60 * 60 * 1000;
@@ -215,10 +227,11 @@ export async function lookupOverlays(
       available: true,
       specialIds: new Set(hits.flatMap((hit) => hit.feature?.specialIds ?? [])),
       hits,
+      lang: catalogue.lang,
     };
   } catch {
     // Not cached: a transient outage must not pin "unavailable" for hours.
-    return { available: false, specialIds: null, hits: [] };
+    return { available: false, specialIds: null, hits: [], lang: catalogue.lang };
   }
 
   if (cache.size >= CACHE_MAX) {
@@ -237,22 +250,45 @@ export async function lookupOverlays(
 export function restrictionsFor(
   lookup: OverlayLookup,
   affectedBy: readonly string[],
-): Array<{ name: string; statedAs: string; sourceId: string }> {
-  const out: Array<{ name: string; statedAs: string; sourceId: string }> = [];
+): RestrictionRecord[] {
+  const out: RestrictionRecord[] = [];
   for (const hit of lookup.hits) {
     const feature = hit.feature;
     if (!feature) {
       out.push({
         name: `a ${hit.layer} feature (id ${hit.objectId})`,
-        statedAs: "The authority's layer holds a restriction here that North Ground's catalogue does not include; the layer has changed since it was reviewed.",
+        words: authored("The authority's layer holds a restriction here that North Ground's catalogue does not include; the layer has changed since it was reviewed."),
         sourceId: hit.sourceId,
       });
       continue;
     }
     const reaches = feature.unclassified.length > 0 || feature.tokens.some((token) => affectedBy.includes(token));
     if (reaches && feature.statedAs) {
-      out.push({ name: feature.name + (feature.type ? ` ${feature.type}` : ""), statedAs: feature.statedAs, sourceId: hit.sourceId });
+      out.push({
+        name: feature.name + (feature.type ? ` ${feature.type}` : ""),
+        words: quoting(
+          feature.statedAs,
+          hit.sourceId as CanonicalId<"source">,
+          feature.regulation ?? `${hit.layer} layer, feature ${feature.objectId}`,
+          lookup.lang,
+        ),
+        sourceId: hit.sourceId,
+      });
+    } else if (reaches && feature.northGroundSummary) {
+      out.push({
+        name: feature.name + (feature.type ? ` ${feature.type}` : ""),
+        words: authored(feature.northGroundSummary),
+        sourceId: hit.sourceId,
+      });
     }
   }
   return out;
+}
+
+export interface RestrictionRecord {
+  name: string;
+  /** Authority wording or North Ground wording; never an unclassified string. */
+  words: ProvenancedText;
+  /** The authority layer that establishes the feature is present. */
+  sourceId: string;
 }

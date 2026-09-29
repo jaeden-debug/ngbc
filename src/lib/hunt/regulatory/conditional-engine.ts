@@ -13,6 +13,8 @@ import { appliesInWorld, placeWorlds, type GeographyData, type GeographyExpressi
 import { authorizationContext, type DrawCycle } from "./allocation.ts";
 import type { HuntCode } from "./hunt-codes.ts";
 import { rulesInForce, type Amendment, type RuleAuthority } from "./precedence.ts";
+import type { RestrictionRecord } from "../overlays.ts";
+import { isQuotation, provenancedLine } from "../provenance.ts";
 
 /**
  * The jurisdiction-neutral conditional evaluator.
@@ -50,6 +52,7 @@ import { rulesInForce, type Amendment, type RuleAuthority } from "./precedence.t
 export interface ConditionalWindow {
   opensIso: string;
   closesIso: string;
+  /** AUTHORITY: the source's own window wording, carried without normalization. */
   statedAs?: string;
 }
 
@@ -66,6 +69,7 @@ export interface ConditionalRule {
    */
   appliesWhen: Record<string, string | string[]>;
   seasonLabel: string;
+  /** AUTHORITY: the source table's exact season cell. */
   seasonPhrase: string;
   /**
    * The authority's own name for this season segment, where it names one.
@@ -267,7 +271,7 @@ export interface ConditionalInput {
    * affect this species at this point. Supplied by the caller; a restriction
    * North Ground has not certified means the season status cannot be stated.
    */
-  restrictions?: Array<{ name: string; statedAs: string; sourceId: string }>;
+  restrictions?: RestrictionRecord[];
   /**
    * True when every restriction supplied comes from a layer the authority
    * publishes as closed to ALL hunting (Québec's « Territoires où toute
@@ -287,6 +291,13 @@ export interface ConditionalEvaluation {
 const PUBLISHABLE = new Set(["VERIFIED", "PUBLISHED"]);
 const METHOD = "HUNT_METHOD";
 const IMPLEMENTS = "permittedImplements";
+
+function restrictionLimitation(restriction: RestrictionRecord): Limitation {
+  const line = provenancedLine(restriction.name, restriction.words);
+  return isQuotation(restriction.words)
+    ? sourceDetail(line, restriction.words.sourceId, restriction.words.lang)
+    : general(line);
+}
 
 /* ── Helpers ────────────────────────────────────────────────────────────── */
 
@@ -995,7 +1006,7 @@ export function evaluateConditional(
          rule's own notes ("this season allows …") describe a season and are
          not carried inside a territory where none applies. */
       limitations: [
-        ...input.restrictions.map((restriction) => sourceDetail(`${restriction.name}: “${restriction.statedAs}”`, restriction.sourceId as CanonicalId<"source">)),
+        ...input.restrictions.map(restrictionLimitation),
         ...vocabulary.standingLimitations,
       ],
       sourceIds: [...new Set([...result.sourceIds, ...input.restrictions.map((restriction) => restriction.sourceId as CanonicalId<"source">)])],
@@ -1016,7 +1027,7 @@ export function evaluateConditional(
         `This point is inside ${input.restrictions.map((restriction) => restriction.name).join(" and ")}, where ${vocabulary.jurisdictionName} publishes a hunting restriction. ` +
         `North Ground has not certified how it applies to this hunt, so it will not state a season status here. Outside it: ${result.summary}`,
       limitations: [
-        ...input.restrictions.map((restriction) => sourceDetail(`${restriction.name}: “${restriction.statedAs}”`, restriction.sourceId as CanonicalId<"source">)),
+        ...input.restrictions.map(restrictionLimitation),
         ...result.limitations,
       ],
       sourceIds: [...new Set([...result.sourceIds, ...input.restrictions.map((restriction) => restriction.sourceId as CanonicalId<"source">)])],

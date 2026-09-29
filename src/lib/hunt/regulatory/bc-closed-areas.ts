@@ -102,9 +102,9 @@ function stateFor(verdicts: readonly RestrictionVerdict[], kinds: readonly Restr
       state: "APPLIES",
       rows: applies,
       governedBy: {
-        citation: prevails?.prevailsOverConflicting?.citation ?? applies[0].citation,
+        citation: prevails?.prevailsOverConflicting?.words.citation ?? applies[0].citation,
         statedAs:
-          prevails?.prevailsOverConflicting?.statedAs ??
+          prevails?.prevailsOverConflicting?.words.text ??
           "This restriction is stated by the authority for this area.",
         sourceId: applies[0].sourceId,
       },
@@ -171,7 +171,7 @@ function areasOf(state: ClosedAreaState, verdicts: readonly RestrictionVerdict[]
   );
   return state.rows.map((row) => ({
     name: row.name,
-    statedAs: row.statedAs,
+    statedAs: row.words.text,
     citation: row.citation,
     sourceId: row.sourceId,
     placement: row.scope.kind === "CANDIDATE_AREAS" ? "CONTAINED_BY_UNIT" : "UNPLACEABLE",

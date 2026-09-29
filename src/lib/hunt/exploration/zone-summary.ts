@@ -7,6 +7,7 @@ import type { ZoneResolution } from "../types.ts";
 import { presentZone } from "../zone-presentation.ts";
 import { layerById, officialNameOf, type ZoneLayer, zoneCoverage, zoneDisplayLabel, zoneIdFor } from "../zone-layers.ts";
 import type { ExplorationState, SpeciesZoneSummary, ZoneRef, ZoneSummary } from "./states.ts";
+import { provenancedLine } from "../provenance.ts";
 
 export { EXPLORATION_WORDING } from "./states.ts";
 export type { ExplorationState, SpeciesZoneSummary, ZoneRef, ZoneSummary } from "./states.ts";
@@ -230,7 +231,8 @@ export async function summarizeZone(ref: ZoneRef, date: string): Promise<ZoneSum
     ? await Promise.all(areas.map(async (area) => ({
         name: area.name,
         layer: area.layer,
-        statedAs: area.statedAs,
+        /** Quotation marks are decided from authorship before the API boundary. */
+        line: provenancedLine(area.name, area.words),
         species: await Promise.all(area.speciesIds.map((id) => speciesName(id as CanonicalId<"species">))),
       })))
     : null;

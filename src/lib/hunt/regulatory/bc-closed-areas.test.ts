@@ -84,7 +84,7 @@ test("an unresolved unit is a gap, and an unnamed unit is a fact, and they read 
         continue;
       }
       assert.equal(row.scope.kind, "UNLISTED");
-      const statedAs = row.scope.kind === "UNLISTED" ? row.scope.statedAs : "";
+      const statedAs = row.scope.kind === "UNLISTED" ? row.scope.words.text : "";
       if (area.unitDetermination === "NOT_DETERMINED") {
         assert.match(statedAs, /could not resolve/i);
         assert.match(statedAs, /not a statement that the regulation names none/i);
@@ -99,7 +99,7 @@ test("an unresolved unit is a gap, and an unnamed unit is a fact, and they read 
 test("a period is never empty, and silence is stated rather than implied", () => {
   for (const row of bundle.restrictions) {
     assert.ok(row.periods.length > 0, `${row.id} carries at least one period`);
-    for (const period of row.periods) assert.ok(period.statedAs.length > 0);
+    for (const period of row.periods) assert.ok(period.words.text.length > 0);
   }
   const stated = new Set(
     live.filter((area) => area.periodStatedAs).map((area) => `${area.schedule}/${area.entryNumber}`),
@@ -145,8 +145,8 @@ test("precedence travels with the record, not only with the commit message", () 
    */
   for (const row of bundle.restrictions) {
     assert.ok(row.prevailsOverConflicting, `${row.id} records its precedence`);
-    assert.match(row.prevailsOverConflicting.citation, /s\. 1\.1/);
-    assert.match(row.prevailsOverConflicting.statedAs, /prevails to the extent of the conflict/);
+    assert.match(row.prevailsOverConflicting.words.citation, /s\. 1\.1/);
+    assert.match(row.prevailsOverConflicting.words.text, /prevails to the extent of the conflict/);
     assert.equal(row.sourceId, "source:ca-bc-closed-areas-regulation");
   }
 });
@@ -243,8 +243,8 @@ test("the precedence surface carries s. 1.1 when it is reached", async () => {
   /* And the same fact through the resolver's own shape. */
   const effect = closedAreaEffectAt({ area: "1-1", scope: "POINT" });
   assert.equal(seasonIsOverriddenBy(effect), undefined, "still nothing today");
-  assert.match(template.prevailsOverConflicting!.citation, /s\. 1\.1/);
-  assert.match(template.prevailsOverConflicting!.statedAs, /prevails to the extent of the conflict/);
+  assert.match(template.prevailsOverConflicting!.words.citation, /s\. 1\.1/);
+  assert.match(template.prevailsOverConflicting!.words.text, /prevails to the extent of the conflict/);
 });
 
 test("an area that cannot be placed is MAY_APPLY, never NONE", async () => {

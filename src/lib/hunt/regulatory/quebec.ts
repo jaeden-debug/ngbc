@@ -50,6 +50,7 @@ interface QuebecRule {
   zoneLabel: string;
   designations: string[];
   caveats: QuebecCaveat[];
+  /** AUTHORITY: the ministry's exact implement heading; never reformatted or translated. */
   implementLabel: string | null;
   permittedImplements: string[] | null;
   classLabel: string | null;
@@ -59,6 +60,7 @@ interface QuebecRule {
   /** The year (or licence year) this rule is in force, as the builder read it from the column. */
   effectiveFrom: string;
   effectiveTo: string;
+  /** AUTHORITY: the ministry table's exact season cell. */
   seasonPhrase: string | null;
   windows: QuebecWindow[];
   declaredNoSeason: boolean;
@@ -93,6 +95,7 @@ interface QuebecUnresolved {
   fragment: string;
   speciesIds: string[];
   seasonLabel: string;
+  /** AUTHORITY: the ministry table's exact unresolved season cell. */
   seasonPhrase: string;
   windows: QuebecWindow[];
   permittedImplements: string[] | null;
