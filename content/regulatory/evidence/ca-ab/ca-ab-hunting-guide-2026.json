@@ -227,13 +227,92 @@
         ]
       },
       "unresolved": [
-        "The guide also states 'Crossbows may not be used to hunt big game during arche[ry seasons]' — a season-scoped prohibition recorded here as unresolved because the sentence was truncated in extraction and must be re-read before being encoded as a rule."
+        "The season-scoped prohibition this row previously flagged as truncated has been re-read in full and is encoded as its own METHOD row ('crossbow in an archery-only season'). The truncated reading said 'archery seasons'; the guide says ARCHERY-ONLY seasons, and states a medical exception the truncation dropped entirely."
+      ]
+    },
+    {
+      "category": "AUTHORIZATION",
+      "kind": "bowhunting permit",
+      "state": "REQUIRED",
+      "officialName": {
+        "text": "Bowhunting permit",
+        "lang": "en-CA"
+      },
+      "statedAs": {
+        "text": "Except for the hunting of black bear, coyote, cougar or wolf under the circumstances as outlined under Access for Control of Livestock Predation, a bowhunting permit is required by anyone who hunts big game, game bird, wolf or coyote with a bow and arrow. A bowhunting permit is required in combination with a big game licence.",
+        "lang": "en-CA"
+      },
+      "citation": "2026 Alberta Guide to Hunting Regulations, Bowhunting",
+      "scope": {
+        "speciesIds": [
+          "species:ruffed-grouse",
+          "species:sharp-tailed-grouse",
+          "species:spruce-grouse",
+          "species:white-tailed-deer"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "AB"
+          ],
+          "statedAs": null
+        },
+        "methods": [
+          "bow"
+        ]
+      },
+      "requires": [
+        {
+          "officialName": {
+            "text": "Wildlife certificate",
+            "lang": "en-CA"
+          }
+        }
+      ],
+      "unresolved": [
+        "It reaches GAME BIRDS as well as big game, so it applies to Alberta's three grouse when they are hunted with a bow — not only to deer. The guide states the big-game licence pairing explicitly and says nothing about a game-bird pairing, which is left unread rather than assumed.",
+        "The livestock-predation exception names black bear, coyote, cougar and wolf. None is an Alberta species North Ground serves, so the exception is carried in the words and not modelled."
+      ]
+    },
+    {
+      "category": "METHOD",
+      "kind": "crossbow in an archery-only season",
+      "state": "PROHIBITED",
+      "officialName": {
+        "text": "Hunting with Crossbows",
+        "lang": "en-CA"
+      },
+      "statedAs": {
+        "text": "Crossbows may not be used to hunt big game during archery-only seasons. The only exception is for an eligible handicapped hunter who is in possession of a properly completed medical assessment form signed by an authorized medical practitioner.",
+        "lang": "en-CA"
+      },
+      "citation": "2026 Alberta Guide to Hunting Regulations, Hunting with Crossbows",
+      "scope": {
+        "speciesIds": [
+          "species:white-tailed-deer"
+        ],
+        "geography": {
+          "kind": "JURISDICTION",
+          "designations": [
+            "AB"
+          ],
+          "statedAs": null
+        },
+        "methods": [
+          "crossbow"
+        ]
+      },
+      "unresolved": [
+        "Which Alberta seasons are ARCHERY-ONLY is not encoded, so North Ground cannot yet say whether a given date falls in one. The prohibition is carried with its own words so a hunter reads it; it is not evaluated against a date.",
+        "The medical-assessment exception is stated and is not modelled: North Ground never infers that a hunter holds anything, and an eligible handicapped hunter is a fact about the person."
       ]
     }
   ],
   "laneNotes": [
     "Alberta's certified species are three grouse and white-tailed deer. Rows are scoped to those.",
     "The migratory-bird non-toxic shot rule and the CFB Wainwright non-toxic requirement do NOT reach these species: grouse are upland game birds, not migratory, and Wainwright is a base-specific rule. Recorded here so a later reader does not mistake the guide's two non-toxic mentions for a general ammunition restriction.",
-    "METHODS is deliberately NOT certified from these rows. They specify what an authorized bow, arrow and crossbow ARE — equipment specifications — not which implements may be used for a given species and season. A specification of an implement is not a permission to use it."
+    "METHODS is deliberately NOT certified from these rows. They specify what an authorized bow, arrow and crossbow ARE — equipment specifications — not which implements may be used for a given species and season. A specification of an implement is not a permission to use it.",
+    "A bowhunting permit is required for hunting with a bow and is NOT required for a crossbow — the guide says so in as many words, so the two implements differ in what they require as well as in where they may be used.",
+    "Federal rule, recorded and not encoded: crossbows may not be used for waterfowl hunting. Alberta's served species are three grouse and white-tailed deer; grouse are upland game birds, not waterfowl, so it reaches none of them."
   ]
 }

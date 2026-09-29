@@ -160,3 +160,61 @@ describe("the evidence reader", () => {
     assert.equal(certifies("jurisdiction:ca-bc", "species:white-tailed-deer", "LIMIT").certified, false);
   });
 });
+
+describe("Alberta's bow and crossbow rules", () => {
+  const DEER = "species:white-tailed-deer";
+  const GROUSE = "species:ruffed-grouse";
+  const AB = "jurisdiction:ca-ab";
+
+  it("keeps the crossbow prohibition as a METHOD, not as an equipment specification", () => {
+    /*
+     * A SPECIFICATION OF AN IMPLEMENT IS NOT A PERMISSION TO USE IT. The
+     * package already certified what an authorized crossbow IS — pull weight,
+     * head width — under AMMUNITION, while the rule about WHERE it may be used
+     * sat unresolved. Those are different facts and a hunter needs the second.
+     */
+    const methods = rowsFor(AB, DEER, "METHOD");
+    const prohibition = methods.find((row) => row.state === "PROHIBITED");
+    assert.ok(prohibition, "the crossbow prohibition is carried as a METHOD row");
+
+    /*
+     * ARCHERY-ONLY, and the distinction is the reason this was re-read. The
+     * extraction that fed the earlier package truncated it to "arche[ry
+     * seasons]" — which is BROADER than the guide, and would have banned
+     * crossbows from seasons the guide leaves open.
+     */
+    assert.match(prohibition.statedAs!.text, /archery-only seasons/);
+    assert.doesNotMatch(prohibition.statedAs!.text, /during archery seasons\./);
+
+    /* And the exception the truncation dropped entirely. */
+    assert.match(prohibition.statedAs!.text, /medical assessment form/);
+  });
+
+  it("does not certify METHODS from a prohibition alone", () => {
+    /*
+     * The complement of a ban list is not a permission. Adding a PROHIBITED row
+     * must NOT move this to certified — if it ever does, someone has taught the
+     * system to infer what is allowed from what is forbidden.
+     */
+    const verdict = certifies(AB, DEER, "METHOD");
+    assert.equal(verdict.certified, false);
+    assert.match(verdict.reason, /none stating what is ALLOWED/);
+  });
+
+  it("carries the bowhunting permit, and it reaches game birds as well as big game", () => {
+    /*
+     * The guide requires it of "anyone who hunts big game, game bird, wolf or
+     * coyote with a bow and arrow", so it reaches Alberta's grouse — three of
+     * its four certified species — and not only deer. Scoping it to big game
+     * would have left a bow hunter for grouse short of a permit nobody
+     * mentioned.
+     */
+    for (const speciesId of [DEER, GROUSE]) {
+      const permit = rowsFor(AB, speciesId, "AUTHORIZATION")
+        .find((row) => row.kind === "bowhunting permit");
+      assert.ok(permit, `the bowhunting permit reaches ${speciesId}`);
+      assert.equal(permit.state, "REQUIRED");
+      assert.match(permit.statedAs!.text, /game bird/);
+    }
+  });
+});

@@ -55,6 +55,16 @@ export interface EvidenceRow {
   state?: EvidenceState;
   kind?: string;
   citation?: string;
+  /**
+   * The authority's own words for this row, with the language they were
+   * published in.
+   *
+   * Every package carries it and the type did not declare it, so no consumer
+   * could read a row's wording type-safely — and a rule whose exact scope turns
+   * on its wording is precisely the case §8 keeps verbatim. Declared optional
+   * because it is absent on rows that carry only a structured fact.
+   */
+  statedAs?: { text: string; lang: "en-CA" | "fr-CA" };
   /** Present on a row that IS a within-zone restriction, per that model. */
   restrictionKind?: string;
   restrictionScope?: { kind?: string };
