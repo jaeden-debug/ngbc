@@ -27,3 +27,16 @@ export const PUBLISHED_SPECIES_SLUGS: ReadonlySet<string> = new Set(
 export function isPublishedSpeciesSlug(slug: string): boolean {
   return PUBLISHED_SPECIES_SLUGS.has(slug);
 }
+
+/**
+ * Where a link to this species' profile may point, or null: do not link.
+ *
+ * Two questions, both required. The record must carry its own canonical URL
+ * (a path built from the slug is a guess that looks right and 404s), and that
+ * profile must be published — `canonicalPath` maps an id to a path and cannot
+ * say whether the page exists. Null never becomes a fallback string.
+ */
+export function speciesProfileHref(resource: { slug: string; canonicalUrl?: string | null }): string | null {
+  if (!resource.canonicalUrl) return null;
+  return isPublishedSpeciesSlug(resource.slug) ? resource.canonicalUrl : null;
+}

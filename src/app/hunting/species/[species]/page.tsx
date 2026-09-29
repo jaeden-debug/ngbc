@@ -14,6 +14,7 @@ import SpeciesPrimaryImage, { SpeciesImagePlaceholder } from "../../../../compon
 import StructuredData from "../../../../components/StructuredData";
 import type { SpeciesResource } from "../../../../lib/content-contract/types";
 import { contentRepository } from "../../../../lib/content/repository";
+import { speciesProfileHref } from "../../../../lib/content/species-route";
 import { regulatoryJurisdictionsForSpecies } from "../../../../lib/hunt/north-america/report";
 import { OPEN_GRAPH_BASE } from "../../../../lib/seo/open-graph";
 import { cachedSpeciesPrimaryMedia } from "../../../../lib/species-media/social";
@@ -26,7 +27,9 @@ type Props = { params: Promise<{ species: string }> };
 
 async function getSpeciesResource(slug: string): Promise<SpeciesResource | null> {
   const resource = await contentRepository.getResourceBySlug(slug, { locale: "en-CA" });
-  return resource?.type === "species" && resource.status === "published" ? resource : null;
+  /* A profile without its own canonical URL is not rendered under a guessed one:
+     the canonical, breadcrumb and Article identity all come from it. */
+  return resource?.type === "species" && resource.status === "published" && speciesProfileHref(resource) ? resource : null;
 }
 
 /**
@@ -140,7 +143,7 @@ export default async function SpeciesPage({ params }: Props) {
     ...(profile.signsAndTracks ?? []).map((section) => section.text),
   ];
   const sexAge = profile.sexAgeInfo;
-  const canonicalUrl = resource.canonicalUrl ?? `/hunting/species/${resource.slug}`;
+  const canonicalUrl = speciesProfileHref(resource)!;
 
   const breadcrumbs = [
     { name: "Home", path: "/" },
@@ -232,19 +235,28 @@ export default async function SpeciesPage({ params }: Props) {
                 <p className="ng-meta">Confusable in the field — confirm before you act.</p>
               </div>
               <ul className={styles.lookalikes}>
-                {relatedSpecies.map((other) => (
-                  <li key={other.id} className={`${styles.lookalike} ng-glass-card`}>
-                    <Link className={styles.lookalikeLink} href={other.canonicalUrl ?? `/hunting/species/${other.slug}`}>
-                      <span className={styles.lookalikeText}>
-                        <span className={styles.lookalikeName}>{other.title}</span>
-                        <span className={styles.lookalikeScientific}>{other.speciesProfile.scientificName}</span>
-                      </span>
-                      <svg className={styles.lookalikeArrow} width="15" height="15" viewBox="0 0 18 18" aria-hidden="true" fill="none">
-                        <path d="M6.8 3.8 12 9l-5.2 5.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </Link>
-                  </li>
-                ))}
+                {relatedSpecies.map((other) => {
+                  const href = speciesProfileHref(other);
+                  const text = (
+                    <span className={styles.lookalikeText}>
+                      <span className={styles.lookalikeName}>{other.title}</span>
+                      <span className={styles.lookalikeScientific}>{other.speciesProfile.scientificName}</span>
+                    </span>
+                  );
+                  return (
+                    <li key={other.id} className={`${styles.lookalike} ng-glass-card`}>
+                      {/* No linkable profile, no link: the name is still worth showing. */}
+                      {href ? (
+                        <Link className={styles.lookalikeLink} href={href}>
+                          {text}
+                          <svg className={styles.lookalikeArrow} width="15" height="15" viewBox="0 0 18 18" aria-hidden="true" fill="none">
+                            <path d="M6.8 3.8 12 9l-5.2 5.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </Link>
+                      ) : <div className={styles.lookalikeLink}>{text}</div>}
+                    </li>
+                  );
+                })}
               </ul>
             </section>
           ) : null}

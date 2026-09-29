@@ -3,6 +3,7 @@ import Link from "next/link";
 import Breadcrumbs from "../../../components/Breadcrumbs";
 import HuntNav from "../../../components/hunt/HuntNav";
 import { contentRepository } from "../../../lib/content/repository";
+import { speciesProfileHref } from "../../../lib/content/species-route";
 import { northAmericaCoverageReport, regulatoryJurisdictionsForSpecies } from "../../../lib/hunt/north-america/report";
 import StructuredData from "../../../components/StructuredData";
 import { OPEN_GRAPH_BASE } from "../../../lib/seo/open-graph";
@@ -57,7 +58,13 @@ export default async function SpeciesLibraryPage() {
     currentSpeciesMediaAdmin(),
   ]);
 
-  const species: LibrarySpecies[] = await Promise.all(resources.map(async (resource) => {
+  /* A card is a link, so a species without a linkable profile has no card
+     rather than one pointing at a guessed path (species-route.test pins this at
+     zero today). */
+  const species: LibrarySpecies[] = await Promise.all(resources.flatMap((resource) => {
+    const canonicalUrl = speciesProfileHref(resource);
+    return canonicalUrl ? [{ resource, canonicalUrl }] : [];
+  }).map(async ({ resource, canonicalUrl }) => {
     const speciesId = resource.speciesProfile.speciesId;
     const [aliases, groups] = await Promise.all([
       contentRepository.getSpeciesAliases(speciesId),
@@ -70,7 +77,7 @@ export default async function SpeciesLibraryPage() {
       scientificName: resource.speciesProfile.scientificName,
       frenchName: commonNames.find(({ locale }) => locale.startsWith("fr"))?.value ?? null,
       category: groups[0]?.names.find(({ locale }) => locale === "en-CA")?.value ?? "Other",
-      canonicalUrl: resource.canonicalUrl ?? `/hunting/species/${resource.slug}`,
+      canonicalUrl,
       /* Everything the client filter matches on is assembled here, so the browser
          never needs the bundle to search. */
       searchTerms: [...new Set([
