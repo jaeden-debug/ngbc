@@ -71,7 +71,39 @@ function skip(scenario, name, why) {
  * assertions on some hosts than others (a real Google basemap reports its
  * camera; a fallback has none). The skips keep the floor honest.
  */
-const MINIMUM_CHECKS = {};
+const MINIMUM_CHECKS = {
+  locationGranted: 15,
+  locationDenied: 6,
+  deepLinks: 11,
+  staleAnswers: 3,
+  geometryStress: 5,
+  responsive: 98,
+  keyboard: 4,
+  locationReachable: 12,
+  noticeRecovery: 1,
+  entryAndMemory: 13,
+  cartography: 8,
+  speciesGeography: 5,
+  selectableNotAnswerable: 5,
+  threeLocations: 4,
+  shareFallback: 2,
+  brief: 1,
+  typingADate: 6,
+  linkToADistantZone: 4,
+  upcomingSeasons: 6,
+  legalHoursAndReadiness: 8,
+  everyRowReachable: 12,
+  findGameRegulatory: 7,
+  findGameHint: 7,
+  selectedLabelOnTop: 10,
+  keyboardStateMachine: 62,
+  keyboardAndTheSheet: 5,
+  twoDevicesOneLink: 5,
+  urlBeatsMemory: 10,
+  closingMeansClosed: 5,
+  contextualBand: 3,
+  narrowScreen: 15,
+};
 
 async function newPage(browser, options = {}) {
   const { width = 390, height = 844, geolocation, permissions = [], share = "stub" } = options;
