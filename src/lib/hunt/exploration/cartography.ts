@@ -18,6 +18,22 @@
  * Colour never carries meaning alone (§40): a species state is a word and a
  * glyph on the label as well as a tint here, and the jurisdiction tones are
  * a family of quiet greens and earths, not a legend.
+ *
+ * THE SPECIES LAYER (§41A, decided 2026-09-29) adds two channels over the same
+ * geometry, and they are deliberately different channels because they are
+ * different facts:
+ *
+ * - **Heat is the FILL** — an ember ramp, semi-translucent, from the certified
+ *   opportunity evidence. A zone with no evidence takes NO heat at all and
+ *   falls back to the quiet jurisdiction tone, because absent evidence is not
+ *   a low value.
+ * - **An open season is the STROKE** — one green, binary. Highlighted or not.
+ *   Conditional, unknown and not-certified draw nothing, so a hunter can see
+ *   heat and openness at once instead of decoding five tints.
+ *
+ * Heat never implies legality and green never implies animals. A zone that is
+ * not green is NOT closed, which is why the legend and the zone card carry
+ * both meanings in words.
  */
 
 export type ZoomBand = "national" | "regional" | "local";
@@ -60,11 +76,18 @@ export function jurisdictionTone(jurisdictionId: string | undefined): string {
 
 const EMPHASIS_SCALE: Record<Emphasis, number> = { light: 0.68, standard: 1, strong: 1.42 };
 const HOVER_FILL = 1.55;
-/* A species state tints a zone, but the chosen zone still has to lead, so the
-   tints are held below it: the ceiling below is what any unchosen zone can
-   reach, and the chosen one is computed to clear it. */
+/* Heat tints a zone, but the chosen zone still has to lead, so the tints are
+   held below it: the ceiling below is what any unchosen zone can reach, and
+   the chosen one is computed to clear it. */
 export const MAX_STATE_FILL = 0.32;
 const STATE_BAND_SCALE: Record<ZoomBand, number> = { national: 0.9, regional: 0.8, local: 0.7 };
+
+/** The one green an open season wears. Nothing else on the map uses it. */
+export const SEASON_OPEN_STROKE = "#63d585";
+/* Heavier than an ordinary boundary at every band, and still lighter than the
+   chosen zone's bone outline, which has to stay the loudest line on the map. */
+const SEASON_STROKE_WEIGHT: Record<ZoomBand, number> = { national: 1.9, regional: 2.3, local: 2.5 };
+const SEASON_HOVER = 1.15;
 
 /** Fills first: the national view reads as areas, the local view as lines. */
 const BAND_FILL: Record<ZoomBand, number> = { national: 0.07, regional: 0.045, local: 0.028 };
@@ -80,9 +103,17 @@ export interface ZoneStyleInput {
   hovered: boolean;
   /** Something is selected and this is not it. */
   dimmed: boolean;
-  /** The species filter's state for this zone, when one is on. */
-  stateColor?: { color: string; opacity: number };
-  filtering: boolean;
+  /**
+   * The heat fill for this zone, when the species layer holds evidence for it.
+   * ABSENT means no evidence is held — never a cold value.
+   */
+  heat?: { color: string; opacity: number };
+  /**
+   * Binary: a season is open here for the chosen species on the hunt date.
+   * False covers conditional, unknown, not-certified AND closed alike, so it
+   * is never read as "closed" on its own; the legend and card say so in words.
+   */
+  seasonOpen: boolean;
   band: ZoomBand;
   emphasis: Emphasis;
 }
@@ -109,17 +140,23 @@ export function zoneStyle(input: ZoneStyleInput): ZoneStyle {
   const scale = EMPHASIS_SCALE[input.emphasis];
   const tone = jurisdictionTone(input.jurisdictionId);
   const certified = input.coverage === "VERIFIED";
+  /* Heat and green are independent. A zone can be hot and shut, open and cold,
+     both, or neither, and the map has to be able to draw all four. */
+  const heatFill = input.heat ? input.heat.opacity * STATE_BAND_SCALE[input.band] : null;
 
   if (input.selected) {
     // The focal plane: the only bone outline on the map, and always the strongest
     // fill — computed to clear whatever the loudest unchosen zone can reach here.
+    // The bone wins over the season green even where a season is open: the sheet
+    // beside it already says "In season" in words, and two outlines cannot both
+    // be the loudest thing on the map.
     const ceiling = unchosenFillCeiling(input.band, input.emphasis);
     return {
       strokeColor: SELECTED_STROKE,
       strokeOpacity: 1,
       strokeWeight: input.band === "national" ? 2.6 : 3.2,
-      fillColor: input.stateColor?.color ?? tone,
-      fillOpacity: clamp(Math.max(0.17 * scale, ceiling + 0.04, (input.stateColor?.opacity ?? 0) + 0.06), 0.1, 0.44),
+      fillColor: input.heat?.color ?? tone,
+      fillOpacity: clamp(Math.max(0.17 * scale, ceiling + 0.04, (input.heat?.opacity ?? 0) + 0.06), 0.1, 0.44),
       zIndex: 8,
     };
   }
@@ -130,8 +167,8 @@ export function zoneStyle(input: ZoneStyleInput): ZoneStyle {
       strokeColor: SELECTED_STROKE,
       strokeOpacity: 0.72,
       strokeWeight: 1.8,
-      fillColor: input.stateColor?.color ?? tone,
-      fillOpacity: clamp((input.stateColor ? input.stateColor.opacity : 0.07) * scale, 0.02, 0.22),
+      fillColor: input.heat?.color ?? tone,
+      fillOpacity: clamp((heatFill ?? 0.07) * scale, 0.02, 0.22),
       zIndex: 7,
     };
   }
@@ -141,15 +178,28 @@ export function zoneStyle(input: ZoneStyleInput): ZoneStyle {
   const dim = input.dimmed ? 0.42 : 1;
   const dimStroke = input.dimmed ? 0.72 : 1;
   const hover = input.hovered ? HOVER_FILL : 1;
-  const baseFill = input.stateColor
-    ? input.stateColor.opacity * STATE_BAND_SCALE[input.band]
-    : input.filtering ? 0 : BAND_FILL[input.band] * (certified ? 1 : 0.6);
+  /* No evidence is not a cold value: the zone keeps the map's own quiet tone
+     rather than taking the bottom of the ramp. */
+  const baseFill = heatFill ?? BAND_FILL[input.band] * (certified ? 1 : 0.6);
+
+  if (input.seasonOpen) {
+    /* The green ring, at a weight that survives the national band, sitting above
+       its neighbours so an open zone is never buried by one that is merely hot. */
+    return {
+      strokeColor: SEASON_OPEN_STROKE,
+      strokeOpacity: clamp(0.95 * dimStroke, 0.5, 1),
+      strokeWeight: SEASON_STROKE_WEIGHT[input.band] * (input.hovered ? SEASON_HOVER : 1),
+      fillColor: input.heat?.color ?? tone,
+      fillOpacity: clamp(baseFill * dim * hover * scale, 0, MAX_STATE_FILL),
+      zIndex: input.hovered ? 6 : 4,
+    };
+  }
 
   return {
-    strokeColor: input.stateColor?.color ?? tone,
+    strokeColor: input.heat?.color ?? tone,
     strokeOpacity: clamp(BAND_STROKE_OPACITY[input.band] * dimStroke * (input.hovered ? 1.5 : 1) * (certified ? 1 : 0.75), 0.14, 1),
     strokeWeight: BAND_STROKE_WEIGHT[input.band] * (input.hovered ? 1.6 : 1),
-    fillColor: input.stateColor?.color ?? tone,
+    fillColor: input.heat?.color ?? tone,
     fillOpacity: clamp(baseFill * dim * hover * scale, 0, MAX_STATE_FILL),
     zIndex: input.hovered ? 5 : certified ? 3 : 2,
   };

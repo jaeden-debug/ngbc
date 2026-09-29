@@ -7,7 +7,9 @@ import {
   labelMinimumSpanPx, zoneStyle, zoomBand, type Emphasis, type ZoomBand,
 } from "../../../lib/hunt/exploration/cartography";
 import { mapLabelFor } from "../../../lib/hunt/exploration/map-labels";
+import { heatFillFor, seasonIsOpen } from "../../../lib/hunt/exploration/species-layer";
 import { EXPLORATION_WORDING, type ExplorationState as ZoneState } from "../../../lib/hunt/exploration/states";
+import type { OpportunityClass } from "../../../lib/hunt/intelligence/types";
 import { layerById } from "../../../lib/hunt/zone-layers";
 import { BASEMAP_STYLE } from "./google-loader";
 import { createLabelLayer, createPointMarker, createSelfMarker, type LabelLayerHandle, type LabelSource, type PointMarkerHandle, type SelfMarkerHandle } from "./google-overlays";
@@ -42,6 +44,11 @@ export interface ZoneStyleState {
   selectedKey: string | null;
   huntKey: string | null;
   filterStates: ReadonlyMap<string, ZoneState> | null;
+  /**
+   * The species layer's heat class per zone. A zone that is ABSENT holds no
+   * certified evidence and takes no heat; it is never given a low value.
+   */
+  heat: ReadonlyMap<string, OpportunityClass> | null;
   /** How strongly the boundaries are drawn over the basemap. */
   emphasis: Emphasis;
 }
@@ -50,25 +57,20 @@ const LONG_PRESS_MS = 550;
 const LONG_PRESS_SLOP_PX = 10;
 const MAX_FRAMING_ZOOM = 13;
 
-
-/* One restrained hue per state, always paired with a glyph and a word in the label and legend. */
-const STATE_FILL: Partial<Record<ZoneState, { color: string; opacity: number }>> = {
-  SEASON_AVAILABLE: { color: "#7cc08a", opacity: 0.32 },
-  SEASON_EXCEPT_AREAS: { color: "#7cc08a", opacity: 0.18 },
-  CHECK_REQUIREMENTS: { color: "#e0a04a", opacity: 0.26 },
-  NEEDS_VERIFICATION: { color: "#c9a26a", opacity: 0.16 },
-  CONFLICT: { color: "#d97a6c", opacity: 0.22 },
-  CLOSED: { color: "#9aa0a6", opacity: 0.1 },
-};
-
+/*
+  THE SPECIES LAYER IS TWO CHANNELS (§41A, 2026-09-29), and this is the only
+  place they meet a polygon. The eight-state colour ramp that used to live here
+  was superseded: five tints answered no question at a glance, and one of them
+  drew CLOSED, which a map must never assert on a hunter's behalf.
+*/
 function zoneOptions(
   coverage: string,
   flags: {
     jurisdictionId?: string; selected: boolean; hunt: boolean; hovered: boolean;
-    dimmed: boolean; state?: ZoneState; filtering: boolean; band: ZoomBand; emphasis: Emphasis;
+    dimmed: boolean; state?: ZoneState; heat?: OpportunityClass; band: ZoomBand; emphasis: Emphasis;
   },
 ): google.maps.PolygonOptions {
-  const stateColor = flags.state ? STATE_FILL[flags.state] : undefined;
+  const heat = heatFillFor(flags.heat);
   return zoneStyle({
     coverage,
     jurisdictionId: flags.jurisdictionId,
@@ -76,10 +78,10 @@ function zoneOptions(
     hunt: flags.hunt,
     hovered: flags.hovered,
     dimmed: flags.dimmed,
-    filtering: flags.filtering,
+    seasonOpen: seasonIsOpen(flags.state),
     band: flags.band,
     emphasis: flags.emphasis,
-    ...(stateColor ? { stateColor } : {}),
+    ...(heat ? { heat } : {}),
   });
 }
 
@@ -110,7 +112,7 @@ export class GoogleZoneMap {
   private readonly self: SelfMarkerHandle;
   private readonly huntPin: PointMarkerHandle;
   private readonly previewPin: PointMarkerHandle;
-  private style: ZoneStyleState = { selectedKey: null, huntKey: null, filterStates: null, emphasis: "standard" };
+  private style: ZoneStyleState = { selectedKey: null, huntKey: null, filterStates: null, heat: null, emphasis: "standard" };
   private hoverKey: string | null = null;
   private band: ZoomBand = "national";
   private zonesVisible = true;
@@ -251,8 +253,7 @@ export class GoogleZoneMap {
 
   /** Apply each polygon's style, touching only the ones that changed. */
   private restyle(): void {
-    const { selectedKey, huntKey, filterStates, emphasis } = this.style;
-    const filtering = Boolean(filterStates);
+    const { selectedKey, huntKey, filterStates, heat, emphasis } = this.style;
     const band = zoomBand(this.map.getZoom() ?? 4);
     for (const [key, shape] of this.shapes) {
       const selected = key === selectedKey;
@@ -264,7 +265,7 @@ export class GoogleZoneMap {
         // A chosen zone puts its neighbours in a quieter plane, boundaries intact.
         dimmed: Boolean(selectedKey) && !selected && key !== huntKey,
         state: filterStates?.get(key),
-        filtering,
+        heat: heat?.get(key),
         band,
         emphasis,
       });
@@ -286,15 +287,19 @@ export class GoogleZoneMap {
       if (!labelPoint || !labelSpan || !text) continue;
       const state = filterStates?.get(zone.key);
       const selected = zone.key === selectedKey || zone.key === huntKey;
+      /* Only an open season earns a glyph on the map. The other states are not
+         map indicators any more (§41A, 2026-09-29); they are in the zone list
+         and in the zone's own card, where there is room to say what they mean. */
+      const open = seasonIsOpen(state);
       sources.push({
         key: zone.key,
         text,
         short: text,
         labelPoint,
         labelSpan,
-        priority: selected ? 100 : zone.coverage === "VERIFIED" ? 2 : 1,
+        priority: selected ? 100 : open ? 50 : zone.coverage === "VERIFIED" ? 2 : 1,
         selected,
-        ...(state ? { glyph: EXPLORATION_WORDING[state].glyph, state } : {}),
+        ...(open && state ? { glyph: EXPLORATION_WORDING[state].glyph, state } : {}),
       });
     }
     this.labels.setLabels(sources);

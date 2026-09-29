@@ -3,7 +3,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { placeLabels } from "../../lib/hunt/exploration/labels";
 import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
+import { heatFillFor, seasonIsOpen } from "../../lib/hunt/exploration/species-layer";
 import type { ExplorationState } from "../../lib/hunt/exploration/states";
+import type { OpportunityClass } from "../../lib/hunt/intelligence/types";
 import type { ZoneFeature } from "../../lib/hunt/zone-geometry";
 import type { LabelSource } from "./map/google-overlays";
 import { projectX, projectY, TILE, unprojectLatitude, unprojectLongitude, type Viewport } from "./map/viewport";
@@ -26,6 +28,8 @@ interface ZoneCanvasProps {
   selectedZoneLabel: string | null;
   labels: LabelSource[];
   filterStates: ReadonlyMap<string, ExplorationState> | null;
+  /** The species layer's heat class per zone; absent means no evidence is held. */
+  heat?: ReadonlyMap<string, OpportunityClass> | null;
   zoneKeyOf: (feature: ZoneFeature) => string;
   onZoneClick: (feature: ZoneFeature) => void;
   onEmptyClick: () => void;
@@ -51,7 +55,7 @@ const LONG_PRESS_MS = 550;
 
 export default function ZoneCanvas({
   features, viewport, onViewportChange, huntPoint, selfFix, previewPoint, selectedZoneKey, selectedZoneLabel,
-  labels, filterStates, zoneKeyOf, onZoneClick, onEmptyClick, onLongPress, overlays, onOverlayClick, onResize,
+  labels, filterStates, heat = null, zoneKeyOf, onZoneClick, onEmptyClick, onLongPress, overlays, onOverlayClick, onResize,
 }: ZoneCanvasProps) {
   const frameRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 720, height: 520 });
@@ -246,18 +250,24 @@ export default function ZoneCanvas({
           dragRef.current = null;
         }}
       >
-        {shapes.map(({ feature, key, d }) => (
-          <path
-            key={key}
-            d={d}
-            fillRule="evenodd"
-            data-zone-key={key}
-            className={styles.zoneCanvasShape}
-            data-coverage={feature.coverage}
-            data-state={filterStates?.get(key)}
-            data-selected={key === selectedZoneKey || undefined}
-          />
-        ))}
+        {shapes.map(({ feature, key, d }) => {
+          const fill = heatFillFor(heat?.get(key));
+          return (
+            <path
+              key={key}
+              d={d}
+              fillRule="evenodd"
+              data-zone-key={key}
+              className={styles.zoneCanvasShape}
+              data-coverage={feature.coverage}
+              data-state={filterStates?.get(key)}
+              /* Binary. A zone without this attribute is NOT closed — the legend says so. */
+              data-open={seasonIsOpen(filterStates?.get(key)) || undefined}
+              data-selected={key === selectedZoneKey || undefined}
+              {...(fill ? { style: { fill: fill.color, fillOpacity: fill.opacity } } : {})}
+            />
+          );
+        })}
 
         {overlayShapes.map(({ key, d }) => (
           <path key={key} d={d} fillRule="evenodd" data-zone-key={`overlay|${key}`} className={styles.zoneCanvasOverlay} />

@@ -32,12 +32,18 @@
   stroke: rgba(207, 228, 189, 0.8);
   stroke-width: 1.3;
 }
-.zoneCanvasShape[data-state="SEASON_AVAILABLE"] { fill: rgba(124, 192, 138, 0.3); }
-.zoneCanvasShape[data-state="SEASON_EXCEPT_AREAS"] { fill: rgba(124, 192, 138, 0.16); }
-.zoneCanvasShape[data-state="CHECK_REQUIREMENTS"] { fill: rgba(224, 160, 74, 0.24); }
-.zoneCanvasShape[data-state="NEEDS_VERIFICATION"] { fill: rgba(201, 162, 106, 0.16); }
-.zoneCanvasShape[data-state="CONFLICT"] { fill: rgba(217, 122, 108, 0.2); }
-.zoneCanvasShape[data-state="CLOSED"] { fill: rgba(154, 160, 166, 0.12); }
+/*
+  THE SPECIES LAYER (§41A, 2026-09-29). Heat is the fill and arrives inline,
+  from `species-layer.ts`, because it is data rather than a style; a zone with
+  no certified evidence carries no inline fill and keeps the tone above, which
+  is why there is no rule here for a "cold" zone. An open season is the stroke,
+  binary, and never a fill — so both channels read at once.
+*/
+.zoneCanvasShape[data-open] {
+  stroke: #63d585;
+  stroke-width: 2.4;
+}
+.zoneCanvasShape[data-open]:hover { stroke-width: 3; }
 .zoneCanvasShape[data-selected] {
   fill: rgba(216, 230, 200, 0.14);
   stroke: #f0ead8;

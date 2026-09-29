@@ -7,7 +7,9 @@ import type { ExplorationEvent, ExplorationState, GeoPoint, SelfFailure } from "
 import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
 import { OPENING_CAMERA, posterFrame } from "../../lib/hunt/exploration/overview-poster";
 import { mapLabelFor } from "../../lib/hunt/exploration/map-labels";
+import { seasonIsOpen } from "../../lib/hunt/exploration/species-layer";
 import { EXPLORATION_WORDING, type ExplorationState as ZoneState } from "../../lib/hunt/exploration/states";
+import type { OpportunityClass } from "../../lib/hunt/intelligence/types";
 import type { ZoneFeature } from "../../lib/hunt/zone-geometry";
 import dynamic from "next/dynamic";
 import type { LabelSource } from "./map/google-overlays";
@@ -53,6 +55,12 @@ interface HuntMapViewProps {
   selectedKey: string | null;
   huntKey: string | null;
   filterStates: ReadonlyMap<string, ZoneState> | null;
+  /**
+   * The species layer's heat class per zone key. A zone that is ABSENT holds no
+   * certified opportunity evidence and is drawn with no heat at all — never a
+   * cold value (CLAUDE.md §41A, species layer).
+   */
+  heat?: ReadonlyMap<string, OpportunityClass> | null;
   overlays: OverlayFeature[];
   mapMode: "terrain" | "hybrid" | "roadmap";
   camera: CameraRequest | null;
@@ -76,7 +84,7 @@ const POSTER = posterFrame();
 const SELF_FAILURES: Record<number, SelfFailure> = { 1: "denied", 2: "position", 3: "timeout" };
 
 function HuntMapView({
-  googleMapsApiKey, exploration, dispatch, drawn, selectedKey, huntKey, filterStates, overlays, mapMode, camera,
+  googleMapsApiKey, exploration, dispatch, drawn, selectedKey, huntKey, filterStates, heat = null, overlays, mapMode, camera,
   locateOnStart, poster, padding, emphasis, zonesVisible, onView, onZoneClick, onOverlayClick, onBasemap,
 }: HuntMapViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -163,11 +171,11 @@ function HuntMapView({
   useEffect(() => { live?.setZones(drawn); live?.setLabels(drawn); }, [live, drawn]);
   useEffect(() => {
     if (!live) return;
-    live.setStyleState({ selectedKey, huntKey, filterStates, emphasis });
+    live.setStyleState({ selectedKey, huntKey, filterStates, heat, emphasis });
     live.setLabels(drawn);
     // `drawn` is applied above; this effect only restyles.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [live, selectedKey, huntKey, filterStates, emphasis]);
+  }, [live, selectedKey, huntKey, filterStates, heat, emphasis]);
   useEffect(() => { live?.setOverlays(overlays); }, [live, overlays]);
   useEffect(() => { live?.setZonesVisible(zonesVisible); }, [live, zonesVisible]);
   useEffect(() => { live?.setMapType(mapMode); }, [live, mapMode]);
@@ -306,10 +314,12 @@ function HuntMapView({
     if (!labelPoint || !labelSpan || !text) return [];
     const state = filterStates?.get(zone.key);
     const selected = zone.key === selectedKey || zone.key === huntKey;
+    // Only an open season earns a glyph, exactly as on the Google map.
+    const open = seasonIsOpen(state);
     return [{
       key: zone.key, text, short: text, labelPoint, labelSpan,
-      priority: selected ? 100 : zone.coverage === "VERIFIED" ? 2 : 1, selected,
-      ...(state ? { glyph: EXPLORATION_WORDING[state].glyph, state } : {}),
+      priority: selected ? 100 : open ? 50 : zone.coverage === "VERIFIED" ? 2 : 1, selected,
+      ...(open && state ? { glyph: EXPLORATION_WORDING[state].glyph, state } : {}),
     }];
   })), [useGoogle, drawn, filterStates, selectedKey, huntKey]);
 
@@ -338,6 +348,7 @@ function HuntMapView({
           selectedZoneLabel={selectedFeatureLabel}
           labels={canvasLabels}
           filterStates={filterStates}
+          heat={heat}
           zoneKeyOf={zoneKeyOfFeature}
           onZoneClick={(feature) => onZoneClick(zoneKeyOfFeature(feature), "map")}
           onEmptyClick={() => dispatch({ type: "MAP_TAPPED_EMPTY" })}

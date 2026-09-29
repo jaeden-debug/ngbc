@@ -1,9 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  jurisdictionTone, labelMinimumSpanPx, SELECTED_STROKE, zoneStyle, zoomBand,
+  jurisdictionTone, labelMinimumSpanPx, SEASON_OPEN_STROKE, SELECTED_STROKE, zoneStyle, zoomBand,
   type Emphasis, type ZoneStyleInput, type ZoomBand,
 } from "./cartography.ts";
+import { heatFillFor, HEAT_FILL, seasonIsOpen } from "./species-layer.ts";
 
 const BANDS: ZoomBand[] = ["national", "regional", "local"];
 const EMPHASES: Emphasis[] = ["light", "standard", "strong"];
@@ -12,7 +13,7 @@ const zone = (over: Partial<ZoneStyleInput> = {}): ZoneStyleInput => ({
   coverage: "VERIFIED",
   jurisdictionId: "jurisdiction:ca-on",
   selected: false, hunt: false, hovered: false, dimmed: false,
-  filtering: false, band: "regional", emphasis: "standard",
+  seasonOpen: false, band: "regional", emphasis: "standard",
   ...over,
 });
 
@@ -34,7 +35,9 @@ test("the chosen zone is the loudest thing on the map, at every band and setting
         zone({ band, emphasis, hovered: true }),
         zone({ band, emphasis, hunt: true }),
         zone({ band, emphasis, dimmed: true }),
-        zone({ band, emphasis, stateColor: { color: "#7cc08a", opacity: 0.2 } }),
+        zone({ band, emphasis, heat: HEAT_FILL.VERY_HIGH }),
+        zone({ band, emphasis, seasonOpen: true }),
+        zone({ band, emphasis, seasonOpen: true, hovered: true, heat: HEAT_FILL.VERY_HIGH }),
       ]) {
         const style = zoneStyle(other);
         assert.ok(selected.zIndex > style.zIndex, `zIndex ${band}/${emphasis}`);
@@ -75,12 +78,58 @@ test("jurisdictions differ in tone, never in loudness", () => {
   assert.equal(jurisdictionTone("jurisdiction:zz-zz"), jurisdictionTone(undefined));
 });
 
-test("a species state colours a zone, and is never the only thing that says so", () => {
-  const state = { color: "#7cc08a", opacity: 0.22 };
-  const filtered = zoneStyle(zone({ stateColor: state, filtering: true }));
-  assert.equal(filtered.fillColor, state.color, "the state's colour wins over the tone");
-  // Zones with no state in a filtered view are left empty rather than tinted a default.
-  assert.equal(zoneStyle(zone({ filtering: true })).fillOpacity, 0);
+test("the species layer is two independent channels, and all four combinations draw", () => {
+  const tone = jurisdictionTone("jurisdiction:ca-on");
+  const hot = zoneStyle(zone({ heat: HEAT_FILL.VERY_HIGH }));
+  const open = zoneStyle(zone({ seasonOpen: true }));
+  const both = zoneStyle(zone({ heat: HEAT_FILL.VERY_HIGH, seasonOpen: true }));
+  const neither = zoneStyle(zone());
+
+  // Heat is the fill; an open season is the stroke. Neither reaches into the other.
+  assert.equal(hot.fillColor, HEAT_FILL.VERY_HIGH.color, "heat takes the fill");
+  assert.notEqual(hot.strokeColor, SEASON_OPEN_STROKE, "heat never claims a season");
+  assert.equal(open.fillColor, tone, "an open season never tints the fill: green implies no animals");
+  assert.equal(open.strokeColor, SEASON_OPEN_STROKE);
+  // Both at once is the point of the layer: the heat stays visible under the green ring.
+  assert.equal(both.fillColor, HEAT_FILL.VERY_HIGH.color);
+  assert.equal(both.fillOpacity, hot.fillOpacity);
+  assert.equal(both.strokeColor, SEASON_OPEN_STROKE);
+  assert.equal(neither.strokeColor, tone);
+});
+
+test("a zone with no certified evidence draws no heat, and is not a cold one", () => {
+  // Absent evidence is not evidence of absence: the zone keeps the map's own tone.
+  const nothing = zoneStyle(zone());
+  const low = zoneStyle(zone({ heat: HEAT_FILL.LOW }));
+  assert.equal(nothing.fillColor, jurisdictionTone("jurisdiction:ca-on"));
+  assert.notEqual(low.fillColor, nothing.fillColor, "LOW must be distinguishable from no data");
+  assert.ok(low.fillOpacity > nothing.fillOpacity, "and it must be visible as a value");
+  // LIMITED_DATA holds evidence that will not support a rank, so it takes no fill either.
+  assert.equal(heatFillFor("LIMITED_DATA"), null);
+  assert.equal(heatFillFor(undefined), null);
+});
+
+test("green is binary, and nothing else on the layer is drawn", () => {
+  assert.equal(seasonIsOpen("SEASON_AVAILABLE"), true);
+  assert.equal(seasonIsOpen("SEASON_EXCEPT_AREAS"), true, "a season open across the zone, with named exceptions inside it");
+  // Everything else is simply unhighlighted. NOT-GREEN IS NOT CLOSED, and no
+  // separate indicator is drawn for any of these.
+  for (const state of ["CHECK_REQUIREMENTS", "CLOSED", "NEEDS_VERIFICATION", "CONFLICT", "UNKNOWN", "NOT_CERTIFIED"] as const) {
+    assert.equal(seasonIsOpen(state), false, state);
+    assert.equal(zoneStyle(zone({ seasonOpen: seasonIsOpen(state) })).strokeColor, jurisdictionTone("jurisdiction:ca-on"), state);
+  }
+  assert.equal(seasonIsOpen(undefined), false);
+});
+
+test("the heat ramp is monotonic and stays under the ceiling the chosen zone clears", () => {
+  const order = ["LOW", "MODERATE", "HIGH", "VERY_HIGH"] as const;
+  let previous = 0;
+  for (const classification of order) {
+    const style = zoneStyle(zone({ heat: HEAT_FILL[classification] }));
+    assert.ok(style.fillOpacity > previous, `${classification} must be stronger than the class below it`);
+    assert.ok(style.fillOpacity <= 0.32, `${classification} must stay under the ceiling`);
+    previous = style.fillOpacity;
+  }
 });
 
 test("the emphasis presets only change how strong it looks, and never exceed the ceiling", () => {
