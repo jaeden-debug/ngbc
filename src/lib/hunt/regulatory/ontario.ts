@@ -1,4 +1,5 @@
 import { harvestLimitsFrom, type HarvestLimit } from "./harvest-limit.ts";
+import { conditionLine } from "./condition.ts";
 import { legalTimeNotCertified } from "./legal-time.ts";
 import { general } from "../limitation.ts";
 import type { CanonicalId, IsoDate } from "../../content-contract/index.ts";
@@ -78,8 +79,21 @@ const BASE = {
       "astronomical times for this result.",
       "Ontario Ministry of Natural Resources",
     ),
-  requirements: [
-    "A valid Ontario Outdoors Card and small game licence are required; confirm all current licensing and local requirements in the official summary.",
+  /*
+   * Structured, with its pinpoint, so the sheet can show it as a condition
+   * under the status rather than as a flat line behind Details — and so the
+   * "with conditions" status word is earned by a line that has a source.
+   * `requirements` below is DERIVED from this and never authored beside it.
+   */
+  conditions: [
+    {
+      id: "condition:ca-on-small-game-licence",
+      text: "A valid Ontario Outdoors Card and small game licence are required; confirm all current licensing and local requirements in the official summary.",
+      lang: "en-CA" as const,
+      owner: "NORTH_GROUND" as const,
+      sourceSection: "Ontario Hunting Regulations Summary — Licences",
+      sourceId: SUPPORTING_SOURCE,
+    },
   ],
   limitations: [
     general("The Ontario Hunting Regulations Summary is a convenient reference, not the complete law."),
@@ -93,7 +107,8 @@ function baseResult(overrides: Partial<RegulatoryResult>): RegulatoryResult {
     /* No certified basis for a next opening from this path. Never "none". */
     next: { kind: "NOT_CERTIFIED" },
     ...BASE,
-    requirements: [...BASE.requirements],
+    conditions: [...BASE.conditions],
+    requirements: BASE.conditions.map(conditionLine),
     limitations: [...BASE.limitations],
     sourceIds: [SOURCE.id as CanonicalId<"source">, SUPPORTING_SOURCE],
     verifiedAt: SOURCE.retrievedAt,

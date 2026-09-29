@@ -1,4 +1,5 @@
 import { legalTimeNotCertified } from "./legal-time.ts";
+import { conditionId } from "./condition.ts";
 import { general } from "../limitation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { RegulatoryResult, ZoneResolution } from "../types.ts";
@@ -232,10 +233,47 @@ function baseResult(overrides: Partial<RegulatoryResult>, rules: BundleRule[] = 
         "astronomical times for this result.",
       "Ontario Ministry of Natural Resources",
     ),
-    // Each condition keeps the section it came from, so a reader can check the
-    // licence requirement and the season against different parts of the source.
+    /*
+     * Each condition keeps the section it came from, so a reader can check the
+     * licence requirement and the season against different parts of the source.
+     *
+     * Structured now, with `requirements` DERIVED from it — the sheet shows
+     * these under the status as the reason it says "with conditions", and a
+     * flat string cannot be grouped by source or tested for having one.
+     *
+     * A restriction note is a condition WITHOUT its own source row, so it takes
+     * the answer's own source and names itself as the pinpoint. Dropping them
+     * to keep the shape tidy would lose a fact a hunter needs.
+     */
+    conditions: [
+      /*
+       * A restriction note takes the source of the rule that stated it. Where
+       * no rule is in hand there is no source to attribute it to, and a
+       * condition with an invented source is worse than one not shown — so it
+       * falls back to the flat `requirements` line below rather than being
+       * given a citation it does not have.
+       */
+      ...(rules[0]?.sourceId
+        ? restrictionNotes(rules).map((note) => ({
+            id: conditionId(note),
+            text: note,
+            lang: "en-CA" as const,
+            owner: "NORTH_GROUND" as const,
+            sourceSection: "Ontario Hunting Regulations Summary — season restrictions",
+            sourceId: rules[0].sourceId as CanonicalId<"source">,
+          }))
+        : []),
+      ...conditions.map((condition) => ({
+        id: condition.id,
+        text: condition.text,
+        lang: "en-CA" as const,
+        owner: "NORTH_GROUND" as const,
+        sourceSection: condition.sourceSection,
+        sourceId: condition.sourceId as CanonicalId<"source">,
+      })),
+    ],
     requirements: [
-      ...restrictionNotes(rules),
+      ...restrictionNotes(rules).map((note) => `${note} (Ontario Hunting Regulations Summary — season restrictions)`),
       ...conditions.map((condition) => `${condition.text} (${condition.sourceSection})`),
     ],
     limitations: [
