@@ -5,6 +5,7 @@ import type { CanonicalId, IsoDate, SourceRecord } from "../../content-contract/
 import bundleJson from "../../../../content/regulatory/ca-qc-2026.json" with { type: "json" };
 import overlaysJson from "../../../../content/regulatory/ca-qc-overlays.json" with { type: "json" };
 import { QUEBEC_ZONE_TYPE_NAME, QUEBEC_ZONE_WFS, quebecZoneCanonicalId } from "../ingestion/quebec-zone.ts";
+import { quoting } from "../provenance.ts";
 import type { OverlayCatalogue } from "../overlays.ts";
 import {
   conditionalCoverage, evaluateConditional,
@@ -196,7 +197,14 @@ function engineRule(rule: QuebecRule, groupId: string): ConditionalRule {
       });
     }
   }
-  for (const note of rule.notes) notes.push(note);
+  /* THE MINISTRY'S OWN NOTES, transcribed verbatim and in French. Every other
+     line pushed above is North Ground's English sentence; these are not, and
+     they were going out through the same bare-string path — attributed to us
+     and tagged `en-CA`. They carry their provenance now, so nothing downstream
+     has to guess, and §47 keeps them in the language they were published in. */
+  for (const note of rule.notes) {
+    notes.push({ words: quoting(note, rule.sourceId as CanonicalId<"source">, rule.sourceSection, "fr-CA") });
+  }
   if (rule.declaredNoSeason) {
     /* A stated closure is CLOSED because it was said, so what was said travels
        with the answer. The engine lists conditions only for rules in season;
@@ -260,7 +268,18 @@ function conditionsFor(sourceId: string): ConditionalCondition[] {
     .filter((statement) => statement.sourceId === sourceId && (statement.scope === "rule" || statement.scope === "designations"))
     .map((statement) => ({
       id: statement.id,
-      text: `« ${statement.text} »`,
+      /*
+       * THE MINISTRY'S OWN STATEMENT, and now declared as such.
+       *
+       * The guillemets used to be baked into the text while the engine tagged
+       * the line NORTH_GROUND. A renderer that quotes an authority and prints
+       * North Ground plainly therefore printed the ministry's sentence plainly
+       * WITH stray quotation marks inside it — the worst of both: our
+       * attribution on their words. The owner is declared instead, and the
+       * marks are added by whoever renders it.
+       */
+      text: statement.text,
+      owner: "AUTHORITY" as const,
       sourceId: statement.sourceId,
       sourceSection: statement.sourceSection,
       ...(statement.designations ? { zoneIds: statement.designations.map(zoneIdOf) } : {}),

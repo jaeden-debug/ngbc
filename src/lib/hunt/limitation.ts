@@ -24,6 +24,7 @@
  */
 
 import type { CanonicalId } from "../content-contract/index.ts";
+import type { AuthorityQuotation } from "./provenance.ts";
 
 /** The languages North Ground renders a limitation in. */
 export type LimitationLang = "en-CA" | "fr-CA";
@@ -90,6 +91,28 @@ function idFor(text: string): string {
  */
 export function general(text: string, id?: string): Limitation {
   return { id: id ?? idFor(text), text, lang: "en-CA", owner: "NORTH_GROUND", scope: "GENERAL" };
+}
+
+/**
+ * An authority's own words that QUALIFY an answer rather than caption a source.
+ *
+ * `sourceDetail` already existed for an authority's caveat about its own data,
+ * and it routes to Sources. This is the other kind: a ministry note that
+ * belongs beside the answer — "Dans la zone 17, l'utilisation de collets…" is a
+ * restriction a hunter acts on, not a footnote about a dataset — and it was
+ * reaching a reader through `general()`, which hardcodes `en-CA` and
+ * `NORTH_GROUND`. A wholly French ministry sentence was therefore shipping
+ * attributed to North Ground and tagged English, so a screen reader read it
+ * with English phonetics and a sighted reader had no way to know whose rule it
+ * was.
+ *
+ * The provenance is REQUIRED, not defaulted: it takes the quotation itself, so
+ * the language and the authorship arrive together with the citation that makes
+ * them auditable, and a caller cannot supply the words while forgetting where
+ * they came from.
+ */
+export function authorityNote(words: AuthorityQuotation, id?: string): Limitation {
+  return { id: id ?? idFor(words.text), text: words.text, lang: words.lang, owner: "AUTHORITY", scope: "GENERAL" };
 }
 
 /** A line that changes what a hunter may do today. Earned, not assumed. */

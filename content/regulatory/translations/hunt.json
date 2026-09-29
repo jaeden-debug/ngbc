@@ -1,0 +1,88 @@
+{
+  "note": "North Ground readings of authority text, for presentation only. The ORIGINAL is never replaced: it keeps its language, its owner, its citation identity and its provenance, and every surface that shows a reading keeps the original one action away. Nothing here is read by the regulatory engine — interpretation runs on canonical data, never on translated prose. Each row is keyed by the source text VERBATIM AND COMPLETE: if the authority changes a word the key misses and the interface says no reading exists, rather than showing yesterday's reading of today's rule. Proper names, official designations and the authority's own category names are NOT translated (CLAUDE.md §47) and are carried through unchanged. Every row here is NORTH_GROUND_GENERATED: it has been written by North Ground and NOT signed off by a person. Promotion to NORTH_GROUND_REVIEWED is a human act.",
+  "readings": [
+    {
+      "from": "« Territoires où toute activité de chasse est interdite. » (Réserve écologique).",
+      "fromLang": "fr-CA",
+      "into": "“Territory where all hunting activity is prohibited.” (Réserve écologique).",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "The parenthetical is the ministry's own layer category and is kept verbatim: « Réserve écologique » is a designation in Québec law, not a description."
+    },
+    {
+      "from": "« Territoires où toute activité de chasse est interdite. » (Parc national).",
+      "fromLang": "fr-CA",
+      "into": "“Territory where all hunting activity is prohibited.” (Parc national).",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "« Parc national » is Québec's own designation for a provincial park and is kept verbatim; rendering it \"national park\" would name the wrong order of government."
+    },
+    {
+      "from": "« Territoires où toute activité de chasse est interdite. » (Parc national du Canada).",
+      "fromLang": "fr-CA",
+      "into": "“Territory where all hunting activity is prohibited.” (Parc national du Canada).",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED"
+    },
+    {
+      "from": "« Territoires où toute activité de chasse est interdite. » (Territoire de chasse non permise).",
+      "fromLang": "fr-CA",
+      "into": "“Territory where all hunting activity is prohibited.” (Territoire de chasse non permise — territory where hunting is not permitted).",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "The category is kept and glossed rather than replaced, because it is the ministry's own layer name."
+    },
+    {
+      "from": "« Territoires où toute activité de chasse est interdite. » (Zone de chasse).",
+      "fromLang": "fr-CA",
+      "into": "“Territory where all hunting activity is prohibited.” (Zone de chasse).",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED"
+    },
+    {
+      "from": "« Territoires où toute activité de chasse est interdite. » (Station récréotouristique).",
+      "fromLang": "fr-CA",
+      "into": "“Territory where all hunting activity is prohibited.” (Station récréotouristique).",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED"
+    },
+    {
+      "from": "« La chasse est permise à partir d’une demi-heure avant le lever du soleil jusqu’à midi. »",
+      "fromLang": "fr-CA",
+      "into": "“Hunting is permitted from half an hour before sunrise until noon.”",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "Québec's wild turkey hours. This is a reading for a hunter, not a substitute for the provision: the original stays beside it and remains what the rule says."
+    },
+    {
+      "from": "La chasse est permise à partir d’une demi-heure avant le lever du soleil jusqu’à midi.",
+      "fromLang": "fr-CA",
+      "into": "Hunting is permitted from half an hour before sunrise until noon.",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "The same sentence as published, without the quotation marks a caller may add."
+    },
+    {
+      "from": "Tout orignal dont les bois mesurent 10 cm ou plus (complément de la définition d’orignal sans bois).",
+      "fromLang": "fr-CA",
+      "into": "Any moose whose antlers measure 10 cm or more (the complement of the definition of an antlerless moose).",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED"
+    },
+    {
+      "from": "Femelle, ou mâle dont les bois mesurent moins de 7 cm.",
+      "fromLang": "fr-CA",
+      "into": "A female, or a male whose antlers measure less than 7 cm.",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED"
+    },
+    {
+      "from": "Cerf de Virginie femelle ou mâle avec bois de moins de 7 cm",
+      "fromLang": "fr-CA",
+      "into": "White-tailed deer: female, or male with antlers less than 7 cm",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "The regulatory animal class, read for a hunter. The class itself is decided by the source, never by this line."
+    }
+  ]
+}

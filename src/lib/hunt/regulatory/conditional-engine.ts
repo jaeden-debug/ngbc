@@ -1,7 +1,7 @@
 import { legalTimeNotCertified } from "./legal-time.ts";
 import { harvestLimitsFrom } from "./harvest-limit.ts";
 import { nextOpening } from "./season.ts";
-import { general, sourceDetail, type Limitation } from "../limitation.ts";
+import { authorityNote, general, sourceDetail, type Limitation } from "../limitation.ts";
 import { conditionId, conditionLine, type RegulatoryCondition } from "./condition.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { RegulatoryResult, RegulatoryStatus } from "../types.ts";
@@ -14,7 +14,7 @@ import { authorizationContext, type DrawCycle } from "./allocation.ts";
 import type { HuntCode } from "./hunt-codes.ts";
 import { rulesInForce, type Amendment, type RuleAuthority } from "./precedence.ts";
 import type { RestrictionRecord } from "../overlays.ts";
-import { isQuotation, provenancedLine, type NorthGroundStatement, type ProvenancedText } from "../provenance.ts";
+import { isQuotation, provenancedLine, type AuthorityQuotation, type NorthGroundStatement, type ProvenancedText } from "../provenance.ts";
 
 /**
  * The jurisdiction-neutral conditional evaluator.
@@ -90,8 +90,18 @@ export interface ConditionalRule {
   };
   conditionIds: string[];
   caveats: string[];
-  /** Plain notes; a note naming a zone is shown only for that zone. */
-  notes: Array<string | { zoneId?: string; text: string }>;
+  /**
+   * Notes; one naming a zone is shown only for that zone.
+   *
+   * A bare string, or `{ text }`, is NORTH GROUND'S OWN SENTENCE in English —
+   * that is what the shape means, and it is why the shape is allowed to be
+   * bare. An authority's own wording arrives as `{ words }`, an
+   * `AuthorityQuotation`, which REQUIRES its language, its source and its
+   * citation. A producer transcribing a ministry's note cannot therefore emit
+   * it as though North Ground had written it in English, which is exactly what
+   * Québec's `rules[].notes` were doing.
+   */
+  notes: Array<string | { zoneId?: string; text: string } | { zoneId?: string; words: AuthorityQuotation }>;
   /**
    * Where North Ground's cross-check found two defensible readings of the same
    * instrument. `words` is always OURS: a dispute exists because WE compared
@@ -124,6 +134,17 @@ export interface ConditionalRule {
 export interface ConditionalCondition {
   id: string;
   text: string;
+  /**
+   * Whose words `text` is, DECLARED BY THE PRODUCER.
+   *
+   * Absent means North Ground's — most bundle conditions are a sentence we
+   * wrote about an authority's rule. Québec's are not: they are the ministry's
+   * own statements, transcribed, and they were reaching a hunter attributed to
+   * North Ground and therefore rendered without the quotation marks that say
+   * whose rule it is. A renderer must never decide this from the prose
+   * (`limitation.ts`); only the transcriber knows.
+   */
+  owner?: "AUTHORITY" | "NORTH_GROUND";
   sourceId: string;
   sourceSection: string;
   zoneIds?: string[];
@@ -840,7 +861,7 @@ export function evaluateConditional(
        * ministry's mouth. A bundle that starts carrying the authority's own
        * wording declares it there; a renderer never decides it from the prose.
        */
-      owner: "NORTH_GROUND" as const,
+      owner: condition.owner ?? ("NORTH_GROUND" as const),
       sourceSection: condition.sourceSection,
       sourceId: condition.sourceId as CanonicalId<"source">,
     })),
@@ -856,7 +877,14 @@ export function evaluateConditional(
         {
           id: conditionId(`limit:${rule.limits!.statedAs}|${rule.limits!.section}`),
           text: `Bag limit: ${rule.limits!.statedAs}.`,
-          lang: vocabulary.lang ?? ("en-CA" as const),
+          /* NORTH GROUND'S OWN ENGLISH SENTENCE, whatever the bundle's language
+             is. It took `vocabulary.lang`, so Québec's bag limits were tagged
+             French — the inverse mislabel, and the quieter one: nothing looks
+             wrong and a screen reader pronounces English with French
+             phonetics. The authority's figure inside it is a quoted fragment,
+             which `limitation.ts` already settles: a mixed line is tagged by
+             its OUTER author. */
+          lang: "en-CA" as const,
           owner: "NORTH_GROUND" as const,
           sourceSection: rule.limits!.section!,
           sourceId: rule.sourceId as CanonicalId<"source">,
@@ -878,10 +906,16 @@ export function evaluateConditional(
   const limitations: Limitation[] = [
     ...amendedBy.map((text) => general(text)),
     ...agreedDespite.map((text) => general(text)),
-    ...[...new Set(cited.flatMap((rule) => [
-      ...rule.notes.flatMap((note) => typeof note === "string" ? [note] : !note.zoneId || note.zoneId === place.zoneId ? [note.text] : []),
-      ...rule.caveats,
-    ]))].map((text) => general(text)),
+    /* Deduplicated by the TEXT, because an authority's note is an object now
+       and two transcriptions of one ministry sentence are not the same object.
+       A `Set` of them would have printed the line once per citing rule. */
+    ...[...new Map(cited.flatMap((rule): Array<[string, string | AuthorityQuotation]> => [
+      ...rule.notes.flatMap((note): Array<[string, string | AuthorityQuotation]> => typeof note === "string"
+        ? [[note, note]]
+        : note.zoneId && note.zoneId !== place.zoneId ? []
+        : "words" in note ? [[note.words.text, note.words]] : [[note.text, note.text]]),
+      ...rule.caveats.map((caveat): [string, string] => [caveat, caveat]),
+    ])).values()].map((entry) => typeof entry === "string" ? general(entry) : authorityNote(entry)),
     ...[...new Set(bundleConditions.flatMap((condition) => condition.caveats ?? []))].map((text) => general(text)),
     ...vocabulary.standingLimitations,
   ];
