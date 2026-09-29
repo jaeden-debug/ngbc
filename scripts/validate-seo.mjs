@@ -43,7 +43,7 @@ async function validate() {
     /<link rel="canonical" href="https:\/\/www\.northgroundbushcraft\.com\/?"/i,
     "canonical should ignore query parameters",
   );
-  assert.match(home, /<meta name="description" content="Practical Canadian outdoor knowledge, field-tested guides and useful tools for hunting, bushcraft, camping, cold weather and exploring the outdoors\."/i);
+  assert.match(home, /<meta name="description" content="Canadian outdoor knowledge from North Ground\. Find your hunting zone and check seasons with North Ground Hunt, and explore North American game species\."/i);
   assert.match(home, /<meta property="og:title" content="North Ground/i);
   assert.match(home, /<meta property="og:image" content="https:\/\/www\.northgroundbushcraft\.com\/opengraph-image/i);
   assert.match(home, /<meta name="twitter:card" content="summary_large_image"/i);
