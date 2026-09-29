@@ -139,6 +139,28 @@ export default function ReadyToHunt({
       <div className={styles.readyIdentity}>{speciesMedia ? <SpeciesPrimaryImage media={speciesMedia} variant="avatar" className={styles.readySpeciesImage} /> : null}<h3 id="ready-heading" className={styles.heading}>Ready to hunt <span className="ng-visually-hidden">{speciesName}</span></h3></div>
       <p className={styles.note}>What you need before you go, from {readiness.jurisdictionName}&apos;s rules for this hunt.</p>
 
+      {/*
+        A PARTIAL CHECKLIST HAS TO READ AS PARTIAL, AT THE TOP.
+
+        PARTIAL used to render exactly like VERIFIED — the only special case
+        was UNAVAILABLE — so a checklist missing whole categories looked
+        finished, and the lines saying what was missing sat at the very bottom
+        under everything else. A hunter who scans the rows and stops has then
+        been told a complete-looking list of what they need, with the unknown
+        parts out of sight.
+
+        So the incompleteness is stated BEFORE the rows, and it names the
+        categories rather than gesturing at them. `limitations` still carries
+        the detail at the foot; this is the part that must not be scrolled past.
+      */}
+      {readiness.coverage === "PARTIAL" ? (
+        <p className={styles.partial} role="note">
+          <strong>This checklist is not complete.</strong> North Ground has verified the licences and hunter orange
+          below. It has not verified legal methods, ammunition or fees for {readiness.jurisdictionName} — those are
+          listed as unresolved at the end, and are not covered by what you see here.
+        </p>
+      ) : null}
+
       <h4 className={styles.subhead}>Licences and permits</h4>
       {feesByResidency && (residency === "RESIDENT" || residency === "NON_RESIDENT") ? (
         <p className={styles.meta}>

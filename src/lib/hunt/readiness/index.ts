@@ -2,13 +2,30 @@ import { CANADA_JURISDICTIONS } from "../canada/registry.ts";
 import { unitedStatesJurisdictionById } from "../united-states/registry.ts";
 import type { RegulatoryResult, ZoneResolution } from "../types.ts";
 import { resolveOntarioReadiness } from "./ontario.ts";
+import { resolveQuebecReadiness } from "./quebec.ts";
 import type { HunterAnswers } from "./resolve.ts";
 import type { ReadinessResult } from "./types.ts";
 
 export type { ReadinessResult } from "./types.ts";
 
+/**
+ * Which jurisdictions have a checklist, and whose builder answers.
+ *
+ * A map rather than a chain of `if (jurisdictionId === …)`, because a
+ * jurisdiction-name branch is the shortcut §29 names outright: the second one
+ * is where the pattern sets, and every later jurisdiction inherits it. Adding
+ * one is a row here.
+ */
+const READINESS_BUILDERS: Readonly<Record<string, (
+  input: { speciesId: string; date: string; zoneId: string; answers: HunterAnswers },
+  now?: Date,
+) => ReadinessResult>> = {
+  "jurisdiction:ca-on": resolveOntarioReadiness,
+  "jurisdiction:ca-qc": resolveQuebecReadiness,
+};
+
 const RESIDENCIES = new Set(["RESIDENT", "NON_RESIDENT"]);
-const METHODS = new Set(["RIFLE", "SHOTGUN", "MUZZLELOADER", "BOW", "CROSSBOW", "AIR_GUN"]);
+const METHODS = new Set(["RIFLE", "SHOTGUN", "MUZZLELOADER", "BOW", "CROSSBOW", "AIR_GUN", "SNARE"]);
 
 /**
  * Only answers the checklist understands reach it. The request handler checks
@@ -45,8 +62,9 @@ export function resolveReadiness(
   if (regulation.status !== "CONDITIONAL") return undefined;
   if (zone.status !== "RESOLVED" || !zone.zoneId || !zone.jurisdictionId) return undefined;
 
-  if (zone.jurisdictionId === "jurisdiction:ca-on") {
-    return resolveOntarioReadiness(
+  const builder = READINESS_BUILDERS[zone.jurisdictionId];
+  if (builder) {
+    return builder(
       { speciesId: input.speciesId, date: input.date, zoneId: String(zone.zoneId), answers: readinessAnswers(input.answers) },
       options.now,
     );

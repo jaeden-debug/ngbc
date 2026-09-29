@@ -71,8 +71,21 @@ export type Residency = "RESIDENT" | "NON_RESIDENT";
  * Hunting methods, in the vocabulary the regulatory engine already asks in.
  * CROSSBOW and AIR_GUN appear only where a jurisdiction restricts them apart
  * from other bows or guns; the engine's BOW answer covers both kinds of bow.
+ *
+ * SNARE IS NOT A WEAPON AND IS HERE BECAUSE QUÉBEC LEGISLATES IT AS AN ENGIN.
+ * The regulatory engine has modelled it all along — « collet » is one of
+ * Québec's published season segments for hare and cottontail — but this list
+ * stopped at firearms and bows, so `readinessAnswers` silently discarded a
+ * SNARE answer and the checklist saw a hunter who had told it nothing.
+ *
+ * That is not cosmetic. Règlement sur les activités de chasse, r. 1,
+ * s. 17.3(1°)(c) exempts arctic hare, snowshoe hare and eastern cottontail
+ * from hunter orange ONLY when taken by snare. Without SNARE in the vocabulary
+ * the checklist could only say "orange required" to a hunter the regulation
+ * exempts — a restriction stricter than the source, which §8 makes as false as
+ * a loose one, and the direction nobody reports.
  */
-export type MethodClass = "RIFLE" | "SHOTGUN" | "MUZZLELOADER" | "BOW" | "CROSSBOW" | "AIR_GUN";
+export type MethodClass = "RIFLE" | "SHOTGUN" | "MUZZLELOADER" | "BOW" | "CROSSBOW" | "AIR_GUN" | "SNARE";
 
 export const GUN_METHODS: readonly MethodClass[] = ["RIFLE", "SHOTGUN", "MUZZLELOADER", "AIR_GUN"];
 

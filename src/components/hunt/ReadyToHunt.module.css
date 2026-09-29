@@ -45,6 +45,26 @@
   color: var(--ng-bone-dim);
 }
 
+/*
+ * A partial checklist, said at the top rather than at the foot.
+ *
+ * Amber-edged like the answer's other operational warnings, and brighter than
+ * `.note`, because its job is to stop a hunter reading the rows below as the
+ * whole list. It is not a disclosure: what a checklist does NOT cover is the
+ * part a hunter is most likely to be caught by, and collapsing it would be the
+ * failure §41A names outright.
+ */
+.partial {
+  margin: 0 0 10px;
+  padding: 9px 11px;
+  border-left: 3px solid var(--ng-amber);
+  border-radius: var(--ng-radius-sm);
+  background: var(--ng-amber-soft);
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--ng-bone);
+}
+
 .meta {
   display: block;
   margin: 2px 0 0;

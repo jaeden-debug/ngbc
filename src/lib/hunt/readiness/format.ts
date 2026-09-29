@@ -9,6 +9,7 @@ export const METHOD_LABELS: Record<MethodClass, string> = {
   BOW: "Bow",
   CROSSBOW: "Crossbow",
   AIR_GUN: "Air gun",
+  SNARE: "Snare",
 };
 
 export const CHANNEL_LABELS: Record<PurchaseChannel, string> = {

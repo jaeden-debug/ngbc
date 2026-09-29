@@ -1,0 +1,296 @@
+{
+  "contractVersion": 1,
+  "generatedBy": "hand-authored from the consolidated regulations; see note",
+  "note": "Not machine-generated, and deliberately carries no verbatim quotes. Québec legislative text is under a standing reuse freeze on this project, so every statement below is the legal FACT written in North Ground's own words with its citation, per CLAUDE.md §8. That is why no `quote` field appears on any provenance record here: the Ontario builder re-reads its quotes to certify them, and a quote we may not store cannot be certified that way. Each record instead carries the instrument, the section and the consolidation date the provision was read at.",
+  "jurisdictionId": "jurisdiction:ca-qc",
+  "jurisdictionName": "Québec",
+  "officialInfoUrl": "https://www.quebec.ca/tourisme-et-loisirs/activites-sportives-et-plein-air/chasse-sportive/permis-certificat",
+  "consolidatedTo": "2026-05-01",
+  "retrievedAt": "2026-09-29",
+  "sources": [
+    {
+      "id": "source:ca-qc-reglement-activites-chasse",
+      "title": "Règlement sur les activités de chasse, RLRQ c. C-61.1, r. 1",
+      "url": "https://www.legisquebec.gouv.qc.ca/fr/document/rc/C-61.1,%20r.%201",
+      "authority": "Éditeur officiel du Québec",
+      "tier": "LAW",
+      "consolidatedTo": "2026-05-01"
+    },
+    {
+      "id": "source:ca-qc-reglement-chasse",
+      "title": "Règlement sur la chasse, RLRQ c. C-61.1, r. 12",
+      "url": "https://www.legisquebec.gouv.qc.ca/fr/document/rc/C-61.1,%20r.%2012",
+      "authority": "Éditeur officiel du Québec",
+      "tier": "LAW",
+      "consolidatedTo": "2026-05-01"
+    },
+    {
+      "id": "source:ca-qc-permis-certificat",
+      "title": "Permis et certificat du chasseur",
+      "url": "https://www.quebec.ca/tourisme-et-loisirs/activites-sportives-et-plein-air/chasse-sportive/permis-certificat",
+      "authority": "Ministère de l'Environnement, de la Lutte contre les changements climatiques, de la Faune et des Parcs",
+      "tier": "OFFICIAL_SUMMARY",
+      "consolidatedTo": "2026-09-29"
+    }
+  ],
+
+  "authorizations": [
+    {
+      "id": "authorization:ca-qc-certificat-chasseur",
+      "kind": "HUNTER_EDUCATION",
+      "officialName": "Certificat du chasseur",
+      "officialNameFr": "Certificat du chasseur ou du piégeur",
+      "authority": "Ministère de l'Environnement, de la Lutte contre les changements climatiques, de la Faune et des Parcs",
+      "jurisdictionId": "jurisdiction:ca-qc",
+      "appliesTo": { "minAge": 12 },
+      "prerequisites": [],
+      "possessionVerifiable": false,
+      "purchase": {
+        "channels": ["ONLINE", "PHYSICAL_VENDOR"],
+        "infoUrl": "https://www.quebec.ca/tourisme-et-loisirs/activites-sportives-et-plein-air/chasse-sportive/permis-certificat/certificat-chasseur"
+      },
+      "prices": [],
+      "provenance": [
+        {
+          "sourceId": "source:ca-qc-reglement-chasse",
+          "url": "https://www.legisquebec.gouv.qc.ca/fr/document/rc/C-61.1,%20r.%2012",
+          "citation": "Règlement sur la chasse, C-61.1, r. 12, art. 3",
+          "tier": "LAW",
+          "retrievedAt": "2026-09-29"
+        },
+        {
+          "sourceId": "source:ca-qc-reglement-chasse",
+          "url": "https://www.legisquebec.gouv.qc.ca/fr/document/rc/C-61.1,%20r.%2012",
+          "citation": "Règlement sur la chasse, C-61.1, r. 12, art. 3.1",
+          "tier": "LAW",
+          "retrievedAt": "2026-09-29"
+        }
+      ],
+      "note": "The certificate establishes that the holder is fit to hunt or trap. It is obtained by being a resident, being at least 12, and passing the initiation course matching the engin you will use — a firearm course for firearms, a bow-and-crossbow course for those. A Canadian citizen resident in Québec may obtain the firearm certificate without the course by producing an equivalent certificate or proof of competence from another Canadian province or territory."
+    },
+    {
+      "id": "authorization:ca-qc-permis-petit-gibier",
+      "kind": "HUNTING_LICENCE",
+      "officialName": "Small game hunting licence",
+      "officialNameFr": "Permis de chasse au petit gibier",
+      "authority": "Ministère de l'Environnement, de la Lutte contre les changements climatiques, de la Faune et des Parcs",
+      "jurisdictionId": "jurisdiction:ca-qc",
+      "appliesTo": {},
+      "prerequisites": ["authorization:ca-qc-certificat-chasseur"],
+      "possessionVerifiable": false,
+      "purchase": {
+        "channels": ["ONLINE", "PHYSICAL_VENDOR"],
+        "infoUrl": "https://www.quebec.ca/tourisme-et-loisirs/activites-sportives-et-plein-air/chasse-sportive/permis-certificat/achat-permis"
+      },
+      "prices": [],
+      "provenance": [
+        {
+          "sourceId": "source:ca-qc-reglement-chasse",
+          "url": "https://www.legisquebec.gouv.qc.ca/fr/document/rc/C-61.1,%20r.%2012",
+          "citation": "Règlement sur la chasse, C-61.1, r. 12, art. 7 and Annexe I, art. 7 (« Petit gibier »)",
+          "tier": "LAW",
+          "retrievedAt": "2026-09-29"
+        },
+        {
+          "sourceId": "source:ca-qc-reglement-chasse",
+          "url": "https://www.legisquebec.gouv.qc.ca/fr/document/rc/C-61.1,%20r.%2012",
+          "citation": "Règlement sur la chasse, C-61.1, r. 12, art. 7.1",
+          "tier": "LAW",
+          "retrievedAt": "2026-09-29"
+        }
+      ],
+      "note": "Annexe I sets the licence types; article 7 of that schedule is the small game licence, in resident and non-resident categories. A resident must hold a valid certificat du chasseur to be issued a resident licence — the small game licence is not one of the two the regulation exempts from that requirement."
+    },
+    {
+      "id": "authorization:ca-qc-permis-collet-lievre",
+      "kind": "SPECIES_LICENCE",
+      "officialName": "Hare or eastern cottontail by snare licence",
+      "officialNameFr": "Permis de chasse au lièvre ou au lapin à queue blanche au moyen de collet",
+      "authority": "Ministère de l'Environnement, de la Lutte contre les changements climatiques, de la Faune et des Parcs",
+      "jurisdictionId": "jurisdiction:ca-qc",
+      "appliesTo": { "methods": ["SNARE"] },
+      "prerequisites": [],
+      "possessionVerifiable": false,
+      "purchase": {
+        "channels": ["ONLINE", "PHYSICAL_VENDOR"],
+        "infoUrl": "https://www.quebec.ca/tourisme-et-loisirs/activites-sportives-et-plein-air/chasse-sportive/permis-certificat/achat-permis"
+      },
+      "prices": [],
+      "provenance": [
+        {
+          "sourceId": "source:ca-qc-reglement-chasse",
+          "url": "https://www.legisquebec.gouv.qc.ca/fr/document/rc/C-61.1,%20r.%2012",
+          "citation": "Règlement sur la chasse, C-61.1, r. 12, art. 7.1",
+          "tier": "LAW",
+          "retrievedAt": "2026-09-29"
+        }
+      ],
+      "note": "This is one of the two resident licences article 7.1 expressly does NOT require a certificat du chasseur for. It is a separate licence from the small game licence, so it carries no certificate prerequisite."
+    },
+    {
+      "id": "authorization:ca-federal-firearms-licence",
+      "kind": "FIREARMS_LICENCE",
+      "officialName": "Possession and Acquisition Licence (PAL)",
+      "authority": "Royal Canadian Mounted Police — Canadian Firearms Program",
+      "jurisdictionId": "jurisdiction:ca-federal",
+      "appliesTo": { "methods": ["RIFLE", "SHOTGUN", "MUZZLELOADER"] },
+      "prerequisites": [],
+      "possessionVerifiable": false,
+      "purchase": {
+        "channels": ["ONLINE", "PHONE"],
+        "infoUrl": "https://rcmp.ca/en/firearms/licensing"
+      },
+      "prices": [],
+      "provenance": [
+        {
+          "sourceId": "source:ca-qc-permis-certificat",
+          "url": "https://www.quebec.ca/tourisme-et-loisirs/activites-sportives-et-plein-air/chasse-sportive/permis-certificat",
+          "citation": "Firearms licensing is federal and applies in Québec as elsewhere in Canada",
+          "tier": "OFFICIAL_SUMMARY",
+          "retrievedAt": "2026-09-29"
+        }
+      ],
+      "note": "Federal, not Québec's. It is separate from the certificat du chasseur, which is Québec's competency document: holding one does not give you the other."
+    }
+  ],
+
+  "requirements": {
+    "species:ruffed-grouse": [
+      { "authorizationId": "authorization:ca-qc-certificat-chasseur" },
+      { "authorizationId": "authorization:ca-qc-permis-petit-gibier" },
+      {
+        "authorizationId": "authorization:ca-federal-firearms-licence",
+        "when": { "methods": ["RIFLE", "SHOTGUN", "MUZZLELOADER"] },
+        "conditionText": "Required if you hunt with a firearm. Not needed for a bow or crossbow."
+      }
+    ],
+    "species:spruce-grouse": [
+      { "authorizationId": "authorization:ca-qc-certificat-chasseur" },
+      { "authorizationId": "authorization:ca-qc-permis-petit-gibier" },
+      {
+        "authorizationId": "authorization:ca-federal-firearms-licence",
+        "when": { "methods": ["RIFLE", "SHOTGUN", "MUZZLELOADER"] },
+        "conditionText": "Required if you hunt with a firearm. Not needed for a bow or crossbow."
+      }
+    ],
+    "species:sharp-tailed-grouse": [
+      { "authorizationId": "authorization:ca-qc-certificat-chasseur" },
+      { "authorizationId": "authorization:ca-qc-permis-petit-gibier" },
+      {
+        "authorizationId": "authorization:ca-federal-firearms-licence",
+        "when": { "methods": ["RIFLE", "SHOTGUN", "MUZZLELOADER"] },
+        "conditionText": "Required if you hunt with a firearm. Not needed for a bow or crossbow."
+      }
+    ],
+    "species:arctic-hare": [
+      {
+        "authorizationId": "authorization:ca-qc-certificat-chasseur",
+        "when": { "methods": ["RIFLE", "SHOTGUN", "MUZZLELOADER", "BOW", "CROSSBOW", "AIR_GUN"] },
+        "conditionText": "Required for the small game licence. Not required for the separate hare-by-snare licence."
+      },
+      {
+        "authorizationId": "authorization:ca-qc-permis-petit-gibier",
+        "when": { "methods": ["RIFLE", "SHOTGUN", "MUZZLELOADER", "BOW", "CROSSBOW", "AIR_GUN"] },
+        "conditionText": "The licence for hunting hare other than by snare."
+      },
+      {
+        "authorizationId": "authorization:ca-qc-permis-collet-lievre",
+        "when": { "methods": ["SNARE"] },
+        "conditionText": "The separate licence for taking hare by snare."
+      },
+      {
+        "authorizationId": "authorization:ca-federal-firearms-licence",
+        "when": { "methods": ["RIFLE", "SHOTGUN", "MUZZLELOADER"] },
+        "conditionText": "Required if you hunt with a firearm. Not needed for a bow, crossbow or snare."
+      }
+    ],
+    "species:snowshoe-hare": [
+      {
+        "authorizationId": "authorization:ca-qc-certificat-chasseur",
+        "when": { "methods": ["RIFLE", "SHOTGUN", "MUZZLELOADER", "BOW", "CROSSBOW", "AIR_GUN"] },
+        "conditionText": "Required for the small game licence. Not required for the separate hare-by-snare licence."
+      },
+      {
+        "authorizationId": "authorization:ca-qc-permis-petit-gibier",
+        "when": { "methods": ["RIFLE", "SHOTGUN", "MUZZLELOADER", "BOW", "CROSSBOW", "AIR_GUN"] },
+        "conditionText": "The licence for hunting hare other than by snare."
+      },
+      {
+        "authorizationId": "authorization:ca-qc-permis-collet-lievre",
+        "when": { "methods": ["SNARE"] },
+        "conditionText": "The separate licence for taking hare by snare."
+      },
+      {
+        "authorizationId": "authorization:ca-federal-firearms-licence",
+        "when": { "methods": ["RIFLE", "SHOTGUN", "MUZZLELOADER"] },
+        "conditionText": "Required if you hunt with a firearm. Not needed for a bow, crossbow or snare."
+      }
+    ],
+    "species:eastern-cottontail": [
+      {
+        "authorizationId": "authorization:ca-qc-certificat-chasseur",
+        "when": { "methods": ["RIFLE", "SHOTGUN", "MUZZLELOADER", "BOW", "CROSSBOW", "AIR_GUN"] },
+        "conditionText": "Required for the small game licence. Not required for the separate cottontail-by-snare licence."
+      },
+      {
+        "authorizationId": "authorization:ca-qc-permis-petit-gibier",
+        "when": { "methods": ["RIFLE", "SHOTGUN", "MUZZLELOADER", "BOW", "CROSSBOW", "AIR_GUN"] },
+        "conditionText": "The licence for hunting cottontail other than by snare."
+      },
+      {
+        "authorizationId": "authorization:ca-qc-permis-collet-lievre",
+        "when": { "methods": ["SNARE"] },
+        "conditionText": "The separate licence for taking cottontail by snare."
+      },
+      {
+        "authorizationId": "authorization:ca-federal-firearms-licence",
+        "when": { "methods": ["RIFLE", "SHOTGUN", "MUZZLELOADER"] },
+        "conditionText": "Required if you hunt with a firearm. Not needed for a bow, crossbow or snare."
+      }
+    ]
+  },
+
+  "orange": {
+    "specification": "A continuous fluorescent-orange surface of at least 2,580 cm², spread over the back, the shoulders and the chest, and visible at all times and from every angle. Fluorescent orange means a dominant wavelength between 595 and 605 nm, an excitation purity of at least 85%, and a minimum luminance factor of 40%.",
+    "boundBeyondHunter": "The same requirement binds any guide or other person accompanying the hunter.",
+    "penalty": "Contravening the requirement is an offence: a fine of $250 to $1,500 for a first offence, and $1,500 to $4,500 for a repeat within 5 years of conviction for an offence under the same provision.",
+    "snareExemptSpecies": ["species:arctic-hare", "species:snowshoe-hare", "species:eastern-cottontail"],
+    "unseeableExceptions": [
+      "Bow or crossbow hunting in a sector reserved for the exclusive use of bow or crossbow in a wildlife reserve or a zec.",
+      "Hunting in a leased exclusive-rights sector where every hunter present uses a bow or crossbow.",
+      "Bow or crossbow hunting where only non-firearm engins are permitted.",
+      "Small game hunting with a bird of prey, where no participant is in possession of a weapon.",
+      "Beneficiaries of the James Bay and Northern Québec Agreement or the Northeastern Québec Agreement, within those agreements' territories."
+    ],
+    "provenance": {
+      "definition": {
+        "sourceId": "source:ca-qc-reglement-activites-chasse",
+        "url": "https://www.legisquebec.gouv.qc.ca/fr/document/rc/C-61.1,%20r.%201",
+        "citation": "Règlement sur les activités de chasse, C-61.1, r. 1, art. 17.1",
+        "tier": "LAW",
+        "retrievedAt": "2026-09-29"
+      },
+      "duty": {
+        "sourceId": "source:ca-qc-reglement-activites-chasse",
+        "url": "https://www.legisquebec.gouv.qc.ca/fr/document/rc/C-61.1,%20r.%201",
+        "citation": "Règlement sur les activités de chasse, C-61.1, r. 1, art. 17.2",
+        "tier": "LAW",
+        "retrievedAt": "2026-09-29"
+      },
+      "exemptions": {
+        "sourceId": "source:ca-qc-reglement-activites-chasse",
+        "url": "https://www.legisquebec.gouv.qc.ca/fr/document/rc/C-61.1,%20r.%201",
+        "citation": "Règlement sur les activités de chasse, C-61.1, r. 1, art. 17.3",
+        "tier": "LAW",
+        "retrievedAt": "2026-09-29"
+      },
+      "penalty": {
+        "sourceId": "source:ca-qc-reglement-activites-chasse",
+        "url": "https://www.legisquebec.gouv.qc.ca/fr/document/rc/C-61.1,%20r.%201",
+        "citation": "Règlement sur les activités de chasse, C-61.1, r. 1, art. 29.1",
+        "tier": "LAW",
+        "retrievedAt": "2026-09-29"
+      }
+    }
+  }
+}
