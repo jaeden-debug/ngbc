@@ -1,4 +1,5 @@
 import type { NextSeason } from "./regulatory/season.ts";
+import type { RegulatoryCondition } from "./regulatory/condition.ts";
 import type { LegalTimeResult } from "./regulatory/legal-time.ts";
 import type { Limitation } from "./limitation.ts";
 import type { BlockResult, CanonicalId, IsoDate, SourceRecord } from "../content-contract/index.ts";
@@ -132,6 +133,22 @@ export interface RegulatoryResult {
    * instrument.
    */
   withinZoneRestrictions?: WithinZoneRestrictionFacts;
+  /**
+   * The conditions on this hunt, each with its own provenance.
+   *
+   * Absent where the producer enumerates none — which is a real and common
+   * answer, not a gap, and is exactly what stops "in season, with conditions"
+   * being said when there is nothing to name. See `condition.ts`.
+   */
+  conditions?: RegulatoryCondition[];
+  /**
+   * The same conditions, flattened to one string per line.
+   *
+   * DERIVED from `conditions` by `conditionLine`, never authored beside it, so
+   * the sentence and the fields cannot disagree. Kept because the zone card,
+   * the Hunt Brief and the long-form detail all read it and none of them needs
+   * the structure; a surface that wants to group by source reads `conditions`.
+   */
   requirements: string[];
   /**
    * What limits or qualifies this answer, each carrying what KIND of statement

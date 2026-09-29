@@ -3,7 +3,11 @@
 import dynamic from "next/dynamic";
 import type { CanonicalId } from "../../../lib/content-contract";
 import type { SpeciesSelectorOption } from "../../../lib/hunt/coverage";
-import { readableCalendarDay, readableIso } from "../../../lib/hunt/date";
+import { readableCalendarDay } from "../../../lib/hunt/date";
+import { hasEnumerableConditions } from "../../../lib/hunt/regulatory/condition";
+import Conditions from "./Conditions";
+import answer from "./Answer.module.css";
+import { NextSeasonBlock, SeasonBlock } from "./SeasonDates";
 import type { EvaluationState } from "../../../lib/hunt/exploration/hunt-session";
 import type { AuthorizationContext } from "../../../lib/hunt/regulatory/allocation";
 import { partitionEvaluationSources } from "../../../lib/hunt/source-roles";
@@ -41,6 +45,37 @@ export const STATUS_WORDING: Record<string, string> = {
 
 export function statusWord(status: string): string {
   return STATUS_WORDING[status] ?? status;
+}
+
+/**
+ * The status word for an answer that can, or cannot, say what its conditions are.
+ *
+ * "In season, with conditions" is the engine's CONDITIONAL, and the engine
+ * emits it for EVERY in-season rule — `settle()` has no OPEN branch at all. So
+ * the qualifier was being attached to answers with nothing behind it: Québec,
+ * British Columbia, Ontario small game and the federal migratory bundle
+ * enumerate no conditions whatever, and a hunter was told conditions applied
+ * and shown none.
+ *
+ * That is a claim STRICTER than the source, which §8 makes as false as a loose
+ * one and which nobody ever reports, because over-caution always looks
+ * responsible. It also disagreed with North Ground's own zone card, which maps
+ * the identical evaluation to "In season" — §41A requires one state said the
+ * same way everywhere, and the same species in the same zone on the same day
+ * was reading two ways on two surfaces.
+ *
+ * So the qualifier is earned by the data: it appears exactly when a condition
+ * can be shown. The engine's STATUS is untouched — CONDITIONAL still gates
+ * Ready to Hunt and still drives the zone card — because changing what the
+ * engine emits would silently remove Ready to Hunt from every answer that
+ * became OPEN, which is the "large deletion turns the suite green while
+ * production loses a feature" failure this program has already had once.
+ */
+export function inSeasonWord(result: HuntEvaluation): string {
+  if (result.regulation.status !== "CONDITIONAL") return statusWord(result.regulation.status);
+  return hasEnumerableConditions(result.regulation.conditions)
+    ? STATUS_WORDING.CONDITIONAL
+    : STATUS_WORDING.OPEN;
 }
 
 /** How the seasons behind an answer are licensed, in words a hunter uses. */
@@ -127,8 +162,8 @@ export default function HuntAnswer({
   return (
     <div className={styles.answer} data-status={status}>
       <div className={styles.answerTop}>
-        <p className={styles.answerStatus}>
-          <span className="ng-status" data-status={status}>{statusWord(status)}</span>
+        <p className={`${styles.answerStatus} ${answer.statusShrink}`}>
+          <span className="ng-status" data-status={status}>{inSeasonWord(result)}</span>
           {evaluation.kind === "loading" ? <span className={styles.spinner} aria-label="Updating" /> : null}
         </p>
         {!detailed ? (
@@ -153,33 +188,33 @@ export default function HuntAnswer({
         status, dates and limits are the scan, and the sentence follows for
         whoever reads on.
       */}
-      {result.regulation.season || result.regulation.limits ? (
-        <dl className={styles.facts}>
-          {result.regulation.season ? (
-            <div>
-              <dt>Season</dt>
-              <dd className="ng-numeric">
-                {readableIso(result.regulation.season.opens)} – {readableIso(result.regulation.season.closes)}
-                {/*
-                  The authority's own name for this segment, quoted and tagged
-                  in the language it was published in — never translated, never
-                  reformatted (§47).
+      {/*
+        WHAT THE CONDITIONS ARE, immediately under the status that names them.
 
-                  It is ABSENT whenever the rules behind the season disagree on
-                  it, because that combination is one the ministry never named.
-                  Nothing takes its place: putting a label there would be
-                  attributing a name to an authority that did not write it,
-                  which is the quiet mirror of inventing a prohibition. An
-                  absent segment is the normal case, not a gap.
-                */}
-                {result.regulation.season.label ? (
-                  <span className={styles.factNote} lang={result.regulation.season.label.lang}>
-                    {" "}« {result.regulation.season.label.text} »
-                  </span>
-                ) : null}
-              </dd>
-            </div>
-          ) : null}
+        This used to live three screens down, inside "Details", under a heading
+        a scanning reader never reached — so the product's most common answer
+        named a category of fact and withheld its contents. §41A forbids putting
+        a blocker behind progressive disclosure, and the status word above is
+        derived from the same list, so the two cannot disagree: if this renders
+        nothing, the status does not say "with conditions".
+      */}
+      <Conditions conditions={result.regulation.conditions ?? []} sources={result.sources} />
+
+      {/* The season as two labelled dates rather than one flat run of type. */}
+      {result.regulation.season ? <SeasonBlock season={result.regulation.season} /> : null}
+
+      {/*
+        When a closed species opens again.
+
+        Shown whenever there is no current season — a hunter who taps an animal
+        that is not open came to find out when they can go, not to be told it is
+        closed. The status stays CLOSED; this is a separate, supplementary fact
+        and never replaces it.
+      */}
+      {!result.regulation.season ? <NextSeasonBlock next={result.regulation.next} /> : null}
+
+      {result.regulation.limits ? (
+        <dl className={styles.facts}>
           {result.regulation.limits ? (
             <div>
               <dt>Daily / possession</dt>

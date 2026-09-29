@@ -578,7 +578,24 @@ export function createShareableHuntBrief(
              * bound a field, not to budget a legal time — and truncating this
              * one would drop either the authority's words or the citation.
              */
-            summary: text(legalTime.summary, "legalTime.summary", 400),
+            /*
+             * 800, RAISED FROM 400 BECAUSE A CITATION CAN NAME TWO INSTRUMENTS.
+             *
+             * The cap was sized when every legal-hours summary cited one
+             * provision. Québec's window is the join of a definition and a
+             * restriction — Loi C-61.1 ss. 1 and 56 plus Règlement sur la
+             * chasse r. 12 s. 21 — and its summary is 521 characters, so the
+             * moment Québec's hours resolved, every Québec brief was refused
+             * with "legalTime.summary is invalid".
+             *
+             * The schema was the thing that was wrong. Shortening the citation
+             * to fit would have dropped one of the two instruments that make
+             * the rule, which is the §41A failure of rounding a source into the
+             * nearest existing field. Every other check on this string —
+             * control characters, angle brackets, NFKC, trimming — is unchanged;
+             * only the length a lawful citation may reach has moved.
+             */
+            summary: text(legalTime.summary, "legalTime.summary", 800),
             verifiedAt: timestamp(legalTime.verifiedAt, "legalTime.verifiedAt"),
           }
         : undefined,

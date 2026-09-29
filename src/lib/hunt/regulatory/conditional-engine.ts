@@ -2,6 +2,7 @@ import { legalTimeNotCertified } from "./legal-time.ts";
 import { harvestLimitsFrom } from "./harvest-limit.ts";
 import { nextOpening } from "./season.ts";
 import { general, sourceDetail, type Limitation } from "../limitation.ts";
+import { conditionId, conditionLine, type RegulatoryCondition } from "./condition.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { RegulatoryResult, RegulatoryStatus } from "../types.ts";
 import {
@@ -771,12 +772,56 @@ export function evaluateConditional(
   const listing = seasons.length ? ` Seasons open to ${scope} here: ${seasons.join("; ")}.` : "";
   const cited = everyInSeason.length ? everyInSeason : everyApplicable.length ? everyApplicable : rules;
 
-  const conditions = conditionsFor(bundle, everyInSeason, input.speciesId, place.zoneId, date);
-  const requirements = [
-    ...conditions.map((condition) => `${condition.text} (${condition.sourceSection})`),
-    ...[...new Set(everyInSeason.map((rule) =>
-      rule.limits?.statedAs && rule.limits.section ? `Bag limit: ${rule.limits.statedAs} (${rule.limits.section}).` : ""))].filter(Boolean),
+  const bundleConditions = conditionsFor(bundle, everyInSeason, input.speciesId, place.zoneId, date);
+  /*
+   * The conditions, structured, each keeping the source that supports it.
+   *
+   * These used to be built straight into strings with the citation glued on,
+   * which made them impossible to group under one source affordance and
+   * impossible to test for HAVING a source. The strings are still produced —
+   * `requirements` below — but they are now DERIVED from these rather than
+   * authored alongside them, so a line and its citation cannot drift apart.
+   */
+  const structuredConditions: RegulatoryCondition[] = [
+    ...bundleConditions.map((condition) => ({
+      id: condition.id,
+      text: condition.text,
+      /* The bundle's own language. A jurisdiction publishing in French keeps
+         its words in French and is tagged, never translated (§47). */
+      lang: vocabulary.lang ?? ("en-CA" as const),
+      /*
+       * NORTH_GROUND, and deliberately not inferred. Every bundle condition
+       * today is a sentence North Ground wrote about an authority's rule —
+       * several say so outright ("North Ground cannot verify what you hold") —
+       * and marking the whole line AUTHORITY would put our caution in a
+       * ministry's mouth. A bundle that starts carrying the authority's own
+       * wording declares it there; a renderer never decides it from the prose.
+       */
+      owner: "NORTH_GROUND" as const,
+      sourceSection: condition.sourceSection,
+      sourceId: condition.sourceId as CanonicalId<"source">,
+    })),
+    /*
+     * The harvest limit, which the engine composes rather than reads — so it
+     * is the one line whose KIND the producer actually knows, and the only one
+     * that carries one.
+     */
+    ...[...new Map(everyInSeason
+      .filter((rule) => rule.limits?.statedAs && rule.limits.section)
+      .map((rule) => [
+        `${rule.limits!.statedAs}|${rule.limits!.section}`,
+        {
+          id: conditionId(`limit:${rule.limits!.statedAs}|${rule.limits!.section}`),
+          text: `Bag limit: ${rule.limits!.statedAs}.`,
+          lang: vocabulary.lang ?? ("en-CA" as const),
+          owner: "NORTH_GROUND" as const,
+          sourceSection: rule.limits!.section!,
+          sourceId: rule.sourceId as CanonicalId<"source">,
+          kind: "HARVEST_LIMIT" as const,
+        },
+      ] as const)).values()],
   ];
+  const requirements = structuredConditions.map(conditionLine);
   /* When the point's worlds agreed, say what could not be established and that
      it does not change the answer, so the reader need not take on trust that it
      was considered. */
@@ -794,7 +839,7 @@ export function evaluateConditional(
       ...rule.notes.flatMap((note) => typeof note === "string" ? [note] : !note.zoneId || note.zoneId === place.zoneId ? [note.text] : []),
       ...rule.caveats,
     ]))].map((text) => general(text)),
-    ...[...new Set(conditions.flatMap((condition) => condition.caveats ?? []))].map((text) => general(text)),
+    ...[...new Set(bundleConditions.flatMap((condition) => condition.caveats ?? []))].map((text) => general(text)),
     ...vocabulary.standingLimitations,
   ];
   /* Hunts the answer rests on, with how each is licensed. Only for seasons
@@ -810,7 +855,7 @@ export function evaluateConditional(
 
   const sourceIds = [...new Set([
     ...cited.map((rule) => rule.sourceId),
-    ...conditions.map((condition) => condition.sourceId),
+    ...bundleConditions.map((condition) => condition.sourceId),
     ...amendmentSources,
     ...huntCodesCited.map((huntCode) => huntCode.sourceId),
     ...(authorization?.draws.map((draw) => draw.sourceId) ?? []),
@@ -870,6 +915,7 @@ export function evaluateConditional(
         "Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold." +
         listing,
       requirements,
+      conditions: structuredConditions,
       limitations,
       sourceIds,
     }, cited);
@@ -889,6 +935,7 @@ export function evaluateConditional(
           ? `${species.charAt(0).toUpperCase()}${species.slice(1)} may not be hunted here. ${closedBy.join(" ")}`
           : `No ${species} season in ${unit} is open on this date for ${answeredDimensions.length ? "this combination" : "any licence or equipment"}.${listing}`,
       requirements,
+      conditions: structuredConditions,
       limitations,
       sourceIds,
     }, cited);
@@ -907,6 +954,7 @@ export function evaluateConditional(
         ? `The official sources disagree about ${species} in ${unit} for this combination, and North Ground will not choose between them.${listing}`
         : `North Ground cannot state a ${species} season for this exact point, because the answer depends on something it could not establish.${listing}`,
       requirements,
+      conditions: structuredConditions,
       limitations: [...outcome.reasons.map((reason) => general(reason)), ...limitations],
       sourceIds,
     }, cited);

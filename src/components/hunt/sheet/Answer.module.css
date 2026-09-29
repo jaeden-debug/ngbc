@@ -1,0 +1,288 @@
+/*
+ * The decision surface: conditions, season dates, legal hours, next season.
+ *
+ * A module of its own rather than more of `HuntApp.module.css`, for two
+ * reasons. It is the sheet's answer, and the sheet's own geometry is being
+ * worked on elsewhere — two lanes writing one stylesheet is how a rebase eats
+ * a fix. And these four blocks are one design idea (a labelled scan block with
+ * a rule under it), which reads better declared together than scattered down a
+ * thousand-line file.
+ *
+ * Every colour, radius and border is a token from `globals.css`. Nothing here
+ * invents a blur, a border or a shadow value — §41A's glass system is defined
+ * once and components consume it.
+ */
+
+/* ── The shared block shell ──────────────────────────────────────────────── */
+
+.block {
+  display: grid;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1px solid var(--ng-glass-border);
+  border-radius: var(--ng-radius-sm);
+  background: rgba(201, 194, 166, 0.04);
+}
+
+.blockTitle {
+  margin: 0;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ng-bone-faint);
+}
+
+/* ── The status line ─────────────────────────────────────────────────────── */
+
+/*
+ * MEASURED: at 375 px the "In season, with conditions" pill is 276 px wide and
+ * pushes the Details control 17 px past the card's right edge. "In season"
+ * (125 px) and "Closed" (105 px) both fit, so the longest status word — the
+ * most common one in production — was the only one overflowing, which is why
+ * it reads as a rendering quirk rather than a layout bug.
+ *
+ * The cause is in `HuntApp.module.css`: `.answerTop` is a flex row whose
+ * Details button is `flex: none`, and `.answerStatus` has the default
+ * `min-width: auto`, so neither side can give. That file is being edited by
+ * another lane for the sheet's own geometry, so the fix is applied from HERE as
+ * an additional class rather than by two lanes writing one stylesheet.
+ *
+ * The pill WRAPS rather than truncating. A legal status is the one string on
+ * the card that must never be cut off to fit, and two lines is a far smaller
+ * cost than an ellipsis in the middle of "with conditions" (§18, §48).
+ */
+.statusShrink {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.statusShrink :global(.ng-status) {
+  min-width: 0;
+  white-space: normal;
+  text-align: left;
+}
+
+/* ── Conditions ──────────────────────────────────────────────────────────── */
+
+/*
+ * Amber-edged, like `.warning`, because this block is the reason the status
+ * says "with conditions" — it is part of the answer, not an aside. It sits
+ * directly under the status and is never inside a disclosure: §41A forbids
+ * putting a blocker behind progressive disclosure, and a hunter who cannot see
+ * what the conditions are has been told a category and denied its contents.
+ */
+.conditions {
+  border-left: 3px solid var(--ng-amber);
+  background: var(--ng-amber-soft);
+}
+
+.conditionList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 7px;
+}
+
+.conditionList li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--ng-bone);
+  overflow-wrap: anywhere;
+}
+
+/* A glyph, not a colour: §41A never lets a state ride on colour alone. */
+.conditionList li::before {
+  content: "•";
+  position: absolute;
+  left: 2px;
+  color: var(--ng-amber);
+  font-weight: 700;
+}
+
+/*
+ * The pinpoint the condition came from, on its own line and quiet.
+ * §16: the source stays close to the fact without a URL after every bullet.
+ */
+.conditionWhere {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--ng-bone-faint);
+}
+
+/* ── Season ──────────────────────────────────────────────────────────────── */
+
+/*
+ * Two dates that read at a glance and at arm's length.
+ *
+ * `Sat, Sep 19, 2026 – Wed, Mar 31, 2027` is one long run of small type in
+ * which the two dates look the same, the weekday is noise, and the en dash is
+ * the only thing distinguishing start from end. OPENS and CLOSES are labelled
+ * instead, so the distinction is a word rather than a character.
+ */
+.season {
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 8px 10px;
+}
+
+.seasonTitle {
+  grid-column: 1 / -1;
+}
+
+.seasonEnd {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.seasonLabel {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ng-bone-faint);
+}
+
+.seasonDay {
+  font-size: 1.32rem;
+  font-weight: 680;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ng-cream);
+  white-space: nowrap;
+}
+
+.seasonYear {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ng-bone-dim);
+}
+
+.seasonArrow {
+  align-self: center;
+  color: var(--ng-bone-faint);
+}
+
+/*
+ * The authority's own name for the segment, spanning both columns beneath the
+ * dates. Quoted and language-tagged by the component; never translated (§47).
+ */
+.seasonSegment {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--ng-bone-dim);
+  overflow-wrap: anywhere;
+}
+
+/* ── Legal hunting hours ─────────────────────────────────────────────────── */
+
+.hoursWindow {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin: 0;
+}
+
+.hoursClock {
+  font-size: 1.32rem;
+  font-weight: 680;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ng-cream);
+  white-space: nowrap;
+}
+
+.hoursZone {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--ng-bone-faint);
+}
+
+/* The rule the clock came from — the fact under the number. */
+.hoursRule {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ng-bone-dim);
+}
+
+/*
+ * An exception in force that the window does not express.
+ *
+ * Amber and beside the window, never collapsed. One that WIDENS the law is the
+ * one a hunter is most likely to be wrongly denied by; one that NARROWS it is
+ * the one they can be charged under. Neither survives being tidied away.
+ */
+.hoursException {
+  margin: 0;
+  padding: 8px 10px;
+  border-left: 3px solid var(--ng-amber);
+  border-radius: var(--ng-radius-sm);
+  background: var(--ng-amber-soft);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--ng-bone);
+}
+
+.hoursNote {
+  margin: 0;
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: var(--ng-bone-faint);
+}
+
+/* ── Next season ─────────────────────────────────────────────────────────── */
+
+/*
+ * What a closed species is actually asked about.
+ *
+ * "Closed" answers a question nobody opened the app to ask. The next opening
+ * is a separate fact from today's status and never replaces it — the status
+ * stays CLOSED and this sits under it.
+ */
+.next {
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 8px 10px;
+}
+
+.nextTitle {
+  grid-column: 1 / -1;
+}
+
+.nextText {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--ng-bone-dim);
+}
+
+/* ── Narrow phones ───────────────────────────────────────────────────────── */
+
+/*
+ * Below about 340px the three-column date row cannot hold two 1.32rem dates
+ * and an arrow without wrapping mid-date. It becomes two stacked rows, the
+ * arrow turning to point down, rather than shrinking type that is large on
+ * purpose.
+ */
+@media (max-width: 360px) {
+  .season,
+  .next {
+    grid-template-columns: 1fr;
+  }
+
+  .seasonArrow {
+    justify-self: start;
+    rotate: 90deg;
+  }
+}

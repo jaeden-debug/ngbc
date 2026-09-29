@@ -64,17 +64,14 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
         </section>
       ) : null}
 
-      {result.regulation.requirements.length ? (
-        <section aria-labelledby={`${id}-req`}>
-          <h3 className={styles.detailTitle} id={`${id}-req`}>Conditions that apply</h3>
-          <ul className={styles.bullets}>{result.regulation.requirements.map((line) => <li key={line}>{line}</li>)}</ul>
-        </section>
-      ) : null}
+      {/* Conditions, legal hours and Ready to Hunt all live UP in the answer
+          itself — they are what a hunter came for, not what they open
+          afterwards. None is repeated here: the duplicate species list taught
+          that one fact rendered twice on one card can disagree with itself.
 
-      {/* Legal hours and Ready to Hunt moved UP into the answer itself — they
-          are what a hunter came for, not what they open afterwards. They are
-          not repeated here: the duplicate species list taught that one fact
-          rendered twice on one card can disagree with itself. */}
+          Conditions were the last of the three to move. They were the reason
+          the status said "with conditions", and they were three screens below
+          the status that said it. */}
 
       {/*
         The GENERAL lines: true everywhere this jurisdiction reaches, always.

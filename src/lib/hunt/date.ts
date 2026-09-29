@@ -184,6 +184,34 @@ export function weekdayOf(year: number, month: number, day: number): number {
 }
 
 /** "Sat, Aug 8, 2026" — the long form shown once a date is settled. */
+/**
+ * A calendar day split for scanning: the month and day apart from the year.
+ *
+ * `Sat, Sep 19, 2026 – Wed, Mar 31, 2027` is technically complete and visually
+ * flat: the weekday is noise a hunter did not ask for, the two dates are the
+ * same size and shape, and the only thing separating the opening from the
+ * closing is an en dash. Splitting the parts lets the surface make the day
+ * large and the year quiet, and label each end as OPENS or CLOSES.
+ *
+ * FORMATTED IN UTC, like everything else in this module. `new Date("2026-09-19")`
+ * is midnight UTC, so formatting it in a local zone shows 18 September to
+ * everyone west of Greenwich — the defect this file's header warns about, and
+ * one that already reached production once on the Hunt result's provenance
+ * dates. A season boundary is a calendar day, not an instant.
+ *
+ * Returns the ISO string unsplit if it cannot be parsed, so a malformed date
+ * degrades to something readable rather than to "Invalid Date".
+ */
+export function scannableIso(iso: string): { day: string; year: string } {
+  const parts = isoParts(iso);
+  if (!parts) return { day: iso, year: "" };
+  const at = new Date(Date.UTC(parts.year, parts.month - 1, parts.day));
+  return {
+    day: new Intl.DateTimeFormat("en-CA", { month: "short", day: "numeric", timeZone: "UTC" }).format(at),
+    year: String(parts.year),
+  };
+}
+
 export function readableIso(iso: string): string {
   const parts = isoParts(iso);
   if (!parts) return iso;
