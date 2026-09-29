@@ -120,3 +120,51 @@ describe("no bundle launders North Ground's reasoning as an authority's words", 
     assert.ok(quotations >= 2, `expected at least 2 authority-quoted absences (BC, MB), saw ${quotations}`);
   });
 });
+
+describe("the split survives a rebuild", () => {
+  it("keeps catalogue features on exactly one authorship branch", async () => {
+    /* The defect this exists for: Codex converted 50 Montana features from
+       `statedAs` to `northGroundSummary` in the JSON, but the generator that
+       WRITES that JSON still emitted `statedAs`. The split was correct until
+       the next rebuild and then silently reverted all 50 to the authority
+       branch. Data and type moved; the generator did not.
+
+       A feature carrying BOTH fields is the tell — it means one writer added
+       the new field without removing the old, and the union that forbids it in
+       TypeScript cannot see a JSON file. */
+    const { readdir, readFile } = await import("node:fs/promises");
+    let features = 0;
+    let authored = 0;
+
+    for (const file of await readdir("content/regulatory")) {
+      if (!file.endsWith("-overlays.json")) continue;
+      const parsed = JSON.parse(await readFile(`content/regulatory/${file}`, "utf8")) as {
+        lang?: string;
+        layers: Array<{ key: string; features?: Array<{ name: string; statedAs?: unknown; northGroundSummary?: unknown }> }>;
+      };
+      /* The authority's publication language, not the reader's: Québec's
+         features are French and quoting them as en-CA mislabels them (§47). */
+      assert.ok(typeof parsed.lang === "string" && parsed.lang.length > 0, `${file}: the catalogue must declare its language`);
+
+      for (const layer of parsed.layers) {
+        for (const feature of layer.features ?? []) {
+          features += 1;
+          const at = `${file} ${layer.key}/${feature.name}`;
+          const quoted = feature.statedAs !== undefined;
+          const ours = feature.northGroundSummary !== undefined;
+          assert.ok(quoted !== ours, `${at}: exactly one of statedAs / northGroundSummary, never both and never neither`);
+          if (ours) {
+            authored += 1;
+          } else {
+            assert.doesNotMatch(String(feature.statedAs), /North Ground/,
+              `${at}: a sentence naming North Ground cannot be the authority's`);
+          }
+        }
+      }
+    }
+
+    assert.ok(features >= 300, `expected the catalogues to hold features, saw ${features}`);
+    /* Montana's 50. If a rebuild reverts them this drops to zero. */
+    assert.ok(authored >= 50, `expected at least 50 North Ground-authored features, saw ${authored}`);
+  });
+});

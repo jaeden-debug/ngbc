@@ -95,6 +95,12 @@ async function main() {
 
   const catalogue = {
     jurisdictionId: "jurisdiction:ca-qc",
+    /* The AUTHORITY's publication language. Québec's features are French —
+       « Territoires où toute activité de chasse est interdite. » — and tagging
+       them en-CA would mislabel a French quotation as English (§47). It is
+       emitted HERE because the catalogue is generated: set only in the JSON it
+       would be lost the next time this script ran. */
+    lang: "fr-CA",
     layers: [{
       key: "chasse-interdite",
       url: WFS,

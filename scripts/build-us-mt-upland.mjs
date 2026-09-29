@@ -258,6 +258,11 @@ function buildOverlays(booklet, restricted, uplandRestricted, portions, reservat
   });
   return {
     jurisdictionId: "jurisdiction:us-mt",
+    /* The AUTHORITY's publication language for this catalogue's wording.
+       Not the reader's and never defaulted: a French quotation tagged en-CA is
+       mislabelled (§47), and the quotation constructor requires it. */
+    lang: "en-CA",
+
     purpose:
       "Published areas that change an upland game bird answer at a point: Indian reservations (U.S. Census Bureau boundaries, " +
       "Montana Commission rule), Montana's restricted areas and the Carbon County partridge portion. Read live at the point; " +

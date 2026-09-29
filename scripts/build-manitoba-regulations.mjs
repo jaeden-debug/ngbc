@@ -815,6 +815,11 @@ async function main() {
   }
   const overlayCatalogue = {
     jurisdictionId: "jurisdiction:ca-mb",
+    /* The AUTHORITY's publication language for this catalogue's wording.
+       Not the reader's and never defaulted: a French quotation tagged en-CA is
+       mislabelled (§47), and the quotation constructor requires it. */
+    lang: "en-CA",
+
     purpose: "Published restrictions on land that can close or limit a hunt at a point. Classified at build time; a feature that is not in this catalogue, or has changed, is treated as a restriction North Ground has not certified.",
     layers: overlayLayers,
   };
