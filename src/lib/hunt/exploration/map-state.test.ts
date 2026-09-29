@@ -134,7 +134,7 @@ test("without geolocation the map still explores, previews and selects", () => {
   assert.equal(state.hunt?.origin, "map");
 });
 
-test("only HUNT_SET, PIN_CONFIRMED, HUNT_LABELLED and HUNT_CLEARED ever change the hunt location", () => {
+test("the hunt location changes only by setting it, labelling it, or closing its own answer", () => {
   const events: ExplorationEvent[] = [
     { type: "SELF_REQUESTED" }, { type: "SELF_FIX", fix: FIX }, { type: "SELF_FAILED", reason: "denied" },
     { type: "SELF_FAILED", reason: "timeout" }, { type: "RECENTER" }, { type: "NOTICE_DISMISSED" },
@@ -151,7 +151,17 @@ test("only HUNT_SET, PIN_CONFIRMED, HUNT_LABELLED and HUNT_CLEARED ever change t
   for (let step = 0; step < 5_000; step += 1) {
     const event = events[Math.floor(next() * events.length)];
     const after = explorationReducer(state, event);
-    if (!allowed.has(event.type)) assert.deepEqual(after.hunt, state.hunt, `${event.type} changed the hunt location`);
+    /*
+     * CARD_CLOSED may clear the hunt, but ONLY when the card it closed was the
+     * hunt's own zone. Closing a zone being read beside the hunt must still
+     * leave the hunt alone, so the exemption is scoped rather than blanket —
+     * otherwise this invariant would stop catching the thing it exists for.
+     */
+    const closingOwnAnswer = event.type === "CARD_CLOSED" && state.selection.kind === "zone" && state.selection.origin === "hunt";
+    if (!allowed.has(event.type) && !closingOwnAnswer) {
+      assert.deepEqual(after.hunt, state.hunt, `${event.type} changed the hunt location`);
+    }
+    if (event.type === "CARD_CLOSED" && !closingOwnAnswer) assert.deepEqual(after.hunt, state.hunt, "closing a peeked zone cleared the hunt");
     if (event.type.startsWith("SELF_") || event.type === "RECENTER") {
       assert.deepEqual(after.selection, state.selection, `${event.type} changed the selection`);
       assert.deepEqual(after.pin, state.pin, `${event.type} changed the pin`);
@@ -201,33 +211,99 @@ test("choosing a spot brings the camera to it, because the crosshair is the map 
   assert.equal(moved.hunt, null, "previewing never sets the hunt location");
 });
 
-test("opening the species layer over a zone keeps the zone — Find game does not discard it", () => {
-  /*
-   * §41B: EXPLORE, FIND GAME and CHECK HUNT "share the same species, date,
-   * hunt location, selected zone, camera and layer state".
-   *
-   * The defect this pins, measured on production: choosing a species from Find
-   * game dispatched `CARD_CLOSED`, which falls back to the HUNT's zone — and a
-   * deep link carries a zone with no hunt POINT, so the fallback was "none".
-   * The selection went, the URL lost `zone=`, and reloading what looked like
-   * the same link opened a different Hunt at the national camera with three
-   * markers instead of twelve.
-   */
-  const linked = run([{ type: "ZONE_SELECTED", zone: WMU_57, origin: "link" }]);
-  assert.deepEqual(linked.selection, { kind: "zone", zone: WMU_57, origin: "link" });
-  assert.equal(linked.cardOpen, true);
+/* ── Closing an answer returns the map to neutral ─────────────────────────
+ *
+ * The defect these pin down: closing the sheet returned it to "Find your
+ * hunting zone" while the map kept the zone highlighted and the pin dropped,
+ * and nothing but selecting somewhere else could clear it.
+ */
 
-  const layered = run([{ type: "LAYER_OPENED_OVER_SELECTION" }], linked);
-  assert.equal(layered.cardOpen, false, "the card goes");
-  assert.deepEqual(layered.selection, linked.selection, "and the zone stays exactly as it was");
+const MANIWAKI: HuntLocation = { label: "Maniwaki, Québec", latitude: 46.3812, longitude: -75.9664, origin: "search" };
+const ZONE_10W = { layerId: "layer:ca-qc-zone", designation: "10O" };
 
-  /* The old action still does what its own callers need: a card closed over a
-     zone that is not the hunt's falls back to the hunt's. Both behaviours are
-     wanted; conflating them is what lost the zone. */
-  const hunting = run([{ type: "HUNT_SET", location: BANCROFT }, { type: "HUNT_ZONE_RESOLVED", zone: WMU_57 }]);
-  assert.deepEqual(run([{ type: "CARD_CLOSED" }], hunting).selection,
-    { kind: "zone", zone: WMU_57, origin: "hunt" });
-  /* With no hunt point there is nothing to fall back TO, which is the case the
-     link hits and the reason this needed its own event rather than a tweak. */
-  assert.deepEqual(run([{ type: "CARD_CLOSED" }], linked).selection, { kind: "none" });
+/** The state a searched place leaves behind once its zone has resolved. */
+function searchedAndResolved(): ExplorationState {
+  return run([{ type: "HUNT_SET", location: MANIWAKI }, { type: "HUNT_ZONE_RESOLVED", zone: ZONE_10W }]);
+}
+
+test("searching a place, resolving its zone and closing the card leaves nothing selected", () => {
+  const open = searchedAndResolved();
+  assert.deepEqual(open.selection, { kind: "zone", zone: ZONE_10W, origin: "hunt" });
+  assert.notEqual(open.hunt, null);
+
+  const closed = explorationReducer(open, { type: "CARD_CLOSED" });
+  assert.deepEqual(closed.selection, { kind: "none" }, "the zone stayed selected");
+  assert.equal(closed.hunt, null, "the hunt pin stayed on the map");
+  assert.equal(closed.huntZone, null, "the resolved zone stayed remembered");
+  assert.equal(closed.pin, null);
+  assert.equal(closed.cardOpen, false);
+});
+
+test("closing an answer leaves the camera where the person left it", () => {
+  const open = searchedAndResolved();
+  const closed = explorationReducer(open, { type: "CARD_CLOSED" });
+  assert.deepEqual(closed.camera, open.camera, "closing moved the map");
+});
+
+test("closing an answer keeps the device dot, which is map context and not a selection", () => {
+  const withSelf = explorationReducer(searchedAndResolved(), { type: "SELF_FIX", fix: FIX });
+  const closed = explorationReducer(withSelf, { type: "CARD_CLOSED" });
+  assert.equal(closed.self.status, "live");
+  assert.equal(closed.hunt, null);
+});
+
+test("every way of setting a hunt location clears the same way when its card is closed", () => {
+  const fromDevice = run([
+    { type: "HUNT_SET", location: { label: "You are here", latitude: 46.4, longitude: -75.9, origin: "device" } },
+    { type: "HUNT_ZONE_RESOLVED", zone: ZONE_10W }, { type: "CARD_CLOSED" },
+  ]);
+  const fromMap = run([
+    { type: "PIN_PRESSED", point: { latitude: 46.4, longitude: -75.9 } },
+    { type: "PIN_CONFIRMED", label: "Point chosen on the map" },
+    { type: "HUNT_ZONE_RESOLVED", zone: ZONE_10W }, { type: "CARD_CLOSED" },
+  ]);
+  for (const [name, state] of [["device", fromDevice], ["map", fromMap]] as const) {
+    assert.deepEqual(state.selection, { kind: "none" }, `${name}: zone still selected`);
+    assert.equal(state.hunt, null, `${name}: hunt still set`);
+    assert.equal(state.pin, null, `${name}: preview pin still up`);
+  }
+});
+
+test("a zone read beside a hunt closes back to the hunt, and does not throw the hunt away", () => {
+  const peeked = run([
+    { type: "HUNT_SET", location: MANIWAKI }, { type: "HUNT_ZONE_RESOLVED", zone: ZONE_10W },
+    { type: "ZONE_SELECTED", zone: WMU_57, origin: "map" }, { type: "CARD_CLOSED" },
+  ]);
+  assert.deepEqual(peeked.selection, { kind: "zone", zone: ZONE_10W, origin: "hunt" });
+  assert.deepEqual(peeked.hunt, MANIWAKI, "glancing at a neighbour destroyed the hunt");
+});
+
+test("exploring with no hunt set, closing a tapped zone leaves nothing selected", () => {
+  const state = run([{ type: "ZONE_SELECTED", zone: WMU_57, origin: "map" }, { type: "CARD_CLOSED" }]);
+  assert.deepEqual(state.selection, { kind: "none" });
+  assert.equal(state.hunt, null);
+  assert.equal(state.pin, null);
+});
+
+test("a zone restored from a shared link closes to neutral rather than to a hunt it never had", () => {
+  const state = run([{ type: "ZONE_SELECTED", zone: ZONE_10W, origin: "link" }, { type: "CARD_CLOSED" }]);
+  assert.deepEqual(state.selection, { kind: "none" });
+  assert.equal(state.hunt, null);
+});
+
+test("a special area read over a hunt closes back to the hunt", () => {
+  const state = run([
+    { type: "HUNT_SET", location: MANIWAKI }, { type: "HUNT_ZONE_RESOLVED", zone: ZONE_10W },
+    { type: "OVERLAY_SELECTED", layerId: "overlay:ca-mb-refuges", objectId: 4 }, { type: "CARD_CLOSED" },
+  ]);
+  assert.deepEqual(state.selection, { kind: "zone", zone: ZONE_10W, origin: "hunt" });
+  assert.deepEqual(state.hunt, MANIWAKI);
+});
+
+test("searching again after closing starts from nothing stale", () => {
+  const closed = explorationReducer(searchedAndResolved(), { type: "CARD_CLOSED" });
+  const again = run([{ type: "HUNT_SET", location: BANCROFT }, { type: "HUNT_ZONE_RESOLVED", zone: WMU_57 }], closed);
+  assert.deepEqual(again.selection, { kind: "zone", zone: WMU_57, origin: "hunt" });
+  assert.deepEqual(again.hunt, BANCROFT);
+  assert.equal(again.huntZone?.designation, "57");
 });

@@ -97,21 +97,6 @@ export type ExplorationEvent =
   | { type: "ZONE_SELECTED"; zone: ZoneRef; origin: "map" | "list" | "link" }
   | { type: "OVERLAY_SELECTED"; layerId: string; objectId: number }
   | { type: "CARD_CLOSED" }
-  /**
-   * The species layer opened over the zone the hunter is already looking at.
-   *
-   * Distinct from `CARD_CLOSED` because closing a card and changing what is
-   * selected are two different facts, and this needs only the first. §41B:
-   * EXPLORE, FIND GAME and CHECK HUNT "share the same species, date, hunt
-   * location, selected zone, camera and layer state" — so entering Find game
-   * from a zone must not discard the zone.
-   *
-   * It did. `CARD_CLOSED` falls back to the hunt's own zone, and a deep link
-   * carries a zone with no hunt POINT, so the fallback was "none": the
-   * selection went, the URL lost `zone=`, and a reload of what looked like the
-   * same link opened a different Hunt at the national camera.
-   */
-  | { type: "LAYER_OPENED_OVER_SELECTION" }
   | { type: "MAP_TAPPED_EMPTY" }
   | { type: "PIN_PRESSED"; point: GeoPoint }
   | { type: "PIN_CENTRE_STARTED"; point: GeoPoint }
@@ -152,6 +137,35 @@ function sameZone(a: ZoneRef, b: ZoneRef): boolean {
 /** The hunt zone, if one is resolved, which a closed exploration falls back to. */
 function huntSelection(state: ExplorationState): Selection {
   return state.huntZone ? { kind: "zone", zone: state.huntZone, origin: "hunt" } : { kind: "none" };
+}
+
+/**
+ * THE clear-selection transition: no zone, no card, no hunt point, no preview
+ * pin. Every path that returns the sheet to "Find your hunting zone" goes
+ * through here, so the map cannot keep a highlight the sheet has stopped
+ * describing.
+ *
+ * Two things are deliberately NOT touched. The CAMERA stays where it is: a
+ * person who searched Maniwaki and closed the answer is still looking at
+ * Maniwaki, and yanking the map back would be its own defect (owner,
+ * 2026-09-29). And `self` is untouched, because the device dot is map context,
+ * never part of a hunt selection (§41A).
+ */
+function cleared(state: ExplorationState): ExplorationState {
+  return { ...state, hunt: null, huntZone: null, selection: { kind: "none" }, cardOpen: false, pin: null };
+}
+
+/**
+ * Whether the card being closed IS the hunt's own answer rather than a zone
+ * being read beside it.
+ *
+ * Closing your own answer clears it. Closing a zone you were only looking at
+ * falls back to the answer you still have — clearing the hunt there would
+ * throw away a location the person deliberately set, just because they
+ * glanced at a neighbouring zone.
+ */
+function closingOwnHunt(state: ExplorationState): boolean {
+  return state.selection.kind === "zone" && state.selection.origin === "hunt";
 }
 
 export function explorationReducer(state: ExplorationState, event: ExplorationEvent): ExplorationState {
@@ -197,10 +211,7 @@ export function explorationReducer(state: ExplorationState, event: ExplorationEv
     case "OVERLAY_SELECTED":
       return { ...state, selection: { kind: "overlay", layerId: event.layerId, objectId: event.objectId }, cardOpen: true, pin: null };
     case "CARD_CLOSED":
-      return { ...state, cardOpen: false, selection: huntSelection(state) };
-    case "LAYER_OPENED_OVER_SELECTION":
-      /* The card goes; the zone stays exactly as it was. */
-      return state.cardOpen ? { ...state, cardOpen: false } : state;
+      return closingOwnHunt(state) ? cleared(state) : { ...state, cardOpen: false, selection: huntSelection(state) };
     case "MAP_TAPPED_EMPTY":
       /* A plain tap never selects a hunting location. It closes what is open
          and cancels a pressed preview; a centre-follow preview is kept, because
@@ -266,7 +277,7 @@ export function explorationReducer(state: ExplorationState, event: ExplorationEv
         ? { ...state, hunt: { ...state.hunt, label: event.label } }
         : state;
     case "HUNT_CLEARED":
-      return { ...state, hunt: null, huntZone: null, selection: { kind: "none" }, cardOpen: false };
+      return cleared(state);
     default:
       return state;
   }
