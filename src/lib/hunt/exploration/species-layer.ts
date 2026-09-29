@@ -1,5 +1,6 @@
 import type { OpportunityClass } from "../intelligence/types.ts";
-import type { ExplorationState } from "./states.ts";
+import type { OpportunityCondition } from "./opportunity.ts";
+import type { ZoneSpeciesAnswer } from "./states.ts";
 
 /**
  * The species layer's presentation: one definition, read by the Google map, the
@@ -57,17 +58,57 @@ export function heatFillFor(classification: OpportunityClass | undefined): { col
 /**
  * Whether a zone wears the green highlight.
  *
- * Binary by owner decision: a season running across the zone is green, and
- * everything else — conditional, needs a closer look, unknown, not certified
- * AND closed — is simply unhighlighted. `SEASON_EXCEPT_AREAS` is green because
- * the season IS open across the zone; the card names the published areas it
- * does not reach.
+ * §41A, amended 2026-09-29: green means AT LEAST ONE CURRENT LEGAL HUNTING
+ * OPPORTUNITY EXISTS for this species, zone and date — not a season open to
+ * every licence. A hunt that turns on the hunter is still a hunt.
+ *
+ * This reads one structured field the engine established (see
+ * `opportunity.ts`), and deliberately takes the whole answer rather than a
+ * word: the previous version took an `ExplorationState`, which is a LABEL, and
+ * the only way to widen green with that argument would have been to add
+ * CHECK_REQUIREMENTS to a list of label names — deciding legality from the
+ * thing a copy editor changes.
  *
  * NOT-GREEN IS NOT CLOSED. Nothing may render the negative of this function as
- * a closure; `SPECIES_LAYER_LEGEND` carries that sentence in words.
+ * a closure; `SPECIES_LAYER_LEGEND` carries that sentence in words, and
+ * `ZoneOpportunity.coverage` carries it in data.
  */
-export function seasonIsOpen(state: ExplorationState | undefined): boolean {
-  return state === "SEASON_AVAILABLE" || state === "SEASON_EXCEPT_AREAS";
+export function zoneIsGreen(answer: ZoneSpeciesAnswer | undefined): boolean {
+  return answer?.opportunity.hasCurrentLegalOpportunity === true;
+}
+
+/**
+ * Whether the zone wears the one condition indicator.
+ *
+ * Only ever true alongside green: the `!` means "there is a legal opportunity
+ * here now, AND you need to know something material before assuming it applies
+ * to you". On its own it would read as a warning about a hunt that does not
+ * exist.
+ */
+export function zoneHasConditions(answer: ZoneSpeciesAnswer | undefined): boolean {
+  return zoneIsGreen(answer) && answer!.opportunity.hasMaterialConditions;
+}
+
+/** The one glyph a conditional opportunity wears. There is no second one. */
+export const CONDITION_GLYPH = "!";
+
+/** How many conditions the compact popover names before counting the rest. */
+export const CONDITIONS_SHOWN = 3;
+
+/** The conditions to name, and how many are left over. */
+export function conditionDigest(answer: ZoneSpeciesAnswer | undefined): { shown: OpportunityCondition[]; further: number } {
+  const all = answer?.opportunity.conditions ?? [];
+  return { shown: all.slice(0, CONDITIONS_SHOWN), further: Math.max(0, all.length - CONDITIONS_SHOWN) };
+}
+
+/**
+ * The indicator's accessible name.
+ *
+ * Says what it MEANS rather than what it is: a screen-reader user hearing
+ * "exclamation" learns nothing, and §48 treats that as the defect it is.
+ */
+export function conditionMarkerLabel(zoneLabel: string): string {
+  return `${zoneLabel}: current hunting opportunity has conditions. Show them.`;
 }
 
 /**
@@ -79,11 +120,14 @@ export const SPECIES_LAYER_LEGEND = {
   heatTitle: "Heat: where the evidence suggests looking",
   heatDetail:
     "Shaded from the authority's own published harvest and effort figures for this species. The shade is a zone's RANK AGAINST THE OTHER ZONES of the same jurisdiction's dataset — not a count of animals and not a density. An unshaded zone is one North Ground holds no certified evidence for; it is not a zone with no animals.",
-  seasonTitle: "Green outline: a season is open",
+  seasonTitle: "Green outline: a legal hunt exists here now",
   seasonDetail:
-    "Outlined where the certified rules run a season for this species across the zone on the chosen date. It is not a licence check: tags, draws, methods and animal class are in the zone's card.",
+    "Outlined where the certified rules give at least one current legal hunting opportunity for this species on the chosen date \u2014 including one that turns on the hunter. It is not a licence check, and it never states that you personally may hunt: the zone's card carries the full answer.",
+  conditionTitle: "! \u2014 that hunt has conditions",
+  conditionDetail:
+    "A green zone carrying ! is one where the opportunity turns on something material: a tag, a licence class, residency, the weapon, the animal's class, the land. The indicator names the most important of them; the zone's card carries every one with its source.",
   notGreen:
-    "A zone WITHOUT a green outline is not thereby closed. Zones North Ground has not certified, and zones whose answer depends on who is hunting, are simply not highlighted. Tap any zone for its full answer.",
+    "A zone WITHOUT a green outline is not thereby closed. Zones North Ground has not certified, zones whose sources disagree, and zones whose answer North Ground could not finish deciding are simply not highlighted. Tap any zone for its full answer.",
   independent: "Heat never implies a season is open, and green never implies animals are present. They are two layers over one map.",
   /*
     A species North Ground holds no opportunity evidence for anywhere. The

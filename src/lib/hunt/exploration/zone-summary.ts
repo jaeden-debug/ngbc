@@ -6,11 +6,14 @@ import { CANADA_JURISDICTIONS } from "../canada/registry.ts";
 import type { ZoneResolution } from "../types.ts";
 import { presentZone } from "../zone-presentation.ts";
 import { layerById, officialNameOf, type ZoneLayer, zoneCoverage, zoneDisplayLabel, zoneIdFor } from "../zone-layers.ts";
-import type { ExplorationState, SpeciesZoneSummary, ZoneRef, ZoneSummary } from "./states.ts";
+import type { ExplorationState, SpeciesZoneSummary, ZoneRef, ZoneSpeciesAnswer, ZoneSummary } from "./states.ts";
 import { provenancedLine } from "../provenance.ts";
+import type { HuntDimensionAnswers } from "../regulatory/dimensions.ts";
+import { NO_CERTIFIED_RULES, opportunityOf, type ZoneOpportunity } from "./opportunity.ts";
 
 export { EXPLORATION_WORDING } from "./states.ts";
-export type { ExplorationState, SpeciesZoneSummary, ZoneRef, ZoneSummary } from "./states.ts";
+export type { OpportunityCondition, OpportunityCoverage, ZoneOpportunity } from "./opportunity.ts";
+export type { ExplorationState, SpeciesZoneSummary, ZoneRef, ZoneSpeciesAnswer, ZoneSummary } from "./states.ts";
 
 /**
  * What the map says about a zone while someone is exploring.
@@ -118,7 +121,17 @@ const cache = new Map<string, CachedSummary>();
 
 export function clearZoneSummaryCache(): void {
   cache.clear();
+  opportunities.clear();
 }
+
+/**
+ * What the species layer draws, keyed by the same inputs as the summary.
+ *
+ * Separate from the summary cache because it is derived from MANY engine runs
+ * rather than one, and only the map asks for it: a zone card evaluating fifty
+ * species must not pay for fifty answer-tree walks it will not draw.
+ */
+const opportunities = new Map<string, ZoneOpportunity>();
 
 function remember(key: string, value: CachedSummary): CachedSummary {
   if (cache.size >= CACHE_MAX) {
@@ -285,17 +298,59 @@ export async function summarizeZone(ref: ZoneRef, date: string): Promise<ZoneSum
  * over the zones in view costs one engine run per zone the first time and a
  * map lookup after that.
  */
+/**
+ * Whether a legal hunting opportunity exists in this zone on this date.
+ *
+ * The engine is curried over the zone, species and date and handed to
+ * `opportunityOf`, which walks the engine's own answer tree. Nothing here
+ * decides legality; this function only supplies the engine and caches what it
+ * concluded, because the tree costs several runs and the bundles are committed
+ * files, so the answer is deterministic for the life of a deployment.
+ */
+async function opportunityFor(
+  entry: RegulatoryEntry,
+  layer: ZoneLayer,
+  designation: string,
+  speciesId: CanonicalId<"species">,
+  date: string,
+): Promise<ZoneOpportunity> {
+  const key = `${layer.id}|${designation.toUpperCase()}|${speciesId}|${date}`;
+  const cached = opportunities.get(key);
+  if (cached) return cached;
+  const zone = zoneResolutionFor(layer, designation);
+  const evaluateWith = (answers: HuntDimensionAnswers) => entry.evaluate(
+    { latitude: Number.NaN, longitude: Number.NaN, date: date as IsoDate, speciesId, answers },
+    zone,
+    { verifiedAt: new Date(0).toISOString(), scope: "ZONE" },
+  );
+  const derived = await opportunityOf(await evaluateWith({}), evaluateWith);
+  if (opportunities.size >= CACHE_MAX) {
+    const oldest = opportunities.keys().next();
+    if (!oldest.done) opportunities.delete(oldest.value);
+  }
+  opportunities.set(key, derived);
+  return derived;
+}
+
 export async function zoneStatesForSpecies(
   speciesId: CanonicalId<"species">,
   date: string,
   zones: readonly ZoneRef[],
-): Promise<Array<ZoneRef & { state: ExplorationState }>> {
+): Promise<Array<ZoneRef & ZoneSpeciesAnswer>> {
   return await Promise.all(zones.map(async (ref) => {
     const layer = servedLayer(ref.layerId);
-    if (!layer || !isDesignation(ref.designation)) return { ...ref, state: "UNKNOWN" as const };
+    if (!layer || !isDesignation(ref.designation)) {
+      return { ...ref, state: "UNKNOWN" as const, opportunity: { ...NO_CERTIFIED_RULES, coverage: "UNKNOWN" as const } };
+    }
     const entry = regulatoryEntryFor(layer.jurisdictionId);
-    if (!entry || !speciesIn(entry).includes(speciesId)) return { ...ref, state: "NOT_CERTIFIED" as const };
-    const summary = await summarizeSpecies(entry, layer, ref.designation.trim(), speciesId, date);
-    return { ...ref, state: summary.state };
+    if (!entry || !speciesIn(entry).includes(speciesId)) {
+      return { ...ref, state: "NOT_CERTIFIED" as const, opportunity: NO_CERTIFIED_RULES };
+    }
+    const designation = ref.designation.trim();
+    const [summary, opportunity] = await Promise.all([
+      summarizeSpecies(entry, layer, designation, speciesId, date),
+      opportunityFor(entry, layer, designation, speciesId, date),
+    ]);
+    return { ...ref, state: summary.state, opportunity };
   }));
 }

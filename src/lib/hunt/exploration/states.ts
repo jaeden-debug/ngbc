@@ -2,6 +2,7 @@ import type { NextSeason } from "../regulatory/season.ts";
 import type { ZonePresentation } from "../zone-presentation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { ZoneCoverageStatus } from "../zone-layers.ts";
+import type { ZoneOpportunity } from "./opportunity.ts";
 
 /**
  * The map's exploration vocabulary: safe for the browser, holds no rules.
@@ -62,6 +63,24 @@ export const EXPLORATION_WORDING: Record<ExplorationState, { label: string; glyp
     detail: "North Ground has no certified rules for this species in this jurisdiction.",
   },
 };
+
+/**
+ * What the species layer knows about one zone: the list's word, and the map's
+ * structured opportunity.
+ *
+ * Two fields rather than one because they answer different questions and §41A
+ * keeps them apart. `state` is the zone list's vocabulary — eight words, one
+ * per engine outcome. `opportunity` is the map's — does a legal hunt exist here
+ * now, and does it turn on something material. A zone can be CHECK_REQUIREMENTS
+ * and green: that is the whole correction of 2026-09-29.
+ *
+ * Declared here, in the module that holds no rules, so a browser bundle can
+ * name the type without importing the engine.
+ */
+export interface ZoneSpeciesAnswer {
+  state: ExplorationState;
+  opportunity: ZoneOpportunity;
+}
 
 export interface ZoneRef {
   layerId: string;

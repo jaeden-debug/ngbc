@@ -253,3 +253,28 @@ export function ontarioTagDimension(
     sourceSection,
   };
 }
+
+/**
+ * The same answers with one dimension set.
+ *
+ * The inverse of `answerFor`, and it lives beside it for the reason that
+ * function does: the mapping from a dimension id to its slot is stated once.
+ * A caller building a branch of the answer tree must not reconstruct the shape
+ * itself — `animalClasses` is a list rather than a field, and a caller that
+ * forgot would silently drop every animal-class answer.
+ *
+ * Pure: the argument is never mutated, so an exploration of the answer tree
+ * cannot leak one branch's answer into its sibling.
+ */
+export function withAnswer(
+  answers: HuntDimensionAnswers,
+  id: HuntDimensionId,
+  value: string,
+): HuntDimensionAnswers {
+  if (id.startsWith("ANIMAL_CLASS:")) {
+    const dimension = id.slice("ANIMAL_CLASS:".length) as RegulatoryAnimalClassDimension;
+    const rest = (answers.animalClasses ?? []).filter((entry) => entry.dimension !== dimension);
+    return { ...answers, animalClasses: [...rest, { dimension, value }] };
+  }
+  return { ...answers, [id]: value };
+}
