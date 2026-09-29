@@ -50,8 +50,30 @@ test("zone status: rejects what it cannot answer rather than guessing", async ()
   const POST = createZoneStatusHandler({ limiter: open(), canonicalOrigin: ORIGIN });
   const ok = await POST(post({ speciesId: "species:ruffed-grouse", date: "2026-09-21", zones: [{ layerId: "layer:ca-on-wmu", designation: "57" }] }));
   assert.equal(ok.status, 200);
-  const payload = await ok.json() as { states: Array<{ state: string }> };
+  const payload = await ok.json() as { states: Array<{ state: string; opportunity: { hasCurrentLegalOpportunity: boolean; hasMaterialConditions: boolean; coverage: string; conditions: Array<{ text: string; lang: string; owner: string }> } }> };
   assert.equal(payload.states[0].state, "SEASON_AVAILABLE");
+
+  /*
+   * THE WIRE CARRIES THE STRUCTURED OPPORTUNITY, not only the word.
+   *
+   * The map decides green from `opportunity`, and the browser can only read
+   * what this response serialises. When green was widened (§41A, 2026-09-29)
+   * the word `state` stayed exactly as it was — so a client that still read
+   * `state` alone would keep drawing the OLD green and nothing would fail.
+   * This is the assertion that would.
+   */
+  const opportunity = payload.states[0].opportunity;
+  assert.equal(opportunity.hasCurrentLegalOpportunity, true);
+  assert.equal(opportunity.coverage, "OPEN");
+  /* Each condition crosses the boundary with the language and the authorship
+     the producer declared; a renderer must never re-guess either. */
+  for (const condition of opportunity.conditions) {
+    assert.ok(condition.text.length > 0);
+    assert.ok(["en-CA", "fr-CA"].includes(condition.lang), condition.lang);
+    assert.ok(["AUTHORITY", "NORTH_GROUND"].includes(condition.owner), condition.owner);
+  }
+  // Conditions are only ever claimed alongside an opportunity.
+  if (!opportunity.hasCurrentLegalOpportunity) assert.equal(opportunity.hasMaterialConditions, false);
 
   /*
    * An UNCERTIFIED species is refused. Gray wolf, not mallard: mallard became

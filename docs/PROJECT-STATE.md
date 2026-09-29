@@ -4,7 +4,9 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-29 (**The species answer became a decision surface, and Québec stopped saying "not yet verified".** Québec legal hunting hours now RESOLVE at a point: the Legal Time Act (T-5.1) splits the province at the 63rd meridian and answers completely west of it, while the east is refused by naming the three territories whose boundaries North Ground does not hold. The hours themselves are the complement of C-61.1 s. 1's « nuit » under s. 56's prohibition, narrowed by r. 12 s. 21's night permission — ±30 minutes, established by three independent reads. Québec Ready to Hunt ships PARTIAL: certificat du chasseur, permis de petit gibier, the hare-by-snare licence, the federal firearms licence and hunter orange, with legal methods, ammunition and fees carried as explicitly unresolved. Conditions are structured and shown under the status; "in season, with conditions" is now earned by a condition that exists. Served-matrix invariants are declared per jurisdiction rather than derived.)
+Last updated: 2026-09-29 (**Green means a legal opportunity exists, and an authority's words stop being untranslatable.** The species layer drew green only where a season was open to every licence, so Ontario moose drew ZERO green over zones that had a season — the map said *nothing is open* about the commonest big-game answer in the province. Green now means §41A's amended test: at least one current legal hunting opportunity for this species, zone and date, ESTABLISHED by walking the engine's own answer tree rather than assumed from a pending question. Measured on 2026-09-29: Ontario moose 0 → 49 zones, Ontario deer 0 → 36, Manitoba deer 0 → 41. Conditional opportunities carry ONE compact `!`, a real control with a popover built from structured conditions; there is no conditional colour. Separately, authority language became a first-class fact: a translation is North Ground presentation over an original that is kept, and is structurally unable to render as an authority quotation. A new language-integrity sweep found two live mislabels the existing suite could not see — Québec ministry notes tagged English and attributed to North Ground, and ministry statements transcribed with guillemets baked in under a North Ground attribution — and both are fixed at the producer.)
+
+Previously: 2026-09-29 (**The species answer became a decision surface, and Québec stopped saying "not yet verified".** Québec legal hunting hours now RESOLVE at a point: the Legal Time Act (T-5.1) splits the province at the 63rd meridian and answers completely west of it, while the east is refused by naming the three territories whose boundaries North Ground does not hold. The hours themselves are the complement of C-61.1 s. 1's « nuit » under s. 56's prohibition, narrowed by r. 12 s. 21's night permission — ±30 minutes, established by three independent reads. Québec Ready to Hunt ships PARTIAL: certificat du chasseur, permis de petit gibier, the hare-by-snare licence, the federal firearms licence and hunter orange, with legal methods, ammunition and fees carried as explicitly unresolved. Conditions are structured and shown under the status; "in season, with conditions" is now earned by a condition that exists. Served-matrix invariants are declared per jurisdiction rather than derived.)
 
 Previously: 2026-09-23 (**Federal migratory game birds answer**: 24 species selectable nationally, PE/YT/AB with certified seasons, 18/18 cases. Earlier: **British Columbia serves rules** — a first wave of 79 rules over seven species reaching 221 of 225 units, 20/20 production cases, three disputes preserved as CONFLICT; coreGameComplete 5 of 11. Earlier the same day: **Canada spatial complete**: all 11 in-scope provinces and territories have parity-certified official geography, Prince Edward Island last, served at geography level JURISDICTION because the province publishes no units. Rules remain the open front — 7 of 11 hold no certified rule and answer UNKNOWN. Government GIS transient failures are now retried under one stated policy and a national audit survives an unreadable provider. **United States: licence-first.** Six more states' map licences read and recorded verbatim with hashes — Michigan clears (public record, no reuse restrictions), Wisconsin, North Dakota and South Dakota are silent, Minnesota and Maine refuse outright. Eight of the ten states with any evidence may not be drawn, so the 50-state bottleneck is permissions rather than engineering; eight letters are drafted for the owner. A silence and a refusal are now reported differently because they are undone differently. An overlap names its zones instead of counting them. Michigan is next and is held until its Wildlife Conservation Order is read: its deer units nest by design, and deliberate nesting is not a conflict.)
 
@@ -783,6 +785,139 @@ blueprint keeps those out of North Ground's answers.
 
 
 ## Recent Product Decisions
+
+### Green is an opportunity, not a season open to everybody (2026-09-29)
+
+§41A was amended by the owner after the binary rule shipped and its consequence
+was visible in production. The rule was followed correctly; it was the rule that
+was wrong.
+
+**What green means now.** At least one current legal hunting opportunity exists
+for the selected species, zone and date. Open without material conditions is
+green; open with material conditions is green plus one `!`; closed, a season in
+the future, and unknown or uncertified coverage are ungreen — and ungreen is
+still never called closed.
+
+**How it is established.** `src/lib/hunt/exploration/opportunity.ts` walks the
+CANONICAL ENGINE'S OWN answer tree. A pending question is not an open season:
+`NEEDS_INPUT` means the engine has not looked at a season window yet, so painting
+it green would assert a season nobody published. Instead the walk answers the
+engine's question each way the engine offers and asks again until it resolves; a
+zone is green when one of those leaves is an open season on the date. Every leaf
+is the engine's own output. There is no second legality implementation, and the
+walk cannot reach a status the engine would not.
+
+**Bounds and honesty.** The walk is capped at 64 engine runs per zone, species
+and date. A walk that hits the ceiling reports `UNRESOLVED`, never `CLOSED` —
+stopping a search is not a finding. `UNSURE` is never walked as an answer.
+
+**What counts as conditional is structured.** The dimensions the engine asked
+about, and the `RegulatoryCondition` rows a resolved answer carries. No prose is
+matched anywhere; a renderer testing for "Depends on your hunt" would be
+deciding legality from a label.
+
+**Opening values are named only when ONE fact gates the answer.** They are a
+union over open paths, so with two gates they do not combine: Manitoba deer opens
+for a muzzle-loader and for a hunter under eighteen, and printing those beside
+each other reads as a recipe for a hunt nobody published. One gate names its
+answers; two name the fact and send the hunter to the card.
+
+**Measured effect** (certified bundles, 2026-09-29, whole jurisdictions):
+
+| Species | Layer | zones | green before | green now | with `!` |
+|---|---|---|---|---|---|
+| Moose | Ontario WMU | 150 | 0 | 49 | 49 |
+| White-tailed deer | Ontario WMU | 150 | 0 | 36 | 36 |
+| White-tailed deer | Manitoba GHA | 62 | 0 | 41 | 41 |
+| Ruffed grouse | Ontario WMU | 150 | 150 | 150 | 150 |
+
+Predicted 40–70 for moose before measuring; measured 49.
+
+**The indicator.** One `!` per zone, riding WITH the zone's label — §41A already
+solved "one mark per zone, in its largest part, omitted rather than stacked", and
+a second placer would disagree with the first the moment a label was dropped for
+a collision. A zone too small to be named carries no indicator; it stays in the
+zone list and its own card. It is a real `<button>` on both renderers, in a pane
+that is neither `aria-hidden` nor pointer-events-none, and its accessible name
+says what it means rather than naming the glyph.
+
+**Open question for the owner.** Ontario ruffed grouse is 150 of 150 green WITH
+`!`, because the bundle enumerates a licence condition that applies everywhere.
+That is truthful — the licence is genuinely required — but an indicator that
+fires on every zone carries no information at that scale. Whether a universally
+applicable licence condition should raise the `!` is a product decision, not a
+data one; nothing was inferred from the prose to suppress it.
+
+### Authority language is immutable; a reading of it is North Ground's (2026-09-29)
+
+Recorded in §41A by the owner the same day.
+
+**The model** is `src/lib/hunt/translation.ts`. A `Translation` carries
+`owner: "NORTH_GROUND"` and no `sourceId` or `citation`, so it cannot satisfy
+`AuthorityQuotation` — a renderer cannot put a reading through the quotation path
+because the mistake does not compile. That negative type test extends the
+provenance split rather than duplicating it. Where the authority itself published
+both languages, BOTH stay authority-owned and neither is called a translation.
+
+**A reading is keyed by the source text verbatim.** Change a word in the source
+and the key misses and the interface says no reading exists, rather than showing
+yesterday's reading of today's rule.
+
+**Language is metadata, never detection — with one deliberate exception.**
+`src/lib/hunt/language-integrity.test.ts` evaluates a real hunt in every served
+jurisdiction and compares each line's DECLARED language with its own characters.
+Detection is the point there and is safe there: a wrong guess fails a test rather
+than mislabelling a ministry.
+
+**Two live mislabels it found**, both invisible to the existing suite because
+`answer-invariants.test.ts` asserts `owner` on every condition and never asserts
+`lang`, and nothing anywhere compared a declaration against the text:
+
+- Québec's ministry notes ("Dans la zone 17, l'utilisation de collets…") reached
+  a reader through `general()`, which hardcodes `en-CA` and `NORTH_GROUND`.
+- Québec's statements were transcribed with guillemets baked into the text and
+  tagged `NORTH_GROUND`, so a renderer that quotes authorities and prints North
+  Ground plainly printed the ministry's sentence plainly with stray marks in it.
+
+Both are fixed at the PRODUCER, which is the only place that knows: a note now
+arrives as an `AuthorityQuotation` requiring its language, source and citation,
+and a bundle condition declares its own `owner`.
+
+**Surfaces converted** to `AuthorityText`: conditions, "Applies here today", the
+always-true limitations, both source-caveat lists, and legal hours. Legal hours
+was the worst — Québec's wild-turkey answer is the ministry's own French sentence
+and `LegalTimeResult` had nowhere to say so, so a LEGAL-HOURS ANSWER rendered in
+a language the reader may not have.
+
+**Readiness names stay French and stop claiming to be English.** « Certificat du
+chasseur » was hardcoded `en-CA`. It is not translated — §47 keeps an official
+name in the authority's words, and a licence a hunter asks a vendor for by name
+is what that rule is for. The bundle declares the language; nothing infers it.
+
+**Stored readings** live in `content/regulatory/translations/hunt.json`: eleven
+rows covering Québec's seven distinct overlay statements, the wild-turkey hours
+and the two regulatory class definitions. Every one is `NORTH_GROUND_GENERATED`
+and is labelled "not yet reviewed" in the interface. **Promotion to
+`NORTH_GROUND_REVIEWED` is a human act and has not happened.**
+
+**Gaps left, with reasons.** The remaining French-bearing surfaces are not yet
+converted: `regulation.summary` ("Why this answer", which embeds French season
+labels and phrases), `specialAreas[].line` on the zone card (a pre-baked string
+from `provenancedLine`, which discards `lang` and `owner` by returning a string),
+the Hunt Brief's flattened warnings (same class of loss in
+`from-hunt-evaluation.ts`), source titles, publishers and section headings in the
+source drawers, Ready to Hunt's own display rows (which read a flattened
+`ReadinessResult`, not the structured `RequirementRow`), dimension option details
+(« carabine »), and the Québec layer coverage note on `/hunting`. Each needs its
+producer to carry provenance across a boundary that currently returns `string`;
+none was guessed at.
+
+**One fix is latent and says so.** The engine composes "Bag limit: …" in English
+and took the BUNDLE's language, so a Québec bag limit would have gone out as
+French. Québec is the only `fr-CA` bundle and encodes no harvest limit, so
+reverting that fix leaves the sweep green. It is recorded rather than left to
+look tested.
+
 
 ### 2026-09-29 — A latent false number became publishable, so it was fixed first
 `build-bc-harvest-evidence.mjs` passed `harvestRanks[index]` as the
