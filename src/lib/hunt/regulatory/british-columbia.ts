@@ -1,7 +1,8 @@
 import { legalTimeNotCertified } from "./legal-time.ts";
 import { withinZoneFactsAt } from "./bc-closed-areas.ts";
+import { britishColumbiaLegalTime } from "./british-columbia-legal-time.ts";
 import { general } from "../limitation.ts";
-import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
+import type { IsoDate, CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/ca-bc-2026.json" with { type: "json" };
 import {
   conditionalCoverage, evaluateConditional,
@@ -91,12 +92,19 @@ export const BRITISH_COLUMBIA_VOCABULARY: ConditionalVocabulary = {
    * wall-clock time cannot be stated. Naming the real blocker matters, because
    * "not certified" reads as though the regulation had not been read.
    */
+  /* The fallback, for a zone-scoped question where no point is known. */
   legalTime: legalTimeNotCertified(
       `British Columbia: "${BRITISH_COLUMBIA_BUNDLE.legalTime.statedAs}" (${BRITISH_COLUMBIA_BUNDLE.legalTime.section}). ` +
-      "North Ground cannot state exact clock times for a point in British Columbia, because the province spans two " +
-      "time zones and part of it does not observe daylight saving.",
+      "North Ground states exact times for a point, not for a whole Management Unit.",
       "Government of British Columbia",
     ),
+  legalTimeAt: (speciesId, place, date) => {
+    if (place.scope === "ZONE") return undefined;
+    /* BC resolves its own clock: it is date-bounded, and no caller should have
+       to know that. An earlier date is refused with its reason rather than
+       answered with today's reckoning. */
+    return britishColumbiaLegalTime(speciesId, place, date as IsoDate);
+  },
   standingLimitations: BRITISH_COLUMBIA_BUNDLE.limitations.map((text) => general(text)),
   // Legal hours (s. 14 (1)) and the meaning of the schedules (s. 4) come from the body of the regulation.
   standingSourceIds: [REGULATION],

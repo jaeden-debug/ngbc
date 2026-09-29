@@ -76,15 +76,26 @@ const MATRIX = [
     point: { latitude: 55.0, longitude: -122.0 },
     date: "2026-10-15",
     /*
-     * DECLARED NOT_CERTIFIED, AND THAT IS A FINDING RATHER THAN A GAP TO CLOSE
-     * QUIETLY. British Columbia's hours rule is read and encoded — B.C. Reg.
-     * 190/84 s. 14 (1), ONE hour either side, not the half-hour three other
-     * provinces use. What is missing is the clock: the province spans zones and
-     * the Peace and Kootenay communities keep Mountain time, so a wall-clock
-     * window cannot be stated. `legalTimeFor` refuses without a timezone, which
-     * is the behaviour this row pins.
+     * CHANGED TO RESOLVED ON PURPOSE, 2026-09-29, which is what this row asks
+     * for. It previously read NOT_CERTIFIED because the province spanned zones
+     * and the Peace and Kootenay communities kept Mountain time, so no wall
+     * clock could be stated. The Interpretation Act no longer says that:
+     * s. 26 (2) makes a reference to time in British Columbia a reference to
+     * Pacific Time, and s. 26 (1) fixes that at 7 hours behind UTC —
+     * unqualified, province-wide, no region named. Across the whole Act
+     * "daylight saving", "standard time", "Peace River", "Creston" and "time
+     * zone" occur zero times.
+     *
+     * This point is at 55.0N, -122.0W — INSIDE the Peace River region, and it
+     * is kept deliberately: the hardest case under the old reckoning is the one
+     * the new rule has to carry.
+     *
+     * The rule is s. 14 (1) as before, one hour either side. Only the clock
+     * changed, and it is date-bounded — see BRITISH_COLUMBIA_CLOCK_FROM, which
+     * refuses dates before the consolidation's own currency date because when
+     * s. 26 came into force was not established. This row's date is after it.
      */
-    hours: "NOT_CERTIFIED",
+    hours: "RESOLVED",
   },
   {
     jurisdiction: "jurisdiction:us-id",

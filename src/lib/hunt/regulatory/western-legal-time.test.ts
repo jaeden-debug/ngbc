@@ -235,3 +235,110 @@ test("no timezone, no window — for every jurisdiction, not just the one that h
     assert.match(legalTimeSummary(result), /wall-clock/);
   }
 });
+
+/* ── British Columbia's clock ────────────────────────────────────────────── */
+
+test("British Columbia states a window now, at a fixed offset, one hour either side", async () => {
+  /*
+   * The Interpretation Act s. 26 (2) makes a reference to time in British
+   * Columbia a reference to Pacific Time, and s. 26 (1) fixes that at 7 hours
+   * behind UTC. Province-wide, no region named — so the clock that blocked BC
+   * is no longer what the Act says.
+   *
+   * The zone is `Etc/GMT+7` and not `America/Vancouver`: the statute fixes an
+   * OFFSET, and a named regional zone would import a daylight-saving policy the
+   * Act no longer contains. If someone swaps it for a regional zone this fails
+   * in winter and passes in summer, so it is asserted directly.
+   */
+  const { britishColumbiaLegalTime, britishColumbiaClock, BRITISH_COLUMBIA_CLOCK_FROM } =
+    await import("./british-columbia-legal-time.ts");
+
+  assert.equal(britishColumbiaClock(BRITISH_COLUMBIA_CLOCK_FROM), "Etc/GMT+7");
+
+  const result = britishColumbiaLegalTime("species:ruffed-grouse", KAMLOOPS, iso("2026-10-15"));
+  assert.equal(result.status, "RESOLVED");
+  if (result.status !== "RESOLVED") return;
+  assert.equal(result.timezone, "Etc/GMT+7");
+  assert.match(result.section, /s\. 14 \(1\)/);
+
+  /* One hour either side — BC's own rule, not the half hour three others use. */
+  const half = legalTimeFor(ALBERTA_GENERAL_HOURS, KAMLOOPS, iso("2026-10-15"), "Etc/GMT+7" as PointTimeZone);
+  assert.equal(half.status, "RESOLVED");
+  if (half.status !== "RESOLVED") return;
+  assert.equal(minutes(half.window.opensAt) - minutes(result.window.opensAt), 30);
+});
+
+test("a date before the bound is refused, and the reason names what was not established", async () => {
+  /*
+   * THE GUARD. The in-force date of s. 26 was NOT established — the amending
+   * instruments were unreachable in consolidated form and a bringing-into-force
+   * order is commonly an OIC in the Gazette. Before it, British Columbia's
+   * reckoning was divided geographically, which is the very thing that blocked
+   * the province.
+   *
+   * So an earlier date must be refused rather than answered with today's
+   * reckoning. Applying s. 26 backwards would be an hour wrong, invisibly: a
+   * backdated Hunt would simply show a time that looks ordinary.
+   */
+  const { britishColumbiaLegalTime, BRITISH_COLUMBIA_CLOCK_FROM } = await import("./british-columbia-legal-time.ts");
+
+  const before = britishColumbiaLegalTime("species:ruffed-grouse", KAMLOOPS, iso("2026-01-15"));
+  assert.equal(before.status, "NOT_CERTIFIED");
+  if (before.status !== "NOT_CERTIFIED") return;
+  assert.match(before.reason, new RegExp(BRITISH_COLUMBIA_CLOCK_FROM));
+  assert.match(before.reason, /came into force was not established/);
+  assert.match(before.reason, /divided geographically/);
+
+  /* The boundary itself answers; the day before it does not. */
+  assert.equal(britishColumbiaLegalTime("species:ruffed-grouse", KAMLOOPS, BRITISH_COLUMBIA_CLOCK_FROM).status, "RESOLVED");
+  assert.equal(britishColumbiaLegalTime("species:ruffed-grouse", KAMLOOPS, iso("2026-09-21")).status, "NOT_CERTIFIED");
+});
+
+test("British Columbia is deliberately absent from the date-blind single-zone table", async () => {
+  /*
+   * `SINGLE_ZONE_JURISDICTIONS` is keyed by jurisdiction alone. An entry there
+   * would hand out `Etc/GMT+7` for every date including 2019, which is exactly
+   * the error the date bound exists to prevent. Alberta and Manitoba belong
+   * there because their reckoning is not in question; BC's is.
+   */
+  const { timeZoneAtPoint } = await import("../time-zone.ts");
+  assert.equal(timeZoneAtPoint("jurisdiction:ca-bc"), undefined);
+  assert.equal(timeZoneAtPoint("jurisdiction:ca-ab"), "America/Edmonton");
+});
+
+test("s. 14 (2) binds migratory game birds at half an hour, and nothing BC serves", async () => {
+  /*
+   * Latent, and encoded so it stops being latent without anyone remembering.
+   * s. 14 (2) narrows migratory game birds to half an hour either side DESPITE
+   * s. 14 (1)'s hour — so a served migratory species would otherwise inherit a
+   * window 30 minutes too generous at each end, in the direction that puts a
+   * hunter outside the law.
+   *
+   * Membership is asked of the federal instrument that defines the term, and
+   * the served species are read from the bundle rather than listed here.
+   */
+  const { britishColumbiaHoursRules, BRITISH_COLUMBIA_MIGRATORY_HOURS, BRITISH_COLUMBIA_GENERAL_HOURS } =
+    await import("./british-columbia-legal-time.ts");
+  const { isFederalMigratoryBird } = await import("./federal.ts");
+
+  const bundle = JSON.parse(readFileSync("content/regulatory/ca-bc-2026.json", "utf8")) as {
+    rules: { speciesId: string }[];
+  };
+  const served = [...new Set(bundle.rules.map((rule) => rule.speciesId))];
+
+  for (const speciesId of served) {
+    assert.equal(isFederalMigratoryBird(speciesId), false, `${speciesId} is not a migratory game bird`);
+    assert.deepEqual(britishColumbiaHoursRules(speciesId, iso("2026-10-15")), [BRITISH_COLUMBIA_GENERAL_HOURS]);
+  }
+
+  /* And a migratory bird gets the narrower rule, whichever one the federal
+     instrument recognises — found rather than named, so this cannot pass by
+     agreeing with a species id typed here. */
+  const migratory = ["species:canada-goose", "species:mallard", "species:american-black-duck", "species:snow-goose"]
+    .find((id) => isFederalMigratoryBird(id));
+  assert.ok(migratory, "the federal instrument recognises at least one of these");
+  assert.deepEqual(britishColumbiaHoursRules(migratory, iso("2026-10-15")), [BRITISH_COLUMBIA_MIGRATORY_HOURS]);
+  assert.equal(BRITISH_COLUMBIA_MIGRATORY_HOURS.basis, "SUNRISE_SUNSET_OFFSET");
+  if (BRITISH_COLUMBIA_MIGRATORY_HOURS.basis !== "SUNRISE_SUNSET_OFFSET") return;
+  assert.equal(BRITISH_COLUMBIA_MIGRATORY_HOURS.beforeSunriseMinutes, 30);
+});
