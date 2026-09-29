@@ -66,15 +66,28 @@ export function forgetFindGameHint(): void {
 export default function FindGameHint({ active, onOpen }: { active: boolean; onOpen: () => void }) {
   const [showing, setShowing] = useState(false);
 
+  /*
+   * The hint appears after a quiet moment, and goes with the thing it points
+   * at. Retiring it belongs in this effect's CLEANUP rather than in a third
+   * effect watching `active`: a setState run synchronously in an effect body
+   * schedules a second render pass before paint, which is the cascading-render
+   * defect the linter names. A cleanup runs when `active` changes, which is
+   * exactly the moment the hint should go, and says so where the timer lives.
+   */
   useEffect(() => {
     if (!active) return;
     const count = seen();
-    if (count >= MAX_SHOWINGS) return;
-    const appear = window.setTimeout(() => {
-      setShowing(true);
-      remember(count + 1);
-    }, QUIET_BEFORE_MS);
-    return () => window.clearTimeout(appear);
+    const appear =
+      count >= MAX_SHOWINGS
+        ? undefined
+        : window.setTimeout(() => {
+            setShowing(true);
+            remember(count + 1);
+          }, QUIET_BEFORE_MS);
+    return () => {
+      if (appear !== undefined) window.clearTimeout(appear);
+      setShowing(false);
+    };
   }, [active]);
 
   useEffect(() => {
@@ -82,9 +95,6 @@ export default function FindGameHint({ active, onOpen }: { active: boolean; onOp
     const hide = window.setTimeout(() => setShowing(false), VISIBLE_MS);
     return () => window.clearTimeout(hide);
   }, [showing]);
-
-  /* The hint goes the moment the thing it points at is no longer offered. */
-  useEffect(() => { if (!active) setShowing(false); }, [active]);
 
   if (!showing) return null;
   return (
