@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-09-22",
+  "verifiedAt": "2026-09-29",
   "datasets": [
     {
       "id": "dataset:ca-on-white-tailed-deer-harvest",
@@ -179,8 +179,8 @@
       "commercialReuse": "ALLOWED",
       "redistribution": "ALLOWED",
       "legalStanding": "OFFICIAL_STATISTICAL_DATA",
-      "ingestionStatus": "PLANNED",
-      "productionStatus": "IN_DEVELOPMENT",
+      "ingestionStatus": "INGESTED",
+      "productionStatus": "PARTIAL",
       "limitations": "Active hunters are published, so effort is its own component and success is derived only from the authority's own denominator. The authority says its figures are estimates from a sample of resident hunters, subject to statistical error. Files are cp1252, not UTF-8, and a suppressed cell (\"...\") is no-data, never zero. Codes are zero-padded where the Wildlife Management Unit layer is not, so ids are minted from the layer's designation. Harvest is evidence of past reported outcomes, not presence and not legality."
     },
     {
@@ -202,8 +202,8 @@
       "commercialReuse": "ALLOWED",
       "redistribution": "ALLOWED",
       "legalStanding": "OFFICIAL_STATISTICAL_DATA",
-      "ingestionStatus": "PLANNED",
-      "productionStatus": "IN_DEVELOPMENT",
+      "ingestionStatus": "INGESTED",
+      "productionStatus": "PARTIAL",
       "limitations": "Active hunters are published, so effort is its own component and success is derived only from the authority's own denominator. The authority says its figures are estimates from a sample of resident hunters, subject to statistical error. Files are cp1252, not UTF-8, and a suppressed cell (\"...\") is no-data, never zero. Codes are zero-padded where the Wildlife Management Unit layer is not, so ids are minted from the layer's designation. Harvest is evidence of past reported outcomes, not presence and not legality."
     },
     {
@@ -226,9 +226,9 @@
       "commercialReuse": "ALLOWED",
       "redistribution": "ALLOWED",
       "legalStanding": "OFFICIAL_STATISTICAL_DATA",
-      "ingestionStatus": "PLANNED",
-      "productionStatus": "IN_DEVELOPMENT",
-      "limitations": "Active hunters are published, so effort is its own component and success is derived only from the authority's own denominator. The authority says its figures are estimates from a sample of resident hunters, subject to statistical error. Files are cp1252, not UTF-8, and a suppressed cell (\"...\") is no-data, never zero. Codes are zero-padded where the Wildlife Management Unit layer is not, so ids are minted from the layer's designation. Harvest is evidence of past reported outcomes, not presence and not legality."
+      "ingestionStatus": "REJECTED_FOR_SPECIES_ATTRIBUTION",
+      "productionStatus": "UNAVAILABLE",
+      "limitations": "Openly licensed and usable, and published with ONE combined \"Harvest\" column covering wolf and coyote together. The authority publishes no split, so attributing the figure to either species would overstate that species and inventing a split would publish two numbers the authority never released. Held back for species attribution, not for a licence. Active hunters are likewise combined."
     },
     {
       "id": "dataset:ca-on-wild-turkey-harvest",
@@ -249,9 +249,9 @@
       "commercialReuse": "ALLOWED",
       "redistribution": "ALLOWED",
       "legalStanding": "OFFICIAL_STATISTICAL_DATA",
-      "ingestionStatus": "PLANNED",
-      "productionStatus": "IN_DEVELOPMENT",
-      "limitations": "No hunter count is published, so this is harvest volume only; no success rate is derived. The authority says its figures are estimates from a sample of resident hunters, subject to statistical error. Files are cp1252, not UTF-8, and a suppressed cell (\"...\") is no-data, never zero. Codes are zero-padded where the Wildlife Management Unit layer is not, so ids are minted from the layer's designation. Harvest is evidence of past reported outcomes, not presence and not legality."
+      "ingestionStatus": "INGESTED",
+      "productionStatus": "PARTIAL",
+      "limitations": "No hunter count is published, so this is harvest volume only and no rate is derived. The authority says its figures are estimates from a sample of resident hunters, subject to statistical error. Files are cp1252, not UTF-8, and a suppressed cell (\"...\" or \"…\") is no-data, never zero. Codes are zero-padded where the Wildlife Management Unit layer is not, so ids are minted from the layer's designation. Most reported areas are parent codes the layer does not publish; those figures are carried unapportioned. Harvest is evidence of past reported outcomes, not presence and not legality."
     },
     {
       "id": "dataset:ca-on-elk-harvest",

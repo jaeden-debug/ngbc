@@ -62,7 +62,7 @@ test("every committed species and jurisdiction is reachable, not only Ontario de
 
 test("absence is a finding, not a bad request", async () => {
   // A species with evidence, at a well-formed zone that holds none for it.
-  const elsewhere = await ask("species:moose", "management_zone:ca-on-wmu-57");
+  const elsewhere = await ask("species:bobcat", "management_zone:ca-on-wmu-57");
   assert.equal(elsewhere.status, 404);
   assert.equal((await elsewhere.json()).status, "NO_HEAT_MAP_DATA");
   // A species North Ground holds no evidence for anywhere: said differently, still 404.
@@ -85,7 +85,7 @@ test("the species layer asks about one viewport and gets back only zones with ev
     zones: [
       { layerId: "layer:ca-bc-mu", designation: "7-42" },
       { layerId: "layer:ca-bc-mu", designation: "3-12" },
-      { layerId: "layer:ca-on-wmu", designation: "57" },
+      { layerId: "layer:ca-on-wmu", designation: "51" },
       { layerId: "layer:ca-bc-mu", designation: "99-99" },
     ],
   });
@@ -95,7 +95,7 @@ test("the species layer asks about one viewport and gets back only zones with ev
   const keyed = new Map<string, { layerId: string; designation: string; geographyId: string }>(
     (body.zones as Array<{ layerId: string; designation: string; geographyId: string }>).map((zone) => [zone.designation, zone]),
   );
-  assert.equal(keyed.size, 2, "the Ontario zone and the invented BC unit hold no moose evidence and are absent");
+  assert.equal(keyed.size, 2, "the unreported Ontario zone and the invented BC unit hold no moose evidence and are absent");
   assert.ok(keyed.has("7-42") && keyed.has("3-12"));
   // The caller keys by what it asked with; it never mints a canonical id in the browser.
   assert.equal(keyed.get("7-42")!.layerId, "layer:ca-bc-mu");
@@ -126,10 +126,10 @@ test("the species layer rejects a foreign origin, a wrong content type and junk"
 
 test("coverage is computed from the bundles at call time, never typed by hand", async () => {
   const body = await (await COVERAGE()).json();
-  assert.equal(body.speciesJurisdictionPairs, 10);
-  assert.equal(body.geographyCount, 1297);
-  assert.equal(body.evidenceRecordCount, 6182);
-  assert.equal(body.datasets.length, 10);
+  assert.equal(body.speciesJurisdictionPairs, 13);
+  assert.equal(body.geographyCount, 1469);
+  assert.equal(body.evidenceRecordCount, 6642);
+  assert.equal(body.datasets.length, 13);
   for (const dataset of body.datasets) {
     assert.match(dataset.speciesId, /^species:/);
     assert.match(dataset.jurisdictionId, /^jurisdiction:/);

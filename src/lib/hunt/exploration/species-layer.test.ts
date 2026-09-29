@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { SEASON_OPEN_STROKE } from "./cartography.ts";
-import { CONDITIONS_SHOWN, HEAT_FILL, HEAT_WORDING, SPECIES_LAYER_LEGEND, conditionDigest, conditionMarkerLabel, heatFillFor, zoneIsGreen } from "./species-layer.ts";
+import type { ZoneHeat } from "./species-layer.ts";
+import { CONDITIONS_SHOWN, HEAT_FILL, HEAT_RAMP, HEAT_WORDING, SPECIES_LAYER_LEGEND, conditionDigest, conditionMarkerLabel, heatFillFor, heatPaintFor, rampAt, zoneIsGreen } from "./species-layer.ts";
 import type { ZoneSpeciesAnswer } from "./states.ts";
 import type { OpportunityCondition } from "./opportunity.ts";
 
@@ -29,7 +30,7 @@ test("the layer's two false inferences are refused in words, not only by colour"
   assert.match(SPECIES_LAYER_LEGEND.heatDetail, /not a zone with no animals/i);
   // The class is a rank, not a density, and the peer set is named.
   assert.match(SPECIES_LAYER_LEGEND.heatDetail, /RANK AGAINST THE OTHER ZONES/);
-  assert.match(SPECIES_LAYER_LEGEND.heatDetail, /not a count of animals and not a density/i);
+  assert.match(SPECIES_LAYER_LEGEND.heatDetail, /not a count of animals, and never a density/i);
   // And the two channels are stated as independent in both directions.
   assert.match(SPECIES_LAYER_LEGEND.independent, /never implies a season is open/i);
   assert.match(SPECIES_LAYER_LEGEND.independent, /never implies animals are present/i);
@@ -47,23 +48,75 @@ test("every heat class has a word and a glyph as well as a tint", () => {
   assert.equal(new Set(glyphs).size, glyphs.length);
 });
 
-test("the ramp sits inside the brand palette and borrows no regulatory token", () => {
-  // Two steps ARE palette tokens; the layer did not invent a colour direction.
-  assert.equal(HEAT_FILL.LOW.color.toLowerCase(), token("ng-bark-light"));
-  assert.equal(HEAT_FILL.HIGH.color.toLowerCase(), token("ng-amber"));
+test("the ramp is continuous, monotone and carries no regulatory colour", () => {
+  // The line is ordered and gets stronger; a ramp that dips reads as two ramps.
+  for (let index = 1; index < HEAT_RAMP.length; index += 1) {
+    assert.ok(HEAT_RAMP[index].at > HEAT_RAMP[index - 1].at, "stops must ascend");
+    assert.ok(HEAT_RAMP[index].opacity > HEAT_RAMP[index - 1].opacity, "hotter must read stronger");
+  }
+  assert.equal(HEAT_RAMP[0].at, 0);
+  assert.equal(HEAT_RAMP[HEAT_RAMP.length - 1].at, 1);
+
+  // Continuous: neighbouring values differ, which four buckets could not do.
+  assert.notEqual(rampAt(0.61).color, rampAt(0.79).color);
+  assert.notEqual(rampAt(0.02).color, rampAt(0.18).color);
+  // And the ends are the ends, not an interpolation past them.
+  assert.equal(rampAt(0).color, HEAT_RAMP[0].color);
+  assert.equal(rampAt(1).color, HEAT_RAMP[HEAT_RAMP.length - 1].color);
+
+  /* NO GREEN ANYWHERE ALONG IT. Green means a legal hunt exists; a green-ish
+     cool end would make "cold" read as "closed", which is the false closure
+     this product exists to avoid. Checked across the whole line, not just at
+     the stops, because an interpolation between two non-green stops is where
+     a green would actually appear. */
+  for (let value = 0; value <= 1.0001; value += 0.01) {
+    const { color } = rampAt(value);
+    const [red, green, blue] = [1, 3, 5].map((offset) => Number.parseInt(color.slice(offset, offset + 2), 16));
+    assert.ok(green <= Math.max(red, blue), `${color} at ${value.toFixed(2)} leads with green`);
+  }
+
+  // Heat is evidence and must never wear a legal status's colour.
+  for (const semantic of ["ng-open", "ng-closed", "ng-conditional", "ng-unknown", "ng-conflict"]) {
+    for (let value = 0; value <= 1.0001; value += 0.01) {
+      assert.notEqual(rampAt(value).color.toLowerCase(), token(semantic), `heat must not reuse --${semantic}`);
+    }
+  }
   // The green is the palette's own regulatory green, so the map ring and the
   // "In season" chip in the sheet are one colour, not two greens.
   assert.equal(SEASON_OPEN_STROKE.toLowerCase(), token("ng-open"));
-  // Heat is evidence and must never wear a legal status's colour.
-  for (const semantic of ["ng-open", "ng-closed", "ng-conditional", "ng-unknown", "ng-conflict"]) {
-    for (const { color } of Object.values(HEAT_FILL)) {
-      assert.notEqual(color.toLowerCase(), token(semantic), `heat must not reuse --${semantic}`);
-    }
-  }
-  // globals.css carries the same four for the legend, which CAN take a variable.
+});
+
+test("the legend's swatches are the ramp's own values, not a second table", () => {
+  /* The failure this prevents: a legend tuned by eye until it looked right,
+     after which the key and the map disagree about what "High" looks like. */
+  assert.equal(HEAT_FILL.LOW.color, rampAt(0.2).color);
+  assert.equal(HEAT_FILL.MODERATE.color, rampAt(0.5).color);
+  assert.equal(HEAT_FILL.HIGH.color, rampAt(0.7).color);
+  assert.equal(HEAT_FILL.VERY_HIGH.color, rampAt(0.9).color);
+
+  // globals.css carries the same values for the legend, which CAN take a variable.
   for (const [name, fill] of [["ng-heat-low", HEAT_FILL.LOW], ["ng-heat-moderate", HEAT_FILL.MODERATE], ["ng-heat-high", HEAT_FILL.HIGH], ["ng-heat-very-high", HEAT_FILL.VERY_HIGH]] as const) {
     assert.equal(token(name), fill.color.toLowerCase(), `--${name} must mirror the map's value`);
   }
+  assert.equal(token("ng-heat-cold"), HEAT_RAMP[0].color.toLowerCase());
+  assert.equal(token("ng-heat-ember"), HEAT_RAMP[HEAT_RAMP.length - 1].color.toLowerCase());
+  // Every stop appears in the gradient the legend bar is painted with.
+  const gradient = /--ng-heat-gradient:([^;]+);/.exec(readFileSync(new URL("../../../app/globals.css", import.meta.url), "utf8"))![1];
+  for (const stop of HEAT_RAMP) assert.ok(gradient.includes(stop.color), `${stop.color} missing from the legend gradient`);
+});
+
+test("the three reasons to paint nothing are all painted as nothing", () => {
+  const zone = (over: Partial<ZoneHeat>): ZoneHeat =>
+    ({ classification: "HIGH", intensity: 0.7, strength: "MODERATE", renderKind: "ZONE_AREA", ...over });
+
+  assert.equal(heatPaintFor(undefined), null, "no certified evidence is held for this zone at all");
+  assert.equal(heatPaintFor(zone({ classification: "LIMITED_DATA", intensity: null })), null, "evidence held that refuses to rank");
+  assert.equal(heatPaintFor(zone({ intensity: null })), null, "a null intensity is a refusal, never the cold end");
+  assert.equal(heatPaintFor(zone({ renderKind: "RANGE_EXTENT" })), null, "extent has no more and no less, so it carries no ramp");
+  assert.notEqual(heatPaintFor(zone({ classification: "LOW", intensity: 0 })), null, "a rank of zero IS a value and is drawn");
+
+  // Zero and null are different answers and must never collapse into each other.
+  assert.equal(heatPaintFor(zone({ classification: "LOW", intensity: 0 }))!.color, rampAt(0).color);
 });
 
 test("absence and a low rank are different answers", () => {

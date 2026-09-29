@@ -15,7 +15,7 @@ import { evidenceProvenance, hasEvidenceForSpecies, opportunityAcross, opportuni
 
 test("every committed bundle is servable, and the matrix is derived from the data", () => {
   const datasets = servableDatasets();
-  assert.equal(datasets.length, 10, "ten committed bundles, ten servable pairs");
+  assert.equal(datasets.length, 13, "thirteen committed bundles, thirteen servable pairs");
 
   const pairs = datasets.map(({ speciesId, jurisdictionId }) => `${jurisdictionId} ${speciesId}`).sort();
   assert.deepEqual(pairs, [
@@ -28,7 +28,10 @@ test("every committed bundle is servable, and the matrix is derived from the dat
     "jurisdiction:ca-bc species:moose",
     "jurisdiction:ca-bc species:mule-deer",
     "jurisdiction:ca-bc species:white-tailed-deer",
+    "jurisdiction:ca-on species:american-black-bear",
+    "jurisdiction:ca-on species:moose",
     "jurisdiction:ca-on species:white-tailed-deer",
+    "jurisdiction:ca-on species:wild-turkey",
   ]);
 
   // A pair that answers for no geography is not coverage.
@@ -37,11 +40,11 @@ test("every committed bundle is servable, and the matrix is derived from the dat
     assert.ok(dataset.evidenceRecordCount >= dataset.geographyCount, `${dataset.speciesId} record count`);
   }
 
-  assert.equal(datasets.reduce((sum, d) => sum + d.geographyCount, 0), 1297, "species × zone pairs with evidence");
-  assert.equal(datasets.reduce((sum, d) => sum + d.evidenceRecordCount, 0), 6182, "committed evidence records");
+  assert.equal(datasets.reduce((sum, d) => sum + d.geographyCount, 0), 1469, "species × zone pairs with evidence");
+  assert.equal(datasets.reduce((sum, d) => sum + d.evidenceRecordCount, 0), 6642, "committed evidence records");
 });
 
-test("nine species now resolve, where only white-tailed deer did", () => {
+test("ten species now resolve, where only white-tailed deer did", () => {
   assert.deepEqual(speciesWithEvidence(), [
     "species:american-black-bear",
     "species:bobcat",
@@ -52,6 +55,7 @@ test("nine species now resolve, where only white-tailed deer did", () => {
     "species:moose",
     "species:mule-deer",
     "species:white-tailed-deer",
+    "species:wild-turkey",
   ]);
   assert.equal(hasEvidenceForSpecies("species:ruffed-grouse"), false);
 });
@@ -77,8 +81,12 @@ test("a species resolves in every jurisdiction that carries it, keyed by geograp
 test("absence is absence: no cold value is ever produced", () => {
   // A real Ontario WMU with no deer evidence in the bundle.
   assert.equal(opportunityAt("species:white-tailed-deer", "management_zone:ca-on-wmu-51"), null);
+  // A species with evidence in this jurisdiction, asked about a unit the
+  // authority did not report it in. Ontario now carries moose, so this is the
+  // stronger version of the same case: a served dataset that is silent here.
+  assert.equal(opportunityAt("species:moose", "management_zone:ca-on-wmu-51"), null);
   // A species with evidence, asked about a jurisdiction that does not carry it.
-  assert.equal(opportunityAt("species:moose", "management_zone:ca-on-wmu-57"), null);
+  assert.equal(opportunityAt("species:bobcat", "management_zone:ca-on-wmu-57"), null);
   // A species with no evidence at all.
   assert.equal(opportunityAt("species:ruffed-grouse", "management_zone:ca-on-wmu-57"), null);
 });
@@ -87,11 +95,11 @@ test("the bulk form returns only zones that hold evidence, once each", () => {
   const asked = [
     "management_zone:ca-bc-mu-7-42",
     "management_zone:ca-bc-mu-7-42",
-    "management_zone:ca-on-wmu-57",
+    "management_zone:ca-on-wmu-51",
     "management_zone:ca-bc-mu-nowhere",
   ];
   const heat = opportunityAcross("species:moose", asked);
-  assert.equal(heat.length, 1, "one BC zone answers; the duplicate, the Ontario zone and the invented zone do not");
+  assert.equal(heat.length, 1, "one BC zone answers; the duplicate, the unreported Ontario zone and the invented zone do not");
   assert.equal(heat[0].geographyId, "management_zone:ca-bc-mu-7-42");
   assert.ok(["VERY_HIGH", "HIGH", "MODERATE", "LOW", "LIMITED_DATA"].includes(heat[0].classification));
 

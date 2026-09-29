@@ -52,7 +52,14 @@ export const DATASET_EVIDENCE: Record<string, DatasetEvidenceKind> = {
   "dataset:ca-on-white-tailed-deer-harvest": { tier: "T1_OFFICIAL_MEASURED", precision: "MANAGEMENT_UNIT" },
   "dataset:ca-on-moose-harvest": { tier: "T1_OFFICIAL_MEASURED", precision: "MANAGEMENT_UNIT" },
   "dataset:ca-on-black-bear-harvest": { tier: "T1_OFFICIAL_MEASURED", precision: "MANAGEMENT_UNIT" },
-  "dataset:ca-on-wolf-coyote-harvest": { tier: "T1_OFFICIAL_MEASURED", precision: "MANAGEMENT_UNIT" },
+  "dataset:ca-on-wolf-coyote-harvest": {
+    tier: "T1_OFFICIAL_MEASURED",
+    precision: "MANAGEMENT_UNIT",
+    // The geography is perfectly good; the SPECIES are the problem. Ontario
+    // publishes one combined harvest column for wolf and coyote together, so
+    // neither species has a figure of its own to draw.
+    caveat: "Wolf and coyote harvest is published as one combined figure, so neither species can be attributed a value.",
+  },
   "dataset:ca-on-wild-turkey-harvest": { tier: "T1_OFFICIAL_MEASURED", precision: "MANAGEMENT_UNIT" },
   "dataset:ca-on-elk-harvest": {
     tier: "T1_OFFICIAL_MEASURED",
@@ -333,8 +340,16 @@ export function validateEvidenceMatrix(): string[] {
     if (entry.ingestionStatus === "INGESTED" && entry.precision === null) {
       problems.push(`${entry.datasetId} is ingested yet declares no precision; an ingested dataset has a geography, so establish it`);
     }
-    if (entry.coverage === "UNAVAILABLE" && entry.precision !== null) {
-      problems.push(`${entry.datasetId} is recorded UNAVAILABLE yet declares a precision; a dataset that publishes nothing usable has no geography to state`);
+    /* UNAVAILABLE has more than one cause, and only one of them implies there
+       is no geography. Ontario's wolf-and-coyote harvest is unavailable because
+       the authority publishes ONE combined column for two species — the
+       Wildlife Management Unit geography behind it is the same good geography
+       every other Ontario harvest dataset uses. Reading every UNAVAILABLE as
+       "nothing is published" would have forced that entry to disclaim a
+       precision it genuinely has, which is a false statement about the source
+       made in order to satisfy a rule about the source. */
+    if (entry.coverage === "UNAVAILABLE" && entry.ingestionStatus === "NO_DATA_PUBLISHED" && entry.precision !== null) {
+      problems.push(`${entry.datasetId} records that the authority publishes nothing, yet declares a precision; there is no geography to state`);
     }
   }
   return problems;

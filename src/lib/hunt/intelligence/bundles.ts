@@ -7,7 +7,10 @@ import bcGrayWolf from "../../../../content/intelligence/ca-bc-gray-wolf-harvest
 import bcMoose from "../../../../content/intelligence/ca-bc-moose-harvest.json" with { type: "json" };
 import bcMuleDeer from "../../../../content/intelligence/ca-bc-mule-deer-harvest.json" with { type: "json" };
 import bcWhiteTailedDeer from "../../../../content/intelligence/ca-bc-white-tailed-deer-harvest.json" with { type: "json" };
+import onBlackBear from "../../../../content/intelligence/ca-on-american-black-bear-harvest.json" with { type: "json" };
+import onMoose from "../../../../content/intelligence/ca-on-moose-harvest.json" with { type: "json" };
 import onWhiteTailedDeer from "../../../../content/intelligence/ca-on-white-tailed-deer-harvest.json" with { type: "json" };
+import onWildTurkey from "../../../../content/intelligence/ca-on-wild-turkey-harvest.json" with { type: "json" };
 import { classifyOpportunity } from "./classification.ts";
 import {
   METRIC_MEANINGS,
@@ -64,7 +67,7 @@ export interface IntelligenceBundle {
 /** The committed bundles. One line per dataset; nothing else lists them. */
 const BUNDLES = [
   bcBlackBear, bcBobcat, bcLynx, bcCaribou, bcElk, bcGrayWolf, bcMoose, bcMuleDeer, bcWhiteTailedDeer,
-  onWhiteTailedDeer,
+  onWhiteTailedDeer, onMoose, onBlackBear, onWildTurkey,
 ] as unknown as IntelligenceBundle[];
 
 export interface ServableDataset {
