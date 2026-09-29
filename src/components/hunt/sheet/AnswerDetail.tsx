@@ -10,6 +10,7 @@ import { readableCalendarDay } from "../../../lib/hunt/date";
 import { partitionEvaluationSources } from "../../../lib/hunt/source-roles";
 import type { HuntEvaluation } from "../../../lib/hunt/types";
 import AuthorityText from "./AuthorityText";
+import { INTERFACE_LANGUAGE } from "../../../lib/hunt/translation";
 import Disclosure from "./Disclosure";
 import { groupLimitations, orphanCaveats, sourceCaveats, type LimitationGroups } from "./limitation-groups";
 import styles from "../HuntApp.module.css";
@@ -58,7 +59,7 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
           <ul className={styles.bullets}>
             {limitations.here.map((limitation) => (
               <li key={limitation.id}>
-                <AuthorityText text={{ text: limitation.text, lang: limitation.lang, owner: limitation.owner }} />
+                <AuthorityText into={INTERFACE_LANGUAGE} text={{ text: limitation.text, lang: limitation.lang, owner: limitation.owner }} />
               </li>
             ))}
           </ul>
@@ -92,7 +93,7 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
                 that qualifies an answer rather than captions a source. */}
             {limitations.always.map((limitation) => (
               <li key={limitation.id}>
-                <AuthorityText text={{ text: limitation.text, lang: limitation.lang, owner: limitation.owner }} />
+                <AuthorityText into={INTERFACE_LANGUAGE} text={{ text: limitation.text, lang: limitation.lang, owner: limitation.owner }} />
               </li>
             ))}
           </ul>
@@ -172,7 +173,7 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
             own statement, and is shown rather than dropped. */}
         {orphanCaveats(limitations, [...sourceGroups.authority, ...sourceGroups.context].map((source) => source.id)).map((caveat) => (
           <blockquote key={caveat.id} className={styles.sourceQuote}>
-            <AuthorityText text={{ text: caveat.text, lang: caveat.lang, owner: caveat.owner }} />
+            <AuthorityText into={INTERFACE_LANGUAGE} text={{ text: caveat.text, lang: caveat.lang, owner: caveat.owner }} />
           </blockquote>
         ))}
         <p className={styles.detailNote}>
@@ -220,7 +221,7 @@ function SourceList({ sources, caveats }: { sources: HuntEvaluation["sources"]; 
             */}
             {sourceCaveats(caveats, source.id).map((caveat) => (
               <blockquote key={caveat.id} className={styles.sourceQuote}>
-                <AuthorityText text={{ text: caveat.text, lang: caveat.lang, owner: caveat.owner }} />
+                <AuthorityText into={INTERFACE_LANGUAGE} text={{ text: caveat.text, lang: caveat.lang, owner: caveat.owner }} />
               </blockquote>
             ))}
           </li>

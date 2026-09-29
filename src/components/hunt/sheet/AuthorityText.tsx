@@ -28,12 +28,22 @@ export default function AuthorityText({
   text,
   /** The authority's OWN text in another language, where the record holds one. */
   authorityAlso,
-  /** The language the interface is in. Passed, never inferred from the text. */
-  into = "en-CA",
+  /**
+   * The language the interface is in. Passed, never inferred from the text —
+   * and REQUIRED, because this component's own note above condemns a defaulted
+   * lang and it carried one.
+   *
+   * Benign only while the interface is English-only: the default answers in
+   * English whatever the reader asked for, so the moment a locale selector
+   * arrives it is silently wrong, which is exactly when nobody is looking at
+   * it. `INTERFACE_LANGUAGE` is the one declared place, so every call site
+   * shows which language it chose.
+   */
+  into,
 }: {
   text: LanguagedText;
   authorityAlso?: LanguagedText;
-  into?: LanguagedText["lang"];
+  into: LanguagedText["lang"];
 }) {
   const reading = readingFor(text, into, authorityAlso);
   const [showingOriginal, setShowingOriginal] = useState(false);

@@ -55,6 +55,28 @@ import translations from "../../../content/regulatory/translations/hunt.json" wi
  *
  * The mechanism is generic. French→English and English→French are one path,
  * and a further source language is a further row in the data file.
+ *
+ * WHY SOURCE LANGUAGE IS METADATA AND NEVER DETECTION — demonstrated, not
+ * argued, because the next person to read this will have the idea and should
+ * find the evidence rather than repeat the experiment.
+ *
+ * A detector was built properly and swept every `legalTimeNotCertified` call
+ * site for French text carrying no declared language. It fired twice and was
+ * wrong both times, in the same direction:
+ *
+ *   « Gouvernement du Québec »      an authority's NAME
+ *   « Règlement sur la chasse »     a regulation's TITLE
+ *
+ * Both sit inside ordinary English sentences, and §47 REQUIRES them to: an
+ * official name is not translated. Refining accents to French function words
+ * did not help, because an authority's name and a regulation's title are French
+ * by construction.
+ *
+ * So a contains-French test cannot separate French prose from an English
+ * sentence that correctly contains a French proper name — and §47 guarantees
+ * such sentences exist nearly everywhere North Ground writes about a
+ * jurisdiction. The test is not merely unreliable; it is answering a different
+ * question from the one asked. A record's language has to come from the record.
  */
 
 /** Text whose language and authorship the record itself declares. */

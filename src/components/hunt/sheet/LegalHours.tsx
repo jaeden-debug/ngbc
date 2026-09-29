@@ -3,6 +3,7 @@
 import type { LegalTimeResult } from "../../../lib/hunt/regulatory/legal-time";
 import Disclosure from "./Disclosure";
 import AuthorityText from "./AuthorityText";
+import { INTERFACE_LANGUAGE } from "../../../lib/hunt/translation";
 import styles from "./Answer.module.css";
 
 /**
@@ -115,7 +116,7 @@ export default function LegalHours({ legalTime }: { legalTime: LegalTimeResult }
           ministry's sentence must not be rewritten, so the reading is shown
           with the original one control away. */}
       <p className={styles.hoursRule}>
-        <AuthorityText text={{ text: legalTime.reason, lang: legalTime.reasonLang ?? "en-CA", owner: legalTime.reasonOwner ?? "NORTH_GROUND" }} />
+        <AuthorityText into={INTERFACE_LANGUAGE} text={{ text: legalTime.reason, lang: legalTime.reasonLang ?? "en-CA", owner: legalTime.reasonOwner ?? "NORTH_GROUND" }} />
       </p>
       <p className={styles.hoursNote}>{legalTime.authority} states the rule.</p>
     </section>
