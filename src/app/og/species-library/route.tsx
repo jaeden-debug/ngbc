@@ -41,10 +41,10 @@ export async function GET() {
       <div style={{ position: "absolute", top: 0, left: 0, width: size.width, height: size.height, display: "flex", background: "linear-gradient(0deg, rgba(5,7,6,.95) 0%, rgba(5,7,6,.72) 42%, rgba(5,7,6,.15) 80%)" }} />
       <div style={{ position: "absolute", left: 64, right: 64, bottom: 52, display: "flex", flexDirection: "column" }}>
         <div style={{ display: "flex", fontSize: 24, letterSpacing: 8, textTransform: "uppercase", color: "#c9c2a6" }}>
-          North Ground · Canada · United States
+          North Ground · Canada
         </div>
         <div style={{ display: "flex", fontSize: 72, fontWeight: 700, letterSpacing: -2, marginTop: 14, lineHeight: 1.02 }}>
-          North American Game Species
+          Canadian Game Species
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginTop: 22, borderTop: "2px solid rgba(201,194,166,.4)", paddingTop: 18, fontSize: 26, color: "#c9c2a6" }}>
           <span>Habitat · Range · Identification · Hunting context</span>

@@ -43,7 +43,7 @@ async function validate() {
     /<link rel="canonical" href="https:\/\/www\.northgroundbushcraft\.com\/?"/i,
     "canonical should ignore query parameters",
   );
-  assert.match(home, /<meta name="description" content="Canadian outdoor knowledge from North Ground\. Find your hunting zone and check seasons with North Ground Hunt, and explore North American game species\."/i);
+  assert.match(home, /<meta name="description" content="Canadian outdoor knowledge from North Ground\. Find your hunting zone and check seasons with North Ground Hunt, and explore game species across Canada\."/i);
   assert.match(home, /<meta property="og:title" content="North Ground/i);
   assert.match(home, /<meta property="og:image" content="https:\/\/www\.northgroundbushcraft\.com\/opengraph-image/i);
   assert.match(home, /<meta name="twitter:card" content="summary_large_image"/i);
@@ -92,7 +92,7 @@ async function validate() {
   assert.match(tool, /<link rel="canonical" href="https:\/\/www\.northgroundbushcraft\.com\/hunt"/i);
   assert.equal(countMatches(tool, /<link rel="canonical"/gi), 1, "Hunt should emit one canonical tag");
   assert.match(tool, /<title>Hunting Zone (?:&|&amp;) Season Finder \| North Ground Hunt<\/title>/i);
-  assert.match(tool, /<meta name="description" content="Find your hunting zone anywhere North Ground supports in Canada and USA, check hunting seasons by species and date, and verify results against official government sources\."/i);
+  assert.match(tool, /<meta name="description" content="Find your hunting zone anywhere North Ground supports in Canada, check hunting seasons by species and date, and verify results against official government sources\."/i);
   assert.match(tool, /<meta property="og:title" content="Know Your Zone\. Know Your Season\. \| North Ground Hunt"/i);
   assert.match(tool, /<meta property="og:description" content="Explore Canadian hunting zones on an interactive map, choose your species and date, and check your hunt against official government sources\."/i);
   assert.match(tool, /<meta property="og:url" content="https:\/\/www\.northgroundbushcraft\.com\/hunt"/i);

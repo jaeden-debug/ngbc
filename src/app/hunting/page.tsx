@@ -2,29 +2,42 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import HuntNav from "../../components/hunt/HuntNav";
+import StructuredData from "../../components/StructuredData";
 import { contentRepository } from "../../lib/content/repository";
-import { officialTermPlural, ZONE_LAYERS } from "../../lib/hunt/zone-layers";
+import { OPEN_GRAPH_BASE } from "../../lib/seo/open-graph";
+import { collectionPageJsonLd } from "../../lib/seo/structured-data";
+import { isJurisdictionGeography, officialTermPlural, ZONE_LAYERS } from "../../lib/hunt/zone-layers";
 import styles from "./page.module.css";
 
+const HUB_TITLE = "Hunting in Canada | Zones, Seasons & Species";
+/* The page sets its own openGraph, which replaces the layout's wholesale, so the
+   site card has to be named here or the hub shares with no image. */
+const HUB_IMAGE = { url: "/opengraph-image", width: 1200, height: 630, alt: "North Ground" };
+const HUB_DESCRIPTION =
+  "Explore hunting zones, supported season information and species identification with North Ground Hunt across supported areas of Canada.";
+
 export const metadata: Metadata = {
-  title: "Hunting in Canada & USA | Zones, Seasons & Species",
+  title: HUB_TITLE,
   description:
-    "Explore hunting zones, supported season information and species identification with North Ground Hunt across supported areas in Canada and the United States.",
+    HUB_DESCRIPTION,
   alternates: {
     canonical: "/hunting",
   },
   openGraph: {
+    ...OPEN_GRAPH_BASE,
     type: "website",
     url: "/hunting",
-    title: "Hunting in Canada & USA | Zones, Seasons & Species",
+    title: HUB_TITLE,
     description:
-      "Explore hunting zones, supported season information and species identification with North Ground Hunt across supported areas in Canada and the United States.",
+      HUB_DESCRIPTION,
+    images: [HUB_IMAGE],
   },
   twitter: {
-    card: "summary",
-    title: "Hunting in Canada & USA | Zones, Seasons & Species",
+    card: "summary_large_image",
+    title: HUB_TITLE,
     description:
-      "Explore hunting zones, supported season information and species identification with North Ground Hunt across supported areas in Canada and the United States.",
+      HUB_DESCRIPTION,
+    images: [HUB_IMAGE.url],
   },
 };
 
@@ -43,7 +56,10 @@ function servingJurisdictions(): HuntingJurisdiction[] {
     if (!layer.serving) continue;
 
     const existing = jurisdictions.get(layer.jurisdictionId);
-    const term = officialTermPlural(layer);
+    /* A jurisdiction-level layer (Prince Edward Island) has no units; its stored
+       shape "must never reach a hunter as one" (zone-layers.ts), so it is not
+       listed as "Provinces". */
+    const term = isJurisdictionGeography(layer) ? "Province-wide, no management units" : officialTermPlural(layer);
 
     if (existing) {
       if (!existing.terms.includes(term)) existing.terms.push(term);
@@ -76,6 +92,12 @@ export default async function HuntingPage() {
 
   return (
     <main className="ng-product-page">
+      <StructuredData data={collectionPageJsonLd({
+        path: "/hunting",
+        name: "Hunting",
+        description: HUB_DESCRIPTION,
+        items: [{ name: "North Ground Hunt", path: "/hunt" }, { name: "Species library", path: "/hunting/species" }],
+      })} />
       <HuntNav current="/hunting" />
 
       <div className={`ng-shell ${styles.shell}`}>
@@ -91,7 +113,7 @@ export default async function HuntingPage() {
           <h1 className={styles.title}>Hunting</h1>
           <p className={styles.lede}>
             Hunting-zone and supported season tools alongside species identification
-            and field knowledge for hunters in Canada and the United States.
+            and field knowledge for hunters in Canada.
           </p>
         </header>
 

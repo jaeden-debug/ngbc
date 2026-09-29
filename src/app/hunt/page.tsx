@@ -22,10 +22,10 @@ export const dynamic = "force-dynamic";
 
 const canonicalPath = "/hunt";
 const metaTitle = "Hunting Zone & Season Finder | North Ground Hunt";
-/* "anywhere North Ground supports" is the honest qualifier: twelve Canadian layers and Idaho serve
-   today, and the sentence stays true as that list grows without naming a coverage it lacks. */
+/* "anywhere North Ground supports" is the honest qualifier. Canada only in the copy until the
+   United States is properly served (owner, 2026-09-29); Idaho still serves. */
 const metaDescription =
-  "Find your hunting zone anywhere North Ground supports in Canada and USA, check hunting seasons by species and date, and verify results against official government sources.";
+  "Find your hunting zone anywhere North Ground supports in Canada, check hunting seasons by species and date, and verify results against official government sources.";
 const socialTitle = "Know Your Zone. Know Your Season. | North Ground Hunt";
 const socialDescription =
   "Explore Canadian hunting zones on an interactive map, choose your species and date, and check your hunt against official government sources.";

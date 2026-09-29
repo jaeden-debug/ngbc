@@ -117,9 +117,9 @@ export default async function SpeciesLibraryPage() {
 
         <header className={styles.header}>
           <p className="ng-eyebrow">North Ground Hunt</p>
-          <h1 className={styles.title}>North American species library</h1>
+          <h1 className={styles.title}>Canadian species library</h1>
           <p className={styles.lede}>
-            Identification, habitat and field marks for {species.length} North American species.
+            Identification, habitat and field marks for {species.length} species hunted and seen in Canada.
             Search a common, scientific, French or hunter name.
           </p>
 

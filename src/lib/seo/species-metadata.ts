@@ -11,16 +11,19 @@
  *   implies a hunting opportunity.
  * - "Certified hunting rules" is said only where the coverage report holds them,
  *   and names where. Everything else says field knowledge, never rules.
+ * - Service copy says Canada, not North America: only Canada is properly served
+ *   today (owner, 2026-09-29). Revert to North America when the U.S. is. Species
+ *   RANGE text elsewhere is biology and keeps its own geography.
  */
 
 export const SPECIES_LIBRARY_METADATA = {
   /** The layout template appends " | North Ground". */
-  title: "North American Game Species Guide",
+  title: "Canadian Game Species Guide",
   description:
-    "Explore North American game species with identification, habitat, range, hunting information, field knowledge and links to North Ground Hunt.",
-  ogTitle: "North American Game Species | North Ground",
+    "Explore Canadian game species with identification, habitat, range, hunting information, field knowledge and links to North Ground Hunt.",
+  ogTitle: "Canadian Game Species | North Ground",
   ogDescription:
-    "Explore game animals across Canada and the United States. Learn their habitat, range, identification and hunting context with North Ground.",
+    "Explore game animals across Canada. Learn their habitat, range, identification and hunting context with North Ground.",
 } as const;
 
 /** Groups whose members are hunted somewhere they occur. Anything else defaults
@@ -109,9 +112,9 @@ export function speciesMetadataCopy(input: SpeciesMetadataInput): SpeciesMetadat
   if (!hunted) {
     return {
       title: `${display}: Identification, Habitat & Range`,
-      description: `Learn where the ${prose} lives, how to tell it from its lookalikes, and its habitat and behaviour across North America.`,
+      description: `Learn where the ${prose} lives, how to tell it from its lookalikes, and its habitat and behaviour in Canada.`,
       ogTitle: `${display} | North Ground`,
-      ogDescription: `Identification, habitat, range and field knowledge for the ${prose} across North America.`,
+      ogDescription: `Identification, habitat, range and field knowledge for the ${prose} in Canada.`,
       hunted,
     };
   }
@@ -119,9 +122,9 @@ export function speciesMetadataCopy(input: SpeciesMetadataInput): SpeciesMetadat
     title: `${display}: Habitat, Range & Hunting Guide`,
     description: coverage
       ? `Learn where the ${prose} lives, how to identify it, its habitat and behaviour, and check certified hunting rules in ${coverage}.`
-      : `Learn where the ${prose} lives, how to identify it, its habitat and behaviour, and the field knowledge hunters use across Canada and the United States.`,
+      : `Learn where the ${prose} lives, how to identify it, its habitat and behaviour, and the field knowledge hunters use in Canada.`,
     ogTitle: `${display} | North Ground`,
-    ogDescription: `Habitat, range, identification, field knowledge and hunting context for the ${prose} across North America.`,
+    ogDescription: `Habitat, range, identification, field knowledge and hunting context for the ${prose} in Canada.`,
     hunted,
   };
 }
