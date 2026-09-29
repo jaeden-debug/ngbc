@@ -1809,10 +1809,37 @@ investigating, and a **green highlight** on the zones whose season is open for
 that species. Nothing else is drawn. The layer answers one question — *where
 should I look, and where is it open* — and it answers it at a glance.
 
-- **Open is binary on the layer.** A zone is highlighted green or it is not.
-  Conditional, needs-a-closer-look, unknown and not-certified are **not**
-  separate map indicators; drawing five states on a map answers no question
-  quickly. This is a deliberate simplification of the *map layer only*.
+- **Green means at least one current legal hunting opportunity exists** for the
+  selected species, zone and date. *Amended 2026-09-29 (owner): green is no
+  longer restricted to seasons open for every licence. A hunt that is legally
+  possible now is green, whether or not it turns on the hunter.*
+
+  - open without material conditions → **green**
+  - open with material conditions → **green + a `!` condition indicator**
+  - closed → no green
+  - a season in the future → no green for the selected date
+  - unknown or insufficient certified coverage → **no green, and never called
+    closed**
+
+- **There is no conditional map colour.** No yellow, no orange, no stripes, no
+  second fill, no competing legend category. If hunting is legally possible now
+  the zone is green, and conditions are carried by one compact `!` indicator per
+  zone — legible over heat, green, the basemap and the boundaries, and never
+  obscuring a zone label or the selected-zone treatment.
+
+- **What counts as conditional is structured, never a display string.** It comes
+  from the canonical regulatory result — licence class, tag, draw, sex, age,
+  weapon or method, ammunition, permit, residency, hunter qualification, a
+  method-specific season, or another real restriction. **Explanatory prose in a
+  source is not a condition.** The `!` means: *there is a legal opportunity here
+  now, and the hunter needs to know something material before assuming it
+  applies to them.*
+
+- **The `!` is a real control**, reachable by touch, mouse, keyboard and screen
+  reader, and never by hover alone. It opens a concise glass popover naming the
+  most important one to three conditions, with any remainder counted rather than
+  listed, and a path into the zone sheet where the complete sourced answer
+  already lives. The popover never duplicates the sheet.
 - **The zone card is unchanged and remains the full answer.** Tapping a zone
   opens the ordinary zone sheet, with every state, condition, source and
   limitation §41A already requires. The layer is a way in, never the answer.
@@ -1829,6 +1856,42 @@ should I look, and where is it open* — and it answers it at a glance.
 - **Heat resolution never exceeds evidence resolution** (§41B). A zone with no
   certified evidence draws no heat rather than a cold value, because absent
   evidence is not evidence of absence.
+
+## Authority language is immutable; translation is presentation
+
+*Decided 2026-09-29 (owner).*
+
+Canadian authorities publish in French and in English, and a hunter must never
+be required to read a language they do not have in order to use Hunt. Equally,
+an authority's own words are the fact and may not be rewritten.
+
+- **The original authority text is immutable and keeps its language.** It is
+  never replaced in provenance by a translation, never re-labelled as
+  authority-owned in another language, and never has its citation identity
+  changed. A translation is **North Ground presentation over** the original.
+- **The model distinguishes ORIGINAL AUTHORITY TEXT from TRANSLATED DISPLAY
+  TEXT**, and the `owner` tag already carries that distinction: a translation is
+  `NORTH_GROUND`, never `AUTHORITY`. A machine or North Ground translation must
+  be structurally incapable of rendering through the authority-quotation path.
+- **Source language is metadata, not detection.** Where a record knows its
+  language, that is used; language is never re-guessed at render. Records
+  holding foreign text without language metadata are corrected from
+  authoritative evidence, never by guessing.
+- **Preference order for a translation:** the authority's own published
+  bilingual text first — in which case both texts are authority-owned and both
+  provenance relationships are kept; then a stored, reviewed North Ground
+  translation; then a clearly labelled generated one. Where no translation
+  exists, the original remains available and the interface says so rather than
+  hiding the fact.
+- **Translation never changes structured legality.** Interpretation runs on the
+  canonical regulatory data, never on translated prose.
+- **The pattern is generic, not Québec-specific.** French→English and
+  English→French are the same mechanism, and it extends to further source
+  languages without rework.
+- **The interaction is the familiar one:** the translation shown by default in
+  the interface language, labelled as translated and from which language, with a
+  control to see the authoritative original and return. Both are real accessible
+  controls with their state conveyed.
 - **Address → zone card.** Choosing a searched place sets the hunt location, drops
   the hunt pin, resolves and highlights the official zone, frames it beside the card
   and opens that zone's card.
