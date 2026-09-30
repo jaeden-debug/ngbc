@@ -157,6 +157,70 @@ export const SINGLE_ZONE_JURISDICTIONS: Readonly<Record<string, string>> = {
    * and the fix is a municipal boundary, not more reading.
    */
   "jurisdiction:us-nv": "America/Los_Angeles",
+  /*
+   * § 71.7 does the same job for the central/mountain line, and three more
+   * states fall out of it by construction — the line runs along their own
+   * borders, so no part of them is on the other side:
+   *
+   * COLORADO. § 71.7(d) runs the line along the Kansas-Colorado boundary,
+   * jogging east around six Kansas counties and back. So the line is at or east
+   * of Colorado's eastern border, and § 71.9 never names Colorado, so nothing
+   * crosses it in the west either.
+   *
+   * NEW MEXICO. § 71.7(e) runs "southerly along the west boundary of the State
+   * of Oklahoma and the west boundary of the State of Texas to the southeast
+   * corner of New Mexico; thence westerly along the Texas-New Mexico boundary".
+   * That is New Mexico's eastern and southern border, and § 71.9 does not name
+   * it.
+   *
+   * OKLAHOMA. The same route puts the line on Oklahoma's WEST boundary, so
+   * Oklahoma lies wholly east of it, and § 71.5 does not name Oklahoma.
+   *
+   * MONTANA is above on the tz table; § 71.7(a) independently confirms it, the
+   * line running along the Montana-North Dakota boundary and then east into
+   * North Dakota. Two sources, one answer.
+   */
+  "jurisdiction:us-co": "America/Denver",
+  "jurisdiction:us-nm": "America/Denver",
+  "jurisdiction:us-ok": "America/Chicago",
+};
+
+/**
+ * States the federal line splits along COUNTY boundaries.
+ *
+ * Kept apart from the feature splits below because the two differ in what a
+ * person does next, which is the whole reason to distinguish them. A county
+ * split is resolvable with county geometry — and North Ground already reads
+ * Census TIGERweb for state identity, so the unlock is a layer it can already
+ * reach. A feature split needs a river channel or a survey grid.
+ *
+ * Neither is served yet: `timeZoneAtPoint` answers per jurisdiction, and "Kansas
+ * except six counties" is not a jurisdiction-level fact. Recording the counties
+ * is what makes the next step a lookup rather than a re-read.
+ */
+export const UNITED_STATES_SPLIT_BY_COUNTY: Readonly<Record<string, {
+  citation: string;
+  majorityZone: string;
+  exceptionZone: string;
+  exceptionCounties: readonly string[];
+  note: string;
+}>> = {
+  "jurisdiction:us-ks": {
+    citation: "49 CFR § 71.7(d)",
+    majorityZone: "America/Chicago",
+    exceptionZone: "America/Denver",
+    exceptionCounties: ["Sherman", "Wallace", "Greeley", "Hamilton", "Logan", "Wichita"],
+    note:
+      "The line jogs east off the Kansas-Colorado boundary around these six counties and back, so it is entirely county lines here. Sherman, Wallace, Greeley and Hamilton are the western tier the line encloses; Logan and Wichita are named where it steps back west. Which side each of the six sits on must be read off the route itself before any of them is served — the section traces a staircase, not a straight tier.",
+  },
+  "jurisdiction:us-tx": {
+    citation: "49 CFR § 71.7(e)",
+    majorityZone: "America/Chicago",
+    exceptionZone: "America/Denver",
+    exceptionCounties: ["Hudspeth", "El Paso"],
+    note:
+      "The line runs south along the west boundary of Texas, then west along the Texas-New Mexico boundary to \"the east line of Hudspeth County, Tex.\", then south to Mexico. So the mountain part of Texas is what lies west of Hudspeth's east line. Hudspeth is named by the CFR; El Paso lies west of it and is therefore also mountain, which is an inference from the geometry rather than a name in the section, and is flagged as such.",
+  },
 };
 
 /**
@@ -174,6 +238,27 @@ export const UNITED_STATES_SPLIT_BY_FEATURE: Readonly<Record<string, { citation:
     feature: "the main channel of the Salmon River, after the Idaho County / Lemhi County boundary",
     consequence:
       "Idaho County is split by a river, so even a county-level table is wrong there. Idaho's panhandle is Pacific and its south is mountain. Every currently certified Idaho unit is numbered 21A or above and none is in the panhandle, so America/Boise would be right for all of them today — and an hour wrong for the first panhandle species added, which is deer, elk, bear, turkey or grouse. Resolving it needs the Salmon River channel, or per-unit zoning rather than per-state.",
+  },
+  "jurisdiction:us-nd": {
+    citation: "49 CFR § 71.7(a)",
+    feature:
+      "the Missouri River, the Yellowstone River and the Little Missouri (all by the MIDDLE of the channel), township and range lines (T. 150 N., R. 104 W. and others), and the centre of State Highway 31",
+    consequence:
+      "North Dakota's central/mountain line is overwhelmingly not a county boundary. It does touch Mercer, Morton and Sioux county lines, but between them it follows three river channels, a survey grid and a highway centreline — so a county table would be wrong along the whole corridor rather than merely incomplete. The unlock is hydrography plus the Public Land Survey System, not more reading.",
+  },
+  "jurisdiction:us-sd": {
+    citation: "49 CFR § 71.7(b)",
+    feature:
+      "the main channel of the Missouri River, \"the crossing of the original Chicago & North Western Railway near Pierre\", and section corners (the NE 1/4, Sec. 6, T. 2 N., R. 30 E.)",
+    consequence:
+      "A railway that the section itself calls \"original\" is a historical alignment, which is worse than a river: it may no longer exist on the ground. The line then follows the west lines of Jones, Mellette and Todd Counties, so the southern half IS county-traceable — but the northern half is not. § 71.7(g) also singles out Murdo, S. Dak. as the one municipality on this line that is CENTRAL while every other is mountain, so Murdo must be handled explicitly by anything that serves South Dakota.",
+  },
+  "jurisdiction:us-ne": {
+    citation: "49 CFR § 71.7(c)",
+    feature:
+      "township, range and section lines of the Public Land Survey System, with their offsets, for the entire described route",
+    consequence:
+      "Nebraska's line names no county at all — it is a staircase of section lines \"with their offsets\" from the South Dakota border to Kansas. There is no county approximation to make, so this is the clearest case in Part 71 that a county-level timezone table cannot be built for the United States generally. The unlock is PLSS geometry.",
   },
   "jurisdiction:us-ak": {
     citation: "49 CFR § 71.11 with § 71.12",

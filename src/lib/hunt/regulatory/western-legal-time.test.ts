@@ -8,7 +8,7 @@ import { albertaHoursRules, ALBERTA_GENERAL_HOURS } from "./alberta-legal-time.t
 import { manitobaHoursRules, MANITOBA_GENERAL_HOURS } from "./manitoba-legal-time.ts";
 import { britishColumbiaHoursRules, BRITISH_COLUMBIA_GENERAL_HOURS } from "./british-columbia-legal-time.ts";
 import { montanaHoursRules, MONTANA_UPLAND_HOURS } from "./montana-legal-time.ts";
-import { timeZoneAtPoint, UNITED_STATES_SPLIT_BY_FEATURE } from "../time-zone.ts";
+import { timeZoneAtPoint, UNITED_STATES_SPLIT_BY_COUNTY, UNITED_STATES_SPLIT_BY_FEATURE } from "../time-zone.ts";
 import { sunriseSunset } from "./solar.ts";
 
 const iso = (value: string) => value as IsoDate;
@@ -421,4 +421,46 @@ test("a state split by a river or a meridian is refused, and says what would unl
   /* Idaho's is latent rather than live, and the test says so, so nobody
      "fixes" it by stamping America/Boise across the state. */
   assert.match(UNITED_STATES_SPLIT_BY_FEATURE["jurisdiction:us-id"].consequence, /21A or above|panhandle/);
+});
+
+test("§ 71.7 gives three more states a clock by running the line along their own borders", () => {
+  /* The route direction is the whole argument, and it differs per state:
+     Colorado and New Mexico sit WEST of a line on their eastern borders, so
+     mountain; Oklahoma sits EAST of a line on its western border, so central.
+     Asserting Oklahoma beside the other two is deliberate — it is the one whose
+     side is opposite, so a reader who inverted "westerly along the west
+     boundary" would break here and not on the other two. */
+  assert.equal(timeZoneAtPoint("jurisdiction:us-co"), "America/Denver");
+  assert.equal(timeZoneAtPoint("jurisdiction:us-nm"), "America/Denver");
+  assert.equal(timeZoneAtPoint("jurisdiction:us-ok"), "America/Chicago");
+  /* Montana was already served from the tz table; § 71.7(a) confirms it
+     independently. Two sources agreeing is the point, so it is asserted here
+     too rather than left implicit. */
+  assert.equal(timeZoneAtPoint("jurisdiction:us-mt"), "America/Denver");
+});
+
+test("a county split and a feature split are recorded as different problems", () => {
+  /* They differ in what a person does next. A county split is resolvable with
+     Census TIGERweb county geometry, which this codebase already reads for state
+     identity. A feature split needs a river channel or a survey grid. Collapsing
+     them would send someone to acquire hydrography for Kansas, and send nobody
+     to acquire anything for Nebraska. */
+  for (const id of ["jurisdiction:us-ks", "jurisdiction:us-tx"]) {
+    const split = UNITED_STATES_SPLIT_BY_COUNTY[id];
+    assert.ok(split, `${id} must be recorded as a county split`);
+    assert.match(split.citation, /49 CFR § 71\.7/);
+    assert.ok(split.exceptionCounties.length > 0, `${id} must name the counties`);
+    assert.equal(timeZoneAtPoint(id), undefined, `${id} is not a jurisdiction-level fact and must not be served`);
+    assert.equal(UNITED_STATES_SPLIT_BY_FEATURE[id], undefined, `${id} is a county split, not a feature split`);
+  }
+  /* Nebraska is the case that proves a national county table is impossible:
+     § 71.7(c) names no county at all, only section lines with their offsets. */
+  const ne = UNITED_STATES_SPLIT_BY_FEATURE["jurisdiction:us-ne"];
+  assert.ok(ne, "Nebraska must be recorded as a feature split");
+  assert.match(ne.feature, /Public Land Survey System/);
+  assert.equal(UNITED_STATES_SPLIT_BY_COUNTY["jurisdiction:us-ne"], undefined,
+    "Nebraska has no county approximation to offer");
+  /* South Dakota carries the one municipal exception on this line. Anything that
+     serves South Dakota has to handle Murdo explicitly. */
+  assert.match(UNITED_STATES_SPLIT_BY_FEATURE["jurisdiction:us-sd"].consequence, /Murdo/);
 });
