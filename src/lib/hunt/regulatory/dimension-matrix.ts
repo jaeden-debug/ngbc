@@ -19,7 +19,10 @@
  * reads as coverage and computes as nothing.
  */
 
+import conditionKinds from "../../../../content/regulatory/condition-kinds.json" with { type: "json" };
 import { classesFor, type LegalAnimalClass } from "./physical-criterion.ts";
+
+const CONDITION_KINDS = (conditionKinds as { conditions: Record<string, { kind: string; scope: string }> }).conditions;
 
 export type DimensionStatus =
   /** The fact is present as structured data the engine can compute on. */
@@ -141,6 +144,7 @@ export interface RuleShape {
   windows?: unknown;
   window?: unknown;
   conditionIds?: unknown;
+  jurisdictionId?: unknown;
   /** The authority's season as published prose, where no window was derived. */
   seasonPhrase?: unknown;
   sourceId?: unknown;
@@ -180,6 +184,9 @@ export function implementsOf(rule: RuleShape): readonly string[] {
 /** The bundle a rule came from, for facts a rule references but does not hold. */
 export interface ClassBundle {
   legalAnimalClasses?: readonly LegalAnimalClass[];
+  /* Most bundles state the jurisdiction once, at the top. Ontario also puts it
+     on each rule. One fact, two homes — so it is read from both. */
+  jurisdictionId?: unknown;
 }
 
 /**
@@ -254,6 +261,48 @@ export function animalClassesOf(rule: RuleShape): readonly string[] {
 }
 
 /**
+ * The hunter dimensions a rule is scoped by.
+ *
+ * Read from `appliesWhen` against the engine's own declared vocabulary
+ * (`dimensions.ts`), never a regex over key names: a key matching /HUNTER/ is a
+ * field shape, and which dimensions describe a hunter is a fact the engine
+ * already declares.
+ */
+const HUNTER_DIMENSIONS: readonly string[] = ["RESIDENCY", "HUNTER_AGE", "LICENCE_TYPE", "HUNT_CODE"];
+
+export function hunterDimensionsOf(rule: RuleShape): readonly string[] {
+  const applies = rule.appliesWhen ?? {};
+  return HUNTER_DIMENSIONS.filter((dimension) => filled(applies[dimension]));
+}
+
+/**
+ * The conditions on a rule whose DECLARED kind is an authorization.
+ *
+ * `condition-kinds.json` declares a kind per condition id — the same table
+ * §41A's `!` marker reads — so a rule linking a LICENCE, TAG_OR_DRAW or
+ * ADDITIONAL_PERMIT condition has settled that an authorization is required,
+ * with provenance, as structured data. The prose naming WHICH licence lives in
+ * the condition's text and in Ready to Hunt; that is a different question from
+ * whether the dimension is resolved.
+ *
+ * Reading the kind from the id's spelling would be the field-shape defect
+ * again, so an id with no declared kind counts for nothing and is reported as
+ * its own gap (`undeclaredConditionKinds`).
+ */
+const AUTHORIZATION_KINDS = new Set(["LICENCE", "TAG_OR_DRAW", "ADDITIONAL_PERMIT", "STAMP", "VALIDATION"]);
+
+export function authorizationConditionsOf(rule: RuleShape): readonly string[] {
+  const ids = Array.isArray(rule.conditionIds) ? (rule.conditionIds as string[]) : [];
+  return ids.filter((id) => AUTHORIZATION_KINDS.has(CONDITION_KINDS[id]?.kind ?? ""));
+}
+
+/** Condition ids a rule links that no kind has been declared for. */
+export function undeclaredConditionKinds(rule: RuleShape): readonly string[] {
+  const ids = Array.isArray(rule.conditionIds) ? (rule.conditionIds as string[]) : [];
+  return ids.filter((id) => !CONDITION_KINDS[id]);
+}
+
+/**
  * Whether one rule settles a dimension AS STRUCTURED DATA.
  *
  * `equipmentStatedAs` and a lone `classLabel` are deliberately NOT accepted.
@@ -289,13 +338,26 @@ export function resolves(rule: RuleShape, dimension: Dimension, bundle?: ClassBu
     case "IMPLEMENT":
       return implementsOf(rule).length > 0;
     case "HUNTER_CLASS":
+      return hunterDimensionsOf(rule).length > 0;
     case "AUTHORIZATION":
+      return authorizationConditionsOf(rule).length > 0;
     case "LEGAL_HOURS":
-      /* No rule in the corpus carries these yet — `licence` appears on 1 of
-         639 — so `false` is currently accurate rather than unimplemented. Said
-         out loud because two of the three are MATERIAL for every profile: the
-         day the data lands they would still read UNRESOLVED, and nobody would
-         know whether that was the data or this function. */
+      /*
+       * NOT A PER-RULE FACT, AND COUNTING IT AS ONE WAS WRONG IN BOTH
+       * DIRECTIONS.
+       *
+       * A legal window is a wall-clock time at a POINT on a DATE:
+       * `legalTimeFor` takes the jurisdiction's rule, the coordinates and the
+       * timezone, and the result is rendered by `LegalHours.tsx`. Eight
+       * jurisdictions have a certified hours rule and 453 of 466 big-game rules
+       * sit in one — so reporting 0 understated a capability that ships, which
+       * §8 forbids as firmly as overstating one.
+       *
+       * It stays `false` here because a RULE genuinely does not carry it, and
+       * `legalHoursDelivery()` reports it at the level it is delivered. The
+       * distinction is the point: not a gap in the data, a dimension measured
+       * in the wrong unit.
+       */
       return false;
     case "LIMITS":
       return filled(rule.limits);
@@ -353,4 +415,70 @@ export function rendersScannableRow(rule: RuleShape, speciesId: string, bundle?:
   const needed: Dimension[] = ["DATES", "IMPLEMENT"];
   if (profile.ANIMAL_CLASS === "MATERIAL") needed.push("ANIMAL_CLASS");
   return needed.every((dimension) => resolves(rule, dimension, bundle));
+}
+
+/* ── Dimensions delivered at a level other than the rule ─────────────────── */
+
+/**
+ * The jurisdictions with a certified legal-hours module.
+ *
+ * LEGAL_HOURS is MATERIAL for every species and is not a field on a rule, so a
+ * per-rule count of it can only be 0 — which read as "North Ground has no legal
+ * hours anywhere" while the interface was rendering windows.
+ *
+ * A hand-kept list asserting a capability is exactly what §9 says must be
+ * computed rather than typed, so the test asserts this list against the modules
+ * that exist on disk: adding a jurisdiction here without a module fails.
+ */
+export const LEGAL_HOURS_JURISDICTIONS: readonly string[] = [
+  "jurisdiction:ca-ab",
+  "jurisdiction:ca-bc",
+  "jurisdiction:ca-mb",
+  "jurisdiction:ca-nl",
+  "jurisdiction:ca-on",
+  "jurisdiction:ca-qc",
+  "jurisdiction:us-id",
+  "jurisdiction:us-mt",
+];
+
+export type DeliveryLevel = "PER_RULE" | "PER_JURISDICTION_AND_POINT";
+
+/**
+ * The unit each dimension is actually delivered in.
+ *
+ * Declared rather than inferred, because measuring a dimension in the wrong
+ * unit is not a small reporting error: it produced a 0% on a shipping
+ * capability, and it would produce a 100% on one that does not ship.
+ */
+export const DELIVERY_LEVEL: Readonly<Record<Dimension, DeliveryLevel>> = {
+  DATES: "PER_RULE",
+  ANIMAL_CLASS: "PER_RULE",
+  PHYSICAL_CRITERIA: "PER_RULE",
+  IMPLEMENT: "PER_RULE",
+  HUNTER_CLASS: "PER_RULE",
+  AUTHORIZATION: "PER_RULE",
+  LIMITS: "PER_RULE",
+  CONDITIONS: "PER_RULE",
+  PROVENANCE: "PER_RULE",
+  LEGAL_HOURS: "PER_JURISDICTION_AND_POINT",
+};
+
+/**
+ * Whether a rule's jurisdiction can be given a legal window on a date.
+ *
+ * The jurisdiction is read from the rule OR from its bundle: most bundles state
+ * it once at the top and only Ontario repeats it per rule. Reading the rule
+ * alone reported UNKNOWN_JURISDICTION for 331 of 466 — the same measurement
+ * defect a third time in one file, which is why the bundle is threaded through
+ * every one of these functions rather than some of them.
+ */
+export function legalHoursDelivery(
+  rule: RuleShape,
+  bundle?: ClassBundle,
+): "DELIVERED" | "NOT_CERTIFIED" | "UNKNOWN_JURISDICTION" {
+  const fromRule = typeof rule.jurisdictionId === "string" ? rule.jurisdictionId : null;
+  const fromBundle = typeof bundle?.jurisdictionId === "string" ? bundle.jurisdictionId : null;
+  const jurisdiction = fromRule ?? fromBundle;
+  if (!jurisdiction) return "UNKNOWN_JURISDICTION";
+  return LEGAL_HOURS_JURISDICTIONS.includes(jurisdiction) ? "DELIVERED" : "NOT_CERTIFIED";
 }

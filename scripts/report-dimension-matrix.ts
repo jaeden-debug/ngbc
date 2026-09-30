@@ -10,7 +10,8 @@
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import {
-  animalClassesOf, implementsOf, isProfiled, profileFor, read, rendersScannableRow, resolves,
+  animalClassesOf, DELIVERY_LEVEL, implementsOf, isProfiled, legalHoursDelivery, profileFor,
+  read, rendersScannableRow, resolves, undeclaredConditionKinds,
   type ClassBundle, type Dimension, type RuleShape,
 } from "../src/lib/hunt/regulatory/dimension-matrix.ts";
 
@@ -20,7 +21,7 @@ const DIMENSIONS: Dimension[] = [
 ];
 
 const DIR = path.join(process.cwd(), "content/regulatory");
-type Bundle = ClassBundle & { jurisdictionId?: string; rules?: RuleShape[] };
+type Bundle = ClassBundle & { rules?: RuleShape[] };
 
 const bundles = readdirSync(DIR)
   .filter((name) => name.endsWith(".json"))
@@ -74,6 +75,19 @@ for (const dimension of DIMENSIONS) {
     : allRules;
   for (const [rule, bundle] of base) tally[read(rule, dimension, bundle)] += 1;
   const note = base.length === allRules.length ? "all rules" : `${base.length} naming a class`;
+  if (DELIVERY_LEVEL[dimension] !== "PER_RULE") {
+    /*
+     * A dimension delivered per (jurisdiction, point) cannot be counted per
+     * rule, and pretending otherwise printed 0% for legal hours while eight
+     * jurisdictions had a certified rule and the interface was rendering
+     * windows. §8 forbids understating a capability as firmly as overstating
+     * one, so it is reported in its own unit.
+     */
+    const tally = { DELIVERED: 0, NOT_CERTIFIED: 0, UNKNOWN_JURISDICTION: 0 };
+    for (const [rule, bundle] of allRules) tally[legalHoursDelivery(rule, bundle)] += 1;
+    console.log(`${pad(dimension, 20)}${pad(`${tally.DELIVERED} (${pct(tally.DELIVERED, allRules.length)})`, 12)}${pad("—", 12)}${pad(String(tally.NOT_CERTIFIED + tally.UNKNOWN_JURISDICTION), 10)}delivered per jurisdiction+point, not per rule`);
+    continue;
+  }
   console.log(`${pad(dimension, 20)}${pad(`${tally.PRESENT} (${pct(tally.PRESENT, base.length)})`, 12)}${pad(String(tally.PROSE_ONLY), 12)}${pad(String(tally.ABSENT), 10)}${note}`);
 }
 
@@ -91,6 +105,21 @@ if (undefinedClasses.size) {
   console.log("\nCLASSES NAMED BY A RULE WITH NO RESOLVED TEST\n");
   for (const [key, count] of [...undefinedClasses].sort((a, b) => b[1] - a[1])) {
     console.log(`  ${pad(String(count), 6)}${key.replace("species:", "")}`);
+  }
+}
+
+/* A condition with no declared kind cannot be classified, and §41A's `!` marker
+   reads the same table — so this is a gap in two places at once. */
+const undeclared = new Set(allRules.flatMap(([rule]) => undeclaredConditionKinds(rule)));
+if (undeclared.size) {
+  console.log(`\n${undeclared.size} condition ids carry no declared kind, so they resolve no dimension:\n`);
+  const byPrefix = new Map<string, number>();
+  for (const id of undeclared) {
+    const prefix = /^([a-z]{2}-[a-z]{2})-/.exec(id)?.[1] ?? "other";
+    byPrefix.set(prefix, (byPrefix.get(prefix) ?? 0) + 1);
+  }
+  for (const [prefix, count] of [...byPrefix].sort((a, b) => b[1] - a[1])) {
+    console.log(`  ${pad(String(count), 5)}${prefix}`);
   }
 }
 
