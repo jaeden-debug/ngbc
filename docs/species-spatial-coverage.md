@@ -10,7 +10,7 @@ unit, shown in that unit's card and never painted (§41B). A **plan** is never c
 
 **133 species.** A — measured density: 0 · B — measured distribution: 54 · C — habitat model: 0 · D — zone evidence (not painted): 9 · E — nothing defensible yet: 70.
 
-**Map-layer stage:** NO_STRATEGY: 0 · STRATEGY_DEFINED: 79 · MODEL_OR_DATA_AVAILABLE: 0 · GENERATED: 0 · CERTIFIED: 0 · SERVED: 0 · RENDERED: 54 · PRODUCTION_VERIFIED: 0.
+**Map-layer stage:** NO_STRATEGY: 0 · STRATEGY_DEFINED: 79 · MODEL_OR_DATA_AVAILABLE: 0 · GENERATED: 0 · CERTIFIED: 0 · SERVED: 0 · RENDERED: 0 · PRODUCTION_VERIFIED: 54.
 
 | Species | Family | Strategy held | Surface | Survey plots | Zone evidence | Stage | Next |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -18,132 +18,132 @@ unit, shown in that unit's card and never painted (§41B). A **plan** is never c
 | american-badger | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | american-bison | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | american-black-bear | bear | D — zone evidence (not painted) | — | — | BC, ON | STRATEGY_DEFINED | C in research |
-| american-black-duck | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NL, NS, ON, QC | — | RENDERED | — |
-| american-coot | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
-| american-crow | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
+| american-black-duck | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NL, NS, ON, QC | — | PRODUCTION_VERIFIED | — |
+| american-coot | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| american-crow | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | american-marten | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | american-mink | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | american-red-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| american-wigeon | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | — |
-| american-woodcock | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | — |
+| american-wigeon | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
+| american-woodcock | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
 | arctic-fox | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | arctic-hare | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | axis-deer | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| band-tailed-pigeon | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
+| band-tailed-pigeon | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | barbary-sheep | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| barrows-goldeneye | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | — |
+| barrows-goldeneye | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
 | beaver | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | bighorn-sheep | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | black-scoter | sea duck | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | black-tailed-jackrabbit | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| blue-winged-teal | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | ON | — | RENDERED | — |
+| blue-winged-teal | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | ON | — | PRODUCTION_VERIFIED | — |
 | bobcat | predator furbearer | D — zone evidence (not painted) | — | — | BC | STRATEGY_DEFINED | C in research |
 | brant | arctic nesting goose | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | D in research |
 | brown-bear | bear | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | brush-rabbit | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| bufflehead | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | ON, QC | — | RENDERED | — |
+| bufflehead | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | ON, QC | — | PRODUCTION_VERIFIED | — |
 | cackling-goose | arctic nesting goose | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | D in research |
-| california-quail | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
-| canada-goose | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NL, NS, ON, QC | — | RENDERED | — |
+| california-quail | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| canada-goose | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NL, NS, ON, QC | — | PRODUCTION_VERIFIED | — |
 | canada-lynx | predator furbearer | D — zone evidence (not painted) | — | — | BC | STRATEGY_DEFINED | C in research |
-| canvasback | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | — |
+| canvasback | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
 | caribou | ungulate | D — zone evidence (not painted) | — | — | BC | STRATEGY_DEFINED | C in research |
-| chukar | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
-| cinnamon-teal | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
+| chukar | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| cinnamon-teal | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | collared-peccary | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | common-eider | sea duck | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
-| common-gallinule | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
-| common-goldeneye | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NL, NS, ON, QC | — | RENDERED | — |
-| common-merganser | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
+| common-gallinule | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| common-goldeneye | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NL, NS, ON, QC | — | PRODUCTION_VERIFIED | — |
+| common-merganser | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | coyote | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | dall-sheep | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | desert-cottontail | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| dusky-grouse | forest upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
+| dusky-grouse | forest upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | eastern-cottontail | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | eastern-gray-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | eastern-wolf | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | elk | ungulate | D — zone evidence (not painted) | — | — | BC | STRATEGY_DEFINED | C in research |
-| eurasian-collared-dove | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
+| eurasian-collared-dove | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | fallow-deer | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| fish-crow | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
+| fish-crow | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | fisher | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | fox-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| gadwall | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | — |
-| gambels-quail | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
+| gadwall | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
+| gambels-quail | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | gray-fox | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| gray-partridge | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, resident | — | — | RENDERED | — |
+| gray-partridge | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, resident | — | — | PRODUCTION_VERIFIED | — |
 | gray-wolf | predator furbearer | D — zone evidence (not painted) | — | — | BC | STRATEGY_DEFINED | C in research |
-| greater-prairie-chicken | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
-| greater-sage-grouse | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
-| greater-scaup | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | — |
+| greater-prairie-chicken | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| greater-sage-grouse | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| greater-scaup | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
 | greater-white-fronted-goose | arctic nesting goose | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | D in research |
-| green-winged-teal | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NL, NS, ON, QC | — | RENDERED | — |
+| green-winged-teal | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NL, NS, ON, QC | — | PRODUCTION_VERIFIED | — |
 | gunnison-sage-grouse | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | harlequin-duck | sea duck | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
-| hooded-merganser | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
+| hooded-merganser | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | king-eider | sea duck | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | king-rail | migratory game bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | lesser-prairie-chicken | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
-| lesser-scaup | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | — |
+| lesser-scaup | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
 | long-tailed-duck | sea duck | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
-| mallard | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NS, ON, QC | — | RENDERED | — |
+| mallard | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NS, ON, QC | — | PRODUCTION_VERIFIED | — |
 | montezuma-quail | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | moose | ungulate | D — zone evidence (not painted) | — | — | BC, ON | STRATEGY_DEFINED | C in research; D planned |
 | mountain-cottontail | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | mountain-goat | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | mountain-lion | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| mountain-quail | forest upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
-| mourning-dove | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | — |
+| mountain-quail | forest upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| mourning-dove | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
 | mule-deer | ungulate | D — zone evidence (not painted) | — | — | BC | STRATEGY_DEFINED | C in research; D planned |
 | muskox | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | muskrat | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| mute-swan | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
+| mute-swan | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | new-england-cottontail | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | nilgai | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | north-american-river-otter | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| northern-bobwhite | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
-| northern-pintail | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | — |
-| northern-shoveler | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | — |
+| northern-bobwhite | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| northern-pintail | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
+| northern-shoveler | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
 | nutria | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | polar-bear | bear | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | pronghorn | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | purple-gallinule | migratory game bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | raccoon | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| red-breasted-merganser | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
+| red-breasted-merganser | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | red-fox | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| redhead | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | — |
-| ring-necked-duck | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NL, NS, ON, QC | — | RENDERED | — |
-| ring-necked-pheasant | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, resident | — | — | RENDERED | — |
+| redhead | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
+| ring-necked-duck | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NL, NS, ON, QC | — | PRODUCTION_VERIFIED | — |
+| ring-necked-pheasant | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, resident | — | — | PRODUCTION_VERIFIED | — |
 | rock-ptarmigan | arctic alpine upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | rosss-goose | arctic nesting goose | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | D in research |
-| ruddy-duck | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
-| ruffed-grouse | forest upland bird | B — measured distribution | BBS field 2.0.0, rank scale, resident | — | — | RENDERED | C in research |
-| sandhill-crane | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | — |
-| scaled-quail | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
-| sharp-tailed-grouse | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, resident | — | — | RENDERED | — |
+| ruddy-duck | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| ruffed-grouse | forest upland bird | B — measured distribution | BBS field 2.0.0, rank scale, resident | — | — | PRODUCTION_VERIFIED | C in research |
+| sandhill-crane | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
+| scaled-quail | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| sharp-tailed-grouse | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, resident | — | — | PRODUCTION_VERIFIED | — |
 | sika-deer | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | snow-goose | arctic nesting goose | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | D in research |
 | snowshoe-hare | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| sooty-grouse | forest upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
-| sora | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
-| spruce-grouse | forest upland bird | B — measured distribution | BBS field 2.0.0, rank scale, resident | — | — | RENDERED | — |
+| sooty-grouse | forest upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| sora | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| spruce-grouse | forest upland bird | B — measured distribution | BBS field 2.0.0, rank scale, resident | — | — | PRODUCTION_VERIFIED | — |
 | striped-skunk | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | surf-scoter | sea duck | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | swamp-rabbit | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | trumpeter-swan | waterfowl | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | tundra-swan | waterfowl | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | virginia-opossum | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| virginia-rail | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
+| virginia-rail | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | white-tailed-deer | ungulate | D — zone evidence (not painted) | — | — | BC, ON | STRATEGY_DEFINED | C in research; D planned |
 | white-tailed-jackrabbit | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | white-tailed-ptarmigan | arctic alpine upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
-| white-winged-dove | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | B in research |
+| white-winged-dove | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | white-winged-scoter | sea duck | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | whooping-crane | migratory game bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | wild-boar | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| wild-turkey | forest upland bird | B — measured distribution | BBS field 2.0.0, rank scale, resident | — | ON | RENDERED | — |
-| willow-ptarmigan | arctic alpine upland bird | B — measured distribution | BBS field 2.0.0, rank scale, short_distance | — | — | RENDERED | — |
-| wilsons-snipe | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | RENDERED | — |
+| wild-turkey | forest upland bird | B — measured distribution | BBS field 2.0.0, rank scale, resident | — | ON | PRODUCTION_VERIFIED | — |
+| willow-ptarmigan | arctic alpine upland bird | B — measured distribution | BBS field 2.0.0, rank scale, short_distance | — | — | PRODUCTION_VERIFIED | — |
+| wilsons-snipe | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
 | wolverine | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| wood-duck | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NS, ON, QC | — | RENDERED | — |
+| wood-duck | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NS, ON, QC | — | PRODUCTION_VERIFIED | — |
 | woodchuck | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |

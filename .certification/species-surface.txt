@@ -1,0 +1,204 @@
+PASS [390x844] ruffed grouse: surface requested — 200, 351254 B
+PASS [390x844] ruffed grouse: continuous raster received — MODELLED_RASTER:CONTINUOUS
+PASS [390x844] ruffed grouse: surface painted and visible — painted 19.9% in 3310 ms; hues {"neutral":24880,"blue":5971,"cyan":4627,"green":8124,"yellow":4722,"orange":4327,"red":1263}
+PASS [390x844] ruffed grouse: URL carries species and explore — https://www.northgroundbushcraft.com/hunt?species=ruffed-grouse&explore=1
+PASS [390x844] ruffed grouse: legend present — Ruffed grouse layer. 543 zones with a hunt open, 17 of them with conditions; Relative abundance, modelled from surveys. Colour is rank among the ground where th
+PASS [390x844] condition markers are focusable controls — 2 markers
+PASS [390x844] zone card opens over the layer — tapped path "layer:ca-sk-wmz|14E" → WMZ 24
+PASS [390x844] zone card answers for ruffed grouse
+PASS [390x844] closing the zone card keeps species, explore, date and surface — https://www.northgroundbushcraft.com/hunt?species=ruffed-grouse&explore=1
+PASS [390x844] switch: grouse heat gone immediately — element species=undefined
+PASS [390x844] switch: wild turkey painted — 98.4%
+PASS [390x844] mallard: plots and field both arrive — SAMPLE_PLOT:DISCRETE,MODELLED_RASTER:CONTINUOUS
+PASS [390x844] mallard: painted — 23.4%
+FAIL [390x844] conditions: the linked zone's card names its conditions — no conditions block
+PASS [390x844] zone evidence: the card shows the authority's own figures — Harvest records for WMU 49, 202547 estimated harvested moose; 1035 estimated active resident hunters.A record of hunting in the whole unit, 
+FAIL [390x844] conditions: a `!` is on screen to tap — no unobstructed marker
+PASS [390x844] no surface: previous heat gone — element species=none
+PASS [390x844] no surface: legend says no fine-grained evidence — Moose layer. 65 zones with a hunt open, 63 of them with conditions; no fine-grained evidence held. A zone without a green outline is not closed. Open the full k
+PASS [390x844] all species: american-black-duck drawn — 200, 23.1% drawn, 119016 px on the ramp
+PASS [390x844] all species: american-coot drawn — 200, 23.2% drawn, 91411 px on the ramp
+PASS [390x844] all species: american-crow drawn — 200, 23.4% drawn, 156241 px on the ramp
+PASS [390x844] all species: american-wigeon drawn — 200, 23.1% drawn, 66289 px on the ramp
+PASS [390x844] all species: american-woodcock drawn — 200, 23.0% drawn, 43108 px on the ramp
+PASS [390x844] all species: band-tailed-pigeon drawn — 200, 23.0% drawn, 10680 px on the ramp
+PASS [390x844] all species: barrows-goldeneye drawn — 200, 22.9% drawn, 8463 px on the ramp
+PASS [390x844] all species: blue-winged-teal drawn — 200, 23.2% drawn, 368795 px on the ramp
+PASS [390x844] all species: bufflehead drawn — 200, 23.2% drawn, 161189 px on the ramp
+PASS [390x844] all species: california-quail drawn — 200, 23.0% drawn, 10048 px on the ramp
+PASS [390x844] all species: canada-goose drawn — 200, 23.4% drawn, 606351 px on the ramp
+PASS [390x844] all species: canvasback drawn — 200, 23.0% drawn, 42964 px on the ramp
+PASS [390x844] all species: chukar drawn — 200, 23.0% drawn, 15208 px on the ramp
+PASS [390x844] all species: cinnamon-teal drawn — 200, 23.0% drawn, 41389 px on the ramp
+PASS [390x844] all species: common-gallinule drawn — 200, 23.0% drawn, 18580 px on the ramp
+PASS [390x844] all species: common-goldeneye drawn — 200, 23.3% drawn, 232275 px on the ramp
+PASS [390x844] all species: common-merganser drawn — 200, 23.3% drawn, 82225 px on the ramp
+PASS [390x844] all species: dusky-grouse drawn — 200, 22.9% drawn, 14117 px on the ramp
+PASS [390x844] all species: eurasian-collared-dove drawn — 200, 23.2% drawn, 112128 px on the ramp
+PASS [390x844] all species: fish-crow drawn — 200, 23.0% drawn, 39226 px on the ramp
+PASS [390x844] all species: gadwall drawn — 200, 23.1% drawn, 73106 px on the ramp
+PASS [390x844] all species: gambels-quail drawn — 200, 23.0% drawn, 13137 px on the ramp
+PASS [390x844] all species: gray-partridge drawn — 200, 23.0% drawn, 46464 px on the ramp
+PASS [390x844] all species: greater-prairie-chicken drawn — 200, 22.9% drawn, 11460 px on the ramp
+PASS [390x844] all species: greater-sage-grouse drawn — 200, 23.0% drawn, 17799 px on the ramp
+PASS [390x844] all species: greater-scaup drawn — 200, 22.9% drawn, 1643 px on the ramp
+PASS [390x844] all species: green-winged-teal drawn — 200, 23.2% drawn, 313453 px on the ramp
+PASS [390x844] all species: hooded-merganser drawn — 200, 23.1% drawn, 76978 px on the ramp
+PASS [390x844] all species: lesser-scaup drawn — 200, 23.1% drawn, 55014 px on the ramp
+PASS [390x844] all species: mallard drawn — 200, 23.4% drawn, 619912 px on the ramp
+PASS [390x844] all species: mountain-quail drawn — 200, 22.9% drawn, 1747 px on the ramp
+PASS [390x844] all species: mourning-dove drawn — 200, 23.3% drawn, 153939 px on the ramp
+PASS [390x844] all species: mute-swan drawn — 200, 23.0% drawn, 14421 px on the ramp
+PASS [390x844] all species: northern-bobwhite drawn — 200, 23.0% drawn, 64292 px on the ramp
+PASS [390x844] all species: northern-pintail drawn — 200, 23.1% drawn, 63604 px on the ramp
+PASS [390x844] all species: northern-shoveler drawn — 200, 23.1% drawn, 70616 px on the ramp
+PASS [390x844] all species: red-breasted-merganser drawn — 200, 23.0% drawn, 13293 px on the ramp
+PASS [390x844] all species: redhead drawn — 200, 23.0% drawn, 58517 px on the ramp
+PASS [390x844] all species: ring-necked-duck drawn — 200, 23.2% drawn, 308682 px on the ramp
+PASS [390x844] all species: ring-necked-pheasant drawn — 200, 23.0% drawn, 90121 px on the ramp
+PASS [390x844] all species: ruddy-duck drawn — 200, 23.1% drawn, 64006 px on the ramp
+PASS [390x844] all species: ruffed-grouse drawn — 200, 23.3% drawn, 82722 px on the ramp
+PASS [390x844] all species: sandhill-crane drawn — 200, 23.3% drawn, 99569 px on the ramp
+PASS [390x844] all species: scaled-quail drawn — 200, 23.0% drawn, 15374 px on the ramp
+PASS [390x844] all species: sharp-tailed-grouse drawn — 200, 23.0% drawn, 42592 px on the ramp
+PASS [390x844] all species: sooty-grouse drawn — 200, 22.9% drawn, 0 px on the ramp (none of its detected ground is in this opening view)
+PASS [390x844] all species: sora drawn — 200, 23.2% drawn, 94087 px on the ramp
+PASS [390x844] all species: spruce-grouse drawn — 200, 23.1% drawn, 19292 px on the ramp
+PASS [390x844] all species: virginia-rail drawn — 200, 23.1% drawn, 64880 px on the ramp
+PASS [390x844] all species: white-winged-dove drawn — 200, 23.0% drawn, 37039 px on the ramp
+PASS [390x844] all species: wild-turkey drawn — 200, 23.1% drawn, 122266 px on the ramp
+PASS [390x844] all species: willow-ptarmigan drawn — 200, 22.9% drawn, 0 px on the ramp (none of its detected ground is in this opening view)
+PASS [390x844] all species: wilsons-snipe drawn — 200, 23.4% drawn, 102528 px on the ramp
+PASS [390x844] all species: wood-duck drawn — 200, 23.2% drawn, 442327 px on the ramp
+PASS [1280x800] ruffed grouse: surface requested — 200, 466536 B
+PASS [1280x800] ruffed grouse: continuous raster received — MODELLED_RASTER:CONTINUOUS
+PASS [1280x800] ruffed grouse: surface painted and visible — painted 8.0% in 1413 ms; hues {"neutral":92014,"blue":26771,"cyan":21129,"green":30499,"yellow":18008,"orange":15772,"red":6177}
+     [1280x800] surface render ms: 68
+PASS [1280x800] ruffed grouse: URL carries species and explore — https://www.northgroundbushcraft.com/hunt?species=ruffed-grouse&explore=1
+PASS [1280x800] ruffed grouse: legend present — Ruffed grouse layer. 433 zones with a hunt open, 16 of them with conditions; Relative abundance, modelled from surveys. Colour is rank among the ground where th
+PASS [1280x800] condition markers are focusable controls — 2 markers
+PASS [1280x800] zone card opens over the layer — tapped label "● 3A" → GHA 3A
+PASS [1280x800] zone card answers for ruffed grouse
+PASS [1280x800] closing the zone card keeps species, explore, date and surface — https://www.northgroundbushcraft.com/hunt?species=ruffed-grouse&explore=1
+PASS [1280x800] switch: grouse heat gone immediately — element species=null
+PASS [1280x800] switch: wild turkey painted — 30.2%
+PASS [1280x800] mallard: plots and field both arrive — SAMPLE_PLOT:DISCRETE,MODELLED_RASTER:CONTINUOUS
+PASS [1280x800] mallard: painted — 8.1%
+FAIL [1280x800] conditions: the linked zone's card names its conditions — no conditions block
+PASS [1280x800] zone evidence: the card shows the authority's own figures — Harvest records for WMU 49, 202547 estimated harvested moose; 1035 estimated active resident hunters.A record of hunting in the whole unit, 
+FAIL [1280x800] conditions: a `!` is on screen to tap — no unobstructed marker
+PASS [1280x800] no surface: previous heat gone — element species=none
+PASS [1280x800] no surface: legend says no fine-grained evidence — Moose layer. 72 zones with a hunt open, 68 of them with conditions; no fine-grained evidence held. A zone without a green outline is not closed. Open the full k
+PASS [1280x800] all species: american-black-duck drawn — 200, 7.9% drawn, 34318 px on the ramp
+PASS [1280x800] all species: american-coot drawn — 200, 7.9% drawn, 104912 px on the ramp
+PASS [1280x800] all species: american-crow drawn — 200, 8.0% drawn, 183555 px on the ramp
+PASS [1280x800] all species: american-wigeon drawn — 200, 8.0% drawn, 103844 px on the ramp
+PASS [1280x800] all species: american-woodcock drawn — 200, 7.9% drawn, 41277 px on the ramp
+PASS [1280x800] all species: band-tailed-pigeon drawn — 200, 7.9% drawn, 25121 px on the ramp
+PASS [1280x800] all species: barrows-goldeneye drawn — 200, 7.9% drawn, 31888 px on the ramp
+PASS [1280x800] all species: blue-winged-teal drawn — 200, 7.9% drawn, 111567 px on the ramp
+PASS [1280x800] all species: bufflehead drawn — 200, 8.0% drawn, 74294 px on the ramp
+PASS [1280x800] all species: california-quail drawn — 200, 7.9% drawn, 26469 px on the ramp
+PASS [1280x800] all species: canada-goose drawn — 200, 8.1% drawn, 198821 px on the ramp
+PASS [1280x800] all species: canvasback drawn — 200, 7.9% drawn, 49876 px on the ramp
+PASS [1280x800] all species: chukar drawn — 200, 7.9% drawn, 23733 px on the ramp
+PASS [1280x800] all species: cinnamon-teal drawn — 200, 7.9% drawn, 52944 px on the ramp
+PASS [1280x800] all species: common-gallinule drawn — 200, 7.9% drawn, 19076 px on the ramp
+PASS [1280x800] all species: common-goldeneye drawn — 200, 8.0% drawn, 80229 px on the ramp
+PASS [1280x800] all species: common-merganser drawn — 200, 8.0% drawn, 120229 px on the ramp
+PASS [1280x800] all species: dusky-grouse drawn — 200, 7.8% drawn, 18621 px on the ramp
+PASS [1280x800] all species: eurasian-collared-dove drawn — 200, 7.9% drawn, 132587 px on the ramp
+PASS [1280x800] all species: fish-crow drawn — 200, 7.9% drawn, 36530 px on the ramp
+PASS [1280x800] all species: gadwall drawn — 200, 7.9% drawn, 91744 px on the ramp
+PASS [1280x800] all species: gambels-quail drawn — 200, 7.9% drawn, 12684 px on the ramp
+PASS [1280x800] all species: gray-partridge drawn — 200, 7.9% drawn, 47455 px on the ramp
+PASS [1280x800] all species: greater-prairie-chicken drawn — 200, 7.8% drawn, 10738 px on the ramp
+PASS [1280x800] all species: greater-sage-grouse drawn — 200, 7.8% drawn, 19931 px on the ramp
+PASS [1280x800] all species: greater-scaup drawn — 200, 7.9% drawn, 17895 px on the ramp
+PASS [1280x800] all species: green-winged-teal drawn — 200, 8.0% drawn, 120385 px on the ramp
+PASS [1280x800] all species: hooded-merganser drawn — 200, 7.9% drawn, 85330 px on the ramp
+PASS [1280x800] all species: lesser-scaup drawn — 200, 8.0% drawn, 85064 px on the ramp
+PASS [1280x800] all species: mallard drawn — 200, 8.1% drawn, 202699 px on the ramp
+PASS [1280x800] all species: mountain-quail drawn — 200, 7.8% drawn, 12533 px on the ramp
+PASS [1280x800] all species: mourning-dove drawn — 200, 8.0% drawn, 166807 px on the ramp
+PASS [1280x800] all species: mute-swan drawn — 200, 7.8% drawn, 15707 px on the ramp
+PASS [1280x800] all species: northern-bobwhite drawn — 200, 7.9% drawn, 59862 px on the ramp
+PASS [1280x800] all species: northern-pintail drawn — 200, 7.9% drawn, 90930 px on the ramp
+PASS [1280x800] all species: northern-shoveler drawn — 200, 7.9% drawn, 97725 px on the ramp
+PASS [1280x800] all species: red-breasted-merganser drawn — 200, 7.9% drawn, 28983 px on the ramp
+PASS [1280x800] all species: redhead drawn — 200, 7.9% drawn, 68005 px on the ramp
+PASS [1280x800] all species: ring-necked-duck drawn — 200, 8.0% drawn, 113619 px on the ramp
+PASS [1280x800] all species: ring-necked-pheasant drawn — 200, 7.9% drawn, 101091 px on the ramp
+PASS [1280x800] all species: ruddy-duck drawn — 200, 7.9% drawn, 74131 px on the ramp
+PASS [1280x800] all species: ruffed-grouse drawn — 200, 8.0% drawn, 118356 px on the ramp
+PASS [1280x800] all species: sandhill-crane drawn — 200, 8.0% drawn, 125837 px on the ramp
+PASS [1280x800] all species: scaled-quail drawn — 200, 7.8% drawn, 14353 px on the ramp
+PASS [1280x800] all species: sharp-tailed-grouse drawn — 200, 7.9% drawn, 47828 px on the ramp
+PASS [1280x800] all species: sooty-grouse drawn — 200, 7.9% drawn, 16106 px on the ramp
+PASS [1280x800] all species: sora drawn — 200, 8.0% drawn, 125623 px on the ramp
+PASS [1280x800] all species: spruce-grouse drawn — 200, 7.9% drawn, 34012 px on the ramp
+PASS [1280x800] all species: virginia-rail drawn — 200, 7.9% drawn, 76945 px on the ramp
+PASS [1280x800] all species: white-winged-dove drawn — 200, 7.9% drawn, 34623 px on the ramp
+PASS [1280x800] all species: wild-turkey drawn — 200, 7.9% drawn, 127502 px on the ramp
+PASS [1280x800] all species: willow-ptarmigan drawn — 200, 7.9% drawn, 20138 px on the ramp
+PASS [1280x800] all species: wilsons-snipe drawn — 200, 8.1% drawn, 153809 px on the ramp
+PASS [1280x800] all species: wood-duck drawn — 200, 7.9% drawn, 118462 px on the ramp
+PASS [all] all species: american-black-duck shows detected ground — 119016 px on the ramp at best
+PASS [all] all species: american-coot shows detected ground — 104912 px on the ramp at best
+PASS [all] all species: american-crow shows detected ground — 183555 px on the ramp at best
+PASS [all] all species: american-wigeon shows detected ground — 103844 px on the ramp at best
+PASS [all] all species: american-woodcock shows detected ground — 43108 px on the ramp at best
+PASS [all] all species: band-tailed-pigeon shows detected ground — 25121 px on the ramp at best
+PASS [all] all species: barrows-goldeneye shows detected ground — 31888 px on the ramp at best
+PASS [all] all species: blue-winged-teal shows detected ground — 368795 px on the ramp at best
+PASS [all] all species: bufflehead shows detected ground — 161189 px on the ramp at best
+PASS [all] all species: california-quail shows detected ground — 26469 px on the ramp at best
+PASS [all] all species: canada-goose shows detected ground — 606351 px on the ramp at best
+PASS [all] all species: canvasback shows detected ground — 49876 px on the ramp at best
+PASS [all] all species: chukar shows detected ground — 23733 px on the ramp at best
+PASS [all] all species: cinnamon-teal shows detected ground — 52944 px on the ramp at best
+PASS [all] all species: common-gallinule shows detected ground — 19076 px on the ramp at best
+PASS [all] all species: common-goldeneye shows detected ground — 232275 px on the ramp at best
+PASS [all] all species: common-merganser shows detected ground — 120229 px on the ramp at best
+PASS [all] all species: dusky-grouse shows detected ground — 18621 px on the ramp at best
+PASS [all] all species: eurasian-collared-dove shows detected ground — 132587 px on the ramp at best
+PASS [all] all species: fish-crow shows detected ground — 39226 px on the ramp at best
+PASS [all] all species: gadwall shows detected ground — 91744 px on the ramp at best
+PASS [all] all species: gambels-quail shows detected ground — 13137 px on the ramp at best
+PASS [all] all species: gray-partridge shows detected ground — 47455 px on the ramp at best
+PASS [all] all species: greater-prairie-chicken shows detected ground — 11460 px on the ramp at best
+PASS [all] all species: greater-sage-grouse shows detected ground — 19931 px on the ramp at best
+PASS [all] all species: greater-scaup shows detected ground — 17895 px on the ramp at best
+PASS [all] all species: green-winged-teal shows detected ground — 313453 px on the ramp at best
+PASS [all] all species: hooded-merganser shows detected ground — 85330 px on the ramp at best
+PASS [all] all species: lesser-scaup shows detected ground — 85064 px on the ramp at best
+PASS [all] all species: mallard shows detected ground — 619912 px on the ramp at best
+PASS [all] all species: mountain-quail shows detected ground — 12533 px on the ramp at best
+PASS [all] all species: mourning-dove shows detected ground — 166807 px on the ramp at best
+PASS [all] all species: mute-swan shows detected ground — 15707 px on the ramp at best
+PASS [all] all species: northern-bobwhite shows detected ground — 64292 px on the ramp at best
+PASS [all] all species: northern-pintail shows detected ground — 90930 px on the ramp at best
+PASS [all] all species: northern-shoveler shows detected ground — 97725 px on the ramp at best
+PASS [all] all species: red-breasted-merganser shows detected ground — 28983 px on the ramp at best
+PASS [all] all species: redhead shows detected ground — 68005 px on the ramp at best
+PASS [all] all species: ring-necked-duck shows detected ground — 308682 px on the ramp at best
+PASS [all] all species: ring-necked-pheasant shows detected ground — 101091 px on the ramp at best
+PASS [all] all species: ruddy-duck shows detected ground — 74131 px on the ramp at best
+PASS [all] all species: ruffed-grouse shows detected ground — 118356 px on the ramp at best
+PASS [all] all species: sandhill-crane shows detected ground — 125837 px on the ramp at best
+PASS [all] all species: scaled-quail shows detected ground — 15374 px on the ramp at best
+PASS [all] all species: sharp-tailed-grouse shows detected ground — 47828 px on the ramp at best
+PASS [all] all species: sooty-grouse shows detected ground — 16106 px on the ramp at best
+PASS [all] all species: sora shows detected ground — 125623 px on the ramp at best
+PASS [all] all species: spruce-grouse shows detected ground — 34012 px on the ramp at best
+PASS [all] all species: virginia-rail shows detected ground — 76945 px on the ramp at best
+PASS [all] all species: white-winged-dove shows detected ground — 37039 px on the ramp at best
+PASS [all] all species: wild-turkey shows detected ground — 127502 px on the ramp at best
+PASS [all] all species: willow-ptarmigan shows detected ground — 20138 px on the ramp at best
+PASS [all] all species: wilsons-snipe shows detected ground — 153809 px on the ramp at best
+PASS [all] all species: wood-duck shows detected ground — 442327 px on the ramp at best
+
+surface replies: 120; 200 sizes (bytes, transferred): min 3928, median 370158, max 651604
+194/198 checks passed against https://www.northgroundbushcraft.com
+recorded 54 productionVerified surface(s) in content/intelligence/surface-verification.json
+exit=1
