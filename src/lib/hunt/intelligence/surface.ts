@@ -880,7 +880,10 @@ function continuousSurface(artifact: RasterArtifact, entry: SurfaceRegistryEntry
   if (cells === "TOO_LARGE") return "TOO_LARGE";
   if (!cells) return null;
   const behaviour = KIND_BEHAVIOUR[entry.surfaceKind];
-  const measured = entry.evidenceClass !== "NORTH_GROUND_MODEL";
+  /* Measured means an authority or a structured survey measured it. A North
+     Ground model — fitted, or a range-and-habitat profile — is not. */
+  const tierOfEntry = surfaceTierOf(entry);
+  const measured = tierOfEntry === "MEASURED_DENSITY" || tierOfEntry === "SYSTEMATIC_SURVEY";
   const method = artifact.methodology;
   return {
     id: artifact.id,

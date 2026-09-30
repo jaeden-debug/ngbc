@@ -89,6 +89,8 @@ interface PackedCells {
   rows: number;
   /** 0..1000, or null for ground nobody surveyed. */
   values: (number | null)[];
+  /** 1 at the artifact's own cells; k when a wide window was sent at k × k cells per value. */
+  levelOfDetail?: number;
 }
 
 interface ReplyFeature {
@@ -110,6 +112,11 @@ export interface ReplySurface {
   provenance?: Record<string, unknown>;
   features?: ReplyFeature[];
   cells?: PackedCells;
+  /** The evidence tier, what the heat represents, and how much weight it bears (§41B). */
+  tier?: string;
+  represents?: string;
+  confidence?: { level: string; rule: string };
+  visualTransform?: { kind: string; statedAs: string };
 }
 
 export interface SurfaceReply {
@@ -137,6 +144,16 @@ export interface SurfaceLegendLayer {
   attribution: string;
   limitations: string[];
   measured: boolean;
+  /** The evidence tier and what the heat represents, in the surface's own words. */
+  tier: string;
+  represents: string;
+  confidence: { level: string; rule: string } | null;
+  /** How a value became a colour; never a change to the value. */
+  visualTransform: { kind: string; statedAs: string } | null;
+  /** A North Ground model's id and version, when the surface is one. */
+  modelVersion: string | null;
+  /** 1 at the artifact's own cells; k when sent at k × k cells per value. */
+  levelOfDetail: number;
 }
 
 export interface SurfaceLegendState {
@@ -192,7 +209,7 @@ function ringsOf(geometry: ReplyFeature["geometry"]): number[][][] | null {
  * renderer smooths only what the reply says is a field, and never at a finer
  * resolution than the reply declares.
  */
-export function toRenderable(surface: ReplySurface): RenderableSurface | null {
+export function toRenderable(surface: ReplySurface, context: { alongsideMeasured?: boolean } = {}): RenderableSurface | null {
   const common = {
     id: surface.id,
     speciesId: surface.speciesId,
@@ -216,7 +233,10 @@ export function toRenderable(surface: ReplySurface): RenderableSurface | null {
     if (!cells.size) return null;
     return {
       ...common,
-      ...(surface.evidence && !surface.evidence.measured ? { opacity: MODELLED_OPACITY } : {}),
+      /* A model is drawn fainter only BESIDE measured evidence, so the two never
+         read alike; a species whose best evidence is a model is drawn at full
+         strength, and its key says what it is and how much weight it bears. */
+      ...(context.alongsideMeasured && surface.evidence && !surface.evidence.measured ? { opacity: MODELLED_OPACITY } : {}),
       grid: { lonStep: stepDegrees[0], latStep: stepDegrees[1], west: origin[0], south: origin[1], cols: columns, rows },
       cells,
     };
@@ -269,6 +289,15 @@ function legendLayer(surface: ReplySurface): SurfaceLegendLayer {
     attribution: text(surface.provenance?.attribution),
     limitations: Array.isArray(surface.provenance?.limitations) ? (surface.provenance.limitations as string[]) : [],
     measured: surface.evidence?.measured === true,
+    tier: surface.tier ?? "",
+    represents: surface.represents ?? "",
+    confidence: surface.confidence ?? null,
+    visualTransform: surface.visualTransform ?? null,
+    modelVersion: (() => {
+      const model = surface.provenance?.model as { id?: string; version?: string } | undefined;
+      return model?.id && model.version ? `${model.id} v${model.version}` : null;
+    })(),
+    levelOfDetail: surface.cells?.levelOfDetail ?? 1,
   };
 }
 
@@ -319,7 +348,8 @@ export function surfaceStateFromReply(
     };
   }
   const replySurfaces = (payload.surfaces ?? []).filter((surface) => surface.speciesId === requestedSpeciesId);
-  const renderable = replySurfaces.map(toRenderable).filter((s): s is RenderableSurface => s !== null);
+  const alongsideMeasured = replySurfaces.some((surface) => surface.evidence?.measured === true);
+  const renderable = replySurfaces.map((surface) => toRenderable(surface, { alongsideMeasured })).filter((s): s is RenderableSurface => s !== null);
   return {
     speciesId: requestedSpeciesId,
     outcome: renderable.length ? "DRAWN" : "NONE_IN_VIEW",

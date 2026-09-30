@@ -304,7 +304,7 @@ export function createSpeciesSurfaceHandler() {
           /* Why, rather than nothing: an empty answer and an unheld species are
              different facts, and only one of them is about the animals. */
           message: strategy.statement ?? (hasEvidenceForSpecies(speciesId) ? EMPTY_MEANINGS.AREA_EVIDENCE_ONLY : EMPTY_MEANINGS.NOTHING_HELD),
-          strategy: { strategy: strategy.strategy, stage: strategy.stage, next: strategy.next },
+          strategy: { tier: strategy.tier, stage: strategy.stage, blocker: strategy.blocker, next: strategy.next },
           /* Same sentence, same field name, whatever the status. */
           emptyMeans: hasEvidenceForSpecies(speciesId) ? EMPTY_MEANINGS.AREA_EVIDENCE_ONLY : EMPTY_MEANINGS.NOTHING_HELD,
           surfaces: [],

@@ -112,10 +112,12 @@ test("the card cites the report the figure came from, for the year it describes"
 
 test("a unit density is a better number, not a finer place: never a surface", () => {
   for (const key of SPECIES) {
-    assert.equal(spatialStrategyFor(`species:${key}`).strategy, "D_COARSE_SUPPORTING", key);
+    /* The densities stay zone evidence for the card; whatever surface the
+       species has is drawn from something else, never from them. */
+    assert.ok(spatialStrategyFor(`species:${key}`).zoneEvidenceJurisdictions.includes("jurisdiction:ca-ab"), key);
     assert.equal(bundles[key].seasonalBasis.matchesHuntingSeason, false);
   }
-  assert.ok(!surfaceRegistry().surfaces.some((entry) => SPECIES.some((key) => entry.speciesId === `species:${key}`)));
+  assert.ok(!surfaceRegistry().surfaces.some((entry) => /alberta|ca-ab|aerial/i.test(`${entry.sourceDatasetId} ${entry.artifactPath}`)), "no surface is built from the Alberta survey reports");
   for (const dataset of servableDatasets().filter((d) => d.jurisdictionId === "jurisdiction:ca-ab")) {
     assert.equal(dataset.renderKind, "ZONE_AREA");
     assert.equal(dataset.grade, "A");

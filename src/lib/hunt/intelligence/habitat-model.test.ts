@@ -90,8 +90,9 @@ test("measured evidence comes first, and the model is drawn fainter than it", ()
   assert.equal(surfaces[0].evidence.measured, true, "the survey field outranks the model");
   assert.equal(model.evidence.measured, false);
   assert.match(model.scale.statedAs, /not a count/i);
-  assert.equal(toRenderable(model as never)?.opacity, MODELLED_OPACITY);
-  assert.equal(toRenderable(surfaces[0] as never)?.opacity, undefined, "measured evidence at full strength");
+  assert.equal(toRenderable(model as never, { alongsideMeasured: true })?.opacity, MODELLED_OPACITY, "fainter beside measured evidence");
+  assert.equal(toRenderable(model as never)?.opacity, undefined, "a model alone is drawn at full strength, and its key says what it is");
+  assert.equal(toRenderable(surfaces[0] as never, { alongsideMeasured: true })?.opacity, undefined, "measured evidence at full strength");
 });
 
 test("a model that failed its bar publishes nothing, and its report says why", () => {

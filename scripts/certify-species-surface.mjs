@@ -408,9 +408,11 @@ async function run(width, height) {
   }
   }
 
-  /* 6. A species with no surface: nothing painted, and words say why. The
-     conditions walk above left the page on moose, so come back to mallard
-     first: what is tested is a surface giving way to none. */
+  /* 6. A species whose best evidence is range + habitat (§41B, "Every
+     Hunt-eligible species has a map"): moose used to be the no-surface case
+     and now falls one tier instead of to nothing. The conditions walk above
+     left the page on moose, so come back to mallard first: what is tested is
+     one species' surface giving way to another's, with no leak. */
   if (zoneCard) {
     await page.goto(`${base}/hunt?species=mallard&explore=1`, { waitUntil: "networkidle", timeout: 90_000 });
     await page.waitForSelector('[data-species-surface][data-surface-species="species:mallard"][data-surface-painted="true"]', { timeout: 25_000 }).catch(() => null);
@@ -418,12 +420,16 @@ async function run(width, height) {
   /* A control something else covers is a finding, not a reason to stop
      certifying the species that follow. */
   const chose = await chooseSpecies(page, "Moose").then(() => null, (error) => error.message.split("\n")[0]);
-  if (chose) record(tag, "no surface: moose can be chosen", false, chose);
-  await page.waitForTimeout(2500);
+  if (chose) record(tag, "range + habitat: moose can be chosen", false, chose);
+  await page.waitForSelector('[data-species-surface][data-surface-species="species:moose"][data-surface-painted="true"]', { timeout: 25_000 }).catch(() => null);
+  await page.waitForTimeout(800);
   const moose = await paintedFraction(page);
   const mooseLegend = await legendText(page);
-  record(tag, "no surface: previous heat gone", !moose.present || !moose.visible || moose.species !== "species:mallard", `element species=${moose.species ?? "none"}`);
-  record(tag, "no surface: legend says no fine-grained evidence", /no fine-grained evidence held|no evidence on this ground/i.test(mooseLegend), mooseLegend.slice(0, 160));
+  record(tag, "range + habitat: previous heat gone", moose.species !== "species:mallard", `element species=${moose.species ?? "none"}`);
+  record(tag, "range + habitat: moose painted from its own surface", moose.visible && moose.species === "species:moose" && (moose.layers ?? []).some((id) => id.startsWith("surface:range-habitat-moose")),
+    `${(100 * (moose.fraction ?? 0)).toFixed(1)}% painted; layers ${(moose.layers ?? []).join(",") || "none"}; hues ${JSON.stringify(moose.hues)}`);
+  record(tag, "range + habitat: the key says what it is and how much weight it bears, never density",
+    /Range \+ habitat · evidence (moderate|limited)/i.test(mooseLegend) && /habitat opportunity/i.test(mooseLegend) && !/\bdensity\b/i.test(mooseLegend.replace(/not a density/gi, "")), mooseLegend.slice(0, 220));
   await shot("6-moose");
 
   /* 7. Every certified surface, opened from its shareable link — each LAYER
