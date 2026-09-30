@@ -2426,8 +2426,22 @@ the `!` marker and the selected zone all remain readable through it.
 - **Heat and legal status are wholly independent.** Heat never affects legality
   and legality never affects heat. HOT+GREEN, HOT+not-green, LOW+GREEN,
   NO-HEAT+GREEN and NO-HEAT+unknown are all legitimate and must all render.
-- **Green belongs to legality.** The heat ramp never borrows the semantic green
-  used for an open season.
+- **Legality is carried by the OUTLINE; abundance by the FILL.** *Amended
+  2026-09-29 (owner), against a mockup. This supersedes the previous rule that
+  the heat ramp may never contain green.*
+
+  The ramp is a conventional heat spectrum and MAY pass through green, because
+  a spectrum a person already knows how to read is worth more than a private
+  palette. What carries "a legal season is open" is the zone's **outline**: a
+  bright, thick, unmistakable ring that no fill in the ramp can be confused
+  with, and which must remain legible over every point of the ramp including
+  its green band.
+
+  Two obligations come with this and neither is optional. The outline must be
+  demonstrably distinguishable from the ramp's green at every intensity, tested
+  rather than eyeballed. And §48 still binds: the meaning is never carried by
+  colour alone, so the legend states in words that fill means evidence and
+  outline means legality, and the zone card says it again in words.
 - **A metric is named for what its source actually measures.** Harvest density
   is harvest density; habitat suitability is habitat suitability; occurrence
   probability is occurrence probability. **Only a source measuring animals per
