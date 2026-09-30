@@ -1552,5 +1552,143 @@
   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
   "doi": "10.5886/hgagiy",
   "publisher": "University of Manitoba"
+ },
+ "864da4c2-f762-11e1-a439-00145eb45e9a": {
+  "title": "U.S.D.A. Forest Service, Redwood Sciences Laboratory - Lamna Point Count",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/yipupw",
+  "publisher": "Avian Knowledge Network"
+ },
+ "c1acc137-7010-489b-a7bb-3025dd4e1628": {
+  "title": "University of Montana Zoological Museum (UMZM) Bird Specimens (Arctos)",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/6bvnf6",
+  "publisher": "Philip L. Wright Zoological Museum"
+ },
+ "89337996-f762-11e1-a439-00145eb45e9a": {
+  "title": "UCM Bird Collection (Arctos)",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/ajtd6v",
+  "publisher": "University of Colorado Museum of Natural History"
+ },
+ "9ce52ff6-01b6-44a2-b617-9bc2ee8e8cd1": {
+  "title": "MVZ Egg and Nest Collection (Arctos)",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/a7zswp",
+  "publisher": "Museum of Vertebrate Zoology"
+ },
+ "52da118d-e74e-420a-9b6b-1a6d7bc3028d": {
+  "title": "UMNH Birds Collection (Arctos)",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/xera9v",
+  "publisher": "Natural History Museum of Utah (UMNH)"
+ },
+ "53015c6b-82d3-4e4e-abd9-e5b5b53fb54d": {
+  "title": "Characterization of the Coastal Marsh of Anse Saint-Jean, Saguenay Fjord | Caractérisation du marais côtier de l'Anse Saint-Jean, Fjord du Saguenay",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.26071/eca89710-41ff-4e09",
+  "publisher": "Observatoire Global du Saint-Laurent"
+ },
+ "ca2e422f-be48-42a5-bca5-a37cada435c8": {
+  "title": "FNJV - Fonoteca Neotropical Jacques Vielliard",
+  "license": "http://creativecommons.org/licenses/by-nc/4.0/legalcode",
+  "doi": "10.15468/fr6q2k",
+  "publisher": "Universidade Estadual de Campinas"
+ },
+ "cdb90879-7112-4023-b753-c74d6f39c6ce": {
+  "title": "CardObs : Observations naturalistes issues de l'outil CardObs-Données naturalistes de Benoit FONTAINE",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/bed67m",
+  "publisher": "UAR PatriNat (OFB-MNHN-CNRS-IRD), Paris"
+ },
+ "d21ea2d7-4757-4a40-aab3-82054e033061": {
+  "title": "Bird Watching in North Carolina - Powered by Anecdata.org",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/ucc9m2",
+  "publisher": "The Community Environmental Health Laboratory at MDI Biological Laboratory"
+ },
+ "db7e5d4a-97f5-4327-8084-c2e00e222c0e": {
+  "title": "Strategic Plan for the Protection of Checkley Plain | Plan stratégique pour la protection de la plaine Checkley",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.26071/9cd28bed-eee3-4703",
+  "publisher": "Observatoire Global du Saint-Laurent"
+ },
+ "43e0bba3-9edb-4b00-b490-84924e55a222": {
+  "title": "Field Museum of Natural History (Zoology) Bird Egg Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/uqsgv2",
+  "publisher": "Field Museum"
+ },
+ "05d01300-382d-4a43-9102-b2835148bc39": {
+  "title": "FPWC Bluebird Monitoring - Powered by Anecdata.org",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/6apyu4",
+  "publisher": "The Community Environmental Health Laboratory at MDI Biological Laboratory"
+ },
+ "16965647-4120-4e0b-aa57-1eeaf028606e": {
+  "title": "CHAS Ornithology (Arctos)",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/i6rsqd",
+  "publisher": "Chicago Academy of Sciences"
+ },
+ "fcba1f2e-c8b8-491f-8b5f-62fae3157cc7": {
+  "title": "ISU Birds",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/gtfgc6",
+  "publisher": "Illinois State University"
+ },
+ "45a84259-8f6d-4b2a-9fcb-d77d2e3ac668": {
+  "title": "Ohio Wesleyan University Bird Specimens (Arctos)",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/468qnf",
+  "publisher": "Ohio Wesleyan University Museum of Natural History"
+ },
+ "84b018de-f762-11e1-a439-00145eb45e9a": {
+  "title": "Birds Specimens",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/n5eb1u",
+  "publisher": "Sam Noble Oklahoma Museum of Natural History"
+ },
+ "4ada1c77-3895-47d8-8dc9-9ce44e1df802": {
+  "title": "CCBER Ornithology Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/conul6",
+  "publisher": "Cheadle Center for Biodiversity and Ecological Restoration"
+ },
+ "d92c8859-ffcd-4c12-a45e-64b46238a521": {
+  "title": "Bird observations of UC Santa Barbara North Campus Open Space",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/iqid04",
+  "publisher": "Cheadle Center for Biodiversity and Ecological Restoration"
+ },
+ "d3bc4c7d-325c-49ea-aa71-d915b2ee3204": {
+  "title": "CAS Ornithology Egg & Nest (EGG)",
+  "license": "http://creativecommons.org/licenses/by-nc/4.0/legalcode",
+  "doi": "10.15468/tbh8hg",
+  "publisher": "California Academy of Sciences"
+ },
+ "875db04c-1fc5-4fbf-9b88-da643abde58d": {
+  "title": "UNESCO eDNA expedition in Everglades National Park (United States): April 2023",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.25607/bjffju",
+  "publisher": "OBIS Secretariat"
+ },
+ "9d6c78cc-74c6-4a12-b65b-0c9254ddb0b6": {
+  "title": "Marine zooplankton community structure through environmental DNA metabarcoding in the Florida Keys, collected by the South Florida Program (NOAA/AOML) and the Marine Biodiversity Observation Network (MBON)",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/mrxge2",
+  "publisher": "NOAA Integrated Ocean Observing System"
+ },
+ "d740f242-6c26-4229-9a8f-b63bfab63dc6": {
+  "title": "GalliForm: Galliformes occurrence records from the Indo-Malay and Palaearctic, 1800-2008",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/9825yw",
+  "publisher": "Newcastle University"
+ },
+ "86875091-d166-4986-802a-343b341424c6": {
+  "title": "Metabarcoding occurrences from Kenai National Wildlife Refuge Pollinator Surveys - 2022",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/h7p7gm",
+  "publisher": "United States Fish and Wildlife Service"
  }
 }
