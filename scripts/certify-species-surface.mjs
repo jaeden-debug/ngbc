@@ -91,7 +91,10 @@ async function paintedFraction(page) {
       if (data[i + 3] < 8) continue;
       painted += 1;
       const [r, g, b] = [data[i], data[i + 1], data[i + 2]];
-      if (Math.max(r, g, b) - Math.min(r, g, b) < 30) hues.neutral += 1;
+      /* The neutral is a warm grey (205,199,184) at alpha 0.12; where an edge
+         fades it further, 8-bit rounding tints it past a plain chroma test. */
+      const nearNeutral = data[i + 3] <= 40 && Math.abs(r - 205) + Math.abs(g - 199) + Math.abs(b - 184) < 70;
+      if (Math.max(r, g, b) - Math.min(r, g, b) < 30 || nearNeutral) hues.neutral += 1;
       else if (r > 200 && g < 90) hues.red += 1;
       else if (r > 200 && g < 170) hues.orange += 1;
       else if (r > 180 && g > 170) hues.yellow += 1;
@@ -334,8 +337,17 @@ async function run(width, height) {
   }
   }
 
-  /* 6. A species with no surface: nothing painted, and words say why. */
-  await chooseSpecies(page, "Moose");
+  /* 6. A species with no surface: nothing painted, and words say why. The
+     conditions walk above left the page on moose, so come back to mallard
+     first: what is tested is a surface giving way to none. */
+  if (zoneCard) {
+    await page.goto(`${base}/hunt?species=mallard&explore=1`, { waitUntil: "networkidle", timeout: 90_000 });
+    await page.waitForSelector('[data-species-surface][data-surface-species="species:mallard"][data-surface-painted="true"]', { timeout: 25_000 }).catch(() => null);
+  }
+  /* A control something else covers is a finding, not a reason to stop
+     certifying the species that follow. */
+  const chose = await chooseSpecies(page, "Moose").then(() => null, (error) => error.message.split("\n")[0]);
+  if (chose) record(tag, "no surface: moose can be chosen", false, chose);
   await page.waitForTimeout(2500);
   const moose = await paintedFraction(page);
   const mooseLegend = await legendText(page);
@@ -352,11 +364,19 @@ async function run(width, height) {
       await page.waitForSelector(`[data-species-surface][data-surface-species="${entry.speciesId}"][data-surface-painted="true"]`, { timeout: 25_000 }).catch(() => null);
       const reply = surfaceReplies.filter((r) => r.species === entry.speciesId).at(-1);
       const seen = await paintedFraction(page);
-      const pass = reply?.status === 200 && reply.kinds.includes("MODELLED_RASTER:CONTINUOUS") && seen.visible && seen.species === entry.speciesId && seen.fraction > 0.005;
-      record(tag, `all species: ${slug} painted`, pass, `${reply?.status ?? "no request"}, ${(100 * (seen.fraction ?? 0)).toFixed(1)}%`);
-      if (pass) {
+      /* Painted means ON THE RAMP. Surveyed-none grey covers the whole survey
+         area whatever the species, so a surface that drew only grey would
+         pass a bare painted-pixel count while showing no animal anywhere. */
+      const onRamp = seen.hues ? Object.entries(seen.hues).filter(([hue]) => hue !== "neutral").reduce((sum, [, n]) => sum + n, 0) : 0;
+      /* Drawn here; whether this opening view holds any of the species' range
+         is a fact about the camera (a phone opens on the east), so detected
+         ground is required in at least one view, judged after them all. */
+      const drawn = reply?.status === 200 && reply.kinds.includes("MODELLED_RASTER:CONTINUOUS") && seen.visible && seen.species === entry.speciesId && seen.fraction > 0.005;
+      record(tag, `all species: ${slug} drawn`, drawn,
+        `${reply?.status ?? "no request"}, ${(100 * (seen.fraction ?? 0)).toFixed(1)}% drawn, ${onRamp} px on the ramp${onRamp ? "" : " (none of its detected ground is in this opening view)"}`);
+      if (drawn) {
         const prior = painted.get(entry.artifactHash);
-        painted.set(entry.artifactHash, { speciesId: entry.speciesId, viewports: [...(prior?.viewports ?? []), tag] });
+        painted.set(entry.artifactHash, { speciesId: entry.speciesId, viewports: [...(prior?.viewports ?? []), tag], onRamp: Math.max(prior?.onRamp ?? 0, onRamp) });
       }
     }
   }
@@ -367,6 +387,16 @@ async function run(width, height) {
 
 const all = [];
 for (const [width, height] of viewports) all.push(...await run(width, height));
+if (allSpecies) {
+  /* Painted means ON THE RAMP somewhere: surveyed-none grey covers the whole
+     survey area whatever the species, so a surface that drew only grey would
+     be "drawn" while showing no animal anywhere. */
+  const registry = JSON.parse(readFileSync("content/intelligence/surface-registry.json", "utf8"));
+  for (const entry of registry.surfaces) {
+    const seen = painted.get(entry.artifactHash);
+    record("all", `all species: ${entry.speciesId.replace("species:", "")} shows detected ground`, (seen?.onRamp ?? 0) > 200, `${seen?.onRamp ?? 0} px on the ramp at best`);
+  }
+}
 const sizes = all.filter((r) => r.status === 200).map((r) => r.bytes).sort((a, b) => a - b);
 console.log(`\nsurface replies: ${all.length}; 200 sizes (bytes, transferred): min ${sizes[0] ?? 0}, median ${sizes[Math.floor(sizes.length / 2)] ?? 0}, max ${sizes.at(-1) ?? 0}`);
 const failed = results.filter((r) => !r.pass);
@@ -379,7 +409,7 @@ if (recordPath && allSpecies) {
   const key = production ? "productionVerified" : "rendered";
   let wrote = 0;
   for (const [hash, seen] of painted) {
-    if (seen.viewports.length !== viewports.length) continue;
+    if (seen.viewports.length !== viewports.length || seen.onRamp <= 200) continue;
     current[key][hash] = { speciesId: seen.speciesId, at, base, ...(production ? { commit: commit ?? "unrecorded" } : {}) };
     if (production) current.rendered[hash] = { speciesId: seen.speciesId, at, base };
     wrote += 1;
