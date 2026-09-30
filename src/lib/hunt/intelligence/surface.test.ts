@@ -104,9 +104,10 @@ test("every geometry kind declares its own behaviour, and none of them defaults"
 });
 
 test("measured evidence sorts ahead of anything modelled", () => {
+  /* Black duck holds a survey field, survey plots and a North Ground range model. */
   const response = speciesSurfaces("species:american-black-duck");
-  assert.ok(response.surfaces.length >= 1);
-  for (const surface of response.surfaces) assert.equal(surface.evidence.measured, true);
+  assert.ok(response.surfaces.some((surface) => surface.evidence.measured));
+  assert.ok(response.surfaces.some((surface) => !surface.evidence.measured));
   const strengths = response.surfaces.map((surface) => (surface.evidence.measured ? 1 : 0));
   assert.deepEqual([...strengths].sort((a, b) => b - a), strengths, "strongest first");
 });

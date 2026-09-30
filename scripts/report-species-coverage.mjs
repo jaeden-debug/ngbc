@@ -82,8 +82,8 @@ const quality = {
   rangeOnly: count((row) => row.tier === "RANGE_ONLY"),
   rangeHabitat: count((row) => row.layers.some((l) => l.served && l.tier === "RANGE_HABITAT")),
   occurrence: count((row) => row.layers.some((l) => l.served && (l.tier === "RANGE_HABITAT" || l.tier === "RANGE_ONLY"))),
-  variation: count((row) => row.layers.some((l) => l.served && l.usefulVariation === true)),
-  noVariation: eligible.filter((row) => row.layers.some((l) => l.served && l.usefulVariation === false)).map((row) => row.speciesId.replace("species:", "")),
+  variation: count((row) => row.layers.some((l) => l.served && l.tier === "RANGE_HABITAT" && l.usefulVariation === true)),
+  noVariation: eligible.filter((row) => row.layers.some((l) => l.served && l.tier === "RANGE_HABITAT" && l.usefulVariation === false)).map((row) => row.speciesId.replace("species:", "")),
 };
 const debt = {
   stale: [...new Set(layersOf((l) => l.staleness === "STALE"))],

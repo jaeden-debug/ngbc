@@ -4,6 +4,8 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import test from "node:test";
 import { permitsSpeciesHeat } from "../../content/species-eligibility.ts";
 import { decodeCells, surfaceRegistry } from "./surface.ts";
+// @ts-expect-error -- a plain ES module shared with the builder
+import { closeRange } from "../../../../scripts/lib/range-closing.mjs";
 
 /**
  * RANGE + HABITAT, THE UNIVERSAL FALLBACK (CLAUDE.md §41B, 2026-09-30).
@@ -17,11 +19,11 @@ import { decodeCells, surfaceRegistry } from "./surface.ts";
 
 const profiles = JSON.parse(readFileSync("content/intelligence/surface-profiles.json", "utf8")) as {
   classValues: Record<string, number>;
-  families: Record<string, { reachKm: number; why: string; recordBias: string; isolatedSquareMinRecords: number | null }>;
+  families: Record<string, { reachKm: number; why: string; recordBias: string; isolatedSquareMinRecords: number | null; gapKm: number | null; gapWhy: string }>;
   species: Record<string, { family: string; habitatStatement: string | null; season?: string; tier?: string; landCover?: Record<string, string[]>; requires?: unknown[]; whyNotRangeHabitat?: string; rangeNotDefensible?: string }>;
 };
 const registry = JSON.parse(readFileSync("content/intelligence/range-habitat-registry.json", "utf8")) as {
-  surfaces: Array<{ speciesId: string; artifactPath: string; surfaceTier: string; surfaceKind: string }>;
+  surfaces: Array<{ speciesId: string; artifactPath: string; surfaceTier: string; surfaceKind: string; resolution: { source: { metres: number } } }>;
   declined: Array<{ speciesId: string; reason: string }>;
 };
 
@@ -114,4 +116,82 @@ test("a declined species keeps its reason, and the served registry holds only el
   for (const row of registry.declined) assert.ok(row.reason && permitsSpeciesHeat(row.speciesId), row.speciesId);
   for (const entry of surfaceRegistry().surfaces) assert.ok(permitsSpeciesHeat(entry.speciesId), entry.speciesId);
   for (const entry of registry.surfaces) assert.ok(existsSync(entry.artifactPath), entry.artifactPath);
+});
+
+/* ------------------------------------------------------ joining record gaps */
+
+/* A 0.1° grid at 45°N, 40 × 40 cells: one row is 11.1 km, one column 7.9 km. */
+const GRID = { rows: 40, columns: 40, north: 47, cell: 0.1 };
+const blank = () => new Uint8Array(GRID.rows * GRID.columns);
+const fill = (set: Uint8Array, rows: [number, number], cols: [number, number]) => {
+  for (let r = rows[0]; r <= rows[1]; r += 1) for (let c = cols[0]; c <= cols[1]; c += 1) set[r * GRID.columns + c] = 1;
+  return set;
+};
+
+test("joining a range's gaps fills a narrow gap and leaves a wide one", () => {
+  /* Two blocks 5 columns apart (~40 km of empty ground between them). */
+  const range = fill(fill(blank(), [10, 30], [5, 14]), [10, 30], [20, 29]);
+  const narrow = closeRange(GRID, range, 80).inRange;
+  for (let c = 15; c <= 19; c += 1) assert.equal(narrow[20 * GRID.columns + c], 1, `column ${c} of a 40 km gap joins at 80 km`);
+  const wide = closeRange(GRID, range, 30).inRange;
+  for (let c = 15; c <= 19; c += 1) assert.equal(wide[20 * GRID.columns + c], 0, `column ${c} of a 40 km gap stays open at 30 km`);
+  assert.equal(closeRange(GRID, range, null).inRange, range, "a family that joins nothing keeps its range as drawn");
+});
+
+test("joining never removes range, and never reaches past the recorded edge", () => {
+  const range = fill(fill(fill(blank(), [8, 14], [6, 12]), [17, 24], [10, 16]), [9, 12], [16, 20]);
+  const { inRange: closed, added } = closeRange(GRID, range, 80);
+  assert.ok(added > 0);
+  let rowMin = GRID.rows, rowMax = 0, colMin = GRID.columns, colMax = 0;
+  range.forEach((v, i) => {
+    if (!v) return;
+    rowMin = Math.min(rowMin, Math.floor(i / GRID.columns)); rowMax = Math.max(rowMax, Math.floor(i / GRID.columns));
+    colMin = Math.min(colMin, i % GRID.columns); colMax = Math.max(colMax, i % GRID.columns);
+  });
+  closed.forEach((v, i) => {
+    if (range[i]) assert.equal(v, 1, "nothing recorded is removed");
+    if (!v) return;
+    const row = Math.floor(i / GRID.columns);
+    const col = i % GRID.columns;
+    /* A closing lies inside the convex hull of what it closes, so inside its bounding box. */
+    assert.ok(row >= rowMin && row <= rowMax && col >= colMin && col <= colMax, `cell ${row},${col} is past the recorded edge`);
+  });
+});
+
+test("every family says whether and why it joins gaps, and each surface says it", () => {
+  for (const [name, family] of Object.entries(profiles.families)) {
+    assert.ok(family.gapKm === null || (family.gapKm > 0 && family.gapKm <= 300), `${name}: gapKm ${family.gapKm}`);
+    assert.ok(family.gapWhy.length > 40, `${name}: no reason for its gap rule`);
+  }
+  for (const entry of registry.surfaces) {
+    const artifact = JSON.parse(readFileSync(entry.artifactPath, "utf8"));
+    const family = profiles.families[profiles.species[entry.speciesId].family];
+    assert.equal(artifact.model.range.gapKm, family.gapKm, entry.speciesId);
+  }
+});
+
+test("a record square is read at the size of the cell it stands for", () => {
+  for (const entry of registry.surfaces) {
+    const input = JSON.parse(readFileSync(`content/intelligence/range-habitat/inputs/${entry.speciesId.replace("species:", "")}.records.json`, "utf8"));
+    /* A read that says its cells are 0.35° placed every record its coarse pass found; one that does not is a first read, of 1.40625° cells. */
+    const step = input.aggregationDegrees ?? 1.40625;
+    if (input.aggregationDegrees) assert.equal(input.aggregation.placesEveryRecord, true, entry.speciesId);
+    assert.equal(entry.resolution.source.metres, Math.round(step * 111_000), `${entry.speciesId}: the stated source resolution is the cell the records stand for`);
+  }
+});
+
+test("open water a profile names is drawn along its shore, never across the middle of a lake", () => {
+  const artifact = JSON.parse(readFileSync("content/intelligence/range-habitat/mallard.json", "utf8"));
+  const cells = decodeCells(artifact.cellsEncoded);
+  const valueAt = (lat: number, lon: number) => {
+    const row = Math.round((lat - artifact.grid.south) / artifact.grid.latStep);
+    const col = Math.round((lon - artifact.grid.west) / artifact.grid.lonStep);
+    for (let i = 0; i < cells.row.length; i += 1) if (cells.row[i] === row && cells.col[i] === col) return cells.intensity[i];
+    return null;
+  };
+  /* Lake Winnipeg's north basin: every cell within 20 km is 87% water or more. */
+  const middle = valueAt(52.8, -98.0);
+  assert.ok(middle === null || middle < 0, `mallard painted ${middle} in the middle of Lake Winnipeg`);
+  /* The prairie pothole country it is drawn from in the season is painted. */
+  assert.ok((valueAt(50.5, -100.5) ?? 0) > 0, "mallard not drawn in the pothole prairie");
 });

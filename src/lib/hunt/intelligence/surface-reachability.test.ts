@@ -82,7 +82,8 @@ test("American black duck is served as a field, not only as plots", async () => 
    * wrong. Partially present is harder to see than absent.
    */
   const response = await GET(
-    new Request("https://northgroundbushcraft.com/api/hunt/species-surface?speciesId=species:american-black-duck&bbox=-80,43,-74,47"),
+    /* June: both are breeding-season evidence for a bird that migrates (§41B, seasonal truth). */
+    new Request("https://northgroundbushcraft.com/api/hunt/species-surface?speciesId=species:american-black-duck&bbox=-80,43,-74,47&month=6"),
   );
   assert.equal(response.status, 200);
   const body = await response.json();
@@ -152,18 +153,25 @@ test("every committed surface artifact is served by the endpoint", async () => {
 
   const unreachable: string[] = [];
   for (const artifact of artifacts) {
-    const response = await GET(
-      new Request(`https://northgroundbushcraft.com/api/hunt/species-surface?speciesId=${artifact.speciesId}`),
-    );
-    if (response.status !== 200) {
-      unreachable.push(`${artifact.path} → ${response.status}`);
-      continue;
+    /* Asked in June and in October, the breeding and hunting seasons: every
+       surface speaks for one of them, so one served in neither is served never. */
+    let served = false;
+    const said: string[] = [];
+    for (const month of [6, 10]) {
+      const response = await GET(
+        new Request(`https://northgroundbushcraft.com/api/hunt/species-surface?speciesId=${artifact.speciesId}&month=${month}`),
+      );
+      if (response.status !== 200) {
+        said.push(`month ${month} → ${response.status}`);
+        continue;
+      }
+      /* By ITS id: a species answering with some other surface of its own is
+         exactly the partially-present failure a looser check would pass. */
+      const body = await response.json();
+      if (body.surfaces.some((s: { id: string; cells?: unknown }) => s.id === artifact.id && s.cells)) served = true;
+      else said.push(`month ${month} → 200 without ${artifact.id}`);
     }
-    /* By ITS id: a species answering with some other surface of its own is
-       exactly the partially-present failure a looser check would pass. */
-    const body = await response.json();
-    const surface = body.surfaces.find((s: { id: string; cells?: unknown }) => s.id === artifact.id && s.cells);
-    if (!surface) unreachable.push(`${artifact.path} → 200 but ${artifact.id} is not in it`);
+    if (!served) unreachable.push(`${artifact.path}: ${said.join("; ")}`);
   }
   assert.deepEqual(unreachable, [], "an artifact nobody can request is an artifact nobody has");
 });
@@ -189,7 +197,7 @@ test("both render kinds come out of the one endpoint", async () => {
    * rather than choosing.
    */
   const response = await GET(
-    new Request("https://northgroundbushcraft.com/api/hunt/species-surface?speciesId=species:mallard&bbox=-80,43,-74,47"),
+    new Request("https://northgroundbushcraft.com/api/hunt/species-surface?speciesId=species:mallard&bbox=-80,43,-74,47&month=6"),
   );
   const body = await response.json();
   const kinds = new Set(body.surfaces.map((s: { geometryKind: string }) => s.geometryKind));

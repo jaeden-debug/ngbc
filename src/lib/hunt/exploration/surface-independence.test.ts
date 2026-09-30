@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { createSpeciesSurfaceHandler } from "../intelligence/handler.ts";
-import { hasCertifiedSurface, surfaceRegistry } from "../intelligence/surface.ts";
+import { decodeCells, EVIDENCE_WINDOWS, evidenceWindowOf, hasCertifiedSurface, surfaceRegistry } from "../intelligence/surface.ts";
 import { edgeFade, paintFor, rampAt, sampleSurface, sampleSurfaceWithSupport, type RenderableSurface } from "./surface-paint.ts";
 import {
   boxContains, evidenceMonth, paintedGround, surfaceRequestBox, surfaceStateFromReply, surfaceUrl, toRenderable,
@@ -76,10 +76,25 @@ test("certified artifact → registry → API → client request → decoder →
 });
 
 test("every certified surface reaches the renderer from a viewport the client would ask for", async () => {
-  // A continental view: every BBS species has cells somewhere in it.
-  const box = surfaceRequestBox({ west: -125, south: 25, east: -55, north: 62 });
+  /* The view a hunter would have over the species' own ground — a continental
+     view for most, Hawaii or the Arctic for the rest — in a month its
+     evidence speaks for. */
   for (const entry of surfaceRegistry().surfaces) {
-    const { status, payload } = await ask(entry.speciesId, box);
+    const artifact = JSON.parse(readFileSync(entry.artifactPath, "utf8"));
+    const cells = artifact.cells ?? decodeCells(artifact.cellsEncoded);
+    const lats: number[] = [];
+    const lons: number[] = [];
+    for (let i = 0; i < cells.row.length; i += 1) {
+      if (cells.intensity[i] < 0) continue;
+      lats.push(artifact.grid.south + cells.row[i] * artifact.grid.latStep);
+      lons.push(artifact.grid.west + cells.col[i] * artifact.grid.lonStep);
+    }
+    lats.sort((a, b) => a - b);
+    lons.sort((a, b) => a - b);
+    const lat = lats[Math.floor(lats.length / 2)];
+    const lon = lons[Math.floor(lons.length / 2)];
+    const box = surfaceRequestBox({ west: lon - 15, south: Math.max(-85, lat - 8), east: lon + 15, north: Math.min(85, lat + 8) });
+    const { status, payload } = await ask(entry.speciesId, box, EVIDENCE_WINDOWS[evidenceWindowOf(entry)].months[0]);
     assert.equal(status, 200, entry.speciesId);
     const state = surfaceStateFromReply(entry.speciesId, entry.speciesId, status, payload);
     assert.equal(state?.outcome, "DRAWN", entry.speciesId);
@@ -231,7 +246,8 @@ test("a reply for the previous species is discarded, never merged", async () => 
 });
 
 test("SAMPLE_PLOT stays discrete and the BBS field stays continuous — mallard returns both", async () => {
-  const { status, payload } = await ask("species:mallard", surfaceRequestBox({ west: -80, south: 43, east: -64, north: 48 }));
+  /* June: the plots and the field are both breeding-season evidence for a bird that migrates. */
+  const { status, payload } = await ask("species:mallard", surfaceRequestBox({ west: -80, south: 43, east: -64, north: 48 }), 6);
   assert.equal(status, 200);
   const kinds = (payload.surfaces ?? []).map((surface) => `${surface.geometryKind}:${surface.continuity}`);
   assert.ok(kinds.includes("SAMPLE_PLOT:DISCRETE"), kinds.join());
