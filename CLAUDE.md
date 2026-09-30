@@ -2515,6 +2515,67 @@ an animal's distribution does not stop at a regulatory line. And sub-zone
 evidence — the waterfowl plots are the first — **renders across zone boundaries
 in its own geometry**, because its geography is independent of theirs.
 
+### The surface is a raster, and the zones float above it
+
+*Decided 2026-09-29 (owner).*
+
+Species Heat is a **continental, species-specific opportunity raster** rendered
+like weather radar, with hunting geography drawn over it as an independent
+vector layer. North America is divided into cells at a declared resolution that
+owes nothing to any regulatory boundary; each cell carries a score; the renderer
+turns those cells into the continuous transparent → blue → cyan → green → yellow
+→ orange → red surface. The draw order is fixed:
+
+    satellite basemap
+      → species opportunity surface
+      → hunting-zone boundaries
+      → bright-green legal-opportunity outlines
+      → `!` condition markers
+      → labels, selection, interface
+
+**Two kinds of surface, and they are ranked.**
+
+1. **Measured or authority-modelled abundance.** Where an authority publishes
+   density, survey grids, observation surfaces or aerial-survey polygons under
+   a licence we may use, that evidence renders at its own legitimate
+   resolution. This is always the stronger layer and is preferred wherever it
+   exists.
+2. **A North Ground habitat/opportunity model.** Where measured abundance does
+   not exist, a reproducible species-specific model built from high-resolution
+   published environmental inputs and published biological research. It is the
+   fallback, never the preference, and never presented as the first.
+
+**A coarse measurement may never modify fine-resolution cells.** If a zone-wide
+survey reports 0.8 moose/km², that is a real and valuable fact about the zone in
+aggregate — and it still says nothing about whether the western valley holds
+more moose than the eastern forest. A zone value multiplied across fine pixels
+would let a regulatory boundary shape the animal surface while looking like
+biology: the same defect as a zone choropleth, in disguise and harder to see.
+Such a measurement is carried as supporting evidence and as confidence until
+there is a defensible statistical method for incorporating it, and the absence
+of that method is not a reason to approximate one.
+
+**There is no generic wildlife formula.** `forest + water + elevation` is not a
+model and must never be applied across species. Every species gets its own
+versioned model: a moose model weighs wetlands, regenerating forest, aquatic
+forage, thermal cover and snow; ruffed grouse, black bear and waterfowl each
+turn on different relationships. **Season is part of the model, not a note on
+it** — a September moose model is not a winter moose model, and using one for
+the other is a silent error a hunter cannot see.
+
+Every generated surface carries its own provenance block: species, model id and
+version, output resolution, season represented, each input source, the
+population evidence used, the biological literature supporting the weights, the
+methodology, generation date and confidence. A model whose inputs cannot be
+stored cannot promise reproducibility and says so.
+
+**The interface names what it is.** "Moose opportunity — habitat suitability
+and available population evidence", with an information control that says in
+plain words: areas with environmental characteristics associated with moose
+occurrence, supplemented by available population evidence; a habitat and
+opportunity model, not a count of animals. It is never called population
+density unless the underlying data measures density.
+
 ### Evidence class is preserved, never normalised away
 
 Every dataset declares which class its metric belongs to — absolute density,
