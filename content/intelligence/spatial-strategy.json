@@ -322,13 +322,7 @@
     },
     "species:beldings-ground-squirrel": {
       "family": "SMALL_GAME",
-      "next": [
-        {
-          "strategy": "C_HABITAT_MODEL",
-          "status": "IN_RESEARCH",
-          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
-        }
-      ]
+      "next": []
     },
     "species:bighorn-sheep": {
       "family": "UNGULATE",
@@ -550,13 +544,7 @@
     },
     "species:california-ground-squirrel": {
       "family": "SMALL_GAME",
-      "next": [
-        {
-          "strategy": "C_HABITAT_MODEL",
-          "status": "IN_RESEARCH",
-          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
-        }
-      ]
+      "next": []
     },
     "species:california-kingsnake": {
       "family": "REPTILE",
@@ -1021,13 +1009,7 @@
     },
     "species:egyptian-goose": {
       "family": "WATERFOWL",
-      "next": [
-        {
-          "strategy": "B_MEASURED_DISTRIBUTION",
-          "status": "IN_RESEARCH",
-          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
-        }
-      ]
+      "next": []
     },
     "species:elk": {
       "family": "UNGULATE",
@@ -1260,13 +1242,7 @@
     },
     "species:golden-mantled-ground-squirrel": {
       "family": "SMALL_GAME",
-      "next": [
-        {
-          "strategy": "C_HABITAT_MODEL",
-          "status": "IN_RESEARCH",
-          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
-        }
-      ]
+      "next": []
     },
     "species:gophersnake": {
       "family": "REPTILE",
@@ -1627,13 +1603,7 @@
     },
     "species:lesser-prairie-chicken": {
       "family": "OPEN_COUNTRY_UPLAND_BIRD",
-      "next": [
-        {
-          "strategy": "B_MEASURED_DISTRIBUTION",
-          "status": "IN_RESEARCH",
-          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
-        }
-      ]
+      "next": []
     },
     "species:lesser-scaup": {
       "family": "WATERFOWL"
@@ -1789,13 +1759,7 @@
     },
     "species:mountain-beaver": {
       "family": "SMALL_GAME",
-      "next": [
-        {
-          "strategy": "C_HABITAT_MODEL",
-          "status": "IN_RESEARCH",
-          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
-        }
-      ]
+      "next": []
     },
     "species:mountain-chorus-frog": {
       "family": "AMPHIBIAN",
@@ -1912,13 +1876,7 @@
     },
     "species:new-england-cottontail": {
       "family": "SMALL_GAME",
-      "next": [
-        {
-          "strategy": "C_HABITAT_MODEL",
-          "status": "IN_RESEARCH",
-          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
-        }
-      ]
+      "next": []
     },
     "species:nile-monitor": {
       "family": "REPTILE",
@@ -2896,13 +2854,7 @@
     },
     "species:uinta-ground-squirrel": {
       "family": "SMALL_GAME",
-      "next": [
-        {
-          "strategy": "C_HABITAT_MODEL",
-          "status": "IN_RESEARCH",
-          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
-        }
-      ]
+      "next": []
     },
     "species:virginia-opossum": {
       "family": "PREDATOR_FURBEARER",

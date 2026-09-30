@@ -57,7 +57,7 @@ unit, shown in that unit's card and never painted (§41B). A **plan** is never c
 | barking-treefrog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | barrows-goldeneye | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
 | beaver | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| beldings-ground-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| beldings-ground-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | bighorn-sheep | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | bird-voiced-treefrog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | black-bellied-whistling-duck | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
@@ -86,7 +86,7 @@ unit, shown in that unit's card and never painted (§41B). A **plan** is never c
 | bufflehead | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | ON, QC | — | PRODUCTION_VERIFIED | — |
 | burmese-python | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | cackling-goose | arctic nesting goose | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | D in research |
-| california-ground-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| california-ground-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | california-kingsnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | california-lyresnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | california-mountain-kingsnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
@@ -164,7 +164,7 @@ unit, shown in that unit's card and never painted (§41B). A **plan** is never c
 | eastern-spotted-skunk | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | eastern-tiger-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | eastern-wolf | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| egyptian-goose | waterfowl | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
+| egyptian-goose | waterfowl | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | elk | ungulate | D — zone evidence (not painted) | — | — | BC | STRATEGY_DEFINED | C in research |
 | emperor-goose | waterfowl | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | ensatina | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
@@ -194,7 +194,7 @@ unit, shown in that unit's card and never painted (§41B). A **plan** is never c
 | gilberts-skink | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | glossy-crayfish-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | glossy-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
-| golden-mantled-ground-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| golden-mantled-ground-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | gophersnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | grahams-crayfish-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | granite-spiny-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
@@ -246,7 +246,7 @@ unit, shown in that unit's card and never painted (§41B). A **plan** is never c
 | king-rail | migratory game bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | kit-fox | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | least-weasel | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| lesser-prairie-chicken | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
+| lesser-prairie-chicken | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | lesser-scaup | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
 | lesser-siren | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | loggerhead-musk-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
@@ -275,7 +275,7 @@ unit, shown in that unit's card and never painted (§41B). A **plan** is never c
 | moose | ungulate | D — zone evidence (not painted) | — | — | AB, BC, ON | STRATEGY_DEFINED | C in research |
 | mottled-duck | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
 | mouflon | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
-| mountain-beaver | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| mountain-beaver | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | mountain-chorus-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | mountain-cottontail | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | mountain-goat | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
@@ -291,7 +291,7 @@ unit, shown in that unit's card and never painted (§41B). A **plan** is never c
 | muskrat | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | mute-swan | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | narrowmouth-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
-| new-england-cottontail | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| new-england-cottontail | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | nile-monitor | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | nilgai | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | nine-banded-armadillo | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
@@ -452,7 +452,7 @@ unit, shown in that unit's card and never painted (§41B). A **plan** is never c
 | tundra-swan | waterfowl | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | two-lined-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | two-toed-amphiuma | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
-| uinta-ground-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| uinta-ground-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | virginia-opossum | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | virginia-rail | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | wandering-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |

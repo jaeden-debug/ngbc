@@ -1,0 +1,12 @@
+jurisdiction_id,audit_status,note
+jurisdiction:us-nj,BLOCKED_SOURCE,Every official New Jersey host returned 403 or timed out; only a marine-mammal out-of-scope row was recorded
+jurisdiction:us-ny,BLOCKED_SOURCE,dec.ny.gov nysenate.gov and the NYCRR host returned 403 or timed out
+jurisdiction:us-mi,BLOCKED_SOURCE,michigan.gov returned Akamai Access Denied; only the statutory game list (MCL 324.40103) was read
+jurisdiction:us-ma,PARTIAL_SOURCE,mass.gov returned 403; only M.G.L. c.131 was read
+jurisdiction:us-az,PARTIAL_SOURCE,azgfd and azsos behind a Cloudflare challenge; department PDFs were read and 2026-27 waterfowl was not found
+jurisdiction:ca-yt,BLOCKED_SOURCE,Every Yukon official site returned a bot check; five rows rest on a search excerpt
+jurisdiction:us-ne,PARTIAL_SOURCE,Nebraska sites returned 403; state-library copies of 2024-2026 guides were read
+jurisdiction:us-ks,PARTIAL_SOURCE,Kansas sites returned 403; the 2025-26 summary was read
+jurisdiction:ca-pe,PARTIAL_SOURCE,The newest consolidation is 2022 and the newest summary 2024
+jurisdiction:ca-nt,OUT_OF_SCOPE,Out of the national scope (CLAUDE.md section 9); 2022-23 summary read
+jurisdiction:ca-nu,OUT_OF_SCOPE,Out of the national scope (CLAUDE.md section 9); 2021-22 summary read

@@ -1,0 +1,5537 @@
+{
+"source": "50 CFR 10.13, Table 1 to paragraph (c)(1) (eCFR versioner API, 2026-09-01), read 2026-09-30",
+"url": "https://www.ecfr.gov/current/title-50/chapter-I/subchapter-B/part-10/subpart-B/section-10.13",
+"definition": "50 CFR 20.11(a): migratory game birds are Convention-listed birds of Anatidae, Columbidae, Gruidae, Rallidae and Scolopacidae",
+"species": [
+{
+"group": "Accentor",
+"commonName": "Siberian Accentor",
+"scientificName": "Prunella montanella"
+},
+{
+"group": "'Akeke'e",
+"commonName": "'Akeke'e",
+"scientificName": "Loxops caeruleirostris"
+},
+{
+"group": "'Akepa",
+"commonName": "Hawaii 'Akepa",
+"scientificName": "Loxops coccineus"
+},
+{
+"group": "'Akepa",
+"commonName": "Maui 'Akepa",
+"scientificName": "Loxops ochraceus"
+},
+{
+"group": "'Akepa",
+"commonName": "O'ahu 'Akepa",
+"scientificName": "Loxops wolstenholmei"
+},
+{
+"group": "'Akialoa",
+"commonName": "Kauai 'Akialoa",
+"scientificName": "Akialoa stejnegeri"
+},
+{
+"group": "'Akialoa",
+"commonName": "Maui Nui 'Akialoa",
+"scientificName": "Akialoa lanaiensis"
+},
+{
+"group": "'Akialoa",
+"commonName": "O'ahu 'Akialoa",
+"scientificName": "Akialoa ellisiana"
+},
+{
+"group": "'Akiapola'au",
+"commonName": "'Akiapola'au",
+"scientificName": "Hemignathus wilsoni"
+},
+{
+"group": "'Akikiki",
+"commonName": "'Akikiki",
+"scientificName": "Oreomystis bairdi"
+},
+{
+"group": "'Akohekohe",
+"commonName": "'Akohekohe",
+"scientificName": "Palmeria dolei"
+},
+{
+"group": "'Alauahio",
+"commonName": "Maui 'Alauahio",
+"scientificName": "Paroreomyza montana"
+},
+{
+"group": "'Alauahio",
+"commonName": "O'ahu 'Alauahio",
+"scientificName": "Paroreomyza maculata"
+},
+{
+"group": "Albatross",
+"commonName": "Black-browed Albatross",
+"scientificName": "Thalassarche melanophris"
+},
+{
+"group": "Albatross",
+"commonName": "Black-footed Albatross",
+"scientificName": "Phoebastria nigripes"
+},
+{
+"group": "Albatross",
+"commonName": "Chatham Albatross",
+"scientificName": "Thalassarche eremita"
+},
+{
+"group": "Albatross",
+"commonName": "Laysan Albatross",
+"scientificName": "Phoebastria immutabilis"
+},
+{
+"group": "Albatross",
+"commonName": "Light-mantled Albatross",
+"scientificName": "Phoebetria palpebrata"
+},
+{
+"group": "Albatross",
+"commonName": "Salvin's Albatross",
+"scientificName": "Thalassarche salvini"
+},
+{
+"group": "Albatross",
+"commonName": "Short-tailed Albatross",
+"scientificName": "Phoebastria albatrus"
+},
+{
+"group": "Albatross",
+"commonName": "Wandering Albatross",
+"scientificName": "Diomedea exulans"
+},
+{
+"group": "Albatross",
+"commonName": "White-capped Albatross",
+"scientificName": "Thalassarche cauta"
+},
+{
+"group": "Albatross",
+"commonName": "Yellow-nosed Albatross",
+"scientificName": "Thalassarche chlororhynchos"
+},
+{
+"group": "'Amakihi",
+"commonName": "Hawaii 'Amakihi",
+"scientificName": "Chlorodrepanis virens"
+},
+{
+"group": "'Amakihi",
+"commonName": "Kaua'i 'Amakihi",
+"scientificName": "Chlorodrepanis stejnegeri"
+},
+{
+"group": "'Amakihi",
+"commonName": "O'ahu 'Amakihi",
+"scientificName": "Chlorodrepanis flava"
+},
+{
+"group": "Anhinga",
+"commonName": "Anhinga",
+"scientificName": "Anhinga anhinga"
+},
+{
+"group": "Ani",
+"commonName": "Groove-billed Ani",
+"scientificName": "Crotophaga sulcirostris"
+},
+{
+"group": "Ani",
+"commonName": "Smooth-billed Ani",
+"scientificName": "Crotophaga ani"
+},
+{
+"group": "'Anianiau",
+"commonName": "'Anianiau",
+"scientificName": "Magumma parva"
+},
+{
+"group": "'Apapane",
+"commonName": "'Apapane",
+"scientificName": "Himatione sanguinea"
+},
+{
+"group": "Auklet",
+"commonName": "Cassin's Auklet",
+"scientificName": "Ptychoramphus aleuticus"
+},
+{
+"group": "Auklet",
+"commonName": "Crested Auklet",
+"scientificName": "Aethia cristatella"
+},
+{
+"group": "Auklet",
+"commonName": "Least Auklet",
+"scientificName": "Aethia pusilla"
+},
+{
+"group": "Auklet",
+"commonName": "Parakeet Auklet",
+"scientificName": "Aethia psittacula"
+},
+{
+"group": "Auklet",
+"commonName": "Rhinoceros Auklet",
+"scientificName": "Cerorhinca monocerata"
+},
+{
+"group": "Auklet",
+"commonName": "Whiskered Auklet",
+"scientificName": "Aethia pygmaea"
+},
+{
+"group": "Avocet",
+"commonName": "American Avocet",
+"scientificName": "Recurvirostra americana"
+},
+{
+"group": "Bananaquit",
+"commonName": "Bananaquit",
+"scientificName": "Coereba flaveola"
+},
+{
+"group": "Bean-Goose",
+"commonName": "Taiga Bean-Goose",
+"scientificName": "Anser fabalis"
+},
+{
+"group": "Bean-Goose",
+"commonName": "Tundra Bean-Goose",
+"scientificName": "Anser serrirostris"
+},
+{
+"group": "Beardless-Tyrannulet",
+"commonName": "Northern Beardless-Tyrannulet",
+"scientificName": "Camptostoma imberbe"
+},
+{
+"group": "Becard",
+"commonName": "Gray-collared Becard",
+"scientificName": "Pachyramphus major"
+},
+{
+"group": "Becard",
+"commonName": "Rose-throated Becard",
+"scientificName": "Pachyramphus aglaiae"
+},
+{
+"group": "Bittern",
+"commonName": "American Bittern",
+"scientificName": "Botaurus lentiginosus"
+},
+{
+"group": "Bittern",
+"commonName": "Black Bittern",
+"scientificName": "Ixobrychus flavicollis"
+},
+{
+"group": "Bittern",
+"commonName": "Least Bittern",
+"scientificName": "Ixobrychus exilis"
+},
+{
+"group": "Bittern",
+"commonName": "Schrenck's Bittern",
+"scientificName": "Ixobrychus eurhythmus"
+},
+{
+"group": "Bittern",
+"commonName": "Yellow Bittern",
+"scientificName": "Ixobrychus sinensis"
+},
+{
+"group": "Blackbird",
+"commonName": "Brewer's Blackbird",
+"scientificName": "Euphagus cyanocephalus"
+},
+{
+"group": "Blackbird",
+"commonName": "Red-winged Blackbird",
+"scientificName": "Agelaius phoeniceus"
+},
+{
+"group": "Blackbird",
+"commonName": "Rusty Blackbird",
+"scientificName": "Euphagus carolinus"
+},
+{
+"group": "Blackbird",
+"commonName": "Tawny-shouldered Blackbird",
+"scientificName": "Agelaius humeralis"
+},
+{
+"group": "Blackbird",
+"commonName": "Tricolored Blackbird",
+"scientificName": "Agelaius tricolor"
+},
+{
+"group": "Blackbird",
+"commonName": "Yellow-headed Blackbird",
+"scientificName": "Xanthocephalus xanthocephalus"
+},
+{
+"group": "Blackbird",
+"commonName": "Yellow-shouldered Blackbird",
+"scientificName": "Agelaius xanthomus"
+},
+{
+"group": "Bluebird",
+"commonName": "Eastern Bluebird",
+"scientificName": "Sialia sialis"
+},
+{
+"group": "Bluebird",
+"commonName": "Mountain Bluebird",
+"scientificName": "Sialia currucoides"
+},
+{
+"group": "Bluebird",
+"commonName": "Western Bluebird",
+"scientificName": "Sialia mexicana"
+},
+{
+"group": "Bluetail",
+"commonName": "Red-flanked Bluetail",
+"scientificName": "Tarsiger cyanurus"
+},
+{
+"group": "Bluethroat",
+"commonName": "Bluethroat",
+"scientificName": "Cyanecula svecica"
+},
+{
+"group": "Bobolink",
+"commonName": "Bobolink",
+"scientificName": "Dolichonyx oryzivorus"
+},
+{
+"group": "Boobook",
+"commonName": "Northern Boobook",
+"scientificName": "Ninox japonica"
+},
+{
+"group": "Booby",
+"commonName": "Abbott's Booby",
+"scientificName": "Papasula abbotti"
+},
+{
+"group": "Booby",
+"commonName": "Blue-footed Booby",
+"scientificName": "Sula nebouxii"
+},
+{
+"group": "Booby",
+"commonName": "Brown Booby",
+"scientificName": "Sula leucogaster"
+},
+{
+"group": "Booby",
+"commonName": "Masked Booby",
+"scientificName": "Sula dactylatra"
+},
+{
+"group": "Booby",
+"commonName": "Nazca Booby",
+"scientificName": "Sula granti"
+},
+{
+"group": "Booby",
+"commonName": "Red-footed Booby",
+"scientificName": "Sula sula"
+},
+{
+"group": "Brambling",
+"commonName": "Brambling",
+"scientificName": "Fringilla montifringilla"
+},
+{
+"group": "Brant",
+"commonName": "Brant",
+"scientificName": "Branta bernicla"
+},
+{
+"group": "Bufflehead",
+"commonName": "Bufflehead",
+"scientificName": "Bucephala albeola"
+},
+{
+"group": "Bullfinch",
+"commonName": "Eurasian Bullfinch",
+"scientificName": "Pyrrhula pyrrhula"
+},
+{
+"group": "Bullfinch",
+"commonName": "Puerto Rican Bullfinch",
+"scientificName": "Melopyrrha portoricensis"
+},
+{
+"group": "Bunting",
+"commonName": "Blue Bunting",
+"scientificName": "Cyanocompsa parellina"
+},
+{
+"group": "Bunting",
+"commonName": "Gray Bunting",
+"scientificName": "Emberiza variabilis"
+},
+{
+"group": "Bunting",
+"commonName": "Indigo Bunting",
+"scientificName": "Passerina cyanea"
+},
+{
+"group": "Bunting",
+"commonName": "Lark Bunting",
+"scientificName": "Calamospiza melanocorys"
+},
+{
+"group": "Bunting",
+"commonName": "Lazuli Bunting",
+"scientificName": "Passerina amoena"
+},
+{
+"group": "Bunting",
+"commonName": "Little Bunting",
+"scientificName": "Emberiza pusilla"
+},
+{
+"group": "Bunting",
+"commonName": "McKay's Bunting",
+"scientificName": "Plectrophenax hyperboreus"
+},
+{
+"group": "Bunting",
+"commonName": "Painted Bunting",
+"scientificName": "Passerina ciris"
+},
+{
+"group": "Bunting",
+"commonName": "Pallas's Bunting",
+"scientificName": "Emberiza pallasi"
+},
+{
+"group": "Bunting",
+"commonName": "Pine Bunting",
+"scientificName": "Emberiza leucocephalos"
+},
+{
+"group": "Bunting",
+"commonName": "Reed Bunting",
+"scientificName": "Emberiza schoeniclus"
+},
+{
+"group": "Bunting",
+"commonName": "Rustic Bunting",
+"scientificName": "Emberiza rustica"
+},
+{
+"group": "Bunting",
+"commonName": "Snow Bunting",
+"scientificName": "Plectrophenax nivalis"
+},
+{
+"group": "Bunting",
+"commonName": "Varied Bunting",
+"scientificName": "Passerina versicolor"
+},
+{
+"group": "Bunting",
+"commonName": "Yellow-breasted Bunting",
+"scientificName": "Emberiza aureola"
+},
+{
+"group": "Bunting",
+"commonName": "Yellow-browed Bunting",
+"scientificName": "Emberiza chrysophrys"
+},
+{
+"group": "Bunting",
+"commonName": "Yellow-throated Bunting",
+"scientificName": "Emberiza elegans"
+},
+{
+"group": "Bushtit",
+"commonName": "Bushtit",
+"scientificName": "Psaltriparus minimus"
+},
+{
+"group": "Buzzard",
+"commonName": "Gray-faced Buzzard",
+"scientificName": "Butastur indicus"
+},
+{
+"group": "Buzzard",
+"commonName": "Long-legged Buzzard",
+"scientificName": "Buteo rufinus"
+},
+{
+"group": "Canvasback",
+"commonName": "Canvasback",
+"scientificName": "Aythya valisineria"
+},
+{
+"group": "Caracara",
+"commonName": "Crested Caracara",
+"scientificName": "Caracara plancus"
+},
+{
+"group": "Cardinal",
+"commonName": "Northern Cardinal",
+"scientificName": "Cardinalis cardinalis"
+},
+{
+"group": "Carib",
+"commonName": "Green-throated Carib",
+"scientificName": "Eulampis holosericeus"
+},
+{
+"group": "Carib",
+"commonName": "Purple-throated Carib",
+"scientificName": "Eulampis jugularis"
+},
+{
+"group": "Catbird",
+"commonName": "Black Catbird",
+"scientificName": "Melanoptila glabrirostris"
+},
+{
+"group": "Catbird",
+"commonName": "Gray Catbird",
+"scientificName": "Dumetella carolinensis"
+},
+{
+"group": "Chaffinch",
+"commonName": "Common Chaffinch",
+"scientificName": "Fringilla coelebs"
+},
+{
+"group": "Chat",
+"commonName": "Yellow-breasted Chat",
+"scientificName": "Icteria virens"
+},
+{
+"group": "Chickadee",
+"commonName": "Black-capped Chickadee",
+"scientificName": "Poecile atricapillus"
+},
+{
+"group": "Chickadee",
+"commonName": "Boreal Chickadee",
+"scientificName": "Poecile hudsonicus"
+},
+{
+"group": "Chickadee",
+"commonName": "Carolina Chickadee",
+"scientificName": "Poecile carolinensis"
+},
+{
+"group": "Chickadee",
+"commonName": "Chestnut-backed Chickadee",
+"scientificName": "Poecile rufescens"
+},
+{
+"group": "Chickadee",
+"commonName": "Gray-headed Chickadee",
+"scientificName": "Poecile cinctus"
+},
+{
+"group": "Chickadee",
+"commonName": "Mexican Chickadee",
+"scientificName": "Poecile sclateri"
+},
+{
+"group": "Chickadee",
+"commonName": "Mountain Chickadee",
+"scientificName": "Poecile gambeli"
+},
+{
+"group": "Chiffchaff",
+"commonName": "Common Chiffchaff",
+"scientificName": "Phylloscopus collybita"
+},
+{
+"group": "Chuck-will's-widow",
+"commonName": "Chuck-will's-widow",
+"scientificName": "Antrostomus carolinensis"
+},
+{
+"group": "Condor",
+"commonName": "California Condor",
+"scientificName": "Gymnogyps californianus"
+},
+{
+"group": "Coot",
+"commonName": "American Coot",
+"scientificName": "Fulica americana"
+},
+{
+"group": "Coot",
+"commonName": "Eurasian Coot",
+"scientificName": "Fulica atra"
+},
+{
+"group": "Coot",
+"commonName": "Hawaiian Coot",
+"scientificName": "Fulica alai"
+},
+{
+"group": "Cormorant",
+"commonName": "Brandt's Cormorant",
+"scientificName": "Urile penicillatus"
+},
+{
+"group": "Cormorant",
+"commonName": "Double-crested Cormorant",
+"scientificName": "Nannopterum auritum"
+},
+{
+"group": "Cormorant",
+"commonName": "Great Cormorant",
+"scientificName": "Phalacrocorax carbo"
+},
+{
+"group": "Cormorant",
+"commonName": "Little Pied Cormorant",
+"scientificName": "Microcarbo melanoleucos"
+},
+{
+"group": "Cormorant",
+"commonName": "Neotropic Cormorant",
+"scientificName": "Nannopterum brasilianum"
+},
+{
+"group": "Cormorant",
+"commonName": "Pelagic Cormorant",
+"scientificName": "Urile pelagicus"
+},
+{
+"group": "Cormorant",
+"commonName": "Red-faced Cormorant",
+"scientificName": "Urile urile"
+},
+{
+"group": "Cowbird",
+"commonName": "Bronzed Cowbird",
+"scientificName": "Molothrus aeneus"
+},
+{
+"group": "Cowbird",
+"commonName": "Brown-headed Cowbird",
+"scientificName": "Molothrus ater"
+},
+{
+"group": "Cowbird",
+"commonName": "Shiny Cowbird",
+"scientificName": "Molothrus bonariensis"
+},
+{
+"group": "Crake",
+"commonName": "Corn Crake",
+"scientificName": "Crex crex"
+},
+{
+"group": "Crake",
+"commonName": "Paint-billed Crake",
+"scientificName": "Neocrex erythrops"
+},
+{
+"group": "Crake",
+"commonName": "Spotless Crake",
+"scientificName": "Porzana tabuensis"
+},
+{
+"group": "Crake",
+"commonName": "Yellow-breasted Crake",
+"scientificName": "Hapalocrex flaviventer"
+},
+{
+"group": "Crane",
+"commonName": "Common Crane",
+"scientificName": "Grus grus"
+},
+{
+"group": "Crane",
+"commonName": "Hooded Crane",
+"scientificName": "Grus monacha"
+},
+{
+"group": "Crane",
+"commonName": "Sandhill Crane",
+"scientificName": "Antigone canadensis"
+},
+{
+"group": "Crane",
+"commonName": "Whooping Crane",
+"scientificName": "Grus americana"
+},
+{
+"group": "Creeper",
+"commonName": "Brown Creeper",
+"scientificName": "Certhia americana"
+},
+{
+"group": "Creeper",
+"commonName": "Hawaii Creeper",
+"scientificName": "Loxops mana"
+},
+{
+"group": "Crossbill",
+"commonName": "Cassia Crossbill",
+"scientificName": "Loxia sinesciuris"
+},
+{
+"group": "Crossbill",
+"commonName": "Red Crossbill",
+"scientificName": "Loxia curvirostra"
+},
+{
+"group": "Crossbill",
+"commonName": "White-winged Crossbill",
+"scientificName": "Loxia leucoptera"
+},
+{
+"group": "Crow",
+"commonName": "American Crow",
+"scientificName": "Corvus brachyrhynchos"
+},
+{
+"group": "Crow",
+"commonName": "Fish Crow",
+"scientificName": "Corvus ossifragus"
+},
+{
+"group": "Crow",
+"commonName": "Hawaiian Crow",
+"scientificName": "Corvus hawaiiensis"
+},
+{
+"group": "Crow",
+"commonName": "Mariana Crow",
+"scientificName": "Corvus kubaryi"
+},
+{
+"group": "Crow",
+"commonName": "Tamaulipas Crow",
+"scientificName": "Corvus imparatus"
+},
+{
+"group": "Crow",
+"commonName": "White-necked Crow",
+"scientificName": "Corvus leucognaphalus"
+},
+{
+"group": "Cuckoo",
+"commonName": "Black-billed Cuckoo",
+"scientificName": "Coccyzus erythropthalmus"
+},
+{
+"group": "Cuckoo",
+"commonName": "Chestnut-winged Cuckoo",
+"scientificName": "Clamator coromandus"
+},
+{
+"group": "Cuckoo",
+"commonName": "Common Cuckoo",
+"scientificName": "Cuculus canorus"
+},
+{
+"group": "Cuckoo",
+"commonName": "Dark-billed Cuckoo",
+"scientificName": "Coccyzus melacoryphus"
+},
+{
+"group": "Cuckoo",
+"commonName": "Mangrove Cuckoo",
+"scientificName": "Coccyzus minor"
+},
+{
+"group": "Cuckoo",
+"commonName": "Oriental Cuckoo",
+"scientificName": "Cuculus optatus"
+},
+{
+"group": "Cuckoo",
+"commonName": "Yellow-billed Cuckoo",
+"scientificName": "Coccyzus americanus"
+},
+{
+"group": "Curlew",
+"commonName": "Bristle-thighed Curlew",
+"scientificName": "Numenius tahitiensis"
+},
+{
+"group": "Curlew",
+"commonName": "Eskimo Curlew",
+"scientificName": "Numenius borealis"
+},
+{
+"group": "Curlew",
+"commonName": "Eurasian Curlew",
+"scientificName": "Numenius arquata"
+},
+{
+"group": "Curlew",
+"commonName": "Far Eastern Curlew",
+"scientificName": "Numenius madagascariensis"
+},
+{
+"group": "Curlew",
+"commonName": "Little Curlew",
+"scientificName": "Numenius minutus"
+},
+{
+"group": "Curlew",
+"commonName": "Long-billed Curlew",
+"scientificName": "Numenius americanus"
+},
+{
+"group": "Dickcissel",
+"commonName": "Dickcissel",
+"scientificName": "Spiza americana"
+},
+{
+"group": "Dipper",
+"commonName": "American Dipper",
+"scientificName": "Cinclus mexicanus"
+},
+{
+"group": "Dotterel",
+"commonName": "Eurasian Dotterel",
+"scientificName": "Charadrius morinellus"
+},
+{
+"group": "Dove",
+"commonName": "Common Ground Dove",
+"scientificName": "Columbina passerina"
+},
+{
+"group": "Dove",
+"commonName": "Inca Dove",
+"scientificName": "Columbina inca"
+},
+{
+"group": "Dove",
+"commonName": "Mourning Dove",
+"scientificName": "Zenaida macroura"
+},
+{
+"group": "Dove",
+"commonName": "Ruddy Ground Dove",
+"scientificName": "Columbina talpacoti"
+},
+{
+"group": "Dove",
+"commonName": "Shy Ground Dove",
+"scientificName": "Alopecoenas stairi"
+},
+{
+"group": "Dove",
+"commonName": "White-throated Ground Dove",
+"scientificName": "Alopecoenas xanthonurus"
+},
+{
+"group": "Dove",
+"commonName": "White-tipped Dove",
+"scientificName": "Leptotila verreauxi"
+},
+{
+"group": "Dove",
+"commonName": "White-winged Dove",
+"scientificName": "Zenaida asiatica"
+},
+{
+"group": "Dove",
+"commonName": "Zenaida Dove",
+"scientificName": "Zenaida aurita"
+},
+{
+"group": "Dovekie",
+"commonName": "Dovekie",
+"scientificName": "Alle alle"
+},
+{
+"group": "Dowitcher",
+"commonName": "Long-billed Dowitcher",
+"scientificName": "Limnodromus scolopaceus"
+},
+{
+"group": "Dowitcher",
+"commonName": "Short-billed Dowitcher",
+"scientificName": "Limnodromus griseus"
+},
+{
+"group": "Duck",
+"commonName": "American Black Duck",
+"scientificName": "Anas rubripes"
+},
+{
+"group": "Duck",
+"commonName": "Eastern Spot-billed Duck",
+"scientificName": "Anas zonorhyncha"
+},
+{
+"group": "Duck",
+"commonName": "Falcated Duck",
+"scientificName": "Mareca falcata"
+},
+{
+"group": "Duck",
+"commonName": "Harlequin Duck",
+"scientificName": "Histrionicus histrionicus"
+},
+{
+"group": "Duck",
+"commonName": "Hawaiian Duck",
+"scientificName": "Anas wyvilliana"
+},
+{
+"group": "Duck",
+"commonName": "Laysan Duck",
+"scientificName": "Anas laysanensis"
+},
+{
+"group": "Duck",
+"commonName": "Long-tailed Duck",
+"scientificName": "Clangula hyemalis"
+},
+{
+"group": "Duck",
+"commonName": "Masked Duck",
+"scientificName": "Nomonyx dominicus"
+},
+{
+"group": "Duck",
+"commonName": "Mexican Duck",
+"scientificName": "Anas diazi"
+},
+{
+"group": "Duck",
+"commonName": "Mottled Duck",
+"scientificName": "Anas fulvigula"
+},
+{
+"group": "Duck",
+"commonName": "Muscovy Duck",
+"scientificName": "Cairina moschata"
+},
+{
+"group": "Duck",
+"commonName": "Pacific Black Duck",
+"scientificName": "Anas superciliosa"
+},
+{
+"group": "Duck",
+"commonName": "Ring-necked Duck",
+"scientificName": "Aythya collaris"
+},
+{
+"group": "Duck",
+"commonName": "Ruddy Duck",
+"scientificName": "Oxyura jamaicensis"
+},
+{
+"group": "Duck",
+"commonName": "Tufted Duck",
+"scientificName": "Aythya fuligula"
+},
+{
+"group": "Duck",
+"commonName": "Wood Duck",
+"scientificName": "Aix sponsa"
+},
+{
+"group": "Dunlin",
+"commonName": "Dunlin",
+"scientificName": "Calidris alpina"
+},
+{
+"group": "Eagle",
+"commonName": "Bald Eagle",
+"scientificName": "Haliaeetus leucocephalus"
+},
+{
+"group": "Eagle",
+"commonName": "Golden Eagle",
+"scientificName": "Aquila chrysaetos"
+},
+{
+"group": "Eagle",
+"commonName": "White-tailed Eagle",
+"scientificName": "Haliaeetus albicilla"
+},
+{
+"group": "Egret",
+"commonName": "Cattle Egret",
+"scientificName": "Bubulcus ibis"
+},
+{
+"group": "Egret",
+"commonName": "Chinese Egret",
+"scientificName": "Egretta eulophotes"
+},
+{
+"group": "Egret",
+"commonName": "Great Egret",
+"scientificName": "Ardea alba"
+},
+{
+"group": "Egret",
+"commonName": "Intermediate Egret",
+"scientificName": "Ardea intermedia"
+},
+{
+"group": "Egret",
+"commonName": "Little Egret",
+"scientificName": "Egretta garzetta"
+},
+{
+"group": "Egret",
+"commonName": "Reddish Egret",
+"scientificName": "Egretta rufescens"
+},
+{
+"group": "Egret",
+"commonName": "Snowy Egret",
+"scientificName": "Egretta thula"
+},
+{
+"group": "Eider",
+"commonName": "Common Eider",
+"scientificName": "Somateria mollissima"
+},
+{
+"group": "Eider",
+"commonName": "King Eider",
+"scientificName": "Somateria spectabilis"
+},
+{
+"group": "Eider",
+"commonName": "Spectacled Eider",
+"scientificName": "Somateria fischeri"
+},
+{
+"group": "Eider",
+"commonName": "Steller's Eider",
+"scientificName": "Polysticta stelleri"
+},
+{
+"group": "Elaenia",
+"commonName": "Caribbean Elaenia",
+"scientificName": "Elaenia martinica"
+},
+{
+"group": "Elaenia",
+"commonName": "Greenish Elaenia",
+"scientificName": "Myiopagis viridicata"
+},
+{
+"group": "Elaenia",
+"commonName": "Small-billed Elaenia",
+"scientificName": "Elaenia parvirostris"
+},
+{
+"group": "Elaenia",
+"commonName": "White-crested Elaenia",
+"scientificName": "Elaenia albiceps"
+},
+{
+"group": "Emerald",
+"commonName": "Puerto Rican Emerald",
+"scientificName": "Riccordia maugaeus"
+},
+{
+"group": "Euphonia",
+"commonName": "Antillean Euphonia",
+"scientificName": "Chlorophonia musica"
+},
+{
+"group": "Falcon",
+"commonName": "Amur Falcon",
+"scientificName": "Falco amurensis"
+},
+{
+"group": "Falcon",
+"commonName": "Aplomado Falcon",
+"scientificName": "Falco femoralis"
+},
+{
+"group": "Falcon",
+"commonName": "Peregrine Falcon",
+"scientificName": "Falco peregrinus"
+},
+{
+"group": "Falcon",
+"commonName": "Prairie Falcon",
+"scientificName": "Falco mexicanus"
+},
+{
+"group": "Falcon",
+"commonName": "Red-footed Falcon",
+"scientificName": "Falco vespertinus"
+},
+{
+"group": "Fieldfare",
+"commonName": "Fieldfare",
+"scientificName": "Turdus pilaris"
+},
+{
+"group": "Finch",
+"commonName": "Cassin's Finch",
+"scientificName": "Haemorhous cassinii"
+},
+{
+"group": "Finch",
+"commonName": "House Finch",
+"scientificName": "Haemorhous mexicanus"
+},
+{
+"group": "Finch",
+"commonName": "Laysan Finch",
+"scientificName": "Telespiza cantans"
+},
+{
+"group": "Finch",
+"commonName": "Nihoa Finch",
+"scientificName": "Telespiza ultima"
+},
+{
+"group": "Finch",
+"commonName": "Purple Finch",
+"scientificName": "Haemorhous purpureus"
+},
+{
+"group": "Flamingo",
+"commonName": "American Flamingo",
+"scientificName": "Phoenicopterus ruber"
+},
+{
+"group": "Flicker",
+"commonName": "Gilded Flicker",
+"scientificName": "Colaptes chrysoides"
+},
+{
+"group": "Flicker",
+"commonName": "Northern Flicker",
+"scientificName": "Colaptes auratus"
+},
+{
+"group": "Flycatcher",
+"commonName": "Acadian Flycatcher",
+"scientificName": "Empidonax virescens"
+},
+{
+"group": "Flycatcher",
+"commonName": "Alder Flycatcher",
+"scientificName": "Empidonax alnorum"
+},
+{
+"group": "Flycatcher",
+"commonName": "Ash-throated Flycatcher",
+"scientificName": "Myiarchus cinerascens"
+},
+{
+"group": "Flycatcher",
+"commonName": "Asian Brown Flycatcher",
+"scientificName": "Muscicapa dauurica"
+},
+{
+"group": "Flycatcher",
+"commonName": "Brown-crested Flycatcher",
+"scientificName": "Myiarchus tyrannulus"
+},
+{
+"group": "Flycatcher",
+"commonName": "Buff-breasted Flycatcher",
+"scientificName": "Empidonax fulvifrons"
+},
+{
+"group": "Flycatcher",
+"commonName": "Cordilleran Flycatcher",
+"scientificName": "Empidonax occidentalis"
+},
+{
+"group": "Flycatcher",
+"commonName": "Crowned Slaty Flycatcher",
+"scientificName": "Empidonomus aurantioatrocristatus"
+},
+{
+"group": "Flycatcher",
+"commonName": "Dark-sided Flycatcher",
+"scientificName": "Muscicapa sibirica"
+},
+{
+"group": "Flycatcher",
+"commonName": "Dusky Flycatcher",
+"scientificName": "Empidonax oberholseri"
+},
+{
+"group": "Flycatcher",
+"commonName": "Dusky-capped Flycatcher",
+"scientificName": "Myiarchus tuberculifer"
+},
+{
+"group": "Flycatcher",
+"commonName": "Fork-tailed Flycatcher",
+"scientificName": "Tyrannus savana"
+},
+{
+"group": "Flycatcher",
+"commonName": "Gray Flycatcher",
+"scientificName": "Empidonax wrightii"
+},
+{
+"group": "Flycatcher",
+"commonName": "Gray-streaked Flycatcher",
+"scientificName": "Muscicapa griseisticta"
+},
+{
+"group": "Flycatcher",
+"commonName": "Great Crested Flycatcher",
+"scientificName": "Myiarchus crinitus"
+},
+{
+"group": "Flycatcher",
+"commonName": "Hammond's Flycatcher",
+"scientificName": "Empidonax hammondii"
+},
+{
+"group": "Flycatcher",
+"commonName": "La Sagra's Flycatcher",
+"scientificName": "Myiarchus sagrae"
+},
+{
+"group": "Flycatcher",
+"commonName": "Least Flycatcher",
+"scientificName": "Empidonax minimus"
+},
+{
+"group": "Flycatcher",
+"commonName": "Mugimaki Flycatcher",
+"scientificName": "Ficedula mugimaki"
+},
+{
+"group": "Flycatcher",
+"commonName": "Narcissus Flycatcher",
+"scientificName": "Ficedula narcissina"
+},
+{
+"group": "Flycatcher",
+"commonName": "Nutting's Flycatcher",
+"scientificName": "Myiarchus nuttingi"
+},
+{
+"group": "Flycatcher",
+"commonName": "Olive-sided Flycatcher",
+"scientificName": "Contopus cooperi"
+},
+{
+"group": "Flycatcher",
+"commonName": "Pacific-slope Flycatcher",
+"scientificName": "Empidonax difficilis"
+},
+{
+"group": "Flycatcher",
+"commonName": "Pine Flycatcher",
+"scientificName": "Empidonax affinis"
+},
+{
+"group": "Flycatcher",
+"commonName": "Piratic Flycatcher",
+"scientificName": "Legatus leucophaius"
+},
+{
+"group": "Flycatcher",
+"commonName": "Puerto Rican Flycatcher",
+"scientificName": "Myiarchus antillarum"
+},
+{
+"group": "Flycatcher",
+"commonName": "Scissor-tailed Flycatcher",
+"scientificName": "Tyrannus forficatus"
+},
+{
+"group": "Flycatcher",
+"commonName": "Social Flycatcher",
+"scientificName": "Myiozetetes similis"
+},
+{
+"group": "Flycatcher",
+"commonName": "Spotted Flycatcher",
+"scientificName": "Muscicapa striata"
+},
+{
+"group": "Flycatcher",
+"commonName": "Sulphur-bellied Flycatcher",
+"scientificName": "Myiodynastes luteiventris"
+},
+{
+"group": "Flycatcher",
+"commonName": "Taiga Flycatcher",
+"scientificName": "Ficedula albicilla"
+},
+{
+"group": "Flycatcher",
+"commonName": "Tufted Flycatcher",
+"scientificName": "Mitrephanes phaeocercus"
+},
+{
+"group": "Flycatcher",
+"commonName": "Variegated Flycatcher",
+"scientificName": "Empidonomus varius"
+},
+{
+"group": "Flycatcher",
+"commonName": "Vermilion Flycatcher",
+"scientificName": "Pyrocephalus rubinus"
+},
+{
+"group": "Flycatcher",
+"commonName": "Willow Flycatcher",
+"scientificName": "Empidonax traillii"
+},
+{
+"group": "Flycatcher",
+"commonName": "Yellow-bellied Flycatcher",
+"scientificName": "Empidonax flaviventris"
+},
+{
+"group": "Forest-Falcon",
+"commonName": "Collared Forest-Falcon",
+"scientificName": "Micrastur semitorquatus"
+},
+{
+"group": "Frigatebird",
+"commonName": "Great Frigatebird",
+"scientificName": "Fregata minor"
+},
+{
+"group": "Frigatebird",
+"commonName": "Lesser Frigatebird",
+"scientificName": "Fregata ariel"
+},
+{
+"group": "Frigatebird",
+"commonName": "Magnificent Frigatebird",
+"scientificName": "Fregata magnificens"
+},
+{
+"group": "Fruit-Dove",
+"commonName": "Crimson-crowned Fruit-Dove",
+"scientificName": "Ptilinopus porphyraceus"
+},
+{
+"group": "Fruit-Dove",
+"commonName": "Many-colored Fruit-Dove",
+"scientificName": "Ptilinopus perousii"
+},
+{
+"group": "Fruit-Dove",
+"commonName": "Mariana Fruit-Dove",
+"scientificName": "Ptilinopus roseicapilla"
+},
+{
+"group": "Fulmar",
+"commonName": "Northern Fulmar",
+"scientificName": "Fulmarus glacialis"
+},
+{
+"group": "Gadwall",
+"commonName": "Gadwall",
+"scientificName": "Mareca strepera"
+},
+{
+"group": "Gallinule",
+"commonName": "Azure Gallinule",
+"scientificName": "Porphyrio flavirostris"
+},
+{
+"group": "Gallinule",
+"commonName": "Common Gallinule",
+"scientificName": "Gallinula galeata"
+},
+{
+"group": "Gallinule",
+"commonName": "Purple Gallinule",
+"scientificName": "Porphyrio martinicus"
+},
+{
+"group": "Gannet",
+"commonName": "Northern Gannet",
+"scientificName": "Morus bassanus"
+},
+{
+"group": "Garganey",
+"commonName": "Garganey",
+"scientificName": "Spatula querquedula"
+},
+{
+"group": "Giant-Petrel",
+"commonName": "Northern Giant-Petrel",
+"scientificName": "Macronectes halli"
+},
+{
+"group": "Gnatcatcher",
+"commonName": "Black-capped Gnatcatcher",
+"scientificName": "Polioptila nigriceps"
+},
+{
+"group": "Gnatcatcher",
+"commonName": "Black-tailed Gnatcatcher",
+"scientificName": "Polioptila melanura"
+},
+{
+"group": "Gnatcatcher",
+"commonName": "Blue-Gray Gnatcatcher",
+"scientificName": "Polioptila caerulea"
+},
+{
+"group": "Gnatcatcher",
+"commonName": "California Gnatcatcher",
+"scientificName": "Polioptila californica"
+},
+{
+"group": "Godwit",
+"commonName": "Bar-tailed Godwit",
+"scientificName": "Limosa lapponica"
+},
+{
+"group": "Godwit",
+"commonName": "Black-tailed Godwit",
+"scientificName": "Limosa limosa"
+},
+{
+"group": "Godwit",
+"commonName": "Hudsonian Godwit",
+"scientificName": "Limosa haemastica"
+},
+{
+"group": "Godwit",
+"commonName": "Marbled Godwit",
+"scientificName": "Limosa fedoa"
+},
+{
+"group": "Goldeneye",
+"commonName": "Barrow's Goldeneye",
+"scientificName": "Bucephala islandica"
+},
+{
+"group": "Goldeneye",
+"commonName": "Common Goldeneye",
+"scientificName": "Bucephala clangula"
+},
+{
+"group": "Golden-Plover",
+"commonName": "American Golden-Plover",
+"scientificName": "Pluvialis dominica"
+},
+{
+"group": "Golden-Plover",
+"commonName": "European Golden-Plover",
+"scientificName": "Pluvialis apricaria"
+},
+{
+"group": "Golden-Plover",
+"commonName": "Pacific Golden-Plover",
+"scientificName": "Pluvialis fulva"
+},
+{
+"group": "Goldfinch",
+"commonName": "American Goldfinch",
+"scientificName": "Spinus tristis"
+},
+{
+"group": "Goldfinch",
+"commonName": "Lawrence's Goldfinch",
+"scientificName": "Spinus lawrencei"
+},
+{
+"group": "Goldfinch",
+"commonName": "Lesser Goldfinch",
+"scientificName": "Spinus psaltria"
+},
+{
+"group": "Goose",
+"commonName": "Barnacle Goose",
+"scientificName": "Branta leucopsis"
+},
+{
+"group": "Goose",
+"commonName": "Cackling Goose",
+"scientificName": "Branta hutchinsii"
+},
+{
+"group": "Goose",
+"commonName": "Canada Goose",
+"scientificName": "Branta canadensis"
+},
+{
+"group": "Goose",
+"commonName": "Emperor Goose",
+"scientificName": "Anser canagicus"
+},
+{
+"group": "Goose",
+"commonName": "Greater White-fronted Goose",
+"scientificName": "Anser albifrons"
+},
+{
+"group": "Goose",
+"commonName": "Hawaiian Goose",
+"scientificName": "Branta sandvicensis"
+},
+{
+"group": "Goose",
+"commonName": "Lesser White-fronted Goose",
+"scientificName": "Anser erythropus"
+},
+{
+"group": "Goose",
+"commonName": "Pink-footed Goose",
+"scientificName": "Anser brachyrhynchus"
+},
+{
+"group": "Goose",
+"commonName": "Ross's Goose",
+"scientificName": "Anser rossii"
+},
+{
+"group": "Goose",
+"commonName": "Snow Goose",
+"scientificName": "Anser caerulescens"
+},
+{
+"group": "Goshawk",
+"commonName": "Northern Goshawk",
+"scientificName": "Accipiter gentilis"
+},
+{
+"group": "Grackle",
+"commonName": "Boat-tailed Grackle",
+"scientificName": "Quiscalus major"
+},
+{
+"group": "Grackle",
+"commonName": "Common Grackle",
+"scientificName": "Quiscalus quiscula"
+},
+{
+"group": "Grackle",
+"commonName": "Greater Antillean Grackle",
+"scientificName": "Quiscalus niger"
+},
+{
+"group": "Grackle",
+"commonName": "Great-tailed Grackle",
+"scientificName": "Quiscalus mexicanus"
+},
+{
+"group": "Grassquit",
+"commonName": "Black-faced Grassquit",
+"scientificName": "Melanospiza bicolor"
+},
+{
+"group": "Grassquit",
+"commonName": "Yellow-faced Grassquit",
+"scientificName": "Tiaris olivaceus"
+},
+{
+"group": "Grebe",
+"commonName": "Clark's Grebe",
+"scientificName": "Aechmophorus clarkii"
+},
+{
+"group": "Grebe",
+"commonName": "Eared Grebe",
+"scientificName": "Podiceps nigricollis"
+},
+{
+"group": "Grebe",
+"commonName": "Horned Grebe",
+"scientificName": "Podiceps auritus"
+},
+{
+"group": "Grebe",
+"commonName": "Least Grebe",
+"scientificName": "Tachybaptus dominicus"
+},
+{
+"group": "Grebe",
+"commonName": "Pied-billed Grebe",
+"scientificName": "Podilymbus podiceps"
+},
+{
+"group": "Grebe",
+"commonName": "Red-necked Grebe",
+"scientificName": "Podiceps grisegena"
+},
+{
+"group": "Grebe",
+"commonName": "Western Grebe",
+"scientificName": "Aechmophorus occidentalis"
+},
+{
+"group": "Greenfinch",
+"commonName": "Oriental Greenfinch",
+"scientificName": "Chloris sinica"
+},
+{
+"group": "Greenshank",
+"commonName": "Common Greenshank",
+"scientificName": "Tringa nebularia"
+},
+{
+"group": "Greenshank",
+"commonName": "Nordmann's Greenshank",
+"scientificName": "Tringa guttifer"
+},
+{
+"group": "Grosbeak",
+"commonName": "Black-headed Grosbeak",
+"scientificName": "Pheucticus melanocephalus"
+},
+{
+"group": "Grosbeak",
+"commonName": "Blue Grosbeak",
+"scientificName": "Passerina caerulea"
+},
+{
+"group": "Grosbeak",
+"commonName": "Crimson-collared Grosbeak",
+"scientificName": "Rhodothraupis celaeno"
+},
+{
+"group": "Grosbeak",
+"commonName": "Evening Grosbeak",
+"scientificName": "Coccothraustes vespertinus"
+},
+{
+"group": "Grosbeak",
+"commonName": "Pine Grosbeak",
+"scientificName": "Pinicola enucleator"
+},
+{
+"group": "Grosbeak",
+"commonName": "Rose-breasted Grosbeak",
+"scientificName": "Pheucticus ludovicianus"
+},
+{
+"group": "Grosbeak",
+"commonName": "Yellow Grosbeak",
+"scientificName": "Pheucticus chrysopeplus"
+},
+{
+"group": "Guillemot",
+"commonName": "Black Guillemot",
+"scientificName": "Cepphus grylle"
+},
+{
+"group": "Guillemot",
+"commonName": "Pigeon Guillemot",
+"scientificName": "Cepphus columba"
+},
+{
+"group": "Gull",
+"commonName": "Belcher's Gull",
+"scientificName": "Larus belcheri"
+},
+{
+"group": "Gull",
+"commonName": "Black-headed Gull",
+"scientificName": "Chroicocephalus ridibundus"
+},
+{
+"group": "Gull",
+"commonName": "Black-tailed Gull",
+"scientificName": "Larus crassirostris"
+},
+{
+"group": "Gull",
+"commonName": "Bonaparte's Gull",
+"scientificName": "Chroicocephalus philadelphia"
+},
+{
+"group": "Gull",
+"commonName": "California Gull",
+"scientificName": "Larus californicus"
+},
+{
+"group": "Gull",
+"commonName": "Common Gull",
+"scientificName": "Larus canus"
+},
+{
+"group": "Gull",
+"commonName": "Franklin's Gull",
+"scientificName": "Leucophaeus pipixcan"
+},
+{
+"group": "Gull",
+"commonName": "Glaucous Gull",
+"scientificName": "Larus hyperboreus"
+},
+{
+"group": "Gull",
+"commonName": "Glaucous-winged Gull",
+"scientificName": "Larus glaucescens"
+},
+{
+"group": "Gull",
+"commonName": "Gray-hooded Gull",
+"scientificName": "Chroicocephalus cirrocephalus"
+},
+{
+"group": "Gull",
+"commonName": "Great Black-backed Gull",
+"scientificName": "Larus marinus"
+},
+{
+"group": "Gull",
+"commonName": "Heermann's Gull",
+"scientificName": "Larus heermanni"
+},
+{
+"group": "Gull",
+"commonName": "Herring Gull",
+"scientificName": "Larus argentatus"
+},
+{
+"group": "Gull",
+"commonName": "Iceland Gull",
+"scientificName": "Larus glaucoides"
+},
+{
+"group": "Gull",
+"commonName": "Ivory Gull",
+"scientificName": "Pagophila eburnea"
+},
+{
+"group": "Gull",
+"commonName": "Kelp Gull",
+"scientificName": "Larus dominicanus"
+},
+{
+"group": "Gull",
+"commonName": "Laughing Gull",
+"scientificName": "Leucophaeus atricilla"
+},
+{
+"group": "Gull",
+"commonName": "Lesser Black-backed Gull",
+"scientificName": "Larus fuscus"
+},
+{
+"group": "Gull",
+"commonName": "Little Gull",
+"scientificName": "Hydrocoloeus minutus"
+},
+{
+"group": "Gull",
+"commonName": "Pallas's Gull",
+"scientificName": "Ichthyaetus ichthyaetus"
+},
+{
+"group": "Gull",
+"commonName": "Ring-billed Gull",
+"scientificName": "Larus delawarensis"
+},
+{
+"group": "Gull",
+"commonName": "Ross's Gull",
+"scientificName": "Rhodostethia rosea"
+},
+{
+"group": "Gull",
+"commonName": "Sabine's Gull",
+"scientificName": "Xema sabini"
+},
+{
+"group": "Gull",
+"commonName": "Short-billed Gull",
+"scientificName": "Larus brachyrhynchus"
+},
+{
+"group": "Gull",
+"commonName": "Slaty-backed Gull",
+"scientificName": "Larus schistisagus"
+},
+{
+"group": "Gull",
+"commonName": "Swallow-tailed Gull",
+"scientificName": "Creagrus furcatus"
+},
+{
+"group": "Gull",
+"commonName": "Western Gull",
+"scientificName": "Larus occidentalis"
+},
+{
+"group": "Gull",
+"commonName": "Yellow-footed Gull",
+"scientificName": "Larus livens"
+},
+{
+"group": "Gull",
+"commonName": "Yellow-legged Gull",
+"scientificName": "Larus michahellis"
+},
+{
+"group": "Gyrfalcon",
+"commonName": "Gyrfalcon",
+"scientificName": "Falco rusticolus"
+},
+{
+"group": "Harrier",
+"commonName": "Northern Harrier",
+"scientificName": "Circus hudsonius"
+},
+{
+"group": "Hawfinch",
+"commonName": "Hawfinch",
+"scientificName": "Coccothraustes coccothraustes"
+},
+{
+"group": "Hawk",
+"commonName": "Broad-winged Hawk",
+"scientificName": "Buteo platypterus"
+},
+{
+"group": "Hawk",
+"commonName": "Common Black Hawk",
+"scientificName": "Buteogallus anthracinus"
+},
+{
+"group": "Hawk",
+"commonName": "Cooper's Hawk",
+"scientificName": "Accipiter cooperii"
+},
+{
+"group": "Hawk",
+"commonName": "Crane Hawk",
+"scientificName": "Geranospiza caerulescens"
+},
+{
+"group": "Hawk",
+"commonName": "Ferruginous Hawk",
+"scientificName": "Buteo regalis"
+},
+{
+"group": "Hawk",
+"commonName": "Gray Hawk",
+"scientificName": "Buteo plagiatus"
+},
+{
+"group": "Hawk",
+"commonName": "Great Black Hawk",
+"scientificName": "Buteogallus urubitinga"
+},
+{
+"group": "Hawk",
+"commonName": "Harris's Hawk",
+"scientificName": "Parabuteo unicinctus"
+},
+{
+"group": "Hawk",
+"commonName": "Hawaiian Hawk",
+"scientificName": "Buteo solitarius"
+},
+{
+"group": "Hawk",
+"commonName": "Red-shouldered Hawk",
+"scientificName": "Buteo lineatus"
+},
+{
+"group": "Hawk",
+"commonName": "Red-tailed Hawk",
+"scientificName": "Buteo jamaicensis"
+},
+{
+"group": "Hawk",
+"commonName": "Roadside Hawk",
+"scientificName": "Rupornis magnirostris"
+},
+{
+"group": "Hawk",
+"commonName": "Rough-legged Hawk",
+"scientificName": "Buteo lagopus"
+},
+{
+"group": "Hawk",
+"commonName": "Sharp-shinned Hawk",
+"scientificName": "Accipiter striatus"
+},
+{
+"group": "Hawk",
+"commonName": "Short-tailed Hawk",
+"scientificName": "Buteo brachyurus"
+},
+{
+"group": "Hawk",
+"commonName": "Swainson's Hawk",
+"scientificName": "Buteo swainsoni"
+},
+{
+"group": "Hawk",
+"commonName": "White-tailed Hawk",
+"scientificName": "Geranoaetus albicaudatus"
+},
+{
+"group": "Hawk",
+"commonName": "Zone-tailed Hawk",
+"scientificName": "Buteo albonotatus"
+},
+{
+"group": "Hawk-Cuckoo",
+"commonName": "Hodgson's Hawk-Cuckoo",
+"scientificName": "Hierococcyx nisicolor"
+},
+{
+"group": "Heron",
+"commonName": "Gray Heron",
+"scientificName": "Ardea cinerea"
+},
+{
+"group": "Heron",
+"commonName": "Great Blue Heron",
+"scientificName": "Ardea herodias"
+},
+{
+"group": "Heron",
+"commonName": "Green Heron",
+"scientificName": "Butorides virescens"
+},
+{
+"group": "Heron",
+"commonName": "Little Blue Heron",
+"scientificName": "Egretta caerulea"
+},
+{
+"group": "Heron",
+"commonName": "Tricolored Heron",
+"scientificName": "Egretta tricolor"
+},
+{
+"group": "Hobby",
+"commonName": "Eurasian Hobby",
+"scientificName": "Falco subbuteo"
+},
+{
+"group": "Honeycreeper",
+"commonName": "Laysan Honeycreeper",
+"scientificName": "Himatione fraithii"
+},
+{
+"group": "Honeycreeper",
+"commonName": "Red-legged Honeycreeper",
+"scientificName": "Cyanerpes cyaneus"
+},
+{
+"group": "Hoopoe",
+"commonName": "Eurasian Hoopoe",
+"scientificName": "Upupa epops"
+},
+{
+"group": "House-Martin",
+"commonName": "Common House-Martin",
+"scientificName": "Delichon urbicum"
+},
+{
+"group": "Hummingbird",
+"commonName": "Allen's Hummingbird",
+"scientificName": "Selasphorus sasin"
+},
+{
+"group": "Hummingbird",
+"commonName": "Anna's Hummingbird",
+"scientificName": "Calypte anna"
+},
+{
+"group": "Hummingbird",
+"commonName": "Antillean Crested Hummingbird",
+"scientificName": "Orthorhyncus cristatus"
+},
+{
+"group": "Hummingbird",
+"commonName": "Berylline Hummingbird",
+"scientificName": "Saucerottia beryllina"
+},
+{
+"group": "Hummingbird",
+"commonName": "Black-chinned Hummingbird",
+"scientificName": "Archilochus alexandri"
+},
+{
+"group": "Hummingbird",
+"commonName": "Broad-billed Hummingbird",
+"scientificName": "Cynanthus latirostris"
+},
+{
+"group": "Hummingbird",
+"commonName": "Broad-tailed Hummingbird",
+"scientificName": "Selasphorus platycercus"
+},
+{
+"group": "Hummingbird",
+"commonName": "Buff-bellied Hummingbird",
+"scientificName": "Amazilia yucatanensis"
+},
+{
+"group": "Hummingbird",
+"commonName": "Bumblebee Hummingbird",
+"scientificName": "Selasphorus heloisa"
+},
+{
+"group": "Hummingbird",
+"commonName": "Calliope Hummingbird",
+"scientificName": "Selasphorus calliope"
+},
+{
+"group": "Hummingbird",
+"commonName": "Cinnamon Hummingbird",
+"scientificName": "Amazilia rutila"
+},
+{
+"group": "Hummingbird",
+"commonName": "Costa's Hummingbird",
+"scientificName": "Calypte costae"
+},
+{
+"group": "Hummingbird",
+"commonName": "Lucifer Hummingbird",
+"scientificName": "Calothorax lucifer"
+},
+{
+"group": "Hummingbird",
+"commonName": "Rivoli's Hummingbird",
+"scientificName": "Eugenes fulgens"
+},
+{
+"group": "Hummingbird",
+"commonName": "Ruby-throated Hummingbird",
+"scientificName": "Archilochus colubris"
+},
+{
+"group": "Hummingbird",
+"commonName": "Rufous Hummingbird",
+"scientificName": "Selasphorus rufus"
+},
+{
+"group": "Hummingbird",
+"commonName": "Vervain Hummingbird",
+"scientificName": "Mellisuga minima"
+},
+{
+"group": "Hummingbird",
+"commonName": "Violet-crowned Hummingbird",
+"scientificName": "Ramosomyia violiceps"
+},
+{
+"group": "Hummingbird",
+"commonName": "White-eared Hummingbird",
+"scientificName": "Basilinna leucotis"
+},
+{
+"group": "Hummingbird",
+"commonName": "Xantus's Hummingbird",
+"scientificName": "Basilinna xantusii"
+},
+{
+"group": "Ibis",
+"commonName": "Glossy Ibis",
+"scientificName": "Plegadis falcinellus"
+},
+{
+"group": "Ibis",
+"commonName": "Scarlet Ibis",
+"scientificName": "Eudocimus ruber"
+},
+{
+"group": "Ibis",
+"commonName": "White Ibis",
+"scientificName": "Eudocimus albus"
+},
+{
+"group": "Ibis",
+"commonName": "White-faced Ibis",
+"scientificName": "Plegadis chihi"
+},
+{
+"group": "'I'iwi",
+"commonName": "'I'iwi",
+"scientificName": "Drepanis coccinea"
+},
+{
+"group": "Imperial-Pigeon",
+"commonName": "Pacific Imperial-Pigeon",
+"scientificName": "Ducula pacifica"
+},
+{
+"group": "Jabiru",
+"commonName": "Jabiru",
+"scientificName": "Jabiru mycteria"
+},
+{
+"group": "Jacana",
+"commonName": "Northern Jacana",
+"scientificName": "Jacana spinosa"
+},
+{
+"group": "Jackdaw",
+"commonName": "Eurasian Jackdaw",
+"scientificName": "Corvus monedula"
+},
+{
+"group": "Jaeger",
+"commonName": "Long-tailed Jaeger",
+"scientificName": "Stercorarius longicaudus"
+},
+{
+"group": "Jaeger",
+"commonName": "Parasitic Jaeger",
+"scientificName": "Stercorarius parasiticus"
+},
+{
+"group": "Jaeger",
+"commonName": "Pomarine Jaeger",
+"scientificName": "Stercorarius pomarinus"
+},
+{
+"group": "Jay",
+"commonName": "Blue Jay",
+"scientificName": "Cyanocitta cristata"
+},
+{
+"group": "Jay",
+"commonName": "Brown Jay",
+"scientificName": "Psilorhinus morio"
+},
+{
+"group": "Jay",
+"commonName": "Canada Jay",
+"scientificName": "Perisoreus canadensis"
+},
+{
+"group": "Jay",
+"commonName": "Green Jay",
+"scientificName": "Cyanocorax yncas"
+},
+{
+"group": "Jay",
+"commonName": "Mexican Jay",
+"scientificName": "Aphelocoma wollweberi"
+},
+{
+"group": "Jay",
+"commonName": "Pinyon Jay",
+"scientificName": "Gymnorhinus cyanocephalus"
+},
+{
+"group": "Jay",
+"commonName": "Steller's Jay",
+"scientificName": "Cyanocitta stelleri"
+},
+{
+"group": "Junco",
+"commonName": "Dark-eyed Junco",
+"scientificName": "Junco hyemalis"
+},
+{
+"group": "Junco",
+"commonName": "Yellow-eyed Junco",
+"scientificName": "Junco phaeonotus"
+},
+{
+"group": "K\u0101k\u0101wahie",
+"commonName": "K\u0101k\u0101wahie",
+"scientificName": "Paroreomyza flammea"
+},
+{
+"group": "K\u0101ma'o",
+"commonName": "K\u0101ma'o",
+"scientificName": "Myadestes myadestinus"
+},
+{
+"group": "Kestrel",
+"commonName": "American Kestrel",
+"scientificName": "Falco sparverius"
+},
+{
+"group": "Kestrel",
+"commonName": "Eurasian Kestrel",
+"scientificName": "Falco tinnunculus"
+},
+{
+"group": "Killdeer",
+"commonName": "Killdeer",
+"scientificName": "Charadrius vociferus"
+},
+{
+"group": "Kingbird",
+"commonName": "Cassin's Kingbird",
+"scientificName": "Tyrannus vociferans"
+},
+{
+"group": "Kingbird",
+"commonName": "Couch's Kingbird",
+"scientificName": "Tyrannus couchii"
+},
+{
+"group": "Kingbird",
+"commonName": "Eastern Kingbird",
+"scientificName": "Tyrannus tyrannus"
+},
+{
+"group": "Kingbird",
+"commonName": "Gray Kingbird",
+"scientificName": "Tyrannus dominicensis"
+},
+{
+"group": "Kingbird",
+"commonName": "Loggerhead Kingbird",
+"scientificName": "Tyrannus caudifasciatus"
+},
+{
+"group": "Kingbird",
+"commonName": "Thick-billed Kingbird",
+"scientificName": "Tyrannus crassirostris"
+},
+{
+"group": "Kingbird",
+"commonName": "Tropical Kingbird",
+"scientificName": "Tyrannus melancholicus"
+},
+{
+"group": "Kingbird",
+"commonName": "Western Kingbird",
+"scientificName": "Tyrannus verticalis"
+},
+{
+"group": "Kingfisher",
+"commonName": "Amazon Kingfisher",
+"scientificName": "Chloroceryle amazona"
+},
+{
+"group": "Kingfisher",
+"commonName": "Belted Kingfisher",
+"scientificName": "Megaceryle alcyon"
+},
+{
+"group": "Kingfisher",
+"commonName": "Common Kingfisher",
+"scientificName": "Alcedo atthis"
+},
+{
+"group": "Kingfisher",
+"commonName": "Green Kingfisher",
+"scientificName": "Chloroceryle americana"
+},
+{
+"group": "Kingfisher",
+"commonName": "Guam Kingfisher",
+"scientificName": "Todiramphus cinnamominus"
+},
+{
+"group": "Kingfisher",
+"commonName": "Mariana Kingfisher",
+"scientificName": "Todiramphus albicilla"
+},
+{
+"group": "Kingfisher",
+"commonName": "Pacific Kingfisher",
+"scientificName": "Todiramphus sacer"
+},
+{
+"group": "Kingfisher",
+"commonName": "Ringed Kingfisher",
+"scientificName": "Megaceryle torquata"
+},
+{
+"group": "Kinglet",
+"commonName": "Golden-crowned Kinglet",
+"scientificName": "Regulus satrapa"
+},
+{
+"group": "Kinglet",
+"commonName": "Ruby-crowned Kinglet",
+"scientificName": "Corthylio calendula"
+},
+{
+"group": "Kiskadee",
+"commonName": "Great Kiskadee",
+"scientificName": "Pitangus sulphuratus"
+},
+{
+"group": "Kite",
+"commonName": "Black Kite",
+"scientificName": "Milvus migrans"
+},
+{
+"group": "Kite",
+"commonName": "Double-toothed Kite",
+"scientificName": "Harpagus bidentatus"
+},
+{
+"group": "Kite",
+"commonName": "Hook-billed Kite",
+"scientificName": "Chondrohierax uncinatus"
+},
+{
+"group": "Kite",
+"commonName": "Mississippi Kite",
+"scientificName": "Ictinia mississippiensis"
+},
+{
+"group": "Kite",
+"commonName": "Snail Kite",
+"scientificName": "Rostrhamus sociabilis"
+},
+{
+"group": "Kite",
+"commonName": "Swallow-tailed Kite",
+"scientificName": "Elanoides forficatus"
+},
+{
+"group": "Kite",
+"commonName": "White-tailed Kite",
+"scientificName": "Elanus leucurus"
+},
+{
+"group": "Kittiwake",
+"commonName": "Black-legged Kittiwake",
+"scientificName": "Rissa tridactyla"
+},
+{
+"group": "Kittiwake",
+"commonName": "Red-legged Kittiwake",
+"scientificName": "Rissa brevirostris"
+},
+{
+"group": "Knot",
+"commonName": "Great Knot",
+"scientificName": "Calidris tenuirostris"
+},
+{
+"group": "Knot",
+"commonName": "Red Knot",
+"scientificName": "Calidris canutus"
+},
+{
+"group": "Koel",
+"commonName": "Long-tailed Koel",
+"scientificName": "Urodynamis taitensis"
+},
+{
+"group": "Lapwing",
+"commonName": "Northern Lapwing",
+"scientificName": "Vanellus vanellus"
+},
+{
+"group": "Lark",
+"commonName": "Horned Lark",
+"scientificName": "Eremophila alpestris"
+},
+{
+"group": "Limpkin",
+"commonName": "Limpkin",
+"scientificName": "Aramus guarauna"
+},
+{
+"group": "Lizard-Cuckoo",
+"commonName": "Puerto Rican Lizard-Cuckoo",
+"scientificName": "Coccyzus vieilloti"
+},
+{
+"group": "Longspur",
+"commonName": "Chestnut-collared Longspur",
+"scientificName": "Calcarius ornatus"
+},
+{
+"group": "Longspur",
+"commonName": "Lapland Longspur",
+"scientificName": "Calcarius lapponicus"
+},
+{
+"group": "Longspur",
+"commonName": "Smith's Longspur",
+"scientificName": "Calcarius pictus"
+},
+{
+"group": "Longspur",
+"commonName": "Thick-billed Longspur",
+"scientificName": "Rhynchophanes mccownii"
+},
+{
+"group": "Loon",
+"commonName": "Arctic Loon",
+"scientificName": "Gavia arctica"
+},
+{
+"group": "Loon",
+"commonName": "Common Loon",
+"scientificName": "Gavia immer"
+},
+{
+"group": "Loon",
+"commonName": "Pacific Loon",
+"scientificName": "Gavia pacifica"
+},
+{
+"group": "Loon",
+"commonName": "Red-throated Loon",
+"scientificName": "Gavia stellata"
+},
+{
+"group": "Loon",
+"commonName": "Yellow-billed Loon",
+"scientificName": "Gavia adamsii"
+},
+{
+"group": "Magpie",
+"commonName": "Black-billed Magpie",
+"scientificName": "Pica hudsonia"
+},
+{
+"group": "Magpie",
+"commonName": "Yellow-billed Magpie",
+"scientificName": "Pica nuttalli"
+},
+{
+"group": "Mallard",
+"commonName": "Mallard",
+"scientificName": "Anas platyrhynchos"
+},
+{
+"group": "Mango",
+"commonName": "Puerto Rican Mango",
+"scientificName": "Anthracothorax aurulentus"
+},
+{
+"group": "Mango",
+"commonName": "Green Mango",
+"scientificName": "Anthracothorax viridis"
+},
+{
+"group": "Mango",
+"commonName": "Green-breasted Mango",
+"scientificName": "Anthracothorax prevostii"
+},
+{
+"group": "Marsh-Harrier",
+"commonName": "Eastern Marsh-Harrier",
+"scientificName": "Circus spilonotus"
+},
+{
+"group": "Martin",
+"commonName": "Brown-chested Martin",
+"scientificName": "Progne tapera"
+},
+{
+"group": "Martin",
+"commonName": "Caribbean Martin",
+"scientificName": "Progne dominicensis"
+},
+{
+"group": "Martin",
+"commonName": "Cuban Martin",
+"scientificName": "Progne cryptoleuca"
+},
+{
+"group": "Martin",
+"commonName": "Gray-breasted Martin",
+"scientificName": "Progne chalybea"
+},
+{
+"group": "Martin",
+"commonName": "Purple Martin",
+"scientificName": "Progne subis"
+},
+{
+"group": "Martin",
+"commonName": "Southern Martin",
+"scientificName": "Progne elegans"
+},
+{
+"group": "Meadowlark",
+"commonName": "Chihuahuan Meadowlark",
+"scientificName": "Sturnella lilianae"
+},
+{
+"group": "Meadowlark",
+"commonName": "Eastern Meadowlark",
+"scientificName": "Sturnella magna"
+},
+{
+"group": "Meadowlark",
+"commonName": "Western Meadowlark",
+"scientificName": "Sturnella neglecta"
+},
+{
+"group": "Merganser",
+"commonName": "Common Merganser",
+"scientificName": "Mergus merganser"
+},
+{
+"group": "Merganser",
+"commonName": "Hooded Merganser",
+"scientificName": "Lophodytes cucullatus"
+},
+{
+"group": "Merganser",
+"commonName": "Red-breasted Merganser",
+"scientificName": "Mergus serrator"
+},
+{
+"group": "Merlin",
+"commonName": "Merlin",
+"scientificName": "Falco columbarius"
+},
+{
+"group": "Millerbird",
+"commonName": "Millerbird",
+"scientificName": "Acrocephalus familiaris"
+},
+{
+"group": "Mockingbird",
+"commonName": "Bahama Mockingbird",
+"scientificName": "Mimus gundlachii"
+},
+{
+"group": "Mockingbird",
+"commonName": "Blue Mockingbird",
+"scientificName": "Melanotis caerulescens"
+},
+{
+"group": "Mockingbird",
+"commonName": "Northern Mockingbird",
+"scientificName": "Mimus polyglottos"
+},
+{
+"group": "Moorhen",
+"commonName": "Eurasian Moorhen",
+"scientificName": "Gallinula chloropus"
+},
+{
+"group": "Mountain-gem",
+"commonName": "Amethyst-throated Mountain-gem",
+"scientificName": "Lampornis amethystinus"
+},
+{
+"group": "Mountain-gem",
+"commonName": "Blue-throated Mountain-gem",
+"scientificName": "Lampornis clemenciae"
+},
+{
+"group": "Murre",
+"commonName": "Common Murre",
+"scientificName": "Uria aalge"
+},
+{
+"group": "Murre",
+"commonName": "Thick-billed Murre",
+"scientificName": "Uria lomvia"
+},
+{
+"group": "Murrelet",
+"commonName": "Ancient Murrelet",
+"scientificName": "Synthliboramphus antiquus"
+},
+{
+"group": "Murrelet",
+"commonName": "Craveri's Murrelet",
+"scientificName": "Synthliboramphus craveri"
+},
+{
+"group": "Murrelet",
+"commonName": "Guadalupe Murrelet",
+"scientificName": "Synthliboramphus hypoleucus"
+},
+{
+"group": "Murrelet",
+"commonName": "Kittlitz's Murrelet",
+"scientificName": "Brachyramphus brevirostris"
+},
+{
+"group": "Murrelet",
+"commonName": "Long-billed Murrelet",
+"scientificName": "Brachyramphus perdix"
+},
+{
+"group": "Murrelet",
+"commonName": "Marbled Murrelet",
+"scientificName": "Brachyramphus marmoratus"
+},
+{
+"group": "Murrelet",
+"commonName": "Scripps's Murrelet",
+"scientificName": "Synthliboramphus scrippsi"
+},
+{
+"group": "Needletail",
+"commonName": "White-throated Needletail",
+"scientificName": "Hirundapus caudacutus"
+},
+{
+"group": "Nighthawk",
+"commonName": "Antillean Nighthawk",
+"scientificName": "Chordeiles gundlachii"
+},
+{
+"group": "Nighthawk",
+"commonName": "Common Nighthawk",
+"scientificName": "Chordeiles minor"
+},
+{
+"group": "Nighthawk",
+"commonName": "Lesser Nighthawk",
+"scientificName": "Chordeiles acutipennis"
+},
+{
+"group": "Night-Heron",
+"commonName": "Black-crowned Night-Heron",
+"scientificName": "Nycticorax nycticorax"
+},
+{
+"group": "Night-Heron",
+"commonName": "Japanese Night-Heron",
+"scientificName": "Gorsachius goisagi"
+},
+{
+"group": "Night-Heron",
+"commonName": "Malayan Night-Heron",
+"scientificName": "Gorsachius melanolophus"
+},
+{
+"group": "Night-Heron",
+"commonName": "Nankeen Night-Heron",
+"scientificName": "Nycticorax caledonicus"
+},
+{
+"group": "Night-Heron",
+"commonName": "Yellow-crowned Night-Heron",
+"scientificName": "Nyctanassa violacea"
+},
+{
+"group": "Nightingale-Thrush",
+"commonName": "Black-headed Nightingale-Thrush",
+"scientificName": "Catharus mexicanus"
+},
+{
+"group": "Nightingale-Thrush",
+"commonName": "Orange-billed Nightingale-Thrush",
+"scientificName": "Catharus aurantiirostris"
+},
+{
+"group": "Nightjar",
+"commonName": "Buff-collared Nightjar",
+"scientificName": "Antrostomus ridgwayi"
+},
+{
+"group": "Nightjar",
+"commonName": "Gray Nightjar",
+"scientificName": "Caprimulgus jotaka"
+},
+{
+"group": "Nightjar",
+"commonName": "Puerto Rican Nightjar",
+"scientificName": "Antrostomus noctitherus"
+},
+{
+"group": "Nightjar",
+"commonName": "White-tailed Nightjar",
+"scientificName": "Hydropsalis cayennensis"
+},
+{
+"group": "Noddy",
+"commonName": "Black Noddy",
+"scientificName": "Anous minutus"
+},
+{
+"group": "Noddy",
+"commonName": "Blue-gray Noddy",
+"scientificName": "Anous ceruleus"
+},
+{
+"group": "Noddy",
+"commonName": "Brown Noddy",
+"scientificName": "Anous stolidus"
+},
+{
+"group": "Nukupu'u",
+"commonName": "Kauai Nukupu'u",
+"scientificName": "Hemignathus hanapepe"
+},
+{
+"group": "Nukupu'u",
+"commonName": "Maui Nukupu'u",
+"scientificName": "Hemignathus affinis"
+},
+{
+"group": "Nukupu'u",
+"commonName": "O'ahu Nukupu'u",
+"scientificName": "Hemignathus lucidus"
+},
+{
+"group": "Nutcracker",
+"commonName": "Clark's Nutcracker",
+"scientificName": "Nucifraga columbiana"
+},
+{
+"group": "Nuthatch",
+"commonName": "Brown-headed Nuthatch",
+"scientificName": "Sitta pusilla"
+},
+{
+"group": "Nuthatch",
+"commonName": "Pygmy Nuthatch",
+"scientificName": "Sitta pygmaea"
+},
+{
+"group": "Nuthatch",
+"commonName": "Red-breasted Nuthatch",
+"scientificName": "Sitta canadensis"
+},
+{
+"group": "Nuthatch",
+"commonName": "White-breasted Nuthatch",
+"scientificName": "Sitta carolinensis"
+},
+{
+"group": "Oloma'o",
+"commonName": "Oloma'o",
+"scientificName": "Myadestes lanaiensis"
+},
+{
+"group": "'\u014cma'o",
+"commonName": "'\u014cma'o",
+"scientificName": "Myadestes obscurus"
+},
+{
+"group": "Oriole",
+"commonName": "Altamira Oriole",
+"scientificName": "Icterus gularis"
+},
+{
+"group": "Oriole",
+"commonName": "Audubon's Oriole",
+"scientificName": "Icterus graduacauda"
+},
+{
+"group": "Oriole",
+"commonName": "Baltimore Oriole",
+"scientificName": "Icterus galbula"
+},
+{
+"group": "Oriole",
+"commonName": "Black-backed Oriole",
+"scientificName": "Icterus abeillei"
+},
+{
+"group": "Oriole",
+"commonName": "Black-vented Oriole",
+"scientificName": "Icterus wagleri"
+},
+{
+"group": "Oriole",
+"commonName": "Bullock's Oriole",
+"scientificName": "Icterus bullockii"
+},
+{
+"group": "Oriole",
+"commonName": "Hooded Oriole",
+"scientificName": "Icterus cucullatus"
+},
+{
+"group": "Oriole",
+"commonName": "Orchard Oriole",
+"scientificName": "Icterus spurius"
+},
+{
+"group": "Oriole",
+"commonName": "Puerto Rican Oriole",
+"scientificName": "Icterus portoricensis"
+},
+{
+"group": "Oriole",
+"commonName": "Scott's Oriole",
+"scientificName": "Icterus parisorum"
+},
+{
+"group": "Oriole",
+"commonName": "Streak-backed Oriole",
+"scientificName": "Icterus pustulatus"
+},
+{
+"group": "Osprey",
+"commonName": "Osprey",
+"scientificName": "Pandion haliaetus"
+},
+{
+"group": "'\u014c'\u016b",
+"commonName": "'\u014c'\u016b",
+"scientificName": "Psittirostra psittacea"
+},
+{
+"group": "Ovenbird",
+"commonName": "Ovenbird",
+"scientificName": "Seiurus aurocapilla"
+},
+{
+"group": "Owl",
+"commonName": "Barn Owl",
+"scientificName": "Tyto alba"
+},
+{
+"group": "Owl",
+"commonName": "Barred Owl",
+"scientificName": "Strix varia"
+},
+{
+"group": "Owl",
+"commonName": "Boreal Owl",
+"scientificName": "Aegolius funereus"
+},
+{
+"group": "Owl",
+"commonName": "Burrowing Owl",
+"scientificName": "Athene cunicularia"
+},
+{
+"group": "Owl",
+"commonName": "Elf Owl",
+"scientificName": "Micrathene whitneyi"
+},
+{
+"group": "Owl",
+"commonName": "Flammulated Owl",
+"scientificName": "Psiloscops flammeolus"
+},
+{
+"group": "Owl",
+"commonName": "Great Gray Owl",
+"scientificName": "Strix nebulosa"
+},
+{
+"group": "Owl",
+"commonName": "Great Horned Owl",
+"scientificName": "Bubo virginianus"
+},
+{
+"group": "Owl",
+"commonName": "Long-eared Owl",
+"scientificName": "Asio otus"
+},
+{
+"group": "Owl",
+"commonName": "Mottled Owl",
+"scientificName": "Strix virgata"
+},
+{
+"group": "Owl",
+"commonName": "Northern Hawk Owl",
+"scientificName": "Surnia ulula"
+},
+{
+"group": "Owl",
+"commonName": "Northern Saw-whet Owl",
+"scientificName": "Aegolius acadicus"
+},
+{
+"group": "Owl",
+"commonName": "Puerto Rican Owl",
+"scientificName": "Gymnasio nudipes"
+},
+{
+"group": "Owl",
+"commonName": "Short-eared Owl",
+"scientificName": "Asio flammeus"
+},
+{
+"group": "Owl",
+"commonName": "Snowy Owl",
+"scientificName": "Bubo scandiacus"
+},
+{
+"group": "Owl",
+"commonName": "Spotted Owl",
+"scientificName": "Strix occidentalis"
+},
+{
+"group": "Owl",
+"commonName": "Stygian Owl",
+"scientificName": "Asio stygius"
+},
+{
+"group": "Oystercatcher",
+"commonName": "American Oystercatcher",
+"scientificName": "Haematopus palliatus"
+},
+{
+"group": "Oystercatcher",
+"commonName": "Black Oystercatcher",
+"scientificName": "Haematopus bachmani"
+},
+{
+"group": "Oystercatcher",
+"commonName": "Eurasian Oystercatcher",
+"scientificName": "Haematopus ostralegus"
+},
+{
+"group": "Palila",
+"commonName": "Palila",
+"scientificName": "Loxioides bailleui"
+},
+{
+"group": "Palm-Swift",
+"commonName": "Antillean Palm-Swift",
+"scientificName": "Tachornis phoenicobia"
+},
+{
+"group": "Parrotbill",
+"commonName": "Maui Parrotbill",
+"scientificName": "Pseudonestor xanthophrys"
+},
+{
+"group": "Parula",
+"commonName": "Northern Parula",
+"scientificName": "Setophaga americana"
+},
+{
+"group": "Parula",
+"commonName": "Tropical Parula",
+"scientificName": "Setophaga pitiayumi"
+},
+{
+"group": "Pauraque",
+"commonName": "Common Pauraque",
+"scientificName": "Nyctidromus albicollis"
+},
+{
+"group": "Pelican",
+"commonName": "American White Pelican",
+"scientificName": "Pelecanus erythrorhynchos"
+},
+{
+"group": "Pelican",
+"commonName": "Brown Pelican",
+"scientificName": "Pelecanus occidentalis"
+},
+{
+"group": "Petrel",
+"commonName": "Bermuda Petrel",
+"scientificName": "Pterodroma cahow"
+},
+{
+"group": "Petrel",
+"commonName": "Black-capped Petrel",
+"scientificName": "Pterodroma hasitata"
+},
+{
+"group": "Petrel",
+"commonName": "Black-winged Petrel",
+"scientificName": "Pterodroma nigripennis"
+},
+{
+"group": "Petrel",
+"commonName": "Bonin Petrel",
+"scientificName": "Pterodroma hypoleuca"
+},
+{
+"group": "Petrel",
+"commonName": "Bulwer's Petrel",
+"scientificName": "Bulweria bulwerii"
+},
+{
+"group": "Petrel",
+"commonName": "Cook's Petrel",
+"scientificName": "Pterodroma cookii"
+},
+{
+"group": "Petrel",
+"commonName": "Fea's Petrel",
+"scientificName": "Pterodroma feae"
+},
+{
+"group": "Petrel",
+"commonName": "Gould's Petrel",
+"scientificName": "Pterodroma leucoptera"
+},
+{
+"group": "Petrel",
+"commonName": "Gray-faced Petrel",
+"scientificName": "Pterodroma gouldi"
+},
+{
+"group": "Petrel",
+"commonName": "Hawaiian Petrel",
+"scientificName": "Pterodroma sandwichensis"
+},
+{
+"group": "Petrel",
+"commonName": "Herald Petrel",
+"scientificName": "Pterodroma heraldica"
+},
+{
+"group": "Petrel",
+"commonName": "Jouanin's Petrel",
+"scientificName": "Bulweria fallax"
+},
+{
+"group": "Petrel",
+"commonName": "Juan Fernandez Petrel",
+"scientificName": "Pterodroma externa"
+},
+{
+"group": "Petrel",
+"commonName": "Kermadec Petrel",
+"scientificName": "Pterodroma neglecta"
+},
+{
+"group": "Petrel",
+"commonName": "Mottled Petrel",
+"scientificName": "Pterodroma inexpectata"
+},
+{
+"group": "Petrel",
+"commonName": "Murphy's Petrel",
+"scientificName": "Pterodroma ultima"
+},
+{
+"group": "Petrel",
+"commonName": "Parkinson's Petrel",
+"scientificName": "Procellaria parkinsoni"
+},
+{
+"group": "Petrel",
+"commonName": "Phoenix Petrel",
+"scientificName": "Pterodroma alba"
+},
+{
+"group": "Petrel",
+"commonName": "Providence Petrel",
+"scientificName": "Pterodroma solandri"
+},
+{
+"group": "Petrel",
+"commonName": "Stejneger's Petrel",
+"scientificName": "Pterodroma longirostris"
+},
+{
+"group": "Petrel",
+"commonName": "Tahiti Petrel",
+"scientificName": "Pseudobulweria rostrata"
+},
+{
+"group": "Petrel",
+"commonName": "Trindade Petrel",
+"scientificName": "Pterodroma arminjoniana"
+},
+{
+"group": "Petrel",
+"commonName": "White-chinned Petrel",
+"scientificName": "Procellaria aequinoctialis"
+},
+{
+"group": "Petrel",
+"commonName": "White-necked Petrel",
+"scientificName": "Pterodroma cervicalis"
+},
+{
+"group": "Petrel",
+"commonName": "Zino's Petrel",
+"scientificName": "Pterodroma madeira"
+},
+{
+"group": "Pewee",
+"commonName": "Cuban Pewee",
+"scientificName": "Contopus caribaeus"
+},
+{
+"group": "Pewee",
+"commonName": "Greater Pewee",
+"scientificName": "Contopus pertinax"
+},
+{
+"group": "Pewee",
+"commonName": "Hispaniolan Pewee",
+"scientificName": "Contopus hispaniolensis"
+},
+{
+"group": "Pewee",
+"commonName": "Lesser Antillean Pewee",
+"scientificName": "Contopus latirostris"
+},
+{
+"group": "Phainopepla",
+"commonName": "Phainopepla",
+"scientificName": "Phainopepla nitens"
+},
+{
+"group": "Phalarope",
+"commonName": "Red Phalarope",
+"scientificName": "Phalaropus fulicarius"
+},
+{
+"group": "Phalarope",
+"commonName": "Red-necked Phalarope",
+"scientificName": "Phalaropus lobatus"
+},
+{
+"group": "Phalarope",
+"commonName": "Wilson's Phalarope",
+"scientificName": "Phalaropus tricolor"
+},
+{
+"group": "Phoebe",
+"commonName": "Black Phoebe",
+"scientificName": "Sayornis nigricans"
+},
+{
+"group": "Phoebe",
+"commonName": "Eastern Phoebe",
+"scientificName": "Sayornis phoebe"
+},
+{
+"group": "Phoebe",
+"commonName": "Say's Phoebe",
+"scientificName": "Sayornis saya"
+},
+{
+"group": "Pigeon",
+"commonName": "Band-tailed Pigeon",
+"scientificName": "Patagioenas fasciata"
+},
+{
+"group": "Pigeon",
+"commonName": "Plain Pigeon",
+"scientificName": "Patagioenas inornata"
+},
+{
+"group": "Pigeon",
+"commonName": "Red-billed Pigeon",
+"scientificName": "Patagioenas flavirostris"
+},
+{
+"group": "Pigeon",
+"commonName": "Scaly-naped Pigeon",
+"scientificName": "Patagioenas squamosa"
+},
+{
+"group": "Pigeon",
+"commonName": "White-crowned Pigeon",
+"scientificName": "Patagioenas leucocephala"
+},
+{
+"group": "Pintail",
+"commonName": "Northern Pintail",
+"scientificName": "Anas acuta"
+},
+{
+"group": "Pintail",
+"commonName": "White-cheeked Pintail",
+"scientificName": "Anas bahamensis"
+},
+{
+"group": "Pipit",
+"commonName": "American Pipit",
+"scientificName": "Anthus rubescens"
+},
+{
+"group": "Pipit",
+"commonName": "Olive-backed Pipit",
+"scientificName": "Anthus hodgsoni"
+},
+{
+"group": "Pipit",
+"commonName": "Pechora Pipit",
+"scientificName": "Anthus gustavi"
+},
+{
+"group": "Pipit",
+"commonName": "Red-throated Pipit",
+"scientificName": "Anthus cervinus"
+},
+{
+"group": "Pipit",
+"commonName": "Sprague's Pipit",
+"scientificName": "Anthus spragueii"
+},
+{
+"group": "Pipit",
+"commonName": "Tree Pipit",
+"scientificName": "Anthus trivialis"
+},
+{
+"group": "Plover",
+"commonName": "Black-bellied Plover",
+"scientificName": "Pluvialis squatarola"
+},
+{
+"group": "Plover",
+"commonName": "Collared Plover",
+"scientificName": "Charadrius collaris"
+},
+{
+"group": "Plover",
+"commonName": "Common Ringed Plover",
+"scientificName": "Charadrius hiaticula"
+},
+{
+"group": "Plover",
+"commonName": "Kentish Plover",
+"scientificName": "Charadrius alexandrinus"
+},
+{
+"group": "Plover",
+"commonName": "Little Ringed Plover",
+"scientificName": "Charadrius dubius"
+},
+{
+"group": "Plover",
+"commonName": "Mountain Plover",
+"scientificName": "Charadrius montanus"
+},
+{
+"group": "Plover",
+"commonName": "Piping Plover",
+"scientificName": "Charadrius melodus"
+},
+{
+"group": "Plover",
+"commonName": "Semipalmated Plover",
+"scientificName": "Charadrius semipalmatus"
+},
+{
+"group": "Plover",
+"commonName": "Snowy Plover",
+"scientificName": "Charadrius nivosus"
+},
+{
+"group": "Plover",
+"commonName": "Wilson's Plover",
+"scientificName": "Charadrius wilsonia"
+},
+{
+"group": "Pochard",
+"commonName": "Baer's Pochard",
+"scientificName": "Aythya baeri"
+},
+{
+"group": "Pochard",
+"commonName": "Common Pochard",
+"scientificName": "Aythya ferina"
+},
+{
+"group": "Pond-Heron",
+"commonName": "Chinese Pond-Heron",
+"scientificName": "Ardeola bacchus"
+},
+{
+"group": "Poorwill",
+"commonName": "Common Poorwill",
+"scientificName": "Phalaenoptilus nuttallii"
+},
+{
+"group": "Po'ouli",
+"commonName": "Po'ouli",
+"scientificName": "Melamprosops phaeosoma"
+},
+{
+"group": "Puaiohi",
+"commonName": "Puaiohi",
+"scientificName": "Myadestes palmeri"
+},
+{
+"group": "Puffin",
+"commonName": "Atlantic Puffin",
+"scientificName": "Fratercula arctica"
+},
+{
+"group": "Puffin",
+"commonName": "Horned Puffin",
+"scientificName": "Fratercula corniculata"
+},
+{
+"group": "Puffin",
+"commonName": "Tufted Puffin",
+"scientificName": "Fratercula cirrhata"
+},
+{
+"group": "Pygmy-Owl",
+"commonName": "Ferruginous Pygmy-Owl",
+"scientificName": "Glaucidium brasilianum"
+},
+{
+"group": "Pygmy-Owl",
+"commonName": "Northern Pygmy-Owl",
+"scientificName": "Glaucidium gnoma"
+},
+{
+"group": "Pyrrhuloxia",
+"commonName": "Pyrrhuloxia",
+"scientificName": "Cardinalis sinuatus"
+},
+{
+"group": "Quail-Dove",
+"commonName": "Bridled Quail-Dove",
+"scientificName": "Geotrygon mystacea"
+},
+{
+"group": "Quail-Dove",
+"commonName": "Key West Quail-Dove",
+"scientificName": "Geotrygon chrysia"
+},
+{
+"group": "Quail-Dove",
+"commonName": "Ruddy Quail-Dove",
+"scientificName": "Geotrygon montana"
+},
+{
+"group": "Quetzal",
+"commonName": "Eared Quetzal",
+"scientificName": "Euptilotis neoxenus"
+},
+{
+"group": "Rail",
+"commonName": "Black Rail",
+"scientificName": "Laterallus jamaicensis"
+},
+{
+"group": "Rail",
+"commonName": "Buff-banded Rail",
+"scientificName": "Gallirallus philippensis"
+},
+{
+"group": "Rail",
+"commonName": "Clapper Rail",
+"scientificName": "Rallus crepitans"
+},
+{
+"group": "Rail",
+"commonName": "Guam Rail",
+"scientificName": "Gallirallus owstoni"
+},
+{
+"group": "Rail",
+"commonName": "King Rail",
+"scientificName": "Rallus elegans"
+},
+{
+"group": "Rail",
+"commonName": "Ridgway's Rail",
+"scientificName": "Rallus obsoletus"
+},
+{
+"group": "Rail",
+"commonName": "Spotted Rail",
+"scientificName": "Pardirallus maculatus"
+},
+{
+"group": "Rail",
+"commonName": "Virginia Rail",
+"scientificName": "Rallus limicola"
+},
+{
+"group": "Rail",
+"commonName": "Yellow Rail",
+"scientificName": "Coturnicops noveboracensis"
+},
+{
+"group": "Raven",
+"commonName": "Chihuahuan Raven",
+"scientificName": "Corvus cryptoleucus"
+},
+{
+"group": "Raven",
+"commonName": "Common Raven",
+"scientificName": "Corvus corax"
+},
+{
+"group": "Razorbill",
+"commonName": "Razorbill",
+"scientificName": "Alca torda"
+},
+{
+"group": "Redhead",
+"commonName": "Redhead",
+"scientificName": "Aythya americana"
+},
+{
+"group": "Redpoll",
+"commonName": "Common Redpoll",
+"scientificName": "Acanthis flammea"
+},
+{
+"group": "Redpoll",
+"commonName": "Hoary Redpoll",
+"scientificName": "Acanthis hornemanni"
+},
+{
+"group": "Redshank",
+"commonName": "Common Redshank",
+"scientificName": "Tringa totanus"
+},
+{
+"group": "Redshank",
+"commonName": "Spotted Redshank",
+"scientificName": "Tringa erythropus"
+},
+{
+"group": "Redstart",
+"commonName": "American Redstart",
+"scientificName": "Setophaga ruticilla"
+},
+{
+"group": "Redstart",
+"commonName": "Common Redstart",
+"scientificName": "Phoenicurus phoenicurus"
+},
+{
+"group": "Redstart",
+"commonName": "Painted Redstart",
+"scientificName": "Myioborus pictus"
+},
+{
+"group": "Redstart",
+"commonName": "Slate-throated Redstart",
+"scientificName": "Myioborus miniatus"
+},
+{
+"group": "Redwing",
+"commonName": "Redwing",
+"scientificName": "Turdus iliacus"
+},
+{
+"group": "Reef-Heron",
+"commonName": "Pacific Reef-Heron",
+"scientificName": "Egretta sacra"
+},
+{
+"group": "Reef-Heron",
+"commonName": "Western Reef-Heron",
+"scientificName": "Egretta gularis"
+},
+{
+"group": "Roadrunner",
+"commonName": "Greater Roadrunner",
+"scientificName": "Geococcyx californianus"
+},
+{
+"group": "Robin",
+"commonName": "American Robin",
+"scientificName": "Turdus migratorius"
+},
+{
+"group": "Robin",
+"commonName": "European Robin",
+"scientificName": "Erithacus rubecula"
+},
+{
+"group": "Robin",
+"commonName": "Rufous-backed Robin",
+"scientificName": "Turdus rufopalliatus"
+},
+{
+"group": "Robin",
+"commonName": "Rufous-tailed Robin",
+"scientificName": "Larvivora sibilans"
+},
+{
+"group": "Robin",
+"commonName": "Siberian Blue Robin",
+"scientificName": "Larvivora cyane"
+},
+{
+"group": "Rock-Thrush",
+"commonName": "Blue Rock-Thrush",
+"scientificName": "Monticola solitarius"
+},
+{
+"group": "Rosefinch",
+"commonName": "Common Rosefinch",
+"scientificName": "Carpodacus erythrinus"
+},
+{
+"group": "Rosefinch",
+"commonName": "Pallas's Rosefinch",
+"scientificName": "Carpodacus roseus"
+},
+{
+"group": "Rosy-Finch",
+"commonName": "Asian Rosy-Finch",
+"scientificName": "Leucosticte arctoa"
+},
+{
+"group": "Rosy-Finch",
+"commonName": "Black Rosy-Finch",
+"scientificName": "Leucosticte atrata"
+},
+{
+"group": "Rosy-Finch",
+"commonName": "Brown-capped Rosy-Finch",
+"scientificName": "Leucosticte australis"
+},
+{
+"group": "Rosy-Finch",
+"commonName": "Gray-crowned Rosy-Finch",
+"scientificName": "Leucosticte tephrocotis"
+},
+{
+"group": "Rubythroat",
+"commonName": "Siberian Rubythroat",
+"scientificName": "Calliope calliope"
+},
+{
+"group": "Ruff",
+"commonName": "Ruff",
+"scientificName": "Calidris pugnax"
+},
+{
+"group": "Sanderling",
+"commonName": "Sanderling",
+"scientificName": "Calidris alba"
+},
+{
+"group": "Sandpiper",
+"commonName": "Baird's Sandpiper",
+"scientificName": "Calidris bairdii"
+},
+{
+"group": "Sandpiper",
+"commonName": "Broad-billed Sandpiper",
+"scientificName": "Calidris falcinellus"
+},
+{
+"group": "Sandpiper",
+"commonName": "Buff-breasted Sandpiper",
+"scientificName": "Calidris subruficollis"
+},
+{
+"group": "Sandpiper",
+"commonName": "Common Sandpiper",
+"scientificName": "Actitis hypoleucos"
+},
+{
+"group": "Sandpiper",
+"commonName": "Curlew Sandpiper",
+"scientificName": "Calidris ferruginea"
+},
+{
+"group": "Sandpiper",
+"commonName": "Green Sandpiper",
+"scientificName": "Tringa ochropus"
+},
+{
+"group": "Sandpiper",
+"commonName": "Least Sandpiper",
+"scientificName": "Calidris minutilla"
+},
+{
+"group": "Sandpiper",
+"commonName": "Marsh Sandpiper",
+"scientificName": "Tringa stagnatilis"
+},
+{
+"group": "Sandpiper",
+"commonName": "Pectoral Sandpiper",
+"scientificName": "Calidris melanotos"
+},
+{
+"group": "Sandpiper",
+"commonName": "Purple Sandpiper",
+"scientificName": "Calidris maritima"
+},
+{
+"group": "Sandpiper",
+"commonName": "Rock Sandpiper",
+"scientificName": "Calidris ptilocnemis"
+},
+{
+"group": "Sandpiper",
+"commonName": "Semipalmated Sandpiper",
+"scientificName": "Calidris pusilla"
+},
+{
+"group": "Sandpiper",
+"commonName": "Sharp-tailed Sandpiper",
+"scientificName": "Calidris acuminata"
+},
+{
+"group": "Sandpiper",
+"commonName": "Solitary Sandpiper",
+"scientificName": "Tringa solitaria"
+},
+{
+"group": "Sandpiper",
+"commonName": "Spoon-billed Sandpiper",
+"scientificName": "Calidris pygmea"
+},
+{
+"group": "Sandpiper",
+"commonName": "Spotted Sandpiper",
+"scientificName": "Actitis macularius"
+},
+{
+"group": "Sandpiper",
+"commonName": "Stilt Sandpiper",
+"scientificName": "Calidris himantopus"
+},
+{
+"group": "Sandpiper",
+"commonName": "Terek Sandpiper",
+"scientificName": "Xenus cinereus"
+},
+{
+"group": "Sandpiper",
+"commonName": "Upland Sandpiper",
+"scientificName": "Bartramia longicauda"
+},
+{
+"group": "Sandpiper",
+"commonName": "Western Sandpiper",
+"scientificName": "Calidris mauri"
+},
+{
+"group": "Sandpiper",
+"commonName": "White-rumped Sandpiper",
+"scientificName": "Calidris fuscicollis"
+},
+{
+"group": "Sandpiper",
+"commonName": "Wood Sandpiper",
+"scientificName": "Tringa glareola"
+},
+{
+"group": "Sand-Plover",
+"commonName": "Greater Sand-Plover",
+"scientificName": "Charadrius leschenaultii"
+},
+{
+"group": "Sand-Plover",
+"commonName": "Lesser Sand-Plover",
+"scientificName": "Charadrius mongolus"
+},
+{
+"group": "Sapsucker",
+"commonName": "Red-breasted Sapsucker",
+"scientificName": "Sphyrapicus ruber"
+},
+{
+"group": "Sapsucker",
+"commonName": "Red-naped Sapsucker",
+"scientificName": "Sphyrapicus nuchalis"
+},
+{
+"group": "Sapsucker",
+"commonName": "Williamson's Sapsucker",
+"scientificName": "Sphyrapicus thyroideus"
+},
+{
+"group": "Sapsucker",
+"commonName": "Yellow-bellied Sapsucker",
+"scientificName": "Sphyrapicus varius"
+},
+{
+"group": "Scaup",
+"commonName": "Greater Scaup",
+"scientificName": "Aythya marila"
+},
+{
+"group": "Scaup",
+"commonName": "Lesser Scaup",
+"scientificName": "Aythya affinis"
+},
+{
+"group": "Scops-Owl",
+"commonName": "Oriental Scops-Owl",
+"scientificName": "Otus sunia"
+},
+{
+"group": "Scoter",
+"commonName": "Black Scoter",
+"scientificName": "Melanitta americana"
+},
+{
+"group": "Scoter",
+"commonName": "Common Scoter",
+"scientificName": "Melanitta nigra"
+},
+{
+"group": "Scoter",
+"commonName": "Stejneger's Scoter",
+"scientificName": "Melanitta stejneger"
+},
+{
+"group": "Scoter",
+"commonName": "Surf Scoter",
+"scientificName": "Melanitta perspicillata"
+},
+{
+"group": "Scoter",
+"commonName": "White-winged Scoter",
+"scientificName": "Melanitta deglandi"
+},
+{
+"group": "Screech-Owl",
+"commonName": "Eastern Screech-Owl",
+"scientificName": "Megascops asio"
+},
+{
+"group": "Screech-Owl",
+"commonName": "Western Screech-Owl",
+"scientificName": "Megascops kennicottii"
+},
+{
+"group": "Screech-Owl",
+"commonName": "Whiskered Screech-Owl",
+"scientificName": "Megascops trichopsis"
+},
+{
+"group": "Scrub-Jay",
+"commonName": "California Scrub-Jay",
+"scientificName": "Aphelocoma californica"
+},
+{
+"group": "Scrub-Jay",
+"commonName": "Florida Scrub-Jay",
+"scientificName": "Aphelocoma coerulescens"
+},
+{
+"group": "Scrub-Jay",
+"commonName": "Island Scrub-Jay",
+"scientificName": "Aphelocoma insularis"
+},
+{
+"group": "Scrub-Jay",
+"commonName": "Woodhouse's Scrub-Jay",
+"scientificName": "Aphelocoma woodhouseii"
+},
+{
+"group": "Sea-Eagle",
+"commonName": "Steller's Sea-Eagle",
+"scientificName": "Haliaeetus pelagicus"
+},
+{
+"group": "Seedeater",
+"commonName": "Morelet's Seedeater",
+"scientificName": "Sporophila morelleti"
+},
+{
+"group": "Shearwater",
+"commonName": "Audubon's Shearwater",
+"scientificName": "Puffinus lherminieri"
+},
+{
+"group": "Shearwater",
+"commonName": "Barolo Shearwater",
+"scientificName": "Puffinus baroli"
+},
+{
+"group": "Shearwater",
+"commonName": "Black-vented Shearwater",
+"scientificName": "Puffinus opisthomelas"
+},
+{
+"group": "Shearwater",
+"commonName": "Bryan's Shearwater",
+"scientificName": "Puffinus bryani"
+},
+{
+"group": "Shearwater",
+"commonName": "Buller's Shearwater",
+"scientificName": "Ardenna bulleri"
+},
+{
+"group": "Shearwater",
+"commonName": "Cape Verde Shearwater",
+"scientificName": "Calonectris edwardsii"
+},
+{
+"group": "Shearwater",
+"commonName": "Christmas Shearwater",
+"scientificName": "Puffinus nativitatis"
+},
+{
+"group": "Shearwater",
+"commonName": "Cory's Shearwater",
+"scientificName": "Calonectris diomedea"
+},
+{
+"group": "Shearwater",
+"commonName": "Flesh-footed Shearwater",
+"scientificName": "Ardenna carneipes"
+},
+{
+"group": "Shearwater",
+"commonName": "Great Shearwater",
+"scientificName": "Ardenna gravis"
+},
+{
+"group": "Shearwater",
+"commonName": "Manx Shearwater",
+"scientificName": "Puffinus puffinus"
+},
+{
+"group": "Shearwater",
+"commonName": "Newell's Shearwater",
+"scientificName": "Puffinus newelli"
+},
+{
+"group": "Shearwater",
+"commonName": "Pink-footed Shearwater",
+"scientificName": "Ardenna creatopus"
+},
+{
+"group": "Shearwater",
+"commonName": "Short-tailed Shearwater",
+"scientificName": "Ardenna tenuirostris"
+},
+{
+"group": "Shearwater",
+"commonName": "Sooty Shearwater",
+"scientificName": "Ardenna grisea"
+},
+{
+"group": "Shearwater",
+"commonName": "Streaked Shearwater",
+"scientificName": "Calonectris leucomelas"
+},
+{
+"group": "Shearwater",
+"commonName": "Wedge-tailed Shearwater",
+"scientificName": "Ardenna pacifica"
+},
+{
+"group": "Shoveler",
+"commonName": "Northern Shoveler",
+"scientificName": "Spatula clypeata"
+},
+{
+"group": "Shrike",
+"commonName": "Brown Shrike",
+"scientificName": "Lanius cristatus"
+},
+{
+"group": "Shrike",
+"commonName": "Loggerhead Shrike",
+"scientificName": "Lanius ludovicianus"
+},
+{
+"group": "Shrike",
+"commonName": "Northern Shrike",
+"scientificName": "Lanius borealis"
+},
+{
+"group": "Silky-Flycatcher",
+"commonName": "Gray Silky-Flycatcher",
+"scientificName": "Ptiliogonys cinereus"
+},
+{
+"group": "Siskin",
+"commonName": "Eurasian Siskin",
+"scientificName": "Spinus spinus"
+},
+{
+"group": "Siskin",
+"commonName": "Pine Siskin",
+"scientificName": "Spinus pinus"
+},
+{
+"group": "Skimmer",
+"commonName": "Black Skimmer",
+"scientificName": "Rynchops niger"
+},
+{
+"group": "Skua",
+"commonName": "Great Skua",
+"scientificName": "Stercorarius skua"
+},
+{
+"group": "Skua",
+"commonName": "South Polar Skua",
+"scientificName": "Stercorarius maccormicki"
+},
+{
+"group": "Skylark",
+"commonName": "Eurasian Skylark",
+"scientificName": "Alauda arvensis"
+},
+{
+"group": "Smew",
+"commonName": "Smew",
+"scientificName": "Mergellus albellus"
+},
+{
+"group": "Snipe",
+"commonName": "Common Snipe",
+"scientificName": "Gallinago gallinago"
+},
+{
+"group": "Snipe",
+"commonName": "Jack Snipe",
+"scientificName": "Lymnocryptes minimus"
+},
+{
+"group": "Snipe",
+"commonName": "Pin-tailed Snipe",
+"scientificName": "Gallinago stenura"
+},
+{
+"group": "Snipe",
+"commonName": "Solitary Snipe",
+"scientificName": "Gallinago solitaria"
+},
+{
+"group": "Snipe",
+"commonName": "Swinhoe's Snipe",
+"scientificName": "Gallinago megala"
+},
+{
+"group": "Snipe",
+"commonName": "Wilson's Snipe",
+"scientificName": "Gallinago delicata"
+},
+{
+"group": "Solitaire",
+"commonName": "Brown-backed Solitaire",
+"scientificName": "Myadestes occidentalis"
+},
+{
+"group": "Solitaire",
+"commonName": "Townsend's Solitaire",
+"scientificName": "Myadestes townsendi"
+},
+{
+"group": "Sora",
+"commonName": "Sora",
+"scientificName": "Porzana carolina"
+},
+{
+"group": "Sparrow",
+"commonName": "American Tree Sparrow",
+"scientificName": "Spizelloides arborea"
+},
+{
+"group": "Sparrow",
+"commonName": "Bachman's Sparrow",
+"scientificName": "Peucaea aestivalis"
+},
+{
+"group": "Sparrow",
+"commonName": "Baird's Sparrow",
+"scientificName": "Centronyx bairdii"
+},
+{
+"group": "Sparrow",
+"commonName": "Bell's Sparrow",
+"scientificName": "Artemisiospiza belli"
+},
+{
+"group": "Sparrow",
+"commonName": "Black-chinned Sparrow",
+"scientificName": "Spizella atrogularis"
+},
+{
+"group": "Sparrow",
+"commonName": "Black-throated Sparrow",
+"scientificName": "Amphispiza bilineata"
+},
+{
+"group": "Sparrow",
+"commonName": "Botteri's Sparrow",
+"scientificName": "Peucaea botterii"
+},
+{
+"group": "Sparrow",
+"commonName": "Brewer's Sparrow",
+"scientificName": "Spizella breweri"
+},
+{
+"group": "Sparrow",
+"commonName": "Cassin's Sparrow",
+"scientificName": "Peucaea cassinii"
+},
+{
+"group": "Sparrow",
+"commonName": "Chipping Sparrow",
+"scientificName": "Spizella passerina"
+},
+{
+"group": "Sparrow",
+"commonName": "Clay-colored Sparrow",
+"scientificName": "Spizella pallida"
+},
+{
+"group": "Sparrow",
+"commonName": "Field Sparrow",
+"scientificName": "Spizella pusilla"
+},
+{
+"group": "Sparrow",
+"commonName": "Five-striped Sparrow",
+"scientificName": "Amphispizopsis quinquestriata"
+},
+{
+"group": "Sparrow",
+"commonName": "Fox Sparrow",
+"scientificName": "Passerella iliaca"
+},
+{
+"group": "Sparrow",
+"commonName": "Golden-crowned Sparrow",
+"scientificName": "Zonotrichia atricapilla"
+},
+{
+"group": "Sparrow",
+"commonName": "Grasshopper Sparrow",
+"scientificName": "Ammodramus savannarum"
+},
+{
+"group": "Sparrow",
+"commonName": "Harris's Sparrow",
+"scientificName": "Zonotrichia querula"
+},
+{
+"group": "Sparrow",
+"commonName": "Henslow's Sparrow",
+"scientificName": "Centronyx henslowii"
+},
+{
+"group": "Sparrow",
+"commonName": "Lark Sparrow",
+"scientificName": "Chondestes grammacus"
+},
+{
+"group": "Sparrow",
+"commonName": "LeConte's Sparrow",
+"scientificName": "Ammospiza leconteii"
+},
+{
+"group": "Sparrow",
+"commonName": "Lincoln's Sparrow",
+"scientificName": "Melospiza lincolnii"
+},
+{
+"group": "Sparrow",
+"commonName": "Nelson's Sparrow",
+"scientificName": "Ammospiza nelsoni"
+},
+{
+"group": "Sparrow",
+"commonName": "Olive Sparrow",
+"scientificName": "Arremonops rufivirgatus"
+},
+{
+"group": "Sparrow",
+"commonName": "Rufous-crowned Sparrow",
+"scientificName": "Aimophila ruficeps"
+},
+{
+"group": "Sparrow",
+"commonName": "Rufous-winged Sparrow",
+"scientificName": "Peucaea carpalis"
+},
+{
+"group": "Sparrow",
+"commonName": "Sagebrush Sparrow",
+"scientificName": "Artemisiospiza nevadensis"
+},
+{
+"group": "Sparrow",
+"commonName": "Saltmarsh Sparrow",
+"scientificName": "Ammospiza caudacuta"
+},
+{
+"group": "Sparrow",
+"commonName": "Savannah Sparrow",
+"scientificName": "Passerculus sandwichensis"
+},
+{
+"group": "Sparrow",
+"commonName": "Seaside Sparrow",
+"scientificName": "Ammospiza maritima"
+},
+{
+"group": "Sparrow",
+"commonName": "Song Sparrow",
+"scientificName": "Melospiza melodia"
+},
+{
+"group": "Sparrow",
+"commonName": "Swamp Sparrow",
+"scientificName": "Melospiza georgiana"
+},
+{
+"group": "Sparrow",
+"commonName": "Vesper Sparrow",
+"scientificName": "Pooecetes gramineus"
+},
+{
+"group": "Sparrow",
+"commonName": "White-crowned Sparrow",
+"scientificName": "Zonotrichia leucophrys"
+},
+{
+"group": "Sparrow",
+"commonName": "White-throated Sparrow",
+"scientificName": "Zonotrichia albicollis"
+},
+{
+"group": "Sparrow",
+"commonName": "Worthen's Sparrow",
+"scientificName": "Spizella wortheni"
+},
+{
+"group": "Sparrowhawk",
+"commonName": "Chinese Sparrowhawk",
+"scientificName": "Accipiter soloensis"
+},
+{
+"group": "Sparrowhawk",
+"commonName": "Japanese Sparrowhawk",
+"scientificName": "Accipiter gularis"
+},
+{
+"group": "Spindalis",
+"commonName": "Puerto Rican Spindalis",
+"scientificName": "Spindalis portoricensis"
+},
+{
+"group": "Spindalis",
+"commonName": "Western Spindalis",
+"scientificName": "Spindalis zena"
+},
+{
+"group": "Spoonbill",
+"commonName": "Roseate Spoonbill",
+"scientificName": "Platalea ajaja"
+},
+{
+"group": "Starling",
+"commonName": "Chestnut-cheeked Starling",
+"scientificName": "Agropsar philippensis"
+},
+{
+"group": "Starling",
+"commonName": "White-cheeked Starling",
+"scientificName": "Spodiopsar cineraceus"
+},
+{
+"group": "Starthroat",
+"commonName": "Plain-capped Starthroat",
+"scientificName": "Heliomaster constantii"
+},
+{
+"group": "Stilt",
+"commonName": "Black-necked Stilt",
+"scientificName": "Himantopus mexicanus"
+},
+{
+"group": "Stilt",
+"commonName": "Black-winged Stilt",
+"scientificName": "Himantopus himantopus"
+},
+{
+"group": "Stint",
+"commonName": "Little Stint",
+"scientificName": "Calidris minuta"
+},
+{
+"group": "Stint",
+"commonName": "Long-toed Stint",
+"scientificName": "Calidris subminuta"
+},
+{
+"group": "Stint",
+"commonName": "Red-necked Stint",
+"scientificName": "Calidris ruficollis"
+},
+{
+"group": "Stint",
+"commonName": "Temminck's Stint",
+"scientificName": "Calidris temminckii"
+},
+{
+"group": "Stonechat",
+"commonName": "Asian Stonechat",
+"scientificName": "Saxicola maurus"
+},
+{
+"group": "Stork",
+"commonName": "Wood Stork",
+"scientificName": "Mycteria americana"
+},
+{
+"group": "Storm-Petrel",
+"commonName": "Ashy Storm-Petrel",
+"scientificName": "Hydrobates homochroa"
+},
+{
+"group": "Storm-Petrel",
+"commonName": "Band-rumped Storm-Petrel",
+"scientificName": "Hydrobates castro"
+},
+{
+"group": "Storm-Petrel",
+"commonName": "Black Storm-Petrel",
+"scientificName": "Hydrobates melania"
+},
+{
+"group": "Storm-Petrel",
+"commonName": "Black-bellied Storm-Petrel",
+"scientificName": "Fregetta tropica"
+},
+{
+"group": "Storm-Petrel",
+"commonName": "European Storm-Petrel",
+"scientificName": "Hydrobates pelagicus"
+},
+{
+"group": "Storm-Petrel",
+"commonName": "Fork-tailed Storm-Petrel",
+"scientificName": "Hydrobates furcatus"
+},
+{
+"group": "Storm-Petrel",
+"commonName": "Leach's Storm-Petrel",
+"scientificName": "Hydrobates leucorhous"
+},
+{
+"group": "Storm-Petrel",
+"commonName": "Least Storm-Petrel",
+"scientificName": "Hydrobates microsoma"
+},
+{
+"group": "Storm-Petrel",
+"commonName": "Matsudaira's Storm-Petrel",
+"scientificName": "Hydrobates matsudairae"
+},
+{
+"group": "Storm-Petrel",
+"commonName": "Polynesian Storm-Petrel",
+"scientificName": "Nesofregetta fuliginosa"
+},
+{
+"group": "Storm-Petrel",
+"commonName": "Ringed Storm-Petrel",
+"scientificName": "Hydrobates hornbyi"
+},
+{
+"group": "Storm-Petrel",
+"commonName": "Swinhoe's Storm-Petrel",
+"scientificName": "Hydrobates monorhis"
+},
+{
+"group": "Storm-Petrel",
+"commonName": "Townsend's Storm-Petrel",
+"scientificName": "Hydrobates socorroensis"
+},
+{
+"group": "Storm-Petrel",
+"commonName": "Tristram's Storm-Petrel",
+"scientificName": "Hydrobates tristrami"
+},
+{
+"group": "Storm-Petrel",
+"commonName": "Wedge-rumped Storm-Petrel",
+"scientificName": "Hydrobates tethys"
+},
+{
+"group": "Storm-Petrel",
+"commonName": "White-bellied Storm-Petrel",
+"scientificName": "Fregetta grallaria"
+},
+{
+"group": "Storm-Petrel",
+"commonName": "White-faced Storm-Petrel",
+"scientificName": "Pelagodroma marina"
+},
+{
+"group": "Storm-Petrel",
+"commonName": "Wilson's Storm-Petrel",
+"scientificName": "Oceanites oceanicus"
+},
+{
+"group": "Surfbird",
+"commonName": "Surfbird",
+"scientificName": "Calidris virgata"
+},
+{
+"group": "Swallow",
+"commonName": "Bahama Swallow",
+"scientificName": "Tachycineta cyaneoviridis"
+},
+{
+"group": "Swallow",
+"commonName": "Bank Swallow",
+"scientificName": "Riparia riparia"
+},
+{
+"group": "Swallow",
+"commonName": "Barn Swallow",
+"scientificName": "Hirundo rustica"
+},
+{
+"group": "Swallow",
+"commonName": "Blue-and-white Swallow",
+"scientificName": "Pygochelidon cyanoleuca"
+},
+{
+"group": "Swallow",
+"commonName": "Cave Swallow",
+"scientificName": "Petrochelidon fulva"
+},
+{
+"group": "Swallow",
+"commonName": "Cliff Swallow",
+"scientificName": "Petrochelidon pyrrhonota"
+},
+{
+"group": "Swallow",
+"commonName": "Mangrove Swallow",
+"scientificName": "Tachycineta albilinea"
+},
+{
+"group": "Swallow",
+"commonName": "Northern Rough-winged Swallow",
+"scientificName": "Stelgidopteryx serripennis"
+},
+{
+"group": "Swallow",
+"commonName": "Tree Swallow",
+"scientificName": "Tachycineta bicolor"
+},
+{
+"group": "Swallow",
+"commonName": "Violet-green Swallow",
+"scientificName": "Tachycineta thalassina"
+},
+{
+"group": "Swamphen",
+"commonName": "Purple Swamphen",
+"scientificName": "Porphyrio porphyrio"
+},
+{
+"group": "Swan",
+"commonName": "Trumpeter Swan",
+"scientificName": "Cygnus buccinator"
+},
+{
+"group": "Swan",
+"commonName": "Tundra Swan",
+"scientificName": "Cygnus columbianus"
+},
+{
+"group": "Swan",
+"commonName": "Whooper Swan",
+"scientificName": "Cygnus cygnus"
+},
+{
+"group": "Swift",
+"commonName": "Alpine Swift",
+"scientificName": "Apus melba"
+},
+{
+"group": "Swift",
+"commonName": "Black Swift",
+"scientificName": "Cypseloides niger"
+},
+{
+"group": "Swift",
+"commonName": "Chimney Swift",
+"scientificName": "Chaetura pelagica"
+},
+{
+"group": "Swift",
+"commonName": "Common Swift",
+"scientificName": "Apus apus"
+},
+{
+"group": "Swift",
+"commonName": "Fork-tailed Swift",
+"scientificName": "Apus pacificus"
+},
+{
+"group": "Swift",
+"commonName": "Short-tailed Swift",
+"scientificName": "Chaetura brachyura"
+},
+{
+"group": "Swift",
+"commonName": "Vaux's Swift",
+"scientificName": "Chaetura vauxi"
+},
+{
+"group": "Swift",
+"commonName": "White-collared Swift",
+"scientificName": "Streptoprocne zonaris"
+},
+{
+"group": "Swift",
+"commonName": "White-throated Swift",
+"scientificName": "Aeronautes saxatalis"
+},
+{
+"group": "Swiftlet",
+"commonName": "Mariana Swiftlet",
+"scientificName": "Aerodramus bartschi"
+},
+{
+"group": "Swiftlet",
+"commonName": "White-rumped Swiftlet",
+"scientificName": "Aerodramus spodiopygius"
+},
+{
+"group": "Tanager",
+"commonName": "Flame-colored Tanager",
+"scientificName": "Piranga bidentata"
+},
+{
+"group": "Tanager",
+"commonName": "Hepatic Tanager",
+"scientificName": "Piranga flava"
+},
+{
+"group": "Tanager",
+"commonName": "Puerto Rican Tanager",
+"scientificName": "Nesospingus speculiferus"
+},
+{
+"group": "Tanager",
+"commonName": "Scarlet Tanager",
+"scientificName": "Piranga olivacea"
+},
+{
+"group": "Tanager",
+"commonName": "Summer Tanager",
+"scientificName": "Piranga rubra"
+},
+{
+"group": "Tanager",
+"commonName": "Western Tanager",
+"scientificName": "Piranga ludoviciana"
+},
+{
+"group": "Tattler",
+"commonName": "Gray-tailed Tattler",
+"scientificName": "Tringa brevipes"
+},
+{
+"group": "Tattler",
+"commonName": "Wandering Tattler",
+"scientificName": "Tringa incana"
+},
+{
+"group": "Teal",
+"commonName": "Baikal Teal",
+"scientificName": "Sibirionetta formosa"
+},
+{
+"group": "Teal",
+"commonName": "Blue-winged Teal",
+"scientificName": "Spatula discors"
+},
+{
+"group": "Teal",
+"commonName": "Cinnamon Teal",
+"scientificName": "Spatula cyanoptera"
+},
+{
+"group": "Teal",
+"commonName": "Green-winged Teal",
+"scientificName": "Anas crecca"
+},
+{
+"group": "Tern",
+"commonName": "Aleutian Tern",
+"scientificName": "Onychoprion aleuticus"
+},
+{
+"group": "Tern",
+"commonName": "Arctic Tern",
+"scientificName": "Sterna paradisaea"
+},
+{
+"group": "Tern",
+"commonName": "Black Tern",
+"scientificName": "Chlidonias niger"
+},
+{
+"group": "Tern",
+"commonName": "Black-naped Tern",
+"scientificName": "Sterna sumatrana"
+},
+{
+"group": "Tern",
+"commonName": "Bridled Tern",
+"scientificName": "Onychoprion anaethetus"
+},
+{
+"group": "Tern",
+"commonName": "Caspian Tern",
+"scientificName": "Hydroprogne caspia"
+},
+{
+"group": "Tern",
+"commonName": "Common Tern",
+"scientificName": "Sterna hirundo"
+},
+{
+"group": "Tern",
+"commonName": "Elegant Tern",
+"scientificName": "Thalasseus elegans"
+},
+{
+"group": "Tern",
+"commonName": "Forster's Tern",
+"scientificName": "Sterna forsteri"
+},
+{
+"group": "Tern",
+"commonName": "Gray-backed Tern",
+"scientificName": "Onychoprion lunatus"
+},
+{
+"group": "Tern",
+"commonName": "Great Crested Tern",
+"scientificName": "Thalasseus bergii"
+},
+{
+"group": "Tern",
+"commonName": "Gull-billed Tern",
+"scientificName": "Gelochelidon nilotica"
+},
+{
+"group": "Tern",
+"commonName": "Inca Tern",
+"scientificName": "Larosterna inca"
+},
+{
+"group": "Tern",
+"commonName": "Large-billed Tern",
+"scientificName": "Phaetusa simplex"
+},
+{
+"group": "Tern",
+"commonName": "Least Tern",
+"scientificName": "Sternula antillarum"
+},
+{
+"group": "Tern",
+"commonName": "Little Tern",
+"scientificName": "Sternula albifrons"
+},
+{
+"group": "Tern",
+"commonName": "Roseate Tern",
+"scientificName": "Sterna dougallii"
+},
+{
+"group": "Tern",
+"commonName": "Royal Tern",
+"scientificName": "Thalasseus maximus"
+},
+{
+"group": "Tern",
+"commonName": "Sandwich Tern",
+"scientificName": "Thalasseus sandvicensis"
+},
+{
+"group": "Tern",
+"commonName": "Sooty Tern",
+"scientificName": "Onychoprion fuscatus"
+},
+{
+"group": "Tern",
+"commonName": "Whiskered Tern",
+"scientificName": "Chlidonias hybrida"
+},
+{
+"group": "Tern",
+"commonName": "White Tern",
+"scientificName": "Gygis alba"
+},
+{
+"group": "Tern",
+"commonName": "White-winged Tern",
+"scientificName": "Chlidonias leucopterus"
+},
+{
+"group": "Thrasher",
+"commonName": "Bendire's Thrasher",
+"scientificName": "Toxostoma bendirei"
+},
+{
+"group": "Thrasher",
+"commonName": "Brown Thrasher",
+"scientificName": "Toxostoma rufum"
+},
+{
+"group": "Thrasher",
+"commonName": "California Thrasher",
+"scientificName": "Toxostoma redivivum"
+},
+{
+"group": "Thrasher",
+"commonName": "Crissal Thrasher",
+"scientificName": "Toxostoma crissale"
+},
+{
+"group": "Thrasher",
+"commonName": "Curve-billed Thrasher",
+"scientificName": "Toxostoma curvirostre"
+},
+{
+"group": "Thrasher",
+"commonName": "LeConte's Thrasher",
+"scientificName": "Toxostoma lecontei"
+},
+{
+"group": "Thrasher",
+"commonName": "Long-billed Thrasher",
+"scientificName": "Toxostoma longirostre"
+},
+{
+"group": "Thrasher",
+"commonName": "Pearly-eyed Thrasher",
+"scientificName": "Margarops fuscatus"
+},
+{
+"group": "Thrasher",
+"commonName": "Sage Thrasher",
+"scientificName": "Oreoscoptes montanus"
+},
+{
+"group": "Thrush",
+"commonName": "Aztec Thrush",
+"scientificName": "Ridgwayia pinicola"
+},
+{
+"group": "Thrush",
+"commonName": "Bicknell's Thrush",
+"scientificName": "Catharus bicknelli"
+},
+{
+"group": "Thrush",
+"commonName": "Clay-colored Thrush",
+"scientificName": "Turdus grayi"
+},
+{
+"group": "Thrush",
+"commonName": "Dusky Thrush",
+"scientificName": "Turdus eunomus"
+},
+{
+"group": "Thrush",
+"commonName": "Eyebrowed Thrush",
+"scientificName": "Turdus obscurus"
+},
+{
+"group": "Thrush",
+"commonName": "Gray-cheeked Thrush",
+"scientificName": "Catharus minimus"
+},
+{
+"group": "Thrush",
+"commonName": "Hermit Thrush",
+"scientificName": "Catharus guttatus"
+},
+{
+"group": "Thrush",
+"commonName": "Naumann's Thrush",
+"scientificName": "Turdus naumanni"
+},
+{
+"group": "Thrush",
+"commonName": "Red-legged Thrush",
+"scientificName": "Turdus plumbeus"
+},
+{
+"group": "Thrush",
+"commonName": "Swainson's Thrush",
+"scientificName": "Catharus ustulatus"
+},
+{
+"group": "Thrush",
+"commonName": "Varied Thrush",
+"scientificName": "Ixoreus naevius"
+},
+{
+"group": "Thrush",
+"commonName": "White-throated Thrush",
+"scientificName": "Turdus assimilis"
+},
+{
+"group": "Thrush",
+"commonName": "Wood Thrush",
+"scientificName": "Hylocichla mustelina"
+},
+{
+"group": "Tiger-Heron",
+"commonName": "Bare-throated Tiger-Heron",
+"scientificName": "Tigrisoma mexicanum"
+},
+{
+"group": "Titmouse",
+"commonName": "Black-crested Titmouse",
+"scientificName": "Baeolophus atricristatus"
+},
+{
+"group": "Titmouse",
+"commonName": "Bridled Titmouse",
+"scientificName": "Baeolophus wollweberi"
+},
+{
+"group": "Titmouse",
+"commonName": "Juniper Titmouse",
+"scientificName": "Baeolophus ridgwayi"
+},
+{
+"group": "Titmouse",
+"commonName": "Oak Titmouse",
+"scientificName": "Baeolophus inornatus"
+},
+{
+"group": "Titmouse",
+"commonName": "Tufted Titmouse",
+"scientificName": "Baeolophus bicolor"
+},
+{
+"group": "Tityra",
+"commonName": "Masked Tityra",
+"scientificName": "Tityra semifasciata"
+},
+{
+"group": "Towhee",
+"commonName": "Abert's Towhee",
+"scientificName": "Melozone aberti"
+},
+{
+"group": "Towhee",
+"commonName": "California Towhee",
+"scientificName": "Melozone crissalis"
+},
+{
+"group": "Towhee",
+"commonName": "Canyon Towhee",
+"scientificName": "Melozone fusca"
+},
+{
+"group": "Towhee",
+"commonName": "Eastern Towhee",
+"scientificName": "Pipilo erythrophthalmus"
+},
+{
+"group": "Towhee",
+"commonName": "Green-tailed Towhee",
+"scientificName": "Pipilo chlorurus"
+},
+{
+"group": "Towhee",
+"commonName": "Spotted Towhee",
+"scientificName": "Pipilo maculatus"
+},
+{
+"group": "Trogon",
+"commonName": "Elegant Trogon",
+"scientificName": "Trogon elegans"
+},
+{
+"group": "Tropicbird",
+"commonName": "Red-billed Tropicbird",
+"scientificName": "Phaethon aethereus"
+},
+{
+"group": "Tropicbird",
+"commonName": "Red-tailed Tropicbird",
+"scientificName": "Phaethon rubricauda"
+},
+{
+"group": "Tropicbird",
+"commonName": "White-tailed Tropicbird",
+"scientificName": "Phaethon lepturus"
+},
+{
+"group": "Turnstone",
+"commonName": "Black Turnstone",
+"scientificName": "Arenaria melanocephala"
+},
+{
+"group": "Turnstone",
+"commonName": "Ruddy Turnstone",
+"scientificName": "Arenaria interpres"
+},
+{
+"group": "Turtle-Dove",
+"commonName": "Oriental Turtle-Dove",
+"scientificName": "Streptopelia orientalis"
+},
+{
+"group": "Veery",
+"commonName": "Veery",
+"scientificName": "Catharus fuscescens"
+},
+{
+"group": "Verdin",
+"commonName": "Verdin",
+"scientificName": "Auriparus flaviceps"
+},
+{
+"group": "Violetear",
+"commonName": "Mexican Violetear",
+"scientificName": "Colibri thalassinus"
+},
+{
+"group": "Vireo",
+"commonName": "Bell's Vireo",
+"scientificName": "Vireo bellii"
+},
+{
+"group": "Vireo",
+"commonName": "Black-capped Vireo",
+"scientificName": "Vireo atricapilla"
+},
+{
+"group": "Vireo",
+"commonName": "Black-whiskered Vireo",
+"scientificName": "Vireo altiloquus"
+},
+{
+"group": "Vireo",
+"commonName": "Blue-headed Vireo",
+"scientificName": "Vireo solitarius"
+},
+{
+"group": "Vireo",
+"commonName": "Cassin's Vireo",
+"scientificName": "Vireo cassinii"
+},
+{
+"group": "Vireo",
+"commonName": "Cuban Vireo",
+"scientificName": "Vireo gundlachii"
+},
+{
+"group": "Vireo",
+"commonName": "Gray Vireo",
+"scientificName": "Vireo vicinior"
+},
+{
+"group": "Vireo",
+"commonName": "Hutton's Vireo",
+"scientificName": "Vireo huttoni"
+},
+{
+"group": "Vireo",
+"commonName": "Philadelphia Vireo",
+"scientificName": "Vireo philadelphicus"
+},
+{
+"group": "Vireo",
+"commonName": "Plumbeous Vireo",
+"scientificName": "Vireo plumbeus"
+},
+{
+"group": "Vireo",
+"commonName": "Puerto Rican Vireo",
+"scientificName": "Vireo latimeri"
+},
+{
+"group": "Vireo",
+"commonName": "Red-eyed Vireo",
+"scientificName": "Vireo olivaceus"
+},
+{
+"group": "Vireo",
+"commonName": "Thick-billed Vireo",
+"scientificName": "Vireo crassirostris"
+},
+{
+"group": "Vireo",
+"commonName": "Warbling Vireo",
+"scientificName": "Vireo gilvus"
+},
+{
+"group": "Vireo",
+"commonName": "White-eyed Vireo",
+"scientificName": "Vireo griseus"
+},
+{
+"group": "Vireo",
+"commonName": "Yellow-green Vireo",
+"scientificName": "Vireo flavoviridis"
+},
+{
+"group": "Vireo",
+"commonName": "Yellow-throated Vireo",
+"scientificName": "Vireo flavifrons"
+},
+{
+"group": "Vireo",
+"commonName": "Yucatan Vireo",
+"scientificName": "Vireo magister"
+},
+{
+"group": "Vulture",
+"commonName": "Black Vulture",
+"scientificName": "Coragyps atratus"
+},
+{
+"group": "Vulture",
+"commonName": "Turkey Vulture",
+"scientificName": "Cathartes aura"
+},
+{
+"group": "Wagtail",
+"commonName": "Citrine Wagtail",
+"scientificName": "Motacilla citreola"
+},
+{
+"group": "Wagtail",
+"commonName": "Eastern Yellow Wagtail",
+"scientificName": "Motacilla tschutschensis"
+},
+{
+"group": "Wagtail",
+"commonName": "Gray Wagtail",
+"scientificName": "Motacilla cinerea"
+},
+{
+"group": "Wagtail",
+"commonName": "White Wagtail",
+"scientificName": "Motacilla alba"
+},
+{
+"group": "Warbler",
+"commonName": "Adelaide's Warbler",
+"scientificName": "Setophaga adelaidae"
+},
+{
+"group": "Warbler",
+"commonName": "Aguiguan Reed Warbler",
+"scientificName": "Acrocephalus nijoi"
+},
+{
+"group": "Warbler",
+"commonName": "Arctic Warbler",
+"scientificName": "Phylloscopus borealis"
+},
+{
+"group": "Warbler",
+"commonName": "Bachman's Warbler",
+"scientificName": "Vermivora bachmanii"
+},
+{
+"group": "Warbler",
+"commonName": "Bay-breasted Warbler",
+"scientificName": "Setophaga castanea"
+},
+{
+"group": "Warbler",
+"commonName": "Black-and-white Warbler",
+"scientificName": "Mniotilta varia"
+},
+{
+"group": "Warbler",
+"commonName": "Blackburnian Warbler",
+"scientificName": "Setophaga fusca"
+},
+{
+"group": "Warbler",
+"commonName": "Blackpoll Warbler",
+"scientificName": "Setophaga striata"
+},
+{
+"group": "Warbler",
+"commonName": "Black-throated Blue Warbler",
+"scientificName": "Setophaga caerulescens"
+},
+{
+"group": "Warbler",
+"commonName": "Black-throated Gray Warbler",
+"scientificName": "Setophaga nigrescens"
+},
+{
+"group": "Warbler",
+"commonName": "Black-throated Green Warbler",
+"scientificName": "Setophaga virens"
+},
+{
+"group": "Warbler",
+"commonName": "Blue-winged Warbler",
+"scientificName": "Vermivora cyanoptera"
+},
+{
+"group": "Warbler",
+"commonName": "Blyth's Reed Warbler",
+"scientificName": "Acrocephalus dumetorum"
+},
+{
+"group": "Warbler",
+"commonName": "Canada Warbler",
+"scientificName": "Cardellina canadensis"
+},
+{
+"group": "Warbler",
+"commonName": "Cape May Warbler",
+"scientificName": "Setophaga tigrina"
+},
+{
+"group": "Warbler",
+"commonName": "Cerulean Warbler",
+"scientificName": "Setophaga cerulea"
+},
+{
+"group": "Warbler",
+"commonName": "Chestnut-sided Warbler",
+"scientificName": "Setophaga pensylvanica"
+},
+{
+"group": "Warbler",
+"commonName": "Colima Warbler",
+"scientificName": "Leiothlypis crissalis"
+},
+{
+"group": "Warbler",
+"commonName": "Connecticut Warbler",
+"scientificName": "Oporornis agilis"
+},
+{
+"group": "Warbler",
+"commonName": "Crescent-chested Warbler",
+"scientificName": "Oreothlypis superciliosa"
+},
+{
+"group": "Warbler",
+"commonName": "Dusky Warbler",
+"scientificName": "Phylloscopus fuscatus"
+},
+{
+"group": "Warbler",
+"commonName": "Elfin-woods Warbler",
+"scientificName": "Setophaga angelae"
+},
+{
+"group": "Warbler",
+"commonName": "Fan-tailed Warbler",
+"scientificName": "Basileuterus lachrymosus"
+},
+{
+"group": "Warbler",
+"commonName": "Golden-cheeked Warbler",
+"scientificName": "Setophaga chrysoparia"
+},
+{
+"group": "Warbler",
+"commonName": "Golden-crowned Warbler",
+"scientificName": "Basileuterus culicivorus"
+},
+{
+"group": "Warbler",
+"commonName": "Golden-winged Warbler",
+"scientificName": "Vermivora chrysoptera"
+},
+{
+"group": "Warbler",
+"commonName": "Grace's Warbler",
+"scientificName": "Setophaga graciae"
+},
+{
+"group": "Warbler",
+"commonName": "Hermit Warbler",
+"scientificName": "Setophaga occidentalis"
+},
+{
+"group": "Warbler",
+"commonName": "Hooded Warbler",
+"scientificName": "Setophaga citrina"
+},
+{
+"group": "Warbler",
+"commonName": "Kamchatka Leaf Warbler",
+"scientificName": "Phylloscopus examinandus"
+},
+{
+"group": "Warbler",
+"commonName": "Kentucky Warbler",
+"scientificName": "Geothlypis formosa"
+},
+{
+"group": "Warbler",
+"commonName": "Kirtland's Warbler",
+"scientificName": "Setophaga kirtlandii"
+},
+{
+"group": "Warbler",
+"commonName": "Lanceolated Warbler",
+"scientificName": "Locustella lanceolata"
+},
+{
+"group": "Warbler",
+"commonName": "Lucy's Warbler",
+"scientificName": "Leiothlypis luciae"
+},
+{
+"group": "Warbler",
+"commonName": "MacGillivray's Warbler",
+"scientificName": "Geothlypis tolmiei"
+},
+{
+"group": "Warbler",
+"commonName": "Magnolia Warbler",
+"scientificName": "Setophaga magnolia"
+},
+{
+"group": "Warbler",
+"commonName": "Middendorff's Grasshopper Warbler",
+"scientificName": "Helopsaltes ochotensis"
+},
+{
+"group": "Warbler",
+"commonName": "Mourning Warbler",
+"scientificName": "Geothlypis philadelphia"
+},
+{
+"group": "Warbler",
+"commonName": "Nashville Warbler",
+"scientificName": "Leiothlypis ruficapilla"
+},
+{
+"group": "Warbler",
+"commonName": "Nightingale Reed Warbler",
+"scientificName": "Acrocephalus luscinius"
+},
+{
+"group": "Warbler",
+"commonName": "Olive Warbler",
+"scientificName": "Peucedramus taeniatus"
+},
+{
+"group": "Warbler",
+"commonName": "Orange-crowned Warbler",
+"scientificName": "Leiothlypis celata"
+},
+{
+"group": "Warbler",
+"commonName": "Pagan Reed Warbler",
+"scientificName": "Acrocephalus yamashinae"
+},
+{
+"group": "Warbler",
+"commonName": "Pallas's Grasshopper Warbler",
+"scientificName": "Helopsaltes certhiola"
+},
+{
+"group": "Warbler",
+"commonName": "Pallas's Leaf Warbler",
+"scientificName": "Phylloscopus proregulus"
+},
+{
+"group": "Warbler",
+"commonName": "Palm Warbler",
+"scientificName": "Setophaga palmarum"
+},
+{
+"group": "Warbler",
+"commonName": "Pine Warbler",
+"scientificName": "Setophaga pinus"
+},
+{
+"group": "Warbler",
+"commonName": "Prairie Warbler",
+"scientificName": "Setophaga discolor"
+},
+{
+"group": "Warbler",
+"commonName": "Prothonotary Warbler",
+"scientificName": "Protonotaria citrea"
+},
+{
+"group": "Warbler",
+"commonName": "Red-faced Warbler",
+"scientificName": "Cardellina rubrifrons"
+},
+{
+"group": "Warbler",
+"commonName": "River Warbler",
+"scientificName": "Locustella fluviatilis"
+},
+{
+"group": "Warbler",
+"commonName": "Rufous-capped Warbler",
+"scientificName": "Basileuterus rufifrons"
+},
+{
+"group": "Warbler",
+"commonName": "Saipan Reed Warbler",
+"scientificName": "Acrocephalus hiwae"
+},
+{
+"group": "Warbler",
+"commonName": "Sedge Warbler",
+"scientificName": "Acrocephalus schoenobaenus"
+},
+{
+"group": "Warbler",
+"commonName": "Swainson's Warbler",
+"scientificName": "Limnothlypis swainsonii"
+},
+{
+"group": "Warbler",
+"commonName": "Tennessee Warbler",
+"scientificName": "Leiothlypis peregrina"
+},
+{
+"group": "Warbler",
+"commonName": "Thick-billed Warbler",
+"scientificName": "Arundinax aedon"
+},
+{
+"group": "Warbler",
+"commonName": "Townsend's Warbler",
+"scientificName": "Setophaga townsendi"
+},
+{
+"group": "Warbler",
+"commonName": "Virginia's Warbler",
+"scientificName": "Leiothlypis virginiae"
+},
+{
+"group": "Warbler",
+"commonName": "Willow Warbler",
+"scientificName": "Phylloscopus trochilus"
+},
+{
+"group": "Warbler",
+"commonName": "Wilson's Warbler",
+"scientificName": "Cardellina pusilla"
+},
+{
+"group": "Warbler",
+"commonName": "Wood Warbler",
+"scientificName": "Phylloscopus sibilatrix"
+},
+{
+"group": "Warbler",
+"commonName": "Worm-eating Warbler",
+"scientificName": "Helmitheros vermivorum"
+},
+{
+"group": "Warbler",
+"commonName": "Yellow Warbler",
+"scientificName": "Setophaga petechia"
+},
+{
+"group": "Warbler",
+"commonName": "Yellow-browed Warbler",
+"scientificName": "Phylloscopus inornatus"
+},
+{
+"group": "Warbler",
+"commonName": "Yellow-rumped Warbler",
+"scientificName": "Setophaga coronata"
+},
+{
+"group": "Warbler",
+"commonName": "Yellow-throated Warbler",
+"scientificName": "Setophaga dominica"
+},
+{
+"group": "Waterthrush",
+"commonName": "Louisiana Waterthrush",
+"scientificName": "Parkesia motacilla"
+},
+{
+"group": "Waterthrush",
+"commonName": "Northern Waterthrush",
+"scientificName": "Parkesia noveboracensis"
+},
+{
+"group": "Waxwing",
+"commonName": "Bohemian Waxwing",
+"scientificName": "Bombycilla garrulus"
+},
+{
+"group": "Waxwing",
+"commonName": "Cedar Waxwing",
+"scientificName": "Bombycilla cedrorum"
+},
+{
+"group": "Wheatear",
+"commonName": "Northern Wheatear",
+"scientificName": "Oenanthe oenanthe"
+},
+{
+"group": "Wheatear",
+"commonName": "Pied Wheatear",
+"scientificName": "Oenanthe pleschanka"
+},
+{
+"group": "Whimbrel",
+"commonName": "Whimbrel",
+"scientificName": "Numenius phaeopus"
+},
+{
+"group": "Whip-poor-will",
+"commonName": "Eastern Whip-poor-will",
+"scientificName": "Antrostomus vociferus"
+},
+{
+"group": "Whip-poor-will",
+"commonName": "Mexican Whip-poor-will",
+"scientificName": "Antrostomus arizonae"
+},
+{
+"group": "Whistling-Duck",
+"commonName": "Black-bellied Whistling-Duck",
+"scientificName": "Dendrocygna autumnalis"
+},
+{
+"group": "Whistling-Duck",
+"commonName": "Fulvous Whistling-Duck",
+"scientificName": "Dendrocygna bicolor"
+},
+{
+"group": "Whistling-Duck",
+"commonName": "West Indian Whistling-Duck",
+"scientificName": "Dendrocygna arborea"
+},
+{
+"group": "Whitethroat",
+"commonName": "Lesser Whitethroat",
+"scientificName": "Sylvia curruca"
+},
+{
+"group": "Wigeon",
+"commonName": "American Wigeon",
+"scientificName": "Mareca americana"
+},
+{
+"group": "Wigeon",
+"commonName": "Eurasian Wigeon",
+"scientificName": "Mareca penelope"
+},
+{
+"group": "Willet",
+"commonName": "Willet",
+"scientificName": "Tringa semipalmata"
+},
+{
+"group": "Woodcock",
+"commonName": "American Woodcock",
+"scientificName": "Scolopax minor"
+},
+{
+"group": "Woodcock",
+"commonName": "Eurasian Woodcock",
+"scientificName": "Scolopax rusticola"
+},
+{
+"group": "Woodpecker",
+"commonName": "Acorn Woodpecker",
+"scientificName": "Melanerpes formicivorus"
+},
+{
+"group": "Woodpecker",
+"commonName": "American Three-toed Woodpecker",
+"scientificName": "Picoides dorsalis"
+},
+{
+"group": "Woodpecker",
+"commonName": "Arizona Woodpecker",
+"scientificName": "Dryobates arizonae"
+},
+{
+"group": "Woodpecker",
+"commonName": "Black-backed Woodpecker",
+"scientificName": "Picoides arcticus"
+},
+{
+"group": "Woodpecker",
+"commonName": "Downy Woodpecker",
+"scientificName": "Dryobates pubescens"
+},
+{
+"group": "Woodpecker",
+"commonName": "Gila Woodpecker",
+"scientificName": "Melanerpes uropygialis"
+},
+{
+"group": "Woodpecker",
+"commonName": "Golden-fronted Woodpecker",
+"scientificName": "Melanerpes aurifrons"
+},
+{
+"group": "Woodpecker",
+"commonName": "Great Spotted Woodpecker",
+"scientificName": "Dendrocopos major"
+},
+{
+"group": "Woodpecker",
+"commonName": "Hairy Woodpecker",
+"scientificName": "Dryobates villosus"
+},
+{
+"group": "Woodpecker",
+"commonName": "Ivory-billed Woodpecker",
+"scientificName": "Campephilus principalis"
+},
+{
+"group": "Woodpecker",
+"commonName": "Ladder-backed Woodpecker",
+"scientificName": "Dryobates scalaris"
+},
+{
+"group": "Woodpecker",
+"commonName": "Lewis's Woodpecker",
+"scientificName": "Melanerpes lewis"
+},
+{
+"group": "Woodpecker",
+"commonName": "Nuttall's Woodpecker",
+"scientificName": "Dryobates nuttallii"
+},
+{
+"group": "Woodpecker",
+"commonName": "Pileated Woodpecker",
+"scientificName": "Dryocopus pileatus"
+},
+{
+"group": "Woodpecker",
+"commonName": "Puerto Rican Woodpecker",
+"scientificName": "Melanerpes portoricensis"
+},
+{
+"group": "Woodpecker",
+"commonName": "Red-bellied Woodpecker",
+"scientificName": "Melanerpes carolinus"
+},
+{
+"group": "Woodpecker",
+"commonName": "Red-cockaded Woodpecker",
+"scientificName": "Dryobates borealis"
+},
+{
+"group": "Woodpecker",
+"commonName": "Red-headed Woodpecker",
+"scientificName": "Melanerpes erythrocephalus"
+},
+{
+"group": "Woodpecker",
+"commonName": "White-headed Woodpecker",
+"scientificName": "Dryobates albolarvatus"
+},
+{
+"group": "Wood-Pewee",
+"commonName": "Eastern Wood-Pewee",
+"scientificName": "Contopus virens"
+},
+{
+"group": "Wood-Pewee",
+"commonName": "Western Wood-Pewee",
+"scientificName": "Contopus sordidulus"
+},
+{
+"group": "Wood-Rail",
+"commonName": "Rufous-necked Wood-Rail",
+"scientificName": "Aramides axillaris"
+},
+{
+"group": "Woodstar",
+"commonName": "Bahama Woodstar",
+"scientificName": "Nesophlox evelynae"
+},
+{
+"group": "Wren",
+"commonName": "Bewick's Wren",
+"scientificName": "Thryomanes bewickii"
+},
+{
+"group": "Wren",
+"commonName": "Cactus Wren",
+"scientificName": "Campylorhynchus brunneicapillus"
+},
+{
+"group": "Wren",
+"commonName": "Canyon Wren",
+"scientificName": "Catherpes mexicanus"
+},
+{
+"group": "Wren",
+"commonName": "Carolina Wren",
+"scientificName": "Thryothorus ludovicianus"
+},
+{
+"group": "Wren",
+"commonName": "House Wren",
+"scientificName": "Troglodytes aedon"
+},
+{
+"group": "Wren",
+"commonName": "Marsh Wren",
+"scientificName": "Cistothorus palustris"
+},
+{
+"group": "Wren",
+"commonName": "Pacific Wren",
+"scientificName": "Troglodytes pacificus"
+},
+{
+"group": "Wren",
+"commonName": "Rock Wren",
+"scientificName": "Salpinctes obsoletus"
+},
+{
+"group": "Wren",
+"commonName": "Sedge Wren",
+"scientificName": "Cistothorus stellaris"
+},
+{
+"group": "Wren",
+"commonName": "Sinaloa Wren",
+"scientificName": "Thryophilus sinaloa"
+},
+{
+"group": "Wren",
+"commonName": "Winter Wren",
+"scientificName": "Troglodytes hiemalis"
+},
+{
+"group": "Wrentit",
+"commonName": "Wrentit",
+"scientificName": "Chamaea fasciata"
+},
+{
+"group": "Wryneck",
+"commonName": "Eurasian Wryneck",
+"scientificName": "Jynx torquilla"
+},
+{
+"group": "Yellowlegs",
+"commonName": "Greater Yellowlegs",
+"scientificName": "Tringa melanoleuca"
+},
+{
+"group": "Yellowlegs",
+"commonName": "Lesser Yellowlegs",
+"scientificName": "Tringa flavipes"
+},
+{
+"group": "Yellowthroat",
+"commonName": "Common Yellowthroat",
+"scientificName": "Geothlypis trichas"
+},
+{
+"group": "Yellowthroat",
+"commonName": "Gray-crowned Yellowthroat",
+"scientificName": "Geothlypis poliocephala"
+}
+]
+}

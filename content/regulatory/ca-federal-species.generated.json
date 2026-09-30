@@ -3,6 +3,12 @@
   "note": "Derived from the published species library. Names are never typed here: a species whose record lacks a verified, sourced scientific name or a slug is WITHHELD and listed below, because a plausible binomial nobody audits is worse than a declared gap. Withheld species remain members of their federal group, so a shared limit still names them in the regulation's own words.",
   "offered": [
     {
+      "id": "species:american-coot",
+      "displayName": "American coot",
+      "scientificName": "Fulica americana",
+      "resourcePath": "/hunting/species/american-coot"
+    },
+    {
       "id": "species:american-wigeon",
       "displayName": "American wigeon",
       "scientificName": "Mareca americana",
@@ -15,10 +21,28 @@
       "resourcePath": "/hunting/species/american-woodcock"
     },
     {
+      "id": "species:band-tailed-pigeon",
+      "displayName": "Band-tailed pigeon",
+      "scientificName": "Patagioenas fasciata",
+      "resourcePath": "/hunting/species/band-tailed-pigeon"
+    },
+    {
       "id": "species:barrows-goldeneye",
       "displayName": "Barrow's goldeneye",
       "scientificName": "Bucephala islandica",
       "resourcePath": "/hunting/species/barrows-goldeneye"
+    },
+    {
+      "id": "species:black-bellied-whistling-duck",
+      "displayName": "Black-bellied whistling-duck",
+      "scientificName": "Dendrocygna autumnalis",
+      "resourcePath": "/hunting/species/black-bellied-whistling-duck"
+    },
+    {
+      "id": "species:black-scoter",
+      "displayName": "Black scoter",
+      "scientificName": "Melanitta americana",
+      "resourcePath": "/hunting/species/black-scoter"
     },
     {
       "id": "species:blue-winged-teal",
@@ -51,10 +75,70 @@
       "resourcePath": "/hunting/species/canvasback"
     },
     {
+      "id": "species:cinnamon-teal",
+      "displayName": "Cinnamon teal",
+      "scientificName": "Spatula cyanoptera",
+      "resourcePath": "/hunting/species/cinnamon-teal"
+    },
+    {
+      "id": "species:clapper-rail",
+      "displayName": "Clapper rail",
+      "scientificName": "Rallus crepitans",
+      "resourcePath": "/hunting/species/clapper-rail"
+    },
+    {
+      "id": "species:common-eider",
+      "displayName": "Common eider",
+      "scientificName": "Somateria mollissima",
+      "resourcePath": "/hunting/species/common-eider"
+    },
+    {
+      "id": "species:common-gallinule",
+      "displayName": "Common gallinule",
+      "scientificName": "Gallinula galeata",
+      "resourcePath": "/hunting/species/common-gallinule"
+    },
+    {
       "id": "species:common-goldeneye",
       "displayName": "Common goldeneye",
       "scientificName": "Bucephala clangula",
       "resourcePath": "/hunting/species/common-goldeneye"
+    },
+    {
+      "id": "species:common-merganser",
+      "displayName": "Common merganser",
+      "scientificName": "Mergus merganser",
+      "resourcePath": "/hunting/species/common-merganser"
+    },
+    {
+      "id": "species:common-murre",
+      "displayName": "Common murre",
+      "scientificName": "Uria aalge",
+      "resourcePath": "/hunting/species/common-murre"
+    },
+    {
+      "id": "species:emperor-goose",
+      "displayName": "Emperor goose",
+      "scientificName": "Anser canagicus",
+      "resourcePath": "/hunting/species/emperor-goose"
+    },
+    {
+      "id": "species:eurasian-collared-dove",
+      "displayName": "Eurasian collared-dove",
+      "scientificName": "Streptopelia decaocto",
+      "resourcePath": "/hunting/species/eurasian-collared-dove"
+    },
+    {
+      "id": "species:eurasian-wigeon",
+      "displayName": "Eurasian wigeon",
+      "scientificName": "Mareca penelope",
+      "resourcePath": "/hunting/species/eurasian-wigeon"
+    },
+    {
+      "id": "species:fulvous-whistling-duck",
+      "displayName": "Fulvous whistling-duck",
+      "scientificName": "Dendrocygna bicolor",
+      "resourcePath": "/hunting/species/fulvous-whistling-duck"
     },
     {
       "id": "species:gadwall",
@@ -81,16 +165,58 @@
       "resourcePath": "/hunting/species/green-winged-teal"
     },
     {
+      "id": "species:harlequin-duck",
+      "displayName": "Harlequin duck",
+      "scientificName": "Histrionicus histrionicus",
+      "resourcePath": "/hunting/species/harlequin-duck"
+    },
+    {
+      "id": "species:hooded-merganser",
+      "displayName": "Hooded merganser",
+      "scientificName": "Lophodytes cucullatus",
+      "resourcePath": "/hunting/species/hooded-merganser"
+    },
+    {
+      "id": "species:king-eider",
+      "displayName": "King eider",
+      "scientificName": "Somateria spectabilis",
+      "resourcePath": "/hunting/species/king-eider"
+    },
+    {
+      "id": "species:king-rail",
+      "displayName": "King rail",
+      "scientificName": "Rallus elegans",
+      "resourcePath": "/hunting/species/king-rail"
+    },
+    {
       "id": "species:lesser-scaup",
       "displayName": "Lesser scaup",
       "scientificName": "Aythya affinis",
       "resourcePath": "/hunting/species/lesser-scaup"
     },
     {
+      "id": "species:long-tailed-duck",
+      "displayName": "Long-tailed duck",
+      "scientificName": "Clangula hyemalis",
+      "resourcePath": "/hunting/species/long-tailed-duck"
+    },
+    {
       "id": "species:mallard",
       "displayName": "Mallard",
       "scientificName": "Anas platyrhynchos",
       "resourcePath": "/hunting/species/mallard"
+    },
+    {
+      "id": "species:mexican-duck",
+      "displayName": "Mexican duck",
+      "scientificName": "Anas diazi",
+      "resourcePath": "/hunting/species/mexican-duck"
+    },
+    {
+      "id": "species:mottled-duck",
+      "displayName": "Mottled duck",
+      "scientificName": "Anas fulvigula",
+      "resourcePath": "/hunting/species/mottled-duck"
     },
     {
       "id": "species:mourning-dove",
@@ -111,6 +237,18 @@
       "resourcePath": "/hunting/species/northern-shoveler"
     },
     {
+      "id": "species:purple-gallinule",
+      "displayName": "Purple gallinule",
+      "scientificName": "Porphyrio martinicus",
+      "resourcePath": "/hunting/species/purple-gallinule"
+    },
+    {
+      "id": "species:red-breasted-merganser",
+      "displayName": "Red-breasted merganser",
+      "scientificName": "Mergus serrator",
+      "resourcePath": "/hunting/species/red-breasted-merganser"
+    },
+    {
       "id": "species:redhead",
       "displayName": "Redhead",
       "scientificName": "Aythya americana",
@@ -123,6 +261,18 @@
       "resourcePath": "/hunting/species/ring-necked-duck"
     },
     {
+      "id": "species:rosss-goose",
+      "displayName": "Ross's goose",
+      "scientificName": "Anser rossii",
+      "resourcePath": "/hunting/species/rosss-goose"
+    },
+    {
+      "id": "species:ruddy-duck",
+      "displayName": "Ruddy duck",
+      "scientificName": "Oxyura jamaicensis",
+      "resourcePath": "/hunting/species/ruddy-duck"
+    },
+    {
       "id": "species:sandhill-crane",
       "displayName": "Sandhill crane",
       "scientificName": "Antigone canadensis",
@@ -133,6 +283,36 @@
       "displayName": "Snow goose",
       "scientificName": "Anser caerulescens",
       "resourcePath": "/hunting/species/snow-goose"
+    },
+    {
+      "id": "species:sora",
+      "displayName": "Sora",
+      "scientificName": "Porzana carolina",
+      "resourcePath": "/hunting/species/sora"
+    },
+    {
+      "id": "species:surf-scoter",
+      "displayName": "Surf scoter",
+      "scientificName": "Melanitta perspicillata",
+      "resourcePath": "/hunting/species/surf-scoter"
+    },
+    {
+      "id": "species:thick-billed-murre",
+      "displayName": "Thick-billed murre",
+      "scientificName": "Uria lomvia",
+      "resourcePath": "/hunting/species/thick-billed-murre"
+    },
+    {
+      "id": "species:virginia-rail",
+      "displayName": "Virginia rail",
+      "scientificName": "Rallus limicola",
+      "resourcePath": "/hunting/species/virginia-rail"
+    },
+    {
+      "id": "species:white-winged-scoter",
+      "displayName": "White-winged scoter",
+      "scientificName": "Melanitta deglandi",
+      "resourcePath": "/hunting/species/white-winged-scoter"
     },
     {
       "id": "species:wilsons-snipe",
