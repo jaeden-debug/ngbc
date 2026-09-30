@@ -870,7 +870,10 @@
         }
       ],
       "sourceIds": [
-        "source:official-gray-wolf"
+        "source:official-gray-wolf",
+        "source:profile-gray-wolf-1",
+        "source:profile-gray-wolf-2",
+        "source:profile-gray-wolf-3"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -881,7 +884,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -944,10 +947,79 @@
           }
         ],
         "sourceIds": [
-          "source:official-gray-wolf"
+          "source:official-gray-wolf",
+          "source:profile-gray-wolf-1",
+          "source:profile-gray-wolf-2",
+          "source:profile-gray-wolf-3"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Lives in packs, typically 6–7 (up to 20–30) animals, holding territories against other wolves",
+            "sourceIds": [
+              "source:profile-gray-wolf-1",
+              "source:profile-gray-wolf-2",
+              "source:profile-gray-wolf-3"
+            ]
+          },
+          {
+            "text": "Howls to communicate, including warning other packs away",
+            "sourceIds": [
+              "source:profile-gray-wolf-1",
+              "source:profile-gray-wolf-2",
+              "source:profile-gray-wolf-3"
+            ]
+          },
+          {
+            "text": "Preys mainly on moose, caribou or deer, with sheep, hares, beaver and other small prey",
+            "sourceIds": [
+              "source:profile-gray-wolf-1",
+              "source:profile-gray-wolf-2",
+              "source:profile-gray-wolf-3"
+            ]
+          },
+          {
+            "text": "In the far northwest may follow migratory caribou; territories span hundreds to thousands of square kilometres",
+            "sourceIds": [
+              "source:profile-gray-wolf-1",
+              "source:profile-gray-wolf-2",
+              "source:profile-gray-wolf-3"
+            ]
+          }
+        ],
+        "conservationStatus": [
+          {
+            "status": "ENDANGERED",
+            "jurisdictionIds": [
+              "jurisdiction:us-federal"
+            ],
+            "text": "The gray wolf, U.S.A.: All of AL, AR, CA, CO, CT, DE, FL, GA, IA, IN, IL, KS, KY, LA, MA, MD, ME, MI, MO, MS, NC, ND, NE, NH, NJ, NV, NY, OH, OK, PA, RI, SC, SD, TN, TX, VA, VT, WI, and WV; and portions of AZ, NM, OR, UT, and WA as follows: (1) Northern AZ (that portion north of the centerline of Interstate Highway 40); (2) Northern NM (that portion north of the centerline of Interstate Highway 40); (3) Western OR (that portion of OR west of the centerline of Highway 395 and Highway 78 north of Burns Junction and that portion of OR west of the centerline of Highway 95 south of Burns Junction); (4) Most of Utah (that portion of UT south and west of the centerline of Highway 84 and that portion of UT south of Highway 80 from Echo to the UT/WY Stateline); and (5) Western WA (that portion of WA west of the centerline of Highway 97 and Highway 17 north of Mesa and that portion of WA west of the centerline of Highway 395 south of Mesa). Mexico.: listed as endangered under the Endangered Species Act since 1978-03-09.",
+            "sourceIds": [
+              "source:conservation-gray-wolf-1"
+            ]
+          },
+          {
+            "status": "THREATENED",
+            "jurisdictionIds": [
+              "jurisdiction:us-federal"
+            ],
+            "text": "The gray wolf, U.S.A. (MN): listed as threatened under the Endangered Species Act since 1978-03-09.",
+            "sourceIds": [
+              "source:conservation-gray-wolf-2"
+            ]
+          },
+          {
+            "status": "ENDANGERED",
+            "jurisdictionIds": [
+              "jurisdiction:us-federal"
+            ],
+            "text": "Mexican wolf (Canis lupus baileyi), Wherever found, except where included in an experimental population as set forth in 17.84(k): listed as endangered under the Endangered Species Act since 1976-04-28.",
+            "sourceIds": [
+              "source:conservation-gray-wolf-3"
+            ]
+          }
+        ]
       }
     },
     {
@@ -996,7 +1068,9 @@
         }
       ],
       "sourceIds": [
-        "source:official-eastern-wolf"
+        "source:official-eastern-wolf",
+        "source:profile-eastern-wolf-1",
+        "source:profile-eastern-wolf-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1007,7 +1081,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1079,10 +1153,42 @@
           }
         ],
         "sourceIds": [
-          "source:official-eastern-wolf"
+          "source:official-eastern-wolf",
+          "source:profile-eastern-wolf-1",
+          "source:profile-eastern-wolf-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Lives in family packs; winter pack size in Algonquin Park has been recorded at 9-14.",
+            "sourceIds": [
+              "source:profile-eastern-wolf-1",
+              "source:profile-eastern-wolf-2"
+            ]
+          },
+          {
+            "text": "Territories average roughly 190-200 km².",
+            "sourceIds": [
+              "source:profile-eastern-wolf-1",
+              "source:profile-eastern-wolf-2"
+            ]
+          },
+          {
+            "text": "Preys on white-tailed deer, beaver and moose; some Algonquin wolves travel up to 42 km to follow deer to winter concentration areas.",
+            "sourceIds": [
+              "source:profile-eastern-wolf-1",
+              "source:profile-eastern-wolf-2"
+            ]
+          },
+          {
+            "text": "Dens are usually in conifer-dominated forest near permanent water, in diggable soil such as sand.",
+            "sourceIds": [
+              "source:profile-eastern-wolf-1",
+              "source:profile-eastern-wolf-2"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1131,7 +1237,8 @@
         }
       ],
       "sourceIds": [
-        "source:official-coyote"
+        "source:official-coyote",
+        "source:profile-coyote-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1142,7 +1249,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1205,10 +1312,31 @@
           }
         ],
         "sourceIds": [
-          "source:official-coyote"
+          "source:official-coyote",
+          "source:profile-coyote-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Yelping, howling, high-pitched calls, especially at dusk and dawn; one howl sets off others, and two coyotes can sound like a dozen.",
+            "sourceIds": [
+              "source:profile-coyote-1"
+            ]
+          },
+          {
+            "text": "Primarily a flesh-eater that scavenges livestock carcasses and wolf kills and in suitable snow can kill deer.",
+            "sourceIds": [
+              "source:profile-coyote-1"
+            ]
+          },
+          {
+            "text": "Marks territory with strong-smelling urine.",
+            "sourceIds": [
+              "source:profile-coyote-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1257,7 +1385,9 @@
         }
       ],
       "sourceIds": [
-        "source:official-red-fox"
+        "source:official-red-fox",
+        "source:profile-red-fox-1",
+        "source:profile-red-fox-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1268,7 +1398,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1340,10 +1470,54 @@
           }
         ],
         "sourceIds": [
-          "source:official-red-fox"
+          "source:official-red-fox",
+          "source:profile-red-fox-1",
+          "source:profile-red-fox-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Mostly nocturnal or crepuscular and solitary, but territorial; families use a main earthen den.",
+            "sourceIds": [
+              "source:profile-red-fox-1",
+              "source:profile-red-fox-2"
+            ]
+          },
+          {
+            "text": "Hunts rodents and rabbits with a high pounce; also eats birds, eggs, insects and plants.",
+            "sourceIds": [
+              "source:profile-red-fox-1",
+              "source:profile-red-fox-2"
+            ]
+          },
+          {
+            "text": "Caches surplus food and revisits caches.",
+            "sourceIds": [
+              "source:profile-red-fox-1",
+              "source:profile-red-fox-2"
+            ]
+          },
+          {
+            "text": "Vocal: howls, barks and whines.",
+            "sourceIds": [
+              "source:profile-red-fox-1",
+              "source:profile-red-fox-2"
+            ]
+          }
+        ],
+        "conservationStatus": [
+          {
+            "status": "ENDANGERED",
+            "jurisdictionIds": [
+              "jurisdiction:us-federal"
+            ],
+            "text": "Sierra Nevada red fox (Vulpes vulpes necator), Sierra Nevada DPS: listed as endangered under the Endangered Species Act since 2021-09-02.",
+            "sourceIds": [
+              "source:conservation-red-fox-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1392,7 +1566,9 @@
         }
       ],
       "sourceIds": [
-        "source:official-gray-fox"
+        "source:official-gray-fox",
+        "source:profile-gray-fox-1",
+        "source:profile-gray-fox-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1402,7 +1578,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1473,10 +1649,42 @@
           }
         ],
         "sourceIds": [
-          "source:official-gray-fox"
+          "source:official-gray-fox",
+          "source:profile-gray-fox-1",
+          "source:profile-gray-fox-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "The only North American canid that climbs trees, using hooked claws to escape predators or reach food.",
+            "sourceIds": [
+              "source:profile-gray-fox-1",
+              "source:profile-gray-fox-2"
+            ]
+          },
+          {
+            "text": "Mainly nocturnal and solitary outside breeding and pup rearing.",
+            "sourceIds": [
+              "source:profile-gray-fox-1",
+              "source:profile-gray-fox-2"
+            ]
+          },
+          {
+            "text": "Dens in hollow trees and logs, rock crevices and burrows.",
+            "sourceIds": [
+              "source:profile-gray-fox-1",
+              "source:profile-gray-fox-2"
+            ]
+          },
+          {
+            "text": "Omnivorous: small mammals, insects, birds and fruit (apples, berries, wild grapes); caches surplus food.",
+            "sourceIds": [
+              "source:profile-gray-fox-1",
+              "source:profile-gray-fox-2"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1525,7 +1733,9 @@
         }
       ],
       "sourceIds": [
-        "source:official-arctic-fox"
+        "source:official-arctic-fox",
+        "source:profile-arctic-fox-1",
+        "source:profile-arctic-fox-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1535,7 +1745,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1606,10 +1816,42 @@
           }
         ],
         "sourceIds": [
-          "source:official-arctic-fox"
+          "source:official-arctic-fox",
+          "source:profile-arctic-fox-1",
+          "source:profile-arctic-fox-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Does not hibernate; nomadic and can travel several hundred kilometres.",
+            "sourceIds": [
+              "source:profile-arctic-fox-1",
+              "source:profile-arctic-fox-2"
+            ]
+          },
+          {
+            "text": "Summer diet centres on lemmings and voles; also takes seabirds, eggs, berries and scavenges seal remains from polar bear kills.",
+            "sourceIds": [
+              "source:profile-arctic-fox-1",
+              "source:profile-arctic-fox-2"
+            ]
+          },
+          {
+            "text": "Caches surplus food in summer; dens have 4–8 entrances and are dug in sandy banks, hillocks and talus.",
+            "sourceIds": [
+              "source:profile-arctic-fox-1",
+              "source:profile-arctic-fox-2"
+            ]
+          },
+          {
+            "text": "Monogamous pairs raise pups together; families break up in September–October.",
+            "sourceIds": [
+              "source:profile-arctic-fox-1",
+              "source:profile-arctic-fox-2"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1658,7 +1900,10 @@
         }
       ],
       "sourceIds": [
-        "source:official-canada-lynx"
+        "source:official-canada-lynx",
+        "source:profile-canada-lynx-1",
+        "source:profile-canada-lynx-2",
+        "source:profile-canada-lynx-3"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1668,7 +1913,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1739,10 +1984,59 @@
           }
         ],
         "sourceIds": [
-          "source:official-canada-lynx"
+          "source:official-canada-lynx",
+          "source:profile-canada-lynx-1",
+          "source:profile-canada-lynx-2",
+          "source:profile-canada-lynx-3"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Solitary apart from breeding pairs and females with kittens, which sometimes hunt hares together in a line.",
+            "sourceIds": [
+              "source:profile-canada-lynx-1",
+              "source:profile-canada-lynx-2",
+              "source:profile-canada-lynx-3"
+            ]
+          },
+          {
+            "text": "Hunts mainly at night, stalking or waiting in ambush.",
+            "sourceIds": [
+              "source:profile-canada-lynx-1",
+              "source:profile-canada-lynx-2",
+              "source:profile-canada-lynx-3"
+            ]
+          },
+          {
+            "text": "Specialist predator of snowshoe hare, which can exceed 75% of the diet; lynx numbers cycle with hares roughly every 10 years.",
+            "sourceIds": [
+              "source:profile-canada-lynx-1",
+              "source:profile-canada-lynx-2",
+              "source:profile-canada-lynx-3"
+            ]
+          },
+          {
+            "text": "Breeding season late February through March.",
+            "sourceIds": [
+              "source:profile-canada-lynx-1",
+              "source:profile-canada-lynx-2",
+              "source:profile-canada-lynx-3"
+            ]
+          }
+        ],
+        "conservationStatus": [
+          {
+            "status": "THREATENED",
+            "jurisdictionIds": [
+              "jurisdiction:us-federal"
+            ],
+            "text": "The canada lynx, Wherever Found in Contiguous U.S.: listed as threatened under the Endangered Species Act since 2000-03-24.",
+            "sourceIds": [
+              "source:conservation-canada-lynx-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1791,7 +2085,10 @@
         }
       ],
       "sourceIds": [
-        "source:official-bobcat"
+        "source:official-bobcat",
+        "source:profile-bobcat-1",
+        "source:profile-bobcat-2",
+        "source:profile-bobcat-3"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1801,7 +2098,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1863,10 +2160,47 @@
           }
         ],
         "sourceIds": [
-          "source:official-bobcat"
+          "source:official-bobcat",
+          "source:profile-bobcat-1",
+          "source:profile-bobcat-2",
+          "source:profile-bobcat-3"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Solitary; sexes interact almost only in the breeding season.",
+            "sourceIds": [
+              "source:profile-bobcat-1",
+              "source:profile-bobcat-2",
+              "source:profile-bobcat-3"
+            ]
+          },
+          {
+            "text": "Mostly nocturnal and crepuscular; terrestrial but a good climber.",
+            "sourceIds": [
+              "source:profile-bobcat-1",
+              "source:profile-bobcat-2",
+              "source:profile-bobcat-3"
+            ]
+          },
+          {
+            "text": "Strictly carnivorous stalk-and-pounce hunter of mice, hares, squirrels, birds and deer fawns; can kill adult deer.",
+            "sourceIds": [
+              "source:profile-bobcat-1",
+              "source:profile-bobcat-2",
+              "source:profile-bobcat-3"
+            ]
+          },
+          {
+            "text": "Marks territory with scent and yowls during the breeding season.",
+            "sourceIds": [
+              "source:profile-bobcat-1",
+              "source:profile-bobcat-2",
+              "source:profile-bobcat-3"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1916,7 +2250,9 @@
         }
       ],
       "sourceIds": [
-        "source:official-eastern-cottontail"
+        "source:official-eastern-cottontail",
+        "source:profile-eastern-cottontail-1",
+        "source:profile-eastern-cottontail-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1926,7 +2262,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1970,7 +2306,9 @@
           }
         ],
         "similarSpeciesIds": [
-          "species:snowshoe-hare"
+          "species:snowshoe-hare",
+          "species:swamp-rabbit",
+          "species:black-tailed-jackrabbit"
         ],
         "habitat": [
           {
@@ -1989,10 +2327,35 @@
           }
         ],
         "sourceIds": [
-          "source:official-eastern-cottontail"
+          "source:official-eastern-cottontail",
+          "source:profile-eastern-cottontail-1",
+          "source:profile-eastern-cottontail-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Rests by day in a 'form' concealed in dense grass, a brush pile or thicket, seldom far from cover.",
+            "sourceIds": [
+              "source:profile-eastern-cottontail-1",
+              "source:profile-eastern-cottontail-2"
+            ]
+          },
+          {
+            "text": "Feeds almost entirely on plants: grasses, wheat and clovers; in deep snow eats buds, twigs, bark and sprouts.",
+            "sourceIds": [
+              "source:profile-eastern-cottontail-1",
+              "source:profile-eastern-cottontail-2"
+            ]
+          },
+          {
+            "text": "Breeds mid-February through September; nests are shallow ground cavities lined with grass and fur.",
+            "sourceIds": [
+              "source:profile-eastern-cottontail-1",
+              "source:profile-eastern-cottontail-2"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2042,7 +2405,8 @@
         }
       ],
       "sourceIds": [
-        "source:official-arctic-hare"
+        "source:official-arctic-hare",
+        "source:profile-arctic-hare-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -2052,7 +2416,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -2115,10 +2479,31 @@
           }
         ],
         "sourceIds": [
-          "source:official-arctic-hare"
+          "source:official-arctic-hare",
+          "source:profile-arctic-hare-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "When alarmed stands and hops on its hind legs, leaving tracks that look made by a three-legged animal; runs up to 64 km/h.",
+            "sourceIds": [
+              "source:profile-arctic-hare-1"
+            ]
+          },
+          {
+            "text": "Mostly solitary but can gather in groups of 100 or more, with one animal staying alert while others rest.",
+            "sourceIds": [
+              "source:profile-arctic-hare-1"
+            ]
+          },
+          {
+            "text": "Willow makes up about 95% of the diet, plus saxifrage, crowberry, dryas, grasses, lichens and mosses; digs through snow to feed.",
+            "sourceIds": [
+              "source:profile-arctic-hare-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2168,7 +2553,9 @@
         }
       ],
       "sourceIds": [
-        "source:official-american-red-squirrel"
+        "source:official-american-red-squirrel",
+        "source:profile-american-red-squirrel-1",
+        "source:profile-american-red-squirrel-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -2178,7 +2565,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -2241,10 +2628,35 @@
           }
         ],
         "sourceIds": [
-          "source:official-american-red-squirrel"
+          "source:official-american-red-squirrel",
+          "source:profile-american-red-squirrel-1",
+          "source:profile-american-red-squirrel-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Active by day and noisy: rattles, screeches, growls, buzzes and chirps used to defend territories year-round.",
+            "sourceIds": [
+              "source:profile-american-red-squirrel-1",
+              "source:profile-american-red-squirrel-2"
+            ]
+          },
+          {
+            "text": "Harvests conifer cones in late summer and autumn and stores them in central middens; cone cuttings on stumps and rocks are common sign.",
+            "sourceIds": [
+              "source:profile-american-red-squirrel-1",
+              "source:profile-american-red-squirrel-2"
+            ]
+          },
+          {
+            "text": "Eats mainly conifer seeds plus many mushrooms, buds, fruit, sap, insects and occasionally bird eggs or young snowshoe hares.",
+            "sourceIds": [
+              "source:profile-american-red-squirrel-1",
+              "source:profile-american-red-squirrel-2"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2294,7 +2706,10 @@
         }
       ],
       "sourceIds": [
-        "source:official-eastern-gray-squirrel"
+        "source:official-eastern-gray-squirrel",
+        "source:profile-eastern-gray-squirrel-1",
+        "source:profile-eastern-gray-squirrel-2",
+        "source:profile-eastern-gray-squirrel-3"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -2304,7 +2719,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -2367,10 +2782,47 @@
           }
         ],
         "sourceIds": [
-          "source:official-eastern-gray-squirrel"
+          "source:official-eastern-gray-squirrel",
+          "source:profile-eastern-gray-squirrel-1",
+          "source:profile-eastern-gray-squirrel-2",
+          "source:profile-eastern-gray-squirrel-3"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Very vocal: squalls, warning barks, chucks and tooth chattering, often with tail flicks",
+            "sourceIds": [
+              "source:profile-eastern-gray-squirrel-1",
+              "source:profile-eastern-gray-squirrel-2",
+              "source:profile-eastern-gray-squirrel-3"
+            ]
+          },
+          {
+            "text": "Staples are acorns and other nuts, plus buds, fruit, fungi and corn",
+            "sourceIds": [
+              "source:profile-eastern-gray-squirrel-1",
+              "source:profile-eastern-gray-squirrel-2",
+              "source:profile-eastern-gray-squirrel-3"
+            ]
+          },
+          {
+            "text": "Breeds twice a year (December–February and May–June); nests in cavities or leaf nests",
+            "sourceIds": [
+              "source:profile-eastern-gray-squirrel-1",
+              "source:profile-eastern-gray-squirrel-2",
+              "source:profile-eastern-gray-squirrel-3"
+            ]
+          },
+          {
+            "text": "Mass movements can follow nut-crop failure or high populations",
+            "sourceIds": [
+              "source:profile-eastern-gray-squirrel-1",
+              "source:profile-eastern-gray-squirrel-2",
+              "source:profile-eastern-gray-squirrel-3"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2419,7 +2871,10 @@
         }
       ],
       "sourceIds": [
-        "source:official-beaver"
+        "source:official-beaver",
+        "source:profile-beaver-1",
+        "source:profile-beaver-2",
+        "source:profile-beaver-3"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -2427,7 +2882,7 @@
       "relatedSpeciesIds": [],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -2469,7 +2924,10 @@
             ]
           }
         ],
-        "similarSpeciesIds": [],
+        "similarSpeciesIds": [
+          "species:muskrat",
+          "species:nutria"
+        ],
         "habitat": [
           {
             "text": "Ponds, lakes, rivers and wetlands where woody vegetation is available.",
@@ -2496,10 +2954,47 @@
           }
         ],
         "sourceIds": [
-          "source:official-beaver"
+          "source:official-beaver",
+          "source:profile-beaver-1",
+          "source:profile-beaver-2",
+          "source:profile-beaver-3"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Slaps the tail on the water as a warning",
+            "sourceIds": [
+              "source:profile-beaver-1",
+              "source:profile-beaver-2",
+              "source:profile-beaver-3"
+            ]
+          },
+          {
+            "text": "Fells trees (on average hundreds a year, up to about 40 cm diameter) for food and building",
+            "sourceIds": [
+              "source:profile-beaver-1",
+              "source:profile-beaver-2",
+              "source:profile-beaver-3"
+            ]
+          },
+          {
+            "text": "Builds dams, lodges and bank dens; castor from glands near the tail is used for scent marking",
+            "sourceIds": [
+              "source:profile-beaver-1",
+              "source:profile-beaver-2",
+              "source:profile-beaver-3"
+            ]
+          },
+          {
+            "text": "Usually stays within about 0.8 km of its den; two-year-olds disperse",
+            "sourceIds": [
+              "source:profile-beaver-1",
+              "source:profile-beaver-2",
+              "source:profile-beaver-3"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2548,7 +3043,10 @@
         }
       ],
       "sourceIds": [
-        "source:official-raccoon"
+        "source:official-raccoon",
+        "source:profile-raccoon-1",
+        "source:profile-raccoon-2",
+        "source:profile-raccoon-3"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -2556,7 +3054,7 @@
       "relatedSpeciesIds": [],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -2625,10 +3123,47 @@
           }
         ],
         "sourceIds": [
-          "source:official-raccoon"
+          "source:official-raccoon",
+          "source:profile-raccoon-1",
+          "source:profile-raccoon-2",
+          "source:profile-raccoon-3"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Mainly nocturnal; family groups forage together at night and den by day",
+            "sourceIds": [
+              "source:profile-raccoon-1",
+              "source:profile-raccoon-2",
+              "source:profile-raccoon-3"
+            ]
+          },
+          {
+            "text": "Omnivorous: crayfish, corn, fruit, nuts, eggs, insects; raids garbage in towns",
+            "sourceIds": [
+              "source:profile-raccoon-1",
+              "source:profile-raccoon-2",
+              "source:profile-raccoon-3"
+            ]
+          },
+          {
+            "text": "In the north dens through winter on stored fat (not true hibernation)",
+            "sourceIds": [
+              "source:profile-raccoon-1",
+              "source:profile-raccoon-2",
+              "source:profile-raccoon-3"
+            ]
+          },
+          {
+            "text": "Handles food with the front paws, the source of the 'washing' reputation",
+            "sourceIds": [
+              "source:profile-raccoon-1",
+              "source:profile-raccoon-2",
+              "source:profile-raccoon-3"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2677,7 +3212,9 @@
         }
       ],
       "sourceIds": [
-        "source:official-american-mink"
+        "source:official-american-mink",
+        "source:profile-american-mink-1",
+        "source:profile-american-mink-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -2685,7 +3222,7 @@
       "relatedSpeciesIds": [],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -2754,10 +3291,42 @@
           }
         ],
         "sourceIds": [
-          "source:official-american-mink"
+          "source:official-american-mink",
+          "source:profile-american-mink-1",
+          "source:profile-american-mink-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Mostly nocturnal, especially near dawn and dusk; movements are quick and erratic.",
+            "sourceIds": [
+              "source:profile-american-mink-1",
+              "source:profile-american-mink-2"
+            ]
+          },
+          {
+            "text": "Solitary; marks territory with anal-gland secretions and can discharge a foul-smelling liquid when threatened.",
+            "sourceIds": [
+              "source:profile-american-mink-1",
+              "source:profile-american-mink-2"
+            ]
+          },
+          {
+            "text": "Strong swimmer that dives to about 5 m; dens in riverbank burrows or dens taken over from other mammals.",
+            "sourceIds": [
+              "source:profile-american-mink-1",
+              "source:profile-american-mink-2"
+            ]
+          },
+          {
+            "text": "Eats crayfish and frogs in summer and small mammals (including muskrats), fish and waterfowl year-round, with mammals dominating winter diet.",
+            "sourceIds": [
+              "source:profile-american-mink-1",
+              "source:profile-american-mink-2"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2806,7 +3375,8 @@
         }
       ],
       "sourceIds": [
-        "source:official-fisher"
+        "source:official-fisher",
+        "source:profile-fisher-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -2816,7 +3386,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -2887,10 +3457,43 @@
           }
         ],
         "sourceIds": [
-          "source:official-fisher"
+          "source:official-fisher",
+          "source:profile-fisher-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Opportunistic carnivore hunting on the forest floor and in the canopy: squirrels, chipmunks, mice, porcupines, plus insects, fruit and fungi.",
+            "sourceIds": [
+              "source:profile-fisher-1"
+            ]
+          },
+          {
+            "text": "One of the few predators that regularly kills porcupines.",
+            "sourceIds": [
+              "source:profile-fisher-1"
+            ]
+          },
+          {
+            "text": "Kits born late February to May, typically March–April, in tree cavities.",
+            "sourceIds": [
+              "source:profile-fisher-1"
+            ]
+          }
+        ],
+        "conservationStatus": [
+          {
+            "status": "ENDANGERED",
+            "jurisdictionIds": [
+              "jurisdiction:us-federal"
+            ],
+            "text": "The fisher, Southern Sierra Nevada Distinct Population Segment: listed as endangered under the Endangered Species Act since 2020-06-15.",
+            "sourceIds": [
+              "source:conservation-fisher-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2939,7 +3542,8 @@
         }
       ],
       "sourceIds": [
-        "source:official-american-marten"
+        "source:official-american-marten",
+        "source:profile-american-marten-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -2949,7 +3553,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -3020,10 +3624,37 @@
           }
         ],
         "sourceIds": [
-          "source:official-american-marten"
+          "source:official-american-marten",
+          "source:profile-american-marten-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Usually solitary and mostly nocturnal, hunting most at dusk and dawn; active all winter and does not hibernate.",
+            "sourceIds": [
+              "source:profile-american-marten-1"
+            ]
+          },
+          {
+            "text": "Moves easily in trees and scent-marks trails from tree to tree, but does most hunting on the ground; also swims well.",
+            "sourceIds": [
+              "source:profile-american-marten-1"
+            ]
+          },
+          {
+            "text": "Eats mainly small mammals such as squirrels and other rodents, plus birds, fruit, nuts, insects and carrion.",
+            "sourceIds": [
+              "source:profile-american-marten-1"
+            ]
+          },
+          {
+            "text": "Dens in hollow trees, crevices or vacant burrows.",
+            "sourceIds": [
+              "source:profile-american-marten-1"
+            ]
+          }
+        ]
       }
     }
   ],
@@ -4067,6 +4698,426 @@
       "url": "https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/faune/animaux-sauvages-quebec/fiches-especes-fauniques/martre-amerique",
       "publisher": "Gouvernement du Québec",
       "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-gray-wolf-1",
+      "authority": "Alaska Department of Fish and Game",
+      "title": "Wolf Species Profile",
+      "url": "https://www.adfg.alaska.gov/index.cfm?adfg=wolf.main",
+      "publisher": "Alaska Department of Fish and Game",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-gray-wolf-2",
+      "authority": "Hinterland Who's Who (Canadian Wildlife Service / Canadian Wildlife Federation)",
+      "title": "Wolf - Hinterland Who's Who",
+      "url": "https://www.hww.ca/en/wildlife/mammals/wolf.html",
+      "publisher": "Hinterland Who's Who (Canadian Wildlife Service / Canadian Wildlife Federation)",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-gray-wolf-3",
+      "authority": "NatureServe",
+      "title": "Canis lupus (NatureServe Explorer)",
+      "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.105212/Canis_lupus",
+      "publisher": "NatureServe",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-eastern-wolf-1",
+      "authority": "Government of Ontario",
+      "title": "Eastern Wolf",
+      "url": "https://www.ontario.ca/page/eastern-wolf",
+      "publisher": "Government of Ontario",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-eastern-wolf-2",
+      "authority": "Environment and Climate Change Canada / COSEWIC",
+      "title": "COSEWIC Assessment and Status Report on the Eastern Wolf Canis sp. cf. lycaon in Canada (2015)",
+      "url": "https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/cosewic-assessments-status-reports/eastern-wolf-canis-sp-cf-lycaon-2015.html",
+      "publisher": "Environment and Climate Change Canada / COSEWIC",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-coyote-1",
+      "authority": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+      "title": "Coyote - Hinterland Who's Who",
+      "url": "https://www.hww.ca/en/wildlife/mammals/coyote.html",
+      "publisher": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-red-fox-1",
+      "authority": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "title": "Vulpes vulpes (red fox)",
+      "url": "https://animaldiversity.org/accounts/Vulpes_vulpes/",
+      "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-red-fox-2",
+      "authority": "Alaska Department of Fish and Game",
+      "title": "Red Fox Species Profile",
+      "url": "https://www.adfg.alaska.gov/index.cfm?adfg=redfox.main",
+      "publisher": "Alaska Department of Fish and Game",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-gray-fox-1",
+      "authority": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "title": "Urocyon cinereoargenteus (gray fox)",
+      "url": "https://animaldiversity.org/accounts/Urocyon_cinereoargenteus/",
+      "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-gray-fox-2",
+      "authority": "Carnegie Museum of Natural History",
+      "title": "Gray Fox (Urocyon cinereoargenteus)",
+      "url": "https://mammals.carnegiemnh.org/pa-mammals/gray-fox-urocyon-cinereoargenteus/",
+      "publisher": "Carnegie Museum of Natural History",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-arctic-fox-1",
+      "authority": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "title": "Vulpes lagopus (arctic fox)",
+      "url": "https://animaldiversity.org/accounts/Vulpes_lagopus/",
+      "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-arctic-fox-2",
+      "authority": "Alaska Department of Fish and Game",
+      "title": "Arctic Fox Species Profile",
+      "url": "https://www.adfg.alaska.gov/index.cfm?adfg=arcticfox.main",
+      "publisher": "Alaska Department of Fish and Game",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-canada-lynx-1",
+      "authority": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "title": "Canada lynx (Lynx canadensis)",
+      "url": "https://animaldiversity.org/accounts/Lynx_canadensis/",
+      "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-canada-lynx-2",
+      "authority": "Maine Department of Inland Fisheries and Wildlife",
+      "title": "Canada Lynx",
+      "url": "https://www.maine.gov/ifw/fish-wildlife/wildlife/species-information/mammals/canada-lynx.html",
+      "publisher": "Maine Department of Inland Fisheries and Wildlife",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-canada-lynx-3",
+      "authority": "Vermont Fish & Wildlife Department",
+      "title": "Canada Lynx or Bobcat? - Learn the Difference",
+      "url": "https://www.vtfishandwildlife.com/canada-lynx-or-bobcat-learn-the-difference",
+      "publisher": "Vermont Fish & Wildlife Department",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-bobcat-1",
+      "authority": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "title": "Bobcat (Lynx rufus)",
+      "url": "https://animaldiversity.org/accounts/Lynx_rufus/",
+      "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-bobcat-2",
+      "authority": "Minnesota Department of Natural Resources",
+      "title": "Bobcat",
+      "url": "https://www.dnr.state.mn.us/mammals/bobcat.html",
+      "publisher": "Minnesota Department of Natural Resources",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-bobcat-3",
+      "authority": "Vermont Fish & Wildlife Department",
+      "title": "Canada Lynx or Bobcat? - Learn the Difference",
+      "url": "https://www.vtfishandwildlife.com/canada-lynx-or-bobcat-learn-the-difference",
+      "publisher": "Vermont Fish & Wildlife Department",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-eastern-cottontail-1",
+      "authority": "Missouri Department of Conservation",
+      "title": "Eastern Cottontail (Cottontail Rabbit)",
+      "url": "https://mdc.mo.gov/discover-nature/field-guide/eastern-cottontail-cottontail-rabbit",
+      "publisher": "Missouri Department of Conservation",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-eastern-cottontail-2",
+      "authority": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "title": "Sylvilagus floridanus (eastern cottontail)",
+      "url": "https://animaldiversity.org/accounts/Sylvilagus_floridanus/",
+      "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-arctic-hare-1",
+      "authority": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "title": "Lepus arcticus (Arctic hare)",
+      "url": "https://animaldiversity.org/accounts/Lepus_arcticus/",
+      "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-american-red-squirrel-1",
+      "authority": "Alaska Department of Fish and Game",
+      "title": "Red Squirrel Species Profile",
+      "url": "https://www.adfg.alaska.gov/index.cfm?adfg=redsquirrel.main",
+      "publisher": "Alaska Department of Fish and Game",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-american-red-squirrel-2",
+      "authority": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "title": "Tamiasciurus hudsonicus (red squirrel)",
+      "url": "https://animaldiversity.org/accounts/Tamiasciurus_hudsonicus/",
+      "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-eastern-gray-squirrel-1",
+      "authority": "Tennessee Wildlife Resources Agency",
+      "title": "Eastern Gray Squirrel",
+      "url": "https://www.tn.gov/twra/wildlife/mammals/medium/eastern-gray-squirrel.html",
+      "publisher": "Tennessee Wildlife Resources Agency",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-eastern-gray-squirrel-2",
+      "authority": "North Carolina Wildlife Resources Commission",
+      "title": "Gray Squirrel",
+      "url": "https://www.ncwildlife.gov/species/gray-squirrel",
+      "publisher": "North Carolina Wildlife Resources Commission",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-eastern-gray-squirrel-3",
+      "authority": "NatureServe",
+      "title": "Sciurus carolinensis (NatureServe Explorer)",
+      "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104371/Sciurus_carolinensis",
+      "publisher": "NatureServe",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-beaver-1",
+      "authority": "Alaska Department of Fish and Game",
+      "title": "Beaver Species Profile",
+      "url": "https://www.adfg.alaska.gov/index.cfm?adfg=beaver.main",
+      "publisher": "Alaska Department of Fish and Game",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-beaver-2",
+      "authority": "Hinterland Who's Who (Canadian Wildlife Service / Canadian Wildlife Federation)",
+      "title": "Beaver - Hinterland Who's Who",
+      "url": "https://www.hww.ca/en/wildlife/mammals/beaver.html",
+      "publisher": "Hinterland Who's Who (Canadian Wildlife Service / Canadian Wildlife Federation)",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-beaver-3",
+      "authority": "NatureServe",
+      "title": "Castor canadensis (NatureServe Explorer)",
+      "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100922/Castor_canadensis",
+      "publisher": "NatureServe",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-raccoon-1",
+      "authority": "Hinterland Who's Who (Canadian Wildlife Service / Canadian Wildlife Federation)",
+      "title": "Raccoon - Hinterland Who's Who",
+      "url": "https://www.hww.ca/en/wildlife/mammals/raccoon.html",
+      "publisher": "Hinterland Who's Who (Canadian Wildlife Service / Canadian Wildlife Federation)",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-raccoon-2",
+      "authority": "Texas Parks and Wildlife Department",
+      "title": "Common Raccoon (Procyon lotor)",
+      "url": "https://tpwd.texas.gov/huntwild/wild/species/raccoon/",
+      "publisher": "Texas Parks and Wildlife Department",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-raccoon-3",
+      "authority": "NatureServe",
+      "title": "Procyon lotor (NatureServe Explorer)",
+      "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.798324/Procyon_lotor",
+      "publisher": "NatureServe",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-american-mink-1",
+      "authority": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "title": "Neovison vison (American mink)",
+      "url": "https://animaldiversity.org/accounts/Neovison_vison/",
+      "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-american-mink-2",
+      "authority": "Alaska Department of Fish and Game",
+      "title": "American Mink Species Profile",
+      "url": "https://www.adfg.alaska.gov/index.cfm?adfg=americanmink.main",
+      "publisher": "Alaska Department of Fish and Game",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-fisher-1",
+      "authority": "Pennsylvania Game Commission",
+      "title": "Fisher",
+      "url": "https://www.pa.gov/agencies/pgc/wildlife/discover-pa-wildlife/fisher",
+      "publisher": "Pennsylvania Game Commission",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-american-marten-1",
+      "authority": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "title": "American marten (Martes americana)",
+      "url": "https://animaldiversity.org/accounts/Martes_americana/",
+      "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:conservation-gray-wolf-1",
+      "authority": "U.S. Fish and Wildlife Service",
+      "title": "ECOS species profile: Gray wolf",
+      "url": "https://ecos.fws.gov/ecp/species/4488",
+      "publisher": "U.S. Fish and Wildlife Service",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:conservation-gray-wolf-2",
+      "authority": "U.S. Fish and Wildlife Service",
+      "title": "ECOS species profile: Gray wolf",
+      "url": "https://ecos.fws.gov/ecp/species/4488",
+      "publisher": "U.S. Fish and Wildlife Service",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:conservation-gray-wolf-3",
+      "authority": "U.S. Fish and Wildlife Service",
+      "title": "ECOS species profile: Mexican wolf",
+      "url": "https://ecos.fws.gov/ecp/species/3916",
+      "publisher": "U.S. Fish and Wildlife Service",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:conservation-red-fox-1",
+      "authority": "U.S. Fish and Wildlife Service",
+      "title": "ECOS species profile: Sierra Nevada red fox",
+      "url": "https://ecos.fws.gov/ecp/species/4252",
+      "publisher": "U.S. Fish and Wildlife Service",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:conservation-canada-lynx-1",
+      "authority": "U.S. Fish and Wildlife Service",
+      "title": "ECOS species profile: Canada Lynx",
+      "url": "https://ecos.fws.gov/ecp/species/3652",
+      "publisher": "U.S. Fish and Wildlife Service",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:conservation-fisher-1",
+      "authority": "U.S. Fish and Wildlife Service",
+      "title": "ECOS species profile: Fisher",
+      "url": "https://ecos.fws.gov/ecp/species/3651",
+      "publisher": "U.S. Fish and Wildlife Service",
+      "retrievedAt": "2026-09-30T12:00:00Z",
       "type": "official",
       "verificationStatus": "verified"
     }

@@ -1,0 +1,49 @@
+{
+ "slug": "pelagic-cormorant",
+ "scientificName": "Urile pelagicus",
+ "commonNameFr": "Cormoran pélagique",
+ "family": "Phalacrocoracidae",
+ "order": "Suliformes",
+ "taxonomyNote": "NatureServe uses Urile pelagicus (genus split from Phalacrocorax after Kennedy & Spencer 2014); Canadian government pages still list Phalacrocorax pelagicus.",
+ "fieldMarks": [
+  "Smallest Pacific-coast cormorant, 61-81 cm, with a small head and thin bill",
+  "Very glossy overall; dark red facial skin hard to see",
+  "Breeding adults show white flank patches",
+  "Immatures plain dark brown, best identified by shape"
+ ],
+ "behavior": [
+  "Dives from the surface to at least 120 ft, taking fish near the bottom over rocky reefs",
+  "Forages singly; groups perch on rocks with wings held out to dry",
+  "Nests in colonies on narrow near-vertical cliff ledges; male flashes white flank patches in display",
+  "Groaning and hissing calls at colonies; shy and hard to approach"
+ ],
+ "habitat": [
+  "Rocky coasts, bays and sounds, usually close to shore, near deep water at cliff bases."
+ ],
+ "range": "Pacific coast from the Bering Strait and Alaska south to Baja California, including British Columbia; northernmost breeders move south in winter.",
+ "lookalikes": [
+  {
+   "slug": "pacific-coast-cormorants",
+   "name": "Other Pacific-coast cormorants",
+   "howToTell": "Larger with a bigger head and thicker bill."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Pelagic Cormorant",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/pelagic-cormorant"
+  },
+  {
+   "title": "NatureServe Explorer: Urile pelagicus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103925"
+  },
+  {
+   "title": "Cormoran pélagique",
+   "publisher": "Environnement et Changement climatique Canada",
+   "url": "https://faune-especes.canada.ca/situation-oiseaux/oiseau-bird-fra.aspx?sY=2019&sL=f&sM=a&sB=PECO"
+  }
+ ]
+}

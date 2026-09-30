@@ -1,0 +1,45 @@
+{
+ "slug": "northern-crawfish-frog",
+ "scientificName": "Lithobates areolatus",
+ "commonNameFr": null,
+ "family": "Ranidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe lists the species as Crawfish Frog (L. areolatus) without a northern/southern split; Animal Diversity Web recognises a northern subspecies (L. a. circulosa). NatureServe also notes competing generic arrangements for American ranids.",
+ "fieldMarks": [
+  "Stubby frog with dorsolateral ridges and dark rounded dorsal spots with light borders; throat and belly mostly unspotted.",
+  "Usually 5.7-7.5 cm snout-vent (up to 9.2 cm per ADW); yellow on the groin and thigh; males may show yellow on the dorsolateral ridges.",
+  "Call: low-pitched snore-like 'wurr-r-r-up' audible about 800 m away."
+ ],
+ "behavior": [
+  "Lives in crayfish or rodent burrows; sits at the burrow mouth or on its platform to feed and retreats headfirst.",
+  "Migrates up to several hundred metres, occasionally a mile or more, between burrow and breeding pools; inactive in winter in the north.",
+  "Males call at night in choruses in warm weather; eats moths, ants, spiders, grasshoppers, beetles and crickets."
+ ],
+ "habitat": [
+  "Moist meadows, pastures, flood plains and tall-grass prairie where crayfish burrows exist; breeds in flooded fields, ditches, farm ponds, usually fishless temporary water."
+ ],
+ "range": "Northern Mississippi, northern Louisiana and eastern Texas north through Oklahoma, Arkansas, western Tennessee and Kentucky to eastern Kansas, southern Illinois and Indiana (formerly southern Iowa).",
+ "lookalikes": [
+  {
+   "slug": "gopher-frog",
+   "name": "Gopher frog",
+   "howToTell": "Gopher frog (Rana capito) has a pigmented belly and lacks the light borders around the dark dorsal spots."
+  }
+ ],
+ "aliases": [
+  "crawfish frog"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.106291"
+  },
+  {
+   "title": "Animal Diversity Web species account",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lithobates_areolatus/"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

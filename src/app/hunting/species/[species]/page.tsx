@@ -15,6 +15,7 @@ import StructuredData from "../../../../components/StructuredData";
 import type { SpeciesResource } from "../../../../lib/content-contract/types";
 import { contentRepository } from "../../../../lib/content/repository";
 import { speciesProfileHref } from "../../../../lib/content/species-route";
+import { TAKE_MODE_LABELS, jurisdictionDisplayName, takeListingsFor } from "../../../../lib/content/species-take-evidence";
 import { regulatoryJurisdictionsForSpecies } from "../../../../lib/hunt/north-america/report";
 import { OPEN_GRAPH_BASE } from "../../../../lib/seo/open-graph";
 import { cachedSpeciesPrimaryMedia } from "../../../../lib/species-media/social";
@@ -49,6 +50,34 @@ export async function generateStaticParams() {
   const resources = await contentRepository.getPublishedResources({ locale: "en-CA" });
   return resources.filter((resource) => resource.type === "species").map((resource) => ({ species: resource.slug }));
 }
+
+const TAKE_EVIDENCE_READ = "2026-09-30";
+
+/* Said in words for each eligibility class (CLAUDE.md §16: conservation status,
+   take eligibility and legality are three questions). Only regulatory evidence
+   says whether a species may be taken here and now; these say which question
+   this page is answering. */
+const TAKE_HEADINGS = {
+  HUNTABLE: "Where it is listed for legal take",
+  LIMITED_TAKE: "Limited legal take",
+  NUISANCE_OR_INVASIVE_TAKE: "Where it is listed for removal or nuisance take",
+  NON_QUARRY: "Not a quarry species",
+  UNKNOWN: "Take status not established",
+} as const;
+const TAKE_LEADS = {
+  HUNTABLE: "These authorities list this species for legal take in their own regulations.",
+  LIMITED_TAKE: "Legal take of this species exists only under narrow conditions — a quota, a draw, a permit or a small area — set by the authorities below. Nowhere else is a legal opportunity implied, and Hunt shows one only where a certified rule establishes it.",
+  NUISANCE_OR_INVASIVE_TAKE: "These authorities list this species as nuisance, invasive or unprotected wildlife that may be taken. This is not a game season.",
+  NON_QUARRY: "North Ground does not treat this species as quarry: it is published so it can be told apart from the game species it resembles, and Hunt never offers it. If you are not certain what it is, do not shoot.",
+  UNKNOWN: "North Ground has not established meaningful legal take of this species. That is a gap in the evidence, not a finding that it is protected or that it is open.",
+} as const;
+const CONSERVATION_WORDS = {
+  ENDANGERED: "Endangered",
+  THREATENED: "Threatened",
+  SPECIAL_CONCERN: "Special concern",
+  PROTECTED: "Protected",
+  CLOSED_TO_TAKE: "Closed to take",
+} as const;
 
 /** Search, social and structured-data copy all say the same thing. */
 function speciesCopy(resource: SpeciesResource, groups: readonly { id: string }[]) {
@@ -124,7 +153,17 @@ export default async function SpeciesPage({ params }: Props) {
   for (const { block } of blocks.blocks) {
     for (const sourceId of block.sourceIds ?? []) sourceIds.add(sourceId);
   }
-  const sources = await contentRepository.getSources([...sourceIds]);
+  /* Authority pages are kept apart from the biological references: a wildlife
+     reference is not a regulator, and a regulator is not a field guide. */
+  const takeListings = takeListingsFor(speciesId);
+  const [sources, takeSources] = await Promise.all([
+    contentRepository.getSources([...sourceIds]),
+    contentRepository.getSources([...new Set([
+      ...takeListings.flatMap(({ sourceIds: ids }) => ids),
+      ...(resource.speciesProfile.conservationStatus ?? []).flatMap(({ sourceIds: ids }) => ids),
+    ])]),
+  ]);
+  const takeSourceById = new Map(takeSources.map((source) => [source.id, source]));
 
   const category = groups[0]?.names.find(({ locale }) => locale === "en-CA")?.value ?? null;
   const frenchName = resource.speciesProfile.commonNames.find(({ locale }) => locale.startsWith("fr"))?.value ?? null;
@@ -138,6 +177,7 @@ export default async function SpeciesPage({ params }: Props) {
     ...(profile.habitat ?? []).map((section) => section.text),
     ...(profile.rangeSummary ?? []).map((section) => `${section.value} Range describes possible occurrence, not huntability or exact local presence.`),
     ...(profile.seasonalBehavior ?? []).map((section) => section.text),
+    ...(profile.behavior ?? []).map((section) => section.text),
   ];
   const identification = [
     ...profile.identification.map((section) => section.text),
@@ -265,7 +305,7 @@ export default async function SpeciesPage({ params }: Props) {
           {habitat.length ? (
             <section className={styles.section} aria-labelledby="habitat">
               <div className={styles.sectionHead}>
-                <h2 className={styles.sectionTitle} id="habitat">Habitat and seasonal behaviour</h2>
+                <h2 className={styles.sectionTitle} id="habitat">Habitat and behaviour</h2>
               </div>
               <div className={`${styles.panel} ng-glass-card`}>
                 <div className={styles.prose}>
@@ -304,6 +344,57 @@ export default async function SpeciesPage({ params }: Props) {
               <div className={styles.blocks}><AppBlockList result={blocks} /></div>
             </section>
           ) : null}
+
+          <section className={styles.section} aria-labelledby="take">
+            <div className={styles.sectionHead}>
+              <h2 className={styles.sectionTitle} id="take">{TAKE_HEADINGS[profile.takeEligibility]}</h2>
+            </div>
+            <div className={`${styles.panel} ng-glass-card`}>
+              <div className={styles.prose}>
+                <p>{TAKE_LEADS[profile.takeEligibility]}</p>
+                {profile.conservationStatus?.length ? (
+                  <>
+                    <h3 className={styles.takeSubhead}>Conservation and protection</h3>
+                    <ul className={styles.takeList}>
+                      {profile.conservationStatus.map((statement) => (
+                        <li key={`${statement.status}-${statement.jurisdictionIds.join()}`}>
+                          <strong>{CONSERVATION_WORDS[statement.status]}</strong>
+                          {" — "}{statement.jurisdictionIds.map((id) => jurisdictionDisplayName(id) ?? id).join(", ")}: {statement.text}
+                          {statement.sourceIds.map((id) => takeSourceById.get(id)).filter((source) => source?.url).map((source) => (
+                            <span key={source!.id}>{" · "}<a href={source!.url} rel="noopener">{source!.title}</a></span>
+                          ))}
+                        </li>
+                      ))}
+                    </ul>
+                    {takeListings.length ? <h3 className={styles.takeSubhead}>Where legal take is listed</h3> : null}
+                  </>
+                ) : null}
+                {takeListings.length ? (
+                  <>
+                    <ul className={styles.takeList}>
+                      {takeListings.map((listing) => (
+                        <li key={listing.jurisdictionId}>
+                          <strong>{listing.jurisdictionName}</strong>
+                          {" — "}{listing.takeModes.map((mode) => TAKE_MODE_LABELS[mode]).join(", ")}
+                          {listing.conditions?.map((condition) => <span key={condition} className={styles.takeCondition}>{" "}<span aria-hidden="true">!</span> {condition}</span>)}
+                          {listing.sourceIds.map((id) => takeSourceById.get(id)).filter((source) => source?.url).map((source) => (
+                            <span key={source!.id}>{" · "}<a href={source!.url} rel="noopener">{source!.title}</a></span>
+                          ))}
+                        </li>
+                      ))}
+                    </ul>
+                    {/* A listing is not a season. Said every time, because the
+                        list above is exactly what a hunter would misread. */}
+                    <p className={styles.sourceNote}>
+                      Being listed is not an open season. Seasons, zones, licences, methods and limits decide whether
+                      this animal may be taken on a given day and place — check Hunt or the authority before you go.
+                      {" "}Listings read {TAKE_EVIDENCE_READ}.
+                    </p>
+                  </>
+                ) : null}
+              </div>
+            </div>
+          </section>
 
           {sources.length ? (
             <section className={styles.section} id="sources" aria-labelledby="source-heading">

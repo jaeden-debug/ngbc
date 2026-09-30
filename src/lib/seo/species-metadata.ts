@@ -1,4 +1,4 @@
-import { grantsHuntingOpportunity, type TakeEligibility } from "../content/species-eligibility.ts";
+import { capabilitiesOf, type TakeEligibility } from "../content/species-eligibility.ts";
 
 /**
  * Search and social copy for the species library and every species profile.
@@ -56,12 +56,17 @@ const HUNTED_GROUP_IDS = new Set([
   "species_group:swans",
   "species_group:rails-coots",
   "species_group:crows",
+  "species_group:crocodilians",
+  "species_group:cormorants",
+  "species_group:murres",
 ]);
 
 /** Leading words that stay capitalized in running prose. */
 const PROPER_LEADING_WORDS = new Set([
   "American", "Canada", "North", "Barrow's", "Wilson's", "Abert's", "Gambel's", "Ross's", "Montezuma",
-  "California", "Virginia", "New", "Eurasian", "Gunnison",
+  "California", "Virginia", "New", "Eurasian", "Gunnison", "Richardson's", "Belding's", "Gunnison's", "Douglas", "Arizona",
+  "Alaska", "Pacific", "Mexican", "Egyptian", "Japanese", "Himalayan", "European", "Persian", "Burmese", "Argentine", "Steller's",
+  "Brewer's", "Erckel's", "Indian", "Franklin's", "Uinta", "Wyoming", "Columbian",
 ]);
 
 export interface CoverageJurisdiction {
@@ -126,7 +131,7 @@ export function speciesMetadataCopy(input: SpeciesMetadataInput): SpeciesMetadat
   const display = speciesTitleCase(input.name);
   const prose = speciesProseName(input.name);
   const coverage = coveragePhrase(input.regulatoryJurisdictions);
-  const hunted = grantsHuntingOpportunity(input.takeEligibility) && (coverage !== null || input.groupIds.some((id) => HUNTED_GROUP_IDS.has(id)));
+  const hunted = capabilitiesOf(input.takeEligibility).huntingGuideTitle && (coverage !== null || input.groupIds.some((id) => HUNTED_GROUP_IDS.has(id)));
 
   if (!hunted) {
     return {

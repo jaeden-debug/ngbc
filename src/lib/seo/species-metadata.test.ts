@@ -62,18 +62,23 @@ test("a protected species is never a hunting guide, even in a hunted group", () 
     name: "Whooping crane",
     groupIds: ["species_group:migratory-game-birds"],
     regulatoryJurisdictions: [],
-    takeEligibility: "PROTECTED",
+    takeEligibility: "NON_QUARRY",
   });
   assert.equal(copy.hunted, false);
   assert.equal(copy.title, "Whooping Crane: Identification, Habitat & Range");
 });
 
-test("an unverified species is not a hunting guide either; unknown is not huntable", () => {
+test("an unknown or limited-take species is not titled a hunting guide", () => {
   const copy = speciesMetadataCopy({
     name: "Lesser prairie-chicken",
     groupIds: ["species_group:prairie-grouse"],
     regulatoryJurisdictions: [],
-    takeEligibility: "UNVERIFIED",
+    takeEligibility: "UNKNOWN",
   });
+  assert.equal(copy.hunted, false);
+});
+
+test("a limited-take species is never titled a hunting guide, even in a hunted group", () => {
+  const copy = speciesMetadataCopy({ name: "Trumpeter swan", groupIds: ["species_group:swans"], regulatoryJurisdictions: [], takeEligibility: "LIMITED_TAKE" });
   assert.equal(copy.hunted, false);
 });

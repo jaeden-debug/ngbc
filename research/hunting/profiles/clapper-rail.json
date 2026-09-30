@@ -1,0 +1,38 @@
+{
+ "slug": "clapper-rail",
+ "scientificName": "Rallus crepitans",
+ "commonNameFr": "Râle gris",
+ "family": "Rallidae",
+ "order": "Gruiformes",
+ "taxonomyNote": "NatureServe treats Rallus crepitans as a species; it notes older treatments considered it conspecific with King Rail (AOU 1998), and that Pacific-coast and Colorado River populations have been variously treated as R. longirostris, R. elegans or R. obsoletus (AOU 1983).",
+ "fieldMarks": [
+  "Chicken-sized (35-48 cm) with a long narrow bill and barring on the flanks",
+  "Underparts vary from buffy gray on the Atlantic Coast to dull cinnamon on the Gulf Coast",
+  "Juvenile darker and duller",
+  "Almost never seen away from salt marsh"
+ ],
+ "behavior": [
+  "Harsh clattering call, kek-kek-kek-kek-kek",
+  "Forages by walking in shallow water or on mud, especially on a falling or low tide, taking prey from the ground or vegetation or probing",
+  "Eats mainly crustaceans (crabs, crayfish), also aquatic insects, small fish, mollusks, worms, frogs and sometimes seeds",
+  "Found year-round in many parts of its range; some withdrawal from the northern Atlantic end in winter"
+ ],
+ "habitat": [
+  "Salt marsh, rarely brackish; strictly salt marsh along most of the Atlantic and Gulf coasts, sometimes adjacent brackish marsh, and shallow mangrove swamps in Florida."
+ ],
+ "range": "Coasts of the western Atlantic, Gulf of Mexico and Caribbean: Massachusetts south through Florida along the Atlantic, and Florida west to Tamaulipas along the Gulf.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Clapper Rail",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/clapper-rail"
+  },
+  {
+   "title": "NatureServe Explorer: Rallus crepitans (Clapper Rail)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.960538/Rallus_crepitans"
+  }
+ ]
+}

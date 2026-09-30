@@ -1,0 +1,47 @@
+{
+ "slug": "northern-dusky-salamander",
+ "scientificName": "Desmognathus fuscus",
+ "commonNameFr": "Salamandre sombre du Nord",
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Small, robust salamander with 14 costal grooves and hind limbs larger than the front limbs.",
+  "Keeled tail shorter than half the body length.",
+  "Upper body brown, reddish brown, gray or olive with slightly darker markings; tail base olive, yellow or bright chestnut.",
+  "Belly whitish with dark speckles.",
+  "Adults 6.4-14.2 cm; males typically longer than females."
+ ],
+ "behavior": [
+  "Mainly nocturnal; leaves cover under rocks or logs at night to forage along streams, and is active dusk to dawn on moist evenings.",
+  "Active year-round at spring-fed sites, otherwise often inactive in winter; burrows below the frost line in severe cold.",
+  "Generally solitary except during courtship and larval brooding; females guard 12-51 eggs under rocks, logs or moss near water."
+ ],
+ "habitat": [
+  "Rock-strewn wooded streams, seepages and springs, usually near running or trickling water, from sea level up the Appalachians.",
+  "Found under flat rocks or logs near rocky or hillside streams, or near waterfalls."
+ ],
+ "range": "Northeastern North America from southern New Brunswick and southern Quebec (and southeastern Ontario) south along the East Coast to North Carolina and west to Ohio, southern Indiana, Kentucky and Tennessee. Populations in southeastern Illinois and eastern Michigan are considered introduced.",
+ "lookalikes": [
+  {
+   "slug": "spotted-dusky-salamander",
+   "name": "Spotted dusky salamander",
+   "howToTell": "Near-identical; separated by range."
+  }
+ ],
+ "aliases": [
+  "Dusky salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Desmognathus fuscus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.859647/Desmognathus_fuscus"
+  },
+  {
+   "title": "Animal Diversity Web: Desmognathus fuscus",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Desmognathus_fuscus/"
+  }
+ ]
+}

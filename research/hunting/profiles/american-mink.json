@@ -1,0 +1,36 @@
+{
+ "slug": "american-mink",
+ "scientificName": "Neogale vison",
+ "fieldMarks": [
+  "Chocolate to dark brown fur with irregular white patches on the chin, throat and belly (usually larger on females).",
+  "Long body, short legs and semi-webbed toes.",
+  "Oily guard hairs make the coat water-resistant.",
+  "Males are substantially larger than females; males roughly 19–29 in long and 3–5 lb."
+ ],
+ "behavior": [
+  "Mostly nocturnal, especially near dawn and dusk; movements are quick and erratic.",
+  "Solitary; marks territory with anal-gland secretions and can discharge a foul-smelling liquid when threatened.",
+  "Strong swimmer that dives to about 5 m; dens in riverbank burrows or dens taken over from other mammals.",
+  "Eats crayfish and frogs in summer and small mammals (including muskrats), fish and waterfowl year-round, with mammals dominating winter diet."
+ ],
+ "habitat": [
+  "Closely tied to water: streams, ponds, lakes, marshes, lake shores and saltwater beaches, especially forested or brushy shorelines with cover."
+ ],
+ "range": "Native across most of Canada and every US state except Arizona. Escaped fur-farm mink are established outside North America, including the British Isles.",
+ "lookalikes": [],
+ "aliases": [
+  "mink"
+ ],
+ "sources": [
+  {
+   "title": "Neovison vison (American mink)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Neovison_vison/"
+  },
+  {
+   "title": "American Mink Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=americanmink.main"
+  }
+ ]
+}

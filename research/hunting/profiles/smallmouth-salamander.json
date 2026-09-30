@@ -1,0 +1,43 @@
+{
+ "slug": "smallmouth-salamander",
+ "scientificName": "Ambystoma texanum",
+ "commonNameFr": {
+  "name": "Salamandre à nez court",
+  "source": "NatureServe Explorer (French common name field)"
+ },
+ "family": "Ambystomatidae",
+ "order": "Caudata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Relatively small head with a blunt, short snout, swollen behind the eyes, with the lower jaw barely protruding past the upper.",
+  "Pale grey to black above with irregular light blotches that darken toward the sides; dark belly; 14-16 costal grooves; adults 11-17.8 cm.",
+  "Males are smaller with longer, more compressed tails; breeding animals look paler with more conspicuous light markings.",
+  "Larvae have light bars on an olive-green or dark-brown background."
+ ],
+ "behavior": [
+  "Secretive; hides under rotting logs, rocks or leaf litter or in crayfish and small-mammal burrows; an evening rain may bring it above ground.",
+  "Adults eat earthworms, insects, slugs and other invertebrates; larvae are generalist aquatic predators.",
+  "Inactive during the coldest and driest months."
+ ],
+ "habitat": [
+  "Tolerates a wide range: tall-grass prairie, moist pine woodland, floodplain and oak forest and heavily farmed land; breeds in forest ponds, temporary pools, ditches and slow stream pools."
+ ],
+ "range": "NatureServe lists it in the central US (Iowa, Illinois, Indiana, Michigan, Ohio, Kentucky, Tennessee and the states south to Mississippi, Louisiana and Texas, and west to Nebraska, Kansas and Oklahoma) and in Ontario.",
+ "lookalikes": [],
+ "aliases": [
+  "Small-mouthed salamander",
+  "Small-mouth salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.103285"
+  },
+  {
+   "title": "Ambystoma texanum (Small-mouthed Salamander)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Ambystoma_texanum/"
+  }
+ ]
+}

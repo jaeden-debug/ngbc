@@ -1,0 +1,56 @@
+{
+ "slug": "great-basin-collared-lizard",
+ "scientificName": "Crotaphytus bicinctores",
+ "commonNameFr": null,
+ "family": "Crotaphytidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Two black collars around the neck enclosing a lighter collar; olive-brown to gray body with many lighter spots that continue onto the tail in a reticulated pattern; white or light belly (NDOW).",
+  "No black pigment lining the mouth, unlike C. collaris (NatureServe).",
+  "Adult males: strongly laterally compressed tail with a pale white dorsal stripe, enlarged dark inguinal patches, and a pale, patternless top of the head (NatureServe).",
+  "Gravid females have orange spots on the sides (NDOW)."
+ ],
+ "behavior": [
+  "Perches on rocks; when startled hides under rocks or in rodent burrows; very fast and can run on hind legs alone (NDOW).",
+  "Breeding males are territorial, bobbing from a rock and extending a blue and black throat dewlap (NDOW).",
+  "Eats insects, spiders, other lizards and some plant material (NDOW; NatureServe).",
+  "Inactive in cold winter weather; activity begins as early as March in Arizona (NatureServe)."
+ ],
+ "habitat": [
+  "Xeric, sparsely vegetated rocky areas: hillsides, rocky plains and canyons; sometimes adjacent areas with little rock (NDOW; NatureServe)."
+ ],
+ "range": "Southeastern Oregon and southern Idaho south through northeastern California, Nevada, and western and central Utah to southeastern California and western Arizona (NatureServe).",
+ "lookalikes": [
+  {
+   "slug": "eastern-collared-lizard",
+   "name": "Eastern collared lizard",
+   "howToTell": "Eastern collared lizard has a black-lined mouth; Great Basin lacks oral melanin (NatureServe; CPW)."
+  },
+  {
+   "slug": "baja-california-collared-lizard",
+   "name": "Baja California collared lizard",
+   "howToTell": "Baja California collared lizard has widely separated posterior collars and slender white transverse dorsal bars (NatureServe)."
+  }
+ ],
+ "aliases": [
+  "Mojave black-collared lizard"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Crotaphytus bicinctores",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.104755"
+  },
+  {
+   "title": "Great Basin Collared Lizard",
+   "publisher": "Nevada Department of Wildlife",
+   "url": "https://www.ndow.org/species/great-basin-collared-lizard/"
+  },
+  {
+   "title": "Eastern Collared Lizard",
+   "publisher": "Colorado Parks and Wildlife",
+   "url": "https://cpw.state.co.us/species/eastern-collared-lizard"
+  }
+ ]
+}

@@ -46,7 +46,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { catalogueSpecies } from "../src/lib/hunt/intelligence/species-catalogue.ts";
-import { grantsHuntingOpportunity } from "../src/lib/content/species-eligibility.ts";
+import { capabilitiesOf } from "../src/lib/content/species-eligibility.ts";
 import { rankIntensities, weightedValueAt } from "../src/lib/hunt/intelligence/surface-raster.ts";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -546,16 +546,16 @@ for (const species of matched) {
      count, which is luck rather than a rule. A species gets a surface only if
      its eligibility grants one; a new protected species inherits the refusal
      without anyone editing a list. */
-  if (!grantsHuntingOpportunity(species.takeEligibility)) {
-    const isProtected = species.takeEligibility === "PROTECTED";
+  if (!capabilitiesOf(species.takeEligibility).speciesHeat) {
+    /* One reason per class, stable across runs: capability reporting counts
+       these, so a reason must name the class, never the order it was checked. */
+    const DECLINE = {
+      NON_QUARRY: ["NOT_QUARRY", "North Ground does not treat this species as quarry, so it gets no Species Heat surface. The layer answers where to look for this animal; for a non-quarry species that is a hunting aid."],
+      LIMITED_TAKE: ["LIMITED_TAKE", "Legal take of this species exists only under narrow, jurisdiction-specific conditions. A continental map of where to look would read as huntable everywhere, so none is drawn; Hunt shows an opportunity only where a certified rule establishes one."],
+      UNKNOWN: ["ELIGIBILITY_UNKNOWN", "No authority North Ground has read establishes meaningful take of this species, so it gets no Species Heat surface until one does."],
+    }[species.takeEligibility];
     process.stdout.write(`  SKIP  ${species.id} — ${species.takeEligibility}; never given a surface\n`);
-    declined.push({
-      speciesId: species.id,
-      reason: isProtected ? "PROTECTED_NOT_HUNTED" : "ELIGIBILITY_UNVERIFIED",
-      detail: isProtected
-        ? "A species that must never be hunted gets no Species Heat surface. The layer answers where to look for this animal; for a protected bird that is a hunting aid."
-        : "No authority North Ground has read establishes current take of this species, so it gets no Species Heat surface until one does.",
-    });
+    declined.push({ speciesId: species.id, reason: DECLINE[0], detail: DECLINE[1] });
     continue;
   }
   const surface = buildSurface(species.id, species.aou, source);

@@ -1,0 +1,35 @@
+{
+ "slug": "willow-ptarmigan",
+ "scientificName": "Lagopus lagopus",
+ "fieldMarks": [
+  "Winter: white with black tail feathers; feet heavily feathered to the toes.",
+  "Breeding male: chestnut head and neck on a white body, becoming mostly reddish-brown with white wings.",
+  "Female: duller mottled brown through summer.",
+  "Males raise red combs in display."
+ ],
+ "behavior": [
+  "Courting males give a loud, staccato go-back, go-back.",
+  "Walks and picks at willow, alder and birch buds, leaves and twigs, and berries; swallows grit.",
+  "Flushes with rapid wingbeats.",
+  "Less migratory than rock ptarmigan but sometimes winters south of the breeding range; populations cycle."
+ ],
+ "habitat": [
+  "Tundra, willow scrub and muskeg north of treeline, especially low wet tundra with dwarf willow thickets; also near treeline in mountains."
+ ],
+ "range": "Alaska and northern Canada.",
+ "lookalikes": [
+  {
+   "slug": "rock-ptarmigan",
+   "name": "Rock ptarmigan",
+   "howToTell": "Rock ptarmigan is smaller with a smaller bill; the winter male has a black eye line."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Willow Ptarmigan — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/willow-ptarmigan"
+  }
+ ]
+}

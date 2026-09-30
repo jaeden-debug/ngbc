@@ -1,0 +1,37 @@
+{
+ "slug": "mole-salamander",
+ "scientificName": "Ambystoma talpoideum",
+ "commonNameFr": null,
+ "family": "Ambystomatidae",
+ "order": "Caudata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Short, stout body with a broad, disproportionately large head; 8-12 cm long.",
+  "Terrestrial adults are grey to black, sometimes with clusters of small bluish-white flecks on the back and tail and often a white edge along the top of the tail.",
+  "Paedomorphic (gilled, aquatic) adults keep larval form, with light and dark belly stripes and distinctive yellow ventral stripes that remain as remnants for a time after metamorphosis.",
+  "Facultatively paedomorphic: both terrestrial and aquatic adult forms occur."
+ ],
+ "behavior": [
+  "Active at any hour but mostly at night; moves on moist, cool nights; relatively sedentary near its natal pond or the forest around it (adults average about 170 m to breeding ponds).",
+  "Breeds in winter in the south and fall in the north; adults leave breeding ponds by mid-May (March in South Carolina).",
+  "Adults eat earthworms, arthropods, aquatic insects and tadpoles; larvae eat zooplankton and sometimes other Ambystoma larvae."
+ ],
+ "habitat": [
+  "Usually near breeding ponds in pine flatwoods, floodplains and bottomland hardwood forest; terrestrial adults live in burrows or under logs in damp places; breeds in shallow fishless ponds with abundant vegetation; paedomorphs occur in permanent ponds."
+ ],
+ "range": "NatureServe lists it in the southeastern and south-central US (Virginia and the Carolinas to Florida, west to Texas and north to Illinois, Indiana, Missouri and Kentucky); not recorded for Canada.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.103509"
+  },
+  {
+   "title": "Ambystoma talpoideum (Mole Salamander)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Ambystoma_talpoideum/"
+  }
+ ]
+}

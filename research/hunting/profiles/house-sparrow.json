@@ -1,0 +1,36 @@
+{
+ "slug": "house-sparrow",
+ "scientificName": "Passer domesticus",
+ "commonNameFr": "Moineau domestique",
+ "family": "Passeridae",
+ "order": "Passeriformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "13-17 cm",
+  "Male: black bib, white cheeks, gray crown and chestnut nape",
+  "Female: pale buff eyebrow, plain gray chest, black and buff stripes on a brown back"
+ ],
+ "behavior": [
+  "Forages mostly hopping on the ground; will perch on weed stalks for seeds and search car fronts and bark for insects",
+  "Mostly weed and grass seeds and waste grain, also insects in summer and human food scraps in cities",
+  "Shrill, monotonous, noisy chirping; permanent resident"
+ ],
+ "habitat": [
+  "Cities, towns and farms; in North America essentially always around manmade structures, never in unaltered natural habitats."
+ ],
+ "range": "Native to the Old World; introduced and established from the north coast of British Columbia and southern Yukon to Newfoundland and south beyond North America.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: House Sparrow",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/house-sparrow"
+  },
+  {
+   "title": "NatureServe Explorer: Passer domesticus (House Sparrow)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.106216/Passer_domesticus"
+  }
+ ]
+}

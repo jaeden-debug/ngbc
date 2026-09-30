@@ -1,0 +1,38 @@
+{
+ "slug": "madrean-mountain-kingsnake",
+ "scientificName": "Lampropeltis knoblochi",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe (Burbrink et al. 2011) splits L. pyromelana into northern L. pyromelana and southern L. knoblochi; its habitat text is based mainly on L. pyromelana.",
+ "fieldMarks": [
+  "Coral-snake mimic with white crossbands where a coral snake has yellow."
+ ],
+ "behavior": [
+  "Generally diurnal but may be most active late afternoon, evening and dusk.",
+  "Diet includes lizards and presumably snakes and small mammals."
+ ],
+ "habitat": [
+  "Rocky montane habitat often near streams or springs, and mesic canyons at lower elevation; pinyon-juniper, oak-juniper, pine-oak or pine-Douglas-fir woodland, or chaparral.",
+  "By day found among rocks, logs or dense vegetation."
+ ],
+ "range": "Sierra Madre Occidental in eastern Sonora and western Chihuahua, north to the Madrean Sky Islands of southern Arizona and southwestern New Mexico.",
+ "lookalikes": [],
+ "aliases": [
+  "Knobloch's Mountain Kingsnake",
+  "Chihuahuan Mountain Kingsnake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.894283"
+  },
+  {
+   "title": "Lampropeltis knoblochi (raw wikitext, used beside NatureServe for the one colour fact)",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/w/index.php?title=Lampropeltis_knoblochi&action=raw"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

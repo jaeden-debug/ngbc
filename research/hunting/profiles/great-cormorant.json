@@ -1,0 +1,43 @@
+{
+ "slug": "great-cormorant",
+ "scientificName": "Phalacrocorax carbo",
+ "commonNameFr": "Grand Cormoran",
+ "family": "Phalacrocoracidae",
+ "order": "Suliformes",
+ "taxonomyNote": "NatureServe notes it was regarded as conspecific with African P. lucidus by AOU (1983, 1998) and forms a superspecies with P. capillatus.",
+ "fieldMarks": [
+  "Large and bulky, 84-100 cm, with a relatively short tail, big head and thick bill",
+  "Adult has a broad white band across the throat behind bare yellow face skin; breeding birds show white flank patches",
+  "Immature brownish, resembling Double-crested Cormorant but usually with brown neck and chest contrasting with a white belly",
+  "Throat pouch dull yellow, not orange"
+ ],
+ "behavior": [
+  "Migrates in flocks, paralleling the coastline a short distance offshore",
+  "Most foraging within 10 ft of the surface, diving to about 30 ft; feeds almost entirely on fish",
+  "Nests on rocky cliffs of coasts and islands; wintering birds often around rock jetties and recently on large inland rivers"
+ ],
+ "habitat": [
+  "Mainly coastal, over shallow waters close to shore, especially sheltered bays; nests on sea cliffs. In the Old World regularly far inland on lakes, rivers and swamps."
+ ],
+ "range": "In North America breeds along the Atlantic coast from the Gulf of St. Lawrence and southwestern Newfoundland to Nova Scotia (recolonized Maine); winters from the breeding range south to North Carolina, sometimes farther. Also Iceland, southwestern Greenland and much of the Old World.",
+ "lookalikes": [
+  {
+   "slug": "double-crested-cormorant",
+   "name": "Double-crested cormorant",
+   "howToTell": "Smaller; orange throat pouch and no broad white throat band or white flank patches."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Great Cormorant",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/great-cormorant"
+  },
+  {
+   "title": "NatureServe Explorer: Phalacrocorax carbo (Great Cormorant)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102054/Phalacrocorax_carbo"
+  }
+ ]
+}

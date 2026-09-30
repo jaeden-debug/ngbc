@@ -1,0 +1,43 @@
+{
+ "slug": "southern-cricket-frog",
+ "scientificName": "Acris gryllus",
+ "commonNameFr": null,
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Small frog, 15-33 mm (females slightly larger); colour ranges from black, brown or reddish brown to bright green or grey.",
+  "Contrasting stripe from the top of the snout along the back, and a triangular marking between the eyes joined to that stripe.",
+  "Darker longitudinal stripe on the rear of the thigh; markedly pointed snout; more slender than the northern cricket frog with longer legs and less toe webbing.",
+  "Males have darker throats and a single subgular sac; females have white throats."
+ ],
+ "behavior": [
+  "Call is a steady, rapid 'click-click-click' at about one per second, given in choruses in most weather and at any time of day.",
+  "Sit-and-wait insectivore; mosquitoes are a large part of the diet; tadpoles are herbivorous.",
+  "Active throughout the year; day or night in warm months, probably mostly diurnal in cold months. Good jumper."
+ ],
+ "habitat": [
+  "Grassy margins of swamps, marshes, lakes, ponds, streams, ditches, bogs and nearby temporary pools, including open woodland that is not heavily shaded; eggs and larvae develop in shallow water."
+ ],
+ "range": "NatureServe lists it in the southeastern US: Virginia, North and South Carolina, Georgia, Florida, Tennessee, Alabama, Mississippi and Louisiana.",
+ "lookalikes": [
+  {
+   "slug": "northern-cricket-frog",
+   "name": "Northern cricket frog",
+   "howToTell": "Northern is larger and stockier with a blunter snout, shorter legs, more webbing and more prominent warts."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.103292"
+  },
+  {
+   "title": "Acris gryllus (Southern Cricket Frog)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Acris_gryllus/"
+  }
+ ]
+}

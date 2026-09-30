@@ -1,0 +1,58 @@
+{
+ "slug": "mohave-rattlesnake",
+ "scientificName": "Crotalus scutulatus",
+ "commonNameFr": null,
+ "family": "Viperidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe (following Crother 2017) spells the name Mohave; others spell it Mojave.",
+ "fieldMarks": [
+  "Slightly greenish tinge to the body, which gives 'Mojave green'; the western rattlesnake lacks the greenish tinge (NPS Parashant).",
+  "Tail bands have thick white bands and narrower black bands; the western diamondback's bands are more uniform in width (NPS Saguaro).",
+  "Averages 2-4 ft in length (NPS Parashant).",
+  "Newborns have a single silent button rather than a full rattle (NPS Parashant)."
+ ],
+ "behavior": [
+  "At lower elevations mainly nocturnal in summer and commonly active in morning and late afternoon in spring and fall; may be active by day in summer at higher elevations (NatureServe).",
+  "Above ground March-November, probably most active late April or May through September (NatureServe).",
+  "Eats kangaroo rats, ground squirrels, mice, rabbits and other small mammals; lizards are eaten especially by the young (NatureServe).",
+  "Uses rodent burrows to overwinter; hibernates alone or in groups of two or three (NPS Parashant; NPS Saguaro)."
+ ],
+ "habitat": [
+  "Mostly upland desert and lower mountain slopes: barren desert, grassland, open woodland and scrub with creosotebush, palo verde, mesquite or cacti; usually not in broken rocky terrain or dense vegetation (NatureServe).",
+  "In spring it commonly coils under a small tree or shrub in early morning (NatureServe)."
+ ],
+ "range": "Southern California, southern Nevada and southwestern Utah south through Arizona, southern New Mexico and western Texas into central Mexico; sea level to about 2,530 m (NatureServe).",
+ "lookalikes": [
+  {
+   "slug": "western-diamond-backed-rattlesnake",
+   "name": "Western diamond-backed rattlesnake",
+   "howToTell": "Tail bands are more uniform in width and the body lacks the Mohave's greenish tinge (NPS Saguaro; NPS Parashant)."
+  },
+  {
+   "slug": "western-rattlesnake",
+   "name": "Western rattlesnake",
+   "howToTell": "Lacks the Mohave's greenish tinge (NPS Parashant)."
+  }
+ ],
+ "aliases": [
+  "Mojave rattlesnake",
+  "Mojave green"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Crotalus scutulatus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100052"
+  },
+  {
+   "title": "Mojave Green Rattlesnake - Grand Canyon-Parashant National Monument",
+   "publisher": "National Park Service",
+   "url": "https://www.nps.gov/para/learn/nature/mojave-green-rattlesnake.htm"
+  },
+  {
+   "title": "Snakes - Saguaro National Park",
+   "publisher": "National Park Service",
+   "url": "https://www.nps.gov/sagu/learn/nature/snakes.htm"
+  }
+ ]
+}

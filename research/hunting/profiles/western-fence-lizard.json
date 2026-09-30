@@ -1,0 +1,59 @@
+{
+ "slug": "western-fence-lizard",
+ "scientificName": "Sceloporus occidentalis",
+ "commonNameFr": null,
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Back scales fairly large, keeled and pointed (prickly look); gray, brown or black with wavy dark and light bands or V-shaped blotches, often 5-10 dark rows.",
+  "Rear of the thighs yellow or orange; solid blue belly patches and throat in males, faint or absent in females and young.",
+  "Breeding males may have blue or greenish dorsal scales and enlarged postanal scales; never a blue tail.",
+  "Up to about 9.5-9.9 cm snout-vent length."
+ ],
+ "behavior": [
+  "Usually on the ground or low perches (logs, fences) but sometimes climbs bushes or trees; moves to the far side of a trunk when approached.",
+  "Adult males defend home ranges during the breeding season; seasonal home range under 0.01 ha in central California.",
+  "Eats mainly insects and spiders; eggs buried in loose soil, clutch 3-17, hatching mostly August-September.",
+  "Inactive in cold weather; emerges in late winter or early spring."
+ ],
+ "habitat": [
+  "Grassland, sagebrush, woodland, open conifer forest, rocky canyons, talus slopes and fence rows.",
+  "Not in severe desert but reaches mountain slopes near it."
+ ],
+ "range": "Washington and southeastern Idaho south through Oregon, California, Nevada and western Utah to northwestern Baja California; sea level to about 3,350 m. Non-native in Montana.",
+ "lookalikes": [
+  {
+   "slug": "common-sagebrush-lizard",
+   "name": "Common sagebrush lizard",
+   "howToTell": "Smaller scales with shorter spines and pale dorsolateral stripes; no yellow on the thighs."
+  },
+  {
+   "slug": "western-skink",
+   "name": "Western skink",
+   "howToTell": "Smooth, shiny scales and a blue tail in young."
+  }
+ ],
+ "aliases": [
+  "Great Basin fence lizard (subspecies)",
+  "San Joaquin fence lizard (subspecies)",
+  "Sierra fence lizard (subspecies)"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Sceloporus occidentalis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.106465"
+  },
+  {
+   "title": "Western Fence Lizard - Montana Field Guide",
+   "publisher": "Montana Natural Heritage Program / Montana Fish, Wildlife & Parks",
+   "url": "https://fieldguide.mt.gov/speciesDetail.aspx?elcode=ARACF14080"
+  },
+  {
+   "title": "Lizards: Sequoia National Forest, Giant Sequoia National Monument",
+   "publisher": "USDA Forest Service",
+   "url": "https://www.fs.usda.gov/media/236943"
+  }
+ ]
+}

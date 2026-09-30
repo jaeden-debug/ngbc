@@ -1,0 +1,49 @@
+{
+ "slug": "eastern-wolf",
+ "scientificName": "Canis lycaon",
+ "fieldMarks": [
+  "Intermediate-sized canid: larger than a coyote and smaller than a grey wolf; females average about 24 kg and males about 29 kg.",
+  "Coat usually described as reddish-brown or tawny, but highly variable.",
+  "Cannot be reliably told from coyotes or grey wolves by sight; proper identification requires genetic data."
+ ],
+ "behavior": [
+  "Lives in family packs; winter pack size in Algonquin Park has been recorded at 9-14.",
+  "Territories average roughly 190-200 km².",
+  "Preys on white-tailed deer, beaver and moose; some Algonquin wolves travel up to 42 km to follow deer to winter concentration areas.",
+  "Dens are usually in conifer-dominated forest near permanent water, in diggable soil such as sand."
+ ],
+ "habitat": [
+  "Typically deciduous and mixed forest landscapes of the Great Lakes-St. Lawrence forest region, with abundant prey and low human-caused mortality."
+ ],
+ "range": "Restricted to south-central Ontario and south-central Quebec, with a core in and around Algonquin Provincial Park and smaller, isolated populations elsewhere in central Ontario (e.g. Killarney Provincial Park, Kawartha Highlands) and Quebec. Not found in the United States.",
+ "lookalikes": [
+  {
+   "slug": "coyote",
+   "name": "Eastern coyote",
+   "howToTell": "The eastern wolf is larger, but size and colour overlap and hybrids exist; visual identification is unreliable."
+  },
+  {
+   "slug": "grey-wolf",
+   "name": "Grey wolf",
+   "howToTell": "The eastern wolf is smaller, but it cannot be separated reliably by appearance alone."
+  }
+ ],
+ "aliases": [
+  "Algonquin wolf",
+  "eastern timber wolf",
+  "eastern Canadian wolf",
+  "loup de l'Est"
+ ],
+ "sources": [
+  {
+   "title": "Eastern Wolf",
+   "publisher": "Government of Ontario",
+   "url": "https://www.ontario.ca/page/eastern-wolf"
+  },
+  {
+   "title": "COSEWIC Assessment and Status Report on the Eastern Wolf Canis sp. cf. lycaon in Canada (2015)",
+   "publisher": "Environment and Climate Change Canada / COSEWIC",
+   "url": "https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/cosewic-assessments-status-reports/eastern-wolf-canis-sp-cf-lycaon-2015.html"
+  }
+ ]
+}

@@ -1,0 +1,44 @@
+{
+ "slug": "black-billed-magpie",
+ "scientificName": "Pica hudsonia",
+ "commonNameFr": "Pie d'Amérique",
+ "family": "Corvidae",
+ "order": "Passeriformes",
+ "taxonomyNote": "NatureServe notes it was formerly included in the Eurasian Magpie (Pica pica) and was split on morphological, behavioural and genetic characters (AOU 2000); some authors consider it conspecific with Yellow-billed Magpie.",
+ "fieldMarks": [
+  "Unmistakable in most areas; 45-60 cm",
+  "Green and blue gloss on the wings and long tail",
+  "Big white wing patches flash in flight",
+  "In California, see Yellow-billed Magpie"
+ ],
+ "behavior": [
+  "Mostly a permanent resident, with some upslope movement in fall and a few moving south or downslope in winter",
+  "Forages mostly by walking on the ground, flipping items with the bill; may take ticks from elk and other animals",
+  "Omnivorous, eating more insects than most crows plus carrion, rodents, eggs and nestlings, with more berries, seeds and nuts in winter",
+  "Rapid, nasal mag? mag? mag? or yak yak yak"
+ ],
+ "habitat": [
+  "Semi-open country in the west: rangeland, conifers, streamsides, forest edges and farms; most common in streamside groves in open terrain. Avoids unbroken forest, treeless grasslands and extreme desert."
+ ],
+ "range": "Resident from south-coastal and southern Alaska through western Canada to eastern California, southern Nevada and Utah, northern New Mexico and western Kansas and Oklahoma.",
+ "lookalikes": [
+  {
+   "slug": "yellow-billed-magpie",
+   "name": "Yellow-billed magpie",
+   "howToTell": "Found in California; the Black-billed has a black bill (Audubon says to see Yellow-billed there)."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Black Billed Magpie",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/black-billed-magpie"
+  },
+  {
+   "title": "NatureServe Explorer: Pica hudsonia (Black-billed Magpie)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104685/Pica_hudsonia"
+  }
+ ]
+}

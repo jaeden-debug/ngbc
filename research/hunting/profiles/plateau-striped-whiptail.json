@@ -1,0 +1,39 @@
+{
+ "slug": "plateau-striped-whiptail",
+ "scientificName": "Aspidoscelis velox",
+ "commonNameFr": null,
+ "family": "Teiidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes the name A. velox was applied to triploid parthenogens by Wright (1993) while the diploid A. innotata is treated as a separate species; older references use Cnemidophorus velox.",
+ "fieldMarks": [
+  "Long, slender lizard with dark and light stripes running the length of the body.",
+  "Adults reach about 8.7 cm snout-vent (28 cm total length).",
+  "Hatchlings (33-37 mm snout-vent) have a bright blue tail.",
+  "All individuals are female; the species reproduces by parthenogenesis."
+ ],
+ "behavior": [
+  "Diurnal; usually active from May to September (hatchlings may be active into mid-October).",
+  "Reproduces without males: clutches of 3-5 eggs are laid late June to early July and hatchlings emerge from mid-August.",
+  "Eats any available arthropod."
+ ],
+ "habitat": [
+  "Pinyon-juniper woodland, mountain shrubland, sagebrush, open chaparral, oak woodland and riparian areas, and lower elevations of ponderosa pine and Douglas-fir forest."
+ ],
+ "range": "Colorado Plateau and vicinity in southern Utah, western Colorado, northern Arizona and northern New Mexico at about 1,200-2,440 m; introduced and established at Cove Palisades State Park, Oregon.",
+ "lookalikes": [],
+ "aliases": [
+  "Plateau Striped Whiptail (unisexual)"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Aspidoscelis velox (Plateau Striped Whiptail)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101656/Aspidoscelis_velox"
+  },
+  {
+   "title": "Plateau Striped Whiptail",
+   "publisher": "Colorado Parks and Wildlife",
+   "url": "https://cpw.state.co.us/species/plateau-striped-whiptail"
+  }
+ ]
+}

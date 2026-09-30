@@ -1,0 +1,45 @@
+{
+ "slug": "western-milk-snake",
+ "scientificName": "Lampropeltis gentilis",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe recognizes L. gentilis as a species (Ruane et al. 2014) and notes alternate views (Chambers and Hillis 2020) that it is not distinct; Colorado Parks and Wildlife treats the animals as Lampropeltis triangulum (milksnake). The CPW facts below are for that Colorado milksnake.",
+ "fieldMarks": [
+  "Black, white and red bands in the order red-black-white-black-red, with red the widest and black and white similar or black thinner (CPW).",
+  "Smooth scales; to about 85 cm in eastern Colorado and 72 cm in western Colorado (CPW).",
+  "US coral snakes instead run red-yellow or white-black-yellow or white-red, with red and black bands about equal and the pale band thin; coral snakes do not occur in Colorado (CPW)."
+ ],
+ "behavior": [
+  "Secretive; hides in or under logs, stumps and other surface cover by day but may be found in the open (NatureServe; CPW).",
+  "Opportunistic feeder on eggs and small vertebrates; diet dominated by lizards and mammals (CPW; NatureServe).",
+  "Hibernates underground or in deep crevices; eggs laid in soil or under cover (NatureServe)."
+ ],
+ "habitat": [
+  "Varies widely: semiarid to wet, lowland valleys to mountains, grassland and shrubland to forest edges, dunes to rocky areas, and semiagricultural and suburban areas (NatureServe); in Colorado prairie, sandhills, canyons, river valleys, ponderosa pine and pinyon-juniper (CPW)."
+ ],
+ "range": "Utah, eastern Montana, South Dakota and Nebraska south through parts of Wyoming, Colorado, Kansas and Oklahoma to southeastern Arizona, southern New Mexico, southern Texas, southern Arkansas and Louisiana west of the Mississippi; to about 2,740 m (NatureServe).",
+ "lookalikes": [
+  {
+   "slug": "coral-snake",
+   "name": "Coral snakes",
+   "howToTell": "Coral snakes have red and black bands of about equal width separated by thin yellow or white bands; the milksnake's red is widest (CPW)."
+  }
+ ],
+ "aliases": [
+  "Central Plains milk snake",
+  "milksnake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Lampropeltis gentilis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102441"
+  },
+  {
+   "title": "Milksnake",
+   "publisher": "Colorado Parks and Wildlife",
+   "url": "https://cpw.state.co.us/species/milksnake"
+  }
+ ]
+}

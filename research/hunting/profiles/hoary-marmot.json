@@ -1,0 +1,44 @@
+{
+ "slug": "hoary-marmot",
+ "scientificName": "Marmota caligata",
+ "commonNameFr": "Marmotte des Rocheuses",
+ "family": "Sciuridae",
+ "order": "Rodentia",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Coat mostly black and white with hoary fur tips",
+  "White patch between the eyes and across the muzzle; white nose tip",
+  "Black feet (species name caligata, 'booted'); black cap larger than in other marmots",
+  "Length 45-57 cm, tail 7-25 cm, 8-10 kg"
+ ],
+ "behavior": [
+  "Loud short alarm calls; upraised tail signals aggression",
+  "Spends about 80% of life in burrows",
+  "Hibernates October-February in the south and September-April in British Columbia",
+  "Eats almost entirely grasses and other herbaceous plants"
+ ],
+ "habitat": [
+  "Rocky talus slopes and alpine or subalpine meadows; at sea level in Alaska, higher elevations to the south."
+ ],
+ "range": "Alaska to Yukon and Northwest Territories, south to northeastern Washington, central Idaho and western Montana.",
+ "lookalikes": [
+  {
+   "slug": "yellow-bellied-marmot",
+   "name": "Yellow-bellied marmot",
+   "howToTell": "Lacks black feet and white nose patch; frosted tawny coat."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Hoary Marmot (Marmota caligata)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103513/Marmota_caligata"
+  },
+  {
+   "title": "Animal Diversity Web: Marmota caligata (hoary marmot)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Marmota_caligata/"
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "slug": "smooth-earth-snake",
+ "scientificName": "Virginia valeriae",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes that Virginia is polyphyletic (Haldea resurrected for V. striatula) and that V. valeriae is close to Tropidoclonion lineatum; no source read renames V. valeriae itself.",
+ "fieldMarks": [
+  "Small snake 6-13 in; gray, tan, brown or red-brown above with tiny black dots on the head and a faint pale line down the back in some.",
+  "Pale yellow to white below; scales smooth or weakly keeled in 17 rows.",
+  "Compared with the rough earth snake it has 6 upper-lip scales, 2 scales between the nostrils and 2 postoculars, and an always-divided anal plate (Missouri Department of Conservation comparison)."
+ ],
+ "behavior": [
+  "Secretive; hides in leaf litter, pulpy logs or under logs and trash; may aggregate in hibernation.",
+  "Eats mainly earthworms, also slugs and small soft-bodied invertebrates; gives birth to 3-8 young.",
+  "Active April to October/November in the north; surface activity peaks after heavy rains."
+ ],
+ "habitat": [
+  "Deciduous and pine woods, rocky wooded slopes, moist floodplain woodland, forest edges, old fields and wooded residential areas."
+ ],
+ "range": "Eastern and central United States: Alabama, Arkansas, Delaware, DC, Florida, Georgia, Iowa, Illinois, Indiana, Kansas, Kentucky, Louisiana, Maryland, Missouri, Mississippi, North Carolina, New Jersey, Ohio, Oklahoma, Pennsylvania, South Carolina, Tennessee, Texas, Virginia and West Virginia; not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "rough-earth-snake",
+   "name": "Rough earth snake",
+   "howToTell": "Strongly keeled back scales, 5 upper-lip scales, 1 scale between the nostrils and 1 postocular (Missouri Department of Conservation)."
+  }
+ ],
+ "aliases": [
+  "Smooth earthsnake",
+  "Smooth earth snake",
+  "Western smooth earthsnake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Virginia valeriae",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100943"
+  },
+  {
+   "title": "Smooth Earthsnake (Snake Species Field Guide)",
+   "publisher": "Louisiana Department of Wildlife and Fisheries",
+   "url": "https://www.wlf.louisiana.gov/snake-species-field-guide/smooth-earthsnake"
+  },
+  {
+   "title": "Rough Earthsnake (comparison with smooth earthsnake) (Field Guide)",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/rough-earthsnake"
+  }
+ ]
+}

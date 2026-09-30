@@ -1,0 +1,56 @@
+{
+ "slug": "mudpuppy",
+ "scientificName": "Necturus maculosus",
+ "commonNameFr": "Necture tacheté",
+ "family": "Proteidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe notes N. louisianensis is treated as a distinct species by some authors and as a subspecies by others; a Hiwassee drainage population may be two species.",
+ "fieldMarks": [
+  "Permanently aquatic salamander, 20-33 cm (MDC: usually 8-13 in, up to about 19 in) with large maroon external gills kept for life.",
+  "Grey, rusty brown to nearly black with black or blue-black spots or blotches; belly whitish to grey, sometimes spotted.",
+  "Hellbenders lose external gills by 4-5 inches; mudpuppies keep them."
+ ],
+ "behavior": [
+  "Fully aquatic and usually nocturnal, though it may be active by day in murky or weedy water.",
+  "Solitary; active all year and does not hibernate; moves deeper in winter and summer, shallower in spring and fall; breeds in fall.",
+  "Eats crayfish, insect larvae, small fish, fish eggs, worms, snails and carrion, and is often caught on baited lines or traps."
+ ],
+ "habitat": [
+  "Rivers, weedy ponds, large lakes and perennial streams with shelter; hides under logs, rocks or weeds by day; recorded to 30 m depth."
+ ],
+ "range": "Southeastern Manitoba east to southern Quebec, south to Rhode Island, Massachusetts, Connecticut, New York, northern Kentucky, southern Illinois, central Missouri and south-central Kansas.",
+ "lookalikes": [
+  {
+   "slug": "red-river-waterdog",
+   "name": "Red River mudpuppy",
+   "howToTell": "Red River mudpuppy is smaller (max about 12 in) with more distinct spots and a pale unspotted central belly strip."
+  },
+  {
+   "slug": "hellbender",
+   "name": "Hellbender",
+   "howToTell": "Hellbenders lose external gills once 4-5 inches long."
+  }
+ ],
+ "aliases": [
+  "Common Mudpuppy",
+  "waterdog"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105412"
+  },
+  {
+   "title": "Animal Diversity Web species account",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Necturus_maculosus/"
+  },
+  {
+   "title": "Mudpuppy (field guide)",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/mudpuppy"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

@@ -1,0 +1,49 @@
+{
+ "slug": "fulvous-whistling-duck",
+ "scientificName": "Dendrocygna bicolor",
+ "commonNameFr": "Dendrocygne fauve",
+ "family": "Anatidae",
+ "order": "Anseriformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Butterscotch-coloured with a gray bill, long neck and white stripes on the flanks",
+  "In flight, black underwings and a white crescent above the tail contrast with the buff body",
+  "Length about 45-53 cm",
+  "Sexes similar"
+ ],
+ "behavior": [
+  "Regular migration by some Gulf Coast birds to southern Mexico, overshadowed by widespread wandering; flocks have strayed to at least six Canadian provinces",
+  "Feeds in water by dabbling or tipping up, sometimes diving; much foraging in damp fields, especially rice fields",
+  "Diet more than 95% plant material, mainly seeds of aquatic plants and grasses",
+  "Hoarse whistle, ka-wheee"
+ ],
+ "habitat": [
+  "Fresh or brackish marshes in flat open country of the coastal plain, flooded rice fields, other agricultural fields, ponds and lakes."
+ ],
+ "range": "Breeds in southern California, southwestern Arizona, central and eastern Texas, Gulf Coast Louisiana and locally southern Florida, south to central Mexico; also breeds in Hawaii (Oahu) and in South America, Africa and India. Spread east along the Gulf Coast from about 1950.",
+ "lookalikes": [
+  {
+   "slug": "black-bellied-whistling-duck",
+   "name": "Black-bellied whistling-duck (young)",
+   "howToTell": "Audubon says to compare young Black-bellied with Fulvous; Fulvous is uniformly butterscotch with a gray bill and white flank stripes."
+  },
+  {
+   "slug": "northern-pintail",
+   "name": "Northern pintail (female)",
+   "howToTell": "Audubon lists female Northern Pintail for comparison; Fulvous has a long neck, white flank stripes and the white rump crescent."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Fulvous Whistling Duck",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/fulvous-whistling-duck"
+  },
+  {
+   "title": "NatureServe Explorer: Dendrocygna bicolor (Fulvous Whistling-Duck)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103297/Dendrocygna_bicolor"
+  }
+ ]
+}

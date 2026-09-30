@@ -1,0 +1,39 @@
+{
+ "slug": "argentine-black-and-white-tegu",
+ "scientificName": "Salvator merianae",
+ "commonNameFr": null,
+ "family": "Teiidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Large lizard reaching nearly 5 ft",
+  "Mottled black and white, often arranged in bands across the back and tail",
+  "Hatchlings have similar markings and bright green heads; the green fades after about one month"
+ ],
+ "behavior": [
+  "Terrestrial, rarely climbs more than a few feet, strong swimmer",
+  "Retreats into burrows for winter brumation; in south Florida emerges from about February",
+  "Omnivore and efficient egg predator of ground-nesting birds and reptiles"
+ ],
+ "habitat": [
+  "Savannas and disturbed habitats such as forest clearings, roadsides and fence rows; tolerates flooded marshes."
+ ],
+ "range": "Native to Brazil, Paraguay, Bolivia, Uruguay and Argentina. Breeding populations in Florida (Hillsborough, Miami-Dade and Charlotte counties per FWC); NatureServe lists Florida and Georgia as established and possibly South Carolina. Not native to Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Argentine giant tegu",
+  "Argentine black and white tegu"
+ ],
+ "sources": [
+  {
+   "title": "Argentine Black and White Tegu",
+   "publisher": "Florida Fish and Wildlife Conservation Commission",
+   "url": "https://myfwc.com/wildlifehabitats/profiles/reptiles/lizards/argentine-black-and-white-tegu/"
+  },
+  {
+   "title": "NatureServe Explorer: Salvator merianae",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.1383460"
+  }
+ ]
+}

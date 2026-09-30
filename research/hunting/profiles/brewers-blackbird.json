@@ -1,0 +1,53 @@
+{
+ "slug": "brewers-blackbird",
+ "scientificName": "Euphagus cyanocephalus",
+ "commonNameFr": "Quiscale de Brewer",
+ "family": "Icteridae",
+ "order": "Passeriformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Male: all glossy black with whitish eyes; female dull gray-brown with dark eyes",
+  "Shorter-tailed than Common Grackle and a bit larger than Brown-headed Cowbird",
+  "Length 21-25 cm"
+ ],
+ "behavior": [
+  "Walks on the ground searching for food, sometimes wading or catching insects in flight; may follow farm machinery",
+  "Usually forages in flocks except when nesting",
+  "Insects (grasshoppers, crickets, beetles), seeds, waste grain and berries",
+  "Gurgles, squawks and whistles"
+ ],
+ "habitat": [
+  "Open and semi-open country: fields, prairies, farms, parks, shrubby areas near water; often around human habitations including suburban lawns and parking lots."
+ ],
+ "range": "Breeds from central interior British Columbia to the western Great Lakes, south to northwestern Baja California, Nevada, Texas and northern Iowa; present year-round in parts of the western U.S. and winters east to the southeastern U.S. and Mexico.",
+ "lookalikes": [
+  {
+   "slug": "rusty-blackbird",
+   "name": "Rusty blackbird",
+   "howToTell": "Rusty is less glossy with a thinner bill, yellow eyes and, in fall, rusty feather edges."
+  },
+  {
+   "slug": "common-grackle",
+   "name": "Common grackle",
+   "howToTell": "Longer-tailed than Brewer's."
+  },
+  {
+   "slug": "brown-headed-cowbird",
+   "name": "Brown-headed cowbird",
+   "howToTell": "A bit smaller than Brewer's."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Brewers Blackbird",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/brewers-blackbird"
+  },
+  {
+   "title": "NatureServe Explorer: Euphagus cyanocephalus (Brewer's Blackbird)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101341/Euphagus_cyanocephalus"
+  }
+ ]
+}

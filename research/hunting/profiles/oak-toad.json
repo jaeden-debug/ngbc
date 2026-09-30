@@ -1,0 +1,43 @@
+{
+ "slug": "oak-toad",
+ "scientificName": "Anaxyrus quercicus",
+ "commonNameFr": null,
+ "family": "Bufonidae",
+ "order": "Anura",
+ "taxonomyNote": "ADW's account uses the older genus name Bufo (Bufo quercicus); NatureServe uses Anaxyrus quercicus.",
+ "fieldMarks": [
+  "Smallest toad in North America, 1.9-3.3 cm, with a short head, pointed nose and flat body.",
+  "Black or brown with a long pale dorsal stripe (white, cream, yellow or orange) and 4-5 pairs of dark blotches; fine reddish bumps give a rough texture.",
+  "Elongated teardrop-shaped parotoid glands; grey-white, unblotched underside; males have dusky throats.",
+  "Adults can be mistaken for half-grown southern toads."
+ ],
+ "behavior": [
+  "More diurnal than most toads, sheltering by day buried in sand or under leaves or rocks; solitary outside breeding, when it may call at night.",
+  "Male call is a high-pitched, bird-like chirp.",
+  "Eats small terrestrial insects and arthropods such as ants and beetles; most active during the breeding period."
+ ],
+ "habitat": [
+  "Sandy pine flatwoods, oak scrub, open pine and pine-oak woods, savannas with sandy soil and maritime forest, favouring open-canopy pine flatwoods with grassy cover; eggs and larvae develop in rain pools, ditches and flatwoods ponds."
+ ],
+ "range": "NatureServe lists it in the southeastern coastal plain: Virginia, North and South Carolina, Georgia, Florida, Alabama, Mississippi and Louisiana.",
+ "lookalikes": [
+  {
+   "slug": "southern-toad",
+   "name": "Southern toad",
+   "howToTell": "Adult oak toads are often mistaken for half-grown southern toads; the oak toad is only 1.9-3.3 cm with a long pale dorsal stripe and teardrop-shaped parotoid glands."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102537"
+  },
+  {
+   "title": "Anaxyrus quercicus (Oak Toad; listed as Bufo quercicus)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Anaxyrus_quercicus/"
+  }
+ ]
+}

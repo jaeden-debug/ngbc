@@ -1,0 +1,46 @@
+{
+ "slug": "bobcat",
+ "scientificName": "Lynx rufus",
+ "fieldMarks": [
+  "Short 'bobbed' tail about 10-18 cm (4-7 in), black on top at the tip and white underneath.",
+  "Buff to brown or grey coat with dark spots and streaks; white belly often with black spots.",
+  "Short ear tufts, backs of the ears black, and ruffs of hair on the sides of the head.",
+  "65-105 cm long; adult females about 9-11 kg and males about 14 kg (20-25 lb and 30 lb in Minnesota).",
+  "Smaller, less furry feet and a flatter back than the Canada lynx."
+ ],
+ "behavior": [
+  "Solitary; sexes interact almost only in the breeding season.",
+  "Mostly nocturnal and crepuscular; terrestrial but a good climber.",
+  "Strictly carnivorous stalk-and-pounce hunter of mice, hares, squirrels, birds and deer fawns; can kill adult deer.",
+  "Marks territory with scent and yowls during the breeding season."
+ ],
+ "habitat": [
+  "Forests, semi-desert, mountains and brushland; in Minnesota favours prey-rich young aspen forest and cedar swamps. Dens in hollow trees, thickets, brush piles or rocky areas."
+ ],
+ "range": "Throughout North America from southern Canada to southern Mexico, with the highest U.S. densities in the Southeast.",
+ "lookalikes": [
+  {
+   "slug": "canada-lynx",
+   "name": "Canada lynx",
+   "howToTell": "The lynx has long ear tufts, huge snowshoe-like feet, a raised hind end, and a tail tip that is black all the way around."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Bobcat (Lynx rufus)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lynx_rufus/"
+  },
+  {
+   "title": "Bobcat",
+   "publisher": "Minnesota Department of Natural Resources",
+   "url": "https://www.dnr.state.mn.us/mammals/bobcat.html"
+  },
+  {
+   "title": "Canada Lynx or Bobcat? - Learn the Difference",
+   "publisher": "Vermont Fish & Wildlife Department",
+   "url": "https://www.vtfishandwildlife.com/canada-lynx-or-bobcat-learn-the-difference"
+  }
+ ]
+}

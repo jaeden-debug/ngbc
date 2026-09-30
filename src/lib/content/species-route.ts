@@ -7,6 +7,9 @@ import speciesWave2dJson from "../../../content/published/species-wave-2d.json" 
 import speciesWave3aJson from "../../../content/published/species-wave-3a.json" with { type: "json" };
 import speciesWave3bJson from "../../../content/published/species-wave-3b.json" with { type: "json" };
 import speciesWave3cJson from "../../../content/published/species-wave-3c.json" with { type: "json" };
+import speciesWave4aJson from "../../../content/published/species-wave-4a.json" with { type: "json" };
+import speciesWave4bJson from "../../../content/published/species-wave-4b.json" with { type: "json" };
+import speciesWave4cJson from "../../../content/published/species-wave-4c.json" with { type: "json" };
 
 /**
  * The species profile slugs that exist, read from the same published bundles
@@ -20,7 +23,7 @@ import speciesWave3cJson from "../../../content/published/species-wave-3c.json" 
 type Bundle = { resources?: Array<{ type?: string; status?: string; slug?: string }> };
 
 /** The published species bundles, for readers that need more than the slug. */
-export const PUBLISHED_SPECIES_BUNDLES: readonly unknown[] = [bundleJson, speciesWaveJson, speciesWave2aJson, speciesWave2bJson, speciesWave2cJson, speciesWave2dJson, speciesWave3aJson, speciesWave3bJson, speciesWave3cJson] as Bundle[];
+export const PUBLISHED_SPECIES_BUNDLES: readonly unknown[] = [bundleJson, speciesWaveJson, speciesWave2aJson, speciesWave2bJson, speciesWave2cJson, speciesWave2dJson, speciesWave3aJson, speciesWave3bJson, speciesWave3cJson, speciesWave4aJson, speciesWave4bJson, speciesWave4cJson] as Bundle[];
 
 const BUNDLES = PUBLISHED_SPECIES_BUNDLES as Bundle[];
 

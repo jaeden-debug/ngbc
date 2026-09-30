@@ -1,0 +1,46 @@
+{
+ "slug": "rough-earth-snake",
+ "scientificName": "Virginia striatula",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe lists the species as Haldea striatula (genus resurrected by McVay and Carstens 2013); the Missouri Department of Conservation lists it as Virginia striatula, 'formerly Haldea striatula', so the source genus disagrees in direction.",
+ "fieldMarks": [
+  "Small, plain, secretive snake, 7-10 in, uniform gray, brown or reddish-brown with an unmarked cream or light-gray belly.",
+  "Strongly keeled back scales (feels rough), 5 upper-lip scales, a single scale between the nostrils and one postocular scale touching the eye; anal plate usually divided.",
+  "Differs from the smooth earth snake by five supralabials, usually one preocular and keeled dorsal scales."
+ ],
+ "behavior": [
+  "Semifossorial and seldom above ground; hides under logs, flat rocks and leaf litter and may be active at night in warm, damp weather.",
+  "Eats mainly earthworms, occasionally slugs, snails, small frogs and lizards.",
+  "Active March-October (late March to early November in Missouri); young 2-13 per litter are born live in late July-September."
+ ],
+ "habitat": [
+  "Rocky hillsides of dry open woods, cedar glades, woodland edges, pastures, wooded bottomlands, hammocks, pine flatwoods, gardens and vacant urban lots, where moisture and cover occur."
+ ],
+ "range": "Southeastern and south-central United States: Alabama, Arkansas, Florida, Georgia, Kansas, Louisiana, Missouri (Ozarks), Mississippi, North Carolina, Oklahoma, South Carolina, Tennessee, Texas and Virginia; not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "smooth-earth-snake",
+   "name": "Smooth earth snake",
+   "howToTell": "Nearly smooth scales, 6 upper-lip scales, 2 scales between the nostrils and 2 postoculars (Missouri Department of Conservation)."
+  }
+ ],
+ "aliases": [
+  "Rough earthsnake",
+  "Rough earth snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Haldea striatula",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.101293"
+  },
+  {
+   "title": "Rough Earthsnake (Field Guide)",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/rough-earthsnake"
+  }
+ ]
+}

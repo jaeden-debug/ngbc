@@ -1,0 +1,54 @@
+{
+ "slug": "common-sharp-tailed-snake",
+ "scientificName": "Contia tenuis",
+ "commonNameFr": {
+  "name": "Couleuvre à queue fine",
+  "source": "NatureServe Explorer (French common name entry)",
+  "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.843987/Contia_tenuis"
+ },
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "Feldman and Hoyer (2010) split C. tenuis into two species, C. tenuis and C. longicauda, so older sources (including Animal Diversity Web) describe both as 'sharp-tailed snake'.",
+ "fieldMarks": [
+  "Diminutive snake, usually under 12 in (most about 30 cm), rarely over 16 in; shiny reddish-brown or grey above with indistinct reddish stripes.",
+  "Belly has alternating black and cream or pale bars (in Washington the only snake with such bands).",
+  "Short tail ends in a small spike-like scale, occasionally lost to injury; smooth scales in 15 rows.",
+  "Young snakes are redder with more distinct side lines."
+ ],
+ "behavior": [
+  "Small and secretive; under cover in moist rotting logs, stumps, talus and rocks, often near streams, and sometimes several share one cover object.",
+  "Surface activity is mostly in cool, moist spring and fall and the rainy season (October-April), with retreat underground in dry summers.",
+  "Feeds mainly on slugs, using long re-curved teeth; breeds April-May, lays eggs late June-July and they hatch in fall."
+ ],
+ "habitat": [
+  "Edges of coniferous or open hardwood forest, oak woodland, meadows, pasture and broken chaparral; in Washington also riparian floodplains and shrub-steppe with woody debris and rocks."
+ ],
+ "range": "Southern Vancouver Island and Gulf Islands (British Columbia) south through Washington, Oregon and northern California, including the Sierra foothills; in Washington it occurs in about thirteen disjunct areas.",
+ "lookalikes": [
+  {
+   "slug": "forest-sharp-tailed-snake",
+   "name": "Forest sharp-tailed snake",
+   "howToTell": "Forest sharp-tailed snake has a longer tail with more subcaudal scales (43-58 versus 24-42 in this species)."
+  }
+ ],
+ "aliases": [
+  "sharp-tailed snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Contia tenuis (Common Sharp-tailed Snake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.843987/Contia_tenuis"
+  },
+  {
+   "title": "Common sharp-tailed snake (Contia tenuis)",
+   "publisher": "Washington Department of Fish & Wildlife",
+   "url": "https://wdfw.wa.gov/species-habitats/species/contia-tenuis"
+  },
+  {
+   "title": "Sharp-tailed snake — Animal Diversity Web",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Contia_tenuis/"
+  }
+ ]
+}

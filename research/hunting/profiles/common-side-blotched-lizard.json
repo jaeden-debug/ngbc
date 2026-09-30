@@ -1,0 +1,39 @@
+{
+ "slug": "common-side-blotched-lizard",
+ "scientificName": "Uta stansburiana",
+ "commonNameFr": null,
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes some authors treat Durango populations as U. stejnegeri but Crother (2017) does not recognize that split.",
+ "fieldMarks": [
+  "Dark blotch on each side of the chest just behind the forearm (less obvious in females); gular fold.",
+  "Males lack stripes and have blue or orange patches (densest on the tail) and a blue, gray, red or orange throat; females are drab gray or brown with dorsolateral stripes.",
+  "Scales along the middle of the back are uniform in size, and at least one scale on the top of the head behind the eyes is obviously larger than them.",
+  "Maximum snout-vent length about 6.3 cm (2.5 in); juveniles are brown-gray like females."
+ ],
+ "behavior": [
+  "Solitary, diurnal and crepuscular, most active in the morning and late afternoon; shelters in burrows or under shrubs and rocks in extreme heat, cold or rain.",
+  "Sit-and-wait generalist predator eating ants, termites, beetles, grasshoppers, flies, spiders and scorpions, with large males also taking smaller lizards.",
+  "Basks on rocks or low shrubs; breeding females stay near cover such as packrat nests."
+ ],
+ "habitat": [
+  "Arid and semi-arid desert, often sagebrush or other scrub on sandy to gravelly soil, needing low-hanging shrub cover and bare ground; also roadsides, desert canyons and dunes."
+ ],
+ "range": "Arid western North America: central Washington and eastern Oregon south through the Great Basin, Nevada, Utah, Arizona and New Mexico to western Texas, plus central and southern California (north to San Francisco), Baja California and islands off the Pacific and Gulf of California coasts. Not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "side-blotched lizard"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Uta stansburiana (Common Side-blotched Lizard)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.106390/Uta_stansburiana"
+  },
+  {
+   "title": "Animal Diversity Web: Side-blotched Lizard",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Uta_stansburiana/"
+  }
+ ]
+}

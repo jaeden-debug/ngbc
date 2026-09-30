@@ -1,0 +1,59 @@
+{
+ "slug": "brown-snake",
+ "scientificName": "Storeria dekayi",
+ "commonNameFr": "Couleuvre brune",
+ "commonNameFrSource": "NatureServe Explorer (other common names, FR)",
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe's standard name is 'Dekay's Brownsnake' and notes some authors treat Storeria victa as a separate species; Missouri Department of Conservation says former subspecies are no longer recognised.",
+ "fieldMarks": [
+  "Small, stout snake rarely over about 13-15 in; grayish-brown to reddish-brown with a lighter stripe down the back bordered by two rows of small dark spots.",
+  "Dark spot under each eye and on each side of the neck; heavily keeled scales (17 rows) and divided anal plate; belly cream, yellow or pink.",
+  "Young are black or dark gray with a light neck ring but keeled scales separate them from ring-necked snakes."
+ ],
+ "behavior": [
+  "Secretive, hides under stones, boards and debris; most active late March to early November; often seen crossing roads in spring and fall.",
+  "Eats earthworms, slugs and snails (one study 75% slugs); specialised teeth help pull snails from their shells.",
+  "When threatened flattens its body and releases musk; gives birth to 3-41 young from mid-July to September."
+ ],
+ "habitat": [
+  "Nearly all terrestrial and wetland habitat types including cities: moist forests, woodland edges along ravines and creeks, and grasslands near wetlands; hibernates underground or beneath buildings, often communally."
+ ],
+ "range": "Eastern United States (east of the Rockies) and northern Mexico; in Canada southern Ontario and Quebec (NatureServe rank N5).",
+ "lookalikes": [
+  {
+   "slug": "ring-necked-snake",
+   "name": "Ring-necked snake",
+   "howToTell": "Young brown snakes have a pale neck ring but keeled scales, which ring-necked snakes lack (Animal Diversity Web)."
+  },
+  {
+   "slug": "red-bellied-snake",
+   "name": "Red-bellied snake",
+   "howToTell": "Close relative with a tan back stripe bordered by two rows of small dark spots and a cream, yellow or pink belly, versus the red-bellied snake's red, orange or pink belly and three light nape spots (Missouri Department of Conservation)."
+  }
+ ],
+ "aliases": [
+  "DeKay's snake",
+  "Dekay's brownsnake",
+  "Midland brownsnake",
+  "Texas brownsnake",
+  "Brown snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Storeria dekayi",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.893278"
+  },
+  {
+   "title": "Dekay's Brownsnake (Field Guide)",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/dekays-brownsnake"
+  },
+  {
+   "title": "Animal Diversity Web: Storeria dekayi",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Storeria_dekayi/"
+  }
+ ]
+}

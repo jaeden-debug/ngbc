@@ -1,0 +1,42 @@
+{
+ "slug": "gray-francolin",
+ "scientificName": "Ortygornis pondicerianus",
+ "commonNameFr": null,
+ "family": "Phasianidae",
+ "order": "Galliformes",
+ "taxonomyNote": "NatureServe: formerly (AOU 1983, 1998) placed in Francolinus; genetic data indicate Francolinus is not monophyletic. ADW still files it as Francolinus pondicerianus.",
+ "fieldMarks": [
+  "About a foot long, distinct rows of brown feathers with a pale face and throat",
+  "Sexes look similar; males may be slightly larger"
+ ],
+ "behavior": [
+  "Loud call often heard in the morning",
+  "Common in dry areas; easily seen near lawns and roads at dawn and dusk (Hawaii)"
+ ],
+ "habitat": [
+  "Dry areas."
+ ],
+ "range": "Native to India; introduced to Hawaii. NatureServe records it in Hawaii.",
+ "lookalikes": [],
+ "aliases": [
+  "grey francolin",
+  "teetar"
+ ],
+ "sources": [
+  {
+   "title": "gray francolin",
+   "publisher": "State of Hawaii, Hawaii Birding Trails",
+   "url": "https://hawaiibirdingtrails.hawaii.gov/bird/gray-francolin/"
+  },
+  {
+   "title": "NatureServe Explorer: Ortygornis pondicerianus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.105414/Ortygornis_pondicerianus"
+  },
+  {
+   "title": "Francolinus pondicerianus (grey francolin, classification)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Francolinus_pondicerianus/"
+  }
+ ]
+}

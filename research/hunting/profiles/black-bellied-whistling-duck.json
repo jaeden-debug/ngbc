@@ -1,0 +1,38 @@
+{
+ "slug": "black-bellied-whistling-duck",
+ "scientificName": "Dendrocygna autumnalis",
+ "commonNameFr": "Dendrocygne à ventre noir",
+ "family": "Anatidae",
+ "order": "Anseriformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Long-necked and long-legged, chestnut, gray and black, with a bright pink bill",
+  "Large white wing patch striking in flight",
+  "Length about 47-51 cm",
+  "Sexes similar; young have a gray bill and muted colours"
+ ],
+ "behavior": [
+  "Gregarious; not strongly migratory, and flocks disappear from some northern breeding areas in winter",
+  "Forages much on land, by day or night, on waste grain in harvested fields and on prairies; wades or dabbles in shallow water",
+  "Eats mostly seeds and grains; invertebrates under 10% of diet",
+  "Mellow whistling calls; nests in tree cavities, nest boxes or on the ground, often in colonies"
+ ],
+ "habitat": [
+  "Shallow ponds and fresh marshes, favoring ponds surrounded by trees; forages in dry fields and irrigated land."
+ ],
+ "range": "Resident from southern Arizona and southeastern Texas south through Middle and South America; possibly expanding into eastern Texas and southwestern Louisiana; small flocks may wander well north of the normal range.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Black Bellied Whistling Duck",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/black-bellied-whistling-duck"
+  },
+  {
+   "title": "NatureServe Explorer: Dendrocygna autumnalis (Black-bellied Whistling-Duck)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.106215/Dendrocygna_autumnalis"
+  }
+ ]
+}

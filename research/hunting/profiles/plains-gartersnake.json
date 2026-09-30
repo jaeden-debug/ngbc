@@ -1,0 +1,53 @@
+{
+ "slug": "plains-gartersnake",
+ "scientificName": "Thamnophis radix",
+ "commonNameFr": {
+  "name": "Couleuvre des plaines",
+  "source": "NatureServe Explorer (French common name)"
+ },
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes no subspecies are recognized.",
+ "fieldMarks": [
+  "Long striped garter snake, usually 40-70 cm (occasionally to 109 cm), dark brown to dark greenish with a dorsal and two lateral yellow or orange stripes.",
+  "Lateral stripes lie on scale rows 3 and 4; some red pigment may show on the sides.",
+  "A row of black spots runs between each lateral stripe and the belly scales.",
+  "Keeled scales in 19-21 rows and an undivided anal plate; males have tubercles on the chin shields and slightly longer tails."
+ ],
+ "behavior": [
+  "Active March-November depending on region; hibernates in rodent or ant burrows, rock crevices and human-made crevices and may emerge on warm winter days.",
+  "Diurnal at 21-29 C, switching to night activity above 31 C and becoming inactive in much colder weather.",
+  "Follows odour trails to prey, mates and hibernacula; eats frogs, toads, salamanders, fish, earthworms, small rodents and birds."
+ ],
+ "habitat": [
+  "Meadows, prairies and other grasslands near ponds, streams, marshes and sloughs, also swampy areas, rivers and suburban vacant lots; where it overlaps the common gartersnake it uses drier habitat."
+ ],
+ "range": "Great Plains from the Oklahoma panhandle, northern Texas and northeastern New Mexico north to southern Alberta, Saskatchewan and Manitoba, and east through Minnesota, Wisconsin and Indiana.",
+ "lookalikes": [
+  {
+   "slug": "common-gartersnake",
+   "name": "Common gartersnake (Thamnophis sirtalis)",
+   "howToTell": "Plains gartersnake's lateral stripe sits on scale rows 3 and 4; the common gartersnake's is on rows 2 and 3."
+  }
+ ],
+ "aliases": [
+  "prairie garter snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Thamnophis radix (Plains Gartersnake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104972/Thamnophis_radix"
+  },
+  {
+   "title": "Animal Diversity Web: Plains Garter Snake",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Thamnophis_radix/"
+  },
+  {
+   "title": "NatureServe Explorer: Thamnophis sirtalis (Common Gartersnake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101158/Thamnophis_sirtalis"
+  }
+ ]
+}

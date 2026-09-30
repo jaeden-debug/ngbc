@@ -12,6 +12,48 @@
         }
       ]
     },
+    "species:alabama-map-turtle": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:alaska-hare": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:alaska-marmot": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:allegheny-dusky-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:alligator-snapping-turtle": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:american-alligator": {
+      "family": "REPTILE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
     "species:american-badger": {
       "family": "PREDATOR_FURBEARER",
       "next": [
@@ -45,6 +87,16 @@
     "species:american-black-duck": {
       "family": "WATERFOWL"
     },
+    "species:american-bullfrog": {
+      "family": "AMPHIBIAN",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
     "species:american-coot": {
       "family": "MIGRATORY_GAME_BIRD",
       "next": [
@@ -62,6 +114,16 @@
           "strategy": "B_MEASURED_DISTRIBUTION",
           "status": "IN_RESEARCH",
           "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:american-ermine": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
         }
       ]
     },
@@ -95,14 +157,56 @@
         }
       ]
     },
+    "species:american-toad": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
     "species:american-wigeon": {
       "family": "WATERFOWL"
     },
     "species:american-woodcock": {
       "family": "MIGRATORY_GAME_BIRD"
     },
+    "species:antelope-jackrabbit": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:appalachian-cottontail": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:aquatic-gartersnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:arboreal-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
     "species:arctic-fox": {
       "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:arctic-ground-squirrel": {
+      "family": "SMALL_GAME",
       "next": [
         {
           "strategy": "C_HABITAT_MODEL",
@@ -121,6 +225,34 @@
         }
       ]
     },
+    "species:argentine-black-and-white-tegu": {
+      "family": "REPTILE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:arizona-gray-squirrel": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:arizona-mountain-kingsnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:arizona-mud-turtle": {
+      "family": "REPTILE",
+      "next": []
+    },
     "species:axis-deer": {
       "family": "UNGULATE",
       "next": [
@@ -130,6 +262,18 @@
           "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
         }
       ]
+    },
+    "species:baja-california-brush-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:baja-california-collared-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:baja-california-treefrog": {
+      "family": "AMPHIBIAN",
+      "next": []
     },
     "species:band-tailed-pigeon": {
       "family": "MIGRATORY_GAME_BIRD",
@@ -141,6 +285,10 @@
         }
       ]
     },
+    "species:banded-watersnake": {
+      "family": "REPTILE",
+      "next": []
+    },
     "species:barbary-sheep": {
       "family": "UNGULATE",
       "next": [
@@ -151,11 +299,29 @@
         }
       ]
     },
+    "species:barking-frog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:barking-treefrog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
     "species:barrows-goldeneye": {
       "family": "WATERFOWL"
     },
     "species:beaver": {
       "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:beldings-ground-squirrel": {
+      "family": "SMALL_GAME",
       "next": [
         {
           "strategy": "C_HABITAT_MODEL",
@@ -173,6 +339,56 @@
           "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
         }
       ]
+    },
+    "species:bird-voiced-treefrog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:black-bellied-whistling-duck": {
+      "family": "WATERFOWL",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:black-billed-magpie": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:black-francolin": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:black-kingsnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:black-mountain-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:black-necked-gartersnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:black-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
     },
     "species:black-scoter": {
       "family": "SEA_DUCK",
@@ -194,8 +410,38 @@
         }
       ]
     },
+    "species:black-tailed-prairie-dog": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:blackbuck": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
     "species:blue-winged-teal": {
       "family": "WATERFOWL"
+    },
+    "species:boat-tailed-grackle": {
+      "family": "UNPROTECTED_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
     },
     "species:bobcat": {
       "family": "PREDATOR_FURBEARER",
@@ -207,6 +453,10 @@
         }
       ]
     },
+    "species:boreal-chorus-frog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
     "species:brant": {
       "family": "ARCTIC_NESTING_GOOSE",
       "next": [
@@ -214,6 +464,30 @@
           "strategy": "D_COARSE_SUPPORTING",
           "status": "IN_RESEARCH",
           "plan": "The Breeding Bird Survey does not reach arctic nesting grounds. Migration and wintering counts are published by state, province or flyway unit, which would be zone evidence rather than a surface; their licences have not been checked."
+        }
+      ]
+    },
+    "species:brewers-blackbird": {
+      "family": "UNPROTECTED_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:broadhead-skink": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:bronzed-cowbird": {
+      "family": "UNPROTECTED_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
         }
       ]
     },
@@ -226,6 +500,20 @@
           "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
         }
       ]
+    },
+    "species:brown-headed-cowbird": {
+      "family": "UNPROTECTED_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:brown-snake": {
+      "family": "REPTILE",
+      "next": []
     },
     "species:brush-rabbit": {
       "family": "SMALL_GAME",
@@ -240,6 +528,16 @@
     "species:bufflehead": {
       "family": "WATERFOWL"
     },
+    "species:burmese-python": {
+      "family": "REPTILE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
     "species:cackling-goose": {
       "family": "ARCTIC_NESTING_GOOSE",
       "next": [
@@ -250,6 +548,28 @@
         }
       ]
     },
+    "species:california-ground-squirrel": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:california-kingsnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:california-lyresnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:california-mountain-kingsnake": {
+      "family": "REPTILE",
+      "next": []
+    },
     "species:california-quail": {
       "family": "OPEN_COUNTRY_UPLAND_BIRD",
       "next": [
@@ -259,6 +579,14 @@
           "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
         }
       ]
+    },
+    "species:california-slender-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:california-treefrog": {
+      "family": "AMPHIBIAN",
+      "next": []
     },
     "species:canada-goose": {
       "family": "WATERFOWL"
@@ -276,6 +604,10 @@
     "species:canvasback": {
       "family": "WATERFOWL"
     },
+    "species:canyon-treefrog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
     "species:caribou": {
       "family": "UNGULATE",
       "next": [
@@ -285,6 +617,28 @@
           "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
         }
       ]
+    },
+    "species:central-ratsnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:checkered-gartersnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:chestnut-bellied-sandgrouse": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:chicken-turtle": {
+      "family": "REPTILE",
+      "next": []
     },
     "species:chukar": {
       "family": "OPEN_COUNTRY_UPLAND_BIRD",
@@ -306,6 +660,36 @@
         }
       ]
     },
+    "species:clapper-rail": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:clouded-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:coachwhip": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:coal-skink": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:coast-nightsnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:coastal-giant-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
     "species:collared-peccary": {
       "family": "UNGULATE",
       "next": [
@@ -315,6 +699,30 @@
           "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
         }
       ]
+    },
+    "species:collared-pika": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:columbian-ground-squirrel": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:common-chuckwalla": {
+      "family": "REPTILE",
+      "next": []
     },
     "species:common-eider": {
       "family": "SEA_DUCK",
@@ -336,8 +744,30 @@
         }
       ]
     },
+    "species:common-gartersnake": {
+      "family": "REPTILE",
+      "next": []
+    },
     "species:common-goldeneye": {
       "family": "WATERFOWL"
+    },
+    "species:common-grackle": {
+      "family": "UNPROTECTED_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:common-lesser-earless-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:common-map-turtle": {
+      "family": "REPTILE",
+      "next": []
     },
     "species:common-merganser": {
       "family": "WATERFOWL",
@@ -348,6 +778,64 @@
           "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
         }
       ]
+    },
+    "species:common-murre": {
+      "family": "SEABIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:common-raven": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:common-sagebrush-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:common-sharp-tailed-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:common-side-blotched-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:common-snapping-turtle": {
+      "family": "REPTILE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:copes-gray-treefrog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:corn-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:cottonmouth": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:couchs-spadefoot": {
+      "family": "AMPHIBIAN",
+      "next": []
     },
     "species:coyote": {
       "family": "PREDATOR_FURBEARER",
@@ -379,6 +867,58 @@
         }
       ]
     },
+    "species:desert-horned-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:desert-iguana": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:desert-night-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:desert-nightsnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:desert-spiny-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:diamond-backed-terrapin": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:diamondback-water-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:double-crested-cormorant": {
+      "family": "SEABIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:douglas-squirrel": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:dunns-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
     "species:dusky-grouse": {
       "family": "FOREST_UPLAND_BIRD",
       "next": [
@@ -388,6 +928,26 @@
           "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
         }
       ]
+    },
+    "species:dwarf-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:eastern-box-turtle": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:eastern-collared-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:eastern-copperhead": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:eastern-coral-snake": {
+      "family": "REPTILE",
+      "next": []
     },
     "species:eastern-cottontail": {
       "family": "SMALL_GAME",
@@ -399,6 +959,18 @@
         }
       ]
     },
+    "species:eastern-diamondback-rattlesnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:eastern-fence-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:eastern-glass-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
     "species:eastern-gray-squirrel": {
       "family": "SMALL_GAME",
       "next": [
@@ -409,6 +981,34 @@
         }
       ]
     },
+    "species:eastern-hognose-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:eastern-mud-turtle": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:eastern-newt": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:eastern-ribbon-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:eastern-spadefoot": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:eastern-spotted-skunk": {
+      "family": "PREDATOR_FURBEARER",
+      "next": []
+    },
+    "species:eastern-tiger-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
     "species:eastern-wolf": {
       "family": "PREDATOR_FURBEARER",
       "next": [
@@ -416,6 +1016,16 @@
           "strategy": "C_HABITAT_MODEL",
           "status": "IN_RESEARCH",
           "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:egyptian-goose": {
+      "family": "WATERFOWL",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
         }
       ]
     },
@@ -429,6 +1039,40 @@
         }
       ]
     },
+    "species:emperor-goose": {
+      "family": "WATERFOWL",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:ensatina": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:erckels-spurfowl": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:ermine": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
     "species:eurasian-collared-dove": {
       "family": "MIGRATORY_GAME_BIRD",
       "next": [
@@ -439,6 +1083,46 @@
         }
       ]
     },
+    "species:eurasian-wigeon": {
+      "family": "WATERFOWL",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:european-hare": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:european-rabbit": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:european-starling": {
+      "family": "UNPROTECTED_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
     "species:fallow-deer": {
       "family": "UNGULATE",
       "next": [
@@ -446,6 +1130,36 @@
           "strategy": "C_HABITAT_MODEL",
           "status": "IN_RESEARCH",
           "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
+    "species:feral-ferret": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:feral-goat": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:feral-sheep": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
         }
       ]
     },
@@ -469,8 +1183,38 @@
         }
       ]
     },
+    "species:five-lined-skink": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:florida-pine-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:forest-sharp-tailed-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:four-toed-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:fowlers-toad": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
     "species:fox-squirrel": {
       "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:fulvous-whistling-duck": {
+      "family": "WATERFOWL",
       "next": [
         {
           "strategy": "C_HABITAT_MODEL",
@@ -492,8 +1236,62 @@
         }
       ]
     },
+    "species:gemsbok": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:gilberts-skink": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:glossy-crayfish-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:glossy-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:golden-mantled-ground-squirrel": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:gophersnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:grahams-crayfish-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:granite-spiny-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
     "species:gray-fox": {
       "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:gray-francolin": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
       "next": [
         {
           "strategy": "C_HABITAT_MODEL",
@@ -505,8 +1303,52 @@
     "species:gray-partridge": {
       "family": "OPEN_COUNTRY_UPLAND_BIRD"
     },
+    "species:gray-rat-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:gray-treefrog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
     "species:gray-wolf": {
       "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:great-basin-collared-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:great-basin-spadefoot": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:great-cormorant": {
+      "family": "SEABIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:great-plains-ratsnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:great-plains-toad": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:great-tailed-grackle": {
+      "family": "UNPROTECTED_BIRD",
       "next": [
         {
           "strategy": "C_HABITAT_MODEL",
@@ -538,6 +1380,10 @@
     "species:greater-scaup": {
       "family": "WATERFOWL"
     },
+    "species:greater-short-horned-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
     "species:greater-white-fronted-goose": {
       "family": "ARCTIC_NESTING_GOOSE",
       "next": [
@@ -548,12 +1394,84 @@
         }
       ]
     },
+    "species:green-anole": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:green-frog": {
+      "family": "AMPHIBIAN",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:green-iguana": {
+      "family": "REPTILE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:green-pheasant": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:green-ratsnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:green-treefrog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:green-water-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
     "species:green-winged-teal": {
       "family": "WATERFOWL"
+    },
+    "species:ground-skink": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:gulf-coast-toad": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:gulf-coast-waterdog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:gulf-salt-marsh-snake": {
+      "family": "REPTILE",
+      "next": []
     },
     "species:gunnison-sage-grouse": {
       "family": "OPEN_COUNTRY_UPLAND_BIRD",
       "next": []
+    },
+    "species:gunnisons-prairie-dog": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
     },
     "species:harlequin-duck": {
       "family": "SEA_DUCK",
@@ -565,6 +1483,54 @@
         }
       ]
     },
+    "species:hellbender": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:helmeted-guineafowl": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:himalayan-snowcock": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:himalayan-tahr": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:hoary-marmot": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:hog-nosed-skunk": {
+      "family": "PREDATOR_FURBEARER",
+      "next": []
+    },
     "species:hooded-merganser": {
       "family": "WATERFOWL",
       "next": [
@@ -574,6 +1540,50 @@
           "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
         }
       ]
+    },
+    "species:house-sparrow": {
+      "family": "UNPROTECTED_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:indian-peafowl": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:japanese-quail": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:kalij-pheasant": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:kentucky-spring-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
     },
     "species:king-eider": {
       "family": "SEA_DUCK",
@@ -595,6 +1605,26 @@
         }
       ]
     },
+    "species:kit-fox": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:least-weasel": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
     "species:lesser-prairie-chicken": {
       "family": "OPEN_COUNTRY_UPLAND_BIRD",
       "next": [
@@ -608,6 +1638,26 @@
     "species:lesser-scaup": {
       "family": "WATERFOWL"
     },
+    "species:lesser-siren": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:loggerhead-musk-turtle": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:long-nosed-leopard-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:long-nosed-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:long-tailed-brush-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
     "species:long-tailed-duck": {
       "family": "SEA_DUCK",
       "next": [
@@ -618,8 +1668,84 @@
         }
       ]
     },
+    "species:long-tailed-weasel": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:longtail-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:madrean-mountain-kingsnake": {
+      "family": "REPTILE",
+      "next": []
+    },
     "species:mallard": {
       "family": "WATERFOWL"
+    },
+    "species:many-lined-skink": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:marbled-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:marsh-rabbit": {
+      "family": "SMALL_GAME",
+      "next": []
+    },
+    "species:mearns-rock-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:mediterranean-gecko": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:mexican-duck": {
+      "family": "WATERFOWL",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:mexican-spadefoot": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:milksnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:mimic-glass-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:mississippi-map-turtle": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:mississippi-slimy-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:mohave-rattlesnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:mole-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
     },
     "species:montezuma-quail": {
       "family": "OPEN_COUNTRY_UPLAND_BIRD",
@@ -640,6 +1766,40 @@
           "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
         }
       ]
+    },
+    "species:mottled-duck": {
+      "family": "WATERFOWL",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:mouflon": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:mountain-beaver": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:mountain-chorus-frog": {
+      "family": "AMPHIBIAN",
+      "next": []
     },
     "species:mountain-cottontail": {
       "family": "SMALL_GAME",
@@ -684,6 +1844,18 @@
     "species:mourning-dove": {
       "family": "MIGRATORY_GAME_BIRD"
     },
+    "species:mud-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:mud-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:mudpuppy": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
     "species:mule-deer": {
       "family": "UNGULATE",
       "next": [
@@ -691,6 +1863,16 @@
           "strategy": "C_HABITAT_MODEL",
           "status": "IN_RESEARCH",
           "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
+    "species:muscovy-duck": {
+      "family": "WATERFOWL",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
         }
       ]
     },
@@ -724,8 +1906,22 @@
         }
       ]
     },
+    "species:narrowmouth-frog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
     "species:new-england-cottontail": {
       "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:nile-monitor": {
+      "family": "REPTILE",
       "next": [
         {
           "strategy": "C_HABITAT_MODEL",
@@ -744,6 +1940,30 @@
         }
       ]
     },
+    "species:nine-banded-armadillo": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:north-american-porcupine": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:north-american-racer": {
+      "family": "REPTILE",
+      "next": []
+    },
     "species:north-american-river-otter": {
       "family": "PREDATOR_FURBEARER",
       "next": [
@@ -753,6 +1973,10 @@
           "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
         }
       ]
+    },
+    "species:northern-alligator-lizard": {
+      "family": "REPTILE",
+      "next": []
     },
     "species:northern-bobwhite": {
       "family": "OPEN_COUNTRY_UPLAND_BIRD",
@@ -764,11 +1988,67 @@
         }
       ]
     },
+    "species:northern-crawfish-frog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:northern-cricket-frog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:northern-dusky-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:northern-flying-squirrel": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:northern-leopard-frog": {
+      "family": "AMPHIBIAN",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
     "species:northern-pintail": {
       "family": "WATERFOWL"
     },
+    "species:northern-rubber-boa": {
+      "family": "REPTILE",
+      "next": []
+    },
     "species:northern-shoveler": {
       "family": "WATERFOWL"
+    },
+    "species:northern-three-lined-boa": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:northern-two-lined-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:northern-water-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:northwestern-gartersnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:northwestern-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
     },
     "species:nutria": {
       "family": "PREDATOR_FURBEARER",
@@ -780,6 +2060,134 @@
         }
       ]
     },
+    "species:oak-toad": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:ocellated-skink": {
+      "family": "REPTILE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:ornate-chorus-frog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:ornate-tree-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:ouachita-map-turtle": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:pacific-marten": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:pacific-treefrog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:painted-turtle": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:panamint-rattlesnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:pascagoula-map-turtle": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:pelagic-cormorant": {
+      "family": "SEABIRD",
+      "next": []
+    },
+    "species:persian-ibex": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:pickerel-frog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:pig-frog": {
+      "family": "AMPHIBIAN",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:pine-woods-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:pine-woods-treefrog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:plain-chachalaca": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:plainbelly-water-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:plains-gartersnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:plains-leopard-frog": {
+      "family": "AMPHIBIAN",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:plains-spadefoot": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:plateau-fence-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:plateau-striped-whiptail": {
+      "family": "REPTILE",
+      "next": []
+    },
     "species:polar-bear": {
       "family": "BEAR",
       "next": [
@@ -787,6 +2195,24 @@
           "strategy": "C_HABITAT_MODEL",
           "status": "IN_RESEARCH",
           "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
+    "species:prairie-kingsnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:prairie-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:prairie-rattlesnake": {
+      "family": "REPTILE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
         }
       ]
     },
@@ -810,6 +2236,22 @@
         }
       ]
     },
+    "species:pygmy-rabbit": {
+      "family": "SMALL_GAME",
+      "next": []
+    },
+    "species:pygmy-rattlesnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:pygmy-short-horned-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:queen-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
     "species:raccoon": {
       "family": "PREDATOR_FURBEARER",
       "next": [
@@ -820,6 +2262,10 @@
         }
       ]
     },
+    "species:razorback-musk-turtle": {
+      "family": "REPTILE",
+      "next": []
+    },
     "species:red-breasted-merganser": {
       "family": "WATERFOWL",
       "next": [
@@ -827,6 +2273,26 @@
           "strategy": "B_MEASURED_DISTRIBUTION",
           "status": "IN_RESEARCH",
           "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:red-deer": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:red-eared-slider": {
+      "family": "REPTILE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
         }
       ]
     },
@@ -840,8 +2306,54 @@
         }
       ]
     },
+    "species:red-legged-partridge": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:red-river-waterdog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:red-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:red-spotted-toad": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:red-winged-blackbird": {
+      "family": "UNPROTECTED_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:redbelly-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
     "species:redhead": {
       "family": "WATERFOWL"
+    },
+    "species:richardsons-ground-squirrel": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
     },
     "species:ring-necked-duck": {
       "family": "WATERFOWL"
@@ -849,8 +2361,84 @@
     "species:ring-necked-pheasant": {
       "family": "OPEN_COUNTRY_UPLAND_BIRD"
     },
+    "species:ring-necked-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:ringed-turtle-dove": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:ringed-wall-gecko": {
+      "family": "REPTILE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:ringtail": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:rio-grande-leopard-frog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:river-cooter": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:river-frog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:rock-partridge": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:rock-pigeon": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
     "species:rock-ptarmigan": {
       "family": "ARCTIC_ALPINE_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:rock-squirrel": {
+      "family": "SMALL_GAME",
       "next": [
         {
           "strategy": "C_HABITAT_MODEL",
@@ -866,6 +2454,28 @@
           "strategy": "D_COARSE_SUPPORTING",
           "status": "IN_RESEARCH",
           "plan": "The Breeding Bird Survey does not reach arctic nesting grounds. Migration and wintering counts are published by state, province or flyway unit, which would be zone evidence rather than a surface; their licences have not been checked."
+        }
+      ]
+    },
+    "species:rough-earth-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:rough-green-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:rough-skinned-newt": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:rough-tailed-gecko": {
+      "family": "REPTILE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
         }
       ]
     },
@@ -889,6 +2499,20 @@
         }
       ]
     },
+    "species:rusty-blackbird": {
+      "family": "UNPROTECTED_BIRD",
+      "next": []
+    },
+    "species:sambar": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
     "species:sandhill-crane": {
       "family": "MIGRATORY_GAME_BIRD"
     },
@@ -902,8 +2526,42 @@
         }
       ]
     },
+    "species:scarlet-kingsnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:scarlet-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:seal-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
     "species:sharp-tailed-grouse": {
       "family": "OPEN_COUNTRY_UPLAND_BIRD"
+    },
+    "species:shiny-cowbird": {
+      "family": "UNPROTECTED_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:sidewinder": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:sierra-gartersnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:sierran-treefrog": {
+      "family": "AMPHIBIAN",
+      "next": []
     },
     "species:sika-deer": {
       "family": "UNGULATE",
@@ -912,6 +2570,40 @@
           "strategy": "C_HABITAT_MODEL",
           "status": "IN_RESEARCH",
           "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
+    "species:six-lined-racerunner": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:slender-glass-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:smallmouth-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:smiths-black-headed-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:smooth-earth-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:smooth-green-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:smooth-softshell-turtle": {
+      "family": "REPTILE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
         }
       ]
     },
@@ -935,6 +2627,18 @@
         }
       ]
     },
+    "species:snowy-owl": {
+      "family": "RAPTOR",
+      "next": []
+    },
+    "species:sonora-mud-turtle": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:sonoran-lyresnake": {
+      "family": "REPTILE",
+      "next": []
+    },
     "species:sooty-grouse": {
       "family": "FOREST_UPLAND_BIRD",
       "next": [
@@ -955,8 +2659,130 @@
         }
       ]
     },
+    "species:southeastern-chorus-frog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:southeastern-crowned-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:southeastern-five-lined-skink": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:southern-alligator-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:southern-california-slender-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:southern-chorus-frog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:southern-cricket-frog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:southern-dusky-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:southern-flying-squirrel": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:southern-leopard-frog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:southern-painted-turtle": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:southern-toad": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:southern-zigzag-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:southwestern-fence-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:southwestern-speckled-rattlesnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:spectacled-eider": {
+      "family": "SEA_DUCK",
+      "next": []
+    },
+    "species:spiny-softshell": {
+      "family": "REPTILE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:spotted-dove": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:spotted-dusky-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:spotted-leaf-nosed-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:spotted-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:spring-peeper": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
     "species:spruce-grouse": {
       "family": "FOREST_UPLAND_BIRD"
+    },
+    "species:squirrel-treefrog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:stellers-eider": {
+      "family": "SEA_DUCK",
+      "next": []
+    },
+    "species:stinkpot": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:striped-racer": {
+      "family": "REPTILE",
+      "next": []
     },
     "species:striped-skunk": {
       "family": "PREDATOR_FURBEARER",
@@ -967,6 +2793,10 @@
           "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
         }
       ]
+    },
+    "species:striped-whipsnake": {
+      "family": "REPTILE",
+      "next": []
     },
     "species:surf-scoter": {
       "family": "SEA_DUCK",
@@ -988,6 +2818,60 @@
         }
       ]
     },
+    "species:swift-fox": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:terrestrial-gartersnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:thick-billed-murre": {
+      "family": "SEABIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:thirteen-lined-ground-squirrel": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:three-lined-boa": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:three-lined-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:three-toed-amphiuma": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:tiger-whiptail": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:timber-rattlesnake": {
+      "family": "REPTILE",
+      "next": []
+    },
     "species:trumpeter-swan": {
       "family": "WATERFOWL",
       "next": []
@@ -999,6 +2883,24 @@
           "strategy": "B_MEASURED_DISTRIBUTION",
           "status": "IN_RESEARCH",
           "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:two-lined-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:two-toed-amphiuma": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:uinta-ground-squirrel": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
         }
       ]
     },
@@ -1022,6 +2924,100 @@
         }
       ]
     },
+    "species:wandering-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:websters-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:western-banded-gecko": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:western-black-headed-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:western-diamond-backed-rattlesnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:western-fence-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:western-gray-squirrel": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:western-groundsnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:western-milk-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:western-patch-nosed-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:western-rattlesnake": {
+      "family": "REPTILE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:western-ribbon-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:western-shovel-nosed-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:western-skink": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:western-spotted-skunk": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:western-threadsnake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:western-tiger-salamander": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:western-toad": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:white-nosed-coati": {
+      "family": "PREDATOR_FURBEARER",
+      "next": []
+    },
     "species:white-tailed-deer": {
       "family": "UNGULATE",
       "next": [
@@ -1042,8 +3038,28 @@
         }
       ]
     },
+    "species:white-tailed-prairie-dog": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
     "species:white-tailed-ptarmigan": {
       "family": "ARCTIC_ALPINE_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:white-tipped-dove": {
+      "family": "MIGRATORY_GAME_BIRD",
       "next": [
         {
           "strategy": "B_MEASURED_DISTRIBUTION",
@@ -1108,6 +3124,10 @@
     "species:wood-duck": {
       "family": "WATERFOWL"
     },
+    "species:wood-frog": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
     "species:woodchuck": {
       "family": "SMALL_GAME",
       "next": [
@@ -1117,6 +3137,66 @@
           "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
         }
       ]
+    },
+    "species:woodhouses-toad": {
+      "family": "AMPHIBIAN",
+      "next": []
+    },
+    "species:worm-snake": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:wyoming-ground-squirrel": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:yellow-backed-spiny-lizard": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:yellow-bellied-marmot": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:yellow-headed-blackbird": {
+      "family": "UNPROTECTED_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:yellow-mud-turtle": {
+      "family": "REPTILE",
+      "next": []
+    },
+    "species:zebra-dove": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:zebra-tailed-lizard": {
+      "family": "REPTILE",
+      "next": []
     }
   }
 }

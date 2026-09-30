@@ -1,0 +1,46 @@
+{
+ "slug": "red-eared-slider",
+ "scientificName": "Trachemys scripta",
+ "commonNameFr": "Tortue à oreille rouges",
+ "family": "Emydidae",
+ "order": "Testudines",
+ "taxonomyNote": "NatureServe lists the species as Pond Slider; the red-eared slider is one subspecies (T. s. elegans) of Trachemys scripta.",
+ "fieldMarks": [
+  "Bright red horizontal streak behind each eye",
+  "Shell 10-29 cm, greenish-yellow to gray, brown or black, rough and indented; plastron usually yellow with dark spots",
+  "Females larger than males",
+  "Older males may turn melanistic (darker)"
+ ],
+ "behavior": [
+  "Primarily diurnal; basks on sunny days and is gregarious",
+  "Juveniles mostly carnivorous; adults omnivorous",
+  "Generally inactive in winter in the north"
+ ],
+ "habitat": [
+  "Quiet water with abundant aquatic vegetation, soft bottom and basking sites; tolerant of pollution."
+ ],
+ "range": "Native from Michigan to Argentina, east of New Mexico. Established outside its range in many areas including Florida, New York and New Mexico; Animal Diversity Web also lists Canada.",
+ "lookalikes": [
+  {
+   "slug": "painted-turtle",
+   "name": "Painted turtle",
+   "howToTell": "Two yellow patches behind each eye instead of the slider's single red streak (per Animal Diversity Web)."
+  }
+ ],
+ "aliases": [
+  "pond slider",
+  "slider"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Trachemys scripta",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104105"
+  },
+  {
+   "title": "Animal Diversity Web: Trachemys scripta",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Trachemys_scripta/"
+  }
+ ]
+}

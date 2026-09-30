@@ -1,0 +1,45 @@
+{
+ "slug": "spiny-softshell",
+ "scientificName": "Apalone spinifera",
+ "commonNameFr": "Tortue-molle à épines",
+ "family": "Trionychidae",
+ "order": "Testudines",
+ "taxonomyNote": "NatureServe recognizes six subspecies and notes Apalone was split from Trionyx; Animal Diversity Web still lists the older name Trionyx spiniferus.",
+ "fieldMarks": [
+  "Soft, flat, leathery shell without scutes, olive to tan with black speckles; flexible edge bears small spines",
+  "Narrow head ending in a tubular nose",
+  "Two light black-bordered bands on each side of the head",
+  "Males 12.7-24 cm, females larger at 24-48 cm and mottled grey"
+ ],
+ "behavior": [
+  "Basks on shores or partly submerged logs; buries in bottom sediment when inactive",
+  "Activity mainly April/May to October in the north; some nocturnal activity in summer",
+  "In Vermont-Québec waters moved about 3 km between wintering and nesting sites",
+  "Eats crayfish, insects, mollusks, fish and amphibians"
+ ],
+ "habitat": [
+  "Large rivers, impoundments, lakes and pools with open sandy or mud banks and soft bottoms."
+ ],
+ "range": "Montana to southern Québec, south to northern Mexico and the Florida panhandle, with introductions elsewhere. In Québec it is concentrated around Lake Champlain and its tributaries.",
+ "lookalikes": [],
+ "aliases": [
+  "spiny softshell turtle"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Apalone spinifera",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100616"
+  },
+  {
+   "title": "Tortue-molle à épines",
+   "publisher": "Gouvernement du Québec",
+   "url": "https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/faune/animaux-sauvages-quebec/fiches-especes-fauniques/tortue-molle-epines"
+  },
+  {
+   "title": "Animal Diversity Web: Apalone spinifera",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Apalone_spinifera/"
+  }
+ ]
+}

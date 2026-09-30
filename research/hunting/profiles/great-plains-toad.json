@@ -1,0 +1,55 @@
+{
+ "slug": "great-plains-toad",
+ "scientificName": "Anaxyrus cognatus",
+ "commonNameFr": {
+  "name": "Crapaud des steppes",
+  "source": "NatureServe Explorer (French common name entry)",
+  "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100842/Anaxyrus_cognatus"
+ },
+ "family": "Bufonidae",
+ "order": "Anura",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Olive to pale grey-brown toad, 47-115 mm, with large dark green blotches edged in white covering the back.",
+  "Cranial ridges between the eyes diverge in a V and meet at the snout in a raised knob or shield (Woodhouse's toad has an L-shaped crest).",
+  "Faint pale stripe down the rear back; belly mostly white and rarely spotted.",
+  "Spades on the heels of the hind feet for digging."
+ ],
+ "behavior": [
+  "Nocturnal and solitary; spends most of the year dormant in burrows 15-55 cm deep, emerging after heavy rain or at breeding.",
+  "Males call with a loud continuous trill of 20-50 seconds from shallow rain pools and flooded areas.",
+  "Sit-and-wait feeder on beetles, ants, moth larvae and other insects, mostly at night."
+ ],
+ "habitat": [
+  "Short-grass prairie, desert, semidesert shrubland, open floodplains and irrigated farmland, typically in stream valleys, on heavier soils than Woodhouse's toad.",
+  "Breeds in temporary rain pools, flooded areas and fluctuating ponds."
+ ],
+ "range": "Great Plains, southwestern US and northern Mexico: from southern Manitoba and southeastern Alberta south to central Mexico; east to western Minnesota, Iowa, Missouri and Oklahoma, west to central Montana, Colorado and southeastern California.",
+ "lookalikes": [
+  {
+   "slug": "woodhouses-toad",
+   "name": "Woodhouse's toad",
+   "howToTell": "Woodhouse's toad has an L-shaped cranial crest and a white back stripe rather than a raised snout shield with V-shaped ridges and large white-edged blotches."
+  }
+ ],
+ "aliases": [
+  "Bufo cognatus"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Anaxyrus cognatus (Great Plains Toad)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100842/Anaxyrus_cognatus"
+  },
+  {
+   "title": "Great Plains toad — Animal Diversity Web",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Anaxyrus_cognatus/"
+  },
+  {
+   "title": "Woodhouse's Toad (species account, Diagnostic Characteristics)",
+   "publisher": "Montana Natural Heritage Program / Montana Field Guide",
+   "url": "https://fieldguide.mt.gov/detail_aaabb01180.aspx"
+  }
+ ]
+}

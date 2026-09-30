@@ -1,0 +1,41 @@
+{
+ "slug": "yellow-mud-turtle",
+ "scientificName": "Kinosternon flavescens",
+ "commonNameFr": null,
+ "family": "Kinosternidae",
+ "order": "Testudines",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Small turtle, adults about 10-16 cm carapace length; smooth olive to brown carapace with no ornamentation.",
+  "Yellow chin (throat too in most areas), yellowish cheeks; four pairs of barbels on the throat.",
+  "Plastron black except where worn, with two well-developed transverse hinges; strongly webbed feet.",
+  "Male: slightly concave plastron, long thick spine-tipped tail; female: short stubby tail, flat plastron.",
+  "Emits a disagreeable musk odour when disturbed."
+ ],
+ "behavior": [
+  "Diurnal in spring, crepuscular and nocturnal in summer; hibernates in winter and estivates in the hottest part of summer.",
+  "Seasonally aquatic then terrestrial: in the Illinois-Iowa-Missouri population turtles leave drying ponds in July-August and may be active under 100 days a year.",
+  "Often travels overland; adults wander about 190-220 m from water.",
+  "Omnivore: insects, mollusks, crustaceans, amphibian larvae, carrion and some vegetation."
+ ],
+ "habitat": [
+  "Quiet or slow water with soft mud or sand bottom in grassland and open woodland, often temporary water; in arid regions in cattle tanks and ditches.",
+  "Seeks shelter underground on land or burrows in mud underwater."
+ ],
+ "range": "South-central United States from Nebraska to southeastern Arizona, with an isolated population in Illinois-Iowa-Missouri; also northern Mexico.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102248"
+  },
+  {
+   "title": "Animal Diversity Web species account",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Kinosternon_flavescens/"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

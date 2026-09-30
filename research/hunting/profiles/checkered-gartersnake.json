@@ -1,0 +1,43 @@
+{
+ "slug": "checkered-gartersnake",
+ "scientificName": "Thamnophis marcianus",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Checkered pattern of black and light-gray spots along the body, with pale-yellow stripes on the spine and sides and a cream belly.",
+  "Olive-green head with a single thick black line on the neck and a pale-yellow crescent just behind the head; red tongue with a black tip.",
+  "21 rows of keeled dorsal scales; adults 45-106 cm, average about 55 cm; females bulkier and longer than males.",
+  "Juveniles show the same checkerboard as adults."
+ ],
+ "behavior": [
+  "Mainly diurnal, but active at night in southern habitats; solitary, hibernating in groups of around 100 from October to March and basking on warm winter days.",
+  "Hunts small prey in irrigation ditches and streams using smell and sight; eats earthworms, tadpoles, frogs, salamanders, fish, lizards, mice, slugs and eggs (juveniles favour earthworms, adults tadpoles).",
+  "Uses species-specific pheromone trails to find mates; males follow females more than females follow males."
+ ],
+ "habitat": [
+  "Sea level to about 2,200 m, from wetlands to drylands, always at or near water (rivers, ponds, springs, irrigation ditches, lakes); also backyards and gardens, and it is spreading west along irrigation canals."
+ ],
+ "range": "Southwestern California, southwestern Arizona and southern New Mexico in the United States (abundant along the Gila and Colorado rivers), plus Mexico and Central America per Animal Diversity Web. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "black-necked-gartersnake",
+   "name": "Black-necked gartersnake (Thamnophis cyrtopsis)",
+   "howToTell": "Black-necked has 19 dorsal scale rows and two black blotches on the neck sides, versus 21 rows and a single black neck line in the checkered."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Thamnophis marcianus (Checkered Gartersnake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101075/Thamnophis_marcianus"
+  },
+  {
+   "title": "Animal Diversity Web: Checkered Garter Snake",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Thamnophis_marcianus/"
+  }
+ ]
+}

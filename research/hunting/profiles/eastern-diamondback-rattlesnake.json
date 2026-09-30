@@ -1,0 +1,39 @@
+{
+ "slug": "eastern-diamondback-rattlesnake",
+ "scientificName": "Crotalus adamanteus",
+ "commonNameFr": null,
+ "family": "Viperidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Largest rattlesnake, heavy-bodied, usually 1.0-1.5 m and sometimes over 2.4 m; males larger than females.",
+  "Olive, brown or near-black with diamond-shaped outlines of tan-yellow scales around blackish-brown centres down the back; keeled scales.",
+  "Large spade-shaped head, vertical pupils, pits between eye and nostril, and two light lines running from behind the eye to the back of the jaw.",
+  "Rattle at the tail tip; hatchlings (about 0.3 m) closely resemble adults."
+ ],
+ "behavior": [
+  "Sit-and-wait ambush predator that coils in shade or underbrush; mostly diurnal but may be active at any time, with most activity early morning, evening and night per NatureServe.",
+  "Most activity April-October, though it visits the surface on warm winter days; hibernates singly; shelters in stump holes, burrows of gopher tortoises and other animals and brush piles.",
+  "Eats mainly rodents and rabbits (cottontails, marsh rabbits, cotton rats, squirrels); gives live birth in August-September to about 14 young."
+ ],
+ "habitat": [
+  "Pine and wiregrass flatwoods, longleaf pine-turkey oak hills, scrub, coastal hammocks and barrier islands, dry prairie and abandoned fields, particularly with abundant cover; large tracts are most suitable; rarely climbs."
+ ],
+ "range": "Southeastern coastal plain: NatureServe lists North and South Carolina, Georgia, Florida, Alabama, Mississippi and Louisiana; not recorded for Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Eastern diamond-backed rattlesnake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.101938"
+  },
+  {
+   "title": "Crotalus adamanteus (Eastern Diamondback Rattlesnake)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Crotalus_adamanteus/"
+  }
+ ]
+}

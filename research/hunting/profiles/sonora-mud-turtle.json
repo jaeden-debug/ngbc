@@ -1,0 +1,45 @@
+{
+ "slug": "sonora-mud-turtle",
+ "scientificName": "Kinosternon sonoriense",
+ "commonNameFr": null,
+ "family": "Kinosternidae",
+ "order": "Testudines",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Small, mostly aquatic turtle; olive-green to olive-brown shell mottled with dark spots; adult carapace 75-150 mm.",
+  "Yellow plastron, greyish-black legs, usually a yellow line along the edge of the front legs.",
+  "Green-grey head with dark side stripes and dark spots on chin and crown.",
+  "Plastron hinged front and rear, long chin barbels, webbed feet (as described for the Sonoyta subspecies)."
+ ],
+ "behavior": [
+  "Solitary outside breeding, with overlapping home ranges and very high local densities (over 3,000 per hectare recorded in New Mexico).",
+  "Most active in summer monsoon, least active in winter; may estivate on land 11-34 days and move overland up to 8 km.",
+  "Eats snails, fish, frogs, crayfish, aquatic insects and occasionally lizards and snakes."
+ ],
+ "habitat": [
+  "Streams, springs, ponds and pools in intermittent streams, from desert to oak, pinyon-juniper and pine woodland; in southeastern Arizona about 90% of captures were in stock tanks."
+ ],
+ "range": "Southern and central Arizona and southwestern New Mexico (Catron, Grant, Hidalgo counties), south into Sonora and Chihuahua, Mexico; considered extirpated from California.",
+ "lookalikes": [],
+ "aliases": [
+  "Sonoran mud turtle"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100251"
+  },
+  {
+   "title": "Animal Diversity Web species account",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Kinosternon_sonoriense/"
+  },
+  {
+   "title": "Sonoyta mud turtle species assessment (species description of the subspecies K. s. longifemorale)",
+   "publisher": "U.S. Fish and Wildlife Service",
+   "url": "https://ecos.fws.gov/docs/candidate/assessments/2014/r2/C067_V01.pdf"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

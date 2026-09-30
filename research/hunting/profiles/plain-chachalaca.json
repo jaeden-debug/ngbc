@@ -1,0 +1,42 @@
+{
+ "slug": "plain-chachalaca",
+ "scientificName": "Ortalis vetula",
+ "commonNameFr": null,
+ "family": "Cracidae",
+ "order": "Galliformes",
+ "taxonomyNote": "NatureServe notes some authors consider it conspecific with O. leucogaster.",
+ "fieldMarks": [
+  "Large, long-tailed, small-headed; 50-66 cm, 680 g-1.1 kg",
+  "Dull olive brown, greyer head, buff belly; may show red on the throat",
+  "Wide black tail feathers with white tips; sexes similar"
+ ],
+ "behavior": [
+  "Loud, raucous 'cha-cha-lac', often in chorus at dawn and dusk; male's voice lower than female's",
+  "Forages on the ground or in shrubs and trees, climbing about in thin branches",
+  "Mostly vegetarian: berries (coyotillo, pigeonberry, hackberry), seeds, leaves, buds, flowers; a few insects and snails",
+  "Nest is a stick platform 4-15 ft up in dense cover"
+ ],
+ "habitat": [
+  "Subtropical woods, river groves and dense brush, usually near water in south Texas; native ebony, hackberry, huisache and mesquite woodland and overgrown orchard edges."
+ ],
+ "range": "Extreme southern Texas (Rio Grande Valley) south through Mexico and Central America; NatureServe also records it in Georgia.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Plain Chachalaca",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/plain-chachalaca"
+  },
+  {
+   "title": "NatureServe Explorer: Ortalis vetula",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103601/Ortalis_vetula"
+  },
+  {
+   "title": "Ortalis vetula (classification)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Ortalis_vetula/"
+  }
+ ]
+}

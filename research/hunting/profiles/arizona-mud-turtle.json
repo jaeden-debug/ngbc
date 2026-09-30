@@ -1,0 +1,39 @@
+{
+ "slug": "arizona-mud-turtle",
+ "scientificName": "Kinosternon arizonense",
+ "commonNameFr": null,
+ "family": "Kinosternidae",
+ "order": "Testudines",
+ "taxonomyNote": "NatureServe lists the extant species as Kinosternon stejnegeri (McCord 2016; TTWG 2025), restricting the name K. arizonense to fossil material; it was formerly treated as a subspecies of K. flavescens.",
+ "fieldMarks": [
+  "Dome-shaped carapace that lacks keels, brown, olive or yellow-brown; plastron and marginal rim yellow.",
+  "Top of head grey; underside and sides of head cream to light yellow.",
+  "No patterns on the limbs."
+ ],
+ "behavior": [
+  "Active by day, and also at night in the July-August monsoon; spends most of that period in water.",
+  "Hibernates in a burrow in winter; in drought can stay dormant underground for up to two years.",
+  "Eats frogs, tadpoles, toads, fish, aquatic invertebrates and carrion."
+ ],
+ "habitat": [
+  "Prefers temporary ponds and puddles; found in Sonoran desert scrub and semidesert grassland."
+ ],
+ "range": "Arizona in the United States (NatureServe lists AZ only) and Sonora, Mexico.",
+ "lookalikes": [],
+ "aliases": [
+  "Kinosternon arizonense (former name)"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.1225740"
+  },
+  {
+   "title": "Arizona mud turtle (raw wikitext, used beside NatureServe for field description)",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/w/index.php?title=Arizona_mud_turtle&action=raw"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

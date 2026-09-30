@@ -1,0 +1,39 @@
+{
+ "slug": "gadwall",
+ "scientificName": "Mareca strepera",
+ "fieldMarks": [
+  "Male mostly gray with a contrasting black stern; looks plain at a distance",
+  "Female mottled brown with a gray-and-orange bill",
+  "Steeper forehead than a female mallard",
+  "Square white patch on the trailing edge of the wing, obvious in flight"
+ ],
+ "behavior": [
+  "Dabbles while swimming, taking more leaves and stems of aquatic plants than other dabblers; seldom forages on land",
+  "Migrates in flocks but is not a long-distance migrant; most winter north of the tropics",
+  "Primary migration corridor runs from the prairies south through the central plains"
+ ],
+ "habitat": [
+  "Summers around fresh or alkaline lakes in open prairie and intermountain valleys, locally coastal marshes; in migration and winter on marshes, lakes and estuaries, generally not salt water."
+ ],
+ "range": "Breeds from southern Alaska, southern Yukon and the southern Mackenzie across the Prairie Provinces to southern Ontario, southwestern Quebec and the Maritimes, south to the southwestern and central United States; most common on inland waters west of the Mississippi.",
+ "lookalikes": [
+  {
+   "slug": "mallard",
+   "name": "Mallard (female)",
+   "howToTell": "The female gadwall has a steeper forehead, a gray-and-orange bill and a white wing patch."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Gadwall | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/gadwall"
+  },
+  {
+   "title": "Mareca strepera (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101166/Mareca_strepera"
+  }
+ ]
+}

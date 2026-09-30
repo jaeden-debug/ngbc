@@ -1,0 +1,36 @@
+{
+ "slug": "european-hare",
+ "scientificName": "Lepus europaeus",
+ "commonNameFr": null,
+ "family": "Leporidae",
+ "order": "Lagomorpha",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Yellowish-brown to greyish-brown coat with white underbody",
+  "Long ears with black tips; brown face with eye rings",
+  "Tail black on top, white beneath",
+  "3-5 kg, about 680 mm long"
+ ],
+ "behavior": [
+  "Mostly solitary and nocturnal, foraging roughly 7 p.m.-7 a.m.",
+  "Rests by day in shallow depressions called forms",
+  "Active year-round; summer diet grasses, herbs, crops; winter diet twigs, buds, bark",
+  "Fast and agile, up to about 35 mph"
+ ],
+ "habitat": [
+  "Open fields and pastures bordered by hedgerows and woodlots, often around agricultural fields."
+ ],
+ "range": "Native to Europe and western/central Asia. Introduced to North America (southern Ontario, Great Lakes, northeastern US, from 1893-1912).",
+ "lookalikes": [],
+ "aliases": [
+  "brown hare",
+  "common hare"
+ ],
+ "sources": [
+  {
+   "title": "European Hare",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lepus_europaeus/"
+  }
+ ]
+}

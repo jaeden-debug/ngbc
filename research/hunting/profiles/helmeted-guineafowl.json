@@ -1,0 +1,37 @@
+{
+ "slug": "helmeted-guineafowl",
+ "scientificName": "Numida meleagris",
+ "commonNameFr": null,
+ "family": "Numididae",
+ "order": "Galliformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Body feathers grey-black with white speckles; 51-64 cm, 1.1-1.8 kg; about 22 in in Hawaii",
+  "Bare head with sky-blue to dark-blue skin, a bony casque (larger in males) and wattles (smaller in females)",
+  "Juveniles: less developed casque and wattles, paler face, grey-brown overall; chicks have longitudinal head stripes"
+ ],
+ "behavior": [
+  "Terrestrial flocks roost in trees at night; flocks of one pair up to 100 birds, largest in winter",
+  "Runs from danger and flies only as a last resort, steeply upward",
+  "Harsh dry calls carry far; male gives a single 'chek', female a two-note 'buck-wheat'",
+  "Omnivorous: seeds, grain, bulbs, roots, fruit, snails, beetles, ticks, small lizards; dust bathes daily"
+ ],
+ "habitat": [
+  "Exposed areas with some trees for roosting: grassland, savanna, cultivated land and scrub, often near water; avoids dense forest, desert and marsh."
+ ],
+ "range": "Native across most of sub-Saharan Africa. In Hawaii, domestic-type birds have been released and live in open urban fields near ponds and wetlands.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Numida meleagris (helmeted guinea fowl)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Numida_meleagris/"
+  },
+  {
+   "title": "helmeted guineafowl (domestic type)",
+   "publisher": "State of Hawaii, Hawaii Birding Trails",
+   "url": "https://hawaiibirdingtrails.hawaii.gov/bird/helmeted-guineafowl/"
+  }
+ ]
+}

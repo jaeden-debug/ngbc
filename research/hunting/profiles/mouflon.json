@@ -1,0 +1,66 @@
+{
+ "slug": "mouflon",
+ "scientificName": "Ovis gmelini",
+ "commonNameFr": null,
+ "family": "Bovidae",
+ "order": "Artiodactyla",
+ "taxonomyNote": "Names used for the European mouflon in the pages read: Wikipedia 'Mouflon' says it was once thought a subspecies of the mouflon but is now considered a feral descendant of domestic sheep, Ovis aries musimon (true mouflon = Ovis gmelini, wild sheep of Cyprus, Armenia, Azerbaijan, Georgia, Iran, Turkey; O. g. gmelini said to be introduced to Texas). Wikipedia 'European mouflon' is titled Ovis aries musimon and also mentions Ovis musimon, Ovis musimon musimon, Ovis ammon musimon and Ovis orientalis musimon. NatureServe (Ovis aries) says Grubb included O. orientalis, O. musimon and O. ophion in Ovis aries and that O. aries is the domestic form of O. gmelini. ADW's classification page is Ovis aries musimon and its Ovis aries page calls the Sardinia/Corsica flocks Ovis musimon. No 'Ovis gmelini musimon' appeared in any page read. Not resolved.",
+ "fieldMarks": [
+  "European mouflon rams are fox red-brown in summer, usually with a whitish saddle patch; ewes are brownish; both sexes darker in winter",
+  "Rams carry helix-shaped horns up to 80 cm; ewes are hornless on Sardinia and small-horned on Corsica",
+  "Up to 120 cm body length, 90 cm shoulder height; rams 35-55 kg, ewes 25-40 kg"
+ ],
+ "behavior": [
+  "Small herds led by an older ewe; rams often form separate groups outside the rut",
+  "Rut in October/November; one or two lambs born March/April",
+  "Herbivores that debark trees",
+  "Escape behaviour is to flee to inaccessible rock faces; sight is well developed and people can be noticed at up to about 1,000 m"
+ ],
+ "habitat": [
+  "Open, mountainous, stony dry ground originally; in Central Europe also deciduous and mixed forest, still preferring dry stony soils."
+ ],
+ "range": "European mouflon originate from Corsica and Sardinia. In North America DLNR lists mouflon sheep and mouflon-feral hybrid sheep on Hawaii Island and mouflon on Lanai; Wikipedia says it is kept on game ranches in Texas and has been introduced to Hawaii.",
+ "lookalikes": [
+  {
+   "slug": "feral-sheep",
+   "name": "Feral sheep",
+   "howToTell": "Hybrids with feral sheep are managed on Mauna Kea; the sources read give no field mark separating hybrids from mouflon."
+  }
+ ],
+ "aliases": [
+  "European mouflon",
+  "muflon"
+ ],
+ "sources": [
+  {
+   "title": "European mouflon",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/European_mouflon"
+  },
+  {
+   "title": "Mouflon",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Mouflon"
+  },
+  {
+   "title": "NatureServe Explorer: Ovis aries",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100199/Ovis_aries"
+  },
+  {
+   "title": "Ovis aries musimon (classification)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Ovis_aries_musimon/"
+  },
+  {
+   "title": "Game Mammal Hunting (species list)",
+   "publisher": "Hawaii Department of Land and Natural Resources",
+   "url": "https://dlnr.hawaii.gov/recreation/hunting/mammal"
+  },
+  {
+   "title": "Sheep Eradication from Palila Critical Habitat",
+   "publisher": "Hawaii Department of Land and Natural Resources",
+   "url": "https://dlnr.hawaii.gov/restoremaunakea/management/sheep-eradication/"
+  }
+ ]
+}

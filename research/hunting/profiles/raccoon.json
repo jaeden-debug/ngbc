@@ -1,0 +1,41 @@
+{
+ "slug": "raccoon",
+ "scientificName": "Procyon lotor",
+ "fieldMarks": [
+  "Black face mask",
+  "Grizzled gray coat; bushy tail with 5–10 alternating black and brown rings",
+  "Stocky with short legs, pointed snout and short rounded ears",
+  "Dexterous five-fingered front paws"
+ ],
+ "behavior": [
+  "Mainly nocturnal; family groups forage together at night and den by day",
+  "Omnivorous: crayfish, corn, fruit, nuts, eggs, insects; raids garbage in towns",
+  "In the north dens through winter on stored fat (not true hibernation)",
+  "Handles food with the front paws, the source of the 'washing' reputation"
+ ],
+ "habitat": [
+  "Anywhere with water, food and den sites; best in hardwood swamps, floodplain forest, marshes and farmland; very common in cities."
+ ],
+ "range": "Southern Canada (all provinces except Newfoundland and Labrador), the United States except parts of the Rockies and desert Southwest, and south to Panama; expanding northward.",
+ "lookalikes": [],
+ "aliases": [
+  "Common raccoon"
+ ],
+ "sources": [
+  {
+   "title": "Raccoon - Hinterland Who's Who",
+   "publisher": "Hinterland Who's Who (Canadian Wildlife Service / Canadian Wildlife Federation)",
+   "url": "https://www.hww.ca/en/wildlife/mammals/raccoon.html"
+  },
+  {
+   "title": "Common Raccoon (Procyon lotor)",
+   "publisher": "Texas Parks and Wildlife Department",
+   "url": "https://tpwd.texas.gov/huntwild/wild/species/raccoon/"
+  },
+  {
+   "title": "Procyon lotor (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.798324/Procyon_lotor"
+  }
+ ]
+}

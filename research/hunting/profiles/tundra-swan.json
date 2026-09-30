@@ -1,0 +1,36 @@
+{
+ "slug": "tundra-swan",
+ "scientificName": "Cygnus columbianus",
+ "fieldMarks": [
+  "Large all-white swan, 3 ft 11 in-4 ft 7 in.",
+  "Black bill (not orange as in Mute Swan), usually with a small yellow spot in front of the eye.",
+  "Juveniles dull gray-brown with a pinkish bill, whitening by midwinter.",
+  "Call a mellow, bugling 'hoo-ho-hoo', often heard from migrating flocks."
+ ],
+ "behavior": [
+  "Migrating flocks of up to 100 or more are made up of family groups; fall migration uses long flights between traditional staging areas.",
+  "Dabbles, dips or up-ends in water for aquatic plants; on migration and in winter feeds heavily on waste corn, barley and soybeans in fields, sometimes on moonlit nights."
+ ],
+ "habitat": [
+  "Breeds on northern tundra with many lakes and ponds, usually near the coast.",
+  "Winters on shallow lakes, wide slow rivers and coastal estuaries, especially near farm fields."
+ ],
+ "range": "Breeds on Arctic tundra of Alaska and northern Canada and migrates long distances to winter on both coasts and interior waters of the United States.",
+ "lookalikes": [
+  {
+   "slug": "mute-swan",
+   "name": "Mute swan",
+   "howToTell": "Mute swan has an orange bill; adult tundra swan's bill is black, usually with a small yellow spot before the eye."
+  }
+ ],
+ "aliases": [
+  "whistling swan"
+ ],
+ "sources": [
+  {
+   "title": "Tundra Swan | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/tundra-swan"
+  }
+ ]
+}

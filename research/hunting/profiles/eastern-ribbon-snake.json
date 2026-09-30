@@ -1,0 +1,52 @@
+{
+ "slug": "eastern-ribbon-snake",
+ "scientificName": "Thamnophis sauritus",
+ "commonNameFr": "Couleuvre mince",
+ "commonNameFrSource": "NatureServe Explorer (other common names, FR)",
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe and Crother (2017) spell the species name 'saurita' (spelling corrected by Kraus and Cameron 2016); Animal Diversity Web and the batch use 'sauritus'. NatureServe also lists Great Lakes and Atlantic populations separately.",
+ "fieldMarks": [
+  "Slim, long-tailed striped snake, 46-86 cm, with three white, yellow or greenish stripes on a black or dark-brown ground colour.",
+  "Head wider than the neck with large eyes and a light bar in front of each; upper lip scales bright white or yellow without the dark borders of garter snakes.",
+  "Belly white, yellow or green and unblotched; scales keeled; females slightly larger than males."
+ ],
+ "behavior": [
+  "Fast-moving and diurnal; usually at the edge of water but also in moist meadows; basks on logs and rocks and in bushes.",
+  "Active April-October, hibernating in abandoned rodent or crayfish burrows or anthills, sometimes with other snakes.",
+  "Eats mainly frogs, salamanders and their larvae plus small fish, taken by stalking or chasing; live-bearing with young 16-24 cm."
+ ],
+ "habitat": [
+  "Wet meadows, marshes, seasonally flooded prairies, bogs, pond and lake shores and swamps, in or near sun-exposed vegetation along water's edge; climbs low vegetation."
+ ],
+ "range": "Eastern North America east of the Mississippi River from southern Maine and southern Ontario to Florida and Louisiana; in Canada Ontario, Quebec and Nova Scotia (NatureServe rank N4).",
+ "lookalikes": [
+  {
+   "slug": "western-ribbon-snake",
+   "name": "Western ribbon snake",
+   "howToTell": "Western lacks the broad brown ventrolateral stripe and has large paired parietal spots and a longer muzzle and tail (Animal Diversity Web)."
+  },
+  {
+   "slug": "common-garter-snake",
+   "name": "Garter snakes",
+   "howToTell": "Garter snakes have dark borders on the upper lip scales, whereas ribbon snake lip scales are plain white or yellow (Animal Diversity Web)."
+  }
+ ],
+ "aliases": [
+  "Eastern ribbonsnake",
+  "Eastern ribbon snake",
+  "Common ribbonsnake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Thamnophis saurita",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.103516"
+  },
+  {
+   "title": "Animal Diversity Web: Thamnophis sauritus",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Thamnophis_sauritus/"
+  }
+ ]
+}

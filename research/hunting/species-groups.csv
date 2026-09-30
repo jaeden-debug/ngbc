@@ -26,3 +26,15 @@ species_group:furbearers,Furbearers,Animaux à fourrure,,EDITORIAL,Hunting and t
 species_group:crows,Crows,Corneilles et corbeaux,species_group:migratory-game-birds,TAXONOMIC_EDITORIAL,Federal treaty status and state seasons require composition
 species_group:ungulates,Ungulates,Ongulés,species_group:big-game,TAXONOMIC_EDITORIAL,Biological umbrella used only for cross-jurisdiction normalization
 species_group:bears,Bears,Ours,species_group:big-game,TAXONOMIC_EDITORIAL,Biological umbrella; legal classifications and protected status vary
+species_group:reptiles,Reptiles,Reptiles,,TAXONOMIC_EDITORIAL,Biological umbrella; take rules for reptiles are usually separate from game rules
+species_group:crocodilians,Crocodilians,Crocodiliens,species_group:reptiles,TAXONOMIC_EDITORIAL,American alligator
+species_group:snakes,Snakes,Serpents,species_group:reptiles,TAXONOMIC_EDITORIAL,Includes invasive constrictors under removal programs
+species_group:lizards,Lizards,Lézards,species_group:reptiles,TAXONOMIC_EDITORIAL,Includes invasive tegus and iguanas under removal programs
+species_group:turtles,Turtles,Tortues,species_group:reptiles,TAXONOMIC_EDITORIAL,Take is often regulated under fishing licences
+species_group:amphibians,Amphibians,Amphibiens,,TAXONOMIC_EDITORIAL,Biological umbrella; take is often regulated under fishing licences
+species_group:frogs,Frogs and toads,Grenouilles et crapauds,species_group:amphibians,TAXONOMIC_EDITORIAL,
+species_group:salamanders,Salamanders and newts,Salamandres et tritons,species_group:amphibians,TAXONOMIC_EDITORIAL,
+species_group:cormorants,Cormorants,Cormorans,,TAXONOMIC_EDITORIAL,Not federal migratory game birds; provincial seasons exist
+species_group:murres,Murres,Guillemots,species_group:migratory-game-birds,TAXONOMIC_EDITORIAL,Hunted in Newfoundland and Labrador under the Migratory Birds Regulations
+species_group:unprotected-birds,Unprotected and nuisance birds,Oiseaux non protégés et nuisibles,,TAXONOMIC_EDITORIAL,Introduced or depredating birds that some authorities leave unprotected; not game birds
+species_group:raptors,Raptors,Rapaces,,TAXONOMIC_EDITORIAL,Owls and hawks; protected in most jurisdictions

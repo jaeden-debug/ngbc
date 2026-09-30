@@ -1,0 +1,47 @@
+{
+ "slug": "california-lyresnake",
+ "scientificName": "Trimorphodon lyrophanes",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "Older sources, including the UC Irvine Orange County natural history site, list it as Trimorphodon biscutatus lyrophanes; NatureServe follows Devitt et al. (2008) in recognizing six species in the complex.",
+ "fieldMarks": [
+  "Brown snake with irregular blotches that camouflage it against rocky desert ground; adults reach about 47 in (1,200 mm) snout-vent length per the San Diego atlas."
+ ],
+ "behavior": [
+  "Rock-dwelling: in daytime sits in crevices or similar refuges.",
+  "Ambush predator of geckos and granite night lizards, but eats other available prey."
+ ],
+ "habitat": [
+  "Chiefly rocky areas of lowlands, canyons, mesas and lower mountain slopes: desert grassland, desert scrub, chaparral, pinyon-juniper and oak woodland, open conifer forest, thornscrub and thornforest; usually rocky uplands, much less often rockless lowland desert."
+ ],
+ "range": "Southern California generally west of the Salton Trough (north to near Los Angeles on the coast and in the Mojave Desert to the Argus and Amargosa mountains) south through most of the Baja California peninsula and several Gulf of California islands.",
+ "lookalikes": [
+  {
+   "slug": "sonoran-lyresnake",
+   "name": "Sonoran lyresnake (Trimorphodon lambda)",
+   "howToTell": "Sonoran lyresnake occurs east of the Salton Trough; specimens from contact zones in southeastern California or southern Nevada may be difficult to identify."
+  }
+ ],
+ "aliases": [
+  "Baja California lyresnake",
+  "Baja California lyre snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Trimorphodon lyrophanes (California Lyresnake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.831601/Trimorphodon_lyrophanes"
+  },
+  {
+   "title": "California Lyresnake (Coast to Cactus)",
+   "publisher": "San Diego Natural History Museum",
+   "url": "https://coasttocactus.sdnhm.org/animals/california-lyresnake"
+  },
+  {
+   "title": "Trimorphodon lyrophanes - California Lyresnake (Amphibian and Reptile Atlas of Peninsular California)",
+   "publisher": "San Diego Natural History Museum",
+   "url": "https://herpatlas.sdnhm.org/species/overview/california-lyresnake/188/"
+  }
+ ]
+}

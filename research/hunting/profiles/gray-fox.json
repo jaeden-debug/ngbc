@@ -1,0 +1,42 @@
+{
+ "slug": "gray-fox",
+ "scientificName": "Urocyon cinereoargenteus",
+ "fieldMarks": [
+  "Grizzled (peppery) gray upperparts; reddish-brown on neck sides, chest, belly and legs.",
+  "White cheeks and throat.",
+  "Tail about one-third of total length with a distinct black stripe along the top and a black tip.",
+  "Weighs about 3–5 kg."
+ ],
+ "behavior": [
+  "The only North American canid that climbs trees, using hooked claws to escape predators or reach food.",
+  "Mainly nocturnal and solitary outside breeding and pup rearing.",
+  "Dens in hollow trees and logs, rock crevices and burrows.",
+  "Omnivorous: small mammals, insects, birds and fruit (apples, berries, wild grapes); caches surplus food."
+ ],
+ "habitat": [
+  "Deciduous forest mixed with brushy woodland and rocky terrain, often near water and where woodland meets farmland."
+ ],
+ "range": "From southern Canada through most of the continental US to Colombia and Venezuela, absent from much of the Great Plains and the mountainous Northwest.",
+ "lookalikes": [
+  {
+   "slug": "red-fox",
+   "name": "Red fox",
+   "howToTell": "Red foxes have black legs and a white-tipped tail; the gray fox's tail has a black stripe and black tip."
+  }
+ ],
+ "aliases": [
+  "grey fox"
+ ],
+ "sources": [
+  {
+   "title": "Urocyon cinereoargenteus (gray fox)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Urocyon_cinereoargenteus/"
+  },
+  {
+   "title": "Gray Fox (Urocyon cinereoargenteus)",
+   "publisher": "Carnegie Museum of Natural History",
+   "url": "https://mammals.carnegiemnh.org/pa-mammals/gray-fox-urocyon-cinereoargenteus/"
+  }
+ ]
+}

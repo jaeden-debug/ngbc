@@ -247,7 +247,10 @@
         }
       ],
       "sourceIds": [
-        "source:official-elk"
+        "source:official-elk",
+        "source:profile-elk-1",
+        "source:profile-elk-2",
+        "source:profile-elk-3"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -255,7 +258,7 @@
       "relatedSpeciesIds": [],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -297,7 +300,9 @@
             ]
           }
         ],
-        "similarSpeciesIds": [],
+        "similarSpeciesIds": [
+          "species:moose"
+        ],
         "habitat": [
           {
             "text": "Western forests, foothills and grasslands, plus some restored eastern populations.",
@@ -349,10 +354,47 @@
           ]
         },
         "sourceIds": [
-          "source:official-elk"
+          "source:official-elk",
+          "source:profile-elk-1",
+          "source:profile-elk-2",
+          "source:profile-elk-3"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Strongly gregarious; old cows lead summer herds of cows, calves and yearling spike bulls.",
+            "sourceIds": [
+              "source:profile-elk-1",
+              "source:profile-elk-2",
+              "source:profile-elk-3"
+            ]
+          },
+          {
+            "text": "Rut in late September–early October; bulls bugle, gather harems and spar.",
+            "sourceIds": [
+              "source:profile-elk-1",
+              "source:profile-elk-2",
+              "source:profile-elk-3"
+            ]
+          },
+          {
+            "text": "Feeds early morning and late evening; grazes grasses, sedges and forbs in summer and browses woody growth in winter.",
+            "sourceIds": [
+              "source:profile-elk-1",
+              "source:profile-elk-2",
+              "source:profile-elk-3"
+            ]
+          },
+          {
+            "text": "Migrates by elevation in many areas: high in summer, low in winter.",
+            "sourceIds": [
+              "source:profile-elk-1",
+              "source:profile-elk-2",
+              "source:profile-elk-3"
+            ]
+          }
+        ]
       }
     },
     {
@@ -401,7 +443,9 @@
         }
       ],
       "sourceIds": [
-        "source:official-caribou"
+        "source:official-caribou",
+        "source:profile-caribou-1",
+        "source:profile-caribou-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -409,7 +453,7 @@
       "relatedSpeciesIds": [],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -503,10 +547,54 @@
           ]
         },
         "sourceIds": [
-          "source:official-caribou"
+          "source:official-caribou",
+          "source:profile-caribou-1",
+          "source:profile-caribou-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Large herds migrate up to 400 miles (640 km) between summer and winter ranges; smaller herds may not migrate.",
+            "sourceIds": [
+              "source:profile-caribou-1",
+              "source:profile-caribou-2"
+            ]
+          },
+          {
+            "text": "Lichens are the main winter food, located by smell and dug out of snow with the hooves; summer diet is willow leaves, sedges, flowering plants and mushrooms.",
+            "sourceIds": [
+              "source:profile-caribou-1",
+              "source:profile-caribou-2"
+            ]
+          },
+          {
+            "text": "Usually quiet but may give a loud snort; cows and calves call constantly around calving.",
+            "sourceIds": [
+              "source:profile-caribou-1",
+              "source:profile-caribou-2"
+            ]
+          },
+          {
+            "text": "Bulls shed antlers in November-December after the rut; each herd uses a distinct calving area.",
+            "sourceIds": [
+              "source:profile-caribou-1",
+              "source:profile-caribou-2"
+            ]
+          }
+        ],
+        "conservationStatus": [
+          {
+            "status": "ENDANGERED",
+            "jurisdictionIds": [
+              "jurisdiction:us-federal"
+            ],
+            "text": "Southern Mountain Caribou DPS (Rangifer tarandus ssp. caribou), U.S.A. (wherever found), Canada (southeastern British Columbia): listed as endangered under the Endangered Species Act since 1983-01-14.",
+            "sourceIds": [
+              "source:conservation-caribou-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -556,7 +644,9 @@
         }
       ],
       "sourceIds": [
-        "source:official-mule-deer"
+        "source:official-mule-deer",
+        "source:profile-mule-deer-1",
+        "source:profile-mule-deer-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -566,7 +656,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -663,10 +753,42 @@
           ]
         },
         "sourceIds": [
-          "source:official-mule-deer"
+          "source:official-mule-deer",
+          "source:profile-mule-deer-1",
+          "source:profile-mule-deer-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Escapes with a bounding gait; releases metatarsal scent that alerts other deer.",
+            "sourceIds": [
+              "source:profile-mule-deer-1",
+              "source:profile-mule-deer-2"
+            ]
+          },
+          {
+            "text": "Females live in clans; bucks form separate groups.",
+            "sourceIds": [
+              "source:profile-mule-deer-1",
+              "source:profile-mule-deer-2"
+            ]
+          },
+          {
+            "text": "Selective browser of leaves and twigs of shrubs and trees, plus acorns, legume seeds and fruit.",
+            "sourceIds": [
+              "source:profile-mule-deer-1",
+              "source:profile-mule-deer-2"
+            ]
+          },
+          {
+            "text": "Migrates from high summer range to lower winter range; rut peaks late November to mid-December.",
+            "sourceIds": [
+              "source:profile-mule-deer-1",
+              "source:profile-mule-deer-2"
+            ]
+          }
+        ]
       }
     },
     {
@@ -715,7 +837,9 @@
         }
       ],
       "sourceIds": [
-        "source:official-pronghorn"
+        "source:official-pronghorn",
+        "source:profile-pronghorn-1",
+        "source:profile-pronghorn-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -723,7 +847,7 @@
       "relatedSpeciesIds": [],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -765,7 +889,10 @@
             ]
           }
         ],
-        "similarSpeciesIds": [],
+        "similarSpeciesIds": [
+          "species:bighorn-sheep",
+          "species:mule-deer"
+        ],
         "habitat": [
           {
             "text": "Open prairie, sagebrush and semi-arid grassland of western North America.",
@@ -783,10 +910,54 @@
           }
         ],
         "sourceIds": [
-          "source:official-pronghorn"
+          "source:official-pronghorn",
+          "source:profile-pronghorn-1",
+          "source:profile-pronghorn-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Relies on keen eyesight and rapid flight; alarmed animals snort, erect the white rump hair and release musk.",
+            "sourceIds": [
+              "source:profile-pronghorn-1",
+              "source:profile-pronghorn-2"
+            ]
+          },
+          {
+            "text": "Bucks hold territories March–September; does travel in small herds; herds aggregate in winter.",
+            "sourceIds": [
+              "source:profile-pronghorn-1",
+              "source:profile-pronghorn-2"
+            ]
+          },
+          {
+            "text": "Eats forbs in spring and summer and browse (especially big sagebrush) in winter.",
+            "sourceIds": [
+              "source:profile-pronghorn-1",
+              "source:profile-pronghorn-2"
+            ]
+          },
+          {
+            "text": "Some northern herds migrate up to 200 miles a year on consistent routes; fences obstruct movement.",
+            "sourceIds": [
+              "source:profile-pronghorn-1",
+              "source:profile-pronghorn-2"
+            ]
+          }
+        ],
+        "conservationStatus": [
+          {
+            "status": "ENDANGERED",
+            "jurisdictionIds": [
+              "jurisdiction:us-federal"
+            ],
+            "text": "Sonoran pronghorn (Antilocapra americana sonoriensis), Wherever found, except where listed as an experimental population: listed as endangered under the Endangered Species Act since 1967-03-11.",
+            "sourceIds": [
+              "source:conservation-pronghorn-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -835,7 +1006,9 @@
         }
       ],
       "sourceIds": [
-        "source:official-brown-bear"
+        "source:official-brown-bear",
+        "source:profile-brown-bear-1",
+        "source:profile-brown-bear-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -845,7 +1018,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -888,7 +1061,8 @@
           }
         ],
         "similarSpeciesIds": [
-          "species:american-black-bear"
+          "species:american-black-bear",
+          "species:polar-bear"
         ],
         "habitat": [
           {
@@ -907,10 +1081,54 @@
           }
         ],
         "sourceIds": [
-          "source:official-brown-bear"
+          "source:official-brown-bear",
+          "source:profile-brown-bear-1",
+          "source:profile-brown-bear-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Generally solitary, but gathers at concentrated food such as salmon streams, sedge flats and carcasses.",
+            "sourceIds": [
+              "source:profile-brown-bear-1",
+              "source:profile-brown-bear-2"
+            ]
+          },
+          {
+            "text": "Omnivorous: plants make up 80-90% of the diet (grasses, sedges, roots, berries), plus salmon, ground squirrels, carrion and newborn moose and caribou.",
+            "sourceIds": [
+              "source:profile-brown-bear-1",
+              "source:profile-brown-bear-2"
+            ]
+          },
+          {
+            "text": "Home ranges usually 200-600 km2 for females and 900-1,800 km2 for males; in mountains, females and young keep to upper slopes while adult males use valley bottoms.",
+            "sourceIds": [
+              "source:profile-brown-bear-1",
+              "source:profile-brown-bear-2"
+            ]
+          },
+          {
+            "text": "Dens in winter; cubs are born in the den in January-February and stay with the mother 2-3 years.",
+            "sourceIds": [
+              "source:profile-brown-bear-1",
+              "source:profile-brown-bear-2"
+            ]
+          }
+        ],
+        "conservationStatus": [
+          {
+            "status": "THREATENED",
+            "jurisdictionIds": [
+              "jurisdiction:us-federal"
+            ],
+            "text": "Grizzly bear (Ursus arctos horribilis), U.S.A., conterminous (lower 48) States, except where listed as an experimental population: listed as threatened under the Endangered Species Act since 1975-07-28.",
+            "sourceIds": [
+              "source:conservation-brown-bear-1"
+            ]
+          }
+        ]
       }
     }
   ],
@@ -1118,6 +1336,146 @@
       "url": "https://parks.canada.ca/pn-np/nt/thaidene-nene/security-safety/ours-bears/identification",
       "publisher": "Parks Canada",
       "retrievedAt": "2026-09-20T20:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-elk-1",
+      "authority": "Montana Natural Heritage Program / Montana Fish, Wildlife & Parks",
+      "title": "Elk — Montana Field Guide",
+      "url": "https://fieldguide.mt.gov/speciesDetail.aspx?elcode=AMALC01010",
+      "publisher": "Montana Natural Heritage Program / Montana Fish, Wildlife & Parks",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-elk-2",
+      "authority": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "title": "Cervus elaphus (elk)",
+      "url": "https://animaldiversity.org/accounts/Cervus_elaphus/",
+      "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-elk-3",
+      "authority": "Alaska Department of Fish and Game",
+      "title": "Roosevelt Elk Species Profile",
+      "url": "https://www.adfg.alaska.gov/index.cfm?adfg=elk.main",
+      "publisher": "Alaska Department of Fish and Game",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-caribou-1",
+      "authority": "Alaska Department of Fish and Game",
+      "title": "Caribou Species Profile",
+      "url": "https://www.adfg.alaska.gov/index.cfm?adfg=caribou.main",
+      "publisher": "Alaska Department of Fish and Game",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-caribou-2",
+      "authority": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+      "title": "Caribou - Hinterland Who's Who",
+      "url": "https://www.hww.ca/en/wildlife/mammals/caribou.html",
+      "publisher": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-mule-deer-1",
+      "authority": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "title": "Odocoileus hemionus (mule deer)",
+      "url": "https://animaldiversity.org/accounts/Odocoileus_hemionus/",
+      "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-mule-deer-2",
+      "authority": "Alaska Department of Fish and Game",
+      "title": "Mule Deer Species Profile",
+      "url": "https://www.adfg.alaska.gov/index.cfm?adfg=muledeer.main",
+      "publisher": "Alaska Department of Fish and Game",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-pronghorn-1",
+      "authority": "Montana Natural Heritage Program / Montana Fish, Wildlife & Parks",
+      "title": "Pronghorn — Montana Field Guide",
+      "url": "https://fieldguide.mt.gov/speciesDetail.aspx?elcode=amald01010",
+      "publisher": "Montana Natural Heritage Program / Montana Fish, Wildlife & Parks",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-pronghorn-2",
+      "authority": "USDA Forest Service",
+      "title": "Antilocapra americana, pronghorn — Fire Effects Information System",
+      "url": "https://research.fs.usda.gov/feis/species-reviews/anam",
+      "publisher": "USDA Forest Service",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-brown-bear-1",
+      "authority": "Alaska Department of Fish and Game",
+      "title": "Brown Bear Species Profile",
+      "url": "https://www.adfg.alaska.gov/index.cfm?adfg=brownbear.main",
+      "publisher": "Alaska Department of Fish and Game",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-brown-bear-2",
+      "authority": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+      "title": "Grizzly Bear - Hinterland Who's Who",
+      "url": "https://www.hww.ca/en/wildlife/mammals/grizzly-bear.html",
+      "publisher": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:conservation-caribou-1",
+      "authority": "U.S. Fish and Wildlife Service",
+      "title": "ECOS species profile: Southern Mountain Caribou DPS",
+      "url": "https://ecos.fws.gov/ecp/species/4618",
+      "publisher": "U.S. Fish and Wildlife Service",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:conservation-pronghorn-1",
+      "authority": "U.S. Fish and Wildlife Service",
+      "title": "ECOS species profile: Sonoran pronghorn",
+      "url": "https://ecos.fws.gov/ecp/species/4750",
+      "publisher": "U.S. Fish and Wildlife Service",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:conservation-brown-bear-1",
+      "authority": "U.S. Fish and Wildlife Service",
+      "title": "ECOS species profile: Grizzly bear",
+      "url": "https://ecos.fws.gov/ecp/species/7642",
+      "publisher": "U.S. Fish and Wildlife Service",
+      "retrievedAt": "2026-09-30T12:00:00Z",
       "type": "official",
       "verificationStatus": "verified"
     }

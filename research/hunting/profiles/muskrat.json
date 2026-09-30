@@ -1,0 +1,51 @@
+{
+ "slug": "muskrat",
+ "scientificName": "Ondatra zibethicus",
+ "fieldMarks": [
+  "Rotund rodent 26–36 cm plus a 20–28 cm scaly, rat-like tail; 0.9–1.8 kg",
+  "Silvery to dark brown glossy coat with a lighter belly; dark feet and tail",
+  "Hind feet large but not webbed, fringed with stiff hairs"
+ ],
+ "behavior": [
+  "Builds dome houses of cattail and bulrush 0.6–0.9 m high, or tunnels into banks",
+  "In winter feeds under the ice and builds 'pushups' of vegetation over holes",
+  "Mainly eats roots and stems of cattails, lilies, sedges and grasses; occasionally mussels and small fish",
+  "Leaves musky scent at stations and makes slides and channels through bank vegetation"
+ ],
+ "habitat": [
+  "Freshwater marshes, marshy lake edges and slow streams with water deep enough not to freeze to the bottom but shallow enough for aquatic plants (ideally 1–2 m)."
+ ],
+ "range": "North America north to the treeline, including Newfoundland, south to the Gulf Coast, Rio Grande and lower Colorado River; introduced in Eurasia and Argentina.",
+ "lookalikes": [
+  {
+   "slug": "beaver",
+   "name": "Beaver",
+   "howToTell": "The muskrat is much smaller with a rat-like tail rather than a broad flat one."
+  },
+  {
+   "slug": "nutria",
+   "name": "Nutria",
+   "howToTell": "Nutria are much larger with a round tail and white whiskers; muskrats have a side-flattened tail and no webbing between the toes."
+  }
+ ],
+ "aliases": [
+  "Common muskrat"
+ ],
+ "sources": [
+  {
+   "title": "Muskrat Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=muskrat.main"
+  },
+  {
+   "title": "Muskrat - Hinterland Who's Who",
+   "publisher": "Hinterland Who's Who (Canadian Wildlife Service / Canadian Wildlife Federation)",
+   "url": "https://www.hww.ca/en/wildlife/mammals/muskrat.html"
+  },
+  {
+   "title": "Ondatra zibethicus (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103944/Ondatra_zibethicus"
+  }
+ ]
+}

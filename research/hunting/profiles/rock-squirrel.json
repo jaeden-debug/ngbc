@@ -1,0 +1,39 @@
+{
+ "slug": "rock-squirrel",
+ "scientificName": "Otospermophilus variegatus",
+ "commonNameFr": null,
+ "family": "Sciuridae",
+ "order": "Rodentia",
+ "taxonomyNote": "Now Otospermophilus; ADW uses Spermophilus.",
+ "fieldMarks": [
+  "Largest ground squirrel in its range; 430-540 mm body, 600-800 g",
+  "Mottled: grayish brown in front, grayish black behind, with indistinct wavy brown-and-black markings",
+  "Buff-white to pinkish underside",
+  "Large head and eyes; ears project above the head; long bushy tail, 73-82% of body length",
+  "Resembles a tree squirrel more than a typical ground squirrel"
+ ],
+ "behavior": [
+  "Diurnal; peaks midday in spring, fall and winter, morning or late afternoon in summer",
+  "May hibernate at higher elevations, active all year at lower ones",
+  "Colonial, with maternal groups and a dominant male",
+  "Eats nuts, seeds, grain, berries, roots, green plants, cactus, invertebrates and meat"
+ ],
+ "habitat": [
+  "Rocky places: cliffs, canyons, hillsides, arroyos, talus, old buildings and stone walls; not usually open plains, deserts or high montane forest."
+ ],
+ "range": "Southeastern Nevada, Utah, Colorado and extreme western Oklahoma south through the southwestern US into Mexico; sea level to 2,900 m.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Rock Squirrel (Otospermophilus variegatus)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102556/Otospermophilus_variegatus"
+  },
+  {
+   "title": "Animal Diversity Web: Spermophilus variegatus (rock squirrel)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Spermophilus_variegatus/"
+  }
+ ]
+}

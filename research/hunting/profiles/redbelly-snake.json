@@ -1,0 +1,57 @@
+{
+ "slug": "redbelly-snake",
+ "scientificName": "Storeria occipitomaculata",
+ "commonNameFr": "Couleuvre à ventre rouge",
+ "commonNameFrSource": "NatureServe Explorer (other common names, FR)",
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe gives 'Red-bellied Snake' as its standard name and questions the validity of the subspecies pahasapae; Missouri Department of Conservation says subspecies are no longer recognised.",
+ "fieldMarks": [
+  "Very small snake, 20-41 cm; gray, brown or reddish-brown, often with four faint dark stripes and/or a pale or red-orange mid-dorsal stripe.",
+  "Belly usually bright red, orange or pink (rarely yellow, gray or black).",
+  "Three light spots around the neck (top and each side) sometimes fuse into a collar; white chin and throat, keeled scales (15 rows), divided anal plate."
+ ],
+ "behavior": [
+  "Secretive, hiding under bark, logs, rocks and leaf litter; diurnal but nocturnal in hot or dry weather, more active after rain.",
+  "Specialist feeder on slugs and snails, also earthworms and insect larvae; hibernates in ant mounds, foundations and animal burrows.",
+  "Active April to October/November in the north and year-round in the south; migrates between floodplain and hillside overwintering sites."
+ ],
+ "habitat": [
+  "Mostly moist deciduous and mixed forests, bog and swamp edges and adjacent meadows with abundant ground cover; often near buildings."
+ ],
+ "range": "Eastern North America: United States from eastern North Dakota and Wyoming (Black Hills) to the Atlantic and Gulf; in Canada Manitoba, Saskatchewan, Ontario, Quebec, New Brunswick, Nova Scotia and Prince Edward Island (NatureServe also shows Newfoundland as an exotic record).",
+ "lookalikes": [
+  {
+   "slug": "copperhead",
+   "name": "Copperhead (young)",
+   "howToTell": "Copperheads are stout-bodied with hourglass markings, vertical pupils and a pit between nostril and eye (Missouri Department of Conservation)."
+  },
+  {
+   "slug": "brown-snake",
+   "name": "Dekay's brownsnake",
+   "howToTell": "Brownsnake has a tan back stripe flanked by two rows of small dark spots and a cream, yellow or pink belly, whereas the red-bellied snake typically has a red or orange belly and three light nape spots (Missouri Department of Conservation)."
+  }
+ ],
+ "aliases": [
+  "Red-bellied snake",
+  "Redbelly snake",
+  "Northern red-bellied snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Storeria occipitomaculata",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102128"
+  },
+  {
+   "title": "Red-bellied Snake (Field Guide)",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/red-bellied-snake"
+  },
+  {
+   "title": "Animal Diversity Web: Storeria occipitomaculata",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Storeria_occipitomaculata/"
+  }
+ ]
+}

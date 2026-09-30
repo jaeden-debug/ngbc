@@ -1,0 +1,41 @@
+{
+ "slug": "harlequin-duck",
+ "scientificName": "Histrionicus histrionicus",
+ "fieldMarks": [
+  "15-17 in; small duck with a short bill.",
+  "Male: slaty blue with an intricate white pattern and reddish sides.",
+  "Female: dark brown with two or three white face spots; smaller and much shorter-billed than scoters.",
+  "Call a mouse-like squeak and low whistles."
+ ],
+ "behavior": [
+  "Swims and dives against the current of rushing rivers and climbs on slippery rocks.",
+  "Pairs flying inland follow every bend of the river rather than cutting overland.",
+  "Mostly a short-distance migrant from inland nesting streams to nearby coasts.",
+  "Feeds by diving and walking on the bottom, prying mollusks and crustaceans off rocks; eats aquatic insects on rivers."
+ ],
+ "habitat": [
+  "Nests along shallow, fast-moving rivers and streams, often in forested country, generally not on glacier-fed streams.",
+  "Winters on exposed rocky ocean coasts where surf pounds, seldom on sheltered bays."
+ ],
+ "range": "Breeds in Alaska, western Canada and the northern Rockies and in eastern Canada; winters along the Pacific coast and the North Atlantic coast from eastern Canada to New England and the Mid-Atlantic.",
+ "lookalikes": [
+  {
+   "slug": "bufflehead",
+   "name": "Bufflehead (female)",
+   "howToTell": "Audubon lists female bufflehead and female scaup as comparison species; female harlequin is dark brown with two or three white face spots."
+  },
+  {
+   "slug": "surf-scoter",
+   "name": "Scoters (female)",
+   "howToTell": "Female harlequin looks smaller than a scoter with a much shorter bill."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Harlequin Duck | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/harlequin-duck"
+  }
+ ]
+}

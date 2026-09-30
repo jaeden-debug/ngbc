@@ -47,7 +47,8 @@
     "validate:content:published": "node scripts/validate-content-contract.mjs --strict content/published/en-CA.json content/published/species-wave-1.json content/published/species-wave-2a.json content/published/species-wave-2b.json content/published/species-wave-2c.json content/published/species-wave-2d.json",
     "validate:content:strict": "node scripts/validate-content-contract.mjs --strict",
     "validate:seo": "node scripts/validate-seo.mjs",
-    "validate:us-coverage": "node --experimental-strip-types scripts/build-us-jurisdiction-registry.mjs --check && node scripts/build-us-coverage-evidence.mjs --check && node --experimental-strip-types scripts/build-us-state-coverage-matrix.mjs --check"
+    "validate:us-coverage": "node --experimental-strip-types scripts/build-us-jurisdiction-registry.mjs --check && node scripts/build-us-coverage-evidence.mjs --check && node --experimental-strip-types scripts/build-us-state-coverage-matrix.mjs --check",
+    "species:build": "node scripts/build-species-wave-2.mjs && node scripts/build-species-wave-3.mjs && node scripts/enrich-species-profiles.mjs && node scripts/build-species-wave-4.mjs && node scripts/apply-conservation-status.mjs && node scripts/build-species-take-matrix.mjs && node scripts/declare-spatial-strategies.mjs && node scripts/report-species-coverage.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.116.0",

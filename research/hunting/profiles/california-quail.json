@@ -1,0 +1,39 @@
+{
+ "slug": "california-quail",
+ "scientificName": "Callipepla californica",
+ "fieldMarks": [
+  "9.4-10.6 in; plump quail with a forward-curving black topknot.",
+  "White streaks on gray-brown sides and a heavily scaled pattern on the belly.",
+  "Call a loud 'chi-CA-go', the second note highest."
+ ],
+ "behavior": [
+  "Lives in coveys most of the year; often seen strutting across clearings, nodding at each step, and flushes in fast, low, whirring flight.",
+  "Forages on the ground by scratching and picking; eats mainly seeds and leaves, also acorns, berries, bulbs and insects.",
+  "Permanent resident; comes into well-covered yards and parks for grain or birdseed."
+ ],
+ "habitat": [
+  "Broken chaparral, woodland edges, coastal scrub, open oak woodland and streamside growth; also suburbs, farms, pinyon-juniper and grassland edges.",
+  "Avoids mountains; introduced birds farther inland use other brushy habitats."
+ ],
+ "range": "A permanent resident of the Pacific coast states and parts of the interior West; common along the California coast and present in the Northwest, Rocky Mountain and Southwest regions, including introduced populations.",
+ "lookalikes": [
+  {
+   "slug": "gambels-quail",
+   "name": "Gambel's quail",
+   "howToTell": "Replaces California quail in desert country; compare carefully where ranges meet."
+  },
+  {
+   "slug": "mountain-quail",
+   "name": "Mountain quail",
+   "howToTell": "Mountain quail lives mostly at higher elevations and has broad white bars on reddish sides."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "California Quail | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/california-quail"
+  }
+ ]
+}

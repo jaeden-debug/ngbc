@@ -1,0 +1,41 @@
+{
+ "slug": "razorback-musk-turtle",
+ "scientificName": "Sternotherus carinatus",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Kinosternidae",
+ "order": "Testudines",
+ "taxonomyNote": "NatureServe's standard name is 'Razor-backed Musk Turtle' with 'Keeled Musk Turtle' and 'Razorback Musk Turtle' as alternates.",
+ "fieldMarks": [
+  "Small turtle, carapace about 10-12 cm; high, triangular, domed shell with a prominent medial keel; scutes light brown to orange with dark streaks that fade with age.",
+  "Yellowish plastron that is reduced and weakly hinged, with ten rather than eleven scutes (no gular scute).",
+  "Skin gray to pink to light brown with small dark spots; slightly hooked jaws with dark streaks, pair of chin barbels and a tubular snout.",
+  "Males have longer, thicker tails and rough scale patches on the thighs."
+ ],
+ "behavior": [
+  "Diurnal, active mornings and late afternoons; spends more time basking high on deadwood than other musk turtles.",
+  "Hibernates underwater; active roughly March-November in Oklahoma and largely crepuscular in summer.",
+  "Omnivorous bottom feeder on insects, crustaceans, mollusks (including invasive Asian clams), amphibian larvae, carrion and aquatic plants."
+ ],
+ "habitat": [
+  "Medium to large flowing streams and rivers, also swamps and lakes, with soft or sandy/rocky bottoms, aquatic vegetation and basking deadwood."
+ ],
+ "range": "South-central United States: Alabama, Arkansas, Louisiana, Mississippi, Oklahoma and Texas (Brazos River in Texas to the Pascagoula River in Mississippi); not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Razor-backed musk turtle",
+  "Keeled musk turtle"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Sternotherus carinatus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.106452"
+  },
+  {
+   "title": "Animal Diversity Web: Sternotherus carinatus",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Sternotherus_carinatus/"
+  }
+ ]
+}

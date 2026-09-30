@@ -1,0 +1,54 @@
+{
+ "slug": "american-alligator",
+ "scientificName": "Alligator mississippiensis",
+ "commonNameFr": null,
+ "family": "Alligatoridae",
+ "order": "Crocodilia",
+ "taxonomyNote": "Animal Diversity Web lists the family as Crocodylidae; NatureServe gives Alligatoridae, used here.",
+ "fieldMarks": [
+  "Blackish or olive-drab above; young have bold yellowish crossbands that may persist faintly in adults",
+  "Broadly rounded snout; no conspicuous upward-protruding lower teeth when the mouth is closed",
+  "Adults generally 4 m or less (maximum about 5.8 m); males much larger than females",
+  "Hatchlings about 21-23 cm"
+ ],
+ "behavior": [
+  "Spring courtship includes loud bellowing and head slaps on the water",
+  "Inactive or less active from about late November to March in the northern range",
+  "Digs dens in banks and 'gator holes' used in cold spells and drought",
+  "Opportunistic feeder: invertebrates and small fish when young; birds, reptiles and mammals as large adults"
+ ],
+ "habitat": [
+  "Fresh and brackish marshes, ponds, lakes, rivers, swamps, bayous and canals; basks on logs or banks."
+ ],
+ "range": "Coastal North Carolina to the Florida Keys, west to southern Texas, north to southeastern Oklahoma and Arkansas. Not native to Canada.",
+ "lookalikes": [
+  {
+   "slug": "american-crocodile",
+   "name": "American crocodile",
+   "howToTell": "Narrower snout and a fourth lower tooth that protrudes upward near the snout tip."
+  },
+  {
+   "slug": "spectacled-caiman",
+   "name": "Spectacled caiman",
+   "howToTell": "Has a curved bony crosswise ridge in front of the eyes, which the alligator lacks."
+  }
+ ],
+ "aliases": [
+  "gator",
+  "Florida alligator",
+  "Mississippi alligator",
+  "Louisiana alligator"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Alligator mississippiensis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100172"
+  },
+  {
+   "title": "Animal Diversity Web: Alligator mississippiensis",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Alligator_mississippiensis/"
+  }
+ ]
+}

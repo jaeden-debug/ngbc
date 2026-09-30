@@ -1,0 +1,40 @@
+{
+ "slug": "coyote",
+ "scientificName": "Canis latrans",
+ "fieldMarks": [
+  "Slimmer and smaller than a wolf: males 9-23 kg, 58-66 cm at the shoulder; females about four-fifths as large.",
+  "Wide, pointed, erect ears; tapering muzzle whose top forms an almost continuous line with the forehead, unlike most dogs.",
+  "Tawny grey fur, darker on the rear back; yellowish legs, muzzle and backs of ears; whiter throat and belly.",
+  "Tail darker above and black-tipped.",
+  "Tracks show four toes; claws are blunt and do not leave deep marks."
+ ],
+ "behavior": [
+  "Yelping, howling, high-pitched calls, especially at dusk and dawn; one howl sets off others, and two coyotes can sound like a dozen.",
+  "Primarily a flesh-eater that scavenges livestock carcasses and wolf kills and in suitable snow can kill deer.",
+  "Marks territory with strong-smelling urine."
+ ],
+ "habitat": [
+  "Originally plains, prairies and deserts, preferring open or semi-wooded country; now thrives in farm mosaics of fields, brush and woodlots, the boreal forest and mountains."
+ ],
+ "range": "Originally central and western North America; since about 1900 has expanded widely. In Canada it still holds the prairie provinces' parkland and prairie and has spread into the boreal forest, the mountains, Ontario, Quebec, the Atlantic provinces and western Newfoundland.",
+ "lookalikes": [
+  {
+   "slug": "gray-wolf",
+   "name": "Gray wolf",
+   "howToTell": "Coyote is slimmer and much smaller."
+  },
+  {
+   "slug": "domestic-dog",
+   "name": "Domestic dog",
+   "howToTell": "On a coyote the top of the muzzle runs almost straight into the forehead, and the paw is more elongated than a similar-sized dog's."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Coyote - Hinterland Who's Who",
+   "publisher": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+   "url": "https://www.hww.ca/en/wildlife/mammals/coyote.html"
+  }
+ ]
+}

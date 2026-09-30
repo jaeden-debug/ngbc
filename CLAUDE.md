@@ -957,6 +957,49 @@ female, juvenile, seasonal form or lookalike comparison). Every label must match
 what was independently verified. If exact identity, licence and attribution are
 not verified, publish no photo.
 
+### Conservation status, take eligibility and legality are three questions
+
+*Decided 2026-09-30 (owner). This replaces the earlier protected-versus-huntable
+binary.*
+
+- **CONSERVATION STATUS** answers *what is this animal's protection or
+  conservation classification, and where?* Sourced statements per jurisdiction
+  (ESA and SARA listings, state protection, closures), recorded exactly as the
+  authority states them — a listed subspecies or population is named as such.
+- **TAKE ELIGIBILITY** answers *is this species part of North Ground's
+  meaningful hunting/removal universe anywhere?* One of `HUNTABLE`
+  (conventional regulated quarry), `LIMITED_TAKE` (legal take only under narrow
+  conditions — a quota, a draw, a collection permit, special geography),
+  `NUISANCE_OR_INVASIVE_TAKE` (lawful removal that is not ordinary game),
+  `NON_QUARRY` or `UNKNOWN`.
+- **REGULATORY EVIDENCE** answers *can I legally take it HERE, NOW, and on what
+  conditions?* Only a certified jurisdiction-specific rule answers it.
+
+Never collapse them. Conservation status never decides eligibility; neither
+decides legality. Trumpeter swan is protected in several states and taken under
+a federal quota in Nevada: it is `LIMITED_TAKE` with its protection kept.
+
+- **Features follow the class, never a list.** Hunt offers HUNTABLE,
+  LIMITED_TAKE and NUISANCE_OR_INVASIVE_TAKE species. A continental "where to
+  look" layer (Species Heat) is drawn only for HUNTABLE and
+  NUISANCE_OR_INVASIVE_TAKE: a narrow quota in three counties must never read as
+  huntable everywhere. Green outlines remain the only statement that a legal
+  opportunity exists, and only where a certified rule establishes one.
+- **A generic group season does not legalize every member.** A "swan" season is
+  not trumpeter take unless the regulation says so. Species-specific findings are
+  recorded in `research/hunting/take-eligibility-conflicts.csv`, which the tests
+  read: a NON_QUARRY or UNKNOWN species with authority take evidence and no
+  recorded finding fails, so no contradiction is silent.
+- **Inclusion rule.** A species enters the quarry universe when authoritative
+  evidence establishes a meaningful regulated recreational hunting or take
+  opportunity in Canada or the United States — a named season, game
+  classification, licence/tag/permit, bag or possession limit, draw, or an
+  established removal program. "Unprotected", "pest" or "may be killed" alone is
+  not enough. House mice, rats, voles, pocket gophers, moles, shrews, bats,
+  feral cats and feral cattle stay out, documented in
+  `research/hunting/take-exclusions.csv` with the jurisdictions and sources that
+  list them.
+
 ### Canonical species PRIMARY media
 
 Each canonical biological species may have exactly one current `PRIMARY` image.

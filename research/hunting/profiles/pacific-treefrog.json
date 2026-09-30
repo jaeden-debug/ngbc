@@ -1,0 +1,52 @@
+{
+ "slug": "pacific-treefrog",
+ "scientificName": "Pseudacris regilla",
+ "commonNameFr": "Rainette du Pacifique",
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe notes Recuero et al. (2006) split P. regilla into three species (regilla, sierra, hypochondriaca) that other nuclear data did not support; NatureServe records list the synonym Hyliola regilla, and Montana Field Guide says Montana animals once called Pacific treefrog are the Sierran treefrog.",
+ "fieldMarks": [
+  "Small, up to about 5 cm snout-vent length; colour highly variable (usually green or brown; also gray, tan, bronze, blackish or reddish) with irregular dark spots.",
+  "Dark stripe from the snout to the shoulder; toe tips expanded.",
+  "Mature males have a dark throat; breeding call is a loud repeated 'kreck-ek'.",
+  "Tadpoles brown or olive, eyes widely spaced at the margin of the head when seen from above, up to about 44 mm."
+ ],
+ "behavior": [
+  "Breeding mostly winter or spring, sometimes summer; calling often happens outside the breeding season and far from breeding sites.",
+  "Eggs in soft loose clumps of about 10-80, in shallow water; larvae metamorphose in about 2-3 months.",
+  "After breeding they bask on leaves of broad-leaved shrubs far from water and sometimes climb into trees; migrate up to several hundred metres between breeding and upland sites.",
+  "Eats beetles, flies, spiders, ants and isopods; inactive in freezing weather and extreme drought."
+ ],
+ "habitat": [
+  "Grassland, shrubland, woodland, forest and farmland; on land except in the breeding season.",
+  "Breeds in shallow marshes, lakes, ponds, ditches, reservoirs and slow streams."
+ ],
+ "range": "Southern British Columbia south through the western United States to southern Baja California, east to Montana, Idaho and Nevada; introduced populations on Haida Gwaii (Queen Charlotte Islands) and Revillagigedo Island, Alaska, and probably in desert California and Arizona. Montana populations are now attributed to the Sierran treefrog.",
+ "lookalikes": [
+  {
+   "slug": "sierran-treefrog",
+   "name": "Sierran treefrog",
+   "howToTell": "Not separable by appearance; genetics and range distinguish them (Montana Field Guide)."
+  },
+  {
+   "slug": "baja-california-treefrog",
+   "name": "Baja California treefrog",
+   "howToTell": "No distinct morphological criteria known."
+  }
+ ],
+ "aliases": [
+  "Pacific chorus frog"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Pseudacris regilla",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.857719"
+  },
+  {
+   "title": "Sierran Treefrog - Montana Field Guide",
+   "publisher": "Montana Natural Heritage Program / Montana Fish, Wildlife & Parks",
+   "url": "https://fieldguide.mt.gov/speciesDetail.aspx?elcode=AAABC05170"
+  }
+ ]
+}

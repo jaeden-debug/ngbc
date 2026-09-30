@@ -1,0 +1,43 @@
+{
+ "slug": "red-river-waterdog",
+ "scientificName": "Necturus louisianensis",
+ "commonNameFr": null,
+ "family": "Proteidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe's primary name is Red River Mudpuppy; some authorities treat it as a subspecies of N. maculosus, and NatureServe says its status needs further research.",
+ "fieldMarks": [
+  "Smaller than the mudpuppy, maximum about 12 inches; lighter grey-brown or red-brown ground colour.",
+  "Dark spots on the upper body more distinct and more numerous than on the mudpuppy.",
+  "Belly has a wide, light, unspotted central area, light grey with pale pink edges."
+ ],
+ "behavior": [],
+ "habitat": [
+  "Missouri's mudpuppy account says mudpuppies are permanently aquatic in large creeks, rivers and reservoirs, hiding by day under logs, rocks and debris; the Red River mudpuppy replaces the common mudpuppy in the southernmost quarter of the state."
+ ],
+ "range": "Northern Louisiana north to Arkansas, eastern Oklahoma, southern Missouri and southeastern Kansas.",
+ "lookalikes": [
+  {
+   "slug": "mudpuppy",
+   "name": "Mudpuppy",
+   "howToTell": "Common mudpuppy is larger (to about 19 in); Red River mudpuppy has a lighter ground colour, more numerous spots and a wide pale unspotted belly strip."
+  }
+ ],
+ "aliases": [
+  "Red River Mudpuppy",
+  "Louisiana waterdog",
+  "Red River waterdog"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100249"
+  },
+  {
+   "title": "Mudpuppy (field guide, includes Red River mudpuppy account)",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/mudpuppy"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

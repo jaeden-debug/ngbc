@@ -1,0 +1,58 @@
+{
+ "slug": "zebra-dove",
+ "scientificName": "Geopelia striata",
+ "commonNameFr": "Géopélie zébrée",
+ "family": "Columbidae",
+ "order": "Columbiformes",
+ "taxonomyNote": "NatureServe notes the Australian Peaceful Dove (G. placida) and Wallacean Barred Dove (G. maugeus) may be conspecific with G. striata per Sibley and Monroe (1990); the Bishop Museum monograph notes most authors treat all three as separate species and treats Zebra Dove as monotypic.",
+ "fieldMarks": [
+  "Small, slender dove 20-23 cm with a long, narrow tail",
+  "Upperparts brownish-grey with black-and-white barring; underparts pinkish with black bars on the sides of the neck, breast and belly",
+  "Blue-grey face with bare blue skin around the eyes",
+  "White tips to the tail feathers",
+  "Juveniles duller and paler than adults"
+ ],
+ "behavior": [
+  "Forages alone or in pairs on bare ground, short grass or roads, scurrying with rodent-like movement",
+  "Eats small grass and weed seeds, plus insects and other small invertebrates",
+  "Call is a series of soft, staccato cooing notes",
+  "In Hawaii it can be quite tame around parks and outdoor eating areas, and flocks can gather at water holes in dry areas"
+ ],
+ "habitat": [
+  "Scrub, farmland and open lowland country; common in parks and gardens. In Hawaii found mainly in dry lowlands, agricultural fields and suburban and urban areas, up to about 1000 m and occasionally 2300 m."
+ ],
+ "range": "Native from southern Thailand and the Malay Peninsula to Sumatra and Java. Introduced to Hawaii in 1922 and now on all main islands, where it is one of the most abundant birds; established on other Pacific and Indian Ocean islands. Not established on the North American mainland in these sources.",
+ "lookalikes": [
+  {
+   "slug": "peaceful-dove",
+   "name": "Peaceful dove",
+   "howToTell": "Australian/New Guinea species that some authors have treated as part of the same species; not found in North America (NatureServe, Bishop Museum)."
+  },
+  {
+   "slug": "barred-dove",
+   "name": "Barred dove",
+   "howToTell": "Lesser Sundas/Moluccas species sometimes lumped with Zebra Dove; not found in North America (Bishop Museum)."
+  }
+ ],
+ "aliases": [
+  "barred dove (older name per Bishop Museum)",
+  "barred ground dove"
+ ],
+ "sources": [
+  {
+   "title": "Zebra Dove (The Birds of the Hawaiian Islands: Occurrence, History, Distribution, and Status)",
+   "publisher": "Bishop Museum",
+   "url": "https://hbs.bishopmuseum.org/birds/rlp-monograph/pdfs/06-PTER-TIMA/ZEBD.pdf"
+  },
+  {
+   "title": "Zebra dove (Wikipedia; last-resort source for field marks and behaviour, read as raw page text)",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Zebra_dove"
+  },
+  {
+   "title": "NatureServe Explorer: Geopelia striata (Zebra Dove)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101730/Geopelia_striata"
+  }
+ ]
+}

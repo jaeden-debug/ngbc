@@ -1,0 +1,31 @@
+{
+ "slug": "bighorn-sheep",
+ "scientificName": "Ovis canadensis",
+ "fieldMarks": [
+  "Rams carry massive, curling horns that can weigh up to 14 kg; ewes have much smaller, only slightly curved horns.",
+  "Rams 119-127 kg; ewes 53-91 kg.",
+  "Summer coat rich glossy brown, fading by late winter.",
+  "The desert subspecies is somewhat smaller with flatter, wider-spreading horns."
+ ],
+ "behavior": [
+  "Gregarious: small groups of 8-10 are common, occasionally herds of over 100; mature rams live apart in bachelor groups most of the year.",
+  "Most populations move seasonally, using larger upland areas in summer and sheltered valleys in winter.",
+  "Mainly daytime feeders and largely grazers on grasses, sedges and forbs, taking browse when preferred foods are scarce.",
+  "Keen-sighted and able to spot movement up to about 1.6 km away; moves with ease on cliff ledges."
+ ],
+ "habitat": [
+  "Alpine meadows, grassy mountain slopes and foothills close to rugged cliffs and bluffs, on drier slopes with limited snowfall. Winter range is typically about 760-1,520 m and summer range 1,830-2,590 m elevation."
+ ],
+ "range": "Rocky Mountains from southern Canada to Colorado; desert bighorn from Nevada and California to west Texas and into Mexico.",
+ "lookalikes": [],
+ "aliases": [
+  "desert bighorn (desert subspecies)"
+ ],
+ "sources": [
+  {
+   "title": "Bighorn sheep (Ovis canadensis)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Ovis_canadensis/"
+  }
+ ]
+}

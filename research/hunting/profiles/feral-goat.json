@@ -1,0 +1,61 @@
+{
+ "slug": "feral-goat",
+ "scientificName": "Capra hircus",
+ "commonNameFr": null,
+ "family": "Bovidae",
+ "order": "Artiodactyla",
+ "taxonomyNote": "That review lists synonyms Capra hircus aegagrus and Capra aegagrus hircus; NatureServe describes C. hircus as the domestic form of C. aegagrus.",
+ "fieldMarks": [
+  "Straight prominent horns (larger on males), rectangular pupils, coarse hair",
+  "Usually 25-55 kg, 1-1.2 m at the shoulder, 1-1.5 m long; males about 20% larger",
+  "All males and some females are bearded; short, upward-pointing tail distinguishes goats from sheep",
+  "Coat usually black, but white, grey, brown, red or any combination occurs"
+ ],
+ "behavior": [
+  "Herds with a modal group size of two to four; up to 100 not uncommon, groups up to 200 recorded in Hawaii",
+  "Three herd types: all-male bachelor herds, mixed-sex groups, and females with young",
+  "Generalist herbivores taking grasses, forbs and browse",
+  "Excellent eyesight with a 320-340 degree field of view"
+ ],
+ "habitat": [
+  "Rugged mountain country, rocky crags and alpine meadows; survive on a wide variety of forage with limited water."
+ ],
+ "range": "Feral populations occur on islands worldwide, including Hawaii and California's San Clemente Island; NatureServe records the species (Capra hircus) as present in Hawaii, New Mexico and California.",
+ "lookalikes": [
+  {
+   "slug": "feral-sheep",
+   "name": "Feral sheep",
+   "howToTell": "Goats have short, upward-pointing tails, which sheep lack (Pacific Science review)."
+  },
+  {
+   "slug": "persian-ibex",
+   "name": "Persian ibex",
+   "howToTell": "Wild ancestor species; sources read give no field mark separating it from feral goats."
+  }
+ ],
+ "aliases": [
+  "briar goat",
+  "brush goat",
+  "hill goat",
+  "scrub goat",
+  "Spanish goat",
+  "wood goat"
+ ],
+ "sources": [
+  {
+   "title": "Biology and Impacts of Pacific Island Invasive Species. 9. Capra hircus, the Feral Goat (Pacific Science 67(2):141-156)",
+   "publisher": "University of Hawai'i Press, hosted by USDA Forest Service",
+   "url": "https://www.fs.usda.gov/psw/publications/cordell/psw_2013_cordell001_chynoweth.pdf"
+  },
+  {
+   "title": "NatureServe Explorer: Capra hircus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103788/Capra_hircus"
+  },
+  {
+   "title": "Capra hircus (domestic goat)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Capra_hircus/"
+  }
+ ]
+}

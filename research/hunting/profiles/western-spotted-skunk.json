@@ -1,0 +1,45 @@
+{
+ "slug": "western-spotted-skunk",
+ "scientificName": "Spilogale gracilis",
+ "commonNameFr": null,
+ "family": "Mephitidae",
+ "order": "Carnivora",
+ "taxonomyNote": "NatureServe: split by McDonough et al. (2022) into western spotted skunk (S. gracilis) and desert spotted skunk (S. leucoparia).",
+ "fieldMarks": [
+  "Small and slender, black with white spots on the forehead and in front of each ear",
+  "Stripes: dorsolateral pair from the back of the head, a lateral pair joining the ear spots, and a ventrolateral pair; they end at mid-body",
+  "Rear body has two interrupted white bands, a white rump spot each side and two at the tail base",
+  "Underside of tail white for nearly half its length, tip extensively white",
+  "Males about 423 mm and 565 g; females about 360 mm and 368 g"
+ ],
+ "behavior": [
+  "More nocturnal than the striped skunk and rarely seen by day; active year round",
+  "Eats insects, rodents, small birds, possibly eggs, reptiles, amphibians, fruit and berries",
+  "Dens in rocks, burrows, hollow logs, brush piles and under buildings",
+  "Essentially solitary"
+ ],
+ "habitat": [
+  "Brushy canyons, rocky outcrops and canyon walls; rocky bluffs and brush-bordered canyon stream beds; sometimes nests in rock fences or attics."
+ ],
+ "range": "Much of the western United States, including the Channel Islands of California, and the Baja Peninsula.",
+ "lookalikes": [
+  {
+   "slug": "eastern-spotted-skunk",
+   "name": "Eastern spotted skunk",
+   "howToTell": "Looks similar but with less extensive white."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Western Spotted Skunk (Spilogale gracilis)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.1369472/Spilogale_gracilis"
+  },
+  {
+   "title": "Animal Diversity Web: Spilogale gracilis (western spotted skunk)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Spilogale_gracilis/"
+  }
+ ]
+}

@@ -1,0 +1,44 @@
+{
+ "slug": "bird-voiced-treefrog",
+ "scientificName": "Hyla avivoca",
+ "commonNameFr": null,
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe places North American treefrogs in Dryophytes (Duellman et al. 2016); ADW and the batch list use Hyla. NatureServe name: Dryophytes avivoca.",
+ "fieldMarks": [
+  "Small: males 2.8-3.9 cm, females 3.2-5.2 cm snout-vent.",
+  "Brown to gray mixed with green and black dorsal blotches; smooth skin.",
+  "Small white spot below each eye.",
+  "Limbs with dark stripes; belly pale with dark spots in front.",
+  "Birdlike whistled call."
+ ],
+ "behavior": [
+  "Seldom observed outside the breeding period; males call from trees, shrubs and vines in or beside water.",
+  "Mostly solitary except for breeding; can climb high in trees.",
+  "Lays several hundred eggs in small clusters in spring or summer; larvae metamorphose in about a month."
+ ],
+ "habitat": [
+  "Permanent wooded swamps (tupelo, cypress, birch, buttonbush, vine tangles) bordering rivers and streams; intolerant of impoundments that flood habitat."
+ ],
+ "range": "Southern Illinois and western Kentucky to the Gulf Coast from Louisiana to the Florida Panhandle, eastern Georgia and adjacent South Carolina, with disjunct populations in Louisiana, Arkansas and southeastern Oklahoma. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "copes-gray-treefrog",
+   "name": "Cope's gray treefrog",
+   "howToTell": "Warty skin and orange-yellow hidden hindleg surfaces; trill rather than birdlike whistle."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Dryophytes avivoca",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.106363/Dryophytes_avivoca"
+  },
+  {
+   "title": "Animal Diversity Web: Hyla avivoca",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Hyla_avivoca/"
+  }
+ ]
+}

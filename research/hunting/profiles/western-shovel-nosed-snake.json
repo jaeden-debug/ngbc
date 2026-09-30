@@ -1,0 +1,44 @@
+{
+ "slug": "western-shovel-nosed-snake",
+ "scientificName": "Chionactis occipitalis",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe lists this as Sonora occipitalis (Mohave Shovel-nosed Snake) following Cox et al. (2018), who proposed merging Chionactis into Sonora; Wood et al. (2014) split C. annulata from C. occipitalis, and the USFWS assessment treats the Tucson form as a subspecies.",
+ "fieldMarks": [
+  "Small snake with a shovel-shaped snout and an inset lower jaw; smooth scales in 15 rows and a divided anal plate (USFWS description of the Tucson subspecies).",
+  "Coral-snake-like banding: pale yellow to cream body with 21 or more black or brown saddle-like bands across the back, with orange-red saddles between (USFWS description of the Tucson subspecies; bands vary among forms)."
+ ],
+ "behavior": [
+  "Burrows or 'swims' through fine sand; nocturnal and rarely seen on the surface by day, when it may lie coiled under a bush.",
+  "Active most of the year in the south and in the warmer months in the north; inactive in cold and extreme heat.",
+  "Eats insects, spiders, scorpions and centipedes; lays eggs underground in spring."
+ ],
+ "habitat": [
+  "Sparsely vegetated desert with fine, wind-blown sand: sandy flats, washes, dunes and scrub bases; less often rocky slopes.",
+  "Uses sand and other animals' burrows for cover."
+ ],
+ "range": "Mojave, Sonoran and Colorado deserts of southern California, southern Nevada, northwestern Arizona, Baja California and northwestern Sonora, below about 1,400 m in California.",
+ "lookalikes": [],
+ "aliases": [
+  "Mohave shovel-nosed snake",
+  "Mojave shovel-nosed snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Sonora occipitalis (Mohave Shovel-nosed Snake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101370/Sonora_occipitalis"
+  },
+  {
+   "title": "Western Shovel-nosed Snake life history account (CWHR R067)",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=2785"
+  },
+  {
+   "title": "Species Assessment and Listing Priority Assignment Form: Tucson shovel-nosed snake",
+   "publisher": "U.S. Fish and Wildlife Service",
+   "url": "https://ecos.fws.gov/docs/candidate/assessments/2013/r2/C06D_V01.pdf"
+  }
+ ]
+}

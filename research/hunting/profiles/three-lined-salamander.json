@@ -1,0 +1,43 @@
+{
+ "slug": "three-lined-salamander",
+ "scientificName": "Eurycea guttolineata",
+ "commonNameFr": null,
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": "Formerly treated as a subspecies of Eurycea longicauda (ADW still lists it as E. longicauda guttolineata).",
+ "fieldMarks": [
+  "Mid-sized, slender: 4-6.25 in (10-15.9 cm).",
+  "Tan to light yellow with three bold black longitudinal stripes from the eyes to the tail.",
+  "Tail about two-thirds of total length.",
+  "Underside boldly marbled black and white."
+ ],
+ "behavior": [
+  "Mostly active at night, emerging to hunt insects and other small invertebrates.",
+  "Found under wood, rocks or other cover along streams and blackwater swamps.",
+  "Breeds in fall and winter; eggs are laid in underground crevices near springs and streams and attended by the female; larvae are aquatic."
+ ],
+ "habitat": [
+  "Forested floodplains, ditches, damp streamsides, seepage springs, bottomland hardwood streams and cypress swamp edges; sometimes disperses into woods in wet weather."
+ ],
+ "range": "Virginia and Tennessee south through the Carolinas, Georgia, Alabama and Mississippi to the Gulf Coast, including eastern Louisiana and western Florida; absent from southern Georgia, most of peninsular Florida and high Appalachian elevations. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "longtail-salamander",
+   "name": "Longtail salamander",
+   "howToTell": "Yellow to orange with vertical black bars on the tail rather than three bold body stripes."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Eurycea guttolineata",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102029/Eurycea_guttolineata"
+  },
+  {
+   "title": "SREL: Three-lined Salamander",
+   "publisher": "Savannah River Ecology Laboratory, University of Georgia",
+   "url": "https://srelherp.uga.edu/salamanders/three-lined-salamander/"
+  }
+ ]
+}

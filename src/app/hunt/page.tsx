@@ -152,12 +152,16 @@ export default async function HuntPage({ searchParams }: Props) {
       contentRepository.getSpeciesAliases(resource.speciesProfile.speciesId),
       contentRepository.getSpeciesGroups(resource.speciesProfile.speciesId),
     ]);
+    /* Only what the picker cannot already match: the display name, scientific
+       name and aliases are searched from their own fields, so repeating them
+       here was pure payload — with 468 species it was a fifth of the list. */
+    const alreadyMatched = new Set([resource.title, resource.speciesProfile.scientificName, ...aliases.map(({ value }) => value)]
+      .map((value) => value.toLowerCase()));
     const searchTerms = [
       ...resource.speciesProfile.commonNames.map(({ value }) => value),
-      ...aliases.map(({ value }) => value),
       ...(resource.speciesProfile.sexAgeInfo?.terminology.map(({ value }) => value) ?? []),
       ...groups.flatMap((group) => [...group.names, ...(group.aliases ?? [])].map(({ value }) => value)),
-    ];
+    ].filter((term) => !alreadyMatched.has(term.toLowerCase()));
     return {
       id: resource.speciesProfile.speciesId,
       displayName: resource.title,

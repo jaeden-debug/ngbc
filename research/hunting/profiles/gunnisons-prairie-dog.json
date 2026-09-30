@@ -1,0 +1,43 @@
+{
+ "slug": "gunnisons-prairie-dog",
+ "scientificName": "Cynomys gunnisoni",
+ "commonNameFr": null,
+ "family": "Sciuridae",
+ "order": "Rodentia",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Total length 309-373 mm; tail 39-68 mm, much shorter than other prairie dogs",
+  "Yellowish-buff coat mixed with blackish hairs; darker top of head, cheeks and eyebrows",
+  "Tail base matches the back, distal half grayish with grayish-white hairs at the tip"
+ ],
+ "behavior": [
+  "Colonies often small, under 50-100 animals, in territories of one adult male, one or more females and young",
+  "Most activity early morning and late afternoon in spring and summer",
+  "Inactive periods lasting months in winter; hibernation in some parts",
+  "Diet of grasses, forbs, sedges and shrubs"
+ ],
+ "habitat": [
+  "Gently sloping grasslands and semi-desert and montane shrublands at 4,600-12,000 ft."
+ ],
+ "range": "Central Colorado to central Arizona, including part of southeastern Utah and much of northwestern New Mexico.",
+ "lookalikes": [
+  {
+   "slug": "white-tailed-prairie-dog",
+   "name": "White-tailed prairie dog",
+   "howToTell": "Pure white distal tail hairs versus grayish-white on Gunnison's."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Gunnison's Prairie Dog (Cynomys gunnisoni)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104656/Cynomys_gunnisoni"
+  },
+  {
+   "title": "Animal Diversity Web: Cynomys gunnisoni (Gunnison's prairie dog)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Cynomys_gunnisoni/"
+  }
+ ]
+}

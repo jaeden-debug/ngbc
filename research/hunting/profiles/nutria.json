@@ -1,0 +1,46 @@
+{
+ "slug": "nutria",
+ "scientificName": "Myocastor coypus",
+ "fieldMarks": [
+  "Large semi-aquatic rodent, body 47–61 cm plus a 37–41 cm tail; up to about 9 kg",
+  "Light to dark brown fur; long, round, sparsely haired tail",
+  "Conspicuous white whiskers and prominent incisors on a large, nearly triangular head",
+  "First four toes of the hind feet webbed, the fifth free"
+ ],
+ "behavior": [
+  "Mostly nocturnal, peaking near midnight; more daytime activity when food is scarce",
+  "Digs out roots, rhizomes and tubers with its forepaws, especially in winter; occasionally eats mussels and crustaceans",
+  "Feeds in the emergent-vegetation zone of wetlands"
+ ],
+ "habitat": [
+  "Fresh marshes preferred, but also bayous, rivers, impoundments, farm ponds, canals, swamps and brackish or salt coastal marshes."
+ ],
+ "range": "Native to southern South America. Introduced in Louisiana in the 1930s and spread widely; now in the southeastern and south-central U.S., Oregon, Washington, Maryland and other states, with records in British Columbia.",
+ "lookalikes": [
+  {
+   "slug": "beaver",
+   "name": "Beaver",
+   "howToTell": "Beavers have a broad flat tail and fully webbed hind feet."
+  },
+  {
+   "slug": "muskrat",
+   "name": "Muskrat",
+   "howToTell": "Muskrats are much smaller with a short side-flattened tail and unwebbed toes."
+  }
+ ],
+ "aliases": [
+  "Coypu"
+ ],
+ "sources": [
+  {
+   "title": "Myocastor coypus - Species Profile",
+   "publisher": "U.S. Geological Survey Nonindigenous Aquatic Species",
+   "url": "https://nas.er.usgs.gov/queries/FactSheet.aspx?speciesID=1089"
+  },
+  {
+   "title": "Myocastor coypus (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102549/Myocastor_coypus"
+  }
+ ]
+}

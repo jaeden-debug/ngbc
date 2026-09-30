@@ -1,0 +1,56 @@
+{
+ "slug": "black-mountain-salamander",
+ "scientificName": "Desmognathus welteri",
+ "commonNameFr": null,
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Medium-sized, chubby: 3.0-5.0 in (7.6-12.7 cm).",
+  "Light brown back with small dark brown spots or streaks.",
+  "Toe tips usually very dark.",
+  "Light line from just behind the eye to the angle of the jaw; weak whitish dots along the side between the legs.",
+  "Tail flattened at the base and strongly keeled; belly whitish with light brown to gray speckling and a gradual back-to-belly colour transition."
+ ],
+ "behavior": [
+  "Strongly aquatic; adults hide under rocks or logs in water or in splash-zone crevices, larvae and juveniles use smaller seeps.",
+  "Eats mostly worms, insects and crustaceans.",
+  "Females lay up to about 60 eggs (average 26) March-November and guard them; larvae metamorphose in about 2 years."
+ ],
+ "habitat": [
+  "Small to medium mountain streams with rocky substrate, spring runs and roadside puddles in wooded mountain terrain at 300-1220 m; may forage in surrounding forest on wet evenings."
+ ],
+ "range": "Eastern Kentucky, adjacent southwestern Virginia, southern West Virginia and eastern Tennessee (Cumberland Plateau and Mountains). Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "seal-salamander",
+   "name": "Seal salamander",
+   "howToTell": "Lighter belly giving a distinct back-to-belly contrast."
+  },
+  {
+   "slug": "northern-dusky-salamander",
+   "name": "Northern dusky salamander",
+   "howToTell": "Formerly treated as the same species; welteri has darker toe tips and a strongly keeled tail."
+  }
+ ],
+ "aliases": [
+  "Black Mountain dusky salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Desmognathus welteri",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102488/Desmognathus_welteri"
+  },
+  {
+   "title": "TWRA: Black Mountain Salamander",
+   "publisher": "Tennessee Wildlife Resources Agency",
+   "url": "https://www.tn.gov/twra/wildlife/amphibians/salamanders/black-mountain-salamander.html"
+  },
+  {
+   "title": "Virginia DWR Species Profile: Black Mountain Salamander",
+   "publisher": "Virginia Department of Wildlife Resources",
+   "url": "https://dwr.virginia.gov/wildlife/information/black-mountain-salamander/"
+  }
+ ]
+}

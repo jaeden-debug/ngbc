@@ -8,135 +8,477 @@ declared plans (`content/intelligence/spatial-strategy.json`). Do not edit by ha
 A **surface** is what the map paints. **Zone evidence** is one figure per management
 unit, shown in that unit's card and never painted (§41B). A **plan** is never coverage.
 
-**133 species.** A — measured density: 0 · B — measured distribution: 54 · C — habitat model: 0 · D — zone evidence (not painted): 9 · E — nothing defensible yet: 70.
+**485 species.** A — measured density: 0 · B — measured distribution: 72 · C — habitat model: 0 · D — zone evidence (not painted): 9 · E — nothing defensible yet: 404.
 
-**Map-layer stage:** NO_STRATEGY: 0 · STRATEGY_DEFINED: 79 · MODEL_OR_DATA_AVAILABLE: 0 · GENERATED: 0 · CERTIFIED: 0 · SERVED: 0 · RENDERED: 0 · PRODUCTION_VERIFIED: 54.
+**Map-layer stage:** NO_STRATEGY: 0 · STRATEGY_DEFINED: 413 · MODEL_OR_DATA_AVAILABLE: 0 · GENERATED: 0 · CERTIFIED: 0 · SERVED: 18 · RENDERED: 0 · PRODUCTION_VERIFIED: 54.
 
 | Species | Family | Strategy held | Surface | Survey plots | Zone evidence | Stage | Next |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | aberts-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| alabama-map-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| alaska-hare | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| alaska-marmot | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| allegheny-dusky-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| alligator-snapping-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| american-alligator | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | american-badger | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | american-bison | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | american-black-bear | bear | D — zone evidence (not painted) | — | — | BC, ON | STRATEGY_DEFINED | C in research |
 | american-black-duck | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NL, NS, ON, QC | — | PRODUCTION_VERIFIED | — |
+| american-bullfrog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | american-coot | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | american-crow | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| american-ermine | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | american-marten | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | american-mink | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | american-red-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| american-toad | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | american-wigeon | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
 | american-woodcock | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
+| antelope-jackrabbit | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| appalachian-cottontail | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| aquatic-gartersnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| arboreal-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | arctic-fox | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| arctic-ground-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | arctic-hare | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| argentine-black-and-white-tegu | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| arizona-gray-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| arizona-mountain-kingsnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| arizona-mud-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | axis-deer | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| baja-california-brush-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| baja-california-collared-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| baja-california-treefrog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | band-tailed-pigeon | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| banded-watersnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | barbary-sheep | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| barking-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| barking-treefrog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | barrows-goldeneye | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
 | beaver | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| beldings-ground-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | bighorn-sheep | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| bird-voiced-treefrog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| black-bellied-whistling-duck | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
+| black-billed-magpie | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
+| black-francolin | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| black-kingsnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| black-mountain-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| black-necked-gartersnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| black-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | black-scoter | sea duck | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | black-tailed-jackrabbit | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| black-tailed-prairie-dog | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| blackbuck | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | blue-winged-teal | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | ON | — | PRODUCTION_VERIFIED | — |
+| boat-tailed-grackle | unprotected bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
 | bobcat | predator furbearer | D — zone evidence (not painted) | — | — | BC | STRATEGY_DEFINED | C in research |
+| boreal-chorus-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | brant | arctic nesting goose | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | D in research |
+| brewers-blackbird | unprotected bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
+| broadhead-skink | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| bronzed-cowbird | unprotected bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
 | brown-bear | bear | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| brown-headed-cowbird | unprotected bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
+| brown-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | brush-rabbit | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | bufflehead | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | ON, QC | — | PRODUCTION_VERIFIED | — |
+| burmese-python | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | cackling-goose | arctic nesting goose | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | D in research |
+| california-ground-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| california-kingsnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| california-lyresnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| california-mountain-kingsnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | california-quail | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| california-slender-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| california-treefrog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | canada-goose | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NL, NS, ON, QC | — | PRODUCTION_VERIFIED | — |
 | canada-lynx | predator furbearer | D — zone evidence (not painted) | — | — | BC | STRATEGY_DEFINED | C in research |
 | canvasback | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
+| canyon-treefrog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | caribou | ungulate | D — zone evidence (not painted) | — | — | BC | STRATEGY_DEFINED | C in research |
+| central-ratsnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| checkered-gartersnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| chestnut-bellied-sandgrouse | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| chicken-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | chukar | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | cinnamon-teal | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| clapper-rail | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
+| clouded-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| coachwhip | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| coal-skink | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| coast-nightsnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| coastal-giant-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | collared-peccary | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| collared-pika | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| columbian-ground-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| common-chuckwalla | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | common-eider | sea duck | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | common-gallinule | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| common-gartersnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | common-goldeneye | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NL, NS, ON, QC | — | PRODUCTION_VERIFIED | — |
+| common-grackle | unprotected bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
+| common-lesser-earless-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| common-map-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | common-merganser | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| common-murre | seabird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
+| common-raven | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
+| common-sagebrush-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| common-sharp-tailed-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| common-side-blotched-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| common-snapping-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| copes-gray-treefrog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| corn-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| cottonmouth | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| couchs-spadefoot | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | coyote | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | dall-sheep | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | desert-cottontail | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| desert-horned-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| desert-iguana | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| desert-night-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| desert-nightsnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| desert-spiny-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| diamond-backed-terrapin | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| diamondback-water-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| double-crested-cormorant | seabird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
+| douglas-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| dunns-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | dusky-grouse | forest upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| dwarf-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| eastern-box-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| eastern-collared-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| eastern-copperhead | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| eastern-coral-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | eastern-cottontail | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| eastern-diamondback-rattlesnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| eastern-fence-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| eastern-glass-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | eastern-gray-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| eastern-hognose-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| eastern-mud-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| eastern-newt | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| eastern-ribbon-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| eastern-spadefoot | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| eastern-spotted-skunk | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| eastern-tiger-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | eastern-wolf | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| egyptian-goose | waterfowl | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | elk | ungulate | D — zone evidence (not painted) | — | — | BC | STRATEGY_DEFINED | C in research |
+| emperor-goose | waterfowl | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
+| ensatina | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| erckels-spurfowl | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| ermine | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | eurasian-collared-dove | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| eurasian-wigeon | waterfowl | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
+| european-hare | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| european-rabbit | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| european-starling | unprotected bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
 | fallow-deer | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| feral-ferret | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| feral-goat | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| feral-sheep | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | fish-crow | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | fisher | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| five-lined-skink | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| florida-pine-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| forest-sharp-tailed-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| four-toed-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| fowlers-toad | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | fox-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| fulvous-whistling-duck | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
 | gadwall | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
 | gambels-quail | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| gemsbok | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| gilberts-skink | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| glossy-crayfish-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| glossy-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| golden-mantled-ground-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| gophersnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| grahams-crayfish-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| granite-spiny-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | gray-fox | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| gray-francolin | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | gray-partridge | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, resident | — | — | PRODUCTION_VERIFIED | — |
+| gray-rat-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| gray-treefrog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | gray-wolf | predator furbearer | D — zone evidence (not painted) | — | — | BC | STRATEGY_DEFINED | C in research |
+| great-basin-collared-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| great-basin-spadefoot | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| great-cormorant | seabird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
+| great-plains-ratsnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| great-plains-toad | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| great-tailed-grackle | unprotected bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
 | greater-prairie-chicken | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | greater-sage-grouse | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | greater-scaup | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
+| greater-short-horned-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | greater-white-fronted-goose | arctic nesting goose | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | D in research |
+| green-anole | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| green-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| green-iguana | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| green-pheasant | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| green-ratsnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| green-treefrog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| green-water-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | green-winged-teal | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NL, NS, ON, QC | — | PRODUCTION_VERIFIED | — |
+| ground-skink | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| gulf-coast-toad | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| gulf-coast-waterdog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| gulf-salt-marsh-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | gunnison-sage-grouse | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| gunnisons-prairie-dog | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | harlequin-duck | sea duck | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
+| hellbender | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| helmeted-guineafowl | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| himalayan-snowcock | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| himalayan-tahr | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| hoary-marmot | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| hog-nosed-skunk | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | hooded-merganser | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| house-sparrow | unprotected bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
+| indian-peafowl | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
+| japanese-quail | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| kalij-pheasant | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| kentucky-spring-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | king-eider | sea duck | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | king-rail | migratory game bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
+| kit-fox | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| least-weasel | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | lesser-prairie-chicken | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | lesser-scaup | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
+| lesser-siren | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| loggerhead-musk-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| long-nosed-leopard-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| long-nosed-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| long-tailed-brush-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | long-tailed-duck | sea duck | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
+| long-tailed-weasel | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| longtail-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| madrean-mountain-kingsnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | mallard | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NS, ON, QC | — | PRODUCTION_VERIFIED | — |
+| many-lined-skink | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| marbled-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| marsh-rabbit | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| mearns-rock-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| mediterranean-gecko | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| mexican-duck | waterfowl | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
+| mexican-spadefoot | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| milksnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| mimic-glass-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| mississippi-map-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| mississippi-slimy-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| mohave-rattlesnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| mole-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | montezuma-quail | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | moose | ungulate | D — zone evidence (not painted) | — | — | AB, BC, ON | STRATEGY_DEFINED | C in research |
+| mottled-duck | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
+| mouflon | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| mountain-beaver | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| mountain-chorus-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | mountain-cottontail | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | mountain-goat | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | mountain-lion | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | mountain-quail | forest upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | mourning-dove | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
+| mud-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| mud-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| mudpuppy | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | mule-deer | ungulate | D — zone evidence (not painted) | — | — | AB, BC | STRATEGY_DEFINED | C in research |
+| muscovy-duck | waterfowl | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | muskox | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | muskrat | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | mute-swan | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| narrowmouth-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | new-england-cottontail | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| nile-monitor | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | nilgai | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| nine-banded-armadillo | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| north-american-porcupine | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| north-american-racer | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | north-american-river-otter | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| northern-alligator-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | northern-bobwhite | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| northern-crawfish-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| northern-cricket-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| northern-dusky-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| northern-flying-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| northern-leopard-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | northern-pintail | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
+| northern-rubber-boa | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | northern-shoveler | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
+| northern-three-lined-boa | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| northern-two-lined-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| northern-water-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| northwestern-gartersnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| northwestern-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | nutria | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| oak-toad | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| ocellated-skink | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| ornate-chorus-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| ornate-tree-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| ouachita-map-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| pacific-marten | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| pacific-treefrog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| painted-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| panamint-rattlesnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| pascagoula-map-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| pelagic-cormorant | seabird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| persian-ibex | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| pickerel-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| pig-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| pine-woods-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| pine-woods-treefrog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| plain-chachalaca | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
+| plainbelly-water-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| plains-gartersnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| plains-leopard-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| plains-spadefoot | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| plateau-fence-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| plateau-striped-whiptail | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | polar-bear | bear | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| prairie-kingsnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| prairie-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| prairie-rattlesnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | pronghorn | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | purple-gallinule | migratory game bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
+| pygmy-rabbit | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| pygmy-rattlesnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| pygmy-short-horned-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| queen-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | raccoon | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| razorback-musk-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | red-breasted-merganser | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| red-deer | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| red-eared-slider | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | red-fox | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| red-legged-partridge | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| red-river-waterdog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| red-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| red-spotted-toad | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| red-winged-blackbird | unprotected bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
+| redbelly-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | redhead | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
+| richardsons-ground-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | ring-necked-duck | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NL, NS, ON, QC | — | PRODUCTION_VERIFIED | — |
 | ring-necked-pheasant | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, resident | — | — | PRODUCTION_VERIFIED | — |
+| ring-necked-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| ringed-turtle-dove | migratory game bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| ringed-wall-gecko | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| ringtail | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| rio-grande-leopard-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| river-cooter | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| river-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| rock-partridge | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| rock-pigeon | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
 | rock-ptarmigan | arctic alpine upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| rock-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | rosss-goose | arctic nesting goose | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | D in research |
+| rough-earth-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| rough-green-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| rough-skinned-newt | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| rough-tailed-gecko | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | ruddy-duck | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | ruffed-grouse | forest upland bird | B — measured distribution | BBS field 2.0.0, rank scale, resident | — | — | PRODUCTION_VERIFIED | C in research |
+| rusty-blackbird | unprotected bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| sambar | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | sandhill-crane | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
 | scaled-quail | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| scarlet-kingsnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| scarlet-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| seal-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | sharp-tailed-grouse | open country upland bird | B — measured distribution | BBS field 2.0.0, rank scale, resident | — | — | PRODUCTION_VERIFIED | — |
+| shiny-cowbird | unprotected bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
+| sidewinder | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| sierra-gartersnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| sierran-treefrog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | sika-deer | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| six-lined-racerunner | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| slender-glass-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| smallmouth-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| smiths-black-headed-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| smooth-earth-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| smooth-green-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| smooth-softshell-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | snow-goose | arctic nesting goose | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | D in research |
 | snowshoe-hare | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| snowy-owl | raptor | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| sonora-mud-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| sonoran-lyresnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | sooty-grouse | forest upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | sora | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| southeastern-chorus-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| southeastern-crowned-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| southeastern-five-lined-skink | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| southern-alligator-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| southern-california-slender-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| southern-chorus-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| southern-cricket-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| southern-dusky-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| southern-flying-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| southern-leopard-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| southern-painted-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| southern-toad | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| southern-zigzag-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| southwestern-fence-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| southwestern-speckled-rattlesnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| spectacled-eider | sea duck | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| spiny-softshell | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| spotted-dove | migratory game bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| spotted-dusky-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| spotted-leaf-nosed-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| spotted-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| spring-peeper | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | spruce-grouse | forest upland bird | B — measured distribution | BBS field 2.0.0, rank scale, resident | — | — | PRODUCTION_VERIFIED | — |
+| squirrel-treefrog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| stellers-eider | sea duck | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| stinkpot | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| striped-racer | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | striped-skunk | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| striped-whipsnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | surf-scoter | sea duck | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | swamp-rabbit | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| swift-fox | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| terrestrial-gartersnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| thick-billed-murre | seabird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
+| thirteen-lined-ground-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| three-lined-boa | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| three-lined-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| three-toed-amphiuma | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| tiger-whiptail | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| timber-rattlesnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | trumpeter-swan | waterfowl | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | tundra-swan | waterfowl | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
+| two-lined-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| two-toed-amphiuma | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| uinta-ground-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | virginia-opossum | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | virginia-rail | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
+| wandering-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| websters-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| western-banded-gecko | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| western-black-headed-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| western-diamond-backed-rattlesnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| western-fence-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| western-gray-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| western-groundsnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| western-milk-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| western-patch-nosed-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| western-rattlesnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| western-ribbon-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| western-shovel-nosed-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| western-skink | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| western-spotted-skunk | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| western-threadsnake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| western-tiger-salamander | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| western-toad | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| white-nosed-coati | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | white-tailed-deer | ungulate | D — zone evidence (not painted) | — | — | AB, BC, ON | STRATEGY_DEFINED | C in research |
 | white-tailed-jackrabbit | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| white-tailed-prairie-dog | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | white-tailed-ptarmigan | arctic alpine upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
+| white-tipped-dove | migratory game bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | white-winged-dove | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | white-winged-scoter | sea duck | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | whooping-crane | migratory game bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
@@ -146,4 +488,14 @@ unit, shown in that unit's card and never painted (§41B). A **plan** is never c
 | wilsons-snipe | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
 | wolverine | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | wood-duck | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NS, ON, QC | — | PRODUCTION_VERIFIED | — |
+| wood-frog | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
 | woodchuck | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| woodhouses-toad | amphibian | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| worm-snake | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| wyoming-ground-squirrel | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| yellow-backed-spiny-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| yellow-bellied-marmot | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| yellow-headed-blackbird | unprotected bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | SERVED | C in research |
+| yellow-mud-turtle | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |
+| zebra-dove | migratory game bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
+| zebra-tailed-lizard | reptile | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | — |

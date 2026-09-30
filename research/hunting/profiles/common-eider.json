@@ -1,0 +1,29 @@
+{
+ "slug": "common-eider",
+ "scientificName": "Somateria mollissima",
+ "fieldMarks": [
+  "Large, heavy-bodied sea duck: 23-30 in, among the biggest ducks.",
+  "Adult male distinctive black-and-white; bill color varies from orange (Alaska) to olive-gray (Northeast).",
+  "Female: large, with a long sloping bill and heavy barring on the sides; grayish to rusty brown.",
+  "Young males pass through dark-headed, white-chested stages."
+ ],
+ "behavior": [
+  "Floats offshore in flocks that can number several thousand; often nests in colonies.",
+  "Dives mainly for mussels and other bivalves, also crabs and other invertebrates; often feeds on falling or low tide, by day or night.",
+  "Northernmost breeders migrate long distances; southern breeders are more sedentary; Hudson Bay birds stay all year in open leads.",
+  "Male courtship calls are a hollow moan and cooing notes; female quacks."
+ ],
+ "habitat": [
+  "Stays very close to coastlines in all seasons: rocky coasts and shoals, and in summer islands and coastal tundra."
+ ],
+ "range": "Breeds along northern coasts of Alaska and Canada, including Hudson Bay and the Atlantic coast; the winter range extends only a little south of the breeding range, reaching New England and the Mid-Atlantic.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Common Eider | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/common-eider"
+  }
+ ]
+}

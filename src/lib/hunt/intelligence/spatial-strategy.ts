@@ -162,12 +162,14 @@ export function spatialStrategyFor(speciesId: string): SpeciesSpatialStrategy {
   ].filter(Boolean).join(" and ");
   const statement = entry || plotJurisdictions.length
     ? null
-    : eligibility === "PROTECTED"
+    : eligibility === "NON_QUARRY"
       /* §16: library presence never implies legal opportunity, and a map of
-         where to look for a protected animal is a hunting aid. */
-      ? "This species must never be hunted, so North Ground draws no map of where to find it. Unshaded ground is a gap in what North Ground holds, not a finding about the animals."
-      : eligibility === "UNVERIFIED"
-        ? "No authority North Ground has read establishes current take of this species, so no map of where to find it is drawn until one does. Unshaded ground is a gap in what North Ground holds, not a finding about the animals."
+         where to look for a non-quarry animal is a hunting aid. */
+      ? "North Ground does not treat this species as quarry, so it draws no map of where to find it. Unshaded ground is a gap in what North Ground holds, not a finding about the animals."
+      : eligibility === "LIMITED_TAKE"
+        ? "Legal take of this species exists only under narrow, jurisdiction-specific conditions, so North Ground draws no continental map of where to find it; Hunt shows an opportunity only where a certified rule establishes one. Unshaded ground is a gap in what North Ground holds, not a finding about the animals."
+      : eligibility === "UNKNOWN"
+        ? "No authority North Ground has read establishes meaningful take of this species, so no map of where to find it is drawn until one does. Unshaded ground is a gap in what North Ground holds, not a finding about the animals."
     : zoneEvidenceJurisdictions.length
       ? `North Ground holds, by management unit, ${held}; each unit's card shows them. A figure for a whole unit is not a surface: it cannot say where inside the unit the animals are, so nothing is painted. Unshaded ground is a gap in what North Ground holds, not a finding about the animals.`
       : `North Ground holds no survey that maps where this species is${declinedEntry ? ` (${declinedEntry.detail.replace(/\.$/, "")})` : ""}. Unshaded ground is a gap in what North Ground holds, not a finding about the animals.`;

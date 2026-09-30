@@ -1,0 +1,46 @@
+{
+ "slug": "black-necked-gartersnake",
+ "scientificName": "Thamnophis cyrtopsis",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes T. cyrtopsis was for many years called T. eques; Animal Diversity Web lists it as 'Blackneck Garter Snake'.",
+ "fieldMarks": [
+  "Olive-gray to brown back, gray or bluish-gray head, whitish to greenish or brownish belly; adults 41-71 cm (rarely to 109 cm).",
+  "Yellow to white mid-dorsal stripe, shading to orange toward the head, separating two black blotches, one on each side of the neck.",
+  "Two rows of alternating dark spots between the stripes give a checkerboard look; lateral stripes (cream, tan or yellow) on scale rows 2 and 3.",
+  "19 rows of keeled dorsal scales; juveniles are brighter and more contrasting than adults."
+ ],
+ "behavior": [
+  "Semi-aquatic and most active by day, though night activity is not unusual; if threatened it flees into cover or water, flattens and broadens its head, and releases foul-smelling musk.",
+  "Eats mainly frogs, toads and tadpoles, plus small fish, skinks, crustaceans and earthworms; forages actively in spring when water and prey are abundant and uses sit-and-wait ambush in summer.",
+  "At night shelters in exposed roots along stream banks, crevices, rodent holes and debris; hibernates in winter dens."
+ ],
+ "habitat": [
+  "Streams in valleys and canyons and shallow rocky pools, also riparian woodland, pine-oak forest, scrub, desert flats and dry grassland; may use cattle tanks as water recedes."
+ ],
+ "range": "Southern Colorado, southwestern Utah, central and eastern Arizona, New Mexico (except the far east) and western and central Texas, south through Mexico to Guatemala. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "checkered-gartersnake",
+   "name": "Checkered gartersnake (Thamnophis marcianus)",
+   "howToTell": "Checkered gartersnake has 21 rows of keeled dorsal scales, a pale-yellow crescent behind the head and a single thick black neck line, versus 19 rows and two black neck blotches in the black-necked."
+  }
+ ],
+ "aliases": [
+  "blackneck garter snake",
+  "western black-necked garter snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Thamnophis cyrtopsis (Black-necked Gartersnake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100881/Thamnophis_cyrtopsis"
+  },
+  {
+   "title": "Animal Diversity Web: Blackneck Garter Snake",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Thamnophis_cyrtopsis/"
+  }
+ ]
+}

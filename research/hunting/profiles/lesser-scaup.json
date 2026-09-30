@@ -1,0 +1,40 @@
+{
+ "slug": "lesser-scaup",
+ "scientificName": "Aythya affinis",
+ "fieldMarks": [
+  "Male black at both ends and whitish in the middle; often a purple gloss on the head in good light",
+  "Female brown-headed with a white face patch",
+  "Peak at the back of the crown and slightly smaller bill than greater scaup",
+  "White wing stripe reaches only about halfway out the wing"
+ ],
+ "behavior": [
+  "Very active diver, surfacing repeatedly; sometimes feeds at night",
+  "Winters in dense single-species flocks of hundreds or thousands",
+  "Eats mostly mollusks, aquatic insects and crustaceans plus aquatic plants; on the Great Lakes may feed heavily on zebra mussels",
+  "Migrates in flocks late in fall and early in spring"
+ ],
+ "habitat": [
+  "Summers around large marshes in prairie or forest; winters on lakes, reservoirs, rivers and sheltered coastal bays, far more often inland on fresh water than greater scaup."
+ ],
+ "range": "Breeds from central Alaska and the Mackenzie Delta to northern Manitoba and northern Ontario south to southern British Columbia, northern Idaho, North Dakota and Minnesota; winters from southern British Columbia and the southern Great Lakes and New England south through the southern U.S. to Central America.",
+ "lookalikes": [
+  {
+   "slug": "greater-scaup",
+   "name": "Greater scaup",
+   "howToTell": "Head shape is the best mark: lesser has a peaked rear crown, smaller bill and a white wing stripe only half the wing's length."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Lesser Scaup | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/lesser-scaup"
+  },
+  {
+   "title": "Aythya affinis (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104109/Aythya_affinis"
+  }
+ ]
+}

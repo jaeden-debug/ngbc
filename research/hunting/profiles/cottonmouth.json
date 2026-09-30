@@ -1,0 +1,40 @@
+{
+ "slug": "cottonmouth",
+ "scientificName": "Agkistrodon piscivorus",
+ "commonNameFr": null,
+ "family": "Viperidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe treats A. piscivorus as a species without subspecies and elevates A. conanti (Florida cottonmouth) to a separate species, calling the present one Northern Cottonmouth; ADW's account is titled A. piscivorus (conanti) and includes Florida within its range.",
+ "fieldMarks": [
+  "Heavy-bodied venomous snake, to about 1.8 m; adults olive, brown or black with dark, dumbbell-shaped crossbands that are darker at the edges and lighter in the centre, blackening toward the tail.",
+  "Large spade-shaped head, brown, black or olive on top, with brown patches on the chin; inside of the mouth is bright white.",
+  "Juveniles are brighter with more distinct crossbands and a yellow tail tip.",
+  "Males are longer and heavier than females."
+ ],
+ "behavior": [
+  "Threat display: shakes the tail, raises the head a few inches, coils and gapes to show the white mouth; also emits a foul musk.",
+  "Mostly nocturnal but may bask by day; adults stay within about 500 m of water; most active roughly March-November in the Carolinas and inactive in cold weather.",
+  "Eats fishes, amphibians, reptiles, small mammals, birds and carrion; gives live birth to 1-16 young, mainly August-September."
+ ],
+ "habitat": [
+  "Wide range of aquatic and wetland habitats: swamps, sloughs, bayous, ponds and streams in pine flatwoods, marshes, river bottoms, floodplains, tidal stream courses and sometimes brackish water.",
+  "Winters in rocky hillsides, crayfish burrows, stumps or mammal burrows."
+ ],
+ "range": "NatureServe lists the species in Virginia, North and South Carolina, Georgia, Kentucky, Tennessee, Alabama, Mississippi, Louisiana, Arkansas, Missouri, Illinois, Indiana, Kansas, Oklahoma and Texas; Florida populations are assigned to A. conanti in that source.",
+ "lookalikes": [],
+ "aliases": [
+  "Northern cottonmouth"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.960784"
+  },
+  {
+   "title": "Agkistrodon piscivorus (conanti)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Agkistrodon_piscivorus/"
+  }
+ ]
+}

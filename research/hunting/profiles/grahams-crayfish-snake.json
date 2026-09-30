@@ -1,0 +1,49 @@
+{
+ "slug": "grahams-crayfish-snake",
+ "scientificName": "Regina grahamii",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe and the Missouri Department of Conservation spell the common name 'Graham's crawfish snake'; NatureServe notes the genus Regina is polyphyletic and awaits further study.",
+ "fieldMarks": [
+  "Medium-sized, dull semiaquatic snake; brown to yellowish-brown above with a broad yellowish-tan stripe along each lower side, sometimes edged by a thin dark line.",
+  "May show a faint tan stripe down the middle of the back.",
+  "Chin and throat cream to yellow; belly cream or light yellow with a faint central row of gray or light-brown dots and a dark zigzag along both edges.",
+  "Adults 18-28 in (occasionally to 47 in)."
+ ],
+ "behavior": [
+  "Feeds mainly, sometimes only, on molting or freshly molted crayfish; also frogs, snails, shrimp, small fish and salamanders.",
+  "Active spring to early November in Missouri with peaks in April-May and October; nocturnal in hot summer weather, otherwise diurnal or crepuscular.",
+  "Basks on branches over water in spring and early summer; shelters under rocks or logs and in crayfish burrows, including in winter.",
+  "Gives birth to live young (litters of 6-39) in July-September."
+ ],
+ "habitat": [
+  "Sluggish streams, river-bottom sloughs, bayous, pond and lake margins, marshes, swamps, rice fields and roadside ditches, often in water-edge vegetation or crayfish burrows.",
+  "In Missouri it favours the grassy edges of marshes and prairie streams and is absent from the Ozarks."
+ ],
+ "range": "Central United States only, per NatureServe: Arkansas, Iowa, Illinois, Kansas, Louisiana, Missouri, Mississippi, Nebraska, Oklahoma and Texas; not listed for Canada.",
+ "lookalikes": [
+  {
+   "slug": "northern-cottonmouth",
+   "name": "Northern cottonmouth",
+   "howToTell": "The venomous cottonmouth is heavier-bodied with a large chunky head, a facial pit between nostril and eye, a darker body and a light line from eye to mouth corner (Missouri Department of Conservation)."
+  }
+ ],
+ "aliases": [
+  "Graham's crawfish snake",
+  "Graham's crayfish snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Regina grahamii",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100772"
+  },
+  {
+   "title": "Graham's Crawfish Snake (Field Guide)",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/grahams-crawfish-snake"
+  }
+ ]
+}

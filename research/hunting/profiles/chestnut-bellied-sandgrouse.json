@@ -1,0 +1,34 @@
+{
+ "slug": "chestnut-bellied-sandgrouse",
+ "scientificName": "Pterocles exustus",
+ "commonNameFr": null,
+ "family": "Pteroclididae",
+ "order": "Charadriiformes",
+ "taxonomyNote": "ADW places it in Charadriiformes, family Pteroclididae; NatureServe says the relationships of Pteroclididae are unclear (Charadriiformes vs Columbiformes; AOU 1998 incertae sedis). Order and family here follow ADW; not resolved. Field marks not sourced.",
+ "fieldMarks": [],
+ "behavior": [
+  "Powerful flyer adapted to desert; on Hawaii Island flies mauka to makai to collect water",
+  "Carries water to the nest in absorbent breast feathers for young to drink"
+ ],
+ "habitat": [],
+ "range": "Introduced to Hawaii Island by the Nevada game department as a trial for possible import to Nevada. NatureServe records it in Hawaii.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "chestnut-bellied sandgrouse",
+   "publisher": "State of Hawaii, Hawaii Birding Trails",
+   "url": "https://hawaiibirdingtrails.hawaii.gov/bird/chestnut-bellied-sandgrouse/"
+  },
+  {
+   "title": "NatureServe Explorer: Pterocles exustus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.105117/Pterocles_exustus"
+  },
+  {
+   "title": "Pterocles exustus (classification)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Pterocles_exustus/"
+  }
+ ]
+}

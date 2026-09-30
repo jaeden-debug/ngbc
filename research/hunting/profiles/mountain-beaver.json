@@ -1,0 +1,43 @@
+{
+ "slug": "mountain-beaver",
+ "scientificName": "Aplodontia rufa",
+ "commonNameFr": "Castor de montagne",
+ "family": "Aplodontiidae",
+ "order": "Rodentia",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "300-500 mm body with only a 10-25 mm furred tail; about 800 g",
+  "Blackish, very coarse fur with a small white spot at the base of each ear",
+  "Thickset with a cylindrical body"
+ ],
+ "behavior": [
+  "Mostly fossorial and more active at night; tunnels along stream banks",
+  "Not aquatic or arboreal, though it swims and can climb",
+  "Eats ferns and other vegetation and stores haypiles for winter; active through the winter",
+  "Usually solitary, sometimes in loose colonies"
+ ],
+ "habitat": [
+  "Damp ravines and shaded slopes in coastal and montane conifer forest with dense ground cover, often near watercourses."
+ ],
+ "range": "Southwestern British Columbia south along the Cascade, Olympic, Coast and Siskiyou ranges to central California and the Sierra Nevada.",
+ "lookalikes": [],
+ "aliases": [
+  "sewellel",
+  "boomer",
+  "farmer",
+  "gehalis",
+  "ground bear"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Aplodontia rufa",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101780"
+  },
+  {
+   "title": "Animal Diversity Web: Aplodontia rufa",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Aplodontia_rufa/"
+  }
+ ]
+}

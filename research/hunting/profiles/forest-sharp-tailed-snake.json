@@ -1,0 +1,39 @@
+{
+ "slug": "forest-sharp-tailed-snake",
+ "scientificName": "Contia longicauda",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "Formerly included in Contia tenuis; recognised as a distinct species by Feldman and Hoyer (2010), originally spelled longicaudae; NatureServe gives the corrected spelling longicauda.",
+ "fieldMarks": [
+  "Longer tail than the common sharp-tailed snake, with 43-58 subcaudal scales (C. tenuis has 24-42)."
+ ],
+ "behavior": [
+  "Active mostly in the rainy season; retreats underground in the dry season and is sometimes found alive on roads at night.",
+  "Diet is apparently restricted mainly to slugs; females lay a clutch of up to 9 eggs, probably in June or July."
+ ],
+ "habitat": [
+  "Fairly mesic, well-shaded areas, typically mixed evergreen forest dominated by Douglas-fir and redwood, and woodland with mixed conifer and oak canopy."
+ ],
+ "range": "Outer Coast Ranges of northern California and southwestern Oregon, the Klamath Mountains, and parts of the southern Oregon Cascades; parapatric with C. tenuis in places. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "common-sharp-tailed-snake",
+   "name": "Common sharp-tailed snake",
+   "howToTell": "Shorter tail with fewer subcaudal scales (24-42 versus 43-58)."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Contia longicauda (Forest Sharp-tailed Snake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.843986/Contia_longicauda"
+  },
+  {
+   "title": "Forest sharp-tailed snake (Contia longicauda)",
+   "publisher": "Wikipedia (used only as a secondary source for the subcaudal-scale difference)",
+   "url": "https://en.wikipedia.org/wiki/Forest_sharp-tailed_snake"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "slug": "nine-banded-armadillo",
+ "scientificName": "Dasypus novemcinctus",
+ "commonNameFr": null,
+ "family": "Dasypodidae",
+ "order": "Cingulata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Bony armour of rectangular or pentagonal plates in three sections; usually 9 bands, range 8-11",
+  "Unarmoured yellowish underside",
+  "About 0.75 m body plus 0.3 m tail; 3.6-7.7 kg"
+ ],
+ "behavior": [
+  "Mainly nocturnal or crepuscular; forages earlier on cold or cloudy days",
+  "Solitary except when mating; does not hibernate",
+  "Digs burrows up to 5 m long, up to 12 dens",
+  "Over 90% of diet is animal matter (beetles, termites, ants) found by smell"
+ ],
+ "habitat": [
+  "Forest and scrub-brush with adequate water and at least 38 cm annual rainfall."
+ ],
+ "range": "South and Central America into the southern US, expanding north since the 1800s to Missouri and Illinois.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Nine-banded Armadillo",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Dasypus_novemcinctus/"
+  }
+ ]
+}

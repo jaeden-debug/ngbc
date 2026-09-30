@@ -1,0 +1,51 @@
+{
+ "slug": "eastern-spadefoot",
+ "scientificName": "Scaphiopus holbrookii",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Scaphiopodidae",
+ "order": "Anura",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Stout toadlike amphibian to about 7 cm; light to dark brown, olive or blackish above, mottled with dark brown, with a yellow lyre-shaped pair of lines down the back.",
+  "Large protruding eyes with vertically elliptical pupils; no raised boss between the eyes.",
+  "Single sickle-shaped black spade on the inner side of each hind foot; skin with small warts and small parotoid glands.",
+  "Male call is a coarse nasal 'wank' or 'quonk' repeated every few seconds."
+ ],
+ "behavior": [
+  "Nocturnal burrower that spends most of the time underground, becoming active on warm, damp or rainy nights.",
+  "Breeds whenever heavy rains fill temporary pools and temperatures exceed about 45 F; breeding groups may number dozens to hundreds; larvae can metamorphose in as little as 2 weeks.",
+  "Eats ants, beetles, flies, grasshoppers, crickets, termites and worms; skin secretions can irritate people, so wash hands after handling."
+ ],
+ "habitat": [
+  "Sandy, gravelly or loose soils in wooded or open terrain, including sand prairies, pastures, farmland and suburbs; uses temporary rain-filled pools for breeding."
+ ],
+ "range": "Eastern and southeastern United States from Massachusetts to Florida and west to the Mississippi River basin; absent from higher Appalachian elevations; not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "plains-spadefoot",
+   "name": "Plains spadefoot",
+   "howToTell": "Has a raised boss between the eyes and a wedge-shaped spade at the base of each hind foot (Missouri Department of Conservation)."
+  }
+ ],
+ "aliases": [
+  "Eastern spadefoot toad"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Scaphiopus holbrookii",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100521"
+  },
+  {
+   "title": "Eastern Spadefoot (Field Guide)",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/eastern-spadefoot"
+  },
+  {
+   "title": "Animal Diversity Web: Scaphiopus holbrookii",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Scaphiopus_holbrookii/"
+  }
+ ]
+}

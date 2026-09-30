@@ -1,0 +1,40 @@
+{
+ "slug": "green-winged-teal",
+ "scientificName": "Anas crecca",
+ "fieldMarks": [
+  "North America's smallest dabbling duck, 31-38 cm.",
+  "Male: chestnut head with a green ear patch, a vertical white bar on the side of the chest and a yellow patch under the tail.",
+  "Female: small size, strong dark eyeline and grey bill.",
+  "Eurasian form (male) has a white stripe along the back and lacks the white chest bar; females of the two forms cannot be safely separated."
+ ],
+ "behavior": [
+  "Flocks fly very fast with rapid twisting and turning in unison; usually small flocks, but thousands may gather in winter or at migration stopovers.",
+  "Often rests out of the water, even standing on low snags or branches.",
+  "Main fall migration is late, mostly October to early December; winters farther north than other teal.",
+  "Feeds by wading or swimming in very shallow water, filtering mud, up-ending or picking from the surface, by day or night."
+ ],
+ "habitat": [
+  "In summer, open country near shallow freshwater lakes and marshes. In migration and winter, coastal estuaries and tidal marshes and shallow inland lakes and ponds with abundant standing or floating vegetation."
+ ],
+ "range": "Very common and widespread across Canada and the United States, from Alaska and the North through Western and Eastern Canada to California, Texas, the Southeast and Florida. The Eurasian form is resident on western Alaskan islands and a rare winter visitor in the northwestern and northeastern United States.",
+ "lookalikes": [
+  {
+   "slug": "blue-winged-teal",
+   "name": "Blue-winged teal",
+   "howToTell": "A female green-winged teal is identified by its small size, strong eyeline and grey bill, per Audubon; check wing pattern against blue-winged teal."
+  },
+  {
+   "slug": "eurasian-teal",
+   "name": "Eurasian (common) teal",
+   "howToTell": "The Eurasian male has a white horizontal back stripe and lacks the vertical white chest bar."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Green-winged Teal — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/green-winged-teal"
+  }
+ ]
+}

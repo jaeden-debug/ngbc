@@ -1,0 +1,48 @@
+{
+ "slug": "black-salamander",
+ "scientificName": "Aneides flavipunctatus",
+ "commonNameFr": null,
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": "The Oregon assessment notes the A. flavipunctatus complex may comprise several species (e.g. the Santa Cruz form A. f. niger and the Shasta lineage); NatureServe treats it as one species, Speckled Black Salamander.",
+ "fieldMarks": [
+  "Adults slate to black above and below, often with small white spots or a wash of bronze or olive.",
+  "Up to about 94 mm snout-vent and 160 mm total length; 15-16 costal grooves; short limbs.",
+  "Larger adults have a triangular head from large jaw muscles; toe tips are not squared, unlike its congeners.",
+  "Juveniles are green-grey or brassy with yellow limb bases and small white or blue spots; in the far north adults keep the juvenile greenish-grey or brassy look."
+ ],
+ "behavior": [
+  "Terrestrial and needs no standing water for any life stage; eggs are laid underground in July-August and hatch as miniature adults.",
+  "Active on the surface year-round in moist places and the south, but retreats underground in dry summers in drier northern sites; active mainly October-April in the north.",
+  "Aggressive, with bite-hold behaviour; 35% of field-caught animals were scarred. Good jumper using its tail.",
+  "Eats terrestrial arthropods, snails and worms."
+ ],
+ "habitat": [
+  "Forest, woodland and grassland; southern populations prefer moist woodland along streams and seepages, northern populations grassy areas, and far-north populations moss-covered rockslides.",
+  "Found under surface cover such as rocks, logs and talus near creeks or seeps."
+ ],
+ "range": "Southwestern Oregon south through the California coastal mountains to the Russian River (Sonoma County), with isolated populations near Santa Cruz and around Shasta Lake; sea level to about 1,700 m. Not found in Canada.",
+ "lookalikes": [
+  {
+   "slug": "clouded-salamander",
+   "name": "Clouded salamander",
+   "howToTell": "Clouded salamander has squared toe tips and brassy specks on a brown, often lighter back; black salamander toe tips are not squared and adults are slate to black."
+  }
+ ],
+ "aliases": [
+  "speckled black salamander",
+  "Santa Cruz black salamander (A. f. niger)"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Aneides flavipunctatus (Speckled Black Salamander)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.857896/Aneides_flavipunctatus"
+  },
+  {
+   "title": "Conservation Assessment for the Black Salamander (Aneides flavipunctatus) in Oregon",
+   "publisher": "USDA Forest Service Region 6 and USDI Bureau of Land Management",
+   "url": "http://andrewsforest.oregonstate.edu/pubs/pdf/pub4253.pdf"
+  }
+ ]
+}

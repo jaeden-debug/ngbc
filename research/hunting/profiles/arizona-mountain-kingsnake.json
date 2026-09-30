@@ -1,0 +1,49 @@
+{
+ "slug": "arizona-mountain-kingsnake",
+ "scientificName": "Lampropeltis pyromelana",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe's English name is Sonoran mountain kingsnake; per Burbrink et al. (2011) L. pyromelana (as circumscribed by Stebbins 2003) comprises northern L. pyromelana and southern L. knoblochi.",
+ "fieldMarks": [
+  "Medium-sized snake with red, white and black bands and a flat, wide head (NDOW).",
+  "Non-venomous; its red, white and black coloration mimics a coral snake (NDOW)."
+ ],
+ "behavior": [
+  "Mostly active by day; hides among rocks, logs and vegetation to avoid heat and predators (NDOW).",
+  "Constrictor that eats lizards, frogs, snakes, small mammals and even rattlesnakes (NDOW; NatureServe).",
+  "In Arizona adults and hatchlings were most often encountered in July and August (NatureServe).",
+  "Females lay 3-6 eggs; inactive in cold and extreme heat (NDOW; NatureServe)."
+ ],
+ "habitat": [
+  "Rocky, montane country often near streams or springs, also mesic lower canyons; pinyon-juniper, oak-juniper, pine-oak or pine-Douglas-fir woodland or chaparral (NatureServe; NDOW)."
+ ],
+ "range": "Discontinuous from east-central Nevada and central and western Utah south to near (mostly north of) the Mogollon Rim in Arizona and New Mexico (NatureServe); in Nevada limited to east-central mountains (NDOW).",
+ "lookalikes": [
+  {
+   "slug": "coral-snake",
+   "name": "Coral snakes",
+   "howToTell": "US coral snakes have the pattern red-yellow or white-black-yellow or white-red with thin pale bands, with red and black about equal in width (CPW)."
+  }
+ ],
+ "aliases": [
+  "Sonoran mountain kingsnake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Lampropeltis pyromelana",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.104417"
+  },
+  {
+   "title": "Sonoran Mountain Kingsnake",
+   "publisher": "Nevada Department of Wildlife",
+   "url": "https://www.ndow.org/species/sonoran-mountain-kingsnake/"
+  },
+  {
+   "title": "Milksnake",
+   "publisher": "Colorado Parks and Wildlife",
+   "url": "https://cpw.state.co.us/species/milksnake"
+  }
+ ]
+}

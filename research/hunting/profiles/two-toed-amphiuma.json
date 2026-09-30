@@ -1,0 +1,47 @@
+{
+ "slug": "two-toed-amphiuma",
+ "scientificName": "Amphiuma means",
+ "commonNameFr": null,
+ "family": "Amphiumidae",
+ "order": "Caudata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Eel-like, cylindrical salamander, 36.8-117 cm long, with four tiny vestigial legs each bearing two toes.",
+  "Smooth skin, dark brown or black above and dark grey below; sexes alike.",
+  "Tiny eyes covered by skin with no lids; oily, slippery skin makes it hard to hold."
+ ],
+ "behavior": [
+  "Mainly nocturnal sit-and-wait ambush predator; finds prey by smell and touch; eats aquatic insects, crayfish, amphibians and water snakes.",
+  "Digs or takes over burrows in muddy bottoms; primarily aquatic but may cross land, especially on rainy nights.",
+  "Some populations may brumate in moss and mud in winter; Florida populations appear active year-round."
+ ],
+ "habitat": [
+  "Swamps, bayous, muddy sloughs, cypress heads, ditches, sluggish streams, wet meadows and muddy lakes with soft substrate or thick vegetation, usually near shore; often uses crayfish burrows."
+ ],
+ "range": "NatureServe lists it in the southeastern US coastal plain: Virginia, North and South Carolina, Georgia, Florida, Alabama, Mississippi and Louisiana.",
+ "lookalikes": [
+  {
+   "slug": "three-toed-amphiuma",
+   "name": "Three-toed amphiuma",
+   "howToTell": "Three-toed has three toes on each foot (two-toed has two), and the two species overlap in Louisiana, Mississippi and Alabama."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.104318"
+  },
+  {
+   "title": "Amphiuma means (Two-toed Amphiuma)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Amphiuma_means/"
+  },
+  {
+   "title": "Amphiuma tridactylum (Three-toed Amphiuma)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Amphiuma_tridactylum/"
+  }
+ ]
+}

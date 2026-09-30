@@ -1,0 +1,51 @@
+{
+ "slug": "gilberts-skink",
+ "scientificName": "Plestiodon gilberti",
+ "commonNameFr": null,
+ "family": "Scincidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe (citing Nicholson 2025) recognizes three subspecies (Sierran, Western Red-tailed, and an unnamed Inyo skink); formerly in genus Eumeces.",
+ "fieldMarks": [
+  "Smooth, shiny scales; olive to brown above, sometimes with dark patterning; up to about 4.5 inches.",
+  "Young have a brilliant blue or pink tail contrasting with the body."
+ ],
+ "behavior": [
+  "Eats insects and spiders, searching under leaves and surface objects.",
+  "Lays 3-9 eggs in summer, in chambers in loose soil (peak activity around 1 July in one California account); not territorial.",
+  "Inactive in cold temperatures and extreme heat."
+ ],
+ "habitat": [
+  "Varied: grassland, salt flats, high desert, open chaparral, pinyon-juniper and open pine forest, often rocky areas near streams and springs.",
+  "In California foothills up to about 1,980 m, favouring chaparral, black oak woodland and riparian deciduous habitat."
+ ],
+ "range": "Sierra Nevada and Coast Ranges of California south to northern Baja California, with isolated populations in southeastern California, southern Nevada and west-central Arizona; sea level to about 2,200 m.",
+ "lookalikes": [
+  {
+   "slug": "western-skink",
+   "name": "Western skink",
+   "howToTell": "Western skink has a conspicuous white or beige stripe down each side; confirm against a field guide."
+  }
+ ],
+ "aliases": [
+  "Sierran skink",
+  "Western Red-tailed Skink",
+  "Greater Brown Skink"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Plestiodon gilberti",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.106029"
+  },
+  {
+   "title": "Lizards: Sequoia National Forest, Giant Sequoia National Monument",
+   "publisher": "USDA Forest Service",
+   "url": "https://www.fs.usda.gov/media/236943"
+  },
+  {
+   "title": "Gilbert's Skink R006 (California Wildlife Habitat Relationships life history account)",
+   "publisher": "USDA Forest Service Pacific Southwest Research Station",
+   "url": "https://www.fs.usda.gov/psw/publications/documents/psw_gtr037/amphibians_reptiles/r006.pdf"
+  }
+ ]
+}

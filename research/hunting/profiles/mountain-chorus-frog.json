@@ -1,0 +1,38 @@
+{
+ "slug": "mountain-chorus-frog",
+ "scientificName": "Pseudacris brachyphona",
+ "commonNameFr": null,
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe notes Ospina et al. (2020) split the Southern clade as P. collinsorum, restricting P. brachyphona to the Northern clade; Animal Diversity Web treats P. brachyphona as a single Appalachian species.",
+ "fieldMarks": [
+  "Small frog; adult males 26-30 mm, females 28-34 mm.",
+  "Mostly light brown with stripes or spots of varying shades of brown along the back; a stripe from the snout across the eye.",
+  "Legs usually yellow; throat yellow to black in males and white in females."
+ ],
+ "behavior": [
+  "Primarily nocturnal, also diurnal when breeding; breeding February-June, eggs in small clusters attached to vegetation.",
+  "Relatively solitary outside breeding; males defend breeding spots in vernal ponds.",
+  "Eats beetles (about 45% of diet), spiders, bugs, ants and other small invertebrates; migrates between breeding pools and upland habitat."
+ ],
+ "habitat": [
+  "Wooded, hilly areas with deciduous trees; breeds in spring pools, flooded ditches, stream pools and woodland ponds."
+ ],
+ "range": "Appalachian Mountains from northwestern Pennsylvania to central Alabama, generally at elevations of about 365-1066 m. Not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Mountain chorus frog"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Pseudacris brachyphona",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.1180191"
+  },
+  {
+   "title": "Animal Diversity Web: Pseudacris brachyphona",
+   "publisher": "University of Michigan Museum of Zoology, Animal Diversity Web",
+   "url": "https://animaldiversity.org/accounts/Pseudacris_brachyphona/"
+  }
+ ]
+}

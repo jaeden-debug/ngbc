@@ -212,17 +212,31 @@ export interface SpeciesActivityContext {
   sourceIds: CanonicalId<"source">[];
 }
 
+export interface ConservationStatement {
+  status: "ENDANGERED" | "THREATENED" | "SPECIAL_CONCERN" | "PROTECTED" | "CLOSED_TO_TAKE";
+  jurisdictionIds: CanonicalId<"jurisdiction">[];
+  text: string;
+  sourceIds: CanonicalId<"source">[];
+}
+
 export interface SpeciesProfile {
   speciesId: CanonicalId<"species">;
   commonNames: LocalizedText[];
   scientificName: string;
   scientificNameAuthority?: string;
   /**
-   * Species-level take eligibility; see `content/species-eligibility.ts`.
-   * Required, and the only thing that admits a species to a hunting-opportunity
-   * feature. Never a statement about a place, a date or a hunter.
+   * TAKE ELIGIBILITY: is this species part of North Ground's hunting/removal
+   * universe anywhere? See `content/species-eligibility.ts`. Required. Never a
+   * statement about a place, a date or a hunter, and never derived from
+   * conservation status.
    */
-  takeEligibility: "HUNTABLE" | "REMOVAL" | "PROTECTED" | "UNVERIFIED";
+  takeEligibility: "HUNTABLE" | "LIMITED_TAKE" | "NUISANCE_OR_INVASIVE_TAKE" | "NON_QUARRY" | "UNKNOWN";
+  /**
+   * CONSERVATION STATUS: what authorities call this animal's protection or
+   * listing, where, each statement sourced. Independent of take eligibility
+   * and of legality (trumpeter swan: protected in Wyoming, quota take in Nevada).
+   */
+  conservationStatus?: ConservationStatement[];
   aliases?: EntityAlias[];
   taxonomy: {
     kingdom?: string;

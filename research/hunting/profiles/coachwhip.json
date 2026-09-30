@@ -1,0 +1,39 @@
+{
+ "slug": "coachwhip",
+ "scientificName": "Coluber flagellum",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "Sources place this species in Masticophis (NatureServe, Nicholson 2025) rather than Coluber; NatureServe also notes O'Connell and Smith (2018) split populations west of the Cochise Filter Barrier as M. piceus, and renamed the English name Common Coachwhip.",
+ "fieldMarks": [
+  "One of the largest North American snakes, 91-259 cm snout-vent, with smooth scales and a slender, whip-like tail.",
+  "Colour varies widely by region: dark brown front half with a red or pink belly midline (eastern), black bands broken by red bands (Sonoran), or pink, red, yellow and grey to black phases in the west."
+ ],
+ "behavior": [
+  "Diurnal and solitary; active mid-morning and late afternoon but, unlike most snakes, stays active at the hottest time of day (ambient about 33 C).",
+  "Active hunter of lizards, other snakes, insects and birds and their eggs; hibernates in winter.",
+  "Active April-October in the north and mid-March to late October in Texas."
+ ],
+ "habitat": [
+  "Dry, open terrain: desert, prairie, scrubland, juniper grassland, woodland, farmland, creek valleys and chaparral; terrestrial but climbs into vegetation.",
+  "Takes cover in burrows, under rocks or in vegetation."
+ ],
+ "range": "Southern United States from North Carolina and Florida west through Kansas and southern Nebraska to Arizona and California (to San Francisco Bay), and north-central Mexico; not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Common coachwhip",
+  "Masticophis flagellum"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Masticophis flagellum (Common Coachwhip)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.1374493/Masticophis_flagellum"
+  },
+  {
+   "title": "Coachwhip snake (Masticophis flagellum) — Animal Diversity Web",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Masticophis_flagellum/"
+  }
+ ]
+}

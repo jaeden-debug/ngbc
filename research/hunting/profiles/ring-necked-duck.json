@@ -1,0 +1,46 @@
+{
+ "slug": "ring-necked-duck",
+ "scientificName": "Aythya collaris",
+ "fieldMarks": [
+  "Male: black head and back, white bar separating gray sides from black chest",
+  "Distinct pale rings on the bill; the brown neck ring is very hard to see",
+  "Female mostly gray-brown with a pale area near the bill base and a peaked head"
+ ],
+ "behavior": [
+  "Springs directly off the water without the running take-off of most diving ducks",
+  "Dives in water a few feet deep; also feeds at the surface and in flooded fields",
+  "Mixes with other divers on large lakes and with dabblers on shallow water",
+  "Migrates in flocks late in fall and early in spring"
+ ],
+ "habitat": [
+  "Freshwater marshes, ponds and bogs in forest openings in summer; ponds, lakes and slow rivers in winter, generally not salt bays."
+ ],
+ "range": "Breeds from southeastern Alaska and central British Columbia east through northern Saskatchewan to Newfoundland, south to northeastern California, Colorado, Iowa and New England; winters from the southwestern and southeastern U.S. south to Central America. It has become much more widespread as a breeder in eastern Canada and northern New England since the 1930s.",
+ "lookalikes": [
+  {
+   "slug": "lesser-scaup",
+   "name": "Scaup (female)",
+   "howToTell": "The female ring-necked duck shows less face contrast than female scaup and a more noticeable bill ring."
+  },
+  {
+   "slug": "redhead",
+   "name": "Redhead (female)",
+   "howToTell": "The female ring-necked duck is grayer with a more peaked head and more noticeable bill ring."
+  }
+ ],
+ "aliases": [
+  "Ring-neck"
+ ],
+ "sources": [
+  {
+   "title": "Ring-necked Duck | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/ring-necked-duck"
+  },
+  {
+   "title": "Aythya collaris (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100619/Aythya_collaris"
+  }
+ ]
+}

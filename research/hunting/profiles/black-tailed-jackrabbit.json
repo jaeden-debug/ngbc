@@ -1,0 +1,43 @@
+{
+ "slug": "black-tailed-jackrabbit",
+ "scientificName": "Lepus californicus",
+ "fieldMarks": [
+  "Lanky hare, 47-63 cm long, with very long ears (10-13 cm) and long hind legs.",
+  "Black stripe down the centre of the back, a black rump patch, and a tail black on top.",
+  "Sexes look alike; females larger."
+ ],
+ "behavior": [
+  "Mainly nocturnal; rests by day in shallow scraped depressions ('forms') under bushes and is inactive in hot afternoons.",
+  "Relies on freezing and speed: flushes in bounds up to 20 ft, reaching 30-35 mph on a zigzag course.",
+  "Eats grasses and herbs, turning to twigs, bark, sagebrush and cacti when other food is short; gets most water from plants."
+ ],
+ "habitat": [
+  "Desert scrub, prairie, short-grass rangeland, dunes and farmland from sea level to about 3,800 m."
+ ],
+ "range": "Southwestern United States and Mexico, east to Missouri and north to Washington, Idaho, Colorado and Nebraska, west to California and Baja California.",
+ "lookalikes": [
+  {
+   "slug": "white-tailed-jackrabbit",
+   "name": "White-tailed jackrabbit",
+   "howToTell": "White-tailed jackrabbit's tail is always white, without the black tail top and back stripe."
+  },
+  {
+   "slug": "eastern-cottontail",
+   "name": "Eastern cottontail",
+   "howToTell": "Cottontails are smaller with shorter ears and legs; jackrabbits have ears, hind legs and feet very large in proportion to the body."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Lepus californicus (black-tailed jackrabbit)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lepus_californicus/"
+  },
+  {
+   "title": "Eastern Cottontail (Cottontail Rabbit)",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/eastern-cottontail-cottontail-rabbit"
+  }
+ ]
+}

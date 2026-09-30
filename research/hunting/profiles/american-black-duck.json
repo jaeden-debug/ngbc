@@ -1,0 +1,42 @@
+{
+ "slug": "american-black-duck",
+ "scientificName": "Anas rubripes",
+ "fieldMarks": [
+  "Resembles a female mallard but with a much darker body and a paler gray head.",
+  "Drake has a yellow bill; hen's bill is duller.",
+  "Speculum dark purple without the bold white borders of a mallard.",
+  "In flight, white underwings contrast strongly with the dark body."
+ ],
+ "behavior": [
+  "Dabbles, up-ends and grazes; freshwater birds eat mostly seeds, leaves and roots, coastal birds take mussels, clams, snails and small crustaceans.",
+  "Call is a typical duck quack.",
+  "Fall migration is often late, as waters freeze or food runs out; northern breeders migrate far, coastal birds only short distances.",
+  "Frequently hybridizes with mallards, especially in the Northeast."
+ ],
+ "habitat": [
+  "Marshes, bays, estuaries, ponds, rivers and lakes; uses salt marsh more than most dabblers, and also tree-lined ponds and wooded swamps."
+ ],
+ "range": "Eastern Canada, the Great Lakes and the Atlantic coast from New England through the Mid-Atlantic to the Southeast and Florida. Replaces the mallard in the Maritime provinces.",
+ "lookalikes": [
+  {
+   "slug": "mallard",
+   "name": "Mallard",
+   "howToTell": "Mallard hens are lighter mottled brown with an orange-and-black bill and a blue speculum bordered in white; black ducks are darker with a dark purple speculum lacking bold white edges."
+  }
+ ],
+ "aliases": [
+  "black duck"
+ ],
+ "sources": [
+  {
+   "title": "American Black Duck — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/american-black-duck"
+  },
+  {
+   "title": "Mallard — Hinterland Who's Who",
+   "publisher": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+   "url": "https://www.hww.ca/en/wildlife/birds/mallard.html"
+  }
+ ]
+}

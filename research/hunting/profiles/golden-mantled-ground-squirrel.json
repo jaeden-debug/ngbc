@@ -1,0 +1,57 @@
+{
+ "slug": "golden-mantled-ground-squirrel",
+ "scientificName": "Callospermophilus lateralis",
+ "commonNameFr": {
+  "name": "Spermophile à mante dorée",
+  "source": "NatureServe Explorer (French common name)"
+ },
+ "family": "Sciuridae",
+ "order": "Rodentia",
+ "taxonomyNote": "Animal Diversity Web and older literature use Spermophilus lateralis; NatureServe and the BC Conservation Data Centre (since March 2012) use Callospermophilus lateralis after Helgen et al. (2009) split Spermophilus; NatureServe notes C. saturatus was formerly included.",
+ "fieldMarks": [
+  "Golden-red mantle covering the head and shoulders (brighter in males, duller and grayer in winter pelage).",
+  "One white stripe bordered by two black stripes along each side of the body, like a chipmunk, but no facial stripes; instead a whitish eye ring.",
+  "Back gray, brownish or buff; underside whitish or yellowish-gray; tail brownish-black above and reddish-brown below.",
+  "Weighs roughly 120-394 g and is about 235-295 mm long."
+ ],
+ "behavior": [
+  "Diurnal, active mainly March-November at low elevations with a shorter season in snowy high mountains; hibernates roughly October to April.",
+  "Asocial: females defend a burrow and surrounding area; burrows are under rocks, stumps, logs, trees, bushes or cabins, or in rock crevices or banks.",
+  "Omnivore eating seeds, fungus (about 65% of summer food in one study), leaves, flowers, fruits, roots, insects and carrion; carries food in cheek pouches and caches it.",
+  "Forages on the ground and in logs, stumps and shrubby vegetation."
+ ],
+ "habitat": [
+  "Mountain slopes and foothills, alpine tundra, chaparral, open pine, spruce and fir forest, rocky outcrops and slides, meadow margins and rocky sagebrush country, reaching greatest abundance in open forest lacking dense understory; needs logs, stumps or rocks for cover, and is often at campgrounds."
+ ],
+ "range": "Western North America from eastern British Columbia and western Alberta south through the western United States to California, Arizona and New Mexico, at roughly 1,220-3,965 m.",
+ "lookalikes": [
+  {
+   "slug": "chipmunks",
+   "name": "Chipmunks (Tamias spp.)",
+   "howToTell": "Chipmunks have a white stripe through the eye; the golden-mantled ground squirrel has no facial striping and a golden-red head and mantle."
+  },
+  {
+   "slug": "cascade-golden-mantled-ground-squirrel",
+   "name": "Cascade golden-mantled ground squirrel (Callospermophilus saturatus)",
+   "howToTell": "Formerly included in this species (NatureServe); the sources read give no field character to separate them."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Callospermophilus lateralis (Golden-mantled Ground Squirrel)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102855/Callospermophilus_lateralis"
+  },
+  {
+   "title": "Animal Diversity Web: Spermophilus lateralis (golden-mantled ground squirrel)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Spermophilus_lateralis/"
+  },
+  {
+   "title": "Golden-mantled Ground Squirrel M044 (Spermophilus lateralis)",
+   "publisher": "U.S. Forest Service, Pacific Southwest Research Station (PSW-GTR-37)",
+   "url": "https://www.fs.usda.gov/psw/publications/documents/psw_gtr037/mammals/m044.pdf"
+  }
+ ]
+}

@@ -1,0 +1,54 @@
+{
+ "slug": "seal-salamander",
+ "scientificName": "Desmognathus monticola",
+ "commonNameFr": null,
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe treats southern lineages formerly in D. monticola as the separate species D. cheaha.",
+ "fieldMarks": [
+  "Fairly large: 3.0-6.0 in (7.6-15 cm).",
+  "Light brown to grayish back with black or dark brown reticulated, irregular 'wormy' splotches.",
+  "Belly very pale, often white, contrasting sharply with the back.",
+  "Tail triangular in cross-section toward the end and moderately keeled."
+ ],
+ "behavior": [
+  "Sometimes perches on wet rocks; hides under rocks or moss and in burrows in mud banks.",
+  "Females with 15-40 eggs are seen June-October; eggs are laid on the undersides of rocks or leaves in water or seepages.",
+  "Occasionally eats small salamanders in addition to invertebrates."
+ ],
+ "habitat": [
+  "Mountain streams, small rocky spring-fed brooks in shaded ravines, seepages, and wet rock faces.",
+  "Prefers well-oxygenated, cool streams with moderate to steep gradient."
+ ],
+ "range": "Endemic to the eastern United States: from southwestern Pennsylvania southwest in the uplands through West Virginia, western Maryland, Virginia, eastern Kentucky, western North Carolina, eastern Tennessee, western South Carolina and northern Georgia. Not north or west of the Ohio River in the north. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "black-bellied-salamander",
+   "name": "Black-bellied salamander",
+   "howToTell": "Black belly and two rows of small white dots along the sides."
+  },
+  {
+   "slug": "shovel-nosed-salamander",
+   "name": "Shovel-nosed salamander",
+   "howToTell": "Different head shape and gray to dark belly."
+  },
+  {
+   "slug": "black-mountain-salamander",
+   "name": "Black Mountain salamander",
+   "howToTell": "Belly less pale so back-to-belly contrast is gradual."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Desmognathus monticola",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.1363910/Desmognathus_monticola"
+  },
+  {
+   "title": "TWRA: Seal Salamander",
+   "publisher": "Tennessee Wildlife Resources Agency",
+   "url": "https://www.tn.gov/twra/wildlife/amphibians/salamanders/seal-salamander.html"
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+{
+ "slug": "sooty-grouse",
+ "scientificName": "Dendragapus fuliginosus",
+ "fieldMarks": [
+  "Male dark slaty gray with a yellow comb and a long blackish tail tipped with a broad pale gray band",
+  "In spring display the male shows yellow neck air sacs ringed by white feathers",
+  "Female mottled brown and gray",
+  "Large: Alaska's largest upland game bird"
+ ],
+ "behavior": [
+  "Displaying males give deep, owl-like hoots, often from high in a dense conifer, sometimes audible over a mile away",
+  "Slow-moving and often surprisingly tame",
+  "Forages on the ground in summer and in trees in winter, eating conifer needles",
+  "Hens with broods use muskeg edges, logged areas and roadsides from late June"
+ ],
+ "habitat": [
+  "Coastal and mountain coniferous forest; many birds move in autumn from open breeding areas into dense conifers; coastal birds may use semi-open old-growth or logged forest year-round."
+ ],
+ "range": "Resident from coastal southeastern Alaska and coastal British Columbia (including Haida Gwaii and Vancouver Island) south through the coast ranges and Cascades to northwestern California and the Sierra Nevada.",
+ "lookalikes": [
+  {
+   "slug": "dusky-grouse",
+   "name": "Dusky grouse",
+   "howToTell": "Very similar and separated mainly by range; dusky grouse lives in the interior West."
+  }
+ ],
+ "aliases": [
+  "Blue grouse (former combined species name)"
+ ],
+ "sources": [
+  {
+   "title": "Sooty Grouse | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/sooty-grouse"
+  },
+  {
+   "title": "Sooty Grouse Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=sootygrouse.main"
+  },
+  {
+   "title": "Dendragapus fuliginosus (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.795274/Dendragapus_fuliginosus"
+  }
+ ]
+}

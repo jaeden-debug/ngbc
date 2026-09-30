@@ -1,0 +1,51 @@
+{
+ "slug": "common-map-turtle",
+ "scientificName": "Graptemys geographica",
+ "commonNameFr": "Tortue géographique",
+ "family": "Emydidae",
+ "order": "Testudines",
+ "taxonomyNote": "NatureServe names it Northern Map Turtle.",
+ "fieldMarks": [
+  "Carapace olive or grayish brown with yellow-orange map-like lines bordered in dark; markings fade with age.",
+  "Broad carapace with a moderately low keel and slightly scalloped rear edge.",
+  "Head, neck and limbs dark with thin yellow, green or orange stripes, usually with an oval spot behind the eye.",
+  "Females much larger (7-10.5 in) than males (3.5-6.5 in); males have narrower heads, longer front claws and thicker tails.",
+  "Plain yellowish plastron in adults."
+ ],
+ "behavior": [
+  "Avid baskers, often in groups, and very wary: slips into the water at the slightest alarm.",
+  "Dormant about November to early April, wedged under submerged logs, in bottom mud or in burrows.",
+  "Females eat mainly mollusks and crayfish; males more insectivorous."
+ ],
+ "habitat": [
+  "Slow rivers and lakes with mud bottoms, basking logs and abundant aquatic vegetation; also mill ponds and oxbows. Basks on logs and muskrat houses."
+ ],
+ "range": "Southwestern Quebec, southern Ontario and northwestern Vermont to central Minnesota, south through the Mississippi drainage to Arkansas, northern Alabama and eastern Tennessee, west to eastern Kansas; Ohio River drainage; isolated populations in the Delaware, Susquehanna and Hudson drainages.",
+ "lookalikes": [
+  {
+   "slug": "mississippi-map-turtle",
+   "name": "False map turtle",
+   "howToTell": "Lines form a web on the shell and a backward L behind the eye."
+  },
+  {
+   "slug": "ouachita-map-turtle",
+   "name": "Ouachita map turtle",
+   "howToTell": "Large blotch below the eye and dark-ringed blotches on the scutes."
+  }
+ ],
+ "aliases": [
+  "Northern map turtle"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Graptemys geographica",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101200/Graptemys_geographica"
+  },
+  {
+   "title": "Animal Diversity Web: Graptemys geographica",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Graptemys_geographica/"
+  }
+ ]
+}

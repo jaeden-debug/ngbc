@@ -1,0 +1,57 @@
+{
+ "slug": "painted-turtle",
+ "scientificName": "Chrysemys picta",
+ "commonNameFr": {
+  "name": "Tortue peinte",
+  "source": "NatureServe Explorer (French common name entry)",
+  "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.637723/Chrysemys_picta"
+ },
+ "family": "Emydidae",
+ "order": "Testudines",
+ "taxonomyNote": "NatureServe notes Starkey et al. (2003) recognised C. dorsalis (southern painted turtle) as a separate species, while some herpetologists keep it in C. picta; NatureServe lists three subspecies (bellii, marginata, picta).",
+ "fieldMarks": [
+  "Smooth, relatively flat, unkeeled shell, 4-8 in (about 9-25 cm), with a non-serrated rear edge; olive-green to brown or black with thin red or orange lines and red edges on the marginals.",
+  "Skin olive to black with yellow stripes on the head, neck, limbs and tail; yellow eyes with a dark bar through the pupil.",
+  "Plastron is red or orange with dark markings that fade with age (a large grey 'oak leaf' blotch in the western form).",
+  "Males are smaller than females, with thicker tails and elongated foreclaws."
+ ],
+ "behavior": [
+  "Diurnal; basks in large groups on logs and rocks (sometimes 50 stacked on one log) and dives quickly at danger.",
+  "Active about March (late April-May in the far north) to October; overwinters buried in mud at the bottom of wetlands.",
+  "Omnivore eating plants, algae, aquatic insects, fish and crustaceans, feeding only in water."
+ ],
+ "habitat": [
+  "Slow-moving, shallow fresh water with soft bottoms and dense aquatic vegetation: marshes, ponds, shallow lake bays, slow rivers and backwaters.",
+  "Needs basking sites; nests in soft soil up to several hundred metres from water."
+ ],
+ "range": "Only turtle spanning North America coast to coast: from Nova Scotia and New Brunswick across southern Canada to Vancouver Island, and through most of the eastern and central US to the Gulf Coast in Louisiana; a few isolated populations occur in the southwest US and Mexico.",
+ "lookalikes": [],
+ "aliases": [
+  "northern painted turtle",
+  "eastern painted turtle",
+  "midland painted turtle",
+  "western painted turtle"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Chrysemys picta (Painted Turtle)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.637723/Chrysemys_picta"
+  },
+  {
+   "title": "Painted Turtle (Chrysemys picta) - Amphibians and Reptiles of South Dakota",
+   "publisher": "Amphibians and Reptiles of South Dakota (online atlas)",
+   "url": "https://www.sdherps.org/species/chrysemys_picta"
+  },
+  {
+   "title": "Painted Turtle | Chrysemys picta",
+   "publisher": "Wisconsin Department of Natural Resources",
+   "url": "https://dnr.wisconsin.gov/topic/WildlifeHabitat/Herps/6795"
+  },
+  {
+   "title": "Painted turtle — Animal Diversity Web",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Chrysemys_picta/"
+  }
+ ]
+}

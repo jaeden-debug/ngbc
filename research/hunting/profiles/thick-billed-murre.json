@@ -1,0 +1,43 @@
+{
+ "slug": "thick-billed-murre",
+ "scientificName": "Uria lomvia",
+ "commonNameFr": "Guillemot de Brünnich",
+ "family": "Alcidae",
+ "order": "Charadriiformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "About 46 cm, much like Common Murre",
+  "Slightly thicker bill with a white mark at the gape when seen close",
+  "Blacker back (hard to see without direct comparison)",
+  "In summer may show white coming up higher in a point on the chest; in winter may show more black on the face than Common Murre"
+ ],
+ "behavior": [
+  "Nests colonially on ledges of sea-cliff; some remain through winter as far north as open water allows, including around openings in pack ice, others move south",
+  "Forages swimming underwater, diving more than 200 ft; eats mostly fish (cod, herring, capelin, sand lance) with more crustaceans in winter",
+  "Low purring murrrr, plus croaks and growls at breeding colonies"
+ ],
+ "habitat": [
+  "Ocean, favoring very cold Arctic waters and often far from land over deep water when not nesting; associates with edges of pack ice; nests on rocky coasts and islands with steep cliffs."
+ ],
+ "range": "Breeds on islands and coasts in the Arctic of North America and Eurasia, south to the Aleutians and Kodiak, Hudson Bay and the Gulf of St. Lawrence. Newfoundland waters are the most important western Atlantic wintering area; regular in winter off New England.",
+ "lookalikes": [
+  {
+   "slug": "common-murre",
+   "name": "Common murre",
+   "howToTell": "Slightly thinner bill without the white gape mark; less black on the face in winter; avoids pack-ice areas."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Thick Billed Murre",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/thick-billed-murre"
+  },
+  {
+   "title": "NatureServe Explorer: Uria lomvia (Thick-billed Murre)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100797/Uria_lomvia"
+  }
+ ]
+}

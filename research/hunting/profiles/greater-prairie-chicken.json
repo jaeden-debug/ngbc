@@ -1,0 +1,31 @@
+{
+ "slug": "greater-prairie-chicken",
+ "scientificName": "Tympanuchus cupido",
+ "fieldMarks": [
+  "Chunky brown grouse, 41-48 cm, heavily barred, especially on the underparts.",
+  "Short black tail visible in flight.",
+  "Male has yellow-orange neck air sacs and raised feather tufts, visible only in courtship display.",
+  "Sexes similar; male slightly larger."
+ ],
+ "behavior": [
+  "In spring, typically 8-20 males gather on 'booming grounds', often a low hill with good visibility, and display with a hollow moaning 'boom', foot-stamping and cackles.",
+  "Some birds are permanent residents; others move up to about 160 km (100 miles) between breeding and wintering areas.",
+  "Forages mostly on the ground, mainly in early morning and evening; winter diet is leaves, seeds and waste grain, summer diet adds buds, berries and insects."
+ ],
+ "habitat": [
+  "Native tall-grass prairie, including prairie interspersed with agricultural fields; prime original habitat was prairie mixed with oak woodland. Nests on the ground in thick tall grass."
+ ],
+ "range": "Now uncommon and localized to remaining native tall-grass prairie in the midwestern United States. The Atlantic Coast race (Heath Hen) became extinct in 1932 and the Texas coastal Attwater's race is seriously endangered.",
+ "lookalikes": [],
+ "aliases": [
+  "heath hen (extinct Atlantic race)",
+  "Attwater's prairie-chicken (Texas coastal race)"
+ ],
+ "sources": [
+  {
+   "title": "Greater Prairie-Chicken — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/greater-prairie-chicken"
+  }
+ ]
+}

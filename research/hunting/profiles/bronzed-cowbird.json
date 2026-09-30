@@ -1,0 +1,43 @@
+{
+ "slug": "bronzed-cowbird",
+ "scientificName": "Molothrus aeneus",
+ "commonNameFr": "Vacher bronzé",
+ "family": "Icteridae",
+ "order": "Passeriformes",
+ "taxonomyNote": "NatureServe notes it is composed of two groups formerly considered separate species, aeneus (Bronzed) and armenti (Bronze-brown, South America), and is often placed in genus Tangavius (AOU 1998).",
+ "fieldMarks": [
+  "Larger than Brown-headed Cowbird, with a longer bill and shorter tail",
+  "Red eyes (hard to see); neck ruff gives a hunched-shoulder look",
+  "Females dull black in Texas or gray-brown in Arizona",
+  "Length 18-20 cm"
+ ],
+ "behavior": [
+  "Only a short-distance migrant; very uncommon and local in the Southwest in winter, some stray east along the Gulf Coast to Florida",
+  "Forages mostly walking on the ground in the open, sometimes with cattle or horses; may take ticks or insects from cattle backs",
+  "Diet is largely seeds and waste grain, plus insects, snails and spiders; snails may supply calcium to laying females"
+ ],
+ "habitat": [
+  "Farmland, brush, semi-open country and feedlots; outside breeding generally very open lowland habitats, roosting in brushy woods."
+ ],
+ "range": "Resident from extreme southeastern California, Arizona, southwestern New Mexico and western and southern Texas south to Panama; northern populations partially migratory.",
+ "lookalikes": [
+  {
+   "slug": "brown-headed-cowbird",
+   "name": "Brown-headed cowbird",
+   "howToTell": "Bronzed is larger with a longer bill, shorter tail, red eye and neck ruff."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Bronzed Cowbird",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/bronzed-cowbird"
+  },
+  {
+   "title": "NatureServe Explorer: Molothrus aeneus (Bronzed Cowbird)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104495/Molothrus_aeneus"
+  }
+ ]
+}

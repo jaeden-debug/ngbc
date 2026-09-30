@@ -1,0 +1,42 @@
+{
+ "slug": "northern-rubber-boa",
+ "scientificName": "Charina bottae",
+ "commonNameFr": null,
+ "family": "Boidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe and the SSAR list (Nicholson 2025) recognise a single species, the Rubber Boa, with northern (C. b. bottae) and southern (C. b. umbratica) subspecies; earlier authors (Crother 2017) treated the southern form as a separate species.",
+ "fieldMarks": [
+  "Usually 38-64 cm (range 35-84 cm); thick, smooth-scaled body with loose, wrinkled skin that looks and feels like rubber.",
+  "Uniform brown to olive-green above and yellow to cream below; occasional dark spots or mottling (more often in northern populations).",
+  "Small dark eyes with vertical pupils.",
+  "Blunt, head-like tail tip with a bulb of bone, usually scarred; the snake curls up and presents the tail when threatened.",
+  "Northern subspecies has sub-triangular frontal scales and 42 or more mid-dorsal scale rows; the southern subspecies has fewer."
+ ],
+ "behavior": [
+  "Solitary, burrowing and slow-moving; mostly nocturnal or at dusk, but also active by day in mild cloudy weather, and sometimes basks.",
+  "Active mostly March-November; docile, does not strike, and deters predators with the tail or a strong odour.",
+  "Eats nestling mice, voles and shrews found in nests, and occasionally lizard or snake eggs; found under rotting logs, stumps, rocks and bark.",
+  "Prehensile tail allows it to climb shrubs and small trees."
+ ],
+ "habitat": [
+  "Moist coniferous forest, woodlands, forest clearings, meadows and grassy streamsides, generally not far from water, from sea level to about 3,050 m.",
+  "Uses rodent burrows, rock outcrops, fallen logs and deep duff for cover."
+ ],
+ "range": "Southern British Columbia and Alberta south to west-central California, central Nevada and southern Utah; Pacific coast east to north-central Wyoming and western Montana. Distribution is patchy, especially at southern and eastern edges.",
+ "lookalikes": [],
+ "aliases": [
+  "rubber boa"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Charina bottae (Rubber Boa)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.1371864/Charina_bottae"
+  },
+  {
+   "title": "Rubber boa — Animal Diversity Web",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Charina_bottae/"
+  }
+ ]
+}

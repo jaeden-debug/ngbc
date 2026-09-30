@@ -1,0 +1,54 @@
+{
+ "slug": "wild-boar",
+ "scientificName": "Sus scrofa",
+ "fieldMarks": [
+  "Hairy, brown, black or gray coat",
+  "Long pointed head, narrow snout, upright ears and tusks",
+  "Long straight tail with a tuft at the tip",
+  "Piglets light brown with tan stripes that fade with age",
+  "Feral domestic pigs and hybrids can look nearly identical; genetics may be needed to tell them apart"
+ ],
+ "behavior": [
+  "Lives in family groups called sounders, generally 2–20 animals; adult males often solitary",
+  "Breeds from about 6 months old with litters of 2–12, possibly several a year",
+  "Roots up the ground while feeding, damaging plants, crops and habitat, and eats ground-nesting birds and other small animals",
+  "Quickly learns to avoid people and traps; usually flees rather than fights"
+ ],
+ "habitat": [
+  "Extreme habitat generalist: forests, swamps, brushlands, grasslands and farmland, preferring to stay near water."
+ ],
+ "range": "Eurasian and North African species. Free-ranging feral swine (wild boar, escaped domestic pigs and hybrids) are reported in at least 35 U.S. states, most commonly in the South, and in Canada mainly in the Prairie Provinces.",
+ "lookalikes": [
+  {
+   "slug": "domestic-pig",
+   "name": "Feral domestic pig and hybrids",
+   "howToTell": "Escaped domestic pigs become hairy and grow tusks; visual separation from wild boar is often impossible."
+  }
+ ],
+ "aliases": [
+  "Feral swine",
+  "Feral hog",
+  "Wild pig",
+  "Wild hog",
+  "Razorback",
+  "Eurasian wild boar",
+  "Russian wild boar"
+ ],
+ "sources": [
+  {
+   "title": "European wild boar / Eurasian swine (Sus scrofa scrofa)",
+   "publisher": "Minnesota Department of Natural Resources",
+   "url": "https://www.dnr.state.mn.us/invasives/terrestrialanimals/eurasianswine.html"
+  },
+  {
+   "title": "Wild Boar",
+   "publisher": "U.S. National Invasive Species Information Center (USDA)",
+   "url": "https://www.invasivespeciesinfo.gov/terrestrial/vertebrates/wild-boar"
+  },
+  {
+   "title": "Feral Swine",
+   "publisher": "North Carolina Wildlife Resources Commission",
+   "url": "https://www.ncwildlife.gov/species/feral-swine"
+  }
+ ]
+}

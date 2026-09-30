@@ -1,0 +1,41 @@
+{
+ "slug": "common-merganser",
+ "scientificName": "Mergus merganser",
+ "fieldMarks": [
+  "Drake: mostly white body, black back and iridescent green head.",
+  "Red bill, thick at the base and narrowing to the tip.",
+  "Hen: gray body with a bright rusty head and a sharply defined white throat."
+ ],
+ "behavior": [
+  "Dives and swims underwater, kicking both feet together; hunts mostly by sight.",
+  "Eats mainly fish, also mussels, shrimp and salamanders.",
+  "Gives low rasping croaks.",
+  "Migrates late in fall and early in spring; males winter farther north than females and young."
+ ],
+ "habitat": [
+  "Clear rivers and lakes in forested country in summer; lakes, large rivers and occasionally coastal bays in winter. Mainly fresh water."
+ ],
+ "range": "Breeds across Alaska and Canada and occurs through most of the continental US in suitable habitat.",
+ "lookalikes": [
+  {
+   "slug": "red-breasted-merganser",
+   "name": "Red-breasted merganser",
+   "howToTell": "Hens are similar; compare the common merganser hen's sharply defined white throat."
+  },
+  {
+   "slug": "mallard",
+   "name": "Mallard",
+   "howToTell": "Other green-headed ducks such as the mallard have a different body pattern and shape."
+  }
+ ],
+ "aliases": [
+  "goosander (Britain)"
+ ],
+ "sources": [
+  {
+   "title": "Common Merganser — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/common-merganser"
+  }
+ ]
+}

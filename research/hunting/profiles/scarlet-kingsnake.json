@@ -1,0 +1,52 @@
+{
+ "slug": "scarlet-kingsnake",
+ "scientificName": "Lampropeltis elapsoides",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes L. elapsoides was long regarded as a subspecies of L. triangulum and is now treated as a distinct species.",
+ "fieldMarks": [
+  "Bright red, black and yellow bands that extend across the belly.",
+  "Snout nearly always red; red and black bands touch, red and yellow bands do not.",
+  "A coral snake has a black snout and red bands touching yellow."
+ ],
+ "behavior": [
+  "Found in rotting logs and under bark in Coastal Plain pine forests; stumps and logs are common cover.",
+  "Constrictor that eats small snakes, lizards and mice."
+ ],
+ "habitat": [
+  "Pine flatwoods and wet prairie hammocks; less often bottomland, mixed hardwood, upland pine, sandhills and maritime hammock."
+ ],
+ "range": "Southeastern Virginia and the Coastal Plain of the Carolinas south through Georgia to southern Florida and west to eastern Louisiana, Tennessee and Kentucky.",
+ "lookalikes": [
+  {
+   "slug": "eastern-coral-snake",
+   "name": "Eastern coral snake",
+   "howToTell": "Venomous coral snake has a black snout and red bands touching yellow; scarlet kingsnake has a red snout and red touching black."
+  },
+  {
+   "slug": "northern-scarlet-snake",
+   "name": "Northern scarlet snake",
+   "howToTell": "Scarlet snake (Cemophora coccinea) has a plain white belly; scarlet kingsnake bands cross the belly."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105132"
+  },
+  {
+   "title": "Scarlet Kingsnake",
+   "publisher": "North Carolina Wildlife Resources Commission",
+   "url": "https://www.ncwildlife.gov/species/scarlet-kingsnake"
+  },
+  {
+   "title": "Eastern Coral Snake",
+   "publisher": "North Carolina Wildlife Resources Commission",
+   "url": "https://www.ncwildlife.gov/species/eastern-coral-snake"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

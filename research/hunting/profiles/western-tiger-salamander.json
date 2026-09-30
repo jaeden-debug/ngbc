@@ -1,0 +1,52 @@
+{
+ "slug": "western-tiger-salamander",
+ "scientificName": "Ambystoma mavortium",
+ "commonNameFr": {
+  "name": "Salamandre tigrée de l'Ouest",
+  "source": "NatureServe Explorer (French common name entry)",
+  "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100277/Ambystoma_mavortium"
+ },
+ "family": "Ambystomatidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe treats A. mavortium as a species, recognising five subspecies, but notes Lannoo (2005) and Johnson et al. (2011) included it in A. tigrinum; Animal Diversity Web calls it Barred tiger salamander.",
+ "fieldMarks": [
+  "Large, stout terrestrial salamander (average about 20 cm, up to about 36 cm) with broad flat head, blunt snout and small eyes.",
+  "Light grey to grey-black back with scattered black or yellow spots, and yellow bars or lines along the body.",
+  "Long, thick tail; four toes on front feet and five on hind feet, none webbed; no colour difference between the sexes.",
+  "Larvae are yellow-green with brown spots and black lateral stripes and carry external gills and a tail fin; some become large cannibal morphs in drying ponds."
+ ],
+ "behavior": [
+  "Nocturnal and fossorial; adults hibernate in burrows about 60 cm deep near breeding ponds and return to the same pond.",
+  "Most surface activity is during and after rain; most populations migrate up to several hundred metres between uplands and breeding water.",
+  "Eats beetles, earthworms and crickets, and occasionally frogs or other salamanders.",
+  "Males are aggressive during the breeding season."
+ ],
+ "habitat": [
+  "Almost any terrestrial habitat (forest, woodland, open fields, meadows) provided there is soil to burrow in and a lake, pond or slow stream pool for breeding.",
+  "Ponds used for breeding are usually fishless."
+ ],
+ "range": "Southern Canada south through much of the western and central United States to central Mexico; absent from most of the Great Basin and the far western US west of the Rockies, where it has been introduced in many localities. Meets the eastern tiger salamander's range in the Great Plains.",
+ "lookalikes": [
+  {
+   "slug": "eastern-tiger-salamander",
+   "name": "Eastern tiger salamander",
+   "howToTell": "Ranges meet and meld in the Great Plains, so the two cannot be separated by appearance alone; locality is the practical guide."
+  }
+ ],
+ "aliases": [
+  "barred tiger salamander",
+  "tiger salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Ambystoma mavortium (Western Tiger Salamander)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100277/Ambystoma_mavortium"
+  },
+  {
+   "title": "Barred tiger salamander (Ambystoma mavortium) — Animal Diversity Web",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Ambystoma_mavortium/"
+  }
+ ]
+}

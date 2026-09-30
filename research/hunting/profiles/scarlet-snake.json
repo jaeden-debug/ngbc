@@ -1,0 +1,60 @@
+{
+ "slug": "scarlet-snake",
+ "scientificName": "Cemophora coccinea",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe and SREL recognize two subspecies (C. c. coccinea and C. c. copei) and treat the Texas scarletsnake as a separate species, C. lineri.",
+ "fieldMarks": [
+  "Slender, small to medium snake, 14-20 in (rarely to 32 in), with wide red bands bordered in black, separated by cream, white or light-yellow bands from head to tail.",
+  "Red, pointed snout and head; plain white or cream belly; smooth glossy scales.",
+  "Black bands separate the red bands from the yellow ones, which tells it from a coral snake; the plain white or cream belly separates it from scarlet kingsnakes and milksnakes, whose pattern extends onto the belly."
+ ],
+ "behavior": [
+  "Nocturnal and secretive; spends most time underground or under cover and is seen mostly crossing roads on warm summer nights, especially after rain; surface activity mostly May-September, peaking June-July.",
+  "Eats mainly reptile eggs, pierced with enlarged rear teeth, plus small lizards, snakes, frogs and mice.",
+  "Lays 2-9 elongated white eggs underground in summer."
+ ],
+ "habitat": [
+  "Pine or hardwood forest and woodland and adjacent open areas with sandy or loamy well-drained soil; also fields, grassy edges and roadsides near woods; found under logs, rocks, leaf litter or boards."
+ ],
+ "range": "NatureServe lists it in the southeastern and south-central US, from New Jersey and Indiana south to Florida and west to Missouri, Oklahoma and Texas; Texas populations in SREL's account are a separate species (C. lineri). Not recorded for Canada.",
+ "lookalikes": [
+  {
+   "slug": "scarlet-kingsnake",
+   "name": "Scarlet kingsnake",
+   "howToTell": "Its bands encircle the whole body including the belly; scarlet snake has a plain white belly."
+  },
+  {
+   "slug": "eastern-coral-snake",
+   "name": "Eastern coral snake",
+   "howToTell": "North Carolina WRC: scarlet snakes have black bands separating the wide red bands from the yellow bands, unlike coral snakes."
+  }
+ ],
+ "aliases": [
+  "Scarletsnake",
+  "Northern scarlet snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105886"
+  },
+  {
+   "title": "Scarletsnake (Cemophora coccinea)",
+   "publisher": "Tennessee Wildlife Resources Agency",
+   "url": "https://www.tn.gov/twra/wildlife/reptiles/snakes/scarletsnake.html"
+  },
+  {
+   "title": "Scarlet Snake (Cemophora coccinea)",
+   "publisher": "Savannah River Ecology Laboratory, University of Georgia",
+   "url": "https://srelherp.uga.edu/snakes/scarlet-snake/"
+  },
+  {
+   "title": "Scarlet Snake",
+   "publisher": "North Carolina Wildlife Resources Commission",
+   "url": "https://www.ncwildlife.gov/species/scarlet-snake"
+  }
+ ]
+}

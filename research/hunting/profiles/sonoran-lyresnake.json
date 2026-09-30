@@ -1,0 +1,56 @@
+{
+ "slug": "sonoran-lyresnake",
+ "scientificName": "Trimorphodon lambda",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "Formerly treated as a subspecies of Trimorphodon biscutatus (and lumped with T. lyrophanes); NatureServe follows Devitt et al. (2008) in recognizing it as a full species.",
+ "fieldMarks": [
+  "Medium to large slender snake (23-88 cm snout-vent, sometimes over 1 m total) with a broad, flat head distinct from a slim neck and large eyes with vertical pupils.",
+  "Pale gray, tan or light brown with 18-31 dark brown saddles or blotches edged pale and with light, divided centres, widest at the midline; 8-17 more on the tail.",
+  "Dark V- or lambda-shaped (lyre) mark on top of the head and a dark bar across the snout between the eyes.",
+  "Underside tan, pale yellow or light gray with scattered dark flecks near the edges."
+ ],
+ "behavior": [
+  "Nocturnal: forages at night and occasionally early morning; reported active in every month but November, with a peak in April and May; hides in rock crevices by day.",
+  "Eats bats, small rodents and lizards (such as side-blotched and granite night lizards) and probably ground-nesting birds; rear-fanged, with a hemolytic venom that CWHR calls presumably not dangerous to people.",
+  "Secretive and never found in great numbers; lays eggs deep under rock cover."
+ ],
+ "habitat": [
+  "Chiefly rocky areas of lowlands, canyons, mesas and lower mountain slopes: desert grassland, desert scrub, chaparral, pinyon-juniper and oak woodland, open conifer forest and thornscrub; rarely far from rock, to about 910 m in California."
+ ],
+ "range": "Southern Nevada (Nye County) and extreme southwestern Utah south through most of Arizona (except the northeast), southwestern New Mexico and southeastern California east of the Salton Trough to Sonora, western Chihuahua and northern Sinaloa. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "california-lyresnake",
+   "name": "California lyresnake (Trimorphodon lyrophanes)",
+   "howToTell": "Occurs west of the Salton Trough in southern California and Baja California; specimens from contact zones in southeastern California or southern Nevada may be hard to identify."
+  },
+  {
+   "slug": "texas-lyresnake",
+   "name": "Texas lyresnake (Trimorphodon vilkinsonii)",
+   "howToTell": "Hybridizes with the Sonoran lyresnake in extreme southeastern Arizona and southwestern New Mexico; identify by locality."
+  }
+ ],
+ "aliases": [
+  "Sonoran lyre snake",
+  "western lyre snake (former subspecies T. biscutatus lambda)"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Trimorphodon lambda (Sonoran Lyresnake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104860/Trimorphodon_lambda"
+  },
+  {
+   "title": "CWHR life history account: Sonoran Lyresnake (R070)",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=2791"
+  },
+  {
+   "title": "Wikipedia: Trimorphodon lambda (last-resort, read as raw wikitext)",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Trimorphodon_lambda"
+  }
+ ]
+}

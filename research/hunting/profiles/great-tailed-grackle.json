@@ -1,0 +1,48 @@
+{
+ "slug": "great-tailed-grackle",
+ "scientificName": "Quiscalus mexicanus",
+ "commonNameFr": "Quiscale à longue queue",
+ "family": "Icteridae",
+ "order": "Passeriformes",
+ "taxonomyNote": "NatureServe notes it was formerly considered conspecific with Boat-tailed Grackle (Q. major), but sympatry without interbreeding is known from Louisiana to Texas (AOU 1998).",
+ "fieldMarks": [
+  "Very long tail and yellow eyes; male 46-58 cm, female 38-46 cm",
+  "Male glossy black, more evenly coloured than Common Grackle and much larger",
+  "Female buff below and on the eyebrow, smaller than the male",
+  "Compare to Boat-tailed Grackle"
+ ],
+ "behavior": [
+  "Usually feeds in flocks, mostly on the ground or wading in very shallow water; also forages in trees and shrubs, searching for nests to rob",
+  "Omnivorous: insects, spiders, crayfish, tadpoles, small fish, lizards, eggs and nestlings, plus seeds, waste grain, berries and fruit",
+  "Variety of whistles, clucks and hissing notes; breeding range is expanding"
+ ],
+ "habitat": [
+  "Groves, thickets, farms, towns and city parks; mostly lowlands including farmland, marshes, irrigated fields, suburban lawns and brushy areas; avoids true desert but occurs around streams or ponds in dry country."
+ ],
+ "range": "Resident from southeastern California and southern Nevada east to southern Nebraska and southwestern Missouri, south into South America; breeding range is expanding, with recent nesting in Oregon and probably Idaho.",
+ "lookalikes": [
+  {
+   "slug": "common-grackle",
+   "name": "Common grackle",
+   "howToTell": "Smaller with a shorter tail and less evenly coloured male."
+  },
+  {
+   "slug": "boat-tailed-grackle",
+   "name": "Boat-tailed grackle",
+   "howToTell": "Audubon says to compare; NatureServe treats it as a separate species with overlap from Louisiana to Texas."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Great Tailed Grackle",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/great-tailed-grackle"
+  },
+  {
+   "title": "NatureServe Explorer: Quiscalus mexicanus (Great-tailed Grackle)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103041/Quiscalus_mexicanus"
+  }
+ ]
+}

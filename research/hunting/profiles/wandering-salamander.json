@@ -1,0 +1,56 @@
+{
+ "slug": "wandering-salamander",
+ "scientificName": "Aneides vagrans",
+ "commonNameFr": {
+  "name": "Salamandre errante",
+  "source": "NatureServe Explorer (French common name entry)",
+  "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104517/Aneides_vagrans"
+ },
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe notes A. vagrans was formerly included in A. ferreus (clouded salamander); some of the Vancouver Island populations are believed by some authors to derive from human-mediated introductions, though the Canadian management plan considers a natural origin better supported.",
+ "fieldMarks": [
+  "Slender salamander with light grey or bronze mottling over a brown to greyish-black head, back and tail.",
+  "Adults 75-130 mm total length (50-76 mm snout-vent), weighing 1.5-5.6 g.",
+  "Squared-off toes and no constriction at the base of the tail separate it from other lungless salamanders in British Columbia.",
+  "Juveniles have a bronze dorsal stripe and a bronze patch on the head and snout that fade with age; adult colour is reached at about 45 mm snout-vent."
+ ],
+ "behavior": [
+  "Terrestrial and probably nocturnal; moves short distances (94% of recaptures within 10 m) and estivates deep in logs and moist crevices in dry periods.",
+  "Lives in and on large decaying logs and bark, and in old-growth forest canopy; on seabird islands it uses drift logs and burrows.",
+  "Eggs (3-28) are laid in a gelatinous cluster under bark or in a rotting log; females guard nests and young hatch as miniature adults.",
+  "Feeds on small arthropods such as ants, beetles, spiders, isopods and mites."
+ ],
+ "habitat": [
+  "Moist forest (Douglas-fir, redwood, hardwood-conifer) in humid coastal areas, using logs, bark, talus and rock crevices for refuge and breeding.",
+  "Needs large, mid-decay down logs with sloughing bark."
+ ],
+ "range": "Humid coastal forests of northern California (Del Norte to Sonoma County) and, in Canada, Vancouver Island, adjacent small islands and one Sunshine Coast location in British Columbia; absent from Oregon and Washington.",
+ "lookalikes": [
+  {
+   "slug": "clouded-salamander",
+   "name": "Clouded salamander",
+   "howToTell": "Formerly treated as the same species (A. ferreus); the sources read give no simple field mark, so locality and expert identification are the guides."
+  }
+ ],
+ "aliases": [
+  "Aneides vagrans"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Aneides vagrans (Wandering Salamander)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104517/Aneides_vagrans"
+  },
+  {
+   "title": "Management plan for the Wandering Salamander (Aneides vagrans) in Canada",
+   "publisher": "Environment and Climate Change Canada",
+   "url": "https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/management-plans/wandering-salamander-2021.html"
+  },
+  {
+   "title": "Wandering Salamander life history account (CWHR A068)",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=1539"
+  }
+ ]
+}

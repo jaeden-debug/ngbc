@@ -1,0 +1,51 @@
+{
+ "slug": "mississippi-map-turtle",
+ "scientificName": "Graptemys pseudogeographica",
+ "commonNameFr": null,
+ "family": "Emydidae",
+ "order": "Testudines",
+ "taxonomyNote": "NatureServe calls it False Map Turtle; the 'Mississippi map turtle' is the subspecies G. p. kohnii, formerly a full species.",
+ "fieldMarks": [
+  "Olive, brown or black carapace with dark blotches ringed by yellow lines that may form a web over the shell; brighter in young.",
+  "Serrate carapace margin with a vertebral keel most prominent in young.",
+  "Cream to yellow plastron; young have a dark pattern.",
+  "Yellow lines on legs, tail, chin and neck; some have a backward L behind each eye.",
+  "Males 9-15 cm, females 12-27 cm; males have elongated second and third front claws."
+ ],
+ "behavior": [
+  "Spends most of the day basking on lodges, logs, rocks, bars or stumps near shore; very wary.",
+  "Active roughly late March to mid-October; hibernates in bottom mud or behind rocks and logs.",
+  "Generalist omnivore eating insects, mollusks, fish carrion and aquatic plants."
+ ],
+ "habitat": [
+  "Large rivers of the Mississippi basin with abundant vegetation, also lakes, ponds, reservoirs and sloughs; nests on sandbars and beaches."
+ ],
+ "range": "Mississippi and Missouri river basins from northern and central Wisconsin and Minnesota south through Louisiana and eastern Texas, west along the Missouri into North Dakota, east to western Tennessee, western Kentucky, Indiana and central Ohio. Introduced in southeastern Virginia. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "ouachita-map-turtle",
+   "name": "Ouachita map turtle",
+   "howToTell": "Large blotch below the eye and ringed blotches on the scutes."
+  },
+  {
+   "slug": "common-map-turtle",
+   "name": "Common map turtle",
+   "howToTell": "Map-like lines and an oval spot behind the eye."
+  }
+ ],
+ "aliases": [
+  "False map turtle"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Graptemys pseudogeographica",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104427/Graptemys_pseudogeographica"
+  },
+  {
+   "title": "Animal Diversity Web: Graptemys pseudogeographica",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Graptemys_pseudogeographica/"
+  }
+ ]
+}

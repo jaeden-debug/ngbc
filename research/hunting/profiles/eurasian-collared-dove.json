@@ -1,0 +1,33 @@
+{
+ "slug": "eurasian-collared-dove",
+ "scientificName": "Streptopelia decaocto",
+ "fieldMarks": [
+  "11.4-12.6 in; pale brown-gray dove with a narrow black ring on the back of the neck.",
+  "Big white patches in the outer tail feathers; tail squared or slightly rounded.",
+  "Call a deep, repeated 'kuk-KOOOO-kuk'; also a harsh, mewing nasal note."
+ ],
+ "behavior": [
+  "Forages mostly while walking on the ground, in flocks outside the breeding season; eats mainly seeds and waste grain, some berries and insects.",
+  "Male display flight: steep climb with noisy wingbeats, then a spiral glide with wings and tail spread.",
+  "No regular migration; young birds disperse long distances, driving the species' spread."
+ ],
+ "habitat": [
+  "Residential areas and farmland with a mix of trees and open ground; thrives better in small towns than large cities."
+ ],
+ "range": "Introduced: reached the Bahamas in 1974, then Florida, and has since spread west and north across much of North America to Oregon and Washington; the Northeast has only scattered strays.",
+ "lookalikes": [
+  {
+   "slug": "mourning-dove",
+   "name": "Mourning dove",
+   "howToTell": "Look for the collared-dove's narrow black neck ring and big white patches in the squared outer tail."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Eurasian Collared-Dove | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/eurasian-collared-dove"
+  }
+ ]
+}

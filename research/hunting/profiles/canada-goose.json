@@ -1,0 +1,42 @@
+{
+ "slug": "canada-goose",
+ "scientificName": "Branta canadensis",
+ "fieldMarks": [
+  "White chinstrap on a black head and neck",
+  "Large: 76 cm–1.2 m long, 2.9–8.9 kg",
+  "Populations vary greatly in size and body colour, from white-chested to very dark",
+  "Sexes alike; male slightly larger"
+ ],
+ "behavior": [
+  "Flies in V-formation, northbound in spring and southbound in fall; family groups migrate together",
+  "Grazes mostly while walking on land; also feeds in water by dipping or up-ending",
+  "Many urban and refuge birds are now permanent residents",
+  "Feeds in flocks at most seasons, often in open fields in winter"
+ ],
+ "habitat": [
+  "Always nests near water: tundra, fresh and salt marshes, wooded lakes, and city park and suburban ponds; winters where fields for feeding are within commuting distance of water."
+ ],
+ "range": "Breeds from central and southeastern Alaska across northern Canada south to southwestern British Columbia and much of the northern and central United States; resident year-round in the central part of the range, with many populations in urban areas no longer migrating.",
+ "lookalikes": [
+  {
+   "slug": "cackling-goose",
+   "name": "Cackling goose",
+   "howToTell": "The smallest forms formerly included in this species are now treated as the separate Cackling Goose; compare size closely."
+  }
+ ],
+ "aliases": [
+  "Honker"
+ ],
+ "sources": [
+  {
+   "title": "Canada Goose | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/canada-goose"
+  },
+  {
+   "title": "Branta canadensis (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.770965/Branta_canadensis"
+  }
+ ]
+}

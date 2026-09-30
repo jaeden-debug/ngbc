@@ -1,0 +1,51 @@
+{
+ "slug": "desert-night-lizard",
+ "scientificName": "Xantusia vigilis",
+ "commonNameFr": null,
+ "family": "Xantusiidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes Crother (2017) recognizes X. sierrae and X. wigginsi as separate species and that Papenfuss et al. (2001) split Arizona populations into X. vigilis, X. arizonae and X. bezyi, a change Stebbins (2003) did not adopt.",
+ "fieldMarks": [
+  "Very small lizard (average adult total length about 8 cm, about 1.3 g) with soft granular scales on the back.",
+  "Grey, yellow-brownish or olive, often uniform but sometimes dark-spotted; can shift from light olive in the evening to dark brown by day.",
+  "Usually 12 longitudinal rows of rectangular ventral scales; males are lighter and shorter with a stouter tail and enlarged femoral pores.",
+  "Usually found under fallen yucca and Joshua tree logs or in rock-outcrop crevices rather than in the open."
+ ],
+ "behavior": [
+  "Secretive: lives most of its life under cover, typically yucca logs, and is diurnal despite the name, sometimes active at night in summer.",
+  "Waits for termites, small beetles, ants, flies, spiders and other arthropods to wander by rather than actively searching.",
+  "Active from early April (low elevations) or May (higher) to late summer; gives live birth, about 2 young (1-3) in September-October.",
+  "Adult and young stay in family groups; groups of a few individuals aggregate under logs in winter."
+ ],
+ "habitat": [
+  "Arid and semiarid habitats among fallen yucca, agave and Joshua tree logs, in rock crevices and under foothill pine bark, into pinyon-juniper, sagebrush-blackbrush and chaparral-oak; 300-2,070 m in California."
+ ],
+ "range": "Southern Utah, western Arizona, southern Nevada and southern California south to southwestern Sonora and Baja California. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "arizona-night-lizard",
+   "name": "Arizona night lizard (Xantusia arizonae)",
+   "howToTell": "Granite-adapted rather than yucca-dwelling; Arizona populations formerly called X. vigilis are now split among X. arizonae, X. bezyi and X. wigginsi."
+  }
+ ],
+ "aliases": [
+  "yucca night lizard"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Xantusia vigilis (Desert Night Lizard)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.893172/Xantusia_vigilis"
+  },
+  {
+   "title": "CWHR life history account: Desert Night Lizard (R034)",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=2715"
+  },
+  {
+   "title": "Wikipedia: Desert night lizard (last-resort, read as raw wikitext)",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Desert_night_lizard"
+  }
+ ]
+}

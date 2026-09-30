@@ -1,0 +1,28 @@
+{
+ "slug": "canvasback",
+ "scientificName": "Aythya valisineria",
+ "fieldMarks": [
+  "Long sloping 'ski-jump' profile of head and bill.",
+  "Drake: chestnut head, black bill, black chest and whitish back.",
+  "Hen: pale tan head and neck contrasting with a dark bill and grayish body.",
+  "Larger than related diving ducks."
+ ],
+ "behavior": [
+  "Dives in shallow water for leaves, roots and seeds of aquatic plants (pondweeds, wild celery), plus mollusks and insects.",
+  "Drakes grunt or croak; hens quack.",
+  "Migrates late in fall and early in spring, often in V formations."
+ ],
+ "habitat": [
+  "Breeds on shallow freshwater prairie marshes; winters on protected bays, estuaries, coastal salt bays and interior lakes."
+ ],
+ "range": "Breeds from Alaska and western Canada through the northern Great Plains; winters on the Great Lakes, Pacific coast and mid-Atlantic coast.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Canvasback — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/canvasback"
+  }
+ ]
+}

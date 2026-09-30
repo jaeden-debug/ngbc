@@ -1,0 +1,46 @@
+{
+ "slug": "tiger-whiptail",
+ "scientificName": "Aspidoscelis tigris",
+ "commonNameFr": null,
+ "family": "Teiidae",
+ "order": "Squamata",
+ "taxonomyNote": "Animal Diversity Web files this species as Cnemidophorus tigris/western whiptail; NatureServe uses Aspidoscelis tigris, Tiger Whiptail, and notes that some authorities treat the marbled whiptail (A. t. marmorata) as a separate species.",
+ "fieldMarks": [
+  "Slender lizard 127-330 mm total length with a triangular head, slim body and long tail.",
+  "Light brown or orange ground colour with eight light or dark longitudinal stripes from head base to tail, plus small black or white spots on the back.",
+  "Males slightly larger than females; juveniles are light orange with dark spots or stripes.",
+  "Similar to sympatric whiptails; the all-female New Mexico whiptail is smaller with a blue tint on the belly and tail end."
+ ],
+ "behavior": [
+  "Diurnal, active forager that digs for prey and uses chemical senses; active mainly April-September in the north, with juveniles active longer.",
+  "Uses rodent burrows or digs its own, and shelters in burrows overnight and in inclement weather.",
+  "Insectivore; grasshoppers, beetles and termites are frequent prey in New Mexico."
+ ],
+ "habitat": [
+  "Deserts and semiarid shrublands with sparse vegetation, plus open woodland, dry forest, canyons and riparian areas on firm, sandy or rocky soil.",
+  "Shelters in burrows or under surface objects; eggs are laid underground."
+ ],
+ "range": "Oregon and Idaho south through California, Nevada, Utah, Arizona, Colorado and western Texas to Baja California and northern Mexico.",
+ "lookalikes": [
+  {
+   "slug": "new-mexico-whiptail",
+   "name": "New Mexico whiptail",
+   "howToTell": "Female-only species, smaller than the western whiptail, with a blue tint on the underbelly and tail end."
+  }
+ ],
+ "aliases": [
+  "western whiptail"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Aspidoscelis tigris (Tiger Whiptail)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.893088/Aspidoscelis_tigris"
+  },
+  {
+   "title": "Western whiptail (Aspidoscelis tigris) — Animal Diversity Web",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Cnemidophorus_tigris/"
+  }
+ ]
+}

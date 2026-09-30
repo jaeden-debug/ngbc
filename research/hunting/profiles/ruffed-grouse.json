@@ -1,0 +1,44 @@
+{
+ "slug": "ruffed-grouse",
+ "scientificName": "Bonasa umbellus",
+ "fieldMarks": [
+  "Medium grouse, 41-48 cm, with a short crest.",
+  "Long, fan-shaped tail with a wide blackish band near the tip.",
+  "Two colour morphs, most obvious in the tail: grey or reddish.",
+  "Black neck ruffs, usually hidden except during display.",
+  "Wide dark-and-white bars on the flanks below the wings."
+ ],
+ "behavior": [
+  "In spring, the male stands on a log and beats the air with his wings, producing a drumming sound that rapidly speeds up.",
+  "Permanent resident, but may shift short distances to denser cover for winter.",
+  "Feeds on buds, twigs, leaves, catkins, berries and seeds; tree buds are key in winter, especially in the far north when ground food is under snow.",
+  "Forages on the ground, in bushes and high in trees; the female gives soft, hen-like clucks."
+ ],
+ "habitat": [
+  "Deciduous and mixed forests, especially with scattered clearings and dense undergrowth, and overgrown pastures."
+ ],
+ "range": "The most widespread grouse in North America, found in forests from Alaska across Western and Eastern Canada and south to Georgia, including the Northwest, Rocky Mountains, Great Lakes and New England.",
+ "lookalikes": [],
+ "aliases": [
+  "partridge",
+  "drummer",
+  "woods pheasant"
+ ],
+ "sources": [
+  {
+   "title": "Ruffed Grouse — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/ruffed-grouse"
+  },
+  {
+   "title": "Ruffed Grouse",
+   "publisher": "Connecticut Department of Energy and Environmental Protection",
+   "url": "https://portal.ct.gov/DEEP/Wildlife/Fact-Sheets/Ruffed-Grouse"
+  },
+  {
+   "title": "Ruffed Grouse",
+   "publisher": "Vermont Fish & Wildlife Department",
+   "url": "https://www.vtfishandwildlife.com/learn-more/vermont-critters/birds/ruffed-grouse"
+  }
+ ]
+}

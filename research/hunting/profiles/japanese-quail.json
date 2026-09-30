@@ -1,0 +1,45 @@
+{
+ "slug": "japanese-quail",
+ "scientificName": "Coturnix japonica",
+ "commonNameFr": null,
+ "family": "Phasianidae",
+ "order": "Galliformes",
+ "taxonomyNote": "NatureServe: sometimes regarded as conspecific with C. coturnix, but the two are sympatric in Mongolia; ADW also keeps them separate.",
+ "fieldMarks": [
+  "Dark brown with buff mottling above, lighter brown below; whitish stripe above the eye",
+  "Males usually show rufous on the breast and black flecking on the throat; females usually lack these",
+  "Legs and bill orangish to pinkish grey; wild birds about 90-115 g; wing 92-101 mm"
+ ],
+ "behavior": [
+  "Male call is typically three notes ('deep hollow sounds' repeated); seven distinct male displays and calls recorded in captive birds",
+  "Migratory: breeds in northern Japan, Korea and Russia, winters in southeast China, Hainan, Taiwan and southern Japan",
+  "Eats grass seeds plus small worms, insect larvae and other invertebrates, especially in summer"
+ ],
+ "habitat": [],
+ "range": "Native to East Asia; domesticated since about the 13th century. NatureServe records it in Hawaii; Hawaii DLNR lists it among Hawaii's game birds.",
+ "lookalikes": [
+  {
+   "slug": "common-quail",
+   "name": "Common quail",
+   "howToTell": "Very similar; the two are sympatric in Mongolia without interbreeding (ADW, NatureServe)."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Coturnix japonica (Japanese quail)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Coturnix_japonica/"
+  },
+  {
+   "title": "NatureServe Explorer: Coturnix japonica",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104956/Coturnix_japonica"
+  },
+  {
+   "title": "Game Bird Hunting (species list)",
+   "publisher": "Hawaii Department of Land and Natural Resources",
+   "url": "https://dlnr.hawaii.gov/recreation/hunting/bird/"
+  }
+ ]
+}

@@ -1,0 +1,49 @@
+{
+ "slug": "yellow-backed-spiny-lizard",
+ "scientificName": "Sceloporus uniformis",
+ "commonNameFr": null,
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes S. uniformis was elevated to a full species (Schulte et al. 2006), returned to synonymy with S. magister (Leache and Mulcahy 2007), and is currently recognized as a full species by Crother (2017); Wikipedia says it was a subspecies of S. magister until recently.",
+ "fieldMarks": [
+  "Large, robust spiny lizard: adults to about 5.5 in (14 cm) snout-to-vent, tail slightly longer than the body.",
+  "Brown or tan with yellow and black dorsal stripes or mottling and a black collar on each side of the neck.",
+  "Males are larger, with a swollen tail base, enlarged postanal scales and femoral pores, and bluish markings on the throat and belly.",
+  "Females have a pale throat and belly with faint or no blue; a female's head may turn orange or reddish in the breeding season."
+ ],
+ "behavior": [
+  "Mainly an ambush predator that sometimes forages actively; eats ants, beetles, grasshoppers, spiders, centipedes and caterpillars, and occasionally small lizards, nestling birds and plant material.",
+  "Basks in the morning on rocks or other sunlit hard surfaces and shelters, usually underground, during the hottest part of a summer day.",
+  "Hibernates from late fall through winter and emerges in spring.",
+  "Uses trees, rocks and the ground near cover; eggs are laid in soil."
+ ],
+ "habitat": [
+  "Arid and semiarid country from plains to lower mountain slopes: desert shrubland and woodland, mesquite-yucca grassland, juniper and mesquite woodland, shrubby arroyos and cottonwood-willow along rivers."
+ ],
+ "range": "California, Nevada, Arizona and Utah (Mojave, Great Basin and San Joaquin deserts); endemic to the United States, not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "desert-spiny-lizard",
+   "name": "Desert spiny lizard (Sceloporus magister)",
+   "howToTell": "Treated as a subspecies of S. magister until recently; the sources read give no field character, so separate mainly by range and the black neck collar with yellow dorsal pattern described here."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Sceloporus uniformis (Yellow-backed Spiny Lizard)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.1167793/Sceloporus_uniformis"
+  },
+  {
+   "title": "Reptiles of Red Rock Canyon National Conservation Area",
+   "publisher": "U.S. Bureau of Land Management",
+   "url": "https://www.blm.gov/sites/default/files/docs/2026-01/Reptiles_3.pdf"
+  },
+  {
+   "title": "Wikipedia: Sceloporus uniformis (last-resort, read as raw wikitext)",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Sceloporus_uniformis"
+  }
+ ]
+}

@@ -1,0 +1,39 @@
+{
+ "slug": "ornate-chorus-frog",
+ "scientificName": "Pseudacris ornata",
+ "commonNameFr": null,
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Small, 2.5-3.9 cm; gray, green, reddish-brown, sometimes blackish or silvery white.",
+  "Black mask-like stripe through each eye, often extending along the side of the body.",
+  "Light-bordered black spots on sides and groin; yellow groin and inner thighs.",
+  "Call is a sharp metallic 'tink' or high peeps about 1-1.5 per second; breeding males have a dark throat."
+ ],
+ "behavior": [
+  "Secretive and nocturnal, rarely seen outside the winter breeding season (November-March).",
+  "Burrows into the ground among roots when inactive; migrates between breeding pools and upland habitat.",
+  "Females lay 10-100 eggs in clusters attached to vegetation; eats small terrestrial invertebrates."
+ ],
+ "habitat": [
+  "Sandhills, pine flatwoods and upland pine forests; breeds in small fishless wetlands such as Carolina bays, flooded meadows, ditches and cypress ponds."
+ ],
+ "range": "Coastal Plain of the southeastern United States, absent from southern peninsular Florida. Not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Ornate chorus frog"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Pseudacris ornata",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105957"
+  },
+  {
+   "title": "Ornate Chorus Frog (Pseudacris ornata)",
+   "publisher": "Savannah River Ecology Laboratory, University of Georgia",
+   "url": "https://srelherp.uga.edu/frogs/ornate-chorus-frog/"
+  }
+ ]
+}

@@ -1,0 +1,56 @@
+{
+ "slug": "desert-nightsnake",
+ "scientificName": "Hypsiglena chlorophaea",
+ "commonNameFr": {
+  "name": "Couleuvre des déserts",
+  "source": "NatureServe Explorer (French common name entry)",
+  "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.817007/Hypsiglena_chlorophaea"
+ },
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe treats Hypsiglena chlorophaea and H. ochrorhyncha as separate species following Mulcahy (2008), who split the former H. torquata; Colorado Parks and Wildlife lists the Colorado animals as H. jani and H. chlorophaea, and Idaho Fish and Game lists several H. torquata names under chlorophaea.",
+ "fieldMarks": [
+  "Smooth scales and many dark blotches above, the largest and most conspicuous on the neck (CPW).",
+  "Pupil vertically elongate, like a cat's; 19-21 scale rows at midbody; divided anal scale (CPW).",
+  "Extra scale in front of the eye behind the nostril separates it from the Chihuahuan nightsnake (CPW).",
+  "Maximum about 62 cm (24 in) total length (CPW)."
+ ],
+ "behavior": [
+  "Exclusively nocturnal and rarely seen; mildly venomous but not dangerous to humans (CPW).",
+  "Spends most of its time under rocks, in crevices or in rodent burrows; found under rocks mainly in mild weather of spring, late summer and fall (CPW).",
+  "Eats mainly lizards and lizard eggs, sometimes small snakes, frogs, insects and salamanders (NatureServe; CPW)."
+ ],
+ "habitat": [
+  "Arid and semiarid plains, canyons and hillsides, usually rocky, dissected terrain with sandy or gravelly soil, including desert, grassland, shrubland and woodland (NatureServe; CPW)."
+ ],
+ "range": "South-central British Columbia south through Washington, Oregon, southern Idaho, eastern California, Nevada, Utah and western Colorado to Arizona, northeastern Baja California and northwestern mainland Mexico (NatureServe).",
+ "lookalikes": [
+  {
+   "slug": "chihuahuan-nightsnake",
+   "name": "Chihuahuan nightsnake",
+   "howToTell": "Lacks the extra scale in front of the eye, behind the nostril (CPW)."
+  }
+ ],
+ "aliases": [
+  "Sonoran night snake",
+  "night snake",
+  "nightsnake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Hypsiglena chlorophaea",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.817007"
+  },
+  {
+   "title": "Chihuahuan Nightsnake and Desert Nightsnake",
+   "publisher": "Colorado Parks and Wildlife",
+   "url": "https://cpw.state.co.us/species/chihuahuan-nightsnake-and-desert-nightsnake"
+  },
+  {
+   "title": "Hypsiglena chlorophaea (Desert Nightsnake), Idaho Fish and Wildlife Information System",
+   "publisher": "Idaho Department of Fish and Game",
+   "url": "https://idfg.idaho.gov/species/taxa/19741"
+  }
+ ]
+}

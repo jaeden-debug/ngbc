@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { contentRepository } from "./repository.ts";
@@ -78,7 +79,10 @@ test("species App Blocks and sources remain independently retrievable", async ()
     blockTypes: ["identification_warning"],
   });
   assert.equal(blocks.blocks[0]?.block.id, "content_block:mallard.identification.01");
-  assert.deepEqual((await contentRepository.getSpeciesSources("species:mallard")).map(({ id }) => id), ["source:cornell-mallard"]);
+  /* Cited to the pages a researcher read, never to a placeholder page built
+     from the species name (scripts/enrich-species-profiles.mjs). */
+  const mallardSources = (await contentRepository.getSpeciesSources("species:mallard")).map(({ id }) => id);
+  assert.ok(mallardSources.length > 0 && mallardSources.every((id) => id.startsWith("source:profile-mallard-")), mallardSources.join());
 });
 
 test("hunter terms resolve to one canonical species plus a distinct characteristic intent", async () => {
@@ -116,12 +120,14 @@ test("biological sex and jurisdiction-defined regulatory classes remain separate
 
 test("broad animal words and bird categories return choices rather than fake species", async () => {
   for (const [query, expected] of [
-    ["rabbit", ["species:arctic-hare", "species:black-tailed-jackrabbit", "species:brush-rabbit", "species:desert-cottontail",
-      "species:eastern-cottontail", "species:mountain-cottontail", "species:new-england-cottontail", "species:snowshoe-hare",
-      "species:swamp-rabbit", "species:white-tailed-jackrabbit"]],
+    /* Every hare and rabbit, and nothing else: the list is the group itself. */
+    ["rabbit", (await contentRepository.getPublishedResources({ locale: "en-CA" }))
+      .filter((resource) => resource.type === "species" && resource.speciesProfile.speciesGroupIds.includes("species_group:hares-rabbits"))
+      .map(({ id }) => id)],
     ["wolf", ["species:eastern-wolf", "species:gray-wolf"]],
-    ["fox", ["species:arctic-fox", "species:gray-fox", "species:red-fox"]],
+    ["fox", ["species:arctic-fox", "species:gray-fox", "species:kit-fox", "species:red-fox", "species:swift-fox"]],
   ] as const) {
+    assert.ok(expected.length >= 2, query);
     const result = await contentRepository.interpretSpeciesQuery(query, { locale: "en-CA" });
     assert.equal(result.status, "choices", query);
     if (result.status === "choices") assert.deepEqual(result.species.map(({ id }) => id).sort(), [...expected].sort(), query);
@@ -155,7 +161,9 @@ test("French names, scientific names, groups, lookalikes and image gates survive
 
 test("production library is substantial while the selector vocabulary remains compact", async () => {
   const species = (await contentRepository.getPublishedResources({ locale: "en-CA" })).filter((resource) => resource.type === "species");
-  assert.equal(species.length, 133);
+  /* Every species in the research registry is published, and nothing else. */
+  const registry = readFileSync("research/hunting/species-master.csv", "utf8").trim().split("\n").slice(1).map((line) => line.split(",")[0]);
+  assert.deepEqual(species.map(({ id }) => id).sort(), [...registry].sort());
   const compact = await Promise.all(species.map(async (resource) => ({
     id: resource.id,
     n: resource.title,
@@ -163,5 +171,10 @@ test("production library is substantial while the selector vocabulary remains co
     a: (await contentRepository.getSpeciesAliases(resource.speciesProfile.speciesId)).map(({ value }) => value),
     t: resource.speciesProfile.sexAgeInfo?.terminology.map(({ value }) => value) ?? [],
   })));
-  assert.ok(Buffer.byteLength(JSON.stringify(compact)) < 40_000);
+  /* A per-species budget, not a fixed total: the catalogue grows with every
+     audited jurisdiction, and what must stay compact is each species' entry.
+     (A 40 KB total held at 133 species; the average then was well under this.) */
+  const average = Buffer.byteLength(JSON.stringify(compact)) / compact.length;
+  assert.ok(average <= 200, `average selector entry ${Math.round(average)} bytes`);
+  for (const entry of compact) assert.ok(Buffer.byteLength(JSON.stringify(entry)) <= 1_000, entry.id);
 });

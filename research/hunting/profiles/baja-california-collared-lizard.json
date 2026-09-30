@@ -1,0 +1,49 @@
+{
+ "slug": "baja-california-collared-lizard",
+ "scientificName": "Crotaphytus vestigium",
+ "commonNameFr": null,
+ "family": "Crotaphytidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Slender white transverse bars across the back (NatureServe).",
+  "Widely separated posterior collars; no black pigment lining the mouth (NatureServe).",
+  "Adult males: strongly laterally compressed tail with a white or off-white dorsal stripe, pale patternless head, and enlarged dark inguinal patches (NatureServe).",
+  "Up to about 5 in (127 mm) snout-vent length (theNAT)."
+ ],
+ "behavior": [
+  "Eats arthropods, small lizards and sometimes plant material (NatureServe).",
+  "Seasonal activity begins in March-April; members of the genus can lay two clutches a year (NatureServe)."
+ ],
+ "habitat": [
+  "Rocky areas in arid and semiarid country, usually with scant vegetation: hillsides, alluvial fans, canyons and lava flows (NatureServe)."
+ ],
+ "range": "Desert slopes of the Peninsular Ranges in southern California north to the San Jacinto Mountains near Palm Springs, and much of Baja California; an isolated Tecate Mountain (San Diego County) population needs confirmation (NatureServe; theNAT).",
+ "lookalikes": [
+  {
+   "slug": "great-basin-collared-lizard",
+   "name": "Great Basin collared lizard",
+   "howToTell": "Great Basin lacks the widely separated posterior collars and slender white dorsal bars (NatureServe); listed as similar species by theNAT."
+  }
+ ],
+ "aliases": [
+  "Baja black-collared lizard"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Crotaphytus vestigium",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.103364"
+  },
+  {
+   "title": "Crotaphytus vestigium, Baja California Collared Lizard",
+   "publisher": "San Diego Natural History Museum (theNAT Amphibian and Reptile Atlas of Peninsular California)",
+   "url": "https://herpatlas.sdnhm.org/species/overview/baja-california-collared-lizard/54/"
+  },
+  {
+   "title": "Crotaphytus vestigium (Baja Black-collared Lizard)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Crotaphytus_vestigium/"
+  }
+ ]
+}

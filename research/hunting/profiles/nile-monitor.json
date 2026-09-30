@@ -1,0 +1,45 @@
+{
+ "slug": "nile-monitor",
+ "scientificName": "Varanus niloticus",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Varanidae",
+ "order": "Squamata",
+ "taxonomyNote": "Animal Diversity Web notes a former subspecies, now Varanus ornatus, is recognised as a separate species.",
+ "fieldMarks": [
+  "Very large lizard: typical adults about 5 ft (up to about 2.4 m) with a neck longer than the narrow head and a laterally compressed, rudder-like tail about 1.5 times body length.",
+  "Olive-green to black or brownish with cream or yellow stripes on the jaw and head and rows of yellowish V-shaped stripes from the neck that become bands or spots on the back.",
+  "Forked blue-black tongue and long sharp claws; juveniles are black with bold yellow cross-bars and spots.",
+  "Nothing native to the U.S. reaches this size with these features (USGS)."
+ ],
+ "behavior": [
+  "Semi-aquatic, mostly diurnal, basking on rocks and branches and often near water; strong swimmer that can stay under for 12-15 minutes.",
+  "Skilled climber; sleeps on branches or submerged in warm weather or in burrows when cooler; lays 12-60 eggs in burrows.",
+  "Generalist predator of crabs, crayfish, mollusks, fish, frogs, reptiles, birds, eggs and small mammals."
+ ],
+ "habitat": [
+  "In Florida, favoured habitat is along canal systems and water edges, including coastal mangroves and salt marshes; native habitat is woodland, savanna, scrub, swamp and mangrove near water."
+ ],
+ "range": "Native to sub-Saharan Africa and the Nile valley. Non-native in the United States: established in Lee (Cape Coral) and Palm Beach counties, Florida; USGS NAS also records sightings in Georgia, Texas, Arizona, California and Virginia. Not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Nile monitor"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Varanus niloticus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.728632"
+  },
+  {
+   "title": "Nile Monitor",
+   "publisher": "Florida Fish and Wildlife Conservation Commission",
+   "url": "https://myfwc.com/wildlifehabitats/profiles/reptiles/lizards/nile-monitor/"
+  },
+  {
+   "title": "Nile Monitor (Varanus niloticus) - Species Profile",
+   "publisher": "USGS Nonindigenous Aquatic Species",
+   "url": "https://nas.er.usgs.gov/queries/FactSheet.aspx?SpeciesID=1085"
+  }
+ ]
+}

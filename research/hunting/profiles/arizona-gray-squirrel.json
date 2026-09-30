@@ -1,0 +1,36 @@
+{
+ "slug": "arizona-gray-squirrel",
+ "scientificName": "Sciurus arizonensis",
+ "commonNameFr": null,
+ "family": "Sciuridae",
+ "order": "Rodentia",
+ "taxonomyNote": "NatureServe: a proposed arrangement would move it to Parasciurus (not accepted per ASM 2024), and it may be conspecific with S. nayaritensis.",
+ "fieldMarks": [
+  "Gray upper body, sometimes yellow patches behind the ears",
+  "Tail black above, yellow to brown below, separated by white edging",
+  "White underparts, often stained with walnut juice",
+  "Total length about 21 in; coat darkens in winter"
+ ],
+ "behavior": [
+  "Nests in leaf nests in trees or tree cavities",
+  "Eats mast, especially walnuts and acorns, pine seeds, flowers, buds and fungi; may eat insects"
+ ],
+ "habitat": [
+  "Hardwood and mixed oak-pine forest, river valleys and canyons, cottonwood and sycamore groves; ADW gives 1,500-1,900 m elevation in Arizona."
+ ],
+ "range": "Central and southeastern Arizona, west-central New Mexico and northeastern Sonora, Mexico.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Arizona Gray Squirrel (Sciurus arizonensis)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100738/Sciurus_arizonensis"
+  },
+  {
+   "title": "Animal Diversity Web: Sciurus arizonensis (Arizona gray squirrel)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Sciurus_arizonensis/"
+  }
+ ]
+}

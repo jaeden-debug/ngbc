@@ -1,0 +1,43 @@
+{
+ "slug": "alabama-map-turtle",
+ "scientificName": "Graptemys pulchra",
+ "commonNameFr": null,
+ "family": "Emydidae",
+ "order": "Testudines",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Females 273-292 mm carapace and up to about 1.9 kg; males 113-127 mm.",
+  "Relatively low-domed shell with a black median keel and pale yellow outline; concentric yellow semicircles on each marginal scute.",
+  "Head with a large light interorbital blotch connected to postorbital blotches; no nasal trident.",
+  "Females have larger heads, broader jaws and elongated front claws; males longer, thicker tails."
+ ],
+ "behavior": [
+  "Diurnal and active roughly March-November; bask on logs with limbs and neck stretched out.",
+  "Turtles feed or bask on logs May-October; daily torpor begins below about 19 C before hibernation.",
+  "Mainly molluscivorous; males and juveniles eat smaller bivalves and aquatic insects."
+ ],
+ "habitat": [
+  "Medium-sized rivers to large creeks with sand bars, sandy banks, logs, deep pools and abundant mollusks; nests in sand bars and banks."
+ ],
+ "range": "Mobile Bay drainage: eastern Mississippi, throughout Alabama and northwestern Georgia. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "pascagoula-map-turtle",
+   "name": "Pascagoula map turtle",
+   "howToTell": "Higher-domed shell with spines on the keel; nasal trident usually present."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Graptemys pulchra",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103963/Graptemys_pulchra"
+  },
+  {
+   "title": "Animal Diversity Web: Graptemys pulchra",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Graptemys_pulchra/"
+  }
+ ]
+}

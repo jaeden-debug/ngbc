@@ -1,0 +1,44 @@
+{
+ "slug": "white-tailed-ptarmigan",
+ "scientificName": "Lagopus leucura",
+ "fieldMarks": [
+  "Smallest North American grouse, 30–33 cm",
+  "White tail feathers (hard to see except in flight)",
+  "Summer plumage mottled brown and gray; winter plumage entirely white except the dark eye and bill",
+  "Feathered legs and feet"
+ ],
+ "behavior": [
+  "Crouches motionless when approached and is easily overlooked",
+  "Feeds in flocks from late summer through winter, nipping buds, twigs and leaves of willow and other low alpine plants",
+  "Moves to slightly lower elevations in winter, some up to 14 miles; females move farther than males"
+ ],
+ "habitat": [
+  "Rocky alpine tundra above timberline with low vegetation or damp alpine meadows near snowfields; in winter where willows extend above the snow."
+ ],
+ "range": "Resident from central Alaska, Yukon and the southwestern Mackenzie south through the mountains of British Columbia, Alberta and Vancouver Island to the Washington Cascades and the Rockies as far as northern New Mexico; introduced in the Sierra Nevada of California and in Oregon and Utah. It is the only ptarmigan south of Canada.",
+ "lookalikes": [
+  {
+   "slug": "willow-ptarmigan",
+   "name": "Other ptarmigan (willow, rock)",
+   "howToTell": "White-tailed is smaller, has a white rather than black tail and usually lives higher in the mountains."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "White-tailed Ptarmigan | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/white-tailed-ptarmigan"
+  },
+  {
+   "title": "Colorado's White-tailed Ptarmigan: Changing with the Seasons",
+   "publisher": "Colorado Virtual Library (Colorado State Library)",
+   "url": "https://www.coloradovirtuallibrary.org/resource-sharing/state-pubs-blog/colorados-white-tailed-ptarmigan/"
+  },
+  {
+   "title": "Lagopus leucura (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102622/Lagopus_leucura"
+  }
+ ]
+}

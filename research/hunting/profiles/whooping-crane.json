@@ -1,0 +1,39 @@
+{
+ "slug": "whooping-crane",
+ "scientificName": "Grus americana",
+ "fieldMarks": [
+  "Very tall (4 ft 11 in-5 ft 3 in), mostly white crane with black wingtips shown in flight.",
+  "Adult has bare red skin on the head and a dark facial pattern.",
+  "Juvenile has brown on the head and back.",
+  "Trumpet-like call carries for several miles."
+ ],
+ "behavior": [
+  "Migrates by day in family groups or small flocks along narrow corridors with traditional stopovers.",
+  "Wintering pairs and families defend feeding territories, returning to the same territory each winter.",
+  "Omnivorous; in winter eats crabs, clams, shrimp, insects, frogs, fish, acorns and berries."
+ ],
+ "habitat": [
+  "Breeds in remote muskeg (swampy coniferous forest with many ponds); winters in coastal marsh."
+ ],
+ "range": "One of the rarest North American birds; the wild migratory flock nests in Wood Buffalo National Park in central Canada and winters on the central Texas coast, about 2,400 miles away. It once nested more widely on the northern prairies.",
+ "lookalikes": [
+  {
+   "slug": "wood-stork",
+   "name": "Wood stork",
+   "howToTell": "Compare the black wing pattern in flight; the whooping crane is a different shape and has a red-and-dark head pattern."
+  },
+  {
+   "slug": "american-white-pelican",
+   "name": "American white pelican",
+   "howToTell": "Also white with black in the wings; compare shape and the crane's long legs and red crown."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Whooping Crane | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/whooping-crane"
+  }
+ ]
+}

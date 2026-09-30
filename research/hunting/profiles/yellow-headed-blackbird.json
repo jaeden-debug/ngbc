@@ -1,0 +1,38 @@
+{
+ "slug": "yellow-headed-blackbird",
+ "scientificName": "Xanthocephalus xanthocephalus",
+ "commonNameFr": "Carouge à tête jaune",
+ "family": "Icteridae",
+ "order": "Passeriformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Male: black with a yellow head and white wing patches that stand out in flight",
+  "Female: smaller, sooty brown with yellow on the face and chest, white streaks on the belly and no white wing patches",
+  "Immatures have some yellow on the head and small or absent wing patches",
+  "Length 21-26 cm"
+ ],
+ "behavior": [
+  "Migrates in flocks; males may winter farther north than females",
+  "Forages mostly walking in open fields or at water edges; may follow farm machinery; usually in flocks with other blackbirds outside nesting",
+  "Feeds heavily on insects in summer; about two-thirds of diet is seeds",
+  "Harsh, incessant oka-wee-wee and kruck calls that blend into a wavering chorus in colonies"
+ ],
+ "habitat": [
+  "Breeds in freshwater sloughs, marshy lake borders and tall cattails in water up to 3-4 ft deep; forages around marshes and in pastures, plowed fields and feedlots."
+ ],
+ "range": "Breeds from central-interior British Columbia east to extreme western Ontario and northwestern Ohio, south to southern California, New Mexico and northern Texas; winters from central California, Arizona and Texas south into Mexico.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Yellow Headed Blackbird",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/yellow-headed-blackbird"
+  },
+  {
+   "title": "NatureServe Explorer: Xanthocephalus xanthocephalus (Yellow-headed Blackbird)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.106463/Xanthocephalus_xanthocephalus"
+  }
+ ]
+}

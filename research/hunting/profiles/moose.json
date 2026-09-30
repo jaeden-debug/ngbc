@@ -1,0 +1,42 @@
+{
+ "slug": "moose",
+ "scientificName": "Alces alces",
+ "fieldMarks": [
+  "Largest deer; up to almost 1.8 m at the shoulder, with a humped shoulder and low rump",
+  "Long mournful arched nose with a flexible upper lip; most have a fur-covered 'bell' hanging from the throat",
+  "Dark brown to nearly black, reddish or grayish brown with pale gray or white leg 'stockings'",
+  "Only bulls carry antlers: broad palms fringed with spikes, grown each summer",
+  "Newborn calves are red-brown"
+ ],
+ "behavior": [
+  "Rut in late September–early October; cows bawl nasally and bulls answer with a coughing bellow",
+  "Browses willow, birch and aspen twigs in fall and winter, sometimes leaving a browse line 1.8–2.4 m high; feeds on aquatic plants in summer",
+  "Makes seasonal movements of a few to about 100 km between calving, rutting and wintering areas",
+  "Cools off in water in summer and may dive for bottom plants"
+ ],
+ "habitat": [
+  "A mosaic of second-growth forest, openings, swamps, lakes and wetlands; needs water for summer foraging and hardwood-conifer forest for winter cover; recent burns with dense willow, aspen and birch are prime."
+ ],
+ "range": "Across the northern forests of North America from Alaska and Canada south into the Rocky Mountains and the northern United States; introduced to Newfoundland and Colorado.",
+ "lookalikes": [],
+ "aliases": [
+  "Elk (European usage)"
+ ],
+ "sources": [
+  {
+   "title": "Moose Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=moose.main"
+  },
+  {
+   "title": "Moose - Hinterland Who's Who",
+   "publisher": "Hinterland Who's Who (Canadian Wildlife Service / Canadian Wildlife Federation)",
+   "url": "https://www.hww.ca/en/wildlife/mammals/moose.html"
+  },
+  {
+   "title": "Alces alces (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104982/Alces_alces"
+  }
+ ]
+}

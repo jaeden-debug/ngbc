@@ -1,0 +1,62 @@
+{
+ "slug": "woodhouses-toad",
+ "scientificName": "Anaxyrus woodhousii",
+ "commonNameFr": {
+  "name": "Crapaud de Woodhouse",
+  "source": "NatureServe Explorer (French common name entry)",
+  "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103855/Anaxyrus_woodhousii"
+ },
+ "family": "Bufonidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe notes the specific epithet is widely misspelled 'woodhousei' and that Fowler's toad (A. fowleri) was formerly included in this species.",
+ "fieldMarks": [
+  "Medium to large stocky toad, about 2-5 in, with warty skin, round head and short snout.",
+  "L-shaped cranial crests between and behind the eyes; the post-orbital crest typically touches the long parotoid gland behind the eye.",
+  "Gray, light brown or olive with dark blotches and spots, a white stripe down the centre of the back, and a speckled light underside.",
+  "Males have a dark throat; each hind foot has two dark digging spades.",
+  "Young toads often lack the back stripe and have reddish warts."
+ ],
+ "behavior": [
+  "Call is a loud nasal, bleating 'waaaah' lasting about 1-10 seconds, carrying up to about 800 m.",
+  "Mostly nocturnal (adult activity at twilight into night in Washington), spending the day burrowed or hidden under debris or in rodent burrows; diurnal activity is not uncommon in other regions.",
+  "Active from late April-May into October in Washington; inactive in cold months. Eats small terrestrial arthropods.",
+  "Breeds in shallow still water from May into July; egg strings are wrapped around vegetation."
+ ],
+ "habitat": [
+  "Floodplains, river valleys, grassland, shrubsteppe and agricultural areas with loose sandy or friable soil near permanent or temporary water.",
+  "Burrows or hides under cover when inactive."
+ ],
+ "range": "Central and southwestern United States from southern Texas to northern Montana and North Dakota and west across the desert Southwest to Utah, with isolated populations in Idaho, Washington, Oregon and California; adjacent northern Mexico.",
+ "lookalikes": [
+  {
+   "slug": "western-toad",
+   "name": "Western toad",
+   "howToTell": "Western toad lacks cranial crests and has short oval parotoid glands; Woodhouse's has L-shaped crests and elongate glands longer than the eye."
+  },
+  {
+   "slug": "great-plains-toad",
+   "name": "Great Plains toad",
+   "howToTell": "Great Plains toad has a raised snout knob with V-shaped ridges and large white-bordered dark blotches."
+  }
+ ],
+ "aliases": [
+  "Bufo woodhousii"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Anaxyrus woodhousii (Woodhouse's Toad)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103855/Anaxyrus_woodhousii"
+  },
+  {
+   "title": "Woodhouse's toad (Anaxyrus woodhousii)",
+   "publisher": "Washington Department of Fish & Wildlife",
+   "url": "https://wdfw.wa.gov/species-habitats/species/bufo-woodhousii"
+  },
+  {
+   "title": "Woodhouse's Toad - Montana Field Guide",
+   "publisher": "Montana Natural Heritage Program",
+   "url": "https://fieldguide.mt.gov/detail_aaabb01180.aspx"
+  }
+ ]
+}

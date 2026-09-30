@@ -1,0 +1,46 @@
+{
+ "slug": "pig-frog",
+ "scientificName": "Lithobates grylio",
+ "commonNameFr": null,
+ "family": "Ranidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe notes Dubois et al. (2021) place it in genus Aquarana; NatureServe keeps Lithobates and calls the generic arrangement of American ranids controversial.",
+ "fieldMarks": [
+  "Adults about 8.2-16.5 cm snout-vent; green, olive or brown with dark spots toward the hind end; white-grey belly; smooth skin.",
+  "Resembles American bullfrog but the snout is much more pointed; hind feet almost fully webbed.",
+  "Call: 1-13 short, loud pig-like grunts; choruses sound like a roar."
+ ],
+ "behavior": [
+  "Fully aquatic and confined to wetlands; males call floating in water and are territorial.",
+  "Feeds nocturnally, mostly on arthropods, especially crayfish (20-75% of diet).",
+  "Chorusing is typically nocturnal per NatureServe, while Animal Diversity Web says it typically calls by day.",
+  "Burrows into mud when wetlands dry or to hibernate (Nov-March) in colder regions."
+ ],
+ "habitat": [
+  "Permanent lakes, ponds, swamps, marshes and streams, especially with abundant emergent or floating vegetation; old rice fields."
+ ],
+ "range": "Southern South Carolina to southern Florida and west to southeastern Texas; introduced in the Bahamas and northern Puerto Rico.",
+ "lookalikes": [
+  {
+   "slug": "american-bullfrog",
+   "name": "American bullfrog",
+   "howToTell": "Pig frog has a much more pointed snout and is smaller than the bullfrog."
+  }
+ ],
+ "aliases": [
+  "American Pigfrog"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102371"
+  },
+  {
+   "title": "Animal Diversity Web species account",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lithobates_grylio/"
+  }
+ ],
+ "eligibility": "HUNTABLE"
+}

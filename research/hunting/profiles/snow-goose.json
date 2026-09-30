@@ -1,0 +1,43 @@
+{
+ "slug": "snow-goose",
+ "scientificName": "Anser caerulescens",
+ "fieldMarks": [
+  "White morph: all white with black wingtips and pink-orange bill and legs.",
+  "Blue morph: gray-brown body and wings with a white head.",
+  "Immatures are grayer (white morph) or mostly dark brown (blue morph).",
+  "Greater (larger, eastern Canada) and lesser forms are recognised; morphs interbreed."
+ ],
+ "behavior": [
+  "High-pitched barking calls (howk-howk).",
+  "Walks to feed on land or in shallow water, eating roots, leaves and seeds of grasses and sedges, and waste grain in winter fields.",
+  "Migrates long distances in flocks, sometimes at high altitude, using traditional stopovers."
+ ],
+ "habitat": [
+  "Breeds on Arctic tundra near water; winters in coastal marshes, estuaries, freshwater marshes and farmland."
+ ],
+ "range": "Breeds in Alaska and Arctic Canada; winters across the Plains, Gulf Coast, Atlantic coast and elsewhere in the US.",
+ "lookalikes": [
+  {
+   "slug": "greater-white-fronted-goose",
+   "name": "Greater white-fronted goose",
+   "howToTell": "Compare blue-morph snow geese with white-fronted geese."
+  },
+  {
+   "slug": "domestic-goose",
+   "name": "Domestic goose",
+   "howToTell": "Compare white-morph birds with white domestic geese."
+  }
+ ],
+ "aliases": [
+  "blue goose (blue morph, former name)",
+  "greater snow goose",
+  "lesser snow goose"
+ ],
+ "sources": [
+  {
+   "title": "Snow Goose — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/snow-goose"
+  }
+ ]
+}

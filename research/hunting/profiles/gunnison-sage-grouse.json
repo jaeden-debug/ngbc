@@ -1,0 +1,32 @@
+{
+ "slug": "gunnison-sage-grouse",
+ "scientificName": "Centrocercus minimus",
+ "fieldMarks": [
+  "Smaller than the greater sage-grouse.",
+  "More obvious pale bars on the tail feathers and a longer plume on the back of the head.",
+  "Displaying males puff out a white chest and inflate yellow air sacs; males slightly larger than females."
+ ],
+ "behavior": [
+  "Displaying male gives 9–10 low hooting gobbles with wing sounds, very different from the greater sage-grouse display.",
+  "Fall and winter diet may be almost entirely sagebrush leaves and shoots; also flowers, buds and summer insects."
+ ],
+ "habitat": [
+  "Sagebrush plains and high valleys; nesting habitat includes lower wet areas where young forage for insects."
+ ],
+ "range": "Year-round resident of southwestern Colorado and adjacent Utah only; gone from about 90 percent of its former range.",
+ "lookalikes": [
+  {
+   "slug": "greater-sage-grouse",
+   "name": "Greater sage-grouse",
+   "howToTell": "Greater is larger, with a different display and fainter tail bars; the ranges do not overlap."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Gunnison Sage-Grouse — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/gunnison-sage-grouse"
+  }
+ ]
+}

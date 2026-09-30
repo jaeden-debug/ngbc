@@ -1,0 +1,39 @@
+{
+ "slug": "king-rail",
+ "scientificName": "Rallus elegans",
+ "fieldMarks": [
+  "Large, crow-sized marsh rail.",
+  "Flanks sharply barred black and white; back feathers edged warm buff; much reddish on the wings.",
+  "More richly coloured than the clapper rail."
+ ],
+ "behavior": [
+  "Call is a harsh, clattering kek-kek-kek, almost identical to the clapper rail's.",
+  "Forages in shallow water near dense cover; carries large prey such as crayfish to solid ground.",
+  "Eats aquatic insects, crayfish, crabs, small fish, snails, frogs and seeds.",
+  "Withdraws from northern areas in winter; apparently migrates at night."
+ ],
+ "habitat": [
+  "Fresh and brackish marshes, rice fields and swamps with dense cattail, bulrush or spartina; occasionally salt marsh in winter."
+ ],
+ "range": "Eastern North America: eastern Canada and the Great Lakes through New England, the Mid-Atlantic, the Plains and the Southeast to Florida and Texas; withdraws from northern areas in winter.",
+ "lookalikes": [
+  {
+   "slug": "clapper-rail",
+   "name": "Clapper rail",
+   "howToTell": "King rail is more richly coloured with sharper black-and-white flank bars; its voice is nearly identical."
+  },
+  {
+   "slug": "virginia-rail",
+   "name": "Virginia rail",
+   "howToTell": "Virginia rail is much smaller and has gray cheeks."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "King Rail — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/king-rail"
+  }
+ ]
+}

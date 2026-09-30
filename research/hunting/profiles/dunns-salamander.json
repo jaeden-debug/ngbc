@@ -1,0 +1,56 @@
+{
+ "slug": "dunns-salamander",
+ "scientificName": "Plethodon dunni",
+ "commonNameFr": null,
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Washington's largest woodland salamander: about 2.5-3 inches snout-vent, 5.5-6 inches total.",
+  "Tan, yellow or green dorsal stripe over a dark black or brown body; juveniles have a brighter stripe.",
+  "Stripe does not reach the tail tip and has an uneven 'eroding' edge invaded by blotches of the side colour.",
+  "Sides have patchy blotches and flecks the colour of the stripe; usually 15 costal grooves.",
+  "Nasolabial grooves separate it from non-plethodontid salamanders such as the long-toed salamander."
+ ],
+ "behavior": [
+  "Active above ground mostly at night during or after rain, mainly spring and fall in Washington; hard to find in the dry summer.",
+  "Eats small invertebrates including mites, springtails, snails and flies.",
+  "Eggs are laid on land in clusters of roughly 4-18 in moist crevices, rotted logs or cavities; no free-living larval stage.",
+  "Hides under rocks, logs, moss and leaf litter; may enter water to escape predators."
+ ],
+ "habitat": [
+  "Shaded, rocky edges of humid forested streams, stream seepages and moist talus slopes; moss-covered outcrops.",
+  "Needs cool, permanently moist conditions but not flowing water."
+ ],
+ "range": "Southwestern Washington (Willapa Hills) south through western Oregon to extreme northwestern California (Smith River watershed), from sea level to about 1,000 m.",
+ "lookalikes": [
+  {
+   "slug": "western-red-backed-salamander",
+   "name": "Western red-backed salamander",
+   "howToTell": "Lacks blotches and flecks of the stripe colour on the sides of the body."
+  },
+  {
+   "slug": "long-toed-salamander",
+   "name": "Long-toed salamander",
+   "howToTell": "No nasolabial grooves, rounded snout, noticeably longer fourth hind toe."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Plethodon dunni",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.104838"
+  },
+  {
+   "title": "Dunn's salamander (Plethodon dunni)",
+   "publisher": "Washington Department of Fish & Wildlife",
+   "url": "https://wdfw.wa.gov/species-habitats/species/plethodon-dunni"
+  },
+  {
+   "title": "California Wildlife Habitat Relationships life history account: Dunn's salamander",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=1432"
+  }
+ ]
+}

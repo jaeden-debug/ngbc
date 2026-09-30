@@ -1,0 +1,52 @@
+{
+ "slug": "sidewinder",
+ "scientificName": "Crotalus cerastes",
+ "commonNameFr": null,
+ "family": "Viperidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Raised scales over the eyes look like horns (NDOW; NPS Death Valley).",
+  "Heavy-bodied pit viper, tan to lighter cream with dark dorsal blotches; large triangular head (NDOW; NPS Death Valley).",
+  "Usually 1.5 ft or less, up to about 3 ft; 17-33 in (NPS Death Valley; NDOW).",
+  "Moves by throwing the body sideways in an S-shaped curve; tracks in sand are J-shaped and may end in a small depression where it has buried itself (NPS Death Valley)."
+ ],
+ "behavior": [
+  "Crepuscular, and nocturnal in warm periods; by day it hides in rodent burrows or shifts side to side until nearly buried in sand, then waits for prey (NPS Death Valley).",
+  "Active mainly February-November in extreme southern California; in the eastern Mojave Desert activity starts March or April and ends October or November, peaking May-June and late September-October (NatureServe).",
+  "Eats mainly lizards, pocket mice, kangaroo rats and other small mammals; occasionally small birds and snakes (NatureServe).",
+  "Seasonal moves of up to several hundred metres between hibernation burrows and sandy summer habitat were recorded in the eastern Mojave (NatureServe)."
+ ],
+ "habitat": [
+  "Open desert with fine windblown sand, sandy washes, or sparsely vegetated dunes with creosotebush or mesquite; sometimes rocky or gravelly sites (NatureServe).",
+  "Overwinters in rodent or tortoise burrows (NatureServe)."
+ ],
+ "range": "Southeastern California, southern Nevada and extreme southwestern Utah south through southwestern Arizona into northeastern Baja California and northwestern Sonora; from below sea level to about 1,830 m (NatureServe).",
+ "lookalikes": [],
+ "aliases": [
+  "horned rattler",
+  "desert sidewinder"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Crotalus cerastes",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100532"
+  },
+  {
+   "title": "Sidewinder",
+   "publisher": "Nevada Department of Wildlife",
+   "url": "https://www.ndow.org/species/sidewinder/"
+  },
+  {
+   "title": "Sidewinder - Death Valley National Park",
+   "publisher": "National Park Service",
+   "url": "https://www.nps.gov/deva/learn/nature/sidewinder.htm"
+  },
+  {
+   "title": "Rattlesnake",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://wildlife.ca.gov/Conservation/Reptiles/Rattlesnake"
+  }
+ ]
+}

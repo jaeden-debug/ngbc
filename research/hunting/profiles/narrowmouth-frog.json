@@ -1,0 +1,42 @@
+{
+ "slug": "narrowmouth-frog",
+ "scientificName": "Gastrophryne carolinensis",
+ "commonNameFr": null,
+ "family": "Microhylidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe calls it Eastern Narrow-mouthed Toad.",
+ "fieldMarks": [
+  "Small: up to 1.5 in (3.8 cm) snout-vent length.",
+  "Gray, brown or reddish above, often with dark spots or mottling and sometimes a broad stripe on each side.",
+  "Smooth skin, short limbs, unwebbed toes, pointed snout and a fold of skin across the back of the head.",
+  "Males have a dark throat; females light.",
+  "Call is a nasal, sheep-like bleat with no trill."
+ ],
+ "behavior": [
+  "Mostly nocturnal, most active on wet nights in spring and summer.",
+  "Burrows or hides beneath objects by day and in cold or dry weather.",
+  "Eats mainly ants, termites and small beetles, feeding at anthill openings.",
+  "Breeds after heavy rains, mostly spring-summer (March-November); toxic skin secretions deter predators."
+ ],
+ "habitat": [
+  "Wide variety of habitats, usually with sandy or loamy soil, up to several hundred metres from water; breeds in ponds, ditches, swamps and rain puddles."
+ ],
+ "range": "Southern Maryland to southeastern Kansas and south to the Florida Keys, Gulf Coast and eastern Texas, with scattered disjunct northern and western populations. Introduced on the Bahamas and Grand Cayman. Not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Eastern narrow-mouthed toad",
+  "Eastern narrowmouth toad"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Gastrophryne carolinensis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102651/Gastrophryne_carolinensis"
+  },
+  {
+   "title": "Animal Diversity Web: Gastrophryne carolinensis",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Gastrophryne_carolinensis/"
+  }
+ ]
+}

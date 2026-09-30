@@ -1,0 +1,54 @@
+{
+ "slug": "timber-rattlesnake",
+ "scientificName": "Crotalus horridus",
+ "commonNameFr": "Crotale des bois",
+ "family": "Viperidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Horny rattle on the tail tip; broad head and vertical pupil in bright light",
+  "Heat-sensing pit on each side of the face between eye and nostril",
+  "Almost always dark crossbands on a yellow, black or gray background, sometimes a reddish mid-back stripe",
+  "Heavy-bodied with keeled scales and a coarse, dull skin; usually under 150 cm"
+ ],
+ "behavior": [
+  "Emerges from dens about mid-April to May and returns about mid-September to October",
+  "Northern and upland snakes hibernate communally; males typically stay within 3.6 km of the den",
+  "Eats mainly small mammals; lizards in the south",
+  "Ambushes prey along fallen logs"
+ ],
+ "habitat": [
+  "Northeast: hilly forest with rocky outcrops and ledges; Midwest: rocky bluffs; South: hardwood forest, river bottoms and swampy areas."
+ ],
+ "range": "Central New England to northern Florida, west to eastern Texas, central Oklahoma, eastern Kansas, southeastern Nebraska, Iowa and southeastern Minnesota; spotty at the western and northern edges. NatureServe ranks it NX (presumed extirpated) in Canada.",
+ "lookalikes": [
+  {
+   "slug": "milk-snake",
+   "name": "Milk snake",
+   "howToTell": "Slender with smooth glossy skin, no rattle and no facial pit."
+  },
+  {
+   "slug": "northern-water-snake",
+   "name": "Northern water snake",
+   "howToTell": "Lacks the rattle and the facial pit."
+  },
+  {
+   "slug": "eastern-hognose-snake",
+   "name": "Eastern hognose snake",
+   "howToTell": "Lacks the rattle and the facial pit."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Crotalus horridus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100455"
+  },
+  {
+   "title": "Animal Diversity Web: Crotalus horridus",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Crotalus_horridus/"
+  }
+ ]
+}

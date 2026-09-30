@@ -1,0 +1,45 @@
+{
+ "slug": "eastern-box-turtle",
+ "scientificName": "Terrapene carolina",
+ "commonNameFr": "Tortue boîte de l'Est",
+ "commonNameFrSource": "NatureServe Explorer (other common names, FR); NatureServe also lists 'Tortue boîte' and 'Tortue tabatière'",
+ "family": "Emydidae",
+ "order": "Testudines",
+ "taxonomyNote": "NatureServe's standard name is 'American Box Turtle' (Terrapene carolina) and records disagreement over whether bauri and triunguis are subspecies or separate species; Crother (2017) recognised only carolina and triunguis.",
+ "fieldMarks": [
+  "Hinged plastron lets adults close the domed, keeled shell almost completely; upper jaw slightly hooked.",
+  "Carapace colour highly variable: brown with yellow or orange markings in eastern box turtle (about 15 cm, four hind toes).",
+  "Mature males often have red irises and a concave rear plastron; females have a flat plastron and vent at or inside the rear shell edge.",
+  "Three-toed box turtle (T. c. triunguis) has a tan or olive shell and three hind toes; males' heads may be entirely red."
+ ],
+ "behavior": [
+  "Diurnal; in summer activity is mostly morning and after rain; hibernates in October/November to March-May burrowed in loose soil, mud or stump holes.",
+  "Omnivore: snails, insects, berries, fungi, worms, carrion; young are mainly invertebrate eaters.",
+  "Home ranges are usually 2 ha or less and overlap; individuals often return to the same hibernation area."
+ ],
+ "habitat": [
+  "Forests, fields, forest-brush and forest-field edges; open woodlands, pastures and marshy meadows, often near streams and ponds."
+ ],
+ "range": "Eastern United States from southern Maine to Florida and west to Michigan, Illinois, Kansas, Oklahoma and Texas. In Canada NatureServe treats Ontario as an exotic record and SARA lists the species as Extirpated.",
+ "lookalikes": [],
+ "aliases": [
+  "Eastern box turtle",
+  "Box turtle",
+  "American box turtle",
+  "Three-toed box turtle",
+  "Gulf Coast box turtle",
+  "Florida box turtle"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Terrapene carolina",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100312"
+  },
+  {
+   "title": "Animal Diversity Web: Terrapene carolina",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Terrapene_carolina/"
+  }
+ ]
+}

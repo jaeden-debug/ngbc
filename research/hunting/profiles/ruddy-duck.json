@@ -1,0 +1,34 @@
+{
+ "slug": "ruddy-duck",
+ "scientificName": "Oxyura jamaicensis",
+ "fieldMarks": [
+  "Stiff spiky tail often cocked upward",
+  "Male: dark cap and white cheeks; ruddy body and bright blue bill in breeding season",
+  "Female: pale cheeks crossed by a smeary dark line",
+  "Wings solid dark in flight"
+ ],
+ "behavior": [
+  "Patters across the water to take off and seems reluctant to fly; almost helpless on land",
+  "Dives and strains food from bottom mud; insects and larvae are main summer foods",
+  "Usually silent; courting males make ticking and clapping sounds",
+  "Migrates mostly at night in small flocks"
+ ],
+ "habitat": [
+  "Breeds on fresh or alkaline lakes and ponds with marshy borders and open water; winters on sheltered shallow coastal bays and ice-free inland lakes."
+ ],
+ "range": "Breeds mainly on the northern prairies, from central British Columbia, southwestern Mackenzie and the Prairie Provinces east across southern Canada to Nova Scotia and south to California, Arizona, New Mexico and Texas; northern breeders winter south to Central America.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Ruddy Duck | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/ruddy-duck"
+  },
+  {
+   "title": "Oxyura jamaicensis (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.1215229/Oxyura_jamaicensis"
+  }
+ ]
+}

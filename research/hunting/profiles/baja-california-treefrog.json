@@ -1,0 +1,45 @@
+{
+ "slug": "baja-california-treefrog",
+ "scientificName": "Pseudacris hypochondriaca",
+ "commonNameFr": null,
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe: Recuero et al. (2006) split P. regilla into P. regilla, P. sierra and P. hypochondriaca, but nuclear DNA data (Barrow et al. 2014) did not support it and Holycross (2022) awaits further analysis, whereas Jadin et al. (2021) supported the three species (as Hyliola); the genus Hyliola is also disputed.",
+ "fieldMarks": [
+  "Small treefrog, 19-50 mm snout-vent length, with small toe pads.",
+  "Dorsal colour varies (green, reddish, tan, gray, brown or black) but typically green or brown; usually a dark eye stripe that rarely extends beyond the shoulder.",
+  "Versus the California treefrog: dark eye stripe more often present, green more common, toe pads smaller and less conspicuous.",
+  "Call is a loud two-part 'kreck-ek'; shorter, lower and less musical than the California treefrog's call.",
+  "No distinct morphological criteria separate it from the Pacific treefrog."
+ ],
+ "behavior": [],
+ "habitat": [],
+ "range": "Under the Recuero et al. (2006) arrangement, from southern California, southern Nevada, southwestern Utah (possibly extirpated) and western Arizona south to southern Baja California; Recuero et al. did not give distributional details.",
+ "lookalikes": [
+  {
+   "slug": "california-treefrog",
+   "name": "California treefrog",
+   "howToTell": "Larger toe pads and usually no dark eye stripe."
+  },
+  {
+   "slug": "pacific-treefrog",
+   "name": "Pacific treefrog",
+   "howToTell": "Not separable by morphology; range and genetics are used."
+  }
+ ],
+ "aliases": [
+  "San Lucan chorus frog"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Pseudacris hypochondriaca",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.857735"
+  },
+  {
+   "title": "Baja California Treefrog (Pseudacris hypochondriaca) species profile",
+   "publisher": "USGS Nonindigenous Aquatic Species database",
+   "url": "https://nas.er.usgs.gov/queries/FactSheet.aspx?speciesID=2781"
+  }
+ ]
+}

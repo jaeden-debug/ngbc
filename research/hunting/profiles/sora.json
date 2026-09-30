@@ -1,0 +1,38 @@
+{
+ "slug": "sora",
+ "scientificName": "Porzana carolina",
+ "fieldMarks": [
+  "Chunky, short-billed rail, 20-25 cm.",
+  "Adult: black face contrasting with a rich brown back, grey chest and a yellow bill.",
+  "Juvenile: lacks the black face and is buffier below; sometimes mistaken for the rare yellow rail."
+ ],
+ "behavior": [
+  "Heard far more than seen: a musical series of piping notes rapidly descending the scale, and a rising 'ker-wee'.",
+  "Large numbers may gather in marshes in late summer and early fall to fatten before migrating; migrates mostly at night, many to South America.",
+  "Picks food from the surface; eats many seeds of marsh plants (heavily on wild rice in late summer and fall), plus insects and snails."
+ ],
+ "habitat": [
+  "Freshwater marshes with large stands of cattails, wet meadows and grassy pond edges; also salt marshes, especially in winter."
+ ],
+ "range": "Breeds across much of Canada and the northern and western United States and winters in the southern United States and south to South America; recorded in every region from Alaska and the North to Florida.",
+ "lookalikes": [
+  {
+   "slug": "virginia-rail",
+   "name": "Virginia rail",
+   "howToTell": "The Virginia rail has a long bill and rusty-cinnamon underparts; the sora is short-billed with a yellow bill and black face."
+  },
+  {
+   "slug": "yellow-rail",
+   "name": "Yellow rail",
+   "howToTell": "A juvenile sora lacks the black face and can suggest a yellow rail; check carefully."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Sora — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/sora"
+  }
+ ]
+}

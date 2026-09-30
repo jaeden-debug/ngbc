@@ -1,0 +1,50 @@
+{
+ "slug": "mimic-glass-lizard",
+ "scientificName": "Ophisaurus mimicus",
+ "commonNameFr": null,
+ "family": "Anguidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Legless with movable eyelids, external ear openings, a lateral fold and a tail up to three-quarters of total length; 38-66 cm.",
+  "Dark middorsal stripe (sometimes faint) bordered by tan and another dark stripe; 3-4 narrow dark stripes above the lateral fold continuing onto the tail.",
+  "Below the lateral fold, marking is reduced to freckles, spots or dashes; 95 or fewer scales along the lateral fold.",
+  "Smallest of the four Florida glass lizards; lateral striping poorly developed in juveniles."
+ ],
+ "behavior": [
+  "Surface records run 27 March to 16 November, peaking April-June; less active in winter, possibly underground.",
+  "Eats crickets and other insects.",
+  "Forages actively by day in open habitat and shelters under boards and debris; tail breaks off when seized."
+ ],
+ "habitat": [
+  "Longleaf (occasionally slash) pine uplands with grassy groundcover, especially mesic to wet flatwoods; occasionally hillside seepage bogs, dome swamp edges and wet prairies next to pine uplands."
+ ],
+ "range": "Coastal Plain of the southeastern United States, including Florida, coastal South Carolina and coastal and southern Georgia; rare and poorly documented. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "legless-snakes",
+   "name": "Snakes (legless look-alikes)",
+   "howToTell": "Snakes have wide belly scales, fixed eye coverings, no ear openings, short tails and more flexible bodies."
+  },
+  {
+   "slug": "slender-glass-lizard",
+   "name": "Slender glass lizard",
+   "howToTell": "Mimic has a low lateral-fold scale count (95 or fewer); the species are separated by colour pattern and scalation."
+  }
+ ],
+ "aliases": [
+  "Mimic glass lizard"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Ophisaurus mimicus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105336"
+  },
+  {
+   "title": "Mimic Glass Lizard (Ophisaurus mimicus)",
+   "publisher": "Savannah River Ecology Laboratory, University of Georgia",
+   "url": "https://srelherp.uga.edu/lizards/mimic-glass-lizard/"
+  }
+ ]
+}

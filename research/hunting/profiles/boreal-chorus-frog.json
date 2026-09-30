@@ -1,0 +1,45 @@
+{
+ "slug": "boreal-chorus-frog",
+ "scientificName": "Pseudacris maculata",
+ "commonNameFr": "Rainette faux-grillon boréale",
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": "Montana Field Guide notes it is treated by some as the subspecies Pseudacris triseriata maculata of the Western Chorus Frog; NatureServe treats it as a full species.",
+ "fieldMarks": [
+  "Small: maximum snout-vent length about 37 mm; a dark stripe or mask runs from the snout through the eye to the groin.",
+  "Back is cream, gray, brown, reddish or green, typically with three green, brown or gray stripes or rows of spots down the back and one row on each side.",
+  "Toes have minute disks and little webbing; belly cream, possibly with a few small black spots.",
+  "Call is a stuttering 'preeep' rising in pitch, likened to running a finger over the teeth of a comb; audible up to about 400 m."
+ ],
+ "behavior": [
+  "Males begin calling late March or April in lowlands (typically when air temperature is above 10 C) and chorus through spring and early summer; calling may resume after heavy rain.",
+  "Emerges from winter sites typically in March in lowlands (later in mountains); freeze-tolerant and overwinters under vegetation, in rodent burrows or rock and log crevices.",
+  "Adults are in water mainly during breeding; otherwise found in damp grassy or marshy areas, usually within 100 m (up to about 500 m) of water; seasonal movements around 250 m.",
+  "Eggs are laid in loose clusters of 7-190 attached to submerged vegetation."
+ ],
+ "habitat": [
+  "Near quiet, permanent or temporary water: marshes, rain pools, snowmelt pools, bog and beaver ponds, marshy lake edges, in grassland, shrubland and forest parkland.",
+  "Occurs from lowlands to alpine."
+ ],
+ "range": "Large parts of Canada and the western and north-central US, from Great Bear Lake (Northwest Territories) and northern Ontario south to Arizona, New Mexico, northern Oklahoma, Missouri, Arkansas and Illinois, with disjunct populations in southern Ontario, southern Quebec, northern New York and northwestern Vermont; to about 3,670 m.",
+ "lookalikes": [
+  {
+   "slug": "sierran-treefrog",
+   "name": "Sierran treefrog",
+   "howToTell": "Adults of other Montana frogs and toads are much larger with webbed hind feet; only the Sierran treefrog is similarly small, and its range does not overlap."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Pseudacris maculata",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.806592"
+  },
+  {
+   "title": "Boreal Chorus Frog - Montana Field Guide",
+   "publisher": "Montana Natural Heritage Program / Montana Fish, Wildlife & Parks",
+   "url": "https://fieldguide.mt.gov/speciesDetail.aspx?elcode=AAABC05130"
+  }
+ ]
+}

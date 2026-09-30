@@ -1,0 +1,30 @@
+{
+ "slug": "gulf-coast-toad",
+ "scientificName": "Incilius nebulifer",
+ "commonNameFr": null,
+ "family": "Bufonidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe notes I. nebulifer was formerly included in Bufo valliceps and separated from I. valliceps by mtDNA work (Mulcahy and Mendelson 2000); NatureServe uses Incilius rather than Bufo.",
+ "fieldMarks": [],
+ "behavior": [
+  "Migrates between breeding and nonbreeding habitats.",
+  "Lays eggs in spring or summer in pools, including roadside and irrigation ditches; in Texas, calling lasted 7-29 nights (mean 15.4) with choruses of 2-65 males.",
+  "Adults eat small terrestrial arthropods."
+ ],
+ "habitat": [
+  "Coastal prairies, barrier beaches, towns and a variety of other habitats; eggs and larvae develop in pools including roadside and irrigation ditches."
+ ],
+ "range": "Southern Arkansas, southern Mississippi, Louisiana and central Texas in the United States, south to Veracruz, Mexico.",
+ "lookalikes": [],
+ "aliases": [
+  "coastal plain toad"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105649"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

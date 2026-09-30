@@ -1,0 +1,34 @@
+{
+ "slug": "lesser-prairie-chicken",
+ "scientificName": "Tympanuchus pallidicinctus",
+ "fieldMarks": [
+  "15-20 in; grouse barred brown and buff, paler and slightly smaller than Greater Prairie-Chicken.",
+  "Displaying male shows purplish (not yellow) neck sacs.",
+  "Best told from Greater Prairie-Chicken by range, since they do not overlap."
+ ],
+ "behavior": [
+  "Males give a booming call on courtship display grounds; otherwise cackling and clucking notes.",
+  "May move several miles daily from roosts to feeding sites; no regular migration, though some shift between summer and winter ranges.",
+  "Eats seeds and leaves, oak leaves and acorns, waste grain in fall and winter, and many grasshoppers and beetles in summer."
+ ],
+ "habitat": [
+  "Sandy short-grass prairie with sand sage and bluestem, often near low shinnery (shin) oak stands.",
+  "Visits grain fields but disappears where too much native prairie is converted to farmland."
+ ],
+ "range": "Southern Great Plains of the United States (Plains, Southwest and Texas regions); now uncommon and found in a few local concentrations after serious decline.",
+ "lookalikes": [
+  {
+   "slug": "greater-prairie-chicken",
+   "name": "Greater prairie-chicken",
+   "howToTell": "Greater is larger and darker with yellow-orange neck sacs and does not share the Lesser's range."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Lesser Prairie-Chicken | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/lesser-prairie-chicken"
+  }
+ ]
+}

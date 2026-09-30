@@ -1,0 +1,47 @@
+{
+ "slug": "black-francolin",
+ "scientificName": "Francolinus francolinus",
+ "commonNameFr": null,
+ "family": "Phasianidae",
+ "order": "Galliformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Male: black head and chest with white face patch and belly spots, reddish collar, brown back",
+  "Female: mottled brown with a hint of reddish collar",
+  "33-36 cm, 380-650 g"
+ ],
+ "behavior": [
+  "Loud creaking call during breeding season",
+  "Scares easily and hides, preferring to run rather than flush (Hawaii)"
+ ],
+ "habitat": [
+  "Thick vegetation, brushy areas and tall grassland, generally near water; mosaic of forest and cultivated land, not interior forest."
+ ],
+ "range": "Native to India; introduced to Hawaii in 1959. NatureServe records it in Florida.",
+ "lookalikes": [],
+ "aliases": [
+  "black partridge"
+ ],
+ "sources": [
+  {
+   "title": "Black Francolin",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/black-francolin"
+  },
+  {
+   "title": "black francolin",
+   "publisher": "State of Hawaii, Hawaii Birding Trails",
+   "url": "https://hawaiibirdingtrails.hawaii.gov/bird/black-francolin/"
+  },
+  {
+   "title": "NatureServe Explorer: Francolinus francolinus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100724/Francolinus_francolinus"
+  },
+  {
+   "title": "Game Birds (introduction dates)",
+   "publisher": "Hawaii Department of Land and Natural Resources",
+   "url": "https://dlnr.hawaii.gov/recreation/hunting/game-birds/"
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "slug": "wood-frog",
+ "scientificName": "Lithobates sylvaticus",
+ "commonNameFr": "Grenouille des bois",
+ "family": "Ranidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe notes Dubois et al. (2021) place it in its own genus Boreorana; NatureServe keeps Lithobates sylvaticus.",
+ "fieldMarks": [
+  "Dark mask running from each eye over the tympanum to the forelimb, with a white line along the upper lip.",
+  "Dorsolateral folds; webbed hind toes; smooth skin; a light mid-dorsal stripe may or may not be present; up to about 83 mm.",
+  "Colour ranges brown, tan, rust to green or grey; females larger; males have swollen thumb bases.",
+  "Call: rapid series of 1-8 (usually 3-5) rough clacking notes, like softly quacking ducks."
+ ],
+ "behavior": [
+  "Winters on land and can freeze and thaw without harm.",
+  "Migrates to fish-free breeding pools in late winter or early spring and shows strong pond fidelity; mostly solitary otherwise.",
+  "Mostly diurnal, though breeding can occur at night; most active in summer in damp conditions.",
+  "Eats terrestrial invertebrates such as spiders, beetles, moth larvae, slugs and snails."
+ ],
+ "habitat": [
+  "Wooded habitats including pond and stream edges, willow thickets and bogs; shelters in logs, humus and leaf litter; breeds in vernal pools and other fish-free ponds."
+ ],
+ "range": "Northern Alaska across boreal Canada to Labrador and south to New Jersey, northern Georgia and northern Idaho, with spotty distribution south to northern Colorado and disjunct populations in Arkansas-Missouri; extends farther north than any other North American amphibian.",
+ "lookalikes": [],
+ "aliases": [
+  "Grenouille des bois"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100332"
+  },
+  {
+   "title": "Animal Diversity Web species account",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Rana_sylvatica/"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

@@ -1,0 +1,49 @@
+{
+ "slug": "great-basin-spadefoot",
+ "scientificName": "Spea intermontana",
+ "commonNameFr": {
+  "name": "Crapaud du Grand Bassin",
+  "source": "NatureServe Explorer (French common names listed: 'Crapaud du Grand Bassin', 'Crapaud pied-bêche du Grand Bassin', 'Pied-bêche du Grand Bassin')"
+ },
+ "family": "Scaphiopodidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe notes inconsistency in older literature among S. hammondii, S. intermontana and S. multiplicata (hammondii and multiplicata were once treated as conspecific).",
+ "fieldMarks": [
+  "Gray, olive or brown back mottled with darker spots that have light centres, with gray streaks outlining an hourglass-shaped mark; underside light gray to cream and unmarked.",
+  "Large, catlike golden-yellow eyes with vertical pupils; a dark brown or orange spot on each upper eyelid; nose slightly upturned with a raised callus between the eyes.",
+  "Black keratinized spade on the underside of each hind foot; body short and fat with stubby limbs, 32-67 mm long.",
+  "Skin is relatively smooth with small bumps and no parotoid glands, unlike true toads (Bufo).",
+  "Male call: monotonous duck-like snoring of 1-3 notes, carrying over long distances."
+ ],
+ "behavior": [
+  "Mostly nocturnal but also active early morning and late afternoon; more active after rain and in humid periods.",
+  "Survives dry country by burrowing with its hind-foot spades or using rodent burrows; daytime burrows are shallow, typically 35-45 cm deep, deeper when drier.",
+  "Explosive breeder, May-August, at still or slow water; adults migrate 1-5 km at night; pools must hold water about 40 days for tadpoles to transform.",
+  "Generalist insectivore; ants and darkling beetles are the commonest prey."
+ ],
+ "habitat": [
+  "Arid regions: sagebrush flats, semi-desert shrubland, alkali flats and pinyon-juniper, up to ponderosa pine and spruce-fir near 2,800 m, wherever soils are loose enough to burrow.",
+  "Breeds in temporary or permanent still water such as seasonal pools, springs, irrigation ditches and ponds."
+ ],
+ "range": "Southern British Columbia south through central and eastern Washington and Oregon, southern Idaho, eastern California, Nevada, Utah, Wyoming and northwestern Colorado to northwestern Arizona, from the Cascade-Sierra axis east to the Rockies.",
+ "lookalikes": [
+  {
+   "slug": "plains-spadefoot",
+   "name": "Plains spadefoot (Spea bombifrons)",
+   "howToTell": "Separated mainly by range; plains spadefoot has a hard boss between the eyes, a four-line hourglass marking and a brief snore call."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Spea intermontana (Great Basin Spadefoot)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104930/Spea_intermontana"
+  },
+  {
+   "title": "Animal Diversity Web: Great Basin Spadefoot",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Spea_intermontana/"
+  }
+ ]
+}

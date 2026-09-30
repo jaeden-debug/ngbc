@@ -1,0 +1,45 @@
+{
+ "slug": "mule-deer",
+ "scientificName": "Odocoileus hemionus",
+ "fieldMarks": [
+  "Very large, mule-like ears about three-quarters the length of the head.",
+  "Narrow white tail with a black tip, and a white rump patch.",
+  "Bucks' antlers fork (bifurcate) and re-fork rather than growing points off one main beam.",
+  "Reddish-brown summer coat, brownish-gray in winter; a dark V mark on the forehead, most visible on bucks."
+ ],
+ "behavior": [
+  "Escapes with a bounding gait; releases metatarsal scent that alerts other deer.",
+  "Females live in clans; bucks form separate groups.",
+  "Selective browser of leaves and twigs of shrubs and trees, plus acorns, legume seeds and fruit.",
+  "Migrates from high summer range to lower winter range; rut peaks late November to mid-December."
+ ],
+ "habitat": [
+  "Deserts, grasslands, chaparral, forests and mountains of western North America."
+ ],
+ "range": "Western North America west of about the 100th meridian (roughly 23°–60° N), from southwestern Saskatchewan through the Great Plains to western Texas, with isolated populations in Minnesota, Iowa and Missouri.",
+ "lookalikes": [
+  {
+   "slug": "white-tailed-deer",
+   "name": "White-tailed deer",
+   "howToTell": "White-tails have a broad tail raised as a white flag when alarmed, and antler points rising from one main beam."
+  },
+  {
+   "slug": "black-tailed-deer",
+   "name": "Black-tailed deer",
+   "howToTell": "Black-tailed deer have a completely black or dark brown tail and occur west of the Great Divide."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Odocoileus hemionus (mule deer)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Odocoileus_hemionus/"
+  },
+  {
+   "title": "Mule Deer Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=muledeer.main"
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "slug": "canada-lynx",
+ "scientificName": "Lynx canadensis",
+ "fieldMarks": [
+  "Very large, densely furred, snowshoe-like feet, at least twice the size of a bobcat's.",
+  "Long black ear tufts.",
+  "Short tail with a tip that is completely black all the way around.",
+  "Long hind legs give a stooped look with the hind end slightly raised.",
+  "Winter coat light grey and faintly spotted; summer coat shorter and reddish-brown."
+ ],
+ "behavior": [
+  "Solitary apart from breeding pairs and females with kittens, which sometimes hunt hares together in a line.",
+  "Hunts mainly at night, stalking or waiting in ambush.",
+  "Specialist predator of snowshoe hare, which can exceed 75% of the diet; lynx numbers cycle with hares roughly every 10 years.",
+  "Breeding season late February through March."
+ ],
+ "habitat": [
+  "Boreal forest with deep snow, especially young, dense spruce-fir that supports snowshoe hares; also mature forest with dense undergrowth, rocky areas and tundra."
+ ],
+ "range": "Common throughout the boreal forests of Alaska and Canada. In the contiguous United States, resident breeding populations are mainly in Maine, Minnesota, Montana and Washington, with a reintroduced population in Colorado and small numbers in northern New Hampshire and Vermont.",
+ "lookalikes": [
+  {
+   "slug": "bobcat",
+   "name": "Bobcat",
+   "howToTell": "The bobcat has short ear tufts, smaller feet, a flatter back, more distinct spots, and a tail tip black only on top with white underneath."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Canada lynx (Lynx canadensis)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lynx_canadensis/"
+  },
+  {
+   "title": "Canada Lynx",
+   "publisher": "Maine Department of Inland Fisheries and Wildlife",
+   "url": "https://www.maine.gov/ifw/fish-wildlife/wildlife/species-information/mammals/canada-lynx.html"
+  },
+  {
+   "title": "Canada Lynx or Bobcat? - Learn the Difference",
+   "publisher": "Vermont Fish & Wildlife Department",
+   "url": "https://www.vtfishandwildlife.com/canada-lynx-or-bobcat-learn-the-difference"
+  }
+ ]
+}

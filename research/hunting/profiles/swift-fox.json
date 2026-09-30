@@ -1,0 +1,44 @@
+{
+ "slug": "swift-fox",
+ "scientificName": "Vulpes velox",
+ "commonNameFr": "Renard véloce",
+ "family": "Canidae",
+ "order": "Carnivora",
+ "taxonomyNote": "Once treated as the same species as the kit fox; NatureServe treats V. macrotis as separate.",
+ "fieldMarks": [
+  "Small fox with a black-tipped tail and black patches on either side of the snout",
+  "Winter coat dark buffy gray above, orange-tan on sides, legs and underside of tail; summer coat shorter and more reddish",
+  "Throat, chest, belly and inside of ears creamy white",
+  "Head-body 38-53 cm, tail 23-35 cm, 1.8-3.0 kg",
+  "Differs from kit fox in smaller ears, broader snout and shorter tail"
+ ],
+ "behavior": [
+  "Primarily nocturnal; may rest in the sun outside the burrow by day",
+  "Dens in burrows it digs or takes over from other mammals",
+  "Opportunistic diet: jackrabbits, cottontails, ground squirrels, mice, birds, invertebrates, grasses, berries; caches food under snow in winter"
+ ],
+ "habitat": [
+  "Open prairie and arid plains, mainly shortgrass prairie; often digs dens in sandy soil, along fences or in plowed fields."
+ ],
+ "range": "Historically the central plains from southern Alberta and Saskatchewan to northern Texas, including southern Manitoba; present range is much restricted, nearly continuous from Wyoming south through eastern Colorado, western Kansas, the Oklahoma Panhandle and eastern New Mexico.",
+ "lookalikes": [
+  {
+   "slug": "kit-fox",
+   "name": "Kit fox",
+   "howToTell": "Larger ears, narrower snout, longer tail; more arid southwestern range."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Swift Fox (Vulpes velox)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104178/Vulpes_velox"
+  },
+  {
+   "title": "Animal Diversity Web: Vulpes velox (swift fox)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Vulpes_velox/"
+  }
+ ]
+}

@@ -1,0 +1,35 @@
+{
+ "slug": "gambels-quail",
+ "scientificName": "Callipepla gambelii",
+ "fieldMarks": [
+  "Curving teardrop topknot on the head.",
+  "White stripes on chestnut-red sides.",
+  "Male: reddish cap and a black patch in the centre of a yellowish belly.",
+  "Female: redder on the sides than a female California quail, with a less scaly belly pattern."
+ ],
+ "behavior": [
+  "Coveys walk to water in the morning and evening, giving clucking and crowing notes; call is a ringing 'puk-kwaw-cah'.",
+  "Forages in flocks from late summer to early spring, mostly on the ground but also in shrubs for berries, leaves and buds.",
+  "Coveys roost at night in bushes or low trees.",
+  "Mostly vegetarian: seeds, shoots, leaves, cactus fruit and berries such as mistletoe and hackberry."
+ ],
+ "habitat": [
+  "Brushy Sonoran desert and canyons with open ground, varied shrubs, cactus and mesquite thickets, concentrated near water. Avoids unbroken grassland without shrubs; can be common in open suburbs."
+ ],
+ "range": "Desert Southwest of the United States, centred on the Sonoran Desert. Not found in Canada.",
+ "lookalikes": [
+  {
+   "slug": "california-quail",
+   "name": "California quail",
+   "howToTell": "The female Gambel's quail is redder on the sides with a less scaly belly than the female California quail."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Gambel's Quail — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/gambels-quail"
+  }
+ ]
+}

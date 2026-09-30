@@ -131,7 +131,8 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-sharp-tailed-grouse"
+            "source:profile-sharp-tailed-grouse-1",
+            "source:profile-sharp-tailed-grouse-2"
           ]
         },
         {
@@ -171,7 +172,7 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-wild-turkey"
+            "source:profile-wild-turkey-1"
           ]
         }
       ],
@@ -266,17 +267,14 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:itis-wave-1-taxonomy"
+            "source:profile-american-black-bear-1"
           ]
         },
         {
           "value": "orignal",
           "locale": "fr-CA",
           "type": "common_name",
-          "verificationStatus": "verified",
-          "sourceIds": [
-            "source:itis-wave-1-taxonomy"
-          ]
+          "verificationStatus": "needs_review"
         }
       ],
       "createdAt": "2026-09-20T18:00:00Z",
@@ -309,7 +307,7 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:itis-wave-1-taxonomy"
+            "source:profile-american-black-bear-1"
           ]
         },
         {
@@ -392,7 +390,8 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-mallard"
+            "source:profile-mallard-1",
+            "source:profile-mallard-2"
           ]
         }
       ],
@@ -426,7 +425,8 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-canada-goose"
+            "source:profile-canada-goose-1",
+            "source:profile-canada-goose-2"
           ]
         },
         {
@@ -485,14 +485,14 @@
       "speciesIds": [
         "species:spruce-grouse"
       ],
-      "quickAnswer": "Spruce grouse (Canachites canadensis) are compact, year-round residents of northern conifer forests. Males are dark with white spotting and a red eyebrow comb; females are intricately mottled, and plumage varies by sex and regional form. Species identity does not establish hunting legality.",
+      "quickAnswer": "Spruce grouse (Canachites canadensis): Crow-sized grouse. Male: gray with a white-edged black throat and chest, red combs above the eyes and a black tail tipped rusty (except the Franklin's form). This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Canachites canadensis",
           "sourceIds": [
-            "source:cornell-spruce-grouse"
+            "source:profile-spruce-grouse-1"
           ]
         },
         {
@@ -500,7 +500,7 @@
           "label": "Family",
           "value": "Phasianidae",
           "sourceIds": [
-            "source:cornell-spruce-grouse"
+            "source:profile-spruce-grouse-1"
           ]
         },
         {
@@ -508,12 +508,12 @@
           "label": "Habitat",
           "value": "Dense younger spruce, fir and pine forest",
           "sourceIds": [
-            "source:cornell-spruce-grouse"
+            "source:profile-spruce-grouse-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-spruce-grouse"
+        "source:profile-spruce-grouse-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -523,7 +523,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T18:00:00Z",
       "updatedAt": "2026-09-20T18:00:00Z",
       "speciesProfile": {
@@ -546,7 +546,7 @@
           "family": "Phasianidae",
           "genus": "Canachites",
           "species": "canadensis",
-          "taxonomySourceId": "source:cornell-spruce-grouse"
+          "taxonomySourceId": "source:profile-spruce-grouse-1"
         },
         "speciesGroupIds": [
           "species_group:grouse",
@@ -555,14 +555,32 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Northern and western North American conifer forests."
+            "value": "Across Alaska and the boreal forest of Canada, south into the Rockies, Great Lakes states and northern New England."
           }
         ],
         "identification": [
           {
-            "text": "Males have a slate-gray head and neck, red eyebrow comb, black chest and white spotting below. Females occur in gray and chestnut morphs with strong barring; regional forms differ, so one photograph cannot represent every bird.",
+            "text": "Crow-sized grouse.",
             "sourceIds": [
-              "source:cornell-spruce-grouse"
+              "source:profile-spruce-grouse-1"
+            ]
+          },
+          {
+            "text": "Male: gray with a white-edged black throat and chest, red combs above the eyes and a black tail tipped rusty (except the Franklin's form).",
+            "sourceIds": [
+              "source:profile-spruce-grouse-1"
+            ]
+          },
+          {
+            "text": "Female: reddish or grayish with a shorter, darker tail than the ruffed grouse and black-and-white barring on the belly.",
+            "sourceIds": [
+              "source:profile-spruce-grouse-1"
+            ]
+          },
+          {
+            "text": "Compared with the ruffed grouse: Ruffed grouse have a longer tail, longer broader side bars and lack belly barring.",
+            "sourceIds": [
+              "source:profile-spruce-grouse-1"
             ]
           }
         ],
@@ -571,9 +589,9 @@
         ],
         "habitat": [
           {
-            "text": "Look in relatively dense, younger conifer forest dominated by spruce, fir or pine, often near bog edges or regenerating tracts.",
+            "text": "Dense conifer forest of spruce, pine, fir or hemlock with undergrowth; also regenerating jack pine burns.",
             "sourceIds": [
-              "source:cornell-spruce-grouse"
+              "source:profile-spruce-grouse-1"
             ]
           }
         ],
@@ -581,7 +599,7 @@
           {
             "text": "Conifer needles supply most of the diet for much of the year; birds also forage on the ground for fresh growth, berries and insects.",
             "sourceIds": [
-              "source:cornell-spruce-grouse"
+              "source:profile-spruce-grouse-1"
             ]
           }
         ],
@@ -589,15 +607,41 @@
           {
             "text": "Use Hunt for current location- and date-specific rules. This biological profile does not establish an open season.",
             "sourceIds": [
-              "source:cornell-spruce-grouse"
+              "source:profile-spruce-grouse-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-spruce-grouse"
+          "source:profile-spruce-grouse-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Notoriously tame and easy to overlook.",
+            "sourceIds": [
+              "source:profile-spruce-grouse-1"
+            ]
+          },
+          {
+            "text": "Males give a very low krrrk and drum with the wings.",
+            "sourceIds": [
+              "source:profile-spruce-grouse-1"
+            ]
+          },
+          {
+            "text": "Feeds on the ground in summer and almost entirely in trees in winter, eating conifer needles.",
+            "sourceIds": [
+              "source:profile-spruce-grouse-1"
+            ]
+          },
+          {
+            "text": "Mostly permanent resident; some females walk short distances between seasonal territories.",
+            "sourceIds": [
+              "source:profile-spruce-grouse-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -618,14 +662,15 @@
       "speciesIds": [
         "species:sharp-tailed-grouse"
       ],
-      "quickAnswer": "Sharp-tailed grouse (Tympanuchus phasianellus) are mottled prairie and boreal-opening grouse with long, pointed central tail feathers and V-shaped marks on the belly. Northern populations can be darker than prairie birds. Range presence does not establish hunting legality.",
+      "quickAnswer": "Sharp-tailed grouse (Tympanuchus phasianellus): Underparts mostly spotted rather than barred. In flight shows a longer tail with white outer feathers. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Tympanuchus phasianellus",
           "sourceIds": [
-            "source:cornell-sharp-tailed-grouse"
+            "source:profile-sharp-tailed-grouse-1",
+            "source:profile-sharp-tailed-grouse-2"
           ]
         },
         {
@@ -633,7 +678,8 @@
           "label": "Family",
           "value": "Phasianidae",
           "sourceIds": [
-            "source:cornell-sharp-tailed-grouse"
+            "source:profile-sharp-tailed-grouse-1",
+            "source:profile-sharp-tailed-grouse-2"
           ]
         },
         {
@@ -641,19 +687,21 @@
           "label": "Key field mark",
           "value": "Pointed central tail feathers and V-shaped belly marks",
           "sourceIds": [
-            "source:cornell-sharp-tailed-grouse"
+            "source:profile-sharp-tailed-grouse-1",
+            "source:profile-sharp-tailed-grouse-2"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-sharp-tailed-grouse"
+        "source:profile-sharp-tailed-grouse-1",
+        "source:profile-sharp-tailed-grouse-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T18:00:00Z",
       "updatedAt": "2026-09-20T18:00:00Z",
       "speciesProfile": {
@@ -676,7 +724,7 @@
           "family": "Phasianidae",
           "genus": "Tympanuchus",
           "species": "phasianellus",
-          "taxonomySourceId": "source:cornell-sharp-tailed-grouse"
+          "taxonomySourceId": "source:profile-sharp-tailed-grouse-1"
         },
         "speciesGroupIds": [
           "species_group:grouse",
@@ -685,22 +733,45 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Prairies, parkland and shrubby openings extending into the boreal forest."
+            "value": "Resident locally from Alaska and Yukon east to western Quebec and south to eastern Washington, Idaho, Utah, Colorado, Nebraska, the Dakotas, Minnesota, Wisconsin and northern Michigan; it has disappeared from parts of its former southern range."
           }
         ],
         "identification": [
           {
-            "text": "The body is barred brown, black and buff; the central tail feathers form a pointed tail, and the belly carries V-shaped marks. Displaying males expose purple neck patches.",
+            "text": "Underparts mostly spotted rather than barred.",
             "sourceIds": [
-              "source:cornell-sharp-tailed-grouse"
+              "source:profile-sharp-tailed-grouse-1",
+              "source:profile-sharp-tailed-grouse-2"
+            ]
+          },
+          {
+            "text": "In flight shows a longer tail with white outer feathers.",
+            "sourceIds": [
+              "source:profile-sharp-tailed-grouse-1",
+              "source:profile-sharp-tailed-grouse-2"
+            ]
+          },
+          {
+            "text": "Sexes similar; male slightly larger (38–53 cm).",
+            "sourceIds": [
+              "source:profile-sharp-tailed-grouse-1",
+              "source:profile-sharp-tailed-grouse-2"
+            ]
+          },
+          {
+            "text": "Compared with the greater and lesser prairie-chickens: Prairie-chickens have barred underparts; the sharp-tail is spotted and has a longer, white-edged tail.",
+            "sourceIds": [
+              "source:profile-sharp-tailed-grouse-1",
+              "source:profile-sharp-tailed-grouse-2"
             ]
           }
         ],
         "habitat": [
           {
-            "text": "Southern birds use grassland and prairie mixed with dense shrubs; northern birds use bog edges and shrubby boreal openings. Winter cover includes cropland, taller shrubs and sheltered trees.",
+            "text": "Open prairie mixed with groves of aspen, birch, willow or shrubs, forest edges and open burns in coniferous forest; more open grassland in summer, groves in winter.",
             "sourceIds": [
-              "source:cornell-sharp-tailed-grouse"
+              "source:profile-sharp-tailed-grouse-1",
+              "source:profile-sharp-tailed-grouse-2"
             ]
           }
         ],
@@ -708,7 +779,8 @@
           {
             "text": "Males gather on traditional display grounds called leks in spring; outside display periods birds forage on the ground and in shrubs or trees.",
             "sourceIds": [
-              "source:cornell-sharp-tailed-grouse"
+              "source:profile-sharp-tailed-grouse-1",
+              "source:profile-sharp-tailed-grouse-2"
             ]
           }
         ],
@@ -716,15 +788,40 @@
           {
             "text": "Use Hunt for current rules. A species occurrence or profile is not a legal hunting determination.",
             "sourceIds": [
-              "source:cornell-sharp-tailed-grouse"
+              "source:profile-sharp-tailed-grouse-1",
+              "source:profile-sharp-tailed-grouse-2"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-sharp-tailed-grouse"
+          "source:profile-sharp-tailed-grouse-1",
+          "source:profile-sharp-tailed-grouse-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Displays on leks; seasonal home ranges are usually within about 2 km of the lek",
+            "sourceIds": [
+              "source:profile-sharp-tailed-grouse-1",
+              "source:profile-sharp-tailed-grouse-2"
+            ]
+          },
+          {
+            "text": "May roost at night by burrowing into snowdrifts",
+            "sourceIds": [
+              "source:profile-sharp-tailed-grouse-1",
+              "source:profile-sharp-tailed-grouse-2"
+            ]
+          },
+          {
+            "text": "Forages on the ground in summer and in trees and shrubs in winter, when it eats buds; takes grasshoppers and other insects in summer",
+            "sourceIds": [
+              "source:profile-sharp-tailed-grouse-1",
+              "source:profile-sharp-tailed-grouse-2"
+            ]
+          }
+        ]
       }
     },
     {
@@ -745,14 +842,14 @@
       "speciesIds": [
         "species:wild-turkey"
       ],
-      "quickAnswer": "Wild turkey (Meleagris gallopavo) is a very large, long-legged game bird of mature woods mixed with openings. Adult males can fan the tail and show bare head and neck skin; females and young look different, so identify the individual rather than relying on size alone.",
+      "quickAnswer": "Wild turkey (Meleagris gallopavo): Huge ground bird, 1.1-1.2 m long, with a naked head and a long, wide tail. Trimmer and stronger-looking than the domestic barnyard turkey. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Meleagris gallopavo",
           "sourceIds": [
-            "source:cornell-wild-turkey"
+            "source:profile-wild-turkey-1"
           ]
         },
         {
@@ -760,7 +857,7 @@
           "label": "Family",
           "value": "Phasianidae",
           "sourceIds": [
-            "source:cornell-wild-turkey"
+            "source:profile-wild-turkey-1"
           ]
         },
         {
@@ -768,19 +865,19 @@
           "label": "Habitat",
           "value": "Mature forest interspersed with fields, clearings and edges",
           "sourceIds": [
-            "source:cornell-wild-turkey"
+            "source:profile-wild-turkey-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-wild-turkey"
+        "source:profile-wild-turkey-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T18:00:00Z",
       "updatedAt": "2026-09-20T18:00:00Z",
       "speciesProfile": {
@@ -803,7 +900,7 @@
           "family": "Phasianidae",
           "genus": "Meleagris",
           "species": "gallopavo",
-          "taxonomySourceId": "source:cornell-wild-turkey"
+          "taxonomySourceId": "source:profile-wild-turkey-1"
         },
         "speciesGroupIds": [
           "species_group:turkey"
@@ -811,22 +908,34 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Much of the United States and parts of southern Canada, including introduced or restored populations."
+            "value": "Native to North America; depleted by 1900 but reintroduced to most of its former range and established in new areas, now found across the United States and in southern Western and Eastern Canada, and adapting to suburban edges in the East."
           }
         ],
         "identification": [
           {
-            "text": "A heavy, long-legged bird with a small bare head. Displaying males puff body feathers and fan the tail; regional populations differ in tail-tip colour, and females and juveniles are less ornate.",
+            "text": "Huge ground bird, 1.1-1.2 m long, with a naked head and a long, wide tail.",
             "sourceIds": [
-              "source:cornell-wild-turkey"
+              "source:profile-wild-turkey-1"
+            ]
+          },
+          {
+            "text": "Trimmer and stronger-looking than the domestic barnyard turkey.",
+            "sourceIds": [
+              "source:profile-wild-turkey-1"
+            ]
+          },
+          {
+            "text": "Females and young are smaller and duller than adult males.",
+            "sourceIds": [
+              "source:profile-wild-turkey-1"
             ]
           }
         ],
         "habitat": [
           {
-            "text": "Mature forest—often including mast-producing oak, hickory or beech—interspersed with openings, field edges and clearings supplies food, cover and roost trees.",
+            "text": "Varies across the continent: oak-hickory and pine-oak forests, cypress swamps, mesquite grassland, pinyon-juniper and chaparral, usually near oaks. Best habitat mixes woodland and open clearings.",
             "sourceIds": [
-              "source:cornell-wild-turkey"
+              "source:profile-wild-turkey-1"
             ]
           }
         ],
@@ -834,7 +943,7 @@
           {
             "text": "Turkeys scratch leaf litter while foraging, form flocks, and fly into trees to roost at night. Males perform strutting courtship displays in spring.",
             "sourceIds": [
-              "source:cornell-wild-turkey"
+              "source:profile-wild-turkey-1"
             ]
           }
         ],
@@ -842,15 +951,15 @@
           {
             "text": "Sex, age, licence, tag, method, place and date can all matter. Check Hunt and the responsible authority; this page does not establish legality.",
             "sourceIds": [
-              "source:cornell-wild-turkey"
+              "source:profile-wild-turkey-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-wild-turkey"
+          "source:profile-wild-turkey-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20",
+        "lastReviewed": "2026-09-30",
         "sexAgeInfo": {
           "terminology": [
             {
@@ -923,7 +1032,7 @@
                 "value": "BEARDED"
               },
               "sourceIds": [
-                "source:cornell-wild-turkey"
+                "source:profile-wild-turkey-1"
               ]
             },
             {
@@ -936,7 +1045,7 @@
                 "value": "BEARDED"
               },
               "sourceIds": [
-                "source:cornell-wild-turkey"
+                "source:profile-wild-turkey-1"
               ]
             }
           ],
@@ -944,7 +1053,7 @@
             {
               "text": "Adult males are generally larger and more iridescent, with more prominent head and neck ornamentation; beard presence alone must not be equated automatically with male sex.",
               "sourceIds": [
-                "source:cornell-wild-turkey"
+                "source:profile-wild-turkey-1"
               ]
             }
           ],
@@ -952,11 +1061,37 @@
             {
               "text": "Juvenile plumage and proportions differ from adults; jake is hunter terminology for a young male, not a separate species.",
               "sourceIds": [
-                "source:cornell-wild-turkey"
+                "source:profile-wild-turkey-1"
               ]
             }
           ]
-        }
+        },
+        "behavior": [
+          {
+            "text": "Males gobble in spring and strut with feathers puffed, tail fanned, wattles swollen and wings drooped; one male mates with several females.",
+            "sourceIds": [
+              "source:profile-wild-turkey-1"
+            ]
+          },
+          {
+            "text": "Usually walks or runs but flies strongly; roosts overnight in tall trees.",
+            "sourceIds": [
+              "source:profile-wild-turkey-1"
+            ]
+          },
+          {
+            "text": "Forages on the ground, scratching leaf litter, most actively in early morning and evening; acorns are a favourite food.",
+            "sourceIds": [
+              "source:profile-wild-turkey-1"
+            ]
+          },
+          {
+            "text": "Not migratory, but may wander, especially in fall.",
+            "sourceIds": [
+              "source:profile-wild-turkey-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1008,14 +1143,15 @@
         }
       ],
       "sourceIds": [
-        "source:ontario-white-tailed-deer"
+        "source:ontario-white-tailed-deer",
+        "source:profile-white-tailed-deer-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T18:00:00Z",
       "updatedAt": "2026-09-20T18:00:00Z",
       "speciesProfile": {
@@ -1094,10 +1230,11 @@
           }
         ],
         "sourceIds": [
-          "source:ontario-white-tailed-deer"
+          "source:ontario-white-tailed-deer",
+          "source:profile-white-tailed-deer-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20",
+        "lastReviewed": "2026-09-30",
         "sexAgeInfo": {
           "terminology": [
             {
@@ -1193,7 +1330,58 @@
               ]
             }
           ]
-        }
+        },
+        "behavior": [
+          {
+            "text": "Rut peaks in the last three weeks of November in Canada; bucks' necks swell and they travel almost constantly.",
+            "sourceIds": [
+              "source:profile-white-tailed-deer-1"
+            ]
+          },
+          {
+            "text": "Gathers in winter 'deer yards' for food and shelter from deep snow.",
+            "sourceIds": [
+              "source:profile-white-tailed-deer-1"
+            ]
+          },
+          {
+            "text": "Eats leafy plants, grasses, mushrooms and berries in summer; twigs, buds, acorns and waste grain in fall and winter.",
+            "sourceIds": [
+              "source:profile-white-tailed-deer-1"
+            ]
+          },
+          {
+            "text": "Does leave nearly scentless spotted fawns hidden for hours.",
+            "sourceIds": [
+              "source:profile-white-tailed-deer-1"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:mule-deer"
+        ],
+        "conservationStatus": [
+          {
+            "status": "THREATENED",
+            "jurisdictionIds": [
+              "jurisdiction:us-federal"
+            ],
+            "text": "Columbian white-tailed deer (Odocoileus virginianus leucurus), Columbia River (Clark, Cowliz, Pacific, Skamania, and Wahkiakum Counties, WA., and Clatsop, Columbia, and Multnomah Counties, OR.): listed as threatened under the Endangered Species Act since 1967-03-11.",
+            "sourceIds": [
+              "source:conservation-white-tailed-deer-1"
+            ]
+          },
+          {
+            "status": "ENDANGERED",
+            "jurisdictionIds": [
+              "jurisdiction:us-federal"
+            ],
+            "text": "Key deer (Odocoileus virginianus clavium): listed as endangered under the Endangered Species Act since 1967-03-11.",
+            "sourceIds": [
+              "source:conservation-white-tailed-deer-2"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1214,14 +1402,14 @@
       "speciesIds": [
         "species:moose"
       ],
-      "quickAnswer": "Moose (Alces alces) are the largest members of the deer family, with long legs, a heavy muzzle and a shoulder hump; adult bulls may carry broad antlers. Cows, calves and antlerless bulls require careful distinction, and identification never replaces current tag and season rules.",
+      "quickAnswer": "Moose (Alces alces): Largest deer; up to almost 1.8 m at the shoulder, with a humped shoulder and low rump. Long mournful arched nose with a flexible upper lip; most have a fur-covered 'bell' hanging from the throat. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Alces alces",
           "sourceIds": [
-            "source:itis-wave-1-taxonomy"
+            "source:profile-american-black-bear-1"
           ]
         },
         {
@@ -1229,7 +1417,7 @@
           "label": "Family",
           "value": "Cervidae",
           "sourceIds": [
-            "source:itis-wave-1-taxonomy"
+            "source:profile-american-black-bear-1"
           ]
         },
         {
@@ -1242,15 +1430,18 @@
         }
       ],
       "sourceIds": [
-        "source:itis-wave-1-taxonomy",
-        "source:ontario-moose-habitat"
+        "source:profile-american-black-bear-1",
+        "source:ontario-moose-habitat",
+        "source:profile-moose-1",
+        "source:profile-moose-2",
+        "source:profile-moose-3"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T18:00:00Z",
       "updatedAt": "2026-09-20T18:00:00Z",
       "speciesProfile": {
@@ -1273,7 +1464,7 @@
           "family": "Cervidae",
           "genus": "Alces",
           "species": "alces",
-          "taxonomySourceId": "source:itis-wave-1-taxonomy"
+          "taxonomySourceId": "source:profile-american-black-bear-1"
         },
         "speciesGroupIds": [
           "species_group:big-game"
@@ -1281,22 +1472,58 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Boreal and northern North America, with local distribution governed by habitat and climate."
+            "value": "Across the northern forests of North America from Alaska and Canada south into the Rocky Mountains and the northern United States; introduced to Newfoundland and Colorado."
           }
         ],
         "identification": [
           {
-            "text": "Long legs, a heavy overhanging muzzle, large ears and a high shoulder distinguish moose from other cervids. Antlers identify an adult bull only when present; they are not a permanent field mark.",
+            "text": "Largest deer; up to almost 1.8 m at the shoulder, with a humped shoulder and low rump.",
             "sourceIds": [
-              "source:itis-wave-1-taxonomy"
+              "source:profile-moose-1",
+              "source:profile-moose-2",
+              "source:profile-moose-3"
+            ]
+          },
+          {
+            "text": "Long mournful arched nose with a flexible upper lip; most have a fur-covered 'bell' hanging from the throat.",
+            "sourceIds": [
+              "source:profile-moose-1",
+              "source:profile-moose-2",
+              "source:profile-moose-3"
+            ]
+          },
+          {
+            "text": "Dark brown to nearly black, reddish or grayish brown with pale gray or white leg 'stockings'.",
+            "sourceIds": [
+              "source:profile-moose-1",
+              "source:profile-moose-2",
+              "source:profile-moose-3"
+            ]
+          },
+          {
+            "text": "Only bulls carry antlers: broad palms fringed with spikes, grown each summer.",
+            "sourceIds": [
+              "source:profile-moose-1",
+              "source:profile-moose-2",
+              "source:profile-moose-3"
+            ]
+          },
+          {
+            "text": "Newborn calves are red-brown.",
+            "sourceIds": [
+              "source:profile-moose-1",
+              "source:profile-moose-2",
+              "source:profile-moose-3"
             ]
           }
         ],
         "habitat": [
           {
-            "text": "Moose need young forest and shrubs for browse together with mature cover for shelter. Aquatic feeding areas, mineral licks and calving sites are important localized features.",
+            "text": "A mosaic of second-growth forest, openings, swamps, lakes and wetlands; needs water for summer foraging and hardwood-conifer forest for winter cover; recent burns with dense willow, aspen and birch are prime.",
             "sourceIds": [
-              "source:ontario-moose-habitat"
+              "source:profile-moose-1",
+              "source:profile-moose-2",
+              "source:profile-moose-3"
             ]
           }
         ],
@@ -1317,11 +1544,14 @@
           }
         ],
         "sourceIds": [
-          "source:itis-wave-1-taxonomy",
-          "source:ontario-moose-habitat"
+          "source:profile-american-black-bear-1",
+          "source:ontario-moose-habitat",
+          "source:profile-moose-1",
+          "source:profile-moose-2",
+          "source:profile-moose-3"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20",
+        "lastReviewed": "2026-09-30",
         "sexAgeInfo": {
           "terminology": [
             {
@@ -1389,7 +1619,7 @@
             {
               "text": "Adult bulls may carry broad antlers; cows do not, but a bull can be antlerless after shedding.",
               "sourceIds": [
-                "source:itis-wave-1-taxonomy"
+                "source:profile-american-black-bear-1"
               ]
             }
           ],
@@ -1401,7 +1631,41 @@
               ]
             }
           ]
-        }
+        },
+        "behavior": [
+          {
+            "text": "Rut in late September–early October; cows bawl nasally and bulls answer with a coughing bellow",
+            "sourceIds": [
+              "source:profile-moose-1",
+              "source:profile-moose-2",
+              "source:profile-moose-3"
+            ]
+          },
+          {
+            "text": "Browses willow, birch and aspen twigs in fall and winter, sometimes leaving a browse line 1.8–2.4 m high; feeds on aquatic plants in summer",
+            "sourceIds": [
+              "source:profile-moose-1",
+              "source:profile-moose-2",
+              "source:profile-moose-3"
+            ]
+          },
+          {
+            "text": "Makes seasonal movements of a few to about 100 km between calving, rutting and wintering areas",
+            "sourceIds": [
+              "source:profile-moose-1",
+              "source:profile-moose-2",
+              "source:profile-moose-3"
+            ]
+          },
+          {
+            "text": "Cools off in water in summer and may dive for bottom plants",
+            "sourceIds": [
+              "source:profile-moose-1",
+              "source:profile-moose-2",
+              "source:profile-moose-3"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1425,14 +1689,14 @@
       "speciesIds": [
         "species:american-black-bear"
       ],
-      "quickAnswer": "American black bears (Ursus americanus) are forest-adapted bears whose coat can be black, cinnamon or brown. Colour alone is not enough for identification. Confirm body profile, ears, face and local lookalikes, and treat every encounter as a wildlife-safety situation before considering hunting context.",
+      "quickAnswer": "American black bear (Ursus americanus): Usually black, especially in eastern North America; western animals are often brown, cinnamon or blonde, and some coastal British Columbia and Alaska bears are creamy white or bluish-grey. Pale muzzle contrasting with darker fur; sometimes a white chest spot. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Ursus americanus",
           "sourceIds": [
-            "source:itis-wave-1-taxonomy"
+            "source:profile-american-black-bear-1"
           ]
         },
         {
@@ -1440,7 +1704,7 @@
           "label": "Family",
           "value": "Ursidae",
           "sourceIds": [
-            "source:itis-wave-1-taxonomy"
+            "source:profile-american-black-bear-1"
           ]
         },
         {
@@ -1453,7 +1717,7 @@
         }
       ],
       "sourceIds": [
-        "source:itis-wave-1-taxonomy",
+        "source:profile-american-black-bear-1",
         "source:ontario-black-bear"
       ],
       "relatedResourceIds": [
@@ -1461,7 +1725,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T18:00:00Z",
       "updatedAt": "2026-09-20T18:00:00Z",
       "speciesProfile": {
@@ -1484,7 +1748,7 @@
           "family": "Ursidae",
           "genus": "Ursus",
           "species": "americanus",
-          "taxonomySourceId": "source:itis-wave-1-taxonomy"
+          "taxonomySourceId": "source:profile-american-black-bear-1"
         },
         "speciesGroupIds": [
           "species_group:big-game"
@@ -1492,22 +1756,46 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Forested regions across much of Canada and the United States; Ontario bears occur through most continuously forested parts of the province."
+            "value": "From northern Alaska east across virtually all of Canada to Labrador and Newfoundland, and south through much of the United States into central Mexico."
           }
         ],
         "identification": [
           {
-            "text": "Do not identify a black bear by coat colour alone: Ontario animals can be black, cinnamon or brown. Use the whole profile and authoritative regional comparison guidance where grizzly bears overlap.",
+            "text": "Usually black, especially in eastern North America; western animals are often brown, cinnamon or blonde, and some coastal British Columbia and Alaska bears are creamy white or bluish-grey.",
             "sourceIds": [
-              "source:ontario-black-bear"
+              "source:profile-american-black-bear-1"
+            ]
+          },
+          {
+            "text": "Pale muzzle contrasting with darker fur; sometimes a white chest spot.",
+            "sourceIds": [
+              "source:profile-american-black-bear-1"
+            ]
+          },
+          {
+            "text": "Compared with grizzly/brown bears: longer, less heavily furred ears, a smaller shoulder hump and a convex rather than concave (dished) facial profile.",
+            "sourceIds": [
+              "source:profile-american-black-bear-1"
+            ]
+          },
+          {
+            "text": "Males larger: males 47-409 kg, females 39-236 kg.",
+            "sourceIds": [
+              "source:profile-american-black-bear-1"
+            ]
+          },
+          {
+            "text": "Compared with the grizzly (brown) bear: The grizzly has a larger shoulder hump, shorter, furrier ears and a concave (dished) profile; colour alone is unreliable because black bears can be brown, cinnamon or blonde.",
+            "sourceIds": [
+              "source:profile-american-black-bear-1"
             ]
           }
         ],
         "habitat": [
           {
-            "text": "Forested areas provide seasonally changing foods, refuge and den sites. Habitat value depends on the diversity and timing of food, security cover and denning opportunities.",
+            "text": "Prime habitat is relatively inaccessible terrain with thick understorey and abundant fruit or nut crops: hardwood-conifer forest in the Northeast, oak-hickory and swampy lowlands in the Southeast, and chaparral and pinyon-juniper at 900-3,000 m in the Southwest.",
             "sourceIds": [
-              "source:ontario-black-bear"
+              "source:profile-american-black-bear-1"
             ]
           }
         ],
@@ -1528,11 +1816,37 @@
           }
         ],
         "sourceIds": [
-          "source:itis-wave-1-taxonomy",
+          "source:profile-american-black-bear-1",
           "source:ontario-black-bear"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Generally active at dawn and dusk; near human food it may become daytime-active (roadsides) or nocturnal (campgrounds).",
+            "sourceIds": [
+              "source:profile-american-black-bear-1"
+            ]
+          },
+          {
+            "text": "Mostly solitary except females with cubs, summer breeding pairs and gatherings at concentrated food sources.",
+            "sourceIds": [
+              "source:profile-american-black-bear-1"
+            ]
+          },
+          {
+            "text": "Diet is mostly plant: grasses and forbs in spring, soft fruit in summer, and hard and soft mast in fall; animal food is mainly colonial insects and carrion.",
+            "sourceIds": [
+              "source:profile-american-black-bear-1"
+            ]
+          },
+          {
+            "text": "Spends winter in dens; cubs are born in January-February while the female is dormant.",
+            "sourceIds": [
+              "source:profile-american-black-bear-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1581,14 +1895,16 @@
         }
       ],
       "sourceIds": [
-        "source:parks-canada-snowshoe-hare"
+        "source:parks-canada-snowshoe-hare",
+        "source:profile-snowshoe-hare-1",
+        "source:profile-snowshoe-hare-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T18:00:00Z",
       "updatedAt": "2026-09-20T18:00:00Z",
       "speciesProfile": {
@@ -1664,13 +1980,45 @@
         ],
         "sourceIds": [
           "source:parks-canada-snowshoe-hare",
-          "source:canada-snowshoe-hare-monograph"
+          "source:canada-snowshoe-hare-monograph",
+          "source:profile-snowshoe-hare-1",
+          "source:profile-snowshoe-hare-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20",
+        "lastReviewed": "2026-09-30",
         "similarSpeciesIds": [
           "species:eastern-cottontail",
           "species:arctic-hare"
+        ],
+        "behavior": [
+          {
+            "text": "Most active from sundown to dawn and active all winter; rests by day in sheltered 'forms' under bushes, stumps or logs.",
+            "sourceIds": [
+              "source:profile-snowshoe-hare-1",
+              "source:profile-snowshoe-hare-2"
+            ]
+          },
+          {
+            "text": "Keeps a network of well-maintained runways that follow the same routes summer and winter and become conspicuous after snowfall.",
+            "sourceIds": [
+              "source:profile-snowshoe-hare-1",
+              "source:profile-snowshoe-hare-2"
+            ]
+          },
+          {
+            "text": "Eats herbaceous plants and shrub leaves in summer; twigs, buds and bark of conifers, aspen and willow in winter.",
+            "sourceIds": [
+              "source:profile-snowshoe-hare-1",
+              "source:profile-snowshoe-hare-2"
+            ]
+          },
+          {
+            "text": "Populations cycle between high abundance and scarcity; generally silent but snorts, and clicks during breeding season.",
+            "sourceIds": [
+              "source:profile-snowshoe-hare-1",
+              "source:profile-snowshoe-hare-2"
+            ]
+          }
         ]
       },
       "relatedSpeciesIds": [
@@ -1696,14 +2044,15 @@
       "speciesIds": [
         "species:mallard"
       ],
-      "quickAnswer": "Mallards (Anas platyrhynchos) are large dabbling ducks. Breeding males have a green head and yellow bill; females and juveniles are mottled brown, while both sexes show a blue wing speculum bordered in white. Eclipse plumage and hybrids make one-field-mark identification unsafe.",
+      "quickAnswer": "Mallard (Anas platyrhynchos): Drake: glossy green head, yellow bill, white neck ring, chestnut breast, gray body and curled black tail feathers. Hen: mottled brown with an orange bill marked with black, and orange legs. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Anas platyrhynchos",
           "sourceIds": [
-            "source:cornell-mallard"
+            "source:profile-mallard-1",
+            "source:profile-mallard-2"
           ]
         },
         {
@@ -1711,7 +2060,8 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-mallard"
+            "source:profile-mallard-1",
+            "source:profile-mallard-2"
           ]
         },
         {
@@ -1719,19 +2069,21 @@
           "label": "Shared field mark",
           "value": "Blue speculum bordered by white bars",
           "sourceIds": [
-            "source:cornell-mallard"
+            "source:profile-mallard-1",
+            "source:profile-mallard-2"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-mallard"
+        "source:profile-mallard-1",
+        "source:profile-mallard-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T18:00:00Z",
       "updatedAt": "2026-09-20T18:00:00Z",
       "speciesProfile": {
@@ -1754,7 +2106,7 @@
           "family": "Anatidae",
           "genus": "Anas",
           "species": "platyrhynchos",
-          "taxonomySourceId": "source:cornell-mallard"
+          "taxonomySourceId": "source:profile-mallard-1"
         },
         "speciesGroupIds": [
           "species_group:ducks",
@@ -1764,14 +2116,50 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Widespread across North American natural and artificial wetlands; seasonal distribution changes with migration."
+            "value": "Across Alaska, Canada (most numerous in the Prairie Provinces, expanding eastward) and most of the US; winters in southern Ontario and British Columbia and farther south. Also native to Europe and Asia."
           }
         ],
         "identification": [
           {
-            "text": "Breeding males have an iridescent green head, yellow bill, white neck ring and brown breast. Females and juveniles are mottled brown; both sexes show a blue speculum bordered by white. Eclipse males become much browner.",
+            "text": "Drake: glossy green head, yellow bill, white neck ring, chestnut breast, gray body and curled black tail feathers.",
             "sourceIds": [
-              "source:cornell-mallard"
+              "source:profile-mallard-1",
+              "source:profile-mallard-2"
+            ]
+          },
+          {
+            "text": "Hen: mottled brown with an orange bill marked with black, and orange legs.",
+            "sourceIds": [
+              "source:profile-mallard-1",
+              "source:profile-mallard-2"
+            ]
+          },
+          {
+            "text": "Both sexes show a blue to purplish-blue speculum bordered in white.",
+            "sourceIds": [
+              "source:profile-mallard-1",
+              "source:profile-mallard-2"
+            ]
+          },
+          {
+            "text": "Compared with the american black duck: Black ducks are much darker with a gray head and a speculum lacking bold white borders.",
+            "sourceIds": [
+              "source:profile-mallard-1",
+              "source:profile-mallard-2"
+            ]
+          },
+          {
+            "text": "Compared with the mottled duck: Compare female mallards with mottled ducks in Florida and on the Gulf Coast.",
+            "sourceIds": [
+              "source:profile-mallard-1",
+              "source:profile-mallard-2"
+            ]
+          },
+          {
+            "text": "Compared with the mexican duck: Compare female mallards with Mexican ducks in the Southwest.",
+            "sourceIds": [
+              "source:profile-mallard-1",
+              "source:profile-mallard-2"
             ]
           }
         ],
@@ -1780,9 +2168,10 @@
         ],
         "habitat": [
           {
-            "text": "Mallards use lakes, ponds, marshes, rivers, coastal wetlands, ditches and urban water. They feed mainly by dabbling and tipping rather than diving.",
+            "text": "Marshes, prairie potholes and reed-ringed sloughs, ponds, rivers, lakes, bays, grain fields and city parks; prefers fresh water.",
             "sourceIds": [
-              "source:cornell-mallard"
+              "source:profile-mallard-1",
+              "source:profile-mallard-2"
             ]
           }
         ],
@@ -1790,7 +2179,8 @@
           {
             "text": "Males enter brown eclipse plumage after breeding and can resemble females. Mallards also hybridize with American black ducks, creating intermediate-looking birds.",
             "sourceIds": [
-              "source:cornell-mallard"
+              "source:profile-mallard-1",
+              "source:profile-mallard-2"
             ]
           }
         ],
@@ -1798,15 +2188,47 @@
           {
             "text": "Waterfowl identification can affect species-specific limits. Confirm identification before relying on Hunt regulations; this page does not establish an open season.",
             "sourceIds": [
-              "source:cornell-mallard"
+              "source:profile-mallard-1",
+              "source:profile-mallard-2"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-mallard"
+          "source:profile-mallard-1",
+          "source:profile-mallard-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Dabbles, up-ends with tail vertical, occasionally dives, and grazes on land.",
+            "sourceIds": [
+              "source:profile-mallard-1",
+              "source:profile-mallard-2"
+            ]
+          },
+          {
+            "text": "Eats mostly plant material (seeds, roots, pondweeds, acorns, grain) plus insects, crustaceans and mollusks.",
+            "sourceIds": [
+              "source:profile-mallard-1",
+              "source:profile-mallard-2"
+            ]
+          },
+          {
+            "text": "Hen gives the familiar loud quack; drake gives softer, reedy calls.",
+            "sourceIds": [
+              "source:profile-mallard-1",
+              "source:profile-mallard-2"
+            ]
+          },
+          {
+            "text": "Readily attracted by decoys; pairs form in fall and winter.",
+            "sourceIds": [
+              "source:profile-mallard-1",
+              "source:profile-mallard-2"
+            ]
+          }
+        ]
       },
       "relatedSpeciesIds": [
         "species:american-black-duck"
@@ -1833,14 +2255,15 @@
       "speciesIds": [
         "species:canada-goose"
       ],
-      "quickAnswer": "Canada geese (Branta canadensis) are large geese with a long black neck, black head and white cheek patch. Size varies greatly among populations, so the cheek patch alone does not safely separate them from cackling geese.",
+      "quickAnswer": "Canada goose (Branta canadensis): White chinstrap on a black head and neck. Large: 76 cm–1.2 m long, 2.9–8.9 kg. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Branta canadensis",
           "sourceIds": [
-            "source:cornell-canada-goose"
+            "source:profile-canada-goose-1",
+            "source:profile-canada-goose-2"
           ]
         },
         {
@@ -1848,7 +2271,8 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-canada-goose"
+            "source:profile-canada-goose-1",
+            "source:profile-canada-goose-2"
           ]
         },
         {
@@ -1856,12 +2280,14 @@
           "label": "Key field marks",
           "value": "Long black neck, white cheek patch and smoothly sloping bill-to-forehead profile",
           "sourceIds": [
-            "source:cornell-canada-goose"
+            "source:profile-canada-goose-1",
+            "source:profile-canada-goose-2"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-canada-goose"
+        "source:profile-canada-goose-1",
+        "source:profile-canada-goose-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1871,7 +2297,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T18:00:00Z",
       "updatedAt": "2026-09-20T18:00:00Z",
       "speciesProfile": {
@@ -1894,7 +2320,7 @@
           "family": "Anatidae",
           "genus": "Branta",
           "species": "canadensis",
-          "taxonomySourceId": "source:cornell-canada-goose"
+          "taxonomySourceId": "source:profile-canada-goose-1"
         },
         "speciesGroupIds": [
           "species_group:geese",
@@ -1904,14 +2330,43 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Widespread in North America near wetlands, fields, parks and other open feeding areas; migratory and resident populations differ."
+            "value": "Breeds from central and southeastern Alaska across northern Canada south to southwestern British Columbia and much of the northern and central United States; resident year-round in the central part of the range, with many populations in urban areas no longer migrating."
           }
         ],
         "identification": [
           {
-            "text": "Look for the long black neck, white cheek-and-chin patch, brown body and smooth bill-to-forehead slope. Body size and proportions matter because cackling goose shares the basic head pattern.",
+            "text": "White chinstrap on a black head and neck.",
             "sourceIds": [
-              "source:cornell-canada-goose"
+              "source:profile-canada-goose-1",
+              "source:profile-canada-goose-2"
+            ]
+          },
+          {
+            "text": "Large: 76 cm–1.2 m long, 2.9–8.9 kg.",
+            "sourceIds": [
+              "source:profile-canada-goose-1",
+              "source:profile-canada-goose-2"
+            ]
+          },
+          {
+            "text": "Populations vary greatly in size and body colour, from white-chested to very dark.",
+            "sourceIds": [
+              "source:profile-canada-goose-1",
+              "source:profile-canada-goose-2"
+            ]
+          },
+          {
+            "text": "Sexes alike; male slightly larger.",
+            "sourceIds": [
+              "source:profile-canada-goose-1",
+              "source:profile-canada-goose-2"
+            ]
+          },
+          {
+            "text": "Compared with the cackling goose: The smallest forms formerly included in this species are now treated as the separate Cackling Goose; compare size closely.",
+            "sourceIds": [
+              "source:profile-canada-goose-1",
+              "source:profile-canada-goose-2"
             ]
           }
         ],
@@ -1920,9 +2375,10 @@
         ],
         "habitat": [
           {
-            "text": "Canada geese use lakes, rivers, ponds, marshes, lawns and farm fields, feeding by grazing on land or dabbling in shallow water.",
+            "text": "Always nests near water: tundra, fresh and salt marshes, wooded lakes, and city park and suburban ponds; winters where fields for feeding are within commuting distance of water.",
             "sourceIds": [
-              "source:cornell-canada-goose"
+              "source:profile-canada-goose-1",
+              "source:profile-canada-goose-2"
             ]
           }
         ],
@@ -1930,7 +2386,8 @@
           {
             "text": "Pairs and flocks move between water and feeding areas; some populations migrate while others remain resident. Location and date affect which population is present.",
             "sourceIds": [
-              "source:cornell-canada-goose"
+              "source:profile-canada-goose-1",
+              "source:profile-canada-goose-2"
             ]
           }
         ],
@@ -1938,15 +2395,47 @@
           {
             "text": "Canada and cackling goose rules can be combined or species-specific by district. Confirm the bird before relying on regulations; this profile is not a legal determination.",
             "sourceIds": [
-              "source:cornell-canada-goose"
+              "source:profile-canada-goose-1",
+              "source:profile-canada-goose-2"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-canada-goose"
+          "source:profile-canada-goose-1",
+          "source:profile-canada-goose-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Flies in V-formation, northbound in spring and southbound in fall; family groups migrate together",
+            "sourceIds": [
+              "source:profile-canada-goose-1",
+              "source:profile-canada-goose-2"
+            ]
+          },
+          {
+            "text": "Grazes mostly while walking on land; also feeds in water by dipping or up-ending",
+            "sourceIds": [
+              "source:profile-canada-goose-1",
+              "source:profile-canada-goose-2"
+            ]
+          },
+          {
+            "text": "Many urban and refuge birds are now permanent residents",
+            "sourceIds": [
+              "source:profile-canada-goose-1",
+              "source:profile-canada-goose-2"
+            ]
+          },
+          {
+            "text": "Feeds in flocks at most seasons, often in open fields in winter",
+            "sourceIds": [
+              "source:profile-canada-goose-1",
+              "source:profile-canada-goose-2"
+            ]
+          }
+        ]
       }
     }
   ],
@@ -1970,7 +2459,7 @@
       },
       "priority": 90,
       "sourceIds": [
-        "source:cornell-spruce-grouse"
+        "source:profile-spruce-grouse-1"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -1995,7 +2484,7 @@
       },
       "priority": 70,
       "sourceIds": [
-        "source:cornell-spruce-grouse"
+        "source:profile-spruce-grouse-1"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -2020,7 +2509,8 @@
       },
       "priority": 90,
       "sourceIds": [
-        "source:cornell-sharp-tailed-grouse"
+        "source:profile-sharp-tailed-grouse-1",
+        "source:profile-sharp-tailed-grouse-2"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -2045,7 +2535,7 @@
       },
       "priority": 90,
       "sourceIds": [
-        "source:cornell-wild-turkey"
+        "source:profile-wild-turkey-1"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -2170,7 +2660,8 @@
       },
       "priority": 95,
       "sourceIds": [
-        "source:cornell-mallard"
+        "source:profile-mallard-1",
+        "source:profile-mallard-2"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -2195,7 +2686,8 @@
       },
       "priority": 95,
       "sourceIds": [
-        "source:cornell-canada-goose"
+        "source:profile-canada-goose-1",
+        "source:profile-canada-goose-2"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -2211,7 +2703,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-spruce-grouse"
+        "source:profile-spruce-grouse-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T18:00:00Z",
@@ -2225,7 +2717,8 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-sharp-tailed-grouse"
+        "source:profile-sharp-tailed-grouse-1",
+        "source:profile-sharp-tailed-grouse-2"
       ],
       "status": "active",
       "createdAt": "2026-09-20T18:00:00Z",
@@ -2239,7 +2732,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-wild-turkey"
+        "source:profile-wild-turkey-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T18:00:00Z",
@@ -2267,7 +2760,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:itis-wave-1-taxonomy"
+        "source:profile-american-black-bear-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T18:00:00Z",
@@ -2281,7 +2774,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:itis-wave-1-taxonomy"
+        "source:profile-american-black-bear-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T18:00:00Z",
@@ -2309,7 +2802,8 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-mallard"
+        "source:profile-mallard-1",
+        "source:profile-mallard-2"
       ],
       "status": "active",
       "createdAt": "2026-09-20T18:00:00Z",
@@ -2323,7 +2817,8 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-canada-goose"
+        "source:profile-canada-goose-1",
+        "source:profile-canada-goose-2"
       ],
       "status": "active",
       "createdAt": "2026-09-20T18:00:00Z",
@@ -2331,66 +2826,6 @@
     }
   ],
   "sources": [
-    {
-      "id": "source:itis-wave-1-taxonomy",
-      "authority": "Integrated Taxonomic Information System",
-      "title": "ITIS taxonomy records for North Ground Wave 1 mammals",
-      "url": "https://www.itis.gov/",
-      "publisher": "Integrated Taxonomic Information System",
-      "retrievedAt": "2026-09-20T18:00:00Z",
-      "type": "scientific",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "source:cornell-spruce-grouse",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Spruce Grouse identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Spruce_Grouse/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T18:00:00Z",
-      "type": "scientific",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "source:cornell-sharp-tailed-grouse",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Sharp-tailed Grouse identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Sharp-tailed_Grouse/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T18:00:00Z",
-      "type": "scientific",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "source:cornell-wild-turkey",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Wild Turkey identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Wild_Turkey/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T18:00:00Z",
-      "type": "scientific",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "source:cornell-mallard",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Mallard identification",
-      "url": "https://www.allaboutbirds.org/guide/Mallard/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T18:00:00Z",
-      "type": "scientific",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "source:cornell-canada-goose",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Canada Goose identification",
-      "url": "https://www.allaboutbirds.org/guide/Canada_Goose/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T18:00:00Z",
-      "type": "scientific",
-      "verificationStatus": "verified"
-    },
     {
       "id": "source:ontario-white-tailed-deer",
       "authority": "Ontario Ministry of Natural Resources",
@@ -2448,6 +2883,176 @@
       "publisher": "Government of Canada",
       "retrievedAt": "2026-09-20T18:00:00Z",
       "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-spruce-grouse-1",
+      "authority": "National Audubon Society",
+      "title": "Spruce Grouse — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/spruce-grouse",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-sharp-tailed-grouse-1",
+      "authority": "National Audubon Society",
+      "title": "Sharp-tailed Grouse | Audubon Field Guide",
+      "url": "https://www.audubon.org/field-guide/bird/sharp-tailed-grouse",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-sharp-tailed-grouse-2",
+      "authority": "NatureServe",
+      "title": "Tympanuchus phasianellus (NatureServe Explorer)",
+      "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104212/Tympanuchus_phasianellus",
+      "publisher": "NatureServe",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-wild-turkey-1",
+      "authority": "National Audubon Society",
+      "title": "Wild Turkey — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/wild-turkey",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-white-tailed-deer-1",
+      "authority": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+      "title": "White-tailed Deer — Hinterland Who's Who",
+      "url": "https://www.hww.ca/en/wildlife/mammals/white-tailed-deer.html",
+      "publisher": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-moose-1",
+      "authority": "Alaska Department of Fish and Game",
+      "title": "Moose Species Profile",
+      "url": "https://www.adfg.alaska.gov/index.cfm?adfg=moose.main",
+      "publisher": "Alaska Department of Fish and Game",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-moose-2",
+      "authority": "Hinterland Who's Who (Canadian Wildlife Service / Canadian Wildlife Federation)",
+      "title": "Moose - Hinterland Who's Who",
+      "url": "https://www.hww.ca/en/wildlife/mammals/moose.html",
+      "publisher": "Hinterland Who's Who (Canadian Wildlife Service / Canadian Wildlife Federation)",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-moose-3",
+      "authority": "NatureServe",
+      "title": "Alces alces (NatureServe Explorer)",
+      "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104982/Alces_alces",
+      "publisher": "NatureServe",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-american-black-bear-1",
+      "authority": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "title": "American black bear (Ursus americanus)",
+      "url": "https://animaldiversity.org/accounts/Ursus_americanus/",
+      "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-snowshoe-hare-1",
+      "authority": "Alaska Department of Fish and Game",
+      "title": "Snowshoe Hare Species Profile",
+      "url": "https://www.adfg.alaska.gov/index.cfm?adfg=snowshoehare.main",
+      "publisher": "Alaska Department of Fish and Game",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-snowshoe-hare-2",
+      "authority": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+      "title": "Snowshoe Hare - Hinterland Who's Who",
+      "url": "https://www.hww.ca/en/wildlife/mammals/snowshoe-hare.html",
+      "publisher": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-mallard-1",
+      "authority": "National Audubon Society",
+      "title": "Mallard — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/mallard",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-mallard-2",
+      "authority": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+      "title": "Mallard — Hinterland Who's Who",
+      "url": "https://www.hww.ca/en/wildlife/birds/mallard.html",
+      "publisher": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-canada-goose-1",
+      "authority": "National Audubon Society",
+      "title": "Canada Goose | Audubon Field Guide",
+      "url": "https://www.audubon.org/field-guide/bird/canada-goose",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-canada-goose-2",
+      "authority": "NatureServe",
+      "title": "Branta canadensis (NatureServe Explorer)",
+      "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.770965/Branta_canadensis",
+      "publisher": "NatureServe",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:conservation-white-tailed-deer-1",
+      "authority": "U.S. Fish and Wildlife Service",
+      "title": "ECOS species profile: Columbian white-tailed deer",
+      "url": "https://ecos.fws.gov/ecp/species/154",
+      "publisher": "U.S. Fish and Wildlife Service",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:conservation-white-tailed-deer-2",
+      "authority": "U.S. Fish and Wildlife Service",
+      "title": "ECOS species profile: Key deer",
+      "url": "https://ecos.fws.gov/ecp/species/6326",
+      "publisher": "U.S. Fish and Wildlife Service",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "official",
       "verificationStatus": "verified"
     }
   ],

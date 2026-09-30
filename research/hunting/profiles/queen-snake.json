@@ -1,0 +1,49 @@
+{
+ "slug": "queen-snake",
+ "scientificName": "Regina septemvittata",
+ "commonNameFr": "Couleuvre royale",
+ "commonNameFrSource": "NatureServe Explorer (other common names, FR)",
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes that one study nests Regina septemvittata within Nerodia and another relates it to Tropidoclonion; Crother (2017) retained Regina pending further study.",
+ "fieldMarks": [
+  "Slender semiaquatic snake, 34-92 cm; brownish or olive above with a yellow stripe along each side extending onto the lip scales.",
+  "Belly bright yellow with four brownish lengthwise stripes converging toward the tail.",
+  "Keeled scales (19 rows at midbody), round pupils, divided anal plate; no light stripe down the back, unlike garter snakes.",
+  "Young show dark horizontal bands on the back."
+ ],
+ "behavior": [
+  "Eats almost exclusively crayfish, preferring freshly molted ones; occasionally small fish and amphibian larvae.",
+  "Diurnal and solitary outside breeding; basks on rocks, logs and branches overhanging the water.",
+  "Active May-September in the north, and year-round in warm climates; hibernates in crayfish or mammal burrows in the north.",
+  "Live-bearing; 5-31 young born July to early September."
+ ],
+ "habitat": [
+  "Occurs only where crayfish are abundant, generally in moderate to fast-flowing streams with rocky or sandy bottoms, cover and sun exposure.",
+  "Sometimes uses ditches, canals, marsh or pond edges, but is usually scarce there."
+ ],
+ "range": "Eastern United States from the southern Great Lakes to the Florida panhandle and east to the Carolinas, north to Pennsylvania and New York; in Canada only southern Ontario (Georgian Bay, Bois Blanc Island), ranked N2 and listed Endangered under SARA.",
+ "lookalikes": [
+  {
+   "slug": "common-garter-snake",
+   "name": "Garter snakes",
+   "howToTell": "Garter snakes have a light dorsal stripe and an undivided anal plate; queen snakes lack a dorsal stripe and have a divided anal plate (Animal Diversity Web)."
+  }
+ ],
+ "aliases": [
+  "Queensnake",
+  "Queen snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Regina septemvittata",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102448"
+  },
+  {
+   "title": "Animal Diversity Web: Regina septemvittata",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Regina_septemvittata/"
+  }
+ ]
+}

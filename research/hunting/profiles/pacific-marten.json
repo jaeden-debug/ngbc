@@ -1,0 +1,34 @@
+{
+ "slug": "pacific-marten",
+ "scientificName": "Martes caurina",
+ "commonNameFr": null,
+ "family": "Mustelidae",
+ "order": "Carnivora",
+ "taxonomyNote": "Recognized by NatureServe as separate from the American marten (M. americana). No field marks were sourced: ADW has no page under this name.",
+ "fieldMarks": [],
+ "behavior": [
+  "Basically solitary; densities of about 1-2 martens per sq km recorded in early fall",
+  "Activity peaks at dusk and dawn in summer and is frequent by day in winter; foraging nocturnal in winter and diurnal in summer in the Sierra Nevada",
+  "Diet mostly small mammals, birds, insects and carrion; berries in season; hunts prey under the snow",
+  "Rests in tree cavities, stumps, squirrel nests, rock piles, burrows and snow cavities"
+ ],
+ "habitat": [
+  "Dense deciduous, mixed or especially coniferous forest, upland and lowland; may use rocky alpine areas; in winter in the central Rockies mainly old-growth forest."
+ ],
+ "range": "Much of the western US and part of southwestern Canada, including California, Nevada, Oregon, Washington, Utah, Colorado, New Mexico, Idaho, Montana, South Dakota, Alaska (Kuiu and Admiralty islands) and British Columbia.",
+ "lookalikes": [
+  {
+   "slug": "american-marten",
+   "name": "American marten",
+   "howToTell": "Separate species; Alaska, British Columbia, Idaho and Montana have both. NatureServe cites Dawson and Cook (2012)."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Pacific Marten (Martes caurina)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.887097/Martes_caurina"
+  }
+ ]
+}

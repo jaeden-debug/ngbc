@@ -1,0 +1,52 @@
+{
+ "slug": "spectacled-eider",
+ "scientificName": "Somateria fischeri",
+ "commonNameFr": "Eider à lunettes",
+ "family": "Anatidae",
+ "order": "Anseriformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Male: bold white 'spectacles' around the eye on a green head, black chest and underparts, white back",
+  "Female: mottled brown with a hint of the male's face pattern",
+  "Large round eye patch of different colour and texture is present in downy chicks and all plumages",
+  "Common and King eiders have a bill frontal process reaching near the eye; the spectacled eider does not, and its forehead feathering runs far forward to just behind the nostril",
+  "Common eider is distinctly larger and King eider slightly larger than spectacled eider"
+ ],
+ "behavior": [
+  "Small compact flocks; huge dense flocks in openings in sea ice in winter",
+  "Dives longer than most diving ducks; eats mollusks and crustaceans at sea",
+  "Summer tundra diet includes aquatic insects, sedges, grasses and berries",
+  "Migrates offshore over the Bering, Chukchi and Beaufort seas"
+ ],
+ "habitat": [
+  "Breeds in wet coastal tundra with shallow ponds; otherwise at sea, often among pack ice."
+ ],
+ "range": "Breeds in Arctic Alaska (Beaufort Sea west to Norton Sound and the Yukon-Kuskokwim Delta) and eastern Russia; non-breeding in the Bering and Chukchi seas.",
+ "lookalikes": [
+  {
+   "slug": "common-eider",
+   "name": "Common eider",
+   "howToTell": "Distinctly larger, bill frontal process reaches near the eye, no spectacle patch."
+  },
+  {
+   "slug": "king-eider",
+   "name": "King eider",
+   "howToTell": "Slightly larger, bill frontal process reaches near the eye, no spectacle patch."
+  }
+ ],
+ "aliases": [
+  "Spectacled eider"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Somateria fischeri",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100614"
+  },
+  {
+   "title": "Audubon Field Guide: Spectacled Eider",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/spectacled-eider"
+  }
+ ]
+}

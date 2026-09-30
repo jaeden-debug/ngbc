@@ -1,0 +1,33 @@
+{
+ "slug": "woodchuck",
+ "scientificName": "Marmota monax",
+ "fieldMarks": [
+  "Heavy-bodied rodent about 20–26 in long with a short (about 6 in) bristly tail; 5–15 lb.",
+  "Yellowish-brown to blackish-brown fur with sparse, paler belly hair; dark feet.",
+  "Broad, chisel-shaped white front incisors."
+ ],
+ "behavior": [
+  "Active in early morning and late evening in summer.",
+  "Sharp alarm whistle; 'chuck-chuck' sounds while feeding.",
+  "Digs burrows with a main entrance marked by a dirt mound and inconspicuous back exits.",
+  "Hibernates from about October to early spring; eats grasses, clover, alfalfa, dandelion and crops."
+ ],
+ "habitat": [
+  "Open fields, meadows, pastures, fencerows and woodland edges, preferring well-drained slopes."
+ ],
+ "range": "From Oklahoma and Alabama north and northeast through the eastern US, and west across Canada into Alaska.",
+ "lookalikes": [],
+ "aliases": [
+  "groundhog",
+  "whistle pig",
+  "chuck",
+  "red monk"
+ ],
+ "sources": [
+  {
+   "title": "Woodchuck",
+   "publisher": "Pennsylvania Game Commission",
+   "url": "https://www.pa.gov/agencies/pgc/wildlife/discover-pa-wildlife/woodchuck"
+  }
+ ]
+}

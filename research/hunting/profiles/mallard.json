@@ -1,0 +1,49 @@
+{
+ "slug": "mallard",
+ "scientificName": "Anas platyrhynchos",
+ "fieldMarks": [
+  "Drake: glossy green head, yellow bill, white neck ring, chestnut breast, gray body and curled black tail feathers.",
+  "Hen: mottled brown with an orange bill marked with black, and orange legs.",
+  "Both sexes show a blue to purplish-blue speculum bordered in white."
+ ],
+ "behavior": [
+  "Dabbles, up-ends with tail vertical, occasionally dives, and grazes on land.",
+  "Eats mostly plant material (seeds, roots, pondweeds, acorns, grain) plus insects, crustaceans and mollusks.",
+  "Hen gives the familiar loud quack; drake gives softer, reedy calls.",
+  "Readily attracted by decoys; pairs form in fall and winter."
+ ],
+ "habitat": [
+  "Marshes, prairie potholes and reed-ringed sloughs, ponds, rivers, lakes, bays, grain fields and city parks; prefers fresh water."
+ ],
+ "range": "Across Alaska, Canada (most numerous in the Prairie Provinces, expanding eastward) and most of the US; winters in southern Ontario and British Columbia and farther south. Also native to Europe and Asia.",
+ "lookalikes": [
+  {
+   "slug": "american-black-duck",
+   "name": "American black duck",
+   "howToTell": "Black ducks are much darker with a gray head and a speculum lacking bold white borders."
+  },
+  {
+   "slug": "mottled-duck",
+   "name": "Mottled duck",
+   "howToTell": "Compare female mallards with mottled ducks in Florida and on the Gulf Coast."
+  },
+  {
+   "slug": "mexican-duck",
+   "name": "Mexican duck",
+   "howToTell": "Compare female mallards with Mexican ducks in the Southwest."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Mallard — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/mallard"
+  },
+  {
+   "title": "Mallard — Hinterland Who's Who",
+   "publisher": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+   "url": "https://www.hww.ca/en/wildlife/birds/mallard.html"
+  }
+ ]
+}

@@ -1,0 +1,49 @@
+{
+ "slug": "mexican-duck",
+ "scientificName": "Anas diazi",
+ "commonNameFr": null,
+ "family": "Anatidae",
+ "order": "Anseriformes",
+ "taxonomyNote": "NatureServe notes it was long treated as conspecific with Mallard (AOU 1983, 1998) and was newly separated as a species by AOS (2020) based on assortative mating and genomic data.",
+ "fieldMarks": [
+  "Both sexes resemble a female Mallard with mottled brown plumage but somewhat darker overall, especially on the tail and undertail",
+  "Blue wing patch (speculum) with white borders that may be narrower than a Mallard's",
+  "Male bill bright yellow; female's dull olive to orange",
+  "Length about 50-58 cm"
+ ],
+ "behavior": [
+  "Not truly migratory; seasonal local movements, gathering at permanent lakes and rivers in dry seasons and spreading out in rainy seasons",
+  "Forages in water by dabbling, head-and-neck submerging or up-ending, rarely diving; also grazes and grubs on land",
+  "Mostly plant material (seeds, stems, roots, waste grain), also insects, crustaceans, mollusks and tadpoles",
+  "Male gives a thin rreeb; female quacks loudly"
+ ],
+ "habitat": [
+  "Mostly shallow freshwater marshes of lakes and ponds, slow lowland rivers and irrigated farmland."
+ ],
+ "range": "Breeds from southeastern Arizona, southern New Mexico and west-central Texas south into the Mexican highlands. Non-breeding birds occur casually north through much of Colorado and Utah; accidental in California, Wyoming and Nebraska.",
+ "lookalikes": [
+  {
+   "slug": "mallard",
+   "name": "Mallard (female)",
+   "howToTell": "Mexican Duck is somewhat darker, especially on the tail and undertail, with narrower white wing-patch borders."
+  },
+  {
+   "slug": "mottled-duck",
+   "name": "Mottled duck",
+   "howToTell": "NatureServe notes difficulty separating Mexican Duck from Mottled Duck may be reducing detection of one or both."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Mexican Duck",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/mexican-duck"
+  },
+  {
+   "title": "NatureServe Explorer: Anas diazi (Mexican Duck)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103691/Anas_diazi"
+  }
+ ]
+}

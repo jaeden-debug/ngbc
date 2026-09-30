@@ -1,0 +1,39 @@
+{
+ "slug": "northern-flying-squirrel",
+ "scientificName": "Glaucomys sabrinus",
+ "commonNameFr": null,
+ "family": "Sciuridae",
+ "order": "Rodentia",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Silky grey and cinnamon-brown fur; belly hairs are white-tipped with grey bases",
+  "Furred gliding membrane runs from foreleg wrist to hindleg ankle; long flattened tail",
+  "Large black eyes; 75-140 g, 275-342 mm total length",
+  "Larger than the southern flying squirrel"
+ ],
+ "behavior": [
+  "Strictly nocturnal, active roughly 2 hours after sunset and before sunrise",
+  "Glides between trees but is clumsy on the ground",
+  "Up to 8 may share a nest; sexes aggregate in winter for warmth",
+  "Diet leans heavily on lichens and fungi, plus nuts, acorns, buds, sap; calls are soft chirps and clucks"
+ ],
+ "habitat": [
+  "Conifer-dominated forest, also deciduous and mixed forest. Nests 1-18 m up in trees of twigs, bark, feathers and fur."
+ ],
+ "range": "Alaska and Canada south to northern California, Colorado, Michigan, Wisconsin, North Carolina and Tennessee, with isolated high-elevation populations.",
+ "lookalikes": [
+  {
+   "slug": "southern-flying-squirrel",
+   "name": "Southern flying squirrel",
+   "howToTell": "Smaller, with cream-coloured rather than grey-based belly fur."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Northern Flying Squirrel",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Glaucomys_sabrinus/"
+  }
+ ]
+}

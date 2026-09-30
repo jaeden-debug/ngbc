@@ -1,0 +1,45 @@
+{
+ "slug": "kentucky-spring-salamander",
+ "scientificName": "Gyrinophilus porphyriticus",
+ "commonNameFr": "Salamandre pourpre",
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": "'Kentucky spring salamander' is a regional name; NatureServe and ADW treat the species as Spring Salamander (G. porphyriticus) and some authors lump related Gyrinophilus species into it.",
+ "fieldMarks": [
+  "Large: 12-19 cm, females about 1 cm longer than males.",
+  "Salmon-orange to yellowish skin with a brownish tint and dark blotchy spots and a reddish tint.",
+  "Flat head with eyes on the sides and a broad snout.",
+  "Tail knife-edged, aiding swimming."
+ ],
+ "behavior": [
+  "Mostly nocturnal; swims eel-like with legs held to the body and escapes by burrowing into mud or swimming.",
+  "Uses smell to locate prey in the dark; produces toxic skin secretions as defense.",
+  "Females stay with 20-60 (up to 100+) eggs about 3 months; larvae are aquatic for 2-4 years."
+ ],
+ "habitat": [
+  "Small clear upland streams, springs, caves and shaded seepages; often under rocks, logs, leaves or moss in or near water."
+ ],
+ "range": "Southern Quebec and southern Maine south through the Appalachians to northern Georgia, Alabama and northeastern Mississippi.",
+ "lookalikes": [
+  {
+   "slug": "northern-dusky-salamander",
+   "name": "Northern dusky salamander",
+   "howToTell": "Much smaller and browner with a keeled tail and no salmon-orange colour."
+  }
+ ],
+ "aliases": [
+  "Spring salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Gyrinophilus porphyriticus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100971/Gyrinophilus_porphyriticus"
+  },
+  {
+   "title": "Animal Diversity Web: Gyrinophilus porphyriticus",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Gyrinophilus_porphyriticus/"
+  }
+ ]
+}

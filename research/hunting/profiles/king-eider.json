@@ -1,0 +1,34 @@
+{
+ "slug": "king-eider",
+ "scientificName": "Somateria spectabilis",
+ "fieldMarks": [
+  "Adult male: orange frontal shield on the bill, powder-blue head and much black on the back.",
+  "Female: brown, much like a female common eider but with a different head shape and a scalloped (not barred) pattern on the sides.",
+  "Young male: resembles a young male common eider but with a shorter bill and more square-looking head.",
+  "Large sea duck, 53-71 cm."
+ ],
+ "behavior": [
+  "Forages mainly underwater, often in deep water, diving more than 45 m (150 ft).",
+  "Molluscs are a main food at most times, plus crustaceans, echinoderms and insects; insect larvae may dominate in summer.",
+  "Spring migration begins very early, with flocks moving north over mostly frozen seas by early April; migrants to the central Canadian Arctic go around Alaska and northeastern Canada rather than overland."
+ ],
+ "habitat": [
+  "Nests on high Arctic tundra, both on the coast and around inland freshwater lakes. Winters on the ocean in the far north, including pack-ice edges; less tied to the coast than the common eider and rare on fresh water such as the Great Lakes."
+ ],
+ "range": "Breeds across the Arctic of Alaska and northern Canada; winters mainly in far northern seas, with small numbers south along the Atlantic and Pacific coasts and strays as far as Florida, Louisiana, Kansas and southern California.",
+ "lookalikes": [
+  {
+   "slug": "common-eider",
+   "name": "Common eider",
+   "howToTell": "Female king eiders have scalloped, not barred, sides and a different head shape; young males have a shorter bill and squarer head."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "King Eider — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/king-eider"
+  }
+ ]
+}

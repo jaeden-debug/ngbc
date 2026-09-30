@@ -1,0 +1,52 @@
+{
+ "slug": "beaver",
+ "scientificName": "Castor canadensis",
+ "fieldMarks": [
+  "North America's largest rodent, 0.9–1.2 m including tail; most adults 17–32 kg",
+  "Heavy chestnut-brown coat",
+  "Broad, flat, black tail about 25 cm long and 15 cm wide",
+  "Large webbed hind feet"
+ ],
+ "behavior": [
+  "Slaps the tail on the water as a warning",
+  "Fells trees (on average hundreds a year, up to about 40 cm diameter) for food and building",
+  "Builds dams, lodges and bank dens; castor from glands near the tail is used for scent marking",
+  "Usually stays within about 0.8 km of its den; two-year-olds disperse"
+ ],
+ "habitat": [
+  "Permanent water of almost any kind, preferring low-gradient streams, ponds and small mud-bottomed lakes with dammable outlets; needs 0.6–0.9 m of water year-round."
+ ],
+ "range": "Throughout North America except Arctic tundra, peninsular Florida and much of the desert Southwest.",
+ "lookalikes": [
+  {
+   "slug": "muskrat",
+   "name": "Muskrat",
+   "howToTell": "The muskrat is far smaller (0.9–1.8 kg) with a rat-like, side-flattened tail."
+  },
+  {
+   "slug": "nutria",
+   "name": "Nutria",
+   "howToTell": "Nutria have a round, sparsely haired tail and white whiskers; beavers have a broad flat tail and fully webbed hind feet."
+  }
+ ],
+ "aliases": [
+  "American beaver"
+ ],
+ "sources": [
+  {
+   "title": "Beaver Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=beaver.main"
+  },
+  {
+   "title": "Beaver - Hinterland Who's Who",
+   "publisher": "Hinterland Who's Who (Canadian Wildlife Service / Canadian Wildlife Federation)",
+   "url": "https://www.hww.ca/en/wildlife/mammals/beaver.html"
+  },
+  {
+   "title": "Castor canadensis (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100922/Castor_canadensis"
+  }
+ ]
+}

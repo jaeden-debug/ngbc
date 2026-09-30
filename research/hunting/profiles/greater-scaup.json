@@ -1,0 +1,35 @@
+{
+ "slug": "greater-scaup",
+ "scientificName": "Aythya marila",
+ "fieldMarks": [
+  "16-21 in; very like Lesser Scaup but with a more rounded head (high point toward the front) and a larger bill.",
+  "In flight shows a longer white wing stripe than Lesser Scaup.",
+  "Male head often glosses green (not purple); sides may look whiter.",
+  "Females of both scaup may show a pale ear patch in summer."
+ ],
+ "behavior": [
+  "Winter flocks on coastal bays may number in the thousands; flocks feeding in tidal current face up-current.",
+  "Dives for food; winter diet mainly mussels, clams, oysters and snails; plants, insects and crustaceans in summer.",
+  "Migrates in flocks; Alaskan birds may winter on either the Pacific or Atlantic coast."
+ ],
+ "habitat": [
+  "Breeds on lakes and bogs near the northern edge of the boreal forest and onto tundra.",
+  "Winters mainly on coastal bays, lagoons and estuaries, favoring more open, exposed water than Lesser Scaup; some on inland lakes."
+ ],
+ "range": "Breeds in Alaska and northern Canada and winters along both the Pacific and Atlantic coasts and on some interior lakes of the United States and southern Canada.",
+ "lookalikes": [
+  {
+   "slug": "lesser-scaup",
+   "name": "Lesser scaup",
+   "howToTell": "Greater has a more rounded head peaking toward the front, a larger bill, a longer white wing stripe, and males often gloss green rather than purple."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Greater Scaup | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/greater-scaup"
+  }
+ ]
+}

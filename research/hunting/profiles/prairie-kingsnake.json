@@ -1,0 +1,45 @@
+{
+ "slug": "prairie-kingsnake",
+ "scientificName": "Lampropeltis calligaster",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe (McKelvy and Burbrink 2017) treats L. rhombomaculata (mole kingsnake) and L. occipitolineata as distinct species; Animal Diversity Web still lists them as subspecies of L. calligaster.",
+ "fieldMarks": [
+  "Tan, grey-brown or yellow-brown with reddish-brown dorsal blotches alternating with smaller lateral blotches; pale or yellowish belly.",
+  "Older snakes lose the pattern with age; 19-27 rows of smooth scales.",
+  "Often mistaken for a copperhead: copperheads have brown hourglass crossbands, kingsnakes have blotches."
+ ],
+ "behavior": [
+  "Nocturnal and mostly solitary; active about April to mid-October and hibernates November-March in burrows or rock ledges.",
+  "Spends about 75% of radio-tracked time underground; can climb and swim.",
+  "Eats mice and voles, amphibians, snakes, lizards and birds and their eggs."
+ ],
+ "habitat": [
+  "Open habitats: fields, farmland, woodlots, rocky hillsides, favouring prairie and pasture on light soils."
+ ],
+ "range": "Populations west of the Mississippi River across the plains states and east across the Mississippi embayment to Illinois, Indiana, Kentucky, western Tennessee and northern Mississippi (NatureServe); the wider group reaches Maryland and Florida.",
+ "lookalikes": [
+  {
+   "slug": "copperhead",
+   "name": "Copperhead",
+   "howToTell": "Copperheads have brown hourglass crossbands; prairie and mole kingsnakes have dorsal blotches."
+  }
+ ],
+ "aliases": [
+  "mole kingsnake (L. c. rhombomaculata)"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.106075"
+  },
+  {
+   "title": "Animal Diversity Web species account",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lampropeltis_calligaster/"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

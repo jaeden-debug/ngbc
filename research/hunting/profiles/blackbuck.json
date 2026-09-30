@@ -1,0 +1,32 @@
+{
+ "slug": "blackbuck",
+ "scientificName": "Antilope cervicapra",
+ "commonNameFr": null,
+ "family": "Bovidae",
+ "order": "Artiodactyla",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Males dark brown above, white underparts, white eye patches; only males have spiral horns (50-61 cm, about 4 turns)",
+  "Females yellowish where males are dark",
+  "73.7-83.8 cm at shoulder; 32-43 kg"
+ ],
+ "behavior": [
+  "Gregarious herds of 5-50 led by a single male",
+  "Shy and wary, relies on vision",
+  "Active early morning and late afternoon in hot seasons",
+  "Can hold about 40 mph for long distances"
+ ],
+ "habitat": [
+  "Open woodland, semi-desert, thorn forest and dry deciduous forest near grassland."
+ ],
+ "range": "Native to India and Pakistan. The ADW page does not describe North American introduced populations.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Blackbuck",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Antilope_cervicapra/"
+  }
+ ]
+}

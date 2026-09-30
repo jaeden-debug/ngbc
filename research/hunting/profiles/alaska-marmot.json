@@ -1,0 +1,37 @@
+{
+ "slug": "alaska-marmot",
+ "scientificName": "Marmota broweri",
+ "commonNameFr": null,
+ "family": "Sciuridae",
+ "order": "Rodentia",
+ "taxonomyNote": "NatureServe notes it was previously treated as a synonym or subspecies of the hoary marmot (M. caligata).",
+ "fieldMarks": [
+  "Black fur on top of the head from nose to neck; coarse brown and black back",
+  "21-26 in. long, 5.5-8.8 lb; males slightly larger than females",
+  "Bushy tail; short muscular legs, small round eyes, broad rounded ears"
+ ],
+ "behavior": [
+  "Colonies of up to 50, each with its own den",
+  "Hibernates about late August to early June, waking every 3-4 weeks",
+  "Sentinel alarm calls vary by predator",
+  "Eats grasses, forbs, legumes and fruit near burrows"
+ ],
+ "habitat": [
+  "Boulder fields and talus slopes with large rocks next to productive tundra, about 3,250-4,000 ft."
+ ],
+ "range": "Brooks Range of northern Alaska, perhaps also northern Yukon (unconfirmed).",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Marmota broweri",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103604"
+  },
+  {
+   "title": "Animal Diversity Web: Marmota broweri",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Marmota_broweri/"
+  }
+ ]
+}

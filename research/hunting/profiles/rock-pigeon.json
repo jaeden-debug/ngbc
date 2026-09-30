@@ -1,0 +1,43 @@
+{
+ "slug": "rock-pigeon",
+ "scientificName": "Columba livia",
+ "commonNameFr": "Pigeon biset",
+ "family": "Columbidae",
+ "order": "Columbiformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "About 34 cm; ancestral (wild-type) plumage pale gray body with darker head, white rump and two black wing bars",
+  "Contrasty white underwings in flight",
+  "Feral flocks include many other colour forms, some resembling native Band-tailed Pigeon"
+ ],
+ "behavior": [
+  "Forages mostly by walking on the ground, often in flocks",
+  "Eats mostly seeds; away from cities waste grain, grass and other seeds, sometimes berries or acorns; in cities largely food scraps",
+  "Not migratory; has good homing ability",
+  "Soft guttural cooing"
+ ],
+ "habitat": [
+  "Around cities, farms, cliffs and bridges; most common around cities and in suburbs and farms, occasionally in wild places far from human dwellings. In its native range nested on coastal and inland cliffs and gorges."
+ ],
+ "range": "Native to Eurasia; introduced and established throughout most of the world, including across North America.",
+ "lookalikes": [
+  {
+   "slug": "band-tailed-pigeon",
+   "name": "Band-tailed pigeon",
+   "howToTell": "Wild native pigeon that some feral Rock Pigeon colour forms can suggest; Audubon gives no further separating marks."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Rock Pigeon",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/rock-pigeon"
+  },
+  {
+   "title": "NatureServe Explorer: Columba livia (Rock Pigeon)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.105107/Columba_livia"
+  }
+ ]
+}

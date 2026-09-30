@@ -1,0 +1,45 @@
+{
+ "slug": "ringtail",
+ "scientificName": "Bassariscus astutus",
+ "commonNameFr": null,
+ "family": "Procyonidae",
+ "order": "Carnivora",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Long bushy tail ringed black and white, roughly as long as the head and body",
+  "Buffy body with dark brown wash and pale buff underparts",
+  "Black or dark brown eye rings set in buffy patches",
+  "Cat-like body, fox-like face, large oval ears, semi-retractable claws",
+  "Head and body 305-420 mm, 824-1,338 g"
+ ],
+ "behavior": [
+  "Mainly nocturnal, also at dusk and dawn; active year round",
+  "Omnivorous but prefers animal matter: arthropods, small mammals, fruit, birds, reptiles, amphibians",
+  "Calls include an explosive bark and a piercing scream",
+  "Secretive; occurs singly or in pairs; changes dens often"
+ ],
+ "habitat": [
+  "Rocky areas with cliffs, crevices, canyons or talus in desert scrub, chaparral, oak and pinyon-juniper woodland and montane conifer forest, usually within 0.5 mile of water."
+ ],
+ "range": "Western North America north to southern Oregon, northern Nevada, northern Utah, southern Wyoming and Colorado, south through California, Arizona, New Mexico and Texas into Mexico; old records from Kansas.",
+ "lookalikes": [
+  {
+   "slug": "raccoon",
+   "name": "Raccoon",
+   "howToTell": "ADW notes a ringed tail much like a raccoon's; ringtail is far slimmer, cat-like, with a much longer tail."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Ringtail (Bassariscus astutus)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.105257/Bassariscus_astutus"
+  },
+  {
+   "title": "Animal Diversity Web: Bassariscus astutus (ringtail)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Bassariscus_astutus/"
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "slug": "corn-snake",
+ "scientificName": "Pantherophis guttatus",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe (Burbrink 2002) restricts P. guttatus to east of the Mississippi River and treats the Great Plains rat snake as P. emoryi and western Louisiana/eastern Texas populations as P. slowinskii; Animal Diversity Web still lists P. g. emoryi as a subspecies and covers it in this species' range.",
+ "fieldMarks": [
+  "Large spots down the back, brown and red-orange body (gray and yellow variants occur), belly with a black-and-white checkerboard.",
+  "Hatchlings paler and duller, 20-35 cm; adults average 70-120 cm.",
+  "Head narrower than a copperhead's, colour lighter, and spots square-shaped."
+ ],
+ "behavior": [
+  "Mostly diurnal, crepuscular in warm weather; climbs trees and shrubs, basks on rocks, enters rodent burrows; constricts prey.",
+  "Over half the diet is rodents (hispid cotton rats, white-footed mice) plus moles, bird eggs, and lizards and frogs in Florida.",
+  "Hibernates in crevices, logs or caves from about October to April in most of the range, briefly or not at all in the south."
+ ],
+ "habitat": [
+  "Pine woodlands, brushy fields, open hardwood forests, rocky areas with crevices and logs, fields, barnyards and abandoned buildings; up to about 1800 m."
+ ],
+ "range": "Southeastern United States from southern New Jersey to Florida and west through Mississippi to Louisiana; related Great Plains rat snake reaches Illinois, Texas and New Mexico. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "copperhead",
+   "name": "Southern copperhead",
+   "howToTell": "Corn snake has a narrower head, lighter coloration and square spots."
+  }
+ ],
+ "aliases": [
+  "Red cornsnake",
+  "Red corn snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Pantherophis guttatus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100164"
+  },
+  {
+   "title": "Animal Diversity Web: Pantherophis guttatus",
+   "publisher": "University of Michigan Museum of Zoology, Animal Diversity Web",
+   "url": "https://animaldiversity.org/accounts/Pantherophis_guttatus/"
+  }
+ ]
+}

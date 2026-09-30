@@ -1,0 +1,47 @@
+{
+ "slug": "eastern-cottontail",
+ "scientificName": "Sylvilagus floridanus",
+ "fieldMarks": [
+  "Medium-sized rabbit, 14-19 in, 2-3.25 lb, with long ears, large hind legs and a short fluffy tail white underneath.",
+  "Upperparts reddish to grayish brown sprinkled with black; bright rust-coloured nape.",
+  "Grayish-white underparts with a brownish chest; tops of hind feet tan to whitish.",
+  "Tracks fall in groups of four, hind feet side by side; droppings are dark brown pea-sized pellets, often in piles."
+ ],
+ "behavior": [
+  "Rests by day in a 'form' concealed in dense grass, a brush pile or thicket, seldom far from cover.",
+  "Feeds almost entirely on plants: grasses, wheat and clovers; in deep snow eats buds, twigs, bark and sprouts.",
+  "Breeds mid-February through September; nests are shallow ground cavities lined with grass and fur."
+ ],
+ "habitat": [
+  "Edges between woody cover and open land: brushy or forest-border cover, meadows, orchards, farmland, hedgerows and second-growth shrubs."
+ ],
+ "range": "From southern Manitoba and southern Quebec south through the eastern United States to the Great Plains, and on to Central and northwestern South America.",
+ "lookalikes": [
+  {
+   "slug": "swamp-rabbit",
+   "name": "Swamp rabbit",
+   "howToTell": "Swamp rabbit is larger with shorter, rounder ears, coarser yellowish fur, reddish-brown hind-foot tops and only a slightly rusty nape."
+  },
+  {
+   "slug": "black-tailed-jackrabbit",
+   "name": "Black-tailed jackrabbit",
+   "howToTell": "Jackrabbits are lanky with ears, hind legs and feet very large for the body."
+  }
+ ],
+ "aliases": [
+  "cottontail",
+  "cottontail rabbit"
+ ],
+ "sources": [
+  {
+   "title": "Eastern Cottontail (Cottontail Rabbit)",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/eastern-cottontail-cottontail-rabbit"
+  },
+  {
+   "title": "Sylvilagus floridanus (eastern cottontail)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Sylvilagus_floridanus/"
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "slug": "spring-peeper",
+ "scientificName": "Pseudacris crucifer",
+ "commonNameFr": {
+  "name": "Rainette crucifère",
+  "source": "NatureServe Explorer (otherCommonNames, FR)"
+ },
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": "Formerly Hyla crucifer; some authors place western Pseudacris species in Hyliola but NatureServe notes this has not gained traction, and P. crucifer is unaffected.",
+ "fieldMarks": [
+  "Small frog, about 20-25 mm (to 3.7 cm); gray, pink, brown, olive or yellowish above.",
+  "Dark X-shaped cross on the back (may be broken), a dark stripe from snout to eardrum and a dark bar between the eyes; dark bands on legs.",
+  "Toe tips enlarged into disks, hind toes only moderately webbed; belly cream or white.",
+  "Call is a single high piping whistle rising slightly, repeated about once a second; a chorus sounds like sleigh bells."
+ ],
+ "behavior": [
+  "Mostly active at dusk and night but also by day in wet weather; males call from vegetation beside water or low in woody plants.",
+  "Eats small terrestrial invertebrates such as ants, beetles, flies and spiders; larvae eat algae and debris.",
+  "Calls from uplands in autumn, far from water; hibernates under logs and in tree holes; breeds early spring in the north."
+ ],
+ "habitat": [
+  "Moist wooded areas near ponds, marshes, ditches and swamps, preferring fishless, often temporary pools with standing plants and debris."
+ ],
+ "range": "Eastern North America from southeastern Manitoba east to the Atlantic, south to eastern Texas and mainland Florida (not the Florida Peninsula, per Animal Diversity Web). Introduced in Cuba.",
+ "lookalikes": [],
+ "aliases": [
+  "Northern spring peeper"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Pseudacris crucifer",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105099"
+  },
+  {
+   "title": "Animal Diversity Web: Pseudacris crucifer",
+   "publisher": "University of Michigan Museum of Zoology, Animal Diversity Web",
+   "url": "https://animaldiversity.org/accounts/Pseudacris_crucifer/"
+  }
+ ]
+}

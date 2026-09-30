@@ -200,6 +200,62 @@
       "surveyedAndNoneFound": 20419
     },
     {
+      "speciesId": "species:black-bellied-whistling-duck",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-black-bellied-whistling-duck",
+      "artifactPath": "content/intelligence/surfaces/black-bellied-whistling-duck.json",
+      "artifactHash": "sha256:05316bf89c0c30d414388487dbc3d110ad2dc8152421d01074295415934ca2fd",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "seasonalMovement": "MIGRATORY",
+      "seasonalMovementSource": "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)",
+      "colourScale": "RANK_AMONG_DETECTED",
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "2.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 218,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 20048
+    },
+    {
+      "speciesId": "species:black-billed-magpie",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-black-billed-magpie",
+      "artifactPath": "content/intelligence/surfaces/black-billed-magpie.json",
+      "artifactHash": "sha256:225d28329f805ca8566e8ffba9ac860cd166543397f836ca1686dcd2733f4774",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "seasonalMovement": "MIGRATORY",
+      "seasonalMovementSource": "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)",
+      "colourScale": "RANK_AMONG_DETECTED",
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "2.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 864,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 13870
+    },
+    {
       "speciesId": "species:blue-winged-teal",
       "surfaceKind": "MODELLED_RASTER",
       "artifactId": "surface:bbs-blue-winged-teal",
@@ -226,6 +282,118 @@
       "sitesDetected": 589,
       "supportedCells": 22873,
       "surveyedAndNoneFound": 11876
+    },
+    {
+      "speciesId": "species:boat-tailed-grackle",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-boat-tailed-grackle",
+      "artifactPath": "content/intelligence/surfaces/boat-tailed-grackle.json",
+      "artifactHash": "sha256:acceafb0a758c5a85073f8e3ebe6212638e6efd64525a58815ff88b926542845",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "seasonalMovement": "MIGRATORY",
+      "seasonalMovementSource": "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)",
+      "colourScale": "RANK_AMONG_DETECTED",
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "2.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 112,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 21643
+    },
+    {
+      "speciesId": "species:brewers-blackbird",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-brewers-blackbird",
+      "artifactPath": "content/intelligence/surfaces/brewers-blackbird.json",
+      "artifactHash": "sha256:36b4e2ad62e4b256eabdc4d4c0236c85fba2e1fbcedd284130f7c2caa175780e",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "seasonalMovement": "MIGRATORY",
+      "seasonalMovementSource": "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)",
+      "colourScale": "RANK_AMONG_DETECTED",
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "2.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 1130,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 12551
+    },
+    {
+      "speciesId": "species:bronzed-cowbird",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-bronzed-cowbird",
+      "artifactPath": "content/intelligence/surfaces/bronzed-cowbird.json",
+      "artifactHash": "sha256:73fbe5274b44d0d134ab49ccd10a0cb557d5e77bf5d6b843d73b47ab0627c152",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "seasonalMovement": "MIGRATORY",
+      "seasonalMovementSource": "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)",
+      "colourScale": "RANK_AMONG_DETECTED",
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "2.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 69,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 21480
+    },
+    {
+      "speciesId": "species:brown-headed-cowbird",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-brown-headed-cowbird",
+      "artifactPath": "content/intelligence/surfaces/brown-headed-cowbird.json",
+      "artifactHash": "sha256:aa1da7bbb85cbf9870c4c891d93fe3bdaa43aefe54a20c1289200725a30bd8c8",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "seasonalMovement": "MIGRATORY",
+      "seasonalMovementSource": "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)",
+      "colourScale": "RANK_AMONG_DETECTED",
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "2.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 3410,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 3630
     },
     {
       "speciesId": "species:bufflehead",
@@ -396,6 +564,34 @@
       "surveyedAndNoneFound": 17341
     },
     {
+      "speciesId": "species:clapper-rail",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-clapper-rail",
+      "artifactPath": "content/intelligence/surfaces/clapper-rail.json",
+      "artifactHash": "sha256:958175570b553bc454bc339a134613e4b6293ce7bc3624cf793e811e4e6ef761",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "seasonalMovement": "MIGRATORY",
+      "seasonalMovementSource": "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)",
+      "colourScale": "RANK_AMONG_DETECTED",
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "2.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 33,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 22055
+    },
+    {
       "speciesId": "species:common-gallinule",
       "surfaceKind": "MODELLED_RASTER",
       "artifactId": "surface:bbs-common-gallinule",
@@ -452,6 +648,34 @@
       "surveyedAndNoneFound": 15927
     },
     {
+      "speciesId": "species:common-grackle",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-common-grackle",
+      "artifactPath": "content/intelligence/surfaces/common-grackle.json",
+      "artifactHash": "sha256:42537906ec5b33dd1b699d00fe42eaef7d40790ed41a99b9450d18dcd14facc9",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "seasonalMovement": "MIGRATORY",
+      "seasonalMovementSource": "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)",
+      "colourScale": "RANK_AMONG_DETECTED",
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "2.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 2814,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 7039
+    },
+    {
       "speciesId": "species:common-merganser",
       "surfaceKind": "MODELLED_RASTER",
       "artifactId": "surface:bbs-common-merganser",
@@ -478,6 +702,62 @@
       "sitesDetected": 544,
       "supportedCells": 22873,
       "surveyedAndNoneFound": 11353
+    },
+    {
+      "speciesId": "species:common-raven",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-common-raven",
+      "artifactPath": "content/intelligence/surfaces/common-raven.json",
+      "artifactHash": "sha256:1d5f48c82808a44eea27b6915a21d111defbaf3a167ebc4d60637baaf7655103",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "seasonalMovement": "MIGRATORY",
+      "seasonalMovementSource": "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)",
+      "colourScale": "RANK_AMONG_DETECTED",
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "2.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 2462,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 4922
+    },
+    {
+      "speciesId": "species:double-crested-cormorant",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-double-crested-cormorant",
+      "artifactPath": "content/intelligence/surfaces/double-crested-cormorant.json",
+      "artifactHash": "sha256:b673d759f8873e9cf5a78841adbda5da6653795e78e028d22e70d2fedfe1c4db",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "seasonalMovement": "MIGRATORY",
+      "seasonalMovementSource": "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)",
+      "colourScale": "RANK_AMONG_DETECTED",
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "2.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 742,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 7438
     },
     {
       "speciesId": "species:dusky-grouse",
@@ -536,6 +816,34 @@
       "surveyedAndNoneFound": 7741
     },
     {
+      "speciesId": "species:european-starling",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-european-starling",
+      "artifactPath": "content/intelligence/surfaces/european-starling.json",
+      "artifactHash": "sha256:d1f8ba193fa6f7d15f99c276e486a83b269fe47a06ba8deb7720ef659e510f09",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "seasonalMovement": "MIGRATORY",
+      "seasonalMovementSource": "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)",
+      "colourScale": "RANK_AMONG_DETECTED",
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "2.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 3250,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 2567
+    },
+    {
       "speciesId": "species:fish-crow",
       "surfaceKind": "MODELLED_RASTER",
       "artifactId": "surface:bbs-fish-crow",
@@ -562,6 +870,34 @@
       "sitesDetected": 773,
       "supportedCells": 22873,
       "surveyedAndNoneFound": 18392
+    },
+    {
+      "speciesId": "species:fulvous-whistling-duck",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-fulvous-whistling-duck",
+      "artifactPath": "content/intelligence/surfaces/fulvous-whistling-duck.json",
+      "artifactHash": "sha256:daeac6cba5cfd7a2094cad63336a52bb70e9bcb9549f42b84934c655f3033b44",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "seasonalMovement": "MIGRATORY",
+      "seasonalMovementSource": "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)",
+      "colourScale": "RANK_AMONG_DETECTED",
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "2.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 33,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 22318
     },
     {
       "speciesId": "species:gadwall",
@@ -646,6 +982,34 @@
       "sitesDetected": 257,
       "supportedCells": 22873,
       "surveyedAndNoneFound": 18204
+    },
+    {
+      "speciesId": "species:great-tailed-grackle",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-great-tailed-grackle",
+      "artifactPath": "content/intelligence/surfaces/great-tailed-grackle.json",
+      "artifactHash": "sha256:dd29483ff9bb2a90c47962be33d8fc448310b3843396021bb07d2e6fb903b9f3",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "seasonalMovement": "MIGRATORY",
+      "seasonalMovementSource": "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)",
+      "colourScale": "RANK_AMONG_DETECTED",
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "2.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 374,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 17498
     },
     {
       "speciesId": "species:greater-prairie-chicken",
@@ -788,6 +1152,34 @@
       "surveyedAndNoneFound": 14548
     },
     {
+      "speciesId": "species:house-sparrow",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-house-sparrow",
+      "artifactPath": "content/intelligence/surfaces/house-sparrow.json",
+      "artifactHash": "sha256:7a9c607638c5148a53e860191fcc183c4b52d5784a5aa2c5cb039364ba41691a",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "seasonalMovement": "MIGRATORY",
+      "seasonalMovementSource": "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)",
+      "colourScale": "RANK_AMONG_DETECTED",
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "2.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 2736,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 3685
+    },
+    {
       "speciesId": "species:lesser-scaup",
       "surfaceKind": "MODELLED_RASTER",
       "artifactId": "surface:bbs-lesser-scaup",
@@ -842,6 +1234,34 @@
       "sitesDetected": 2370,
       "supportedCells": 22873,
       "surveyedAndNoneFound": 1568
+    },
+    {
+      "speciesId": "species:mottled-duck",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-mottled-duck",
+      "artifactPath": "content/intelligence/surfaces/mottled-duck.json",
+      "artifactHash": "sha256:3a60e04015d9c394e4dfdaec850048a6ec55278df82f744b251fa282968e384d",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "seasonalMovement": "MIGRATORY",
+      "seasonalMovementSource": "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)",
+      "colourScale": "RANK_AMONG_DETECTED",
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "2.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 64,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 22087
     },
     {
       "speciesId": "species:mountain-quail",
@@ -1040,6 +1460,34 @@
       "surveyedAndNoneFound": 20643
     },
     {
+      "speciesId": "species:red-winged-blackbird",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-red-winged-blackbird",
+      "artifactPath": "content/intelligence/surfaces/red-winged-blackbird.json",
+      "artifactHash": "sha256:131ecef244c0b6f712e164ff0bee9dca4aa301fc410447c0eaa034f140696062",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "seasonalMovement": "MIGRATORY",
+      "seasonalMovementSource": "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)",
+      "colourScale": "RANK_AMONG_DETECTED",
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "2.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 3537,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 1817
+    },
+    {
       "speciesId": "species:redhead",
       "surfaceKind": "MODELLED_RASTER",
       "artifactId": "surface:bbs-redhead",
@@ -1122,6 +1570,34 @@
       "sitesDetected": 912,
       "supportedCells": 22873,
       "surveyedAndNoneFound": 11901
+    },
+    {
+      "speciesId": "species:rock-pigeon",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-rock-pigeon",
+      "artifactPath": "content/intelligence/surfaces/rock-pigeon.json",
+      "artifactHash": "sha256:fd2327a73f101dff50d8be7fc10c8889bf98de1a1535d371aafccc21adfbf9b1",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "seasonalMovement": "MIGRATORY",
+      "seasonalMovementSource": "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)",
+      "colourScale": "RANK_AMONG_DETECTED",
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "2.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 2270,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 4126
     },
     {
       "speciesId": "species:ruddy-duck",
@@ -1514,6 +1990,34 @@
       "sitesDetected": 1299,
       "supportedCells": 22873,
       "surveyedAndNoneFound": 9685
+    },
+    {
+      "speciesId": "species:yellow-headed-blackbird",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-yellow-headed-blackbird",
+      "artifactPath": "content/intelligence/surfaces/yellow-headed-blackbird.json",
+      "artifactHash": "sha256:455de573b83e9266d0bade7b61e26c644e91a7e16d408ff89150facb384762a3",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "seasonalMovement": "MIGRATORY",
+      "seasonalMovementSource": "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)",
+      "colourScale": "RANK_AMONG_DETECTED",
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "2.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 670,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 13640
     }
   ],
   "declined": [
@@ -1538,19 +2042,49 @@
       "detail": "Detected on 24 of 4121 routes, below the 30 the methodology requires of a species."
     },
     {
+      "speciesId": "species:common-murre",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 4 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:egyptian-goose",
+      "reason": "ELIGIBILITY_UNKNOWN",
+      "detail": "No authority North Ground has read establishes meaningful take of this species, so it gets no Species Heat surface until one does."
+    },
+    {
+      "speciesId": "species:emperor-goose",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 0 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:eurasian-wigeon",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 0 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:great-cormorant",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 2 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
       "speciesId": "species:greater-white-fronted-goose",
       "reason": "TOO_FEW_ROUTES",
       "detail": "Detected on 17 of 4121 routes, below the 30 the methodology requires of a species."
     },
     {
       "speciesId": "species:gunnison-sage-grouse",
-      "reason": "PROTECTED_NOT_HUNTED",
-      "detail": "A species that must never be hunted gets no Species Heat surface. The layer answers where to look for this animal; for a protected bird that is a hunting aid."
+      "reason": "NOT_QUARRY",
+      "detail": "North Ground does not treat this species as quarry, so it gets no Species Heat surface. The layer answers where to look for this animal; for a non-quarry species that is a hunting aid."
     },
     {
       "speciesId": "species:harlequin-duck",
       "reason": "TOO_FEW_ROUTES",
       "detail": "Detected on 23 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:indian-peafowl",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 1 of 4121 routes, below the 30 the methodology requires of a species."
     },
     {
       "speciesId": "species:king-eider",
@@ -1564,8 +2098,8 @@
     },
     {
       "speciesId": "species:lesser-prairie-chicken",
-      "reason": "ELIGIBILITY_UNVERIFIED",
-      "detail": "No authority North Ground has read establishes current take of this species, so it gets no Species Heat surface until one does."
+      "reason": "ELIGIBILITY_UNKNOWN",
+      "detail": "No authority North Ground has read establishes meaningful take of this species, so it gets no Species Heat surface until one does."
     },
     {
       "speciesId": "species:long-tailed-duck",
@@ -1573,9 +2107,29 @@
       "detail": "Detected on 18 of 4121 routes, below the 30 the methodology requires of a species."
     },
     {
+      "speciesId": "species:mexican-duck",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 19 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
       "speciesId": "species:montezuma-quail",
       "reason": "TOO_FEW_ROUTES",
       "detail": "Detected on 13 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:muscovy-duck",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 15 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:pelagic-cormorant",
+      "reason": "ELIGIBILITY_UNKNOWN",
+      "detail": "No authority North Ground has read establishes meaningful take of this species, so it gets no Species Heat surface until one does."
+    },
+    {
+      "speciesId": "species:plain-chachalaca",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 3 of 4121 routes, below the 30 the methodology requires of a species."
     },
     {
       "speciesId": "species:purple-gallinule",
@@ -1593,9 +2147,34 @@
       "detail": "Detected on 0 of 4121 routes, below the 30 the methodology requires of a species."
     },
     {
+      "speciesId": "species:rusty-blackbird",
+      "reason": "ELIGIBILITY_UNKNOWN",
+      "detail": "No authority North Ground has read establishes meaningful take of this species, so it gets no Species Heat surface until one does."
+    },
+    {
+      "speciesId": "species:shiny-cowbird",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 1 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
       "speciesId": "species:snow-goose",
       "reason": "TOO_FEW_ROUTES",
       "detail": "Detected on 6 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:snowy-owl",
+      "reason": "ELIGIBILITY_UNKNOWN",
+      "detail": "No authority North Ground has read establishes meaningful take of this species, so it gets no Species Heat surface until one does."
+    },
+    {
+      "speciesId": "species:spectacled-eider",
+      "reason": "NOT_QUARRY",
+      "detail": "North Ground does not treat this species as quarry, so it gets no Species Heat surface. The layer answers where to look for this animal; for a non-quarry species that is a hunting aid."
+    },
+    {
+      "speciesId": "species:stellers-eider",
+      "reason": "NOT_QUARRY",
+      "detail": "North Ground does not treat this species as quarry, so it gets no Species Heat surface. The layer answers where to look for this animal; for a non-quarry species that is a hunting aid."
     },
     {
       "speciesId": "species:surf-scoter",
@@ -1603,9 +2182,14 @@
       "detail": "Detected on 23 of 4121 routes, below the 30 the methodology requires of a species."
     },
     {
+      "speciesId": "species:thick-billed-murre",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 0 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
       "speciesId": "species:trumpeter-swan",
-      "reason": "PROTECTED_NOT_HUNTED",
-      "detail": "A species that must never be hunted gets no Species Heat surface. The layer answers where to look for this animal; for a protected bird that is a hunting aid."
+      "reason": "LIMITED_TAKE",
+      "detail": "Legal take of this species exists only under narrow, jurisdiction-specific conditions. A continental map of where to look would read as huntable everywhere, so none is drawn; Hunt shows an opportunity only where a certified rule establishes one."
     },
     {
       "speciesId": "species:tundra-swan",
@@ -1618,14 +2202,19 @@
       "detail": "Detected on 1 of 4121 routes, below the 30 the methodology requires of a species."
     },
     {
+      "speciesId": "species:white-tipped-dove",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 22 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
       "speciesId": "species:white-winged-scoter",
       "reason": "TOO_FEW_ROUTES",
       "detail": "Detected on 21 of 4121 routes, below the 30 the methodology requires of a species."
     },
     {
       "speciesId": "species:whooping-crane",
-      "reason": "PROTECTED_NOT_HUNTED",
-      "detail": "A species that must never be hunted gets no Species Heat surface. The layer answers where to look for this animal; for a protected bird that is a hunting aid."
+      "reason": "NOT_QUARRY",
+      "detail": "North Ground does not treat this species as quarry, so it gets no Species Heat surface. The layer answers where to look for this animal; for a non-quarry species that is a hunting aid."
     }
   ],
   "unmatched": [
@@ -1633,6 +2222,36 @@
       "speciesId": "species:aberts-squirrel",
       "reason": "NOT_IN_SURVEY",
       "detail": "Sciurus aberti is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:alabama-map-turtle",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Graptemys pulchra is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:alaska-hare",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lepus othus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:alaska-marmot",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Marmota broweri is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:allegheny-dusky-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Desmognathus ochrophaeus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:alligator-snapping-turtle",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Macrochelys temminckii is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:american-alligator",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Alligator mississippiensis is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:american-badger",
@@ -1650,6 +2269,16 @@
       "detail": "Ursus americanus is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:american-bullfrog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lithobates catesbeianus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:american-ermine",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Mustela richardsonii is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:american-marten",
       "reason": "NOT_IN_SURVEY",
       "detail": "Martes americana is not a species the Breeding Bird Survey records."
@@ -1665,9 +2294,39 @@
       "detail": "Tamiasciurus hudsonicus is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:american-toad",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Anaxyrus americanus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:antelope-jackrabbit",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lepus alleni is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:appalachian-cottontail",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sylvilagus obscurus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:aquatic-gartersnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Thamnophis atratus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:arboreal-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Aneides lugubris is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:arctic-fox",
       "reason": "NOT_IN_SURVEY",
       "detail": "Vulpes lagopus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:arctic-ground-squirrel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Urocitellus parryii is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:arctic-hare",
@@ -1675,9 +2334,49 @@
       "detail": "Lepus arcticus is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:argentine-black-and-white-tegu",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Salvator merianae is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:arizona-gray-squirrel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sciurus arizonensis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:arizona-mountain-kingsnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lampropeltis pyromelana is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:arizona-mud-turtle",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Kinosternon arizonense is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:axis-deer",
       "reason": "NOT_IN_SURVEY",
       "detail": "Axis axis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:baja-california-brush-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Urosaurus nigricaudus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:baja-california-collared-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Crotaphytus vestigium is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:baja-california-treefrog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pseudacris hypochondriaca is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:banded-watersnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Nerodia fasciata is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:barbary-sheep",
@@ -1685,9 +2384,24 @@
       "detail": "Ammotragus lervia is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:barking-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Craugastor augusti is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:barking-treefrog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Hyla gratiosa is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:beaver",
       "reason": "NOT_IN_SURVEY",
       "detail": "Castor canadensis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:beldings-ground-squirrel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Urocitellus beldingi is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:bighorn-sheep",
@@ -1695,9 +2409,49 @@
       "detail": "Ovis canadensis is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:bird-voiced-treefrog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Hyla avivoca is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:black-francolin",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Francolinus francolinus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:black-kingsnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lampropeltis getula is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:black-mountain-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Desmognathus welteri is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:black-necked-gartersnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Thamnophis cyrtopsis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:black-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Aneides flavipunctatus is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:black-tailed-jackrabbit",
       "reason": "NOT_IN_SURVEY",
       "detail": "Lepus californicus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:black-tailed-prairie-dog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Cynomys ludovicianus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:blackbuck",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Antilope cervicapra is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:bobcat",
@@ -1705,9 +2459,24 @@
       "detail": "Lynx rufus is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:boreal-chorus-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pseudacris maculata is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:broadhead-skink",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Plestiodon laticeps is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:brown-bear",
       "reason": "NOT_IN_SURVEY",
       "detail": "Ursus arctos is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:brown-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Storeria dekayi is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:brush-rabbit",
@@ -1715,9 +2484,49 @@
       "detail": "Sylvilagus bachmani is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:burmese-python",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Python bivittatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:california-ground-squirrel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Otospermophilus beecheyi is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:california-kingsnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lampropeltis californiae is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:california-lyresnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Trimorphodon lyrophanes is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:california-mountain-kingsnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lampropeltis zonata is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:california-slender-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Batrachoseps attenuatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:california-treefrog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pseudacris cadaverina is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:canada-lynx",
       "reason": "NOT_IN_SURVEY",
       "detail": "Lynx canadensis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:canyon-treefrog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Hyla arenicolor is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:caribou",
@@ -1725,9 +2534,124 @@
       "detail": "Rangifer tarandus is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:central-ratsnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pantherophis alleghaniensis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:checkered-gartersnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Thamnophis marcianus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:chestnut-bellied-sandgrouse",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pterocles exustus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:chicken-turtle",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Deirochelys reticularia is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:clouded-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Aneides ferreus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:coachwhip",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Coluber flagellum is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:coal-skink",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Plestiodon anthracinus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:coast-nightsnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Hypsiglena ochrorhyncha is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:coastal-giant-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Dicamptodon tenebrosus is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:collared-peccary",
       "reason": "NOT_IN_SURVEY",
       "detail": "Pecari tajacu is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:collared-pika",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ochotona collaris is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:columbian-ground-squirrel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Urocitellus columbianus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:common-chuckwalla",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sauromalus ater is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:common-gartersnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Thamnophis sirtalis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:common-lesser-earless-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Holbrookia maculata is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:common-map-turtle",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Graptemys geographica is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:common-sagebrush-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sceloporus graciosus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:common-sharp-tailed-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Contia tenuis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:common-side-blotched-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Uta stansburiana is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:common-snapping-turtle",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Chelydra serpentina is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:copes-gray-treefrog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Hyla chrysoscelis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:corn-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pantherophis guttatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:cottonmouth",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Agkistrodon piscivorus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:couchs-spadefoot",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Scaphiopus couchii is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:coyote",
@@ -1745,14 +2669,134 @@
       "detail": "Sylvilagus audubonii is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:desert-horned-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Phrynosoma platyrhinos is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:desert-iguana",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Dipsosaurus dorsalis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:desert-night-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Xantusia vigilis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:desert-nightsnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Hypsiglena chlorophaea is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:desert-spiny-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sceloporus magister is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:diamond-backed-terrapin",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Malaclemys terrapin is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:diamondback-water-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Nerodia rhombifer is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:douglas-squirrel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Tamiasciurus douglasii is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:dunns-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Plethodon dunni is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:dwarf-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Eurycea quadridigitata is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:eastern-box-turtle",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Terrapene carolina is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:eastern-collared-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Crotaphytus collaris is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:eastern-copperhead",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Agkistrodon contortrix is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:eastern-coral-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Micrurus fulvius is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:eastern-cottontail",
       "reason": "NOT_IN_SURVEY",
       "detail": "Sylvilagus floridanus is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:eastern-diamondback-rattlesnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Crotalus adamanteus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:eastern-fence-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sceloporus undulatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:eastern-glass-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ophisaurus ventralis is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:eastern-gray-squirrel",
       "reason": "NOT_IN_SURVEY",
       "detail": "Sciurus carolinensis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:eastern-hognose-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Heterodon platirhinos is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:eastern-mud-turtle",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Kinosternon subrubrum is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:eastern-newt",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Notophthalmus viridescens is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:eastern-ribbon-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Thamnophis sauritus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:eastern-spadefoot",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Scaphiopus holbrookii is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:eastern-spotted-skunk",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Spilogale putorius is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:eastern-tiger-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ambystoma tigrinum is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:eastern-wolf",
@@ -1765,9 +2809,49 @@
       "detail": "Cervus canadensis is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:ensatina",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ensatina eschscholtzii is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:erckels-spurfowl",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pternistis erckelii is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:ermine",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Mustela erminea is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:european-hare",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lepus europaeus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:european-rabbit",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Oryctolagus cuniculus is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:fallow-deer",
       "reason": "NOT_IN_SURVEY",
       "detail": "Dama dama is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:feral-ferret",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Mustela furo is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:feral-goat",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Capra hircus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:feral-sheep",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ovis aries is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:fisher",
@@ -1775,9 +2859,74 @@
       "detail": "Pekania pennanti is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:five-lined-skink",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Plestiodon fasciatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:florida-pine-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pituophis melanoleucus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:forest-sharp-tailed-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Contia longicauda is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:four-toed-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Hemidactylium scutatum is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:fowlers-toad",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Anaxyrus fowleri is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:fox-squirrel",
       "reason": "NOT_IN_SURVEY",
       "detail": "Sciurus niger is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:gemsbok",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Oryx gazella is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:gilberts-skink",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Plestiodon gilberti is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:glossy-crayfish-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Regina rigida is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:glossy-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Arizona elegans is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:golden-mantled-ground-squirrel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Callospermophilus lateralis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:gophersnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pituophis catenifer is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:grahams-crayfish-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Regina grahamii is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:granite-spiny-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sceloporus orcutti is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:gray-fox",
@@ -1785,14 +2934,284 @@
       "detail": "Urocyon cinereoargenteus is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:gray-francolin",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ortygornis pondicerianus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:gray-rat-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pantherophis obsoletus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:gray-treefrog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Hyla versicolor is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:gray-wolf",
       "reason": "NOT_IN_SURVEY",
       "detail": "Canis lupus is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:great-basin-collared-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Crotaphytus bicinctores is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:great-basin-spadefoot",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Spea intermontana is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:great-plains-ratsnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pantherophis emoryi is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:great-plains-toad",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Anaxyrus cognatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:greater-short-horned-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Phrynosoma hernandesi is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:green-anole",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Anolis carolinensis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:green-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lithobates clamitans is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:green-iguana",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Iguana iguana is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:green-pheasant",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Phasianus versicolor is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:green-ratsnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Senticolis triaspis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:green-treefrog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Hyla cinerea is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:green-water-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Nerodia cyclopion is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:ground-skink",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Scincella lateralis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:gulf-coast-toad",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Incilius nebulifer is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:gulf-coast-waterdog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Necturus beyeri is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:gulf-salt-marsh-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Nerodia clarkii is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:gunnisons-prairie-dog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Cynomys gunnisoni is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:hellbender",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Cryptobranchus alleganiensis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:helmeted-guineafowl",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Numida meleagris is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:himalayan-snowcock",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Tetraogallus himalayensis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:himalayan-tahr",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Hemitragus jemlahicus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:hoary-marmot",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Marmota caligata is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:hog-nosed-skunk",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Conepatus leuconotus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:japanese-quail",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Coturnix japonica is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:kalij-pheasant",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lophura leucomelanos is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:kentucky-spring-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Gyrinophilus porphyriticus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:kit-fox",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Vulpes macrotis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:least-weasel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Mustela nivalis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:lesser-siren",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Siren intermedia is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:loggerhead-musk-turtle",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sternotherus minor is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:long-nosed-leopard-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Gambelia wislizenii is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:long-nosed-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Rhinocheilus lecontei is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:long-tailed-brush-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Urosaurus graciosus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:long-tailed-weasel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Neogale frenata is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:longtail-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Eurycea longicauda is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:madrean-mountain-kingsnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lampropeltis knoblochi is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:many-lined-skink",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Plestiodon multivirgatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:marbled-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ambystoma opacum is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:marsh-rabbit",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sylvilagus palustris is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:mearns-rock-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Petrosaurus mearnsi is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:mediterranean-gecko",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Hemidactylus turcicus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:mexican-spadefoot",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Spea multiplicata is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:milksnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lampropeltis triangulum is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:mimic-glass-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ophisaurus mimicus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:mississippi-map-turtle",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Graptemys pseudogeographica is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:mississippi-slimy-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Plethodon mississippi is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:mohave-rattlesnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Crotalus scutulatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:mole-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ambystoma talpoideum is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:moose",
       "reason": "NOT_IN_SURVEY",
       "detail": "Alces alces is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:mouflon",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ovis musimon is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:mountain-beaver",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Aplodontia rufa is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:mountain-chorus-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pseudacris brachyphona is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:mountain-cottontail",
@@ -1810,6 +3229,21 @@
       "detail": "Puma concolor is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:mud-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pseudotriton montanus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:mud-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Farancia abacura is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:mudpuppy",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Necturus maculosus is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:mule-deer",
       "reason": "NOT_IN_SURVEY",
       "detail": "Odocoileus hemionus is not a species the Breeding Bird Survey records."
@@ -1825,9 +3259,19 @@
       "detail": "Ondatra zibethicus is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:narrowmouth-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Gastrophryne carolinensis is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:new-england-cottontail",
       "reason": "NOT_IN_SURVEY",
       "detail": "Sylvilagus transitionalis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:nile-monitor",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Varanus niloticus is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:nilgai",
@@ -1835,9 +3279,84 @@
       "detail": "Boselaphus tragocamelus is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:nine-banded-armadillo",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Dasypus novemcinctus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:north-american-porcupine",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Erethizon dorsatum is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:north-american-racer",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Coluber constrictor is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:north-american-river-otter",
       "reason": "NOT_IN_SURVEY",
       "detail": "Lontra canadensis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:northern-alligator-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Elgaria coerulea is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:northern-crawfish-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lithobates areolatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:northern-cricket-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Acris crepitans is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:northern-dusky-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Desmognathus fuscus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:northern-flying-squirrel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Glaucomys sabrinus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:northern-leopard-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lithobates pipiens is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:northern-rubber-boa",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Charina bottae is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:northern-three-lined-boa",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lichanura orcutti is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:northern-two-lined-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Eurycea bislineata is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:northern-water-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Nerodia sipedon is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:northwestern-gartersnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Thamnophis ordinoides is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:northwestern-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ambystoma gracile is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:nutria",
@@ -1845,9 +3364,129 @@
       "detail": "Myocastor coypus is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:oak-toad",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Anaxyrus quercicus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:ocellated-skink",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Chalcides ocellatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:ornate-chorus-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pseudacris ornata is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:ornate-tree-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Urosaurus ornatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:ouachita-map-turtle",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Graptemys ouachitensis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:pacific-marten",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Martes caurina is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:pacific-treefrog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pseudacris regilla is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:painted-turtle",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Chrysemys picta is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:panamint-rattlesnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Crotalus stephensi is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:pascagoula-map-turtle",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Graptemys gibbonsi is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:persian-ibex",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Capra aegagrus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:pickerel-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lithobates palustris is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:pig-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lithobates grylio is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:pine-woods-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Rhadinaea flavilata is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:pine-woods-treefrog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Hyla femoralis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:plainbelly-water-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Nerodia erythrogaster is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:plains-gartersnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Thamnophis radix is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:plains-leopard-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lithobates blairi is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:plains-spadefoot",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Spea bombifrons is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:plateau-fence-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sceloporus tristichus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:plateau-striped-whiptail",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Aspidoscelis velox is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:polar-bear",
       "reason": "NOT_IN_SURVEY",
       "detail": "Ursus maritimus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:prairie-kingsnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lampropeltis calligaster is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:prairie-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sceloporus consobrinus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:prairie-rattlesnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Crotalus viridis is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:pronghorn",
@@ -1855,9 +3494,44 @@
       "detail": "Antilocapra americana is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:pygmy-rabbit",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Brachylagus idahoensis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:pygmy-rattlesnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sistrurus miliarius is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:pygmy-short-horned-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Phrynosoma douglasii is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:queen-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Regina septemvittata is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:raccoon",
       "reason": "NOT_IN_SURVEY",
       "detail": "Procyon lotor is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:razorback-musk-turtle",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sternotherus carinatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:red-deer",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Cervus elaphus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:red-eared-slider",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Trachemys scripta is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:red-fox",
@@ -1865,9 +3539,174 @@
       "detail": "Vulpes vulpes is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:red-legged-partridge",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Alectoris rufa is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:red-river-waterdog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Necturus louisianensis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:red-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pseudotriton ruber is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:red-spotted-toad",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Anaxyrus punctatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:redbelly-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Storeria occipitomaculata is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:richardsons-ground-squirrel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Urocitellus richardsonii is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:ring-necked-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Diadophis punctatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:ringed-turtle-dove",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Streptopelia risoria is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:ringed-wall-gecko",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Tarentola annularis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:ringtail",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Bassariscus astutus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:rio-grande-leopard-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lithobates berlandieri is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:river-cooter",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pseudemys concinna is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:river-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lithobates heckscheri is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:rock-partridge",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Alectoris graeca is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:rock-squirrel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Otospermophilus variegatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:rough-earth-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Virginia striatula is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:rough-green-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Opheodrys aestivus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:rough-skinned-newt",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Taricha granulosa is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:rough-tailed-gecko",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Cyrtopodion scabrum is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:sambar",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Rusa unicolor is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:scarlet-kingsnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lampropeltis elapsoides is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:scarlet-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Cemophora coccinea is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:seal-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Desmognathus monticola is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:sidewinder",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Crotalus cerastes is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:sierra-gartersnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Thamnophis couchii is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:sierran-treefrog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pseudacris sierra is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:sika-deer",
       "reason": "NOT_IN_SURVEY",
       "detail": "Cervus nippon is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:six-lined-racerunner",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Aspidoscelis sexlineatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:slender-glass-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ophisaurus attenuatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:smallmouth-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ambystoma texanum is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:smiths-black-headed-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Tantilla hobartsmithi is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:smooth-earth-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Virginia valeriae is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:smooth-green-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Opheodrys vernalis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:smooth-softshell-turtle",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Apalone mutica is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:snowshoe-hare",
@@ -1875,9 +3714,144 @@
       "detail": "Lepus americanus is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:sonora-mud-turtle",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Kinosternon sonoriense is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:sonoran-lyresnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Trimorphodon lambda is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:southeastern-chorus-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pseudacris feriarum is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:southeastern-crowned-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Tantilla coronata is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:southeastern-five-lined-skink",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Plestiodon inexpectatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:southern-alligator-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Elgaria multicarinata is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:southern-california-slender-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Batrachoseps major is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:southern-chorus-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pseudacris nigrita is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:southern-cricket-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Acris gryllus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:southern-dusky-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Desmognathus auriculatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:southern-flying-squirrel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Glaucomys volans is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:southern-leopard-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lithobates sphenocephalus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:southern-painted-turtle",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Chrysemys dorsalis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:southern-toad",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Anaxyrus terrestris is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:southern-zigzag-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Plethodon ventralis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:southwestern-fence-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sceloporus cowlesi is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:southwestern-speckled-rattlesnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Crotalus pyrrhus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:spiny-softshell",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Apalone spinifera is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:spotted-dove",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Spilopelia chinensis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:spotted-dusky-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Desmognathus conanti is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:spotted-leaf-nosed-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Phyllorhynchus decurtatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:spotted-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ambystoma maculatum is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:spring-peeper",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pseudacris crucifer is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:squirrel-treefrog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Hyla squirella is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:stinkpot",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sternotherus odoratus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:striped-racer",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Coluber lateralis is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:striped-skunk",
       "reason": "NOT_IN_SURVEY",
       "detail": "Mephitis mephitis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:striped-whipsnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Coluber taeniatus is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:swamp-rabbit",
@@ -1885,9 +3859,159 @@
       "detail": "Sylvilagus aquaticus is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:swift-fox",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Vulpes velox is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:terrestrial-gartersnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Thamnophis elegans is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:thirteen-lined-ground-squirrel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ictidomys tridecemlineatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:three-lined-boa",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lichanura trivirgata is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:three-lined-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Eurycea guttolineata is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:three-toed-amphiuma",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Amphiuma tridactylum is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:tiger-whiptail",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Aspidoscelis tigris is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:timber-rattlesnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Crotalus horridus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:two-lined-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Eurycea cirrigera is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:two-toed-amphiuma",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Amphiuma means is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:uinta-ground-squirrel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Urocitellus armatus is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:virginia-opossum",
       "reason": "NOT_IN_SURVEY",
       "detail": "Didelphis virginiana is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:wandering-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Aneides vagrans is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:websters-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Plethodon websteri is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:western-banded-gecko",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Coleonyx variegatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:western-black-headed-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Tantilla planiceps is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:western-diamond-backed-rattlesnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Crotalus atrox is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:western-fence-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sceloporus occidentalis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:western-gray-squirrel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sciurus griseus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:western-groundsnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sonora semiannulata is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:western-milk-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lampropeltis gentilis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:western-patch-nosed-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Salvadora hexalepis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:western-rattlesnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Crotalus oreganus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:western-ribbon-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Thamnophis proximus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:western-shovel-nosed-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Chionactis occipitalis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:western-skink",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Plestiodon skiltonianus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:western-spotted-skunk",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Spilogale gracilis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:western-threadsnake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Rena humilis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:western-tiger-salamander",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ambystoma mavortium is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:western-toad",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Anaxyrus boreas is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:white-nosed-coati",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Nasua narica is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:white-tailed-deer",
@@ -1900,6 +4024,11 @@
       "detail": "Lepus townsendii is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:white-tailed-prairie-dog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Cynomys leucurus is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:wild-boar",
       "reason": "NOT_IN_SURVEY",
       "detail": "Sus scrofa is not a species the Breeding Bird Survey records."
@@ -1910,9 +4039,54 @@
       "detail": "Gulo gulo is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:wood-frog",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lithobates sylvaticus is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:woodchuck",
       "reason": "NOT_IN_SURVEY",
       "detail": "Marmota monax is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:woodhouses-toad",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Anaxyrus woodhousii is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:worm-snake",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Carphophis amoenus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:wyoming-ground-squirrel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Urocitellus elegans is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:yellow-backed-spiny-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sceloporus uniformis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:yellow-bellied-marmot",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Marmota flaviventris is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:yellow-mud-turtle",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Kinosternon flavescens is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:zebra-dove",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Geopelia striata is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:zebra-tailed-lizard",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Callisaurus draconoides is not a species the Breeding Bird Survey records."
     }
   ]
 }

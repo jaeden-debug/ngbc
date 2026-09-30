@@ -1,0 +1,42 @@
+{
+ "slug": "indian-peafowl",
+ "scientificName": "Pavo cristatus",
+ "commonNameFr": null,
+ "family": "Phasianidae",
+ "order": "Galliformes",
+ "taxonomyNote": "NatureServe notes the former name Common Peafowl was changed to Indian Peafowl (AOU 2012).",
+ "fieldMarks": [
+  "Male: iridescent blue neck and breast, golden back and sides, long train with eye-spots",
+  "Female: brown, grey and cream with no train",
+  "Juveniles light yellow to brown and resemble the female; males take about 3 years to grow the train",
+  "Weighs 2.7-6 kg; both sexes have spurs (Animal Diversity Web)"
+ ],
+ "behavior": [
+  "Solitary or in small groups outside breeding; roosts in trees, diurnal",
+  "Extremely loud harsh shrieking calls",
+  "Dust-bathes; eats insects, reptiles, seeds and grain",
+  "Polygynous; breeds about April-September"
+ ],
+ "habitat": [
+  "Open forest, forest edge, second growth, scrub and cultivated land."
+ ],
+ "range": "Native to India and southeastern Asia. Small semi-domesticated populations are introduced and established in scattered North American localities and Hawaii.",
+ "lookalikes": [],
+ "aliases": [
+  "peacock",
+  "blue peafowl",
+  "common peafowl"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Pavo cristatus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100180"
+  },
+  {
+   "title": "Animal Diversity Web: Pavo cristatus",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Pavo_cristatus/"
+  }
+ ]
+}

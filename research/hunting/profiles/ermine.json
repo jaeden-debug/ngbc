@@ -1,0 +1,42 @@
+{
+ "slug": "ermine",
+ "scientificName": "Mustela erminea",
+ "commonNameFr": null,
+ "family": "Mustelidae",
+ "order": "Carnivora",
+ "taxonomyNote": "NatureServe lists this as the Beringian ermine after the 2021 split (Colella et al.); mainland North American animals are M. richardsonii.",
+ "fieldMarks": [
+  "Typical weasel form: long body, short legs, triangular head, slightly protruding round ears",
+  "White winter coat with a black tail tip",
+  "Summer: chocolate-brown back, yellowish-white underside up to the upper lip",
+  "Body 170-330 mm; tail about 35% of body length; males about twice the mass of females"
+ ],
+ "behavior": [
+  "Uses riparian woodlands, marshes, fencerows and open areas next to forest",
+  "Climbs trees and swims well; dens in tree roots, hollow logs, stone walls and rodent burrows"
+ ],
+ "habitat": [
+  "Riparian woodlands, marshes, shrubby fencerows and open areas adjacent to forest or shrub borders."
+ ],
+ "range": "Much of Eurasia; in North America, Alaska and western Yukon to most of Arctic Canada and east to Greenland per NatureServe. The widespread North American animal is now M. richardsonii.",
+ "lookalikes": [
+  {
+   "slug": "american-ermine",
+   "name": "American ermine",
+   "howToTell": "Same appearance; separated by range, with M. richardsonii across most of Canada and the northern US."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Beringian Ermine (Mustela erminea)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.1223020/Mustela_erminea"
+  },
+  {
+   "title": "Animal Diversity Web: Mustela erminea (ermine)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Mustela_erminea/"
+  }
+ ]
+}

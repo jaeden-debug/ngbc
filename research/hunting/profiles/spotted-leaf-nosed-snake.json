@@ -1,0 +1,45 @@
+{
+ "slug": "spotted-leaf-nosed-snake",
+ "scientificName": "Phyllorhynchus decurtatus",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes named subspecies are questionable; a BLM Red Rock Canyon checklist labels the species 'western leaf-nosed snake'.",
+ "fieldMarks": [
+  "Small snake with pale ground colour and dark blotches.",
+  "A greatly enlarged, upturned scale on the tip of the snout gives the 'leaf-nosed' look."
+ ],
+ "behavior": [
+  "Nocturnal; active in the early evening in mild to warm weather, most on the surface on June nights (Nevada); spends most of its time under the soil.",
+  "Eats lizard eggs and small lizards such as banded geckos.",
+  "Hibernates in late fall and winter; peak surface activity in June in Arizona and May-June in southern California.",
+  "Lays 2-4 eggs, apparently in June-July."
+ ],
+ "habitat": [
+  "Rocky, gravelly or sandy desert plains or dunes with creosote bush.",
+  "Burrows into loose soil or sand and hides under rocks, surface debris or abandoned rodent burrows."
+ ],
+ "range": "Southern California (north to Inyo County), southern Nevada, extreme southwestern Utah and central Arizona south to southern Baja California and southern Sonora, Mexico; in Nevada only the south of the state; below sea level to about 1,220 m.",
+ "lookalikes": [],
+ "aliases": [
+  "western leaf-nosed snake",
+  "spotted leafnose snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Phyllorhynchus decurtatus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.104596"
+  },
+  {
+   "title": "Spotted Leaf-nosed Snake - Nevada Department of Wildlife",
+   "publisher": "Nevada Department of Wildlife",
+   "url": "https://www.ndow.org/species/spotted-leaf-nosed-snake/"
+  },
+  {
+   "title": "Reptiles, Red Rock Canyon National Conservation Area",
+   "publisher": "Bureau of Land Management",
+   "url": "https://www.blm.gov/sites/default/files/docs/2026-01/Reptiles_3.pdf"
+  }
+ ]
+}

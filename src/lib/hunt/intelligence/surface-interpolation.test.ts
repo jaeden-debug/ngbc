@@ -163,7 +163,7 @@ test("a species without enough routes gets no surface, and is recorded as declin
      hunted gets no surface however many routes detect it, and whooping crane
      was declined for route count, which is luck rather than a rule. Closed
      rather than open, so an invented reason still fails. */
-  const REASONS = new Set(["TOO_FEW_ROUTES", "PROTECTED_NOT_HUNTED", "ELIGIBILITY_UNVERIFIED"]);
+  const REASONS = new Set(["TOO_FEW_ROUTES", "NOT_QUARRY", "LIMITED_TAKE", "ELIGIBILITY_UNKNOWN"]);
   for (const entry of declined) assert.ok(REASONS.has(entry.reason), `unexpected decline reason: ${entry.reason}`);
   for (const id of ["species:brant", "species:snow-goose"]) {
     assert.equal(declined.find((entry) => entry.speciesId === id)?.reason, "TOO_FEW_ROUTES");

@@ -1,0 +1,52 @@
+{
+ "slug": "persian-ibex",
+ "scientificName": "Capra aegagrus",
+ "commonNameFr": null,
+ "family": "Bovidae",
+ "order": "Artiodactyla",
+ "taxonomyNote": "NM Department of Wildlife calls it Persian ibex (bezoar goat, Persian wild goat); Wikipedia treats the species as wild goat, Capra aegagrus, with the Bezoar ibex (C. a. aegagrus) as a subspecies. NatureServe lists Capra hircus as the domestic form of C. aegagrus and notes Grubb (1993, 2005) included C. aegagrus in C. hircus while Jones et al. (1992) kept them separate.",
+ "fieldMarks": [
+  "About 30 in (76 cm) at the shoulder, hindquarters noticeably higher than the front on flat ground",
+  "Mature males up to about 110 lb, females up to about 60 lb; both sexes grow horns (female horns average up to 15 in), male scimitar-shaped horns can exceed 50 in",
+  "Light brown in summer; as the rut approaches mature males turn almost white ('white billies') with darkened leg markings, a black-brown cross over shoulders and back, dark face and jet-black beard and tail"
+ ],
+ "behavior": [
+  "Hooves have a soft inner pocket ringed by a hard rim for clinging to rock; can jump several times their own height",
+  "Keen eyesight, notice movement more than half a mile away",
+  "Typically do not move much during the night",
+  "Seasonal breeding: females bear one to three young in early summer (Pakistan observations)"
+ ],
+ "habitat": [
+  "Steep, rocky terrain and cliffs (hooves are adapted to it); the New Mexico population lives in the Florida Mountains near Deming. Native habitat is forest, shrubland and rocky areas up to about 3,250 m in Turkey."
+ ],
+ "range": "Native from Turkey and the Caucasus east to Iran, Turkmenistan, Afghanistan and Pakistan. In North America, introduced to the Florida Mountains near Deming, New Mexico in 1970.",
+ "lookalikes": [
+  {
+   "slug": "feral-goat",
+   "name": "Feral goat",
+   "howToTell": "Wild goat is the ancestor of domestic goats; the sources read give no field mark separating the wild form from feral goats."
+  }
+ ],
+ "aliases": [
+  "Persian wild goat",
+  "bezoar goat",
+  "bezoar ibex"
+ ],
+ "sources": [
+  {
+   "title": "2023-2024 Ibex Hunting Forecast (species description)",
+   "publisher": "New Mexico Department of Wildlife",
+   "url": "https://wildlife.dgf.nm.gov/2023-2024-ibex-hunting-forecast/"
+  },
+  {
+   "title": "Wild goat",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Wild_goat"
+  },
+  {
+   "title": "NatureServe Explorer: Capra hircus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103788/Capra_hircus"
+  }
+ ]
+}

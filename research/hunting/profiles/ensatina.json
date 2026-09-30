@@ -1,0 +1,44 @@
+{
+ "slug": "ensatina",
+ "scientificName": "Ensatina eschscholtzii",
+ "commonNameFr": {
+  "name": "Salamandre variable",
+  "source": "NatureServe Explorer (French common name entry)",
+  "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.105136/Ensatina_eschscholtzii"
+ },
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe notes the taxonomy of this complex is controversial: some authors recognize from two to eleven or more species, others treat it as one.",
+ "fieldMarks": [
+  "Slender, small salamander: total length up to about 120 mm (BC).",
+  "Uniform pinkish brown, often with a yellow tinge at the base of the legs and digits; yellow or brown flecks sometimes on the sides (BC).",
+  "Large head and eyes, relatively long limbs, and a narrow constriction at the tail base that can be hard to see in small animals (BC).",
+  "Hatchlings are black or dark gray mottled with lighter flecks, with bright yellow leg bases (BC)."
+ ],
+ "behavior": [
+  "Lives entirely on the forest floor from egg to adult; no aquatic larval stage, young hatch as miniature adults (BC; NatureServe).",
+  "Sheltering under or inside rotting logs, stumps, bark piles, rodent burrows or moist crevices (BC).",
+  "Eats insects, spiders and millipedes; inactive in cold or hot dry weather, emerging with fall rains and active until about May or June in the north and at high elevations (NatureServe).",
+  "Female broods a cluster of 7-25 eggs, which hatch in fall or early winter (NatureServe)."
+ ],
+ "habitat": [
+  "Douglas-fir and maple forest and clearings in the north; redwood forest, chaparral, oak woodland and canyons on the coast; pine-oak-incense cedar forest in the Sierra Nevada (NatureServe)."
+ ],
+ "range": "Southwestern British Columbia south along the Coast Ranges to northwestern Baja California, and on the western slopes of the Cascades and Sierra Nevada; absent from the Sacramento-San Joaquin valley; sea level to about 8,000 ft (NatureServe). North of the Sunshine Coast it is known from only a few isolated sites in British Columbia (BC).",
+ "lookalikes": [],
+ "aliases": [
+  "common ensatina"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Ensatina eschscholtzii",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105136"
+  },
+  {
+   "title": "A Guide to Amphibians of Vancouver Island and the Gulf Islands (Common Ensatina account)",
+   "publisher": "Government of British Columbia",
+   "url": "https://www2.gov.bc.ca/assets/gov/environment/plants-animals-and-ecosystems/wildlife-wildlife-habitat/amphibians-reptiles-and-turtles/guide_to_amphibians_of_vancouver_island_gulf_islands.pdf"
+  }
+ ]
+}

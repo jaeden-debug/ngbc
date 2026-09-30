@@ -1,0 +1,47 @@
+{
+ "slug": "gray-rat-snake",
+ "scientificName": "Pantherophis obsoletus",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe (Burbrink 2000, 2001) splits the former P. obsoletus complex into P. obsoletus (Western Ratsnake), P. alleghaniensis and P. spiloides, and lists P. obsoletus as Western Ratsnake; 'gray rat snake' is the batch's common name, and Animal Diversity Web's page title for P. obsoletus is 'Eastern Rat Snake' while its text says western rat snake.",
+ "fieldMarks": [
+  "Glossy black dorsal scales often speckled with brown, orange or yellow; creamy white belly; distinct checkerboard pattern.",
+  "Slender body with a rounded head and weakly keeled scales; adult snout-vent length 96-154 cm, males larger; one of the longest snakes in North America.",
+  "Juveniles grayish with tan blotches, darkening with age."
+ ],
+ "behavior": [
+  "Diurnal especially in cool spring, more active at night in summer; partly arboreal and climbs to raid tree-hollow nests; swims.",
+  "Adults eat mainly mammals (66% in one study), plus birds and eggs, lizards, other snakes and amphibians.",
+  "When cornered coils, opens mouth and may vibrate the tail against leaves like a rattlesnake; brumates October-February in hollow trees, burrows, caves or stumps."
+ ],
+ "habitat": [
+  "Rocky hillsides and canyons, scrub fields, prairie farmland, deciduous forest, swamps, woodland edges, grasslands and rural structures."
+ ],
+ "range": "Central United States, north to southern Minnesota, south along the Mississippi River to the Gulf Coast; west to southern Nebraska and the eastern halves of Kansas, Oklahoma and Texas. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "central-ratsnake",
+   "name": "Central (eastern) ratsnake",
+   "howToTell": "Western ratsnake has a distinct checkerboard pattern; both have weakly keeled scales (Animal Diversity Web)."
+  }
+ ],
+ "aliases": [
+  "Western ratsnake",
+  "Western rat snake",
+  "Texas ratsnake",
+  "Gray rat snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Pantherophis obsoletus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.840332"
+  },
+  {
+   "title": "Animal Diversity Web: Pantherophis obsoletus",
+   "publisher": "University of Michigan Museum of Zoology, Animal Diversity Web",
+   "url": "https://animaldiversity.org/accounts/Pantherophis_obsoletus/"
+  }
+ ]
+}

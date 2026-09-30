@@ -1,0 +1,48 @@
+{
+ "slug": "gray-treefrog",
+ "scientificName": "Hyla versicolor",
+ "commonNameFr": "Rainette versicolore",
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe places North American treefrogs in Dryophytes (Duellman et al. 2016); ADW and the batch list use Hyla. NatureServe name: Dryophytes versicolor.",
+ "fieldMarks": [
+  "3-5 cm (record 6 cm); warty skin, usually gray with black back blotches, or green, brown or pearl-gray; colour changes with background, season and humidity.",
+  "Light spot beneath each eye.",
+  "Orange to golden-yellow, black-speckled concealed hindleg surfaces; white belly.",
+  "Large toe pads.",
+  "Identical to Cope's gray treefrog; call is a slower, more musical trill."
+ ],
+ "behavior": [
+  "Most active at dusk and at night, especially in wet weather; inactive from fall through early spring.",
+  "Males are territorial when calling; adults may eat smaller gray treefrogs.",
+  "Migrates up to several hundred metres to breeding pools; breeds spring or summer (usually May in the north); larvae metamorphose within 2 months."
+ ],
+ "habitat": [
+  "Wooded and forested habitats on the ground, shrubs or trees; rests in tree holes, under bark or in rotten logs; breeds in still shallow woodland ponds, marshes, puddles and swamps."
+ ],
+ "range": "Southeastern Canada from southern Manitoba to New Brunswick, south through the northeastern and south-central US to North Carolina, West Virginia, Ohio, Indiana, Kentucky, Illinois, Tennessee, eastern Texas and southwestern Louisiana, west to North Dakota, Minnesota, Iowa, eastern Kansas and eastern Oklahoma.",
+ "lookalikes": [
+  {
+   "slug": "copes-gray-treefrog",
+   "name": "Cope's gray treefrog",
+   "howToTell": "Indistinguishable by sight; faster, higher-pitched trill."
+  }
+ ],
+ "aliases": [
+  "Eastern gray treefrog",
+  "Northern gray treefrog",
+  "Grey treefrog"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Dryophytes versicolor",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102087/Dryophytes_versicolor"
+  },
+  {
+   "title": "Animal Diversity Web: Hyla versicolor",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Hyla_versicolor/"
+  }
+ ]
+}

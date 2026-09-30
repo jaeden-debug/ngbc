@@ -1,0 +1,36 @@
+{
+ "slug": "band-tailed-pigeon",
+ "scientificName": "Patagioenas fasciata",
+ "fieldMarks": [
+  "Large pigeon, 35-40 cm, bigger than the familiar park pigeon.",
+  "Narrow white band across the nape (absent on juveniles) above green iridescence on the neck.",
+  "Yellow base to the bill.",
+  "Wide grey band across the tail.",
+  "Purplish-pink head and chest; sexes similar."
+ ],
+ "behavior": [
+  "Sociable; forages in flocks in most seasons, even during breeding, and often nests in small loose colonies.",
+  "Nomadic, concentrating where acorns, berries and other wild food crops are abundant.",
+  "Feeds both on the ground and in trees, clambering in small branches and even hanging upside down for berries.",
+  "Diet is dominated by acorns when available, plus berries such as elderberry, manzanita, juniper and wild grape."
+ ],
+ "habitat": [
+  "Oak canyons, foothills, chaparral and mountain forests, including pine-oak and fir forest. Increasingly regular in suburban areas on the Pacific Coast."
+ ],
+ "range": "Western North America, from Western Canada and the Pacific Coast south through California, the Rocky Mountains, the Southwest and Texas. Present year-round in parts of the Pacific Coast; mainly a summer resident elsewhere.",
+ "lookalikes": [
+  {
+   "slug": "rock-pigeon",
+   "name": "Rock pigeon",
+   "howToTell": "The band-tailed pigeon is larger, with a white nape band, yellow-based bill and wide grey tail band."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Band-tailed Pigeon — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/band-tailed-pigeon"
+  }
+ ]
+}

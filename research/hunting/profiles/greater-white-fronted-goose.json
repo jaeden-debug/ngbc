@@ -1,0 +1,46 @@
+{
+ "slug": "greater-white-fronted-goose",
+ "scientificName": "Anser albifrons",
+ "fieldMarks": [
+  "Gray-brown goose, 64–81 cm long",
+  "Adult has a white band around the base of the bill and variable black barring on the belly",
+  "Pale bill and legs",
+  "Fall juvenile is all gray-brown without the white face or belly bars"
+ ],
+ "behavior": [
+  "Long-distance migrant following traditional routes and stopovers, by day or night",
+  "Winter flocks leave night roosts before sunrise for feeding areas, giving musical gabbling and honking",
+  "Grazes and picks waste grain and seed in fields; in water dips or up-ends"
+ ],
+ "habitat": [
+  "Breeds on wet coastal and drier inland Arctic tundra; winters in open country where agricultural fields lie near extensive shallow water."
+ ],
+ "range": "Breeds across Arctic Alaska and northern Canada and winters mainly west of the Mississippi, chiefly in California's Central Valley and Klamath Basin and coastal Texas and Louisiana; Central Flyway birds stage in southern Prairie Province grain fields. The large, dark 'Tule Goose' breeds around Cook Inlet, Alaska, and winters in the Sacramento Valley.",
+ "lookalikes": [
+  {
+   "slug": "snow-goose",
+   "name": "Snow goose (immature blue morph)",
+   "howToTell": "The young white-front has a pale bill and legs and white on the rump."
+  },
+  {
+   "slug": "domestic-goose",
+   "name": "Domestic geese",
+   "howToTell": "Some domestic geese resemble the white-fronted goose."
+  }
+ ],
+ "aliases": [
+  "Tule Goose (large dark Alaskan form)"
+ ],
+ "sources": [
+  {
+   "title": "Greater White-fronted Goose | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/greater-white-fronted-goose"
+  },
+  {
+   "title": "Anser albifrons (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104263/Anser_albifrons"
+  }
+ ]
+}

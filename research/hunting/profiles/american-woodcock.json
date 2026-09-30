@@ -1,0 +1,30 @@
+{
+ "slug": "american-woodcock",
+ "scientificName": "Scolopax minor",
+ "fieldMarks": [
+  "Round-bodied, short-necked, short-legged shorebird with a very long bill.",
+  "Orange-buff belly and crosswise black bars on the crown.",
+  "Camouflaged brown pattern on the back.",
+  "Eyes set far back on the head.",
+  "Female is slightly larger than the male (female 27-31 cm, male 25-28 cm)."
+ ],
+ "behavior": [
+  "Hides in forest thickets by day and often moves to open fields at night.",
+  "Males perform a high, twisting 'sky dance' flight on spring and summer nights with chippering, twittering sounds; on the ground they repeat a loud, buzzy 'bzeep' about every two seconds.",
+  "Probes soft, damp soil with its sensitive bill tip; earthworms are the main prey, plus soil-dwelling insect larvae.",
+  "Migrates at night; many move south ahead of major fall cold fronts, and spring migration starts very early."
+ ],
+ "habitat": [
+  "Wet thickets, moist woods and brushy swamps, especially deciduous or mixed woods with dense young growth and moist soil, such as stream-side thickets. At night it may use open pastures, abandoned farm fields and swamp edges."
+ ],
+ "range": "Eastern North America: Eastern Canada and the Great Lakes south through New England, the Mid-Atlantic, the Plains, the Southeast, Texas and Florida.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "American Woodcock — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/american-woodcock"
+  }
+ ]
+}

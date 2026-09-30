@@ -1,0 +1,37 @@
+{
+ "slug": "hellbender",
+ "scientificName": "Cryptobranchus alleganiensis",
+ "commonNameFr": null,
+ "family": "Cryptobranchidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe notes genomic evidence (Hime 2017) for five species-level lineages and proposals to split eastern (alleganiensis), Ozark (bishopi) and Ohio-drainage (horrida) populations, but keeps C. alleganiensis as the listed taxon.",
+ "fieldMarks": [
+  "Largest aquatic salamander in North America, 295-686 mm and 405-1010 g.",
+  "Flat body with loose skin folds, very flat broad head with a short snout, no eyelids, small stubby limbs and webbed toes (four front, five hind); muscular tail.",
+  "Deep brown or black, occasionally with dark orange spots above or below; belly lighter; sexes look alike; rare albino and red variants.",
+  "Larvae are 25-33 mm and limbless at hatching and have pale gill slits, lost at maturity."
+ ],
+ "behavior": [
+  "Nocturnal and solitary; hides by day under large flat rocks at the stream bottom and hunts from dusk to dawn, with territory centred on the shelter rock (average about 113 m2) defended against other hellbenders.",
+  "Eats mainly crayfish, plus fish, tadpoles and insects, using suction feeding; peak nocturnal activity May-June in West Virginia.",
+  "Breeds late summer to fall; males guard eggs under large rocks or logs."
+ ],
+ "habitat": [
+  "Clear, rocky, fast-flowing creeks and rivers with large shelter rocks and steady oxygen and flow, usually where water stays below about 20 C; avoids wide, slow, muddy water."
+ ],
+ "range": "Eastern and central US: NatureServe lists New York, Pennsylvania, Maryland, Ohio, Indiana, Illinois, Missouri, Arkansas, Kentucky, West Virginia, Virginia, North Carolina, Tennessee, Georgia, Alabama and Mississippi; not recorded for Canada.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105670"
+  },
+  {
+   "title": "Cryptobranchus alleganiensis (Hellbender)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Cryptobranchus_alleganiensis/"
+  }
+ ]
+}

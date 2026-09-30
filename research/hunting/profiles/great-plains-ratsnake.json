@@ -1,0 +1,57 @@
+{
+ "slug": "great-plains-ratsnake",
+ "scientificName": "Pantherophis emoryi",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes recent genomic work and that P. slowinskii may be treated as a separate species or a subspecies of P. emoryi, and that P. emoryi itself may comprise two subspecies; Animal Diversity Web uses 'Great Plains rat snake' and the older Elaphe/Pantherophis placement.",
+ "fieldMarks": [
+  "Gray to light-brown ground colour with large brown blotches down the midline of the back, flanked by two rows of smaller blotches.",
+  "A V- or spear-point mark on the head leading toward the neck.",
+  "Belly is a black-and-white checkerboard with stripes under the tail; scales slightly keeled; anal plate divided.",
+  "Adults 61-153 cm snout-vent length."
+ ],
+ "behavior": [
+  "Mainly nocturnal forager; hides by day under rocks, logs, boards, in crevices and small mammal burrows.",
+  "Semi-arboreal; climbs high in trees to hunt birds; also swims.",
+  "Eats mainly rodents plus birds and eggs, and occasionally snakes, lizards and frogs; kills by constriction.",
+  "When agitated shakes the tail (audible in dry leaf litter, often mistaken for a rattlesnake), strikes and releases musk; hibernates alone."
+ ],
+ "habitat": [
+  "Fields, hill prairie, brushy areas, woodlands, riparian areas, canyons, barnyards and abandoned buildings; avoids heavily forested regions.",
+  "Also rocky hillsides and areas near springs and cave entrances."
+ ],
+ "range": "Southwestern Illinois, Missouri, southern South Dakota and southeastern Colorado south to San Luis Potosi and Veracruz, through most of Texas, with a disjunct population in eastern Utah and western Colorado. Not found in Canada.",
+ "lookalikes": [
+  {
+   "slug": "bullsnake",
+   "name": "Bullsnake",
+   "howToTell": "Scales have more distinct keels (Animal Diversity Web)."
+  },
+  {
+   "slug": "black-ratsnake",
+   "name": "Black ratsnake",
+   "howToTell": "Lacks the spear-point mark on the head."
+  },
+  {
+   "slug": "glossy-snake",
+   "name": "Glossy snake",
+   "howToTell": "Smooth scales and a single anal plate."
+  }
+ ],
+ "aliases": [
+  "Great Plains rat snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Pantherophis emoryi",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.103495"
+  },
+  {
+   "title": "Pantherophis emoryi (Great Plains Rat Snake)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Pantherophis_emoryi/"
+  }
+ ]
+}

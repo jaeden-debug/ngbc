@@ -1,0 +1,38 @@
+{
+ "slug": "hooded-merganser",
+ "scientificName": "Lophodytes cucullatus",
+ "fieldMarks": [
+  "Smallest North American merganser, 41–48 cm",
+  "Male's crest is white with a black border and can be raised high or flattened",
+  "Female is uniformly dark with a mostly dark bill and a pale bushy crest at the back of a long flat head"
+ ],
+ "behavior": [
+  "Dives and hunts by sight for small fish, crayfish and aquatic insects",
+  "Cavity nester that readily uses wood duck nest boxes",
+  "Mostly a short-distance migrant, moving late in fall and early in spring"
+ ],
+ "habitat": [
+  "Wooded lakes, ponds, creeks and narrow rivers in forested country; in winter woodland ponds, wooded swamps and fresh or brackish coastal estuaries."
+ ],
+ "range": "Breeds from southeastern Alaska, central British Columbia and southwestern Alberta south to Oregon, Idaho and Montana, and from central Saskatchewan to Nova Scotia south to Kansas, Louisiana and Georgia; winters mainly along the Pacific, Atlantic and Gulf slopes.",
+ "lookalikes": [
+  {
+   "slug": "bufflehead",
+   "name": "Bufflehead (male)",
+   "howToTell": "Compare males closely; the hooded merganser's white crest is bordered with black."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Hooded Merganser | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/hooded-merganser"
+  },
+  {
+   "title": "Lophodytes cucullatus (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104711/Lophodytes_cucullatus"
+  }
+ ]
+}

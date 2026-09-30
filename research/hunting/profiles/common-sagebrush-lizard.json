@@ -1,0 +1,53 @@
+{
+ "slug": "common-sagebrush-lizard",
+ "scientificName": "Sceloporus graciosus",
+ "commonNameFr": null,
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes disjunct southern California and Sierra San Pedro Martir populations were treated as a distinct species by Grismer (2002).",
+ "fieldMarks": [
+  "Small (up to about 15 cm total length), gray to brown, usually with blotches or crossbars and a pale dorsolateral stripe on each side.",
+  "Scales small, slightly rough with short spines; no distinct blue patches on the throat sides (throat may be blue-mottled).",
+  "Males: dark blue patch on each side of the belly and blue-mottled or streaked throat; females whitish below with faint or absent blue.",
+  "Versus western fence lizard: smaller, less prickly scales, no yellow on the back of the thighs, and pale stripes rather than a checkered pattern."
+ ],
+ "behavior": [
+  "Ground dweller that perches on rocks, logs and snags; uses rodent burrows, shrubs and logs for cover.",
+  "Active about March-April to September-October; inactive in cold winter weather.",
+  "Eats beetles, flies, ants, caterpillars, spiders, ticks and mites.",
+  "Eggs laid May-July; most adult females in Colorado and Utah produce two clutches a year."
+ ],
+ "habitat": [
+  "Sagebrush and other shrublands (manzanita, ceanothus), pinyon-juniper and open ponderosa pine or Douglas-fir woodland.",
+  "Needs open ground with some low bushes."
+ ],
+ "range": "Washington, Idaho, Montana and North Dakota south to northern Baja California, northern Arizona and northwestern New Mexico, east into western Nebraska; about 150-3,200 m. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "western-fence-lizard",
+   "name": "Western fence lizard",
+   "howToTell": "Larger, prickly scales with longer spines, yellow or orange on the rear of the thighs, and a checkered or V-shaped pattern."
+  }
+ ],
+ "aliases": [
+  "sagebrush lizard",
+  "western sagebrush lizard"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Sceloporus graciosus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102981"
+  },
+  {
+   "title": "Common Sagebrush Lizard - Montana Field Guide",
+   "publisher": "Montana Natural Heritage Program / Montana Fish, Wildlife & Parks",
+   "url": "https://fieldguide.mt.gov/speciesDetail.aspx?elcode=ARACF14030"
+  },
+  {
+   "title": "Lizards: Sequoia National Forest, Giant Sequoia National Monument",
+   "publisher": "USDA Forest Service",
+   "url": "https://www.fs.usda.gov/media/236943"
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "slug": "western-groundsnake",
+ "scientificName": "Sonora semiannulata",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe lists the primary name 'Variable Groundsnake' and follows Cox et al. (2018), which split the former S. semiannulata into S. semiannulata, S. episcopa, S. taylori and S. mosaueri; Wikipedia's wider range (including Colorado, Kansas, Missouri and Oklahoma) reflects the older, broader concept.",
+ "fieldMarks": [
+  "Small snake, total length about 8-19 in (20-48 cm), with smooth dorsal scales, a small head and a round pupil.",
+  "Colour and pattern vary widely even within one area: brown, red or orange with black banding, orange or brown striping, or solid-coloured.",
+  "Underside is typically white or gray.",
+  "The head marking is said to suggest a bishop's miter, the origin of the name 'miter snake'."
+ ],
+ "behavior": [
+  "Secretive and mostly nocturnal, sometimes abroad at dusk; often found on roadsides or in dry drainage ditches at night.",
+  "Active from spring to late summer; active as early as mid-March in west Texas.",
+  "Eats spiders, scorpions, centipedes, crickets, grasshoppers and insect larvae.",
+  "Shelters under rocks and other cover or burrows in fine windblown sand at the base of bushes or grass hummocks; lays 3-6 eggs, usually June-July."
+ ],
+ "habitat": [
+  "Arid and semiarid country: river bottoms, desert flats, sand hummocks and rocky hillsides with pockets of loose soil, from prairie and desert lowlands to pinyon-juniper and oak-pine zones; in California it favours areas with fine wind-blown sand, up to about 1,400 m."
+ ],
+ "range": "Southwestern United States and northern Mexico: southeastern Oregon, southwestern Idaho, eastern California, western Nevada, southwestern Utah, western and southern Arizona, southwestern New Mexico and extreme western Texas. Not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "ground snake",
+  "western ground snake",
+  "variable groundsnake",
+  "miter snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Sonora semiannulata (Variable Groundsnake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.768307/Sonora_semiannulata"
+  },
+  {
+   "title": "CWHR life history account: Western Groundsnake (R066)",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=2783"
+  },
+  {
+   "title": "Wikipedia: Western ground snake (last-resort, read as raw wikitext)",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Western_ground_snake"
+  }
+ ]
+}

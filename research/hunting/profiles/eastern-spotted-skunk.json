@@ -1,0 +1,43 @@
+{
+ "slug": "eastern-spotted-skunk",
+ "scientificName": "Spilogale putorius",
+ "commonNameFr": null,
+ "family": "Mephitidae",
+ "order": "Carnivora",
+ "taxonomyNote": "NatureServe (McDonough et al. 2022) splits the eastern spotted skunk into S. putorius (Alleghanian, east of the Mississippi) and S. interrupta (plains spotted skunk); the ADW page predates the split.",
+ "fieldMarks": [
+  "Small, weasel-like skunk with a small white spot on the forehead and one in front of each ear",
+  "Six distinct white stripes on the front of the body; rear body has two interrupted white bands",
+  "White spot each side of the rump and two at the tail base",
+  "Front claws sharp, recurved and more than twice as long as hind claws"
+ ],
+ "behavior": [
+  "Mostly nocturnal; mostly inactive in winter",
+  "Opportunistic omnivore: small mammals, grubs and insects, corn, grapes, berries",
+  "Dens in abandoned burrows, brush piles, hollow logs or trees, rock crevices and under buildings"
+ ],
+ "habitat": [
+  "Prefers forested areas or habitats with significant cover; ADW also gives wooded areas, tall-grass prairie and rocky habitats."
+ ],
+ "range": "NatureServe places S. putorius east of the Mississippi River, from the Florida peninsula north to at least Pennsylvania.",
+ "lookalikes": [
+  {
+   "slug": "western-spotted-skunk",
+   "name": "Western spotted skunk",
+   "howToTell": "White areas more extensive on the western species."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Alleghanian Spotted Skunk (Spilogale putorius)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.1293683/Spilogale_putorius"
+  },
+  {
+   "title": "Animal Diversity Web: Spilogale putorius (eastern spotted skunk)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Spilogale_putorius/"
+  }
+ ]
+}

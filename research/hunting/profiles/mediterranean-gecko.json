@@ -1,0 +1,44 @@
+{
+ "slug": "mediterranean-gecko",
+ "scientificName": "Hemidactylus turcicus",
+ "commonNameFr": null,
+ "family": "Gekkonidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Soft, see-through skin; pale pink to white with dark markings on the back and tail (NDOW).",
+  "Large lidless eyes with vertical pupils and sticky toe pads (NDOW).",
+  "Bumpy skin covered with small raised tubercles, which separates it from the native western banded gecko (NDOW)."
+ ],
+ "behavior": [
+  "Nocturnal; often seen on buildings, window screens and walls near lights hunting moths, crickets, cockroaches and spiders, hiding in cracks and crevices or under bark by day (NDOW; NatureServe).",
+  "Can vocalize with chirps and clicks and can drop its tail (NDOW).",
+  "Females lay two eggs per clutch, several clutches a year, often in communal nests (NDOW); in Texas eggs are laid May to early September (NatureServe)."
+ ],
+ "habitat": [
+  "In North America usually on or in occupied buildings, on walls and ceilings; also under palm leaves, in bark crevices and rocky outcrops (NatureServe; NDOW)."
+ ],
+ "range": "Introduced in North America. Native to the Mediterranean region and nearby (NatureServe; NDOW); established from Florida to Texas and north into southeastern states, in Arizona and southern California, and in southern Nevada urban areas (NatureServe; NDOW).",
+ "lookalikes": [
+  {
+   "slug": "western-banded-gecko",
+   "name": "Western banded gecko",
+   "howToTell": "Native western banded gecko lacks the Mediterranean gecko's raised tubercles on bumpy skin (NDOW)."
+  }
+ ],
+ "aliases": [
+  "Mediterranean house gecko"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Hemidactylus turcicus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100087"
+  },
+  {
+   "title": "Mediterranean House Gecko",
+   "publisher": "Nevada Department of Wildlife",
+   "url": "https://www.ndow.org/species/mediterranean-house-gecko/"
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+{
+ "slug": "rock-ptarmigan",
+ "scientificName": "Lagopus muta",
+ "fieldMarks": [
+  "Smaller than the willow ptarmigan with a smaller bill.",
+  "Winter: both sexes mostly white; winter male has a black line from bill to eye.",
+  "Breeding: females turn mottled brown before males; males stay mostly white into early summer."
+ ],
+ "behavior": [
+  "Courting males give a snoring kurr-kurr.",
+  "Picks at vegetation: willow, dwarf birch, alder, saxifrage, crowberry buds, seeds and berries.",
+  "In winter sometimes follows caribou or muskox to feed where they scraped away snow.",
+  "Leaves the northernmost range and highest mountains in winter, moving lower and south in flocks."
+ ],
+ "habitat": [
+  "Dry, open tundra with rock outcrops and dwarf shrubs, above timberline in mountains and on northern coasts."
+ ],
+ "range": "Arctic and alpine tundra of Alaska and northern Canada.",
+ "lookalikes": [
+  {
+   "slug": "willow-ptarmigan",
+   "name": "Willow ptarmigan",
+   "howToTell": "Willow is larger with a heavier bill; the winter male lacks the black eye line and breeding molt timing differs."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Rock Ptarmigan — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/rock-ptarmigan"
+  }
+ ]
+}

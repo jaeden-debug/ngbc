@@ -1,0 +1,47 @@
+{
+ "slug": "spotted-dusky-salamander",
+ "scientificName": "Desmognathus conanti",
+ "commonNameFr": null,
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Moderately stout body with a moderately keeled tail, 6.4-12.7 cm total length.",
+  "Usually 6-8 pairs of golden spots on the back, which in adults may fuse into a light stripe with a dark, irregular border.",
+  "Belly light with dark flecks.",
+  "Wash of whitish or bluish speckling across sides and tail and no light-coloured 'portholes' on the flanks, separating it from several sympatric Desmognathus.",
+  "Nearly identical to northern dusky salamander; best told apart by range."
+ ],
+ "behavior": [
+  "Takes refuge under logs, rocks and leaf litter by day and moves on stream banks at night.",
+  "Feeds opportunistically on small invertebrates, mostly terrestrial insects; may be active by day in dark, wet weather.",
+  "Females brood up to 35 eggs under moss or rocks from mid-June through August."
+ ],
+ "habitat": [
+  "Floodplains, sloughs and mucky sites along upland streams to about 900 m, usually near running or trickling water.",
+  "Abundant in and near cool streams and small rivers in the Piedmont and lower mountains of SC and GA."
+ ],
+ "range": "Lowland drainages east of the Mississippi River, from extreme southern Illinois and southwestern Kentucky to east-central Tennessee and northwest Georgia, south to the Florida Panhandle and west through Alabama and Louisiana. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "northern-dusky-salamander",
+   "name": "Northern dusky salamander",
+   "howToTell": "Very similar; best separated by range (northern dusky is the northeastern species)."
+  }
+ ],
+ "aliases": [
+  "Spotted dusky"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Desmognathus conanti",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.857993/Desmognathus_conanti"
+  },
+  {
+   "title": "SREL: Northern / Spotted Dusky Salamander",
+   "publisher": "Savannah River Ecology Laboratory, University of Georgia",
+   "url": "https://srelherp.uga.edu/salamanders/northern-spotted-dusky-salamander/"
+  }
+ ]
+}

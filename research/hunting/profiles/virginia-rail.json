@@ -1,0 +1,39 @@
+{
+ "slug": "virginia-rail",
+ "scientificName": "Rallus limicola",
+ "fieldMarks": [
+  "Medium-sized rail, 21-25 cm, with a long bill.",
+  "Rich rusty-cinnamon underparts contrasting with grey cheeks.",
+  "Sharp black-and-white bars on the flanks and reddish wings.",
+  "Juveniles are blackish at first."
+ ],
+ "behavior": [
+  "Seldom seen but often heard: a far-carrying 'ticket, ticket, ticket' and various grunts.",
+  "Probes mud and shallow water or stalks small prey; eats mostly aquatic insects and larvae, plus crayfish, snails and worms.",
+  "Most migrate to the southern United States and northern Mexico; some western U.S. populations may be resident."
+ ],
+ "habitat": [
+  "Fresh and brackish marshes for nesting, often in drier spots than the sora where both breed; moves into salt marshes in winter."
+ ],
+ "range": "Breeds across southern Canada and much of the United States and winters in the southern United States and northern Mexico, some as far as Guatemala.",
+ "lookalikes": [
+  {
+   "slug": "king-rail",
+   "name": "King rail",
+   "howToTell": "The king rail is much larger with tan or brownish rather than grey cheeks."
+  },
+  {
+   "slug": "sora",
+   "name": "Sora",
+   "howToTell": "The sora is short-billed with a yellow bill and black face; the Virginia rail is long-billed with grey cheeks."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Virginia Rail — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/virginia-rail"
+  }
+ ]
+}

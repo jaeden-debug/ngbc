@@ -8,7 +8,8 @@ test("the proxy's species slugs are exactly the repository's published species",
   const resources = await contentRepository.getPublishedResources({ locale: "en-CA" });
   const expected = resources.filter((resource) => resource.type === "species").map((resource) => resource.slug).sort();
   assert.deepEqual([...PUBLISHED_SPECIES_SLUGS].sort(), expected);
-  assert.equal(expected.length, 133);
+  /* Non-vacuous: the catalogue is the research registry, never empty. */
+  assert.ok(expected.length > 400, `${expected.length}`);
   assert.ok(isPublishedSpeciesSlug("ruffed-grouse"));
   assert.ok(!isPublishedSpeciesSlug("not-a-real-species"));
   assert.ok(!isPublishedSpeciesSlug("ruffed-grouse/extra"));

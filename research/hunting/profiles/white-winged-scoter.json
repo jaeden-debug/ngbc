@@ -1,0 +1,35 @@
+{
+ "slug": "white-winged-scoter",
+ "scientificName": "Melanitta deglandi",
+ "fieldMarks": [
+  "Largest scoter.",
+  "White wing patch, obvious in flight but often hidden on the water.",
+  "Drake black with a small white teardrop around the eye.",
+  "Hens and immature males very dark with paler facial patches."
+ ],
+ "behavior": [
+  "Flocks fly low in wavering lines over water.",
+  "Generally silent; soft whistles and guttural croaks.",
+  "Dives for mollusks, crustaceans, aquatic insects and some fish.",
+  "Males winter farther north than females and young."
+ ],
+ "habitat": [
+  "Breeds on lakes, ponds and slow rivers in open country; winters on coastal salt bays and ocean shallows, especially over shellfish beds."
+ ],
+ "range": "Breeds across Alaska and Canada; winters on both coasts and the Great Lakes, with inland occurrences on large waters.",
+ "lookalikes": [
+  {
+   "slug": "surf-scoter",
+   "name": "Surf scoter",
+   "howToTell": "Hens are told apart by differing face and eye pattern; white-winged shows the white wing patch."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "White-winged Scoter — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/white-winged-scoter"
+  }
+ ]
+}

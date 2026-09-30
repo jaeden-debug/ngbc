@@ -1,0 +1,45 @@
+{
+ "slug": "northern-leopard-frog",
+ "scientificName": "Lithobates pipiens",
+ "commonNameFr": "Grenouille léopard",
+ "family": "Ranidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe notes American ranid genus arrangements are contested (Lithobates vs Rana); the batch name follows NatureServe's Lithobates.",
+ "fieldMarks": [
+  "Slim, long-legged, green or brownish",
+  "Well-defined round or oval dark spots with pale borders",
+  "Pale dorsolateral ridges not inset at the rear; white stripe on the upper jaw",
+  "Adults 5-9 cm, occasionally to 11 cm"
+ ],
+ "behavior": [
+  "Egg laying about April in southern Québec and the Great Lakes, later farther north",
+  "Summer use of wet meadows and fields",
+  "Eats small invertebrates at the water's edge or in fields"
+ ],
+ "habitat": [
+  "Near springs, slow streams, marshes, bogs, ponds and lakes with rooted aquatic vegetation; wet meadows in summer."
+ ],
+ "range": "Great Slave Lake, Hudson Bay and Labrador south to southern New England, Kentucky, Nebraska, New Mexico and Arizona, west to southeastern British Columbia and eastern Washington/Oregon; spotty and partly introduced in the west.",
+ "lookalikes": [
+  {
+   "slug": "pickerel-frog",
+   "name": "Pickerel frog",
+   "howToTell": "Squarish spots and yellow or orange on the hidden hind-limb and groin surfaces."
+  },
+  {
+   "slug": "plains-leopard-frog",
+   "name": "Plains leopard frog",
+   "howToTell": "Never green, usually a pale spot on the eardrum, ridge rear ends inset."
+  }
+ ],
+ "aliases": [
+  "leopard frog"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Lithobates pipiens",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101454"
+  }
+ ]
+}

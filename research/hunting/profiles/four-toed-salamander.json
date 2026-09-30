@@ -1,0 +1,49 @@
+{
+ "slug": "four-toed-salamander",
+ "scientificName": "Hemidactylium scutatum",
+ "commonNameFr": "Salamandre à quatre doigts",
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Small: 5-10.2 cm; rusty or gray-brown with grayish sides and black and bluish speckles.",
+  "Four toes on each hind foot.",
+  "Constricted ring at the base of the tail.",
+  "13-14 costal grooves; tail about 57% of length.",
+  "Females have rounded snouts, breeding males squared snouts."
+ ],
+ "behavior": [
+  "Relatively sedentary, moving short distances between breeding sites and nonbreeding habitat; mostly inactive in the coldest months.",
+  "If disturbed curls up with head under the tail, or may detach its tail.",
+  "Nests communally in moss or protected sites above or beside a pool, females guarding the eggs about 2 months."
+ ],
+ "habitat": [
+  "Swamps, boggy streams and wet wooded or open areas near quiet mossy or sedgy pools; Sphagnum moss is commonly abundant."
+ ],
+ "range": "Discontinuously from Nova Scotia, New Brunswick, southern Quebec and southern Ontario through Michigan, Wisconsin and Minnesota south to southeastern Oklahoma, Louisiana, Mississippi, Alabama, the Florida panhandle and Georgia; fairly continuous in the northeast, spotty in the southwest.",
+ "lookalikes": [
+  {
+   "slug": "two-lined-salamander",
+   "name": "Southern two-lined salamander",
+   "howToTell": "Five toes on each hind foot and no tail constriction."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Hemidactylium scutatum",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101408/Hemidactylium_scutatum"
+  },
+  {
+   "title": "Animal Diversity Web: Hemidactylium scutatum",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Hemidactylium_scutatum/"
+  },
+  {
+   "title": "SREL: Four-toed Salamander",
+   "publisher": "Savannah River Ecology Laboratory, University of Georgia",
+   "url": "https://srelherp.uga.edu/salamanders/four-toed-salamander/"
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "slug": "american-bison",
+ "scientificName": "Bison bison",
+ "fieldMarks": [
+  "Largest land mammal in North America; bulls about 900 kg, cows about 500 kg",
+  "Dark chocolate-brown with long hair on the head, shoulders and forelegs and short hair on the flanks and hindquarters",
+  "Protruding shoulder hump",
+  "Both sexes carry short, upward-curving horns",
+  "Calves are reddish-tan at birth and begin turning brown after about 2.5 months"
+ ],
+ "behavior": [
+  "Herds of cows and young appear to be led by older females; groups average about 20 in winter and about 200 in summer",
+  "Rut in July and August: bulls bellow, wallow and fight",
+  "Grazes grasses and sedges 9–11 hours a day; swings its head to clear snow",
+  "Rubs on trees and rocks and uses dirt wallows"
+ ],
+ "habitat": [
+  "Open plains and grasslands in the south; boreal forest openings, meadows and river valleys in the north; attracted to recently burned areas."
+ ],
+ "range": "Once widespread from Alaska and western Canada across the U.S. into northern Mexico; now in isolated herds within and outside the historical range. Yellowstone is the only place in the lower 48 states with a continuously free-ranging population since prehistoric times.",
+ "lookalikes": [],
+ "aliases": [
+  "Buffalo"
+ ],
+ "sources": [
+  {
+   "title": "Bison - Yellowstone National Park",
+   "publisher": "U.S. National Park Service",
+   "url": "https://www.nps.gov/yell/learn/nature/bison.htm"
+  },
+  {
+   "title": "Bison bison (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101908/Bos_bison"
+  }
+ ]
+}

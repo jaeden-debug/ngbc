@@ -1,0 +1,42 @@
+{
+ "slug": "mud-snake",
+ "scientificName": "Farancia abacura",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe lists it as Red-bellied Mudsnake.",
+ "fieldMarks": [
+  "Non-venomous; adults 91-122 cm total length, females thicker-bodied, males longer-tailed.",
+  "Shiny blue-gray to black back, often with a metallic sheen.",
+  "Sides with salmon, pink or red bars; belly checkered with alternating red and black bars.",
+  "Flat head, slightly constricted neck and small inconspicuous eyes; smooth scales in 19 rows at midbody.",
+  "Juveniles similar but with a needle-like tail that adults lack."
+ ],
+ "behavior": [
+  "Semiaquatic and fossorial; prowls in the open at night, buried in mud much of the time on land.",
+  "Eats sirens, amphiumas, other salamanders, frogs, tadpoles and fish.",
+  "Active March-November in Texas; hibernates in the northern part of its range and is active year-round in the south.",
+  "Lays 6-104 eggs (usually under 50), mostly July to early August."
+ ],
+ "habitat": [
+  "Marshes, swampy lake margins, river-edge wetlands, oxbows, beaver ponds, slow mud-bottomed streams, sloughs, floodplains, ditches and brackish tidal areas; burrows in soft soil and wet debris."
+ ],
+ "range": "Coastal Plain from southeastern Virginia to southern Florida, west to eastern Texas and north in the Mississippi Valley to southern Illinois. Not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Red-bellied mudsnake",
+  "Mud snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Farancia abacura",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.106573/Farancia_abacura"
+  },
+  {
+   "title": "Animal Diversity Web: Farancia abacura",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Farancia_abacura/"
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "slug": "northwestern-salamander",
+ "scientificName": "Ambystoma gracile",
+ "commonNameFr": {
+  "name": "Salamandre foncée",
+  "source": "NatureServe Explorer (French common name entry)",
+  "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103251/Ambystoma_gracile"
+ },
+ "family": "Ambystomatidae",
+ "order": "Caudata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Smooth olive-green to brown or dark brown back, often with blotches and sometimes yellow flecks along the sides.",
+  "Swollen parotoid glands behind each eye, unusual among ambystomatids.",
+  "Glandular ridge along the top of the tail, which tapers sharply toward the tip.",
+  "Terrestrial adults about 14-22 cm total length; aquatic adults reach about 26 cm.",
+  "Breeding males are darker than females; unmetamorphosed males have enlarged hind limbs and feet."
+ ],
+ "behavior": [
+  "Non-paedomorphic adults live underground most of the year and are seen mainly at breeding time and on fall rains.",
+  "Adults migrate on rainy nights between nonbreeding habitat and breeding ponds; breeding runs from January in the south to July in the north or at elevation.",
+  "Nocturnal on land; aquatic forms are strictly nocturnal where fish are present. When alarmed it assumes a defensive posture and secretes a milky toxic substance.",
+  "Feeds on soft-bodied invertebrates such as worms, snails and insect larvae; introduced trout reduce larval survival."
+ ],
+ "habitat": [
+  "Humid forest, woodland and open grassland near breeding ponds; adults shelter under rotting logs, leaf litter and debris along stream banks or in animal burrows.",
+  "Eggs are laid attached to vegetation in ponds, lakes and slow streams; montane populations are often paedomorphic (remain gilled)."
+ ],
+ "range": "Pacific coast from extreme southeastern Alaska through coastal British Columbia, Washington and Oregon to northern California (Mendocino area), from sea level to about 3,110 m.",
+ "lookalikes": [],
+ "aliases": [
+  "Ambystoma gracile"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Ambystoma gracile (Northwestern Salamander)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103251/Ambystoma_gracile"
+  },
+  {
+   "title": "Ambystoma gracile — Animal Diversity Web",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Ambystoma_gracile/"
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "slug": "red-legged-partridge",
+ "scientificName": "Alectoris rufa",
+ "commonNameFr": null,
+ "family": "Phasianidae",
+ "order": "Galliformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Sandy-brown above, pinkish-buff belly, pale grey breast",
+  "White face with a prominent gorget of black streaking, cream throat",
+  "Bold rufous-and-black flank bars (typically eight to ten), red bill and eye-ring, pinkish-red legs"
+ ],
+ "behavior": [
+  "Prefers running to flying; short flight on rounded wings",
+  "Call: three-syllable 'ka-chu-chu'",
+  "Seed eater; chicks rely on insects",
+  "Forms flocks outside the breeding season"
+ ],
+ "habitat": [
+  "Dry lowlands such as farmland and open stony ground; ground nester."
+ ],
+ "range": "Native to France, Iberia and northwest Italy; naturalised in England and Wales. The page read does not describe North American populations.",
+ "lookalikes": [
+  {
+   "slug": "rock-partridge",
+   "name": "Rock partridge",
+   "howToTell": "Sharply defined black gorget without streaking below it; greyer back."
+  }
+ ],
+ "aliases": [
+  "French partridge"
+ ],
+ "sources": [
+  {
+   "title": "Red-legged partridge",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Red-legged_partridge"
+  },
+  {
+   "title": "Alectoris rufa (classification)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Alectoris_rufa/"
+  }
+ ]
+}

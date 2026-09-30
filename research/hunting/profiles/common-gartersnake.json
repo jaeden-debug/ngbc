@@ -1,0 +1,58 @@
+{
+ "slug": "common-gartersnake",
+ "scientificName": "Thamnophis sirtalis",
+ "commonNameFr": {
+  "name": "Couleuvre rayée",
+  "source": "NatureServe Explorer (French common name)"
+ },
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes recent genome-scale work does not support the traditional subspecies but found four geographic lineages, and Nicholson (2025) retains subspecies.",
+ "fieldMarks": [
+  "Typically three light stripes (one down the back, one on each side) on a black, brown, gray or olive ground; stripes may be white, yellow, blue, greenish or brown, sometimes absent or checkerboarded by dark spots.",
+  "Head wider than neck and uniformly dark; red tongue tipped in black; keeled scales.",
+  "19 dorsal scale rows at midbody, lateral stripe on rows 2 and 3, 7 upper labials, undivided anal scale.",
+  "Adults usually 41-66 cm (to about 131 cm); some populations are entirely black; newborns 12-23 cm."
+ ],
+ "behavior": [
+  "Active mainly by day across a wider range of temperatures than most snakes; hibernates from late October to March or early April, often communally in rodent or crayfish burrows, rock piles and stumps, and may bask on mild winter days.",
+  "Eats earthworms, amphibians (immune to toad secretions), leeches, slugs, snails, insects, crayfish and small fish, and occasionally small mammals and nestlings; hunts by smell and sight.",
+  "Mostly solitary outside the breeding and hibernation seasons; follows pheromone trails."
+ ],
+ "habitat": [
+  "Very adaptable: meadows, marshes, woodland and hillsides, preferring moist grassy areas near ponds, lakes, ditches and streams, and common in suburbs with cover such as debris, boards or rocks."
+ ],
+ "range": "Across much of North America from Florida to coastal Quebec and west to British Columbia, south into southern California east of the Sierras and through the less arid Southwest (largely absent from the arid southwestern United States).",
+ "lookalikes": [
+  {
+   "slug": "ribbon-snake",
+   "name": "Ribbon snakes (Thamnophis sauritus, T. butleri)",
+   "howToTell": "Close relatives of similar appearance; Animal Diversity Web lists them as the species commonly confused with the common gartersnake."
+  },
+  {
+   "slug": "plains-gartersnake",
+   "name": "Plains gartersnake (Thamnophis radix)",
+   "howToTell": "Plains gartersnake has its lateral stripe on scale rows 3 and 4 rather than 2 and 3."
+  },
+  {
+   "slug": "terrestrial-gartersnake",
+   "name": "Terrestrial gartersnake (Thamnophis elegans)",
+   "howToTell": "Usually 8 upper labials and 21 scale rows at midbody, versus 7 and 19."
+  }
+ ],
+ "aliases": [
+  "common garter snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Thamnophis sirtalis (Common Gartersnake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101158/Thamnophis_sirtalis"
+  },
+  {
+   "title": "Animal Diversity Web: Common Garter Snake",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Thamnophis_sirtalis/"
+  }
+ ]
+}

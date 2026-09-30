@@ -1,0 +1,45 @@
+{
+ "slug": "pascagoula-map-turtle",
+ "scientificName": "Graptemys gibbonsi",
+ "commonNameFr": null,
+ "family": "Emydidae",
+ "order": "Testudines",
+ "taxonomyNote": "ADW also calls it Gibbon's map turtle; G. pearlensis was split from it.",
+ "fieldMarks": [
+  "Large; females to 29.5 cm carapace, males to 12.4 cm.",
+  "High-domed olive, brown or green carapace with a medial keel bearing spines on the second and third vertebrals.",
+  "Large greenish interorbital blotch joined to two postorbital blotches, with yellow paramedian neck stripes.",
+  "Yellow or orange vertical line on each marginal scute; nasal trident usually present."
+ ],
+ "behavior": [
+  "Forages and basks by day and spends nights underwater clinging to branches.",
+  "Adult females eat mainly mollusks; males and juveniles eat insects and other arthropods.",
+  "Competes for basking space by pushing; larger turtles win more often."
+ ],
+ "habitat": [
+  "Large to medium rivers with mollusks, sandy banks or bars, deep pools and logs; highest densities near deadwood. Nests in sandy banks or bars."
+ ],
+ "range": "Endemic to the Pascagoula River drainage in Mississippi (Pascagoula, Leaf and Chickasawhay rivers and tributaries). Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "alabama-map-turtle",
+   "name": "Alabama map turtle",
+   "howToTell": "Low-domed shell with concentric yellow semicircles on the marginals and no nasal trident; Mobile Bay drainage."
+  }
+ ],
+ "aliases": [
+  "Gibbon's map turtle"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Graptemys gibbonsi",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.844122/Graptemys_gibbonsi"
+  },
+  {
+   "title": "Animal Diversity Web: Graptemys gibbonsi",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Graptemys_gibbonsi/"
+  }
+ ]
+}

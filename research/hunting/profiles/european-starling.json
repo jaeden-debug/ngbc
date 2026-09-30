@@ -1,0 +1,38 @@
+{
+ "slug": "european-starling",
+ "scientificName": "Sturnus vulgaris",
+ "commonNameFr": "Étourneau sansonnet",
+ "family": "Sturnidae",
+ "order": "Passeriformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Short tail and thin straight bill; 20.6-23.1 cm",
+  "Black with purple and green gloss in spring and summer",
+  "Fresh fall plumage heavily marked with white spots, wearing off through winter",
+  "Bill bright yellow in breeding season (base of lower mandible blue in males, pink in females), duller otherwise",
+  "Juveniles all dusty gray with dark bills"
+ ],
+ "behavior": [
+  "Usually forages in flocks, mostly on the ground probing soil; sometimes takes fruit in trees or insects in the air",
+  "Mostly insects, berries and seeds; often imitates other birds",
+  "Northern birds mostly move south in fall, migrating by day; southern birds may be permanent residents"
+ ],
+ "habitat": [
+  "Cities, parks, farms, open groves and fields; almost any disturbed habitat, usually scarce in extensive wild forest, scrub or desert."
+ ],
+ "range": "Native to Eurasia; introduced in New York City in 1890. Now breeds from southeastern Alaska across southern Canada and south through most of the U.S. to southern Mexico.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: European Starling",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/european-starling"
+  },
+  {
+   "title": "NatureServe Explorer: Sturnus vulgaris (European Starling)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103906/Sturnus_vulgaris"
+  }
+ ]
+}

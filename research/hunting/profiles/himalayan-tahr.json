@@ -1,0 +1,39 @@
+{
+ "slug": "himalayan-tahr",
+ "scientificName": "Hemitragus jemlahicus",
+ "commonNameFr": null,
+ "family": "Bovidae",
+ "order": "Artiodactyla",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Males about 73 kg with a thick neck and shoulder ruff; females about 36 kg",
+  "Curved horns: males to 450 mm, females to 190 mm",
+  "Winter coat darker, summer coat lighter brown",
+  "Young uniformly brown with black front legs"
+ ],
+ "behavior": [
+  "Herds of 2-23; males separate from females outside the breeding season",
+  "Most active at dawn and dusk; moves up and down slopes daily",
+  "Grazes alpine herbs and subalpine plants"
+ ],
+ "habitat": [
+  "Rugged, mostly wooded slopes and rocky ground at 750-5,000 m."
+ ],
+ "range": "Native to the Himalaya from Kashmir through northern India to Nepal and Sikkim, and southern Tibet. Introduced in New Zealand, California and South Africa (NatureServe); Animal Diversity Web also lists New Mexico and Ontario.",
+ "lookalikes": [],
+ "aliases": [
+  "tahr"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Hemitragus jemlahicus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.106408"
+  },
+  {
+   "title": "Animal Diversity Web: Hemitragus jemlahicus",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Hemitragus_jemlahicus/"
+  }
+ ]
+}

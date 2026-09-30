@@ -1,0 +1,36 @@
+{
+ "slug": "barking-frog",
+ "scientificName": "Craugastor augusti",
+ "commonNameFr": null,
+ "family": "Craugastoridae",
+ "order": "Anura",
+ "taxonomyNote": "Formerly placed in the genus Eleutherodactylus (NatureServe); NatureServe notes subspecies latrans and cactorum have been proposed as separate species but it currently recognizes no subspecies.",
+ "fieldMarks": [
+  "Toad-shaped frog 64.5-75 mm with a large head and small truncated toe pads.",
+  "Greenish to tan, smooth skin with scattered dark spots; dorsolateral skin folds on the back, one fold across the back of the head, and a disk-shaped fold on the belly.",
+  "Young are often greenish with a fawn band across the middle of the back."
+ ],
+ "behavior": [
+  "Nocturnal; call carries like a dog's bark at a distance and sounds like a throaty 'whurr' close up.",
+  "Breeds with rain: February-May in Texas, late June-July in Arizona; eggs are laid on land under rocks, logs or in crevices and there is no free-living tadpole stage.",
+  "Walks with the body held high and inflates to several times normal size when threatened; most active at night during rains."
+ ],
+ "habitat": [
+  "Low-elevation rocky shrubland, desert and woodland, often on limestone or rhyolite outcrops, in caves or crevices or rodent burrows; under rocks or logs, including oak and juniper woodland in Texas."
+ ],
+ "range": "Central Texas to southeastern New Mexico and south into Mexico; NatureServe lists Arizona, New Mexico and Texas. Not recorded for Canada.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102193"
+  },
+  {
+   "title": "Craugastor augusti (Barking Frog)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Craugastor_augusti/"
+  }
+ ]
+}

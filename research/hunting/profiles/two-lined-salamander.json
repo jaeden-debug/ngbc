@@ -1,0 +1,51 @@
+{
+ "slug": "two-lined-salamander",
+ "scientificName": "Eurycea cirrigera",
+ "commonNameFr": null,
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe calls it Southern Two-lined Salamander; some authorities treat it as a subspecies of Eurycea bislineata.",
+ "fieldMarks": [
+  "Small: about 6-12 cm total length, tail nearly half of total length.",
+  "Yellow-orange to rusty body with two dark-brown stripes running its length that break into speckling toward the tail.",
+  "Back and often sides speckled with dark-brown spots.",
+  "14 costal grooves (northern two-lined has 15 or 16).",
+  "Breeding males grow two cirri, small antenna-like lobes hanging from the snout."
+ ],
+ "behavior": [
+  "Cryptic; spends most time under logs or foliage and emerges to forage on the forest floor on damp nights; sometimes active by day in shaded wet areas.",
+  "Males may be territorial toward other males.",
+  "Often seen crossing roads in rainy weather during the breeding season; eggs are laid on or under submerged rocks, logs or plants, in winter in the south."
+ ],
+ "habitat": [
+  "Rocky brooks, springs, seepages, river swamps and forested floodplains with stagnant pools; may disperse into wooded uplands in wet weather."
+ ],
+ "range": "Illinois, Indiana, southern Ohio, western West Virginia and central Virginia south to northern Florida, southern Alabama, southern Mississippi and southeastern Louisiana. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "northern-two-lined-salamander",
+   "name": "Northern two-lined salamander",
+   "howToTell": "15-16 costal grooves; occurs to the north."
+  },
+  {
+   "slug": "dwarf-salamander",
+   "name": "Dwarf salamander",
+   "howToTell": "Only four toes on each hind foot."
+  }
+ ],
+ "aliases": [
+  "Southern two-lined salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Eurycea cirrigera",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.106084/Eurycea_cirrigera"
+  },
+  {
+   "title": "Animal Diversity Web: Eurycea cirrigera",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Eurycea_cirrigera/"
+  }
+ ]
+}

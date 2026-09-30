@@ -1,0 +1,44 @@
+{
+ "slug": "barking-treefrog",
+ "scientificName": "Hyla gratiosa",
+ "commonNameFr": null,
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe places North American treefrogs in Dryophytes (Duellman et al. 2016); ADW and the batch list use Hyla. NatureServe name: Dryophytes gratiosus.",
+ "fieldMarks": [
+  "Largest treefrog in the southeastern US: 5.1-7 cm, bulky.",
+  "Very rough, granular skin.",
+  "Colour varies from bright lime green to brown but almost always with darker back spots.",
+  "Lighter stripe from the upper jaw along the body; males have a light green or yellow throat.",
+  "Rounded pads on the digits; loud 'bark' call."
+ ],
+ "behavior": [
+  "Nocturnal; rests high in trees by day and is mostly arboreal.",
+  "Burrows under roots, vegetation or soil in cold or dry seasons.",
+  "Breeds after heavy rains in spring or summer; clutches up to about 2,000 eggs; groups generally under 20-25 males."
+ ],
+ "habitat": [
+  "Sandy pine savannas and low wet woods and swamps; breeds in shallow ponds, swamps and bayheads, preferring semi-permanent ponds without fish."
+ ],
+ "range": "Coastal Plain and some uplands from North Carolina to southern Florida and west to Louisiana, including northern Mississippi; disjunct populations in Delaware and Maryland, southwestern Kentucky and Tennessee and southeastern Virginia; introduced and probably extirpated in southern New Jersey. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "green-treefrog",
+   "name": "Green treefrog",
+   "howToTell": "Smooth skin and a bright white or yellowish side stripe; smaller."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Dryophytes gratiosus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.106453/Dryophytes_gratiosus"
+  },
+  {
+   "title": "Animal Diversity Web: Hyla gratiosa",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Hyla_gratiosa/"
+  }
+ ]
+}

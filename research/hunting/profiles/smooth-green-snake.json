@@ -1,0 +1,52 @@
+{
+ "slug": "smooth-green-snake",
+ "scientificName": "Opheodrys vernalis",
+ "commonNameFr": "Couleuvre verte",
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe spells the common name 'Smooth Greensnake' and notes some authors placed the species in genus Liochlorophis; Animal Diversity Web uses 'Smooth Green Snake'.",
+ "fieldMarks": [
+  "Slender, bright green above with smooth dorsal scales (15 rows at midbody) and a white or yellowish belly.",
+  "Adults usually 30-51 cm, up to about 61 cm; the tail is nearly half of total length.",
+  "Young are dull olive-gray to bluish-gray or grayish brown; adults turn blue or gray after death.",
+  "Smooth scales separate it from the rough green snake (keeled scales); single nostril scale and smaller size separate it from racers."
+ ],
+ "behavior": [
+  "Diurnal; basks on boulders or logs and may hang in low branches; inactive roughly November-March.",
+  "Eats small terrestrial invertebrates such as caterpillars, crickets, grasshoppers and spiders.",
+  "Can aggregate in hibernacula (groups of 100-150 found in Manitoba and Minnesota) and sometimes uses abandoned ant mounds.",
+  "Eggs are laid under rotting wood, underground or under rocks; some individuals cross roads at night during warm rains."
+ ],
+ "habitat": [
+  "Grassy, open areas: meadows, grassy marshes, moist fields at forest edges, bogs, stream borders and open moist woodland.",
+  "Often near wetlands or open water."
+ ],
+ "range": "Nova Scotia west across southern Canada (Quebec, Ontario, Manitoba) to southeastern Saskatchewan, south through the northeastern and Midwestern US to Virginia, Missouri, Nebraska, New Mexico and Utah; western populations are highly disjunct.",
+ "lookalikes": [
+  {
+   "slug": "rough-green-snake",
+   "name": "Rough green snake",
+   "howToTell": "Has keeled rather than smooth dorsal scales."
+  },
+  {
+   "slug": "racer",
+   "name": "Racer",
+   "howToTell": "Larger; nostril sits between two scales rather than centred in one scale."
+  }
+ ],
+ "aliases": [
+  "smooth greensnake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Opheodrys vernalis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.103123"
+  },
+  {
+   "title": "Opheodrys vernalis (Smooth Green Snake)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Opheodrys_vernalis/"
+  }
+ ]
+}

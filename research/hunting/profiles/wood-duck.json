@@ -1,0 +1,34 @@
+{
+ "slug": "wood-duck",
+ "scientificName": "Aix sponsa",
+ "fieldMarks": [
+  "Adult male: unmistakably colourful for most of the year.",
+  "Female: hint of a crest, dark back and a white eye-patch on a grey head.",
+  "Eclipse male resembles the female but with a more distinct white throat.",
+  "In flight looks long-tailed and dark, with a white trailing edge on the inner wing."
+ ],
+ "behavior": [
+  "Nests in large tree cavities near water, up to about 20 m (65 ft) high, and readily uses nest boxes.",
+  "Pairs form on the wintering grounds; northern birds migrate while southern females may be resident.",
+  "Feeds from the surface, by dipping its head or on land; acorns are a major food in many areas, plus seeds, waste grain and invertebrates."
+ ],
+ "habitat": [
+  "Shallow inland lakes, ponds, slow rivers and swamps surrounded by deciduous or mixed woodland, often where large trees overhang the water; also open marshes within forested country."
+ ],
+ "range": "Breeds across southern Canada and much of the United States, most abundant in the East, with northern birds migrating south; appears to be expanding its range north and west.",
+ "lookalikes": [
+  {
+   "slug": "mandarin-duck",
+   "name": "Mandarin duck",
+   "howToTell": "Audubon notes the mandarin duck of eastern Asia is the wood duck's only close relative."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Wood Duck — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/wood-duck"
+  }
+ ]
+}

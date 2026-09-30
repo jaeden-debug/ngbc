@@ -1,0 +1,47 @@
+{
+ "slug": "coast-nightsnake",
+ "scientificName": "Hypsiglena ochrorhyncha",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe treats Hypsiglena chlorophaea and H. ochrorhyncha as separate species following Mulcahy (2008), who split the former H. torquata; Colorado Parks and Wildlife lists the Colorado animals as H. jani and H. chlorophaea, and Idaho Fish and Game lists several H. torquata names under chlorophaea.",
+ "fieldMarks": [
+  "12-26 in (300-660 mm) snout-vent length (theNAT)."
+ ],
+ "behavior": [
+  "Eats mainly lizards and lizard eggs (NatureServe).",
+  "Spends inactive periods under rocks or other surface cover, in crevices or underground (NatureServe)."
+ ],
+ "habitat": [
+  "Arid and semiarid plains, canyons and hillsides, usually rocky, dissected terrain with sandy or gravelly soil, including desert, grassland, shrubland, savanna and woodland (NatureServe)."
+ ],
+ "range": "Northern California south through western California to southern Baja California (NatureServe).",
+ "lookalikes": [
+  {
+   "slug": "desert-nightsnake",
+   "name": "Desert nightsnake",
+   "howToTell": "Listed by theNAT as a similar species; no distinguishing marks were published on the pages read."
+  }
+ ],
+ "aliases": [
+  "coast night snake",
+  "spotted night snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Hypsiglena ochrorhyncha",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.817032"
+  },
+  {
+   "title": "Hypsiglena ochrorhyncha, Coast Night Snake",
+   "publisher": "San Diego Natural History Museum (theNAT Amphibian and Reptile Atlas of Peninsular California)",
+   "url": "https://herpatlas.sdnhm.org/species/overview/coast-night-snake/163/"
+  },
+  {
+   "title": "Hypsiglena chlorophaea (Desert Nightsnake), Idaho Fish and Wildlife Information System",
+   "publisher": "Idaho Department of Fish and Game",
+   "url": "https://idfg.idaho.gov/species/taxa/19741"
+  }
+ ]
+}

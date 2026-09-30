@@ -1,0 +1,43 @@
+{
+ "slug": "southwestern-speckled-rattlesnake",
+ "scientificName": "Crotalus pyrrhus",
+ "commonNameFr": null,
+ "family": "Viperidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe treats C. pyrrhus as distinct from C. mitchellii of Baja California (Meik et al. 2015); other agency pages (CDFW) still use C. mitchellii for the same desert snakes, so this slug and speckled-rattlesnake may describe one U.S. population.",
+ "fieldMarks": [
+  "Colour ranges from pale sandy gray to dark brown; the speckled pattern makes the diamond markings less distinct than on other rattlesnakes (NDOW).",
+  "Alternating light and dark tail rings are prominent (NDOW).",
+  "Medium-sized pit viper; NatureServe gives about 92-130 cm (NatureServe)."
+ ],
+ "behavior": [
+  "Ambush predator of small mammals, lizards and birds (NatureServe).",
+  "Inactive through cold winter months in sheltered crevices; females give birth to live young in late summer, typically 3-11 per litter (NDOW).",
+  "When inactive it shelters under rocks or bushes, in crevices, caves, abandoned mines, rodent burrows or woodrat nests (NatureServe)."
+ ],
+ "habitat": [
+  "Rugged, rocky terrain in the Mojave and Sonoran desert mountains; rarely on adjacent desert flats; primary habitat is rocky lower slopes and canyons, also seeps, springs and riparian areas (NatureServe)."
+ ],
+ "range": "Northern half of the Baja California Peninsula north into southern California, southern Nevada, western Arizona and southwestern Utah (NatureServe); in Nevada a small range in the southeast, overlapping the Panamint rattlesnake near Las Vegas (NDOW).",
+ "lookalikes": [],
+ "aliases": [
+  "speckled rattlesnake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Crotalus pyrrhus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.1146769"
+  },
+  {
+   "title": "Southwestern Speckled Rattlesnake",
+   "publisher": "Nevada Department of Wildlife",
+   "url": "https://www.ndow.org/species/southwestern-speckled-rattlesnake/"
+  },
+  {
+   "title": "Rattlesnake",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://wildlife.ca.gov/Conservation/Reptiles/Rattlesnake"
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+ "slug": "sambar",
+ "scientificName": "Rusa unicolor",
+ "commonNameFr": null,
+ "family": "Cervidae",
+ "order": "Artiodactyla",
+ "taxonomyNote": "Formerly Cervus unicolor; NatureServe notes Groves & Grubb (2011) place it in Cervus and that Rusa may not be monophyletic.",
+ "fieldMarks": [
+  "Large; males 185-260 kg, females about 162 kg",
+  "Coarse dark coat with lighter brown to creamy underparts",
+  "Males have a dense neck mane and antlers with three or four tines up to 100 cm",
+  "Bushy tail white on the underside, raised as a signal"
+ ],
+ "behavior": [
+  "Mostly nocturnal; rests in dense cover by day",
+  "Solitary or in groups up to about 8 females",
+  "Browses at dusk and night on leaves, bark, berries and grass",
+  "Proficient swimmers"
+ ],
+ "habitat": [
+  "Forested hillsides, swamp forest and open scrub, from sea level to about 3,700 m."
+ ],
+ "range": "Native from India to southeastern China and the Malay Peninsula. Introduced and established in California, Texas and Florida (and Australia and New Zealand). Not native to Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "sambar deer"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Rusa unicolor",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101128"
+  },
+  {
+   "title": "Animal Diversity Web: Rusa unicolor",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Rusa_unicolor/"
+  }
+ ]
+}

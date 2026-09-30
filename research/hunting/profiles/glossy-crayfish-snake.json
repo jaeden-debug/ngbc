@@ -1,0 +1,56 @@
+{
+ "slug": "glossy-crayfish-snake",
+ "scientificName": "Regina rigida",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe and the Florida Museum treat this snake as Liodytes rigida (Glossy Swampsnake), with Regina rigida as a synonym; Animal Diversity Web still files it as Regina rigida.",
+ "fieldMarks": [
+  "Small, heavy-bodied snake, usually 14-24 in; glossy brown to olive-brown, sometimes with a faint dark stripe down the back and each side.",
+  "Yellow lip scales contrast sharply with the olive-brown head; lower sides yellowish-tan.",
+  "Belly yellow or cream with two rows of small black half-moon markings.",
+  "Keeled scales in 19 rows at midbody; relatively large eyes with round pupils."
+ ],
+ "behavior": [
+  "Nocturnal; feeds mainly on crayfish, also small fishes, salamanders and small frogs.",
+  "Adults eat mainly crayfish; the young take small aquatic invertebrates such as dragonfly larvae.",
+  "Flees into water and dives to the bottom when approached; a captured snake may flatten its head and release musk.",
+  "Gives birth to live young (6-16) in summer; active March to early November in Texas."
+ ],
+ "habitat": [
+  "Slow-moving lowland waters: cypress swamps, marshes, bogs, ponds, lakes, ditches, rice fields, streams and floodplains.",
+  "Usually secluded in crayfish or muskrat burrows, under wet vegetation or debris at the water's edge, or among aquatic plants; rarely far from water."
+ ],
+ "range": "Southeastern United States, per NatureServe: Alabama, Arkansas, Florida, Georgia, Louisiana, Mississippi, North Carolina, Oklahoma, South Carolina, Texas and Virginia; in Florida from Osceola County northwest into the Panhandle.",
+ "lookalikes": [
+  {
+   "slug": "striped-crayfish-snake",
+   "name": "Striped swampsnake (striped crayfish snake)",
+   "howToTell": "Unpatterned belly and smooth body scales, versus keeled scales and a half-moon-marked belly in the glossy swampsnake (Florida Museum)."
+  },
+  {
+   "slug": "black-swampsnake",
+   "name": "Black swampsnake",
+   "howToTell": "Glossy black with a bright red belly (Florida Museum)."
+  }
+ ],
+ "aliases": [
+  "Glossy swampsnake",
+  "Glossy crayfish snake",
+  "Eastern glossy swampsnake",
+  "Gulf swampsnake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Liodytes rigida",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105389"
+  },
+  {
+   "title": "Glossy Swampsnake (Florida Snake ID Guide)",
+   "publisher": "Florida Museum of Natural History, University of Florida",
+   "url": "https://www.floridamuseum.ufl.edu/florida-snake-id/snake/glossy-swampsnake/"
+  }
+ ]
+}

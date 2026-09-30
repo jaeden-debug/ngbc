@@ -1,0 +1,47 @@
+{
+ "slug": "southern-painted-turtle",
+ "scientificName": "Chrysemys dorsalis",
+ "commonNameFr": null,
+ "family": "Emydidae",
+ "order": "Testudines",
+ "taxonomyNote": "NatureServe and state agencies treat it as a full species, C. dorsalis; it was formerly a subspecies of the painted turtle (C. picta dorsalis) and some herpetologists still treat it that way, citing intergrades.",
+ "fieldMarks": [
+  "Small aquatic turtle, 4-6 in, with a smooth olive-brown to nearly black carapace lacking a keel and a prominent yellow, orange or red stripe down the centre of the back.",
+  "Marginal scutes have prominent red or orange; plastron plain yellow or tan, sometimes with a faint brown central blotch.",
+  "Yellow lines on the head and chin, a yellow spot behind each eye, and red or orange lines on the neck and forelimbs; young are brighter with a slight keel."
+ ],
+ "behavior": [
+  "Usually active from late March into early November; basks on logs, rocks and banks, often many on one log, and slips into water at slight disturbance.",
+  "Eats plants and animals including algae, duckweed, snails, crayfish, frogs and fish.",
+  "Often lays more than one clutch per year (4-20 eggs); hatchlings usually winter in the nest and emerge in spring."
+ ],
+ "habitat": [
+  "Shallow swamps, slow streams, sloughs, oxbows, ditches, lakes and reservoirs with soft mud bottoms, aquatic vegetation and basking sites; in Missouri, wetlands within bottomland forest."
+ ],
+ "range": "Central Mississippi valley to the Gulf: NatureServe lists Illinois, Missouri, Kentucky, Tennessee, Arkansas, Oklahoma, Texas, Louisiana, Mississippi and Alabama; not recorded for Canada.",
+ "lookalikes": [
+  {
+   "slug": "painted-turtle",
+   "name": "Painted turtle",
+   "howToTell": "The painted turtle (western painted in Missouri) usually lacks the broad lengthwise stripe on the carapace; Tennessee WRA notes genetics are required to separate them with certainty."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102353"
+  },
+  {
+   "title": "Southern Painted Turtle (Chrysemys dorsalis)",
+   "publisher": "Tennessee Wildlife Resources Agency",
+   "url": "https://www.tn.gov/twra/wildlife/reptiles/turtle/southern-painted-turtle.html"
+  },
+  {
+   "title": "Southern Painted Turtle",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/southern-painted-turtle"
+  }
+ ]
+}

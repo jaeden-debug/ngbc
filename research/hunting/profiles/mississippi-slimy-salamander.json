@@ -1,0 +1,44 @@
+{
+ "slug": "mississippi-slimy-salamander",
+ "scientificName": "Plethodon mississippi",
+ "commonNameFr": null,
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe notes P. ainsworthi was tentatively removed from synonymy of P. mississippi by Pierson et al. (2020); the species was formerly part of P. glutinosus.",
+ "fieldMarks": [
+  "Medium to large terrestrial salamander, about 4-6.5 in.",
+  "Black to bluish-black with numerous white, yellow or brassy spots on back, tail and sides; heavy white lateral flecking in some; white spotting on chin and throat; plain belly.",
+  "Cannot be told from other members of the slimy salamander complex by appearance alone."
+ ],
+ "behavior": [
+  "Forages on the surface at night or in rain but typically stays near its burrow; adults defend small territories.",
+  "Terrestrial breeder with no aquatic larval stage; females guard 1-33 eggs from a cavity roof through 2-3 months of development.",
+  "Sticky tail secretion deters predators; goes underground in dry or freezing weather."
+ ],
+ "habitat": [
+  "Forested areas: maritime and river-bottom hardwoods and pine forests; under rotting logs, branches, rocks, leaf litter, in rock crevices, caves and rubbish piles."
+ ],
+ "range": "Southwestern Kentucky, western Tennessee, western Alabama, most of Mississippi and a small part of southeastern Louisiana, west of the Tennessee River on the Coastal Plain. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "slimy-salamander-complex",
+   "name": "Other slimy salamanders (Plethodon glutinosus complex)",
+   "howToTell": "Identification based on appearance is impossible; range and genetics separate them."
+  }
+ ],
+ "aliases": [
+  "Mississippi slimy salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Plethodon mississippi",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.103260"
+  },
+  {
+   "title": "Mississippi Slimy Salamander",
+   "publisher": "Alabama Dept. of Conservation and Natural Resources (Outdoor Alabama)",
+   "url": "https://www.outdooralabama.com/salamanders/mississippi-slimy-salamander"
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "slug": "brown-headed-cowbird",
+ "scientificName": "Molothrus ater",
+ "commonNameFr": "Vacher à tête brune",
+ "family": "Icteridae",
+ "order": "Passeriformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Male: glossy black with a contrasting brown head",
+  "Female: plain dusty brown with a dark, sparrowlike bill",
+  "Juvenile streaked at first",
+  "Male 19-22 cm, female 15-20 cm"
+ ],
+ "behavior": [
+  "Forages mostly walking on the ground, often with cattle or horses catching flushed insects; originally associated with bison herds",
+  "Seeds are about half of the summer diet and over 90% in winter; the rest mostly insects",
+  "Migrants may begin leaving nesting areas by July or August; present all year in many southern areas",
+  "Squeaky gurgle; call is a check or rattle"
+ ],
+ "habitat": [
+  "Open or semi-open country year-round: farms, fields, prairies, wood edges and river groves; in winter concentrates in farmland, pastures and feedlots."
+ ],
+ "range": "Breeds from southeast Alaska, northern British Columbia and southern Mackenzie to Newfoundland, south to central Mexico, the Gulf Coast and southern Florida; winters from the northern U.S. south.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Brown Headed Cowbird",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/brown-headed-cowbird"
+  },
+  {
+   "title": "NatureServe Explorer: Molothrus ater (Brown-headed Cowbird)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102638/Molothrus_ater"
+  }
+ ]
+}

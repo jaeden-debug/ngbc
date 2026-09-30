@@ -1,0 +1,55 @@
+{
+ "slug": "sierra-gartersnake",
+ "scientificName": "Thamnophis couchii",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes T. hammondii, T. gigas and T. atratus (with hydrophilus and aquaticus) were formerly included in T. couchii; CWHR places Thamnophis in Natricidae while NatureServe uses Colubridae.",
+ "fieldMarks": [
+  "Medium-sized, slender, highly aquatic garter snake with a somewhat pointed head.",
+  "Found in or right beside water, basking in streamside vegetation and fleeing into water when disturbed."
+ ],
+ "behavior": [
+  "Active diurnal snake: low-elevation animals can be active about 10 months a year, high-elevation ones less than 4 months.",
+  "Forages in and along water: larval and newly transformed amphibians in ephemeral water; fish (trout, Sacramento suckers, mosquitofish) in permanent streams.",
+  "Retreats at night to holes, crevices and surface objects and rapidly to water when disturbed; young are born July-September in secluded sites such as under bark."
+ ],
+ "habitat": [
+  "Pools of permanent or seasonal streams (often rocky), meadow ponds, lakes, reservoirs and riparian zones, in oak woodland, chaparral, montane conifer forest, or pine-juniper-sagebrush east of the Sierra crest."
+ ],
+ "range": "Sierra Nevada of California from the Pit and Sacramento rivers south to the Tehachapi Mountains, east along major rivers to the Owens Valley and west-central Nevada, about 90-2,440 m. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "aquatic-gartersnake",
+   "name": "Aquatic gartersnake (Thamnophis atratus)",
+   "howToTell": "Distinguished mainly by range; aquatic gartersnake occupies the Coast Ranges west of the Central Valley."
+  },
+  {
+   "slug": "terrestrial-gartersnake",
+   "name": "Terrestrial gartersnake (Thamnophis elegans)",
+   "howToTell": "Sierra gartersnake is much more tightly tied to water; terrestrial gartersnake also ranges into drier habitats."
+  }
+ ],
+ "aliases": [
+  "Couch's garter snake",
+  "Sierra garter snake",
+  "western aquatic garter snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Thamnophis couchii (Sierra Gartersnake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.105516/Thamnophis_couchii"
+  },
+  {
+   "title": "CWHR life history account: Sierra Gartersnake (R063)",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=2777"
+  },
+  {
+   "title": "Wikipedia: Sierra garter snake (last-resort, read as raw wikitext)",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Sierra_garter_snake"
+  }
+ ]
+}

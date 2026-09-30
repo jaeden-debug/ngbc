@@ -1,0 +1,37 @@
+{
+ "slug": "dusky-grouse",
+ "scientificName": "Dendragapus obscurus",
+ "fieldMarks": [
+  "Male: uniformly gray and dark, with reddish bare neck patches ringed in white feathers visible during courtship.",
+  "Female: mottled brown and gray.",
+  "Over most of the range, dark tail with a broad gray tip.",
+  "Crow- to mallard-sized."
+ ],
+ "behavior": [
+  "Males give a series of deep hoots in the breeding season, increasing in tempo and volume.",
+  "Slow-moving and inconspicuous but often surprisingly tame.",
+  "Feeds on the ground in summer and in trees in winter, especially in deep snow.",
+  "Unusual uphill altitudinal migration: moves up into dense conifer forest in autumn, up to about 30 miles."
+ ],
+ "habitat": [
+  "Deciduous and mixed mountain forest in summer, especially where forest meets open country such as sagebrush flats; higher-elevation conifer forest in winter."
+ ],
+ "range": "Western North America: Rocky Mountains and interior West from Alaska, Yukon and western Canada south to the US Southwest.",
+ "lookalikes": [
+  {
+   "slug": "sooty-grouse",
+   "name": "Sooty grouse",
+   "howToTell": "Recently split from the dusky grouse; the two were formerly combined as 'blue grouse'."
+  }
+ ],
+ "aliases": [
+  "blue grouse (former combined name)"
+ ],
+ "sources": [
+  {
+   "title": "Dusky Grouse — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/dusky-grouse"
+  }
+ ]
+}

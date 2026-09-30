@@ -234,6 +234,8 @@ bundle now reproduces byte for byte from the current page.
 
 ## Known Problems
 
+- **/hunt HTML grew with the 485-species catalogue (2026-09-30).** The species picker's options are serialized into the page: /hunt is ~485 KB uncompressed on the local build (production before Wave 4: ~336 KB). Duplicate search terms were already removed (−31 KB). The durable fix is to fetch the picker list when the picker first opens rather than in the first HTML; not done yet.
+- **790 authority group rows name no member species** (e.g. "rabbit", "ducks", "skunk"). They are recorded in the take matrix but attributed to no species, so a species can lack a listing in a state that only names its group. Resolve by reading each authority's own group definition (`research/hunting/regulatory-group-mappings.csv`), never by range.
 - **`certify-hunt-app.mjs` has two stale legal-hours assertions (pre-existing, found 2026-09-30).** In the scenario *what you need, before what you open*, "a resolved window shows the clock" reads `[class*=legalWindow]` and finds nothing, and "where it cannot be stated, it says so" still expects Québec to say *Not yet verified* although Québec's legal hours were resolved on 2026-09-29 (06:24 – 19:29 local time is what production shows). Both fail identically on `23ed04d` and on `1059d02`; the other 384 checks pass. The assertions need updating to the shipped behaviour, not the product.
 - **Manitoba's 2026 hunting guide changed upstream.** `check:regulatory-sources` (run from a network-enabled sandbox on 2026-09-30) stops with "The 2026 guide has changed (sha256:402f9485…)": `content/regulatory/sources/ca-mb-hunting-guide-2026-crosscheck.json` was transcribed from an earlier hash. A changed government document requires review before anything is republished (§45); nothing was changed.
 - **Two ZONE-scoped conditions name their zones only in prose.** `ab-sunday-big-game` lists WMUs 102–160, 624, 728, 730 and 936, and `ca-mb-landowner-permission-shotgun-muzzleloader` names GHA 33 and the part of GHA 38 in the R.M. of Macdonald. Neither carries `zoneIds`, so each `!` follows the rules it is attached to rather than the zones it names. The Alberta builder should emit the WMU list. Manitoba's GHA 38 part is a municipal boundary North Ground does not hold, so it is "needs a closer look", never an invented polygon. (`ab-wmu-936-discharge-permit` and `ab-cfb-wainwright` were given their zoneIds in this pass.)
@@ -382,6 +384,9 @@ Examples:
 - owner decision required
 - third-party service issue
 
+- **Species photos:** Unsplash search needs an API key; `UNSPLASH_ACCESS_KEY` is not in `.env.local`. 425 of 485 species have no PRIMARY image.
+- **Take audit sources blocked (not bypassed):** New Jersey and New York (every official host 403/timeout), Massachusetts (mass.gov 403; statute only), Michigan (michigan.gov Akamai; statute stub), Arizona (azgfd/azsos Cloudflare; department PDFs used), Yukon. Needs an owner-approved official route (e.g. manual download of the digests).
+- **Trumpeter swan in Nevada needs Nevada served:** the quota take is recorded as a sourced finding; a certified engine rule needs Nevada's county geography and rule model (U.S. regulatory lane).
 - Analytics: approve provider, consent model, coarse-location constraints, retention, and event contract before adding instrumentation.
 - Owner action: replace production's refused `GOOGLE_MAPS_SERVER_API_KEY` (see Known Problems). Hunt works without it on Open-Meteo and Nominatim, so this blocks Google, not Hunt.
 - Owner decision: serving Québec. Three steps, each blocked on approval in the Québec session: the resolver swap (proven identical for Ontario, Manitoba and Alberta; it does not change their boundary distance — see Known Problems), promoting the 59 Québec zones to VERIFIED, and deploying the serving switch.
@@ -783,10 +788,34 @@ Maintain a reference to the authoritative species registry rather than duplicati
 
 Research registry: `research/hunting/species-master.csv` currently contains 133 North American species and protected identification-risk entities, with 56 alias records. Eastern wolf, Arctic fox, Canada lynx, New England cottontail, striped skunk and wolverine were the only genuine gaps added during Wave 2 reconciliation; existing canonical records such as North American beaver, mountain lion/cougar and brown bear/grizzly were reused rather than duplicated. Separate research tables cover 66 jurisdiction-specific regulatory-group mappings, 15 identification risks, 25 range-source leads, 24 seasonal modules, and 25 content opportunities. None encodes universal huntability or production editorial coverage.
 
-Current editorial coverage (2026-09-30): 133 published species (Waves 1–3),
-each with a required take eligibility — 125 HUNTABLE, 3 REMOVAL, 3 PROTECTED,
-2 UNVERIFIED. Only the first two are offered as quarry in Hunt. The history
+Current editorial coverage (2026-09-30): **485 published species** (Waves 1–4),
+each with a required take eligibility — 209 HUNTABLE, 231 LIMITED_TAKE, 28
+NUISANCE_OR_INVASIVE_TAKE, 4 NON_QUARRY, 13 UNKNOWN; 468 are offered in Hunt.
+Wave 4 (352 species: mammals 4a, birds 4b, reptiles and amphibians 4c) comes
+from the jurisdiction-first take audit and is built from researched profiles
+(`research/hunting/profiles/`) that cite pages actually read (NatureServe,
+Animal Diversity Web, Audubon, agency pages; Wikipedia only as a labelled
+secondary source). 101 earlier species cited a Cornell page nobody read or the
+ITIS home page; their text was replaced from the sources read. Rebuild with
+`npm run species:build`. The history
 below records how the first 60 were reached.
+
+**Jurisdiction × species take matrix** (`research/hunting/species-take-matrix.csv`,
+generated by `scripts/build-species-take-matrix.mjs` from
+`research/hunting/take-audit/*.jsonl`): 4,239 audit rows from 65 jurisdictions
+(51 U.S. + DC, 13 Canadian + the federal layer) resolve to 4,589 matrix rows;
+462 species carry published take listings from 308 authority sources, shown on
+each profile as "Where it is listed for legal take" (a listing, never a season).
+Every animal an authority lists for take is a published species or a documented
+exclusion (66, in `take-exclusions.csv` with jurisdictions and sources: small
+mammals, bats, commensals, federally listed species, unprotected-only). Audit
+gaps, named rather than inferred: New Jersey and New York (every official source
+bot-blocked), Massachusetts and Michigan (statute only), Arizona (department
+PDFs; agency site blocked; waterfowl rows are 2025-26), Nebraska/Kansas/Nevada
+partly via older or eRegulations-hosted guides, Yukon (blocked), PEI (2022
+consolidation). 790 group rows name no members (e.g. "rabbit", "ducks") and are
+not attributed to any species — a group season never legalizes a member the
+source does not name.
 
 Spatial coverage (where the animal is, never whether it is legal) is generated
 in `docs/species-spatial-coverage.md`: B (survey surface) 54, all
@@ -1080,26 +1109,43 @@ real-browser certification against a deployed base when
 verification by artifact hash, so a rebuilt surface is unverified until it
 is seen again. Screenshots it commits belong on the branch, never on main.
 
-### 2026-09-30 — Species eligibility is an allowlist carried by the species itself
+### 2026-09-30 — Conservation status, take eligibility and legality are three questions (owner ruling)
 
-Trumpeter swan reached production with a Species Heat surface ("where to look
-for this animal") because the catalogue held no protected fact and the only
-barrier was sample size. The moderator's three-name denylist (`27050f4`) held
-the line; it is now **deleted**, not dormant.
+Supersedes the same-day PROTECTED/REMOVAL/UNVERIFIED allowlist (the moderator's
+three-name denylist `27050f4` stays deleted). Trumpeter swan broke the binary:
+it is protected in Wyoming, Washington, Alaska and Utah, and Nevada's drawn swan
+permit counts it against a federal quota of ten (50 CFR 20.107 note 4; NDOW
+2026-27 guide). CLAUDE.md §16 now records the three questions.
 
-Every published profile carries a required `takeEligibility`:
-`HUNTABLE` (125), `REMOVAL` (3: wild boar, nutria, mute swan), `PROTECTED`
-(3: whooping crane, trumpeter swan, Gunnison sage-grouse) or `UNVERIFIED`
-(2: lesser prairie-chicken, New England cottontail — no current take
-established; not called protected without a source). A profile without one
-fails the load. Only HUNTABLE and REMOVAL grant hunting-opportunity features,
-and the refusal is enforced at every layer from the same field
-(`src/lib/content/species-eligibility.ts`): the surface builder, the served
-registry, the surface and heat/opportunity evidence APIs, the Hunt selector and
-URL validation, and the "Hunting Guide" title. A new PROTECTED species inherits
-every refusal with no list edited, which a test asserts. Eligibility is
-species-level only and never implies legality here and now. Protected species
-keep their identification pages.
+- **Take eligibility** (`src/lib/content/species-eligibility.ts`), required on
+  every profile: HUNTABLE 209, LIMITED_TAKE 231, NUISANCE_OR_INVASIVE_TAKE 28,
+  NON_QUARRY 4 (whooping crane, Gunnison sage-grouse, Steller's and spectacled
+  eiders), UNKNOWN 13. Capabilities come from the class alone: Hunt offers
+  HUNTABLE, LIMITED_TAKE and NUISANCE; Species Heat only HUNTABLE and NUISANCE
+  (a quota in three Nevada counties must never paint a continental "where to
+  look" map). Enforced at the heat builder, served registry, surface/heat/
+  opportunity evidence, Hunt selector and URL validation, and titles.
+- **Conservation status** (`conservationStatus` on the profile, via
+  `scripts/apply-conservation-status.mjs`): hand-sourced statements in
+  `research/hunting/conservation-status.csv` plus every ESA Endangered/
+  Threatened listing from a committed ECOS snapshot
+  (`research/hunting/esa-listings.json`, 1,545 North American entities), each
+  naming its exact entity — "Key deer (O. v. clavium)", never "white-tailed
+  deer". 37 species carry statements.
+- **Trumpeter swan** is LIMITED_TAKE: its only published listing is Nevada, with
+  the quota condition. Idaho's controlled "1 swan" hunt was checked against the
+  guide and 50 CFR 20.107 and recorded NOT_ESTABLISHED — a generic group season
+  does not legalize every member. Nevada's rule is NOT an engine rule: Nevada is
+  DISCOVERY_ONLY (no geography, no rule model; its swan areas are three
+  counties), so the swan correctly has no green outline anywhere. Certifying it
+  is the U.S. regulatory lane's work.
+- **Inclusion rule**: a named season, game class, licence, bag limit, draw or
+  removal program admits a species; "unprotected" alone does not (five western
+  species that were only ever unprotected are now UNKNOWN, keeping their pages).
+- **Validator** (`species-take-evidence.test.ts`): no silent contradiction — a
+  NON_QUARRY/UNKNOWN species with take evidence needs a recorded finding in
+  `take-eligibility-conflicts.csv`; LIMITED_TAKE needs a species-specific
+  listing; unprotected-only never admits a species; findings cannot go stale.
 
 ### 2026-09-30 — A hunter was told nothing, and 390 of 433 zones wore the same warning
 

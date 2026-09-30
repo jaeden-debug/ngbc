@@ -1,0 +1,38 @@
+{
+ "slug": "brush-rabbit",
+ "scientificName": "Sylvilagus bachmani",
+ "fieldMarks": [
+  "Small to medium cottontail, 28–37 cm long; females slightly larger than males",
+  "Evenly dark coat of steel gray, black and orange above, white below",
+  "Fairly small ears with a slight point",
+  "Tail not prominent"
+ ],
+ "behavior": [
+  "Mainly crepuscular: emerges after sunset and is active into early morning, rarely in the afternoon",
+  "Rarely goes more than a few metres from dense brush, using cleared runways into grassy feeding areas",
+  "Thumps its feet when frightened, freezes for long periods, and flees in a zig-zag; may climb into shrubs when pursued"
+ ],
+ "habitat": [
+  "Dense scrub, chaparral, bramble thickets and brushy edges, including brush on sand dunes; seldom uses burrows."
+ ],
+ "range": "Pacific coast from the Columbia River (Oregon–Washington border) south, west of the Cascades, Sierra Nevada and deserts, through much of California to Baja California. In Oregon it occupies the Willamette and other interior valleys and the coast.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Sylvilagus bachmani (brush rabbit)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Sylvilagus_bachmani/"
+  },
+  {
+   "title": "Brush rabbit",
+   "publisher": "Oregon Department of Fish and Wildlife",
+   "url": "https://myodfw.com/wildlife-viewing/species/brush-rabbit"
+  },
+  {
+   "title": "Sylvilagus bachmani (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.1342003/Sylvilagus_bachmani"
+  }
+ ]
+}

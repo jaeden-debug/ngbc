@@ -1,0 +1,46 @@
+{
+ "slug": "fowlers-toad",
+ "scientificName": "Anaxyrus fowleri",
+ "commonNameFr": {
+  "name": "Crapaud de Fowler",
+  "source": "NatureServe Explorer (French common name field)"
+ },
+ "family": "Bufonidae",
+ "order": "Anura",
+ "taxonomyNote": "ADW's account uses the older genus name Bufo (Bufo fowleri); NatureServe uses Anaxyrus fowleri, noting Anaxyrus was split from Bufo by Frost et al. (2006) and that some references still use Bufo.",
+ "fieldMarks": [
+  "Toad 5-9.5 cm, brown, grey or olive-green, with black-edged dark back spots that each contain three or more warts and a light mid-dorsal stripe.",
+  "Belly usually whitish and almost unspotted apart from a single dark spot on the chest.",
+  "Males tend to be darker, females lighter; enlarged parotoid glands behind the eyes release a noxious secretion.",
+  "Tadpoles are short-bodied with a long tail and upper and lower fins."
+ ],
+ "behavior": [
+  "Sources disagree on timing: described as completely nocturnal in one account and mostly diurnal in another; burrows during very hot or cold spells.",
+  "Adults eat insects and small terrestrial invertebrates and avoid earthworms, unlike the American toad; tadpoles scrape algae.",
+  "Inactive in fall, winter and early spring; hybridizes with the American toad in some areas."
+ ],
+ "habitat": [
+  "Wooded areas, river valleys and floodplains including farmland and residential areas, usually with deep friable soils; breeds in shallow marshes, rain pools, ponds and reservoirs with little current. Beach and dune habitat is also used."
+ ],
+ "range": "NatureServe lists it in southern Ontario and across the eastern US from New England and Michigan south to Florida and west to Iowa, Kansas, Oklahoma and Texas.",
+ "lookalikes": [
+  {
+   "slug": "american-toad",
+   "name": "American toad",
+   "howToTell": "American has only one or two warts per dark back spot."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102732"
+  },
+  {
+   "title": "Anaxyrus fowleri (Fowler's Toad; listed as Bufo fowleri)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Anaxyrus_fowleri/"
+  }
+ ]
+}

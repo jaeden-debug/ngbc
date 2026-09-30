@@ -1,0 +1,36 @@
+{
+ "slug": "barbary-sheep",
+ "scientificName": "Ammotragus lervia",
+ "fieldMarks": [
+  "Rufous or grayish-brown above with a blackish stripe down the back; whitish belly and inner legs.",
+  "Long hair on the throat, chest and front legs; no beard.",
+  "Horns curve outward, backward and then inward, with transverse wrinkles; yellowish-brown, darkening with age.",
+  "Females are much smaller (to about 65 kg) with smaller horns; males reach about 145 kg."
+ ],
+ "behavior": [
+  "Lives in small mixed-sex groups and climbs steep slopes expertly.",
+  "Eats browse, grasses and forbs (one study: 49% browse, 42% grass, 9% forbs) and can survive without free water.",
+  "Breeding peaks mid-September to mid-November; lambs born late February through April."
+ ],
+ "habitat": [
+  "Dry, rough, barren and largely waterless rocky terrain, similar to desert bighorn sheep country."
+ ],
+ "range": "Native to North Africa. Introduced to New Mexico (1950) and Texas (Palo Duro Canyon, 1957–1958) and now established in the Texas Panhandle canyons, Trans-Pecos and Edwards Plateau.",
+ "lookalikes": [
+  {
+   "slug": "bighorn-sheep",
+   "name": "Bighorn sheep",
+   "howToTell": "Aoudad have long hair on the throat, chest and forelegs; they share similar terrain and may compete with bighorns."
+  }
+ ],
+ "aliases": [
+  "aoudad"
+ ],
+ "sources": [
+  {
+   "title": "Species account of the Barbary Sheep or Aoudad — The Mammals of Texas, online edition",
+   "publisher": "Natural Science Research Laboratory, Texas Tech University",
+   "url": "https://www.depts.ttu.edu/nsrl/mammals-of-texas-online-edition/Accounts_Introduced_Artiodactyla/Ammotragus_lervia.php"
+  }
+ ]
+}

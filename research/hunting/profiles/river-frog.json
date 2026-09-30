@@ -1,0 +1,38 @@
+{
+ "slug": "river-frog",
+ "scientificName": "Lithobates heckscheri",
+ "commonNameFr": null,
+ "family": "Ranidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe notes competing generic arrangements for American ranids (Lithobates used here).",
+ "fieldMarks": [
+  "Large: 3.25-4.63 in snout-vent (record 6.13 in); greenish-black back.",
+  "Light spots on the lips, larger on the lower jaw.",
+  "Skin more rugose than most ranid frogs; no dorsolateral ridges.",
+  "Belly grey to almost black with light spots or short wavy lines; males often have yellowish throat.",
+  "Webbing on hind feet reaches the last phalanx of the longest toe."
+ ],
+ "behavior": [
+  "Highly aquatic and approachable; sits in shallow open water and on logs.",
+  "Eats insects and other invertebrates, occasionally small vertebrates including other ranid frogs."
+ ],
+ "habitat": [
+  "Swamps along streams and edges of shallow ponds and impoundments, including beaver ponds; open, thinly vegetated shorelines."
+ ],
+ "range": "Coastal Plain from southern North Carolina (at least formerly) to northern Florida and west to southeastern Mississippi; most of the range is in northern Florida, southern Georgia and southern South Carolina.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.103815"
+  },
+  {
+   "title": "Animal Diversity Web species account",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lithobates_heckscheri/"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

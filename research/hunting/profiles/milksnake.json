@@ -1,0 +1,42 @@
+{
+ "slug": "milksnake",
+ "scientificName": "Lampropeltis triangulum",
+ "commonNameFr": "Couleuvre tachetée",
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe (following SSAR 2025) restricts L. triangulum to the eastern populations and treats L. gentilis as separate; Chambers et al. (2023) argue for lumping, and Animal Diversity Web describes L. triangulum with 25 subspecies.",
+ "fieldMarks": [
+  "Gray or tan body with a light Y- or V-shaped patch on the neck.",
+  "Black-bordered brown or rust-red blotches down back and sides.",
+  "Typically 60-130 cm in the United States; 19-23 rows of smooth scales and a single anal plate.",
+  "No colour difference between the sexes."
+ ],
+ "behavior": [
+  "Solitary and secretive; rarely seen in the open by day but often crosses roads at night; mostly nocturnal in hot weather.",
+  "Hides under rotting logs and damp trash; hunts rodents around barns and other buildings.",
+  "Groups only at hibernation, and may bask in groups just before and after; inactive about November-March in the north.",
+  "Eats voles, mice, rats, birds, eggs, lizards and other snakes."
+ ],
+ "habitat": [
+  "Forest edges, open woodland, prairies, rocky hillsides, small streams or marshes and farm or suburban areas; hibernates underground or in rock crevices."
+ ],
+ "range": "Southern Minnesota, Michigan, southern Ontario, southern Quebec and southern Maine south to North Carolina and northern Alabama and Georgia; also Mississippi and northeastern Louisiana.",
+ "lookalikes": [],
+ "aliases": [
+  "Milk Snake",
+  "Eastern Milksnake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.960858"
+  },
+  {
+   "title": "Animal Diversity Web species account",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lampropeltis_triangulum/"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

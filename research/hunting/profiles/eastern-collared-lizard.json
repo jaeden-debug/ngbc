@@ -1,0 +1,52 @@
+{
+ "slug": "eastern-collared-lizard",
+ "scientificName": "Crotaphytus collaris",
+ "commonNameFr": null,
+ "family": "Crotaphytidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Two incomplete black or dark brown collars across a narrow neck; large head, sometimes bright yellow; long tail (CPW; MDC).",
+  "Turquoise to green or brown back with many small light spots and dark bands; to about 36 cm (14 in) (CPW; MDC).",
+  "Breeding males most colourful, with turquoise and yellow scales; throat dark-spotted or yellow to orange (CPW).",
+  "Breeding females have orange-red bars or spots on the sides of the body and neck; juveniles have wide dark bands or large dark spots (CPW).",
+  "Adult males lack dark pigment in the gular fold, and the mouth lining is usually black (NatureServe; CPW)."
+ ],
+ "behavior": [
+  "Diurnal; basks on boulders, hides under large rocks or in crevices when approached, and may run on its hind limbs (MDC).",
+  "Males defend territories; in Oklahoma about 6.4 dominant males per hectare (MDC; NatureServe).",
+  "Eats insects, spiders, other lizards and small snakes, occasionally plant material (MDC; NatureServe).",
+  "Active about March or April to October in the north; overwinters in burrows under large rocks (NatureServe; MDC)."
+ ],
+ "habitat": [
+  "Rocky areas with sparse vegetation: canyons, gullies, slopes, mesa tops and dry glades; often basks on boulders (CPW; MDC; NatureServe)."
+ ],
+ "range": "Southeastern Utah, southern Colorado, Kansas and central and southern Missouri south through Arizona, New Mexico, western and central Texas, Oklahoma and Arkansas into northern Mexico; Louisiana records may not be natural (NatureServe). Missouri populations north of the Missouri River appear introduced (MDC).",
+ "lookalikes": [
+  {
+   "slug": "great-basin-collared-lizard",
+   "name": "Great Basin collared lizard",
+   "howToTell": "Great Basin lacks the black mouth lining and males have a compressed tail with a pale dorsal stripe (NatureServe)."
+  }
+ ],
+ "aliases": [
+  "mountain boomer"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Crotaphytus collaris",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105653"
+  },
+  {
+   "title": "Eastern Collared Lizard",
+   "publisher": "Colorado Parks and Wildlife",
+   "url": "https://cpw.state.co.us/species/eastern-collared-lizard"
+  },
+  {
+   "title": "Eastern Collared Lizard",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/eastern-collared-lizard"
+  }
+ ]
+}

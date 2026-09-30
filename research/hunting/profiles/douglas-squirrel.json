@@ -1,0 +1,45 @@
+{
+ "slug": "douglas-squirrel",
+ "scientificName": "Tamiasciurus douglasii",
+ "commonNameFr": "Écureuil de Douglas",
+ "family": "Sciuridae",
+ "order": "Rodentia",
+ "taxonomyNote": "NatureServe now includes T. mearnsi in this species (Hope et al. 2016), though ASM and IUCN still recognize it as separate.",
+ "fieldMarks": [
+  "Body 270-355 mm; tail 100-160 mm; 141-312 g",
+  "Summer coat reddish- to grayish-brown above with orange chest and belly, unlike its nearest relative the red squirrel",
+  "Broad bushy tail with a black tip",
+  "Black stripe along the sides, absent in juveniles and faded or absent in winter",
+  "Winter coat grayer; ear tufts possible in the far north"
+ ],
+ "behavior": [
+  "Very vocal, with calls from a low 'chir' to an explosive 'bauf'",
+  "Active year round, usually stays in the nest in severe weather; daily activity dawn to sunset",
+  "Spring: conifer shoots and bark; fall: cone seeds; stores cones in logs or burrows",
+  "Summer nests of twigs and moss; winter nests in tree crevices or underground"
+ ],
+ "habitat": [
+  "Conifer forest, sea level to 3,300 m; populations generally higher in old growth than younger forest in Washington."
+ ],
+ "range": "Southwestern British Columbia south through the coast ranges, Cascades and Sierra Nevada to southern California and northern Baja California.",
+ "lookalikes": [
+  {
+   "slug": "red-squirrel",
+   "name": "Red squirrel",
+   "howToTell": "Lacks the orange chest and belly of Douglas squirrel (ADW)."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Douglas' Squirrel (Tamiasciurus douglasii)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.1156423/Tamiasciurus_douglasii"
+  },
+  {
+   "title": "Animal Diversity Web: Tamiasciurus douglasii (Douglas's squirrel)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Tamiasciurus_douglasii/"
+  }
+ ]
+}

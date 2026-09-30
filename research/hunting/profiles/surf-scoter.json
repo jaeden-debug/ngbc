@@ -1,0 +1,35 @@
+{
+ "slug": "surf-scoter",
+ "scientificName": "Melanitta perspicillata",
+ "fieldMarks": [
+  "Male all black with white head patches and an orange-and-white bill",
+  "Female dark sooty brown with two whitish patches on the face",
+  "Note the shape of the bill base at close range"
+ ],
+ "behavior": [
+  "Springs forward to dive with wings partly opened; eats mainly mollusks",
+  "Silent most of the year",
+  "Migrates in flocks, flying high overland; inland lake stops are mostly for rest",
+  "Common in winter around Pacific piers and harbours"
+ ],
+ "habitat": [
+  "Breeds near lakes and slow rivers in sparse northern forest or tundra; winters mostly on shallow ocean bays and estuaries, some on the Great Lakes."
+ ],
+ "range": "Breeds from western Alaska and the Mackenzie Delta across the northern Prairie Provinces to James Bay, Labrador and Newfoundland; winters on the Pacific coast from the Aleutians to Baja California and on the Atlantic from Nova Scotia to Florida, with some on the Great Lakes.",
+ "lookalikes": [],
+ "aliases": [
+  "Skunk-head coot"
+ ],
+ "sources": [
+  {
+   "title": "Surf Scoter | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/surf-scoter"
+  },
+  {
+   "title": "Melanitta perspicillata (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100806/Melanitta_perspicillata"
+  }
+ ]
+}

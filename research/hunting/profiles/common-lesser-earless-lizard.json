@@ -1,0 +1,46 @@
+{
+ "slug": "common-lesser-earless-lizard",
+ "scientificName": "Holbrookia maculata",
+ "commonNameFr": null,
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe (Nicholson 2025) recognizes subspecies campi, flavilenta and maculata; TPWD's page covers the subspecies H. m. maculata (northern earless lizard).",
+ "fieldMarks": [
+  "No external ear openings (CPW).",
+  "Striped or speckled back; two black bars on each side of the belly, sometimes described as bars near the armpits; up to about 13 cm total length (CPW; TPWD).",
+  "Mature male: two enlarged scales under the tail behind the vent, black blue-edged belly bars, possible yellowish wash on the sides (CPW).",
+  "Mature female: belly bars lack blue edging; breeding females show yellow-orange on the throat, head and neck and orange on the sides (CPW)."
+ ],
+ "behavior": [
+  "Mainly diurnal, but may be active in the evening and at night in hot weather (NatureServe).",
+  "Takes cover in rodent burrows or burrows into sand (CPW).",
+  "Eats mainly insects and spiders (NatureServe).",
+  "Active March-October in the north; lays 1-2 clutches between April and September (NatureServe)."
+ ],
+ "habitat": [
+  "Sparsely vegetated sandy or gravelly ground: sandhills, prairie-dog towns, washes, streambanks, dunes, sagebrush flats and open prairie (CPW; NatureServe)."
+ ],
+ "range": "Southern South Dakota to central Texas, southwest to southeastern Utah and Arizona, and south to Jalisco and Guanajuato, Mexico (NatureServe).",
+ "lookalikes": [],
+ "aliases": [
+  "lesser earless lizard",
+  "northern earless lizard"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Holbrookia maculata",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.104129"
+  },
+  {
+   "title": "Common Lesser Earless Lizard",
+   "publisher": "Colorado Parks and Wildlife",
+   "url": "https://cpw.state.co.us/species/common-lesser-earless-lizard"
+  },
+  {
+   "title": "Northern Earless Lizard (Holbrookia maculata maculata)",
+   "publisher": "Texas Parks and Wildlife Department",
+   "url": "https://tpwd.texas.gov/huntwild/wild/species/nelizard/"
+  }
+ ]
+}

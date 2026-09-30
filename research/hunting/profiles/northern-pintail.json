@@ -1,0 +1,29 @@
+{
+ "slug": "northern-pintail",
+ "scientificName": "Anas acuta",
+ "fieldMarks": [
+  "Slender, long-necked duck with a pointed tail.",
+  "Drake: brown head with a white stripe running up the neck, gray body and long central tail.",
+  "Hen: mottled buff-brown with a gray bill, pointed tail and long neck.",
+  "In flight, a narrow white trailing edge on the inner wing."
+ ],
+ "behavior": [
+  "Drake gives a distinctive two-tone whistle; hen quacks.",
+  "Up-ends or submerges head and neck in shallow water; also walks to feed on land.",
+  "Fall and winter diet mostly seeds and waste grain; more insects and mollusks in summer.",
+  "Migrates in flocks; spring migration starts early and fall migration spans most of autumn."
+ ],
+ "habitat": [
+  "Marshes, prairies, fresh ponds, lakes and salt bays; in migration uses shallow water with exposed mudflats."
+ ],
+ "range": "Widespread across North America, breeding in the North and wintering to the south; Siberian birds cross the Bering Strait to winter in North America.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Northern Pintail — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/northern-pintail"
+  }
+ ]
+}

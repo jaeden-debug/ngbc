@@ -115,17 +115,14 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-willow-ptarmigan"
+            "source:profile-willow-ptarmigan-1"
           ]
         },
         {
           "value": "willow grouse",
           "locale": "en-CA",
           "type": "common_name",
-          "verificationStatus": "verified",
-          "sourceIds": [
-            "source:cornell-willow-ptarmigan"
-          ]
+          "verificationStatus": "needs_review"
         }
       ],
       "createdAt": "2026-09-20T20:00:00Z",
@@ -158,7 +155,7 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-rock-ptarmigan"
+            "source:profile-rock-ptarmigan-1"
           ]
         }
       ],
@@ -192,17 +189,14 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-ring-necked-pheasant"
+            "source:profile-ring-necked-pheasant-1"
           ]
         },
         {
           "value": "ringneck",
           "locale": "en-CA",
           "type": "common_name",
-          "verificationStatus": "needs_review",
-          "sourceIds": [
-            "source:cornell-ring-necked-pheasant"
-          ]
+          "verificationStatus": "needs_review"
         }
       ],
       "createdAt": "2026-09-20T20:00:00Z",
@@ -235,7 +229,7 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-american-woodcock"
+            "source:profile-american-woodcock-1"
           ]
         }
       ],
@@ -269,7 +263,7 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-wilsons-snipe"
+            "source:profile-wilsons-snipe-1"
           ]
         }
       ],
@@ -303,7 +297,7 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-sandhill-crane"
+            "source:profile-sandhill-crane-1"
           ]
         }
       ],
@@ -337,7 +331,7 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-mourning-dove"
+            "source:profile-mourning-dove-1"
           ]
         }
       ],
@@ -366,14 +360,14 @@
       "speciesIds": [
         "species:willow-ptarmigan"
       ],
-      "quickAnswer": "Willow ptarmigan (Lagopus lagopus) can be identified as follows: Stocky ptarmigan with a relatively heavy bill; breeding males show rich chestnut head and neck, while winter birds are white with black tails. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Willow ptarmigan (Lagopus lagopus): Winter: white with black tail feathers; feet heavily feathered to the toes. Breeding male: chestnut head and neck on a white body, becoming mostly reddish-brown with white wings. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Lagopus lagopus",
           "sourceIds": [
-            "source:cornell-willow-ptarmigan"
+            "source:profile-willow-ptarmigan-1"
           ]
         },
         {
@@ -381,20 +375,20 @@
           "label": "Family",
           "value": "Phasianidae",
           "sourceIds": [
-            "source:cornell-willow-ptarmigan"
+            "source:profile-willow-ptarmigan-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "Northern and alpine North America",
+          "label": "Range",
+          "value": "Alaska and northern Canada.",
           "sourceIds": [
-            "source:cornell-willow-ptarmigan"
+            "source:profile-willow-ptarmigan-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-willow-ptarmigan"
+        "source:profile-willow-ptarmigan-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -404,7 +398,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -427,7 +421,7 @@
           "family": "Phasianidae",
           "genus": "Lagopus",
           "species": "lagopus",
-          "taxonomySourceId": "source:cornell-willow-ptarmigan"
+          "taxonomySourceId": "source:profile-willow-ptarmigan-1"
         },
         "speciesGroupIds": [
           "species_group:ptarmigan",
@@ -437,14 +431,38 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Northern and alpine North America"
+            "value": "Alaska and northern Canada."
           }
         ],
         "identification": [
           {
-            "text": "Stocky ptarmigan with a relatively heavy bill; breeding males show rich chestnut head and neck, while winter birds are white with black tails.",
+            "text": "Winter: white with black tail feathers; feet heavily feathered to the toes.",
             "sourceIds": [
-              "source:cornell-willow-ptarmigan"
+              "source:profile-willow-ptarmigan-1"
+            ]
+          },
+          {
+            "text": "Breeding male: chestnut head and neck on a white body, becoming mostly reddish-brown with white wings.",
+            "sourceIds": [
+              "source:profile-willow-ptarmigan-1"
+            ]
+          },
+          {
+            "text": "Female: duller mottled brown through summer.",
+            "sourceIds": [
+              "source:profile-willow-ptarmigan-1"
+            ]
+          },
+          {
+            "text": "Males raise red combs in display.",
+            "sourceIds": [
+              "source:profile-willow-ptarmigan-1"
+            ]
+          },
+          {
+            "text": "Compared with the rock ptarmigan: Rock ptarmigan is smaller with a smaller bill; the winter male has a black eye line.",
+            "sourceIds": [
+              "source:profile-willow-ptarmigan-1"
             ]
           }
         ],
@@ -453,9 +471,9 @@
         ],
         "habitat": [
           {
-            "text": "Willow thickets and low tundra across the North.",
+            "text": "Tundra, willow scrub and muskeg north of treeline, especially low wet tundra with dwarf willow thickets; also near treeline in mountains.",
             "sourceIds": [
-              "source:cornell-willow-ptarmigan"
+              "source:profile-willow-ptarmigan-1"
             ]
           }
         ],
@@ -463,15 +481,41 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-willow-ptarmigan"
+              "source:profile-willow-ptarmigan-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-willow-ptarmigan"
+          "source:profile-willow-ptarmigan-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Courting males give a loud, staccato go-back, go-back.",
+            "sourceIds": [
+              "source:profile-willow-ptarmigan-1"
+            ]
+          },
+          {
+            "text": "Walks and picks at willow, alder and birch buds, leaves and twigs, and berries; swallows grit.",
+            "sourceIds": [
+              "source:profile-willow-ptarmigan-1"
+            ]
+          },
+          {
+            "text": "Flushes with rapid wingbeats.",
+            "sourceIds": [
+              "source:profile-willow-ptarmigan-1"
+            ]
+          },
+          {
+            "text": "Less migratory than rock ptarmigan but sometimes winters south of the breeding range; populations cycle.",
+            "sourceIds": [
+              "source:profile-willow-ptarmigan-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -494,14 +538,14 @@
       "speciesIds": [
         "species:rock-ptarmigan"
       ],
-      "quickAnswer": "Rock ptarmigan (Lagopus muta) can be identified as follows: Smaller, finer-billed ptarmigan; breeding males have gray upperparts and winter males retain a black eye stripe. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Rock ptarmigan (Lagopus muta): Smaller than the willow ptarmigan with a smaller bill. Winter: both sexes mostly white; winter male has a black line from bill to eye. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Lagopus muta",
           "sourceIds": [
-            "source:cornell-rock-ptarmigan"
+            "source:profile-rock-ptarmigan-1"
           ]
         },
         {
@@ -509,20 +553,20 @@
           "label": "Family",
           "value": "Phasianidae",
           "sourceIds": [
-            "source:cornell-rock-ptarmigan"
+            "source:profile-rock-ptarmigan-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "Arctic and alpine North America",
+          "label": "Range",
+          "value": "Arctic and alpine tundra of Alaska and northern Canada.",
           "sourceIds": [
-            "source:cornell-rock-ptarmigan"
+            "source:profile-rock-ptarmigan-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-rock-ptarmigan"
+        "source:profile-rock-ptarmigan-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -532,7 +576,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -555,7 +599,7 @@
           "family": "Phasianidae",
           "genus": "Lagopus",
           "species": "muta",
-          "taxonomySourceId": "source:cornell-rock-ptarmigan"
+          "taxonomySourceId": "source:profile-rock-ptarmigan-1"
         },
         "speciesGroupIds": [
           "species_group:ptarmigan",
@@ -565,14 +609,32 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Arctic and alpine North America"
+            "value": "Arctic and alpine tundra of Alaska and northern Canada."
           }
         ],
         "identification": [
           {
-            "text": "Smaller, finer-billed ptarmigan; breeding males have gray upperparts and winter males retain a black eye stripe.",
+            "text": "Smaller than the willow ptarmigan with a smaller bill.",
             "sourceIds": [
-              "source:cornell-rock-ptarmigan"
+              "source:profile-rock-ptarmigan-1"
+            ]
+          },
+          {
+            "text": "Winter: both sexes mostly white; winter male has a black line from bill to eye.",
+            "sourceIds": [
+              "source:profile-rock-ptarmigan-1"
+            ]
+          },
+          {
+            "text": "Breeding: females turn mottled brown before males; males stay mostly white into early summer.",
+            "sourceIds": [
+              "source:profile-rock-ptarmigan-1"
+            ]
+          },
+          {
+            "text": "Compared with the willow ptarmigan: Willow is larger with a heavier bill; the winter male lacks the black eye line and breeding molt timing differs.",
+            "sourceIds": [
+              "source:profile-rock-ptarmigan-1"
             ]
           }
         ],
@@ -581,9 +643,9 @@
         ],
         "habitat": [
           {
-            "text": "Rocky Arctic and alpine tundra, generally more exposed than willow ptarmigan habitat.",
+            "text": "Dry, open tundra with rock outcrops and dwarf shrubs, above timberline in mountains and on northern coasts.",
             "sourceIds": [
-              "source:cornell-rock-ptarmigan"
+              "source:profile-rock-ptarmigan-1"
             ]
           }
         ],
@@ -591,15 +653,41 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-rock-ptarmigan"
+              "source:profile-rock-ptarmigan-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-rock-ptarmigan"
+          "source:profile-rock-ptarmigan-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Courting males give a snoring kurr-kurr.",
+            "sourceIds": [
+              "source:profile-rock-ptarmigan-1"
+            ]
+          },
+          {
+            "text": "Picks at vegetation: willow, dwarf birch, alder, saxifrage, crowberry buds, seeds and berries.",
+            "sourceIds": [
+              "source:profile-rock-ptarmigan-1"
+            ]
+          },
+          {
+            "text": "In winter sometimes follows caribou or muskox to feed where they scraped away snow.",
+            "sourceIds": [
+              "source:profile-rock-ptarmigan-1"
+            ]
+          },
+          {
+            "text": "Leaves the northernmost range and highest mountains in winter, moving lower and south in flocks.",
+            "sourceIds": [
+              "source:profile-rock-ptarmigan-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -620,14 +708,14 @@
       "speciesIds": [
         "species:ring-necked-pheasant"
       ],
-      "quickAnswer": "Ring-necked pheasant (Phasianus colchicus) can be identified as follows: Male has an iridescent green head, red face and very long barred tail; female is mottled buff-brown with a long pointed tail. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Ring-necked pheasant (Phasianus colchicus): Large, long-tailed game bird, 76-91 cm including the tail. Male: colourful and iridescent with a long pointed tail and a white neck ring. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Phasianus colchicus",
           "sourceIds": [
-            "source:cornell-ring-necked-pheasant"
+            "source:profile-ring-necked-pheasant-1"
           ]
         },
         {
@@ -635,20 +723,20 @@
           "label": "Family",
           "value": "Phasianidae",
           "sourceIds": [
-            "source:cornell-ring-necked-pheasant"
+            "source:profile-ring-necked-pheasant-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "Introduced broadly in agricultural North America",
+          "label": "Range",
+          "value": "Native to Asia and introduced to North America as a game bird. Established across southern Canada and much of the United States, thriving especially on the northern prairies; some populations are probably maintained by releases of game-farm birds.",
           "sourceIds": [
-            "source:cornell-ring-necked-pheasant"
+            "source:profile-ring-necked-pheasant-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-ring-necked-pheasant"
+        "source:profile-ring-necked-pheasant-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -658,7 +746,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -681,7 +769,7 @@
           "family": "Phasianidae",
           "genus": "Phasianus",
           "species": "colchicus",
-          "taxonomySourceId": "source:cornell-ring-necked-pheasant"
+          "taxonomySourceId": "source:profile-ring-necked-pheasant-1"
         },
         "speciesGroupIds": [
           "species_group:upland-game-birds"
@@ -689,14 +777,38 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Introduced broadly in agricultural North America"
+            "value": "Native to Asia and introduced to North America as a game bird. Established across southern Canada and much of the United States, thriving especially on the northern prairies; some populations are probably maintained by releases of game-farm birds."
           }
         ],
         "identification": [
           {
-            "text": "Male has an iridescent green head, red face and very long barred tail; female is mottled buff-brown with a long pointed tail.",
+            "text": "Large, long-tailed game bird, 76-91 cm including the tail.",
             "sourceIds": [
-              "source:cornell-ring-necked-pheasant"
+              "source:profile-ring-necked-pheasant-1"
+            ]
+          },
+          {
+            "text": "Male: colourful and iridescent with a long pointed tail and a white neck ring.",
+            "sourceIds": [
+              "source:profile-ring-necked-pheasant-1"
+            ]
+          },
+          {
+            "text": "Female: mottled brown with a long tail and pale belly.",
+            "sourceIds": [
+              "source:profile-ring-necked-pheasant-1"
+            ]
+          },
+          {
+            "text": "The darker 'green pheasant' form found locally on the east coast has males without the white neck ring.",
+            "sourceIds": [
+              "source:profile-ring-necked-pheasant-1"
+            ]
+          },
+          {
+            "text": "Compared with the prairie grouse (e.g. sharp-tailed grouse): Audubon cautions that the brown female pheasant should be compared with prairie grouse; the pheasant hen has a much longer tail.",
+            "sourceIds": [
+              "source:profile-ring-necked-pheasant-1"
             ]
           }
         ],
@@ -705,9 +817,9 @@
         ],
         "habitat": [
           {
-            "text": "Introduced populations occupy agricultural fields, grasslands and dense edge cover.",
+            "text": "Semi-open habitat: farmland with mixed crops, brushy meadows, hedgerows, woodland edges and marsh edges. Access to water may be important; rarely found in very arid places.",
             "sourceIds": [
-              "source:cornell-ring-necked-pheasant"
+              "source:profile-ring-necked-pheasant-1"
             ]
           }
         ],
@@ -715,15 +827,41 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-ring-necked-pheasant"
+              "source:profile-ring-necked-pheasant-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-ring-necked-pheasant"
+          "source:profile-ring-necked-pheasant-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Male territorial call is a loud crowing 'caw-cawk!' followed by a resonant beating of the wings; flushes with a loud cackle.",
+            "sourceIds": [
+              "source:profile-ring-necked-pheasant-1"
+            ]
+          },
+          {
+            "text": "Winter flocks are often segregated: small groups of males and larger flocks of females.",
+            "sourceIds": [
+              "source:profile-ring-necked-pheasant-1"
+            ]
+          },
+          {
+            "text": "Feeds on the ground by scratching and digging; omnivorous, eating grain, seeds, green shoots, berries and insects.",
+            "sourceIds": [
+              "source:profile-ring-necked-pheasant-1"
+            ]
+          },
+          {
+            "text": "Permanent resident; does not migrate.",
+            "sourceIds": [
+              "source:profile-ring-necked-pheasant-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -744,14 +882,14 @@
       "speciesIds": [
         "species:gray-partridge"
       ],
-      "quickAnswer": "Gray partridge (Perdix perdix) can be identified as follows: Small round gamebird with orange face and throat, barred flanks and a chestnut belly patch that varies by sex and age. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Gray partridge (Perdix perdix): 11.8-13 in; mostly gray below with an orange face and throat. Chestnut patch on the belly, reduced on the female. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Perdix perdix",
           "sourceIds": [
-            "source:cornell-gray-partridge"
+            "source:profile-gray-partridge-1"
           ]
         },
         {
@@ -759,20 +897,20 @@
           "label": "Family",
           "value": "Phasianidae",
           "sourceIds": [
-            "source:cornell-gray-partridge"
+            "source:profile-gray-partridge-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "Introduced in parts of Canada and United States",
+          "label": "Range",
+          "value": "Introduced from Europe (as early as the 1790s, established later); most successful on the northern prairies and present in eastern Canada, the Great Lakes, the Northwest and the Rocky Mountain region.",
           "sourceIds": [
-            "source:cornell-gray-partridge"
+            "source:profile-gray-partridge-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-gray-partridge"
+        "source:profile-gray-partridge-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -782,7 +920,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -805,7 +943,7 @@
           "family": "Phasianidae",
           "genus": "Perdix",
           "species": "perdix",
-          "taxonomySourceId": "source:cornell-gray-partridge"
+          "taxonomySourceId": "source:profile-gray-partridge-1"
         },
         "speciesGroupIds": [
           "species_group:upland-game-birds"
@@ -813,14 +951,32 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Introduced in parts of Canada and United States"
+            "value": "Introduced from Europe (as early as the 1790s, established later); most successful on the northern prairies and present in eastern Canada, the Great Lakes, the Northwest and the Rocky Mountain region."
           }
         ],
         "identification": [
           {
-            "text": "Small round gamebird with orange face and throat, barred flanks and a chestnut belly patch that varies by sex and age.",
+            "text": "11.8-13 in; mostly gray below with an orange face and throat.",
             "sourceIds": [
-              "source:cornell-gray-partridge"
+              "source:profile-gray-partridge-1"
+            ]
+          },
+          {
+            "text": "Chestnut patch on the belly, reduced on the female.",
+            "sourceIds": [
+              "source:profile-gray-partridge-1"
+            ]
+          },
+          {
+            "text": "In flight the short tail shows rusty outer feathers.",
+            "sourceIds": [
+              "source:profile-gray-partridge-1"
+            ]
+          },
+          {
+            "text": "Flushes with a rapid cackle; call a hoarse 'kee-ah'.",
+            "sourceIds": [
+              "source:profile-gray-partridge-1"
             ]
           }
         ],
@@ -829,9 +985,15 @@
         ],
         "habitat": [
           {
-            "text": "Open farmland and grassland with hedgerows in introduced North American populations.",
+            "text": "Cultivated land, hedgerows, bushy pastures and meadows; farmland suits it where hedgerows and shelterbelts remain between fields.",
             "sourceIds": [
-              "source:cornell-gray-partridge"
+              "source:profile-gray-partridge-1"
+            ]
+          },
+          {
+            "text": "In winter often in stubble fields, moving into woodlot edges in harsh weather.",
+            "sourceIds": [
+              "source:profile-gray-partridge-1"
             ]
           }
         ],
@@ -839,15 +1001,35 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-gray-partridge"
+              "source:profile-gray-partridge-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-gray-partridge"
+          "source:profile-gray-partridge-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Lives in coveys most of the year, in pairs in spring; often unseen while foraging in tall grass.",
+            "sourceIds": [
+              "source:profile-gray-partridge-1"
+            ]
+          },
+          {
+            "text": "Feeds on the ground on weed and grass seeds and waste grain (wheat, oats, corn, sunflower); may burrow into snow for seeds in winter; eats insects in summer.",
+            "sourceIds": [
+              "source:profile-gray-partridge-1"
+            ]
+          },
+          {
+            "text": "Non-migratory in North America.",
+            "sourceIds": [
+              "source:profile-gray-partridge-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -868,14 +1050,14 @@
       "speciesIds": [
         "species:american-woodcock"
       ],
-      "quickAnswer": "American woodcock (Scolopax minor) can be identified as follows: Plump, cryptically patterned shorebird with very short legs, large high-set eyes and a long straight bill. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "American woodcock (Scolopax minor): Round-bodied, short-necked, short-legged shorebird with a very long bill. Orange-buff belly and crosswise black bars on the crown. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Scolopax minor",
           "sourceIds": [
-            "source:cornell-american-woodcock"
+            "source:profile-american-woodcock-1"
           ]
         },
         {
@@ -883,20 +1065,20 @@
           "label": "Family",
           "value": "Scolopacidae",
           "sourceIds": [
-            "source:cornell-american-woodcock"
+            "source:profile-american-woodcock-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "Eastern North America",
+          "label": "Range",
+          "value": "Eastern North America: Eastern Canada and the Great Lakes south through New England, the Mid-Atlantic, the Plains, the Southeast, Texas and Florida.",
           "sourceIds": [
-            "source:cornell-american-woodcock"
+            "source:profile-american-woodcock-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-american-woodcock"
+        "source:profile-american-woodcock-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -906,7 +1088,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -929,7 +1111,7 @@
           "family": "Scolopacidae",
           "genus": "Scolopax",
           "species": "minor",
-          "taxonomySourceId": "source:cornell-american-woodcock"
+          "taxonomySourceId": "source:profile-american-woodcock-1"
         },
         "speciesGroupIds": [
           "species_group:migratory-game-birds"
@@ -937,14 +1119,38 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Eastern North America"
+            "value": "Eastern North America: Eastern Canada and the Great Lakes south through New England, the Mid-Atlantic, the Plains, the Southeast, Texas and Florida."
           }
         ],
         "identification": [
           {
-            "text": "Plump, cryptically patterned shorebird with very short legs, large high-set eyes and a long straight bill.",
+            "text": "Round-bodied, short-necked, short-legged shorebird with a very long bill.",
             "sourceIds": [
-              "source:cornell-american-woodcock"
+              "source:profile-american-woodcock-1"
+            ]
+          },
+          {
+            "text": "Orange-buff belly and crosswise black bars on the crown.",
+            "sourceIds": [
+              "source:profile-american-woodcock-1"
+            ]
+          },
+          {
+            "text": "Camouflaged brown pattern on the back.",
+            "sourceIds": [
+              "source:profile-american-woodcock-1"
+            ]
+          },
+          {
+            "text": "Eyes set far back on the head.",
+            "sourceIds": [
+              "source:profile-american-woodcock-1"
+            ]
+          },
+          {
+            "text": "Female is slightly larger than the male (female 27-31 cm, male 25-28 cm).",
+            "sourceIds": [
+              "source:profile-american-woodcock-1"
             ]
           }
         ],
@@ -953,9 +1159,9 @@
         ],
         "habitat": [
           {
-            "text": "Moist young forest and thickets near open singing grounds in eastern North America.",
+            "text": "Wet thickets, moist woods and brushy swamps, especially deciduous or mixed woods with dense young growth and moist soil, such as stream-side thickets. At night it may use open pastures, abandoned farm fields and swamp edges.",
             "sourceIds": [
-              "source:cornell-american-woodcock"
+              "source:profile-american-woodcock-1"
             ]
           }
         ],
@@ -963,15 +1169,41 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-american-woodcock"
+              "source:profile-american-woodcock-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-american-woodcock"
+          "source:profile-american-woodcock-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Hides in forest thickets by day and often moves to open fields at night.",
+            "sourceIds": [
+              "source:profile-american-woodcock-1"
+            ]
+          },
+          {
+            "text": "Males perform a high, twisting 'sky dance' flight on spring and summer nights with chippering, twittering sounds; on the ground they repeat a loud, buzzy 'bzeep' about every two seconds.",
+            "sourceIds": [
+              "source:profile-american-woodcock-1"
+            ]
+          },
+          {
+            "text": "Probes soft, damp soil with its sensitive bill tip; earthworms are the main prey, plus soil-dwelling insect larvae.",
+            "sourceIds": [
+              "source:profile-american-woodcock-1"
+            ]
+          },
+          {
+            "text": "Migrates at night; many move south ahead of major fall cold fronts, and spring migration starts very early.",
+            "sourceIds": [
+              "source:profile-american-woodcock-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -992,14 +1224,14 @@
       "speciesIds": [
         "species:wilsons-snipe"
       ],
-      "quickAnswer": "Wilson's snipe (Gallinago delicata) can be identified as follows: Cryptic marsh bird with a very long straight bill, striped back and a fast zigzag flush. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Wilson's snipe (Gallinago delicata): 9.8-11.8 in; round-bodied sandpiper with a very long bill and short legs. Heavy lengthwise stripes on the head and back; barred sides. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Gallinago delicata",
           "sourceIds": [
-            "source:cornell-wilsons-snipe"
+            "source:profile-wilsons-snipe-1"
           ]
         },
         {
@@ -1007,20 +1239,20 @@
           "label": "Family",
           "value": "Scolopacidae",
           "sourceIds": [
-            "source:cornell-wilsons-snipe"
+            "source:profile-wilsons-snipe-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America",
+          "label": "Range",
+          "value": "Breeds across Canada, Alaska and the northern United States and winters commonly across the southern United States; recorded in every Audubon region of Canada and the U.S.",
           "sourceIds": [
-            "source:cornell-wilsons-snipe"
+            "source:profile-wilsons-snipe-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-wilsons-snipe"
+        "source:profile-wilsons-snipe-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1030,7 +1262,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1053,7 +1285,7 @@
           "family": "Scolopacidae",
           "genus": "Gallinago",
           "species": "delicata",
-          "taxonomySourceId": "source:cornell-wilsons-snipe"
+          "taxonomySourceId": "source:profile-wilsons-snipe-1"
         },
         "speciesGroupIds": [
           "species_group:migratory-game-birds"
@@ -1061,14 +1293,26 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America"
+            "value": "Breeds across Canada, Alaska and the northern United States and winters commonly across the southern United States; recorded in every Audubon region of Canada and the U.S."
           }
         ],
         "identification": [
           {
-            "text": "Cryptic marsh bird with a very long straight bill, striped back and a fast zigzag flush.",
+            "text": "9.8-11.8 in; round-bodied sandpiper with a very long bill and short legs.",
             "sourceIds": [
-              "source:cornell-wilsons-snipe"
+              "source:profile-wilsons-snipe-1"
+            ]
+          },
+          {
+            "text": "Heavy lengthwise stripes on the head and back; barred sides.",
+            "sourceIds": [
+              "source:profile-wilsons-snipe-1"
+            ]
+          },
+          {
+            "text": "Flushes in zigzag flight with a sharp, rasping 'scaip!'.",
+            "sourceIds": [
+              "source:profile-wilsons-snipe-1"
             ]
           }
         ],
@@ -1077,9 +1321,15 @@
         ],
         "habitat": [
           {
-            "text": "Wet meadows, bogs and marsh edges across North America.",
+            "text": "Breeds around fresh marshes, bogs, shrubby streamsides and northern tundra.",
             "sourceIds": [
-              "source:cornell-wilsons-snipe"
+              "source:profile-wilsons-snipe-1"
+            ]
+          },
+          {
+            "text": "In migration and winter uses fresh and salt marshes, muddy banks, wet pastures and flooded fields.",
+            "sourceIds": [
+              "source:profile-wilsons-snipe-1"
             ]
           }
         ],
@@ -1087,15 +1337,41 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-wilsons-snipe"
+              "source:profile-wilsons-snipe-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-wilsons-snipe"
+          "source:profile-wilsons-snipe-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Solitary; seldom on open mudflats, often overlooked outside the breeding season.",
+            "sourceIds": [
+              "source:profile-wilsons-snipe-1"
+            ]
+          },
+          {
+            "text": "In breeding season males yammer from posts and produce a hollow winnowing sound in display flights, often at night.",
+            "sourceIds": [
+              "source:profile-wilsons-snipe-1"
+            ]
+          },
+          {
+            "text": "Probes soft mud with a sensitive, flexible bill tip for insect larvae and earthworms.",
+            "sourceIds": [
+              "source:profile-wilsons-snipe-1"
+            ]
+          },
+          {
+            "text": "Probably migrates alone; some Canadian birds reach the Lesser Antilles and South America.",
+            "sourceIds": [
+              "source:profile-wilsons-snipe-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1116,14 +1392,14 @@
       "speciesIds": [
         "species:sandhill-crane"
       ],
-      "quickAnswer": "Sandhill crane (Antigone canadensis) can be identified as follows: Very large gray bird with long legs, outstretched neck in flight and a red forehead; distinguish carefully from endangered whooping crane. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Sandhill crane (Antigone canadensis): Tall, all-gray crane with a red patch on the head. Juveniles have brownish heads. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Antigone canadensis",
           "sourceIds": [
-            "source:cornell-sandhill-crane"
+            "source:profile-sandhill-crane-1"
           ]
         },
         {
@@ -1131,20 +1407,20 @@
           "label": "Family",
           "value": "Gruidae",
           "sourceIds": [
-            "source:cornell-sandhill-crane"
+            "source:profile-sandhill-crane-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America",
+          "label": "Range",
+          "value": "Breeds from Alaska and northern and western Canada through the northern and western US and Great Lakes; resident populations in Florida and Mississippi; some birds cross the Bering Strait.",
           "sourceIds": [
-            "source:cornell-sandhill-crane"
+            "source:profile-sandhill-crane-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-sandhill-crane"
+        "source:profile-sandhill-crane-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1152,7 +1428,7 @@
       "relatedSpeciesIds": [],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1175,7 +1451,7 @@
           "family": "Gruidae",
           "genus": "Antigone",
           "species": "canadensis",
-          "taxonomySourceId": "source:cornell-sandhill-crane"
+          "taxonomySourceId": "source:profile-sandhill-crane-1"
         },
         "speciesGroupIds": [
           "species_group:migratory-game-birds"
@@ -1183,23 +1459,41 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America"
+            "value": "Breeds from Alaska and northern and western Canada through the northern and western US and Great Lakes; resident populations in Florida and Mississippi; some birds cross the Bering Strait."
           }
         ],
         "identification": [
           {
-            "text": "Very large gray bird with long legs, outstretched neck in flight and a red forehead; distinguish carefully from endangered whooping crane.",
+            "text": "Tall, all-gray crane with a red patch on the head.",
             "sourceIds": [
-              "source:cornell-sandhill-crane"
+              "source:profile-sandhill-crane-1"
+            ]
+          },
+          {
+            "text": "Juveniles have brownish heads.",
+            "sourceIds": [
+              "source:profile-sandhill-crane-1"
+            ]
+          },
+          {
+            "text": "Bushy tuft of feathers over the rump; bill smaller than a great blue heron's.",
+            "sourceIds": [
+              "source:profile-sandhill-crane-1"
+            ]
+          },
+          {
+            "text": "Compared with the great blue heron: The crane has a smaller bill, a red crown and a bushy rump 'bustle'.",
+            "sourceIds": [
+              "source:profile-sandhill-crane-1"
             ]
           }
         ],
         "similarSpeciesIds": [],
         "habitat": [
           {
-            "text": "Open wetlands, grasslands and agricultural landscapes.",
+            "text": "Prairies, fields, marshes and tundra; breeds in open freshwater wetlands and shallow marshes.",
             "sourceIds": [
-              "source:cornell-sandhill-crane"
+              "source:profile-sandhill-crane-1"
             ]
           }
         ],
@@ -1207,15 +1501,53 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-sandhill-crane"
+              "source:profile-sandhill-crane-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-sandhill-crane"
+          "source:profile-sandhill-crane-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Loud, rolling rattle: kar-r-r-r-o-o-o.",
+            "sourceIds": [
+              "source:profile-sandhill-crane-1"
+            ]
+          },
+          {
+            "text": "Elaborate dancing courtship with wing-spreading and leaping.",
+            "sourceIds": [
+              "source:profile-sandhill-crane-1"
+            ]
+          },
+          {
+            "text": "Omnivorous: insects, roots, rodents, snails, frogs, berries, seeds and waste grain; forages in flocks outside breeding season.",
+            "sourceIds": [
+              "source:profile-sandhill-crane-1"
+            ]
+          },
+          {
+            "text": "Northern populations migrate long distances in flocks and formations; Florida, Mississippi and Cuban populations are resident.",
+            "sourceIds": [
+              "source:profile-sandhill-crane-1"
+            ]
+          }
+        ],
+        "conservationStatus": [
+          {
+            "status": "ENDANGERED",
+            "jurisdictionIds": [
+              "jurisdiction:us-federal"
+            ],
+            "text": "Mississippi sandhill crane (Antigone canadensis pulla): listed as endangered under the Endangered Species Act since 1973-06-04.",
+            "sourceIds": [
+              "source:conservation-sandhill-crane-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1237,14 +1569,14 @@
       "speciesIds": [
         "species:mourning-dove"
       ],
-      "quickAnswer": "Mourning dove (Zenaida macroura) can be identified as follows: Slender tan-gray dove with black wing spots, a small head and a long pointed tail edged in white. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Mourning dove (Zenaida macroura): Long, pointed tail showing white spots along the edges in flight. Mostly plain brownish body with black spots on the wings. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Zenaida macroura",
           "sourceIds": [
-            "source:cornell-mourning-dove"
+            "source:profile-mourning-dove-1"
           ]
         },
         {
@@ -1252,20 +1584,20 @@
           "label": "Family",
           "value": "Columbidae",
           "sourceIds": [
-            "source:cornell-mourning-dove"
+            "source:profile-mourning-dove-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "Most of North America",
+          "label": "Range",
+          "value": "Widespread across southern Canada and the United States, from Western and Eastern Canada to Florida, Texas and California. Some remain through winter across most of the breeding range while northern birds move south.",
           "sourceIds": [
-            "source:cornell-mourning-dove"
+            "source:profile-mourning-dove-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-mourning-dove"
+        "source:profile-mourning-dove-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1273,7 +1605,7 @@
       "relatedSpeciesIds": [],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1296,7 +1628,7 @@
           "family": "Columbidae",
           "genus": "Zenaida",
           "species": "macroura",
-          "taxonomySourceId": "source:cornell-mourning-dove"
+          "taxonomySourceId": "source:profile-mourning-dove-1"
         },
         "speciesGroupIds": [
           "species_group:doves-pigeons",
@@ -1305,23 +1637,53 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Most of North America"
+            "value": "Widespread across southern Canada and the United States, from Western and Eastern Canada to Florida, Texas and California. Some remain through winter across most of the breeding range while northern birds move south."
           }
         ],
         "identification": [
           {
-            "text": "Slender tan-gray dove with black wing spots, a small head and a long pointed tail edged in white.",
+            "text": "Long, pointed tail showing white spots along the edges in flight.",
             "sourceIds": [
-              "source:cornell-mourning-dove"
+              "source:profile-mourning-dove-1"
+            ]
+          },
+          {
+            "text": "Mostly plain brownish body with black spots on the wings.",
+            "sourceIds": [
+              "source:profile-mourning-dove-1"
+            ]
+          },
+          {
+            "text": "Adult male: pinkish tinge on the chest and blue-grey crown; female duller and plain brown.",
+            "sourceIds": [
+              "source:profile-mourning-dove-1"
+            ]
+          },
+          {
+            "text": "Juveniles look scaly and are sometimes mistaken for Inca or common ground doves.",
+            "sourceIds": [
+              "source:profile-mourning-dove-1"
+            ]
+          },
+          {
+            "text": "Compared with the inca dove: Scaly juvenile mourning doves can be confused with Inca doves; adults have a long pointed tail with white edge spots.",
+            "sourceIds": [
+              "source:profile-mourning-dove-1"
+            ]
+          },
+          {
+            "text": "Compared with the common ground dove: Juvenile mourning doves are larger with the long pointed tail of the species.",
+            "sourceIds": [
+              "source:profile-mourning-dove-1"
             ]
           }
         ],
         "similarSpeciesIds": [],
         "habitat": [
           {
-            "text": "Open woodland, farms, roadsides and urban areas across much of North America.",
+            "text": "Almost any open or semi-open temperate habitat: farmland, towns, suburbs, roadsides, forest clearings, prairies and deserts, especially edges with both trees and open ground. Avoids unbroken forest.",
             "sourceIds": [
-              "source:cornell-mourning-dove"
+              "source:profile-mourning-dove-1"
             ]
           }
         ],
@@ -1329,15 +1691,41 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-mourning-dove"
+              "source:profile-mourning-dove-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-mourning-dove"
+          "source:profile-mourning-dove-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Feeds almost entirely on seeds (about 99% of diet), mainly on the ground, favouring cultivated grain, grass and ragweed seed; regularly swallows grit.",
+            "sourceIds": [
+              "source:profile-mourning-dove-1"
+            ]
+          },
+          {
+            "text": "Fills its crop quickly, then digests while resting.",
+            "sourceIds": [
+              "source:profile-mourning-dove-1"
+            ]
+          },
+          {
+            "text": "Many move south from northern areas in fall; migration is mostly by day, in flocks.",
+            "sourceIds": [
+              "source:profile-mourning-dove-1"
+            ]
+          },
+          {
+            "text": "Courting males fly up with noisy wingbeats and then make a long circular glide.",
+            "sourceIds": [
+              "source:profile-mourning-dove-1"
+            ]
+          }
+        ]
       }
     }
   ],
@@ -1362,7 +1750,7 @@
         ]
       },
       "sourceIds": [
-        "source:cornell-willow-ptarmigan"
+        "source:profile-willow-ptarmigan-1"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -1389,7 +1777,7 @@
         ]
       },
       "sourceIds": [
-        "source:cornell-rock-ptarmigan"
+        "source:profile-rock-ptarmigan-1"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -1416,7 +1804,7 @@
         ]
       },
       "sourceIds": [
-        "source:cornell-ring-necked-pheasant"
+        "source:profile-ring-necked-pheasant-1"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -1443,7 +1831,7 @@
         ]
       },
       "sourceIds": [
-        "source:cornell-gray-partridge"
+        "source:profile-gray-partridge-1"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -1470,7 +1858,7 @@
         ]
       },
       "sourceIds": [
-        "source:cornell-american-woodcock"
+        "source:profile-american-woodcock-1"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -1497,7 +1885,7 @@
         ]
       },
       "sourceIds": [
-        "source:cornell-wilsons-snipe"
+        "source:profile-wilsons-snipe-1"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -1514,7 +1902,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-willow-ptarmigan"
+        "source:profile-willow-ptarmigan-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -1528,7 +1916,7 @@
       "direction": "bidirectional",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-willow-ptarmigan"
+        "source:profile-willow-ptarmigan-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -1542,7 +1930,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-rock-ptarmigan"
+        "source:profile-rock-ptarmigan-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -1556,7 +1944,7 @@
       "direction": "bidirectional",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-rock-ptarmigan"
+        "source:profile-rock-ptarmigan-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -1570,7 +1958,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-ring-necked-pheasant"
+        "source:profile-ring-necked-pheasant-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -1584,7 +1972,7 @@
       "direction": "bidirectional",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-ring-necked-pheasant"
+        "source:profile-ring-necked-pheasant-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -1598,7 +1986,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-gray-partridge"
+        "source:profile-gray-partridge-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -1612,7 +2000,7 @@
       "direction": "bidirectional",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-gray-partridge"
+        "source:profile-gray-partridge-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -1626,7 +2014,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-american-woodcock"
+        "source:profile-american-woodcock-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -1640,7 +2028,7 @@
       "direction": "bidirectional",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-american-woodcock"
+        "source:profile-american-woodcock-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -1654,7 +2042,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-wilsons-snipe"
+        "source:profile-wilsons-snipe-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -1668,7 +2056,7 @@
       "direction": "bidirectional",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-wilsons-snipe"
+        "source:profile-wilsons-snipe-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -1682,7 +2070,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-sandhill-crane"
+        "source:profile-sandhill-crane-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -1696,7 +2084,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-mourning-dove"
+        "source:profile-mourning-dove-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -1705,83 +2093,93 @@
   ],
   "sources": [
     {
-      "id": "source:cornell-willow-ptarmigan",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Willow ptarmigan identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Willow_ptarmigan/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-willow-ptarmigan-1",
+      "authority": "National Audubon Society",
+      "title": "Willow Ptarmigan — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/willow-ptarmigan",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-rock-ptarmigan",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Rock ptarmigan identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Rock_ptarmigan/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-rock-ptarmigan-1",
+      "authority": "National Audubon Society",
+      "title": "Rock Ptarmigan — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/rock-ptarmigan",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-ring-necked-pheasant",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Ring-necked pheasant identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Ring-necked_pheasant/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-ring-necked-pheasant-1",
+      "authority": "National Audubon Society",
+      "title": "Ring-necked Pheasant — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/ring-necked-pheasant",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-gray-partridge",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Gray partridge identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Gray_partridge/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-gray-partridge-1",
+      "authority": "National Audubon Society",
+      "title": "Gray Partridge | Audubon Field Guide",
+      "url": "https://www.audubon.org/field-guide/bird/gray-partridge",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-american-woodcock",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "American woodcock identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/American_woodcock/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-american-woodcock-1",
+      "authority": "National Audubon Society",
+      "title": "American Woodcock — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/american-woodcock",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-wilsons-snipe",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Wilson's snipe identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Wilsons_snipe/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-wilsons-snipe-1",
+      "authority": "National Audubon Society",
+      "title": "Wilson's Snipe | Audubon Field Guide",
+      "url": "https://www.audubon.org/field-guide/bird/wilsons-snipe",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-sandhill-crane",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Sandhill crane identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Sandhill_crane/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-sandhill-crane-1",
+      "authority": "National Audubon Society",
+      "title": "Sandhill Crane — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/sandhill-crane",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-mourning-dove",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Mourning dove identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Mourning_dove/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-mourning-dove-1",
+      "authority": "National Audubon Society",
+      "title": "Mourning Dove — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/mourning-dove",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:conservation-sandhill-crane-1",
+      "authority": "U.S. Fish and Wildlife Service",
+      "title": "ECOS species profile: Mississippi sandhill crane",
+      "url": "https://ecos.fws.gov/ecp/species/1222",
+      "publisher": "U.S. Fish and Wildlife Service",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "official",
       "verificationStatus": "verified"
     }
   ],

@@ -1,0 +1,40 @@
+{
+ "slug": "lesser-siren",
+ "scientificName": "Siren intermedia",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Sirenidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe (citing Fedler et al. 2023) splits the former S. intermedia complex, elevating S. i. nettingi to a species and describing a new species, so its current S. intermedia range is narrower than the older concept used by Animal Diversity Web; NatureServe lists the name 'Intermediate Siren'.",
+ "fieldMarks": [
+  "Eel-like, permanently aquatic salamander with external gills and forelimbs only (four toes each), no hind limbs.",
+  "Gray to brown to nearly black with a lighter belly; 31-38 costal grooves; adults 18-69 cm.",
+  "Hatchlings have a red or yellow band across the snout and sides of the head and bold longitudinal stripes that fade with growth."
+ ],
+ "behavior": [
+  "Nocturnal bottom forager that hides among plants and debris by day; clicks and yelps are its sounds.",
+  "Survives drought by burrowing into mud and forming a mucous cocoon; can aestivate for weeks to over a year.",
+  "Eats aquatic invertebrates (crayfish, worms, mollusks), amphibian eggs and larvae, and some plant material; most active in fall and winter in a Louisiana pond."
+ ],
+ "habitat": [
+  "Shallow, warm, quiet, sometimes turbid water with abundant vegetation: swamps, sloughs, ponds, lakes, ditches and, less often, streams."
+ ],
+ "range": "Southeastern United States; NatureServe lists Alabama, Florida, Georgia, Mississippi, North Carolina, South Carolina and Virginia under the current name, while Animal Diversity Web's older concept runs from Virginia to Florida and west to eastern Texas and up the Mississippi drainage; not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Intermediate siren",
+  "Lesser siren"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Siren intermedia",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.1279250"
+  },
+  {
+   "title": "Animal Diversity Web: Siren intermedia",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Siren_intermedia/"
+  }
+ ]
+}

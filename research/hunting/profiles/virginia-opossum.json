@@ -1,0 +1,36 @@
+{
+ "slug": "virginia-opossum",
+ "scientificName": "Didelphis virginiana",
+ "fieldMarks": [
+  "The only marsupial north of Mexico",
+  "Long, hairless, prehensile tail",
+  "Whitish underfur tipped with black; coloration varies across the range",
+  "Robust body, short legs and an opposable thumb-like hind toe; about 1.9–2.8 kg"
+ ],
+ "behavior": [
+  "Nocturnal and solitary, active dusk to dawn; does not hibernate but is less active in the coldest weather",
+  "When threatened adults hiss, bare teeth or flee; feigning death is mostly by young animals",
+  "Opportunistic omnivore: small animals, insects, worms, fruit and seeds",
+  "Somewhat nomadic, often staying in an area only months"
+ ],
+ "habitat": [
+  "Varied, from dry country to wet meadows, but prefers woodlands and thickets near water."
+ ],
+ "range": "Most of the eastern and central U.S. and adjacent southeastern Canada (north into Ontario), west to South Dakota, Colorado and Arizona; introduced on the Pacific coast and into British Columbia, and still expanding north and west.",
+ "lookalikes": [],
+ "aliases": [
+  "Opossum"
+ ],
+ "sources": [
+  {
+   "title": "Virginia opossum",
+   "publisher": "Smithsonian's National Zoo and Conservation Biology Institute",
+   "url": "https://nationalzoo.si.edu/animals/virginia-opossum"
+  },
+  {
+   "title": "Didelphis virginiana (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.106143/Didelphis_virginiana"
+  }
+ ]
+}

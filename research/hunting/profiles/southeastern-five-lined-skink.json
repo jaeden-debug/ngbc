@@ -1,0 +1,49 @@
+{
+ "slug": "southeastern-five-lined-skink",
+ "scientificName": "Plestiodon inexpectatus",
+ "commonNameFr": null,
+ "family": "Scincidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "5-8.5 in (12.5-21.5 cm); gray, brown or black with five white or yellowish stripes (two per side, one down the back).",
+  "Young have a bright blue tail; adult male stripes may fade and a reddish or orange colour may develop on the head.",
+  "No enlarged row of scales under the tail, unlike five-lined and broadhead skinks."
+ ],
+ "behavior": [
+  "Found on the ground or in trees, but less arboreal than broadhead skinks; most often beneath logs or under bark and runs for the nearest tree or log when pursued.",
+  "Eats a wide variety of insects, spiders and other invertebrates.",
+  "Females lay several eggs in moist soil or rotten logs in summer and attend them; tail breaks off when restrained."
+ ],
+ "habitat": [
+  "Dry wooded habitats with abundant fallen trees and stumps, especially dry pine forests and coastal areas; also wet pine flatwoods, sandhills and abandoned buildings."
+ ],
+ "range": "Throughout South Carolina and all but extreme northern Georgia (SREL); the wider range was not sourced in detail. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "five-lined-skink",
+   "name": "Common five-lined skink",
+   "howToTell": "Five-lined skink has an enlarged row of scales under the tail and usually uses moister habitat."
+  },
+  {
+   "slug": "broadhead-skink",
+   "name": "Broadhead skink",
+   "howToTell": "Broadhead skinks are usually larger and more arboreal, and have an enlarged row of scales under the tail."
+  }
+ ],
+ "aliases": [
+  "Southeastern five-lined skink"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Plestiodon inexpectatus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105537"
+  },
+  {
+   "title": "Southeastern Five-lined Skink (Eumeces [Plestiodon] inexpectatus)",
+   "publisher": "Savannah River Ecology Laboratory, University of Georgia",
+   "url": "https://srelherp.uga.edu/lizards/southeastern-five-lined-skink/"
+  }
+ ]
+}

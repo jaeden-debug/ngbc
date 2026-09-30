@@ -1,0 +1,34 @@
+{
+ "slug": "fish-crow",
+ "scientificName": "Corvus ossifragus",
+ "fieldMarks": [
+  "All-black crow, 36-41 cm, slightly smaller than the American crow with slightly more pointed wingtips.",
+  "Identified with certainty only by voice: a nasal 'kwok' and a nasal two-noted 'ah-ah'.",
+  "Sexes similar."
+ ],
+ "behavior": [
+  "Mostly a permanent resident; withdraws from some inland parts of its range in winter.",
+  "On the coast hunts salt marshes and tidal flats and scavenges on beaches; inland follows swamps and large river drainages.",
+  "Often nests in loose colonies of a few pairs.",
+  "Has expanded its range farther inland and north, notably on the Atlantic coastal plain and up the Mississippi Valley."
+ ],
+ "habitat": [
+  "Tidewater, river valleys, swamps, woodland and farmland, usually nearer water than the American crow, especially beaches, marshes and estuaries."
+ ],
+ "range": "Eastern and southeastern United States: Florida, the Southeast, Texas, the Mid-Atlantic and New England, extending up river valleys into the Plains and Great Lakes region.",
+ "lookalikes": [
+  {
+   "slug": "american-crow",
+   "name": "American crow",
+   "howToTell": "The American crow gives a familiar 'caw' rather than a nasal 'kwok' or 'ah-ah', though young American crows also make nasal calls in breeding season."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Fish Crow — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/fish-crow"
+  }
+ ]
+}

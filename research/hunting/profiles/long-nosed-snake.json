@@ -1,0 +1,40 @@
+{
+ "slug": "long-nosed-snake",
+ "scientificName": "Rhinocheilus lecontei",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes Manier (2004) concluded no subspecies should be recognized.",
+ "fieldMarks": [
+  "Smooth scales, a single anal scale and a generally white, unpatterned belly; at least half of the underside tail scales are not divided.",
+  "Yellowish or cream ground colour with 18-35 black blotches separated by pink or reddish interspaces; tail has 6-17 blotches.",
+  "Adults usually 56-76 cm, maximum about 104 cm; rostrum protrudes (used for burrowing)."
+ ],
+ "behavior": [
+  "Nocturnal; retreats to underground burrows or under rocks by day and burrows deep in winter; active about April-September.",
+  "Eats lizards and their eggs, small snakes, small mammals and sometimes birds.",
+  "Mates in spring; lays 4-11 eggs June-August, hatching in 2-3 months."
+ ],
+ "habitat": [
+  "Deserts, dry prairies, arid river valleys, thornbrush and shrubland; sometimes oak-hackberry woodland.",
+  "Rocky and sandy areas."
+ ],
+ "range": "Northern California, southern Idaho, Utah, southeastern Colorado and southwestern Kansas south to central Baja California, Jalisco, San Luis Potosi and Tamaulipas; below sea level to about 1,900 m. Not found in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "longnose snake",
+  "western long-nosed snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Rhinocheilus lecontei",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.101284"
+  },
+  {
+   "title": "Kansas Herpetofaunal Atlas: Long-nosed Snake",
+   "publisher": "Fort Hays State University",
+   "url": "https://webapps.fhsu.edu/ksherp/account.aspx?o=98&t=85"
+  }
+ ]
+}

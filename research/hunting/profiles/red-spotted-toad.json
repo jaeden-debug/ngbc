@@ -1,0 +1,40 @@
+{
+ "slug": "red-spotted-toad",
+ "scientificName": "Anaxyrus punctatus",
+ "commonNameFr": null,
+ "family": "Bufonidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe notes the genus Anaxyrus was split from Bufo (Frost et al. 2006) and many references still use Bufo punctatus.",
+ "fieldMarks": [
+  "Small toad, typically 38-64 mm snout-vent (maximum about 76 mm), females larger than males.",
+  "Dry skin, round snout and a round enlarged gland behind each eye; no bony crests between or behind the eyes.",
+  "Head, limbs and body uniform brown or grey with small warts that may or may not be tipped red.",
+  "Belly yellowish with small blackish spots; males have a dark throat."
+ ],
+ "behavior": [
+  "Nocturnal; hides under moist rocks or underground by day and is active after heavy rain, including mornings and late afternoon.",
+  "Opportunistic breeder: gathers in small numbers at canyon pools and intermittent streams after spring or summer rain; males chorus in the evening.",
+  "Eats beetles, ants, bees and other small arthropods; generally inactive November-March in the north."
+ ],
+ "habitat": [
+  "Rocky canyons, gullies and gypsum or limestone outcrops in deserts, dry prairies, grasslands and dry woodlands.",
+  "Eggs laid singly on plants in shallow rain pools, spring-fed pools and pools along intermittent streams."
+ ],
+ "range": "California, Nevada, central Utah, Colorado and southwestern Kansas south to southern Baja California and Querétaro, Mexico, at elevations up to about 1,980 m. Not reported from Canada in the sources read.",
+ "lookalikes": [],
+ "aliases": [
+  "Bufo punctatus"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Anaxyrus punctatus (Red-spotted Toad)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103152/Anaxyrus_punctatus"
+  },
+  {
+   "title": "Kansas Herpetofaunal Atlas: Red-spotted Toad",
+   "publisher": "Kansas Herpetofaunal Atlas, Sternberg Museum of Natural History, Fort Hays State University",
+   "url": "https://webapps.fhsu.edu/ksherp/account.aspx?o=30&t=121"
+  }
+ ]
+}
