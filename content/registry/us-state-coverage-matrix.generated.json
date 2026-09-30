@@ -396,7 +396,7 @@
       "authority": {
         "id": "authority:us-ct-deep",
         "name": "Connecticut Department of Energy and Environmental Protection Wildlife Division",
-        "url": "https://portal.ct.gov/deep/hunting/hunting-and-trapping"
+        "url": "https://portal.ct.gov/deep/hunting"
       },
       "regulationsSource": {
         "id": "source:us-ct-hunting",
@@ -831,7 +831,7 @@
       "authority": {
         "id": "authority:us-ia-dnr",
         "name": "Iowa Department of Natural Resources",
-        "url": "https://www.iowadnr.gov/things-to-do/hunting-trapping"
+        "url": "https://www.iowadnr.gov/things-do/hunting-trapping"
       },
       "regulationsSource": {
         "id": "source:us-ia-hunting",
@@ -1577,13 +1577,13 @@
       "authority": {
         "id": "authority:us-la-wlf",
         "name": "Louisiana Department of Wildlife and Fisheries",
-        "url": "https://www.wlf.louisiana.gov/page/hunting"
+        "url": "https://www.wlf.louisiana.gov/go-hunting"
       },
       "regulationsSource": {
         "id": "source:us-la-hunting",
         "scope": "STATE_OFFICIAL_HUB",
         "title": "Louisiana Hunting",
-        "url": "https://www.wlf.louisiana.gov/page/hunting",
+        "url": "https://www.wlf.louisiana.gov/go-hunting",
         "legalStanding": "Official discovery hub; controlling annual artifact not certified",
         "licenceStatus": "UNRESOLVED",
         "verificationStatus": "DISCOVERED"
@@ -2834,7 +2834,7 @@
       "authority": {
         "id": "authority:us-or-odfw",
         "name": "Oregon Department of Fish and Wildlife",
-        "url": "https://myodfw.com/hunting"
+        "url": "https://myodfw.com/big-game-hunting"
       },
       "regulationsSource": {
         "id": "source:us-or-hunting",
@@ -3027,9 +3027,9 @@
       "boundarySource": null,
       "managementGeography": "Game Zone/Wildlife Management Area",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "No grant and no prohibition. The portal item's licenseInfo is a warranty disclaimer plus an indemnity plus an accuracy caveat, with no attribution requirement, no describe-your-changes condition and no express \"may not redistribute\". And the strongest permission language SCDNR actually publishes is an AVAILABILITY statement, not a licence: \"GIS data produced and maintained by SCDNR is available free of charge to the public in an effort to facilitate natural resource decision-making, analysis and education in South Carolina.\" Inflating that into an affirmative redistribution licence would be as wrong as collapsing the disclaimer into a prohibition. SCDNR stating reuse terms."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -3060,7 +3060,7 @@
         "No geometry ingested and no rules certified; every South Carolina query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "No grant and no prohibition. The portal item's licenseInfo is a warranty disclaimer plus an indemnity plus an accuracy caveat, with no attribution requirement, no describe-your-changes condition and no express \"may not redistribute\". And the strongest permission language SCDNR actually publishes is an AVAILABILITY statement, not a licence: \"GIS data produced and maintained by SCDNR is available free of charge to the public in an effort to facilitate natural resource decision-making, analysis and education in South Carolina.\" Inflating that into an affirmative redistribution licence would be as wrong as collapsing the disclaimer into a prohibition. SCDNR stating reuse terms.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -3147,9 +3147,9 @@
       "boundarySource": null,
       "managementGeography": "Unit/Zone/Wildlife Management Area",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "No licence on any layer North Ground would serve, and no prohibition either. The deer-unit dataset is silent at all four instruments: service copyrightText empty, layer copyrightText empty, portal item licenseInfo ABSENT, and the ArcGIS Hub dataset record reporting license \"none\" with structuredLicense type \"none\". Other layers carry warranty and liability disclaimers, which are not refusals, or bare attributions — including one that is a staff member's personal name. TWRA stating terms for its datasets, or confirming that the Hub site's CC-BY-SA reaches them."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -3180,7 +3180,7 @@
         "No geometry ingested and no rules certified; every Tennessee query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "No licence on any layer North Ground would serve, and no prohibition either. The deer-unit dataset is silent at all four instruments: service copyrightText empty, layer copyrightText empty, portal item licenseInfo ABSENT, and the ArcGIS Hub dataset record reporting license \"none\" with structuredLicense type \"none\". Other layers carry warranty and liability disclaimers, which are not refusals, or bare attributions — including one that is a staff member's personal name. TWRA stating terms for its datasets, or confirming that the Hub site's CC-BY-SA reaches them.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -3207,9 +3207,9 @@
       "boundarySource": null,
       "managementGeography": "County/Zone/Wildlife Management Area",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "RESTRICTED for COUNTY — TPWD's own regulation index is literally \"Seasons by County\" (254 units), read 2026-09-30: \"© Copyright Texas Parks and Wildlife Department. No part of this work may be copied, reproduced, or translated in any fo…\" — the publisher's own terms refuse this use; only a written exception from it would change that."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -3240,7 +3240,7 @@
         "No geometry ingested and no rules certified; every Texas query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "RESTRICTED for COUNTY — TPWD's own regulation index is literally \"Seasons by County\" (254 units), read 2026-09-30: \"© Copyright Texas Parks and Wildlife Department. No part of this work may be copied, reproduced, or translated in any fo…\" — the publisher's own terms refuse this use; only a written exception from it would change that.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -3253,7 +3253,7 @@
       "authority": {
         "id": "authority:us-ut-dwr",
         "name": "Utah Division of Wildlife Resources",
-        "url": "https://wildlife.utah.gov/hunting.html"
+        "url": "https://wildlife.utah.gov/hunting"
       },
       "regulationsSource": {
         "id": "source:us-ut-hunting",
@@ -3335,9 +3335,9 @@
       "boundarySource": null,
       "managementGeography": "County/Management Area",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "UNRESOLVED for LOCALITY — a county or an independent city. Virginia has no WMU, GMU or zone system (133 units), read 2026-09-30: \"By accepting data provided by the Virginia Department of Wildlife Resources (DWR), you must agree to the following condi…\" — no grant is stated either way; a person must ask the publisher."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -3368,7 +3368,7 @@
         "No geometry ingested and no rules certified; every Virginia query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "UNRESOLVED for LOCALITY — a county or an independent city. Virginia has no WMU, GMU or zone system (133 units), read 2026-09-30: \"By accepting data provided by the Virginia Department of Wildlife Resources (DWR), you must agree to the following condi…\" — no grant is stated either way; a person must ask the publisher.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -3395,9 +3395,9 @@
       "boundarySource": null,
       "managementGeography": "Wildlife Management Unit (WMU)",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_CLEAR_NOT_INGESTED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "Licence permits reuse (COMMERCIAL_PERMITTED), read 2026-09-30; Wildlife Management Unit, with \"subunit\" for the subdivided ones reviewed (21 units). Nothing blocks this state but the work."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -3428,7 +3428,7 @@
         "No geometry ingested and no rules certified; every Vermont query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "Licence permits reuse (COMMERCIAL_PERMITTED), read 2026-09-30; Wildlife Management Unit, with \"subunit\" for the subdivided ones reviewed (21 units). Nothing blocks this state but the work.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -3574,9 +3574,9 @@
       "boundarySource": null,
       "managementGeography": "County/Wildlife Management Area",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "UNRESOLVED for COUNTY (55 units), read 2026-09-30: \"This dataset provides information on wildlife management areas for general reference and planning purposes. These bounda…\" — no grant is stated either way; a person must ask the publisher."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -3607,7 +3607,7 @@
         "No geometry ingested and no rules certified; every West Virginia query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "UNRESOLVED for COUNTY (55 units), read 2026-09-30: \"This dataset provides information on wildlife management areas for general reference and planning purposes. These bounda…\" — no grant is stated either way; a person must ask the publisher.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]

@@ -4,6 +4,9 @@ import speciesWave2aJson from "../../../content/published/species-wave-2a.json" 
 import speciesWave2bJson from "../../../content/published/species-wave-2b.json" with { type: "json" };
 import speciesWave2cJson from "../../../content/published/species-wave-2c.json" with { type: "json" };
 import speciesWave2dJson from "../../../content/published/species-wave-2d.json" with { type: "json" };
+import speciesWave3aJson from "../../../content/published/species-wave-3a.json" with { type: "json" };
+import speciesWave3bJson from "../../../content/published/species-wave-3b.json" with { type: "json" };
+import speciesWave3cJson from "../../../content/published/species-wave-3c.json" with { type: "json" };
 import {
   CONTENT_CONTRACT_VERSION,
   type Applicability,
@@ -104,7 +107,7 @@ const contentBundles = [
   speciesWave2aJson as ContentBundle,
   speciesWave2bJson as ContentBundle,
   speciesWave2cJson as ContentBundle,
-  speciesWave2dJson as ContentBundle,
+  speciesWave2dJson as ContentBundle, speciesWave3aJson as ContentBundle, speciesWave3bJson as ContentBundle, speciesWave3cJson as ContentBundle,
 ];
 const bundle: ContentBundle = {
   contractVersion: CONTENT_CONTRACT_VERSION,
@@ -397,9 +400,28 @@ export class InProcessContentRepository implements ContentRepository {
   }
 
   async interpretSpeciesQuery(query: string, options?: LocaleOptions): Promise<SpeciesQueryInterpretation> {
-    const species = await this.searchSpecies(query, options);
-    if (!species.length) return { status: "not_found", species: [] };
     const needle = normalized(query);
+    /*
+     * A one-word animal query names the animal by the LAST word of a name:
+     * "fox" is Arctic fox and red fox, not fox squirrel, where "fox" only
+     * describes a squirrel. When any result names the animal by its head word
+     * (its own name or an alias ending in the query), only those are offered;
+     * a result that matched a fragment of a longer name is dropped. A
+     * two-word query ("fox squirrel") is never filtered this way.
+     */
+    const found = await this.searchSpecies(query, options);
+    const isCategoryWord = found.some((result) => {
+      const resource = resources.get(result.id);
+      return resource?.type === "species" && resource.speciesProfile.speciesGroupIds.some((groupId) => {
+        const group = entities.get(groupId);
+        return [...(group?.names ?? []), ...(group?.aliases ?? [])].some(({ value }) => normalized(value) === needle);
+      });
+    });
+    const namesByHead = (result: SpeciesSearchResult) => result.searchTerms
+      .some((term) => { const words = normalized(term).split(" "); return words.at(-1) === needle; });
+    const heads = !needle.includes(" ") && !isCategoryWord ? found.filter(namesByHead) : [];
+    const species = heads.length ? heads : found;
+    if (!species.length) return { status: "not_found", species: [] };
     const exactSpecies = species.filter(({ matchedTerm }) => matchedTerm && normalized(matchedTerm) === needle);
     const categoryMatch = species.some((result) => {
       const resource = resources.get(result.id);

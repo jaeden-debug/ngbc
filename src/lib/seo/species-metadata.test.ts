@@ -25,6 +25,7 @@ test("a covered game species names where its certified rules are", () => {
     name: "Ruffed grouse",
     groupIds: ["species_group:grouse"],
     regulatoryJurisdictions: [j("ca-on", "Ontario"), j("ca-qc", "Québec"), j("ca-mb", "Manitoba")],
+    takeEligibility: "HUNTABLE",
   });
   assert.equal(copy.title, "Ruffed Grouse: Habitat, Range & Hunting Guide");
   assert.equal(copy.ogTitle, "Ruffed Grouse | North Ground");
@@ -32,14 +33,14 @@ test("a covered game species names where its certified rules are", () => {
 });
 
 test("an uncovered game species never claims rules", () => {
-  const copy = speciesMetadataCopy({ name: "Mallard", groupIds: ["species_group:ducks"], regulatoryJurisdictions: [] });
+  const copy = speciesMetadataCopy({ name: "Mallard", groupIds: ["species_group:ducks"], regulatoryJurisdictions: [], takeEligibility: "HUNTABLE" });
   assert.equal(copy.title, "Mallard: Habitat, Range & Hunting Guide");
   assert.doesNotMatch(copy.description, /rules/);
 });
 
 test("a furbearer is not called a hunting guide, and unknown groups default to that", () => {
   for (const groupIds of [["species_group:furbearers"], ["species_group:something-new"], []]) {
-    const copy = speciesMetadataCopy({ name: "American mink", groupIds, regulatoryJurisdictions: [] });
+    const copy = speciesMetadataCopy({ name: "American mink", groupIds, regulatoryJurisdictions: [], takeEligibility: "HUNTABLE" });
     assert.equal(copy.hunted, false);
     assert.equal(copy.title, "American Mink: Identification, Habitat & Range");
     assert.doesNotMatch(`${copy.description} ${copy.ogDescription}`, /hunt/i);
@@ -51,6 +52,28 @@ test("every description fits a search snippet", () => {
     name: "Greater white-fronted goose",
     groupIds: ["species_group:geese"],
     regulatoryJurisdictions: [],
+    takeEligibility: "HUNTABLE",
   });
   assert.ok(copy.description.length <= 170, `${copy.description.length}`);
+});
+
+test("a protected species is never a hunting guide, even in a hunted group", () => {
+  const copy = speciesMetadataCopy({
+    name: "Whooping crane",
+    groupIds: ["species_group:migratory-game-birds"],
+    regulatoryJurisdictions: [],
+    takeEligibility: "PROTECTED",
+  });
+  assert.equal(copy.hunted, false);
+  assert.equal(copy.title, "Whooping Crane: Identification, Habitat & Range");
+});
+
+test("an unverified species is not a hunting guide either; unknown is not huntable", () => {
+  const copy = speciesMetadataCopy({
+    name: "Lesser prairie-chicken",
+    groupIds: ["species_group:prairie-grouse"],
+    regulatoryJurisdictions: [],
+    takeEligibility: "UNVERIFIED",
+  });
+  assert.equal(copy.hunted, false);
 });

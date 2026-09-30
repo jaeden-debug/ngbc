@@ -2904,6 +2904,80 @@ Provider-specific ingestion should be isolated behind adapters.
 
 Do not build a fragile universal scraper.
 
+## Reading, deriving and archiving are three different rights
+
+*Decided 2026-09-30 (owner). This supersedes any model in which one
+licence flag decides whether a source may be used at all.*
+
+**"No explicit reuse terms found" does not mean "North Ground may not use this
+authority's regulations."** Collapsing those is the over-strict error §8 names,
+and it is invisible: a jurisdiction reported blocked looks identical whether an
+authority refused us or nobody asked. Eight U.S. states were reported
+LICENCE_BLOCKED on unstated terms while nothing actually refused us.
+
+Three capabilities are recorded separately and never collapsed:
+
+1. **LIVE AUTHORITATIVE READ** — may North Ground retrieve and read the
+   authority's current public regulation page or document, for extraction and
+   verification?
+2. **DERIVED REGULATORY FACTS** — may North Ground store the structured facts
+   derived from it: season dates, species, zones, legal hours, limits, permit
+   and tag requirements, weapon restrictions, residency conditions, with source
+   URL, retrieval date and provenance?
+3. **SOURCE ARCHIVAL OR REPUBLICATION** — may North Ground store, mirror,
+   redistribute or reproduce substantial portions or full copies of the
+   authority's material?
+
+A source therefore records `accessState`, `reuseState`, `archiveState`,
+`derivedFactsState`, `authorityLevel`, `retrievalMethod`, `sourceUrl`,
+`lastVerified`, `termsUrl` and `termsStatus` independently, plus a
+`contentHash` where a permitted snapshot exists. The common and previously
+unrepresentable case is: publicly readable, terms unstated, archival
+unconfirmed, derived facts usable, primary government authority.
+
+Where an authority publishes its regulations publicly and no reuse terms have
+been located, North Ground **may derive and maintain structured regulatory
+facts with full attribution**, and stays conservative about storing or
+republishing substantial source content. Never invent a licence. Never label an
+authority CC0 or public domain unless that is established. Never store a full
+local copy merely because the page can be read.
+
+**This concerns facts, not prose.** §8 already requires the rule rather than a
+copied paragraph — "Season: 17 October – 27 February", not the guide's
+sentence. Minimal traceable quotation stays correct where the authority's own
+words are the fact.
+
+**It does not unblock geometry.** A polygon dataset cannot be reduced to a
+derived fact — storing it IS archival — so the licence review above still
+governs spatial data, and the standing decision that U.S. hunting geography is
+live-service only is unchanged.
+
+## A blocked reader is a technical problem, not a legal finding
+
+An authority whose site refuses our automated client has not thereby made its
+regulations unusable. That is a source-acquisition failure and it is recorded
+as one.
+
+Authoritative fallbacks are attempted in order: the official HTML page, the
+official PDF or guide, the official regulations or code endpoint, an official
+alternate domain, an official API or data endpoint, browser-rendered retrieval
+within the site's normal public access, and only then a manually reviewed
+authoritative snapshot with provenance.
+
+**Never bypass authentication, CAPTCHAs, access controls, robots restrictions
+or any other deliberate technical restriction**, and never substitute an
+unofficial third-party site as regulatory truth because the official reader was
+refused. Where every permitted route genuinely fails, the record names that
+exact technical limitation rather than implying the regulations are unavailable.
+
+## Regulatory confidence and reuse rights are independent dimensions
+
+The engine still fails closed on FACTS. A reachable source that does not
+establish whether a season is open is UNKNOWN. But a source that clearly
+establishes the season does not become UNKNOWN because its page carries no
+licence notice. Missing copyright labels never erase independently established
+regulatory facts.
+
 ---
 
 # 45. SOURCE VERSIONING

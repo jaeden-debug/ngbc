@@ -55,6 +55,7 @@ function speciesCopy(resource: SpeciesResource, groups: readonly { id: string }[
   const speciesId = resource.speciesProfile.speciesId;
   return speciesMetadataCopy({
     name: resource.title,
+    takeEligibility: resource.speciesProfile.takeEligibility,
     groupIds: groups.map((group) => group.id),
     regulatoryJurisdictions: regulatoryJurisdictionsForSpecies(speciesId),
   });
@@ -108,7 +109,7 @@ export default async function SpeciesPage({ params }: Props) {
     countryId: "country:ca",
     jurisdictionIds: resource.speciesProfile.documentedHuntingJurisdictionIds,
     activityId: "activity:hunting",
-    blockTypes: ["habitat_tip", "identification_warning", "seasonal_behavior", "legal_note"],
+    blockTypes: ["safety_note", "habitat_tip", "identification_warning", "seasonal_behavior", "legal_note"],
     date: resource.lastReviewed,
   });
   const [related, relatedSpecies, image, blocks, groups] = await Promise.all([

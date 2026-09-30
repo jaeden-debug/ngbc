@@ -1,0 +1,3491 @@
+{
+  "contractVersion": "1.0",
+  "generatedAt": "2026-09-30T12:00:00Z",
+  "entities": [
+    {
+      "id": "species_group:quail",
+      "type": "species_group",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Quail"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Colins"
+        }
+      ],
+      "aliases": [],
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "species_group:prairie-grouse",
+      "type": "species_group",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Prairie grouse"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Tétras des prairies"
+        }
+      ],
+      "aliases": [],
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "species:california-quail",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "California quail"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Colin de Californie",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "california-quail"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Callipepla californica",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-california-quail"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "species:chukar",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Chukar"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Perdrix choukar",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "chukar"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Alectoris chukar",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-chukar"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "species:dusky-grouse",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Dusky grouse"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Tétras sombre",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "dusky-grouse"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Dendragapus obscurus",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-dusky-grouse"
+          ]
+        },
+        {
+          "value": "blue grouse",
+          "locale": "en-CA",
+          "type": "historical_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-dusky-grouse"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "species:gambels-quail",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Gambel's quail"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Colin de Gambel",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "gambels-quail"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Callipepla gambelii",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-gambels-quail"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "species:greater-prairie-chicken",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Greater prairie-chicken"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Tétras des prairies",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "greater-prairie-chicken"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Tympanuchus cupido",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-greater-prairie-chicken"
+          ]
+        },
+        {
+          "value": "prairie chicken",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-greater-prairie-chicken"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "species:greater-sage-grouse",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Greater sage-grouse"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Tétras des armoises",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "greater-sage-grouse"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Centrocercus urophasianus",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-greater-sage-grouse"
+          ]
+        },
+        {
+          "value": "sage grouse",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-greater-sage-grouse"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "species:gunnison-sage-grouse",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Gunnison sage-grouse"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Tétras du Gunnison",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "gunnison-sage-grouse"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Centrocercus minimus",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-gunnison-sage-grouse"
+          ]
+        },
+        {
+          "value": "sage grouse",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-gunnison-sage-grouse"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "species:lesser-prairie-chicken",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Lesser prairie-chicken"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Tétras pâle",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "lesser-prairie-chicken"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Tympanuchus pallidicinctus",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-lesser-prairie-chicken"
+          ]
+        },
+        {
+          "value": "prairie chicken",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-lesser-prairie-chicken"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "species:montezuma-quail",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Montezuma quail"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Colin arlequin",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "montezuma-quail"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Cyrtonyx montezumae",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-montezuma-quail"
+          ]
+        },
+        {
+          "value": "Mearns's quail",
+          "locale": "en-CA",
+          "type": "common_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-montezuma-quail"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "species:mountain-quail",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Mountain quail"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Colin des montagnes",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "mountain-quail"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Oreortyx pictus",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-mountain-quail"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "species:northern-bobwhite",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Northern bobwhite"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Colin de Virginie",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "northern-bobwhite"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Colinus virginianus",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-northern-bobwhite"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "species:scaled-quail",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Scaled quail"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Colin écaillé",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "scaled-quail"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Callipepla squamata",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-scaled-quail"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "species:sooty-grouse",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "Sooty grouse"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Tétras fuligineux",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "sooty-grouse"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Dendragapus fuliginosus",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-sooty-grouse"
+          ]
+        },
+        {
+          "value": "blue grouse",
+          "locale": "en-CA",
+          "type": "historical_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-sooty-grouse"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "species:white-tailed-ptarmigan",
+      "type": "species",
+      "status": "active",
+      "names": [
+        {
+          "locale": "en-CA",
+          "value": "White-tailed ptarmigan"
+        },
+        {
+          "locale": "fr-CA",
+          "value": "Lagopède à queue blanche",
+          "official": true
+        }
+      ],
+      "slugs": [
+        {
+          "locale": "en-CA",
+          "value": "white-tailed-ptarmigan"
+        }
+      ],
+      "aliases": [
+        {
+          "value": "Lagopus leucura",
+          "type": "scientific_name",
+          "verificationStatus": "verified",
+          "sourceIds": [
+            "source:cornell-white-tailed-ptarmigan"
+          ]
+        }
+      ],
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    }
+  ],
+  "resources": [
+    {
+      "id": "species:california-quail",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "california-quail",
+      "canonicalUrl": "/hunting/species/california-quail",
+      "title": "California quail",
+      "description": "Identify California quail, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "california quail",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:california-quail",
+        "species_group:quail",
+        "species_group:upland-game-birds"
+      ],
+      "speciesIds": [
+        "species:california-quail"
+      ],
+      "quickAnswer": "California quail (Callipepla californica) can be identified as follows: Plump gray-and-brown quail with a forward-drooping black head plume; males have a black face bordered in white. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Callipepla californica",
+          "sourceIds": [
+            "source:cornell-california-quail"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Odontophoridae",
+          "sourceIds": [
+            "source:cornell-california-quail"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Pacific western North America with introductions",
+          "sourceIds": [
+            "source:cornell-california-quail"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-california-quail"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:gambels-quail",
+        "species:mountain-quail"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:california-quail",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "California quail"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Colin de Californie",
+            "official": true
+          }
+        ],
+        "scientificName": "Callipepla californica",
+        "takeEligibility": "HUNTABLE",
+        "taxonomy": {
+          "order": "Galliformes",
+          "family": "Odontophoridae",
+          "genus": "Callipepla",
+          "species": "californica",
+          "taxonomySourceId": "source:cornell-california-quail"
+        },
+        "speciesGroupIds": [
+          "species_group:quail",
+          "species_group:upland-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Pacific western North America with introductions"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Plump gray-and-brown quail with a forward-drooping black head plume; males have a black face bordered in white.",
+            "sourceIds": [
+              "source:cornell-california-quail"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:gambels-quail",
+          "species:mountain-quail"
+        ],
+        "habitat": [
+          {
+            "text": "Brushy foothills, farm edges and suburbs of the Pacific states, with introduced populations in British Columbia and elsewhere.",
+            "sourceIds": [
+              "source:cornell-california-quail"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-california-quail"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-california-quail"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-30"
+      }
+    },
+    {
+      "id": "species:chukar",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "chukar",
+      "canonicalUrl": "/hunting/species/chukar",
+      "title": "Chukar",
+      "description": "Identify Chukar, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "chukar",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:chukar",
+        "species_group:upland-game-birds"
+      ],
+      "speciesIds": [
+        "species:chukar"
+      ],
+      "quickAnswer": "Chukar (Alectoris chukar) can be identified as follows: Gray-brown partridge with a red bill and legs, a black band from the eye around the throat, and boldly barred flanks. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Alectoris chukar",
+          "sourceIds": [
+            "source:cornell-chukar"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Phasianidae",
+          "sourceIds": [
+            "source:cornell-chukar"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Introduced in arid western North America",
+          "sourceIds": [
+            "source:cornell-chukar"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-chukar"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:gray-partridge"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:chukar",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Chukar"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Perdrix choukar",
+            "official": true
+          }
+        ],
+        "scientificName": "Alectoris chukar",
+        "takeEligibility": "HUNTABLE",
+        "taxonomy": {
+          "order": "Galliformes",
+          "family": "Phasianidae",
+          "genus": "Alectoris",
+          "species": "chukar",
+          "taxonomySourceId": "source:cornell-chukar"
+        },
+        "speciesGroupIds": [
+          "species_group:upland-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Introduced in arid western North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Gray-brown partridge with a red bill and legs, a black band from the eye around the throat, and boldly barred flanks.",
+            "sourceIds": [
+              "source:cornell-chukar"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:gray-partridge"
+        ],
+        "habitat": [
+          {
+            "text": "Introduced; steep, rocky arid slopes and canyons of the western United States and southern British Columbia.",
+            "sourceIds": [
+              "source:cornell-chukar"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-chukar"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-chukar"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-30"
+      }
+    },
+    {
+      "id": "species:dusky-grouse",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "dusky-grouse",
+      "canonicalUrl": "/hunting/species/dusky-grouse",
+      "title": "Dusky grouse",
+      "description": "Identify Dusky grouse, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "dusky grouse",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:dusky-grouse",
+        "species_group:grouse",
+        "species_group:upland-game-birds"
+      ],
+      "speciesIds": [
+        "species:dusky-grouse"
+      ],
+      "quickAnswer": "Dusky grouse (Dendragapus obscurus) can be identified as follows: Large dark grouse; males are slate-gray with a black tail and, in display, a red neck patch bordered by white feathers. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Dendragapus obscurus",
+          "sourceIds": [
+            "source:cornell-dusky-grouse"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Phasianidae",
+          "sourceIds": [
+            "source:cornell-dusky-grouse"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Interior western North America",
+          "sourceIds": [
+            "source:cornell-dusky-grouse"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-dusky-grouse"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:sooty-grouse",
+        "species:spruce-grouse",
+        "species:ruffed-grouse"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:dusky-grouse",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Dusky grouse"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Tétras sombre",
+            "official": true
+          }
+        ],
+        "scientificName": "Dendragapus obscurus",
+        "takeEligibility": "HUNTABLE",
+        "taxonomy": {
+          "order": "Galliformes",
+          "family": "Phasianidae",
+          "genus": "Dendragapus",
+          "species": "obscurus",
+          "taxonomySourceId": "source:cornell-dusky-grouse"
+        },
+        "speciesGroupIds": [
+          "species_group:grouse",
+          "species_group:upland-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Interior western North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Large dark grouse; males are slate-gray with a black tail and, in display, a red neck patch bordered by white feathers.",
+            "sourceIds": [
+              "source:cornell-dusky-grouse"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:sooty-grouse",
+          "species:spruce-grouse",
+          "species:ruffed-grouse"
+        ],
+        "habitat": [
+          {
+            "text": "Interior mountain conifer forests of the Rockies, interior British Columbia and Yukon.",
+            "sourceIds": [
+              "source:cornell-dusky-grouse"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-dusky-grouse"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-dusky-grouse"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-30"
+      }
+    },
+    {
+      "id": "species:gambels-quail",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "gambels-quail",
+      "canonicalUrl": "/hunting/species/gambels-quail",
+      "title": "Gambel's quail",
+      "description": "Identify Gambel's quail, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "gambel's quail",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:gambels-quail",
+        "species_group:quail",
+        "species_group:upland-game-birds"
+      ],
+      "speciesIds": [
+        "species:gambels-quail"
+      ],
+      "quickAnswer": "Gambel's quail (Callipepla gambelii) can be identified as follows: Gray quail with a forward-drooping head plume and chestnut flanks; males have a black belly patch and a rusty crown. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Callipepla gambelii",
+          "sourceIds": [
+            "source:cornell-gambels-quail"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Odontophoridae",
+          "sourceIds": [
+            "source:cornell-gambels-quail"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Southwestern deserts",
+          "sourceIds": [
+            "source:cornell-gambels-quail"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-gambels-quail"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:california-quail",
+        "species:scaled-quail"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:gambels-quail",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Gambel's quail"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Colin de Gambel",
+            "official": true
+          }
+        ],
+        "scientificName": "Callipepla gambelii",
+        "takeEligibility": "HUNTABLE",
+        "taxonomy": {
+          "order": "Galliformes",
+          "family": "Odontophoridae",
+          "genus": "Callipepla",
+          "species": "gambelii",
+          "taxonomySourceId": "source:cornell-gambels-quail"
+        },
+        "speciesGroupIds": [
+          "species_group:quail",
+          "species_group:upland-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Southwestern deserts"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Gray quail with a forward-drooping head plume and chestnut flanks; males have a black belly patch and a rusty crown.",
+            "sourceIds": [
+              "source:cornell-gambels-quail"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:california-quail",
+          "species:scaled-quail"
+        ],
+        "habitat": [
+          {
+            "text": "Desert scrub and washes of the southwestern United States.",
+            "sourceIds": [
+              "source:cornell-gambels-quail"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-gambels-quail"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-gambels-quail"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-30"
+      }
+    },
+    {
+      "id": "species:greater-prairie-chicken",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "greater-prairie-chicken",
+      "canonicalUrl": "/hunting/species/greater-prairie-chicken",
+      "title": "Greater prairie-chicken",
+      "description": "Identify Greater prairie-chicken, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "greater prairie-chicken",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:greater-prairie-chicken",
+        "species_group:prairie-grouse",
+        "species_group:grouse",
+        "species_group:upland-game-birds"
+      ],
+      "speciesIds": [
+        "species:greater-prairie-chicken"
+      ],
+      "quickAnswer": "Greater prairie-chicken (Tympanuchus cupido) can be identified as follows: Barred brown grouse with a short dark tail; displaying males inflate orange neck sacs and raise long neck feathers. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Tympanuchus cupido",
+          "sourceIds": [
+            "source:cornell-greater-prairie-chicken"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Phasianidae",
+          "sourceIds": [
+            "source:cornell-greater-prairie-chicken"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Central United States with fragmented populations",
+          "sourceIds": [
+            "source:cornell-greater-prairie-chicken"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-greater-prairie-chicken"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:lesser-prairie-chicken",
+        "species:sharp-tailed-grouse"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:greater-prairie-chicken",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Greater prairie-chicken"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Tétras des prairies",
+            "official": true
+          }
+        ],
+        "scientificName": "Tympanuchus cupido",
+        "takeEligibility": "HUNTABLE",
+        "taxonomy": {
+          "order": "Galliformes",
+          "family": "Phasianidae",
+          "genus": "Tympanuchus",
+          "species": "cupido",
+          "taxonomySourceId": "source:cornell-greater-prairie-chicken"
+        },
+        "speciesGroupIds": [
+          "species_group:prairie-grouse",
+          "species_group:grouse",
+          "species_group:upland-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Central United States with fragmented populations"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Barred brown grouse with a short dark tail; displaying males inflate orange neck sacs and raise long neck feathers.",
+            "sourceIds": [
+              "source:cornell-greater-prairie-chicken"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:lesser-prairie-chicken",
+          "species:sharp-tailed-grouse"
+        ],
+        "habitat": [
+          {
+            "text": "Tallgrass and mixed-grass prairie of the central United States.",
+            "sourceIds": [
+              "source:cornell-greater-prairie-chicken"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-greater-prairie-chicken"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-greater-prairie-chicken"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-30"
+      }
+    },
+    {
+      "id": "species:greater-sage-grouse",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "greater-sage-grouse",
+      "canonicalUrl": "/hunting/species/greater-sage-grouse",
+      "title": "Greater sage-grouse",
+      "description": "Identify Greater sage-grouse, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "greater sage-grouse",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:greater-sage-grouse",
+        "species_group:grouse",
+        "species_group:upland-game-birds"
+      ],
+      "speciesIds": [
+        "species:greater-sage-grouse"
+      ],
+      "quickAnswer": "Greater sage-grouse (Centrocercus urophasianus) can be identified as follows: The largest North American grouse: mottled gray-brown with a black belly and a long pointed tail; displaying males show white chest ruffs and yellow air sacs. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Centrocercus urophasianus",
+          "sourceIds": [
+            "source:cornell-greater-sage-grouse"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Phasianidae",
+          "sourceIds": [
+            "source:cornell-greater-sage-grouse"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Western sagebrush ecosystems",
+          "sourceIds": [
+            "source:cornell-greater-sage-grouse"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-greater-sage-grouse"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:gunnison-sage-grouse",
+        "species:sharp-tailed-grouse"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:greater-sage-grouse",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Greater sage-grouse"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Tétras des armoises",
+            "official": true
+          }
+        ],
+        "scientificName": "Centrocercus urophasianus",
+        "takeEligibility": "HUNTABLE",
+        "taxonomy": {
+          "order": "Galliformes",
+          "family": "Phasianidae",
+          "genus": "Centrocercus",
+          "species": "urophasianus",
+          "taxonomySourceId": "source:cornell-greater-sage-grouse"
+        },
+        "speciesGroupIds": [
+          "species_group:grouse",
+          "species_group:upland-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Western sagebrush ecosystems"
+          }
+        ],
+        "identification": [
+          {
+            "text": "The largest North American grouse: mottled gray-brown with a black belly and a long pointed tail; displaying males show white chest ruffs and yellow air sacs.",
+            "sourceIds": [
+              "source:cornell-greater-sage-grouse"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:gunnison-sage-grouse",
+          "species:sharp-tailed-grouse"
+        ],
+        "habitat": [
+          {
+            "text": "Sagebrush steppe of the western United States and very limited parts of Alberta and Saskatchewan.",
+            "sourceIds": [
+              "source:cornell-greater-sage-grouse"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-greater-sage-grouse"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-greater-sage-grouse"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-30"
+      }
+    },
+    {
+      "id": "species:gunnison-sage-grouse",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "gunnison-sage-grouse",
+      "canonicalUrl": "/hunting/species/gunnison-sage-grouse",
+      "title": "Gunnison sage-grouse",
+      "description": "Identify Gunnison sage-grouse, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "gunnison sage-grouse",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:gunnison-sage-grouse",
+        "species_group:grouse",
+        "species_group:upland-game-birds"
+      ],
+      "speciesIds": [
+        "species:gunnison-sage-grouse"
+      ],
+      "quickAnswer": "Gunnison sage-grouse is a smaller relative of greater sage-grouse found only in southwestern Colorado and southeastern Utah. Do not shoot unless you are certain of the species.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Centrocercus minimus",
+          "sourceIds": [
+            "source:cornell-gunnison-sage-grouse"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Phasianidae",
+          "sourceIds": [
+            "source:cornell-gunnison-sage-grouse"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Southwestern Colorado and southeastern Utah",
+          "sourceIds": [
+            "source:cornell-gunnison-sage-grouse"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-gunnison-sage-grouse"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:greater-sage-grouse"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:gunnison-sage-grouse",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Gunnison sage-grouse"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Tétras du Gunnison",
+            "official": true
+          }
+        ],
+        "scientificName": "Centrocercus minimus",
+        "takeEligibility": "PROTECTED",
+        "taxonomy": {
+          "order": "Galliformes",
+          "family": "Phasianidae",
+          "genus": "Centrocercus",
+          "species": "minimus",
+          "taxonomySourceId": "source:cornell-gunnison-sage-grouse"
+        },
+        "speciesGroupIds": [
+          "species_group:grouse",
+          "species_group:upland-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Southwestern Colorado and southeastern Utah"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Smaller than greater sage-grouse, with bold white bands across the tail and thicker plumes behind the head in displaying males.",
+            "sourceIds": [
+              "source:cornell-gunnison-sage-grouse"
+            ]
+          },
+          {
+            "text": "Tail: Gunnison sage-grouse show distinct pale bands across the tail; greater sage-grouse tails are more uniformly marked.",
+            "sourceIds": [
+              "source:cornell-gunnison-sage-grouse"
+            ]
+          },
+          {
+            "text": "Size: Gunnison sage-grouse are about one-third smaller than greater sage-grouse.",
+            "sourceIds": [
+              "source:cornell-gunnison-sage-grouse"
+            ]
+          },
+          {
+            "text": "Range: the two species do not overlap; any sage-grouse in southwestern Colorado or southeastern Utah should be treated as Gunnison until the responsible authority's map says otherwise.",
+            "sourceIds": [
+              "source:cornell-gunnison-sage-grouse"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:greater-sage-grouse"
+        ],
+        "habitat": [
+          {
+            "text": "Sagebrush of southwestern Colorado and southeastern Utah only.",
+            "sourceIds": [
+              "source:cornell-gunnison-sage-grouse"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-gunnison-sage-grouse"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-gunnison-sage-grouse"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-30"
+      }
+    },
+    {
+      "id": "species:lesser-prairie-chicken",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "lesser-prairie-chicken",
+      "canonicalUrl": "/hunting/species/lesser-prairie-chicken",
+      "title": "Lesser prairie-chicken",
+      "description": "Identify Lesser prairie-chicken, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "lesser prairie-chicken",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:lesser-prairie-chicken",
+        "species_group:prairie-grouse",
+        "species_group:grouse",
+        "species_group:upland-game-birds"
+      ],
+      "speciesIds": [
+        "species:lesser-prairie-chicken"
+      ],
+      "quickAnswer": "Lesser prairie-chicken (Tympanuchus pallidicinctus) can be identified as follows: Smaller and paler than greater prairie-chicken; displaying males show red-orange air sacs. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Tympanuchus pallidicinctus",
+          "sourceIds": [
+            "source:cornell-lesser-prairie-chicken"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Phasianidae",
+          "sourceIds": [
+            "source:cornell-lesser-prairie-chicken"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Southern Great Plains",
+          "sourceIds": [
+            "source:cornell-lesser-prairie-chicken"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-lesser-prairie-chicken"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:greater-prairie-chicken"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:lesser-prairie-chicken",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Lesser prairie-chicken"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Tétras pâle",
+            "official": true
+          }
+        ],
+        "scientificName": "Tympanuchus pallidicinctus",
+        "takeEligibility": "UNVERIFIED",
+        "taxonomy": {
+          "order": "Galliformes",
+          "family": "Phasianidae",
+          "genus": "Tympanuchus",
+          "species": "pallidicinctus",
+          "taxonomySourceId": "source:cornell-lesser-prairie-chicken"
+        },
+        "speciesGroupIds": [
+          "species_group:prairie-grouse",
+          "species_group:grouse",
+          "species_group:upland-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Southern Great Plains"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Smaller and paler than greater prairie-chicken; displaying males show red-orange air sacs.",
+            "sourceIds": [
+              "source:cornell-lesser-prairie-chicken"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:greater-prairie-chicken"
+        ],
+        "habitat": [
+          {
+            "text": "Sand-sage and shinnery-oak prairie of the southern Great Plains.",
+            "sourceIds": [
+              "source:cornell-lesser-prairie-chicken"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-lesser-prairie-chicken"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-lesser-prairie-chicken"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-30"
+      }
+    },
+    {
+      "id": "species:montezuma-quail",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "montezuma-quail",
+      "canonicalUrl": "/hunting/species/montezuma-quail",
+      "title": "Montezuma quail",
+      "description": "Identify Montezuma quail, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "montezuma quail",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:montezuma-quail",
+        "species_group:quail",
+        "species_group:upland-game-birds"
+      ],
+      "speciesIds": [
+        "species:montezuma-quail"
+      ],
+      "quickAnswer": "Montezuma quail (Cyrtonyx montezumae) can be identified as follows: Round, short-tailed quail; males have a bold black-and-white harlequin face and white-spotted dark flanks. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Cyrtonyx montezumae",
+          "sourceIds": [
+            "source:cornell-montezuma-quail"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Odontophoridae",
+          "sourceIds": [
+            "source:cornell-montezuma-quail"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Southwestern United States and Mexico",
+          "sourceIds": [
+            "source:cornell-montezuma-quail"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-montezuma-quail"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:scaled-quail",
+        "species:gambels-quail"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:montezuma-quail",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Montezuma quail"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Colin arlequin",
+            "official": true
+          }
+        ],
+        "scientificName": "Cyrtonyx montezumae",
+        "takeEligibility": "HUNTABLE",
+        "taxonomy": {
+          "order": "Galliformes",
+          "family": "Odontophoridae",
+          "genus": "Cyrtonyx",
+          "species": "montezumae",
+          "taxonomySourceId": "source:cornell-montezuma-quail"
+        },
+        "speciesGroupIds": [
+          "species_group:quail",
+          "species_group:upland-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Southwestern United States and Mexico"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Round, short-tailed quail; males have a bold black-and-white harlequin face and white-spotted dark flanks.",
+            "sourceIds": [
+              "source:cornell-montezuma-quail"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:scaled-quail",
+          "species:gambels-quail"
+        ],
+        "habitat": [
+          {
+            "text": "Grassy oak and pine woodland of southeastern Arizona, southwestern New Mexico and west Texas.",
+            "sourceIds": [
+              "source:cornell-montezuma-quail"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-montezuma-quail"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-montezuma-quail"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-30"
+      }
+    },
+    {
+      "id": "species:mountain-quail",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "mountain-quail",
+      "canonicalUrl": "/hunting/species/mountain-quail",
+      "title": "Mountain quail",
+      "description": "Identify Mountain quail, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "mountain quail",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:mountain-quail",
+        "species_group:quail",
+        "species_group:upland-game-birds"
+      ],
+      "speciesIds": [
+        "species:mountain-quail"
+      ],
+      "quickAnswer": "Mountain quail (Oreortyx pictus) can be identified as follows: Large quail with a long straight head plume, a chestnut throat outlined in white and bold white flank bars. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Oreortyx pictus",
+          "sourceIds": [
+            "source:cornell-mountain-quail"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Odontophoridae",
+          "sourceIds": [
+            "source:cornell-mountain-quail"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Pacific mountain and shrub habitats",
+          "sourceIds": [
+            "source:cornell-mountain-quail"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-mountain-quail"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:california-quail"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:mountain-quail",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Mountain quail"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Colin des montagnes",
+            "official": true
+          }
+        ],
+        "scientificName": "Oreortyx pictus",
+        "takeEligibility": "HUNTABLE",
+        "taxonomy": {
+          "order": "Galliformes",
+          "family": "Odontophoridae",
+          "genus": "Oreortyx",
+          "species": "pictus",
+          "taxonomySourceId": "source:cornell-mountain-quail"
+        },
+        "speciesGroupIds": [
+          "species_group:quail",
+          "species_group:upland-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Pacific mountain and shrub habitats"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Large quail with a long straight head plume, a chestnut throat outlined in white and bold white flank bars.",
+            "sourceIds": [
+              "source:cornell-mountain-quail"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:california-quail"
+        ],
+        "habitat": [
+          {
+            "text": "Brushy mountain slopes and chaparral of the Pacific states and parts of the Great Basin.",
+            "sourceIds": [
+              "source:cornell-mountain-quail"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-mountain-quail"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-mountain-quail"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-30"
+      }
+    },
+    {
+      "id": "species:northern-bobwhite",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "northern-bobwhite",
+      "canonicalUrl": "/hunting/species/northern-bobwhite",
+      "title": "Northern bobwhite",
+      "description": "Identify Northern bobwhite, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "northern bobwhite",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:northern-bobwhite",
+        "species_group:quail",
+        "species_group:upland-game-birds"
+      ],
+      "speciesIds": [
+        "species:northern-bobwhite"
+      ],
+      "quickAnswer": "Northern bobwhite (Colinus virginianus) can be identified as follows: Small round quail; males have a white throat and eyebrow stripe, females a buff one. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Colinus virginianus",
+          "sourceIds": [
+            "source:cornell-northern-bobwhite"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Odontophoridae",
+          "sourceIds": [
+            "source:cornell-northern-bobwhite"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Eastern and central United States with limited Canadian occurrence",
+          "sourceIds": [
+            "source:cornell-northern-bobwhite"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-northern-bobwhite"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:scaled-quail"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:northern-bobwhite",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Northern bobwhite"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Colin de Virginie",
+            "official": true
+          }
+        ],
+        "scientificName": "Colinus virginianus",
+        "takeEligibility": "HUNTABLE",
+        "taxonomy": {
+          "order": "Galliformes",
+          "family": "Odontophoridae",
+          "genus": "Colinus",
+          "species": "virginianus",
+          "taxonomySourceId": "source:cornell-northern-bobwhite"
+        },
+        "speciesGroupIds": [
+          "species_group:quail",
+          "species_group:upland-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Eastern and central United States with limited Canadian occurrence"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Small round quail; males have a white throat and eyebrow stripe, females a buff one.",
+            "sourceIds": [
+              "source:cornell-northern-bobwhite"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:scaled-quail"
+        ],
+        "habitat": [
+          {
+            "text": "Farmland, grassland and open pine woodland of the eastern and central United States.",
+            "sourceIds": [
+              "source:cornell-northern-bobwhite"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-northern-bobwhite"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-northern-bobwhite"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-30"
+      }
+    },
+    {
+      "id": "species:scaled-quail",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "scaled-quail",
+      "canonicalUrl": "/hunting/species/scaled-quail",
+      "title": "Scaled quail",
+      "description": "Identify Scaled quail, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "scaled quail",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:scaled-quail",
+        "species_group:quail",
+        "species_group:upland-game-birds"
+      ],
+      "speciesIds": [
+        "species:scaled-quail"
+      ],
+      "quickAnswer": "Scaled quail (Callipepla squamata) can be identified as follows: Pale blue-gray quail with scaly-looking breast feathers and a white-tipped cottony crest. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Callipepla squamata",
+          "sourceIds": [
+            "source:cornell-scaled-quail"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Odontophoridae",
+          "sourceIds": [
+            "source:cornell-scaled-quail"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Southwestern grasslands",
+          "sourceIds": [
+            "source:cornell-scaled-quail"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-scaled-quail"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:gambels-quail",
+        "species:northern-bobwhite"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:scaled-quail",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Scaled quail"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Colin écaillé",
+            "official": true
+          }
+        ],
+        "scientificName": "Callipepla squamata",
+        "takeEligibility": "HUNTABLE",
+        "taxonomy": {
+          "order": "Galliformes",
+          "family": "Odontophoridae",
+          "genus": "Callipepla",
+          "species": "squamata",
+          "taxonomySourceId": "source:cornell-scaled-quail"
+        },
+        "speciesGroupIds": [
+          "species_group:quail",
+          "species_group:upland-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Southwestern grasslands"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Pale blue-gray quail with scaly-looking breast feathers and a white-tipped cottony crest.",
+            "sourceIds": [
+              "source:cornell-scaled-quail"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:gambels-quail",
+          "species:northern-bobwhite"
+        ],
+        "habitat": [
+          {
+            "text": "Arid grassland and desert scrub of the southern Great Plains and Southwest.",
+            "sourceIds": [
+              "source:cornell-scaled-quail"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-scaled-quail"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-scaled-quail"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-30"
+      }
+    },
+    {
+      "id": "species:sooty-grouse",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "sooty-grouse",
+      "canonicalUrl": "/hunting/species/sooty-grouse",
+      "title": "Sooty grouse",
+      "description": "Identify Sooty grouse, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "sooty grouse",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:sooty-grouse",
+        "species_group:grouse",
+        "species_group:upland-game-birds"
+      ],
+      "speciesIds": [
+        "species:sooty-grouse"
+      ],
+      "quickAnswer": "Sooty grouse (Dendragapus fuliginosus) can be identified as follows: Large dark grouse very like dusky grouse; displaying males show a yellow neck patch, and the tail usually has a gray band. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Dendragapus fuliginosus",
+          "sourceIds": [
+            "source:cornell-sooty-grouse"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Phasianidae",
+          "sourceIds": [
+            "source:cornell-sooty-grouse"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Pacific coastal North America",
+          "sourceIds": [
+            "source:cornell-sooty-grouse"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-sooty-grouse"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:dusky-grouse",
+        "species:spruce-grouse",
+        "species:ruffed-grouse"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:sooty-grouse",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "Sooty grouse"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Tétras fuligineux",
+            "official": true
+          }
+        ],
+        "scientificName": "Dendragapus fuliginosus",
+        "takeEligibility": "HUNTABLE",
+        "taxonomy": {
+          "order": "Galliformes",
+          "family": "Phasianidae",
+          "genus": "Dendragapus",
+          "species": "fuliginosus",
+          "taxonomySourceId": "source:cornell-sooty-grouse"
+        },
+        "speciesGroupIds": [
+          "species_group:grouse",
+          "species_group:upland-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Pacific coastal North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "Large dark grouse very like dusky grouse; displaying males show a yellow neck patch, and the tail usually has a gray band.",
+            "sourceIds": [
+              "source:cornell-sooty-grouse"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:dusky-grouse",
+          "species:spruce-grouse",
+          "species:ruffed-grouse"
+        ],
+        "habitat": [
+          {
+            "text": "Coastal conifer forests from southeastern Alaska through coastal British Columbia to California.",
+            "sourceIds": [
+              "source:cornell-sooty-grouse"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-sooty-grouse"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-sooty-grouse"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-30"
+      }
+    },
+    {
+      "id": "species:white-tailed-ptarmigan",
+      "type": "species",
+      "status": "published",
+      "locale": "en-CA",
+      "slug": "white-tailed-ptarmigan",
+      "canonicalUrl": "/hunting/species/white-tailed-ptarmigan",
+      "title": "White-tailed ptarmigan",
+      "description": "Identify White-tailed ptarmigan, compare important lookalikes, and understand its North American range without inferring legal hunting status.",
+      "primaryQuery": "white-tailed ptarmigan",
+      "searchIntent": "informational",
+      "entityIds": [
+        "species:white-tailed-ptarmigan",
+        "species_group:ptarmigan",
+        "species_group:grouse",
+        "species_group:upland-game-birds"
+      ],
+      "speciesIds": [
+        "species:white-tailed-ptarmigan"
+      ],
+      "quickAnswer": "White-tailed ptarmigan (Lagopus leucura) can be identified as follows: The smallest ptarmigan: an all-white tail in every season, white in winter and mottled gray-brown in summer. This biological profile does not establish whether hunting or trapping is legal.",
+      "keyFacts": [
+        {
+          "id": "scientific-name",
+          "label": "Scientific name",
+          "value": "Lagopus leucura",
+          "sourceIds": [
+            "source:cornell-white-tailed-ptarmigan"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "Family",
+          "value": "Phasianidae",
+          "sourceIds": [
+            "source:cornell-white-tailed-ptarmigan"
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range context",
+          "value": "Western alpine North America",
+          "sourceIds": [
+            "source:cornell-white-tailed-ptarmigan"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "source:cornell-white-tailed-ptarmigan"
+      ],
+      "relatedResourceIds": [
+        "tool:season-finder"
+      ],
+      "relatedSpeciesIds": [
+        "species:rock-ptarmigan",
+        "species:willow-ptarmigan"
+      ],
+      "verificationStatus": "verified",
+      "fieldTested": false,
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z",
+      "speciesProfile": {
+        "speciesId": "species:white-tailed-ptarmigan",
+        "commonNames": [
+          {
+            "locale": "en-CA",
+            "value": "White-tailed ptarmigan"
+          },
+          {
+            "locale": "fr-CA",
+            "value": "Lagopède à queue blanche",
+            "official": true
+          }
+        ],
+        "scientificName": "Lagopus leucura",
+        "takeEligibility": "HUNTABLE",
+        "taxonomy": {
+          "order": "Galliformes",
+          "family": "Phasianidae",
+          "genus": "Lagopus",
+          "species": "leucura",
+          "taxonomySourceId": "source:cornell-white-tailed-ptarmigan"
+        },
+        "speciesGroupIds": [
+          "species_group:ptarmigan",
+          "species_group:grouse",
+          "species_group:upland-game-birds"
+        ],
+        "rangeSummary": [
+          {
+            "locale": "en-CA",
+            "value": "Western alpine North America"
+          }
+        ],
+        "identification": [
+          {
+            "text": "The smallest ptarmigan: an all-white tail in every season, white in winter and mottled gray-brown in summer.",
+            "sourceIds": [
+              "source:cornell-white-tailed-ptarmigan"
+            ]
+          }
+        ],
+        "similarSpeciesIds": [
+          "species:rock-ptarmigan",
+          "species:willow-ptarmigan"
+        ],
+        "habitat": [
+          {
+            "text": "Alpine tundra above the treeline in western mountains from Alaska to New Mexico.",
+            "sourceIds": [
+              "source:cornell-white-tailed-ptarmigan"
+            ]
+          }
+        ],
+        "huntingContext": [
+          {
+            "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
+            "sourceIds": [
+              "source:cornell-white-tailed-ptarmigan"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "source:cornell-white-tailed-ptarmigan"
+        ],
+        "verificationStatus": "verified",
+        "lastReviewed": "2026-09-30"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "content_block:california-quail.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:california-quail",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify California quail from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:california-quail"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-california-quail"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "content_block:chukar.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:chukar",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Chukar from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:chukar"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-chukar"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "content_block:dusky-grouse.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:dusky-grouse",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Dusky grouse from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:dusky-grouse"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-dusky-grouse"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "content_block:gambels-quail.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:gambels-quail",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Gambel's quail from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:gambels-quail"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-gambels-quail"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "content_block:greater-prairie-chicken.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:greater-prairie-chicken",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Greater prairie-chicken from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:greater-prairie-chicken"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-greater-prairie-chicken"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "content_block:greater-sage-grouse.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:greater-sage-grouse",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Greater sage-grouse from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:greater-sage-grouse"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-greater-sage-grouse"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "content_block:gunnison-sage-grouse.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:gunnison-sage-grouse",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Gunnison sage-grouse from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:gunnison-sage-grouse"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-gunnison-sage-grouse"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "content_block:lesser-prairie-chicken.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:lesser-prairie-chicken",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Lesser prairie-chicken from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:lesser-prairie-chicken"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-lesser-prairie-chicken"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "content_block:montezuma-quail.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:montezuma-quail",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Montezuma quail from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:montezuma-quail"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-montezuma-quail"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "content_block:mountain-quail.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:mountain-quail",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Mountain quail from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:mountain-quail"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-mountain-quail"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "content_block:northern-bobwhite.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:northern-bobwhite",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Northern bobwhite from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:northern-bobwhite"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-northern-bobwhite"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "content_block:scaled-quail.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:scaled-quail",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Scaled quail from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:scaled-quail"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-scaled-quail"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "content_block:sooty-grouse.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:sooty-grouse",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify Sooty grouse from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:sooty-grouse"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-sooty-grouse"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "content_block:white-tailed-ptarmigan.identification.01",
+      "type": "identification_warning",
+      "ownerId": "species:white-tailed-ptarmigan",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "Lookalike caution",
+      "content": {
+        "plainText": "Do not identify White-tailed ptarmigan from colour alone. Compare structure, size, range and the listed similar species before making a field decision."
+      },
+      "priority": 90,
+      "applicability": {
+        "speciesIds": [
+          "species:white-tailed-ptarmigan"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-white-tailed-ptarmigan"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "content_block:gunnison-sage-grouse.safety.01",
+      "type": "safety_note",
+      "ownerId": "species:gunnison-sage-grouse",
+      "status": "published",
+      "locale": "en-CA",
+      "title": "If you are not certain, do not shoot",
+      "content": {
+        "plainText": "Sage-grouse seasons, where they exist, are set for greater sage-grouse in specific areas. Check the responsible authority's map and species before hunting near the Gunnison range, and if you are not certain which species you are looking at, do not shoot."
+      },
+      "priority": 100,
+      "applicability": {
+        "speciesIds": [
+          "species:greater-sage-grouse",
+          "species:gunnison-sage-grouse"
+        ],
+        "activityIds": [
+          "activity:hunting"
+        ]
+      },
+      "sourceIds": [
+        "source:cornell-gunnison-sage-grouse"
+      ],
+      "verificationStatus": "verified",
+      "lastReviewed": "2026-09-30",
+      "publishedAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel:california-quail-member-quail",
+      "fromId": "species:california-quail",
+      "toId": "species_group:quail",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-california-quail"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:california-quail-similar-gambels-quail",
+      "fromId": "species:california-quail",
+      "toId": "species:gambels-quail",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-california-quail"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:california-quail-similar-mountain-quail",
+      "fromId": "species:california-quail",
+      "toId": "species:mountain-quail",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-california-quail"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:chukar-member-upland-game-birds",
+      "fromId": "species:chukar",
+      "toId": "species_group:upland-game-birds",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-chukar"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:chukar-similar-gray-partridge",
+      "fromId": "species:chukar",
+      "toId": "species:gray-partridge",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-chukar"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:dusky-grouse-member-grouse",
+      "fromId": "species:dusky-grouse",
+      "toId": "species_group:grouse",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-dusky-grouse"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:dusky-grouse-similar-sooty-grouse",
+      "fromId": "species:dusky-grouse",
+      "toId": "species:sooty-grouse",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-dusky-grouse"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:dusky-grouse-similar-spruce-grouse",
+      "fromId": "species:dusky-grouse",
+      "toId": "species:spruce-grouse",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-dusky-grouse"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:dusky-grouse-similar-ruffed-grouse",
+      "fromId": "species:dusky-grouse",
+      "toId": "species:ruffed-grouse",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-dusky-grouse"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:gambels-quail-member-quail",
+      "fromId": "species:gambels-quail",
+      "toId": "species_group:quail",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-gambels-quail"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:gambels-quail-similar-california-quail",
+      "fromId": "species:gambels-quail",
+      "toId": "species:california-quail",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-gambels-quail"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:gambels-quail-similar-scaled-quail",
+      "fromId": "species:gambels-quail",
+      "toId": "species:scaled-quail",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-gambels-quail"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:greater-prairie-chicken-member-prairie-grouse",
+      "fromId": "species:greater-prairie-chicken",
+      "toId": "species_group:prairie-grouse",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-greater-prairie-chicken"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:greater-prairie-chicken-similar-lesser-prairie-chicken",
+      "fromId": "species:greater-prairie-chicken",
+      "toId": "species:lesser-prairie-chicken",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-greater-prairie-chicken"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:greater-prairie-chicken-similar-sharp-tailed-grouse",
+      "fromId": "species:greater-prairie-chicken",
+      "toId": "species:sharp-tailed-grouse",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-greater-prairie-chicken"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:greater-sage-grouse-member-grouse",
+      "fromId": "species:greater-sage-grouse",
+      "toId": "species_group:grouse",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-greater-sage-grouse"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:greater-sage-grouse-similar-gunnison-sage-grouse",
+      "fromId": "species:greater-sage-grouse",
+      "toId": "species:gunnison-sage-grouse",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-greater-sage-grouse"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:greater-sage-grouse-similar-sharp-tailed-grouse",
+      "fromId": "species:greater-sage-grouse",
+      "toId": "species:sharp-tailed-grouse",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-greater-sage-grouse"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:gunnison-sage-grouse-member-grouse",
+      "fromId": "species:gunnison-sage-grouse",
+      "toId": "species_group:grouse",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-gunnison-sage-grouse"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:gunnison-sage-grouse-similar-greater-sage-grouse",
+      "fromId": "species:gunnison-sage-grouse",
+      "toId": "species:greater-sage-grouse",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-gunnison-sage-grouse"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:lesser-prairie-chicken-member-prairie-grouse",
+      "fromId": "species:lesser-prairie-chicken",
+      "toId": "species_group:prairie-grouse",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-lesser-prairie-chicken"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:lesser-prairie-chicken-similar-greater-prairie-chicken",
+      "fromId": "species:lesser-prairie-chicken",
+      "toId": "species:greater-prairie-chicken",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-lesser-prairie-chicken"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:montezuma-quail-member-quail",
+      "fromId": "species:montezuma-quail",
+      "toId": "species_group:quail",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-montezuma-quail"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:montezuma-quail-similar-scaled-quail",
+      "fromId": "species:montezuma-quail",
+      "toId": "species:scaled-quail",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-montezuma-quail"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:montezuma-quail-similar-gambels-quail",
+      "fromId": "species:montezuma-quail",
+      "toId": "species:gambels-quail",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-montezuma-quail"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:mountain-quail-member-quail",
+      "fromId": "species:mountain-quail",
+      "toId": "species_group:quail",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-mountain-quail"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:mountain-quail-similar-california-quail",
+      "fromId": "species:mountain-quail",
+      "toId": "species:california-quail",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-mountain-quail"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:northern-bobwhite-member-quail",
+      "fromId": "species:northern-bobwhite",
+      "toId": "species_group:quail",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-northern-bobwhite"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:northern-bobwhite-similar-scaled-quail",
+      "fromId": "species:northern-bobwhite",
+      "toId": "species:scaled-quail",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-northern-bobwhite"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:scaled-quail-member-quail",
+      "fromId": "species:scaled-quail",
+      "toId": "species_group:quail",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-scaled-quail"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:scaled-quail-similar-gambels-quail",
+      "fromId": "species:scaled-quail",
+      "toId": "species:gambels-quail",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-scaled-quail"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:scaled-quail-similar-northern-bobwhite",
+      "fromId": "species:scaled-quail",
+      "toId": "species:northern-bobwhite",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-scaled-quail"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:sooty-grouse-member-grouse",
+      "fromId": "species:sooty-grouse",
+      "toId": "species_group:grouse",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-sooty-grouse"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:sooty-grouse-similar-dusky-grouse",
+      "fromId": "species:sooty-grouse",
+      "toId": "species:dusky-grouse",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-sooty-grouse"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:sooty-grouse-similar-spruce-grouse",
+      "fromId": "species:sooty-grouse",
+      "toId": "species:spruce-grouse",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-sooty-grouse"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:sooty-grouse-similar-ruffed-grouse",
+      "fromId": "species:sooty-grouse",
+      "toId": "species:ruffed-grouse",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-sooty-grouse"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:white-tailed-ptarmigan-member-ptarmigan",
+      "fromId": "species:white-tailed-ptarmigan",
+      "toId": "species_group:ptarmigan",
+      "type": "member_of",
+      "direction": "directed",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-white-tailed-ptarmigan"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:white-tailed-ptarmigan-similar-rock-ptarmigan",
+      "fromId": "species:white-tailed-ptarmigan",
+      "toId": "species:rock-ptarmigan",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-white-tailed-ptarmigan"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": "rel:white-tailed-ptarmigan-similar-willow-ptarmigan",
+      "fromId": "species:white-tailed-ptarmigan",
+      "toId": "species:willow-ptarmigan",
+      "type": "similar_to",
+      "direction": "bidirectional",
+      "origin": "manual",
+      "sourceIds": [
+        "source:cornell-white-tailed-ptarmigan"
+      ],
+      "status": "active",
+      "createdAt": "2026-09-30T12:00:00Z",
+      "updatedAt": "2026-09-30T12:00:00Z"
+    }
+  ],
+  "sources": [
+    {
+      "id": "source:cornell-california-quail",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "California quail identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/California_quail/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-chukar",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Chukar identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Chukar/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-dusky-grouse",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Dusky grouse identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Dusky_grouse/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-gambels-quail",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Gambel's quail identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Gambels_quail/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-greater-prairie-chicken",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Greater prairie-chicken identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Greater_prairie-chicken/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-greater-sage-grouse",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Greater sage-grouse identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Greater_sage-grouse/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-gunnison-sage-grouse",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Gunnison sage-grouse identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Gunnison_sage-grouse/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-lesser-prairie-chicken",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Lesser prairie-chicken identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Lesser_prairie-chicken/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-montezuma-quail",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Montezuma quail identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Montezuma_quail/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-mountain-quail",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Mountain quail identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Mountain_quail/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-northern-bobwhite",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Northern bobwhite identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Northern_bobwhite/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-scaled-quail",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Scaled quail identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Scaled_quail/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-sooty-grouse",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "Sooty grouse identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/Sooty_grouse/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:cornell-white-tailed-ptarmigan",
+      "authority": "Cornell Lab of Ornithology",
+      "title": "White-tailed ptarmigan identification and life history",
+      "url": "https://www.allaboutbirds.org/guide/White-tailed_ptarmigan/id",
+      "publisher": "Cornell Lab of Ornithology",
+      "retrievedAt": "2026-09-30T12:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    }
+  ],
+  "claims": [],
+  "media": []
+}

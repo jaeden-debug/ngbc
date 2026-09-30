@@ -540,6 +540,7 @@
           }
         ],
         "scientificName": "Canachites canadensis",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Phasianidae",
@@ -669,6 +670,7 @@
           }
         ],
         "scientificName": "Tympanuchus phasianellus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Phasianidae",
@@ -795,6 +797,7 @@
           }
         ],
         "scientificName": "Meleagris gallopavo",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Phasianidae",
@@ -1029,6 +1032,7 @@
           }
         ],
         "scientificName": "Odocoileus virginianus",
+        "takeEligibility": "HUNTABLE",
         "aliases": [
           {
             "value": "whitetail",
@@ -1263,6 +1267,7 @@
           }
         ],
         "scientificName": "Alces alces",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Cervidae",
@@ -1473,6 +1478,7 @@
           }
         ],
         "scientificName": "Ursus americanus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Ursidae",
@@ -1599,6 +1605,7 @@
           }
         ],
         "scientificName": "Lepus americanus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Lagomorpha",
           "family": "Leporidae",
@@ -1741,6 +1748,7 @@
           }
         ],
         "scientificName": "Anas platyrhynchos",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Anseriformes",
           "family": "Anatidae",
@@ -1880,6 +1888,7 @@
           }
         ],
         "scientificName": "Branta canadensis",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Anseriformes",
           "family": "Anatidae",

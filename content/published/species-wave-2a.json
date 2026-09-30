@@ -898,6 +898,7 @@
           }
         ],
         "scientificName": "Canis lupus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Canidae",
@@ -1023,6 +1024,7 @@
           }
         ],
         "scientificName": "Canis lycaon",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Canidae",
@@ -1157,6 +1159,7 @@
           }
         ],
         "scientificName": "Canis latrans",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Canidae",
@@ -1282,6 +1285,7 @@
           }
         ],
         "scientificName": "Vulpes vulpes",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Canidae",
@@ -1415,6 +1419,7 @@
           }
         ],
         "scientificName": "Urocyon cinereoargenteus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Canidae",
@@ -1547,6 +1552,7 @@
           }
         ],
         "scientificName": "Vulpes lagopus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Canidae",
@@ -1679,6 +1685,7 @@
           }
         ],
         "scientificName": "Lynx canadensis",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Felidae",
@@ -1811,6 +1818,7 @@
           }
         ],
         "scientificName": "Lynx rufus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Felidae",
@@ -1935,6 +1943,7 @@
           }
         ],
         "scientificName": "Sylvilagus floridanus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Lagomorpha",
           "family": "Leporidae",
@@ -2060,6 +2069,7 @@
           }
         ],
         "scientificName": "Lepus arcticus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Lagomorpha",
           "family": "Leporidae",
@@ -2185,6 +2195,7 @@
           }
         ],
         "scientificName": "Tamiasciurus hudsonicus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Rodentia",
           "family": "Sciuridae",
@@ -2310,6 +2321,7 @@
           }
         ],
         "scientificName": "Sciurus carolinensis",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Rodentia",
           "family": "Sciuridae",
@@ -2432,6 +2444,7 @@
           }
         ],
         "scientificName": "Castor canadensis",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Rodentia",
           "family": "Castoridae",
@@ -2560,6 +2573,7 @@
           }
         ],
         "scientificName": "Procyon lotor",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Procyonidae",
@@ -2688,6 +2702,7 @@
           }
         ],
         "scientificName": "Neogale vison",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Mustelidae",
@@ -2818,6 +2833,7 @@
           }
         ],
         "scientificName": "Pekania pennanti",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Mustelidae",
@@ -2950,6 +2966,7 @@
           }
         ],
         "scientificName": "Martes americana",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Mustelidae",

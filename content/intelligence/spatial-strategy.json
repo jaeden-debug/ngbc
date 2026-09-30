@@ -2,6 +2,36 @@
   "note": "The declared half of each species' spatial strategy: its evidence family and what North Ground is building toward. What it HOLDS — surfaces, survey plots, zone evidence — is never declared here; `src/lib/hunt/intelligence/spatial-strategy.ts` derives it from the certified registries, so this file cannot make a species look covered. Every published species must have an entry; the test reads the catalogue.",
   "schemaVersion": 1,
   "species": {
+    "species:aberts-squirrel": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:american-badger": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:american-bison": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
     "species:american-black-bear": {
       "family": "BEAR",
       "next": [
@@ -14,6 +44,26 @@
     },
     "species:american-black-duck": {
       "family": "WATERFOWL"
+    },
+    "species:american-coot": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:american-crow": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
     },
     "species:american-marten": {
       "family": "PREDATOR_FURBEARER",
@@ -71,11 +121,71 @@
         }
       ]
     },
+    "species:axis-deer": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
+    "species:band-tailed-pigeon": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:barbary-sheep": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
     "species:barrows-goldeneye": {
       "family": "WATERFOWL"
     },
     "species:beaver": {
       "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:bighorn-sheep": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
+    "species:black-scoter": {
+      "family": "SEA_DUCK",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "Sea ducks breed where the Breeding Bird Survey barely runs and winter offshore. Coastal and wintering surveys have not yet been checked for resolution or licence."
+        }
+      ]
+    },
+    "species:black-tailed-jackrabbit": {
+      "family": "SMALL_GAME",
       "next": [
         {
           "strategy": "C_HABITAT_MODEL",
@@ -117,6 +227,16 @@
         }
       ]
     },
+    "species:brush-rabbit": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
     "species:bufflehead": {
       "family": "WATERFOWL"
     },
@@ -127,6 +247,16 @@
           "strategy": "D_COARSE_SUPPORTING",
           "status": "IN_RESEARCH",
           "plan": "The Breeding Bird Survey does not reach arctic nesting grounds. Migration and wintering counts are published by state, province or flyway unit, which would be zone evidence rather than a surface; their licences have not been checked."
+        }
+      ]
+    },
+    "species:california-quail": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
         }
       ]
     },
@@ -156,8 +286,68 @@
         }
       ]
     },
+    "species:chukar": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:cinnamon-teal": {
+      "family": "WATERFOWL",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:collared-peccary": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
+    "species:common-eider": {
+      "family": "SEA_DUCK",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "Sea ducks breed where the Breeding Bird Survey barely runs and winter offshore. Coastal and wintering surveys have not yet been checked for resolution or licence."
+        }
+      ]
+    },
+    "species:common-gallinule": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
     "species:common-goldeneye": {
       "family": "WATERFOWL"
+    },
+    "species:common-merganser": {
+      "family": "WATERFOWL",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
     },
     "species:coyote": {
       "family": "PREDATOR_FURBEARER",
@@ -166,6 +356,36 @@
           "strategy": "C_HABITAT_MODEL",
           "status": "IN_RESEARCH",
           "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:dall-sheep": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
+    "species:desert-cottontail": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:dusky-grouse": {
+      "family": "FOREST_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
         }
       ]
     },
@@ -209,6 +429,36 @@
         }
       ]
     },
+    "species:eurasian-collared-dove": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:fallow-deer": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
+    "species:fish-crow": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
     "species:fisher": {
       "family": "PREDATOR_FURBEARER",
       "next": [
@@ -219,8 +469,28 @@
         }
       ]
     },
+    "species:fox-squirrel": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
     "species:gadwall": {
       "family": "WATERFOWL"
+    },
+    "species:gambels-quail": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
     },
     "species:gray-fox": {
       "family": "PREDATOR_FURBEARER",
@@ -245,6 +515,26 @@
         }
       ]
     },
+    "species:greater-prairie-chicken": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:greater-sage-grouse": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
     "species:greater-scaup": {
       "family": "WATERFOWL"
     },
@@ -261,11 +551,85 @@
     "species:green-winged-teal": {
       "family": "WATERFOWL"
     },
+    "species:gunnison-sage-grouse": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": []
+    },
+    "species:harlequin-duck": {
+      "family": "SEA_DUCK",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "Sea ducks breed where the Breeding Bird Survey barely runs and winter offshore. Coastal and wintering surveys have not yet been checked for resolution or licence."
+        }
+      ]
+    },
+    "species:hooded-merganser": {
+      "family": "WATERFOWL",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:king-eider": {
+      "family": "SEA_DUCK",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "Sea ducks breed where the Breeding Bird Survey barely runs and winter offshore. Coastal and wintering surveys have not yet been checked for resolution or licence."
+        }
+      ]
+    },
+    "species:king-rail": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:lesser-prairie-chicken": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
     "species:lesser-scaup": {
       "family": "WATERFOWL"
     },
+    "species:long-tailed-duck": {
+      "family": "SEA_DUCK",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "Sea ducks breed where the Breeding Bird Survey barely runs and winter offshore. Coastal and wintering surveys have not yet been checked for resolution or licence."
+        }
+      ]
+    },
     "species:mallard": {
       "family": "WATERFOWL"
+    },
+    "species:montezuma-quail": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
     },
     "species:moose": {
       "family": "UNGULATE",
@@ -279,6 +643,46 @@
           "strategy": "D_COARSE_SUPPORTING",
           "status": "PLANNED",
           "plan": "Alberta's WMU aerial ungulate surveys (animals per km² with 90% confidence limits, Open Government Licence – Alberta) as zone evidence in each Alberta unit's card. Read and licence-checked 2026-09-29 (docs/research/species-density-evidence.md); same resolution as the unit, so never painted."
+        }
+      ]
+    },
+    "species:mountain-cottontail": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:mountain-goat": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
+    "species:mountain-lion": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:mountain-quail": {
+      "family": "FOREST_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
         }
       ]
     },
@@ -300,11 +704,101 @@
         }
       ]
     },
+    "species:muskox": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
+    "species:muskrat": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:mute-swan": {
+      "family": "WATERFOWL",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:new-england-cottontail": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:nilgai": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
+    "species:north-american-river-otter": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:northern-bobwhite": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
     "species:northern-pintail": {
       "family": "WATERFOWL"
     },
     "species:northern-shoveler": {
       "family": "WATERFOWL"
+    },
+    "species:nutria": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:polar-bear": {
+      "family": "BEAR",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
     },
     "species:pronghorn": {
       "family": "UNGULATE",
@@ -316,6 +810,16 @@
         }
       ]
     },
+    "species:purple-gallinule": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
     "species:raccoon": {
       "family": "PREDATOR_FURBEARER",
       "next": [
@@ -323,6 +827,16 @@
           "strategy": "C_HABITAT_MODEL",
           "status": "IN_RESEARCH",
           "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:red-breasted-merganser": {
+      "family": "WATERFOWL",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
         }
       ]
     },
@@ -355,6 +869,26 @@
         }
       ]
     },
+    "species:rosss-goose": {
+      "family": "ARCTIC_NESTING_GOOSE",
+      "next": [
+        {
+          "strategy": "D_COARSE_SUPPORTING",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not reach arctic nesting grounds. Migration and wintering counts are published by state, province or flyway unit, which would be zone evidence rather than a surface; their licences have not been checked."
+        }
+      ]
+    },
+    "species:ruddy-duck": {
+      "family": "WATERFOWL",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
     "species:ruffed-grouse": {
       "family": "FOREST_UPLAND_BIRD",
       "next": [
@@ -368,8 +902,28 @@
     "species:sandhill-crane": {
       "family": "MIGRATORY_GAME_BIRD"
     },
+    "species:scaled-quail": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
     "species:sharp-tailed-grouse": {
       "family": "OPEN_COUNTRY_UPLAND_BIRD"
+    },
+    "species:sika-deer": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
     },
     "species:snow-goose": {
       "family": "ARCTIC_NESTING_GOOSE",
@@ -391,8 +945,92 @@
         }
       ]
     },
+    "species:sooty-grouse": {
+      "family": "FOREST_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:sora": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
     "species:spruce-grouse": {
       "family": "FOREST_UPLAND_BIRD"
+    },
+    "species:striped-skunk": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:surf-scoter": {
+      "family": "SEA_DUCK",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "Sea ducks breed where the Breeding Bird Survey barely runs and winter offshore. Coastal and wintering surveys have not yet been checked for resolution or licence."
+        }
+      ]
+    },
+    "species:swamp-rabbit": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:trumpeter-swan": {
+      "family": "WATERFOWL",
+      "next": []
+    },
+    "species:tundra-swan": {
+      "family": "WATERFOWL",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:virginia-opossum": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:virginia-rail": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
     },
     "species:white-tailed-deer": {
       "family": "UNGULATE",
@@ -409,6 +1047,60 @@
         }
       ]
     },
+    "species:white-tailed-jackrabbit": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:white-tailed-ptarmigan": {
+      "family": "ARCTIC_ALPINE_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:white-winged-dove": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
+        }
+      ]
+    },
+    "species:white-winged-scoter": {
+      "family": "SEA_DUCK",
+      "next": [
+        {
+          "strategy": "B_MEASURED_DISTRIBUTION",
+          "status": "IN_RESEARCH",
+          "plan": "Sea ducks breed where the Breeding Bird Survey barely runs and winter offshore. Coastal and wintering surveys have not yet been checked for resolution or licence."
+        }
+      ]
+    },
+    "species:whooping-crane": {
+      "family": "MIGRATORY_GAME_BIRD",
+      "next": []
+    },
+    "species:wild-boar": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
     "species:wild-turkey": {
       "family": "FOREST_UPLAND_BIRD"
     },
@@ -418,8 +1110,28 @@
     "species:wilsons-snipe": {
       "family": "MIGRATORY_GAME_BIRD"
     },
+    "species:wolverine": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
     "species:wood-duck": {
       "family": "WATERFOWL"
+    },
+    "species:woodchuck": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
     }
   }
 }

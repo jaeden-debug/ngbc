@@ -166,6 +166,13 @@ type MapLicenceFinding = {
     theLegalBoundaryIsElsewhere?: string;
     /** The zones sit at a layer id other than 0, which is the usual guess. */
     theLayerIdIsNot0?: string;
+    theOutstandingParityCheck?: string;
+    fourUnitSystemsAndOnlyOneCarriesTheSeasons?: string;
+    threeGeographiesNotOne?: string;
+    countyIsNotTheWholeGeography?: string;
+    theOneNamedZoneIsComposable?: string;
+    theCountyGeometryBELONGSToAnotherAgency?: string;
+    bearHasNoGeometryAndItsDefinitionsAreSubCounty?: string;
     /** A field that looks regulatory and is not. Georgia's DMU appears zero times in its own rules. */
     administrativeFieldsThatMustNeverBeServed?: string;
     /** Parity established by comparing SETS, because equal counts can conceal a disagreement. */
@@ -340,6 +347,41 @@ type MapLicenceFinding = {
    * exist in none of the layers.
    */
   theInheritedLicenceThatIsNotTheirs?: { statedAs: string; finding: string; howItWasCaught: string; andItIsEvidenceAgainstFitness: string; theNarrowProhibitionThatIsKdwps?: string };
+  /**
+   * One service, one account, one publication window — and a different licence
+   * state per dataset.
+   *
+   * Vermont is the sharpest case: its Wildlife Management Units carry CC BY-SA
+   * while its Waterfowl Hunting Zones and State Game Refuges, in the same
+   * service, state nothing at all. A state like this cannot be classified once,
+   * and borrowing the granted dataset's terms onto the silent ones would be a
+   * false claim in the permissive direction.
+   */
+  termsDifferPerDatasetInOneService?: { finding: string; andEvenWithinOneDatasetFamily?: string; consequence: string };
+  /**
+   * A terms page that returns HTTP 200 and does not exist.
+   *
+   * ArcGIS Hub answers 200 for any unknown slug, so a plausible URL "works".
+   * Vermont's was caught by byte count against a page that IS in the site's own
+   * registry — 65,865 against 65,868, the identical shell. This is the output
+   * that otherwise gets reported as a terms page.
+   */
+  theTermsPageThatReturns200AndDoesNotExist?: { finding: string; provenTwoWays: string; andOnePageIsGenuinelyUnread?: string };
+  /**
+   * The rules host serves a certificate chain some clients reject.
+   *
+   * NOT a blocker, and recorded so nobody files it as one. Mississippi omits its
+   * intermediate certificate: Node's fetch refuses it while curl and browsers
+   * accept the same URL with HTTP 200 and 268,866 bytes. Distinct from Arizona,
+   * which serves a certificate EXPIRED since 2022 that no client should accept.
+   * The first run of `scripts/check-us-source-urls.mjs` reported Mississippi as
+   * unreachable, because `fetch` calls every transport failure "fetch failed".
+   */
+  rulesHostTlsProblem?: { state: "INCOMPLETE_CERTIFICATE_CHAIN"; finding: string; whyItIsNotRecordedAsABLOCKER: string; howItDiffersFromArizona: string; consequenceForIngestion: string };
+  /** A permissive licence attached to the wrong object — a Hub site application rather than a dataset. */
+  theHubSiteLicenceIsNotTheDatasetsLicence?: { statedAs: string; finding: string; whatItIsEvidenceOf: string; andOneLicenceFieldIsACurrencyWarning?: string };
+  /** The geometry North Ground needs has a different publisher, with its own terms. */
+  theCountyGeometryBelongsToAnotherAgency?: { finding: string; whyItIsRecordedSeparately: string };
   /** Rules finer than the only published geography, where a point-in-polygon answer is confidently wrong. */
   threeFinerThanCountyRulesWithNoGeometry?: Record<string, string>;
   /** A restricted geography that is the union of certified units, so it needs no polygon of its own. */

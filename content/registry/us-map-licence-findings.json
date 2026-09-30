@@ -530,12 +530,13 @@
       "licence": {
         "statedAs": "Most current access is thru the http://adfg.maps.arcgis.com link (try https if link broken). Liability Statement and Limitations on Use By using these data, the user agrees to all the conditions stated in the following paragraphs. THE STATE OF ALASKA, DEPARTMENT OF FISH AND GAME, MAKES NO EXPRESS OR IMPLIED WARRANTIES (INCLUDING WARRANTIES OF MERCHANTABILITY AND FITNESS) WITH RESPECT TO THE ACCURACY, CHARACTER, FUNCTION, OR CAPABILITIES OF THE DATA, SERVICES, OR PRODUCTS OR THEIR APPROPRIATENESS FOR ANY PARTICULAR PURPOSE. The Department of Fish and Game is not liable for any direct, incidental, indirect, special, compensatory, consequential or other damages suffered by the user or any other person or entity from the use of or failure of the data, services, or products even if the Department of Fish and Game has been advised of the possibility of such potential loss or damage. The entire risk as to the results of the use of the data, services, or products is assumed by the user. Data may be subject to periodic change without prior notification. To ensure receipt of the most current information, please refer requests to the ADF&G GIS data download website . Users may not reproduce or distribute this data without explicit consent of the Alaska Department of Fish and Game. These data are provided for general visual reference and to aid users in generating various natural resource analyses and products. There are no constraints to accessing these data, other than the limitations or constraints associated with a specific dataset or set forth herein. It is strongly recommended that careful attention be paid to the contents of the metadata file associated with these data. Any hardcopy or electronic products utilizing this data shall clearly indicate their source. If the user has modified the data in any way, the user must describe the modifications they have performed. The user agrees not to misrepresent this data, nor to imply that the Alaska Department of Fish and Game approved any changes they made. No warranty expressed or implied is made regarding the accuracy or utility of the data on any other system or for general or scientific purposes, nor shall the act of distribution constitute any such warranty. This disclaimer applies both to individual use of the data and aggregate use with other data. It is strongly recommended that these data are directly acquired from a ADF&G-DWC sanctioned server, and not indirectly through other sources which may have changed the data in some way. All Game Management Unit files and digital data can be used for display and mapping purposes to 1:63,360 with limitations. Not to be used with GPS to determine physical boundaries.",
         "sha256": "sha256:1330b3c22f229d8e3e64a9be0354dced3af0b1e910508c3587d44a97cf1e0a3c",
-        "url": "https://adfg.maps.arcgis.com — portal item \"AK Game Mgmt Units (eff 7/1/2025)\", owner alaskafishandgame",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/f1019b8731aa4ec4921501d035c7ba5e?f=json",
         "retrievedAt": "2026-09-30",
         "permittedUse": "RESTRICTED",
         "redistribution": "PROHIBITED",
         "attribution": "Alaska Department of Fish and Game, Division of Wildlife Conservation",
-        "note": "AN EXPRESS REFUSAL, AND IT IS THE LAST THING THE PARAGRAPH SAYS. \"Users may not reproduce or distribute this data without explicit consent of the Alaska Department of Fish and Game.\" Everything before it reads permissively — attribution, describe-your-modifications, don't-misrepresent, a scale allowance, warranty disclaimers — and on the 2023 edition the prohibition is literally the final sentence.\n\nTHE TRUNCATION WOULD HAVE INVERTED THE ANSWER. My discovery tool stores 1,200 characters of item licence text and the sweep printed 400. At 400 characters Alaska looks exactly like Pennsylvania: conditions that presuppose derived products, no refusal. I would have recorded UNRESOLVED-leaning-permissive on a state that refuses outright. The rule this confirms is that a licence is classified from its whole text or not at all.\n\nTWO EDITIONS, DIFFERENT TERMS, AND THEY MOVED IN OPPOSITE DIRECTIONS. Effective 7/1/2023 the scale allowance is 1:250,000 and the prohibition is phrased \"by a 3rd-party ... is strictly prohibited\"; effective 7/1/2025 the allowance is 1:63,360 — FINER, so more permissive — while the prohibition widens from \"3rd-party\" to \"Users\". Citing the wrong edition misstates both halves, in opposite directions. The recorded text is the current 2025 one."
+        "note": "AN EXPRESS REFUSAL, AND IT IS THE LAST THING THE PARAGRAPH SAYS. \"Users may not reproduce or distribute this data without explicit consent of the Alaska Department of Fish and Game.\" Everything before it reads permissively — attribution, describe-your-modifications, don't-misrepresent, a scale allowance, warranty disclaimers — and on the 2023 edition the prohibition is literally the final sentence.\n\nTHE TRUNCATION WOULD HAVE INVERTED THE ANSWER. My discovery tool stores 1,200 characters of item licence text and the sweep printed 400. At 400 characters Alaska looks exactly like Pennsylvania: conditions that presuppose derived products, no refusal. I would have recorded UNRESOLVED-leaning-permissive on a state that refuses outright. The rule this confirms is that a licence is classified from its whole text or not at all.\n\nTWO EDITIONS, DIFFERENT TERMS, AND THEY MOVED IN OPPOSITE DIRECTIONS. Effective 7/1/2023 the scale allowance is 1:250,000 and the prohibition is phrased \"by a 3rd-party ... is strictly prohibited\"; effective 7/1/2025 the allowance is 1:63,360 — FINER, so more permissive — while the prohibition widens from \"3rd-party\" to \"Users\". Citing the wrong edition misstates both halves, in opposite directions. The recorded text is the current 2025 one, from item f1019b8731aa4ec4921501d035c7ba5e.\n\nA CORRECTION TO AN EARLIER READING OF MINE, AND THE TRAP THAT CAUSED IT. I first recorded f1019b8731aa4ec4921501d035c7ba5e as the 2023 edition's item. It is the 2025 one. The mistake came from where I saw the id: the 2023 entry is a \"Document Link\" item, aabc6d4751614c479d51ff607c6ee1d4, titled \"AK Game Mgmt Units (eff 7/1/2023) (link)\", and ITS url field points at the 2025 item. So following the 2023 link lands on 2025 terms while the 2023 item's own licenceInfo still states the 2023 ones — two editions reachable through one link, disagreeing about both the scale ceiling and the prohibition's scope.\n\nHOW THE ID WAS VERIFIED, since a title is not evidence: by matching each item's own licenceInfo against the text recorded in `statedAs`. f1019b… mentions 1:63,360 and \"Users may not reproduce\"; aabc6d… mentions 1:250,000 and \"3rd-party\". The id is therefore confirmed by the words it carries rather than by the label on it.",
+        "urlNote": "The item is “AK Game Mgmt Units (eff 7/1/2025)”, owner alaskafishandgame, in ADF&G's own ArcGIS org at adfg.maps.arcgis.com — which the licence text itself names as the current access point. Recorded as the sharing-REST item URL rather than as prose: a URL field held a sentence, and the source-URL checker caught it on its first run by failing to parse it."
       },
       "theTermsAlsoForbidTheUseHuntMakes": {
         "statedAs": "Not to be used with GPS to determine physical boundaries.",
@@ -578,6 +579,18 @@
       },
       "discovery": {
         "howFound": "Owner NJDEPBGIS. The zones are on NJDEP's ArcGIS Online org QWdNfRs7lkPq4g4Q; the 632-unit grid is on the agency's own host mapsdep.nj.gov, whose service copyrightText is the bare string 'NJDEP' — the New Mexico, Nevada and Pennsylvania pattern where the service states nothing and the portal item states everything."
+      },
+      "rulesReachability": {
+        "state": "TRANSPORT_BLOCKED",
+        "finding": "dep.nj.gov refuses this reader with HTTP 403 on the hunting page AND on the site root — 851 bytes each, the signature of a block page rather than content. Found by the source-URL checker rather than by a person looking: the URL had been sitting in the registry unverified.",
+        "evidence": {
+          "huntingPage": "https://dep.nj.gov/njfw/hunting/ — HTTP 403, 851 bytes",
+          "siteRoot": "https://dep.nj.gov/ — HTTP 403, 851 bytes, so it is the host and not one path",
+          "positiveControlOnNewJerseysOwnGis": "https://mapsdep.nj.gov/arcgis/rest/services/Features/Grids/MapServer?f=json — HTTP 200, 4,950 bytes. NJDEP's GIS host answers; its rules host does not."
+        },
+        "whyNotWorkedAround": "A 403 is the publisher's access control, and defeating it is not available to North Ground.",
+        "whatWouldUnblockIt": "A path dep.nj.gov permits. New Jersey's licence is already an express refusal, so this changes nothing about serving its geometry — it changes whether §45's source-change detection can run at all.",
+        "notTheSameAsLicenceBlocked": "New Jersey is BOTH, and the two are independent: its published terms refuse redistribution, and separately its rules host refuses the reader. Resolving either leaves the other standing."
       }
     },
     {
@@ -974,6 +987,13 @@
         "controlForTheAbsence": "Eleven separate reads across three services, all empty, by a method that returned full licence text elsewhere in the same sweep.",
         "whatWouldUnblockIt": "MDWFP stating terms.",
         "whyItsOwnStateAndNotReachability": "Every service answered 200 and resolves points live. Nothing is unreachable; nothing is stated."
+      },
+      "rulesHostTlsProblem": {
+        "state": "INCOMPLETE_CERTIFICATE_CHAIN",
+        "finding": "mdwfp.com does not serve its intermediate certificate. Node's fetch rejects it with \"unable to verify the first certificate\"; curl and browsers accept it — the same URL returns HTTP 200 with 268,866 bytes to curl, over both HTTP/2 and HTTP/1.1, with ssl_verify_result 0.",
+        "whyItIsNotRecordedAsABLOCKER": "Because it is not one, and recording it as one would have invented a blocker for a state whose site works. My own source-URL checker reported Mississippi UNREACHABLE on its first run, because `fetch` describes every transport failure as the same useless string, \"fetch failed\". Unwrapping error.cause is what distinguished an incomplete chain from a refusal. The checker now classifies the cause and says in its output that a TLS finding must be confirmed with a second client before anything is recorded.",
+        "howItDiffersFromArizona": "Arizona is TRANSPORT_BLOCKED for an EXPIRED certificate — expired since 2022, which no client should accept. An incomplete chain is a weaker and far more common misconfiguration: the certificate is valid and the server simply omits a link, so most clients reconstruct it and succeed. Treating the two alike would overstate Mississippi and understate Arizona.",
+        "consequenceForIngestion": "Any North Ground fetcher built on Node's fetch will fail against mdwfp.com and must either supply the intermediate or use a client that completes the chain. That is an implementation note, not a coverage limit, and Mississippi's real position is unchanged: servable geography, unstated terms."
       }
     },
     {
@@ -1106,6 +1126,18 @@
         "redistribution": "PERMITTED",
         "attribution": "Nebraska Game and Parks Commission",
         "note": "AN EXPRESS GRANT OF BOTH USE AND REDISTRIBUTION: \"There are no restrictions on the use and distribution of data provided in this map or service.\" Present on 9 of the 14 hunting items, and independently on the agency's own open-data portal description. No \"may not redistribute\" anywhere read.\n\nTHREE THINGS THAT MUST NOT BE CARRIED ACROSS. (1) FIVE of the fourteen items state NOTHING — Additional Antlerless Deer 2025, Dark Goose 2026 updates, Duck & Coot Updates 2026, Nebraska Game Refuge Boundary, and the Antelope open-data view — with accessInformation empty or null too, so even attribution is unstated for them, and they do not inherit the grant. (2) The one layer-level copyrightText that is not empty attributes Nebraska Game Refuge Boundary to a DIFFERENT AGENCY, the Nebraska Department of Natural Resources, and must not be applied to the other thirteen. (3) Service-level copyrightText is an empty string on all 14 FeatureServers and 13 of 14 layers — reading the service alone would have found no terms whatever in a state that grants them expressly.\n\nONE CLAUSE A REVIEWER SHOULD READ CLOSELY, reported rather than resolved: \"suitability of this data for any use other than display\". Grammatically it sits inside the warranty disclaimer — they warrant nothing beyond display — and it is not phrased as a prohibition on other uses, while the same sentence-pair opens by saying there are no restrictions on use and distribution. Overstating it into a prohibition would be as wrong as ignoring it."
+      },
+      "rulesReachability": {
+        "state": "TRANSPORT_BLOCKED",
+        "finding": "outdoornebraska.gov refuses this reader with HTTP 403 on /hunt/ and on the site root, 4,555 bytes each. Nebraska is the case that shows why this must be recorded separately from the licence: its GIS terms are an EXPRESS GRANT — \"There are no restrictions on the use and distribution of data\" — while the host carrying its rules will not serve us.",
+        "evidence": {
+          "huntPage": "https://outdoornebraska.gov/hunt/ — HTTP 403, 4,555 bytes",
+          "siteRoot": "https://outdoornebraska.gov/ — HTTP 403, 4,555 bytes, identical size, so it is the host",
+          "positiveControlOnNebraskasOwnGisItem": "the NGPC open-data portal item — HTTP 200, 1,989 bytes. The grant is readable; the regulations are not."
+        },
+        "whyNotWorkedAround": "The 403 is the publisher's access control. Note the agency's privacy policy page WAS readable in a browser during discovery, so the block is not total — it refuses this class of reader.",
+        "whatWouldUnblockIt": "A path the host permits. This is the gap between Nebraska being licence-clear and Nebraska being answerable.",
+        "notTheSameAsLicenceBlocked": "Nebraska grants expressly and still cannot be read. A state can be licence-clear and rules-blocked at once, and collapsing the two would lose whichever is fixed second."
       }
     },
     {
@@ -1284,6 +1316,167 @@
         "notTheSameAsLicenceBlocked": "The GIS is on a different host (risegis.ri.gov) and answers 200; coordinate-to-zone resolution was verified live at Providence and Block Island."
       },
       "note": "RIDEM'S NAMED-AREA GEOGRAPHY IS PARTLY BROKEN AT THE SOURCE, which is a finding about the publisher rather than about us: the agency's own \"RIDEM Hunting Area Index\" web map points at two layers that no longer exist, and the Hunting_Atlas service self-describes as the 2013/2014 season. What remains, layer 20, is only 12 of 61 features on RIDEM land — the rest being a water utility, municipalities, The Nature Conservancy and federal refuges — so serving it as \"state hunting areas\" would be a false claim. It must be modelled by its Type field or not drawn."
+    },
+    {
+      "state": "VT",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Wildlife Management Unit, with \"subunit\" for the subdivided ones",
+        "service": "https://anrmaps.vermont.gov/arcgis/rest/services/.../MapServer/164",
+        "unitCount": 21,
+        "definedBy": "10 App. V.S.A. § 2b, \"Wildlife Management Units\"",
+        "theFeatureCountIsNotTheUnitCount": "They agree, checked rather than assumed: 21 features and 21 distinct BOUNDARY values — A, B, C, D1, D2, E1, E2, F1, F2, G, H, I, J1, J2, K, L, M, N, O, P, Q. The subdivided units are separate regulatory units, not cartographic splits, which is the same shape as Connecticut's 4A/4B.",
+        "threeGeographiesNotOne": "A Vermont coordinate does not resolve to a single unit: WMUs, waterfowl hunting zones and state game refuges are three distinct hunting geographies."
+      },
+      "licence": {
+        "statedAs": "CC BY-SA",
+        "sha256": "sha256:89a793b61b428d5fefdb2d008a09a86c877892e0e9c76ae3af5e924dc60c4dfb",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/5c9be3e39d9945a0bf1d58e1e812a554?f=json",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "COMMERCIAL_PERMITTED",
+        "redistribution": "PERMITTED",
+        "attribution": "VT ANR",
+        "note": "THE ENTIRE LICENCE IS TWO WORDS, and they are a grant: \"CC BY-SA\". No conditions paragraph, no prose, no prohibition. CC BY-SA affirmatively permits redistribution including commercially; its requirements are attribution and ShareAlike. SHARESHALIKE IS A REAL AND CONSEQUENTIAL CONDITION — an adaptation of the geometry must itself be licensed CC BY-SA — but it is a condition on the form of onward licensing, not a refusal, and it is not triggered by using the data to answer a question.\n\nTHE VERSION IS INFERRED, NOT WRITTEN. The Agency wrote only \"CC BY-SA\" with no version. ArcGIS Hub's structured field resolves it to Attribution-ShareAlike 4.0 International, so 4.0 comes from a machine field rather than from anything the Agency stated. Recorded as inferred.\n\nAND THE SERVICE SAYS LESS THAN NOTHING: layer 164's copyrightText is an empty string while the parent service root says \"VTANR GIS\" — an attribution, not a licence. Reading either would have concluded no terms."
+      },
+      "termsDifferPerDatasetInOneService": {
+        "finding": "THE SHARPEST CASE OF THIS FOUND ANYWHERE. Same host, same service, same account, same publication window, DIFFERENT LICENCE STATE per dataset. Waterfowl Hunting Zones VT: layer copyrightText empty, portal item licenseInfo null, accessInformation null, structuredLicense type \"none\". State Game Refuges and Controlled Hunting Areas: the same. The WMU layer's CC BY-SA does NOT extend to either of them.",
+        "andEvenWithinOneDatasetFamily": "ANR Lands (Parcel) carries CC BY-SA plus an express condition — \"Secondary distribution must be accompanied by this documentation. Credit should always be given to the data source when this data is transferred or printed\" — which presupposes secondary distribution is permitted and is not a prohibition. A sibling item titled \"ANR Land Dataset (Parcel)\" carries licenseInfo \"\". So the instruments disagree inside one dataset family.",
+        "consequence": "Vermont cannot be classified once. It must be recorded per layer, as Indiana and Nebraska must."
+      },
+      "theTermsPageThatReturns200AndDoesNotExist": {
+        "finding": "geodata.vermont.gov/pages/terms-of-use returns HTTP 200 AND THERE IS NO SUCH PAGE. The 200 is the ArcGIS Hub client shell, which answers 200 for any unknown slug. This is the output that would otherwise be reported as a terms page.",
+        "provenTwoWays": "(1) The site item's own page registry lists 12 pages and terms-of-use is not among them. (2) POSITIVE CONTROL BY BYTE COUNT: a page that IS in the registry, /pages/changelog, returned 65,865 bytes against the nonexistent page's 65,868 — the identical shell.",
+        "andOnePageIsGenuinelyUnread": "anr.vermont.gov/maps/gis-data returned HTTP 403 to this reader while anr.vermont.gov/maps returned 200 on the same host by the same method, so the 403 is page-specific. Its contents are UNKNOWN and may contain terms. Three further guessed URLs returned 404 and are recorded so they are never reported as sources."
+      }
+    },
+    {
+      "state": "TX",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "COUNTY — TPWD's own regulation index is literally \"Seasons by County\"",
+        "service": "https://services1.arcgis.com/.../TXCountiesWLabels/FeatureServer/0",
+        "unitCount": 254,
+        "definedBy": "TPWD's per-county regulation pages, one per county, at /regulations/outdoor-annual/regs/counties/<slug>",
+        "theFeatureCountIsNotTheUnitCount": "Here they agree and it is the one Texas layer where they do: the selector on TPWD's county index contains exactly 254 options, Texas has 254 counties, and TPWD's county layer returns 254 features with 254 distinct CNTY_NM. Species zones compose ON TOP of the county and none is an independent published unit system: deer North/South is assigned PER COUNTY on the county page, dove is 3 zones = 3 features, duck is 3 units = 3 features defined by highway lines, goose is 2 = 2.",
+        "theCountyGeometryBELONGSToAnotherAgency": "TX_Counties_Labeled's licenseInfo is NOT TPWD's and must never be reported as such — it is the Texas Department of Transportation's: \"Copyright 2014. Texas Department of Transportation. This data was produced for internal use within the Texas Department of Transportation and made available to the public for informational purposes only... It is intended for internal use only.\" Counties are Texas's regulatory unit, so the geometry North Ground would need has a different publisher with stricter terms than the wildlife agency's, and TPWD's terms do not reach it."
+      },
+      "licence": {
+        "statedAs": "© Copyright Texas Parks and Wildlife Department. No part of this work may be copied, reproduced, or translated in any form or medium without the prior written consent of Texas Parks Wildlife Department except where specifically noted. No portion of this work may be sold, either by itself or as part of larger work, without the express written permission of the TPWD. Commercial Use: To obtain permission to reproduce the information (text or graphics) contained on the TPWD Web site for any commercial purpose, submit the specifics of your request in writing to Communications Division — Web Services Team Leader, Texas Parks & Wildlife Department.",
+        "sha256": "sha256:07e844a8b9b6d27da5a56816bf7834881346b38647ff1ab6b4b07ef026a5e686",
+        "url": "https://tpwd.texas.gov/site/policies/copyright-policy",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "RESTRICTED",
+        "redistribution": "PROHIBITED",
+        "attribution": "Texas Parks and Wildlife Department",
+        "note": "THE AGENCY'S OWN COPYRIGHT POLICY IS A RESTRICTION, not a condition, and it is the governing instrument. Prior written consent is the default; selling any portion requires express written permission; commercial reproduction requires a written request. North Ground is a commercial product, so that reaches us directly.\n\n\"EXCEPT WHERE SPECIFICALLY NOTED\" IS THE OPERATIVE CLAUSE, and exactly one dataset is noted: MuleDeer_ManagementUnites_2019 adds \"These data are in the public domain\" — the ONLY Texas hunting dataset with an affirmative reuse permission. One other adds \"This data is not intended to be used for profit\", which is a statement of intent rather than an express prohibition; it is reported as the words and not converted.\n\nWHAT THIS DOES AND DOES NOT PREVENT, because overstating it would be as wrong as ignoring it. It prevents reproducing TPWD's prose and zone-map graphics verbatim and prevents selling its work, so it prevents storing and redistributing TPWD geometry inside a commercial product without consent. It does NOT prevent reading the rules and encoding the legal facts as structured data in North Ground's own words with the source cited (§8), and it does not prevent live reads of TPWD's public endpoints under the standing US live-service-only decision.\n\nThe service level would have misled in the other direction: copyrightText is an empty string on six services and a bare attribution on the rest, so stopping there would have reported Texas as stating no terms."
+      }
+    },
+    {
+      "state": "VA",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "LOCALITY — a county or an independent city. Virginia has no WMU, GMU or zone system",
+        "service": "https://services.dwr.virginia.gov/arcgis/rest/services/Public/VA_Counties_Jurisdictions/FeatureServer/0",
+        "unitCount": 133,
+        "definedBy": "4VAC15-90-10, which opens \"It shall be lawful to hunt deer in the following localities, including the cities and towns therein, during the following seasons\" and then enumerates locality by locality; 4VAC15-240 does the same for turkey, its sections titled \"Open season; certain counties and areas\".",
+        "theFeatureCountIsNotTheUnitCount": "133 localities, classified from the layer's own NAMELSAD field as 95 \"… County\" plus 38 \"… City\", and independently corroborated by 133 distinct STCOFIPS values. Virginia's independent cities are units in their own right, so a 95-county model would silently drop 38 of them.",
+        "theOneNamedZoneIsComposable": "4VAC15-20-10 B: \"‘Elk Management Zone’ means the Counties of (i) Buchanan, (ii) Dickenson, and (iii) Wise, and the cities and towns therein.\" All three resolve in the DWR layer as single-part features (FIPS 51027, 51051, 51195), so the zone is composable from county polygons without inventing geography — the same shape as Delaware's CWD zone."
+      },
+      "licence": {
+        "statedAs": "By accepting data provided by the Virginia Department of Wildlife Resources (DWR), you must agree to the following conditions of release and acknowledge the following disclaimers issued by DWR: A. Conditions of Release — Data are available by permission of the Virginia Department of Wildlife Resources. Use of data in publications, either digital or hardcopy, must be cited as follows: <dataset name>. <date acquired>. Virginia Department of Wildlife Resources.",
+        "sha256": "sha256:93458f5b0c1dff2fa46c710426af4951bf5cc85fbee78ee99e7cf05154ae59bf",
+        "url": "https://dwr.virginia.gov/gis/gis-data-disclaimer/",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "UNRESOLVED",
+        "redistribution": "UNRESOLVED",
+        "attribution": "Virginia Department of Wildlife Resources",
+        "note": "NOT A REFUSAL, AND NOT A GRANT, AND THE AMBIGUITY IS IN ONE SENTENCE. The citation requirement is a CONDITION, and it is phrased for \"publications, either digital or hardcopy\", which presupposes downstream publication is contemplated. The liability and accuracy paragraphs are disclaimers. There is no express \"may not redistribute\" in any of the three instruments, and one was looked for.\n\nTHE UNRESOLVED CLAUSE: \"Data are available by permission of the Virginia Department of Wildlife Resources.\" That supports two readings — these data are released BY DWR's permission subject to the citation condition, or you must OBTAIN DWR's permission — and nothing on the page disambiguates it. It is not resolved here and it is not reported as a prohibition. One fact bears on it without settling it: the live REST services are served publicly with no gate, every endpoint returning 200 unauthenticated, while the click-through \"I Agree\" sits on the separate data-download path.\n\nVIRGINIA IS THE STATE WHERE THE PORTAL ITEM DOES NOT RESCUE THE SERVICE. Six DWR items were read individually and licenseInfo is null or empty in every case; the DWR Hub site's own config carries licenseInfo null and its footer \"Terms of Use\" link is an unfilled placeholder, href=\"#\"."
+      },
+      "theCountyGeometryBelongsToAnotherAgency": {
+        "finding": "The locality polygons are VGIN's data redistributed by DWR — DWR's own layer copyrightText says so: \"Virginia Geographic Information Network (VGIN), and the Census and Localities and Towns submitting data to the project\". VGIN's own terms, read separately: the boundaries \"are intended for cartographic use and spatial analysis only, and not for use as legal descriptions or property surveys\", plus a warranty disclaimer. No attribution condition and no redistribution restriction — a use-limitation caveat, not a refusal.",
+        "whyItIsRecordedSeparately": "Two publishers, two instruments, and the geometry North Ground would need is the second one's. Borrowing DWR's terms onto VGIN's data, or the reverse, would misname the authority."
+      }
+    },
+    {
+      "state": "WV",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "COUNTY",
+        "service": "https://services.arcgis.com/.../WildlifeManagementAreas (WVDNR)",
+        "unitCount": 55,
+        "definedBy": "West Virginia Code Chapter 20, with seasons and open counties published annually by WVDNR in the regulations summary — which itself states \"This pamphlet is a summary… It is for informational purposes only and subject to change… the West Virginia Code and the West Virginia Code of State Rules are, at all times, the controlling laws\". No Code of State Rules text was established: the CSR index loads but is a postback form, and a guessed DocId returns HTTP 200 carrying a scanned image-only PDF, so that endpoint cannot confirm a document's identity and no CSR document is cited.",
+        "theFeatureCountIsNotTheUnitCount": "55 features and 55 distinct Name values, matching West Virginia's 55 counties.",
+        "countyIsNotTheWholeGeography": "Sub-county splits exist and DIFFER PER SPECIES. Deer has four published split counties with division-line descriptions — Fayette, Greenbrier, Kanawha and Mineral. Bear has six counties with inline qualifiers: Barbour \"West of Route 92 and Route 250…\", Braxton \"West of I-79\", Clay \"North of Elk River\", Mineral \"East of New Creek\", Monroe \"West of Route 219\", Upshur \"West of Route 20\".\n\nAND MINERAL COUNTY IS THE TRAP: its BEAR qualifier (\"East of New Creek\") is described differently from its DEER division line (U.S. 220S to SR 972, SR 972S to U.S. 50, U.S. 50W to SR 93, SR 93S to the Grant County line). It was NOT established that these are the same line, so one split-county geometry must not be assumed to serve both species.\n\nThe CWD Containment Area is a second county-composed geography, and it has TWO DIFFERENT COUNTY SETS in one named area: eight counties for the baiting and feeding restriction, and only seven for the carcass-transport restriction, with Pendleton excluded from the latter."
+      },
+      "licence": {
+        "statedAs": "This dataset provides information on wildlife management areas for general reference and planning purposes. These boundaries are not survey-grade and should not be regarded as exact property boundaries. Users should always ensure they have the most up-to-date data. While efforts have been made to ensure accuracy, completeness, and reliability, users should exercise caution and independent judgment when interpreting and utilizing the data. Crediting the West Virginia Division of Natural Resources when using this dataset in projects or analyses is appreciated. WVDNR does not guarantee the accuracy, completeness, or currency of the data. WVDNR is not liable for any damages or losses resulting from the use or misuse of this dataset. By using this dataset, you acknowlege and accept these terms.",
+        "sha256": "sha256:b49a835358be5b12aec6340e338500f05bdf2f556e5d642f45031f13cdca7537",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/e4a17f266a514f6d87f2458ba5b072ee?f=json",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "UNRESOLVED",
+        "redistribution": "UNRESOLVED",
+        "attribution": "West Virginia Division of Natural Resources, Wildlife Resources Section, GIS Unit",
+        "note": "NOT A REFUSAL. Every instrument is a warranty disclaimer, an accuracy or currency caveat, a fitness-for-legal-use limitation, or an attribution REQUEST — \"Crediting the West Virginia Division of Natural Resources… is appreciated\". Appreciated, not required, and that distinction is worth keeping: it is weaker than Florida's \"Please acknowledge\" and weaker still than a condition. No prohibition on redistribution, commercial use or derived products appears anywhere read.\n\nTHE DOCUMENTED VIEWS HAVE TERMS AND THE UNDOCUMENTED SERVICES HAVE NONE, and they must not be borrowed across: WildlifeManagementAreas, CWD_Containment_Area, WV_Counties and WV_Public_Lands each return licenseInfo as an empty string, while the curated view items carry the text above. And one sibling copy is not a licence at all — the DOT-hosted WMA copy's service-level copyrightText reads \"Questions or comments should be directed to Alicia R. Mein, Alicia.R.Mein@wv.gov of the WVDNR.\"\n\nThe CWD item carries something useful in its own right: \"If there are discrepancies between this layer and the WVDNR Hunting Regulations, the official regulations take precedence\" — the publisher stating the precedence rule itself, as Maine and Washington do."
+      }
+    },
+    {
+      "state": "SC",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "GAME ZONE (Game Zones 1–4)",
+        "service": "https://services.arcgis.com/acgZYxoN5Oj8pDLa/arcgis/rest/services/South_Carolina_Game_Zones/FeatureServer/0",
+        "unitCount": 4,
+        "definedBy": "S.C. Code § 50-1-60, \"Division of State into game zones\": \"For the purpose of protection and management of wildlife, the State is divided into four zones\". Its own history establishes currency: 2014 Act No. 227, SECTION 1, eff. 1 July 2015, whose Effect-of-Amendment note records that it \"substituted 'four zones' for 'six zones'; and deleted former paragraphs (5) and (6)\" — so the four-zone system is the one in force and the six-zone system is superseded.",
+        "theFeatureCountIsNotTheUnitCount": "4 = 4, checked rather than assumed, and unusually clean: a groupBy returns exactly four groups of one, with a coded-value domain named SCDNR_GameZone. No status field, no closures, no safety zones, no NOT MANAGED rows, no boundary segments — GameZone='1' returns ONE closed ring of 784 vertices. Per-zone extents are geographically correct. The statute's own composition closes the arithmetic: 15 + 15 + 13 whole counties = 43, plus the three split counties Oconee, Pickens and Greenville = 46 = South Carolina's county total.",
+        "theOutstandingParityCheck": "THE GAME ZONE 1/2 LINE IS NOT A COUNTY LINE — the statute describes it as the main line of the Norfolk Southern Railroad and S.C. Highway 183. The drawn geometry was NOT verified against that description, and that parity check is outstanding. Recording it as outstanding rather than as done is the point: every other check on this layer passed, which is exactly the situation in which an unrun check gets forgotten.",
+        "fourUnitSystemsAndOnlyOneCarriesTheSeasons": "R.123-40 organises WMA rules as Game Zone → a generic \"Other WMAs\" class, a generic US Forest Service class, and named exception areas — 74 entries across the four zones, of which 4 are the generic Other class and 2 the generic USFS class, so it is NOT a list of WMA properties. Category I and Category II Designated Waterfowl Areas and Public Dove Fields are third and fourth systems, the dove fields being \"all areas as published by the Department in the annual Laws and Regulations Guide\". Only the Game Zone is the unit the seasons are written in."
+      },
+      "licenceAbsent": {
+        "state": "NONE_STATED",
+        "finding": "No grant and no prohibition. The portal item's licenseInfo is a warranty disclaimer plus an indemnity plus an accuracy caveat, with no attribution requirement, no describe-your-changes condition and no express \"may not redistribute\". And the strongest permission language SCDNR actually publishes is an AVAILABILITY statement, not a licence: \"GIS data produced and maintained by SCDNR is available free of charge to the public in an effort to facilitate natural resource decision-making, analysis and education in South Carolina.\" Inflating that into an affirmative redistribution licence would be as wrong as collapsing the disclaimer into a prohibition.",
+        "whereLooked": [
+          "service and layer copyrightText on South_Carolina_Game_Zones — the empty string at both levels",
+          "the Public Lands service — also empty",
+          "portal item licenseInfo on the Game Zones item, the Public Lands Viewer item and the Public Lands hub-site item",
+          "the SCDNR Open Data group description, which PRESCRIBES that disclaimer org-wide",
+          "https://www.dnr.sc.gov/gis.html — the agency's own GIS page"
+        ],
+        "controlForTheAbsence": "Two controls. The identical disclaimer text appears on three separate items AND is prescribed org-wide by the SCDNR Open Data group description, which instructs publishers to \"Include the disclaimer below in the Terms of Use section\" — so it is a house disclaimer rather than a dataset term, and it is still reported per instrument rather than borrowed across datasets. Separately, two guessed policy URLs returned 404 against a positive control on the same host by the same method (dnr.sc.gov/maps.html, HTTP 200, 39,740 bytes).",
+        "whatWouldUnblockIt": "SCDNR stating reuse terms.",
+        "whyItsOwnStateAndNotReachability": "Every endpoint answered 200. One practical limit is technical rather than legal, and worth recording: the Game Zones service exposes capabilities \"Query\" only, with no Extract, while the Public Lands service exposes \"Query,Extract\".",
+        "theGuideCarriesNoNotice": "The 130-page annual regulations guide contained zero hits for \"copyright\", \"©\", \"All rights reserved\" and any reproduction-permission string across its extracted text. Reported as OBSERVED, not as an absence of copyright in law: a notice may exist inside page artwork the extractor did not reach."
+      }
+    },
+    {
+      "state": "TN",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Deer Management Unit (Units 1–6), plus Turkey Management Units, Bear Hunt Zones and Elk Hunt Zones — four species-specific systems",
+        "service": "https://services.arcgis.com/.../DeerMgmtUnitCounties/FeatureServer/0",
+        "unitCount": 6,
+        "definedBy": "TFWC Proclamation 26-11 §I.A: \"For the purposes of these hunting regulations, the State of Tennessee is hereby divided into six (6) deer management units\"; §IV.B does the same for five turkey units and §II.A for six bear hunt zones.",
+        "theFeatureCountIsNotTheUnitCount": "6 units against 95 FEATURES — one polygon per Tennessee county. PARITY IS CERTIFIED, not assumed: all six county lists were parsed from Proclamation 26-11 and compared to the layer's DMU field — 21/19/18/14/9/14 = 95, every county's unit assignment identical, zero differences in either direction. Turkey likewise: five units, five features, and the parsed lists form an exact partition of all 95 counties (7/12/35/24/17) with no county missing or duplicated.",
+        "bearHasNoGeometryAndItsDefinitionsAreSubCounty": "Six bear hunt zones are designated and NO boundary layer exists, and the definitions are finer than a county: \"Cocke (North of I-40)\", \"Jefferson (East of Hwy 411)\", \"Anderson (West of I-75 and North of Old Lake City Hwy and North of Dutch Valley Road)\", \"Overton (East of Hwy 111)\". A county resolver would answer confidently and wrongly inside every one."
+      },
+      "licenceAbsent": {
+        "state": "NONE_STATED",
+        "finding": "No licence on any layer North Ground would serve, and no prohibition either. The deer-unit dataset is silent at all four instruments: service copyrightText empty, layer copyrightText empty, portal item licenseInfo ABSENT, and the ArcGIS Hub dataset record reporting license \"none\" with structuredLicense type \"none\". Other layers carry warranty and liability disclaimers, which are not refusals, or bare attributions — including one that is a staff member's personal name.",
+        "whereLooked": [
+          "DeerMgmtUnitCounties service copyrightText, layer-0 copyrightText, portal item licenseInfo and the Hub dataset record",
+          "HuntingAllowed, QuotaHuntsOnly and SafetyZoneAreas — service, layer and item",
+          "Hunting_Allowed — where the service field is empty and the LAYER field is populated",
+          "TurkeyMgmtUnits, ElkHuntZones_2024 and BearReserves"
+        ],
+        "controlForTheAbsence": "A url-scoped item search for BearReserves returned HTTP 200 with total=0, i.e. no portal item exists and there is no item-level instrument to read — and the control is that the identical search shape returned total=1 for TurkeyMgmtUnits, ElkHuntZones_2024 and DeerMgmtUnitCounties. So the zero is a true zero.",
+        "whatWouldUnblockIt": "TWRA stating terms for its datasets, or confirming that the Hub site's CC-BY-SA reaches them.",
+        "whyItsOwnStateAndNotReachability": "Every service answered 200 and parity was certified against the proclamation."
+      },
+      "theHubSiteLicenceIsNotTheDatasetsLicence": {
+        "statedAs": "CC-BY-SA",
+        "finding": "The portal item for the \"Tennessee Wildlife Resources Agency Data HUB\" carries licenseInfo \"CC-BY-SA\" — and that is the licence field of the HUB SITE APPLICATION ITEM, not of any dataset. Attributing it to the deer-unit layer would be reporting one item's terms as another's, which is the same error as Kansas's Census boilerplate in the opposite direction: there the inherited text was too permissive, here the permissive text is real but attached to the wrong object.",
+        "whatItIsEvidenceOf": "An intent to license the Hub's contents openly, and it is the only positive licence string found for Tennessee. Whether it reaches a given dataset is UNRESOLVED.",
+        "andOneLicenceFieldIsACurrencyWarning": "ElkHuntZones_2024's licenseInfo is not a licence at all: \"To be reviewed each year after season-setting commission meeting is held; may be altered prior to commission meeting to reflect changes being requested of the commission by TWRA staff.\" That says the layer may depict changes only REQUESTED of the Commission and not yet adopted — so it is a blocker for serving elk zones AS LAW, and a blocker for nothing else. It is the same shape as Michigan's rescinded units: the publisher telling you its own layer is not the instrument."
+      }
     }
   ],
   "silenceIsNotRefusal": "Two different states of the world are both recorded as blocked, and they are undone differently. SILENCE (UNRESOLVED) means no grant is stated either way: the publisher may simply never have been asked, so a person must ask it. A REFUSAL (RESTRICTED, or redistribution PROHIBITED) means the publisher has answered, and the answer is no: reading its terms more carefully will not change them, and only a written exception from it would. Reporting the two identically would make a refusal look like an errand.",

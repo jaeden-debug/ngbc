@@ -55,7 +55,7 @@ test("all 50 states and D.C. are reported, and every one is counted once per lan
   /* Arizona joined when its service was probed and found to present a
      certificate expired since 2022. The list grows as states gain evidence of
      ANY kind, which includes evidence that a source cannot be used. */
-  assert.deepEqual(statesWithEvidence(), ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SD", "UT", "WA", "WI", "WY"]);
+  assert.deepEqual(statesWithEvidence(), ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"]);
   assert.equal(summary.states.length, 51);
   assert.equal(new Set(summary.states.map((entry) => entry.code)).size, 51);
   for (const lane of [summary.totals.map, summary.totals.regulations, summary.totals.intelligence]) {
@@ -65,7 +65,7 @@ test("all 50 states and D.C. are reported, and every one is counted once per lan
      because it refuses redistribution outright; Oregon and Washington are,
      because their terms are unresolved. A state is on this list when its
      geometry cannot be served, never merely because somebody read its page. */
-  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["AK", "AL", "AR", "CO", "CT", "DE", "GA", "IA", "IL", "IN", "KS", "LA", "MA", "MD", "ME", "MN", "MS", "MT", "ND", "NH", "NJ", "NM", "NV", "NY", "OH", "OR", "PA", "RI", "SD", "UT", "WA", "WI", "WY"]);
+  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["AK", "AL", "AR", "CO", "CT", "DE", "GA", "IA", "IL", "IN", "KS", "LA", "MA", "MD", "ME", "MN", "MS", "MT", "ND", "NH", "NJ", "NM", "NV", "NY", "OH", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "WA", "WI", "WV", "WY"]);
   assert.ok(!summary.licenceBlocked.some((entry) => entry.code === "HI"), "a permissive licence is not a blocker");
   /* Served is counted from the layers themselves, never asserted as a
      constant: a state counts as served exactly when its layers say so. */
@@ -145,7 +145,24 @@ test("a state whose publisher refuses us is blocked by name, not left looking un
     // "UNAVAILABLE": we know what stands in the way, in the publisher's words.
     assert.equal(state.map.status, "LICENCE_BLOCKED", `${code} is blocked, not unexplored`);
     assert.match(state.map.detail!, new RegExp(finding.licence!.statedAs.slice(0, 40).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
-    assert.equal(state.regulations.status, "UNAVAILABLE", "no rules work is spent on a state we may not draw");
+    /*
+     * CORRECTED 2026-09-30, on the owner's amendment to §44.
+     *
+     * This asserted `regulations.status === "UNAVAILABLE"` — "no rules work is
+     * spent on a state we may not draw". That was the collapse §44 now forbids:
+     * it let a GEOMETRY licence question block REGULATORY facts, so a state whose
+     * polygons we may not store was also reported as having no readable rules.
+     * Reading, deriving and archiving are three different rights.
+     *
+     * What must STILL hold, and is asserted instead: a state we may not draw
+     * cannot be SERVING rules, because serving them means answering through that
+     * geometry. The engine already makes this structural — `rulesServing` reads
+     * the registered layers and a blocked state has none — and it is pinned here
+     * so the two facts stay separable.
+     */
+    assert.notEqual(state.regulations.status, "SERVED",
+      `${code}: rules cannot be served through geometry we may not draw`);
+    assert.equal(state.regulations.rulesServing, false, `${code}: no layer is serving rules`);
   }
 });
 
@@ -510,4 +527,146 @@ test("a conflict invisible at the count level is still a conflict", () => {
   assert.match(georgia.lawVersusGis!.doNotServe, /do not discard the other 158/);
   /* Georgia's administrative DMU field must never be served as a hunting unit. */
   assert.match(georgia.geography.administrativeFieldsThatMustNeverBeServed!, /ZERO TIMES/);
+});
+
+test("every one of the 51 jurisdictions is accounted for, by a finding or by a layer", () => {
+  /* The milestone this programme was aimed at, and it is stated as a derivation
+     rather than as a number somebody typed: a jurisdiction is accounted for when
+     it has a licence FINDING, or when it has a registered LAYER whose own licence
+     governs instead. Colorado, Idaho, Montana and Wyoming are the second kind —
+     the first wave, whose terms live on the layer via licencePermitsServing. */
+  const summary = unitedStatesCertification();
+  assert.equal(summary.states.length, 51);
+  const unaccounted = summary.states.filter(
+    (entry) => !mapLicenceFindingFor(entry.code) && entry.map.layers.length === 0);
+  assert.deepEqual(unaccounted.map((entry) => entry.code), [],
+    "a jurisdiction with neither a finding nor a layer has not been looked at");
+  /* And the four with layers really do have them, so the clause above is not a
+     loophole that would swallow an unexamined state. */
+  for (const code of ["CO", "ID", "MT", "WY"]) {
+    assert.ok(certificationFor(code).map.layers.length > 0, `${code} is accounted for by its layer`);
+  }
+});
+
+test("one service can hold two different licence states, and neither borrows from the other", () => {
+  /* VERMONT. Its Wildlife Management Units carry CC BY-SA — the whole licence is
+     those two words, with no conditions paragraph and no prohibition. Its
+     Waterfowl Hunting Zones and State Game Refuges, on the same host, in the same
+     service, under the same account, in the same publication window, state
+     NOTHING: layer copyrightText empty, item licenseInfo null, structuredLicense
+     type "none".
+
+     Borrowing the granted dataset's terms onto the silent ones would be a false
+     claim in the permissive direction, which is the direction that gets data
+     served. */
+  const vermont = mapLicenceFindingFor("VT")!;
+  assert.equal(vermont.licence!.permittedUse, "COMMERCIAL_PERMITTED");
+  assert.match(vermont.termsDifferPerDatasetInOneService!.finding, /DIFFERENT LICENCE STATE per dataset/);
+  assert.match(vermont.termsDifferPerDatasetInOneService!.consequence, /cannot be classified once/);
+  /* The version is inferred from a machine field, not written by the Agency —
+     recorded, because "CC BY-SA 4.0" would be a claim nobody made. */
+  assert.match(vermont.licence!.note!, /THE VERSION IS INFERRED, NOT WRITTEN/);
+});
+
+test("a terms page can return 200 and not exist", () => {
+  /* ArcGIS Hub answers HTTP 200 for any unknown slug, so a plausible terms URL
+     "works". Vermont's was caught two ways: the site's own page registry lists 12
+     pages and terms-of-use is not among them, and a byte-count control against a
+     page that IS registered returned 65,865 against the nonexistent page's
+     65,868 — the identical client shell.
+
+     Pinned because a 200 is exactly what would otherwise be recorded as a source. */
+  const caught = mapLicenceFindingFor("VT")!.theTermsPageThatReturns200AndDoesNotExist!;
+  assert.match(caught.finding, /returns HTTP 200 AND THERE IS NO SUCH PAGE/);
+  assert.match(caught.provenTwoWays, /POSITIVE CONTROL BY BYTE COUNT/);
+  /* And the page that genuinely could not be read is kept separate from the one
+     that does not exist — a 403 is not a 404. */
+  assert.match(caught.andOnePageIsGenuinelyUnread!, /403/);
+});
+
+test("a permissive licence attached to the wrong object is not that dataset's licence", () => {
+  /* TENNESSEE, and it is Kansas's error in the mirror. Kansas carried inherited
+     Census boilerplate that was too permissive for the wrong reason; Tennessee's
+     "CC-BY-SA" is real and attached to the Hub SITE APPLICATION item, not to any
+     dataset. Both would have produced a grant that nobody issued for the thing
+     being served. */
+  const tennessee = mapLicenceFindingFor("TN")!;
+  assert.ok(tennessee.licenceAbsent, "the datasets themselves state nothing");
+  assert.equal(tennessee.theHubSiteLicenceIsNotTheDatasetsLicence!.statedAs, "CC-BY-SA");
+  assert.match(tennessee.theHubSiteLicenceIsNotTheDatasetsLicence!.finding, /HUB SITE APPLICATION ITEM/);
+  /* And one Tennessee licence field is not a licence at all: it says the layer
+     may show changes only REQUESTED of the Commission. That is the publisher
+     telling you its own layer is not the instrument — Michigan's shape exactly. */
+  assert.match(tennessee.theHubSiteLicenceIsNotTheDatasetsLicence!.andOneLicenceFieldIsACurrencyWarning!,
+    /requested of the commission/i);
+});
+
+test("an outstanding parity check is recorded as outstanding", () => {
+  /* SOUTH CAROLINA passed every check run against it: 4 units, 4 features, a
+     coded-value domain, one closed ring per zone, geographically correct extents,
+     and the statute's own county arithmetic closing at 46. Which is precisely the
+     situation where the check nobody ran gets forgotten — and the Game Zone 1/2
+     line is not a county line at all. The statute describes it as the main line
+     of the Norfolk Southern Railroad and S.C. Highway 183, and the drawn geometry
+     was never verified against that description. */
+  const sc = mapLicenceFindingFor("SC")!;
+  assert.match(sc.geography.theOutstandingParityCheck!, /NOT verified/);
+  assert.match(sc.geography.theOutstandingParityCheck!, /Norfolk Southern Railroad/);
+  /* And its strongest permission language is an availability statement, which is
+     not a licence — inflating it would be the permissive error. */
+  assert.match(sc.licenceAbsent!.finding, /AVAILABILITY statement, not a licence/);
+});
+
+test("a state whose geometry is blocked may still carry certified regulatory facts", () => {
+  /* The capability the amendment creates, asserted rather than assumed.
+     §44: reading, deriving and archiving are three different rights, and "missing
+     copyright labels never erase independently established regulatory facts".
+
+     Eight states — AL, CT, IA, IL, LA, MA, MS, UT — state no reuse terms at all.
+     Their GEOMETRY stays under licence review, because storing a polygon dataset
+     IS archival and §44 says so explicitly. Their RULES do not.
+
+     This test does not yet find a state with both, because none has certified
+     rules under the new model — so it asserts the SHAPE: nothing in the
+     certification derives regulations from the map lane, which is what made the
+     old collapse possible. If a future change re-couples them, the derivation
+     below stops holding. */
+  const summary = unitedStatesCertification();
+  const blocked = summary.states.filter((entry) => entry.map.status === "LICENCE_BLOCKED");
+  assert.ok(blocked.length > 20, `expected most states blocked on geometry, got ${blocked.length}`);
+
+  /* Regulations are a function of bundles and cases alone, and Montana shows the
+     two lanes are already independent in the engine: its map is LICENCE_BLOCKED
+     and its 28 rules are CERTIFIED.
+
+     BUT MONTANA IS NOT EVIDENCE THAT THE OLD ASSERTION FORBADE THIS, and an
+     earlier draft of this comment claimed it was. Montana has no licence FINDING
+     at all — it is one of the four first-wave states (CO, ID, MT, WY) blocked by
+     its own registered layer's licence — so the corrected assertion's loop, which
+     runs over states WITH findings, never reached it. Every state that loop did
+     reach (Maine, Minnesota, Wisconsin) has 0 rules, so the old assertion passed
+     vacuously and the collapse was latent rather than live. It would have fired
+     the first time anyone certified rules for a state whose publisher refuses its
+     geometry, which is exactly what §44 now invites. */
+  const montana = certificationFor("MT");
+  assert.equal(montana.map.status, "LICENCE_BLOCKED", "Montana's geometry is licence-blocked");
+  assert.equal(montana.regulations.status, "CERTIFIED", "and its rules are certified anyway");
+  assert.ok(montana.regulations.rules > 0);
+  assert.equal(montana.regulations.rulesServing, false, "certified is not served: nothing answers through the blocked layer");
+  assert.equal(mapLicenceFindingFor("MT"), undefined, "and Montana is blocked by its layer, not by a finding");
+
+  /* The states the old assertion DID reach, so the vacuity is recorded as a
+     measurement rather than as a guess. */
+  for (const code of ["ME", "MN", "WI"]) {
+    assert.ok(mapLicenceFindingFor(code)?.licence, `${code} has a licence finding, so the old loop reached it`);
+    assert.equal(certificationFor(code).regulations.rules, 0, `${code} has no rules, which is why the old assertion passed`);
+  }
+
+  /* And the eight terms-unstated states are still blocked on the MAP, because
+     §44 does not unblock geometry. Asserting this is what keeps the ruling from
+     being over-applied. */
+  for (const code of ["AL", "CT", "IA", "IL", "LA", "MA", "MS", "UT"]) {
+    assert.equal(certificationFor(code).map.status, "LICENCE_BLOCKED",
+      `${code}: unstated terms still leave geometry under licence review`);
+  }
 });

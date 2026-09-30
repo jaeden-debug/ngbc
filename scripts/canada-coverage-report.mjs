@@ -33,6 +33,29 @@ function render(report) {
     lines.push(`         ${milestone.detail}`);
   }
   lines.push("");
+  /*
+   * The zero-rule jurisdictions, named.
+   *
+   * Spatial and regulatory coverage are different capabilities, and the failure
+   * this block exists to prevent is reading "11 of 11" off the spatial line and
+   * calling Canada covered. A hunter in a jurisdiction with drawn zones and no
+   * certified rules gets a correctly named zone and no season — which is honest,
+   * and is not coverage. Naming them costs four lines and removes the only way
+   * the aggregate can be misread.
+   */
+  const drawnButUnanswerable = report.jurisdictions.filter(
+    (j) => j.scope?.state !== "OUT_OF_SCOPE" && j.spatial.parityCertified && j.regulatory.rules === 0,
+  );
+  if (drawnButUnanswerable.length) {
+    lines.push("ZONES DRAWN, NO CERTIFIED RULES");
+    lines.push("-".repeat(78));
+    lines.push(
+      `  ${drawnButUnanswerable.length} jurisdiction${drawnButUnanswerable.length === 1 ? "" : "s"} ` +
+      "can be reached on the map and cannot answer a season:",
+    );
+    for (const j of drawnButUnanswerable) lines.push(`    ${j.code.padEnd(8)} ${j.nameEn}`);
+    lines.push("");
+  }
   lines.push("BY JURISDICTION");
   lines.push("-".repeat(78));
   lines.push(

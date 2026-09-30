@@ -32,6 +32,56 @@
       "surveyedAndNoneFound": 19560
     },
     {
+      "speciesId": "species:american-coot",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-american-coot",
+      "artifactPath": "content/intelligence/surfaces/american-coot.json",
+      "artifactHash": "sha256:0cd6f99cfdcdd237a75768bc09294989e7ad05a56d5e573c1560e3fc9d23efc5",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 503,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 12067
+    },
+    {
+      "speciesId": "species:american-crow",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-american-crow",
+      "artifactPath": "content/intelligence/surfaces/american-crow.json",
+      "artifactHash": "sha256:6cd9f778c95734dce0a89921e4a52e4f894349b483ec24124217eacff06f2df1",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 3355,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 2556
+    },
+    {
       "speciesId": "species:american-wigeon",
       "surfaceKind": "MODELLED_RASTER",
       "artifactId": "surface:bbs-american-wigeon",
@@ -86,6 +136,31 @@
       "sitesDetected": 116,
       "supportedCells": 22873,
       "surveyedAndNoneFound": 18694
+    },
+    {
+      "speciesId": "species:band-tailed-pigeon",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-band-tailed-pigeon",
+      "artifactPath": "content/intelligence/surfaces/band-tailed-pigeon.json",
+      "artifactHash": "sha256:6c1feb7a33bb85f72e7dda1f4fa9b2d3dc70a5064709b421bec2e8c176402599",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 198,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 20152
     },
     {
       "speciesId": "species:barrows-goldeneye",
@@ -172,6 +247,31 @@
       "surveyedAndNoneFound": 16688
     },
     {
+      "speciesId": "species:california-quail",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-california-quail",
+      "artifactPath": "content/intelligence/surfaces/california-quail.json",
+      "artifactHash": "sha256:718105fd73d15a77d0336ec6bc7b0a3bed81ade4cd15576c23320109d0b81873",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 305,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 20011
+    },
+    {
       "speciesId": "species:canada-goose",
       "surfaceKind": "MODELLED_RASTER",
       "artifactId": "surface:bbs-canada-goose",
@@ -228,6 +328,81 @@
       "surveyedAndNoneFound": 18244
     },
     {
+      "speciesId": "species:chukar",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-chukar",
+      "artifactPath": "content/intelligence/surfaces/chukar.json",
+      "artifactHash": "sha256:5496e5ecf3f8a61b2db9c8b98d7e01660b97f1f6e5727d36da2245ea780735dd",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 112,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 20401
+    },
+    {
+      "speciesId": "species:cinnamon-teal",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-cinnamon-teal",
+      "artifactPath": "content/intelligence/surfaces/cinnamon-teal.json",
+      "artifactHash": "sha256:eb476f3c930dd4765abcc35c5a71d2035c07778f2353883e78075d755155514f",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 208,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 17341
+    },
+    {
+      "speciesId": "species:common-gallinule",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-common-gallinule",
+      "artifactPath": "content/intelligence/surfaces/common-gallinule.json",
+      "artifactHash": "sha256:b5b67968206f582999e5a4d225cf1b0523f853849e1c5b088971d83ac7078236",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 99,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 20747
+    },
+    {
       "speciesId": "species:common-goldeneye",
       "surfaceKind": "MODELLED_RASTER",
       "artifactId": "surface:bbs-common-goldeneye",
@@ -254,6 +429,106 @@
       "sitesDetected": 220,
       "supportedCells": 22873,
       "surveyedAndNoneFound": 15927
+    },
+    {
+      "speciesId": "species:common-merganser",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-common-merganser",
+      "artifactPath": "content/intelligence/surfaces/common-merganser.json",
+      "artifactHash": "sha256:4f5edf72491abbea26d608672827c609c50c2f6baaf03017c4ad60fa90a3c725",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 544,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 11353
+    },
+    {
+      "speciesId": "species:dusky-grouse",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-dusky-grouse",
+      "artifactPath": "content/intelligence/surfaces/dusky-grouse.json",
+      "artifactHash": "sha256:75b4ce2d48f571a7b961b2b7674b237a2bb7337fde17872b7b8795af87f96919",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 51,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 21077
+    },
+    {
+      "speciesId": "species:eurasian-collared-dove",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-eurasian-collared-dove",
+      "artifactPath": "content/intelligence/surfaces/eurasian-collared-dove.json",
+      "artifactHash": "sha256:461c891b8a9d094ea4e31c495ff943970d9b26298ca2fe63a00a52b6139db2da",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 1793,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 7741
+    },
+    {
+      "speciesId": "species:fish-crow",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-fish-crow",
+      "artifactPath": "content/intelligence/surfaces/fish-crow.json",
+      "artifactHash": "sha256:ac7f6df8208b216767c3d95201f1e40b16fadbc3a15fd065f574c29d7809c7f3",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 773,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 18392
     },
     {
       "speciesId": "species:gadwall",
@@ -284,6 +559,31 @@
       "surveyedAndNoneFound": 13752
     },
     {
+      "speciesId": "species:gambels-quail",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-gambels-quail",
+      "artifactPath": "content/intelligence/surfaces/gambels-quail.json",
+      "artifactHash": "sha256:36036b4ec4984676b97d372f888fc9d9335a7860a10945bbf6fcd51d08911b0c",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 98,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 21441
+    },
+    {
       "speciesId": "species:gray-partridge",
       "surfaceKind": "MODELLED_RASTER",
       "artifactId": "surface:bbs-gray-partridge",
@@ -310,6 +610,56 @@
       "sitesDetected": 257,
       "supportedCells": 22873,
       "surveyedAndNoneFound": 18204
+    },
+    {
+      "speciesId": "species:greater-prairie-chicken",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-greater-prairie-chicken",
+      "artifactPath": "content/intelligence/surfaces/greater-prairie-chicken.json",
+      "artifactHash": "sha256:ac9157d95f5cd374ad86486538a17e5e0b9136ad27a0cc69b09aac5e0b616d28",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 52,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 21777
+    },
+    {
+      "speciesId": "species:greater-sage-grouse",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-greater-sage-grouse",
+      "artifactPath": "content/intelligence/surfaces/greater-sage-grouse.json",
+      "artifactHash": "sha256:c013361208257bc3b756790ab1170d3224ed8cf0b258de5e4707e28273fd8cfe",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 75,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 20872
     },
     {
       "speciesId": "species:greater-scaup",
@@ -368,6 +718,31 @@
       "surveyedAndNoneFound": 11843
     },
     {
+      "speciesId": "species:hooded-merganser",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-hooded-merganser",
+      "artifactPath": "content/intelligence/surfaces/hooded-merganser.json",
+      "artifactHash": "sha256:cc50e2a57ca6074a0ffb8a3a77d19bb011c0cf0590ec0f86723872a462d1791e",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 278,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 14548
+    },
+    {
       "speciesId": "species:lesser-scaup",
       "surfaceKind": "MODELLED_RASTER",
       "artifactId": "surface:bbs-lesser-scaup",
@@ -424,6 +799,31 @@
       "surveyedAndNoneFound": 1568
     },
     {
+      "speciesId": "species:mountain-quail",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-mountain-quail",
+      "artifactPath": "content/intelligence/surfaces/mountain-quail.json",
+      "artifactHash": "sha256:202d047a71da06835d701352fbac246d1c2cdd1388298f72600256b741c42902",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 113,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 21476
+    },
+    {
       "speciesId": "species:mourning-dove",
       "surfaceKind": "MODELLED_RASTER",
       "artifactId": "surface:bbs-mourning-dove",
@@ -450,6 +850,56 @@
       "sitesDetected": 3569,
       "supportedCells": 22873,
       "surveyedAndNoneFound": 3728
+    },
+    {
+      "speciesId": "species:mute-swan",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-mute-swan",
+      "artifactPath": "content/intelligence/surfaces/mute-swan.json",
+      "artifactHash": "sha256:8591ad359faf5fd5dd4956d5fdf0f4abb9892df07b5c2efe82806e298fa5b32e",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 43,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 21322
+    },
+    {
+      "speciesId": "species:northern-bobwhite",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-northern-bobwhite",
+      "artifactPath": "content/intelligence/surfaces/northern-bobwhite.json",
+      "artifactHash": "sha256:561450af227b4fd048bce381b3f8dcc5696311967b57491f9237c85b6812e025",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 1159,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 15502
     },
     {
       "speciesId": "species:northern-pintail",
@@ -506,6 +956,31 @@
       "sitesDetected": 457,
       "supportedCells": 22873,
       "surveyedAndNoneFound": 13822
+    },
+    {
+      "speciesId": "species:red-breasted-merganser",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-red-breasted-merganser",
+      "artifactPath": "content/intelligence/surfaces/red-breasted-merganser.json",
+      "artifactHash": "sha256:2cd9f14f6f121bf5112f37777b28de5a7f1949540c885cefc95767e2ea124c26",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 59,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 20643
     },
     {
       "speciesId": "species:redhead",
@@ -592,6 +1067,31 @@
       "surveyedAndNoneFound": 11901
     },
     {
+      "speciesId": "species:ruddy-duck",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-ruddy-duck",
+      "artifactPath": "content/intelligence/surfaces/ruddy-duck.json",
+      "artifactHash": "sha256:24163b5f177713d3d5e6206adabc53fdcf5cead59d44e8c6cb597e7f4c97ba11",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 268,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 15562
+    },
+    {
       "speciesId": "species:ruffed-grouse",
       "surfaceKind": "MODELLED_RASTER",
       "artifactId": "surface:bbs-ruffed-grouse",
@@ -648,6 +1148,31 @@
       "surveyedAndNoneFound": 10700
     },
     {
+      "speciesId": "species:scaled-quail",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-scaled-quail",
+      "artifactPath": "content/intelligence/surfaces/scaled-quail.json",
+      "artifactHash": "sha256:835066905b94311544b7c169bef4da4e31eb9a4309057576819d2cb5f45f09e8",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 153,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 21122
+    },
+    {
       "speciesId": "species:sharp-tailed-grouse",
       "surfaceKind": "MODELLED_RASTER",
       "artifactId": "surface:bbs-sharp-tailed-grouse",
@@ -676,6 +1201,56 @@
       "surveyedAndNoneFound": 18485
     },
     {
+      "speciesId": "species:sooty-grouse",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-sooty-grouse",
+      "artifactPath": "content/intelligence/surfaces/sooty-grouse.json",
+      "artifactHash": "sha256:2e1543d4214569e3c8f555c8cf6cc2861e27fdaf1de0c1216e3ca88dd2f4e8cb",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 77,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 21344
+    },
+    {
+      "speciesId": "species:sora",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-sora",
+      "artifactPath": "content/intelligence/surfaces/sora.json",
+      "artifactHash": "sha256:61b55f522e9973a5a8ef99a5aca0d2e6f1f02251668c1da751d8bed1f05c59ae",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 694,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 10785
+    },
+    {
       "speciesId": "species:spruce-grouse",
       "surfaceKind": "MODELLED_RASTER",
       "artifactId": "surface:bbs-spruce-grouse",
@@ -702,6 +1277,56 @@
       "sitesDetected": 44,
       "supportedCells": 22873,
       "surveyedAndNoneFound": 20324
+    },
+    {
+      "speciesId": "species:virginia-rail",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-virginia-rail",
+      "artifactPath": "content/intelligence/surfaces/virginia-rail.json",
+      "artifactHash": "sha256:e261c99a2c9d7ca20ec02f0a901ecb48676393db8ad26632a7861ab8e04af6e2",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 174,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 15507
+    },
+    {
+      "speciesId": "species:white-winged-dove",
+      "surfaceKind": "MODELLED_RASTER",
+      "artifactId": "surface:bbs-white-winged-dove",
+      "artifactPath": "content/intelligence/surfaces/white-winged-dove.json",
+      "artifactHash": "sha256:18aaefe76e8e4cd10bf812376f46d0db511e5f35def06191fd2fc6ff9bea6239",
+      "sourceDatasetId": "dataset:na-bbs-2026-release",
+      "metric": "RELATIVE_ABUNDANCE",
+      "unit": "birds detected per survey route",
+      "effectiveResolutionMetres": 40000,
+      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
+      "season": "June, during the breeding season",
+      "matchesHuntingSeason": false,
+      "tier": "T1_OFFICIAL_MEASURED",
+      "grade": "B",
+      "methodologyId": "methodology:ng-bbs-relative-abundance",
+      "methodologyVersion": "1.2.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4121,
+      "sitesDetected": 322,
+      "supportedCells": 22873,
+      "surveyedAndNoneFound": 18665
     },
     {
       "speciesId": "species:wild-turkey",
@@ -818,6 +1443,11 @@
   ],
   "declined": [
     {
+      "speciesId": "species:black-scoter",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 9 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
       "speciesId": "species:brant",
       "reason": "TOO_FEW_ROUTES",
       "detail": "Detected on 0 of 4121 routes, below the 30 the methodology requires of a species."
@@ -828,9 +1458,54 @@
       "detail": "Detected on 7 of 4121 routes, below the 30 the methodology requires of a species."
     },
     {
+      "speciesId": "species:common-eider",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 24 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
       "speciesId": "species:greater-white-fronted-goose",
       "reason": "TOO_FEW_ROUTES",
       "detail": "Detected on 17 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:gunnison-sage-grouse",
+      "reason": "PROTECTED_NOT_HUNTED",
+      "detail": "A species that must never be hunted gets no Species Heat surface. The layer answers where to look for this animal; for a protected bird that is a hunting aid."
+    },
+    {
+      "speciesId": "species:harlequin-duck",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 23 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:king-eider",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 1 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:king-rail",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 19 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:lesser-prairie-chicken",
+      "reason": "ELIGIBILITY_UNVERIFIED",
+      "detail": "No authority North Ground has read establishes current take of this species, so it gets no Species Heat surface until one does."
+    },
+    {
+      "speciesId": "species:long-tailed-duck",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 18 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:montezuma-quail",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 13 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:purple-gallinule",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 18 of 4121 routes, below the 30 the methodology requires of a species."
     },
     {
       "speciesId": "species:rock-ptarmigan",
@@ -838,12 +1513,62 @@
       "detail": "Detected on 10 of 4121 routes, below the 30 the methodology requires of a species."
     },
     {
+      "speciesId": "species:rosss-goose",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 0 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
       "speciesId": "species:snow-goose",
       "reason": "TOO_FEW_ROUTES",
       "detail": "Detected on 6 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:surf-scoter",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 23 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:trumpeter-swan",
+      "reason": "PROTECTED_NOT_HUNTED",
+      "detail": "A species that must never be hunted gets no Species Heat surface. The layer answers where to look for this animal; for a protected bird that is a hunting aid."
+    },
+    {
+      "speciesId": "species:tundra-swan",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 26 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:white-tailed-ptarmigan",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 1 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:white-winged-scoter",
+      "reason": "TOO_FEW_ROUTES",
+      "detail": "Detected on 21 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:whooping-crane",
+      "reason": "PROTECTED_NOT_HUNTED",
+      "detail": "A species that must never be hunted gets no Species Heat surface. The layer answers where to look for this animal; for a protected bird that is a hunting aid."
     }
   ],
   "unmatched": [
+    {
+      "speciesId": "species:aberts-squirrel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sciurus aberti is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:american-badger",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Taxidea taxus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:american-bison",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Bison bison is not a species the Breeding Bird Survey records."
+    },
     {
       "speciesId": "species:american-black-bear",
       "reason": "NOT_IN_SURVEY",
@@ -875,9 +1600,29 @@
       "detail": "Lepus arcticus is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:axis-deer",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Axis axis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:barbary-sheep",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ammotragus lervia is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:beaver",
       "reason": "NOT_IN_SURVEY",
       "detail": "Castor canadensis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:bighorn-sheep",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ovis canadensis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:black-tailed-jackrabbit",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lepus californicus is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:bobcat",
@@ -890,6 +1635,11 @@
       "detail": "Ursus arctos is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:brush-rabbit",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sylvilagus bachmani is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:canada-lynx",
       "reason": "NOT_IN_SURVEY",
       "detail": "Lynx canadensis is not a species the Breeding Bird Survey records."
@@ -900,9 +1650,24 @@
       "detail": "Rangifer tarandus is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:collared-peccary",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Pecari tajacu is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:coyote",
       "reason": "NOT_IN_SURVEY",
       "detail": "Canis latrans is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:dall-sheep",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ovis dalli is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:desert-cottontail",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sylvilagus audubonii is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:eastern-cottontail",
@@ -925,9 +1690,19 @@
       "detail": "Cervus canadensis is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:fallow-deer",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Dama dama is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:fisher",
       "reason": "NOT_IN_SURVEY",
       "detail": "Pekania pennanti is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:fox-squirrel",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sciurus niger is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:gray-fox",
@@ -945,9 +1720,59 @@
       "detail": "Alces alces is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:mountain-cottontail",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sylvilagus nuttallii is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:mountain-goat",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Oreamnos americanus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:mountain-lion",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Puma concolor is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:mule-deer",
       "reason": "NOT_IN_SURVEY",
       "detail": "Odocoileus hemionus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:muskox",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ovibos moschatus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:muskrat",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ondatra zibethicus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:new-england-cottontail",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sylvilagus transitionalis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:nilgai",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Boselaphus tragocamelus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:north-american-river-otter",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lontra canadensis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:nutria",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Myocastor coypus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:polar-bear",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Ursus maritimus is not a species the Breeding Bird Survey records."
     },
     {
       "speciesId": "species:pronghorn",
@@ -965,14 +1790,54 @@
       "detail": "Vulpes vulpes is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:sika-deer",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Cervus nippon is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:snowshoe-hare",
       "reason": "NOT_IN_SURVEY",
       "detail": "Lepus americanus is not a species the Breeding Bird Survey records."
     },
     {
+      "speciesId": "species:striped-skunk",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Mephitis mephitis is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:swamp-rabbit",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sylvilagus aquaticus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:virginia-opossum",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Didelphis virginiana is not a species the Breeding Bird Survey records."
+    },
+    {
       "speciesId": "species:white-tailed-deer",
       "reason": "NOT_IN_SURVEY",
       "detail": "Odocoileus virginianus is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:white-tailed-jackrabbit",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Lepus townsendii is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:wild-boar",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Sus scrofa is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:wolverine",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Gulo gulo is not a species the Breeding Bird Survey records."
+    },
+    {
+      "speciesId": "species:woodchuck",
+      "reason": "NOT_IN_SURVEY",
+      "detail": "Marmota monax is not a species the Breeding Bird Survey records."
     }
   ]
 }

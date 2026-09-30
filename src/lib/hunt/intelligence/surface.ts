@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import plotsJson from "../../../../content/intelligence/ews25-plots.json" with { type: "json" };
 import surfaceRegistryJson from "../../../../content/intelligence/surface-registry.json" with { type: "json" };
+import { permitsHuntingOpportunity } from "../../content/species-eligibility.ts";
 import type { SeasonalBasis } from "./bundles.ts";
 import { servableDatasets, surfaceEvidenceFor } from "./bundles.ts";
 import type { EvidenceTier } from "./evidence-ladder.ts";
@@ -424,7 +425,19 @@ export interface SurfaceRegistry {
   unmatched: Array<{ speciesId: string; reason: string; detail: string }>;
 }
 
-const registry = surfaceRegistryJson as unknown as SurfaceRegistry;
+const committed = surfaceRegistryJson as unknown as SurfaceRegistry;
+
+/* The registry refuses too, not only the builder. A registry edited by hand, or
+   written by a builder that stopped honouring eligibility, still cannot serve a
+   surface for a species whose eligibility does not grant one. */
+export function servableSurfaceEntries<T extends { speciesId: string }>(
+  entries: readonly T[],
+  permits: (speciesId: string) => boolean = permitsHuntingOpportunity,
+): T[] {
+  return entries.filter((entry) => permits(entry.speciesId));
+}
+
+const registry: SurfaceRegistry = { ...committed, surfaces: servableSurfaceEntries(committed.surfaces) };
 
 export function surfaceRegistry(): SurfaceRegistry {
   return registry;
@@ -441,6 +454,7 @@ export function surfaceRegistry(): SurfaceRegistry {
  * zone evidence and never about this.
  */
 export function hasCertifiedSurface(speciesId: string): boolean {
+  if (!permitsHuntingOpportunity(speciesId)) return false;
   if (registry.surfaces.some((entry) => entry.speciesId === speciesId)) return true;
   return servableDatasets().some((dataset) => dataset.speciesId === speciesId && dataset.renderKind === "SAMPLE_PLOT");
 }
@@ -642,6 +656,9 @@ function continuousSurface(artifact: RasterArtifact, entry: SurfaceRegistryEntry
 export function speciesSurfaces(speciesId: string, box?: [number, number, number, number], maxCells: number = MAX_SURFACE_CELLS): SpeciesSurfaceResponse {
   const surfaces: SpeciesSurface[] = [];
   const refusals: SurfaceRefusalNotice[] = [];
+  /* The API refuses as well: a species whose eligibility grants no hunting
+     opportunity is answered with nothing, and nothing says a surface exists. */
+  if (!permitsHuntingOpportunity(speciesId)) return { speciesId, surfaces, refusals, emptyMeans: EMPTY_MEANINGS.NOTHING_HELD };
   const held = rasterFor(speciesId);
   if (held) {
     const surface = continuousSurface(held.artifact, held.entry, box, maxCells);
