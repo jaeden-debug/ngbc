@@ -64,15 +64,40 @@ test("the ramp is continuous, monotone and carries no regulatory colour", () => 
   assert.equal(rampAt(0).color, HEAT_RAMP[0].color);
   assert.equal(rampAt(1).color, HEAT_RAMP[HEAT_RAMP.length - 1].color);
 
-  /* NO GREEN ANYWHERE ALONG IT. Green means a legal hunt exists; a green-ish
-     cool end would make "cold" read as "closed", which is the false closure
-     this product exists to avoid. Checked across the whole line, not just at
-     the stops, because an interpolation between two non-green stops is where
-     a green would actually appear. */
+  /*
+   * THE RAMP MAY NOW PASS THROUGH GREEN — §41A, amended 2026-09-29 by the owner
+   * against a mockup, superseding the rule this assertion used to enforce. A
+   * conventional spectrum is worth more than a private palette, and legality
+   * moved to the OUTLINE.
+   *
+   * So the obligation that replaces it is the harder one: the legality ring has
+   * to stay unmistakable over every point of the ramp INCLUDING its green band.
+   * A bright green ring on a green fill is two things that look alike and mean
+   * opposite things, one of them legal status — the exact failure the old rule
+   * was avoiding by a cruder route. Measured, not eyeballed, and on luminance
+   * as well as hue, because hue alone dies on a satellite basemap.
+   */
+  const channelsOf = (hex: string) => [1, 3, 5].map((offset) => Number.parseInt(hex.slice(offset, offset + 2), 16));
+  const luminance = ([red, green, blue]: number[]) => (0.2126 * red + 0.7152 * green + 0.0722 * blue) / 255;
+  /*
+   * Against the COMPOSITED fill, not the raw hex.
+   *
+   * My first version of this compared the ring's hex to the ramp's hex and
+   * demanded the ring be lighter. That cannot work: the ramp's yellow band is
+   * brighter than any green ring worth having, so the assertion was asking for
+   * something no correct value could satisfy. What is actually on screen is a
+   * fill at 0.16-0.56 alpha over a dark basemap, under an opaque ring. Compose
+   * it the way the map does and the comparison becomes the real one.
+   */
+  const BASEMAP = channelsOf("#151a15"); // .mapCanvas
+  const over = (hex: string, alpha: number) =>
+    channelsOf(hex).map((channel, index) => BASEMAP[index] + (channel - BASEMAP[index]) * alpha);
+  const ring = luminance(channelsOf(SEASON_OPEN_STROKE));
   for (let value = 0; value <= 1.0001; value += 0.01) {
-    const { color } = rampAt(value);
-    const [red, green, blue] = [1, 3, 5].map((offset) => Number.parseInt(color.slice(offset, offset + 2), 16));
-    assert.ok(green <= Math.max(red, blue), `${color} at ${value.toFixed(2)} leads with green`);
+    const { color, opacity } = rampAt(value);
+    const gap = ring - luminance(over(color, opacity));
+    assert.ok(gap >= 0.3,
+      `the legality ring must stay unmistakable over the fill: ${color}@${opacity.toFixed(2)} at ${value.toFixed(2)} leaves ${gap.toFixed(3)}`);
   }
 
   // Heat is evidence and must never wear a legal status's colour.

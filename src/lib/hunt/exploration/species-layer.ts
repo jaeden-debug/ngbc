@@ -38,27 +38,31 @@ export interface ZoneHeat {
  * which is what they were. The map now paints the CONTINUOUS rank the engine
  * computes, and the four words survive only as names for the bands it falls in.
  *
- * The line runs cold to hot: a cold indigo-slate, through a muted plum, into
- * the bark and ochre of §38's earth neutrals, ending in campfire amber and
- * ember. Two constraints shaped it and neither is negotiable:
+ * The line is a CONVENTIONAL HEAT SPECTRUM — blue, cyan, green, yellow, red —
+ * because a spectrum a person already knows how to read is worth more than a
+ * private palette (§41A, amended 2026-09-29 by the owner against a mockup).
  *
- *   NO GREEN, ANYWHERE ON IT. Green on this map means a legal hunt exists.
- *   A cool end reaching for teal would put the legality colour at the bottom of
- *   an abundance ramp, and "cold" would read as "closed".
+ *   IT MAY PASS THROUGH GREEN, and that reverses the rule this comment used to
+ *   carry. Green no longer means "a legal hunt exists" when it appears in a
+ *   FILL: legality moved entirely to the zone's OUTLINE, which is bright, thick
+ *   and asserted to stay distinguishable from every point of this ramp
+ *   including its green band. Removing the old constraint was deliberate, not
+ *   an oversight — see `species-layer.test.ts`, where the assertion that used
+ *   to forbid green now measures the outline against the ramp instead.
  *
  *   NO SEMANTIC TOKEN. `--ng-conflict` is the palette's warmest red and already
- *   means "sources disagree"; the ember end stops short of it.
+ *   means "sources disagree"; the hot end stops short of it.
  *
  * Literal hex because a Google `PolygonOptions` cannot take a CSS variable —
  * the same reason `SELECTED_STROKE` mirrors `--ng-cream` in `cartography.ts`.
  */
 export const HEAT_RAMP: ReadonlyArray<{ at: number; color: string; opacity: number }> = [
-  { at: 0.0, color: "#47526b", opacity: 0.10 },
-  { at: 0.2, color: "#6b6070", opacity: 0.145 },
-  { at: 0.4, color: "#96704f", opacity: 0.19 },
-  { at: 0.6, color: "#c08a40", opacity: 0.235 },
-  { at: 0.8, color: "#d4702c", opacity: 0.28 },
-  { at: 1.0, color: "#a8331f", opacity: 0.32 },
+  { at: 0.0, color: "#2f4b9b", opacity: 0.16 },
+  { at: 0.2, color: "#2e8fc0", opacity: 0.25 },
+  { at: 0.4, color: "#3fa86b", opacity: 0.34 },
+  { at: 0.6, color: "#c8c53c", opacity: 0.43 },
+  { at: 0.8, color: "#e0872c", opacity: 0.50 },
+  { at: 1.0, color: "#c0392b", opacity: 0.56 },
 ];
 
 /**
@@ -249,7 +253,7 @@ export function conditionMarkerLabel(zoneLabel: string): string {
  * would be a false closure, the exact failure this product exists to avoid.
  */
 export const SPECIES_LAYER_LEGEND = {
-  heatTitle: "Heat: where the evidence suggests looking",
+  heatTitle: "Fill \u2014 evidence: where to look for the animal",
   heatDetail:
     "Shaded along a continuous scale from the authority's own published measurements for this species. The shade is a zone's RANK AGAINST THE OTHER ZONES of the same jurisdiction's dataset — not a count of animals, and never a density unless the authority itself published a density. An unshaded zone is one North Ground holds no certified evidence for, or one whose evidence will not support a rank; it is not a zone with no animals.",
   /* The defect this version exists to correct, said on the face of the key
@@ -264,7 +268,7 @@ export const SPECIES_LAYER_LEGEND = {
   howCalculated: "How is this calculated?",
   howCalculatedDetail:
     "The datasets, authorities, years, measurements and weights behind this species' shading.",
-  seasonTitle: "Green outline: a legal hunt exists here now",
+  seasonTitle: "Outline \u2014 legality: a legal hunt exists here now",
   seasonDetail:
     "Outlined where the certified rules give at least one current legal hunting opportunity for this species on the chosen date \u2014 including one that turns on the hunter. It is not a licence check, and it never states that you personally may hunt: the zone's card carries the full answer.",
   conditionTitle: "! \u2014 that hunt has conditions",

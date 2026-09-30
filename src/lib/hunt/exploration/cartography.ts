@@ -102,10 +102,25 @@ const STATE_BAND_SCALE: Record<ZoomBand, number> = { national: 0.9, regional: 0.
  * same colour rather than two greens a hunter has to reconcile. Literal hex
  * because Google's polygon options cannot take a CSS variable.
  */
+/*
+ * LEGALITY IS THE OUTLINE (§41A, amended 2026-09-29). The ramp may now pass
+ * through green, so this ring can no longer rely on being the only green thing
+ * on the map — it has to win on LUMINANCE and WEIGHT as well as hue.
+ *
+ * It keeps `--ng-open`, the product's one "a season is open" green, rather than
+ * taking a brighter map-only variant. Measured against the ramp as the map
+ * actually composites it — a 0.16-0.56 alpha fill over the dark basemap, under
+ * an opaque ring — it clears every point of the spectrum including the green
+ * band. A separate map green would have split one meaning across two colours to
+ * solve a problem the arithmetic says does not exist.
+ */
 export const SEASON_OPEN_STROKE = "#7cc08a";
 /* Heavier than an ordinary boundary at every band, and still lighter than the
    chosen zone's bone outline, which has to stay the loudest line on the map. */
-const SEASON_STROKE_WEIGHT: Record<ZoomBand, number> = { national: 1.9, regional: 2.3, local: 2.5 };
+/* Thicker than the ramp can imitate, and still under the chosen zone's own
+   stroke at every band once SEASON_HOVER is applied — the bone outline stays
+   the loudest thing on the map (§41A). */
+const SEASON_STROKE_WEIGHT: Record<ZoomBand, number> = { national: 2.2, regional: 2.6, local: 2.75 };
 const SEASON_HOVER = 1.15;
 
 /** Fills first: the national view reads as areas, the local view as lines. */
@@ -151,7 +166,11 @@ const clamp = (value: number, low: number, high: number) => Math.min(high, Math.
 /** The strongest fill any zone that is not the chosen one can reach here. */
 function unchosenFillCeiling(band: ZoomBand, emphasis: Emphasis): number {
   const scale = EMPHASIS_SCALE[emphasis];
-  const loudest = Math.max(BAND_FILL[band], MAX_STATE_FILL * STATE_BAND_SCALE[band]);
+  /* Heat no longer scales by band, so the loudest an unchosen zone can reach
+     no longer scales either. Leaving the band factor here would compute the
+     chosen zone's floor from a number heat can now exceed, and a hot neighbour
+     would out-shout it — which is the failure this derivation exists to stop. */
+  const loudest = Math.max(BAND_FILL[band], MAX_STATE_FILL);
   return clamp(loudest * HOVER_FILL * scale, 0, MAX_STATE_FILL);
 }
 
@@ -161,7 +180,18 @@ export function zoneStyle(input: ZoneStyleInput): ZoneStyle {
   const certified = input.coverage === "VERIFIED";
   /* Heat and green are independent. A zone can be hot and shut, open and cold,
      both, or neither, and the map has to be able to draw all four. */
-  const heatFill = input.heat ? input.heat.opacity * STATE_BAND_SCALE[input.band] : null;
+  /*
+   * HEAT IS NOT SCALED BY THE ZOOM BAND, and that is the same rule the dim
+   * exemption below already states: a jurisdiction's tone is decoration, heat
+   * is the layer's CONTENT.
+   *
+   * §41A's "fills nearly gone at local" was written about TONE, so the terrain
+   * and roads carry the ground. Applying it to heat made the layer weakest at
+   * local zoom — which is exactly where a hunter is deciding where to walk —
+   * and against a dark basemap that reads as terrain rather than as a signal.
+   * The owner's report was "why do I still not have an actual heat map".
+   */
+  const heatFill = input.heat ? input.heat.opacity : null;
 
   if (input.selected) {
     // The focal plane: the only bone outline on the map, and always the strongest
@@ -187,7 +217,13 @@ export function zoneStyle(input: ZoneStyleInput): ZoneStyle {
       strokeOpacity: 0.72,
       strokeWeight: 1.8,
       fillColor: input.heat?.color ?? tone,
-      fillOpacity: clamp((heatFill ?? 0.07) * scale, 0.02, 0.22),
+      /* With heat, the hunt's zone shows its evidence like any other: a 0.22 cap
+         would have made the hunt's own zone read COLDER than its neighbours,
+         which misstates the evidence at the one zone the hunter cares most
+         about. Without heat it stays quiet, as before. */
+      fillOpacity: heatFill !== null
+        ? clamp(heatFill * scale, 0.02, MAX_STATE_FILL)
+        : clamp(0.07 * scale, 0.02, 0.22),
       zIndex: 7,
     };
   }

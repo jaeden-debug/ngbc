@@ -84,21 +84,21 @@ button, input, select { font: inherit; }
         so a cool end reaching for teal would put the legality colour at the
         bottom of an abundance ramp and "cold" would read as "closed". Heat is
         EVIDENCE and never borrows a regulatory token. ── */
-  --ng-heat-cold: #47526b;
-  --ng-heat-low: #6b6070;
-  --ng-heat-moderate: #ab7d48;
-  --ng-heat-high: #ca7d36;
-  --ng-heat-very-high: #be5226;
-  --ng-heat-ember: #a8331f;
+  --ng-heat-cold: #2f4b9b;
+  --ng-heat-low: #2e8fc0;
+  --ng-heat-moderate: #84b754;
+  --ng-heat-high: #d4a634;
+  --ng-heat-very-high: #d0602c;
+  --ng-heat-ember: #c0392b;
   /* The legend's own gradient bar: the ramp's six stops, in order. */
   --ng-heat-gradient: linear-gradient(
     90deg,
-    #47526b 0%,
-    #6b6070 20%,
-    #96704f 40%,
-    #c08a40 60%,
-    #d4702c 80%,
-    #a8331f 100%
+    #2f4b9b 0%,
+    #2e8fc0 20%,
+    #3fa86b 40%,
+    #c8c53c 60%,
+    #e0872c 80%,
+    #c0392b 100%
   );
 
   /* ── Regulatory semantics. Never the only signal: every status also
