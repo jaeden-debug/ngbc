@@ -1204,31 +1204,6 @@
       "surveyedAndNoneFound": 20324
     },
     {
-      "speciesId": "species:trumpeter-swan",
-      "surfaceKind": "MODELLED_RASTER",
-      "artifactId": "surface:bbs-trumpeter-swan",
-      "artifactPath": "content/intelligence/surfaces/trumpeter-swan.json",
-      "artifactHash": "sha256:7e5a65f7e77a74c02e67980dbe6c6032fa5f3018a3af418038aeeb5a71546c93",
-      "sourceDatasetId": "dataset:na-bbs-2026-release",
-      "metric": "RELATIVE_ABUNDANCE",
-      "unit": "birds detected per survey route",
-      "effectiveResolutionMetres": 40000,
-      "effectiveResolutionStatedAs": "40 km Gaussian bandwidth over 4121 survey routes; the grid is sampled more finely than that and does not make it finer",
-      "season": "June, during the breeding season",
-      "matchesHuntingSeason": false,
-      "tier": "T1_OFFICIAL_MEASURED",
-      "grade": "B",
-      "methodologyId": "methodology:ng-bbs-relative-abundance",
-      "methodologyVersion": "1.2.0",
-      "interpolationPermitted": true,
-      "coverage": "PARTIAL_DATA",
-      "unmappedGround": "NO_EVIDENCE_HELD",
-      "sitesSurveyed": 4121,
-      "sitesDetected": 212,
-      "supportedCells": 22873,
-      "surveyedAndNoneFound": 17214
-    },
-    {
       "speciesId": "species:virginia-rail",
       "surfaceKind": "MODELLED_RASTER",
       "artifactId": "surface:bbs-virginia-rail",
@@ -1484,6 +1459,11 @@
       "speciesId": "species:whooping-crane",
       "reason": "TOO_FEW_ROUTES",
       "detail": "Detected on 3 of 4121 routes, below the 30 the methodology requires of a species."
+    },
+    {
+      "speciesId": "species:trumpeter-swan",
+      "reason": "PROTECTED_NOT_HUNTED",
+      "detail": "A species that must never be hunted gets no Species Heat surface. The layer answers where to look for this animal; for a protected bird that is a hunting aid."
     }
   ],
   "unmatched": [

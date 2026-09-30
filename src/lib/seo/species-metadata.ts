@@ -60,7 +60,7 @@ const HUNTED_GROUP_IDS = new Set([
     confused with a game species (whooping crane with sandhill crane, trumpeter with
     tundra swan, Gunnison with greater sage-grouse). Group membership would call them
     a hunting guide; they are never titled one. */
-const PROTECTED_LOOKALIKE_IDS = new Set([
+export const PROTECTED_LOOKALIKE_IDS = new Set([
   "species:whooping-crane",
   "species:trumpeter-swan",
   "species:gunnison-sage-grouse",

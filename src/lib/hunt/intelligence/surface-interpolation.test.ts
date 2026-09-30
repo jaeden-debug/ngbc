@@ -157,7 +157,16 @@ test("a species without enough routes gets no surface, and is recorded as declin
      from the catalogue (it grew with wave 3), so it is not pinned. */
   for (const id of ["species:brant", "species:cackling-goose", "species:greater-white-fronted-goose",
     "species:rock-ptarmigan", "species:snow-goose"]) assert.ok(names.has(id), id);
-  for (const entry of declined) assert.equal(entry.reason, "TOO_FEW_ROUTES");
+  /* A decline carries one of a CLOSED set of reasons. Widened from a single
+     value when protection became a second ground: a species that must never be
+     hunted gets no surface however many routes detect it, and whooping crane
+     was declined for route count, which is luck rather than a rule. Closed
+     rather than open, so an invented reason still fails. */
+  const REASONS = new Set(["TOO_FEW_ROUTES", "PROTECTED_NOT_HUNTED"]);
+  for (const entry of declined) assert.ok(REASONS.has(entry.reason), `unexpected decline reason: ${entry.reason}`);
+  for (const id of ["species:brant", "species:snow-goose"]) {
+    assert.equal(declined.find((entry) => entry.speciesId === id)?.reason, "TOO_FEW_ROUTES");
+  }
   const served = new Set(surfaceRegistry().surfaces.map(({ speciesId }) => speciesId));
   for (const id of names) assert.ok(!served.has(id), `${id} is both declined and served`);
 });
