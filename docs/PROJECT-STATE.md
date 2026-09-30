@@ -4,7 +4,7 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-29 (**Where the animals are: the Eastern Waterfowl Survey lands, and the gap for big game becomes a machine-readable record.** 332 published plots of 25 km² in Québec, Ontario and the Maritimes, under the Open Government Licence – Canada — the only public Canadian dataset found that says where animals are at a resolution finer than a hunting zone. 36 bundles, 2,474 plot records; coverage 13 → 49 datasets, grades now {B: 36, C: 13}. Its three refusals are structural rather than commentary: a new SAMPLE_PLOT geometry that draws nothing between the plots, a seasonalBasis the loader refuses to do without, and a metric that can never be called density. Four row rejections are counted and asserted, including 10,199 observations recorded OUTSIDE the plot that would have inflated every plot by an eighth, and the field that identifies them was verified by deriving point-in-polygon rather than trusting its name. For moose, deer, elk and bear there is no public evidence finer than the zone anywhere in Canada, and subZoneEvidence now records that per jurisdiction with the reason — while a jurisdiction nobody searched returns null rather than a false nothing-exists.)
+Last updated: 2026-09-30 (**Species Heat is drawn in production Hunt.** The species surface existed in the tree, was certified and was SERVED, and no Hunt client requested it — production at `23ed04d` drew ruffed grouse as a zone choropleth from `/api/hunt/opportunity/heat`. The `heat-legible` renderer was recovered from GitHub, integrated onto main with the client gaps closed, reviewed adversarially, and deployed as `1059d02` (Vercel `dpl_AUoMqG7AacPZUWJ3CjRHXwpkuu2p`). In the real production Hunt, choosing Ruffed grouse requests `/api/hunt/species-surface`, receives the BBS raster and paints it under the zones: **RENDERED and PRODUCTION VERIFIED**, 30/30 browser checks on phone and desktop, and all 25 certified BBS surfaces rendered from their shareable links. See *Species Heat: the surface reaches the hunter (2026-09-30)*.)
 
 Previously: 2026-09-29 (**The mobile composer keeps its place; the keyboard only takes viewport away.** Reported from an iPhone and reproduced: tapping Search anywhere sent the search field down onto the keyboard's edge. The cause was two CSS `order` declarations under `[data-composer="open"]` that drew the field last — a deliberate messaging-composer model the owner has now decided against, so §41A is amended. Both are gone and document order is visual order; no offset, unit or second keyboard detector was added. Certifying that fix exposed a second real defect in the same lane: the sheet's height mixed a viewport-relative header rect with a shell-relative band height, charging a scrolled keyboard to the sheet twice — and, because the inset in the DOM is a state behind, the error outlived the keyboard and left the sheet 48px short after dismissal. `headerBottomInBand` now takes the inset off both sides. The control bar above the keyboard is Safari's own AutoFill bar, not North Ground's; the half we control was checked and is clean.)
 
@@ -49,6 +49,7 @@ bundle now reproduces byte for byte from the current page.
 - **Population: 60 of 60.** Every active asset has a cover rendition (57 backfilled from their sanitized masters, 3 published with one).
 
 ### Hunting Intelligence
+- **Species Heat is drawn under the zones in production (2026-09-30, `1059d02`).** Find game → a species requests the independent surface resource by GROUND (`/api/hunt/species-surface?speciesId=…&bbox=…`), never through the zones in view, and needs no zone geometry to draw. The field is a canvas in Google's `mapPane`, so the stack is the compositor's own: basemap → animal surface → transparent zone polygons → cased green legality outlines → `!` markers → labels. Ramp transparent → blue → cyan → green → yellow → orange → red; a surveyed zero is the faintest blue and only unsurveyed ground is transparent; the edge of survey support fades rather than stepping. CONTINUOUS rasters are sampled bilinearly at no finer than a quarter of their declared resolution; SAMPLE_PLOT surveys are vector fills with hard edges and nothing between plots (mallard carries both). A species with only zone-level evidence shows no heat, and the key says "no fine-grained evidence held" in words. The zone-keyed choropleth (`useSpeciesHeat`) is deleted. Status ladder in *Recent Product Decisions*.
 - **A species profile link is a published URL or nothing (2026-09-23).** `resourcePath` fell back to a path assembled from the slug when a species had no canonical URL. **All 60 resolve today** — measured, not assumed — which is exactly what makes that kind of guess dangerous: nothing checked it, and nothing would have checked the next one. A "Learn more" that 404s is worse than no link. It is now `string | null`, every consumer treats `null` as **do not link**, and `species-links.test.ts` pins the shape. Same rule as an unresolvable species id: do not render around it. This also settles the constraint for the incoming species-page patch before it arrives. **And `Start over` now forgets the Find Game hint's counter too** — the E2E caught that it survived, and exempting it would have been the easier change and the wrong one: §41A's promise is that the device is left clean, not clean except for what we found convenient to keep.
 - **The selected zone's label is composited above its own polygon (2026-09-23, owner).** Google draws polygons into `overlayLayer` (pane 101); the labels were in that same pane, so the selected zone — deliberately the loudest fill on the map — painted over the name of the zone it was highlighting, worst at far zoom where the shape is small and the label sits inside it. Ordinary labels stay in `overlayLayer`; the **selected** label is appended to `markerLayer` (103), and the self marker shares that pane with a higher z-index so a hunter's own position is never covered by a name. **Render order at the map's own layer, with no geometry changed.** The collision half was already correct and was left alone: `labels.ts` sorts `force`d candidates first, so the selected label was never suppressed by a neighbour — measured before touching it. `selectedLabelOnTop` pins all three zooms and asserts **pane order rather than hit testing**, because map labels are pointer-transparent (`elementFromPoint` never returns one, so a naive check reports "covered" either way) and because existence proves nothing — a label painted under a polygon is still in the DOM. Two probe errors of my own along the way, both in measurement rather than in the fix: the first compared my container's z-index against Google's pane, the second walked past the pane into the shell.
 - **Find Game, regulatory half — "where can I hunt this" (2026-09-23, §41B).** A **buck** on the map opens *Find an animal to hunt*; choosing a species shades every zone in view by what the certified rules say, names the zones where a season is actually open, and writes `?species=…&explore=1` so the state is shareable. **It needs no evidence dataset and is not SPECIES HEAT:** §41B keeps regulatory availability and species opportunity apart, so the card never ranks a zone, never says "best", and carries none of the heat vocabulary — the E2E asserts that absence explicitly, and that the zones are in their own name order rather than any ranking. Closing it removes the layer. **And a small bouncing hint** appears beside the buck on a quiet map, at most three times per device, never again once Find Game has been used: a real button with an accessible name, clear of the map's attribution (the grabber's lesson), and static under `prefers-reduced-motion`. Its animation runs **three times and stops** — an element that never stops moving is a harder target for a thumb, and the certification found the same thing from the other side, where a tool that waits for a control to settle could never touch it.
@@ -229,6 +230,10 @@ bundle now reproduces byte for byte from the current page.
 
 ## Known Problems
 
+- **`certify-hunt-app.mjs` has two stale legal-hours assertions (pre-existing, found 2026-09-30).** In the scenario *what you need, before what you open*, "a resolved window shows the clock" reads `[class*=legalWindow]` and finds nothing, and "where it cannot be stated, it says so" still expects Québec to say *Not yet verified* although Québec's legal hours were resolved on 2026-09-29 (06:24 – 19:29 local time is what production shows). Both fail identically on `23ed04d` and on `1059d02`; the other 384 checks pass. The assertions need updating to the shipped behaviour, not the product.
+- **Manitoba's 2026 hunting guide changed upstream.** `check:regulatory-sources` (run from a network-enabled sandbox on 2026-09-30) stops with "The 2026 guide has changed (sha256:402f9485…)": `content/regulatory/sources/ca-mb-hunting-guide-2026-crosscheck.json` was transcribed from an earlier hash. A changed government document requires review before anything is republished (§45); nothing was changed.
+- **Species Heat — known limits.** (1) The client asks for the viewport plus a 30% margin, snapped to half-degrees; a continental phone view is one request of ~204 KB uncompressed (~11 KB gzip) and a desktop view ~466 KB (~26 KB gzip) — measured, and inside budget, but the whole-continent reply parses to a `Map` of up to ~100k cells. (2) Legend/summary name one layer's heading; mallard-type species with plots AND a field list both inside the key but the collapsed chip says "2 evidence layers". (3) BBS is a June breeding survey; every waterfowl/grouse surface carries that warning in the key. (4) At national zoom the 0.3° × 0.2° cells are a few pixels, so edges of support are still visible as soft blocks; at regional zoom they read as a field.
+
 - **A live Québec surface shows untranslated French to an English reader, and the existing sweep cannot see it.** `regulation.summary` for Québec turkey carries « Du 24 avril au 18 mai 2026 » — French with no accent, cedilla or guillemet, so the orthography detector in `language-integrity.test.ts` scores it as not-French. Its own header already admits the class of blind spot; what is new is that it is **live**, and that it sits exactly where Québec's season text lives, because French dates are the common case.
   The same detector is wrong in the other direction too: built properly and refined once, it still fired on « Gouvernement du Québec » and « Règlement sur la chasse » inside English sentences, which §47 *requires* stay untranslated. **False positives on proper names, false negatives on unaccented French** — a complete demonstration, not an argument, that language must come from the record. §41A already says source language is metadata and never detection; this is the evidence. Recorded in `translation.ts` where the next reader will look.
   The fix is the `regulation.summary` structuring item below, not a better detector.
@@ -316,6 +321,8 @@ bundle now reproduces byte for byte from the current page.
 - Secondary text tokens were failing WCAG AA on the dark glass: `--ng-bone-faint` measured 2.9:1 at 11–12px. Both secondary tiers were raised (0.80 and 0.62 alpha) and re-measured at 6.7:1 and 4.7:1. Any new token added to the palette must be measured against the glass it sits on, not against the page background.
 
 ## Next Priorities
+
+0. **Species Heat, in the owner's order (2026-09-30).** Ruffed grouse is PRODUCTION VERIFIED and all 25 certified BBS surfaces render from their links, so the remaining order is: (a) the Alberta measured-density upgrade — animals/km² from the authority's aerial surveys preferred over harvest, on the SAME surface infrastructure (a new surface kind through `surface-registry.json`, never a new endpoint); (b) a scientifically defensible, versioned, season-specific Moose opportunity model (§41B "no generic wildlife formula"), again through the same registry, renderer and certification — no separate Moose heat architecture. `scripts/certify-species-surface.mjs` is the gate for each: built, served AND drawn.
 
 1. **Structure `regulation.summary`'s season listing so each label keeps its own language.** The French reaching English readers is a *list* of authority season labels string-concatenated into an English sentence. `season.label` already exists as `{text, lang, owner: "AUTHORITY"}` and the producer already sets it correctly — **but only when every cited rule agrees on one label**, deliberately, because inventing a name for a combination the authority did not write would attribute a name to a ministry. For arctic hare it is `undefined` while the summary still carries the French.
    So the work is giving the season **listing** a structured form, then composing the summary from structure rather than concatenation. It touches every consumer of `summary`, so it is a deliberate item rather than something to begin at the end of a session. Two constraints: **the singular-label restraint must survive** — a listing is not a licence to name a combination the authority did not — and **each label carries its own language**, so a bilingual listing is representable rather than flattened.
@@ -902,6 +909,90 @@ blueprint keeps those out of North Ground's answers.
 
 
 ## Recent Product Decisions
+
+### Species Heat: the surface reaches the hunter (2026-09-30)
+
+**The defect.** On 2026-09-29 the species-surface backend was complete — 25
+certified BBS rasters in `surface-registry.json`, hash-checked and answering 200
+— and no Hunt client ever requested one. Checked in production from a real
+browser before this work: choosing Ruffed grouse on `23ed04d` called
+`/api/hunt/opportunity/heat` (the zone choropleth) and never
+`/api/hunt/species-surface`. Every backend test was green, because none of them
+could see a client.
+
+**Status ladder**, which is the vocabulary for this milestone. Only the last rung
+means complete.
+
+| Rung | Meaning | Ruffed grouse | All 25 BBS species |
+| --- | --- | --- | --- |
+| BUILT | builder and contract exist | yes | yes |
+| GENERATED | artifact written | yes | yes |
+| CERTIFIED | in `surface-registry.json` with its sha256 | yes | 25 |
+| SERVED | the endpoint returns it | yes | 25 |
+| RENDERED | a Hunt client requests it and paints it | yes | 25 |
+| PRODUCTION VERIFIED | seen drawn in the real production Hunt | **yes** (30/30 browser checks, and inspected by eye) | **25/25** requested 200 and painted from their shareable links |
+
+**What shipped** (`6b2e761…1059d02`, deployed as `dpl_AUoMqG7AacPZUWJ3CjRHXwpkuu2p`):
+
+- The `heat-legible` branch (four commits, pushed from the owner's machine) was
+  cherry-picked onto `23ed04d` without conflicts: the vivid ramp, the canvas in
+  Google's `mapPane` under the zones, cased green legality outlines, the
+  surface-describing legend, and the renderer for both surface kinds.
+- The gaps between it and a hunter, closed here: a same-species reply after a
+  pan is redrawn; the request covers the renderer's 30% margin and is not re-sent
+  for ground already held; a request in flight that covers the view is not
+  aborted; `NOT_HELD`, `NONE_IN_VIEW` and `UNAVAILABLE` are separate states with
+  the server's own sentence; surface-only species are reachable in Find game
+  (`hasSpeciesSurface`, from the registry); the key never says "0 zones open"
+  where seasons were never evaluated.
+- An adversarial review found, and this fixes: zooming in never re-rendered the
+  raster (the zoom test compared the container with itself, so plots blurred as
+  the bitmap was CSS-stretched); surveyed-zero cells painted transparent, i.e.
+  identical to unsurveyed ground; antimeridian views produced an inverted bbox; a
+  certified surface that failed to load was reported as "not covered" and
+  cached for six hours (now 503, no-store); the fallback map re-rasterised on
+  every pointer move.
+- Seen on the real map and fixed: the edge of survey support stepped cell by
+  cell. Opacity now fades over the outer half of an edge cell, only inside ground
+  already drawn, never changing the value and never at a reply window's edge.
+- The server no longer says "No certified evidence is held for this species"
+  for ruffed grouse over ground its surface does not reach (200, empty, with the
+  reason).
+
+**Decisions taken, and why.**
+
+- **No zone is filled with evidence, ever** (owner direction in this task:
+  "not a hunting-zone choropleth", "no administrative polygon colouring", "do not
+  fetch heat through zonesInView"). `useSpeciesHeat` is deleted; a species whose
+  only evidence is zone-level shows no heat and the key says so. CLAUDE.md §41B's
+  resolution bullet is amended to match.
+- **Closing a zone card over the species layer keeps the layer** (owner
+  acceptance: "Tap a zone … Close it. Confirm species + surface + date
+  persist"). Outside the layer, X still forgets the species (owner, 2026-09-23).
+- **Performance: viewport loading, no tiling.** Measured: a phone's national
+  view is one ~204 KB reply (~11 KB gzip), the continental desktop view ~466 KB
+  (~26 KB gzip), 12–21 ms on the server; one field re-render 86–95 ms on a phone
+  and 190–225 ms on desktop under 4× CPU throttling. Panning inside the held box
+  asks nothing (the regional walk made one request in total). Tiling is not
+  justified by these numbers; the cells `Map` is the first thing to replace if
+  a denser surface arrives.
+
+**How it is held.** `src/lib/hunt/exploration/surface-independence.test.ts`
+walks certified artifact → registry → handler → the URL the client builds →
+decoder → a painted pixel, asserts HuntApp wires the hook to the map, and holds
+the separations (no zone/season/date import on the surface path; a hotspot
+crossing a boundary unchanged; legality and heat independent; closed/open/unknown
+zones with any heat; stale replies discarded; SAMPLE_PLOT discrete; null ≠ 0;
+declared resolution carried). `scripts/certify-species-surface.mjs` does the
+same in a real browser and runs in CI on every push to `main`; against `23ed04d`
+it fails with "ruffed grouse: surface requested — no request was made".
+
+**Verification channel, recorded because it will be needed again.** This cloud
+container's egress policy denies `www.northgroundbushcraft.com` and
+`*.vercel.app`. Production and previews were exercised from a Vercel Sandbox in
+the project (Playwright, Chromium), with previews opened through a Vercel share
+link; screenshots were streamed back through the sandbox's command logs and
+checksum-verified before being inspected.
 
 ### The Eastern Waterfowl Survey lands, and the gap for big game becomes a record (2026-09-29)
 
@@ -2317,6 +2408,32 @@ a loss.** "Refuse rather than guess" applies where there is a guess.
   count costs, not vertex count.**
 
 ## Validation
+
+- **Species Heat, 2026-09-30, deployed `1059d02` (`dpl_AUoMqG7AacPZUWJ3CjRHXwpkuu2p`, READY; canonical host confirmed serving it).**
+  Local: `npm test` exit 0 — **1,689 passing, 0 failing** across 14 suites
+  (18 in the new `surface-independence.test.ts`); `test:timezones` pass; lint 0
+  errors (10 warnings, down from 1 error + 11 on `heat-legible` as found);
+  typecheck clean; production build clean; `validate:seo`, content contract
+  (published and fixture), `check:bbs-surfaces`, `validate:us-coverage` pass;
+  `git diff --check` clean; hydration 8 pages × 3 browser time zones against a
+  UTC server pass. The three live-source checks cannot reach their hosts from
+  this container (403); run from a network-enabled Vercel Sandbox:
+  `check:intelligence-sources` pass, `check:ews-source` pass ("unchanged: 332
+  plots, 36 bundles"), `check:regulatory-sources` stops on Manitoba's changed
+  2026 guide (see Known Problems — upstream, untouched).
+  Browser, production: `certify-species-surface.mjs` **30/30** (390×844 and
+  1280×800, 4× CPU throttle): grouse requested 200 and painted, tap GHA 3A →
+  ruffed-grouse card → close keeps species, explore, date and surface; turkey
+  replaces grouse with no leak; mallard draws SAMPLE_PLOT + MODELLED_RASTER;
+  moose clears the heat and says "no fine-grained evidence held"; `!` markers
+  focusable. All 25 BBS species opened from their links: **25/25** requested 200
+  and painted. Search Maniwaki → card → close → regional view: surface painted,
+  53 green zones, 22 `!` markers, no extra surface request.
+  `certify-hunt-app.mjs` against production: 400 passed and 2 failed when
+  recorded (run still in progress) — the two failures are the stale legal-hours
+  assertions that fail identically on `23ed04d`; "X closes the card · the
+  species goes with the card" still passes outside the layer. GitHub CI run 181
+  on `main` (including the new species-surface step): success.
 
 - **Eastern Waterfowl Survey ingest, 2026-09-29** (private worktree, on
   `origin/main`): typecheck 0 errors; `npm test` exit 0, **1,615 passing, 0

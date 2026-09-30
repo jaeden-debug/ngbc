@@ -2449,9 +2449,13 @@ the `!` marker and the selected zone all remain readable through it.
   ANIMAL HEAT or SPECIES HEAT, with the evidence named beneath it. North
   Ground never manufactures density from an unrelated metric.
 - **Visualisation resolution may never exceed evidence resolution.** Point and
-  grid evidence may render as continuous intensity; zone-level evidence shades
-  the zone and **never paints hotspots inside it**; a range polygon shows range
-  and is never shaded into density.
+  grid evidence may render as continuous intensity; zone-level evidence
+  **never paints hotspots inside a zone**; a range polygon shows range and is
+  never shaded into density. *Amended 2026-09-30 (owner):* zone-level evidence
+  is not painted on the map at all — no hunting-zone-shaped heat, no
+  administrative polygon colouring. It is carried as supporting evidence, and a
+  species whose only evidence is zone-level shows no heat, with the key saying
+  so in words. Heat is requested by ground, never through the zones in view.
 - **Hunting pressure is not abundance.** Hunter counts and hunter-days measure
   effort, which tracks access, popularity and tradition as much as animals. If
   effort enters a derived score at all, the reason is documented and the
