@@ -1,1 +1,1 @@
-{ "builders": ["alberta"] }
+{ "builders": ["manitoba", "overlay-index"] }

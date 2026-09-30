@@ -526,6 +526,28 @@ for (const species of catalogueSpecies().map(({ speciesId, scientificName, takeE
 process.stdout.write(`\nBBS 2026 release · ${source.routes.size} routes · ${source.runs.size} surveyed ${WINDOW.from}-${WINDOW.through}\n`);
 process.stdout.write(`${matched.length} Hunt species matched to a survey species; ${unmatched.length} not covered by this survey.\n\n`);
 
+/*
+ * `--routes-out=DIR` writes each matched species' per-route values — the
+ * same zero-filled means the field is built from — and stops. A habitat model
+ * is fitted and validated against routes, not against the smoothed field it
+ * would otherwise be graded by. Surfaces are untouched.
+ */
+const routesOut = [...args].find((a) => a.startsWith("--routes-out="))?.split("=")[1];
+if (routesOut) {
+  mkdirSync(routesOut, { recursive: true });
+  for (const species of matched) {
+    if (only && species.id !== only) continue;
+    const { sites, detected } = sitesFor(species.aou, source);
+    writeFileSync(join(routesOut, `${species.id.replace("species:", "")}.json`), `${JSON.stringify({
+      speciesId: species.id, aou: species.aou, window: WINDOW, release: RELEASE.datasetIdentifier, detected,
+      columns: ["latitude", "longitude", "meanCount", "yearsRun"],
+      sites: sites.map((site) => [site.latitude, site.longitude, Number(site.value.toFixed(4)), site.occasions]),
+    })}\n`);
+  }
+  process.stdout.write(`route values written to ${routesOut}\n`);
+  process.exit(0);
+}
+
 if (reportOnly) {
   for (const species of matched) {
     const { sites, detected } = sitesFor(species.aou, source);
