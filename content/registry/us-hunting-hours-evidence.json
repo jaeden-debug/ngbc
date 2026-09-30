@@ -16,6 +16,20 @@
       "sourceId": "source:us-mt-upland-regulations-2026",
       "citation": "2026 Montana Upland Game Bird Hunting Regulations, p. 4",
       "detail": "Exact point times are calculated from the certified half-hour-before-sunrise to half-hour-after-sunset rule."
+    },
+    "WA": {
+      "status": "RULE_CERTIFIED_EXACT_CLOCK_UNAVAILABLE",
+      "basis": "AUTHORITY_TABLE",
+      "sourceId": "source:us-wa-wac-220-416-020",
+      "citation": "WAC 220-416-020(1)",
+      "detail": "WASHINGTON IS NOT A SOLAR-FORMULA STATE, and it reads like one. WAC 220-416-020(1) says \"The following tables show the lawful hunting hours (1/2 hour before sunrise to 1/2 hour after sunset)\" — the parenthetical states how the tables were BUILT; the tables are the rule. There are SEVEN of them, subsections (3) to (9), selected by the weekday 1 September falls on; each splits into Western and Eastern Washington with its own A.M. and P.M. columns; rows are week-long date bands; the table is explicitly partitioned into a daylight-saving block and a Pacific-standard block with one transition row; times are wall-clock rounded to five minutes. The rule is certified and cited. No exact clock is offered because the rows have not been transcribed, and computing one from the parenthetical would return times that disagree with the printed ones — which are the law. The AUTHORITY_TABLE basis exists to hold them when they are read."
+    },
+    "PA": {
+      "status": "RULE_CERTIFIED_EXACT_CLOCK_UNAVAILABLE",
+      "basis": "AUTHORITY_TABLE",
+      "sourceId": "source:us-pa-58-pa-code-141-4",
+      "citation": "58 Pa. Code § 141.4",
+      "detail": "A TABLE, ADJUSTED BY LONGITUDE, RE-ENACTED EVERY LICENCE YEAR. § 141.4: \"wild birds and mammals may be hunted 1/2 hour before sunrise to 1/2 hour after sunset AS ILLUSTRATED IN APPENDIX G\" — and Appendix G is a fixed statewide table of begin-A.M./end-P.M. clock times per date range for the licence year, plus a SECOND table for migratory game birds, with a codified longitude adjustment whose meridian bands Pennsylvania publishes as a GIS layer. Three things follow. (1) It is not a point solar calculation, so the AUTHORITY_TABLE basis is the correct one. (2) It is temporal in the strongest sense: § 141.4 was amended 29 May 2026, effective 1 July 2026 to 30 June 2027, 56 Pa.B. 3128, so the rule is re-enacted annually and must be evaluated against the hunt date rather than cached. (3) Its codified exceptions are not adjustments to one window but different windows: furbearers — raccoon, fox, skunk, opossum, coyote, bobcat, weasel — may be hunted ANY HOUR, DAY OR NIGHT; spring turkey runs to 12 noon until the third Saturday and to half an hour after sunset thereafter; migratory birds close AT SUNSET except in the snow goose conservation and September resident goose seasons. Also unresolved and recorded in the map findings: the meridian-band layer itself has 7 bands on the Commission's ArcGIS Online account and 6 on its own server."
     }
   }
 }

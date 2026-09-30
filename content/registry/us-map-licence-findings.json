@@ -400,11 +400,120 @@
         "permittedUse": "UNRESOLVED",
         "redistribution": "UNRESOLVED",
         "attribution": "Washington Department of Fish and Wildlife",
-        "note": "Accuracy and PRECEDENCE, no use terms. The operative sentence is Maine's rule in Washington's words: \"If any difference is found between the legal description for the Game Management Unit in the Pamphlet and what is represented in the feature class, the legal description language takes precedence.\" That is a statement about which artefact governs, not about reuse — so UNRESOLVED. It is also a scale limit worth heeding: created at 1:100,000, and the layer warns that finer zooms misrepresent the ground."
+        "note": "Recorded as UNRESOLVED, and the instrument matters. THE PRIMARY DATASET STATES NOTHING AT ALL: portal item 65685d864ee34d6b8ea758044fd4f512 'Game Management Units (Polygons) 2026' has licenseInfo NULL — absent, not an empty string — and ArcGIS Hub independently derives license 'none'. The scale-and-precedence text recorded in `statedAs` is from a DIFFERENT item, 'Game Management Units (Lines) 2026' (ed56d6d41cdc4c99ac558c557b9f95ad), and the Bighorn Sheep, Deer Area, Elk Area, Mountain Goat and Moose polygon items each repeat it with the unit name substituted. Naming the wrong instrument would make a precedence caveat look like the primary layer's terms. Washington is therefore Nevada's pattern rather than Utah's: it HAS written terms, on some items, that happen not to mention reuse — not a publisher that has stated nothing anywhere. The fullest statement located is WDFW's Hunt Planner \"Legal References and Disclaimer\", which promotes inter-agency data exchange and resource sharing and then disclaims liability; it grants nothing in terms."
       },
       "discovery": {
         "howFound": "Host geodataservices.wdfw.wa.gov, WDFW's own, owner WDFWAdministrator.",
         "twoLayersOneGeography": "The same service exposes \"GMU Generalized\" at 152 features and \"GMU Boundary\" at 1,688. 152 is the unit count; 1,688 is boundary SEGMENTS, each attributed with the ground feature it follows. Reading 1,688 as a unit count would overstate Washington elevenfold — the same class of error as counting Hawaii's safety zones as hunting areas."
+      },
+      "theFindThatOutweighsTheLicence": {
+        "service": "https://geodataservices.wdfw.wa.gov/arcgis/rest/services/WP_HuntPlanner/Regulation/MapServer",
+        "layer0": "UnitSpatial — 367 polygons, ONE layer covering every WDFW regulated hunting geography, not just GMUs.",
+        "layer1": "A STRUCTURED REGULATION TABLE, 30,621 records, on WDFW's own host. This is the highest-value single artifact found anywhere in the United States sweep: the regulations as data rather than as a PDF to be extracted. §44 asks for machine-readable authoritative data before scraping, and Washington published it.",
+        "speciesSpecificUnitLayers": {
+          "Bighorn Sheep Units": 20,
+          "Deer Areas": 19,
+          "Elk Areas": 37,
+          "Mountain Goat Units": 14,
+          "Moose Units": 11
+        },
+        "whyItIsRecordedHereAndNotActedOn": "A reachable, structured, authoritative artifact is not a licence to store it. The terms remain unresolved, so this is recorded as the reason to resolve them — it is the strongest case in the country for asking, and that ask is the owner's under the no-contact constraint."
+      }
+    },
+    {
+      "state": "PA",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Wildlife Management Unit (WMU)",
+        "service": "https://services1.arcgis.com/k8yxvICm95iIFicb/arcgis/rest/services/PGC_Boundaries/FeatureServer/301",
+        "unitCount": 22,
+        "definedBy": "58 Pa. Code Part III, Chapter 139 (Seasons and Bag Limits) and Chapter 141 (Hunting and Trapping), published on www.pacodeandbulletin.gov",
+        "theFeatureCountIsNotTheUnitCount": "The canonical layer returns 36 features for 22 units, and the vendor-map layer returns 23 for the same 22 — so BOTH published counts exceed the unit system, by different amounts. Pennsylvania is the fourth state in one pass where the feature count overstates the units."
+      },
+      "licence": {
+        "statedAs": "This map layer contains data, files, electronic information, accompanying documentation, and other information (hereinafter “Data”), created and/or complied by the Pennsylvania Game Commission (hereinafter “PGC”). The PGC should be clearly cited in any product derived from this Data. Any modifications to this Data must be described in any digital or hardcopy product derived therefrom. Furthermore, the User shall save the PGC and the Commonwealth of Pennsylvania (hereinafter “Commonwealth”) harmless from any suits, claims, or actions arising out of the use of the Data, or arising out of any defect in or of the Data. The PGC and the Commonwealth deny and exclude any and all implied warranties and make no warranty or representation whatsoever with respect to the Data, or with respect to the nature, quality, performance, merchantability, or fitness for a particular purpose or use of the same. Said Data is provided 'as is' and the User assumes the entire risk as to the nature, quality, performance, merchantability, or fitness for a particular purpose or use of the same. Those parties involved with the development and distribution of this Data will not be liable for any direct, indirect, special, incidental, or consequential damages arising out of the use of or inability to use the Data.",
+        "sha256": "sha256:9e1f2e3580399937f783cb94cc44608f54202fa30b1f213e967c6178d5f278d4",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/dcfad5b94e3245ca9a54f6ea1c804905?f=json",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "UNRESOLVED",
+        "redistribution": "UNRESOLVED",
+        "attribution": "Pennsylvania Game Commission",
+        "note": "CONDITIONS, NOT A REFUSAL — and I am recording a classification I do not share. The discovery pass classified this RESTRICTED. Read against its own words it is not: there is no prohibition on use, reproduction or redistribution anywhere in it. What it states is attribution (\"should be clearly cited in any product derived from this Data\"), a describe-your-changes condition, an indemnity and a warranty disclaimer. Both of the first two PRESUPPOSE that derived products are permissible — you cannot be required to cite and to describe modifications in a product you may not make. That is materially stronger than Oregon, which restricts alteration outright. But conditions are not a grant either, so UNRESOLVED both ways. §8 is explicit that a restriction stricter than the source is as false as a looser one, and RESTRICTED here would be the strict error: it would park a state whose publisher anticipates derived products.\n\nWHERE IT WAS FOUND MATTERS: the portal ITEM's licenseInfo, not the service. Service-level copyrightText on both PGC_Boundaries and PGC_Hunting_Boundaries is an EMPTY STRING — the New Mexico and Nevada pattern, where reading the service alone returns nothing and looks like silence. The same statement was independently read from four further PGC items (PGC Hunting Boundaries, DMAP Units, CWD, State Game Lands), so it is the account's standard text rather than one layer's."
+      },
+      "conflict": {
+        "state": "CONFLICT",
+        "finding": "TWO OF THE AUTHORITY'S OWN HOSTS DISAGREE, on two separate layers. Pennsylvania publishes from ArcGIS Online org k8yxvICm95iIFicb (account PAGameCommissionGIS) AND from its own on-premise server pgcmaps.pa.gov, and the two do not match:\n  Elk Hunt Zones   — 11 zones on ArcGIS Online, 14 on pgcmaps.pa.gov.\n  Hunting Hours    —  7 meridian bands on ArcGIS Online, 6 on pgcmaps.pa.gov.\nBoth hosts are the Game Commission's. Neither is obviously stale.",
+        "whyItIsNotResolvedHere": "Picking the larger count, the smaller count, or the newer modified date would each be an invention. §8 provides CONFLICT as a state precisely so that this is reportable without being decided, and the elk layer is the one that matters most: elk licences are allocated by zone, so answering 11 where the law uses 14 would send hunters to the wrong zone with a valid-looking answer.",
+        "whatWouldResolveIt": "58 Pa. Code § 139.18 defines the elk zones textually. Reading that section decides the elk conflict from the instrument rather than from either GIS copy. The hours bands resolve the same way, against Appendix G's own meridian figure.",
+        "doNotServeEitherUntilResolved": true
+      },
+      "discovery": {
+        "howFound": "Owner PAGameCommissionGIS in org k8yxvICm95iIFicb, plus the agency's own on-premise server pgcmaps.pa.gov. Recorded because my own discovery tool reported PENNSYLVANIA AS ZERO OWN-LAYERS — its owner regex missed this account entirely while 23 endpoints sat there. That false negative is why no state was ever recorded as \"searched and found nothing\" on the strength of that tool.",
+        "administrativeLayersRecordedSoTheyAreNotMistakenForRegulatory": "PGC Regions (6) and PGC Commissioner Districts (9) are administrative, not season-setting.",
+        "otherRegulatoryGeography": {
+          "Special Regulations Areas": 6,
+          "Elk Management Area": 1,
+          "Duck Zones": 4,
+          "Goose Zones": 3,
+          "Controlled Goose Areas": 2,
+          "DMAP Units": 180,
+          "CWD Disease Management Areas": 37,
+          "CWD Areas by season": 60,
+          "Cooperative Wildlife Management Areas": 60,
+          "Antler Restrictions Area Rules": 2
+        }
+      }
+    },
+    {
+      "state": "MO",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "COUNTY — Missouri publishes no statewide hunting-unit grid",
+        "service": "https://gisblue.mdc.mo.gov/arcgis/rest/services/Boundaries/Hunting_Zones/MapServer",
+        "unitCount": null,
+        "definedBy": "The Wildlife Code of Missouri, Title 3 (Department of Conservation), Division 10 (Conservation Commission), Chapter 7, published by the Missouri Secretary of State. The Code sets deer and turkey regulations BY COUNTY; 115 county polygons are the operative geography, and waterfowl uses its own zones.",
+        "theAbsenceIsTheFinding": "Missouri does not have a WMU/GMU/unit system, and looking for one is how a state gets recorded as having no geography when it has four. §9 warns against hard-coding one jurisdiction's terminology into a universal model, and Missouri is the case that bites: a resolver that requires a unit layer finds nothing here, while a resolver that accepts the authority's own geography finds counties, deer/turkey county rules and waterfowl zones. Counties are a published Census-and-state geography, so the usual objection — no official polygons — does not apply. What is missing is not geography; it is the zone service, below."
+      },
+      "reachability": {
+        "state": "TRANSPORT_BLOCKED",
+        "finding": "MDC's own hunting-zone service, gisblue.mdc.mo.gov/arcgis/rest/services/Boundaries/Hunting_Zones/MapServer, does not complete a connection at all — HTTP 0, no response, not a 4xx or 5xx. That service is the one holding Missouri's waterfowl and other published zone geography, so the zones cannot be read even though the county half of the geography can.",
+        "evidence": {
+          "huntingZonesMapServer": "HTTP 0 — no response",
+          "positiveControlSameSweep": "services1.arcgis.com/BEFhRGD6ppzvv08z .../Missouri_Counties/FeatureServer/0 returned 200 with 115 features, so the sweep's own fetching worked.",
+          "copyrightTextWhenPreviouslyReachable": "Missouri Department of Conservation (MDC)"
+        },
+        "whyNotWorkedAround": "There is no workaround that stays inside §8. A county layer is not a waterfowl zone, and substituting one for the other would answer a zone question with a geography the rule does not use. Nor is a third-party copy acceptable: §44 requires the authority's own service.",
+        "whatWouldUnblockIt": "The host responding. It is MDC's own server on MDC's own domain, so this is theirs to fix, and asking is the owner's under the no-contact constraint.",
+        "notTheSameAsLicenceBlocked": "Missouri's terms were partly readable and are recorded below. This is a transport failure on one service, not a refusal — the two are undone by completely different actions."
+      },
+      "termsReadElsewhere": {
+        "threeInstrumentsThatMustNotBeMerged": [
+          {
+            "instrument": "https://mdc.mo.gov/terms-use (HTTP 200)",
+            "statedAs": "You may not reproduce this site's text, images, or videos without the Department’s written permission.",
+            "readsOn": "SITE CONTENT — text, images, videos. An express prohibition, and the only express prohibition Missouri states. It does not name data, datasets, geometry or GIS services, and reading it onto them would be the merge this field exists to prevent: it would block Missouri on a sentence about photographs."
+          },
+          {
+            "instrument": "Missouri_Counties ArcGIS Online item licenseInfo",
+            "statedAs": "Although all data in this data set have been compiled by the Missouri Department of Agriculture, no warranty, expressed or implied, is made by the department as to the accuracy of the data…",
+            "readsOn": "A WARRANTY DISCLAIMER, and from a different department (Agriculture, not Conservation). It grants nothing and refuses nothing."
+          },
+          {
+            "instrument": "Hunting_Zones MapServer copyrightText",
+            "statedAs": "Missouri Department of Conservation (MDC)",
+            "readsOn": "An ATTRIBUTION string, complete and verbatim. Not terms at all."
+          }
+        ],
+        "conclusion": "So Missouri has one express prohibition that is about its website, one foreign-department warranty disclaimer, and one attribution string. No instrument states reuse terms for the hunting geography. Classifying the state RESTRICTED on the strength of the website sentence would be the strict error §8 forbids; classifying it permitted would be the loose one. The transport failure is what actually blocks it today."
+      },
+      "legalHours": {
+        "finding": "PER SPECIES, and one species states none. There is no single statewide hours rule. From the Wildlife Code, 3 CSR 10-7: deer 10-7.431(4), elk 10-7.700(3) and black bear 10-7.900(4) are each \"from one-half (1/2) hour before sunrise until one-half (1/2) hour after sunset\". Spring turkey 10-7.455(1)(A)1 runs to 1:00 p.m. CDT on PUBLIC land and to sunset on PRIVATE land. Migratory birds 10-7.440 — doves, rails, woodcock, snipe, ducks, coots and geese — close AT sunset. Rabbits 10-7.420(1) run BETWEEN sunrise and sunset. Squirrels 10-7.425 state a season and limits and NO HOURS AT ALL.",
+        "threeThingsThatBreakASingleModel": [
+          "The big-game window is asymmetric (half an hour before sunrise, half an hour AFTER sunset) while migratory birds close AT sunset. One offset pair cannot be both, and using the big-game pair for ducks would authorise shooting after legal light.",
+          "Spring turkey needs a PUBLIC-versus-PRIVATE LAND discriminator before its window can be stated, and its 1:00 p.m. cutoff is written in CDT — a named civil clock, not a solar term.",
+          "Squirrels state no hours. §8: that is an unresolved evidentiary gap, not a default. Filling it with the big-game rule would invent a restriction the Code does not impose, and filling it with sunrise-to-sunset would invent a different one."
+        ],
+        "whyNoStateLevelHoursRecordWasAdded": "The hours registry holds ONE record per state with one basis. Missouri does not have one basis, so any entry there would be a rounding of the source into the nearest existing field — exactly what §41A forbids. The registry's per-state shape is the limitation, and naming it here is the honest move; expanding it to per-species is real work and is not done by writing a wrong record now."
       }
     }
   ],

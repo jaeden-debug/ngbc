@@ -178,6 +178,16 @@ type MapLicenceFinding = {
   };
   /** A recorded decision NOT to serve a state whose licence is clear. */
   servingDecision?: { decidedOn: string; state: string; reason: string; askedOfAuthority?: string };
+  /**
+   * Two of the AUTHORITY'S OWN publications disagree about the same geography.
+   *
+   * Not a licence problem and not a transport problem — a fourth kind of
+   * blocker, and the only one where both copies are authentic. Pennsylvania
+   * publishes 11 elk hunt zones from its ArcGIS Online account and 14 from its
+   * own server. Picking either would be an invention, so §8's CONFLICT state
+   * carries it until the defining instrument is read.
+   */
+  conflict?: { state: "CONFLICT"; finding: string; whyItIsNotResolvedHere: string; whatWouldResolveIt: string; doNotServeEitherUntilResolved: boolean };
 };
 const findings = new Map((mapLicences.findings as MapLicenceFinding[]).map((finding) => [finding.state, finding]));
 

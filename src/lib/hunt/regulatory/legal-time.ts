@@ -42,10 +42,14 @@ export type LegalTimeBasis =
 /**
  * A jurisdiction's legal-time rule, as the authority states it.
  *
- * `AUTHORITY_TABLE` is deliberately absent: where an authority publishes its
- * own table of legal hunting times, THAT TABLE IS THE LAW AND OUR ASTRONOMY IS
- * NOT — the same rule as `DERIVED_FROM_LEGAL_DESCRIPTION` on zone geometry —
- * so it is supplied as read values, never computed here.
+ * `AUTHORITY_TABLE` is here and carries READ VALUES. Where an authority
+ * publishes its own table of legal hunting times, THAT TABLE IS THE LAW AND OUR
+ * ASTRONOMY IS NOT — the same rule as `DERIVED_FROM_LEGAL_DESCRIPTION` on zone
+ * geometry — so its rows are supplied as printed and no branch of this module
+ * computes them. It was declared as a basis and left without a rule variant,
+ * which meant a table-based jurisdiction could not be encoded at all; Washington
+ * and Pennsylvania are both table-based, so the gap was the thing standing
+ * between them and an answer.
  */
 export type LegalTimeRule =
   | {
@@ -83,6 +87,62 @@ export type LegalTimeRule =
    * computing either from a general sunrise-to-sunset rule overshoots by
    * hours — Ontario's by about two in mid-May.
    */
+  /*
+   * A WINDOW THE AUTHORITY PUBLISHED AS A CLOCK TABLE, READ RATHER THAN COMPUTED.
+   *
+   * Two states settled this, and both look at a glance like solar rules:
+   *
+   *   Washington  WAC 220-416-020 opens "The following tables show the lawful
+   *               hunting hours (1/2 hour before sunrise to 1/2 hour after
+   *               sunset)". The parenthetical states the PRINCIPLE; the tables
+   *               are the RULE. There are SEVEN of them, selected by the
+   *               weekday 1 September falls on, each split into Western and
+   *               Eastern Washington, in week-long date bands, partitioned into
+   *               daylight-saving and standard-time blocks, rounded to five
+   *               minutes.
+   *   Pennsylvania 58 Pa. Code § 141.4 reads "1/2 hour before sunrise to 1/2
+   *               hour after sunset AS ILLUSTRATED IN APPENDIX G", and Appendix
+   *               G is a fixed statewide table of begin/end clock times per
+   *               date range, then adjusted by longitude band.
+   *
+   * Taking either parenthetical as a formula is the error §41A names: rounding
+   * the source into the nearest existing field. Our astronomy would return
+   * times that DISAGREE with the authority's printed ones, and the printed ones
+   * are the law. So the rows are read values and this branch computes nothing.
+   *
+   * Dates are ABSOLUTE rather than "week 3 of the season", which is what makes
+   * one shape serve both: Washington's seven weekday variants are seven
+   * different sets of absolute dates, so choosing the table is just finding the
+   * row that contains the hunt date. It also forces the temporal fact into the
+   * open — a licence year whose table has not been read has no rows, and gets
+   * an explicit refusal instead of a computed guess.
+   */
+  | {
+      basis: "AUTHORITY_TABLE";
+      /**
+       * Rows exactly as printed, each covering an inclusive date range.
+       *
+       * `area` is the authority's OWN geographic split where it has one
+       * (Washington's "Western Washington", Pennsylvania's meridian bands) and
+       * is absent where the table is statewide.
+       */
+      rows: ReadonlyArray<{
+        from: IsoDate;
+        to: IsoDate;
+        area?: string;
+        opensAt: string;
+        closesAt: string;
+      }>;
+      /**
+       * Which area's rows bind here, resolved BEFORE this rule is built — by
+       * the authority's own published band geometry, never by guessing from a
+       * longitude. Absent only where the table itself is statewide.
+       */
+      area?: string;
+      statedAs: string;
+      section: string;
+      sourceId: CanonicalId<"source">;
+    }
   | {
       basis: "SUNRISE_OFFSET_TO_FIXED_CLOSE";
       /** Minutes before sunrise the window opens. */
@@ -248,6 +308,34 @@ export function legalTimeFor(
   }
 
   const [year, month, day] = date.split("-").map(Number);
+
+  if (rule.basis === "AUTHORITY_TABLE") {
+    /* Read, never computed. Placed here, above every solar term, so there is
+       no path from a table-based jurisdiction into our astronomy. */
+    const row = rule.rows.find((entry) =>
+      entry.from <= date && date <= entry.to && (rule.area === undefined || entry.area === rule.area));
+    if (!row) {
+      /* The authority publishes a table and it does not cover this date. That
+         is an answer about the table, not a licence to calculate one: §8's
+         "could not find" is never "there is none". */
+      return legalTimeNotCertified(
+        `${rule.section} states legal hunting hours as a published table${rule.area ? ` for ${rule.area}` : ""}, ` +
+          `and North Ground has not read a row covering ${date}. The authority's own table is the law here, so no ` +
+          "window is computed from sunrise and sunset.",
+        "North Ground",
+        rule.sourceId,
+      );
+    }
+    return {
+      status: "RESOLVED",
+      basis: rule.basis,
+      window: { opensAt: row.opensAt, closesAt: row.closesAt },
+      timezone, date, statedAs: rule.statedAs, section: rule.section, sourceId: rule.sourceId,
+      /* No solar term was evaluated, so there is no solar uncertainty to
+         absorb; the margin would be a claim about arithmetic we did not do. */
+      precision: { marginMinutes: 0, appliedInward: true, algorithm: "none" },
+    };
+  }
 
   if (rule.basis === "FIXED_LOCAL_TIMES") {
     /* No solar term, so no solar uncertainty: the times are the law's own. */

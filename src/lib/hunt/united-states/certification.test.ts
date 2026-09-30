@@ -55,7 +55,7 @@ test("all 50 states and D.C. are reported, and every one is counted once per lan
   /* Arizona joined when its service was probed and found to present a
      certificate expired since 2022. The list grows as states gain evidence of
      ANY kind, which includes evidence that a source cannot be used. */
-  assert.deepEqual(statesWithEvidence(), ["AZ", "CO", "HI", "ID", "ME", "MI", "MN", "MT", "ND", "NM", "NV", "NY", "OR", "SD", "UT", "WA", "WI", "WY"]);
+  assert.deepEqual(statesWithEvidence(), ["AZ", "CO", "HI", "ID", "ME", "MI", "MN", "MO", "MT", "ND", "NM", "NV", "NY", "OR", "PA", "SD", "UT", "WA", "WI", "WY"]);
   assert.equal(summary.states.length, 51);
   assert.equal(new Set(summary.states.map((entry) => entry.code)).size, 51);
   for (const lane of [summary.totals.map, summary.totals.regulations, summary.totals.intelligence]) {
@@ -65,7 +65,7 @@ test("all 50 states and D.C. are reported, and every one is counted once per lan
      because it refuses redistribution outright; Oregon and Washington are,
      because their terms are unresolved. A state is on this list when its
      geometry cannot be served, never merely because somebody read its page. */
-  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["CO", "ME", "MN", "MT", "ND", "NM", "NV", "NY", "OR", "SD", "UT", "WA", "WI", "WY"]);
+  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["CO", "ME", "MN", "MT", "ND", "NM", "NV", "NY", "OR", "PA", "SD", "UT", "WA", "WI", "WY"]);
   assert.ok(!summary.licenceBlocked.some((entry) => entry.code === "HI"), "a permissive licence is not a blocker");
   /* Served is counted from the layers themselves, never asserted as a
      constant: a state counts as served exactly when its layers say so. */
@@ -222,4 +222,41 @@ test("a feature count is never taken as a unit count", () => {
     assert.equal(mapLicenceFindingFor(code)!.geography.unitCount, expected, `${code} records units, not features`);
   }
   assert.match(mapLicenceFindingFor("OR")!.geography.theFeatureCountIsNotTheUnitCount!, /69 features/);
+});
+
+test("two states are blocked by transport, and neither is mistaken for a refusal", () => {
+  /* Arizona's service presents a certificate expired since 2022; Missouri's own
+     hunting-zone host does not complete a connection at all (HTTP 0 — not a 4xx
+     or 5xx, so not even an answer). Both are TRANSPORT_BLOCKED, and the point of
+     the separate state is that neither is undone by reading a licence. */
+  for (const code of ["AZ", "MO"]) {
+    assert.equal(certificationFor(code).map.status, "TRANSPORT_BLOCKED", `${code} is blocked by transport`);
+    const finding = mapLicenceFindingFor(code)!;
+    assert.equal(finding.reachability!.state, "TRANSPORT_BLOCKED");
+    /* An unreachable host proves nothing on its own: the same output comes from
+       a broken fetcher. Each one carries the control that discriminates. */
+    assert.ok(Object.keys(finding.reachability!.evidence).length >= 2, `${code} records more than the failure itself`);
+  }
+  /* And Missouri's real finding is not the outage: it is that Missouri publishes
+     no unit grid at all. A resolver demanding one finds nothing in a state whose
+     authority sets deer and turkey rules by county. */
+  assert.match(mapLicenceFindingFor("MO")!.geography.term, /COUNTY/);
+  assert.equal(mapLicenceFindingFor("MO")!.geography.unitCount, null, "no unit count, because there are no units");
+});
+
+test("where the authority's own two hosts disagree, neither is served", () => {
+  /* Pennsylvania publishes from its ArcGIS Online account AND from its own
+     server, and they disagree on two layers: 11 elk hunt zones against 14, and
+     7 hunting-hours meridian bands against 6. Elk licences are allocated BY
+     ZONE, so answering 11 where the law uses 14 would route hunters to the wrong
+     zone with an answer that looks entirely normal.
+
+     §8 provides CONFLICT so this is reportable without being decided. Choosing
+     the larger, the smaller or the more recently modified copy would each be an
+     invention dressed as a resolution. */
+  const conflict = mapLicenceFindingFor("PA")!.conflict!;
+  assert.equal(conflict.state, "CONFLICT");
+  assert.equal(conflict.doNotServeEitherUntilResolved, true);
+  assert.match(conflict.whatWouldResolveIt, /139\.18/, "resolved from the instrument, not from either GIS copy");
+  assert.equal(certificationFor("PA").map.layers.length, 0, "nothing is served while it stands");
 });
