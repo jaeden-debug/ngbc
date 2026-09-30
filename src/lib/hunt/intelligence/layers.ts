@@ -14,7 +14,7 @@ export interface IntelligenceLayerDefinition {
 /** Product vocabulary only. Availability comes from the coverage registry. */
 export const INTELLIGENCE_LAYERS: readonly IntelligenceLayerDefinition[] = [
   { id: "management-zones", label: "Management Zones", group: "HUNTING", modes: ["EXPLORE", "CHECK_HUNT"], temporal: false, legalDecision: false, description: "Official management geography; geometry standing is shown separately." },
-  { id: "specie-heat-map", label: "SPECIE HEAT MAP", group: "HUNTING", modes: ["FIND_GAME"], temporal: true, legalDecision: false, description: "Relative evidence about where to investigate, never a legality or presence guarantee." },
+  { id: "species-heat", label: "SPECIES HEAT", group: "HUNTING", modes: ["FIND_GAME"], temporal: true, legalDecision: false, description: "Relative evidence about where to investigate, never a legality or presence guarantee." },
   { id: "open-seasons", label: "Open Seasons", group: "HUNTING", modes: ["CHECK_HUNT"], temporal: true, legalDecision: true, description: "Canonical regulatory-engine results only." },
   { id: "crown-public-land", label: "Crown/Public Land", group: "LAND", modes: ["EXPLORE", "FIND_GAME"], temporal: true, legalDecision: false, description: "Ownership context; never synonymous with access or permission to hunt." },
   { id: "potential-hunting-areas", label: "Potential Hunting Areas", group: "LAND", modes: ["FIND_GAME"], temporal: true, legalDecision: false, description: "Explainable planning intersections that still require Hunt evaluation." },

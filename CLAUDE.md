@@ -2414,7 +2414,7 @@ legal closure unless an authoritative rule or order says so.
 
 ## Heat is a real-data spatial species-intelligence layer
 
-*Decided 2026-09-29 (owner). This sharpens the SPECIE HEAT MAP section below; it
+*Decided 2026-09-29 (owner). This sharpens the SPECIES HEAT section below; it
 does not replace it.*
 
 The heat layer is a genuine, source-backed, refreshable spatial wildlife
@@ -2446,7 +2446,7 @@ the `!` marker and the selected zone all remain readable through it.
   is harvest density; habitat suitability is habitat suitability; occurrence
   probability is occurrence probability. **Only a source measuring animals per
   unit area may be called population density.** The consumer-facing umbrella is
-  ANIMAL HEAT or SPECIE HEAT MAP, with the evidence named beneath it. North
+  ANIMAL HEAT or SPECIES HEAT, with the evidence named beneath it. North
   Ground never manufactures density from an unrelated metric.
 - **Visualisation resolution may never exceed evidence resolution.** Point and
   grid evidence may render as continuous intensity; zone-level evidence shades
@@ -2725,7 +2725,7 @@ Hunt evaluation. It never claims every point is legally huntable.
 
 Layer controls are organized around hunter questions rather than a flat list:
 
-- **HUNTING** — Specie Heat Map, Open Seasons, Management Zones
+- **HUNTING** — Species Heat, Open Seasons, Management Zones
 - **LAND** — Crown/Public Land, Private Land, Potential Hunting Areas,
   Protected/Restricted Areas
 - **ACCESS** — Roads & Trails, Parking / Access Points, Boat Launches
