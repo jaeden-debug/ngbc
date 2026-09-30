@@ -1,0 +1,147 @@
+{
+  "id": "foundation:landcover-cgls-lc100-2019-0.1deg",
+  "version": "1.0.0",
+  "description": "Share of each 0.1 degree cell in eighteen cover groups, from the Copernicus Global Land Service 100 m land cover map, 2019. A histogram of the source per cell, not a model.",
+  "grid": {
+    "west": -170.0,
+    "east": -50.0,
+    "south": 24.0,
+    "north": 84.0,
+    "cell": 0.1,
+    "columns": 1200,
+    "rows": 600,
+    "rowOrder": "NORTH_TO_SOUTH",
+    "layout": "row, column, group; uint8 percent"
+  },
+  "groups": [
+    {
+      "name": "NEEDLELEAF_CLOSED",
+      "sourceCodes": [
+        111,
+        113
+      ]
+    },
+    {
+      "name": "NEEDLELEAF_OPEN",
+      "sourceCodes": [
+        121,
+        123
+      ]
+    },
+    {
+      "name": "BROADLEAF_CLOSED",
+      "sourceCodes": [
+        112,
+        114
+      ]
+    },
+    {
+      "name": "BROADLEAF_OPEN",
+      "sourceCodes": [
+        122,
+        124
+      ]
+    },
+    {
+      "name": "MIXED_CLOSED",
+      "sourceCodes": [
+        115
+      ]
+    },
+    {
+      "name": "MIXED_OPEN",
+      "sourceCodes": [
+        125
+      ]
+    },
+    {
+      "name": "FOREST_UNKNOWN",
+      "sourceCodes": [
+        116,
+        126
+      ]
+    },
+    {
+      "name": "SHRUB",
+      "sourceCodes": [
+        20
+      ]
+    },
+    {
+      "name": "HERBACEOUS",
+      "sourceCodes": [
+        30
+      ]
+    },
+    {
+      "name": "CROPLAND",
+      "sourceCodes": [
+        40
+      ]
+    },
+    {
+      "name": "BUILT",
+      "sourceCodes": [
+        50
+      ]
+    },
+    {
+      "name": "BARE_SPARSE",
+      "sourceCodes": [
+        60
+      ]
+    },
+    {
+      "name": "SNOW_ICE",
+      "sourceCodes": [
+        70
+      ]
+    },
+    {
+      "name": "WATER",
+      "sourceCodes": [
+        80
+      ]
+    },
+    {
+      "name": "HERBACEOUS_WETLAND",
+      "sourceCodes": [
+        90
+      ]
+    },
+    {
+      "name": "MOSS_LICHEN",
+      "sourceCodes": [
+        100
+      ]
+    },
+    {
+      "name": "SEA",
+      "sourceCodes": [
+        200
+      ]
+    },
+    {
+      "name": "NO_DATA",
+      "sourceCodes": [
+        0,
+        255
+      ]
+    }
+  ],
+  "source": {
+    "title": "Copernicus Global Land Service: Land Cover 100m, collection 3, epoch 2019 (discrete classification)",
+    "url": "https://zenodo.org/api/records/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_Discrete-Classification-map_EPSG-4326.tif/content",
+    "doi": "10.5281/zenodo.3939050",
+    "sha256": "sha256:b2203d6dd8b6918e27cd1413e7dfec4a9e4ce03dbf50f209d7f04c550c23cf53",
+    "licence": "CC BY 4.0",
+    "resolution": "100 m (1/1008 degree)",
+    "epoch": 2019,
+    "attribution": "Contains modified Copernicus Global Land Service information (2019). Buchhorn, M. et al., Copernicus Global Land Service: Land Cover 100m: collection 3: epoch 2019: Globe."
+  },
+  "artifact": {
+    "file": "landcover-2019-0.1deg.u8.gz",
+    "sha256": "sha256:777678b4d6e4bae78f451737b034fda34cd1565f602f15acecc5e8ad1bf7de13",
+    "bytes": 1745929
+  }
+}

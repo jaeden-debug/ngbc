@@ -1,2 +1,4 @@
-scripts/fetch-manitoba-guide.mjs --out .research/manitoba-guide
-scripts/probe-research-sources.mjs --out .research/probe
+scripts/fetch-unit-boundaries.mjs --out .research/units
+scripts/build-bbs-surface.mjs --routes-out=.research/bbs-routes
+scripts/fetch-gbif-presence.mjs --out .research/gbif
+LANDCOVER

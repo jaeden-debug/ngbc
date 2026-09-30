@@ -1,15 +1,49 @@
-== node scripts/fetch-manitoba-guide.mjs --out .research/manitoba-guide
-current sha256:402f9485f00a89b42ad54fbfed46047bddc56b5d398e081b17c4a817c32607ed (21667342 B); 20 captures; transcribed version FOUND in the Archive
-== node scripts/probe-research-sources.mjs --out .research/probe
-(node:2167) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/ngbc/ngbc/src/lib/hunt/intelligence/species-catalogue.ts is not specified and it doesn't parse as CommonJS.
+== node scripts/fetch-unit-boundaries.mjs --out .research/units
+ca-ab-wmu: 198 units
+ca-on-wmu: 0 units
+ca-bc-mu: 225 units
+== node scripts/build-bbs-surface.mjs --routes-out=.research/bbs-routes
+  downloading Routes.csv …
+(node:2390) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/ngbc/ngbc/src/lib/hunt/intelligence/species-catalogue.ts is not specified and it doesn't parse as CommonJS.
 Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
 To eliminate this warning, add "type": "module" to /home/runner/work/ngbc/ngbc/package.json.
 (Use `node --trace-warnings ...` to show where the warning was created)
-ok   landcover-zenodo.json
-ok   landcover-3939050.json
-ok   landcover-terms.json
-FAIL gbif-species.json: HTTP 429 https://api.gbif.org/v1/occurrence/search?taxonKey=2435246&country=CA&country=US&hasCoordinate=true&hasGeospatialIssue=false&occurrenceStatus=PRESENT&year=2000,2026&limit=0
-ok   gbif-licence-facet.json
-ok   gbif-adhoc-4326-z1.json
-ok   gbif-adhoc-4326-z2-bounds.json
-ok   gbif-density-4326-z2.json
+  downloading Weather.csv …
+  downloading SpeciesList.csv …
+  downloading States.zip …
+reading the survey …
+
+BBS 2026 release · 5845 routes · 4121 surveyed 2016-2025
+76 Hunt species matched to a survey species; 57 not covered by this survey.
+
+route values written to .research/bbs-routes
+== node scripts/fetch-gbif-presence.mjs --out .research/gbif
+(node:2412) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/ngbc/ngbc/src/lib/hunt/intelligence/species-catalogue.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/runner/work/ngbc/ngbc/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+species:aberts-squirrel                    570 open records · 26 squares · 13 datasets
+species:american-badger                    760 open records · 212 squares · 30 datasets
+file:///home/runner/work/ngbc/ngbc/scripts/fetch-gbif-presence.mjs:58
+      if (attempt === 6) throw new Error(`${url.slice(0, 180)}: ${error.message}`);
+                               ^
+
+Error: https://api.gbif.org/v2/map/occurrence/adhoc/3/1/0.mvt?srs=EPSG:4326&bin=square&squareSize=64&taxonKey=2441176&country=CA&country=US&license=CC0_1_0&license=CC_BY_4_0&hasCoordinate: HTTP 400
+    at get (file:///home/runner/work/ngbc/ngbc/scripts/fetch-gbif-presence.mjs:58:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async file:///home/runner/work/ngbc/ngbc/scripts/fetch-gbif-presence.mjs:89:27
+
+Node.js v22.23.2
+== land-cover foundation
+row 50/600
+row 100/600
+row 150/600
+row 200/600
+row 250/600
+row 300/600
+row 350/600
+row 400/600
+row 450/600
+row 500/600
+row 550/600
+{"file": "landcover-2019-0.1deg.u8.gz", "sha256": "sha256:777678b4d6e4bae78f451737b034fda34cd1565f602f15acecc5e8ad1bf7de13", "bytes": 1745929}
