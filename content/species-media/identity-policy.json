@@ -1,0 +1,536 @@
+{
+  "$comment": "Species-image identity policy. Read by src/lib/species-media/provider/identity.ts. Each entry records WHY a name cannot identify a photograph on its own. It tightens identification and never loosens the catalogue: identity still comes from the canonical species record. This is presentation metadata and has no bearing on legality.",
+  "species": {
+    "species:ermine": {
+      "requireScientificName": true,
+      "note": "After the 2021 split, 'ermine', 'stoat' and 'short-tailed weasel' name Mustela erminea and M. richardsonii alike; a photo's continent is not in its caption."
+    },
+    "species:american-ermine": {
+      "requireScientificName": true,
+      "note": "Shares 'ermine', 'stoat' and 'short-tailed weasel' with Mustela erminea; most 'stoat' photos are Eurasian M. erminea."
+    },
+    "species:mexican-duck": {
+      "requireScientificName": true,
+      "note": "Near-identical to a female mallard; 'Mexican duck' was long a mallard subspecies name."
+    },
+    "species:feral-goat": {
+      "requireScientificName": true,
+      "note": "Every alias ('hill goat', 'Spanish goat', 'wood goat'…) also describes domestic goats."
+    },
+    "species:feral-sheep": {
+      "requireScientificName": true,
+      "note": "A sheep photograph cannot show that the animal is feral."
+    },
+    "species:new-england-cottontail": {
+      "requireScientificName": true,
+      "note": "Separable from the eastern cottontail only by skull or DNA."
+    },
+    "species:appalachian-cottontail": {
+      "requireScientificName": true,
+      "note": "Separable from the eastern cottontail only by skull or DNA."
+    },
+    "species:western-gray-squirrel": {
+      "requireScientificName": true,
+      "note": "Introduced eastern gray squirrels share its range and are routinely called 'gray squirrel'."
+    },
+    "species:arizona-gray-squirrel": {
+      "requireScientificName": true,
+      "note": "Near-identical to other gray squirrels."
+    },
+    "species:northern-flying-squirrel": {
+      "requireScientificName": true,
+      "note": "Near-identical to the southern flying squirrel."
+    },
+    "species:southern-flying-squirrel": {
+      "requireScientificName": true,
+      "note": "Near-identical to the northern flying squirrel."
+    },
+    "species:wyoming-ground-squirrel": {
+      "requireScientificName": true,
+      "note": "Near-identical to Richardson's and Uinta ground squirrels."
+    },
+    "species:uinta-ground-squirrel": {
+      "requireScientificName": true,
+      "note": "Near-identical to Wyoming and Belding's ground squirrels."
+    },
+    "species:beldings-ground-squirrel": {
+      "requireScientificName": true,
+      "note": "Near-identical to Uinta and Wyoming ground squirrels."
+    },
+    "species:white-tailed-prairie-dog": {
+      "requireScientificName": true,
+      "note": "Near-identical to Gunnison's prairie dog."
+    },
+    "species:gunnisons-prairie-dog": {
+      "requireScientificName": true,
+      "note": "Near-identical to the white-tailed prairie dog."
+    },
+    "species:alaska-marmot": {
+      "requireScientificName": true,
+      "note": "Near-identical to the hoary marmot."
+    },
+    "species:collared-pika": {
+      "requireScientificName": true,
+      "note": "Most 'pika' photographs are American pika."
+    },
+    "species:western-spotted-skunk": {
+      "requireScientificName": true,
+      "note": "Near-identical to the eastern spotted skunk."
+    },
+    "species:eastern-spotted-skunk": {
+      "requireScientificName": true,
+      "note": "Near-identical to the western spotted skunk."
+    },
+    "species:pacific-marten": {
+      "requireScientificName": true,
+      "note": "Near-identical to the American marten."
+    },
+    "species:gunnison-sage-grouse": {
+      "requireScientificName": true,
+      "note": "Protected lookalike of the greater sage-grouse; separable only on fine plumage detail."
+    },
+    "species:lesser-prairie-chicken": {
+      "requireScientificName": true,
+      "note": "Near-identical to the greater prairie-chicken."
+    },
+    "species:dusky-grouse": {
+      "requireScientificName": true,
+      "note": "Split from the sooty grouse in 2006; the two are near-identical."
+    },
+    "species:sooty-grouse": {
+      "requireScientificName": true,
+      "note": "Split from the dusky grouse in 2006; the two are near-identical."
+    },
+    "species:white-tailed-ptarmigan": {
+      "requireScientificName": true,
+      "note": "In winter plumage indistinguishable from rock and willow ptarmigan at rest."
+    },
+    "species:japanese-quail": {
+      "requireScientificName": true,
+      "note": "Near-identical to the common quail; most photographs show domestic birds."
+    },
+    "species:rock-partridge": {
+      "requireScientificName": true,
+      "note": "Near-identical to the chukar."
+    },
+    "species:king-rail": {
+      "requireScientificName": true,
+      "note": "Near-identical to the clapper rail."
+    },
+    "species:clapper-rail": {
+      "requireScientificName": true,
+      "note": "Near-identical to the king rail."
+    },
+    "species:fish-crow": {
+      "requireScientificName": true,
+      "note": "Separable from the American crow by voice, not by photograph."
+    },
+    "species:trumpeter-swan": {
+      "requireScientificName": true,
+      "note": "Protected lookalike; separable from the tundra swan only by bill detail."
+    },
+    "species:tundra-swan": {
+      "requireScientificName": true,
+      "note": "Separable from the trumpeter swan only by bill detail."
+    },
+    "species:ringed-turtle-dove": {
+      "requireScientificName": true,
+      "note": "A domestic form easily confused with the Eurasian collared-dove."
+    },
+    "species:cottonmouth": {
+      "requireScientificName": true,
+      "note": "Water snakes are routinely photographed and captioned as cottonmouths."
+    },
+    "species:black-kingsnake": {
+      "requireScientificName": true,
+      "note": "The catalogue pairs 'black kingsnake' with Lampropeltis getula; in current usage that name belongs to L. nigra, so the common name cannot identify this record."
+    },
+    "species:pascagoula-map-turtle": {
+      "requireScientificName": true,
+      "note": "Near-identical to other map turtles."
+    },
+    "species:alabama-map-turtle": {
+      "requireScientificName": true,
+      "note": "Near-identical to other map turtles."
+    },
+    "species:ouachita-map-turtle": {
+      "requireScientificName": true,
+      "note": "Near-identical to other map turtles."
+    },
+    "species:mississippi-map-turtle": {
+      "requireScientificName": true,
+      "note": "Near-identical to other map turtles."
+    },
+    "species:american-bison": {
+      "extraNames": [
+        "plains bison",
+        "wood bison"
+      ],
+      "ambiguousNames": [
+        "bison",
+        "buffalo"
+      ],
+      "note": "'bison' also names the European bison; 'buffalo' names water and African buffalo."
+    },
+    "species:north-american-porcupine": {
+      "extraNames": [
+        "canadian porcupine",
+        "american porcupine"
+      ],
+      "ambiguousNames": [
+        "porcupine"
+      ],
+      "note": "'porcupine' alone also names the Old World crested porcupines."
+    },
+    "species:virginia-opossum": {
+      "ambiguousNames": [
+        "opossum",
+        "possum"
+      ],
+      "note": "'possum' is Australia's brushtail; 'opossum' also names the common opossum of Latin America."
+    },
+    "species:north-american-river-otter": {
+      "ambiguousNames": [
+        "river otter"
+      ],
+      "note": "'river otter' is also used for the Eurasian otter."
+    },
+    "species:common-snapping-turtle": {
+      "ambiguousNames": [
+        "snapping turtle"
+      ],
+      "note": "'snapping turtle' also covers the alligator snapping turtle."
+    },
+    "species:american-bullfrog": {
+      "ambiguousNames": [
+        "bullfrog"
+      ],
+      "note": "'bullfrog' also names the African bullfrog."
+    },
+    "species:milksnake": {
+      "extraNames": [
+        "eastern milk snake"
+      ],
+      "ambiguousNames": [
+        "milksnake",
+        "milk snake"
+      ],
+      "note": "The 2014 split divided 'milk snake' among several species."
+    },
+    "species:eastern-copperhead": {
+      "ambiguousNames": [
+        "copperhead"
+      ],
+      "note": "'copperhead' also names the unrelated Australian copperheads."
+    },
+    "species:red-deer": {
+      "ambiguousNames": [
+        "elk",
+        "wapiti"
+      ],
+      "note": "The canonical record lists 'elk' and 'wapiti', which in North American captions mean Cervus canadensis. 'Red deer' is Cervus elaphus's established English name, not a description.",
+      "allowGenericNames": [
+        "red deer"
+      ]
+    },
+    "species:axis-deer": {
+      "extraNames": [
+        "chital"
+      ],
+      "note": "'chital' is the Indian name for the same species."
+    },
+    "species:gemsbok": {
+      "queryHint": "gemsbok oryx",
+      "ambiguousNames": [
+        "oryx"
+      ],
+      "note": "'oryx' alone names several species."
+    },
+    "species:sambar": {
+      "queryHint": "sambar deer",
+      "note": "'sambar' is also a South Indian dish."
+    },
+    "species:ringtail": {
+      "queryHint": "ringtail cat Bassariscus",
+      "note": "'ringtail' also names ring-tailed lemurs and ringtail possums."
+    },
+    "species:sora": {
+      "queryHint": "sora rail",
+      "note": "'Sora' is also a personal name."
+    },
+    "species:sidewinder": {
+      "queryHint": "sidewinder rattlesnake"
+    },
+    "species:stinkpot": {
+      "queryHint": "common musk turtle"
+    },
+    "species:hellbender": {
+      "queryHint": "hellbender salamander"
+    },
+    "species:mudpuppy": {
+      "queryHint": "mudpuppy salamander"
+    },
+    "species:ensatina": {
+      "queryHint": "ensatina salamander"
+    },
+    "species:coachwhip": {
+      "queryHint": "coachwhip snake"
+    },
+    "species:chukar": {
+      "queryHint": "chukar partridge"
+    },
+    "species:woodchuck": {
+      "queryHint": "groundhog woodchuck"
+    },
+    "species:common-murre": {
+      "extraNames": [
+        "common guillemot"
+      ],
+      "note": "'common guillemot' is the British name for the same species."
+    },
+    "species:thick-billed-murre": {
+      "extraNames": [
+        "brunnichs guillemot"
+      ],
+      "note": "Brünnich's guillemot is the British name for the same species."
+    },
+    "species:common-merganser": {
+      "extraNames": [
+        "goosander"
+      ],
+      "note": "'goosander' is the British name for the same species."
+    },
+    "species:european-starling": {
+      "extraNames": [
+        "common starling"
+      ],
+      "note": "'common starling' is the same species."
+    },
+    "species:gophersnake": {
+      "extraNames": [
+        "bullsnake"
+      ],
+      "note": "The bullsnake is a gophersnake subspecies."
+    },
+    "species:american-alligator": {
+      "ambiguousNames": [
+        "gator"
+      ],
+      "note": "'gator' is used loosely for crocodilians."
+    },
+    "species:mountain-lion": {
+      "ambiguousNames": [
+        "puma"
+      ],
+      "note": "'Puma' is also a brand."
+    },
+    "species:striped-skunk": {
+      "allowGenericNames": [
+        "striped skunk"
+      ],
+      "note": "The established name of Mephitis mephitis; the spotted and hog-nosed skunks look nothing like it."
+    }
+  },
+  "externalLookalikes": [
+    "whooper swan",
+    "bewicks swan",
+    "black swan",
+    "black necked swan",
+    "eurasian coot",
+    "common coot",
+    "common moorhen",
+    "moorhen",
+    "purple swamphen",
+    "australasian swamphen",
+    "western swamphen",
+    "pacific black duck",
+    "grey teal",
+    "chestnut teal",
+    "australian wood duck",
+    "mandarin duck",
+    "tufted duck",
+    "common pochard",
+    "ferruginous duck",
+    "red crested pochard",
+    "garganey",
+    "common shelduck",
+    "ruddy shelduck",
+    "smew",
+    "common scoter",
+    "velvet scoter",
+    "plumed whistling duck",
+    "wandering whistling duck",
+    "spotted whistling duck",
+    "lesser whistling duck",
+    "white faced whistling duck",
+    "greylag goose",
+    "bar headed goose",
+    "barnacle goose",
+    "pink footed goose",
+    "bean goose",
+    "swan goose",
+    "chinese goose",
+    "red breasted goose",
+    "cape barren goose",
+    "eurasian crane",
+    "common crane",
+    "red crowned crane",
+    "demoiselle crane",
+    "grey crowned crane",
+    "gray crowned crane",
+    "brolga",
+    "sarus crane",
+    "wood stork",
+    "great egret",
+    "great white egret",
+    "black grouse",
+    "capercaillie",
+    "western capercaillie",
+    "hazel grouse",
+    "red grouse",
+    "golden pheasant",
+    "lady amherst pheasant",
+    "lady amhersts pheasant",
+    "silver pheasant",
+    "reeves pheasant",
+    "reevess pheasant",
+    "copper pheasant",
+    "green peafowl",
+    "common quail",
+    "african collared dove",
+    "laughing dove",
+    "common wood pigeon",
+    "wood pigeon",
+    "stock dove",
+    "carrion crow",
+    "hooded crow",
+    "rook",
+    "jackdaw",
+    "house crow",
+    "eurasian magpie",
+    "australian magpie",
+    "yellow billed magpie",
+    "common blackbird",
+    "eurasian blackbird",
+    "eurasian tree sparrow",
+    "spanish sparrow",
+    "european bison",
+    "wisent",
+    "water buffalo",
+    "african buffalo",
+    "cape buffalo",
+    "alpine ibex",
+    "nubian ibex",
+    "siberian ibex",
+    "iberian ibex",
+    "ibex",
+    "chamois",
+    "argali",
+    "urial",
+    "arabian oryx",
+    "scimitar horned oryx",
+    "beisa oryx",
+    "fringe eared oryx",
+    "roe deer",
+    "european roe deer",
+    "muntjac",
+    "reeves muntjac",
+    "water deer",
+    "chinese water deer",
+    "european badger",
+    "honey badger",
+    "eurasian otter",
+    "european otter",
+    "sea otter",
+    "giant otter",
+    "asian small clawed otter",
+    "crested porcupine",
+    "african crested porcupine",
+    "indian crested porcupine",
+    "brushtail possum",
+    "common brushtail possum",
+    "ringtail possum",
+    "common ringtail possum",
+    "ringtail lemur",
+    "ring tailed lemur",
+    "ringtailed lemur",
+    "south american coati",
+    "ring tailed coati",
+    "white lipped peccary",
+    "chacoan peccary",
+    "chipmunk",
+    "eastern chipmunk",
+    "least chipmunk",
+    "american pika",
+    "eurasian red squirrel",
+    "european red squirrel",
+    "black footed ferret",
+    "european polecat",
+    "polecat",
+    "steppe polecat",
+    "pine marten",
+    "european pine marten",
+    "beech marten",
+    "stone marten",
+    "sable",
+    "european mink",
+    "european hedgehog",
+    "hedgehog",
+    "cane toad",
+    "common toad",
+    "european toad",
+    "natterjack toad",
+    "common frog",
+    "european common frog",
+    "marsh frog",
+    "pool frog",
+    "edible frog",
+    "african bullfrog",
+    "australian green tree frog",
+    "whites tree frog",
+    "european tree frog",
+    "fire salamander",
+    "alpine newt",
+    "smooth newt",
+    "great crested newt",
+    "axolotl",
+    "eastern brown snake",
+    "king brown snake",
+    "australian copperhead",
+    "lowland copperhead",
+    "grass snake",
+    "european adder",
+    "common european adder",
+    "asp viper",
+    "tiger snake",
+    "reticulated python",
+    "indian python",
+    "ball python",
+    "royal python",
+    "african rock python",
+    "green tree python",
+    "carpet python",
+    "american crocodile",
+    "nile crocodile",
+    "saltwater crocodile",
+    "spectacled caiman",
+    "chinese alligator",
+    "yacare caiman",
+    "bearded dragon",
+    "leopard gecko",
+    "crested gecko",
+    "tokay gecko",
+    "chameleon",
+    "komodo dragon",
+    "water monitor",
+    "savannah monitor",
+    "green sea turtle",
+    "loggerhead sea turtle",
+    "hawksbill sea turtle",
+    "leatherback sea turtle",
+    "sea turtle",
+    "tortoise",
+    "gopher tortoise",
+    "sulcata tortoise"
+  ]
+}

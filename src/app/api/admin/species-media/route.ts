@@ -56,6 +56,9 @@ export async function POST(request: Request) {
     const creator = process.env.SPECIES_MEDIA_DEFAULT_CREATOR?.trim() || "North Ground";
     const licence = process.env.SPECIES_MEDIA_DEFAULT_LICENCE?.trim() || "All rights reserved";
     const altText = `${resource.title} — verified North Ground species photograph`;
+    // A provider image is replaced by a manual upload without touching the manual relationship,
+    // which it never entered; only a manual PRIMARY is the upload's optimistic-concurrency check.
+    const expectedManualAssetId = current?.source === "MANUAL" ? current.assetId : null;
     const media = await uploadSpeciesPrimary({
       speciesId: resource.speciesProfile.speciesId,
       source: Buffer.from(await file.arrayBuffer()),
@@ -65,7 +68,7 @@ export async function POST(request: Request) {
       altText,
       caption: null,
       admin,
-      expectedCurrentAssetId: expected || null,
+      expectedCurrentAssetId: expectedManualAssetId,
     }, client, store);
     return json({ ok: true, media }, 200);
   } catch (error) {

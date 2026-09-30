@@ -21,7 +21,7 @@ import { presentZoneById } from "../../lib/hunt/zone-presentation";
 import { huntWebApplicationJsonLd } from "../../lib/seo/hunt-structured-data";
 import { absoluteUrl, SITE_NAME } from "../../lib/site";
 import { getSpeciesPrimaryMediaMap } from "../../lib/species-media/repository";
-import type { SpeciesPrimaryMedia } from "../../lib/species-media/types";
+import { uncreditedSurfaceMedia, type SpeciesPrimaryMedia } from "../../lib/species-media/types";
 
 export const dynamic = "force-dynamic";
 
@@ -133,9 +133,13 @@ export default async function HuntPage({ searchParams }: Props) {
      nothing on the first screen shows them: they belong to the species picker,
      which is a tap away and its own chunk. So the HTML does not wait for them —
      the promise travels to the browser and the pictures arrive when they do. A
-     failure resolves to none rather than rejecting: the picker still works. */
+     failure resolves to none rather than rejecting: the picker still works.
+     A provider photograph must be shown with its "Photo by … on …" credit,
+     and Hunt's avatars have no room for one, so it never reaches Hunt: those
+     species keep their placeholder here and show the photo, credited, on the
+     species library and profile (§16). */
   const speciesMedia = getSpeciesPrimaryMediaMap(speciesResources.map((resource) => resource.speciesProfile.speciesId))
-    .then((media) => Object.fromEntries(media) as Record<string, SpeciesPrimaryMedia>)
+    .then((media) => uncreditedSurfaceMedia(media))
     .catch(() => ({}) as Record<string, SpeciesPrimaryMedia>);
   const coverageReport = northAmericaCoverageReport();
   /* Where each served jurisdiction publishes its own geography, so a species

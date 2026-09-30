@@ -13,6 +13,21 @@ export function SpeciesImagePlaceholder({ className, label }: { className?: stri
   );
 }
 
+/**
+ * "Photo by <photographer> on <provider>", both linked, wherever a credited
+ * photograph is shown. Renders nothing for North Ground's own photographs.
+ */
+export function SpeciesPhotoCredit({ media, className }: { media: SpeciesPrimaryMedia; className?: string }) {
+  const { credit } = media;
+  if (!credit) return null;
+  return (
+    <span className={className} data-species-credit>
+      Photo by <a href={credit.creatorUrl} target="_blank" rel="noopener noreferrer">{credit.creatorName}</a>
+      {" "}on <a href={credit.providerUrl} target="_blank" rel="noopener noreferrer">{credit.providerName}</a>
+    </span>
+  );
+}
+
 export default function SpeciesPrimaryImage({ media, variant, className, loading = "lazy", focal, zoom }: {
   media: SpeciesPrimaryMedia;
   variant: SpeciesMediaVariant;
@@ -28,6 +43,9 @@ export default function SpeciesPrimaryImage({ media, variant, className, loading
 }) {
   const rendition = media.renditions[variant];
   const { x, y } = focal ?? media.focal;
+  /* `unoptimized` serves every rendition from its own URL: our route for a
+     manual image, the provider's host for a provider image (which Unsplash
+     requires — the Next.js optimiser would copy it onto ours). */
   return <Image className={className} src={rendition.url} alt={media.altText} width={rendition.width}
     height={rendition.height} loading={loading} decoding="async" unoptimized draggable={false}
     style={{

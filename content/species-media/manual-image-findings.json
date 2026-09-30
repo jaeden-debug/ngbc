@@ -1,0 +1,44 @@
+{
+  "$comment": "Findings about administrator-uploaded (MANUAL) species images, recorded 2026-09-30 while crediting them. Nothing here changed an image: the owner asked that existing images be left as they are. ORIGIN_NOT_ESTABLISHED = no download record on the original file and no match among the Unsplash search results for the species' name (perceptual hash, 256-bit difference hash; best matches measured 104–134, where the same photograph measures under 45). LIKELY_WRONG_SPECIES = the photograph's own provider metadata and what it shows point to another species. A finding is evidence for the owner to act on through the admin uploader, not a correction.",
+  "originNotEstablished": {
+    "evidence": "All 24 originals are PNGs with no macOS download record (kMDItemWhereFroms); 22 are exactly 1536×1024, 1 is 1510×1041 and 1 is 1254×1254 — sizes typical of image-generation output rather than cameras. Each is recorded in species_media_assets as creator 'North Ground', licence 'All rights reserved', source_type 'north_ground'.",
+    "species": [
+      "species:american-black-duck", "species:american-woodcock", "species:arctic-hare", "species:barrows-goldeneye",
+      "species:brant", "species:canvasback", "species:fisher", "species:gadwall", "species:greater-scaup",
+      "species:green-winged-teal", "species:lesser-scaup", "species:mule-deer", "species:redhead",
+      "species:ring-necked-duck", "species:ring-necked-pheasant", "species:rock-ptarmigan", "species:sandhill-crane",
+      "species:sharp-tailed-grouse", "species:snow-goose", "species:spruce-grouse", "species:wild-turkey",
+      "species:willow-ptarmigan", "species:wilsons-snipe", "species:wood-duck"
+    ]
+  },
+  "likelyWrongSpecies": {
+    "species:american-marten": {
+      "confidence": "HIGH",
+      "evidence": "Unsplash R0Sir8eFUNM is located in the Czech Republic, where the American marten does not occur; the broad cream throat bib is the Eurasian pine marten's (Martes martes)."
+    },
+    "species:cackling-goose": {
+      "confidence": "HIGH",
+      "evidence": "The photographer's own caption on Unsplash bnJQxin8R7M is \"Canada Goose (Branta canadensis) on grass\"; the long bill fits a Canada goose."
+    },
+    "species:eastern-cottontail": {
+      "confidence": "HIGH",
+      "evidence": "Unsplash yCSr8PIii7o shows a long-eared, black-tipped hare; its description reads \"A close-up of a jackrabbit in dry grass\"."
+    },
+    "species:white-tailed-deer": {
+      "confidence": "HIGH",
+      "evidence": "Unsplash 3klDayorINw is tagged Yosemite, whose deer are mule deer; the white rump with a narrow dark-tipped tail is a mule deer's."
+    },
+    "species:beaver": {
+      "confidence": "HIGH",
+      "evidence": "Unsplash _029vDTnjeM is located in France, outside the North American beaver's range; the white muzzle and whiskers are a nutria's (Myocastor coypus). Even a French beaver would be Castor fiber, not Castor canadensis."
+    },
+    "species:greater-white-fronted-goose": {
+      "confidence": "LOW",
+      "evidence": "The photographer captions Unsplash AqlRAjsbTK0 \"Greater White-fronted Goose\", but the bird shows no white face blaze or belly barring; that fits a juvenile, and also a greylag."
+    },
+    "species:eastern-wolf": {
+      "confidence": "LOW",
+      "evidence": "Unsplash mblYxasm0nk carries no location and only the tag 'wolf'; eastern wolves are rarely photographed and the animal could equally be a gray wolf or a coyote."
+    }
+  }
+}

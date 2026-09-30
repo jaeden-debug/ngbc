@@ -10,7 +10,7 @@ import {
   SourceList,
 } from "../../../../components/content/ContentPatterns";
 import HuntNav from "../../../../components/hunt/HuntNav";
-import SpeciesPrimaryImage, { SpeciesImagePlaceholder } from "../../../../components/species/SpeciesPrimaryImage";
+import SpeciesPrimaryImage, { SpeciesImagePlaceholder, SpeciesPhotoCredit } from "../../../../components/species/SpeciesPrimaryImage";
 import StructuredData from "../../../../components/StructuredData";
 import type { SpeciesResource } from "../../../../lib/content-contract/types";
 import { contentRepository } from "../../../../lib/content/repository";
@@ -197,7 +197,8 @@ export default async function SpeciesPage({ params }: Props) {
     <main className="ng-product-page">
       <StructuredData data={speciesArticleJsonLd(resource, absoluteUrl(canonicalUrl), {
         description: speciesCopy(resource, groups).description,
-        imageUrl: image ? absoluteUrl(image.renditions.profile.url) : null,
+        // Only a photograph served from our own host is declared as the page's image.
+        imageUrl: image?.source === "MANUAL" ? absoluteUrl(image.renditions.profile.url) : null,
       })} />
       <HuntNav current="/hunting/species" />
 
@@ -226,12 +227,16 @@ export default async function SpeciesPage({ params }: Props) {
           {image ? (
             <figure className={styles.photo}>
               <SpeciesPrimaryImage media={image} variant="profile" loading="eager" />
-              <figcaption>{image.caption} {image.creator} · {image.licence}</figcaption>
+              <figcaption>
+                {image.credit
+                  ? <>{image.caption ? <>{image.caption} </> : null}<SpeciesPhotoCredit media={image} /></>
+                  : <>{image.caption} {image.creator} · {image.licence}</>}
+              </figcaption>
             </figure>
           ) : (
             <div className={styles.mediaFallback}>
               <SpeciesImagePlaceholder className={styles.profilePlaceholder} label={resource.title} />
-              <p className={styles.mediaNote}>No primary photograph is set. North Ground publishes wildlife imagery only after an administrator assigns it to this exact canonical species.</p>
+              <p className={styles.mediaNote}>No photograph is set. North Ground shows a photograph only once it is identified as this exact species; a similar-looking animal is never used in its place.</p>
             </div>
           )}
 
