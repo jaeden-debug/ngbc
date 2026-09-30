@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  jurisdictionTone, labelMinimumSpanPx, SEASON_OPEN_STROKE, SELECTED_STROKE, zoneStyle, zoomBand,
+  jurisdictionTone, labelMinimumSpanPx, MAX_STATE_FILL, SEASON_OPEN_STROKE, SELECTED_STROKE, zoneStyle, zoomBand,
   type Emphasis, type ZoneStyleInput, type ZoomBand,
 } from "./cartography.ts";
 import { heatFillFor, HEAT_FILL, zoneHasConditions, zoneIsGreen } from "./species-layer.ts";
@@ -165,7 +165,11 @@ test("the heat ramp is monotonic and stays under the ceiling the chosen zone cle
   for (const classification of order) {
     const style = zoneStyle(zone({ heat: HEAT_FILL[classification] }));
     assert.ok(style.fillOpacity > previous, `${classification} must be stronger than the class below it`);
-    assert.ok(style.fillOpacity <= 0.32, `${classification} must stay under the ceiling`);
+    /* Against the DERIVED ceiling, never a literal. This assertion previously
+       read `<= 0.32`, which was only ever true of the ramp it was written for:
+       raising the ramp to make the layer visible made a correct style fail a
+       stale number. */
+    assert.ok(style.fillOpacity <= MAX_STATE_FILL, `${classification} must stay under the ceiling`);
     previous = style.fillOpacity;
   }
 });
@@ -177,7 +181,7 @@ test("the emphasis presets only change how strong it looks, and never exceed the
   assert.ok(light.fillOpacity < standard.fillOpacity);
   assert.ok(standard.fillOpacity < strong.fillOpacity);
   for (const style of [light, standard, strong]) {
-    assert.ok(style.fillOpacity <= 0.32 && style.fillOpacity >= 0);
+    assert.ok(style.fillOpacity <= MAX_STATE_FILL && style.fillOpacity >= 0);
     assert.ok(style.strokeOpacity <= 1 && style.strokeOpacity > 0);
   }
   // Even at "strong" the chosen zone still leads.
@@ -195,4 +199,37 @@ test("an uncertified boundary is drawn more quietly than a certified one", () =>
 test("labels are rationed by how much room a zone has on screen", () => {
   assert.ok(labelMinimumSpanPx("national") > labelMinimumSpanPx("regional"));
   assert.ok(labelMinimumSpanPx("regional") > labelMinimumSpanPx("local"));
+});
+
+
+test("heat does not fade with the zoom band — it is content, not tone", () => {
+  /*
+   * The defect this pins, from the owner: "why do i still not have an actual
+   * heat map". Heat was multiplied by STATE_BAND_SCALE — national 0.9,
+   * regional 0.8, local 0.7 — so the hottest zone anywhere never passed ~0.29
+   * and the layer was WEAKEST at local zoom, which is exactly where a hunter
+   * decides where to walk.
+   *
+   * §41A's "fills nearly gone at local" is about a jurisdiction's TONE, so the
+   * terrain and roads carry the ground. Heat is the layer's content. The same
+   * distinction already exempts heat from the focal-plane dimming; this is that
+   * rule applied to the other place it was missing.
+   */
+  const fills = BANDS.map((band) => zoneStyle(zone({ band, heat: HEAT_FILL.VERY_HIGH })).fillOpacity);
+  assert.equal(new Set(fills).size, 1, `heat must read the same at every band, got ${JSON.stringify(fills)}`);
+
+  /* And it has to be legible, not merely equal: a ramp everyone can agree on
+     and nobody can see is the bug that was shipped. */
+  assert.ok(fills[0] >= 0.45, `the hot end must be visible over a dark basemap, got ${fills[0]}`);
+
+  /* The chosen zone still clears the loudest heat at every band and setting —
+     asserted at the NEW values rather than the ones this was written for,
+     because the derivation is what stops a hot neighbour out-shouting it. */
+  for (const band of BANDS) {
+    for (const emphasis of EMPHASES) {
+      const chosen = zoneStyle(zone({ selected: true, band, emphasis }));
+      const hottest = zoneStyle(zone({ band, emphasis, heat: HEAT_FILL.VERY_HIGH, hovered: true }));
+      assert.ok(chosen.fillOpacity >= hottest.fillOpacity, `chosen must lead at ${band}/${emphasis}`);
+    }
+  }
 });
