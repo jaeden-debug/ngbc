@@ -29,10 +29,26 @@ interface EvidenceReply {
     components: Array<{ metric: string; explanation?: string }>;
   };
   source: { authority: string; title: string; url: string };
+  seasonalBasis?: { warning?: string };
   latestObservationYear: number;
+  zoneObservationYear?: number;
 }
 
-const FIGURES = new Set(["HARVEST_TOTAL"]);
+/**
+ * The figures a unit's card shows, and what each one is not. A harvest total
+ * is a record of hunting; a density is an estimate of animals — both for the
+ * whole unit, and neither able to say where inside it the animals are.
+ */
+const FIGURES: Record<string, { heading: string; isNot: string }> = {
+  POPULATION_DENSITY: {
+    heading: "Aerial survey",
+    isNot: "An estimate for the whole unit from the province's aerial survey; it cannot say where inside the unit the animals are.",
+  },
+  HARVEST_TOTAL: {
+    heading: "Harvest records",
+    isNot: "A record of hunting in the whole unit, not a count of animals, and it cannot say where inside the unit they are.",
+  },
+};
 
 export default function ZoneEvidence({ speciesId, geographyId, zoneLabel }: {
   speciesId: string;
@@ -57,24 +73,26 @@ export default function ZoneEvidence({ speciesId, geographyId, zoneLabel }: {
   }, [key, speciesId, geographyId]);
 
   const reply = held?.key === key ? held.reply : null;
-  const lines = reply?.result.components
-    .filter((component) => FIGURES.has(component.metric) && component.explanation)
-    .map((component) => component.explanation!) ?? [];
-  if (!reply || !lines.length) return null;
+  const shown = reply?.result.components.filter((component) => FIGURES[component.metric] && component.explanation) ?? [];
+  if (!reply || !shown.length) return null;
+  /* One unit, one kind of figure: a bundle carries harvest or a survey, and the
+     heading and caveat belong to whichever it is. */
+  const kind = FIGURES[shown[0].metric];
 
   return (
-    <section className={styles.block} aria-labelledby="zone-evidence-title" data-zone-evidence="">
+    <section className={styles.block} aria-labelledby="zone-evidence-title" data-zone-evidence="" data-evidence-metric={shown[0].metric}>
       <h3 className={styles.blockTitle} id="zone-evidence-title">
-        Harvest records for {zoneLabel}, {reply.latestObservationYear}
+        {kind.heading} for {zoneLabel}, {reply.zoneObservationYear ?? reply.latestObservationYear}
       </h3>
       <ul className={styles.conditionList}>
-        {lines.map((line) => <li key={line}>{line}</li>)}
+        {shown.map((component) => <li key={component.explanation}>{component.explanation}</li>)}
       </ul>
       <p className={styles.conditionWhere}>
-        A record of hunting in the whole unit, not a count of animals, and it cannot say where inside the unit they are.
+        {kind.isNot}
+        {reply.seasonalBasis?.warning ? ` ${reply.seasonalBasis.warning}` : ""}
         {" "}
         <a href={reply.source.url} target="_blank" rel="noopener noreferrer">
-          {reply.source.authority} <span aria-hidden="true">↗</span>
+          {reply.source.title} <span aria-hidden="true">↗</span>
         </a>
       </p>
     </section>

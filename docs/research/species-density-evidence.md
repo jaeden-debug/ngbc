@@ -137,6 +137,10 @@ Ingest it as **plot-polygon evidence at 25 km², never as a continuous surface**
 labelled for what it measures — breeding waterfowl counted on a plot in May —
 with the plot's own year, and drawn only where a plot exists.
 
+*Done 2026-09-30:* 187 unit figures read from the reports, shown in each
+Alberta unit's card and never painted; what was read, refused and not read is
+in `alberta-ungulate-density-read.md`.
+
 **Second, and separately: Alberta's 126 WMU survey reports.** They do not improve
 resolution and should not be sold as if they did. They replace a harvest count
 with **animals per km², with a 90% confidence interval, by species**, under a

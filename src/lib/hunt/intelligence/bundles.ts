@@ -11,6 +11,9 @@ import onBlackBear from "../../../../content/intelligence/ca-on-american-black-b
 import onMoose from "../../../../content/intelligence/ca-on-moose-harvest.json" with { type: "json" };
 import onWhiteTailedDeer from "../../../../content/intelligence/ca-on-white-tailed-deer-harvest.json" with { type: "json" };
 import onWildTurkey from "../../../../content/intelligence/ca-on-wild-turkey-harvest.json" with { type: "json" };
+import abMoose from "../../../../content/intelligence/ca-ab-moose-aerial-survey.json" with { type: "json" };
+import abMuleDeer from "../../../../content/intelligence/ca-ab-mule-deer-aerial-survey.json" with { type: "json" };
+import abWhiteTailedDeer from "../../../../content/intelligence/ca-ab-white-tailed-deer-aerial-survey.json" with { type: "json" };
 import { permitsHuntingOpportunity } from "../../content/species-eligibility.ts";
 import { classifyOpportunity } from "./classification.ts";
 import { EWS25_BUNDLES } from "./ews25.ts";
@@ -108,6 +111,7 @@ function assertSeasonalBasis(bundle: IntelligenceBundle): void {
 const BUNDLES = [
   bcBlackBear, bcBobcat, bcLynx, bcCaribou, bcElk, bcGrayWolf, bcMoose, bcMuleDeer, bcWhiteTailedDeer,
   onWhiteTailedDeer, onMoose, onBlackBear, onWildTurkey,
+  abMoose, abMuleDeer, abWhiteTailedDeer,
 ] as unknown as IntelligenceBundle[];
 
 /* The harvest datasets above, plus the Eastern Waterfowl Survey's plot evidence.
@@ -211,6 +215,8 @@ export interface OpportunityResponse {
   /** Travels with the shade, because the shade is where it can mislead. */
   seasonalBasis?: SeasonalBasis;
   latestObservationYear: number;
+  /** The year this unit's own evidence runs to; units in one bundle can be surveyed years apart. */
+  zoneObservationYear: number;
   jurisdictionId: string;
 }
 
@@ -228,14 +234,34 @@ export function opportunityAt(speciesId: string, geographyId: string): Opportuni
     if (!result) continue;
     return {
       result,
-      source: bundle.source,
+      source: sourceOf(bundle, records),
       limitations: bundle.limitations,
       ...(bundle.seasonalBasis ? { seasonalBasis: bundle.seasonalBasis } : {}),
       latestObservationYear: bundle.latestObservationYear,
+      zoneObservationYear: Math.max(...records.filter((record) => !record.superseded).map((record) => Number(record.observationPeriod.through.slice(0, 4)))),
       jurisdictionId: bundle.jurisdictionId,
     };
   }
   return null;
+}
+
+/**
+ * The source a figure is cited to. A dataset published as one file cites that
+ * file; a series published one report per survey (Alberta's aerial surveys)
+ * cites the report the figure was read from, because "Aerial wildlife survey
+ * reports" is not where 0.79 mule deer per km² in WMU 116 can be checked.
+ */
+function sourceOf(bundle: IntelligenceBundle, records: EvidenceRecord[]): IntelligenceBundleSource {
+  const report = records.find((record) => record.report)?.report;
+  if (!report) return bundle.source;
+  return {
+    ...bundle.source,
+    id: records.find((record) => record.report)!.sourceId,
+    title: report.title,
+    url: report.url,
+    resourceUrl: report.resourceUrl ?? bundle.source.resourceUrl,
+    sourceHash: report.sourceHash ?? bundle.source.sourceHash,
+  };
 }
 
 export interface ZoneOpportunity {

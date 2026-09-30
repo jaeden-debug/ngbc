@@ -149,7 +149,17 @@ export function spatialStrategyFor(speciesId: string): SpeciesSpatialStrategy {
     stage = "SERVED";
   }
 
-  const names = zoneEvidenceJurisdictions.map((id) => JURISDICTION_NAMES[id] ?? id);
+  /* A unit figure is named for what it measures: a harvest record is hunting,
+     an aerial-survey density is animals. Both are one figure per unit. */
+  const zoneDatasets = datasets.filter((d) => d.renderKind === "ZONE_AREA");
+  const isDensity = (d: (typeof zoneDatasets)[number]) => d.metrics.some(({ metric }) => metric === "POPULATION_DENSITY");
+  const named = (list: typeof zoneDatasets) => listOf(list.map((d) => JURISDICTION_NAMES[d.jurisdictionId] ?? d.jurisdictionId).sort());
+  const harvestIn = zoneDatasets.filter((d) => !isDensity(d));
+  const densityIn = zoneDatasets.filter(isDensity);
+  const held = [
+    harvestIn.length ? `harvest records in ${named(harvestIn)}` : null,
+    densityIn.length ? `the province's aerial-survey density estimates in ${named(densityIn)}` : null,
+  ].filter(Boolean).join(" and ");
   const statement = entry || plotJurisdictions.length
     ? null
     : eligibility === "PROTECTED"
@@ -159,7 +169,7 @@ export function spatialStrategyFor(speciesId: string): SpeciesSpatialStrategy {
       : eligibility === "UNVERIFIED"
         ? "No authority North Ground has read establishes current take of this species, so no map of where to find it is drawn until one does. Unshaded ground is a gap in what North Ground holds, not a finding about the animals."
     : zoneEvidenceJurisdictions.length
-      ? `North Ground holds harvest records for this species by management unit in ${listOf(names)}; each unit's card shows them. A figure for a whole unit is not a surface: it cannot say where inside the unit the animals are, so nothing is painted. Unshaded ground is a gap in what North Ground holds, not a finding about the animals.`
+      ? `North Ground holds, by management unit, ${held}; each unit's card shows them. A figure for a whole unit is not a surface: it cannot say where inside the unit the animals are, so nothing is painted. Unshaded ground is a gap in what North Ground holds, not a finding about the animals.`
       : `North Ground holds no survey that maps where this species is${declinedEntry ? ` (${declinedEntry.detail.replace(/\.$/, "")})` : ""}. Unshaded ground is a gap in what North Ground holds, not a finding about the animals.`;
 
   return {

@@ -88,13 +88,13 @@ unit, shown in that unit's card and never painted (§41B). A **plan** is never c
 | long-tailed-duck | sea duck | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | mallard | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | NB, NS, ON, QC | — | PRODUCTION_VERIFIED | — |
 | montezuma-quail | open country upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
-| moose | ungulate | D — zone evidence (not painted) | — | — | BC, ON | STRATEGY_DEFINED | C in research; D planned |
+| moose | ungulate | D — zone evidence (not painted) | — | — | AB, BC, ON | STRATEGY_DEFINED | C in research |
 | mountain-cottontail | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | mountain-goat | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | mountain-lion | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | mountain-quail | forest upland bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
 | mourning-dove | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | — |
-| mule-deer | ungulate | D — zone evidence (not painted) | — | — | BC | STRATEGY_DEFINED | C in research; D planned |
+| mule-deer | ungulate | D — zone evidence (not painted) | — | — | AB, BC | STRATEGY_DEFINED | C in research |
 | muskox | ungulate | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | muskrat | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | mute-swan | waterfowl | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
@@ -134,7 +134,7 @@ unit, shown in that unit's card and never painted (§41B). A **plan** is never c
 | tundra-swan | waterfowl | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | virginia-opossum | predator furbearer | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | virginia-rail | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |
-| white-tailed-deer | ungulate | D — zone evidence (not painted) | — | — | BC, ON | STRATEGY_DEFINED | C in research; D planned |
+| white-tailed-deer | ungulate | D — zone evidence (not painted) | — | — | AB, BC, ON | STRATEGY_DEFINED | C in research |
 | white-tailed-jackrabbit | small game | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | C in research |
 | white-tailed-ptarmigan | arctic alpine upland bird | E — nothing defensible yet | — | — | — | STRATEGY_DEFINED | B in research |
 | white-winged-dove | migratory game bird | B — measured distribution | BBS field 2.0.0, rank scale, migratory | — | — | PRODUCTION_VERIFIED | B in research |

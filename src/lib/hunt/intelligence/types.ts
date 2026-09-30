@@ -92,6 +92,13 @@ export interface EvidenceRecord {
   notes?: string;
   version: string;
   superseded: boolean;
+  /** The authority's own sentence the figure was read from, kept to audit the reading. */
+  statedAs?: string;
+  /**
+   * The document a figure was read from, where a dataset is a series of
+   * reports rather than one file. The figure cites this, not the series.
+   */
+  report?: { title: string; url: string; resourceUrl: string | null; sourceHash: string | null; licence: string };
 }
 
 export type LandOwnership =

@@ -4,7 +4,9 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-30, later (**`!` now means a material condition, the survey surfaces are ranked, and every species has a stated spatial strategy.** A `!` appears on 396 of 2,993 open zone-species pairs instead of 2,682, decided by declared condition kind and scope. The zone card leads with those conditions, using the same ids as the popover. All 54 survey surfaces are rebuilt on methodology 2.0.0: colour is rank among detected ground, and surveyed-none is its own neutral, so Maniwaki reads green to yellow for ruffed grouse. `docs/species-spatial-coverage.md` states A–E for all 133 species. See *`!` means a material condition; surfaces are ranked; every species states where it is*.)
+Last updated: 2026-09-30, evening (**All 54 survey surfaces are PRODUCTION VERIFIED, and Alberta's measured densities reach the unit card.** A real-browser certification of production from a GitHub runner passed 208/208 on phone and desktop: every surface drawn from its link with detected ground on the ramp; Maniwaki resolving to Zone 10 West under green-to-orange grouse; a tapped `!` naming the same conditions as its card. Alberta's aerial surveys now give 187 unit figures in animals per km² for moose and both deer, each cited to its own report and dated by its own survey; one report that contradicts itself is shown both ways. See *Production verified, and Alberta's measured densities reach the unit card*.)
+
+Previously: 2026-09-30, later (**`!` now means a material condition, the survey surfaces are ranked, and every species has a stated spatial strategy.** A `!` appears on 396 of 2,993 open zone-species pairs instead of 2,682, decided by declared condition kind and scope. The zone card leads with those conditions, using the same ids as the popover. All 54 survey surfaces are rebuilt on methodology 2.0.0: colour is rank among detected ground, and surveyed-none is its own neutral, so Maniwaki reads green to yellow for ruffed grouse. `docs/species-spatial-coverage.md` states A–E for all 133 species. See *`!` means a material condition; surfaces are ranked; every species states where it is*.)
 
 Previously: 2026-09-30 (**Species Heat is drawn in production Hunt.** The species surface existed in the tree, was certified and was SERVED, and no Hunt client requested it — production at `23ed04d` drew ruffed grouse as a zone choropleth from `/api/hunt/opportunity/heat`. The `heat-legible` renderer was recovered from GitHub, integrated onto main with the client gaps closed, reviewed adversarially, and deployed as `1059d02` (Vercel `dpl_AUoMqG7AacPZUWJ3CjRHXwpkuu2p`). In the real production Hunt, choosing Ruffed grouse requests `/api/hunt/species-surface`, receives the BBS raster and paints it under the zones: **RENDERED and PRODUCTION VERIFIED**, 30/30 browser checks on phone and desktop, and all 25 certified BBS surfaces rendered from their shareable links. See *Species Heat: the surface reaches the hunter (2026-09-30)*.)
 
@@ -326,7 +328,7 @@ bundle now reproduces byte for byte from the current page.
 
 ## Next Priorities
 
-0. **Species Heat, in the owner's order (2026-09-30, updated).** `!` semantics, the rank colour scale and the per-species strategy matrix are done (see the Recent Decision of the same date). The remaining order is: (a) the Alberta measured-density upgrade — animals/km² from the authority's aerial surveys preferred over harvest, on the SAME surface infrastructure (a new surface kind through `surface-registry.json`, never a new endpoint); (b) a scientifically defensible, versioned, season-specific Moose opportunity model (§41B "no generic wildlife formula"), again through the same registry, renderer and certification — no separate Moose heat architecture. `scripts/certify-species-surface.mjs` is the gate for each: built, served AND drawn.
+0. **Species Heat, in the owner's order (2026-09-30, updated).** Done: `!` semantics, the rank colour scale, the per-species strategy matrix, production verification of all 54 surfaces, and (a) Alberta's measured densities, as unit evidence in the card (187 figures; one figure per unit, so never painted). Next: (b) a scientifically defensible, versioned, season-specific Moose opportunity model (§41B "no generic wildlife formula") through the same registry, renderer and certification — no separate Moose heat architecture; then the ruffed grouse habitat model to reach ground beyond survey routes (needs a continental forest-age layer and weights fitted against held-out routes). `scripts/certify-species-surface.mjs` is the gate for each: built, served AND drawn.
 
 1. **Structure `regulation.summary`'s season listing so each label keeps its own language.** The French reaching English readers is a *list* of authority season labels string-concatenated into an English sentence. `season.label` already exists as `{text, lang, owner: "AUTHORITY"}` and the producer already sets it correctly — **but only when every cited rule agrees on one label**, deliberately, because inventing a name for a combination the authority did not write would attribute a name to a ministry. For arctic hare it is `undefined` while the summary still carries the French.
    So the work is giving the season **listing** a structured form, then composing the summary from structure rather than concatenation. It touches every consumer of `summary`, so it is a deliberate item rather than something to begin at the end of a session. Two constraints: **the singular-label restraint must survive** — a listing is not a licence to name a combination the authority did not — and **each label carries its own language**, so a bilingual listing is representable rather than flattened.
@@ -787,10 +789,11 @@ each with a required take eligibility — 125 HUNTABLE, 3 REMOVAL, 3 PROTECTED,
 below records how the first 60 were reached.
 
 Spatial coverage (where the animal is, never whether it is legal) is generated
-in `docs/species-spatial-coverage.md`: B (survey surface) 54, D (unit
-figures in the zone card, never painted) 9, E (nothing defensible yet,
-said in words) 70. No species has A (measured density finer than a zone) or C
-(habitat model) yet.
+in `docs/species-spatial-coverage.md`: B (survey surface) 54, all
+PRODUCTION_VERIFIED; D (unit figures in the zone card, never painted) 9,
+now including Alberta's aerial-survey densities for moose, mule deer and
+white-tailed deer; E (nothing defensible yet, said in words) 70. No species
+has A (measured density finer than a zone) or C (habitat model) yet.
 
 - Wave 1 publishes ruffed grouse, spruce grouse, sharp-tailed grouse, wild turkey, white-tailed deer, moose, American black bear, snowshoe hare, mallard and Canada goose in `en-CA`.
 - Wave 2A publishes 17 mammals; Wave 2B publishes 8 upland/migratory birds; Wave 2C publishes 20 waterfowl; Wave 2D publishes elk, caribou, mule deer, pronghorn and the canonical brown bear entity (with grizzly retained as terminology rather than a duplicate species).
@@ -923,6 +926,70 @@ blueprint keeps those out of North Ground's answers.
 
 
 ## Recent Product Decisions
+
+### 2026-09-30 — Production verified, and Alberta's measured densities reach the unit card
+
+**Production verification of `8b61035`** (Vercel `dpl_4o6an8XMYQ8ygfQhMjxa5EuK9YUF`),
+run from a GitHub runner against www.northgroundbushcraft.com at 390×844 and
+1280×800:
+
+- The species surface certification passed 208/208. All **54 survey surfaces
+  are PRODUCTION_VERIFIED**, recorded by artifact hash in
+  `content/intelligence/surface-verification.json`. Each one was requested,
+  answered 200 and drawn from its shareable link, and each showed detected
+  ground on the ramp in at least one view.
+- Maniwaki resolves to Zone 10 West. The grouse surface around it is mostly
+  green, yellow and orange: about 1.0M, 0.67M and 0.41M pixels on desktop,
+  against 65k blue.
+- The `!` walk ran on the case the engine named for that day: Québec 10O
+  moose. The marker, popover and card carried the same three condition ids.
+- The Hunt app certification passed 420/423. The three failures are the known
+  pre-existing ones: two stale legal-hours assertions and Québec French in
+  `regulation.summary`.
+- The first pass had failed the `!` walk. WMU 49 moose is closed on 30
+  September, so its card rightly had nothing to say. A fixed case goes silent
+  between seasons, so the walk now asks the engine for today's case.
+
+**Alberta: animals per km², by unit, from the province's own survey reports**
+(OGL–Alberta, all 162 catalogue entries).
+
+- `scripts/fetch-alberta-ungulate-surveys.mjs` runs on a runner. It lists the
+  reports through the catalogue's API, records each licence, and extracts
+  text with the pinned pypdf.
+- `scripts/build-alberta-ungulate-density.mjs` reads **187 unit figures**:
+  mule deer 52, white-tailed deer 57, moose 78. Each unit takes its own most
+  recent survey (2015–2025).
+- A figure is taken only from a report's Results section, only in recognised
+  wording, and only for a species named by the sentence, its section heading,
+  its paragraph or its title. That attribution is kept on the record, with
+  the sentence itself.
+- Wording the builder does not recognise is listed, never guessed.
+- Readings are checked against each report's own table where it has a row
+  for the same survey: 91 agree and one disagrees. WMU 336 moose gives 0.71
+  in its text and 0.56 in its table. Both are shown and neither is ranked.
+- An interval that excludes its own estimate is refused and the card says so
+  (WMU 216: "0.5 – 0.11" around 0.80).
+- A figure for part of a unit says so (WMU 440, only the non-alpine part was
+  flown).
+- Multi-unit reports are not apportioned.
+- 20 reports were not read, each with its reason, in
+  `docs/research/alberta-ungulate-density-read.md`. Three of those are the
+  authority's own "insufficient to estimate".
+
+Where the figures go and what they are:
+
+- Shown in the unit card as "Aerial survey for WMU 204, 2019", dated by that
+  unit's own survey, never the bundle's latest year.
+- Cited to the specific report, carrying the winter-survey warning.
+- Evidence grade A (a measured density), but still one figure per unit. The
+  spatial strategy stays **D** and nothing is painted (§41B).
+- The evidence ladder records it as T2, the authority's estimate.
+
+**Rebuilding Alberta.** A re-read needs the runner's fetch; the extracted text
+lives on the working branch only (`.research/`), never on main. The committed
+bundles are checked for internal consistency by
+`src/lib/hunt/intelligence/alberta-density.test.ts`, including figures
+checked by hand against the reports.
 
 ### 2026-09-30 — `!` means a material condition; surfaces are ranked; every species states where it is
 

@@ -15,15 +15,19 @@ import { evidenceProvenance, hasEvidenceForSpecies, opportunityAcross, opportuni
 
 test("every committed bundle is servable, and the matrix is derived from the data", () => {
   const datasets = servableDatasets();
-  assert.equal(datasets.length, 49, "forty-nine committed bundles, forty-nine servable pairs");
+  assert.equal(datasets.length, 52, "fifty-two committed bundles, fifty-two servable pairs");
 
-  /* The thirteen harvest datasets. The thirty-six Eastern Waterfowl Survey
-     bundles are asserted separately, below, because what they may claim is
-     different and the difference is the point. */
+  /* The sixteen unit datasets: thirteen harvest records, and Alberta's aerial
+     survey densities for three ungulates. The thirty-six Eastern Waterfowl
+     Survey bundles are asserted separately, below, because what they may claim
+     is different and the difference is the point. */
   const pairs = datasets
     .filter(({ renderKind }) => renderKind !== "SAMPLE_PLOT")
     .map(({ speciesId, jurisdictionId }) => `${jurisdictionId} ${speciesId}`).sort();
   assert.deepEqual(pairs, [
+    "jurisdiction:ca-ab species:moose",
+    "jurisdiction:ca-ab species:mule-deer",
+    "jurisdiction:ca-ab species:white-tailed-deer",
     "jurisdiction:ca-bc species:american-black-bear",
     "jurisdiction:ca-bc species:bobcat",
     "jurisdiction:ca-bc species:canada-lynx",
@@ -45,8 +49,8 @@ test("every committed bundle is servable, and the matrix is derived from the dat
     assert.ok(dataset.evidenceRecordCount >= dataset.geographyCount, `${dataset.speciesId} record count`);
   }
 
-  assert.equal(datasets.reduce((sum, d) => sum + d.geographyCount, 0), 3935, "species × geography pairs with evidence");
-  assert.equal(datasets.reduce((sum, d) => sum + d.evidenceRecordCount, 0), 9108, "committed evidence records");
+  assert.equal(datasets.reduce((sum, d) => sum + d.geographyCount, 0), 4122, "species × geography pairs with evidence");
+  assert.equal(datasets.reduce((sum, d) => sum + d.evidenceRecordCount, 0), 9295, "committed evidence records");
 });
 
 test("nineteen species now resolve, where only white-tailed deer did", () => {

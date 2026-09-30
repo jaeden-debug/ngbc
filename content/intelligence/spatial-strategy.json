@@ -638,11 +638,6 @@
           "strategy": "C_HABITAT_MODEL",
           "status": "IN_RESEARCH",
           "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
-        },
-        {
-          "strategy": "D_COARSE_SUPPORTING",
-          "status": "PLANNED",
-          "plan": "Alberta's WMU aerial ungulate surveys (animals per km² with 90% confidence limits, Open Government Licence – Alberta) as zone evidence in each Alberta unit's card. Read and licence-checked 2026-09-29 (docs/research/species-density-evidence.md); same resolution as the unit, so never painted."
         }
       ]
     },
@@ -696,11 +691,6 @@
           "strategy": "C_HABITAT_MODEL",
           "status": "IN_RESEARCH",
           "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
-        },
-        {
-          "strategy": "D_COARSE_SUPPORTING",
-          "status": "PLANNED",
-          "plan": "Alberta's WMU aerial ungulate surveys (animals per km² with 90% confidence limits, Open Government Licence – Alberta) as zone evidence in each Alberta unit's card. Read and licence-checked 2026-09-29 (docs/research/species-density-evidence.md); same resolution as the unit, so never painted."
         }
       ]
     },
@@ -1039,11 +1029,6 @@
           "strategy": "C_HABITAT_MODEL",
           "status": "IN_RESEARCH",
           "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
-        },
-        {
-          "strategy": "D_COARSE_SUPPORTING",
-          "status": "PLANNED",
-          "plan": "Alberta's WMU aerial ungulate surveys (animals per km² with 90% confidence limits, Open Government Licence – Alberta) as zone evidence in each Alberta unit's card. Read and licence-checked 2026-09-29 (docs/research/species-density-evidence.md); same resolution as the unit, so never painted."
         }
       ]
     },

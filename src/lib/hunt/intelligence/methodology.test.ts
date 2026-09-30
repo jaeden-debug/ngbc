@@ -184,10 +184,12 @@ test("every committed dataset is graded from what it actually publishes", () => 
   for (const dataset of servableDatasets()) {
     const metrics = dataset.metrics.map(({ metric }) => metric);
     assert.equal(dataset.grade, evidenceGrade(metrics), `${dataset.speciesId} grade must be derived, never declared`);
-    /* Not one committed dataset measures animals per square kilometre, so not
-       one of them may be graded A. If that assertion ever fails, a real density
-       dataset arrived — or something was mislabelled as one. */
-    assert.notEqual(dataset.grade, "A", `${dataset.speciesId} has no density data and must not be graded as if it did`);
+    /* Grade A is animals per square kilometre, and only a dataset that
+       publishes a density may hold it. Alberta's aerial surveys were the first
+       (2026-09-30); anything else graded A was mislabelled. */
+    if (dataset.grade === "A") {
+      assert.ok(metrics.includes("POPULATION_DENSITY"), `${dataset.speciesId} has no density data and must not be graded as if it did`);
+    }
     for (const { metric, role, contributes } of dataset.metrics) {
       assert.equal(contributes, METRIC_ROLES[metric] === "ABUNDANCE_SIGNAL" && METRIC_WEIGHTS[metric] > 0);
       assert.equal(role, METRIC_ROLES[metric]);
@@ -219,7 +221,7 @@ test("the methodology is a versioned record, not prose written next to the code"
   assert.match(OPPORTUNITY_METHODOLOGY.statedAs, /not a count of animals/);
   assert.ok(OPPORTUNITY_METHODOLOGY.limitations.length >= 3);
   for (const dataset of servableDatasets()) {
-    assert.equal(dataset.methodologyVersion, "opportunity-v1", "the bundle's own NORMALIZATION version is separate and unchanged");
+    assert.equal(dataset.methodologyVersion, "opportunity-v1", `${dataset.speciesId} in ${dataset.jurisdictionId}: the bundle's own NORMALIZATION version is separate and unchanged`);
   }
 });
 

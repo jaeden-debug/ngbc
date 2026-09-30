@@ -479,10 +479,12 @@ test("a species-bearing dataset with no declared kind is a failure, not a defaul
     }
     assert.ok(DATASET_EVIDENCE[dataset.id], `${dataset.id} declares a tier and precision`);
   }
-  // Every species-bearing dataset today is measured evidence; asserting it
-  // means the first modelled or range dataset trips this test and gets decided.
-  const kinds = new Set(Object.values(DATASET_EVIDENCE).map(({ tier }) => tier));
-  assert.deepEqual([...kinds], ["T1_OFFICIAL_MEASURED"]);
+  // Every species-bearing dataset is measured evidence except the ones decided
+  // otherwise by name; the next modelled or range dataset trips this test and
+  // gets decided. Decided 2026-09-30: Alberta's aerial-survey densities are the
+  // authority's estimates from its survey design, T2.
+  const modelled = Object.entries(DATASET_EVIDENCE).filter(([, { tier }]) => tier !== "T1_OFFICIAL_MEASURED");
+  assert.deepEqual(modelled.map(([id, { tier }]) => `${id} ${tier}`), ["dataset:ca-ab-aerial-ungulate-surveys T2_OFFICIAL_MODELLED"]);
 });
 
 test("openly licensed evidence whose geometry North Ground does not hold is unpaintable", () => {
