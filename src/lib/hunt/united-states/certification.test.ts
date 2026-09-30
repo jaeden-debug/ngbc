@@ -55,13 +55,18 @@ test("all 50 states and D.C. are reported, and every one is counted once per lan
   /* Arizona joined when its service was probed and found to present a
      certificate expired since 2022. The list grows as states gain evidence of
      ANY kind, which includes evidence that a source cannot be used. */
-  assert.deepEqual(statesWithEvidence(), ["AZ", "CO", "ID", "ME", "MI", "MN", "MT", "ND", "NM", "NV", "SD", "UT", "WI", "WY"]);
+  assert.deepEqual(statesWithEvidence(), ["AZ", "CO", "HI", "ID", "ME", "MI", "MN", "MT", "ND", "NM", "NV", "NY", "OR", "SD", "UT", "WA", "WI", "WY"]);
   assert.equal(summary.states.length, 51);
   assert.equal(new Set(summary.states.map((entry) => entry.code)).size, 51);
   for (const lane of [summary.totals.map, summary.totals.regulations, summary.totals.intelligence]) {
     assert.equal(Object.values(lane).reduce((total, count) => total + count, 0), summary.states.length);
   }
-  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["CO", "ME", "MN", "MT", "ND", "NM", "NV", "SD", "UT", "WI", "WY"]);
+  /* Hawaii has a finding and is NOT here: its terms permit use. New York is,
+     because it refuses redistribution outright; Oregon and Washington are,
+     because their terms are unresolved. A state is on this list when its
+     geometry cannot be served, never merely because somebody read its page. */
+  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["CO", "ME", "MN", "MT", "ND", "NM", "NV", "NY", "OR", "SD", "UT", "WA", "WI", "WY"]);
+  assert.ok(!summary.licenceBlocked.some((entry) => entry.code === "HI"), "a permissive licence is not a blocker");
   /* Served is counted from the layers themselves, never asserted as a
      constant: a state counts as served exactly when its layers say so. */
   const servingStates = new Set(US_LAYER_IDS.filter((id) => layerById(id)!.serving).map((id) => id.slice("layer:us-".length, id.indexOf("-", "layer:us-".length)).toUpperCase()));
@@ -79,9 +84,20 @@ test("a state whose publisher refuses us is blocked by name, not left looking un
        somebody read; a finding with `reachability` explains why nobody could.
        A finding with neither is a state somebody started and walked away from,
        and it would otherwise read as "checked" in the report. */
-    const ways = [finding.licence, finding.reachability, finding.licenceAbsent].filter(Boolean).length;
+    const ways = [finding.licence, finding.reachability, finding.licenceAbsent, finding.searchedNoGeography].filter(Boolean).length;
     assert.equal(ways, 1,
-      `${code}: a finding carries EXACTLY ONE of licence (terms read), reachability (unreachable), or licenceAbsent (nothing stated) — never two, and never none`);
+      `${code}: a finding carries EXACTLY ONE of licence (terms read), reachability (unreachable), licenceAbsent (nothing stated) or searchedNoGeography (no geography published) — never two, and never none`);
+    if (finding.searchedNoGeography) {
+      /* A searched-and-empty state must say what it searched and how many
+         authority accounts it found, or it is indistinguishable from a state
+         nobody opened — which is the whole distinction this state exists for. */
+      const searched = certificationFor(code);
+      assert.equal(searched.map.status, "UNAVAILABLE", `${code}: nothing to serve, but now for a recorded reason`);
+      assert.match(searched.map.detail!, /Searched \d+ unit terms/, `${code}: the detail must say the search happened`);
+      assert.ok(finding.searchedNoGeography.termsSearched >= 5, `${code}: a one-term search is not a search`);
+      assert.ok(finding.searchedNoGeography.conclusion.length > 40, `${code}: must state what it concluded`);
+      continue;
+    }
     if (finding.licenceAbsent) {
       /* Nothing stated is not nothing checked: the record must say where it
          looked and carry a positive control, or an absence is just a shrug. */
@@ -153,4 +169,57 @@ test("a refusal and a silence are blocked differently, because they are undone d
 
   // Neither is ever mistaken for a grant.
   for (const code of ["MN", "WI"]) assert.notEqual(certificationFor(code).map.status, "SERVED");
+});
+
+test("a licence that permits use is not filed as a blocker, and is not filed as served either", () => {
+  /* Hawaii is the first United States jurisdiction whose publisher's own terms
+     permit use: "The contents of this web page are public domain", from the
+     Hawaii Statewide GIS Program on the State's own host, with the layer's
+     copyrightText naming the Department of Land and Natural Resources.
+
+     It is pinned here because it is the case that had nowhere to go. Before
+     LICENCE_CLEAR_NOT_INGESTED existed, a permissive licence with no layer fell
+     through to UNAVAILABLE — the same word as a state nobody had looked at. The
+     two assertions below are the ones that matter, and they point in opposite
+     directions: not blocked, and not served. */
+  const hawaii = certificationFor("HI");
+  assert.equal(hawaii.map.status, "LICENCE_CLEAR_NOT_INGESTED");
+  assert.equal(hawaii.map.layers.length, 0, "cleared is not ingested");
+  assert.equal(hawaii.regulations.status, "UNAVAILABLE", "and a boundary licence says nothing about rules");
+  const finding = mapLicenceFindingFor("HI")!;
+  assert.equal(finding.licence!.permittedUse, "PUBLIC_DOMAIN");
+  assert.equal(finding.licence!.redistribution, "PERMITTED");
+  /* The qualification is recorded rather than waved through: the grant
+     qualifies itself "to the extent indicated otherwise in the Terms of Use",
+     and that page could not be located. An express grant whose own carve-out is
+     unverifiable is not the same as an unqualified one, and the note has to say
+     so — otherwise the next person reads PUBLIC_DOMAIN and stores the geometry. */
+  assert.match(finding.licence!.note!, /404/);
+  assert.match(finding.licence!.note!, /to the extent indicated otherwise/);
+  /* And the detail a report prints must not read like coverage. */
+  /* And the row uses the sentence this report already had for a cleared state,
+     rather than a second one meaning the same thing. */
+  assert.match(hawaii.map.detail ?? "", /Nothing blocks this state but the work/);
+});
+
+test("a feature count is never taken as a unit count", () => {
+  /* Three states in one pass published a layer whose feature count overstates
+     its unit system, each for a different reason, and the overstatement is
+     always in the direction that looks like MORE coverage:
+
+       Hawaii     186 features, 121 hunting areas — the rest are closures and
+                  safety zones, so the excess would draw a safety zone as
+                  huntable ground.
+       Oregon      69 features,  67 units — two are REGION='NOT MANAGED', a
+                  reservation and a national park.
+       Washington 1,688 features in "GMU Boundary" against 152 in "GMU
+                  Generalized" — the larger number is boundary SEGMENTS, so
+                  reading it as units overstates the state elevenfold.
+
+     Pinned together because the failure is one habit, not three facts. */
+  const counts = { HI: 121, OR: 67, WA: 152 };
+  for (const [code, expected] of Object.entries(counts)) {
+    assert.equal(mapLicenceFindingFor(code)!.geography.unitCount, expected, `${code} records units, not features`);
+  }
+  assert.match(mapLicenceFindingFor("OR")!.geography.theFeatureCountIsNotTheUnitCount!, /69 features/);
 });

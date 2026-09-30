@@ -283,6 +283,129 @@
         "seasonsAreNotAllPublished": "Some SEASON values are not dates: \"Contact CWMU Operator for 2026 season dates\". Cooperative Wildlife Management Unit seasons are deferred to a private operator, so those hunts are a genuine UNKNOWN even with the join in hand and must never be rendered as a season.",
         "writtenDescriptionsExist": "Each boundary carries a written metes-and-bounds Description. Maine's precedent here is that where a written description accompanies a polygon the description may control; Utah states no precedence either way, and it has not been established."
       }
+    },
+    {
+      "state": "HI",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Hunting Area (separate mammal and bird unit designations on one polygon)",
+        "service": "https://geodata.hawaii.gov/arcgis/rest/services/Terrestrial/MapServer/33",
+        "unitCount": 121,
+        "definedBy": "Hawaii Administrative Rules Title 13, DLNR, Subtitle 5, Part 2, Chapters 122 (Game Birds) and 123 (Game Mammals), as depicted in DOFAW's Hunting Regulation Guides"
+      },
+      "licence": {
+        "statedAs": "State of Hawaii Terms of Use The contents of this web page are public domain and to the extent indicated otherwise in the Terms of Use, are exempt from Terms of Use policy restrictions. There are no expressed warranties associated with the release of this data or product.",
+        "sha256": "sha256:b193b10e01de65e3a3b4fcbb1908a4c584a03d63755dee00e073babb15e923ab",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/903568fa96f44e83a376a8aaf128d49e?f=json",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "PUBLIC_DOMAIN",
+        "redistribution": "PERMITTED",
+        "attribution": "State of Hawaii Department of Land and Natural Resources",
+        "note": "THE FIRST EXPRESS CLEAR LICENCE FOUND IN THE UNITED STATES. \"The contents of this web page are public domain\", from the Hawaii Statewide GIS Program, on the State's own host, with the layer's copyrightText naming the Department of Land and Natural Resources — the actual wildlife authority. ONE QUALIFICATION, recorded rather than waved through: the sentence qualifies itself \"to the extent indicated otherwise in the Terms of Use\", and that page could NOT be located — planning.hawaii.gov/gis/terms-of-use/ returns 404, and neither planning.hawaii.gov/gis/, geoportal.hawaii.gov nor portal.ehawaii.gov/page/terms-of-use/ contains the phrase. So the grant is express and its own carve-out is unverifiable. A person should resolve the cross-reference before geometry is stored."
+      },
+      "discovery": {
+        "howFound": "Layer name search, then confirmed by host (geodata.hawaii.gov) and by the layer's own copyrightText.",
+        "whyThisIsTheStrongestUSFinDING": "It is the only US layer found so far that cites the regulation it implements: its description names HAR Title 13 Chapters 122 and 123 and links DOFAW's published PDFs. Geometry, species applicability and the governing rule arrive together.",
+        "speciesApplicabilityIsOnThePolYGON": "Fields mammal_uni and bird_unit carry SEPARATE mammal and bird unit designations, and status distinguishes them: Hunting Area (Mammal and Bird) 81, Hunting Area (Mammal ONLY) 35, Hunting Area (Bird ONLY) 5. So one polygon can be open to mammals and closed to birds, and a model that treated \"hunting area\" as one geography would answer the wrong species.",
+        "theLayerAlsoHoldsCLOSURES": "Of 186 polygons only 121 are hunting areas. The rest are CLOSED 13, No Hunting 16, Safety Zone 19 and Safety Zone (NO HUNTING) 17. Counting the layer's feature count as a unit count would overstate Hawaii's huntable geography by 54 percent and, worse, could draw a safety zone as a hunting unit.",
+        "islands": "Hawaii, Kauai, Lanai, Maui, Molokai, Oahu — all six, in an island field, which is the geography §39 asks to be treated on its own terms."
+      }
+    },
+    {
+      "state": "NY",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Wildlife Management Unit (WMU)",
+        "service": "https://services6.arcgis.com/DZHaqZm9cxOD4CWM/arcgis/rest/services/Wildlife_Management_Units/FeatureServer/0",
+        "unitCount": 92,
+        "definedBy": "the authority's own published polygons"
+      },
+      "licence": {
+        "statedAs": "1. The NYS DEC asks to be credited in derived products. 2. Secondary Distribution of the data is not allowed. 3. Any documentation provided is an integral part of the data set. Failure to use the documentation in conjunction with the digital data constitutes misuse of the data.",
+        "sha256": "sha256:405361729334c94aa126adae1c33857f9c14482b6f21caef0254bbf37a4ba867",
+        "url": "https://services6.arcgis.com/DZHaqZm9cxOD4CWM/arcgis/rest/services/Wildlife_Management_Units/FeatureServer/0",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "RESTRICTED",
+        "redistribution": "PROHIBITED",
+        "attribution": "New York State Department of Environmental Conservation",
+        "note": "An EXPRESS refusal, not a silence: \"Secondary Distribution of the data is not allowed.\" That is the clearest redistribution prohibition found in any US state, and it is decisive — serving stored geometry to a browser is distribution. Clause 1 asks to be credited in derived products, so derived products are contemplated; clause 2 still forbids passing the data on. Only a written exception from NYS DEC would change it."
+      },
+      "discovery": {
+        "howFound": "Owner srvDECGISPub@srv_cld.ny.gov_nysdec — the Department's own service account.",
+        "note": "92 units matches the number New York publishes, so the layer is the whole WMU set rather than a subset."
+      }
+    },
+    {
+      "state": "OR",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Wildlife Management Unit (WMU); the Oregon Administrative Rules call the same thing a \"wildlife unit\"",
+        "service": "https://nrimp.dfw.state.or.us/arcgis/rest/services/ODFW_Admin/WildlifeManagementUnits/FeatureServer/0",
+        "unitCount": 67,
+        "definedBy": "Oregon Administrative Rules chapter 635, Division 080 \"WILDLIFE UNITS\" — one rule per unit, 635-080-0010 (Saddle Mountain) through 635-080-0077 (Fort Rock). OAR 635-080-0000: for the purpose of managing Oregon's wildlife the State has been divided into separate described areas called wildlife units. The boundary definition is TEXTUAL; the GIS is a depiction of it, and ODFW's own licence note says so by pointing at the OAR division.",
+        "theFeatureCountIsNotTheUnitCount": "The layer returns 69 features. 67 are managed units (REGION EAST 47, WEST 20); TWO are REGION='NOT MANAGED' — UNIT_NUM 0 'WARM SPRING INDIAN RESERVATION' and UNIT_NUM 1 'CRATER LAKE NP'. Counting 69 would overstate Oregon's unit system by two AND would draw a reservation and a national park as huntable management units. Corroborated independently: unit numbers run 10–77 with 13 absent, which is exactly 67, and matches the OAR division's per-unit rule numbering."
+      },
+      "licence": {
+        "statedAs": "Boundaries may not be altered without permission of the Oregon Department of Fish and Wildlife. For official legal boundary description see: https://secure.sos.state.or.us/oard/displayDivisionRules.action?selectedDivision=2968",
+        "sha256": "sha256:8c55aaadbf3f2f79390f3664ef79ef99c82b4d188579e2d789b3810249cb150b",
+        "url": "https://nrimp.dfw.state.or.us/arcgis/rest/services/ODFW_Admin/WildlifeManagementUnits/FeatureServer/0",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "UNRESOLVED",
+        "redistribution": "UNRESOLVED",
+        "attribution": "Oregon Department of Fish and Wildlife",
+        "note": "A restriction on ALTERATION, which is not a restriction on USE. \"Boundaries may not be altered without permission\" forbids changing the geometry; it says nothing about drawing it, querying it or redistributing it unchanged. So UNRESOLVED rather than RESTRICTED — classifying an alteration clause as a use refusal would be the over-strict error §8 treats as equally false. It DOES bear on §41B's simplification: a zoom-generalised copy is arguably an altered boundary, and that question is unresolved and load-bearing for how Oregon could ever be drawn."
+      },
+      "discovery": {
+        "howFound": "Host nrimp.dfw.state.or.us, ODFW's own, corroborated by four separate ODFW staff accounts publishing the same 69-unit layer.",
+        "regulationsLead": "The licence links the Oregon Administrative Rules division carrying the official legal boundary descriptions — a regulations source arriving inside a licence, which is unusual and worth keeping."
+      },
+      "temporalBreak": {
+        "finding": "Eastern Oregon DEER changed management geography in 2026. The official artifact's \"What's new for 2026\" (p. 13): a shift from Wildlife Management Units to deer hunt areas, with new hunt names and numbers. ODFW's own article (https://myodfw.com/articles/eastern-oregon-deer-hunts, dated 2025-11-21) explains it: from 2026 eastern Oregon deer hunts are organized by Deer Hunt Areas instead of WMUs, built on 22 mule deer herd ranges identified from over 1,400 GPS-collared deer, renamed alphanumerically (NE-01).",
+        "whyItMatters": "A 2025 answer keyed to WMUs is WRONG for 2026 eastern Oregon deer, and a 2026 answer is wrong for 2025. This is a change of geographic IDENTITY, not a boundary adjustment, so no amount of reprojection reconciles them.",
+        "howTheYearIsCarried": "By SERVICE NAME, not by a field — the more dangerous form, because a schema check for is_active, year_deactivated or an effective date finds nothing and looks clean. No temporal field exists on any layer. 100Series_HuntBoundary_2026, 400Series_, 500Series_, 700Series_, MD_HuntAreas (\"2026\"), MD_HerdRanges (\"2026\"). Searching the owning account for 2025 equivalents returned only the 2026 set, so prior years are retired rather than kept: a stored snapshot cannot answer a past year, and a hard-coded 2026 URL will silently answer the WRONG year once ODFW publishes 2027."
+      },
+      "speciesGeography": {
+        "pattern": "SEPARATE ANNUAL LAYERS, one per controlled-hunt series — not an attribute on one layer.",
+        "layers": {
+          "100 Series buck deer": 162,
+          "600 Series antlerless deer": 72,
+          "200 Series elk": 292,
+          "400 Series pronghorn": 52,
+          "500 Series bighorn sheep": 30,
+          "700 Series black bear": 19,
+          "2026 Mule Deer Hunt Areas": 43,
+          "2026 Mule Deer Herd Ranges": 22
+        },
+        "theOneCharacterTrap": "Two services differ by a single character. 100Series_HuntBoundary_2026 (singular) holds BUCK deer at layer 7, 162 features. 100Series_HuntBoundaries_2026 (plural) holds ANTLERLESS deer at layer 1, 72 features. Worse, the portal item pointing at the plural service is TITLED \"600Series_HuntBoundaries_2026\". Picking by service name alone silently swaps buck and antlerless geography — the same class of hazard as Nevada's.",
+        "layerIdsAreNotZero": "Layer ids are 7, 1, 19, 21, 3. A layer-0 assumption fails on almost all of them.",
+        "classIsInTheData": "The buck-deer layer's Animal field separates 'One buck with visible antler' (115), 'One mule deer buck with visible antler' (14), 'One white-tailed deer buck with visible antler' (8), 'One white-tailed deer' (8), 'One deer' (6) — so mule, white-tailed and black-tailed deer and the antlered/antlerless class are all distinguished inside one nominal species, which is §16's sex/age-versus-regulatory-class separation arriving as real data.",
+        "theWMUIsOnlyTheBase": "Most big-game seasons are set by controlled-hunt areas DERIVED from WMUs: \"Hunt Area Entire Wildlife Management Unit unless indicated with an asterisk(*)\", with textual controlled-hunt descriptions appended (pp. 94–103). The hunt-boundary layers carry UnitType = full unit (140), subunit (17), multiunit (5) and a HuntDesc field holding the authority's prose. So a coordinate resolves to a WMU, and the applicable hunt area is a full, partial or multi-WMU composite of it, per species and per year.",
+        "gameBirds": "No ODFW-owned GIS for waterfowl zones or upland regions was located from any _ODFW or ODFW_AGO account."
+      }
+    },
+    {
+      "state": "WA",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Game Management Unit (GMU)",
+        "service": "https://geodataservices.wdfw.wa.gov/arcgis/rest/services/MapServices/SharedReferenceLayers/MapServer",
+        "unitCount": 152,
+        "definedBy": "the \"Washington's Big Game Hunting Seasons and Regulations\" pamphlet, whose legal description the layer says takes precedence"
+      },
+      "licence": {
+        "statedAs": "The data set was created at a 1:100,000. Zooming in to scales finer then 1:100,000 may produce inconsistancies with the actual ground feature being represented. The feature class was created based on the \"Washington's Big Game Hunting Seasons and Regulations\" pamphlet. If any difference is found between the legal description for the Game Management Unit in the Pamphlet and what is represented in the feature class, the legal description language takes precedence.",
+        "sha256": "sha256:40d5728cd1935bd88183d77bff78967d432ba5e9ec6fe598df1a562016f2df93",
+        "url": "https://geodataservices.wdfw.wa.gov/arcgis/rest/services/MapServices/SharedReferenceLayers/MapServer/6",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "UNRESOLVED",
+        "redistribution": "UNRESOLVED",
+        "attribution": "Washington Department of Fish and Wildlife",
+        "note": "Accuracy and PRECEDENCE, no use terms. The operative sentence is Maine's rule in Washington's words: \"If any difference is found between the legal description for the Game Management Unit in the Pamphlet and what is represented in the feature class, the legal description language takes precedence.\" That is a statement about which artefact governs, not about reuse — so UNRESOLVED. It is also a scale limit worth heeding: created at 1:100,000, and the layer warns that finer zooms misrepresent the ground."
+      },
+      "discovery": {
+        "howFound": "Host geodataservices.wdfw.wa.gov, WDFW's own, owner WDFWAdministrator.",
+        "twoLayersOneGeography": "The same service exposes \"GMU Generalized\" at 152 features and \"GMU Boundary\" at 1,688. 152 is the unit count; 1,688 is boundary SEGMENTS, each attributed with the ground feature it follows. Reading 1,688 as a unit count would overstate Washington elevenfold — the same class of error as counting Hawaii's safety zones as hunting areas."
+      }
     }
   ],
   "silenceIsNotRefusal": "Two different states of the world are both recorded as blocked, and they are undone differently. SILENCE (UNRESOLVED) means no grant is stated either way: the publisher may simply never have been asked, so a person must ask it. A REFUSAL (RESTRICTED, or redistribution PROHIBITED) means the publisher has answered, and the answer is no: reading its terms more carefully will not change them, and only a written exception from it would. Reporting the two identically would make a refusal look like an errand.",

@@ -711,9 +711,9 @@
       "boundarySource": null,
       "managementGeography": "Public Hunting Area/Unit",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_CLEAR_NOT_INGESTED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "Licence permits reuse (PUBLIC_DOMAIN), read 2026-09-30; Hunting Area (separate mammal and bird unit designations on one polygon) reviewed (121 units). Nothing blocks this state but the work."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -744,7 +744,7 @@
         "No geometry ingested and no rules certified; every Hawaii query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "Licence permits reuse (PUBLIC_DOMAIN), read 2026-09-30; Hunting Area (separate mammal and bird unit designations on one polygon) reviewed (121 units). Nothing blocks this state but the work.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -2170,9 +2170,9 @@
       "boundarySource": null,
       "managementGeography": "Wildlife Management Unit (WMU)",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "RESTRICTED for Wildlife Management Unit (WMU) (92 units), read 2026-09-30: \"1. The NYS DEC asks to be credited in derived products. 2. Secondary Distribution of the data is not allowed. 3. Any doc…\" — the publisher's own terms refuse this use; only a written exception from it would change that."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -2203,7 +2203,7 @@
         "No geometry ingested and no rules certified; every New York query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "RESTRICTED for Wildlife Management Unit (WMU) (92 units), read 2026-09-30: \"1. The NYS DEC asks to be credited in derived products. 2. Secondary Distribution of the data is not allowed. 3. Any doc…\" — the publisher's own terms refuse this use; only a written exception from it would change that.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -2350,9 +2350,9 @@
       "boundarySource": null,
       "managementGeography": "Wildlife Management Unit",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "UNRESOLVED for Wildlife Management Unit (WMU); the Oregon Administrative Rules call the same thing a \"wildlife unit\" (67 units), read 2026-09-30: \"Boundaries may not be altered without permission of the Oregon Department of Fish and Wildlife. For official legal bound…\" — no grant is stated either way; a person must ask the publisher."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -2383,7 +2383,7 @@
         "No geometry ingested and no rules certified; every Oregon query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "UNRESOLVED for Wildlife Management Unit (WMU); the Oregon Administrative Rules call the same thing a \"wildlife unit\" (67 units), read 2026-09-30: \"Boundaries may not be altered without permission of the Oregon Department of Fish and Wildlife. For official legal bound…\" — no grant is stated either way; a person must ask the publisher.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -2958,9 +2958,9 @@
       "boundarySource": null,
       "managementGeography": "Game Management Unit (GMU)",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "UNRESOLVED for Game Management Unit (GMU) (152 units), read 2026-09-30: \"The data set was created at a 1:100,000. Zooming in to scales finer then 1:100,000 may produce inconsistancies with the …\" — no grant is stated either way; a person must ask the publisher."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -2991,7 +2991,7 @@
         "No geometry ingested and no rules certified; every Washington query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "UNRESOLVED for Game Management Unit (GMU) (152 units), read 2026-09-30: \"The data set was created at a 1:100,000. Zooming in to scales finer then 1:100,000 may produce inconsistancies with the …\" — no grant is stated either way; a person must ask the publisher.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]

@@ -45,6 +45,26 @@ export type MapCertification =
    * certificate; only the publisher can change a licence.
    */
   | "TRANSPORT_BLOCKED"
+  /**
+   * The publisher's terms permit use and no geometry is ingested yet.
+   *
+   * This exists because Hawaii arrived and had nowhere to go. A state with a
+   * permissive licence already read fell through to UNAVAILABLE, which is the
+   * same word used for a state nobody has looked at — so the report could not
+   * tell "cleared, not yet built" from "we know nothing". That is not a display
+   * nicety: §9 asks coverage to be usable as an execution queue, and a queue
+   * that cannot see which states are unblocked cannot order the work.
+   *
+   * It is deliberately NOT a form of CERTIFIED. Nothing is drawn, nothing is
+   * parity-checked, and no hunter can receive anything from it.
+   *
+   * And it is gated on there being no recorded `servingDecision`. Michigan's
+   * licence permits reuse and Michigan still cannot be served, because the
+   * instrument rescinding two of its units has not been read. A clear licence
+   * is not a clear road, so Michigan stays UNAVAILABLE and its row names the
+   * decision instead.
+   */
+  | "LICENCE_CLEAR_NOT_INGESTED"
   /** Parity certified and licensed; ready to be served. */
   | "CERTIFIED"
   /** Drawn and resolving in production. */
@@ -99,7 +119,20 @@ const intelligence = evidence.intelligence as Record<string, string[]>;
    we already know its terms refuse us. */
 type MapLicenceFinding = {
   state: string; checkedOn: string;
-  geography: { term: string; service: string; unitCount: number | null; definedBy: string };
+  geography: {
+    term: string; service: string;
+    /**
+     * UNITS, never the layer's feature count.
+     *
+     * Three states in one pass published a layer whose feature count exceeds
+     * its unit system — Hawaii's closures and safety zones, Oregon's two
+     * NOT MANAGED polygons, Washington's boundary segments — and the error is
+     * always in the direction that looks like more coverage. Where the two
+     * differ, `theFeatureCountIsNotTheUnitCount` records why.
+     */
+    unitCount: number | null; definedBy: string;
+    theFeatureCountIsNotTheUnitCount?: string;
+  };
   /**
    * The publisher's terms, where they could be READ. Absent when the service
    * could not be reached at all — see `reachability`. Exactly one of the two is
@@ -119,6 +152,30 @@ type MapLicenceFinding = {
    * written terms that happen not to mention reuse.
    */
   licenceAbsent?: { state: "NONE_STATED"; finding: string; whereLooked: string[]; controlForTheAbsence: string; whatWouldUnblockIt: string; theTrapAvoided?: string; whyItsOwnStateAndNotReachability?: string };
+  /**
+   * The authority publishes NO hunting-unit geography that a search could find.
+   *
+   * Fourth of four, and the one that changes what "no evidence" means. Before
+   * any state was searched, a state with no record and a state whose authority
+   * genuinely publishes nothing were indistinguishable — both read as
+   * UNAVAILABLE with "No reviewed geography service", which is true of the
+   * second and misleading about the first. This makes the search itself the
+   * evidence, and it must carry what was searched and how many authority
+   * accounts were found, or it is a shrug rather than a finding.
+   *
+   * The map status stays UNAVAILABLE, because there is still nothing to serve.
+   * What changes is the DETAIL: a hunter-facing gap that has been looked into
+   * reads differently from one nobody has opened.
+   */
+  searchedNoGeography?: {
+    state: "NO_OFFICIAL_UNIT_GEOGRAPHY_FOUND";
+    checkedOn: string;
+    termsSearched: number;
+    portalItemsReviewed: number;
+    authorityAccountsFound: string[];
+    conclusion: string;
+    whatWouldChangeIt: string;
+  };
   /** A recorded decision NOT to serve a state whose licence is clear. */
   servingDecision?: { decidedOn: string; state: string; reason: string; askedOfAuthority?: string };
 };
@@ -215,6 +272,7 @@ export function certificationFor(code: string): StateCertification {
   const map: MapCertification = layerIds.length === 0
     ? (finding?.reachability ? "TRANSPORT_BLOCKED"
         : finding?.licenceAbsent ? "LICENCE_BLOCKED"
+        : finding?.licence && findingPermits && !finding.servingDecision ? "LICENCE_CLEAR_NOT_INGESTED"
         : finding?.licence && !findingPermits ? "LICENCE_BLOCKED" : "UNAVAILABLE")
     : !certifiedParity
       ? "IN_DEVELOPMENT"
@@ -223,7 +281,9 @@ export function certificationFor(code: string): StateCertification {
         : layers.every((entry) => entry.serving)
           ? "SERVED"
           : "CERTIFIED";
-  const detail = finding?.licenceAbsent && layerIds.length === 0
+  const detail = finding?.searchedNoGeography && layerIds.length === 0
+    ? `Searched ${finding.searchedNoGeography.termsSearched} unit terms across the authority's portal accounts on ${finding.searchedNoGeography.checkedOn} and reviewed ${finding.searchedNoGeography.portalItemsReviewed} published items. ${finding.searchedNoGeography.conclusion} ${finding.searchedNoGeography.whatWouldChangeIt}`
+    : finding?.licenceAbsent && layerIds.length === 0
     ? `${finding.licenceAbsent.finding} ${finding.licenceAbsent.whatWouldUnblockIt}`
     : map === "TRANSPORT_BLOCKED"
     ? `${finding!.reachability!.finding} ${finding!.reachability!.whatWouldUnblockIt} No licence claim is made in either direction: the service was never read, so its terms were never read.`
@@ -233,7 +293,7 @@ export function certificationFor(code: string): StateCertification {
         : `No reuse grant recorded for ${unlicensed.join(", ")}; a person must resolve it with the publisher.`)
     : map === "IN_DEVELOPMENT"
       ? "No clean live-parity certification recorded."
-      : map === "UNAVAILABLE"
+      : map === "UNAVAILABLE" || map === "LICENCE_CLEAR_NOT_INGESTED"
         /* A cleared licence is the one kind of "not built yet" worth telling
            apart from the other 43: nothing stands in the way but the work. */
         ? (finding?.servingDecision
@@ -299,7 +359,7 @@ export function unitedStatesCertification(): UnitedStatesCertificationSummary {
   return {
     states,
     totals: {
-      map: count(["UNAVAILABLE", "IN_DEVELOPMENT", "LICENCE_BLOCKED", "TRANSPORT_BLOCKED", "CERTIFIED", "SERVED"] as const, (entry) => entry.map.status),
+      map: count(["UNAVAILABLE", "IN_DEVELOPMENT", "LICENCE_BLOCKED", "TRANSPORT_BLOCKED", "LICENCE_CLEAR_NOT_INGESTED", "CERTIFIED", "SERVED"] as const, (entry) => entry.map.status),
       regulations: count(["UNAVAILABLE", "PARTIAL", "CERTIFIED", "SERVED"] as const, (entry) => entry.regulations.status),
       intelligence: count(["NONE", "PARTIAL", "CERTIFIED"] as const, (entry) => entry.intelligence.status),
     },
