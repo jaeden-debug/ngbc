@@ -1,8 +1,23 @@
-== node scripts/build-alberta-regulations.mjs
-Wrote content/regulatory/ca-ab-2026.json: 50 rules in 22 groups.
-  species:ruffed-grouse: 3 rules
-  species:spruce-grouse: 2 rules
-  species:sharp-tailed-grouse: 2 rules
-  species:white-tailed-deer: 43 rules
-  disputed against the PDF: 0
+== node scripts/build-manitoba-regulations.mjs
+(node:2188) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/ngbc/ngbc/src/lib/hunt/regulatory/season.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/runner/work/ngbc/ngbc/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Wrote content/regulatory/ca-mb-2026.json
+  Hunting Seasons and Bag Limits Regulation, M.R. 165/91: in effect since 2026-06-16; last amendment M.R. 46/2026
+  certified period 2026-06-16 to 2027-03-31
+  85 rules in 24 groups
+    species:ruffed-grouse: 6 rules
+    species:sharp-tailed-grouse: 9 rules
+    species:spruce-grouse: 6 rules
+    species:white-tailed-deer: 64 rules
+  cross-check: 2 dispute(s), 3 where the regulation overrides the guide
+    REGULATION_CONTROLS general/CANADIAN_RESIDENT 33 Archery: reg [2026-08-31/2026-11-29] guide [2026-08-31/2026-12-20]
+    DISPUTE general/NON_CANADIAN_RESIDENT 7A Archery: reg [2026-08-31/2026-09-20,2026-10-12/2026-11-08] guide []
+    DISPUTE general/NON_CANADIAN_RESIDENT 7A Muzzleloader: reg [2026-10-19/2026-11-08] guide []
+    REGULATION_CONTROLS general/NON_CANADIAN_RESIDENT 21A Archery: reg [2026-08-31/2026-11-08] guide [2026-08-31/2026-09-20,2026-10-12/2026-11-08]
+    REGULATION_CONTROLS general/NON_CANADIAN_RESIDENT 33 Archery: reg [2026-08-31/2026-11-29] guide [2026-08-31/2026-12-20]
+  content hash sha256:c1a0e78498ca45763b8c9b92b0bd792b35002092cedfca9f5f19195250b8be37
+== node scripts/build-overlay-zone-index.mjs
+jurisdiction:ca-mb: 62 zones, 59 with special areas inside
 exit=0
