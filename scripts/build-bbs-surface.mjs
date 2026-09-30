@@ -44,10 +44,9 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { createRequire } from "node:module";
 
 import { SUPPORTED_SPECIES } from "../src/lib/hunt/coverage.ts";
-import { distanceKm, intensityOf, weightedValueAt } from "../src/lib/hunt/intelligence/surface-raster.ts";
+import { intensityOf, weightedValueAt } from "../src/lib/hunt/intelligence/surface-raster.ts";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, "..");
@@ -162,21 +161,37 @@ function sha256(buffer) {
   return `sha256:${createHash("sha256").update(buffer).digest("hex")}`;
 }
 
+/**
+ * The downloads, and the hash of each one as it was actually read.
+ *
+ * WHY HASHES. `sha256` was defined here and never called, so the artifact
+ * recorded the URLs it came from and nothing about their contents. A release
+ * that is re-issued at the same URL — which ScienceBase does — would change the
+ * surface with nothing in the record to show it had. Every other bundle in this
+ * program can be re-derived and compared; this one could not.
+ *
+ * They are computed from the cached bytes rather than from the response, so a
+ * stale cache is visible as a changed hash rather than as a silent old build.
+ */
 async function ensureCached() {
   mkdirSync(CACHE, { recursive: true });
+  const hashes = {};
   for (const [name, url] of Object.entries(RELEASE.files)) {
     const path = join(CACHE, name);
-    if (existsSync(path)) continue;
-    process.stderr.write(`  downloading ${name} …\n`);
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`${name}: ${response.status} from ScienceBase`);
-    writeFileSync(path, Buffer.from(await response.arrayBuffer()));
+    if (!existsSync(path)) {
+      process.stderr.write(`  downloading ${name} …\n`);
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`${name}: ${response.status} from ScienceBase`);
+      writeFileSync(path, Buffer.from(await response.arrayBuffer()));
+    }
+    hashes[name] = sha256(readFileSync(path));
   }
   const statesDir = join(CACHE, "States");
   if (!existsSync(statesDir)) {
     const { execFileSync } = await import("node:child_process");
     execFileSync("unzip", ["-o", "-q", join(CACHE, "States.zip"), "-d", CACHE]);
   }
+  return hashes;
 }
 
 /** A tiny CSV reader. The BBS files are plain, unquoted, latin-1 comma files. */
@@ -336,7 +351,7 @@ function buildSurface(speciesId, aou, source) {
     speciesId,
     metric: "RELATIVE_ABUNDANCE",
     unit: "birds detected per survey route",
-    source: { ...RELEASE, aouCode: aou },
+    source: { ...RELEASE, aouCode: aou, sourceHashes },
     limitations: LIMITATIONS,
     observationPeriod: { from: `${WINDOW.from}-01-01`, through: `${WINDOW.through}-12-31` },
     methodology: METHODOLOGY,
@@ -389,7 +404,7 @@ if (missingCache && check) {
   process.exit(0);
 }
 
-await ensureCached();
+const sourceHashes = await ensureCached();
 process.stderr.write("reading the survey …\n");
 const source = loadSource();
 
