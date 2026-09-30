@@ -131,7 +131,8 @@ function searchNamesSpecies(entry, identity, lexicon) {
 async function harvest() {
   const catalogue = speciesIdentityCatalogue();
   const { manual, provider } = await currentImages();
-  const provenance = new Set((option("provenance", "") ?? "").split(",").filter(Boolean).map((slug) => `species:${slug}`));
+  // --include-manual: manual species to search anyway (to find where their photograph came from).
+  const provenance = new Set((option("include-manual", "") ?? "").split(",").filter(Boolean).map((slug) => `species:${slug}`));
   const limit = Number(option("limit", "0")) || Infinity;
   const refresh = flag("refresh");
   const pending = harvestOrder(catalogue.species.filter((entry) =>
