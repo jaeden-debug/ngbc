@@ -190,6 +190,22 @@ bundle now reproduces byte for byte from the current page.
 
 ## In Progress
 
+- **One composer change is written, gated and NOT landed (metadata lane, 2026-09-29; lane stopped at its usage limit).** Branch `fix/composer-stays-top`, tip `897bcb4`.
+
+  The composer layout fix itself is already live in `8902943`, reached independently: the CSS `order` declarations are gone from production and no `composerAnchored` class remains anywhere. That part of the branch is redundant and must not be landed.
+
+  What is NOT on production and is worth keeping: **the timed 80 ms refocus at `HuntApp.tsx:189` still runs on every composer open.** The branch guards it behind an explicit `options?.focusField`, so only "search another place" moves the cursor into the field — tapping the field itself is already focused, and the second timed focus fired while the sheet was still rising under the keyboard. Landing it requires checking every call site passes `focusField` where it is wanted, or the field silently stops focusing.
+
+  **The branch must not be landed as-is under any circumstances.** Its base is `02f68fd`, which predates the United States milestone, so a merge of it deletes `coverage-matrix`, `unsupported-response` and 976 lines of `jurisdictions.generated.json`. Rebase onto current production first.
+
+  Their own first certification run was INVALID and they said so: it hit port 3104, which is a Codex worktree's dev server, so it certified another lane's code. The rerun against their own build was unfinished when the lane stopped.
+
+- **The iOS keyboard accessory bar is Safari's, not North Ground's — unfixed and unverifiable here.** Reported by the owner from an iPhone with a screenshot: key, card and location-pin buttons plus a dismiss chevron above the keyboard. No North Ground component draws it; the input already carries `type="search"`, `inputMode="search"`, `enterKeyHint="search"`, `autoComplete="off"`, `autoCorrect="off"` and `spellCheck={false}`, and there is no `<form>`. Safari shows the AutoFill bar regardless — it disregards `autocomplete="off"` for AutoFill.
+
+  One unverified hypothesis on record: `autoCorrect="off"` plus `spellCheck={false}` suppress the QuickType prediction row, so iOS fills that same strip with AutoFill buttons instead. No attribute change has been made to test it, and it can only be tested on a physical device. The dismiss chevron is native and cannot be removed by a web page.
+
+  §41A now says "the search field carries search semantics so the platform treats it as a location search rather than as credentials or payment input". **That sentence is not supported by the evidence**: the bar appeared with those semantics already in place. It should be corrected or removed when the owner next rules on this section, or a later lane will read it as a requirement that production already violates.
+
 - **Québec is certified and served (Québec session, 2026-09-21).** The 59 designations, rules, stored drawings and authority fallback are live; the fresh whole-layer audit above supersedes the earlier pre-serving point fixture.
   - Geometry: all 59 designations in PostGIS (9,509 polygons, 2,424,981 vertices), VERIFIED, with subdivided parts, boundary parts and stored drawings for fast lookup (`20260921034448`, `20260921035259`, `20260921085602`, `20260921201849`).
   - Fresh parity against the ministry's complete 9,503-feature WFS read: 257 independently derived points, 0 disagreements, including the official-name coordinates for Maniwaki and Déléage → 10O (`fixtures/hunt/ca-qc-zone-certification.json`).
