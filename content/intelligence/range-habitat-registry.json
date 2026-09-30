@@ -87,7 +87,7 @@
       ],
       "artifactId": "surface:range-habitat-aberts-squirrel-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/aberts-squirrel.json",
-      "artifactHash": "sha256:985f9a4ab110423e03fc5225c69d70f99058607429636fc496d80c164616469c",
+      "artifactHash": "sha256:55ea007ac6e6191496a3cdac62c55bc697e6745fe0b7e1c12fab69a96e4214b3",
       "sourceDatasetId": "model:north-ground-range-habitat-aberts-squirrel",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -106,7 +106,8 @@
       "sitesDetected": 22,
       "supportedCells": 3133,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.071
     },
     {
       "speciesId": "species:american-alligator",
@@ -146,7 +147,7 @@
       ],
       "artifactId": "surface:range-habitat-american-alligator-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/american-alligator.json",
-      "artifactHash": "sha256:0017477d543ce02bb6dfb2b5fd177960522b2c51dcd325561420cbadeea5a8ee",
+      "artifactHash": "sha256:e051aa058831644606cee18ddbe9721bf9dfb0768aa5275ce4c5ef20dc6b0836",
       "sourceDatasetId": "model:north-ground-range-habitat-american-alligator",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -165,7 +166,8 @@
       "sitesDetected": 60,
       "supportedCells": 5571,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.029
     },
     {
       "speciesId": "species:american-badger",
@@ -205,7 +207,7 @@
       ],
       "artifactId": "surface:range-habitat-american-badger-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/american-badger.json",
-      "artifactHash": "sha256:6fb5e9308bef8445ef51f2d2a75f71d7dac7f984182fb69d9e38e7432753ba81",
+      "artifactHash": "sha256:f3c069b1568b21773f45d4a3e04715150a6b707e714e81278274b3179d934c7f",
       "sourceDatasetId": "model:north-ground-range-habitat-american-badger",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -224,7 +226,8 @@
       "sitesDetected": 77,
       "supportedCells": 20469,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.083
     },
     {
       "speciesId": "species:american-bison",
@@ -264,7 +267,7 @@
       ],
       "artifactId": "surface:range-habitat-american-bison-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/american-bison.json",
-      "artifactHash": "sha256:f5bf95e8e0a90098e32ea5355be1f0614ee8a68aecaa885b525575e97c0c6637",
+      "artifactHash": "sha256:ad9b6ca404ad53e9a9e6e7485c82238dddf48bce8e8d004f8270bf287e33f25f",
       "sourceDatasetId": "model:north-ground-range-habitat-american-bison",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -283,7 +286,8 @@
       "sitesDetected": 43,
       "supportedCells": 13371,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.199
     },
     {
       "speciesId": "species:american-black-bear",
@@ -323,7 +327,7 @@
       ],
       "artifactId": "surface:range-habitat-american-black-bear-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/american-black-bear.json",
-      "artifactHash": "sha256:34420b3f24f94217eb921001166ef4d1dc21df9588f4cba24e41654ecfac3b81",
+      "artifactHash": "sha256:90c9cac186ee8715a49587f6121b035cfa729112dbd0989761b0f31ccb36699d",
       "sourceDatasetId": "model:north-ground-range-habitat-american-black-bear",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -342,7 +346,8 @@
       "sitesDetected": 291,
       "supportedCells": 80909,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.283
     },
     {
       "speciesId": "species:american-black-duck",
@@ -382,7 +387,7 @@
       ],
       "artifactId": "surface:range-habitat-american-black-duck-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/american-black-duck.json",
-      "artifactHash": "sha256:17fb8984874fec241863e35f55896f6737d284e8090c1c56c9f7b80db57f1b98",
+      "artifactHash": "sha256:3506bd785e859c5e2e0b33a5552b19e502af835db85807594f0d194eb5e417f9",
       "sourceDatasetId": "model:north-ground-range-habitat-american-black-duck",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -401,7 +406,8 @@
       "sitesDetected": 320,
       "supportedCells": 27993,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.045
     },
     {
       "speciesId": "species:american-bullfrog",
@@ -441,7 +447,7 @@
       ],
       "artifactId": "surface:range-habitat-american-bullfrog-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/american-bullfrog.json",
-      "artifactHash": "sha256:81e87abc77b53075830a94ad872f9c854e0b73af90f03b2375f7c5be79b843de",
+      "artifactHash": "sha256:a351794db14e8e8277ef2f757e8998f9a5b98c7b9c79c2136a3e38e3b7385ca9",
       "sourceDatasetId": "model:north-ground-range-habitat-american-bullfrog",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -460,7 +466,8 @@
       "sitesDetected": 314,
       "supportedCells": 26757,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.789
     },
     {
       "speciesId": "species:american-coot",
@@ -500,7 +507,7 @@
       ],
       "artifactId": "surface:range-habitat-american-coot-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/american-coot.json",
-      "artifactHash": "sha256:c95c25abe34506a643834e016368fa4d30bfe83b8ed2fe2d5e00dfdaa3d9fa7e",
+      "artifactHash": "sha256:9ec43c26c9b8d939be49e16160c5e8e4da03732b1bd409c9fc7cbc3c1676577b",
       "sourceDatasetId": "model:north-ground-range-habitat-american-coot",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -519,7 +526,8 @@
       "sitesDetected": 640,
       "supportedCells": 37653,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.154
     },
     {
       "speciesId": "species:american-crow",
@@ -559,7 +567,7 @@
       ],
       "artifactId": "surface:range-habitat-american-crow-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/american-crow.json",
-      "artifactHash": "sha256:b9752a0f99fcf9eb62d53c9a74a244781109b730a4063d458773e17e59a73651",
+      "artifactHash": "sha256:06f06e71cf1b57724d7d8ae8a8286fa5e5f4b74e7fa330a92c331bf3c397c0fa",
       "sourceDatasetId": "model:north-ground-range-habitat-american-crow",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -578,7 +586,8 @@
       "sitesDetected": 743,
       "supportedCells": 132306,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.11
     },
     {
       "speciesId": "species:american-ermine",
@@ -618,7 +627,7 @@
       ],
       "artifactId": "surface:range-habitat-american-ermine-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/american-ermine.json",
-      "artifactHash": "sha256:25479adbf5d6e26147ad3fc27325841bfeb1a7cfd94f773b0c34c59682e98d51",
+      "artifactHash": "sha256:da6a90a9389b30ad55e2cbae109bf27c39f3c0596e7b27719935c54d52ba18a7",
       "sourceDatasetId": "model:north-ground-range-habitat-american-ermine",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -637,7 +646,8 @@
       "sitesDetected": 23,
       "supportedCells": 5861,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.13
     },
     {
       "speciesId": "species:american-marten",
@@ -677,7 +687,7 @@
       ],
       "artifactId": "surface:range-habitat-american-marten-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/american-marten.json",
-      "artifactHash": "sha256:33f295c15234646affa3ef650ffb7970c7e6c62c295f42070e360451b78fc62f",
+      "artifactHash": "sha256:16b8615aa5049348d84600d23361d53ea1a00bc1072a82280ca61fccc7343536",
       "sourceDatasetId": "model:north-ground-range-habitat-american-marten",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -696,7 +706,8 @@
       "sitesDetected": 66,
       "supportedCells": 20122,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.313
     },
     {
       "speciesId": "species:american-mink",
@@ -736,7 +747,7 @@
       ],
       "artifactId": "surface:range-habitat-american-mink-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/american-mink.json",
-      "artifactHash": "sha256:07ff6aef44b7123967380cb63083fa84c0d76accfaf8f4f928fb803526b9d3f5",
+      "artifactHash": "sha256:6408e8456ff4a40898bdb9309b5b3b672ff432d8a37cb0c318aa0528e736b000",
       "sourceDatasetId": "model:north-ground-range-habitat-american-mink",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -755,7 +766,8 @@
       "sitesDetected": 24,
       "supportedCells": 3864,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.03
     },
     {
       "speciesId": "species:american-red-squirrel",
@@ -795,7 +807,7 @@
       ],
       "artifactId": "surface:range-habitat-american-red-squirrel-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/american-red-squirrel.json",
-      "artifactHash": "sha256:86556230a4e8b63709c4e2642afc319705fdf38168b72761fa60bd5252385bd2",
+      "artifactHash": "sha256:8e0e3b6a12b516b00b90461000ef27d0f36e0d10a1a26de8c8e712c788b62234",
       "sourceDatasetId": "model:north-ground-range-habitat-american-red-squirrel",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -814,7 +826,8 @@
       "sitesDetected": 337,
       "supportedCells": 52723,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.361
     },
     {
       "speciesId": "species:american-wigeon",
@@ -854,7 +867,7 @@
       ],
       "artifactId": "surface:range-habitat-american-wigeon-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/american-wigeon.json",
-      "artifactHash": "sha256:d4a734ebfaad75418e842f0733f2caac5887b5271f24bf626660383084fbc8c8",
+      "artifactHash": "sha256:ccefe2a24f94d902e04750a85ed441055c8a3aff143a55f3a1f2d07904d43357",
       "sourceDatasetId": "model:north-ground-range-habitat-american-wigeon",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -873,7 +886,8 @@
       "sitesDetected": 756,
       "supportedCells": 54341,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.161
     },
     {
       "speciesId": "species:american-woodcock",
@@ -913,7 +927,7 @@
       ],
       "artifactId": "surface:range-habitat-american-woodcock-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/american-woodcock.json",
-      "artifactHash": "sha256:1ea785105db329612ba37c1aff1d774832295f990068158acbfa9ba828d9d21f",
+      "artifactHash": "sha256:56c8908feecacc6fb8393836af31fe4d282e875237fd9582db171d386b7dc5a6",
       "sourceDatasetId": "model:north-ground-range-habitat-american-woodcock",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -932,7 +946,8 @@
       "sitesDetected": 304,
       "supportedCells": 54709,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.036
     },
     {
       "speciesId": "species:arctic-ground-squirrel",
@@ -972,7 +987,7 @@
       ],
       "artifactId": "surface:range-habitat-arctic-ground-squirrel-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/arctic-ground-squirrel.json",
-      "artifactHash": "sha256:ddd93e552e7d2f79d25512a7eadd6e0cd179ae6db32e0b341453af20ff436181",
+      "artifactHash": "sha256:002a4c8ca6e66db9a6f744f045062a000fe54d71d4ca66c6db4d91df9e39faeb",
       "sourceDatasetId": "model:north-ground-range-habitat-arctic-ground-squirrel",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -991,7 +1006,8 @@
       "sitesDetected": 35,
       "supportedCells": 8364,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.393
     },
     {
       "speciesId": "species:arizona-gray-squirrel",
@@ -1036,7 +1052,7 @@
       ],
       "artifactId": "surface:range-habitat-arizona-gray-squirrel-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/arizona-gray-squirrel.json",
-      "artifactHash": "sha256:f0d63a6d890109ba4691464d781a1c1121d449e34e6beed88c6a3c614eee594e",
+      "artifactHash": "sha256:6cffb9cfeadde299fc8419b9335fa8a6d80752788330a900ffc86b21df24e912",
       "sourceDatasetId": "model:north-ground-range-habitat-arizona-gray-squirrel",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -1055,7 +1071,8 @@
       "sitesDetected": 6,
       "supportedCells": 1514,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.174
     },
     {
       "speciesId": "species:band-tailed-pigeon",
@@ -1095,7 +1112,7 @@
       ],
       "artifactId": "surface:range-habitat-band-tailed-pigeon-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/band-tailed-pigeon.json",
-      "artifactHash": "sha256:da0eba0915f199eaffd5a0a8dc93093ae468ad5a7f53baad1aaa85f5a5ec102c",
+      "artifactHash": "sha256:1706f4e8705b4133b50218dfd80ac667376e8fe05b78d349debc1abb6198484b",
       "sourceDatasetId": "model:north-ground-range-habitat-band-tailed-pigeon",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -1114,7 +1131,8 @@
       "sitesDetected": 116,
       "supportedCells": 23371,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.09
     },
     {
       "speciesId": "species:barbary-sheep",
@@ -1159,7 +1177,7 @@
       ],
       "artifactId": "surface:range-habitat-barbary-sheep-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/barbary-sheep.json",
-      "artifactHash": "sha256:364d7f80fd1b749fd3ac567977a2e7854c472908292758d2a8e6504c4d6d16c6",
+      "artifactHash": "sha256:5305799fccb6886a02fa6548a2529bcd9e0a71054c6ce2410a7f17b0a00b7b14",
       "sourceDatasetId": "model:north-ground-range-habitat-barbary-sheep",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -1178,7 +1196,8 @@
       "sitesDetected": 11,
       "supportedCells": 1314,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.311
     },
     {
       "speciesId": "species:barrows-goldeneye",
@@ -1218,7 +1237,7 @@
       ],
       "artifactId": "surface:range-habitat-barrows-goldeneye-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/barrows-goldeneye.json",
-      "artifactHash": "sha256:a6adc9985b40ee8cf70fac360791c9fc2c9b312b3e25cd94f585796be9e2903f",
+      "artifactHash": "sha256:c599f93a9932505f0288e4d07accf1da7e0bb63ed8bc4761cd50270ece7e1632",
       "sourceDatasetId": "model:north-ground-range-habitat-barrows-goldeneye",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -1237,7 +1256,8 @@
       "sitesDetected": 371,
       "supportedCells": 6824,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.019
     },
     {
       "speciesId": "species:beaver",
@@ -1277,7 +1297,7 @@
       ],
       "artifactId": "surface:range-habitat-beaver-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/beaver.json",
-      "artifactHash": "sha256:34e271db2b3ef249cfeffcad5c648ce6e04f9619e9ff119c0f654551fce804bd",
+      "artifactHash": "sha256:79e8098937b3dbe224e3dc0ada7372e56d6ebb1117986498ec3e9a3a1102a0ea",
       "sourceDatasetId": "model:north-ground-range-habitat-beaver",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -1296,7 +1316,8 @@
       "sitesDetected": 385,
       "supportedCells": 41018,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.283
     },
     {
       "speciesId": "species:bighorn-sheep",
@@ -1341,7 +1362,7 @@
       ],
       "artifactId": "surface:range-habitat-bighorn-sheep-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/bighorn-sheep.json",
-      "artifactHash": "sha256:a71b2ff9f6cf46ffb70b1a6d8927cb642bcd3aa6262350f6fc785a33e1bcfff1",
+      "artifactHash": "sha256:a545b76d203f597c9772d3245a592d8e9d7549c6baa5986e8fbde6c62a8f3f8c",
       "sourceDatasetId": "model:north-ground-range-habitat-bighorn-sheep",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -1360,7 +1381,8 @@
       "sitesDetected": 82,
       "supportedCells": 17310,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.081
     },
     {
       "speciesId": "species:black-bellied-whistling-duck",
@@ -1400,7 +1422,7 @@
       ],
       "artifactId": "surface:range-habitat-black-bellied-whistling-duck-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/black-bellied-whistling-duck.json",
-      "artifactHash": "sha256:aa185feb2255d53bc0533edb83f26464bf4bab8715ae0ad9e8359ced5f0ff0c3",
+      "artifactHash": "sha256:1e8fc86390ad53864aace0e4c8a19bdc7fc522af66eb39d87e1896b2384000ba",
       "sourceDatasetId": "model:north-ground-range-habitat-black-bellied-whistling-duck",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -1419,7 +1441,8 @@
       "sitesDetected": 147,
       "supportedCells": 12115,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.07
     },
     {
       "speciesId": "species:black-billed-magpie",
@@ -1459,7 +1482,7 @@
       ],
       "artifactId": "surface:range-habitat-black-billed-magpie-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/black-billed-magpie.json",
-      "artifactHash": "sha256:fb6b7aa1e48c5cb0d08bb24851553d8700fab88bf3f59eaa2cee519c43a9ddef",
+      "artifactHash": "sha256:f14e60caa0f5f5df249240f6ccef14be19a819e2e7b7e186db25f994e18d4f39",
       "sourceDatasetId": "model:north-ground-range-habitat-black-billed-magpie",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -1478,7 +1501,8 @@
       "sitesDetected": 460,
       "supportedCells": 89562,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.132
     },
     {
       "speciesId": "species:black-francolin",
@@ -1518,7 +1542,7 @@
       ],
       "artifactId": "surface:range-habitat-black-francolin-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/black-francolin.json",
-      "artifactHash": "sha256:ed221d4673defab3edd09bf8b3ef1f0af5c831203f989bda06061bd59da3298b",
+      "artifactHash": "sha256:8625df552c6b4fa401f890753a68571c596e8b9c5b9a5a64322c07ee47c7968f",
       "sourceDatasetId": "model:north-ground-range-habitat-black-francolin",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -1537,7 +1561,8 @@
       "sitesDetected": 6,
       "supportedCells": 127,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": null
     },
     {
       "speciesId": "species:black-scoter",
@@ -1577,7 +1602,7 @@
       ],
       "artifactId": "surface:range-habitat-black-scoter-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/black-scoter.json",
-      "artifactHash": "sha256:2ff94f9e4394185edb30c9fce947a838aed05a8cc9592d3df605e816cb5904e1",
+      "artifactHash": "sha256:2e1fa8617f47d21d0f8150c850ebf2e543461486cd56d8bf823a985da7066c0e",
       "sourceDatasetId": "model:north-ground-range-habitat-black-scoter",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -1596,7 +1621,8 @@
       "sitesDetected": 465,
       "supportedCells": 10266,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.008
     },
     {
       "speciesId": "species:black-tailed-jackrabbit",
@@ -1636,7 +1662,7 @@
       ],
       "artifactId": "surface:range-habitat-black-tailed-jackrabbit-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/black-tailed-jackrabbit.json",
-      "artifactHash": "sha256:77800d581f0e9829346cbcc65292b76fe9bd74d85aa24b328be9c5409d2ad343",
+      "artifactHash": "sha256:0213b48cc282afbe7440fbcb93b85e7fd8244c14e0b6893521b8e84fc7cb7640",
       "sourceDatasetId": "model:north-ground-range-habitat-black-tailed-jackrabbit",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -1655,7 +1681,8 @@
       "sitesDetected": 117,
       "supportedCells": 23291,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.218
     },
     {
       "speciesId": "species:black-tailed-prairie-dog",
@@ -1695,7 +1722,7 @@
       ],
       "artifactId": "surface:range-habitat-black-tailed-prairie-dog-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/black-tailed-prairie-dog.json",
-      "artifactHash": "sha256:9c2385556974bcfc4736fd82e5ea522c949b0eb948b3df0799c4aa09d705dede",
+      "artifactHash": "sha256:d7fddfaaa642c81ddaba2b1977243247a912197d56313f5e098620e303f0e287",
       "sourceDatasetId": "model:north-ground-range-habitat-black-tailed-prairie-dog",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -1714,7 +1741,8 @@
       "sitesDetected": 45,
       "supportedCells": 11205,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.092
     },
     {
       "speciesId": "species:blue-winged-teal",
@@ -1754,7 +1782,7 @@
       ],
       "artifactId": "surface:range-habitat-blue-winged-teal-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/blue-winged-teal.json",
-      "artifactHash": "sha256:23fa7eb7b6c4b9c0e24f01916b7179df2c11d57473051435294fe0cd5dc99730",
+      "artifactHash": "sha256:a5bba624cf2b20869ce02761624e077ad6a059024a188a8cc09f5f965f4c8cea",
       "sourceDatasetId": "model:north-ground-range-habitat-blue-winged-teal",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -1773,7 +1801,8 @@
       "sitesDetected": 647,
       "supportedCells": 35304,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.151
     },
     {
       "speciesId": "species:boat-tailed-grackle",
@@ -1813,7 +1842,7 @@
       ],
       "artifactId": "surface:range-habitat-boat-tailed-grackle-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/boat-tailed-grackle.json",
-      "artifactHash": "sha256:a21cf19c207c25ed59604aa665937bf28d6957b1ba0c7e2c9c63f096cb61a05f",
+      "artifactHash": "sha256:2dc6c527e10f0f28e96d690aeb6957ad14cd20939f902ded02fa3892d2018a2c",
       "sourceDatasetId": "model:north-ground-range-habitat-boat-tailed-grackle",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -1832,7 +1861,8 @@
       "sitesDetected": 86,
       "supportedCells": 4276,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.044
     },
     {
       "speciesId": "species:bobcat",
@@ -1872,7 +1902,7 @@
       ],
       "artifactId": "surface:range-habitat-bobcat-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/bobcat.json",
-      "artifactHash": "sha256:d1b62a689e7d0b427c3127b5af775fa4e011b04fb3a7a83b54bc4844798af4aa",
+      "artifactHash": "sha256:fe18a316cb60edacd389b90d11fded8177ea01537c1dfe9e31bfa6142fec686b",
       "sourceDatasetId": "model:north-ground-range-habitat-bobcat",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -1891,7 +1921,8 @@
       "sitesDetected": 175,
       "supportedCells": 44642,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.093
     },
     {
       "speciesId": "species:brant",
@@ -1931,7 +1962,7 @@
       ],
       "artifactId": "surface:range-habitat-brant-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/brant.json",
-      "artifactHash": "sha256:db888fc9c49a147950d342d260d25846a6f4c2b1bd402c1faa28aea679c55747",
+      "artifactHash": "sha256:015aa24c5b038d68da4812295051391f3f8525d1e2fa5d1b202cf299df07f6c0",
       "sourceDatasetId": "model:north-ground-range-habitat-brant",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -1950,7 +1981,8 @@
       "sitesDetected": 213,
       "supportedCells": 6016,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.023
     },
     {
       "speciesId": "species:brewers-blackbird",
@@ -1990,7 +2022,7 @@
       ],
       "artifactId": "surface:range-habitat-brewers-blackbird-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/brewers-blackbird.json",
-      "artifactHash": "sha256:21f0eb3e5ab6174b2641bef69a9b79d2848037d0ef456a708a264ab81a858aa0",
+      "artifactHash": "sha256:728bd3d43a226b571958b4adfd2ca5564b655e622e78f2e8591510d27377e5c2",
       "sourceDatasetId": "model:north-ground-range-habitat-brewers-blackbird",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -2009,7 +2041,8 @@
       "sitesDetected": 523,
       "supportedCells": 99228,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.146
     },
     {
       "speciesId": "species:bronzed-cowbird",
@@ -2049,7 +2082,7 @@
       ],
       "artifactId": "surface:range-habitat-bronzed-cowbird-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/bronzed-cowbird.json",
-      "artifactHash": "sha256:bde6d4019cb10e0d6a97cbe2639968d9a482d791a8f2c2de11898ee07a06b8a7",
+      "artifactHash": "sha256:91c4de9a6454e3ece875dfb6048f912f25a10a9441171105d37994ca53c94ee1",
       "sourceDatasetId": "model:north-ground-range-habitat-bronzed-cowbird",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -2068,7 +2101,8 @@
       "sitesDetected": 65,
       "supportedCells": 10457,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.206
     },
     {
       "speciesId": "species:brown-bear",
@@ -2108,7 +2142,7 @@
       ],
       "artifactId": "surface:range-habitat-brown-bear-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/brown-bear.json",
-      "artifactHash": "sha256:340f968cec8cbc8cd5459494191a2cfc136841cc5be0c5e950e8ae1834c908ac",
+      "artifactHash": "sha256:6374b374cd91274a8fd5f78e80a0a7b3b2b9946eb7fc5e583611c48114836b1b",
       "sourceDatasetId": "model:north-ground-range-habitat-brown-bear",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -2127,7 +2161,8 @@
       "sitesDetected": 52,
       "supportedCells": 19085,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.23
     },
     {
       "speciesId": "species:brown-headed-cowbird",
@@ -2167,7 +2202,7 @@
       ],
       "artifactId": "surface:range-habitat-brown-headed-cowbird-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/brown-headed-cowbird.json",
-      "artifactHash": "sha256:21e8b066e89b1fe352645f724cc556d99051124d65b037993fd164b14fe795d0",
+      "artifactHash": "sha256:c95642b494ed177581d7390f0584a1b95f2b821e4907bb723b33a7d315282e7d",
       "sourceDatasetId": "model:north-ground-range-habitat-brown-headed-cowbird",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -2186,7 +2221,8 @@
       "sitesDetected": 570,
       "supportedCells": 103286,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.129
     },
     {
       "speciesId": "species:brush-rabbit",
@@ -2226,7 +2262,7 @@
       ],
       "artifactId": "surface:range-habitat-brush-rabbit-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/brush-rabbit.json",
-      "artifactHash": "sha256:b4cdee9a048615ecd90027f5d3da8ec24ccb5fc0bb7a2f3fe5925f0aef285018",
+      "artifactHash": "sha256:beafdaf17745e0a5ca5228c4eec4c662488a37a87857927b47f8b67fcd5b75d4",
       "sourceDatasetId": "model:north-ground-range-habitat-brush-rabbit",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -2245,7 +2281,8 @@
       "sitesDetected": 20,
       "supportedCells": 3029,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.07
     },
     {
       "speciesId": "species:bufflehead",
@@ -2285,7 +2322,7 @@
       ],
       "artifactId": "surface:range-habitat-bufflehead-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/bufflehead.json",
-      "artifactHash": "sha256:42a7b876ec37a89c13db79233b19e71a2f1cc319f145c12ee1777a2fd46fcfca",
+      "artifactHash": "sha256:3e7e51739a10c5d6815f63882f3d1f3def759f45f537257c1934a1dd90b9eafd",
       "sourceDatasetId": "model:north-ground-range-habitat-bufflehead",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -2304,7 +2341,8 @@
       "sitesDetected": 745,
       "supportedCells": 14750,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.155
     },
     {
       "speciesId": "species:cackling-goose",
@@ -2344,7 +2382,7 @@
       ],
       "artifactId": "surface:range-habitat-cackling-goose-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/cackling-goose.json",
-      "artifactHash": "sha256:f0775fb9a612e73d7e732118cbfa72662948737fe01443aae950801d25a31c32",
+      "artifactHash": "sha256:f31a30077a2436952616dbcca670304a51d4dac7558caff82906b032adc99626",
       "sourceDatasetId": "model:north-ground-range-habitat-cackling-goose",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -2363,7 +2401,8 @@
       "sitesDetected": 581,
       "supportedCells": 64561,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.054
     },
     {
       "speciesId": "species:california-quail",
@@ -2403,7 +2442,7 @@
       ],
       "artifactId": "surface:range-habitat-california-quail-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/california-quail.json",
-      "artifactHash": "sha256:980f6c892836f4c89d36c5583d823498f67619d5284754a77c5bf255f927f2e9",
+      "artifactHash": "sha256:2a1f2500161e5437f0b8589d6305962025311587872640c06c76a01c922a8620",
       "sourceDatasetId": "model:north-ground-range-habitat-california-quail",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -2422,7 +2461,8 @@
       "sitesDetected": 119,
       "supportedCells": 21586,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.016
     },
     {
       "speciesId": "species:canada-goose",
@@ -2462,7 +2502,7 @@
       ],
       "artifactId": "surface:range-habitat-canada-goose-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/canada-goose.json",
-      "artifactHash": "sha256:12e567388c1c12cc13d8620a1d2d2fc044630bf6f484549a885d3cf102199864",
+      "artifactHash": "sha256:8c7bff8dc1126a71bf1f7116d42b4dc47a4f9f94ae04b3df65542755e5871df2",
       "sourceDatasetId": "model:north-ground-range-habitat-canada-goose",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -2481,7 +2521,8 @@
       "sitesDetected": 802,
       "supportedCells": 57092,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.288
     },
     {
       "speciesId": "species:canada-lynx",
@@ -2521,7 +2562,7 @@
       ],
       "artifactId": "surface:range-habitat-canada-lynx-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/canada-lynx.json",
-      "artifactHash": "sha256:c84a110c7596175ec30a81e103e9c6ab15a0f3594feeb65a3fa51131ed413c88",
+      "artifactHash": "sha256:b1efee4e3f5d6b640b4cbe197fba0fa5b9f0564289f93c9290102a2d042aabe0",
       "sourceDatasetId": "model:north-ground-range-habitat-canada-lynx",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -2540,7 +2581,8 @@
       "sitesDetected": 26,
       "supportedCells": 11190,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.382
     },
     {
       "speciesId": "species:canvasback",
@@ -2580,7 +2622,7 @@
       ],
       "artifactId": "surface:range-habitat-canvasback-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/canvasback.json",
-      "artifactHash": "sha256:b7c589926fbb453e7cefdb5f314d4b5f36c05f116f189e96ff6e1b47c4d13fe3",
+      "artifactHash": "sha256:8cf7d5b66c19fca645db66a14624c7dfce976a49e9d9d1d11e0cd1118085e306",
       "sourceDatasetId": "model:north-ground-range-habitat-canvasback",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -2599,7 +2641,8 @@
       "sitesDetected": 605,
       "supportedCells": 9421,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.104
     },
     {
       "speciesId": "species:caribou",
@@ -2639,7 +2682,7 @@
       ],
       "artifactId": "surface:range-habitat-caribou-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/caribou.json",
-      "artifactHash": "sha256:d6cd28ee5199029ed512fdeccbc49fa1d4aee5e8b901531d23643228ceeedf2e",
+      "artifactHash": "sha256:fac1647769a38c361a5a0a3f3ce3a4e35f1009585b23acb10b756444984d731e",
       "sourceDatasetId": "model:north-ground-range-habitat-caribou",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -2658,7 +2701,8 @@
       "sitesDetected": 91,
       "supportedCells": 46607,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.726
     },
     {
       "speciesId": "species:chestnut-bellied-sandgrouse",
@@ -2698,7 +2742,7 @@
       ],
       "artifactId": "surface:range-habitat-chestnut-bellied-sandgrouse-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/chestnut-bellied-sandgrouse.json",
-      "artifactHash": "sha256:b096aabe3e81ccdc619984a681838f58965ff53279af2b27e29768b2808969d7",
+      "artifactHash": "sha256:7f6e9c4907095e95f9e373b1844bc147ce92ecb11f251f8b6c8bf51ad2c8334e",
       "sourceDatasetId": "model:north-ground-range-habitat-chestnut-bellied-sandgrouse",
       "metric": "KNOWN_DISTRIBUTION",
       "unit": "inside the known distribution",
@@ -2717,7 +2761,8 @@
       "sitesDetected": 2,
       "supportedCells": 94,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": false
+      "usefulVariation": false,
+      "edgeOnUnrecordedGround": 0
     },
     {
       "speciesId": "species:chukar",
@@ -2762,7 +2807,7 @@
       ],
       "artifactId": "surface:range-habitat-chukar-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/chukar.json",
-      "artifactHash": "sha256:a6730634eed1b3857ec40754f1e5105eb893e148f1c2d55e847bd8883442e70e",
+      "artifactHash": "sha256:6e0f6a539a0b70559d6c7310c7ca3f5fe28bac25ea29da1be062e4f356d45fb6",
       "sourceDatasetId": "model:north-ground-range-habitat-chukar",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -2781,7 +2826,8 @@
       "sitesDetected": 239,
       "supportedCells": 24405,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.013
     },
     {
       "speciesId": "species:cinnamon-teal",
@@ -2821,7 +2867,7 @@
       ],
       "artifactId": "surface:range-habitat-cinnamon-teal-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/cinnamon-teal.json",
-      "artifactHash": "sha256:123b3f2f87fc98fb48d0cfa838f0da0d6f485339cea3ff1b018dd12df96db6c1",
+      "artifactHash": "sha256:9eda114455549c733b1fdc1b4d08763a937dbf8a1415dedfc799fdba9f97c38a",
       "sourceDatasetId": "model:north-ground-range-habitat-cinnamon-teal",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -2840,7 +2886,8 @@
       "sitesDetected": 298,
       "supportedCells": 14712,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.097
     },
     {
       "speciesId": "species:clapper-rail",
@@ -2880,7 +2927,7 @@
       ],
       "artifactId": "surface:range-habitat-clapper-rail-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/clapper-rail.json",
-      "artifactHash": "sha256:413a707c18593edd099d371e994e352145a8ff20b52e48ccd75a69d8eb228748",
+      "artifactHash": "sha256:85d467764c8ab0f09b5faa01ad376374ea589cc11ae11e5b075edf6d7ed199ed",
       "sourceDatasetId": "model:north-ground-range-habitat-clapper-rail",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -2899,7 +2946,8 @@
       "sitesDetected": 56,
       "supportedCells": 350,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.002
     },
     {
       "speciesId": "species:collared-peccary",
@@ -2944,7 +2992,7 @@
       ],
       "artifactId": "surface:range-habitat-collared-peccary-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/collared-peccary.json",
-      "artifactHash": "sha256:c1cce91be71e9824a6086dd6440dd8e859d61a97ab3da5a051e9f58c2666d43c",
+      "artifactHash": "sha256:75df730ec1460822b5ede01c199dc8a0086d44dc4b01b93b562753138d907202",
       "sourceDatasetId": "model:north-ground-range-habitat-collared-peccary",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -2963,7 +3011,8 @@
       "sitesDetected": 37,
       "supportedCells": 8731,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.352
     },
     {
       "speciesId": "species:collared-pika",
@@ -3008,7 +3057,7 @@
       ],
       "artifactId": "surface:range-habitat-collared-pika-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/collared-pika.json",
-      "artifactHash": "sha256:f990cb82209e09daa52914fd8326fc107163da246aa24ce662b74b538bafad55",
+      "artifactHash": "sha256:965b18275042b1e0391c69fc6530c122ef4ced96f080ffbc15f4abc232b708aa",
       "sourceDatasetId": "model:north-ground-range-habitat-collared-pika",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -3027,7 +3076,8 @@
       "sitesDetected": 9,
       "supportedCells": 2008,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.214
     },
     {
       "speciesId": "species:columbian-ground-squirrel",
@@ -3067,7 +3117,7 @@
       ],
       "artifactId": "surface:range-habitat-columbian-ground-squirrel-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/columbian-ground-squirrel.json",
-      "artifactHash": "sha256:7192739717a0c49a47832c100c64409d715e66e1bd702a373edf1af128a5f110",
+      "artifactHash": "sha256:3f02f5db4e4f25f3b92ec3a3a4e83b3c995a2deb913668587357c334cf379548",
       "sourceDatasetId": "model:north-ground-range-habitat-columbian-ground-squirrel",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -3086,7 +3136,8 @@
       "sitesDetected": 34,
       "supportedCells": 7812,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.088
     },
     {
       "speciesId": "species:common-eider",
@@ -3126,7 +3177,7 @@
       ],
       "artifactId": "surface:range-habitat-common-eider-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/common-eider.json",
-      "artifactHash": "sha256:ca4282f8201504c73b15ed5df04c349b4be4561ff012633ae9ae6823587b8da5",
+      "artifactHash": "sha256:c7b4bc3379fbc7c4b6cbe5495e411e50699a718c70c9474d1ac0e5c0d4d86eff",
       "sourceDatasetId": "model:north-ground-range-habitat-common-eider",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -3145,7 +3196,8 @@
       "sitesDetected": 131,
       "supportedCells": 5118,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.183
     },
     {
       "speciesId": "species:common-gallinule",
@@ -3185,7 +3237,7 @@
       ],
       "artifactId": "surface:range-habitat-common-gallinule-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/common-gallinule.json",
-      "artifactHash": "sha256:7676d2484a78db744d85697d7f8f494486bd6946f1599a92a4422900345e067e",
+      "artifactHash": "sha256:3dc326aa6a94f983c807ca915c251514e7d6546ecfc81291d5f547d248688db0",
       "sourceDatasetId": "model:north-ground-range-habitat-common-gallinule",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -3204,7 +3256,8 @@
       "sitesDetected": 269,
       "supportedCells": 756,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.074
     },
     {
       "speciesId": "species:common-goldeneye",
@@ -3244,7 +3297,7 @@
       ],
       "artifactId": "surface:range-habitat-common-goldeneye-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/common-goldeneye.json",
-      "artifactHash": "sha256:a480a20e72a6aa9bf76d25f3d77ac4726e0f32882795fba7e5f90957c1606739",
+      "artifactHash": "sha256:c00f063e58b3335553f389aa1b9ec636c44baab616d58f2a95aa91642dc35dd4",
       "sourceDatasetId": "model:north-ground-range-habitat-common-goldeneye",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -3263,7 +3316,8 @@
       "sitesDetected": 756,
       "supportedCells": 15781,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.129
     },
     {
       "speciesId": "species:common-grackle",
@@ -3303,7 +3357,7 @@
       ],
       "artifactId": "surface:range-habitat-common-grackle-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/common-grackle.json",
-      "artifactHash": "sha256:5ed2ebc70a15a05a2ef91acdc22b544deaf0be2ff6adcbe011330074c8a96598",
+      "artifactHash": "sha256:68c17939770fe5bdb667f8647b5e15e5168fbda06ebfe82d28b0781badba7303",
       "sourceDatasetId": "model:north-ground-range-habitat-common-grackle",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -3322,7 +3376,8 @@
       "sitesDetected": 543,
       "supportedCells": 99798,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.079
     },
     {
       "speciesId": "species:common-merganser",
@@ -3362,7 +3417,7 @@
       ],
       "artifactId": "surface:range-habitat-common-merganser-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/common-merganser.json",
-      "artifactHash": "sha256:3a4b6c32e29be24b2aeaecdcfc32928d3001e9168c9932cbd747081c15b67afd",
+      "artifactHash": "sha256:877241a1d1b05a62de475a2ff537561d6dee7091a957311558041da5124ee6ad",
       "sourceDatasetId": "model:north-ground-range-habitat-common-merganser",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -3381,7 +3436,8 @@
       "sitesDetected": 726,
       "supportedCells": 10555,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.155
     },
     {
       "speciesId": "species:common-murre",
@@ -3421,7 +3477,7 @@
       ],
       "artifactId": "surface:range-habitat-common-murre-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/common-murre.json",
-      "artifactHash": "sha256:70bcc074dfcae6b78b0b0066bb9253a1bd5069162f2ff7835052750477bdd884",
+      "artifactHash": "sha256:ba845852a9400493a9a6e9f79d9bd820c1103cf9d1c7b7620198a393e2e71652",
       "sourceDatasetId": "model:north-ground-range-habitat-common-murre",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -3440,7 +3496,8 @@
       "sitesDetected": 190,
       "supportedCells": 18870,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.026
     },
     {
       "speciesId": "species:common-raven",
@@ -3480,7 +3537,7 @@
       ],
       "artifactId": "surface:range-habitat-common-raven-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/common-raven.json",
-      "artifactHash": "sha256:35d95074710af4179511ed6dffaa2dcd746677046e054d5c160a38c26342cf7a",
+      "artifactHash": "sha256:2a1aa1b8a04f4e2c6759f687987b9257144d498f4918bdd54efd18c6e943b2ce",
       "sourceDatasetId": "model:north-ground-range-habitat-common-raven",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -3499,7 +3556,8 @@
       "sitesDetected": 1220,
       "supportedCells": 209372,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.759
     },
     {
       "speciesId": "species:common-snapping-turtle",
@@ -3539,7 +3597,7 @@
       ],
       "artifactId": "surface:range-habitat-common-snapping-turtle-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/common-snapping-turtle.json",
-      "artifactHash": "sha256:f5a61bd84521265a8dec00b99e9d4c074d0234d4c479880f762e256fffbdeb7b",
+      "artifactHash": "sha256:a53ad78cd29f4f4c666201f464f947367d08fbf5082bc4f3b26eaae649b8d241",
       "sourceDatasetId": "model:north-ground-range-habitat-common-snapping-turtle",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -3558,7 +3616,8 @@
       "sitesDetected": 250,
       "supportedCells": 26220,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.647
     },
     {
       "speciesId": "species:coyote",
@@ -3598,7 +3657,7 @@
       ],
       "artifactId": "surface:range-habitat-coyote-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/coyote.json",
-      "artifactHash": "sha256:ce4cf692e26bec26a8d31293c6989b5f60c761e0f31e9c7fe57069a48e0e509a",
+      "artifactHash": "sha256:78089abf7087f55c4fdb0c46b6003774169f3ea5d1d91c0cc6f05eb1412ffa62",
       "sourceDatasetId": "model:north-ground-range-habitat-coyote",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -3617,7 +3676,8 @@
       "sitesDetected": 397,
       "supportedCells": 94653,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.296
     },
     {
       "speciesId": "species:dall-sheep",
@@ -3662,7 +3722,7 @@
       ],
       "artifactId": "surface:range-habitat-dall-sheep-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/dall-sheep.json",
-      "artifactHash": "sha256:ae809b65120deb9376009e405f247df720d0135ec09b8bbb567ec356acdc919e",
+      "artifactHash": "sha256:2fcdb0a15fb745b755fe8b3e68b4fd19e6c0a4d3ecd316cd076b78007aafe150",
       "sourceDatasetId": "model:north-ground-range-habitat-dall-sheep",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -3681,7 +3741,8 @@
       "sitesDetected": 16,
       "supportedCells": 4435,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.264
     },
     {
       "speciesId": "species:desert-cottontail",
@@ -3726,7 +3787,7 @@
       ],
       "artifactId": "surface:range-habitat-desert-cottontail-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/desert-cottontail.json",
-      "artifactHash": "sha256:4d9a0b912b7142c3adaabee41416ea8b0395ef7f455885bd208dcc84d5056825",
+      "artifactHash": "sha256:9fc52fc572d1466149c69fa08087429e4db77e9a0e2aba3461a4f19ddaf28c45",
       "sourceDatasetId": "model:north-ground-range-habitat-desert-cottontail",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -3745,7 +3806,8 @@
       "sitesDetected": 77,
       "supportedCells": 17429,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.25
     },
     {
       "speciesId": "species:double-crested-cormorant",
@@ -3785,7 +3847,7 @@
       ],
       "artifactId": "surface:range-habitat-double-crested-cormorant-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/double-crested-cormorant.json",
-      "artifactHash": "sha256:504ad670e5486b1272d8a12b997214d520384dabc5d8d42bfb77badaa641cb37",
+      "artifactHash": "sha256:569e229dfba680e1f67cafb2a44e2cce9bd4b4482435574ac497ac379a84dd9e",
       "sourceDatasetId": "model:north-ground-range-habitat-double-crested-cormorant",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -3804,7 +3866,8 @@
       "sitesDetected": 716,
       "supportedCells": 19103,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.14
     },
     {
       "speciesId": "species:douglas-squirrel",
@@ -3844,7 +3907,7 @@
       ],
       "artifactId": "surface:range-habitat-douglas-squirrel-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/douglas-squirrel.json",
-      "artifactHash": "sha256:1f9bfc8fec13b1dc2725621271baa9015a83efbbbded685bf4079f8de11331b5",
+      "artifactHash": "sha256:f4b6dcf32a6de6cfb53e8594c6794fca0038d7a82a88eebabcc38c7199362be1",
       "sourceDatasetId": "model:north-ground-range-habitat-douglas-squirrel",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -3863,7 +3926,8 @@
       "sitesDetected": 39,
       "supportedCells": 5505,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.013
     },
     {
       "speciesId": "species:dusky-grouse",
@@ -3908,7 +3972,7 @@
       ],
       "artifactId": "surface:range-habitat-dusky-grouse-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/dusky-grouse.json",
-      "artifactHash": "sha256:9b2c213c6e21536d7a01fb541f91f9a461f55600ac0bb3897e122576dbfa5150",
+      "artifactHash": "sha256:bdedeb6e23f2d1b49db7f80ec2267a8cb0df97d8963d7d833391a409d3a6a79b",
       "sourceDatasetId": "model:north-ground-range-habitat-dusky-grouse",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -3927,7 +3991,8 @@
       "sitesDetected": 152,
       "supportedCells": 33000,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.059
     },
     {
       "speciesId": "species:eastern-cottontail",
@@ -3967,7 +4032,7 @@
       ],
       "artifactId": "surface:range-habitat-eastern-cottontail-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/eastern-cottontail.json",
-      "artifactHash": "sha256:17aeefffde81efa0664913ff7151a2fe595916ba5a744bedc04d452989ed4aad",
+      "artifactHash": "sha256:5994637fd509645e4cd848c3c274be5ff157b96a1967d06a3f040beb364f70bc",
       "sourceDatasetId": "model:north-ground-range-habitat-eastern-cottontail",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -3986,7 +4051,8 @@
       "sitesDetected": 229,
       "supportedCells": 44562,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.122
     },
     {
       "speciesId": "species:eastern-gray-squirrel",
@@ -4026,7 +4092,7 @@
       ],
       "artifactId": "surface:range-habitat-eastern-gray-squirrel-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/eastern-gray-squirrel.json",
-      "artifactHash": "sha256:eb6370a45970fa2d03f4a184048722ad3d9ac87228c4ad038e288bc2668f79f3",
+      "artifactHash": "sha256:ee93bae845360113e4a967b429558accee9e0d3c9d2bee90b7f4dd665121d010",
       "sourceDatasetId": "model:north-ground-range-habitat-eastern-gray-squirrel",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -4045,7 +4111,8 @@
       "sitesDetected": 239,
       "supportedCells": 42645,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.139
     },
     {
       "speciesId": "species:elk",
@@ -4085,7 +4152,7 @@
       ],
       "artifactId": "surface:range-habitat-elk-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/elk.json",
-      "artifactHash": "sha256:97afcd88b172cb5757cdbb89ff6cd6ce818df619808b80f5650a78bafa264d1e",
+      "artifactHash": "sha256:1485c68225d8e9ffe1ea4a723226d508e48d05610b4adc49cdbe44aca9a6745b",
       "sourceDatasetId": "model:north-ground-range-habitat-elk",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -4104,7 +4171,8 @@
       "sitesDetected": 122,
       "supportedCells": 34528,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.148
     },
     {
       "speciesId": "species:emperor-goose",
@@ -4144,7 +4212,7 @@
       ],
       "artifactId": "surface:range-habitat-emperor-goose-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/emperor-goose.json",
-      "artifactHash": "sha256:48193cb703fa8bf0a2f9acde1ec923ba1f1ad974bc8033d9542add147f5ab4ab",
+      "artifactHash": "sha256:aba06e57a7042abd0a3e7385035c97e68299bad17441dddef6b66721ee940ab5",
       "sourceDatasetId": "model:north-ground-range-habitat-emperor-goose",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -4163,7 +4231,8 @@
       "sitesDetected": 31,
       "supportedCells": 2437,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.01
     },
     {
       "speciesId": "species:erckels-spurfowl",
@@ -4203,7 +4272,7 @@
       ],
       "artifactId": "surface:range-habitat-erckels-spurfowl-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/erckels-spurfowl.json",
-      "artifactHash": "sha256:4d84b24a3e6249772bfdf499abf4f4e407b6e7d0c02f0516d5747c9d554d0f51",
+      "artifactHash": "sha256:6cd3d59643c273898ad36fdc29821c4fa645d12e76a97d3e606f4ae78e36e61a",
       "sourceDatasetId": "model:north-ground-range-habitat-erckels-spurfowl",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -4222,7 +4291,8 @@
       "sitesDetected": 5,
       "supportedCells": 85,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": null
     },
     {
       "speciesId": "species:eurasian-collared-dove",
@@ -4262,7 +4332,7 @@
       ],
       "artifactId": "surface:range-habitat-eurasian-collared-dove-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/eurasian-collared-dove.json",
-      "artifactHash": "sha256:d9b1db604b305322c7e623a8c84809a6da46dd1644c6c6fc91c7f56b5075e323",
+      "artifactHash": "sha256:55e70ac7ca2130ff5484ebc23701cdf60a18de6e907bcea4f08545d02a738346",
       "sourceDatasetId": "model:north-ground-range-habitat-eurasian-collared-dove",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -4281,7 +4351,8 @@
       "sitesDetected": 610,
       "supportedCells": 109629,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.121
     },
     {
       "speciesId": "species:eurasian-wigeon",
@@ -4321,7 +4392,7 @@
       ],
       "artifactId": "surface:range-habitat-eurasian-wigeon-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/eurasian-wigeon.json",
-      "artifactHash": "sha256:315dee924effa530e12b696c35a138563c84c669e0092e47a5619b6128b48cea",
+      "artifactHash": "sha256:0b62c8d10c1bed9b26e5bdec5b94e789e4ca06d16a62481f40ed1648758ab614",
       "sourceDatasetId": "model:north-ground-range-habitat-eurasian-wigeon",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -4340,7 +4411,8 @@
       "sitesDetected": 223,
       "supportedCells": 23726,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.047
     },
     {
       "speciesId": "species:european-rabbit",
@@ -4380,7 +4452,7 @@
       ],
       "artifactId": "surface:range-habitat-european-rabbit-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/european-rabbit.json",
-      "artifactHash": "sha256:a73bf20d3ab66fd9e1e2d52897a644105d2189b9ac1c18a50efe311bca4e9c52",
+      "artifactHash": "sha256:5e506353f2ec7a876d1a37865a14014ed149aad3fb7710cadece21fe2095c618",
       "sourceDatasetId": "model:north-ground-range-habitat-european-rabbit",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -4399,7 +4471,8 @@
       "sitesDetected": 21,
       "supportedCells": 2494,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.009
     },
     {
       "speciesId": "species:european-starling",
@@ -4439,7 +4512,7 @@
       ],
       "artifactId": "surface:range-habitat-european-starling-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/european-starling.json",
-      "artifactHash": "sha256:72e451a80e5ecfb7e5310a237390e35af74e68e605c74b71a78477acf4967c6d",
+      "artifactHash": "sha256:9b7775774b1c71f70327575d65966aba024b145bbf20e41993810273e43c6612",
       "sourceDatasetId": "model:north-ground-range-habitat-european-starling",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -4458,7 +4531,8 @@
       "sitesDetected": 697,
       "supportedCells": 121997,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.129
     },
     {
       "speciesId": "species:feral-goat",
@@ -4503,7 +4577,7 @@
       ],
       "artifactId": "surface:range-habitat-feral-goat-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/feral-goat.json",
-      "artifactHash": "sha256:0ef45dea94bc2b316bf11f149dac85e7ab6973dabd6c6c631d3de0d0d95d9309",
+      "artifactHash": "sha256:7c540a18dc1608d151ca55594c011739202d20d99ff546da672e657f962aa4d8",
       "sourceDatasetId": "model:north-ground-range-habitat-feral-goat",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -4522,7 +4596,8 @@
       "sitesDetected": 6,
       "supportedCells": 368,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0
     },
     {
       "speciesId": "species:feral-sheep",
@@ -4562,7 +4637,7 @@
       ],
       "artifactId": "surface:range-habitat-feral-sheep-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/feral-sheep.json",
-      "artifactHash": "sha256:c49e291c48168a99821cebc177ebb8621d30965a3869e2fd74f20700f9fe9ef6",
+      "artifactHash": "sha256:53b50450419c71f97e797f7361beaa2af65aaff833ff043576a09b50b74b93db",
       "sourceDatasetId": "model:north-ground-range-habitat-feral-sheep",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -4581,7 +4656,8 @@
       "sitesDetected": 5,
       "supportedCells": 960,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0
     },
     {
       "speciesId": "species:fish-crow",
@@ -4621,7 +4697,7 @@
       ],
       "artifactId": "surface:range-habitat-fish-crow-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/fish-crow.json",
-      "artifactHash": "sha256:f39ead465ced60a21d727fb16401978afa58005828b599fad560fe32d1586285",
+      "artifactHash": "sha256:e19478e96f05ed6d42197c0883fea0bc884cbd3e520cd052147b3cd23e0dc975",
       "sourceDatasetId": "model:north-ground-range-habitat-fish-crow",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -4640,7 +4716,8 @@
       "sitesDetected": 160,
       "supportedCells": 18356,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.001
     },
     {
       "speciesId": "species:fisher",
@@ -4680,7 +4757,7 @@
       ],
       "artifactId": "surface:range-habitat-fisher-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/fisher.json",
-      "artifactHash": "sha256:f86ff9194ac3163e48a7cd8a0e307e1872cefa79b1411906aa414e37c49ced17",
+      "artifactHash": "sha256:555d2efcae0a2148718109f6da4c39552397511a0b403fe7c4e4deccf12e01c6",
       "sourceDatasetId": "model:north-ground-range-habitat-fisher",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -4699,7 +4776,8 @@
       "sitesDetected": 41,
       "supportedCells": 8868,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.137
     },
     {
       "speciesId": "species:fox-squirrel",
@@ -4739,7 +4817,7 @@
       ],
       "artifactId": "surface:range-habitat-fox-squirrel-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/fox-squirrel.json",
-      "artifactHash": "sha256:e12aea7057d8847f6e5fff2de5abbfe3c6123c9492377ea179db8460a59e6a74",
+      "artifactHash": "sha256:2e9eff48935c42c907a2164cd831563303c940fcba36096505e1edf8614b278c",
       "sourceDatasetId": "model:north-ground-range-habitat-fox-squirrel",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -4758,7 +4836,8 @@
       "sitesDetected": 206,
       "supportedCells": 42212,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.119
     },
     {
       "speciesId": "species:fulvous-whistling-duck",
@@ -4798,7 +4877,7 @@
       ],
       "artifactId": "surface:range-habitat-fulvous-whistling-duck-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/fulvous-whistling-duck.json",
-      "artifactHash": "sha256:20d57e802cdbb8d840babe3ec511929ef541b8fd55c4341215fb864a22411269",
+      "artifactHash": "sha256:84edd10c485af02fc3321e170fb64e7ea1577590a8699a17e307d0a04402d066",
       "sourceDatasetId": "model:north-ground-range-habitat-fulvous-whistling-duck",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -4817,7 +4896,8 @@
       "sitesDetected": 34,
       "supportedCells": 2163,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.075
     },
     {
       "speciesId": "species:gadwall",
@@ -4857,7 +4937,7 @@
       ],
       "artifactId": "surface:range-habitat-gadwall-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/gadwall.json",
-      "artifactHash": "sha256:ffa6bc9f9a47295c49de64259cb532c1271bf24626dde00419c7ff9f074492ba",
+      "artifactHash": "sha256:e7c5f2faf643edaf2c9e2db89fde268cc9fd4b341c9cea7783230122060d2ce2",
       "sourceDatasetId": "model:north-ground-range-habitat-gadwall",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -4876,7 +4956,8 @@
       "sitesDetected": 657,
       "supportedCells": 16330,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.119
     },
     {
       "speciesId": "species:gambels-quail",
@@ -4916,7 +4997,7 @@
       ],
       "artifactId": "surface:range-habitat-gambels-quail-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/gambels-quail.json",
-      "artifactHash": "sha256:8775cdc24fe478c8a618a172fc76c395b5a945e638fc3eb41792446febb93a5a",
+      "artifactHash": "sha256:236dc01ec42632a4d4d93e90fc53f72c55e534e22932dc26db9db30b7b1d8fae",
       "sourceDatasetId": "model:north-ground-range-habitat-gambels-quail",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -4935,7 +5016,8 @@
       "sitesDetected": 53,
       "supportedCells": 10910,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.234
     },
     {
       "speciesId": "species:gemsbok",
@@ -4975,7 +5057,7 @@
       ],
       "artifactId": "surface:range-habitat-gemsbok-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/gemsbok.json",
-      "artifactHash": "sha256:1d74c107e47f452c8cdf12429f3a897caa0dc138eeb0f14a9e1d6e7443bc3aea",
+      "artifactHash": "sha256:d86c1eb19703a140d2ea47907868f0f67c3046db25dd320f769cc5ef5aa9d955",
       "sourceDatasetId": "model:north-ground-range-habitat-gemsbok",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -4994,7 +5076,8 @@
       "sitesDetected": 4,
       "supportedCells": 1073,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.111
     },
     {
       "speciesId": "species:gray-fox",
@@ -5034,7 +5117,7 @@
       ],
       "artifactId": "surface:range-habitat-gray-fox-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/gray-fox.json",
-      "artifactHash": "sha256:cd89cb4902c8aa72982fbc7e054eb4f950108c2c8ecb6c9954fc289093a0b2e9",
+      "artifactHash": "sha256:d2e71cb38a1050aca2ab4cdc0523ac1cc5284559321b67ba44e8cd9c286ab572",
       "sourceDatasetId": "model:north-ground-range-habitat-gray-fox",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -5053,7 +5136,8 @@
       "sitesDetected": 131,
       "supportedCells": 31819,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.206
     },
     {
       "speciesId": "species:gray-francolin",
@@ -5093,7 +5177,7 @@
       ],
       "artifactId": "surface:range-habitat-gray-francolin-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/gray-francolin.json",
-      "artifactHash": "sha256:6a303051b7e7a1905ce5e2a0ca617f79ea8d34d980525666f68d9daf0150cdd2",
+      "artifactHash": "sha256:a1efd38f64a850104603d9c51f899540c2b91c4b2501936fa784389995a52121",
       "sourceDatasetId": "model:north-ground-range-habitat-gray-francolin",
       "metric": "KNOWN_DISTRIBUTION",
       "unit": "inside the known distribution",
@@ -5112,7 +5196,8 @@
       "sitesDetected": 7,
       "supportedCells": 282,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": false
+      "usefulVariation": false,
+      "edgeOnUnrecordedGround": 0
     },
     {
       "speciesId": "species:gray-partridge",
@@ -5152,7 +5237,7 @@
       ],
       "artifactId": "surface:range-habitat-gray-partridge-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/gray-partridge.json",
-      "artifactHash": "sha256:a75c8f22f3e8a63b1a6ce35b0d7cd4e1029aca9c6d82fc226e6064192bde1c83",
+      "artifactHash": "sha256:b96b24e5237beb672ebcb55dcbee39938407cebb0288838b5f92bb087f8ae651",
       "sourceDatasetId": "model:north-ground-range-habitat-gray-partridge",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -5171,7 +5256,8 @@
       "sitesDetected": 196,
       "supportedCells": 40780,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0
     },
     {
       "speciesId": "species:gray-wolf",
@@ -5211,7 +5297,7 @@
       ],
       "artifactId": "surface:range-habitat-gray-wolf-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/gray-wolf.json",
-      "artifactHash": "sha256:6a58d64dc88e94d3f025593c20f4c15100a384f0f17eeacf4722214fb71ed92c",
+      "artifactHash": "sha256:2f6b16afb1a39cbc519e3eca4e83699fc02f3783f283953fff84f5eedc195358",
       "sourceDatasetId": "model:north-ground-range-habitat-gray-wolf",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -5230,7 +5316,8 @@
       "sitesDetected": 126,
       "supportedCells": 48861,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.22
     },
     {
       "speciesId": "species:great-cormorant",
@@ -5270,7 +5357,7 @@
       ],
       "artifactId": "surface:range-habitat-great-cormorant-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/great-cormorant.json",
-      "artifactHash": "sha256:e2c043eeb542c03c257be1eb9acc3fd572eabec931e971a246e3682c5fcf699f",
+      "artifactHash": "sha256:6002dd05f65f5c4ab371d9cc15e77e33c2f42a96244ae7329f2f8bb167753c3f",
       "sourceDatasetId": "model:north-ground-range-habitat-great-cormorant",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -5289,7 +5376,8 @@
       "sitesDetected": 93,
       "supportedCells": 3230,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.018
     },
     {
       "speciesId": "species:great-tailed-grackle",
@@ -5329,7 +5417,7 @@
       ],
       "artifactId": "surface:range-habitat-great-tailed-grackle-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/great-tailed-grackle.json",
-      "artifactHash": "sha256:264be7801605de8bfcf487ac4a609001dbbee79eca0c1107eeca745ad5534ee0",
+      "artifactHash": "sha256:5d019a51581cb0e739ade08567e834721f005a8beace0acb8b75da27ed82c671",
       "sourceDatasetId": "model:north-ground-range-habitat-great-tailed-grackle",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -5348,7 +5436,8 @@
       "sitesDetected": 293,
       "supportedCells": 48471,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.157
     },
     {
       "speciesId": "species:greater-prairie-chicken",
@@ -5388,7 +5477,7 @@
       ],
       "artifactId": "surface:range-habitat-greater-prairie-chicken-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/greater-prairie-chicken.json",
-      "artifactHash": "sha256:9e81725c03ac9015ce24f34b657e067f2bb9c477020d373781054ffc79f9f3d2",
+      "artifactHash": "sha256:775292f034f006443527caf08085b79d5c87ed1fabc67919ae021bedfc01301e",
       "sourceDatasetId": "model:north-ground-range-habitat-greater-prairie-chicken",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -5407,7 +5496,8 @@
       "sitesDetected": 40,
       "supportedCells": 9887,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0
     },
     {
       "speciesId": "species:greater-sage-grouse",
@@ -5447,7 +5537,7 @@
       ],
       "artifactId": "surface:range-habitat-greater-sage-grouse-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/greater-sage-grouse.json",
-      "artifactHash": "sha256:b10fc2be4ebcd8055bb31bc1fe6ba437d7d29b63ff4565c25448c68b0ab9f67a",
+      "artifactHash": "sha256:492a04098b0e93eb72951afe7f90378d58d5adf5af2b07988cce16a8309a4a27",
       "sourceDatasetId": "model:north-ground-range-habitat-greater-sage-grouse",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -5466,7 +5556,8 @@
       "sitesDetected": 84,
       "supportedCells": 14621,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0
     },
     {
       "speciesId": "species:greater-scaup",
@@ -5506,7 +5597,7 @@
       ],
       "artifactId": "surface:range-habitat-greater-scaup-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/greater-scaup.json",
-      "artifactHash": "sha256:bdc17415e9b5d7f8747ed711ca9ac54e8eb2f03b5d02b3ae40355ad0a41a83a9",
+      "artifactHash": "sha256:8c30e1596c73251b202dbcaaba58dd2706c616893bfcee884cba8c714de6bd07",
       "sourceDatasetId": "model:north-ground-range-habitat-greater-scaup",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -5525,7 +5616,8 @@
       "sitesDetected": 656,
       "supportedCells": 11980,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.062
     },
     {
       "speciesId": "species:greater-white-fronted-goose",
@@ -5565,7 +5657,7 @@
       ],
       "artifactId": "surface:range-habitat-greater-white-fronted-goose-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/greater-white-fronted-goose.json",
-      "artifactHash": "sha256:eefb3a24762c81320c397166dd08957080a1cdf43c57b44f6d6aa4927ea869e8",
+      "artifactHash": "sha256:129fd8badb67bb1777843e73680be2ddaea259e22f4cc6b3dbef5f288afaaa80",
       "sourceDatasetId": "model:north-ground-range-habitat-greater-white-fronted-goose",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -5584,7 +5676,8 @@
       "sitesDetected": 602,
       "supportedCells": 34896,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.098
     },
     {
       "speciesId": "species:green-frog",
@@ -5624,7 +5717,7 @@
       ],
       "artifactId": "surface:range-habitat-green-frog-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/green-frog.json",
-      "artifactHash": "sha256:5165b92ab6a8396e547188ea2d882306879bc02909ab841f912459edda3c790e",
+      "artifactHash": "sha256:a62961de5c837830beb3f43c8725a89f9c30a4a8e1553b0189436a6d9b0fd48b",
       "sourceDatasetId": "model:north-ground-range-habitat-green-frog",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -5643,7 +5736,8 @@
       "sitesDetected": 229,
       "supportedCells": 27432,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.64
     },
     {
       "speciesId": "species:green-iguana",
@@ -5683,7 +5777,7 @@
       ],
       "artifactId": "surface:range-habitat-green-iguana-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/green-iguana.json",
-      "artifactHash": "sha256:507c074ce07cace2164f8ebdc9232c13f36993779ca5582f08ecf00ce6f225a1",
+      "artifactHash": "sha256:d71b2c53485cf0952625918f0eee82dc86d597b8a00c09c020ef6116d519f768",
       "sourceDatasetId": "model:north-ground-range-habitat-green-iguana",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -5702,7 +5796,8 @@
       "sitesDetected": 7,
       "supportedCells": 445,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.031
     },
     {
       "speciesId": "species:green-winged-teal",
@@ -5742,7 +5837,7 @@
       ],
       "artifactId": "surface:range-habitat-green-winged-teal-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/green-winged-teal.json",
-      "artifactHash": "sha256:81ae933c6da897a04d78a8298d1f696923f6b4d6b2756f56da857e23a4035bf7",
+      "artifactHash": "sha256:2c098dfe6b3c75e84532236836bde7e600e6fa8e60d0606770f47991d39206be",
       "sourceDatasetId": "model:north-ground-range-habitat-green-winged-teal",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -5761,7 +5856,8 @@
       "sitesDetected": 790,
       "supportedCells": 45067,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.167
     },
     {
       "speciesId": "species:gunnisons-prairie-dog",
@@ -5806,7 +5902,7 @@
       ],
       "artifactId": "surface:range-habitat-gunnisons-prairie-dog-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/gunnisons-prairie-dog.json",
-      "artifactHash": "sha256:8f1caaaca228660a8b86d92dd9bb624da8e50ca2ea5f83ac775df14acfa55035",
+      "artifactHash": "sha256:b8df28ac99d1cc2f0782f8a32370a6caae9245f3fb6b794c25e0161fedc85919",
       "sourceDatasetId": "model:north-ground-range-habitat-gunnisons-prairie-dog",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -5825,7 +5921,8 @@
       "sitesDetected": 18,
       "supportedCells": 3764,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.089
     },
     {
       "speciesId": "species:harlequin-duck",
@@ -5865,7 +5962,7 @@
       ],
       "artifactId": "surface:range-habitat-harlequin-duck-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/harlequin-duck.json",
-      "artifactHash": "sha256:a59556a44808e35837a027c895dea35f326e5ef54cfd46b5f82076f8af622b3a",
+      "artifactHash": "sha256:5798a3fc61aa208c95ac780778f143733918f6ac0acd23592aa983e3ca646bfc",
       "sourceDatasetId": "model:north-ground-range-habitat-harlequin-duck",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -5884,7 +5981,8 @@
       "sitesDetected": 258,
       "supportedCells": 4657,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.013
     },
     {
       "speciesId": "species:helmeted-guineafowl",
@@ -5924,7 +6022,7 @@
       ],
       "artifactId": "surface:range-habitat-helmeted-guineafowl-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/helmeted-guineafowl.json",
-      "artifactHash": "sha256:d8624a92f10ddc3cd06921310228126f905eed702b8b99dee75ae63889120c49",
+      "artifactHash": "sha256:d6cd75e027d04c9a60f7cde4416f876c0d426ee5bdd26f0c2616cb9656399e8b",
       "sourceDatasetId": "model:north-ground-range-habitat-helmeted-guineafowl",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -5943,7 +6041,8 @@
       "sitesDetected": 214,
       "supportedCells": 40438,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.01
     },
     {
       "speciesId": "species:himalayan-snowcock",
@@ -5983,7 +6082,7 @@
       ],
       "artifactId": "surface:range-habitat-himalayan-snowcock-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/himalayan-snowcock.json",
-      "artifactHash": "sha256:94ca126f35bfafc0dda40ff86cd7c461ab1c470f992a865979346e1cd0d4c11e",
+      "artifactHash": "sha256:e26c680bdebccbec7fdc7f87d772f57e2e3caadf51aeb4b071a15da0af82977f",
       "sourceDatasetId": "model:north-ground-range-habitat-himalayan-snowcock",
       "metric": "KNOWN_DISTRIBUTION",
       "unit": "inside the known distribution",
@@ -6002,7 +6101,8 @@
       "sitesDetected": 2,
       "supportedCells": 657,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": false
+      "usefulVariation": false,
+      "edgeOnUnrecordedGround": 0
     },
     {
       "speciesId": "species:hoary-marmot",
@@ -6047,7 +6147,7 @@
       ],
       "artifactId": "surface:range-habitat-hoary-marmot-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/hoary-marmot.json",
-      "artifactHash": "sha256:a41ced9a3772733706dc736af8248954953f40539d0fda9b2f7e35737ef1820a",
+      "artifactHash": "sha256:e5843153742babb1ef6628bad403d471ddd02518746fc04e6ae290a5df463deb",
       "sourceDatasetId": "model:north-ground-range-habitat-hoary-marmot",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -6066,7 +6166,8 @@
       "sitesDetected": 36,
       "supportedCells": 5484,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.155
     },
     {
       "speciesId": "species:hooded-merganser",
@@ -6106,7 +6207,7 @@
       ],
       "artifactId": "surface:range-habitat-hooded-merganser-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/hooded-merganser.json",
-      "artifactHash": "sha256:b8d2c388944659f2c569733236fdd846a3a050a9e79da0a29d6a6c16c4a9e94a",
+      "artifactHash": "sha256:8270df51902fd634d287cace43544a87e8a79abb871c88db305202a51cacee97",
       "sourceDatasetId": "model:north-ground-range-habitat-hooded-merganser",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -6125,7 +6226,8 @@
       "sitesDetected": 687,
       "supportedCells": 61810,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.131
     },
     {
       "speciesId": "species:house-sparrow",
@@ -6165,7 +6267,7 @@
       ],
       "artifactId": "surface:range-habitat-house-sparrow-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/house-sparrow.json",
-      "artifactHash": "sha256:203d53f9e369eef263e02936d1a1af0afdb6d30c479173f6685fa020efc12a96",
+      "artifactHash": "sha256:ca4b7de34d43fc74e51aec5ae685a9c0148865f229748c887a10cc6b04ecb1e6",
       "sourceDatasetId": "model:north-ground-range-habitat-house-sparrow",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -6184,7 +6286,8 @@
       "sitesDetected": 710,
       "supportedCells": 30398,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.167
     },
     {
       "speciesId": "species:indian-peafowl",
@@ -6224,7 +6327,7 @@
       ],
       "artifactId": "surface:range-habitat-indian-peafowl-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/indian-peafowl.json",
-      "artifactHash": "sha256:e7082384676f5ed6a80e3e3694bbb47ec3d24b946770d365007ff9ec208623f4",
+      "artifactHash": "sha256:60208421e0a30729e2bbd7537b1c533d025a6e26ce04dc8cf7963424f6fd2d3d",
       "sourceDatasetId": "model:north-ground-range-habitat-indian-peafowl",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -6243,7 +6346,8 @@
       "sitesDetected": 188,
       "supportedCells": 35470,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.014
     },
     {
       "speciesId": "species:kalij-pheasant",
@@ -6283,7 +6387,7 @@
       ],
       "artifactId": "surface:range-habitat-kalij-pheasant-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/kalij-pheasant.json",
-      "artifactHash": "sha256:3f3eefe9955c7b90e3cb59ddf58834220c6f20831c85b46b008ce00271565153",
+      "artifactHash": "sha256:9c78521de33d7e121a80f520c0c09a1e1975c4558ce86e65c2c03018c5f45df7",
       "sourceDatasetId": "model:north-ground-range-habitat-kalij-pheasant",
       "metric": "KNOWN_DISTRIBUTION",
       "unit": "inside the known distribution",
@@ -6302,7 +6406,8 @@
       "sitesDetected": 5,
       "supportedCells": 137,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": false
+      "usefulVariation": false,
+      "edgeOnUnrecordedGround": null
     },
     {
       "speciesId": "species:king-eider",
@@ -6342,7 +6447,7 @@
       ],
       "artifactId": "surface:range-habitat-king-eider-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/king-eider.json",
-      "artifactHash": "sha256:efe74f584334eeeb8065dace0a15ddc669da0aa88da0c4aee7aa5c56f6b6707f",
+      "artifactHash": "sha256:ac18e517b1a7d208320c01225a818f4e956052b396be906775ecc255ceca973e",
       "sourceDatasetId": "model:north-ground-range-habitat-king-eider",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -6361,7 +6466,8 @@
       "sitesDetected": 109,
       "supportedCells": 9201,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.068
     },
     {
       "speciesId": "species:king-rail",
@@ -6401,7 +6507,7 @@
       ],
       "artifactId": "surface:range-habitat-king-rail-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/king-rail.json",
-      "artifactHash": "sha256:5fde8038a812ebc6dfd5318c5efbb8ed81230c2d4af1830305fd545c27910ae1",
+      "artifactHash": "sha256:eccebfa7d6bbef878de04694ffa393b5c6a808c713a3227a75382be89a1d2208",
       "sourceDatasetId": "model:north-ground-range-habitat-king-rail",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -6420,7 +6526,8 @@
       "sitesDetected": 73,
       "supportedCells": 1215,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.001
     },
     {
       "speciesId": "species:kit-fox",
@@ -6465,7 +6572,7 @@
       ],
       "artifactId": "surface:range-habitat-kit-fox-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/kit-fox.json",
-      "artifactHash": "sha256:c01b45553ab610e5c40df0b663ac9f462a9f806f81386edf146b18c89c1afd57",
+      "artifactHash": "sha256:d8c81a1bb97165c4eafddd1d4042e9a2d916d9750497871114577efb7fb223ff",
       "sourceDatasetId": "model:north-ground-range-habitat-kit-fox",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -6484,7 +6591,8 @@
       "sitesDetected": 9,
       "supportedCells": 2757,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.218
     },
     {
       "speciesId": "species:least-weasel",
@@ -6524,7 +6632,7 @@
       ],
       "artifactId": "surface:range-habitat-least-weasel-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/least-weasel.json",
-      "artifactHash": "sha256:2b083621f0d98bfd3ffd11b4626eb9baf4a9140a2b92e185ba9bb13135c9f193",
+      "artifactHash": "sha256:cfbde2176ef44f8020524e9f39dae3eb538e54283e7d2dabea0ec195f77de610",
       "sourceDatasetId": "model:north-ground-range-habitat-least-weasel",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -6543,7 +6651,8 @@
       "sitesDetected": 13,
       "supportedCells": 4155,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.032
     },
     {
       "speciesId": "species:lesser-scaup",
@@ -6583,7 +6692,7 @@
       ],
       "artifactId": "surface:range-habitat-lesser-scaup-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/lesser-scaup.json",
-      "artifactHash": "sha256:249a51fa2be3358f5e68e239b9545bdf750e67d4eb02057d112494204cee22d9",
+      "artifactHash": "sha256:6f5fbb5a6818f4674f59737387fe91b72a1138c3b5b9ae92b3d3b69ac9d74406",
       "sourceDatasetId": "model:north-ground-range-habitat-lesser-scaup",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -6602,7 +6711,8 @@
       "sitesDetected": 712,
       "supportedCells": 12808,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.142
     },
     {
       "speciesId": "species:long-tailed-duck",
@@ -6642,7 +6752,7 @@
       ],
       "artifactId": "surface:range-habitat-long-tailed-duck-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/long-tailed-duck.json",
-      "artifactHash": "sha256:a044930a2e5cd513a4dcd32d6db791226b6a4e61025b8d807243572f752e04ca",
+      "artifactHash": "sha256:2449199494f026008e4609205331422c61f52882ce9910a42d80dc4f7c3a8e01",
       "sourceDatasetId": "model:north-ground-range-habitat-long-tailed-duck",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -6661,7 +6771,8 @@
       "sitesDetected": 575,
       "supportedCells": 24925,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.094
     },
     {
       "speciesId": "species:long-tailed-weasel",
@@ -6701,7 +6812,7 @@
       ],
       "artifactId": "surface:range-habitat-long-tailed-weasel-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/long-tailed-weasel.json",
-      "artifactHash": "sha256:61a90b2ba8bb223af757ea8aa4277780f9460cc08152299c33ed35a88cd847a7",
+      "artifactHash": "sha256:5c5b5f2380179f5a7c628e3ceeb7fb38068dab74ed5204591417f4162b3e04d2",
       "sourceDatasetId": "model:north-ground-range-habitat-long-tailed-weasel",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -6720,7 +6831,8 @@
       "sitesDetected": 13,
       "supportedCells": 3923,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.059
     },
     {
       "speciesId": "species:mallard",
@@ -6760,7 +6872,7 @@
       ],
       "artifactId": "surface:range-habitat-mallard-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/mallard.json",
-      "artifactHash": "sha256:fdbf9369ec8ada726cb7f606308c43a5ed37004ab65474de1056ea38b48b6d3e",
+      "artifactHash": "sha256:ddda4b4e968bf3689366cbe9b05102f781ea31af8d8522aa8e9df0a24a012330",
       "sourceDatasetId": "model:north-ground-range-habitat-mallard",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -6779,7 +6891,8 @@
       "sitesDetected": 830,
       "supportedCells": 51051,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.217
     },
     {
       "speciesId": "species:mediterranean-gecko",
@@ -6819,7 +6932,7 @@
       ],
       "artifactId": "surface:range-habitat-mediterranean-gecko-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/mediterranean-gecko.json",
-      "artifactHash": "sha256:76d3f7d45e4303dcc4ef5d65f3a54261dbfde3e6a274720bd41503b133f92364",
+      "artifactHash": "sha256:9798f1cae38506f969058ce4a18d27920567628928b092ad1c10d41d4829b163",
       "sourceDatasetId": "model:north-ground-range-habitat-mediterranean-gecko",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -6838,7 +6951,8 @@
       "sitesDetected": 102,
       "supportedCells": 5040,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": false
+      "usefulVariation": false,
+      "edgeOnUnrecordedGround": 0.3
     },
     {
       "speciesId": "species:mexican-duck",
@@ -6878,7 +6992,7 @@
       ],
       "artifactId": "surface:range-habitat-mexican-duck-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/mexican-duck.json",
-      "artifactHash": "sha256:26c789593f77ca24ca677cb7814b6fa8fc3bcf337ec8f392eb166c7fa8e820c3",
+      "artifactHash": "sha256:156c3be2808f85b50d4ee0a7a0b29a7870b86c70f92870b959053dc90d470c83",
       "sourceDatasetId": "model:north-ground-range-habitat-mexican-duck",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -6897,7 +7011,8 @@
       "sitesDetected": 79,
       "supportedCells": 2310,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.179
     },
     {
       "speciesId": "species:montezuma-quail",
@@ -6937,7 +7052,7 @@
       ],
       "artifactId": "surface:range-habitat-montezuma-quail-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/montezuma-quail.json",
-      "artifactHash": "sha256:17dd37cdeb1ef7512101f02f216a8f7b1224f33dbd47887fc0adb9c54c34d317",
+      "artifactHash": "sha256:ae0c8c21c65062c91e961a697507005382cf4c714792fc1ff72016112ba2ecd9",
       "sourceDatasetId": "model:north-ground-range-habitat-montezuma-quail",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -6956,7 +7071,8 @@
       "sitesDetected": 21,
       "supportedCells": 4883,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.207
     },
     {
       "speciesId": "species:moose",
@@ -6996,7 +7112,7 @@
       ],
       "artifactId": "surface:range-habitat-moose-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/moose.json",
-      "artifactHash": "sha256:3e067f338198f7a7cdba63317150edf4fd00d94be74b73c366fbf2d40e680610",
+      "artifactHash": "sha256:fb73fec46bd90726be95ce8f84cd0a6929c7059612a182532e357573407ee5ba",
       "sourceDatasetId": "model:north-ground-range-habitat-moose",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -7015,7 +7131,8 @@
       "sitesDetected": 224,
       "supportedCells": 50211,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.4
     },
     {
       "speciesId": "species:mottled-duck",
@@ -7055,7 +7172,7 @@
       ],
       "artifactId": "surface:range-habitat-mottled-duck-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/mottled-duck.json",
-      "artifactHash": "sha256:ba9faf4f16f696ac788c6d11430ff8084cb9192b0f2963eec60034aac0967935",
+      "artifactHash": "sha256:0f63010bd007cf239c8aace897a7acf6c8d2081d4b3ac3376cf1ef899ad864bd",
       "sourceDatasetId": "model:north-ground-range-habitat-mottled-duck",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -7074,7 +7191,8 @@
       "sitesDetected": 99,
       "supportedCells": 5538,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.035
     },
     {
       "speciesId": "species:mountain-cottontail",
@@ -7114,7 +7232,7 @@
       ],
       "artifactId": "surface:range-habitat-mountain-cottontail-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/mountain-cottontail.json",
-      "artifactHash": "sha256:72a7aa26fa17c3e6edb8bfc73843a781adba2856847ac5160818b1f71619aee2",
+      "artifactHash": "sha256:68003defefb13433cb136b008fa9db46ccbc47afde4f76cfd1051999eb9f8a0b",
       "sourceDatasetId": "model:north-ground-range-habitat-mountain-cottontail",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -7133,7 +7251,8 @@
       "sitesDetected": 55,
       "supportedCells": 14815,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.03
     },
     {
       "speciesId": "species:mountain-goat",
@@ -7178,7 +7297,7 @@
       ],
       "artifactId": "surface:range-habitat-mountain-goat-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/mountain-goat.json",
-      "artifactHash": "sha256:c2aad69c51d310b9439c94a2f5fa4d76e91cc4ee5819cf224bd10698527e7772",
+      "artifactHash": "sha256:ed05bffd2854603078f4b7d16e4055f061f45956f4db765437abf298d2103506",
       "sourceDatasetId": "model:north-ground-range-habitat-mountain-goat",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -7197,7 +7316,8 @@
       "sitesDetected": 59,
       "supportedCells": 12587,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.044
     },
     {
       "speciesId": "species:mountain-lion",
@@ -7237,7 +7357,7 @@
       ],
       "artifactId": "surface:range-habitat-mountain-lion-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/mountain-lion.json",
-      "artifactHash": "sha256:478cc188d2a7b22a52aea583f8ebcab3dcd8cae1412b93876f3d22121caad6b9",
+      "artifactHash": "sha256:927536c694c6c95d09b18d808192a73ef3c7c5ea510b38632ca722d90b96a527",
       "sourceDatasetId": "model:north-ground-range-habitat-mountain-lion",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -7256,7 +7376,8 @@
       "sitesDetected": 71,
       "supportedCells": 23724,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.095
     },
     {
       "speciesId": "species:mountain-quail",
@@ -7301,7 +7422,7 @@
       ],
       "artifactId": "surface:range-habitat-mountain-quail-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/mountain-quail.json",
-      "artifactHash": "sha256:5f2b8ae197a7cd832d5b415c2777b9b94e4061e6e127aaa196da65582ec6235d",
+      "artifactHash": "sha256:8c971760f74e215f9f30f6e3c3e7c062909387f2889df2796c883e217ebcf5cd",
       "sourceDatasetId": "model:north-ground-range-habitat-mountain-quail",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -7320,7 +7441,8 @@
       "sitesDetected": 52,
       "supportedCells": 8914,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.033
     },
     {
       "speciesId": "species:mourning-dove",
@@ -7360,7 +7482,7 @@
       ],
       "artifactId": "surface:range-habitat-mourning-dove-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/mourning-dove.json",
-      "artifactHash": "sha256:358f589e5f95026dd04b962a627e69fe88d1cd2fe453e87b9a3a4c41363c6458",
+      "artifactHash": "sha256:2e796e909ded26bb786ff941fa3a7312377df8c972ff5374c3619a39414a653a",
       "sourceDatasetId": "model:north-ground-range-habitat-mourning-dove",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -7379,7 +7501,8 @@
       "sitesDetected": 667,
       "supportedCells": 116421,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.173
     },
     {
       "speciesId": "species:mule-deer",
@@ -7419,7 +7542,7 @@
       ],
       "artifactId": "surface:range-habitat-mule-deer-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/mule-deer.json",
-      "artifactHash": "sha256:ee872c08d168da6b0a7ac1aa6cb43952787c65bbc451d5db5fd5dfb2c9290597",
+      "artifactHash": "sha256:a1e6f3572cb9f49e108e04216d50159a91c99af96705a53fb845760880a35294",
       "sourceDatasetId": "model:north-ground-range-habitat-mule-deer",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -7438,7 +7561,8 @@
       "sitesDetected": 253,
       "supportedCells": 57091,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.302
     },
     {
       "speciesId": "species:muscovy-duck",
@@ -7478,7 +7602,7 @@
       ],
       "artifactId": "surface:range-habitat-muscovy-duck-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/muscovy-duck.json",
-      "artifactHash": "sha256:dd18b0f63e453a8af1935dc8ffe3e97de9807ec3ce470359c0afdb7cfebeea07",
+      "artifactHash": "sha256:78bcad416f562d7c240a47ffdd3915e81a131f107ddb72f177c6cad11b15d1e4",
       "sourceDatasetId": "model:north-ground-range-habitat-muscovy-duck",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -7497,7 +7621,8 @@
       "sitesDetected": 329,
       "supportedCells": 41246,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.048
     },
     {
       "speciesId": "species:muskox",
@@ -7537,7 +7662,7 @@
       ],
       "artifactId": "surface:range-habitat-muskox-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/muskox.json",
-      "artifactHash": "sha256:1fbaf8c922cd0dea4b401e0f3f2d35cb26b37e7c16890d74b37637f2fb012c76",
+      "artifactHash": "sha256:c52155f8cb1aba05a67050af843f5840f8f597a81e06e23d1b1fa6cb23cc6762",
       "sourceDatasetId": "model:north-ground-range-habitat-muskox",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -7556,7 +7681,8 @@
       "sitesDetected": 10,
       "supportedCells": 3409,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.862
     },
     {
       "speciesId": "species:muskrat",
@@ -7596,7 +7722,7 @@
       ],
       "artifactId": "surface:range-habitat-muskrat-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/muskrat.json",
-      "artifactHash": "sha256:6251381ca890584cf0b0acf8698ee5e77911b1f37cc860e1c60775d93a89955c",
+      "artifactHash": "sha256:c495755a5177b279574508f93c9e4783eeb4c81bc754421d0ec7a31203df6e93",
       "sourceDatasetId": "model:north-ground-range-habitat-muskrat",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -7615,7 +7741,8 @@
       "sitesDetected": 234,
       "supportedCells": 10299,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.175
     },
     {
       "speciesId": "species:mute-swan",
@@ -7655,7 +7782,7 @@
       ],
       "artifactId": "surface:range-habitat-mute-swan-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/mute-swan.json",
-      "artifactHash": "sha256:3a67bad26989283c77b76bc55ae8ec4f0680b7e9fdec0a87ca18bd663d913703",
+      "artifactHash": "sha256:a8b0c0676cd6d6bb80a73d580c87ee4e0eaf329653e946ac78537d21aa55d16a",
       "sourceDatasetId": "model:north-ground-range-habitat-mute-swan",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -7674,7 +7801,8 @@
       "sitesDetected": 337,
       "supportedCells": 6457,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.014
     },
     {
       "speciesId": "species:nine-banded-armadillo",
@@ -7714,7 +7842,7 @@
       ],
       "artifactId": "surface:range-habitat-nine-banded-armadillo-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/nine-banded-armadillo.json",
-      "artifactHash": "sha256:1eb1d599b39559da2ae511e9139c58c7ffcb6e02ce9a860874e7c240e3d1cd9d",
+      "artifactHash": "sha256:ee53f17774c1dec5d83f4e043e81749f607f39c01c87d8d28ab93832887d85c4",
       "sourceDatasetId": "model:north-ground-range-habitat-nine-banded-armadillo",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -7733,7 +7861,8 @@
       "sitesDetected": 13,
       "supportedCells": 3394,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.011
     },
     {
       "speciesId": "species:north-american-porcupine",
@@ -7773,7 +7902,7 @@
       ],
       "artifactId": "surface:range-habitat-north-american-porcupine-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/north-american-porcupine.json",
-      "artifactHash": "sha256:31e37a7fafaa6b5984665edeaba441a67e55dfc2246085e6c7e49fd54f14f138",
+      "artifactHash": "sha256:49271bd86f28c9c381ef828ea31386a6b8bdaf9c865d27d2a67cc1c8a6fa9f22",
       "sourceDatasetId": "model:north-ground-range-habitat-north-american-porcupine",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -7792,7 +7921,8 @@
       "sitesDetected": 176,
       "supportedCells": 41208,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.146
     },
     {
       "speciesId": "species:north-american-river-otter",
@@ -7832,7 +7962,7 @@
       ],
       "artifactId": "surface:range-habitat-north-american-river-otter-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/north-american-river-otter.json",
-      "artifactHash": "sha256:fb93fee88ff99e9883c9bd928a2d7c9a9e1e6e15fe3c198a3095621ee609eb89",
+      "artifactHash": "sha256:72c606731c678aa7915a310ae696361ea6aca62e39b2c4296ad2c17b331d27ed",
       "sourceDatasetId": "model:north-ground-range-habitat-north-american-river-otter",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -7851,7 +7981,8 @@
       "sitesDetected": 203,
       "supportedCells": 29308,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.155
     },
     {
       "speciesId": "species:northern-bobwhite",
@@ -7891,7 +8022,7 @@
       ],
       "artifactId": "surface:range-habitat-northern-bobwhite-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/northern-bobwhite.json",
-      "artifactHash": "sha256:802b20f80d8e99b6d8a5a6d65d79267bd5321b0d35e996062c9720f3158336f8",
+      "artifactHash": "sha256:aa1160770f603dc4818b22529412c3699a284def78d808049a6587ad1cb2a765",
       "sourceDatasetId": "model:north-ground-range-habitat-northern-bobwhite",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -7910,7 +8041,8 @@
       "sitesDetected": 334,
       "supportedCells": 62049,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.063
     },
     {
       "speciesId": "species:northern-flying-squirrel",
@@ -7950,7 +8082,7 @@
       ],
       "artifactId": "surface:range-habitat-northern-flying-squirrel-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/northern-flying-squirrel.json",
-      "artifactHash": "sha256:5ab1cb45d9c5fca34c63a3b3f95ef3bf2095243961461db0ac436de30038072b",
+      "artifactHash": "sha256:fa213fca165ef313c37183ff7c55686434e6b2c969c63e976e46c0c3927c5cc8",
       "sourceDatasetId": "model:north-ground-range-habitat-northern-flying-squirrel",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -7969,7 +8101,8 @@
       "sitesDetected": 24,
       "supportedCells": 5427,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.04
     },
     {
       "speciesId": "species:northern-leopard-frog",
@@ -8009,7 +8142,7 @@
       ],
       "artifactId": "surface:range-habitat-northern-leopard-frog-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/northern-leopard-frog.json",
-      "artifactHash": "sha256:0b3e44aded3f20a64eb349a84bee71924991f18cf78ff23b55a4ffd1acf000f8",
+      "artifactHash": "sha256:6b821e737e183cad0f1830e27982a123a1f4172df9b7784669dc8b5d5dccb349",
       "sourceDatasetId": "model:north-ground-range-habitat-northern-leopard-frog",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8028,7 +8161,8 @@
       "sitesDetected": 173,
       "supportedCells": 23779,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.756
     },
     {
       "speciesId": "species:northern-pintail",
@@ -8068,7 +8202,7 @@
       ],
       "artifactId": "surface:range-habitat-northern-pintail-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/northern-pintail.json",
-      "artifactHash": "sha256:96aeb28a9a269a9302e232ca808aee9a86ae3a8dadc263c8f54ca5b6c471815f",
+      "artifactHash": "sha256:3401af7fa048e1055c4c2c56790f9066f27469e8581013c4f593c69abd1abe3f",
       "sourceDatasetId": "model:north-ground-range-habitat-northern-pintail",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8087,7 +8221,8 @@
       "sitesDetected": 740,
       "supportedCells": 53238,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.134
     },
     {
       "speciesId": "species:northern-shoveler",
@@ -8127,7 +8262,7 @@
       ],
       "artifactId": "surface:range-habitat-northern-shoveler-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/northern-shoveler.json",
-      "artifactHash": "sha256:846cae13ab135ebec72e22885c7106ebaba9d7519e9d3aa7729a395b8d6bcbb7",
+      "artifactHash": "sha256:7270f281581594f99d26671610b2c527354e42dc275e983ec34532b5b8026a28",
       "sourceDatasetId": "model:north-ground-range-habitat-northern-shoveler",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8146,7 +8281,8 @@
       "sitesDetected": 700,
       "supportedCells": 9459,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.123
     },
     {
       "speciesId": "species:nutria",
@@ -8186,7 +8322,7 @@
       ],
       "artifactId": "surface:range-habitat-nutria-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/nutria.json",
-      "artifactHash": "sha256:3c947c0b338ea7a7fd82e481cec62e1888e96988e93ed7901817b9b5004ef77c",
+      "artifactHash": "sha256:13a39a0519eb50359bbec5b192b95b726e4e2f1474676aab773ce82a56e6fddd",
       "sourceDatasetId": "model:north-ground-range-habitat-nutria",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8205,7 +8341,8 @@
       "sitesDetected": 34,
       "supportedCells": 3025,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.059
     },
     {
       "speciesId": "species:pacific-marten",
@@ -8245,7 +8382,7 @@
       ],
       "artifactId": "surface:range-habitat-pacific-marten-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/pacific-marten.json",
-      "artifactHash": "sha256:a0c39cb6de7d5f285f09688db735d92cb454ae34ad25426491d4c4d5f7958eeb",
+      "artifactHash": "sha256:fe2ecae909f2bde1eaf786301c52ef806e86f1baff87023e8e52e639441ff219",
       "sourceDatasetId": "model:north-ground-range-habitat-pacific-marten",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8264,7 +8401,8 @@
       "sitesDetected": 21,
       "supportedCells": 4836,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.03
     },
     {
       "speciesId": "species:pig-frog",
@@ -8304,7 +8442,7 @@
       ],
       "artifactId": "surface:range-habitat-pig-frog-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/pig-frog.json",
-      "artifactHash": "sha256:b93c353891e8b1357afa6723b12477eec54acd05f0dfa35352ee7d5ca6907862",
+      "artifactHash": "sha256:0b0fae6a0bce86972f41b9d62a3ec9edd959bfb571de19ed8cf4d09d692a6744",
       "sourceDatasetId": "model:north-ground-range-habitat-pig-frog",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8323,7 +8461,8 @@
       "sitesDetected": 21,
       "supportedCells": 2257,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.19
     },
     {
       "speciesId": "species:plain-chachalaca",
@@ -8363,7 +8502,7 @@
       ],
       "artifactId": "surface:range-habitat-plain-chachalaca-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/plain-chachalaca.json",
-      "artifactHash": "sha256:9cd47eb92c9a3bcb45be130a73aac30df1d30fdd401e7e7d7763f706777c286f",
+      "artifactHash": "sha256:a907df242d01dff94e72847d54ce70388ddf25baba9b4fc2c0ad886fb4d22aaf",
       "sourceDatasetId": "model:north-ground-range-habitat-plain-chachalaca",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8382,7 +8521,8 @@
       "sitesDetected": 5,
       "supportedCells": 898,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.315
     },
     {
       "speciesId": "species:plains-leopard-frog",
@@ -8422,7 +8562,7 @@
       ],
       "artifactId": "surface:range-habitat-plains-leopard-frog-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/plains-leopard-frog.json",
-      "artifactHash": "sha256:30fa7f6940cda2b0eaff1fb0ef12d14400f50aa56b7f174272efe3b7ece9b418",
+      "artifactHash": "sha256:b545675e1fbe6a11264afe3ff22337a15cdb125594c209cf70f5f5f4901c5637",
       "sourceDatasetId": "model:north-ground-range-habitat-plains-leopard-frog",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8441,7 +8581,8 @@
       "sitesDetected": 44,
       "supportedCells": 3898,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.522
     },
     {
       "speciesId": "species:polar-bear",
@@ -8481,7 +8622,7 @@
       ],
       "artifactId": "surface:range-habitat-polar-bear-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/polar-bear.json",
-      "artifactHash": "sha256:0466d0f26788ed1673970e3aa48cb541dfebc63ac26544dbe2f038292264c25e",
+      "artifactHash": "sha256:72c188a4ac294440c3bbfb851a1491ee1cb0d70d198c47a1f59b6d769b7f641c",
       "sourceDatasetId": "model:north-ground-range-habitat-polar-bear",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8500,7 +8641,8 @@
       "sitesDetected": 36,
       "supportedCells": 16307,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.632
     },
     {
       "speciesId": "species:prairie-rattlesnake",
@@ -8540,7 +8682,7 @@
       ],
       "artifactId": "surface:range-habitat-prairie-rattlesnake-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/prairie-rattlesnake.json",
-      "artifactHash": "sha256:5b48daf9256044ba2d3d50b3398f90886a00b5a6078aabfa7f291feed72f29cc",
+      "artifactHash": "sha256:9317130566a5dc25aa6529f179fc7355f97828358330b91591e77954d4a428aa",
       "sourceDatasetId": "model:north-ground-range-habitat-prairie-rattlesnake",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8559,7 +8701,8 @@
       "sitesDetected": 85,
       "supportedCells": 20563,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.758
     },
     {
       "speciesId": "species:pronghorn",
@@ -8599,7 +8742,7 @@
       ],
       "artifactId": "surface:range-habitat-pronghorn-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/pronghorn.json",
-      "artifactHash": "sha256:921c6a15133e9dbf7e64843a6a91fcfe4b3ed6d41d5909b07548f062c1e21ac9",
+      "artifactHash": "sha256:1f69c270e60dff031878f1edaf9963fbdd72a1eea7e83ddf2254173f50849eca",
       "sourceDatasetId": "model:north-ground-range-habitat-pronghorn",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8618,7 +8761,8 @@
       "sitesDetected": 138,
       "supportedCells": 33571,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.15
     },
     {
       "speciesId": "species:purple-gallinule",
@@ -8658,7 +8802,7 @@
       ],
       "artifactId": "surface:range-habitat-purple-gallinule-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/purple-gallinule.json",
-      "artifactHash": "sha256:e5a2814e6020e9372db757c216353320e04d17a3d0e48549810621fa10df1531",
+      "artifactHash": "sha256:8c332d600a347645abbab4960b8d8751914bd46dccb86e7b3697ea7af9d9c2a8",
       "sourceDatasetId": "model:north-ground-range-habitat-purple-gallinule",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8677,7 +8821,8 @@
       "sitesDetected": 99,
       "supportedCells": 688,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.005
     },
     {
       "speciesId": "species:raccoon",
@@ -8717,7 +8862,7 @@
       ],
       "artifactId": "surface:range-habitat-raccoon-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/raccoon.json",
-      "artifactHash": "sha256:15da7ede4296c159b594a045ca9fa12ae2a277ed428ef7046017f2e6c7ddc79f",
+      "artifactHash": "sha256:de9c07ae3bf86d858ab0b28430da813a96091768ac58a720b5c1e5ab98950107",
       "sourceDatasetId": "model:north-ground-range-habitat-raccoon",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8736,7 +8881,8 @@
       "sitesDetected": 372,
       "supportedCells": 80700,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.198
     },
     {
       "speciesId": "species:red-breasted-merganser",
@@ -8776,7 +8922,7 @@
       ],
       "artifactId": "surface:range-habitat-red-breasted-merganser-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/red-breasted-merganser.json",
-      "artifactHash": "sha256:35aad219a2d550f265742cc2bd4616e839f71828d8dd12df3990eb6233cde11e",
+      "artifactHash": "sha256:7fd1188079663673c07db8aefb598362c3e228a347ce1c6a3e2917c1ddc652ff",
       "sourceDatasetId": "model:north-ground-range-habitat-red-breasted-merganser",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8795,7 +8941,8 @@
       "sitesDetected": 694,
       "supportedCells": 13645,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.087
     },
     {
       "speciesId": "species:red-eared-slider",
@@ -8835,7 +8982,7 @@
       ],
       "artifactId": "surface:range-habitat-red-eared-slider-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/red-eared-slider.json",
-      "artifactHash": "sha256:d9d03fd72b802917f9d6299968d49d65b3755607ea8a930781dd35d2922dcdd6",
+      "artifactHash": "sha256:f1bf3e995013f4ca36b002ffaa892d405b70a3b813da6489b3e27f1f8acfc166",
       "sourceDatasetId": "model:north-ground-range-habitat-red-eared-slider",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8854,7 +9001,8 @@
       "sitesDetected": 248,
       "supportedCells": 18733,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.55
     },
     {
       "speciesId": "species:red-fox",
@@ -8894,7 +9042,7 @@
       ],
       "artifactId": "surface:range-habitat-red-fox-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/red-fox.json",
-      "artifactHash": "sha256:c41df6c313dd45d364eb3f4c062f2bd0fe8d3c7c542cc404f50e1de1db1f354a",
+      "artifactHash": "sha256:894e606d9c29c6bb92723ceabed1ffcf76ac6eed7410124e280382c8ee914b55",
       "sourceDatasetId": "model:north-ground-range-habitat-red-fox",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8913,7 +9061,8 @@
       "sitesDetected": 257,
       "supportedCells": 72193,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.192
     },
     {
       "speciesId": "species:red-winged-blackbird",
@@ -8953,7 +9102,7 @@
       ],
       "artifactId": "surface:range-habitat-red-winged-blackbird-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/red-winged-blackbird.json",
-      "artifactHash": "sha256:325c39490277b161241867a296f2e0f49e641a06239fb57a6f563ea1ce45979a",
+      "artifactHash": "sha256:9b6e89c10e3b5cbf8d2b23dbbaa287b9784aebfbab0af7ae37a19981ee0d5769",
       "sourceDatasetId": "model:north-ground-range-habitat-red-winged-blackbird",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8972,7 +9121,8 @@
       "sitesDetected": 641,
       "supportedCells": 113685,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.161
     },
     {
       "speciesId": "species:redhead",
@@ -9012,7 +9162,7 @@
       ],
       "artifactId": "surface:range-habitat-redhead-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/redhead.json",
-      "artifactHash": "sha256:446d9ef1520162906cf386e46c8c37a63afebca48e275720d3b0afa4c8b18438",
+      "artifactHash": "sha256:3e50e725de0f2698883d37e6635aaca8a87d87f071929ffe0cadcc90b27e6ee3",
       "sourceDatasetId": "model:north-ground-range-habitat-redhead",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9031,7 +9181,8 @@
       "sitesDetected": 627,
       "supportedCells": 9676,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.102
     },
     {
       "speciesId": "species:richardsons-ground-squirrel",
@@ -9071,7 +9222,7 @@
       ],
       "artifactId": "surface:range-habitat-richardsons-ground-squirrel-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/richardsons-ground-squirrel.json",
-      "artifactHash": "sha256:736cd122f283c347d8bd117ef3ed2055e12785d9a4b9a27b80a656861d47d79a",
+      "artifactHash": "sha256:eb8756ee00d956cb961f3897e15fb3d17c152cc2b7970a6fc987a88ec461fd2d",
       "sourceDatasetId": "model:north-ground-range-habitat-richardsons-ground-squirrel",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9090,7 +9241,8 @@
       "sitesDetected": 42,
       "supportedCells": 9482,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.147
     },
     {
       "speciesId": "species:ring-necked-duck",
@@ -9130,7 +9282,7 @@
       ],
       "artifactId": "surface:range-habitat-ring-necked-duck-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/ring-necked-duck.json",
-      "artifactHash": "sha256:7e2503f3603a6e0c3ad05643df2c35cc6f0582297c5b6dacf7a2c303cf4ebae8",
+      "artifactHash": "sha256:0f7ca078d367c195b41bb105202cd21caf8e3c7b9efd8ccada4719e62697c474",
       "sourceDatasetId": "model:north-ground-range-habitat-ring-necked-duck",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9149,7 +9301,8 @@
       "sitesDetected": 730,
       "supportedCells": 6771,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.139
     },
     {
       "speciesId": "species:ring-necked-pheasant",
@@ -9189,7 +9342,7 @@
       ],
       "artifactId": "surface:range-habitat-ring-necked-pheasant-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/ring-necked-pheasant.json",
-      "artifactHash": "sha256:bd3b89bb82ee2a863b7a9c48b48fc88043ae00f8973d46355a12f55bf8a4b3f2",
+      "artifactHash": "sha256:490f65d7496948b015dd4d2db4864fb35de8be681ec3c4ac54817bede3844292",
       "sourceDatasetId": "model:north-ground-range-habitat-ring-necked-pheasant",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9208,7 +9361,8 @@
       "sitesDetected": 500,
       "supportedCells": 90503,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.021
     },
     {
       "speciesId": "species:ringtail",
@@ -9253,7 +9407,7 @@
       ],
       "artifactId": "surface:range-habitat-ringtail-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/ringtail.json",
-      "artifactHash": "sha256:018fd5e0f82d52f07285045c53d7978ab67e34827f8738dbb71265bf0b4f8a18",
+      "artifactHash": "sha256:972c638171dfa661a0b794674f4e1f00817ba3bdd0c66db095258d8b35e803ae",
       "sourceDatasetId": "model:north-ground-range-habitat-ringtail",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9272,7 +9426,8 @@
       "sitesDetected": 24,
       "supportedCells": 7259,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.138
     },
     {
       "speciesId": "species:rock-pigeon",
@@ -9312,7 +9467,7 @@
       ],
       "artifactId": "surface:range-habitat-rock-pigeon-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/rock-pigeon.json",
-      "artifactHash": "sha256:b62a3dab8765813db9d3f07ba466ef8e4e148cd4c919ccd6d9c0b74b0883b0ea",
+      "artifactHash": "sha256:1cd311e30680d67b25194cae884b19b392f5c278ab095b9b2e3bcb03b90c62e7",
       "sourceDatasetId": "model:north-ground-range-habitat-rock-pigeon",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9331,7 +9486,8 @@
       "sitesDetected": 713,
       "supportedCells": 68267,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.142
     },
     {
       "speciesId": "species:rock-ptarmigan",
@@ -9371,7 +9527,7 @@
       ],
       "artifactId": "surface:range-habitat-rock-ptarmigan-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/rock-ptarmigan.json",
-      "artifactHash": "sha256:be07a45b2550b69982c90820c5d6e8a6452557fe8c63c71a5f819c82ab906f87",
+      "artifactHash": "sha256:5057b85bbf14e2388f5550943490b206b279193d4085a4e5a34728802650ae90",
       "sourceDatasetId": "model:north-ground-range-habitat-rock-ptarmigan",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9390,7 +9546,8 @@
       "sitesDetected": 245,
       "supportedCells": 61288,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.523
     },
     {
       "speciesId": "species:rock-squirrel",
@@ -9435,7 +9592,7 @@
       ],
       "artifactId": "surface:range-habitat-rock-squirrel-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/rock-squirrel.json",
-      "artifactHash": "sha256:d9d5e1027e8c98e92ffc42e10c3696a95472639ed621371c002cbdad9814ec2b",
+      "artifactHash": "sha256:340f8efa0ab273e37c37243b489f9935f484c4130dfb129e86b1673d400d0221",
       "sourceDatasetId": "model:north-ground-range-habitat-rock-squirrel",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9454,7 +9611,8 @@
       "sitesDetected": 58,
       "supportedCells": 13752,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.258
     },
     {
       "speciesId": "species:rosss-goose",
@@ -9494,7 +9652,7 @@
       ],
       "artifactId": "surface:range-habitat-rosss-goose-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/rosss-goose.json",
-      "artifactHash": "sha256:fe8eca8ca4e76ae5e6c5844ddab5cc809734ebcc1cba5edfbf8fe7366ed093ce",
+      "artifactHash": "sha256:58f823ddc4bbedcd76fffbb25f7267204bb1c131b805e550e087ec3177b8676a",
       "sourceDatasetId": "model:north-ground-range-habitat-rosss-goose",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9513,7 +9671,8 @@
       "sitesDetected": 488,
       "supportedCells": 55695,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.078
     },
     {
       "speciesId": "species:ruddy-duck",
@@ -9553,7 +9712,7 @@
       ],
       "artifactId": "surface:range-habitat-ruddy-duck-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/ruddy-duck.json",
-      "artifactHash": "sha256:ad19e41fd3193557ee260ba15f7bac5cae30081c76ce556da503c9e71bdabc95",
+      "artifactHash": "sha256:8ee6c6ce2704ccceb9804e20b29537faa71fcbabb0a6ac2544d354c51722f1b8",
       "sourceDatasetId": "model:north-ground-range-habitat-ruddy-duck",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9572,7 +9731,8 @@
       "sitesDetected": 600,
       "supportedCells": 8508,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.148
     },
     {
       "speciesId": "species:sandhill-crane",
@@ -9612,7 +9772,7 @@
       ],
       "artifactId": "surface:range-habitat-sandhill-crane-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/sandhill-crane.json",
-      "artifactHash": "sha256:5e6c0f95fda13624aff20b5a3cbb10b1aeb2e2baa67dcc177bf7f26f8509784b",
+      "artifactHash": "sha256:c215d2611cb3a24d74f26cd8ac8b03c7d43b4d7f165cac26e4ec8a3aba985945",
       "sourceDatasetId": "model:north-ground-range-habitat-sandhill-crane",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9631,7 +9791,8 @@
       "sitesDetected": 710,
       "supportedCells": 71258,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.147
     },
     {
       "speciesId": "species:scaled-quail",
@@ -9671,7 +9832,7 @@
       ],
       "artifactId": "surface:range-habitat-scaled-quail-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/scaled-quail.json",
-      "artifactHash": "sha256:61d5915c235bf1923dbfe9f770a42119f95de9367f5818e67175ea6e2b62d546",
+      "artifactHash": "sha256:6bec8dc0fd414a00b9afe38ad277d007c17aebd3a132d167778c628393d1c40c",
       "sourceDatasetId": "model:north-ground-range-habitat-scaled-quail",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9690,7 +9851,8 @@
       "sitesDetected": 66,
       "supportedCells": 13508,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.381
     },
     {
       "speciesId": "species:sharp-tailed-grouse",
@@ -9730,7 +9892,7 @@
       ],
       "artifactId": "surface:range-habitat-sharp-tailed-grouse-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/sharp-tailed-grouse.json",
-      "artifactHash": "sha256:a2969b70e724767ec13f0ead7c747dd205458fecc96a305d11d079b85ae11663",
+      "artifactHash": "sha256:543c00b7770aa679d5725292880cb03a47e6f0ba2eb8eb1ef094f4bf096e9a60",
       "sourceDatasetId": "model:north-ground-range-habitat-sharp-tailed-grouse",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9749,7 +9911,8 @@
       "sitesDetected": 282,
       "supportedCells": 62325,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.144
     },
     {
       "speciesId": "species:shiny-cowbird",
@@ -9789,7 +9952,7 @@
       ],
       "artifactId": "surface:range-habitat-shiny-cowbird-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/shiny-cowbird.json",
-      "artifactHash": "sha256:d824ef7b6782317597dab42edddb20f76d2fa7efcb1ab627c4666a61ccfe2435",
+      "artifactHash": "sha256:93be7e1fbddfc39a2705409e0da046a6c319c458e76043518313bc22847296aa",
       "sourceDatasetId": "model:north-ground-range-habitat-shiny-cowbird",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9808,7 +9971,8 @@
       "sitesDetected": 25,
       "supportedCells": 1292,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.003
     },
     {
       "speciesId": "species:sika-deer",
@@ -9848,7 +10012,7 @@
       ],
       "artifactId": "surface:range-habitat-sika-deer-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/sika-deer.json",
-      "artifactHash": "sha256:8e6f7527d5ffe2a7b33fb2bbbca20763b12393881abfdbea2d8d9bab5775832f",
+      "artifactHash": "sha256:49dc66217ebca1b80e9a9a6a6068ac22203c4b243710f8fa033f29aa94ff06fa",
       "sourceDatasetId": "model:north-ground-range-habitat-sika-deer",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9867,7 +10031,8 @@
       "sitesDetected": 5,
       "supportedCells": 1017,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.023
     },
     {
       "speciesId": "species:snow-goose",
@@ -9907,7 +10072,7 @@
       ],
       "artifactId": "surface:range-habitat-snow-goose-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/snow-goose.json",
-      "artifactHash": "sha256:064cb29dc5205f08684f171d84c2cab801131fff587c36599373a8281e11ff14",
+      "artifactHash": "sha256:b5ddeaeccb47d7c7a806c272161eae410e43fdc06f499b71228705dd2db80b9a",
       "sourceDatasetId": "model:north-ground-range-habitat-snow-goose",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9926,7 +10091,8 @@
       "sitesDetected": 717,
       "supportedCells": 76365,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.256
     },
     {
       "speciesId": "species:snowshoe-hare",
@@ -9966,7 +10132,7 @@
       ],
       "artifactId": "surface:range-habitat-snowshoe-hare-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/snowshoe-hare.json",
-      "artifactHash": "sha256:70b33fd308fb1d7b1209041816debdf44a4b33ea052bb1216d9f661f41533531",
+      "artifactHash": "sha256:affe074ac67fbc894ba580aca962bd0995e1f8efe758ada0dbb41b8371c73270",
       "sourceDatasetId": "model:north-ground-range-habitat-snowshoe-hare",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9985,7 +10151,8 @@
       "sitesDetected": 149,
       "supportedCells": 29670,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.229
     },
     {
       "speciesId": "species:sooty-grouse",
@@ -10025,7 +10192,7 @@
       ],
       "artifactId": "surface:range-habitat-sooty-grouse-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/sooty-grouse.json",
-      "artifactHash": "sha256:349f0d685e5839e4ba1e15be38e64c69eca0d8407971e570f4db78c741fa786b",
+      "artifactHash": "sha256:1ea9fb1a8e229b7f7897bb3d20f9e7fe27c6f10ef17981ded9c5458e1820c917",
       "sourceDatasetId": "model:north-ground-range-habitat-sooty-grouse",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10044,7 +10211,8 @@
       "sitesDetected": 77,
       "supportedCells": 12404,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.001
     },
     {
       "speciesId": "species:sora",
@@ -10084,7 +10252,7 @@
       ],
       "artifactId": "surface:range-habitat-sora-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/sora.json",
-      "artifactHash": "sha256:fe54405d5fd275e3a2f951bd3c6844aebb224dc194d59016a36e742a52ea3310",
+      "artifactHash": "sha256:f48d81d785329c6e1111ccde9ce6a76d7dde8a2fa75e7aa046ef921384267521",
       "sourceDatasetId": "model:north-ground-range-habitat-sora",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10103,7 +10271,8 @@
       "sitesDetected": 565,
       "supportedCells": 6072,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.115
     },
     {
       "speciesId": "species:southern-flying-squirrel",
@@ -10143,7 +10312,7 @@
       ],
       "artifactId": "surface:range-habitat-southern-flying-squirrel-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/southern-flying-squirrel.json",
-      "artifactHash": "sha256:6338d26626dc9bd300caaca3f16e170187bccdf9123ba72159d3aa5eaa07920f",
+      "artifactHash": "sha256:94423c3b76b8021362b3dd871c17b9726733b77d46d9de82174f781c4f586367",
       "sourceDatasetId": "model:north-ground-range-habitat-southern-flying-squirrel",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10162,7 +10331,8 @@
       "sitesDetected": 59,
       "supportedCells": 11956,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.017
     },
     {
       "speciesId": "species:spiny-softshell",
@@ -10202,7 +10372,7 @@
       ],
       "artifactId": "surface:range-habitat-spiny-softshell-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/spiny-softshell.json",
-      "artifactHash": "sha256:c67b3e40060a62337c4fd1c1c432a1d300907ca7644cc438f0886467b7a9385e",
+      "artifactHash": "sha256:b684ed184b4325f045ba3f97eee60aef524cd2e10401dfcd68b7f9049fcd6d1b",
       "sourceDatasetId": "model:north-ground-range-habitat-spiny-softshell",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10221,7 +10391,8 @@
       "sitesDetected": 124,
       "supportedCells": 10543,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.301
     },
     {
       "speciesId": "species:spotted-dove",
@@ -10261,7 +10432,7 @@
       ],
       "artifactId": "surface:range-habitat-spotted-dove-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/spotted-dove.json",
-      "artifactHash": "sha256:17d9baee13e2039841654c392fd315fa2cba1b10acb9780db85738a37916b295",
+      "artifactHash": "sha256:64aeeafce9729c0e33a4d1874439fdbfaaec0e29bb46cdeef7f1d35f311e0d4b",
       "sourceDatasetId": "model:north-ground-range-habitat-spotted-dove",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10280,7 +10451,8 @@
       "sitesDetected": 17,
       "supportedCells": 1633,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.082
     },
     {
       "speciesId": "species:spruce-grouse",
@@ -10320,7 +10492,7 @@
       ],
       "artifactId": "surface:range-habitat-spruce-grouse-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/spruce-grouse.json",
-      "artifactHash": "sha256:3db8e2f90027e43ed09f927d8ae0172ae188f6f7d7f67dd7353fdf7d40796044",
+      "artifactHash": "sha256:81f614d06dc859cd6caba074ccdc01edf10a676b59a730cb8c370e57e89e7914",
       "sourceDatasetId": "model:north-ground-range-habitat-spruce-grouse",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10339,7 +10511,8 @@
       "sitesDetected": 496,
       "supportedCells": 88164,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.287
     },
     {
       "speciesId": "species:striped-skunk",
@@ -10379,7 +10552,7 @@
       ],
       "artifactId": "surface:range-habitat-striped-skunk-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/striped-skunk.json",
-      "artifactHash": "sha256:390b31a36d3e3ad36e0e1b34015759839501eb8a4cde8d1a8d6a9669ce5fe318",
+      "artifactHash": "sha256:1f52ecac0a59d86e7936b6502330427d7dd374302f21616aa4ff254024eaeeb9",
       "sourceDatasetId": "model:north-ground-range-habitat-striped-skunk",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10398,7 +10571,8 @@
       "sitesDetected": 241,
       "supportedCells": 63304,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.126
     },
     {
       "speciesId": "species:surf-scoter",
@@ -10438,7 +10612,7 @@
       ],
       "artifactId": "surface:range-habitat-surf-scoter-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/surf-scoter.json",
-      "artifactHash": "sha256:135a371af2a811be15b12029d818e7cc189841277bdc8cafe96f003abc033131",
+      "artifactHash": "sha256:299a7e3df8972b3978af5bb14301b1c15d1da4d3adb03375b32d54239382be38",
       "sourceDatasetId": "model:north-ground-range-habitat-surf-scoter",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10457,7 +10631,8 @@
       "sitesDetected": 626,
       "supportedCells": 11627,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.053
     },
     {
       "speciesId": "species:swamp-rabbit",
@@ -10497,7 +10672,7 @@
       ],
       "artifactId": "surface:range-habitat-swamp-rabbit-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/swamp-rabbit.json",
-      "artifactHash": "sha256:41eba40c8c4928ecdeec51f99e7c022330f0851494447f3efdc27604bfb48db6",
+      "artifactHash": "sha256:02fe4dd3734d24a22128dc9602862da5a77969cad8bd69769e589df620e86410",
       "sourceDatasetId": "model:north-ground-range-habitat-swamp-rabbit",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10516,7 +10691,8 @@
       "sitesDetected": 14,
       "supportedCells": 1890,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.056
     },
     {
       "speciesId": "species:swift-fox",
@@ -10556,7 +10732,7 @@
       ],
       "artifactId": "surface:range-habitat-swift-fox-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/swift-fox.json",
-      "artifactHash": "sha256:d896373703e44a4ac6be11f8017b650320ae6e8e759af61cea4116786f555f71",
+      "artifactHash": "sha256:dc363833baadf5dcd74989d354f7ae8255c0fc73cd7dbf225c0608130c788784",
       "sourceDatasetId": "model:north-ground-range-habitat-swift-fox",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10575,7 +10751,8 @@
       "sitesDetected": 6,
       "supportedCells": 2015,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0
     },
     {
       "speciesId": "species:thick-billed-murre",
@@ -10615,7 +10792,7 @@
       ],
       "artifactId": "surface:range-habitat-thick-billed-murre-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/thick-billed-murre.json",
-      "artifactHash": "sha256:176b30aa979b8fb2fa9b3745cf84c704fc4d0684ba41060fb7bf3a60806114b7",
+      "artifactHash": "sha256:57fca6cb245ea2b355e7b291c42d4f8b1b61b50943cd6060674f9a6135a80c9b",
       "sourceDatasetId": "model:north-ground-range-habitat-thick-billed-murre",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10634,7 +10811,8 @@
       "sitesDetected": 127,
       "supportedCells": 23976,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.269
     },
     {
       "speciesId": "species:thirteen-lined-ground-squirrel",
@@ -10674,7 +10852,7 @@
       ],
       "artifactId": "surface:range-habitat-thirteen-lined-ground-squirrel-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/thirteen-lined-ground-squirrel.json",
-      "artifactHash": "sha256:d589b9207823386c15b5f97afce64f721c6c23556a561313d3d77611194d39ed",
+      "artifactHash": "sha256:cdad30e681c81b92842842df3c7279b28da007b729bbb37a1d11328d1d2a1220",
       "sourceDatasetId": "model:north-ground-range-habitat-thirteen-lined-ground-squirrel",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10693,7 +10871,8 @@
       "sitesDetected": 86,
       "supportedCells": 18927,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.146
     },
     {
       "speciesId": "species:tundra-swan",
@@ -10733,7 +10912,7 @@
       ],
       "artifactId": "surface:range-habitat-tundra-swan-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/tundra-swan.json",
-      "artifactHash": "sha256:dbaa37b08b509c2c5d71467ff1daec2ecfadccab24bff38f2ebd0fba3519d26b",
+      "artifactHash": "sha256:1c0f52b4ee9bad61ceffab882b6778c2f9b1283afa2a2235a447ee1e737f1b7e",
       "sourceDatasetId": "model:north-ground-range-habitat-tundra-swan",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10752,7 +10931,8 @@
       "sitesDetected": 604,
       "supportedCells": 62002,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.101
     },
     {
       "speciesId": "species:virginia-opossum",
@@ -10792,7 +10972,7 @@
       ],
       "artifactId": "surface:range-habitat-virginia-opossum-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/virginia-opossum.json",
-      "artifactHash": "sha256:9ccaa020c5c88bb4a0061ba0e652407e03ec97dca82b274fb122d965127443ce",
+      "artifactHash": "sha256:9775c6330518af7ff6a93f638ea958c1b3457eb963c226f2b01622766c9106e5",
       "sourceDatasetId": "model:north-ground-range-habitat-virginia-opossum",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10811,7 +10991,8 @@
       "sitesDetected": 217,
       "supportedCells": 45338,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.122
     },
     {
       "speciesId": "species:virginia-rail",
@@ -10851,7 +11032,7 @@
       ],
       "artifactId": "surface:range-habitat-virginia-rail-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/virginia-rail.json",
-      "artifactHash": "sha256:a923a7b394ba6289c61c69d4562bb7b4d564e373a1ac26afedd036118885af5f",
+      "artifactHash": "sha256:e0ba4e6113b899f178ac4e3c688ed2a6cd91c25fb27c6c30613f272e9d054874",
       "sourceDatasetId": "model:north-ground-range-habitat-virginia-rail",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10870,7 +11051,8 @@
       "sitesDetected": 475,
       "supportedCells": 2199,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.094
     },
     {
       "speciesId": "species:western-gray-squirrel",
@@ -10910,7 +11092,7 @@
       ],
       "artifactId": "surface:range-habitat-western-gray-squirrel-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/western-gray-squirrel.json",
-      "artifactHash": "sha256:9d883c3278ef0fa1346d033dcecb2ff7da6422fb178d8d1153a96c11a4d4333d",
+      "artifactHash": "sha256:688919213446d6b1849e56afe3e39073200a05911e4de305ec7d446e9ea3d2d8",
       "sourceDatasetId": "model:north-ground-range-habitat-western-gray-squirrel",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10929,7 +11111,8 @@
       "sitesDetected": 31,
       "supportedCells": 5004,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.06
     },
     {
       "speciesId": "species:western-rattlesnake",
@@ -10969,7 +11152,7 @@
       ],
       "artifactId": "surface:range-habitat-western-rattlesnake-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/western-rattlesnake.json",
-      "artifactHash": "sha256:b9870740dd3ff1581f319c9292e0a567e14bb0f296537836b40766ece257b5a4",
+      "artifactHash": "sha256:131f7d493f2872f85f56157fbb48aa31ca1043535b8077077129cdf1ff9cb722",
       "sourceDatasetId": "model:north-ground-range-habitat-western-rattlesnake",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10988,7 +11171,8 @@
       "sitesDetected": 64,
       "supportedCells": 13979,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.823
     },
     {
       "speciesId": "species:western-spotted-skunk",
@@ -11033,7 +11217,7 @@
       ],
       "artifactId": "surface:range-habitat-western-spotted-skunk-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/western-spotted-skunk.json",
-      "artifactHash": "sha256:642adb1d28a31542dde80d491ef58c304803d9047703a3a044f34014e1bb9d23",
+      "artifactHash": "sha256:71bb69c22d27ab0f98615b0b1a5e6d2814e600640cc3567df40fb7440907f15a",
       "sourceDatasetId": "model:north-ground-range-habitat-western-spotted-skunk",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -11052,7 +11236,8 @@
       "sitesDetected": 9,
       "supportedCells": 2584,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.056
     },
     {
       "speciesId": "species:white-nosed-coati",
@@ -11097,7 +11282,7 @@
       ],
       "artifactId": "surface:range-habitat-white-nosed-coati-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/white-nosed-coati.json",
-      "artifactHash": "sha256:fce491762085d26241b7f8c89045d031cd84fd324b3ef2bf6179e443f24d425f",
+      "artifactHash": "sha256:838d79ad9dc9bbe43216dbb93b71dde68fa7d306276ff636d415b9b62518e302",
       "sourceDatasetId": "model:north-ground-range-habitat-white-nosed-coati",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -11116,7 +11301,8 @@
       "sitesDetected": 5,
       "supportedCells": 1530,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.244
     },
     {
       "speciesId": "species:white-tailed-deer",
@@ -11156,7 +11342,7 @@
       ],
       "artifactId": "surface:range-habitat-white-tailed-deer-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/white-tailed-deer.json",
-      "artifactHash": "sha256:36674975bfc8bb4606589de09a01a1b3e9e67b049d297bf6928bb4023dcb2c1d",
+      "artifactHash": "sha256:1012da12a23e4ce3cc66d439d3bcdd5a9ce5d1e05d73bd50d03a2bc86dc05b0c",
       "sourceDatasetId": "model:north-ground-range-habitat-white-tailed-deer",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -11175,7 +11361,8 @@
       "sitesDetected": 367,
       "supportedCells": 81172,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.319
     },
     {
       "speciesId": "species:white-tailed-jackrabbit",
@@ -11215,7 +11402,7 @@
       ],
       "artifactId": "surface:range-habitat-white-tailed-jackrabbit-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/white-tailed-jackrabbit.json",
-      "artifactHash": "sha256:c35453f63e27e848523acf8b609723da6c57fd2f4d90fb37a07c614d9a479026",
+      "artifactHash": "sha256:73e86e1cfcf3e305c35c395ab09e33bdb7c37cb7ea7a8fdb139bb54bed1c7c0a",
       "sourceDatasetId": "model:north-ground-range-habitat-white-tailed-jackrabbit",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -11234,7 +11421,8 @@
       "sitesDetected": 28,
       "supportedCells": 7332,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.101
     },
     {
       "speciesId": "species:white-tailed-prairie-dog",
@@ -11279,7 +11467,7 @@
       ],
       "artifactId": "surface:range-habitat-white-tailed-prairie-dog-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/white-tailed-prairie-dog.json",
-      "artifactHash": "sha256:68a26af6e0eaf36cd9c493ec651277b7ec5c2ba60bbbd11066f9f631a61e40f8",
+      "artifactHash": "sha256:a75429d245bf300404c3bad3f2b849c593c57606c85a5d0c8aa1f725622ed46c",
       "sourceDatasetId": "model:north-ground-range-habitat-white-tailed-prairie-dog",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -11298,7 +11486,8 @@
       "sitesDetected": 11,
       "supportedCells": 2301,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0
     },
     {
       "speciesId": "species:white-tailed-ptarmigan",
@@ -11343,7 +11532,7 @@
       ],
       "artifactId": "surface:range-habitat-white-tailed-ptarmigan-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/white-tailed-ptarmigan.json",
-      "artifactHash": "sha256:85a12329c3c6d3310aae1b89d137b2dcd871a1de38360572c50b0cee3d5b04c7",
+      "artifactHash": "sha256:5c7cd6ad7657c3b6b057367ed9555ad21b65147d47622ac38ed883c4921d91c3",
       "sourceDatasetId": "model:north-ground-range-habitat-white-tailed-ptarmigan",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -11362,7 +11551,8 @@
       "sitesDetected": 110,
       "supportedCells": 15475,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.049
     },
     {
       "speciesId": "species:white-tipped-dove",
@@ -11402,7 +11592,7 @@
       ],
       "artifactId": "surface:range-habitat-white-tipped-dove-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/white-tipped-dove.json",
-      "artifactHash": "sha256:bed04a06164e23c2f53a80722be21582cf57716622c79dbd49ae7651f3488236",
+      "artifactHash": "sha256:d6e76b49ceb8bb6fa99ff70bd637ea22219833013ee908ff520b3a09e8ca3f32",
       "sourceDatasetId": "model:north-ground-range-habitat-white-tipped-dove",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -11421,7 +11611,8 @@
       "sitesDetected": 18,
       "supportedCells": 3496,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.23
     },
     {
       "speciesId": "species:white-winged-dove",
@@ -11461,7 +11652,7 @@
       ],
       "artifactId": "surface:range-habitat-white-winged-dove-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/white-winged-dove.json",
-      "artifactHash": "sha256:95ac50fd8a8a9391eb3e9ae12198352d235a4b8ff81717e69a55d15586f4e9df",
+      "artifactHash": "sha256:22175a3a93cbe8968dfab67c6a1e7aa4d15dce7a11e54ccffce176579a264054",
       "sourceDatasetId": "model:north-ground-range-habitat-white-winged-dove",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -11480,7 +11671,8 @@
       "sitesDetected": 288,
       "supportedCells": 56441,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.077
     },
     {
       "speciesId": "species:white-winged-scoter",
@@ -11520,7 +11712,7 @@
       ],
       "artifactId": "surface:range-habitat-white-winged-scoter-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/white-winged-scoter.json",
-      "artifactHash": "sha256:5ce5f1980d09682d428224a49a219cc8bf4ddf54c68c6810ad101a44edacccbb",
+      "artifactHash": "sha256:c0a3c2e32bfc1748f78bc2992cb6d075636ac49b7e32f7116d58e95d525199a2",
       "sourceDatasetId": "model:north-ground-range-habitat-white-winged-scoter",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -11539,7 +11731,8 @@
       "sitesDetected": 590,
       "supportedCells": 12341,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.04
     },
     {
       "speciesId": "species:wild-boar",
@@ -11579,7 +11772,7 @@
       ],
       "artifactId": "surface:range-habitat-wild-boar-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/wild-boar.json",
-      "artifactHash": "sha256:228abfa22356790ee8377e5270ca269a75722347c5d25388aa972c5821476017",
+      "artifactHash": "sha256:5511ca8806af90bd6b2001d335c8c50cd256449badff7c600934af3c2db8891c",
       "sourceDatasetId": "model:north-ground-range-habitat-wild-boar",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -11598,7 +11791,8 @@
       "sitesDetected": 90,
       "supportedCells": 19778,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.207
     },
     {
       "speciesId": "species:wild-turkey",
@@ -11638,7 +11832,7 @@
       ],
       "artifactId": "surface:range-habitat-wild-turkey-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/wild-turkey.json",
-      "artifactHash": "sha256:311bdbe97ffe14d64e68cffea46524fa6b52210cf3810ee90cc2e69ef758fd79",
+      "artifactHash": "sha256:f1ae85cc734685b3a187d846f39bba9fce7cf6273d4e93d70de5f94ead895a97",
       "sourceDatasetId": "model:north-ground-range-habitat-wild-turkey",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -11657,7 +11851,8 @@
       "sitesDetected": 539,
       "supportedCells": 96651,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.13
     },
     {
       "speciesId": "species:willow-ptarmigan",
@@ -11697,7 +11892,7 @@
       ],
       "artifactId": "surface:range-habitat-willow-ptarmigan-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/willow-ptarmigan.json",
-      "artifactHash": "sha256:67a1cff45b0e2fc1b23ea5f8923002138300ad28276a7c87276d79fd3be97c9b",
+      "artifactHash": "sha256:f55dfd8f9cc934020886055b205f100044fe4226ed0669de2351689f9c95e586",
       "sourceDatasetId": "model:north-ground-range-habitat-willow-ptarmigan",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -11716,7 +11911,8 @@
       "sitesDetected": 424,
       "supportedCells": 82903,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.429
     },
     {
       "speciesId": "species:wilsons-snipe",
@@ -11756,7 +11952,7 @@
       ],
       "artifactId": "surface:range-habitat-wilsons-snipe-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/wilsons-snipe.json",
-      "artifactHash": "sha256:5674394c83082e32c1332397179600a29af3d2114003f8892921e029f4406f7a",
+      "artifactHash": "sha256:76af634eb73e49830030f3c2a8f7a0c6780c0e192ef5848081f629e8d2339ba9",
       "sourceDatasetId": "model:north-ground-range-habitat-wilsons-snipe",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -11775,7 +11971,8 @@
       "sitesDetected": 711,
       "supportedCells": 39963,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.111
     },
     {
       "speciesId": "species:wolverine",
@@ -11815,7 +12012,7 @@
       ],
       "artifactId": "surface:range-habitat-wolverine-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/wolverine.json",
-      "artifactHash": "sha256:21a82b43b1f5222b1a0373bda5c96b9827984e850046b936d37572b443dafa35",
+      "artifactHash": "sha256:5ce5670e17276dc6b24335cc70daeb555d987d361da529b7de1a81c4d9bffc05",
       "sourceDatasetId": "model:north-ground-range-habitat-wolverine",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -11834,7 +12031,8 @@
       "sitesDetected": 85,
       "supportedCells": 31853,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.612
     },
     {
       "speciesId": "species:wood-duck",
@@ -11874,7 +12072,7 @@
       ],
       "artifactId": "surface:range-habitat-wood-duck-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/wood-duck.json",
-      "artifactHash": "sha256:853cd79c2bb74c3eef871f871ab7f9660ed9402feba5e2f07b69d71f929e9530",
+      "artifactHash": "sha256:bac732411ff21e0d26eb7a863ea4ebe6ec21ab7a67ef0e91cf49661afd39546d",
       "sourceDatasetId": "model:north-ground-range-habitat-wood-duck",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -11893,7 +12091,8 @@
       "sitesDetected": 610,
       "supportedCells": 58252,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.115
     },
     {
       "speciesId": "species:woodchuck",
@@ -11933,7 +12132,7 @@
       ],
       "artifactId": "surface:range-habitat-woodchuck-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/woodchuck.json",
-      "artifactHash": "sha256:e2a396bfb65a9497445ce4187ce9d8f9ad614473e39803dab2b1f12cde8f047f",
+      "artifactHash": "sha256:534cc8caedb64edd4b4d8d0be9c97927c5f4536280ce2bdbcc718d6a9952a2f2",
       "sourceDatasetId": "model:north-ground-range-habitat-woodchuck",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -11952,7 +12151,8 @@
       "sitesDetected": 152,
       "supportedCells": 30717,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.231
     },
     {
       "speciesId": "species:wyoming-ground-squirrel",
@@ -11997,7 +12197,7 @@
       ],
       "artifactId": "surface:range-habitat-wyoming-ground-squirrel-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/wyoming-ground-squirrel.json",
-      "artifactHash": "sha256:c17180ac6168a4114e9876d827a9ea00e4aa05ef136444c688f92500acd01001",
+      "artifactHash": "sha256:8828e16f5e80de2f045dc1861c95d3cf010351dd8a58632788b71ec3bdbee5f3",
       "sourceDatasetId": "model:north-ground-range-habitat-wyoming-ground-squirrel",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -12016,7 +12216,8 @@
       "sitesDetected": 12,
       "supportedCells": 2801,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0
     },
     {
       "speciesId": "species:yellow-bellied-marmot",
@@ -12061,7 +12262,7 @@
       ],
       "artifactId": "surface:range-habitat-yellow-bellied-marmot-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/yellow-bellied-marmot.json",
-      "artifactHash": "sha256:92384be2b0f9af903cdc38cc5989db5a058046dc1052fab0325305e77abbfa1e",
+      "artifactHash": "sha256:18ae2116276c874bfb0c9821170acad958cf60c68b96af7b3e95cfe5967b2487",
       "sourceDatasetId": "model:north-ground-range-habitat-yellow-bellied-marmot",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -12080,7 +12281,8 @@
       "sitesDetected": 75,
       "supportedCells": 18378,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.036
     },
     {
       "speciesId": "species:yellow-headed-blackbird",
@@ -12120,7 +12322,7 @@
       ],
       "artifactId": "surface:range-habitat-yellow-headed-blackbird-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/yellow-headed-blackbird.json",
-      "artifactHash": "sha256:afce39f45b31226f0825131c8eb19a430c984a9418b959b9b3fb76cfe1593ea6",
+      "artifactHash": "sha256:f94f8cb01bf1bfdd7f954aa2016c816ad3b60369d54cd7d8680387aa544cb0db",
       "sourceDatasetId": "model:north-ground-range-habitat-yellow-headed-blackbird",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -12139,7 +12341,8 @@
       "sitesDetected": 492,
       "supportedCells": 65136,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0.072
     },
     {
       "speciesId": "species:zebra-dove",
@@ -12184,7 +12387,7 @@
       ],
       "artifactId": "surface:range-habitat-zebra-dove-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/zebra-dove.json",
-      "artifactHash": "sha256:8841b912d75520c0c1b422960531bbc27027950e2cfb3ebce476d648ce69c3fc",
+      "artifactHash": "sha256:8a96f74abdbb7043f9ac43b479345330a09d6a9fcd9544455001eb1b1b3eec1f",
       "sourceDatasetId": "model:north-ground-range-habitat-zebra-dove",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -12203,7 +12406,8 @@
       "sitesDetected": 8,
       "supportedCells": 421,
       "surveyedAndNoneFound": 0,
-      "usefulVariation": true
+      "usefulVariation": true,
+      "edgeOnUnrecordedGround": 0
     }
   ],
   "declined": [

@@ -505,6 +505,75 @@ function encode(cells) {
   return { encoding: "U8_DEFLATE_BASE64", scale: 4, r0, c0, rows, cols, data: deflateSync(bytes, { level: 9 }).toString("base64") };
 }
 
+/* ------------------------------------------------------ recording effort */
+
+/*
+ * RECORDING EFFORT (2.1.0): how many open records of the OTHER Hunt-eligible
+ * species of the same animal group a place holds — the target-group measure
+ * of whether anyone records that kind of animal there at all. It never enters
+ * a range or a colour. It decides only what a surface says about its own edge:
+ * where the range stops at ground nobody records, the edge is where recording
+ * stops, and the surface says so rather than letting it read as absence.
+ * Measured on 1.40625° cells, the coarsest aggregation any read has.
+ */
+export const EFFORT_CELL_DEGREES = 1.40625;
+export const UNRECORDED_BELOW = 10;
+/* A range whose land edge borders unrecorded ground at least this often says so. */
+export const EDGE_FOLLOWS_RECORDING = 0.25;
+const GROUP_NOUN = { MAMMAL: "mammal", BIRD: "bird", REPTILE: "reptile", AMPHIBIAN: "amphibian" };
+const groupOf = (speciesId, profile) => profile.recordGroup ?? FAMILIES[profile.family]?.recordGroup;
+const effortKey = (lon, lat) => `${Math.floor((lon + 180) / EFFORT_CELL_DEGREES)}:${Math.floor((90 - lat) / EFFORT_CELL_DEGREES)}`;
+let effortCache = null;
+function effort() {
+  if (effortCache) return effortCache;
+  const totals = new Map();
+  const own = new Map();
+  for (const [speciesId, profile] of Object.entries(profileFile.species)) {
+    const group = groupOf(speciesId, profile);
+    const path = join(INPUTS, `${slugOf(speciesId)}.records.json`);
+    if (!group || !existsSync(path)) continue;
+    const read = JSON.parse(readFileSync(path, "utf8"));
+    if (!read.squares) continue;
+    const drawn = read.aggregationDegrees ?? DRAWN_SQUARE_DEGREES;
+    const mine = new Map();
+    for (const [west, south, n] of read.squares) {
+      const key = effortKey(west + drawn / 2, south + drawn / 2);
+      mine.set(key, (mine.get(key) ?? 0) + n);
+    }
+    own.set(speciesId, mine);
+    const total = totals.get(group) ?? new Map();
+    for (const [key, n] of mine) total.set(key, (total.get(key) ?? 0) + n);
+    totals.set(group, total);
+  }
+  effortCache = { totals, own };
+  return effortCache;
+}
+/* Records of the species' group at a place, less its own. */
+function othersRecorded(speciesId, group, lon, lat) {
+  const { totals, own } = effort();
+  const key = effortKey(lon, lat);
+  return (totals.get(group)?.get(key) ?? 0) - (own.get(speciesId)?.get(key) ?? 0);
+}
+/* Of the range's land edge, the share that borders ground where the group is barely recorded. */
+function edgeOnUnrecorded(speciesId, group, inRange) {
+  if (!group) return null;
+  let edge = 0;
+  let unrecorded = 0;
+  for (let row = 0; row < G.rows; row += 1) {
+    for (let col = 0; col < G.columns; col += 1) {
+      if (!inRange[row * G.columns + col]) continue;
+      for (const [r, c] of [[row - 1, col], [row + 1, col], [row, col - 1], [row, col + 1]]) {
+        if (r < 0 || r >= G.rows || c < 0 || c >= G.columns) continue;
+        const cell = r * G.columns + c;
+        if (inRange[cell] || landOf(cell) - share(cell, "WATER") < 0.5) continue;
+        edge += 1;
+        if (othersRecorded(speciesId, group, cellLon(c), cellLat(r)) < UNRECORDED_BELOW) unrecorded += 1;
+      }
+    }
+  }
+  return edge ? Math.round((unrecorded / edge) * 1000) / 1000 : null;
+}
+
 function buildOne(speciesId, profile) {
   const slug = slugOf(speciesId);
   const pub = published.get(speciesId);
@@ -631,6 +700,10 @@ function buildOne(speciesId, profile) {
   const dominant = Math.max(...Object.values(classShares));
   const usefulVariation = tier !== "RANGE_ONLY" && dominant <= 0.9;
 
+  const group = groupOf(speciesId, profile);
+  const edgeUnrecorded = edgeOnUnrecorded(speciesId, group, range.inRange);
+  const edgeFollowsRecording = edgeUnrecorded !== null && edgeUnrecorded >= EDGE_FOLLOWS_RECORDING;
+
   const name = pub.name ?? slug;
   const lcInput = { id: landcover.manifest.id, hash: landcover.manifest.artifact.sha256 };
   const inputs = [lcInput, { id: `open occurrence records (${inputPath})`, hash: sha(readFileSync(inputPath)) }];
@@ -662,6 +735,7 @@ function buildOne(speciesId, profile) {
         ? `The known distribution, shaded evenly. It says where records place the species, not where inside that there are more. ${profile.whyNotRangeHabitat}`
         : `How well the land suits ${name.toLowerCase()}, inside the range records place it. Habitat, not a count of animals and not a density.`,
       `The range is ground within ${family.reachKm} km of places where openly licensed records confirm the species; where people rarely record wildlife, real range can be missing, and records can be wrong.`,
+      ...(edgeFollowsRecording ? [`About ${Math.round(edgeUnrecorded * 100)} in 100 of this range's land edge borders ground where the records read hold almost nothing of any hunted ${GROUP_NOUN[group]} (fewer than ${UNRECORDED_BELOW} to a 1.4° cell) — remote country few people record, or ground outside Canada and the United States, which is all that is read. There the edge is where recording stops, not where the species does.`] : []),
       `Records decide only whether ground is in the range; they never set a cell's colour, so where more people report wildlife does not become where there are more animals. ${recordBias}`.trim(),
       "Unshaded ground is outside that range, rated unsuitable inside it, or open water, sea, ice or town the profile does not name as habitat. None of these is a finding that the species is absent.",
       "Land cover is from 2019 and does not know forest age, recent fire or harvest.",
@@ -693,7 +767,7 @@ function buildOne(speciesId, profile) {
         : [`No habitat statement is published for the species; the range alone is drawn. ${profile.whyNotRangeHabitat}`],
       reading: profile.reading,
       profile: { family: profile.family, reachKm: family.reachKm, landCover: profile.landCover ?? null, edge: profile.edge ?? null, requires: profile.requires ?? [], coastKm: profile.coastKm ?? null, season: profile.season ?? null, whyNotRangeHabitat: profile.whyNotRangeHabitat ?? null },
-      range: { confirmedSquares: range.confirmed, countedSquares: range.counted, islandSquares: range.islands, gapKm: family.gapKm ?? null, joinedCells: range.joinedCells, openRecords: records.openRecordCount, datasets: records.datasets.length, months: records.months ?? null },
+      range: { confirmedSquares: range.confirmed, countedSquares: range.counted, islandSquares: range.islands, gapKm: family.gapKm ?? null, joinedCells: range.joinedCells, recordGroup: group ?? null, edgeOnUnrecordedGround: edgeUnrecorded, openRecords: records.openRecordCount, datasets: records.datasets.length, months: records.months ?? null },
       cells: { painted: painted.length, unsuitable, masked, noData },
       variation: { classShares, usefulVariation },
       confidenceComponents: components,
@@ -745,6 +819,7 @@ function buildOne(speciesId, profile) {
     supportedCells: painted.length,
     surveyedAndNoneFound: 0,
     usefulVariation,
+    edgeOnUnrecordedGround: edgeUnrecorded,
   };
   return { artifact: { path, text }, entry };
 }

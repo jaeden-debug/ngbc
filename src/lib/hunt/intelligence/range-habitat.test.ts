@@ -4,7 +4,6 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import test from "node:test";
 import { permitsSpeciesHeat } from "../../content/species-eligibility.ts";
 import { decodeCells, surfaceRegistry } from "./surface.ts";
-// @ts-expect-error -- a plain ES module shared with the builder
 import { closeRange } from "../../../../scripts/lib/range-closing.mjs";
 
 /**
@@ -19,11 +18,11 @@ import { closeRange } from "../../../../scripts/lib/range-closing.mjs";
 
 const profiles = JSON.parse(readFileSync("content/intelligence/surface-profiles.json", "utf8")) as {
   classValues: Record<string, number>;
-  families: Record<string, { reachKm: number; why: string; recordBias: string; isolatedSquareMinRecords: number | null; gapKm: number | null; gapWhy: string }>;
+  families: Record<string, { reachKm: number; why: string; recordBias: string; isolatedSquareMinRecords: number | null; gapKm: number | null; gapWhy: string; recordGroup: string }>;
   species: Record<string, { family: string; habitatStatement: string | null; season?: string; tier?: string; landCover?: Record<string, string[]>; requires?: unknown[]; whyNotRangeHabitat?: string; rangeNotDefensible?: string }>;
 };
 const registry = JSON.parse(readFileSync("content/intelligence/range-habitat-registry.json", "utf8")) as {
-  surfaces: Array<{ speciesId: string; artifactPath: string; surfaceTier: string; surfaceKind: string; resolution: { source: { metres: number } } }>;
+  surfaces: Array<{ speciesId: string; artifactPath: string; surfaceTier: string; surfaceKind: string; resolution: { source: { metres: number } }; edgeOnUnrecordedGround: number | null }>;
   declined: Array<{ speciesId: string; reason: string }>;
 };
 
@@ -194,4 +193,15 @@ test("open water a profile names is drawn along its shore, never across the midd
   assert.ok(middle === null || middle < 0, `mallard painted ${middle} in the middle of Lake Winnipeg`);
   /* The prairie pothole country it is drawn from in the season is painted. */
   assert.ok((valueAt(50.5, -100.5) ?? 0) > 0, "mallard not drawn in the pothole prairie");
+});
+
+test("a range that stops where recording stops says so", () => {
+  for (const entry of registry.surfaces) {
+    const artifact = JSON.parse(readFileSync(entry.artifactPath, "utf8"));
+    assert.equal(artifact.model.range.edgeOnUnrecordedGround, entry.edgeOnUnrecordedGround, entry.speciesId);
+    const says = artifact.limitations.some((line: string) => /edge is where recording stops/.test(line));
+    assert.equal(says, (entry.edgeOnUnrecordedGround ?? 0) >= 0.25, `${entry.speciesId}: edge on unrecorded ground ${entry.edgeOnUnrecordedGround}`);
+  }
+  /* Every family names the group whose recording measures its effort. */
+  for (const [name, family] of Object.entries(profiles.families)) assert.ok(["MAMMAL", "BIRD", "REPTILE", "AMPHIBIAN"].includes(family.recordGroup), name);
 });

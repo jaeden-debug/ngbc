@@ -91,6 +91,11 @@ const debt = {
   limited: eligible.filter((row) => row.tier !== "NO_SURFACE" && row.layers.filter((l) => l.served).every((l) => l.confidence === "LIMITED")).map((row) => row.speciesId.replace("species:", "")),
   rangeOnly: eligible.filter((row) => row.tier === "RANGE_ONLY").map((row) => `${row.speciesId.replace("species:", "")} (${row.rangeOnlyReason ?? "no reason recorded"})`),
   huntingSeason: eligible.filter((row) => row.needsHuntingSeasonEvidence).map((row) => `${row.speciesId.replace("species:", "")} (${row.movement?.toLowerCase()})`),
+  /* Range edges that stop where recording stops (range-habitat registry, target-group effort). */
+  edgeFollowsRecording: JSON.parse(readFileSync("content/intelligence/range-habitat-registry.json", "utf8")).surfaces
+    .filter((entry) => (entry.edgeOnUnrecordedGround ?? 0) >= 0.25)
+    .sort((a, b) => b.edgeOnUnrecordedGround - a.edgeOnUnrecordedGround)
+    .map((entry) => `${entry.speciesId.replace("species:", "")} (${Math.round(entry.edgeOnUnrecordedGround * 100)}%)`),
   surveyOnly: eligible.filter((row) => row.tier === "SYSTEMATIC_SURVEY" && !row.layers.some((l) => l.served && l.tier !== "SYSTEMATIC_SURVEY") && (row.movement === "RESIDENT" || row.movement === "SHORT_DISTANCE")).map((row) => row.speciesId.replace("species:", "")),
 };
 const byStage = COVERAGE_STAGES.map((stage) => `${stage}: ${count((row) => row.stage === stage)}`);
@@ -144,6 +149,7 @@ const lines = [
   `- **Range-only, candidates for range + habitat:** ${list(debt.rangeOnly)}.`,
   `- **Moving birds with no hunting-season surface yet:** ${list(debt.huntingSeason)}.`,
   `- **Geographic gaps — resident birds drawn only where the breeding survey reaches:** ${list(debt.surveyOnly)}.`,
+  `- **Geographic gaps — range edge follows recording** (a quarter or more of the range's land edge borders ground where the reads hold almost no records of any hunted animal of its group; the share in brackets): ${list(debt.edgeFollowsRecording)}.`,
   "",
   "## Every species",
   "",
