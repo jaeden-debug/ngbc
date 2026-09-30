@@ -64,13 +64,14 @@ test("a jurisdiction with no certified bundle declares what is missing", () => {
 test("the report counts only what the certified bundles actually contain", () => {
   const report = canadaCoverageReport();
 
-  // Ontario, Québec, Manitoba, Alberta, British Columbia, Nova Scotia and now
-  // Newfoundland and Labrador hold rules Hunt can answer today. If this ever
-  // fails because another jurisdiction gained rules, update it deliberately —
-  // the test exists so coverage cannot grow without someone noticing, and it did
-  // its job twice on 2026-09-30, for Nova Scotia and then for Newfoundland.
+  // Eight jurisdictions hold rules Hunt can answer today. If this ever fails
+  // because another gained rules, update it deliberately — the test exists so
+  // coverage cannot grow without someone noticing, and it did its job three
+  // times on 2026-09-30, for Nova Scotia, Newfoundland and New Brunswick. The
+  // order is the registry's, which is geographic rather than alphabetical, so
+  // New Brunswick sits before the two it was built after.
   const withRules = report.jurisdictions.filter((entry) => entry.regulatory.rules > 0);
-  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-QC", "CA-MB", "CA-AB", "CA-BC", "CA-NS", "CA-NL"]);
+  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-QC", "CA-MB", "CA-AB", "CA-BC", "CA-NB", "CA-NS", "CA-NL"]);
 
   const ontario = withRules[0];
   assert.equal(ontario.species.length, 8, "four small-game plus four major-game species");
@@ -248,10 +249,13 @@ test("every species row splits covered, declared-closed and unknown", () => {
 test("species coverage is jurisdiction-aware and derived from certified bundles", () => {
   assert.deepEqual(
     regulatoryJurisdictionsForSpecies("species:white-tailed-deer").map(({ id }) => id),
-    /* Nova Scotia joined 2026-09-30. Its three deer seasons are province-wide in
-       the regulation's own words, so the zone carries the animal class and the
-       stamp rather than the dates. */
-    ["jurisdiction:ca-on", "jurisdiction:ca-qc", "jurisdiction:ca-mb", "jurisdiction:ca-ab", "jurisdiction:ca-ns"],
+    /* Nova Scotia and New Brunswick both joined 2026-09-30, and their deer
+       answers are shaped oppositely. Nova Scotia's three seasons are
+       province-wide in the regulation's own words, so the zone carries the animal
+       class and the stamp rather than the dates. New Brunswick's zone carries the
+       dates: s. 11.1 gives zones 4, 5 and 9 no antlered season at all and zones
+       1, 2 and 3 five weeks rather than eight. */
+    ["jurisdiction:ca-on", "jurisdiction:ca-qc", "jurisdiction:ca-mb", "jurisdiction:ca-ab", "jurisdiction:ca-nb", "jurisdiction:ca-ns"],
   );
   assert.deepEqual(regulatoryJurisdictionsForSpecies("species:gray-wolf"), []);
 });
@@ -267,7 +271,11 @@ test("the selector gates a species by the resolved jurisdiction, not by a global
   assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-on"), true);
   assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-mb"), true);
   assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-qc"), true);
-  assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-nb"), false);
+  /* New Brunswick now HAS deer rules, so the "says nothing about another"
+     example moved to a jurisdiction that still has none: Saskatchewan is drawn
+     and resolved with no certified rule. */
+  assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-nb"), true);
+  assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-sk"), false);
   assert.equal(hasSpeciesCoverageIn(option("species:moose"), "jurisdiction:ca-mb"), false);
   assert.equal(speciesAsksQuestionIn(option("species:ruffed-grouse"), "jurisdiction:ca-mb"), false);
   // Before a place is chosen the species is discoverable because rules exist somewhere.

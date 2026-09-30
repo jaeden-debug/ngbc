@@ -18,6 +18,7 @@ import {
 } from "./manitoba.ts";
 import { evaluateNovaScotia, novaScotiaCoverageReport } from "./nova-scotia.ts";
 import { evaluateNewfoundland, newfoundlandCoverageReport } from "./newfoundland.ts";
+import { evaluateNewBrunswick, newBrunswickCoverageReport } from "./new-brunswick.ts";
 import { evaluateOntarioSmallGame, ontarioCoverageReport } from "./ontario.ts";
 import {
   evaluateQuebec, QUEBEC_OVERLAY_DESCRIPTION, QUEBEC_OVERLAYS, quebecCoverageReport, quebecSourceRecords,
@@ -566,7 +567,28 @@ const NEWFOUNDLAND = conditionalEntry({
   coverageReport: newfoundlandCoverageReport,
 });
 
-export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, NEWFOUNDLAND, MONTANA, IDAHO];
+/* New Brunswick: standing ordinal rules, so no annual ingest. Its 27 Wildlife
+   Management Zones are served, and eleven species answer from the Hunting
+   Regulation, the Moose Hunting Regulation and the Hunter Orange Regulation.
+
+   Deer is three answers by zone — no antlered season in 4, 5 and 9, five weeks
+   antlered-only in 1, 2 and 3, eight weeks elsewhere — and the bow-and-crossbow
+   opening weeks split it again by method.
+
+   What it waits on is in the bundle's `deliberatelyNotEncoded`: the antlerless
+   deer quota and the moose quota are ministerial determinations published
+   nowhere in the regulation, the muzzle-loading week's zones depend on the
+   first of them, and "squirrel", "cormorant" and groundhog are species the
+   source or the catalogue does not resolve. */
+const NEW_BRUNSWICK = conditionalEntry({
+  jurisdictionId: "jurisdiction:ca-nb",
+  jurisdictionName: "New Brunswick",
+  unitTerm: "Wildlife Management Zone",
+  evaluate: evaluateNewBrunswick,
+  coverageReport: newBrunswickCoverageReport,
+});
+
+export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, NEWFOUNDLAND, NEW_BRUNSWICK, MONTANA, IDAHO];
 
 /**
  * The entry for a jurisdiction — only while its zone layer is served.

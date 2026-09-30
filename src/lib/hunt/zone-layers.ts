@@ -550,15 +550,20 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     coverage: "IN_DEVELOPMENT",
     coverageNote:
       "New Brunswick's 27 Wildlife Management Zones from the province's own service, under the New Brunswick Open " +
-      "Government Licence. The regulations under the Fish and Wildlife Act control; the layer is the province's " +
-      "digital product of them. No New Brunswick rule is certified, so every species here answers UNKNOWN.",
+      "Government Licence. Section 12 of the Hunting Regulation establishes them in words and controls; the layer is " +
+      "the province's digital product of s. 12. Eleven species answer, and the zone changes the length of the deer " +
+      "season as well as its conditions.",
     authority: "New Brunswick Department of Natural Resources and Energy Development",
     sourceId: "source:ca-nb-wmz-service",
     bounds: { minLatitude: 44.49, maxLatitude: 48.08, minLongitude: -69.06, maxLongitude: -63.76 },
-    /* Boundaries only: 27 zones parity-certified against the province
-       (118/118 testable points; nine degenerate holes below the sampling
-       tolerance recorded as untestable). */
+    /* 27 zones parity-certified against the province (118/118 testable points;
+       nine degenerate holes below the sampling tolerance recorded as
+       untestable). Rules are certified for eleven species from the Hunting
+       Regulation's standing ordinal windows, and the zone matters here more than
+       in any other province so far: s. 11.1 gives zones 4, 5 and 9 no antlered
+       deer season at all and zones 1, 2 and 3 five weeks rather than eight. */
     serving: true,
+    rulesServing: true,
     mapGeometry: "stored",
     officialNamePrefix: "Wildlife Management Zone ",
     zoneIdPrefix: "management_zone:ca-nb-wmz-",

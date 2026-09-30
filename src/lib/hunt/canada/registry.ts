@@ -421,15 +421,38 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
         "from the province's catalogue record because the service itself carries no copyright text.",
     },
     regulatory: {
-      status: "IN_DEVELOPMENT",
-      bundleIds: [],
-      sourceLeads: ["New Brunswick Hunting Regulations Summary"],
-      sourceState: "NOT_INGESTED",
+      status: "PARTIAL",
+      bundleIds: ["ca-nb-2026"],
+      sourceLeads: [
+        "Hunting Regulation, N.B. Reg. 84-133 (consolidated to 26 July 2024)",
+        "Moose Hunting Regulation, N.B. Reg. 94-47 (21 April 2026); Hunter Orange Regulation, N.B. Reg. 81-58",
+        "Wild Turkey Hunting Regulation, N.B. Reg. 2021-30 \u2014 retrieved, not yet encoded",
+      ],
+      sourceState: "CURRENT",
       huntingAuthorityUrl: "https://www2.gnb.ca/content/gnb/en/departments/erd/fish-and-wildlife/content/go-hunting.html",
     },
     knownGaps: [
-      "Boundaries only: the 27 Wildlife Management Zones are drawn, named and resolved, and every New Brunswick " +
-        "species query is UNKNOWN until rules are certified. A drawn boundary is not a certified rule.",
+      "Eleven species answer across all 27 zones in 15 rules: white-tailed deer, moose, black bear, snowshoe hare, " +
+        "raccoon, striped skunk, ruffed grouse, spruce grouse, coyote, crow and ring-necked pheasant. New Brunswick " +
+        "needs no annual ingest \u2014 every window in Hunting Regulation s. 11(1) ends in the word \u201cannually\u201d and is " +
+        "stated as an ordinal over weekdays, so the regulation is standing law and the dates are derived from the rule.",
+      "White-tailed deer is three different answers by zone, from s. 11.1 alone: no antlered season in zones 4, 5 and " +
+        "9; antlered deer only and five consecutive weeks rather than eight in zones 1, 2 and 3; the full eight weeks " +
+        "elsewhere. s. 11.2 then splits it again by method, reserving the first three weeks to a bow or crossbow \u2014 " +
+        "and unlike Newfoundland the crossbow IS included.",
+      "ANTLERLESS DEER IS NOT ANSWERED, in either direction. Its season is certain (s. 11(1)(a) gives it the same " +
+        "eight weeks) but s. 3.1(4.1) lets the Minister set a quota of zero for a zone, which closes it without " +
+        "amending any regulation, and the quotas are published nowhere in the regulation. The same applies to the " +
+        "moose quota per zone under Moose Hunting Regulation s. 5(1).",
+      "The muzzle-loading week \u2014 the week beginning the seventh Monday after the first Monday in October \u2014 is not " +
+        "encoded, because s. 3.11(1) confines it to the zones where antlerless deer may be hunted, which depends on " +
+        "that same unpublished quota. Every deer rule is therefore certified to the day before that week opens rather " +
+        "than to the end of the eight-week grant.",
+      "Three species the source or the catalogue does not resolve: s. 11(1)(b.1) gives \u201csquirrel\u201d a season and " +
+        "names no species, s. 11(1)(c.1) does the same for \u201ccormorant\u201d and ties its second window to the federal " +
+        "duck season, and groundhog is not canonicalized. Wild turkey and fur harvesting are separate regulations.",
+      "The province publishes zero-area holes of three and four points in several zones; they are recorded as " +
+        "untestable by point sampling rather than as disagreements, and certification rests on the inventory.",
       "The province publishes zero-area holes of three and four points in several zones; they are recorded as " +
         "untestable by point sampling rather than as disagreements, and certification rests on the inventory.",
     ],

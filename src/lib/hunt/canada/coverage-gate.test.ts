@@ -88,12 +88,12 @@ test("the gate can fail — a zero-rule jurisdiction is detected", () => {
    */
   assert.ok(zero.includes("CA-PE"),
     "Prince Edward Island is the Atlantic jurisdiction still holding zero rules");
-  for (const left of ["CA-NS", "CA-NL"]) {
+  for (const left of ["CA-NS", "CA-NL", "CA-NB"]) {
     assert.ok(!zero.includes(left), `${left} holds certified rules and must no longer be counted as zero-rule`);
   }
   /* And the gate must still see the four boundary-only jurisdictions, which is
      what makes the "can fail" claim above true rather than incidental. */
-  for (const stillZero of ["CA-SK", "CA-NB", "CA-YT"]) {
+  for (const stillZero of ["CA-SK", "CA-YT"]) {
     assert.ok(zero.includes(stillZero), `${stillZero} holds no rules and must be visible to this gate`);
   }
 });

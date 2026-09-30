@@ -6,6 +6,7 @@ import { evaluateConditional, type ConditionalBundle, type ConditionalVocabulary
 import { MANITOBA_VOCABULARY } from "./manitoba.ts";
 import { NOVA_SCOTIA_VOCABULARY } from "./nova-scotia.ts";
 import { NEWFOUNDLAND_VOCABULARY } from "./newfoundland.ts";
+import { NEW_BRUNSWICK_VOCABULARY } from "./new-brunswick.ts";
 
 /**
  * EVERY CERTIFIED BUNDLE MUST ACTUALLY ANSWER SOMEWHERE.
@@ -55,6 +56,7 @@ const WIRED: Wired[] = [
   { file: "ca-mb-2026.json", vocabulary: MANITOBA_VOCABULARY, latitude: 49.9, longitude: -97.1 },
   { file: "ca-ns-2026.json", vocabulary: NOVA_SCOTIA_VOCABULARY, latitude: 45.1, longitude: -63.5 },
   { file: "ca-nl-2026.json", vocabulary: NEWFOUNDLAND_VOCABULARY, latitude: 48.95, longitude: -57.95 },
+  { file: "ca-nb-2026.json", vocabulary: NEW_BRUNSWICK_VOCABULARY, latitude: 46.09, longitude: -64.79 },
 ];
 
 function load(file: string): ConditionalBundle {
@@ -77,7 +79,7 @@ test("every conditional bundle in the directory is wired here, or named as evalu
   const elsewhere = new Set(["ca-ab-2026.json", "ca-bc-2026.json", "us-id-pronghorn-2026.json", "us-mt-upland-2026.json"]);
   const unaccounted = conditional.filter((file) => !covered.has(file) && !elsewhere.has(file));
   assert.deepEqual(unaccounted, [], `conditional bundles neither driven here nor named as evaluated elsewhere:\n${unaccounted.join("\n")}`);
-  assert.ok(covered.size >= 3, "the wired list must not empty out");
+  assert.ok(covered.size >= 4, "the wired list must not empty out");
 });
 
 for (const entry of WIRED) {
