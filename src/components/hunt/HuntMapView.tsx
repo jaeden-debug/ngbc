@@ -9,7 +9,6 @@ import { OPENING_CAMERA, posterFrame } from "../../lib/hunt/exploration/overview
 import { mapLabelFor } from "../../lib/hunt/exploration/map-labels";
 import { CONDITION_GLYPH, conditionMarkerLabel, zoneHasConditions, zoneIsGreen } from "../../lib/hunt/exploration/species-layer";
 import { EXPLORATION_WORDING, type ZoneSpeciesAnswer } from "../../lib/hunt/exploration/states";
-import type { ZoneHeat } from "../../lib/hunt/exploration/species-layer";
 import type { RenderableSurface } from "../../lib/hunt/exploration/surface-paint";
 import type { ZoneFeature } from "../../lib/hunt/zone-geometry";
 import dynamic from "next/dynamic";
@@ -60,12 +59,6 @@ interface HuntMapViewProps {
   huntKey: string | null;
   zoneAnswers: ReadonlyMap<string, ZoneSpeciesAnswer> | null;
   /**
-   * The species layer's heat per zone key. A zone that is ABSENT holds no
-   * certified opportunity evidence and is drawn with no heat at all — never a
-   * cold value (CLAUDE.md §41A, species layer).
-   */
-  heat?: ReadonlyMap<string, ZoneHeat> | null;
-  /**
    * The species distribution surface, drawn UNDER the zones from its own
    * geography. Null when no species is chosen or none is held; a surface is
    * never synthesised from the zones on screen.
@@ -97,7 +90,7 @@ const POSTER = posterFrame();
 const SELF_FAILURES: Record<number, SelfFailure> = { 1: "denied", 2: "position", 3: "timeout" };
 
 function HuntMapView({
-  googleMapsApiKey, exploration, dispatch, drawn, selectedKey, huntKey, zoneAnswers, heat = null, surfaces = EMPTY_SURFACES, overlays, mapMode, camera,
+  googleMapsApiKey, exploration, dispatch, drawn, selectedKey, huntKey, zoneAnswers, surfaces = EMPTY_SURFACES, overlays, mapMode, camera,
   locateOnStart, poster, padding, emphasis, zonesVisible, onView, onZoneClick, onOverlayClick, onBasemap,
 }: HuntMapViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -196,11 +189,11 @@ function HuntMapView({
   useEffect(() => { live?.setZones(drawn); live?.setLabels(drawn); }, [live, drawn]);
   useEffect(() => {
     if (!live) return;
-    live.setStyleState({ selectedKey, huntKey, zoneAnswers, heat, emphasis });
+    live.setStyleState({ selectedKey, huntKey, zoneAnswers, emphasis });
     live.setLabels(drawn);
     // `drawn` is applied above; this effect only restyles.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [live, selectedKey, huntKey, zoneAnswers, heat, emphasis]);
+  }, [live, selectedKey, huntKey, zoneAnswers, emphasis]);
   useEffect(() => { live?.setSurface(surfaces); }, [live, surfaces]);
   useEffect(() => { live?.setOverlays(overlays); }, [live, overlays]);
   useEffect(() => { live?.setZonesVisible(zonesVisible); }, [live, zonesVisible]);
@@ -399,7 +392,6 @@ function HuntMapView({
           selectedZoneLabel={selectedFeatureLabel}
           labels={canvasLabels}
           zoneAnswers={zoneAnswers}
-          heat={heat}
           surfaces={surfaces}
           zoneKeyOf={zoneKeyOfFeature}
           onZoneClick={(feature) => onZoneClick(zoneKeyOfFeature(feature), "map")}

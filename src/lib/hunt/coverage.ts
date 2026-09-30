@@ -152,6 +152,12 @@ export interface SpeciesSelectorOption {
    * where it is".
    */
   hasOpportunityEvidence?: boolean;
+  /**
+   * Whether North Ground holds a certified species SURFACE for this species
+   * anywhere (`surface-registry.json`, or a servable plot survey) — the animal
+   * layer drawn under the zones. A species can have this and nothing else.
+   */
+  hasSpeciesSurface?: boolean;
 }
 
 /**

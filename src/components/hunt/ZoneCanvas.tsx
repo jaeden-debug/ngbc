@@ -3,8 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { placeLabels } from "../../lib/hunt/exploration/labels";
 import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
-import type { ZoneHeat } from "../../lib/hunt/exploration/species-layer";
-import { heatPaintFor, zoneIsGreen } from "../../lib/hunt/exploration/species-layer";
+import { zoneIsGreen } from "../../lib/hunt/exploration/species-layer";
 import { bufferStepPx, type RenderableSurface } from "../../lib/hunt/exploration/surface-paint";
 import { paintPlots, rasteriseSurface } from "./map/paint-surface";
 import type { ZoneSpeciesAnswer } from "../../lib/hunt/exploration/states";
@@ -30,8 +29,6 @@ interface ZoneCanvasProps {
   selectedZoneLabel: string | null;
   labels: LabelSource[];
   zoneAnswers: ReadonlyMap<string, ZoneSpeciesAnswer> | null;
-  /** The species layer's heat per zone; absent means no evidence is held. */
-  heat?: ReadonlyMap<string, ZoneHeat> | null;
   /**
    * The species distribution surface, drawn under the boundaries from its own
    * geography.
@@ -67,10 +64,12 @@ interface ZoneCanvasProps {
  */
 
 const LONG_PRESS_MS = 550;
+/* Stable, so a map with no species does not re-sample on every render. */
+const EMPTY_SURFACES: readonly RenderableSurface[] = [];
 
 export default function ZoneCanvas({
   features, viewport, onViewportChange, huntPoint, selfFix, previewPoint, selectedZoneKey, selectedZoneLabel,
-  labels, zoneAnswers, heat = null, surfaces = [], zoneKeyOf, onZoneClick, onEmptyClick, onLongPress, overlays, onOverlayClick, onResize,
+  labels, zoneAnswers, surfaces = EMPTY_SURFACES, zoneKeyOf, onZoneClick, onEmptyClick, onLongPress, overlays, onOverlayClick, onResize,
   onConditionMarker, openConditionMarker = null,
 }: ZoneCanvasProps) {
   const frameRef = useRef<HTMLDivElement>(null);
@@ -320,14 +319,13 @@ export default function ZoneCanvas({
             /* Said in words by the legend and the zone card, which are real
                content; an unlabelled image here would announce nothing. */
             aria-hidden="true"
+            data-species-surface=""
+            data-surface-species={surfaces[0]?.speciesId}
+            data-surface-painted="true"
           />
         ) : null}
 
         {shapes.map(({ feature, key, d }) => {
-          /* Over the surface the interiors are tracing paper (§41A): the zone
-             fill was the choropleth, and drawing it on top of the real field
-             would put the wrong answer over the right one. */
-          const fill = surfaces.length ? null : heatPaintFor(heat?.get(key));
           return (
             <path
               key={key}
@@ -340,7 +338,9 @@ export default function ZoneCanvas({
               /* Binary. A zone without this attribute is NOT closed — the legend says so. */
               data-open={zoneIsGreen(zoneAnswers?.get(key)) || undefined}
               data-selected={key === selectedZoneKey || undefined}
-              {...(fill ? { style: { fill: fill.color, fillOpacity: fill.opacity } } : {})}
+              /* Over the surface the interiors are tracing paper (§41A). A zone
+                 is never filled with evidence: that was the choropleth. */
+              data-surface-under={surfaces.length ? "true" : undefined}
             />
           );
         })}

@@ -26,7 +26,6 @@ import { presentZone } from "../../lib/hunt/zone-presentation";
 import HuntMapView, { type CameraRequest } from "./HuntMapView";
 import FindGameHint, { forgetFindGameHint, retireFindGameHint } from "./FindGameHint";
 import SpeciesLayerLegend from "./SpeciesLayerLegend";
-import { useSpeciesHeat } from "./map/useSpeciesHeat";
 import { useSpeciesSurface } from "./map/useSpeciesSurface";
 import HuntSheet from "./HuntSheet";
 import type { Emphasis } from "../../lib/hunt/exploration/cartography";
@@ -506,11 +505,12 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   const speciesCertifiedHere = species && selectedLayer ? hasSpeciesCoverageIn(species, selectedLayer.jurisdictionId) : false;
   /* Where the authority states the rules North Ground has not certified. */
   const authorityLink = selectedLayer ? authorities[selectedLayer.jurisdictionId] ?? null : null;
-  /* Rules OR evidence. Six of the nine species with committed harvest evidence
-     have no certified rules anywhere; gating on rules alone kept the heat layer
+  /* Rules OR evidence OR a surface. Six of the nine species with committed
+     harvest evidence have no certified rules anywhere, and several BBS species
+     have nothing but their surface; gating on rules alone kept the layer
      unreachable for all of them (§41A, "selectable is not answerable"). */
   const explorable = useMemo(
-    () => speciesOptions.filter((option) => option.regulatoryJurisdictions.length > 0 || option.hasOpportunityEvidence),
+    () => speciesOptions.filter((option) => option.regulatoryJurisdictions.length > 0 || option.hasOpportunityEvidence || option.hasSpeciesSurface),
     [speciesOptions],
   );
 
@@ -929,32 +929,23 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [exploreSpecies, session.date.iso, inViewKey]);
 
-  /* ── Explore: the heat half of the species layer ─────────────────────── */
-
-  /* Deliberately NOT keyed on `exploreSpecies`, which requires certified rules.
-     Heat is evidence about animals and green is evidence about law; §41B keeps
-     them in separate lanes, so a species can have one without the other. */
-  const heat = useSpeciesHeat(session.explore && session.speciesId ? session.speciesId : null, zonesInView);
-
-  /* ── Explore: the species distribution surface ───────────────────────── */
+  /* ── Explore: the species surface (the animal layer) ────────────────── */
 
   /*
-   * THE ANIMAL LAYER, and the thing `heat` above is being replaced by.
-   *
-   * It asks about a RECTANGLE OF GROUND, not about the zones on screen. That is
-   * the whole architectural difference: `useSpeciesHeat` posts the zone list and
-   * can only ever receive one value per hunting unit, so its picture changes at
-   * a regulatory boundary because its DATA does. This one has no zone in its
-   * request and none in its reply, so a boundary cannot reach it.
-   *
-   * It also never reads the date. Animal evidence and hunting legality are
-   * separate systems (§11): changing the hunt date moves the green outlines and
-   * the conditions and leaves the surface exactly where it was.
+   * It asks about a RECTANGLE OF GROUND, never about the zones on screen. The
+   * zone-keyed heat request this replaced (`useSpeciesHeat`, posting
+   * `zonesInView`) could only ever receive one value per hunting unit, so its
+   * picture changed at a regulatory boundary because its DATA did. This has no
+   * zone in its request and none in its reply, needs no zone geometry to have
+   * loaded, and never reads the date: animal evidence and hunting legality are
+   * separate systems (§41B), so a date change moves the green outlines and
+   * leaves the surface where it was.
    */
   const surfaceState = useSpeciesSurface(
     session.explore && session.speciesId ? session.speciesId : null,
     view?.box ?? null,
   );
+  const surfaceNotice = session.explore && surfaceState.outcome === "UNAVAILABLE" ? surfaceState.message : null;
 
   /* ── Special areas, only when switched on ────────────────────────────── */
 
@@ -1343,8 +1334,27 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
           and the whole explainer — which is not closing anything. It now
           dismisses the card, forgets the species with it so reopening never
           shows a previous hunt's animal, and leaves the map.
+
+          EXCEPT OVER THE SPECIES LAYER (owner acceptance, 2026-09-30): a zone
+          tapped while the layer is on is a way into that zone's answer, and
+          closing it returns to the layer — species, surface and date intact —
+          because §41B's modes share one state and the layer was never the
+          card's to dismiss.
         */}
-        <button type="button" className={styles.iconButton} onClick={() => { dispatchMap({ type: "CARD_CLOSED" }); dispatchSession({ type: "SPECIES_CLEARED" }); setSnap("closed"); }} aria-label={`Close ${presented.fullLabel}`}>
+        <button
+          type="button"
+          className={styles.iconButton}
+          onClick={() => {
+            dispatchMap({ type: "CARD_CLOSED" });
+            if (session.explore && session.speciesId) {
+              setSnap("peek");
+              return;
+            }
+            dispatchSession({ type: "SPECIES_CLEARED" });
+            setSnap("closed");
+          }}
+          aria-label={`Close ${presented.fullLabel}`}
+        >
           <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" fill="none"><path d="m2 2 8 8M10 2l-8 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
         </button>
       </div>
@@ -1616,6 +1626,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   const noticeList = [
     ...geometry.notices.map((notice) => notice.message),
     ...(overlayNotice ? [overlayNotice] : []),
+    ...(surfaceNotice ? [surfaceNotice] : []),
   ];
 
   return (
@@ -1671,7 +1682,6 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
           selectedKey={selectedKey}
           huntKey={huntKey}
           zoneAnswers={filterStates}
-          heat={heat}
           surfaces={surfaceState.surfaces}
           overlays={overlayFeatures}
           mapMode={mapMode}
@@ -1746,16 +1756,18 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
         {/* The layer's key. It carries "a zone without a green outline is not
             closed" on its face, because that is the one inference a hunter
             could draw from the colours that would be false (§48). */}
-        {session.explore && species && (heat?.size || filterStates?.size) ? (
+        {/* Shown whenever the layer is on — including for a species with no
+            surface, and on ground where no zone has drawn — because a blank map
+            with no words reads to a hunter as "there are no animals here". */}
+        {session.explore && species ? (
           <SpeciesLayerLegend
             speciesName={species.displayName}
             /* Only so the key can ask for its own methodology when opened. */
             speciesId={species.id}
-            shadedZones={heat?.size ?? 0}
             hasEvidence={Boolean(species.hasOpportunityEvidence)}
             /* The surface describes itself: the legend never names a metric the
                map did not paint (§41B, owner's §15). */
-            surface={surfaceState.legend}
+            surface={surfaceState}
             openZones={[...(filterStates?.values() ?? [])].filter((answer) => zoneIsGreen(answer)).length}
             conditionalZones={[...(filterStates?.values() ?? [])].filter((answer) => zoneHasConditions(answer)).length}
           />

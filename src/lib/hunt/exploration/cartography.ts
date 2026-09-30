@@ -94,7 +94,6 @@ export const MAX_STATE_FILL = MAX_HEAT_OPACITY;
 
 /** What the chosen zone is allowed to reach, so it always clears the above. */
 const SELECTED_FILL_CEILING = MAX_STATE_FILL + 0.12;
-const STATE_BAND_SCALE: Record<ZoomBand, number> = { national: 0.9, regional: 0.8, local: 0.7 };
 
 /**
  * The one green an open season wears: `--ng-open`, the palette's own regulatory

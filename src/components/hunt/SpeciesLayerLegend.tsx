@@ -2,9 +2,8 @@
 
 import { useEffect, useId, useState } from "react";
 import { SEASON_OPEN_STROKE } from "../../lib/hunt/exploration/cartography";
-import { CONDITION_GLYPH, HEAT_WORDING, SPECIES_LAYER_LEGEND } from "../../lib/hunt/exploration/species-layer";
-import type { OpportunityClass } from "../../lib/hunt/intelligence/types";
-import type { SurfaceLegendState } from "./map/useSpeciesSurface";
+import { CONDITION_GLYPH, SPECIES_LAYER_LEGEND } from "../../lib/hunt/exploration/species-layer";
+import type { SpeciesSurfaceState } from "../../lib/hunt/exploration/surface-request";
 import styles from "./SpeciesLayerLegend.module.css";
 
 /**
@@ -18,14 +17,12 @@ import styles from "./SpeciesLayerLegend.module.css";
  * whole product exists to avoid, so the sentence saying so is not behind the
  * disclosure — it is on the collapsed chip, always visible.
  *
- * Every heat class carries a word and a bar glyph as well as a tint, and the
- * key states the PEER SET, because the class is a zone's rank against the
- * other zones of the same dataset and never a count of animals.
+ * The evidence half describes the species SURFACE drawn under the zones, in
+ * the surface's own words. Zones are never filled with evidence; where a
+ * species has only zone-level figures, the key says there is no fine-grained
+ * surface rather than painting a zone as if the animals stopped at its line.
  */
 
-/* Cold to hot, the order the bar reads in. The bar is painted from
-   `--ng-heat-gradient`, which mirrors `HEAT_RAMP`; these words sit under it. */
-const BANDS: Array<Exclude<OpportunityClass, "LIMITED_DATA">> = ["LOW", "MODERATE", "HIGH", "VERY_HIGH"];
 
 /**
  * What to call a layer, from what it IS rather than from a generic word.
@@ -99,8 +96,7 @@ function useHeatMethodology(speciesId: string | null, wanted: boolean): Methodol
 export default function SpeciesLayerLegend({
   speciesName,
   speciesId,
-  /** How many zones in view hold heat evidence, and how many wear the green outline. */
-  shadedZones,
+  /** How many zones in view wear the green outline. */
   openZones,
   conditionalZones,
   hasEvidence,
@@ -109,11 +105,10 @@ export default function SpeciesLayerLegend({
   speciesName: string;
   /** Used only to ask for the methodology, and only once a hunter opens it. */
   speciesId: string;
-  shadedZones: number;
   openZones: number;
   /** Of those, how many carry the condition indicator. */
   conditionalZones: number;
-  /** Whether this species has certified opportunity evidence ANYWHERE. */
+  /** Whether this species has certified zone-level opportunity evidence anywhere. */
   hasEvidence: boolean;
   /**
    * The distribution surface's own account of itself, when one is drawn.
@@ -123,8 +118,17 @@ export default function SpeciesLayerLegend({
    * — and above all cannot call something "population density" that is a count
    * of birds detected on a survey route (§41B, and the owner's §15).
    */
-  surface?: SurfaceLegendState | null;
+  surface?: SpeciesSurfaceState | null;
 }) {
+  const layers = surface?.outcome === "DRAWN" ? surface.legend?.layers ?? [] : [];
+  /* What the evidence half says on the collapsed chip, from the surface's
+     own state — never a count of zones, because zones carry no evidence. */
+  const evidenceSummary = layers.length
+    ? (layers.length === 1 ? surfaceHeading(layers[0]) : `${layers.length} evidence layers`)
+    : surface?.outcome === "LOADING" ? "loading evidence"
+      : surface?.outcome === "NONE_IN_VIEW" ? "no evidence on this ground"
+        : surface?.outcome === "UNAVAILABLE" ? "evidence unavailable"
+          : "no fine-grained evidence held";
   /* Nothing shaded anywhere is a different statement from nothing shaded HERE,
      and only the first justifies dropping the ramp. `shadedZones` alone cannot
      tell them apart, so the caller passes whether any evidence exists at all. */
@@ -147,14 +151,14 @@ export default function SpeciesLayerLegend({
         aria-label={
           `${speciesName} layer. ${openZones} ${openZones === 1 ? "zone" : "zones"} with a hunt open`
           + `${conditionalZones ? `, ${conditionalZones} of them with conditions` : ""}; `
-          + `${surface?.layers.length ? surface.layers.map((layer) => layer.scaleStatedAs).join(" ") : hasEvidence ? `${shadedZones} with heat evidence` : "no heat evidence held for this species"}. `
+          + `${layers.length ? layers.map((layer) => `${surfaceHeading(layer)}. ${layer.scaleStatedAs}`).join(" ") : evidenceSummary}. `
           + "A zone without a green outline is not closed. Open the full key."
         }
         onClick={() => setOpen((was) => !was)}
       >
         <span className={styles.summaryTitle}>{speciesName} layer</span>
         <span className={styles.summaryCounts}>
-          {openZones} {openZones === 1 ? "zone" : "zones"} open{conditionalZones ? ` · ${conditionalZones} with ${CONDITION_GLYPH}` : ""} · {surface?.layers.length ? (surface.layers.length === 1 ? surfaceHeading(surface.layers[0]) : `${surface.layers.length} evidence layers`) : hasEvidence ? `${shadedZones} with evidence` : "no heat evidence held"}
+          {openZones} {openZones === 1 ? "zone" : "zones"} open{conditionalZones ? ` · ${conditionalZones} with ${CONDITION_GLYPH}` : ""} · {evidenceSummary}
         </span>
         {/* Never behind the disclosure: this is the one sentence that prevents a false closure. */}
         <span className={styles.summaryGuard}>A zone without a green outline is not closed.</span>
@@ -165,7 +169,7 @@ export default function SpeciesLayerLegend({
 
       {open ? (
         <div className={styles.panel} id={panelId}>
-          {surface?.layers.length ? (
+          {surface && surface.legend && layers.length ? (
           <section className={styles.section}>
             <h3 className={styles.sectionTitle}>Where to look for the animal</h3>
             <div className={styles.scale}>
@@ -186,12 +190,12 @@ export default function SpeciesLayerLegend({
             */}
             <p className={styles.noShade}>
               <span className={styles.swatchEmpty} aria-hidden="true" />
-              <span>{surface.emptyMeans}</span>
+              <span>{surface.legend.emptyMeans}</span>
             </p>
             <p className={styles.detail}>
               The faintest shade is ground that WAS surveyed, where the species was not found. That is a finding; ground with no colour is not.
             </p>
-            {surface.layers.map((layer) => (
+            {layers.map((layer) => (
               <div key={layer.id} className={styles.section}>
                 <h4 className={styles.sectionTitle}>{surfaceHeading(layer)}</h4>
                 {/* The authority's own sentence, not a paraphrase of it. */}
@@ -215,37 +219,34 @@ export default function SpeciesLayerLegend({
                 {layer.limitations.map((line) => <p key={line} className={styles.detail}>{line}</p>)}
               </div>
             ))}
-            {surface.refusals.map((line) => <p key={line} className={styles.detail}>{line}</p>)}
+            {surface.legend.refusals.map((line) => <p key={line} className={styles.detail}>{line}</p>)}
           </section>
+          ) : surface?.outcome === "LOADING" ? (
+            <section className={styles.section}>
+              <h3 className={styles.sectionTitle}>Where to look for the animal</h3>
+              <p className={styles.detail}>Loading the evidence for {speciesName.toLowerCase()}…</p>
+            </section>
+          ) : surface?.outcome === "NONE_IN_VIEW" || surface?.outcome === "UNAVAILABLE" ? (
+            <section className={styles.section}>
+              <h3 className={styles.sectionTitle}>Where to look for the animal</h3>
+              <p className={styles.detail}>{surface.message ?? surface.legend?.emptyMeans}</p>
+              {surface.legend?.refusals.map((line) => <p key={line} className={styles.detail}>{line}</p>)}
+            </section>
           ) : hasEvidence ? (
           <section className={styles.section}>
-            <h3 className={styles.sectionTitle}>{SPECIES_LAYER_LEGEND.heatTitle}</h3>
-            {/* A continuous bar, because the map paints a continuous value.
-                The bar carries no meaning on its own: the ends and the band
-                words below it say it in text (§48). */}
-            <div className={styles.scale}>
-              <div className={styles.scaleBar} role="img" aria-label="Heat scale, from lower evidence on the left to higher on the right." />
-              <p className={styles.scaleEnds} aria-hidden="true"><span>Lower</span><span>Higher</span></p>
-              <ul className={styles.bands}>
-                {BANDS.map((band) => (
-                  <li key={band} className={styles.band}>
-                    <span className={styles.bandGlyph} aria-hidden="true">{HEAT_WORDING[band].glyph}</span>
-                    <span>{HEAT_WORDING[band].label}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* NOT_HELD, with zone-level figures. They are real and they are
+                kept — in the zone card and here — but a figure for a whole zone
+                says nothing about where inside it the animals are, so it is
+                never painted as heat (§41B: coarse evidence never modifies the
+                surface). The map stays unshaded, and says why in words. */}
+            <h3 className={styles.sectionTitle}>No fine-grained evidence for {speciesName.toLowerCase()}</h3>
             <p className={styles.noShade}>
               <span className={styles.swatchEmpty} aria-hidden="true" />
-              <span>{HEAT_WORDING.LIMITED_DATA.label} — or none held here. Not a zone with no animals.</span>
+              <span>{surface?.message ?? SPECIES_LAYER_LEGEND.noHeatDetail}</span>
             </p>
-            <p className={styles.detail}>{SPECIES_LAYER_LEGEND.heatDetail}</p>
-            {/* The correction this version exists for, on the face of the key.
-                A hunter who believes the shade follows hunters misreads every
-                crowded unit on the map. */}
-            <p className={styles.detail}>{SPECIES_LAYER_LEGEND.heatEffort}</p>
-            <p className={styles.detail}>{SPECIES_LAYER_LEGEND.heatResolution}</p>
-            <p className={styles.detail}>{SPECIES_LAYER_LEGEND.heatStrength}</p>
+            <p className={styles.detail}>
+              North Ground holds zone-level figures for this species. One figure for a whole zone cannot say where inside it the animals are, so it is not drawn as heat. Unshaded ground is not ground without animals.
+            </p>
 
             <button
               type="button"
@@ -309,7 +310,9 @@ export default function SpeciesLayerLegend({
           ) : (
             <section className={styles.section}>
               <h3 className={styles.sectionTitle}>{SPECIES_LAYER_LEGEND.noHeatTitle}</h3>
-              <p className={styles.detail}>{SPECIES_LAYER_LEGEND.noHeatDetail}</p>
+              {/* The server's own sentence where there is one: it knows whether
+                  the gap is "nothing held" or "held, but not drawable". */}
+              <p className={styles.detail}>{surface?.message ?? SPECIES_LAYER_LEGEND.noHeatDetail}</p>
             </section>
           )}
 
@@ -330,7 +333,7 @@ export default function SpeciesLayerLegend({
             <p className={styles.detail}>{SPECIES_LAYER_LEGEND.conditionDetail}</p>
           </section>
 
-          {hasEvidence ? <p className={styles.detail}>{SPECIES_LAYER_LEGEND.independent}</p> : null}
+          {hasEvidence || layers.length ? <p className={styles.detail}>{SPECIES_LAYER_LEGEND.independent}</p> : null}
         </div>
       ) : null}
     </div>

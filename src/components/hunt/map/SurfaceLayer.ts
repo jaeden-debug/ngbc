@@ -54,6 +54,7 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
          said in words by the legend and the zone card, which are real content.
          A canvas announced as an image would be an unlabelled one. */
       canvas.setAttribute("aria-hidden", "true");
+      canvas.setAttribute("data-species-surface", "");
       this.canvas = canvas;
       this.getPanes()?.mapPane.appendChild(canvas);
     }
@@ -76,6 +77,8 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
       if (!canvas || !projection) return;
       if (!this.surfaces.length) {
         canvas.style.display = "none";
+        canvas.removeAttribute("data-surface-species");
+        canvas.setAttribute("data-surface-painted", "false");
         this.rendered = null;
         return;
       }
@@ -114,6 +117,9 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
     render(width: number, height: number, ne: google.maps.LatLng, sw: google.maps.LatLng) {
       const canvas = this.canvas;
       if (!this.surfaces.length || !canvas) return;
+      /* Measured, not assumed: the browser certification reads this entry to
+         report what one re-render of the field costs on the device. */
+      const started = performance.now();
 
       const latMargin = (ne.lat() - sw.lat()) * MARGIN;
       const lngMargin = (ne.lng() - sw.lng()) * MARGIN;
@@ -148,6 +154,7 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
            showing the last place that was — a stale raster under a new viewport
            is evidence attached to the wrong ground. */
         canvas.style.display = "none";
+        canvas.setAttribute("data-surface-painted", "false");
         this.rendered = rect;
         this.renderedWidthPx = width;
         return;
@@ -169,6 +176,11 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
       context.imageSmoothingEnabled = false;
       for (const surface of plotted) paintPlots(context, surface, rect, canvas.width, canvas.height);
       canvas.style.display = "";
+      /* Read by the browser certification: which species this raster is, and
+         that it was actually painted. Never read by the application. */
+      canvas.setAttribute("data-surface-species", this.surfaces[0].speciesId);
+      canvas.setAttribute("data-surface-painted", "true");
+      try { performance.measure("species-surface-render", { start: started }); } catch { /* measurement is optional */ }
 
       this.rendered = rect;
       this.renderedWidthPx = width;
@@ -196,17 +208,19 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
   return {
     set(surfaces) {
       /*
-       * A SPECIES CHANGE THROWS THE RASTER AWAY. §12: switching from moose to
-       * ruffed grouse must leave no moose hotspot underneath. Keeping the
-       * raster and letting the next pan replace it would do exactly that, and
-       * the stale part would be the part the hunter is not looking at — the
-       * worst possible place for a wrong answer to survive.
+       * NEW DATA IS ALWAYS REDRAWN, and a species change throws the old raster
+       * away first. §12: switching from moose to ruffed grouse must leave no
+       * moose hotspot underneath. And a fresh reply for the SAME species (the
+       * hunter panned past the last box) must be drawn too: comparing only the
+       * species kept the raster sampled from the previous box, so the newly
+       * revealed ground stayed blank until the next big pan.
        */
-      const signature = (list: readonly RenderableSurface[]) => list.map((s) => `${s.speciesId}:${s.id}`).join("|");
-      const changed = signature(overlay.surfaces) !== signature(surfaces);
+      if (surfaces === overlay.surfaces) {
+        overlay.draw();
+        return;
+      }
       overlay.surfaces = surfaces;
-      if (changed) overlay.invalidate();
-      else overlay.draw();
+      overlay.invalidate();
     },
     destroy() {
       overlay.setMap(null);

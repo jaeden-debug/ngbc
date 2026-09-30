@@ -1,7 +1,7 @@
 import { layerById, zoneIdFor } from "../zone-layers.ts";
 import { evidenceProvenance, hasEvidenceForSpecies, heatMethodology, opportunityAcross, opportunityAt, servableDatasets } from "./bundles.ts";
 import { OPPORTUNITY_METHODOLOGY } from "./methodology.ts";
-import { speciesSurfaces } from "./surface.ts";
+import { hasCertifiedSurface, speciesSurfaces } from "./surface.ts";
 
 /**
  * The opportunity endpoints.
@@ -252,6 +252,22 @@ export function createSpeciesSurfaceHandler() {
          here would be false, and 404 would be the wrong word for it. */
       return json({ status: "REQUEST_TOO_LARGE", speciesId, refusals: response.refusals }, 413, NO_STORE);
     }
+    if (!response.surfaces.length && hasCertifiedSurface(speciesId)) {
+      /* The species HAS a surface; it just does not reach this ground. Saying
+         "no evidence is held for this species" here was false — ruffed grouse
+         asked about over Florida answered exactly that. An empty list with the
+         reason is the true answer, and it is not a statement about animals. */
+      return json(
+        {
+          speciesId,
+          surfaces: [],
+          refusals: [],
+          emptyMeans: "This species' surface does not reach this ground: the surveys behind it did not cover it. That is not a finding that the species is absent.",
+        },
+        200,
+        EVIDENCE_CACHE,
+      );
+    }
     if (!response.surfaces.length) {
       return json(
         {
@@ -260,7 +276,7 @@ export function createSpeciesSurfaceHandler() {
           /* Why, rather than nothing: an empty answer and an unheld species are
              different facts, and only one of them is about the animals. */
           message: hasEvidenceForSpecies(speciesId)
-            ? "North Ground holds evidence for this species, but none of it may be drawn as a surface. A figure for a whole management area is not a surface."
+            ? "North Ground holds zone-level evidence for this species, but none of it may be drawn as a surface: a figure for a whole management area is not a surface, and says nothing about where inside it the animals are. Unshaded ground is a gap in what North Ground holds, not a finding about the animals."
             : "No certified evidence is held for this species. That is a gap in what North Ground holds, not a finding about the animals.",
         },
         404,

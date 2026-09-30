@@ -9,6 +9,7 @@ import type { CanonicalId } from "../../lib/content-contract";
 import { contentRepository } from "../../lib/content/repository";
 import type { SpeciesSelectorOption } from "../../lib/hunt/coverage";
 import { hasEvidenceForSpecies } from "../../lib/hunt/intelligence/bundles";
+import { hasCertifiedSurface } from "../../lib/hunt/intelligence/surface";
 import { northAmericaCoverageReport, regulatoryJurisdictionsForSpecies } from "../../lib/hunt/north-america/report";
 import { HUNT_DEFAULT_TIME_ZONE, jurisdictionTodayIso } from "../../lib/hunt/date";
 import { longDayLabel } from "../../lib/hunt/exploration/date-presets";
@@ -175,6 +176,9 @@ export default async function HuntPage({ searchParams }: Props) {
         .map(({ id, nameEn, requiresInput }) => ({ id, name: nameEn, asksQuestion: requiresInput })),
       /* Derived from the committed evidence bundles, never a list kept here. */
       hasOpportunityEvidence: hasEvidenceForSpecies(resource.speciesProfile.speciesId),
+      /* From the surface registry, so a certified surface is reachable without
+         anyone editing a list. */
+      hasSpeciesSurface: hasCertifiedSurface(resource.speciesProfile.speciesId),
     };
   }));
 

@@ -1,0 +1,231 @@
+#!/usr/bin/env node
+/**
+ * Browser certification of the species surface, in a real Hunt.
+ *
+ *   node scripts/certify-species-surface.mjs --base http://localhost:3000
+ *   node scripts/certify-species-surface.mjs --base https://www.northgroundbushcraft.com --shots out/
+ *
+ * WHY THIS EXISTS. On 2026-09-29 production served all 25 certified surfaces
+ * with 200s, every backend test was green, and no Hunt client ever requested
+ * one: the renderer was on an unmerged branch. Endpoint tests cannot see that
+ * defect. This walks what a hunter does — Find game, choose a species — and
+ * fails unless the browser REQUESTED the surface, RECEIVED it, and PAINTED it.
+ *
+ * Checks, each reported by name:
+ *   ruffed grouse   request 200 with a CONTINUOUS surface; the surface element
+ *                   is visible, belongs to grouse, and has painted pixels
+ *   switch          wild turkey replaces grouse; grouse is gone at once
+ *   mallard         both kinds arrive (SAMPLE_PLOT + MODELLED_RASTER)
+ *   no surface      moose: nothing painted, and the legend says why in words
+ *   zone card       (only where zones draw) tap a zone, close it: species,
+ *                   explore, date and surface persist
+ *   markers         any `!` condition marker is a focusable control
+ *
+ * Works against a local build (ZoneCanvas fallback without a Maps key) and
+ * against a Google-map deployment. Exit code 1 on any failed check.
+ */
+import { mkdirSync } from "node:fs";
+import { join } from "node:path";
+import { chromium } from "playwright";
+
+const args = process.argv.slice(2);
+const flag = (name, fallback) => {
+  const at = args.indexOf(`--${name}`);
+  return at >= 0 ? args[at + 1] : fallback;
+};
+const base = (flag("base", "http://localhost:3000")).replace(/\/$/, "");
+const shots = flag("shots", null);
+const viewports = (flag("viewports", "390x844,1280x800")).split(",").map((v) => v.split("x").map(Number));
+const executablePath = flag("chromium", process.env.CHROMIUM_PATH || undefined);
+
+const results = [];
+const record = (viewport, name, pass, detail) => {
+  results.push({ viewport, name, pass, detail });
+  console.log(`${pass ? "PASS" : "FAIL"} [${viewport}] ${name}${detail ? ` — ${detail}` : ""}`);
+};
+
+/** Painted pixels of the surface element, read from the element itself. */
+async function paintedFraction(page) {
+  return page.evaluate(async () => {
+    const el = document.querySelector("[data-species-surface]");
+    if (!el) return { present: false };
+    const visible = getComputedStyle(el).display !== "none" && el.getAttribute("data-surface-painted") === "true";
+    let canvas = el;
+    if (el.tagName.toLowerCase() === "image") {
+      const href = el.getAttribute("href");
+      const img = new Image();
+      img.src = href;
+      await img.decode();
+      canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      canvas.getContext("2d").drawImage(img, 0, 0);
+    }
+    if (!(canvas instanceof HTMLCanvasElement) || !canvas.width) return { present: true, visible, fraction: 0 };
+    const { data } = canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height);
+    let painted = 0;
+    const hues = { blue: 0, cyan: 0, green: 0, yellow: 0, orange: 0, red: 0 };
+    for (let i = 0; i < data.length; i += 4) {
+      if (data[i + 3] < 8) continue;
+      painted += 1;
+      const [r, g, b] = [data[i], data[i + 1], data[i + 2]];
+      if (r > 200 && g < 90) hues.red += 1;
+      else if (r > 200 && g < 170) hues.orange += 1;
+      else if (r > 180 && g > 170) hues.yellow += 1;
+      else if (g > 150 && b > 150) hues.cyan += 1;
+      else if (g > b && g > r) hues.green += 1;
+      else hues.blue += 1;
+    }
+    return {
+      present: true,
+      visible,
+      species: el.getAttribute("data-surface-species"),
+      fraction: painted / (data.length / 4),
+      hues,
+    };
+  });
+}
+
+async function chooseSpecies(page, name) {
+  await page.click('button[aria-label^="Find game"]');
+  await page.getByRole("button", { name: new RegExp(`^${name}`, "i") }).first().click({ timeout: 15_000 });
+}
+
+async function legendText(page) {
+  return page.evaluate(() => {
+    const button = [...document.querySelectorAll("button[aria-controls][aria-expanded]")]
+      .find((el) => / layer\. /.test(el.getAttribute("aria-label") ?? ""));
+    return button?.getAttribute("aria-label") ?? "";
+  });
+}
+
+async function run(width, height) {
+  const tag = `${width}x${height}`;
+  const browser = await chromium.launch(executablePath ? { executablePath } : {});
+  const context = await browser.newContext({
+    viewport: { width, height },
+    deviceScaleFactor: width < 600 ? 2 : 1,
+    isMobile: width < 600,
+    hasTouch: width < 600,
+  });
+  const page = await context.newPage();
+  const surfaceReplies = [];
+  page.on("response", async (response) => {
+    const url = response.url();
+    if (!url.includes("/api/hunt/species-surface")) return;
+    const started = response.request().timing().startTime;
+    let body = null;
+    try { body = await response.json(); } catch { /* not JSON */ }
+    const size = Number(response.headers()["content-length"] ?? 0) || (await response.body().catch(() => Buffer.alloc(0))).length;
+    surfaceReplies.push({
+      species: new URL(url).searchParams.get("speciesId"),
+      status: response.status(),
+      kinds: (body?.surfaces ?? []).map((s) => `${s.geometryKind}:${s.continuity}`),
+      bytes: size,
+      at: started,
+    });
+  });
+  const shot = async (name) => {
+    if (!shots) return;
+    mkdirSync(shots, { recursive: true });
+    await page.screenshot({ path: join(shots, `${tag}-${name}.png`) });
+  };
+
+  await page.goto(`${base}/hunt`, { waitUntil: "networkidle", timeout: 120_000 });
+  await page.waitForTimeout(1500);
+
+  /* 1. Ruffed grouse — the acceptance species. */
+  const t0 = Date.now();
+  await chooseSpecies(page, "Ruffed grouse");
+  await page.waitForSelector('[data-species-surface][data-surface-species="species:ruffed-grouse"][data-surface-painted="true"]', { timeout: 20_000 }).catch(() => null);
+  const drawnMs = Date.now() - t0;
+  await page.waitForTimeout(800);
+  const grouseReply = surfaceReplies.find((r) => r.species === "species:ruffed-grouse");
+  record(tag, "ruffed grouse: surface requested", Boolean(grouseReply), grouseReply ? `${grouseReply.status}, ${grouseReply.bytes} B` : "no request was made");
+  record(tag, "ruffed grouse: continuous raster received", grouseReply?.status === 200 && grouseReply.kinds.includes("MODELLED_RASTER:CONTINUOUS"), grouseReply?.kinds.join(","));
+  const grouse = await paintedFraction(page);
+  record(tag, "ruffed grouse: surface painted and visible", grouse.present && grouse.visible && grouse.species === "species:ruffed-grouse" && grouse.fraction > 0.05,
+    `painted ${(100 * (grouse.fraction ?? 0)).toFixed(1)}% in ${drawnMs} ms; hues ${JSON.stringify(grouse.hues)}`);
+  const renders = await page.evaluate(() => performance.getEntriesByName("species-surface-render").map((e) => Math.round(e.duration)));
+  if (renders.length) console.log(`     [${tag}] surface render ms: ${renders.join(", ")}`);
+  record(tag, "ruffed grouse: URL carries species and explore", /species=ruffed-grouse/.test(page.url()) && /explore=1/.test(page.url()), page.url());
+  record(tag, "ruffed grouse: legend present", /Ruffed grouse layer\./i.test(await legendText(page)), (await legendText(page)).slice(0, 160));
+  await shot("1-ruffed-grouse");
+
+  /* 2. Condition markers stay real controls. */
+  const markers = await page.evaluate(() => [...document.querySelectorAll("button")]
+    .filter((b) => b.textContent?.trim() === "!").map((b) => ({ label: b.getAttribute("aria-label"), focusable: b.tabIndex >= 0 })));
+  record(tag, "condition markers are focusable controls", markers.every((m) => m.focusable && m.label), `${markers.length} markers`);
+
+  /* 3. Zone card over the layer: tap a zone, close it, the layer persists. */
+  const dateBefore = new URL(page.url()).searchParams.get("date");
+  const zones = await page.evaluate(() => document.querySelectorAll("[data-zone-key]").length);
+  const map = await page.$("[data-hunt-map], .gm-style, svg");
+  if (map) {
+    const box = await page.evaluate(() => {
+      const el = document.querySelector(".gm-style") ?? document.querySelector("svg[data-zone-canvas]") ?? document.querySelector("svg");
+      const r = el?.getBoundingClientRect();
+      return r ? { x: r.x + r.width / 2, y: r.y + Math.min(r.height * 0.35, 260) } : null;
+    });
+    if (box) {
+      await page.mouse.click(box.x, box.y);
+      const closeButton = page.locator('button[aria-label^="Close "]:not([aria-label="Close menu"])').first();
+      const opened = await closeButton.waitFor({ timeout: 8000 }).then(() => true).catch(() => false);
+      if (opened) {
+        await shot("2-zone-card");
+        const heading = await page.evaluate(() => [...document.querySelectorAll("h2")].map((h) => h.textContent).join(" | "));
+        record(tag, "zone card opens over the layer", true, heading.slice(0, 120));
+        await closeButton.click();
+        await page.waitForTimeout(1500);
+        const after = await paintedFraction(page);
+        const url = page.url();
+        record(tag, "closing the zone card keeps species, explore, date and surface",
+          /species=ruffed-grouse/.test(url) && /explore=1/.test(url) && after.visible && after.species === "species:ruffed-grouse"
+            && (dateBefore === null || new URL(url).searchParams.get("date") === dateBefore),
+          url);
+        await shot("3-after-close");
+      } else {
+        record(tag, "zone card opens over the layer", zones === 0, zones === 0 ? "no zones drawn here (provider unreachable) — skipped" : "tap did not open a zone card");
+      }
+    }
+  }
+
+  /* 4. Switch to wild turkey: grouse disappears at once. */
+  await chooseSpecies(page, "Wild turkey");
+  const immediately = await paintedFraction(page);
+  record(tag, "switch: grouse heat gone immediately", immediately.species !== "species:ruffed-grouse" || !immediately.visible, `element species=${immediately.species}`);
+  await page.waitForSelector('[data-species-surface][data-surface-species="species:wild-turkey"][data-surface-painted="true"]', { timeout: 20_000 }).catch(() => null);
+  const turkey = await paintedFraction(page);
+  record(tag, "switch: wild turkey painted", turkey.visible && turkey.species === "species:wild-turkey" && turkey.fraction > 0.02, `${(100 * (turkey.fraction ?? 0)).toFixed(1)}%`);
+  await shot("4-wild-turkey");
+
+  /* 5. Mallard: both kinds of evidence. */
+  await chooseSpecies(page, "Mallard");
+  await page.waitForSelector('[data-species-surface][data-surface-species="species:mallard"][data-surface-painted="true"]', { timeout: 20_000 }).catch(() => null);
+  await page.waitForTimeout(800);
+  const mallardKinds = [...new Set(surfaceReplies.filter((r) => r.species === "species:mallard").flatMap((r) => r.kinds))];
+  record(tag, "mallard: plots and field both arrive", mallardKinds.includes("SAMPLE_PLOT:DISCRETE") && mallardKinds.includes("MODELLED_RASTER:CONTINUOUS"), mallardKinds.join(","));
+  const mallard = await paintedFraction(page);
+  record(tag, "mallard: painted", mallard.visible && mallard.species === "species:mallard", `${(100 * (mallard.fraction ?? 0)).toFixed(1)}%`);
+  await shot("5-mallard");
+
+  /* 6. A species with no surface: nothing painted, and words say why. */
+  await chooseSpecies(page, "Moose");
+  await page.waitForTimeout(2500);
+  const moose = await paintedFraction(page);
+  const mooseLegend = await legendText(page);
+  record(tag, "no surface: previous heat gone", !moose.present || !moose.visible || moose.species !== "species:mallard", `element species=${moose.species ?? "none"}`);
+  record(tag, "no surface: legend says no fine-grained evidence", /no fine-grained evidence held|no evidence on this ground/i.test(mooseLegend), mooseLegend.slice(0, 160));
+  await shot("6-moose");
+
+  await browser.close();
+  return surfaceReplies;
+}
+
+const all = [];
+for (const [width, height] of viewports) all.push(...await run(width, height));
+const sizes = all.filter((r) => r.status === 200).map((r) => r.bytes).sort((a, b) => a - b);
+console.log(`\nsurface replies: ${all.length}; 200 sizes (bytes, transferred): min ${sizes[0] ?? 0}, median ${sizes[Math.floor(sizes.length / 2)] ?? 0}, max ${sizes.at(-1) ?? 0}`);
+const failed = results.filter((r) => !r.pass);
+console.log(`${results.length - failed.length}/${results.length} checks passed against ${base}`);
+process.exit(failed.length ? 1 : 0);

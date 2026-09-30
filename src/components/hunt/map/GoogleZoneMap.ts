@@ -9,8 +9,7 @@ import {
 import { mapLabelFor } from "../../../lib/hunt/exploration/map-labels";
 import type { RenderableSurface } from "../../../lib/hunt/exploration/surface-paint";
 import { createSurfaceLayer, type SurfaceLayerHandle } from "./SurfaceLayer";
-import type { ZoneHeat } from "../../../lib/hunt/exploration/species-layer";
-import { CONDITION_GLYPH, conditionMarkerLabel, heatPaintFor, zoneHasConditions, zoneIsGreen } from "../../../lib/hunt/exploration/species-layer";
+import { CONDITION_GLYPH, conditionMarkerLabel, zoneHasConditions, zoneIsGreen } from "../../../lib/hunt/exploration/species-layer";
 import { EXPLORATION_WORDING, type ZoneSpeciesAnswer } from "../../../lib/hunt/exploration/states";
 import { layerById } from "../../../lib/hunt/zone-layers";
 import { BASEMAP_STYLE } from "./google-loader";
@@ -49,12 +48,6 @@ export interface ZoneStyleState {
   huntKey: string | null;
   zoneAnswers: ReadonlyMap<string, ZoneSpeciesAnswer> | null;
   /**
-   * The species layer's heat per zone — the continuous rank, its band, how well
-   * it is evidenced and how finely it may be drawn. A zone that is ABSENT holds
-   * no certified evidence and takes no heat; it is never given a low value.
-   */
-  heat: ReadonlyMap<string, ZoneHeat> | null;
-  /**
    * Whether the species surface is being drawn underneath.
    *
    * When it is, the zone interiors go transparent: §41A's stack is an animal
@@ -81,17 +74,17 @@ function zoneOptions(
   coverage: string,
   flags: {
     jurisdictionId?: string; selected: boolean; hunt: boolean; hovered: boolean;
-    dimmed: boolean; answer?: ZoneSpeciesAnswer; heat?: ZoneHeat; band: ZoomBand; emphasis: Emphasis;
+    dimmed: boolean; answer?: ZoneSpeciesAnswer; band: ZoomBand; emphasis: Emphasis;
     surfaceOn: boolean;
   },
 ): google.maps.PolygonOptions {
   /*
-   * THE ZONE FILL IS THE OLD CHOROPLETH, and it is switched off wherever the
-   * real surface exists. Heat as a polygon fill said the animals change where
-   * the regulator drew a line; the surface underneath says where they actually
-   * are. Leaving both on would draw the wrong answer over the right one.
+   * A ZONE IS NEVER FILLED WITH EVIDENCE. Heat as a polygon fill said the
+   * animals change where the regulator drew a line; the surface underneath says
+   * where they actually are, from its own geography. The zone keeps only its
+   * quiet tone — and none at all while the surface is drawn, so the interior is
+   * tracing paper over the evidence.
    */
-  const heat = flags.surfaceOn ? null : heatPaintFor(flags.heat);
   return zoneStyle({
     coverage,
     jurisdictionId: flags.jurisdictionId,
@@ -102,7 +95,6 @@ function zoneOptions(
     seasonOpen: zoneIsGreen(flags.answer),
     band: flags.band,
     emphasis: flags.emphasis,
-    ...(heat ? { heat } : {}),
     ...(flags.surfaceOn ? { transparentInterior: true } : {}),
   });
 }
@@ -141,7 +133,7 @@ export class GoogleZoneMap {
   private readonly huntPin: PointMarkerHandle;
   private readonly previewPin: PointMarkerHandle;
   private readonly surfaceLayer: SurfaceLayerHandle;
-  private style: ZoneStyleState = { selectedKey: null, huntKey: null, zoneAnswers: null, heat: null, surfaceOn: false, emphasis: "standard" };
+  private style: ZoneStyleState = { selectedKey: null, huntKey: null, zoneAnswers: null, surfaceOn: false, emphasis: "standard" };
   private hoverKey: string | null = null;
   private band: ZoomBand = "national";
   private zonesVisible = true;
@@ -342,7 +334,7 @@ export class GoogleZoneMap {
 
   /** Apply each polygon's style, touching only the ones that changed. */
   private restyle(): void {
-    const { selectedKey, huntKey, zoneAnswers, heat, surfaceOn, emphasis } = this.style;
+    const { selectedKey, huntKey, zoneAnswers, surfaceOn, emphasis } = this.style;
     const band = zoomBand(this.map.getZoom() ?? 4);
     for (const [key, shape] of this.shapes) {
       const selected = key === selectedKey;
@@ -357,7 +349,6 @@ export class GoogleZoneMap {
         // A chosen zone puts its neighbours in a quieter plane, boundaries intact.
         dimmed: Boolean(selectedKey) && !selected && key !== huntKey,
         answer,
-        heat: heat?.get(key),
         band,
         emphasis,
         surfaceOn,

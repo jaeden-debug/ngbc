@@ -338,6 +338,21 @@ export function surfaceRegistry(): SurfaceRegistry {
   return registry;
 }
 
+/**
+ * Whether a species has a certified surface ANYWHERE, from the registry and
+ * the servable plot datasets — never from parsing the 18 MB of artifacts, so a
+ * page render can ask it for every species.
+ *
+ * It decides whether the species layer can be REACHED. Twice the repository has
+ * shipped evidence no code path could get to; a species whose only evidence is
+ * a surface was one of them, because the Find game list asked about rules and
+ * zone evidence and never about this.
+ */
+export function hasCertifiedSurface(speciesId: string): boolean {
+  if (registry.surfaces.some((entry) => entry.speciesId === speciesId)) return true;
+  return servableDatasets().some((dataset) => dataset.speciesId === speciesId && dataset.renderKind === "SAMPLE_PLOT");
+}
+
 interface RasterArtifact {
   id: string;
   speciesId: string;
