@@ -507,7 +507,7 @@
       "authority": {
         "id": "authority:us-ia-dnr",
         "name": "Iowa Department of Natural Resources",
-        "url": "https://www.iowadnr.gov/things-to-do/hunting-trapping"
+        "url": "https://www.iowadnr.gov/things-do/hunting-trapping"
       },
       "managementGeographies": "Zone/County",
       "officialSourceUrl": "https://www.iowadnr.gov/things-do/hunting-trapping/hunting-regulations-laws",
@@ -750,10 +750,10 @@
       "authority": {
         "id": "authority:us-la-wlf",
         "name": "Louisiana Department of Wildlife and Fisheries",
-        "url": "https://www.wlf.louisiana.gov/page/hunting"
+        "url": "https://www.wlf.louisiana.gov/go-hunting"
       },
       "managementGeographies": "Area/Wildlife Management Area",
-      "officialSourceUrl": "https://www.wlf.louisiana.gov/page/hunting",
+      "officialSourceUrl": "https://www.wlf.louisiana.gov/go-hunting",
       "research": {
         "depth": "NATIONAL_DISCOVERY",
         "gisStatus": "NOT_CERTIFIED",
@@ -770,7 +770,7 @@
           "id": "source:us-la-hunting",
           "scope": "STATE_OFFICIAL_HUB",
           "title": "Louisiana Hunting",
-          "url": "https://www.wlf.louisiana.gov/page/hunting",
+          "url": "https://www.wlf.louisiana.gov/go-hunting",
           "legalStanding": "Official discovery hub; controlling annual artifact not certified",
           "licenceStatus": "UNRESOLVED",
           "verificationStatus": "DISCOVERED"
@@ -1527,7 +1527,7 @@
       "authority": {
         "id": "authority:us-or-odfw",
         "name": "Oregon Department of Fish and Wildlife",
-        "url": "https://myodfw.com/hunting"
+        "url": "https://myodfw.com/big-game-hunting"
       },
       "managementGeographies": "Wildlife Management Unit",
       "officialSourceUrl": "https://myodfw.com/sites/default/files/2025-11/26_BG_regs.pdf",
@@ -1800,7 +1800,7 @@
       "authority": {
         "id": "authority:us-ut-dwr",
         "name": "Utah Division of Wildlife Resources",
-        "url": "https://wildlife.utah.gov/hunting.html"
+        "url": "https://wildlife.utah.gov/hunting"
       },
       "managementGeographies": "Species hunt units; limited-entry and antlerless boundaries; CWMUs; extended-archery areas",
       "officialSourceUrl": "https://wildlife.utah.gov/guidebooks",

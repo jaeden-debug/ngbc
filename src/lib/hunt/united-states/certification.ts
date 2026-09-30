@@ -367,6 +367,17 @@ type MapLicenceFinding = {
    * that otherwise gets reported as a terms page.
    */
   theTermsPageThatReturns200AndDoesNotExist?: { finding: string; provenTwoWays: string; andOnePageIsGenuinelyUnread?: string };
+  /**
+   * The rules host serves a certificate chain some clients reject.
+   *
+   * NOT a blocker, and recorded so nobody files it as one. Mississippi omits its
+   * intermediate certificate: Node's fetch refuses it while curl and browsers
+   * accept the same URL with HTTP 200 and 268,866 bytes. Distinct from Arizona,
+   * which serves a certificate EXPIRED since 2022 that no client should accept.
+   * The first run of `scripts/check-us-source-urls.mjs` reported Mississippi as
+   * unreachable, because `fetch` calls every transport failure "fetch failed".
+   */
+  rulesHostTlsProblem?: { state: "INCOMPLETE_CERTIFICATE_CHAIN"; finding: string; whyItIsNotRecordedAsABLOCKER: string; howItDiffersFromArizona: string; consequenceForIngestion: string };
   /** A permissive licence attached to the wrong object — a Hub site application rather than a dataset. */
   theHubSiteLicenceIsNotTheDatasetsLicence?: { statedAs: string; finding: string; whatItIsEvidenceOf: string; andOneLicenceFieldIsACurrencyWarning?: string };
   /** The geometry North Ground needs has a different publisher, with its own terms. */

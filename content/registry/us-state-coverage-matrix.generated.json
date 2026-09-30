@@ -831,7 +831,7 @@
       "authority": {
         "id": "authority:us-ia-dnr",
         "name": "Iowa Department of Natural Resources",
-        "url": "https://www.iowadnr.gov/things-to-do/hunting-trapping"
+        "url": "https://www.iowadnr.gov/things-do/hunting-trapping"
       },
       "regulationsSource": {
         "id": "source:us-ia-hunting",
@@ -1577,13 +1577,13 @@
       "authority": {
         "id": "authority:us-la-wlf",
         "name": "Louisiana Department of Wildlife and Fisheries",
-        "url": "https://www.wlf.louisiana.gov/page/hunting"
+        "url": "https://www.wlf.louisiana.gov/go-hunting"
       },
       "regulationsSource": {
         "id": "source:us-la-hunting",
         "scope": "STATE_OFFICIAL_HUB",
         "title": "Louisiana Hunting",
-        "url": "https://www.wlf.louisiana.gov/page/hunting",
+        "url": "https://www.wlf.louisiana.gov/go-hunting",
         "legalStanding": "Official discovery hub; controlling annual artifact not certified",
         "licenceStatus": "UNRESOLVED",
         "verificationStatus": "DISCOVERED"
@@ -2834,7 +2834,7 @@
       "authority": {
         "id": "authority:us-or-odfw",
         "name": "Oregon Department of Fish and Wildlife",
-        "url": "https://myodfw.com/hunting"
+        "url": "https://myodfw.com/big-game-hunting"
       },
       "regulationsSource": {
         "id": "source:us-or-hunting",
@@ -3253,7 +3253,7 @@
       "authority": {
         "id": "authority:us-ut-dwr",
         "name": "Utah Division of Wildlife Resources",
-        "url": "https://wildlife.utah.gov/hunting.html"
+        "url": "https://wildlife.utah.gov/hunting"
       },
       "regulationsSource": {
         "id": "source:us-ut-hunting",
