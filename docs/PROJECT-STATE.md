@@ -486,13 +486,21 @@ Read it with its two standing caveats, both declared in the registry's
 - **Prince Edward Island** is certified on a provincial outline, because it
   publishes no units to certify (below).
 
-`coreGameComplete` NOT met (**5 of 11** — British Columbia landed 2026-09-23). `migratoryComplete` NOT met (no federal
+`coreGameComplete` NOT met (**8 of 11** — Nova Scotia, Newfoundland and Labrador and New Brunswick all landed
+2026-09-30, after British Columbia on 2026-09-23). `migratoryComplete` NOT met (no federal
 rules). `coverageAudited` MET — every jurisdiction declares its own gaps, so
 what is missing is intentionally UNKNOWN rather than accidentally absent.
 
-**Drawing every boundary in Canada is not covering Canada.** Six of the eleven
-hold no certified rule, so every species query there is UNKNOWN. The next front
-is rules, jurisdiction by jurisdiction.
+**Drawing every boundary in Canada is not covering Canada.** THREE of the eleven
+hold no certified rule — Saskatchewan, Prince Edward Island and Yukon — so every
+species query there is UNKNOWN. It was six on the morning of 2026-09-30. The next
+front is still rules, jurisdiction by jurisdiction, and the three that remain are
+each blocked on a different thing rather than on effort: Saskatchewan's geography
+is live-service only and its seasons instrument is under investigation, Prince
+Edward Island's 11-page consolidation contains no season dates at all and the
+instrument that carries them is unlocated, and Yukon's legislation is behind a
+Cloudflare challenge on all three of its hosts while its data hosts answer
+normally.
 
 #### Prince Edward Island: the province IS the hunting geography (2026-09-23)
 
@@ -3871,3 +3879,250 @@ findings**, and calling both ROW_SHAPE hid the larger behind the smaller:
 Alberta publishes minimum total counts with no surveyed area, so 21 rows are
 read perfectly and the authority published no density. Reporting them as parse
 failures invited someone to fix an extractor that was working.
+
+---
+
+## Atlantic Canada And New Brunswick Answer — And Nova Scotia Shipped Broken First (2026-09-30)
+
+*Recorded by the Canada regulatory lane. Landed as the Nova Scotia bundle, its
+fix, Newfoundland and Labrador, and New Brunswick.*
+
+Three jurisdictions went from certified geography and zero rules to answering, in
+one day: **Nova Scotia** (11 rules, 8 species), **Newfoundland and Labrador** (13
+rules, 3 species, 100 areas) and **New Brunswick** (15 rules, 11 species, 27
+zones). `coreGameComplete` moved 5 of 11 → 8 of 11; certified rules 556 → 595;
+species 12 → 19. Jurisdictions with geography and no rules: 6 → 3.
+
+### Nova Scotia answered CLOSED everywhere, in production, and eleven tests passed over it
+
+The most important thing in this section is the failure, not the coverage.
+
+The Nova Scotia bundle landed and **answered CLOSED for every species in every
+zone**, including deep inside seasons it encoded correctly. A hunter in Deer
+Management Zone 104 on 15 November was told deer hunting was closed, with the
+Wildlife Act quoted underneath as the authority for it.
+
+    as-shipped shape  -> CLOSED
+    fixed shape       -> CONDITIONAL
+
+**The cause.** `areaOf` resolves a point's zone id to an authority IDENTIFIER
+through the bundle's `units`, and `appliesInWorld` matches that identifier against
+a rule's `include.ghas`. The bundle held zone ids in both, and `units` as a bare
+array of strings rather than `{identifier, zoneId}` pairs — so `unit.zoneId` was
+undefined, `areaOf` returned null for every point in the province, and not one of
+eleven rules applied. Three required rule fields (`notes`, `disputes`,
+`sourceVersion`) were also absent and crashed the engine the moment the geography
+started matching.
+
+**Why nothing caught it.** All eleven Nova Scotia tests passed, and all eleven read
+the BUNDLE — windows, closures, conditions, negative controls. Not one asked the
+ENGINE for an answer. **A test that asserts the data you just typed cannot fail,
+whatever the data says.** TypeScript could not help either: a bundle is JSON loaded
+with an import assertion and cast through `as unknown as`, so nothing checks its
+shape between the producer and the hunter.
+
+Two guards now exist, and both have positive controls so they cannot pass by
+covering nothing:
+
+- **`src/lib/hunt/regulatory/engine-answers-somewhere.test.ts`** — for every
+  conditional bundle in `content/regulatory/`, a real point in a real area on the
+  MIDPOINT of a real window must not answer CLOSED. Reproducing the shipped shape
+  in memory makes it fail; the fixed shape passes. A bundle neither driven there
+  nor named as evaluated elsewhere fails the wiring check.
+- **`src/lib/hunt/regulatory/bundle-condition-provenance.test.ts`** — a second
+  defect in the same bundle. All ten Nova Scotia conditions carried `citation`
+  where the contract says `sourceId` and `sourceSection`, so every condition
+  reaching a hunter — a licence requirement, a bag restriction, the Sunday
+  prohibition — had BOTH provenance fields undefined, which is exactly what
+  `condition.ts` says the design exists to prevent. Swept all six bundles: Nova
+  Scotia was the only one, 10 of 10. The sweep also removed a bare top-level
+  `contentHash` that nothing verified and no permitted snapshot could verify
+  against, which `source-rights.ts` already forbids.
+
+### Two reporting defects the same work exposed
+
+- **`unitsDeclaredClosed` counted only closure by SILENCE.** Newfoundland's six
+  closed caribou areas reported as zero closed, and so did Nova Scotia's
+  province-wide moose closure — which now reads 12 covered / 12 closed. A closure
+  the authority states outright is the most useful thing a coverage report can
+  show. `conditionalCoverage` now returns `unitsDeclaredClosedByRule` separately
+  and the registry sums the two; they cannot double-count, because a unit closed
+  by an explicit rule is a unit the rules reach.
+- **One unit count per jurisdiction is wrong wherever species have separate
+  geographies.** Newfoundland manages each big-game species in its own areas — 74
+  moose, 19 caribou, 7 black bear, 100 polygons over the same ground — so a single
+  denominator reported moose CLOSED in 26 units that are caribou and bear areas,
+  and caribou CLOSED in 81 that are not caribou areas at all. Closures no hunter
+  could ever be shown, because the layers are species-scoped. `conditionalCoverage`
+  now honours `officialUnitCountBySpecies`; §8 requires capability reporting to
+  measure deliverable answers.
+
+### Newfoundland and Labrador — the seasons are in ORDERS, not in a regulation
+
+The Wild Life Regulations (CNLR 1156/96) carry no dates at all. s. 38 delegates
+them to ministerial order, s. 39(1) makes hunting lawful only inside an order's
+season, and **s. 89, "Closed season except by order", reads "In relation to any
+wild life species that is not named in an order made under these regulations,
+there is no open season."** So the bundle is built from the annual **Open Seasons
+Hunting and Trapping Order, 2026-2027 (NLR 43/26**, filed 7 August 2026, marked
+"This is an official version") for the dates, and three standing species orders
+for the areas. A new licence year is a new Order.
+
+It is genuinely two answers. Island moose closes 31 December; Labrador moose runs
+to 14 March. Labrador black bear opens 10 August against the Island's 12
+September. Caribou has four Island windows and, by declaration for conservation in
+s. 8, **no Labrador season at all**. The Island/Labrador split was derived from the
+Moose Hunting Order's own wording for each of its 76 named areas — Schedule B's
+entries open "All that area of Labrador" — rather than from a numeric range,
+because the ranges interleave (Labrador is 48-60 AND 84-96) and **area 51 is
+"Baikie Lake" in Labrador in the Order while the province's own map service calls
+the same area "Grand Falls"**, which reads as an Island town.
+
+Findings recorded rather than smoothed over:
+
+- **Six caribou areas are closed and the department's guide names three.** 63, 65
+  and 69 are in the guide; 73, 74 and 75 are equally unnamed by the Order and
+  equally tagged CLOSED by the province's map. A hunter reading the guide's closed
+  list would infer three open areas that are not.
+- **A GIS attribute contradicted a filed regulation.** Caribou area 071 is tagged
+  `status_ope: CLOSED` in the service while NLR 43/26 opens it 12 September to 30
+  November and the guide prints the same dates. The Order is the law; the attribute
+  is stale administrative metadata. **If a GIS attribute is ever used as a legality
+  input anywhere, that is a bug.**
+- **Black bear area 200 is not a management area in law.** The Order's Schedule
+  describes 201-206 only, all on the Island; 200 exists solely in the map service,
+  named "Labrador". It answers correctly because s. 6 sets the Labrador season for
+  Labrador as a whole — but `officialNamePrefix` renders it "Black Bear Management
+  Area 200", asserting a legal object no order creates. §41A zone-presentation
+  defect, open: `zone-presentation.ts` needs a row naming it "Labrador".
+- **Moose areas 100 and 101** are 3 km Trans-Canada Highway buffer corridors that
+  OVERLAP the numbered areas, with no geometry from the province and its own note
+  that "MRZ maps are for general reference purposes only". The numbered area's
+  answer is still right; the MRZ licence opportunity is what is missing.
+- **Gros Morne and Terra Nova run their own moose hunts** in park sub-areas ("2E:
+  Zone 1" to "2E: Zone 4", "28A") the provincial order does not describe, with 90
+  licences from Parks Canada. The province quarantines both park polygons, so no
+  zone resolves there and **nothing may read as saying moose is closed inside a
+  park**.
+- **Legal hours are Island-only, deliberately.** The rule is province-wide and
+  certain (s. 42(2) inverted), and unlike Nova Scotia the province defines sunrise
+  nowhere, so our astronomy is the right instrument. The CLOCK is not certain:
+  Labrador keeps two — most of it Atlantic Time, a southeastern coastal strip
+  Newfoundland Time — and where that line runs is not certified. Thirty minutes
+  wrong at both ends puts a hunter shooting before it was lawful, so Labrador
+  states the rule and declines the window.
+
+The three NL layers also carried a stale authority name, "Department of Fisheries,
+Forestry and Agriculture". The Order is signed by the Minister of **Forestry,
+Agriculture and Lands** and the guide says the same throughout. Fixed; worth
+sweeping the other jurisdictions for the same thing.
+
+### New Brunswick — standing rules, so no annual ingest
+
+Every window in Hunting Regulation s. 11(1) ends in the word **"annually"** and is
+written as an ordinal over weekdays, and 94-47 s. 2 defines "moose season", with
+reference to any year, as the Tuesday to Saturday of the last full week of
+September. The regulation is standing law: the dates are DERIVED by
+`scripts/nb-dates.mjs` and both forms are stored, so a bundle for 2027 is one
+constant.
+
+"The last full week of September" does not say where a week begins, and three
+provisions turn on it. The derivation computes it under BOTH conventions and
+THROWS if the Tuesday, the Saturday or the preceding Saturday differ. For 2026 and
+2027 they agree — a checked fact, not an assumption.
+
+- **Deer is three answers by zone**, and this is the first Canadian bundle where
+  the ZONE changes a season's LENGTH rather than only its conditions. s. 11.1(1)
+  closes zones 4, 5 and 9 to antlered deer entirely; s. 11.1(3) gives zones 1, 2
+  and 3 antlered only and five consecutive weeks instead of eight; every other
+  zone has eight.
+- **The crossbow is INCLUDED in the opening weeks** (s. 11.2), the opposite of
+  Newfoundland, whose pre-season is a long bow or compound bow and expressly not a
+  crossbow. Anyone who assumes archery means one thing across provinces encodes one
+  of the two wrongly; the falsification moves the crossbow between them.
+- **Antlerless deer is not answered in either direction.** Its season is certain —
+  the same eight weeks — but s. 3.1(4.1) lets the Minister set a quota of ZERO for
+  a zone, which closes it without amending any regulation, and the quotas are
+  published nowhere. The closure in zones 4, 5 and 9 accordingly reads "closed to
+  antlered deer", not "closed". Same for the moose quota per zone.
+- **The muzzle-loading week is not claimed.** s. 3.11(1) reserves the week
+  beginning the seventh Monday after the first Monday in October to muzzle-loaders,
+  and only in the zones where antlerless deer may be hunted — the same unpublished
+  quota. So every deer rule is certified to 22 November rather than to the 29th the
+  eight-week grant reaches.
+- **Hunter orange is a regulation with a measurable minimum.** N.B. Reg. 81-58
+  s. 3(1): a solid hunter orange hat AND at least **2 580 cm²** above the waist,
+  with "hunter orange" defined as an L value of at least +55.0 Judd units, a at
+  least +65.0, b at least +30.0 on a HunterLab instrument. It applies only from 1
+  September to 31 December (s. 5), so it does NOT reach the spring bear season, and
+  s. 3(2) excepts bow and crossbow deer hunters in the first three weeks **only
+  while hunting from a tree stand or ground blind**.
+- **The province gave up its sunrise table**, which is why computing is right here
+  and wrong in Nova Scotia. Old Act s. 34, "Times of sunrise and sunset", was
+  repealed by 2021, c.12, s. 2 and replaced by s. 109.1, making a Herzberg
+  Astronomy and Astrophysics Research Centre confirmation or an ECCC
+  climatologist's certificate proof of the time. No table is the law; our
+  astronomy is the right instrument — and s. 109.1 also makes plain that our value
+  is not the legal PROOF, which is the strongest reason yet for the inward
+  precision margin.
+
+**The currency banner nearly cost us the province.** Every page on `laws.gnb.ca`
+prints "Current to 1 January 2024", the Act's included. Each regulation then ends
+with its OWN note and they differ: the Hunting Regulation is consolidated to 26
+July 2024, the Moose Hunting Regulation to 21 April 2026, the Wild Turkey
+Regulation to 30 March 2026. The Hunting Regulation also cites amendment 2024-42
+inside s. 11(1)'s own history, which a document current to 1 January 2024 could not
+contain. Reading the banner as a currency statement would have recorded New
+Brunswick as two years stale and refused it — §8's unnecessary-refusal direction,
+the one nobody reports because a refusal always looks defensible. **Worth checking
+wherever else a site banner has been taken for a consolidation date.**
+
+New Brunswick is also **the first jurisdiction where §41A's two fee certifications
+both hold**: s. 3(1) states each fee in the same paragraph that defines what the
+licence authorizes, and the regulation carries its own consolidation date. Class I
+$173, II $72, III $29, IV $14, guide exemption $150, antlerless application $4.
+They are recorded in the bundle's `licenceClasses` and NOT surfaced, because what
+is still unestablished is what the figure EXCLUDES — HST and any vendor surcharge
+sit outside the regulation, as Newfoundland's guide shows by naming a $3.00 vendor
+fee its own regulation does not. **If fees are to be shown, the missing piece is a
+certified statement of the exclusions, not the figures.**
+
+### Nova Scotia, for completeness
+
+11 rules over 8 species from six codified instruments. Three things carried
+forward: `licenceYear` is null with the negative control recorded ("licence year"
+occurs zero times across eight instruments while "open season" occurs 48 times in
+the Regulations alone); `certifiedPeriod` ends 2026-12-31 because almost every
+window is a weekday ordinal and the derivation is certified for that year alone;
+and the hours are a PUBLISHED TABLE — General Wildlife Regulations s. 11(3)
+defines sunrise and sunset as the values tabulated in Schedule A for Yarmouth,
+Halifax and Sydney in AST, with no interpolation formula — so no clock is offered
+rather than a computed one. **Six prohibition orders under Wildlife Act s. 21 are
+in force whose consolidated text the Registrar does not publish**, so in six named
+localities North Ground knows a prohibition exists and cannot read its extent;
+that is a standing limitation on every Nova Scotia answer.
+
+### What each remaining jurisdiction is blocked on
+
+- **Saskatchewan** — 83 WMZs, live-service only by owner decision (Standard
+  Unrestricted Use Data Licence v2.0 grants commercial reuse and the same item
+  adds "Not for resale"). The seasons instrument is under investigation.
+- **Prince Edward Island** — the 11-page Wildlife Conservation Act Hunting
+  Regulations consolidation contains ZERO occurrences of "open season", so the
+  dates live in an instrument not yet located. Its `/en/legislation/` paths are a
+  soft-404 shell that redirects into a robots-disallowed `/en/search/`, and a
+  browser attempt produced a Radware CAPTCHA. **That route is closed and is not to
+  be retried.** The permitted paths are `/sites/default/files/legislation/` and
+  `/sites/default/files/publications/`.
+- **Yukon** — `yukon.ca`, `laws.yukon.ca` and `legislation.yukon.ca` all return 403
+  behind a Cloudflare challenge, and it is the HOST rather than a path. Its DATA
+  hosts answer normally (`open.yukon.ca` 200, `mapservices.gov.yk.ca` 200). The
+  territory publishes its geography openly and challenges its law.
+
+Also open from this work: **wild turkey** (N.B. Reg. 2021-30, retrieved, not
+encoded) and **fur harvesting** (N.B. Reg. 84-124) in New Brunswick; NL's small
+game, coyote, wolf and fur bearers, whose Island geographies are small game
+management areas and named islands North Ground does not hold, while **Labrador's
+small game seasons are region-wide and would answer if a Labrador extent were
+served**; and the species the sources themselves do not name — New Brunswick's
+"squirrel" and "cormorant", plus groundhog, which needs canonicalizing.
