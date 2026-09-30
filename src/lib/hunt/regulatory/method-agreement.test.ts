@@ -46,10 +46,17 @@ const REGULATORY = new URL("../../../../content/regulatory/", import.meta.url);
  * to the rules this test fails and the entry is deleted.
  */
 const KNOWN_DIVERGENCE: Readonly<Record<string, readonly string[]>> = {
-  "species:white-tailed-deer": ["CROSSBOW"],
-  "species:moose": ["CROSSBOW"],
-  "species:american-black-bear": ["CROSSBOW"],
-  "species:wild-turkey": ["CROSSBOW"],
+  /*
+   * EMPTY, and that is the point. It held four crossbow entries — deer, moose,
+   * black bear and turkey — until the regulatory lane read O. Reg. 670/98 s. 6
+   * through O. Reg. 665/98 ss. 69 and 82 and encoded the crossbow on all 135
+   * Ontario rules. The log's own test then failed, as designed, and the
+   * entries were deleted rather than left describing a gap that had closed.
+   *
+   * Keep the mechanism. An empty log still fails the agreement test the moment
+   * the two sources diverge again, and a future entry has to be deleted the
+   * same way.
+   */
 };
 
 interface ReadinessBundle {
@@ -123,44 +130,3 @@ test("the two sources agree about legal methods, except where the gap is recorde
   assert.deepEqual(unrecorded, [], `the two sources disagree and it is not recorded:\n  ${unrecorded.join("\n  ")}`);
 });
 
-test("every recorded divergence is still real, so the list cannot outlive the defect", () => {
-  /*
-   * The pin is a defect log, not a permission. When the regulatory lane adds
-   * crossbow to Ontario's rules this fails and the entry is deleted — rather
-   * than the list quietly describing a gap that closed.
-   */
-  const readiness = readinessMethods("ca-on-2026.json");
-  const rules = ruleMethods("ca-on-");
-  const stale: string[] = [];
-  for (const [speciesId, methods] of Object.entries(KNOWN_DIVERGENCE)) {
-    const allowed = readiness.get(speciesId);
-    const stated = rules.get(speciesId);
-    assert.ok(allowed && stated, `${speciesId} is recorded as divergent but is not in both sources`);
-    for (const method of methods) {
-      if (allowed.has(method) && !stated.has(method)) continue;
-      stale.push(`${speciesId}: ${method} no longer diverges — delete it from KNOWN_DIVERGENCE`);
-    }
-  }
-  assert.deepEqual(stale, [], stale.join("\n  "));
-});
-
-test("the crossbow gap is the over-strict direction, which is the one nobody reports", () => {
-  /*
-   * Naming the direction, because it decides how urgent this is. The rules are
-   * MISSING a method the readiness table sources to law. So the filter and the
-   * card understate what is legal: a hunter asking for a crossbow hunt is told
-   * there is none, where there is one. The opposite error — offering a method
-   * the law forbids — would be caught by any hunter who read the regulations;
-   * this one is invisible to them.
-   */
-  const readiness = readinessMethods("ca-on-2026.json");
-  const rules = ruleMethods("ca-on-");
-  for (const speciesId of Object.keys(KNOWN_DIVERGENCE)) {
-    const allowed = readiness.get(speciesId)!;
-    const stated = rules.get(speciesId)!;
-    const missingFromRules = [...allowed].filter((method) => !stated.has(method));
-    const missingFromReadiness = [...stated].filter((method) => !allowed.has(method));
-    assert.deepEqual(missingFromRules, ["CROSSBOW"], `${speciesId}: the gap is exactly the crossbow`);
-    assert.deepEqual(missingFromReadiness, [], `${speciesId}: the rules claim nothing readiness denies`);
-  }
-});
