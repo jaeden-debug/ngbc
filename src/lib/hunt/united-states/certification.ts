@@ -174,6 +174,20 @@ type MapLicenceFinding = {
    * state somebody started and left.
    */
   licence?: { statedAs: string; url: string; retrievedAt: string; sha256: string; permittedUse: string; redistribution: string; attribution: string | null; note?: string | null };
+  /**
+   * The AUTHORITY'S RULES HOST refuses the reader, while its map service answers.
+   *
+   * A different failure from `reachability`, and it must not be put in the map
+   * lane: Massachusetts's zone service returns 200 while mass.gov returns 403 to
+   * every fetcher, and New Hampshire's GIS item answers while wildlife.nh.gov
+   * returns 403 on six paths. Recording either as TRANSPORT_BLOCKED on the map
+   * would assert that the map cannot be reached, which is false.
+   *
+   * It is still a real blocker — §45's source-change detection and hash
+   * verification cannot run against a host that will not serve the reader — so
+   * it is recorded, just not against the wrong lane.
+   */
+  rulesReachability?: { state: "TRANSPORT_BLOCKED"; finding: string; evidence: Record<string, unknown>; whyNotWorkedAround: string; whatWouldUnblockIt: string; notTheSameAsLicenceBlocked: string };
   /** Why no licence could be read: the service itself is unreachable. */
   reachability?: { state: "TRANSPORT_BLOCKED"; finding: string; evidence: Record<string, unknown>; whyNotWorkedAround: string; whatWouldUnblockIt: string; notTheSameAsLicenceBlocked: string };
   /**
@@ -288,6 +302,21 @@ type MapLicenceFinding = {
    * whose data may not be used.
    */
   termsInTheDescriptionField?: { statedAs: string; whyItMatters: string; whatTheLicenceFieldSaidInstead: string };
+  /**
+   * A jurisdiction that can be answered COMPLETELY, now, on evidence.
+   *
+   * The District of Columbia is the first in the United States: its substantive
+   * game-law provisions were repealed, 19 DCMR § 1560.1 protects all wildlife
+   * and the chapter authorises no taking, DC is in no federal flyway, and its
+   * firearm-discharge prohibition has no hunting exception. Reporting that as
+   * UNKNOWN would understate what the authority establishes — the under-claim
+   * direction §8 says nobody ever reports.
+   */
+  completableNow?: { finding: string; whyItMustNotBeServedAsUNKNOWN: string; hours?: string };
+  /** The authority disclaims its own geometry's fidelity for the use Hunt makes of it. */
+  boundaryFidelityIsTheBlocker?: { statedAs: string; finding: string; separateFromTheLicence: string };
+  /** A restricted geography that is the union of certified units, so it needs no polygon of its own. */
+  theCwdZoneIsDerivable?: Record<string, string>;
   /** An hours finding recorded beside the map, where the hours registry's one-basis-per-state shape cannot hold it. */
   legalHours?: { finding: string; contrastWithKentucky?: string; threeThingsThatBreakASingleModel?: string[]; whyNoStateLevelHoursRecordWasAdded?: string };
   /** §41B evidence noticed during a map sweep, recorded without being acted on. */

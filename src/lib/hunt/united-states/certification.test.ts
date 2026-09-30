@@ -55,7 +55,7 @@ test("all 50 states and D.C. are reported, and every one is counted once per lan
   /* Arizona joined when its service was probed and found to present a
      certificate expired since 2022. The list grows as states gain evidence of
      ANY kind, which includes evidence that a source cannot be used. */
-  assert.deepEqual(statesWithEvidence(), ["AK", "AL", "AR", "AZ", "CO", "FL", "HI", "IA", "ID", "IL", "IN", "KY", "ME", "MI", "MN", "MO", "MT", "ND", "NJ", "NM", "NV", "NY", "OR", "PA", "SD", "UT", "WA", "WI", "WY"]);
+  assert.deepEqual(statesWithEvidence(), ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "HI", "IA", "ID", "IL", "IN", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NH", "NJ", "NM", "NV", "NY", "OR", "PA", "SD", "UT", "WA", "WI", "WY"]);
   assert.equal(summary.states.length, 51);
   assert.equal(new Set(summary.states.map((entry) => entry.code)).size, 51);
   for (const lane of [summary.totals.map, summary.totals.regulations, summary.totals.intelligence]) {
@@ -65,7 +65,7 @@ test("all 50 states and D.C. are reported, and every one is counted once per lan
      because it refuses redistribution outright; Oregon and Washington are,
      because their terms are unresolved. A state is on this list when its
      geometry cannot be served, never merely because somebody read its page. */
-  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["AK", "AL", "AR", "CO", "IA", "IL", "IN", "ME", "MN", "MT", "ND", "NJ", "NM", "NV", "NY", "OR", "PA", "SD", "UT", "WA", "WI", "WY"]);
+  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["AK", "AL", "AR", "CO", "CT", "DE", "IA", "IL", "IN", "LA", "MA", "MD", "ME", "MN", "MS", "MT", "ND", "NH", "NJ", "NM", "NV", "NY", "OR", "PA", "SD", "UT", "WA", "WI", "WY"]);
   assert.ok(!summary.licenceBlocked.some((entry) => entry.code === "HI"), "a permissive licence is not a blocker");
   /* Served is counted from the layers themselves, never asserted as a
      constant: a state counts as served exactly when its layers say so. */
@@ -416,4 +416,56 @@ test("a layer that stops short is not a layer that is wrong", () => {
   assert.match(florida.lawVersusGis!.doNotServe, /do not report it as no-zone or closed/);
   assert.match(florida.geography.theLayerStopsShortOfTheLaw!, /30 km/,
     "the miss was retested with tolerance, so it is a layer that stops rather than a point in water");
+});
+
+test("a blocked rules host is not a blocked map", () => {
+  /* Massachusetts's zone service answers 200 while mass.gov returns 403 to every
+     fetcher, including curl with a full desktop Chrome User-Agent, on three
+     separate URLs — and the same URLs return 200 in a real browser engine. New
+     Hampshire's GIS item answers while wildlife.nh.gov returns 403 on six paths,
+     with a positive control (gc.nh.gov answered in the same session) localising
+     the fault to the agency's host.
+
+     Recording either as TRANSPORT_BLOCKED in the MAP lane would assert the map
+     cannot be reached, which is false. Both halves fail, for different reasons,
+     and the report has to say which. */
+  for (const code of ["MA", "NH"]) {
+    const finding = mapLicenceFindingFor(code)!;
+    assert.equal(finding.reachability, undefined, `${code}'s MAP service is reachable`);
+    assert.equal(finding.rulesReachability!.state, "TRANSPORT_BLOCKED");
+    assert.notEqual(certificationFor(code).map.status, "TRANSPORT_BLOCKED",
+      `${code}'s map lane must not claim the map is unreachable`);
+    /* And refusing to defeat the block is stated as a choice, not an omission. */
+    assert.match(finding.rulesReachability!.whyNotWorkedAround, /access control/);
+  }
+  /* Arizona and Missouri remain the real map-transport cases, so the distinction
+     is not vacuous. */
+  for (const code of ["AZ", "MO"]) {
+    assert.equal(certificationFor(code).map.status, "TRANSPORT_BLOCKED");
+  }
+});
+
+test("the District of Columbia is the first US jurisdiction that can be finished", () => {
+  /* DC lacks hunting, not data — and that distinction is the whole finding. Its
+     substantive game-law provisions were repealed; 19 DCMR § 1560.1 protects all
+     wildlife and the chapter authorises no taking, so it is a closed loop with
+     nothing in it; DC is in NO federal flyway under 50 CFR 20.107, so there is
+     no vehicle for a migratory season either; and § 22-4503.01 forbids
+     discharging a firearm without a police permit, with no hunting exception.
+
+     Reporting that as UNKNOWN would understate what the authority establishes,
+     which §8 treats as the same class of error as overstating it — and it is the
+     clearest available instance of the under-claim direction §8 says nobody ever
+     reports. */
+  const finding = mapLicenceFindingFor("DC")!;
+  assert.equal(finding.geography.unitCount, 0, "zero units, not an unknown number of them");
+  assert.match(finding.completableNow!.whyItMustNotBeServedAsUNKNOWN, /AFFIRMATIVELY ESTABLISHED/);
+  /* The absence was established with a control inside the same listing: it
+     returns the FISHING sections, so the fetcher works and the hunting
+     provisions are genuinely absent. */
+  assert.match(finding.geography.theAbsenceIsTheFinding!, /POSITIVE CONTROL/);
+  assert.match(finding.geography.theAbsenceIsTheFinding!, /19-1506 fishing seasons/);
+  /* Its licence permits use, so nothing stands in the way but the work. */
+  assert.equal(certificationFor("DC").map.status, "LICENCE_CLEAR_NOT_INGESTED");
+  assert.equal(finding.licence!.redistribution, "PERMITTED");
 });

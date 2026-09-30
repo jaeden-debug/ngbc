@@ -270,9 +270,9 @@
       "boundarySource": null,
       "managementGeography": "Zone/Hunt Area",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_CLEAR_NOT_INGESTED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "Licence permits reuse (COMMERCIAL_PERMITTED), read 2026-09-30; Deer Hunt Zone, and a different geography per species — Areas for bear, Elk Hunts, Zones for bighorn and pronghorn, Zones for waterfowl reviewed (45 units). Nothing blocks this state but the work."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -303,7 +303,7 @@
         "No geometry ingested and no rules certified; every California query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "Licence permits reuse (COMMERCIAL_PERMITTED), read 2026-09-30; Deer Hunt Zone, and a different geography per species — Areas for bear, Elk Hunts, Zones for bighorn and pronghorn, Zones for waterfowl reviewed (45 units). Nothing blocks this state but the work.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -410,9 +410,9 @@
       "boundarySource": null,
       "managementGeography": "Deer/Turkey Management Zone",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "NONE STATED on all five CT DEEP hunting layers. Two service-level copyrightText values are publisher names — \"Connecticut Department of Energy and Environmental Protection\" and \"CT DEEP\" — which are attribution strings, not terms; the rest are empty. There is no express prohibition anywhere reachable, so this is UNRESOLVED, never a refusal. CT DEEP stating terms for its hunting layers."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -443,7 +443,7 @@
         "No geometry ingested and no rules certified; every Connecticut query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "NONE STATED on all five CT DEEP hunting layers. Two service-level copyrightText values are publisher names — \"Connecticut Department of Energy and Environmental Protection\" and \"CT DEEP\" — which are attribution strings, not terms; the rest are empty. There is no express prohibition anywhere reachable, so this is UNRESOLVED, never a refusal. CT DEEP stating terms for its hunting layers.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -470,9 +470,9 @@
       "boundarySource": null,
       "managementGeography": "UNRESOLVED",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_CLEAR_NOT_INGESTED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "Licence permits reuse (COMMERCIAL_PERMITTED), read 2026-09-30; NONE — no hunting management geography exists in the District reviewed (0 units). Nothing blocks this state but the work."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -503,7 +503,7 @@
         "No geometry ingested and no rules certified; every District of Columbia query is UNKNOWN.",
         "Confirm statutory prohibition/absence and any controlled wildlife-management exceptions",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "Licence permits reuse (COMMERCIAL_PERMITTED), read 2026-09-30; NONE — no hunting management geography exists in the District reviewed (0 units). Nothing blocks this state but the work.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -530,9 +530,9 @@
       "boundarySource": null,
       "managementGeography": "Wildlife Area/Zone",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "UNRESOLVED for Wildlife Management Zone — which DNREC also calls \"Delaware Deer Management Zone\" on its own site, one geography with two agency names (18 units), read 2026-09-30: \"Delaware Department of Natural Resources and Environmental Control, Division of Fish and Wildlife…\" — no grant is stated either way; a person must ask the publisher."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -563,7 +563,7 @@
         "No geometry ingested and no rules certified; every Delaware query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "UNRESOLVED for Wildlife Management Zone — which DNREC also calls \"Delaware Deer Management Zone\" on its own site, one geography with two agency names (18 units), read 2026-09-30: \"Delaware Department of Natural Resources and Environmental Control, Division of Fish and Wildlife…\" — no grant is stated either way; a person must ask the publisher.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -1591,9 +1591,9 @@
       "boundarySource": null,
       "managementGeography": "Area/Wildlife Management Area",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "NONE STATED for the hunting-area geography — an absence of terms, not a refusal and not a permission. LDWF stating terms."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -1624,7 +1624,7 @@
         "No geometry ingested and no rules certified; every Louisiana query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "NONE STATED for the hunting-area geography — an absence of terms, not a refusal and not a permission. LDWF stating terms.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -1651,9 +1651,9 @@
       "boundarySource": null,
       "managementGeography": "Wildlife Management Zone",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "NONE STATED for the zone dataset itself. Three instruments were kept separate; this is the zone dataset's own. MassWildlife stating terms."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -1684,7 +1684,7 @@
         "No geometry ingested and no rules certified; every Massachusetts query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "NONE STATED for the zone dataset itself. Three instruments were kept separate; this is the zone dataset's own. MassWildlife stating terms.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -1711,9 +1711,9 @@
       "boundarySource": null,
       "managementGeography": "Region/County",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "UNRESOLVED for deer management region, and eight deer management zones (? units), read 2026-09-30: \"The Spatial Data, and the information therein, (collectively the “Data”) is provided \"as is\" without warranty of any kin…\" — no grant is stated either way; a person must ask the publisher."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -1744,7 +1744,7 @@
         "No geometry ingested and no rules certified; every Maryland query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "UNRESOLVED for deer management region, and eight deer management zones (? units), read 2026-09-30: \"The Spatial Data, and the information therein, (collectively the “Data”) is provided \"as is\" without warranty of any kin…\" — no grant is stated either way; a person must ask the publisher.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -2075,9 +2075,9 @@
       "boundarySource": null,
       "managementGeography": "Zone/Wildlife Management Area",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "NONE STATED. No reuse, redistribution or attribution term anywhere reachable, and no prohibition. MDWFP stating terms."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -2108,7 +2108,7 @@
         "No geometry ingested and no rules certified; every Mississippi query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "NONE STATED. No reuse, redistribution or attribution term anywhere reachable, and no prohibition. MDWFP stating terms.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -2240,9 +2240,9 @@
       "boundarySource": null,
       "managementGeography": "Zone/Game Land",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_CLEAR_NOT_INGESTED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "Licence permits reuse (COMMERCIAL_PERMITTED), read 2026-09-30; COUNTY — there is no North Carolina hunting \"zone\" in any legal instrument reviewed (100 units). Nothing blocks this state but the work."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -2273,7 +2273,7 @@
         "No geometry ingested and no rules certified; every North Carolina query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "Licence permits reuse (COMMERCIAL_PERMITTED), read 2026-09-30; COUNTY — there is no North Carolina hunting \"zone\" in any legal instrument reviewed (100 units). Nothing blocks this state but the work.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -2420,9 +2420,9 @@
       "boundarySource": null,
       "managementGeography": "Wildlife Management Unit (WMU)",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "UNRESOLVED for Wildlife Management Unit (? units), read 2026-09-30: \"Digital data represent the efforts of the NH Fish and Game Department and contributing agencies to record information fr…\" — no grant is stated either way; a person must ask the publisher."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -2453,7 +2453,7 @@
         "No geometry ingested and no rules certified; every New Hampshire query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "UNRESOLVED for Wildlife Management Unit (? units), read 2026-09-30: \"Digital data represent the efforts of the NH Fish and Game Department and contributing agencies to record information fr…\" — no grant is stated either way; a person must ask the publisher.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]

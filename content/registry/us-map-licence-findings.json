@@ -820,10 +820,332 @@
         "doNotServeEitherUntilResolved": false
       },
       "note": "A PREDICTION THAT WAS WRONG, recorded because it changes the verdict. I expected Iowa to be county-only geography with no zone service, and the atlas layer to hold about 99 county polygons. Both were wrong in the same direction: Iowa publishes a genuine multi-species zone layer tiling into 81 units. Iowa is MORE servable than expected, not less, and the only thing standing in the way is that its terms are unstated."
+    },
+    {
+      "state": "DC",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "NONE — no hunting management geography exists in the District",
+        "service": "https://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Administrative_Other_Boundaries_WebMercator/MapServer/10",
+        "unitCount": 0,
+        "definedBy": "The absence of an instrument, established affirmatively rather than inferred. D.C. Official Code Title 8 Ch. 22 Subch. II and its criminal-code parallel Title 22 Ch. 43 show §§ .01–.27 marked [Repealed] or [Transferred] — including \"Killing game birds and permits therefor\", \"Hunting squirrels, chipmunks and rabbits without a permit\" and \"Hunting or disbursing of ducks, geese, and waterfowl\". Only the authority and enforcement sections survive. What replaced them is one blanket protection, 19 DCMR § 1560.1: \"All wildlife in the District is protected, and none shall be killed or otherwise taken except in accordance with this chapter\" — and the chapter authorises no taking, so it is a closed loop with nothing in it.",
+        "theAbsenceIsTheFinding": "WHAT DC LACKS IS HUNTING, NOT DATA, and that distinction is the whole finding. Unit count 0; the nearest available geography is the District boundary, one polygon, whose identifying fields are CITY_NAME and STATE_CITY — a city identifier, not a unit id. Enumerating a unit field is moot because there is none.\n\nREAD FAR ENOUGH TO BE SURE, WITH A POSITIVE CONTROL IN THE SAME LISTING. The whole of DCMR chapter 19-15 was enumerated from the official rule list: 35 sections, of which 19-1500 to 19-1508 are FISHING, 19-1520 to 19-1530 urban apiculture, 19-1565 to 19-1579 wildlife rehabilitation and nuisance-wildlife control, 19-1599 definitions, and 19-1560 the only hunting section. There is no hunting season, licence, bag limit, method or hours section anywhere. The control is built into the same listing: it DOES return 19-1504 species minimum size and possession limits, 19-1505 licence fees and 19-1506 fishing seasons — so the listing is complete and the fetcher works, and the hunting provisions are genuinely absent rather than missed.",
+        "theFederalRouteIsClosedToo": "The one vehicle by which a DC season with hours could otherwise exist. 50 CFR 20.100(a) prohibits migratory game bird hunting except as authorized for State and Tribal regulations, and 50 CFR 20.107 defines the flyways exhaustively — the Atlantic Flyway is enumerated and the District of Columbia is not in it, nor in any other. Across all of part 20 \"District of Columbia\" occurs exactly twice, both inside the § 20.11 definition of \"Resident Canada geese\", never as a hunting jurisdiction. Positive controls on the same text: Maryland 2, Virginia 2, Pennsylvania 2, New Jersey 2, \"Atlantic Flyway\" 4. Separately 50 CFR 80.2 states that \"State\" includes DC for the Sport Fish Restoration Act and does NOT include it for the Wildlife Restoration Act — DC is a Dingell-Johnson jurisdiction and not a Pittman-Robertson one.\n\nAND AN INDEPENDENT DISTRICT BLOCKER: D.C. Official Code § 22-4503.01 — \"no firearm shall be discharged or set off in the District of Columbia without a special written permit from the Chief of Police\", with only two exceptions, discharges \"otherwise permitted by law\" and \"legitimate self-defense\". No hunting exception."
+      },
+      "licence": {
+        "statedAs": "This work is licensed under a Creative Commons Attribution 4.0 International License.",
+        "sha256": "sha256:4c359c008564a851b6a9fd23b5583e6085ab288d0d05c018c2086fb0cb0d8515",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/7241f6d500b44288ad983f0942b39663?f=json",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "COMMERCIAL_PERMITTED",
+        "redistribution": "PERMITTED",
+        "attribution": "Office of the Chief Technology Officer, District of Columbia",
+        "note": "CC BY 4.0 — a permission with an attribution condition, and not a refusal. It expressly permits redistribution and derivative works, including commercially, provided attribution is given; there is no \"may not redistribute\" language in any of the three instruments read. The same text appears on a second, independently checked DC item, so it is the org's standard grant rather than one dataset's quirk.\n\nThe service alone would have produced NONE STATED: its copyrightText is \"DC GIS \" (with the trailing space) and at layer 10 \"Office of the Chief Technology Officer\" — a publisher name and an attribution string, neither of which states terms.\n\nNot claimed: the prose body of opendata.dc.gov/pages/terms-of-use is client-rendered and was not read. The embedded CC BY 4.0 metadata was recovered; nothing beyond it is asserted, including no warranty or accuracy caveat either way."
+      },
+      "completableNow": {
+        "finding": "THE FIRST UNITED STATES JURISDICTION THAT CAN BE FINISHED. DC is servable today as a single certified jurisdiction-wide CLOSED answer: no geography problem, no licence problem, no ambiguity. Everything needed is a structured fact in North Ground's own words — all wildlife protected, no season for any species, no hunting licence issued, no hunting units — citing 19 DCMR § 1560.1, D.C. Official Code § 8-2221.28 and § 22-4503.01, and 50 CFR 20.100(a) and 20.107. The only verbatim retention warranted is § 1560.1 itself, whose scope turns on its wording.",
+        "whyItMustNotBeServedAsUNKNOWN": "The absence of a season here is AFFIRMATIVELY ESTABLISHED, not merely unfound. Reporting DC as UNKNOWN or unserviceable would understate what the authority establishes, which §8 treats as the same class of error as overstating it. This is the clearest available case of the under-claim direction that §8 says nobody ever reports.",
+        "hours": "There are no legal hunting hours in the District, and that too is a finding rather than a default: not a solar offset, not a published table, and not unknown. No hours rule exists because no season exists to attach one to. No species is singled out; the only species named in the chapter's take provisions are \"rats, mice, moles and other depredating wildlife\" under the § 1560.2 property-protection exception, which carries no hours, season or bag limit."
+      },
+      "note": "CAVEAT ON THE FEDERAL CITATIONS, because it changes what they rest on: eCFR's human-readable pages return HTTP 200 while redirecting this agent to unblock.federalregister.gov and serving none of the cited text. Every federal quotation was read from the eCFR versioner API against title 50 as of its own up_to_date_as_of date 2026-09-28, and those are the URLs cited, because those are the ones that returned the words."
+    },
+    {
+      "state": "CA",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Deer Hunt Zone, and a different geography per species — Areas for bear, Elk Hunts, Zones for bighorn and pronghorn, Zones for waterfowl",
+        "service": "https://services.arcgis.com/.../ds342 Deer Hunt Zones",
+        "unitCount": 45,
+        "definedBy": "Title 14, California Code of Regulations, adopted by the Fish and Game Commission under the Fish and Game Code — deer §360 and §361, bear §365(a)(1)-(5), elk §364, bighorn §362, pronghorn §363, waterfowl §502, quail §300(a)(1)(B)3, band-tailed pigeon §300(b)(1)(A)3, grouse §300(a)(1)(E)3, crow §485(d).",
+        "theFeatureCountIsNotTheUnitCount": "THREE DIFFERENT NUMBERS, and each is the right answer to a different question. 46 FEATURES / 45 distinct zone names / 42 general-deer HUNT rows in the authority's own 2026-2027 booklet. D15 is two polygons; zone letter \"A\" is one letter across two named polygons (\"A (North Unit 160)\" and \"A (South Unit 110)\"); and D3, D4 and D5 are three separate zone polygons under ONE hunt row, \"D3-5\". Neither D18 nor X11 exists in the layer or the regulation. Elk is worse than a count problem: CDFW publishes \"Elk Hunts\" and separately \"Elk Management Units\", which are a DIFFERENT geography."
+      },
+      "licence": {
+        "statedAs": "These data should be used to estimate the general location of the hunting zone. Hunt boundary shown is an approximation. Hunters are responsible for knowing the exact boundary locations as described within Section 360, Title 14, Calif. Code of Regs.",
+        "sha256": "sha256:92e0c451b09c2a84cecbcb9f6ae2e8083ba0ad3de6262167d29c63e557e2ebab",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/14d944d0702e4b6bafbcf297fed7c149?f=json",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "COMMERCIAL_PERMITTED",
+        "redistribution": "PERMITTED",
+        "attribution": "California Department of Fish and Wildlife",
+        "note": "AN EXPRESS CC BY 4.0 GRANT, in the portal item's licenseInfo and not in the service. No refusal anywhere. And the SAME FIELD carries the thing that blocks a point answer, which is why the licence and the capability must be read together rather than the licence alone: CDFW says of its own deer layer that the hunt boundary shown \"is an approximation\" and that hunters are responsible for knowing the exact boundary locations as described in §360. That is the authority disclaiming its own geometry's fidelity for the exact purpose Hunt puts geometry to."
+      },
+      "boundaryFidelityIsTheBlocker": {
+        "statedAs": "Hunt boundary shown is an approximation. Hunters are responsible for knowing the exact boundary locations as described within Section 360, Title 14, Calif. Code of Regs.",
+        "finding": "A licence that permits use is not a layer that can place a point. California's own words put the legal boundary in §360's text and its polygon in the position of an estimate — which is the DERIVED_FROM_LEGAL_DESCRIPTION pattern, and it means a near-boundary answer must carry that limit explicitly.",
+        "separateFromTheLicence": "A grant and a fidelity disclaimer are different facts; merging them would either block a permitted state or serve an approximation as a boundary."
+      },
+      "note": "THE REAL COST OF CALIFORNIA IS WORK, NOT A REFUSAL: every season, quota, hunt code, method and limit exists only as prose and tables inside two annual PDFs of 116 and 117 pages. There is no CDFW seasons API and no open-data table of hunt codes, so each licence year requires re-extraction and re-certification."
+    },
+    {
+      "state": "CT",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Deer and Turkey Management Zone",
+        "service": "https://services1.arcgis.com/.../Deer_Turkey_Management_Zones/FeatureServer/0",
+        "unitCount": 13,
+        "definedBy": "CT DEEP's own published zones; the agency's 2026 Deer Hunting page states \"4 of Connecticut's 13 deer management zones\", which corroborates the count from its own prose",
+        "theFeatureCountIsNotTheUnitCount": "Here they agree, and a PREDICTION OF MINE WAS WRONG in an instructive direction. I predicted \"12 zones plus one multipart duplicate\"; the truth is 13 distinct values with zero duplicates — 1, 2, 3, 4a, 4b, 5, 6, 7, 8, 9, 10, 11, 12 — because Zone 4 is genuinely SUBDIVIDED into 4A and 4B and both are rule-bearing: DEEP's antlerless restriction reads \"Statewide (except Zones 2 and 4A)\" and \"Zones 2 and 4A: 1 either sex\". Treating 4A as a cartographic split would have dropped a regulatory unit. Geometry is clean: 13 single-part polygons, 17,888 vertices, native EPSG:2234, served in 4326 on request; the area sum of 12,874 km² against Connecticut's 12,542 km² land and 14,357 km² land-plus-water rules out gross overlap while showing modest coastal-water inclusion.",
+        "theScopeLimitMustNotBeFlattened": "Both the ISO metadata abstract and the portal item snippet scope this layer to PRIVATE LAND deer and turkey reporting zones by town. On STATE land, hunting is governed by DEEP's hunting-area and lottery system rather than by zone. So a correct zone answer on state land is answering the wrong question, and the boundaries follow town lines."
+      },
+      "licenceAbsent": {
+        "state": "NONE_STATED",
+        "finding": "NONE STATED on all five CT DEEP hunting layers. Two service-level copyrightText values are publisher names — \"Connecticut Department of Energy and Environmental Protection\" and \"CT DEEP\" — which are attribution strings, not terms; the rest are empty. There is no express prohibition anywhere reachable, so this is UNRESOLVED, never a refusal.",
+        "whereLooked": [
+          "service-level copyrightText on five DEEP hunting FeatureServers",
+          "layer-level copyrightText on each",
+          "ArcGIS portal item licenseInfo",
+          "the agency's own site"
+        ],
+        "controlForTheAbsence": "A POSITIVE CONTROL THAT LOCALISES IT EXACTLY: a sibling DEEP dataset returns \"CC0\" through the same field by the same method, so the field is read correctly and the emptiness on the hunting layers is real.",
+        "whatWouldUnblockIt": "CT DEEP stating terms for its hunting layers.",
+        "whyItsOwnStateAndNotReachability": "Every service answered 200 and resolves points live. Nothing is unreachable; nothing is stated."
+      }
+    },
+    {
+      "state": "DE",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Wildlife Management Zone — which DNREC also calls \"Delaware Deer Management Zone\" on its own site, one geography with two agency names",
+        "service": "https://enterprise.firstmap.delaware.gov/arcgis/rest/services/Society/DE_Wildlife/FeatureServer",
+        "unitCount": 18,
+        "definedBy": "Not established in codified form, and that is stated rather than papered over. 7 DE Admin Code 3900 is the expected home, and regulations.delaware.gov is a JavaScript single-page app serving an identical 65,540-byte shell for /3900/index.shtml, /3900.shtml, /3900.pdf and /3900.htm — all HTTP 200, no regulation text. Its JSON API exists but the route was not found (/api/AdminCode/titles returns 200 and Title 7 = regulationId 425, while /api/AdminCode/title7/3000/3900 returns HTTP 400 and three other routes 404). So the codified definition is UNKNOWN. What IS established is that the zones carry real legal effect, from instruments that were read.",
+        "theFeatureCountIsNotTheUnitCount": "18 = 18, established separately in both directions rather than one inferred from the other: a count query returns 18, a returnDistinctValues query on ZONE and DESCRIPTION returns 18 rows, and an OBJECTID-level dump shows one polygon per designation with no duplicates, no status field and no non-hunting categories. The designations are 1A, 1B and 2–17 — seventeen numbers with zone 1 split. Do NOT read that as \"17 zones\": a 2010 aerial-survey-era figure of 17 is a different enumeration and was not relied on. Two independent confirmations of 18: the zone-description PDF lists the same 18, and the guide's own Deer Hunting page says \"across all 18 wildlife management zones in Delaware\".",
+        "typosRunPdfToGisCorrected": "The PDF says Zone 1A runs to \"the Delaware/Maryland boarder\" where the GIS says \"border\", and \"Zone 11 Lane bordered north by Route 16\" where the GIS says \"Land bordered\". A THIRD typo survives in both: Zone 14 reads \"north by Route 9, south by Route 24, east by Route 113, and south by Route 24\" — \"south\" twice and no western bound — so Zone 14's published prose description is internally incomplete even though its polygon is present."
+      },
+      "licence": {
+        "statedAs": "Delaware Department of Natural Resources and Environmental Control, Division of Fish and Wildlife",
+        "sha256": "sha256:9a6ab0722553b6b67f23022782833c32ffa8f9350695c760f0f523db4fc5d6d1",
+        "url": "https://enterprise.firstmap.delaware.gov/arcgis/rest/services/Society/DE_Wildlife/FeatureServer?f=json",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "UNRESOLVED",
+        "redistribution": "UNRESOLVED",
+        "attribution": "Delaware Department of Natural Resources and Environmental Control, Division of Fish and Wildlife",
+        "note": "The service-level copyrightText recorded above is the WHOLE of it — an attribution string, not terms. The FirstMap terms found separately are a warranty disclaimer, a liability limitation and an attribution credit, with no express prohibition on redistribution in any instrument read, and they affirmatively contemplate downloading and modifying. That is materially closer to permitted than to refused, and it is still not a grant, so UNRESOLVED both ways. Three instruments were kept apart on purpose: the FirstMap hunting-zone data, the DNREC harvest layers and the DNREC dashboard each say something different and none of their terms may be carried across."
+      },
+      "theCwdZoneIsDerivable": {
+        "finding": "DNREC's 2026/27 addendum: \"We have designated a CWD Management Zone (CMZ) for disease management, made up of Wildlife Management Zones 11, 14 and 16\", with baiting prohibited inside it, mandatory 24-hour check-in during the Nov 13–22 General Firearm season, and carcass bagging requirements.",
+        "whyItMatters": "The CMZ has NO polygon of its own — it is exactly the union of three certified WMZ polygons, so it is derivable deterministically from the layer rather than being a missing geography. That is the opposite of Alabama's CWD zone, which is narrative prose with nothing to derive it from.",
+        "theOneZoneScopedSeason": "Delaware is overwhelmingly a statewide-season state: every deer season row reads \"Statewide\" except one — \"Handgun and Straight-walled Pistol-caliber Rifle | Season closed in Wildlife Management Zones 1A and 1B | Jan. 2–10\". That single line is the whole coordinate→zone→rule dependency for Delaware deer seasons, and it is real."
+      }
+    },
+    {
+      "state": "LA",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Deer Area, and six further species-specific geographies — Turkey Hunting Area, dove, waterfowl, goose and alligator zones, and Bear Area",
+        "service": "https://services1.arcgis.com/6euNCaGPCgCzgAVF/arcgis/rest/services/HuntingAreas/FeatureServer",
+        "unitCount": 10,
+        "definedBy": "Louisiana Administrative Code Title 76, Wildlife and Fisheries — deer §103.B and §103.C, turkey §113.F and §115, dove §117.D.3, waterfowl §117.A, bear §109.A.1, WMAs §111. Currency established from the document's own historical notes: the most recent amendment cited is \"LR 52:992 (June 2026)\", consistent with the 2026-2027 season.",
+        "theFeatureCountIsNotTheUnitCount": "FIVE geographies match exactly and were each checked: deer 10 features = 10 distinct Area_ID; dove 2 = 2; waterfowl 2 = 2; goose 2 = 2; alligator 2 = 2; bear 7 features = 7 distinct Unit values (1 LARB/Coast, 2 UARB/Pointe Coupee, 3 Repat, 4 TRB/Tensas, 5 ORB/Union, 6 WGCP, 7 EGCP). Turkey is the one that diverges. Resolution was spot-checked on six land points with two negative controls, all HTTP 200."
+      },
+      "licenceAbsent": {
+        "state": "NONE_STATED",
+        "finding": "NONE STATED for the hunting-area geography — an absence of terms, not a refusal and not a permission.",
+        "whereLooked": [
+          "service-level copyrightText on HuntingAreas (empty), plus serviceDescription and description (empty)",
+          "each of the six sublayers /0 to /5 — copyrightText and description both empty",
+          "LOE_LDWF_WMAs, CWDManagementZone_15miles and LOE_Cons… services — same empty copyrightText",
+          "ArcGIS portal item licenseInfo"
+        ],
+        "controlForTheAbsence": "Six sublayers and three further services all returning the empty string through a reader that surfaced full licence text on other states in the same sweep, so the emptiness is Louisiana's rather than the method's.",
+        "whatWouldUnblockIt": "LDWF stating terms.",
+        "whyItsOwnStateAndNotReachability": "Every service answered 200 and resolves points live. Nothing is unreachable; nothing is stated."
+      }
+    },
+    {
+      "state": "MS",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Deer Management Unit (DMU)",
+        "service": "https://arcgis.mdwfp.com/arcgis/rest/services/Public/Public_WMA_Data/MapServer/7",
+        "unitCount": 4,
+        "definedBy": "40 Miss. Admin. Code, Part 2 (Wildlife), Chapter 2, Rule 2.2 \"2026-27 Deer Seasons and Bag Limits\" (rev. 04-2026 FINAL). Each DMU is defined by highways or whole counties: Delta — \"Areas west of I-55 and north of I-20 plus areas south of I-20 and west of U.S. Highway 61\"; Southeast — \"Areas south of U.S. Highway 84 and east of MS Highway 35\"; North Central — \"All portions of Alcorn, Benton, Desoto, Marshall, Tate, and Tippah counties\"; and Hills as the RESIDUAL — \"All areas except the Delta, North Central, and Southeast Deer Management Units.\"",
+        "theNameMismatchWouldBreakAResolver": "The layer's Name values are NORTH EAST ZONE, DELTA ZONE, SOUTH ZONE and NORTH CENTRAL ZONE, and TWO OF THE FOUR do not match the regulatory unit names: \"NORTH EAST ZONE\" against \"Hills Unit\", and \"SOUTH ZONE\" against \"Southeast Unit\". The non-contiguous labels 10, 12, 13, 15 are the signature of a legacy classification that once had more members.\n\nSo the correspondence was established by SEVENTEEN point-in-polygon queries against the live layer rather than by joining on name, and every one agreed with Rule 2.2: Corinth and Senatobia → NORTH CENTRAL; Greenville and Rolling Fork → DELTA; Pascagoula and Bay St. Louis → SOUTH; Tishomingo, Meridian, Pontotoc, Grenada, Laurel, McComb, Tylertown and a point southwest of I-20 east of US 61 → NORTH EAST. No point returned two features, and a simply-connected concave residual is consistent with the Hills definition.\n\nBUT THE CROSSWALK IS OURS, NOT THE AUTHORITY'S. The layer carries no regulatory unit name and no crosswalk, and Id, ACRES and REFERENCE are dead fields. The mapping is well supported by our testing and is NOT published, so it must be recorded as North Ground's derivation rather than as the authority's."
+      },
+      "licenceAbsent": {
+        "state": "NONE_STATED",
+        "finding": "NONE STATED. No reuse, redistribution or attribution term anywhere reachable, and no prohibition.",
+        "whereLooked": [
+          "service-level copyrightText on Public_WMA_Data/MapServer (empty)",
+          "each of layers 0–7 individually — copyrightText and description both empty on all eight",
+          "Website/WMA_New/MapServer and Public/Public_CWD_Status/MapServer — both empty",
+          "ArcGIS portal item licenseInfo, and the agency's own site"
+        ],
+        "controlForTheAbsence": "Eleven separate reads across three services, all empty, by a method that returned full licence text elsewhere in the same sweep.",
+        "whatWouldUnblockIt": "MDWFP stating terms.",
+        "whyItsOwnStateAndNotReachability": "Every service answered 200 and resolves points live. Nothing is unreachable; nothing is stated."
+      }
+    },
+    {
+      "state": "NC",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "COUNTY — there is no North Carolina hunting \"zone\" in any legal instrument",
+        "service": "https://services.arcgis.com/.../nc_counties_view/FeatureServer/0",
+        "unitCount": 100,
+        "definedBy": "15A NCAC 10B .0203(a)(1)(A)–(E) for deer and .0202(a)(1)–(8) for bear, both of which ENUMERATE COUNTIES and use no zone name at all. The names \"NORTHEASTERN\", \"SOUTHEASTERN\", \"CENTRAL\", \"NORTHWESTERN\", \"WESTERN\" and the three Bear Management Units appear ONLY in NCWRC's published one-page season-dates sheet — so the zone is a PRESENTATION LABEL over a county list, not a regulatory geography. CWD is the exception and IS defined in rule: 15A NCAC 10B .0501(b)(4)–(9) and .0502(a).",
+        "theCountyListsReconcileExactly": "Checked rather than trusted: .0203(a)(1)(A)=23 counties, (B)=22, (C)=12, (D)=17, (E)=19, totalling 93; 10B .0502(a) names the remaining 7 (Cumberland, Forsyth, Sampson, Stokes, Surry, Wilkes, Yadkin); 93+7=100, which is North Carolina's county count. And each of the five presentation zones' county lists matches its codified paragraph county-for-county.",
+        "theFeatureCountIsNotTheUnitCount": "nc_counties_view is a clean 100 features / 100 distinct CO_NAME. CountyBoundaryShoreline returns 127 FEATURES for the same 100 distinct NAME and FIPS — the 27 extra are land and water shoreline splits, distinguishable by a WATER field whose distinct values are 'A' and 'S'. Using that layer's count would overstate the unit system by 27.",
+        "districtIsNotAUnit": "NCWRC \"District\" 1–9 is an administrative and enforcement district. No season is written to it, and it must not be mistaken for a hunting unit."
+      },
+      "licence": {
+        "statedAs": "The NC Center for Geographic Information and Analysis (CGIA) is charged with the development and maintenance of NC OneMap and, in cooperation with partner organizations, is committed to offering access to current State geospatial data.",
+        "sha256": "sha256:9f8a38a481416e9a0c5b41b778dd5596e9c92a6782006f93e96e11df3a549012",
+        "url": "https://www.nconemap.gov/pages/terms",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "COMMERCIAL_PERMITTED",
+        "redistribution": "PERMITTED",
+        "attribution": "NC Center for Geographic Information and Analysis / NC OneMap",
+        "note": "AN EXPRESS GRANT, and the instrument the game-lands dataset's own NC OneMap catalogue record points to. Note how it had to be read: the page is JavaScript-rendered, and curl returns a shell with no terms text, so reading it with a plain fetcher would have produced a false NONE STATED. Licensing is NOT North Carolina's blocker — geometry and statute access are."
+      },
+      "note": "NO PUBLISHED POLYGON GEOGRAPHY FOR NC'S HUNTING UNITS, verified with positive controls on two independent methods so it is a true negative rather than a broken query. The deer and bear units are county lists in rule, and no authority publishes them as polygons — which is not fatal, because the county layer IS published and the rule's county lists reconcile to 100 exactly. North Carolina is therefore a county-join state like Kentucky, not an absent one."
+    },
+    {
+      "state": "MD",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "deer management region, and eight deer management zones",
+        "service": "https://www.arcgis.com/sharing/rest/content/items/a24953147769432585eb6e0b655a835b?f=json",
+        "unitCount": null,
+        "definedBy": "COMAR 08.03.03.06A",
+        "theAbsenceIsTheFinding": "MARYLAND'S HUNTING GEOGRAPHY EXISTS ONLY AS PROSE. Its deer management regions and its eight deer management zones are road-centreline descriptions in COMAR 08.03.03.06A, plus ONE JPEG for Frederick County. No vector representation is published anywhere reachable, and the search was bounded and reported: 153 Maryland iMAP services were enumerated across all folders. So a point cannot be resolved to a Maryland deer zone, and deriving the lines from road centrelines ourselves would be inventing a regulatory boundary."
+      },
+      "licence": {
+        "statedAs": "The Spatial Data, and the information therein, (collectively the “Data”) is provided \"as is\" without warranty of any kind, either expressed, implied, or statutory.",
+        "sha256": "sha256:8f5c25102e8a8226a94ca67b1afc545e1d0c64eba7279551522a9cbd3cafb9b4",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/a24953147769432585eb6e0b655a835b?f=json",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "UNRESOLVED",
+        "redistribution": "UNRESOLVED",
+        "attribution": "Maryland Department of Natural Resources",
+        "note": "TWO DIFFERENT INSTRUMENTS COVER THE TWO THINGS NORTH GROUND NEEDS — the spatial data and the rules — and NEITHER IS A REFUSAL, though both carry conditions. The spatial terms were read identically on two independent items (County Boundaries and DNR Owned Lands) from the portal item rather than the service. Recorded UNRESOLVED because conditions are not a grant; and Maryland's blocker is not its licence, it is that the geography does not exist as data at all."
+      }
+    },
+    {
+      "state": "MA",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Wildlife Management Zone",
+        "service": "https://services1.arcgis.com/7iJyYTjCtKsZS1LR/arcgis/rest/services/WildlifeManagementZones/FeatureServer/0",
+        "unitCount": null,
+        "definedBy": "MassWildlife's own published zones; the codified rules could not be retrieved — see `reachability`."
+      },
+      "licenceAbsent": {
+        "state": "NONE_STATED",
+        "finding": "NONE STATED for the zone dataset itself. Three instruments were kept separate; this is the zone dataset's own.",
+        "whereLooked": [
+          "service-level copyrightText (empty string)",
+          "layer-0 copyrightText (empty string)",
+          "portal item licenseInfo (null)",
+          "portal item accessInformation (null)"
+        ],
+        "controlForTheAbsence": "Four places for this one dataset, and all four silent — two of them returning null rather than empty, which is the shape a field that was never populated takes rather than one that failed to read.",
+        "whatWouldUnblockIt": "MassWildlife stating terms.",
+        "whyItsOwnStateAndNotReachability": "Every service answered 200 and resolves points live. Nothing is unreachable; nothing is stated."
+      },
+      "rulesReachability": {
+        "state": "TRANSPORT_BLOCKED",
+        "finding": "MASS.GOV REFUSES AUTOMATED FETCHERS, and that is Massachusetts's real operational blocker because every MA rule fact lives there. WebFetch returned HTTP 403. curl with a full desktop Chrome User-Agent, following redirects, also returned HTTP 403 with a 14,061-byte block page, on three separate mass.gov URLs. The same URLs return HTTP 200 in a real browser engine.",
+        "evidence": {
+          "webFetch": "HTTP 403",
+          "curlWithDesktopUserAgent": "HTTP 403 with a 14,061-byte block page, on three separate URLs",
+          "realBrowserEngine": "HTTP 200 — so the content exists and the refusal is of the agent, not of the request"
+        },
+        "whyNotWorkedAround": "Defeating a bot block is not a workaround North Ground may take: it would be evading a publisher's stated access control. And the block is on the RULES, not the map — the zone service answers 200 — so the two halves of Massachusetts fail for different reasons and must be recorded separately.",
+        "whatWouldUnblockIt": "A path mass.gov permits, or the rules published somewhere it does not block. This is the owner's to pursue.",
+        "notTheSameAsLicenceBlocked": "Nothing Massachusetts publishes refuses REUSE. Its zone dataset states no terms and its rule site refuses the reader — two different failures, and §45's source-change detection and hash verification cannot run at all while the second stands."
+      }
+    },
+    {
+      "state": "NH",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Wildlife Management Unit",
+        "service": "https://www.arcgis.com/sharing/rest/content/items/e15cde961cd64ec5bdfd225907f29796?f=json",
+        "unitCount": null,
+        "definedBy": "NH Fish and Game Department's own published units; the agency's site could not be read — see `reachability`."
+      },
+      "licence": {
+        "statedAs": "Digital data represent the efforts of the NH Fish and Game Department and contributing agencies to record information from the cited source materials.",
+        "sha256": "sha256:6018241d118f3cd3f148294393e2126b37c5102c14bd99a617b7d5aaab75e81b",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/e15cde961cd64ec5bdfd225907f29796?f=json",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "UNRESOLVED",
+        "redistribution": "UNRESOLVED",
+        "attribution": "NH Fish and Game Department",
+        "note": "NOT A REFUSAL. No express prohibition on redistribution exists in any instrument reachable; what exists is a warranty disclaimer plus a fitness-for-purpose caveat, and one instrument affirmatively states that access constraints are \"None\" — which is closer to a grant than a silence and still not one, so UNRESOLVED."
+      },
+      "rulesReachability": {
+        "state": "TRANSPORT_BLOCKED",
+        "finding": "The agency's own website is unreachable from this environment, on every path and both fetchers, with a browser User-Agent: wildlife.nh.gov/hunting-nh, /hunting-nh/hunting-digest, /hunting-nh/hunting-rules-and-laws, wildlife.nh.gov/, wildnh.com/ and nh.gov/ all return HTTP 403.",
+        "evidence": {
+          "sixPathsTried": "all HTTP 403, both fetchers, with a browser User-Agent",
+          "positiveControlThatLocalisesTheFault": "gc.nh.gov/rules/state_agencies answered in the same session by the same method, so the fault is specific to the agency's host rather than general to New Hampshire or to the network."
+        },
+        "whyNotWorkedAround": "The block is the publisher's access control, and defeating it is not available to North Ground. The GIS item answers, so the map and the rules fail separately.",
+        "whatWouldUnblockIt": "A path the host permits, or the digest reached through the state's rules site, which does answer.",
+        "notTheSameAsLicenceBlocked": "New Hampshire's terms were READ and are closer to a grant than a refusal. This is a transport failure on the rules host alone."
+      }
     }
   ],
   "silenceIsNotRefusal": "Two different states of the world are both recorded as blocked, and they are undone differently. SILENCE (UNRESOLVED) means no grant is stated either way: the publisher may simply never have been asked, so a person must ask it. A REFUSAL (RESTRICTED, or redistribution PROHIBITED) means the publisher has answered, and the answer is no: reading its terms more carefully will not change them, and only a written exception from it would. Reporting the two identically would make a refusal look like an errand.",
   "reachabilityIsNotLicence": "A source that cannot be reached SECURELY is blocked for a different reason than one whose terms refuse us, and the two must not be merged. Arizona is the first: its own GIS host has served an expired certificate since 2022, so North Ground has never been able to read its terms at all. Recording that as a licence finding would assert something about terms nobody has read; recording it as 'no source' would be false, because the authority publishes one. It is its own state, and the remedy belongs to the authority rather than to us.",
   "aWarrantyDisclaimerIsNotALicence": "Several states answer a licence question with a WARRANTY disclaimer, which is a different legal instrument: it disclaims liability for accuracy and says nothing about reuse. Nevada's whole statement is one. Reading \"no warranty\" as \"no permission\" would invent a refusal; reading it as permission would invent a grant. Both are UNRESOLVED, and the note says which kind of silence it is, because a disclaimer means the publisher HAS written terms and they simply do not address use — which is a different ask than a publisher who has written nothing.",
-  "threeWaysAFindingCanLackALicence": "A finding carries exactly one of: `licence` (terms were read, whatever they say), `reachability` (the service could not be reached securely, so its terms could not be read either — Arizona), or `licenceAbsent` (the service is fine and the publisher has stated nothing — Utah). They are not interchangeable because the next action differs: read the terms, ask the authority to fix its certificate, or ask the authority to state terms at all."
+  "threeWaysAFindingCanLackALicence": "A finding carries exactly one of: `licence` (terms were read, whatever they say), `reachability` (the service could not be reached securely, so its terms could not be read either — Arizona), or `licenceAbsent` (the service is fine and the publisher has stated nothing — Utah). They are not interchangeable because the next action differs: read the terms, ask the authority to fix its certificate, or ask the authority to state terms at all.",
+  "openDecisionForTheOwner": {
+    "question": "Does an ABSENCE of stated terms block a LIVE READ of an authority's own public service, or only a stored copy?",
+    "whyItIsBeingAsked": "It is the single highest-leverage classification decision left in the United States, and it is not mine to make. The standing owner decision is that US GIS is live-service only — no US state polygons stored, certify live — and Idaho is already SERVED that way with redistribution UNRESOLVED and storedCopyPermitted false. If an unstated licence blocks only a stored copy, then every state below in `statesWhereNothingRefusesUs` is currently reported as blocked while nothing refuses us, which is exactly the over-strict error §8 names — and §8 also says a refusal always looks defensible, which is why an unnecessary one is never reported by anyone.",
+    "counts": {
+      "statesWhereNothingRefusesUs": 8,
+      "statesWithConditionsButNoGrant": 11,
+      "statesExpresslyRefusing": 7,
+      "statesWithAClearGrant": 7
+    },
+    "statesWhereNothingRefusesUs": [
+      "AL",
+      "CT",
+      "IA",
+      "IL",
+      "LA",
+      "MA",
+      "MS",
+      "UT"
+    ],
+    "statesWithConditionsButNoGrant": [
+      "DE",
+      "MD",
+      "ND",
+      "NH",
+      "NM",
+      "NV",
+      "OR",
+      "PA",
+      "SD",
+      "WA",
+      "WI"
+    ],
+    "statesExpresslyRefusing": [
+      "AK",
+      "AR",
+      "IN",
+      "ME",
+      "MN",
+      "NJ",
+      "NY"
+    ],
+    "statesWithAClearGrant": [
+      "CA",
+      "DC",
+      "FL",
+      "HI",
+      "KY",
+      "MI",
+      "NC"
+    ],
+    "whatIsNotBeingClaimed": "Nothing has been reclassified on this argument. Every state below is still reported LICENCE_BLOCKED, which is the conservative reading. §62 puts source integrity above user usefulness and §46 asks for human review of high-impact changes, so the argument is recorded and the decision is left open rather than taken.",
+    "theRiskInEachDirection": {
+      "ifTermsAreReclassifiedAndThatIsWrong": "North Ground would serve geometry it had no permission to serve. A licensing exposure, outward-facing, and the owner's to accept or refuse.",
+      "ifTheyAreNotAndThatIsWrong": "North Ground reports itself unable to answer in states where nothing refuses it, and the states stay unbuilt. No hunter is harmed today, and the cost is invisible — which is precisely why it needs stating."
+    }
+  }
 }
