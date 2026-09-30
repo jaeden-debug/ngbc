@@ -109,7 +109,14 @@ test("the species layer asks about one viewport and gets back only zones with ev
   assert.ok(body.sources.length > 0 && body.sources[0].limitations.length > 0);
   // Nothing in the reply can carry a legal status.
   assert.equal(JSON.stringify(body).includes("legalStatus"), false);
-  assert.equal(JSON.stringify(body).toUpperCase().includes("SEASON"), false);
+  /* No season, open or closed, in any form — except the declared field saying
+     WHEN an authority counted (Alberta flies in winter, after the hunt), which
+     is about the survey and is the reason the field exists. */
+  const withoutSurveyTiming = {
+    ...body,
+    sources: body.sources.map((source: Record<string, unknown>) => Object.fromEntries(Object.entries(source).filter(([key]) => key !== "seasonalBasis"))),
+  };
+  assert.equal(JSON.stringify(withoutSurveyTiming).toUpperCase().includes("SEASON"), false);
 });
 
 test("the species layer refuses to answer for more than one screenful", async () => {
@@ -130,10 +137,10 @@ test("the species layer rejects a foreign origin, a wrong content type and junk"
 
 test("coverage is computed from the bundles at call time, never typed by hand", async () => {
   const body = await (await COVERAGE()).json();
-  assert.equal(body.speciesJurisdictionPairs, 49);
-  assert.equal(body.geographyCount, 3935);
-  assert.equal(body.evidenceRecordCount, 9108);
-  assert.equal(body.datasets.length, 49);
+  assert.equal(body.speciesJurisdictionPairs, 52);
+  assert.equal(body.geographyCount, 4122);
+  assert.equal(body.evidenceRecordCount, 9295);
+  assert.equal(body.datasets.length, 52);
   for (const dataset of body.datasets) {
     assert.match(dataset.speciesId, /^species:/);
     assert.match(dataset.jurisdictionId, /^jurisdiction:/);
@@ -167,14 +174,15 @@ test("the methodology endpoint describes the calculation the map actually perfor
   assert.equal(response.status, 200);
   const body = await response.json();
   assert.equal(body.methodology.version, "opportunity-v2");
-  assert.equal(body.datasets.length, 2, "deer is served by two authorities and both must be named");
+  assert.equal(body.datasets.length, 3, "deer is served by three authorities and each must be named");
 
   for (const dataset of body.datasets as Array<{ authority: string; url: string; observationYear: number; measures: Array<{ metric: string; contributes: boolean; weight?: number }>; limitations: string[]; renderKindMeaning: string; grade: string }>) {
     assert.match(dataset.url, /^https:\/\//, "the authority's own source travels with its numbers");
     assert.ok(dataset.observationYear >= 2020);
     assert.ok(dataset.limitations.length > 0);
     assert.match(dataset.renderKindMeaning, /Nothing inside an area is hotter/);
-    assert.notEqual(dataset.grade, "A", "no committed dataset measures animals per square kilometre");
+    /* Alberta publishes deer per km²; harvest never earns grade A. */
+    assert.equal(dataset.grade === "A", /Alberta/i.test(dataset.authority), `${dataset.authority} graded ${dataset.grade}`);
 
     const contributing = dataset.measures.filter(({ contributes }) => contributes);
     const total = contributing.reduce((sum, measure) => sum + (measure.weight ?? 0), 0);
@@ -206,14 +214,16 @@ test("the coverage report grades every dataset from its own evidence", async () 
   const body = await (await COVERAGE()).json();
   assert.equal(body.methodologyVersion, "opportunity-v2");
   /*
-   * Two populations, and the split is the point. The thirteen harvest datasets
-   * are grade C drawn per management area — a record of hunting, for a whole
-   * unit. The thirty-six Eastern Waterfowl Survey datasets are grade B drawn per
+   * Three populations, and the split is the point. The thirteen harvest
+   * datasets are grade C drawn per management area — a record of hunting, for
+   * a whole unit. Alberta's three aerial-survey datasets are grade A, animals
+   * per km², and still per unit: a better number, not a finer place. The
+   * thirty-six Eastern Waterfowl Survey datasets are grade B drawn per
    * surveyed plot, because the authority counted the animals themselves on a
    * 25 km² square. Counted from the bundles, never declared.
    */
-  assert.deepEqual(body.byGrade, { B: 36, C: 13 });
-  assert.deepEqual(body.byRenderKind, { SAMPLE_PLOT: 36, ZONE_AREA: 13 });
+  assert.deepEqual(body.byGrade, { A: 3, B: 36, C: 13 });
+  assert.deepEqual(body.byRenderKind, { SAMPLE_PLOT: 36, ZONE_AREA: 16 });
   for (const dataset of body.datasets) {
     assert.ok(dataset.independentValues >= 1);
     assert.ok(dataset.metrics.length >= 1);

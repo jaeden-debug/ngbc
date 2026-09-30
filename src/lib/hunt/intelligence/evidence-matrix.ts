@@ -96,6 +96,13 @@ export const DATASET_EVIDENCE: Record<string, DatasetEvidenceKind> = {
   "dataset:ca-qc-white-tailed-deer-harvest": { tier: "T1_OFFICIAL_MEASURED", precision: "MANAGEMENT_UNIT" },
   "dataset:ca-qc-black-bear-harvest": { tier: "T1_OFFICIAL_MEASURED", precision: "MANAGEMENT_UNIT" },
   "dataset:ca-qc-wild-turkey-harvest": { tier: "T1_OFFICIAL_MEASURED", precision: "MANAGEMENT_UNIT" },
+  /* Animals per km², the authority's estimate from its own winter survey design:
+     a better metric than harvest at exactly the same resolution. */
+  "dataset:ca-ab-aerial-ungulate-surveys": {
+    tier: "T2_OFFICIAL_MODELLED",
+    precision: "MANAGEMENT_UNIT",
+    caveat: "Each unit's figure is its own most recent survey, flown in winter; units are surveyed years apart, and a figure for several units together is not divided among them.",
+  },
   "dataset:ca-bc-big-game-harvest": {
     tier: "T1_OFFICIAL_MEASURED",
     precision: "MANAGEMENT_UNIT",

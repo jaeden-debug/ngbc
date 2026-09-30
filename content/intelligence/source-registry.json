@@ -161,6 +161,30 @@
       "limitations": "Excluded deliberately and permanently unless written permission is obtained. The catalogue marks it Access Only: \"reproduction is not permitted without written permission\" and \"It may not be reproduced or redistributed without the prior written permission of the Province of British Columbia.\" It would add 95% confidence bounds to the same programme's figures, which is why someone will be tempted; it is not to be read, cached or cross-checked against. The OGL-BC Big Game Harvest Statistics file carries the usable output."
     },
     {
+      "id": "dataset:ca-ab-aerial-ungulate-surveys",
+      "layer": "species-heat",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "speciesIds": [
+        "species:moose",
+        "species:mule-deer",
+        "species:white-tailed-deer"
+      ],
+      "authority": "Government of Alberta",
+      "title": "Aerial wildlife survey reports (Wildlife Management Unit aerial ungulate surveys)",
+      "url": "https://www.alberta.ca/aerial-wildlife-survey-reports",
+      "resourceUrl": "https://open.alberta.ca/api/3/action/package_search",
+      "spatialResolution": "Alberta Wildlife Management Unit (a few reports cover several units together, or only the part of a unit that was flown)",
+      "temporalCoverage": "Winter surveys 2015–2025, one report per unit per survey; each unit carries its own most recent survey",
+      "licence": "Open Government Licence – Alberta",
+      "licenceUrl": "https://open.alberta.ca/licence",
+      "commercialReuse": "ALLOWED",
+      "redistribution": "ALLOWED",
+      "legalStanding": "OFFICIAL_SURVEY_REPORT",
+      "ingestionStatus": "INGESTED",
+      "productionStatus": "PARTIAL",
+      "limitations": "Read from PDF reports by scripts/build-alberta-ungulate-density.mjs, which takes a figure only from a report's Results, only from a sentence of recognised wording, for the species that sentence or its section names, and keeps that sentence. Density is animals per km² for the whole unit, estimated from a winter aerial survey, so it is never painted and cannot say where inside the unit the animals are. Surveys are years apart and each figure carries its own year. A report covering several units is not apportioned; a figure for part of a unit says so; a report that disagrees with its own table is shown with both values and ranked by neither. 20 reports could not be read and are listed with their reasons in docs/research/alberta-ungulate-density-read.md."
+    },
+    {
       "id": "dataset:ca-on-moose-harvest",
       "layer": "harvest-data",
       "jurisdictionId": "jurisdiction:ca-on",
@@ -809,8 +833,11 @@
         "status": "ZONE_RESOLUTION_ONLY",
         "authoritySearched": "Alberta Environment and Protected Areas",
         "resolution": "Wildlife Management Unit",
-        "reason": "126 aerial ungulate survey reports publish animals per km² with a 90% confidence interval by species, which is a better metric than harvest at the same resolution. PDF only.",
-        "verifiedAt": "2026-09-29"
+        "reason": "Aerial ungulate survey reports publish animals per km² by species for each Wildlife Management Unit, with a 90% confidence interval where the report states one. That is a better metric than harvest at the same resolution, not a finer one; North Ground reads 187 unit figures from them as zone evidence, shown in each unit's card and never painted.",
+        "verifiedAt": "2026-09-30",
+        "datasetIds": [
+          "dataset:ca-ab-aerial-ungulate-surveys"
+        ]
       },
       {
         "id": "finding:ca-bc-big-game",

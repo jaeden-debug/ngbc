@@ -344,6 +344,22 @@ async function run(width, height) {
   }
   const evidenceShown = await page.evaluate(() => document.querySelector("[data-zone-evidence]")?.textContent ?? "");
   record(tag, "zone evidence: the card shows the authority's own figures", /moose/i.test(evidenceShown) && /not a count of animals/i.test(evidenceShown), evidenceShown.slice(0, 140));
+  /* A density is animals, not hunting: Alberta's aerial survey of WMU 204, flown
+     in 2019, dated by its own survey and cited to its own report. */
+  await page.goto(`${base}/hunt?zone=ca-ab-wmu-204&species=mule-deer&explore=1`, { waitUntil: "networkidle", timeout: 90_000 });
+  await page.waitForSelector('[data-zone-evidence][data-evidence-metric="POPULATION_DENSITY"]', { timeout: 20_000 }).catch(() => null);
+  const density = await page.evaluate(() => {
+    const block = document.querySelector('[data-zone-evidence][data-evidence-metric="POPULATION_DENSITY"]');
+    return { text: block?.textContent ?? "", link: block?.querySelector("a")?.getAttribute("href") ?? "" };
+  });
+  record(tag, "zone evidence: an Alberta unit shows its aerial-survey density, dated and cited",
+    /0\.74 mule deer per km²/.test(density.text) && /2019/.test(density.text) && /whole unit/.test(density.text) && /open\.alberta\.ca\/publications\//.test(density.link),
+    `${density.text.slice(0, 160)} → ${density.link}`);
+  await shot("5d-alberta-density-card");
+  if (conditionCase?.zone === "ca-on-wmu-49") {
+    await page.goto(caseUrl, { waitUntil: "networkidle", timeout: 90_000 });
+    await page.waitForTimeout(4000);
+  }
   if (conditionCase && conditionCase.zone !== "ca-on-wmu-49") {
     await page.goto(caseUrl, { waitUntil: "networkidle", timeout: 90_000 });
     await page.waitForTimeout(4000);
