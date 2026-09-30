@@ -21,7 +21,7 @@
  * Attribution: the datasets that contributed, with their record counts, so
  * every CC BY publisher can be credited.
  */
-import { mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { readTile } from "./lib/mvt.mjs";
 import { catalogueSpecies } from "../src/lib/hunt/intelligence/species-catalogue.ts";
@@ -29,7 +29,12 @@ import { surfaceRegistry } from "../src/lib/hunt/intelligence/surface.ts";
 
 const args = process.argv.slice(2);
 const OUT = args.includes("--out") ? args[args.indexOf("--out") + 1] : ".research/gbif";
-const only = args.find((a) => a.startsWith("--species="))?.split("=")[1];
+const only = args.find((a) => a.startsWith("--species="))?.split("=")[1]?.split(",").filter(Boolean);
+/* A season window, for a species whose hunting-season range differs from its
+   breeding range: `--months=9-12,1-2` keeps records from September to
+   February. Months are GBIF's own range syntax, so the filter is the
+   service's, not ours. */
+const months = args.find((a) => a.startsWith("--months="))?.split("=")[1]?.split(",").filter(Boolean).map((range) => range.split("-").map(Number));
 mkdirSync(OUT, { recursive: true });
 const USER_AGENT = "NorthGroundBushcraft/1.0 (+https://www.northgroundbushcraft.com)";
 
@@ -41,6 +46,7 @@ const FILTER = [
   "license=CC0_1_0", "license=CC_BY_4_0",
   "hasCoordinate=true", "hasGeospatialIssue=false", "occurrenceStatus=PRESENT", "year=2000,2026",
   "basisOfRecord=HUMAN_OBSERVATION", "basisOfRecord=PRESERVED_SPECIMEN", "basisOfRecord=MATERIAL_SAMPLE", "basisOfRecord=MACHINE_OBSERVATION", "basisOfRecord=OBSERVATION",
+  ...(months ?? []).map(([from, to]) => `month=${from},${to ?? from}`),
 ].join("&");
 
 let last = 0;
@@ -50,9 +56,11 @@ let last = 0;
    the service's own words rather than retried until the run gives up. */
 async function get(url, as = "json") {
   for (let attempt = 1; attempt <= 6; attempt += 1) {
-    const wait = Math.max(0, last + 1100 - Date.now());
-    if (wait) await new Promise((resolve) => setTimeout(resolve, wait));
-    last = Date.now();
+    /* One request starts every 350 ms across every worker: at most about three
+       a second, whatever the service's latency. */
+    const start = Math.max(Date.now(), last + 350);
+    last = start;
+    if (start > Date.now()) await new Promise((resolve) => setTimeout(resolve, start - Date.now()));
     let status = 0;
     try {
       const response = await fetch(url, { headers: { "user-agent": USER_AGENT }, signal: AbortSignal.timeout(120_000) });
@@ -78,7 +86,7 @@ for (let x = Math.floor((-180 + 180) / TILE_DEGREES); x <= Math.floor((-45 + 180
 
 /* Species with a measured survey surface already; recorded presence is read for the rest. */
 const surfaced = new Set(surfaceRegistry().surfaces.filter((entry) => !["OCCURRENCE_RECORDS", "NORTH_GROUND_MODEL"].includes(entry.evidenceClass)).map((entry) => entry.speciesId));
-const wanting = catalogueSpecies().filter((s) => !surfaced.has(s.speciesId) && ["HUNTABLE", "REMOVAL"].includes(s.takeEligibility) && (!only || s.speciesId === only));
+const wanting = catalogueSpecies().filter((s) => ["HUNTABLE", "REMOVAL"].includes(s.takeEligibility) && (only ? only.includes(s.speciesId) : !surfaced.has(s.speciesId)));
 const datasetTitles = new Map();
 const summary = [];
 async function readSpecies(species) {
@@ -136,7 +144,7 @@ async function readSpecies(species) {
   const records = squares.reduce((sum, [, , total]) => sum + total, 0);
   writeFileSync(join(OUT, `${species.speciesId.replace("species:", "")}.json`), `${JSON.stringify({
     ...row, retrievedAt: new Date().toISOString().slice(0, 10), filter: FILTER, portalQuery: `https://www.gbif.org/occurrence/search?taxon_key=${match.usageKey}&${FILTER.toLowerCase()}`,
-    squareDegrees: TILE_DEGREES * SQUARE_UNITS / 4096, openRecordCount: facets.count, datasets,
+    squareDegrees: TILE_DEGREES * SQUARE_UNITS / 4096, openRecordCount: facets.count, datasets, months: months ?? null,
     columns: ["west", "south", "records"], squares, unreadTiles: unread,
   })}\n`);
   for (const { datasetKey } of datasets) datasetTitles.set(datasetKey, null);
@@ -145,27 +153,45 @@ async function readSpecies(species) {
 }
 
 /* One species the service will not answer about must not cost every other
-   species its read; it is written down with the service's reason. */
-for (const species of wanting) {
-  try {
-    await readSpecies(species);
-  } catch (error) {
-    const slug = species.speciesId.replace("species:", "");
-    writeFileSync(join(OUT, `${slug}.json`), `${JSON.stringify({ speciesId: species.speciesId, scientificName: species.scientificName, refused: `read failed: ${String(error.message).slice(0, 300)}` })}\n`);
-    summary.push({ speciesId: species.speciesId, scientificName: species.scientificName, failed: String(error.message).slice(0, 300) });
-    process.stdout.write(`${species.speciesId.padEnd(38)} FAILED ${String(error.message).slice(0, 200)}\n`);
+   species its read; it is written down with the service's reason. Three
+   species are read at once, sharing the one request pace above. */
+const queue = [...wanting];
+async function worker() {
+  for (let species = queue.shift(); species; species = queue.shift()) {
+    try {
+      await readSpecies(species);
+    } catch (error) {
+      const slug = species.speciesId.replace("species:", "");
+      writeFileSync(join(OUT, `${slug}.json`), `${JSON.stringify({ speciesId: species.speciesId, scientificName: species.scientificName, refused: `read failed: ${String(error.message).slice(0, 300)}` })}\n`);
+      summary.push({ speciesId: species.speciesId, scientificName: species.scientificName, failed: String(error.message).slice(0, 300) });
+      process.stdout.write(`${species.speciesId.padEnd(38)} FAILED ${String(error.message).slice(0, 200)}\n`);
+    }
   }
 }
+await Promise.all([worker(), worker(), worker()]);
 
 /* Who to credit: every contributing dataset's title and publisher. */
-for (const key of datasetTitles.keys()) {
-  try {
-    const dataset = await get(`https://api.gbif.org/v1/dataset/${key}`);
-    const publisher = dataset.publishingOrganizationKey ? await get(`https://api.gbif.org/v1/organization/${dataset.publishingOrganizationKey}`) : null;
-    datasetTitles.set(key, { title: dataset.title, license: dataset.license, doi: dataset.doi ?? null, publisher: publisher?.title ?? null });
-  } catch (error) {
-    datasetTitles.set(key, { error: String(error.message).slice(0, 160) });
+const organizations = new Map();
+const datasetQueue = [...datasetTitles.keys()].sort();
+async function datasetWorker() {
+  for (let key = datasetQueue.shift(); key; key = datasetQueue.shift()) {
+    try {
+      const dataset = await get(`https://api.gbif.org/v1/dataset/${key}`);
+      const orgKey = dataset.publishingOrganizationKey;
+      /* The lookup's promise is cached, so datasets of one publisher share one request. */
+      if (orgKey && !organizations.has(orgKey)) organizations.set(orgKey, get(`https://api.gbif.org/v1/organization/${orgKey}`).catch(() => null));
+      const publisher = orgKey ? await organizations.get(orgKey) : null;
+      datasetTitles.set(key, { title: dataset.title, license: dataset.license, doi: dataset.doi ?? null, publisher: publisher?.title ?? null });
+    } catch (error) {
+      datasetTitles.set(key, { error: String(error.message).slice(0, 160) });
+    }
   }
 }
-writeFileSync(join(OUT, "_datasets.json"), `${JSON.stringify(Object.fromEntries(datasetTitles), null, 1)}\n`);
-writeFileSync(join(OUT, "_summary.json"), `${JSON.stringify(summary, null, 1)}\n`);
+await Promise.all([datasetWorker(), datasetWorker(), datasetWorker()]);
+/* A read of some species adds to what earlier reads recorded; it never erases
+   another species' summary or the credit owed to its datasets. */
+const priorTitles = existsSync(join(OUT, "_datasets.json")) ? JSON.parse(readFileSync(join(OUT, "_datasets.json"), "utf8")) : {};
+const priorSummary = existsSync(join(OUT, "_summary.json")) ? JSON.parse(readFileSync(join(OUT, "_summary.json"), "utf8")) : [];
+const readNow = new Set(summary.map((row) => row.speciesId));
+writeFileSync(join(OUT, "_datasets.json"), `${JSON.stringify({ ...priorTitles, ...Object.fromEntries(datasetTitles) }, null, 1)}\n`);
+writeFileSync(join(OUT, "_summary.json"), `${JSON.stringify([...priorSummary.filter((row) => !readNow.has(row.speciesId)), ...summary], null, 1)}\n`);

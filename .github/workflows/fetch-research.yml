@@ -55,6 +55,12 @@ jobs:
               "bbs-routes": "scripts/build-bbs-surface.mjs --routes-out=.research/bbs-routes",
               "gbif-presence": "scripts/fetch-gbif-presence.mjs --out .research/gbif",
               "landcover": "LANDCOVER",
+              "terrain": "TERRAIN",
+              /* Migratory species hunted in autumn and winter: their records from
+                 September to February, so the range drawn is where they are in the
+                 season, not where they breed. */
+              "gbif-season": "scripts/fetch-gbif-presence.mjs --out .research/gbif-season --months=9-12,1-2 --species=species:brant,species:cackling-goose,species:greater-white-fronted-goose,species:rosss-goose,species:snow-goose,species:black-scoter,species:common-eider,species:harlequin-duck,species:king-eider,species:long-tailed-duck,species:surf-scoter,species:white-winged-scoter,species:tundra-swan,species:king-rail,species:purple-gallinule",
+              "gbif-retry": "scripts/fetch-gbif-presence.mjs --out .research/gbif --species=" + (r.retry ?? []).join(","),
             };
             const sources = r.sources ?? [r.source];
             for (const source of sources) if (!known[source]) throw new Error(`unknown source ${source}`);
@@ -63,6 +69,11 @@ jobs:
           : > .research/fetch.log
           while read -r command; do
             [ -z "$command" ] && continue
+            if [ "$command" = "TERRAIN" ]; then
+              echo "== terrain foundation" | tee -a .research/fetch.log
+              python3 scripts/build-terrain-foundation.py --out content/intelligence/foundation 2>&1 | tail -30 | tee -a .research/fetch.log || echo "FAILED: terrain" | tee -a .research/fetch.log
+              continue
+            fi
             if [ "$command" = "LANDCOVER" ]; then
               echo "== land-cover foundation" | tee -a .research/fetch.log
               python3 scripts/build-landcover-foundation.py \

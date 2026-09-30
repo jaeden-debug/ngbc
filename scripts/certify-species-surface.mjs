@@ -67,7 +67,7 @@ const record = (viewport, name, pass, detail) => {
 /** Painted pixels of the surface element, read from the element itself. */
 /** Every certified surface: the survey fields, North Ground's models and the records grids. */
 function certifiedEntries() {
-  return ["surface-registry.json", "model-registry.json", "records-registry.json"]
+  return ["surface-registry.json", "model-registry.json", "range-habitat-registry.json"]
     .flatMap((file) => JSON.parse(readFileSync(`content/intelligence/${file}`, "utf8")).surfaces);
 }
 

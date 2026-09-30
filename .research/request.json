@@ -1,1 +1,1 @@
-{"sources": ["unit-boundaries", "gbif-presence"]}
+{"sources": ["gbif-presence", "gbif-season", "terrain", "unit-boundaries"]}
