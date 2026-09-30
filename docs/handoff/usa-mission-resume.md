@@ -187,3 +187,73 @@ Batches of 3–4 states are the lesson.
   A baseline of known failures is not a gate.
 - **Commit before stopping, red or green.** An entire implementation was lost
   earlier in this program to a pruned scratchpad.
+
+---
+
+# Hawaii is ready to serve — everything needed, verified 2026-09-30
+
+Hawaii is the only US state whose terms permit use, and the US pattern is
+LIVE_SERVICE (owner decision 2026-09-21: no US polygons stored). So it needs a
+`UsLayer` entry in `src/lib/hunt/united-states/layers.ts` and nothing else.
+Every value below was fetched, not inferred.
+
+**Service** `https://geodata.hawaii.gov/arcgis/rest/services/Terrestrial/MapServer/33`
+— "Hunting Areas", polygon, `maxRecordCount` 1000, Query supported.
+
+**Extent is wkid 3750, NOT 4326** (xmin 419184.497, ymin 2100495.819, xmax
+936090.333, ymax 2456442.367). NAD83(HARN) / Hawaii zones in metres. A `bounds`
+block copied from the extent without reprojecting would be nonsense; derive it
+from Hawaii's own latitude/longitude range instead.
+
+**Point queries work and are fast.** `?geometry=-155.47,19.75&inSR=4326` returned
+exactly one feature in 0.44 / 0.42 / 0.40 s across three runs:
+`unit_name "Unit A", mammal_uni "A", bird_unit "A", status "Hunting Area (Mammal
+and Bird)", game_desig "Mammal and Bird", island "Hawaii"`.
+
+**`nameField` is `unit_name`.** Other useful fields: `mammal_uni`, `bird_unit`,
+`status`, `game_desig`, `island`, `descriptio`, `gis_acres`.
+
+**QUARANTINE IS MANDATORY, and it is 65 of 186 records.** Measured by groupBy:
+
+| status | n | huntable |
+|---|---|---|
+| Hunting Area (Mammal and Bird) | 81 | yes |
+| Hunting Area (Mammal ONLY) | 35 | mammals only |
+| Hunting Area (Bird ONLY) | 5 | birds only |
+| Safety Zone | 19 | **no** |
+| Safety Zone (NO HUNTING) | 17 | **no** |
+| No Hunting | 16 | **no** |
+| CLOSED | 13 | **no** |
+
+121 hunting areas, 65 non-hunting. Serving the layer without quarantining the
+last four statuses would draw a **safety zone as a hunting unit** — the worst
+available failure, and it would look perfectly normal. `expectedRecords` 186,
+`expectedUnits` 121.
+
+**THE SPECIES PROBLEM IS REAL AND MUST NOT BE FLATTENED.** A polygon can be open
+to mammals and closed to birds. 35 areas are Mammal ONLY and 5 are Bird ONLY, so
+a bird hunter standing in a Mammal ONLY area is **not in a bird unit at all**. A
+single `designationOf` returning `unit_name` loses that. Two honest options:
+
+- one layer, with `mammal_uni` / `bird_unit` / `status` in `keepFields` and the
+  applicability consumed by the rules engine; or
+- two layers, mammal units and bird units, which is more faithful.
+
+Either way `rulesServing` stays **false**: no Hawaii rules are certified, so the
+answer is §41A's "selectable is not answerable" — the official area a point is
+in, an explicit UNKNOWN on legality, and the authority named.
+
+**`legalStanding`** is `DERIVED_FROM_LEGAL_DESCRIPTION`. The controlling text is
+Hawaii Administrative Rules Title 13, DLNR, Subtitle 5, Part 2, Chapters 122
+(Game Birds) and 123 (Game Mammals), which the layer's own description cites.
+
+**The licence qualification still stands** (recorded in
+`content/registry/us-map-licence-findings.json`): "The contents of this web page
+are public domain" qualifies itself "to the extent indicated otherwise in the
+Terms of Use", and that page 404s at three candidate URLs. Live service does not
+redistribute anything, so this is enough for LIVE_SERVICE and is **not** enough
+to store a copy.
+
+**Timezone** `Pacific/Honolulu` (already in `SINGLE_ZONE_JURISDICTIONS`). Note
+Hawaii's DST exemption is **not** established by 49 CFR Part 71 — § 71.2 names no
+exempt state — and must be sourced to 15 U.S.C. 260a(a). Unresolved.
