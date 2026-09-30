@@ -11,6 +11,7 @@ import type { SpeciesSelectorOption } from "../../lib/hunt/coverage";
 import { hasEvidenceForSpecies } from "../../lib/hunt/intelligence/bundles";
 import { offeredAsQuarry } from "../../lib/content/species-eligibility";
 import { hasCertifiedSurface } from "../../lib/hunt/intelligence/surface";
+import { packSpeciesOptions } from "../../lib/hunt/species-option-pack";
 import { northAmericaCoverageReport, regulatoryJurisdictionsForSpecies } from "../../lib/hunt/north-america/report";
 import { HUNT_DEFAULT_TIME_ZONE, jurisdictionTodayIso } from "../../lib/hunt/date";
 import { longDayLabel } from "../../lib/hunt/exploration/date-presets";
@@ -147,6 +148,9 @@ export default async function HuntPage({ searchParams }: Props) {
     const source = sourceById.get(layer.sourceId);
     if (source?.url && !authorities[layer.jurisdictionId]) authorities[layer.jurisdictionId] = { title: source.title, url: source.url };
   }
+  /* Group names are shared by hundreds of species (every snake is a reptile),
+     so they travel once, keyed by group, instead of inside every option. */
+  const speciesGroupTerms: Record<string, string[]> = {};
   const speciesOptions: SpeciesSelectorOption[] = await Promise.all(speciesResources.map(async (resource) => {
     const [aliases, groups] = await Promise.all([
       contentRepository.getSpeciesAliases(resource.speciesProfile.speciesId),
@@ -160,8 +164,10 @@ export default async function HuntPage({ searchParams }: Props) {
     const searchTerms = [
       ...resource.speciesProfile.commonNames.map(({ value }) => value),
       ...(resource.speciesProfile.sexAgeInfo?.terminology.map(({ value }) => value) ?? []),
-      ...groups.flatMap((group) => [...group.names, ...(group.aliases ?? [])].map(({ value }) => value)),
     ].filter((term) => !alreadyMatched.has(term.toLowerCase()));
+    for (const group of groups) {
+      speciesGroupTerms[group.id] ??= [...new Set([...group.names, ...(group.aliases ?? [])].map(({ value }) => value))];
+    }
     return {
       id: resource.speciesProfile.speciesId,
       displayName: resource.title,
@@ -169,6 +175,7 @@ export default async function HuntPage({ searchParams }: Props) {
       category: groups[0]?.names.find(({ locale }) => locale === "en-CA")?.value ?? "Other",
       aliases: aliases.map(({ value }) => value),
       searchTerms: [...new Set(searchTerms)],
+      groupIds: groups.map(({ id }) => id),
       /* The published canonical URL or nothing. A path assembled from the slug
          would be a guess that looks like a fact — and a "Learn more" link that
          404s is worse than no link at all. */
@@ -198,7 +205,8 @@ export default async function HuntPage({ searchParams }: Props) {
       <h1 className="ng-visually-hidden">Your zone. Your season. Your hunt.</h1>
       <HuntApp
         googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
-        speciesOptions={speciesOptions}
+        speciesOptions={packSpeciesOptions(speciesOptions)}
+        speciesGroupTerms={speciesGroupTerms}
         speciesMedia={speciesMedia}
         authorities={authorities}
         /* A link's day is kept. Otherwise the server cannot know the viewer's

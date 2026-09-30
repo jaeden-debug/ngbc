@@ -74,8 +74,9 @@ function rewrite(value) {
       const plan = retired.get(value.sourceIds.find((id) => retired.has(id)));
       const named = (plan.profile.aliases ?? []).some((alias) => alias.toLowerCase().includes(value.value.toLowerCase()));
       if (!named) {
-        const { sourceIds: _dropped, ...rest } = value;
-        return { ...rest, verificationStatus: "needs_review" };
+        const rest = { ...value, verificationStatus: "needs_review" };
+        delete rest.sourceIds;
+        return rest;
       }
     }
     return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, key === "taxonomySourceId" && retired.has(item) ? retired.get(item).newIds[0] : rewrite(item)]));
