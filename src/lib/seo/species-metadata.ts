@@ -44,10 +44,33 @@ const HUNTED_GROUP_IDS = new Set([
   "species_group:migratory-game-birds",
   "species_group:doves-pigeons",
   "species_group:predators",
+  "species_group:wild-sheep",
+  "species_group:exotic-big-game",
+  "species_group:wild-pig",
+  "species_group:peccaries",
+  "species_group:quail",
+  "species_group:prairie-grouse",
+  "species_group:sea-ducks",
+  "species_group:swans",
+  "species_group:rails-coots",
+  "species_group:crows",
+]);
+
+/** Protected species published as identification safety content, because they are
+    confused with a game species (whooping crane with sandhill crane, trumpeter with
+    tundra swan, Gunnison with greater sage-grouse). Group membership would call them
+    a hunting guide; they are never titled one. */
+const PROTECTED_LOOKALIKE_IDS = new Set([
+  "species:whooping-crane",
+  "species:trumpeter-swan",
+  "species:gunnison-sage-grouse",
 ]);
 
 /** Leading words that stay capitalized in running prose. */
-const PROPER_LEADING_WORDS = new Set(["American", "Canada", "North", "Barrow's", "Wilson's"]);
+const PROPER_LEADING_WORDS = new Set([
+  "American", "Canada", "North", "Barrow's", "Wilson's", "Abert's", "Gambel's", "Ross's", "Montezuma",
+  "California", "Virginia", "New", "Eurasian", "Gunnison",
+]);
 
 export interface CoverageJurisdiction {
   /** Canonical id, "jurisdiction:ca-on". */
@@ -58,6 +81,8 @@ export interface CoverageJurisdiction {
 export interface SpeciesMetadataInput {
   /** The resource title, sentence case ("Ruffed grouse"). */
   name: string;
+  /** Canonical id, so a protected lookalike is never called a hunting guide. */
+  speciesId?: string;
   groupIds: readonly string[];
   /** Jurisdictions where North Ground holds certified rules for this species. */
   regulatoryJurisdictions: readonly CoverageJurisdiction[];
@@ -107,7 +132,8 @@ export function speciesMetadataCopy(input: SpeciesMetadataInput): SpeciesMetadat
   const display = speciesTitleCase(input.name);
   const prose = speciesProseName(input.name);
   const coverage = coveragePhrase(input.regulatoryJurisdictions);
-  const hunted = coverage !== null || input.groupIds.some((id) => HUNTED_GROUP_IDS.has(id));
+  const protectedLookalike = input.speciesId !== undefined && PROTECTED_LOOKALIKE_IDS.has(input.speciesId);
+  const hunted = !protectedLookalike && (coverage !== null || input.groupIds.some((id) => HUNTED_GROUP_IDS.has(id)));
 
   if (!hunted) {
     return {

@@ -116,7 +116,9 @@ test("biological sex and jurisdiction-defined regulatory classes remain separate
 
 test("broad animal words and bird categories return choices rather than fake species", async () => {
   for (const [query, expected] of [
-    ["rabbit", ["species:arctic-hare", "species:eastern-cottontail", "species:snowshoe-hare"]],
+    ["rabbit", ["species:arctic-hare", "species:black-tailed-jackrabbit", "species:brush-rabbit", "species:desert-cottontail",
+      "species:eastern-cottontail", "species:mountain-cottontail", "species:new-england-cottontail", "species:snowshoe-hare",
+      "species:swamp-rabbit", "species:white-tailed-jackrabbit"]],
     ["wolf", ["species:eastern-wolf", "species:gray-wolf"]],
     ["fox", ["species:arctic-fox", "species:gray-fox", "species:red-fox"]],
   ] as const) {
@@ -153,7 +155,7 @@ test("French names, scientific names, groups, lookalikes and image gates survive
 
 test("production library is substantial while the selector vocabulary remains compact", async () => {
   const species = (await contentRepository.getPublishedResources({ locale: "en-CA" })).filter((resource) => resource.type === "species");
-  assert.equal(species.length, 60);
+  assert.equal(species.length, 133);
   const compact = await Promise.all(species.map(async (resource) => ({
     id: resource.id,
     n: resource.title,
