@@ -6,7 +6,7 @@ import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
 import type { ZoneHeat } from "../../lib/hunt/exploration/species-layer";
 import { heatPaintFor, zoneIsGreen } from "../../lib/hunt/exploration/species-layer";
 import { bufferStepPx, type RenderableSurface } from "../../lib/hunt/exploration/surface-paint";
-import { rasteriseSurface } from "./map/paint-surface";
+import { paintPlots, rasteriseSurface } from "./map/paint-surface";
 import type { ZoneSpeciesAnswer } from "../../lib/hunt/exploration/states";
 import type { ZoneFeature } from "../../lib/hunt/zone-geometry";
 import type { LabelSource } from "./map/google-overlays";
@@ -40,7 +40,7 @@ interface ZoneCanvasProps {
    * same sampler. A fallback without it would show a hunter the zones and none
    * of the evidence while the legend went on describing the evidence.
    */
-  surface?: RenderableSurface | null;
+  surfaces?: readonly RenderableSurface[];
   zoneKeyOf: (feature: ZoneFeature) => string;
   onZoneClick: (feature: ZoneFeature) => void;
   onEmptyClick: () => void;
@@ -70,7 +70,7 @@ const LONG_PRESS_MS = 550;
 
 export default function ZoneCanvas({
   features, viewport, onViewportChange, huntPoint, selfFix, previewPoint, selectedZoneKey, selectedZoneLabel,
-  labels, zoneAnswers, heat = null, surface = null, zoneKeyOf, onZoneClick, onEmptyClick, onLongPress, overlays, onOverlayClick, onResize,
+  labels, zoneAnswers, heat = null, surfaces = [], zoneKeyOf, onZoneClick, onEmptyClick, onLongPress, overlays, onOverlayClick, onResize,
   onConditionMarker, openConditionMarker = null,
 }: ZoneCanvasProps) {
   const frameRef = useRef<HTMLDivElement>(null);
@@ -111,22 +111,40 @@ export default function ZoneCanvas({
    * a second, looser drawing of the same evidence.
    */
   const surfaceImage = useMemo(() => {
-    if (!surface || !size.width || !size.height || typeof document === "undefined") return null;
+    if (!surfaces.length || !size.width || !size.height || typeof document === "undefined") return null;
     const north = unprojectLatitude(originY, scale);
     const south = unprojectLatitude(originY + size.height, scale);
     const west = unprojectLongitude(originX, scale);
     const east = unprojectLongitude(originX + size.width, scale);
     const middle = (north + south) / 2;
     const metresPerPixel = (Math.abs(east - west) * 111_320 * Math.cos((middle * Math.PI) / 180)) / size.width;
-    const step = bufferStepPx(surface.effectiveResolutionMetres, metresPerPixel);
-    const raster = rasteriseSurface(
-      surface,
-      { north, south, east, west },
-      Math.max(1, Math.ceil(size.width / step)),
-      Math.max(1, Math.ceil(size.height / step)),
-    );
-    return raster ? raster.toDataURL("image/png") : null;
-  }, [surface, size.width, size.height, originX, originY, scale]);
+    const finest = Math.min(...surfaces.map((s) => s.effectiveResolutionMetres));
+    const step = bufferStepPx(finest, metresPerPixel);
+    const rect = { north, south, east, west };
+    const canvas = document.createElement("canvas");
+    canvas.width = size.width;
+    canvas.height = size.height;
+    const context = canvas.getContext("2d");
+    if (!context) return null;
+    let drew = false;
+    context.imageSmoothingEnabled = true;
+    context.imageSmoothingQuality = "high";
+    for (const one of surfaces) {
+      if (one.continuity !== "CONTINUOUS") continue;
+      const raster = rasteriseSurface(one, rect, Math.max(1, Math.ceil(size.width / step)), Math.max(1, Math.ceil(size.height / step)));
+      if (!raster) continue;
+      context.drawImage(raster, 0, 0, canvas.width, canvas.height);
+      drew = true;
+    }
+    /* Plots keep their hard edges here too: the fallback must not be the looser
+       drawing of the same evidence. */
+    context.imageSmoothingEnabled = false;
+    for (const one of surfaces) {
+      if (one.continuity !== "DISCRETE") continue;
+      if (paintPlots(context, one, rect, canvas.width, canvas.height)) drew = true;
+    }
+    return drew ? canvas.toDataURL("image/png") : null;
+  }, [surfaces, size.width, size.height, originX, originY, scale]);
 
   const toCoordinate = useCallback(
     (x: number, y: number) => ({
@@ -309,7 +327,7 @@ export default function ZoneCanvas({
           /* Over the surface the interiors are tracing paper (§41A): the zone
              fill was the choropleth, and drawing it on top of the real field
              would put the wrong answer over the right one. */
-          const fill = surface ? null : heatPaintFor(heat?.get(key));
+          const fill = surfaces.length ? null : heatPaintFor(heat?.get(key));
           return (
             <path
               key={key}

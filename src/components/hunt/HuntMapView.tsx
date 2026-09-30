@@ -70,7 +70,7 @@ interface HuntMapViewProps {
    * geography. Null when no species is chosen or none is held; a surface is
    * never synthesised from the zones on screen.
    */
-  surface?: RenderableSurface | null;
+  surfaces?: readonly RenderableSurface[];
   overlays: OverlayFeature[];
   mapMode: "terrain" | "hybrid" | "roadmap";
   camera: CameraRequest | null;
@@ -89,12 +89,15 @@ interface HuntMapViewProps {
   onBasemap: (state: "loading" | "ready" | "fallback") => void;
 }
 
+/* A stable empty array, so a map with no species does not re-run the layer
+   effect on every render of the page around it. */
+const EMPTY_SURFACES: readonly RenderableSurface[] = [];
 const START: Viewport = { ...OPENING_CAMERA };
 const POSTER = posterFrame();
 const SELF_FAILURES: Record<number, SelfFailure> = { 1: "denied", 2: "position", 3: "timeout" };
 
 function HuntMapView({
-  googleMapsApiKey, exploration, dispatch, drawn, selectedKey, huntKey, zoneAnswers, heat = null, surface = null, overlays, mapMode, camera,
+  googleMapsApiKey, exploration, dispatch, drawn, selectedKey, huntKey, zoneAnswers, heat = null, surfaces = EMPTY_SURFACES, overlays, mapMode, camera,
   locateOnStart, poster, padding, emphasis, zonesVisible, onView, onZoneClick, onOverlayClick, onBasemap,
 }: HuntMapViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -198,7 +201,7 @@ function HuntMapView({
     // `drawn` is applied above; this effect only restyles.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [live, selectedKey, huntKey, zoneAnswers, heat, emphasis]);
-  useEffect(() => { live?.setSurface(surface); }, [live, surface]);
+  useEffect(() => { live?.setSurface(surfaces); }, [live, surfaces]);
   useEffect(() => { live?.setOverlays(overlays); }, [live, overlays]);
   useEffect(() => { live?.setZonesVisible(zonesVisible); }, [live, zonesVisible]);
   useEffect(() => { live?.setMapType(mapMode); }, [live, mapMode]);
@@ -397,7 +400,7 @@ function HuntMapView({
           labels={canvasLabels}
           zoneAnswers={zoneAnswers}
           heat={heat}
-          surface={surface}
+          surfaces={surfaces}
           zoneKeyOf={zoneKeyOfFeature}
           onZoneClick={(feature) => onZoneClick(zoneKeyOfFeature(feature), "map")}
           onEmptyClick={() => dispatch({ type: "MAP_TAPPED_EMPTY" })}

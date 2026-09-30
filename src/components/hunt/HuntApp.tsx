@@ -1672,7 +1672,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
           huntKey={huntKey}
           zoneAnswers={filterStates}
           heat={heat}
-          surface={surfaceState.surface}
+          surfaces={surfaceState.surfaces}
           overlays={overlayFeatures}
           mapMode={mapMode}
           camera={cameraRequest}

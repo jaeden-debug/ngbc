@@ -275,10 +275,10 @@ export class GoogleZoneMap {
    * §41B keeps those in different lanes. Nothing here reads a zone, and the
    * layer it hands the surface to cannot see one.
    */
-  setSurface(surface: RenderableSurface | null): void {
-    this.surfaceLayer.set(surface);
-    if (this.style.surfaceOn !== Boolean(surface)) {
-      this.style = { ...this.style, surfaceOn: Boolean(surface) };
+  setSurface(surfaces: readonly RenderableSurface[]): void {
+    this.surfaceLayer.set(surfaces);
+    if (this.style.surfaceOn !== Boolean(surfaces.length)) {
+      this.style = { ...this.style, surfaceOn: Boolean(surfaces.length) };
       this.restyle();
     }
   }

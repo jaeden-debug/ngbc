@@ -4,6 +4,7 @@ import { useEffect, useId, useState } from "react";
 import { SEASON_OPEN_STROKE } from "../../lib/hunt/exploration/cartography";
 import { CONDITION_GLYPH, HEAT_WORDING, SPECIES_LAYER_LEGEND } from "../../lib/hunt/exploration/species-layer";
 import type { OpportunityClass } from "../../lib/hunt/intelligence/types";
+import type { SurfaceLegendState } from "./map/useSpeciesSurface";
 import styles from "./SpeciesLayerLegend.module.css";
 
 /**
@@ -26,17 +27,27 @@ import styles from "./SpeciesLayerLegend.module.css";
    `--ng-heat-gradient`, which mirrors `HEAT_RAMP`; these words sit under it. */
 const BANDS: Array<Exclude<OpportunityClass, "LIMITED_DATA">> = ["LOW", "MODERATE", "HIGH", "VERY_HIGH"];
 
-export interface SurfaceLegend {
-  metricLabel: string;
-  metricMeaning: string;
-  unit: string;
-  emptyMeans: string;
-  zeroMeans: string;
-  resolutionStatedAs: string;
-  continuity: "CONTINUOUS" | "DISCRETE";
-  provenance: Record<string, unknown> | null;
-  surveyed: number;
-  detected: number;
+/**
+ * What to call a layer, from what it IS rather than from a generic word.
+ *
+ * §41B and the owner's §15: only a source that measured animals per unit area
+ * may be called density. A count of birds detected on a survey route is
+ * relative abundance, a model is a model, and a flown plot is a survey. The
+ * kind comes from the reply, so the legend cannot name a measurement the map
+ * did not paint.
+ */
+function surfaceHeading(layer: { geometryKind: string; measured: boolean }): string {
+  switch (layer.geometryKind) {
+    case "DENSITY_RASTER": return "Population density";
+    case "MODELLED_RASTER": return layer.measured ? "Relative abundance, modelled from surveys" : "Modelled distribution";
+    case "SAMPLE_PLOT": return "Survey plots";
+    case "AERIAL_STRATUM": return "Aerial survey";
+    case "SURVEY_GRID": return "Survey grid";
+    case "OBSERVATION_POINT": return "Observations";
+    case "HABITAT_LAYER": return "Habitat suitability";
+    case "NORTH_GROUND_MODEL": return "North Ground habitat model";
+    default: return "Species evidence";
+  }
 }
 
 interface Measure { metric: string; role: string; meaning: string; contributes: boolean; weight?: number }
@@ -112,7 +123,7 @@ export default function SpeciesLayerLegend({
    * — and above all cannot call something "population density" that is a count
    * of birds detected on a survey route (§41B, and the owner's §15).
    */
-  surface?: SurfaceLegend | null;
+  surface?: SurfaceLegendState | null;
 }) {
   /* Nothing shaded anywhere is a different statement from nothing shaded HERE,
      and only the first justifies dropping the ramp. `shadedZones` alone cannot
@@ -136,14 +147,14 @@ export default function SpeciesLayerLegend({
         aria-label={
           `${speciesName} layer. ${openZones} ${openZones === 1 ? "zone" : "zones"} with a hunt open`
           + `${conditionalZones ? `, ${conditionalZones} of them with conditions` : ""}; `
-          + `${surface ? `${surface.metricLabel} shown across ${surface.surveyed} surveyed cells in view` : hasEvidence ? `${shadedZones} with heat evidence` : "no heat evidence held for this species"}. `
+          + `${surface?.layers.length ? surface.layers.map((layer) => layer.scaleStatedAs).join(" ") : hasEvidence ? `${shadedZones} with heat evidence` : "no heat evidence held for this species"}. `
           + "A zone without a green outline is not closed. Open the full key."
         }
         onClick={() => setOpen((was) => !was)}
       >
         <span className={styles.summaryTitle}>{speciesName} layer</span>
         <span className={styles.summaryCounts}>
-          {openZones} {openZones === 1 ? "zone" : "zones"} open{conditionalZones ? ` · ${conditionalZones} with ${CONDITION_GLYPH}` : ""} · {surface ? surface.metricLabel : hasEvidence ? `${shadedZones} with evidence` : "no heat evidence held"}
+          {openZones} {openZones === 1 ? "zone" : "zones"} open{conditionalZones ? ` · ${conditionalZones} with ${CONDITION_GLYPH}` : ""} · {surface?.layers.length ? (surface.layers.length === 1 ? surfaceHeading(surface.layers[0]) : `${surface.layers.length} evidence layers`) : hasEvidence ? `${shadedZones} with evidence` : "no heat evidence held"}
         </span>
         {/* Never behind the disclosure: this is the one sentence that prevents a false closure. */}
         <span className={styles.summaryGuard}>A zone without a green outline is not closed.</span>
@@ -154,9 +165,9 @@ export default function SpeciesLayerLegend({
 
       {open ? (
         <div className={styles.panel} id={panelId}>
-          {surface ? (
+          {surface?.layers.length ? (
           <section className={styles.section}>
-            <h3 className={styles.sectionTitle}>{surface.metricLabel} — where to look for the animal</h3>
+            <h3 className={styles.sectionTitle}>Where to look for the animal</h3>
             <div className={styles.scale}>
               <div
                 className={styles.scaleBar}
@@ -168,30 +179,43 @@ export default function SpeciesLayerLegend({
             </div>
             {/*
               THE THREE STATES §14 REQUIRES TO STAY APART, in words, because two
-              of them are hard to tell apart by eye: a faint blue that was
-              surveyed, and ground with no colour at all that was not.
+              of them are hard to tell apart by eye: the faintest blue is ground
+              that WAS surveyed and held none of the species — for ruffed grouse
+              that is half of everything the surface knows — and ground with no
+              colour at all was never surveyed.
             */}
             <p className={styles.noShade}>
               <span className={styles.swatchEmpty} aria-hidden="true" />
               <span>{surface.emptyMeans}</span>
             </p>
-            <p className={styles.detail}>{surface.zeroMeans}</p>
-            <p className={styles.detail}>{surface.metricMeaning} Measured in {surface.unit}.</p>
             <p className={styles.detail}>
-              Resolution {surface.resolutionStatedAs}. {surface.continuity === "CONTINUOUS"
-                ? "The survey is dense enough to read as a continuous field, so the colour varies within a hunting zone and carries straight across its boundary."
-                : "Drawn only where the survey was actually carried out, and never interpolated between those places."}
+              The faintest shade is ground that WAS surveyed, where the species was not found. That is a finding; ground with no colour is not.
             </p>
-            {surface.provenance ? (
-              <p className={styles.detail}>
-                {String(surface.provenance.authority ?? "")}
-                {surface.provenance.url ? <> · <a href={String(surface.provenance.url)} target="_blank" rel="noreferrer">{String(surface.provenance.title ?? "Source")}</a></> : null}
-                {surface.provenance.licence ? ` · ${String(surface.provenance.licence)}` : ""}
-              </p>
-            ) : null}
-            {Array.isArray(surface.provenance?.limitations)
-              ? (surface.provenance.limitations as string[]).map((line) => <p key={line} className={styles.detail}>{line}</p>)
-              : null}
+            {surface.layers.map((layer) => (
+              <div key={layer.id} className={styles.section}>
+                <h4 className={styles.sectionTitle}>{surfaceHeading(layer)}</h4>
+                {/* The authority's own sentence, not a paraphrase of it. */}
+                <p className={styles.detail}>{layer.scaleStatedAs} Measured in {layer.unit}.</p>
+                <p className={styles.detail}>Resolution: {layer.resolutionStatedAs}</p>
+                <p className={styles.detail}>
+                  {layer.continuity === "CONTINUOUS"
+                    ? "Dense enough to read as a field, so the colour varies inside a hunting zone and carries straight across its boundary."
+                    : "Drawn only on the plots that were actually surveyed, and never interpolated between them."}
+                  {" "}
+                  {layer.unmappedGround === "NOT_SURVEYED"
+                    ? "Ground outside a plot was not surveyed; it is not empty."
+                    : "Ground with no colour is where this survey could not reach — which is a finding about the survey, not about the animals."}
+                </p>
+                {layer.seasonWarning ? <p className={styles.detail}>{layer.seasonWarning}</p> : null}
+                <p className={styles.detail}>
+                  {layer.authority}
+                  {layer.url ? <> · <a href={layer.url} target="_blank" rel="noreferrer">{layer.title || "Source"}</a></> : null}
+                  {layer.licence ? ` · ${layer.licence}` : ""}
+                </p>
+                {layer.limitations.map((line) => <p key={line} className={styles.detail}>{line}</p>)}
+              </div>
+            ))}
+            {surface.refusals.map((line) => <p key={line} className={styles.detail}>{line}</p>)}
           </section>
           ) : hasEvidence ? (
           <section className={styles.section}>

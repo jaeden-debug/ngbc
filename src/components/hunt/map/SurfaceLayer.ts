@@ -1,7 +1,7 @@
 "use client";
 
 import { bufferStepPx, type RenderableSurface } from "../../../lib/hunt/exploration/surface-paint";
-import { rasteriseSurface } from "./paint-surface";
+import { paintPlots, rasteriseSurface } from "./paint-surface";
 
 /**
  * The species surface: a weather-radar field drawn UNDER the hunting geography.
@@ -28,7 +28,7 @@ import { rasteriseSurface } from "./paint-surface";
  */
 
 export interface SurfaceLayerHandle {
-  set(surface: RenderableSurface | null): void;
+  set(surfaces: readonly RenderableSurface[]): void;
   destroy(): void;
 }
 
@@ -39,7 +39,7 @@ const RESCALE_TOLERANCE = 1.35;
 
 export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Map): SurfaceLayerHandle {
   class SurfaceOverlay extends maps.OverlayView {
-    surface: RenderableSurface | null = null;
+    surfaces: readonly RenderableSurface[] = [];
     canvas: HTMLCanvasElement | null = null;
     /** The geographic rectangle the current raster covers. */
     rendered: { north: number; south: number; east: number; west: number } | null = null;
@@ -74,7 +74,7 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
       const canvas = this.canvas;
       const projection = this.getProjection();
       if (!canvas || !projection) return;
-      if (!this.surface) {
+      if (!this.surfaces.length) {
         canvas.style.display = "none";
         this.rendered = null;
         return;
@@ -112,9 +112,8 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
      * to fill the gap.
      */
     render(width: number, height: number, ne: google.maps.LatLng, sw: google.maps.LatLng) {
-      const surface = this.surface;
       const canvas = this.canvas;
-      if (!surface || !canvas) return;
+      if (!this.surfaces.length || !canvas) return;
 
       const latMargin = (ne.lat() - sw.lat()) * MARGIN;
       const lngMargin = (ne.lng() - sw.lng()) * MARGIN;
@@ -131,13 +130,20 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
          hunter is actually looking at. */
       const middle = (rect.north + rect.south) / 2;
       const metresPerPixel = (Math.abs(rect.east - rect.west) * 111_320 * Math.cos((middle * Math.PI) / 180)) / boxWidthPx;
-      const step = bufferStepPx(surface.effectiveResolutionMetres, metresPerPixel);
+      /* A species can carry several surfaces at once — mallard returns plots
+         AND a field. Sample at the FINEST declared resolution present, so a
+         coarse layer cannot blur a finer one; each layer still says its own
+         resolution in the legend. */
+      const finest = Math.min(...this.surfaces.map((s) => s.effectiveResolutionMetres));
+      const step = bufferStepPx(finest, metresPerPixel);
 
       const cols = Math.max(1, Math.ceil(boxWidthPx / step));
       const rows = Math.max(1, Math.ceil(boxHeightPx / step));
 
-      const buffer = rasteriseSurface(surface, rect, cols, rows);
-      if (!buffer) {
+      const fields = this.surfaces.filter((s) => s.continuity === "CONTINUOUS" && s.cells);
+      const plotted = this.surfaces.filter((s) => s.continuity === "DISCRETE" && s.plots?.length);
+      const buffers = fields.map((s) => rasteriseSurface(s, rect, cols, rows)).filter((b): b is HTMLCanvasElement => b !== null);
+      if (!buffers.length && !plotted.length) {
         /* Nothing in view was surveyed. The canvas is cleared rather than left
            showing the last place that was — a stale raster under a new viewport
            is evidence attached to the wrong ground. */
@@ -152,9 +158,16 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
       const context = canvas.getContext("2d");
       if (!context) return;
       context.clearRect(0, 0, canvas.width, canvas.height);
+      /* Fields first, smoothed: their samples are of an already-smooth function,
+         so scaling them up reconstructs it rather than inventing detail. */
       context.imageSmoothingEnabled = true;
       context.imageSmoothingQuality = "high";
-      context.drawImage(buffer, 0, 0, canvas.width, canvas.height);
+      for (const buffer of buffers) context.drawImage(buffer, 0, 0, canvas.width, canvas.height);
+      /* Plots after, and NOT smoothed. A plot's edge is a real edge — the
+         authority flew that square and said nothing about the next one — so it
+         is drawn as a vector fill with no blur and nothing between plots. */
+      context.imageSmoothingEnabled = false;
+      for (const surface of plotted) paintPlots(context, surface, rect, canvas.width, canvas.height);
       canvas.style.display = "";
 
       this.rendered = rect;
@@ -181,7 +194,7 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
   overlay.setMap(map);
 
   return {
-    set(surface) {
+    set(surfaces) {
       /*
        * A SPECIES CHANGE THROWS THE RASTER AWAY. §12: switching from moose to
        * ruffed grouse must leave no moose hotspot underneath. Keeping the
@@ -189,9 +202,9 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
        * the stale part would be the part the hunter is not looking at — the
        * worst possible place for a wrong answer to survive.
        */
-      const changed = overlay.surface?.speciesId !== surface?.speciesId
-        || overlay.surface?.continuity !== surface?.continuity;
-      overlay.surface = surface;
+      const signature = (list: readonly RenderableSurface[]) => list.map((s) => `${s.speciesId}:${s.id}`).join("|");
+      const changed = signature(overlay.surfaces) !== signature(surfaces);
+      overlay.surfaces = surfaces;
       if (changed) overlay.invalidate();
       else overlay.draw();
     },
