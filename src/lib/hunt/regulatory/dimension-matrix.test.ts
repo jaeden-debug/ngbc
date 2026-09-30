@@ -92,13 +92,31 @@ test("coverage is measured over the row the interface renders, not per dimension
    */
   const deer = rulesFor("species:white-tailed-deer");
   const scannable = deer.filter((rule) => rendersScannableRow(rule, "species:white-tailed-deer"));
-  const withClass = deer.filter((rule) => resolves(rule, "ANIMAL_CLASS"));
 
-  assert.ok(scannable.length > 0, "Québec's rules should render the row");
-  assert.equal(scannable.length, withClass.length,
-    "class is the binding dimension for deer: the joint count cannot exceed it");
+  assert.ok(scannable.length > 0, "some rules should render the row");
   assert.ok(scannable.length < deer.length,
     "when this fails, every deer rule renders the scannable row — raise the floor and say so");
+
+  /*
+   * THE PROPERTY, not which dimension happens to be scarcest.
+   *
+   * This asserted that class was the binding dimension and that the joint count
+   * equalled it. Two corrections changed which dimension binds: reading class
+   * from `appliesWhen` as well as the top level added Alberta's twenty, and
+   * refusing `declaredNoSeason: false` as a resolved date removed Ontario's
+   * hundred. Class is no longer scarcest — DATES is — and an assertion naming
+   * the scarcest dimension fails every time the data improves in one place.
+   *
+   * What must always hold is the inequality: a row needs every dimension, so
+   * the joint count can never exceed the weakest single one. That catches the
+   * original defect — a joint figure inflated past what any dimension supports
+   * — without pinning which one is weakest this week.
+   */
+  for (const dimension of ["DATES", "ANIMAL_CLASS", "IMPLEMENT"] as const) {
+    const single = deer.filter((rule) => resolves(rule, dimension)).length;
+    assert.ok(scannable.length <= single,
+      `the joint count (${scannable.length}) exceeds ${dimension} alone (${single}), which is impossible`);
+  }
 });
 
 test("an explicit null is ABSENT, never quietly NOT_APPLICABLE", () => {
@@ -112,3 +130,38 @@ test("an explicit null is ABSENT, never quietly NOT_APPLICABLE", () => {
     "the authority's words are a finding, not a resolution and not an absence");
   assert.equal(read({ equipmentStatedAs: "rifle or bow" }, "IMPLEMENT"), "PROSE_ONLY");
 });
+
+test("a rule that is merely NOT closed has not thereby stated its dates", () => {
+  /*
+   * THE DEFECT THIS EXISTS FOR, and it inflated the metric this file computes.
+   * `declaredNoSeason` is a boolean and `filled` rejects only undefined, null
+   * and the empty string — so `false` passed, and every rule carrying it
+   * counted as having resolved dates.
+   *
+   * It reached the number the product reports: 86 of Ontario's 100 white-tailed
+   * deer rules have NO `windows` and state their season as prose — "September
+   * 19 to December 15", without a year — and all of them counted. Big-game
+   * joint coverage read 208 of 450 and is 122.
+   *
+   * A DECLARED closure is a real resolution: the authority said there is no
+   * season. `false` says only that nobody declared one, which is not a date.
+   */
+  assert.equal(resolves({ declaredNoSeason: false } as RuleShape, "DATES"), false, "not-closed is not a date");
+  assert.equal(resolves({ declaredNoSeason: true } as RuleShape, "DATES"), true, "a declared closure IS an answer");
+  assert.equal(resolves({ windows: [{ opensIso: "2026-10-01", closesIso: "2026-10-14" }] } as unknown as RuleShape, "DATES"), true);
+  assert.equal(resolves({} as RuleShape, "DATES"), false);
+
+  /* And over the real corpus, so the unit case cannot pass while the bundles
+     say otherwise: Ontario states no structured season for deer. */
+  const ontario = rulesFor("species:white-tailed-deer").filter((rule) => String(rule.sourceId ?? "").includes("ca-on"));
+  assert.ok(ontario.length > 0, "positive control: Ontario deer rules are in the corpus");
+  assert.equal(ontario.filter((rule) => rule.windows || rule.window).length, 0,
+    "Ontario states no structured season WINDOW; if this changes it can render the scannable row");
+  /* What does resolve for Ontario is its declared closures, and only those —
+     which is a real answer and still not an opportunity, so the adapter emits
+     no row for them. Pinned, so the day a season is extracted this moves. */
+  const resolved = ontario.filter((rule) => resolves(rule, "DATES"));
+  assert.equal(resolved.length, 14, "Ontario's only resolved dates are its declared closures");
+  assert.ok(resolved.every((rule) => rule.declaredNoSeason === true), "and every one of them is a closure, not a season");
+});
+
