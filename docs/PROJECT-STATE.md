@@ -197,6 +197,18 @@ bundle now reproduces byte for byte from the current page.
 
 ## In Progress
 
+- **The opportunity rows reach the zone card — written, gated, NOT landed (Hunt UX lane, 2026-09-30).** Branch `opportunity-ux`, tip `885ef14`, rebased onto current `origin/main`, 6 files / 159 insertions / 2 deletions.
+
+  `RegulatoryOutcome.opportunities` carries the engine's own selected rules from `registry.ts` through `zone-summary.ts` to `ZoneSpeciesAnswer`, which renders them with `OpportunityRows`. The reason it had to exist: `regulation.season` is ONE window with no animal class and no implement, so no card could render "antlered with a bow in October" beside "either sex with a rifle in November" from it. The rows are the engine's, not a second derivation — `opportunity-adapter.ts` converts certified rules into `ResolvedOpportunity`, and the component decides nothing legally material.
+
+  Two decisions rather than plumbing. **Carried on the NEEDS_INPUT path as well**, which is the case they matter most in: the engine asks a question BECAUSE the seasons differ by class or method, so the hunter who has answered nothing is the one who most needs to see what exists, and requiring an answer first asks them to name the thing they opened the app to find out (§41A). **Carried whatever the state, CLOSED included** — a closed row's opportunities are the seasons that exist here and are not running today, which answers "when can I hunt this", while the row's own state still says it is not running now.
+
+  **The rows replace the summary sentence where rows exist; the sentence stays where they do not; the status line stays in both cases.** §41A settles that rather than taste: prose never replaces a structured answer carrying the same information, and the leftover prose is then the redundant line §41A deletes rather than keeps for thoroughness. Keeping both would put one fact in two places on one card.
+
+  Absent on Ontario's `major-game` path, which does not emit it. **Absence is a gap in what is carried and never a statement that no opportunity exists**, and that is written into the field's own comment because the next reader will otherwise take an empty array for a closed season.
+
+  **The one check outstanding is the browser.** This container cannot reach the authority's GIS service, so a link's zone never restores — §41A requires drawn geometry to confirm it first, and the app says so correctly rather than guessing. The render is covered by component test and mutation only. Certify it from an environment that reaches Google Maps.
+
 - **One composer change is written, gated and NOT landed (metadata lane, 2026-09-29; lane stopped at its usage limit).** Branch `fix/composer-stays-top`, tip `897bcb4`.
 
   The composer layout fix itself is already live in `8902943`, reached independently: the CSS `order` declarations are gone from production and no `composerAnchored` class remains anywhere. That part of the branch is redundant and must not be landed.
@@ -2715,6 +2727,29 @@ a loss.** "Refuse rather than guess" applies where there is a guess.
   count costs, not vertex count.**
 
 ## Validation
+
+- **Opportunity rows, 2026-09-30 (Hunt UX lane), branch `opportunity-ux` tip
+  `885ef14` on current `origin/main`.** `npm test` exit 0 — **2,005 passing, 0
+  failing** (the aggregate across every suite, not one run's tail); lint exit 0
+  (0 errors, 16 pre-existing warnings); production build exit 0. Component
+  tests run under a new `test:hunt-components` script inside the aggregate
+  `test`, so the gate covers rendering as well as domain logic.
+
+  **Both swap behaviours were falsified rather than merely asserted**: breaking
+  the rows path fails 1 test, rendering both the rows and the sentence fails 3.
+  A test that passes when the thing it guards is deleted guards nothing, and
+  this lane has shipped two of those.
+
+  **End to end against the running app, not fixtures.** All ten of Québec zone
+  10O's species return opportunities through `/api/hunt/...`, and arctic hare
+  comes back `NOT_APPLICABLE` for animal class — the species dimension profile
+  deciding absence on real certified data.
+
+  **Not verified in a browser, and the reason is the container.** No route to
+  the authority's GIS service, so `?zone=ca-qc-zone-10o` never restores its
+  zone (§41A requires drawn geometry to confirm it) and the card never opens.
+  The app reports that correctly. Outstanding: one real-browser check of the
+  card from a network-enabled environment.
 
 - **Species readiness and group resolution, 2026-09-30 (species lane).** On
   the rebased tree (main `50b7de4` + this commit): `npm test` exit 0 — **1,959
