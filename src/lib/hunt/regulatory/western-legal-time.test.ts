@@ -8,7 +8,7 @@ import { albertaHoursRules, ALBERTA_GENERAL_HOURS } from "./alberta-legal-time.t
 import { manitobaHoursRules, MANITOBA_GENERAL_HOURS } from "./manitoba-legal-time.ts";
 import { britishColumbiaHoursRules, BRITISH_COLUMBIA_GENERAL_HOURS } from "./british-columbia-legal-time.ts";
 import { montanaHoursRules, MONTANA_UPLAND_HOURS } from "./montana-legal-time.ts";
-import { timeZoneAtPoint, UNITED_STATES_SPLIT_BY_COUNTY, UNITED_STATES_SPLIT_BY_FEATURE } from "../time-zone.ts";
+import { SINGLE_ZONE_JURISDICTIONS, timeZoneAtPoint, UNITED_STATES_SPLIT_BY_COUNTY, UNITED_STATES_SPLIT_BY_FEATURE } from "../time-zone.ts";
 import { sunriseSunset } from "./solar.ts";
 
 const iso = (value: string) => value as IsoDate;
@@ -463,4 +463,85 @@ test("a county split and a feature split are recorded as different problems", ()
   /* South Dakota carries the one municipal exception on this line. Anything that
      serves South Dakota has to handle Murdo explicitly. */
   assert.match(UNITED_STATES_SPLIT_BY_FEATURE["jurisdiction:us-sd"].consequence, /Murdo/);
+});
+
+test("a state no boundary line touches gets its clock from two sources, not from where it looks", () => {
+  /* 49 CFR Part 71 names a state only in the section describing a line through
+     or along it. A state named nowhere lies wholly in one zone BY CONSTRUCTION.
+     The tz database's zone1970.tab confirms it independently, describing the
+     United States by exception and naming exceptions for only MI, KY, IN, ND,
+     ID, OR, AZ and Alaska sub-areas.
+
+     Spot-checked one per zone rather than all 23, because the claim under test
+     is the METHOD. Wyoming and Washington are the pair worth having: they are
+     the two whose zone a reader is most likely to guess from the map rather
+     than from the line, and they differ. */
+  assert.equal(timeZoneAtPoint("jurisdiction:us-wy"), "America/Denver");
+  assert.equal(timeZoneAtPoint("jurisdiction:us-wa"), "America/Los_Angeles");
+  assert.equal(timeZoneAtPoint("jurisdiction:us-mo"), "America/Chicago");
+  assert.equal(timeZoneAtPoint("jurisdiction:us-oh"), "America/New_York");
+  /* Maine is settled POSITIVELY by § 71.3 — the Atlantic zone "does not include
+     any part of the State of Maine" — rather than by absence, which is why it is
+     asserted separately from the others. */
+  assert.equal(timeZoneAtPoint("jurisdiction:us-me"), "America/New_York");
+  /* Hawaii is the other positive assignment, from § 71.12. */
+  assert.equal(timeZoneAtPoint("jurisdiction:us-hi"), "Pacific/Honolulu");
+});
+
+test("§ 71.5's border-run states, including the adjacent pair a swap would hide", () => {
+  /* Georgia and Alabama are § 71.5's Utah-and-Nevada: adjacent, on OPPOSITE
+     sides of one line — § 71.5(e) runs it along "the Alabama-Georgia boundary"
+     — so inverting the route swaps exactly these two and each stays plausible
+     alone.
+
+     This test exists because falsification caught its absence. The nation-wide
+     completeness assertion below counts 51 classified jurisdictions and passed
+     happily with Georgia and Alabama exchanged: a count cannot see a swap. Two
+     assertions that both look like coverage, and only one of them catches this. */
+  assert.equal(timeZoneAtPoint("jurisdiction:us-ga"), "America/New_York");
+  assert.equal(timeZoneAtPoint("jurisdiction:us-al"), "America/Chicago");
+  /* Illinois lies west of a line on Indiana's western boundary; Wisconsin and
+     Minnesota west of one that runs entirely along Michigan's county lines and
+     never enters either, though § 71.5(a)'s HEADING names Minnesota. The heading
+     is not the provision. */
+  assert.equal(timeZoneAtPoint("jurisdiction:us-il"), "America/Chicago");
+  assert.equal(timeZoneAtPoint("jurisdiction:us-wi"), "America/Chicago");
+  assert.equal(timeZoneAtPoint("jurisdiction:us-mn"), "America/Chicago");
+});
+
+test("no US state is both served and refused, and none of the 25 named states is served by accident", () => {
+  /* The failure this catches: adding a state to the single-zone table while it
+     is still recorded as split, so the refusal is silently overridden and a
+     hunter in Malheur County or western Kansas gets a confident wrong hour. */
+  const served = Object.keys(SINGLE_ZONE_JURISDICTIONS).filter((id) => id.startsWith("jurisdiction:us-"));
+  for (const id of [...Object.keys(UNITED_STATES_SPLIT_BY_FEATURE), ...Object.keys(UNITED_STATES_SPLIT_BY_COUNTY)]) {
+    assert.ok(!served.includes(id), `${id} is recorded as split and must not also be served`);
+  }
+  /* Every state Part 71's boundary sections NAME must be either served with a
+     border-run reason written down, or recorded as split. Silence is the state
+     nobody read, and there must be none of those among the named. */
+  const named = ["mn", "mi", "wi", "in", "il", "ky", "tn", "ga", "al", "fl",
+    "mt", "nd", "sd", "ne", "ks", "co", "ok", "tx", "nm",
+    "id", "or", "ut", "nv", "az", "ca", "ak", "hi"];
+  const unaccounted = named.filter((code) => {
+    const id = `jurisdiction:us-${code}`;
+    return !served.includes(id) && !UNITED_STATES_SPLIT_BY_FEATURE[id] && !UNITED_STATES_SPLIT_BY_COUNTY[id];
+  });
+  /* Part 71 has now been read end to end, so EVERY named state is accounted
+     for and this list is empty. It is asserted as empty rather than deleted:
+     an amendment adding a state to a boundary section would land here as a
+     failure rather than as a silent omission. */
+  assert.deepEqual(unaccounted, [],
+    "every state Part 71 names must be served with a reason or recorded as split");
+
+  /* And the whole nation, so a jurisdiction cannot go missing. 51 = 50 states
+     plus the District of Columbia. */
+  const ALL = ("al ak az ar ca co ct de dc fl ga hi id il in ia ks ky la me md ma mi mn ms mo mt ne nv nh nj nm "
+    + "ny nc nd oh ok or pa ri sc sd tn tx ut vt va wa wv wi wy").split(" ");
+  assert.equal(ALL.length, 51);
+  const classified = ALL.filter((code) => {
+    const id = `jurisdiction:us-${code}`;
+    return served.includes(id) || UNITED_STATES_SPLIT_BY_FEATURE[id] || UNITED_STATES_SPLIT_BY_COUNTY[id];
+  });
+  assert.equal(classified.length, 51, "every US jurisdiction must be served or have a recorded reason it is not");
 });

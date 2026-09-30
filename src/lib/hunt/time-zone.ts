@@ -183,6 +183,89 @@ export const SINGLE_ZONE_JURISDICTIONS: Readonly<Record<string, string>> = {
   "jurisdiction:us-co": "America/Denver",
   "jurisdiction:us-nm": "America/Denver",
   "jurisdiction:us-ok": "America/Chicago",
+  /*
+   * TWENTY-THREE STATES NO BOUNDARY LINE TOUCHES, CONFIRMED TWICE.
+   *
+   * Part 71 names a state only in the section describing a line that runs
+   * through or along it — § 71.5 (eastern/central), § 71.7 (central/mountain),
+   * § 71.9 (mountain/Pacific), § 71.11 and § 71.12 (Alaska, Hawaii). The 25
+   * states those sections name are: MN MI WI IN IL KY TN GA AL FL, MT ND SD NE
+   * KS CO OK TX NM, ID OR UT NV AZ CA, plus AK and HI. Every other state is
+   * crossed by no line at all, so it lies wholly in one zone BY CONSTRUCTION.
+   *
+   * That is one source. The second is the tz database's own zone1970.tab
+   * (sha256 cf7a21adf7153794a684c03e499e882ee119f828ad77a579ed99db26ceeae87b),
+   * which describes the United States BY EXCEPTION and names exceptions for
+   * exactly MI, KY, IN, ND, ID, OR, AZ and sub-areas of Alaska. None of the 23
+   * appears. Two independent sources, one answer — the same standard the
+   * Canadian entries above are held to.
+   *
+   * WHAT THE TZ TABLE CANNOT DO, recorded so it is not leaned on later: it is
+   * NOT a county-level source. It lists no Kansas exception even though
+   * § 71.7(d) puts western Kansas counties in the mountain zone, because
+   * "Mountain (most areas)" covers them without enumerating. So the tz table
+   * can only CONFIRM a state-level answer the CFR already establishes; it can
+   * never be used to rule out a county split.
+   *
+   * § 71.3 also settles Maine positively rather than by absence: the Atlantic
+   * zone "does not include any part of the State of Maine".
+   */
+  "jurisdiction:us-wy": "America/Denver",
+  "jurisdiction:us-wa": "America/Los_Angeles",
+  "jurisdiction:us-ar": "America/Chicago",
+  "jurisdiction:us-ia": "America/Chicago",
+  "jurisdiction:us-la": "America/Chicago",
+  "jurisdiction:us-mo": "America/Chicago",
+  "jurisdiction:us-ms": "America/Chicago",
+  "jurisdiction:us-ct": "America/New_York",
+  "jurisdiction:us-de": "America/New_York",
+  "jurisdiction:us-ma": "America/New_York",
+  "jurisdiction:us-md": "America/New_York",
+  "jurisdiction:us-me": "America/New_York",
+  "jurisdiction:us-nh": "America/New_York",
+  "jurisdiction:us-nj": "America/New_York",
+  "jurisdiction:us-ny": "America/New_York",
+  "jurisdiction:us-nc": "America/New_York",
+  "jurisdiction:us-oh": "America/New_York",
+  "jurisdiction:us-pa": "America/New_York",
+  "jurisdiction:us-ri": "America/New_York",
+  "jurisdiction:us-sc": "America/New_York",
+  "jurisdiction:us-va": "America/New_York",
+  "jurisdiction:us-vt": "America/New_York",
+  "jurisdiction:us-wv": "America/New_York",
+  "jurisdiction:us-dc": "America/New_York",
+  /*
+   * Hawaii is the one state Part 71 assigns POSITIVELY rather than by the
+   * absence of a line: § 71.12 "includes the entire State of Hawaii". Its lack
+   * of daylight saving is Hawaii's own exemption under 15 U.S.C. 260a(a), not
+   * § 71.2, which names no exempt state — the same distinction recorded for
+   * Arizona above.
+   */
+  "jurisdiction:us-hi": "Pacific/Honolulu",
+  /*
+   * § 71.5 is the eastern/central line, and five of the ten states it names are
+   * single-zone for the same border-run reason as Colorado and Oklahoma:
+   *
+   * GEORGIA and ALABAMA — § 71.5(e) runs the line along "the Tennessee-Georgia
+   * boundary westerly to its junction with the Alabama-Georgia boundary; thence
+   * southerly along that boundary and the Florida-Georgia boundary". That is
+   * Georgia's WESTERN border, so Georgia is wholly east and Alabama wholly west.
+   * They are adjacent and opposite, like Utah and Nevada.
+   *
+   * ILLINOIS — § 71.5(b) runs the line along "the western boundary of the State
+   * of Indiana", so Illinois lies wholly west of it.
+   *
+   * WISCONSIN and MINNESOTA — § 71.5(a) runs entirely along MICHIGAN's county
+   * lines and then Michigan's western boundary. It never enters either, so both
+   * are wholly west. The paragraph's heading names Minnesota, which is why this
+   * is written down: the heading is not the provision, and the route is what
+   * decides.
+   */
+  "jurisdiction:us-ga": "America/New_York",
+  "jurisdiction:us-al": "America/Chicago",
+  "jurisdiction:us-il": "America/Chicago",
+  "jurisdiction:us-wi": "America/Chicago",
+  "jurisdiction:us-mn": "America/Chicago",
 };
 
 /**
@@ -212,6 +295,38 @@ export const UNITED_STATES_SPLIT_BY_COUNTY: Readonly<Record<string, {
     exceptionCounties: ["Sherman", "Wallace", "Greeley", "Hamilton", "Logan", "Wichita"],
     note:
       "The line jogs east off the Kansas-Colorado boundary around these six counties and back, so it is entirely county lines here. Sherman, Wallace, Greeley and Hamilton are the western tier the line encloses; Logan and Wichita are named where it steps back west. Which side each of the six sits on must be read off the route itself before any of them is served — the section traces a staircase, not a straight tier.",
+  },
+  "jurisdiction:us-mi": {
+    citation: "49 CFR § 71.5(a)",
+    majorityZone: "America/Detroit",
+    exceptionZone: "America/Menominee",
+    exceptionCounties: ["Gogebic", "Ontonagon", "Iron", "Dickinson", "Menominee"],
+    note:
+      "Five Upper Peninsula counties sit on the central side; the rest of Michigan is eastern. The route is county lines throughout. The tz database confirms the split independently with America/Menominee, \"Central - MI (Wisconsin border)\", against America/Detroit for most areas.",
+  },
+  "jurisdiction:us-in": {
+    citation: "49 CFR § 71.5(b)",
+    majorityZone: "America/Indiana/Indianapolis",
+    exceptionZone: "America/Indiana/Knox",
+    exceptionCounties: ["LaPorte", "Starke", "Marshall", "Pulaski", "Jasper", "Newton", "Gibson", "Pike", "Warrick", "Spencer", "Perry"],
+    note:
+      "Indiana is the strongest cross-check in Part 71: the CFR names Starke and Perry Counties, and the tz database independently carries America/Indiana/Knox as \"Central - IN (Starke)\" and America/Indiana/Tell_City as \"Central - IN (Perry)\". Two instruments, the same two counties. The counties listed are those the route names; which side each falls on must be read off the route, because it is a staircase, and Indiana has eight tz zones rather than two.",
+  },
+  "jurisdiction:us-ky": {
+    citation: "49 CFR § 71.5(c)",
+    majorityZone: "America/Kentucky/Louisville",
+    exceptionZone: "America/Chicago",
+    exceptionCounties: ["Meade", "Hardin", "Larue", "Taylor", "Casey", "Pulaski", "Wayne"],
+    note:
+      "Entirely county lines. The CFR names Wayne County and the tz database independently carries America/Kentucky/Monticello as \"Eastern - KY (Wayne)\" — the second two-source county agreement in this section.",
+  },
+  "jurisdiction:us-tn": {
+    citation: "49 CFR § 71.5(d)",
+    majorityZone: "America/Chicago",
+    exceptionZone: "America/New_York",
+    exceptionCounties: ["Scott", "Morgan", "Roane", "Rhea", "Hamilton"],
+    note:
+      "Entirely county lines. The tz database names NO Tennessee exception, which is not disagreement — it is the tz table declining to enumerate below its \"most areas\" rows, and is the clearest demonstration that it cannot be used to rule a county split out.",
   },
   "jurisdiction:us-tx": {
     citation: "49 CFR § 71.7(e)",
@@ -259,6 +374,20 @@ export const UNITED_STATES_SPLIT_BY_FEATURE: Readonly<Record<string, { citation:
       "township, range and section lines of the Public Land Survey System, with their offsets, for the entire described route",
     consequence:
       "Nebraska's line names no county at all — it is a staircase of section lines \"with their offsets\" from the South Dakota border to Kansas. There is no county approximation to make, so this is the clearest case in Part 71 that a county-level timezone table cannot be built for the United States generally. The unlock is PLSS geometry.",
+  },
+  "jurisdiction:us-or": {
+    citation: "49 CFR § 71.9(a)",
+    feature:
+      "the west line of Malheur County and \"the southwest corner of T. 35 S., R. 37 E.\" — a Public Land Survey System township corner INSIDE Malheur County",
+    consequence:
+      "Oregon is Pacific except its eastern edge, and the line does not follow Malheur County's boundary the whole way: it steps to a township corner within the county. So Malheur cannot be assigned a single zone from the CFR, and a county table is wrong there. The tz database agrees Oregon is split, naming America/Boise as \"Mountain - ID (south), OR (east)\" — which confirms the split exists but not where it runs, because the tz table is not a county-level source. The unlock is PLSS geometry for T. 35 S., R. 37 E.",
+  },
+  "jurisdiction:us-fl": {
+    citation: "49 CFR § 71.5(f)",
+    feature:
+      "the middle of the main channel of the Apalachicola River from the downstream side of Jim Woodruff Dam, then the centre of the Jackson River, then the centre of the Intracoastal Waterway",
+    consequence:
+      "Florida's panhandle split follows two river channels and a navigable waterway, reaching a county line only at the very end (the west line of Gulf County). So it is a feature split, not a county one. The unlock is hydrography plus the Intracoastal Waterway centreline.",
   },
   "jurisdiction:us-ak": {
     citation: "49 CFR § 71.11 with § 71.12",
