@@ -105,6 +105,25 @@ export interface SurfaceFeature {
   geometry: { type: "Polygon"; coordinates: number[][][] } | { type: "Point"; coordinates: number[] };
 }
 
+/**
+ * A continuous surface's values, packed.
+ *
+ * Sent instead of one GeoJSON feature per cell: 25,736 cells of coordinates
+ * that are all derivable from an origin and a step is about 3 MB of transport
+ * saying nothing. It also makes the two zeros unrepresentable rather than
+ * merely documented — `null` is ground nobody surveyed and `0` is ground that
+ * was surveyed and held none of the species, and there is no way to spell the
+ * first as the second.
+ */
+export interface PackedCells {
+  origin: [number, number];
+  stepDegrees: [number, number];
+  columns: number;
+  rows: number;
+  /** Row-major, `columns` per row. null = unsurveyed, 0 = surveyed and none found. */
+  values: Array<number | null>;
+}
+
 export interface SpeciesSurface {
   id: string;
   speciesId: string;
@@ -118,7 +137,9 @@ export interface SpeciesSurface {
   season: SeasonalBasis | null;
   scale: SurfaceScale;
   provenance: SurfaceProvenance;
+  /** DISCRETE surfaces carry features; CONTINUOUS ones carry packed cells. */
   features: SurfaceFeature[];
+  cells?: PackedCells;
 }
 
 export interface SpeciesSurfaceResponse {
@@ -206,20 +227,18 @@ export const KIND_BEHAVIOUR: Record<SurfaceGeometryKind, {
 };
 
 /**
- * The refusal §41B names most directly: a coarse measurement may never modify
- * fine-resolution cells.
+ * §41B's coarse-evidence prohibition is enforced by `surfaceSitesFrom` in
+ * `surface-raster.ts`, which REFUSES management zones, polygons and ranges by
+ * name at the only place sites can be built.
  *
- * It is a function of the KIND and of the resolutions, not of anyone's
- * judgement at the call site. A zone-wide density multiplied across pixels
- * would let a regulatory boundary shape the animal surface while looking like
- * biology — a choropleth in disguise, and harder to see than the original.
+ * It replaced a predicate of mine that a caller had to remember to call. Hunt
+ * overhaul's argument was decisive and is worth keeping written down: a guard
+ * someone must remember is not a guard. What survives here is the declarative
+ * half — `KIND_BEHAVIOUR[kind].maySetCellValues` — which says of a BUILT
+ * surface whether its kind could ever have fed cells, for a reader deciding
+ * what they are looking at rather than for a builder deciding what to make.
  */
-export function mayContributeToCells(surface: Pick<SpeciesSurface, "geometryKind" | "effectiveResolution">, cellMetres: number): boolean {
-  if (!KIND_BEHAVIOUR[surface.geometryKind].maySetCellValues) return false;
-  const metres = surface.effectiveResolution.metres;
-  if (metres === null) return false;
-  return metres <= cellMetres;
-}
+export { surfaceSitesFrom } from "./surface-raster.ts";
 
 /** Measured beats modelled, then finer beats coarser, then more recent. */
 function strength(surface: SpeciesSurface): number {

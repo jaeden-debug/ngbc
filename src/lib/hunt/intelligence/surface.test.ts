@@ -1,8 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { createSpeciesSurfaceHandler } from "./handler.ts";
-import { KIND_BEHAVIOUR, mayContributeToCells, speciesSurfaces } from "./surface.ts";
+import { KIND_BEHAVIOUR, speciesSurfaces, surfaceSitesFrom } from "./surface.ts";
 import type { SurfaceGeometryKind } from "./surface.ts";
+import type { EvidenceRecord } from "./types.ts";
 
 /**
  * The seam between the evidence and the renderer.
@@ -31,26 +32,44 @@ test("what unshaded ground means travels with the surface", () => {
   assert.match(response.emptyMeans, /not a finding that the species is absent/);
 });
 
-test("a coarse measurement may never set a fine cell", () => {
+test("a coarse measurement cannot even be BUILT into a surface", () => {
   /*
-   * The defect §41B names most directly: a zone-wide 0.8 moose/km² multiplied
-   * across pixels lets a regulatory boundary shape the animal surface while
-   * looking like biology. It is refused by KIND and by resolution, not by
-   * judgement at the call site.
+   * §41B's most direct refusal, and it is refused at construction rather than
+   * by a predicate someone must remember to call — Hunt overhaul's design, and
+   * the argument for it is that a guard you have to remember is not a guard.
+   *
+   * A zone-wide 0.8 moose/km² multiplied across pixels would let a regulatory
+   * boundary shape the animal surface while looking like biology.
    */
-  const zoneWide = { geometryKind: "MANAGEMENT_AREA" as const, effectiveResolution: { metres: 60_000, statedAs: "Wildlife Management Unit" } };
-  assert.equal(mayContributeToCells(zoneWide, 1000), false);
-  assert.equal(mayContributeToCells(zoneWide, 100_000), false, "not even into cells coarser than itself");
+  const zoneRecord: EvidenceRecord = {
+    id: "evidence:test", speciesId: "species:moose" as EvidenceRecord["speciesId"], jurisdictionId: "jurisdiction:ca-ab" as EvidenceRecord["jurisdictionId"],
+    geographyId: "management_zone:ca-ab-wmu-116", geographyType: "MANAGEMENT_ZONE",
+    sourceId: "source:test" as EvidenceRecord["sourceId"], metric: "POPULATION_DENSITY", rawValue: 0.8, unit: "moose/km²",
+    observationPeriod: { from: "2025-01-01", through: "2025-03-01" },
+    retrievedAt: "2026-09-29", verifiedAt: "2026-09-29", confidence: "HIGH",
+    spatialPrecision: "Wildlife Management Unit", version: "1", superseded: false,
+  };
+  const refused = surfaceSitesFrom([zoneRecord]);
+  assert.equal(refused.ok, false, "a management-area figure may not become a surface");
+  if (!refused.ok) {
+    assert.equal(refused.reason, "AREA_EVIDENCE");
+    assert.deepEqual(refused.offending, ["evidence:test"], "and it names the records it refused rather than degrading");
+  }
 
-  const plots = { geometryKind: "SAMPLE_PLOT" as const, effectiveResolution: { metres: 5000, statedAs: "25 km² plot" } };
-  assert.equal(mayContributeToCells(plots, 5000), false, "plots are the evidence; between them is interpolation");
+  /* The declarative half survives for a reader of a BUILT surface: which kinds
+     could ever have fed cells at all. */
+  assert.equal(KIND_BEHAVIOUR.MANAGEMENT_AREA.maySetCellValues, false);
+  assert.equal(KIND_BEHAVIOUR.SAMPLE_PLOT.maySetCellValues, false, "plots are the evidence; between them is interpolation");
+  assert.equal(KIND_BEHAVIOUR.SURVEY_GRID.maySetCellValues, true);
 
-  const grid = { geometryKind: "SURVEY_GRID" as const, effectiveResolution: { metres: 1000, statedAs: "1 km cells" } };
-  assert.equal(mayContributeToCells(grid, 1000), true);
-  assert.equal(mayContributeToCells(grid, 500), false, "a 1 km cell cannot fill a 500 m one");
-
-  const unsized = { geometryKind: "SURVEY_GRID" as const, effectiveResolution: { metres: null, statedAs: "cell size not published" } };
-  assert.equal(mayContributeToCells(unsized, 1000), false, "a grid without its publisher's cell size is a shape, not a resolution");
+  /* A sampled plot is refused by the same constructor, and for the same reason
+     as a management area: it is an area reported as a whole. It was added to
+     that list when the two lanes merged — before that it fell through to a
+     refusal for the wrong reason. */
+  const plotRecord: EvidenceRecord = { ...zoneRecord, id: "evidence:plot", geographyType: "SAMPLE_PLOT", geographyId: "sample_plot:ews25_76418" };
+  const plotRefusal = surfaceSitesFrom([plotRecord]);
+  assert.equal(plotRefusal.ok, false);
+  if (!plotRefusal.ok) assert.equal(plotRefusal.reason, "AREA_EVIDENCE", "not NO_COORDINATES: the reason has to stay true when plots carry coordinates");
 });
 
 test("every geometry kind declares its own behaviour, and none of them defaults", () => {

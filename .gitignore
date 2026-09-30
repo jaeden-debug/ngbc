@@ -54,3 +54,6 @@ public/*.mp4
 
 # MCP browser-test artifacts
 .playwright-mcp/
+
+# Ingestion source caches: large government downloads, re-fetched by their builder.
+.cache/
