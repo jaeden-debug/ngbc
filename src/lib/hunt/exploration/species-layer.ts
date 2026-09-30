@@ -256,8 +256,30 @@ export function conditionDigest(
   lang: LimitationLang,
 ): { shown: OpportunityCondition[]; further: number } {
   const all = answer?.opportunity.conditions ?? [];
-  const readable = all.filter((condition) => isMaterial(condition) && readingFor(condition, lang).kind !== "UNTRANSLATED");
-  const shown = readable.slice(0, CONDITIONS_SHOWN);
+  const material = all.filter(isMaterial);
+  const readable = material.filter((condition) => readingFor(condition, lang).kind !== "UNTRANSLATED");
+  /*
+   * AND WHEN NOTHING IS READABLE, THE ORIGINAL — never an empty popover.
+   *
+   * Preferring a reading is right: a popover of French for an English reader is
+   * noise while readable lines exist. Dropping the unreadable ones ALTOGETHER
+   * was not, because a zone whose material conditions are all untranslated then
+   * wears a `!` that opens onto a bare "+N more". A hunter taps a warning,
+   * reads nothing, and now believes they have checked — worse than no marker.
+   *
+   * §41A already settles it: "Where no translation exists, the original remains
+   * available and the interface says so rather than hiding the fact."
+   * `AuthorityText` carries the label and the provenance, so the fallback is
+   * the authority's own words attributed, never rewritten.
+   *
+   * Latent rather than live today — `INTERFACE_LANGUAGE` is fixed to en-CA and
+   * every marker-earning condition has an en-CA reading. It becomes live the
+   * day the interface offers French: 22 conditions across Alberta, Manitoba,
+   * Ontario, Idaho and Montana have no French reading, and
+   * `marker-readable.test.ts` holds that number so it cannot grow unnoticed.
+   */
+  const source = readable.length ? readable : material;
+  const shown = source.slice(0, CONDITIONS_SHOWN);
   return { shown, further: all.length - shown.length };
 }
 
