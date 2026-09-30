@@ -581,14 +581,35 @@ export const MAX_SURFACE_CELLS = 120_000;
  * species found — 11,733 of ruffed grouse's 22,873 supported cells are the
  * second, and half of what this surface knows is that negative.
  */
+/* The rows and columns an artifact actually occupies. A model painted only
+   beyond a survey's reach, or a records grid of one region, would otherwise
+   travel as a continent of nulls. */
+const EXTENTS = new WeakMap<RasterArtifact, { r0: number; r1: number; c0: number; c1: number }>();
+function occupied(artifact: RasterArtifact) {
+  let extent = EXTENTS.get(artifact);
+  if (!extent) {
+    const { row, col } = artifact.cells;
+    extent = { r0: Infinity, r1: -Infinity, c0: Infinity, c1: -Infinity };
+    for (let i = 0; i < row.length; i += 1) {
+      if (row[i] < extent.r0) extent.r0 = row[i];
+      if (row[i] > extent.r1) extent.r1 = row[i];
+      if (col[i] < extent.c0) extent.c0 = col[i];
+      if (col[i] > extent.c1) extent.c1 = col[i];
+    }
+    EXTENTS.set(artifact, extent);
+  }
+  return extent;
+}
+
 function packed(artifact: RasterArtifact, box: [number, number, number, number] | undefined, maxCells: number): PackedCells | "TOO_LARGE" | null {
   const { grid } = artifact;
   const rowOf = (lat: number) => Math.floor((lat - grid.south) / grid.latStep);
   const colOf = (lon: number) => Math.floor((lon - grid.west) / grid.lonStep);
-  const r0 = box ? Math.max(0, rowOf(box[1])) : 0;
-  const r1 = box ? Math.min(grid.rows - 1, rowOf(box[3]) + 1) : grid.rows - 1;
-  const c0 = box ? Math.max(0, colOf(box[0])) : 0;
-  const c1 = box ? Math.min(grid.cols - 1, colOf(box[2]) + 1) : grid.cols - 1;
+  const held = occupied(artifact);
+  const r0 = Math.max(held.r0, box ? Math.max(0, rowOf(box[1])) : 0);
+  const r1 = Math.min(held.r1, box ? Math.min(grid.rows - 1, rowOf(box[3]) + 1) : grid.rows - 1);
+  const c0 = Math.max(held.c0, box ? Math.max(0, colOf(box[0])) : 0);
+  const c1 = Math.min(held.c1, box ? Math.min(grid.cols - 1, colOf(box[2]) + 1) : grid.cols - 1);
   if (r1 < r0 || c1 < c0) return null;
   const rows = r1 - r0 + 1;
   const columns = c1 - c0 + 1;
