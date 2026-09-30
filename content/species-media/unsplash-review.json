@@ -111,6 +111,108 @@
       "altText": "Gambel's quail standing on a ledge",
       "subjectSex": "UNKNOWN",
       "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:G5cMFYfN4-k": {
+      "decision": "ACCEPT",
+      "speciesId": "species:muskox",
+      "altText": "Muskox standing on a snowy hillside",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:YSB90W7wy6Q": {
+      "decision": "REJECT",
+      "speciesId": "species:american-coot",
+      "reason": "the caption names an American coot, but the bird shown has a grebe's profile and a banded pale bill — it appears to be a pied-billed grebe",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:O1gRQ71rqoU": {
+      "decision": "ACCEPT",
+      "speciesId": "species:american-crow",
+      "altText": "Close-up of an American crow against a green background",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:EFHmj2Q-MBw": {
+      "decision": "REJECT",
+      "speciesId": "species:black-scoter",
+      "reason": "the bird is a tiny, distant silhouette on open water; it shows nothing that identifies the species",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:Wut9gEqbbLk": {
+      "decision": "ACCEPT",
+      "speciesId": "species:cinnamon-teal",
+      "altText": "Cinnamon teal swimming beside a stone ledge",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:yJM-OHXQTGs": {
+      "decision": "ACCEPT",
+      "speciesId": "species:common-eider",
+      "altText": "Male common eider floating on calm water near seaweed",
+      "subjectSex": "MALE",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:UsRtbLn2DYY": {
+      "decision": "ACCEPT",
+      "speciesId": "species:common-gallinule",
+      "altText": "Adult common gallinule feeding a group of downy chicks",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:KulLXGJHlRg": {
+      "decision": "ACCEPT",
+      "speciesId": "species:common-merganser",
+      "altText": "Pair of common mergansers swimming",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:Hb_4qfvPjmk": {
+      "decision": "ACCEPT",
+      "speciesId": "species:eurasian-collared-dove",
+      "altText": "Eurasian collared-dove perched with its back partly turned",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:hbAzQCUodxI": {
+      "decision": "ACCEPT",
+      "speciesId": "species:harlequin-duck",
+      "altText": "Three harlequin ducks swimming together",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:4OjFItqskr4": {
+      "decision": "ACCEPT",
+      "speciesId": "species:hooded-merganser",
+      "altText": "Hooded merganser with a raised cinnamon crest swimming on a stream",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:wmoQbhO_nyc": {
+      "decision": "ACCEPT",
+      "speciesId": "species:king-eider",
+      "altText": "King eider standing in shallow water",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:zlefIOwnEVc": {
+      "decision": "ACCEPT",
+      "speciesId": "species:purple-gallinule",
+      "altText": "Close-up of a purple gallinule's head and neck",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:41bi5U_KWxQ": {
+      "decision": "REJECT",
+      "speciesId": "species:red-breasted-merganser",
+      "reason": "two small, distant birds; too far away to show the species",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:VopfCFfzvOc": {
+      "decision": "ACCEPT",
+      "speciesId": "species:ruddy-duck",
+      "altText": "Male ruddy duck in non-breeding plumage swimming",
+      "subjectSex": "MALE",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
     }
   }
 }
