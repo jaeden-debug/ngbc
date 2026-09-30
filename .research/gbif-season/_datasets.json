@@ -574,5 +574,23 @@
   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
   "doi": "10.5886/hgagiy",
   "publisher": "University of Manitoba"
+ },
+ "b3247f37-dda5-4894-85ff-ee8ef16d12ac": {
+  "title": "Maine Harbor Seals: Young's Bay 1988-2014 - Powered by Anecdata.org",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/99988f",
+  "publisher": "The Community Environmental Health Laboratory at MDI Biological Laboratory"
+ },
+ "9358fbd7-cfd0-4eab-99fa-0934396a0529": {
+  "title": "COI data from: Environmental DNA metabarcoding differentiates between micro-habitats within the rocky intertidal (Shea & Boehm, 2024)",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/33artc",
+  "publisher": "United States Geological Survey"
+ },
+ "c3a1effc-2fb2-41e7-a5af-7b023a44bb45": {
+  "title": "Computerized Database of Québec Seabirds (CDQS) | Banque informatisée des oiseaux marins du Québec (BIOMQ)",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/satw73",
+  "publisher": "Observatoire Global du Saint-Laurent"
  }
 }
