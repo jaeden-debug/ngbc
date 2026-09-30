@@ -483,7 +483,13 @@ function build({ pages, pdf, officialIdentifiers }, crosscheck, previous) {
         licence: "No open licence. North Ground records facts — dates, units, classes and limits — with the printed cell as provenance.",
         sourceHashes,
         crosscheck: { file: CROSSCHECK, rowsChecked: crosscheck.rowsChecked, disagreements: crosscheck.disagreements },
-        conditions: CONDITIONS.map((condition) => ({ ...condition, sourceId: SOURCE_ID })),
+        conditions: CONDITIONS.map((condition) => ({
+          ...condition,
+          /* The Sunday list is a list of units; carried as zones so the `!` is
+             decided by the units the law names, not by which rules carry it. */
+          ...(condition.id === "ab-sunday-big-game" ? { zoneIds: [...sunday].sort(compareUnits).map(zoneId) } : {}),
+          sourceId: SOURCE_ID,
+        })),
       }],
       limitations: LIMITATIONS,
       notEncoded: {

@@ -616,7 +616,16 @@ async function main() {
     { id: "ca-mb-big-game-hunter-orange", text: "Wear a hunter orange head covering and at least 2,580 cm² (400 in²) of hunter orange above the waist, visible from all sides.", sourceId: "source:ca-mb-general-hunting-regulation", sourceSection: "M.R. 351/87 s. 10(1)" },
     { id: "ca-mb-archery-no-hunter-orange-exemption-note", text: "Archers hunting during an archery season are exempt from the hunter orange requirement.", sourceId: "source:ca-mb-general-hunting-regulation", sourceSection: "M.R. 351/87 s. 10(2)(a)" },
     { id: "ca-mb-disabled-crossbow-permit", text: "An archery season permits a long, recurved or compound bow. A crossbow may be used under an archery licence only by the holder of a disabled crossbow permit.", sourceId: "source:ca-mb-hunting-seasons-regulation", sourceSection: "M.R. 165/91 ss. 3.3, 29.1" },
-    { id: "ca-mb-landowner-permission-shotgun-muzzleloader", text: "Written landowner permission is required during the shotgun and muzzleloader season in GHA 33 and the part of GHA 38 in the R.M. of Macdonald.", sourceId: "source:ca-mb-hunting-guide-2026", sourceSection: "2026 Manitoba Hunting Guide, p. 30" },
+    {
+      id: "ca-mb-landowner-permission-shotgun-muzzleloader",
+      text: "Written landowner permission is required during the shotgun and muzzleloader season in GHA 33 and the part of GHA 38 in the R.M. of Macdonald.",
+      sourceId: "source:ca-mb-hunting-guide-2026",
+      sourceSection: "2026 Manitoba Hunting Guide, p. 30",
+      /* The two areas the guide names, so nowhere else wears it. GHA 38 is
+         named whole because the municipal line inside it is not geography
+         North Ground holds; the text says which part. */
+      zoneIds: ["33", "38"].map(zoneId),
+    },
     { id: "ca-mb-upland-no-single-projectile", text: "Upland game birds may not be hunted with a centrefire rifle, or with a shotgun or muzzleloader loaded with a single projectile.", sourceId: "source:ca-mb-general-hunting-regulation", sourceSection: "M.R. 351/87 s. 6(k)" },
     {
       id: "ca-mb-upland-hunter-orange",

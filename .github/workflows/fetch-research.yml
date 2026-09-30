@@ -6,7 +6,10 @@ name: Read a research source from a runner
 #
 # Asked for by committing `.research/request.json` on a working branch:
 #
-#   { "source": "alberta-ungulate-surveys" }
+#   { "sources": ["alberta-ungulate-surveys", "manitoba-guide"] }
+#
+# (A single "source" is accepted too.) Each source is read in turn; one that
+# fails is logged and the rest still run.
 #
 # What it commits is working material for that branch (catalogue metadata,
 # licences as stated, sha256 of every document and its extracted text). Only
@@ -34,21 +37,31 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+      - run: npm ci
       # The same pinned extractor the regulatory builders use, so a re-read of
       # an unchanged document is byte-identical.
       - name: Install the pinned PDF text extractor
         run: python3 -m pip install --user pypdf==6.19.0
-      - name: Read the request
-        id: request
+      - name: Read the requested sources
         run: |
           node -e '
             const r = require("./.research/request.json");
-            const known = { "alberta-ungulate-surveys": "scripts/fetch-alberta-ungulate-surveys.mjs --out .research/alberta-ungulate" };
-            if (!known[r.source]) throw new Error(`unknown source ${r.source}`);
-            require("fs").appendFileSync(process.env.GITHUB_OUTPUT, `command=${known[r.source]}\n`);
+            const known = {
+              "alberta-ungulate-surveys": "scripts/fetch-alberta-ungulate-surveys.mjs --out .research/alberta-ungulate",
+              "manitoba-guide": "scripts/fetch-manitoba-guide.mjs --out .research/manitoba-guide",
+              "probe": "scripts/probe-research-sources.mjs --out .research/probe",
+            };
+            const sources = r.sources ?? [r.source];
+            for (const source of sources) if (!known[source]) throw new Error(`unknown source ${source}`);
+            require("fs").writeFileSync(".research/commands.txt", sources.map((s) => known[s]).join("\n") + "\n");
           '
-      - name: Read the source
-        run: node ${{ steps.request.outputs.command }} 2>&1 | tee .research/fetch.log
+          : > .research/fetch.log
+          while read -r command; do
+            [ -z "$command" ] && continue
+            echo "== node $command" | tee -a .research/fetch.log
+            node $command 2>&1 | tee -a .research/fetch.log || echo "FAILED: $command" | tee -a .research/fetch.log
+          done < .research/commands.txt
       - name: Commit what was read
         run: |
           git config user.name "github-actions[bot]"
