@@ -262,8 +262,17 @@ export default function PlaceComposer({
           enterKeyHint="search"
           role="combobox"
           autoComplete="off"
-          autoCorrect="off"
-          spellCheck={false}
+          /*
+           * Autocorrect and spellcheck stay ON, deliberately. On iPhone, turning
+           * autocorrect off hides the QuickType word-suggestion row, and Safari
+           * fills that same strip with its AutoFill buttons (passwords, cards,
+           * contacts) — the "clunky icons above the keyboard" the owner saw on a
+           * physical iPhone. With them on, the strip shows ordinary word
+           * suggestions. A page cannot remove the strip itself. Place suggestions
+           * arrive as the hunter types, so a corrected word only matters if they
+           * submit before choosing one.
+           */
+          autoCapitalize="words"
           /*
            * A chosen place is a VALUE, not a placeholder.
            *

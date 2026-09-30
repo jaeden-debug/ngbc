@@ -61,3 +61,9 @@ test("nothing refocuses the field on its own", () => {
   for (const line of timedFocus) assert.match(line, /if \(options\?\.focusField\)/, `unguarded timed refocus: ${line.trim()}`);
   assert.match(app, /openComposer\(true, \{ focusField: true \}\)/, "only the explicit action asks for focus");
 });
+
+test("the search field leaves iOS word suggestions on, so Safari does not fill that strip with AutoFill buttons", () => {
+  const input = composer.slice(composer.indexOf("<input"), composer.indexOf("/>", composer.indexOf("<input")));
+  assert.doesNotMatch(input, /autoCorrect="off"/, "autocorrect off hides QuickType and shows AutoFill icons (owner, physical iPhone, 2026-09-29)");
+  assert.doesNotMatch(input, /spellCheck=\{false\}/);
+});
