@@ -15,9 +15,22 @@
  * observations. Fossils and living specimens (zoos, collections) are
  * excluded because neither says an animal lives there now.
  *
- * WHAT IT READS. GBIF's map API aggregates matching records into squares of
- * 0.3515625° (64 of 4,096 units in a zoom-3 EPSG:4326 tile, 22.5° wide).
- * Every tile over North America is read, and the square's own count kept.
+ * WHAT IT READS. GBIF's ad-hoc map API aggregates matching records into a
+ * grid of 16 × 16 cells per EPSG:4326 tile, whatever square size is asked
+ * for, and draws each occupied cell as one square beside the cell's centre.
+ * Established from the reads themselves: across every species read at zoom 3
+ * (22.5° tiles), no 1.40625° cell ever held more than one square — house
+ * sparrow's 14.8 million records came back as 763 squares, one per cell. The
+ * first reads (before 2026-09-30's second pass) were therefore 1.40625° cells,
+ * not the 0.35° squares they were taken for; `aggregationDegrees` now says
+ * which a read is.
+ *
+ * So each species is read twice: a COARSE pass at zoom 3 over every tile of
+ * North America, which finds the 1.40625° cells holding records, and a FINE
+ * pass at zoom 5 (5.625° tiles, 0.3515625° cells) over only the tiles those
+ * cells fall in. Every square is filed under the aggregation cell its centre
+ * lies in, and the cell's own count kept. The fine pass must place every
+ * record the coarse pass found; a read where it does not says so.
  * Attribution: the datasets that contributed, with their record counts, so
  * every CC BY publisher can be credited.
  */
@@ -39,9 +52,14 @@ const months = args.find((a) => a.startsWith("--months="))?.split("=")[1]?.split
 mkdirSync(OUT, { recursive: true });
 const USER_AGENT = "NorthGroundBushcraft/1.0 (+https://www.northgroundbushcraft.com)";
 
-const ZOOM = 3;
-const TILE_DEGREES = 180 / 2 ** ZOOM;
+const COARSE_ZOOM = 3;
+const FINE_ZOOM = 5;
 const SQUARE_UNITS = 64;
+/* GBIF aggregates 16 × 16 cells per tile (see above). */
+const CELLS_PER_TILE = 16;
+const tileDegrees = (zoom) => 180 / 2 ** zoom;
+const aggregationDegrees = (zoom) => tileDegrees(zoom) / CELLS_PER_TILE;
+const FINE_DEGREES = aggregationDegrees(FINE_ZOOM);
 const FILTER = [
   "country=CA", "country=US",
   "license=CC0_1_0", "license=CC_BY_4_0",
@@ -57,9 +75,9 @@ let last = 0;
    the service's own words rather than retried until the run gives up. */
 async function get(url, as = "json") {
   for (let attempt = 1; attempt <= 6; attempt += 1) {
-    /* One request starts every 350 ms across every worker: at most about three
-       a second, whatever the service's latency. */
-    const start = Math.max(Date.now(), last + 350);
+    /* One request starts every 250 ms across every worker: at most four a
+       second, whatever the service's latency. */
+    const start = Math.max(Date.now(), last + 250);
     last = start;
     if (start > Date.now()) await new Promise((resolve) => setTimeout(resolve, start - Date.now()));
     let status = 0;
@@ -79,10 +97,11 @@ async function get(url, as = "json") {
   }
 }
 
-/* Tiles over Canada and the United States: lon -180..-45, lat 15..85. */
+/* Coarse tiles over Canada and the United States: lon -180..-45, lat 15..85. */
+const COARSE_DEGREES = tileDegrees(COARSE_ZOOM);
 const tiles = [];
-for (let x = Math.floor((-180 + 180) / TILE_DEGREES); x <= Math.floor((-45 + 180) / TILE_DEGREES); x += 1) {
-  for (let y = Math.floor((90 - 85) / TILE_DEGREES); y <= Math.floor((90 - 15) / TILE_DEGREES); y += 1) tiles.push([x, y]);
+for (let x = Math.floor((-180 + 180) / COARSE_DEGREES); x <= Math.floor((-45 + 180) / COARSE_DEGREES); x += 1) {
+  for (let y = Math.floor((90 - 85) / COARSE_DEGREES); y <= Math.floor((90 - 15) / COARSE_DEGREES); y += 1) tiles.push([x, y]);
 }
 
 /* Species with a measured survey surface already; recorded presence is read for the rest. */
@@ -152,56 +171,83 @@ async function readSpecies(species) {
   const search = `https://api.gbif.org/v1/occurrence/search?taxonKey=${match.usageKey}&${FILTER}`;
   const facets = await get(`${search}&limit=0&facet=datasetKey&facetLimit=2000`);
   const datasets = (facets.facets?.[0]?.counts ?? []).map(({ name, count }) => ({ datasetKey: name, count }));
-  const squares = [];
   /* A tile the service refuses is read again as its four children at the next
-     zoom, with the square size doubled so the squares are the same ground. A
-     child that is still refused is recorded as ground not read: the grid
-     builder declines a species with any unread ground rather than draw it
-     with a hole that would look like "no records". */
+     zoom (its cells are then half the size, and are filed under the cell of
+     the zoom being read). A child that is still refused is recorded as ground
+     not read: the grid builder declines a species with any unread ground
+     rather than draw it with a hole that would look like "no records". */
   const unread = [];
-  const readSquares = async (zoom, x, y) => {
-    const degrees = 180 / 2 ** zoom;
-    const units = SQUARE_UNITS * 2 ** (zoom - ZOOM);
-    const west = -180 + x * degrees;
-    const north = 90 - y * degrees;
-    const tile = readTile(await get(`https://api.gbif.org/v2/map/occurrence/adhoc/${zoom}/${x}/${y}.mvt?srs=EPSG:4326&bin=square&squareSize=${units}&taxonKey=${match.usageKey}&${FILTER}`, "bytes"));
-    for (const feature of tile) {
-      const ring = feature.rings[0];
-      if (!ring?.length || typeof feature.properties.total !== "number") continue;
-      const xs = ring.map(([u]) => u);
-      const ys = ring.map(([, v]) => v);
-      const scale = degrees / feature.extent;
-      squares.push([
-        Number((west + Math.min(...xs) * scale).toFixed(6)),
-        Number((north - Math.max(...ys) * scale).toFixed(6)),
-        feature.properties.total,
-      ]);
-    }
-  };
-  for (const [x, y] of tiles) {
-    try {
-      await readSquares(ZOOM, x, y);
-    } catch (error) {
-      if (error.status !== 400) throw error;
-      process.stdout.write(`  tile ${ZOOM}/${x}/${y} refused (${error.message.split(": ").slice(1).join(": ").slice(0, 160)}); reading its children\n`);
-      for (const [cx, cy] of [[2 * x, 2 * y], [2 * x + 1, 2 * y], [2 * x, 2 * y + 1], [2 * x + 1, 2 * y + 1]]) {
-        try {
-          await readSquares(ZOOM + 1, cx, cy);
-        } catch (childError) {
-          unread.push({ tile: `${ZOOM + 1}/${cx}/${cy}`, reason: childError.message.split(": ").slice(1).join(": ").slice(0, 240) });
+  const readPass = async (zoom, tileList) => {
+    const cellDegrees = aggregationDegrees(zoom);
+    const cells = new Map();
+    let drawn = 0;
+    const readSquares = async (z, x, y) => {
+      const degrees = tileDegrees(z);
+      const units = SQUARE_UNITS * 2 ** (z - zoom);
+      const west = -180 + x * degrees;
+      const north = 90 - y * degrees;
+      const tile = readTile(await get(`https://api.gbif.org/v2/map/occurrence/adhoc/${z}/${x}/${y}.mvt?srs=EPSG:4326&bin=square&squareSize=${units}&taxonKey=${match.usageKey}&${FILTER}`, "bytes"));
+      for (const feature of tile) {
+        const ring = feature.rings[0];
+        if (!ring?.length || typeof feature.properties.total !== "number") continue;
+        const xs = ring.map(([u]) => u);
+        const ys = ring.map(([, v]) => v);
+        const scale = degrees / feature.extent;
+        /* The drawn square's centre, filed under the aggregation cell it lies in. */
+        const lon = west + ((Math.min(...xs) + Math.max(...xs)) / 2) * scale;
+        const lat = north - ((Math.min(...ys) + Math.max(...ys)) / 2) * scale;
+        const col = Math.floor((lon + 180) / cellDegrees);
+        const row = Math.floor((90 - lat) / cellDegrees);
+        const key = `${col}:${row}`;
+        cells.set(key, (cells.get(key) ?? 0) + feature.properties.total);
+        drawn += 1;
+      }
+    };
+    for (const [x, y] of tileList) {
+      try {
+        await readSquares(zoom, x, y);
+      } catch (error) {
+        if (error.status !== 400) throw error;
+        process.stdout.write(`  tile ${zoom}/${x}/${y} refused (${error.message.split(": ").slice(1).join(": ").slice(0, 160)}); reading its children\n`);
+        for (const [cx, cy] of [[2 * x, 2 * y], [2 * x + 1, 2 * y], [2 * x, 2 * y + 1], [2 * x + 1, 2 * y + 1]]) {
+          try {
+            await readSquares(zoom + 1, cx, cy);
+          } catch (childError) {
+            unread.push({ tile: `${zoom + 1}/${cx}/${cy}`, reason: childError.message.split(": ").slice(1).join(": ").slice(0, 240) });
+          }
         }
       }
     }
+    const squares = [...cells].map(([key, total]) => {
+      const [col, row] = key.split(":").map(Number);
+      return [Number((-180 + col * cellDegrees).toFixed(7)), Number((90 - (row + 1) * cellDegrees).toFixed(7)), total];
+    }).sort((a, b) => a[1] - b[1] || a[0] - b[0]);
+    return { squares, drawn, cellDegrees };
+  };
+  /* Coarse: which 1.40625° cells hold records. Fine: only the tiles they fall in. */
+  const coarse = await readPass(COARSE_ZOOM, tiles);
+  const fineTiles = new Map();
+  for (const [west, south] of coarse.squares) {
+    const lon = west + coarse.cellDegrees / 2;
+    const lat = south + coarse.cellDegrees / 2;
+    const x = Math.floor((lon + 180) / tileDegrees(FINE_ZOOM));
+    const y = Math.floor((90 - lat) / tileDegrees(FINE_ZOOM));
+    fineTiles.set(`${x}:${y}`, [x, y]);
   }
+  const fine = await readPass(FINE_ZOOM, [...fineTiles.values()]);
+  const squares = fine.squares;
+  const coarseRecords = coarse.squares.reduce((sum, [, , total]) => sum + total, 0);
   const records = squares.reduce((sum, [, , total]) => sum + total, 0);
   writeFileSync(join(OUT, `${species.speciesId.replace("species:", "")}.json`), `${JSON.stringify({
     ...row, retrievedAt: new Date().toISOString().slice(0, 10), filter: FILTER, portalQuery: `https://www.gbif.org/occurrence/search?taxon_key=${match.usageKey}&${FILTER.toLowerCase()}`,
-    squareDegrees: TILE_DEGREES * SQUARE_UNITS / 4096, openRecordCount: facets.count, datasets, months: months ?? null,
+    aggregationDegrees: FINE_DEGREES, squareDegrees: FINE_DEGREES,
+    aggregation: { coarseZoom: COARSE_ZOOM, fineZoom: FINE_ZOOM, coarseCells: coarse.squares.length, coarseRecords, fineTiles: fineTiles.size, drawnSquares: fine.drawn, cells: squares.length, placesEveryRecord: records === coarseRecords },
+    openRecordCount: facets.count, datasets, months: months ?? null,
     columns: ["west", "south", "records"], squares, unreadTiles: unread,
   })}\n`);
   for (const { datasetKey } of datasets) datasetTitles.set(datasetKey, null);
   summary.push({ ...row, squares: squares.length, records, openRecordCount: facets.count, datasets: datasets.length });
-  process.stdout.write(`${species.speciesId.padEnd(38)} ${String(facets.count).padStart(7)} open records · ${squares.length} squares · ${datasets.length} datasets${unread.length ? ` · ${unread.length} tiles unread` : ""}\n`);
+  process.stdout.write(`${species.speciesId.padEnd(38)} ${String(facets.count).padStart(7)} open records · ${coarse.squares.length} coarse → ${squares.length} fine cells${records === coarseRecords ? "" : ` (${coarseRecords - records} records not placed)`} · ${datasets.length} datasets${unread.length ? ` · ${unread.length} tiles unread` : ""}\n`);
 }
 
 /* One species the service will not answer about must not cost every other
