@@ -213,6 +213,107 @@
       "altText": "Male ruddy duck in non-breeding plumage swimming",
       "subjectSex": "MALE",
       "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:YWF8OR3J0XU": {
+      "decision": "REJECT",
+      "speciesId": "species:american-coot",
+      "reason": "the caption names an American coot, but the bird shown has a grebe's profile and a banded bill — it appears to be a pied-billed grebe (same photographer and bird as YSB90W7wy6Q)",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:ZpnS4krpCPY": {
+      "decision": "ACCEPT",
+      "speciesId": "species:red-breasted-merganser",
+      "altText": "Red-breasted merganser with a shaggy crest swimming on calm water",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:jr5wAkBFT40": {
+      "decision": "REJECT",
+      "speciesId": "species:least-weasel",
+      "reason": "only a small white head peering from under a wooden structure; the tail tip that separates a least weasel from an ermine is not visible",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:MhQdbcdsOjc": {
+      "decision": "ACCEPT",
+      "speciesId": "species:kit-fox",
+      "altText": "Kit fox resting on a rock ledge",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:1TPdGQfwcok": {
+      "decision": "ACCEPT",
+      "speciesId": "species:white-nosed-coati",
+      "altText": "White-nosed coati standing in green vegetation",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:0ZsTBqo07SM": {
+      "decision": "ACCEPT",
+      "speciesId": "species:black-tailed-prairie-dog",
+      "altText": "Two black-tailed prairie dogs touching noses on a rock",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:QTlBrTz5A60": {
+      "decision": "REJECT",
+      "speciesId": "species:columbian-ground-squirrel",
+      "reason": "the ground squirrel is a tiny figure at the edge of tall grass; too small in the frame to show the species",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:WmUFeOKWJeo": {
+      "decision": "ACCEPT",
+      "speciesId": "species:yellow-bellied-marmot",
+      "altText": "Yellow-bellied marmot sitting on a rock",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:6vsSBaC1pTE": {
+      "decision": "ACCEPT",
+      "speciesId": "species:hoary-marmot",
+      "altText": "Hoary marmot feeding among wildflowers",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:xJEhmBhcNT4": {
+      "decision": "ACCEPT",
+      "speciesId": "species:douglas-squirrel",
+      "altText": "Douglas squirrel eating while perched on a log",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:6cyIqitpoxs": {
+      "decision": "ACCEPT",
+      "speciesId": "species:european-hare",
+      "altText": "European hare sitting upright in tall grass",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:dEK_jw1kcTE": {
+      "decision": "ACCEPT",
+      "speciesId": "species:blackbuck",
+      "altText": "Blackbuck with spiralled horns walking across dry, bare ground",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:DWOEraQzREQ": {
+      "decision": "ACCEPT",
+      "speciesId": "species:red-deer",
+      "altText": "Red deer with large antlers standing in shallow water",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:ZdWhZTpd_Uw": {
+      "decision": "ACCEPT",
+      "speciesId": "species:gemsbok",
+      "altText": "Gemsbok walking across the desert floor below red sand dunes",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:MFvDzSw5McY": {
+      "decision": "REJECT",
+      "speciesId": "species:mouflon",
+      "reason": "a young lamb, without the horns and saddle patch that identify an adult mouflon",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
     }
   }
 }

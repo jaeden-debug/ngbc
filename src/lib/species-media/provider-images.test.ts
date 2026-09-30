@@ -93,7 +93,18 @@ test("a binomial belonging to another species blocks approval", () => {
   const verdict = judge("mottled-duck", [candidate("Mottled duck (Anas platyrhynchos) on the Gulf Coast")]);
   assert.equal(verdict.chosen, null);
   assert.equal(verdict.status, "NEEDS_REVIEW");
-  assert.match(verdict.reason, /mallard/);
+  assert.match(verdict.reason, /platyrhynchos|mallard/);
+});
+
+test("a binomial that is not the species' own blocks approval, even outside the catalogue", () => {
+  const verdict = judge("mouflon", [candidate("The mouflon or Ovis gmelini, a wild sheep native to the Caspian region")]);
+  assert.equal(verdict.chosen, null);
+  assert.equal(verdict.status, "NEEDS_REVIEW");
+  assert.match(verdict.reason, /ovis gmelini/);
+  // A subspecies of the species' own binomial is its own.
+  assert.equal(judge("bighorn-sheep", [candidate("Desert bighorn sheep (Ovis canadensis nelsoni)")]).status, "VERIFIED");
+  // A genus that is also an English word is not read out of ordinary prose.
+  assert.equal(judge("canada-lynx", [candidate("Canada lynx stares at prey")]).status, "HIGH_CONFIDENCE");
 });
 
 test("protected lookalikes never take each other's photograph", () => {
